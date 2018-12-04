@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9eaed5c8d30d902700af25319d91b77aab645dbc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9fac565922a6dd36608455456c66ff2fe940557a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318014"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680416"
 documentType: LandingData
 title: Dokumentacja dedykowanego modułu HSM platformy Azure
 metadata:
@@ -22,7 +22,7 @@ metadata:
   ms.date: 11/21/2018
   ms.author: barclayn
 abstract:
-  description: Dowiedz się więcej na temat funkcji dedykowanych modułów HSM i sprawdź, czy możesz ich używać w swoim środowisku.
+  description: Dowiedz się więcej na temat funkcji dedykowanego modułu HSM i sprawdź, czy możesz jej używać w swoim środowisku.
 sections:
 - items:
   - type: list
@@ -33,13 +33,13 @@ sections:
     - href: /azure/dedicated-hsm/overview
       html: <p>Uzyskaj informacje o dedykowanym module HSM platformy Azure.</p>
       image:
-        src: media/index/i_article.svg
+        src: media/index/hsm.svg
       title: Omówienie dedykowanego modułu HSM
     - href: /azure/dedicated-hsm/faq
-      html: <p>Często zadawane pytania.</p>
+      html: <p>Zagadnienia dotyczące projektowania do wzięcia pod uwagę przy korzystaniu z dedykowanego modułu HSM</p>
       image:
         src: media/index/guide.svg
-      title: Często zadawane pytania
+      title: Wybieranie architektury wdrożenia
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
@@ -62,4 +62,4 @@ sections:
     className: cardsD
     items:
     - title: Często zadawane pytania
-      html: <p><a href="/dedicated-hsm/faq/">Często zadawane pytania</a></p>
+      html: <p><a href="/azure/dedicated-hsm/faq/">Często zadawane pytania</a></p>

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: a7697d2be1a43af93109bb7bbdab50828275f5aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8b7089a034b352366ee6a67e8da3d85c61e9039b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446403"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846270"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>HDInsight Spark przewodniki dotyczące przetwarzania danych przy użyciu PySpark i środowiskiem Scala na platformie Azure
 
@@ -40,7 +40,7 @@ Zobacz [zaawansowane Eksplorowanie i modelowanie za pomocą platformy Spark dany
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Przewidywanie napiwków na platformie Azure Spark przy użyciu języka Scala
 
-[Korzystanie z języka Scala za pomocą platformy Spark na platformie Azure](scala-walkthrough.md) wskazówki używane dane taksówek w Nowym Jorku w celu przewidywania, czy Porada zostało opłacone i zakres kwoty przewidywań zapłaty. Widoczny jest sposób Scala na użytek nadzorowanych uczenie maszynowe zadania przy użyciu biblioteki (MLlib) i pakiety SparkML w klastrze usługi Azure HDInsight Spark uczenia maszynowego platformy Spark. Przeprowadzi Cię on zadania, które stanowią [danych dla celów naukowych](https://aka.ms/datascienceprocess): pozyskiwanie danych i eksploracji, wizualizacji, technicznego opracowywania funkcji, modelowania i użycie modelu. Modele utworzone obejmują regresji logistycznej liniowego i liniowa w, losowych lasów i gradientu wzmocnionego drzewa.
+[Korzystanie z języka Scala za pomocą platformy Spark na platformie Azure](scala-walkthrough.md) wskazówki używane dane taksówek w Nowym Jorku w celu przewidywania, czy Porada zostało opłacone i zakres kwoty przewidywań zapłaty. Widoczny jest sposób Scala na użytek nadzorowanych uczenie maszynowe zadania przy użyciu biblioteki (MLlib) i pakiety SparkML w klastrze usługi Azure HDInsight Spark uczenia maszynowego platformy Spark. Przeprowadzi Cię on zadania, które stanowią [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): pozyskiwanie danych i eksploracji, wizualizacji, technicznego opracowywania funkcji, modelowania i użycie modelu. Modele utworzone obejmują regresji logistycznej liniowego i liniowa w, losowych lasów i gradientu wzmocnionego drzewa.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

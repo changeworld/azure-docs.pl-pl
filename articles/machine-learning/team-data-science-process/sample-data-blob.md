@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5fe7c11bd21e9c2f432f443a6a8dd5880646a1a2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7dbd5f932f2d090a3f9fa8f917d12869a94dc553
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444192"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847086"
 ---
 # <a name="heading"></a>Przykładowe dane w usłudze Azure blob storage
 
@@ -25,7 +25,7 @@ W tym artykule opisano próbkowania — dane przechowywane w usłudze Azure blob
 **Dlaczego przykładowe dane?**
 Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. To ułatwia zrozumienie danych, poznawanie i technicznego opracowywania funkcji. Jego rolę w procesie Cortana Analytics jest umożliwienie szybkiego tworzenia prototypów funkcji do przetwarzania danych i modeli uczenia maszynowego.
 
-To zadanie próbkowania jest krok [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To zadanie próbkowania jest krok [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="download-and-down-sample-data"></a>Pobierz i obniżenie częstotliwości próbkowania danych
 1. Pobierz dane z usługi Azure blob storage przy użyciu usługi obiektów blob z następującego przykładowego kodu Python: 

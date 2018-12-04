@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: iainfou
-ms.openlocfilehash: f0097c2ba42378c66bedd614032b63c23a2483dd
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: d687467e6bd64363c78f60064c6a17adbc5e0d1f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447371"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846135"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Połącz przy użyciu protokołu SSH do usługi Azure Kubernetes Service (AKS) węzłów klastra z powodu konserwacji lub rozwiązywania problemów
 
@@ -129,7 +129,7 @@ Aby utworzyć połączenie SSH z węzłem AKS, uruchamiasz zasobnik pomocnika w 
      * Support:        https://ubuntu.com/advantage
     
       Get cloud support with Ubuntu Advantage Cloud Guest:
-        http://www.ubuntu.com/business/services/cloud
+        https://www.ubuntu.com/business/services/cloud
     
     [...]
     

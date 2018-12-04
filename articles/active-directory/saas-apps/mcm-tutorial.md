@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 5ddd28838e7db7b7f2798b18028aba56246fda4c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b8ff27413888e1745bd9a83e2e2e8c7b77fba34
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437794"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Samouczek: Integracja usługi Azure Active Directory z MCM
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą MCM, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - MCM logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację MCM w usłudze Azure AD, należy dodać MCM z gal
 
 **Aby dodać MCM z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -117,7 +117,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://myaba.co.uk/<companyname>`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta MCM](http://mcmtechnology.com/support/) do uzyskania tych wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta MCM](https://mcmtechnology.com/support/) do uzyskania tych wartości. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -127,7 +127,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/mcm-tutorial/tutorial_general_400.png) 
 
-1. Aby skonfigurować logowanie jednokrotne na **MCM** stronie, musisz wysłać pobrany **XML metadanych** do [zespołu pomocy technicznej MCM](http://mcmtechnology.com/support/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **MCM** stronie, musisz wysłać pobrany **XML metadanych** do [zespołu pomocy technicznej MCM](https://mcmtechnology.com/support/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -166,7 +166,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="creating-a-mcm-test-user"></a>Tworzenie użytkownika testowego MCM
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MCM. Praca z [zespołu pomocy technicznej MCM](http://mcmtechnology.com/support/) Aby dodać użytkowników na platformie MCM.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MCM. Praca z [zespołu pomocy technicznej MCM](https://mcmtechnology.com/support/) Aby dodać użytkowników na platformie MCM.
 
 > [!NOTE]
 > Można użyć jakichkolwiek innych MCM użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez MCM do aprowizacji kont użytkowników usługi AAD.

@@ -1,0 +1,63 @@
+---
+title: Wybrać właściwą warstwę cenową dla usługi Azure Maps | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o oferowanych przez usługi Azure Maps warstw cenowych
+author: walsehgal
+ms.author: v-musehg
+ms.date: 12/03/2018
+ms.topic: conceptual
+ms.service: azure-maps
+services: azure-maps
+manager: ''
+ms.openlocfilehash: 20c59f95dcdb47ef3e457f177d7ad1a300981907
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52856272"
+---
+# <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>Wybieranie odpowiedniej warstwy cenowej w usługi Azure Maps
+
+Usługi Azure Maps oferuje dwie warstwy cenowe. Ten artykuł ma na celu pomóc wybrać właściwą ceny dla Twoich potrzeb warstwę. Aby wybrać właściwą warstwę cenową, spróbuj odpowiedzieć sobie dwa pytania:
+
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Jakie funkcje geoprzestrzenne chcę użyć?
+Jeśli uważasz, że Twoje wymagania dotyczące usługi są spełnione przez dane geograficzne podstawowych interfejsów API, a następnie warstwy cenowej S0 jest odpowiedni dla Ciebie. Jeśli chcesz bardziej zaawansowane funkcje dla swojej aplikacji, takich jak obrazach hybrydowych areal + wprowadzenie zakres z trasy, batch geokodowanie itp., należy wziąć pod uwagę, rezygnując na warstwę cenową S1. Poniższa tabela z **ceny warstwy możliwości** będzie udostępniać lepiej zrozumieć wymagania używanej aplikacji i spowoduje również pomoc, możesz wybrać warstwę cenową najbardziej odpowiedni dla aplikacji.
+
+## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Jak wiele równoczesnych użytkowników zaplanować do obsługi? 
+S0 i warstw cenowych S1 może obsługiwać różne ilości przepływność danych. Przed wybraniem usługi Azure Maps warstwy cenowej, należy wziąć pod uwagę pytaniem samodzielnie pytania, jak wiele równoczesnych użytkowników mają być obsługiwane? S0 warstwa cenowa może obsługiwać maksymalnie **50 zapytań na sekundę** i S1 warstwy cenowej może obsługiwać **więcej niż 50 zapytań na sekundę**.
+
+### <a name="pricing-tier-capabilities"></a>Cennik warstwy możliwości
+
+| Możliwości                              |        S0           |  S1      |
+|-----------------------------------------|:-------------------:|:--------:|
+| Wyszukiwanie                                  |        ✓           |     ✓    |
+| Routing                                 |        ✓           |     ✓    |
+| Renderowanie                                  |        ✓           |     ✓    |
+| Ruch                                 |        ✓           |     ✓    |
+| Strefy czasowe                              |        ✓           |     ✓    |
+| Zdjęcia i obrazach hybrydowych (wersja zapoznawcza)      |                    |     ✓    |
+| Trasy zakresu (wersja zapoznawcza)                   |                    |     ✓    |
+| Lokalizacja 2 adresu IP (wersja zapoznawcza)                 |                    |     ✓    |
+| Wielokąty z wyszukiwania (wersja zapoznawcza)          |                    |     ✓    |
+| Geokodowanie usługi Batch (wersja zapoznawcza)               |                    |     ✓    |
+| Routing usługi Batch (wersja zapoznawcza)                 |                    |     ✓    |
+| Routing macierzy (wersja zapoznawcza)                |                    |     ✓    |
+
+
+Kilka dodatkowych punktów danych warto biorąc pod uwagę, jakiego rodzaju enterprise masz lub jak bardzo krytyczna jest aplikacją kompilowanego na bieżąco?
+
+Zobacz tabelę z **warstwa cenowa docelowych klientów** aby lepiej poznać S0 i S1 warstw cenowych. Aby uzyskać więcej informacji na temat cen usługi Azure Maps, zobacz, [cennik usługi Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/). 
+
+### <a name="pricing-tier-targeted-customers"></a>Warstwa cenowa docelowych klientów
+
+| Warstwa cenowa  |        Klientów docelowych                                                                |
+|---------------|:-----------------------------------------------------------------------------------------|
+| S0            |    <p>Warstwa cenowa S0 jest przeznaczona dla klientów, którzy przedsiębiorstwom małych i średnich. To prawo warstwy cenowej dla Ciebie, jeśli nie będzie dużej liczby równoczesnych użytkowników, a Twoje wymagania dotyczące usługi są spełnione przez geoprzestrzenne podstawowych interfejsów API, opisane w poniższej tabeli. Ta warstwa jest ogólnie dostępna i ma zastosowanie w przypadku aplikacji we wszystkich etapów cyklu produkcji od weryfikacji koncepcji programowania i wczesnym etapie testowania do produkcyjnych aplikacji i wdrożenia.<p>|
+| S1            |    <p>Warstwę cenową S1 jest przeznaczona dla klientów wymagających pomocy technicznej dla przedsiębiorstw na dużą skalę, dla aplikacji o znaczeniu, dużej liczby równoczesnych użytkowników lub wymaga usług geoprzestrzennych zaawansowane.</p>|
+
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Dowiedz się więcej na temat wyświetlania i zmieniania warstwy cenowej:
+
+> [!div class="nextstepaction"]
+> [Zarządzanie warstwy cenowej](how-to-manage-pricing-tier.md)

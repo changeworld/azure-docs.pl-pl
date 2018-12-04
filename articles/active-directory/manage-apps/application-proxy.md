@@ -15,18 +15,18 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 428f094dae2b9a69b58912190d2959a7dfc467ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 212628c0ec97524e91ab8eaeb766c3e405023aaf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365266"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846168"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych
 
-Obecnie pracownicy produktywności w dowolnym miejscu w dowolnym momencie i z dowolnego urządzenia. Firma chce pracować nad swoimi własnymi urządzeniami, czy są to tabletach, telefonach lub komputery przenośne. Oczekują można było uzyskać dostęp do swoich aplikacji, obie aplikacje SaaS w chmurze i aplikacji firmowych w środowisku lokalnym. Zapewniając dostęp do aplikacji lokalnych tradycyjnie został użyty, wirtualnych sieci prywatnych (VPN) lub stref zdemilitaryzowaną (sieci obwodowej). Nie tylko są te rozwiązania skomplikowane i trudne zwiększyć bezpieczeństwo, ale są kosztowne skonfigurować i zarządzać nimi.
+Obecnie pracownicy chcą pracować wydajnie w dowolnym miejscu i czasie, na dowolnym urządzeniu. Firma chce pracować nad swoimi własnymi urządzeniami, czy są to tabletach, telefonach lub komputery przenośne. Oczekują można było uzyskać dostęp do swoich aplikacji, obie aplikacje SaaS w chmurze i aplikacji firmowych w środowisku lokalnym. Zapewniając dostęp do aplikacji lokalnych tradycyjnie został użyty, wirtualnych sieci prywatnych (VPN) lub stref zdemilitaryzowaną (sieci obwodowej). Te rozwiązania nie tylko są skomplikowane i trudne do zabezpieczenia, ale też mają wysokie koszty konfigurowania i zarządzania.
 
-Istnieje lepszy sposób!
+Jest lepszy sposób
 
 Współczesnych pracowników w pierwszym mobile, chmurowych wymaga rozwiązanie nowoczesnych dostępu zdalnego. Serwer Proxy aplikacji usługi Azure AD jest funkcją usługi Azure Active Directory, która oferuje dostępu zdalnego jako usługi. Oznacza to, że można łatwo wdrażać i użycia oraz zarządzać nimi.
 
@@ -100,5 +100,5 @@ Gdy publikujesz swoją pierwszą aplikację, istnieje wiele innych, które możn
 * [Praca z istniejących serwerów Proxy w środowisku lokalnym](application-proxy-configure-connectors-with-proxy-servers.md) 
 * [Ustaw niestandardową stronę główną](application-proxy-configure-custom-home-page.md)
 
-Aby zapoznać się z najnowszymi informacjami i aktualizacjami, zobacz [blog dotyczący serwera proxy aplikacji](http://blogs.technet.com/b/applicationproxyblog/)
+Aby zapoznać się z najnowszymi informacjami i aktualizacjami, zobacz [blog dotyczący serwera proxy aplikacji](https://blogs.technet.com/b/applicationproxyblog/)
 

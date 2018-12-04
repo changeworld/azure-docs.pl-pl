@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: d818b4c045139eace88c3ef6b9675e5199c2ed4b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6a9bc347af471a2ab84cefc25bcd7f48f1d5908d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428249"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846049"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -131,4 +131,4 @@ Jeśli zauważysz nieprawidłowości, wykonaj następujące kroki:
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przeszukiwanie dzienników](../../log-analytics/log-analytics-queries.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.
+[Przeszukiwanie dzienników](../../azure-monitor/log-query/log-query-overview.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.

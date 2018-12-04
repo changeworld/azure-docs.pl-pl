@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f57dd806e345cad80b8c60424e12211fc74814d6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c4b5a200780761decfdd98289f7e7332244e5645
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213223"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846435"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V w chmurach programu VMM na platformie Azure
 
@@ -55,7 +55,7 @@ Przed rozpoczęciem warto [zapoznać się z architekturą](concepts-hyper-v-to-a
 Po skonfigurowaniu środowiska źródłowego Zainstaluj dostawcę usługi Azure Site Recovery i agenta usług odzyskiwania Azure i zarejestrować na serwerach lokalnych w magazynie. 
 
 1. W obszarze **Przygotowanie infrastruktury**, kliknij przycisk **Źródło**.
-2. W obszarze **Przygotowywanie źródła** kliknij pozycję **+ VMM**, aby dodać serwer programu VMM. W **Dodaj serwer**, sprawdź, czy **serwer programu System Center VMM** pojawia się w **typ serwera**.
+2. W obszarze **Przygotowywanie źródła** kliknij pozycję **+ VMM**, aby dodać serwer programu VMM. W obszarze **Dodaj serwer** sprawdź, czy pozycja **Serwer System Center VMM** pojawia się jako **Typ serwera**.
 3. Pobierz Instalator dostawcy Microsoft Azure Site Recovery.
 4. Pobierz klucz rejestracji magazynu. Będzie potrzebny podczas instalacji dostawcy. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
 5. Pobierz agenta usług Recovery Services.
@@ -125,7 +125,7 @@ Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu
 4. Wybierz **contosovmsacct1910171607** konta magazynu i **ContosoASRnet** sieci platformy Azure.
 5. W obszarze **Maszyny wirtualne** > **Wybierz** wybierz maszynę wirtualną, którą chcesz replikować. Następnie kliknij przycisk **OK**.
 
- Możesz śledzić postępy akcji **Włącz ochronę** w obszarze **Zadania** > **Zadania usługi Site Recovery**. Po **Finalizuj ochronę** zadanie zostanie ukończone, Replikacja początkowa zostanie zakończona i maszyna wirtualna jest gotowa do pracy awaryjnej.
+ Możesz śledzić postępy akcji **Włącz ochronę** w obszarze **Zadania** > **Zadania usługi Site Recovery**. Po zakończeniu zadania **Finalizuj ochronę** replikacja początkowa zostanie zakończona, a maszyna wirtualna będzie gotowa do pracy w trybie failover.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

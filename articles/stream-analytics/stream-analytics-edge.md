@@ -1,20 +1,19 @@
 ---
 title: Usługa Azure Stream Analytics w usłudze IoT Edge (wersja zapoznawcza)
-description: Tworzenie zadań krawędzi w usłudze Azure Stream Analytics i wdrażać je do urządzeń z systemem Azure IoT Edge.
+description: Tworzenie zadań krawędzi w usłudze Azure Stream Analytics i wdrażać je na urządzeniach z systemem Azure IoT Edge.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/16/2017
-ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 11/30/2018
+ms.openlocfilehash: 6d3060545946f1f003058932f1ffc50c2a64586f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687439"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846236"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Usługa Azure Stream Analytics w usłudze IoT Edge (wersja zapoznawcza)
 
@@ -197,7 +196,7 @@ Aby utworzyć zadanie z danymi referencyjnymi w programie Edge:
 
 3. Ma odwołanie do pliku danych gotowe na urządzeniu. Dla kontenera Windows umieścić do referencyjnego pliku danych na dysku lokalnym, a następnie udostępniać dysku lokalnego kontenera platformy Docker. Dla kontenera systemu Linux należy utworzyć wolumin platformy Docker i wypełnić plik danych do woluminu.
 
-4. Ustaw ścieżkę do pliku. Na urządzeniu z systemem windows za pomocą ścieżki bezwzględnej. W przypadku urządzeń z systemem Linux Użyj ścieżki na woluminie.
+4. Ustaw ścieżkę do pliku. Dla systemu operacyjnego hosta Windows i Windows container, użyj ścieżki bezwzględnej: `E:\<PathToFile>\v1.csv`. Kontener systemu operacyjnego hosta Windows i Linux lub systemu operacyjnego Linux i kontenerów systemu Linux, użyj ścieżki na woluminie: `<VolumeName>/file1.txt`.
 
 ![Nowe wejściowych danych referencyjnych dla zadania usługi Azure Stream Analytics w usłudze IoT Edge](./media/stream-analytics-edge/ReferenceDataNewInput.png)
 
@@ -206,7 +205,6 @@ Dane referencyjne w aktualizacji usługi IoT Edge jest wyzwalana przez wdrożeni
 Istnieją dwa sposoby, aby zaktualizować dane referencyjne:
 * Aktualizuj odwołanie do ścieżki danych w ramach zadania ASA w witrynie Azure portal.
 * Aktualizuj wdrożenie usługi IoT Edge.
-
 
 ## <a name="license-and-third-party-notices"></a>Bieżąca licencja i uwagi dotyczące innych firm
 * [Usługa Azure Stream analizy licencji w wersji zapoznawczej usługi IoT Edge](https://go.microsoft.com/fwlink/?linkid=862827). 

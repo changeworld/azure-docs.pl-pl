@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/30/2018
-ms.openlocfilehash: e89245a946848e46f3c7c502b6cd0e8017327e07
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 12/03/2018
+ms.openlocfilehash: f3e40f9d10ce3d0515d466e9bbdde324458e624d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419898"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834115"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Użyj wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnych i w prawie 100% zgodności
 
@@ -45,9 +45,9 @@ Wystąpienie usługi Azure SQL Database Managed łączy najlepsze funkcje, któr
 
 | **Korzyści PaaS** | **Ciągłość działalności biznesowej:** |
 | --- | --- |
-|Zakupu sprzętu i zarządzania <br>Brak zarządzania w czasie zarządzania podstawową infrastrukturą <br>Szybka aprowizacja i skalowanie usług <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |dostępność przez 99,99% umowę SLA  <br>Wbudowane [wysokiej dostępności](sql-database-high-availability.md) <br>Dane są chronione za pomocą [automatyczne kopie zapasowe](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych można skonfigurować klienta (stałe do 7 dni w publicznej wersji zapoznawczej) <br>Użytkownik zainicjował [kopii zapasowych](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Punkt w czasie przywracania bazy danych](sql-database-recovery-using-backups.md#point-in-time-restore) możliwości |
+|Zakupu sprzętu i zarządzania <br>Brak zarządzania w czasie zarządzania podstawową infrastrukturą <br>Szybka aprowizacja i skalowanie usług <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |dostępność przez 99,99% umowę SLA  <br>Wbudowane [wysokiej dostępności](sql-database-high-availability.md) <br>Dane są chronione za pomocą [automatyczne kopie zapasowe](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych można skonfigurować klienta <br>Użytkownik zainicjował [kopii zapasowych](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Punkt w czasie przywracania bazy danych](sql-database-recovery-using-backups.md#point-in-time-restore) możliwości |
 |**Zabezpieczenia i zgodność** | **Zarządzanie**|
-|Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-vnet-configuration.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
+|Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-vnet-configuration.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Usługa Azure AD logowania</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
 
 Najważniejsze funkcje wystąpienie zarządzane są wyświetlane w poniższej tabeli:
 
@@ -84,12 +84,9 @@ Znajdź więcej informacji na temat różnic między generacji sprzętu w [limit
 Wystąpienie zarządzane jest dostępna w dwóch warstwach usługi:
 
 - **Ogólnego przeznaczenia**: przeznaczone dla aplikacji za pomocą wydajności typowe wymagania dotyczące opóźnień we/wy.
-- **Krytyczne dla działania firmy (wersja zapoznawcza)**: przeznaczone dla aplikacji za pomocą niskie wymagania dotyczące opóźnień We/Wy i minimalny wpływ podstawowych operacji konserwacji na obciążenie pracą.
+- **Krytyczne dla działania firmy**: przeznaczone dla aplikacji za pomocą niskie wymagania dotyczące opóźnień We/Wy i minimalny wpływ podstawowych operacji konserwacji na obciążenie pracą.
 
 Obie warstwy usług gwarantuje dostępność na poziomie 99,99% i pozwalają na niezależne wybierz rozmiar magazynu i moc obliczeniową. Aby uzyskać więcej informacji na temat architektury wysokiej dostępności usługi Azure SQL Database, zobacz [wysokiej dostępności i Azure SQL Database](sql-database-high-availability.md).
-
-> [!IMPORTANT]
-> Zmiana warstwie usługi, z ogólnego przeznaczenia na krytyczne dla działania firmy lub odwrotnie nie jest obsługiwana w publicznej wersji zapoznawczej. Użytkownik chce migrować swoje bazy danych do wystąpienia w warstwie innej usługi, można tworzyć nowe wystąpienie, Przywróć bazy danych przy użyciu punktu w czasie przywracania z oryginalnego wystąpienia i następnie upuść oryginalne wystąpienie, jeśli nie jest już potrzebna. Jednak możesz skalować liczbę rdzeni wirtualnych i magazynu w górę lub w dół w ramach warstwy usług bez przestojów.
 
 ### <a name="general-purpose-service-tier"></a>Warstwy usług w usłudze ogólnego przeznaczenia
 
@@ -103,7 +100,7 @@ Aby uzyskać więcej informacji, zobacz [magazynu w warstwie ogólnie rzecz bior
 
 Znajdź więcej informacji na temat różnic między warstwami usług w [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
-### <a name="business-critical-service-tier-preview"></a>Warstwy usług krytycznych Business (wersja zapoznawcza)
+### <a name="business-critical-service-tier"></a>Warstwy usług krytycznych biznesowych
 
 Warstwy usług krytycznych firm zaprojektowano pod kątem aplikacji za pomocą wysokie wymagania dotyczące operacji We/Wy. Oferuje ona najwyższą odporność na awarie, korzystając z kilku izolowanych replik.
 
@@ -114,9 +111,6 @@ Poniższa lista zawiera opis kluczowych charakterystyk krytyczne dla działania 
 - Wbudowane [wysokiej dostępności](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) na podstawie [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md).
 - Dodatkowe wbudowane [repliki bazy danych tylko do odczytu](sql-database-read-scale-out.md) mogą służyć do raportowania i innych obciążeń, tylko do odczytu
 - [Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) które mogą być używane w przypadku obciążeń z wymogami wysokiej wydajności  
-
-> [!IMPORTANT]
-> **Krytyczne dla działania firmy** warstwy usługi jest w wersji zapoznawczej.
 
 Znajdź więcej informacji na temat różnic między warstwami usług w [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
@@ -150,13 +144,15 @@ Usługa Azure SQL Database udostępnia zestaw zaawansowanych funkcji zabezpiecze
 - [Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) uzupełnia [inspekcji wystąpienia zarządzanego](sql-database-managed-instance-auditing.md) , zapewniając dodatkową warstwę zabezpieczeń analizy wbudowana w usługę, która wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać bazy danych. Alerty o podejrzanych działań, potencjalnych lukach w zabezpieczeniach i ataki wstrzyknięcie kodu SQL, a także bazy danych nietypowe wzorce dostępu. Alerty wykrywania zagrożeń, mogą być wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/) zawierają szczegółowe informacje o podejrzanych działaniach i zalecane czynności dotyczące sposobu badania i ograniczenia zagrożenia.  
 - [Dynamiczne maskowanie danych](/sql/relational-databases/security/dynamic-data-masking) ogranicza ujawnianie poufnych danych przez ich maskowanie dla nieuprzywilejowanych użytkowników. Dynamiczne maskowanie danych pomaga zapobiec nieautoryzowanemu dostępowi do danych poufnych, umożliwiając wyznaczenie, jaka część danych poufnych może zostać odsłonięta, przy minimalnym wpływie na warstwę aplikacji. Jest to funkcja zabezpieczeń oparta na zasadach, która ukrywa dane poufne w zestawie wyników zapytania w wyznaczonych polach bazy danych, przy czym dane w bazie danych pozostają bez zmian.
 - [Zabezpieczenia](/sql/relational-databases/security/row-level-security) umożliwia kontrolę dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (takich jak przez grupy członkostwa lub kontekstu wykonania). Zabezpieczenia na poziomie wiersza (RLS, Row-Level Security) upraszczają projektowanie i kodowanie zabezpieczeń w aplikacji. Zabezpieczenia na poziomie wiersza umożliwiają zaimplementowanie ograniczeń w dostępie do wiersza danych. Na przykład zapewnienie, że pracownicy mają dostęp tylko wiersze danych, które są odpowiednie do ich działu, lub ograniczenie dostępu do danych do odpowiednich danych.
-- [Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) szyfruje pliki danych wystąpienia zarządzanego Azure SQL Database, znana jako szyfrowanie danych magazynowanych. Funkcja TDE wykonuje w czasie rzeczywistym operacji We/Wy szyfrowania i odszyfrowywania plików danych i dziennika. Szyfrowanie używa klucza szyfrowania bazy danych (klucz szyfrowania danych), który jest przechowywany w rekordzie rozruchowym bazy danych dostępności podczas odzyskiwania. Umożliwia ochronę wszystkich baz danych w wystąpieniu zarządzanym za pomocą technologii transparent data encryption. Funkcja TDE jest sprawdzoną w SQL technologią szyfrowania danych w spoczynku, która przez wiele standardów zgodności jest wymagana do ochrony przed kradzieżą nośników magazynowania. W publicznej wersji zapoznawczej model automatyczne zarządzanie kluczami jest obsługiwane (wykonywane przez platformy PaaS).
+- [Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) szyfruje pliki danych wystąpienia zarządzanego Azure SQL Database, znana jako szyfrowanie danych magazynowanych. Funkcja TDE wykonuje w czasie rzeczywistym operacji We/Wy szyfrowania i odszyfrowywania plików danych i dziennika. Szyfrowanie używa klucza szyfrowania bazy danych (klucz szyfrowania danych), który jest przechowywany w rekordzie rozruchowym bazy danych dostępności podczas odzyskiwania. Umożliwia ochronę wszystkich baz danych w wystąpieniu zarządzanym za pomocą technologii transparent data encryption. Funkcja TDE jest program SQL Server, sprawdzonych technologii szyfrowania podczas spoczynku, która jest wymagana przez wiele standardów zgodności w celu ochrony przed kradzieżą nośników magazynowania.
 
 Migracja szyfrowanej bazy danych do wystąpienia zarządzanego SQL jest obsługiwana za pomocą usługi Azure Database Migration Service (DMS) lub native przywracania. Jeśli planujesz migrację szyfrowanej bazy danych przy użyciu funkcji przywracania natywnych migracji istniejącego certyfikatu TDE z programu SQL Server w środowisku lokalnym lub maszyny Wirtualnej programu SQL Server do wystąpienia zarządzanego jest to krok wymagany. Aby uzyskać więcej informacji na temat opcji migracji, zobacz [migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-migrate.md).
 
 ## <a name="azure-active-directory-integration"></a>Integracja z usługą Azure Active Directory
 
-Wystąpienie usługi Azure SQL Database Managed obsługuje tradycyjne logowania aparatu bazy danych programu SQL server i nazwami logowania, zintegrowane za pomocą usługi Azure Active Directory (AAD). Logowania do usługi AAD jest wersja chmury platformy Azure Windows logowania do bazy danych używane w środowisku w środowisku lokalnym.
+Wystąpienie usługi Azure SQL Database Managed obsługuje tradycyjne logowania aparatu bazy danych programu SQL server i nazwami logowania, zintegrowane za pomocą usługi Azure Active Directory (AAD). Logowania do usługi AAD (**publicznej wersji zapoznawczej**) są wersja chmury platformy Azure w środowisku lokalnym logowania do bazy danych używane w środowisku w środowisku lokalnym. Logowania do usługi AAD, można określić użytkowników i grup z dzierżawą usługi Azure Active Directory jako wartość true, o określonym zakresie wystąpienia jednostki, może wykonać żadnych operacji na poziomie wystąpienia, takich jak zapytania wielu baz danych w ramach tego samego wystąpienia zarządzanego.
+
+Wprowadzono nową składnię do tworzenia identyfikatorów logowania w usłudze AAD (**publicznej wersji zapoznawczej**), **z zewnętrznego dostawcy**. Aby uzyskać więcej informacji na temat składni, zobacz <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>i przejrzyj [aprowizacji administrator usługi Azure Active Directory dla wystąpienia zarządzanego](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) artykułu.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integracja usługi Azure Active Directory z uwierzytelnianiem wieloskładnikowym
 
@@ -181,7 +177,7 @@ Autoryzacja Określa, co można zrobić w ramach usługi Azure SQL Database i je
 
 Zarządzane wystąpienia obiektów docelowych scenariusze dotyczące użytkowników za pomocą migracji bazy danych w pamięci masowej z wdrożenia lokalne czy implementacje bazy danych IaaS. Zarządzane wystąpienie obsługuje kilka opcji migracji bazy danych:
 
-### <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie  
+### <a name="back-up-and-restore"></a>Tworzenie kopii zapasowej i przywracanie  
 
 Podejście do migracji wykorzystuje kopii zapasowych SQL w usłudze Azure blob storage. Kopie zapasowe przechowywane w obiekcie blob usługi Azure storage może bezpośrednio przywrócony do wystąpienia zarządzanego przy użyciu [polecenia języka T-SQL RESTORE](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
 
@@ -193,7 +189,7 @@ Podejście do migracji wykorzystuje kopii zapasowych SQL w usłudze Azure blob s
 
 ### <a name="data-migration-service"></a>Data Migration Service
 
-Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemową migrację z wielu źródłowych baz danych na danych na platformę Azure przy minimalnych przestojach. Ta usługa usprawnia zadania wymagane do przenoszenia istniejących innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrażania obejmują usługi Azure SQL Database, wystąpienia zarządzanego i programu SQL Server w maszynie Wirtualnej platformy Azure w publicznej wersji zapoznawczej. Zobacz [jak przeprowadzić migrację z lokalnej bazy danych do wystąpienia zarządzanego przy użyciu usługi DMS](https://aka.ms/migratetoMIusingDMS).
+Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemową migrację z wielu źródłowych baz danych na danych na platformę Azure przy minimalnych przestojach. Ta usługa usprawnia zadania wymagane do przeniesienia istniejących innych firm i baz danych programu SQL Server do usługi Azure SQL Database (pojedynczą bazę danych, pul elastycznych i wystąpienie zarządzane) i programu SQL Server na maszynie Wirtualnej platformy Azure. Zobacz [jak przeprowadzić migrację z lokalnej bazy danych do wystąpienia zarządzanego przy użyciu usługi DMS](https://aka.ms/migratetoMIusingDMS).
 
 ## <a name="sql-features-supported"></a>Funkcji SQL, które są obsługiwane
 
@@ -232,14 +228,14 @@ W poniższej tabeli przedstawiono kilka właściwości, za pośrednictwem język
 |`@@VERSION`|Program Microsoft SQL Azure (RTM) — 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ta wartość jest ten sam, jak bazy danych SQL.|
 |`SERVERPROPERTY ('Edition')`|Usługi SQL Azure|Ta wartość jest ten sam, jak bazy danych SQL.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ta wartość jest jednoznacznie identyfikuje wystąpienie zarządzane.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnego wystąpienia w następującym formacie:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, gdzie `<instanceName>` jest nazwa podana przez klienta, podczas gdy `<dnsPrefix>` jest generowane automatycznie na częścią nazwy, gwarantujących globalnego unikatowość nazwy DNS ("wcus17662feb9ce98", na przykład)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnego wystąpienia w następującym formacie:`<instanceName>`.`<dnsPrefix>`. Database.Windows.NET, gdzie `<instanceName>` jest nazwa podana przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie wygenerowany częścią nazwy gwarantujących globalnego unikatowość nazwy DNS ("wcus17662feb9ce98", na przykład)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się, jak utworzyć pierwsze wystąpienie zarządzane, zobacz [przewodnika Szybki start](sql-database-managed-instance-get-started.md).
+- Aby dowiedzieć się, jak utworzyć pierwsze wystąpienie zarządzane, zobacz [przewodnika Szybki Start](sql-database-managed-instance-get-started.md).
 - Dla funkcji i listy porównanie, zobacz [typowe funkcje SQL](sql-database-features.md).
 - Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [Konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md).
 - Aby uzyskać szybki Start, która tworzy wystąpienie zarządzane i przywraca bazę danych z pliku kopii zapasowej, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
 - Aby skorzystać z samouczka w zakresie używania usługi Azure Database Migration Service (DMS) do celów migracji, zobacz [Migracja wystąpień zarządzanych przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).
-- Zaawansowane monitorowanie wydajności bazy danych w wystąpieniu zarządzanym dzięki wbudowanym funkcjom analizy dotyczące rozwiązywania problemów, zobacz [monitora usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics ](../log-analytics/log-analytics-azure-sql.md) 
+- Zaawansowane monitorowanie wydajności bazy danych w wystąpieniu zarządzanym dzięki wbudowanym funkcjom analizy dotyczące rozwiązywania problemów, zobacz [monitora usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md)
 - Aby uzyskać informacje o cenach, zobacz [wystąpienie zarządzane usługi SQL Database, cennik](https://azure.microsoft.com/pricing/details/sql-database/managed/).

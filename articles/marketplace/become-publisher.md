@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394837"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846474"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Zostań chmury wydawcy w witrynie Marketplace
 
@@ -78,7 +78,7 @@ Użytkownik będzie musiał podać następujące informacje:
 Nasz zespół ds. dołączania Marketplace zostanie przeprowadzona Weryfikacja szczegóły rejestracji portalu marketplace, które są udostępniane w kroku 3. Po zatwierdzeniu otrzymasz powitalnej wiadomości e-mail przy użyciu poświadczeń konta i wskazówki dotyczące logowania do [portalu Cloud Partner](https://cloudpartner.azure.com).
 
 Użyjesz [portalu Cloud Partner](https://cloudpartner.azure.com) tworzenie, publikowanie i zarządzanie oferty w witrynie marketplace. Po otrzymaniu powitalną wiadomość e-mail dotyczącą zatwierdzenia, możesz natychmiast zalogować się do [portalu Cloud Partner](https://cloudpartner.azure.com) o dodatkowe informacje techniczne dotyczące publikowania w portalu Marketplace i tworzenie oferty dostępu do konta Microsoft. 
-*   Aby uzyskać więcej informacji o korzystaniu z portalu Cloud Partner [można znaleźć w artykule wprowadzenie w sekcji Dowiedz się więcej na](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal). Użytkownik musi zalogowany do portalu Cloud Partner na dostęp do tych informacji.
+*   Aby uzyskać więcej informacji o korzystaniu z portalu Cloud Partner [można znaleźć w artykule wprowadzenie w sekcji Dowiedz się więcej na](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal). Użytkownik musi zalogowany do portalu Cloud Partner na dostęp do tych informacji.
 *   Jeśli masz pytania lub czy można zaplanować wywołanie omówienie dołączania, np. Przejrzyj inne artykuły, w tym przewodniku wydawcy lub Otwórz żądanie obsługi, w obszarze Typ problemu > z przy dołączaniu w portalu Marketplace w portalu Cloud Partner.
 *   Jeśli nie masz powitalnej wiadomości e-mail, sprawdź folder wiadomości-śmieci wiadomości e-mail o temacie "Microsoft Marketplace — Zapraszamy!." Jeśli nie ma żadnych wiadomości e-mail w folderze wiadomości-śmieci, [skontaktuj się z pomocą techniczną firmy Microsoft](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Na stronie pomocy technicznej wybierz: typ problemu > przechodzenia do portalu Marketplace.  Nasz zespół ds. dołączania wydawcy witryny Marketplace docenią uzyskanymi z zapytania. 
 

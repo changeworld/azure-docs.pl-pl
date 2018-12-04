@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/29/2018
-ms.openlocfilehash: 798b50887bcfdf5b4298c37beb1b9eea8f9abdda
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.date: 12/03/2018
+ms.openlocfilehash: 8ad4c356c5826532b94721bc4d9071179e8bd93a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682201"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846698"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Połączyć się z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps za pośrednictwem środowiska usług integracji (ISE)
 
@@ -57,19 +57,28 @@ Podczas tworzenia środowiska usług integracji (ISE) wybierzesz siecią wirtual
 
 1. Sieci wirtualnej menu wybierz kolejno pozycje **kontrola dostępu (IAM)**. 
 
-1. W obszarze **kontrola dostępu (IAM)**, wybierz **Dodaj**. 
+1. W obszarze **kontrola dostępu (IAM)**, wybierz **Dodaj przypisanie roli**. 
 
    ![Dodawanie ról](./media/connect-virtual-network-vnet-isolated-environment/set-up-role-based-access-control-vnet.png)
 
-1. Na **Dodaj przypisanie roli** okienku Konfigurowanie każdej roli dla usługi Azure Logic Apps, zgodnie z opisem w tabeli, w tym kroku. Upewnij się, że wybrano **Zapisz** po zakończeniu każdej roli.
+1. Na **Dodaj przypisanie roli** okienko, Dodaj wymagane role w usłudze Azure Logic Apps, zgodnie z opisem. 
+
+   1. W obszarze **roli**, wybierz opcję **Współautor sieci**. 
+   
+   1. W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika usługi Azure AD, grupa lub aplikacja**.
+
+   1. W obszarze **wybierz**, wprowadź **usługi Azure Logic Apps**. 
+
+   1. Po wyświetleniu listy elementów członkowskich, wybierz **usługi Azure Logic Apps**. 
+
+      > [!TIP]
+      > Jeśli nie możesz znaleźć tę usługę, wprowadź identyfikator aplikacji usługi Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` 
+   
+   1. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
+
+   Na przykład:
 
    ![Dodaj przypisanie roli](./media/connect-virtual-network-vnet-isolated-environment/add-contributor-roles.png)
-
-   | Rola | Przypisz dostęp do | Wybierz pozycję | 
-   |------|------------------|--------|
-   | **Współautor sieci** | **Usługa Azure AD użytkownika, grupy lub aplikacji** | Wprowadź **usługi Azure Logic Apps**. Po wyświetleniu listy elementów członkowskich, wybierz tę samą wartość. <p>**Porada**: Jeśli nie możesz znaleźć tę usługę, wprowadź identyfikator aplikacji usługi Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` | 
-   | **Współautor klasycznej** | **Usługa Azure AD użytkownika, grupy lub aplikacji** | Wprowadź **usługi Azure Logic Apps**. Po wyświetleniu listy elementów członkowskich, wybierz tę samą wartość. <p>**Porada**: Jeśli nie możesz znaleźć tę usługę, wprowadź identyfikator aplikacji usługi Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` | 
-   |||| 
 
 Aby uzyskać więcej informacji, zobacz [uprawnienia dostępu do sieci wirtualnej](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
@@ -102,8 +111,31 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
    | **Lokalizacja** | Yes | <*Region platformy Azure — centrum danych*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska | 
    | **Dyspozycyjność** | Yes | 0, 1, 2, 3 | Liczba jednostek przetwarzania do użycia dla tego zasobu środowiska ISE | 
    | **Sieć wirtualna** | Yes | <*Azure — — nazwa sieci wirtualnej —*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, można utworzyć jeden tutaj. <p>**Ważne**: możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. Jednakże przed utworzeniem tej relacji, upewnij się, że już [Konfigurowanie kontroli dostępu opartej na rolach w Twojej sieci wirtualnej dla usługi Azure Logic Apps](#vnet-access). | 
-   | **Podsieci** | Yes | <*Zakres adresów IP*> | ISE wymaga czterech *pusty* podsieci, które nie mają delegowania do dowolnej usługi i są używane do tworzenia zasobów w danym środowisku. Każda podsieć musi spełniać następujące kryteria: <p>— Wykorzystanie [formatu Bezklasowego routingu międzydomenowego (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>— Wymagają przestrzeń adresów klasy B. <br>-Ma nazwę, która nie zaczyna się od numeru lub łącznik. <br>-Zawiera `/27`, na przykład w każdej podsieci, w tym miejscu określa zakres 32-bitowy adres: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, i `10.0.0.96/27`. <br>— Nie może istnieć w tym samym zakresie adresów dla wybranej sieci wirtualnej ani żadnych innych prywatnych adresów IP gdzie sieć wirtualna jest połączona. <br>-Musi być pusta. <p><p>**Ważne**: możesz *nie można zmienić* te zakresy adresów IP po utworzeniu środowiska. |
+   | **Podsieci** | Yes | <*Zakres adresów IP*> | ISE wymaga czterech *pusty* podsieci. Te podsieci są undelegated do dowolnej usługi i są używane do tworzenia zasobów w danym środowisku. Możesz *nie można zmienić* te zakresy adresów IP po utworzeniu środowiska. <p><p>Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet). Każda podsieć musi spełniać następujące kryteria: <p>— Nie może istnieć w tym samym zakresie adresów dla wybranej sieci wirtualnej ani żadnych innych prywatnych adresów IP gdzie sieć wirtualna jest połączona. <br>-Używa nazwy, która nie zaczyna się od numeru lub łącznik. <br>— Wykorzystanie [formatu Bezklasowego routingu międzydomenowego (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>— Wymagają przestrzeń adresów klasy B. <br>-Zawiera `/27`. Na przykład w każdej podsieci, w tym miejscu określa zakres 32-bitowy adres: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, i `10.0.0.96/27`. <br>-Musi być pusta. |
    |||||
+
+   <a name="create-subnet"></a>
+
+   **Tworzenie podsieci**
+
+   1. W obszarze **podsieci** wybierz **konfigurację podsieci Zarządzaj**.
+
+      ![Zarządzanie konfiguracją podsieci](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+
+   1. Na **podsieci** okienku wybierz **podsieci**.
+
+      ![Dodawanie podsieci](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+
+   1. Na **Dodaj podsieć** okienku, podaj te informacje.
+
+      * **Nazwa**: Nazwa podsieci
+      * **Zakres adresów (blok CIDR)**: zakres swoje podsieci w sieci wirtualnej i w formacie CIDR
+
+      ![Dodaj szczegóły podsieci](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
+
+   1. Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
+
+   1. Powtórz te czynności dla trzech więcej podsieci.
 
 1. Po Azure weryfikuje pomyślnie informacji ISE, wybierz **Utwórz**, na przykład:
 
@@ -126,7 +158,7 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
 Aby tworzyć aplikacje logiki, które używają środowiska integration service environment (ISE), wykonaj kroki opisane w [jak utworzyć aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) jednak z następującymi ograniczeniami: 
 
-* Podczas tworzenia aplikacji logiki wybierz swoje ISE, a nie region platformy Azure, z **lokalizacji** listy z **środowiska usług integracji** sekcji, na przykład:
+* Podczas tworzenia aplikacji logiki, w obszarze **lokalizacji** właściwości, wybierz swoje ISE z **środowiska usług integracji** sekcji, na przykład:
 
   ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
 
@@ -134,13 +166,15 @@ Aby tworzyć aplikacje logiki, które używają środowiska integration service 
 
   ![Wybieranie łączników środowiska ISE](./media/connect-virtual-network-vnet-isolated-environment/select-ise-connectors.png)
 
-* Po należy wstrzyknąć Twojego środowiska ISE w sieci wirtualnej platformy Azure, logic apps w swoje środowiska ISE można uzyskać dostęp do zasobów w tej sieci wirtualnej. Systemów lokalnych w sieci wirtualnej, która jest połączona z ISE aplikacje logiki można uzyskać dostęp do tych systemów, przy użyciu dowolnego z tych elementów: 
+* Po należy wstrzyknąć Twojego środowiska ISE w sieci wirtualnej platformy Azure, logic apps w swoje środowiska ISE można uzyskać dostęp do zasobów w tej sieci wirtualnej. Dla systemów lokalnych, które są podłączone do sieci wirtualnej należy wstrzyknąć środowiska ISE do tej sieci, dzięki czemu aplikacje logiki można uzyskać dostęp do tych systemów przy użyciu dowolnego z tych elementów: 
 
   * Łącznik platformy ISE dla tego systemu, na przykład SQL Server
+  
   * Akcja HTTP 
+  
   * Łącznik niestandardowy
 
-  Dla systemów lokalnych, które nie znajdują się w sieci wirtualnej lub nie masz łączniki ISE, najpierw [konfigurowania i używania lokalnej bramy danych](../logic-apps/logic-apps-gateway-install.md).
+  Dla systemów lokalnych, które nie znajdują się w sieci wirtualnej lub nie masz łączniki ISE, najpierw [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md).
 
 <a name="create-integration-account-environment"></a>
 
@@ -148,7 +182,7 @@ Aby tworzyć aplikacje logiki, które używają środowiska integration service 
 
 Aby użyć konta integracji z usługą logic apps w środowisku usługi integracji (ISE), należy użyć tego konta integracji *tym samym środowisku* co usługa logic apps. Logic apps w środowisku ISE można odwoływać się tylko konta integracji w tym samym środowisku ISE. 
 
-Aby utworzyć konto integracji, która używa środowiska ISE, czynności zwykle w [sposób tworzenia kont integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) z wyjątkiem **lokalizacji** właściwość, która teraz wyświetla Twoje ISEs w obszarze  **Środowiska usług integracji** wraz z dostępnych regionów. Wybierz swoje ISE, a nie region, na przykład:
+Aby utworzyć konto integracji, która używa środowiska ISE, wykonaj kroki opisane w [sposób tworzenia kont integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) z wyjątkiem **lokalizacji** właściwość gdzie **środowiska usług integracji**  pojawi się w sekcji. Zamiast tego wybierz swoje ISE, a nie region, na przykład:
 
 ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 

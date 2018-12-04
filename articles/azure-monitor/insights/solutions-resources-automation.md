@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 814646902a88c7170da66397709ff3a8c7b081fd
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 57fda5ea9fdafffd0267f749016ed97b8fc06e15
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715499"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847120"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Dodawanie zasobów usługi Azure Automation do rozwiązania do zarządzania (wersja zapoznawcza)
 > [!NOTE]
@@ -317,8 +317,8 @@ Element runbook powinna zależeć od zasobu modułu, aby upewnić się, czy zost
 ### <a name="updating-modules"></a>Aktualizowanie modułów
 Jeśli rozwiązanie do zarządzania, które zawiera element runbook, który korzysta z harmonogramem, a następnie nowa wersja rozwiązania ma nowy moduł używane przez ten element runbook, element runbook może używać starej wersji modułu.  Należy obejmują następujące elementy runbook w Twoim rozwiązaniu, a następnie Utwórz zadanie, aby uruchamiać je przed wszystkie inne elementy runbook.  Pozwoli to zagwarantować, że wszystkie moduły są aktualizowane co wymagane przed elementy runbook są ładowane.
 
-* [Aktualizacja ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) będzie upewnij się, że wszystkie moduły używane przez elementy runbook w rozwiązaniu do najnowszej wersji.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) zostanie ponownie zarejestrować wszystkie zasoby harmonogramu, aby upewnić się, że elementy runbook powiązane z nimi przy użyciu najnowszych modułów.
+* [Aktualizacja ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/) będzie upewnij się, że wszystkie moduły używane przez elementy runbook w rozwiązaniu do najnowszej wersji.  
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/) zostanie ponownie zarejestrować wszystkie zasoby harmonogramu, aby upewnić się, że elementy runbook powiązane z nimi przy użyciu najnowszych modułów.
 
 
 

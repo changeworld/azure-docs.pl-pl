@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: d62559561bf7e8e2dc2a882543d7fa7fc45a7499
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7f2b4d870fdcf250f62d41fa4f3ea5bf13d323c3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821093"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847069"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -247,7 +247,7 @@ Osoby atakujące mogą próbować identyfikacji uprzywilejowanych kont do uzyska
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Przeglądanie zaleceń NIST, National Institute of Standards i technologii obsługi zdarzeń 
 
-NIST, National Institute of Standards i technologii (NIST) zawiera wytyczne do obsługi zdarzenia, szczególnie w przypadku analizowania danych dotyczących zdarzenia i określania właściwą odpowiedź do każdego zdarzenia. Aby uzyskać więcej informacji, zobacz [(NIST) komputera zdarzenie obsługi Przewodnik po zabezpieczeniach (SP 800-61, poprawka 2)](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf).
+NIST, National Institute of Standards i technologii (NIST) zawiera wytyczne do obsługi zdarzenia, szczególnie w przypadku analizowania danych dotyczących zdarzenia i określania właściwą odpowiedź do każdego zdarzenia. Aby uzyskać więcej informacji, zobacz [(NIST) komputera zdarzenie obsługi Przewodnik po zabezpieczeniach (SP 800-61, poprawka 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf).
 
 #### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>Implementowanie Privileged Identity Management (PIM) dla JIT na dodatkowe role administracyjne
 
