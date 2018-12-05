@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: dc301f218855139cfb3a5faa30109dd5a301eb07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059534"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871204"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Pobierz i Wyodrębnij usługi Azure Stack Development Kit (ASDK)
 Po upewnieniu się, że komputer hosta zestaw deweloperski spełnia wymagania podstawowe dotyczące instalowania ASDK, następnym krokiem jest Pobierz i Wyodrębnij pakiet wdrożeniowy ASDK, aby uzyskać Cloudbuilder.vhdx.
@@ -29,7 +29,7 @@ Po upewnieniu się, że komputer hosta zestaw deweloperski spełnia wymagania po
 1. Przed rozpoczęciem pobierania, upewnij się, że komputer spełnia następujące wymagania wstępne:
 
   - Komputer musi mieć co najmniej 60 GB wolnego miejsca na dysku na czterech oddzielnych, identyczne logiczne dyski twarde dodatkowo na dysku systemu operacyjnego.
-  - [.NET framework 4.6 (lub nowszy)](https://aka.ms/r6mkiy) musi być zainstalowany.
+  - [.NET framework 4.6 (lub nowszy)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) musi być zainstalowany.
 
 2. [Przejdź do strony wprowadzenie](https://azure.microsoft.com/overview/azure-stack/try/?v=try) gdzie można pobrać Azure Stack Development Kit, zapewniają szczegółowe informacje i kliknięcie **przesyłania**.
 3. Pobierz i uruchom [narzędzia do sprawdzania wdrożenia dla usługi Azure Stack Development Kit](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) skryptu narzędzia sprawdzania wymagań wstępnych. Ten skrypt autonomiczny przechodzi przez testy wstępne wykonywane przez Instalatora programu Azure Stack Development Kit. Zapewnia sposób, aby upewnić się, że spełniasz wymagania sprzętowe i programowe, przed pobraniem większy pakiet dla usługi Azure Stack Development Kit.

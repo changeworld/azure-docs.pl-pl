@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: d65c8653bc039b591f1c0fb711dfe68e3fbacd88
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 66688ae762aa646fc72045836c4ec4671bf4b7b4
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353565"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888515"
 ---
 # <a name="configure-deployment-sources"></a>Konfigurowanie źródeł wdrożenia
 
@@ -38,7 +38,8 @@ Oprócz lokalnego narzędzia Git obsługiwane są następujące dostawców kontr
 ## <a name="view-deployment-sources-in-app-service-administration"></a>Widok źródła wdrożenia w witrynie Administracja usługi App Service
 
 1. Zaloguj się do portalu administracyjnego usługi Azure Stack (https://adminportal.local.azurestack.external) jako administratora usługi.
-2. Przejdź do **dostawców zasobów** i wybierz **administrator dostawcy zasobów usługi App**.  ![Administrator dostawcy zasobów usługi App Service][1]
+2. Przejdź do **wszystkich usług** i wybierz **usługi App Service**.
+    ![Administrator dostawcy zasobów usługi App Service][1]
 3. Kliknij przycisk **konfiguracji kontroli źródła**. Można wyświetlić listę wszystkich źródeł skonfigurowanym wdrożenia.
     ![Konfiguracji kontroli źródła administrator dostawcy zasobów usługi App Service][2]
 

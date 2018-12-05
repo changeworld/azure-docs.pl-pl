@@ -2,20 +2,20 @@
 title: Przywracanie plików na maszynę wirtualną przy użyciu usługi Azure Backup
 description: Dowiedz się, jak przeprowadzić przywracanie na poziomie plików na maszynie wirtualnej platformy Azure przy użyciu usług Backup i Recovery Services.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: tutorial
 ms.date: 2/14/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2bd5e3e022c0e780b1efede6facb8924fa6cde4f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a8f9fd5a81f8e95d9787d9800be9962484e8436a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998189"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871858"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Przywracanie plików na maszynę wirtualną na platformie Azure
 Usługa Azure Backup tworzy punkty odzyskiwania przechowywane w geograficznie nadmiarowych magazynach odzyskiwania. Z punktu odzyskiwania można przywrócić całą maszynę wirtualną lub poszczególne pliki. W tym artykule szczegółowo przedstawiono sposób przywracania poszczególnych plików. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:

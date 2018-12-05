@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/16/2018
+ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: d6d1fb9631af06f6bfbb2c360661779281a08905
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975113"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679923"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Azure Batch za pomocą interfejsu API platformy .NET
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Przejdź do katalogu, który zawiera plik rozwiązania programu Visual Studio `BatchDotNetQuickstart.sln`.
 
-Otwórz plik rozwiązania w programie Visual Studio i zaktualizuj ciągi poświadczeń w pliku `program.cs`, wprowadzając wartości uzyskane dla kont. Na przykład:
+Otwórz plik rozwiązania w programie Visual Studio i zaktualizuj ciągi poświadczeń w pliku `Program.cs`, wprowadzając wartości uzyskane dla kont. Na przykład:
 
 ```csharp
 // Batch account credentials
@@ -143,7 +143,7 @@ Aplikacja tworzy obiekt [BatchClient](/dotnet/api/microsoft.azure.batch.batchcli
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
 
 using (BatchClient batchClient = BatchClient.Open(cred))
-...    
+...
 ```
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Tworzenie puli węzłów obliczeniowych
@@ -155,33 +155,42 @@ Liczba węzłów (`PoolNodeCount`) i rozmiar maszyny wirtualnej (`PoolVMSize`) t
 Metoda [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) przesyła pulę do usługi Batch.
 
 ```csharp
-ImageReference imageReference = new ImageReference(
-    publisher: "MicrosoftWindowsServer",
-    offer: "WindowsServer",
-    sku: "2016-Datacenter-smalldisk",
-    version: "latest");
 
-VirtualMachineConfiguration virtualMachineConfiguration =
-new VirtualMachineConfiguration(
-   imageReference: imageReference,
-   nodeAgentSkuId: "batch.node.windows amd64");
-
-try
+private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
 {
-    CloudPool pool = batchClient.PoolOperations.CreatePool(
-    poolId: PoolId,
-    targetDedicatedComputeNodes: PoolNodeCount,
-    virtualMachineSize: PoolVMSize,
-    virtualMachineConfiguration: virtualMachineConfiguration);
-
-    pool.Commit();
+    return new VirtualMachineConfiguration(
+        imageReference: imageReference,
+        nodeAgentSkuId: "batch.node.windows amd64");
 }
+
+private static ImageReference CreateImageReference()
+{
+    return new ImageReference(
+        publisher: "MicrosoftWindowsServer",
+        offer: "WindowsServer",
+        sku: "2016-datacenter-smalldisk",
+        version: "latest");
+}
+
+private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfiguration vmConfiguration)
+{
+    try
+    {
+        CloudPool pool = batchClient.PoolOperations.CreatePool(
+            poolId: PoolId,
+            targetDedicatedComputeNodes: PoolNodeCount,
+            virtualMachineSize: PoolVMSize,
+            virtualMachineConfiguration: vmConfiguration);
+
+        pool.Commit();
+    }
 ...
 
 ```
+
 ### <a name="create-a-batch-job"></a>Tworzenie zadania usługi Batch
 
-Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Aplikacja tworzy zadanie w puli za pomocą metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob). 
+Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Aplikacja tworzy zadanie w puli za pomocą metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob).
 
 Metoda [Commit](/dotnet/api/microsoft.azure.batch.cloudjob.commit) przesyła zadanie do usługi Batch. Początkowo zadanie nie zawiera zadań podrzędnych.
 
@@ -192,15 +201,16 @@ try
     job.Id = JobId;
     job.PoolInformation = new PoolInformation { PoolId = PoolId };
 
-    job.Commit(); 
+    job.Commit();
 }
 ...
 ```
 
 ### <a name="create-tasks"></a>Tworzenie zadań podrzędnych
+
 Aplikacja tworzy listę obiektów [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Każde zadanie podrzędne przetwarza wejściowy obiekt `ResourceFile` przy użyciu właściwości [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline). W tym przykładzie wiersz polecenia uruchamia polecenie systemu Windows `type`, aby wyświetlić plik wejściowy. To polecenie to prosty przykład dla celów demonstracyjnych. Podczas korzystania z usługi Batch aplikację lub skrypt określa się w wierszu polecenia. Usługa Batch udostępnia kilka sposobów wdrażania aplikacji i skryptów w węzłach obliczeniowych.
 
-Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
+Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych.
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -216,7 +226,7 @@ for (int i = 0; i < inputFiles.Count; i++)
 
 batchClient.JobOperations.AddTask(JobId, tasks);
 ```
- 
+
 ### <a name="view-task-output"></a>Wyświetlanie danych wyjściowych zadania podrzędnego
 
 Aplikacja tworzy obiekt [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor) do monitorowania zadań podrzędnych, aby upewnić się, że zostaną one ukończone. Następnie za pomocą właściwości [CloudTask.ComputeNodeInformation](/dotnet/api/microsoft.azure.batch.cloudtask.computenodeinformation) aplikacja wyświetla plik `stdout.txt` generowany przez każde ukończone zadanie podrzędne. Po pomyślnym uruchomieniu zadania podrzędnego dane wyjściowe polecenia tego zadania zostaną zapisane w pliku `stdout.txt`:

@@ -11,12 +11,12 @@ ms.service: automation
 ms.component: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ad9fc7deb73cdcbcf83cc10b9b28f7d7e4ac7661
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 6ff8bccc7037782b2709340312f0602b4cd7ab1f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283795"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834336"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Wykrywanie, jakie oprogramowanie jest zainstalowane na maszynach na platformie Azure i poza platformą Azure
 
@@ -70,7 +70,7 @@ Wybierz pozycję **+Dodaj maszynę wirtualną platformy Azure**, co spowoduje ot
 
 ## <a name="onboard-a-non-azure-machine"></a>Dołączanie maszyny spoza platformy Azure
 
-Aby dodać maszyny spoza platformy Azure, zainstaluj agenta systemu [Windows](../log-analytics/log-analytics-agent-windows.md) lub [Linux](automation-linux-hrw-install.md) w zależności od używanego systemu operacyjnego. Po zainstalowaniu agenta przejdź do konta usługi Automation, a następnie wybierz pozycję **Spis** w obszarze **ZARZĄDZANIE KONFIGURACJĄ**. Po kliknięciu pozycji **Zarządzaj maszynami** zostanie wyświetlona lista maszyn raportujących w Twoim obszarze roboczym usługi Log Analytics, dla których rozwiązanie nie jest włączone. Wybierz opcję odpowiednią dla Twojego środowiska.
+Aby dodać maszyny spoza platformy Azure, zainstaluj agenta systemu [Windows](../azure-monitor/platform/agent-windows.md) lub [Linux](automation-linux-hrw-install.md) w zależności od używanego systemu operacyjnego. Po zainstalowaniu agenta przejdź do konta usługi Automation, a następnie wybierz pozycję **Spis** w obszarze **ZARZĄDZANIE KONFIGURACJĄ**. Po kliknięciu pozycji **Zarządzaj maszynami** zostanie wyświetlona lista maszyn raportujących w Twoim obszarze roboczym usługi Log Analytics, dla których rozwiązanie nie jest włączone. Wybierz opcję odpowiednią dla Twojego środowiska.
 
 * **Włącz na wszystkich dostępnych maszynach** — ta opcja włącza rozwiązanie na wszystkich maszynach aktualnie raportujących w Twoim obszarze roboczym usługi Log Analytics.
 * **Włącz na wszystkich dostępnych i przyszłych maszynach** — ta opcja włącza rozwiązanie na wszystkich maszynach aktualnie raportujących w Twoim obszarze roboczym usługi Log Analytics oraz na wszystkich maszynach, które zostaną dodane do obszaru roboczego.
@@ -113,7 +113,7 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Aby dowiedzieć się więcej na temat uruchamiania i wyszukiwania plików dziennika w usłudze Log Analytics, zobacz [Azure Log Analytics](../log-analytics/log-analytics-queries.md).
+Aby dowiedzieć się więcej na temat uruchamiania i wyszukiwania plików dziennika w usłudze Log Analytics, zobacz [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Spis dla pojedynczego komputera
 

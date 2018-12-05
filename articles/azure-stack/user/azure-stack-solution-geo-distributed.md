@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 19e7506dac82e4d12d5aecbdb5ae1c14fb944c29
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 215cc45f09e15c74a39347e3a62945b45eafa130
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961539"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877670"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie rozwiązania rozproszone geograficznie aplikacji przy użyciu platformy Azure i usługi Azure Stack
 
@@ -81,7 +81,7 @@ W tej części utworzysz aplikację sieci web.
 
 > [!div class="checklist"]
 > - Tworzenie aplikacji sieci web i publikowanie
-> - Dodaj kod do projektu usługi VSTS
+> - Dodaj kod do repozytoriów platformy Azure
 > - Polecenie kompilacji aplikacji do wielu celów w chmurze.
 > - Zarządzanie i konfigurowanie proces ciągłego Dostarczania
 
@@ -108,9 +108,9 @@ Konfigurowanie ciągłej integracji/ciągłego wdrażania na wdrażanie aplikacj
 > [!Note]  
 > Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service "[przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" sekcji dla usługi Azure Stack operatora.
 
-#### <a name="add-code-to-vsts-project"></a>Dodaj kod do projektu usługi VSTS
+#### <a name="add-code-to-azure-repos"></a>Dodaj kod do repozytoriów platformy Azure
 
-1. Zaloguj się do programu Visual Studio z **konta mającego uprawnienia do tworzenia projektu** w usłudze VSTS.
+1. Zaloguj się do programu Visual Studio z **konta mającego uprawnienia do tworzenia projektu** z repozytoriów platformy Azure.
 
     Hybrydowe ciągłej integracji/ciągłego dostarczania (CI/CD) można stosować do kodu aplikacji i infrastruktury kodu. Użyj [szablonów usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/) dla obu chmur prywatnych i hostowanych rozwoju.
 
@@ -126,13 +126,13 @@ Konfigurowanie ciągłej integracji/ciągłego wdrażania na wdrażanie aplikacj
 
     ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image3.png)
 
-1.  **Ewidencjonują kod do usługi VSTS** za pomocą programu Team Explorer.
+1.  **Ewidencjonują kod do repozytoriów Azure** za pomocą programu Team Explorer.
 
-2.  Upewnij się, że **kod aplikacji** została sprawdzona w Visual Studio Team Services.
+2.  Upewnij się, że **kod aplikacji** została sprawdzona pod repozytoriów platformy Azure.
 
 ### <a name="create-the-build-definition"></a>Utwórz definicję kompilacji
 
-1. **Zaloguj się do usługi VSTS** o potwierdzenie zdolność do tworzenia definicji kompilacji.
+1. **Zaloguj się do potoków Azure** o potwierdzenie zdolność do tworzenia definicji kompilacji.
 
 2. Dodaj **- r dla systemu win10-x64** kodu. Jest to konieczne wyzwolić wdrożenie niezależna za pomocą.Net Core.
 
@@ -142,11 +142,11 @@ Konfigurowanie ciągłej integracji/ciągłego wdrażania na wdrażanie aplikacj
 
 **Przy użyciu platformy Azure hostowanej agenta**
 
-Za pomocą agentów hostowanych w usłudze VSTS jest to wygodny sposób, aby tworzyć i wdrażać aplikacje sieci web. Konserwacja i aktualizacje automatyczne są wykonywane przez Microsoft Azure, umożliwiając ciągłe, nieprzerwany tworzenia, testowania i wdrażania.
+Za pomocą agentów hostowanych w potokach Azure to wygodny sposób do tworzenia i wdrażania aplikacji sieci web. Konserwacja i aktualizacje automatyczne są wykonywane przez Microsoft Azure, umożliwiając ciągłe, nieprzerwany tworzenia, testowania i wdrażania.
 
 ### <a name="manage-and-configure-the-cd-process"></a>Zarządzanie i konfigurowanie proces ciągłego Dostarczania
 
-Visual Studio Team Services (VSTS) i Team Foundation Server (TFS) zapewnia wysoce konfigurowalne i łatwe w zarządzaniu potoku dla wersji w wielu środowiskach, takich jak rozwój, przemieszczania, pytań i odpowiedzi oraz środowisk produkcyjnych; w tym wymagające zatwierdzenia określonych etapów.
+Usługi Azure DevOps i serwer usługi Azure DevOps oferują wysoce konfigurowalne i łatwe w zarządzaniu potoku dla wersji w wielu środowiskach, takich jak rozwój, przejściowe, odpowiedzi na pytania i środowisk produkcyjnych; w tym wymagające zatwierdzenia określonych etapów.
 
 #### <a name="create-release-definition"></a>Tworzenie definicji wydania
 

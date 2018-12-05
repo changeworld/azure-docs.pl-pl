@@ -1,10 +1,8 @@
 ---
-title: 'Azure Cosmos DB: programowanie za pomocą interfejsu Table API na platformie .NET | Microsoft Docs'
+title: 'Azure Cosmos DB: programowanie za pomocą interfejsu Table API na platformie .NET'
 description: Dowiedz się, jak tworzyć aplikacje za pomocą interfejsu Table API usługi Azure Cosmos DB przy użyciu platformy .NET
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e198a85d1c04cbc437ad23dadfa3005a72eaa2ce
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 02c4ead0f41463a70cc7123427193f835d9cca94
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161637"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877739"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: programowanie za pomocą interfejsu Table API na platformie .NET
 

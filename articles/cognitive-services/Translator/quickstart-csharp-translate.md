@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 06e294187247636c552dfd4a7d02167eb55be19a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 20e07120b80f335397bd7e907f62e14ad8b1d2ee
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334707"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679056"
 ---
 # <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Szybki start: tłumaczenie tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (C#)
 
@@ -28,7 +28,7 @@ Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](http
 * [Zestaw SDK platformy .NET](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Pakiet NuGet platformy Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
 * Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
-* Klucz subskrypcji platformy Azure dla usługi mowy
+* Klucz subskrypcji platformy Azure na potrzeby tłumaczenia tekstu w usłudze Translator
 
 ## <a name="create-a-net-core-project"></a>Tworzenie projektu platformy .NET Core
 

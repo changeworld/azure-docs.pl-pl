@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4453516626c39f73deea8fce0d744fcecbd5c3fc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 58856875fa7d7bb3ba63c489fb17790e68f99aec
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085834"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872190"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Korzystanie z portalu administratora w usłudze Azure Stack
 
@@ -86,6 +86,10 @@ Jeśli wybierz ikonę Pomoc i obsługa techniczna (znak zapytania) w prawym gór
 
 - Jeśli używasz zintegrowanego systemu, ta akcja powoduje otwarcie witryny, w którym można bezpośrednio otworzyć bilet pomocy technicznej za pomocą usług obsługi klienta firmy Microsoft (CSS). Zapoznaj się [do uzyskania pomocy technicznej](azure-stack-manage-basics.md#where-to-get-support) zrozumienie, kiedy należy go za pośrednictwem pomocy technicznej firmy Microsoft lub pomocy technicznej dostawcy sprzętu producenta sprzętu (OEM).
 - Jeśli używasz deweloperski, ta akcja powoduje otwarcie witryny Forum usługi Azure Stack bezpośrednio. Monitorowane są regularnie forów. Ponieważ zestaw development kit jest środowisko wersji ewaluacyjnej, nie jest oficjalnym obsługiwane oferowane za pośrednictwem firmy Microsoft CSS.
+
+### <a name="quick-access-to-the-azure-roadmap"></a>Szybki dostęp do planu platformy Azure
+
+Jeśli wybierzesz **Pomoc i obsługa techniczna** (znak zapytania) w prawym górnym rogu administratora portalu, a następnie wybierz **plan usługi Azure**, Nowa karta przeglądarki zostanie otwarty i przejście do planu platformy Azure. Wpisując **usługi Azure Stack** w **produktów** pola wyszukiwania, możesz zobaczyć wszystkie aktualizacje plan usługi Azure Stack.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

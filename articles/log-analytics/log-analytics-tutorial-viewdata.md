@@ -9,18 +9,17 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 46bc932011a3699dbaced8316bc0e1b514c9a385
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f953d13de78702328aef2b75d121e775c5f58f44
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043060"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876797"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Wyświetlanie i analizowanie zebranych danych za pomocą wyszukiwania w dziennikach usługi Log Analytics
 
@@ -32,7 +31,7 @@ W usłudze Log Analytics można korzystać z wyszukiwań w dziennikach, tworząc
 
 Do utworzenia przykładu przedstawionego w tym samouczku potrzebna jest istniejąca maszyna wirtualna [połączona z obszarem roboczym usługi Log Analytics](log-analytics-quick-collect-azurevm.md).  
 
-Istnieją dwa sposoby na tworzenie i edytowanie zapytań oraz interakcyjną pracę z danymi zwrotnymi.  W przypadku zapytań podstawowych używaj strony Wyszukiwanie w dziennikach w witrynie Azure Portal, a w przypadku zapytań zaawansowanych możesz używać portalu analizy zaawansowanej. Aby dowiedzieć się więcej na temat różnic w funkcjach tych dwóch portali, zobacz [Portals for creating and editing log queries in Azure Log Analytics](log-analytics-log-search-portals.md) (Portale do tworzenia i edytowania zapytań dzienników w usłudze Azure Log Analytics).
+Istnieją dwa sposoby na tworzenie i edytowanie zapytań oraz interakcyjną pracę z danymi zwrotnymi.  W przypadku zapytań podstawowych używaj strony Wyszukiwanie w dziennikach w witrynie Azure Portal, a w przypadku zapytań zaawansowanych możesz używać portalu analizy zaawansowanej. Aby dowiedzieć się więcej na temat różnic w funkcjach tych dwóch portali, zobacz [Portals for creating and editing log queries in Azure Log Analytics](../azure-monitor/log-query/portals.md) (Portale do tworzenia i edytowania zapytań dzienników w usłudze Azure Log Analytics).
 
 W tym samouczku będziemy używać strony Wyszukiwanie w dziennikach w witrynie Azure Portal. 
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238630"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864982"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Zagadnienia dotyczące planowania wdrożenie usługi Azure Stack
 Przed wdrożeniem usługi Azure Stack Development Kit (ASDK), upewnij się, że komputer hosta zestaw deweloperski spełnia wymagania opisane w tym artykule.
@@ -121,7 +121,7 @@ Obsługiwany jest tylko protokół IPv4. Nie można tworzyć sieci obsługujący
 Upewnij się, że serwer DHCP jest dostępny w sieci, z którą łączy się karta sieciowa. Jeśli usługa DHCP nie jest dostępna, należy przygotować dodatkowe sieci korzystające ze statycznego adresu IPv4 oprócz tej używanej przez hosta. Należy podać ten adres IP i bramę jako parametr wdrożenia.
 
 ### <a name="internet-access"></a>Dostęp do Internetu
-Usługa Azure Stack wymaga dostępu do Internetu, bezpośrednio lub za pośrednictwem przezroczystym serwerem proxy. Usługa Azure Stack nie obsługuje konfiguracji serwera proxy sieci web, aby umożliwić dostęp do Internetu. Adres IP hosta i nowy adres IP przypisany do MAS-BGPNAT01 (za pomocą protokołu DHCP lub statycznego adresu IP) musi umożliwiać dostępu do Internetu. Porty 80 i 443 są używane w domenach graph.windows.net i login.microsoftonline.com.
+Usługa Azure Stack wymaga dostępu do Internetu, bezpośrednio lub za pośrednictwem przezroczystym serwerem proxy. Usługa Azure Stack nie obsługuje konfiguracji serwera proxy sieci web, aby umożliwić dostęp do Internetu. Adres IP hosta i nowy adres IP przypisany do AzS-BGPNAT01 (za pomocą protokołu DHCP lub statycznego adresu IP) musi umożliwiać dostępu do Internetu. Porty 80 i 443 są używane w domenach graph.windows.net i login.microsoftonline.com.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2f5cffa0b31d46d76564565001aaed678eb1a649
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 7e0b3fff0ed60d5eb77194e7f9081d35f2e38571
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613594"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869641"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Samouczek: wdrażanie rozszerzeń maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager
 
@@ -116,7 +116,7 @@ Zobacz [odwołanie do rozszerzenia](https://docs.microsoft.com/azure/templates/m
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Zapoznaj się sekcją [Wdrażanie szablonu](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template), gdzie znajduje się procedura wdrażania. Zalecane jest użycie wygenerowanego hasła dla konta administratora maszyny wirtualnej. Zobacz [Wymagania wstępne](#prerequisites).
+Zapoznaj się sekcją [Wdrażanie szablonu](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template), gdzie znajduje się procedura wdrażania. Zalecane jest użycie wygenerowanego hasła dla konta administratora maszyny wirtualnej. Zobacz [Wymagania wstępne](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0a46344893c8ad62bd85f9abb84d434c0331d507
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 61562450d484f34385b4e6e111bf62326eaca159
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984200"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888379"
 ---
 # <a name="validate-azure-identity"></a>Weryfikowanie tożsamości platformy Azure 
 Aby sprawdzić, czy usługi Azure Active Directory (Azure AD) jest gotowa do użycia z usługą Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker). Weryfikowanie rozwiązań tożsamość w systemie Azure, przed rozpoczęciem wdrażania usługi Azure Stack.  
@@ -48,7 +48,7 @@ Należy spełnić następujące wymagania wstępne.
 **Środowisko usługi Active Directory platformy Azure:**
  - Określ konto usługi Azure AD będzie używać usługi Azure Stack i upewnij się, że administrator usługi Azure Active Directory globalnego.
  - Określ nazwę Twojej dzierżawy usługi Azure AD. Nazwa dzierżawy musi być *głównej* nazwy domeny dla usługi Azure Active Directory. Na przykład *contoso.onmicrosoft.com*. 
- - Identyfikowanie AzureEnvironement użyjesz: *AzureCloud*, *AzureGermanCloud*, lub *AzureChinaCloud*.
+ - Zidentyfikuj AzureEnvironement będą używane. Obsługiwane wartości dla parametru Nazwa środowiska to AzureCloud, AzureChinaCloud lub AzureUSGovernment, w zależności od subskrypcji platformy Azure używane są.
 
 ## <a name="validate-azure-identity"></a>Weryfikowanie tożsamości platformy Azure 
 1. Na komputerze, który spełnia wymagania wstępne Otwórz administracyjny wiersz polecenia PowerShell, a następnie uruchom następujące polecenie, aby zainstalować AzsReadinessChecker:  
@@ -59,10 +59,10 @@ Należy spełnić następujące wymagania wstępne.
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. W wierszu polecenia programu PowerShell uruchom następujące polecenie, aby rozpocząć sprawdzanie poprawności usługi Azure AD. 
-   - Określ wartość dla AzureEnvironment jako *AzureCloud*, *AzureGermanCloud*, lub *AzureChinaCloud*.  
+   - Określ wartość nazwy środowiska dla AzureEnvironment. Obsługiwane wartości dla parametru Nazwa środowiska to AzureCloud, AzureChinaCloud lub AzureUSGovernment, w zależności od subskrypcji platformy Azure używane są.  
    - Określ nazwę dzierżawy katalogu Active Azure zastąpić *contoso.onmicrosoft.com*. 
 
-   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
+   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
 4. Po uruchomieniu narzędzia, przejrzyj dane wyjściowe. Upewnij się, ma stan **OK** wymagań instalacyjnych. Pomyślnej weryfikacji wygląda podobnie do następującego: 
  
 ````PowerShell

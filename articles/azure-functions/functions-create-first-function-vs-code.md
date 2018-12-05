@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce4adface65237ec6f4ed0ef8f8ba9bbdf72355c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421054"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633762"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio Code
 
@@ -49,39 +49,9 @@ Aby ukończyć ten przewodnik Szybki start:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="install-the-azure-function-extension"></a>Instalowanie rozszerzenia usługi Azure Functions
+[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
 
-Rozszerzenie usługi Azure Functions umożliwia tworzenie, testowanie i wdrażanie funkcji na platformie Azure.
-
-1. W programie Visual Studio Code otwórz pozycję **Extensions** (Rozszerzenia) i wyszukaj ciąg `azure functions` lub [otwórz ten link w programie Visual Studio Code](vscode:extension/ms-azuretools.vscode-azurefunctions).
-
-1. Wybierz pozycję **Install** (Zainstaluj), aby zainstalować rozszerzenie programu Visual Studio Code. 
-
-    ![Instalowanie rozszerzenia usługi Azure Functions](./media/functions-create-first-function-vs-code/vscode-install-extension.png)
-
-1. Uruchom ponownie program Visual Studio Code, a następnie wybierz ikonę platformy Azure na pasku działań. Powinieneś widzieć obszar usługi Azure Functions na pasku bocznym.
-
-    ![Obszar usługi Azure Functions na pasku bocznym](./media/functions-create-first-function-vs-code/azure-functions-window-vscode.png)
-
-## <a name="create-an-azure-functions-project"></a>Tworzenie projektu usługi Azure Functions
-
-Szablon projektu usługi Azure Functions w programie Visual Studio Code umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikacja funkcji umożliwia grupowanie funkcji w jednostki logiczne, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi.
-
-1. W programie Visual Studio Code wybierz logo platformy Azure, aby wyświetlić obszar**Azure: Functions**, a następnie wybierz ikonę tworzenia nowego projektu.
-
-    ![Tworzenie projektu aplikacji funkcji](./media/functions-create-first-function-vs-code/create-function-app-project.png)
-
-1. Wybierz lokalizację dla obszaru roboczego projektu, a następnie wybierz pozycję **Select** (Wybierz).
-
-    > [!NOTE]
-    > Ten artykuł został zaprojektowany pod kątem wykonania poza obszarem roboczym. W takim przypadku nie wybieraj folderu projektu, który jest częścią obszaru roboczego.
-
-1. Wybierz język dla projektu aplikacji funkcji. W tym artykule użyto języka JavaScript.
-    ![Wybieranie języka projektu](./media/functions-create-first-function-vs-code/create-function-app-project-language.png)
-
-1. Po wyświetleniu monitu wybierz pozycję **Add to workspace** (Dodaj do obszaru roboczego).
-
-Program Visual Studio Code utworzy projekt aplikacji funkcji w nowym obszarze roboczym. Ten projekt zawiera pliki konfiguracyjne [host.json](functions-host-json.md) i [local.settings.json](functions-run-local.md#local-settings-file), a także wszystkie specyficzne dla języka pliki projektu. W folderze projektu może się także znaleźć nowe repozytorium Git.
+[!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
 
 ## <a name="create-an-http-triggered-function"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP
 
@@ -127,57 +97,9 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
-Zanim będzie można opublikować aplikację, należy zalogować się do platformy Azure.
-
-1. W obszarze **Azure: Functions** wybierz pozycję **Sign in to Azure...** (Logowanie do platformy Azure...). Jeśli nie masz jeszcze konta, możesz **utworzyć bezpłatne konto platformy Azure**.
-
-    ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-create-first-function-vs-code/functions-sign-into-azure.png)
-
-1. Po wyświetleniu monitu wybierz pozycję **Copy & Open** (Kopiuj i otwórz) lub skopiuj wyświetlany kod i otwórz <https://aka.ms/devicelogin> w przeglądarce.
-
-1. Wklej skopiowany kod na stronie **Logowanie do urządzenia**, sprawdź logowanie dla programu Visual Studio Code, a następnie wybierz pozycję **Kontynuuj**.  
-
-1. Ukończ logowanie przy użyciu poświadczeń konta platformy Azure. Po pomyślnym zalogowaniu możesz zamknąć przeglądarkę.
-
-## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
-
-Program Visual Studio Code umożliwia publikowanie projektu usługi Functions bezpośrednio na platformie Azure. W ramach tego procesu tworzysz aplikację funkcji i powiązane zasoby w subskrypcji platformy Azure. Aplikacja funkcji zapewnia kontekst wykonywania dla Twoich funkcji. Projekt jest pakowany i wdrażany do nowej aplikacji funkcji w ramach subskrypcji platformy Azure. 
-
-W tym artykule założono, że tworzysz nową aplikację funkcji. Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure.
-
-1. W obszarze **Azure: Functions** wybierz ikonę wdrażania w aplikacji funkcji.
-
-    ![Ustawienia aplikacji funkcji](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
-
-1. Wybierz folder projektu, który jest Twoim bieżącym obszarem roboczym.
-
-1. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, w której chcesz hostować swoją aplikację funkcji, a następnie wybierz pozycję **+ Utwórz nową aplikację funkcji**.
-
-1. Wpisz unikatową w skali globalnej nazwę identyfikującą aplikację funkcji, a następnie naciśnij klawisz Enter. Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`.
-
-1. Wybierz pozycję **+ Utwórz nową grupę zasobów**, wpisz nazwę grupy zasobów, taką jak `myResourceGroup`, a następnie naciśnij klawisz Enter. Możesz również użyć istniejącej grupy zasobów.
-
-1. Wybierz pozycję **+ Utwórz nowe konto magazynu**, wpisz globalnie unikatową nazwę nowego konta magazynu używanego przez aplikację funkcji i naciśnij klawisz Enter. Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz także użyć istniejącego konta.
-
-1. Wybierz lokalizację w [regionie](https://azure.microsoft.com/regions/) znajdującym się w pobliżu lub blisko innych usług, do których Twoje funkcje uzyskują dostęp.
-
-    Tworzenie aplikacji funkcji rozpoczyna się po wybraniu lokalizacji. Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie wyświetlone powiadomienie.
-
-1. Wybierz przycisk **Wyświetl dane wyjściowe** w powiadomieniach, aby wyświetlić wyniki tworzenia i wdrożenia, łącznie z utworzonymi zasobami platformy Azure.
-
-    ![Dane wyjściowe tworzenia aplikacji funkcji](./media/functions-create-first-function-vs-code/function-create-notifications.png)
-
-1. Zanotuj adres URL nowej aplikacji funkcji na platformie Azure. Pozwoli on na przetestowanie funkcji po opublikowaniu projektu na platformie Azure.
-
-    ![Dane wyjściowe tworzenia aplikacji funkcji](./media/functions-create-first-function-vs-code/function-create-output.png)
-
-1. Wracając do obszaru **Azure: Functions**, zobaczysz nową aplikację funkcji wyświetlaną w ramach Twojej subskrypcji. Po rozwinięciu tego węzła wyświetlone zostaną funkcje w aplikacji funkcji, a także ustawienia aplikacji i serwery proxy funkcji.
-
-    ![Ustawienia aplikacji funkcji](./media/functions-create-first-function-vs-code/function-app-project-settings.png)
-
-    Z poziomu węzła aplikacji funkcji naciśnij klawisz Ctrl, a następnie kliknij (prawym przyciskiem myszy), aby wybrać spośród różnych zadań konfiguracji i zarządzania do wykonania w odniesieniu do aplikacji funkcji na platformie Azure. Możesz również wyświetlić aplikację funkcji w witrynie Azure Portal.
+[!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
 ## <a name="test-your-function-in-azure"></a>Testowanie funkcji na platformie Azure
 

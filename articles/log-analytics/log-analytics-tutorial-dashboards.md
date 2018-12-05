@@ -10,18 +10,17 @@ ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 8ab6107279fe546205605b24da53073f49c7a204
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f4d46b7b8ba245c4a7e3eddbe0615c47a1e99096
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014452"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870440"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics
 
@@ -56,7 +55,7 @@ Zostanie wyświetlona prośba o wybór subskrypcji i grupy zasobów, dla któryc
 
 Możesz utworzyć podstawowe zapytania w jednym wierszu z portalu przeszukiwania dzienników w witrynie Azure Portal. Portalu przeszukiwania dzienników można używać bez uruchamiania portalu zewnętrznego. Można też użyć go do wykonywania różnych funkcji związanych z przeszukiwaniem dzienników, w tym do tworzenia reguł alertów, tworzenia grup komputerów oraz eksportowania wyników zapytania. 
 
-[Portal usługi Log Analytics](../log-analytics/query-language/get-started-analytics-portal.md) jest specjalnym portalem zapewniającym zaawansowane funkcje, które nie są dostępne w portalu przeszukiwania dzienników. Funkcje obejmują możliwość edytowania zapytania w wielu wierszach, selektywnego wykonywania kodu, kontekstowego używania funkcji IntelliSense oraz korzystania z funkcji analizy inteligentnej. W portalu analizy zaawansowanej utworzysz widok wydajności w formie graficznej, zapiszesz go na potrzeby przyszłego wyszukiwania oraz przypniesz go do wcześniej utworzonego, udostępnionego pulpitu nawigacyjnego.   
+[Portal usługi Log Analytics](../azure-monitor/log-query/get-started-portal.md) jest specjalnym portalem zapewniającym zaawansowane funkcje, które nie są dostępne w portalu przeszukiwania dzienników. Funkcje obejmują możliwość edytowania zapytania w wielu wierszach, selektywnego wykonywania kodu, kontekstowego używania funkcji IntelliSense oraz korzystania z funkcji analizy inteligentnej. W portalu analizy zaawansowanej utworzysz widok wydajności w formie graficznej, zapiszesz go na potrzeby przyszłego wyszukiwania oraz przypniesz go do wcześniej utworzonego, udostępnionego pulpitu nawigacyjnego.   
 
 Portal analizy zaawansowanej można uruchomić prz użyciu linku w portalu przeszukiwania dzienników.<br> ![Uruchamianie portalu analizy zaawansowanej](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
 

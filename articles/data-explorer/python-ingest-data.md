@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: b6aa2dd16b1731c24b5f24068fa825500589a2e2
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: fe405416e166b69ebe6b72e519ace4930c3062d8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711178"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871731"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Szybki start: pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
 
@@ -36,8 +36,8 @@ Do ukończenia tego przewodnika Szybki start, oprócz subskrypcji platformy Azur
 Zainstaluj biblioteki *azure-kusto-data* i *azure-kusto-ingest*.
 
 ```
-pip install azure-kusto-data==0.0.13
-pip install azure-kusto-ingest==0.0.13
+pip install azure-kusto-data
+pip install azure-kusto-ingest
 ```
 
 ## <a name="add-import-statements-and-constants"></a>Dodawanie instrukcji importu i stałych
