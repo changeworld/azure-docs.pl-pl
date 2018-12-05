@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/04/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 8d737c9fbf149051a8142f5ff546ea88e648541b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 58dfb3f02b338d62fcfb10e4d8c1bc492cdacbda
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976370"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890555"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -121,8 +121,8 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
 
 2. Dodaj konto platformy Azure, która służy do rejestrowania usługi Azure Stack. Aby dodać konto, należy uruchomić **Add-AzureRmAccount** polecenia cmdlet. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure i może być konieczne użycie uwierzytelnianie 2-etapowe, na podstawie konfiguracji konta.
 
-   ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+   ```PowerShell
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | Parametr | Opis |  
@@ -147,11 +147,15 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Następnie w tej samej sesji programu PowerShell, upewnij się, że użytkownik jest zalogowany do poprawnego kontekstu programu PowerShell platformy Azure. To jest konto platformy azure, którego użyto do zarejestrowania dostawcy zasobów usługi Azure Stack powyżej. Program PowerShell w celu uruchomienia:
+6. Następnie w tej samej sesji programu PowerShell, upewnij się, że użytkownik jest zalogowany do poprawnego kontekstu programu PowerShell platformy Azure. To jest konto platformy Azure, którego użyto do zarejestrowania dostawcy zasobów usługi Azure Stack powyżej. Program PowerShell w celu uruchomienia:
 
    ```PowerShell  
-   Add-AzureRmAccount -Environment "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
+
+   | Parametr | Opis |  
+   |-----|-----|
+   | EnvironmentName | Nazwa środowiska subskrypcji platformy Azure w chmurze. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, czy przy użyciu subskrypcji platformy Azure (Chiny) **AzureChinaCloud**.  |
 
 7. W tej samej sesji programu PowerShell, uruchom **AzsRegistration zestaw** polecenia cmdlet. Program PowerShell w celu uruchomienia:  
 
@@ -182,7 +186,7 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
 2. Dodaj konto platformy Azure, która służy do rejestrowania usługi Azure Stack. Aby dodać konto, należy uruchomić **Add-AzureRmAccount** polecenia cmdlet. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure i może być konieczne użycie uwierzytelnianie 2-etapowe, na podstawie konfiguracji konta.
 
    ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | Parametr | Opis |  
@@ -298,7 +302,7 @@ Opcjonalnie służy polecenie cmdlet Get-Content wskaż plik zawierający tokenu
 
 Wykonaj następujące kroki, aby sprawdzić, usługi Azure Stack po pomyślnym zarejestrowaniu za pomocą platformy Azure.
 
-1. Zaloguj się do usługi Azure Stack [portal administratora](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;region >. &lt;fqdn >*.
+1. Zaloguj się do usługi Azure Stack [portalu administracyjnego](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;region >. &lt;fqdn >*.
 2. Wybierz **wszystkich usług**, a następnie w obszarze **administracji** kategorii, wybierz opcję **zarządzania Marketplace** > **DodajplatformyAzure**.
 
 Jeśli zobaczysz listę dostępnych na platformie Azure (takich jak WordPress) elementów, proces aktywacji zakończyło się pomyślnie. Jednak w środowiskach rozłączonych nie zobaczysz elementów portalu Azure marketplace w witrynie marketplace usługi Azure Stack.

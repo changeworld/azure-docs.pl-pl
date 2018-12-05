@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 645a32f56ee2bdc4132377f2d56f61b963104e42
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334894"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890997"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Samouczek: Tworzenie rozwiązania skalowania wielu chmur przy użyciu platformy Azure
 
@@ -60,7 +60,7 @@ W ramach tego samouczka utworzysz przykładowe środowisku:
 
 -   Tworzenie aplikacji sieci Web w ramach subskrypcji dzierżawy. Zanotuj nowy adres URL aplikacji sieci Web dla później użyć.
 
--   Wdróż maszynę wirtualną usługi VSTS w ramach subskrypcji dzierżawy.
+-   Wdrażanie maszyny wirtualnej w potokach systemu Azure w ramach subskrypcji dzierżawy.
 
 -   Istnieje maszyna wirtualna 2016 serwera systemu Windows a .NET 3.5 wymagany. Ta maszyna wirtualna zostanie utworzona w ramach subskrypcji dzierżawy w usłudze Azure Stack jako funkcja agentów kompilacji prywatnych.
 
@@ -99,9 +99,11 @@ Konfigurowanie hybrydowego ciągłej integracji i ciągłego wdrażania (CI/CD) 
 > [!Note]  
 > Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service "[przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](../azure-stack-app-service-before-you-get-started.md)" sekcji dla usługi Azure Stack operatora.
 
-### <a name="add-code-to-visual-studio-team-services-project"></a>Dodaj kod do Visual Studio Team Services — projekt
+### <a name="add-code-to-azure-repos"></a>Dodaj kod do repozytoriów platformy Azure
 
-1. Zaloguj się do programu Visual Studio Team Services (VSTS) przy użyciu konta które ma uprawnień do tworzenia projektu w usłudze VSTS.
+Azure Repos
+
+1. Zaloguj się do repozytoriów platformy Azure przy użyciu konta które ma uprawnień do tworzenia projektu z repozytoriów platformy Azure.
 
     Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno kod aplikacji, jak i kodem infrastruktury. Użyj [szablonów usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/) dla obu chmur prywatnych i hostowanych rozwoju.
 
@@ -117,13 +119,13 @@ Konfigurowanie hybrydowego ciągłej integracji i ciągłego wdrażania (CI/CD) 
 
     ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image3.png)
 
-2.  Zaewidencjonuj kod do usługi VSTS przy użyciu programu Team Explorer.
+2.  Zaewidencjonuj kod, aby repozytoriów platformy Azure za pomocą programu Team Explorer.
 
-3.  Upewnij się, że kod aplikacji została sprawdzona w Visual Studio Team Services.
+3.  Upewnij się, że kod aplikacji została sprawdzona do repozytoriów platformy Azure.
 
 ## <a name="create-the-build-definition"></a>Utwórz definicję kompilacji
 
-1. Zaloguj się do usługi VSTS, aby upewnić się, możliwość tworzenia definicji kompilacji.
+1. Zaloguj się do potoków usługi Azure, aby upewnić się, możliwość tworzenia definicji kompilacji.
 
 2. Dodaj **- r dla systemu win10-x64** kodu. Jest to konieczne wyzwolić wdrożenie niezależna za pomocą.Net Core.
 
@@ -133,11 +135,11 @@ Konfigurowanie hybrydowego ciągłej integracji i ciągłego wdrażania (CI/CD) 
 
 ## <a name="use-an-azure-hosted-agent"></a>Użyj platformy Azure hostowany agent
 
-Użycie hostowany agent w usłudze VSTS jest to wygodny sposób, aby tworzyć i wdrażać aplikacje sieci web. Konserwacja i aktualizacje automatyczne są wykonywane przez Microsoft Azure, umożliwiając ciągłe, nieprzerwany tworzenia, testowania i wdrażania.
+Użyj hostowany agent w potokach Azure to wygodny sposób do tworzenia i wdrażania aplikacji sieci web. Konserwacja i aktualizacje automatyczne są wykonywane przez Microsoft Azure, umożliwiając ciągłe, nieprzerwany tworzenia, testowania i wdrażania.
 
 ### <a name="manage-and-configure-the-cd-process"></a>Zarządzanie i konfigurowanie proces ciągłego Dostarczania
 
-Visual Studio Team Services i Team Foundation Server (TFS) zapewniają wysoce konfigurowalne i łatwe w zarządzaniu potoku dla wersji w wielu środowiskach, takich jak rozwój, przejściowe, odpowiedzi na pytania i środowisk produkcyjnych; w tym wymagające zatwierdzenia określonych etapów.
+Usługi Azure potoków i serwer usługi Azure DevOps oferują wysoce konfigurowalne i łatwe w zarządzaniu potoku dla wersji w wielu środowiskach, takich jak rozwój, przejściowe, odpowiedzi na pytania i środowisk produkcyjnych; w tym wymagające zatwierdzenia określonych etapów.
 
 ## <a name="create-release-definition"></a>Tworzenie definicji wydania
 
@@ -228,11 +230,11 @@ Visual Studio Team Services i Team Foundation Server (TFS) zapewniają wysoce ko
 21. Zapisz wszystkie zmiany.
 
 > [!Note]  
-> Niektóre ustawienia dla zadania mogły być automatycznie zdefiniowane jako [zmienne środowiskowe](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) podczas tworzenia definicji wydania na podstawie szablonu. Nie można modyfikować tych ustawień w ustawieniach zadań; Zamiast tego należy zmienić te ustawienia należy wybrać nadrzędnego elementu środowiska
+> Niektóre ustawienia dla zadania mogły być automatycznie zdefiniowane jako [zmienne środowiskowe](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) podczas tworzenia definicji wydania na podstawie szablonu. Nie można modyfikować tych ustawień w ustawieniach zadań; Zamiast tego należy zmienić te ustawienia należy wybrać nadrzędnego elementu środowiska
 
 ## <a name="publish-to-azure-stack-via-visual-studio"></a>Publikowanie w usłudze Azure Stack za pośrednictwem programu Visual Studio
 
-Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędzia VSTO) można wdrożyć usługi Azure App Service do usługi Azure Stack. Usługa VSTS umożliwia nawiązywanie agenta kompilacji, który jest połączony z usługą Azure Stack.
+Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędzia VSTO) można wdrożyć usługi Azure App Service do usługi Azure Stack. Potoki usługi Azure łączy do agenta kompilacji, który jest połączony z usługą Azure Stack.
 
 1.  Zaloguj się do narzędzi VSTO dla programów, a następnie przejdź do strony Ustawienia aplikacji.
 
@@ -254,18 +256,18 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 
 10. Wybierz **Zapisz zmiany**.
 
-Teraz, gdy informacje o punkcie końcowym istnieje, usługa VSTS do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z usługi VSTS, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
+Teraz, gdy informacje o punkcie końcowym istnieje, potoki platformy Azure do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z potoki usługi Azure, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
 
 ## <a name="develop-the-application-build"></a>Tworzenie kompilacji aplikacji
 
 > [!Note]  
 > Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service "[przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](../azure-stack-app-service-before-you-get-started.md)" sekcji dla usługi Azure Stack operatora.
 
-Użyj [szablonami usługi Azure Resource Manager, takimi jak web](https://azure.microsoft.com/resources/templates/) kodu aplikacji z usługi VSTS, aby wdrożyć w obu chmurach.
+Użyj [szablonami usługi Azure Resource Manager, takimi jak web](https://azure.microsoft.com/resources/templates/) kodu aplikacji z repozytoriów platformy Azure, aby wdrażać w obu chmurach.
 
-### <a name="add-code-to-a-vsts-project"></a>Dodawanie kodu do projektu usługi VSTS
+### <a name="add-code-to-a-azure-repos-project"></a>Dodawanie kodu do projektu repozytoriów platformy Azure
 
-1.  Zaloguj się do usługi VSTS przy użyciu konta które ma uprawnień do tworzenia projektu w usłudze Azure Stack. Następny zrzut ekranu pokazuje, jak połączyć się z projektem HybridCICD.
+1.  Zaloguj się do repozytoriów platformy Azure przy użyciu konta które ma uprawnień do tworzenia projektu w usłudze Azure Stack. Następny zrzut ekranu pokazuje, jak połączyć się z projektem HybridCICD.
 
 2.  **Sklonuj repozytorium** przez tworzenie i otwieranie domyślną aplikację sieci web.
 
@@ -273,13 +275,13 @@ Użyj [szablonami usługi Azure Resource Manager, takimi jak web](https://azure.
 
 1.  Edytuj **WebApplication.csproj** pliku: Wybierz **Runtimeidentifier** , a następnie dodaj x64 Windows 10. Aby uzyskać więcej informacji, zobacz [niezależna wdrożenia](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentacji.
 
-2.  Użyj programu Team Explorer, aby sprawdzić kod do usługi VSTS.
+2.  Użyj programu Team Explorer, aby sprawdzić kod do repozytoriów platformy Azure.
 
-3.  Upewnij się, że zostało zaznaczone pole wyboru kodu aplikacji w Visual Studio Team Services.
+3.  Upewnij się, że kod aplikacji zaewidencjonowaniu repozytoriów platformy Azure.
 
 ### <a name="create-the-build-definition"></a>Utwórz definicję kompilacji
 
-1.  Zaloguj się do usługi VSTS przy użyciu konta, które można utworzyć definicję kompilacji.
+1.  Zaloguj się do potoków usługi Azure przy użyciu konta, które można utworzyć definicję kompilacji.
 
 2.  Przejdź do **tworzenie aplikacji sieci Web** strony dla projektu.
 
@@ -289,17 +291,17 @@ Użyj [szablonami usługi Azure Resource Manager, takimi jak web](https://azure.
 
 #### <a name="use-an-azure-hosted-build-agent"></a>Użyj platformy Azure hostowanej agenta kompilacji
 
-Przy użyciu hostowanego agenta kompilacji w usłudze VSTS jest to wygodny sposób kompilowania i wdrażania aplikacji sieci web. Konserwacja agentów i uaktualnień, automatycznie są wykonywane przez Microsoft Azure, co umożliwia cyklu rozwoju ciągłe i nieprzerwany.
+Przy użyciu hostowanego agenta kompilacji w potokach Azure jest to wygodny sposób kompilowania i wdrażania aplikacji sieci web. Konserwacja agentów i uaktualnień, automatycznie są wykonywane przez Microsoft Azure, co umożliwia cyklu rozwoju ciągłe i nieprzerwany.
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>Skonfiguruj proces ciągłego wdrażania (polecenie CD)
 
-Visual Studio Team Services (VSTS) i Team Foundation Server (TFS) zapewniają potoku wysoce konfigurowalne i łatwe w zarządzaniu dla wersji w wielu środowiskach, takich jak rozwój, przejściowe, zapewniania jakości (QA) i produkcyjnych. Ten proces może obejmować wymagające zatwierdzenia poszczególnych etapów cyklu życia aplikacji.
+Azure potoki i serwer usługi Azure DevOps zapewniają wysoce konfigurowalne i łatwe w zarządzaniu potoku dla wersji do wielu środowisk programowania, przejściowe, zapewniania jakości (QA) i produkcja. Ten proces może obejmować wymagające zatwierdzenia poszczególnych etapów cyklu życia aplikacji.
 
 #### <a name="create-release-definition"></a>Tworzenie definicji wydania
 
 Tworzenie definicji wydania jest ostatnim krokiem w aplikacji, proces kompilacji. Ta definicja wydania służy do tworzenia wersji i wdrażania kompilacji.
 
-1.  Zaloguj się do usługi VSTS i przejdź do **kompilowania i wydawania** dla projektu.
+1.  Zaloguj się do platformy Azure potoków i przejdź do **kompilowania i wydawania** dla projektu.
 
 2.  Na **wersji** zaznacz **[+]** a następnie wybierz **Tworzenie definicji wydania**.
 
@@ -346,7 +348,7 @@ Tworzenie definicji wydania jest ostatnim krokiem w aplikacji, proces kompilacji
 23. Zapisz wszystkie zmiany.
 
 > [!Note]  
-> Niektóre ustawienia dla zadań podrzędnych zwolnienia są automatycznie definiowane jako [zmienne środowiskowe](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) podczas tworzenia definicji wydania na podstawie szablonu. Te ustawienia nie można zmodyfikować w ustawieniach zadania, ale mogą być modyfikowane w środowisku elementów nadrzędnych.
+> Niektóre ustawienia dla zadań podrzędnych zwolnienia są automatycznie definiowane jako [zmienne środowiskowe](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) podczas tworzenia definicji wydania na podstawie szablonu. Te ustawienia nie można zmodyfikować w ustawieniach zadania, ale mogą być modyfikowane w środowisku elementów nadrzędnych.
 
 ## <a name="create-a-release"></a>Tworzenie wydania
 

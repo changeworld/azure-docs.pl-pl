@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 60e9a790a9b74bce7ccbdd58b320ad969c0932f3
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 03fd91b8412c75a994f55f589179f718189e67a7
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079286"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891167"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Dokumentacja poleceń cmdlet Start-AzsReadinessChecker
 
@@ -228,7 +228,8 @@ W tym przykładzie tablica skrótów jest konstruowany przy użyciu ścieżek i 
 **Przykład: Weryfikowania tożsamości platformy Azure**
 ```PowerShell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
-Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AzureDirectoryTenantName azurestack.contoso.com
+# Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
+Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
 W tym przykładzie poświadczenia konta administratora usługi są monitowani o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD o nazwie katalogu dzierżawy "azurestack.contoso.com"
@@ -245,9 +246,10 @@ W tym przykładzie poświadczenia konta administratora usługi są monitowani o 
 
 **Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure**
 ```PowerShell
-$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner"e.g. subscriptionowner@contoso.onmicrosoft.com"
-$subscriptionID = "f7c26209-cd2d-4625-86ba-724ebeece794"
-Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment AzureCloud
+$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
+$subscriptionID = "<subscription ID"
+# Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
+Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment "<environment name>"
 ```
 
 W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego Start AzsReadinessChecker wykonuje następnie weryfikacji względem podane konto i subskrypcję, aby upewnić się, że może służyć do rejestracji w usłudze Azure Stack. 
@@ -255,8 +257,8 @@ W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o pod
 
 **Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure z danymi wdrażania (zespół wdrażania)**
 ```PowerShell
-$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner"e.g. subscriptionowner@contoso.onmicrosoft.com"
-$subscriptionID = "f7c26209-cd2d-4625-86ba-724ebeece794"
+$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
+$subscriptionID = "<subscription ID>"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
@@ -446,7 +448,7 @@ Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i 
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Prawidłowe wartości:               |"AzureCloud", "AzureChinaCloud", "AzureGermanCloud" |
+|Prawidłowe wartości:               |"AzureCloud", "AzureChinaCloud", "AzureUSGovernment" |
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
