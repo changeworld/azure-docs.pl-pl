@@ -63,22 +63,22 @@ Przeanalizujmy następujące wypowiedzi z czatbota:
 
 |Wypowiedź|Nazwa stanowiska możliwa do wyodrębnienia|
 |:--|:--|
-|I want to apply for the new accounting job.|accounting|
-|Submit my resume for the engineering position.|engineering|
-|Fill out application for job 123456|123456|
+|Chcę, aby poprosić o nowe zadanie ewidencjonowania aktywności.|księgowość|
+|Prześlij życiorysem dla inżynierów pozycji.|inżynierów|
+|Wypełnij aplikacji dla zadania 123456|123456|
 
 Nazwa stanowiska jest trudna do określenia, ponieważ może być rzeczownikiem, czasownikiem lub frazą składającą się z kilku wyrazów. Na przykład:
 
 |Stanowiska|
 |--|
-|engineer|
-|software engineer|
-|senior software engineer|
-|engineering team lead |
-|air traffic controller|
-|motor vehicle operator|
-|ambulance driver|
-|tender|
+|inżynier ds|
+|inżynier ds oprogramowania|
+|starszy programista|
+|zespół inżynieryjny |
+|kontrolera ruchu lotniczego|
+|operator pojazdu|
+|Sterownik ambulance|
+|metody płatności|
 |extruder|
 |millwright|
 

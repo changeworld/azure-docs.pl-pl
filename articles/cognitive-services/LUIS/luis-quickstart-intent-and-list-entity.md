@@ -93,9 +93,9 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to numer pracownika. Dla tej dom
 
 |Cel synonimu|Wartość synonimu|
 |--|--|
-|Name (Nazwa)|John W. Smith|
-|Email address (Adres e-mail)|john.w.smith@mycompany.com|
-|Phone extension (Numer wewnętrzny)|x12345|
+|Nazwa|John W. Smith|
+|Adres e-mail|john.w.smith@mycompany.com|
+|Numer wewnętrzny|x12345|
 |Numer osobistego telefonu komórkowego|425-555-1212|
 |Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
 

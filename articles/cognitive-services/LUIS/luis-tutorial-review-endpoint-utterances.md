@@ -73,7 +73,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
     |Wypowiedź|Poprawna intencja|Brakujące jednostki|
     |:--|:--|:--|
-    |I'm looking for a job with Natural Language Processing|GetJobInfo|Job — „Natural Language Process”|
+    |Szukam zadania przy użyciu przetwarzania języka naturalnegoSzukam zadania przy użyciu przetwarzania języka naturalnego|GetJobInfo|Zadania — "Języka naturalnego procesu"|
 
     Ta wypowiedź ma nieprawidłową intencję i ocenę niższą niż 50%. Intencja **ApplyForJob** ma 21 wypowiedzi w porównaniu do siedmiu wypowiedzi w intencji **GetJobInformation**. Poza prawidłowym dopasowaniem punktu końcowego należy dodać więcej wypowiedzi do intencji **GetJobInformation**. Ta czynność zostanie zostawiona jako ćwiczenie do samodzielnego wykonania. Wszystkie intencje z wyjątkiem intencji **None** powinny mieć mniej więcej taką samą liczbę przykładowych wypowiedzi. Intencja **None** powinna mieć 10% wszystkich wypowiedzi w aplikacji. 
 
