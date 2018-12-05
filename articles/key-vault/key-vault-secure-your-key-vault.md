@@ -14,18 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: ambapat
-ms.openlocfilehash: 23f02f87b75cd41d1a56a388e4526be6d9a2e119
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 67f24bbccdd2dcf5cca09e09557d7ebebd0a5c2d
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682740"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891082"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpieczanie własnego magazynu kluczy
 Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia i hasła). Ponieważ te dane są poufne i krytyczne dla działania, należy zabezpieczyć dostęp do Twoich magazynów kluczy, dzięki czemu tylko autoryzowane aplikacje i użytkowników. Ten artykuł zawiera omówienie modelu dostępu do usługi Key Vault. Wyjaśnia uwierzytelnianie i autoryzację, a w tym artykule opisano sposób zabezpieczania dostępu.
 
 ## <a name="overview"></a>Przegląd
-Kontrola dostępu do magazynu kluczy za pośrednictwem dwóch oddzielnych interfejsów: *płaszczyzny zarządzania* i *płaszczyzny danych*. W przypadku obu płaszczyzn obiekt wywołujący (użytkownik lub aplikacja) musi mieć odpowiednie uwierzytelnianie i autoryzację do magazynu kluczy. Uwierzytelnianie ustala tożsamość obiektu wywołującego, podczas gdy autoryzacja Określa, jakie operacje można wykonywać obiekt wywołujący.
+Dostęp do magazynu kluczy jest kontrolowany za pośrednictwem dwóch oddzielnych interfejsów: płaszczyzny zarządzania i płaszczyzny danych. 
+**Płaszczyzna zarządzania** zajmuje się zarządzanie magazynem, na przykład — tworzenie magazynu, aktualizowanie magazynu, usuwanie magazynu. 
+**Płaszczyzna danych** ofertami przy użyciu kluczy tajnych w magazynie, który jest utworzony, aktualizowanie, usuwanie i odczytu wpisu tajnego w magazynie. W przypadku obu płaszczyzn odpowiednie uwierzytelnianie i autoryzacja są wymagane zanim obiekt wywołujący (użytkownik lub aplikacja) mogą uzyskać dostęp do magazynu kluczy. Uwierzytelnianie ustala tożsamość elementu wywołującego, podczas gdy autoryzacja określa operacje, które może wykonywać obiekt wywołujący.
+
+Na potrzeby uwierzytelniania płaszczyzna zarządzania i płaszczyzna danych używają usługi Azure Active Directory. Na potrzeby autoryzacji płaszczyzna zarządzania używa kontroli dostępu opartej na rolach (RBAC), natomiast płaszczyzna danych używa zasad dostępu magazynu kluczy.
+
+Oto krótki przegląd omówionych tematów:
+
+[Uwierzytelnianie przy użyciu usługi Azure Active Directory](#authentication-using-azure-active-directory) — w tej sekcji opisano, jak obiekt wywołujący uwierzytelnia się za pomocą usługi Azure Active Directory w celu uzyskania dostępu do magazynu kluczy za pośrednictwem płaszczyzny zarządzania i płaszczyzny danych. 
 
 W przypadku uwierzytelniania obu płaszczyzn usługa Azure Active Directory (Azure AD). Na potrzeby autoryzacji płaszczyzna zarządzania używa kontroli dostępu opartej na rolach (RBAC), natomiast płaszczyzna danych używa zasad dostępu magazynu kluczy.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 90918b306b83a17476107ae427fc938509712d9e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 631272e4e98c2c0326a1b22857603bef0b88eb93
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725985"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889178"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -46,7 +46,7 @@ Możliwość monitorowania sieci przy użyciu węzłów opartych na systemie Lin
 Uruchamianie rozwiązania NPM w węźle Monitorowanie sieci maszyn wirtualnych, węzły powinny mieć co najmniej 500 MB pamięci i jednego rdzenia. Nie trzeba używać oddzielnych węzłów do uruchamiania Menedżera NPM. Rozwiązanie można uruchomić na węzły, które mają innych obciążeń uruchomionych na nim. Rozwiązanie ma możliwości, aby zatrzymać proces monitorowania, w przypadku, gdy jej korzysta ponad 5% zasobów Procesora.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Aby użyć Menedżera NPM, należy się połączyć mojego węzłów jako funkcja agentów bezpośrednich lub za pomocą programu System Center Operations Manager?
-Monitor wydajności i możliwości usługi Monitor łączności obsługują węzłów [podłączony jako agentów bezpośrednich](../azure-monitor/platform/agent-windows.md) także [połączone za pośrednictwem programu Operations Manager](log-analytics-om-agents.md).
+Monitor wydajności i możliwości usługi Monitor łączności obsługują węzłów [podłączony jako agentów bezpośrednich](../azure-monitor/platform/agent-windows.md) także [połączone za pośrednictwem programu Operations Manager](../azure-monitor/platform/om-agents.md).
 
 Aby uzyskać możliwość monitorowania usługi ExpressRoute węzły na platformie Azure powinny być połączone jako agentów bezpośrednich tylko. Węzły platformy Azure, które są połączone za pomocą programu Operations Manager nie są obsługiwane. Dla węzłów w środowisku lokalnym węzły połączone jako bezpośredni agenci, a także za pośrednictwem programu Operations Manager są obsługiwane w przypadku monitorowania obwodu usługi ExpressRoute.
 

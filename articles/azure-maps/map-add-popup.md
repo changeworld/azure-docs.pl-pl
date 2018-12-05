@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f56e15e12bc176e6b6837e144494599ea4fb5403
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282536"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887849"
 ---
 # <a name="add-a-popup-to-the-map"></a>Dodawanie menu podręcznego do mapy
 
@@ -37,20 +37,32 @@ Czwarty bloku kodu tworzy [obiekt menu podręczne](https://docs.microsoft.com/ja
 
 Ostatni blok kodu tworzy funkcję, która jest wyzwalana przez `mouseover` odbiornik zdarzeń. Ona ustawia zawartość i właściwości wyskakujące okienko i dodaje obiekt menu podręczne do mapy.
 
+## <a name="reusing-a-popup-with-multiple-points"></a>Ponowne użycie okna podręcznego z wieloma punktami
+
+Gdy istnieje wiele punktów i tylko mają być wyświetlane okno podręczne jeden naraz, najlepszym rozwiązaniem jest tworzenie jednego okna podręcznego i ponowne użycie jej zamiast tworzenia okna podręcznego dla każdej funkcji punktu. Dzięki temu liczba elementów DOM utworzonych przez aplikację jest znacznie mniejsze co może zapewnić lepszą wydajność. Ten przykład umożliwia utworzenie funkcji w punkcie 3. Kliknięcie dowolnego z nich, pojawi się okno podręczne z zawartością dla tej funkcji punktu.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Ponowne użycie okna podręcznego z wiele numerów PIN' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>ponowne użycie okna podręcznego z wiele numerów PIN</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+</iframe>
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
 Zobacz następujące artykuły doskonałe przykłady pełnego kodu:
 
 > [!div class="nextstepaction"]
-> [Dodawanie kształtu](./map-add-shape.md)
+> [Dodaj warstwę symboli](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Dodawanie niestandardowego kodu HTML](./map-add-custom-html.md)
+> [Dodaj znacznik HTML](./map-add-custom-html.md)
+
+> [!div class="nextstepaction"]
+> [Dodawanie kształtu](./map-add-shape.md)

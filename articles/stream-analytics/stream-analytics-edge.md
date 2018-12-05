@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Stream Analytics w usłudze IoT Edge (wersja zapoznawcza)
+title: Azure Stream Analytics na urządzeniach brzegowych IoT Edge
 description: Tworzenie zadań krawędzi w usłudze Azure Stream Analytics i wdrażać je na urządzeniach z systemem Azure IoT Edge.
 services: stream-analytics
 author: mamccrea
@@ -7,15 +7,15 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: 6d3060545946f1f003058932f1ffc50c2a64586f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/04/2018
+ms.openlocfilehash: c70a0ceed76ec6f86f2c6c4b082c45055dda6701
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846236"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889110"
 ---
-# <a name="azure-stream-analytics-on-iot-edge-preview"></a>Usługa Azure Stream Analytics w usłudze IoT Edge (wersja zapoznawcza)
+# <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na urządzeniach brzegowych IoT Edge
 
 > [!IMPORTANT]
 > Ta funkcja jest dostępna w wersji zapoznawczej i nie jest zalecany do używania w środowisku produkcyjnym.

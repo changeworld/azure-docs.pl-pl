@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 5010426db97a9cd404d265d1ea9b319877eda1de
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bd97de9680eb2fe5f5e6da3b7cba48dc7280e398
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723962"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888719"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -93,7 +93,7 @@ Aplikację OMS mobile będzie sunsetted wraz z portalu pakietu OMS. Zamiast apli
 ## <a name="application-insights-connector-and-solution"></a>Łącznik usługi Application Insights i rozwiązania
 [Łącznik usługi Application Insights](../azure-monitor/platform/app-insights-connector.md) umożliwia przenoszenie danych usługi Application Insights do obszaru roboczego usługi Log Analytics. Ta duplikacja danych był wymagany do włączenia widoczności danych infrastruktury i aplikacji.
 
-Dzięki obsłudze [zapytania obejmujące wiele zasobów](log-analytics-cross-workspace-search.md), nie ma już konieczności zduplikowane dane. W efekcie istniejące rozwiązanie usługi Application Insights staną się przestarzałe. Począwszy od października, nie można połączyć nowe zasoby usługi Application Insights do obszarów roboczych usługi Log Analytics. Istniejące linki i pulpity nawigacyjne będzie działać do momentu 15 stycznia 2019 r.
+Dzięki obsłudze [zapytania obejmujące wiele zasobów](../azure-monitor/log-query/cross-workspace-query.md), nie ma już konieczności zduplikowane dane. W efekcie istniejące rozwiązanie usługi Application Insights staną się przestarzałe. Począwszy od października, nie można połączyć nowe zasoby usługi Application Insights do obszarów roboczych usługi Log Analytics. Istniejące linki i pulpity nawigacyjne będzie działać do momentu 15 stycznia 2019 r.
 
 
 ## <a name="azure-network-security-group-analytics"></a>Analiza sieciowej grupy zabezpieczeń platformy Azure
@@ -111,7 +111,7 @@ To rozwiązanie analizuje dzienniki przepływu sieciowej grupy zabezpieczeń i z
 Można nadal zależą od ustawień diagnostyki, aby wysyłać dzienniki sieciowych grup zabezpieczeń do usługi Log Analytics, dlatego istniejące zapisane wyszukiwania, alerty i pulpity nawigacyjne będą nadal działać. Klienci, którzy już zainstalowano rozwiązania mogą w dalszym ciągu używać go do odwołania. Począwszy od września 5, rozwiązanie analizy grupy zabezpieczeń sieci zostaną usunięte z portalu marketplace i udostępnione przez społeczność jako [szablon szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Jeśli masz [podłączone grupy zarządzania programu Operations Manager do usługi Log Analytics](log-analytics-om-agents.md), a następnie go będą nadal działać bez konieczności wprowadzania zmian. Dla nowych połączeń, należy wykonać wskazówki zawarte w [programu Microsoft Operations Manager pakiet administracyjny System Center do konfigurowania pakietu Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
+Jeśli masz [podłączone grupy zarządzania programu Operations Manager do usługi Log Analytics](../azure-monitor/platform/om-agents.md), a następnie go będą nadal działać bez konieczności wprowadzania zmian. Dla nowych połączeń, należy wykonać wskazówki zawarte w [programu Microsoft Operations Manager pakiet administracyjny System Center do konfigurowania pakietu Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Zobacz [często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics](log-analytics-oms-portal-faq.md) wskazówki dotyczące przechodzenia z portalu pakietu OMS do witryny Azure portal.

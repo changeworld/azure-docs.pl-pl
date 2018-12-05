@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania | Dokumentacja firmy Microsoft
+title: Monitorowanie wydajności usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wykrywać i diagnozować typowych problemów z wydajnością za pomocą dynamicznych widoków zarządzania do monitorowania Microsoft Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 88e0ad847d8d779bd769ed73d4f0393ddfb65588
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288531"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876317"
 ---
-# <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania
+# <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie wydajności usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania
 
 Microsoft Azure SQL Database umożliwia podzbiór dynamicznych widoków zarządzania do diagnozowania problemów z wydajnością, których przyczyną może być zablokowany lub długotrwałe zapytania, zasobów, wąskich gardeł, planów zapytań niską i tak dalej. Ten temat zawiera informacje na temat sposobu wykrywania typowych problemów z wydajnością za pomocą dynamicznych widoków zarządzania.
 

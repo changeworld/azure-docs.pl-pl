@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 99444e6b7ab71a531a95245b8e5056127446dbeb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6d6f2e420cc2d80adbfece432194bd75825e26c8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847766"
+ms.locfileid: "52879172"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
@@ -75,7 +75,7 @@ Po utworzeniu grupy akcji, jest ona widoczna na **grup akcji** części **Monito
 
 Może mieć maksymalnie 1000 akcji poczty e-mail do grupy akcji. Zobacz [ograniczania informacje o szybkości](./monitoring-alerts-rate-limiting.md) artykułu
 
-**ITSM** — może mieć maksymalnie 10 akcje ITSM w akcji ITSM grupy akcji wymaga połączenia ITSM. Dowiedz się, jak utworzyć [połączenia narzędzia ITSM](../log-analytics/log-analytics-itsmc-overview.md).
+**ITSM** — może mieć maksymalnie 10 akcje ITSM w akcji ITSM grupy akcji wymaga połączenia ITSM. Dowiedz się, jak utworzyć [połączenia narzędzia ITSM](../azure-monitor/platform/itsmc-overview.md).
 
 **Aplikacji logiki** — może mieć maksymalnie 10 akcji aplikacji logiki w grupy akcji
 
@@ -104,7 +104,7 @@ Aby otrzymywać aktualizacje o zmianach na te adresy IP, zaleca się konfigurowa
 ## <a name="next-steps"></a>Kolejne kroki ##
 * Dowiedz się więcej o [SMS alert zachowanie](monitoring-sms-alert-behavior.md).  
 * Uzyskaj [zrozumieć schemat elementów webhook alertu dziennika aktywności](monitoring-activity-log-alerts-webhook.md).  
-* Dowiedz się więcej o [łącznik ITSM](../log-analytics/log-analytics-itsmc-overview.md)
+* Dowiedz się więcej o [łącznik ITSM](../azure-monitor/platform/itsmc-overview.md)
 * Dowiedz się więcej o [szybkości](monitoring-alerts-rate-limiting.md) alerty.
 * Pobierz [Przegląd alertów dziennika aktywności](monitoring-overview-alerts.md)i Dowiedz się, jak otrzymywać alerty.  
 * Dowiedz się, jak [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](monitoring-activity-log-alerts-on-service-notifications.md).

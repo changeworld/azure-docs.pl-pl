@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/4/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 45f77c3065feeb011a10bc345c22082b6a89529c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 4f4d30b483d0740261d85921d5dc66e053b5bcf0
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582823"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890963"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -25,7 +25,8 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 | Punkt kontrolny | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
-| Wydania wersji 4 | 4.0.1.0 | 13 listopada 2018 r. | Obsługiwane (zalecana wersja) |
+| Grudzień aktualizacji zbiorczej — [KB4459988](https://support.microsoft.com/help/4459988)| 4.1.0.0 | 4 grudnia 2018 r. | Obsługiwane (zalecana wersja) |
+| Wydania wersji 4 | 4.0.1.0 | 13 listopada 2018 r. | Obsługiwane |
 | Pakiet zbiorczy aktualizacji września | 3.3.0.0 | 24 września 2018 r. | Obsługiwane |
 | Pakiet zbiorczy aktualizacji z sierpnia | 3.2.0.0 | 15 sierpnia 2018 r. | Obsługiwane |
 | Ogólna dostępność | 3.1.0.0 | 19 lipca 2018 r. | Obsługiwane |
@@ -42,6 +43,16 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-4100"></a>Wersja agenta 4.1.0.0
+Poniższe informacje o wersji dotyczą wersji 4.1.0.0 agenta usługi Azure File Sync wydanej 4 grudnia 2018 r. Te informacje są uzupełnieniem informacji o wersji 4.0.1.0 informacje o wersji.
+
+Lista problemów rozwiązanych w tej wersji:  
+- Może wystąpić błąd zatrzymania 0x3B lub błąd zatrzymania 0x1E, po utworzeniu migawki VSS.  
+- Serwer może przestać odpowiadać z powodu przeciek pamięci Obsługa poziomów w chmurze.  
+- Instalacja agenta zakończy się niepowodzeniem z powodu następującego błędu: błąd 1921. Nie można zatrzymać usługi "Magazynu agenta synchronizacji" (FileSyncSvc).  Sprawdź, czy masz wystarczające uprawnienia do zatrzymywania usług systemowych.  
+- Usługa agenta synchronizacji magazynu (FileSyncSvc) może ulec awarii, gdy użycie pamięci jest wysokie.  
+- Ulepszenia niezawodności różne chmury, warstw i synchronizacji.
 
 ## <a name="agent-version-4010"></a>Wersja agenta 4.0.1.0
 Poniższe informacje o wersji dotyczą wersji 4.0.1.0 agenta usługi Azure File Sync (wydanej 13 listopada 2018 r.).
@@ -107,7 +118,7 @@ Następujące elementy nie są synchronizowane, ale reszta systemu nadal normaln
 ## <a name="agent-version-3300"></a>Wersja agenta 3.3.0.0
 Poniższe informacje o wersji dotyczą wersji 3.3.0.0 agenta usługi Azure File Sync wydanej 24 września 2018 r. Te informacje są uzupełnieniem informacji o wersji 3.1.0.0 informacje o wersji.
 
-Ta wersja zawiera następujące poprawki:
+Lista problemów rozwiązanych w tej wersji:
 - Stan zarejestrowanego serwera to "Pojawia się w trybie offline" od usługi Azure File Sync, agent jest uaktualniony do wersji 3.1 lub 3.2.
 - Usługa agenta synchronizacji (FileSyncSvc) magazynu kończy się niepowodzeniem ze względu na pliki, których długie ścieżki.
 - Rejestracja serwera nie powiodło się z powodu błędu: nie można załadować pliku lub zestawu Kailani.Afs.StorageSyncProtocol.V3.

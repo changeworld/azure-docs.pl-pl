@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ace53fcb2c24e26aa6f33dbc0300915a45dc6a91
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f50f9f0d92a535198fa453132eb550775da6cc4a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856536"
+ms.locfileid: "52877959"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Szybki Start: Klonowanie notesu
 
@@ -26,7 +26,7 @@ Wielu programistów i analityków danych przechowywania notesy w [repozytoriów 
 
 Klonowanie tworzy kopię notesu usługi GitHub w ramach Twojego konta platformy Azure, notesy zamiast tego. Klonuj ten jest niezależna od oryginalnego repozytorium; zmiany są przechowywane w ramach Twojego konta platformy Azure, notesy i nie mają wpływu na oryginalny. Ponieważ sklonowanym znajduje się w chmurze, możesz udostępniać projektu innych współpracowników, którzy muszą wprowadzić wszystkie kopie lokalne lub nie nawet mieć zainstalowany na swoich komputerach Jupyter. Można również sklonować notesu po prostu jako punktu wyjścia dla projektu samodzielnie lub uzyskać pliki danych.
 
-## <a name="clone-the-azure-cognitive-services-notebooks"></a>Klonowanie notesów usługi Azure Cognitive Services
+## <a name="clone-azure-cognitive-services-notebooks"></a>Klonowanie notesów usługi Azure Cognitive Services
 
 1. Przejdź do [notesów usługi Azure](https://notebooks.azure.com) i zaloguj się. (Aby uzyskać więcej informacji, zobacz [Szybki Start — Zaloguj się do platformy Azure, notesy](quickstart-sign-in-azure-notebooks.md)).
 

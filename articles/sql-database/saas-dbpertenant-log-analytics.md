@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: b207af3bed40f6287f60b25638f3091fa187aa6f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 58a354950e303eda8158ca072870bfecbf33a89f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405076"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890215"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie programu Log Analytics za pomocą wielodostępnych aplikacji SaaS usługi SQL Database
 
@@ -42,7 +42,7 @@ Usługi Azure SQL Database monitorowania i zgłaszania alertów jest dostępna d
 
 W przypadku dużej liczby scenariuszy usługi Log Analytics służy do monitorowania i alertów. Usługa log Analytics to osobna usługa Azure umożliwia analizę przez dzienniki diagnostyczne i dane telemetryczne, które są zbierane w obszarze roboczym z potencjalnie wielu usług. Usługa log Analytics oferuje wbudowaną kwerendę, języka i danych narzędzia wizualizacji, umożliwiające analizę danych operacyjnych. Rozwiązanie SQL Analytics zawiera kilka wstępnie zdefiniowanych elastycznej puli i bazy danych monitorowania i zgłaszania alertów zapytań i widoków. Log Analytics udostępnia także projektanta widoków niestandardowych.
 
-Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics. Otwórz dziennik analizy obszarów roboczych i rozwiązania analityczne w witrynie Azure portal. Witryny Azure portal jest nowszym rodzajem punktu dostępu, ale może być, co znajduje się za portalu Operations Management Suite, w niektórych obszarach.
+Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics. Otwórz dziennik analizy obszarów roboczych i rozwiązania analityczne w witrynie Azure portal. Witryny Azure portal jest nowszym rodzajem punktu dostępu, ale może być, co znajduje się za portalu Operations Management Suite, w niektórych obszarach.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Tworzenie wydajnością danych diagnostycznych symulując obciążenie dzierżawców 
 
@@ -151,4 +151,4 @@ Spróbuj [samouczek analiz dzierżaw](saas-dbpertenant-log-analytics.md).
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Dodatkowe samouczki, które są kompilowane w na początkowym wdrożeniu bazy danych dla dzierżawcy aplikacji SaaS o nazwie Wingtip Tickets](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Program Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
+* [Program Azure Log Analytics](../azure-monitor/insights/azure-sql.md)

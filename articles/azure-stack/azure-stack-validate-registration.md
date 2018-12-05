@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/08/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 51753a5324bbbcbf4e951628a42dd3bf425354af
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 209793545078a47f91e8fe34c3f85ffb671a2bdb
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957586"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888175"
 ---
 # <a name="validate-azure-registration"></a>Sprawdź poprawność rejestracji platformy Azure 
 Aby sprawdzić, czy Twoja subskrypcja platformy Azure jest gotowa do użycia z usługą Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker). Sprawdź poprawność rejestracji przed rozpoczęciem wdrażania usługi Azure Stack. Narzędzie sprawdzania gotowości weryfikuje:
@@ -46,7 +46,7 @@ Należy spełnić następujące wymagania wstępne.
 **Środowisko usługi Active Directory platformy Azure:**
  - Określ nazwę użytkownika i hasło dla konta które jest właścicielem subskrypcji platformy Azure, które będą używane z usługą Azure Stack.  
  - Określ identyfikator subskrypcji dla subskrypcji platformy Azure, które będą używane. 
- - Identyfikowanie AzureEnvironment użyjesz: *AzureCloud*, *AzureGermanCloud*, lub *AzureChinaCloud*.
+ - Zidentyfikuj AzureEnvironment będą używane. Obsługiwane wartości dla parametru Nazwa środowiska to AzureCloud, AzureChinaCloud lub AzureUSGovernment, w zależności od subskrypcji platformy Azure używane są.
 
 ## <a name="validate-azure-registration"></a>Sprawdź poprawność rejestracji platformy Azure
 1. Na komputerze, który spełnia wymagania wstępne Otwórz administracyjny wiersz polecenia PowerShell, a następnie uruchom następujące polecenie, aby zainstalować AzsReadinessChecker.
@@ -59,21 +59,20 @@ Należy spełnić następujące wymagania wstępne.
      > `$subscriptionID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"` 
 
 4. W wierszu polecenia programu PowerShell, uruchom następujące polecenie, aby rozpocząć sprawdzanie poprawności subskrypcji 
-   - Określ wartość dla AzureEnvironment jako *AzureCloud*, *AzureGermanCloud*, lub *AzureChinaCloud*.  
+   - Określ wartość dla AzureEnvironment. Obsługiwane wartości dla parametru Nazwa środowiska to AzureCloud, AzureChinaCloud lub AzureUSGovernment, w zależności od subskrypcji platformy Azure używane są.  
    - Podaj administratorem usługi Azure Active Directory i Twoja nazwa dzierżawy usługi Azure Active Directory. 
 
-   > `Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID`
+   > `Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment <environment name> -RegistrationSubscriptionID $subscriptionID`
 
 5. Po uruchomieniu narzędzia, przejrzyj dane wyjściowe. Upewnij się, że stan jest odpowiedni dla wymagań dotyczących rejestracji i logowania. Pomyślnej weryfikacji wygląda następująco:  
-````PowerShell
-Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
-Checking Registration Requirements: OK
 
-Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
-Invoke-AzsRegistrationValidation Completed
-````
-
+    ```PowerShell
+    Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+    Checking Registration Requirements: OK
+    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+    Invoke-AzsRegistrationValidation Completed
+    ```
 
 ## <a name="report-and-log-file"></a>Raport i plik dziennika
 Uruchamia każdego czasu sprawdzania poprawności, rejestruje ono wyniki do **AzsReadinessChecker.log** i **AzsReadinessCheckerReport.json**. Wyświetla lokalizację tych plików z wynikami weryfikacji w programie PowerShell. 
@@ -90,7 +89,7 @@ Jeśli sprawdzenie poprawności zakończy się niepowodzeniem, w oknie programu 
 Poniższe przykłady zapewnić wskazówki dotyczące typowych błędów sprawdzania poprawności.
 
 ### <a name="user-must-be-an-owner-of-the-subscription"></a>Użytkownik musi być właścicielem subskrypcji   
-````PowerShell
+```PowerShell
 Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
 Checking Registration Requirements: Fail 
 Error Details for registration account admin@contoso.onmicrosoft.com:
@@ -100,14 +99,14 @@ Additional help URL https://aka.ms/AzsRemediateRegistration
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsRegistrationValidation Completed
-````
+```
 **Przyczyna** — konto nie jest administratorem subskrypcji platformy Azure.   
 
 **Rozpoznawanie** — Użyj konta które jest administratorem subskrypcji platformy Azure, która zostanie pobrana opłata za użycie z wdrożenia usługi Azure Stack.
 
 
 ### <a name="expired-or-temporary-password"></a>Hasło wygasło lub tymczasowego 
-````PowerShell
+```PowerShell
 Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
 Checking Registration Requirements: Fail 
 Error Details for registration account admin@contoso.onmicrosoft.com:
@@ -120,7 +119,7 @@ Timestamp: 2018-10-22 11:16:56Z: The remote server returned an error: (401) Unau
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsRegistrationValidation Completed
-````
+```
 **Przyczyna** — konta nie można zalogować, ponieważ hasło jest wygasły lub jest tymczasowe.     
 
 **Rozpoznawanie** — w programie PowerShell Uruchom i postępuj zgodnie z monitami, aby zresetować hasło. 
@@ -130,17 +129,17 @@ Alternatywnie, zaloguj się do https://portal.azure.com zgodnie z konta i użytk
 
 
 ### <a name="unknown-user-type"></a>Typ Nieznany użytkownik  
-````PowerShell
+```PowerShell
 Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
 Checking Registration Requirements: Fail 
 Error Details for registration account admin@contoso.onmicrosoft.com:
-Checking Registration failed with: Retrieving TenantId for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d using account admin@contoso.onmicrosoft.com failed with unknown_user_type: Unknown Us
+Checking Registration failed with: Retrieving TenantId for subscription <subscription ID> using <account> failed with unknown_user_type: Unknown Us
 er Type
 
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsRegistrationValidation Completed
-````
+```
 **Przyczyna** — konto nie może logować się do określonego środowiska usługi Azure Active Directory. W tym przykładzie *AzureChinaCloud* jest określony jako *AzureEnvironment*.  
 
 **Rozpoznawanie** — upewnij się, że konto jest nieprawidłowa dla określonego środowiska platformy Azure. W programie PowerShell uruchom następujące polecenie, aby sprawdzić, czy konto jest prawidłowe dla określonego środowiska.     

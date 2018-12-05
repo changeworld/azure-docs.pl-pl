@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: db02df7ed27e011e51b4af470e80ac00054bf0dc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 01c118b61540c88d5c08015db32a97ef791b43ce
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727940"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879607"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -76,7 +76,7 @@ Skrypt zawiera klucz instrumentacji, który kieruje dane do odpowiedniego zasobu
 
 ([Dokładniejsze objaśnienia dotyczące skryptu](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/)).
 
-*(Jeśli używasz dobrze znanej struktury stron sieci Web, poszukaj adapterów usługi Application Insights. Takim adapterem jest na przykład [moduł AngularJS](http://ngmodules.org/modules/angular-appinsights)).*
+*(Jeśli używasz dobrze znanej struktury stron sieci Web, poszukaj adapterów usługi Application Insights. Takim adapterem jest na przykład [moduł AngularJS](https://github.com/johnhidey/angular-appinsights)).*
 
 ## <a name="detailed-configuration"></a>Konfiguracja szczegółowa
 Istnieje kilka [parametrów](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config), które można ustawić, chociaż w większości przypadków nie jest to potrzebne. Na przykład można wyłączyć zgłaszanie wywołań Ajax lub ograniczyć liczbę tych wywołań zgłaszanych na wyświetlenie strony (w celu zmniejszenia ruchu). Można także ustawić tryb debugowania, aby dane telemetrii były szybciej przesyłane przez potok, a nie przekazywane w trybie wsadowym.

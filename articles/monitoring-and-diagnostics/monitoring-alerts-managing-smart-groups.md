@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie grupami inteligentne
+title: Zarządzanie grupami inteligentnymi
 description: Zarządzanie grupami inteligentne utworzone za pośrednictwem swoich wystąpień alertu
 author: anantr
 services: monitoring
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d04684e7d4eed1b997ec803dc9ccc1dcc079bde0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 80d5d667b4edee579afed4a9eaa88996663497f4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959380"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879786"
 ---
-# <a name="manage-smart-groups"></a>Zarządzanie grupami inteligentne
+# <a name="manage-smart-groups"></a>Zarządzanie grupami inteligentnymi
 [Blokada Smart grup](https://aka.ms/smart-groups) użyj algorytmów uczenia maszynowego do grupy razem alertów na podstawie wspólnej wystąpienie lub podobieństwa, użytkownik może teraz zarządzać inteligentne grupy zamiast indywidualnego zarządzania każdym alercie. W tym artykule opisano kolejne kroki sposobu uzyskania dostępu i Użyj inteligentnego grup w usłudze Azure Monitor.
 1.  Aby wyświetlić inteligentne grup utworzonych dla wystąpień alertu możesz
      1. Kliknij pozycję **inteligentne grup** z **Podsumowanie alertów** strony    

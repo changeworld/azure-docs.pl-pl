@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 9dead2c8801340a736b6f67010a85f3dd34fbe85
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5f52dfb4547cfac991387d333c3f5684544d691f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820264"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877514"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Ciągłe wdrażanie w usłudze Azure App Service
 W tym artykule dowiesz się, jak skonfigurować ciągłe wdrażanie dla [usługi Azure App Service](app-service-web-overview.md). Usługa App Service umożliwia ciągłe wdrażanie z usług BitBucket, GitHub i [usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/) przez pobieranie najnowszych aktualizacji z istniejącym repozytorium w jednej z tych usług.
@@ -47,7 +47,7 @@ W **dostawcę konstrukcji** stronie, wybierz dostawcę kompilacji i kliknij pozy
 
 W **Konfiguruj** Wybierz organizację, repozytorium i gałąź, z których chcesz wdrażać w sposób ciągły. Po zakończeniu kliknij przycisk **Kontynuuj**.
 
-### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>Opcja 2: Użyj ciągłego dostarczania usługom DevOps platformy Azure
+### <a name="option-2-use-azure-pipelines-preview"></a>Opcja 2: użycie potoków usługi Azure (wersja zapoznawcza)
 
 > [!NOTE]
 > Usługi App Service utworzyć niezbędne potoki usługi Azure w Twojej organizacji usługom DevOps platformy Azure, Twoje konto platformy Azure musi mieć rolę **właściciela** w subskrypcji platformy Azure.
@@ -90,15 +90,18 @@ W **Podsumowanie** strony, sprawdź opcje i kliknij przycisk **Zakończ**.
 
 Po ukończeniu konfiguracji nowego zatwierdzenia w wybranym repozytorium są wdrażane stale w aplikacji usługi app Service.
 
-## <a name="deploy-continuously-from-azure-devops-services"></a>Ciągłe wdrażanie z usług infrastruktury DevOps platformy Azure
+## <a name="deploy-continuously-from-azure-repos-devops-services"></a>Ciągłe wdrażanie z repozytoriów platformy Azure (usługi DevOps)
 
-Aby włączyć ciągłe wdrażanie za pomocą usługi DevOps platformy Azure, przejdź do strony aplikacji usługi App Service w [witryny Azure portal](https://portal.azure.com).
+Aby włączyć ciągłe wdrażanie za pomocą z [repozytoriów Azure](https://docs.microsoft.com/azure/devops/repos/index), przejdź do strony aplikacji usługi App Service w [witryny Azure portal](https://portal.azure.com).
 
-W menu po lewej stronie kliknij **Centrum wdrażania** > **usługom DevOps platformy Azure** > **Kontynuuj**. 
+W menu po lewej stronie kliknij **Centrum wdrażania** > **repozytoriów Azure** > **Kontynuuj**. 
 
 ![](media/app-service-continuous-deployment/vsts-choose-source.png)
 
 W **dostawcę konstrukcji** stronie, wybierz dostawcę kompilacji i kliknij pozycję > **Kontynuuj**.
+
+> [!NOTE]
+> Jeśli chcesz użyć istniejącej organizacji usługom DevOps platformy Azure, która nie ma na liście, musisz [łączenie organizacji usługom DevOps platformy Azure z subskrypcją platformy Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 ### <a name="option-1-use-app-service-kudu-build-server"></a>Opcja 1: użycie serwer kompilacji Kudu usługi App Service
 
@@ -111,9 +114,6 @@ W **Konfiguruj** wybierz usługom DevOps platformy Azure organizacji, projektu, 
 >
 
 W **Konfiguruj** stronie **kodu** wybierz usługom DevOps platformy Azure organizacji, projektu, repozytorium i gałąź z których chcesz wdrażać w sposób ciągły. Po zakończeniu kliknij przycisk **Kontynuuj**.
-
-> [!NOTE]
-> Jeśli chcesz użyć istniejącej organizacji usługom DevOps platformy Azure, która nie ma na liście, musisz [łączenie organizacji usługom DevOps platformy Azure z subskrypcją platformy Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 W **Konfiguruj** stronie **kompilacji** sekcji, określ struktury języka, którego powinien używać usług DevOps platformy Azure, umożliwiające uruchamianie zadań kompilacji dla wybranego repozytorium. Po zakończeniu kliknij przycisk **Kontynuuj**.
 
@@ -146,11 +146,11 @@ W menu po lewej stronie kliknij **Centrum wdrażania** > **GitHub** lub **usług
 * [Umożliwia automatyczne generowanie potoku ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację platformy ASP.NET 4 platformy Azure](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
 
 [Azure portal]: https://portal.azure.com
-[VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
+[Azure DevOps portal]: https://azure.microsoft.com/services/devops/
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [Jak korzystać z programu PowerShell dla platformy Azure]: /powershell/azureps-cmdlets-docs
 [Dokumentacja usługi Git]: http://git-scm.com/documentation
 
 [Tworzenie repozytorium (GitHub)]: https://help.github.com/articles/create-a-repo
 [Tworzenie repozytorium (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[Rozpoczynanie pracy z usługami DevOps platformy Azure]: https://www.visualstudio.com/docs/vsts-tfs-overview
+[Rozpoczynanie pracy z usługami DevOps platformy Azure]: https://docs.microsoft.com/azure/devops/user-guide/devops-alm-overview

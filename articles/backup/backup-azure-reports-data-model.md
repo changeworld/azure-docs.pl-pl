@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 573b7e9c5c44c7162b4020f1ef54b8986003c0b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444307"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877137"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Model danych dla raportów usługi Azure Backup
 W tym artykule opisano model danych usługi Power BI, używany do tworzenia raportów usługi Azure Backup. Przy użyciu tego modelu danych, można filtrować istniejące raporty na podstawie odpowiednich pól i więcej co ważniejsze, tworzyć własne raporty za pomocą tabel i pól w modelu. 
@@ -33,7 +33,7 @@ Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól p
 | #AlertsCreatedInPeriod |Liczba całkowita |Liczba alertów utworzone w wybranym okresie |
 | % ActiveAlertsCreatedInPeriod |Procentowe |Odsetek aktywnych alertów w wybranym okresie |
 | % CriticalAlertsCreatedInPeriod |Procentowe |Wartość procentowa alerty krytyczne w wybranym okresie |
-| AlertOccurenceDate |Date |Data utworzenia alertu |
+| AlertOccurrenceDate |Date |Data utworzenia alertu |
 | AlertSeverity |Tekst |Ważność alertu, na przykład, krytyczny |
 | AlertStatus |Tekst |Stan alertu, na przykład aktywny |
 | AlertType |Tekst |Typ wygenerowany alert, na przykład kopię zapasową |

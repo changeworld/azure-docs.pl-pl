@@ -3,7 +3,7 @@ title: Projektowanie rozwiązania do odzyskiwania po awarii — Azure SQL Databa
 description: Dowiedz się, jak projektować rozwiązania do odzyskiwania po awarii w chmurze, wybierając wzorzec prawo trybu failover.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pools
+ms.subservice: elastic-poolss
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 9ed01103a83073d1bbb22f476a9115af816571aa
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8c5f6503375302852b9fd603accdffa431aab35f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166558"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877568"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie odzyskiwania po awarii dla aplikacji wykorzystujących pule elastyczne bazy danych SQL
 W ciągu lat nauczyliśmy się, że usługi w chmurze są niezawodne, a zdarzenia krytycznego się tak zdarzyć. SQL Database oferuje kilka możliwości do zapewnienia ciągłość prowadzenia działalności biznesowej w aplikacji, gdy wystąpią następujące zdarzenia. [Pule elastyczne](sql-database-elastic-pool.md) i pojedynczych baz danych obsługują tego samego rodzaju możliwości odzyskiwania po awarii. W tym artykule opisano kilka strategii odzyskiwania po awarii dla pul elastycznych wykorzystać te funkcje zachowywania ciągłości biznesowej bazy danych SQL.

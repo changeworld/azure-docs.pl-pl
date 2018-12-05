@@ -3,7 +3,7 @@ title: Rejestrowanie diagnostyczne i metryki bazy danych SQL platformy Azure | D
 description: Dowiedz się więcej o sposobie konfigurowania usługi Azure SQL Database do przechowywania użycia zasobów, łącznością i statystyk wykonywania zapytań.
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: b903d0ddbccac8fe4fa8b251d409bd8addebb435
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 19117803783047d8ddd9740c799b4cb81fd74c2c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426003"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890912"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego 
 
@@ -291,7 +291,7 @@ Uzyskać informacje dotyczące sposobu [włączanie ustawień diagnostycznych po
 
 Usługa Azure SQL Analytics to w chmurze rozwiązanie do monitorowania wydajności baz danych, pul elastycznych i wystąpienia zarządzane przez usługę Azure SQL na dużą skalę i w ramach wielu subskrypcji za pomocą jedną taflę szkła do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością.
 
-![Usługi Azure SQL Analytics — Przegląd](../log-analytics/media/log-analytics-azure-sql/azure-sql-sol-overview.png)
+![Usługi Azure SQL Analytics — Przegląd](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 Dzienniki metryki i Diagnostyka bazy danych SQL może być przesyłany strumieniowo do usługi Azure SQL Analytics przy użyciu wbudowanych **wysyłanie do usługi Log Analytics** opcji w bloku ustawienia diagnostyki w portalu. Możesz również włączyć usługi Log Analytics przy użyciu ustawienia diagnostyki za pomocą poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST usługi Azure Monitor.
 
@@ -327,7 +327,7 @@ W przypadku używane są pule elastyczne lub wystąpienia zarządzane przez usł
 
 ### <a name="use-the-sql-analytics-solution"></a>Korzystanie z odpowiedniego rozwiązania SQL Analytics
 
-Usługa SQL Analytics jest hierarchiczna pulpit nawigacyjny, który pozwala na przenoszenie przez hierarchię zasobów usługi SQL Database. Aby dowiedzieć się, jak używać rozwiązania SQL Analytics, zobacz [monitorowanie bazy danych SQL przy użyciu rozwiązania SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+Usługa SQL Analytics jest hierarchiczna pulpit nawigacyjny, który pozwala na przenoszenie przez hierarchię zasobów usługi SQL Database. Aby dowiedzieć się, jak używać rozwiązania SQL Analytics, zobacz [monitorowanie bazy danych SQL przy użyciu rozwiązania SQL Analytics](../azure-monitor/insights/azure-sql.md).
 
 ## <a name="stream-into-event-hubs"></a>Przesyłanie strumieniowe do usługi Event Hubs
 

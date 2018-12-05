@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 84c6477a1c9bc61b339e66d91cb7c1fbc8e90ea0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837005"
+ms.locfileid: "52875403"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -37,7 +37,7 @@ Usługa ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsof
 Przed rozpoczęciem upewnij się, że rozumiesz następujące pojęcia:
 
 - Usługa ExpressRoute [obwodów](../expressroute/expressroute-circuit-peerings.md)
-- Usługa ExpressRoute [domen routingu](../expressroute/expressroute-circuit-peerings.md#expressroute-routing-domains)
+- Usługa ExpressRoute [domen routingu](../expressroute/expressroute-circuit-peerings.md#routingdomains)
 - Usługa ExpressRoute [lokalizacje](../expressroute/expressroute-locations.md).
 - Maszyna wirtualna platformy Azure [architektura replikacji](azure-to-azure-architecture.md)
 - Jak [skonfigurowania replikacji](azure-to-azure-tutorial-enable-replication.md) maszyn wirtualnych platformy Azure.
@@ -136,7 +136,7 @@ W naszym przykładzie następujące powinno mieć miejsce po włączeniu replika
 
 ## <a name="fail-over-azure-vms-when-using-expressroute"></a>Tryb failover maszyn wirtualnych platformy Azure przy użyciu usługi ExpressRoute
 
-Po maszyny wirtualne platformy Azure przejścia w tryb failover do docelowego regionu platformy Azure przy użyciu Site Recovery, można z nich korzystać przy użyciu usługi ExpressRoute [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+Po maszyny wirtualne platformy Azure przejścia w tryb failover do docelowego regionu platformy Azure przy użyciu Site Recovery, można z nich korzystać przy użyciu usługi ExpressRoute [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 - Należy połączyć usługi ExpressRoute do docelowej sieci wirtualnej przy użyciu nowego połączenia. Istniejące połączenie usługi ExpressRoute nie są automatycznie przekazywane.
 - Sposób, w którym można ustawić połączenie usługi ExpressRoute w docelowej sieci wirtualnej zależy od topologii usługi ExpressRoute.

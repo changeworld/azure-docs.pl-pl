@@ -1,25 +1,24 @@
 ---
-title: Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+title: Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu wiersza polecenia platformy Azure
 description: Użyj wiersza polecenia platformy Azure do zarządzania kontem usługi Azure Cosmos DB, bazy danych i kontenerów.
 services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3446f4f71349d0b7290a2514edf46efb37203324
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d79cae16c109b407840b8565eb80fb87bbed6432
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019225"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877551"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-cli"></a>Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu wiersza polecenia platformy Azure
 
 Następujący przewodnik zawiera opis poleceń do automatyzowania zarządzania kontami usługi Azure Cosmos DB, bazy danych i kontenerów za pomocą narzędzia wiersza polecenia platformy Azure. Zawiera on również polecenia do skalowania przepływności kontenerów. Strony referencyjne dla wszystkich poleceń dostępnych w interfejsie wiersza polecenia usługi Azure Cosmos DB są dostępne w [dokumentacji dotyczącej interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cosmosdb). Można także znaleźć więcej przykładów w [przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB](cli-samples.md), w tym jak utworzyć i zarządzać kont usługi Cosmos DB, bazy danych i kontenerów dla bazy danych MongoDB, Gremlin, Cassandra i interfejsu API tabel.
 
-Ten przykładowy skrypt interfejsu wiersza polecenia tworzy konto interfejsu API SQL usługi Azure Cosmos DB, bazy danych i kontenerów.  
+Ten przykładowy skrypt interfejsu wiersza polecenia tworzy konto, bazę danych i kontener interfejsu API SQL usługi Azure Cosmos DB.  
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

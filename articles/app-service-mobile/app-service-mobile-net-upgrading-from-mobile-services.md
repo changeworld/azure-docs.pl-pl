@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 25eb5c732927dcfb18bfd92991391ff99d4e3629
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 2d346739cd2e80546aee921317e278c1cff32b34
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918262"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873142"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Uaktualnianie istniejącej usługi mobilnej Azure .NET w usłudze App Service
 Mobile App Service jest nowy sposób na tworzenie aplikacji mobilnych przy użyciu Microsoft Azure. Aby dowiedzieć się więcej, zobacz [co to jest usługa Mobile Apps?].
@@ -68,7 +68,7 @@ Pierwszym krokiem podczas uaktualniania jest Utwórz zasób aplikacji mobilnej, 
 
 Następnie Utwórz drugie wystąpienie aplikacji, postępując zgodnie z [instrukcje dotyczące tworzenia zaplecza .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app). Po wyświetleniu monitu można wybrać Plan usługi App Service lub "planu hostingu" Wybierz plan migrowanych aplikacji.
 
-Prawdopodobnie można korzystać z tej samej bazy danych i Centrum powiadomień, tak jak w usłudze Mobile Services. Możesz skopiować te wartości, otwierając [Azure Portal] a następnie przechodząc do oryginalnej aplikacji, kliknij przycisk **ustawienia** > **ustawienia aplikacji**. W obszarze **parametry połączenia**, kopia `MS_NotificationHubConnectionString` i `MS_TableConnectionString`. Przejdź do nowej witryny uaktualniania, a następnie wklej je w programie, zastępując wszystkie istniejące wartości. Powtórz ten proces dla innych ustawień aplikacji potrzebom aplikacji. Jeśli nie używa zmigrowaną usługę, możesz przeczytać parametry połączenia i ustawień aplikacji z **Konfiguruj** kartę usług Mobile Services części [Klasyczny portal Azure].
+Prawdopodobnie można korzystać z tej samej bazy danych i Centrum powiadomień, tak jak w usłudze Mobile Services. Możesz skopiować te wartości, otwierając [Azure Portal] a następnie przechodząc do oryginalnej aplikacji, kliknij przycisk **ustawienia** > **ustawienia aplikacji**. W obszarze **parametry połączenia**, kopia `MS_NotificationHubConnectionString` i `MS_TableConnectionString`. Przejdź do nowej witryny uaktualniania, a następnie wklej je w programie, zastępując wszystkie istniejące wartości. Powtórz ten proces dla innych ustawień aplikacji potrzebom aplikacji. Jeśli nie używa zmigrowaną usługę, możesz przeczytać parametry połączenia i ustawień aplikacji z **Konfiguruj** kartę usług Mobile Services części [Klasyczna witryna Azure Portal].
 
 Utwórz kopię projekt platformy ASP.NET dla aplikacji i opublikować ją do nowej witryny. Przy użyciu kopii aplikacji klienckiej aktualizowane przy użyciu nowego adresu URL, zweryfikuj, że wszystko działa zgodnie z oczekiwaniami.
 
@@ -84,18 +84,23 @@ Będzie kilka błędów kompilatora wynikające z różnic między zestawy SDK, 
 ### <a name="base-configuration"></a>Konfiguracja podstawowa
 Następnie w WebApiConfig.cs, można zastąpić:
 
-        // Use this class to set configuration options for your mobile service
-        ConfigOptions options = new ConfigOptions();
+```csharp
+// Use this class to set configuration options for your mobile service
+ConfigOptions options = new ConfigOptions();
 
-        // Use this class to set WebAPI configuration options
-        HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
+// Use this class to set WebAPI configuration options
+HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
+```
 
 z 
 
-        HttpConfiguration config = new HttpConfiguration();
-        new MobileAppConfiguration()
-            .UseDefaultConfiguration()
-        .ApplyTo(config);
+```csharp
+HttpConfiguration config = new HttpConfiguration();
+new MobileAppConfiguration()
+    .UseDefaultConfiguration()
+.ApplyTo(config);
+
+```
 
 > [!NOTE]
 > Jeśli chcesz dowiedzieć się więcej na temat nowego zestawu SDK serwera .NET i Dodaj/Usuń funkcje z aplikacji, zapoznaj się z artykułem [jak używać zestawu SDK serwera .NET] tematu.
@@ -110,8 +115,10 @@ Jeśli aplikacja sprawia, że korzystać z funkcji uwierzytelniania, należy ró
 
 Upewnij się, że `Configuration()` metoda kończy się na:
 
-        app.UseWebApi(config)
-        app.UseAppServiceAuthentication(config);
+```csharp
+app.UseWebApi(config)
+app.UseAppServiceAuthentication(config);
+```
 
 Istnieją dodatkowe zmiany związane z uwierzytelnianiem, które opisano w poniższej sekcji pełnego uwierzytelniania.
 
@@ -120,7 +127,9 @@ W usługach Mobile Services nazwa aplikacji mobilnej są obsługiwane jako domy�
 
 Aby upewnić się, że mają ten sam schemat, który odwołuje się zgodnie z wcześniej, użyj następujących można ustawić schematu w DbContext aplikacji:
 
-        string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_MobileServiceName");
+```csharp
+string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_MobileServiceName");
+```
 
 Upewnij się, że masz MS_MobileServiceName ustawić po wykonaniu powyższych. Możesz także podać inną nazwę schematu, jeśli aplikacja dostosowane to wcześniej.
 
@@ -140,7 +149,7 @@ W usłudze Azure Mobile Apps właściwości systemu nie jest już mieć specjaln
 * createdAt
 * updatedAt
 * usunięte
-* wersja
+* version
 
 Zestawów SDK klienta funkcji Mobile Apps Użyj nowych nazw właściwości systemu, więc żadne zmiany nie są wymagane dla kodu klienta. Jednak jeśli wykonujesz bezpośrednio wywołania REST z usługą następnie należy zmieniać zapytań odpowiednio.
 
@@ -156,7 +165,7 @@ W systemach iOS należy zmienić schematu danych podstawowych dla Twojego jednos
 | id |Ciąg, oznaczone jako wymagane |klucz podstawowy w magazynie zdalnym |
 | createdAt |Date |mapy właściwości systemu createdAt i (opcjonalnie) |
 | updatedAt |Date |mapy właściwości systemu updatedAt i (opcjonalnie) |
-| wersja |Ciąg |(opcjonalnie) służącą do wykrywania konfliktów, mapy do wersji |
+| version |Ciąg |(opcjonalnie) służącą do wykrywania konfliktów, mapy do wersji |
 
 #### <a name="querying-system-properties"></a>Tworzenie zapytań właściwości systemu
 W usługach Azure Mobile Services właściwości systemu nie są wysyłane domyślnie, ale tylko wtedy, gdy żądanie przy użyciu ciągu zapytania `__systemProperties`. Z kolei w systemie Azure Mobile Apps właściwości są **zawsze zaznaczony** ponieważ są one częścią modelu obiektów serwera zestawu SDK.
@@ -167,28 +176,30 @@ Najprostszym sposobem, aby rozwiązać ten problem jest zmodyfikowanie swoje dto
 
 Na przykład definiuje następujące `TodoItem` bez właściwości systemu:
 
-    using System.ComponentModel.DataAnnotations.Schema;
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
 
-    public class TodoItem : ITableData
-    {
-        public string Text { get; set; }
+public class TodoItem : ITableData
+{
+    public string Text { get; set; }
 
-        public bool Complete { get; set; }
+    public bool Complete { get; set; }
 
-        public string Id { get; set; }
+    public string Id { get; set; }
 
-        [NotMapped]
-        public DateTimeOffset? CreatedAt { get; set; }
+    [NotMapped]
+    public DateTimeOffset? CreatedAt { get; set; }
 
-        [NotMapped]
-        public DateTimeOffset? UpdatedAt { get; set; }
+    [NotMapped]
+    public DateTimeOffset? UpdatedAt { get; set; }
 
-        [NotMapped]
-        public bool Deleted { get; set; }
+    [NotMapped]
+    public bool Deleted { get; set; }
 
-        [NotMapped]
-        public byte[] Version { get; set; }
-    }
+    [NotMapped]
+    public byte[] Version { get; set; }
+}
+```
 
 Uwaga: Jeśli występują błędy `NotMapped`, Dodaj odwołanie do zestawu `System.ComponentModel.DataAnnotations`.
 
@@ -208,12 +219,16 @@ Teraz jest posiadanie wszystkich ApiControllers, które będą używane przez kl
 
 `ApiServices` Obiekt nie jest już częścią zestawu SDK. Aby uzyskać dostęp ustawienia aplikacji mobilnej, można użyć następujących czynności:
 
-    MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+```csharp
+MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+```
 
 Podobnie rejestrowanie teraz odbywa się przy użyciu standardowych zapisu śledzenia ASP.NET:
 
-    ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
-    traceWriter.Info("Hello, World");  
+```csharp
+ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
+traceWriter.Info("Hello, World");  
+```
 
 ## <a name="authentication"></a>Zagadnienia dotyczące uwierzytelniania
 Składniki uwierzytelniania usług Mobile Services zostały przeniesione do funkcji uwierzytelniania/autoryzacji dla aplikacji usługi. Możesz dowiedzieć się o włączenie tej witryny, czytając [Dodawanie uwierzytelniania do aplikacji mobilnej](app-service-mobile-ios-get-started-users.md) tematu.
@@ -227,11 +242,15 @@ Jeśli używano inne opcje AuthorizeLevel, takie jak administrator lub aplikacji
 ### <a name="getting-additional-user-information"></a>Uzyskiwanie dodatkowych informacji dotyczących użytkowników
 Można uzyskać dodatkowe informacje dotyczące użytkownika, łącznie z tokenów dostępu za pośrednictwem `GetAppServiceIdentityAsync()` metody:
 
-        FacebookCredentials creds = await this.User.GetAppServiceIdentityAsync<FacebookCredentials>();
+```csharp
+FacebookCredentials creds = await this.User.GetAppServiceIdentityAsync<FacebookCredentials>();
+```
 
 Ponadto jeśli aplikacja przejmuje zależności użytkownika identyfikatorów, takich jak przechowywanie ich w bazie danych, jest należy pamiętać, że identyfikatory użytkowników między usługami Mobile Services a App Service Mobile Apps są różne. Identyfikator użytkownika usługi mobilnych, nadal można jednak uzyskać. Wszystkie podklasy ProviderCredentials ma właściwości identyfikatora użytkownika. Więc kontynuowanie z przykładu przed:
 
-        string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
+```csharp
+string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
+```
 
 Jeśli aplikacja wszelkie zależności na nazwy użytkownika, należy wykorzystać tę samą rejestrację za pomocą dostawcy tożsamości, jeśli jest to możliwe. Identyfikatory użytkowników zwykle są ograniczone do rejestracji aplikacji, który został użyty, dzięki czemu wprowadzenie nowej rejestracji można tworzyć problemy z pasujących użytkowników do ich danych.
 
@@ -243,9 +262,11 @@ Po utworzeniu operacyjnej zaplecza aplikacji mobilnej, można pracować na nową
 
 Jedną z najważniejszych zmian między wersjami jest, że konstruktory nie wymagają już klucza aplikacji. Możesz teraz po prostu przekazać adres URL aplikacji mobilnej. Na przykład na klientach .NET `MobileServiceClient` Konstruktor jest obecnie:
 
-        public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://contoso.azurewebsites.net", // URL of the Mobile App
-        );
+```csharp
+public static MobileServiceClient MobileService = new MobileServiceClient(
+    "https://contoso.azurewebsites.net", // URL of the Mobile App
+);
+```
 
 Możesz przeczytać o zainstalowanie nowych zestawów SDK i korzystanie z nowej struktury za pomocą poniższych linków:
 
@@ -259,17 +280,12 @@ Jeśli masz nową wersję klienta gotowy, wypróbuj działanie rozwiązania na u
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com/
-[Klasyczny portal Azure]: https://manage.windowsazure.com/
+[Klasyczna witryna Azure Portal]: https://manage.windowsazure.com/
 [Co to jest usługa Mobile Apps?]: app-service-mobile-value-prop.md
-[I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
 [Zestaw SDK serwera aplikacji mobilnej]: http://www.nuget.org/packages/microsoft.azure.mobile.server
-[Create a Mobile App]: app-service-mobile-xamarin-ios-get-started.md
-[Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /azure/scheduler/
 [Zadanie Web Job]: https://github.com/Azure/azure-webjobs-sdk/wiki
 [Jak używać zestawu SDK serwera .NET]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
-[Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [Cennik usługi aplikacji]: https://azure.microsoft.com/pricing/details/app-service/
 [Omówienie zestawu SDK serwera .NET]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

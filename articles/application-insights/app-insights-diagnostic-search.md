@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5bff5c5cfd022134c1d86883a267528717969c59
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c595695f3643522d36b53091656c3655f83a9345
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721684"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877840"
 ---
 # <a name="using-search-in-application-insights"></a>Za pomocą wyszukiwania w usłudze Application Insights
 Wyszukiwanie jest funkcją [usługi Application Insights](app-insights-overview.md) służącego do wyszukania i zapoznaj się z elementów telemetrii, takich jak wyświetleń stron, wyjątki lub żądania sieci web. I przeglądać ślady dzienników i zdarzeń, które zostały zakodowane.
 
-(W przypadku bardziej złożone zapytania na danych, użyj [analizy](../log-analytics/query-language/get-started-analytics-portal.md).)
+(W przypadku bardziej złożone zapytania na danych, użyj [analizy](../azure-monitor/log-query/get-started-portal.md).)
 
 ## <a name="where-do-you-see-search"></a>Gdzie można zobaczyć wyszukiwania?
 
@@ -101,7 +101,7 @@ Znajdź wszystkie elementy z taką samą wartość właściwości:
 ## <a name="search-the-data"></a>Wyszukiwanie danych
 
 > [!NOTE]
-> Aby napisać bardziej złożone zapytania, należy otworzyć [ **Analytics** ](../log-analytics/query-language/get-started-analytics-portal.md) w górnej części bloku przeszukiwania.
+> Aby napisać bardziej złożone zapytania, należy otworzyć [ **Analytics** ](../azure-monitor/log-query/get-started-portal.md) w górnej części bloku przeszukiwania.
 > 
 
 Można wyszukiwać terminy w dowolnej wartości właściwości. Jest to szczególnie przydatne, jeśli napisano [zdarzenia niestandardowe](app-insights-api-custom-events-metrics.md) przy użyciu wartości właściwości. 
@@ -163,7 +163,7 @@ Firma Microsoft nie rejestruj danych POST automatycznie, ale można użyć [Trac
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>Następne kroki
-* [Zapisywanie złożonych zapytań w usłudze Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Zapisywanie złożonych zapytań w usłudze Analytics](../azure-monitor/log-query/get-started-portal.md)
 * [Wyślij dzienniki i niestandardowych danych telemetrycznych do usługi Application Insights](app-insights-asp-net-trace-logs.md)
 * [Konfigurowanie dostępności i czasu odpowiedzi testów](app-insights-monitor-web-app-availability.md)
 * [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md)

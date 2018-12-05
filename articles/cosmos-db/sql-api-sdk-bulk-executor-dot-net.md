@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Interfejs API .NET przetwarzania zbiorczego zestawu SDK i zasoby | Dokumentacja firmy Microsoft'
+title: 'Azure Cosmos DB: Interfejs API .NET przetwarzania zbiorczego zestawu SDK i zasoby'
 description: Poznaj interfejs API .NET wykonawca zbiorcze i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami usługi Azure Cosmos DB zbiorcze wykonawca .NET SDK.
 author: tknandu
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: ae9560296e37ff5492c07e69e6ba0eb5539915c8
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a0d2ab305f0ca819b8dba573a9570ff03682a947
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308499"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875012"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka przetwarzania zbiorczego .NET: pobieranie informacji 
 

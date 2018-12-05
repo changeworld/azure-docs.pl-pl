@@ -155,7 +155,7 @@ items:
       href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
   - name: Monitorowanie i rejestrowanie
     items:
-    - name: Rozwiązanie dotyczące kondycji kontenerów platformy Azure
+    - name: Usługa Azure Monitor dla kontenerów
       href: ../monitoring/monitoring-container-health.md
       maintainContext: true
     - name: Wyświetlanie dzienników składnika głównego
@@ -212,6 +212,12 @@ items:
       href: spark-job.md
     - name: Korzystanie z procesorów GPU
       href: gpu-cluster.md
+    - name: Używanie rozwiązania Istio
+      items:
+      - name: Instalowanie i konfigurowanie
+        href: istio-install.md
+      - name: Routing inteligentny i wydania Canary
+        href: istio-scenario-routing.md
     - name: Korzystanie z usługi Azure Database for PostgreSQL
       href: ../postgresql/concepts-aks.md
       maintainContext: true
@@ -273,9 +279,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Często zadawane pytania
     href: faq.md
-ms.openlocfilehash: 4bc03d2a50f384527bdfd3612d684cff6a6310e2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5e6f4aca52e72a8dbb578a874e050734c52393d7
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847341"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890929"

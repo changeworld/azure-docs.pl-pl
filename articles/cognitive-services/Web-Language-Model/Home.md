@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 39995ca44573fe50bf0c2a2510c2c19fb227ff1d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 99d48e2abdc166fe6472195c86d890c3c1060cfa
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241127"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863792"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Czym jest interfejs Web Language Model API? (Wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Interfejs Web Language Model API obsługuje maksymalnie 4 operacje wyszukiwania:
 1. Zasubskrybuj usługę.
 2. Pobierz zestaw [SDK](https://www.github.com/microsoft/cognitive-weblm-windows).
 3. Uruchom przykładowy kod zestawu SDK.
-4. Zapoznaj się z [dokumentacją interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104), aby uzyskać wszystkie szczegóły punktów końcowych, w tym fragmenty kodu w różnych językach.
+4. Zapoznaj się z [dokumentacją interfejsu API](http://web.archive.org/web/20170503191852/ https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51), aby uzyskać wszystkie szczegóły punktów końcowych, w tym fragmenty kodu w różnych językach.
 
 ## <a name="underlying-technology"></a>Technologia bazowa
 

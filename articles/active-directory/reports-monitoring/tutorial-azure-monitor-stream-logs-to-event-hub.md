@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7582c578e91fb3e36d7a0ecc1da7ede0cefc0f4c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 941e914e6ce99082abdd920bd7171644f3575a38
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623783"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849398"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Samouczek: przesyłanie strumieniowe dzienników usługi Azure Active Directory loguje się do centrum zdarzeń platformy Azure (wersja zapoznawcza)
 
@@ -77,7 +77,7 @@ Po wyświetleniu danych w centrum zdarzeń możesz uzyskać dostęp do danych i 
 * **Skonfiguruj obsługiwane narzędzie SIEM**. W celu odczytania danych z centrum zdarzeń większość narzędzi wymaga parametrów połączenia centrum zdarzeń i pewnych uprawnień do Twojej subskrypcji platformy Azure. Narzędzia innych firm oferujące integrację z usługą Azure Monitor to między innymi:
     * **Splunk**: aby uzyskać więcej informacji na temat sposobu integracji dzienników usługi Azure AD z narzędziem Splunk, zobacz [Integrate Azure AD logs with Splunk by using Azure Monitor (Integrowanie dzienników usługi Azure Active Directory z narzędziem Splunk za pomocą usługi Azure Monitor)](tutorial-integrate-activity-logs-with-splunk.md).
     
-    * **IBM QRadar**: składniki Microsoft Azure DSM i Microsoft Azure Event Hub Protocol są dostępne do pobrania w witrynie pomocy technicznej firmy [IBM](http://www.ibm.com/support). Aby uzyskać więcej informacji na temat integracji z platformą Azure, przejdź do witryny [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+    * **IBM QRadar**: składniki Microsoft Azure DSM i Microsoft Azure Event Hub Protocol są dostępne do pobrania w witrynie pomocy technicznej firmy [IBM](https://www.ibm.com/support). Aby uzyskać więcej informacji na temat integracji z platformą Azure, przejdź do witryny [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
     
     * **Sumo Logic**: aby skonfigurować narzędzie Sumo Logic do pracy z danymi z centrum zdarzeń, zobacz [Install the Azure AD app and view the dashboards (Instalowanie aplikacji usługi Azure AD i wyświetlanie pulpitów nawigacyjnych)](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards). 
 

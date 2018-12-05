@@ -2,18 +2,18 @@
 title: Tworzenie kopii zapasowych serwerów VMware za pomocą usługi Azure Backup Server
 description: Użyj usługi Azure Backup Server do utworzenia kopii zapasowej serwerów vCenter/ESXi VMware do platformy Azure lub dysku. Ten artykuł zawiera krok = instrukcji krok po kroku do tworzenia kopii zapasowych (lub ochronę) obciążeń oprogramowania VMware.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.openlocfilehash: ce7b255359c076ddae642ed44f056e444b655e25
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 625313b612ffa99dd3b1185072074c06f57e22de
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216414"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878061"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Tworzenie kopii zapasowej serwera VMware na platformę Azure
 

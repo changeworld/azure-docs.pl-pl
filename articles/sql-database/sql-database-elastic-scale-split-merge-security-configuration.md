@@ -3,7 +3,7 @@ title: Zabezpieczenia dzielenia i scalania konfiguracji | Dokumentacja firmy Mic
 description: Konfigurowanie x409 certyfikaty szyfrowania przy użyciu usługi dzielenia i scalania kątem elastycznego skalowania.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 74717b55ca8c935af7b4311ef29404e4a7d64d9c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231401"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879744"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
 Aby użyć usługi dzielenia i scalania, należy poprawnie skonfigurować zabezpieczenia. Usługa jest częścią funkcji elastyczne skalowanie systemu Microsoft Azure SQL Database. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scalić samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).

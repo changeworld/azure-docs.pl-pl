@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 10/19/2018
-ms.openlocfilehash: 2003b90f95c8c139bf5b3526ed8d3994ee08efd9
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.date: 12/04/2018
+ms.openlocfilehash: ce13607e795710ebc7b0020a0025bd207327f1d2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444484"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878758"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Co to jest Azure Database Migration Service?
 Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemową migrację z wielu źródłowych baz danych na danych na platformie Azure przy minimalnych przestojach (migracja online).
@@ -24,7 +24,7 @@ Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana 
 Azure Database Migration Service integruje niektóre funkcje oferowane przez naszych istniejących narzędzi i usług. Jego zapewnia klientom kompleksowe rozwiązanie o wysokiej dostępności. Używa usługi [Data Migration Assistant](https://aka.ms/dma) można wygenerować raporty z oceny zawierające przedstawić zalecenia w zakresie przeprowadzenie Cię przez proces zmiany wymagane przed migracją. To Ty możesz aby skorygować wszystkie wymagane. Gdy wszystko będzie gotowe do rozpoczęcia procesu migracji, usługa Azure Database Migration Service wykona wszystkie wymagane kroki. Można wyzwalać i zapomnij migrację projektów z poczucie spokoju, wiedząc, że proces korzysta z najlepszych rozwiązań, zgodnie z ustaleniami firmy Microsoft.
 
 > [!NOTE]
-> Przy użyciu usługi Azure Database Migration Service, aby dokonać migracji online wymaga tworzenia wystąpienia oparte na krytyczne dla działania firmy (wersja zapoznawcza) warstwy cenowej.
+> Przy użyciu usługi Azure Database Migration Service, aby dokonać migracji online wymaga tworzenia wystąpienia w oparciu o warstwy cenowej Premium (wersja zapoznawcza).
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 

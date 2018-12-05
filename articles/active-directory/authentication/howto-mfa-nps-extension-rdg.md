@@ -5,32 +5,33 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/03/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 10b2b6e67c22efaf1dcab2cfe8abdd42b7576dbc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6f8999f0af50eb50b5ebca9acd57f573cfc71961
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426071"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877497"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrowanie infrastruktury bramy usług pulpitu zdalnego przy użyciu rozszerzenia serwera zasad sieciowych (NPS) i Azure AD
 
-Ten artykuł zawiera szczegółowe informacje do integrowania infrastruktury bramy usług pulpitu zdalnego za pomocą usługi Azure Multi-Factor Authentication (MFA) przy użyciu rozszerzenia serwera zasad sieciowych (NPS) dla systemu Microsoft Azure. 
+Ten artykuł zawiera szczegółowe informacje do integrowania infrastruktury bramy usług pulpitu zdalnego za pomocą usługi Azure Multi-Factor Authentication (MFA) przy użyciu rozszerzenia serwera zasad sieciowych (NPS) dla systemu Microsoft Azure.
 
 Rozszerzenia serwera zasad sieciowych (NPS) dla platformy Azure umożliwia klientom w zabezpieczaniu uwierzytelniania klienta usługi Usługa użytkowników zdalnego uwierzytelniania (RADIUS) za pomocą usługi Azure użytkownika oparte na chmurze [Multi-Factor Authentication (MFA)](multi-factor-authentication.md). To rozwiązanie zapewnia weryfikację dwuetapową dla dodając drugą warstwę zabezpieczeń do logowania użytkowników i transakcji.
 
-Ten artykuł zawiera instrukcje krok po kroku do integrowania infrastruktury NPS z usługą Azure MFA przy użyciu rozszerzenia serwera NPS dla platformy Azure. Dzięki temu weryfikacji dla użytkowników próbujących się zalogować się do bramy usług pulpitu zdalnego. 
+Ten artykuł zawiera instrukcje krok po kroku do integrowania infrastruktury NPS z usługą Azure MFA przy użyciu rozszerzenia serwera NPS dla platformy Azure. Dzięki temu weryfikacji dla użytkowników próbujących się zalogować się do bramy usług pulpitu zdalnego.
 
 Zasad sieciowych i dostępu do usług (NPS) umożliwia organizacjom wykonaj następujące czynności:
+
 * Zdefiniuj centralne lokalizacje w celu zarządzania i sterowania żądania sieci, określając, kto może się połączyć, jakie razy dziennie połączenia są dozwolone, czas trwania połączeń i poziom zabezpieczeń, które klienci muszą używać do łączenia i tak dalej. Zamiast określać te zasady na każdym serwerze sieci VPN lub bramy usług pulpitu zdalnego (RD), te zasady można określić jeden raz w centralnej lokalizacji. Protokołu RADIUS umożliwia scentralizowane uwierzytelnianie, autoryzacja i Ewidencjonowanie. 
 * Ustal i Wymuś zasady dotyczące kondycji klienta ochrony dostępu do sieci (NAP), które określają, czy urządzenia są przyznawane nieograniczony lub ograniczony dostęp do zasobów sieciowych.
-* Zapewnia sposób wymuszające uwierzytelnianie i autoryzację do uzyskiwania dostępu do 802.1 punkty dostępu bezprzewodowego możliwością x i przełączników Ethernet.    
+* Zapewnia sposób wymuszające uwierzytelnianie i autoryzację do uzyskiwania dostępu do 802.1 punkty dostępu bezprzewodowego możliwością x i przełączników Ethernet.
 
-Zazwyczaj organizacji, Użyj serwera zasad Sieciowych (RADIUS), aby uprościć i scentralizowane zarządzanie VPN zasad. Jednak w wielu organizacjach również użyć serwera zasad Sieciowych można uproszczenie i scentralizowane zarządzanie zasady autoryzacji połączeń usług pulpitu usług pulpitu zdalnego (RD CAP). 
+Zazwyczaj organizacji, Użyj serwera zasad Sieciowych (RADIUS), aby uprościć i scentralizowane zarządzanie VPN zasad. Jednak w wielu organizacjach również użyć serwera zasad Sieciowych można uproszczenie i scentralizowane zarządzanie zasady autoryzacji połączeń usług pulpitu usług pulpitu zdalnego (RD CAP).
 
 Organizacje, można również zintegrować serwera NPS z usługą Azure MFA, aby zwiększyć bezpieczeństwo i zapewnia wysoki poziom zgodności. Pozwala to zagwarantować, że użytkownicy ustanawiać weryfikacji dwuetapowej, aby zalogować się do bramy usług pulpitu zdalnego. Użytkownikom można udzielić dostępu musi podać ich kombinacji nazwy użytkownika/hasła, wraz z informacjami, których użytkownik ma w swojej kontrolce. Te informacje, musi być zaufany i nie można łatwo zduplikować, takie jak numer telefonu komórkowego, numer telefonu stacjonarnego, aplikacja na urządzeniu przenośnym i tak dalej.
 
@@ -46,15 +47,16 @@ Brama usług pulpitu zdalnego można skonfigurować na potrzeby magazynu central
 
 Gdy rozszerzenia serwera NPS dla platformy Azure jest zintegrowana z serwerem NPS i bramy usług pulpitu zdalnego, przepływ pomyślne uwierzytelnienie jest następująca:
 
-1. Serwer bramy usług pulpitu zdalnego odbiera żądanie uwierzytelnienia od użytkownika pulpitu zdalnego do połączenia z zasobem, takich jak sesji pulpitu zdalnego. Działając jako klient usługi RADIUS, serwera bramy usług pulpitu zdalnego przekształcają żądanie komunikatu żądanie dostępu usługi RADIUS i wysyła wiadomość do serwera RADIUS (NPS), w którym zainstalowano rozszerzenia serwera NPS. 
+1. Serwer bramy usług pulpitu zdalnego odbiera żądanie uwierzytelnienia od użytkownika pulpitu zdalnego do połączenia z zasobem, takich jak sesji pulpitu zdalnego. Działając jako klient usługi RADIUS, serwera bramy usług pulpitu zdalnego przekształcają żądanie komunikatu żądanie dostępu usługi RADIUS i wysyła wiadomość do serwera RADIUS (NPS), w którym zainstalowano rozszerzenia serwera NPS.
 1. Kombinacja nazwy użytkownika i hasła jest weryfikowana w usłudze Active Directory, a użytkownik jest uwierzytelniony.
-1. Jeśli są spełnione wszystkie warunki określone w żądaniu połączenia serwera zasad Sieciowych i zasad sieci (na przykład, pory dnia lub grupy ograniczeniami członkostwa), rozszerzenia serwera NPS dla wyzwalaczy żądania uwierzytelniania pomocniczego, za pomocą usługi Azure MFA. 
-1. Usługa Azure MFA komunikuje się z usługą Azure AD, pobiera szczegóły użytkownika i wykonuje dodatkowego uwierzytelniania przy użyciu metody skonfigurowany przez użytkownika (wiadomości tekstowej, aplikacji mobilnej i tak dalej). 
+1. Jeśli są spełnione wszystkie warunki określone w żądaniu połączenia serwera zasad Sieciowych i zasad sieci (na przykład, pory dnia lub grupy ograniczeniami członkostwa), rozszerzenia serwera NPS dla wyzwalaczy żądania uwierzytelniania pomocniczego, za pomocą usługi Azure MFA.
+1. Usługa Azure MFA komunikuje się z usługą Azure AD, pobiera szczegóły użytkownika i wykonuje dodatkowego uwierzytelniania przy użyciu obsługiwanych metod.
 1. W razie powodzenia żądania uwierzytelniania MFA usługi Azure MFA komunikuje się wynik do rozszerzenia serwera NPS.
 1. Serwer zasad Sieciowych, w którym zainstalowane jest rozszerzenie, wysyła komunikat udzielenia dostępu usługi RADIUS dla zasad RD CAP do serwera bramy usług pulpitu zdalnego.
 1. Użytkownik otrzymuje dostęp do zasobu żądanej sieci za pośrednictwem bramy usług pulpitu zdalnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 W tej sekcji przedstawiono wymagania wstępne niezbędne przed Integrowanie usługi Azure MFA z bramą usług pulpitu zdalnego. Przed przystąpieniem do wykonywania, konieczne jest posiadanie następujących wymagań wstępnych w miejscu.  
 
 * Infrastruktury usług pulpitu zdalnego
@@ -65,39 +67,48 @@ W tej sekcji przedstawiono wymagania wstępne niezbędne przed Integrowanie usł
 * Identyfikator GUID usługi Azure Active Directory
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>Infrastruktury usług pulpitu zdalnego
+
 W miejscu, musi mieć działającą infrastrukturę usług pulpitu zdalnego (RDS). Jeśli tego nie zrobisz, a następnie możesz szybko utworzyć tej infrastruktury na platformie Azure przy użyciu następującego szablonu szybkiego startu: [Utwórz kolekcję sesji usług pulpitu zdalnego wdrażania](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
 
 Jeśli chcesz ręcznie utworzyć lokalnej infrastruktury usług pulpitu zdalnego, szybkie do celów testowych, postępuj zgodnie z instrukcjami, aby wdrożyć. 
 **Dowiedz się więcej**: [wdrożenia usług pulpitu zdalnego przy użyciu Azure: Szybki start](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) i [wdrożenia infrastruktury podstawowych usług pulpitu zdalnego](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure). 
 
 ### <a name="azure-mfa-license"></a>Azure MFA License
-Wymagana jest licencja usługi Azure MFA, który jest dostępny za pośrednictwem usługi Azure AD Premium, pakietu Enterprise Mobility plus Security (EMS) lub subskrypcji usługi MFA. Na podstawie użycia licencji dla usługi Azure MFA, na przykład dla każdego użytkownika lub licencji uwierzytelniania na nie są zgodne z rozszerzeniem serwera NPS. Aby uzyskać więcej informacji, zobacz [sposobu uzyskania usługi Azure Multi-Factor Authentication](concept-mfa-licensing.md). Do celów testowych można użyć subskrypcji wersji próbnej. 
+
+Wymagane jest licencję usługi Azure MFA, który jest dostępny za pośrednictwem usługi Azure AD Premium lub inne pakiety, które go zawierają. Na podstawie użycia licencji dla usługi Azure MFA, na przykład dla każdego użytkownika lub licencji uwierzytelniania na nie są zgodne z rozszerzeniem serwera NPS. Aby uzyskać więcej informacji, zobacz [sposobu uzyskania usługi Azure Multi-Factor Authentication](concept-mfa-licensing.md). Do celów testowych można użyć subskrypcji wersji próbnej.
 
 ### <a name="windows-server-software"></a>Oprogramowanie systemu Windows Server
+
 Rozszerzenia serwera NPS wymaga systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszy z zainstalowaną usługą roli serwera NPS. Wszystkie kroki opisane w tej sekcji zostały wykonane przy użyciu systemu Windows Server 2016.
 
 ### <a name="network-policy-and-access-services-nps-role"></a>Rola zasad sieciowych i dostępu do usług (NPS)
+
 Usługi roli serwera NPS zawiera usługi RADIUS serwera i klienta, funkcje, a także usługa kondycji zasady dostępu do sieci. Musi być zainstalowana ta rola na co najmniej dwa komputery w infrastrukturze: bramy usług pulpitu zdalnego, a drugi serwer członkowski lub kontroler domeny. Domyślnie roli jest już obecny na komputerze, skonfigurowany jako brama usług pulpitu zdalnego.  Również zainstalowanie roli serwera NPS na co najmniej na innym komputerze, na przykład kontroler domeny lub serwer członkowski.
 
 Aby uzyskać informacje na temat instalowania roli serwera zasad Sieciowych usługi Windows Server 2012 lub starszy, zobacz [zainstalować serwer zasad dotyczących kondycji ochrony dostępu do sieci](https://technet.microsoft.com/library/dd296890.aspx). Aby uzyskać opis najlepszych rozwiązań dla serwera zasad Sieciowych, w tym zalecenia, aby zainstalować serwer NPS na kontrolerze domeny, zobacz [najlepsze rozwiązania dotyczące serwera NPS](https://technet.microsoft.com/library/cc771746).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Usługa Azure Active Directory zsynchronizowane z usługą Active Directory w środowisku lokalnym
-Aby użyć rozszerzenia serwera NPS, lokalnych użytkowników musi być synchronizowane z usługą Azure AD i włączone dla usługi MFA. W tej sekcji założono, że użytkowników lokalnych są zsynchronizowane z usługą Azure AD za pomocą programu AD Connect. Aby uzyskać informacji na temat usługi Azure AD connect, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md). 
+
+Aby użyć rozszerzenia serwera NPS, lokalnych użytkowników musi być synchronizowane z usługą Azure AD i włączone dla usługi MFA. W tej sekcji założono, że użytkowników lokalnych są zsynchronizowane z usługą Azure AD za pomocą programu AD Connect. Aby uzyskać informacji na temat usługi Azure AD connect, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ### <a name="azure-active-directory-guid-id"></a>Identyfikator GUID usługi Azure Active Directory
+
 Aby zainstalować rozszerzenia serwera NPS, musisz wiedzieć identyfikator GUID usługi Azure AD. Instrukcje dotyczące znajdowania identyfikatora GUID usługi Azure AD znajdują się poniżej.
 
 ## <a name="configure-multi-factor-authentication"></a>Konfigurowanie uwierzytelniania wieloskładnikowego 
+
 Ta sekcja zawiera instrukcje dotyczące integrowania usługi Azure MFA z bramą usług pulpitu zdalnego. Jako administrator należy skonfigurować usługę Azure MFA, zanim użytkownicy będą mogli samodzielnie zarejestrować swoje urządzenia w usłudze Multi-Factor Authentication lub aplikacji.
 
-Postępuj zgodnie z instrukcjami w [wprowadzenie do usługi Azure Multi-Factor Authentication w chmurze](howto-mfa-getstarted.md) włączyć usługę MFA dla użytkowników usługi Azure AD. 
+Postępuj zgodnie z instrukcjami w [wprowadzenie do usługi Azure Multi-Factor Authentication w chmurze](howto-mfa-getstarted.md) włączyć usługę MFA dla użytkowników usługi Azure AD.
 
 ### <a name="configure-accounts-for-two-step-verification"></a>Konfigurowanie konta włączono weryfikację dwuetapową
+
 Po włączeniu konta usługi dla usługi MFA nie możesz zalogować się zasoby zarządzane przez zasady MFA, aż pomyślnie skonfigurowano zaufanego urządzenia do użycia dla drugiego składnika uwierzytelniania, a komputer został uwierzytelniony przy użyciu weryfikacji dwuetapowej.
 
 Postępuj zgodnie z instrukcjami w [co usługi Azure Multi-Factor Authentication oznacza dla mnie?](../user-help/multi-factor-authentication-end-user.md) do zrozumienia i poprawnie skonfigurować urządzenia dla usługi MFA z Twoim kontem użytkownika.
 
 ## <a name="install-and-configure-nps-extension"></a>Instalowanie i konfigurowanie rozszerzenia serwera NPS
+
 Ta sekcja zawiera instrukcje dotyczące konfigurowania infrastruktury usług pulpitu zdalnego przy użyciu usługi Azure MFA klienta do uwierzytelniania przy użyciu bramy usług pulpitu zdalnego.
 
 ### <a name="acquire-azure-active-directory-guid-id"></a>Uzyskiwanie Identyfikatora GUID usługi Azure Active Directory
@@ -112,25 +123,27 @@ W ramach konfiguracji rozszerzenia serwera NPS musisz podać poświadczenia admi
  ![Właściwości](./media/howto-mfa-nps-extension-rdg/image1.png)
 
 ### <a name="install-the-nps-extension"></a>Instalowanie rozszerzenia serwera NPS
-Instalowanie rozszerzenia serwera NPS na serwerze, na którym jest zainstalowana rola zasad sieciowych i dostępu do usług (NPS). Ta opcja działa jako serwer RADIUS dotyczące własnego projektu. 
+
+Instalowanie rozszerzenia serwera NPS na serwerze, na którym jest zainstalowana rola zasad sieciowych i dostępu do usług (NPS). Ta opcja działa jako serwer RADIUS dotyczące własnego projektu.
 
 >[!Important]
 > Upewnij się, że nie instalują rozszerzenia serwera NPS na serwerze bramy usług pulpitu zdalnego.
-> 
+>
 
 1. Pobierz [rozszerzenia serwera NPS](https://aka.ms/npsmfa). 
 1. Kopiowanie pliku wykonywalnego (NpsExtnForAzureMfaInstaller.exe) na serwerze zasad Sieciowych.
 1. Na serwerze zasad Sieciowych, kliknij dwukrotnie **NpsExtnForAzureMfaInstaller.exe**. Jeśli zostanie wyświetlony monit, kliknij przycisk **Uruchom**.
 1. W oknie dialogowym serwera NPS dla usługi Azure MFA Instalator rozszerzenia Przejrzyj postanowienia licencyjne dotyczące oprogramowania, sprawdź **zgodę na warunki i postanowienia licencyjne**i kliknij przycisk **zainstalować**.
- 
+
   ![Ustawienia usługi Azure MFA](./media/howto-mfa-nps-extension-rdg/image2.png)
 
-1. W oknie dialogowym serwera NPS dla usługi Azure MFA Instalator rozszerzenia kliknij **Zamknij**. 
+1. W oknie dialogowym serwera NPS dla usługi Azure MFA Instalator rozszerzenia kliknij **Zamknij**.
 
   ![Rozszerzenia serwera NPS dla usługi Azure MFA](./media/howto-mfa-nps-extension-rdg/image3.png)
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Konfigurowanie certyfikatów do użycia przy użyciu rozszerzenia serwera NPS przy użyciu skryptu programu PowerShell
-Następnie należy skonfigurować certyfikaty do użytku przez rozszerzenia serwera NPS w celu zapewnienia bezpiecznej komunikacji i kontrola. Składniki serwera NPS obejmują skrypt programu Windows PowerShell, który umożliwia skonfigurowanie certyfikatu z podpisem własnym do użytku przy użyciu rozwiązania NPS. 
+
+Następnie należy skonfigurować certyfikaty do użytku przez rozszerzenia serwera NPS w celu zapewnienia bezpiecznej komunikacji i kontrola. Składniki serwera NPS obejmują skrypt programu Windows PowerShell, który umożliwia skonfigurowanie certyfikatu z podpisem własnym do użytku przy użyciu rozwiązania NPS.
 
 Skrypt wykonuje następujące czynności:
 
@@ -163,14 +176,16 @@ Aby użyć skryptu, należy podać rozszerzenie przy użyciu poświadczeń admin
   ![Certyfikat z podpisem własnym](./media/howto-mfa-nps-extension-rdg/image7.png)
 
 ## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Konfigurowanie składników serwera NPS na bramy usług pulpitu zdalnego
+
 W tej sekcji skonfigurujesz zasady autoryzacji połączeń bramy usług pulpitu zdalnego i inne ustawienia usługi RADIUS.
 
-Przepływ uwierzytelniania wymaga wymieniane wiadomości usługi RADIUS pomiędzy bramą usług pulpitu zdalnego i serwer NPS, w którym jest zainstalowany serwer zasad Sieciowych. Oznacza to, że zarówno Brama usług pulpitu zdalnego, jak i serwera NPS, w którym zainstalowano rozszerzenia serwera NPS, należy skonfigurować ustawienia klientów usługi RADIUS. 
+Przepływ uwierzytelniania wymaga wymieniane wiadomości usługi RADIUS pomiędzy bramą usług pulpitu zdalnego i serwer NPS, w którym jest zainstalowany serwer zasad Sieciowych. Oznacza to, że zarówno Brama usług pulpitu zdalnego, jak i serwera NPS, w którym zainstalowano rozszerzenia serwera NPS, należy skonfigurować ustawienia klientów usługi RADIUS.
 
 ### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Skonfiguruj zasady autoryzacji połączeń bramy usług pulpitu zdalnego, aby używał magazynu centralnego
+
 Zasady autoryzacji połączeń usług pulpitu zdalnego (RD CAP) określenie wymagań dotyczących nawiązywania połączenia z serwerem bramy usług pulpitu zdalnego. Limity usług pulpitu zdalnego, które mogą być przechowywane lokalnie (ustawienie domyślne) lub mogą one być przechowywane w centralnym magazynie RD CAP, który jest uruchomiony serwer zasad Sieciowych. Aby skonfigurować integrację usługi Azure MFA, za pomocą usług pulpitu zdalnego, należy określić korzystanie z magazynu centralnego.
 
-1. Na serwerze bramy usług pulpitu zdalnego Otwórz **Menedżera serwera**. 
+1. Na serwerze bramy usług pulpitu zdalnego Otwórz **Menedżera serwera**.
 1. W menu, kliknij polecenie **narzędzia**, wskaż polecenie **usług pulpitu zdalnego**, a następnie kliknij przycisk **Menedżera bramy usług pulpitu zdalnego**.
 
   ![Usługi pulpitu zdalnego](./media/howto-mfa-nps-extension-rdg/image8.png)
@@ -192,11 +207,12 @@ Zasady autoryzacji połączeń usług pulpitu zdalnego (RD CAP) określenie wyma
  >Wspólny klucz tajny jest używany do ustanawiania relacji zaufania między klientami i serwerów usługi RADIUS. Tworzenie wpisu tajnego długie i złożone.
  >
 
- ![Wspólny klucz tajny](./media/howto-mfa-nps-extension-rdg/image11.png)
+ ![Wspólny wpis tajny](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. Kliknij przycisk **OK**, aby zamknąć okno dialogowe.
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Skonfiguruj wartość limitu czasu usługi RADIUS na serwerze zasad Sieciowych zdalnego pulpitu bramy
+
 Aby upewnić się, że jest czas na przeprowadzenie walidacji poświadczeń użytkowników, weryfikacji dwuetapowej, otrzymywać odpowiedzi i odpowiadanie na wiadomości usługi RADIUS, należy dostosować wartość limitu czasu usługi RADIUS.
 
 1. Na serwerze bramy usług pulpitu zdalnego Otwórz Menedżera serwera. W menu, kliknij polecenie **narzędzia**, a następnie kliknij przycisk **serwer zasad sieciowych**. 
@@ -220,10 +236,11 @@ Aby upewnić się, że jest czas na przeprowadzenie walidacji poświadczeń uży
 
  ![Edycja serwera Radius](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-1.  Kliknij przycisk **OK** dwa razy, aby zamknąć okno dialogowe.
+1. Kliknij przycisk **OK** dwa razy, aby zamknąć okno dialogowe.
 
-### <a name="verify-connection-request-policies"></a>Sprawdź zasady żądań połączeń 
-Domyślnie podczas konfigurowania bramy usług pulpitu zdalnego na potrzeby magazynu zasady centralne zasady autoryzacji połączeń, bramy usług pulpitu zdalnego jest skonfigurowany do przekazywania limit żądań do serwera NPS. Serwer zasad Sieciowych przy użyciu rozszerzenia usługi Azure MFA zainstalowano, przetwarza żądanie dostępu usługi RADIUS. Poniższe kroki pokazują jak zweryfikować domyślnej zasady żądań połączeń. 
+### <a name="verify-connection-request-policies"></a>Sprawdź zasady żądań połączeń
+
+Domyślnie podczas konfigurowania bramy usług pulpitu zdalnego na potrzeby magazynu zasady centralne zasady autoryzacji połączeń, bramy usług pulpitu zdalnego jest skonfigurowany do przekazywania limit żądań do serwera NPS. Serwer zasad Sieciowych przy użyciu rozszerzenia usługi Azure MFA zainstalowano, przetwarza żądanie dostępu usługi RADIUS. Poniższe kroki pokazują jak zweryfikować domyślnej zasady żądań połączeń.
 
 1. W bramie usług pulpitu zdalnego, w konsoli serwera NPS (lokalny), rozwiń węzeł **zasady**i wybierz **zasady żądań połączeń**.
 1. Kliknij dwukrotnie **zasady autoryzacji bramy usług terminalowych**.
@@ -231,26 +248,29 @@ Domyślnie podczas konfigurowania bramy usług pulpitu zdalnego na potrzeby maga
 1. Na **ustawienia** kliknij kartę pod przesyłanie dalej żądania połączenia **uwierzytelniania**. Klient usługi RADIUS jest skonfigurowany do przesyłania żądań uwierzytelniania.
 
  ![Ustawienia uwierzytelniania](./media/howto-mfa-nps-extension-rdg/image15.png)
- 
-1. Kliknij przycisk **anulować**. 
+
+1. Kliknij przycisk **anulować**.
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Konfigurowanie serwera NPS na serwerze, na którym zainstalowano rozszerzenia serwera NPS
-Serwer NPS, w którym zainstalowano rozszerzenia serwera NPS musi być w stanie wymieniać komunikaty usługi RADIUS za pomocą serwera NPS na bramy usług pulpitu zdalnego. Aby włączyć ten wymianę komunikatów, należy skonfigurować składniki serwera NPS na serwerze, na którym jest zainstalowana usługa rozszerzenia serwera NPS. 
+
+Serwer NPS, w którym zainstalowano rozszerzenia serwera NPS musi być w stanie wymieniać komunikaty usługi RADIUS za pomocą serwera NPS na bramy usług pulpitu zdalnego. Aby włączyć ten wymianę komunikatów, należy skonfigurować składniki serwera NPS na serwerze, na którym jest zainstalowana usługa rozszerzenia serwera NPS.
 
 ### <a name="register-server-in-active-directory"></a>Zarejestruj serwer w usłudze Active Directory
+
 Aby działać poprawnie, w tym scenariuszu, serwer NPS musi zostać zarejestrowany w usłudze Active Directory.
 
 1. Na serwerze NPS Otwórz **Menedżera serwera**.
-1. W Menedżerze serwera kliknij **narzędzia**, a następnie kliknij przycisk **serwer zasad sieciowych**. 
-1. W konsoli serwera zasad sieciowych, kliknij prawym przyciskiem myszy **serwer NPS (lokalny)**, a następnie kliknij przycisk **Zarejestruj serwer w usłudze Active Directory**. 
+1. W Menedżerze serwera kliknij **narzędzia**, a następnie kliknij przycisk **serwer zasad sieciowych**.
+1. W konsoli serwera zasad sieciowych, kliknij prawym przyciskiem myszy **serwer NPS (lokalny)**, a następnie kliknij przycisk **Zarejestruj serwer w usłudze Active Directory**.
 1. Kliknij przycisk **OK** dwa razy.
 
  ![Zarejestruj serwer w AD](./media/howto-mfa-nps-extension-rdg/image16.png)
 
 1. Zamykaj konsoli w następnej procedurze.
 
-### <a name="create-and-configure-radius-client"></a>Tworzenie i konfigurowanie klienta RADIUS 
-Brama usług pulpitu zdalnego musi być skonfigurowany jako klient usługi RADIUS serwera NPS. 
+### <a name="create-and-configure-radius-client"></a>Tworzenie i konfigurowanie klienta RADIUS
+
+Brama usług pulpitu zdalnego musi być skonfigurowany jako klient usługi RADIUS serwera NPS.
 
 1. Na serwerze zasad Sieciowych, w którym zainstalowane jest rozszerzenie serwera NPS, w **serwer NPS (lokalny)** konsoli kliknij prawym przyciskiem myszy **klientów RADIUS** i kliknij przycisk **New**.
 
@@ -264,10 +284,11 @@ Brama usług pulpitu zdalnego musi być skonfigurowany jako klient usługi RADIU
 1. Kliknij przycisk **OK** aby zamknąć okno dialogowe Nowy klient RADIUS.
 
 ### <a name="configure-network-policy"></a>Konfigurowanie zasad sieciowych
+
 Pamiętaj, że serwer zasad Sieciowych przy użyciu rozszerzenia usługi Azure MFA jest magazynem wyznaczonym centralne zasady dla zasad autoryzacji połączeń (CAP). W związku z tym należy zaimplementować limit na serwerze NPS w celu autoryzowania połączeń prawidłowe żądania.  
 
 1. Na serwerze NPS Otwórz konsoli serwera NPS (lokalny), rozwiń węzeł **zasady**i kliknij przycisk **zasad sieciowych**.
-1. Kliknij prawym przyciskiem myszy **połączenia z innymi serwerami dostępu**i kliknij przycisk **Duplikuj zasady**. 
+1. Kliknij prawym przyciskiem myszy **połączenia z innymi serwerami dostępu**i kliknij przycisk **Duplikuj zasady**.
 
  ![Duplikuj zasady](./media/howto-mfa-nps-extension-rdg/image19.png)
 
@@ -279,7 +300,7 @@ Pamiętaj, że serwer zasad Sieciowych przy użyciu rozszerzenia usługi Azure M
 
  ![Kopiuj połączeń](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-1.  Kliknij przycisk **ograniczenia** kartę i sprawdź **Zezwalaj klientom na łączenie się bez negocjowania metodę uwierzytelniania**.
+1. Kliknij przycisk **ograniczenia** kartę i sprawdź **Zezwalaj klientom na łączenie się bez negocjowania metodę uwierzytelniania**.
 
  ![Zezwalaj klientom na łączenie](./media/howto-mfa-nps-extension-rdg/image22.png)
 
@@ -293,7 +314,8 @@ Pamiętaj, że serwer zasad Sieciowych przy użyciu rozszerzenia usługi Azure M
  ![Zasady sieciowe](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>Zweryfikuj konfigurację
-Aby sprawdzić konfigurację, należy zalogować się do bramy usług pulpitu zdalnego za pomocą odpowiedniego klienta RDP. Pamiętaj używać konta, które jest dozwolony przez użytkownika zasady autoryzacji połączeń i jest włączone dla usługi Azure MFA. 
+
+Aby sprawdzić konfigurację, należy zalogować się do bramy usług pulpitu zdalnego za pomocą odpowiedniego klienta RDP. Pamiętaj używać konta, które jest dozwolony przez użytkownika zasady autoryzacji połączeń i jest włączone dla usługi Azure MFA.
 
 Pokaż na poniższej ilustracji, można użyć **dostępu w sieci Web usług pulpitu zdalnego** strony.
 
@@ -312,6 +334,7 @@ W poniższym przykładzie aplikacji Authenticator na urządzeniu z systemem Wind
 Po pomyślnym uwierzytelnieniu przy użyciu metody uwierzytelniania pomocniczego, użytkownik jest zalogowany do bramy usług pulpitu zdalnego, jak zwykle. Jednak ponieważ są wymagane do użycia dodatkowej metody uwierzytelniania za pomocą aplikacji mobilnej na zaufane urządzenie, proces logowania jest bezpieczniejszy niż byłaby, w przeciwnym razie.
 
 ### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Wyświetl dzienniki Podglądu zdarzeń dla zdarzeń pomyślnego logowania
+
 Aby wyświetlić pomyślnych zdarzeń logowania w dziennikach podglądu zdarzeń Windows, mogą wydać następujące polecenie programu Windows PowerShell do wykonywania zapytań w dziennikach usług terminalowych Windows i Windows zabezpieczeń.
 
 Aby wysłać zapytanie zdarzeń pomyślnego logowania w dzienniki operacyjne bramy _(zdarzenie Viewer\Applications i usług Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_, użyj następujących poleceń programu PowerShell:
@@ -365,11 +388,12 @@ Na poniższym obrazie przedstawiono dane wyjściowe tego takich do pobrania [apl
 
 Na koniec, aby uzyskać dodatkowe Rozwiązywanie problemów z opcjami, możesz użyć analizatora protokołów, takich [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx). 
 
-Obraz poniżej z Microsoft Message Analyzer przedstawia ruch sieciowy, filtrowanie protokołu RADIUS, który zawiera nazwę użytkownika **Contoso\AliceC**.
+Obraz poniżej z Microsoft Message Analyzer przedstawia ruch sieciowy, filtrowanie protokołu RADIUS, który zawiera nazwę użytkownika **CONTOSO\AliceC**.
 
 ![Narzędzie Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 [Jak uzyskać usługę Azure Multi-Factor Authentication](concept-mfa-licensing.md)
 
 [Brama usług pulpitu zdalnego i serwer Azure Multi-Factor Authentication korzystające z usługi RADIUS](howto-mfaserver-nps-rdg.md)

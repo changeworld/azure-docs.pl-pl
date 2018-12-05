@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 31a905e1fb16997eb80e47af3b790f431f28e49b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 11/06/2018
+ms.openlocfilehash: 4d525fdcbaa85eecee903ed83ee903d55810cbce
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842870"
+ms.locfileid: "52876601"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Wdrażaj usługi sieci web w usłudze Azure Container Instances 
 
@@ -28,6 +28,9 @@ W tym artykule przedstawiono trzy różne sposoby wdrażania modelu w usłudze A
 * Wdrażaj z przy użyciu zarejestrowanego modelu `Webservice.deploy_from_model()`
 * Wdrażanie obrazów przy użyciu zarejestrowanego modelu `Webservice.deploy_from_image()`
 
+>[!NOTE]
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning w wersji 1.0.2
+
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
 
 
@@ -37,10 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 - Obiekt obszaru roboczego usługi Azure Machine Learning
 
-    ```python
-    from azureml.core import Workspace
-    ws = Workspace.from_config()
-    ```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=loadWorkspace)]
 
 - Model wdrażania. W przykładach w tym dokumencie używane model utworzony po wykonaniu "[Wytrenuj model](tutorial-train-models-with-aml.md)" samouczek. Jeśli używasz tego modelu, należy zmodyfikować kroki do odwoływania się do nazwy modelu.  Należy również napisać własny skrypt oceniania, aby uruchomić modelu.
 
@@ -57,29 +57,16 @@ Skonfiguruj obraz platformy Docker, który jest używany do przechowywania wszys
 
 1. Użyj tych plików, aby skonfigurować obraz platformy Docker w języku Python za pomocą zestawu SDK w następujący sposób:
 
-    ```python
-    from azureml.core.image import ContainerImage
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=configImage)]
 
-    image_config = ContainerImage.image_configuration(execution_script = "score.py",
-                                                      runtime = "python",
-                                                      conda_file = "myenv.yml",
-                                                      description = "Image with mnist model",
-                                                      tags = {"data": "mnist", "type": "classification"}
-                                                     )
-    ```
+> [!NOTE]
+> Podczas tworzenia obrazu, który używa przyspieszenie procesora GPU, obrazu podstawowego procesora GPU musi być używany w usług platformy Microsoft Azure tylko.
 
 ## <a name="configure-the-aci-container"></a>Konfigurowanie kontenera usługi ACI
 
 Konfigurowanie kontenera usługi ACI, określ liczbę procesorów i GB pamięci RAM wymaganej dla kontenera usługi ACI. Wartość domyślna jednego rdzenia i 1 GB pamięci RAM jest wystarczająca dla wielu modeli. Jeśli uważasz, że należy kolejnych w przyszłości, ponownie utworzyć obraz i ponownie wdrożyć usługę.  
 
-```python
-from azureml.core.webservice import AciWebservice
-
-aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1, 
-                                               memory_gb = 1, 
-                                               tags = {"data": "mnist", "type": "classification"},
-                                               description = 'Handwriting recognition')
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=configAci)]
 
 ## <a name="register-a-model"></a>Zarejestruj model
 
@@ -87,30 +74,17 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 
 Zarejestruj model, aby użyć [Webservice.deploy_from_model](#deploy-from-registered-model) lub [Webservice.deploy_from_image](#deploy-from-image). Lub jeśli masz już zarejestrowanego modelu, pobierz ją teraz.
 
+
 ### <a name="retrieve-a-registered-model"></a>Pobrać zarejestrowanego modelu
 Jeśli używasz usługi Azure Machine Learning do nauczenia modelu, model może być już zarejestrowany w obszarze roboczym.  Na przykład ostatni krok [uczenie modelu samouczek](tutorial-train-models-with-aml.md) zarejestrowany modelu.  Następnie pobrać zarejestrowanego modelu wdrażania.
 
-```python
-from azureml.core.model import Model
-
-model_name = "sklearn_mnist"
-model=Model(ws, model_name)
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=retrieveModel)]
   
 ### <a name="register-a-model-file"></a>Zarejestruj plik modelu
 
 Jeśli model został utworzony w innym miejscu, możesz nadal zarejestrować go do obszaru roboczego.  Aby zarejestrować model pliku modelu (`sklearn_mnist_model.pkl` w tym przykładzie) musi znajdować się w bieżącym katalogu roboczym. Następnie należy zarejestrować tego pliku jako modelu o nazwie `sklearn_mnist` w przestrzeni roboczej z `Model.register()`.
-    
-```python
-from azureml.core.model import Model
 
-model_name = "sklearn_mnist"
-model = Model.register(model_path = "sklearn_mnist_model.pkl",
-                        model_name = model_name,
-                        tags = {"data": "mnist", "type": "classification"},
-                        description = "Mnist handwriting recognition",
-                        workspace = ws)
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=registerModel)]
 
 <a name='deploy-from-model-file'/>
 ## <a name="option-1-deploy-from-model-file"></a>Opcja 1: Wdrożenia z pliku modelu
@@ -135,19 +109,7 @@ Ta opcja używa metody zestaw SDK, Webservice.deploy().
 
 1. Wdrażanie pliku modelu.
 
-    ```python
-    from azureml.core.webservice import Webservice
-    
-    service_name = 'aci-mnist-1'
-    service = Webservice.deploy(deployment_config = aciconfig,
-                                    image_config = image_config,
-                                    model_paths = ['sklearn_mnist_model.pkl'],
-                                    name = service_name,
-                                    workspace = ws)
-    
-    service.wait_for_deployment(show_output = True)
-    print(service.state)
-    ```
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option1Deploy)]
 
 1. Możesz teraz [przetestować usługę sieci web](#test-web-service).
 
@@ -162,18 +124,7 @@ Ta opcja używa metody zestaw SDK, Webservice.deploy_from_model().
 
 1. Uruchom kod, aby skonfigurować kontener platformy Docker i kontenerów usługi ACI i określ zarejestrowanego modelu.
 
-    ```python
-    from azureml.core.webservice import Webservice
-
-    service_name = 'aci-mnist-2'
-    service = Webservice.deploy_from_model(deployment_config = aciconfig,
-                                           image_config = image_config,
-                                           models = [model], # this is the registered model object
-                                           name = service_name,
-                                           workspace = ws)
-    service.wait_for_deployment(show_output = True)
-    print(service.state)
-    ```
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option2Deploy)]
 
 1. Możesz teraz [przetestować usługę sieci web](#test-web-service).
 
@@ -185,36 +136,18 @@ Wdrażanie modelu zarejestrowany (`model`) przy użyciu `Webservice.deploy_from_
 1. Tworzenie i rejestrowanie obrazu platformy Docker na za pomocą obszaru roboczego `ContainerImage.create()`
 
     Ta metoda zapewnia większą kontrolę nad obrazu, tworząc go w osobnym kroku.  Zarejestrowanego modelu (`model`) znajduje się na obrazie.
-    
-    ```python
-    from azureml.core.image import ContainerImage
-    
-    image = ContainerImage.create(name = "myimage1",
-                                  models = [model], # this is the registered model object
-                                  image_config = image_config,
-                                  workspace = ws)
-    
-    image.wait_for_creation(show_output = True)
-    ```
-**Szacowany czas**: około 3 minuty.
+
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option3CreateImage)]
+
+    **Szacowany czas**: około 3 minuty.
 
 1. Wdrażanie obrazu platformy Docker jako przy użyciu usługi `Webservice.deploy_from_image()`
 
     Teraz można wdrożyć obraz do usługi ACI.  
-    
-    ```python
-    from azureml.core.webservice import Webservice
-    
-    service_name = 'aci-mnist-3'
-    service = Webservice.deploy_from_image(deployment_config = aciconfig,
-                                                image = image,
-                                                name = service_name,
-                                                workspace = ws)
-    service.wait_for_deployment(show_output = True)
-    print(service.state)
-    ```   
+        
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option3Deploy)]
  
-**Szacowany czas**: około 3 minuty.
+    **Szacowany czas**: około 3 minuty.
 
 Ta metoda zapewnia największą kontrolę nad tworzenia i nazw składników we wdrożeniu.
 
@@ -224,33 +157,8 @@ Teraz można przetestować usługę sieci web.
 
 Usługa sieci web jest taka sama niezależnie od tego, którego użyto metody.  Aby uzyskać prognoz, użyj `run` metody usługi.  
 
-```python
-# Load Data
-import os
-import urllib
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=testService)]
 
-os.makedirs('./data', exist_ok = True)
-
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename = './data/test-images.gz')
-
-from utils import load_data
-X_test = load_data('./data/test-images.gz', False) / 255.0
-
-from sklearn import datasets
-import numpy as np
-import json
-
-# find 5 random samples from test set
-n = 5
-sample_indices = np.random.permutation(X_test.shape[0])[0:n]
-
-test_samples = json.dumps({"data": X_test[sample_indices].tolist()})
-test_samples = bytes(test_samples, encoding = 'utf8')
-
-# predict using the deployed model
-prediction = service.run(input_data = test_samples)
-print(prediction)
-```
 
 ## <a name="update-the-web-service"></a>Aktualizacja usługi sieci web
 
@@ -274,9 +182,8 @@ print(service.state)
 
 Jeśli nie zamierzasz korzystać z tej usługi sieci web, należy go usunąć, więc nie powodują naliczania żadnych opłat.
 
-```python
-service.delete()
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=deleteService)]
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

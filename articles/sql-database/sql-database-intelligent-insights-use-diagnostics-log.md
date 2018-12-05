@@ -12,16 +12,16 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: 70096c8f3a5c07fa757b68494c04519b63435dcd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2809dd45042e41c8337ecddccc76ec4e16d7cb8b
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166898"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887699"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Intelligent Insights usługi Azure SQL Database
 
-Ta strona zawiera informacje na temat sposobu korzystania z usługi Azure SQL Database dziennika diagnostyki wydajności wygenerowane przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format i danych zawiera potrzeby niestandardowe programowanie. Możesz wysłać ten dziennik diagnostyczny do [usługi Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [usługi Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i raportów możliwości.
+Ta strona zawiera informacje na temat sposobu korzystania z usługi Azure SQL Database dziennika diagnostyki wydajności wygenerowane przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format i danych zawiera potrzeby niestandardowe programowanie. Możesz wysłać ten dziennik diagnostyczny do [usługi Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [usługi Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i raportów możliwości.
 
 ## <a name="log-header"></a>Nagłówek dziennika
 
@@ -39,9 +39,7 @@ Nagłówek dziennika często i składa się z sygnatura czasowa (TimeGenerated),
 
 ## <a name="issue-id-and-database-affected"></a>Identyfikator problemu i bazy danych, których to dotyczy
 
-Właściwości identyfikacji problemu (issueId_d) umożliwia jednoznacznie śledzenia problemów z wydajnością, do momentu usunięcia ich one. Intelligent Insights przestrzega każdego życia problem jako "Aktywny", "Weryfikowanie" lub "Ukończony". Za pomocą każdego z tych faz stan Intelligent Insights można zarejestrować wiele rekordów zdarzeń w dzienniku. Dla każdego z tych wpisów numer identyfikacyjny problem pozostaje unikatowy. Intelligent Insights śledzi problem przy użyciu jej cyklu projektowania i generuje szczegółowe informacje w dzienniku diagnostyki co 15 minut.
-
-Po wykryciu problemu z wydajnością i dla tak długo, jak długo trwa, problem jest raportowane jako "Aktywny" w ramach właściwości stanu (status_s). Po zminimalizowaniu wpływu wykrytego problemu ma zweryfikowane i raportowane jako "Weryfikowanie" w ramach właściwości stanu (status_s). Jeśli problem nie jest już obecne, właściwości stanu (status_s) zgłasza ten problem jako "Zakończono".
+Właściwości identyfikacji problemu (issueId_d) umożliwia jednoznacznie śledzenia do momentu rozwiązania problemów z wydajnością. Wiele rekordów zdarzeń w dzienniku zgłaszające stan ten sam problem współużytkują ten sam identyfikator problemu.
 
 Wraz z identyfikator problemu dziennik diagnostyczny raporty rozpoczęcia (intervalStartTime_t) i sygnatury czasowe zakończenia (intervalEndTme_t) określonego zdarzenia związane z problemu zgłoszonego w dzienniku diagnostyki.
 
@@ -100,7 +98,7 @@ W zależności od problem z wydajnością wykryte, szczegółowe informacje zwr�
 
 Wpływ (wpływ na), że właściwość określa, ile wykryte zachowanie przyczyniły się do problemu, które występują w bazie danych. Wpływ na środowisko w zakresie od 1 do 3, 3 jako największym wkładem pracy, 2, jak Średni i 1 jako udział najniższy. Wartość wpływu można użyć jako danych wejściowych dla alertów Automatyzacja niestandardowa, w zależności od określonych potrzeb. Zapytania dotyczące właściwości których to dotyczy (QueryHashes) zawierają listę zapytanie skróty, które miały wpływ określonego wykrywania.
 
-### <a name="impacted-queries"></a>Zapytania objęte wpływem
+### <a name="impacted-queries"></a>Zapytania, na które ma to wpływ
 
 Następna sekcja dziennik Intelligent Insights zawiera informacje dotyczące określonego zapytania, które miały wpływ problemy z wydajnością wykryte. Jako tablica obiektów osadzonych we właściwości impact_s ujawnienia informacji. Właściwość wpływ składa się z jednostek i metryki. Jednostki dotyczą określone zapytanie (typ: zapytanie). Skrót unikatowy zapytania są ujawniane w obszarze właściwości value (wartość). Ponadto każda kwerenda ujawnione następuje metrykę i wartości, które wskazują problem z wydajnością wykryte.
 

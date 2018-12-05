@@ -1,21 +1,19 @@
 ---
-title: Arkusze porad zapytania w usłudze Azure Cosmos DB w formacie PDF | Dokumentacja firmy Microsoft
+title: Arkusze porad zapytania w usłudze Azure Cosmos DB w formacie PDF
 description: Drukowalnych PDF ściągawki, które ułatwiają tworzenie zapytania danych przy użyciu programu SQL, bazy danych MongoDB, programu Graph i interfejsy API tabel usługi Azure Cosmos DB
 keywords: SQL — ściągawka, sql cheat arkusza w formacie pdf, zapytanie sql — ściągawka
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 22f8384105ed31ac2b11e0c6094b01549a270144
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f429778429e2d98d5abd655ee4b9acdc1472ff2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230873"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878690"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Arkusze porad zapytania w usłudze Azure Cosmos DB
 
@@ -36,7 +34,7 @@ Pobierz [arkusze porad zapytania o rozmiarze usługi Azure Cosmos DB A3](https:/
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać dodatkową pomoc, Pisanie zapytań zobacz następujące artykuły:
-* Dla interfejsu API SQL zapytań, zobacz [wykonywać zapytania za pomocą interfejsu SQL API](tutorial-query-sql-api.md), [zapytań SQL usługi Azure Cosmos DB](sql-api-sql-query.md), i [dokumentacja składni SQL](sql-api-sql-query-reference.md)
+* Dla interfejsu API SQL zapytań, zobacz [wykonywać zapytania za pomocą interfejsu SQL API](tutorial-query-sql-api.md), [zapytań SQL usługi Azure Cosmos DB](how-to-sql-query.md), i [dokumentacja składni SQL](sql-api-sql-query-reference.md)
 * Dla zapytań bazy danych MongoDB, zobacz [wykonywać zapytania za pomocą interfejsu API usługi MongoDB](tutorial-query-mongodb.md) i [obsługę interfejsu API usługi MongoDB bazy danych MongoDB, funkcji i składni](mongodb-feature-support.md)
 * Interfejs API Gremlin zapytań, zobacz [wykonywać zapytania za pomocą interfejsu API języka Gremlin](tutorial-query-graph.md) i [obsługi programu graph usługi Azure Cosmos DB w języku Gremlin](gremlin-support.md)
 * Dla interfejsu API tabeli zapytań, zobacz [wykonywać zapytania za pomocą interfejsu API tabel](tutorial-query-table.md)

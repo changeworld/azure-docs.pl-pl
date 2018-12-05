@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7fe018a1584561ae12742da6e75f7d265ae82656
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e88ab32d648321e30c11b791ad186180c2e3107c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833554"
+ms.locfileid: "52870524"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Właściwości standardowe w rekordach usługi Log Analytics
 Dane w [usługi Log Analytics](../log-analytics/../azure-monitor/log-query/log-query-overview.md) jest przechowywany jako zestaw rekordów, każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
@@ -89,5 +89,5 @@ AzureActivity
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Przeczytaj więcej na temat [są przechowywane dane usługi Log Analytics](../log-analytics/../azure-monitor/log-query/log-query-overview.md).
-- Uzyskaj lekcji na [Pisanie zapytań w usłudze Log Analytics](../log-analytics/query-language/get-started-queries.md).
-- Uzyskaj lekcji na [sprzężenie tabel w zapytań usługi Log Analytics](../log-analytics/query-language/joins.md).
+- Uzyskaj lekcji na [Pisanie zapytań w usłudze Log Analytics](../azure-monitor/log-query/get-started-queries.md).
+- Uzyskaj lekcji na [sprzężenie tabel w zapytań usługi Log Analytics](../azure-monitor/log-query/joins.md).

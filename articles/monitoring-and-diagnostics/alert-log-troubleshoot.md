@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 0612a7798d3cc2e43efc296bd2b749735e74f765
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 94c03c9aa6e361167b396af5218b308e6cacfafe
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720851"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879812"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 ## <a name="overview"></a>Przegląd
@@ -30,7 +30,7 @@ Termin **alertów dzienników** opisuje alerty, że ognia na podstawie niestanda
 Poniżej przedstawiono niektóre typowe przyczyny, dlaczego skonfigurowanego [reguł alertów dzienników w usłudze Azure Monitor](alert-log.md) nie wyświetla stan [jako *wyzwolone* Oczekiwano](monitoring-alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Czas wprowadzania danych dla dzienników
-Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
+Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
 
 Aby zminimalizować opóźnienie pozyskiwania danych, system czeka i ponawia zapytanie alertu wiele razy, jeśli stwierdzi, że potrzebne dane nie są jeszcze pozyskiwane. System ma wykładniczo zwiększa czasu oczekiwania. Dziennik alertów wyzwalaczy tylko po danych jest dostępna, więc ich opóźnienie może być spowodowany pozyskiwanie danych wolnego dziennika. 
 
@@ -56,17 +56,17 @@ Na przykład załóżmy, że regułę alertu pomiaru metryki dziennika został s
 - Logika alertu trzy kolejne naruszenia
 - Łączny na wybrany jako $table
 
-Ponieważ polecenie zawiera *... Sumuj według* oraz podać dwie zmienne (sygnatura czasowa & $table), system wybiera $table do "Agregacji po". Sortuje tabelę wyników za pomocą pola *$table* pokazany poniżej i następnie przegląda wielu elementy AggregatedValue dla każdego typu tabeli (na przykład availabilityResults), aby zobaczyć, jeśli było kolejne naruszenia 3 lub więcej.
+Ponieważ polecenie zawiera *Sumuj według* oraz podać dwie zmienne (sygnatura czasowa & $table), system wybiera $table do agregacji po. Sortuje tabelę wyników za pomocą pola *$table* pokazany poniżej i następnie przegląda wielu elementy AggregatedValue dla każdego typu tabeli (na przykład availabilityResults), aby zobaczyć, jeśli było kolejne naruszenia 3 lub więcej.
 
 ![Metryki pomiaru wykonywania zapytań z wieloma wartościami](./media/monitor-alerts-unified/LogMMQuery.png)
 
-Jak "Łączna od" jest $table — dane są sortowane według kolumny $table (jak kolor czerwony); Firma Microsoft grupy i Znajdź typ pola "Agregacji po" (to znaczy) $table — na przykład: wartości availabilityResults jest traktowany jako jeden wykres na jednostkę (jako wyróżnione w kolorze pomarańczowym). W tym wykres wartość na jednostkę — usługa alertu dotyczącego wyszukuje trzy kolejne naruszenia występujących (jak pokazano w kolorze zielonym) dla alertu, które będą wyzwalane dla wartości z tabeli "availabilityResults". Podobnie jeśli w dowolnej innej wartości $table jeśli są widoczne trzy kolejne naruszenia — inny powiadomień o alertach będą wyzwalane przez to samo; przy użyciu alertów usługi automatycznie sortowania wartości w jedną kreślenia/jednostkę (tak jak w kolorze pomarańczowym) według czasu.
+Ponieważ agregacji po $table dane są sortowane według kolumny $table (jak kolor czerwony); Następnie możemy grupy i Znajdź typ agregacji po pola (to znaczy) $table na przykład: wartości availabilityResults jest traktowany jako jeden wykres na jednostkę (jako wyróżnione w kolorze pomarańczowym). W tej jednostce wartość wykres/usługa alertu dotyczącego wyszukuje trzy kolejne naruszenia występujących (jak pokazano w kolorze zielonym) dla alertu, które będą wyzwalane dla wartości z tabeli "availabilityResults". Podobnie jeśli w dowolnej innej wartości $table jeśli są widoczne trzy kolejne naruszenia — inny powiadomień o alertach będą wyzwalane przez to samo; przy użyciu alertów usługi automatycznie sortowania wartości w jedną kreślenia/jednostkę (tak jak w kolorze pomarańczowym) według czasu.
 
-Teraz załóżmy, pomiar metryki reguł alertów dzienników został zmodyfikowany, a zapytanie było `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` z pozostałą częścią konfiguracji pozostała taka sama jak przed dołączeniem alertu logikę trzy kolejne naruszenia. Opcja "Agregacji po" będzie w tym przypadku domyślnie: sygnatura czasowa. Ponieważ tylko jedną wartość znajduje się w zapytaniu dla... Sumuj według timestamp (to znaczy); podobny do poprzedniego przykładu, na końcu wykonywania dane wyjściowe będą jak przedstawiono poniżej. 
+Teraz załóżmy, pomiar metryki reguł alertów dzienników został zmodyfikowany, a zapytanie było `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` z pozostałą częścią konfiguracji pozostała taka sama jak przed dołączeniem alertu logikę trzy kolejne naruszenia. Opcja "Agregacji po" będzie w tym przypadku domyślnie: sygnatura czasowa. Ponieważ tylko jedną wartość znajduje się w zapytaniu dla Sumuj według timestamp (to znaczy); podobny do poprzedniego przykładu, na końcu wykonywania dane wyjściowe będą jak przedstawiono poniżej. 
 
    ![Metryki pomiaru wykonywania zapytań o pojedynczej wartości](./media/monitor-alerts-unified/LogMMtimestamp.png)
 
-Jak "Agregacji po" jest sygnatura czasowa — dane są sortowane według kolumny sygnatur czasowych (jak kolor czerwony); Następnie możemy Grupuj według sygnatury czasowej — na przykład: wartości `2018-10-17T06:00:00Z` jest traktowany jako jeden wykres na jednostkę (jako wyróżnione w kolorze pomarańczowym). Ten wykres wartość na jednostkę — usługa alertu dotyczącego zawiera że nie kolejne naruszenia występujące (jak każda wartość sygnatury czasowej ma tylko jeden wpis) i dlatego alertu nigdy nie będą wyzwalane. Dlatego w takim przypadku użytkownik musi-
+Jak agregacji po jest sygnatura czasowa dane są sortowane według kolumny sygnatur czasowych (jak kolor czerwony); Następnie możemy Grupuj według sygnatur czasowych na przykład: wartości `2018-10-17T06:00:00Z` jest traktowany jako jeden wykres na jednostkę (jako wyróżnione w kolorze pomarańczowym). W tej jednostce wartość wykres/alertu usługa będzie odnaleźć nie kolejne naruszenia występujące (jak każda wartość sygnatury czasowej ma tylko jeden wpis) i dlatego alertu nigdy nie będą wyzwalane. Dlatego w takim przypadku użytkownik musi-
 - Dodaj fikcyjną zmiennej lub istniejącej zmiennej (na przykład $table) do poprawnie sortowanie gotowe, przy użyciu pola "Agregacji po" skonfigurowane
 - Skonfiguruj ponownie używana logika alertu na podstawie reguły alertów (lub) *łącznie naruszenia* zamiast odpowiednio
  
@@ -74,7 +74,7 @@ Jak "Agregacji po" jest sygnatura czasowa — dane są sortowane według kolumny
 Szczegółowe dalej są niektóre typowe przyczyny, dlaczego skonfigurowanego [reguł alertów dzienników w usłudze Azure Monitor](alert-log.md) mogą być wyzwalane podczas wyświetlania w [Azure Alerts](monitoring-alerts-managing-alert-states.md), gdy nie będziesz już go do uruchomienia.
 
 ### <a name="alert-triggered-by-partial-data"></a>Alert wyzwolony przez częściowe dane
-Włączanie usługi Log Analytics i usługi Application Insights Analytics jest zależna od opóźnienia pozyskiwania i przetwarzania; z powodu, w momencie uruchamiania zapytanie alertu dzienników podana — mogą wystąpić przypadek żadne dane, które są dostępne lub tylko niektórych danych, które są dostępne. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
+Włączanie usługi Log Analytics i usługi Application Insights Analytics jest zależna od opóźnienia pozyskiwania i przetwarzania; z powodu, w momencie uruchamiania zapytanie alertu dzienników podana — mogą wystąpić przypadek żadne dane, które są dostępne lub tylko niektórych danych, które są dostępne. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
 
 W zależności od sposobu skonfigurowania reguły alertu może być źle wielopaliwowego w przypadku nie lub częściowe dane w dziennikach w czasie wykonywania alertu. W takich przypadkach zaleca się zmiany zapytanie alertu ani konfiguracji. 
 
@@ -83,7 +83,7 @@ Na przykład, jeśli skonfigurowano reguł alertów dzienników do wyzwalania, g
 ### <a name="alert-query-output-misunderstood"></a>Dane wyjściowe zapytanie alertu źle zrozumiane
 Możesz podać logiki dla dziennika alertów w zapytania usługi analytics. Zapytania usługi analytics może używać różnych danych big data i funkcji matematycznych.  Alerty usług wykonuje zapytanie w odstępach czasu określonych danych dla określonego okresu. Alerty usługi sprawia, że wprowadzono subtelne zmiany zapytania oparte na wybranego typu alertu. Można to zaobserwować w sekcji "Wyślij zapytanie w celu wykonania" *konfigurowanie logiki sygnału* ekranu, jak pokazano poniżej: ![zapytanie do wykonania](./media/monitor-alerts-unified/LogAlertPreview.png)
  
-Co to jest wyświetlany w **zapytanie do wykonania** pole jest działa usługa alertu dotyczącego dziennika. Możesz uruchomić określonego zapytania, a także przedział czasu za pośrednictwem [portalu analiza](../log-analytics/log-analytics-log-search-portals.md) lub [interfejsu API analizy](https://docs.microsoft.com/rest/api/loganalytics/) Jeśli chcesz zrozumieć, jakie zapytanie alertu danych wyjściowych może być przed faktycznie utworzenia alertu.
+Co to jest wyświetlany w **zapytanie do wykonania** pole jest działa usługa alertu dotyczącego dziennika. Możesz uruchomić określonego zapytania, a także przedział czasu za pośrednictwem [portalu analiza](../azure-monitor/log-query/portals.md) lub [interfejsu API analizy](https://docs.microsoft.com/rest/api/loganalytics/) Jeśli chcesz zrozumieć, jakie zapytanie alertu danych wyjściowych może być przed faktycznie utworzenia alertu.
  
 ## <a name="next-steps"></a>Kolejne kroki
 
