@@ -13,18 +13,18 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 0de561b177a1474b0ce4f0f203803e8265db5e7a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 8eef75a6e1f4f05aa6d7ce8f9e6fdda52162d0bc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818350"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960723"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Sposób użycia biblioteki klienta usługi Azure Mobile Apps-iOS
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Tego przewodnika dowiesz się, aby wykonać typowe scenariusze za pomocą najnowszej [usługi Azure Mobile Apps dla systemu iOS SDK][1]. Jeśli jesteś nowym użytkownikiem usługi Azure Mobile Apps, najpierw wykonaj [Azure Mobile Apps — Szybki Start] Aby utworzyć zaplecze, utworzyć tabelę i pobrać projekt Xcode wstępnie skompilowanych dla systemu iOS. W tym przewodniku skupimy się na zestaw SDK systemu iOS po stronie klienta. Aby dowiedzieć się więcej na temat zestawu SDK po stronie serwera wewnętrznej bazy danych, zobacz HOWTOs zestawu SDK serwera.
+Tego przewodnika dowiesz się, aby wykonać typowe scenariusze za pomocą najnowszej [usługi Azure Mobile Apps dla systemu iOS SDK][1]. Jeśli jesteś nowym użytkownikiem usługi Azure Mobile Apps, najpierw wykonaj [Azure mobilnych: aplikacje Szybki Start] Aby utworzyć zaplecze, utworzyć tabelę i pobrać projekt Xcode wstępnie skompilowanych dla systemu iOS. W tym przewodniku skupimy się na zestaw SDK systemu iOS po stronie klienta. Aby dowiedzieć się więcej na temat zestawu SDK po stronie serwera wewnętrznej bazy danych, zobacz HOWTOs zestawu SDK serwera.
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
 
@@ -890,7 +890,7 @@ Google Sign-In SDK dla systemu iOS można użyć do logowania się użytkownikó
 <!-- Images. -->
 
 <!-- URLs. -->
-[Azure Mobile Apps — Szybki Start]: app-service-mobile-ios-get-started.md
+[Azure mobilnych: aplikacje Szybki Start]: app-service-mobile-ios-get-started.md
 
 [Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-data
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
@@ -899,26 +899,26 @@ Google Sign-In SDK dla systemu iOS można użyć do logowania się użytkownikó
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
 [Azure Portal]: https://portal.azure.com/
-[Handling Expired Tokens]: http://go.microsoft.com/fwlink/p/?LinkId=301955
-[Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
-[Permissions]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
+[Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
+[Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
+[Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[Schemat dynamiczny]: http://go.microsoft.com/fwlink/p/?LinkId=296271
+[Schemat dynamiczny]: https://go.microsoft.com/fwlink/p/?LinkId=296271
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
-[Create a table]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
-[NSDictionary object]: http://go.microsoft.com/fwlink/p/?LinkId=301965
-[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
+[NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965
+[ASCII control codes C0 and C1]: https://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [CLI to manage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
 [Pulpit nawigacyjny sieci szkieletowej]: https://www.fabric.io/home
 [Service Fabric dla systemu iOS — wprowadzenie]: https://docs.fabric.io/ios/fabric/getting-started.html
 [1]: https://github.com/Azure/azure-mobile-apps-ios-client/blob/master/README.md#ios-client-sdk
-[2]: http://azure.github.io/azure-mobile-apps-ios-client/
+[2]: https://azure.github.io/azure-mobile-apps-ios-client/
 [3]: https://msdn.microsoft.com/library/azure/dn495101.aspx
 [4]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags
-[5]: http://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
+[5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
 [7]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 [8]:../active-directory/develop/quickstart-v1-ios.md

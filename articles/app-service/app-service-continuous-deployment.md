@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 5f52dfb4547cfac991387d333c3f5684544d691f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9fd25e8730bf98c8fccf1e77436b8f2f480c7cca
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877514"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966555"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Ciągłe wdrażanie w usłudze Azure App Service
 W tym artykule dowiesz się, jak skonfigurować ciągłe wdrażanie dla [usługi Azure App Service](app-service-web-overview.md). Usługa App Service umożliwia ciągłe wdrażanie z usług BitBucket, GitHub i [usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/) przez pobieranie najnowszych aktualizacji z istniejącym repozytorium w jednej z tych usług.
@@ -147,9 +147,9 @@ W menu po lewej stronie kliknij **Centrum wdrażania** > **GitHub** lub **usług
 
 [Azure portal]: https://portal.azure.com
 [Azure DevOps portal]: https://azure.microsoft.com/services/devops/
-[Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[Installing Git]: https://git-scm.com/book/en/Getting-Started-Installing-Git
 [Jak korzystać z programu PowerShell dla platformy Azure]: /powershell/azureps-cmdlets-docs
-[Dokumentacja usługi Git]: http://git-scm.com/documentation
+[Dokumentacja usługi Git]: https://git-scm.com/documentation
 
 [Tworzenie repozytorium (GitHub)]: https://help.github.com/articles/create-a-repo
 [Tworzenie repozytorium (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html

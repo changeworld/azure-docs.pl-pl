@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 93cbb9a891f83eed623f095f208319c9071e287e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d38c93f1e6e390117ff5d9e8772119ed1c26fd10
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635547"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965534"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak dołączyć Azure Monitor wykrywający sytuacje, maszyny wirtualne (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure i zestawów skalowania maszyn wirtualnych i maszyn wirtualnych w danym środowisku, łącznie z odnajdywania oraz mapowania zależności aplikacji może być hostowana na nich.  
@@ -48,7 +48,7 @@ Obszar roboczy usługi Log Analytics w następujących regionach jest obecnie ob
 >Maszyny wirtualne platformy Azure może być uruchomiona z dowolnego regionu i nie są ograniczone do określonych regionów obsługiwanych dla obszaru roboczego usługi Log Analytics.
 >
 
-Jeśli nie masz obszaru roboczego, możesz utworzyć ją przy użyciu [wiersza polecenia platformy Azure](../../log-analytics/log-analytics-quick-create-workspace-cli.md)za pośrednictwem [PowerShell](../../log-analytics/log-analytics-quick-create-workspace-posh.md)w [witryny Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md), lub za pomocą [usługi Azure Resource Manager](../../log-analytics/log-analytics-template-workspace-configuration.md).  Jeśli włączasz monitorowania dla pojedynczej maszyny Wirtualnej platformy Azure w witrynie Azure portal, masz możliwość utworzenia obszaru roboczego w trakcie tego procesu.  
+Jeśli nie masz obszaru roboczego, możesz utworzyć ją przy użyciu [wiersza polecenia platformy Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)za pośrednictwem [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)w [witryny Azure portal](../../azure-monitor/learn/quick-create-workspace.md), lub za pomocą [usługi Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md).  Jeśli włączasz monitorowania dla pojedynczej maszyny Wirtualnej platformy Azure w witrynie Azure portal, masz możliwość utworzenia obszaru roboczego w trakcie tego procesu.  
 
 Włączanie rozwiązania w skali scenariusz najpierw wymaga skonfigurowania następujących w obszarze roboczym usługi Log Analytics:
 
@@ -185,7 +185,7 @@ Aby włączyć monitorowanie maszyny wirtualnej platformy Azure w witrynie Azure
 5. Na **Azure Monitor Insights dołączania** strony, jeśli masz istniejące usługi Log Analytics obszaru roboczego w tej samej subskrypcji, wybierz go na liście rozwijanej.  Lista preselects domyślnego obszaru roboczego i lokalizacji, która została wdrożona maszyna wirtualna, aby w ramach subskrypcji. 
 
     >[!NOTE]
-    >Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z maszyny Wirtualnej, postępuj zgodnie z instrukcjami [Utwórz obszar roboczy usługi Log Analytics](../../log-analytics/log-analytics-quick-create-workspace.md) w jednym z obsługiwanych regionów wymienionych wcześniej.   
+    >Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z maszyny Wirtualnej, postępuj zgodnie z instrukcjami [Utwórz obszar roboczy usługi Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) w jednym z obsługiwanych regionów wymienionych wcześniej.   
 
 Po włączeniu monitorowania może zająć około 10 minut, zanim będzie można wyświetlić metryki kondycji dla maszyny wirtualnej. 
 

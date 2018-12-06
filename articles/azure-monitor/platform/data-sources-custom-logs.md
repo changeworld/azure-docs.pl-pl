@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 11/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2f0c552c29021400e901e94c643c8f20171638b8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 03c561001999245b55e6e76b02f8916d0b2d619f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875071"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963236"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Dzienniki niestandardowe w usłudze Log Analytics
-Źródło danych dzienników niestandardowych w usłudze Log Analytics można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog.  Po zebraniu można analizować każdy rekord w Zaloguj się do poszczególnych pól za pomocą [pól niestandardowych](../../azure-monitor/platform/custom-fields.md) funkcji usługi Log Analytics.
+Źródło danych dzienników niestandardowych w usłudze Log Analytics można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog. Po zebraniu możesz analizować dane na poszczególne pola w zapytaniach lub wyodrębniania danych podczas zbierania do poszczególnych pól.
 
 ![Zbieranie dzienników niestandardowych](media/data-sources-custom-logs/overview.png)
 
@@ -105,13 +105,10 @@ Po uruchomieniu usługi Log Analytics zbieranie z dziennika niestandardowego jeg
 
 > [!NOTE]
 > Jeśli brakuje właściwości RawData wyszukiwania, może być konieczne zamknięcie i ponowne otwarcie przeglądarki.
->
->
+
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>Krok 6. Analizowanie wpisy dziennika niestandardowego
-Wpis dziennika całego będą przechowywane w pojedynczej właściwości o nazwie **RawData**.  Prawdopodobnie należy oddzielić różnych rodzajów informacji w każdej pozycji w poszczególnych właściwości przechowywane w rekordzie.  Możesz to zrobić za pomocą [pól niestandardowych](../../azure-monitor/platform/custom-fields.md) funkcji usługi Log Analytics.
-
-Szczegółowy opis kroków do analizowania wpis dziennika niestandardowego nie znajdują się w tym miejscu.  Zapoznaj się [pól niestandardowych](../../azure-monitor/platform/custom-fields.md) dokumentacji dotyczącej tych informacji.
+Wpis dziennika całego będą przechowywane w pojedynczej właściwości o nazwie **RawData**.  Prawdopodobnie należy oddzielić różnych rodzajów informacji w każdej pozycji w poszczególnych właściwości dla każdego rekordu. Zapoznaj się [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md) opcji podczas analizy **RawData** na wiele właściwości.
 
 ## <a name="removing-a-custom-log"></a>Usuwanie dziennika niestandardowego
 Użyj następującego procesu w witrynie Azure portal, można usunąć dziennika niestandardowego, który wcześniej zdefiniowany.
@@ -123,7 +120,7 @@ Użyj następującego procesu w witrynie Azure portal, można usunąć dziennika
 ## <a name="data-collection"></a>Zbieranie danych
 Usługa log Analytics będzie zbierać nowe wpisy z każdego dziennika niestandardowego co 5 minut.  Agent zarejestruje jej miejscu w każdym pliku dziennika, które są zbierane z.  Jeśli agent przejdzie do trybu offline w okresie czasu, następnie usługi Log Analytics będzie zbierać wpisów z tam, gdzie ją ostatnia przerwaliśmy, nawet jeśli te wpisy zostały utworzone, gdy agent był w trybie offline.
 
-Całą zawartość wpis dziennika są zapisywane w pojedynczej właściwości o nazwie **RawData**.  Może to przeanalizować na wiele właściwości, które mogą być analizowane i przeszukiwać osobno, definiując [pól niestandardowych](../../azure-monitor/platform/custom-fields.md) po utworzeniu dziennika niestandardowego.
+Całą zawartość wpis dziennika są zapisywane w pojedynczej właściwości o nazwie **RawData**.  Zobacz [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md) dla metody na potrzeby analizowania każdego zaimportowane wpisu dziennika na wiele właściwości.
 
 ## <a name="custom-log-record-properties"></a>Właściwości rekordu dziennika niestandardowego
 Rekordy dziennika niestandardowego mają typ o nazwie dziennika, przez Ciebie i właściwości w poniższej tabeli.
@@ -132,18 +129,8 @@ Rekordy dziennika niestandardowego mają typ o nazwie dziennika, przez Ciebie i 
 |:--- |:--- |
 | TimeGenerated |Data i godzina, który rekord został zebrany przez usługę Log Analytics.  Jeśli dziennik używa rozdzielnika oparte na czasie to czas, zebranych z wpisu. |
 | SourceSystem |Typ agenta, które zostały zebrane rekordu. <br> Połącz OpsManager — Windows agent, bezpośrednio lub System Center Operations Manager <br> Linux — Wszyscy agenci systemu Linux |
-| RawData |Pełny tekst wpisu zebrane. |
+| RawData |Pełny tekst wpisu zebrane. Prawdopodobnie warto [przeanalizować te dane do poszczególnych właściwości](../log-query/parse-text.md). |
 | ManagementGroupName |Nazwa grupy zarządzania agentów System Center Operations Manager.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
-
-## <a name="log-searches-with-custom-log-records"></a>Wyszukiwanie w dzienniku rekordy dziennika niestandardowego
-Rekordy z dziennikami niestandardowymi są przechowywane w obszarze roboczym usługi Log Analytics, podobnie jak rekordów z dowolnego źródła danych.  Będzie miał typ pasujące do nazwy, zapewniające podczas definiowania dziennika, aby można było używać właściwości typu wyszukiwania, można pobrać rekordów zbieranych z określonego dziennika.
-
-Poniższa tabela zawiera różne przykłady przeszukiwania dzienników, które pobierają rekordy z dziennikami niestandardowymi.
-
-| Zapytanie | Opis |
-|:--- |:--- |
-| MyApp_CL |Wszystkie zdarzenia z niestandardowego dziennika o nazwie MyApp_CL. |
-| MyApp_CL &#124; gdzie Severity_CF == "error" |Wszystkie zdarzenia z niestandardowego dziennika o nazwie MyApp_CL o wartości *błąd* w niestandardowe pole o nazwie *Severity_CF*. |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Przewodnik po przykładzie Dodawanie dziennika niestandardowego
@@ -181,5 +168,5 @@ Używamy pola niestandardowe, aby zdefiniować *EventTime*, *kodu*, *stan*, i *k
 ![Zapytanie dziennika z polami niestandardowymi](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [pól niestandardowych](../../azure-monitor/platform/custom-fields.md) przeanalizować wpisy w niestandardowych Zaloguj się do poszczególnych pól.
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
+* Zobacz [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md) dla metody na potrzeby analizowania każdego zaimportowane wpisu dziennika na wiele właściwości.
+* Dowiedz się więcej o [dziennikach](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.

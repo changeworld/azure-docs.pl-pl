@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 1e5f7ed2fb4c77e0a738cbe6ee6c84b46bc59bb8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f9e863146b78fa510ea6f5b6eb9b3aa0fc4ce926
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230839"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965790"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurowanie obsługi języka PHP w usłudze Azure App Service Web Apps
 
@@ -148,7 +148,7 @@ Rozwiązanie Zend rozszerzenia również są obsługiwane przy użyciu **PHP_ZEN
 
 Zamiast domyślnego środowiska uruchomieniowego PHP App Service Web Apps można użyć środowiska uruchomieniowego języka PHP, który udostępnić wykonywanie skryptów w języku PHP. Środowisko uruchomieniowe, które należy podać mogą być konfigurowane przez `php.ini` plików, które zapewniają również. Aby użyć niestandardowego środowiska uruchomieniowego języka PHP z usługą Web Apps, wykonaj następujące kroki.
 
-1. Uzyskaj bez wątkowo, VC9 lub VC11 zgodnej wersji programu PHP dla Windows. Najnowsze wersje systemu Windows dla PHP można znaleźć tutaj: [ http://windows.php.net/download/ ]. Starsze wersje można znaleźć w archiwum, w tym miejscu: [ http://windows.php.net/downloads/releases/archives/ ].
+1. Uzyskaj bez wątkowo, VC9 lub VC11 zgodnej wersji programu PHP dla Windows. Najnowsze wersje systemu Windows dla PHP można znaleźć tutaj: [ https://windows.php.net/download/ ]. Starsze wersje można znaleźć w archiwum, w tym miejscu: [ https://windows.php.net/downloads/releases/archives/ ].
 1. Modyfikowanie `php.ini` pliku dla Twojego środowiska uruchomieniowego. Ustawienia konfiguracji, które są dyrektywami system poziom — tylko są ignorowane przez aplikacje sieci Web. (Uzyskać informacji dotyczących systemu poziom — tylko do dyrektyw, zobacz [Lista dyrektywy w pliku php.ini]).
 1. Opcjonalnie dodaj rozszerzenia do Twojego środowiska uruchomieniowego języka PHP i włączyć je w `php.ini` pliku.
 1. Dodaj `bin` katalog do katalogu głównego i put katalogu, który zawiera Twoje środowiska uruchomieniowego języka PHP w nim (na przykład `bin\php`).
@@ -196,7 +196,7 @@ Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](https
 >
 
 [bezpłatna wersja próbna]: https://www.windowsazure.com/pricing/free-trial/
-[phpinfo()]: http://php.net/manual/en/function.phpinfo.php
+[phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [Lista dyrektywy w pliku php.ini]: http://www.php.net/manual/en/ini.list.php
 [. user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
@@ -206,8 +206,8 @@ Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](https
 [save-button]: ./media/web-sites-php-configure/save-button.png
 [php-extensions]: ./media/web-sites-php-configure/php-extensions.png
 [handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
-[http://windows.php.net/download/]: http://windows.php.net/download/
-[http://windows.php.net/downloads/releases/archives/]: http://windows.php.net/downloads/releases/archives/
+[https://windows.php.net/download/]: https://windows.php.net/download/
+[https://windows.php.net/downloads/releases/archives/]: https://windows.php.net/downloads/releases/archives/
 [SETPHPVERCLI]: ./media/web-sites-php-configure/ChangePHPVersion-XPlatCLI.png
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png

@@ -1,5 +1,5 @@
 ---
-title: Włączanie synchronizacji w trybie offline dla aplikacji mobilnej Azure (Cordova) | Dokumentacja firmy Microsoft
+title: Włączanie synchronizacji offline dla aplikacji mobilnej platformy Azure (Cordova) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak używać aplikacji usługi Mobile App do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji Cordova
 documentationcenter: cordova
 author: conceptdev
@@ -14,31 +14,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: c12328a441a8cc438fa3e974863cc8adf8651b50
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593718"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972154"
 ---
-# <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej oprogramowania Cordova
+# <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Włączanie synchronizacji offline dla aplikacji mobilnej Cordova
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-Ten samouczek przedstawia funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla oprogramowania Cordova. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną&mdash;przeglądanie, dodawanie lub modyfikowanie danych&mdash;nawet wtedy, gdy istnieje połączenie sieciowe. Zmiany są przechowywane w lokalnej bazie danych.  Gdy urządzenie jest w trybie online, te zmiany są synchronizowane z usługi zdalnej.
+W tym samouczku wprowadzono funkcję synchronizacji w trybie offline z usługą Azure Mobile Apps Cordova. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną&mdash;wyświetlanie, dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych.  Gdy urządzenie jest w trybie online, zmiany te są synchronizowane z usługi zdalnej.
 
-W tym samouczku opiera się na rozwiązanie szybkiego startu Cordova Mobile Apps, utworzony po ukończeniu samouczka [szybki start dla oprogramowania Apache Cordova]. W tym samouczku należy zaktualizować rozwiązania Szybki Start można dodać funkcji w trybie offline z usługą Azure Mobile Apps.  Możemy również zaznacz kodu w trybie offline określonych w aplikacji.
+Ten samouczek opiera się na rozwiązanie szybkiego startu Cordova dla aplikacji mobilnych, utworzony po ukończeniu tego samouczka [Apache Cordova — szybki start]. W tym samouczku należy zaktualizować szybkiego startu rozwiązania można dodać funkcji w trybie offline z usługą Azure Mobile Apps.  Możemy też wyróżnić kodu specyficznego dla trybu offline w aplikacji.
 
-Aby dowiedzieć się więcej na temat funkcji synchronizacji w trybie offline, zobacz temat [synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps]. Aby uzyskać szczegółowe informacje dotyczące użycia interfejsu API, zobacz [dokumentacji interfejsu API](https://azure.github.io/azure-mobile-apps-js-client).
+Aby dowiedzieć się więcej na temat funkcji synchronizacji w trybie offline, zobacz temat [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]. Aby uzyskać szczegółowe informacje o użycie interfejsu API, zobacz [dokumentacji interfejsu API](https://azure.github.io/azure-mobile-apps-js-client).
 
-## <a name="add-offline-sync-to-the-quickstart-solution"></a>Dodaj synchronizacji w trybie offline do rozwiązania Szybki Start
-Kod synchronizacji w trybie offline, należy dodać do aplikacji. Synchronizacja w trybie offline wymaga wtyczki cordova sqlite magazynu, który automatycznie pobiera dodany do aplikacji po wtyczkę Azure Mobile Apps jest dołączony do projektu. Projekt szybkiego startu zawiera oba te wtyczki.
+## <a name="add-offline-sync-to-the-quickstart-solution"></a>Dodawanie synchronizacji offline do szybkiego startu rozwiązania
+Kod synchronizacji w trybie offline, należy dodać do aplikacji. Synchronizacja w trybie offline wymaga wtyczki cordova sqlite magazynu, który automatycznie pobiera dodane do Twojej aplikacji, gdy wtyczka Azure Mobile Apps znajduje się w projekcie. Projekt szybkiego startu zawiera oba te wtyczki.
 
-1. W Eksploratorze rozwiązań programu Visual Studio Otwórz index.js i Zastąp następujący kod
+1. W Eksploratorze rozwiązań programu Visual Studio Otwórz index.js, a następnie zastąp następujący kod
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable;      // Reference to a table endpoint on backend
 
-    o tym kodzie:
+    przy użyciu tego kodu:
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable,      // Reference to a table endpoint on backend
@@ -48,7 +48,7 @@ Kod synchronizacji w trybie offline, należy dodać do aplikacji. Synchronizacja
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
 
-    o tym kodzie:
+    przy użyciu tego kodu:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
         var store = new WindowsAzure.MobileServiceSqliteStore('store.db');
@@ -66,17 +66,17 @@ Kod synchronizacji w trybie offline, należy dodać do aplikacji. Synchronizacja
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    Dodatki kod z powyższej zainicjować magazynu lokalnego i zdefiniuj lokalnej tabeli, która odpowiada wartości w kolumnie używane w sieci Azure zaplecza. (Nie trzeba obejmują wszystkie wartości w kolumnie w tym kodu).  `version` Pole jest obsługiwany przez zaplecze aplikacji mobilnej, służy do rozwiązywania konfliktów.
+    Dodatki kodu z poprzednim inicjowanie magazynu lokalnego i zdefiniuj lokalnej tabeli, która odpowiada wartości w kolumnach używane w usłudze Azure zaplecza. (Nie trzeba uwzględnić wszystkie wartości kolumny w tym kodzie).  `version` Pola jest obsługiwana przez zaplecza aplikacji mobilnych i służy do rozwiązywania konfliktów.
 
-    Możesz odwołać się do kontekstu synchronizacji przez wywołanie metody **getSyncContext**. Kontekst synchronizacji pomaga zachować relacje między tabelami, śledzenia i wypychanie zmiany we wszystkich tabelach aplikacji klienckiej został zmodyfikowany podczas obliczania `.push()` jest wywoływana.
+    Pobieranie odwołania do kontekstu synchronizacji przez wywołanie metody **getSyncContext**. Kontekst synchronizacji pomaga zachować relacje między tabelami, śledzenia i wypychaniu zmian można znaleźć we wszystkich tabelach aplikacji klienckiej został zmodyfikowany podczas `.push()` jest wywoływana.
 
-3. Zaktualizuj adres URL aplikacji do adresu URL aplikacji w Twojej aplikacji mobilnej.
+3. Zaktualizuj adres URL aplikacji na adres URL aplikacji w aplikacji mobilnej.
 
 4. Następnie Zastąp ten kod:
 
         todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
-    o tym kodzie:
+    przy użyciu tego kodu:
 
         // Initialize the sync context with the store
         syncContext.initialize(store).then(function () {
@@ -108,11 +108,11 @@ Kod synchronizacji w trybie offline, należy dodać do aplikacji. Synchronizacja
         $('#add-item').submit(addItemHandler);
         $('#refresh').on('click', refreshDisplay);
 
-    Poprzedni kod inicjuje kontekstu synchronizacji, a następnie wywołuje getSyncTable (zamiast getTable), aby pobrać odwołanie do lokalnej tabeli.
+    Powyższy kod inicjalizuje kontekst synchronizacji, a następnie wywołuje getSyncTable (zamiast getTable), aby odwołać się do lokalnej tabeli.
 
-    To kod korzysta z lokalnej bazy danych dla wszystkich tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje tabeli.
+    Ten kod używa lokalnej bazy danych w przypadku tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje tabeli.
 
-    W tym przykładzie przeprowadza prosty błąd obsługi na konfliktów synchronizacji. Rzeczywistej aplikacji będzie obsługiwać różne błędy, takie jak warunków sieciowych, powoduje konflikt z serwera i inne. Aby uzyskać przykłady kodu, zobacz [próbki synchronizacji w trybie offline].
+    W tym przykładzie wykonuje prostą obsługę na konfliktów synchronizacji błędów. Rzeczywistej aplikacji będzie obsługiwać różne błędy, takich jak warunki sieciowe, konflikty serwera i inne. Aby uzyskać przykłady kodu, zobacz [przykładowe synchronizacji w trybie offline].
 
 5. Następnie dodaj tę funkcję, aby wykonać rzeczywiste synchronizacji.
 
@@ -128,19 +128,19 @@ Kod synchronizacji w trybie offline, należy dodać do aplikacji. Synchronizacja
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    Podjęcie decyzji dotyczącej Wypchnij zmiany do zaplecza aplikacji mobilnej, wywołując **syncContext.push()**. Na przykład można wywołać **syncBackend** w obsłudze zdarzeń przycisk powiązane przycisk synchronizacji.
+    Zdecyduj, kiedy należy wypchnąć zmiany do zaplecza aplikacji mobilnej, wywołując **syncContext.push()**. Na przykład, można wywołać **syncBackend** programu obsługi zdarzeń przycisku powiązane przycisk synchronizacji.
 
 ## <a name="offline-sync-considerations"></a>Zagadnienia dotyczące synchronizacji w trybie offline
 
-W przykładzie **wypychania** metody **syncContext** wywołać tylko podczas uruchamiania aplikacji w funkcji wywołania zwrotnego dla nazwy logowania.  W przypadku aplikacji rzeczywistych można także spowodować tej funkcji synchronizacji wywołane ręcznie lub zmiany stanu sieci.
+W tym przykładzie **wypychania** metody **syncContext** jest wywoływany tylko podczas uruchamiania aplikacji w funkcji wywołania zwrotnego dla nazwy logowania.  W przypadku aplikacji rzeczywistych można także spowodować tę funkcję synchronizacji wyzwolone ręcznie lub po zmianie stanu sieci.
 
-Podczas wykonywania ściąganie względem tabeli, która ma oczekujące aktualizacje z lokalnego śledzone przez kontekstu, która ściągnięcia operacji automatycznie wyzwalacze wypychania. Podczas odświeżania, dodawanie i wykonując elementów w tym przykładzie można pominąć jawnych **wypychania** wywołać, ponieważ może być nadmiarowe.
+Podczas ściągania jest wykonywane względem tabeli, która ma oczekujące lokalne aktualizacje śledzone przez kontekst, operacji ściągania automatycznie wyzwala powiadomienie wypychane. Podczas odświeżania, dodawania i kończenie elementów w tym przykładzie można pominąć jawną **wypychania** wywołanie, ponieważ może być nadmiarowe.
 
-Podany kod odpytywane będą wszystkie rekordy w tabeli todoItem zdalnego, ale jest również możliwe filtrowanie rekordów przez przekazanie identyfikator zapytania i kwerendę **wypychania**. Aby uzyskać więcej informacji, zobacz sekcję *synchronizacja przyrostowa* w [synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps].
+Podany kod badane są wszystkie rekordy w tabeli todoItem zdalnego, ale jest również możliwe do filtrowania rekordów, przekazując identyfikator zapytania i Wyślij zapytanie w celu **wypychania**. Aby uzyskać więcej informacji, zobacz sekcję *synchronizacja przyrostowa* w [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps].
 
 ## <a name="optional-disable-authentication"></a>(Opcjonalnie) Wyłącz uwierzytelnianie
 
-Jeśli nie chcesz skonfigurować uwierzytelnianie przed testowych synchronizacją w trybie offline, funkcja wywołania zwrotnego dla logowania w komentarz, ale pozostawić kodu wewnątrz odkomentowana funkcja wywołania zwrotnego.  Po komentowania wierszy logowania, następujący kod:
+Jeśli nie chcesz skonfigurować uwierzytelnianie przed testowania synchronizacji w trybie offline, komentarz funkcji wywołania zwrotnego dla nazwy logowania, ale pozostawić kod wewnątrz odkomentowana funkcji wywołania zwrotnego.  Po zakomentowując wierszy logowania, następujący kod:
 
       // Login to the service.
       // client.login('twitter')
@@ -151,62 +151,62 @@ Jeśli nie chcesz skonfigurować uwierzytelnianie przed testowych synchronizacj�
         });
       // }, handleError);
 
-Teraz aplikacja przeprowadza synchronizację z wewnętrznej bazy danych Azure po uruchomieniu aplikacji.
+Teraz aplikacja przeprowadza synchronizację z zaplecza platformy Azure po uruchomieniu aplikacji.
 
-## <a name="run-the-client-app"></a>Uruchamianie aplikacji klienta
-Teraz włączony synchronizacja w trybie offline umożliwia uruchamianie aplikacji klienckiej co najmniej raz na każdej z platform do wypełniania bazy danych magazynu lokalnego. Później symulować scenariusz w trybie offline i modyfikować danych w magazynie lokalnym, gdy aplikacja jest w trybie offline.
+## <a name="run-the-client-app"></a>Uruchom aplikację kliencką
+Synchronizacja w trybie offline teraz włączone aplikacja kliencka można uruchomić co najmniej raz, na każdej platformie, aby wypełnić bazę danych magazynu lokalnego. Później symulować scenariusz w trybie offline i modyfikować dane w magazynie lokalnym, gdy aplikacja działa w trybie offline.
 
-## <a name="optional-test-the-sync-behavior"></a>(Opcjonalnie) Testowanie zachowanie synchronizacji
-W tej sekcji możesz zmodyfikować projekt klienta, aby symulować scenariusz w trybie offline za pomocą nieprawidłowy adres URL aplikacji w danym zapleczu. Podczas dodawania lub zmienić elementów danych, zmiany te są przechowywane w lokalnym magazynie, ale nie są zsynchronizowane z wewnętrznej bazy danych magazynu danych, dopóki nie zostanie ponownie nawiązać połączenie.
+## <a name="optional-test-the-sync-behavior"></a>(Opcjonalnie) Testowanie zachowania synchronizacji
+W tej sekcji możesz zmodyfikować projekt klienta, aby symulować scenariusz w trybie offline przy użyciu nieprawidłowy adres URL aplikacji dla zaplecza. Podczas dodawania lub zmiany elementów danych, zmiany te są przechowywane w magazynie lokalnym, ale nie są synchronizowane z magazynem danych zaplecza, przed ponownym nawiązaniu połączenia.
 
-1. W Eksploratorze rozwiązań Otwórz plik projektu index.js i zmień adres URL aplikacji, aby wskazywał nieprawidłowy adres URL, podobnie do następującego kodu:
+1. W Eksploratorze rozwiązań Otwórz plik index.js i projektu i zmień adres URL aplikacji, aby wskazywał nieprawidłowy adres URL, podobnie do poniższego kodu:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net-fail');
 
-2. Dostawca usług Kryptograficznych aktualizacji index.html, `<meta>` element o tej samej nieprawidłowy adres URL.
+2. W index.html, zaktualizuj dostawcy usług Kryptograficznych `<meta>` element o tej samej nieprawidłowy adres URL.
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.azurewebsites.net-fail; style-src 'self'; media-src *">
 
-3. Skompiluj i uruchom aplikację klienta i zwróć uwagę, że wyjątek jest rejestrowane w konsoli, gdy aplikacja próbuje synchronizować z wewnętrznej bazy danych po logowaniu. Nowe elementy, które można dodać istnieje tylko w lokalnym magazynie, dopóki nie są one przenoszone do zaplecza aplikacji mobilnych. Aplikacja kliencka zachowuje się tak, jakby nie jest połączona z wewnętrznej bazy danych.
+3. Tworzenie i uruchom aplikację kliencką i zwróć uwagę, że wyjątek jest rejestrowane w konsoli, gdy aplikacja próbuje zsynchronizować z wewnętrznej bazy danych po zalogowaniu. Nowe elementy, które można dodać istnieje tylko w magazynie lokalnym, dopóki nie są one przekazywane do zaplecza aplikacji mobilnych. Aplikacja kliencka zachowuje się tak, jest ona dołączona do wewnętrznej bazy danych.
 
-4. Zamknij aplikację i uruchom ponownie, aby sprawdzić, czy nowe elementy utworzone zostały utrwalone w magazynie lokalnym.
+4. Zamknij aplikację i uruchom ponownie, aby sprawdzić, czy nowych elementów, który został utworzony są utrwalane w magazynie lokalnym.
 
-5. (Opcjonalnie) Aby wyświetlić tabelę bazy danych SQL Azure, aby zobaczyć, czy dane w bazie danych zaplecza nie uległy zmianie, należy użyć programu Visual Studio.
+5. (Opcjonalnie) Użyj programu Visual Studio, aby wyświetlić swoje tabeli Azure SQL Database, aby zobaczyć, że dane w wewnętrznej bazy danych nie została zmieniona.
 
-    W programie Visual Studio Otwórz **Eksploratora serwera**. Przejdź do bazy danych w **Azure**->**baz danych SQL**. Kliknij prawym przyciskiem myszy bazę danych i wybierz **Otwórz w Eksploratorze obiektów SQL Server**. Możesz teraz przejść do tabeli bazy danych SQL i jego zawartość.
+    W programie Visual Studio, otwórz **Eksploratora serwera**. Przejdź do bazy danych w **Azure**->**baz danych SQL**. Kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz pozycję **Otwórz w Eksploratorze obiektów SQL Server**. Teraz możesz przejść do tabeli bazy danych SQL i jego zawartość.
 
-## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>(Opcjonalnie) Testowanie ponowne nawiązanie połączenia z wewnętrzną bazą danych w przenośnych
+## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>(Opcjonalnie) Testowanie ponowne łączenie do usługi zaplecza aplikacji mobilnych
 
-W tej sekcji ponowne łączenie aplikacji zaplecza mobilnego, która symuluje aplikacji powracające do trybu online. Podczas logowania danych jest synchronizowany z przenośnymi wewnętrzną bazą danych.
+W tej sekcji ponowne łączenie aplikacji zaplecza mobilnego, który symuluje aplikacji powracające do trybu online. Po zalogowaniu się w danych jest synchronizowana z usługą w zapleczu mobilnym.
 
 1. Otwórz ponownie index.js i przywrócić adres URL aplikacji.
-2. Otwórz ponownie index.html i popraw adres URL aplikacji w dostawcy CSP `<meta>` elementu.
-3. Ponownie skompilować i uruchomić aplikację klienta. Aplikacja próbuje synchronizować z zaplecza aplikacji mobilnej po logowania. Upewnij się, że żadne wyjątki są rejestrowane w konsoli debugowania.
-4. (Opcjonalnie) Wyświetlanie zaktualizowanych danych przy użyciu Eksplorator obiektów SQL Server lub narzędzia REST, takiego jak Fiddler. Należy zauważyć, że zsynchronizowano dane między wewnętrzna baza danych i magazynu lokalnego.
+2. Otwórz ponownie index.html i popraw adres URL aplikacji w programie CSP `<meta>` elementu.
+3. Ponownie skompiluj i uruchom aplikację kliencką. Aplikacja próbuje synchronizować z zapleczem aplikacji mobilnej po zalogowaniu. Upewnij się, że żadne wyjątki są rejestrowane w konsoli debugowania.
+4. (Opcjonalnie) Wyświetl zaktualizowane dane za pomocą Eksplorator obiektów SQL Server lub narzędzia REST, takiego jak Fiddler. Zwróć uwagę, że dane zostały synchronizowane między wewnętrznej bazy danych i magazynu lokalnego.
 
-    Zwróć uwagę, dane zostały zsynchronizowane między bazy danych i Magazyn lokalny i zawiera elementy, które dodano odłączeniu aplikacji.
+    Zwróć uwagę, dane zostały zsynchronizowane między bazy danych i magazynem lokalnym i zawiera elementy, które dodano odłączeniu Twojej aplikacji.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
-* [synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps]
+* [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]
 * [Visual Studio Tools for Apache Cordova]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Przejrzyj bardziej zaawansowane funkcje synchronizacji w trybie offline, takie jak rozwiązywania konfliktów w [próbki synchronizacji w trybie offline]
-* Przejrzyj odwołanie do synchronizacji w trybie offline interfejsu API w [dokumentacji interfejsu API](https://azure.github.io/azure-mobile-apps-js-client).
+* Przegląd bardziej zaawansowane funkcje synchronizacji w trybie offline, takie jak rozwiązywanie konfliktów w [przykładowe synchronizacji w trybie offline]
+* Przejrzyj odwołania API synchronizacji w trybie offline w [dokumentacji interfejsu API](https://azure.github.io/azure-mobile-apps-js-client).
 
 <!-- ##Summary -->
 
 <!-- Images -->
 
 <!-- URLs. -->
-[szybki start dla oprogramowania Apache Cordova]: app-service-mobile-cordova-get-started.md
-[próbki synchronizacji w trybie offline]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
-[synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
-[Cloud Cover: Offline Sync in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Apache Cordova — szybki start]: app-service-mobile-cordova-get-started.md
+[Przykładowe synchronizacji w trybie offline]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
+[Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Cloud Cover: Offline Sync in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Adding Authentication]: app-service-mobile-cordova-get-started-users.md
 [authentication]: app-service-mobile-cordova-get-started-users.md
 [Work with the .NET backend server SDK for Azure Mobile Apps]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Visual Studio Community 2015]: http://www.visualstudio.com/
+[Visual Studio Community 2015]: https://www.visualstudio.com/
 [Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

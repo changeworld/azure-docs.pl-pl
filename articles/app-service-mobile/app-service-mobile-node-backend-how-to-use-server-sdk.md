@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cbedb17bb7563620d0d9db81333d9a79301b4ee0
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 926712d8d38f144c583dcf61c3cd0f078566296a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817512"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964002"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu SDK środowiska Node.js w aplikacji mobilnej
 
@@ -36,7 +36,7 @@ Mobile Apps oferuje możliwość dodawania dane zoptymalizowane pod kątem mobil
 
 Obie operacje zapewnienia uwierzytelniania wszystkich dostawców tożsamości, które umożliwia usłudze Azure App Service. Ci dostawcy obejmują dostawców tożsamości społecznościowych, takich jak Facebook, Twitter, Google i Microsoft, a także usługi Azure Active Directory dla tożsamości organizacji.
 
-Możesz znaleźć przykłady dla każdego przypadku użycia w [katalogu przykładów w witrynie GitHub].
+Możesz znaleźć przykłady dla każdego przypadku użycia w [Katalog przykładów w witrynie GitHub].
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
 
@@ -90,12 +90,12 @@ Jako aplikacja ExpressJS rozpoczyna się co zaplecze środowiska Node.js z aplik
 Ta aplikacja tworzy mobile są zoptymalizowane pod kątem interfejsu API sieci Web za pomocą pojedynczego punktu końcowego (`/tables/TodoItem`) zapewniającej nieuwierzytelniony dostęp do magazynu danych SQL przy użyciu schematu dynamicznego. Nadaje się do korzystania z biblioteki klienta, przewodniki Szybki Start:
 
 * [Przewodnik Szybki Start kliencką dla systemu android]
-* [Szybki Start klienta Apache Cordova]
+* [Przewodnik Szybki Start klienta Apache Cordova]
 * [Przewodnik Szybki Start klienta systemu iOS]
-* [Szybki Start klienta Windows Store]
-* [Przewodnik Szybki Start platformy Xamarin.iOS klienta]
-* [Przewodnik Szybki Start platformy Xamarin.Android klienta]
-* [Przewodnik Szybki Start platformy Xamarin.Forms klienta]
+* [Przewodnik Szybki Start Windows Store klienta]
+* [Przewodnik Szybki Start klienta platformy Xamarin.iOS]
+* [Przewodnik Szybki Start klienta platformy Xamarin.Android]
+* [Przewodnik Szybki Start klienta interfejsu Xamarin.Forms]
 
 Możesz znaleźć kod dla tej aplikacji podstawowe w [przykład basicapp w witrynie GitHub].
 
@@ -152,7 +152,7 @@ Podczas tworzenia zaplecza funkcji Mobile Apps Node.js za pomocą aplikacji port
 
 W poniższej procedurze użyto repozytorium Git do pobierania kodu projektu Szybki Start:
 
-1. Instalowanie programu Git, jeśli jeszcze tego nie zrobiłeś. Kroki wymagane do zainstalowania usługi Git różnią się między systemami operacyjnymi. Dla konkretnych systemów operacyjnych dystrybucji i wskazówki dotyczące instalacji, zobacz [instalacji usługi Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
+1. Instalowanie programu Git, jeśli jeszcze tego nie zrobiłeś. Kroki wymagane do zainstalowania usługi Git różnią się między systemami operacyjnymi. Dla konkretnych systemów operacyjnych dystrybucji i wskazówki dotyczące instalacji, zobacz [instalacji usługi Git](https://git-scm.com/book/en/Getting-Started-Installing-Git).
 1. Zobacz [przygotowanie repozytorium](../app-service/app-service-deploy-local-git.md#prepare-your-repository) włączyć repozytorium Git dla danej witryny zaplecza. Zanotuj nazwę wdrożenia użytkownika i hasło.
 1. W okienku dla zaplecza usługi Mobile Apps Zanotuj **adres URL klonowania Git** ustawienie.
 1. Wykonaj `git clone` polecenia przy użyciu adresu URL klonowania Git. Wprowadź swoje hasło, gdy jest to wymagane, jak w poniższym przykładzie:
@@ -382,7 +382,7 @@ Większość ustawień w pliku azureMobile.js ma ustawienia aplikacji równoważ
 
 Aby skonfigurować ustawienie aplikacji:
 
-1. Zaloguj się w [Azure Portal].
+1. Zaloguj się w witrynie [Azure Portal].
 1. Wybierz **wszystkie zasoby** lub **App Services**, a następnie wybierz nazwę swojej aplikacji mobilnej.
 1. **Ustawienia** domyślnie zostanie otwarte okienko. Jeśli nie wybierz opcję **ustawienia**.
 1. Na **ogólne** menu, wybierz opcję **ustawienia aplikacji**.
@@ -399,7 +399,7 @@ Zmiana ustawień większość aplikacji wymaga ponownego uruchomienia tej usług
 
 Za pomocą usługi Azure SQL Database do przechowywania danych jest identyczna w przypadku wszystkich typów aplikacji w usłudze Azure App Service. Jeśli użytkownik nie zostało zrobione już, wykonaj następujące kroki, aby utworzyć zaplecze funkcji Mobile Apps:
 
-1. Zaloguj się w [Azure Portal].
+1. Zaloguj się w witrynie [Azure Portal].
 1. W lewym górnym rogu okna, wybierz **+ nowy** przycisk > **sieci Web i mobilność** > **aplikacji mobilnej**, a następnie podaj nazwę dla zaplecza usługi Mobile Apps.
 1. W **grupy zasobów** wprowadź taką samą nazwę co aplikacja.
 1. Wybrano domyślny plan usługi App Service. Jeśli chcesz zmienić plan usługi App Service:
@@ -910,7 +910,7 @@ Aplikacje node.js mają dostęp do szerokiej gamy narzędzi dzienników diagnost
 * createdAt
 * updatedAt
 * usunięte
-* wersja
+* version
 
 Operacje tabeli mogą edytować za pomocą Edytor usługi App Service. Po wybraniu **łatwych tabel** w ustawieniach witryny zaplecza może Dodawanie, modyfikowanie lub usuwanie tabeli. Można również zobaczyć dane w tabeli.
 
@@ -956,12 +956,12 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 
 <!-- URLs -->
 [Przewodnik Szybki Start kliencką dla systemu android]: app-service-mobile-android-get-started.md
-[Szybki Start klienta Apache Cordova]: app-service-mobile-cordova-get-started.md
+[Przewodnik Szybki Start klienta Apache Cordova]: app-service-mobile-cordova-get-started.md
 [Przewodnik Szybki Start klienta systemu iOS]: app-service-mobile-ios-get-started.md
-[Przewodnik Szybki Start platformy Xamarin.iOS klienta]: app-service-mobile-xamarin-ios-get-started.md
-[Przewodnik Szybki Start platformy Xamarin.Android klienta]: app-service-mobile-xamarin-android-get-started.md
-[Przewodnik Szybki Start platformy Xamarin.Forms klienta]: app-service-mobile-xamarin-forms-get-started.md
-[Szybki Start klienta Windows Store]: app-service-mobile-windows-store-dotnet-get-started.md
+[Przewodnik Szybki Start klienta platformy Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md
+[Przewodnik Szybki Start klienta platformy Xamarin.Android]: app-service-mobile-xamarin-android-get-started.md
+[Przewodnik Szybki Start klienta interfejsu Xamarin.Forms]: app-service-mobile-xamarin-forms-get-started.md
+[Przewodnik Szybki Start Windows Store klienta]: app-service-mobile-windows-store-dotnet-get-started.md
 [Synchronizacja danych offline]: app-service-mobile-offline-data-sync.md
 [Konfigurowanie uwierzytelniania usługi Azure Active Directory]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 [Konfigurowanie uwierzytelniania serwisu Facebook]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
@@ -976,19 +976,19 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 [Użyj moduły node.js]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
-[Express]: http://expressjs.com/
-[Swagger]: http://swagger.io/
+[Express]: https://expressjs.com/
+[Swagger]: https://swagger.io/
 
 [Azure Portal]: https://portal.azure.com/
-[OData]: http://www.odata.org
+[OData]: https://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [przykład basicapp w witrynie GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [przykład zadań do wykonania w witrynie GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
-[katalogu przykładów w witrynie GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
+[Katalog przykładów w witrynie GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
 [static-schema sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
 [QueryJS]: https://github.com/Azure/queryjs
 [Node.js Tools 1.1 dla programu Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [Pakiet Node.js MSSQL]: https://www.npmjs.com/package/mssql
-[Program Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[Oprogramowanie pośredniczące ExpressJS]: http://expressjs.com/guide/using-middleware.html
+[Program Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[Oprogramowanie pośredniczące ExpressJS]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

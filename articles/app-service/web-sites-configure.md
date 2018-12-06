@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 60675d7d40dbab863677ea120c25986cff61a308
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443512"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960145"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
 
@@ -179,14 +179,14 @@ Aby uzyskać więcej informacji, zobacz [Porady: monitorowanie stanu punktu koń
 
 <!-- URL List -->
 
-[Biblioteki SignalR platformy ASP.NET]: http://www.asp.net/signalr
+[Biblioteki SignalR platformy ASP.NET]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Wdróż do środowisk przejściowych dla aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-staged-publishing.md
 [Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
-[Porady: monitorowanie stanu punktu końcowego sieci web]: http://go.microsoft.com/fwLink/?LinkID=279906
+[Porady: monitorowanie stanu punktu końcowego sieci web]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Podstawy monitorowania dla aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-monitor.md
-[Tryb potokowy]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[Tryb potokowy]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Skalowanie aplikacji sieci web w usłudze Azure App Service]: ./web-sites-scale.md
 [Wypróbuj usługę App Service]: https://azure.microsoft.com/try/app-service/
 

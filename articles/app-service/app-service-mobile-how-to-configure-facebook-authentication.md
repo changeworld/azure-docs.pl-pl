@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie uwierzytelniania serwisu Facebook dla aplikacji usługi aplikacji
-description: Informacje o sposobie konfigurowania uwierzytelniania serwisu Facebook dla aplikacji usługi aplikacji.
+title: Jak skonfigurować uwierzytelnianie serwisu Facebook dla aplikacji usługi App Services
+description: Dowiedz się, jak skonfigurować uwierzytelnianie serwisu Facebook dla aplikacji usługi App Services.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,61 +14,61 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 1d2b294fc0663770f9a699e300672695225dfdfd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2061633e50bd3a25fa880685fa31eb4eae366cad
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152095"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966232"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Jak skonfigurować aplikację App Service, aby używała logowania do usługi Facebook
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym temacie przedstawiono sposób konfigurowania usługi aplikacji Azure do użycia jako dostawcę uwierzytelniania serwisu Facebook.
+W tym temacie przedstawiono sposób konfigurowania usługi Azure App Service, aby użyć usługi Facebook jako dostawcy uwierzytelniania.
 
-Aby ukończyć tę procedurę w tym temacie, musi mieć konto usługi Facebook, które ma ze zweryfikowanym adresem e-mail i numer telefonu komórkowego. Aby utworzyć nowe konto usługi Facebook, przejdź do [facebook.com].
+Aby ukończyć tę procedurę w tym temacie, muszą mieć konta w serwisie Facebook, która ma ze zweryfikowanym adresem e-mail i numer telefonu komórkowego. Aby utworzyć nowe konto usługi Facebook, przejdź do [facebook.com].
 
-## <a name="register"> </a>Zarejestrować aplikację w usłudze Facebook
-1. Zaloguj się do [portalu Azure], a następnie przejdź do aplikacji. Kopiowanie z **adres URL**. Umożliwia to konfigurowanie aplikacji usługi Facebook.
-2. W innym oknie przeglądarki, przejdź do [deweloperzy Facebook] poświadczenia konta witryny sieci Web i logowania z użytkownika usługi Facebook.
-3. (Opcjonalnie) Jeśli nie została jeszcze zarejestrowana, kliknij przycisk **aplikacje** > **Zarejestruj się jako deweloper**, Zaakceptuj zasady i wykonaj kroki rejestracji.
+## <a name="register"> </a>Zarejestruj swoją aplikację za pomocą usługi Facebook
+1. Zaloguj się do [Azure Portal], a następnie przejdź do aplikacji. Kopiuj swoje **adresu URL**. Użytkownik zostanie ona użyta do konfigurowania aplikacji usługi Facebook.
+2. W innym oknie przeglądarki przejdź do [deweloperzy w serwisie Facebook] poświadczeń konta w witrynie sieci Web i zaloguj się przy użyciu usługi Facebook.
+3. (Opcjonalnie) Jeśli nie została jeszcze zarejestrowana, kliknij przycisk **aplikacje** > **Zarejestruj się jako deweloper**, a następnie zaakceptuj zasady i postępuj zgodnie z instrukcjami rejestracji.
 4. Kliknij przycisk **Moje aplikacje** > **Dodaj nową aplikację**.
-5. W **Nazwa wyświetlana**, wpisz unikatową nazwę dla aplikacji. Udostępniają Twojej **E-mail kontaktu**, a następnie kliknij przycisk **utworzyć identyfikator aplikacji** i ukończyć sprawdzania zabezpieczeń. Powoduje to przejście do projektanta pulpitu nawigacyjnego dla nowej aplikacji usługi Facebook.
-7. W obszarze **logowania usługi Facebook**, kliknij przycisk **Konfigurowanie**, a następnie wybierz pozycję **ustawienia** w obszarze nawigacji po lewej stronie w obszarze **logowania usługi Facebook**.
-8. Dodawanie aplikacji **identyfikator URI przekierowania** do **prawidłowy OAuth przekierowania URI**, następnie kliknij przycisk **Zapisz zmiany**.
+5. W **nazwę wyświetlaną**, wpisz unikatową nazwę aplikacji. Zapewniają również swoje **E-mail kontaktowy**, a następnie kliknij przycisk **utworzyć identyfikator aplikacji** i ukończyć sprawdzanie zabezpieczeń. Spowoduje to przejście do pulpitu nawigacyjnego dla deweloperów dla nowej aplikacji usługi Facebook.
+7. W obszarze **logowania do usługi Facebook**, kliknij przycisk **Konfigurowanie**, a następnie wybierz **ustawienia** w obszarze nawigacji po lewej stronie w obszarze **logowania do usługi Facebook**.
+8. Dodawanie aplikacji **identyfikator URI przekierowania** do **identyfikatory URI przekierowania OAuth prawidłowe**, następnie kliknij przycisk **Zapisz zmiany**.
    
    > [!NOTE]
-   > Twoje przekierowania URI jest adres URL aplikacji dołączany wraz ze ścieżką */.auth/login/facebook/callback*. Na przykład `https://contoso.azurewebsites.net/.auth/login/facebook/callback`. Upewnij się, że używasz schematu HTTPS.
+   > Twojego przekierowania URI jest adres URL aplikacji dołączany ścieżki, */.auth/login/facebook/callback*. Na przykład `https://contoso.azurewebsites.net/.auth/login/facebook/callback`. Upewnij się, że będą używać schematu HTTPS.
    > 
    > 
-7. W obszarze nawigacji po lewej stronie, kliknij przycisk **ustawienia** > **podstawowe**. Na **klucz tajny aplikacji** kliknij **Pokaż**, podaj hasło, jeśli żądanie, a następnie zanotuj wartości **identyfikator aplikacji** i **klucz tajny aplikacji**. Można użyć tych później do konfigurowania aplikacji na platformie Azure.
+7. W obszarze nawigacji po lewej stronie, kliknij przycisk **ustawienia** > **podstawowe**. Na **klucz tajny aplikacji** kliknij **Pokaż**, podaj hasło, jeśli żądanie, a następnie zanotuj wartości **Identyfikatora aplikacji** i **klucz tajny aplikacji** . Umożliwia one później skonfigurować aplikację na platformie Azure.
    
    > [!IMPORTANT]
-   > Klucz tajny aplikacji jest ważne poświadczenie zabezpieczeń. Nie udostępniaj nikomu ten klucz tajny i rozpowszechnienie go w aplikacji klienta.
+   > Klucz tajny aplikacji jest ważnym poświadczeniem zabezpieczeń. Udostępnij ten wpis tajny osobom lub nie rozpowszechnić ją w aplikacji klienckiej.
    > 
    > 
-8. Konto usługi Facebook, która była używana do rejestrowania aplikacji jest administrator aplikacji. W tym momencie tylko administratorzy mogą Zaloguj się do tej aplikacji. Do uwierzytelniania innych kont usługi Facebook, kliknij przycisk **aplikacji przejrzyj** i Włącz **publicznego upewnij < your-app-name >** umożliwia ogólne dostęp publiczny przy użyciu uwierzytelniania serwisu Facebook.
+8. Konta w serwisie Facebook, który został użyty do zarejestrowania aplikacji jest administratorem aplikacji. Tylko administratorzy mogą na tym etapie Zaloguj się do tej aplikacji. Na potrzeby uwierzytelniania innych kont usługi Facebook, kliknij przycisk **przeglądu aplikacji** i włączyć **publicznego upewnij < your-app-name >** umożliwiające ogólnego dostępu publicznego przy użyciu uwierzytelniania serwisu Facebook.
 
-## <a name="secrets"> </a>Dodawanie do aplikacji usługi Facebook informacji
-1. W [portalu Azure], przejdź do aplikacji. Kliknij przycisk **ustawienia** > **uwierzytelniania / autoryzacji**i upewnij się, że **aplikacji uwierzytelniania usługi** jest **na**.
-2. Kliknij przycisk **Facebook**, Wklej wartości Identyfikatora aplikacji i klucz tajny aplikacji, które uzyskany wcześniej, opcjonalnie włączyć wszystkie zakresy wymagane przez aplikację, a następnie kliknij **OK**.
+## <a name="secrets"> </a>Dodaj informacje o usłudze Facebook do aplikacji
+1. Ponownie [Azure Portal], przejdź do aplikacji. Kliknij przycisk **ustawienia** > **uwierzytelniania / autoryzacji**i upewnij się, że **uwierzytelnianie usługi App Service** jest **na**.
+2. Kliknij przycisk **Facebook**, Wklej wartości Identyfikatora aplikacji i klucz tajny aplikacji, które wcześniej uzyskanych, opcjonalnie włączyć wszystkie zakresy, wymagane przez aplikację, a następnie kliknij przycisk **OK**.
    
     ![][0]
    
-    Domyślnie usługi App Service zapewnia uwierzytelnianie, ale nie ogranicza autoryzowanego dostępu do interfejsów API i zawartości witryny. Musisz zezwolić użytkownikom w kodzie aplikacji.
-3. (Opcjonalnie) Aby ograniczyć dostęp do witryny użytkownikom tylko uwierzytelniony przez usługi Facebook, ustaw **działania należy podjąć w przypadku nieuwierzytelnionego żądania** do **Facebook**. Wymaga to, że wszystkie żądania uwierzytelnienia, a wszystkie nieuwierzytelnione żądania są przekierowywane do serwisu Facebook dla uwierzytelniania.
-4. Po zakończeniu konfigurowania uwierzytelniania, kliknij przycisk **zapisać**.
+    Domyślnie usługa App Service zapewnia uwierzytelnianie, ale nie ogranicza autoryzowanego dostępu do zawartości witryny i interfejsów API. W kodzie aplikacji musi autoryzować użytkowników.
+3. (Opcjonalnie) Aby ograniczyć dostęp do witryny tylko użytkownikom uwierzytelniony przez usługi Facebook, należy ustawić **akcji do wykonania w przypadku nieuwierzytelnionego żądania** do **Facebook**. Wymaga to, że wszystkie żądania uwierzytelnienia, a wszystkie nieuwierzytelnione żądania są przekierowywane do serwisu Facebook do uwierzytelniania.
+4. Po zakończeniu konfigurowania uwierzytelniania kliknij **Zapisz**.
 
-Teraz można przystąpić do uwierzytelniania w aplikacji usługi Facebook.
+Teraz można przystąpić do użycia usługi Facebook na potrzeby uwierzytelniania w aplikacji.
 
-## <a name="related-content"> </a>Zawartość pokrewna
+## <a name="related-content"> </a>Powiązana zawartość
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->
 [0]: ./media/app-service-mobile-how-to-configure-facebook-authentication/mobile-app-facebook-settings.png
 
 <!-- URLs. -->
-[deweloperzy Facebook]: http://go.microsoft.com/fwlink/p/?LinkId=268286
-[facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
+[Deweloperzy w serwisie Facebook]: https://go.microsoft.com/fwlink/p/?LinkId=268286
+[Facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[portalu Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
