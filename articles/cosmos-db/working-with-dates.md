@@ -1,20 +1,18 @@
 ---
-title: Praca z datami w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Praca z datami w usłudze Azure Cosmos DB
 description: Dowiedz się więcej na temat sposobu pracy z datami w usłudze Azure Cosmos DB.
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
+author: SnehaGunda
+ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: sngun
-ms.openlocfilehash: d85cada87a6934921bf2775f12c016a88d9fbe9e
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 49196df580aec4975a74849e8f2b36c03f6750ad
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164026"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956112"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Praca z datami w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB zapewnia elastyczność schematu i rozbudowane indeksowanie za pomocą macierzystej [JSON](http://www.json.org) modelu danych. Wszystkie zasoby usługi Azure Cosmos DB, w tym baz danych, kontenerów, dokumenty i procedury składowane są modelowane i przechowywane jako dokumenty JSON. Jako wymaganie jest przenośny, JSON (i usługi Azure Cosmos DB) obsługuje tylko niewielki zestaw typów podstawowych: ciąg, liczba, atrybut typu wartość logiczna, Array, obiekt i o wartości Null. Jednak JSON jest elastyczny i umożliwia deweloperom i struktur, do reprezentowania bardziej złożonych typów, przy użyciu tych wartości pierwotnych i tworzenie ich jako obiekty i tablice. 

@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: b79d64cc063105cb8ecce537a09a7f39a78eef4c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8b6257519c3b1db2180335523047e8dc55558d57
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275031"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954596"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Usuwanie dostawcy zasobów bazy danych SQL
 
 Zanim usuniesz dostawcy zasobów bazy danych SQL, należy usunąć wszystkie zależności dostawcy. Należy także kopię pakiet wdrożeniowy, który został użyty do zainstalowania dostawcy zasobów.
 
 > [!NOTE]
-> Można znaleźć łącza pobierania zasobu instalatorów dostawcy w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
+> Można znaleźć łącza pobierania zasobu instalatorów dostawcy w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 Usuwanie dostawcy zasobów bazy danych SQL nie spowoduje usunięcia bazy danych dzierżaw z serwerów hosta.
 

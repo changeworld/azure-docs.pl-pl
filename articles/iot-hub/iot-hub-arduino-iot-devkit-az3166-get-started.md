@@ -1,20 +1,20 @@
 ---
 title: IoT Mxchip z chmurą — nawiązać połączenie z IoT DevKit az3166 usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: W tym samouczku Dowiedz się, jak skonfigurować i połączyć DevKit az3166 usługi IoT dla usługi Azure IoT Hub, dzięki czemu może wysłać dane do platformy w chmurze.
-author: rangv
-manager: jeffya
+author: wesmc7777
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
-ms.author: rangv
-ms.openlocfilehash: 2ece10c43f25ac637a29324f46a88e50d9655431
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.author: wesmc
+ms.openlocfilehash: e6412ce36110f2e9a800262c968039112f2e4b1c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620442"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955687"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -133,27 +133,34 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mx
 3. Poszukaj **usługi Azure IoT Workbench** rynku rozszerzenia i zainstalować ją.
     ![Zainstaluj aplikację Azure IoT Workbench](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png) wraz z aplikacji IoT Workbench, inne rozszerzenia zależne zostaną zainstalowane.
 
-4. Konfigurowanie Arduino
-    * **Windows**: na **Windows** Otwórz **Plik > Preferencje > Ustawienia** kliknij **...**  i otwórz settings.json a następnie dodać następujące wiersze do skonfigurowania Arduino. 
+4. Konfigurowanie programu Visual Studio Code przy użyciu ustawień Arduino. 
+
+    W programie Visual Studio Code kliknij **Plik > Preferencje > Ustawienia**. Następnie kliknij przycisk **...**  i **Otwórz settings.json**. 
+    
+    Dodaj następujące wiersze do skonfigurowania Arduino w zależności od używanej platformy: 
+
+    * **Windows**:
       
-    ```json
-    "arduino.path": "C:\\Program Files (x86)\\Arduino",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "C:\\Program Files (x86)\\Arduino",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
-    * **macOS**: na **macOS** Otwórz **kodu > Preferencje > Ustawienia** kliknij **...**  i otwórz settings.json a następnie dodaj następujące wiersze do skonfigurowania Arduino
+    * **System macOS**:
 
-    ```json
-    "arduino.path": "/Applications",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "/Applications",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
     * **Ubuntu**:
+    
+        Zastąp **{username}** symbol zastępczy poniżej swoją nazwę użytkownika.
 
-    ```json
-    "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
 5. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **Arduino: Menedżer tablicy**. Wyszukaj **az3166 usługi** i zainstaluj najnowszą wersję.
     ![Zainstaluj zestaw SDK Mxchip](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-sdk.png)

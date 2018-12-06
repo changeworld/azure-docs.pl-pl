@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 27bfd3176ecad847f9bba2a62abd66b55484443b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 82ae0ef72bb4f546a1f946f3127aa5d74bec3c3b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443019"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957763"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Jak wdrożyć wystąpienie usługi Azure API Management w wielu regionach platformy Azure
 
@@ -119,5 +119,5 @@ W pełni wykorzystać rozkład geograficzny systemu, powinien mieć usług zaple
 [Deploy an API Management service instance to a new region]: #add-region
 [Delete an API Management service instance from a region]: #remove-region
 
-[unit]: http://azure.microsoft.com/pricing/details/api-management/
-[Premium]: http://azure.microsoft.com/pricing/details/api-management/
+[unit]: https://azure.microsoft.com/pricing/details/api-management/
+[Premium]: https://azure.microsoft.com/pricing/details/api-management/

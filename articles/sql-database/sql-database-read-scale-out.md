@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 6b694794da5eabaddf4d6f29203b7d6553ef4940
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/05/2018
+ms.openlocfilehash: 16737ed525147968c97ca20a9f4e674a0dee34fc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844400"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955058"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
 
 **Odczyt skalowalnego w poziomie** pozwala załadować saldo usługa Azure SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu.
-
-## <a name="overview-of-read-scale-out"></a>Omówienie odczytu skalowalnego w poziomie
 
 Każda baza danych w warstwie Premium ([modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md)) lub w warstwie krytyczne dla działania firmy ([modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md)) są automatycznie konfigurowani przy użyciu kilku zawsze włączonych replik na obsługuje umowa SLA dotycząca dostępności.
 
@@ -47,7 +45,7 @@ Jedną z zalet repliki jest, że repliki są zawsze w stanie transakcyjnie spój
 > [!NOTE]
 > Brakuje opóźnienia w replikacji w regionie i tej sytuacji jest rzadkie.
 
-## <a name="connecting-to-a-read-only-replica"></a>Nawiązywanie połączenia z repliki tylko do odczytu
+## <a name="connect-to-a-read-only-replica"></a>Połącz się z repliką tylko do odczytu
 
 Po włączeniu odczytu skalowalnego w poziomie dla bazy danych, `ApplicationIntent` opcji w parametrach połączenia, udostępniane przez klienta określa, czy połączenie jest kierowany do repliki zapisu lub do repliki tylko do odczytu. W szczególności jeśli `ApplicationIntent` wartość `ReadWrite` (wartość domyślna), połączenie zostanie skierowany do repliki do odczytu i zapisu bazy danych. Jest to taka sama jak istniejące zachowanie. Jeśli `ApplicationIntent` wartość `ReadOnly`, połączenie jest kierowany do repliki tylko do odczytu.
 
@@ -65,6 +63,8 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
+## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Sprawdź, czy połączenie z repliką tylko do odczytu
+
 Aby sprawdzić, czy nawiązano połączenie z repliką tylko do odczytu, uruchamiając następujące zapytanie. Zwróci READ_ONLY po podłączeniu do repliki tylko do odczytu.
 
 ```SQL
@@ -78,7 +78,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 Odczyt skalowalnego w poziomie jest domyślnie włączone w [wystąpienia zarządzanego](sql-database-managed-instance.md) warstwy krytyczne dla działania firmy. Powinno ono zostać jawnie włączone w [bazy danych są umieszczone na serwerze logicznym](sql-database-logical-servers.md) w warstwach Premium i krytyczne dla działania firmy. Metody włączania i wyłączania odczytu skalowalnego w poziomie opisano w tym miejscu.
 
-### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Włączanie i wyłączanie odczytu skalowalnego w poziomie przy użyciu programu Azure PowerShell
+### <a name="powershell-enable-and-disable-read-scale-out"></a>Program PowerShell: Włączanie i wyłączanie odczytu skalowalnego w poziomie
 
 Zarządzanie odczytu skalowalnego w poziomie w programie Azure PowerShell wymaga grudnia 2016 r. wersja programu Azure PowerShell lub nowszej. Dla najnowszej wersji programu PowerShell, zobacz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
@@ -102,7 +102,7 @@ Aby utworzyć nową bazę danych za pomocą odczytu skalowalnego w poziomie wł�
 New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
-### <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Włączanie i wyłączanie odczytu skalowalnego w poziomie przy użyciu interfejsu API REST usługi Azure SQL Database
+### <a name="rest-api-enable-and-disable-read-scale-out"></a>Interfejs API REST: Włączanie i wyłączanie odczytu skalowalnego w poziomie
 
 Aby utworzyć bazę danych za pomocą odczytu skalowalnego w poziomie włączone, lub włączyć lub wyłączyć odczytu skalowalnego w poziomie do istniejącej bazy danych, Utwórz lub zaktualizuj odpowiednia jednostka bazy danych za pomocą `readScale` właściwością `Enabled` lub `Disabled` podobnie jak w poniższych przykładowych żądanie.
 

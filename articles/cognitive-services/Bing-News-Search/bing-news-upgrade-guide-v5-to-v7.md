@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: c6ecb7d4c1e5b648373fcaa3f44c6294329d33c2
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 565c0ed877cf4500131f7ad3099f3c7d3f1a1220
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801169"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955041"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Podręcznik uaktualnienia interfejsu API wyszukiwania wiadomości
 
@@ -25,7 +25,7 @@ Ten przewodnik uaktualniania identyfikuje zmiany między w wersji 5 i interfejsu
 
 ### <a name="endpoints"></a>Punkty końcowe
 
-- Numer wersji punktu końcowego zmieniła się z 5 w wersji 7. Na przykład https://api.cognitive.microsoft.com/bing/\ * \*v7.0**/news/search.
+- Numer wersji punktu końcowego zmieniła się z 5 w wersji 7. Na przykład https://api.cognitive.microsoft.com/bing/ **v7.0**  /wiadomości/wyszukiwania.
 
 ### <a name="error-response-objects-and-error-codes"></a>Błąd odpowiedzi obiektów i kody błędów
 
@@ -34,14 +34,13 @@ Ten przewodnik uaktualniania identyfikuje zmiany między w wersji 5 i interfejsu
 - Dodano następujące pola do `Error` obiektu.  
   - `subCode`&mdash;Dzieli na partycje kod błędu w przedziały dyskretnych, jeśli jest to możliwe
   - `moreDetails`&mdash;Dodatkowe informacje o błędzie opisany w `message` pola
-   
 
 - Zastąpione następujące możliwe kody błędów w wersji 5 `code` i `subCode` wartości.
 
 |Kod|Podrzędnego|Opis
 |-|-|-
 |Błąd ServerError|UnexpectedError<br/>ResourceError<br/>Nie zaimplementowano|Wyszukiwarka Bing zwróci błąd ServerError w każdym przypadku, gdy wystąpi którykolwiek z warunków podkodem. Odpowiedź zawiera te błędy, jeśli kod stanu HTTP 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowane|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli ten błąd jest HttpNotAllowed, kod stanu HTTP 410.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowany|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli ten błąd jest HttpNotAllowed, kod stanu HTTP 410.
 |RateLimitExceeded||Wyszukiwarka Bing zwróci RateLimitExceeded zawsze wtedy, gdy przekracza z zapytań na sekundę (QPS) lub zapytania na miesiąc (QPM) limitu przydziału.<br/><br/>Wyszukiwarka Bing zwróci kod stanu HTTP 429 w przypadku przekroczenia liczby zapytań na Sekundę i 403 przekroczeniu QPM.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Wyszukiwarka Bing zwróci InvalidAuthorization, kiedy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje w przypadku określenia więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli ten błąd jest InvalidAuthorization, kod stanu HTTP jest 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Wyszukiwarka Bing zwróci InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Może to wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli ten błąd jest InsufficientAuthorization, kod stanu HTTP jest 403.
@@ -67,7 +66,7 @@ InvalidAuthorizationMethod|InvalidAuthorization
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
 ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
 InsufficientScope|InsufficientAuthorization
-Zablokowane|InvalidRequest.Blocked
+Zablokowany|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>Zmiany obiektu
 
@@ -77,18 +76,18 @@ Zablokowane|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>Parametry zapytania
 
-- Dodaje produktów jako możliwej wartości, której możesz ustawić [kategorii](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) parametr do zapytania. Zobacz [kategorii według rynków](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market).  
-    
-- Dodano [sortby —](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) parametr zapytania, który zwraca popularne tematy, posortowane według daty przy użyciu najnowsze na początku.  
-  
+- Dodaje produktów jako możliwej wartości, której możesz ustawić [kategorii](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) parametr do zapytania. Zobacz [kategorii według rynków](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market).
+
+- Dodano [sortby —](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) parametr zapytania, który zwraca popularne tematy, posortowane według daty przy użyciu najnowsze na początku.
+
 - Dodano [ponieważ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#since) parametr zapytania, które zwraca popularne tematy, które zostały odnalezione przez usługę Bing na lub po określonej sygnatura czasowa epoki systemu Unix.
 
 ### <a name="object-changes"></a>Zmiany obiektu
 
-- Dodano `mentions` pole [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) obiektu. `mentions` Pole zawiera listę jednostek (osoby lub miejsca), które zostały znalezione w artykule.  
-  
-- Dodano `video` pole [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) obiektu. `video` Pole zawiera film wideo, który jest powiązany z artykułu z wiadomościami. To wideo \<iframe\> , możesz osadzić lub miniaturę ruchu.   
-  
-- Dodano `sort` pole [wiadomości](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) obiektu. `sort` Pole zawiera kolejność sortowania artykułów. Na przykład artykuły są sortowane według istotności (ustawienie domyślne) lub daty.  
-  
+- Dodano `mentions` pole [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) obiektu. `mentions` Pole zawiera listę jednostek (osoby lub miejsca), które zostały znalezione w artykule.
+
+- Dodano `video` pole [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) obiektu. `video` Pole zawiera film wideo, który jest powiązany z artykułu z wiadomościami. To wideo \<iframe\> , możesz osadzić lub miniaturę ruchu.
+
+- Dodano `sort` pole [wiadomości](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) obiektu. `sort` Pole zawiera kolejność sortowania artykułów. Na przykład artykuły są sortowane według istotności (ustawienie domyślne) lub daty.
+
 - Dodano [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortvalue) obiektu, który definiuje kolejność sortowania. `isSelected` Pole wskazuje, czy odpowiedź używany porządek sortowania. Jeśli **true**, odpowiedź używane porządek sortowania. Jeśli `isSelected` jest **false**, można użyć adresu URL w `url` pola, aby zażądać porządek sortowania.

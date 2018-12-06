@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: f7f23a6d645a1d8e16e42e751050d8d91b49e2b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 472dfc04cea65cab39d177bb214c417d229b71d2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007829"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956724"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack
 
@@ -178,6 +178,6 @@ Aby uzyskać dzienniki, wykonaj następujące czynności:
 
 [Wdrażanie rozwiązania Kubernetes do usługi Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)
 
-[Dodaj klaster Kubernetes w portalu Marketplace (dla operatora infrastruktury Azure Stack)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Dodaj klaster Kubernetes w portalu Marketplace (dla operatora infrastruktury Azure Stack)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Kubernetes na platformie Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

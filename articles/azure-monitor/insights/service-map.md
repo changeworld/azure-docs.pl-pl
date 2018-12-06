@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: dd7f76e20e43e24c31f5afd8c8d9eb97db04255f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68c838481120dea7635ac5ea76859a8088d732fb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843227"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957354"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
@@ -38,7 +38,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 2. Na pasku wyszukiwania wpisz **rozwiązania Service Map** i naciśnij klawisz **Enter**.
 3. Na stronie wyników wyszukiwania portalu marketplace wybierz **rozwiązania Service Map** z listy.<br><br> ![Wybierz rozwiązanie mapy usługi z wyników wyszukiwania w portalu Azure Marketplace](./media/service-map/marketplace-search-results.png)<br>
 4. Na **rozwiązania Service Map** okienko omówienia, przejrzyj szczegóły rozwiązania, a następnie kliknij przycisk **Utwórz** do rozpoczęcia procesu dołączania do obszaru roboczego usługi Log Analytics.<br><br> ![Dołączanie rozwiązania mapy usługi](./media/service-map/service-map-onboard.png).
-5. W **skonfiguruj rozwiązanie** okienku wybierz istniejącą lub Utwórz nowy obszar roboczy usługi Log Analytics.  Aby uzyskać więcej informacji na temat tworzenia nowego obszaru roboczego, zobacz [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md). Po podaniu wymaganych informacji, kliknij przycisk **Utwórz**.  
+5. W **skonfiguruj rozwiązanie** okienku wybierz istniejącą lub Utwórz nowy obszar roboczy usługi Log Analytics.  Aby uzyskać więcej informacji na temat tworzenia nowego obszaru roboczego, zobacz [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../../azure-monitor/learn/quick-create-workspace.md). Po podaniu wymaganych informacji, kliknij przycisk **Utwórz**.  
 
 Podczas weryfikowania informacji i rozwiązanie jest wdrożone, możesz śledzić postęp w sekcji **powiadomienia** z menu. 
 

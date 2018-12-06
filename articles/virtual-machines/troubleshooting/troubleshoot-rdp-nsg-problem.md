@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: cb9058d4f68b2dc202edeeaa6cafb2eefa82470b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284731"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954616"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nie można nawiązać połączenia zdalnego maszyny Wirtualnej, ponieważ nie włączono port protokołu RDP w sieciowej grupie zabezpieczeń
 
@@ -51,7 +51,7 @@ Aby włączyć port protokołu RDP w sieciowej grupie zabezpieczeń, wykonaj nas
     **Miejsca docelowe**: wszystkie </br>
     **Akcja**: Zezwalaj </br>
 
-W określeniu źródłowy adres IP, to ustawienie zezwala na ruch tylko z określonego adresu IP lub zakres adresów IP, aby nawiązać połączenie z maszyną Wirtualną. Upewnij się, że komputer, na którym używasz, aby rozpocząć sesję RDP znajduje się w zakresie.
+Jeśli określisz źródłowy adres IP, to ustawienie zezwala na ruch tylko z określonego adresu IP lub zakres adresów IP, aby nawiązać połączenie z maszyną Wirtualną. Upewnij się, że komputer, na którym używasz, aby rozpocząć sesję RDP znajduje się w zakresie.
 
 Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md).
 

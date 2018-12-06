@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 2bcdb2b458327a5e87dc36e4a5f50f0ac46bf96a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 722bf7b42e500e3e6a46f48646ff1fd2edfb68f1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621041"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955740"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Uruchamianie maszyny wirtualnej zatrzymuje się na komunikacie „Przygotowywanie systemu Windows. Nie wyłączaj komputera”. na platformie Azure
 
@@ -113,7 +113,7 @@ Jeśli dysk systemu operacyjnego jest szyfrowany, odblokuj zaszyfrowanego dysku.
 
 ### <a name="create-a-snapshot"></a>Utwórz migawkę
 
-Aby utworzyć migawkę, wykonaj kroki opisane w [Tworzenie migawki dysku](..\windows\snapshot-copy-managed-disk.md).
+Aby utworzyć migawkę, wykonaj kroki opisane w [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 
 ## <a name="collect-an-os-memory-dump"></a>Zbieraj zrzut pamięci systemu operacyjnego
 
