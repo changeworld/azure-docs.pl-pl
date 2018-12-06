@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 236a9dac64fa98b9db68a610de097c1deba3e7ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687405"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970431"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: techniczne
 
@@ -29,6 +29,7 @@ Ten artykuł zawiera szczegółowe informacje techniczne, w jak działa funkcja 
 ## <a name="how-does-seamless-sso-work"></a>Jak działa bezproblemowe logowanie Jednokrotne
 
 Ta sekcja zawiera trzy części do niego:
+
 1. Ustawienia funkcji bezproblemowego logowania jednokrotnego.
 2. Jak transakcji logowania pojedynczego użytkownika w przeglądarce sieci web działa z bezproblemowe logowanie Jednokrotne.
 3. Transakcji logowania pojedynczego użytkownika w macierzystym kliencie współdziałania z usługą bezproblemowe logowanie Jednokrotne.
@@ -36,6 +37,7 @@ Ta sekcja zawiera trzy części do niego:
 ### <a name="how-does-set-up-work"></a>Jak skonfigurować pracy?
 
 Bezproblemowe logowanie Jednokrotne jest włączony, za pomocą usługi Azure AD Connect, jak pokazano [tutaj](how-to-connect-sso-quick-start.md). Podczas włączania funkcji, wykonywane są następujące kroki:
+
 - Konto komputera o nazwie `AZUREADSSOACC` (który reprezentuje usługę Azure AD) jest tworzony w sieci lokalnej usługi Active Directory (AD) w każdym lesie usługi AD.
 - Klucz odszyfrowywania protokołu Kerberos konta komputera jest udostępniony w bezpieczny sposób za pomocą usługi Azure AD. Jeśli istnieje wiele lasów usługi AD, każdy z nich ma swój własny klucz odszyfrowywania protokołu Kerberos.
 - Ponadto dwa Kerberos głównych nazw usług (SPN) są tworzone do reprezentowania dwa adresy URL, które są używane podczas logowania w usłudze Azure AD.

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
-ms.openlocfilehash: 8a6d7fef902a3bd240b152cb15d6852a5fa0e7c6
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e086c187129799e499c7ac057b1755a35f1f2327
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687311"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971151"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z siecią wirtualną platformy Azure
-Ten dokument zawiera opis funkcji integracji sieci wirtualnej usługi Azure App Service i pokazuje, jak je skonfigurować za pomocą aplikacji w [usługi Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure] [ VNETOverview] (Vnet) pozwala na umieszczenie wielu zasobów platformy Azure w sieci, lecz-internet. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu technologii sieci VPN. 
+Ten dokument zawiera opis funkcji integracji sieci wirtualnej usługi Azure App Service i pokazuje, jak je skonfigurować za pomocą aplikacji w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure] [ VNETOverview] (Vnet) pozwala na umieszczenie wielu zasobów platformy Azure w sieci, lecz-internet. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu technologii sieci VPN. 
 
 Azure App Service ma dwie formy. 
 
@@ -240,7 +240,7 @@ Usługa App Service można zintegrować z usługą Azure Virtual Network przy u�
 ## <a name="hybrid-connections-and-app-service-environments"></a>Połączenia hybrydowe i środowiska usługi App Service
 Istnieją trzy funkcje, które umożliwiają dostęp do zasobów hostowanych w sieci wirtualnej. Oto one:
 
-* Integracja sieci wirtualnej
+* Integracja z siecią wirtualną
 * Połączenia hybrydowe
 * Środowiska usługi App Service
 
@@ -307,17 +307,17 @@ Nowej funkcji integracji sieci wirtualnej umożliwia użycie punktów końcowych
 [8]: ./media/web-sites-integrate-with-vnet/vnetint-selectvnet.png
 
 <!--Links-->
-[VNETOverview]: http://azure.microsoft.com/documentation/articles/virtual-networks-overview/ 
-[AzurePortal]: http://portal.azure.com/
-[ASPricing]: http://azure.microsoft.com/pricing/details/app-service/
-[VNETPricing]: http://azure.microsoft.com/pricing/details/vpn-gateway/
-[DataPricing]: http://azure.microsoft.com/pricing/details/data-transfers/
-[V2VNETP2S]: http://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
+[VNETOverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-overview/ 
+[AzurePortal]: https://portal.azure.com/
+[ASPricing]: https://azure.microsoft.com/pricing/details/app-service/
+[VNETPricing]: https://azure.microsoft.com/pricing/details/vpn-gateway/
+[DataPricing]: https://azure.microsoft.com/pricing/details/data-transfers/
+[V2VNETP2S]: https://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
 [ASEintro]: environment/intro.md
 [ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: http://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
-[creategateway]: http://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
-[setp2saddresses]: http://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
+[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
+[setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

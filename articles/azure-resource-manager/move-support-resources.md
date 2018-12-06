@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5bb820d816115dccf470b6c32d080862495e8310
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 770f8261b3036e847111d2181a4c843374da7d60
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434980"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969740"
 ---
 # <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
 
@@ -35,7 +35,7 @@ Get-AzureRmResource -ResourceGroupName demogroup | Select Name, ResourceType | F
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli-interactive
-az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
+az resource list -g demogroup --query '[].{name:name, resourceType:type}' --output table
 ```
 
 Typ zasobu jest zwracany w formacie `<resource-provider>/<resource-type-name>`. Dlatego wartość `Microsoft.OperationalInsights/workspaces` dostawca zasobów ma **Microsoft.OperationalInsights** i nazwa typu zasobu **obszary robocze**.

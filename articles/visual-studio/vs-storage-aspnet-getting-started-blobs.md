@@ -4,7 +4,6 @@ description: Jak rozpocząć pracę przy użyciu usługi Azure Blob storage w pr
 services: storage
 author: ghogen
 manager: douge
-ms.assetid: b3497055-bef8-4c95-8567-181556b50d95
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
 ms.custom: vs-azure
@@ -12,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: b8c0891d8528e0622682788e5b10d5a76ad92ec8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 93859b3b6fcdad67d46604f2ab34bec4138feb2b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060935"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969621"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (ASP.NET)
 
@@ -25,7 +24,7 @@ ms.locfileid: "42060935"
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
 > - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
-Usługa Azure Blob storage to usługa, która przechowuje dane niestrukturalne w chmurze jako obiekty lub obiekty BLOB. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów.
+Usługa Azure Blob storage to usługa, która przechowuje dane niestrukturalne w chmurze jako obiekty lub obiekty BLOB. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów. Aby dowiedzieć się więcej o usłudze Blob storage, zobacz [wprowadzenie do usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md).
 
 W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scenariuszy korzystających z usługi Blob storage. Scenariusze obejmują tworzenie kontenera obiektów blob, przekazywanie, wyświetlanie listy, pobieranie i usuwanie obiektów blob.
 
@@ -34,9 +33,6 @@ W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scen
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Program Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-
-[!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
-
 
 [!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
 

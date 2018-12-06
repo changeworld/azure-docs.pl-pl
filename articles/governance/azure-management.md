@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.openlocfilehash: 180b0cb9f52858d9b0f079ea711fd5ccab738ecf
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f058bf8195c56681be0419a0a30f3d814e5d1906
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582315"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960836"
 ---
 # <a name="management-in-azure"></a>Zarządzanie na platformie Azure
 
@@ -34,7 +34,7 @@ Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajno
 
 ## <a name="configure"></a>Konfigurowanie
 
-Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji. Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność. [Usługa Azure Automation](..\automation\automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji. Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
+Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji. Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność. [Usługa Azure Automation](../automation/automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji. Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
 
 ## <a name="govern"></a>Ład
 

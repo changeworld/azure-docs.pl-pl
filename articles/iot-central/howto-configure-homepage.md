@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8e79d05147cae5bf9c46fc1f7c0e7e98574383d5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 39223f49d315e722b13b734b3424d61f630834b1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007624"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966147"
 ---
 ## <a name="configuring-homepage"></a>Konfigurowanie strony głównej
 
@@ -21,19 +21,19 @@ Strona główna jest strona która ładuje, gdy użytkownicy, którzy mają dost
 
 Na przykład Oto strona główna dla aplikacji na podstawie szablonu "Contoso próbki". Aby dostosować stronę główną dla aplikacji, należy najpierw wybrać **Edytuj** w prawym górnym rogu. 
 
-![Strona główna dla aplikacji na podstawie szablonu "Contoso próbki"](media\howto-configure-homepage\image1.png)
+![Strona główna dla aplikacji na podstawie szablonu "Contoso próbki"](media/howto-configure-homepage/image1.png)
 
 Wybieranie **Edytuj**, zostanie otwarty Biblioteka pulpitu nawigacyjnego w panelu po lewej stronie. Istnieje wiele rodzajów Kafelki pulpitu nawigacyjnego w nim elementów podstawowych, które można dodać w celu dostosowania strony głównej.
 
-![Biblioteka pulpitu nawigacyjnego](media\howto-configure-homepage\image2.png)
+![Biblioteka pulpitu nawigacyjnego](media/howto-configure-homepage/image2.png)
 
 Na przykład można dodać **ustawień i właściwości** Kafelek, aby pokazywać zaznaczenie bieżące wartości ustawień i właściwości. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Po które podają kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. W tym przypadku Wybraliśmy **Ustaw temperatury**. Klikając **gotowe** spowoduje, że ten Kafelek, aby są wyświetlane na stronie głównej.
 
-!["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](media\howto-configure-homepage\image3.png)
+!["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](media/howto-configure-homepage/image3.png)
 
 Teraz gdy operator wyświetla stronę główną, można wyświetlić tego kafelka, powoduje wyświetlenie właściwości lub ustawień urządzenia:
 
-![Karta "Pulpit nawigacyjny" z wyświetlanych ustawień i właściwości dla kafelka](media\howto-configure-homepage\image4.png)
+![Karta "Pulpit nawigacyjny" z wyświetlanych ustawień i właściwości dla kafelka](media/howto-configure-homepage/image4.png)
 
 Poeksperymentuj z różnych innych kafelków typów w bibliotece Aby dowiedzieć się, jak można dostosować stronę główną w swojej aplikacji nawet więcej.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 5ab54dcd94ebf0a1bad71613a8d749cef0de64f4
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: ebb95093d96a3c1fd36565831215355b18ac5d1a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678682"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968429"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkcjonalność systemu operacyjnego w usłudze Azure App Service
 W tym artykule opisano typowych funkcji systemu operacyjnego linii bazowej, która jest dostępna dla wszystkich aplikacji Windows działających na [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ta funkcja obejmuje plików, sieci i dostępu do rejestru i dzienniki diagnostyczne i zdarzenia. 
@@ -85,7 +85,7 @@ Na dyski lokalne dołączone do maszyny wirtualnej, która uruchamia aplikację 
 
 Jak usługa App Service używa tymczasowy magazyn lokalny dwa przykłady są katalogu na pliki tymczasowe platformy ASP.NET i katalogu dla usług IIS skompresowane pliki. Systemu kompilacji platformy ASP.NET używa katalogu "Temporary ASP.NET Files" jako lokalizację pamięci podręcznej tymczasowe kompilacji. Usługi IIS używają katalogu "Usług IIS skompresowanych plików tymczasowych" do przechowywania danych wyjściowych skompresowanych odpowiedzi. Oba typy plików użycia (a także inne) są mapowane ponownie w usłudze App Service do lokalnego magazynu tymczasowego dla aplikacji. To ponowne mapowanie gwarantuje, że funkcje jest kontynuowane zgodnie z oczekiwaniami.
 
-Każda aplikacja w usłudze App Service działa jako tożsamość procesu losowy unikatowy procesu roboczego z niskim poziomem uprawnień, o nazwie "tożsamość puli aplikacji", opisane dalej w tym miejscu: [ http://www.iis.net/learn/manage/configuring-security/application-pool-identities ](http://www.iis.net/learn/manage/configuring-security/application-pool-identities). Kod aplikacji używa tej tożsamości dla podstawowego dostępu tylko do odczytu na dysku systemu operacyjnego (dysku D:\). Oznacza to, kod aplikacji, można wyświetlić listę typowych struktur katalogów i przeczytaj wspólne pliki na dysku systemu operacyjnego. Chociaż to może się wydawać nieco szerokiego poziom dostępu, tym samym katalogi i pliki są dostępne podczas aprowizowania roli proces roboczy na platformie Azure usługa hostowana i odczytywać zawartość dysku. 
+Każda aplikacja w usłudze App Service działa jako tożsamość procesu losowy unikatowy procesu roboczego z niskim poziomem uprawnień, o nazwie "tożsamość puli aplikacji", opisane dalej w tym miejscu: [ https://www.iis.net/learn/manage/configuring-security/application-pool-identities ](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Kod aplikacji używa tej tożsamości dla podstawowego dostępu tylko do odczytu na dysku systemu operacyjnego (dysku D:\). Oznacza to, kod aplikacji, można wyświetlić listę typowych struktur katalogów i przeczytaj wspólne pliki na dysku systemu operacyjnego. Chociaż to może się wydawać nieco szerokiego poziom dostępu, tym samym katalogi i pliki są dostępne podczas aprowizowania roli proces roboczy na platformie Azure usługa hostowana i odczytywać zawartość dysku. 
 
 <a name="multipleinstances"></a>
 

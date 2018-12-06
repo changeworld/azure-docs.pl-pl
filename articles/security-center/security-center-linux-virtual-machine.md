@@ -3,7 +3,7 @@ title: Usługi Azure Security Center i Azure Virtual Machines z systemem Linux |
 description: Ten dokument pomaga zrozumieć, jak usługa Azure Security Center chroni maszyny wirtualne Azure Virtual Machines.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 060d10133ec4b8488410140faf32053acb59cf0d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 65961d98568517212b301282110e034a97e332df
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307030"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972128"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Usługi Azure Security Center i Azure Virtual Machines z systemem Linux
 Usługa [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.

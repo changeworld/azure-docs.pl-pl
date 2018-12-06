@@ -1,6 +1,6 @@
 ---
-title: Przenieść dane z usługi Amazon Redshift przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przenieść dane z usługi Amazon Redshift za pomocą działania kopiowania fabryki danych Azure.
+title: Przenoszenie danych z usługi Amazon Redshift, za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przenieść dane z usługi Amazon Redshift, za pomocą działania kopiowania w fabryce danych Azure.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,102 +14,102 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7ece34809734478ddb52c12d5dbd92291231f439
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ee0cd90b8d1b901f9e8a506674b3f04167b48899
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045691"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968787"
 ---
-# <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z Redshift Amazon przy użyciu fabryki danych Azure
+# <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon Redshift przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](data-factory-amazon-redshift-connector.md)
-> * [W wersji 2 (bieżąca wersja)](../connector-amazon-redshift.md)
+> * [Wersja 1](data-factory-amazon-redshift-connector.md)
+> * [Wersja 2 (bieżąca wersja)](../connector-amazon-redshift.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Amazon Redshift łącznika w wersji 2](../connector-amazon-redshift.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznik Amazon Redshift w wersji 2](../connector-amazon-redshift.md).
 
-W tym artykule opisano sposób używania działania kopiowania w fabryce danych Azure do przenoszenia danych z Amazon Redshift. Artykuł opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania. 
+W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do przenoszenia danych z usługi Amazon Redshift. Artykuł opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania. 
 
-Fabryka danych aktualnie obsługuje tylko przenoszenia danych z usługi Amazon Redshift do [obsługiwanych ujścia magazynu danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Przenoszenie danych z innych magazynów danych do firmy Amazon Redshift nie jest obsługiwane.
+Usługa Data Factory obsługuje obecnie tylko przenosi dane z usługi Amazon Redshift do [obsługiwanego magazynu danych ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Przenoszenie danych z innych magazynów danych do usługi Amazon Redshift nie jest obsługiwane.
 
 > [!TIP]
-> Aby uzyskać najlepszą wydajność podczas kopiowania dużych ilości danych z Amazon Redshift, należy rozważyć użycie wbudowanego Redshift **zwolnienie** polecenia za pomocą usługi Amazon proste magazynu usługi (Amazon S3). Aby uzyskać więcej informacji, zobacz [zwolnienie Użyj można skopiować danych z usługi Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift).
+> Aby uzyskać najlepszą wydajność podczas kopiowania dużych ilości danych z usługi Amazon Redshift, należy wziąć pod uwagę przy użyciu wbudowanych Redshift **zwolnienie** polecenia za pomocą Amazon Simple Storage Service (Amazon S3). Aby uzyskać więcej informacji, zobacz [zwolnienie Użyj, aby skopiować dane z usługi Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Jeśli przenosisz dane z lokalnym magazynem danych, zainstaluj [brama zarządzania danymi](data-factory-data-management-gateway.md) na maszynie lokalnej. Udziel dostępu dla bramy do klastra usługi Amazon Redshift przy użyciu adresu IP komputera lokalnego. Aby uzyskać instrukcje, zobacz [autoryzowania dostępu do klastra](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
-* Aby przenieść dane do magazynu danych Azure, zobacz [adres IP obliczeniowe i zakresy SQL, które są używane w centrach danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+* Jeśli dane są przenoszone do magazynu danych w środowisku lokalnym, należy zainstalować [bramy zarządzania danymi](data-factory-data-management-gateway.md) na maszynie lokalnej. Przy użyciu adresu IP komputera lokalnego, należy udzielić dostępu dla bramy do klastra usługi Amazon Redshift. Aby uzyskać instrukcje, zobacz [Autoryzowanie dostępu do klastra](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
+* Aby przenieść dane do magazynu danych na platformie Azure, zobacz [adres IP zasobów obliczeniowych i zakresy SQL, które są używane w centrach danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ## <a name="getting-started"></a>Wprowadzenie
-Można utworzyć potok z działaniem kopiowania do przenoszenia danych z źródła Amazon Redshift przy użyciu różnych narzędzi i interfejsów API.
+Utworzysz potok z działaniem kopiowania, aby przenieść dane ze źródła usługi Amazon Redshift przy użyciu różnych narzędzi i interfejsów API.
 
-Najprostszym sposobem, aby utworzyć potok jest użycie Kreatora kopiowania fabryki danych Azure. Szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania, zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
+Najprostszym sposobem utworzenia potoku jest używanie kreatora kopiowania usługi Azure Data Factory. Szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania, zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 
-Można również utworzyć potok za pomocą portalu Azure, programu Visual Studio, programu Azure PowerShell lub innych narzędzi. Szablony usługi Azure Resource Manager, interfejsu API programu .NET lub interfejsu API REST może również służyć do tworzenia potoku. Aby uzyskać instrukcje utworzyć potok z działania kopiowania, zobacz [samouczek działanie kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Można również utworzyć potok za pomocą witryny Azure portal, programu Visual Studio, programu Azure PowerShell lub innych narzędzi. Szablony usługi Azure Resource Manager, interfejsu API platformy .NET lub interfejsu API REST można również utworzyć potok. Aby uzyskać instrukcje krok po kroku utworzysz potok z działaniem kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
-Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych: 
+Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia: 
 
-1. Utwórz połączone usługi, aby połączyć dane wejściowe i wyjściowe magazyny danych z fabryką danych.
-2. Tworzenie zestawów danych do reprezentowania danych wejściowych i wyjściowych operacji kopiowania. 
-3. Utworzyć potok aktywnością kopiowania zestawu danych jako dane wejściowe i zestawu danych jako dane wyjściowe. 
+1. Utwórz połączone usługi, aby połączyć dane wejściowe i wyjściowe magazynów danych z fabryką danych.
+2. Utwórz zestawy danych reprezentujące dane wejściowe i wyjściowe operacji kopiowania. 
+3. Tworzenie potoku za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
 
-Korzystając z Kreatora kopiowania, definicje JSON do tych jednostek fabryki danych są tworzone automatycznie. Korzystając z narzędzia lub interfejsów API (z wyjątkiem interfejsu API programu .NET), należy zdefiniować jednostek fabryki danych w formacie JSON. [Przykład JSON: kopiowanie danych z Amazon Redshift do magazynu obiektów Blob Azure](#json-example-copy-data-from-amazon-redshift-to-azure-blob) zawiera definicje JSON dla jednostek fabryki danych, które są używane do kopiowania danych z magazynu danych Amazon Redshift.
+Korzystając z Kreatora kopiowania, definicje JSON dotyczące jednostek usługi Data Factory, te są tworzone automatycznie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), zdefiniujesz jednostki usługi Data Factory przy użyciu formatu JSON. [Przykład kodu JSON: kopiowanie danych z usługi Amazon Redshift do usługi Azure Blob storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) pokazuje definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z magazynu danych usługi Amazon Redshift.
 
-W poniższych sekcjach opisano właściwości JSON, które są używane do definiowania jednostek fabryki danych Amazon Redshift.
+W poniższych sekcjach opisano właściwości kodu JSON, które są używane do definiowania jednostek usługi Data Factory dla usługi Amazon Redshift.
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usługi Amazon Redshift połączone.
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **type** |Ta właściwość musi mieć ustawioną **AmazonRedshift**. |Yes |
-| **server** |IP adres lub nazwę hosta serwera Amazon Redshift. |Yes |
-| **Port** |Numer portu TCP używany przez serwer Amazon Redshift do nasłuchiwania dla połączeń klienta. |Nie (wartość domyślna to 5439) |
-| **Bazy danych** |Nazwa bazy danych Amazon Redshift. |Yes |
+| **type** |Ta właściwość musi być równa **AmazonRedshift**. |Yes |
+| **server** |Adres IP lub hosta nazwę serwera usługi Amazon Redshift. |Yes |
+| **Port** |Numer portu TCP używanego przez serwer usługi Amazon Redshift do nasłuchiwania połączeń klientów. |Nie (wartość domyślna to 5439) |
+| **Bazy danych** |Nazwa bazy danych usługi Amazon Redshift. |Yes |
 | **Nazwa użytkownika** |Nazwa użytkownika, który ma dostęp do bazy danych. |Yes |
-| **hasło** |Hasło dla konta użytkownika. |Yes |
+| **Hasło** |Hasło dla konta użytkownika. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [Tworzenie zbiorów danych](data-factory-create-datasets.md) artykułu. **Struktury**, **dostępności**, i **zasad** sekcje są podobne dla wszystkich typów w zestawie danych. Przykłady typów zestawu danych Azure SQL, magazyn obiektów Blob platformy Azure i magazynem tabel Azure.
+Aby uzyskać listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. **Struktury**, **dostępności**, i **zasad** sekcje są podobne dla wszystkich typów w zestawie danych. Przykładami typy zestawów danych Azure SQL, Azure Blob storage i Azure Table storage.
 
-**TypeProperties** sekcja jest różne dla każdego typu zestawu danych i udostępnia informacje o lokalizacji w magazynie danych. **TypeProperties** sekcja dla zestawu danych typu **RelationalTable**, w tym dataset Amazon Redshift ma następujące właściwości:
+**TypeProperties** sekcji różni się dla każdego typu zestawu danych i udostępnia informacje o lokalizacji danych w magazynie. **TypeProperties** sekcji dla zestawu danych typu **RelationalTable**, w tym zestawie danych usługi Amazon Redshift, ma następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **tableName** |Nazwa tabeli w bazie danych Amazon Redshift, odnoszący się do połączonej usługi. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
+| **Właściwość TableName** |Nazwa tabeli w bazie danych usługi Amazon Redshift, których połączona usługa przywołuje. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** zostanie określona) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać listę sekcji i właściwości, które są dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. **Nazwa**, **opis**, **dane wejściowe** tabeli, **generuje** tabeli, i **zasad** właściwości dostępne dla wszystkich typów działań. Właściwości, które są dostępne w **typeProperties** sekcji różnią się dla każdego typu działania. Dla działania kopiowania właściwości różnią się w zależności od typów źródeł danych i sink.
+Aby uzyskać listę sekcji i właściwości, które są dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. **Nazwa**, **opis**, **dane wejściowe** tabeli **generuje** tabeli i **zasad** właściwości są dostępne dla wszystkich typów działań. Właściwości, które są dostępne w **typeProperties** różnią się w sekcji dla każdego typu działania. Właściwości różnią się w zależności od typów danych źródła i ujścia dla działania kopiowania.
 
-Dla działania kopiowania, gdy źródłem jest typu **AmazonRedshiftSource**, są dostępne w następujących właściwości **typeProperties** sekcji:
-
-| Właściwość | Opis | Wymagane |
-| --- | --- | --- |
-| **zapytania** | Użyj niestandardowych zapytania, aby odczytać danych. |Nie (Jeśli **tableName** określono właściwości zestawu danych) |
-| **redshiftUnloadSettings** | Zawiera grupę właściwości, używając Redshift **zwolnienie** polecenia. | Nie |
-| **s3LinkedServiceName** | Amazon S3, który ma być używana jako magazyn tymczasowy. Połączona usługa jest określana za pomocą nazwy typu fabryki danych Azure **AwsAccessKey**. | Wymagane, gdy usługa **redshiftUnloadSettings** właściwości |
-| **bucketName** | Wskazuje zasobnika Amazon S3 służące do przechowywania danych tymczasowych. Jeśli ta właściwość nie zostanie podany, działanie kopiowania auto generuje zasobnika. | Wymagane, gdy usługa **redshiftUnloadSettings** właściwości |
-
-Alternatywnie można użyć **RelationalSource** typu, który obejmuje Amazon Redshift z następującą właściwość w **typeProperties** sekcji. Ten typ źródła nie obsługuje Redshift Uwaga **zwolnienie** polecenia.
+Działanie kopiowania, gdy źródłem jest typu **obiektu AmazonRedshiftSource**, następujące właściwości są dostępne w **typeProperties** sekcji:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **zapytania** |Użyj niestandardowych zapytania, aby odczytać danych. | Nie (Jeśli **tableName** określono właściwości zestawu danych) |
+| **Zapytanie** | Użyj niestandardowego zapytania, aby odczytywać dane. |Nie (Jeśli **tableName** określono właściwości zestawu danych) |
+| **elemencie redshiftUnloadSettings** | Zawiera grupę właściwości, korzystając z usługi Redshift **zwolnienie** polecenia. | Nie |
+| **s3LinkedServiceName** | Amazon S3 do użycia jako tymczasowego magazynu. Połączona usługa jest określony za pomocą usługi Azure Data Factory nazwę typu **AwsAccessKey**. | Wymagany w przypadku korzystania **elemencie redshiftUnloadSettings** właściwości |
+| **bucketName** | Wskazuje zasobnika Amazon S3 można używać do przechowywania danych tymczasowych. Jeśli ta właściwość nie zostanie podany, działanie kopiowania automatycznie generuje koszyka. | Wymagany w przypadku korzystania **elemencie redshiftUnloadSettings** właściwości |
 
-## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Umożliwia kopiowanie danych z usługi Amazon Redshift zwolnienia
+Alternatywnie, można użyć **RelationalSource** typu, który obejmuje Amazon Redshift, z następującymi właściwościami w **typeProperties** sekcji. Uwaga tego typu źródła nie obsługuje usługi Redshift **zwolnienie** polecenia.
 
-Amazon Redshift [ **zwolnienie** ](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) polecenie zwalnia wyników zapytania do jednego lub więcej plików na Amazon S3. To polecenie jest zalecane przez firmy Amazon do kopiowania dużych zestawów danych z Redshift.
+| Właściwość | Opis | Wymagane |
+| --- | --- | --- |
+| **Zapytanie** |Użyj niestandardowego zapytania, aby odczytywać dane. | Nie (Jeśli **tableName** określono właściwości zestawu danych) |
 
-**Przykład: Kopiowanie danych z Amazon Redshift do magazynu danych SQL Azure**
+## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Umożliwia kopiowanie danych z usługi Amazon Redshift przez zwolnienie
 
-W tym przykładzie kopiuje dane z usługi Amazon Redshift magazyn danych SQL Azure. W przykładzie użyto Redshift **zwolnienie** polecenia, przygotowanego skopiować dane i PolyBase firmy Microsoft.
+Usługi Amazon Redshift [ **zwolnienie** ](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) polecenia zwalnia wyników zapytania do jednej lub więcej plików na Amazon S3. To polecenie jest zalecane, Amazon do kopiowania dużych zestawów danych z usługi Redshift.
 
-Dla tego przypadku użycia przykładowe działanie kopiowania najpierw zwalnia danych z Amazon Redshift do Amazon S3 zgodnie z konfiguracją **redshiftUnloadSettings** opcji. Następnie dane są kopiowane z usługi Amazon S3 do magazynu obiektów Blob platformy Azure, jak określono w **stagingSettings** opcji. Na koniec PolyBase ładuje dane do usługi SQL Data Warehouse. Wszystkie pośrednie formaty są obsługiwane przez działanie kopiowania.
+**Przykład: Kopiowanie danych z usługi Amazon Redshift do usługi Azure SQL Data Warehouse**
 
-![Skopiuj przepływ pracy z Amazon Redshift do magazynu danych SQL](media\data-factory-amazon-redshift-connector\redshift-to-sql-dw-copy-workflow.png)
+W tym przykładzie kopiuje dane z usługi Amazon Redshift do usługi Azure SQL Data Warehouse. W przykładzie użyto usługi Redshift **zwolnienie** polecenia, danych kopiowania przejściowego i PolyBase firmy Microsoft.
+
+Dla tego przypadku użycia przykładowe działanie kopiowania najpierw zwalnia dane z usługi Amazon Redshift do Amazon S3 zgodnie z konfiguracją **elemencie redshiftUnloadSettings** opcji. Następnie dane są kopiowane z usługi Amazon S3 w usłudze Azure Blob storage, jak to określono w **stagingSettings** opcji. Na koniec PolyBase powoduje załadowanie danych do usługi SQL Data Warehouse. Wszystkie formaty tymczasowe są obsługiwane przez działanie kopiowania.
+
+![Skopiuj przepływ pracy z usługi Amazon Redshift do usługi SQL Data Warehouse](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -139,18 +139,18 @@ Dla tego przypadku użycia przykładowe działanie kopiowania najpierw zwalnia d
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>Przykład JSON: kopiowanie danych z Amazon Redshift do magazynu obiektów Blob platformy Azure
-W tym przykładzie pokazano, jak skopiować dane z bazy danych Amazon Redshift do magazynu obiektów Blob Azure. Dane mogą być kopiowane bezpośrednio do dowolnego [obsługiwane zbiornika](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania.  
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>Przykład kodu JSON: kopiowanie danych z usługi Amazon Redshift do usługi Azure Blob storage
+Ten przykład pokazuje, jak skopiować dane z bazą danych Amazon Redshift do usługi Azure Blob Storage. Możesz skopiować dane bezpośrednio do dowolnej [obsługiwane ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania.  
 
-Przykład zawiera następujące obiekty fabryki danych:
+Przykład obejmuje następujących jednostek fabryki danych:
 
 * Połączonej usługi typu [AmazonRedshift](#linked-service-properties)
 * Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 * Dane wejściowe [dataset](data-factory-create-datasets.md) typu [RelationalTable](#dataset-properties)
-* Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-* A [potoku](data-factory-create-pipelines.md) z działania kopiowania, która używa [RelationalSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties) właściwości
+* Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [obiektu blob platformy Azure](data-factory-azure-blob-connector.md#dataset-properties)
+* A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [RelationalSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties) właściwości
 
-Przykład kopiuje dane z wyniku kwerendy w Amazon Redshift do obiektów blob platformy Azure co godzinę. Właściwości JSON, które są używane w przykładowym są opisane w następnych sekcjach definicje jednostki.
+Przykład kopiuje dane z wyniku kwerendy w Amazon Redshift do obiektu blob platformy Azure co godzinę. Właściwości kodu JSON, które są używane w przykładzie są opisane w sekcjach definicji jednostki.
 
 **Usługi Amazon Redshift połączone**
 
@@ -172,7 +172,7 @@ Przykład kopiuje dane z wyniku kwerendy w Amazon Redshift do obiektów blob pla
 }
 ```
 
-**Azure Blob połączoną usługą magazynu**
+**Obiekt Blob połączona usługa Azure storage**
 
 ```json
 {
@@ -185,9 +185,9 @@ Przykład kopiuje dane z wyniku kwerendy w Amazon Redshift do obiektów blob pla
   }
 }
 ```
-**Zestaw danych wejściowych Amazon Redshift**
+**Wejściowy zestaw danych usługi Amazon Redshift**
 
-**Zewnętrznych** właściwość jest ustawiona na "true", aby poinformować usługi fabryka danych z zestawu danych może być zewnętrzne fabryki danych. To ustawienie właściwości wskazuje, że zestaw danych nie jest generowany przez działanie w fabryce danych. Ustaw właściwość na wartość true na wejściowy zestaw danych, który nie jest generowany przez działania w potoku.
+**Zewnętrznych** właściwość jest ustawiona na "true" w celu poinformowania usługi Data Factory, że zestaw danych jest zewnętrzne z fabryką danych. Ustawienie tej właściwości oznacza, że zestaw danych nie jest generowany przez działanie w usłudze data factory. Ustaw właściwość na wartość true dla wejściowego zestawu danych, które nie są generowane przez działanie w potoku.
 
 ```json
 {
@@ -209,7 +209,7 @@ Przykład kopiuje dane z wyniku kwerendy w Amazon Redshift do obiektów blob pla
 
 **Wyjściowy zestaw danych obiektów blob platformy Azure**
 
-Dane są zapisywane do nowego obiektu blob co godzinę, ustawiając **częstotliwość** dla właściwości "Godzina" i **interwał** właściwości na wartość 1. **FolderPath** dynamicznie oceny właściwości dla obiektu blob. Wartość właściwości jest oparta na czas rozpoczęcia wycinek, który jest przetwarzana. Ścieżka folderu używa rok, miesiąc, dzień i godziny części czas rozpoczęcia.
+Dane są zapisywane do nowego obiektu blob co godzinę, ustawiając **częstotliwość** właściwość "Hour" i **interwał** właściwości na wartość 1. **FolderPath** właściwości dla obiektu blob jest dynamicznie obliczana. Wartość właściwości jest oparta na czas rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i części godzin od zaplanowanej godziny rozpoczęcia.
 
 ```json
 {
@@ -267,9 +267,9 @@ Dane są zapisywane do nowego obiektu blob co godzinę, ustawiając **częstotli
 }
 ```
 
-**Aktywność kopiowania w potoku ze źródłem Azure Redshift (typu RelationalSource) i ujście obiektów Blob platformy Azure**
+**Działanie kopiowania w potoku za pomocą źródła Redshift platformy Azure (typu RelationalSource) i ujścia obiektu Blob platformy Azure**
 
-Potok zawiera działanie kopiowania, który jest skonfigurowany do używania zestawów danych wejściowych i wyjściowych. Potok jest zaplanowane co godzinę. W definicji JSON dla potoku **źródła** ustawiono typ **RelationalSource** i **zbiornika** ustawiono typ **BlobSink**. Określony dla zapytania SQL **zapytania** właściwości wybiera dane do skopiowania z ostatniej godziny.
+Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych. Potok jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **RelationalSource** i **ujścia** ustawiono typ **BlobSink**. Zapytanie SQL, określony dla **zapytania** właściwość wybiera dane do skopiowania z ostatniej godziny.
 
 ```json
 {
@@ -321,37 +321,37 @@ Potok zawiera działanie kopiowania, który jest skonfigurowany do używania zes
     }
 }
 ```
-### <a name="type-mapping-for-amazon-redshift"></a>Mapowanie typu dla Amazon Redshift
-Jak wspomniano w [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, działanie kopiowania przeprowadza automatyczne konwersje typu źródłowego na typ sink. Typy są konwertowane przy użyciu rozwinięcie:
+### <a name="type-mapping-for-amazon-redshift"></a>Mapowanie typu dla usługi Amazon Redshift
+Jak wspomniano w [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, działanie kopiowania wykonuje automatyczne konwersje z typu źródłowego na typ ujścia. Typy są konwertowane przy użyciu podejście dwuetapowe:
 
-1. Konwertować z typu natywnego źródła do typu .NET
-2. Konwertować z typu .NET do typu sink natywnego
+1. Konwersji z typu natywnego źródłowego na typ architektury .NET
+2. Przekonwertowanie z .NET do typu natywnego obiektu sink
 
-Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane z typu Amazon Redshift typ .NET:
+Następujące mapowania są używane podczas działania kopiowania konwertuje dane z usługi Amazon Redshift typ architektury .NET:
 
-| Typ Amazon Redshift | Typ architektury .NET |
+| Typ usługi Amazon Redshift | Typ architektury .NET |
 | --- | --- |
 | SMALLINT |Int16 |
 | LICZBA CAŁKOWITA |Int32 |
 | BIGINT |Int64 |
-| DECIMAL |Decimal |
+| DECIMAL |Dziesiętna |
 | RZECZYWISTE |Pojedyncze |
-| PODWÓJNEJ PRECYZJI |podwójne |
-| WARTOŚĆ LOGICZNA |Ciąg |
+| PODWÓJNEJ PRECYZJI |Podwójne |
+| ATRYBUT TYPU WARTOŚĆ LOGICZNA |Ciąg |
 | CHAR |Ciąg |
 | VARCHAR |Ciąg |
 | DATE |DateTime |
-| ZNACZNIK CZASU |DateTime |
+| ZNACZNIK CZASU: |DateTime |
 | TEKST |Ciąg |
 
-## <a name="map-source-to-sink-columns"></a>Obiekt sink kolumn mapy źródła
-Informacje na temat mapowanie kolumn w zestawie źródła danych do kolumn w zestawie danych zbiornika, zobacz [mapowania kolumnach dataset w fabryce danych Azure](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
+Aby dowiedzieć się, jak mapowania kolumn w zestawie danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-reads-from-relational-sources"></a>Odczyty powtarzalne źródłami relacyjnymi
-Po skopiowaniu danych z magazynu danych relacyjnych należy pamiętać, aby uniknąć niezamierzone wyniki powtarzalności. Fabryka danych Azure możesz ponownie ręcznie wycinek. Można również skonfigurować retry **zasad** dla elementu dataset ponownie uruchomić wycinek, gdy wystąpi błąd. Upewnij się, że te same dane jest do odczytu, niezależnie od tego, ile razy wycinek zostanie uruchomiona ponownie. Upewnij się, że te same dane jest do odczytu niezależnie od tego, jak ponownie uruchomić wycinka również. Aby uzyskać więcej informacji, zobacz [Repeatable odczytuje z źródłami relacyjnymi](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-reads-from-relational-sources"></a>Powtarzalnego odczytu z źródeł relacyjnych
+Podczas kopiowania danych z relacyjnego magazynu danych, Zachowaj powtarzalności należy pamiętać, aby uniknąć niezamierzonego wyników. W usłudze Azure Data Factory możesz ponownie uruchomić wycinek ręcznie. Można również skonfigurować ponownych prób **zasad** dla zestawu danych ponownie uruchomić wycinek, gdy wystąpi awaria. Upewnij się, że te same dane jest do odczytu, niezależnie od tego, ile razy ponownego uruchomienia wycinka. Również upewnić się, że niezależnie od tego, jak ponownie uruchomić wycinek jest do odczytu tych samych danych. Aby uzyskać więcej informacji, zobacz [Repeatable odczytuje dane ze źródeł relacyjnych](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Wydajności i dostosowywanie
-Więcej informacji na temat kluczowych czynników wpływających na wydajność działania kopiowania i sposobów w celu optymalizacji wydajności w [wydajności działania kopiowania i dostrajania przewodnik](data-factory-copy-activity-performance.md). 
+Więcej informacji na temat kluczowych czynników wpływających na wydajność działania kopiowania i sposobów na optymalizację wydajności [wydajności i działania kopiowania przewodnika dostrajania](data-factory-copy-activity-performance.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać instrukcje tworzenia potoku z działania kopiowania, zobacz [samouczek działanie kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Aby uzyskać szczegółowe instrukcje tworzenia potoku za pomocą działania kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

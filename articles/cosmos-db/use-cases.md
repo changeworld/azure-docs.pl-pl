@@ -1,20 +1,18 @@
 ---
-title: Typowe przypadki użycia i scenariusze dla usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Typowe przypadki użycia i scenariusze dla usługi Azure Cosmos DB
 description: 'Dowiedz się więcej o pierwszych pięciu przypadki użycia usługi Azure Cosmos DB: wygenerowaną przez użytkowników zawartość, rejestrowanie zdarzeń, danych wykazu, dane preferencje użytkownika i Internetu rzeczy (IoT).'
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
+author: SnehaGunda
+ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: sngun
-ms.openlocfilehash: 50bc70fa18bc8fb04e4f8117340c66665204282c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 400ce3ddb2a01db32faa7d3303c89a76c2c4649a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251077"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960043"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Typowe przypadki użycia usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie kilku typowych przypadków użycia usługi Azure Cosmos DB.  Zalecenia przedstawione w tym artykule służyć jako punkt początkowy, podczas opracowywania aplikacji za pomocą usługi Cosmos DB.   

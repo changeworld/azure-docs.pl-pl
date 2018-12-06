@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 20a87148e3c0df29e5f4dffd74a8f5389e3658b9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364562"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972086"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -45,7 +45,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
     Usługa Azure Files jest specjalnie systemu plików. Usługa Azure Files ma wszystkie streszczenia plików, które znasz i lubisz na bazie wielu lat pracy z systemów operacyjnych w środowisku lokalnym. Np. usługi Azure Blob storage Azure Files oferuje interfejs REST i biblioteki klienta opartego na protokole REST. W przeciwieństwie do usługi Azure Blob storage Azure Files oferuje SMB dostęp do udziałów plików platformy Azure. Za pomocą protokołu SMB, można zainstalować udział plików platformy Azure bezpośrednio w Windows, Linux lub macOS, lokalnie lub w chmurze w przypadku maszyn wirtualnych bez konieczności pisania kodu lub dołączanie żadnych specjalnych sterowników w systemie plików. Udziały plików platformy Azure na serwerach plików w środowisku lokalnym, również buforujesz przy użyciu usługi Azure File Sync szybkiego dostępu blisko użycia danych. 
    
-    Aby uzyskać bardziej szczegółowy opis na temat różnic między plikami platformy Azure i usługi Azure Blob storage, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Blob storage, Azure Files lub Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Aby dowiedzieć się więcej na temat usługi Azure Blob storage, zobacz [wprowadzenie do usługi Blob storage](../blobs/storage-blobs-introduction.md).
+    Aby uzyskać bardziej szczegółowy opis na temat różnic między plikami platformy Azure i usługi Azure Blob storage, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Blob storage, Azure Files lub Azure Disks](../common/storage-decide-blobs-files-disks.md). Aby dowiedzieć się więcej na temat usługi Azure Blob storage, zobacz [wprowadzenie do usługi Blob storage](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Dlaczego należy używać udziału plików platformy Azure zamiast dysków platformy Azure?**  
     Dysk w usługi Azure Disks to po prostu dysk. Można pobrać wartości z usługi Azure Disks, należy dołączyć dysku do maszyny wirtualnej, która działa na platformie Azure. Dyski platformy Azure może służyć do wszystko, czego użyje dysku dla serwera lokalnego. Można go użyć jako dysk systemu, jako obszar wymiany dla systemu operacyjnego lub jako dedykowanych dla magazynu dla aplikacji. Interesujące dla usługi Azure Disks polega na utworzeniu serwera plików w chmurze do użycia w tych samych miejsc, w którym mogą korzystać z udziału plików platformy Azure. Wdrażanie serwera plików w usłudze Azure Virtual Machines to wydajny sposób uzyskać usługi file storage na platformie Azure, gdy potrzebujesz opcje wdrażania, które obecnie nie są obsługiwane przez usługi Azure Files (np. NFS protokołu pomocy technicznej lub premium storage). 
@@ -54,7 +54,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
     Jedno z podejść do uzyskiwania najlepsze cechy zarówno usługi Azure Files, jak i serwera plików, który jest hostowany w usłudze Azure Virtual Machines (oprócz przy użyciu usługi Azure Disks jako magazynu zaplecza) dotyczy instalacji usługi Azure File Sync na serwerze plików, która jest hostowana w chmurze maszyny Wirtualnej. Jeśli udział plików platformy Azure znajduje się w tym samym regionie co serwer plików, można włączyć chmury warstw, a następnie ustaw ilość procent wolnego miejsca na wartość maksymalną (99%). Dzięki temu minimalny zduplikowanie danych. Możesz również użyć wszystkich aplikacji, które chcesz przy użyciu serwerów plików, takich jak aplikacje, które wymagają protokołu NFS obsługują.
 
-    Aby uzyskać informacji na temat opcji konfigurowania serwera plików o wysokiej wydajności i dostępności na platformie Azure, zobacz [klastrów gościa wdrażanie maszyn wirtualnych IaaS w programie Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Aby uzyskać bardziej szczegółowy opis różnic między usługą Azure Files i dysków platformy Azure, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Blob storage, Azure Files lub Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Aby dowiedzieć się więcej na temat usługi Azure Disks, zobacz [Omówienie usługi Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+    Aby uzyskać informacji na temat opcji konfigurowania serwera plików o wysokiej wydajności i dostępności na platformie Azure, zobacz [klastrów gościa wdrażanie maszyn wirtualnych IaaS w programie Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Aby uzyskać bardziej szczegółowy opis różnic między usługą Azure Files i dysków platformy Azure, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Blob storage, Azure Files lub Azure Disks](../common/storage-decide-blobs-files-disks.md). Aby dowiedzieć się więcej na temat usługi Azure Disks, zobacz [Omówienie usługi Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
 
 * <a id="get-started"></a>
 **Jak rozpocząć pracę przy użyciu usługi Azure Files?**  
@@ -81,7 +81,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 **Czy na pewno chcesz zobaczyć określoną funkcję, dodany do usługi Azure Files. Możesz dodać go?**  
     Zespół usługi Azure Files jest zainteresowany wysłuchaniu wszelkie opinie, w których masz o naszej usługi. Należy zagłosować na sugestie funkcji w [UserVoice plików Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Chcemy do przodu przykuwających możesz z wieloma nowymi funkcjami.
 
-## <a name="azure-file-sync"></a>Usługa Azure File Sync
+## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
 **Jakie regiony są obsługiwane w przypadku usługi Azure File Sync?**  
@@ -205,7 +205,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
     Jeśli subskrypcji w ramach której jest wdrażany w udziale plików jest skojarzony z tą samą dzierżawą usługi Azure AD jako deploymnet usług domenowych Azure AD, do której należy maszyna wirtualna jest przyłączony do domeny, a następnie mogą uzyskiwać dostęp do usługi Azure Files przy użyciu tych samych poświadczeń usługi Azure AD. Ograniczenia są nakładane na nie w ramach subskrypcji, ale na skojarzone usługi Azure AD dzierżawy.    
     
 * <a id="ad-support-subscription"></a>
-**Można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files za pomocą dzierżawy usługi Azure AD, która różni się od dzierżawy podstawowej, z którym udziału plików jest assoicated?**
+**Można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files za pomocą dzierżawy usługi Azure AD, który różni się od dzierżawy podstawowej, z którym jest skojarzona udziału plików?**
 
     Nie, usługi Azure Files obsługuje tylko integrację usługi Azure AD z dzierżawy usługi Azure AD, która znajduje się w tej samej subskrypcji, co udziału plików. Tylko jednej subskrypcji może być skojarzony z dzierżawą usługi Azure AD.
 
@@ -242,7 +242,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="data-compliance-policies"></a>
 **Jakie zasady zgodności danych obsługuje usługa Azure Files?**  
 
-   Usługa pliki systemu Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure mają zastosowanie te same zasady zgodności danych, które są używane w innych usługach magazynu platformy Azure. Aby uzyskać więcej informacji na temat zgodności danych usługi Azure Storage mogą odwoływać się do [ofert zgodności usługi Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings), a następnie przejdź do [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
+   Usługa pliki systemu Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure mają zastosowanie te same zasady zgodności danych, które są używane w innych usługach magazynu platformy Azure. Aby uzyskać więcej informacji na temat zgodności danych usługi Azure Storage mogą odwoływać się do [ofert zgodności usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings), a następnie przejdź do [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Dostęp lokalny
 * <a id="expressroute-not-required"></a>
@@ -258,7 +258,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak tworzenie kopii zapasowej pliku Azure udostępnić?**  
-    Możesz użyć okresowe [udostępniać migawki](storage-snapshots-files.md) ochrony przed przypadkowymi usunięciami. Również służy narzędzie AzCopy, Robocopy lub narzędzie kopii zapasowej innych firm, które można utworzyć kopię zapasową udziału zainstalowanego pliku. Usługa Azure Backup oferuje kopii zapasowej plików platformy Azure. Dowiedz się więcej o [udziałów przez usługę Azure Backup plików — wykonywanie kopii zapasowych Azure](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
+    Możesz użyć okresowe [udostępniać migawki](storage-snapshots-files.md) ochrony przed przypadkowymi usunięciami. Również służy narzędzie AzCopy, Robocopy lub narzędzie kopii zapasowej innych firm, które można utworzyć kopię zapasową udziału zainstalowanego pliku. Usługa Azure Backup oferuje kopii zapasowej plików platformy Azure. Dowiedz się więcej o [udziałów przez usługę Azure Backup plików — wykonywanie kopii zapasowych Azure](https://docs.microsoft.com/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Migawki udziału
 

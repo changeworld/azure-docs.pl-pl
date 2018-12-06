@@ -10,19 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 12/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 767497a6ced0eb54559b9bdd10761b659e32a33f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 034e611f6ea95675dc3169feefe1916a81c50943
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681028"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972375"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.
-
-![przykładowe wykresy](./media/app-insights-asp-net-dependencies/10-intro.png)
 
 Monitor zależności poza pole zgłasza aktualnie wywołań do tych typów zależności:
 
@@ -30,13 +28,16 @@ Monitor zależności poza pole zgłasza aktualnie wywołań do tych typów zale�
   * Bazy danych SQL
   * Sieci web platformy ASP.NET i usługi WCF, które korzystają z powiązań oparty na protokole HTTP
   * Lokalnych lub zdalnych połączeń HTTP
-  * Usługa Azure Cosmos DB, tabeli, magazynu obiektów blob i kolejki
+  * Usługa Azure Cosmos DB, tabeli, magazynu obiektów blob i kolejki 
 * Strony sieci Web
   * Wywołania AJAX
 
 Monitorowanie działania z zastosowaniem [Instrumentacji kodu bajtów](https://msdn.microsoft.com/library/z9z62c29.aspx) wokół wybranych metod. Obciążenie jest minimalne.
 
 Można również napisać własne wywołania SDK, aby monitorować inne zależności, zarówno w kodzie klienta i serwera przy użyciu [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
+
+> [!NOTE]
+> Usługa Azure Cosmos DB są automatycznie śledzone tylko wtedy, gdy [HTTP/HTTPS](../cosmos-db/performance-tips.md#networking) jest używany. Nie można przechwycić trybu TCP przez usługę Application Insights.
 
 ## <a name="set-up-dependency-monitoring"></a>Konfigurowanie monitorowania zależności
 Informacje o zależnościach częściowe są zbierane automatycznie przez [zestawu SDK usługi Application Insights](app-insights-asp-net.md). Aby uzyskać kompletne dane, zainstaluj odpowiedniego agenta dla serwera hosta.

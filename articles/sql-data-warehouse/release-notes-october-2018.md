@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 11/14/2018
+ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 1edac9f7eac1f47974f4c94f3cae5bb3451f92fd
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705382"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966827"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Październik 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w października 2018 roku.
@@ -62,6 +62,7 @@ Usługa Azure SQL Data Warehouse (usługi SQL DW) ma teraz natywnej integracji z
 | **CETAS Parquet błędy w klasach zasobów małych na magazyny danych DW2000 i nie tylko** | Ta poprawka poprawnie identyfikuje odwołanie o wartości null w tworzenie zewnętrznej tabeli jako ścieżkę kodu Parquet. |
 |**Wartości kolumny tożsamości może spowodować utratę niektórych operacji CTAS** | Wartość kolumny identyfikowanie mogą nie zostać zachowane podczas CTASed do innej tabeli. Zgłoszone w blogu: [ https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/ ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/). |
 | **Błąd wewnętrzny w niektórych przypadkach, gdy sesja została przerwana, gdy zapytanie jest nadal uruchomiona.** | Ta poprawka jest wyzwalana InvalidOperationException, jeśli sesja została przerwana, gdy zapytanie jest nadal uruchomiona. |
+| **(Wdrożenie w listopada 2018 r.) Klienci zgłaszali problemy nieoptymalne wydajności, podczas próby załadowania wielu małych plików z usługi ADLS (Gen1) przy użyciu technologii Polybase.** | Wydajność systemu został bottlenecked podczas weryfikacji tokenu zabezpieczeń usługi AAD. Problemy z wydajnością zostały skorygowane, należy włączyć buforowanie tokenów zabezpieczających. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

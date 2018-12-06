@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 904e9c22f23255f1bee7f532d7f577c7cd457778
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: d5f6934385d616390baf336404ddd79d4bc2a490
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443750"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965440"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Podręcznik techniczny do szablonu Cortana Intelligence rozwiązania pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce i innych firm
 
@@ -218,7 +218,7 @@ Poniższe kroki prowadzą, jak wizualizować dane wyjściowe z zadania usługi S
    * Upewnij się, że ***wizualizacje*** okienko jest otwarty i jest wyświetlany po prawej stronie ekranu.
 3. Po utworzeniu danych otrzymywanych przez usługi Power BI, możesz rozpocząć wizualizowanie danych przesyłanych strumieniowo. Poniżej są przykładowy pulpit nawigacyjny z wizualizacjami niektóre ścieżki aktywnej do niego przypięte. Możesz utworzyć inne Kafelki pulpitu nawigacyjnego na podstawie odpowiednich zestawów danych. W zależności od tego, jak długo uruchomieniu usługi generator danych numery na wizualizacje mogą być inne.
 
-    ![Widok pulpitu nawigacyjnego](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
+    ![Widok pulpitu nawigacyjnego](media/cortana-analytics-technical-guide-predictive-maintenance/dashboard-view.png)
 
 1. Poniżej przedstawiono niektóre czynności, aby utworzyć jeden z kafelków, powyżej — "floty widok vs czujnik 11. Próg 48,26" kafelka:
    

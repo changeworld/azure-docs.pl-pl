@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62389edabb6d510fa1294affeb8e874efd18fc06
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678427"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967899"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Wyświetlanie dzienników aktywności dla zmian RBAC
 
@@ -117,7 +117,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 Poniżej przedstawiono podstawowe kroki, aby rozpocząć pracę:
 
-1. [Utwórz obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+1. [Utwórz obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 1. [Skonfiguruj rozwiązanie Activity Log Analytics](../azure-monitor/platform/collect-activity-logs.md#configuration) dla obszaru roboczego.
 
@@ -125,7 +125,7 @@ Poniżej przedstawiono podstawowe kroki, aby rozpocząć pracę:
 
    ![Log Analytics opcji w portalu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Opcjonalnie użyć [wyszukiwanie w dzienniku](../log-analytics/log-analytics-log-search.md) strony lub [portalu analizy zaawansowanej](../log-analytics/query-language/get-started-analytics-portal.md) zapytania i wyświetlić dzienniki. Aby uzyskać więcej informacji na temat tych dwóch opcji, zobacz [strony wyszukiwanie w dziennikach lub portalu analizy zaawansowanej](../log-analytics/log-analytics-log-search-portals.md).
+1. Opcjonalnie użyć [wyszukiwanie w dzienniku](../log-analytics/log-analytics-log-search.md) strony lub [portalu analizy zaawansowanej](../azure-monitor/log-query/get-started-portal.md) zapytania i wyświetlić dzienniki. Aby uzyskać więcej informacji na temat tych dwóch opcji, zobacz [strony wyszukiwanie w dziennikach lub portalu analizy zaawansowanej](../azure-monitor/log-query/portals.md).
 
 Oto zapytanie zwracające nowego przypisania roli organizowane przez dostawcę zasobów docelowych:
 

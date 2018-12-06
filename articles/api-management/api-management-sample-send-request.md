@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: fdcc230171006c6388e75b947e10a73fb953001a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bfb08cb3bb81917414e4d34afe47964b738980e7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294683"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970182"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Korzystanie z usług zewnętrznych z usługi Azure API Management
 Zasady dostępne w usłudze Azure API Management można wykonać szeroką gamę przydatnych działań oparte wyłącznie na żądanie przychodzące, Wychodzące odpowiedzi i podstawowe informacje o konfiguracji. Jednak możliwość interakcji z usługami zewnętrznymi z usługi API Management zasady otwiera wiele więcej.
@@ -68,13 +68,13 @@ Istnieją pewne wady i zalety, korzystając z pożarowego i zapominać styl żą
 `send-request` Umożliwia zasad przy użyciu usługi zewnętrznej do wykonywania zadań złożone przetwarzanie i zwraca dane do usługi API management usługi, która może służyć do dalszego przetwarzania zasad.
 
 ### <a name="authorizing-reference-tokens"></a>Autoryzowanie tokenów odwołań
-Najważniejszych funkcji usługi API Management chroni zasoby zaplecza. Jeśli serwer autoryzacji używany przez interfejs API tworzy [tokenów JWT](http://jwt.io/) jako część jego przepływu OAuth2 jako [usługi Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) jest, wówczas można użyć `validate-jwt` zasad w celu zweryfikowania jego ważności tokenu. Niektóre serwery autoryzacji tworzenia, są nazywane [odwołać tokeny](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) nie można zweryfikować bez wprowadzania wywołanie zwrotne do autoryzacji serwera.
+Najważniejszych funkcji usługi API Management chroni zasoby zaplecza. Jeśli serwer autoryzacji używany przez interfejs API tworzy [tokenów JWT](https://jwt.io/) jako część jego przepływu OAuth2 jako [usługi Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) jest, wówczas można użyć `validate-jwt` zasad w celu zweryfikowania jego ważności tokenu. Niektóre serwery autoryzacji tworzenia, są nazywane [odwołać tokeny](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) nie można zweryfikować bez wprowadzania wywołanie zwrotne do autoryzacji serwera.
 
 ### <a name="standardized-introspection"></a>Standardowe introspekcji
 W przeszłości została żaden standardowy sposób sprawdzania, czy token odwołania, za pomocą serwera autoryzacji. Jednak ostatnio proponowany standard [RFC 7662](https://tools.ietf.org/html/rfc7662) została opublikowana przez grupę IETF, który definiuje, jak serwer zasobów można sprawdzić poprawność tokenu.
 
 ### <a name="extracting-the-token"></a>Trwa wyodrębnianie tokenu
-Pierwszym krokiem jest token zostanie wyodrębniony z nagłówka autoryzacji. Wartość nagłówka powinien być sformatowany za pomocą `Bearer` schemat autoryzacji, pojedynczą spację, a następnie token autoryzacji zgodnie [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1). Niestety istnieją przypadki, w której zostanie pominięty schemat autoryzacji. Zostało to podczas analizowania, API Management dzieli wartość nagłówka w miejscu i wybiera ostatni ciąg z zwróconej tablicy ciągów. Zapewnia to obejście dla nagłówków autoryzacji niepoprawnie sformatowana.
+Pierwszym krokiem jest token zostanie wyodrębniony z nagłówka autoryzacji. Wartość nagłówka powinien być sformatowany za pomocą `Bearer` schemat autoryzacji, pojedynczą spację, a następnie token autoryzacji zgodnie [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Niestety istnieją przypadki, w której zostanie pominięty schemat autoryzacji. Zostało to podczas analizowania, API Management dzieli wartość nagłówka w miejscu i wybiera ostatni ciąg z zwróconej tablicy ciągów. Zapewnia to obejście dla nagłówków autoryzacji niepoprawnie sformatowana.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
@@ -118,7 +118,7 @@ Możesz użyć `<choose>` zasady, aby wykryć, czy token jest nieprawidłowy, a 
 </choose>
 ```
 
-Zgodnie [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) opisano jak `bearer` tokeny powinny być używane, API Management zwraca również wartość `WWW-Authenticate` nagłówek odpowiedzi 401. WWW-Authenticate ma na celu poinstruowania klienta, jak utworzyć żądanie prawidłowo autoryzowanych. Z powodu różnych metod, które można zrobić za pomocą OAuth2 framework jest trudne do komunikowania się wszystkie wymagane informacje. Na szczęście istnieją wysiłki w toku, aby ułatwić [klientów Dowiedz się, jak poprawnie autoryzować żądania do serwera zasobów](http://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Zgodnie [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) opisano jak `bearer` tokeny powinny być używane, API Management zwraca również wartość `WWW-Authenticate` nagłówek odpowiedzi 401. WWW-Authenticate ma na celu poinstruowania klienta, jak utworzyć żądanie prawidłowo autoryzowanych. Z powodu różnych metod, które można zrobić za pomocą OAuth2 framework jest trudne do komunikowania się wszystkie wymagane informacje. Na szczęście istnieją wysiłki w toku, aby ułatwić [klientów Dowiedz się, jak poprawnie autoryzować żądania do serwera zasobów](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Ostateczna rozwiązania
 Po zakończeniu otrzymasz następujące zasady:

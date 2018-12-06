@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 31e7307e427b175eb7424ecaee380bd90ce8150e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 161a9f1ac517d372884e7606dbd2ef30c910bf6b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443410"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968104"
 ---
 # <a name="suspended-domains"></a>Wstrzymane domen
 Jeśli Azure Active Directory Domain Services (Azure AD DS) jest w stanie zrealizować domeny zarządzanej przez długi czas, umieszcza je w domenie zarządzanej przechodzą w stan wstrzymania. W tym artykule opisano, dlaczego domeny zarządzane są wstrzymywane i jak skorygować wstrzymania domeny.
@@ -28,7 +28,7 @@ Jeśli Azure Active Directory Domain Services (Azure AD DS) jest w stanie zreali
 
 ## <a name="states-your-managed-domain-can-be-in"></a>Stany Twoja domena zarządzana może znajdować się w
 
-![Oś czasu wstrzymania domeny](media\active-directory-domain-services-suspension\suspension-timeline.PNG)
+![Oś czasu wstrzymania domeny](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
 Poprzedni element graficzny opisano możliwe stany, które mogą należeć do domeny zarządzanej usług Azure AD DS.
 

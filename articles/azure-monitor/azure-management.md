@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: abb57fbfbe883686709335ed80f7fe90f11c0cef
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 29daa447be051af3df86ba9211bc2e4871d8c71e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728365"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965109"
 ---
 # <a name="azure-management---monitoring"></a>Zarządzanie platformą Azure — monitorowanie
 
@@ -37,7 +37,7 @@ W poniższych sekcjach krótko opisano różne obszary zarządzania oraz podano 
 Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajności, kondycji i dostępności aplikacji biznesowych i zasobów, od których one zależą. Skuteczna strategia monitorowania pomoże poznać szczegółowe działanie różnych składników aplikacji i zwiększyć czas aktywności przez proaktywne powiadamianie o istotnych kwestiach w celu umożliwienia rozwiązywania ich, zanim staną się problemami. Monitorowanie na platformie Azure jest realizowane przede wszystkim za pomocą usługi [Azure Monitor](../azure-monitor/overview.md), która zapewnia wspólne magazyny do przechowywania danych monitorowania, wiele źródeł danych do zbierania danych z różnych warstw obsługi aplikacji i funkcje do analizowania zebranych danych oraz do reagowania na nie.
 
 ## <a name="configure"></a>Konfigurowanie
-Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji.  Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność.  [Usługa Azure Automation](..\automation\automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji.  Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
+Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji.  Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność.  [Usługa Azure Automation](../automation/automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji.  Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
 
 ## <a name="govern"></a>Ład
 Ład dotyczy mechanizmów i procesów kontrolowania aplikacji i zasobów na platformie Azure.  Obejmuje to planowanie inicjatyw i wyznaczanie strategicznych priorytetów.  Ład na platformie Azure jest zaimplementowany głównie za pomocą dwóch usług.  [Zasady platformy Azure](../governance/policy/overview.md) pozwalają tworzyć i przypisywać definicje zasad oraz zarządzać nimi. Te definicje wymuszają różne reguły i działania dotyczące zasobów, aby pozostały one zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. [Usługa Azure Cost Management firmy Cloudyn](../cost-management/overview.md) umożliwia śledzenie użycia chmury i wydatków na zasoby platformy Azure i innych dostawców rozwiązań w chmurze, w tym AWS i Google.

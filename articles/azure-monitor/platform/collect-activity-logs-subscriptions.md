@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e4ec1ecbde04cbf843f99bdcdf36977a856c3b03
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: eccd81d50c93c2fdeb67e2536a0afa879c08a1b4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684656"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970284"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Zbieranie dzienników aktywności platformy Azure w usłudze Log Analytics w wielu subskrypcjach
 
@@ -344,4 +344,4 @@ Ostatnim krokiem jest sprawdzenie obszaru roboczego usługi Log Analytics, aby u
 W tym artykule utworzono aplikację logiki w celu odczytywania dzienników aktywności platformy Azure z centrum zdarzeń oraz wysyłania ich do usługi Log Analytics w celu przeprowadzenia analizy. Aby dowiedzieć się więcej o wizualizacji danych w usłudze Log Analytics, w tym o tworzeniu pulpitów nawigacyjnych, sprawdź samouczek dotyczący wizualizacji danych.
 
 > [!div class="nextstepaction"]
-> [Samouczek dotyczący wizualizacji danych przeszukiwania dzienników](./../../log-analytics/log-analytics-tutorial-dashboards.md)
+> [Samouczek dotyczący wizualizacji danych przeszukiwania dzienników](./../../azure-monitor/learn/tutorial-logs-dashboards.md)

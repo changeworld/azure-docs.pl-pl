@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 17bcc7ada244484c2c2df5bd81c82f695a8b5342
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060208"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969911"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -125,7 +125,7 @@ options timeout:1 attempts:5
 Plik resolv.conf jest zwykle generowane automatycznie i nie można edytować. Określone kroki, aby dodać *opcje* dystrybucji zależą od wiersza:
 
 * **Ubuntu** (używa resolvconf):
-  1. Dodaj *opcje* wiersz do **/etc/resolveconf/resolv.conf.d/head**.
+  1. Dodaj *opcje* wiersz do **/etc/resolvconf/resolv.conf.d/tail**.
   2. Uruchom `resolvconf -u` do zaktualizowania.
 * **SUSE** (używa netconf):
   1. Dodaj *timeout:1 prób: 5* do **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametru w **/etc/sysconfig/network/config**. 

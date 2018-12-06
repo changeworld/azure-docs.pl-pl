@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 8d15aeb92911a26a9a42a0449a24e8c0fee4467b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: cf3e5bf6752311881e1266d2fb49aa5b7108e68a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497348"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965568"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -151,36 +151,47 @@ Postępuj zgodnie z instrukcjami w [wiązanie istniejącego niestandardowego cer
 >[!NOTE]
 > Jeśli aplikacja używa Spring Framework lub Spring Boot, można ustawić informacji połączenia bazy danych dla źródła danych z rozwiązaniami JPA jako zmienne środowiskowe [w pliku właściwości aplikacji]. Następnie użyj [ustawienia aplikacji](/azure/app-service/web-sites-configure#app-settings) do definiowania te wartości dla swojej aplikacji w witrynie Azure portal lub interfejsu wiersza polecenia.
 
-Przykładowe fragmenty konfiguracji w tej sekcji Użyj bazy danych MySQL. Aby uzyskać dodatkowe informacje, zobacz dokumentacja konfiguracji [MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html) , [JDBC oprogramowania SQL Server](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017), i [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html).
+Te instrukcje mają zastosowanie do wszystkich połączeń z bazą danych. Należy wypełnić symbole zastępcze nazwą klasy sterownik wybranej bazy danych i pliku JAR. Podany jest tabelą z nazwy klas i sterowniki do pobrania dla wspólnej bazy danych.
 
-Aby skonfigurować Tomcat używać zarządzanego połączenia z bazami danych przy użyciu języka Java połączenia bazy danych (JDBC) lub interfejsu API trwałości Java rozwiązaniami (JPA), należy najpierw dostosować zmienną środowiskową CATALINA_OPTS przeczytać, Tomcat podczas uruchamiania. Ustaw te wartości za pomocą ustawienia aplikacji we wtyczce aplikacji usługi Maven:
+| Database (Baza danych)   | Nazwa klasy sterownika                             | Sterownik JDBC                                                                      |
+|------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
+| PostgreSQL | `org.postgresql.Drvier`                        | [Pobieranie](https://jdbc.postgresql.org/download.html)                                    |
+| MySQL      | `com.mysql.jdbc.Driver`                        | [Pobierz](https://dev.mysql.com/downloads/connector/j/) (Wybierz "Niezależne od platformy") |
+| Oprogramowanie SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Pobieranie](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+
+Aby skonfigurować Tomcat, aby użyć połączenia bazy danych języka Java (JDBC) lub interfejsu API trwałości Java rozwiązaniami (JPA), należy najpierw dostosować `CATALINA_OPTS` zmiennej środowiskowej, który jest wczytywany w Tomcat na początku się. Ustaw te wartości za pomocą ustawienia aplikacji w [wtyczki Maven usługi aplikacji](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
 ```xml
 <appSettings> 
     <property> 
         <name>CATALINA_OPTS</name> 
-        <value>"$CATALINA_OPTS -Dmysqluser=${mysqluser} -Dmysqlpass=${mysqlpass} -DmysqlURL=${mysqlURL}"</value> 
+        <value>"$CATALINA_OPTS -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} -DconnURL=${CONNURL}"</value> 
     </property> 
 </appSettings> 
 ```
 
-Lub równoważne usługi App Service, ustawiając w witrynie Azure portal.
+Lub ustawić zmienne środowiskowe w bloku "Ustawienia aplikacji" w witrynie Azure portal.
 
-Następnie należy określić, czy źródło danych ma udostępnione tylko do jednej aplikacji lub dla wszystkich aplikacji uruchomionych na plan usługi App Service.
+>[!NOTE]
+> Jeśli używasz usługi Azure Database dla programu Postgres, należy zastąpić `ssl=true` z `sslmode=require` w parametrach połączenia sterownika JDBC.
 
-W przypadku źródeł danych na poziomie aplikacji: 
+Następnie należy określić, czy źródło danych powinna być dostępna, do jednej aplikacji lub wszystkie aplikacje uruchomione na serwerze Tomcat serwletu.
 
-1. Dodaj `context.xml` plik, jeśli nie istnieje, do aplikacji sieci web i dodaj go `META-INF` katalogu pliku WAR podczas kompilowania projektu.
+#### <a name="for-application-level-data-sources"></a>W przypadku źródeł danych na poziomie aplikacji: 
 
-2. W tym pliku Dodaj `Context` wpis ścieżki połączenia źródła danych na adres JNDI.
+1. Tworzenie `context.xml` w pliku `META-INF/` katalogu projektu. Utwórz `META-INF/` katalogu, jeśli nie istnieje.
+
+2. W `context.xml`, Dodaj `Context` element połączenia źródła danych na adres JNDI. Zastąp `driverClassName` zastępczego dla nazwy klasy w sterowniku z powyższej tabeli.
 
     ```xml
     <Context>
         <Resource
-            name="jdbc/mysqldb" type="javax.sql.DataSource"
-            url="${mysqlURL}"
-            driverClassName="com.mysql.jdbc.Driver"
-            username="${mysqluser}" password="${mysqlpass}"
+            name="jdbc/dbconnection" 
+            type="javax.sql.DataSource"
+            url="${dbuser}"
+            driverClassName="<insert your driver class name>"
+            username="${dbpassword}" 
+            password="${connURL}"
         />
     </Context>
     ```
@@ -189,38 +200,50 @@ W przypadku źródeł danych na poziomie aplikacji:
 
     ```xml
     <resource-env-ref>
-        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
 
-Za udostępnione zasoby na poziomie serwera:
+#### <a name="for-shared-server-level-resources"></a>Za udostępnione zasoby na poziomie serwera:
 
 1. Skopiuj zawartość `/usr/local/tomcat/conf` do `/home/tomcat/conf` na usługi App Service Linux wystąpienia przy użyciu protokołu SSH, jeśli jeszcze nie masz konfiguracji istnieje.
+    ```
+    mkdir -p /home/tomcat
+    cp -a /usr/local/tomcat/conf /home/tomcat/conf
+    ```
 
-2. Dodawanie kontekstu do usługi `server.xml`
+2. Dodaj element kontekstu w swojej `server.xml` w ramach `<Server>` elementu.
 
     ```xml
+    <Server>
+    ...
     <Context>
         <Resource
-            name="jdbc/mysqldb" type="javax.sql.DataSource"
-            url="${mysqlURL}"
-            driverClassName="com.mysql.jdbc.Driver"
-            username="${mysqluser}" password="${mysqlpass}"
+            name="jdbc/dbconnection" 
+            type="javax.sql.DataSource"
+            url="${dbuser}"
+            driverClassName="<insert your driver class name>"
+            username="${dbpassword}" 
+            password="${connURL}"
         />
     </Context>
+    ...
+    </Server>
     ```
 
 3. Aktualizowanie aplikacji `web.xml` używać źródła danych w aplikacji.
 
     ```xml
     <resource-env-ref>
-        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
 
-4. Upewnij się, że pliki sterownika JDBC są dostępne dla Tomcat classloader, umieszczając je w `/home/tomcat/lib` katalogu. Aby przekazać te pliki do swojego wystąpienia usługi App Service, wykonaj następujące czynności:  
+#### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>Na koniec umieść plikach JAR sterownika w ścieżce klasy Tomcat i ponownie uruchom usługi App Service: 
+
+1. Upewnij się, że pliki sterownika JDBC są dostępne dla Tomcat classloader, umieszczając je w `/home/tomcat/lib` katalogu. (Utwórz ten katalog, jeśli jeszcze nie istnieje). Aby przekazać te pliki do swojego wystąpienia usługi App Service, wykonaj następujące czynności:  
     1. Zainstaluj rozszerzenie webpp w usłudze Azure App Service:
 
       ```azurecli-interactive
@@ -235,7 +258,9 @@ Za udostępnione zasoby na poziomie serwera:
 
     3. Podłącz do lokalnego portu tunelowania przy użyciu klienta protokołu SFTP oraz przekazywanie plików do `/home/tomcat/lib` folderu.
 
-5. Uruchom ponownie aplikację App Service dla systemu Linux. Spowoduje to zresetowanie Tomcat `CATALINA_HOME` do `/home/tomcat/conf` i korzystać z zaktualizowaną konfiguracją i klas.
+    Alternatywnie można użyć klienta FTP do przekazania sterownik JDBC. Postępuj zgodnie z tymi [instrukcje dotyczące pobierania poświadczeń protokołu FTP](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials).
+
+2. Jeśli utworzono źródła danych na poziomie serwera, uruchom ponownie aplikację App Service dla systemu Linux. Spowoduje to zresetowanie Tomcat `CATALINA_HOME` do `/home/tomcat/conf` i użyć zaktualizowanej konfiguracji.
 
 ## <a name="docker-containers"></a>Kontenerów Docker
 
@@ -245,7 +270,7 @@ Aby użyć zestawu JDK Zulu obsługiwanej przez platformę Azure w swoje kontene
 
 App Service dla systemu Linux obsługuje dwa środowiska uruchomieniowe zarządzany hosting aplikacji sieci web Java:
 
-- [Kontener serwletów Tomcat](http://tomcat.apache.org/) do uruchamiania aplikacji w pakiecie, tak jak w sieci web plików archiwów (WAR). Obsługiwane wersje to 8.5 i 9.0.
+- [Kontener serwletów Tomcat](https://tomcat.apache.org/) do uruchamiania aplikacji w pakiecie, tak jak w sieci web plików archiwów (WAR). Obsługiwane wersje to 8.5 i 9.0.
 - Środowisko uruchomieniowe Java SE do uruchamiania aplikacji w pakiecie jako archiwum Java plików (plik JAR). Jedyna obsługiwana wersja główne to Java 8.
 
 ## <a name="java-runtime-statement-of-support"></a>Java runtime oświadczenie zespołu pomocy technicznej 

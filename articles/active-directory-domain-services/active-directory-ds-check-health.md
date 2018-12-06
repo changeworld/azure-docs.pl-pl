@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9248e2310e509bbc4f527608246b47543a03fc4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: aee8492c73ace608abaeca9d833494e041d2b9dd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502181"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969008"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Sprawdzanie kondycji domeny zarządzanej usług domenowych Azure AD
 
@@ -32,7 +32,7 @@ Za pomocą strony kondycji w swojej witrynie Azure portal, jesteś w stanie zape
 2. Kliknij domenę, aby wyświetlić kondycję elementów.
 3. W okienku nawigacji po lewej stronie kliknij **kondycji**.
 
-Poniższy obraz przedstawia przykładową stronę kondycji: ![przykładowa strona kondycji](.\media\active-directory-domain-services-alerts\health-page.png)
+Poniższy obraz przedstawia przykładową stronę kondycji: ![przykładowa strona kondycji](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
 > Kondycji domeny zarządzanej jest obliczane co godzinę. Po wprowadzeniu zmian do domeny zarządzanej, poczekaj, aż następnym cyklu szacowania, aby wyświetlić zaktualizowaną kondycję domeny zarządzanej. Sygnatura czasowa "Datą ostatniej oceny" w prawym górnym rogu pokazuje, kiedy kondycję domeny zarządzanej datą ostatniej oceny.
@@ -43,10 +43,10 @@ Stan w prawym górnym rogu kondycję swojej stronie wskazuje ogólną kondycję 
 
 | Stan | Ikona | Wyjaśnienie |
 | --- | :----: | --- |
-| Działanie | <img src= ".\media\active-directory-domain-services-alerts\running-icon.png" width = "15"> | Twoja domena zarządzana jest sprawne i nie ma żadnych alertów krytyczna lub poważna. Ta domena może być alerty informacyjne. |
-| Wymaga uwagi (ostrzeżenie) | <img src= ".\media\active-directory-domain-services-alerts\warning-icon.png" width = "15"> | Brak alertów krytycznych w domenie zarządzanej, ale istnieją alerty ostrzegawcze, które powinny być usuwane. |
-| Wymaga uwagi (krytyczne) | <img src= ".\media\active-directory-domain-services-alerts\critical-icon.png" width = "15"> | Istnieje jeden lub więcej alertów krytycznych w domenie zarządzanej. Mogą również mieć alerty informacyjne i/lub ostrzeżenia. |
-| Wdrażanie | <img src= ".\media\active-directory-domain-services-alerts\deploying-icon.png" width = "15"> | Domeny jest w trakcie wdrażania. |
+| Działanie | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | Twoja domena zarządzana jest sprawne i nie ma żadnych alertów krytyczna lub poważna. Ta domena może być alerty informacyjne. |
+| Wymaga uwagi (ostrzeżenie) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | Brak alertów krytycznych w domenie zarządzanej, ale istnieją alerty ostrzegawcze, które powinny być usuwane. |
+| Wymaga uwagi (krytyczne) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | Istnieje jeden lub więcej alertów krytycznych w domenie zarządzanej. Mogą również mieć alerty informacyjne i/lub ostrzeżenia. |
+| Wdrażanie | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | Domeny jest w trakcie wdrażania. |
 
 ## <a name="monitors"></a>Monitory
 Monitory są aspektów Twojej domeny zarządzanej, monitorującej przez usługi domenowe Azure AD w regularnych odstępach czasu. Najlepszym sposobem utrzymywania monitory w dobrej kondycji jest Rozwiąż wszystkie aktywne alerty dla domeny zarządzanej.

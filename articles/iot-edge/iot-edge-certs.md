@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ff85f2c9ef708c7cbac9be4933541f063a6c95b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b1b8c660dfd6ea6890a940a97f5ff1ec1617c28d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568594"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963389"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Szczegóły użycia certyfikatów w usłudze Azure IoT Edge
 
@@ -51,7 +51,7 @@ W każdym przypadku producenta używa certyfikat pośredniego urzędu certyfikac
 
 ### <a name="device-ca-certificate"></a>Certyfikat dostępu Warunkowego do urządzeń
 
-Certyfikat urzędu certyfikacji urządzenia jest generowany na podstawie i podpisem ostatecznego certyfikat pośredniego urzędu certyfikacji w procesie. Ten certyfikat jest zainstalowany na urządzeniu usługi Edge, najlepiej z bezpiecznego magazynu, takich jak sprzętowego modułu zabezpieczeń (HSM). Ponadto certyfikat urzędu certyfikacji urządzenia jednoznacznie identyfikuje urządzenia usługi IoT Edge. Dla usługi IoT Edge urządzenia certyfikatu urzędu certyfikacji jest może wystawiać certyfikaty. Na przykład certyfikat urządzeń urzędu certyfikacji wystawia liścia certyfikaty urządzeń, które są używane do uwierzytelniania urządzeń na [usługi Azure IoT Device Provisioning](..\iot-dps\about-iot-dps.md).
+Certyfikat urzędu certyfikacji urządzenia jest generowany na podstawie i podpisem ostatecznego certyfikat pośredniego urzędu certyfikacji w procesie. Ten certyfikat jest zainstalowany na urządzeniu usługi Edge, najlepiej z bezpiecznego magazynu, takich jak sprzętowego modułu zabezpieczeń (HSM). Ponadto certyfikat urzędu certyfikacji urządzenia jednoznacznie identyfikuje urządzenia usługi IoT Edge. Dla usługi IoT Edge urządzenia certyfikatu urzędu certyfikacji jest może wystawiać certyfikaty. Na przykład certyfikat urządzeń urzędu certyfikacji wystawia liścia certyfikaty urządzeń, które są używane do uwierzytelniania urządzeń na [usługi Azure IoT Device Provisioning](../iot-dps/about-iot-dps.md).
 
 ### <a name="iot-edge-workload-ca"></a>Obciążenie usługi IoT Edge urzędu certyfikacji
 

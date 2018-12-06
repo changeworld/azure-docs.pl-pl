@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: cca15447587fcec7253b449d93fc2f644fe6c249
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c2f018915d5e27d4cf16447e403fcb2e1b3f55a6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851047"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969519"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor  
 
@@ -23,10 +23,10 @@ W tym artykule pokazano, jak skonfigurować alerty dzienników przy użyciu inte
 - Kryteria: Określony warunek lub Logic Apps, gdy widoczne w sygnał, powinny wyzwalać akcję
 - Akcja: Wywołań wysyłanych do odbiorcy powiadomienia — Wyślij wiadomość e-mail, wiadomość SMS, element webhook itp.
 
-Termin **alertów dzienników** do opisania alerty, gdy sygnał jest zapytanie niestandardowe na podstawie [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typów z [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
+Termin **alertów dzienników** do opisania alerty, gdy sygnał jest zapytanie niestandardowe na podstawie [usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typów z [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
 
 > [!NOTE]
-> Dane dzienników popularnych z [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](monitoring-metric-alerts-logs.md)
+> Dane dzienników popularnych z [usługi Azure Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](monitoring-metric-alerts-logs.md)
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>Zarządzanie alertami dzienników w witrynie Azure portal
 
@@ -107,7 +107,7 @@ Aby uzyskać **alertów dzienników** alerty mogą być oparte na:
 
     W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
 
-Użytkownicy mogą również zakończona ich zapytania usługi analytics w [analizy dzienników strony w witrynie Azure portal](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
+Użytkownicy mogą również zakończona ich zapytania usługi analytics w [analizy dzienników strony w witrynie Azure portal](../azure-monitor/log-query/portals.md#log-analytics-page
 ) i Wypchnij go do utworzenia alertu, klikając przycisk "Ustaw Alert" - następnie postępując zgodnie z instrukcjami krok 6 lub nowszym w tym samouczku powyżej.
 
  ![Log Analytics — Ustawianie alertu](media/alert-log/AlertsAnalyticsCreate.png)

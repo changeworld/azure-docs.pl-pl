@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 12/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6d58a62ef70cb5bacb44a3a9832516a30fc91ffa
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: fcc81c8eb3a34b0bda5d91a1a67dd2e04e052967
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248063"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967763"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włączanie opcji nie wylogowuj mnie (KMSI) w usłudze Azure Active Directory B2C
 
@@ -152,7 +152,9 @@ Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która ini
 
     KMSI jest konfigurowana przy użyciu **UserJourneyBehaviors** elementu. **KeepAliveInDays** atrybut kontroluje, jak długo użytkownik pozostaje zalogowany. W poniższym przykładzie, sesja KMSI automatycznie wygasa po upływie `7` dni, niezależnie od tego, jak często użytkownik wykonuje dyskretne uwierzytelnianie. Ustawienie **KeepAliveInDays** wartość `0` powoduje wyłączenie funkcji KMSI. Domyślnie ta wartość jest `0`. Jeśli wartość **wartość SessionExpiryType** jest `Rolling`, rozszerzoną sesji KMSI `7` dni za każdym razem, gdy użytkownik wykona dyskretne uwierzytelnianie.  Jeśli `Rolling` jest zaznaczone, należy zachować liczba dni do minimum. 
 
-    Wartość **SessionExpiryInSeconds** reprezentuje czas wygaśnięcia sesji logowania jednokrotnego. Jest to używane wewnętrznie przez usługę Azure AD B2C do sprawdzenia, czy sesja dla KMSI wygasł lub nie. Wartość **KeepAliveInDays** określa wartość Expires/Max-Age plik cookie logowania jednokrotnego w przeglądarce sieci web. W odróżnieniu od **SessionExpiryInSeconds**, **KeepAliveInDays** służy do przeglądarki uniemożliwiają wyczyszczenie plików cookie, jest ono zamknięte. Użytkownik może dyskretnie zalogować się tylko wtedy, gdy istnieje plik cookie sesji logowania jednokrotnego, które są kontrolowane przez **KeepAliveInDays**i jest ważny, którymi steruje **SessionExpiryInSeconds**. Zalecane jest, aby ustawić wartość **SessionExpiryInSeconds** jako równoważne czas **KeepAliveInDays** w ciągu kilku sekund, jak pokazano w poniższym przykładzie.
+    Wartość **SessionExpiryInSeconds** reprezentuje czas wygaśnięcia sesji logowania jednokrotnego. Jest to używane wewnętrznie przez usługę Azure AD B2C do sprawdzenia, czy sesja dla KMSI wygasł lub nie. Wartość **KeepAliveInDays** określa wartość Expires/Max-Age plik cookie logowania jednokrotnego w przeglądarce sieci web. W odróżnieniu od **SessionExpiryInSeconds**, **KeepAliveInDays** służy do przeglądarki uniemożliwiają wyczyszczenie plików cookie, jest ono zamknięte. Użytkownik może dyskretnie zalogować się tylko wtedy, gdy istnieje plik cookie sesji logowania jednokrotnego, które są kontrolowane przez **KeepAliveInDays**i nie jest uznawane za wygasłe, którymi steruje **SessionExpiryInSeconds**. 
+    
+    Jeśli użytkownik nie włączysz **nie wylogowuj mnie** na stronie rejestracji i logowania sesja wygasa po upływie czasu wskazywanym przez **SessionExpiryInSeconds** został przekazany lub przeglądarka jest zamknięta. Jeśli użytkownik włączy **nie wylogowuj mnie**, wartość **KeepAliveInDays** zastępuje wartość **SessionExpiryInSeconds** i decyduje o czas wygaśnięcia sesji. Nawet użytkownicy, zamknij przeglądarkę i otwórz go ponownie, może nadal w trybie dyskretnym logowania tak długo, jak znajduje się on w czasie **KeepAliveInDays**. Zalecane jest, aby ustawić wartość **SessionExpiryInSeconds** krótki okres (1200 sekund), podczas wartość **KeepAliveInDays** można ustawić na względnie długiego okresu (7 dni), jak pokazano w Poniższy przykład:
 
     ```XML
     <RelyingParty>
@@ -160,7 +162,7 @@ Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która ini
       <UserJourneyBehaviors>
         <SingleSignOn Scope="Tenant" KeepAliveInDays="7" />
         <SessionExpiryType>Absolute</SessionExpiryType>
-        <SessionExpiryInSeconds>604800</SessionExpiryInSeconds>
+        <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
       </UserJourneyBehaviors>
       <TechnicalProfile Id="PolicyProfile">
         <DisplayName>PolicyProfile</DisplayName>

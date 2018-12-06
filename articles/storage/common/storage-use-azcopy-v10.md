@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: a1b183e5b0929a2149502aa340e2e69c725dba6d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168265"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958426"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Transferowanie danych za pomocą AzCopy v10 (wersja zapoznawcza)
 
@@ -84,6 +84,16 @@ Aby wyświetlić stronę pomocy i przykłady dla określonego polecenia uruchom 
 .\azcopy cp -h
 ```
 
+## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>Tworzenie systemu plików (usługi Azure Data Lake Storage Gen2 — tylko)
+
+Po włączeniu hierarchiczne przestrzenie nazw w ramach konta magazynu obiektów blob, można użyć następującego polecenia, aby utworzyć nowy system plików, plików do pobrania można przekazać do niego.
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+```
+
+``account`` Fragment tego ciągu jest nazwa konta magazynu. ``top-level-resource-name`` Część ten ciąg jest nazwą system plików, który chcesz utworzyć.
+
 ## <a name="copy-data-to-azure-storage"></a>Kopiowanie danych do usługi Azure Storage
 
 Polecenie kopiowania do przenoszenia danych ze źródła do miejsca docelowego. Lokalizacja źródłowa/docelowa może być Odp.:
@@ -107,10 +117,22 @@ Następujące polecenie przekazuje wszystkie pliki w folderze rekursywnie C:\loc
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
+Po włączeniu hierarchiczne przestrzenie nazw w ramach konta magazynu obiektów blob, służy następujące polecenie do przekazywania plików do systemu plików:
+
+```azcopy
+.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
+```
+
 Następujące polecenie przekazuje wszystkie pliki w folderze C:\local\path (bez recursing do podkatalogów) do kontenera "mycontainer1":
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+```
+
+Po włączeniu hierarchiczne przestrzenie nazw w ramach konta magazynu obiektów blob, można użyć następującego polecenia:
+
+```azcopy
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 Aby uzyskać więcej przykładów, użyj następującego polecenia:
@@ -127,6 +149,8 @@ Aby skopiować dane między dwa konta magazynu, użyj następującego polecenia:
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
+
+Aby pracować z kont usługi blob storage, które mają włączonych hierarchicznej przestrzeni nazw, Zastąp ciąg ``blob.core.windows.net`` z ``dfs.core.windows.net`` w tych przykładach.
 
 > [!NOTE]
 > Polecenie spowoduje wyliczyć wszystkie kontenery obiektów blob i skopiuj je do konta docelowego. W tej chwili AzCopy v10 obsługuje kopiowanie tylko blokowych obiektów blob między kontami magazynu dwa. Wszystkie inne obiekty kont magazynu (uzupełnialnych obiektów blob, stronicowe obiekty BLOB, pliki, tabele i kolejki) zostaną pominięte.
@@ -154,6 +178,8 @@ W ten sam sposób można synchronizować kontener obiektów Blob do lokalnego sy
 ```
 
 To polecenie umożliwia przyrostowo synchronizacji źródła do miejsca docelowego, na podstawie ostatniej modyfikacji sygnatur czasowych. Jeśli dodawanie lub usuwanie pliku w źródle, narzędzia AzCopy v10 będzie się tak samo w miejscu docelowym.
+
+[!NOTE] Aby pracować z kont usługi blob storage, które mają włączonych hierarchicznej przestrzeni nazw, Zastąp ciąg ``blob.core.windows.net`` z ``dfs.core.windows.net`` w tych przykładach.
 
 ## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
 

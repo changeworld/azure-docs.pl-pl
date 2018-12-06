@@ -4,12 +4,12 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 5f7cbdd98d25855e9b8bb102413bd71148193318
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 488fbb2acbf43ac092a7834fc25f433ef09d2b00
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133653"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52973242"
 ---
 ### <a name="server-auth"></a>Instrukcje: uwierzytelnianie za pomocą dostawcy (przepływ serwera)
 Aby usługa Mobile Apps zarządzała procesem uwierzytelniania w aplikacji, musisz zarejestrować swoją aplikację u dostawcy tożsamości. Następnie w usłudze Azure App Service musisz skonfigurować identyfikator aplikacji oraz wpis tajny udostępniony przez dostawcę.
@@ -52,27 +52,6 @@ client.login(
 
 ```
 W tym przykładzie założono, że token udostępniony przez zestaw SDK danego dostawcy jest przechowywany w zmiennej token.
-
-#### <a name="microsoft-account-example"></a>Przykład użycia konta Microsoft
-
-W poniższym przykładzie użyto zestawu Live SDK, który obsługuje logowanie jednokrotne dla aplikacji ze Sklepu Windows przy użyciu konta Microsoft:
-
-```
-WL.login({ scope: "wl.basic"}).then(function (result) {
-      client.login(
-            "microsoftaccount",
-            {"authenticationToken": result.session.authentication_token})
-      .done(function(results){
-            alert("You are now signed in as: " + results.userId);
-      },
-      function(error){
-            alert("Error: " + err);
-      });
-});
-
-```
-
-W tym przykładzie token zostaje pobrany z usługi Live Connect i dostarczony do usługi App Service przez wywołanie funkcji logowania.
 
 ### <a name="auth-getinfo"></a>Instrukcje: pozyskiwanie informacji o uwierzytelnionym użytkowniku
 

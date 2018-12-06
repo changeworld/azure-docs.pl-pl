@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 8c30af5023cb83ee1f9ca0f41db5b7f977cc4bc7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 1725be4209bfc9335654c574098c43102eca5a2d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883911"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961182"
 ---
 # <a name="monitor-migration-activity"></a>Monitorowanie aktywności migracji
 W tym artykule dowiesz się, jak monitorować postęp migracji zarówno w poziomie bazy danych, jak i w poziomie tabeli.
@@ -24,7 +24,7 @@ W tym artykule dowiesz się, jak monitorować postęp migracji zarówno w poziom
 ## <a name="monitor-at-the-database-level"></a>Monitorowanie na poziomie bazy danych
 Aby monitorować aktywność na poziomie bazy danych, należy wyświetlić blok poziomu bazy danych:
 
-![Blok poziomu bazy danych](media\how-to-monitor-migration-activity\dms-database-level-blade.png)
+![Blok poziomu bazy danych](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
 
 > [!NOTE]
 > Zaznaczanie hiperlinku bazy danych zostanie wyświetlona lista tabel i ich postęp migracji.
@@ -84,7 +84,7 @@ Poniższa tabela zawiera listę pól, w bloku bazy danych na poziomie i w tym ar
       <td>Po zakończeniu ładowania początkowego DMS spowoduje oznaczenie bazy danych jako gotowe do uruchomienia produkcyjnego. Należy sprawdzić, jeśli dane złapał ciągłej synchronizacji.</td>
     </tr>
     <tr>
-      <td>Wszystkie zmiany zostały zastosowane</td>
+      <td>Wszystkie zmiany zastosowane</td>
       <td>Zakończeniu ładowania początkowego i ciągłej synchronizacji. Ten stan występuje także po pomyślnym baza danych jest uruchomienie produkcyjne.</td>
     </tr>
     <tr>
@@ -104,7 +104,7 @@ Aby monitorować aktywność na poziomie tabeli, należy wyświetlić bloku na p
 
 Dolnej części bloku są wyświetlane tabele i przedstawiono krótkie podsumowanie postęp migracji.
 
-![Blok tabeli — krótkie podsumowanie](media\how-to-monitor-migration-activity\dms-table-level-blade-summary.png)
+![Blok tabeli — krótkie podsumowanie](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
 
 W poniższej tabeli opisano pola wyświetlane w obszarze szczegółów na poziomie tabeli.
 
@@ -123,9 +123,9 @@ W poniższej tabeli opisano pola wyświetlane w obszarze szczegółów na poziom
 ## <a name="monitor-at-table-level--detailed-summary"></a>Monitorowanie na poziomie tabeli — szczegółowe podsumowanie
 Istnieją dwie karty, pokazujące postęp migracji w pełne ładowanie i Przyrostowa synchronizacja danych.
     
-![Karta pełne ładowanie](media\how-to-monitor-migration-activity\dms-full-load-tab.png)
+![Karta pełne ładowanie](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
 
-![Karta synchronizacji przyrostowej danych](media\how-to-monitor-migration-activity\dms-incremental-data-sync-tab.png)
+![Karta synchronizacji przyrostowej danych](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
 
 W poniższej tabeli opisano pola wyświetlane w tabeli migracji poziomu postępu.
 

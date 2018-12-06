@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1e2492d978073f63c1c9494d652ec35a7d6565b7
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a0dad228f23b055d68009eb737e0347ade49e94b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274183"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968052"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Identyfikator partnera linku do kont systemu Azure
 
@@ -30,7 +30,7 @@ Aby połączyć się z Partnerem, klient musi udzielić Ci dostępu do swoich za
 
 - **Użytkownik-Gość:** klienta można dodał Cię jako użytkownika-gościa i przypisać wszystkie role RBAC. Aby uzyskać więcej informacji, zobacz [dodać użytkowników-gości z innego katalogu](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Konto Directory:** klienta można utworzyć nowego użytkownika z Twojej organizacji w jego katalogu i przyznawać żadnej roli RBAC.
+- **Konto Directory:** klienta można utworzyć konto użytkownika dla Ciebie w ich własnych katalogu i przyznawać żadnej roli RBAC.
 
 - **Nazwa główna usługi:** dodać aplikację lub skrypt z Twojej organizacji w jego katalogu i przyznawać żadnej roli RBAC klienta. Tożsamość aplikacji lub skryptu jest określany jako nazwy głównej usługi.
 

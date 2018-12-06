@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bd97de9680eb2fe5f5e6da3b7cba48dc7280e398
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 4dde0663c6db4187cd4728dd88b808fc22b66708
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888719"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964173"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -71,7 +71,7 @@ W obu przypadkach administrator musi ręcznie przypisać możesz odpowiednią ro
  
 
 ## <a name="new-workspaces"></a>Nowych obszarów roboczych
-Są już nie można utworzyć nowych obszarów roboczych przy użyciu portalu pakietu OMS. Postępuj zgodnie ze wskazówkami w [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](log-analytics-quick-create-workspace.md) Aby utworzyć nowy obszar roboczy w witrynie Azure portal.
+Są już nie można utworzyć nowych obszarów roboczych przy użyciu portalu pakietu OMS. Postępuj zgodnie ze wskazówkami w [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../azure-monitor/learn/quick-create-workspace.md) Aby utworzyć nowy obszar roboczy w witrynie Azure portal.
 
 ## <a name="changes-to-alerts"></a>Zmiany do alertów
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 631933647e27428349fc1efeb17f62f4614f7f64
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 4fa5e40b75be933ee62c8ba59449a78ac071dc43
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423310"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958180"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux
 
@@ -66,7 +66,7 @@ Te kroki są wyświetlane w repozytorium usługi Azure App Service jako [przykł
         && echo "root:Docker!" | chpasswd
     ```
 
-1. Dodaj [ `COPY` instrukcji](https://docs.docker.com/engine/reference/builder/#copy) do pliku Dockerfile, aby skopiować [sshd_config](http://man.openbsd.org/sshd_config) plik */etc/ssh/* katalogu. Plik konfiguracji powinien być oparty na pliku sshd_config w repozytorium GitHub Azure aplikacji usługi [tutaj](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
+1. Dodaj [ `COPY` instrukcji](https://docs.docker.com/engine/reference/builder/#copy) do pliku Dockerfile, aby skopiować [sshd_config](https://man.openbsd.org/sshd_config) plik */etc/ssh/* katalogu. Plik konfiguracji powinien być oparty na pliku sshd_config w repozytorium GitHub Azure aplikacji usługi [tutaj](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
 
     > [!NOTE]
     > *Sshd_config* plik musi zawierać następujące lub połączenie nie powiedzie się: 

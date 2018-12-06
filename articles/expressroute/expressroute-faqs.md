@@ -2,17 +2,17 @@
 title: Usługa Azure ExpressRoute — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Często zadawane pytania dotyczące usługi ExpressRoute zawiera informacje o obsługiwanych usług platformy Azure, kosztów, danych i połączeń, umowy SLA, dostawcy i lokalizacje, przepustowości i dodatkowe szczegóły techniczne.
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: cherylmc
-ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 10/28/2018
+ms.author: jaredro;cherylmc
+ms.openlocfilehash: 728e5b9b4934372e060374aeb273843d695c4ba8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239206"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972460"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -68,8 +68,8 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 
 * Power BI
 * Dynamics 365 for Finance and Operations (wcześniej znane jako Dynamics AX Online)
-* Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br>
-  Następujące usługi nie są obsługiwane:
+* Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>
+  **Następujące usługi nie są obsługiwane**:
     * CDN
     * Multi-Factor Authentication
     * Traffic Manager
@@ -81,7 +81,7 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 * Power BI
 * Usługa Azure Active Directory
 * [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
-* Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br>Następujące usługi są **nieobsługiwane**:
+* Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>**Następujące usługi nie są obsługiwane**:
     * CDN
     * Multi-Factor Authentication
     * Traffic Manager

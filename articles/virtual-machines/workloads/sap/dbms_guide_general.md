@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/06/2018
+ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bed053f812cc5c14e6cfe76b8a08b1ffe0cadcb3
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 05e0ae8f19e9609bd1ddd05082ead025058f92c1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289125"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966011"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -179,7 +179,7 @@ Aby uniknąć pracy administracyjnej planowania i wdrażania wirtualnych dysków
 
 Aby konwertowanie z dysków niezarządzanych do dysków zarządzanych, zapoznaj się z tych artykułów:
 
-- [Konwertuj maszynę wirtualną Windows z dysków niezarządzanych do usługi managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)
+- [Konwertowanie maszyny wirtualnej z systemem Windows z dysków niezarządzanych na dyski zarządzane](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)
 - [Konwertuj maszynę wirtualną z systemem Linux z dysków niezarządzanych do usługi managed disks](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks)
 
 
@@ -279,7 +279,11 @@ Istnieje kilka najlepszych rozwiązań, które spowodowało poza setki wdrożeń
 
 
 > [!IMPORTANT]
-> Z funkcji, ale bardziej ważne poza ze względu na wydajność nie jest obsługiwane do skonfigurowania [wirtualne urządzenia sieciowe Azure](https://azure.microsoft.com/solutions/network-appliances/) ścieżki komunikacji między aplikacją SAP DBMS warstwa oprogramowania SAP NetWeaver Hybris lub S/4HANA na podstawie systemu SAP. Dodatkowe scenariusze, w których urządzeń WUS nie są obsługiwane znajdują się w zaufanych ścieżek komunikacji między maszynami wirtualnymi platformy Azure, reprezentujące interwencja urządzeń i węzłów klastra program Pacemaker w systemie Linux, zgodnie z opisem w [wysoką dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server w przypadku aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Lub w ramach komunikacji ścieżek między maszynami wirtualnymi platformy Azure i systemu Windows serwer SOFS nawet zgodnie z opisem w [klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Urządzenia WUS w komunikacji ścieżki mogą łatwo dwukrotnie opóźnienie sieciowe między dwoma partnerami komunikacji, można ograniczyć przepustowość w krytyczne ścieżki między warstwą aplikacji SAP i warstwy system DBMS. W niektórych scenariuszach zaobserwowane ze swoimi klientami urządzeń WUS może spowodować klastry program Pacemaker w systemie Linux, aby zakończyć się niepowodzeniem w przypadku których komunikacji między węzłami klastra program Pacemaker w systemie Linux muszą komunikować się na ich urządzenia interwencja za pośrednictwem urządzenia NVA.   
+> Z funkcji, ale bardziej ważne poza ze względu na wydajność nie jest obsługiwane do skonfigurowania [wirtualne urządzenia sieciowe Azure](https://azure.microsoft.com/solutions/network-appliances/) ścieżki komunikacji między aplikacją SAP DBMS warstwa oprogramowania SAP NetWeaver Hybris lub S/4HANA na podstawie systemu SAP. Komunikacja między warstwy aplikacji SAP i jej systemu DBMS musi bezpośrednie jednego. Nie ma ograniczenia [ASG platformy Azure i sieciowej grupy zabezpieczeń reguły](https://docs.microsoft.com/azure/virtual-network/security-overview) tak długo, jak te reguły ASG i sieciowej grupy zabezpieczeń umożliwiają bezpośrednią komunikację. Dodatkowe scenariusze, w których urządzeń WUS nie są obsługiwane znajdują się w zaufanych ścieżek komunikacji między maszynami wirtualnymi platformy Azure, reprezentujące interwencja urządzeń i węzłów klastra program Pacemaker w systemie Linux, zgodnie z opisem w [wysoką dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server w przypadku aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Lub w ramach komunikacji ścieżek między maszynami wirtualnymi platformy Azure i systemu Windows serwer SOFS nawet zgodnie z opisem w [klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Urządzenia WUS w komunikacji ścieżki mogą łatwo dwukrotnie opóźnienie sieciowe między dwoma partnerami komunikacji, można ograniczyć przepustowość w krytyczne ścieżki między warstwą aplikacji SAP i warstwy system DBMS. W niektórych scenariuszach zaobserwowane ze swoimi klientami urządzeń WUS może spowodować klastry program Pacemaker w systemie Linux, aby zakończyć się niepowodzeniem w przypadku których komunikacji między węzłami klastra program Pacemaker w systemie Linux muszą komunikować się na ich urządzenia interwencja za pośrednictwem urządzenia NVA.  
+> 
+
+> [!IMPORTANT]
+> Inny projekt, który jest **nie** jest oddzielenie warstwy aplikacji SAP i warstwą DBMS w różnych sieciach wirtualnych platformy Azure, które nie są obsługiwane [skomunikowane równorzędnie](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ze sobą. Zaleca się oddzielenie czynności związanych z warstwy aplikacji SAP i warstwy system DBMS, za pomocą podsieci w sieci wirtualnej platformy Azure, zamiast korzystać z różnych sieci wirtualnych platformy Azure. Jeśli zdecydujesz się na zalecenia, a zamiast tego oddzielenie czynności związanych z dwoma warstwami w innej sieci wirtualnej, dwie sieci wirtualne muszą być [skomunikowane równorzędnie](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Należy pamiętać, że ruchem sieciowym między dwoma [skomunikowane równorzędnie](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) sieciami wirtualnymi platformy Azure są przedmiotem koszty transferu. Z woluminem olbrzymich ilościach danych w wielu terabajtów wymieniane między warstwy aplikacji SAP i warstwy system DBMS znaczne koszty mogą zgromadzonych w przypadku warstwy aplikacji SAP i DBMS warstwę można podzielić między dwiema równorzędnymi sieciami wirtualnymi platformy Azure.  
 
 Używa dwóch maszyn wirtualnych do wdrażania systemu DBMS, w ramach zestawu dostępności platformy Azure, a także osobne routingu dla warstwy aplikacji SAP i zarządzanie i operacje ruchu do dwóch maszyn wirtualnych z systemem DBMS w środowisku produkcyjnym, diagram nierównej będzie wyglądać:
 

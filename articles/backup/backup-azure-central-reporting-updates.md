@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: adigan
-ms.openlocfilehash: 575b994fb34d673578b1a40ae4bdd9f6716b6687
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 65ab497b2467846a324d10f8487ab384a01441ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720035"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968889"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizacja usługi Azure Backup centralnej raportowania pakietu zawartości 
 
@@ -41,30 +41,30 @@ Zmiany są wstępnie skonfigurowane raporty, które pochodzą z pakietem zawarto
 
 ### <a name="summary"></a>Podsumowanie
    
-![Podsumowanie](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Summary.png)
+![Podsumowanie](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
 
 ### <a name="billing"></a>Rozliczenia
 
-![Rozliczenia](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Billing.png)
+![Rozliczenia](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Billing.png)
 
 ### <a name="compliance"></a>Zgodność
 
-![Zgodność](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Compliance.png)
+![Zgodność](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Compliance.png)
 
 ### <a name="storage"></a>Magazyn
 
-![Magazyn](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
+![Magazyn](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Elementy kopii zapasowej
-![Elementy kopii zapasowej](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+![Elementy kopii zapasowej](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>Alerty
 
-![Alerty](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Alerts.png)
+![Alerty](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Alerts.png)
 
 ### <a name="jobs"></a>Stanowiska
 
-![Stanowiska](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
+![Stanowiska](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Jobs.png)
     
 
 ## <a name="next-steps"></a>Kolejne kroki

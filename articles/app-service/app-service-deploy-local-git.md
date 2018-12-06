@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: ae8739a65efbe7662a8f72e961d772fecaf4b527
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a4c96ea75bae69fa5a1af13e4e8b908759817e95
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303699"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959329"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Wdrażanie lokalnej usługi Git w usłudze Azure App Service
 
@@ -30,7 +30,7 @@ Ten poradnik pokazuje jak wdrożyć swój kod, aby [usługi Azure App Service](a
 
 Aby wykonać kroki opisane w tym przewodniku z instrukcjami:
 
-* [Zainstaluj oprogramowanie Git](http://www.git-scm.com/downloads).
+* [Zainstaluj oprogramowanie Git](https://www.git-scm.com/downloads).
 * Obsługa lokalnego repozytorium Git z kodem, który chcesz wdrożyć.
 
 Aby użyć przykładowego repozytorium z niego skorzystać, uruchom następujące polecenie w oknie lokalnego terminala:

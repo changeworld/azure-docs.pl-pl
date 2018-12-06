@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 8cc47fc7ec60027851525b98cdf95e7d534ea556
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b98b0ea68e91bad2a62f40d3dc611308f1bed2de
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241858"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967746"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfiguracja i zarządzanie nim często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -106,7 +106,7 @@ Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące cer
 
 ## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Dlaczego widzisz komunikat "Częściowe Powodzenie", gdy próbuję do tworzenia kopii zapasowej aplikacji sieci web?
 
-Częstą przyczyną niepowodzenia wykonywania kopii zapasowej jest, że niektóre pliki są używane przez aplikację. Pliki, które są używane są zablokowane podczas wykonywania kopii zapasowej. Zapobiega tworzona kopia zapasowa tych plików i może prowadzić do stanu "Częściowe Powodzenie". Użytkownik może potencjalnie temu zapobiec, wykluczanie plików z procesu tworzenia kopii zapasowej. Można wybrać do utworzenia kopii zapasowej tylko potrzebne elementy. Aby uzyskać więcej informacji, zobacz [kopii zapasowej tylko ważne elementy witryny przy użyciu usługi Azure web apps](http://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
+Częstą przyczyną niepowodzenia wykonywania kopii zapasowej jest, że niektóre pliki są używane przez aplikację. Pliki, które są używane są zablokowane podczas wykonywania kopii zapasowej. Zapobiega tworzona kopia zapasowa tych plików i może prowadzić do stanu "Częściowe Powodzenie". Użytkownik może potencjalnie temu zapobiec, wykluczanie plików z procesu tworzenia kopii zapasowej. Można wybrać do utworzenia kopii zapasowej tylko potrzebne elementy. Aby uzyskać więcej informacji, zobacz [kopii zapasowej tylko ważne elementy witryny przy użyciu usługi Azure web apps](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Jak usunąć nagłówek z odpowiedzi HTTP?
 
@@ -288,7 +288,7 @@ Szczegółowa dokumentacja uwierzytelniania i autoryzacji w usłudze App Service
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Jak przekierować domyślnie *. azurewebsites.net domeny do domeny niestandardowej na aplikację internetową platformy Azure?
 
-Podczas tworzenia nowej witryny sieci Web za pomocą aplikacji sieci Web na platformie Azure, domyślny *sitename*. domenie azurewebsites.net jest przypisany do lokacji. Jeśli dodać niestandardową nazwą hosta do swojej witryny, a nie chcesz, aby użytkownicy mogli korzystać z domyślnego *. domenie azurewebsites.net, można przekierować domyślnego adresu URL. Aby dowiedzieć się przekierować cały ruch z domeny domyślnej witryny sieci Web do domeny niestandardowej, zobacz [przekierować domyślnej domeny do domeny niestandardowej w usłudze Azure web apps](http://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Podczas tworzenia nowej witryny sieci Web za pomocą aplikacji sieci Web na platformie Azure, domyślny *sitename*. domenie azurewebsites.net jest przypisany do lokacji. Jeśli dodać niestandardową nazwą hosta do swojej witryny, a nie chcesz, aby użytkownicy mogli korzystać z domyślnego *. domenie azurewebsites.net, można przekierować domyślnego adresu URL. Aby dowiedzieć się przekierować cały ruch z domeny domyślnej witryny sieci Web do domeny niestandardowej, zobacz [przekierować domyślnej domeny do domeny niestandardowej w usłudze Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Jak ustalić, która wersja programu .NET jest zainstalowana wersja w usłudze App Service?
 

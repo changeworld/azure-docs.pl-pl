@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: eb97e709e18daba3722dc43a869ef034dbe573cf
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c13a4606219ebdb1d23a83a0bd3bdf14f1a3882e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157432"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970913"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Informacje dotyczące sieci usługi Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak wybrać siecią wirtualną platformy Azure
@@ -102,7 +102,7 @@ W poniższej tabeli przedstawiono przykładowe sieciowej grupy zabezpieczeń mo�
 
 Ponadto sieciowej grupy zabezpieczeń ilustruje jak zablokować dostęp protokołu secure LDAP przez internet. Pomiń tę regułę, jeśli nie włączono dostęp protokołu secure LDAP do domeny zarządzanej za pośrednictwem Internetu. Sieciowa grupa zabezpieczeń zawiera zestaw reguł zezwalających na dla ruchu przychodzącego protokołu LDAPS dostęp za pośrednictwem portu TCP 636 tylko z określonego zestawu adresów IP. Reguły sieciowej grupy zabezpieczeń, aby zezwolić na dostęp protokołu LDAPS za pośrednictwem Internetu z określonych adresów IP ma wyższy priorytet niż reguły sieciowej grupy zabezpieczeń DenyAll.
 
-![Przykładowe sieciowej grupy zabezpieczeń z bezpiecznego protokołu LDAPS dostępu przez internet](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![Przykładowe sieciowej grupy zabezpieczeń z bezpiecznego protokołu LDAPS dostępu przez internet](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 **Więcej informacji na** - [Utwórz sieciową grupę zabezpieczeń](../virtual-network/manage-network-security-group.md).
 

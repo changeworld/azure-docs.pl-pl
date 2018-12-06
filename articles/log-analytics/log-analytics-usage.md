@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 843271901b8d58c2c5a6c4cf495997498b8278b6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c72e1c92815f70838db20ab67c3f70fc5223ac03
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848854"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964751"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 
@@ -47,6 +47,7 @@ Przyjrzyjmy, jak firma Microsoft może Dowiedz się więcej o obu tych przyczyn.
 
 > [!NOTE]
 > Niektóre pola typu danych użycia, chociaż nadal w schemacie, są przestarzałe i ich wartości są już wypełnione. Są to **komputera** oraz pola powiązane z pozyskiwania (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** i **AverageProcessingTimeMs**.
+> Poniżej znajduje się nowy sposób zbadać ilość pozyskiwanych danych na komputerze. 
 
 ### <a name="data-volume"></a>Ilość danych 
 Na **użycie i szacowane koszty** stronie *pozyskiwanie danych na rozwiązanie* wykres przedstawia łączny wolumin danych wysyłanych i ile wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. Zapytanie używane do generowania, to jest
@@ -64,24 +65,32 @@ Możesz przejść dostosowaną Zobacz dane trendów dla konkretnych typów danyc
 
 ### <a name="nodes-sending-data"></a>Węzły wysyłające dane
 
-Aby dowiedzieć się, liczba węzłów danych raportowania w ciągu ostatniego miesiąca, użyj
+Aby poznać liczbę komputerów (węzłów), dane raportowania w ciągu ostatniego miesiąca, użyj
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Aby wyświetlić liczbę zdarzeń przetwarzanych na komputerze, należy użyć
+Aby wyświetlić **rozmiar** płatnych zdarzeń wprowadzanych na komputerze, użyj
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+
+Korzystać z tych zapytań oszczędnie skanowania różnych typów danych są kosztowne do wykonania. To zapytanie zastąpi stary sposób wykonywanie zapytania dla tego typu danych użycia. 
+
+Aby wyświetlić **liczba** zdarzeń wprowadzanych na komputerze, należy użyć
 
 `union withsource = tt *
 | summarize count() by Computer | sort by count_ nulls last`
 
-Skorzystaj z tej kwerendy rzadko się kosztowne do wykonania. Aby wyświetlić liczbę płatnych zdarzeń wprowadzanych na komputerze, należy użyć 
+Aby wyświetlić liczbę płatnych zdarzeń wprowadzanych na komputerze, należy użyć 
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | summarize count() by Computer  | sort by count_ nulls last`
 
-Jeśli chcesz zobaczyć, jakie typy danych płatnych wysyłania danych do konkretnego komputera, należy użyć:
+Jeśli chcesz wyświetlić liczniki dla typów danych płatnych wysyłania danych do konkretnego komputera, należy użyć:
 
 `union withsource = tt *
 | where Computer == "*computer name*"
@@ -209,7 +218,7 @@ Określ istniejącą [grupę akcji](../monitoring-and-diagnostics/monitoring-act
 Po otrzymaniu alertu wykonaj kroki przedstawione w poniższej sekcji, aby rozwiązać problemy związane z większym niż oczekiwano użyciem.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](../azure-monitor/log-query/log-query-overview.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
+* Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](log-analytics-queries.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
 * Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../monitoring-and-diagnostics/alert-metric.md), aby otrzymywać powiadomienie, gdy kryteria wyszukiwania zostaną spełnione.
 * Użyj funkcji [określania celu rozwiązania](../azure-monitor/insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 * Aby skonfigurować efektywne zasady zbierania zdarzeń zabezpieczeń, przejrzyj [zasady filtrowania usługi Azure Security Center](../security-center/security-center-enable-data-collection.md).

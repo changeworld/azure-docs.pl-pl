@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: 9032a0b68c4c8789010b0304b64a63d4924521fb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a8744afe3ec3e83e4a543942441118356730347c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054994"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957245"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Uruchamianie oprogramowania OpenFoam przy użyciu pakietu Microsoft HPC w węzłach RDMA systemu Linux na platformie Azure
 W tym artykule przedstawiono sposób uruchamianie oprogramowania OpenFoam maszynach wirtualnych platformy Azure. W tym miejscu wdrożenia klastra Microsoft HPC Pack z węzłów obliczeniowych systemu Linux na platformie Azure i uruchom [OpenFoam](http://openfoam.com/) zadania za pomocą Intel MPI. Tak, aby węzły obliczeniowe komunikują się za pośrednictwem sieci platformy Azure RDMA, można użyć obsługą dostępu RDMA maszyn wirtualnych platformy Azure dla węzłów obliczeniowych. Inne opcje uruchamiania programu OpenFoam na platformie Azure obejmują w pełni skonfigurowany handlowej obrazów dostępnych w witrynie Marketplace, takie jak jego UberCloud [2.3 OpenFoam CentOS 6](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud)i uruchamiając [usługi Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
@@ -46,7 +46,7 @@ Pakiet Microsoft HPC Pack udostępnia funkcje do uruchamiania na dużą skalę H
   * Po wdrożeniu węzłów systemu Linux, łączenie za pośrednictwem protokołu SSH, aby wykonać wszelkie dodatkowe zadania administracyjne. Znajdź szczegóły połączenia SSH dla każdej maszyny Wirtualnej systemu Linux w witrynie Azure portal.  
 * **Intel MPI** — uruchamianie programu OpenFOAM w węzłach obliczeniowych z systemem SLES 12 HPC na platformie Azure, musisz zainstalować środowisko uruchomieniowe Intel MPI biblioteki 5 z [witryny Intel.com](https://software.intel.com/en-us/intel-mpi-library/). (Intel MPI 5 jest preinstalowany na obrazy systemu CentOS HPC).  Na późniejszym etapie Jeśli to konieczne, zainstaluj Intel MPI na węzły obliczeniowe systemu Linux. Aby przygotować się do tego kroku, po zarejestrowaniu się firmy Intel, postępuj zgodnie z linku w wiadomości e-mail z potwierdzeniem do powiązanych strony sieci web. Następnie skopiuj link pobierania dla pliku .tgz dla odpowiedniej wersji Intel MPI. Ten artykuł jest oparty na Intel MPI wersji 5.0.3.048.
 * **OpenFOAM źródła pakietu** — Pobierz oprogramowania OpenFOAM źródła dodatkiem Service Pack dla systemu Linux z [witryny OpenFOAM Foundation](http://openfoam.org/download/2-3-1-source/). W tym artykule opiera się na wersję źródła pakietu 2.3.1 dostępne do pobrania jako OpenFOAM 2.3.1.tgz. Postępuj zgodnie z instrukcjami w dalszej części tego artykułu, aby rozpakować i skompilować OpenFOAM w węzłach obliczeniowych systemu Linux.
-* **EnSight** (opcjonalnie) — aby wyświetlić wyniki symulacji OpenFOAM Pobierz i zainstaluj [EnSight](https://ensighttransfe.wpengine.com/direct-access-downloads/) program wizualizacji i analizy. Informacje o licencjonowaniu i pobierania znajdują się w witrynie EnSight.
+* **EnSight** (opcjonalnie) — aby wyświetlić wyniki symulacji OpenFOAM Pobierz i zainstaluj [EnSight](https://www.ansys.com/products/platform/ansys-ensight/data-interfaces) program wizualizacji i analizy. Informacje o licencjonowaniu i pobierania znajdują się w witrynie EnSight.
 
 ## <a name="set-up-mutual-trust-between-compute-nodes"></a>Konfigurowanie wzajemnego zaufania między węzłami obliczeniowymi
 Uruchamianie zadania między węzłami w wielu węzłach Linux wymaga węzłów sobie nawzajem ufają (przez **rsh** lub **ssh**). Po utworzeniu klastra pakietu HPC Pack ze skryptem wdrażania IaaS pakietu Microsoft HPC Pack skrypt automatycznie konfiguruje stałe wzajemnego zaufania dla konta administratora, które określisz. Dla użytkowników bez uprawnień administratora, utworzone w domenie klastra trzeba skonfigurować tymczasowe wzajemnego zaufania między węzłami, gdy zadanie jest przydzielany do nich i zniszcz relacji, po ukończeniu zadania. Aby ustanowić zaufanie dla każdego użytkownika, podaj pary kluczy RSA do klastra, który korzysta z pakietu HPC Pack dla relacji zaufania.
@@ -362,7 +362,7 @@ Teraz można przesłać zadania w Menedżerze klastra HPC. Musisz przekazać hpc
 10. Po zakończeniu zadania, należy znaleźć wyniki zadania w folderach w ramach C:\OpenFoam\sloshingTank3D i pliki dziennika w C:\OpenFoam.
 
 ## <a name="view-results-in-ensight"></a>Wyświetlanie wyników w EnSight
-Opcjonalnie użyć [EnSight](http://www.ensight.com/) wizualizowanie i analizowanie wyników zadania OpenFOAM. Więcej informacji na temat wizualizacji i animacji w EnSight, zobacz [przewodnik wideo](http://www.ensight.com/ensight.com/envideo/).
+Opcjonalnie użyć [EnSight](http://www.ensight.com/) wizualizowanie i analizowanie wyników zadania OpenFOAM. 
 
 1. Po zainstalowaniu EnSight w węźle głównym, należy ją uruchomić.
 2. Open C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.

@@ -1,18 +1,17 @@
 ---
-title: Unikatowe klucze w usłudze Azure Cosmos DB
+title: Użyj unikatowe klucze w usłudze Azure Cosmos DB
 description: Dowiedz się, jak za pomocą unikatowych kluczy bazy danych Azure Cosmos DB
 author: aliuy
+ms.author: andrl
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.author: andrl
-ms.openlocfilehash: 006d0ef28d82a7648a56b3bf871c5a3afd6a55a6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6dcbfcc4773befc291bd360dd14ff4c943d485bf
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624424"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966606"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Unikatowe klucze w usłudze Azure Cosmos DB
 
@@ -22,7 +21,7 @@ Na przykład, należy wziąć pod uwagę Cosmos kontenera za pomocą adresu e-ma
 
 Jeśli chcesz zapewnić użytkownikom możliwość tworzenia wielu elementów przy użyciu tego samego adresu e-mail, ale nie takiej samej nazwie pierwszy, ostatni nazwy i adresu e-mail, można dodać dodatkowe ścieżki do zasady unikatowych kluczy. Zamiast tworzenia unikatowego klucza na podstawie adresu e-mail, można również utworzyć unikatowy klucz przy użyciu kombinacji imię, nazwisko i (Unikatowy klucz złożony) adres e-mail. W takim przypadku każda unikatowa kombinacja tych trzech wartości w danym `CompanyID` jest dozwolone. Na przykład kontener może zawierać elementy z następującymi wartościami, gdzie każdy element jest zapewniane unikatowe ograniczenie klucza.
 
-|CompanyID|Imię|Nazwisko|Email address (Adres e-mail)|
+|CompanyID|Imię|Nazwisko|Adres e-mail|
 |---|---|---|---|
 |Contoso|Gaby|Duperre|gaby@contoso.com |
 |Contoso|Gaby|Duperre|gaby@fabrikam.com|

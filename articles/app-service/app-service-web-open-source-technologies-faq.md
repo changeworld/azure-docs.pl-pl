@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: b34597c604160cc5c0880561a6c3afb70816f9b3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 19168f965f2a98a1dc3f94ae0b029449865a9582
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417331"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971358"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie open source często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -181,7 +181,7 @@ W przypadku wdrożeń aplikacji ustawienia portalu plik dziennika znajduje się 
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>Czy mogę wysyłać wiadomości e-mail z aplikacji sieci web platformy Azure?
 
-Usługa App Service nie ma funkcji wbudowanych wiadomości e-mail. Dla niektórych dobre rozwiązania alternatywne dla wysyłania wiadomości e-mail z aplikacji, zobacz ten [dyskusji w witrynie Stack Overflow](http://stackoverflow.com/questions/17666161/sending-email-from-azure).
+Usługa App Service nie ma funkcji wbudowanych wiadomości e-mail. Dla niektórych dobre rozwiązania alternatywne dla wysyłania wiadomości e-mail z aplikacji, zobacz ten [dyskusji w witrynie Stack Overflow](https://stackoverflow.com/questions/17666161/sending-email-from-azure).
 
 ## <a name="why-does-my-wordpress-site-redirect-to-another-url"></a>Dlaczego Moja witryna WordPress przekierowania do innego adresu URL?
 

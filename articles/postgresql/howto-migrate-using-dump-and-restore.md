@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 7c67cac7a5579386921b2b949e9312cb4e5da172
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2aa59bcf0d56358601b81730abe330a56ca35d02
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984676"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966912"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrowanie przy użyciu zrzutu i przywracania bazy danych PostgreSQL
 Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) przywrócenie bazy danych PostgreSQL z pliku archiwum, utworzone przez pg_dump.
@@ -71,7 +71,7 @@ Jednym ze sposobów migracji istniejącej bazy danych postgresql w warstwie do u
     ```
 
 ### <a name="for-the-restore"></a>Dla przywracania
-- Zalecamy przenoszenia pliku kopii zapasowej na maszynie Wirtualnej platformy Azure, w tym samym regionie, co usługi Azure Database for postgresql w warstwie serwera podczas migrowania do usługi i czy pg_restore z tej maszyny Wirtualnej w celu zmniejszenia opóźnienia sieci. Zalecamy również utworzeniu maszyny Wirtualnej za pomocą [przyspieszoną sieć](..\virtual-network\create-vm-accelerated-networking-powershell.md) włączone.
+- Zalecamy przenoszenia pliku kopii zapasowej na maszynie Wirtualnej platformy Azure, w tym samym regionie, co usługi Azure Database for postgresql w warstwie serwera podczas migrowania do usługi i czy pg_restore z tej maszyny Wirtualnej w celu zmniejszenia opóźnienia sieci. Zalecamy również utworzeniu maszyny Wirtualnej za pomocą [przyspieszoną sieć](../virtual-network/create-vm-accelerated-networking-powershell.md) włączone.
 - Należy przeprowadzić już domyślnie, ale Otwieranie pliku zrzutu, aby sprawdzić, czy instrukcje tworzenia indeksu po wstawieniu danych. Jeśli nie jest wymagane, należy przenieść instrukcje tworzenia indeksu po wstawieniu danych.
 - Przywróć z przełącznikami -Fc i -j *#* równoległe przetwarzanie przywracania. *#* jest to liczba rdzeni na serwerze docelowym. Możesz też spróbować z *#* równa dwa razy liczbę rdzeni serwera docelowego, aby zobaczyć wpływ. Na przykład:
 

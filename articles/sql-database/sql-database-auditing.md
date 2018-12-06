@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: ronitr
-ms.author: ronitr
+author: vainolo
+ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/25/2018
-ms.openlocfilehash: fc82fa592a513d735d4adc602bedaf8e492af13b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092955"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971525"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -39,8 +39,6 @@ Można użyć inspekcji usługi SQL database do:
 - **Zachowaj** dziennik inspekcji wybranych zdarzeń. Można zdefiniować kategorie działań bazy danych powinien być poddany inspekcji.
 - **Raport** aktywność bazy danych. Wstępnie skonfigurowane raporty i pulpit nawigacyjny umożliwia szybkie rozpoczynanie pracy z działaniem i raportowanie zdarzeń.
 - **Analizowanie** raportów. Możesz znaleźć podejrzanych zdarzeń, nietypowej aktywności i trendów.
-
-Można skonfigurować inspekcję dla różnych rodzajów kategorie zdarzeń, jak wyjaśniono w [konfigurowania inspekcji dla bazy danych](#subheading-2) sekcji.
 
 > [!IMPORTANT]
 > Dzienniki inspekcji są zapisywane w **obiekty BLOB dołączania** w usłudze Azure Blob storage w ramach subskrypcji platformy Azure.

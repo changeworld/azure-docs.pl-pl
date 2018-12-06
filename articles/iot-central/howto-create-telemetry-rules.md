@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d085777e347e1e892c3a49f4f37aa1d8130ef18c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005737"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964819"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Utwórz regułę telemetrii i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -36,19 +36,19 @@ Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć co najmniej je
 
 1. Jeśli nie utworzono jeszcze żadnych reguł, zostanie wyświetlony następujący ekran:
 
-    ![Jeszcze żadnych reguł](media\howto-create-telemetry-rules\Rules_Landing_Page.png)
+    ![Jeszcze żadnych reguł](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
 1. Na **reguły** kliknij pozycję **Edytuj szablon** i następnie **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
 
 1. Kliknij przycisk **Telemetrii** można utworzyć regułę do monitorowania danych telemetrycznych z urządzenia.
 
-    ![Typy zasad](media\howto-create-telemetry-rules\Rule_Types.png)
+    ![Typy zasad](media/howto-create-telemetry-rules/Rule_Types.png)
 
 1. Wprowadź nazwę, która pomaga w identyfikacji reguły, w tym szablonie urządzenia.
 
 1. Aby od razu włączyć zasadę dla wszystkich urządzeń, które są tworzone dla tego szablonu, Przełącz **Włącz regułę dla wszystkich urządzeń dla tego szablonu**.
 
-   ![Szczegóły reguły](media\howto-create-telemetry-rules\Rule_Detail.png)
+   ![Szczegóły reguły](media/howto-create-telemetry-rules/Rule_Detail.png)
     
     Reguła automatycznie stosuje do wszystkich urządzeń na podstawie szablonu urządzenia.
     
@@ -61,7 +61,7 @@ Warunek definiuje kryteria, które są monitorowane przez regułę.
 
 1. Wybierz dane telemetryczne, którą chcesz monitorować z **pomiaru** listy rozwijanej.
 
-   ![Warunek](media\howto-create-telemetry-rules\Aggregate_Condition_Filled_Out.png)
+   ![Warunek](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
 
 1. Następnie wybierz pozycję **agregacji**, **Operator**i podaj **próg** wartość.
     - Agregacja jest opcjonalne. Bez agregacji, wyzwolenie reguły dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład, jeśli zasada jest skonfigurowana do Wyzwalaj, gdy temperatura przekracza 80, a następnie reguła wyzwoli niemal natychmiast, gdy urządzenie zgłosi temperatury > 80.
@@ -78,14 +78,14 @@ W tej sekcji pokazano, jak skonfigurować akcje do wykonania po wyzwoleniu regu�
 
 1. Wybierz **+** obok **akcje**. W tym miejscu zobaczysz listę dostępnych akcji.  
 
-    ![Dodawanie akcji](media\howto-create-telemetry-rules\Add_Action.png)
+    ![Dodawanie akcji](media/howto-create-telemetry-rules/Add_Action.png)
 
 1. Wybierz **E-mail** akcję, wprowadź prawidłowy adres e-mail w **do** pola, a następnie podaj notatkę pojawią się w treści wiadomości e-mail po wyzwoleniu reguły.
 
     > [!NOTE]
     > Wiadomości e-mail są wysyłane tylko do użytkowników, które zostały dodane do aplikacji i Logowanie zostało wykonane co najmniej raz. Dowiedz się więcej o [Zarządzanie użytkownikami](howto-administer.md) w usłudze Azure IoT Central.
 
-   ![Konfigurowanie akcji](media\howto-create-telemetry-rules\Configure_Action.png)
+   ![Konfigurowanie akcji](media/howto-create-telemetry-rules/Configure_Action.png)
 
 1. Aby zapisać regułę, wybierz **Zapisz**. Reguła przechodzi na żywo w ciągu kilku minut i rozpoczyna monitorowanie dane telemetryczne są wysyłane do aplikacji. Gdy zostanie spełniony warunek określony w regule, zasada wyzwala akcji dotyczącej wiadomości e-mail skonfigurowany.
 

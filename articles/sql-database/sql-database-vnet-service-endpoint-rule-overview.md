@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: 0fc5ca73dec79942e05c7dfd410bc0a13e5ffb44
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.date: 12/04/2018
+ms.openlocfilehash: 3469b03cae88a5bdf7c9ccd51b54af92ea8d7b23
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648721"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958392"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Na użytek punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse
 
@@ -145,7 +145,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 ## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Wpływ usunięcia "Zezwalaj na platformie Azure usługi dostępu do serwera"
 
 Wielu użytkowników ma zostać usunięty **Zezwalaj na usługi platformy Azure na dostęp do serwera** ze swoich serwerów SQL platformy Azure i zastąp go reguła zapory sieci wirtualnej.
-Jednak usunięcie to ma wpływ na następujące funkcje usługi Azure SQL Database:
+Jednak usunięcie to ma wpływ na następujące funkcje:
 
 ### <a name="import-export-service"></a>Usługa eksportu importu
 
@@ -166,12 +166,64 @@ Usługa Azure SQL Database ma funkcji Data Sync, który nawiązuje połączenie 
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage
 
-Usługa Azure Storage została zaimplementowana w tej samej funkcji, która pozwala ograniczyć łączność z kontem magazynu.
-Jeśli zdecydujesz się używać tej funkcji przy użyciu konta magazynu, który jest używany przez program SQL Server Azure, możesz napotkać problemy. Obok listy i będzie dyskusję na temat funkcji usługi Azure SQL Database, które ma to wpływ.
+Usługa Azure Storage została zaimplementowana w tej samej funkcji, która pozwala ograniczyć łączność z kontem usługi Azure Storage. Jeśli zdecydujesz się używać tej funkcji przy użyciu konta usługi Azure Storage, który jest używany przez serwer SQL platformy Azure, możesz napotkać problemy. Obok listy i będzie dyskusję na temat funkcji usługi Azure SQL Database i Azure SQL Data Warehouse, które mają wpływ to.
 
 ### <a name="azure-sql-data-warehouse-polybase"></a>Program PolyBase magazynu danych Azure SQL
 
-Program PolyBase jest najczęściej używany do ładowania danych do usługi Azure SQL Data Warehouse z kont magazynu. Jeśli konto magazynu, które są ładowane dane z ogranicza dostęp tylko do zestawu z podsieci sieci wirtualnej, spowoduje przerwanie połączenia z poziomu programu PolyBase do konta. Ma ograniczenia dla tej i pomocy technicznej firmy Microsoft może skontaktować się, aby uzyskać więcej informacji.
+Program PolyBase jest najczęściej używany do ładowania danych do usługi Azure SQL Data Warehouse przy użyciu kont usługi Azure Storage. Jeśli konto usługi Azure Storage, które są ładowane dane z ogranicza dostęp tylko do zestawu z podsieci sieci wirtualnej, spowoduje przerwanie połączenia z poziomu programu PolyBase do konta. Włączania zarówno PolyBase importowanie i eksportowanie scenariuszy za pomocą usługi Azure SQL Data Warehouse nawiązywania połączenia z usługi Azure Storage, która jest zabezpieczony z siecią wirtualną, wykonaj wymienione poniżej kroki:
+
+#### <a name="prerequisites"></a>Wymagania wstępne
+1.  Zainstaluj program Azure PowerShell za pomocą tego [przewodnik](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+2.  Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, należy najpierw uaktualnić do ogólnego przeznaczenia w wersji 2 za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+3.  Konieczne jest posiadanie **dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu** włączone w ramach konta usługi Azure Storage **zapory i sieci wirtualne** menu Ustawienia. Zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Aby uzyskać więcej informacji.
+ 
+#### <a name="steps"></a>Kroki
+1.  W programie PowerShell **zarejestrować z serwerem logicznym SQL** za pomocą usługi Azure Active Directory (AAD):
+
+    ```powershell
+    Add-AzureRmAccount
+    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
+    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    ```
+    
+ 1. Tworzenie **ogólnego przeznaczenia w wersji 2, konto magazynu** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+
+    > [!NOTE]
+    > - Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, musisz najpierw **najpierw przeprowadzić uaktualnienie do wersji 2** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+    > - Znane problemy związane z usługi Azure Data Lake Storage Gen2, można znaleźć na stronie to [przewodnik](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+    
+1.  W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** rolę RBAC z serwerem logicznym SQL.
+
+    > [!NOTE] 
+    > Tylko elementy członkowskie z uprawnieniami właściciela można wykonać ten krok. Dla różnych ról wbudowanych dla zasobów platformy Azure, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+  
+1.  **Program Polybase łączności z kontem usługi Azure Storage:**
+
+    1. Tworzenie bazy danych **[klucz główny](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** Jeśli nie zostały one utworzone wcześniej:
+        ```SQL
+        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+        ```
+    
+    1. Tworzenie poświadczeń o zakresie bazy danych przy użyciu **tożsamość = "Tożsamości usługi zarządzanej"**:
+
+        ```SQL
+        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+        ```
+        > [!NOTE] 
+        > - Nie trzeba określać klucz TAJNY kluczem dostępu do usługi Azure Storage, ponieważ korzysta z tego mechanizmu [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) dzieje się w tle.
+        > - Nazwa tożsamości, powinna być **"Tożsamości usługi zarządzanej"** łączności programu PolyBase do pracy z konta usługi Azure Storage, chronione w sieci wirtualnej.    
+    
+    1. Tworzenie zewnętrznego źródła danych za pomocą abfss: / / schemat do łączenia się z konta magazynu ogólnego przeznaczenia w wersji 2 przy użyciu programu PolyBase:
+
+        ```SQL
+        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+        ```
+        > [!NOTE] 
+        > - Jeśli masz już tabel zewnętrznych skojarzone z kontem magazynu ogólnego przeznaczenia w wersji 1 lub obiektu blob, należy najpierw Porzuć te tabele zewnętrzne, a następnie upuść odpowiedniego zewnętrznego źródła danych. Następnie utwórz zewnętrznego źródła danych za pomocą abfss: / / schemat nawiązywania połączenia z konta magazynu ogólnego przeznaczenia w wersji 2 opisanych powyżej i ponowne utworzenie tabel zewnętrznych za pomocą tego nowego zewnętrznego źródła danych. Można użyć [Generowanie i Kreator publikowania skrypty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017) do generowania skryptów tworzenia tabel zewnętrznych w celu ułatwienia.
+        > - Aby uzyskać więcej informacji na temat abfss: / / schemat, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+        > - Aby uzyskać więcej informacji na temat CREATE EXTERNAL DATA SOURCE, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+        
+    1. Zapytania, ponieważ przy użyciu normalnych [tabel zewnętrznych](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
 ### <a name="azure-sql-database-blob-auditing"></a>Usługi Azure SQL Database, inspekcji obiektów Blob
 
@@ -179,11 +231,11 @@ Inspekcja obiektów blob wypchnięcia dzienników inspekcji na koncie magazynu. 
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Dodawanie reguły zapory sieci wirtualnej do serwera bez włączania na sieć wirtualną punktów końcowych usługi
 
-Dawno temu zanim ta funkcja została ulepszona, były wymagane było włączyć punkty końcowe usługi sieci wirtualnej przed regułę sieci wirtualnej na żywo można zaimplementować w zaporze. Punkty końcowe związane z danej podsieci sieci wirtualnej do usługi Azure SQL Database. Ale teraz od stycznia 2018 r. można ominąć, to wymaganie, ustawiając **IgnoreMissingServiceEndpoint** flagi.
+Dawno temu zanim ta funkcja została ulepszona, były wymagane było włączyć punkty końcowe usługi sieci wirtualnej przed regułę sieci wirtualnej na żywo można zaimplementować w zaporze. Punkty końcowe związane z danej podsieci sieci wirtualnej do usługi Azure SQL Database. Ale teraz od stycznia 2018 r. można ominąć, to wymaganie, ustawiając **IgnoreMissingVNetServiceEndpoint** flagi.
 
-Tylko ustawienie reguły zapory nie pomaga zabezpieczyć serwer. Należy również włączyć punkty końcowe usługi sieci wirtualnej dla zabezpieczeń, które zostały wprowadzone. Po włączeniu punktów końcowych usługi w podsieci sieci wirtualnej środowisk przestój dopiero po zakończeniu jego przejścia z wyłączone na. Jest to szczególnie istotne w kontekście dużych sieciach wirtualnych. Możesz użyć **IgnoreMissingServiceEndpoint** flagę, aby zredukować lub całkowicie wyeliminować przestój podczas przejścia.
+Tylko ustawienie reguły zapory nie pomaga zabezpieczyć serwer. Należy również włączyć punkty końcowe usługi sieci wirtualnej dla zabezpieczeń, które zostały wprowadzone. Po włączeniu punktów końcowych usługi w podsieci sieci wirtualnej środowisk przestój dopiero po zakończeniu jego przejścia z wyłączone na. Jest to szczególnie istotne w kontekście dużych sieciach wirtualnych. Możesz użyć **IgnoreMissingVNetServiceEndpoint** flagę, aby zredukować lub całkowicie wyeliminować przestój podczas przejścia.
 
-Możesz ustawić **IgnoreMissingServiceEndpoint** flagi przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [programu PowerShell, aby utworzyć regułę i punkt końcowy usługi sieci wirtualnej dla usługi Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Możesz ustawić **IgnoreMissingVNetServiceEndpoint** flagi przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [programu PowerShell, aby utworzyć regułę i punkt końcowy usługi sieci wirtualnej dla usługi Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="errors-40914-and-40615"></a>Błędy 40914 i 40615
 
@@ -228,7 +280,7 @@ Wewnętrznie poleceń cmdlet programu PowerShell dla sieci wirtualnej SQL akcji 
 
 - [Reguły sieci wirtualnej: działania][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Wstępnie wymagane składniki
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Musi już mieć podsieci, który jest oznaczony za pomocą określonego punktu końcowego usługi sieci wirtualnej *nazwy typu* dotyczą usługi Azure SQL Database.
 

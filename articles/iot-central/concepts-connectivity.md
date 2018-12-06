@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238741"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960100"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -44,12 +44,12 @@ Oparte na Twoje użycie przypadków postępuj zgodnie z instrukcjami, aby połą
 1. Dodaj **rzeczywistego urządzenia** z Device Explorer kliknij **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
     * Wprowadź identyfikator urządzenia **<span style="color:Red">(powinno wskazywać na małe litery)</span>** lub sugerowane identyfikator urządzenia.
     * Wprowadź nazwę urządzenia, lub użyć sugerowanej nazwy   
-    ![Dodaj urządzenie](media\concepts-connectivity\add-device.png)
+    ![Dodaj urządzenie](media/concepts-connectivity/add-device.png)
 1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodanego urządzenia, klikając **Connect** na stronie urządzenia.
     * **[Identyfikator zakresu](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope)**  jest IoT Central aplikacji i jest generowany przez punkty dystrybucji używane do zapewnienia Unikatowy identyfikator urządzenia w aplikacji.
     * **Identyfikator urządzenia** jest urządzenie Unikatowy identyfikator na aplikację, urządzenie musi wysyłać identyfikator urządzenia jako część wywołania rejestracji.   
     * **Klucz podstawowy** tokenu sygnatury dostępu Współdzielonego jest generowany w programie IoT Central dla tego konkretnego urządzenia. 
-    ![Szczegóły połączenia](media\concepts-connectivity\device-connect.PNG)
+    ![Szczegóły połączenia](media/concepts-connectivity/device-connect.PNG)
 1. Użyj następujące szczegóły połączenia **tożsamości urządzenia, nazwę urządzenia i klucz podstawowy urządzenia** urządzenia kod w celu aprowizowania i podłącz urządzenie i wykonywanych danych przepływać przez natychmiastowe. Jeśli używasz urządzenia zestawu deweloperskiego postępuj zgodnie z, [szczegółowymi instrukcjami](howto-connect-devkit.md#add-a-real-device), Rozpocznij od sekcji **Przygotuj urządzenie Mxchip**.   
 
     Poniżej przedstawiono odwołania do innych języków, których możesz chcieć użyć.
@@ -137,13 +137,13 @@ Aby połączyć urządzenia IoT Central przy użyciu X509 certyfikaty są zaanga
 
     *   **Dodaj X509 certyfikatu głównego lub pośredniego** używaną do generowania certyfikatów urządzeń liścia. Przejdź do pozycji Administracja > połączenie z urządzeniem > Certyfikaty. 
     
-        ![Ustawienia połączenia](media\concepts-connectivity\connection-settings.PNG)
+        ![Ustawienia połączenia](media/concepts-connectivity/connection-settings.PNG)
     *   **Certyfikat weryfikacji:** weryfikowanie własności certyfikatu gwarantuje, że przekazujesz certyfikatu jest w posiadaniu klucza prywatnego certyfikatu. Aby zweryfikować certyfikat
         *  Generuj kod weryfikacyjny, kliknij przycisk obok pola Kod weryfikacji, aby wygenerować kod weryfikacyjny. 
         *  Utwórz certyfikat X.509 weryfikacji z kodem weryfikacyjnym, Zapisz certyfikat jako plik cer. 
         *  Przekazywanie certyfikatu podpisanego weryfikacji i sprawdź, kliknij przycisk.
 
-        ![Ustawienia połączenia](media\concepts-connectivity\verify-cert.png)
+        ![Ustawienia połączenia](media/concepts-connectivity/verify-cert.png)
     *   **Certyfikat pomocniczy:** podczas cyklu życia rozwiązania IoT, musisz wdrożyć certyfikaty. Dwa z głównych powodów stopniowe certyfikatów będzie naruszenia zabezpieczeń i wygaśnięcia certyfikatu. Pomocnicze certyfikaty są używane do zredukować przestoje w przypadku urządzeń próby aprowizacji, podczas gdy aktualizujesz podstawowego certyfikatu.
 
     **WYŁĄCZNIE DO CELÓW TESTOWANIA** 
@@ -180,7 +180,7 @@ Jest jednym z kluczowych scenariuszy, które IoT Central umożliwia generowanie 
 
 Poniżej przedstawiono przepływ do łączenia urządzeń za pomocą tej funkcji
 
-![Ustawienia połączenia](media\concepts-connectivity\device-connection-flow.PNG)
+![Ustawienia połączenia](media/concepts-connectivity/device-connection-flow.PNG)
 
 
 Postępuj zgodnie z instrukcjami na podstawie wybranego schematu uwierzytelniania urządzeń (X509/SAS)
@@ -188,7 +188,7 @@ Postępuj zgodnie z instrukcjami na podstawie wybranego schematu uwierzytelniani
 1. **Ustawienia połączenia** 
     * **X509 certyfikaty:** [Dodaj i Zweryfikuj certyfikat główny/pośredni](#connect-devices-using-x509-certificates) i używać go w celu wygenerowania certyfikatów urządzeń w następnym kroku.
     * **Sygnatury dostępu Współdzielonego:** skopiuj klucz podstawowy (ten klucz jest kluczem sygnatury dostępu Współdzielonego grupy dla tej aplikacji IoT Central) i użyć go do wygenerowania kluczy sygnatury dostępu Współdzielonego urządzenia w następnym kroku. 
-![Ustawienia połączenia sygnatury dostępu Współdzielonego](media\concepts-connectivity\connection-settings-sas.png)
+![Ustawienia połączenia sygnatury dostępu Współdzielonego](media/concepts-connectivity/connection-settings-sas.png)
 
 1. **Generuj poświadczenia urządzenia** 
     *   **Certyfikaty X509:** generowanie certyfikatów liścia urządzenia przy użyciu certyfikatu głównego/pośredni zostały dodane do tej aplikacji. Upewnij się, że używasz **identyfikator urządzenia** jako rekord cname w certyfikatach liścia i  **<span style="color:Red">(powinno wskazywać na małe litery)</span>**. Oto [narzędzia wiersza polecenia](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) do generowania certyfikatów liścia/urządzenia do testowania.
@@ -232,7 +232,7 @@ Urządzenie jest Registeretd po
 Możesz uzyskać parametry połączenia Centrum Iot hub urządzenia do usługi Azure IoT Hub wykonując następujące kroki 
 1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia, klucz podstawowy urządzenia** ze strony urządzenia (stało się na stronie urządzenia > kliknij przycisk Połącz) 
 
-    ![Szczegóły połączenia](media\concepts-connectivity\device-connect.PNG)
+    ![Szczegóły połączenia](media/concepts-connectivity/device-connect.PNG)
 
 1. Pobierz parametry połączenia urządzenia przy użyciu narzędzia wiersza commnd poniżej.
     Użyj poniższych instrukcji, aby uzyskać parametry połączenia urządzenia  

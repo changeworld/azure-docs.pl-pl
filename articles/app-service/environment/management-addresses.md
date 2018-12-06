@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 590679daff20f9c469fb8fcfcc0fbbad77f91b5b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b54d5abed3e0d29103f5a15ea7fb6dc37dba240e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162858"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967814"
 ---
 # <a name="app-service-environment-management-addresses"></a>Adresy zarządzania środowiska usługi aplikacji
 
@@ -46,7 +46,7 @@ Możesz wyświetlić listę adresów zarządzania, które pasują do środowiska
 
 Interfejs API zwraca dokument JSON, który zawiera wszystkie adresy ruchu przychodzącego dla środowiska ASE. Lista adresów zawiera adresy zarządzania wirtualne adresy IP używane przez środowisko ASE i zakres adresów podsieci środowiska ASE, sam.  
 
-Do wywołania interfejsu API za pomocą [armclient](http://github.com/projectkudu/ARMClient) Użyj następujących poleceń, ale Zastąp identyfikator subskrypcji, grupy zasobów i nazwę środowiska ASE.  
+Do wywołania interfejsu API za pomocą [armclient](https://github.com/projectkudu/ARMClient) Użyj następujących poleceń, ale Zastąp identyfikator subskrypcji, grupy zasobów i nazwę środowiska ASE.  
 
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01

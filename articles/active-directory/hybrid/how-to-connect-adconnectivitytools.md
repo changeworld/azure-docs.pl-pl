@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4020d754bd8c7728b43ef583aa7e7d8dbddcebec
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e6f85d327fff1ee32dca6dfb2231b28e6dc96c61
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634150"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965639"
 ---
 # <a name="what-is-the-adconnectivitytool-powershell-module"></a>Co to jest moduł programu PowerShell ADConnectivityTool?
 
@@ -40,7 +40,7 @@ Na **Podłączanie katalogów** stronie usługi Azure AD Connect kreatora, w syt
 Zawsze, gdy dowolne z tych problemów znajdują się, komunikat o błędzie powiązany jest wyświetlany w kreatora AADConnect:
 
 
-![Błąd](media\how-to-connect-adconnectivitytools\error1.png)
+![Błąd](media/how-to-connect-adconnectivitytools/error1.png)
 
 Na przykład, gdy podejmujemy próbę Dodaj katalog na **Podłączanie katalogów** ekranu, program Azure AD Connect wymaga to zweryfikować i oczekuje, że może nawiązać komunikacji z kontrolerem domeny przez port 389.  Jeśli jest ona nieosiągalna, zobaczymy błędu, który jest wyświetlany w powyższym zrzucie ekranu.  
 

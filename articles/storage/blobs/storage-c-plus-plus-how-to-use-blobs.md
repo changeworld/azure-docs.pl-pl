@@ -8,23 +8,21 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.component: blobs
-ms.openlocfilehash: d0b0f8ef2fcc4307482b4ccffcb46410eaba33d5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: f928f27c8c1dbfe6c65cb25cb5c34680fc58bff3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306208"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955874"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Jak używać magazynu obiektów Blob w języku C++
 
-Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Azure Blob storage. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Omówione scenariusze obejmują przekazywanie, wyświetlanie listy, pobieranie i usuwanie obiektów blob.  
+Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Azure Blob storage. W przykładach pokazano, jak przekazywanie, listy, pobieranie i usuwanie obiektów blob. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
+
+Aby dowiedzieć się więcej o usłudze Blob storage, zobacz [wprowadzenie do usługi Azure Blob storage](storage-blobs-introduction.md).
 
 > [!NOTE]
 > Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Firma Microsoft zaleca używanie najnowszej wersji biblioteki klienta usługi Storage dla języka C++, dostępne za pośrednictwem [NuGet](http://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp).
-
-## <a name="what-is-blob-storage"></a>Co to jest magazyn obiektów Blob?
-
-[!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 

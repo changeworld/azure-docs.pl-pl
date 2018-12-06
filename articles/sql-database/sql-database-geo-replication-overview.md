@@ -3,7 +3,7 @@ title: Praca awaryjna grupy i aktywnej replikacji geograficznej — usługi Azur
 description: Używanie grup automatyczny tryb failover przy użyciu aktywnej replikacji geograficznej i włączyć automatyczny tryb failover w przypadku awarii.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: de439683082909e65d285a7946a71eb781287937
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c951791031b6304a26aadd434fa7336a9c7c474f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843482"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963151"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 
@@ -25,7 +25,7 @@ Aktywna replikacja geograficzna to funkcja usługi Azure SQL Database, która po
 
 ![Replikacja geograficzna](./media/sql-database-geo-replication-failover-portal/geo-replication.png )
 
-Aktywna replikacja geograficzna została zaprojektowana jako rozwiązanie ciągłości biznesowej, które umożliwia aplikacji przeprowadzić odzyskiwanie po awarii szybkie pojedynczych baz danych w przypadku regionalnej disastor lub awaria w dużej skali. Jeśli włączono replikację geograficzną, aplikacja może zainicjować trybu failover do pomocniczej bazy danych w innym regionie platformy Azure. Maksymalnie cztery pomocnicze bazy danych są obsługiwane w tej samej lub różnych regionach i pomocnicze bazy danych można także dostęp tylko do odczytu zapytań. Przełączenie w tryb failover musi być inicjowana ręcznie przez użytkownika lub aplikacji. Po zakończeniu przejścia w tryb failover nową podstawową ma punkt końcowy inne połączenie.
+Aktywna replikacja geograficzna została zaprojektowana jako rozwiązanie ciągłości biznesowej, które umożliwia aplikacji do odzyskiwania po awarii szybkie pojedynczych baz danych w przypadku regionalnej awarii lub awaria w dużej skali. Jeśli włączono replikację geograficzną, aplikacja może zainicjować trybu failover do pomocniczej bazy danych w innym regionie platformy Azure. Maksymalnie cztery pomocnicze bazy danych są obsługiwane w tej samej lub różnych regionach i pomocnicze bazy danych można także dostęp tylko do odczytu zapytań. Przełączenie w tryb failover musi być inicjowana ręcznie przez użytkownika lub aplikacji. Po zakończeniu przejścia w tryb failover nową podstawową ma punkt końcowy inne połączenie.
 
 > [!NOTE]
 > Aktywna replikacja geograficzna jest dostępna dla wszystkich baz danych we wszystkich warstwach usługi we wszystkich regionach.
@@ -206,11 +206,11 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwa danych, wykonaj 
 
 - **Tworzenie dodatkowych wystąpienia w tej samej strefie DNS jako podstawowe wystąpienie**
 
-  Gdy tworzone jest nowe wystąpienie, unikatowy identyfikator jest automatycznie generowane jako strefy DNS i zawarty w nazwę DNS wystąpienia. Wielu domen (SAN) certyfikatu dla tego wystąpienia jest aprowizowana za pomocą pola SAN w formie &lt;zone_id&gt;. database.windows.net. Ten certyfikat może służyć do uwierzytelniania połączeń klientów z wystąpienia usługi w tej samej strefie DNS. Aby zapewnić — przerwana łączność z podstawowego wystąpienia po włączeniu trybu failover w podstawowym i pomocniczym wystąpień musi być w tej samej strefie DNS. Gdy aplikacja jest gotowa do wdrożenia w środowisku produkcyjnym, Utwórz wystąpienie dodatkowej w innym regionie i upewnij się, że współużytkuje strefy DNS przy użyciu podstawowego wystąpienia. Jest to realizowane przez określenie `DNS Zone Partner` opcjonalny parametr `create instance` polecenia programu PowerShell.
+  Gdy tworzone jest nowe wystąpienie, unikatowy identyfikator jest automatycznie generowane jako strefy DNS i zawarty w nazwę DNS wystąpienia. Wielu domen (SAN) certyfikatu dla tego wystąpienia jest aprowizowana za pomocą pola SAN w formie &lt;zone_id&gt;. database.windows.net. Ten certyfikat może służyć do uwierzytelniania połączeń klientów z wystąpienia usługi w tej samej strefie DNS. Aby zapewnić — przerwana łączność z podstawowego wystąpienia po włączeniu trybu failover w podstawowym i pomocniczym wystąpień musi być w tej samej strefie DNS. Gdy aplikacja jest gotowa do wdrożenia w środowisku produkcyjnym, Utwórz wystąpienie dodatkowej w innym regionie i upewnij się, że współużytkuje strefy DNS przy użyciu podstawowego wystąpienia. Jest to realizowane przez określenie `DNS Zone Partner` opcjonalny parametr przy użyciu witryny Azure portal, programu PowerShell lub interfejsu API REST.
 
 - **Włącz ruch związany z replikacją między dwoma wystąpieniami**
 
-  Ponieważ każde wystąpienie jest odizolowane we własnej sieci Wirtualnej, muszą być dozwolone dwa kierunkowego ruch między tymi sieciami wirtualnymi. Zobacz [replikacji z bazy danych SQL Database, wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md).
+  Ponieważ każde wystąpienie jest odizolowane we własnej sieci Wirtualnej, muszą być dozwolone dwa kierunkowego ruch między tymi sieciami wirtualnymi. Zobacz [bramy Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 - **Konfigurowanie grupy trybu failover, aby zarządzać trybem failover całego wystąpienia**
 
@@ -229,8 +229,8 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwa danych, wykonaj 
 
   > [!NOTE]
   > W przypadku niektórych warstw usług Azure SQL Database obsługuje [tylko do odczytu replik](sql-database-read-scale-out.md) załadować równoważenia obciążeń związanych z zapytaniami tylko do odczytu za pomocą pojemność jednej z replik tylko do odczytu i przy użyciu `ApplicationIntent=ReadOnly` parametru w połączeniu ciąg. Po skonfigurowaniu pomocniczej z replikacją geograficzną, można użyć tej funkcji można połączyć się z jednej repliki tylko do odczytu w lokalizacji głównej lub w lokalizacji zreplikowanych geograficznie.
-  > - Aby połączyć z repliki tylko do odczytu w lokalizacji podstawowej, użyć &lt;nazwę grupy trybu failover&gt;.&lt; zone_id&gt;. database.windows.net.
-  > - Aby połączyć z repliki tylko do odczytu w lokalizacji podstawowej, użyć &lt;nazwę grupy trybu failover&gt;.secondary.&lt; zone_id&gt;. database.windows.net.
+  > - Aby połączyć się z repliką tylko do odczytu w lokalizacji podstawowej, użyj &lt;nazwę grupy trybu failover&gt;.&lt; zone_id&gt;. database.windows.net.
+  > - Aby połączyć się z repliką tylko do odczytu w lokalizacji podstawowej, użyj &lt;nazwę grupy trybu failover&gt;.secondary.&lt; zone_id&gt;. database.windows.net.
 - **Przygotowanie do obniżenia wydajności**
 
   Decyzja trybu failover programu SQL jest niezależna od pozostałej części lub innych usług używanych aplikacji. Aplikacja może być wartość "mixed" za pomocą niektóre składniki na jednym regionie, a niektóre w innym. Aby uniknąć obniżenia wydajności, upewnij się, wdrożenie aplikacji nadmiarowy w regionie odzyskiwania po awarii, a następnie postępuj zgodnie z wytycznymi dotyczącymi zabezpieczeń sieci, w tym artykule <link>.
@@ -380,6 +380,7 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 | Zestaw AzureRmSqlDatabaseInstanceFailoverGroup |Modyfikuje konfigurację grupy trybu failover|
 | Get-AzureRmSqlDatabaseInstanceFailoverGroup |Pobiera konfigurację grupy trybu failover|
 | AzureRmSqlDatabaseInstanceFailoverGroup przełącznika |Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy|
+| Usuń AzureRmSqlDatabaseInstanceFailoverGroup | Usuwa grupę trybu failover|
 
 ### <a name="manage-sql-database-failover-using-the-rest-api"></a>Zarządzaj trybem failover bazy danych SQL przy użyciu interfejsu API REST
 

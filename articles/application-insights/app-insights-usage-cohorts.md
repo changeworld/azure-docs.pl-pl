@@ -13,18 +13,18 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fb04a3410291e52f4ea0d02e625bdbf02f64f8c7
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a7b5cd925bd4b66e25754c30de5cbaf866dab0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721055"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970633"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
 Kohorty to zbiór użytkowników, sesje, zdarzenia lub operacji, które są wspólne dla elementu. W usłudze Azure Application Insights kohorty są definiowane przez zapytania usługi analytics. W przypadkach, gdy istnieje przeanalizować określony zbiór użytkowników lub zdarzenia wielokrotnie, kohorty można zapewniają większą elastyczność i wyrażenia interesujących Cię w zestaw.
 
-![W okienku kohorty](.\media\app-insights-usage-cohorts\001.png)
+![W okienku kohorty](./media/app-insights-usage-cohorts/001.png)
 
 ## <a name="cohorts-versus-basic-filters"></a>Kohorty i filtry podstawowe
 
@@ -52,14 +52,14 @@ Zespół definiuje zaangażowania użytkowników jako dowolny użytkownik użyje
 
 4. Zmiana **UsedAtLeastCustom** do **5 + dni**i pozostawić **okres** domyślny 28 dni.
 
-    ![Oznacza zaangażowanie użytkowników](.\media\app-insights-usage-cohorts\003.png)
+    ![Oznacza zaangażowanie użytkowników](./media/app-insights-usage-cohorts/003.png)
 
     Teraz ta kohorta reprezentuje wszystkie identyfikatory użytkowników wysyłane z dowolnego niestandardowe zdarzenie lub wyświetlenie strony na 5 oddzielnych dni w przeszłość 28.
 
 5. Wybierz pozycję **Zapisz**.
 
    > [!TIP]
-   >  Nazwij Twoją kohortę, takie jak "Engaged użytkowników (w dniach 5 +)." Zapisz go na "Moje raporty" lub "Udostępnione raporty," w zależności od tego, czy chcesz, aby inne osoby, które mają dostęp do tego zasobu usługi Application Insights, aby zobaczyć ta kohorta.
+   > Nazwij Twoją kohortę, takie jak "Engaged użytkowników (w dniach 5 +)." Zapisz go na "Moje raporty" lub "Udostępnione raporty," w zależności od tego, czy chcesz, aby inne osoby, które mają dostęp do tego zasobu usługi Application Insights, aby zobaczyć ta kohorta.
 
 6. Wybierz **powrót do galerii**.
 
@@ -69,9 +69,10 @@ Otwórz narzędzie Użytkownicy. W **Pokaż** listy rozwijanej wybierz kohortę 
 
 Narzędzie Użytkownicy jest teraz filtrowana w celu ta kohorta użytkowników:
 
-![Okienko użytkowników filtrowana w celu określonego kohorty](.\media\app-insights-usage-cohorts\004.png)
+![Okienko użytkowników filtrowana w celu określonego kohorty](./media/app-insights-usage-cohorts/004.png)
 
 Jest kilka ważnych rzeczy należy zwrócić uwagę:
+
 * Ten zestaw nie można utworzyć za pomocą filtrów normalne. Logika Data jest bardziej zaawansowane.
 * Ta kohorta można dalej filtrować przy użyciu normalnych filtrów w narzędziu użytkownicy. Więc mimo że kohorty jest zdefiniowana w systemie windows 28 dni, nadal można dostosować zakres czasu w narzędziu użytkownicy za 30, 60 lub 90 dni.
 
@@ -87,7 +88,7 @@ Można również ustawić kohorty zdarzeń. W tej sekcji można zdefiniować koh
 
 3. Wybierz **selektora zdarzenia**.
 
-    ![Zrzut ekranu przedstawiający wybór zdarzeń](.\media\app-insights-usage-cohorts\006.png)
+    ![Zrzut ekranu przedstawiający wybór zdarzeń](./media/app-insights-usage-cohorts/006.png)
 
 4. W **działania** listy rozwijanej wybierz zdarzenia mają być w kohorcie.
 
@@ -97,11 +98,11 @@ Można również ustawić kohorty zdarzeń. W tej sekcji można zdefiniować koh
 
 Poprzednie dwa kohorty zostały zdefiniowane przy użyciu list rozwijanych. Ale kohorty można również definiować przy użyciu zapytań analitycznych dla całkowitej elastyczność. Aby zobaczyć, jak, utworzyć kohorta użytkowników ze Zjednoczonego Królestwa.
 
-![Animowany obraz zalet stosowania narzędziu kohorty](.\media\app-insights-usage-cohorts\cohorts0001.gif)
+![Animowany obraz zalet stosowania narzędziu kohorty](./media/app-insights-usage-cohorts/cohorts0001.gif)
 
 1. Otwórz w narzędziu kohorty, wybierz opcję **galerii szablonów** , a następnie wybierz pozycję **kohorta użytkowników puste**.
 
-    ![Kohorta użytkowników puste](.\media\app-insights-usage-cohorts\001.png)
+    ![Kohorta użytkowników puste](./media/app-insights-usage-cohorts/001.png)
 
     Istnieją trzy sekcje:
     * Markdown sekcją tekstu, gdzie opisują kohorty bardziej szczegółowo innym członkom swojego zespołu.
@@ -136,7 +137,8 @@ Kohorty i filtry są różne. Załóżmy, że masz kohorta użytkowników z Wiel
 * Wersja filtrów wyświetlane są tylko zdarzenia z Zjednoczonego Królestwa. Ale jeśli podzieli według kraju lub regionu, zostanie wyświetlony Zjednoczonego Królestwa.
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-- [Język zapytań usługi Analytics](https://go.microsoft.com/fwlink/?linkid=856587)
-- [Użytkownicy, sesje, zdarzenia](app-insights-usage-segmentation.md)
-- [Przepływy użytkownika](app-insights-usage-flows.md)
-- [Przegląd wykorzystania](app-insights-usage-overview.md)
+
+* [Język zapytań usługi Analytics](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Użytkownicy, sesje, zdarzenia](app-insights-usage-segmentation.md)
+* [Przepływy użytkownika](app-insights-usage-flows.md)
+* [Przegląd wykorzystania](app-insights-usage-overview.md)

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6afb54caca572988c566ab7c6325d511e77fbd3e
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5e00c52c17eac92edc3273e2d765d6c5fd76f59b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582092"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970687"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debugowanie zadania platformy Apache Spark działające w usłudze Azure HDInsight
 
@@ -28,12 +28,12 @@ Należy dysponować następującymi elementami:
 * Należy rozpocząłeś uruchamiania notesu  **[usługi Machine learning: analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Aby uzyskać instrukcje na temat uruchamiania ten notes Użyj linku.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Śledzenie aplikacji w interfejsie użytkownika YARN
-1. Uruchom interfejs użytkownika usługi YARN. Kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **YARN**.
+1. Uruchom interfejs użytkownika usługi YARN. Kliknij przycisk **Yarn** w obszarze **pulpity nawigacyjne klastra**.
    
     ![Uruchom interfejs użytkownika usługi YARN](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > Alternatywnie można również uruchomić Interfejsie użytkownika YARN z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **pulpit nawigacyjny klastra HDInsight**. W Interfejsie użytkownika Ambari, kliknij **YARN**, kliknij przycisk **szybkich łączy**, kliknij active usługi Resource Manager, a następnie kliknij przycisk **interfejsu użytkownika Menedżera zasobów**.    
+   > Alternatywnie można również uruchomić Interfejsie użytkownika YARN z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari, kliknij przycisk **Ambari macierzystego** w obszarze **pulpity nawigacyjne klastra**. W Interfejsie użytkownika Ambari, kliknij **YARN**, kliknij przycisk **szybkich łączy**, kliknij active usługi Resource Manager, a następnie kliknij przycisk **interfejsu użytkownika Menedżera zasobów**.    
    > 
    > 
 2. Ponieważ rozpoczęto zadanie Spark za pomocą notesów programu Jupyter, aplikacji o nazwie **remotesparkmagics** (jest to nazwa dla wszystkich aplikacji, które są uruchamiane z notesów). Kliknij przycisk Identyfikatora aplikacji i nazwa aplikacji, aby uzyskać więcej informacji o zadaniu. Spowoduje to uruchomienie widoku aplikacji.
@@ -88,12 +88,12 @@ W Interfejsie użytkownika platformy Spark można przejść do szczegółów do 
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Informacje o zakończonych zadań przy użyciu serwer historii platformy Spark
 Po zakończeniu zadania, informacje o zadaniu są utrwalane w serwer historii platformy Spark.
 
-1. Aby uruchomić serwer historii platformy Spark w bloku klastra, kliknij **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **serwer historii platformy Spark**.
+1. Aby uruchomić serwer historii platformy Spark z poziomu bloku Przegląd kliknij **serwer historii platformy Spark** w obszarze **pulpity nawigacyjne klastra**.
    
     ![Uruchom serwer historii platformy Spark](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
    > [!TIP]
-   > Alternatywnie można również uruchomić interfejs użytkownika serwer historii platformy Spark z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari w bloku klastra, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **pulpit nawigacyjny klastra HDInsight**. W Interfejsie użytkownika Ambari, kliknij **Spark**, kliknij przycisk **szybkich łączy**, a następnie kliknij przycisk **interfejsu użytkownika aplikacji serwer historii platformy Spark**.
+   > Alternatywnie można również uruchomić interfejs użytkownika serwer historii platformy Spark z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari, z poziomu bloku Przegląd kliknij **Ambari macierzystego** w obszarze **pulpity nawigacyjne klastra**. W Interfejsie użytkownika Ambari, kliknij **Spark**, kliknij przycisk **szybkich łączy**, a następnie kliknij przycisk **interfejsu użytkownika aplikacji serwer historii platformy Spark**.
    > 
    > 
 2. Zobaczysz wszystkie ukończone aplikacje na liście. Kliknij przycisk Identyfikator aplikacji, aby przejść do aplikacji, aby uzyskać więcej informacji.
@@ -115,12 +115,10 @@ Po zakończeniu zadania, informacje o zadaniu są utrwalane w serwer historii pl
 ### <a name="for-spark-developers"></a>Dla deweloperów platformy Spark
 
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy Apache](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
 * [Zdalne debugowanie aplikacji platformy Apache Spark przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Korzystanie z notesów Apache Zeppelin na HDInsight klastra Apache Spark](apache-spark-zeppelin-notebook.md)
 * [Jądra dostępne dla notesu Jupyter w klastrze Apache Spark dla HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
-
-

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: bdae72f5ed4ebed87842ade05ec7a6bc21d349dc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 4711c766c2a074c25f019ce5b523e0ba8b599c17
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086645"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971321"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
 
@@ -81,7 +81,7 @@ Atrybut wyzwalacza Określa typ wyzwalacz i powiązania danych wejściowych do p
 Podpis metody może zawierać parametrów innych niż używana przez atrybut wyzwalacza. Poniżej przedstawiono dodatkowe parametry, które mogą obejmować:
 
 * [Dane wejściowe i wyjściowe powiązania](functions-triggers-bindings.md) odpowiednio oznaczone przez urządzanie je za pomocą atrybutów.  
-* `ILogger` Lub `TraceWriter` parametr [rejestrowania](#logging).
+* `ILogger` Lub `TraceWriter` ([wersji 1.x — tylko](functions-versions.md#creating-1x-apps)) parametr [rejestrowania](#logging).
 * A `CancellationToken` parametr [łagodne zamykanie](#cancellation-tokens).
 * [Powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns) parametry, aby przygotować wyzwolić metadanych.
 
@@ -233,7 +233,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Rejestrowanie
 
-Aby rejestrować dane wyjściowe do przesyłania strumieniowego dzienników w C#, obejmują argumentu typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Firma Microsoft zaleca, nadaj mu `log`. Unikaj używania `Console.Write` w usłudze Azure Functions.
+Aby rejestrować dane wyjściowe do przesyłania strumieniowego dzienników w C#, obejmują argumentu typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Firma Microsoft zaleca, nadaj mu `log`, jak w poniższym przykładzie:  
 
 ```csharp
 public static class SimpleExample
@@ -248,8 +248,7 @@ public static class SimpleExample
 } 
 ```
 
-> [!NOTE]
-> Aby o nowszych struktury rejestrowania, który można użyć zamiast `TraceWriter`, zobacz [zapisu rejestruje się w funkcji języka C#](functions-monitoring.md#write-logs-in-c-functions) w **monitora usługi Azure Functions** artykułu.
+Unikaj używania `Console.Write` w usłudze Azure Functions. Aby uzyskać więcej informacji, zobacz [loguje się do niego zapisu C# funkcje](functions-monitoring.md#write-logs-in-c-functions) w **monitora usługi Azure Functions** artykułu.
 
 ## <a name="async"></a>asynchroniczne
 

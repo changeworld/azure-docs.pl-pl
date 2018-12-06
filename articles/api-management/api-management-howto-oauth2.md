@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: c0e502c1627ebe9d63ca43cb46b982bb0639f3d7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444735"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967933"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autoryzowanie kont deweloperów w usłudze Azure API Management przy użyciu protokołu OAuth 2.0
 
-Obsługuje wiele interfejsów API [OAuth 2.0](http://oauth.net/2/) zabezpieczanie interfejsu API i upewnij się, że tylko uprawnieni użytkownicy mają dostęp i mają dostęp tylko zasoby, do których masz prawo. Aby można było używać interakcyjnej konsoli dla deweloperów usługi Azure API Management za pomocą tych interfejsów API, usługa pozwala na skonfigurowanie wystąpienia usługi chcesz pracować z protokołu OAuth 2.0 włączony interfejs API.
+Obsługuje wiele interfejsów API [OAuth 2.0](https://oauth.net/2/) zabezpieczanie interfejsu API i upewnij się, że tylko uprawnieni użytkownicy mają dostęp i mają dostęp tylko zasoby, do których masz prawo. Aby można było używać interakcyjnej konsoli dla deweloperów usługi Azure API Management za pomocą tych interfejsów API, usługa pozwala na skonfigurowanie wystąpienia usługi chcesz pracować z protokołu OAuth 2.0 włączony interfejs API.
 
 ## <a name="prerequisites"> </a>Wymagania wstępne
 
@@ -143,7 +143,7 @@ Aby uzyskać więcej informacji na temat korzystania z protokołu OAuth 2.0 i us
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[http://oauth.net/2/]: http://oauth.net/2/
+[https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 
 [Prerequisites]: #prerequisites

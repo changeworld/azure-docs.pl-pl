@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 8020db5f099f0d2c3dc8203f2d4afeea6a38cb41
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 52657ae18b6fd06408887df82bd822eb2ff8fffe
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844757"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964360"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure
 
@@ -170,6 +170,9 @@ Typ maszyny Wirtualnej | 1. generacji<br/><br/> Generacja 2 — Windows | Maszyn
 --- | --- | ---
 Przenoszenie magazynu między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie | Nie
 Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie | Nie
+
+> [!NOTE]
+> W przypadku replikacji funkcji Hyper-VMs (zarządzane z lub bez SCVMM) ze środowiska lokalnego do platformy Azure, można replikować tylko jedną dzierżawą usługi AD z jednego środowiska określone — w lokacji funkcji Hyper-V lub programu SCVMM, jeśli ma to zastosowanie.
 
 
 ## <a name="provider-and-agent"></a>Dostawca i agent

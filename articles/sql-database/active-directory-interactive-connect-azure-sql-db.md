@@ -12,12 +12,12 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 04/06/2018
 manager: craigg
-ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055530"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958821"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Użyj trybu ActiveDirectoryInteractive, aby nawiązać połączenie z bazą danych SQL Azure
 
@@ -66,23 +66,23 @@ Aby użyć uwierzytelniania usługi Azure AD, program kliencki C# należy podać
 
 1. Witryna Azure portal &gt; **usługi Azure Active Directory** &gt; **rejestracji aplikacji**
 
-    ![Rejestracja aplikacji](media\active-directory-interactive-connect-azure-sql-db\sshot-create-app-registration-b20.png)
+    ![Rejestracja aplikacji](media/active-directory-interactive-connect-azure-sql-db/sshot-create-app-registration-b20.png)
 
 2. **Identyfikator aplikacji** wartość jest wygenerowany i wyświetlony.
 
-    ![Wyświetla identyfikator aplikacji](media\active-directory-interactive-connect-azure-sql-db\sshot-application-id-app-regis-mk49.png)
+    ![Wyświetla identyfikator aplikacji](media/active-directory-interactive-connect-azure-sql-db/sshot-application-id-app-regis-mk49.png)
 
 3. **Zarejestrowana aplikacja** &gt; **ustawienia** &gt; **wymagane uprawnienia** &gt; **Dodaj**
 
-    ![Ustawienia uprawnień dotyczących zarejestrowana aplikacja](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
+    ![Ustawienia uprawnień dotyczących zarejestrowana aplikacja](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
 4. **Wymagane uprawnienia** &gt; **dostępu Dodaj interfejs API** &gt; **wybierz interfejs API** &gt; **usługi Azure SQL Database**
 
-    ![Dodaj dostęp do interfejsu API usługi Azure SQL Database](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
+    ![Dodaj dostęp do interfejsu API usługi Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
 5. **Dostęp do interfejsu API** &gt; **wybierz uprawnienia** &gt; **delegowane uprawnienia**
 
-    ![Deleguj uprawnienia do interfejsu API usługi Azure SQL Database](media\active-directory-interactive-connect-azure-sql-db\sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
+    ![Deleguj uprawnienia do interfejsu API usługi Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. Ustaw administratora usługi Azure AD na serwerze bazy danych SQL
@@ -124,13 +124,13 @@ Program C# opiera się na przestrzeń nazw **Microsoft.IdentityModel.Clients.Act
 
 Jednej przestrzeni nazw, które opiera się na przykład C# jest **System.Data.SqlClient**. Szczególnie ważne jest wyliczenia **SqlAuthenticationMethod**. To wyliczenie ma następujące wartości:
 
-- **SqlAuthenticationMethod.ActiveDirectory \*Interactive**\*:&nbsp; za pomocą to nazwa użytkownika usługi Azure AD, do osiągnięcia uwierzytelnianie wieloskładnikowe MFA.
+- **SqlAuthenticationMethod.ActiveDirectory * Interactive ***:&nbsp; za pomocą to nazwa użytkownika usługi Azure AD, do osiągnięcia uwierzytelnianie wieloskładnikowe MFA.
     - Ta wartość jest celem niniejszego artykułu. Tworzy środowisko interaktywne, wyświetlając okien dialogowych dla hasła użytkownika, a następnie do weryfikacji uwierzytelniania Wieloskładnikowego, jeśli uwierzytelnianie wieloskładnikowe nakłada się na tego użytkownika.
     - Ta wartość jest dostępnych w programie .NET Framework w wersji 4.7.2.
 
-- **SqlAuthenticationMethod.ActiveDirectory \*zintegrowany**\*:&nbsp; użyjemy dla *federacyjnych* konta. Dla kont federacyjnych nazwa użytkownika jest znany do domeny Windows. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
+- **SqlAuthenticationMethod.ActiveDirectory * zintegrowany ***:&nbsp; użyjemy dla *federacyjnych* konta. Dla kont federacyjnych nazwa użytkownika jest znany do domeny Windows. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
 
-- **SqlAuthenticationMethod.ActiveDirectory \*hasła**\*:&nbsp; używane dla uwierzytelniania, który wymaga użytkownika usługi Azure AD i hasło użytkownika. Usługa Azure SQL Database przeprowadza uwierzytelnianie. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
+- **SqlAuthenticationMethod.ActiveDirectory * hasła ***:&nbsp; używane dla uwierzytelniania, który wymaga użytkownika usługi Azure AD i hasło użytkownika. Usługa Azure SQL Database przeprowadza uwierzytelnianie. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
 
 
 

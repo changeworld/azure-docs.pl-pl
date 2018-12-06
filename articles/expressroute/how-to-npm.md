@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: d334fdba48f248bb7989c2b549517413b1ef793c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 93bafb739c35b81796186dc845f7933a82e1675b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404345"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968122"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute
 
@@ -62,7 +62,7 @@ Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtua
    >Utwórz nowy obszar roboczy lub użyj istniejącego obszaru roboczego. Jeśli chcesz użyć istniejącego obszaru roboczego, upewnij się, że obszar roboczy została zmigrowana do nowego języka zapytań. [Więcej informacji...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
-   ![portal](.\media\how-to-npm\3.png)<br><br>
+   ![portal](./media/how-to-npm/3.png)<br><br>
 2. W dolnej części głównej **rozwiązania Network Performance Monitor** kliknij **Utwórz** otworzyć **rozwiązania Network Performance Monitor — Utwórz nowe rozwiązanie** strony. Kliknij przycisk **obszar roboczy usługi Analytics Log - wybierz obszar roboczy** aby otworzyć stronę obszarów roboczych. Kliknij przycisk **+ Utwórz nowy obszar roboczy** aby otworzyć stronę obszaru roboczego.
 3. Na **obszar roboczy usługi Log Analytics** wybierz opcję **Utwórz nowy**, następnie skonfiguruj następujące ustawienia:
 
@@ -76,11 +76,11 @@ Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtua
     >Obwód usługi ExpressRoute może być dowolnym miejscu na świecie. Nie musi znajdować się w tym samym regionie co obszar roboczy.
     >
   
-    ![obszar roboczy](.\media\how-to-npm\4.png)<br><br>
+    ![obszar roboczy](./media/how-to-npm/4.png)<br><br>
 4. Kliknij przycisk **OK** Aby zapisać i wdrożyć ustawienia szablonu. Gdy szablon jest weryfikowana, kliknij przycisk **Utwórz** do wdrożenia obszaru roboczego.
 5. Po wdrożeniu obszaru roboczego, przejdź do **NetworkMonitoring(name)** utworzonego zasobu. Sprawdź poprawność ustawień, a następnie kliknij przycisk **rozwiązanie wymaga dodatkowej konfiguracji**.
 
-   ![Dodatkowa konfiguracja](.\media\how-to-npm\5.png)
+   ![dodatkowa konfiguracja](./media/how-to-npm/5.png)
 
 ## <a name="agents"></a>Krok 2: Instalowanie i konfigurowanie agentów
 
@@ -90,7 +90,7 @@ Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtua
 2. Następnie skopiuj **identyfikator obszaru roboczego** i **klucz podstawowy** do Notatnika.
 3. Z **skonfigurować Log Analytics agentów monitorowania przy użyciu protokołu TCP** sekcji, Pobierz skrypt programu Powershell. Skrypt PowerShell ułatwia otworzyć port zapory dla transakcji TCP.
 
-  ![Skrypt programu PowerShell](.\media\how-to-npm\7.png)
+  ![Skrypt programu PowerShell](./media/how-to-npm/7.png)
 
 ### <a name="installagent"></a>2.2: Zainstaluj agenta monitorowania na każdym serwerze monitorowania (w każdej sieci Wirtualnej, który chcesz monitorować)
 
@@ -108,13 +108,13 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
 
   * Jeśli chcesz nawiązać połączenie z **usługi Azure Log Analytics**, Wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego** (klucz podstawowy) skopiowane do Notatnika w poprzedniej sekcji. Następnie kliknij przycisk **Dalej**.
 
-    ![Identyfikator i klucz](.\media\how-to-npm\8.png)
+    ![Identyfikator i klucz](./media/how-to-npm/8.png)
   * Jeśli chcesz nawiązać połączenie z **programu Operations Manager**na **Konfiguracja grupy zarządzania** wpisz **Nazwa grupy zarządzania**, **serwera zarządzania** i **Port serwera zarządzania**. Następnie kliknij przycisk **Dalej**.
 
-    ![Operations Manager](.\media\how-to-npm\9.png)
+    ![Operations Manager](./media/how-to-npm/9.png)
   * Na **konto akcji agenta** albo wybierz **systemu lokalnego** konta lub **domeny lub lokalnego konta komputera**. Następnie kliknij przycisk **Dalej**.
 
-    ![Konto](.\media\how-to-npm\10.png)
+    ![Konto](./media/how-to-npm/10.png)
 6. Na **gotowy do instalacji** strony, przejrzyj wybrane opcje, a następnie kliknij przycisk **zainstalować**.
 7. Na stronie **Konfiguracja została zakończona pomyślnie** kliknij przycisk **Zakończ**.
 8. Po zakończeniu programu Microsoft Monitoring Agent zostanie wyświetlona w Panelu sterowania. Możesz tam przejrzeć konfigurację i sprawdzić, czy agent jest połączony z usługą Azure Log Analytics. Po nawiązaniu połączenia agent wyświetla komunikat z informacją: **program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.
@@ -132,7 +132,7 @@ Aby skonfigurować ustawienia serwera proxy dla programu Microsoft Monitoring Ag
 3. Kliknij kartę **Ustawienia serwera proxy**.
 4. Wybierz **Użyj serwera proxy** i wpisz adres URL i numer portu, jeśli jest ono wymagane. Jeśli Twój serwer proxy wymaga uwierzytelniania, wpisz nazwę użytkownika i hasło, aby uzyskać dostęp do serwera proxy.
 
-  ![Serwer proxy](.\media\how-to-npm\11.png)
+  ![Serwer proxy](./media/how-to-npm/11.png)
 
 ### <a name="verifyagent"></a>2.4: sprawdzić połączenie agenta
 
@@ -143,7 +143,7 @@ Można łatwo sprawdzić, czy komunikują się agentów.
 3. Kliknij przycisk **usługi Azure Log Analytics** kartę.
 4. W **stan** kolumny, powinien zostać wyświetlony, agent pomyślnie połączono z usługą Log Analytics.
 
-  ![status](.\media\how-to-npm\12.png)
+  ![status](./media/how-to-npm/12.png)
 
 ### <a name="firewall"></a>2.5: Otwórz porty zapory na serwerach agenta monitorowania
 
@@ -160,7 +160,7 @@ Port 8084 jest domyślnie otwierany. Można użyć niestandardowych portów, pod
 
 Na serwerach programu agent Otwórz okno programu PowerShell z uprawnieniami administracyjnymi. Uruchom [EnableRules](https://aka.ms/npmpowershellscript) skrypt programu PowerShell (który został wcześniej pobrany). Nie używaj żadnych parametrów.
 
-![PowerShell_Script](.\media\how-to-npm\script.png)
+![PowerShell_Script](./media/how-to-npm/script.png)
 
 ## <a name="opennsg"></a>Krok 3: Konfigurowanie reguł sieciowych grup zabezpieczeń
 
@@ -176,13 +176,13 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [
 
 1. Przejdź do kafelka przeglądu rozwiązania Network Performance Monitor, przechodząc do **wszystkie zasoby** stronie, a następnie kliknij pozycję na liście dozwolonych NPM w obszarze roboczym.
 
-  ![obszar roboczy npm](.\media\how-to-npm\npm.png)
+  ![obszar roboczy npm](./media/how-to-npm/npm.png)
 2. Kliknij przycisk **rozwiązania Network Performance Monitor** kafelka przeglądu, aby wyświetlić pulpit nawigacyjny. Pulpit nawigacyjny zawiera na stronie usługi ExpressRoute, który pokazuje, że usługa ExpressRoute jest w "stanie nieskonfigurowanym". Kliknij przycisk **Konfiguracja funkcji** aby otworzyć stronę konfiguracji rozwiązania Network Performance Monitor.
 
-  ![Konfiguracja funkcji](.\media\how-to-npm\npm2.png)
+  ![Konfiguracja funkcji](./media/how-to-npm/npm2.png)
 3. Na stronie konfiguracji przejdź do karty "Komunikacje równorzędne usługi ExpressRoute", znajduje się w panelu po lewej stronie. Następnie kliknij przycisk **odnajdywanie teraz**.
 
-  ![odnajdź](.\media\how-to-npm\13.png)
+  ![Odnajdywanie](./media/how-to-npm/13.png)
 4. Po zakończeniu odnajdowania, zostanie wyświetlona lista zawierająca następujące elementy:
   * Wszystkie połączenia komunikacji równorzędnej firmy Microsoft w obwody usługi ExpressRoute, które są skojarzone z tą subskrypcją.
   * Wszystkie połączenia prywatnej komunikacji równorzędnej, łączących się z sieciami wirtualnymi skojarzone z tą subskrypcją.
@@ -195,7 +195,7 @@ W tej sekcji skonfigurujesz monitorów. Postępuj zgodnie z instrukcjami dla typ
 
 Dla prywatnej komunikacji równorzędnej, po zakończeniu odnajdowania, zostanie wyświetlony zostanie zasady unikatowych **nazwy obwodu** i **nazwa sieci wirtualnej**. Początkowo te zasady są wyłączone.
 
-![rules](.\media\how-to-npm\14.png)
+![rules](./media/how-to-npm/14.png)
 
 1. Sprawdź **Monitoruj tę komunikację równorzędną** pola wyboru.
 2. Zaznacz pole wyboru **Włącz monitorowanie kondycji dla tej komunikacji równorzędnej**.
@@ -211,10 +211,10 @@ W przypadku komunikacji równorzędnej firmy Microsoft kliknij połączenia komu
 1. Sprawdź **Monitoruj tę komunikację równorzędną** pola wyboru. 
 2. (Opcjonalnie) Można zmienić docelowy punkt końcowy usługi firmy Microsoft. Domyślnie NPM wybiera punkt końcowy usługi firmy Microsoft jako element docelowy. NPM monitoruje łączność z serwerów lokalnych do tego punktu końcowego docelowego, za pośrednictwem usługi ExpressRoute. 
     * Aby zmienić ten punkt końcowy docelowej, kliknij przycisk **(Edytuj)** łącze w obszarze **docelowego:**, a następnie wybierz inny punkt końcowy docelowej usługi firmy Microsoft z listy adresów URL.
-      ![edytowanie docelowego](.\media\how-to-npm\edit_target.png)<br>
+      ![edytowanie docelowego](./media/how-to-npm/edit_target.png)<br>
 
     * Można użyć niestandardowego adresu URL lub adres IP. Ta opcja jest szczególnie ważne w przypadku korzystania z komunikacji równorzędnej, aby nawiązać połączenie z usługami PaaS platformy Azure, takich jak Azure Storage, bazy danych SQL i witryn sieci Web, które są oferowane na publiczne adresy IP firmy Microsoft. Aby to zrobić, kliknij łącze **(Użyj niestandardowego adresu URL lub adres IP)** w dolnej części listy adresów URL, a następnie wprowadź publiczny punkt końcowy usługi PaaS platformy Azure, która jest połączona za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute.
-    ![Niestandardowy adres URL](.\media\how-to-npm\custom_url.png)<br>
+    ![Niestandardowy adres URL](./media/how-to-npm/custom_url.png)<br>
 
     * Jeśli używasz tych opcjonalnych ustawień upewnij się, czy w tym miejscu wybrano tylko punkt końcowy usługi firmy Microsoft. Punkt końcowy musi być podłączony do usługi ExpressRoute i jest osiągalny przez agentów w środowisku lokalnym.
 3. Zaznacz pole wyboru **Włącz monitorowanie kondycji dla tej komunikacji równorzędnej**.
@@ -227,37 +227,37 @@ W przypadku komunikacji równorzędnej firmy Microsoft kliknij połączenia komu
 
 Po wyświetleniu monitorowania Kafelki do obwodów usługi ExpressRoute i połączeń zasobów są monitorowane przez Menedżera NPM. Możesz kliknąć Kafelek Peering firmy Microsoft, aby przejść do szczegółów w kondycję połączeń Peering firmy Microsoft.
 
-![monitorowanie kafelków](.\media\how-to-npm\15.png)
+![monitorowanie kafelków](./media/how-to-npm/15.png)
 
 ### <a name="dashboard"></a>Strona monitora wydajności sieci
 
 Strona NPM zawiera strony dla usługi ExpressRoute, który zawiera przegląd kondycji obwodów usługi ExpressRoute i połączeń komunikacji równorzędnej.
 
-![Pulpit nawigacyjny](.\media\how-to-npm\dashboard.png)
+![Pulpit nawigacyjny](./media/how-to-npm/dashboard.png)
 
 ### <a name="circuits"></a>Lista obwodów
 
 Aby wyświetlić listę wszystkich monitorowane obwody usługi ExpressRoute, kliknij przycisk **obwodów usługi ExpressRoute** kafelka. Można wybrać obwodu i wyświetlić jego stan kondycji, wykresy trendów utraty pakietów, wykorzystania przepustowości i opóźnień. Wykresy są interaktywne. Możesz wybrać przedział czasu niestandardowych do kreślenia wykresów. Na wykresie, aby powiększyć obraz i wyświetlić punkty danych szczegółowych, można przeciągnąć wskaźnik myszy nad obszarem.
 
-![circuit_list](.\media\how-to-npm\circuits.png)
+![circuit_list](./media/how-to-npm/circuits.png)
 
 #### <a name="trend"></a>Trend utraty, opóźnienia i przepływności
 
 Wykresy przepustowość, opóźnienia i straty są interaktywne. W dowolnej części te wykresy można powiększyć za pomocą myszy formantów. Przepustowość, opóźnienia i utratę danych można wyświetlić dla innych interwałów, klikając **daty/godziny**, który znajduje się poniżej przycisku akcje w lewym górnym rogu.
 
-![Trend](.\media\how-to-npm\16.png)
+![Trend](./media/how-to-npm/16.png)
 
 ### <a name="peerings"></a>Lista połączeń komunikacji równorzędnej
 
 Aby wyświetlić listę wszystkich połączeń z sieciami wirtualnymi za pośrednictwem prywatnej komunikacji równorzędnej, kliknij przycisk **prywatne komunikacje równorzędne** Kafelek na pulpicie nawigacyjnym. W tym miejscu można wybrać wirtualnej połączenia sieciowego i wyświetlić jego stan kondycji, wykresy trendów utraty pakietów, wykorzystania przepustowości i opóźnień.
 
-![Lista obwodu](.\media\how-to-npm\peerings.png)
+![Lista obwodu](./media/how-to-npm/peerings.png)
 
 ### <a name="nodes"></a>Wyświetlanie węzłów
 
 Aby wyświetlić listę wszystkich łączy między węzłami w środowisku lokalnym i punktów końcowych usługi maszyny wirtualne/firmy Microsoft Azure dla wybranego połączenia komunikacji równorzędnej usługi ExpressRoute, kliknij przycisk **Wyświetl linki węzłów**. Można wyświetlić stan kondycji każdego łącza, a także trend strat i opóźnień skojarzonych z nimi.
 
-![Wyświetlanie węzłów](.\media\how-to-npm\nodes.png)
+![Wyświetlanie węzłów](./media/how-to-npm/nodes.png)
 
 ### <a name="topology"></a>Topologia obwodu
 
@@ -265,9 +265,9 @@ Aby wyświetlić topologię obwodu, kliknij **topologii** kafelka. Spowoduje to 
 
 Możesz zwiększyć poziom widoczności do uwzględnienia w środowisku lokalnym przeskoków, przenosząc poniżej paska suwaka **filtry**. Przenoszenie paska suwaka do lewej lub prawej strony, zwiększa/zmniejsza liczbę przeskoków na wykresie topologii. Opóźnienie w każdym segmencie jest widoczny, co umożliwia szybsze izolacji segmentów duże opóźnienie w sieci.
 
-![filtry](.\media\how-to-npm\topology.png)
+![Filtry](./media/how-to-npm/topology.png)
 
 #### <a name="detailed-topology-view-of-a-circuit"></a>Szczegółowy widok topologii obwodu
 
 Ten widok przedstawia połączenia sieci wirtualnej.
-![szczegółowe topologii](.\media\how-to-npm\17.png)
+![szczegółowe topologii](./media/how-to-npm/17.png)

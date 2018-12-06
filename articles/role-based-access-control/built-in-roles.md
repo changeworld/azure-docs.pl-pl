@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/26/2018
+ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 58bec272733d0ad83665f4e06f37ae528eb2f8b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d082ba8550925d12d3a60d71111c72d561c083c5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499653"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969070"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
@@ -114,6 +114,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
 | [Rola usługi Operator kluczy kont magazynu](#storage-account-key-operator-service-role) | Operatorzy kluczy kont magazynu mogą wyświetlać listę kluczy dla kont magazynu i ponownie je generować |
 | [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
+| [Właściciel danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-owner-preview) | Umożliwia odczytu, zapisu, usuwania i POSIX dostęp administratora do kontenerów obiektów blob usługi Azure Storage i danych |
 | [Czytnik danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-reader-preview) | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
 | [Współautor danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
 | [Czytnik danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-reader-preview) | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
@@ -1687,6 +1688,21 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | --- | --- |
 > | **Opis** | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
 > | **Identyfikator** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **Akcje** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Zwraca wynik umieszczania lub dzierżawienia kontenera obiektów blob |
+> | **Elementy DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Zwraca wynik usunięcia obiektu blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |
+
+## <a name="storage-blob-data-owner-preview"></a>Właściciel danych obiektu Blob Storage (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia odczytu, zapisu, usuwania i POSIX dostęp administratora do kontenerów obiektów blob usługi Azure Storage i danych |
+> | **Identyfikator** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów |

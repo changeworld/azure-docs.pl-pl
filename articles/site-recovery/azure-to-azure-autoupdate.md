@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 061811705b0572059f99300f2a658c5c5b4406c5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 275dd48e08aa74d84b0e1b91d5df9599ce524489
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839844"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957695"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji Azure – Azure
 
@@ -66,11 +66,11 @@ Po włączeniu replikacji dla maszyny wirtualnej, albo uruchamianie [z widoku ma
 
 1. Jeśli nowe aktualizacje są dostępne dla usługi mobilności, zainstalowane na maszynach wirtualnych platformy Azure, zobaczysz powiadomienie o treści "dostępna jest nowa aktualizacja agenta replikacji lokacji odzyskiwania. Kliknij, aby zainstalować. "
 
-     ![Okno replikowane elementy](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![Okno replikowane elementy](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 3. Wybierz powiadomienie, aby otworzyć stronę wyboru maszyny wirtualnej.
 4. Wybierz maszyny wirtualne, które chcesz uaktualnić usługę mobilności na, a następnie wybierz pozycję **OK**.
 
-     ![Zreplikowane elementy listy maszyn wirtualnych](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![Zreplikowane elementy listy maszyn wirtualnych](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 Uruchamia zadanie Aktualizacja usługi mobilności dla każdego z wybranych maszyn wirtualnych.
 

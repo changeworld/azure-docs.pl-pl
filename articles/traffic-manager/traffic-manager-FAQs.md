@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: d784bf3637c83c724c3616a1a42b66c4914b4ff7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987243"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963576"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
 
@@ -134,7 +134,7 @@ Tak, tylko interfejsu API w wersji 2017-03-01 i nowszych obsługuje geograficzne
 ## <a name="traffic-manager-subnet-traffic-routing-method"></a>Metody routingu ruchu podsieci usługi Traffic Manager
 
 ### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Jakie są niektóre przypadki użycia, w której podsieci routing jest przydatne?
-Podsieć routingu pozwala odróżnić doświadczenie w zakresie dostarczania dla konkretnych zestawów użytkowników identyfikowanych na podstawie źródłowego adresu IP z ich adres IP żądania DNS. Przykładem może być przedstawiający różną zawartość, jeśli użytkownicy nawiązują połączenie z witryną sieci Web dla swojej Centrali firmy. Inny będzie ograniczenie dostępu użytkowników z określonych usługodawców internetowych, aby uzyskać dostęp tylko do punktów końcowych, które obsługują tylko połączeń IPv4, jeśli te usługodawców internetowych mają podrzędnych par wydajność, gdy używany jest protokół IPv6.
+Podsieć routingu pozwala odróżnić doświadczenie w zakresie dostarczania dla konkretnych zestawów użytkowników identyfikowanych na podstawie źródłowego adresu IP z ich adres IP żądania DNS. Przykładem może być przedstawiający różną zawartość, jeśli użytkownicy nawiązują połączenie z witryną sieci Web w swojej Centrali firmy. Inny będzie ograniczenie dostępu użytkowników z określonych usługodawców internetowych, aby uzyskać dostęp tylko do punktów końcowych, które obsługują tylko połączeń IPv4, jeśli te usługodawców internetowych mają podrzędnych par wydajność, gdy używany jest protokół IPv6.
 Kolejny powód, aby użyć metody routingu dla podsieci w połączeniu z innych profilów zagnieżdżonych profilu ustawiono. Na przykład jeśli chcesz użyć metody routingu geograficznego dla grodzenia użytkowników, ale dla określonego usługodawcę internetowego chcesz wykonać inną metodę routingu, możesz mieć profil withy podsieci metody routingu jako profil nadrzędnego i zastąpienie tego usługodawcy internetowego, aby użyć element podrzędny określonego pro plik, a ma standardowy profil geograficzny wszystkim innym użytkownikom.
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Jak usługa Traffic Manager znać adres IP użytkownika końcowego?

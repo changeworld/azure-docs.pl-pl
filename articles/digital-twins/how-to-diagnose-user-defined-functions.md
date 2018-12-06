@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 559c737c4e8309527d588b59759b93750da33a9e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 85a85fa0a110ba91a423b1be4a24000340d25f8f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837719"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966844"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak debugować problemy związane z funkcjami zdefiniowanymi przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -25,7 +25,7 @@ Wiedza, jak diagnozować problemy, które powstają w ramach wystąpienia Twins 
 
 ### <a name="enable-log-analytics-for-your-instance"></a>Włączanie analizy dzienników dla wystąpienia usługi
 
-Dzienniki i metryki dla wystąpienia Twins cyfrowych platformy Azure są udostępniane za pośrednictwem usługi Azure Monitor. Poniższa dokumentacja przyjęto założenie, utworzono [usługi Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) obszar roboczy za pomocą [witryny Azure Portal](../log-analytics/log-analytics-quick-create-workspace.md)za pośrednictwem [wiersza polecenia platformy Azure](../log-analytics/log-analytics-quick-create-workspace-cli.md), lub za pomocą [ Program PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md).
+Dzienniki i metryki dla wystąpienia Twins cyfrowych platformy Azure są udostępniane za pośrednictwem usługi Azure Monitor. Poniższa dokumentacja przyjęto założenie, utworzono [usługi Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) obszar roboczy za pomocą [witryny Azure Portal](../azure-monitor/learn/quick-create-workspace.md)za pośrednictwem [wiersza polecenia platformy Azure](../azure-monitor/learn/quick-create-workspace-cli.md), lub za pomocą [ Program PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 > [!NOTE]
 > Może wystąpić opóźnienie 5 minut, podczas wysyłania zdarzeń do **usługi Log Analytics** po raz pierwszy.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: e8d0522dc4cc218792569498c149b32b3de652cb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443580"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961013"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisywanie i konfigurowanie konfiguracji usługi API Management przy użyciu narzędzia Git
 
@@ -81,7 +81,7 @@ Aby wygenerować hasła, najpierw upewnij się, że **wygaśnięcia** jest ustaw
 > Zanotuj hasło. Gdy opuścisz tę stronę hasło nie zostanie ponownie wyświetlone.
 > 
 
-W poniższych przykładach używane narzędzie powłoki Git Bash z [Git dla Windows](http://www.git-scm.com/downloads) , ale można użyć dowolnego narzędzia Git, które znasz.
+W poniższych przykładach używane narzędzie powłoki Git Bash z [Git dla Windows](https://www.git-scm.com/downloads) , ale można użyć dowolnego narzędzia Git, które znasz.
 
 Otwórz narzędzie Git w żądany folder, a następnie uruchom następujące polecenie, aby sklonować repozytorium git na komputerze lokalnym przy użyciu polecenia udostępnionych przez portal systemu Azure.
 

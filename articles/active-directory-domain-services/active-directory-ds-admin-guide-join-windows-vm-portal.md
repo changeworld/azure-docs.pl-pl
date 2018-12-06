@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 753818526ad637db0baa13c92e92d2725b19dbf8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158335"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957678"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 W tym artykule pokazano, jak wdrożyć maszynę wirtualną systemu Windows Server przy użyciu witryny Azure portal. Go następnie pokazano, jak dołączyć maszyny wirtualnej do domeny zarządzanej usługi Azure Active Directory Domain Services (Azure AD DS).
@@ -30,7 +30,7 @@ W tym artykule pokazano, jak wdrożyć maszynę wirtualną systemu Windows Serve
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>Krok 1: Utwórz maszynę wirtualną systemu Windows Server
 Aby utworzyć maszynę wirtualną Windows, który jest dołączony do sieci wirtualnej, w której włączono usługi Azure AD DS, wykonaj następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. W górnej części okienka po lewej stronie wybierz **New**.
 3. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**.
 

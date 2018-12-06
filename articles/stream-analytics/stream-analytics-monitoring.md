@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 200df7602f94f70f3fb9c62ad81a0710923184c7
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 81c5eabcfcca6818293ff9dbbfb1515d5729dd79
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291420"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963288"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Omówienie monitorowania zadań usługi Stream Analytics oraz monitorowanie zapytań
 
@@ -29,21 +29,21 @@ Zostanie wyświetlone okno, jak pokazano:
 ## <a name="metrics-available-for-stream-analytics"></a>Metryki dostępne dla usługi Stream Analytics
 | Metryka                 | Definicja                               |
 | ---------------------- | ---------------------------------------- |
-| Zaległe zdarzenia wejściowe       | Liczba zdarzeń wejściowych, które są "zaległe. |
+| Zaległe zdarzenia wejściowe       | Liczba zdarzeń wejściowych, które są zaległe. |
 | Błędy konwersji danych | Liczba zdarzeń wyjściowych, których nie można przekonwertować schematu oczekiwanych danych wyjściowych. |
 | Wczesne zdarzenia wejściowe       | Liczba zdarzeń otrzymanych wcześnie. |
 | Żądania funkcji zakończone niepowodzeniem | Liczba nieudanych wywołań funkcji usługi Azure Machine Learning (jeśli istnieje). |
-| Zdarzenia funkcji        | Liczba zdarzeń wysyłanych do funkcji usługi Azure Machine Learning (jeśli istnieje). |
+| Zdarzenia — funkcja        | Liczba zdarzeń wysyłanych do funkcji usługi Azure Machine Learning (jeśli istnieje). |
 | Żądania funkcji      | Liczba wywołań funkcji usługi Azure Machine Learning (jeśli istnieje). |
 | Błędy deserializacji danych wejściowych       | Liczba zdarzeń, których nie można wykonać deserializacji.  |
-| Zdarzenia wejściowe (bajty)      | Ilość danych otrzymywanych przez zadanie usługi Stream Analytics, w bajtach. Może to służyć do sprawdzania, czy zdarzenia są wysyłane do źródła danych wejściowych. |
+| Dane wejściowe zdarzenia bajtów      | Ilość danych otrzymywanych przez zadanie usługi Stream Analytics, w bajtach. Może to służyć do sprawdzania, czy zdarzenia są wysyłane do źródła danych wejściowych. |
 | Zdarzenia wejściowe           | Ilość danych otrzymywanych przez zadanie usługi Stream Analytics, w liczbie zdarzeń. Może to służyć do sprawdzania, czy zdarzenia są wysyłane do źródła danych wejściowych. |
-| Odebrane źródła wejściowe       | Liczba zdarzeń przychodzących z źródła danych wejściowych. |
+| Odebrano źródeł danych wejściowych       | Liczba zdarzeń przychodzących z źródła danych wejściowych. |
 | Opóźnione zdarzenia wejściowe      | Liczba zdarzeń przybywających późne ze źródła, które albo zostały usunięte lub sygnatur czasowych została zmieniona na prawidłową, na podstawie konfiguracji zasad kolejność zdarzeń ustawienie Rozpoznanie późnego przybycia okno tolerancji. |
 | Zdarzenia poza kolejnością    | Liczba zdarzeń otrzymanych poza kolejnością, które zostały porzucone lub podane skorygowany sygnatury czasowej, na podstawie zasad kolejność zdarzeń. Może to mieć wpływ konfigurację ustawienia okno tolerancji Out of zamówienia. |
 | Zdarzenia wyjściowe          | Ilość danych wysłanych przez zadanie usługi Stream Analytics do obiektu docelowego dane wyjściowe w liczbie zdarzeń. |
-| Błędy w czasie wykonywania         | Całkowita liczba błędów związanych z przetwarzania zapytań (z wyjątkiem błędów znalezionych podczas zbierać zdarzenia lub wyniki outputing) |
-| % wykorzystania SU       | Użycie jednostek przesyłania strumieniowego jest przypisana do zadania na karcie Skala zadania. Jeżeli ten wskaźnik osiągnie 80% lub powyżej, istnieje wysokie prawdopodobieństwo, że przetwarzanie zdarzeń może być opóźniona lub postępu. |
+| Błędy czasu wykonywania         | Całkowita liczba błędów związanych z przetwarzania zapytań (z wyjątkiem błędów znalezionych podczas zbierać zdarzenia lub wyniki outputing) |
+| % Wykorzystania SU       | Użycie jednostek przesyłania strumieniowego jest przypisana do zadania na karcie Skala zadania. Jeżeli ten wskaźnik osiągnie 80% lub powyżej, istnieje wysokie prawdopodobieństwo, że przetwarzanie zdarzeń może być opóźniona lub postępu. |
 | Opóźnienie znaku wodnego       | Opóźnienie maksymalnego limitu wszystkich partycji wszystkie dane wyjściowe zadania. |
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Dostosowywanie monitorowania w witrynie Azure portal

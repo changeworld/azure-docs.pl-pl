@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5de652c1296ddcf94015f8c00529fc5288f98291
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a2cedb95469f97b564aaad2baa0ff7c784d67bf8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834778"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960995"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub z usługą Log Analytics, aby śledzić ich kondycję
 
@@ -35,7 +35,7 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 
 * A [subskrypcja usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) poziom, który będzie obsługiwać liczbę urządzeń, które chcesz monitorować. Cennik usługi log Analytics różni się w zależności od tego, ile urządzeń są rejestrowane, a także jak dużo danych go procesów. Należy wziąć pod uwagę podczas planowania wdrożenia urządzenia Surface Hub.
 
-Następnie spowoduje dodanie do istniejącego obszaru roboczego usługi Log Analytics lub Utwórz nową. Szczegółowe instrukcje dotyczące przy użyciu jednej z metod wynosi [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md). Po skonfigurowaniu obszaru roboczego usługi Log Analytics, istnieją dwa sposoby rejestrowania urządzeń Surface Hub:
+Następnie spowoduje dodanie do istniejącego obszaru roboczego usługi Log Analytics lub Utwórz nową. Szczegółowe instrukcje dotyczące przy użyciu jednej z metod wynosi [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../../azure-monitor/learn/quick-create-workspace.md). Po skonfigurowaniu obszaru roboczego usługi Log Analytics, istnieją dwa sposoby rejestrowania urządzeń Surface Hub:
 
 * Automatycznie za pomocą usługi Intune
 * Ręcznie za pomocą **ustawienia** na urządzeniu Surface Hub.

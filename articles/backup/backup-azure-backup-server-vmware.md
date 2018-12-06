@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.openlocfilehash: 625313b612ffa99dd3b1185072074c06f57e22de
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e39e5d12610164ca4a1372830cf25ea203fd382c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878061"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968838"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Tworzenie kopii zapasowej serwera VMware na platformę Azure
 
@@ -55,7 +55,7 @@ Aby rozwiązać ten problem i utworzenia bezpiecznego połączenia, Pobierz cert
 4. Kliknij prawym przyciskiem myszy **download.zip**, a następnie wybierz pozycję **Wyodrębnij wszystkie** aby wyodrębnić zawartość.
 
     Plik zip wyodrębni jego zawartość do folderu o nazwie **certyfikatów**. Dwa typy plików są wyświetlane w folderze certyfikatów. Plik certyfikatu głównego ma rozszerzenie rozpoczynające się od numerowane sekwencji, takich jak.0 i.1.
-    
+
     Plik listy CRL ma rozszerzenie, które zaczyna się od sekwencji, takich jak .r0 lub .r1. Plik listy CRL jest skojarzony z certyfikatem.
 
     ![Pobierz plik wyodrębnione lokalnie ](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
@@ -249,7 +249,7 @@ Przed dodaniem serwera VMware do platformy Azure Backup Server, zainstaluj [aktu
     ![Okno dialogowe Azure Backup serwer Dodaj poświadczenie](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
     Kliknij przycisk **Dodaj** można dodać nowe poświadczenia do usługi Azure Backup Server. Nowe poświadczenie pojawia się na liście w **poświadczenia zarządzania** okno dialogowe.
-    
+
     ![Okno dialogowe poświadczenia zarządzania serwera kopii zapasowych platformy Azure](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 5. Aby zamknąć **poświadczenia zarządzania** okno dialogowe, kliknij przycisk **X** w prawym górnym rogu.
@@ -271,7 +271,7 @@ Aby otworzyć Kreator dodawania serwerów produkcyjnych, wykonaj następującą 
 
 2. Na **typ serwera produkcyjnego wybierz** wybierz **serwery VMware**, a następnie kliknij przycisk **dalej**.
 
-3. W **nazwa/adres IP serwera**, określ w pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP serwera VMware. Jeśli wszystkie serwery ESXi są zarządzane przez ten sam program vCenter, można użyć nazwy vCenter.
+3. W **nazwa/adres IP serwera**, określ w pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP serwera VMware (serwer hosta ESXi). Jeśli wszystkie serwery ESXi są zarządzane przez ten sam program vCenter, można użyć nazwy vCenter.
 
     ![Określ adres FQDN lub adres IP serwera VMware](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 

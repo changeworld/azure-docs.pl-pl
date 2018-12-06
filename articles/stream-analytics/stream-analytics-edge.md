@@ -8,17 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: c70a0ceed76ec6f86f2c6c4b082c45055dda6701
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 920395593509223a63a195ad53eeaf7e6aca108e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889110"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961438"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na urządzeniach brzegowych IoT Edge
-
-> [!IMPORTANT]
-> Ta funkcja jest dostępna w wersji zapoznawczej i nie jest zalecany do używania w środowisku produkcyjnym.
  
 Usługa Azure Stream Analytics (ASA) na usługi IoT Edge umożliwia deweloperom wdrażanie niemal w czasie rzeczywistym bliżej analitycznych analizy na urządzeniach IoT, dzięki czemu mogą odblokować pełną wartość danych generowanych przez urządzenie. Usługa Azure Stream Analytics jest przeznaczona dla małych opóźnień, odporności, efektywne wykorzystanie przepustowości i zgodności. Przedsiębiorstwom teraz wdrożyć logiki formantu blisko operacji przemysłowych i uzupełniają analizy danych Big Data w chmurze.  
 
@@ -220,6 +217,7 @@ Aby uzyskać dalszą pomoc, spróbuj [forum usługi Azure Stream Analytics](http
 * [Usługa ASA na samouczek dotyczący usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [Wyślij opinię do zespołu za pomocą tej ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
 * [Tworzenie zadań usługi Stream Analytics Edge przy użyciu narzędzi programu Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Implementowanie ciągłej integracji/ciągłego wdrażania dla usługi Stream Analytics przy użyciu interfejsów API](stream-analytics-cicd-api.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

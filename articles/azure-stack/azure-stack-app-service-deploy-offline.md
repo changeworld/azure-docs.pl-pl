@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 79d78faa53962ea72178281d75cef3c2f61320b1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614042"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971508"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcę zasobów usługi App Service do odłączonego środowiska usługi Azure Stack, zabezpieczone przez usługi AD FS
 
@@ -200,7 +200,7 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
 2. W obszarze Przegląd, w obszarze Stan zaznacz, aby zobaczyć, że **stan** Wyświetla **wszystkie role są gotowe**.
 
     ![Zarządzanie App Service](media/azure-stack-app-service-deploy/image12.png)
-    
+
 > [!NOTE]
 > Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrznego adresu IP, aby nawiązać połączenie magazynowi, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
 > * Źródło: wszystkie
@@ -221,9 +221,9 @@ Po wdrażanie i rejestrowanie dostawcy zasobów usługi App Service, go przetest
 > [!NOTE]
 > Należy utworzyć ofertę, który zawiera przestrzeń nazw Microsoft.Web w ramach planu. Następnie musisz mieć subskrypcję dzierżawy, która ją subskrybuje tej oferty. Aby uzyskać więcej informacji, zobacz [Utwórz ofertę](azure-stack-create-offer.md) i [Utwórz plan](azure-stack-create-plan.md).
 >
-Możesz *musi* mają subskrypcję dzierżawy, aby utworzyć aplikacje, które używają usługi App Service w usłudze Azure Stack. Tylko możliwości, których administrator usługi można wykonać z poziomu portalu administracyjnego są związane z administracyjnej dostawcy zasobów usługi App Service. Te funkcje obejmują dodanie pojemności, konfigurowanie źródeł wdrożenia i dodanie warstwy procesu roboczego i jednostki SKU.
+> Możesz *musi* mają subskrypcję dzierżawy, aby utworzyć aplikacje, które używają usługi App Service w usłudze Azure Stack. Tylko możliwości, których administrator usługi można wykonać z poziomu portalu administracyjnego są związane z administracyjnej dostawcy zasobów usługi App Service. Te funkcje obejmują dodanie pojemności, konfigurowanie źródeł wdrożenia i dodanie warstwy procesu roboczego i jednostki SKU.
 >
-Począwszy od trzeciego technical preview do utworzenia sieci web, interfejsów API i Azure Functions aplikacje, należy użyć portalu dzierżawcy i masz subskrypcję dzierżawy.
+> Począwszy od trzeciego technical preview do utworzenia sieci web, interfejsów API i Azure Functions aplikacje, należy użyć portalu dzierżawcy i masz subskrypcję dzierżawy.
 
 1. W portalu dzierżawcy usługi Azure Stack, kliknij przycisk **+ Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web**.
 

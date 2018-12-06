@@ -7,17 +7,17 @@ ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 74717b55ca8c935af7b4311ef29404e4a7d64d9c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 06e9b443c5b0dc1c23b325c7127511f8542a1a11
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879744"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964836"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
 Aby użyć usługi dzielenia i scalania, należy poprawnie skonfigurować zabezpieczenia. Usługa jest częścią funkcji elastyczne skalowanie systemu Microsoft Azure SQL Database. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scalić samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -142,7 +142,7 @@ Istnieją dwa różne mechanizmy obsługiwane do wykrywania i zapobiegania atako
 Są one oparte na funkcji opisano w zabezpieczeń dynamicznych adresów IP w usługach IIS. Gdy zmiana ta konfiguracja ostrożnie następujące czynniki:
 
 * Zachowanie serwery proxy i urządzenia translatora adresów sieciowych na informacje hosta zdalnego
-* Każde żądanie do dowolnego zasobu w roli sieci web jest uznawany za (np. ładowanie skryptów, obrazy, itp.)
+* Każde żądanie do dowolnego zasobu w roli sieci web jest uznawany za (na przykład podczas ładowania skryptów, obrazy, itp.)
 
 ## <a name="restricting-number-of-concurrent-accesses"></a>Ograniczenie liczby równoczesnych dostępy do
 Dostępne są następujące ustawienia, które skonfigurowania tego zachowania:
@@ -166,7 +166,7 @@ Następujące ustawienie umożliwia skonfigurowanie odpowiedzi na żądanie odmo
 Zapoznaj się z dokumentacją dla dynamicznych zabezpieczeń protokołu IP w usługach IIS dla innych obsługiwanych wartości.
 
 ## <a name="operations-for-configuring-service-certificates"></a>Operacje dotyczące konfigurowania usług certyfikatów
-Ten temat dotyczy tylko do celów referencyjnych. Wykonaj poniższe czynności konfiguracyjne opisane w temacie:
+Ten temat dotyczy tylko do celów referencyjnych. Wykonaj kroki konfiguracji opisane w temacie:
 
 * Konfigurowanie certyfikatu SSL
 * Skonfiguruj certyfikaty klienta
@@ -178,7 +178,7 @@ Należy wykonać:
       -n "CN=myservice.cloudapp.net" ^
       -e MM/DD/YYYY ^
       -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -sv MySSL.pvk MySSL.cer
 
 Aby dostosować:
@@ -221,7 +221,7 @@ Wykonaj następujące kroki na wszystkie konta/maszynie, która będzie komuniko
 * Zaimportuj certyfikat do magazynu zaufanych głównych urzędów certyfikacji
 
 ## <a name="turn-off-client-certificate-based-authentication"></a>Wyłącz uwierzytelnianie na podstawie certyfikatu klienta
-Tylko uwierzytelnianie oparte na certyfikatach klienta jest obsługiwane i wyłączenie go pozwoli na publiczny dostęp do punktów końcowych usługi, chyba że inne mechanizmy zostały spełnione (np. Microsoft Azure Virtual Network).
+Tylko uwierzytelnianie oparte na certyfikatach klienta jest obsługiwane i wyłączenie go pozwoli na publiczny dostęp do punktów końcowych usługi, chyba że inne mechanizmy znajdują się w miejscu (na przykład, Microsoft Azure Virtual Network).
 
 Zmień te ustawienia na wartość false w pliku konfiguracji usługi, aby wyłączyć tę funkcję:
 
@@ -239,7 +239,7 @@ Wykonaj poniższe kroki, aby utworzyć certyfikat z podpisem własnym do działa
     -n "CN=MyCA" ^
     -e MM/DD/YYYY ^
      -r -cy authority -h 1 ^
-     -a sha1 -len 2048 ^
+     -a sha256 -len 2048 ^
       -sr localmachine -ss my ^
       MyCA.cer
 
@@ -280,7 +280,7 @@ Z tym samym odciskiem palca, zaktualizuj wartość następujące ustawienia:
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
 
 ## <a name="issue-client-certificates"></a>Wystawianie certyfikatów klienta
-Poszczególnym uprawnień do uzyskania dostępu do usługi powinny mieć z certyfikatem klienta wystawionym dla his/hers wyłącznego użycia i należy wybrać, czy his/hers właścicielem silne hasło, aby chronić jego klucz prywatny. 
+Poszczególnym uprawnień do uzyskania dostępu do usługi powinny mieć z certyfikatem klienta wystawionym ich do wyłącznego użytku i wybrać własne silne hasło, aby chronić jego klucz prywatny. 
 
 W tym samym komputerze, na którym generowane i przechowywane certyfikat urzędu certyfikacji z podpisem własnym należy wykonać następujące czynności:
 
@@ -288,7 +288,7 @@ W tym samym komputerze, na którym generowane i przechowywane certyfikat urzędu
       -n "CN=My ID" ^
       -e MM/DD/YYYY ^
       -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -in "MyCA" -ir localmachine -is my ^
       -sv MyID.pvk MyID.cer
 
@@ -316,14 +316,14 @@ Wprowadź hasło, a następnie wyeksportować certyfikat za pomocą tych opcji:
 * Osoba, dla którego ten certyfikat został wystawiony, należy wybrać hasło eksportu
 
 ## <a name="import-client-certificate"></a>Importowanie certyfikatu klienta
-Każda osoba, dla którego został wystawiony certyfikat klienta należy zaimportować pary kluczy na maszynach, które będzie on używany do komunikacji z usługą:
+Każda osoba, dla którego został wystawiony certyfikat klienta należy zaimportować pary kluczy na maszynach, na których będą używać do komunikowania się z usługą:
 
 * Kliknij dwukrotnie. Plik PFX w Eksploratorze Windows
 * Importuj certyfikat do osobistego przechowywania z co najmniej tej opcji:
   * Dołącz wszystkie właściwości rozszerzone zaznaczone
 
 ## <a name="copy-client-certificate-thumbprints"></a>Skopiuj odciski palców certyfikatu klienta
-Każda osoba, dla którego został wystawiony certyfikat klienta należy wykonać następujące kroki, aby uzyskać odcisk palca his/hers certyfikatu, który zostanie dodany do pliku konfiguracji usługi:
+Każda osoba, dla którego został wystawiony certyfikat klienta, należy wykonać następujące kroki, aby uzyskać odcisk palca certyfikatu, który zostanie dodany do pliku konfiguracji usługi:
 
 * Uruchom certmgr.exe
 * Wybierz kartę osobiste.

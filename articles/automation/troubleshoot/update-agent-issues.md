@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 61ff50cda6ec523964ccf8f885f07c39020fbc88
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 68bac54de4f6a9f16f54032b10031bcf7222c676
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335150"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969315"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Zrozumienie wyniki wyboru agenta Windows do zarządzania aktualizacjami
 
@@ -82,7 +82,7 @@ To sprawdzenie Określa, czy `HealthService`, programie Microsoft Monitoring Age
 
 Aby dowiedzieć się więcej na temat rozwiązywania problemów z usługi, zobacz [nie jest uruchomiony program Microsoft Monitoring Agent](hybrid-runbook-worker.md#mma-not-running).
 
-Aby ponownie zainstalować program Microsoft Monitoring Agent, zobacz [Instalowanie i konfigurowanie programu Microsoft Monitoring Agent](../../log-analytics/log-analytics-quick-collect-windows-computer.md#install-the-agent-for-windows).
+Aby ponownie zainstalować program Microsoft Monitoring Agent, zobacz [Instalowanie i konfigurowanie programu Microsoft Monitoring Agent](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
 ### <a name="monitoring-agent-service-events"></a>Zdarzenia usługi agenta monitorowania
 

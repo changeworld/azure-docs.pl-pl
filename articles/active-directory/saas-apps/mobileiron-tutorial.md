@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8bdf49f4cea7c6f0ff30e37bcf1cf2fed3abc2bb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584115"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963814"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Samouczek: Integracja usługi Azure Active Directory z MobileIron
 
@@ -50,24 +50,27 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie MobileIron z galerii
 1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-mobileiron-from-the-gallery"></a>Dodawanie MobileIron z galerii
+
 Aby skonfigurować integrację MobileIron w usłudze Azure AD, należy dodać MobileIron z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać MobileIron z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
 1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
-    
+
 1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
@@ -103,7 +106,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
 1. Na **MobileIron domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
@@ -119,12 +122,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![MobileIron domena i adresy URL logowania jednokrotnego](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
     W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<host>.mobileiron.com/user/login.html`
-    
-    > [!NOTE]  Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Wartości klucza i hosta wystąpi z portalu administracyjnego MobileIron, które zostało wyjaśnione w dalszej części tego samouczka.
+
+    > [!NOTE]
+    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Wartości klucza i hosta wystąpi z portalu administracyjnego MobileIron, które zostało wyjaśnione w dalszej części tego samouczka.
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Link pobierania certyfikatu](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png) 
+    ![Link pobierania certyfikatu](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png)
 
 1. Kliknij przycisk **Zapisz** przycisku.
 
@@ -134,7 +138,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Przejdź do **administratora** > **tożsamości**.
 
-   * Wybierz **AAD** opcji **informacje na temat instalacji dostawcy tożsamości w chmurze** pola.
+   - Wybierz **AAD** opcji **informacje na temat instalacji dostawcy tożsamości w chmurze** pola.
 
     ![Konfigurowanie przycisku administrator rejestracji jednokrotnej](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
@@ -143,7 +147,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Konfigurowanie przycisku administrator rejestracji jednokrotnej](./media/mobileiron-tutorial/key.png)
 
 1. W **eksportu pliku metadanych z usługi AAD, a następnie zaimportować do pola chmury MobileIron** kliknij **wybierz plik** do przekazania metadane pobranego z witryny Azure portal. Kliknij przycisk **gotowe** przekazane.
- 
+
     ![Konfigurowanie logowania jednokrotnego przycisk metadanych administratora](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
 
 > [!TIP]
@@ -203,20 +207,20 @@ W przypadku MobileIron Inicjowanie obsługi administracyjnej jest zadanie ręczn
     1. W **imię** tekstu Wprowadź imię użytkownika, takich jak Britta.
 
     1. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak Simon.
-    
-    1. Kliknij przycisk **Gotowe**.  
+
+    1. Kliknij przycisk **Gotowe**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
 W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do MobileIron.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Britta Simon MobileIron, wykonaj następujące czynności:**
 
 1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 1. Na liście aplikacji wybierz **MobileIron**.
 
@@ -235,19 +239,18 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
 1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka MobileIron w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji MobileIron.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -262,4 +265,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/mobileiron-tutorial/tutorial_general_201.png
 [202]: ./media/mobileiron-tutorial/tutorial_general_202.png
 [203]: ./media/mobileiron-tutorial/tutorial_general_203.png
-

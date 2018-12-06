@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277277"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969961"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -36,7 +36,7 @@ Powinien zostać wyświetlony wersji wiersza polecenia platformy Azure i inne za
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Traktować jako zaufany certyfikat główny urzędu usługi Azure Stack
 
-1. Pobierz certyfikat główny urzędu usługi Azure Stack z [operator usługi Azure Stack](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) i zaufania temu certyfikatowi. Aby zaufać certyfikatowi głównemu urzędu certyfikacji w usłudze Azure Stack, należy dołączyć do istniejącego certyfikatu języka Python.
+1. Pobierz certyfikat główny urzędu usługi Azure Stack z [operator usługi Azure Stack](../azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) i zaufania temu certyfikatowi. Aby zaufać certyfikatowi głównemu urzędu certyfikacji w usłudze Azure Stack, należy dołączyć do istniejącego certyfikatu języka Python.
 
 1. Znajdź lokalizację certyfikatu na komputerze. Lokalizacja mogą się różnić w zależności od tego, gdzie zainstalowano języka Python. Musisz mieć [pip](https://pip.pypa.io) i [certifi](https://pypi.org/project/certifi/) zainstalowany moduł. Służy następujące polecenie języka Python w wierszu polecenia powłoki bash:
 
@@ -242,6 +242,6 @@ Istnieją znane problemy, które należy wiedzieć przy użyciu interfejsu wiers
 
 [Wdrażanie szablonów za pomocą wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
 
-[Włączanie interfejsu wiersza polecenia platformy Azure dla użytkowników usługi Azure Stack (Operator)](..\azure-stack-cli-admin.md)
+[Włączanie interfejsu wiersza polecenia platformy Azure dla użytkowników usługi Azure Stack (Operator)](../azure-stack-cli-admin.md)
 
 [Zarządzanie uprawnieniami użytkowników](azure-stack-manage-permissions.md)

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 537c94976dbb4f7753b7fafb3b6c94e97cc2cc17
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126330"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966266"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Zarządzanie zasobami usługi Azure Data Lake Storage Gen1 za pomocą Eksploratora usługi Storage
 
@@ -136,7 +136,7 @@ Następujące elementy pokazują, jak zarządzać zasobami w ramach konta Data L
 
    ![Okno dialogowe z przekazywaniem w toku](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
 
-> [!NOTE] 
+> [!NOTE]
 > Możesz bezpośrednio przeciągać foldery i pliki na komputerze lokalnym, aby rozpocząć przekazywanie. 
        
 ### <a name="download-folders-or-files-to-your-local-computer"></a>Pobieranie folderów lub plików na komputer lokalny
@@ -164,7 +164,7 @@ Plik zostanie pobrany i otwarty przy użyciu aplikacji skojarzonej z typem pliku
 
 ![Opcje kopiowania folderu](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
-> [!NOTE] 
+> [!NOTE]
 > Operacje kopiowania i wklejania między typami magazynów nie są obsługiwane. Można skopiować pliki lub foldery Data Lake Storage Gen1 i wkleić je na innym koncie Data Lake Storage Gen1. Ale *nie* kopiowanie Data Lake Storage Gen1 folderów lub plików, a następnie wklej je do usługi Azure Blob storage lub odwrotnie.
 > 
 > Działanie operacji kopiowania/wklejania polega na pobraniu folderów lub plików na komputer lokalny, a następnie przekazaniu ich do miejsca docelowego. Narzędzie *nie wykonuje* akcji w zapleczu. Operacja kopiowania/wklejania dużych plików trwa długo. Optymalizacja kopiowania/przenoszenia plików o wysokiej wydajności jest w toku.

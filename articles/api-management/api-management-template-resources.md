@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 36b64912eb3393ad496d04ff656bed5b0c41566c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444771"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970335"
 ---
 # <a name="azure-api-management-template-resources"></a>Zasoby szablonu usługi Azure API Management
 Usługa Azure API Management zawiera następujące typy zasobów, do użytku w Deweloper szablonów portalu.  
@@ -176,7 +176,7 @@ Usługa Azure API Management zawiera następujące typy zasobów, do użytku w D
 |WebDocumentationTemplatesDeveloperKey|Określ swój klucz subskrypcji|  
 |WebDocumentationTemplatesJavaApache|Ten przykład używa klienta Apache HTTP z projektu HTTP Components)http://hc.apache.org/httpcomponents-client-ga/)|  
 |WebDocumentationTemplatesOptionalParams|W razie potrzeby określ wartości dla parametrów opcjonalnych|  
-|WebDocumentationTemplatesPhpPackage|Ten przykład używa pakietu HTTP_Request2. (Aby uzyskać więcej informacji: http://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPhpPackage|Ten przykład używa pakietu HTTP_Request2. (Aby uzyskać więcej informacji: https://pear.php.net/package/HTTP_Request2)|  
 |WebDocumentationTemplatesPythonValuesForPath|W razie potrzeby określ wartości parametrów ścieżki (pokazanych jako {...}) i treść żądania|  
 |WebDocumentationTemplatesRequestBody|Określ treść żądania|  
 |WebDocumentationTemplatesRequiredParams|Określ wartości dla następujących wymaganych parametrów|  
@@ -571,13 +571,13 @@ Usługa Azure API Management zawiera następujące typy zasobów, do użytku w D
 |ApiManagementUserLimitReached|Ta usługa osiągnęła maksymalną liczbę dozwolonych użytkowników. Przeprowadź uaktualnienie do wyższej warstwy cenowej.|  
   
 ##  <a name="glyphs"></a> Zasoby glifów  
- Szablonów portalu dla deweloperów usługi API Management służy symbole z [Glyphicons z Bootstrap](http://getbootstrap.com/components/#glyphicons). Ten zestaw symbole obejmuje ponad 250 symbole w formacie czcionki na podstawie [Glyphicon](http://glyphicons.com/) Halflings zestawu. Aby użyć symbolu z tego zestawu, należy użyć następującej składni.  
+ Szablonów portalu dla deweloperów usługi API Management służy symbole z [Glyphicons z Bootstrap](https://getbootstrap.com/components/#glyphicons). Ten zestaw symbole obejmuje ponad 250 symbole w formacie czcionki na podstawie [Glyphicon](https://glyphicons.com/) Halflings zestawu. Aby użyć symbolu z tego zestawu, należy użyć następującej składni.  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- Aby uzyskać pełną listę symbole, zobacz [Glyphicons z Bootstrap](http://getbootstrap.com/components/#glyphicons).
+ Aby uzyskać pełną listę symbole, zobacz [Glyphicons z Bootstrap](https://getbootstrap.com/components/#glyphicons).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](api-management-developer-portal-templates.md).

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4a2ea188a35b5157950f0d61f35a5f2a4a0e83d3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3015db350b8011ccd328369732c5af3fa028a438
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856240"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963559"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 
@@ -31,7 +31,7 @@ Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w obsz
 
 ## <a name="log-queries"></a>Dziennik zapytań
 
-Wymagane jest zapytanie dziennika, aby pobrać wszystkie dane z usługi Log Analytics.  Czy jesteś [analizowanie danych w portalu](../../log-analytics/log-analytics-log-search-portals.md), [konfigurowania reguły alertu](../../monitoring-and-diagnostics/alert-metric.md) Aby otrzymywać powiadomienia o określony warunek, lub podczas pobierania danych przy użyciu [interfejsu API usługi Log Analytics](https://dev.loganalytics.io/), możesz użyje kwerendy do określenia danych, które chcesz.  Ten artykuł zawiera opis używania kwerend dzienników w usłudze Log Analytics i zapewnia pojęcia, które należy zrozumieć przed utworzeniem jeden.
+Wymagane jest zapytanie dziennika, aby pobrać wszystkie dane z usługi Log Analytics.  Czy jesteś [analizowanie danych w portalu](../../azure-monitor/log-query/portals.md), [konfigurowania reguły alertu](../../monitoring-and-diagnostics/alert-metric.md) Aby otrzymywać powiadomienia o określony warunek, lub podczas pobierania danych przy użyciu [interfejsu API usługi Log Analytics](https://dev.loganalytics.io/), możesz użyje kwerendy do określenia danych, które chcesz.  Ten artykuł zawiera opis używania kwerend dzienników w usłudze Log Analytics i zapewnia pojęcia, które należy zrozumieć przed utworzeniem jeden.
 
 
 
@@ -39,7 +39,7 @@ Wymagane jest zapytanie dziennika, aby pobrać wszystkie dane z usługi Log Anal
 
 Różne sposoby, że używany jest program zapytań w usłudze Log Analytics są następujące:
 
-- **Portals.** Można wykonać analizy interakcyjnej danych dziennika w [witryny Azure portal](../../log-analytics/log-analytics-log-search-portals.md).  Dzięki temu można edytować zapytania i analizować wyniki w różnych formatach i wizualizacji.  
+- **Portals.** Można wykonać analizy interakcyjnej danych dziennika w [witryny Azure portal](../../azure-monitor/log-query/portals.md).  Dzięki temu można edytować zapytania i analizować wyniki w różnych formatach i wizualizacji.  
 - **Reguły alertów.** [Reguły alertów](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) aktywnego identyfikowania problemów z danych w obszarze roboczym.  Każda reguła alertu opiera się na wyszukiwanie w dzienniku, który jest automatycznie uruchamiane w regularnych odstępach czasu.  Wyniki są kontrolowane, aby określić, jeśli utworzony alert.
 - **Pulpity nawigacyjne.** Możesz przypiąć wyniki dowolnego zapytania do [pulpitu nawigacyjnego platformy Azure](../../azure-monitor/platform/dashboards.md) co pozwala użytkownikowi na wizualizować dane dzienników i metryk ze sobą i opcjonalnie udostępniać innym użytkownikom usługi Azure. 
 - **Widoki.**  Możesz utworzyć wizualizacje danych, które mają zostać uwzględnione w pulpitami nawigacyjnymi użytkownika za pomocą [Projektant widoków](../../azure-monitor/platform/view-designer.md).  Dziennik zapytań zawierają dane używane przez [Kafelki](../../azure-monitor/platform/view-designer-tiles.md) i [części wizualizacji](../../azure-monitor/platform/view-designer-parts.md) w każdym widoku.  
@@ -50,7 +50,7 @@ Różne sposoby, że używany jest program zapytań w usłudze Log Analytics są
 ![Wyszukiwanie w Dzienniku](media/log-query-overview/queries-overview.png)
 
 ## <a name="write-a-query"></a>Napisz zapytanie
-Zaloguj się Analytics używa [wersję języka zapytań Eksploratora danych](../../log-analytics/query-language/get-started-queries.md) do pobierania i analizowania danych dziennika w na różne sposoby.  Będzie zazwyczaj rozpocząć podstawowe zapytania, a następnie postęp, aby użyć bardziej zaawansowane funkcje, jakie wymagania są coraz bardziej złożone.
+Zaloguj się Analytics używa [wersję języka zapytań Eksploratora danych](../../azure-monitor/log-query/get-started-queries.md) do pobierania i analizowania danych dziennika w na różne sposoby.  Będzie zazwyczaj rozpocząć podstawowe zapytania, a następnie postęp, aby użyć bardziej zaawansowane funkcje, jakie wymagania są coraz bardziej złożone.
 
 Podstawowa struktura zapytania jest tabela źródłowa następuje szereg operatory oddzielony znakiem kreski pionowej `|`.  Można połączyć w łańcuch ze sobą wiele operatorów, aby dostosować dane i wykonywać zaawansowane funkcje.
 
@@ -94,9 +94,9 @@ union Update, workspace("contoso-workspace").Update
 ```
 
 ## <a name="how-log-analytics-data-is-organized"></a>Sposób organizowania danych usługi Log Analytics
-Podczas tworzenia zapytania należy rozpocząć od określenia tabel, które znajdują się dane, którego szukasz. Różne rodzaje danych podzielono na dedykowane tabel w każdym [obszaru roboczego usługi Log Analytics](../../log-analytics/log-analytics-quick-create-workspace.md).  Dokumentacja dla różnych źródeł danych zawiera nazwę typu danych, które tworzy i opis każdego z jego właściwości.  Wiele zapytań będzie wymagać tylko dane z pojedynczej tabeli, ale inne mogą używać różnorodne opcje, aby dołączyć dane z wielu tabel.
+Podczas tworzenia zapytania należy rozpocząć od określenia tabel, które znajdują się dane, którego szukasz. Różne rodzaje danych podzielono na dedykowane tabel w każdym [obszaru roboczego usługi Log Analytics](../../azure-monitor/learn/quick-create-workspace.md).  Dokumentacja dla różnych źródeł danych zawiera nazwę typu danych, które tworzy i opis każdego z jego właściwości.  Wiele zapytań będzie wymagać tylko dane z pojedynczej tabeli, ale inne mogą używać różnorodne opcje, aby dołączyć dane z wielu tabel.
 
-Gdy [usługi Application Insights](../../application-insights/app-insights-overview.md) przechowuje dane aplikacji, takie jak żądania, wyjątki, ślady i użycia w usłudze Log Analytics, te dane są przechowywane w innej partycji niż dane dziennika. Umożliwia dostęp do tych danych na ten sam język zapytań, ale muszą używać [konsoli Application Insights](../../application-insights/app-insights-analytics.md) lub [interfejsu API REST usługi Application Insights](https://dev.applicationinsights.io/) do niego dostęp. Możesz użyć [zasobów dla wielu kwerendach](../../log-analytics/log-analytics-cross-workspace-search.md) połączenie danych usługi Application Insights z innymi danymi w usłudze Log Analytics.
+Gdy [usługi Application Insights](../../application-insights/app-insights-overview.md) przechowuje dane aplikacji, takie jak żądania, wyjątki, ślady i użycia w usłudze Log Analytics, te dane są przechowywane w innej partycji niż dane dziennika. Umożliwia dostęp do tych danych na ten sam język zapytań, ale muszą używać [konsoli Application Insights](../../application-insights/app-insights-analytics.md) lub [interfejsu API REST usługi Application Insights](https://dev.applicationinsights.io/) do niego dostęp. Możesz użyć [zasobów dla wielu kwerendach](../../azure-monitor/log-query/cross-workspace-query.md) połączenie danych usługi Application Insights z innymi danymi w usłudze Log Analytics.
 
 
 ![Tabele](media/log-query-overview/queries-tables.png)
@@ -109,5 +109,5 @@ Gdy [usługi Application Insights](../../application-insights/app-insights-overv
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [portale, które umożliwiają tworzenie i edytowanie dziennikach](../../log-analytics/log-analytics-log-search-portals.md).
-- Zapoznaj się z [samouczek na temat pisania zapytań](../../log-analytics/query-language/get-started-queries.md) przy użyciu nowego języka zapytań.
+- Dowiedz się więcej o [portale, które umożliwiają tworzenie i edytowanie dziennikach](../../azure-monitor/log-query/portals.md).
+- Zapoznaj się z [samouczek na temat pisania zapytań](../../azure-monitor/log-query/get-started-queries.md) przy użyciu nowego języka zapytań.

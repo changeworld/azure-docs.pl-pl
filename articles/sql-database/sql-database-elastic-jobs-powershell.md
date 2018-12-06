@@ -3,7 +3,7 @@ title: Tworzenie i zarządzanie nimi przy użyciu programu PowerShell zadań ela
 description: Program PowerShell umożliwia Zarządzanie pulami usługi Azure SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: pwershell
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 9ed5026211bec11b510d095decac25f8d4b8a52a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 36b03794f4b55af3de89f96ecee02f5542f40f01
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243201"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972103"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Tworzenie i zarządzanie nimi zadania elastyczne bazy danych SQL przy użyciu programu PowerShell (wersja zapoznawcza)
 
@@ -34,7 +34,7 @@ Interfejsy API programu PowerShell dla **zadania Elastic Database** (w wersji za
 * **Zadania elastic Database** pakietami programu PowerShell: zobacz [zadania instalowania elastycznych baz danych](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Wybierz swoją subskrypcję platformy Azure
-Aby wybrać subskrypcję należy Twojego identyfikatora subskrypcji (**- SubscriptionId**) lub Nazwa subskrypcji (**- SubscriptionName**). Jeśli masz wiele subskrypcji możesz uruchomić **Get-AzureRmSubscription** polecenia cmdlet i skopiować informacje o odpowiedniej subskrypcji, z wyniku ustawione. Po uzyskaniu informacji o subskrypcji, uruchom następujące polecenia cmdlet można ustawić tej subskrypcji jako wartość domyślna, czyli cel dla tworzenia zadania i zarządzać nimi:
+Aby wybrać subskrypcję należy Twojego identyfikatora subskrypcji (**- SubscriptionId**) lub Nazwa subskrypcji (**- SubscriptionName**). Jeśli masz wiele subskrypcji możesz uruchomić **Get-AzureRmSubscription** polecenia cmdlet i skopiować informacje o odpowiedniej subskrypcji, z wyniku ustawione. Po uzyskaniu informacji o subskrypcji, uruchom następujące polecenie cmdlet można ustawić tej subskrypcji jako wartość domyślna, czyli cel dla tworzenia zadania i zarządzać nimi:
 
     Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
 

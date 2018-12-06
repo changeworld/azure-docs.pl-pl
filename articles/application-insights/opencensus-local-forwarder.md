@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: 39d6b586158ce292f3697af0f7241a3858842374
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722228"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970590"
 ---
 # <a name="local-forwarder"></a>Lokalna usługa przesyłania dalej
 
@@ -39,7 +39,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 1. Pobierz LF. Plik WindowsServiceHost.zip [stronie wersji lokalnej usługi przesyłania dalej](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) w witrynie GitHub.
 
-    ![Zrzut ekranu przedstawiający stronę pobierania wersji lokalnej usługi przesyłania dalej](.\media\opencensus-local-forwarder\001-local-forwarder-windows-service-host-zip.png)
+    ![Zrzut ekranu przedstawiający stronę pobierania wersji lokalnej usługi przesyłania dalej](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
 2. W tym przykładzie w celu ułatwienia demonstracji, po prostu wyodrębnimy pliku .zip do ścieżki `C:\LF-WindowsServiceHost`.
 
@@ -55,7 +55,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     Aby zbadać nowej usługi przy użyciu typu usługi graficznego interfejsu użytkownika ``services.msc``
         
-     ![Zrzut ekranu przedstawiający usługi modułu przekazującego lokalne](.\media\opencensus-local-forwarder\002-services.png)
+     ![Zrzut ekranu przedstawiający usługi modułu przekazującego lokalne](./media/opencensus-local-forwarder/002-services.png)
 
 3. **Kliknij prawym przyciskiem myszy** nowej lokalnej usługi przesyłania dalej, a następnie wybierz pozycję **Start**. Usługi staną się teraz uruchomiony.
 
@@ -73,7 +73,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
 6. Aby upewnić się, że żądane ustawienia zostały spełnione i lokalne usługi przesyłania dalej nasłuchuje danych śledzenia jako oczekiwana wyboru ``LocalForwarder.log`` pliku. Powinny zostać wyświetlone wyniki podobne do poniższej ilustracji w dolnej części pliku:
 
-    ![Zrzut ekranu LocalForwarder.log pliku](.\media\opencensus-local-forwarder\003-log-file.png)
+    ![Zrzut ekranu LocalForwarder.log pliku](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>Aplikacja konsolowa
 

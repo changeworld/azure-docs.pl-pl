@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: b83c67e5c2ca47e73c1743d8eeaea03a8d92ea1f
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 48295a48700ee8b7331ae9811b7dd43a0ec8fa69
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247856"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959890"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Przygotowanie do zmiany formatu do dzienników diagnostycznych usługi Azure Monitor zarchiwizować na koncie magazynu
 
@@ -47,11 +47,11 @@ Jedynie wpływ ta zmiana Jeśli możesz:
  
 Aby sprawdzić, czy masz ustawienia diagnostyczne zasobów, które wysyłają dane do konta usługi Azure storage, możesz przejść do **Monitor** sekcji portalu, kliknij pozycję **ustawień diagnostycznych**i zidentyfikować wszystkie zasoby, które mają **stanie diagnostyki** równa **włączone**:
 
-![Blok usługi Azure Monitor ustawień diagnostycznych](./media/monitor-diagnostic-logs-append-blobs\portal-diag-settings.png)
+![Blok usługi Azure Monitor ustawień diagnostycznych](./media/monitor-diagnostic-logs-append-blobs/portal-diag-settings.png)
 
 Jeśli stanie diagnostyki jest równa włączona, masz aktywne ustawienie diagnostyczne dla tego zasobu. Kliknij zasób, aby zobaczyć, jeśli wszystkie ustawienia diagnostyczne wysyłania danych do konta magazynu:
 
-![Konto magazynu jest włączone](./media/monitor-diagnostic-logs-append-blobs\portal-storage-enabled.png)
+![Konto magazynu jest włączone](./media/monitor-diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
 Jeśli masz zasoby wysyłania danych do konta magazynu przy użyciu tych ustawień diagnostycznych zasobu formatu danych na tym koncie magazynu będzie wpływ tej zmiany. Jeśli nie masz niestandardowych narzędzi, który działa poza te konta magazynu, Zmień format nie ma wpływu na użytkownik.
 

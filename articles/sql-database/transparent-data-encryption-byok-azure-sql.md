@@ -11,19 +11,19 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 32d1956741f739234a3fdea7034f2f1e33a4c082
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 12/04/2018
+ms.openlocfilehash: 0c819e4efb158baa2150b00368c618c5467a01e0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408229"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966785"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Usługa Azure SQL Transparent Data Encryption: Bring Your Own Key pomocy technicznej
 
-Bring Your Own Key (BYOK), obsługa [przezroczystego szyfrowania danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) umożliwia zaszyfrowanie klucza szyfrowania bazy danych (DEK) przy użyciu klucza asymetrycznego, nazywane ochrony TDE.  Funkcja ochrony TDE znajduje się pod kontrolą w [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), platformy Azure opartej na chmurze zewnętrznego kluczy systemu zarządzania. Usługa Azure Key Vault to pierwsze Usługa zarządzania kluczami, za pomocą którego TDE została zintegrowana obsługa dla funkcji BYOK. Funkcja TDE klucza szyfrowania danych, który jest przechowywany na stronę rozruchu bazy danych zostaje zaszyfrowany i odszyfrować za pomocą funkcji ochrony TDE. Funkcja ochrony TDE jest przechowywany w usłudze Azure Key Vault i nigdy nie opuszcza magazynu kluczy. Odwołania dostępu do magazynu kluczy z serwera bazy danych nie można odszyfrować i odczytu do pamięci.  Funkcja ochrony TDE jest ustawiona na poziomie serwera logicznego i jest dziedziczona przez wszystkie bazy danych skojarzonych z tym serwerem.
+Bring Your Own Key (BYOK), obsługa [przezroczystego szyfrowania danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) umożliwia zaszyfrowanie klucza szyfrowania bazy danych (DEK) przy użyciu klucza asymetrycznego, nazywane ochrony TDE.  Funkcja ochrony TDE znajduje się pod kontrolą w [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), platformy Azure opartej na chmurze zewnętrznego kluczy systemu zarządzania. Usługa Azure Key Vault to pierwsze Usługa zarządzania kluczami, za pomocą którego TDE została zintegrowana obsługa dla funkcji BYOK. Funkcja TDE klucza szyfrowania danych, który jest przechowywany na stronę rozruchu bazy danych zostaje zaszyfrowany i odszyfrować za pomocą funkcji ochrony TDE. Funkcja ochrony TDE jest przechowywany w usłudze Azure Key Vault i nigdy nie opuszcza magazynu kluczy. Odwołania dostępu do magazynu kluczy z serwera bazy danych nie można odszyfrować i odczytu do pamięci. Usługi Azure SQL Database funkcji ochrony TDE jest ustawiona na poziomie serwera logicznego i jest dziedziczona przez wszystkie bazy danych skojarzonych z tym serwerem. Dla wystąpienia zarządzanego Azure SQL, funkcji ochrony TDE jest ustawiona na poziomie wystąpienia i jest dziedziczona przez wszystkie *zaszyfrowanych* baz danych w tym wystąpieniu. Termin *serwera* odnosi się zarówno do serwera i wystąpienia, w tym dokumencie, o ile nie wskazano inaczej.
 
-Z obsługą funkcji BYOK użytkownicy mogą teraz kontrolować zadania zarządzania kluczami, w tym wymiany kluczy, uprawnień usługi key vault, usuwanie kluczy i Włącz inspekcję/raportowanie na wszystkie funkcje ochrony TDE, za pomocą funkcji usługi Azure Key Vault. Usługa Key Vault umożliwia centralne zarządzanie kluczami, wykorzystuje ściśle monitorowanych sprzętowych modułach zabezpieczeń (HSM) i umożliwia rozdzielenie obowiązków między zarządzanie kluczami i danych może zapewnić zgodność z przepisami.  
+Z obsługą funkcji BYOK użytkownicy mogą kontrolować zadania zarządzania kluczami, w tym wymiany kluczy, uprawnień usługi key vault, usuwanie kluczy i Włącz inspekcję/raportowanie na wszystkie funkcje ochrony TDE, za pomocą funkcji usługi Azure Key Vault. Usługa Key Vault umożliwia centralne zarządzanie kluczami, wykorzystuje ściśle monitorowanych sprzętowych modułach zabezpieczeń (HSM) i umożliwia rozdzielenie obowiązków między zarządzanie kluczami i danych może zapewnić zgodność z przepisami.  
 
 Funkcja TDE z funkcją BYOK zapewnia następujące korzyści:
 
@@ -43,34 +43,33 @@ Funkcja TDE z funkcją BYOK zapewnia następujące korzyści:
 Gdy TDE najpierw jest skonfigurowany do używania funkcji ochrony TDE z usługi Key Vault, serwer wysyła klucza szyfrowania danych w poszczególnych baz danych z włączoną funkcję TDE do usługi Key Vault dla zawijania żądania klucza. Usługa Key Vault zwraca klucz szyfrowania szyfrowanej bazy danych, który jest przechowywany w bazie danych użytkownika.  
 
 > [!IMPORTANT]
-> Ważne jest, aby pamiętać, że **po ochrony TDE jest przechowywany w usłudze Azure Key Vault, nigdy nie opuszcza usługi Azure Key Vault**. Serwer logiczny można wysyłać żądania operacja klucza tylko do materiału klucza funkcji ochrony TDE w ramach usługi Key Vault i **nigdy nie uzyskuje dostępu do lub buforuje ochrony TDE**. Administrator usługi Key Vault ma prawo do odwołania uprawnień usługi Key Vault serwera w dowolnym momencie, w którym to przypadku wszystkie połączenia z serwerem są obcinane.
+> Ważne jest, aby pamiętać, że **po ochrony TDE jest przechowywany w usłudze Azure Key Vault, nigdy nie opuszcza usługi Azure Key Vault**. Serwer można wysyłać żądania operacja klucza tylko do materiału klucza funkcji ochrony TDE w ramach usługi Key Vault i **nigdy nie uzyskuje dostępu do lub buforuje ochrony TDE**. Administrator usługi Key Vault ma prawo do odwołania uprawnień usługi Key Vault serwera w dowolnym momencie, w którym to przypadku wszystkie połączenia z serwerem są obcinane.
 
 ## <a name="guidelines-for-configuring-tde-with-byok"></a>Wskazówki dotyczące konfigurowania funkcji TDE z funkcją BYOK
 
 ### <a name="general-guidelines"></a>Ogólne wskazówki
 
-- Upewnij się, będzie znajdować się w tej samej dzierżawie usługi Azure Key Vault i Azure SQL Database.  Klucza magazynu i serwera interakcje międzydzierżawowa **nie są obsługiwane**.
+- Upewnij się, będzie znajdować się w tej samej dzierżawie usługi Azure Key Vault i Azure SQL Database/wystąpienia zarządzanego.  Klucza magazynu i serwera interakcje międzydzierżawowa **nie są obsługiwane**.
 - Zdecyduj, subskrypcje, które mają służyć do wymaganych zasobów — Przenoszenie serwera między subskrypcjami później wymaga nowe ustawienia funkcji TDE z BYOKs. Dowiedz się więcej o [przenoszenia zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - Podczas konfigurowania funkcji TDE z funkcją BYOK, należy wziąć pod uwagę obciążenia umieszczone w magazynie kluczy przez powtarzanych opakowywanie/odpakowywania operacje. Na przykład ponieważ wszystkie bazy danych skojarzone z serwerem logicznym używa tych samych funkcji ochrony TDE, pracy w trybie failover tego serwera spowoduje wyzwolenie wiele kluczowych operacji dotyczących magazynu, ponieważ istnieją to bazy danych na serwerze. Oparte na naszych doświadczeniach i udokumentowane [klucza magazynu limity](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits), firma Microsoft zaleca kojarzenie co najwyżej 500 Standard / ogólnego przeznaczenia lub 200 Premium / krytyczne dla działania firmy baz danych przy użyciu jednej usługi Azure Key Vault w ramach jednej subskrypcji do zapewnienia dostępność charakteryzujące się stałym wysokim podczas uzyskiwania dostępu do funkcji ochrony TDE w magazynie.
 - Zalecane: Przechowywać kopię ochrony TDE w środowisku lokalnym.  Wymaga urządzenia HSM, aby utworzyć lokalnie funkcja ochrony TDE i systemem depozytu klucza do przechowywania kopii lokalnej ochrony TDE.  Dowiedz się, [jak przenieść klucz z lokalnego modułu HSM do usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Wskazówki dotyczące konfigurowania usługi Azure Key Vault
 
-- Tworzenie magazynu kluczy przy użyciu [opcji soft-delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) włączone do ochrony przed utratą w razie przypadkowego klucz — lub usługi key vault — usunięcie.  Należy użyć [programu PowerShell, aby włączyć właściwość "opcji soft-delete"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) w magazynie kluczy (Ta opcja nie jest dostępna z portalu AKV jeszcze — ale wymagane przez program SQL):  
+- Tworzenie magazynu kluczy przy użyciu [opcji soft-delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) włączone do ochrony przed utratą w razie przypadkowego klucz — lub usługi key vault — usunięcie.  Należy użyć [programu PowerShell, aby włączyć właściwość "opcji soft-delete"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) w magazynie kluczy (Ta opcja nie jest dostępna z portalu AKV jeszcze — ale wymaganych przez usługi Azure SQL):  
   - Nietrwale usunięte zasoby są przechowywane przez pewien okres czasu, 90 dni, chyba że są one odzyskać lub usunięte.
   - **Odzyskać** i **przeczyścić** akcji ma własne uprawnienia skojarzone zasady dostępu magazynu kluczy.
 - Ustaw blokady zasobu magazynu kluczy w celu kontrolowania, kto może usunąć ten zasób krytycznych i aby zapobiec przypadkowym lub nieautoryzowanych usunięciem.  [Dowiedz się więcej na temat blokowania zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)
 
-- Udziel dostępu serwer logiczny, do usługi key vault przy użyciu tożsamości usługi Azure Active Directory (Azure AD).  Korzystając z interfejsu użytkownika portalu, automatycznie tworzony tożsamości usługi Azure AD i uprawnień dostępu do magazynu kluczy są przyznawane na serwerze.  Przy użyciu programu PowerShell, aby skonfigurować funkcję TDE z funkcją BYOK, tożsamością usługi Azure AD muszą być tworzone i należy zweryfikować ukończenia. Zobacz [skonfigurować szyfrowanie TDE w bazie BYOK](transparent-data-encryption-byok-azure-sql-configure.md) szczegółowe instrukcje krok po kroku, korzystając z programu PowerShell.
+- Udziel dostępu serwer logiczny, do usługi key vault przy użyciu tożsamości usługi Azure Active Directory (Azure AD).  Korzystając z interfejsu użytkownika portalu, automatycznie tworzony tożsamości usługi Azure AD i uprawnień dostępu do magazynu kluczy są przyznawane na serwerze.  Przy użyciu programu PowerShell, aby skonfigurować funkcję TDE z funkcją BYOK, tożsamością usługi Azure AD muszą być tworzone i należy zweryfikować ukończenia. Zobacz [skonfigurować szyfrowanie TDE w bazie BYOK](transparent-data-encryption-byok-azure-sql-configure.md) i [skonfigurować szyfrowanie TDE w bazie funkcji BYOK dla wystąpienia zarządzanego](http://aka.ms/sqlmibyoktdepowershell) szczegółowe instrukcje krok po kroku, korzystając z programu PowerShell.
 
   > [!NOTE]
   > Jeśli usługa Azure AD Identity **jest przypadkowo usunięty lub uprawnienia do serwera zostaną odwołane** za pomocą zasad dostępu magazynu kluczy, serwer utraci dostęp do magazynu kluczy i baz danych funkcja TDE szyfrowane są porzucane w ciągu 24 godzin.
 
-- Korzystając z zapór i sieci wirtualnych za pomocą usługi Azure Key Vault, należy skonfigurować następujące czynności: 
-  - Zezwalaj na zaufanych usług firmy Microsoft na pomijanie zapory — wybrana opcja tak 
-         
-    > [!NOTE] 
-    > Jeśli funkcja TDE jest zaszyfrowany baz danych SQL utrata dostępu do magazynu kluczy, ponieważ nie można ich obejścia zapory, baz danych są porzucane w ciągu 24 godzin.
+- Korzystając z zapór i sieci wirtualnych za pomocą usługi Azure Key Vault, należy skonfigurować następujące czynności: — Zezwalaj na zaufanych usług firmy Microsoft na pomijanie zapory — wybrana opcja tak
+
+ > [!NOTE]
+ > Jeśli szyfrowane TDE baz danych SQL utrata dostępu do magazynu kluczy, ponieważ nie można ich obejścia zapory, baz danych są porzucane w ciągu 24 godzin.
 
 - Włączanie inspekcji i raporty dotyczące wszystkich kluczy szyfrowania: Key Vault zapewnia dzienników, które są łatwe do dodania do innych informacjami i zdarzeniami (SIEM) narzędzia do zarządzania zabezpieczeniami. Operations Management Suite (OMS) [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) jest przykładem usługi, która jest już zintegrowana.
 - W celu zapewnienia wysokiej dostępności szyfrowanymi bazami danych, należy skonfigurować każdy serwer logiczny za pomocą dwóch usługi Azure Key Vault, które znajdują się w różnych regionach.

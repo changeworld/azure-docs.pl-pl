@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 0801e3a0e9217ab0855d09df8a054926b488d759
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 04588d0af0f85a9e69f44e82d01294c2a4440abc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821552"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961148"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Protokołu AMQP 1.0 w przewodnik dotyczący protokołu usługi Azure Service Bus i Event Hubs
 
@@ -94,7 +94,7 @@ Inicjowanie łącza kontenera zadaje przeciwny kontener, aby zaakceptować łąc
 
 Łącza są o nazwie i skojarzone z węzłów. Jak wspomniano na początku, węzły są komunikujące się jednostki w kontenerze.
 
-W usłudze Service Bus węzeł odpowiada bezpośrednio kolejki, tematu, subskrypcji lub kolejki utraconych wiadomości podrzędnej kolejki lub subskrypcji. Nazwa węzła używana na protokół AMQP w związku z tym jest względnej nazwy jednostki w przestrzeni nazw usługi Service Bus. Jeśli kolejka jest o nazwie `myqueue`, również jest jej nazwa węzła protokołu AMQP. Subskrypcji tematu następuje po Konwencji interfejsu API protokołu HTTP, posortowana w kolekcji zasobów "subskrypcje", a tym samym subskrypcji **sub** lub temat **mytopic** ma nazwę węzła AMQP  **sub-mytopic/subskrypcje**.
+W usłudze Service Bus węzeł odpowiada bezpośrednio kolejki, tematu, subskrypcji lub kolejki utraconych wiadomości podrzędnej kolejki lub subskrypcji. Nazwa węzła używana na protokół AMQP w związku z tym jest względnej nazwy jednostki w przestrzeni nazw usługi Service Bus. Jeśli kolejka jest o nazwie `myqueue`, również jest jej nazwa węzła protokołu AMQP. Subskrypcji tematu następuje po Konwencji interfejsu API protokołu HTTP, posortowana w kolekcji zasobów "subskrypcje", a tym samym subskrypcji **sub** na temat **mytopic** ma nazwę węzła AMQP  **sub-mytopic/subskrypcje**.
 
 Klienta nawiązującego połączenie jest również wymagane do używania nazwy lokalnego węzła usługi do tworzenia łączy; Usługa Service Bus nie jest normatywnych dotyczących tych nazw węzła i nie interpretuje je. Stosy klienta protokołu AMQP 1.0 zazwyczaj korzystają ze schematu do zapewnienia specyficzne te nazwy węzłów tymczasowych w zakresie klienta.
 
@@ -213,7 +213,7 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 | Nazwa pola | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
 | trwałe |- |- |
-| priorytet |- |- |
+| priority |- |- |
 | czas wygaśnięcia |Czas wygaśnięcia dla tego komunikatu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
 | pierwszy przejmująca |- |- |
 | Liczba prób dostarczenia |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
@@ -243,7 +243,7 @@ Istnieje kilka innych usługi Service bus komunikat właściwości, które nie s
 | Klucz mapy adnotacji | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
 | x zoptymalizowany pod kątem zaplanowane-umieścić w kolejce — w czasie | Deklaruje co komunikat powinien pojawić się w jednostce |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x — zoptymalizowany pod kątem klucza partycji | Klucz zdefiniowanych przez aplikację, które określają, które partycji komunikat powinny znaleźć się w. | [Właściwości PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x — zoptymalizowany pod kątem klucza partycji | Klucz zdefiniowanych przez aplikację, które określają, które partycji komunikat powinny znaleźć się w. | [właściwości partitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
 | x — zoptymalizowany pod kątem — za pośrednictwem klucza partycji | Zdefiniowane przez aplikację klucza partycji wartość, gdy transakcja jest używany do wysyłania komunikatów za pośrednictwem kolejki transferu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
 | x zoptymalizowany pod kątem umieszczonych w kolejce — w czasie | Zdefiniowane przez usługę czasu UTC reprezentujący rzeczywisty czas enqueuing wiadomości. Dane wejściowe są ignorowane na. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
 | x — zoptymalizowany pod kątem — — numer sekwencyjny | Zdefiniowane przez usługę unikatowy numer przypisany do wiadomości. | [sequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |

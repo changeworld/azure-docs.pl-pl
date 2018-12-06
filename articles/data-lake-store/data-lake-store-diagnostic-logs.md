@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 91cbebecc227d24337b2d1b421dd1611bf0fac46
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 357257d38c444eae8077568993d49816e3c090a3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390800"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966079"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Uzyskiwanie dostępu do dzienników diagnostycznych usługi Azure Data Lake Storage Gen1
 Dowiedz się włączyć diagnostyczne dla Twojego konta usługi Azure Data Lake Storage Gen1 i jak wyświetlić dzienniki zebrane dla swojego konta.
@@ -46,7 +46,7 @@ Organizacje mogą włączyć rejestrowania diagnostycznego dla swojego konta us�
         
         * Wybierz opcję, aby **Stream do usługi event hub** przesyłanie strumieniowe dzienników danych do usługi Azure Event Hub. Prawdopodobnie użyjesz tej opcji w przypadku potoku przetwarzania transmisji dla klientów w celu analizowania przychodzącej dzienników w czasie rzeczywistym. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla usługi Azure Event Hub, którego chcesz użyć.
 
-        * Wybierz opcję, aby **wysyłanie do usługi Log Analytics** analizować dane dzienników wygenerowane za pomocą usługi Azure Log Analytics. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla obszaru roboczego usługi Log Analytics zostanie wykorzystany wykonaj analizę dziennika. Zobacz [wyświetlanie i analizowanie danych zebranych przez wyszukiwanie w dziennikach usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Log Analytics.
+        * Wybierz opcję, aby **wysyłanie do usługi Log Analytics** analizować dane dzienników wygenerowane za pomocą usługi Azure Log Analytics. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla obszaru roboczego usługi Log Analytics zostanie wykorzystany wykonaj analizę dziennika. Zobacz [wyświetlanie i analizowanie danych zebranych przez wyszukiwanie w dziennikach usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Log Analytics.
      
    * Określ, czy chcesz pobrać dzienniki inspekcji, dzienniki żądania lub obu.
    * Określ liczbę dni, dla których dane muszą zostać zachowane. Przechowywanie ma zastosowanie tylko jeśli używasz konta magazynu platformy Azure pod kątem archiwizowania danych dziennika.
@@ -130,7 +130,7 @@ Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. 
 | --- | --- | --- |
 | HttpMethod |Ciąg |Metoda HTTP używana dla tej operacji. Na przykład UZYSKAĆ. |
 | Ścieżka |Ciąg |Ścieżka operacja została wykonana w |
-| RequestContentLength |Int |Długość zawartości żądania HTTP |
+| RequestContentLength |int |Długość zawartości żądania HTTP |
 | ClientRequestId |Ciąg |Identyfikator, który unikatowo identyfikuje tego żądania |
 | Godzina rozpoczęcia |Ciąg |Czas, w którym serwer odebrał żądanie |
 | Godzina zakończenia |Ciąg |Czas wysłanego przez serwer odpowiedzi |
@@ -178,7 +178,7 @@ Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. 
 | StreamName |Ciąg |Ścieżka operacja została wykonana w |
 
 ## <a name="samples-to-process-the-log-data"></a>Przykłady, aby przetwarzać dane dziennika
-Podczas wysyłania dzienników z usługi Azure Data Lake Storage Gen1 do usługi Azure Log Analytics (zobacz [wyświetlanie i analizowanie danych zebranych przez wyszukiwanie w dziennikach usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Log Analytics), następujące zapytanie zwróci tabelę zawierającą listę użytkownika nazw wyświetlanych, czas zdarzenia, a liczba zdarzeń czasu dla zdarzenia wraz z visual wykresu. Łatwo możesz to modyfikować, aby wyświetlić identyfikator GUID użytkownika lub inne atrybuty:
+Podczas wysyłania dzienników z usługi Azure Data Lake Storage Gen1 do usługi Azure Log Analytics (zobacz [wyświetlanie i analizowanie danych zebranych przez wyszukiwanie w dziennikach usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Log Analytics), następujące zapytanie zwróci tabelę zawierającą listę użytkownika nazw wyświetlanych, czas zdarzenia, a liczba zdarzeń czasu dla zdarzenia wraz z visual wykresu. Łatwo możesz to modyfikować, aby wyświetlić identyfikator GUID użytkownika lub inne atrybuty:
 
 ```
 search *

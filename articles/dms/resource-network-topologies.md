@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/8/2018
-ms.openlocfilehash: 9b036b74141ce2091d2e68b68d10c44a56a8696d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: cd62b60718a35aed9129db61413086266bb9f2c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300696"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971083"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Topologie sieci na potrzeby migracji wystąpienia zarządzanego Azure SQL DB przy użyciu usługi Azure Database Migration Service
 W tym artykule omówiono różne topologie sieci, które Azure Database Migration Service można pracować zapewniając migracji kompleksowe środowisko z lokalnymi serwerami SQL do wystąpienia zarządzanego Azure SQL Database.
@@ -24,7 +24,7 @@ W tym artykule omówiono różne topologie sieci, które Azure Database Migratio
 ## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>Usługa Azure wystąpienia zarządzanego SQL Database skonfigurowane dla obciążeń hybrydowych 
 Użyj tej topologii, jeśli Twoja baza danych wystąpienia zarządzanego Azure SQL jest podłączony do sieci lokalnej. To podejście zapewnia najbardziej uproszczone routing w sieci i daje maksymalną przepustowość podczas migracji.
 
-![Topologia sieci w przypadku obciążeń hybrydowych](media\resource-network-topologies\hybrid-workloads.png)
+![Topologia sieci w przypadku obciążeń hybrydowych](media/resource-network-topologies/hybrid-workloads.png)
 
 **Wymagania**
 - W tym scenariuszu Azure SQL Database Managed Instance i wystąpienie usługi Azure Database Migration Service, które są tworzone w tej samej sieci Wirtualnej platformy Azure, ale używają różnych podsieci.  
@@ -36,7 +36,7 @@ Użyj tej topologii sieci, jeśli dane środowisko wymaga co najmniej jedną z n
 - Jeśli zasady kontroli dostępu na podstawie ról (RBAC) znajdują się w miejscu, a chcesz ograniczyć użytkownikom uzyskiwanie dostępu do tej samej subskrypcji, który jest hostem bazy danych wystąpienia zarządzanego Azure SQL.
 - Sieci wirtualne używane dla bazy danych wystąpienia zarządzanego Azure SQL i Azure Database Migration Service znajdują się w różnych subskrypcjach.
 
-![Topologii sieciowej dla wystąpienia zarządzanego odizolowanych od sieci lokalnej](media\resource-network-topologies\mi-isolated-workload.png)
+![Topologii sieciowej dla wystąpienia zarządzanego odizolowanych od sieci lokalnej](media/resource-network-topologies/mi-isolated-workload.png)
 
 **Wymagania**
 - Sieć Wirtualną, która używa usługi Azure Database Migration Service, w tym scenariuszu również muszą być podłączone do sieci lokalnej za pomocą (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
@@ -47,7 +47,7 @@ Użyj tej topologii sieci, jeśli dane środowisko wymaga co najmniej jedną z n
 
 Użyj tej topologii, jeśli źródła programu SQL Server znajduje się w Maszynie wirtualnej platformy Azure i udostępni tej samej sieci Wirtualnej wystąpienia zarządzanego Azure SQL Database i Azure Database Migration Service.
 
-![Topologia sieci dla migracji chmury do chmury za pomocą udostępnionej sieci wirtualnej](media\resource-network-topologies\cloud-to-cloud.png)
+![Topologia sieci dla migracji chmury do chmury za pomocą udostępnionej sieci wirtualnej](media/resource-network-topologies/cloud-to-cloud.png)
 
 **Wymagania**
 - Nie dodatkowe wymagania.
@@ -59,7 +59,7 @@ Użyj tej topologii sieci, jeśli dane środowisko wymaga co najmniej jedną z n
 - Jeśli zasady kontroli dostępu na podstawie ról (RBAC) znajdują się w miejscu, a chcesz ograniczyć użytkownikom uzyskiwanie dostępu do tej samej subskrypcji, który jest hostem bazy danych wystąpienia zarządzanego Azure SQL.
 - Sieci wirtualne używane dla wystąpienia zarządzanego Azure SQL Database i Azure Database Migration Service znajdują się w różnych subskrypcjach.
 
-![Topologia sieci dla migracji chmury do chmury za pomocą izolowanej sieci wirtualnej](media\resource-network-topologies\cloud-to-cloud-isolated.png)
+![Topologia sieci dla migracji chmury do chmury za pomocą izolowanej sieci wirtualnej](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
 **Wymagania**
 - Konfigurowanie [wirtualne sieci równorzędne sieci](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) między siecią Wirtualną użytą do wystąpienia zarządzanego Azure SQL Database i Azure Database Migration Service.

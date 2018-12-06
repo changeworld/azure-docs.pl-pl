@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: ee6e4397345b4cb169e7e22d951d4c4fdff5b7b7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 632cf506477bdc6f35c66a473963168f81e22351
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078719"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971899"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>Usługa App Service w usłudze Azure Stack update — informacje o wersji 1
 
@@ -145,7 +145,7 @@ Zamiany gniazda witryny jest przerywana w tej wersji. Aby przywrócić funkcjona
 
       # Commit the changes back to NSG
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
-      ```
+    ```
 
 2. Przejdź do **maszyny Wirtualnej CN0** w ramach maszyn wirtualnych w portalu administratora usługi Azure Stack i **kliknij przycisk Połącz** otworzyć sesji usług pulpitu zdalnego przy użyciu wystąpienia kontrolera. Użyj poświadczeń określonych podczas wdrażania usługi App Service.
 3. Rozpocznij **program PowerShell jako Administrator** i uruchom następujący skrypt
@@ -197,18 +197,20 @@ Zamiany gniazda witryny jest przerywana w tej wersji. Aby przywrócić funkcjona
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-- Pracownicy są nie można nawiązać połączenia z serwerem plików po wdrożeniu usługi App Service w istniejącej sieci wirtualnej i serwer plików jest dostępna tylko w sieci prywatnej.
- 
+
+6. Pracownicy są nie można nawiązać połączenia z serwerem plików po wdrożeniu usługi App Service w istniejącej sieci wirtualnej i serwer plików jest dostępna tylko w sieci prywatnej.
+
 Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
- * Źródło: wszystkie
- * Zakres portów źródłowych: *
- * Miejsce docelowe: Adresy IP
- * Docelowy zakres adresów IP: zakres adresów IP dla serwera plików
- * Zakres portów docelowych: 445
- * Protokół: TCP
- * Akcja: Zezwalaj
- * Priorytet: 700
- * Nazwa: Outbound_Allow_SMB445
+
+- Źródło: wszystkie
+- Zakres portów źródłowych: *
+- Miejsce docelowe: Adresy IP
+- Docelowy zakres adresów IP: zakres adresów IP dla serwera plików
+- Zakres portów docelowych: 445
+- Protokół: TCP
+- Akcja: Zezwalaj
+- Priorytet: 700
+- Nazwa: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Znane problemy dotyczące administratorów chmury, działania usługi Azure App Service w usłudze Azure Stack
 

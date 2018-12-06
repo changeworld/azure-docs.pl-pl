@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2018
+ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 2c8ac43d96c100f0c26281fea1d4e9eba41bc178
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1370f541f8913d86db948a3165d6660a8cd66528
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282337"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963508"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozszerzenie niestandardowego skryptu dla Windows
 
@@ -37,11 +37,11 @@ W tym dokumencie przedstawiono sposób korzystania z rozszerzenia niestandardowe
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie niestandardowego skryptu dla systemu Linux będą uruchamiane na rozszerzenie rozszerzenia obsługiwane systemu operacyjnego, aby uzyskać więcej informacji, zobacz [artykułu](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
+Rozszerzenie niestandardowego skryptu dla systemu Linux będą uruchamiane na rozszerzenie rozszerzenia obsługiwane OSs, aby uzyskać więcej informacji, zobacz [artykułu](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
 
 ### <a name="script-location"></a>Lokalizacja skryptu
 
-Rozszerzenia można użyć na potrzeby dostępu do usługi Azure Blob storage poświadczeń magazynu obiektów Blob platformy Azure. Alternatywnie lokalizacja skryptu może być dowolnego miejsca, tak długo, jak maszyna wirtualna może kierować do tego punktu końcowego, takich jak GitHub, serwer wewnętrzny plików itp.
+Rozszerzenia można użyć na potrzeby dostępu do usługi Azure Blob storage poświadczeń magazynu obiektów Blob platformy Azure. Alternatywnie lokalizacja skryptu można w dowolnym miejscu, tak długo, jak maszyna wirtualna może kierować do tego punktu końcowego, takich jak GitHub, serwer wewnętrzny plików itp.
 
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
@@ -52,15 +52,15 @@ Jeśli skrypt znajduje się na serwerze lokalnym, a następnie nadal potrzebujes
 ### <a name="tips-and-tricks"></a>Porady i wskazówki
 * Najwyższy współczynnik błędów dla tego rozszerzenia jest z powodu błędów składni w skrypcie testu, którego skrypt jest uruchamiany bez błędów, i również umieścić w dodatkowe opcje rejestrowania do skryptu, aby ułatwić znajdowanie, których nie powiodła się.
 * Pisanie skryptów, które są idempotentne, więc jeśli pobieranie uruchomiony ponownie więcej niż jeden raz przypadkowo, nie spowoduje zmian w systemie.
-* Upewnij się, że skrypty są wymagane dane wejściowe użytkownika podczas uruchamiania.
-* 90 minut mogą uzyskać skrypt do uruchomienia, nic dłużej spowoduje niepowodzenie aprowizacji rozszerzenia.
-* Nie należy umieszczać wewnątrz skrypt jest uruchamiany ponownie, spowoduje to problemy z innymi rozszerzeniami, które są instalowane i po ponownym uruchomieniu, rozszerzenie nie będzie kontynuowana po ponownym uruchomieniu. 
-* Jeśli masz skrypt, który spowoduje ponowne uruchomienie komputera, zainstaluj aplikacje i uruchamiać skrypty itp. Należy zaplanować ponowny rozruch przy użyciu usługi Windows zaplanowane zadanie lub narzędzi, takich jak DSC lub Chef, Puppet rozszerzenia.
+* Upewnij się, że skrypty, które nie wymaga danych wejściowych użytkownika podczas uruchamiania.
+* Brak 90 minut, skrypt do uruchomienia, nic dłużej spowoduje niepowodzenie aprowizacji rozszerzenia.
+* Nie należy umieszczać wewnątrz skrypt jest uruchamiany ponownie, ta akcja spowoduje, że problemy z innymi rozszerzeniami, które są instalowane. Po ponownym uruchomieniu, rozszerzenie nie będzie kontynuowana po ponownym uruchomieniu. 
+* Jeśli masz skrypt, który spowoduje ponowne uruchomienie komputera, zainstaluj aplikacje i uruchamiać skrypty itp. Można zaplanować ponowny rozruch przy użyciu usługi Windows zaplanowane zadanie lub narzędzi, takich jak DSC lub Chef, Puppet rozszerzenia.
 * Rozszerzenie zostanie uruchomiony tylko skrypt raz, jeśli chcesz uruchomić skrypt w każdym rozruchu, a następnie należy utworzyć zaplanowane zadanie Windows za pomocą rozszerzenia.
 * Chcąc Zaplanuj, kiedy skrypt będzie uruchamiany, należy użyć rozszerzenia utworzyć zaplanowane zadanie Windows. 
 * Podczas wykonywania skryptu będą widzieć tylko "Przechodzenie" stan rozszerzenia z witryny Azure portal lub interfejsu wiersza polecenia. Chcąc częstsze aktualizacje stanu uruchamianie skryptu, musisz utworzyć własne rozwiązanie.
 * Rozszerzenie niestandardowego skryptu nie obsługuje natywnie serwery proxy, jednak można użyć narzędzie do transferu plików, który obsługuje serwery proxy w ramach skryptu, takie jak *Curl* 
-* Należy pamiętać, innego niż domyślny katalog lokalizacji, które mogą polegać Twoje skrypty lub polecenia, masz logikę obsługującą to.
+* Należy pamiętać o innych niż domyślne lokalizacje katalogu, które Twoje skrypty lub polecenia mogą polegać na, mają logiki, aby obsłużyć taką sytuację.
 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
@@ -92,7 +92,8 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
         "settings": {
             "fileUris": [
                 "script location"
-            ]
+            ],
+            "timestamp":123456789
         },
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
@@ -113,6 +114,7 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 | type | CustomScriptExtension | ciąg |
 | typeHandlerVersion | 1.9 | int |
 | fileUris (np.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tablica |
+| Sygnatura czasowa (np.) | 123456789 | 32-bitowa liczba całkowita |
 | commandToExecute (np.) | Program PowerShell - ExecutionPolicy Unrestricted - pliku skonfigurować — muzyka app.ps1 | ciąg |
 | storageAccountName (np.) | examplestorageacct | ciąg |
 | storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
@@ -123,19 +125,20 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 #### <a name="property-value-details"></a>Szczegóły dotyczące wartości właściwości
  * `commandToExecute`: (**wymagane**, ciąg) skrypt punktu wejścia do wykonania. Zamiast tego użyj tego pola, jeśli polecenie zawiera wpisy tajne, takie jak hasła lub usługi fileUris jest wielkość liter.
 * `fileUris`: (opcjonalne, tablicy ciągów) adresy URL plików mają być pobrane.
+* `timestamp` Użycie (opcjonalne, 32-bitowa liczba całkowita), w tym polu tylko do wyzwolenia ponownie skryptu, zmieniając wartość tego pola.  Dowolna liczba całkowita jest dopuszczalne; tylko musi być inna niż poprzednia wartość.
 * `storageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu. Jeśli określisz poświadczeń magazynu wszystkich `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
 * `storageAccountKey`: (opcjonalnie, ciąg) klucz dostępu konta magazynu
 
 Można ustawić następujące wartości w ustawieniach publiczną lub chronioną, rozszerzenie spowoduje odrzucenie wszystkich konfiguracji, gdzie poniższe wartości są ustawione w ustawieniach zarówno publiczne i chronione.
 * `commandToExecute`
 
-Za pomocą ustawień publicznego, może być przydatne do debugowania, ale zdecydowanie zalecane jest używanie chronionych ustawień.
+Za pomocą ustawień publicznego, może być przydatne do debugowania, ale zaleca się używanie chronione ustawienia.
 
-Ustawienia publicznego są wysyłane w postaci zwykłego tekstu do maszyny Wirtualnej, gdy skrypt zostanie wykonany.  Chronione ustawienia są szyfrowane przy użyciu klucza znanego tylko platformy Azure i maszyny Wirtualnej. Ustawienia są zapisywane do maszyny Wirtualnej, ponieważ zostały wysłane, czyli jeśli były szyfrowane ustawienia są zapisywane zaszyfrowane na maszynie Wirtualnej. Certyfikat używany do odszyfrowania zaszyfrowanych wartości przechowywane na maszynie Wirtualnej i jest używany do odszyfrowywania ustawienia (w razie potrzeby) w czasie wykonywania.
+Ustawienia publicznego są wysyłane w postaci zwykłego tekstu do maszyny Wirtualnej, gdy skrypt zostanie wykonany.  Chronione ustawienia są szyfrowane przy użyciu klucza znanego tylko platformy Azure i maszyny Wirtualnej. Ustawienia są zapisywane do maszyny Wirtualnej, ponieważ zostały wysłane, oznacza to, czy ustawienia zostały zaszyfrowane one są zapisywane zaszyfrowane na maszynie Wirtualnej. Certyfikat używany do odszyfrowania zaszyfrowanych wartości przechowywane na maszynie Wirtualnej i jest używany do odszyfrowywania ustawienia (w razie potrzeby) w czasie wykonywania.
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do rozszerzenia niestandardowego skryptu są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager. Poniższe przykłady pokazują, jak za pomocą rozszerzenia niestandardowego skryptu:
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON, który jest szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do rozszerzenia niestandardowego skryptu są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager. Poniższe przykłady pokazują, jak za pomocą rozszerzenia niestandardowego skryptu:
 
 * [Samouczek: Wdrażanie rozszerzenia maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [Wdrażanie dwóch aplikacji warstwy na Windows i bazą danych Azure SQL](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
@@ -182,7 +185,7 @@ Set-AzureRmVMExtension -ResourceGroupName myRG `
 ```
 
 ### <a name="running-scripts-from-a-local-share"></a>Uruchamianie skryptów z udziałem lokalnym
-W tym przykładzie warto używać lokalnego serwera SMB dla Twojej lokalizacji skryptu należy zwrócić uwagę, nie trzeba przekazać w innym inne ustawienia, z wyjątkiem *commandToExecute*.
+W tym przykładzie warto używać lokalnego serwera SMB dla Twojej lokalizacji skryptu należy zwrócić uwagę, nie ma potrzeby przekazywania w innym inne ustawienia, z wyjątkiem *commandToExecute*.
 
 ```powershell
 $ProtectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
@@ -199,9 +202,9 @@ Set-AzureRmVMExtension -ResourceGroupName myRG
 ```
 
 ### <a name="how-to-run-custom-script-more-than-once-with-cli"></a>Jak uruchomić skrypt niestandardowy więcej niż jeden raz z interfejsem wiersza polecenia
-Jeśli chcesz uruchomić rozszerzenia niestandardowego skryptu więcej niż jeden raz, tylko można to zrobić w tych warunkach:
+Jeśli chcesz więcej niż jeden raz uruchomić rozszerzenia niestandardowego skryptu, można wykonać tylko tę akcję w tych warunkach:
 1. Parametr 'Name' rozszerzenia jest taka sama jak poprzedniego wdrożenia rozszerzenia.
-2. Należy zaktualizować konfiguracji, w przeciwnym razie polecenie nie zostanie ponownie wykonana, na przykład, można dodać we właściwości dynamicznych w do polecenia, takie jak sygnaturę czasową. 
+2. Należy zaktualizować w przeciwnym razie konfiguracja nie będzie ponownie wykonać tego polecenia. W poleceniu, takich jak sygnaturę czasową, można dodać właściwości dynamicznych.
 
 ## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 
@@ -224,7 +227,7 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 gdzie `<n>` jest dziesiętną liczbą całkowitą, która może ulec zmianie między wykonaniami rozszerzenia.  `1.*` Wartość odpowiada bieżącej rzeczywiste, `typeHandlerVersion` wartość rozszerzenia.  Na przykład może być rzeczywista katalogu `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
 
-Podczas wykonywania `commandToExecute` polecenia rozszerzenia ustawia ten katalog (np. `...\Downloads\2`) jako bieżący katalog roboczy. Umożliwia to użycie ścieżek względnych, aby zlokalizować pliki pobrane za pośrednictwem `fileURIs` właściwości. Zobacz tabelę poniżej przykłady.
+Podczas wykonywania `commandToExecute` polecenia rozszerzenia ustawia ten katalog (na przykład `...\Downloads\2`) jako bieżący katalog roboczy. Ten proces umożliwia użycie ścieżek względnych, aby zlokalizować pliki pobrane za pośrednictwem `fileURIs` właściwości. Zobacz tabelę poniżej przykłady.
 
 Ponieważ ścieżka bezwzględna pobierania może różnić się od wraz z upływem czasu, to lepiej wybrać ścieżki względnej pliku skryptu/w `commandToExecute` string, jeśli to możliwe. Na przykład:
 ```json
@@ -244,4 +247,4 @@ Informacje o ścieżce po pierwszy segment identyfikatora URI są przechowywane 
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Również mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).

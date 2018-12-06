@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 32f3dd0543e841c4aae87cf48654c95a4609e51a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c6e28554f86a6a7de5d50027ceb552e15856bc96
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682847"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970862"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -58,7 +58,7 @@ Aplikacja musi być uruchomiona w **standardowa**, **Premium**, lub **izolowany*
 4. W bloku zasobów aplikacji, kliknij przycisk **miejsc wdrożenia**, następnie kliknij przycisk miejsce wdrożenia, aby otworzyć blok zasobu tego miejsca, przy użyciu zestawu metryk i konfiguracji, tak jak każdą inną aplikację. Nazwa miejsca jest wyświetlany w górnej części bloku w celu odnotowania, że miejsce wdrożenia.
    
     ![Tytuł miejsca wdrożenia][StagingTitle]
-5. Kliknij adres URL aplikacji w bloku tego gniazda. Zwróć uwagę, miejsce wdrożenia ma swoje własne nazwy hosta i jest również działającej aplikacji. Aby ograniczyć dostęp publiczny do miejsca wdrożenia, zobacz [App Service Web Apps — blokuje dostęp w sieci web do miejsc wdrożenia nieprodukcyjnych](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
+5. Kliknij adres URL aplikacji w bloku tego gniazda. Zwróć uwagę, miejsce wdrożenia ma swoje własne nazwy hosta i jest również działającej aplikacji. Aby ograniczyć dostęp publiczny do miejsca wdrożenia, zobacz [App Service Web Apps — blokuje dostęp w sieci web do miejsc wdrożenia nieprodukcyjnych](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
 
 Brak zawartości po utworzeniu miejsca wdrożenia. Można wdrożyć do gniazda z gałęzi innym repozytorium lub całkowicie innego repozytorium. Można również zmienić konfigurację tego gniazda. Użyj poświadczeń wdrożenia lub w profilu publikowania skojarzone z miejsce wdrożenia aktualizacji zawartości.  Można na przykład [publikowania do tego miejsca przy użyciu narzędzia git](app-service-deploy-local-git.md).
 
@@ -258,7 +258,7 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 Aby uzyskać [wiersza polecenia platformy Azure](https://github.com/Azure/azure-cli) poleceń dla miejsc wdrożenia, zobacz [miejsce wdrożenia aplikacji sieci Web az](/cli/azure/webapp/deployment/slot).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Azure App Service Web App — blokuje dostęp w sieci web do miejsc wdrożenia nieprodukcyjnych](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
+[Azure App Service Web App — blokuje dostęp w sieci web do miejsc wdrożenia nieprodukcyjnych](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
 [Wprowadzenie do usługi App Service w systemie Linux](../app-service/containers/app-service-linux-intro.md)  
 [Bezpłatna wersja próbna platformy Microsoft Azure](https://azure.microsoft.com/pricing/free-trial/)
 

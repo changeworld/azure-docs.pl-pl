@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy związane z elementami run
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9a60d8c17ba091da7c5eaf0e28160573d5faafa8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094868"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963134"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -337,6 +337,27 @@ Dostępne są następujące polecenia cmdlet programu PowerShell, które umożli
 [Start-AzureRMAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) — to polecenie cmdlet pozwala na uruchamianie elementu runbook i parametry są przekazywane do elementu runbook
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) — to polecenie cmdlet pozwala sprawdzić stan zadania dla każdego elementu podrzędnego, w przypadku operacji, które należy wykonać po zakończeniu działania podrzędnego elementu runbook.
+
+### <a name="429"></a>Scenariusz: 429: liczba żądań jest obecnie zbyt duży. Spróbuj ponownie
+
+#### <a name="issue"></a>Problem
+
+Twoje wyświetlony następujący komunikat o błędzie podczas uruchamiania `Get-AzureRmAutomationJobOutput` polecenia cmdlet:
+
+```
+429: The request rate is currently too large. Please try again
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd może wystąpić podczas pobierania danych wyjściowych zadania z poziomu elementu runbook, który ma wiele [strumienie pełne](../automation-runbook-output-and-messages.md#verbose-stream).
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Istnieją dwa sposoby, aby rozwiązać ten problem:
+
+* Edytuj element runbook i zmniejszyć liczbę strumieni zadań, które on emituje.
+* Zmniejsz liczbę strumieni, które mają zostać pobrane podczas uruchamiania polecenia cmdlet. Można określić w tym celu `-Stream Output` parametr `Get-AzureRmAutomationJobOutput` polecenie cmdlet do pobierania tylko strumieni danych wyjściowych. 
 
 ## <a name="common-errors-when-importing-modules"></a>Typowymi błędami podczas importowania modułów
 

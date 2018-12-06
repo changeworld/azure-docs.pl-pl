@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: 6fb9ebe2b0afc645bbdfb6de6a8551440644fe59
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d88a82921e5baee06aacc09fafe274a8c56780c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836087"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972409"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpieczenia bazy danych usługi Azure Cosmos DB
 
@@ -75,7 +75,7 @@ Przyjrzyjmy się bliżej temu w każdej z nich szczegółów.
 |Grodzenia|Usługa Azure Cosmos DB gwarantuje nadzór nad danymi na niezależne regiony (na przykład, Niemcy, Chiny, USA).|
 |Urządzenia chronione|Dane w usłudze Azure Cosmos DB są przechowywane na dyskach SSD w centrach danych chronionych na platformie Azure.<br><br>Dowiedz się więcej w [globalnych centrów danych firmy Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |Szyfrowanie protokołu HTTPS/SSL/TLS|Wszystkie usługi klienta usługi Azure Cosmos DB interakcje są protokoły SSL/TLS 1.2 stanie. Całą replikację wewnątrz centrum danych i między centrum danych jest także protokołów SSL/TLS 1.2, wymuszane.|
-|Szyfrowanie w spoczynku|Wszystkie dane przechowywane w usłudze Azure Cosmos DB są szyfrowane w stanie spoczynku. Dowiedz się więcej w [usługi Azure Cosmos DB szyfrowanie w spoczynku](.\database-encryption-at-rest.md)|
+|Szyfrowanie w spoczynku|Wszystkie dane przechowywane w usłudze Azure Cosmos DB są szyfrowane w stanie spoczynku. Dowiedz się więcej w [usługi Azure Cosmos DB szyfrowanie w spoczynku](./database-encryption-at-rest.md)|
 |Poprawionego serwerów|Jako zarządzana baza danych usługi Azure Cosmos DB eliminuje konieczność zarządzania i stosowanie poprawek do serwerów, która została wykonana, automatycznie.|
 |Konta z uprawnieniami administracyjnymi przy użyciu silnych haseł|Jest trudno uwierzyć, musimy nawet wspomina o identyfikatorach tego wymagania, ale w przeciwieństwie do niektórych z naszych konkurentów nie jest możliwe jest konto administracyjne, bez hasła w usłudze Azure Cosmos DB.<br><br> Domyślnie jest wbudowanymi zabezpieczeń za pośrednictwem protokołu SSL i HMAC uwierzytelniania na podstawie klucza tajnego.|
 |Certyfikaty ochrony bezpieczeństwa i danych|Większość do listy danych certyfikatów można znaleźć ogólnych [lokacji zgodność platformy Azure](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) oraz Najpóźniejsza [dokumentu zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) o wszystkie certyfikaty (Wyszukaj Cosmos). Aby uzyskać bardziej ukierunkowaną przeczytaj Sprawdź wpis 25 kwietnia 2018 r. [Azure #CosmosDB: bezpieczne, prywatne i zgodne](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) zawierający Soc 1/2 typu 2, HITRUST, PCI DSS poziom 1, ISO 27001, HIPAA, FedRAMP High i wiele innych.

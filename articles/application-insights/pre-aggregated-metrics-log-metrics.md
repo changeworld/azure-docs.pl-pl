@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 136279a94d64b846247c436eb7a5fb487e05b41a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d095be8c5d921001ab4a492d2385938020fa8ce0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946905"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967218"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Dziennik i wstępnie zagregowane metryki w usłudze Application Insights
 
@@ -55,7 +55,7 @@ Istnieje kilka [sposoby wysyłania metryki niestandardowe z zestawu SDK usługi 
 
 Wszystkie metryki, wysyłane przy użyciu [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) lub [GetMetric i TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) wywołań interfejsu API są automatycznie przechowywane w magazynach dzienników i metryk. Gdy wersja opartych na dzienniku swoje niestandardowe metryki zawsze zachowuje wszystkie wymiary, wersja wstępnie zagregowane metryki są przechowywane domyślnie nie wymiarów. Można włączyć na zbiór wymiarów metryki niestandardowe [użycia i szacowanych kosztów](https://docs.microsoft.com/azure/application-insights/app-insights-pricing) kartę, zaznaczając opcję "Włącz alerty na wymiary niestandardowe metryki": 
 
-![Użycie i szacowane koszty](.\media\pre-aggregated-metrics-log-metrics\001-cost.png)
+![Użycie i szacowane koszty](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>Dlaczego to zbiór wymiarów metryki niestandardowe domyślnie wyłączona?
 
@@ -65,7 +65,7 @@ Zbiór wymiarów metryki niestandardowe jest domyślnie wyłączone, ponieważ w
 
 Eksplorator metryk usługi Azure Monitor umożliwia będzie wykreślanie wykresów z wstępnie zagregowane i opartych na dzienniku metryki i autor pulpity nawigacyjne z wykresami. Po wybraniu żądanego zasobu usługi Application Insights, użyj selektora obszaru nazw w celu przełączania się między standard (wersja zapoznawcza) i metryk opartych na dzienniku lub wybrać metryki niestandardowej przestrzeni nazw:
 
-![Metryki przestrzeni nazw](.\media\pre-aggregated-metrics-log-metrics\002-metric-namespace.png)
+![Metryki przestrzeni nazw](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

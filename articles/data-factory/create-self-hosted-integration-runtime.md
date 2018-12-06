@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: f0040f7e84fefd745b3ca097a4808dc685dd5b72
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284833"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969485"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -49,7 +49,7 @@ Podczas przenoszenia danych między środowiska lokalnego i chmury, działania u
 
 Poniżej przedstawiono przepływ danych wysokiego poziomu dla podsumowania czynności kopiowania przy użyciu własnego środowiska IR:
 
-![Ogólne omówienie](media\create-self-hosted-integration-runtime\high-level-overview.png)
+![Ogólne omówienie](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. Dane i deweloperów tworzy własne środowisko integration runtime w fabryce danych Azure przy użyciu polecenia cmdlet programu PowerShell. Witryna Azure portal nie obsługuje obecnie tej funkcji.
 2. Dane i deweloperów tworzy połączonej usługi magazynu danych w środowisku lokalnym za pośrednictwem własne wystąpienie infrastruktury integration runtime za pomocą której należy połączyć się z magazynów danych. W ramach konfigurowania połączoną usługę dane i deweloperów używa aplikacji Menedżer poświadczeń (obecnie nieobsługiwane) do ustawiania poświadczeń i typy uwierzytelniania. Aplikacji Menedżer poświadczeń komunikuje się z magazynem danych, aby przetestować połączenie i własne środowisko integration runtime do zapisania poświadczeń.
@@ -131,7 +131,7 @@ Gdy ilość dostępnej pamięci na własne środowisko IR jest niska, a użycie 
 
 Gdy ilość dostępnej pamięci i procesora CPU nie mogą być wykorzystane dobrze, ale wykonanie równoczesnych zadań zbliża się limit, powinien skalowanie w górę, zwiększając liczbę współbieżnych zadań, które można uruchomić w węźle. Można również skalować w górę, gdy działania przekraczają limit, ponieważ własne środowisko IR jest przeciążony. Jak pokazano na poniższej ilustracji, można zwiększyć maksymalną pojemność dla węzła:  
 
-![Zwiększenie równoczesnych zadań, które można uruchomić w węźle](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+![Zwiększenie równoczesnych zadań, które można uruchomić w węźle](media/create-self-hosted-integration-runtime/scale-up-self-hosted-IR.png)
 
 ### <a name="tlsssl-certificate-requirements"></a>Wymagania certyfikatu TLS/SSL
 
@@ -162,33 +162,33 @@ Wprowadzenie 12 minutowy i pokaz działania tej funkcji Obejrzyj poniższy film 
 
 1. W własne środowisko IR do udostępnienia należy przyznać uprawnienia do usługi data factory, w której chcesz utworzyć połączone podczerwieni. 
 
-   ![Przycisk przyznawania uprawnień na karcie Udostępnianie](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+   ![Przycisk przyznawania uprawnień na karcie Udostępnianie](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
 
-   ![Wybory dotyczące przypisywania uprawnień](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+   ![Wybory dotyczące przypisywania uprawnień](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)
 
 2. Należy pamiętać, identyfikator zasobu własne środowisko IR do udostępnienia.
 
-   ![Lokalizacja Identyfikatora zasobu](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+   ![Lokalizacja Identyfikatora zasobu](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
 
 3. W fabryki danych, do którego zostały przyznane uprawnienia Utwórz nowy własnego środowiska IR (połączony), a następnie wprowadź identyfikator zasobu.
 
-   ![Przycisk tworzenia połączonej własnego środowiska integration runtime](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+   ![Przycisk tworzenia połączonej własnego środowiska integration runtime](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
 
-   ![Pola Nazwa i identyfikator zasobu](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+   ![Pola Nazwa i identyfikator zasobu](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
 ### <a name="monitoring"></a>Monitorowanie 
 
 - **Udostępnione środowisko IR**
 
-  ![Opcje służące do znajdowania udostępnionego IR](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+  ![Opcje służące do znajdowania udostępnionego IR](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
-  ![Karta monitorowania](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+  ![Karta monitorowania](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
 - **Połączone środowisko IR**
 
-  ![Opcje służące do znajdowania połączone IR](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+  ![Opcje służące do znajdowania połączone IR](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
-  ![Karta monitorowania](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
+  ![Karta monitorowania](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Znane ograniczenia dotyczące udostępniania samodzielnie hostowanego środowiska IR
 
@@ -211,12 +211,12 @@ Wprowadzenie 12 minutowy i pokaz działania tej funkcji Obejrzyj poniższy film 
 
 Jeśli przesuniesz kursor nad ikonę lub komunikat w obszarze powiadomień można znaleźć szczegółowe informacje o stanie własnego środowiska integration runtime.
 
-![Powiadomienia w obszarze powiadomień](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
+![Powiadomienia w obszarze powiadomień](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>Porty i zapory
 Istnieją dwa zaporach, aby wziąć pod uwagę: *zaporą firmową* uruchomionego na routerze centralnej w organizacji i *zapory Windows* skonfigurowany jako demon na komputerze lokalnym gdzie własne środowisko integration runtime jest zainstalowany.
 
-![Zapora](media\create-self-hosted-integration-runtime\firewall.png)
+![Zapora](media/create-self-hosted-integration-runtime/firewall.png)
 
 W *zaporą firmową* poziomu, należy skonfigurować następujące domeny i portów wychodzących:
 
@@ -249,11 +249,11 @@ Na przykład aby skopiować z lokalnego magazynu danych ujścia Azure SQL Databa
 ## <a name="proxy-server-considerations"></a>Zagadnienia dotyczące serwera proxy
 Jeśli w środowisku firmowym sieci korzysta z serwera proxy, dostęp do Internetu, należy skonfigurować własne środowisko integration runtime do użycia odpowiednie ustawienia serwera proxy. W fazie początkowej rejestracji, można ustawić serwera proxy.
 
-![Określ serwer proxy](media\create-self-hosted-integration-runtime\specify-proxy.png)
+![Określ serwer proxy](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
 Własne środowisko integration runtime używa serwera proxy, aby nawiązać połączenie z usługą w chmurze. Wybierz **łącze Zmień** podczas początkowej konfiguracji. Pojawi się okno dialogowe Ustawienia serwera proxy.
 
-![Ustaw serwer proxy](media\create-self-hosted-integration-runtime\set-http-proxy.png)
+![Ustaw serwer proxy](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
 Dostępne są trzy opcje konfiguracji:
 
@@ -272,7 +272,7 @@ Po własnego środowiska integration runtime został pomyślnie zarejestrowany, 
 
 Można wyświetlić i zaktualizować serwer proxy HTTP za pomocą narzędzia Configuration Manager.
 
-![Serwer proxy w widoku](media\create-self-hosted-integration-runtime\view-proxy.png)
+![Serwer proxy w widoku](media/create-self-hosted-integration-runtime/view-proxy.png)
 
 > [!NOTE]
 > Jeśli skonfigurowano serwer proxy przy użyciu metody NTLM usługa hosta integration runtime jest uruchamiany w ramach konta domeny. Jeśli zmienisz hasło do konta domeny w dalszej części, pamiętaj, aby zaktualizować ustawienia konfiguracji dla usługi, a następnie uruchom go ponownie w związku z tym. Ze względu na to wymaganie zaleca się użyć konta domeny dedykowanego serwera proxy, który nie wymaga częstej aktualizacji hasła dostępu do.

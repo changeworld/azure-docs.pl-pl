@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 2017e08361c9ff060fde96b78549133d48372e34
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: da88be76d01b246e273739566d629348895b68b6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853901"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972001"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów MySQL w usłudze Azure Stack
 
@@ -32,8 +32,8 @@ Dostawcy zasobów MySQL Server umożliwia udostępnianie baz danych MySQL jako u
 
 Istnieje kilka wymagań wstępnych, które muszą być spełnione przed wdrożeniem dostawcy zasobów usługi Azure Stack bazy danych MySQL. Aby spełnić te wymagania, wykonaj kroki opisane w tym artykule, na komputerze, na których mogą uzyskiwać dostęp uprzywilejowany punktu końcowego maszyny Wirtualnej.
 
-* Jeśli użytkownik jeszcze tego nie zrobiono, [rejestrowania usługi Azure Stack](.\azure-stack-registration.md) z platformą Azure, dzięki czemu można pobrać elementów portalu Azure marketplace.
-* Moduły platformy Azure i usługi Azure Stack PowerShell należy zainstalować w systemie, w którym będzie uruchamiany tej instalacji. Ten system musi być obrazem systemu Windows 10 lub Windows Server 2016 z najnowszą wersją środowiska uruchomieniowego .NET. Zobacz [zainstalować program PowerShell dla usługi Azure Stack](.\azure-stack-powershell-install.md).
+* Jeśli użytkownik jeszcze tego nie zrobiono, [rejestrowania usługi Azure Stack](./azure-stack-registration.md) z platformą Azure, dzięki czemu można pobrać elementów portalu Azure marketplace.
+* Moduły platformy Azure i usługi Azure Stack PowerShell należy zainstalować w systemie, w którym będzie uruchamiany tej instalacji. Ten system musi być obrazem systemu Windows 10 lub Windows Server 2016 z najnowszą wersją środowiska uruchomieniowego .NET. Zobacz [zainstalować program PowerShell dla usługi Azure Stack](./azure-stack-powershell-install.md).
 * Dodaj wymagane core systemu Windows Server maszyny Wirtualnej w portalu Marketplace usługi Azure Stack, pobierając **systemu Windows Server 2016 Datacenter — instalacja Server Core** obrazu.
 
 * Pobierz binarne dostawcy zasobów bazy danych MySQL, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego.
@@ -60,7 +60,7 @@ Istnieje kilka wymagań wstępnych, które muszą być spełnione przed wdrożen
 
 ### <a name="certificates"></a>Certyfikaty
 
-_Zintegrowane systemy tylko dla instalacji_. Musisz podać certyfikat SQL PaaS PKI opisane w sekcji opcjonalnej certyfikaty PaaS z [wymagania dotyczące infrastruktury kluczy publicznych wdrażania usługi Azure Stack](.\azure-stack-pki-certs.md#optional-paas-certificates). Umieść plik pfx w lokalizacji określonej przez **DependencyFilesLocalPath** parametru. Nie są oferowane certyfikatu dla systemów ASDK.
+_Zintegrowane systemy tylko dla instalacji_. Musisz podać certyfikat SQL PaaS PKI opisane w sekcji opcjonalnej certyfikaty PaaS z [wymagania dotyczące infrastruktury kluczy publicznych wdrażania usługi Azure Stack](./azure-stack-pki-certs.md#optional-paas-certificates). Umieść plik pfx w lokalizacji określonej przez **DependencyFilesLocalPath** parametru. Nie są oferowane certyfikatu dla systemów ASDK.
 
 ## <a name="deploy-the-resource-provider"></a>Wdrażanie dostawcy zasobów
 

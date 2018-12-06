@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: f82b4dff20e2b26e62889c41b3ff3c27bc86066a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d1cfaadd06d20a0f57d75cd43d00040c9e44c429
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901417"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966028"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
 
@@ -100,6 +100,21 @@ Podziel metryki według wymiaru, aby zwizualizować segmentów jak różne metry
    > [!NOTE]
    > Umożliwia filtrowanie i grupowanie w oparciu o ten sam wymiar Ukryj segmentów, które są nieodpowiednie dla danego scenariusza i była łatwiejsza do odczytania wykresy.
 
+## <a name="how-do-i-lock-lower-and-upper-boundaries-of-the-chart-y-axis"></a>Jak zablokować granic dolnym i górnym numerem osi y wykresu?
+
+Blokowanie zakres osi y staje się ważne, gdy na wykresie widać mniejszych wahania większe wartości. 
+
+Na przykład gdy liczba pomyślnych żądań rozwinięta z dostępność przez 99,99% 99,5%, może reprezentować znaczny spadek jakości usług. Jednakże obserwowanie fluktuacje mała wartość liczbowa może być trudne lub niemożliwe nawet z domyślnych ustawień wykresu. W takim przypadku można zablokować najniższy granic wykresu do 99%, co spowoduje, że ten mały spadek bardziej oczywisty. 
+
+Innym przykładem jest fluktuacje w dostępnej pamięci, gdy wartość będzie z technicznego punktu widzenia nigdy nie dotrzeć do 0. Ustalania zakresu na wartość większą może ułatwić spadnie w dostępnej pamięci na ekranie. 
+
+Aby kontrolować zakres osi y, użyj "..." menu wykresu, a następnie wybierz **Edytuj wykres** dostęp do zaawansowanych ustawień wykresu. Zmodyfikuj wartości w sekcji zakres osi y lub użyj **automatycznie** przycisk, aby przywrócić ustawienia domyślne.
+
+![metryki obrazu](./media/monitoring-metric-charts/0013.png)
+
+> [!WARNING]
+> Blokowanie granice osi y wykresy, które śledzą różne liczby lub sumuje w przedziale czasu (i dlatego liczba używanych, sum, minimalnych i maksymalnych agregacji) zwykle wymagają określania stopnia szczegółowości stały czas, a nie opierając się na automatyczne ustawienia domyślne. Jest to konieczne, ponieważ wartości na wykresach zmianie, gdy stopień szczegółowości czasu automatycznie zostanie zmodyfikowany przez użytkownika zmiany rozmiaru okna przeglądarki lub ruch rozdzielczość ekranu co do innego. Wartość wynikowa zmiana efekty stopień szczegółowości czasu wygląd wykresu, powodując unieważnienie bieżące zaznaczenie zakresu osi y.
+
 ## <a name="how-do-i-pin-charts-to-dashboards"></a>Jak przypiąć wykresów do pulpitów nawigacyjnych?
 
 Po skonfigurowaniu wykresów, warto dodać do pulpitów nawigacyjnych, aby można go wyświetlić, prawdopodobnie w kontekście innych telemetrii monitorowania, lub udostępnienia swojemu zespołowi. 
@@ -108,7 +123,7 @@ Aby przypiąć wykres skonfigurowanego do pulpitu nawigacyjnego:
 
 Po skonfigurowaniu wykresu, wybierz polecenie **akcje wykresu** menu w prawym rogu wykresu top, a następnie kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
 
-   ![metryki obrazu](./media/monitoring-metric-charts/0013.png)
+![metryki obrazu](./media/monitoring-metric-charts/0013.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

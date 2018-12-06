@@ -2,25 +2,17 @@
 title: Informacje o połączeniach Azure Point-to-Site VPN | Dokumentacja firmy Microsoft
 description: Ten artykuł pomoże Ci zrozumieć połączeń punkt-lokacja i pomoże Ci zdecydować, której typ uwierzytelniania bramy sieci VPN P2S do użycia.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/06/2018
+ms.topic: conceptual
+ms.date: 12/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8cdc80e8e4f8d3feb36ca82740d5610e60716ec6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fe25858f185cf4ddfd17f956b66846a22ddb0e6c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003363"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971375"
 ---
 # <a name="about-point-to-site-vpn"></a>Sieci VPN typu punkt lokacja — informacje
 
@@ -30,14 +22,15 @@ Połączenie bramy VPN Gateway typu punkt-lokacja pozwala utworzyć bezpieczne p
 
 Sieci VPN typu punkt lokacja można użyć jednej z następujących protokołów:
 
+* OpenVPN, protokołu sieci VPN na podstawie certyfikatu SSL/TLS. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. OpenVPN może służyć do łączenia z systemów Android, iOS, urządzeń z systemami Linux i Mac (wersji OS x 10.11 i nowsze wersje).
+
 * Zabezpiecz SSTP Socket Tunneling Protocol (), protokołem opartym na protokole SSL sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. Protokół SSTP jest obsługiwana tylko na urządzeniach Windows. Platforma Azure obsługuje wszystkich wersji systemu Windows, który ma protokołu SSTP (Windows 7 i nowsze).
 
 * Sieć VPN z protokołem IKEv2 to oparte na standardach rozwiązanie sieci VPN korzystające z protokołu IPsec. Sieci VPN z protokołem IKEv2 można używać do łączenia z urządzeniami Mac (z systemem OSX 10.11 lub nowszym).
 
-Jeśli masz mieszane środowiska klienckie składające się z urządzeniami Windows i Mac, należy skonfigurować protokołów SSTP i IKEv2.
 
 >[!NOTE]
->Protokół IKEv2 dla P2S jest dostępna dla tylko model wdrażania usługi Resource Manager. Nie jest dostępna dla klasycznego modelu wdrażania.
+>Protokół IKEv2 i OpenVPN dla P2S są dostępne tylko modelu wdrażania usługi Resource Manager. Nie są one dostępne dla klasycznego modelu wdrażania.
 >
 
 ## <a name="authentication"></a>Sposób uwierzytelniania klientów sieci VPN typu P2S
@@ -52,11 +45,17 @@ Weryfikacja certyfikatu klienta jest wykonywane przez bramę sieci VPN i będzie
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Uwierzytelnianie przy użyciu serwera domeny usługi Active Directory (AD)
 
-Uwierzytelnianie domeny AD umożliwia użytkownikom łączenie z platformą Azure, przy użyciu swoich poświadczeń domeny organizacji. Wymaga serwera usługi RADIUS, która integruje się z serwerem usługi AD. Organizacje także korzystać z ich istniejące wdrożenie usługi RADIUS.   
-  Serwer usługi RADIUS, może być wdrożony lokalnie lub w sieci wirtualnej platformy Azure. Podczas uwierzytelniania usługi Azure VPN Gateway działa jako przekazywania i przekazuje komunikaty uwierzytelniania pomiędzy serwerem usługi RADIUS i łączącego się urządzenia. Dlatego ważne jest, osiągalności bramy do serwera RADIUS. Jeśli serwer RADIUS jest obecny w środowisku lokalnym, połączenie S2S sieci VPN od platformy Azure do lokacji lokalnej jest wymagana dla osiągalności.  
-  Serwer usługi RADIUS można również zintegrować z usługami certyfikatów usługi AD. Dzięki temu można użyć serwera usługi RADIUS i wdrożeniu certyfikatu przedsiębiorstwa P2S uwierzytelniania certyfikatu jako alternatywę dla uwierzytelniania certyfikatu platformy Azure. Zaletą jest to, że nie trzeba przekazać certyfikatów głównych i odwołanych certyfikatów do platformy Azure.
+Uwierzytelnianie domeny AD umożliwia użytkownikom łączenie z platformą Azure, przy użyciu swoich poświadczeń domeny organizacji. Wymaga serwera usługi RADIUS, która integruje się z serwerem usługi AD. Organizacje także korzystać z ich istniejące wdrożenie usługi RADIUS.   
+  
+Serwer usługi RADIUS, może być wdrożony lokalnie lub w sieci wirtualnej platformy Azure. Podczas uwierzytelniania usługi Azure VPN Gateway działa jako przekazywania i przekazuje komunikaty uwierzytelniania pomiędzy serwerem usługi RADIUS i łączącego się urządzenia. Dlatego ważne jest, osiągalności bramy do serwera RADIUS. Jeśli serwer RADIUS jest obecny w środowisku lokalnym, połączenie S2S sieci VPN od platformy Azure do lokacji lokalnej jest wymagana dla osiągalności.  
+  
+Serwer usługi RADIUS można również zintegrować z usługami certyfikatów usługi AD. Dzięki temu można użyć serwera usługi RADIUS i wdrożeniu certyfikatu przedsiębiorstwa P2S uwierzytelniania certyfikatu jako alternatywę dla uwierzytelniania certyfikatu platformy Azure. Zaletą jest to, że nie trzeba przekazać certyfikatów głównych i odwołanych certyfikatów do platformy Azure.
 
 Serwer usługi RADIUS można również zintegrować z innymi systemami tożsamości zewnętrznej. Spowoduje to otwarcie wiele możliwości uwierzytelniania sieci VPN P2S, włącznie z opcjami usługi Multi-Factor Authentication.
+
+>[!NOTE]
+>Protokół OpenVPN nie jest obsługiwany przy użyciu uwierzytelniania usługi RADIUS.
+>
 
 ![punkt lokacja](./media/point-to-site-about/p2s.png "Point-to-Site")
 
@@ -77,13 +76,11 @@ Plik zip zawiera również wartości niektórych ważnych ustawień po stronie p
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>Które P2S obsługę jednostki SKU bramy sieci VPN?
+## <a name="gwsku"></a>Które jednostki SKU bramy są obsługiwane przez sieci VPN P2S?
 
-[!INCLUDE [p2s-skus](../../includes/vpn-gateway-table-point-to-site-skus-include.md)]
+[!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-* Test porównawczy agregowanej przepływności opiera się na pomiarach wielu tuneli zagregowanych za pośrednictwem jednej bramy. Nie jest to przepływność gwarantowana ze względu na warunki ruchu internetowego i zachowania aplikacji.
-* Informacje o cenach można znaleźć na stronie cennika 
-* Na stronie umów SLA można znaleźć informacje o umowie SLA (Service Level Agreement).
+* Aby uzyskać zalecenia dotyczące jednostki SKU bramy, zobacz [ustawienia bramy sieci VPN — informacje](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 >[!NOTE]
 >Podstawowa jednostka SKU nie obsługuje uwierzytelniania za pomocą protokołu IKEv2 ani usługi RADIUS.

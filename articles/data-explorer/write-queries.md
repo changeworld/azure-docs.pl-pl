@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 71e39c6430231ae8d175f9c09a9059c3da4c9a1e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0a2b56164662a13d8254d8956712077e5f8a83a9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854258"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961524"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Pisanie zapytań w Eksploratorze danych platformy Azure
 
@@ -28,7 +28,7 @@ Można uruchomić zapytania, w tym artykule w jeden z dwóch sposobów:
 
 - Na własny klaster, który zawiera StormEvents przykładowych danych. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie klastra Eksplorator danych platformy Azure i bazy danych](create-cluster-database-portal.md) i [pozyskiwanie danych przykładowych do Eksploratora danych usługi Azure](ingest-sample-data.md).
 
-[!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+    [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="overview-of-the-query-language"></a>Omówienie języka zapytań
 

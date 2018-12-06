@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 05/17/2018
-ms.openlocfilehash: cb3d8629d5d72644e647da14e7c3b31a4914814d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/05/2018
+ms.openlocfilehash: 6523828b522379dd1cd70f1c548caf7af15b5d90
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159565"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964769"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Zaawansowana ochrona przed zagrożeniami dla bazy danych Azure SQL
 
@@ -32,7 +32,7 @@ SQL zaawansowane Threat Protection (ATP) zawiera zestaw zaawansowanych funkcji z
 
 Włączyć usługę SQL ATP po włączyć wszystkie z nich uwzględnione funkcje. Jednym kliknięciem można włączyć usługę ATP na całym serwerze baz danych i zastosować ją do wszystkich baz danych na tym serwerze. 
 
-Wyrównuje ceny zaawansowanej ochrony przed zagrożeniami za pomocą usługi Azure Security Center w warstwie standardowa na 15 USD/węzeł/miesiąc, czym każdy chroniony serwer usługi SQL Database będzie liczony jako jeden węzeł. Przez pierwsze 60 dni po aktywacji są traktowane jako, a okres bezpłatnej wersji próbnej i nie są naliczane. Aby uzyskać więcej informacji, zobacz [usługi Azure Security Center, na stronie z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
+Wyrównuje ceny zaawansowanej ochrony przed zagrożeniami za pomocą usługi Azure Security Center w warstwie standardowa czym każdy chroniony serwer usługi SQL Database będzie liczony jako jeden węzeł. Nowo chronionych zasobów kwalifikuje się do bezpłatnej wersji próbnej usługi Security Center w warstwie standardowa. Aby uzyskać więcej informacji, zobacz [usługi Azure Security Center, na stronie z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 ## <a name="getting-started-with-atp"></a>Wprowadzenie do zaawansowanej ochrony przed zagrożeniami 
@@ -45,7 +45,7 @@ Włączanie zaawansowanej ochrony przed zagrożeniami, przechodząc do **zaawans
 ![Włączanie zaawansowanej ochrony przed zagrożeniami](./media/sql-advanced-protection/enable_atp.png) 
 
 > [!NOTE]
-> Koszt zaawansowanej ochrony przed zagrożeniami jest 15 USD/węzeł/miesiąc, gdzie węzeł całego serwera logicznego SQL. Dlatego płacisz tylko raz ochronę wszystkich baz danych na serwerze za pomocą zaawansowanej ochrony przed zagrożeniami. Przez pierwsze 60 dni są traktowane jako bezpłatna wersja próbna.
+> Koszt zaawansowanej ochrony przed zagrożeniami jest powiązana z usługi Azure Security Center w warstwie standardowa ceny na węzeł, w których węzeł jest całego serwera logicznego SQL. Dlatego płacisz tylko raz ochronę wszystkich baz danych na serwerze za pomocą zaawansowanej ochrony przed zagrożeniami. Możesz wypróbować zaawansowanej ochrony przed zagrożeniami początkowo z bezpłatną wersją próbną.
 
 ## <a name="2-configure-vulnerability-assessment"></a>2. Konfigurowanie oceny luk w zabezpieczeniach
 

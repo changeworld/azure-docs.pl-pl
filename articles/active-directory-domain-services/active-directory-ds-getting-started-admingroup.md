@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: cac1814057b5adbb75d9484b332bd3f8aaa31a18
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ec51ba28c81e2aa2dbfe2a3dc55d9940c74ff673
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446862"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959856"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 
-
 ## <a name="task-3-configure-administrative-group"></a>Zadanie 3: Konfigurowanie grupy administracyjnej
+
 W tym zadaniu konfiguracji utworzysz grupy administracyjnej w katalogu usługi Azure AD. Nosi nazwę tej grupy administracyjnej specjalne *Administratorzy usługi AAD DC*. Członkowie tej grupy są przyznawane uprawnienia administracyjne na komputerach, które są przyłączone do domeny zarządzanej. Na komputerach przyłączonych do domeny ta grupa jest dodawana do grupy Administratorzy. Ponadto Członkowie tej grupy można użyć usług pulpitu zdalnego można łączyć się zdalnie z komputerów przyłączonych do domeny.
 
 > [!NOTE]
@@ -49,14 +49,14 @@ Azure AD Domain Services umożliwia albo pełną synchronizację wszystkich uży
 ### <a name="full-synchronization"></a>Pełna synchronizacja
 
 1. Pełnej synchronizacji, po prostu kliknij przycisk "OK" w dolnej części ekranu, jako pełne nie została jeszcze wybrana.
-    ![Pełna synchronizacja](./media\active-directory-domain-services-admin-guide\create-sync-all.PNG)
+    ![Pełna synchronizacja](./media/active-directory-domain-services-admin-guide/create-sync-all.PNG)
 
 ### <a name="scoped-synchronization"></a>O określonym zakresie synchronizacji
 
 1. Przełącz przycisk synchronizacji "W polu" i strona grupy będą wyświetlane. Z tego zobaczysz, jakie grupy zostały już wybrane do synchronizacji z domeną zarządzaną.
-    ![O określonym zakresie synchronizacji](media\active-directory-domain-services-admin-guide\create-sync-scoped.PNG)
+    ![O określonym zakresie synchronizacji](media/active-directory-domain-services-admin-guide/create-sync-scoped.PNG)
 2. Kliknij przycisk **wybierz grupy** w górnym pasku nawigacyjnym. W tym miejscu selektor grupy wyskakującym zostanie wyświetlona na tej stronie. Użyj tego, aby zaznaczyć dodatkowe grupy, aby zsynchronizować z usługą Azure AD Domain Services. Po zakończeniu kliknij przycisk **wybierz** zamknąć Selektor grupy, a następnie dodaj te grupy do wybranej listy.
-    ![Wybierz grupę, w zakresie synchronizacji](media\active-directory-domain-services-admin-guide\create-sync-scoped-groupselect.PNG)
+    ![Wybierz grupę, w zakresie synchronizacji](media/active-directory-domain-services-admin-guide/create-sync-scoped-groupselect.PNG)
 3. Kliknij przycisk **OK** aby przejść do strony podsumowania.
 
 ## <a name="deploy-your-managed-domain"></a>Wdrażanie Twojej domeny zarządzanej
@@ -69,8 +69,8 @@ Azure AD Domain Services umożliwia albo pełną synchronizację wszystkich uży
 
     ![Powiadomienie — wdrażanie jest w toku](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
-
 ## <a name="check-the-deployment-status-of-your-managed-domain"></a>Sprawdź stan wdrożenia Twojej domeny zarządzanej
+
 Proces udostępniania Twoja domena zarządzana może potrwać do godziny.
 
 1. Gdy wdrożenie jest w toku, możesz wyszukać "domain services", w **Wyszukaj zasoby** pola wyszukiwania. Wybierz **usług domenowych Azure AD** z wyników wyszukiwania. **Usług domenowych Azure AD** bloku Wyświetla domeny zarządzanej, która jest aprowizowana.
@@ -96,10 +96,10 @@ Proces udostępniania Twoja domena zarządzana może potrwać do godziny.
 
     ![Usługi domenowe — karta właściwości po pełnej aprowizacji](./media/getting-started/domain-services-provisioned-properties.png)
 
-
 ## <a name="need-help"></a>Potrzebujesz pomocy?
+
 Może potrwać godzinę lub dwie dla obu kontrolerów domeny dla domeny zarządzanej do zainicjowania obsługi administracyjnej. Jeśli wdrożenie nie powiodło się lub została zablokowana w stanie "Oczekiwanie" dla więcej niż kilka godzin, swobodnie [skontaktuj się z zespołem produktu, aby uzyskać Pomoc](active-directory-ds-contact-us.md).
 
-
 ## <a name="next-step"></a>Następny krok
+
 [Zadanie 4. Aktualizowanie ustawień usługi DNS dla sieci wirtualnej platformy Azure](active-directory-ds-getting-started-dns.md)
