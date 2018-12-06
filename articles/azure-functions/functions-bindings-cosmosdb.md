@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d4c9e974f92f26b93900318c01dc8a659d8edbe
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b7ae066bd8dc2de3227f441fd05b6c7a412b6074
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276214"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965363"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB powiązania usługi Azure Functions 1.x
 
@@ -24,7 +24,7 @@ ms.locfileid: "52276214"
 > * [Wersja 1](functions-bindings-cosmosdb.md)
 > * [Wersja 2](functions-bindings-cosmosdb-v2.md)
 
-W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) powiązań w usłudze Azure Functions. Usługi Azure Functions obsługuje wyzwalanie, dane wejściowe i wyjściowe powiązań usługi Azure Cosmos DB.
+W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) powiązań w usłudze Azure Functions. Usługi Azure Functions obsługuje wyzwalanie, dane wejściowe i wyjściowe powiązań usługi Azure Cosmos DB.
 
 > [!NOTE]
 > Ten artykuł jest przeznaczony dla usługi Azure Functions 1.x.  Aby uzyskać informacje o sposobie używania tych powiązań w funkcjach 2.x, zobacz [powiązań usługi Azure Cosmos DB dla usługi Azure Functions 2.x](functions-bindings-cosmosdb-v2.md).
@@ -1606,7 +1606,7 @@ Domyślnie podczas zapisu do parametru wyjściowego w funkcji, tworzony jest dok
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dowiedz się więcej o bazie danych bez użycia serwera, obliczeń w usłudze Cosmos DB](..\cosmos-db\serverless-computing-database.md)
+* [Dowiedz się więcej o bazie danych bez użycia serwera, obliczeń w usłudze Cosmos DB](../cosmos-db/serverless-computing-database.md)
 * [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
 
 <!---

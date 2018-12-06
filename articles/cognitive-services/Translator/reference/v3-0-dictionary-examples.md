@@ -10,16 +10,16 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1e6bd1b7ddb38d0fad33ab9d282f8edc4ff8c765
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4b24ba4b4d83ac3f0c8291308debb6317efa4a55
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129135"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968001"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>API 3.0 tekstu usługi Translator: Przykłady słowników
 
-Przykłady pokazujące, jak terminy w słowniku są używane w kontekście. Ta operacja jest używana w połączeniu z sekcją [wyszukiwania słownika](.\v3-0-dictionary-lookup.md).
+Przykłady pokazujące, jak terminy w słowniku są używane w kontekście. Ta operacja jest używana w połączeniu z sekcją [wyszukiwania słownika](./v3-0-dictionary-lookup.md).
 
 ## <a name="request-url"></a>Adres URL żądania
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
   </tr>
   <tr>
     <td>z</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwane języki](.\v3-0-languages.md) objęte `dictionary` zakresu.</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwane języki](./v3-0-languages.md) objęte `dictionary` zakresu.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](.\v3-0-languages.md) objęte `dictionary` zakresu.</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](./v3-0-languages.md) objęte `dictionary` zakresu.</td>
   </tr>
 </table>
 
@@ -77,9 +77,9 @@ Nagłówki żądania obejmują:
 
 Treść żądania jest tablicą JSON. Każdy element tablicy jest obiekt JSON z następującymi właściwościami:
 
-  * `Text`: Ciąg określający termin do wyszukiwania. Powinna to być wartość `normalizedText` pola z powrotem tłumaczeń do poprzedniej [wyszukiwania słownika](.\v3-0-dictionary-lookup.md) żądania. Może to być także wartością `normalizedSource` pola.
+  * `Text`: Ciąg określający termin do wyszukiwania. Powinna to być wartość `normalizedText` pola z powrotem tłumaczeń do poprzedniej [wyszukiwania słownika](./v3-0-dictionary-lookup.md) żądania. Może to być także wartością `normalizedSource` pola.
 
-  * `Translation`: Ciąg określający przetłumaczonego tekstu wcześniej zwracany przez [wyszukiwania słownika](.\v3-0-dictionary-lookup.md) operacji. Powinna to być wartość z `normalizedTarget` pole `translations` listę [wyszukiwania słownika](.\v3-0-dictionary-lookup.md) odpowiedzi. Usługa zwróci przykłady pary słów określone źródło cel.
+  * `Translation`: Ciąg określający przetłumaczonego tekstu wcześniej zwracany przez [wyszukiwania słownika](./v3-0-dictionary-lookup.md) operacji. Powinna to być wartość z `normalizedTarget` pole `translations` listę [wyszukiwania słownika](./v3-0-dictionary-lookup.md) odpowiedzi. Usługa zwróci przykłady pary słów określone źródło cel.
 
 Przykładem jest:
 

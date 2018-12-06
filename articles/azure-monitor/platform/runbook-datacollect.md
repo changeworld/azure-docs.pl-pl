@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 9f4ee3bdba87747a04dd4a5af9391c9dba6e1b51
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ac0e004039465171c615bbd3c79f361ceb764166
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834226"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962254"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
-Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
+Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
 
 Ten samouczek przedstawia proces tworzenia i Planowanie elementu runbook w usłudze Azure Automation w celu zapisania danych do usługi Log Analytics.
 
@@ -30,7 +30,7 @@ Ten samouczek przedstawia proces tworzenia i Planowanie elementu runbook w usłu
 ## <a name="prerequisites"></a>Wymagania wstępne
 Ten scenariusz wymaga następujących zasobów, które są skonfigurowane w ramach subskrypcji platformy Azure.  Jednocześnie może być utworzenie bezpłatnego konta.
 
-- [Zaloguj się obszar roboczy usługi Analytics](../../log-analytics/log-analytics-quick-create-workspace.md).
+- [Zaloguj się obszar roboczy usługi Analytics](../../azure-monitor/learn/quick-create-workspace.md).
 - [Konto usługi Azure automation](../..//automation/automation-quickstart-create-account.md).
 
 ## <a name="overview-of-scenario"></a>Omówienie scenariusza
@@ -41,7 +41,7 @@ W tym samouczku przedstawiono tworzenie elementu runbook, który służy do zbie
 
 
 ## <a name="1-install-data-collector-api-module"></a>1. Instalowanie modułu interfejsu API modułu zbierającego dane
-Każdy [żądania z interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md#create-a-request) muszą być odpowiednio sformatowane i dołączyć nagłówek autoryzacji.  Można to zrobić w elemencie runbook, ale może zmniejszyć ilość kodu wymaganą przy użyciu modułu, która upraszcza ten proces.  Jest jeden moduł, którego można używać [modułu OMSIngestionAPI](https://www.powershellgallery.com/packages/OMSIngestionAPI) w galerii programu PowerShell.
+Każdy [żądania z interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md#create-a-request) muszą być odpowiednio sformatowane i dołączyć nagłówek autoryzacji.  Można to zrobić w elemencie runbook, ale może zmniejszyć ilość kodu wymaganą przy użyciu modułu, która upraszcza ten proces.  Jest jeden moduł, którego można używać [modułu OMSIngestionAPI](https://www.powershellgallery.com/packages/OMSIngestionAPI) w galerii programu PowerShell.
 
 Aby użyć [modułu](../../automation/automation-integration-modules.md) w elemencie runbook, musi być zainstalowany na Twoim koncie usługi Automation.  Każdego elementu runbook na tym samym koncie następnie można użyć funkcji w module.  Nowy moduł można zainstalować, wybierając **zasoby** > **modułów** > **Dodaj moduł** na koncie usługi Automation.  
 
@@ -216,4 +216,4 @@ Za każdym razem, gdy element runbook jest uruchamiany, [tworzone jest zadanie](
 - Pakiet w elemencie runbook [rozwiązania do zarządzania](../../azure-monitor/insights/solutions-creating.md) do dystrybucji do klientów.
 - Dowiedz się więcej o [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/).
 - Dowiedz się więcej o [usługi Azure Automation](https://docs.microsoft.com/azure/automation/).
-- Dowiedz się więcej o [interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md).
+- Dowiedz się więcej o [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md).

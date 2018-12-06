@@ -7,31 +7,33 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 05a364cc66d18909c7833138d351dc02bace32c2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: c71d7de2ac036fe47253be08bb0b1e01e9e76701
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822113"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957218"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
-Obsługa kontenerów w usługach Azure Cognitive Services umożliwia deweloperom korzystanie z tych samych zaawansowanych interfejsów API, które są dostępne na platformie Azure i zapewnia elastyczność podczas wdrażania i obsługi usług, które są dostarczane z [kontenerów platformy Docker](https://www.docker.com/what-container). Obsługa kontenerów jest obecnie dostępna w wersji zapoznawczej dla podzbioru usług Azure Cognitive Services, łącznie z części [komputerowej](Computer-vision/Home.md), [twarzy](Face/Overview.md), i [analizy tekstu](text-analytics/overview.md).
+Obsługa kontenerów w usługach Azure Cognitive Services umożliwia deweloperom korzystanie z tych samych zaawansowanych interfejsów API, które są dostępne na platformie Azure i zapewnia elastyczność podczas wdrażania i obsługi usług, które są dostarczane z [kontenerów platformy Docker](https://www.docker.com/what-container). Obsługa kontenerów jest obecnie dostępna w wersji zapoznawczej dla podzbioru usług Azure Cognitive Services, łącznie z części [komputerowej](Computer-vision/Home.md), [twarzy](Face/Overview.md), [analizy tekstu](text-analytics/overview.md)i [ Language Understanding](LUIS/luis-container-howto.md) (LUIS).
 
 Konteneryzacji to podejście do dystrybucji oprogramowania, w której aplikacja lub usługa, łącznie z jego zależności & konfiguracji, ma postać razem obrazu kontenera. Za pomocą niewielkie modyfikacje można wdrożyć obraz kontenera na hoście kontenera. Kontenery są odizolowane od siebie nawzajem i zasadniczego systemu operacyjnego za pomocą mniejszy wyświetlacz niż maszyny wirtualnej. Kontenery mogą utworzonych na podstawie obrazów kontenera do krótkoterminowych zadań i usuwane, gdy nie będą już potrzebne.
 
-Obejrzyj ten [krótkie wideo](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services) demonstracyjne.
+Poniższy klip wideo pokazuje, za pomocą kontenera usług Cognitive Services.
 
-[Komputerowej](Computer-vision/Home.md), [twarzy](Face/Overview.md), i [analizy tekstu](text-analytics/overview.md) usługi są dostępne w [Microsoft Azure](https://azure.microsoft.com). Zaloguj się do [witryny Azure portal](https://portal.azure.com/) do tworzenia i zapoznaj się z zasobami platformy Azure w przypadku tych usług.
+[![Pokaz kontener dla usług Cognitive Services](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
+
+[Komputerowej](Computer-vision/Home.md), [twarzy](Face/Overview.md), [analizy tekstu](text-analytics/overview.md), i [Language Understanding (LUIS)](LUIS/what-is-luis.md) usługi są dostępne w [Platformy Microsoft Azure](https://azure.microsoft.com). Zaloguj się do [witryny Azure portal](https://portal.azure.com/) do tworzenia i zapoznaj się z zasobami platformy Azure w przypadku tych usług.
 
 ## <a name="features-and-benefits"></a>Funkcje i korzyści
 
-- **Kontrola nad danymi**: umożliwiają klientom za pomocą usług Cognitive Services pełną kontrolę nad ich danymi.  Jest to istotne w przypadku klientów, którzy nie mogą wysyłać dane do chmury, ale muszą mieć dostęp do technologii usług Cognitive Services. Obsługa spójności w środowiskach hybrydowych — wielu danych, zarządzania, tożsamości i zabezpieczeń.
+- **Kontrola nad danymi**: pozwalając użytkownikom na wybór, gdzie tych usług Cognitive Services przetwarzania ich danych.  Jest to istotne w przypadku klientów, którzy nie mogą wysyłać dane do chmury, ale muszą mieć dostęp do technologii usług Cognitive Services. Obsługa spójności w środowiskach hybrydowych — wielu danych, zarządzania, tożsamości i zabezpieczeń.
 - **Kontrolę nad aktualizacjami modelu**: zapewnić klientom elastyczność przechowywanie wersji i aktualizowanie modeli wdrożone w swoich rozwiązaniach.
-- **Architektura przenośne**: umożliwiają tworzenie przenośnych architektura wdrożoną w chmurze, lokalnych i urządzenia brzegowe. Kontenery — można również wdrożyć bezpośrednio do [usługi Azure Kubernetes Service](/azure/aks/), [usługi Azure Container Instances](/azure/container-instances/), lub [Kubernetes](https://kubernetes.io/) wdrażany klaster do [platformy Azure Stos](/azure/azure-stack/). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Wysoka przepływność / małych opóźnieniach**: zapewnia klientom możliwość skalowania dotyczące wysokiej przepływności i małego opóźnienia, włączając usług Cognitive Services do uruchamiania w usłudze Azure Kubernetes Service fizycznie blisko ich logiki aplikacji i danych.
+- **Architektura przenośne**: umożliwiają tworzenie przenośnych architektura, które można wdrożyć na platformie Azure, lokalnie i urządzenia brzegowe. Kontenery, które mogą być wdrażane bezpośrednio do [usługi Azure Kubernetes Service](/azure/aks/), [usługi Azure Container Instances](/azure/container-instances/), lub [Kubernetes](https://kubernetes.io/) wdrażany klaster do [platformy Azure Stos](/azure/azure-stack/). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+- **Wysoka przepływność / małych opóźnieniach**: zapewnia klientom możliwość skalowania dotyczące wysokiej przepływności i małego opóźnienia, włączając usług Cognitive Services uruchomić fizycznie blisko ich logiki aplikacji i danych. Kontenery nie limit transakcji na sekundę (TPS) i zyski, aby możliwe było skalowanie zarówno a obsłużyć żądanie, jeśli podasz zasoby sprzętowe niezbędne. 
 
 
 ## <a name="containers-in-azure-cognitive-services"></a>Kontenery w usługach Azure Cognitive Services
@@ -42,6 +44,7 @@ Kontenery usługi Azure Cognitive Services zapewniają następujący zestaw kont
 |---------|----------|-------------|
 |[Przetwarzanie obrazów](Computer-vision/computer-vision-how-to-install-containers.md) |**Rozpoznawanie tekstu** |Wyodrębnia tekst drukowanego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody oraz plakaty i wizytówki.<br/><br/>**Ważne:** kontenerze rozpoznawanie tekstu obecnie działa tylko w języku angielskim.<br>[Poproś o dostęp](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Twarzy](Face/face-how-to-install-containers.md) |**Twarzy** |Wykrywa twarze osób na obrazach i identyfikuje atrybutów, w tym to punktów charakterystycznych (takie jak elementy ruchome i oczy), płeć, wiek i inne funkcje twarzy przewidzieć maszyny. Oprócz wykrywania twarzy można sprawdzić, czy dwie twarze w ten sam obraz lub różne obrazy są takie same, za pomocą współczynnik ufności lub porównywania twarzy względem bazy danych, aby sprawdzić, czy podobnie wyglądających twarzy identyczne już istnieje. Można również zorganizować podobnych twarzy w grupach, przy użyciu udostępnionego visual traits.<br>[Poproś o dostęp](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
+|[LUIS](LUIS/luis-container-howto.md) |**Usługa LUIS** ([obraz](https://go.microsoft.com/fwlink/?linkid=2043204))|Ładuje uczonego lub opublikowane Language Understanding modelu, nazywane również aplikacją usługi LUIS, do kontenera platformy docker i zapewnia dostęp do przewidywania zapytania z punktów końcowych interfejsu API kontenera. Możesz zbierać dzienniki zapytań z kontenera i przekazać te Wstecz, aby [portal usługi LUIS](https://www.luis.ai) w celu zwiększenia dokładności prognozy aplikacji.|
 |[Analiza tekstu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |**Klucz frazy** ([obraz](https://go.microsoft.com/fwlink/?linkid=2018757)) |Wyodrębnianie kluczowych fraz można identyfikować jego główne punkty. Na przykład dla tekstu wejściowego „Jedzenie było pyszne, a serwowała je doskonała obsługa” interfejs API zwraca główne tematy wypowiedzi: „jedzenie” i „doskonała obsługa”. |
 |[Analiza tekstu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|**Wykrywanie języka** ([obraz](https://go.microsoft.com/fwlink/?linkid=2018759)) |Maksymalnie 120 języków wykrywa, które tekst wejściowy został napisany w języku i kod jeden język, dla każdego dokumentu Przesłano żądanie raportu. Kod języka jest powiązany z oceną, co wskazuje siłę oceny. |
 |[Analiza tekstu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|**Analiza tonacji** ([obraz](https://go.microsoft.com/fwlink/?linkid=2018654)) |Analizuje nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. Ten interfejs API zwraca ocenę tonacji od 0 do 1 dla każdego dokumentu, przy czym 1 oznacza najbardziej pozytywną tonację. Modele analizy są wstępnie przeszkolonych, za pomocą rozbudowane treści, tekstu i języka naturalnego technologii firmy Microsoft. W przypadku [wybranych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages.md) interfejs API może przeanalizować i ocenić dowolny podany nieprzetworzony tekst, zwracając wyniki bezpośrednio do aplikacji wywołującej. |
@@ -78,3 +81,4 @@ Zainstaluj i Poznaj funkcje udostępniane przez kontenery w usługach Azure Cogn
 * [Instalowanie i używanie przetwarzania obrazów kontenerów](Computer-vision/computer-vision-how-to-install-containers.md)
 * [Instalowanie i używanie kontenerów twarzy](Face/face-how-to-install-containers.md)
 * [Instalowanie i używanie kontenerów analizy tekstu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
+* [Instalowanie i używanie kontenerów Language Understanding (LUIS)](LUIS/luis-container-howto.md)

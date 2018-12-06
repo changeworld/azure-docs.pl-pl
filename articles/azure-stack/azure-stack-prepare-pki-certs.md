@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ef9fe0e05343f9c99656634a075b1bd464a13c7e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379592"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972037"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Przygotowywanie certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack do wdrożenia
 Pliki certyfikatów [uzyskany z urzędu certyfikacji wybór](azure-stack-get-pki-certs.md) musi być importowane i wyeksportowane z właściwościami dopasowania wymagania dotyczące certyfikatu usługi Azure Stack.
@@ -38,15 +38,15 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
 
 1. W **Kreatora importu certyfikatów**, wybierz opcję **komputera lokalnego** jako lokalizację importu. Wybierz opcję **Dalej**. Na poniższym ekranie kliknij przycisk Dalej ponownie.
 
-    ![Lokalizacja importu komputera lokalnego](.\media\prepare-pki-certs\1.png)
+    ![Lokalizacja importu komputera lokalnego](./media/prepare-pki-certs/1.png)
 
 1.  Wybierz **Umieść wszystkie certyfikaty w następującym magazynie** , a następnie wybierz **Zaufanie przedsiębiorstwa** jako lokalizację. Kliknij przycisk **OK** aby zamknąć okno dialogowe Wybieranie magazynu certyfikatów i następnie **dalej**.
 
-    ![Konfigurowanie magazynu certyfikatów](.\media\prepare-pki-certs\3.png)
+    ![Konfigurowanie magazynu certyfikatów](./media/prepare-pki-certs/3.png)
 
     a. Jeśli importujesz plik PFX, zostaną wyświetlone dodatkowe okno. Na **ochrona klucza prywatnego** strony, wprowadź hasło dla certyfikatu plików, a następnie Włącz **Oznacz ten klucz jako eksportowalny. Dzięki temu można utworzyć kopię zapasową kluczy lub w późniejszym czasie** opcji. Wybierz opcję **Dalej**.
 
-    ![Oznacz ten klucz jako eksportowalny](.\media\prepare-pki-certs\2.png)
+    ![Oznacz ten klucz jako eksportowalny](./media/prepare-pki-certs/2.png)
 
 1. Kliknij przycisk Zakończ, aby ukończyć importowanie.
 
@@ -58,11 +58,11 @@ Otwórz konsolę menedżera certyfikatów konsoli MMC i nawiązać połączenie 
 
 1. Kliknij plik, Dodaj/Usuń przystawkę, a następnie wybierz certyfikat, kliknij przycisk Dodaj.
 
-    ![Dodaj przystawkę Certyfikaty](.\media\prepare-pki-certs\mmc-2.png)
+    ![Dodaj przystawkę Certyfikaty](./media/prepare-pki-certs/mmc-2.png)
  
 1. Wybierz konto komputera, kliknij przycisk Dalej, a następnie wybierz komputer lokalny, a następnie Zakończ. Kliknij przycisk ok, aby zamknąć stronę Dodawanie/Usuwanie przystawki.
 
-    ![Dodaj przystawkę Certyfikaty](.\media\prepare-pki-certs\mmc-3.png)
+    ![Dodaj przystawkę Certyfikaty](./media/prepare-pki-certs/mmc-3.png)
 
 1. Przejdź do certyfikatów > Zaufanie przedsiębiorstwa > Lokalizacja certyfikatu. Sprawdź, czy widzisz certyfikatu po prawej stronie.
 

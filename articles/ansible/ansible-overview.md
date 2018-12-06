@@ -8,28 +8,28 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/02/2018
 ms.topic: article
-ms.openlocfilehash: 977fef390c0efecd47ec5e19b1a82c05e2ecfd0f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 22eeb3993cd408a8369236683da3db466a348a30
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160749"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956783"
 ---
 # <a name="ansible-with-azure"></a>Rozwiązanie Ansible na platformie Azure
 
-[Rozwiązanie Ansible](http://www.ansible.com) to produkt typu open source, który automatyzuje aprowizowanie chmury, zarządzanie konfiguracją i wdrożenia aplikacji. Za pomocą rozwiązania Ansible można aprowizować maszyny wirtualne, kontenery i sieci i ukończyć infrastruktur chmury. Ponadto rozwiązania Ansible pozwala na zautomatyzowanie wdrażania i konfiguracji zasobów w danym środowisku.
+[Rozwiązanie Ansible](https://www.ansible.com) to produkt typu open source, który automatyzuje aprowizowanie chmury, zarządzanie konfiguracją i wdrożenia aplikacji. Za pomocą rozwiązania Ansible można aprowizować maszyny wirtualne, kontenery i sieci i ukończyć infrastruktur chmury. Ponadto rozwiązania Ansible pozwala na zautomatyzowanie wdrażania i konfiguracji zasobów w danym środowisku.
 
 Ten artykuł zawiera omówienie niektórych korzyści z używania rozwiązania Ansible na platformie Azure.
 
 ## <a name="ansible-playbooks"></a>Elementy playbook rozwiązania Ansible
 
-[Elementy playbook rozwiązania Ansible](http://docs.ansible.com/ansible/latest/playbooks.html) rozwiązania Ansible w konfiguracji, wdrażania i aranżacji języka. Opisują one mają swoje systemów zdalnych, aby wymusić zasady lub zestaw kroków ogólnych procesów IT. Po utworzeniu elementu playbook możesz to zrobić za pomocą kodu YAML, który definiuje model konfiguracji lub procesu.
+[Elementy playbook rozwiązania Ansible](https://docs.ansible.com/ansible/latest/playbooks.html) rozwiązania Ansible w konfiguracji, wdrażania i aranżacji języka. Opisują one mają swoje systemów zdalnych, aby wymusić zasady lub zestaw kroków ogólnych procesów IT. Po utworzeniu elementu playbook możesz to zrobić za pomocą kodu YAML, który definiuje model konfiguracji lub procesu.
 
 ## <a name="ansible-modules"></a>Moduły rozwiązania Ansible
 
-Rozwiązanie Ansible zawiera pakiet [modułów Ansible](http://docs.ansible.com/ansible/latest/modules_by_category.html) mogą być wykonywane bezpośrednio na hostach zdalnych lub za pośrednictwem [elementy playbook](http://docs.ansible.com/ansible/latest/playbooks.html). Użytkownicy mogą także tworzyć własne moduły. Moduły mogą służyć do kontrolowania zasobów systemowych — takich jak usługi, pakietów i pliki — lub wykonania poleceń systemu.
+Rozwiązanie Ansible zawiera pakiet [modułów Ansible](https://docs.ansible.com/ansible/latest/modules_by_category.html) mogą być wykonywane bezpośrednio na hostach zdalnych lub za pośrednictwem [elementy playbook](https://docs.ansible.com/ansible/latest/playbooks.html). Użytkownicy mogą także tworzyć własne moduły. Moduły mogą służyć do kontrolowania zasobów systemowych — takich jak usługi, pakietów i pliki — lub wykonania poleceń systemu.
 
-Do interakcji z usługami platformy Azure, Ansible zawiera pakiet [modułów do chmury rozwiązanie Ansible](http://docs.ansible.com/ansible/list_of_cloud_modules.html#azure) , udostępnia narzędzia umożliwiające łatwe tworzenie i organizowanie infrastruktury na platformie Azure. 
+Do interakcji z usługami platformy Azure, Ansible zawiera pakiet [modułów do chmury rozwiązanie Ansible](https://docs.ansible.com/ansible/list_of_cloud_modules.html#azure) , udostępnia narzędzia umożliwiające łatwe tworzenie i organizowanie infrastruktury na platformie Azure. 
 
 ## <a name="migrate-existing-workload-to-azure"></a>Migrowanie istniejących obciążeń na platformę Azure
 
@@ -40,7 +40,7 @@ Po rozwiązaniu Ansible używanych do definiowania infrastruktury, można zastos
 Rozwiązanie Ansible umożliwia automatyzację aplikacjom natywnym dla chmury na platformie Azure przy użyciu mikrousług platformy Azure, takich jak [usługi Azure Functions](https://azure.microsoft.com//services/functions/) i [Kubernetes na platformie Azure](https://azure.microsoft.com/services/container-service/kubernetes/).  
 
 ## <a name="manage-deployments-with-dynamic-inventory"></a>Zarządzanie wdrożeniami przy użyciu magazynu dynamicznego
-Za pomocą jego [dynamiczny spis](http://docs.ansible.com/ansible/intro_dynamic_inventory.html) funkcji rozwiązania Ansible zapewnia możliwość ściągania spisu z zasobów platformy Azure. Możesz następnie tagów istniejących wdrożeń platformy Azure i zarządzać tym wdrożeniom oznakowane za pomocą rozwiązania Ansible.
+Za pomocą jego [dynamiczny spis](https://docs.ansible.com/ansible/intro_dynamic_inventory.html) funkcji rozwiązania Ansible zapewnia możliwość ściągania spisu z zasobów platformy Azure. Możesz następnie tagów istniejących wdrożeń platformy Azure i zarządzać tym wdrożeniom oznakowane za pomocą rozwiązania Ansible.
 
 ## <a name="additional-azure-marketplace-options"></a>Dodatkowe opcje w witrynie Azure Marketplace
 [Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) obrazu portalu Azure Marketplace, by Red Hat ułatwia organizacjom skalowanie automatyzacji struktury informatycznej oraz zarządzanie złożonymi wdrożeniami w infrastrukturach fizycznych, wirtualnych i infrastruktury chmury. Ansible Tower obejmuje funkcje, które zapewniają dodatkowe poziomy widoczności, kontroli, bezpieczeństwa i wydajności niezbędne dla współczesnych przedsiębiorstw. Ansible Tower szyfruje poświadczenia, takie jak klucze platformy Azure i SSH, dzięki czemu możesz delegować zadania dla mniej doświadczonych pracowników, bez ryzyka ujawnienia poświadczeń.

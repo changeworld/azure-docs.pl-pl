@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: 3a9fba644bd379f3f54cf07cf35c0a54029756da
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b09bb65cdb571c9df95d1922f4132abe5b77907c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287187"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963951"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie telefonem bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Aby umożliwić telefonu bez hasło logowania (wersja zapoznawcza) przy użyciu 
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak Moi użytkownicy końcowi włączyć logowanie za pomocą telefonu?
 
-W publicznej wersji zapoznawczej nie istnieje żaden sposób wymusić użytkowników do utworzenia lub używania tego nowego poświadczenia. Użytkownik końcowy tylko wystąpi logowania bez hasła, gdy administrator jako włączona swojej dzierżawy, a użytkownik zaktualizował swoich aplikacji Microsoft Authenticator, aby włączyć logowanie za pomocą telefonu.
+W publicznej wersji zapoznawczej nie istnieje żaden sposób wymusić użytkowników do utworzenia lub używania tego nowego poświadczenia. Użytkownik końcowy tylko wystąpi logowania bez hasła, gdy administrator włączył swojej dzierżawy, a użytkownik zaktualizował swoich aplikacji Microsoft Authenticator, aby włączyć logowanie za pomocą telefonu.
 
 > [!NOTE]
 > Ta funkcja została w aplikacji od marca 2017 r., więc ma możliwość, że gdy jest włączona dla dzierżawy, mogą napotkać użytkownicy ten przepływ natychmiast. Należy pamiętać i przygotowanie użytkowników do tej zmiany.

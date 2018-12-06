@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: c463599190c5bfaac47a70dbca7b8a67dc830f3a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b6ec3283121a3403afb80ccad81f313decf16c88
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363487"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957644"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Rozwiązywanie problemów z usługi Microsoft Azure Stack
 
@@ -43,7 +43,7 @@ To zachowanie jest prawdopodobnie tylko wynik domyślne zachowanie okno poleceń
 Element obrazu i galerii systemu Windows Server, należy dodać przed wdrożeniem maszyn wirtualnych w usłudze Azure Stack.
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Po ponownym uruchomieniu mojej hosta usługi Azure Stack, niektóre maszyny wirtualne nie może automatycznie uruchomić.
-Po ponownym uruchomieniu hosta, może być Zauważ, że nie są natychmiast dostępne usługi Azure Stack.  Jest to spowodowane Azure Stack [maszynach wirtualnych infrastruktury](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) i dostawców zasobów zająć trochę czasu, aby sprawdzić spójność, ale ostatecznie rozpocznie się automatycznie.
+Po ponownym uruchomieniu hosta, może być Zauważ, że nie są natychmiast dostępne usługi Azure Stack.  Jest to spowodowane Azure Stack [maszynach wirtualnych infrastruktury](../azure-stack/asdk/asdk-architecture.md#virtual-machine-roles) i dostawców zasobów zająć trochę czasu, aby sprawdzić spójność, ale ostatecznie rozpocznie się automatycznie.
 
 Ponadto tej dzierżawy maszyn wirtualnych nie automatycznie uruchomiony po ponownym uruchomieniu hosta usługi Azure Stack development zestawu. Jest to znany problem i wymaga tylko kilku ręcznych kroków, aby przełączyć w tryb online:
 

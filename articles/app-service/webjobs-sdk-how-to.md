@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 2266f63f9689ec4d22659eb4a7c4876e25fa08b1
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: d2a0e14ec4708539c7fd8640c8dd3dacef10f508
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335218"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961896"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach
 
@@ -498,7 +498,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ### <a name="custom-telemetry-for-application-insights"></a>Telemetria niestandardowa usługi Application Insights
 
-Wewnętrznie `TelemetryClient` utworzone przez dostawcę usługi Application Insights dla korzysta z zestawem SDK usługi WebJobs [ServerTelemetryChannel](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Gdy punkt końcowy usługi Application Insights jest niedostępny lub ograniczania żądań przychodzących, ten kanał [zapisuje żądań w systemie plików aplikacji sieci web i przesyła je ponownie później](http://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+Wewnętrznie `TelemetryClient` utworzone przez dostawcę usługi Application Insights dla korzysta z zestawem SDK usługi WebJobs [ServerTelemetryChannel](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Gdy punkt końcowy usługi Application Insights jest niedostępny lub ograniczania żądań przychodzących, ten kanał [zapisuje żądań w systemie plików aplikacji sieci web i przesyła je ponownie później](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
 `TelemetryClient` Jest tworzony przez klasę, która implementuje `ITelemetryClientFactory`. Domyślnie jest to [DefaultTelemetryClientFactory](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
 

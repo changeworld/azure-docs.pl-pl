@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4e1a8bd60c71bfc46b3c57cff6a87c5b2477146e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405739"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956452"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, skonfigurować rejestrowanie diagnostyczne i Włącz alerty w usłudze Azure Logic Apps
 
@@ -74,7 +74,7 @@ Aby otrzymywać powiadomienia o awarii lub innych problemów, możliwe, należy 
 
 Dla bardziej zaawansowane debugowanie za pomocą szczegóły środowiska uruchomieniowego i zdarzeń, możesz skonfigurować rejestrowanie za pomocą diagnostyki [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Usługa log Analytics to usługa platformy Azure, która monitoruje środowiska chmurowe i lokalne środowiska, aby pomóc w zachowania ich dostępności i wydajności. 
 
-Przed rozpoczęciem wykonywania tej procedury, musisz mieć obszar roboczy usługi Log Analytics. Dowiedz się, [jak utworzyć obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Przed rozpoczęciem wykonywania tej procedury, musisz mieć obszar roboczy usługi Log Analytics. Dowiedz się, [jak utworzyć obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 1. W [witryny Azure portal](https://portal.azure.com), Znajdź i wybierz swoją aplikację logiki. 
 
@@ -92,7 +92,7 @@ Przed rozpoczęciem wykonywania tej procedury, musisz mieć obszar roboczy usłu
    2. W obszarze **usługi Log Analytics**, wybierz **Konfiguruj**. 
    3. W obszarze **obszarów roboczych pakietu OMS**, wybierz obszar roboczy na potrzeby rejestrowania.
    > [!NOTE]
-   > Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
+   > Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.
    4. W obszarze **dziennika**, wybierz opcję **środowiska wykonawczego przepływów pracy** kategorii.
    5. Interwał metryki.
    6. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.

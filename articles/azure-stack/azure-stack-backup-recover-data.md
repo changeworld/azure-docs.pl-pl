@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 326fd38f7cb738540a389c93de2a9b5be015e0d7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034341"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968736"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Odzyskiwanie z utratą danych w wyniku katastrofy
 
@@ -40,11 +40,11 @@ Ta eliminuje scenariusz odzyskanie całej instalacji w przypadku awarii sprzętu
 
 Podróż ochrony Uruchom Azure rozpoczyna się od tworzenia kopii zapasowej danych infrastruktury i aplikacji/dzierżawy osobno. W tym dokumencie opisano, jak chronić infrastrukturę. 
 
-![Początkowe wdrożenie usługi Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow1.png)
+![Początkowe wdrożenie usługi Azure Stack](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
 W najgorszego przypadku gdzie wszystkie dane zostaną utracone odzyskiwanie usługi Azure Stack jest proces przywracania unikatowe dane infrastruktury do wdrożenia w usłudze Azure Stack i wszystkie dane użytkownika. 
 
-![Ponowne wdrażanie usługi Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow2.png)
+![Ponowne wdrażanie usługi Azure Stack](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>Przywracanie
 

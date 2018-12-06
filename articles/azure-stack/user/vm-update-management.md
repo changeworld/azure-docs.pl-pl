@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.openlocfilehash: 1ef20dc35b069c5f12c2f31d0979949be27271e0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: be793fa5d346d05e6b7bd9f93f1108b7a3542fa6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324276"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959176"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Usługa Azure Stack VM update i zarządzanie
 Następujące funkcje rozwiązania usługi Azure Automation umożliwia zarządzanie maszynami wirtualnymi Windows, które są wdrażane przy użyciu usługi Azure Stack:
@@ -41,7 +41,7 @@ Kilka wymagań wstępnych, muszą zostać spełnione przed rozpoczęciem korzyst
 Na potrzeby spisu, śledzenia zmian i Update Management w usłudze Azure automation funkcje usługi Azure Stack Windows VMs, należy najpierw włączyć te rozwiązania na platformie Azure.
 
 > [!TIP]
-> Jeśli masz już te funkcje włączone dla maszyn wirtualnych platformy Azure, używając istniejących poświadczeń LogAnalytics obszaru roboczego. Jeśli masz już LogAnalytics WorkspaceID i klucz podstawowy, którego chcesz używać, przejdź do sekcji [następnej sekcji](.\vm-update-management.md#in-the-azure-stack-administration-portal). W przeciwnym razie jest nadal w tej sekcji, aby utworzyć nowy obszar roboczy LogAnalytics i konto usługi automation.
+> Jeśli masz już te funkcje włączone dla maszyn wirtualnych platformy Azure, używając istniejących poświadczeń LogAnalytics obszaru roboczego. Jeśli masz już LogAnalytics WorkspaceID i klucz podstawowy, którego chcesz używać, przejdź do sekcji [następnej sekcji](./vm-update-management.md#in-the-azure-stack-administration-portal). W przeciwnym razie jest nadal w tej sekcji, aby utworzyć nowy obszar roboczy LogAnalytics i konto usługi automation.
 
 Pierwszym krokiem podczas włączania tych rozwiązań jest [Utwórz obszar roboczy LogAnalytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) w subskrypcji platformy Azure. Obszar roboczy usługi Log Analytics to unikatowe środowisko usługi Log Analytics z własnym repozytorium danych, źródłami danych i rozwiązań. Po utworzeniu obszaru roboczego, należy pamiętać, identyfikator WorkspaceID i klucz. Aby wyświetlić te informacje, przejdź do bloku obszaru roboczego, kliknij **Zaawansowane ustawienia**i przejrzyj **identyfikator obszaru roboczego** i **klucz podstawowy** wartości. 
 

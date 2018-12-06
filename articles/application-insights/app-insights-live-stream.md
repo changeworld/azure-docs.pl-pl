@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8c414f7993de1589a3992e247400c3596fd18631
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 097eae37f170a8036ee46652450788faf77c3960
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720477"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967133"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Stream metryki: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 
@@ -174,7 +174,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 Następnie w metodzie ConfigureServices należy dodać:
 
 ``` C#
-services.ConfigureTelemetryModule<QuickPulseTelemetryModule>( module => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
 

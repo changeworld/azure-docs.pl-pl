@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c2b44455b417d1bc764337d91a5535d7ffa34a5
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ad6fe023c4e93328331140dc3552ae1afd7c83ef
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783376"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970647"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -167,7 +167,7 @@ W poniższej tabeli przedstawiono wymagania dotyczące portów dla ruchu przycho
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | Wymagane przez polecenie cmdlet programu PowerShell szyfrowania, zgodnie z opisem w [szyfrowanie poświadczeń dla lokalnych magazynów danych w usłudze Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md), jak również aplikacji Menedżer poświadczeń, aby bezpiecznie ustawić poświadczenia dla lokalnych magazynów danych na własne środowisko integration runtime. |
 
-![Wymagania dotyczące portów bramy](media\data-movement-security-considerations/gateway-port-requirements.png) 
+![Wymagania dotyczące portów bramy](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
 #### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>Konfiguracje adresów IP i umieszczania na białej liście w magazynach danych
 Niektóre magazyny danych w chmurze również wymagają tej należy umieścić na liście dozwolonych adres IP komputera, uzyskiwanie dostępu do magazynu. Upewnij się, że adres IP komputera Self-Hosted integration runtime jest umieszczona na białej liście, lub odpowiednio skonfigurowane w zaporze.

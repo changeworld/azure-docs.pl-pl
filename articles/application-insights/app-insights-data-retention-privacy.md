@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 075358ad559806c375d44b6a125e8d2839b6632f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2814ecb0ff9fc49e4763dbe604fef353394f9aac
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726308"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965244"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -101,7 +101,6 @@ Firma Microsoft używa danych tylko w celu świadczenie tej usługi.
 
 ## <a name="where-is-the-data-held"></a>Gdzie są przechowywane dane?
 * W USA, Europa lub Azja południowo-wschodnia. Podczas tworzenia nowego zasobu usługi Application Insights, można wybrać lokalizację. 
-
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Oznacza, że Moja aplikacja musi być obsługiwana w USA, Europa lub Azja południowo-wschodnia?
 * Nie. Aplikację można uruchomić dowolnego miejsca i w hostów w środowisku lokalnym lub w chmurze.
@@ -280,6 +279,9 @@ Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokument
 | Zestaw SDK diagnostyki |Komunikat śledzenia i wyjątków |
 
 Możesz [wyłączyć niektórych danych, edytując plik ApplicationInsights.config][config]
+
+> [!NOTE]
+> Klient IP jest używany w celu lokalizacji geograficznej, ale domyślnie nie jest już przechowywania danych adresów IP i zer są zapisywane w odpowiednim polu. Aby dowiedzieć się więcej na temat obsługi danych osobowych jest to zalecane [artykułu](../log-analytics/log-analytics-personal-data-mgmt.md#application-data). Jeśli potrzebujesz przechować adres IP możesz to zrobić za pomocą [inicjatora telemetrii](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="credits"></a>Napisy końcowe
 Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind dostępne [ http://www.maxmind.com ](http://www.maxmind.com).

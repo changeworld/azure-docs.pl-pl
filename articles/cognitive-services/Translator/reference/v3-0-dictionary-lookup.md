@@ -10,16 +10,16 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b51067b9e854566991d49aeb1ff2b1ad13999a51
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127848"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957746"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>API 3.0 tekstu usługi Translator: Wyszukiwanie słownika
 
-Dostarcza alternatywnych tłumaczeń dla programów word i małą liczbą wyrażenia idiomatyczne. Każde tłumaczenie części mowy i ma listę wstecz tłumaczenia. Tłumaczenia wstecz umożliwić użytkownikowi zrozumieć tłumaczenie w kontekście. [Przykład słownika](.\v3-0-dictionary-examples.md) operacja umożliwia dalsze do przechodzenia do szczegółów Zobacz przykład użycia każdej pary tłumaczenia.
+Dostarcza alternatywnych tłumaczeń dla programów word i małą liczbą wyrażenia idiomatyczne. Każde tłumaczenie części mowy i ma listę wstecz tłumaczenia. Tłumaczenia wstecz umożliwić użytkownikowi zrozumieć tłumaczenie w kontekście. [Przykład słownika](./v3-0-dictionary-examples.md) operacja umożliwia dalsze do przechodzenia do szczegółów Zobacz przykład użycia każdej pary tłumaczenia.
 
 ## <a name="request-url"></a>Adres URL żądania
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   </tr>
   <tr>
     <td>z</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwane języki](.\v3-0-languages.md) objęte `dictionary` zakresu.</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwane języki](./v3-0-languages.md) objęte `dictionary` zakresu.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](.\v3-0-languages.md) objęte `dictionary` zakresu.</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](./v3-0-languages.md) objęte `dictionary` zakresu.</td>
   </tr>
 </table>
 
@@ -92,13 +92,13 @@ Obowiązują następujące ograniczenia:
 
 Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ciągu w tabeli wejściowej. Obiekt wyniku zawiera następujące właściwości:
 
-  * `normalizedSource`: Ciąg, zapewniając znormalizowana postać okresu źródła. Na przykład jeśli żądanie jest "JOHN", znormalizowana postać będzie "john". Zawartość tego pola staje się dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).
+  * `normalizedSource`: Ciąg, zapewniając znormalizowana postać okresu źródła. Na przykład jeśli żądanie jest "JOHN", znormalizowana postać będzie "john". Zawartość tego pola staje się dane wejściowe [Przykłady wyszukiwania](./v3-0-dictionary-examples.md).
     
   * `displaySource`: Ciąg, dzięki czemu termin źródłowy w postaci najlepiej nadaje się do wyświetlania przez użytkownika końcowego. Na przykład, jeśli dane wejściowe są "JOHN", Wyświetl formularz zostanie naliczona zwykle pisownię nazwy: "John". 
 
   * `translations`: Lista tłumaczeń termin źródła. Każdy element listy jest obiektem z następującymi właściwościami:
 
-    * `normalizedTarget`: Ciąg, dzięki czemu znormalizowana postać tego warunku w języku docelowym. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).
+    * `normalizedTarget`: Ciąg, dzięki czemu znormalizowana postać tego warunku w języku docelowym. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](./v3-0-dictionary-examples.md).
 
     * `displayTarget`: Ciąg, podając wyrażenie w języku docelowym oraz w formie najlepiej nadaje się do wyświetlania przez użytkownika końcowego. Ogólnie rzecz biorąc, to będzie tylko różnią się od `normalizedTarget` pod względem wielkości liter. Na przykład stoi takie jak "Juan" będą mieć `normalizedTarget = "juan"` i `displayTarget = "Juan"`.
 
@@ -125,11 +125,11 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
     
     * `backTranslations`: Lista "tłumaczenia Wstecz" element docelowy. Na przykład źródło wyrazy, które element docelowy można przełożyć na. Listy może zawierać słowo źródła, którego zażądano (np. w przypadku, gdy trwa źródłowego programu word wyszukiwana jest "podnoszenia", a następnie gwarantuje, że "podnoszenia" będzie `backTranslations` listy). Jednak nie może być na pierwszym miejscu i często nie będzie. Każdy element obiektu `backTranslations` lista jest obiektem opisanym przez następujące właściwości:
 
-        * `normalizedText`: Ciąg, zapewniając znormalizowana postać składnika źródłowego, który jest tłumaczeniem kopii obiektu docelowego. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).        
+        * `normalizedText`: Ciąg, zapewniając znormalizowana postać składnika źródłowego, który jest tłumaczeniem kopii obiektu docelowego. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](./v3-0-dictionary-examples.md).        
 
         * `displayText`: Ciąg, zapewniając termin źródłowego, który jest ponownie tłumaczenie obiektu docelowego w formie najlepszych dostosowane do wyświetlenia przez użytkownika końcowego.
 
-        * `numExamples`: Liczba całkowita reprezentująca liczbę przykładów, które są dostępne dla tej pary tłumaczenia. Rzeczywiste przykłady musi zostać pobrany z oddzielnym wywołaniu [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md). Liczba jest przede wszystkim mająca na celu ułatwienie ekran w najlepsze środowisko użytkownika. Na przykład interfejs użytkownika może dodać hiperłącze do tłumaczenia Wstecz, jeśli wiele przykładów jest większa niż zero i Pokaż tłumaczenia wstecz jako zwykły tekst, jeśli istnieją żadnych przykładów. Należy pamiętać, że rzeczywista liczba przykłady zwracane przez wywołanie [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md) może być mniejsza niż `numExamples`, ponieważ filtrowania dodatkowych można stosować na bieżąco, aby usunąć przykłady "złe".
+        * `numExamples`: Liczba całkowita reprezentująca liczbę przykładów, które są dostępne dla tej pary tłumaczenia. Rzeczywiste przykłady musi zostać pobrany z oddzielnym wywołaniu [Przykłady wyszukiwania](./v3-0-dictionary-examples.md). Liczba jest przede wszystkim mająca na celu ułatwienie ekran w najlepsze środowisko użytkownika. Na przykład interfejs użytkownika może dodać hiperłącze do tłumaczenia Wstecz, jeśli wiele przykładów jest większa niż zero i Pokaż tłumaczenia wstecz jako zwykły tekst, jeśli istnieją żadnych przykładów. Należy pamiętać, że rzeczywista liczba przykłady zwracane przez wywołanie [Przykłady wyszukiwania](./v3-0-dictionary-examples.md) może być mniejsza niż `numExamples`, ponieważ filtrowania dodatkowych można stosować na bieżąco, aby usunąć przykłady "złe".
         
         * `frequencyCount`: Liczba całkowita reprezentująca częstotliwość Ta para tłumaczenia w danych. Głównym celem tego pola jest udostępniają interfejs użytkownika umożliwia sortowanie tłumaczenia Wstecz, więc terminy najczęściej są po raz pierwszy.
 

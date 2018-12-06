@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: d50131a9c9e7572f7696a936cbfec3a8568eda2e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3759a9845d4ad1514fc5f0183c78b5eca2e31464
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343657"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960655"
 ---
 # <a name="azure-stack-firewall-integration"></a>Integracja z zaporą Azure Stack
 Zaleca się używać urządzenia zapory w celu bezpiecznej usługi Azure Stack. Mimo że zapory może ułatwić elementów, takich jak rozproszonej typu "odmowa usługi" (DDOS) ataki, Wykrywanie nieautoryzowanego dostępu i inspekcji zawartości, może również zostać przepływności wąskiego gardła dla usług Azure storage, takie jak obiekty BLOB, tabel i kolejek.
@@ -49,7 +49,7 @@ We wdrożeniu programu edge usługi Azure Stack jest wdrażany bezpośrednio pod
 
 Zazwyczaj publiczne adresy IP routingowi określono pulę publicznych adresów VIP w sieci zewnętrznej w czasie wdrażania. W scenariuszu edge nie zaleca używania publicznych adresów IP z obsługą routingu w innych sieci ze względów bezpieczeństwa. W tym scenariuszu umożliwia użytkownikowi środowisko środowisko pełni opartej na chmurze własnym kontrolowanego, tak jak w chmurze publicznej, takich jak platforma Azure.  
 
-![Przykład zapory na krawędzi w usłudze Azure Stack](.\media\azure-stack-firewall\firewallScenarios.png)
+![Przykład zapory na krawędzi w usłudze Azure Stack](./media/azure-stack-firewall/firewallScenarios.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Intranet lub obwód sieci zapory zrealizować scenariusz przedsiębiorstwa
 W sieci intranet lub obwód wdrożenia w przedsiębiorstwie usługi Azure Stack jest wdrażany w zaporze podzielone na strefy multi lub Between zapory na krawędzi, a Zapora wewnętrznej sieci firmowej. Ruch jest dystrybuowane między bezpiecznego, sieci obwodowej (lub sieć obwodowa), a niezabezpieczone strefy, jak opisano poniżej:
@@ -58,7 +58,7 @@ W sieci intranet lub obwód wdrożenia w przedsiębiorstwie usługi Azure Stack 
 - **Obwodowej strefę**. W sieci obwodowej jest w przypadku, gdy zewnętrznych lub aplikacji, takich jak serwery sieci Web są zazwyczaj wdrożone z Internetem. Zazwyczaj jest monitorowany przez zaporę, aby uniknąć ataków, takich jak przed atakami DDoS i włamań (stosowanie metod hakerskich), umożliwiając jednocześnie określony ruch przychodzący z Internetu. Tylko zewnętrzne sieci publicznych pulę adresów VIP stosu Azure powinien znajdować się w sieci obwodowej.
 - **Niezabezpieczony strefy**. Jest to zewnętrznej sieci internet. Jego **nie** zaleca, aby wdrożyć usługę Azure Stack w strefie niezabezpieczonych.
 
-![Przykład sieci obwodowej w usłudze Azure Stack](.\media\azure-stack-firewall\perimeter-network-scenario.png)
+![Przykład sieci obwodowej w usłudze Azure Stack](./media/azure-stack-firewall/perimeter-network-scenario.png)
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 Dowiedz się więcej o [portach i protokołach używanych przez punkty końcowe usługi Azure Stack](azure-stack-integrate-endpoints.md).

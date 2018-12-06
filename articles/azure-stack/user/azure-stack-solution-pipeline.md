@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 77f9e52da8ada9cdf56d4a710bba65492cc17f75
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 36637137741aef6b34ab8e70109d692f5399043a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280745"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967065"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
 
@@ -126,27 +126,27 @@ Jednostki usługi wymaga klucza uwierzytelniania. Wykonaj następujące kroki, a
 
 1. W oknie **Rejestracje aplikacji** w usłudze Azure Active Directory wybierz aplikację.
 
-    ![Wybierz aplikację](media\azure-stack-solution-hybrid-pipeline\000_01.png)
+    ![Wybierz aplikację](media/azure-stack-solution-hybrid-pipeline/000_01.png)
 
 2. Zanotuj wartość **identyfikator aplikacji**. Podczas konfigurowania punktu końcowego usługi w usługach infrastruktury DevOps platformy Azure, użyje tej wartości.
 
-    ![Identyfikator aplikacji](media\azure-stack-solution-hybrid-pipeline\000_02.png)
+    ![Identyfikator aplikacji](media/azure-stack-solution-hybrid-pipeline/000_02.png)
 
 3. Aby wygenerować klucz uwierzytelniania, wybierz pozycję **Ustawienia**.
 
-    ![Edytowanie ustawień aplikacji](media\azure-stack-solution-hybrid-pipeline\000_03.png)
+    ![Edytowanie ustawień aplikacji](media/azure-stack-solution-hybrid-pipeline/000_03.png)
 
 4. Aby wygenerować klucz uwierzytelniania, wybierz pozycję **Klucze**.
 
-    ![Konfigurowanie ustawień klucza](media\azure-stack-solution-hybrid-pipeline\000_04.png)
+    ![Konfigurowanie ustawień klucza](media/azure-stack-solution-hybrid-pipeline/000_04.png)
 
 5. Podaj opis klucza, a następnie ustaw czas trwania klucza. Po zakończeniu wybierz pozycję **Zapisz**.
 
-    ![Opis klucza i czas trwania](media\azure-stack-solution-hybrid-pipeline\000_05.png)
+    ![Opis klucza i czas trwania](media/azure-stack-solution-hybrid-pipeline/000_05.png)
 
     Po zapisaniu klucza, klucz **wartość** jest wyświetlana. Skopiuj tę wartość, ponieważ ta wartość nie może pobrać później. Należy podać **wartość klucza** identyfikatorem aplikacji do logowania w aplikacji. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
 
-    ![Klucz wartość](media\azure-stack-solution-hybrid-pipeline\000_06.png)
+    ![Klucz wartość](media/azure-stack-solution-hybrid-pipeline/000_06.png)
 
 ### <a name="get-the-tenant-id"></a>Pobieranie Identyfikatora dzierżawy
 
@@ -154,15 +154,15 @@ W ramach konfiguracji punktu końcowego usługi, usługom DevOps platformy Azure
 
 1. Wybierz pozycję **Azure Active Directory**.
 
-    ![Usługa Azure Active Directory dla dzierżawy](media\azure-stack-solution-hybrid-pipeline\000_07.png)
+    ![Usługa Azure Active Directory dla dzierżawy](media/azure-stack-solution-hybrid-pipeline/000_07.png)
 
 2. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
 
-    ![Wyświetl właściwości dzierżawy](media\azure-stack-solution-hybrid-pipeline\000_08.png)
+    ![Wyświetl właściwości dzierżawy](media/azure-stack-solution-hybrid-pipeline/000_08.png)
 
 3. Skopiuj **identyfikator katalogu**. Ta wartość jest Twoim identyfikatorem dzierżawy.
 
-    ![Identyfikator katalogu](media\azure-stack-solution-hybrid-pipeline\000_09.png)
+    ![Identyfikator katalogu](media/azure-stack-solution-hybrid-pipeline/000_09.png)
 
 ### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Przyznanie praw jednostki usługi do wdrażania zasobów w subskrypcji usługi Azure Stack
 
@@ -172,27 +172,27 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
 1. Przejdź do poziomu zakresu, którą chcesz przypisać aplikację. Na przykład, aby przypisać rolę w zakresie subskrypcji, wybierz **subskrypcje**.
 
-    ![Wybierz subskrypcje](media\azure-stack-solution-hybrid-pipeline\000_10.png)
+    ![Wybierz subskrypcje](media/azure-stack-solution-hybrid-pipeline/000_10.png)
 
 2. W **subskrypcji**, wybierz program Visual Studio Enterprise.
 
-    ![Visual Studio Enterprise](media\azure-stack-solution-hybrid-pipeline\000_11.png)
+    ![Visual Studio Enterprise](media/azure-stack-solution-hybrid-pipeline/000_11.png)
 
 3. W programie Visual Studio Enterprise, wybierz **kontrola dostępu (IAM)**.
 
-    ![Kontrola dostępu (Zarządzanie dostępem i tożsamościami)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
+    ![Kontrola dostępu (Zarządzanie dostępem i tożsamościami)](media/azure-stack-solution-hybrid-pipeline/000_12.png)
 
 4. Wybierz pozycję **Dodaj**.
 
-    ![Add](media\azure-stack-solution-hybrid-pipeline\000_13.png)
+    ![Add](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 
 5. W **Dodaj uprawnienia**, wybierz rolę, którą chcesz przypisać do aplikacji. W tym przykładzie **właściciela** roli.
 
-    ![Rola właściciela](media\azure-stack-solution-hybrid-pipeline\000_14.png)
+    ![Rola właściciela](media/azure-stack-solution-hybrid-pipeline/000_14.png)
 
 6. Domyślnie aplikacje usługi Azure Active Directory nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, należy podać jego nazwę w **wybierz** pola za pomocą funkcji wyszukiwania. Wybierz aplikację.
 
-    ![Wynik wyszukiwania aplikacji](media\azure-stack-solution-hybrid-pipeline\000_16.png)
+    ![Wynik wyszukiwania aplikacji](media/azure-stack-solution-hybrid-pipeline/000_16.png)
 
 7. Wybierz **Zapisz** zakończenie przypisanie roli. Zostanie wyświetlona aplikacja na liście Użytkownicy przypisani do roli dla tego zakresu.
 
@@ -212,37 +212,37 @@ Utwórz osobisty Token dostępu na dostęp do usług infrastruktury DevOps platf
 
 2. Wybierz **zarządzania zabezpieczeniami** do strony tworzenia tokenu dostępu.
 
-    ![Logowanie użytkowników](media\azure-stack-solution-hybrid-pipeline\000_17.png)
+    ![Logowanie użytkowników](media/azure-stack-solution-hybrid-pipeline/000_17.png)
 
-    ![Wybierz projekt](media\azure-stack-solution-hybrid-pipeline\000_18.png)
+    ![Wybierz projekt](media/azure-stack-solution-hybrid-pipeline/000_18.png)
 
-    ![Dodaj osobisty token dostępu](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
+    ![Dodaj osobisty token dostępu](media/azure-stack-solution-hybrid-pipeline/000_18a.png)
 
-    ![Utwórz token](media\azure-stack-solution-hybrid-pipeline\000_18b.png)
+    ![Utwórz token](media/azure-stack-solution-hybrid-pipeline/000_18b.png)
 
 3. Skopiuj token.
 
     > [!Note]
     > Zapisywanie informacji o tokenie. Te informacje nie są przechowywane i nie był już wyświetlany ponownie gdy pozostawisz strony sieci web.
 
-    ![Osobisty token dostępu](media\azure-stack-solution-hybrid-pipeline\000_19.png)
+    ![Osobisty token dostępu](media/azure-stack-solution-hybrid-pipeline/000_19.png)
 
 ### <a name="install-the-azure-devops-services-build-agent-on-the-azure-stack-hosted-build-server"></a>Zainstaluj agenta kompilacji usługom DevOps platformy Azure w usłudze Azure Stack hostowany serwer kompilacji
 
 1. Połącz na serwerze kompilacji, na którym została wdrożona na hoście usługi Azure Stack.
 2. Pobieranie i wdrażanie agenta kompilacji, jako usługa korzystająca z osobistej (PAT) token dostępu i uruchomiona za pomocą konta administratora maszyny Wirtualnej.
 
-    ![Pobierz agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\010_downloadagent.png)
+    ![Pobierz agenta kompilacji](media/azure-stack-solution-hybrid-pipeline/010_downloadagent.png)
 
 3. Przejdź do folderu dla agenta kompilacji wyodrębnione. Uruchom **config.cmd** pliku w wierszu polecenia z podwyższonym poziomem uprawnień.
 
-    ![Agent kompilacji wyodrębnione](media\azure-stack-solution-hybrid-pipeline\000_20.png)
+    ![Agent kompilacji wyodrębnione](media/azure-stack-solution-hybrid-pipeline/000_20.png)
 
-    ![Zarejestruj agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\000_21.png)
+    ![Zarejestruj agenta kompilacji](media/azure-stack-solution-hybrid-pipeline/000_21.png)
 
 4. Po zakończeniu config.cmd folder agenta kompilacji jest aktualizowana dodatkowych plików. Folder z wyodrębniona zawartość powinna wyglądać następująco:
 
-    ![Aktualizacja folder agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
+    ![Aktualizacja folder agenta kompilacji](media/azure-stack-solution-hybrid-pipeline/009_token_file.png)
 
     Możesz zobaczyć agenta w folderze usługom DevOps platformy Azure.
 
@@ -250,23 +250,23 @@ Utwórz osobisty Token dostępu na dostęp do usług infrastruktury DevOps platf
 
 Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędzia VSTO) można wdrożyć usługi Azure App Service do usługi Azure Stack. Usługi Azure DevOps łączy się agenta kompilacji, który jest połączony z usługą Azure Stack.
 
-![NorthwindCloud przykładową aplikację w VSTO](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
+![NorthwindCloud przykładową aplikację w VSTO](media/azure-stack-solution-hybrid-pipeline/012_securityendpoints.png)
 
 1. Zaloguj się do narzędzi VSTO dla programów, a następnie przejdź do strony Ustawienia aplikacji.
 2. Na **ustawienia**, wybierz opcję **zabezpieczeń**.
 3. W **grup usługi DevOps platformy Azure**, wybierz opcję **punktu końcowego dla twórców**.
 
-    ![Punkt końcowy NorthwindCloud dla twórców](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
+    ![Punkt końcowy NorthwindCloud dla twórców](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
 
 4. Na **członków** zaznacz **Dodaj**.
 
-    ![Dodaj członka](media\azure-stack-solution-hybrid-pipeline\014_members_tab.png)
+    ![Dodaj członka](media/azure-stack-solution-hybrid-pipeline/014_members_tab.png)
 
 5. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
 6. Wybierz **Zapisz zmiany**.
 7. W **grup usługi DevOps platformy Azure** listy wybierz **Administratorzy punktu końcowego**.
 
-    ![Administratorzy NorthwindCloud punktu końcowego](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
+    ![Administratorzy NorthwindCloud punktu końcowego](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
 
 8. Na **członków** zaznacz **Dodaj**.
 9. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
@@ -297,13 +297,13 @@ Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 
 Teraz, gdy jest tworzony punkt końcowy, metodyki DevOps w celu połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje od metodyki DevOps, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
 
-![Tworzenie agenta usługi Azure AD](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+![Tworzenie agenta usługi Azure AD](media/azure-stack-solution-hybrid-pipeline/016_save_changes.png)
 
 ### <a name="create-an-endpoint-for-ad-fs"></a>Utworzenie punktu końcowego dla usług AD FS
 
 Najnowsza aktualizacja DevOps platformy Azure umożliwia tworzenie za pomocą jednostki usługi przy użyciu certyfikatu do uwierzytelniania połączenia z usługą. Jest to wymagane, podczas wdrażania usługi Azure Stack z usługami AD FS jako dostawcy tożsamości. 
 
-![Tworzenie agenta usług AD FS](media\azure-stack-solution-hybrid-pipeline\image06.png)
+![Tworzenie agenta usług AD FS](media/azure-stack-solution-hybrid-pipeline/image06.png)
 
 Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 
@@ -342,17 +342,17 @@ Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno 
 
 1. Zaloguj się do usługi Azure DevOps Services przy użyciu organizacji, która ma uprawnień do tworzenia projektu w usłudze Azure Stack. Następny zrzut ekranu pokazuje, jak połączyć się z projektem HybridCICD.
 
-    ![Połącz z projektem](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
+    ![Połącz z projektem](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
 
 2. **Sklonuj repozytorium** przez tworzenie i otwieranie domyślną aplikację sieci web.
 
-    ![Klonuj repozytorium](media\azure-stack-solution-hybrid-pipeline\018_link_arm.png)
+    ![Klonuj repozytorium](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Tworzenie wdrożenia aplikacji niezależne sieci web dla usług App Service w obu chmurach
 
 1. Edytuj **WebApplication.csproj** pliku: Wybierz **Runtimeidentifier** , a następnie dodaj `win10-x64.` Aby uzyskać więcej informacji, zobacz [niezależna wdrożenia](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentacja.
 
-    ![Konfigurowanie Runtimeidentifier](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
+    ![Konfigurowanie Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
 
 2. Użyj programu Team Explorer, aby zaewidencjonować kod w usługom DevOps platformy Azure.
 
@@ -366,7 +366,7 @@ Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno 
 
 3. W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna za pomocą.Net Core.
 
-    ![Dodaj argument kompilacji potoku](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
+    ![Dodaj argument kompilacji potoku](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
 
 4. Uruchom kompilację. [Kompilacji wdrożenia niezależna](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) proces będzie publikować artefaktów, które można uruchamiać na platformie Azure i usługi Azure Stack.
 
@@ -385,89 +385,89 @@ Tworzenie potoku tworzenia wersji jest procesu kompilacji w ostatnim kroku Twoje
 1. Zaloguj się do usługi DevOps platformy Azure i przejdź do **potoki Azure** dla Twojego projektu.
 2. Na **wersji** zaznacz  **\[ +]** a następnie wybierz **Tworzenie definicji wydania**.
 
-   ![Tworzenie potoku tworzenia wersji](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+   ![Tworzenie potoku tworzenia wersji](media/azure-stack-solution-hybrid-pipeline/021a_releasedef.png)
 
 3. Na **wybierz szablon**, wybierz **wdrożenie usługi aplikacji Azure**, a następnie wybierz pozycję **Zastosuj**.
 
-    ![Zastosuj szablon](media\azure-stack-solution-hybrid-pipeline\102.png)
+    ![Zastosuj szablon](media/azure-stack-solution-hybrid-pipeline/102.png)
 
 4. Na **Dodawanie artefaktu**, z **źródło (definicja kompilacji)** menu rozwijanego wybierz aplikację kompilacji w chmurze platformy Azure.
 
-    ![Dodawanie artefaktu](media\azure-stack-solution-hybrid-pipeline\103.png)
+    ![Dodawanie artefaktu](media/azure-stack-solution-hybrid-pipeline/103.png)
 
 5. Na **potoku** zaznacz **fazy 1**, **1 zadanie** połączyć **przeglądać zadania w środowisku**.
 
-    ![Zadania widoku potoku](media\azure-stack-solution-hybrid-pipeline\104.png)
+    ![Zadania widoku potoku](media/azure-stack-solution-hybrid-pipeline/104.png)
 
 6. Na **zadania** wprowadź platformy Azure jako **Nazwa środowiska** i wybierz EP Web handlowców AzureCloud z **subskrypcji platformy Azure** listy rozwijanej.
 
-    ![Ustawianie zmiennych środowiskowych](media\azure-stack-solution-hybrid-pipeline\105.png)
+    ![Ustawianie zmiennych środowiskowych](media/azure-stack-solution-hybrid-pipeline/105.png)
 
 7. Wprowadź **nazwa usługi Azure app service**, czyli "northwindtraders" na następnym zrzucie ekranu.
 
-    ![Nazwa usługi App service](media\azure-stack-solution-hybrid-pipeline\106.png)
+    ![Nazwa usługi App service](media/azure-stack-solution-hybrid-pipeline/106.png)
 
 8. Faza agenta, wybierz **hostowany program VS2017** z **kolejki agentów** listy rozwijanej.
 
-    ![Hostowany agent](media\azure-stack-solution-hybrid-pipeline\107.png)
+    ![Hostowany agent](media/azure-stack-solution-hybrid-pipeline/107.png)
 
 9. W **wdrożenia usługi Azure App Service**, wybierz prawidłowe **pakietu lub folderu** dla środowiska.
 
-    ![Wybierz pakiet lub folderu](media\azure-stack-solution-hybrid-pipeline\108.png)
+    ![Wybierz pakiet lub folderu](media/azure-stack-solution-hybrid-pipeline/108.png)
 
 10. W **Wybieranie pliku lub folderu**, wybierz opcję **OK** do **lokalizacji**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-hybrid-pipeline\109.png)
+    ![Tekst alternatywny](media/azure-stack-solution-hybrid-pipeline/109.png)
 
 11. Zapisz wszystkie zmiany i wróć do **potoku**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-hybrid-pipeline\110.png)
+    ![Tekst alternatywny](media/azure-stack-solution-hybrid-pipeline/110.png)
 
 12. Na **potoku** zaznacz **Dodawanie artefaktu**i wybierz polecenie **NorthwindCloud Traders — statek** z **źródło (definicja kompilacji)** listy rozwijanej.
 
-    ![Dodawanie nowych artefaktu](media\azure-stack-solution-hybrid-pipeline\111.png)
+    ![Dodawanie nowych artefaktu](media/azure-stack-solution-hybrid-pipeline/111.png)
 
 13. Na **wybierz szablon**, dodać innego środowiska. Wybierz **wdrożenie usługi aplikacji Azure** , a następnie wybierz **Zastosuj**.
 
-    ![Wybierz szablon](media\azure-stack-solution-hybrid-pipeline\112.png)
+    ![Wybierz szablon](media/azure-stack-solution-hybrid-pipeline/112.png)
 
 14. Wprowadź "Usługi Azure Stack" jako **Nazwa środowiska**.
 
-    ![Nazwa środowiska](media\azure-stack-solution-hybrid-pipeline\113.png)
+    ![Nazwa środowiska](media/azure-stack-solution-hybrid-pipeline/113.png)
 
 15. Na **zadania** karcie Znajdź i zaznacz usługi Azure Stack.
 
-    ![Środowisko platformy Azure Stack](media\azure-stack-solution-hybrid-pipeline\114.png)
+    ![Środowisko platformy Azure Stack](media/azure-stack-solution-hybrid-pipeline/114.png)
 
 16. Z **subskrypcji platformy Azure** listy rozwijanej wybierz "AzureStack statku handlowców EP" dla punktu końcowego usługi Azure Stack.
 
-    ![Tekst alternatywny](media\azure-stack-solution-hybrid-pipeline\115.png)
+    ![Tekst alternatywny](media/azure-stack-solution-hybrid-pipeline/115.png)
 
 17. Wprowadź nazwę aplikacji sieci web usługi Azure Stack jako **nazwa usługi App service**.
 
-    ![Nazwa usługi App service](media\azure-stack-solution-hybrid-pipeline\116.png)
+    ![Nazwa usługi App service](media/azure-stack-solution-hybrid-pipeline/116.png)
 
 18. W obszarze **wybór agenta**, masz do wyboru "AzureStack - bDouglas jako część" **kolejki agentów** listy rozwijanej.
 
-    ![Wybierz agenta](media\azure-stack-solution-hybrid-pipeline\117.png)
+    ![Wybierz agenta](media/azure-stack-solution-hybrid-pipeline/117.png)
 
 19. Dla **wdrożenia usługi Azure App Service**, wybierz prawidłowe **pakietu lub folderu** dla środowiska. Na **Wybieranie pliku lub folderu**, wybierz opcję **OK** folderu **lokalizacji**.
 
-    ![Wybierz pakiet lub folderu](media\azure-stack-solution-hybrid-pipeline\118.png)
+    ![Wybierz pakiet lub folderu](media/azure-stack-solution-hybrid-pipeline/118.png)
 
-    ![Zatwierdź lokalizacji](media\azure-stack-solution-hybrid-pipeline\119.png)
+    ![Zatwierdź lokalizacji](media/azure-stack-solution-hybrid-pipeline/119.png)
 
 20. Na **zmiennej** kartę, Znajdź zmienną o nazwie **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Ustaw wartość zmiennej **true**i ustaw jego zakres **usługi Azure Stack**.
 
-    ![Skonfigurować zmienną](media\azure-stack-solution-hybrid-pipeline\120.png)
+    ![Skonfigurować zmienną](media/azure-stack-solution-hybrid-pipeline/120.png)
 
 21. Na **potoku** zaznacz **wyzwalacz ciągłego wdrażania** ikonę artefaktu NorthwindCloud Traders — Web i zestawu **wyzwalacz ciągłego wdrażania** do **Włączone**.  Te same czynności wykonasz artefaktu "statku handlowców NorthwindCloud".
 
-    ![Ustaw wyzwalacz ciągłego wdrażania](media\azure-stack-solution-hybrid-pipeline\121.png)
+    ![Ustaw wyzwalacz ciągłego wdrażania](media/azure-stack-solution-hybrid-pipeline/121.png)
 
 22. Dla środowiska Azure Stack, wybierz **warunki przed wdrożeniem** ikony Ustaw wyzwalacz, **po wydaniu**.
 
-    ![Ustaw warunki przed wdrożeniem wyzwalacza](media\azure-stack-solution-hybrid-pipeline\122.png)
+    ![Ustaw warunki przed wdrożeniem wyzwalacza](media/azure-stack-solution-hybrid-pipeline/122.png)
 
 23. Zapisz wszystkie zmiany.
 
@@ -480,15 +480,15 @@ Teraz, że zostały wykonane modyfikacje z potokiem wersji, jest czas, aby rozpo
 
 1. Na **potoku** otwartą kartą **wersji** listy rozwijanej i wybierz polecenie **utworzyć wersję**.
 
-    ![Tworzenie wydania](media\azure-stack-solution-hybrid-pipeline\200.png)
+    ![Tworzenie wydania](media/azure-stack-solution-hybrid-pipeline/200.png)
 
 2. Wprowadź opis wersji, sprawdź, czy poprawny artefakty są zaznaczone, a następnie wybierz **Utwórz**. Po kilku chwilach zostanie wyświetlony transparent informujący, że utworzono nową wersję i wydanie będzie wyświetlana jako link. Wybierz link, aby wyświetlić na stronie podsumowania wydania.
 
-    ![Transparent tworzenia wersji](media\azure-stack-solution-hybrid-pipeline\201.png)
+    ![Transparent tworzenia wersji](media/azure-stack-solution-hybrid-pipeline/201.png)
 
 3. Stronie podsumowania wydania dla przedstawia szczegółowe informacje o wersji. Na poniższym zrzucie ekranu "Release-2" **środowisk** sekcji przedstawiono **stan wdrożenia** dla platformy Azure jako "W toku", a także stan dla usługi Azure Stack to "Powodzenie". Gdy stan wdrożenia dla środowiska platformy Azure przechodzi "Powodzenie", zostanie wyświetlony transparent, co oznacza, że wydanie gotowe do zatwierdzenia. Gdy wdrożenie jest operacją oczekującą lub zakończyło się niepowodzeniem, niebieski **(i)** jest wyświetlana ikona informacji. Umieść kursor nad ikonę Aby wyświetlić okno podręczne, które zawiera przyczynę opóźnienia lub niepowodzenia.
 
-    ![Stronie podsumowania wydania](media\azure-stack-solution-hybrid-pipeline\202.png)
+    ![Stronie podsumowania wydania](media/azure-stack-solution-hybrid-pipeline/202.png)
 
 Inne widoki, takie jak lista zwalnia, będą również wyświetlane ikony, który wskazuje, że trwa oczekiwanie na zatwierdzenie. Okno podręczne dla tej ikony zawiera nazwy środowiska i szczegółowe informacje związane z wdrażaniem. Może to być proste, można znaleźć ogólny postęp wydań i zobaczyć, które wersje oczekują na zatwierdzenie przez administratora.
 
@@ -502,7 +502,7 @@ W tej sekcji przedstawiono, jak monitorować i Śledź wszystkie wdrożenia. Wyd
 
 2. Po zakończeniu wdrażania cały plik dziennika jest wyświetlany w okienku po prawej stronie. Możesz wybrać dowolny **kroku** w okienku po lewej stronie, aby wyświetlić plik dziennika dla jednego kroku, takie jak "Zainicjować zadanie". Możliwość wyświetlania poszczególne dzienniki ułatwia śledzenie i debugowanie części całe wdrożenie. Możesz również **Zapisz** kroku można znaleźć w pliku dziennika lub **pobrać wszystkie dzienniki w formie pliku zip**.
 
-    ![Dziennikom wydań](media\azure-stack-solution-hybrid-pipeline\203.png)
+    ![Dziennikom wydań](media/azure-stack-solution-hybrid-pipeline/203.png)
 
 3. Otwórz **Podsumowanie** kartę, aby wyświetlić ogólne informacje o wersji. Ten widok przedstawia szczegółowe informacje o kompilacji, środowisk, którymi została wdrożona do, stan wdrożenia i inne informacje o wersji.
 

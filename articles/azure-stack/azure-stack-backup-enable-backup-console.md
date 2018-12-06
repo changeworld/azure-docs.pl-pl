@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: d7d47b61c926c6704a06dacc55f00d77a1266988
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d8d88484181c3c38f64cf8f00f9d8feaa3b0217a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038369"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962566"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Włączanie tworzenia kopii zapasowej z portalu administratora usługi Azure Stack
-Włącz usługi Backup infrastrukturę, za pośrednictwem portalu administracyjnego usługi Azure Stack mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska za pomocą odzyskiwania w chmurze w przypadku powstania [poważnej awarii](.\azure-stack-backup-recover-data.md). Cel odzyskiwania w chmurze jest zapewnienie, że Twoje operatory i użytkownicy mogą Zaloguj się do portalu po ukończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnym planów, ofert i obliczeń wcześniej zdefiniowane, magazynu i limitów przydziałów sieci.
+Włącz usługi Backup infrastrukturę, za pośrednictwem portalu administracyjnego usługi Azure Stack mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska za pomocą odzyskiwania w chmurze w przypadku powstania [poważnej awarii](./azure-stack-backup-recover-data.md). Cel odzyskiwania w chmurze jest zapewnienie, że Twoje operatory i użytkownicy mogą Zaloguj się do portalu po ukończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnym planów, ofert i obliczeń wcześniej zdefiniowane, magazynu i limitów przydziałów sieci.
 
 Jednak infrastruktury usługi kopii zapasowej wykonywania kopii zapasowych maszyn wirtualnych IaaS, konfiguracje sieci i zasobów magazynu, takich jak konta magazynu obiektów blob, tabel i tak dalej, dzięki czemu użytkownicy logujący się po odzyskaniu chmurze kończy nie będą widzieć żadnego z wcześniej istniejącej zasoby. Platforma jako usługa (PaaS) zasobów i danych także nie jest wykonywana przez usługę. 
 
@@ -58,31 +58,31 @@ Administratorzy i użytkownicy są odpowiedzialne za tworzenie kopii zapasowych 
     ```
 10. Wybierz **OK** można zapisać ustawień kopii zapasowej kontrolera.
 
-    ![Usługa Azure Stack — ustawienia kontrolera kopii zapasowej](media\azure-stack-backup\backup-controller-settings.png)
+    ![Usługa Azure Stack — ustawienia kontrolera kopii zapasowej](media/azure-stack-backup/backup-controller-settings.png)
 
 ## <a name="start-backup"></a>Rozpocznij wykonywanie kopii zapasowej
 Aby rozpocząć tworzenie kopii zapasowej, kliknij pozycję **Utwórz teraz kopię zapasową** aby rozpocząć tworzenie kopii zapasowej na żądanie. Kopii zapasowej na żądanie nie zmodyfikuje podczas następnej zaplanowanej kopii zapasowej. Po zakończeniu zadania, można potwierdzić ustawień w **Essentials**:
 
-![Usługa Azure Stack — kopii zapasowej na żądanie](media\azure-stack-backup\scheduled-backup.png)
+![Usługa Azure Stack — kopii zapasowej na żądanie](media/azure-stack-backup/scheduled-backup.png)
 
 Można również uruchomić polecenie cmdlet programu PowerShell **Start AzsBackup** na tym komputerze administracji usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [wykonywanie kopii zapasowych usługi Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 
 ## <a name="enable-or-disable-automatic-backups"></a>Włącza lub wyłącza automatyczne tworzenie kopii zapasowych
 Po włączeniu kopii zapasowej, kopii zapasowych są planowane automatycznie. Następny zaplanowany termin tworzenia kopii zapasowej można sprawdzić **Essentials**. 
 
-![Usługa Azure Stack — kopii zapasowej na żądanie](media\azure-stack-backup\on-demand-backup.png)
+![Usługa Azure Stack — kopii zapasowej na żądanie](media/azure-stack-backup/on-demand-backup.png)
 
 Jeśli zachodzi potrzeba wyłączenia przyszłych zaplanowanych kopii zapasowych, kliknij polecenie **wyłączyć automatyczne kopie zapasowe**. Wyłączanie automatycznego tworzenia kopii zapasowej zachowa ustawienia kopii zapasowej skonfigurowane i zachowa harmonogram tworzenia kopii zapasowych. Ta akcja po prostu informuje harmonogramu, aby pominąć tworzenie kopii zapasowych w przyszłości. 
 
-![Usługa Azure Stack — Wyłącz zaplanowane tworzenie kopii zapasowych](media\azure-stack-backup\disable-auto-backup.png)
+![Usługa Azure Stack — Wyłącz zaplanowane tworzenie kopii zapasowych](media/azure-stack-backup/disable-auto-backup.png)
 
 Upewnij się, że przyszłych zaplanowanych kopii zapasowych zostały wyłączone w **Essentials**:
 
-![Usługa Azure Stack — upewnij się, tworzenie kopii zapasowych zostały wyłączone.](media\azure-stack-backup\confirm-disable.png)
+![Usługa Azure Stack — upewnij się, tworzenie kopii zapasowych zostały wyłączone.](media/azure-stack-backup/confirm-disable.png)
 
 Kliknij pozycję **włączyć automatyczne tworzenie kopii zapasowych** poinformować harmonogramu, aby rozpocząć wykonywanie kolejnych kopii zapasowych w zaplanowanym czasie. 
 
-![Usługa Azure Stack — Włącz zaplanowane tworzenie kopii zapasowych](media\azure-stack-backup\enable-auto-backup.png)
+![Usługa Azure Stack — Włącz zaplanowane tworzenie kopii zapasowych](media/azure-stack-backup/enable-auto-backup.png)
 
 
 > [!Note]  

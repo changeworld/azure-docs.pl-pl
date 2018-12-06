@@ -10,46 +10,50 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 83ad70e1242af1e01af06206a3a141f455072a44
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c7f12352355b12cf1a7363a2a82fa786248cdc6f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038956"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965295"
 ---
 # <a name="add-luis-results-to-application-insights"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights
-W tym samouczku dodaje informacje o odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS. 
+
+W tym samouczku dodaje informacje o odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
 
 Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-* Dodaj usługę Application Insights do bot aplikacji sieci web
-* Przechwytywane i wysyłane do usługi LUIS wyników zapytania do usługi Application Insights
-* Zapytanie usługi Application Insights dla najważniejszych przeznaczenie, wynik i wypowiedź
+> * Dodaj usługę Application Insights do bot aplikacji sieci web
+> * Przechwytywane i wysyłane do usługi LUIS wyników zapytania do usługi Application Insights
+> * Zapytanie usługi Application Insights dla najważniejszych przeznaczenie, wynik i wypowiedź
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Twój bot aplikacji sieci web usługi LUIS z **[poprzedniego samouczka](luis-csharp-tutorial-build-bot-framework-sample.md)** za pomocą usługi Application Insights włączona. 
+* Twój bot aplikacji sieci web usługi LUIS z **[poprzedniego samouczka](luis-csharp-tutorial-build-bot-framework-sample.md)** za pomocą usługi Application Insights włączona.
 * [Program Visual Studio 2017](https://www.visualstudio.com/downloads/) zainstalowane lokalnie na komputerze.
 
 > [!Tip]
 > Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Cały kod w tym samouczku jest dostępny na [przykłady usługi LUIS, repozytorium github](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//LUIS Tutorial:`. 
+Cały kod w tym samouczku jest dostępny na [przykłady usługi LUIS, repozytorium github](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//LUIS Tutorial:`.
 
 ## <a name="review-luis-web-app-bot"></a>Przejrzyj bot aplikacji sieci web usługi LUIS
-W tym samouczku założono, masz kod, który wygląda podobnie do następujących, lub że zostały wykonane [innym samouczku](luis-csharp-tutorial-build-bot-framework-sample.md): 
+
+W tym samouczku założono, masz kod, który wygląda podobnie do następujących, lub że zostały wykonane [innym samouczku](luis-csharp-tutorial-build-bot-framework-sample.md):
 
    [!code-csharp[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs "Web app bot with LUIS")]
 
 ## <a name="application-insights-in-web-app-bot"></a>Usługa Application Insights w sieci web Apps
+
 Obecnie dodano jako część tworzenia usługi bot aplikacji sieci web, usługę Application Insights gromadzi dane telemetryczne ogólny stan, dla bota. Nie są zbierane informacje o odpowiedzi usługi LUIS. W celu analizowania i ulepszania usługi LUIS, potrzebne informacje o odpowiedzi usługi LUIS.  
 
-Przechwytywanie odpowiedzi usługi LUIS, bot aplikacji sieci web musi **[usługi Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** zainstalowany i skonfigurowany dla projektu. 
+Przechwytywanie odpowiedzi usługi LUIS, bot aplikacji sieci web musi **[usługi Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** zainstalowany i skonfigurowany dla projektu.
 
 ## <a name="download-web-app-bot"></a>Pobierz bot aplikacji sieci web
+
 Użyj [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) dodać i skonfigurować usługę Application Insights dla bota aplikacji sieci web. Aby można było używać bot aplikacji sieci web w programie Visual Studio, Pobierz program code bot aplikacji sieci web.
 
 1. W witrynie Azure portal, bot aplikacji sieci web, wybierz **kompilacji**.
@@ -66,13 +70,13 @@ Użyj [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) dod
 
 ## <a name="open-solution-in-visual-studio-2017"></a>Otwórz rozwiązanie w programie Visual Studio 2017
 
-1. Wyodrębnij plik do folderu. 
+1. Wyodrębnij plik do folderu.
 
 2. Otwórz program Visual Studio 2017, a następnie otwórz plik rozwiązania `Microsoft.Bot.Sample.LuisBot.sln`. Jeśli pojawi się ostrzeżenie o zabezpieczeniach, wybierz pozycję "OK".
 
     ![Otwórz rozwiązanie w programie Visual Studio 2017](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-security-warning.png)
 
-3. Program Visual Studio wymaga dodać zależności w rozwiązaniu. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **odwołania**i wybierz **Zarządzaj pakietami NuGet...** . 
+3. Program Visual Studio wymaga dodać zależności w rozwiązaniu. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **odwołania**i wybierz **Zarządzaj pakietami NuGet...** .
 
     ![Zarządzanie pakietami NuGet](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-manage-nuget-packages.png)
 
@@ -81,7 +85,8 @@ Użyj [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) dod
     ![Przywracanie pakietów NuGet](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-restore-packages.png)
 
 ## <a name="add-application-insights-to-the-project"></a>Dodaj usługę Application Insights do projektu
-Instalowanie i konfigurowanie usługi Application Insights w programie Visual Studio. 
+
+Instalowanie i konfigurowanie usługi Application Insights w programie Visual Studio.
 
 1. W programie Visual Studio 2017 w górnym menu wybierz **projektu**, a następnie wybierz **Dodaj Telemetrię usługi Application Insights...** .
 
@@ -89,21 +94,21 @@ Instalowanie i konfigurowanie usługi Application Insights w programie Visual St
 
     ![Rozpocząć konfigurowanie usługi Application Insights](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configure-app-insights.png)
 
-3. Zarejestruj swoją aplikację za pomocą usługi Application Insights. Może być konieczne wprowadź poświadczenia platformy Azure w portalu. 
+3. Zarejestruj swoją aplikację za pomocą usługi Application Insights. Może być konieczne wprowadź poświadczenia platformy Azure w portalu.
 
-4. Visual Studio dodaje usługi Application Insights do projektu, wyświetlanie stanu, ponieważ jest to realizowane. 
+4. Visual Studio dodaje usługi Application Insights do projektu, wyświetlanie stanu, ponieważ jest to realizowane.
 
     ![Stanu usługi Application Insights](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-adding-application-insights-to-project.png)
 
-    Po zakończeniu tego procesu **Konfiguracja usługi Application Insights** Wyświetla stan postępu. 
+    Po zakończeniu tego procesu **Konfiguracja usługi Application Insights** Wyświetla stan postępu.
 
     ![Postęp stanu usługi Application Insights](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configured-application-insights-to-project.png)
 
-    **Włączenia zbierania śladów** ma kolor czerwony, co oznacza, nie jest włączona. Ten samouczek nie korzysta z tej funkcji. 
+    **Włączenia zbierania śladów** ma kolor czerwony, co oznacza, nie jest włączona. Ten samouczek nie korzysta z tej funkcji.
 
 ## <a name="build-and-resolve-errors"></a>Tworzenie i usuwanie błędów
 
-1. Skompiluj rozwiązanie, wybierając **kompilacji** menu, następnie wybierz pozycję **Kompiluj rozwiązanie**. Poczekaj na zakończenie kompilacji. 
+1. Skompiluj rozwiązanie, wybierając **kompilacji** menu, następnie wybierz pozycję **Kompiluj rozwiązanie**. Poczekaj na zakończenie kompilacji.
 
 2. Jeśli kompilacja zakończy się niepowodzeniem z `CS0104` błędów, należy je naprawić. W `Controllers` folder, w `MessagesController.cs file`, rozwiązywanie niejednoznacznych użycie `Activity` typ przez dodanie przedrostka typ działania typu łącznika. Aby to zrobić, należy zmienić nazwę `Activity` w wierszach, 22 i 36 z `Activity` do `Connector.Activity`. Ponownie skompiluj rozwiązanie. Powinna istnieć nie więcej błędów kompilacji.
 
@@ -112,6 +117,7 @@ Instalowanie i konfigurowanie usługi Application Insights w programie Visual St
     [!code-csharp[MessagesController.cs file](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/MessagesController.cs "MessagesController.cs file")]
 
 ## <a name="publish-project-to-azure"></a>Publikowanie projektu na platformie Azure
+
 **Usługi Application Insights** pakietu znajduje się teraz w projekcie i poprawnie skonfigurowane dla poświadczenia w witrynie Azure portal. Zmiany w projekcie trzeba można opublikować platformy Azure.
 
 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy nazwę projektu, a następnie wybierz **Publikuj**.
@@ -126,12 +132,13 @@ Instalowanie i konfigurowanie usługi Application Insights w programie Visual St
 
     ![Opublikuj projekt portalu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
 
-4. W **Importuj plik ustawień publikowania** systemu windows, przejdź do folderu projektu, przejdź do folderu `PostDeployScripts` folderu, wybierz plik, który kończy się `.PublishSettings`i wybierz `Open`. Skonfigurowano publikowania dla tego projektu. 
+4. W **Importuj plik ustawień publikowania** systemu windows, przejdź do folderu projektu, przejdź do folderu `PostDeployScripts` folderu, wybierz plik, który kończy się `.PublishSettings`i wybierz `Open`. Skonfigurowano publikowania dla tego projektu.
 
-5. Publikowanie kodu źródłowego lokalnej usługi Bot Service, wybierając **Publikuj** przycisku. **Dane wyjściowe** okno pokazuje stan. Pozostała część tego samouczka jest wykonywane w witrynie Azure portal. Zamknij program Visual Studio 2017. 
+5. Publikowanie kodu źródłowego lokalnej usługi Bot Service, wybierając **Publikuj** przycisku. **Dane wyjściowe** okno pokazuje stan. Pozostała część tego samouczka jest wykonywane w witrynie Azure portal. Zamknij program Visual Studio 2017.
 
 ## <a name="open-three-browser-tabs"></a>Otwórz trzech kartach przeglądarki
-W witrynie Azure portal Znajdź bot aplikacji sieci web, a następnie otwórz go. Użyto trzy różne widoki bot aplikacji sieci web. Być może łatwiej będzie mieć trzy osobnych kartach w przeglądarce: 
+
+W witrynie Azure portal Znajdź bot aplikacji sieci web, a następnie otwórz go. Użyto trzy różne widoki bot aplikacji sieci web. Być może łatwiej będzie mieć trzy osobnych kartach w przeglądarce:
   
 >  * Testowanie w rozmów w sieci Web
 >  * Edytor kodu online kompilacji/Otwórz-> Edytor usługi App Service
@@ -149,7 +156,7 @@ W witrynie Azure portal Znajdź bot aplikacji sieci web, a następnie otwórz go
 
    [!code-csharp[Add the LogToApplicationInsights function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=61-92 "Add the LogToApplicationInsights function")]
 
-    Klucz Instrumentacji usługi Application Insights jest już bot aplikacji sieci web aplikacji, ustawienie o nazwie `BotDevInsightsKey`. 
+    Klucz Instrumentacji usługi Application Insights jest już bot aplikacji sieci web aplikacji, ustawienie o nazwie `BotDevInsightsKey`.
 
     Ostatni wiersz funkcja dodaje dane do usługi Application Insights. Nazwa śledzenia jest `LUIS`, unikatową nazwę, oprócz innych danych telemetrycznych zebranych przez ten bot aplikacji sieci web. Wszystkie właściwości również mają prefiks `LUIS_` , dzięki czemu można sprawdzić, jakie dane w tym samouczku dodaje w porównaniu do informacji, które jest nadawana przez bota aplikacji sieci web.
 
@@ -158,6 +165,7 @@ W witrynie Azure portal Znajdź bot aplikacji sieci web, a następnie otwórz go
    [!code-csharp[Use the LogToApplicationInsights function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=114-115 "Use the LogToApplicationInsights function")]
 
 ## <a name="build-web-app-bot"></a>Tworzenie bota aplikacji sieci web
+
 1. Tworzenie bota aplikacji sieci web na jeden z dwóch sposobów. Pierwszy sposób polega na kliknij prawym przyciskiem myszy `build.cmd` w **Edytor usługi App Service**, a następnie wybierz **uruchamiane z poziomu konsoli**. Wyświetla dane wyjściowe konsoli i kończy się `Finished successfully.`
 
 2. Jeśli to nie zakończy się pomyślnie, należy otworzyć konsolę, przejdź do skryptu i uruchom go wykonując następujące kroki. W **Edytor usługi App Service**, na górnym pasku niebieski, wybierz nazwę bota, a następnie wybierz **otwartej konsoli Kudu** na liście rozwijanej.
@@ -174,7 +182,7 @@ W witrynie Azure portal Znajdź bot aplikacji sieci web, a następnie otwórz go
 
 ## <a name="test-the-web-app-bot"></a>Testowanie bot aplikacji sieci web
 
-1. Aby przetestować bota aplikacji sieci web, otwórz **testowania w czatów internetowych** funkcji w portalu. 
+1. Aby przetestować bota aplikacji sieci web, otwórz **testowania w czatów internetowych** funkcji w portalu.
 
 2. Wprowadź frazę `Coffee bar on please`.  
 
@@ -189,9 +197,10 @@ Turn on the hall light
 ```
 
 ## <a name="view-luis-entries-in-application-insights"></a>Wyświetlanie usługi LUIS wpisów w usłudze Application Insights
-Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS. 
 
-1. W portalu, wybierz **wszystkie zasoby** następnie Filtruj według nazwy bot aplikacji sieci web. Kliknij zasób z typem **usługi Application Insights**. Ikona usługi Application Insights jest żarówki. 
+Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS.
+
+1. W portalu, wybierz **wszystkie zasoby** następnie Filtruj według nazwy bot aplikacji sieci web. Kliknij zasób z typem **usługi Application Insights**. Ikona usługi Application Insights jest żarówki.
 
     ![Wyszukiwanie usługi app insights](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
 
@@ -203,16 +212,16 @@ Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS.
 
     ![Element śledzenia przeglądu](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-trace-item.png)
 
-    Gdy wszystko będzie gotowe, wybierz najwyższy skrajna prawa **X** aby powrócić do listy elementów zależności. 
-
+    Gdy wszystko będzie gotowe, wybierz najwyższy skrajna prawa **X** aby powrócić do listy elementów zależności.
 
 > [!Tip]
 > Jeśli chcesz zapisać listę zależności i wrócić do niego później, kliknij polecenie **... Więcej** i kliknij przycisk **Save ulubionych**.
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Zapytanie usługi Application Insights dla przeznaczenie, ocena i wypowiedź
-Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za pomocą [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) języka, jak eksportu do [usługi Power BI](https://powerbi.microsoft.com). 
 
-1. Kliknij pozycję **Analytics** w górnej części zależności ofercie powyżej pola filtru. 
+Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za pomocą [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) języka, jak eksportu do [usługi Power BI](https://powerbi.microsoft.com).
+
+1. Kliknij pozycję **Analytics** w górnej części zależności ofercie powyżej pola filtru.
 
     ![Przycisk Analiza](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-analytics-button.png)
 
@@ -232,18 +241,17 @@ Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za 
 
     ![Raport analizy niestandardowe](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
+Dowiedz się więcej o [język zapytania Kusto](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) lub [dane są eksportowane do usługi Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi).
 
-Dowiedz się więcej o [język zapytania Kusto](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) lub [dane są eksportowane do usługi Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat struktury Bot Framework
 
-
-## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat platformy Bot Framework
 Dowiedz się więcej o [platformy Bot Framework](https://dev.botframework.com/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Inne informacje, które chcesz dodać do aplikacji danych szczegółowych informacji zawiera identyfikator aplikacji, identyfikator wersji, Data ostatniej zmiany modelu, Data ostatniego szkolenie, Data ostatniej publikacji. Te wartości mogą być pobierane albo z adresu URL punktu końcowego (identyfikator aplikacji i identyfikator wersji) lub [tworzenia interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) wywołań, a następnie w oknie Ustawienia bot aplikacji sieci web i pobierane z tego miejsca.  
 
-Jeśli używasz tej samej subskrypcji punktu końcowego dla więcej niż jedną aplikacją usługi LUIS, powinny również obejmować identyfikator subskrypcji i właściwości z informacją, że jest on klucza wstępnego. 
+Jeśli używasz tej samej subskrypcji punktu końcowego dla więcej niż jedną aplikacją usługi LUIS, powinny również obejmować identyfikator subskrypcji i właściwości z informacją, że jest on klucza wstępnego.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o przykład wypowiedzi](luis-how-to-add-example-utterances.md)

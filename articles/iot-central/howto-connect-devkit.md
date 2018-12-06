@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dccbd2d87b5a5616c25caed070a337eff9fa753e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255731"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956656"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -23,7 +23,7 @@ W tym artykule opisano jak Deweloper urządzenia podłączenia urządzenia zesta
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-1. Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji Szybki Start](quick-deploy-iot-central.md).
+1. Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 1. Urządzenie Mxchip. Aby zakupić urządzenia Mxchip, odwiedź stronę [zestawu deweloperskiego IoT Mxchip](http://mxchip.com/az3166).
 
 
@@ -49,12 +49,12 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu d
     * Wprowadź identyfikator urządzenia **<span style="color:Red">(powinno wskazywać na małe litery)</span>** lub sugerowane identyfikator urządzenia.
     * Wprowadź nazwę urządzenia, lub użyć sugerowanej nazwy
     
-    ![Dodaj urządzenie](media\concepts-connectivity\add-device.png)
+    ![Dodaj urządzenie](media/concepts-connectivity/add-device.png)
 
 
 1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodanego urządzenia, klikając **Connect** na stronie urządzenia.
  
-    ![Szczegóły połączenia](media\concepts-connectivity\device-connect.PNG)
+    ![Szczegóły połączenia](media/concepts-connectivity/device-connect.PNG)
 
 3. Upewnij się zapisać te informacje, jak będzie temporaritly uzyskać połączenia z Internetem podczas przygotowywania urządzenia Mxchip. 
 

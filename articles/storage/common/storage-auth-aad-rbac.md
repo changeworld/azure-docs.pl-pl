@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 5f558ea851d63b08885293efcff3fef600f2cc17
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ac62800e81cece61e9f51c496ace2868629a49a1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726393"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960247"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do obiektów Blob platformy Azure i dane w kolejce przy użyciu RBAC (wersja zapoznawcza)
 
@@ -40,14 +40,14 @@ Można również definiować role niestandardowe do użycia z kontenerami i kole
 
 ## <a name="assign-a-role-to-a-security-principal"></a>Przypisywanie roli do podmiotu zabezpieczeń
 
-Przypisz rolę RBAC do tożsamości usługi platformy Azure, aby udzielić uprawnień do kontenerów lub kolejek na koncie magazynu. Można określić zakres przypisania roli do konta magazynu lub do określonego kontenera lub kolejki. W poniższej tabeli przedstawiono prawa dostępu do wbudowanych ról w zależności od zakresu: 
+Przypisz rolę RBAC do tożsamości usługi platformy Azure, aby udzielić uprawnień do kontenerów lub kolejek na koncie magazynu. Można określić zakres przypisania roli do konta magazynu lub do określonego kontenera lub kolejki. W poniższej tabeli przedstawiono prawa dostępu do wbudowanych ról w zależności od zakresu:
 
-|                                 |     Współautor danych obiektu blob                                                 |     Czytnik danych obiektu blob                                                |     Współautor danych kolejki                                  |     Czytnik danych kolejki                                 |
-|---------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------|
-|    Ograniczone do subskrypcji       |    Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji       |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob w ramach subskrypcji       |    Odczyt/zapis dostęp do wszystkich kolejek w ramach subskrypcji       |    Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji         |
-|    Zakres do grupy zasobów     |    Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów     |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob w grupie zasobów     |    Odczyt/zapis dostęp do wszystkich kolejek w grupie zasobów     |    Dostęp do odczytu do wszystkich kolejek w grupie zasobów     |
-|    Ograniczone do konta magazynu    |    Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu    |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob na koncie magazynu    |    Odczyt/zapis dostęp do wszystkich kolejek na koncie magazynu    |    Dostęp do odczytu do wszystkich kolejek na koncie magazynu    |
-|    Ograniczone do kolejki/kontenera    |    Odczyt/zapis dostęp do określonego kontenera i jego obiektów blob              |    Dostęp do odczytu do określonego kontenera i jego obiektów blob              |    Odczyt/zapis dostęp do określonej kolejki                  |    Dostęp do odczytu do określonej kolejki                    |
+|Zakres|Właściciel danych obiektów blob|Współautor danych obiektu blob|Czytnik danych obiektu blob|Współautor danych kolejki|Czytnik danych kolejki|
+|---|---|---|---|---|---|
+|Poziom Subscrition|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji| Dostęp do odczytu do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kolejek w ramach subskrypcji|Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji|
+|Poziomu grupy zasobów|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów|Dostęp do odczytu do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis dostęp do wszystkich kolejek w grupie zasobów|Dostęp do odczytu do wszystkich kolejek w grupie zasobów|
+|Na poziomie konta magazynu|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu|Dostęp do odczytu do wszystkich kontenerów i obiektów blob na koncie magazynu|Odczyt/zapis dostęp do wszystkich kolejek na koncie magazynu|Dostęp do odczytu do wszystkich kolejek na koncie magazynu|
+|Poziom kontenera/kolejki|Odczyt/zapis dostęp do określonego kontenera i jego obiektów blob|Odczyt/zapis dostęp do określonego kontenera i jego obiektów blob|Dostęp do odczytu do określonego kontenera i jego obiektów blob|Odczyt/zapis dostęp do określonej kolejki|Dostęp do odczytu do określonej kolejki|
 
 > [!NOTE]
 > Jako właściciel konta usługi Azure Storage możesz nie są automatycznie przypisywane uprawnienia dostępu do danych. Należy jawnie przypisać sobie rolę RBAC dla usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konto magazynu, kontenera lub kolejki.
@@ -76,6 +76,9 @@ Aby przypisać rolę wbudowaną, aby umożliwić dostęp do wszystkich kontener�
 
 ### <a name="assign-a-role-scoped-to-a-container-or-queue-in-the-azure-portal"></a>Przypisywanie roli ograniczone do kontenera lub kolejki w witrynie Azure portal
 
+> [!IMPORTANT]
+> Nie można tego zrobić, jeśli używasz konta z hierarchicznej przestrzeni nazw, jeszcze włączone.
+
 Czynności podczas przypisywania wbudowana Rola o określonym zakresie do kontenera lub kolejki są podobne. Przedstawionych tu procedurach przypisuje rolę ograniczone do kontenera, ale możesz wykonać te same kroki, aby przypisać rolę ograniczone do kolejki: 
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu i wyświetlić **Przegląd** dla konta.
@@ -90,7 +93,7 @@ Czynności podczas przypisywania wbudowana Rola o określonym zakresie do konten
 
     ![Zrzut ekranu przedstawiający listę użytkowników przypisanych do roli](media/storage-auth-aad-rbac/container-scoped-role.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej o ROLACH, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md).
 - Aby dowiedzieć się, jak przypisać i zarządzać przypisaniami ról RBAC przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST, zobacz następujące artykuły:
@@ -99,4 +102,3 @@ Czynności podczas przypisywania wbudowana Rola o określonym zakresie do konten
     - [Zarządzanie kontrolą dostępu opartej na rolach (RBAC) przy użyciu interfejsu API REST](../../role-based-access-control/role-assignments-rest.md)
 - Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejki ze w aplikacjach pamięci masowej, zobacz [Użyj usługi Azure AD z aplikacjami usługi Azure Storage](storage-auth-aad-app.md).
 - Aby uzyskać dodatkowe informacje na temat integracji z usługą Azure AD dla kontenerów platformy Azure i kolejek, zobacz blog zespołu usługi Azure Storage, publikowania, [ogłoszenie uwierzytelniania w wersji zapoznawczej programu Azure AD dla usługi Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
-- 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 67d27587e8a5f85eb339efb83e661c061b621ed1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351358"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959839"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -114,7 +114,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować powiązania w **powiązania S
 |-|-|
 | Nazwa hosta | Nazwa domeny, które można dodać wiązania SSL dla. |
 | Odcisk palca certyfikatu prywatnego | Certyfikat, aby powiązać. |
-| Typ SSL | <ul><li>**Połączenia SNI SSL** -powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](http://wikipedia.org/wiki/Server_Name_Indication).</li><li>**Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Po skonfigurować powiązania, postępuj zgodnie z instrukcjami w [ponowne mapowanie rekordu dla protokołu IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
+| Typ SSL | <ul><li>**Połączenia SNI SSL** -powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).</li><li>**Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Po skonfigurować powiązania, postępuj zgodnie z instrukcjami w [ponowne mapowanie rekordu dla protokołu IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
 ## <a name="verify-https-access"></a>Sprawdź dostęp do protokołu HTTPS
 
@@ -147,11 +147,11 @@ Aby zamiast tego ręcznie odnowić certyfikat, kliknij przycisk **odnowienie rę
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Więcej zasobów
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 614fdae1865f008bdbc2cb8d5e8b96c0addcc112
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 08238732c9e2d4e09e1f956c18768a15c95828c2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036933"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958186"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania infrastruktury
 
@@ -186,7 +186,7 @@ Za pomocą HDInsight przy użyciu usługi Azure Virtual Network umożliwia nast�
 - O łączeniu z danymi HDInsight są przechowywane w usłudze Azure Virtual network.
 - Bezpośredni dostęp do usług Hadoop, które nie są dostępne publicznie w Internecie. Na przykład interfejsów API platformy Kafka lub interfejsu API języka Java bazy danych HBase.
 
-HDInsight albo można dodać do nowej lub istniejącej Azure sieci wirtualnej. Jeśli HDInsight jest dodawany do istniejącej sieci wirtualnej, istniejące grupy zabezpieczeń sieci, a trasy zdefiniowane przez użytkownika muszą zostać zaktualizowane, aby zezwolić na nieograniczony dostęp do [kilka adresów IP](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip-1) w centrum danych platformy Azure. Ponadto upewnij się, że nie blokuje ruchu skierowanego do [porty](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) które są używane przez usługi HDInsight.
+HDInsight albo można dodać do nowej lub istniejącej Azure sieci wirtualnej. Jeśli HDInsight jest dodawany do istniejącej sieci wirtualnej, istniejące grupy zabezpieczeń sieci, a trasy zdefiniowane przez użytkownika muszą zostać zaktualizowane, aby zezwolić na nieograniczony dostęp do [kilka adresów IP](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) w centrum danych platformy Azure. Ponadto upewnij się, że nie blokuje ruchu skierowanego do [porty](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) które są używane przez usługi HDInsight.
 
 > [!Note]
 > HDInsight aktualnie nie obsługuje wymuszonym tunelowaniem. Wymuszone tunelowanie ma ustawienia podsieci, która wymusza ruch wychodzący z Internetu na urządzeniu w celu przeprowadzenia inspekcji i rejestrowania. Usuń, wymuszonego tunelowania przed zainstalowaniem HDInsight w podsieci lub Utwórz nową podsieć dla HDInsight. HDInsight nie obsługuje również ograniczanie połączenia sieciowego ruchu wychodzącego.

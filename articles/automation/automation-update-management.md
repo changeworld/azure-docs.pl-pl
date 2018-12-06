@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/28/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c6202ff6f00412a779fb62b7a3bcc3f30ecbb25a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 504bb56a7cb3b9582d5c8d2ab1e770d55b8ca9e5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682328"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961624"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -120,7 +120,7 @@ Jeśli grupa zarządzania programu System Center Operations Manager jest połąc
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Pakiet administracyjny wdrożenia aktualizacji
 
-Aby uzyskać więcej informacji na temat sposobu aktualizowania pakietów administracyjnych rozwiązania, zobacz [łączenie programu Operations Manager do usługi Log Analytics](../log-analytics/log-analytics-om-agents.md).
+Aby uzyskać więcej informacji na temat sposobu aktualizowania pakietów administracyjnych rozwiązania, zobacz [łączenie programu Operations Manager do usługi Log Analytics](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
 > Dla systemów z agenta programu Operations Manager aby można było w pełni zarządzane przez rozwiązania Update Management agent musi zostać zaktualizowany do programu Microsoft Monitoring Agent. Aby dowiedzieć się, jak zaktualizować agenta, zobacz [jak uaktualnić agenta programu Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
@@ -158,7 +158,7 @@ Jeśli agent jest skonfigurowany do komunikowania się z Internetem przez zapor�
 
 Nowo dodani agenci systemu Linux jest wyświetlany stan **zaktualizowano** po przeprowadzeniu oceny. Ten proces może potrwać do 6 godzin.
 
-Aby upewnić się, że grupy zarządzania programu Operations Manager komunikuje się z usługą Log Analytics, zobacz [integracji sprawdzania poprawności z programu Operations Manager z usługą Log Analytics](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-log-analytics).
+Aby upewnić się, że grupy zarządzania programu Operations Manager komunikuje się z usługą Log Analytics, zobacz [integracji sprawdzania poprawności z programu Operations Manager z usługą Log Analytics](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics).
 
 ## <a name="data-collection"></a>Zbieranie danych
 
@@ -583,6 +583,6 @@ Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wi
 > [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych Windows Azure](automation-tutorial-update-management.md)
 
 * Użyj wyszukiwania w dzienniku [usługi Log Analytics](../log-analytics/log-analytics-log-searches.md) do wyświetlania szczegółowych danych aktualizacji.
-* [Tworzenie alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md) po wykryciu aktualizacje krytyczne jako brakujące z komputerów, czy komputer ma wyłączonymi aktualizacjami automatycznymi.
+* [Tworzenie alertów](automation-tutorial-update-management.md#configure-alerts) aktualizacji stanu wdrożenia.
 
 * Aby dowiedzieć się, jak korzystać z rozwiązania Update Management za pośrednictwem interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania](/rest/api/automation/softwareupdateconfigurations)

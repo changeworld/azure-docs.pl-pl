@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: e5011dbaad5e5935f3aa792bd3a3ed2b271f23bc
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 726159f7450c29385a331b29191c38085a820876
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632437"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957627"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Najlepsze rozwiązania dotyczące tworzenia rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "52632437"
 W tym artykule przedstawiono najlepsze rozwiązania dotyczące [Tworzenie pliku rozwiązania zarządzania](solutions-solution-file.md) na platformie Azure.  Te informacje zostaną zaktualizowane, określone dodatkowe najlepsze rozwiązania.
 
 ## <a name="data-sources"></a>Źródła danych
-- Źródła danych może być [skonfigurowane przy użyciu szablonu usługi Resource Manager](../../log-analytics/log-analytics-template-workspace-configuration.md), ale nie powinny znajdować się w pliku rozwiązania.  Przyczyną jest to, że Konfigurowanie źródeł danych nie jest obecnie idempotentne, co oznacza, że Twoje rozwiązanie może spowodować zastąpienie istniejącej konfiguracji w obszarze roboczym użytkownika.<br><br>Na przykład rozwiązania mogą wymagać zdarzenia ostrzeżeń i błędów w dzienniku zdarzeń aplikacji.  Jeśli określisz to jako źródło danych w swoim rozwiązaniu, istnieje ryzyko, usuwając informacje o zdarzeniach, jeśli użytkownik był to skonfigurowane w ich obszarze roboczym.  W przypadku dołączenia wszystkich zdarzeń, następnie użytkownik może zbierać nadmierne informacje o zdarzeniach w obszarze roboczym użytkownika.
+- Źródła danych może być [skonfigurowane przy użyciu szablonu usługi Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), ale nie powinny znajdować się w pliku rozwiązania.  Przyczyną jest to, że Konfigurowanie źródeł danych nie jest obecnie idempotentne, co oznacza, że Twoje rozwiązanie może spowodować zastąpienie istniejącej konfiguracji w obszarze roboczym użytkownika.<br><br>Na przykład rozwiązania mogą wymagać zdarzenia ostrzeżeń i błędów w dzienniku zdarzeń aplikacji.  Jeśli określisz to jako źródło danych w swoim rozwiązaniu, istnieje ryzyko, usuwając informacje o zdarzeniach, jeśli użytkownik był to skonfigurowane w ich obszarze roboczym.  W przypadku dołączenia wszystkich zdarzeń, następnie użytkownik może zbierać nadmierne informacje o zdarzeniach w obszarze roboczym użytkownika.
 
 - Jeśli rozwiązanie wymaga danych z jednego ze źródeł danych w warstwie standardowa, następnie należy zdefiniować to jako warunek wstępny.  Stan w dokumentacji klienta należy skonfigurować źródło danych na ich własnych.  
 - Dodaj [Weryfikacja przepływu danych](../../azure-monitor/platform/view-designer-tiles.md) komunikat do widoków w rozwiązaniu do Poinstruuj użytkownika do źródeł danych, które muszą być skonfigurowane wymagane dane mogą być zbierane.  Ten komunikat jest wyświetlany na kafelku widoku, gdy nie ma wymaganych danych.

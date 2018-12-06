@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 1877acbd39f4e312e3a567e092bb0bcf7531b96b
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 967404fbbff3616d3faf9e315123bccbf3ac9276
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276333"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969073"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Nawiązać połączenie z kontem Google Cloud Platform
 
@@ -31,7 +31,7 @@ Należy rozpocząć od zbierania informacji o projekcie.
 1. Zaloguj się do konsoli usługi Google Cloud Platform na [ https://console.cloud.google.com ](https://console.cloud.google.com).
 2. Przejrzyj informacje o projekcie, który chcesz dołączyć do rozwiązania Cloudyn i zanotuj **Nazwa projektu** i **identyfikator projektu**. Zachowaj informacje przydatne do wykonania kolejnych kroków.  
     ![Konsolę Google Cloud Platform](./media/connect-google-account/gcp-console01.png)
-3. Jeśli rozliczeń nie jest włączone i połączone z projektem, należy utworzyć konta rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Utwórz nowe konto rozliczeniowe](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
+3. Jeśli rozliczeń nie jest włączone i połączone z projektem, należy utworzyć konta rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Utwórz nowe konto rozliczeniowe](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
 ## <a name="enable-storage-bucket-billing-export"></a>Włącz eksportowanie rozliczeń zasobnika magazynu
 

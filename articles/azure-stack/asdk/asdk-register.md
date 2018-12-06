@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: c84c15e1e0edcf65f956ed1ed4fd148d1206b65b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 84924900403a4aa2a65143c65a0b26f2c95a1e5b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848582"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962651"
 ---
 # <a name="azure-stack-registration"></a>Rejestracja w usłudze Azure Stack
 Instalacja usługi Azure Stack Development Kit (ASDK) można zarejestrować za pomocą platformy Azure, aby pobieranie elementów portalu marketplace z platformy Azure i Ustaw dane handlu odsyłanie do firmy Microsoft. Rejestracja jest wymagany do obsługi pełnego funkcje usługi Azure Stack, w tym portalu marketplace syndykacji. Rejestracja jest zalecane, ponieważ umożliwia testowanie ważnych funkcji usługi Azure Stack, takich jak syndykacji portalu marketplace i raportowanie użycia. Po zarejestrowaniu usługi Azure Stack, użycie jest zgłaszany do handlu platformy Azure. Można to sprawdzić w ramach subskrypcji, których użyto podczas rejestracji. Jednak użytkownicy ASDK nie są naliczane za dotychczasowe użycie raportowane.
@@ -218,4 +218,4 @@ Przenoszenie zasobów rejestracji między grupami zasobów w ramach tej samej su
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dodawanie elementu portalu marketplace usługi Azure Stack](.\.\azure-stack-marketplace.md)
+[Dodawanie elementu portalu marketplace usługi Azure Stack](../azure-stack-marketplace.md)

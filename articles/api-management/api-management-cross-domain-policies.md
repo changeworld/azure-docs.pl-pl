@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: bd5082d9f66e65bb487c9216131b7e13f825340e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8b43ef81385f1d185fdd63d2a33453c75684fd21
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246654"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969928"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Zasady usługi API Management obejmujące różne domeny)
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -38,7 +38,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 ```xml  
 <cross-domain>  
    <!-Policy configuration is in the Adobe cross-domain policy file format,   
-      see http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->  
+      see https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->  
 </cross-domain>  
 ```  
   
@@ -56,7 +56,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
   
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
-|między domenami|Element główny. Elementy podrzędne muszą być zgodne z [specyfikacji pliku zasady międzydomenowe Adobe](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|  
+|między domenami|Element główny. Elementy podrzędne muszą być zgodne z [specyfikacji pliku zasady międzydomenowe Adobe](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|  
   
 ### <a name="usage"></a>Sposób użycia  
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bc2fbf7aadf99a2f765def2d352819dfa6cd5fa4
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: dc0c6a37e11574cef857a7af773a9d90bea57357
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265853"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972069"
 ---
 # <a name="interactive-feature-verification-testing"></a>Testowanie weryfikacyjne interaktywnych funkcji  
 
@@ -48,7 +48,7 @@ Test wymiana dysku jest typowym scenariuszem. W tym przykładzie testu składa s
 
 3.  Wybierz **Start** na **przebiegu testu** kafelka.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image1.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image1.png)
 
 4.  Wprowadź nazwę dla **przebiegu testu** przepływu pracy.
 
@@ -63,7 +63,7 @@ Test wymiana dysku jest typowym scenariuszem. W tym przykładzie testu składa s
 > [!Note]  
 > Należy określić domeny i hasła administratora dla dysku identyfikacji interaktywnych funkcji weryfikacji testu.
 
-![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image2.png)
+![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image2.png)
 
 ## <a name="select-the-test"></a>Wybierz test
 
@@ -72,51 +72,51 @@ Test wymiana dysku jest typowym scenariuszem. W tym przykładzie testu składa s
     > [!Note]  
     > Powoduje zwiększenie wersją testu, ponieważ wprowadzono ulepszenia do zabezpieczeń testu. Najwyższa wersja zawsze należy używać, chyba że wskazuje firmy Microsoft, w przeciwnym razie.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image4.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
 2.  Podaj użytkownika administratora domeny i hasła, wybierając **Edytuj**.
 
 3.  Wybierz odpowiedni test wykonywania agenta/Menedżer DVM można uruchomić test na.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image5.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image5.png)
 
 4.  Wybierz **przesyłania** aby rozpocząć test.
 
-![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image6.png)
+![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image6.png)
 
 ## <a name="start-the-test"></a>Uruchom test
 
 Pokaż monity Test identyfikacji dysku na komputerze z uruchomionym agentem VaaS. Zazwyczaj jest to Menedżer DVM lub serwer Przesiadkowy dla wystąpienia usługi Azure Stack.
 
-![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image8.png)
+![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image8.png)
 
 ## <a name="choose-the-actions"></a>Wybierz akcje
 
 1.  Postępuj zgodnie z **dokumentacji** i **weryfikacji** łącza, aby przejrzeć instrukcje od firmy Microsoft dotyczące realizacji tego scenariusza.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image9.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image9.png)
 
 2.  Wybierz opcję **Dalej**.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image10.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image10.png)
 
 3.  Postępuj zgodnie z instrukcjami, aby uruchomić skrypt precheck.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image11.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image11.png)
 
 4.  Po pomyślnym wykonaniu skryptu precheck wykonaj ręczne scenariusza (wymiana dysku) zgodnie **dokumentacji** i **weryfikacji** łączy z **informacji**kartę.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image12.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image12.png)
 
 5.  Nie zamykaj okna dialogowego, podczas wykonywania ręcznych scenariusza.
 
 6.  Po zakończeniu wykonywania ręcznych scenariusz, wykonaj instrukcje do uruchomienia skryptu Sprawdź wpis.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image13.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image13.png)
 
 7.  Po pomyślnym zakończeniu ręcznego scenariusza (wymiana dysku) wybierz **dalej**.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image14.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image14.png)
 
 > [!Important]  
 > Jeśli zamkniesz okno, test zostanie zatrzymane, zanim to się robi.
@@ -125,7 +125,7 @@ Pokaż monity Test identyfikacji dysku na komputerze z uruchomionym agentem VaaS
 
 1.  Po zakończeniu testu poprosimy Cię o opinię.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image15.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image15.png)
 
 2.  Odpowiedzi na następujące pytania pomogą firmie Microsoft, oceny jakości szybkości i wydania Powodzenie scenariusza.
 
@@ -133,7 +133,7 @@ Pokaż monity Test identyfikacji dysku na komputerze z uruchomionym agentem VaaS
 
 1.  Dołącz wszystkie pliki dziennika, który chcesz przesłać do firmy Microsoft.
 
-    ![Tekst alternatywny](media\azure-stack-vaas-interactive-feature-verification\image16.png)
+    ![Tekst alternatywny](media/azure-stack-vaas-interactive-feature-verification/image16.png)
 
 2.  Zaakceptuj Umowę licencyjną przesyłania opinii.
 

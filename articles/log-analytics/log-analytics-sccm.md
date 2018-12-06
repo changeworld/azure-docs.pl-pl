@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8e30b1ba093e38f81c9a09a0b9107e5a3b2eb768
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5cd28ec685842f6782699a7538e2f582c3226271
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847375"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955944"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Łączenie programu Configuration Manager do usługi Log Analytics
 Można połączyć środowiska programu System Center Configuration Manager z usługą Azure Log Analytics, synchronizować dane kolekcji urządzeń i odwołują się do tych kolekcji w usłudze Log Analytics i Azure Automation.  
@@ -42,7 +42,7 @@ Poniższe instrukcje stanowią podsumowanie czynności, aby skonfigurować integ
 Możesz dowiedzieć się więcej o łączeniu programu Configuration Manager do usługi Log Analytics w [synchronizowanie danych z programu Configuration Manager z usługą Microsoft Log Analytics](https://technet.microsoft.com/library/mt757374.aspx).
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Udziel programu Configuration Manager z uprawnieniami do usługi Log Analytics
-W poniższej procedurze, można przyznać *Współautor* roli w obszarze roboczym usługi Log Analytics do aplikacji usługi AD i jednostki usługi utworzonej wcześniej w programie Configuration Manager.  Jeśli nie masz obszaru roboczego, zobacz [Utwórz obszar roboczy w usłudze Azure Log Analytics](log-analytics-quick-create-workspace.md) przed kontynuowaniem.  Dzięki temu programu Configuration Manager do uwierzytelnienia i nawiązania połączenia z obszarem roboczym usługi Log Analytics.  
+W poniższej procedurze, można przyznać *Współautor* roli w obszarze roboczym usługi Log Analytics do aplikacji usługi AD i jednostki usługi utworzonej wcześniej w programie Configuration Manager.  Jeśli nie masz obszaru roboczego, zobacz [Utwórz obszar roboczy w usłudze Azure Log Analytics](../azure-monitor/learn/quick-create-workspace.md) przed kontynuowaniem.  Dzięki temu programu Configuration Manager do uwierzytelnienia i nawiązania połączenia z obszarem roboczym usługi Log Analytics.  
 
 > [!NOTE]
 > Należy określić uprawnienia w usłudze Log Analytics dla programu Configuration Manager. W przeciwnym razie otrzymasz komunikat o błędzie podczas korzystania z Kreatora konfiguracji w programie Configuration Manager.

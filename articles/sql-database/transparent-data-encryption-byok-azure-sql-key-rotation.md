@@ -1,7 +1,24 @@
 ---
-Tytuł: "PowerShell - funkcja ochrony TDE Obróć — usługi Azure SQL Database | Microsoft Docs description: Dowiedz się, jak obrócić ochrony przezroczystego szyfrowania danych (TDE) dla serwera Azure SQL.
-usługi: ms.service bazy danych sql: ms.subservice bazy danych sql: zabezpieczenia ms.custom: ms.devlang: ms.topic: koncepcyjny Autor: aliceku ms.author: aliceku ms.reviewer: vanto Menedżera: jhubbard ms.date: 2017-08-07
---- 
+title: PowerShell — funkcja ochrony TDE Obróć — usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wymienić ochrony przezroczystego szyfrowania danych (TDE) dla serwera Azure SQL.
+services: sql-database
+ms.service: sql-database
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: aliceku
+ms.author: aliceku
+ms.reviewer: vanto
+manager: jhubbard
+ms.date: 08/07/2017
+ms.openlocfilehash: fe8872e0db9f596ca7c58b087b1b061ae91f7384
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957559"
+---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Obróć ochrony przezroczystego szyfrowania danych (TDE) przy użyciu programu PowerShell 
 
 W tym artykule opisano rotacji kluczy dla serwera Azure SQL przy użyciu funkcji ochrony TDE z usługi Azure Key Vault. Obracanie serwera Azure SQL TDE ochrony oznacza, że przełączenie do nowego klucza asymetrycznego, który zapewnia ochronę baz danych na serwerze. Wymiana kluczy jest operacji w trybie online i trwa tylko kilka sekund, aby zakończyć, ponieważ to tylko odszyfrowywane i ponownie szyfruje klucz szyfrowania danych bazy danych, nie całą bazę danych.

@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 68d546fc4c853f1a19230b8aee7e86519aaa7e4c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5d7f275be1f04658f9901aba9faca83375a9bbf5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729056"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956197"
 ---
 # <a name="what-is-cognitive-search"></a>Co to jest usługa cognitive search?
 
@@ -31,7 +31,7 @@ Umiejętności poznawcze w usłudze Azure Search są oparte na tych samych algor
 Język naturalny i przetwarzanie obrazu jest stosowana w fazie wprowadzania danych z wynikami staje się częścią kompozycji dokument w indeksie wyszukiwania w usłudze Azure Search. Dane są źródło jako zestawu danych platformy Azure, a następnie przekazywane za pośrednictwem potoku indeksowania, przy użyciu zależności [wbudowanych umiejętności](cognitive-search-predefined-skills.md) potrzebujesz. Architektura jest rozszerzalny, więc jeśli wbudowane umiejętności nie są wystarczające, można tworzyć i dołączać [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md) niestandardowych integracji. Przykłady mogą być przeznaczone dla określonej domeny, takich jak finanse, publikacji naukowych lub medycyna klasyfikatora modułu lub dokumentu jednostkę niestandardową.
 
 > [!NOTE]
-> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności i wyodrębniania obrazu i normalizacji są obecnie oferowane bezpłatnie. W późniejszym czasie cen tych funkcji zostanie ogłoszona. 
+> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Możliwości wykonywania zestawów umiejętności oraz wyodrębniania i normalizacji obrazów są obecnie oferowane bezpłatnie. Cennik dla tych możliwości zostanie opublikowany w późniejszym czasie. 
 
 ## <a name="components-of-cognitive-search"></a>Składniki wyszukiwania kognitywnego
 
@@ -90,8 +90,19 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 
 **Krok 1: Tworzenie usługi wyszukiwania w regionie, zapewniając interfejsów API** 
 
++ Środkowo-zachodnie stany USA
 + Środkowo-południowe stany USA
++ Wschodnie stany USA
++ Wschodnie stany USA 2
++ Zachodnie stany USA 2
++ Kanada Środkowa
 + Europa Zachodnia
++ Południowe Zjednoczone Królestwo
++ Europa Północna
++ Brazylia Południowa
++ Azja Południowo-Wschodnia
++ Indie Środkowe
++ Australia Wschodnia
 
 **Krok 2: Praktyczne doświadczenie w pracy opanuj korzystanie z przepływu pracy**
 

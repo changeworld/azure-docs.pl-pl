@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: cca5fe492032c74a9922780f197065e9c2b40ad3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035105"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966138"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Najlepszych rozwiązań dotyczących infrastruktury usługi Backup
 
@@ -46,7 +46,7 @@ Klucz szyfrowania jest używany do szyfrowania danych kopii zapasowej, które s�
 
 Klucz musi być przechowywany w bezpiecznym miejscu (na przykład, publiczne usługi Azure Key Vault klucz tajny). Ten klucz musi używany podczas ponownego wdrażania usługi Azure Stack. 
 
-![Przechowywany klucz bezpiecznej lokalizacji.](media\azure-stack-backup\azure-stack-backup-encryption2.png)
+![Przechowywany klucz bezpiecznej lokalizacji.](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
 ## <a name="operational-best-practices"></a>Najlepsze rozwiązanie w zakresie
 

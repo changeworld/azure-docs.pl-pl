@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: shvija
-ms.openlocfilehash: 510f1a2bc23d14e1bb9e8e561b52936ae9d53685
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8fd0b1923bd1e89b16a1e33be908dc9ef73b398b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624543"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955398"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu języka Java
 
@@ -32,7 +32,11 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 * Środowisko projektowe Java. W tym samouczku [Eclipse](https://www.eclipse.org/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
-Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md), a następnie wykonaj następujące czynności z tego samouczka.
+Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md).
+
+Pobierz wartość klucza dostępu Centrum zdarzeń, postępując zgodnie z instrukcjami opisanymi w artykule: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Klucz dostępu został użyty w kodzie, napisany w dalszej części tego samouczka. Domyślna nazwa klucza to: **RootManageSharedAccessKey**.
+
+Teraz przejdź do następujących czynności w ramach tego samouczka.
 
 ## <a name="add-reference-to-azure-event-hubs-library"></a>Dodaj odwołanie do biblioteki usługi Azure Event Hubs
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4bfb7dc2b65dc479189ac7920509e1fd8a23ce4f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a641b5bb754c265a4fa5fb7e2fe85989d4813354
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961352"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955177"
 ---
 # <a name="administer-your-iot-central-application"></a>Zarządzać aplikacją IoT Central
 
@@ -35,12 +35,12 @@ Aby uzyskać dostęp do **administracji** sekcji, musisz mieć **administratora*
 ### <a name="change-application-name-and-url"></a>Zmienianie nazwy aplikacji i adres URL
 W **ustawienia aplikacji** strony, można zmienić nazwy i adresu URL aplikacji, a następnie wybierz **Zapisz**.
 
-![Strona ustawień aplikacji](media\howto-administer\image0-a.png)
+![Strona ustawień aplikacji](media/howto-administer/image0-a.png)
 
 > [!Note]
 > Jeśli zmienisz adres URL, stary adres URL może zostać pobrany przez innego klienta usługi Azure IoT Central. Jeśli tak się stanie, nie jest już dostępne do użycia. Po zmianie adresu URL stary adres URL nie będzie działać, a następnie należy powiadomić użytkowników o nowy adres URL do użycia.
 
-### <a name="prepare-and-upload-image"></a>Przygotuj i przekazywanie obrazu
+### <a name="prepare-and-upload-image"></a>Przygotowywanie i przekazywanie obrazu
 Aby zmienić obraz aplikacji, zobacz [przygotowywania i przekazywania obrazów do usługi Azure IoT Central aplikacji](howto-prepare-images.md).
 
 ### <a name="copy-an-application"></a>Kopiuj aplikację
@@ -48,11 +48,11 @@ Można utworzyć kopię dowolnej aplikacji, bez żadnych wystąpień urządzeń,
 
 Kliknij przycisk **kopiowania** przycisku. W oknie dialogowym wprowadź szczegóły nowej aplikacji płatność za rzeczywiste użycie. Następnie kliknij przycisk **kopiowania** przycisk, aby upewnić się, że chcesz kontynuować. Dowiedz się więcej na temat pól, w tym formularzu w [tworzenia aplikacji](quick-deploy-iot-central.md) Szybki Start.
 
-![Strona ustawień aplikacji](media\howto-administer\appCopy2.png)
+![Strona ustawień aplikacji](media/howto-administer/appCopy2.png)
 
 Po pomyślnym operacji kopiowania aplikacji, możesz przejść do nowej aplikacji, która została utworzona przez skopiowanie swoją aplikację przy użyciu linku, który pojawia się.
 
-![Strona ustawień aplikacji](media\howto-administer\appCopy3.png)
+![Strona ustawień aplikacji](media/howto-administer/appCopy3.png)
 
 > [!Note]
 > Kopiowanie aplikacji kopiuje również definicji reguły i akcje. Jednak ponieważ użytkowników, którzy mają dostęp do pierwotnej aplikacji nie są kopiowane do skopiowanych aplikacji, musisz ręcznie dodawać użytkowników do akcji, takich jak wiadomości e-mail, do którego użytkownicy mają warunek wstępny. Ogólnie rzecz biorąc jest dobry pomysł, aby sprawdzić reguły i akcje, aby upewnić się, że są one na bieżąco w nowej aplikacji.
@@ -71,13 +71,13 @@ Aby uzyskać więcej informacji, zobacz [pomocy konta firmy Microsoft](https://s
 
 1. Aby dodać użytkownika do aplikacji IoT Central, przejdź do **użytkowników** strony w **administracji** sekcji.
 
-    ![Lista użytkowników](media\howto-administer\image1.png)
+    ![Lista użytkowników](media/howto-administer/image1.png)
 
 1. Aby dodać użytkownika, na **użytkowników** wybierz **+ Dodaj użytkownika**.
 
 1. Wybierz rolę dla użytkownika z **roli** menu rozwijanego. Dowiedz się więcej o rolach w [Zarządzanie rolami](#manage-roles) dalszej części tego artykułu.
 
-    ![Wybór roli](media\howto-administer\image3.png)
+    ![Wybór roli](media/howto-administer/image3.png)
 
     > [!NOTE]
     >  Aby dodać użytkowników zbiorczo, wprowadź identyfikatory wszystkich użytkowników, które chcesz dodać użytkowników, rozdzielając je średnikami. Wybierz rolę z **roli** menu rozwijanego. Następnie wybierz pozycję **Zapisz**.
@@ -117,10 +117,10 @@ Aby wyświetlić swój rachunek, przejdź do **rozliczeń** strony w **administr
 
 Możesz również przekonwertować Twoja wersja próbna aplikacji na aplikację płatność za rzeczywiste użycie. Poniżej przedstawiono różnice między tymi typami aplikacji.
 
-- **Wersja próbna** aplikacje są bezpłatne przez 7 dni, zanim wygasną. Mogą być konwertowane na płatność za rzeczywiste użycie w dowolnym momencie, zanim wygasną.
-- **Płatność za rzeczywiste użycie** aplikacje są naliczane zgodnie z urządzenia z urządzeniami pierwszych 5 bezpłatnych.
+- Aplikacje typu **Wersja próbna** są bezpłatne przez 7 dni, a następnie ich ważność wygasa. W dowolnym momencie przed wygaśnięciem można przekonwertować te aplikacje na typ Płatność zgodnie z rzeczywistym użyciem.
+- Opłaty za aplikacje typu **Płatność za rzeczywiste użycie** są naliczane na urządzenie. 5 pierwszych urządzeń jest bezpłatnych.
 
-Dowiedz się więcej na temat cen na [stronę z cennikiem usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+Więcej informacji o cenach znajdziesz na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
     
 Aby ukończyć ten samoobsługowy proces, wykonaj następujące kroki:
 

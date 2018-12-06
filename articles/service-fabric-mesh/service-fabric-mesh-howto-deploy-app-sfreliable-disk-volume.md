@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 086fa31f1758fe4eb5e8e31810824794b869095e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 2ed64bbf0da252285184e2ca6fef0555a85ce149
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892302"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955325"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Instalowanie o wysokiej dostępności usługi Service Fabric Reliable dysku na podstawie woluminu w aplikacji usługi Service Fabric siatki 
 Typowe metody utrwalanie stanu przy użyciu aplikacji kontenera jest użycie magazynu zdalnego, takich jak usługi Azure File Storage lub bazy danych, takich jak usługi Azure Cosmos DB. To spowoduje naliczenie znaczących odczytu i zapisu opóźnienia sieci do zdalnego magazynu.
@@ -58,7 +58,7 @@ az group create --name myResourceGroup --location eastus
 Następujące polecenie służy do wdrażania aplikacji systemu Linux za pomocą [szablonu counter.sfreliablevolume.linux.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). Aby wdrożyć aplikację Windows, należy użyć [szablonu counter.sfreliablevolume.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Należy pamiętać, czy większych obrazów kontenerów może potrwać dłużej wdrożenia.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json
+az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/counter/counter.sfreliablevolume.linux.json
 ```
 
 Można również wyświetlić stan wdrożenia za pomocą polecenia

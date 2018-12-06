@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 15bfe871731f5a6a04cae623faf0bd27cdba27fc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 5dccfe61eaf97f27b211aa6812145f21f2098738
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233195"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961267"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B w usłudze Azure Log Analytics w usłudze Azure Logic Apps
 
@@ -27,7 +27,7 @@ Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integ
 
 * Aplikację logiki, która została skonfigurowana za pomocą rejestrowania diagnostycznego. Dowiedz się, [jak utworzyć aplikację logiki](quickstart-create-first-logic-app-workflow.md) i [jak skonfigurować rejestrowanie dla tej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do monitorowania i śledzenia B2B komunikację za pośrednictwem usługi Log Analytics. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+* Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do monitorowania i śledzenia B2B komunikację za pośrednictwem usługi Log Analytics. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 * Konto integracji jest połączony z aplikacji logiki. Dowiedz się, [sposób tworzenia konta integracji z linkiem do aplikacji logiki](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 

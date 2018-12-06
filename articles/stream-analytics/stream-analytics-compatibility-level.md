@@ -8,12 +8,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 83bbb777f5af6d29736db3b53ca39c449402c78e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: e4a4aa7bb944ec15d4283893c0f3e8c647a1d8b4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977717"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968633"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
  
@@ -27,7 +27,7 @@ Poziom zgodności steruje zachowaniem czasu wykonywania zadania usługi stream a
 
 Upewnij się, Zatrzymaj zadanie przed zaktualizowaniem poziom zgodności. Nie można zaktualizować poziom zgodności, jeśli zadanie jest w stanie uruchomienia. 
 
-![Poziom zgodności w portalu](media\stream-analytics-compatibility-level/image1.png)
+![Poziom zgodności w portalu](media/stream-analytics-compatibility-level/image1.png)
 
  
 Po zaktualizowaniu poziom zgodności kompilatora języka T-SQL sprawdza poprawność zadania za pomocą składni, który odpowiada poziomowi zgodności wybranego. 

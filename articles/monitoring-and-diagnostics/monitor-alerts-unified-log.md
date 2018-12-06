@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: c4279002f599b26ac0333e442bbca7afaebefebe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b257226a8bee0258a6bcc57715f959454577524c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837612"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962389"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
 Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](monitoring-overview-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
 
-Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). Aby dowiedzieć się więcej na temat jej użycia, zobacz [Tworzenie alertów dziennika na platformie Azure](alert-log.md)
+Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla [usługi Azure Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). Aby dowiedzieć się więcej na temat jej użycia, zobacz [Tworzenie alertów dziennika na platformie Azure](alert-log.md)
 
 > [!NOTE]
-> Dane dzienników popularnych z [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](monitoring-metric-alerts-logs.md)
+> Dane dzienników popularnych z [usługi Azure Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](monitoring-metric-alerts-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Wyszukiwania reguł alertów dzienników — definicja i typów
@@ -29,7 +29,7 @@ Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla
 Reguły przechowywania dzienników są tworzone przez usługę Azure Alerts w celu automatycznego wykonywania określonych zapytań dotyczących dzienników w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, jest tworzony rekord alertu. Reguła może wtedy automatycznie uruchomić jedną lub więcej akcji przy użyciu [grup akcji](monitoring-action-groups.md). 
 
 Dziennik wyszukiwania reguł są definiowane przez następujące informacje:
-- **Zaloguj się zapytania**.  Zapytanie, które jest uruchamiane za każdym razem, gdy reguła alertu jest uruchamiana.  Rekordów zwróconych przez tę kwerendę są używane do określenia, czy alert jest tworzony. Zapytania usługi Analytics może również obejmować [wywołań między platformami](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), [wielu wywołań obszaru roboczego i [wywołań między zasobami](../log-analytics/log-analytics-cross-workspace-search.md) podany użytkownik ma wystarczające uprawnienia dostępu do aplikacji zewnętrznych. 
+- **Zaloguj się zapytania**.  Zapytanie, które jest uruchamiane za każdym razem, gdy reguła alertu jest uruchamiana.  Rekordów zwróconych przez tę kwerendę są używane do określenia, czy alert jest tworzony. Zapytania usługi Analytics może również obejmować [wywołań między platformami](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), [wielu wywołań obszaru roboczego i [wywołań między zasobami](../azure-monitor/log-query/cross-workspace-query.md) podany użytkownik ma wystarczające uprawnienia dostępu do aplikacji zewnętrznych. 
 
     > [!IMPORTANT]
     > Użytkownik musi mieć [Współautor monitorowania Azure](monitoring-roles-permissions-security.md) roli do tworzenia, modyfikowania i aktualizowanie alerty dzienników w usłudze Azure Monitor; uzyskasz także dostęp & zapytanie praw wykonywania dla analizy elementy docelowe w reguły alertu lub zapytanie alertu. Jeśli tworzenie użytkownika nie ma dostępu do wszystkich cele analytics reguły alertu lub zapytanie alertu — tworzenie reguł może zakończyć się niepowodzeniem lub reguł alertów dzienników będą wykonywane przy użyciu wyniki częściowe.
@@ -38,7 +38,7 @@ Dziennik wyszukiwania reguł są definiowane przez następujące informacje:
 - **Częstotliwość**.  Określa, jak często należy uruchamiać zapytanie. Może to być wartość z zakresu od 5 minut do 24 godzin. Powinna być równa lub mniejsza niż okres czasu.  Jeśli wartość jest większa niż okres czasu, istnieje ryzyko rekordów jest pominięte.<br>*Na przykład należy wziąć pod uwagę okres 30 minut i częstotliwość 60 minut.  Jeśli zapytanie jest uruchomione 1:00, zwraca rekordy od 12:30 do 1:00 PM.  Przy następnym uruchomić zapytanie jest 2:00, jeśli zwróci rekordów między 1:30 – 2:00.  Nigdy nie oceniono rekordy między 1:00 i 1:30.*
 - **Próg**.  Wyniki przeszukiwania dzienników są oceniane w celu ustalenia, czy należy utworzyć alert.  Próg różni się dla różnych typów reguł alertów wyszukiwania dziennika.
 
-Reguły wyszukiwania dziennika można je [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events), mogą być dwojakiego rodzaju. Każdy z tych typów opisano szczegółowo w kolejnych sekcjach.
+Reguły wyszukiwania dziennika można je [usługi Azure Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events), mogą być dwojakiego rodzaju. Każdy z tych typów opisano szczegółowo w kolejnych sekcjach.
 
 - **[Liczba wyników](#number-of-results-alert-rules)**. Pojedynczy alert utworzony, jeśli liczba rekordów zwracanych przez wyszukiwanie w dzienniku przekracza określoną liczbę.
 - **[Pomiar metryki](#metric-measurement-alert-rules)**.  Alert został utworzony dla każdego obiektu w wynikach wyszukiwania dziennika z wartościami, które przekracza określoną wartość progową.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 999017e24f6c4c24735b7e0cc818bf20aaabab62
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3caa45064c41b641aa913e210aa698d818d5355e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338577"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970275"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Rozwiązywanie problemów z systemu Microsoft Azure Stack Development Kit (ASDK)
 Ten dokument zawiera informacje dotyczące ASDK typowych rozwiązywania problemów. Jeśli występuje problem, który nie jest udokumentowany, upewnij się sprawdzić [Forum MSDN usługi Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) dalszą pomoc i informacje.  
@@ -64,7 +64,7 @@ Tak, jest to oczekiwane zachowanie. Ponieważ została zaprojektowana w ten spos
 
 Jeśli widzisz "oddzielony" wirtualne dyski twarde, należy znać, jeśli są one częścią folderu dla konta magazynu, który został usunięty. Jeśli nie można usunąć konta magazynu, jest normalnym, że są one nadal istnieje.
 
-Możesz dowiedzieć się więcej o konfigurowaniu przechowywania odzyskiwanie próg i na żądanie w [Zarządzanie kontami magazynu](.\.\azure-stack-manage-storage-accounts.md).
+Możesz dowiedzieć się więcej o konfigurowaniu przechowywania odzyskiwanie próg i na żądanie w [Zarządzanie kontami magazynu](../azure-stack-manage-storage-accounts.md).
 
 ## <a name="storage"></a>Magazyn
 ### <a name="storage-reclamation"></a>Odzyskiwanie pamięci masowej
@@ -72,4 +72,3 @@ Może upłynąć do 14 godzin odzyskiwanego pojemności wyświetlani w portalu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Odwiedź forum pomocy technicznej usługi Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)
-

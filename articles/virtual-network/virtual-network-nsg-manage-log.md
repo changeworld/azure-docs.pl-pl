@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 25d5bd3b798af181b8dd4e7028dd4a531995d464
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 19ea4892bc39d1d577455bb1c21824d6f5f5e9db
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682607"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956418"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla grupy zabezpieczeń sieci
 
@@ -121,7 +121,7 @@ az monitor diagnostic-settings create \
   --resource-group myWorkspaces
 ```
 
-Jeśli nie masz istniejącego obszaru roboczego, możesz utworzyć ją przy użyciu [witryny Azure portal](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [PowerShell](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace). Istnieją dwie kategorie rejestrowania, który można włączyć dzienniki. 
+Jeśli nie masz istniejącego obszaru roboczego, możesz utworzyć ją przy użyciu [witryny Azure portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [PowerShell](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace). Istnieją dwie kategorie rejestrowania, który można włączyć dzienniki. 
 
 Jeśli chcesz rejestrować dane dotyczące jednej kategorii lub innych, Usuń kategorii nie chcesz rejestrować dane dotyczące w poprzednim poleceniu. Jeśli chcesz się zalogować na inne [docelowy](#log-destinations) niż obszar roboczy usługi Log Analytics, należy użyć odpowiednich parametrów dla platformy Azure [konta magazynu](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Centrum zdarzeń](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

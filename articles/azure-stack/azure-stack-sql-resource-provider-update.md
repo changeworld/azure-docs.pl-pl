@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: d897fd43cf712f217b6cd55f14854164fb7abfa6
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 8fc8be105c6c610e6b246fa0ec619fecc81b1dd9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887784"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966249"
 ---
 # <a name="update-the-sql-resource-provider"></a>Aktualizowanie dostawcy zasobów bazy danych SQL
 
@@ -28,11 +28,11 @@ ms.locfileid: "52887784"
 Nowego dostawcę zasobów programu SQL może być zwalniany, gdy usługi Azure Stack został zaktualizowany do nowej kompilacji. Mimo że istniejącej karty w dalszym ciągu działać, zaleca się aktualizowanie do najnowszej kompilacji tak szybko, jak to możliwe.
 
 > [!IMPORTANT]
-> Należy zainstalować aktualizacji w kolejności, w której ich wydaniu. Nie można pominąć wersji. Można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
+> Należy zainstalować aktualizacji w kolejności, w której ich wydaniu. Nie można pominąć wersji. Można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="overview"></a>Przegląd
 
-Aby zaktualizować dostawcy zasobów, użyj *UpdateSQLProvider.ps1* skryptu. Ten skrypt jest dołączona do pakietu instalacyjnego nowego dostawcy zasobu języka SQL. Proces aktualizacji jest podobny do procesu umożliwiającego [wdrażanie dostawcy zasobów](.\azure-stack-sql-resource-provider-deploy.md). Skrypt aktualizacji zawiera te same argumenty co skrypt DeploySqlProvider.ps1 i musisz podać informacje o certyfikacie.
+Aby zaktualizować dostawcy zasobów, użyj *UpdateSQLProvider.ps1* skryptu. Ten skrypt jest dołączona do pakietu instalacyjnego nowego dostawcy zasobu języka SQL. Proces aktualizacji jest podobny do procesu umożliwiającego [wdrażanie dostawcy zasobów](./azure-stack-sql-resource-provider-deploy.md). Skrypt aktualizacji zawiera te same argumenty co skrypt DeploySqlProvider.ps1 i musisz podać informacje o certyfikacie.
 
 ### <a name="update-script-processes"></a>Zaktualizuj skrypt procesów
 

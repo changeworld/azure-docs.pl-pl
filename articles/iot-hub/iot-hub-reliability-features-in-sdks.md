@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 64bd250f324bed53a9f33aa72f6b1daa48e0dc86
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8951680ca9488dabffd02ee084e3f6827122276e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424650"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957456"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Zarządzanie łącznością i niezawodna obsługa komunikatów za pomocą zestawów SDK urządzeń Azure IoT Hub
 
@@ -115,9 +115,8 @@ Aby uzyskać przykłady kodu w innych językach Przejrzyj następujące dokument
 - [Węzeł zestawu SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-- [Korzystanie z zestawów SDK urządzenia i usługi](.\iot-hub-devguide-sdks.md)
-- [Korzystanie z zestawu SDK urządzenia IoT dla języka C](.\iot-hub-device-sdk-c-intro.md)
-- [Opracowywanie zawartości dla urządzeń z ograniczeniami](.\iot-hub-devguide-develop-for-constrained-devices.md)
-- [Opracowywanie zawartości dla urządzeń przenośnych](.\iot-hub-how-to-develop-for-mobile-devices.md)
+- [Korzystanie z zestawów SDK urządzenia i usługi](./iot-hub-devguide-sdks.md)
+- [Korzystanie z zestawu SDK urządzenia IoT dla języka C](./iot-hub-device-sdk-c-intro.md)
+- [Opracowywanie zawartości dla urządzeń z ograniczeniami](./iot-hub-devguide-develop-for-constrained-devices.md)
+- [Opracowywanie zawartości dla urządzeń przenośnych](./iot-hub-how-to-develop-for-mobile-devices.md)
 - [Rozwiązywanie problemów z odłącza urządzenia](iot-hub-troubleshoot-connectivity.md)

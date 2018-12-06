@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: a17e2fa4bef6890d59f7e66c6ede349f8dee3b8a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f37bfc59e402e87afcffa469d4d2014ed6877db6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280457"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955704"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -41,19 +41,19 @@ Aby dowiedzieć się, jakie wersje są obecnie dostępne dla Twojej subskrypcji 
 az aks get-versions --location eastus --output table
 ```
 
-Dane wyjściowe są podobne do poniższego przykładu, który pokazuje tę wersję rozwiązania Kubernetes *1.11.3* jest dostępny do najnowszej wersji:
+Dane wyjściowe są podobne do poniższego przykładu, który pokazuje tę wersję rozwiązania Kubernetes *1.11.5* jest dostępny do najnowszej wersji:
 
 ```
 KubernetesVersion    Upgrades
 -------------------  ----------------------
-1.11.3               None available
-1.11.2               1.11.3
-1.10.8               1.11.2, 1.11.3
-1.10.7               1.10.8, 1.11.2, 1.11.3
-1.9.10               1.10.7, 1.10.8
-1.9.9                1.9.10, 1.10.7, 1.10.8
-1.8.15               1.9.9, 1.9.10
-1.8.14               1.8.15, 1.9.9, 1.9.10
+1.11.5               None available
+1.11.4               1.11.5
+1.10.9               1.11.4, 1.11.5
+1.10.8               1.10.9, 1.11.4, 1.11.5
+1.9.11               1.10.8, 1.10.9
+1.9.10               1.9.11, 1.10.8, 1.10.9
+1.8.15               1.9.10, 1.9.11
+1.8.14               1.8.15, 1.9.10, 1.9.11
 ```
 
 ## <a name="faq"></a>Często zadawane pytania

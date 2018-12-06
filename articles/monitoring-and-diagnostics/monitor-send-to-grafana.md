@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: aa511e98fefaf25a08f55f2aa47c43c9ed10a10f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 726e0f335a1586dc35aa1f254ea2b1fae729f01a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261049"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956996"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług platformy Azure w narzędzia Grafana
 Teraz możesz monitorować usługi systemu Azure i aplikacji w [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych usługi Azure Monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera dane dotyczące wydajności aplikacji zbieranych przez usługi Azure Monitor, łącznie z różnych dzienników i metryk. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -50,7 +50,7 @@ Aby skonfigurować serwer lokalny Grafana [pobrać i zainstalować narzędzia Gr
 
 1. Za pomocą adresu IP serwera, otwórz stronę logowania w *http://\<adresu IP\>: 3000* lub  *\<DNSName >\:3000* w przeglądarce. 3000 jest domyślny port, należy pamiętać, że być może wybrano innego portu podczas instalacji. Powinieneś widzieć stronę logowania dla serwera platformy Grafana tworzonej.
 
-    ![Ekran logowania narzędzia Grafana](.\media\monitor-how-to-grafana\grafana-login-screen.png)
+    ![Ekran logowania narzędzia Grafana](./media/monitor-how-to-grafana/grafana-login-screen.png)
 
 2. Zaloguj się przy użyciu nazwy użytkownika *administratora* i Grafana hasło administratora serwera, została utworzona wcześniej. Jeśli używasz lokalnej instalacji domyślnego hasła będzie *administratora*, i będzie można żądać Zmień ją na potrzeby pierwszego logowania.
 
@@ -58,7 +58,7 @@ Aby skonfigurować serwer lokalny Grafana [pobrać i zainstalować narzędzia Gr
 
 Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych usługi Azure Monitor jest już dołączona.
 
-![Grafana zawiera wtyczki usługi Azure Monitor](.\media\monitor-how-to-grafana\grafana-includes-azure-monitor-plugin-dark.png)
+![Grafana zawiera wtyczki usługi Azure Monitor](./media/monitor-how-to-grafana/grafana-includes-azure-monitor-plugin-dark.png)
 
 1. Wybierz **Dodaj źródło danych** Aby dodać i skonfigurować źródło danych usługi Azure Monitor.
 
@@ -83,7 +83,7 @@ Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych u
 5. Jeśli korzystasz z usługi Application Insights, można także dodać interfejs API usługi Application Insights oraz Identyfikatora aplikacji, aby zbieranie metryk usługi Application Insights na podstawie. Aby uzyskać więcej informacji, zobacz [uzyskiwanie Twojego klucza interfejsu API i identyfikator aplikacji](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
 6. Wybierz **Zapisz**, i Grafana przetestuje poświadczeń dla każdego interfejsu API. Powinien zostać wyświetlony komunikat podobny do poniższego.  
-    ![Zatwierdzone konfiguracji źródła danych narzędzia Grafana](.\media\monitor-how-to-grafana\grafana-data-source-config-approved-dark.png)
+    ![Zatwierdzone konfiguracji źródła danych narzędzia Grafana](./media/monitor-how-to-grafana/grafana-data-source-config-approved-dark.png)
 
 ## <a name="build-a-grafana-dashboard"></a>Tworzenie pulpitu nawigacyjnego do narzędzia Grafana
 
@@ -92,11 +92,11 @@ Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych u
 2. Nowy pulpit nawigacyjny, wybierz **wykresu**. Możesz wypróbować inne opcje tworzenia wykresów, ale w tym artykule wykorzystano *wykres* jako przykład.
 
 3. Pusty wykres wyświetlane na pulpicie nawigacyjnym. Kliknij tytuł panelu i wybierz pozycję **Edytuj** o podanie szczegółowych danych, do wykreślenia na tym wykresie wykresu.
-    ![Nowy wykres narzędzia Grafana](.\media\monitor-how-to-grafana\grafana-new-graph-dark.png)
+    ![Nowy wykres narzędzia Grafana](./media/monitor-how-to-grafana/grafana-new-graph-dark.png)
 
 4. Wybierz źródło danych usługi Azure Monitor, które zostały skonfigurowane.
     * Wybierz metryki — zbierania usługi Azure Monitor **usługi Azure Monitor** na liście rozwijanej usługi. Lista pokazuje selektory w górę, którym można wybrać zasoby i metrykę do monitorowania na tym wykresie. Aby zbierać metryki z maszyny Wirtualnej, należy użyć przestrzeni nazw **Microsoft.Compute/VirtualMachines**. Po wybraniu maszyn wirtualnych i metryk, możesz rozpocząć wyświetlanie swoje dane na pulpicie nawigacyjnym.
-    ![Grafana konfiguracji programu graph dla usługi Azure Monitor](.\media\monitor-how-to-grafana\grafana-graph-config-for-azure-monitor-dark.png)
+    ![Grafana konfiguracji programu graph dla usługi Azure Monitor](./media/monitor-how-to-grafana/grafana-graph-config-for-azure-monitor-dark.png)
     * Usługi Azure Log Analytics zbieranie danych — wybierz **usługi Azure Log Analytics** na liście rozwijanej usługi. Wybierz obszar roboczy, który chcesz zbadać i Ustaw tekst zapytania. W tym miejscu można skopiować każde zapytanie usługi Log Analytics istniejącego konta lub utworzyć nową. Podczas wpisywania w zapytaniu funkcji IntelliSense będą wyświetlane, a także sugerują opcje Autouzupełniania. Wybierz typ wizualizacji **czas serii** **tabeli**, i uruchom zapytanie.
     
     > [!NOTE]
@@ -104,7 +104,7 @@ Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych u
     > Domyślne zapytanie dostarczane za pomocą wtyczki wykorzystuje dwa makra: "__interval $__timeFilter() i $. 
     > Te makra umożliwiają Grafana dynamicznie obliczyć zakres czasu i ziarno czasu, po przejściu na części wykresu. Można usunąć tych makr i użyj filtru (czas standardowy), takie jak *TimeGenerated > ago(1h)*, ale ta oznacza, że wykres będzie obsługuje powiększenia w funkcji.
     
-    ![Grafana konfiguracji programu graph dla usługi Azure Log Analytics](.\media\monitor-how-to-grafana\grafana-graph-config-for-azure-log-analytics-dark.png)
+    ![Grafana konfiguracji programu graph dla usługi Azure Log Analytics](./media/monitor-how-to-grafana/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. Poniżej przedstawiono dwa wykresy na prostym pulpicie nawigacyjnym. Po lewej stronie zawiera procent użycia procesora CPU, dwie maszyny wirtualne. Wykres po prawej stronie pokazuje transakcji na koncie usługi Azure Storage, podzielone według typu transakcji interfejsu API.
     ![Przykładowe wykresy dwa narzędzia Grafana](media/monitor-send-to-grafana/grafana6.png)
@@ -140,7 +140,7 @@ Usage
 Można skonfigurować zmienną, która zostanie wyświetlona lista wszystkich dostępnych **rozwiązania** wartości, a następnie zaktualizuj zapytanie z niego korzystać.
 Aby utworzyć nowej zmiennej, kliknij przycisk na pulpicie nawigacyjnym ustawienia przycisk w prawym górnym obszarze, wybierz **zmienne**, a następnie **New**.
 Na stronie zmiennej zdefiniować źródło danych i zapytania w celu uruchomienia w celu pobrania listy wartości.
-![Grafana skonfigurować zmienną](.\media\monitor-how-to-grafana\grafana-configure-variable-dark.png)
+![Grafana skonfigurować zmienną](./media/monitor-how-to-grafana/grafana-configure-variable-dark.png)
 
 Po utworzeniu dostosować zapytania, aby użyć wybranej wartości i odpowiednio odpowie wykresy:
 ```
@@ -150,13 +150,13 @@ Usage
 | sort by TimeGenerated
 ```
     
-![Zmiennych można używać narzędzia Grafana](.\media\monitor-how-to-grafana\grafana-use-variables-dark.png)
+![Zmiennych można używać narzędzia Grafana](./media/monitor-how-to-grafana/grafana-use-variables-dark.png)
 
 ### <a name="create-dashboard-playlists"></a>Tworzenie list odtwarzania pulpitu nawigacyjnego
 
 Jedną z wielu przydatnych funkcji Grafana jest lista odtwarzania pulpitu nawigacyjnego. Można tworzyć wiele pulpitów nawigacyjnych i dodać je do listy odtwarzania, konfigurowanie interwał każdy pulpit nawigacyjny pokazać. Wybierz **Odtwórz** Aby wyświetlić pulpity nawigacyjne cyklicznie. Można je wyświetlić w monitorze dużej tablicy, zapewnienie tablicy stan dla tej grupy.
 
-![Przykład listy odtwarzania narzędzia Grafana](.\media\monitor-how-to-grafana\grafana7.png)
+![Przykład listy odtwarzania narzędzia Grafana](./media/monitor-how-to-grafana/grafana7.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

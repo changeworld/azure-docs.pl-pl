@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/12/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: b2483d93fdc83970ca1568326f4bc728de16f77c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3df4be80e1a979590a05ff10601485e950de54bd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038871"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962221"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Logowanie się za pomocą telefonu zamiast hasła
 Aplikacja Microsoft Authenticator, nie tylko ułatwia możesz chronić swoje konta, przeprowadzania weryfikacji dwuetapowej po wprowadź hasło, ale teraz całkowicie ją zastąpić hasło do konta Microsoft.
@@ -43,13 +43,13 @@ Jeśli Twoja organizacja ma włączone nowe środowisko, będzie można włączy
 
     Po wpisaniu nazwy użytkownika, zostanie wyświetlona strona z liczbą dwucyfrowy prośbą o zatwierdzenie logowania za pomocą aplikacji Microsoft Authenticator. Jeśli nie chcesz użyć tego znaku w metodzie, możesz wybrać **zamiast tego użyj hasła**i zaloguj się przy użyciu hasła.
 
-    ![Zatwierdzanie logowania pole](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
+    ![Zatwierdzanie logowania pole](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
 
 2. W aplikacji Microsoft Authentication otrzymasz powiadomienie z prośbą o **zatwierdzić logowanie**. Wybierz **Zatwierdź** jeśli rozpoznaje próby logowania. W przeciwnym razie wybierz **Odmów**. 
 
 3. Wybierz taką samą liczbę widocznych na **zatwierdzić logowanie** ekranu. Aby zakończyć uwierzytelnianie, należy użyć numeru PIN na swoim telefonie lub klucz biometryczne.
 
-    ![Zatwierdzanie logowania pole z numerem, aby wybrać](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
+    ![Zatwierdzanie logowania pole z numerem, aby wybrać](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
 
 ## <a name="turn-on-phone-sign-in-for-your-personal-account"></a>Włącz na telefonie logowania dla konta osobistego 
 Można włączyć logowanie za pomocą telefonu dla Twojego osobistego konta Microsoft, takich jak konto, którego używasz do logowania do usługi Outlook.com, Xbox lub Skype.

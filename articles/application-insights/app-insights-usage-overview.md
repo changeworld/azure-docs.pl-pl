@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: bc80bfacf6896161fae03b9ed93f5fe22e13ada2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2ccb4d2ff7beeeac53bafe726122c3b47682db03
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725288"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955433"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 
@@ -60,26 +60,6 @@ Szczegółowe informacje po prawej stronie punktu interesujących wzorców w zes
 * **Sesje** raport zlicza liczbę sesji użytkowników, uzyskujących dostęp do witryny. Sesja jest okres aktywności przez użytkownika został przerwany przez okres bezczynności ponad pół godziny.
 
 [Więcej informacji na temat narzędzia Użytkownicy, sesje i zdarzenia](app-insights-usage-segmentation.md)  
-
-## <a name="page-views"></a>Wyświetlenia strony
-
-W bloku użycia kliknij Kafelek wyświetleń stron, aby uzyskać podział najpopularniejszych stron:
-
-![Z poziomu bloku Przegląd kliknij wykres wyświetleń strony](./media/app-insights-usage-overview/05-games.png)
-
-W powyższym przykładzie pochodzi z witryny sieci web gry. Z wykresów natychmiast widoczne:
-
-* Obciążenie nie zostało ulepszone w ostatnim tygodniu. Firma Microsoft może pomyśleć o optymalizacji dla aparatów wyszukiwania?
-* Tenisa jest najbardziej popularnych strona gier. Skupmy się na dalsze ulepszenia do tej strony.
-* Średnio użytkowników stronę tenisa około trzy razy w tygodniu. (Ma sesji około trzy razy więcej niż użytkowników).
-* Większość użytkowników w witrynie tygodniu pracy Stanów Zjednoczonych i w godzinach pracy. Prawdopodobnie należy oferujemy przycisku "Ukryj szybkiego" na stronie sieci web.
-* [Adnotacje](app-insights-annotations.md) na wykresie pokazać, kiedy zostały wdrożone nowe wersje witryny sieci Web. Brak ostatnich wdrożeń ma zauważalnego wpływu na obciążenie.
-
-Co zrobić, jeśli chcesz zbadać ruch do swojej witryny bardziej szczegółowo, takich jak dzielenie przez właściwość niestandardową, którą witryny wysyła w jej danych telemetrycznych widoku strony?
-
-1. Otwórz **zdarzenia** narzędzia w menu zasobów usługi Application Insights. To narzędzie umożliwia analizowanie, liczby wyświetleń stron i zdarzenia niestandardowe, które zostały wysłane z aplikacji, w oparciu o różne opcje filtrowania, cohorting i segmentacji.
-2. Na liście rozwijanej "Kto korzystał" Wybierz "Dowolny widok strony".
-3. Na liście rozwijanej "Podziel wg" Wybierz właściwości, według których mają być podziału danych telemetrycznych widoku strony.
 
 ## <a name="retention---how-many-users-come-back"></a>Przechowywanie — ilu użytkowników możesz wrócić?
 

@@ -14,17 +14,17 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 32345b0f064aa78dbf1cbb84cb2309138e7bf4f7
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 95a689b00d67a9f2c24b4deaf5575464923a1e60
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455389"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961777"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu języka C
 
 ## <a name="introduction"></a>Wprowadzenie
-Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby uzyskać szczegółowe omówienie usługi Event hubs, zobacz [Przegląd usługi Event Hubs](event-hubs-about.md) i [funkcji usługi Event Hubs](event-hubs-features.md).
+Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
 W tym samouczku opisano sposób wysyłania zdarzeń do Centrum zdarzeń za pomocą aplikacji konsoli w C. 
 
@@ -33,6 +33,13 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * To środowisko projektowe języka C. Ten samouczek zakłada stosu kompilatorów GCC dla procesorów na maszynie Wirtualnej systemu Linux platformy Azure z systemem Ubuntu 14.04.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
+Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md).
+
+Pobierz wartość klucza dostępu Centrum zdarzeń, postępując zgodnie z instrukcjami opisanymi w artykule: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Klucz dostępu został użyty w kodzie, napisany w dalszej części tego samouczka. Domyślna nazwa klucza to: **RootManageSharedAccessKey**.
+
+Teraz przejdź do następujących czynności w ramach tego samouczka.
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Pisanie kodu, aby wysyłać komunikaty do usługi Event Hubs
 W tej sekcji przedstawiono sposób pisania aplikacji w języku C do wysyłania zdarzeń do Centrum zdarzeń. Kod używa biblioteki AMQP protonowego [projektu Apache Qpid](http://qpid.apache.org/). To jest odpowiednikiem pomocą tematów i kolejek usługi Service Bus z obsługą protokołu AMQP z C, co zostało pokazane [w tym przykładzie](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Aby uzyskać więcej informacji, zobacz [dokumentacji protonów Qpid](http://qpid.apache.org/proton/index.html).

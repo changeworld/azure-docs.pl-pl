@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837345"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969536"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie rozwiązania analizy użycia przemieszczonych danych dzięki platformie Azure i usługi Azure Stack 
 
@@ -103,7 +103,7 @@ Kontener konta i obiektów blob magazynu będzie przechowywać wszystkie orygina
 
 4.  Wybierz **Utwórz, aby utworzyć konto magazynu**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image1.png)
+    ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image1.png)
 
 5.  Po utworzeniu, wybierz nazwę konta magazynu.
 
@@ -111,7 +111,7 @@ Kontener konta i obiektów blob magazynu będzie przechowywać wszystkie orygina
 
 7.  W górnej części bloku wybierz **+ kontener.** i wybierz **kontenera**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image2.png)
+    ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image2.png)
 
 8.  Nazwa: **wybór**
 
@@ -146,31 +146,31 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
     **Przykład:**
 
-    ![Definiowanie nowych ustawień aplikacji funkcji](media\azure-stack-solution-staged-data-analytics\image6.png)
+    ![Definiowanie nowych ustawień aplikacji funkcji](media/azure-stack-solution-staged-data-analytics/image6.png)
 
 5.  Wybierz pozycję **Utwórz**, aby zaaprowizować aplikację funkcji i wdrożyć ją.
 
 6.  Wybierz ikonę Powiadomienie w prawym górnym rogu portalu i poszukaj komunikatu **Wdrażanie zakończone pomyślnie**.
 
-    ![Definiowanie nowych ustawień aplikacji funkcji](media\azure-stack-solution-staged-data-analytics\image7.png)
+    ![Definiowanie nowych ustawień aplikacji funkcji](media/azure-stack-solution-staged-data-analytics/image7.png)
 
 7.  Wybierz **przejdź do zasobu** Aby wyświetlić nową aplikację funkcji.
 
-![Pomyślnie utworzona aplikacja funkcji.](media\azure-stack-solution-staged-data-analytics\image8.png)
+![Pomyślnie utworzona aplikacja funkcji.](media/azure-stack-solution-staged-data-analytics/image8.png)
 
 ### <a name="add-a-function-to-the-azure-stack-function-app"></a>Dodawanie funkcji do aplikacji funkcji usługi Azure Stack
 
 1.  Utwórz nową funkcję, klikając **funkcje**, a następnie **+ nowa funkcja** przycisku.
 
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image3.png)
+    ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image3.png)
 
 2.  Wybierz **wyzwalacza czasomierza**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image4.png)
+    ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image4.png)
 
 3.  Wybierz **C\#**  jako język i nazwa funkcji: `upload-to-azure` Ustaw harmonogram `0 0 * * * *`, ponieważ w CRON jest raz godzinę.
 
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image5.png)
+    ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image5.png)
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Tworzenie funkcji wyzwalanej przez magazyn obiektów Blob
 
@@ -178,7 +178,7 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
 2.  W polu wyszukiwania wpisz `blob` , a następnie wybierz żądany język dla **obiekt Blob wyzwalacza** szablonu.
 
-  ![Wybierz szablon wyzwalacza usługi Blob Storage.](media\azure-stack-solution-staged-data-analytics\image10.png)
+  ![Wybierz szablon wyzwalacza usługi Blob Storage.](media/azure-stack-solution-staged-data-analytics/image10.png)
 
 3.  Użyj ustawień określonych w tabeli poniżej:
 
@@ -190,7 +190,7 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
     **Przykład:**
 
-    ![Tworzenie funkcji wyzwalanej przez magazyn obiektów Blob.](media\azure-stack-solution-staged-data-analytics\image11.png)
+    ![Tworzenie funkcji wyzwalanej przez magazyn obiektów Blob.](media/azure-stack-solution-staged-data-analytics/image11.png)
 
 4.  Wybierz **Utwórz** Aby utworzyć funkcję.
 
@@ -202,7 +202,7 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
 3.  Rozwiń konto magazynu, **kontenerach obiektów Blob**, oraz obiekt blob utworzone wcześniej. Wybierz **przekazywanie** i następnie **przekazywanie plików**.
 
-    ![Przekazywanie pliku do kontenera obiektów Blob.](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Przekazywanie pliku do kontenera obiektów Blob.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  W oknie dialogowym przekazywanie plików wybierz pole plików. Przejdź do pliku na komputerze lokalnym, na przykład pliku obrazu, zaznacz ją i wybierz **Otwórz** i następnie **przekazywanie**.
 
@@ -210,7 +210,7 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
     **Przykład:**
 
-    ![Wyświetlanie komunikatu w dziennikach.](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![Wyświetlanie komunikatu w dziennikach.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="create-an-azure-stack-storage-account"></a>Tworzenie konta magazynu usługi Azure Stack
 
@@ -232,9 +232,9 @@ Skorzystaj z kroków i ustawień opisanych powyżej, można utworzyć innego kon
 
 4.  Wybierz **OK.**
 
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image14.png)
+    ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image14.png)
 
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image15.png)
+    ![Tekst alternatywny](media/azure-stack-solution-staged-data-analytics/image15.png)
 
 ## <a name="create-a-queue-triggered-function"></a>Tworzenie funkcji wyzwalanej przez kolejkę
 
@@ -258,7 +258,7 @@ Skorzystaj z kroków i ustawień opisanych powyżej, można utworzyć innego kon
 
 3.  Rozwiń konto magazynu, **kontenerach obiektów Blob**, oraz obiekt blob utworzone wcześniej. Wybierz **przekazywanie** i następnie **przekazywania plików.**
 
-    ![Przekazywanie pliku do kontenera obiektów Blob.](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Przekazywanie pliku do kontenera obiektów Blob.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  W oknie dialogowym przekazywanie plików wybierz pole plików. Przejdź do pliku na komputerze lokalnym, na przykład pliku obrazu, zaznacz ją i wybierz **Otwórz** i następnie **przekazywanie**.
 
@@ -266,7 +266,7 @@ Skorzystaj z kroków i ustawień opisanych powyżej, można utworzyć innego kon
 
   **Przykład:**
 
-    ![Wyświetlanie komunikatu w dziennikach.](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![Wyświetlanie komunikatu w dziennikach.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>Bezpiecznie przechowywane i dostęp do danych zgodne z
 

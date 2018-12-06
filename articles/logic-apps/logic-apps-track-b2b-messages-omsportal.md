@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: aacdaf4ec55b1223ce993a7246ed9f0405a5054e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233564"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957185"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>Śledzenie komunikatów B2B w usłudze Azure Log Analytics
 
@@ -37,11 +37,11 @@ Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integ
 
 * Jeśli jeszcze nie, [publikowania danych diagnostycznych do usługi Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
-* Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do śledzenia B2B komunikację za pośrednictwem usługi Log Analytics. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+* Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do śledzenia B2B komunikację za pośrednictwem usługi Log Analytics. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Instalowanie rozwiązania B2B aplikacji logiki
 
-Śledzenie komunikatów B2B dla twojej aplikacji logiki w usłudze Log Analytics może mieć, aby móc dodać **B2B aplikacji logiki** rozwiązania do usługi Log Analytics. Dowiedz się więcej o [Dodawanie rozwiązań do usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Śledzenie komunikatów B2B dla twojej aplikacji logiki w usłudze Log Analytics może mieć, aby móc dodać **B2B aplikacji logiki** rozwiązania do usługi Log Analytics. Dowiedz się więcej o [Dodawanie rozwiązań do usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Wszystkie usługi**. W polu wyszukiwania Znajdź "log analytics", a następnie wybierz **usługi Log Analytics**.
 

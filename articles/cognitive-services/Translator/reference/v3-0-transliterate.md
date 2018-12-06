@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 841982a4ecbfa5241d826beaaae81921b2859596
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018625"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967337"
 ---
 # <a name="translator-text-api-30-transliterate"></a>API 3.0 tekstu usługi Translator: transliteracja
 
@@ -42,15 +42,15 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>language</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu, aby przekonwertować z jednego skryptu. Języki możliwe są wymienione w `transliteration` zakres uzyskać, badając usługę dla jego [obsługiwane języki](.\v3-0-languages.md).</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu, aby przekonwertować z jednego skryptu. Języki możliwe są wymienione w `transliteration` zakres uzyskać, badając usługę dla jego [obsługiwane języki](./v3-0-languages.md).</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Wymagany parametr*.<br/>Określa skrypt używany przez tekst wejściowy. Wyszukaj [obsługiwane języki](.\v3-0-languages.md) przy użyciu `transliteration` zakres, aby znaleźć dostępnych danych wejściowych skryptów dla wybranego języka.</td>
+    <td>*Wymagany parametr*.<br/>Określa skrypt używany przez tekst wejściowy. Wyszukaj [obsługiwane języki](./v3-0-languages.md) przy użyciu `transliteration` zakres, aby znaleźć dostępnych danych wejściowych skryptów dla wybranego języka.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Wymagany parametr*.<br/>Określa skrypt wyjściowy. Wyszukaj [obsługiwane języki](.\v3-0-languages.md) przy użyciu `transliteration` zakres, aby znaleźć dostępne dla wybranej kombinacji języka skryptów danych wyjściowych i wejściowych skryptu.</td>
+    <td>*Wymagany parametr*.<br/>Określa skrypt wyjściowy. Wyszukaj [obsługiwane języki](./v3-0-languages.md) przy użyciu `transliteration` zakres, aby znaleźć dostępne dla wybranej kombinacji języka skryptów danych wyjściowych i wejściowych skryptu.</td>
   </tr>
 </table> 
 

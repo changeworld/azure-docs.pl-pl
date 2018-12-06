@@ -10,18 +10,19 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d999350f309dbd2bf74bbb3d10e74feddf6ee602
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 34583d8052dfd29a3f08187b88c15e3847a4dbb9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642382"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966283"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Odzyskiwanie po awarii i dystrybucja geograficzna
 
 ## <a name="overview"></a>Przegląd
 W usłudze Azure Functions trwałe wszystkie stany są utrwalane w usłudze Azure Storage. A [Centrum zadań](durable-functions-task-hubs.md) to kontener logiczny dla zasobów usługi Azure Storage, które są używane do aranżacji. Funkcje programu orchestrator i działanie tylko można ze sobą współdziałać, jeśli należą do tego samego Centrum zadania.
 Opisane scenariusze zaproponować opcjami wdrożenia w celu zwiększenia dostępności i skrócić czas przestoju podczas działania odzyskiwania po awarii.
+
 Należy zauważyć, że te scenariusze są oparte na konfiguracji aktywne-pasywne, ponieważ są one sterowana przez użycie usługi Azure Storage. Ten wzorzec polega na wdrożeniu aplikacji funkcji wykonywania kopii zapasowej (pasywnego) w innym regionie. Usługi Traffic Manager będzie monitorować aplikację podstawową funkcją (aktywny) dla dostępności. Zakończy się niepowodzeniem przez aplikację funkcji tworzenia kopii zapasowej w przypadku niepowodzenia podstawowego. Aby uzyskać więcej informacji, zobacz [usługi Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)firmy [metody rozsyłania ruchu priorytetu.](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)
 
 

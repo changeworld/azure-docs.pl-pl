@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 57624133b249a8ec2ece90eac4a64729e4d15151
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890997"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968207"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Samouczek: Tworzenie rozwiązania skalowania wielu chmur przy użyciu platformy Azure
 
@@ -107,17 +107,17 @@ Azure Repos
 
     Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno kod aplikacji, jak i kodem infrastruktury. Użyj [szablonów usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/) dla obu chmur prywatnych i hostowanych rozwoju.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image1.JPG)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image1.JPG)
 
 2. **Sklonuj repozytorium** przez tworzenie i otwieranie domyślną aplikację sieci web.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image2.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image2.png)
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Tworzenie wdrożenia aplikacji niezależne sieci web dla usług App Service w obu chmurach
 
 1.  Edytuj **WebApplication.csproj** pliku. Wybierz **Runtimeidentifier** i Dodaj **win10 x64**. (Zobacz [wdrożenia Self-contained](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentacji.) 
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image3.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image3.png)
 
 2.  Zaewidencjonuj kod, aby repozytoriów platformy Azure za pomocą programu Team Explorer.
 
@@ -129,7 +129,7 @@ Azure Repos
 
 2. Dodaj **- r dla systemu win10-x64** kodu. Jest to konieczne wyzwolić wdrożenie niezależna za pomocą.Net Core.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image4.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image4.png)
 
 3. Uruchom kompilację. [Kompilacji wdrożenia niezależna](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) proces będzie publikować artefaktów, które można uruchamiać na platformie Azure i usługi Azure Stack.
 
@@ -143,87 +143,87 @@ Usługi Azure potoków i serwer usługi Azure DevOps oferują wysoce konfigurowa
 
 ## <a name="create-release-definition"></a>Tworzenie definicji wydania
 
-![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image5.png)
+![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image5.png)
 
 1.  Wybierz **oraz** przycisk, aby dodać nowe wydanie w ramach **karcie wersje** na stronie kompilacji i wydania programu VSO.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image6.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image6.png)
 
 2. Zastosuj szablon wdrażania usługi Azure App Service.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image7.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image7.png)
 
 3. W obszarze Dodawanie artefaktu Dodaj artefakt kompilacji aplikacji w chmurze platformy Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image8.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image8.png)
 
 4. Na karcie potoku wybierz **fazy, zadanie** połączyć środowiska i ustaw wartości środowiska chmury platformy Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image9.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image9.png)
 
 5. Ustaw **Nazwa środowiska** i wybierz pozycję Azure **subskrypcji** dla punktu końcowego w chmurze platformy Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image10.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image10.png)
 
 6. W obszarze Nazwa środowiska, ustaw wymagane **nazwa usługi Azure app service**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image11.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image11.png)
 
 7. Wprowadź **hostowany program VS2017** w ramach kolejki agentów dla środowiska hostowane w chmurze platformy Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image12.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image12.png)
 
 8. Wdrażanie usługi Azure App Service, wybierz menu prawidłowe **pakietu lub folderu** dla środowiska. Wybierz **OK** do **lokalizacji folderu**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image13.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image13.png)
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image14.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image14.png)
 
 9. Zapisz wszystkie zmiany i wróć do **potoku tworzenia wersji**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image15.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image15.png)
 
 10. Dodaj nowe artefaktu, wybierając kompilacji dla aplikacji usługi Azure Stack.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image16.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image16.png)
 
 11. Dodanie jednego środowiska więcej stosowanie wdrożenie usługi aplikacji Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image17.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image17.png)
 
 12. Nazwa nowego środowiska usługi Azure Stack.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image18.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image18.png)
 
 13. Znajdź środowiska usługi Azure Stack w obszarze **zadań** kartę.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image19.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image19.png)
 
 14. Wybierz subskrypcję dla punktu końcowego usługi Azure Stack.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image20.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image20.png)
 
 15. Ustaw nazwę aplikacji sieci web usługi Azure Stack jako nazwa usługi App service.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image21.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image21.png)
 
 16. Wybierz agenta usługi Azure Stack.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image22.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image22.png)
 
 17. W ramach wdrożenia usługi Azure App Service wybierz prawidłowe sekcji **pakietu lub folderu** dla środowiska. Wybierz **OK** do lokalizacji folderu.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image23.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image23.png)
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image24.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image24.png)
 
 18. Na karcie Zmienne Dodaj zmienną o nazwie `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, ustaw dla niego wartość jako **true**oraz zakres do usługi Azure Stack.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image25.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image25.png)
 
 19. Wybierz **ciągłe** ikona wyzwalacza wdrożenia zarówno w przypadku artefaktów, jak i Włącz **kontynuuje** wyzwalacza wdrażania.
 
-    ![Tekst alternatywny](media\azure-stack-solution-cloud-burst\image26.png)
+    ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image26.png)
 
 20. Wybierz **przed wdrożeniem** ikonę warunków w środowisku usługi Azure Stack i ustawić wyzwalacz na **po wydaniu.**
 
@@ -307,7 +307,7 @@ Tworzenie definicji wydania jest ostatnim krokiem w aplikacji, proces kompilacji
 
 3.  Na **wybierz szablon**, wybierz **wdrożenie usługi aplikacji Azure**, a następnie wybierz pozycję **Zastosuj**.
 
-4.  Na **Dodawanie artefaktu**, z ** źródło (definicja kompilacji) wybierz aplikację kompilacji w chmurze platformy Azure.
+4.  Na **Dodawanie artefaktu**, z **źródło (definicja kompilacji)** wybierz aplikację kompilacji w chmurze platformy Azure.
 
 5.  Na **potoku** zaznacz **fazy 1**, **1 zadanie** połączyć **przeglądać zadania w środowisku**.
 
@@ -323,7 +323,7 @@ Tworzenie definicji wydania jest ostatnim krokiem w aplikacji, proces kompilacji
 
 11. Zapisz wszystkie zmiany i wróć do **potoku**.
 
-12. Na **potoku** zaznacz **Dodawanie artefaktu**i wybierz polecenie **NorthwindCloud Traders — statek** z ** źródło (definicja kompilacji) ** listy.
+12. Na **potoku** zaznacz **Dodawanie artefaktu**i wybierz polecenie **NorthwindCloud Traders — statek** z **źródło (definicja kompilacji)** listy.
 
 13. Na **wybierz szablon**, dodać innego środowiska. Wybierz **wdrożenie usługi aplikacji Azure** , a następnie wybierz **Zastosuj**.
 

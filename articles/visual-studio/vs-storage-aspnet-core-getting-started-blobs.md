@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
-ms.openlocfilehash: 82c5fb0f3f3e8edad948b82f77c9c336636f3077
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442745"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961114"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (systemu Windows platformy ASP.NET Core)
 
@@ -27,7 +27,7 @@ ms.locfileid: "42442745"
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
 > - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
-Usługa Azure Blob storage to usługa, która przechowuje dane niestrukturalne w chmurze jako obiekty lub obiekty BLOB. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów.
+Usługa Azure Blob storage to usługa, która przechowuje dane niestrukturalne w chmurze jako obiekty lub obiekty BLOB. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów. Aby dowiedzieć się więcej o usłudze Blob storage, zobacz [wprowadzenie do usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md).
 
 W tym samouczku pokazano, jak napisać kod platformy ASP.NET Core dla niektórych typowych scenariuszy korzystających z usługi Blob storage. Scenariusze obejmują tworzenie kontenera obiektów blob, przekazywanie, wyświetlanie listy, pobieranie i usuwanie obiektów blob.
 
@@ -36,8 +36,6 @@ W tym samouczku pokazano, jak napisać kod platformy ASP.NET Core dla niektóryc
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Program Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-
-[!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 ## <a name="set-up-the-development-environment"></a>Konfigurowanie środowiska deweloperskiego
 

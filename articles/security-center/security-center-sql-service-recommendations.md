@@ -3,7 +3,7 @@ title: Ochrona usługi Azure SQL i danych w usłudze Azure Security Center | Dok
 description: Adresy tego dokumentu, zalecenia w usłudze Azure Security Center, które ułatwiają ochronę danych i usługi Azure SQL i pozostają zgodne z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: terrylan
-ms.openlocfilehash: ea014aae49ec322e9a1f1222c881885b84e87584
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: rkarlin
+ms.openlocfilehash: 4c58984e512556b73281cca1154b4879c9db79d5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311776"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956792"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrona usługi Azure SQL i danych w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek.  Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM), networking, SQL i dane i aplikacje.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: fd54d3425e342de688c5b573a4c329ab32af0c98
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681997"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961811"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitor grupy zasobów z usługą Azure Monitor (wersja zapoznawcza)
 
@@ -28,19 +28,19 @@ Nowoczesne aplikacje są często złożone i bardzo rozproszone z wielu poszczeg
 2. Wybierz jedną z grup zasobów, które chcesz zbadać. (Jeśli masz dużą liczbę grup zasobów, filtrowanie według subskrypcji czasami użyteczne może.)
 3. Aby uzyskać dostęp do szczegółowych informacji dla grupy zasobów, kliknij przycisk **Insights** w dowolnej grupie zasobów, w menu po lewej stronie.
 
-![Zrzut ekranu przedstawiający stronę przeglądu usługi insights grupy zasobów](.\media\resource-group-insights\0001-overview.png)
+![Zrzut ekranu przedstawiający stronę przeglądu usługi insights grupy zasobów](./media/resource-group-insights/0001-overview.png)
 
 ## <a name="resources-with-active-alerts-and-health-issues"></a>Zasoby z aktywnych alertów i problemów z kondycją
 
 Na stronie Przegląd pokazuje, ile alertów zostało wyzwolone i są nadal aktywne, wraz z bieżącym usługi Azure Resource Health każdego zasobu. Razem te informacje może pomóc szybko wychwycić wszelkie zasoby, do których występują problemy. Alerty ułatwiają wykrywanie problemów w kodzie i jak skonfigurowano infrastruktury. Usługa Resource Health powierzchnie problem z platformą Azure z samą platformę Azure, nie są specyficzne dla poszczególnych aplikacji.
 
-![W okienku zrzut ekranu z usługi Azure Resource Health](.\media\resource-group-insights\0002-overview.png)
+![W okienku zrzut ekranu z usługi Azure Resource Health](./media/resource-group-insights/0002-overview.png)
 
 ### <a name="azure-resource-health"></a>Azure Resource Health
 
 Aby wyświetlić usługi Azure Resource Health, zapoznaj się z **Pokaż usługi Azure Resource Health** pole w powyższej tabeli. W tej kolumnie jest domyślne ukryty, aby ułatwić szybkie ładowanie strony.
 
-![Zrzut ekranu z dodać wykres kondycji zasobów](.\media\resource-group-insights\0003-overview.png)
+![Zrzut ekranu z dodać wykres kondycji zasobów](./media/resource-group-insights/0003-overview.png)
 
 Domyślnie zasoby są grupowane według warstwy aplikacji i typu zasobu. **Warstwa aplikacji** jest proste kategoryzacji typów zasobów, a, który istnieje tylko w kontekście stronę przeglądu usługi insights grupy zasobów. Istnieją typy zasobów powiązany kod aplikacji, obliczenia, infrastruktury, sieci, Magazyn i bazy danych. Narzędzia do zarządzania uzyskanie własne warstwy aplikacji i wszystkich innych zasobów jest dzielony na kategorie jako należące do **innych** warstwy aplikacji. Ta metoda grupowania może pomóc w skrócie jakie podsystemy aplikacji są zdrowe i niezdrowe.
 
@@ -69,33 +69,33 @@ Do przetestowania wybierz kartę błędów **błędów** w obszarze **zbadaj** w
 
 Na pasku menu po lewej stronie zmienia się po dokonaniu wyboru oferty nowych opcji.
 
-![Zrzut ekranu błąd okienko omówienia](.\media\resource-group-insights\00004-failures.png)
+![Zrzut ekranu błąd okienko omówienia](./media/resource-group-insights/00004-failures.png)
 
 Po wybraniu usługi App Service są prezentowane za pomocą szablonów galerii platformy Azure Monitor skoroszytu.
 
-![Zrzut ekranu przedstawiający galerii skoroszytu w aplikacji](.\media\resource-group-insights\0005-failure-insights-workbook.png)
+![Zrzut ekranu przedstawiający galerii skoroszytu w aplikacji](./media/resource-group-insights/0005-failure-insights-workbook.png)
 
 Wybieranie szablonu dla błędów szczegółowych informacji zostanie otwarty skoroszyt.
 
-![Zrzut ekranu przedstawiający raport z niepowodzenia](.\media\resource-group-insights\0006-failure-visual.png)
+![Zrzut ekranu przedstawiający raport z niepowodzenia](./media/resource-group-insights/0006-failure-visual.png)
 
 Można wybrać żadnego wiersza. Zaznaczenie zostanie wyświetlona w widoku szczegółowym graficznego.
 
-![Zrzut ekranu przedstawiający szczegóły błędu](.\media\resource-group-insights\0007-failure-details.png)
+![Zrzut ekranu przedstawiający szczegóły błędu](./media/resource-group-insights/0007-failure-details.png)
 
 Skoroszyty natychmiast abstrakcyjna trudną pracę tworzenia niestandardowych raportów i wizualizacji w formie łatwy w użyciu. Gdy niektórzy użytkownicy mogą tylko chcesz dostosować parametry wbudowanych, skoroszyty są całkowicie dostosowany.
 
 Aby uzyskać zorientować się, jak działa ten skoroszyt wewnętrznie, wybierz **Edytuj** na górnym pasku.
 
-![Zrzut ekranu przedstawiający opcję Edytuj dodatkowe](.\media\resource-group-insights\0008-failure-edit.png)
+![Zrzut ekranu przedstawiający opcję Edytuj dodatkowe](./media/resource-group-insights/0008-failure-edit.png)
 
 Szereg **Edytuj** pola są wyświetlane w pobliżu różne elementy skoroszytu. Wybierz **Edytuj** pole pod tabelą operacji.
 
-![Zrzut ekranu przedstawiający pól edycji](.\media\resource-group-insights\0009-failure-edit-graph.png)
+![Zrzut ekranu przedstawiający pól edycji](./media/resource-group-insights/0009-failure-edit-graph.png)
 
 Takie działanie spowoduje wyświetlenie podstawowych zapytań usługi Log Analytics, umożliwiające obsługę wizualizacji tabeli.
 
- ![Zrzut ekranu przedstawiający okno zapytania analizy dzienników](.\media\resource-group-insights\0010-failure-edit-query.png)
+ ![Zrzut ekranu przedstawiający okno zapytania analizy dzienników](./media/resource-group-insights/0010-failure-edit-query.png)
 
 Zapytania można zmodyfikować bezpośrednio. Lub można go użyć jako odwołania i "pożyczać" z niego, opracowując własne niestandardowe skoroszytu sparametryzowanych.
 
@@ -103,11 +103,11 @@ Zapytania można zmodyfikować bezpośrednio. Lub można go użyć jako odwołan
 
 Wydajność oferuje swój własny galerii skoroszytów. W przypadku usługi App Service wbudowanych skoroszytu wydajność aplikacji oferuje następujący widok:
 
- ![Zrzut ekranu przedstawiający widok wydajności](.\media\resource-group-insights\0011-performance.png)
+ ![Zrzut ekranu przedstawiający widok wydajności](./media/resource-group-insights/0011-performance.png)
 
 W tym przypadku jeśli wybierzesz edycji pojawi się, że ten zestaw wizualizacji jest obsługiwana przez metryk usługi Azure Monitor.
 
- ![Zrzut ekranu przedstawiający widok wydajności z metryk usługi Azure](.\media\resource-group-insights\0012-performance-metrics.png)
+ ![Zrzut ekranu przedstawiający widok wydajności z metryk usługi Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: c8a100577ba4bc67d12c7376b5897f397d010d4d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1512098c29c8916a0486ed66b438654ba29f0601
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844927"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968241"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -52,8 +52,12 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 | Maksymalny rozmiar magazynu | 8 TB | Gen 4: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
-| Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | Nieograniczona liczba |
-| Przepustowość operacji We/Wy (w przybliżeniu) | 5000 operacji We/Wy na rdzeń z 200 000 maksymalna liczba IOPS |
+| Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |
+| Operacje We/Wy (w przybliżeniu) | 500-7500 na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11-110 tys. obr (1375 na rdzeń wirtualny) |
+| We/Wy, czas oczekiwania (w przybliżeniu) | 5 – 10 ms | 1 – 2 ms |
+| Maksymalny rozmiar bazy danych tempDB | 192 1920 GB (24 GB na rdzeń wirtualny) | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
+
+- Użytkownika i systemowe bazy danych znajdują się w rozmiarze wystąpienia magazynu, która jest porównywana z maksymalny limit rozmiaru magazynu. Użyj <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> widok systemowy ustalenie Suma używane miejsce w bazach danych. Dzienniki błędów są nie jest trwały i nie są uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględnione w rozmiaru magazynu.
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 

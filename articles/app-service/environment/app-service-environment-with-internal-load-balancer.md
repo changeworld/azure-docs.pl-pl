@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i używanie wewnętrzny moduł równoważenia obciążenia z środowiska usługi aplikacji | Dokumentacja firmy Microsoft
-description: Tworzenie i korzystanie z ILB ASE
+title: Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service | Dokumentacja firmy Microsoft
+description: Tworzenie i używanie środowiska ASE z wewnętrznym modułem równoważenia obciążenia
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -14,123 +14,123 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: f7c94b790c6aa7c75c62fd05671f016b7185b2a2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fe447a655f579441be667d7555aa83faf2b9385d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29388819"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957014"
 ---
-# <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Przy użyciu wewnętrznego modułu równoważenia obciążenia z środowiska usługi aplikacji
+# <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Przy użyciu wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service
 
 > [!NOTE] 
-> Ten artykuł dotyczy v1 środowiska usługi aplikacji. Istnieje nowsza wersja środowiska usługi aplikacji jest łatwiejsza w użyciu, który jest uruchamiany na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej o nowy początek wersji z [wprowadzenie do środowiska usługi aplikacji](intro.md).
+> Ten artykuł dotyczy środowiska App Service Environment w wersji 1. Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
 >
 
-Funkcji środowiska usługi aplikacji (ASE) to opcja Premium usługi Azure App Service, która zapewnia możliwość rozszerzonej konfiguracji, która nie jest dostępna w sygnatury wielodostępnej. Funkcja ASE wdraża zasadniczo usłudze Azure App Service w Twojej Network(VNet) wirtualnych Azure. Aby uzyskać lepsze zrozumienie możliwości oferowane przez odczytać środowiska usługi App Service [co to jest środowisko usługi aplikacji] [ WhatisASE] dokumentacji. Jeśli nie znasz zalet działających w sieci wirtualnej odczytu [często zadawane pytania sieci wirtualnych Azure][virtualnetwork]. 
+Funkcja App Service Environment (ASE) to opcja usługi Premium usługi Azure App Service, która dostarcza możliwości rozszerzonej konfiguracji, która nie jest dostępna w sygnatury wielodostępu. Funkcja środowiska ASE wdraża przede wszystkim usłudze Azure App Service w Twoja sieć wirtualna platformy Azure. Aby uzyskać lepsze zrozumienie możliwości oferowane przez odczyt środowisk App Service Environment [co to jest środowisko usługi App Service] [ WhatisASE] dokumentacji. Jeśli nie znasz korzyści systemu operacyjnego podczas odczytywania sieci wirtualnej [często zadawane pytania sieci wirtualnych Azure][virtualnetwork]. 
 
 ## <a name="overview"></a>Przegląd
-ASE można wdrożyć z dostępnym punkcie końcowym internet lub z adresu IP w sieci wirtualnej. Aby ustawić adres IP na adres sieci wirtualnej, należy wdrożyć Twojej ASE z wewnętrznego Balancer(ILB) obciążenia. Po skonfigurowaniu sieci ASE ILB, zawierają:
+Środowisko ASE można wdrożyć z dostępnym punkcie końcowym Internetu lub adresu IP w sieci wirtualnej. Aby ustawić adres IP adres sieci wirtualnej należy wdrożyć środowisko ASE przy użyciu wewnętrznego Balancer(ILB) obciążenia. Po skonfigurowaniu środowiska ASE z wewnętrznym modułem równoważenia obciążenia zawierają:
 
-* własnych domeny lub poddomeny. Aby ułatwić, tym dokumencie przyjęto założenie domeny podrzędnej, ale można skonfigurować w obu przypadkach. 
+* własne domeny lub poddomeny. Ułatwia, w tym dokumencie przyjęto założenie, domeny podrzędnej, ale można skonfigurować w obu przypadkach. 
 * certyfikat używany do obsługi protokołu HTTPS
-* Zarządzanie systemem DNS z domeny podrzędnej. 
+* Zarządzanie usługą DNS dla swojej domeny podrzędnej. 
 
 Umożliwia to realizowanie m.in. następujących zadań:
 
-* Host intranet aplikacji, takich jak aplikacji — biznesowych bezpiecznie w chmurze, która dostęp za pośrednictwem witryny do witryny lub sieci VPN usługi ExpressRoute
-* aplikacje hosta w chmurze, które nie są wymienione w publicznych serwerów DNS
-* Utwórz internet izolowane wewnętrznej bazy danych aplikacji, z którymi frontonu aplikacji można bezpiecznie zintegrować
+* hostowanie aplikacji intranetowych, takich jak aplikacje line-of-business, bezpieczne w chmurze, które są dostępne za pośrednictwem witryny do witryny lub usługi ExpressRoute sieci VPN
+* hostowanie aplikacji w chmurze, które nie są wymienione na publicznych serwerach DNS
+* Twórz aplikacje zaplecza internetowego samodzielnie za pomocą których można bezpiecznie integrować aplikacje frontonu
 
 #### <a name="disabled-functionality"></a>Funkcje wyłączone
-Istnieje kilka kwestii, które nie można wykonać przy użyciu ASE ILB. Czynności te obejmują:
+Istnieje kilka kwestii, które nie możesz zrobić w przypadku korzystania z ASE z wewnętrznym modułem równoważenia obciążenia. Czynności te obejmują:
 
-* przy użyciu IPSSL
+* za pomocą IPSSL
 * Przypisywanie adresów IP do określonych aplikacji
-* kupowanie i używa certyfikatu z aplikacją za pośrednictwem portalu. Można oczywiście nadal uzyskiwanie certyfikatów bezpośrednio z urzędu certyfikacji i używać go z aplikacjami, ale nie za pośrednictwem portalu Azure.
+* kupowanie i używa certyfikatu z aplikacją za pośrednictwem portalu. Można oczywiście nadal uzyskać bezpośrednio z urzędu certyfikacji certyfikatów i go używać razem z aplikacjami, ale nie przy użyciu witryny Azure portal.
 
-## <a name="creating-an-ilb-ase"></a>Tworzenie ILB ASE
-Tworzenie ASE ILB nie jest znacznie różni się od tworzenia ASE normalnie. Omówienie więcej danych na temat tworzenia ASE, zobacz [tworzenie środowiska usługi aplikacji][HowtoCreateASE]. Proces tworzenia ASE ILB jest taka sama, między tworzenia sieci wirtualnej podczas tworzenia ASE lub wybierz istniejące sieci wirtualnej. Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia: 
+## <a name="creating-an-ilb-ase"></a>Tworzenie środowiska ASE z wewnętrznym modułem równoważenia obciążenia
+Tworzenie środowiska ASE z wewnętrznym modułem równoważenia obciążenia nie jest znacznie różni się od tworzenia środowiska ASE normalnie. Aby uzyskać bardziej dyskusji na temat tworzenia środowiska ASE, zobacz [jak utworzyć środowisko App Service Environment][HowtoCreateASE]. Proces, aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest taka sama, między tworzenia sieci wirtualnej podczas tworzenia środowiska ASE lub wybranie wcześniej istniejącej sieci wirtualnej. Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia: 
 
-1. W portalu Azure wybierz **Utwórz zasób -> Sieć Web i mobilność -> środowisko usługi aplikacji**.
+1. W witrynie Azure portal wybierz **Utwórz zasób -> Sieć Web i mobilność -> środowisko App Service Environment**.
 2. Wybierz subskrypcję.
 3. Wybierz lub utwórz grupę zasobów.
 4. Wybierz lub utwórz sieć wirtualną.
 5. Utwórz podsieć, w przypadku wybrania sieci wirtualnej.
-6. Wybierz **wirtualnego lokalizacji-> Konfiguracja sieci wirtualnej** i Ustaw typ adresu VIP do wewnętrznego.
-7. Podaj nazwę domeny podrzędnej (Ta nazwa jest poddomeny używane w przypadku aplikacji utworzone w tym ASE).
-8. Wybierz **OK** , a następnie **utworzyć**.
+6. Wybierz **sieć wirtualna/lokalizacja-> Konfiguracja sieci wirtualnej** i Ustaw typ adresu VIP wewnętrznego.
+7. Podaj nazwę domeny podrzędnej (Ta nazwa jest poddomeny używane w przypadku aplikacji tworzonych w tym środowisku ASE).
+8. Wybierz **OK** i następnie **tworzenie**.
 
 ![][1]
 
-W okienku sieci wirtualnej ma konfigurację sieci wirtualnej, wybierz opcję umożliwiającą między zewnętrznego adresu VIP lub wewnętrznego adresu VIP. Wartość domyślna to zewnętrznego. Jeśli masz ustawioną zewnętrzne sieci ASE używa internet dostępne wirtualne adresy IP. W przypadku wybrania wewnętrzne Twojej ASE skonfigurowano ILB na adres IP w sieci wirtualnej. 
+W okienku sieć wirtualna istnieje konfiguracja sieci wirtualnej, opcja, która umożliwia wybranie zewnętrznego lub wewnętrznego adresu VIP. Wartość domyślna to zewnętrzny. Jeśli masz ustawioną na zewnętrzne środowisko ASE używa internet dostępne wirtualne adresy IP. Jeśli wybierzesz wewnętrzne, środowisko ASE jest skonfigurowane przy użyciu wewnętrznego adresu IP w sieci wirtualnej. 
 
-Po wybraniu wewnętrzne, możliwość dodawania więcej adresów IP do sieci ASE zostaną usunięte i zamiast tego należy podać poddomeny ASE. W elemencie ASE z zewnętrznego wirtualnego adresu IP nazwę ASE służy w poddomenie aplikacje utworzone w tym ASE. Jeśli Twoje ASE nosi nazwę ***contosotest*** i nosi nazwę aplikacji w tym ASE ***test***, poddomeny jest w formacie ***contosotest.p.azurewebsites.net*** i adres URL dla tej aplikacji jest ***mytest.contosotest.p.azurewebsites.net***. Jeśli ustawisz typ adresu VIP do wewnętrznego nazwę ASE nie jest używany podczas poddomeny dla ASE. Należy jawnie określić poddomeny. Jeśli Twoje domeny podrzędnej jest ***contoso.corp.net*** i wprowadzone aplikacji, w tym o nazwie ASE ***timereporting***, adres URL dla tej aplikacji jest ***timereporting.contoso.corp.net***.
+Po wybraniu wewnętrzne, możliwość dodawania większej liczby adresów IP do środowiska ASE jest usuwany, a zamiast tego należy podać domenę podrzędną środowiska ASE. W środowisku ASE z zewnętrznym wirtualnym adresem IP nazwa środowiska ASE jest używany podczas poddomeny dla aplikacji utworzonych w tym środowisku ASE. Jeśli środowisko ASE ma nazwę ***contosotest*** i nosi nazwę aplikacji w tym środowisku ASE ***testowa***, poddomeny ma format ***contosotest.p.azurewebsites.net*** i adres URL dla tej aplikacji ***mytest.contosotest.p.azurewebsites.net***. Jeśli typ adresu VIP jest ustawiona na wewnętrzne, nazwa środowiska ASE nie jest używany podczas poddomeny dla środowiska ASE. Należy jawnie określić poddomeny. Jeśli Twoje domeny podrzędnej jest ***contoso.corp.net*** i wprowadziliśmy aplikację, w tym środowisku ASE o nazwie ***raportowanieczasu***, adres URL dla tej aplikacji jest ***raportowanieczasu.contoso.corp.NET***.
 
-## <a name="apps-in-an-ilb-ase"></a>Aplikacje w elemencie ASE ILB
-Tworzenie aplikacji w elemencie ASE ILB jest taka sama, jak podczas tworzenia aplikacji w elemencie ASE normalnie. 
+## <a name="apps-in-an-ilb-ase"></a>Aplikacje w środowisku ASE z wewnętrznym modułem równoważenia obciążenia
+Tworzenie aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia jest taka sama, jak podczas tworzenia aplikacji w środowisku ASE normalnie. 
 
-1. W portalu Azure wybierz **Utwórz zasób -> Sieć Web i mobilność -> sieci Web** lub **Mobile** lub **aplikacji interfejsu API**.
+1. W witrynie Azure portal wybierz **Utwórz zasób -> Sieć Web i mobilność -> sieci Web** lub **Mobile** lub **aplikacji interfejsu API**.
 2. Wprowadź nazwę aplikacji.
 3. Wybierz subskrypcję.
 4. Wybierz lub utwórz grupę zasobów.
-5. Wybierz lub Utwórz Plan(ASP) usługi aplikacji. W przypadku tworzenia nowego ASP, wybierz użytkownika ASE jako lokalizację, a następnie wybierz puli procesów roboczych ma strona ASP ma być utworzony w. Podczas tworzenia ASP, należy wybrać Twojej ASE jako lokalizację i puli procesów roboczych. Po określeniu nazwy aplikacji, zobaczysz, że poddomeny pod nazwą aplikacji zostało zastąpione przez poddomeny dla Twojego ASE. 
-6. Wybierz pozycję **Utwórz**. Należy wybrać **Przypnij do pulpitu nawigacyjnego** pole wyboru, jeśli chcesz, aby aplikacja wyświetlani na pulpicie nawigacyjnym. 
+5. Wybierz lub Utwórz Plan(ASP) usługi aplikacji. W przypadku tworzenia nowego ASP, wybierz środowisko ASE jako lokalizację, a następnie wybierz pulę procesów roboczych, które chcesz, aby strona ASP ma być utworzony w. Kiedy tworzysz ASP, możesz wybrać środowisko ASE jako lokalizację i pulę procesów roboczych. Po określeniu nazwy aplikacji, zobaczysz, że poddomeny w obszarze nazwy aplikacji zastępuje poddomeny dla środowiska ASE. 
+6. Wybierz pozycję **Utwórz**. Pamiętaj o wybraniu **Przypnij do pulpitu nawigacyjnego** pole wyboru, jeśli chcesz, aby aplikacji do wyświetlenia na pulpicie nawigacyjnym. 
 
 ![][2]
 
-W obszarze nazwy aplikacji Nazwa poddomeny pobiera zaktualizowana w celu odzwierciedlenia poddomeny ASE użytkownika. 
+W obszarze nazwy aplikacji nazwy domeny podrzędnej pobiera zaktualizowana w celu odzwierciedlenia poddomeny środowiska ASE. 
 
-## <a name="post-ilb-ase-creation-validation"></a>Sprawdzanie poprawności tworzenia ILB ASE POST
-Środowisko ASE z wewnętrznym modułem równoważenia obciążenia różni się nieco od wersji bez tego modułu. Jak już zauważyć trzeba zarządzać własną DNS należy również podać swój własny certyfikat dla połączeń HTTPS. 
+## <a name="post-ilb-ase-creation-validation"></a>Po weryfikacji tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia
+Środowisko ASE z wewnętrznym modułem równoważenia obciążenia różni się nieco od wersji bez tego modułu. Jak już zauważyć trzeba zarządzać własną usługą DNS można też zapewnienie własnego certyfikatu do połączeń HTTPS. 
 
-Po utworzeniu sieci ASE zauważysz poddomeny pokazuje poddomeny, zostanie określony, a nowy element **ustawienie** menu o nazwie **certyfikatu ILB**. ASE jest tworzony z certyfikatu z podpisem własnym, co pozwala na łatwiejsze testowanie HTTPS. Portalu informuje, że musisz dostarczyć własny certyfikat dla protokołu HTTPS, ale to zachęca znajduje się certyfikat, który łączy się z Twojej domeny podrzędnej. 
+Po utworzeniu środowiska ASE, można zauważyć, że poddomeny zawiera domenę podrzędną wskazana i znajduje się nowy element w **ustawienie** menu o nazwie **certyfikat wewnętrznego modułu równoważenia obciążenia**. Środowisko ASE jest tworzony przy użyciu certyfikatu z podpisem własnym, co ułatwia przetestowanie usługi HTTPS. Portalu informuje, że konieczne jest zapewnienie własnego certyfikatu dla protokołu HTTPS, ale ma to na celu zachęcamy tego certyfikatu, która łączy się z Twojej domeny podrzędnej. 
 
 ![][3]
 
-Jeśli są po prostu testuje rzeczy, a nie wiadomo, jak utworzyć certyfikat, można użyć aplikacji konsoli MMC programu IIS do utworzenia certyfikatu z podpisem własnym. Po jego utworzeniu, należy go wyeksportować w postaci pliku PFX, a następnie przekaż w Interfejsie użytkownika ILB certyfikatu. Po uzyskaniu dostępu do witryny zabezpieczonej z certyfikatu z podpisem własnym, przeglądarka wyświetla ostrzeżenie, że uzyskują dostęp do witryny nie jest zabezpieczone z powodu braku możliwości zweryfikowania poprawności certyfikatu. Jeśli chcesz uniknąć tego ostrzeżenia, należy poprawnie podpisane certyfikat, który jest zgodny z poddomeny i ma łańcuch zaufania, który jest rozpoznawany przez przeglądarkę.
+Jeśli są po prostu wypróbowanie rzeczy, a nie wiadomo, jak utworzyć certyfikat, można użyć aplikacji konsoli MMC programu IIS do utworzenia certyfikatu z podpisem własnym. Po jego utworzeniu należy go wyeksportować jako plik PFX, a następnie przekaż go w Interfejsie użytkownika certyfikat wewnętrznego modułu równoważenia obciążenia. Gdy uzyskujesz dostęp do witryny zabezpieczonej za pomocą certyfikatu z podpisem własnym, przeglądarka wyświetla ostrzeżenie, witryny, do której chcesz uzyskać dostęp nie jest bezpieczny ze względu na brak możliwości weryfikacji certyfikatu. Jeśli chcesz uniknąć tego ostrzeżenia, należy poprawnie podpisane certyfikat, który pasuje do Twojej domeny podrzędnej i ma łańcuch zaufania, który jest rozpoznawany przez przeglądarkę.
 
 ![][6]
 
-Jeśli chcesz spróbować przepływ z własnych certyfikatów i testowanie protokołów HTTP i HTTPS dostęp do Twojego ASE:
+Jeśli chcesz spróbować uruchomić przepływ przy użyciu własne certyfikaty i przetestować protokołów HTTP i HTTPS dostęp do środowiska ASE:
 
-1. Przejdź do ASE interfejsu użytkownika, po utworzeniu ASE **ASE -> Ustawienia -> Certyfikaty ILB**.
-2. Określ certyfikat ILB, wybierając plik pfx certyfikatu i podaj hasło. Ten krok zajmuje chwilę do przetwarzania i pojawi się komunikat, że operacja skalowania jest w toku.
-3. Pobierz adres ILB dla Twojego ASE (**ASE -> Właściwości -> wirtualnego adresu IP**).
-4. Tworzenie aplikacji sieci web w ASE po jego utworzeniu. 
-5. Tworzenie maszyny Wirtualnej, jeśli nie masz w tej sieci VNET (nie w tej samej podsieci co podział ASE lub innymi).
-6. Ustaw DNS z domeny podrzędnej. Można użyć symbolu wieloznacznego z Twojej domeny podrzędnej w systemie DNS lub jeśli chcesz to proste testy, należy edytować plik hosts na maszynie Wirtualnej można ustawić nazwy aplikacji sieci web do adresu VIP. Jeśli Twoje ASE ma nazwę poddomeny. ilbase.com i wprowadzone mytestapp aplikacji sieci web, dzięki czemu będą podejmowane na mytestapp.ilbase.com, ustawić go w pliku hostów. (W systemie Windows, w pliku hosts jest w C:\Windows\System32\drivers\etc\)
-7. Korzystanie z przeglądarki na tej maszynie Wirtualnej, przejdź do http://mytestapp.ilbase.com (lub niezależnie od nazwę aplikacji sieci web jest z Twojej domeny podrzędnej).
-8. Za pomocą przeglądarki na tej maszynie wirtualnej przejdź do strony https://mojaaplikacjatestowa.aseilb.com. Jeśli przy użyciu certyfikatu z podpisem własnym, musisz zaakceptować braku zabezpieczeń. 
+1. Przejdź do interfejsu użytkownika środowiska ASE, po utworzeniu środowiska ASE **ASE -> Ustawienia -> Certyfikaty wewnętrznego modułu równoważenia obciążenia**.
+2. Ustaw certyfikat wewnętrznego modułu równoważenia obciążenia, wybierając plik pfx certyfikatu, a następnie podaj hasło. Może to zająć pewien czas przetwarzania i pojawi się komunikat, że operacja skalowania jest w toku.
+3. Uzyskaj adres wewnętrznego modułu równoważenia obciążenia środowiska ASE (**ASE -> Właściwości -> wirtualnego adresu IP**).
+4. Tworzenie aplikacji internetowej w środowisku ASE, po utworzeniu. 
+5. Tworzenie maszyny Wirtualnej, jeśli nie masz w tej sieci Wirtualnej (nie w tej samej podsieci przerwania środowiska ASE lub rzeczy).
+6. Ustaw DNS dla swojej domeny podrzędnej. Można użyć symbolu wieloznacznego Twojej domeny podrzędnej w systemie DNS lub jeśli chcesz przeprowadzić proste testy, Edytuj plik hosts na maszynie Wirtualnej, aby ustawić nazwę aplikacji internetowej Wirtualnego adresu IP. Jeśli środowisko ASE ma nazwę poddomeny. aseilb.com i wprowadzono MojaAplikacja aplikacji sieci web, dzięki czemu będą podejmowane na MojaAplikacja.aseilb.com, zestawu w pliku hosts. (W Windows, w pliku hosts wynosi C:\Windows\System32\drivers\etc\)
+7. Korzystanie z przeglądarki na tej maszynie Wirtualnej i przejdź do https://mytestapp.ilbase.com (lub niezależnie od nazwy aplikacji sieci web za pomocą usługi poddomeny).
+8. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę https://mytestapp.ilbase.com. Jeśli przy użyciu certyfikatu z podpisem własnym, należy zaakceptować Brak zabezpieczeń. 
 
-Adres IP dla sieci ILB wymienionym we właściwościach wirtualnego adresu IP.
+Adres IP dla swojej wewnętrznego modułu równoważenia obciążenia znajduje się we właściwościach jako wirtualny adres IP.
 
 ![][4]
 
 ## <a name="using-an-ilb-ase"></a>Przy użyciu środowiska ASE wewnętrznego modułu równoważenia obciążenia
 #### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
-ASE ILB umożliwia izolację sieci dla aplikacji. Aplikacje nie są dostępne lub nawet znane przez internet. Takie podejście jest doskonała do hostowania witryn intranetowych, takich jak aplikacje z biznesowych. Gdy musisz ograniczyć jeszcze bardziej dostęp do kontroli dostępu na poziomie sieci można nadal używać Groups(NSGs) zabezpieczeń sieci. 
+Środowisko ASE z wewnętrznym modułem równoważenia obciążenia umożliwia izolację sieci dla aplikacji. Aplikacje nie są dostępne lub nawet znane przez internet. To podejście jest doskonała do hostowania witryn intranetowych, takich jak aplikacje line-of-business. Gdy musisz ograniczyć dostęp do jeszcze bardziej, możesz nadal używać Groups(NSGs) zabezpieczeń sieci do kontroli dostępu na poziomie sieci. 
 
-Jeśli chcesz bardziej ograniczyć dostęp za pomocą grup NSG, należy się upewnić się, że nie przerwanie komunikacji ASE wymaga, aby działać. Chociaż dostęp HTTP/HTTPS jest tylko za pośrednictwem ILB używane przez ASE, ASE nadal zależy od zasobów poza siecią wirtualną. Aby zobaczyć, jakie dostępu do sieci jest nadal wymagane, zobacz [kontrolowanie ruch przychodzący do środowiska usługi aplikacji] [ ControlInbound] i [szczegóły konfiguracji środowiska usługi App Service z sieci ExpressRoute][ExpressRoute]. 
+Jeśli chcesz bardziej ograniczyć dostęp przy użyciu sieciowych grup zabezpieczeń, upewnij się, że nie zrywasz komunikacji, że środowisko ASE wymaga, aby mogła działać. Mimo że dostępu HTTP/HTTPS jest wyłącznie za pośrednictwem używane przez środowisko ASE wewnętrznego modułu równoważenia obciążenia, środowisko ASE nadal zależy od zasobów spoza sieci wirtualnej. Aby zobaczyć, jakie dostępu do sieci jest nadal wymagane, zobacz [kontrolowanie ruch przychodzący w środowisku usługi App Service] [ ControlInbound] i [szczegóły konfiguracji sieci dla środowisk usługi App Service przy użyciu Usługa ExpressRoute][ExpressRoute]. 
 
-Aby skonfigurować grup NSG, musisz znać adres IP, który jest używany przez usługę Azure do zarządzania z ASE. Ten adres IP jest również wychodzący adres IP z sieci ASE, jeśli żądania internetowe. Wychodzący adres IP dla sieci ASE pozostaje statyczna przez cały okres istnienia ASE użytkownika. Jeśli Usuń i Utwórz ponownie Twoje ASE, otrzymasz nowy adres IP. Aby znaleźć adres IP, przejdź do **Ustawienia -> właściwości** i Znajdź **wychodzący adres IP**. 
+Aby skonfigurować sieciowych grup zabezpieczeń, trzeba znać adres IP, który jest używany przez platformę Azure do zarządzania środowiska ASE. Ten adres IP jest również adres IP ruchu wychodzącego ze środowiska ASE, jeśli kieruje żądania internetowe. Adres IP ruchu wychodzącego dla środowiska ASE pozostanie statyczny dla cyklu życia środowiska ASE. Jeśli usuniesz, a następnie ponownie utworzyć środowisko ASE, zostanie wyświetlony nowy adres IP. Aby znaleźć adres IP, przejdź do **Ustawienia -> właściwości** i Znajdź **wychodzący adres IP**. 
 
 ![][5]
 
-#### <a name="general-ilb-ase-management"></a>Zarządzanie ogólne ILB ASE
-Zarządzanie ASE ILB przede wszystkim jest taka sama jak zarządzanie ASE normalnie. Należy skalować Twojej pule procesów roboczych, aby obsługiwać więcej wystąpień ASP i skalowanie w górę serwery frontonu, aby obsłużyć zwiększonej ilości ruchu HTTP/HTTPS. Ogólne informacje na temat zarządzania konfiguracją ASE, zobacz [Konfigurowanie środowiska usługi aplikacji][ASEConfig]. 
+#### <a name="general-ilb-ase-management"></a>Zarządzanie ogólne środowisko ASE z wewnętrznym modułem równoważenia obciążenia
+Zarządzanie środowisko ASE z wewnętrznym modułem równoważenia obciążenia są w większości takie same, jak zwykle Zarządzanie środowisko ASE. Musisz przeprowadzać skalowanie w górę puli procesów roboczych do obsługi większej liczby wystąpień ASP, a następnie skalować w górę swoje serwerów frontonu w celu obsługi zwiększonej ilości ruchu HTTP/HTTPS. Aby uzyskać ogólne informacje na temat zarządzania konfiguracją środowisko ASE, zobacz [Konfigurowanie środowiska usługi App Service][ASEConfig]. 
 
-Elementy na dodatkowe zarządzanie to zarządzanie certyfikatami i zarządzania DNS. Należy uzyskać i przekazać certyfikat używany do obsługi protokołu HTTPS, po utworzeniu ILB ASE i zastąp go przed jego wygaśnięciem. Ponieważ Azure jest właścicielem domeny podstawowej, zapewniają certyfikaty dla ASEs z zewnętrznego adresu VIP. Ponieważ może to być dowolne poddomeny używane przez ASE ILB, musisz podać swój własny certyfikat dla protokołu HTTPS. 
+Elementy dodatkowe zarządzanie to zarządzanie certyfikatami i zarządzania usługą DNS. Należy uzyskać i przekazać certyfikat używany do obsługi protokołu HTTPS, po utworzeniu środowiska ASE z wewnętrznym modułem równoważenia obciążenia i zastąp go przed jego wygaśnięciem. Ponieważ platformy Azure jest właścicielem domenę podstawową, jej udostępniania certyfikatów dla środowiska ASE z zewnętrznym wirtualnym adresem IP. Ponieważ może to być dowolna poddomena używane przez środowisko ASE z wewnętrznym modułem równoważenia obciążenia, musisz podać swój własny certyfikat dla protokołu HTTPS. 
 
 #### <a name="dns-configuration"></a>Konfiguracja DNS
-Podczas korzystania z zewnętrznego adresu VIP, DNS jest zarządzana przez platformę Azure. Każda aplikacja utworzona w środowisku ASE jest automatycznie dodawana do usługi Azure DNS, która jest publiczną usługą DNS. W środowisku ASE z wewnętrznym modułem równoważenia obciążenia musisz zarządzać własną usługą DNS. Dla danej domeny podrzędnej, takich jak contoso.corp.net należy utworzyć rekordy, które wskazują na Twój adres ILB A systemu DNS:
+Korzystając z zewnętrznym wirtualnym adresem IP, usługi DNS jest zarządzane przez platformę Azure. Każda aplikacja utworzona w środowisku ASE jest automatycznie dodawana do usługi Azure DNS, która jest publiczną usługą DNS. W środowisku ASE z wewnętrznym modułem równoważenia obciążenia musisz zarządzać własną usługą DNS. Dla danej domeny podrzędnej, takich jak contoso.corp.net należy utworzyć A systemu DNS rekordy, które wskazują na adres wewnętrznego modułu równoważenia obciążenia dla:
 
     * 
     publikowanie *.SCM ftp 
 
 
 ## <a name="getting-started"></a>Wprowadzenie
-Wprowadzenie do środowiska usługi App Service, zobacz [wprowadzenie do środowiska usługi App Service][WhatisASE]
+Aby rozpocząć pracę przy użyciu środowisk usługi App Service, zobacz [wprowadzenie do środowisk App Service Environment][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
@@ -147,8 +147,8 @@ Wprowadzenie do środowiska usługi App Service, zobacz [wprowadzenie do środow
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
-[vnetnsgs]: http://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[vnetnsgs]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md

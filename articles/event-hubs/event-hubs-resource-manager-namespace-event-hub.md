@@ -14,15 +14,15 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 584696303bfbaed07f416fb0b3febbcf59d05b35
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 452e866a801a27d0a9681802706abb06f214bd6d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085747"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962321"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Szybki Start: Tworzenie Centrum zdarzeń przy użyciu szablonu usługi Azure Resource Manager
-Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby uzyskać szczegółowe omówienie usługi Event hubs, zobacz [Przegląd usługi Event Hubs](event-hubs-about.md) i [funkcji usługi Event Hubs](event-hubs-features.md).
+Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
 W tym przewodniku Szybki Start opisano tworzenie Centrum zdarzeń przy użyciu szablonu usługi Azure Resource Manager. Szablon usługi Azure Resource Manager umożliwia utworzenie przestrzeni nazw typu [usługi Event Hubs](event-hubs-what-is-event-hubs.md)z jednym Centrum zdarzeń i grupie użytkowników. W tym artykule opisano, jak zdefiniować zasoby, które są wdrażane i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb. Aby uzyskać informacje dotyczące tworzenia szablonów, zobacz [tworzenia usługi Azure Resource Manager][Authoring Azure Resource Manager templates].
 
@@ -146,7 +146,7 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $res
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Cloud Shell. Jeśli korzystasz z interfejsu wiersza polecenia lokalnie, wykonaj następujące kroki, aby zalogować się do platformy Azure i ustaw Twojej bieżącej subskrypcji:
+Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Cloud Shell. Jeśli korzystasz z interfejsu wiersza polecenia lokalnie, wykonaj następujące kroki, aby zalogować się do platformy Azure i ustawić bieżącą subskrypcję:
 
 Uruchom następujące polecenia, aby zalogować się na platformie Azure:
 
@@ -178,10 +178,10 @@ Gratulacje! Użyto szablonu usługi Azure Resource Manager do utworzenia przestr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule utworzoną przestrzeń nazw usługi Event Hubs, a używane przykładowe aplikacje do wysyłania i odbierania zdarzeń z Centrum zdarzeń. Instrukcje krok po kroku do wysyłania zdarzeń do (lub) odbieranie zdarzeń z Centrum zdarzeń zobacz następujące samouczki: 
+W ramach tego artykułu utworzono przestrzeń nazw usługi Event Hubs oraz użyto aplikacji przykładowych do wysyłania zdarzeń do centrum zdarzeń i odbierania ich z niego. Szczegółowe instrukcje dotyczące wysyłania zdarzeń do centrum zdarzeń lub odbierania ich z niego znajdują się w następujących samouczkach: 
 
-- **Wysyłanie zdarzeń do Centrum zdarzeń**: [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [środowiska Node.js ](event-hubs-node-get-started-send.md), [Przejdź](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
-- **Odbieranie zdarzeń z Centrum zdarzeń**: [.NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [ Node.js](event-hubs-node-get-started-receive.md), [Przejdź](event-hubs-go-get-started-receive-eph.md), [systemu Apache Storm](event-hubs-storm-getstarted-receive.md)
+- **Wysyłanie zdarzeń do Centrum zdarzeń**: [platformy .NET Core](event-hubs-dotnet-standard-getstarted-send.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [środowiskaNode.js](event-hubs-node-get-started-send.md), [Przejdź](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
+- **Odbieranie zdarzeń z Centrum zdarzeń**: [platformy .NET Core](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [środowiska Node.js ](event-hubs-node-get-started-receive.md), [Przejdź](event-hubs-go-get-started-receive-eph.md), [systemu Apache Storm](event-hubs-storm-getstarted-receive.md)
 
 [3]: ./media/event-hubs-quickstart-powershell/sender1.png
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: a9f4a4ed4a8771f32a4d66aed2457a43abb92a63
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 34e6fb195ae64823336684e9ad2e9382316822b0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285881"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961080"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 ## <a name="about-this-list"></a>Ta lista — informacje
 Podczas importowania interfejsu API, może spotkać się z pewnymi ograniczeniami lub identyfikowaniu problemów, które muszą zostać usunięty, zanim będzie można pomyślnie zaimportować. Ten artykuł dokumentów, te, uporządkowane według format importu interfejsu API.
 
 ## <a name="open-api"> </a>Plik OpenAPI/Swagger
-Jeśli otrzymujesz błędy importowania dokument OpenAPI, upewnij się, sprawdzeniu poprawności jej — przy użyciu narzędzia Projektant w witrynie Azure portal (Edytor specyfikacja interfejsu OpenAPI projekt - Front End —,), lub ze stroną trzecią narzędzia takie jak <a href="http://editor.swagger.io">edytora programu Swagger</a>.
+Jeśli otrzymujesz błędy importowania dokument OpenAPI, upewnij się, sprawdzeniu poprawności jej — przy użyciu narzędzia Projektant w witrynie Azure portal (Edytor specyfikacja interfejsu OpenAPI projekt - Front End —,), lub ze stroną trzecią narzędzia takie jak <a href="https://editor.swagger.io">edytora programu Swagger</a>.
 
 * Jest obsługiwany tylko format JSON dla interfejsu OpenAPI.
 * Wymagane parametry zarówno ścieżka i kwerenda muszą mieć unikatowe nazwy. (W standardzie OpenAPI nazwę parametru tylko musi być unikatowa w lokalizacji, np. ścieżka, zapytanie, nagłówek.  Jednak w usłudze API Management zezwalamy na operacje, aby być suma rozłączna przez parametry zarówno ścieżka i kwerenda, (które nie obsługuje interfejsu OpenAPI). W związku z tym firma Microsoft wymaga nazwy parametrów, aby była unikatowa w ramach całego szablonu adresu URL.)

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: shnatara
-ms.openlocfilehash: e5ce479940faaaae95467fe6d426e999b4c6569f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 46dd9c786fddb2f6ce9fb8a761a1b9f135a82d74
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468674"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959200"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Zmień właściciela subskrypcji użytkownika usługi Azure Stack
 
@@ -40,8 +40,8 @@ Istnieją dwa rodzaje *właścicieli* są przypisane do subskrypcji:
 
 Uruchom następujący skrypt, aby zmienić właściciela rozliczeń subskrypcji użytkownika. Komputera, którego używasz do uruchamiania skryptu musi nawiązać połączenie z usługi Azure Stack i uruchom moduł usługi Azure Stack PowerShell 1.3.0 lub nowszej. Aby uzyskać więcej informacji, zobacz [Instalowanie programu Azure Stack PowerShell](azure-stack-powershell-install.md). 
 
-> [!Note]  
->  W wielu dzierżawy usługi Azure Stack nowy właściciel musi być w tym samym katalogu co istniejące właściciela. Przed zapewnieniem własności subskrypcji do użytkownika, który znajduje się w innym katalogu, należy najpierw [zaprosić użytkownika jako gościa do katalogu](../active-directory/b2b/add-users-administrator.md). 
+> [!Note]
+>  W wielu dzierżawy usługi Azure Stack nowy właściciel musi być w tym samym katalogu co istniejące właściciela. Przed zapewnieniem własności subskrypcji do użytkownika, który znajduje się w innym katalogu, należy najpierw [zaprosić użytkownika jako gościa do katalogu](../active-directory/b2b/add-users-administrator.md). 
 
 Zastąp następujące wartości w skrypcie, zanim zostanie ona uruchomiona: 
  

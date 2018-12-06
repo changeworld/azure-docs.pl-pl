@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 08cbff7bc58f5925dee9b77ff195d362af4379d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aa1d5a4fc29b6fa5fc751edfd40e61d8762f6bd7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245745"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965346"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service
 
@@ -35,7 +35,7 @@ Gdy program Visual Studio wdroży projekt aplikacji konsoli z możliwością zad
 
 Włączone usługi WebJobs projekt ma następujące elementy, które dodano do niego:
 
-* [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) pakietu NuGet.
+* [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) pakietu NuGet.
 * A [zadania webjob — publikowanie settings.json](#publishsettings) pliku zawierającego ustawienia wdrożenia i harmonogramu. 
 
 ![Diagram przedstawiający, co to jest dodawany do aplikacji konsoli, aby umożliwić wdrożenie jako zadanie WebJob](./media/websites-dotnet-deploy-webjobs/convert.png)
@@ -97,7 +97,7 @@ Aby utworzyć nowy projekt z obsługą usługi WebJobs, można użyć szablonu p
     Utwórz projekt, który jest skonfigurowany do wdrożenia automatycznie jako zadanie WebJob podczas wdrażania projektu sieci web w taki sposób, w tym samym rozwiązaniu. Użyj tej opcji, gdy użytkownik chce uruchomić zadania WebJob w tej samej aplikacji sieci web, w którym są uruchomione aplikacji sieci web powiązanych.
 
 > [!NOTE]
-> Szablon nowego projektu zadania Webjob automatycznie instaluje pakiety NuGet i zawiera kod w *Program.cs* dla [zestawu SDK usługi WebJobs](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Jeśli nie chcesz używać zestawu SDK usługi WebJobs, usuń lub zmień `host.RunAndBlock` instrukcji w *Program.cs*.
+> Szablon nowego projektu zadania Webjob automatycznie instaluje pakiety NuGet i zawiera kod w *Program.cs* dla [zestawu SDK usługi WebJobs](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Jeśli nie chcesz używać zestawu SDK usługi WebJobs, usuń lub zmień `host.RunAndBlock` instrukcji w *Program.cs*.
 > 
 > 
 
@@ -130,7 +130,7 @@ Pola w tym oknie dialogowym odpowiadają polom na **Dodaj zadanie WebJob** okna 
 > 
 
 ## <a id="publishsettings"></a>webjob-publish-settings.json
-Po skonfigurowaniu aplikacji konsoli dla zadań Webjob, wdrażania, program Visual Studio instaluje [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet pakietu i planowania informacje zawarte w magazynach *zadania webjob — publikowanie settings.json*  pliku w projekcie *właściwości* folderu projektu zadania Webjob. Oto przykład tego pliku:
+Po skonfigurowaniu aplikacji konsoli dla zadań Webjob, wdrażania, program Visual Studio instaluje [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet pakietu i planowania informacje zawarte w magazynach *zadania webjob — publikowanie settings.json*  pliku w projekcie *właściwości* folderu projektu zadania Webjob. Oto przykład tego pliku:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",

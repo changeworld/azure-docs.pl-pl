@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 12/05/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 37fb4c330004ce87afd900d9cafebb337261ec06
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 88041cf185aeb6ae5cb27f2405b62401cae069d9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568237"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964257"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -163,7 +163,7 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
 > Przygotuj wdrożenia usługi Azure Stack na host rozszerzenia. Przygotowanie systemu przy użyciu poniższych wskazówek, [przygotować się do hosta rozszerzenia dla usługi Azure Stack](azure-stack-extension-host-prepare.md).
 
 Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md). 
-- [KB 4468920 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1808.7.113](https://support.microsoft.com/help/4471992/)
+- [KB 4481066 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1808.9.117](https://support.microsoft.com/help/4481066/)
 
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
@@ -220,7 +220,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
    
   Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) polecenia cmdlet, aby sprawdzić kondycję wystąpień roli infrastruktury i skalowanie węzłów jednostki. Brak problemów w przypadku wykrycia przez [AzureStack testu](azure-stack-diagnostic-test.md), można zignorować te alerty. W przypadku wykrycia problemu można spróbować uruchomić wystąpienie roli infrastruktury lub węzła przy użyciu portalu administracyjnego lub programu PowerShell.
 
-  Ten problem jest rozwiązany w najnowszej [wersji poprawki 1808](https://support.microsoft.com/help/4471992/), dlatego należy tę poprawkę należy zainstalować, jeśli występują problem.
+  Ten problem jest rozwiązany w najnowszej [wersji poprawki 1808](https://support.microsoft.com/help/4481066/), dlatego należy tę poprawkę należy zainstalować, jeśli występują problem.
 
 <!-- 1264761 - IS ASDK --> 
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
@@ -269,7 +269,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
       1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
       2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
    2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
-      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4471992/).
+      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4481066/).
       2. Postępuj zgodnie z instrukcjami w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
       
 <!-- 3179561 - IS --> 

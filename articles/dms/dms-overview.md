@@ -10,12 +10,12 @@ ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ce13607e795710ebc7b0020a0025bd207327f1d2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d255894b7b9673f3a7d27414b4fb0c114d821747
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878758"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962151"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Co to jest Azure Database Migration Service?
 Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemową migrację z wielu źródłowych baz danych na danych na platformie Azure przy minimalnych przestojach (migracja online).
@@ -27,7 +27,6 @@ Azure Database Migration Service integruje niektóre funkcje oferowane przez nas
 > Przy użyciu usługi Azure Database Migration Service, aby dokonać migracji online wymaga tworzenia wystąpienia w oparciu o warstwy cenowej Premium (wersja zapoznawcza).
 
 ## <a name="regional-availability"></a>Dostępność regionalna
-
 Aby uzyskać aktualne informacje o dostępności regionalnej usługi Azure Database Migration Service, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration).
 
 ## <a name="pricing"></a>Cennik

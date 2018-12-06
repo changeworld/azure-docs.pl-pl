@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: eef1a2f82dc73a1c53b89bb3c9d145f87212ffcc
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 6f93a72acdcc249720abeec3fe871b7108e2bb29
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498576"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963746"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Dodawanie dzierżawy za użycie i rozliczenia w usłudze Azure Stack
 
@@ -36,7 +36,7 @@ Na poniższym diagramie przedstawiono kroki, które należy wykonać, aby włąc
 
 **Kroki, aby dodać klienta końcowego**
 
-![Konfigurowanie dostawcy usług w chmurze, do śledzenia użycia i zarządzać kontem klienta końcowego](media\azure-stack-csp-enable-billing-usage-tracking\process-csp-enable-billing.png)
+![Konfigurowanie dostawcy usług w chmurze, do śledzenia użycia i zarządzać kontem klienta końcowego](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
 
 ## <a name="create-a-new-customer-in-partner-center"></a>Tworzenie nowego klienta w Centrum partnerskiego
 
@@ -50,7 +50,7 @@ Po utworzeniu rekord klienta w Centrum partnerskim, możesz sprzedawać subskryp
 ## <a name="create-a-guest-user-in-the-end-customer-directory"></a>Tworzenie użytkownika-gościa w katalogu klientów końcowych
 
 Jeśli odbiorcy końcowego będą zarządzać ich własnego konta, Utwórz użytkownika-gościa w ich katalogu i wysłać im informacje. Użytkownik końcowy będzie następnie Dodaj gościa i podnieść poziom uprawnień gościa do **właściciela** do konta usługi Azure Stack dostawcy usług Kryptograficznych.
- 
+ 
 ## <a name="update-the-registration-with-the-end-customer-subscription"></a>Aktualizowanie rejestracji przy użyciu subskrypcji klienta końcowego
 
 Zaktualizuj swoją rejestrację przy użyciu subskrypcji na nowego klienta. Azure raporty użycia przez klientów przy użyciu tożsamości odbiorcy z partnerem Central. Ten krok zapewnia, że raportowania użycia każdego klienta w ramach poszczególnych subskrypcji dostawcy CSP tego klienta. To sprawia, że śledzenie użytkownika użycia i rozliczeń znacznie łatwiejsze.
@@ -86,10 +86,10 @@ Konfigurowanie usługi Azure Stack w celu obsługi użytkowników z wielu dzier�
 
 ## <a name="create-a-local-resource-in-the-end-customer-tenant-in-azure-stack"></a>Tworzenie zasobu lokalnego w dzierżawie klienta końcowego w usłudze Azure Stack
 
-Po dodaniu nowego klienta do usługi Azure Stack lub dzierżawie klienta końcowego została włączona na koncie gościa z uprawnieniami właściciela, sprawdź, czy można utworzyć zasobu w ramach ich dzierżawy. Na przykład mogą oni [utworzyć maszynę wirtualną Windows za pomocą portalu usługi Azure Stack](user\azure-stack-quick-windows-portal.md).
+Po dodaniu nowego klienta do usługi Azure Stack lub dzierżawie klienta końcowego została włączona na koncie gościa z uprawnieniami właściciela, sprawdź, czy można utworzyć zasobu w ramach ich dzierżawy. Na przykład mogą oni [utworzyć maszynę wirtualną Windows za pomocą portalu usługi Azure Stack](user/azure-stack-quick-windows-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
  - Aby przejrzeć komunikaty o błędach, jeśli są one wyzwalane w procesie rejestracji, zobacz [dzierżawy komunikaty o błędach rejestracji](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes).
  - Aby dowiedzieć się więcej o tym, jak pobrać informacje o użyciu zasobów z usługi Azure Stack, zobacz [użycie i rozliczenia w usłudze Azure Stack](azure-stack-billing-and-chargeback.md).
- - Aby sprawdzić, jak klienta końcowego może dodać użytkownika, jako dostawcy usług Kryptograficznych, Menedżer dla ich usługi Azure Stack dzierżawy, zobacz [włączenia dostawcy usług w chmurze do zarządzania subskrypcją usługi Azure Stack](user\azure-stack-csp-enable-billing-usage-tracking.md).
+ - Aby sprawdzić, jak klienta końcowego może dodać użytkownika, jako dostawcy usług Kryptograficznych, Menedżer dla ich usługi Azure Stack dzierżawy, zobacz [włączenia dostawcy usług w chmurze do zarządzania subskrypcją usługi Azure Stack](user/azure-stack-csp-enable-billing-usage-tracking.md).

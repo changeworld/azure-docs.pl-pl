@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 6fa3ba36dca45d5b99c6b5f2ba24367bcd077024
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 181f37fb72584e18cc963ba1ffde070379a1b0c6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028394"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961466"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Weryfikacja kopii zapasowej usługi Azure Stack za pomocą ASDK
-Po wdrażanie usługi Azure Stack i Inicjowanie obsługi administracyjnej zasobów użytkownika, takich jak oferty, plany, limity przydziału i subskrypcji, wykonaj następujące czynności [włączenia kopii zapasowej infrastruktury usługi Azure Stack](..\azure-stack-backup-enable-backup-console.md). Planowanie i uruchamianie infrastruktury regularnego tworzenia kopii zapasowych zapewni, że danych związanych z zarządzaniem infrastrukturą nie zostaną utracone w przypadku poważnej sprzętu lub awaria usługi.
+Po wdrażanie usługi Azure Stack i Inicjowanie obsługi administracyjnej zasobów użytkownika, takich jak oferty, plany, limity przydziału i subskrypcji, wykonaj następujące czynności [włączenia kopii zapasowej infrastruktury usługi Azure Stack](../azure-stack-backup-enable-backup-console.md). Planowanie i uruchamianie infrastruktury regularnego tworzenia kopii zapasowych zapewni, że danych związanych z zarządzaniem infrastrukturą nie zostaną utracone w przypadku poważnej sprzętu lub awaria usługi.
 
 > [!TIP]
-> Zaleca się, że możesz [zapisywać kopie zapasowe na żądanie](..\azure-stack-backup-back-up-azure-stack.md) przed rozpoczęciem tej procedury, aby zapewnić kopię infrastrcuture udostępnianie najnowszych danych. Upewnij się przechwycić identyfikator kopii zapasowej, po pomyślnym wykonaniu kopii zapasowej. Ten identyfikator będzie wymagane podczas odzyskiwania w chmurze. 
+> Zaleca się, że możesz [zapisywać kopie zapasowe na żądanie](../azure-stack-backup-back-up-azure-stack.md) przed rozpoczęciem tej procedury, aby zapewnić kopię infrastrcuture udostępnianie najnowszych danych. Upewnij się przechwycić identyfikator kopii zapasowej, po pomyślnym wykonaniu kopii zapasowej. Ten identyfikator będzie wymagane podczas odzyskiwania w chmurze. 
 
 Tworzenie kopii zapasowych usługi Azure Stack infrastruktury zawierają ważne dane dotyczące chmury można przywrócić podczas ponownego wdrażania usługi Azure Stack. ASDK służy do sprawdzania poprawności te kopie zapasowe bez wywierania wpływu na produkcyjne chmury. 
 

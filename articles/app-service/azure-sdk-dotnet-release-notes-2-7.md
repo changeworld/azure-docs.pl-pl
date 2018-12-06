@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 01a02296354ebe3d60f0e1fda6a6da8554a265fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4c5a4dfcdde91d1bd0c2728ff9d071d4c2f73f0e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239070"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969774"
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Informacje o wersji zestawu Azure SDK dla platformy .NET w wersji 2.7 i platformy .NET 2.7.1
 ## <a name="overview"></a>Przegląd
@@ -40,7 +40,7 @@ Ulepszenia logowania w dołączonej usłudze Azure SDK 2.7 są dostępne tylko w
 Zaktualizowano **Mobile Apps** szablonów w celu odzwierciedlenia najnowszych [pakietu NuGet](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) i procesu instalacji.
 
 ### <a name="service-bus"></a>Service Bus
-Ogólne poprawki błędów i ulepszenia. Informacje szczegółowe na temat aktualizacji i funkcji, można znaleźć na stronie z informacjami o najnowszych [NuGet usługi Service Bus](http://www.nuget.org/packages/WindowsAzure.ServiceBus/).
+Ogólne poprawki błędów i ulepszenia. Informacje szczegółowe na temat aktualizacji i funkcji, można znaleźć na stronie z informacjami o najnowszych [NuGet usługi Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/).
 
 ### <a name="hdinsight-tools"></a>Narzędzia HDInsight
 W tej wersji wprowadzono następujące aktualizacje. Te aktualizacje są w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [ten blog](https://go.microsoft.com/fwlink/?LinkId=619108).

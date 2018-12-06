@@ -8,41 +8,44 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 11/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 9cb82b40d1fbec513b0219f26d1959fbd7f64570
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7d914f394ecfcf02ed26f41cd8fe2ef799cf6103
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343966"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966742"
 ---
 # <a name="generating-thumbnails"></a>Generowanie miniatur
 
-Miniatura jest reprezentację mały obraz w pełnym rozmiarze. Zależeć od urządzeń, takich jak telefony, tablety i komputery utworzyć na potrzeby innego użytkownika, układy środowiska i rozmiary miniatur. Za pomocą inteligentne przycinanie, ta funkcja przetwarzania obrazów pomaga w rozwiązaniu problemu.
+Reprezentacja zmniejszyć rozmiar obrazu jest miniatura. Miniatury są używane do reprezentowania obrazy i inne dane w sposób bardziej ekonomiczne, przyjazne dla układu. Interfejs API przetwarzania obrazów używa inteligentne przycinanie, wraz z zmiany rozmiaru obrazu, w celu utworzenia intuicyjne miniatury dla danego obrazu.
 
-Po przekazaniu obrazu, generuje wysokiej jakości miniaturę przetwarzania obrazów, a następnie analizuje obiekty na obrazie do identyfikowania *regionu zainteresowania* (ROI). Można go opcjonalnie przyciąć obraz zgodnie z wymaganiami, o zwrot z inwestycji. Wygenerowane miniatury można użyć dowolnego współczynnik proporcji, która różni się od proporcji niż oryginalny obraz, spełniają Twoje wymagania.
+Generowanie miniatur algorytm przetwarzania obrazów działa w następujący sposób:
+1. Usuń zbędne elementy z obrazu i zidentyfikować _obszar zainteresowania_&mdash;obszar obrazu, w którym pojawia się obiekty główne.
+1. Przytnij obraz w oparciu o wskazywanego przez nią _obszar zainteresowania_.
+1. Zmienianie współczynnika proporcji do rozmiaru miniatur docelowego.
 
-Algorytm miniatury działa w następujący sposób:
+## <a name="area-of-interest"></a>Obszar zainteresowania
 
-1. Usuwa zbędne elementy z obrazu i identyfikuje główny obiekt regionu zainteresowania.
-2. Przycina obraz na podstawie zidentyfikowanych regionu zainteresowania.
-3. Zmienia współczynnika proporcji do rozmiaru miniatur docelowego.
+Po przekazaniu obrazu interfejs API przetwarzania obrazów analizuje je, aby określić *obszar zainteresowania*. Go następnie użyty następujący region, aby określić, jak przyciąć obraz. Przycinania operacji, jednak będzie zawsze zgodna żądaną współczynnik proporcji Jeśli mapa została określona.
+
+Można również uzyskać pierwotne współrzędne pola ograniczenia tego samego *obszar zainteresowania* przez wywołanie metody **areaOfInterest** API zamiast tego. Można następnie użyć tych informacji do modyfikowania oryginalnego obrazu, ale chcesz.
+
+## <a name="examples"></a>Przykłady
 
 Miniatury wygenerowanej mogą się znacznie zmieniać w zależności od tego, określ wysokość, szerokość i inteligentne przycinanie jak pokazano na poniższej ilustracji.
 
 ![Miniatury](./Images/thumbnail-demo.png)
 
-## <a name="thumbnail-generation-examples"></a>Generowanie miniatur przykłady
-
 W poniższej tabeli przedstawiono typowe miniatury generowane przez przetwarzania obrazów, na przykład obrazy. Wygenerowane miniatury wysokości określonego obiektu docelowego i szerokość 50 pikseli i inteligentne przycinanie włączone.
 
 | Image (Obraz) | Miniatura |
 |-------|-----------|
-|![Aktywność na świeżym powietrzu górski](./Images/mountain_vista.png) | ![Górski możliwością miniatury](./Images/mountain_vista_thumbnail.png) |
-|![Wizja analizowanie Kwiatek](./Images/flower.png) | ![Wizja analizowanie Kwiatek miniatury](./Images/flower_thumbnail.png) |
-|![Kobieta dachu](./Images/woman_roof.png) | ![Kobieta dachu miniatury](./Images/woman_roof_thumbnail.png) |
+|![Na zewnątrz w górach](./Images/mountain_vista.png) | ![Górski możliwością miniatury](./Images/mountain_vista_thumbnail.png) |
+|![Analiza obrazu — kwiat](./Images/flower.png) | ![Wizja analizowanie Kwiatek miniatury](./Images/flower_thumbnail.png) |
+|![Kobieta na dachu](./Images/woman_roof.png) | ![Kobieta dachu miniatury](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pojęcia dotyczące [tagowanie obrazów](concept-tagging-images.md) i [kategoryzowanie obrazów](concept-categorizing-images.md).
+Dowiedz się więcej o [tagowanie obrazów](concept-tagging-images.md) i [kategoryzowanie obrazów](concept-categorizing-images.md).

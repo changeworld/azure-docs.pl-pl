@@ -14,29 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: a2219de6dfae9e17be1595d224c597fb31e00cae
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 4747c06ddb56a86c2efc7340043efdd019b86049
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715459"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962913"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Jak dodać usługi Azure Monitor dla kontenerów (wersja zapoznawcza) 
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla kontenerów w celu monitorowania wydajności obciążeń, które są wdrażane do środowisk Kubernetes i w serwisie [usługi Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
+Usługa Azure Monitor dla kontenerów można włączyć dla nowych wdrożeń usługi AKS przy użyciu następujących obsługiwanych metod:
+
+* Wdróż zarządzany klaster Kubernetes w witrynie Azure portal lub za pomocą wiersza polecenia platformy Azure
+* Tworzenie klastra Kubernetes za pomocą [narzędzia Terraform i AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+
+Można również włączyć monitorowania dla jednego lub więcej AKS istniejących klastrów w witrynie Azure portal lub za pomocą wiersza polecenia platformy Azure. 
+
 ## <a name="prerequisites"></a>Wymagania wstępne 
 Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
-- Nowy lub istniejący klaster usługi AKS.
-- Konteneryzowane agenta usługi Log Analytics dla wersji systemu Linux firmy microsoft / oms:ciprod04202018 lub nowszej. Numer wersji jest reprezentowany przez datę w następującym formacie: *mmddyyyy*. Agent jest instalowany automatycznie podczas dołączania do tej funkcji. 
-- Obszar roboczy usługi Log Analytics. Włącz monitorowanie dla nowego klastra AKS lub pozwolić proces dołączania, Utwórz domyślny obszar roboczy w domyślnej grupie zasobów subskrypcji klastra AKS możesz go utworzyć. Jeśli chcesz utworzyć samodzielnie, możesz je utworzyć za pomocą [usługi Azure Resource Manager](../../log-analytics/log-analytics-template-workspace-configuration.md)za pośrednictwem [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md).
-- Usługa Log Analytics roli Współautor, Włącz monitorowanie kontenera. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../../log-analytics/log-analytics-manage-access.md).
+- Obszar roboczy usługi Log Analytics. Włącz monitorowanie dla nowego klastra AKS lub pozwolić proces dołączania, Utwórz domyślny obszar roboczy w domyślnej grupie zasobów subskrypcji klastra AKS możesz go utworzyć. Jeśli chcesz utworzyć samodzielnie, możesz je utworzyć za pomocą [usługi Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)za pośrednictwem [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+- Jesteś członkiem roli Współautor usługi Log Analytics, aby włączyć monitorowanie kontenerów. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../../log-analytics/log-analytics-manage-access.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 ## <a name="components"></a>Składniki 
 
-Możliwość monitorowania wydajności zależy od konteneryzowanych agenta usługi Log Analytics dla systemu Linux, który służy do zbierania danych zdarzeń i wydajności ze wszystkich węzłów w klastrze. Agent automatycznie wdrożeniu i zarejestrowaniu z określonym obszarem roboczym usługi Log Analytics, po włączeniu monitorowanie kontenerów. 
+Możliwość monitorowania wydajności zależy od konteneryzowanych agenta usługi Log Analytics dla systemu Linux, który służy do zbierania danych zdarzeń i wydajności ze wszystkich węzłów w klastrze. Agent automatycznie wdrożeniu i zarejestrowaniu z określonym obszarem roboczym usługi Log Analytics, po włączeniu usługi Azure Monitor dla kontenerów. Wdrożona jest wersja microsoft / oms:ciprod04202018 lub nowszej i jest reprezentowana przez datę w następującym formacie: *mmddyyyy*. 
 
 >[!NOTE] 
 >Jeśli masz już wdrożone w klastrze AKS, Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure lub podanego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, Usuń, Wdróż ponownie lub wdrożyć agenta. Szablon musi zostać wdrożony w tej samej grupie zasobów co klaster."
@@ -45,13 +50,15 @@ Możliwość monitorowania wydajności zależy od konteneryzowanych agenta usłu
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
 ## <a name="enable-monitoring-for-a-new-cluster"></a>Włącz monitorowanie dla nowego klastra
-Podczas wdrażania możesz włączyć monitorowanie nowy klaster AKS w witrynie Azure portal lub za pomocą wiersza polecenia platformy Azure. Postępuj zgodnie z instrukcjami w artykule przewodnika Szybki Start [wdrażanie klastra usługi Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough-portal.md) Jeśli chcesz włączyć z poziomu portalu. Na **monitorowanie** strony dla **Włącz monitorowanie** wybierz **tak**, a następnie wybierz istniejący obszar roboczy usługi Log Analytics lub Utwórz nową. 
+Podczas wdrażania możesz włączyć monitorowanie nowy klaster AKS w witrynie Azure portal przy użyciu wiersza polecenia platformy Azure lub przy użyciu programu Terraform.  Postępuj zgodnie z instrukcjami w artykule przewodnika Szybki Start [wdrażanie klastra usługi Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough-portal.md) Jeśli chcesz włączyć z poziomu portalu. Na **monitorowanie** strony dla **Włącz monitorowanie** wybierz **tak**, a następnie wybierz istniejący obszar roboczy usługi Log Analytics lub Utwórz nową. 
 
 Aby włączyć monitorowanie nowy klaster AKS utworzone przy użyciu wiersza polecenia platformy Azure, przejdź do kroku w artykule przewodnika Szybki Start w sekcji [klastra AKS tworzenie](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
 >Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wiersza polecenia platformy Azure w wersji 2.0.43 musi być uruchomiona lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
+
+Jeśli jesteś [wdrażanie klastra usługi AKS przy użyciu programu Terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), można również włączyć usługi Azure Monitor dla kontenerów, umieszczając argument [ **addon_profile** ](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) i określając **oms_agent**.  
 
 Po włączeniu monitorowania i wszystkie zadania konfiguracji zostaną ukończone pomyślnie, można monitorować wydajność klastra w jeden z dwóch sposobów:
 
@@ -103,7 +110,7 @@ Aby włączyć monitorowanie klastra usługi AKS w witrynie Azure portal z usłu
     ![Włączanie monitorowania szczegółowych danych dotyczących kontenera usługi AKS](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z klastra, postępuj zgodnie z instrukcjami [Utwórz obszar roboczy usługi Log Analytics](../../log-analytics/log-analytics-quick-create-workspace.md). Pamiętaj utworzyć obszar roboczy w tej samej subskrypcji, który kontenerów AKS jest wdrażany. 
+    >Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z klastra, postępuj zgodnie z instrukcjami [Utwórz obszar roboczy usługi Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Pamiętaj utworzyć obszar roboczy w tej samej subskrypcji, który kontenerów AKS jest wdrażany. 
  
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić metryki kondycji klastra. 
 
@@ -125,7 +132,7 @@ Aby włączyć monitorowanie kontenera usługi AKS w witrynie Azure portal, wyko
     ![Włącz monitorowanie kondycji kontenera w usłudze AKS](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z klastra, postępuj zgodnie z instrukcjami [Utwórz obszar roboczy usługi Log Analytics](../../log-analytics/log-analytics-quick-create-workspace.md). Pamiętaj utworzyć obszar roboczy w tej samej subskrypcji, który kontenerów AKS jest wdrażany. 
+    >Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z klastra, postępuj zgodnie z instrukcjami [Utwórz obszar roboczy usługi Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Pamiętaj utworzyć obszar roboczy w tej samej subskrypcji, który kontenerów AKS jest wdrażany. 
  
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić danych operacyjnych dla klastra. 
 
@@ -140,7 +147,7 @@ Ta metoda obejmuje dwa szablony JSON. Jeden szablon Określa konfigurację, aby 
 >Szablon musi zostać wdrożony w tej samej grupie zasobów co klaster.
 >
 
-Obszar roboczy usługi Log Analytics ma zostać utworzone ręcznie. Aby utworzyć obszar roboczy, możesz skonfigurować go za pośrednictwem [usługi Azure Resource Manager](../../log-analytics/log-analytics-template-workspace-configuration.md)za pośrednictwem [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md).
+Obszar roboczy usługi Log Analytics ma zostać utworzone ręcznie. Aby utworzyć obszar roboczy, możesz skonfigurować go za pośrednictwem [usługi Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)za pośrednictwem [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
 
 Jeśli znasz koncepcji wdrażanie zasobów za pomocą szablonu, zobacz:
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/resource-group-template-deploy.md)

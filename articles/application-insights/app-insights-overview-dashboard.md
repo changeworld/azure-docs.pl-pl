@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: 59052a2f0f2fbaa898502073f27b23185026e45e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: cd8bcc9345ec73f95e8e742446522ec41c1f0f65
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724421"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956957"
 ---
 # <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
 
@@ -27,17 +27,17 @@ Usługa Application Insights zawsze oferowała okienko Przegląd podsumowania, a
 
 Nowy pulpit nawigacyjny przeglądu teraz uruchamia się domyślnie:
 
-![Okienko podglądu — omówienie](.\media\app-insights-overview-dashboard\overview.png)
+![Okienko podglądu — omówienie](./media/app-insights-overview-dashboard/overview.png)
 
 ## <a name="better-performance"></a>Lepsza wydajność
 
 Wybór zakresu czasu został uproszczony, aby za pomocą prostego interfejsu jednym kliknięciem.
 
-![Przedział czasu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
+![Przedział czasu](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-03.png)
 
 Ogólna wydajność została znacznie zwiększona. Masz jednym kliknięciem dostęp do popularnych funkcji, takich jak **wyszukiwania** i **analizy**. Każda domyślna dynamiczne aktualizowanie kafelka kluczowy wskaźnik wydajności zapewnia wgląd w odpowiedniej funkcji usługi Application Insights. Aby dowiedzieć się więcej na temat nie powiodło się wybierz opcję żądania **błędów** w obszarze **zbadaj** nagłówka:
 
-![Awarie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
+![Awarie](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
@@ -45,11 +45,11 @@ Pulpit nawigacyjny aplikacji korzysta z istniejących technologii pulpitu nawiga
 
 Wybierz pulpit nawigacyjny domyślnego dostępu do _pulpit nawigacyjny aplikacji_ w lewym górnym rogu.
 
-![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
+![Widok pulpitu nawigacyjnego](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-05.png)
 
 Jeśli jest to dostęp do pulpitu nawigacyjnego po raz pierwszy, program uruchamia domyślny widok:
 
-![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\0001-dashboard.png)
+![Widok pulpitu nawigacyjnego](./media/app-insights-overview-dashboard/0001-dashboard.png)
 
 Możesz zachować widok domyślny, jeśli chcesz go. Lub można również dodawać i usuwać z poziomu pulpitu nawigacyjnego w sposób najlepiej odpowiadający potrzeb danego zespołu.
 
@@ -58,7 +58,7 @@ Możesz zachować widok domyślny, jeśli chcesz go. Lub można również dodawa
 
 Aby przejść z powrotem do środowiska — omówienie, po prostu wybierz opcję:
 
-![Przycisk — omówienie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
+![Przycisk — omówienie](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-07.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

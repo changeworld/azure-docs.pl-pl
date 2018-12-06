@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: c91f92a519c91f4c0fe32ed102c5bb9fab528868
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 740a3ce36dde953cb92c52a10cbebf12544adae0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614813"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968156"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>W trybie offline aktualizacji usługi Azure App Service w usłudze Azure Stack
 
@@ -101,7 +101,7 @@ Aby uaktualnić usługi App Service w środowisku bez połączenia, należy najp
 
    1. Kliknij przycisk **Connect** znajdujący się obok **usługi Azure Stack subskrypcje** pole.
         * Jeśli używasz usługi Azure Active Directory (Azure AD), wprowadź konto administratora usługi Azure AD i hasło podane podczas wdrażania usługi Azure Stack. Kliknij przycisk **Zaloguj**.
-        * Jeśli używasz usługi Active Directory Federation Services (AD FS) zapewniają konta administratora. Na przykład *cloudadmin@azurestack.local*. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
+        * Jeśli używasz usługi Active Directory Federation Services (AD FS) zapewniają konta administratora. Na przykład _cloudadmin@azurestack.local_. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
    2. W **usługi Azure Stack subskrypcje** wybierz opcję **domyślne subskrypcję dostawcy**.
    3. W **lokalizacje usługi Azure Stack** wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
    4. W przypadku wykrycia istniejącego wdrożenia usługi App Service następnie zasobów grupy i konta magazynu będzie być wypełnione i wyszarzone.

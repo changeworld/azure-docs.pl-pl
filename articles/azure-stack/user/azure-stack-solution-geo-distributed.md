@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 215cc45f09e15c74a39347e3a62945b45eafa130
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877670"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965397"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie rozwiązania rozproszone geograficznie aplikacji przy użyciu platformy Azure i usługi Azure Stack
 
@@ -114,17 +114,17 @@ Konfigurowanie ciągłej integracji/ciągłego wdrażania na wdrażanie aplikacj
 
     Hybrydowe ciągłej integracji/ciągłego dostarczania (CI/CD) można stosować do kodu aplikacji i infrastruktury kodu. Użyj [szablonów usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/) dla obu chmur prywatnych i hostowanych rozwoju.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image1.JPG)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image1.JPG)
 
 2. **Sklonuj repozytorium** przez tworzenie i otwieranie domyślną aplikację sieci web.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image2.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image2.png)
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Tworzenie wdrożenia aplikacji sieci web w obu chmurach
 
 1.  Edytuj **WebApplication.csproj** pliku: Wybierz **Runtimeidentifier** i Dodaj **win10 x64**. (Zobacz [wdrożenia Self-contained](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentacji.)
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image3.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image3.png)
 
 1.  **Ewidencjonują kod do repozytoriów Azure** za pomocą programu Team Explorer.
 
@@ -136,7 +136,7 @@ Konfigurowanie ciągłej integracji/ciągłego wdrażania na wdrażanie aplikacj
 
 2. Dodaj **- r dla systemu win10-x64** kodu. Jest to konieczne wyzwolić wdrożenie niezależna za pomocą.Net Core.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image4.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image4.png)
 
 3. **Uruchom kompilację**. [Kompilacji wdrożenia niezależna](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) proces będzie publikować artefaktów, które można uruchamiać na platformie Azure i usługi Azure Stack.
 
@@ -151,87 +151,87 @@ Usługi Azure DevOps i serwer usługi Azure DevOps oferują wysoce konfigurowaln
 #### <a name="create-release-definition"></a>Tworzenie definicji wydania
 
 
-![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image5.png)
+![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image5.png)
 
 1.  Wybierz **oraz** przycisk, aby dodać nowe wydanie w ramach **karcie wersje** na stronie kompilacji i wydania programu Visual Studio Online (VSO).
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image6.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. Zastosuj **wdrożenie usługi aplikacji Azure** szablonu.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image7.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image7.png)
 
 3. W menu rozwijanym artefaktu Dodaj **Dodawanie artefaktu** kompilacji aplikacji w chmurze platformy Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image8.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image8.png)
 
 4. Na karcie potoku wybierz **fazy, zadanie** połączyć środowiska i ustaw wartości środowiska chmury platformy Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image9.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image9.png)
 
 5. Ustaw **Nazwa środowiska** i wybierz pozycję Azure **subskrypcji** dla punktu końcowego w chmurze platformy Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image10.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image10.png)
 
 6. W obszarze Nazwa środowiska, ustaw wymagane **nazwa usługi Azure app service**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image11.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image11.png)
 
 7. Wprowadź **hostowany program VS2017** w ramach kolejki agentów dla środowiska hostowane w chmurze platformy Azure.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image12.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image12.png)
 
 8. Wdrażanie usługi Azure App Service, wybierz menu prawidłowe **pakietu lub folderu** dla środowiska. Wybierz przycisk OK, aby **lokalizacji folderu**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image13.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image13.png)
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image14.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image14.png)
 
 9. Zapisz wszystkie zmiany i wróć do **potoku tworzenia wersji**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image15.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image15.png)
 
 10. Dodaj **nowych artefaktów** Wybieranie kompilacji dla aplikacji usługi Azure Stack.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image16.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image16.png)
 
 11. Dodaj jeden więcej stosowanie środowiska **wdrożenie usługi aplikacji Azure.**
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image17.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image17.png)
 
 12. Nowemu środowisku nazwę **usługi Azure Stack.**
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image18.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image18.png)
 
 13. Znajdź środowiska usługi Azure Stack w obszarze **zadań** kartę.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image19.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image19.png)
 
 14. Wybierz **subskrypcji** dla punktu końcowego usługi Azure Stack.
 
-  ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image20.png)
+  ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. Ustaw nazwę aplikacji sieci web usługi Azure Stack jako **nazwa usługi App service**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image21.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image21.png)
 
 16. Wybierz **agenta usługi Azure Stack**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image22.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image22.png)
 
 17. W ramach wdrożenia usługi Azure App Service wybierz prawidłowe sekcji **pakietu lub folderu** dla środowiska. Wybierz przycisk OK, aby **lokalizacji folderu**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image23.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image23.png)
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image24.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image24.png)
 
 18. W obszarze **zmiennej** karta Dodaj zmienną o nazwie `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, ustaw dla niego wartość jako `true`i ograniczyć zakres do `Azure Stack`.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image25.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image25.png)
 
 19. Wybierz **ciągłe** ikona wyzwalacza wdrożenia zarówno w przypadku artefaktów, jak i Włącz **kontynuuje** wyzwalacza wdrażania.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image26.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image26.png)
 
 20. Wybierz **przed wdrożeniem** ikonę warunków w środowisku usługi Azure Stack i ustawić wyzwalacz na **po wydaniu.**
 
@@ -244,7 +244,7 @@ Usługi Azure DevOps i serwer usługi Azure DevOps oferują wysoce konfigurowaln
 
 Usługa [Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. 
 
-![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image27.png)
+![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
 > - Mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure
@@ -296,7 +296,7 @@ Strona rekordów DNS mogą być wyświetlane w **Moje domen**. Znajdź łącze o
 
 Poniższy zrzut ekranu przedstawia przykład strony rekordów DNS:
 
-![Przykładowa strona rekordów DNS](media\azure-stack-solution-geo-distributed\image28.png)
+![Przykładowa strona rekordów DNS](media/azure-stack-solution-geo-distributed/image28.png)
 
 1.  W rejestrze nazw domen, wybierz **apletu Dodaj lub Utwórz** do utworzenia rekordu. Niektórzy dostawcy udostępniają różne linki na potrzeby dodawania różnych typów rekordów. Zapoznaj się z dokumentacją dostawcy.
 
@@ -306,7 +306,7 @@ Poniższy zrzut ekranu przedstawia przykład strony rekordów DNS:
 
 Po dodaniu tego rekordu CNAME, strona rekordów DNS wygląda podobnie jak w poniższym przykładzie:
 
-![Nawigacja w portalu do aplikacji platformy Azure](media\azure-stack-solution-geo-distributed\image29.png)
+![Nawigacja w portalu do aplikacji platformy Azure](media/azure-stack-solution-geo-distributed/image29.png)
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>Włączanie mapowania rekordów CNAME na platformie Azure
 
@@ -348,9 +348,9 @@ Po dodaniu tego rekordu CNAME, strona rekordów DNS wygląda podobnie jak w poni
 
   Może upłynąć trochę czasu, nowe nazwy hostów zostaną odzwierciedlone w aplikacji **domen niestandardowych** strony. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
   
-  ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image31.png) 
+  ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  W przypadku błędu w dolnej części strony pojawi się powiadomienie o błędzie weryfikacji. ![Błąd weryfikacji](media\azure-stack-solution-geo-distributed\image32.png)
+  W przypadku błędu w dolnej części strony pojawi się powiadomienie o błędzie weryfikacji. ![Błąd weryfikacji](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  Może być powtarzany powyższe kroki do mapowania domeny z symbolami wieloznacznymi (\*. northwindcloud.com)... Umożliwia to dodanie wszelkich dodatkowych poddomen do tej usługi app service bez konieczności tworzenia oddzielny rekord CNAME dla każdej z nich. Postępuj zgodnie z instrukcjami rejestratora, do skonfigurowania tego ustawienia.
@@ -404,17 +404,17 @@ Aby powiązać niestandardowy certyfikat protokołu SSL do aplikacji sieci web [
 
 2.  Z menu po lewej stronie wybierz **App Services**, a następnie wybierz nazwę aplikacji sieci web.
 
-![Wybieranie aplikacji internetowej](media\azure-stack-solution-geo-distributed\image33.png)
+![Wybieranie aplikacji internetowej](media/azure-stack-solution-geo-distributed/image33.png)
 
 #### <a name="check-the-pricing-tier"></a>Sprawdzanie warstwy cenowej
 
 1.  W lewym obszarze nawigacji na stronie aplikacji sieci web, przewiń do **ustawienia** i wybierz pozycję **skalowanie w górę (plan usługi App Service)**.
 
-    ![Menu skalowania w górę](media\azure-stack-solution-geo-distributed\image34.png)
+    ![Menu skalowania w górę](media/azure-stack-solution-geo-distributed/image34.png)
 
 1.  Upewnij się, aplikacja internetowa nie znajduje się w **bezpłatna** lub **Shared** warstwy. Bieżąca warstwa aplikacji internetowej jest wyróżniona w ciemnoniebieskim polem.
 
-    ![Sprawdzanie warstwy cenowej](media\azure-stack-solution-geo-distributed\image35.png)
+    ![Sprawdzanie warstwy cenowej](media/azure-stack-solution-geo-distributed/image35.png)
 
 Niestandardowy protokół SSL nie jest obsługiwany w warstwie **Bezpłatna** ani **Współdzielona**. Aby zmniejszać, postępuj zgodnie z instrukcjami w następnej sekcji lub **Wybieranie warstwy cenowej** stronie, a następnie przejdź do [przekazany i powiązany certyfikat protokołu SSL](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
 
@@ -424,11 +424,11 @@ Niestandardowy protokół SSL nie jest obsługiwany w warstwie **Bezpłatna** an
 
 2.  Wybierz **wybierz**.
 
-![Wybieranie warstwy cenowej](media\azure-stack-solution-geo-distributed\image36.png)
+![Wybieranie warstwy cenowej](media/azure-stack-solution-geo-distributed/image36.png)
 
 Operacja skalowania została zakończona, gdy zostanie wyświetlone powiadomienie.
 
-![Powiadomienie o skalowaniu w górę](media\azure-stack-solution-geo-distributed\image37.png)
+![Powiadomienie o skalowaniu w górę](media/azure-stack-solution-geo-distributed/image37.png)
 
 #### <a name="bind-your-ssl-certificate-and-merge-intermediate-certificates"></a>Wiązanie certyfikatu protokołu SSL i scalanie certyfikatów pośrednich
 
@@ -491,11 +491,11 @@ Gdy usługi IIS lub **Certreq.exe** są używane do wygenerowania żądania cert
 
 5.  Wybierz pozycję **Przekaż**.
 
-![Przekazywanie certyfikatu](media\azure-stack-solution-geo-distributed\image38.png)
+![Przekazywanie certyfikatu](media/azure-stack-solution-geo-distributed/image38.png)
 
 Po zakończeniu przekazywania certyfikatu usługi App Service pojawia się w **ustawienia protokołu SSL** strony.
 
-![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image39.png)
+![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image39.png)
 
 #### <a name="bind-your-ssl-certificate"></a>Wiązanie certyfikatu protokołu SSL
 
@@ -514,11 +514,11 @@ Po zakończeniu przekazywania certyfikatu usługi App Service pojawia się w **u
 
     1.  Wybierz **Dodaj powiązanie**.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image40.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image40.png)
 
 Po zakończeniu przekazywania certyfikatu usługi App Service pojawia się w **powiązania SSL** sekcje.
 
-![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image41.png)
+![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image41.png)
 
 #### <a name="remap-the-a-record-for-ip-ssl"></a>Ponowne mapowanie rekordu A dla protokołu IP SSL
 
@@ -534,7 +534,7 @@ Gdy rekord A jest mapowany do aplikacji sieci web, należy zaktualizować rejest
 
 W różnych przeglądarkach sieci web, który jest udostępniany wschodni Region Azji i upewnij się, przejdź do https://<your.custom.domain>to.
 
-![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image42.png)
+![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image42.png)
 
 > [!Note]  
 > Jeśli wystąpią błędy sprawdzania poprawności certyfikatów, przyczyną może być certyfikat z podpisem własnym lub certyfikaty pośrednie może mieć zostały przerwane podczas eksportowania do pliku PFX.
@@ -545,7 +545,7 @@ Domyślnie każdy użytkownik może uzyskać dostęp do aplikacji sieci web przy
 
 Na stronie aplikacji sieci web, wybierz **ustawienia SL**. Następnie w pozycji **Tylko HTTPS** wybierz opcję **Włączone**.
 
-![Wymuszanie protokołu HTTPS](media\azure-stack-solution-geo-distributed\image43.png)
+![Wymuszanie protokołu HTTPS](media/azure-stack-solution-geo-distributed/image43.png)
 
 Po zakończeniu operacji, przejdź do dowolnego adresu URL HTTP, do aplikacji. Na przykład:
 
@@ -561,7 +561,7 @@ Umożliwia aplikacji [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 
 
 2.  W **wersję protokołu TLS**, wybierz minimalną wersję protokołu TLS.
 
-![Wymuszanie protokołu TLS 1.1 lub 1.2](media\azure-stack-solution-geo-distributed\image44.png)
+![Wymuszanie protokołu TLS 1.1 lub 1.2](media/azure-stack-solution-geo-distributed/image44.png)
 
 ### <a name="create-a-traffic-manager-profile"></a>Tworzenie profilu usługi Traffic Manager
 
@@ -583,7 +583,7 @@ Umożliwia aplikacji [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 
 
     7.  Po zakończeniu globalnego wdrażania profilu usługi Traffic Manager jest wyświetlany w odpowiedniej grupie zasobów jako jeden z zasobów.
 
-    ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image45.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image45.png)
 
 ### <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
@@ -632,7 +632,7 @@ Umożliwia aplikacji [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 
 
 1.  Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
 
-  ![Tekst alternatywny](media\azure-stack-solution-geo-distributed\image46.png)
+  ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Globalne przedsiębiorstw opiera się na możliwości dystrybucja geograficzna platformy Azure**
 

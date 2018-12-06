@@ -10,16 +10,16 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: c7464558dd7227303fd7a3cc8be71ca5e2d2cfca
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 76fb61f0f1dd3c1f72c4c6132d1bfdc8b516477a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414968"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955551"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Przy użyciu tokenu szczegółowe informacje, aby uzyskać szczegółowe informacje o obrazie
 
-Interfejs API wyszukiwania wizualnego Bing zwraca informacje o udostępnionym obrazie. Obraz można udostępnić przy użyciu adresu URL obrazu, tokenu szczegółowych informacji lub przez przekazanie obrazu. Aby uzyskać informacje o tych opcjach, zobacz [co to jest interfejs API wyszukiwania wizualnego Bing?](overview.md). W tym artykule przedstawiono, przy użyciu tokenu szczegółowych informacji. Przykłady demonstrujące przekazanie obrazu, aby uzyskać szczegółowe informacje, zobacz Szybki Start ([C#](quickstarts\csharp.md) | [Java](quickstarts\java.md) | [Node.js](quickstarts\nodejs.md)  |  [Python](quickstarts\python.md)).
+Interfejs API wyszukiwania wizualnego Bing zwraca informacje o udostępnionym obrazie. Obraz można udostępnić przy użyciu adresu URL obrazu, tokenu szczegółowych informacji lub przez przekazanie obrazu. Aby uzyskać informacje o tych opcjach, zobacz [co to jest interfejs API wyszukiwania wizualnego Bing?](overview.md). W tym artykule przedstawiono, przy użyciu tokenu szczegółowych informacji. Przykłady demonstrujące przekazanie obrazu, aby uzyskać szczegółowe informacje, zobacz Szybki Start ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
 
 
 Jeśli wysyłasz do wyszukiwania wizualnego token lub adres URL obrazu, poniżej przedstawiono dane formularza, które należy umieścić w treści żądania POST. Dane mogą zawierać nagłówek Content-Disposition i jego `name` parametru musi być równa "knowledgeRequest". Aby uzyskać szczegółowe informacje o obiekcie `imageInfo`, zobacz [Żądanie](#the-request).

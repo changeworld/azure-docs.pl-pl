@@ -16,22 +16,22 @@ ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.custom: mvc
-ms.openlocfilehash: b98879483d35a91810c9e9ab5e0ac81151bde52f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8dcc64350e25be0c8131dc75d96f2a8938944eaf
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368744"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962185"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Usługa Azure Stack obliczeń, planowania pojemności
-[Rozmiarów maszyn wirtualnych obsługiwanych w usłudze Azure Stack](.\user\azure-stack-vm-sizes.md) są podzbiorem obsługiwane na platformie Azure. Azure nakłada ograniczenia zasobów wzdłuż wektorów wiele, aby uniknąć nadmierne zużycie zasobów (serwera lokalnego i poziomu usług). Bez nakładania pewne ograniczenia użycia dzierżawy, środowisk dzierżawy będzie niekorzystnie wpłynąć na w przypadku pozostałych dzierżaw overconsume zasobów. Dla danych sieciowych wychodzących z maszyny Wirtualnej istnieją limity przepustowości w miejscu w usłudze Azure Stack, które odpowiadają ograniczenia platformy Azure. Dla zasobów magazynu limity operacji We/Wy magazynu zostały wdrożone w usłudze Azure Stack, aby uniknąć podstawowe nadmierne zużycie zasobów przez dzierżawy, aby uzyskać dostęp do magazynu.  
+[Rozmiarów maszyn wirtualnych obsługiwanych w usłudze Azure Stack](./user/azure-stack-vm-sizes.md) są podzbiorem obsługiwane na platformie Azure. Azure nakłada ograniczenia zasobów wzdłuż wektorów wiele, aby uniknąć nadmierne zużycie zasobów (serwera lokalnego i poziomu usług). Bez nakładania pewne ograniczenia użycia dzierżawy, środowisk dzierżawy będzie niekorzystnie wpłynąć na w przypadku pozostałych dzierżaw overconsume zasobów. Dla danych sieciowych wychodzących z maszyny Wirtualnej istnieją limity przepustowości w miejscu w usłudze Azure Stack, które odpowiadają ograniczenia platformy Azure. Dla zasobów magazynu limity operacji We/Wy magazynu zostały wdrożone w usłudze Azure Stack, aby uniknąć podstawowe nadmierne zużycie zasobów przez dzierżawy, aby uzyskać dostęp do magazynu.  
 
 ## <a name="vm-placement-and-virtual-to-physical-core-overprovisioning"></a>Umieszczanie maszyny Wirtualnej i celi rdzeń wirtualny na fizycznych
 W usłudze Azure Stack nie ma możliwości dla dzierżawy określić określonego serwera na potrzeby umieszczenia maszyny Wirtualnej. Jedyna kwestią podczas umieszczania maszyn wirtualnych to, czy jest wystarczająca ilość pamięci na hoście dla tego typu maszyny Wirtualnej. Usługa Azure Stack nie overcommit pamięci. jednak overcommit liczby rdzeni jest dozwolone. Ponieważ algorytmy umieszczania wyglądają na istniejący wirtualny na fizycznych celi rdzeń jako składnik, każdy host może mieć inny wskaźnik. 
 
 Na platformie Azure do zapewniania wysokiej dostępności w systemie produkcyjnym wielu maszyn wirtualnych, maszyny wirtualne są umieszczane w zestaw dostępności, aby zostać rozmieszczone w wielu domenach błędów. Będzie to oznaczać, że maszyny wirtualne umieszczone w zestawie dostępności są fizycznie odizolowane od siebie nawzajem w stojaku umożliwiające odporności błędów, jak pokazano na poniższym diagramie:
 
-![Domenach błędów i aktualizacji](media\azure-stack-capacity-planning\domains.png)
+![Domenach błędów i aktualizacji](media/azure-stack-capacity-planning/domains.png)
 
 
 Infrastruktury Azure Stack jest odporna na awarie, podstawową używaną technologią (klaster trybu failover) nadal jest naliczana pewien przestój w przypadku maszyn wirtualnych na serwerze fizycznym nimi objęte w przypadku awarii sprzętu. Obecnie usługa Azure Stack obsługuje o dostępności zestawu z maksymalnie trzy domeny błędów, aby były zgodne z platformą Azure. Maszyny wirtualne umieszczone w zestawie dostępności będą fizycznie odizolowane od siebie nawzajem Dzięki rozdzieleniu je możliwie najbardziej równomiernie przez wiele domen błędów (węzłów usługi Azure Stack). W przypadku awarii sprzętu maszyn wirtualnych na podstawie domena błędów nie powiodło się będzie można ponownie uruchomiony w ramach innych węzłów, ale jeśli to możliwe, przechowywane w oddzielnych domenach błędów z innymi maszynami wirtualnymi w tym samym zestawie dostępności. Gdy sprzęt powróci do trybu online, maszyn wirtualnych zostanie ponownie zbilansowana do utrzymania wysokiej dostępności.

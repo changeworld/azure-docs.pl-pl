@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: bca92e933b1f75c330999f0d55723eb9f26a7382
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6e7d025e9e83f5511fce25d0c24e4da3b04d7e54
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426100"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957542"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Rozwiązywanie problemów z nieprawidłowej konfiguracji sieci dla domeny zarządzanej
 Ten artykuł pomoże Ci rozwiązać błędy konfiguracji odnoszące się do sieci, których wynikiem następujący komunikat alertu:
@@ -41,7 +41,7 @@ Nieprawidłowe konfiguracje sieciowej grupy zabezpieczeń są najbardziej typowe
 ## <a name="sample-nsg"></a>Przykładowe sieciowej grupy zabezpieczeń
 Poniższa tabela przedstawia przykładowe sieciowej grupy zabezpieczeń, który będzie chronić Twojej domeny zarządzanej zezwalając firmy Microsoft, aby monitorować, zarządzania i aktualizowania informacji.
 
-![Przykładowe sieciowej grupy zabezpieczeń](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![Przykładowe sieciowej grupy zabezpieczeń](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 >[!NOTE]
 > Azure AD Domain Services wymaga nieograniczony dostęp ruchu wychodzącego z sieci wirtualnej. Nie zaleca się tworzenie wszelkie dodatkowe reguły sieciowej grupy zabezpieczeń, która ogranicza dostęp ruchu wychodzącego dla sieci wirtualnej.

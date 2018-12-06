@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 687feec668e628e36f9c23cec9943220524cc6e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841935"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956520"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Temat usługi mobilności na potrzeby maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -56,11 +56,11 @@ Jeśli maszyn, które mają być replikowane active oprogramowanie antywirusowe 
 2. W portalu można otworzyć magazynu > **zreplikowane elementy**.
 3. Jeśli serwer konfiguracji jest najnowsza wersja, zobaczysz powiadomienie o treści "dostępna jest nowa aktualizacja agenta replikacji lokacji odzyskiwania. Kliknij, aby zainstalować. "
 
-     ![Okno replikowane elementy](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![Okno replikowane elementy](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
 4. Kliknij powiadomienie, a następnie w **aktualizacja agenta**, wybierz maszyny, na których chcesz uaktualnić usługę mobilności. Następnie kliknij przycisk **OK**.
 
-     ![Zreplikowane elementy listy maszyn wirtualnych](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![Zreplikowane elementy listy maszyn wirtualnych](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 5. Uruchamia zadanie Aktualizacja usługi mobilności dla każdego z wybranych maszyn.
 

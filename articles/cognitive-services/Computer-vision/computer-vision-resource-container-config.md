@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 8df293878486a9cd4ded6e899871c30498c4b68f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 865300f74a74b9768d2d5f5fd532ce9e851b7afb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635035"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964104"
 ---
 # <a name="configure-containers"></a>Konfigurowanie kontenerów
 
@@ -86,7 +86,7 @@ W poniższej tabeli opisano ustawienia konfiguracji objęte `ApplicationInsights
 
 ## <a name="billing-configuration-setting"></a>Ustawienie konfiguracji rozliczeń
 
-`Billing` Ustawienie konfiguracji określa punkt końcowy, identyfikator URI zasobu przetwarzania obrazów na platformie Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego zasobu przetwarzania obrazów na platformie Azure.
+`Billing` Ustawienie konfiguracji określa punkt końcowy, identyfikator URI zasobu przetwarzania obrazów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego zasobu przetwarzania obrazów na platformie Azure.
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), I [ `Eula` ](#eula-configuration-setting) ustawienia konfiguracji są używane razem. Ponadto należy podać prawidłowe wartości dla wszystkich trzech ich; w przeciwnym razie nie uruchamia się kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](computer-vision-how-to-install-containers.md#billing).
@@ -97,6 +97,8 @@ W poniższej tabeli opisano ustawienia konfiguracji objęte `ApplicationInsights
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), I [ `Eula` ](#eula-configuration-setting) ustawienia konfiguracji są używane razem. Ponadto należy podać prawidłowe wartości dla wszystkich trzech ich; w przeciwnym razie nie uruchamia się kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](computer-vision-how-to-install-containers.md#billing).
+
+Kontenery usługi cognitive Services są licencjonowane w ramach umowy regulującej korzystanie z platformy Azure. Jeśli nie masz istniejącej umowy regulujących korzystanie z platformy Azure, zgadzasz się, czy umowy regulującej korzystanie z platformy Azure jest Microsoft Online Subscription — Umowa (co zawiera warunki usług Online). Dla wersji zapoznawczych wyrażasz zgodę również na dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft. Przy użyciu kontenera jest równoznaczne z wyrażeniem zgody na te warunki.
 
 ## <a name="fluentd-configuration-settings"></a>Ustawienia konfiguracji Fluentd
 

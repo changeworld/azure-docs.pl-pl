@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f299cca57e3eaddd2a9d4868f3bae822392e45a0
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a792bc083c3a2c78b24d5895c34420b86b0863bb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944940"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959771"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Liczba akcji skalowania jednostki węzła w usłudze Azure Stack
 
@@ -148,9 +148,9 @@ Po uruchomieniu akcji naprawy, należy określić adres IP kontrolera BMC.
 Uruchamianie akcji naprawy przy użyciu programu PowerShell:
 
   ````PowerShell
-  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
+  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
   ````
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o module administratora usługi Azure Stack w sieci szkieletowej, zobacz [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.4.0).
+Aby dowiedzieć się więcej o module administratora usługi Azure Stack w sieci szkieletowej, zobacz [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.5.0).

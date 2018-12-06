@@ -1,30 +1,28 @@
 ---
-title: 'Usługi Azure Cosmos DB: Dokumentacja zapytań składni SQL | Dokumentacja firmy Microsoft'
+title: 'Usługi Azure Cosmos DB: Dokumentacja zapytań składni SQL'
 description: Dokumentacja dotycząca języka zapytań SQL usługi Azure Cosmos DB.
 services: cosmos-db
 author: LalithaMV
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
-ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 26dc21a7d6d24df70a0d7884c67180624074636a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623948"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972477"
 ---
-# <a name="azure-cosmos-db-sql-syntax-reference"></a>Dokumentacja składni w usłudze Azure Cosmos DB SQL
+# <a name="azure-cosmos-db-sql-language-reference"></a>Dokumentacja języka w usłudze Azure Cosmos DB SQL 
 
-Środowisko usługi Azure Cosmos DB obsługuje wykonywanie zapytań względem dokumentów za pomocą dobrze znanych SQL (Structured Query Language), takich jak gramatyka za pośrednictwem hierarchiczne dokumentów JSON bez konieczności jawnego schematu lub tworzenia indeksów pomocniczych. Ten artykuł zawiera dokumentację dotyczącą składni języka zapytania SQL, które są zgodne z kontami interfejsu API SQL. Aby uzyskać wskazówki dotyczące przykładowych zapytań SQL, zobacz [zapytań SQL w usłudze Cosmos DB](sql-api-sql-query.md).  
+Środowisko usługi Azure Cosmos DB obsługuje wykonywanie zapytań względem dokumentów za pomocą dobrze znanych SQL (Structured Query Language), takich jak gramatyka za pośrednictwem hierarchiczne dokumentów JSON bez konieczności jawnego schematu lub tworzenia indeksów pomocniczych. Ten artykuł zawiera dokumentację dotyczącą składni języka zapytania SQL, które są zgodne z kontami interfejsu API SQL. Aby uzyskać wskazówki dotyczące przykładowych zapytań SQL, zobacz [zapytań SQL w usłudze Cosmos DB](how-to-sql-query.md).  
   
 Odwiedź stronę [Plac zabaw dla zapytań](http://www.documentdb.com/sql/demo) gdzie Wypróbuj usługę Cosmos DB i uruchamiać zapytania SQL względem naszego zestawu danych.  
   
 ## <a name="select-query"></a>Wybierz zapytanie  
-Każdego zapytania, który składa się z klauzuli SELECT i opcjonalnie FROM a klauzulach WHERE w standardy ANSI SQL. Zwykle dla każdego zapytania do źródła w klauzuli FROM są wyliczane. Następnie w klauzuli WHERE filtrowaniu na "source" do pobrania podzbioru dokumentów JSON. Na koniec klauzuli SELECT jest używany do projektu wymagane wartości JSON na liście wyboru. W sekcji Konwencji składni wyszczególniono w Konwencji używanych do opisywania instrukcji "SELECT". Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](sql-api-sql-query.md#SelectClause)
+Każde zapytanie składa się z klauzuli SELECT i opcjonalnych klauzul FROM i WHERE zgodnie ze standardami ANSI-SQL. Zwykle dla każdego zapytania źródło w klauzuli FROM jest wyliczane. Następnie w klauzuli WHERE filtrowaniu na "source" do pobrania podzbioru dokumentów JSON. Na koniec klauzula SELECT jest używana do przeprowadzania projekcji żądanych wartości JSON na liście wyboru. W sekcji Konwencji składni wyszczególniono w Konwencji używanych do opisywania instrukcji "SELECT". Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](how-to-sql-query.md#SelectClause)
   
 **Składnia**  
   
@@ -69,7 +67,7 @@ Język zapytań obsługuje komentarze style języka T-SQL, takich jak
 Gdy białych znaków i komentarze nie ma żadnego znaczenia w gramatyce, muszą one używane do oddzielania tokenów. Na przykład: `-1e5` chwilę jednego tokenu, liczba jest`: – 1 e5` minus token następuje numer 1 i identyfikatora e5.  
 
 ##  <a name="bk_select_query"></a> Klauzula SELECT  
-Muszą być uporządkowane klauzule w instrukcji SELECT, jak pokazano powyżej. Jeden opcjonalna klauzula można pominąć. Jednak gdy klauzule opcjonalne są używane, musi występować w odpowiedniej kolejności. Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](sql-api-sql-query.md#SelectClause).
+Muszą być uporządkowane klauzule w instrukcji SELECT, jak pokazano powyżej. Jeden opcjonalna klauzula można pominąć. Jednak gdy klauzule opcjonalne są używane, musi występować w odpowiedniej kolejności. Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](how-to-sql-query.md#SelectClause).
 
 **Składnia**  
 
@@ -132,7 +130,7 @@ Zarówno `SELECT <select_list>` i `SELECT *` są "sugar składni" i można równ
 [Klauzula SELECT](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM — klauzula  
-Określa źródło lub połączone źródła. Klauzula FROM jest opcjonalny, jeśli źródło jest filtrowana lub przewidywany później w zapytaniu. Ta klauzula ma na celu określania źródła danych, na którym zapytanie musi działać. Zazwyczaj całego kontenera jest źródłem, ale zamiast tego można określić podzbiór kontenera. Jeśli ta klauzula nie jest określony, inne klauzule nadal będą wykonywane tak, jakby klauzuli FROM podane pojedynczego dokumentu. Aby uzyskać przykłady, zobacz [z przykładów — klauzula](sql-api-sql-query.md#FromClause)
+Określa źródło lub połączone źródła. Klauzula FROM jest opcjonalny, jeśli źródło jest filtrowana lub przewidywany później w zapytaniu. Ta klauzula ma na celu określania źródła danych, na którym zapytanie musi działać. Zazwyczaj całego kontenera jest źródłem, ale zamiast tego można określić podzbiór kontenera. Jeśli ta klauzula nie jest określony, inne klauzule nadal będą wykonywane tak, jakby klauzuli FROM podane pojedynczego dokumentu. Aby uzyskać przykłady, zobacz [z przykładów — klauzula](how-to-sql-query.md#FromClause)
   
 **Składnia**  
   
@@ -216,7 +214,7 @@ Wyrażenie kontener może być należące do kontenera lub zakresu w dokumencie:
   
 W bieżącej wersji usługi Cosmos DB obsługuje sprzężeń wewnętrznych. Zapowiadane są sprzężenia dodatkowe możliwości. 
 
-Sprzężenia wewnętrzne spowodować pełny iloczyn wektorowy zestawy uczestniczących w sprzężenia. Wynikiem sprzężenia sposób N jest zestaw spójnych kolekcji N-elementowej, gdzie każda wartość w spójnej kolekcji jest skojarzony z aliasem, ustaw udział w sprzężeniu i jest dostępny, odwołując się do tego aliasu w innych klauzul. Aby uzyskać przykłady, zobacz [przykłady — słowo kluczowe sprzężenia](sql-api-sql-query.md#Joins)
+Sprzężenia wewnętrzne spowodować pełny iloczyn wektorowy zestawy uczestniczących w sprzężenia. Wynikiem sprzężenia sposób N jest zestaw spójnych kolekcji N-elementowej, gdzie każda wartość w spójnej kolekcji jest skojarzony z aliasem, ustaw udział w sprzężeniu i jest dostępny, odwołując się do tego aliasu w innych klauzul. Aby uzyskać przykłady, zobacz [przykłady — słowo kluczowe sprzężenia](how-to-sql-query.md#Joins)
   
 Ocena sprzężenia zależy od zakresu kontekstu uczestniczących w programie zestawów:  
   
@@ -230,7 +228,7 @@ Ocena sprzężenia zależy od zakresu kontekstu uczestniczących w programie zes
   
 Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Pozwól każdego źródła, zdefiniuj `input_alias1, input_alias2, …, input_aliasN`. Ta klauzula FROM zwraca zestaw (krotki wartości N) N-krotek. Każda krotka zawiera wartości utworzone przez wszystkie aliasy kontenera Iterowanie po ich odpowiednich zestawów.  
+ Pozwól każdego źródła, zdefiniuj `input_alias1, input_alias2, …, input_aliasN`. Ta klauzula FROM zwraca zestaw (krotki wartości N) N-krotek. Każda krotka ma wartości utworzone w procesie iterowania wszystkich aliasów kontenera w odpowiednich zestawach.  
   
 **Przykład 1** -2 źródeł  
   
@@ -311,7 +309,7 @@ Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JO
  [Klauzula SELECT](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> Klauzula WHERE  
- Określa warunek wyszukiwania określający dokumenty zwrócone przez zapytanie. Aby uzyskać przykłady, zobacz [przykłady klauzuli WHERE](sql-api-sql-query.md#WhereClause)
+ Określa warunek wyszukiwania określający dokumenty zwrócone przez zapytanie. Aby uzyskać przykłady, zobacz [przykłady klauzuli WHERE](how-to-sql-query.md#WhereClause)
   
  **Składnia**  
   
@@ -336,7 +334,7 @@ WHERE <filter_condition>
  W kolejności dokumentu, które mają zostać zwrócone wyrażenie określone jako filtr warunek musi zwrócić wartość true. Tylko wartość logiczną PRAWDA będzie spełniać warunek jakakolwiek inna wartość: Niezdefiniowany, null, wartość false, liczby, tablicy lub obiektu nie spełnia warunku.  
   
 ##  <a name="bk_orderby_clause"></a> Klauzula ORDER BY  
- Określa kolejność sortowania wyników zwróconych przez zapytanie. Aby uzyskać przykłady, zobacz [ORDER BY przykłady klauzuli](sql-api-sql-query.md#OrderByClause)
+ Określa kolejność sortowania wyników zwróconych przez zapytanie. Aby uzyskać przykłady, zobacz [ORDER BY przykłady klauzuli](how-to-sql-query.md#OrderByClause)
   
  **Składnia**  
   
@@ -374,7 +372,7 @@ ORDER BY <sort_specification>
  Gramatyki zapytań obsługuje wiele kolejność według właściwości, w czasie wykonywania zapytania usługi Cosmos DB obsługuje sortowanie wyłącznie w odniesieniu do jednej właściwości i wyłącznie w odniesieniu do nazw właściwości (nie względem obliczone właściwości). Sortowanie wymaga również, że zasady indeksowania zawiera indeks zakresu dla właściwości i określonego typu, z maksymalną dokładnością. Zajrzyj do dokumentacji zasad indeksowania, aby uzyskać więcej informacji.  
   
 ##  <a name="bk_scalar_expressions"></a> Wyrażenia skalarne  
- Wyrażenie skalarne, które jest kombinacją symboli i operatorów, które mogą być obliczane w celu uzyskania pojedynczej wartości. Proste wyrażenia może być stałe, odwołania do właściwości, odwołania do elementu tablicy, odwołania do aliasu lub wywołania funkcji. Proste wyrażenia można łączyć w złożonych wyrażeń przy użyciu operatorów. Aby uzyskać przykłady, zobacz [przykłady wyrażenia skalarne](sql-api-sql-query.md#scalar-expressions)
+ Wyrażenie skalarne, które jest kombinacją symboli i operatorów, które mogą być obliczane w celu uzyskania pojedynczej wartości. Proste wyrażenia może być stałe, odwołania do właściwości, odwołania do elementu tablicy, odwołania do aliasu lub wywołania funkcji. Proste wyrażenia można łączyć w złożonych wyrażeń przy użyciu operatorów. Aby uzyskać przykłady, zobacz [przykłady wyrażenia skalarne](how-to-sql-query.md#scalar-expressions)
   
  Szczegółowe informacje na temat wartości, które mogą mieć wyrażenie skalarne, [stałe](#bk_constants) sekcji.  
   
@@ -509,11 +507,11 @@ ORDER BY <sort_specification>
 |**Typ**|**Kolejność wartości**|  
 |-|-|  
 |**Niezdefiniowane**|Nie jest porównywalny.|  
-|**Wartość null**|Pojedyncza wartość: **o wartości null**|  
-|**Numer**|Liczba rzeczywista fizycznych.<br /><br /> Wartość ujemna nieskończoność jest mniejszy niż inne wartość liczbową.<br /><br /> Wartości nieskończoności dodatniej jest większy niż inne wartość liczbową. **NaN** wartość nie jest porównywalny. Porównanie z **NaN** spowoduje **niezdefiniowane** wartość.|  
+|**Null**|Pojedyncza wartość: **o wartości null**|  
+|**Liczba**|Liczba rzeczywista fizycznych.<br /><br /> Wartość ujemna nieskończoność jest mniejszy niż inne wartość liczbową.<br /><br /> Wartości nieskończoności dodatniej jest większy niż inne wartość liczbową. **NaN** wartość nie jest porównywalny. Porównanie z **NaN** spowoduje **niezdefiniowane** wartość.|  
 |**Ciąg**|Kolejności lexicographical.|  
 |**Tablica**|Kolejność nie, ale sprawiedliwe.|  
-|**obiekt**|Kolejność nie, ale sprawiedliwe.|  
+|**Obiekt**|Kolejność nie, ale sprawiedliwe.|  
   
  **Uwagi**  
   
@@ -537,12 +535,12 @@ ORDER BY <sort_specification>
 |**Typ**|**Kolejność wartości**|  
 |-|-|  
 |**Niezdefiniowane**|Pojedyncza wartość: **niezdefiniowane**|  
-|**Wartość null**|Pojedyncza wartość: **o wartości null**|  
-|**Boolean**|Wartości: **false**, **true**.|  
-|**Numer**|Podwójnej precyzji liczba zmiennoprzecinkowa, IEEE 754 standardowych.|  
+|**Null**|Pojedyncza wartość: **o wartości null**|  
+|**Wartość logiczna**|Wartości: **false**, **true**.|  
+|**Liczba**|Podwójnej precyzji liczba zmiennoprzecinkowa, IEEE 754 standardowych.|  
 |**Ciąg**|Sekwencja zero lub więcej znaków Unicode. Parametry muszą być ujęte w pojedyncze lub podwójne cudzysłowy.|  
 |**Tablica**|Sekwencja zero lub więcej elementów. Każdy element może być wartością dowolnego typu danych skalarnych, z wyjątkiem niezdefiniowane.|  
-|**obiekt**|Nieuporządkowana zestaw par nazwa/wartość zero lub więcej. Nazwa jest ciągiem Unicode, wartość może być dowolnego typu danych skalarnych, z wyjątkiem **niezdefiniowane**.|  
+|**Obiekt**|Nieuporządkowana zestaw par nazwa/wartość zero lub więcej. Nazwa jest ciągiem Unicode, wartość może być dowolnego typu danych skalarnych, z wyjątkiem **niezdefiniowane**.|  
   
  **Składnia**  
   
@@ -679,7 +677,7 @@ ORDER BY <sort_specification>
 |Funkcja|Opis|  
 |--------------|-----------------|  
 |[Funkcje matematyczne](#bk_mathematical_functions)|Funkcje matematyczne wykonywanie obliczeń, zazwyczaj na podstawie wartości wejściowych, które są przekazywane jako argumenty i zwraca wartość liczbową.|  
-|[Typ funkcji sprawdzania](#bk_type_checking_functions)|Funkcje sprawdzania typu pozwalają sprawdzić typ wyrażenia w ramach zapytania SQL.|  
+|[Typ funkcji sprawdzania](#bk_type_checking_functions)|Funkcje kontroli typów pozwalają sprawdzić typ wyrażenia w zapytaniach języka SQL.|  
 |[Funkcje ciągów](#bk_string_functions)|Funkcje ciągów wykonania operacji na wartość ciągu wejściowego i zwraca ciąg, wartość liczbowa lub Boolean.|  
 |[Funkcje tablicy](#bk_array_functions)|Funkcje tablicy w trakcie operacji na tablicy wartości wejściowej i liczbowa zwracana, atrybut typu wartość logiczna lub wartości tablicy.|  
 |[Funkcje przestrzenne](#bk_spatial_functions)|Funkcje przestrzenne wykonania operacji na podstawie wartości wejściowe obiektu przestrzennego i zwracają wartość liczbowa lub Boolean.|  
@@ -699,7 +697,7 @@ ORDER BY <sort_specification>
 |[TAN](#bk_tan)|[TRUNC —](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
- Zwraca wartość bezwzględną (pozytywna) wartość podanego wyrażenia liczbowego.  
+ Zwraca wartość bezwzględną (dodatnią) podanego wyrażenia liczbowego.  
   
  **Składnia**  
   
@@ -732,7 +730,7 @@ SELECT ABS(-1), ABS(0), ABS(1)
 ```  
   
 ####  <a name="bk_acos"></a> ACOS  
- Zwraca kąt w radianach, którego cosinus jest określone wyrażenie liczbowe; Skrót cosinus.  
+ Zwraca kąt w radianach, którego cosinus jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus cosinus.  
   
  **Składnia**  
   
@@ -765,7 +763,7 @@ SELECT ACOS(-1)
 ```  
   
 ####  <a name="bk_asin"></a> ASIN  
- Zwraca kąt w radianach, którego sinus jest określone wyrażenie liczbowe. Jest to również nazywane arcus sinus.  
+ Zwraca kąt w radianach, którego sinus jest określonym wyrażeniem liczbowym. Jest to również nazywane arcus sinus.  
   
  **Składnia**  
   
@@ -798,7 +796,7 @@ SELECT ASIN(-1)
 ```  
   
 ####  <a name="bk_atan"></a> ATAN  
- Zwraca kąt w radianach, którego tangens jest określone wyrażenie liczbowe. Jest to również nazywane tangens.  
+ Zwraca kąt w radianach, którego tangens jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus tangens.  
   
  **Składnia**  
   
@@ -864,7 +862,7 @@ SELECT ATN2(35.175643, 129.44)
 ```  
   
 ####  <a name="bk_ceiling"></a> LIMIT  
- Zwraca najmniejszą wartość liczby całkowitej większa lub równa określonej wyrażenia liczbowego.  
+ Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą.  
   
  **Składnia**  
   
@@ -897,7 +895,7 @@ SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)
 ```  
   
 ####  <a name="bk_cos"></a> COS  
- Zwraca trygonometrycznych cosinus kąta określonego w radianach, określone wyrażenie.  
+ Zwraca trygonometryczny cosinus określonego kąta w radianach w określonym wyrażeniu.  
   
  **Składnia**  
   
@@ -930,7 +928,7 @@ SELECT COS(14.78)
 ```  
   
 ####  <a name="bk_cot"></a> COT  
- Zwraca trygonometrycznych cotangens kąta określonego w radianach, z określonego wyrażenia liczbowego.  
+ Zwraca trygonometryczny cotangens określonego kąta w radianach w określonym wyrażeniu liczbowym.  
   
  **Składnia**  
   
@@ -963,7 +961,7 @@ SELECT COT(124.1332)
 ```  
   
 ####  <a name="bk_degrees"></a> STOPNI  
- Zwraca odpowiedni kąt w stopniach na potrzeby kąta określonego w radianach.  
+ Zwraca kąt w stopniach odpowiadający kątowi określonemu w radianach.  
   
  **Składnia**  
   
@@ -996,7 +994,7 @@ SELECT DEGREES(PI()/2)
 ```  
   
 ####  <a name="bk_floor"></a> FLOOR  
- Zwraca największą liczbę całkowitą, mniejsze niż lub równe określonego wyrażenia liczbowego.  
+ Zwraca największą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub mniejszą.  
   
  **Składnia**  
   
@@ -1176,7 +1174,7 @@ SELECT LOG10(100)
 ```  
   
 ####  <a name="bk_pi"></a> PI  
- Zwraca wartość stała PI.  
+ Zwraca stałą wartość liczby PI.  
   
  **Składnia**  
   
@@ -1246,7 +1244,7 @@ SELECT POWER(2, 3), POWER(2.5, 3)
 ```  
   
 ####  <a name="bk_radians"></a> WARTOŚĆ W RADIANACH  
- Zwraca wartość w radianach, po wprowadzeniu wyrażenia liczbowego w stopniach.  
+ Zwraca wartość w radianach po wprowadzeniu wyrażenia liczbowego w stopniach.  
   
  **Składnia**  
   
@@ -1285,7 +1283,7 @@ SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIAN
 ```  
   
 ####  <a name="bk_round"></a> ROUND  
- Zwraca wartość liczbową zaokrąglone do najbliższej wartości całkowitej.  
+ Zwraca wartość liczbową zaokrągloną do najbliższej wartości całkowitej.  
   
  **Składnia**  
   
@@ -1351,7 +1349,7 @@ SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)
 ```  
   
 ####  <a name="bk_sin"></a> SIN  
- Zwraca trygonometrycznych sinus określonego kąta w radianach, określone wyrażenie.  
+ Zwraca trygonometryczny sinus określonego kąta w radianach w określonym wyrażeniu.  
   
  **Składnia**  
   
@@ -1483,7 +1481,7 @@ SELECT TAN(PI()/2);
 ```  
   
 ####  <a name="bk_trunc"></a> TRUNC —  
- Zwraca wartość liczbową obcięty do najbliższej wartości całkowitej.  
+ Zwraca wartość liczbową przyciętą do najbliższej wartości całkowitej.  
   
  **Składnia**  
   
@@ -1605,7 +1603,7 @@ SELECT
 ```  
   
 ####  <a name="bk_is_defined"></a> IS_DEFINED  
- Zwraca wartość Boolean wskazującą, jeśli właściwość zostanie przypisana wartość.  
+ Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość.  
   
  **Składnia**  
   
@@ -1841,7 +1839,7 @@ SELECT
 ```  
   
 ###  <a name="bk_string_functions"></a> Funkcje ciągów  
- Następujące funkcje skalarne wykonania operacji na wartość ciągu wejściowego i zwraca ciąg, wartość liczbowa lub Boolean.  
+ Następujące funkcje skalarne wykonują operację na wartości wejściowej ciągu i zwracają ciąg, wartość liczbową lub wartość logiczną.  
   
 ||||  
 |-|-|-|  
@@ -1853,7 +1851,7 @@ SELECT
 |[ToString](#bk_tostring)|[TRIM](#bk_trim)|[GÓRNY](#bk_upper)||| 
   
 ####  <a name="bk_concat"></a> CONCAT  
- Zwraca ciąg, który jest wynikiem złączenie co najmniej dwóch wartości ciągu.  
+ Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu.  
   
  **Składnia**  
   
@@ -1886,7 +1884,7 @@ SELECT CONCAT("abc", "def")
 ```  
   
 ####  <a name="bk_contains"></a> ZAWIERA  
- Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenie zawiera drugą.  
+ Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie.  
   
  **Składnia**  
   
@@ -1952,7 +1950,7 @@ SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")
 ```  
   
 ####  <a name="bk_index_of"></a> INDEX_OF  
- Zwraca pozycję początkową pierwsze wystąpienie ciągu drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli nie zostanie znaleziony ciąg.  
+ Zwraca pozycję początkową pierwszego wystąpienia drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli ciąg nie zostanie znaleziony.  
   
  **Składnia**  
   
@@ -1985,7 +1983,7 @@ SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")
 ```  
   
 ####  <a name="bk_left"></a> LEFT  
- Zwraca część po lewej stronie ciąg zawierający określoną liczbę znaków.  
+ Zwraca lewą część ciągu z określoną liczbą znaków.  
   
  **Składnia**  
   
@@ -2055,7 +2053,7 @@ SELECT LENGTH("abc")
 ```  
   
 ####  <a name="bk_lower"></a> NIŻSZY  
- Zwraca wyrażenie ciągu po przekonwertowaniu danych wielkiej litery na małe litery.  
+ Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery.  
   
  **Składnia**  
   
@@ -2089,7 +2087,7 @@ SELECT LOWER("Abc")
 ```  
   
 ####  <a name="bk_ltrim"></a> PRZYTP  
- Zwraca wyrażenie ciągu, po usuwa spacje wiodące.  
+ Zwraca wyrażenie ciągu po usunięciu spacji wiodących.  
   
  **Składnia**  
   
@@ -2155,7 +2153,7 @@ SELECT REPLACE("This is a Test", "Test", "desk")
 ```  
   
 ####  <a name="bk_replicate"></a> REPLIKACJA  
- Wartość ciągu jest powtarzany określoną liczbę razy.  
+ Powtarza wartość ciągu określoną liczbę razy.  
   
  **Składnia**  
   
@@ -2192,7 +2190,7 @@ SELECT REPLICATE("a", 3)
 ```  
   
 ####  <a name="bk_reverse"></a> REVERSE  
- Zwraca wartość ciągu w kolejności odwrotnej.  
+ Zwraca wartość ciągu w odwrotnej kolejności.  
   
  **Składnia**  
   
@@ -2225,7 +2223,7 @@ SELECT REVERSE("Abc")
 ```  
   
 ####  <a name="bk_right"></a> PO PRAWEJ STRONIE  
- Zwraca ciąg zawierający określoną liczbę znaków jego prawej części.  
+ Zwraca prawą część ciągu z określoną liczbą znaków.  
   
  **Składnia**  
   
@@ -2471,7 +2469,7 @@ SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")
 [{"$1": "abc", "$2": "abc", "$3": "abc", "$4": "abc"}]  
 ``` 
 ####  <a name="bk_upper"></a> GÓRNY  
- Zwraca wyrażenie ciągu po przekonwertowaniu danych małej litery na wielkie litery.  
+ Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery.  
   
  **Składnia**  
   
@@ -2512,7 +2510,7 @@ SELECT UPPER("Abc")
 |[ARRAY_SLICE](#bk_array_slice)|||  
   
 ####  <a name="bk_array_concat"></a> ARRAY_CONCAT  
- Zwraca tablicę, która jest wynikiem łączenia dwóch lub więcej wartości tablicy.  
+ Zwraca tablicę, która jest wynikiem połączenia co najmniej dwóch wartości tablicy.  
   
  **Składnia**  
   
@@ -2545,7 +2543,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-Zwraca wartość Boolean wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie pełnej lub częściowej. 
+Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie jest pełne czy lub częściowe. 
 
  **Składnia**  
   
@@ -2607,7 +2605,7 @@ SELECT
 ```  
   
 ####  <a name="bk_array_length"></a> ARRAY_LENGTH  
- Zwraca liczbę elementów wyrażenia określonej tablicy.  
+ Zwraca liczbę elementów określonego wyrażenia tablicy.  
   
  **Składnia**  
   
@@ -2640,7 +2638,7 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])
 ```  
   
 ####  <a name="bk_array_slice"></a> ARRAY_SLICE  
- Zwraca część wyrażenie tablicy.
+ Zwraca część wyrażenia tablicy.
   
  **Składnia**  
   
@@ -2705,7 +2703,7 @@ SELECT
 |[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)|||  
   
 ####  <a name="bk_st_distance"></a> ST_DISTANCE  
- Zwraca odległość między dwoma wyrażeniami GeoJSON punkt, wielokąta lub LineString.  
+ Zwraca odległość między dwoma wyrażeniami GeoJSON typu Point, Polygon lub LineString.  
   
  **Składnia**  
   
@@ -2826,7 +2824,7 @@ WHERE ST_INTERSECTS(a.location, {
 ```  
   
 ####  <a name="bk_st_isvalid"></a> ST_ISVALID  
- Zwraca wartość logiczną wskazującą, czy określone wyrażenie GeoJSON punkt, wielokąta lub LineString jest nieprawidłowy.  
+ Zwraca wartość logiczną wskazującą, czy określone wyrażenie GeoJSON typu Point, Polygon lub LineString jest nieprawidłowe.  
   
  **Składnia**  
   
@@ -2863,7 +2861,7 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 ```  
   
 ####  <a name="bk_st_isvaliddetailed"></a> ST_ISVALIDDETAILED  
- Zwraca wartość JSON, zawierająca wartość logiczną wartość, jeśli określone wyrażenie GeoJSON punkt, wielokąta lub LineString jest prawidłowy, a nieprawidłowy, dodatkowo Przyczyna jako wartość ciągu.  
+ Zwraca wartość JSON zawierającą wartość logiczną, jeśli określone wyrażenie GeoJSON typu Point, Polygon lub LineString jest prawidłowe, a jeśli jest nieprawidłowe, dodatkowo zwraca przyczynę jako wartość ciągu.  
   
  **Składnia**  
   
@@ -2905,6 +2903,6 @@ SELECT ST_ISVALIDDETAILED({
   
 ## <a name="next-steps"></a>Kolejne kroki  
 
-- [Składnia SQL i zapytania SQL usługi Cosmos DB](sql-api-sql-query.md)
+- [Składnia SQL i zapytania SQL usługi Cosmos DB](how-to-sql-query.md)
 
 - [Dokumentacja usługi cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  

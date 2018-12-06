@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: adf223d1cd775aac2a73bade5d09eac503ac8249
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 41d0c8daedeb73ceffc9f4890d1e805e199bc2a3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52741845"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956895"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Wysyłanie zdarzeń do usługi Event Hubs przy użyciu języka Python
 
@@ -34,7 +34,11 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
-Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md), a następnie wykonaj następujące czynności z tego samouczka.
+Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md).
+
+Pobierz wartość klucza dostępu Centrum zdarzeń, postępując zgodnie z instrukcjami opisanymi w artykule: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Klucz dostępu został użyty w kodzie, napisany w dalszej części tego samouczka. Domyślna nazwa klucza to: **RootManageSharedAccessKey**.
+
+Teraz przejdź do następujących czynności w ramach tego samouczka.
 
 ## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
 

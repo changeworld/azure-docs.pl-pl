@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0ee756828a50cdf62471923614afbe88e238b9ef
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 7535aad95f7410d25ada232b4946fe52ebc4ba67
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624561"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961964"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Samouczek: Pobieranie danych przy użyciu usługi Azure Active Directory, interfejsu API raportowania przy użyciu certyfikatów
 
@@ -39,9 +39,7 @@ W tym samouczku dowiesz się, jak dostęp do interfejsu API programu Graph MS dl
     - Tokeny dostępu użytkownika, kluczy aplikacji i certyfikatów korzystających z bibliotek ADAL
     - Stronicowane wyniki obsługi interfejsu API programu Graph
 
-4. Jeśli po raz pierwszy przy użyciu modułu uruchamiania **MSCloudIdUtilsModule instalacji**, w przeciwnym razie importować go za pomocą **Import-Module** polecenia programu Powershell. Sesja powinna wyglądać podobnie do tego ekranu:
-
-        ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+4. Jeśli po raz pierwszy przy użyciu modułu uruchamiania **MSCloudIdUtilsModule instalacji**, w przeciwnym razie importować go za pomocą **Import-Module** polecenia programu Powershell. Twoja sesja powinna wyglądać podobnie do tego ekranu: ![programu Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 5. Użyj **New-SelfSignedCertificate** polecenia cmdlet programu Powershell do utworzenia certyfikatu testowego.
 

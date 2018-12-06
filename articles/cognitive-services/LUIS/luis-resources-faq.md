@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: d371ead3280bca5239a9ee6bf2c4275414141fb4
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 938f74a543fd7d4f7563d1af8bc7c75e76fbcade
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284374"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960408"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -196,9 +196,9 @@ Wybierz szablon usługi LUIS i zaznaczenie **wybierz** przycisku w okienku szabl
 
 ## <a name="luis-service"></a>Usługa LUIS
 
-### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>To usługa LUIS dostępne lokalnie lub w chmurze prywatnej?
-Nie.
+### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Language Understanding (LUIS) dostępne lokalnie lub w chmurze prywatnej?
 
+Tak, można użyć usługa LUIS [kontenera](luis-container-howto.md) dla tych scenariuszy, jeśli masz niezbędne łączności do mierzenia użycia. 
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferencji Build 2018 słyszałem o funkcji rozpoznawania języka lub pokaz, ale nie pamiętam, co zostało wywołane?
 

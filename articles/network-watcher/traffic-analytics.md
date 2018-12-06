@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: dd07ed66b630f541ed3e2001dffdebed150bb71a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 6999f51482d38245373a8a7a5081a89f1790b669
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443036"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956764"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -42,7 +42,7 @@ Sieci wirtualne platformy Azure mają dzienników przepływu sieciowej grupy zab
 - **Sieciowa grupa zabezpieczeń (NSG)**: zawiera listę reguł zabezpieczeń, które blokują lub zezwalają na ruch sieciowy do zasobów połączonych z siecią wirtualną platformy Azure. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [omówienie grupy zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Dzienników przepływu Sieciowej grupy zabezpieczeń sieci**: umożliwiają wyświetlanie informacji na temat przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń. Przepływu sieciowej grupy zabezpieczeń, dzienniki są zapisywane w formacie json i Pokaż przepływy wychodzące i przychodzące na podstawie reguły w poszczególnych kart Sieciowych przepływ ma zastosowanie do 5-elementowe spójne kolekcje informacji o przepływie (źródłowego i docelowego adresu IP, źródłowy i docelowy port i protokół) i czy był dozwolony ruch lub zabronione. Aby uzyskać więcej informacji na temat dzienników przepływu sieciowych grup zabezpieczeń, zobacz [dzienników przepływu sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 - **Log Analytics**: Usługa platformy Azure, która służy do zbierania danych monitorowania i przechowuje dane w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności i niestandardowe dane dostarczane za pośrednictwem interfejsu API usługi Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Monitorowanie aplikacji, takich jak analiza ruchu i monitora wydajności sieci są tworzone przy użyciu usługi Log Analytics jako podstawa. Aby uzyskać więcej informacji, zobacz [Log analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Zaloguj się obszar roboczy usługi analytics**: wystąpienie usługi log analytics, w którym są przechowywane dane odnoszących się do konta platformy Azure. Aby uzyskać więcej informacji na temat obszary robocze usługi log analytics, zobacz [Utwórz obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Zaloguj się obszar roboczy usługi analytics**: wystąpienie usługi log analytics, w którym są przechowywane dane odnoszących się do konta platformy Azure. Aby uzyskać więcej informacji na temat obszary robocze usługi log analytics, zobacz [Utwórz obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Network Watcher**: regionalna usługa, która pozwala na monitorowanie i diagnozowanie warunków na poziomie scenariusza sieci na platformie Azure. Można włączyć dzienniki sieciowych grup zabezpieczeń usługi flow włączać i wyłączać przy użyciu usługi Network Watcher. Aby uzyskać więcej informacji, zobacz [usługi Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Jak działa analizy ruchu

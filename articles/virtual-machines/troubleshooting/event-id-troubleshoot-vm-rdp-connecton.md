@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: b84992f5deea1135692c368900f63773b51453bb
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634063"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959686"
 ---
-# <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Rozwiązywanie problemów z wg Identyfikatora zdarzenia, problemy z połączeniem RDP maszyny Wirtualnej platformy Azure 
+# <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Rozwiązywanie problemów z połączeniem RDP maszyny wirtualnej platformy Azure według identyfikatora zdarzenia 
 
 W tym artykule opisano sposób rozwiązywania problemów, które uniemożliwiają połączenie pulpitu zdalnego protocol (RDP) do maszyny wirtualnej (maszyny Wirtualnej platformy Azure) przy użyciu identyfikatorów zdarzeń.
 
@@ -37,7 +37,7 @@ Aby rozwiązać ten problem, przejrzyj dzienniki zdarzeń na maszynie Wirtualnej
 
 ### <a name="create-a-backup-snapshot"></a>Tworzenie migawki kopii zapasowej
 
-Aby utworzyć migawkę kopii zapasowej, wykonaj kroki opisane w [Tworzenie migawki dysku](..\windows\snapshot-copy-managed-disk.md).
+Aby utworzyć migawkę kopii zapasowej, wykonaj kroki opisane w [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 
 ### <a name="connect-to-the-vm-remotely"></a>Zdalne ustanawianie połączenia z maszyną Wirtualną
 
@@ -56,35 +56,35 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 
 **Nazwa dziennika:** systemu <br />
 **Źródło:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu*  <br />
+**Data:***czasu* <br />
 **Identyfikator zdarzenia:** 1058 <br />
 **Kategoria zadania:** None <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:** klasycznego <br />
 **Użytkownik:** n/d <br />
-**Komputer:***komputera*  <br />
+**Komputer:***komputera* <br />
 **Opis:** serwera hosta sesji usług pulpitu zdalnego nie może zastąpić wygasłego certyfikatu używany do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL z podpisem własnym. Odpowiedni kod stanu była odmowa dostępu.
 
 **Nazwa dziennika:** systemu <br />
 **Źródło:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu*  <br />
+**Data:***czasu* <br />
 **Identyfikator zdarzenia:** 1058 <br />
 **Kategoria zadania:** None <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:** klasycznego <br />
 **Użytkownik:** n/d <br />
-**Komputer:***komputera*  <br />
+**Komputer:***komputera* <br />
 **Opis:** serwera hosta sesji usług pulpitu zdalnego nie udało się utworzyć nowy certyfikat z podpisem własnym służący do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL, odpowiedni kod stanu to obiekt już istnieje.
 
 **Nazwa dziennika:** systemu <br />
 **Źródło:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu*  <br />
+**Data:***czasu* <br />
 **Identyfikator zdarzenia:** 1057 <br />
 **Kategoria zadania:** None <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:** klasycznego <br />
 **Użytkownik:** n/d <br />
-**Komputer:***komputera*  <br />
+**Komputer:***komputera* <br />
 **Opis:** serwera hosta sesji usług pulpitu zdalnego nie może utworzyć nowego certyfikatu używanego do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL z podpisem własnym. Odpowiedni kod stanu to zestaw kluczy nie istnieje.
 
 Możesz również sprawdzić dla zdarzenia błędów kanału SCHANNEL 36872 i 36870, uruchamiając następujące polecenia:
@@ -102,7 +102,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Poziom:** błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:** systemu <br />
-**Komputer:***komputera*  <br />
+**Komputer:***komputera* <br />
 **Opis:** wystąpił błąd krytyczny podczas próby uzyskania dostępu do klucza prywatnego poświadczeń SSL serwera. Kod błędu zwrócony z modułu kryptograficznego: 0x8009030d.  <br />
 Stan błędu wewnętrznego jest 10001.
 
@@ -224,7 +224,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Poziom:** błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:** systemu <br />
-**Komputer:***komputera*  <br />
+**Komputer:***komputera* <br />
 **Opis:** wystąpił błąd krytyczny podczas tworzenia poświadczeń serwera protokołu TLS. Stan błędu wewnętrznego jest 10013.
  
 ### <a name="cause"></a>Przyczyna
@@ -248,13 +248,13 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 
 **Nazwa dziennika:** Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Źródło:** Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Data:***czasu*  <br />
+**Data:***czasu* <br />
 **Identyfikator zdarzenia:** 2056 <br />
 **Kategoria zadania:** (109) <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:** usługi SIECIOWEJ <br />
-**Komputer:***nazwy fqdn komputera*  <br />
+**Komputer:***nazwy fqdn komputera* <br />
 **Opis:** opis 2056 identyfikator zdarzenia ze źródła pakietu Microsoft-Windows-TerminalServices-SessionBroker nie można odnaleźć. Składnik, który wywołuje to zdarzenie nie jest zainstalowany na komputerze lokalnym albo instalacja jest uszkodzona. Można zainstalować lub naprawić składnik na komputerze lokalnym. <br />
 Jeśli zdarzenie pochodzi z innego komputera, wyświetlane informacje musiały zostać zapisane w ze zdarzeniem. <br />
 Zdarzenie dołączono następujące informacje: <br />
@@ -264,13 +264,13 @@ Logowanie do bazy danych nie powiodło się.
 
 **Nazwa dziennika:** Microsoft-Windows-TerminalServices-SessionBroker klienta/operacyjne <br />
 **Źródło:** Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**Data:***czasu*  <br />
+**Data:***czasu* <br />
 **Identyfikator zdarzenia:** 1296 <br />
 **Kategoria zadania:** (104) <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:** usługi SIECIOWEJ <br />
-**Komputer:***nazwy fqdn komputera*  <br />
+**Komputer:***nazwy fqdn komputera* <br />
 **Opis:** nie można znaleźć opis 1296 identyfikator zdarzenia ze źródła Microsoft-Windows-TerminalServices-SessionBroker-Client. Składnik, który wywołuje to zdarzenie nie jest zainstalowany na komputerze lokalnym albo instalacja jest uszkodzona. Można zainstalować lub naprawić składnik na komputerze lokalnym.
 Jeśli zdarzenie pochodzi z innego komputera, wyświetlane informacje musiały zostać zapisane w ze zdarzeniem.
 Zdarzenie dołączono następujące informacje:  <br />

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
-ms.openlocfilehash: 20531cb301cad23fbadb617bdf33e710a4481be4
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a136234c6645e7f88fc16a5f7a5d84580906c0f7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050038"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964853"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Jak tworzyć środowisko ASE wewnętrznego modułu równoważenia przy użyciu szablonów usługi Azure Resource Manager
 
@@ -94,7 +94,7 @@ Parametry w *azuredeploy.parameters.json* pliku są wymienione poniżej:
 Przykład skróconej *azuredeploy.parameters.json* znajdują się poniżej:
 
     {
-         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
          "contentVersion": "1.0.0.0",
          "parameters": {
               "appServiceEnvironmentName": {
@@ -138,6 +138,6 @@ Aby rozpocząć pracę przy użyciu środowisk usługi App Service, zobacz [wpro
 
 <!-- LINKS -->
 [quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-create/
-[examplebase64encoding]: http://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
+[examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/ 
 

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: a096bd2f23910eb2eb3bc4aa36e34400ccfbb701
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853408"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956988"
 ---
 # <a name="translator-text-api-30-translate"></a>API 3.0 tekstu usługi Translator: tłumaczenie
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>z</td>
-    <td>*Opcjonalny parametr*.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie [obsługiwane języki](.\v3-0-languages.md) przy użyciu `translation` zakresu. Jeśli `from` parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
+    <td>*Opcjonalny parametr*.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie [obsługiwane języki](./v3-0-languages.md) przy użyciu `translation` zakresu. Jeśli `from` parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](.\v3-0-languages.md) objęte `translation` zakresu. Na przykład użyć `to=de` do tłumaczenia na język niemiecki.<br/>Istnieje możliwość translacji jednocześnie do wielu języków, powtarzając parametr ciągu zapytania. Na przykład użyć `to=de&to=it` do translacji niemieckim i włoskim.</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](./v3-0-languages.md) objęte `translation` zakresu. Na przykład użyć `to=de` do tłumaczenia na język niemiecki.<br/>Istnieje możliwość translacji jednocześnie do wielu języków, powtarzając parametr ciągu zapytania. Na przykład użyć `to=de&to=it` do translacji niemieckim i włoskim.</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -86,7 +86,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>AllowFallback</td>
-    <td>*Opcjonalny parametr*.<br/>Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje. Możliwe wartości to: `true` (ustawienie domyślne) lub `false`.<br/><br/>`AllowFallback=false` Określa, czy tłumaczenie należy używać wyłącznie systemów uczona dla `category` określonym przez żądanie. Jeśli tłumaczenie język X język Y wymaga łańcucha przy użyciu języka pivot E, następnie wszystkich systemów w łańcuchu (X -> E i E -> Y) będzie musiał być niestandardowych i mieć tej samej kategorii. Jeśli system nie zostanie znaleziony o określonej kategorii, żądanie zwróci kod stanu 400. `AllowFallback=true` Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje.
+    <td>*Opcjonalny parametr*.<br/>Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje. Możliwe wartości to: `true` (ustawienie domyślne) lub `false`.<br/><br/>`allowFallback=false` Określa, czy tłumaczenie należy używać wyłącznie systemów uczona dla `category` określonym przez żądanie. Jeśli tłumaczenie język X język Y wymaga łańcucha przy użyciu języka pivot E, następnie wszystkich systemów w łańcuchu (X -> E i E -> Y) będzie musiał być niestandardowych i mieć tej samej kategorii. Jeśli system nie zostanie znaleziony o określonej kategorii, żądanie zwróci kod stanu 400. `allowFallback=true` Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje.
 </td>
   </tr>
 </table> 
@@ -111,11 +111,6 @@ Nagłówki żądania obejmują:
   <tr>
     <td>X ClientTraceId</td>
     <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
-  </tr>
-  <tr>
-    <td>X-MT-System</td>
-    <td>*Opcjonalnie*.<br/>Określa typ systemu, który został użyty do translacji dla każdego "do" żądany język do tłumaczenia. Wartość jest rozdzielaną przecinkami listę ciągów. Każdy ciąg wskazuje typ:<br/><ul><li>Niestandardowe — żądanie zawiera niestandardowy układ i co najmniej jeden niestandardowy system był używany podczas tłumaczenia.</li><li>Zespół - wszystkich innych żądań</li></ul>
-</td>
   </tr>
 </table> 
 
@@ -174,6 +169,21 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
 Przykład odpowiedzi JSON znajdują się w [przykłady](#examples) sekcji.
 
+## <a name="response-headers"></a>Nagłówki odpowiedzi
+
+<table width="100%">
+  <th width="20%">Nagłówki</th>
+  <th>Opis</th>
+    <tr>
+    <td>Identyfikator żądania X</td>
+    <td>Wartość generowane przez usługę w celu zidentyfikowania żądania. Jest on używany na potrzeby rozwiązywania problemów.</td>
+  </tr>
+  <tr>
+    <td>X-MT-System</td>
+    <td>Określa typ systemu, który został użyty do translacji dla każdego "do" żądany język do tłumaczenia. Wartość jest rozdzielaną przecinkami listę ciągów. Każdy ciąg wskazuje typ:<br/><ul><li>Niestandardowe — żądanie zawiera niestandardowy układ i co najmniej jeden niestandardowy system był używany podczas tłumaczenia.</li><li>Zespół - wszystkich innych żądań</li></td>
+  </tr>
+</table> 
+
 ## <a name="response-status-codes"></a>Kody stanów odpowiedzi
 
 Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie. 
@@ -199,7 +209,7 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
   </tr>
   <tr>
     <td>408</td>
-    <td>Żądanie nie jest spełnione, ponieważ brakuje zasobu. Sprawdź szczegóły komunikatu o błędzie. Korzystając z niestandardowego `category`, oznacza to często, że system tłumaczenia niestandardowych nie jest jeszcze dostępna do obsługi żądań. Żądanie powinno zostać powtórzone po okresie oczekiwania (np. 10 minut).</td>
+    <td>Żądanie nie jest spełnione, ponieważ brakuje zasobu. Sprawdź szczegóły komunikatu o błędzie. Korzystając z niestandardowego `category`, oznacza to często, że system tłumaczenia niestandardowych nie jest jeszcze dostępna do obsługi żądań. Żądanie powinno zostać powtórzone, po okresie oczekiwania (np. 1 minuta).</td>
   </tr>
   <tr>
     <td>429</td>

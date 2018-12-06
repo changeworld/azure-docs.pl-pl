@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: ryanwi
-ms.openlocfilehash: e4c3bf627c4a5e01c4d9001fcbb0feed0b92209f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e41e5d48141b120ec1f80b0faa899bda07a2934e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008046"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962067"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otwieranie portów dla klastra usługi Service Fabric
 
 Wdrożenia z klastra usługi Azure Service Fabric modułu równoważenia obciążenia kieruje ruch do aplikacji uruchomionej w węźle. Możesz zmienić aplikację, aby użyć innego portu, należy udostępnić ten port (lub kierować inny port) w module równoważenia obciążenia platformy Azure.
 
-Po wdrożeniu klastra usługi Service Fabric na platformie Azure równoważenia obciążenia został utworzony automatycznie. Jeśli nie masz usługi równoważenia obciążenia, zobacz [skonfigurować moduł równoważenia obciążenia dostępnego z Internetu](..\load-balancer\load-balancer-get-started-internet-portal.md).
+Po wdrożeniu klastra usługi Service Fabric na platformie Azure równoważenia obciążenia został utworzony automatycznie. Jeśli nie masz usługi równoważenia obciążenia, zobacz [skonfigurować moduł równoważenia obciążenia dostępnego z Internetu](../load-balancer/load-balancer-get-started-internet-portal.md).
 
 ## <a name="configure-service-fabric"></a>Konfigurowanie usługi Service fabric
 
@@ -33,7 +33,7 @@ Aplikacja usługi Service Fabric **ServiceManifest.xml** pliku konfiguracyjnego 
 
 ## <a name="create-a-load-balancer-rule"></a>Tworzenie reguły modułu równoważenia obciążenia
 
-Reguła modułu równoważenia obciążenia otwiera port połączone z Internetem i przekazuje ruch na porcie węzła wewnętrznych używanych przez aplikację. Jeśli nie masz usługi równoważenia obciążenia, zobacz [skonfigurować moduł równoważenia obciążenia dostępnego z Internetu](..\load-balancer\load-balancer-get-started-internet-portal.md).
+Reguła modułu równoważenia obciążenia otwiera port połączone z Internetem i przekazuje ruch na porcie węzła wewnętrznych używanych przez aplikację. Jeśli nie masz usługi równoważenia obciążenia, zobacz [skonfigurować moduł równoważenia obciążenia dostępnego z Internetu](../load-balancer/load-balancer-get-started-internet-portal.md).
 
 Aby utworzyć regułę modułu równoważenia obciążenia, należy zebrać następujące informacje:
 
@@ -68,7 +68,7 @@ Polecenie wiersza polecenia platformy Azure ma kilka parametrów, które są opi
 
 
 >[!NOTE]
->Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure, zobacz [Tworzenie modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure](..\load-balancer\load-balancer-get-started-internet-arm-cli.md).
+>Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure, zobacz [Tworzenie modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -104,7 +104,7 @@ $lb | Set-AzureRmLoadBalancer
 Dotyczące `New-AzureRmLoadBalancerRuleConfig` polecenia `-FrontendPort` reprezentuje port modułu równoważenia obciążenia uwidacznia dla połączeń zewnętrznych i `-BackendPort` reprezentuje port nasłuchuje aplikacji usługi Service fabric.
 
 >[!NOTE]
->Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia przy użyciu programu PowerShell, zobacz [Utwórz moduł równoważenia obciążenia przy użyciu programu PowerShell](..\load-balancer\load-balancer-get-started-internet-arm-ps.md).
+>Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia przy użyciu programu PowerShell, zobacz [Utwórz moduł równoważenia obciążenia przy użyciu programu PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

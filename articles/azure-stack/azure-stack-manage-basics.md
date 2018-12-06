@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254523"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972392"
 ---
 # <a name="azure-stack-administration-basics"></a>Podstawy administracji w usłudze Azure Stack
 Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack administracji. Niniejsze wskazówki zawiera omówienie Twojej roli jako operatorów usługi Azure Stack i co jest potrzebne do Poinformuj użytkowników dla nich, aby szybko stać się produktywności.
@@ -32,9 +32,9 @@ Jeśli używasz to system zintegrowany z usługi Azure Stack zaktualizowanych we
  
 ### <a name="development-kit"></a>Zestaw Development kit
 
-Jeśli używasz usługi Azure Stack Development Kit, zapoznaj się z [co to jest usługa Azure Stack?](.\asdk\asdk-what-is.md) artykuł, aby upewnić się, że zrozumienie przeznaczenia deweloperski i jego pewne ograniczenia. Zestaw development kit należy używać jako "piaskownicy," gdzie możesz oceny usługi Azure Stack i opracowywać i testować aplikacje w środowisku nieprodukcyjnym. (Aby uzyskać informacje na temat wdrażania, zobacz [wdrożenia usługi Azure Stack Development Kit](.\asdk\asdk-install.md) artykułu.)
+Jeśli używasz usługi Azure Stack Development Kit, zapoznaj się z [co to jest usługa Azure Stack?](./asdk/asdk-what-is.md) artykuł, aby upewnić się, że zrozumienie przeznaczenia deweloperski i jego pewne ograniczenia. Zestaw development kit należy używać jako "piaskownicy," gdzie możesz oceny usługi Azure Stack i opracowywać i testować aplikacje w środowisku nieprodukcyjnym. (Aby uzyskać informacje na temat wdrażania, zobacz [wdrożenia usługi Azure Stack Development Kit](./asdk/asdk-install.md) artykułu.)
 
-Takich jak Azure możemy szybkie innowacje. Regularnie udostępnimy nowe kompilacje. Jeśli korzystasz z deweloperski i chcesz przenieść od ostatniej kompilacji, należy najpierw [ponowne wdrażanie usługi Azure Stack](.\asdk\asdk-redeploy.md). Nie można zastosować pakietów aktualizacji. Ten proces trwa, ale ma można wypróbować najnowsze funkcje. Dokumentacji zestawu dla deweloperów w witrynie odzwierciedla najnowszej kompilacji wydania.
+Takich jak Azure możemy szybkie innowacje. Regularnie udostępnimy nowe kompilacje. Jeśli korzystasz z deweloperski i chcesz przenieść od ostatniej kompilacji, należy najpierw [ponowne wdrażanie usługi Azure Stack](./asdk/asdk-redeploy.md). Nie można zastosować pakietów aktualizacji. Ten proces trwa, ale ma można wypróbować najnowsze funkcje. Dokumentacji zestawu dla deweloperów w witrynie odzwierciedla najnowszej kompilacji wydania.
 
 ## <a name="learn-about-available-services"></a>Dowiedz się więcej o dostępnych usług
 

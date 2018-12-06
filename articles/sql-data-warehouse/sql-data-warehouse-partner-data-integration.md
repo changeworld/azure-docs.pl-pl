@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f3e45d62f5117ade9109733d3cc5aba629bf9c7d
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 09be96a4a6fd4e36412e4e0958683a14873e172d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389738"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961828"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partnerów integracji danych SQL Data Warehouse
 Aby utworzyć swoje rozwiązanie magazynu danych, wybierz z szerokiej gamy narzędzi wiodące w branży. W tym artykule przedstawiono firm partnerskich firmy Microsoft przy użyciu rozwiązania integracji danych, obsługa usługi Azure SQL Data Warehouse.
@@ -70,7 +70,7 @@ Aby dowiedzieć się więcej na temat innych partnerów, zobacz [analizy bizneso
 <!--Website Links -->
 [alteryx_designer_website]:http://www.alteryx.com/partners/microsoft/
 [attunity_cloudbeam_website]:http://www.attunity.com/attunity-cloudbeam-for-azure/
-[bryte_systems_azure_website]:http://www.bryte.com.au/azure-integration/
+[bryte_systems_azure_website]:http://www.bryteflow.com/
 [informatica_Cloud_Services_website]:https://www.informatica.com/products/cloud-integration.html
 [informatica_PowerCenter_website]:https://www.informatica.com/products/data-integration/powercenter.html
 [redgate_website]:http://dataplatformstudio.com/

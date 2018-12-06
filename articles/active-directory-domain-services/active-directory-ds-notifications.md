@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: f5049d6092bfc6b3f70ebafdc501e02ad9fe7936
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c6d827629850de88940f41febeeca61b812d692e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431396"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958529"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Ustawienia powiadomień w usługach domenowych Azure AD
 
@@ -41,7 +41,7 @@ Na stronie wyświetla listę wszystkich adresatów wiadomości e-mail dla powiad
 
 Poniższej ilustracji przedstawiono przykład wiadomość e-mail z powiadomieniem:
 
-![Przykład powiadomienia e-mail](.\media\active-directory-domain-services-alerts\email-alert.png)
+![Przykład powiadomienia e-mail](./media/active-directory-domain-services-alerts/email-alert.png)
 
 Adres e-mail Określa domeny zarządzanej, który ten alert jest obecny na, zapewniając czas wykrycia oraz link do strony kondycji usług domenowych Azure AD w witrynie Azure portal.
 

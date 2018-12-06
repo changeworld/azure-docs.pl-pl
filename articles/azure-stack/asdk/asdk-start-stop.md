@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0b1affb708a8d481a1378fa691b6547865b0b214
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340923"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963593"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Uruchamianie i zatrzymywanie usługi Azure Stack Development Kit (ASDK)
 Wystarczy ponownie uruchomić komputer-host ASDK jest niezalecane. Zamiast tego należy wykonać procedury opisane w tym artykule, aby poprawnie zamknąć i ponownie uruchomić usługi ASDK. 
@@ -62,7 +62,7 @@ Niezależnie od tego, jak ASDK został zamknięty powinny wykonaj następujące 
    ```
 6. Przejrzyj dane wyjściowe, aby upewnić się, że usługi Azure Stack ponownym uruchomieniu pomyślnie.
 
-Aby dowiedzieć się więcej na temat procedury zalecane poprawnie zamknąć i ponownie uruchomić usługi Azure Stack, zobacz [uruchamianie i zatrzymywanie usługi Azure Stack](.\.\azure-stack-start-and-stop.md). 
+Aby dowiedzieć się więcej na temat procedury zalecane poprawnie zamknąć i ponownie uruchomić usługi Azure Stack, zobacz [uruchamianie i zatrzymywanie usługi Azure Stack](../azure-stack-start-and-stop.md). 
 
 ## <a name="troubleshoot-startup-and-shutdown"></a>Rozwiązywanie problemów z uruchamiania i zamykania 
 Jeśli usługi Azure Stack nie uruchamia się pomyślnie w ciągu dwóch godzin od zasilania na komputerze hosta ASDK, wykonaj następujące kroki:
@@ -79,7 +79,7 @@ Jeśli usługi Azure Stack nie uruchamia się pomyślnie w ciągu dwóch godzin 
    ```powershell
    Test-AzureStack
    ```
-5. Przejrzyj dane wyjściowe i usuń wszelkie błędy. Aby uzyskać więcej informacji, zobacz [uruchomienie testu poprawności z usługi Azure Stack](.\.\azure-stack-diagnostic-test.md).
+5. Przejrzyj dane wyjściowe i usuń wszelkie błędy. Aby uzyskać więcej informacji, zobacz [uruchomienie testu poprawności z usługi Azure Stack](../azure-stack-diagnostic-test.md).
 6. Uruchom ponownie usługi Azure Stack w ramach sesji program ten uruchamiając **Start AzureStack** polecenia cmdlet:
 
    ```powershell
@@ -89,4 +89,4 @@ Jeśli usługi Azure Stack nie uruchamia się pomyślnie w ciągu dwóch godzin 
 Jeśli uruchomiona **Start AzureStack** powoduje błąd, odwiedź stronę [forum pomocy technicznej usługi Azure Stack](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) można pobrać ASDK Rozwiązywanie problemów z pomocy technicznej. 
 
 ## <a name="next-steps"></a>Kolejne kroki 
-Dowiedz się więcej na temat narzędzia diagnostycznego usługi Azure Stack i wystawiać rejestrowania, zobacz [narzędzi diagnostycznych w usłudze Azure Stack](.\.\azure-stack-diagnostics.md).
+Dowiedz się więcej na temat narzędzia diagnostycznego usługi Azure Stack i wystawiać rejestrowania, zobacz [narzędzi diagnostycznych w usłudze Azure Stack](../azure-stack-diagnostics.md).

@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 878c2596a1d884e26a4b4a4ed4764cfd9ce6b39b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424104"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962583"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>Protokoły — przy użyciu niejawnego przepływu aplikacji jednostronicowych w wersji 2.0
 
@@ -36,7 +36,7 @@ Z punktem końcowym v2.0 może zalogować się użytkowników do aplikacji jedno
 
 W przypadku tych aplikacji (AngularJS, Ember.js, React.js itp.) usługi Azure Active Directory (Azure AD) obsługuje przepływ przyznawanie niejawne protokołu OAuth 2.0. Niejawny przepływ jest opisana w [OAuth 2.0 specyfikacji](https://tools.ietf.org/html/rfc6749#section-4.2). Jego główną Korzyścią płynącą jest możliwość aplikację, aby uzyskać tokenów z usługi Azure AD bez przeprowadzania serwera wewnętrznej bazy danych programu exchange poświadczeń. Umożliwia to aplikacji, loguje użytkownika, zachować sesję i uzyskiwanie tokenów do innych interfejsów API sieci web w klienta kodu JavaScript. Istnieje kilka ważne zagadnienia dotyczące zabezpieczeń można wziąć pod uwagę podczas korzystania z niejawnym przepływem specjalnie około [klienta](https://tools.ietf.org/html/rfc6749#section-10.3) i [personifikacji użytkownika](https://tools.ietf.org/html/rfc6749#section-10.3).
 
-Jeśli chcesz dodać uwierzytelnianie do aplikacji JavaScript za pomocą niejawny przepływ i usługa Azure AD, zalecamy użycie biblioteki JavaScript typu open source, [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js). 
+Jeśli chcesz dodać uwierzytelnianie do aplikacji JavaScript za pomocą niejawny przepływ i usługa Azure AD, zalecamy użycie biblioteki JavaScript typu open source, [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
 Jednak jeśli nie chcesz używać biblioteki w aplikacji jednostronicowej i wysyłać wiadomości protokołu samodzielnie, należy wykonać poniższe ogólne kroki.
 
@@ -71,7 +71,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Aby przetestować logowanie się przy użyciu niejawnego przepływu, kliknij pozycję <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank"> https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a> Po zarejestrowaniu się w przeglądarce powinno zostać przekierowane do `https://localhost/myapp/` z `id_token` na pasku adresu.
-> 
+>
 
 | Parametr |  | Opis |
 | --- | --- | --- |

@@ -11,19 +11,19 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 20867b6bfecb981a9bc47180cb39a1c489b19d2f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240889"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959754"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Aprowizacja maszyny wirtualnej do nauki o danych Windows na platformie Azure
 Microsoft Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej (VM) platformy Windows Azure. Ma wstępnie zainstalowane i skonfigurowane za pomocą kilku narzędzi, które są używane do analizy danych i uczenia maszynowego. Uwzględnione są następujące narzędzia:
 
-* [Usługi Azure Machine Learning](../service/index.yml) aplikacji Workbench.
+* [Usługa Azure Machine Learning](../service/index.yml) zestawu SDK języka Python.
 * [Serwer Microsoft Machine Learning](https://docs.microsoft.com/machine-learning-server/index) Developer edition.
 * Anaconda Python dystrybucji.
 * Notes Jupyter przy użyciu języka R i Python oraz PySpark jądra.
@@ -77,7 +77,7 @@ Aby utworzyć wystąpienie programu Microsoft maszyny wirtualnej analizy danych,
 
     i. **Nazwa**. Nazwa serwera do nauki o danych, który tworzysz.  
 
-    II. **Typ dysku maszyny Wirtualnej**. Wybierz **SSD** lub **HDD**. W przypadku wystąpienia procesora GPU NC_v1 takich jak procesory GPU NVidia Tesla K80 na podstawie wybierz **HDD** jako typ dysku.   
+    ii. **Typ dysku maszyny Wirtualnej**. Wybierz **SSD** lub **HDD**. W przypadku wystąpienia procesora GPU NC_v1 takich jak procesory GPU NVidia Tesla K80 na podstawie wybierz **HDD** jako typ dysku.   
 
     III. **Nazwa użytkownika**. Identyfikator konta administratora do logowania.   
 
@@ -95,7 +95,7 @@ Aby utworzyć wystąpienie programu Microsoft maszyny wirtualnej analizy danych,
 
     i. **Użyj usługi Managed Disks**. Wybierz **zarządzane** chcącym platformy Azure do zarządzania dyskami maszyny wirtualnej. W przeciwnym razie należy określić konto magazynu w nowym lub istniejącym.  
 
-    II. **Inne parametry**. Można użyć wartości domyślnych. Jeśli chcesz użyć wartości innej niż domyślna, umieść kursor nad informacyjny łącze, aby uzyskać pomoc dotyczącą określonych pól.  
+    ii. **Inne parametry**. Można użyć wartości domyślnych. Jeśli chcesz użyć wartości innej niż domyślna, umieść kursor nad informacyjny łącze, aby uzyskać pomoc dotyczącą określonych pól.  
 
   d. **Podsumowanie**. Sprawdź, czy wszystkie wprowadzone informacje jest poprawna. Wybierz pozycję **Utwórz**. 
 
@@ -150,7 +150,7 @@ Otwórz program Visual Studio przez dwukrotne kliknięcie ikony pulpitu lub **St
 * Usługa Azure HDInsight Hadoop i Spark
 * Azure Data Lake 
 
-Istnieje również wtyczki, wywoływana ```Visual Studio Tools for AI``` który bezproblemowo integruje się do usługi Azure Machine Learning i pomaga szybko Twórz aplikacje sztucznej Inteligencji. 
+Istnieje również wtyczki, wywoływana ```Azure Machine Learning for Visual Studio Code``` który bezproblemowo integruje się do usługi Azure Machine Learning i pomaga szybko Twórz aplikacje sztucznej Inteligencji. 
 
 > [!NOTE]
 > Możesz otrzymać komunikat, okres próbny wygasł. Wprowadź poświadczenia konta Microsoft. Lub Utwórz nowe bezpłatne konto, aby uzyskać dostęp do programu Visual Studio Community. 
@@ -193,13 +193,13 @@ Kilku narzędzi platformy Azure są zainstalowane na maszynie Wirtualnej:
 > 
 > 
 
-### <a name="azure-machine-learning-workbench"></a>Środowisko robocze usługi Azure Machine Learning
+### <a name="azure-machine-learning-service-python-sdk"></a>Usługa Azure Machine Learning zestawu SDK języka Python
 
-Usługa Azure Machine Learning Workbench jest aplikacja klasyczna i interfejs wiersza polecenia. Usługa workbench została wbudowana funkcja przygotowywania danych, która uczy się procedury przygotowywania danych, ponieważ należy wykonać. Umożliwia także zarządzanie projektami, historii uruchamiania i integracji z notesem zwiększyć produktywność. 
+Zestaw Azure Machine Learning SDK for Python jest używany przez analityków danych i deweloperom sztucznej Inteligencji, aby skompilować i uruchomić machine learning z przepływów pracy za pomocą [usługi Azure Machine Learning](../service/overview-what-is-azure-ml.md). Możesz porozmawiać z usługi w dowolnym środowisku Python, w tym notesów programu Jupyter lub ulubionego środowiska IDE języka Python, przy użyciu struktur typu open source, takich jak TensorFlow i scikit-Dowiedz się więcej.
 
-Możesz użyć platform typu open source, w tym TensorFlow, Cognitive Toolkit, Spark ML i scikit-dowiedzieć się, tworzenie modeli. Na nauki, firma Microsoft zapewnia ikony pulpitu, do zainstalowania aplikacji Azure Machine Learning Workbench do indywidualnego użytkownika **% LOCALAPPDATA %** katalogu. 
+Aby rozpocząć pracę, przy użyciu zestawu SDK języka Python, zobacz [za pomocą języka Python Rozpoczynanie pracy z usługą Azure Machine Learning](../service/quickstart-create-workspace-with-python.md).
 
-Każdy użytkownik aplikacji workbench, należy wykonać to działanie jednorazowe. Kliknij dwukrotnie ```AzureML Workbench Setup``` ikony pulpitu, aby zainstalować wystąpienie aplikacji workbench. Usługa Azure Machine Learning również tworzone i używane dla użytkownika środowisko Python, które zostały wyodrębnione w **%LOCALAPPDATA%\amlworkbench\python** katalogu.
+Zestaw SDK języka Python jest preinstalowany na Microsoft maszyny wirtualnej analizy danych.
 
 ## <a name="more-microsoft-development-tools"></a>Więcej narzędzi programistycznych firmy Microsoft
 [Instalatora platformy sieci Web firmy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx) jest używany w celu znalezienia i pobrania innych narzędzi programistycznych firmy Microsoft. Istnieje również skrót do narzędzia podane na pulpicie maszyny wirtualnej do nauki o danych firmy Microsoft.  
@@ -215,7 +215,6 @@ Każdy użytkownik aplikacji workbench, należy wykonać to działanie jednorazo
 | Microsoft Machine Learning Server (autonomiczna) w języku Python | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | Wystąpienia domyślnego języka R, serwer Machine Learning (Wersja autonomiczna) | C:\Program Files\Microsoft\ML Server\R_SERVER |
 | Katalog wystąpienia w bazie danych SQL Machine Learning Services | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
-| Usługa Azure Machine Learning Workbench, na użytkownika | %localappdata%\amlworkbench | 
 | Różne narzędzia | c:\dsvm\tools |
 
 > [!NOTE]
@@ -226,7 +225,7 @@ Każdy użytkownik aplikacji workbench, należy wykonać to działanie jednorazo
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Odkryj narzędzia i na maszyny Wirtualnej do analizy danych, wybierając **Start** menu.
-* Informacje na temat usług Azure Machine Learning i aplikacji Workbench, odwiedzając produktu [strony Szybki Start i samouczków](../service/index.yml). 
+* Dowiedz się więcej o usłudze Azure Machine Learning, czytając [co to jest usługa Azure Machine Learning?](../service/overview-what-is-azure-ml.md) i wypróbować [przewodników Szybki Start i samouczki](../service/index.yml) , które są dostępne.
 * Przejdź do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** przykładów, korzystające z biblioteki kolekcję funkcji RevoScaleR w języku R, który obsługuje analizy danych w skali przedsiębiorstwa.  
 * Przeczytaj artykuł [dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych](https://aka.ms/dsvmtenthings).
 * Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](../team-data-science-process/index.yml).

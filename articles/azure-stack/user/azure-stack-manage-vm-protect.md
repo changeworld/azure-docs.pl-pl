@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 3c27aecf18fcb5e14347d8f02d71891b351292be
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 87ba13334b037f7eb47264a120bb91b2be5f8a79
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341841"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963917"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrona maszyn wirtualnych wdrożonych w usłudze Azure Stack
 
@@ -58,7 +58,7 @@ Zaplanuj strategię odzyskiwania kopii zapasowych i odzyskiwania po awarii dla k
 | **Usługa Azure Stack wdrożone w centrum danych dostawcy usług Kryptograficznych i eksploatowane przy pomocy dostawcy CSP** | Użytkownik maszyny wirtualne są wdrażane do dostawcy usług Kryptograficznych obsługiwane usługi Azure Stack. Maszyny wirtualne użytkowników przywróconej z kopii zapasowej lub Failover bezpośrednio na platformie Azure. | Dostawcy usług Kryptograficznych działa głównych i dodatkowych wystąpień usługi Azure Stack w ich własnych centrach danych. Maszyny wirtualne użytkowników są przywracane lub przełączone w tryb failover między dwoma wystąpieniami usługi Azure Stack. | Dostawcy usług Kryptograficznych działa w usłudze Azure Stack w lokacji głównej. Centrum danych klienta jest celem przywracania lub pracy awaryjnej. |
 | **Usługa Azure Stack wdrożone w centrum danych klienta i obsługiwane przez klienta** | Użytkownik maszyny wirtualne są wdrażane na klienta obsługiwane w usłudze Azure Stack. Maszyny wirtualne użytkowników przywróconej z kopii zapasowej lub Failover bezpośrednio na platformie Azure. | Klient działa głównych i dodatkowych wystąpień usługi Azure Stack w ich własnych centrach danych. Maszyny wirtualne użytkowników są przywracane lub przełączone w tryb failover między dwoma wystąpieniami usługi Azure Stack. | Klient działa w usłudze Azure Stack w lokacji głównej. Centrum danych dostawcy rozwiązań w Chmurze jest celem przywracania lub pracy awaryjnej. |
 
-![Kombinacje źródło cel](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
+![Kombinacje źródło cel](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
 ## <a name="application-recovery-objectives"></a>Cele odzyskiwania aplikacji
 
@@ -77,7 +77,7 @@ Jest kolejną metrykę **średniego czasu odzyskiwanie** (MTTR), czyli Średni c
 
 Najbardziej typowe schemat ochrony dla aplikacji opartych na maszynie Wirtualnej jest użycie oprogramowania do tworzenia kopii zapasowej. Tworzenie kopii zapasowej maszyny Wirtualnej zwykle zawiera system operacyjny, konfiguracja systemu operacyjnego, plików binarnych aplikacji i danych aplikacji. Kopie zapasowe są tworzone przez wykonanie migawki woluminów, dysków lub całą maszynę Wirtualną. Dzięki usłudze Azure Stack elastyczność tworzenia kopii zapasowych z w ramach systemu operacyjnego gościa lub z magazynu usługi Azure Stack i obliczenia interfejsów API. Usługa Azure Stack nie obsługuje wykonywanie kopii zapasowych, na poziomie funkcji hypervisor.
  
-![Kopia zapasowa restor](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
+![Kopia zapasowa restor](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
 
 Odzyskiwanie aplikacji wymaga, aby przywracanie przynajmniej jednej maszyny wirtualnej do tej samej chmurze lub do nowej chmury. Można wskazać chmurę w centrum danych lub chmury publicznej. Chmury, któremu możesz wybrać, jest w całości w ramach kontroli nad i opiera się na wymagania dotyczące ochrony prywatności i niezależność danych.
  
@@ -107,7 +107,7 @@ Alternatywne podejście do obsługi wysokiej dostępności jest replikacja maszy
 
 Dzięki tej metodzie aplikacja jest wdrażana w chmurze jeden i jego maszyny Wirtualnej są replikowane do innych chmury. W przypadku przejścia w tryb failover zostaje wyzwolona, pomocniczej maszyny wirtualne muszą włączony w chmurze drugiego. W niektórych scenariuszach tryb failover tworzy dyski maszyn wirtualnych oraz dołącza do nich. Ten proces może potrwać długo, szczególnie w przypadku aplikacji wielowarstwowych, wymagającego sekwencji rozruchu określone. Można również kroki, które mają zostać wykonane, zanim aplikacja jest gotowa do uruchomienia, obsługi żądań.
 
-![Replikacja ręcznej pracy awaryjnej](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
+![Replikacja ręcznej pracy awaryjnej](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
  - Cel czasu odzyskiwania: Przestojów w minutach
  - Cel punktu odzyskiwania: Utraty danych zmiennej (w zależności od częstotliwości replikacji)

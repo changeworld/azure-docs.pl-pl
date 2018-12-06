@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87d2ebcf6a12f51775b15e906ea7813962e3630f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242810"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965380"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -709,7 +709,7 @@ OriginalUrl.
 |----------|-----------------|--------------|
 |przekształcenia XSL|Element główny.|Yes|
 |parametr|Używane do definiowania zmiennych używanych w transformacji|Nie|
-|{1|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](http://www.w3.org/TR/xslt)|Yes|
+|{1|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Yes|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).

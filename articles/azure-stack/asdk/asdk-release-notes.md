@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: c9ac1c228fd3fd4ba666fd7881e387d79929ed9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a4be229e1c491c3062b14e631cfec5b14185bb82
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869963"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957667"
 ---
 # <a name="asdk-release-notes"></a>Informacje o wersji ASDK  
-Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit (ASDK). Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](.\.\azure-stack-updates.md#determine-the-current-version).
+Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit (ASDK). Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](../azure-stack-updates.md#determine-the-current-version).
 
 > Na bieżąco what's new in ASDK subskrybując [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [kanału informacyjnego](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
@@ -180,13 +180,13 @@ Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Az
 Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Stack.  
 
 <!-- 1658937 | ASDK, IS --> 
-- **Rozpocznij tworzenie kopii zapasowych zgodnie ze wstępnie zdefiniowanym harmonogramem** — znajduje się urządzenie, w usłudze Azure Stack można teraz automatycznie wyzwoli infrastruktury kopii zapasowych, okresowo, aby wyeliminować interwencji człowieka. Usługi Azure Stack będą również automatycznie wyczyścić udziału zewnętrznego dla kopii zapasowych, które są starsze niż okres przechowywania zdefiniowany. Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **Rozpocznij tworzenie kopii zapasowych zgodnie ze wstępnie zdefiniowanym harmonogramem** — znajduje się urządzenie, w usłudze Azure Stack można teraz automatycznie wyzwoli infrastruktury kopii zapasowych, okresowo, aby wyeliminować interwencji człowieka. Usługi Azure Stack będą również automatycznie wyczyścić udziału zewnętrznego dla kopii zapasowych, które są starsze niż okres przechowywania zdefiniowany. Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](../azure-stack-backup-enable-backup-powershell.md).
 
 <!-- 2496385 | ASDK, IS -->  
-- **Dodane dane transferu czasu, do łącznego czasu tworzenia kopii zapasowej.** Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **Dodane dane transferu czasu, do łącznego czasu tworzenia kopii zapasowej.** Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](../azure-stack-backup-enable-backup-powershell.md).
 
 <!-- 1702130 | ASDK, IS --> 
-- **Pojemność zewnętrznych kopii zapasowych zawiera obecnie prawidłowe pojemności udziału zewnętrznego.** (Wcześniej było to trwale kodować do 10 GB.) Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **Pojemność zewnętrznych kopii zapasowych zawiera obecnie prawidłowe pojemności udziału zewnętrznego.** (Wcześniej było to trwale kodować do 10 GB.) Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](../azure-stack-backup-enable-backup-powershell.md).
  
 <!-- 2753130 |  IS, ASDK   -->  
 - **Szablony usługi Azure Resource Manager obsługuje teraz elementu warunek** — teraz można wdrożyć zasobów w szablonie usługi Azure Resource Manager przy użyciu warunku. Można zaprojektować szablon, aby wdrożyć zasób, w oparciu o warunek, np. Sprawdzanie, czy występuje wartość parametru. Aby dowiedzieć się, jak przy użyciu szablonu jako warunek, zobacz [warunkowe wdrażanie zasobu](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy) i [sekcji zmiennych szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables) w dokumentacji platformy Azure. 
@@ -194,7 +194,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
    Można również użyć szablonów [wdrażanie zasobów na więcej niż jedną subskrypcję lub grupę zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment).  
 
 <!--2753073 | IS, ASDK -->  
-- **Obsługa wersji zasobu Microsoft.Network interfejsu API zostały zaktualizowane** obsługę interfejsu API w wersji 2017-10-01 od 2015-06-15 dotyczące zasobów sieciowych w usłudze Azure Stack. Obsługa wersji zasobu od 2017-10-01 i 2015-06-15 jest niedostępna w tej wersji. Zapoznaj się [zagadnienia dotyczące sieci usługi Azure Stack](.\.\user\azure-stack-network-differences.md) dla różnice w funkcjonalności.
+- **Obsługa wersji zasobu Microsoft.Network interfejsu API zostały zaktualizowane** obsługę interfejsu API w wersji 2017-10-01 od 2015-06-15 dotyczące zasobów sieciowych w usłudze Azure Stack. Obsługa wersji zasobu od 2017-10-01 i 2015-06-15 jest niedostępna w tej wersji. Zapoznaj się [zagadnienia dotyczące sieci usługi Azure Stack](../user/azure-stack-network-differences.md) dla różnice w funkcjonalności.
 
 <!-- 2272116 | IS, ASDK   -->  
 - **Usługa Azure Stack dodano obsługę wstecznego wyszukiwania DNS dla zewnętrznie połączonego z punktów końcowych infrastruktury Azure Stack** (które jest przeznaczone dla portalu, adminportal, zarządzania i adminmanagement). Dzięki temu nazwy zewnętrzny punkt końcowy usługi Azure Stack, aby być rozwiązane wyłącznie z adresu IP.
@@ -222,7 +222,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 - **Usługa Azure Resource Manager zawiera nazwę regionu.** W tej wersji pobrane z usługi Azure Resource Manager obiekty będzie teraz obejmować atrybucie nazwy w regionie. Jeśli istniejący skrypt programu PowerShell bezpośrednio przekazuje obiekt do innego polecenia cmdlet, skrypt może powodować błąd i zakończyć się niepowodzeniem. To jest zachowanie zgodne z usługi Azure Resource Manager i wymaga klienta wywołującego do odjęcia atrybut regionu. Aby uzyskać więcej informacji na temat usługi Azure Resource Manager, zobacz [dokumentacja usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/).
 
 <!-- TBD | IS, ASDK -->  
-- **Przenieś subskrypcje między dostawcami delegowane.** Możesz teraz przejść subskrypcje subskrypcjami nowej lub istniejącej delegowane dostawcy, które należą do tej samej dzierżawie katalogu. Subskrypcje należące do subskrypcji dostawcy domyślne można także przenosić do subskrypcji dostawcy delegowana w tej samej dzierżawie katalogu. Aby uzyskać więcej informacji, zobacz [delegowanie ofert w usłudze Azure Stack](.\.\azure-stack-delegated-provider.md).
+- **Przenieś subskrypcje między dostawcami delegowane.** Możesz teraz przejść subskrypcje subskrypcjami nowej lub istniejącej delegowane dostawcy, które należą do tej samej dzierżawie katalogu. Subskrypcje należące do subskrypcji dostawcy domyślne można także przenosić do subskrypcji dostawcy delegowana w tej samej dzierżawie katalogu. Aby uzyskać więcej informacji, zobacz [delegowanie ofert w usłudze Azure Stack](../azure-stack-delegated-provider.md).
  
 <!-- 2536808 IS ASDK --> 
 - **Ulepszone czas tworzenia maszyny Wirtualnej** dla maszyn wirtualnych, które zostały utworzone z obrazów, możesz pobrać z witryny Azure marketplace.
@@ -246,7 +246,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 - Listy kopii zapasowych Odświeża teraz, gdy ręcznie usunąć kopii zapasowej z udziału zewnętrznego.
 
 <!-- 2360715 |  ASDK, IS -->  
-- Po skonfigurowaniu integracji centrum danych nie jest już dostępu usług AD FS plik metadanych z udziału. Aby uzyskać więcej informacji, zobacz [konfigurowania integracji usług AD FS, zapewniając pliku metadanych Federacji](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+- Po skonfigurowaniu integracji centrum danych nie jest już dostępu usług AD FS plik metadanych z udziału. Aby uzyskać więcej informacji, zobacz [konfigurowania integracji usług AD FS, zapewniając pliku metadanych Federacji](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
 <!-- 2388980 | ASDK, IS --> 
 - Rozwiązano problem uniemożliwił użytkownikom możliwość przypisania istniejącego publicznego adresu IP, gdyby zostały wcześniej przypisane do interfejsu sieciowego lub modułu równoważenia obciążenia do nowego interfejsu sieciowego lub modułu równoważenia obciążenia.  
@@ -269,7 +269,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 <!--  TBD ASDK --> 
 - Maszyny wirtualnej, która obsługuje ten punkt końcowy uprawnień (program ten) został zwiększony do 4GB. W ASDK ta maszyna wirtualna ma nazwę AzS ERCS01.
 
-- <!--  TBD – IS, ASDK --> *Podstawowa A* rozmiarów maszyn wirtualnych są wycofywane w przypadku [tworzenie zestawów skalowania maszyn wirtualnych](.\.\azure-stack-compute-add-scalesets.md) (VMSS) za pośrednictwem portalu. Do utworzenia zestawu skalowania maszyn wirtualnych o tym rozmiarze, użyj programu PowerShell lub w szablonie. 
+- <!--  TBD – IS, ASDK --> *Podstawowa A* rozmiarów maszyn wirtualnych są wycofywane w przypadku [tworzenie zestawów skalowania maszyn wirtualnych](../azure-stack-compute-add-scalesets.md) (VMSS) za pośrednictwem portalu. Do utworzenia zestawu skalowania maszyn wirtualnych o tym rozmiarze, użyj programu PowerShell lub w szablonie. 
 
 ### <a name="known-issues"></a>Znane problemy
 
@@ -283,7 +283,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 - Plany, które są dodawane do subskrypcji użytkownika, ponieważ nie można usunąć planu dodatku, nawet wtedy, gdy usuniesz plan z subskrypcji użytkownika. Plan pozostanie, dopóki odwołujące się do planu dodatku subskrypcje zostaną również usunięte. 
 
 <!--2760466 – IS  ASDK --> 
-- Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](.\.\azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji. 
+- Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](../azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji. 
 
 <!-- TBD - IS ASDK --> 
 - Nie można używać dwa typy subskrypcji administracyjne, które zostały wprowadzone w wersji 1804. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **subskrypcję dostawcy domyślne** typu.
@@ -417,17 +417,17 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 ### <a name="new-features"></a>Nowe funkcje
 Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Stack.  
 
-- <!-- 1658937 | ASDK, IS --> **Rozpocznij tworzenie kopii zapasowych zgodnie ze wstępnie zdefiniowanym harmonogramem** — znajduje się urządzenie, w usłudze Azure Stack można teraz automatycznie wyzwoli infrastruktury kopii zapasowych, okresowo, aby wyeliminować interwencji człowieka. Usługi Azure Stack będą również automatycznie wyczyścić udziału zewnętrznego dla kopii zapasowych, które są starsze niż okres przechowywania zdefiniowany. Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- <!-- 1658937 | ASDK, IS --> **Rozpocznij tworzenie kopii zapasowych zgodnie ze wstępnie zdefiniowanym harmonogramem** — znajduje się urządzenie, w usłudze Azure Stack można teraz automatycznie wyzwoli infrastruktury kopii zapasowych, okresowo, aby wyeliminować interwencji człowieka. Usługi Azure Stack będą również automatycznie wyczyścić udziału zewnętrznego dla kopii zapasowych, które są starsze niż okres przechowywania zdefiniowany. Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](../azure-stack-backup-enable-backup-powershell.md).
 
-- <!-- 2496385 | ASDK, IS -->  **Dodane dane transferu czasu, do łącznego czasu tworzenia kopii zapasowej.** Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+- <!-- 2496385 | ASDK, IS -->  **Dodane dane transferu czasu, do łącznego czasu tworzenia kopii zapasowej.** Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](../azure-stack-backup-enable-backup-powershell.md).
 
--   <!-- 1702130 | ASDK, IS -->  **Pojemność zewnętrznych kopii zapasowych zawiera obecnie prawidłowe pojemności udziału zewnętrznego.** (Wcześniej było to trwale kodować do 10 GB.) Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](.\.\azure-stack-backup-enable-backup-powershell.md).
+-   <!-- 1702130 | ASDK, IS -->  **Pojemność zewnętrznych kopii zapasowych zawiera obecnie prawidłowe pojemności udziału zewnętrznego.** (Wcześniej było to trwale kodować do 10 GB.) Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](../azure-stack-backup-enable-backup-powershell.md).
  
 - <!-- 2753130 |  IS, ASDK   -->  **Szablony usługi Azure Resource Manager obsługuje teraz elementu warunek** — teraz można wdrożyć zasobów w szablonie usługi Azure Resource Manager przy użyciu warunku. Można zaprojektować szablon, aby wdrożyć zasób, w oparciu o warunek, np. Sprawdzanie, czy występuje wartość parametru. Aby dowiedzieć się, jak przy użyciu szablonu jako warunek, zobacz [warunkowe wdrażanie zasobu](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy) i [sekcji zmiennych szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables) w dokumentacji platformy Azure. 
 
    Można również użyć szablonów [wdrażanie zasobów na więcej niż jedną subskrypcję lub grupę zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment).  
 
-- <!--2753073 | IS, ASDK -->  **Obsługa wersji zasobu Microsoft.Network interfejsu API zostały zaktualizowane** obsługę interfejsu API w wersji 2017-10-01 od 2015-06-15 dotyczące zasobów sieciowych w usłudze Azure Stack.  Obsługa wersji zasobu od 2017-10-01 i 2015-06-15 jest niedostępna w tej wersji, ale będzie dostępna w przyszłej wersji.  Zapoznaj się [zagadnienia dotyczące sieci usługi Azure Stack](.\.\user\azure-stack-network-differences.md) dla różnice w funkcjonalności.
+- <!--2753073 | IS, ASDK -->  **Obsługa wersji zasobu Microsoft.Network interfejsu API zostały zaktualizowane** obsługę interfejsu API w wersji 2017-10-01 od 2015-06-15 dotyczące zasobów sieciowych w usłudze Azure Stack.  Obsługa wersji zasobu od 2017-10-01 i 2015-06-15 jest niedostępna w tej wersji, ale będzie dostępna w przyszłej wersji.  Zapoznaj się [zagadnienia dotyczące sieci usługi Azure Stack](../user/azure-stack-network-differences.md) dla różnice w funkcjonalności.
 
 - <!-- 2272116 | IS, ASDK   -->  **Usługa Azure Stack dodano obsługę wstecznego wyszukiwania DNS dla zewnętrznie połączonego z punktów końcowych infrastruktury Azure Stack** (które jest przeznaczone dla portalu, adminportal, zarządzania i adminmanagement). Dzięki temu nazwy zewnętrzny punkt końcowy usługi Azure Stack, aby być rozwiązane wyłącznie z adresu IP.
 
@@ -444,11 +444,11 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 
   Ponieważ ta funkcja jest nadal w wersji zapoznawczej, możesz nie należy polegać na niej w środowisku produkcyjnym.
 
-  Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Azure Stack](.\.\azure-stack-integrate-security.md).
+  Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Azure Stack](../azure-stack-integrate-security.md).
 
 - <!-- ####### | IS, ASDK -->  **Usługa Azure Resource Manager zawiera nazwę regionu.** W tej wersji pobrane z usługi Azure Resource Manager obiekty będzie teraz obejmować atrybucie nazwy w regionie. Jeśli istniejący skrypt programu PowerShell bezpośrednio przekazuje obiekt do innego polecenia cmdlet, skrypt może powodować błąd i zakończyć się niepowodzeniem. To jest zachowanie zgodne z usługi Azure Resource Manager i wymaga klienta wywołującego do odjęcia atrybut regionu. Aby uzyskać więcej informacji na temat usługi Azure Resource Manager, zobacz [dokumentacja usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/).
 
-- <!-- TBD | IS, ASDK -->  **Przenieś subskrypcje między dostawcami delegowane.** Możesz teraz przejść subskrypcje subskrypcjami nowej lub istniejącej delegowane dostawcy, które należą do tej samej dzierżawie katalogu. Subskrypcje należące do subskrypcji dostawcy domyślne można także przenosić do subskrypcji dostawcy delegowana w tej samej dzierżawie katalogu. Aby uzyskać więcej informacji, zobacz [delegowanie ofert w usłudze Azure Stack](.\.\azure-stack-delegated-provider.md).
+- <!-- TBD | IS, ASDK -->  **Przenieś subskrypcje między dostawcami delegowane.** Możesz teraz przejść subskrypcje subskrypcjami nowej lub istniejącej delegowane dostawcy, które należą do tej samej dzierżawie katalogu. Subskrypcje należące do subskrypcji dostawcy domyślne można także przenosić do subskrypcji dostawcy delegowana w tej samej dzierżawie katalogu. Aby uzyskać więcej informacji, zobacz [delegowanie ofert w usłudze Azure Stack](../azure-stack-delegated-provider.md).
  
 - <!-- 2536808 IS ASDK --> **Ulepszone czas tworzenia maszyny Wirtualnej** dla maszyn wirtualnych, które zostały utworzone z obrazów, możesz pobrać z witryny Azure marketplace.
 
@@ -464,7 +464,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 
 - <!-- 2215948 |  ASDK, IS --> Listy kopii zapasowych Odświeża teraz, gdy ręcznie usunąć kopii zapasowej z udziału zewnętrznego.
 
-- <!-- 2360715 |  ASDK, IS -->  Po skonfigurowaniu integracji centrum danych nie jest już dostępu usług AD FS plik metadanych z udziału. Aby uzyskać więcej informacji, zobacz [konfigurowania integracji usług AD FS, zapewniając pliku metadanych Federacji](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+- <!-- 2360715 |  ASDK, IS -->  Po skonfigurowaniu integracji centrum danych nie jest już dostępu usług AD FS plik metadanych z udziału. Aby uzyskać więcej informacji, zobacz [konfigurowania integracji usług AD FS, zapewniając pliku metadanych Federacji](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
 - <!-- 2388980 | ASDK, IS --> Rozwiązano problem uniemożliwił użytkownikom możliwość przypisania istniejącego publicznego adresu IP, gdyby zostały wcześniej przypisane do interfejsu sieciowego lub modułu równoważenia obciążenia do nowego interfejsu sieciowego lub modułu równoważenia obciążenia.  
 
@@ -511,7 +511,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 - Nie można zastosować aktualizacje sterowników za pomocą pakietu rozszerzenia producenta OEM w tej wersji usługi Azure Stack.  Nie ma sposobu obejścia tego problemu.
  
 <!-- TBD - IS ASDK --> 
-- Możliwość [otworzyć nowe żądanie obsługi z listy rozwijanej](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) z w ramach administrator portalu nie jest dostępna. Zamiast tego należy użyć następującego linku:     
+- Możliwość [otworzyć nowe żądanie obsługi z listy rozwijanej](../azure-stack-manage-portals.md#quick-access-to-help-and-support) z w ramach administrator portalu nie jest dostępna. Zamiast tego należy użyć następującego linku:     
     - Azure Stack Development Kit, można użyć https://aka.ms/azurestackforum.    
 
 <!-- 2403291 - IS ASDK --> 
@@ -605,7 +605,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 <!-- 2292271 - IS ASDK --> 
 - Jeśli zostanie podniesiony limitu przydziału dla zasobu sieciowego, który jest częścią oferty i Plan, który jest skojarzony z subskrypcją dzierżawy, nowy limit nie ma zastosowania do tej subskrypcji. Jednakże nowy limit dotyczą nowych subskrypcjach, które są tworzone po nastąpi zwiększenie limitu przydziału.
 
-  Aby obejść ten problem, użyj planu dodatku, aby zwiększyć limit przydziału sieci, gdy plan jest już skojarzony z subskrypcją. Aby uzyskać więcej informacji, zobacz instrukcje [udostępnić planu dodatku](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
+  Aby obejść ten problem, użyj planu dodatku, aby zwiększyć limit przydziału sieci, gdy plan jest już skojarzony z subskrypcją. Aby uzyskać więcej informacji, zobacz instrukcje [udostępnić planu dodatku](../azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
 
 <!-- 2304134 IS ASDK --> 
 - Nie można usunąć subskrypcji, która zawiera zasoby strefy DNS lub skojarzone z nią zasoby tabeli tras. Aby pomyślnie usunąć subskrypcję, musisz najpierw usunąć strefy DNS i tabelę tras zasobów z subskrypcji dzierżawcy.

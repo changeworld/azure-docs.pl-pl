@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a343b01b89bfbe9bc047c0b8b703b975b21b6290
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e099240d3f8670032ff2d6c0fad295c5f14f6e70
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901882"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969366"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Instalacja ASDK zadania po konfiguracji
 
@@ -41,7 +41,7 @@ Profilami wersji interfejsu API można użyć do określenia zgodne modułów Az
 Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połączenia internetowego z komputera hosta ASDK:
 
 > [!IMPORTANT]
-> Przed rozpoczęciem instalacji wymaganej wersji, upewnij się, że możesz [Odinstaluj wszystkie istniejące moduły programu Azure PowerShell](.\.\azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules).
+> Przed rozpoczęciem instalacji wymaganej wersji, upewnij się, że możesz [Odinstaluj wszystkie istniejące moduły programu Azure PowerShell](../azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules).
 
 - **Połączenie z Internetem** z komputera hosta ASDK. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły w rozwoju instalacji zestawu:
 
@@ -173,7 +173,7 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 ## <a name="enable-multi-tenancy"></a>Włączanie wielodostępu
 
-W przypadku wdrożeń za pomocą usługi Azure AD, musisz [Włączanie wielodostępu](.\.\azure-stack-enable-multitenancy.md#enable-multi-tenancy) ASDK instalacji.
+W przypadku wdrożeń za pomocą usługi Azure AD, musisz [Włączanie wielodostępu](../azure-stack-enable-multitenancy.md#enable-multi-tenancy) ASDK instalacji.
 
 > [!NOTE]  
 > W przypadku używania konta administratora lub użytkownika z domen innych niż ta, używane do rejestrowania usługi Azure Stack zalogować się do portalu Azure Stack nazwy domeny używane do rejestrowania usługi Azure Stack musi być przypisany do portalu adresu url. Na przykład, jeśli usługi Azure Stack został zarejestrowany za pomocą fabrikam.onmicrosoft.com i konto użytkownika, logowanie jest admin@contoso.com, adres URL na potrzeby zaloguj się do portalu użytkownika: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.

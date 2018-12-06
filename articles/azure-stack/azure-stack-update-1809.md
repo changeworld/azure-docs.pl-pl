@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2018
+ms.date: 12/05/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: bcb135e19796bcab8a8e06e3c1896b247188a58c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314676"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970845"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -57,7 +57,7 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 <!-- TBD - IS ASDK --> 
 - Rozwiązano problem, w której maszyny wirtualne są tworzone w portalu użytkowników usługi Azure Stack, a portalem wyświetlane niepoprawną liczbę dysków z danymi, które można dołączyć do maszyny Wirtualnej serii DS. Maszyny wirtualne z serii DS może obsłużyć tyle dysków z danymi konfiguracji platformy Azure.
 
-- Następujące problemy z dysków zarządzanych zostały usunięte w 1809 i również zostały usunięte w 1808 [usługi Azure Stack poprawkę 1.1808.5.110](https://support.microsoft.com/help/4468920/): 
+- Następujące problemy z dysków zarządzanych zostały usunięte w 1809 i również zostały usunięte w 1808 [usługi Azure Stack poprawkę 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
    - Rozwiązano problem w które dołączanie dysków danych SSD premium rozmiar maszyn wirtualnych dysku zarządzanego (DS, DSv2, Fs i Fs_V2) nie powiodło się z powodu błędu: *nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: żądanie nie można wykonać operacji, ponieważ Typ konta magazynu "Premium_LRS" nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*. 
@@ -78,14 +78,14 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
       1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
       2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
    2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
-      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4471992).
+      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4481066).
       2. Postępuj zgodnie z instrukcjami w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
 
 
 ### <a name="changes"></a>Zmiany
 
 <!-- 2635202 - IS, ASDK -->
-- Infrastruktura usługi kopii zapasowej są przenoszone z [sieci publicznych infrastruktury](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) do [sieci publicznych adresów VIP](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network). Klienci będą musieli upewnić się, usługa ma dostęp do lokalizacji magazynu kopii zapasowych z sieci publicznych adresów VIP.  
+- Infrastruktura usługi kopii zapasowej są przenoszone z [sieci publicznych infrastruktury](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) do [sieci publicznych adresów VIP](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Klienci będą musieli upewnić się, usługa ma dostęp do lokalizacji magazynu kopii zapasowych z sieci publicznych adresów VIP.  
 
 > [!IMPORTANT]  
 > Jeśli masz zaporą, która nie zezwala na połączenia z sieci publicznych adresów VIP do serwera plików, ta zmiana spowoduje, że kopie zapasowe infrastruktury, aby zakończyć się niepowodzeniem z "Błąd 53 nie można odnaleźć ścieżki sieciowej." Jest to istotną zmianę, która ma uzasadnione obejście tego problemu. Na podstawie opinii klientów, firmy Microsoft zostaną przywrócone, aby ta zmiana w poprawki. Przejrzyj [wpis w sekcji kroki aktualizacji](#post-update-steps) Aby uzyskać więcej informacji na temat dostępnych poprawek dla 1809. Gdy poprawka jest dostępna, upewnij się zastosować go po aktualizacji do 1809, tylko wtedy, gdy zasad sieci nie zezwalają na sieci publicznych adresów VIP do dostępu do zasobów infrastruktury. w 1811 tej zmiany zostaną zastosowane do wszystkich systemów. Jeśli zastosowano poprawkę w 1809, nie ma żadnych dodatkowych czynności.  
@@ -143,7 +143,7 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Zainstaluj najnowsze poprawki stosu platformy Azure dla 1808 przed zastosowaniem 1809. Aby uzyskać więcej informacji, zobacz [4471992 KB — Azure Stack poprawkę Azure stosu poprawkę 1.1808.7.113](https://support.microsoft.com/help/4471992/).
+- Zainstaluj najnowsze poprawki stosu platformy Azure dla 1808 przed zastosowaniem 1809. Aby uzyskać więcej informacji, zobacz [4481066 KB — Azure Stack poprawkę Azure stosu poprawkę 1.1808.9.117](https://support.microsoft.com/help/4481066/).
 
   > [!TIP]  
   > Subskrybowania następujących *RRS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:

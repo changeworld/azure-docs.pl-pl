@@ -16,15 +16,15 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 62eccba1b876ca8272dacbbd97a1d28c8b796081
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 345d62f4045e7b9279d52acf70cc340d088f5db0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138314"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961335"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Co to jest Azure Stack Development Kit?
-[Zintegrowane systemy usługi Microsoft Azure Stack](.\.\azure-stack-poc.md) w zakresie rozmiaru, od 4 do 16 węzłach i są wspólnie objęte partnera sprzętu i Microsoft. Użyj usługi Azure Stack zintegrowane systemy, aby włączyć nowe scenariusze dla obciążeń produkcyjnych. Jeśli jesteś operatorów usługi Azure Stack, który zarządza infrastrukturą zintegrowane systemy i oferuje usługi, zobacz nasze [dokumentacja operatora](https://docs.microsoft.com/azure/azure-stack).
+[Zintegrowane systemy usługi Microsoft Azure Stack](../azure-stack-poc.md) w zakresie rozmiaru, od 4 do 16 węzłach i są wspólnie objęte partnera sprzętu i Microsoft. Użyj usługi Azure Stack zintegrowane systemy, aby włączyć nowe scenariusze dla obciążeń produkcyjnych. Jeśli jesteś operatorów usługi Azure Stack, który zarządza infrastrukturą zintegrowane systemy i oferuje usługi, zobacz nasze [dokumentacja operatora](https://docs.microsoft.com/azure/azure-stack).
 
 Azure Stack Development Kit (ASDK) jest wdrożenia z pojedynczym węzłem usługi Azure Stack, który można pobrać do użycia **za darmo**. Wszystkie składniki ASDK są zainstalowane w uruchomionej na komputerze serwera jednego hosta maszyn wirtualnych, które muszą spełniać lub przekraczać [minimalne wymagania sprzętowe](asdk-deploy-considerations.md#hardware). Ma zapewnić środowisko można ocenić usługę Azure Stack i tworzenie nowoczesnych aplikacji przy użyciu interfejsów API i narzędzia spójne z platformą Azure w ASDK *nieprodukcyjnych* środowiska. 
 
@@ -48,9 +48,9 @@ Wdrożenia w pojedynczym węźle ASDK różnią się od wdrożeniach usługi Azu
 |Opis|ASDK|Usługa Azure Stack wielowęzłowego|
 |-----|-----|-----|
 |**Skalowanie**|Wszystkie składniki są zainstalowane na komputerze serwera z jednym węzłem.|Można dostosować w zakresie rozmiaru, od 4 do 16 węzłów.|
-|**Odporność na błędy**|Konfiguracja pojedynczego węzła nie zapewnia wysoką dostępność|[Wysokiej dostępności](.\.\azure-stack-key-features.md#high-availability-for-azure-stack) funkcje są obsługiwane.|
-|**Sieć**|ASDK używa Maszynę wirtualną o nazwie AzS-BGPNAT01, aby kierować cały ruch sieciowy ASDK. Nie ma żadnych wymagań dodatkowych przełącznika.|Maszyna wirtualna AzS-BGPNAT01 nie istnieje w przypadku wdrożeń z wieloma węzłami. Bardziej złożone [infrastrukturę routingu sieci](.\.\azure-stack-network.md#network-infrastructure) jest konieczne, w tym Top-Of-Rack (TOR), kontrolera zarządzania płytą główną (BMC) i przełączniki obramowania (sieci centrum danych).|
-|**Proces poprawek i aktualizacji**|Aby przejść do nowej wersji ASDK, należy ponownie wdrożyć ASDK na komputerze-hoście development kit.|[Stosowanie poprawek i aktualizacji](.\.\azure-stack-updates.md) proces używany do aktualizacji zainstalowanej wersji usługi Azure Stack.|
+|**Odporność na błędy**|Konfiguracja pojedynczego węzła nie zapewnia wysoką dostępność|[Wysokiej dostępności](../azure-stack-key-features.md#high-availability-for-azure-stack) funkcje są obsługiwane.|
+|**Sieć**|ASDK używa Maszynę wirtualną o nazwie AzS-BGPNAT01, aby kierować cały ruch sieciowy ASDK. Nie ma żadnych wymagań dodatkowych przełącznika.|Maszyna wirtualna AzS-BGPNAT01 nie istnieje w przypadku wdrożeń z wieloma węzłami. Bardziej złożone [infrastrukturę routingu sieci](../azure-stack-network.md#network-infrastructure) jest konieczne, w tym Top-Of-Rack (TOR), kontrolera zarządzania płytą główną (BMC) i przełączniki obramowania (sieci centrum danych).|
+|**Proces poprawek i aktualizacji**|Aby przejść do nowej wersji ASDK, należy ponownie wdrożyć ASDK na komputerze-hoście development kit.|[Stosowanie poprawek i aktualizacji](../azure-stack-updates.md) proces używany do aktualizacji zainstalowanej wersji usługi Azure Stack.|
 |**Pomoc techniczna**|Forum MSDN usługi Azure Stack. Pomoc techniczna firmy Microsoft dział obsługi klienta i pomocy technicznej (CSS) jest *nie* dostępne dla środowisk nieprodukcyjnych.|[Forum MSDN usługi Azure Stack](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) i obsługują pełne CSS.|
 | | |
 

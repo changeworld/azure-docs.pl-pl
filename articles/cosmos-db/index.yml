@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2fdd8a586c9c8dae0ab9cec1176b71a137893b17
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8243ee2e657f42959c9f0a71c7c50fc1a2dda737
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384997"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966422"
 documentType: LandingData
 title: Dokumentacja usługi Azure Cosmos DB
 metadata:
@@ -13,13 +13,10 @@ metadata:
   description: Dowiedz się, jak za pomocą usługi Azure Cosmos DB tworzyć rozproszone globalnie wielomodelowe bazy danych. Z samouczków dowiesz się, jak utworzyć i za pomocą zapytań zbadać dokument, klucz/wartość i grafowe bazy danych.
   services: cosmos-db
   author: SnehaGunda
-  manager: kfile
+  ms.author: sngun
   ms.service: cosmos-db
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/26/2018
-  ms.author: sngun
 abstract:
   description: Azure Cosmos DB to globalnie dystrybuowana, wielomodelowa usługa bazy danych, która obsługuje bazy danych dokumentowe, typu klucz-wartość, szerokokolumnowe i grafowe. Dowiedz się, jak używać usługi Azure Cosmos DB, korzystając z przewodników Szybki start, samouczków i przykładów.
   aside:
@@ -161,7 +158,7 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " Tworzenie bazy danych usługi Azure Cosmos DB przeznaczonej do skalowania"
+    - title: " Tworzenie bazy danych usługi Azure Cosmos DB przeznaczonej do skalowania"
       href: /learn/modules/create-cosmos-db-for-scale/
       image:
         src: /learn/achievements/create-cosmos-db-for-scale.svg

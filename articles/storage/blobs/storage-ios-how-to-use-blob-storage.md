@@ -6,23 +6,21 @@ author: michaelhauss
 ms.service: storage
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.component: blobs
-ms.openlocfilehash: 43e9acb79b363e8f2cb00f6a4676d450c097bf3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be9254686eeb285fb4f0a5e29ba60023abee84ab
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261999"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961930"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak używać magazynu obiektów Blob z poziomu systemu iOS
 
 W tym artykule pokazano, jak realizować typowe scenariusze usługi Microsoft Azure Blob storage. Przykłady są zapisywane w języku Objective-C i użyj [biblioteki klienta usługi Azure Storage dla systemu iOS](https://github.com/Azure/azure-storage-ios). Omówione scenariusze obejmują przekazywanie, wyświetlanie listy, pobieranie i usuwanie obiektów blob. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [następne kroki](#next-steps) sekcji. Możesz również pobrać [przykładową aplikację](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) szybko sprawdzić użycie usługi Azure Storage w aplikacji systemu iOS.
 
-## <a name="what-is-blob-storage"></a>Co to jest magazyn obiektów Blob?
-
-[!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
+Aby dowiedzieć się więcej o usłudze Blob storage, zobacz [wprowadzenie do usługi Azure Blob storage](storage-blobs-introduction.md).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 

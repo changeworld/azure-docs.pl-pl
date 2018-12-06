@@ -10,18 +10,18 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 0025cdcfaa64a262a5ca54ab4db5a84f6a5768ba
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7e9181b6e805a768ca5dd8ed558b8feea45f22d3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338917"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960911"
 ---
 # <a name="tagging-images"></a>Tagowanie obrazów
 
-Przetwarzania obrazów zwraca tagi oparte na ponad 2000 rozpoznawalnych obiektów, istot żywych, scenerii i akcji. Gdy tagi są niejednoznaczne lub nie popularną wiedzę, odpowiedź interfejsu API zapewnia wskazówek, wyjaśnienie tagu w kontekście znanych ustawienie. Tagi nie są zorganizowane w postaci taksonomię i Brak hierarchii dziedziczenia istnieje. Kolekcja znaczników zawartości stanowi podstawę dla obrazu "opis" jest wyświetlany jako ludzi język do odczytu w postaci kompletnych zdań. Należy pamiętać, że w tym momencie język angielski jest jedynym obsługiwanym językiem opis obrazu.
+Przetwarzania obrazów zwraca tagi na podstawie tysiące rozpoznawalnych obiektów, istot żywych, scenerii i akcji. Gdy tagi są niejednoznaczne lub wykraczają poza popularną wiedzę, odpowiedź interfejsu API zawiera „wskazówki”, aby wyjaśnić ich znaczenie w kontekście znanego otoczenia. Tagi nie są zorganizowane w formie taksonomii i nie występują hierarchie dziedziczenia. Kolekcja tagów zawartości stanowi podstawę „opisu” obrazu wyświetlanego jako język zrozumiały dla użytkownika w formie pełnych zdań. Należy pamiętać, że obecnie jedynym obsługiwanym językiem opisu obrazu jest język angielski.
 
-Po przekazaniu obrazu lub określając adres URL obrazu, algorytmów przetwarzania obrazów w danych wyjściowych tagi na podstawie obiektów, istot żywych i działań określonych na obrazie. Oznakowanie nie jest ograniczona do głównego tematów, takich jak osoby na pierwszym planie, ale obejmuje również ustawienie meble (wewnątrz lub na zewnątrz), narzędzia, zakładów, zwierząt, Akcesoria, gadżety itp.
+Po przekazaniu obrazu lub określając adres URL obrazu, algorytmów przetwarzania obrazów w danych wyjściowych tagi na podstawie obiektów, istot żywych i działań określonych na obrazie. Tagowanie nie jest ograniczone do głównego tematu, na przykład do osoby na pierwszym planie, ale uwzględnia także otoczenie (wewnątrz lub na zewnątrz), meble, narzędzia, rośliny, zwierzęta, akcesoria, gadżety itd.
 
 ## <a name="image-tagging-example"></a>Przykład znakowania obrazu
 

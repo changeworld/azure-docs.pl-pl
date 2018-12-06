@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4758c29d1cdb7e09c397524574ba1ab6701efeeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f1c433be7e8adc0779860c3ec3bfb5d7174fca5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238031"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970726"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Dodawanie elementów portalu marketplace za pomocą narzędzia do publikowania
 
@@ -28,7 +28,7 @@ Dodawanie zawartości do [usługi Azure Stack w portalu Marketplace](azure-stack
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
- - Musisz uruchomić narzędzi na hoście usługi Azure Stack lub mieć [VPN](.\asdk\asdk-connect.md#connect-with-vpn) połączenie z hostem ASDK z komputera, na którym uruchomiono narzędzie.
+ - Musisz uruchomić narzędzi na hoście usługi Azure Stack lub mieć [VPN](./asdk/asdk-connect.md#connect-with-vpn) połączenie z hostem ASDK z komputera, na którym uruchomiono narzędzie.
 
  - Pobierz [szablony szybkiego startu platformy Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) i Wyodrębnij zawartość.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 9e5a8cf59d4f1dc47495c5889f8ed4aae64f7ff7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3cbe7c1d458e95aa27c51f0d1c9f61326888a5ab
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720450"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962685"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integracja z centrum danych informacje dotyczące usługi Azure Stack zintegrowane systemy
 Jeśli interesuje Cię to system zintegrowany z usługi Azure Stack, zapoznaj się niektóre z najważniejszych kwestii dotyczących planowania dotyczące wdrażania i jak system znajdzie się w centrum danych. Ten artykuł zawiera ogólne omówienie tych zagadnień, aby łatwiej podejmować decyzje dotyczące infrastruktury ważne w systemie Azure Stack wieloma węzłami. Zrozumienie tych zagadnień pomaga podczas pracy z dostawcą sprzętu OEM, zgodnie z ich wdrażanie usługi Azure Stack w swoim centrum danych.  
@@ -57,7 +57,7 @@ Należy wziąć pod uwagę którego dostawcy tożsamości, którego chcesz uży�
 
 Wybranego dostawcy tożsamości nie ma żadnego wpływu na maszyny wirtualne dzierżawcy, system obsługi tożsamości i kont, których używają, czy mogły one dołączyć do domeny usługi Active Directory itp. Jest to oddzielne.
 
-Dowiedz się więcej na temat wybierania dostawcy tożsamości w [artykułu modeli połączenie zintegrowane systemy usługi Azure Stack](.\azure-stack-connection-models.md).
+Dowiedz się więcej na temat wybierania dostawcy tożsamości w [artykułu modeli połączenie zintegrowane systemy usługi Azure Stack](./azure-stack-connection-models.md).
 
 ### <a name="ad-fs-and-graph-integration"></a>Integracja usług AD FS i wykres
 Jeśli zdecydujesz się wdrożyć usługę Azure Stack przy użyciu usług AD FS jako dostawcy tożsamości, możesz zintegrować wystąpienia usług AD FS w usłudze Azure Stack przy użyciu istniejącego wystąpienia usług AD FS za pomocą zaufania federacyjnego. Dzięki temu tożsamości w istniejącym lesie usługi Active Directory do uwierzytelniania przy użyciu zasobów w usłudze Azure Stack.

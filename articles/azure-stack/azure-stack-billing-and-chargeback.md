@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: a5f3b206b83beb15ee3b29d5d5b9e389e85a91fb
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 32d0e0f48a99b5c06b1efa61e6e1a53cf5b0e61b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466991"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971797"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Użycie i rozliczenia w usłudze Azure Stack
 
@@ -35,9 +35,9 @@ Każdy dostawca zasobów w usłudze Azure Stack publikuje dane użycia na obcią
 
 Jeśli masz [zarejestrowane wystąpienie usługi Azure Stack przy użyciu usługi Azure](azure-stack-register.md), usługi Azure Stack jest skonfigurowany do wysyłania danych użycia do handlu platformy Azure. Przekazane dane na platformie Azure można do niego dostęp za pośrednictwem portalu rozliczeń lub za pomocą interfejsów API. użycia zasobów platformy Azure. Aby dowiedzieć się więcej o jakie użycia danych jest raportowana na platformie Azure, zobacz [raportowanie danych użycia](azure-stack-usage-reporting.md).  
 
-Na poniższej ilustracji przedstawiono najważniejsze składniki w potoku użycia: 
+Na poniższej ilustracji przedstawiono najważniejsze składniki w potoku użycia:
 
-![Użycie potoku](media\azure-stack-billing-and-chargeback\usagepipeline.png)
+![Użycie potoku](media/azure-stack-billing-and-chargeback/usagepipeline.png)
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>Jakie informacje dotyczące użycia można znaleźć i w jaki sposób?
 
