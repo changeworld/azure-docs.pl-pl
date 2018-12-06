@@ -26,8 +26,8 @@ Następujące wypowiedzi przedstawiają przykłady tonacji:
 
 |Opinia|Wynik|Wypowiedź|
 |:--|:--|:--|
-|pozytywna|0,91 |John W. Smith did a great job on the presentation in Paris.|
-|pozytywna|0,84 |jill-jones@mycompany.com did fabulous work on the Parker sales pitch.|
+|pozytywna|0,91 |John W. Smith zostało świetnie w prezentacji w Paryżu.|
+|pozytywna|0,84 |jill-jones@mycompany.com czy wspaniałe prace nad Parker pomysłu sprzedaży.|
 
 Analiza tonacji to ustawienie publikowania, które ma zastosowanie do każdej wypowiedzi. Nie trzeba wyszukiwać wyrazów wskazujących tonację w wypowiedzi ani oznaczać ich etykietami, ponieważ analiza tonacji dotyczy całej wypowiedzi. 
 
