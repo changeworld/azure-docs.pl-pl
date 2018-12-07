@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: a4f9fc31f411d36e63775a3665b6dfe27eec7710
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e76464e294a3378bf3a275ec4fe7ccbd87c09475
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319379"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011644"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Zasady zabezpieczeń platformy Azure, monitorowany przez usługę Azure Security Center
 Ten artykuł zawiera listę definicji zasad platformy Azure, które mogą być monitorowane w usłudze Security Center.
@@ -43,7 +43,7 @@ Aby poznać wbudowanych zasad, które są monitorowane przez usługę Security C
 |Przeprowadź inspekcję ustawienia właściwości ClusterProtectionLevel na wartość EncryptAndSign w usłudze Service Fabric|Usługa Service Fabric udostępnia trzy poziomy ochrony (Brak, logowania i EncryptAndSign) do komunikacji między węzłami, przy użyciu certyfikatu klastra podstawowego. Ustaw poziom ochrony, aby zapewnić zaszyfrowany i podpisany cyfrowo wszystkie komunikaty węzła do węzła.| 
 |Przeprowadź inspekcję użycia usługi Azure Active Directory na potrzeby uwierzytelnienia klientów w usłudze Service Fabric|Przeprowadź inspekcję użycia uwierzytelniania klientów tylko za pomocą usługi Azure Active Directory w usłudze Service Fabric| 
 |Przeprowadź inspekcję włączania dzienników diagnostycznych usługi Search|Przeprowadź inspekcję włączenie dzienników i przechowywać je do jednego roku. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci.| 
-|Przeprowadź inspekcję włączania tylko bezpiecznych połączeń z pamięć podręczną Redis Cache|Inspekcja, włączenie tylko połączenia za pośrednictwem protokołu SSL z usługą Redis Cache. Użyj bezpiecznych połączeń zapewnia uwierzytelnianie między serwerem a usługi oraz chroni przesyłane dane przed atakami warstwy sieci, takich jak ataki typu man-in--middle, ochronę i przejęcie kontroli sesji| 
+|Przeprowadź inspekcję włączenie tylko bezpiecznych połączeń do pamięci podręcznej Azure dla usługi Redis|Inspekcja, włączenie tylko połączenia za pośrednictwem protokołu SSL do usługi Azure Cache dla pamięci podręcznej Redis. Użyj bezpiecznych połączeń zapewnia uwierzytelnianie między serwerem a usługi oraz chroni przesyłane dane przed atakami warstwy sieci, takich jak ataki typu man-in--middle, ochronę i przejęcie kontroli sesji| 
 |Przeprowadź inspekcję włączania dzienników diagnostycznych w usłudze Logic Apps|Przeprowadź inspekcję włączenie dzienników i przechowywać je do jednego roku. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci.| 
 |Przeprowadź inspekcję włączania dzienników diagnostycznych w usłudze Key Vault|Przeprowadź inspekcję włączenie dzienników i przechowywać je do jednego roku. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci.|
 |Przeprowadź inspekcję włączania dzienników diagnostycznych w usłudze Event Hubs|Przeprowadź inspekcję włączenie dzienników i przechowywać je do jednego roku. Pozwala to odtworzenie ślady działania na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci.| 

@@ -125,8 +125,6 @@ items:
         href: sql-database-connectivity-architecture.md
       - name: Różnice w języku T-SQL
         href: sql-database-transact-sql-information.md
-      - name: Replikacja transakcyjna — pojedyncze bazy danych i elastyczne pule
-        href: replication-to-sql-database.md
     - name: Pule elastyczne
       items:
       - name: Pule elastyczne
@@ -171,8 +169,6 @@ items:
         href: sql-database-managed-instance-connect-app.md
     - name: Różnice w języku T-SQL
       href: sql-database-managed-instance-transact-sql-information.md
-    - name: Replikacja transakcyjna
-      href: replication-with-sql-database-managed-instance.md
   - name: Platforma jako usługa
     items:
     - name: Platforma jako usługa
@@ -231,10 +227,8 @@ items:
         href: sql-database-data-discovery-and-classification.md
       - name: Ocena luk w zabezpieczeniach
         href: sql-vulnerability-assessment.md
-      - name: Wykrywanie zagrożeń — usługa SQL Database
-        href: sql-database-threat-detection.md
-      - name: Wykrywanie zagrożeń — wystąpienie zarządzane
-        href: sql-database-managed-instance-threat-detection.md
+      - name: Wykrywanie zagrożeń
+        href: sql-database-threat-detection-overview.md
     - name: Reguły zapory
       items:
       - name: Tworzenie i zarządzanie
@@ -281,7 +275,7 @@ items:
         href: sql-database-always-encrypted.md
       - name: Korzystanie z usługi Azure Key Vault
         href: sql-database-always-encrypted-azure-key-vault.md
-    - name: Szyfrowanie TDE z użyciem języka SQL na platformie Azure
+    - name: Transparent Data Encryption (TDE)
       items:
       - name: Szyfrowanie TDE z użyciem języka SQL na platformie Azure
         href: transparent-data-encryption-azure-sql.md
@@ -473,16 +467,30 @@ items:
       href: sql-database-in-memory-oltp-migration.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Migracja do bazy danych SQL
+  - name: Pojedyncza baza danych
     items:
     - name: Migracja do bazy danych SQL
       href: sql-database-cloud-migrate.md
+    - name: Zarządzanie usługą SQL Database po migracji
+      href: sql-database-manage-after-migration.md
+    - name: Konfigurowanie replikacji transakcyjnej
+      href: replication-to-sql-database.md
+    - name: Konfigurowanie wykrywania zagrożeń
+      href: sql-database-threat-detection.md
+    - name: Zarządzanie miejscem na pliki
+      href: sql-database-file-space-management.md
+    - name: Używanie funkcji Resource Health w przypadku problemów z połączeniem
+      href: sql-database-resource-health.md
+  - name: Wystąpienie zarządzane
+    items:
     - name: Migrowanie do wystąpienia zarządzanego
       href: sql-database-managed-instance-migrate.md
     - name: Migrowanie certyfikatu TDE do wystąpienia zarządzanego
       href: sql-database-managed-instance-migrate-tde-certificate.md
-    - name: Zarządzanie usługą SQL Database po migracji
-      href: sql-database-manage-after-migration.md
+    - name: Replikacja transakcyjna
+      href: replication-with-sql-database-managed-instance.md
+    - name: Konfigurowanie wykrywania zagrożeń
+      href: sql-database-managed-instance-threat-detection.md
   - name: Ładowanie i przenoszenie danych
     items:
     - name: Kopiowanie bazy danych na platformie Azure
@@ -509,10 +517,6 @@ items:
       href: sql-database-load-from-csv-with-bcp.md
     - name: Ładowanie danych za pomocą usługi ADF
       href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
-  - name: Zarządzanie miejscem na pliki
-    href: sql-database-file-space-management.md
-  - name: Używanie funkcji Resource Health w przypadku problemów z połączeniem
-    href: sql-database-resource-health.md
   - name: Tworzenie aplikacji
     items:
     - name: Łączność
@@ -662,9 +666,9 @@ items:
     href: /azure/architecture/
   - name: Historie klientów
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: ea998e50af9b6b2f4f6331a0f02f84d08eff425c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6ae879edcd2b835cb52e20f070d6d8c0998ba610
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890164"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994570"

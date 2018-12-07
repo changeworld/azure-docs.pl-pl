@@ -6,12 +6,12 @@ description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nim
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ef9cb669db24cf2b68de955047e8e2d2f9fb04e9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c7babd4a6f5a62bb3d284bc37086e908613eb429
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499645"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017804"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -297,22 +297,22 @@ Azure DevOps Projects </a>
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/tour-azure-services-and-features/">
-                                                            <img src="/learn/achievements/tour-azure-services-and-features.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/tour-azure-services-and-features.svg" alt="">
 Przewodnik po usługach i funkcjach platformy Azure </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/principles-cloud-computing/">
-                                                            <img src="/learn/achievements/principles-cloud-computing.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/principles-cloud-computing.svg" alt="">
 Reguły przetwarzania w chmurze </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/control-azure-services-with-cli/">
-                                                            <img src="/learn/achievements/control-azure-services-with-cli.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/control-azure-services-with-cli.svg" alt="">
 Sterowanie usługami platformy Azure przy użyciu interfejsu wiersza polecenia </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/automate-azure-tasks-with-powershell/">
-                                                            <img src="/learn/achievements/automate-azure-tasks-with-powershell.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/automate-azure-tasks-with-powershell.svg" alt="">
 Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell </a>
                                                     </li>
                                                     <li>
@@ -458,9 +458,9 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/redis-cache/">
+                                            <a href="/azure/azure-cache-for-redis/">
                                                 <img src="media/index/RedisCache.svg" alt="" />
-                                                <p>Pamięć podręczna Redis</p>
+                                                <p>Azure Cache for Redis</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1060,7 +1060,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/storage/data-lake-storage/introduction">
+                                            <a href="/azure/storage/blobs/data-lake-storage-introduction">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                 <p>Usługa Data Lake Storage 2. generacji</p>
                                             </a>
@@ -1225,9 +1225,14 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/storage/blobs/data-lake-storage-introduction">
+                                                <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
+                                                <p>Usługa Data Lake Storage 2. generacji</p>
+                                            </a>
+                                            <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>Data Lake Store</p>
+                                                <p>Usługa Data Lake Storage 1. generacji</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2367,7 +2372,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/storage/data-lake-storage/introduction">
+                                <a href="/azure/storage/blobs/data-lake-storage-introduction">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2378,7 +2383,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Usługa Data Lake Storage 2. generacji</h3>
-                                                    <p>Wysoce skalowalny i bezpieczny magazyn usługi Data Lake, który integruje się z magazynem obiektów blob</p>
+                                                    <p>Wysoce skalowalny i bezpieczny magazyn usługi Data Lake zbudowany na bazie magazynu obiektów blob</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3090,7 +3095,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/redis-cache/">
+                                <a href="/azure/azure-cache-for-redis/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3100,7 +3105,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Pamięć podręczna Redis</h3>
+                                                    <h3>Azure Cache for Redis</h3>
                                                     <p>Zapewnianie aplikacjom dostępu do danych o wysokiej przepływności i małych opóźnieniach</p>
                                                 </div>
                                             </div>
@@ -3532,6 +3537,25 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/storage/blobs/data-lake-storage-introduction">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Usługa Data Lake Storage 2. generacji</h3>
+                                                    <p>Wysoce skalowalny i bezpieczny magazyn usługi Data Lake zbudowany na bazie magazynu obiektów blob</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/data-lake-store/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3542,7 +3566,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Store</h3>
+                                                    <h3>Usługa Data Lake Storage 1. generacji</h3>
                                                     <p>Ogromne repozytorium do przechowywania obciążeń wynikających z danych big data</p>
                                                 </div>
                                             </div>

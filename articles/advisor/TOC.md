@@ -19,7 +19,7 @@
 # Powiązane
 ## [Centrum zabezpieczeń](https://azure.microsoft.com/services/security-center/)
 ## [SQL DB Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)
-## [Pamięć podręczna Redis](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)
+## [Azure Cache for Redis](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)
 ## [App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)
 
 # Zasoby

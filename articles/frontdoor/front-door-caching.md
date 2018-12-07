@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 6c62e2e559749ae8dc29e86d9c2414c28b487995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 97c02726c7e359195c6bf4ea793404562f2acccf
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965623"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001933"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Buforowanie przy użyciu usługi Azure drzwi
 Poniższy dokument określa zachowanie drzwiami frontowymi za pomocą reguł routingu, które mają włączone buforowanie.
@@ -26,7 +26,7 @@ Usługa drzwiami frontowymi zapewnia duże pliki bez limitu rozmiaru pliku. Drzw
 
 </br>Po fragmencie dociera do środowiska drzwiami frontowymi, pamięci podręcznej i obsłużonych natychmiast użytkownika. Następnie drzwiami frontowymi pobiera wstępnie dalej fragmentów w sposób równoległy. Ta pobierania wstępnego gwarantuje, że zawartość pozostaje w jednym fragmencie w przód od użytkownika, co zmniejsza opóźnienie. Ten proces jest kontynuowany aż do całego pobrany plik (jeśli jest to wymagane), wszystkich zakresów bajtów są dostępne (jeśli jest to wymagane), lub klient zakończy połączenie.
 
-</br>Aby uzyskać więcej informacji na temat żądania zakresu bajtów, przeczytaj [RFC 7233](http://www.rfc-base.org/rfc-7233.html).
+</br>Aby uzyskać więcej informacji na temat żądania zakresu bajtów, przeczytaj [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html).
 Drzwiami frontowymi buforuje wszelkie fragmenty, po odebraniu i dlatego nie trzeba być buforowane w pamięci podręcznej drzwiami frontowymi całego pliku. Kolejne żądania dla pliku lub bajt zakresy są udostępniane z pamięci podręcznej. Jeśli nie wszystkie fragmenty są buforowane, wstępnego pobierania jest używany do zażądania fragmentów z wewnętrznej bazy danych. Tego rodzaju optymalizacji opiera się na możliwość obsługi żądania zakresu bajtów; wewnętrznej bazy danych Jeśli wewnętrznej bazy danych nie obsługuje żądania zakresu bajtów, optymalizacja nie jest skuteczna.
 
 ## <a name="file-compression"></a>Kompresja plików
@@ -116,5 +116,5 @@ Następujące nagłówki żądania nie zostaną przekazane do wewnętrznej bazy 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [tworzenie drzwiami frontowymi](quickstart-create-front-door.md).
-- Dowiedz się, [działania drzwiami frontowymi](front-door-routing-architecture.md).
+- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
+- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

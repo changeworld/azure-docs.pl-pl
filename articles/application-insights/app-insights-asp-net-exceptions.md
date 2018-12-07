@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2d378c537d4e20698863c789101e4ad3167b7f10
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: f36d0ec4446ee6591798c0d8926f41a4e177d81d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680824"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997049"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnozowanie wyjątków w aplikacjach sieci web za pomocą usługi Application Insights
 Wyjątki w aplikacji internetowej na żywo są zgłaszane przez [usługi Application Insights](app-insights-overview.md). Żądania zakończone niepowodzeniem można skorelować wyjątki i inne zdarzenia, u klienta i serwera, dzięki czemu można szybko diagnozować ich przyczyny.
@@ -168,7 +168,7 @@ Właściwości i wartości parametrów są opcjonalne, ale są przydatne w przyp
 ## <a name="browser-exceptions"></a>Wyjątki przeglądarki
 Większość wyjątków przeglądarki są zgłaszane.
 
-Jeśli strona sieci web obejmuje pliki skryptów z sieci dostarczania zawartości lub z innych domen, upewnij się, tag skryptu ma atrybut ```crossorigin="anonymous"```, oraz że serwer wysyła [nagłówków CORS](http://enable-cors.org/). Pozwoli to uzyskać ślad stosu i szczegóły dla nieobsłużonych wyjątków JavaScript z tych zasobów.
+Jeśli strona sieci web obejmuje pliki skryptów z sieci dostarczania zawartości lub z innych domen, upewnij się, tag skryptu ma atrybut ```crossorigin="anonymous"```, oraz że serwer wysyła [nagłówków CORS](https://enable-cors.org/). Pozwoli to uzyskać ślad stosu i szczegóły dla nieobsłużonych wyjątków JavaScript z tych zasobów.
 
 ## <a name="web-forms"></a>Formularze sieci Web
 Moduł HTTP dla formularzy sieci web będzie do zbierania wyjątków, gdy istnieją nie przekierowuje skonfigurowano CustomErrors.
