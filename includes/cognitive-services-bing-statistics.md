@@ -8,101 +8,93 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: scottwhi
 ms.custom: include file
-ms.openlocfilehash: 4e19c1afefdc5bcacebcb0d495193b48c7a6d724
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a8d588b186652ab86ee1e8152bd9be08f0f1ef04
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313714"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978701"
 ---
-Statystyki Bing zapewnia analytics interfejsy API wyszukiwania usługi Bing. Analytics obejmuje wezwań, ciągi zapytania top, rozmieszczenie geograficzne i. Aby włączyć statystyki Bing podczas wyszukiwania usługi Bing płatną subskrypcję, przejdź do Twojej [pulpitu nawigacyjnego Azure](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7), wybierz płatnej subskrypcji i kliknij pozycję Włącz statystyki Bing. Włączenie usługi Bing statystyki nieco zwiększa szybkość subskrypcji (zobacz [cennik](https://aka.ms/bingstatisticspricing)).
-
-
-> [!NOTE]
-> Statystyka usługi Bing jest dostępny z subskrypcją płatną tylko — nie jest dostępna z subskrypcji bezpłatnych wersji próbnych. 
+Dodatek Statystyka Bing udostępnia analizy dla interfejsów API wyszukiwania Bing. Analytics zawiera wolumin wywołań, ciągi zapytania dotyczącego początkowych, rozmieszczenie geograficzne i inne. Aby włączyć dodatek Statystyka Bing wyszukiwania Bing płatną subskrypcję, przejdź do swojej [pulpitu nawigacyjnego platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7), wybierz swoją subskrypcję płatną i kliknij przycisk Włącz dodatek Statystyka Bing. Włączanie dodatek Statystyka Bing nieco zwiększa szybkość subskrypcji (zobacz [ceny](https://aka.ms/bingstatisticspricing)).
 
 > [!NOTE]
-> Wszystkie dane, które są dostępne za pośrednictwem pulpitu nawigacyjnego statystyki Bing może nie używać do tworzenia aplikacji przeznaczonych do dystrybucji, do udzielania podmiotom trzecim.
+> Dodatek Statystyka Bing jest dostępny za pomocą tylko płatnych subskrypcji — nie jest dostępna z subskrypcji bezpłatnych wersji próbnych.
 
-Bing aktualizuje dane analityczne co 24 godziny i zachowuje się do 13 miesięcznej historii.
+> [!NOTE]
+> Nie można stosować wszystkie dane, które są dostępne za pośrednictwem pulpitu nawigacyjnego dodatek Statystyka Bing do tworzenia aplikacji w celu dystrybucji do podmiotów trzecich.
 
-## <a name="accessing-your-analytics"></a>Uzyskiwanie dostępu do sieci analityka
+Bing aktualizuje dane analizy, co 24 godziny i utrzymuje się do 13 miesięcznej historii.
 
-Aby uzyskać dostęp do pulpitu nawigacyjnego analytics, przejdź do https://bingapistatistics.com. Upewnij się, że użytkownik jest zalogowany przy użyciu tego samego konta Microsoft (MSA) używany do pobierania płatnej subskrypcji.
+## <a name="accessing-your-analytics"></a>Uzyskiwanie dostępu do analizy
 
+Aby uzyskać dostęp do pulpitu nawigacyjnego analizy, przejdź do https://bingapistatistics.com. Upewnij się, że zalogowano Cię przy użyciu tego samego konta Microsoft (MSA) użyte do uzyskania płatną subskrypcję.
 
 ## <a name="filtering-the-data"></a>Filtrowanie danych
 
-Domyślnie wykresów i wykresy odzwierciedlają wszystkie dane metryk, które mają dostęp do. Można filtrować dane wyświetlane na wykresach wybierając zasoby, rynkach, punktów końcowych i okresu raportowania Cię interesują. Wykresy i wykresy zmieniać odpowiednio filtry, które należy zastosować. Poniżej opisano filtry, które mogą ulec zmianie.
+Domyślnie wykresy i diagramy odzwierciedlać wszystkich danych metryk, które mają dostęp do. Można filtrować dane wyświetlane w wykresy i diagramy, wybierając zasoby, rynków, punktów końcowych, a okres raportowania interesuje Cię. Wykresy i diagramy zmieniają się zgodnie z filtrami, które stosujesz. Poniżej opisano filtry, które mogą ulec zmianie.
 
-- **Identyfikator zasobu**: identyfikator unikatowy zasób, którego identyfikuje subskrypcji platformy Azure. Lista zawiera wiele identyfikatorów w przypadku subskrybowania więcej niż jedną warstwę interfejsu API wyszukiwania usługi Bing. Domyślnie wybrane są wszystkie zasoby.  
+- **Identyfikator zasobu**: identyfikator unikatowy zasób, którego identyfikuje subskrypcji platformy Azure. Lista zawiera wiele identyfikatorów, jeśli użytkownik subskrybuje więcej niż jedną warstwę interfejsu API wyszukiwania Bing. Domyślnie wybrane są wszystkie zasoby.  
   
-- **Rynkach**: rynkach, skąd wyniki. Na przykład en-us (angielski, Stany Zjednoczone). Domyślnie wybrane są wszystkie rynkach. Zwróć uwagę, że na rynek TT en rynku Bing używa ich, jeśli połączenie nie określa rynku i Bing nie mógł określić rynku użytkownika.  
+- **Rynki**: rynków, skąd pochodzą wyniki. Na przykład en-us (angielski, Stany Zjednoczone). Domyślnie są zaznaczone wszystkie rynki. Zwróć uwagę, że na rynku en-WW oczekuje, że usługa Bing używa, jeśli połączenie nie określa rynku i Bing nie może określić rynku użytkownika.  
   
-- **Punkty końcowe**: punkty końcowe interfejsu API wyszukiwania usługi Bing. Lista zawiera wszystkie punkty końcowe, do których masz subskrypcję płatną. Domyślnie są zaznaczone wszystkie punkty końcowe.  
+- **Punkty końcowe**: punkty końcowe interfejsu API wyszukiwania Bing. Lista zawiera wszystkie punkty końcowe, do których masz subskrypcję płatną. Domyślnie wszystkie punkty końcowe są wybierane.  
 
-- **Przedział czasu**: okresie raportowania. Można określić:  
-  
-  - Wszystkie&mdash;zawiera się do 13 miesięcznej danych  
-  - Po 24 godzinach&mdash;obejmuje analytics z ostatnich 24 godzinach  
-  - Ostatni tydzień&mdash;obejmuje analytics z ostatnich siedmiu dni  
-  - Ostatni miesiąc&mdash;obejmuje analytics z ostatnich 30 dni  
-  - Niestandardowy zakres dat&mdash;obejmuje analytics z zakresu określonej daty, jeśli jest dostępna  
-  
+- **Przedział czasu**: okresie raportowania. Można określić:
+  - Wszystkie&mdash;ma zapasowych do 13 miesięcznej danych  
+  - Ostatnie 24 godziny&mdash;obejmuje analiza danych z ostatnich 24 godzinach  
+  - Ubiegły tydzień&mdash;obejmuje analiza danych z ostatnich siedmiu dni  
+  - Ubiegły miesiąc&mdash;obejmuje analiza danych z ostatnich 30 dni  
+  - Niestandardowy zakres dat&mdash;obejmuje funkcje analizy usługi w określonym zakresie dat., jeśli jest dostępny  
+
   > [!NOTE]  
-  > Może potrwać do 24 godzin metryki na powierzchni na pulpicie nawigacyjnym. Pulpit nawigacyjny zawiera Data i godzina ostatniej aktualizacji danych.  
-  
+  > Może upłynąć do 24 godzin metryki, aby przedstawić na pulpicie nawigacyjnym. Pulpit nawigacyjny przedstawia datę i godzinę ostatniej aktualizacji danych.  
+
   > [!NOTE]  
-  > Metryki są dostępne w czasie włączyć dodatek statystyki Bing. 
+  > Metryki są dostępne od czasu, należy włączyć dodatek Statystyka Bing.
 
+## <a name="charts-and-graphs"></a>Wykresy i diagramy
 
-## <a name="charts-and-graphs"></a>Wykresy i schematy
-
-Pulpit nawigacyjny zawiera wykresy i schematy metryki dostępna dla wybranego punktu końcowego. Nie wszystkie metryki są dostępne dla wszystkich punktów końcowych. Schematy i wykresy dla każdego punktu końcowego są statyczne (nie można wybrać schematy i wykresy, aby wyświetlić). Pulpit nawigacyjny zawiera tylko schematy i wykresy, dla których jest danych. 
+Na pulpicie nawigacyjnym prezentowana wykresy i diagramy dotyczące metryk, które są dostępne dla wybranego punktu końcowego. Nie wszystkie metryki są dostępne dla wszystkich punktów końcowych. Wykresy i diagramy, dla każdego punktu końcowego są statyczne (nie można wybrać wykresów i schematów, aby wyświetlić). Na pulpicie nawigacyjnym prezentowana tylko wykresy i diagramy, w których ma danych.
 
 <!--
 For example, if you don't include the User-Agent header in your calls, the dashboard will not include device-related graphs.
 -->
 
-Poniżej przedstawiono możliwe metryki. Wszystkie metryki uwagi dotyczące ograniczenia punktu końcowego. 
+Poniżej przedstawiono możliwe metryki. Wszystkie metryki. informacje o ograniczenia punktu końcowego.
 
-- **Wywołaj woluminu**: Pokazuje liczbę wywołań w okresie raportowania. Po tym okresie raportowania na dzień wykres pokazuje liczbę wywołań na godzinę. W przeciwnym razie wykres pokazuje liczbę wywołań dziennie w tym okresie raportowania.  
+- **Wywołanie woluminu**: Pokazuje liczbę wywołań w tym okresie raportowania. Jeśli w okresie raportowania jest na dzień, wykres pokazuje liczbę wywołań na godzinę. W przeciwnym razie wykres pokazuje liczbę wywołań dziennie okresie raportowania.  
   
   > [!NOTE]
-  > Wolumin wywołania mogą się różnić od rozliczeń raportów, które zwykle obejmuje tylko pomyślnych wywołań. 
-  
--  **Najpopularniejsze kwerendy**: Pokazuje najważniejszych zapytań oraz liczbę wystąpień każdej zapytania w tym okresie raportowania. Umożliwia skonfigurowanie liczby zapytań wyświetlane. Na przykład można wyświetlić zapytania top 25, 50 lub 75. Najważniejszych zapytań nie jest dostępna dla następujących punktów końcowych:  
-  
+  > Wolumin wywołań może różnić się od rozliczeń raportów, które zwykle zawiera tylko pomyślnych wywołań.
+
+- **Najpopularniejsze kwerendy**: zawiera najpopularniejsze zapytania i liczbę wystąpień każdej kwerendy w okresie raportowania. Można skonfigurować liczbę zapytań wyświetlane. Na przykład można wyświetlić zapytania top 25 i 50, 75. Najpopularniejsze zapytania nie jest dostępna dla następujących punktów końcowych:  
+
   - /images/trending
-  - / obrazów/szczegółów
-  - / obrazów/visualsearch
+  - / obrazy/szczegóły
+  - / obrazy/visualsearch
   - /videos/trending
-  - / wideo/szczegółów
+  - / filmy/szczegóły
   - /News
   - / wiadomości/trendingtopics
   - /Suggestions  
   
   > [!NOTE]  
-  > Niektórych terminów zapytania może zostać pominięta, aby usunąć informacje poufne, takie jak wiadomości e-mail, numerów telefonów, SSN, itp.  
+  > Można pominąć kilka terminów zapytania, aby usunąć informacje poufne, takie jak wiadomości e-mail, numerów telefonów, numer PESEL, itp.
 
-- **Rozmieszczenie geograficzne**: rynkach, skąd wyniki. Na przykład en-us (angielski, Stany Zjednoczone). Korzysta z usługi Bing `mkt` parametr ustalenie na rynku, zapytania, jeśli określony. W przeciwnym razie Bing używa sygnałów, takie jak adres IP obiektu wywołującego w celu określenia rynku.  
-  
-- **Dystrybucji kod odpowiedzi**: kodów stanu HTTP wszystkich wywołań w okresie raportowania.  
-  
-- **Wywołaj dystrybucji pochodzenia**: typy przeglądarek używanych przez użytkowników. Na przykład krawędzi, Chrome Safari i FireFox. Wywołania z poza przeglądarką, na przykład robotów, Postman lub przy użyciu programu curl z aplikacji konsoli, są pogrupowane w obszarze biblioteki. Punkt początkowy jest określany przy użyciu wartość nagłówka agenta użytkownika żądania. Jeśli żądanie nie zawiera nagłówka agenta użytkownika, Bing próbuje pochodzi z innymi sygnałami źródła.  
-  
-- **Bezpieczne dystrybucji wyszukiwania**: rozkład wartości bezpieczne wyszukiwania. Na przykład off, Średni, lub strict. `safeSearch` Zapytania parametru zawiera wartość, jeśli określony. W przeciwnym razie Bing domyślnie przyjmowana jest wartość średnia.  
-  
-- **Odpowiedzi na żądanie dystrybucji**: API wyszukiwania usługi sieci Web odpowiedzi, należy w `responseFilter` parametr zapytania.  
-  
-- **Odpowiedzi zwrócił dystrybucji**: odpowiedzi, które interfejs API sieci Web wyszukiwania zwracane w odpowiedzi.  
-  
-- **Odpowiedź serwera dystrybucji**: serwer aplikacji, który obsłużył żądań interfejsu API. Możliwe wartości to Bing.com (dla ruchu z stacjonarnych i przenośnych urządzeń) i Bing.com dla urządzeń przenośnych (na ruch pochodzący z urządzeń przenośnych). Serwer jest określany przy użyciu wartość nagłówka agenta użytkownika żądania. Jeśli żądanie nie zawiera nagłówka agenta użytkownika, Bing próbuje pochodzi z innymi sygnałami serwera.  
-  
+- **Rozmieszczenie geograficzne**: rynków, skąd pochodzą wyniki. Na przykład en-us (angielski, Stany Zjednoczone). Usługa Bing używa `mkt` zapytania parametru do określenia na rynku, jeśli określony. W przeciwnym razie Bing używa sygnały, takie jak adres IP obiektu wywołującego w celu określenia rynku.
 
+- **Dystrybucja kodów odpowiedzi**: kody stanu HTTP dla wszystkich wywołań w tym okresie raportowania.
 
-Poniżej przedstawiono analizy, które są dostępne dla każdego punktu końcowego.
+- **Wywołaj dystrybucji pochodzenia**: typy przeglądarek, które posługują się użytkownicy. Na przykład Edge, Chrome, Safari i FireFox. Wywołania z poza przeglądarki, takich jak Boty, Postman lub przy użyciu programu curl z poziomu aplikacji konsolowej, są zgrupowane w bibliotekach. Punkt początkowy jest określany przy użyciu wartości nagłówka agenta użytkownika żądania. Jeśli żądanie nie zawiera nagłówka agenta użytkownika, Bing próbuje wyprowadzenia źródła z innymi sygnałami.  
+
+- **Bezpieczne wyszukiwanie dystrybucji**: rozkładu wartości bezpiecznego wyszukiwania. Na przykład wyłączyć, umiarkowany, lub strict. `safeSearch` Zapytania parametru zawiera wartość, jeśli określony. W przeciwnym razie Bing wartością domyślną jest wartość średnia.  
+
+- **Odpowiedzi na żądanie dystrybucji**: interfejs API wyszukiwania w sieci Web odpowiedzi, możesz w `responseFilter` parametr zapytania.  
+
+- **Odpowiedzi zwrócony dystrybucji**: odpowiedzi, które API wyszukiwania w Internecie zwrócona w odpowiedzi.
+
+- **Odpowiedź serwera dystrybucji**: serwerze aplikacji, który obsłużył żądań interfejsu API. Możliwe wartości to Bing.com (na ruch z urządzeń stacjonarnych i przenośnych) i Bing.com dla urządzeń przenośnych (na ruch z urządzeń przenośnych). Serwer jest określany przy użyciu wartości nagłówka agenta użytkownika żądania. Jeśli żądanie nie zawiera nagłówka agenta użytkownika, Bing próbuje pochodzi z serwera z innymi sygnałami.
+
+Na poniższym obrazie przedstawiono analizy, które są dostępne dla każdego punktu końcowego.
 
 ![Rozkład według macierz obsługi punktu końcowego](./media/cognitive-services-bing-statistics/bing-statistics-matrix.PNG)
-
-

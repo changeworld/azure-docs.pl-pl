@@ -5,17 +5,18 @@ description: Jak pobrać, zainstalować i uruchamiaj kontenery analizy tekstu, w
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 99bdb42d9a0d86d0d2acc4a6272e0c802042e6b5
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: dc5e34f1a9a63b5b3ce30cdd547b900a32eba42c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635017"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017223"
 ---
 # <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
 
@@ -27,7 +28,7 @@ Analiza tekstu oferuje następujący zestaw kontenerów platformy Docker, z któ
 |----------|-------------|
 |Wyodrębnianie kluczowych fraz | Wyodrębnianie kluczowych fraz można identyfikować jego główne punkty. Na przykład dla tekstu wejściowego „Jedzenie było pyszne, a serwowała je doskonała obsługa” interfejs API zwraca główne tematy wypowiedzi: „jedzenie” i „doskonała obsługa”. |
 |Wykrywanie języka | W przypadku maksymalnie 120 języków wykrywa i raporty w jakim języku napisano tekstu wejściowego. Kontener raportów jednego języka kodu dla każdego dokumentu, który znajduje się w żądaniu. Kod języka jest powiązany z oceną, co wskazuje siłę oceny. |
-|Analiza tonacji | Analizuje nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. Ten interfejs API zwraca ocenę tonacji od 0 do 1 dla każdego dokumentu, przy czym 1 oznacza najbardziej pozytywną tonację. Modele analizy są wstępnie przeszkolonych, za pomocą rozbudowane treści, tekstu i języka naturalnego technologii firmy Microsoft. W przypadku [wybranych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages.md) interfejs API może przeanalizować i ocenić dowolny podany nieprzetworzony tekst, zwracając wyniki bezpośrednio do aplikacji wywołującej. |
+|Analiza tonacji | Analizuje nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. Ten interfejs API zwraca ocenę tonacji od 0 do 1 dla każdego dokumentu, przy czym 1 oznacza najbardziej pozytywną tonację. Modele analizy są wstępnie przeszkolonych, za pomocą rozbudowane treści, tekstu i języka naturalnego technologii firmy Microsoft. W przypadku [wybranych języków](../language-support.md) interfejs API może przeanalizować i ocenić dowolny podany nieprzetworzony tekst, zwracając wyniki bezpośrednio do aplikacji wywołującej. |
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -43,7 +44,7 @@ Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby n
 
 Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).
 
-### <a name="server-requirements-and-recommendations"></a>Wymagania dotyczące serwera i zalecenia
+### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
 
 W poniższej tabeli przedstawiono minimalne i zalecane rdzeni procesora CPU, co najmniej 2,6 gigaherc (GHz) lub szybszy i pamięci w gigabajtach (GB) do przydzielenia dla każdego kontenera analizy tekstu.
 
@@ -51,7 +52,7 @@ W poniższej tabeli przedstawiono minimalne i zalecane rdzeni procesora CPU, co 
 |-----------|---------|-------------|
 |Wyodrębnianie kluczowych fraz | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |
 |Wykrywanie języka | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |
-|Analiza tonacji | 1 rdzeń, 8 GB pamięci RAM | 1 rdzeń, 8 GB pamięci RAM |
+|Analiza tonacji | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |
 
 ## <a name="download-container-images-from-microsoft-container-registry"></a>Pobieranie obrazów kontenera z rejestru kontenerów firmy Microsoft
 
@@ -149,11 +150,13 @@ Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery
 W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, instalowania i uruchamiania kontenerów analizy tekstu. Podsumowanie:
 
 * Analiza tekstu zawiera trzy kontenery systemu Linux dla platformy Docker, zawieranie, wyodrębnianie kluczowych fraz, wykrywanie języka i analiza opinii.
-* Obrazy kontenerów są pobierane z prywatnego rejestru kontenerów na platformie Azure.
+* Obrazy kontenerów są pobierane z rejestru kontenerów firmy Microsoft (MCR) na platformie Azure.
 * Obrazy kontenera Uruchom na platformie Docker.
 * Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach analizy tekstu, określając host identyfikatora URI kontenera.
 * Należy określić informacje rozliczeniowe, podczas tworzenia wystąpienia kontenera.
-* ** Cognitive Services kontenery nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. obraz lub tekst, który jest analizowana) do firmy Microsoft.  
+
+> [!IMPORTANT]
+> Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. obraz lub tekst, który jest analizowana) do firmy Microsoft.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

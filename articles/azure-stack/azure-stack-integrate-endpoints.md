@@ -10,12 +10,12 @@ ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: e6f7d255fbfbcd740d9f3a7c2743f57cecea1abf
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: MT
+ms.openlocfilehash: a2c08c541c3726579d57d99141a147d98bf45849
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298759"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996715"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -79,10 +79,14 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 |NTP|(Dostarczone dla wdrożenia serwera IP NTP)|UDP|123|
 |DNS|(Dostarczone dla wdrożenia serwera IP DNS)|TCP<br>UDP|53|
 |LISTY CRL|Adres URL (w ramach punktów dystrybucji listy CRL na Twój certyfikat)|HTTP|80|
+|Tworzenie kopii zapasowych|(IP lub nazwa FQDN serwera plików zewnętrznego docelowego)|SMB|445|
 |     |     |     |     |
 
 > [!Note]  
 > Wychodzące adresy URL są równoważone za pomocą usługi Azure traffic manager, aby zapewnić najlepszą łączność możliwe na podstawie lokalizacji geograficznej. Adresy URL równoważenia obciążenia, zaktualizować i zmienić punktów końcowych zaplecza bez wywierania wpływu na klientów firmy Microsoft. Firma Microsoft udostępnia listę adresów IP dla ze zrównoważonym obciążeniem: adresy URL. Należy używać urządzenia, które obsługuje filtrowanie według adresu URL, a nie adresu IP.
+
+> [!Note]  
+> W 1809 infrastruktura kopii zapasowej usługa komunikuje się z serwerem plików zewnętrznych z sieci publicznych adresów VIP. Przed 1809 usługa komunikuje się za pośrednictwem sieci infrastruktury publicznych. Jeśli Twoje środowisko nie zezwala na dostęp do zasobów infrastruktury z sieci publicznych adresów VIP, zastosuj najnowsze poprawki 1809 dla usługi Azure Stack. Ta poprawka będzie powrót infrastruktury usługi kopii zapasowej do sieci publicznych infrastruktury. W 1811 Jeśli zastosowano poprawkę 1809 infrastruktura kopii zapasowej usługa nadal korzystać z sieci publicznych infrastruktury. Jeżeli nie zastosowano poprawkę, aktualizacja zostanie wróć usługi do sieci publicznych infrastruktury.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

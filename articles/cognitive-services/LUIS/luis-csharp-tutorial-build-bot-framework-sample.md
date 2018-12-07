@@ -1,25 +1,26 @@
 ---
-title: Bot usługi LUIS w języku C# — aplikacji sieci Web Bot — Bot Framework SDK 3.0
-titleSuffix: Azure Cognitive Services
-description: Przy użyciu języka C#, twórz czatbot zintegrowana z usługą language understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów.
+title: Bot zC#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Przy użyciu języka C# twórz czatbot zintegrowany z usługą Language Understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 0ad95d5683ea10803c2f3986be97617051f191cf
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 59d98b46827a5e60dcdcbd109dc484891cef9ba8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032278"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011797"
 ---
 # <a name="luis-bot-in-c"></a>Bot usługi LUIS w języku C#
 
-Przy użyciu języka C#, twórz czatbot zintegrowana z usługą language understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
+Przy użyciu języka C# twórz czatbot zintegrowany z usługą Language Understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -27,7 +28,7 @@ Przy użyciu języka C#, twórz czatbot zintegrowana z usługą language underst
 
 ## <a name="luis-homeautomation-intents"></a>Usługa LUIS HomeAutomation intencji
 
-| Intencja | Przykład wypowiedź | Bot funkcji |
+| Intencja | Przykładowa wypowiedź | Bot funkcji |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Włączenie świateł. | Gdy celem usługi LUIS `HomeAutomation.TurnOn` zostanie wykryte, bot wywołuje `OnIntent` okno obsługi. To okno dialogowe jest, gdzie możesz wywołać usługi IoT w celu włączenia na urządzeniu, a następnie poinformuj użytkowników, że urządzenie zostało włączone. |
 | HomeAutomation.TurnOff | Wyłącz światła sypialni. | Gdy celem usługi LUIS `HomeAutomation.TurnOff` zostanie wykryte, bot wywołuje `OffIntent` okno obsługi. To okno dialogowe jest, gdzie możesz wywołać usługi IoT, aby wyłączyć urządzenie i poinformuj użytkownika, że urządzenie zostało wyłączone. |
@@ -154,7 +155,7 @@ W witrynie Azure portal kliknij pozycję **testowania w czatów internetowych** 
 ## <a name="download-the-bot-to-debug"></a>Pobierz bot do debugowania
 Jeśli Twój bot nie działa, pobrać projektu na komputerze lokalnym i kontynuować [debugowania](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot). 
 
-## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat platformy Bot Framework
+## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat struktury Bot Framework
 Dowiedz się więcej o [platformy Bot Framework](https://dev.botframework.com/) i [3.x](https://github.com/Microsoft/BotBuilder) i [4.x](https://github.com/Microsoft/botbuilder-dotnet) zestawów SDK.
 
 ## <a name="next-steps"></a>Kolejne kroki

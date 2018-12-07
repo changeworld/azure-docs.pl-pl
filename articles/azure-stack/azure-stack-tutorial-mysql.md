@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986459"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993835"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Samouczek: Oferują baz danych MySQL o wysokiej dostępności
 
@@ -46,7 +46,7 @@ Przed rozpoczęciem wykonywania tych kroków w ramach tego samouczka, upewnij si
 > Wszystkie z następujących czynności są wymagane do utworzenia klastra MySQL.
 
 - [MySQL przy użyciu replikacji](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). Jest to szablon rozwiązania Bitnami, która będzie służyć do wdrożenia klastra MySQL.
-- [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview). Debian 8 "Jessie" za pośrednictwem jądra backports dla systemu Microsoft Azure dostarczana przez credativ. Debian GNU/Linux jest jednym z najbardziej popularnych dystrybucji systemu Linux.
+- [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian). Debian 8 "Jessie" za pośrednictwem jądra backports dla systemu Microsoft Azure dostarczana przez credativ. Debian GNU/Linux jest jednym z najbardziej popularnych dystrybucji systemu Linux.
 - [Niestandardowego skryptu dla systemu linux w wersji 2.0](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.custom-script-linux?tab=Overview). Rozszerzenie niestandardowego skryptu jest narzędziem do wykonywania usługi aprowizacji maszyny Wirtualnej maszyny Wirtualnej dostosowania zadania wpis. Po dodaniu tego rozszerzenia do maszyny wirtualnej jej pobieranie skryptów z usługi Azure storage i uruchamiać je na maszynie Wirtualnej. Niestandardowe rozszerzenie skryptu zadania można też zautomatyzować przy użyciu poleceń cmdlet programu Azure PowerShell i interfejsu wiersza polecenia dla wielu Platform Azure (xPlat CLI).
 - Dostęp do maszyny Wirtualnej systemu Linux rozszerzenie 1.4.7. Rozszerzenie dostępu do maszyny Wirtualnej Umożliwia resetowanie hasła lub klucza SSH, konfiguracje protokołu SSH, dzięki czemu można odzyskać dostęp do maszyny Wirtualnej. Możesz również dodać nowego użytkownika za pomocą hasła lub klucza SSH lub usunąć użytkownika za pomocą tego rozszerzenia. To rozszerzenie jest przeznaczona dla maszyn wirtualnych systemu Linux.
 

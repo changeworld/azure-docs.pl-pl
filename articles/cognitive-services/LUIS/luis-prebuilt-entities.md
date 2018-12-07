@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 0fe9dbed302fd2d61305167a3bda25b1b403b761
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8371e99224b511a87b2061708f00822a70c024b0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139978"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999081"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Wstępnie utworzonych jednostek, rozpoznawał standardowe typy danych
 
@@ -54,6 +54,12 @@ Test nowe opcje w punkcie końcowym dodany przez wartość **q** parametru. Skor
 |Anuluj terminu 3 marca|LUIS zwrócił najnowszych marca 3 w przeszłości (2018-03-03) i marca 3 w przyszłości (2019-03-03), ponieważ wypowiedź nie określił roku.|
 |Zaplanuj spotkanie o 10: 00|10:00:00|
 
+## <a name="marking-entities-containing-a-prebuilt-entity-token"></a>Oznaczanie jednostek zawierający token wstępnie utworzone jednostki
+ W przypadku tekstu, takie jak `HH-1234`, którą chcesz oznaczyć jako jednostka niestandardowa _i_ masz [liczbę wstępnie](luis-reference-prebuilt-number.md) dodana do modelu, nie będzie mógł oznaczyć jednostki niestandardowej w portalu usługi LUIS. Możesz oznaczyć go za pomocą interfejsu API. 
+
+ Aby oznaczyć ten typ tokenu, gdy jej część jest oznaczona jako przy użyciu wstępnie utworzone jednostki, należy usunąć wstępnie utworzone jednostki z aplikacji usługi LUIS. Nie potrzebujesz, to w opracowywaniu aplikacji. Następnie oznaczyć tokenu przy użyciu jednostki niestandardowej. Wstępnie utworzone jednostki można następnie dodać do aplikacji usługi LUIS.
+
+ Inny przykład, należy wziąć pod uwagę wypowiedź jako listę preferencji klasy: `I want first year spanish, second year calculus, and fourth year english lit.` wtedy aplikacja usługi LUIS ma numer Prebuild dodane, `first`, `second`, i `fourth` już będą oznaczone znakiem liczb porządkowych. Jeśli chcesz przechwytywać numeru porządkowego a klasy, można tworzyć złożone jednostki i otacza go wstępnie porządkowe i jednostką niestandardową dla nazwy klasy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]

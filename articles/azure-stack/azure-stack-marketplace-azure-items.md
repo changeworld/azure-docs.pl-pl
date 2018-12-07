@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: adde29b0719f777bc6cf3ab86adbdeec4befddf0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e4f15da8464c2103b5f6540d342cb7c741a67c5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842428"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994840"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
@@ -88,7 +88,6 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![Linux container, CoreOS](media/azure-stack-marketplace-azure-items/coreos.png) | [Linux container, CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Kontener systemu Linux to nowoczesna, minimalistyczna dystrybucja systemu Linux zapewnia prosty sposób uruchamiaj kontenery, zarządzanie klastrami i bezproblemowe aktualizowanie serwerów — wszystkie składniki, które umożliwiają skali magazynu obliczeń. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Serwer Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server to Linux najpopularniejszych na świecie dla środowisk chmury. | Canonical |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux jest jednym z najbardziej popularnych dystrybucji systemu Linux. | credativ |
-| ![Debian 9 "Stretch."](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 9 "Stretch."](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian9) | Debian GNU/Linux jest jednym z najbardziej popularnych dystrybucji systemu Linux. | credativ |
 | ![6,9 opartych na systemie centOS](media/azure-stack-marketplace-azure-items/roguewave.png) | [6,9 opartych na systemie centOS](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | To dystrybucja systemu Linux opiera się na CentOS i jest oferowana przez Rogue Wave oprogramowania. | Rogue Wave oprogramowania (dawniej OpenLogic)  |
 | ![6.10 opartych na systemie centOS](media/azure-stack-marketplace-azure-items/roguewave.png) | [6.10 opartych na systemie centOS](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | To dystrybucja systemu Linux opiera się na CentOS i jest oferowana przez Rogue Wave oprogramowania. | Rogue Wave oprogramowania (dawniej OpenLogic)  |
 | ![Oparty na systemie CentOS 7.3](media/azure-stack-marketplace-azure-items/roguewave.png) | [Opartych na systemie centOS 7.3](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73) | To dystrybucja systemu Linux opiera się na CentOS i jest oferowana przez Rogue Wave oprogramowania. | Rogue Wave oprogramowania (dawniej OpenLogic) |

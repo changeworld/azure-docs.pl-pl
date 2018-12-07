@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 7c92b2a060e73484b73a60f9215425cba40ea3f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e503a394eed7d5c4bdd4c93037dc86442097f72e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966725"
+ms.locfileid: "53002171"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie przeglądarki edge rozwiązanie uczenia maszynowego z platformą Azure i usługi Azure Stack
 
@@ -81,9 +81,8 @@ Znajomość platformy Azure i usługi Azure Stack jest wymagana. Aby dowiedzieć
 
  -  Wdrażanie [kontenerów platformy Azure Services (ACS) Kubernetes na platformie Azure](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
 
- -  Wdrożenie usługi Azure Machine Learning (wersja zapoznawcza) [część 4 samouczka](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-1)
+ -  Wdrożenie usługi Azure Machine Learning [2 samouczka](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
 
- -  Azure Machine Learning eksperymentowanie w usłudze [konta](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/experimentation-service-template)
 
 **Azure Stack**
 
@@ -358,7 +357,7 @@ Aplikacja Azure Machine Learning Workbench jest dostępna dla systemów Windows 
     | Project name (Nazwa projektu) | myIris | Wprowadź unikatową nazwę, która identyfikuje konto. Użyj dla działów lub nazwę projektu, która najlepiej identyfikuje eksperyment. Nazwa powinna mieć od 2 do 32 znaków. Powinna ona zawierać tylko znaki alfanumeryczne i znak łącznika (-). |
     | Katalog projektu | c:\Temp\ | Określ katalog, w którym zostanie utworzony projekt. |
     | Opis projektu | Pozostaw to pole puste | Pole opcjonalne przydatne do opisywania projektów. |
-    | Adres URL repozytorium usługi GIT VisualStudio.com | Pozostaw to pole puste | Pole opcjonalne. Skojarz projekt z repozytorium Git w usłudze Visual Studio Team Services do kontroli źródła i współpracy. [Dowiedz się, jak skonfigurować repozytorium](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project). |
+    | Adres URL repozytorium usługi GIT VisualStudio.com | Pozostaw to pole puste | Pole opcjonalne. Skojarz projekt z repozytorium Git w usłudze Visual Studio Team Services do kontroli źródła i współpracy. |
     | Wybrany obszar roboczy | IrisGarden (jeśli istnieje) | Wybierz obszar roboczy utworzony dla konta eksperymentowania w witrynie Azure portal. <br>Korzystając z przewodnika Szybki Start, znajduje się obszar roboczy nazwie IrisGarden. W przeciwnym razie Użyj obszaru roboczego przy użyciu nazwy konta eksperymentowania lub nazwę preferowanego konta. |
     | Szablon projektu | Classifying Iris | Szablony zawierają skrypty i dane, pozwala zapoznać się z produktem. Ten szablon zawiera skrypty i dane wymagane przez ten przewodnik Szybki Start i samouczków w tej witrynie dokumentacji. |
 
