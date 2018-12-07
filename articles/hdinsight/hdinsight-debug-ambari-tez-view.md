@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d2f55538517881ce6cc237885f3bcadfa084520
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 312b476f8809d1d6375cc20035901d8d11c32173
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494971"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012355"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Debugowanie zadań tez przy Apache na HDInsight przy użyciu widoków Ambari Apache
 
@@ -103,6 +103,6 @@ Umożliwia uruchomienie zapytania programu Hive, który używa Tez następujące
 
 Teraz, gdy wiesz jak przy użyciu widoku Apache Tez, Dowiedz się więcej o [przy użyciu Apache Hive on HDInsight](hadoop/hdinsight-use-hive.md).
 
-Aby uzyskać szczegółowe informacje techniczne na temat Apache Tez, zobacz [strony Apache Tez w Hortonworks](http://hortonworks.com/hadoop/tez/).
+Aby uzyskać szczegółowe informacje techniczne na temat Apache Tez, zobacz [strony Apache Tez w Hortonworks](https://hortonworks.com/hadoop/tez/).
 
 Aby uzyskać więcej informacji dotyczących korzystania z systemu Apache Ambari z usługą HDInsight, zobacz [HDInsight Zarządzanie klastrami przy użyciu Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md)

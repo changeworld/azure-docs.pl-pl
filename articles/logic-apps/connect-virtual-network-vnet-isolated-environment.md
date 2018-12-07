@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 12/03/2018
-ms.openlocfilehash: 8ad4c356c5826532b94721bc4d9071179e8bd93a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/06/2018
+ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846698"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997536"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Połączyć się z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps za pośrednictwem środowiska usług integracji (ISE)
 
@@ -65,7 +65,7 @@ Podczas tworzenia środowiska usług integracji (ISE) wybierzesz siecią wirtual
 
    1. W obszarze **roli**, wybierz opcję **Współautor sieci**. 
    
-   1. W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika usługi Azure AD, grupa lub aplikacja**.
+   1. W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika, grupy lub jednostki usługi Azure AD**.
 
    1. W obszarze **wybierz**, wprowadź **usługi Azure Logic Apps**. 
 
@@ -141,14 +141,17 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
    ![Po pomyślnej weryfikacji wybierz polecenie "Utwórz"](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
-   Wdrażanie środowiska Start Azure, ale ten proces może potrwać *do dwóch godzin* przed zakończeniem. 
+   Azure rozpoczyna się w środowisku, ale ten proces wdrażania *może* dwóch godzin przed zakończeniem. 
    Aby sprawdzić stan wdrożenia, na pasku narzędzi usługi Azure wybierz ikonę powiadomienia, który zostanie otwarty w okienku powiadomienia.
 
    ![Sprawdź stan wdrożenia](./media/connect-virtual-network-vnet-isolated-environment/environment-deployment-status.png)
 
-   Po pomyślnym zakończeniu wdrożenia platformy Azure zostaną wyświetlone to powiadomienie:
+   Jeśli wdrożenie zakończy się pomyślnie, Azure pokazuje to powiadomienie:
 
    ![Wdrażanie zakończyło się pomyślnie](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
+
+   > [!NOTE]
+   > Jeśli wdrożenie zakończy się niepowodzeniem lub usunąć platformy ISE, Azure *może* potrwać do godziny przed zwolnieniem podsieci. Dlatego trzeba odczekać przez ponowne użycie tych podsieci w innym środowisku ISE.
 
 1. Aby wyświetlić swoje środowisko, wybierz opcję **przejdź do zasobu** Jeśli Azure nie automatyczne przejście do środowiska, po zakończeniu wdrożenia.  
 

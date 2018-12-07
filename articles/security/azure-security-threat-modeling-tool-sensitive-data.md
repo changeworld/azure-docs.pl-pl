@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262373"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002051"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Ramka zabezpieczeń: Dane poufne | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -429,7 +429,7 @@ Ustaw właściwości ClientCredentialType o wartości do certyfikatu lub Windows
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólne, .NET Framework 3 |
 | **Atrybuty**              | Zabezpieczenia trybu — transportu, tryb zabezpieczeń — komunikat |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwo](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [podstawy zabezpieczeń WCF kodu Magazyn](http://www.codemag.com/article/0611051) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [podstawy zabezpieczeń WCF kodu Magazyn](http://www.codemag.com/article/0611051) |
 | **Kroki** | Bez zabezpieczeń transportu lub komunikat został zdefiniowany. Aplikacje, które przesyłają komunikaty bez transportu lub zabezpieczeń nie może zagwarantować integralności i poufność komunikatów przesyłanych wiadomości. Powiązanie zabezpieczeń WCF jest ustawiona na wartość None, zabezpieczeń transportu i wiadomości są wyłączone. |
 
 ### <a name="example"></a>Przykład

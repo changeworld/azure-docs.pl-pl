@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: 8522fea10a4ec8f85d20e5a9ec04712c77bb6b94
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3c5c4d24d68fffc86a654e0dee5e2d3f36f15aea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064275"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000477"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Projektowania dostępnej globalnie usługi przy użyciu usługi Azure SQL Database
 
@@ -34,7 +34,7 @@ W tym scenariuszu aplikacje mają następującą charakterystykę:
 *   Warstwy danych i sieci Web musi być zlokalizowana, aby zmniejszyć koszt opóźnienia i ruchu 
 *   Zasadniczo przestój jest większe ryzyko biznesowe dla tych aplikacji niż utraty danych
 
-W tym przypadku topologii wdrożenia aplikacji jest zoptymalizowane pod kątem obsługi awarii regionalnej, gdy wszystkie składniki aplikacji muszą ze sobą pracy awaryjnej. Poniższy diagram przedstawia tej topologii. W celu zapewnienia nadmiarowości geograficznej zasoby aplikacji są wdrażane w regionie, A i B. Jednak zasoby w regionie B nie są używane, aż Region, A nie powiedzie się. Grupy trybu failover skonfigurowano między dwoma regionami, aby zarządzać łączność z bazą danych, replikacji i trybu failover. Usługa sieci web w obu regionach jest skonfigurowany do dostępu do bazy danych za pośrednictwem odbiornika odczytu i zapisu  **&lt;nazwę grupy trybu failover&gt;. database.windows.net** (1). Usługa Traffic manager jest skonfigurowany do użycia [metody routingu opartego na priorytecie](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
+W tym przypadku topologii wdrożenia aplikacji jest zoptymalizowane pod kątem obsługi awarii regionalnej, gdy wszystkie składniki aplikacji muszą ze sobą pracy awaryjnej. Poniższy diagram przedstawia tej topologii. W celu zapewnienia nadmiarowości geograficznej zasoby aplikacji są wdrażane w regionie, A i B. Jednak zasoby w regionie B nie są używane, aż Region, A nie powiedzie się. Grupy trybu failover skonfigurowano między dwoma regionami, aby zarządzać łączność z bazą danych, replikacji i trybu failover. Usługa sieci web w obu regionach jest skonfigurowany do dostępu do bazy danych za pośrednictwem odbiornika odczytu i zapisu  **&lt;nazwę grupy trybu failover&gt;. database.windows.net** (1). Usługa Traffic manager jest skonfigurowany do użycia [metody routingu opartego na priorytecie](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
 
 > [!NOTE]
 > [Usługi Azure traffic manager](../traffic-manager/traffic-manager-overview.md) jest używany w tym artykule tylko w celach ilustracyjnych. Możesz użyć żadne rozwiązanie równoważenia obciążenia, który obsługuje metody routingu opartego na priorytecie.    
@@ -47,7 +47,7 @@ Na poniższym diagramie przedstawiono tę konfigurację przed awarii:
 Po awarii w regionie podstawowym usługa SQL Database wykryje, że podstawowa baza danych nie jest dostępny i wyzwala trybu failover do regionu pomocniczego, na podstawie parametrów zasad automatycznej pracy awaryjnej (1). W zależności od umowy SLA w aplikacji można skonfigurować okres prolongaty, który określa czas między wykrywanie awarii i pracy awaryjnej, sam. Jest możliwe, w tym usługi traffic manager inicjuje przełączenie w tryb failover punktu końcowego przed grupy trybu failover wyzwala trybu failover bazy danych. W takim przypadku aplikacja sieci web nie można natychmiast ponownie z bazą danych. Jednak ponowne łączenie będą automatycznie pomyślne zaraz po zakończeniu trybu failover bazy danych. Po nieudanych region przywrócona i wróci do trybu online, stary serwer podstawowy automatycznie połączy się ponownie jako nowym serwerem pomocniczym. Na poniższym diagramie przedstawiono konfigurację po pracy awaryjnej.
  
 > [!NOTE]
-> Wszystkie transakcje zatwierdzone po przełączeniu w tryb failover zostaną utracone podczas ponownego łączenia. Po zakończeniu pracy w trybie failover do aplikacji w regionie B będzie mógł ponownie połączyć i uruchom ponownie przetwarzanie żądania użytkownika. Zarówno aplikacji sieci web, jak i podstawowej bazy danych są obecnie dostępne w regionie B i pozostają w tej samej lokalizacji. n>
+> Wszystkie transakcje zatwierdzone po przełączeniu w tryb failover zostaną utracone podczas ponownego łączenia. Po zakończeniu pracy w trybie failover do aplikacji w regionie B będzie mógł ponownie połączyć i uruchom ponownie przetwarzanie żądania użytkownika. Zarówno aplikacji sieci web, jak i podstawowej bazy danych są obecnie dostępne w regionie B i pozostają w tej samej lokalizacji. 
 
 ![Scenariusz 1. Konfiguracja po włączeniu trybu failover](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 
@@ -135,7 +135,7 @@ Jeśli awaria występuje na przykład w regionie Europa Północna, automatyczny
 ![Scenariusz 3. Awaria w regionie Europa Północna.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
 > [!NOTE]
-> Można zmniejszyć czas, gdy środowisko użytkownika końcowego w Europie ma obniżoną wydajność przez długi czas oczekiwania. W tym, powinny aktywnie wdrażania kopii aplikacji i tworzenie pomocnicze bazy danych w innym regionie lokalnym (Europa Zachodnia) jako zamiennika wystąpienia aplikacji w trybie offline w regionie Europa Północna. Po drugie wróci do trybu online można zdecydować, czy nadal korzystać z Europa Zachodnia lub usunąć kopię ją tam i przejdź z powrotem do przy użyciu Europa Północna
+> Można zmniejszyć czas, gdy środowisko użytkownika końcowego w Europie ma obniżoną wydajność przez długi czas oczekiwania. W tym, powinny aktywnie wdrażania kopii aplikacji i tworzenie pomocnicze bazy danych w innym regionie lokalnym (Europa Zachodnia) jako zamiennika wystąpienia aplikacji w trybie offline w regionie Europa Północna. Po drugie wróci do trybu online można zdecydować, czy nadal korzystać z Europa Zachodnia lub usunąć kopię ją tam i przejdź z powrotem do przy użyciu Europa Północna.
 >
 
 Klucz **korzyści** w tym projekcie są:

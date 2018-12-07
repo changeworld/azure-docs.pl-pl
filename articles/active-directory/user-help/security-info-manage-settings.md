@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4cd88490118343a9a00dbd919d7820f0334df92e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162720"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016150"
 ---
 # <a name="manage-your-security-info-preview"></a>Zarządzanie zabezpieczających (wersja zapoznawcza)
 
@@ -67,7 +67,7 @@ W przypadku utraty urządzenia lub urządzenie zostanie naruszone bezpieczeństw
 
 3. W **Zarządzanie kontem** wybierz opcję **zapomnij MFA na zapamiętanych urządzeniach**.
     
-    Wybór oznacza to opcja, że musisz przejść przez proces uwierzytelniania wieloskładnikowego stanie się ponownie, po zalogowaniu.
+    Wybór oznacza to opcja, że musisz przejść przez proces usługi Multi-Factor Authentication (MFA) stanie się ponownie, po zalogowaniu.
 
     ![Ekran profil z wyróżnionym linkiem zapomnij](media/security-info/security-info-forget.png)
 
@@ -77,7 +77,7 @@ Ten artykuł pomaga rozwiązywać problemy z tym problemy związane z weryfikacj
 
 |Problem|Rozwiązanie|
 |-------|--------|
-|Nie mam telefonu przy użyciu elementu me|Jest to możliwe, że nie masz telefon przy sobie przez cały czas, ale że będziesz nadal chcesz zalogować się do pracy konta firmowego lub szkolnego. Aby rozwiązać ten problem, można zalogować się przy użyciu innej metody uwierzytelniania, która nie wymaga Twój telefon, takie jak adres e-mail lub numer telefonu biurowego. Aby dodać dodatkowe metody do swoich informacji zabezpieczających, możesz wykonać kroki opisane w [zmiany informacji zabezpieczających](#change-your-info) sekcji.|
+|Nie mam telefonu przy użyciu elementu me|Jest to możliwe, że nie masz telefon przy sobie przez cały czas, ale że będziesz nadal chcesz zalogować się do pracy konta firmowego lub szkolnego. Aby rozwiązać ten problem, można zalogować się przy użyciu innej metody uwierzytelniania, która nie wymaga Twój telefon, takie jak numer telefonu biurowego. Aby dodać dodatkowe metody do swoich informacji zabezpieczających, możesz wykonać kroki opisane w [zmiany informacji zabezpieczających](#change-your-info) sekcji.|
 |Utratą Mój telefon lub został on skradziony|Niestety może nastąpić utraty telefonu lub kradzieży. W takiej sytuacji zaleca się, że umożliwisz swoją organizację, dzięki czemu działu IT mogą resetować swoje hasła aplikacji i wyczyść dowolne zapamiętanych urządzeń z listy zaufanych urządzeń. Można również zapomnieć zaufanych urządzeniach, wykonując kroki opisane w [Zarządzanie swoje informacje zabezpieczające. w przypadku utraty lub mogą mieć złamane zabezpieczenia urządzenia](#manage-your-security-info-for-a-lost-or-potentially-compromised-device) sekcji.|
 |Stało się nowy numer telefonu|Istnieją dwa sposoby, aby rozwiązać ten problem. Możesz zalogować się przy użyciu innej metody uwierzytelniania, która nie wymaga Twój numer telefonu, np. wiadomości e-mail, lub jeśli nie jest to opcja, możesz skontaktować się ze swojej organizacji przez pracowników wsparcia informatycznego i je wyczyścić ustawienia. Aby dodać dodatkowe metody do swoich informacji zabezpieczających, możesz wykonać kroki opisane w [zmiany informacji zabezpieczających](#change-your-info) sekcji.|
 |Domyślną metodę jest nieprawidłowy|Należy zaktualizować metodą domyślną w opcjach zabezpieczeń. Aby uzyskać szczegółowe informacje, możesz przejść do [zmiany informacji zabezpieczających](#change-your-info) sekcji.|

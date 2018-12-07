@@ -3,17 +3,17 @@ title: Wybrać właściwą warstwę cenową dla usługi Azure Maps | Dokumentacj
 description: Dowiedz się więcej o oferowanych przez usługi Azure Maps warstw cenowych
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/03/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 20c59f95dcdb47ef3e457f177d7ad1a300981907
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ee277867f449afddeb89c3fd73b5b577a68a4497
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856272"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998380"
 ---
 # <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>Wybieranie odpowiedniej warstwy cenowej w usługi Azure Maps
 
@@ -34,14 +34,16 @@ S0 i warstw cenowych S1 może obsługiwać różne ilości przepływność danyc
 | Renderowanie                                  |        ✓           |     ✓    |
 | Ruch                                 |        ✓           |     ✓    |
 | Strefy czasowe                              |        ✓           |     ✓    |
-| Zdjęcia i obrazach hybrydowych (wersja zapoznawcza)      |                    |     ✓    |
-| Trasy zakresu (wersja zapoznawcza)                   |                    |     ✓    |
-| Lokalizacja 2 adresu IP (wersja zapoznawcza)                 |                    |     ✓    |
-| Wielokąty z wyszukiwania (wersja zapoznawcza)          |                    |     ✓    |
-| Geokodowanie usługi Batch (wersja zapoznawcza)               |                    |     ✓    |
-| Routing usługi Batch (wersja zapoznawcza)                 |                    |     ✓    |
-| Routing macierzy (wersja zapoznawcza)                |                    |     ✓    |
+| * Obrazach i obrazach hybrydowych (wersja zapoznawcza)     |        ✓           |     ✓    |
+| * Zakres z trasy (wersja zapoznawcza)                  |        ✓           |     ✓    |
+| * Lokalizacja 2 IP (wersja zapoznawcza)                |        ✓           |     ✓    |
+| * Wielokąty z wyszukiwania (wersja zapoznawcza)         |        ✓           |     ✓    |
+| * Geokodowanie usługi batch (wersja zapoznawcza)              |        ✓           |     ✓    |
+| * Routing usługi batch (wersja zapoznawcza)                |        ✓           |     ✓    |
+| * Routing macierzy (wersja zapoznawcza)               |        ✓           |     ✓    |
 
+> [!Note]
+> Dostęp do funkcji z S0 warstwy cenowej staną się przestarzałe po 4 lutego 2019 r.
 
 Kilka dodatkowych punktów danych warto biorąc pod uwagę, jakiego rodzaju enterprise masz lub jak bardzo krytyczna jest aplikacją kompilowanego na bieżąco?
 

@@ -1,5 +1,5 @@
 ---
-title: Filtry IP centrów zdarzeń platformy Azure | Dokumentacja firmy Microsoft
+title: Ograniczanie dostępu do usługi Azure Event Hubs przy użyciu filtrów IP | Dokumentacja firmy Microsoft
 description: Użyj filtrowania z określonych adresów IP do usługi Azure Event Hubs w celu połączenia bloków adresów IP.
 services: event-hubs
 documentationcenter: ''
@@ -7,18 +7,18 @@ author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
+ms.custom: seodec18
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: d0114821b5239146f64dde0b01652dc320994585
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5ed952421186210e55d6065cee51f4d54b4c0d46
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408153"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014399"
 ---
-# <a name="use-ip-filters"></a>Użyj filtrów IP
-
+# <a name="restrict-access-to-azure-event-hubs-using-ip-filters"></a>Ograniczanie dostępu do usługi Azure Event Hubs przy użyciu filtrów IP
 W scenariuszach, w których usługi Azure Event Hubs powinny być tylko dostępne z określonych dobrze znanych witryn *filtru IP* funkcja umożliwia skonfigurowanie reguł dla odrzuca lub akceptowanie ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
 
 ## <a name="when-to-use"></a>Kiedy stosować

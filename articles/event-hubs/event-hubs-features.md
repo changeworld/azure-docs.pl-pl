@@ -8,18 +8,19 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e27ac67db6a12b4ebfe04e9e1f89203e5e539318
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280583"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012729"
 ---
-# <a name="event-hubs-features-overview"></a>Omówienie funkcji usługi Event Hubs
+# <a name="features-and-terminology-in-azure-event-hubs"></a>Funkcje i terminologią dotyczącą usługi Azure Event Hubs
 
 Usługa Azure Event Hubs jest skalowalna Usługa przetwarzania zdarzeń, która pozyskuje i przetwarza duże ilości zdarzenia i dane, z małymi opóźnieniami i wysoką niezawodnością. Zobacz [co to jest usługa Event Hubs?](event-hubs-what-is-event-hubs.md) zapoznać się z omówieniem wysokiego poziomu.
 

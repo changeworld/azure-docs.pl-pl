@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 56616ff01ff70230a591285014ed291a2fdc7b34
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250992"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999536"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla tabeli platformy Azure
 
@@ -26,7 +26,7 @@ W tym artykule wyjaśniono, jak pracować z usługą Azure Table storage powiąz
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania magazynu tabeli znajdują się w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) repozytorium GitHub.
+Powiązania magazynu tabeli znajdują się w [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -325,9 +325,9 @@ Aby uzyskać więcej informacji o sposobie używania CloudTable, zobacz [Rozpocz
 
 Jeśli próbujesz powiązać `CloudTable` i komunikat o błędzie, upewnij się, że odwołanie do [poprawnej wersji zestawu SDK usługi Storage](#azure-storage-sdk-version-in-functions-1x).
 
-### <a name="input---f-example"></a>Dane wejściowe — przykład F #
+### <a name="input---f-example"></a>Dane wejściowe - F# przykład
 
-W poniższym przykładzie pokazano tabelę powiązania danych wejściowych w *function.json* pliku i [skrypt F #](functions-reference-fsharp.md) kodu korzystającego z powiązania. Funkcja używa wyzwalacz kolejki można odczytać wiersza pojedynczej tabeli. 
+W poniższym przykładzie pokazano tabelę powiązania danych wejściowych w *function.json* pliku i [ F# skryptu](functions-reference-fsharp.md) kodu korzystającego z powiązania. Funkcja używa wyzwalacz kolejki można odczytać wiersza pojedynczej tabeli. 
 
 *Function.json* plik Określa `partitionKey` i `rowKey`. `rowKey` Wartość "{queueTrigger}" wskazuje, że klucz wiersza pochodzi z ciągu kolejki wiadomości.
 
@@ -357,7 +357,7 @@ W poniższym przykładzie pokazano tabelę powiązania danych wejściowych w *fu
 
 [Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
-Poniżej przedstawiono kod F #:
+Oto F# kodu:
 
 ```fsharp
 [<CLIMutable>]
@@ -627,9 +627,9 @@ public class Person
 
 ```
 
-### <a name="output---f-example"></a>Dane wyjściowe — przykład F #
+### <a name="output---f-example"></a>Dane wyjściowe — F# przykład
 
-Poniższy przykład przedstawia dane wyjściowe tabeli powiązanie w *function.json* pliku i [skrypt F #](functions-reference-fsharp.md) kodu korzystającego z powiązania. Funkcja zapisuje wiele jednostek tabeli.
+Poniższy przykład przedstawia dane wyjściowe tabeli powiązanie w *function.json* pliku i [ F# skryptu](functions-reference-fsharp.md) kodu korzystającego z powiązania. Funkcja zapisuje wiele jednostek tabeli.
 
 Oto *function.json* pliku:
 
@@ -655,7 +655,7 @@ Oto *function.json* pliku:
 
 [Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
-Poniżej przedstawiono kod F #:
+Oto F# kodu:
 
 ```fsharp
 [<CLIMutable>]

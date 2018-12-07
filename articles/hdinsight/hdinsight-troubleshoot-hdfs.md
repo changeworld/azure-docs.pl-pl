@@ -6,13 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: 2eddf1da9f797f4646d6e3fc3380580d9923d963
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: d85a7487b366f41b561a8f6e43f55bf1d8e609b1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013789"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013274"
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem plików HDFS przy użyciu usługi Azure HDInsight
 

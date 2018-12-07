@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.author: stbaron
-ms.openlocfilehash: f5e059c4ce375edb50321afb772cce400cb19b92
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 918ff674e57a14f685c7f9ef2aaaca5ca064976e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309433"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012848"
 ---
 # <a name="azure-resource-health-overview"></a>Omówienie usługi Azure Resource Health
  
@@ -53,11 +53,11 @@ Usługa Resource Health zapewnia dodatkowe szczegóły dotyczące zdarzenia oraz
 ![Stan "Niedostępne" dla maszyny wirtualnej z powodu zdarzenia platformy](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>Zdarzenia inne niż platformy
-Zdarzenia inne niż platformy są wyzwalane przez działania użytkowników. Przykłady są zatrzymywanie maszyny wirtualnej lub osiągnięcia maksymalną liczbę połączeń do pamięci podręcznej Redis.
+Zdarzenia inne niż platformy są wyzwalane przez działania użytkowników. Przykłady są zatrzymywanie maszyny wirtualnej lub osiągnięcia maksymalną liczbę połączeń do usługi Azure Cache dla usługi Redis.
 
 ![Stan "Niedostępne" dla maszyny wirtualnej ze względu na to zdarzenie-platform](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
-### <a name="unknown"></a>Nieznany
+### <a name="unknown"></a>Nieznane
 Stan kondycji **nieznany** wskazuje, że kondycja zasobu nie odebrał informacji na temat tego zasobu na więcej niż 10 minut. Mimo że ten stan nie jest ostateczną wskazanie stan zasobu, to ważny punkt danych w proces rozwiązywania problemów.
 
 Jeśli zasób działa zgodnie z oczekiwaniami, stan zasobu zmieni się na **dostępne** po kilku minutach.

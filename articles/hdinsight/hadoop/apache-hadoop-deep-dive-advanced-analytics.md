@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 40536aae15f2ae9fa5e186cdbea1f75f7d264437
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7253a31057d8e7af5c0273ef112b1155cf15a014
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047144"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011661"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Szczegółowe informacje — zaawansowane analizy
 
@@ -24,7 +24,7 @@ HDInsight zapewnia możliwość uzyskania wartościowy wgląd w informacje z du�
 
 ## <a name="advanced-analytics-process"></a>Proces zaawansowanej analizy
 
-![Proces](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Przetwórz](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
 Po zidentyfikowaliśmy problem biznesowy i zostały uruchomione, zbierania i przetwarzania danych, należy utworzyć model, który reprezentuje pytanie chcesz przewidzieć. Model użyje jednego lub więcej algorytmów uczenia maszynowego Zmień typ prognozowania, który najlepiej spełnia Twoje potrzeby biznesowe.  Większość danych należy używać do nauczenia modelu, z użyciem usług rest używany w celu przetestowania lub ewaluacji go. 
 
@@ -63,7 +63,7 @@ HDInsight ma kilka usługi machine learning opcje przepływ pracy zaawansowanej 
 
 ### <a name="machine-learning-and-spark"></a>Uczenie maszynowe i platformy Spark
 
-[HDInsight Spark](../spark/apache-spark-overview.md) to oferta hostowanymi na platformie Azure z [Spark](http://spark.apache.org/), ujednolicone, typu open source, platforma równoległego przetwarzania danych, która używa przetwarzanie w pamięci, aby zwiększyć możliwości analizy danych Big Data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. 
+[HDInsight Spark](../spark/apache-spark-overview.md) to oferta hostowanymi na platformie Azure z [Spark](https://spark.apache.org/), ujednolicone, typu open source, platforma równoległego przetwarzania danych, która używa przetwarzanie w pamięci, aby zwiększyć możliwości analizy danych Big Data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. 
 
 Istnieją trzy biblioteki uczenia skalowalne maszyny, które przenieść funkcje modelowania konsolidatorze na tym środowisku rozproszonym:
 

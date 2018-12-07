@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f027b4c827fd7afe1a9cd2f8f31839b092345728
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634077"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012491"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Korzystanie z języka Java funkcji zdefiniowanej przez użytkownika przy użyciu Apache Hive w HDInsight
 
@@ -29,9 +29,9 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
 
     Większość czynności w tym dokumencie działać w obu klastrach z systemem Windows i Linux. Jednak są kroki używane do przekazywania skompilowanych UDF w klastrze, a następnie uruchom go, są specyficzne dla klastrów opartych na systemie Linux. Podano linki do informacji, które mogą być używane z klastrami z systemem Windows.
 
-* [Zestaw Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 lub nowszy (lub równoważny, taki jak OpenJDK)
+* [Zestaw Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 lub nowszy (lub równoważny, taki jak OpenJDK)
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 * Edytor tekstu lub środowiska IDE Java
 

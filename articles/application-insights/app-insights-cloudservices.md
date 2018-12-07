@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: c39cb01f1477e51623b02941bae03a51a389e197
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b52604fa19a5598e8aff5b8a1ea25e7361add553
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682885"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997015"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługa Application Insights dla usług Azure Cloud Services
 [Aplikacje usługi Microsoft Azure Cloud](https://azure.microsoft.com/services/cloud-services/) mogą być monitorowane przez usługę [Application Insights][start] w celu sprawdzania ich dostępności, wydajności, błędów i użycia. W tym celu dane z zestawów SDK usługi Application Insights są łączone z danymi z usługi [Azure Diagnotics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) pochodzącymi z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -28,7 +28,7 @@ ms.locfileid: "52682885"
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 Będą potrzebne:
 
-* Subskrypcja platformy [Microsoft Azure](http://azure.com). Zaloguj się przy użyciu konta Microsoft, które możesz mieć dla systemu Windows, usługi XBox Live lub innych usług w chmurze firmy Microsoft. 
+* Subskrypcja platformy [Microsoft Azure](https://azure.com). Zaloguj się przy użyciu konta Microsoft, które możesz mieć dla systemu Windows, usługi XBox Live lub innych usług w chmurze firmy Microsoft. 
 * Narzędzia Microsoft Azure Tools 2.9 lub nowsze.
 * Narzędzia Developer Analytics Tools 7.10 lub nowsze.
 
@@ -150,7 +150,7 @@ Aby wyświetlić liczniki wydajności i liczby zdarzeń, otwórz pozycję [Ekspl
 
 ![Dane diagnostyczne platformy Azure](./media/app-insights-cloudservices/23-wad.png)
 
-Użyj [wyszukiwania](app-insights-diagnostic-search.md) lub [zapytania analitycznego](../log-analytics/query-language/get-started-analytics-portal.md), aby wyszukiwać w różnych dziennikach śledzenia wysyłanych przez diagnostykę platformy Azure. Załóżmy na przykład, że masz nieobsłużony wyjątek, który spowodował awarię i odtworzenie roli. Te informacje będą wyświetlane w kanale aplikacji dziennika zdarzeń systemu Windows. Możesz użyć wyszukiwania, aby wyszukać błąd w dzienniku zdarzeń systemu Windows i uzyskać pełen ślad stosu dla wyjątku. Ułatwi to znaleźć główną przyczynę problemu.
+Użyj [wyszukiwania](app-insights-diagnostic-search.md) lub [zapytania analitycznego](../azure-monitor/log-query/get-started-portal.md), aby wyszukiwać w różnych dziennikach śledzenia wysyłanych przez diagnostykę platformy Azure. Załóżmy na przykład, że masz nieobsłużony wyjątek, który spowodował awarię i odtworzenie roli. Te informacje będą wyświetlane w kanale aplikacji dziennika zdarzeń systemu Windows. Możesz użyć wyszukiwania, aby wyszukać błąd w dzienniku zdarzeń systemu Windows i uzyskać pełen ślad stosu dla wyjątku. Ułatwi to znaleźć główną przyczynę problemu.
 
 ![Wyszukiwanie diagnostyki platformy Azure](./media/app-insights-cloudservices/25-wad.png)
 
@@ -241,7 +241,7 @@ Czy to kompilacja dla .NET 4.6? Wersja 4.6 nie jest automatycznie obsługiwana w
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [netlogs]: app-insights-asp-net-trace-logs.md
-[portal]: http://portal.azure.com/
+[portal]: https://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md 

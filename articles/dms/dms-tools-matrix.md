@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/30/2018
-ms.openlocfilehash: d38cb244eeaf64fa0adfa78547d6d9dd4a8ad366
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.date: 12/07/2018
+ms.openlocfilehash: a3580c2939f03e6ede6341e7afb293e7f7c5f885
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684726"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016133"
 ---
 # <a name="service-and-tools-for-data-migration"></a>Usługi i narzędzia do migracji danych
 
@@ -41,8 +41,8 @@ Poniższe tabele zidentyfikować, usługi i narzędzia, których można użyć p
 | Oracle | Azure DB dla PostgreSQL |  |  |  |
 | MongoDB | Cosmos DB | [Cloudamize *](https://www.cloudamize.com/) | [Cloudamize *](https://www.cloudamize.com/) |  |
 | Cassandra | Cosmos DB |  |  |  |
-| MySQL usług pulpitu zdalnego/programu Aurora/środowiska lokalnego | Azure DB dla MySQL |  |  | [Kalkulator całkowitego kosztu posiadania](https://azure.microsoft.com/pricing/tco/calculator/) |
-| Postgresql w warstwie usług pulpitu zdalnego/programu Aurora/środowiska lokalnego | Azure DB dla PostgreSQL |  |  | [Kalkulator całkowitego kosztu posiadania](https://azure.microsoft.com/pricing/tco/calculator/) |
+| MySQL usług pulpitu zdalnego/środowiska lokalnego | Azure DB dla MySQL |  |  | [Kalkulator całkowitego kosztu posiadania](https://azure.microsoft.com/pricing/tco/calculator/) |
+| Postgresql w warstwie usług pulpitu zdalnego/środowiska lokalnego | Azure DB dla PostgreSQL |  |  | [Kalkulator całkowitego kosztu posiadania](https://azure.microsoft.com/pricing/tco/calculator/) |
 | MySQL | Usługi Azure SQL DB, MI, z maszyny Wirtualnej | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [Chmura — Atlas *](https://www.unifycloud.com/cloud-migration-tool/) | [Kalkulator całkowitego kosztu posiadania](https://azure.microsoft.com/pricing/tco/calculator/) |
 | DB2 | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |  |  |
 | Dostęp | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |  |  |
@@ -63,8 +63,8 @@ Poniższe tabele zidentyfikować, usługi i narzędzia, których można użyć p
 | Oracle | Azure DB dla PostgreSQL |  |  |  |
 | MongoDB | Cosmos DB |  | [Cloudamize *](https://www.cloudamize.com/) | [Cloudamize *](https://www.cloudamize.com/) |
 | Cassandra | Cosmos DB |  |  |  |
-| MySQL usług pulpitu zdalnego/programu Aurora/środowiska lokalnego | Azure DB dla MySQL |  |  |  |
-| Postgresql w warstwie usług pulpitu zdalnego/programu Aurora/środowiska lokalnego | Azure DB dla PostgreSQL |  |  |  |
+| MySQL usług pulpitu zdalnego/środowiska lokalnego | Azure DB dla MySQL |  |  |  |
+| Postgresql w warstwie usług pulpitu zdalnego/środowiska lokalnego | Azure DB dla PostgreSQL |  |  |  |
 | MySQL | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[Chmura — Atlas *](https://www.unifycloud.com/cloud-migration-tool/) |  |
 | DB2 | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Dostęp | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
@@ -85,8 +85,8 @@ Poniższe tabele zidentyfikować, usługi i narzędzia, których można użyć p
 | Oracle | Azure DB dla PostgreSQL |  |  |  |
 | MongoDB | Cosmos DB | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis danych *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis danych *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis danych *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Cassandra | Cosmos DB | [Imanis danych *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Imanis danych *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Imanis danych *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) |
-| MySQL usług pulpitu zdalnego/programu Aurora/środowiska lokalnego | Azure DB dla MySQL | [MySQL zrzutu *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| Postgresql w warstwie usług pulpitu zdalnego/programu Aurora/środowiska lokalnego | Azure DB dla PostgreSQL | [PG zrzutu *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| MySQL usług pulpitu zdalnego/środowiska lokalnego | Azure DB dla MySQL | [MySQL zrzutu *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| Postgresql w warstwie usług pulpitu zdalnego/środowiska lokalnego | Azure DB dla PostgreSQL | [PG zrzutu *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | MySQL | Usługi Azure SQL DB, MI, z maszyny Wirtualnej | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | DB2 | Usługi Azure SQL DB, MI, z maszyny Wirtualnej | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [USŁUGA DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Dostęp | Usługi Azure SQL DB, MI, z maszyny Wirtualnej | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
@@ -107,8 +107,8 @@ Poniższe tabele zidentyfikować, usługi i narzędzia, których można użyć p
 | Oracle | Azure DB dla PostgreSQL |  |
 | MongoDB | Cosmos DB | [Cloudamize *](https://www.cloudamize.com/) |
 | Cassandra | Cosmos DB |  |
-| MySQL usług pulpitu zdalnego/programu Aurora/środowiska lokalnego | Azure DB dla MySQL |  |
-| Postgresql w warstwie usług pulpitu zdalnego/programu Aurora/środowiska lokalnego | Azure DB dla PostgreSQL |  |
+| MySQL usług pulpitu zdalnego/środowiska lokalnego | Azure DB dla MySQL |  |
+| Postgresql w warstwie usług pulpitu zdalnego/środowiska lokalnego | Azure DB dla PostgreSQL |  |
 | MySQL | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |
 | DB2 | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |
 | Dostęp | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |

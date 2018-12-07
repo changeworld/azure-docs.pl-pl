@@ -1,5 +1,5 @@
 ---
-title: Szkolenie modeli uczenia maszynowego przy użyciu klasy narzędzie do szacowania za pomocą usługi Azure Machine Learning
+title: Szkolenie modelu uczenia Maszynowego przy użyciu klasy narzędzie do szacowania za pomocą usługi Azure Machine Learning
 description: Dowiedz się, jak przeprowadzić jednym węzłem i rozproszonego szkolenia tradycyjnych uczenia maszynowego i głębokiego uczenia modeli za pomocą usługi Azure Machine Learning services narzędzie do szacowania klasy
 ms.author: minxia
 author: mx-iao
@@ -8,15 +8,16 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c47761c184d0e6c091ff49b3eca2fdf89574b49d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec12
+ms.openlocfilehash: 53462fc0aecbb8f5aeef0bb9208264c714ce8394
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114863"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011424"
 ---
-# <a name="how-to-train-models-with-azure-machine-learning"></a>Sposób trenowania modeli przy użyciu usługi Azure Machine Learning
+# <a name="train-models-with-azure-machine-learning"></a>Szkolenie modeli za pomocą usługi Azure Machine Learning
 
 Szkolenia usługi machine learning modeli, szczególnie głębokich sieciach neuronowych, jest często zadania wymagające obliczeń i czasu. Po zakończeniu pisania skryptu szkolenia i systemem mały podzbiór danych na komputerze lokalnym, prawdopodobnie można skalować obciążenie.
 
@@ -35,7 +36,7 @@ Ten artykuł koncentruje się na kroki 4 – 5. Kroki 1 – 3, można znaleźć 
 
 ### <a name="single-node-training"></a>Szkolenie z jednym węzłem
 
-Użyj `Estimator` szkolenia jednym węzłem, uruchom na zdalne zasoby obliczeniowe na platformie Azure na potrzeby scikit-informacje modelu. Powinna już utworzono usługi [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#batch) obiektu `compute_target` i [datastore](how-to-access-data.md) obiektu `ds`.
+Użyj `Estimator` szkolenia jednym węzłem, uruchom na zdalne zasoby obliczeniowe na platformie Azure na potrzeby scikit-informacje modelu. Powinna już utworzono usługi [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#amlcompute) obiektu `compute_target` i [datastore](how-to-access-data.md) obiektu `ds`.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -58,7 +59,7 @@ Parametr | Opis
 --|--
 `source_directory`| Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń 
 `script_params`| Określanie argumentów wiersza polecenia do skryptu szkolenia słownika `entry_script`, w postaci < argument wiersza polecenia, wartość > par
-`compute_target`| Zdalne obliczeń, uruchamianego skrypt szkolenia, w tym przypadku [usługi Batch AI](how-to-set-up-training-targets.md#batch) klastra
+`compute_target`| Zdalne obliczeniowego elementu docelowego, uruchamianego skrypt szkolenia, w tym przypadku Azure obliczeniowego usługi Machine Learning ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) klastra
 `entry_script`| FilePath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
 `conda_packages`| Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia.  
 Konstruktor ma inny parametr o nazwie `pip_packages` używaną dla dowolnego pakietu pip, wymagane
@@ -87,7 +88,7 @@ Istnieją dwa scenariusze dodatkowe szkolenie, które można wykonywać za pomoc
 
 Poniższy kod przedstawia sposób przeprowadzania rozproszonego szkolenia CNTK modelu. Ponadto zamiast domyślnych obrazów usługi Azure Machine Learning, założono, że używasz własnego obrazu niestandardowego platformy docker do trenowania.
 
-Powinna już utworzono swoje [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#batch) obiektu `compute_target`. Narzędzie do szacowania można utworzyć w następujący sposób:
+Powinna już utworzono swoje [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#amlcompute) obiektu `compute_target`. Narzędzie do szacowania można utworzyć w następujący sposób:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -117,13 +118,11 @@ run = experiment.submit(cntk_est)
 ```
 
 ## <a name="examples"></a>Przykłady
-Samouczek dotyczący uczenia modelu skryptu sklearn zobacz:
-* [Tutorials/01.Train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
+Aby uzyskać notesu szkolenie modeli skryptu sklearn modelu zobacz:
+* [Samouczki/img klasyfikacji — część 1 — training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-Samouczek dotyczący rozproszonego CNTK przy użyciu niestandardowego platformy docker zobacz:
-* [szkolenie/06.distributed — cntk z niestandardowe — platformy docker](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/06.distributed-cntk-with-custom-docker)
-
-Pobierz te notesy:
+Notesy w rozproszonej uczenia głębokiego zobacz:
+* [How-to-use-azureml/Training-with-deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

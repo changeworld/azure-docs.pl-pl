@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/25/2017
+ms.date: 12/5/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 5f999a17cd375a3338aa936e2f405c36f6021ebc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984815"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996620"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Właściwości użytkownika współpracy B2B usługi Azure Active Directory
 
@@ -25,31 +25,43 @@ W zależności od potrzeb organizacji zapraszającej użytkownik współpracy B2
 
 - Stan 1: Umieszczone w zewnętrznego wystąpienia usługi Azure AD, reprezentowana jako użytkownik-Gość w organizacji zapraszającej. W tym przypadku B2B użytkownik loguje się przy użyciu konta usługi Azure AD, należącego do dzierżawy usługi które otrzymało zaproszenie. Jeśli organizacja partnera nie korzysta z usługi Azure AD, tworzona jest nadal użytkownik-Gość w usłudze Azure AD. Wymagania są, że ich zrealizowanie zaproszenia i sprawdza swój adres e-mail, usługi Azure AD. Taki układ jest również nazywany just-in-time (JIT) dzierżawy lub "wirusowego" dzierżawców.
 
-- Stan 2: Umieszczone w konto Microsoft, reprezentowana jako użytkownik-Gość w organizacji hosta. W takim przypadku użytkownik-Gość zaloguje się za pomocą konta Microsoft. Tożsamości dla zaproszonego użytkownika sieci społecznościowej (google.com lub podobny), który nie jest kontem Microsoft jest tworzony jako konto Microsoft podczas realizacji oferty.
+- Stan 2: Umieszczone w firmy Microsoft lub innego konta, reprezentowana jako użytkownik-Gość w organizacji hosta. W takim przypadku użytkownik-Gość zaloguje się za pomocą konta Microsoft lub kont społecznościowych (google.com lub podobny). Podczas realizacji oferty tożsamości dla zaproszonego użytkownika jest tworzona jako konta Microsoft, w katalogu organizacji zapraszającej.
 
-- Stan 3: Umieszczone w organizacji hosta usługi Active Directory w środowisku lokalnym i zsynchronizowane z usługą organizacji hosta usługi Azure AD. W tej wersji należy ręcznie zmienić UserType takich użytkowników w chmurze za pomocą programu PowerShell.
+- Stan 3: Umieszczone w organizacji hosta usługi Active Directory w środowisku lokalnym i zsynchronizowane z usługą organizacji hosta usługi Azure AD. Program Azure AD Connect umożliwia synchronizowanie kont partnerów w chmurze jako użytkownicy usługi Azure AD B2B z wartością UserType = gościa. Zobacz [udzielanie lokalnie zarządzanych przez partnera kont dostępu do zasobów w chmurze](hybrid-on-premises-to-cloud.md).
 
 - Stan 4: Umieszczone w organizacji hosta usługi Azure AD z wartością UserType = gościa i poświadczenia, które zarządza hosta.
 
   ![Wyświetlanie inicjały zapraszającej](media/user-properties/redemption-diagram.png)
 
 
-Teraz zobaczmy, jak wygląda użytkownik współpracy B2B usługi Azure AD w stanie 1 w usłudze Azure AD.
+Teraz zobaczmy, jak wygląda użytkownik współpracy B2B usługi Azure AD w usłudze Azure AD.
 
 ### <a name="before-invitation-redemption"></a>Przed realizacja zaproszenia
+
+Stan 1 i 2 stan konta są wynikiem zaprosisz użytkowników-gości do współpracy przy użyciu poświadczeń własnych użytkowników gości. Gdy zaproszenie początkowo jest wysyłana do użytkownika gościa, konto jest tworzone w katalogu. To konto nie ma żadnych poświadczeń skojarzonych z nią, ponieważ uwierzytelnianie jest wykonywane przez dostawcę tożsamości użytkownika gościa. **Źródła** dla konta gościa w katalogu zostaje ustalona **użytkownika Invited**. 
 
 ![Przed realizacji oferty](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>Po realizacja zaproszenia
 
-![Po realizacji oferty](media/user-properties/after-redemption.png)
+Po użytkownik-Gość akceptuje zaproszenie, **źródła** właściwość jest aktualizowane w oparciu o dostawcy tożsamości użytkownika gościa.
+
+Dla użytkowników-gości w stanie 1 **źródła** jest **zewnętrznych usługi Azure Active Directory**.
+
+![Stan 1 użytkownik-Gość po realizacji oferty](media/user-properties/after-redemption-state1.png)
+
+Dla użytkowników-gości w stanie 2 **źródła** jest **Account Microsoft**.
+
+![Użytkownik-Gość stan 2 po realizacji oferty](media/user-properties/after-redemption-state2.png)
+
+Dla użytkowników-gości w stan 3 i 4 stanu **źródła** właściwość jest ustawiona na **usługi Azure Active Directory** lub **Windows Server Active Directory**, zgodnie z opisem w następnej sekcji.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Właściwości klucza obiektu użytkownika współpracy B2B usługi Azure AD
 ### <a name="usertype"></a>UserType
 Ta właściwość określa relację użytkownika do dzierżawy hosta. Ta właściwość może mieć dwie wartości:
-- Element członkowski: Ta wartość wskazuje pracownika organizacji hosta i użytkownik w organizacji, Lista płac. Na przykład ten użytkownik oczekuje, że mają dostęp do witryn tylko wewnętrzne. Ten użytkownik nie będzie uwzględniane współpracownika zewnętrznego.
+- Element członkowski: Ta wartość wskazuje pracownika organizacji hosta i użytkownik w organizacji, Lista płac. Na przykład ten użytkownik oczekuje, że mają dostęp do witryn tylko wewnętrzne. Ten użytkownik nie jest uważany za współpracownika zewnętrznego.
 
-- Gość: Ta wartość wskazuje użytkownika, który nie jest traktowane jako wewnętrzne firmy, takich jak współpracownika zewnętrznego, partner, klienta lub podobne użytkownika. Taki użytkownik nie oczekiwano odbieranie w wewnętrznym dokumencie przedstawia Dyrektor Generalny i korzyści firmy, na przykład.
+- Gość: Ta wartość wskazuje użytkownika, który nie jest traktowane jako wewnętrzne firmy, takich jak współpracownika zewnętrznego, partnera lub klienta. Taki użytkownik nie powinien otrzymywać wewnętrznym dokumencie przedstawia Dyrektor Generalny firmy lub korzyści firmy, na przykład.
 
   > [!NOTE]
   > UserType nie ma związku jak użytkownik się zaloguje, rola katalogu użytkowników i tak dalej. Właściwość ta po prostu wskazuje relację użytkownika z organizacji hosta i umożliwia organizacji wymusić zasady, które są zależne od tej właściwości.
@@ -77,12 +89,12 @@ Zazwyczaj użytkownik B2B usługi Azure AD i użytkownika-gościa są równoznac
 ![Filtruj użytkowników-gości](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Konwertuj UserType
-Obecnie jest możliwe dla użytkowników przekonwertować UserType od elementu członkowskiego gościa i na odwrót przy użyciu programu PowerShell. Jednak Właściwość UserType powinien reprezentują relację użytkownika w organizacji. W związku z tym wartość tej właściwości należy zmieniać tylko wtedy, gdy zmieni się Relacja użytkownik w organizacji. Jeśli relacja użytkownik zmieni się, należy problemy, takie jak czy główna nazwa użytkownika (UPN), należy zmienić, rozwiązać? Użytkownik powinien nadal mieć dostęp do tych samych zasobów? Powinien być przypisany skrzynki pocztowej W związku z tym zaleca się zmianę UserType przy użyciu programu PowerShell jako atomic działania. Ponadto w przypadku, gdy ta właściwość stanie się niezmienne przy użyciu programu PowerShell, firma Microsoft nie zaleca się zależna od tej wartości.
+Istnieje możliwość konwersji UserType elementu członkowskiego gościa i na odwrót przy użyciu programu PowerShell. Jednak Właściwość UserType reprezentuje relację użytkownika w organizacji. W związku z tym należy zmienić tylko wtedy, gdy właściwość relacja użytkownika do zmian w organizacji. Jeśli relacja użytkownik zmieni się, należy zmienić nazwę główną użytkownika (UPN)? Użytkownik powinien nadal mieć dostęp do tych samych zasobów? Powinien być przypisany skrzynki pocztowej Nie zaleca się zmianę UserType przy użyciu programu PowerShell jako atomic działania. Ponadto w przypadku, gdy ta właściwość stanie się niezmienne przy użyciu programu PowerShell, nie zaleca się zależna od tej wartości.
 
 ## <a name="remove-guest-user-limitations"></a>Usuń ograniczenia użytkownika gościa
 Może to być przypadki, w którym chcesz zapewnić użytkownikom gościa z wyższymi uprawnieniami. Można dodać użytkownika-gościa do dowolnej roli i nawet usuwać domyślne ograniczenia użytkownika gościa w katalogu, aby dać użytkownikowi takie same uprawnienia jak członkowie.
 
-Istnieje możliwość wyłączyć domyślne ograniczenia użytkownika gościa, aby użytkownik-Gość w katalogu firmy otrzymuje takie same uprawnienia, jak użytkownika elementu członkowskiego.
+Istnieje możliwość wyłączenia ograniczenia domyślne, tak aby użytkownik-Gość w katalogu firmy ma takie same uprawnienia, jak użytkownika elementu członkowskiego.
 
 ![Usuń ograniczenia użytkownika gościa](media/user-properties/remove-guest-limitations.png)
 

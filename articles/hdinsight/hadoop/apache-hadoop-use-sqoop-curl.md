@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4b565252c78bfe2194530d840651a57df2686728
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: cf7c47e14ef41f58ca1d674521da669e56e7e892
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633177"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012185"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Uruchamiać zadania Apache Sqoop z usługą Hadoop w HDInsight za pomocą programu Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -27,8 +27,8 @@ Narzędzie curl jest używany do pokazują, jak możesz porozmawiać z HDInsight
 Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy:
 
 * Pełne [Sqoop użycia z usługą Hadoop w HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database) skonfigurowanie środowiska klastra HDInsight i Azure SQL database.
-* [curl](http://curl.haxx.se/). Curl to narzędzie do transferu danych, z lub do klastra HDInsight.
-* [jq](http://stedolan.github.io/jq/). Narzędzie jq jest używane do przetwarzania danych JSON, zwrócone w wyniku żądania REST.
+* [curl](https://curl.haxx.se/). Curl to narzędzie do transferu danych, z lub do klastra HDInsight.
+* [jq](https://stedolan.github.io/jq/). Narzędzie jq jest używane do przetwarzania danych JSON, zwrócone w wyniku żądania REST.
 
 ## <a name="submit-sqoop-jobs-by-using-curl"></a>Przesyłanie zadań Sqoop przy użyciu programu Curl
 > [!NOTE]
@@ -36,7 +36,7 @@ Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy:
 > 
 > W przypadku poleceń w tej sekcji należy zastąpić ciąg **USERNAME** nazwą użytkownika w celu dokonania uwierzytelnienia w klastrze oraz zastąpić ciąg **PASSWORD** hasłem do konta użytkownika. Zastąp ciąg **CLUSTERNAME** nazwą klastra.
 > 
-> Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego](http://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS (HTTP Secure), aby mieć pewność, że poświadczenia są bezpiecznie wysyłane do serwera.
+> Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego](https://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS (HTTP Secure), aby mieć pewność, że poświadczenia są bezpiecznie wysyłane do serwera.
 > 
 > 
 

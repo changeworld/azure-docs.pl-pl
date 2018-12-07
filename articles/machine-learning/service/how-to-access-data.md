@@ -1,6 +1,6 @@
 ---
-title: Użyj magazynów danych w usłudze Azure Machine Learning na dostęp do danych
-description: Jak korzystać z magazynów danych w magazynie danych programu access w czasie szkolenia
+title: Dostęp do danych w magazynów danych z usługi Azure Machine Learning
+description: Jak korzystać z magazynów danych w magazynie danych programu access w czasie szkolenie przy użyciu usługi Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +9,13 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: ef183397cf7ca3f1f561f6951290b722df31e5ed
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.custom: seodec18
+ms.openlocfilehash: 50df0647372832647712d514dd9d4651d8d9cc2d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620204"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014058"
 ---
 # <a name="how-to-access-data-during-training"></a>Jak uzyskać dostęp do danych podczas szkolenia
 Magazyn danych umożliwia dostęp i interakcję z danymi w usłudze Azure Machine Learning w przepływach pracy.

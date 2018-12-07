@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: f30114797c7ba62fde555487d3202de5edf48ecb
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 6122c1ef14d8ed1d93f682fdb3dbaaaaf30efabc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182352"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015028"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Zarządzanie usługą Log Analytics przy użyciu programu PowerShell
 Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) do wykonywania różnych funkcji w usłudze Log Analytics przy użyciu wiersza polecenia lub w ramach skryptu.  Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
@@ -205,7 +205,7 @@ Bez wykorzystania agentów monitorowania zasobów platformy Azure, zasoby muszą
 | Moduły równoważenia obciążenia          | Yes | |
 | Logic Apps              | Yes | Yes |
 | Grupy zabezpieczeń sieci | Yes | |
-| Pamięć podręczna Redis             |     | Yes |
+| Azure Cache for Redis             |     | Yes |
 | Usługi wyszukiwania         | Yes | Yes |
 | Przestrzeń nazw magistrali usług   |     | Yes |
 | SQL (v12)               |     | Yes |
@@ -221,7 +221,7 @@ $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegrou
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO" 
 
-Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
 Poprzedni polecenie cmdlet umożliwia również zbieranie dzienników z zasobów, które należą do różnych subskrypcji. Polecenie cmdlet jest w stanie działać w subskrypcjach, ponieważ informujemy identyfikator zasobu tworzenia dzienników i dzienniki są wysyłane do obszaru roboczego.

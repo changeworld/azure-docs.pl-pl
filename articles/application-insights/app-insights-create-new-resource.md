@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5b6afe4856e7e2c643a636f070937e81a2add2dd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724234"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996254"
 ---
 # <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 Usługa Azure Application Insights zawiera dane dotyczące Twojej aplikacji w systemie Microsoft Azure *zasobów*. Tworzenie nowego zasobu znajduje się w związku z tym [konfiguracji usługi Application Insights na potrzeby monitorowania nowej aplikacji][start]. W wielu przypadkach tworzenia zasobu może odbywać się automatycznie IDE. Ale w niektórych przypadkach możesz Utwórz ręcznie zasób — na przykład mieć osobne zasoby do rozwoju i produkcji kompilacji aplikacji.
@@ -25,11 +25,11 @@ Usługa Azure Application Insights zawiera dane dotyczące Twojej aplikacji w sy
 Po utworzeniu zasobu możesz pobrać jego klucza Instrumentacji i używać, aby skonfigurować zestaw SDK w aplikacji. Klucz zasobu łączy dane telemetryczne do zasobu.
 
 ## <a name="sign-up-to-microsoft-azure"></a>Zarejestruj się w systemie Microsoft Azure
-Jeśli nie mam [Microsoft account, Uzyskaj je teraz](http://live.com). (Jeśli używasz usług, takich jak Outlook.com, OneDrive, Windows Phone i XBox Live, masz już konto Microsoft.)
+Jeśli nie mam [Microsoft account, Uzyskaj je teraz](https://live.com). (Jeśli używasz usług, takich jak Outlook.com, OneDrive, Windows Phone i XBox Live, masz już konto Microsoft.)
 
-Należy również subskrypcji [Microsoft Azure](http://azure.com). Jeśli Twój zespół lub organizacja mają subskrypcję platformy Azure, właściciel może Cię dodać do niego przy użyciu swojego identyfikatora Windows Live. Opłaty są naliczane tylko za rzeczywiste użycie. Domyślny plan basic umożliwia pewna ilość użycia eksperymentalnych bezpłatnie.
+Należy również subskrypcji [Microsoft Azure](https://azure.com). Jeśli Twój zespół lub organizacja mają subskrypcję platformy Azure, właściciel może Cię dodać do niego przy użyciu swojego identyfikatora Windows Live. Opłaty są naliczane tylko za rzeczywiste użycie. Domyślny plan basic umożliwia pewna ilość użycia eksperymentalnych bezpłatnie.
 
-Jeśli masz dostęp do subskrypcji, zaloguj się do usługi Application Insights w [ http://portal.azure.com ](https://portal.azure.com)i użyj identyfikatora Live ID, aby zalogować się.
+Jeśli masz dostęp do subskrypcji, zaloguj się do usługi Application Insights w [ https://portal.azure.com ](https://portal.azure.com)i użyj identyfikatora Live ID, aby zalogować się.
 
 ## <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 W [portal.azure.com](https://portal.azure.com), Dodaj zasób usługi Application Insights:

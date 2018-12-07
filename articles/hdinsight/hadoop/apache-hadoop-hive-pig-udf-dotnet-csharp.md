@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2ef88fff1313a0e7b1aa0abb502629512daaf636
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 21186c522e46dac11c1dc88bbad5c4b330bc1e3f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633839"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012032"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# funkcje zdefiniowane przez użytkownika przy użyciu Apache Hive i Apache Pig, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
 
@@ -45,7 +45,7 @@ Zarówno Hive i Pig można przekazać danych do aplikacji zewnętrznych do przet
 
 * __HDInsight opartych na systemie Linux__ klastrów przy użyciu [Mono (https://mono-project.com) ](https://mono-project.com) do uruchamiania aplikacji .NET. Wersja platformy mono 4.2.1 jest dołączony do HDInsight w wersji 3.6.
 
-    Aby uzyskać więcej informacji na temat zgodności platformy Mono z wersji systemu .NET Framework, zobacz [zgodności platformy Mono](http://www.mono-project.com/docs/about-mono/compatibility/).
+    Aby uzyskać więcej informacji na temat zgodności platformy Mono z wersji systemu .NET Framework, zobacz [zgodności platformy Mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
     Aby użyć określonej wersji platformy Mono, zobacz [Instalowanie lub aktualizowanie środowiska Mono](../hdinsight-hadoop-install-mono.md) dokumentu.
 
@@ -60,7 +60,7 @@ Aby uzyskać więcej informacji na temat wersji programu .NET framework i Mono d
 1. Otwórz program Visual Studio i utworzyć rozwiązanie. Dla typów projektów wybierz **Aplikacja konsoli (.NET Framework)** i nadaj nazwę nowego projektu **HiveCSharp**.
 
     > [!IMPORTANT]
-    > Wybierz __.NET Framework 4.5__ korzystania z klastrów HDInsight opartych na systemie Linux. Aby uzyskać więcej informacji na temat zgodności platformy Mono z wersji systemu .NET Framework, zobacz [zgodności platformy Mono](http://www.mono-project.com/docs/about-mono/compatibility/).
+    > Wybierz __.NET Framework 4.5__ korzystania z klastrów HDInsight opartych na systemie Linux. Aby uzyskać więcej informacji na temat zgodności platformy Mono z wersji systemu .NET Framework, zobacz [zgodności platformy Mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
 2. Zastąp zawartość **Program.cs** następującym kodem:
 

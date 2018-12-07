@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: fe13c424a3da91e92a04cceb807b98fd1ffe4db0
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 427eb8abdede8c821d214d9f6a64fc6a122699de
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914043"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002025"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -25,21 +25,23 @@ Usługa Azure Event Grid ma trzy typy uwierzytelniania:
 
 ## <a name="webhook-event-delivery"></a>Dostarczanie zdarzeń elementu WebHook
 
-Elementy Webhook są jednym z wielu sposobów, aby odbierać zdarzenia z usługi Azure Event Grid. Gdy jest to nowe zdarzenie jest gotowy, usługa EventGrid publikuje żądania HTTP do punktu końcowego skonfigurowanego ze zdarzeniem w treści żądania.
+Elementy Webhook są jednym z wielu sposobów, aby odbierać zdarzenia z usługi Azure Event Grid. Gdy nowe zdarzenie jest gotowy, usługi Event Grid wysyła żądanie HTTP do punktu końcowego skonfigurowanego ze zdarzeniem w treści żądania.
 
-Podobnie jak wiele innych usług, które obsługują elementy webhook EventGrid wymaga potwierdzenia "własność" punktu końcowego usługi elementu Webhook, zanim zacznie dostarczanie zdarzeń do określonego punktu końcowego. To wymaganie jest zapobiec podejrzewający punktu końcowego docelowy punkt końcowy podczas dostarczania zdarzeń z EventGrid. Jednak przy użyciu jednej z trzech usług platformy Azure wymienionych poniżej, infrastruktury platformy Azure automatycznie obsługuje ten sprawdzania poprawności:
+Podobnie jak wielu innych usług, które obsługują elementy webhook usługi Event Grid wymaga udowodnić własność punktu końcowego usługi elementu Webhook, zanim zacznie dostarczanie zdarzeń do określonego punktu końcowego. To wymaganie zapobiega przepełnieniu punktu końcowego usługi za pomocą zdarzeń przez złośliwego użytkownika. Gdy używasz dowolnego z trzech usług platformy Azure wymienionych poniżej infrastruktury platformy Azure automatycznie obsługuje tej weryfikacji:
 
 * Usługi Azure Logic Apps
 * Usługa Azure Automation
-* Usługa Azure Functions EventGrid wyzwalacza.
+* Usługa Azure Functions dla wyzwalacza usługi Event Grid.
 
-Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na podstawie funkcji platformy Azure, swój kod punktu końcowego musi wziąć udział w uzgadniania weryfikacji za pomocą EventGrid. EventGrid obsługuje dwa modele uzgadnianie różnych sprawdzania poprawności:
+Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na podstawie funkcji platformy Azure, swój kod punktu końcowego musi wziąć udział w uzgadniania weryfikacji za pomocą usługi Event Grid. Usługa Event Grid obsługuje sprawdzanie poprawności subskrypcji na dwa sposoby.
 
-1. **Uzgadnianie ValidationCode**: podczas tworzenia subskrypcji zdarzeń EventGrid wpisy "zdarzenie sprawdzania poprawności subskrypcji" do punktu końcowego usługi. Schemat tego zdarzenia jest podobne do innych EventGridEvent i zawiera część danych to zdarzenie `validationCode` właściwości. Gdy aplikacja sprawdziła, to żądanie weryfikacji subskrypcji oczekiwanego zdarzenia, kod aplikacji musi reagowała wyświetlania ponownie kod sprawdzania poprawności, aby EventGrid. Ten mechanizm uzgadniania jest obsługiwana we wszystkich wersjach EventGrid.
+1. **Uzgadnianie ValidationCode (programowe)**: Jeśli dla punktu końcowego usługi jest kontroli kodu źródłowego, ta metoda jest zalecana. Tworzenie subskrypcji zdarzeń usługi Event Grid wysyła zdarzenie sprawdzania poprawności subskrypcji do punktu końcowego usługi. Schemat tego zdarzenia jest podobne do innych zdarzeń usługi Event Grid. Zawiera części danych to zdarzenie `validationCode` właściwości. Aplikacja sprawdza, czy żądanie weryfikacji dotyczy subskrypcji zdarzeń oczekiwanego i funkcją kod sprawdzania poprawności do usługi Event Grid. Ten mechanizm uzgadniania jest obsługiwana we wszystkich wersjach usługi Event Grid.
 
-2. **Uzgadnianie ValidationURL (ręczne uzgadnianie)**: W niektórych przypadkach, może nie mieć kontroli kodu źródłowego punktu końcowego w celu wykonania uzgadniania ValidationCode na podstawie. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), można programowo nie może odpowiadać z powrotem kod sprawdzania poprawności. Począwszy od wersji 2018-05-01-preview EventGrid obsługuje teraz uzgadniania ręcznej weryfikacji. Jeżeli tworzysz subskrypcję zdarzeń przy użyciu zestawu SDK lub narzędzia, która używa interfejsu API w wersji 2018-05-01-preview lub nowszej, wysyła EventGrid `validationUrl` właściwość w ramach części danych zdarzeń sprawdzania poprawności subskrypcji. Aby ukończyć uzgadnianie, po prostu GET żądania na ten adres URL, za pomocą klienta REST lub przy użyciu przeglądarki sieci web. Adres URL podany sprawdzania poprawności jest prawidłowy tylko w przypadku około 10 minut. W tym czasie jest stan aprowizacji subskrypcji zdarzeń `AwaitingManualAction`. Jeśli nie wykonasz ręcznej weryfikacji w ciągu 10 minut, stanu aprowizacji jest równa `Failed`. Należy utworzyć subskrypcję zdarzeń ponownie, przed rozpoczęciem ręcznej weryfikacji.
+2. **Uzgadnianie ValidationURL (ręcznie)**: W niektórych przypadkach, nie masz dostępu do kodu źródłowego punktu końcowego w celu wykonania uzgadniania ValidationCode. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie możesz programowo odpowiedzieć kodem sprawdzania poprawności.
 
-Ten mechanizm ręcznej weryfikacji jest w wersji zapoznawczej. Aby jej użyć, musisz zainstalować [rozszerzenie usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Instalację można wykonać za pomocą polecenia `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, używasz `api-version=2018-05-01-preview`.
+   Począwszy od wersji 2018-05-01-preview usługi Event Grid obsługuje uzgadniania ręcznej weryfikacji. Jeżeli tworzysz subskrypcję zdarzeń przy użyciu zestawu SDK lub narzędzia, która używa interfejsu API w wersji 2018-05-01-preview lub później, usługa Event Grid wysyła `validationUrl` właściwości w części danych zdarzeń sprawdzania poprawności subskrypcji. Aby ukończyć uzgadnianie, należy znaleźć tego adresu URL w danych zdarzeń i ręcznie Wyślij żądanie Pobierz do niego. Można użyć klienta REST lub przeglądarki sieci web.
+
+   Podany adres URL jest ważny przez 10 minut. W tym czasie jest stan aprowizacji subskrypcji zdarzeń `AwaitingManualAction`. Jeśli nie wykonasz ręcznej weryfikacji w ciągu 10 minut, stanu aprowizacji jest równa `Failed`. Należy utworzyć subskrypcję zdarzeń ponownie, przed rozpoczęciem ręcznej weryfikacji.
 
 ### <a name="validation-details"></a>Szczegóły sprawdzania poprawności
 
@@ -80,7 +82,7 @@ Aby udowodnić własność punktu końcowego, odsyłania kod sprawdzania poprawn
 
 Lub można ręcznie sprawdzić poprawność subskrypcji, wysyłając żądanie GET do adresu URL sprawdzania poprawności. Subskrypcja zdarzeń pozostaje w stanie oczekiwania, aż zweryfikowane.
 
-Można znaleźć przykładowy języka C#, pokazujący sposób obsługi uzgadnianie sprawdzania poprawności subskrypcji na https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs.
+Na przykład obsługi uzgadnianie sprawdzania poprawności subskrypcji, zobacz [ C# przykładowe](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ### <a name="checklist"></a>Lista kontrolna
 

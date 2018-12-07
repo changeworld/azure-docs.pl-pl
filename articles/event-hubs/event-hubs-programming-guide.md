@@ -5,18 +5,18 @@ services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 ms.service: event-hubs
+ms.custom: seodec18
 ms.topic: article
-ms.date: 08/12/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bfb2db8a4a0091e26cc2b893e615ba831da30ac7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: cd97aed36e9fd82df0d37913d5ea9e57c875a673
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746328"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011457"
 ---
-# <a name="event-hubs-programming-guide"></a>Przewodnik programowania w usłudze Event Hubs
-
+# <a name="programming-guide-for-azure-event-hubs"></a>Przewodnik programowania dotyczący usługi Azure Event Hubs
 W tym artykule omówiono kilka typowych scenariuszy, w pisaniu kodu za pomocą usługi Azure Event Hubs. Przyjęto założenie, że wstępnie znasz i rozumiesz usługę Event Hubs. Omówienie koncepcji usługi Event Hubs można znaleźć w temacie [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Wydawcy zdarzeń
@@ -55,7 +55,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="send-events-to-an-event-hub"></a>Wysyłanie zdarzeń do Centrum zdarzeń
 
-Wysyłanie zdarzeń do Centrum zdarzeń, tworząc [EventHubClient][] wystąpienie i wysłanie go asynchronicznie za pomocą [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) metody. Ta metoda przyjmuje jeden [EventData][] parametr wystąpienia i synchronicznie wysyła go do Centrum zdarzeń.
+Wysyłanie zdarzeń do Centrum zdarzeń, tworząc [EventHubClient][] wystąpienie i wysłanie go asynchronicznie za pomocą [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) metody. Ta metoda przyjmuje jeden [EventData][] parametr wystąpienia, a następnie asynchronicznie wysyła do Centrum zdarzeń.
 
 ## <a name="event-serialization"></a>Serializacja zdarzeń
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.technology: azds-kubernetes
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 49e9a974dc01548c250f0b0a8b9b5afac5f286ff
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e155b4151a3b974e9ccc56a88028a89c35896522
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705501"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014005"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Jak do zarządzania wpisami tajnymi, pracując z przestrzenią deweloperów platformy Azure
 
@@ -112,5 +112,5 @@ Usługa Azure Dev do magazynowania zapewnia zaleca się dwie opcje przechowywani
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Za pomocą tych metod możesz teraz bezpiecznie łączyć z bazą danych, pamięci podręcznej Redis lub dostęp do bezpiecznych usług platformy Azure.
+Za pomocą tych metod można teraz bezpiecznie Połącz z bazą danych, pamięci podręcznej Redis Azure lub dostęp do bezpiecznych usług platformy Azure.
  

@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6138cc337c35924405fa3f6489e7e40bfc5779c9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 89d1859b521fff8ca8d3e8c7342bcb5a4b8d59fe
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007012"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012984"
 ---
-# <a name="install-and-use-giraph-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie systemu Giraph w klastrach HDInsight z systemem Windows
+# <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie Apache Giraph w klastrach HDInsight z systemem Windows
 
-Dowiedz się, jak dostosować Windows oparte na klastrze HDInsight z systemu Giraph przy użyciu akcji skryptów i sposobu przetwarzanie dużych wykresów za pomocą systemu Giraph. Aby uzyskać informacji na temat użycia systemu Giraph w klastrze opartych na systemie Linux, zobacz [zainstalować system Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
+Dowiedz się, jak dostosować Windows oparte na klastrze HDInsight z systemu Apache Giraph przy użyciu akcji skryptów i sposobu przetwarzanie dużych wykresów za pomocą systemu Giraph. Aby uzyskać informacji na temat użycia systemu Giraph w klastrze opartych na systemie Linux, zobacz [zainstalować Apache Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
 
 > [!IMPORTANT]
-> Kroki opisane w tym dokumencie działają tylko z klastrami HDInsight z systemem Windows. HDInsight jest dostępna tylko na Windows dla wersji starszej niż HDInsight 3.4. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Aby uzyskać informacje o tym, jak zainstalować system Giraph w klastrze HDInsight opartych na systemie Linux, zobacz [zainstalować system Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
+> Kroki opisane w tym dokumencie działają tylko z klastrami HDInsight z systemem Windows. HDInsight jest dostępna tylko na Windows dla wersji starszej niż HDInsight 3.4. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Aby uzyskać informacje o tym, jak zainstalować system Giraph w klastrze HDInsight opartych na systemie Linux, zobacz [zainstalować Apache Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
 
 
 Można zainstalować system Giraph z każdym typem klastra (Hadoop, Storm, HBase, Spark) w usłudze Azure HDInsight przy użyciu *akcji skryptu*. Przykładowy skrypt, aby zainstalować system Giraph w klastrze usługi HDInsight jest dostępna tylko do odczytu z usługi Azure storage blob pod [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1). Przykładowy skrypt działa tylko w przypadku klastra HDInsight w wersji 3.1. Aby uzyskać więcej informacji na temat wersji klastra HDInsight, zobacz [wersji klastra HDInsight](hdinsight-component-versioning.md).
 
 **Powiązane artykuły**
 
-* [Zainstalować system Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md)
-* [Tworzenie klastrów Hadoop w HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów HDInsight.
+* [Instalowanie systemu Apache Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md)
+* [Tworzenie klastrów usługi Apache Hadoop w HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów HDInsight.
 * [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu][hdinsight-cluster-customize]: ogólne informacje na temat dostosowywania klastrów HDInsight za pomocą akcji skryptu.
 * [Tworzenie akcji skryptu skryptów dla HDInsight](hdinsight-hadoop-script-actions.md).
 
@@ -71,7 +71,7 @@ Używamy przykład SimpleShortestPathsComputation aby zademonstrować podstawowa
         [3,0,[[0,3],[1,1],[4,4]]]
         [4,0,[[3,4],[2,4]]]
 
-    Przekaż plik tiny_graph.txt do podstawowy magazyn dla klastra usługi HDInsight. Aby uzyskać instrukcje na temat przekazywania danych, zobacz [przekazywanie danych na potrzeby zadań usługi Hadoop w HDInsight](hdinsight-upload-data.md).
+    Przekaż plik tiny_graph.txt do podstawowy magazyn dla klastra usługi HDInsight. Aby uzyskać instrukcje na temat przekazywania danych, zobacz [przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight](hdinsight-upload-data.md).
 
     Te dane w tym artykule opisano relację między obiektami na grafie skierowanym w formacie [źródła\_identyfikator, źródło\_wartość [[dest\_identyfikator], [krawędzi\_wartość],...]]. Każdy wiersz reprezentuje relację między **źródła\_identyfikator** obiektu i co najmniej jeden **dest\_identyfikator** obiektów. **Krawędzi\_wartość** (lub waga) mogą być uważane za siłę lub odległości połączenie między **source_id** i **dest\_identyfikator**.
 
@@ -154,21 +154,21 @@ Używamy przykład SimpleShortestPathsComputation aby zademonstrować podstawowa
     ![Rysowanie obiektów jako kółka, przy użyciu najkrótsze ścieżki między](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
 ## <a name="install-giraph-using-aure-powershell"></a>Zainstalować system Giraph przy użyciu programu Azure PowerShell
-Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  W przykładzie pokazano sposób instalowania Spark za pomocą programu Azure PowerShell. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
+Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  W przykładzie pokazano, jak zainstalować platformę Apache Spark przy użyciu programu Azure PowerShell. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
 
 ## <a name="install-giraph-using-net-sdk"></a>Zainstalować system Giraph przy użyciu zestawu .NET SDK
 Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). W przykładzie pokazano sposób instalowania Spark za pomocą zestawu .NET SDK. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
 
 ## <a name="see-also"></a>Zobacz także
-* [Zainstalować system Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md)
-* [Tworzenie klastrów Hadoop w HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów HDInsight.
+* [Instalowanie systemu Apache Giraph w klastrach usługi HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md)
+* [Tworzenie klastrów usługi Apache Hadoop w HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów HDInsight.
 * [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu][hdinsight-cluster-customize]: ogólne informacje na temat dostosowywania klastrów HDInsight za pomocą akcji skryptu.
 * [Tworzenie akcji skryptu skryptów dla HDInsight](hdinsight-hadoop-script-actions.md).
-* [Instalowanie i używanie języka Spark w klastrach HDInsight][hdinsight-install-spark]: Akcja skryptu próbki o instalowaniu platformy Spark.
-* [Zainstalować platformę Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md): Akcja skryptu próbki o instalowaniu Solr.
+* [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]: Akcja skryptu próbki o instalowaniu platformy Spark.
+* [Instalowanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md): Akcja skryptu próbki o instalowaniu Solr.
 
 [tools]: https://github.com/Blackmist/hdinsight-tools
-[aps]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[aps]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md

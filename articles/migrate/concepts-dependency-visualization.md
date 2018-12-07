@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 9baf6ea70a8e9fa0dcd8ceefc9f58d7fa972767a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9cbb1f080b9a5a98984ad48854bccc4fb2044c16
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841969"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998351"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -68,7 +68,7 @@ Więcej informacji o cenach usługi Azure Migrate można uzyskać [tutaj](https:
 
 ## <a name="how-do-i-manage-the-workspace"></a>Jak zarządzać obszaru roboczego?
 
-Można użyć obszaru roboczego usługi Log Analytics spoza usługi Azure Migrate. Nie są usuwane po usunięciu projektu migracji, w której został utworzony. Jeśli nie potrzebujesz już obszar roboczy, [ją usunąć](../log-analytics/log-analytics-manage-access.md) ręcznie.
+Można użyć obszaru roboczego usługi Log Analytics spoza usługi Azure Migrate. Nie są usuwane po usunięciu projektu migracji, w której został utworzony. Jeśli nie potrzebujesz już obszar roboczy, [ją usunąć](../azure-monitor/platform/manage-access.md) ręcznie.
 
 Nie usuwaj tego obszar roboczy utworzony przez usługę Azure Migrate, o ile nie usuniesz projekt migracji. Jeśli to zrobisz, funkcji wizualizacji zależności nie będzie działać zgodnie z oczekiwaniami.
 

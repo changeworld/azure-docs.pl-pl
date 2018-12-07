@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 51b9aa33fd186a46d51f7e2fb64b42648b854cd3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d7ed4f0276e6220e6df528075e83cb9fabc6cc84
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833911"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011474"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Zarządzanych tożsamości dla zasobów platformy Azure z usługą Event Hubs
 
@@ -47,7 +48,7 @@ Pierwszym krokiem jest do tworzenia aplikacji ASP.NET z aplikacji. Jeśli nie zn
 
 Po utworzeniu aplikacji, przejdź do nowo utworzonej aplikacji internetowej w witrynie Azure portal (również wyświetlany na instrukcje), a następnie przejdź do **tożsamości usługi zarządzanej** strony, a następnie włączyć tę funkcję: 
 
-![](./media/event-hubs-managed-service-identity/msi1.png)
+![Zarządzane strony tożsamości usługi](./media/event-hubs-managed-service-identity/msi1.png)
  
 Po włączeniu funkcji nową tożsamość usługi jest tworzone w usłudze Azure Active Directory, a następnie skonfigurowane do hosta usługi App Service.
 
@@ -67,7 +68,7 @@ Uwaga jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagin
 
 Po wprowadzeniu tych zmian, publikowania, a następnie uruchom aplikację. Publikowania danych można uzyskać, pobierając i następnie importowania profilu publikowania w programie Visual Studio:
 
-![](./media/event-hubs-managed-service-identity/msi3.png)
+![Importuj profil publikowania](./media/event-hubs-managed-service-identity/msi3.png)
  
 Wysyłać ani odbierać wiadomości, wprowadź nazwę przestrzeni nazw i nazwę obiektu, który został utworzony, a następnie kliknij opcję **wysyłania** lub **otrzymywać**. 
  

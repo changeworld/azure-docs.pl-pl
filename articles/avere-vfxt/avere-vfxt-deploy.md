@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578641"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999447"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
@@ -286,7 +286,7 @@ RESOURCE_GROUP=
 * Nazwa podsieci
 * Usługa Azure AD środowiska uruchomieniowego Nazwa roli — po wykonaniu w przykładzie w [tworzenie roli dostęp do węzła klastra](#create-the-cluster-node-access-role), użyj ``avere-cluster``. 
 * Nazwa konta magazynu (w przypadku tworzenia nowego kontenera obiektów Blob)
-* Nazwa klastra — w tej samej grupie zasobów nie może mieć dwa klastry vFXT o takiej samej nazwie. 
+* Nazwa klastra — w tej samej grupie zasobów nie może mieć dwa klastry vFXT o takiej samej nazwie. Nadaj każdy klaster unikatową nazwę dla najlepszym rozwiązaniem.
 * Hasło administracyjne — wybrać bezpieczne hasło do monitorowania i administrowania klastrem. To hasło jest przypisane do użytkownika ``admin``. 
 * Węzeł typu wystąpienia - zobacz [rozmiary węzłów vFXT](avere-vfxt-deploy-plan.md#vfxt-node-sizes) informacji
 * Rozmiar pamięci podręcznej węzła — zobacz [rozmiary węzłów vFXT](avere-vfxt-deploy-plan.md#vfxt-node-sizes) informacji
@@ -306,6 +306,15 @@ Po ukończeniu działania skryptu, skopiuj adres IP zarządzania, który jest ni
 
 ![Dane wyjściowe wiersza polecenia skryptu wyświetlanie adres IP zarządzania blisko końca](media/avere-vfxt-mgmt-ip.png)
 
+> [!IMPORTANT] 
+> Jeśli utworzono nowy kontener obiektów Blob, może być zaszyfrowany przy użyciu domyślnego klucza, który nie został zapisany poza klastrem. Aby w kontenerze można przechowywać dane, należy albo Pobierz plik klucza odzyskiwania lub Utwórz klucz szyfrowania i zapisać swój plik odzyskiwania w trwałych lokalizacji. 
+> 
+> Jeśli używasz domyślnego klucza bez pobierania pliku odzyskiwania istnieje możliwość utraty dostępu do zaszyfrowanych danych w filtr podstawowych obiektów Blob, jeśli klaster vFXT zniszczone lub utraty.
+>
+> Jeśli skrypt zawiera `WARNING` wiadomości, takich jak te zaznaczona kółkiem na zrzucie ekranu poniżej, postępuj zgodnie z instrukcjami w [skonfigurować magazyn](avere-vfxt-add-storage.md) Pobierz plik klucza, lub Utwórz nowy klucz kontenera obiektów Blob. Użyj narzędzia konfiguracji klastra, Avere Panelu sterowania.
+
+![Dane wyjściowe wiersza polecenia skryptu, wyświetlając komunikaty ostrzegawcze o utworzenie nowego klucza szyfrowania](media/avere-vfxt-key-warning.png)
+
 ## <a name="next-step"></a>Następny krok
 
-Teraz, gdy klaster działa, i znasz jego adres IP zarządzania, możesz [nawiązać połączenie za pomocą narzędzia konfiguracji klastra](avere-vfxt-cluster-gui.md) Włączanie obsługi i Dodawanie magazynu, jeśli to konieczne.
+Teraz, gdy klaster działa, i znasz jego adres IP zarządzania, możesz [nawiązać połączenie za pomocą narzędzia konfiguracji klastra](avere-vfxt-cluster-gui.md) Aby włączyć obsługę, Dodaj magazyn, jeśli potrzebne lub adresie domyślnego klucza szyfrowania na nowego magazynu obiektów Blob.

@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 36516030741678ec66b4211f49ede35cfdb98605
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 531b431a0753e34592e88211d8a58328fe8a4e45
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706453"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014552"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -236,7 +236,7 @@ Ponowne uruchamianie węzłów agenta w klastrze zwykle rozwiązuje ten problem.
 ### <a name="reason"></a>Przyczyna
 Po włączeniu Dev miejsca do magazynowania w przestrzeni nazw w klastrze AKS dodatkowy kontener o nazwie _mindaro proxy_ jest instalowany na każdym zasobników działającym wewnątrz tego obszaru nazw. Ten kontener przechwytuje wywołania usług pod, który jest dołączony do funkcji tworzenia zespołu miejsca do magazynowania deweloperów.
 
-Niestety może to zakłócać pewne usługi działające w tych zasobników. W szczególności koliduje z zasobników uruchamianie pamięci podręcznej redis cache, powodując błędy połączeń i błędów w komunikacie główny/podrzędny.
+Niestety może to zakłócać pewne usługi działające w tych zasobników. W szczególności koliduje z zasobników systemem pamięć podręczna systemu Azure dla usługi Redis, powodując błędy połączeń i błędów w komunikacie główny/podrzędny.
 
 ### <a name="try"></a>Wypróbuj:
 Dotyczy pod(s) można przenieść do przestrzeni nazw w ramach klastra, który wykonuje _nie_ zawierać spacji deweloperów podczas uruchomienia pozostałej części aplikacji wewnątrz przestrzeni nazw z obsługą tworzenia miejsca do magazynowania w dalszym ciągu włączona. Dev miejsca do magazynowania nie spowoduje zainstalowania _mindaro proxy_ kontenerów wewnątrz spacje innych deweloperów włączone obszary nazw.

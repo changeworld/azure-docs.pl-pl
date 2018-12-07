@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/20/2017
 ms.reviewer: aruna
 ms.author: mbullwin
-ms.openlocfilehash: 358d17f29960983af1834e87f502331141fcff46
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e9a8c6345ca45234ffcec1588a98bf1b8d634e06
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726121"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000697"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Informacje o wersji narzędzi Developer Analytics Tools
 
@@ -180,7 +180,7 @@ Możesz zarządzać aplikacji na wiele sposobów, w portalu platformy HockeyApp.
 
 ![Portal usługi HockeyApp](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
 
-Zobacz [HockeyApp wiedzy](http://support.hockeyapp.net/kb/app-management-2) więcej szczegółowych informacji dotyczących zarządzania aplikacjami.
+Zobacz [HockeyApp wiedzy](https://support.hockeyapp.net/kb/app-management-2) więcej szczegółowych informacji dotyczących zarządzania aplikacjami.
 
 ### <a name="windows-forms-apps"></a>Windows Forms aplikacji
 Menu kontekstowe dla węzła projektu formularz Windows obejmuje teraz opcję, aby przekazać kompilacji do platformy HockeyApp.

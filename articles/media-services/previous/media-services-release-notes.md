@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 41376448095a5dd760fae594fdfe2d2b57e4440a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ae2697c96435ec18ae7645520d438c41837f036f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231655"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016865"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z poprzednich wersji i znane problemy.
@@ -39,13 +39,13 @@ Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z po
 | Usługi Media Services, mechanizm ograniczania ogranicza użycie zasobów dla aplikacji, które wysyłać nadmierne żądań do usługi. Usługa może zwrócić kod stanu HTTP "Usługa niedostępna" 503. |Aby uzyskać więcej informacji, zobacz opis kod stanu HTTP 503 w [kody błędów usługi Media Services](media-services-encoding-error-codes.md). |
 | Gdy zapytanie jednostki limit 1000 jednostek jest zwracany w tym samym czasie, ponieważ publiczny REST w wersji 2 ogranicza wyniki zapytania do 1000 wyników. |Pomiń i podjąć (.NET) / top (REST), zgodnie z opisem w [w tym przykładzie .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) i [w tym przykładzie interfejs API REST](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Niektórzy klienci mogą pochodzić między problemem powtórzeń tag w manifeście Smooth Streaming. |Aby uzyskać więcej informacji, zobacz [w tej sekcji](media-services-deliver-content-overview.md#known-issues). |
-| Obiekty Media Services .NET SDK nie może być serializowany i dlatego nie działają z usługą Azure Redis Cache. |Jeśli zostanie podjęta próba serializacji obiektu AssetCollection zestawu SDK, aby dodać go do usługi Azure Redis Cache, jest zgłaszany wyjątek. |
+| Obiekty Media Services .NET SDK nie może być serializowany i dlatego nie działają z pamięć podręczna systemu Azure dla usługi Redis. |Jeśli zostanie podjęta próba serializacji obiektu AssetCollection zestawu SDK, aby dodać go do usługi Azure Cache dla pamięci podręcznej Redis, wyjątek jest generowany. |
 
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historia wersji interfejsu API REST
 Aby uzyskać informacji o historii wersji interfejsu API REST usługi Media Services, zobacz [Dokumentacja usługi Azure Media Services — interfejs API REST].
 
-## <a name="october-2018"></a>Października 2018 r.
+## <a name="october-2018"></a>Październik 2018 r.
 
 ### <a name="cmaf-support"></a>Obsługa CMAF
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 89236575a73325d650f1357ff03abb53bbc7b00c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2264e6ff686519f7ef0d436d67f3055a48a7421b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848956"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997082"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -210,7 +210,7 @@ Nawet w przypadku korzystania z emulatora magazynu do tworzenia aplikacji, możn
 
   ![Skopiuj parametry połączenia z witryny Azure portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ Użyj [Eksploratora usługi Azure Storage](http://storageexplorer.com/) nawiązać połączenia z kontem platformy Azure. W **Explorer**, rozwinąć swoją subskrypcję, wybierz konto magazynu i skopiuj parametry połączenia podstawowej lub dodatkowej. 
++ Użyj [Eksploratora usługi Azure Storage](https://storageexplorer.com/) nawiązać połączenia z kontem platformy Azure. W **Explorer**, rozwinąć swoją subskrypcję, wybierz konto magazynu i skopiuj parametry połączenia podstawowej lub dodatkowej. 
 
   ![Skopiuj parametry połączenia z Eksploratora usługi Storage](./media/functions-run-local/storage-explorer.png)
 

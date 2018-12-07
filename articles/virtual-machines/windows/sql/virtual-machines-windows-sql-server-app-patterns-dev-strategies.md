@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 9ccf7d85b52759a3f2cd64facc6ee8d7255f0fac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0b47172df2ab3bd286db0faa21eb5197fd061bfd
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253180"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012899"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Wzorce aplikacji i strategie programowania dla programu SQL Server w usłudze Azure Virtual Machines
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -192,7 +192,7 @@ Jak widać na diagramie, usługa Azure Load Balancer dystrybuuje ruch między wi
 
 ![Wzorce aplikacji z usługami w chmurze](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728013.png)
 
-Innego podejścia do implementacji tego wzorca aplikacja ma korzystać rola skonsolidowane w sieci web, która zawiera warstwę prezentacji i składników warstwy biznesowej, jak pokazano na poniższym diagramie. Ten wzorzec aplikacji jest przydatne w przypadku aplikacji wymagających stanowych projektu. Ponieważ platforma Azure udostępnia węzły obliczeniowe o bezstanowa na role sieć web i proces roboczy, firma Microsoft zaleca zaimplementowanie logiki do przechowywania stanu sesji przy użyciu jednej z następujących technologii: [pamięć podręczna systemu Azure](https://azure.microsoft.com/documentation/services/redis-cache/), [Azure Table Storage](../../../cosmos-db/table-storage-how-to-use-dotnet.md) lub [usługi Azure SQL Database](../../../sql-database/sql-database-technical-overview.md).
+Innego podejścia do implementacji tego wzorca aplikacja ma korzystać rola skonsolidowane w sieci web, która zawiera warstwę prezentacji i składników warstwy biznesowej, jak pokazano na poniższym diagramie. Ten wzorzec aplikacji jest przydatne w przypadku aplikacji wymagających stanowych projektu. Ponieważ platforma Azure udostępnia węzły obliczeniowe o bezstanowa na role sieć web i proces roboczy, firma Microsoft zaleca zaimplementowanie logiki do przechowywania stanu sesji przy użyciu jednej z następujących technologii: [pamięć podręczna systemu Azure](https://azure.microsoft.com/documentation/services/azure-cache-for-redis/), [Azure Table Storage](../../../cosmos-db/table-storage-how-to-use-dotnet.md) lub [usługi Azure SQL Database](../../../sql-database/sql-database-technical-overview.md).
 
 ![Wzorce aplikacji z usługami w chmurze](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728014.png)
 

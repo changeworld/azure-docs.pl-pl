@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 40cad9eec87c07a205a86f1009074cdbeaf58d15
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249978"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001798"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Powiązania usługi SignalR Service dla usługi Azure Functions
 
@@ -30,7 +30,7 @@ W tym artykule wyjaśniono, jak uwierzytelniać i wysyłanie komunikatów w czas
 
 ## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
 
-Powiązania usługi SignalR znajdują się w [Microsoft.Azure.WebJobs.Extensions.SignalRService](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) pakietu NuGet, 1.0.0-preview1-* wersji. Kod źródłowy dla pakietu znajduje się w [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) repozytorium GitHub.
+Powiązania usługi SignalR znajdują się w [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) pakietu NuGet, 1.0.0-preview1-* wersji. Kod źródłowy dla pakietu znajduje się w [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) repozytorium GitHub.
 
 > [!NOTE]
 > Usługi Azure SignalR Service jest ogólnie dostępna. Powiązania usługi SignalR dla usługi Azure Functions są jednak obecnie w wersji zapoznawczej.

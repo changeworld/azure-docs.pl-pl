@@ -1,30 +1,34 @@
 ---
 title: Co to jest automatyczne Machine Learning — usługi Azure Machine Learning
-description: W tym artykule można dowiedzieć się o automatycznych machine learning. Usługa Azure Machine Learning można wybrać algorytm dla Ciebie i automatycznie wygenerować model z niego. Zautomatyzowane usługi machine learning pomaga zaoszczędzić czas przy użyciu parametrów i kryteria, aby wybrać najlepszy algorytm dla modelu.
+description: Dowiedz się o usługi Azure Machine Learning można automatycznie wybrać algorytm dla Ciebie i wygenerować model w celu zapisania czasu przy użyciu parametrów i kryteria, aby wybrać najlepszy algorytm dla modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: krishnan
-author: krishnaanumalasetty
-ms.date: 9/24/2018
-ms.openlocfilehash: 2a9c05b68d05102fab80b2aa8fb1c1dad8a367ea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+author: nacharya1
+ms.author: nilesha
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 4b9356c7cba14cf5bd112c7d7ae1aab2842fb9d1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960043"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010896"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
-W tym artykule można dowiedzieć się o automatycznych machine learning. Usługa Azure Machine Learning można wybrać algorytm dla Ciebie i automatycznie wygenerować model z niego. Zautomatyzowane usługi machine learning pomaga zaoszczędzić czas przy użyciu parametrów i kryteria, aby wybrać najlepszy algorytm dla modelu.
+W tym artykule można dowiedzieć się o automatycznych machine learning. Usługa Azure Machine Learning można wybrać algorytm dla Ciebie i automatycznie wygenerować model z niego. Automatyczne usługi machine learning pozwala zaoszczędzić czas, generując modeli dostrojone cele i ograniczenia, które są zdefiniowane dla eksperymentu, takie jak czas eksperyment do uruchomienia lub który modeluje do czarnej listy.
 
 ## <a name="how-it-works"></a>Jak to działa
 
-1. Możesz skonfigurować typ maszyny nauczanym problemem, który próbujesz rozwiązać. Obsługiwane są dwie kategorie uczenia nadzorowanego:
+1. Możesz skonfigurować typ maszyny nauczanym problemem, który próbujesz rozwiązać. Kategorie uczenia nadzorowanego są obsługiwane:
    + Klasyfikacja
    + Regresji
+   + Prognozowanie 
+
+   Podczas automatycznego machine learning jest ogólnie dostępna, **prognozowania funkcja jest nadal w publicznej wersji zapoznawczej.**
 
    Zobacz [listy modeli](how-to-configure-auto-train.md#select-your-experiment-type) usługi Azure Machine Learning można wypróbować podczas szkolenia.
 

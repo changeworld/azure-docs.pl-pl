@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e9e92254db37edbd978b5799b13e63652e227f86
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687218"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014518"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
 
@@ -40,7 +40,7 @@ Aby uzyskać więcej informacji na temat skalowania HDInsight, zobacz [klastrów
 
 ## <a name="use-tez-instead-of-map-reduce"></a>Użyj aplikacji Tez zamiast Map Reduce
 
-[Apache Tez](http://hortonworks.com/hadoop/tez/) to aparat wykonywania alternatywne do aparatu MapReduce. Opartą na systemie Linux klastrów HDInsight mają domyślnie włączony w aplikacji Tez.
+[Apache Tez](https://hortonworks.com/hadoop/tez/) to aparat wykonywania alternatywne do aparatu MapReduce. Opartą na systemie Linux klastrów HDInsight mają domyślnie włączony w aplikacji Tez.
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
@@ -52,7 +52,7 @@ Tez jest szybsze, ponieważ:
 * **Ponownie używa kontenerów**. Zawsze, gdy Tez możliwe jest w stanie to ponowne użycie kontenerów, aby upewnić się, czy jest mniejsze opóźnienie z powodu uruchamiania kontenerów.
 * **Techniki optymalizacji ciągłe**. Tradycyjnie optymalizacji została wykonana w fazie kompilacji. Jednak więcej informacji na temat danych wejściowych jest dostępny umożliwiające celu uzyskania lepszej optymalizacji w czasie wykonywania. Tez wykorzystuje techniki optymalizacji ciągłym, w celu optymalizacji plan dalsze w fazie środowiska uruchomieniowego.
 
-Aby uzyskać więcej informacji dotyczących tych pojęć, zobacz [Apache TEZ](http://hortonworks.com/hadoop/tez/).
+Aby uzyskać więcej informacji dotyczących tych pojęć, zobacz [Apache TEZ](https://hortonworks.com/hadoop/tez/).
 
 Możesz wykonać dowolne zapytanie Hive Tez włączone przez dodanie przedrostka zapytania za pomocą następującego polecenia zestawu:
 

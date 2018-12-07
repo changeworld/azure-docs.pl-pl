@@ -8,12 +8,12 @@ ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 9a60d8c17ba091da7c5eaf0e28160573d5faafa8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 41eb31ecabb20ec9eec3db13d5eda9f9cfbe6c69
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963134"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015470"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -123,7 +123,7 @@ Jeśli masz usługę uwierzytelnianie wieloskładnikowe na koncie platformy Azur
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Aby używać certyfikatu za pomocą poleceń cmdlet modelu klasycznym wdrożeniu platformy Azure, zapoznaj się [tworzenie i dodawanie certyfikatu do zarządzania usługami platformy Azure.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Aby użyć jednostki usługi przy użyciu poleceń cmdlet usługi Azure Resource Manager, zapoznaj się [Tworzenie nazwy głównej, przy użyciu witryny Azure portal usługi](../../active-directory/develop/howto-create-service-principal-portal.md) i [uwierzytelniania jednostki usługi przy użyciu usługi Azure Resource Manager.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+Aby używać certyfikatu za pomocą poleceń cmdlet modelu klasycznym wdrożeniu platformy Azure, zapoznaj się [tworzenie i dodawanie certyfikatu do zarządzania usługami platformy Azure.](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Aby użyć jednostki usługi przy użyciu poleceń cmdlet usługi Azure Resource Manager, zapoznaj się [Tworzenie nazwy głównej, przy użyciu witryny Azure portal usługi](../../active-directory/develop/howto-create-service-principal-portal.md) i [uwierzytelniania jednostki usługi przy użyciu usługi Azure Resource Manager.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Typowe błędy podczas pracy z elementami runbook
 
@@ -337,6 +337,24 @@ Dostępne są następujące polecenia cmdlet programu PowerShell, które umożli
 [Start-AzureRMAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) — to polecenie cmdlet pozwala na uruchamianie elementu runbook i parametry są przekazywane do elementu runbook
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) — to polecenie cmdlet pozwala sprawdzić stan zadania dla każdego elementu podrzędnego, w przypadku operacji, które należy wykonać po zakończeniu działania podrzędnego elementu runbook.
+
+### <a name="expired webhook"></a>Scenariusz: Status: 400 Niewłaściwe żądanie podczas wywoływania elementu webhook
+
+#### <a name="issue"></a>Problem
+
+Podczas wywołania elementu webhook dla elementu runbook usługi Azure Automation jest wyświetlany następujący błąd.
+
+```error
+400 Bad Request : This webhook has expired or is disabled
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Element webhook, który próbujesz wywołać, jest wyłączony lub wygasł.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Jeśli element webhook jest wyłączona, można ponownie włączyć elementu webhook w witrynie Azure portal. Jeśli element webhook jest uznawane za wygasłe, element webhook musi zostać usunięte i utworzone ponownie. Można jedynie [odnowić element webhook](../automation-webhooks.md#renew-webhook) Jeśli już nie wygasł.
 
 ### <a name="429"></a>Scenariusz: 429: liczba żądań jest obecnie zbyt duży. Spróbuj ponownie
 

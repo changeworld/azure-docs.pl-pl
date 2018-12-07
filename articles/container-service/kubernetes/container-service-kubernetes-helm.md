@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie kontenerów przy użyciu narzędzia Helm w usłudze Azure Kubernetes
+title: (PRZESTARZAŁE) Wdrażanie kontenerów przy użyciu narzędzia Helm w usłudze Azure Kubernetes
 description: Wdrażanie kontenerów w klastrze Kubernetes w usłudze Azure Container Service za pomocą narzędzia pakietu Narzędzia Helm
 services: container-service
 author: sauryadas
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 882e785968f94473e80c7a14e5a68498add37735
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 05edbf40e8cd5f8edbdc8b74b540962b1a25c8de
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634157"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997884"
 ---
-# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Użyj narzędzia Helm do wdrażania kontenerów w klastrze Kubernetes
+# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(PRZESTARZAŁE) Użyj narzędzia Helm do wdrażania kontenerów w klastrze Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby uzyskać zaktualizowaną wersję tego artykułu, który korzysta z usługi Azure Kubernetes Service, zobacz [instalowanie aplikacji za pomocą narzędzia Helm w usłudze Azure Kubernetes Service (AKS)](../../aks/kubernetes-helm.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 [Polecenie Helm](https://github.com/kubernetes/helm/) to narzędzie open source pakietu, które pomaga zainstalować i zarządzanie cyklem życia aplikacji platformy Kubernetes. Podobnie jak menedżerów pakietów systemu Linux, takie jak Apt-get i Yum, Helm służy do zarządzania wykresów Kubernetes, które są pakietami wstępnie skonfigurowane zasoby platformy Kubernetes. W tym artykule pokazano, jak pracować z narzędzia Helm w klastrze Kubernetes wdrożonych w usłudze Azure Container Service.
 

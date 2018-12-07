@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 95e09532616b4aff05dad7440dcda6872fd27484
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2fe78efc8d85da2a8cd38a217c25f89ca7aefd22
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645528"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013001"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostosowywanie wydajności zapytań w usłudze Azure SQL Database
 
@@ -258,7 +258,7 @@ Niektóre aplikacje są intensywnie korzystających z zapisu. Czasami może zmni
 
 ### <a name="application-tier-caching"></a>Pamięć podręczna warstwy aplikacji
 
-Niektóre aplikacje bazy danych mają odczycie obciążeń. Buforowanie warstw może zmniejszyć obciążenie bazy danych i potencjalnie może zmniejszyć rozmiar obliczeń wymagana do obsługi bazy danych przy użyciu usługi Azure SQL Database. Za pomocą [usługi Azure Redis Cache](https://azure.microsoft.com/services/cache/), w przypadku obciążenia odczycie możesz odczytywać dane raz (lub raz na maszynę z warstwą aplikacji, w zależności od sposobu skonfigurowania), a następnie zapisywania tych danych poza bazy danych SQL. Jest to sposób, aby zmniejszyć obciążenie bazy danych (procesor CPU i odczytu We/Wy), ale ma wpływ na poziom spójności transakcyjnej, ponieważ danych odczytywanych z pamięci podręcznej może być zsynchronizowane z danymi w bazie danych. Chociaż w wielu aplikacjach dopuszczalne jest pewien stopień niespójności, to nie dotyczy wszystkich obciążeń. Wszelkie wymagania aplikacji należy zapoznać się przed wdrożeniem strategii buforowania warstwy aplikacji.
+Niektóre aplikacje bazy danych mają odczycie obciążeń. Buforowanie warstw może zmniejszyć obciążenie bazy danych i potencjalnie może zmniejszyć rozmiar obliczeń wymagana do obsługi bazy danych przy użyciu usługi Azure SQL Database. Za pomocą [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/), w przypadku obciążenia odczycie możesz odczytywać dane raz (lub raz na maszynę z warstwą aplikacji, w zależności od sposobu skonfigurowania), a następnie zapisywania tych danych poza bazy danych SQL. Jest to sposób, aby zmniejszyć obciążenie bazy danych (procesor CPU i odczytu We/Wy), ale ma wpływ na poziom spójności transakcyjnej, ponieważ danych odczytywanych z pamięci podręcznej może być zsynchronizowane z danymi w bazie danych. Chociaż w wielu aplikacjach dopuszczalne jest pewien stopień niespójności, to nie dotyczy wszystkich obciążeń. Wszelkie wymagania aplikacji należy zapoznać się przed wdrożeniem strategii buforowania warstwy aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

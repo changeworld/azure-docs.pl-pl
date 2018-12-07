@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 040eea1efd3abdbbfa65c24b2950ebece9d4acbc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dfc1fe223dbff178c35a969e0273ed80fb4c8be9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258395"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016430"
 ---
 # <a name="azure-sdk-for-net-26-release-notes"></a>Informacje o wersji zestawu Azure SDK dla platformy .NET 2.6
 Ten dokument zawiera informacje o wersji zestawu Azure SDK dla platformy .NET 2.6 wersji. 
@@ -59,7 +59,7 @@ Ten dokument zawiera informacje o wersji zestawu Azure SDK dla platformy .NET 2.
     W tej chwili usługi Azure Storage w wersji 2011-08-18 jest zaplanowane do usunięcia 1 sierpnia 2016 r. Wszystkie migracje podręczna oparta na roli Azure SDK 2.5 lub poniżej do 2.6 musi być kompletny tego czasu. Aby uzyskać więcej informacji na temat wycofania usługi Azure Storage w wersji 2011-08-18, zobacz [Microsoft Azure Storage usługi wersji usuwania Update: rozszerzenie 2016](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
 
 > [!IMPORTANT]
-> Z przyjemnością ogłaszamy wycofanie 30 listopada 2016 r. dla usługi Azure Managed Cache Service i pamięć podręczna oparta na roli platformy Azure. Firma Microsoft zaleca przeprowadzenie migracji do usługi Azure Redis Cache w ramach przygotowania do wycofania tego. Aby uzyskać więcej informacji na temat dat i wskazówki dotyczące migracji, zobacz [oferty którego pamięć podręczna systemu Azure jest dla mnie odpowiednia?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
+> Z przyjemnością ogłaszamy wycofanie 30 listopada 2016 r. dla usługi Azure Managed Cache Service i pamięć podręczna oparta na roli platformy Azure. Firma Microsoft zaleca przeprowadzenie migracji do usługi Azure Cache dla pamięci podręcznej Redis w ramach przygotowania do wycofanie. Aby uzyskać więcej informacji na temat dat i wskazówki dotyczące migracji, zobacz [oferty którego pamięć podręczna systemu Azure jest dla mnie odpowiednia?](../azure-cache-for-redis/cache-faq.md#which-azure-cache-offering-is-right-for-me)
 > 
 > 
 

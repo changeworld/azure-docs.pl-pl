@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: c9eaa997a4110be4cf2013413735b97929b7c4d0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 77c0baba1c30153730e87181e24137d9a20ea6b1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726002"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012474"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddzielanie danych telemetrycznych z programowania, testowania i produkcji
 
@@ -32,7 +32,7 @@ Po skonfigurowaniu monitorowanie usługi Application Insights dla aplikacji siec
 Zazwyczaj zdecydujesz się używać oddzielne zasoby lub pojedynczy zasób udostępniony w różnych scenariuszach:
 
 * Różne, niezależne aplikacje — użyć osobnego zasobu i klucz instrumentacji dla każdej aplikacji.
-* Wiele składników lub ról aplikacji biznesowej jeden — użyj [pojedynczy zasób udostępniony](app-insights-monitor-multi-role-apps.md) dla wszystkich składników aplikacji. Można filtrować i posegmentowana według właściwości cloud_RoleName telemetrii.
+* Wiele składników lub ról aplikacji biznesowej jeden — użyj [pojedynczy zasób udostępniony](app-insights-app-map.md) dla wszystkich składników aplikacji. Można filtrować i posegmentowana według właściwości cloud_RoleName telemetrii.
 * Rozwoju, testowania i wydanie — użyć osobnego zasobu i ikey wersji systemu w "sygnatury" lub etapu produkcji.
 * A | Testowanie B — użyć pojedynczego zasobu. Tworzenie parametru TelemetryInitializer, aby dodać właściwość do telemetrii, który identyfikuje wariantów.
 
@@ -113,7 +113,7 @@ Istnieje kilka różnych metod ustawienie dla właściwości wersja aplikacji.
     ```XML
 
     <?xml version="1.0" encoding="utf-8"?>
-    <DeploymentEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
+    <DeploymentEvent xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
       <ProjectName>AppVersionExpt</ProjectName>
       <Build type="MSBuild">
         <MSBuild>

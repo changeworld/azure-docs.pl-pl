@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie klastra Azure Kubernetes — zarządzanie operacjami
+title: (PRZESTARZAŁE) Monitorowanie klastra Azure Kubernetes — zarządzanie operacjami
 description: Monitorowanie klastra Kubernetes w usłudze Azure Container Service przy użyciu usługi Log Analytics
 services: container-service
 author: bburns
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: a353fe3803b2d93c151559076960df06eb260bfe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 8010d7cbf960c3e2f6528687be97a47d31270696
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426417"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997204"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>Monitorowanie klastra usługi Azure Container Service z usługą Log Analytics
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service z usługą Log Analytics
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby uzyskać zaktualizowaną wersję tego artykułu, który korzysta z usługi Azure Kubernetes Service, zobacz [usługi Azure Monitor dla kontenerów](../../azure-monitor/insights/container-insights-overview.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym przewodniku przyjęto założenie, iż [utworzone za pomocą usługi Azure Container Service klastra Kubernetes](container-service-kubernetes-walkthrough.md).
@@ -59,11 +62,11 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>Monitorowania kontenerów za pomocą usługi Log Analytics
 
-Log Analytics jest firmy Microsoft oparte na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury. Rozwiązanie kontenerów to rozwiązanie w usłudze Log Analytics, która ułatwia wyświetlanie dzienników kontenera magazynu, wydajności i w obrębie jednej lokalizacji. Możesz inspekcji, rozwiązywanie problemów z kontenerów, wyświetlając dzienniki w centralnej lokalizacji i Znajdź generujące dużo alertów, wykorzystywanie nadmiarowe kontenera na hoście.
+Log Analytics jest firmy Microsoft oparte na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury. Rozwiązanie kontenerów to rozwiązanie w usłudze Log Analytics, która ułatwia wyświetlanie dzienników kontenera magazynu, wydajności i w obrębie jednej lokalizacji. Możesz inspekcji, rozwiązywanie problemów z kontenerów, wyświetlając dzienniki w centralnej lokalizacji i Znajdź generujące dużo alertów, wykorzystywanie nadmiarowe kontenera na hoście.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Aby uzyskać więcej informacji na temat rozwiązania kontenerów można znaleźć [kontenera rozwiązanie Log Analytics](../../log-analytics/log-analytics-containers.md).
+Aby uzyskać więcej informacji na temat rozwiązania kontenerów można znaleźć [kontenera rozwiązanie Log Analytics](../../azure-monitor/insights/containers.md).
 
 ## <a name="installing-log-analytics-on-kubernetes"></a>Instalowanie usługi Log Analytics na platformie Kubernetes
 

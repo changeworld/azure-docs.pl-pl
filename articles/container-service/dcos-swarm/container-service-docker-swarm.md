@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie klastrem Azure Swarm z interfejsu API Docker
-description: Wdrażanie kontenerów do klastra Docker Swarm usługi kontenera platformy Azure
+title: (PRZESTARZAŁE) Zarządzanie klastrem Swarm na platformie Azure przy użyciu interfejsu API platformy Docker
+description: Wdrażanie kontenerów do klastra Docker Swarm w usłudze Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 3f8d18bc053bc303ab124ba38c8621d4ee2e8cb8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26331549"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997950"
 ---
-# <a name="container-management-with-docker-swarm"></a>Zarządzanie kontenerami przy użyciu rozwiązania Docker Swarm
+# <a name="deprecated-container-management-with-docker-swarm"></a>(PRZESTARZAŁE) Zarządzanie kontenerami przy użyciu rozwiązania Docker Swarm
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Rozwiązanie Docker Swarm oferuje środowisko wdrażania konteneryzowanych obciążeń w puli zestawów hostów Docker. Rozwiązanie Docker Swarm używa natywnego interfejsu API Docker. Przepływ pracy zarządzania kontenerami w rozwiązaniu Docker Swarm jest niemal identyczny jak w przypadku pojedynczego hosta kontenera. Ten dokument zawiera proste przykłady wdrażania konteneryzowanych obciążeń w wystąpieniu usługi kontenera platformy Azure w rozwiązaniu Docker Swarm. Szczegółową dokumentację dotyczącą rozwiązania Docker Swarm można znaleźć na stronie [Docker Swarm w witrynie Docker.com](https://docs.docker.com/swarm/).
 
@@ -110,6 +112,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 Naturalnie można użyć polecenia `docker-compose ps` do zbadania tylko kontenerów zdefiniowanych w pliku `compose.yml`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się więcej na temat rozwiązania Docker Swarm](https://docs.docker.com/swarm/)
 

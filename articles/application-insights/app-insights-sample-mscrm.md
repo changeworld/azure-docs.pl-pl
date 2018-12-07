@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: b4bc632b4951781b85847699d38fd10df14c1a87
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3106e523e3f8edd17cc27991181267acfab4308b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720749"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002136"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Przewodnik: Włączanie Telemetrii dla usługi Microsoft Dynamics CRM Online przy użyciu usługi Application Insights
 W tym artykule pokazano, jak można pobrać danych telemetrycznych z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) przy użyciu [usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Omówimy kompletnego procesu dodawania skrypt usługi Application Insights do aplikacji, przechwytywania danych i wizualizacja danych.
@@ -32,7 +32,7 @@ W tym artykule pokazano, jak można pobrać danych telemetrycznych z [Microsoft 
 Aby monitorować aplikację, należy dodać zestaw SDK usługi Application Insights do aplikacji. Zestaw SDK wysyła dane telemetryczne do [portalu Application Insights](https://portal.azure.com), gdzie można korzystać z naszych zaawansowanych analiz i narzędzia diagnostyczne lub dane są eksportowane do magazynu.
 
 ### <a name="create-an-application-insights-resource-in-azure"></a>Tworzenie zasobu usługi Application Insights na platformie Azure
-1. Pobierz [konta w systemie Microsoft Azure](http://azure.com/pricing). 
+1. Pobierz [konta w systemie Microsoft Azure](https://azure.com/pricing). 
 2. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i Dodaj nowy zasób usługi Application Insights. Jest to, gdzie opracowywania i wyświetlania danych.
 
     ![Kliknij pozycję +, usługi dla deweloperów, Application Insights.](./media/app-insights-sample-mscrm/01.png)

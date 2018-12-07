@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d9fa5d70a633f423c82457759d7ed18047167e3e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228984"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999910"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Jak zarządzać aplikacji funkcji w witrynie Azure portal 
 
 W usłudze Azure Functions aplikacja funkcji zapewnia kontekst wykonania dla poszczególnych funkcji. Zachowania aplikacji funkcji mają zastosowanie do wszystkich funkcji obsługiwanych przez aplikację daną funkcję. W tym temacie opisano sposób konfigurowania i zarządzania aplikacji funkcji w witrynie Azure portal.
 
-Aby rozpocząć, przejdź do [witryny Azure portal](http://portal.azure.com) i zaloguj się do konta platformy Azure. Na pasku wyszukiwania w górnej części portalu wpisz nazwę aplikacji funkcji i wybierz ją z listy. Po wybraniu aplikacji funkcji, zostanie wyświetlona następująca strona:
+Aby rozpocząć, przejdź do [witryny Azure portal](https://portal.azure.com) i zaloguj się do konta platformy Azure. Na pasku wyszukiwania w górnej części portalu wpisz nazwę aplikacji funkcji i wybierz ją z listy. Po wybraniu aplikacji funkcji, zostanie wyświetlona następująca strona:
 
 ![Omówienie aplikacji funkcji w witrynie Azure portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 

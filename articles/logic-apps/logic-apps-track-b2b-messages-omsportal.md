@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: aacdaf4ec55b1223ce993a7246ed9f0405a5054e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957185"
+ms.locfileid: "52996538"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>Śledzenie komunikatów B2B w usłudze Azure Log Analytics
 
@@ -27,7 +27,7 @@ Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integ
 * Możliwości wyszukiwania
 
 > [!NOTE]
-> Ta strona opisane wcześniej kroki dotyczące sposobu wykonywania tych zadań za pomocą programu Microsoft Operations Management Suite (OMS), który jest [wycofywania w styczniu 2019](../log-analytics/log-analytics-oms-portal-transition.md), zamiast tego zastępuje te kroki z usługą Azure Log Analytics. 
+> Ta strona opisane wcześniej kroki dotyczące sposobu wykonywania tych zadań za pomocą programu Microsoft Operations Management Suite (OMS), który jest [wycofywania w styczniu 2019](../azure-monitor/platform/oms-portal-transition.md), zamiast tego zastępuje te kroki z usługą Azure Log Analytics. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

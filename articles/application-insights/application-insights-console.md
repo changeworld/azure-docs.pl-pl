@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: c8f2677e91eb1c3d2ac670a51793f319e82d61fe
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f2f237d250a6b6e2a0f6ed2e62540968d9fcc7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719933"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997970"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Aplikacje konsoli usługi Application Insights dla platformy .NET
 [Usługa Application Insights](app-insights-overview.md) umożliwia monitorowanie aplikacji sieci web dla dostępności, wydajności i użycia.
 
-Potrzebna jest subskrypcja z [Microsoft Azure](http://azure.com). Zaloguj się przy użyciu konta Microsoft, które mogą mieć dla Windows, usługi Xbox Live lub innych usług w chmurze firmy Microsoft. Twój zespół może ma subskrypcję organizacyjną na platformie Azure: Poproś właściciela o dodanie Cię do niego przy użyciu konta Microsoft.
+Potrzebna jest subskrypcja z [Microsoft Azure](https://azure.com). Zaloguj się przy użyciu konta Microsoft, które mogą mieć dla Windows, usługi Xbox Live lub innych usług w chmurze firmy Microsoft. Twój zespół może ma subskrypcję organizacyjną na platformie Azure: Poproś właściciela o dodanie Cię do niego przy użyciu konta Microsoft.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -124,7 +124,7 @@ TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelation
 TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-* Dla aplikacji .NET Framework Windows może również zainstalować i zainicjować modułów zbierających dane licznika wydajności, zgodnie z opisem [tutaj](http://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+* Dla aplikacji .NET Framework Windows może również zainstalować i zainicjować modułów zbierających dane licznika wydajności, zgodnie z opisem [tutaj](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
 
 #### <a name="full-example"></a>Pełny przykład
 

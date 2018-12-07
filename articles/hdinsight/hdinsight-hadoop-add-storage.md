@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a75514013a1945d9ca5718be115184f6ba9950d9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496312"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015759"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Dodawanie kolejnych kont magazynu do HDInsight
 
@@ -95,7 +95,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > Ustaw `$PASSWORD` hasło do konta logowania (administratora) klastra. Ustaw `$CLUSTERNAME` na nazwę klastra HDInsight. Ustaw `$STORAGEACCOUNTNAME` do nazwy konta magazynu.
 >
-> W tym przykładzie użyto [curl (http://curl.haxx.se/) ](http://curl.haxx.se/) i [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) pobierania i analizowania danych JSON.
+> W tym przykładzie użyto [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) i [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) pobierania i analizowania danych JSON.
 
 Korzystając z tego polecenia, należy zastąpić __CLUSTERNAME__ o nazwie klastra HDInsight. Zastąp __hasło__ przy użyciu protokołu HTTP hasło logowania klastra. Zastąp __STORAGEACCOUNT__ nazwą konta magazynu, dodać za pomocą akcji skryptu. Informacje zwracane z tego polecenia zostanie wyświetlony podobny do następującego tekstu:
 

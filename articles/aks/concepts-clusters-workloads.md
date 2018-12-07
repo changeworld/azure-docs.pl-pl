@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155987"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998088"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Można skompilować i uruchomić nowoczesnych przenośnych opartych na mikrousł
 
 Jako otwartej platformy Kubernetes pozwala na tworzenie aplikacji przy użyciu preferowanego języka programowania, systemu operacyjnego, bibliotek lub magistrali komunikatów. Istniejące ciągłej integracji i narzędzi do ciągłego dostarczania (CI/CD) można zintegrować z rozwiązania Kubernetes do planowania i wdrażania wydań.
 
-Usługa Azure Kubernetes Service (AKS) zapewnia zarządzana usługa Kubernetes, która zmniejsza stopień złożoności wdrożenia i podstawowych zadaniach zarządzania znajdziesz w tym koordynowanie uaktualnienia. Wzorce klastra AKS są zarządzane przez platformę Azure i płacić tylko dla węzłów AKS, które uruchamiaj swoje aplikacje. AKS jest oparty na aparat typu open source usługi Azure Container Service (aparat acs).
+Usługa Azure Kubernetes Service (AKS) zapewnia zarządzana usługa Kubernetes, która zmniejsza stopień złożoności wdrożenia i podstawowych zadaniach zarządzania znajdziesz w tym koordynowanie uaktualnienia. Wzorce klastra AKS są zarządzane przez platformę Azure i płacić tylko dla węzłów AKS, które uruchamiaj swoje aplikacje. AKS jest oparty na aparat usługi Kubernetes typu open source platformy Azure (usługi aks — aparat).
 
 ## <a name="kubernetes-cluster-architecture"></a>Architektura klastra Kubernetes
 
@@ -54,7 +54,7 @@ AKS zapewnia wzorca pojedynczej dzierżawy klastra, za pomocą dedykowanego serw
 
 Ten wzorzec zarządzanego klastra oznacza, że nie ma potrzeby konfigurowania składników, takich jak o wysokiej dostępności *etcd* magazynu, ale również oznacza, że nie masz dostępu do poziomu głównego klastra bezpośrednio. Uaktualnienia do rozwiązania Kubernetes są zarządzane za pośrednictwem wiersza polecenia platformy Azure lub w witrynie Azure portal i uaktualnia poziomu głównego klastra, a następnie węzły. Aby rozwiązać problemy, możesz przejrzeć dzienniki głównego klastra za pośrednictwem usługi Azure Log Analytics.
 
-Jeśli musisz skonfigurować główny klastra w określony sposób lub potrzebujesz bezpośredni dostęp do nich, możesz wdrożyć własnego klastra Kubernetes za pomocą [acs-engine][acs-engine].
+Jeśli musisz skonfigurować główny klastra w określony sposób lub potrzebujesz bezpośredni dostęp do nich, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine].
 
 ## <a name="nodes-and-node-pools"></a>Węzły i pule węzłów
 
@@ -70,7 +70,7 @@ Rozmiar maszyny Wirtualnej platformy Azure dla węzłów definiuje liczbę proce
 
 W usłudze AKS obraz maszyny Wirtualnej dla węzłów w klastrze opiera się obecnie w systemie Ubuntu Linux. Podczas tworzenia klastra usługi AKS, lub skalować liczbę węzłów, platforma Azure tworzy żądana liczba maszyn wirtualnych i konfiguruje je. Brak ręcznej konfiguracji służących do wykonywania.
 
-Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [acs-engine][acs-engine]. Poprzednie `acs-engine` zwalnia funkcji przed i podać opcje konfiguracji są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz używać kontenerów Windows lub innej niż platformy Docker kontener środowiska uruchomieniowego, można użyć `acs-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
+Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine]. Poprzednie `aks-engine` zwalnia funkcji przed i podać opcje konfiguracji są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz używać kontenerów Windows lub innej niż platformy Docker kontener środowiska uruchomieniowego, można użyć `aks-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
 
 ### <a name="resource-reservations"></a>Rezerwacji zasobu
 
@@ -218,7 +218,7 @@ W tym artykule omówiono niektóre z podstawowych składników platformy Kuberne
 - [Kubernetes / skalowanie usługi AKS][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 [kubernetes-deployments]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/

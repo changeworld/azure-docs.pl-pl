@@ -1,6 +1,6 @@
 ---
 title: Pakiet FPGA przyspieszanie sprzętowe dla usługi Azure Machine Learning
-description: Więcej informacji na temat pakietów języka python, dostępne dla użytkowników usługi Azure Machine Learning.
+description: W tym artykule jest przestarzały.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,13 +9,14 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
+ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 83c5a788f85fcc47c221f5c8f9e6944c4448fbf9
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 002f521343d96ee50944428b1df9af2ce96bf88b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712130"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013496"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Pakiet Azure Machine Learning sprzętowego przyspieszania
 

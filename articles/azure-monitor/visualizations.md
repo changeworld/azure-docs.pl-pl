@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: e537795c9dec5f909810a37d4f13d5664bec05a2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 56ad4fdf781d9ed94a082ab5eb352803c70e52ef
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839980"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996243"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji danych przechowywanych w usłudze Azure Monitor. Obejmuje to [metryki w magazynie Azure metryki](../azure-monitor/platform/data-collection.md#metrics) i [rejestrować dane w usłudze Log Analytics](../azure-monitor/platform/data-collection.md#logs). 
@@ -89,7 +89,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 
 
 ## <a name="power-bi"></a>Power BI
-[Usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) jest szczególnie przydatne podczas tworzenia biznesowymi pulpitów nawigacyjnych i raportów, a także raporty, analizy trendów długoterminowych kluczowego wskaźnika wydajności. Możesz [Importuj wyniki zapytania usługi Log Analytics](../log-analytics/log-analytics-powerbi.md) do usługi Power BI zestawu danych, dzięki czemu można wykorzystać jej funkcje, takie jak łączenie danych z różnych źródeł oraz udostępnianie raportów w sieci web i urządzeń przenośnych.
+[Usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) jest szczególnie przydatne podczas tworzenia biznesowymi pulpitów nawigacyjnych i raportów, a także raporty, analizy trendów długoterminowych kluczowego wskaźnika wydajności. Możesz [Importuj wyniki zapytania usługi Log Analytics](../azure-monitor/platform/powerbi.md) do usługi Power BI zestawu danych, dzięki czemu można wykorzystać jej funkcje, takie jak łączenie danych z różnych źródeł oraz udostępnianie raportów w sieci web i urządzeń przenośnych.
 
 ![Power BI](media/visualizations/power-bi.png)
 
@@ -141,5 +141,5 @@ Można uzyskać dostęp do danych metryk platformy Azure i usługi Log Analytics
 - Dowiedz się więcej o [pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
 - Dowiedz się więcej o [widoków w usłudze Azure Monitor](../azure-monitor/platform/view-designer.md).
 - Dowiedz się więcej o [skoroszytów w usłudze Application Insights](../application-insights/app-insights-usage-workbooks.md).
-- Dowiedz się więcej o [importowania danych dziennika w usłudze Power BI](../log-analytics/log-analytics-powerbi.md).
+- Dowiedz się więcej o [importowania danych dziennika w usłudze Power BI](../azure-monitor/platform/powerbi.md).
 - Dowiedz się więcej o [wtyczki źródła danych Grafana usługi Azure Monitor](../monitoring-and-diagnostics/monitor-send-to-grafana.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: d38c93f1e6e390117ff5d9e8772119ed1c26fd10
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4e374528a0fa757458e7e4881714370937b56f9c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965534"
+ms.locfileid: "52998295"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak dołączyć Azure Monitor wykrywający sytuacje, maszyny wirtualne (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure i zestawów skalowania maszyn wirtualnych i maszyn wirtualnych w danym środowisku, łącznie z odnajdywania oraz mapowania zależności aplikacji może być hostowana na nich.  
@@ -169,7 +169,7 @@ Następującego typu dostępu musi mieć uprawnienia dla użytkowników, aby mo�
 
 - Aby wyświetlić wydajność, kondycji i mapowanie danych, musisz dodany jako członek roli Czytelnik monitorowania dla maszyny Wirtualnej platformy Azure i obszar roboczy usługi Log Analytics, skonfigurowane za pomocą usługi Azure Monitor dla maszyn wirtualnych.   
 
-Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../../log-analytics/log-analytics-manage-access.md).
+Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../../azure-monitor/platform/manage-access.md).
 
 ## <a name="enable-from-the-azure-portal"></a>Korzystanie z witryny Azure portal
 Aby włączyć monitorowanie maszyny wirtualnej platformy Azure w witrynie Azure portal, wykonaj następujące czynności:
@@ -197,7 +197,7 @@ W tej sekcji instrukcje dotyczące wykonania podczas wdrażania skalowania usłu
 
 Podsumowanie są kroki, które należy wykonać, aby wstępnie skonfigurować obszaru roboczego usługi Log Analytics, zanim będzie można kontynuować przy dołączaniu do maszyn wirtualnych.
 
-1. Utwórz nowy obszar roboczy, jeśli nie już istnieje, może służyć do obsługi usługi Azure Monitor dla maszyn wirtualnych. Przegląd [możesz zarządzać obszarami roboczymi](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) przed utworzeniem nowego obszaru roboczego, aby poznać zagadnienia dotyczące kosztów, zarządzania i zgodności przed kontynuowaniem.       
+1. Utwórz nowy obszar roboczy, jeśli nie już istnieje, może służyć do obsługi usługi Azure Monitor dla maszyn wirtualnych. Przegląd [możesz zarządzać obszarami roboczymi](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json) przed utworzeniem nowego obszaru roboczego, aby poznać zagadnienia dotyczące kosztów, zarządzania i zgodności przed kontynuowaniem.       
 2. Włącz liczniki wydajności w obszarze roboczym dla kolekcji w systemie Linux i Windows maszyn wirtualnych.
 3. Zainstalować i włączyć **ServiceMap** i **InfrastructureInsights** rozwiązania w Twoim obszarze roboczym.  
 

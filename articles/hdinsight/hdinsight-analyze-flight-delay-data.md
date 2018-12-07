@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93929df86057b48e132048a0879bc7347402652a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2e24a138220f350e56b30406f65bb869dd523bad
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497757"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015878"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Hive w HDInsight
 [Apache Hive](https://hive.apache.org/) umożliwia uruchamianie [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) zadania za pomocą języka skryptów przypominającego SQL o nazwie *[HiveQL] [ hadoop-hiveql]*, które mogą być stosowane do podsumowania, odpytywania i analizowania dużych ilości danych.
@@ -715,15 +715,15 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Ap
 Gdy już wiesz, jak przekazać plik do usługi Azure Blob storage, sposobu wypełniania tabeli programu Apache Hive przy użyciu danych z usługi Azure Blob storage, sposobu uruchamiania zapytań programu Hive i jak eksportować dane za pomocą narzędzia Sqoop [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) do bazy danych SQL Azure Baza danych. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą HDInsight][hdinsight-get-started]
-* [Use Apache Hive z HDInsight][hdinsight-use-hive]
-* [Za pomocą usług Apache Oozie HDInsight][hdinsight-use-oozie]
-* [Za pomocą HDInsight przy użyciu narzędzia Apache Sqoop][hdinsight-use-sqoop]
-* [Apache Pig za pomocą HDInsight][hdinsight-use-pig]
+* [Korzystanie z programu Apache Hive z usługą HDInsight][hdinsight-use-hive]
+* [Korzystanie z programu Apache Oozie z usługą HDInsight][hdinsight-use-oozie]
+* [Korzystanie z programu Apache Sqoop z usługą HDInsight][hdinsight-use-sqoop]
+* [Korzystanie z programu Apache Pig z usługą HDInsight][hdinsight-use-pig]
 * [Opracowywanie programów MapReduce w języku Java dla HDInsight][hdinsight-develop-mapreduce]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs

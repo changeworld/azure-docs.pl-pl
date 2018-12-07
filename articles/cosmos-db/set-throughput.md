@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: a97032344b904442ed3606c6297251578c3b4ff7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 15b7dce5af984e4eb719024368479df1b5c8320a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263897"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010964"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Aprowizowanie przepływności na kontenerach Azure Cosmos i bazy danych
 
@@ -19,7 +19,7 @@ Bazy danych Azure Cosmos jest jednostką zarządzania w usłudze zestaw kontener
 
 Usługa Azure Cosmos DB pozwala na skonfigurowanie przepływność w stopniach dwóch - **kontenerów w usłudze Azure Cosmos** i **baz danych Azure Cosmos**.
 
-# <a name="setting-throughput-on-a-azure-cosmos-container"></a>Ustawienie przepływność na kontenerze usługi Azure Cosmos  
+## <a name="setting-throughput-on-a-container"></a>Ustawienie przepływność na kontenerze  
 
 Przepływność aprowizowana w kontenerze usługi Azure Cosmos jest zastrzeżone wyłącznie dla kontenera. Kontener odbiera aprowizowanej przepływności przez cały czas. Aprowizowana przepływność na kontenerze jest finansowo przez umowy SLA. Aby skonfigurować przepływność na kontenerze, zobacz [jak aprowizować przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
 
@@ -31,7 +31,7 @@ Przepływność aprowizowana w kontenerze usługi Azure Cosmos jest równomierni
 
 ![Partycja zasobu](./media/set-throughput/resource-partition.png)
 
-# <a name="setting-throughput-on-a-azure-cosmos-database"></a>Ustawianie przepływności w bazie danych Azure Cosmos
+## <a name="setting-throughput-on-a-database"></a>Ustawienie przepływności w bazie danych
 
 Podczas aprowizowania przepływności w bazie danych Azure Cosmos przepływność jest współużytkowana przez wszystkie kontenery w bazie danych, chyba że został określony aprowizowaną przepływność w określonych kontenerach. Udostępnianie przepływności bazy danych między jego kontenerów jest analogiczne do hostowania bazy danych w klastrze maszyn. Ponieważ wszystkie kontenery w bazie danych są współdzielone zasoby, które są dostępne na maszynie, naturalny nie uzyskasz przewidywalną wydajność na dowolnym określonym kontenerze. Aby skonfigurować przepływność w bazie danych, zobacz [sposobu konfigurowania aprowizowanej przepływności w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
 
@@ -53,7 +53,7 @@ Wiele partycji logicznej udostępnianie przepływnością aprowizowaną do bazy 
 
 ![Partycja zasobu](./media/set-throughput/resource-partition2.png)
 
-## <a name="setting-throughput-on-a-azure-cosmos-database-and-a-container"></a>Ustawienie przepływności bazy danych Azure Cosmos i kontener
+## <a name="setting-throughput-on-a-database-and-a-container"></a>Ustawianie przepływności na bazę danych i kontener
 
 Możesz połączyć dwa modele, aprowizowania przepływności na bazę danych i kontener jest dozwolone. Poniższy przykład pokazuje, jak aprowizować przepływność mierzoną w bazie danych Azure Cosmos i kontener:
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: cd999a5bfd9f5691c1e624f7a8226eefee5709eb
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 08b8d980b46ccbbce47c4f165a621daa14a95fa2
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015813"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012916"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Zarządzanie klastrami HDInsight przy użyciu interfejsu API REST systemu Ambari
 
@@ -39,7 +39,7 @@ W przykładach w tym dokumencie podano Bourne powłoki (powłoki bash) i program
 
 Jeśli przy użyciu __powłoki Bourne__ (Bash), muszą być zainstalowane następujące oprogramowanie:
 
-* [cURL](http://curl.haxx.se/): cURL to narzędzie, który może służyć do pracy z interfejsami API REST z poziomu wiersza polecenia. W tym dokumencie jest używany do komunikowania się z interfejsu API REST Ambari.
+* [cURL](https://curl.haxx.se/): cURL to narzędzie, który może służyć do pracy z interfejsami API REST z poziomu wiersza polecenia. W tym dokumencie jest używany do komunikowania się z interfejsu API REST Ambari.
 
 Czy za pomocą powłoki Bash lub programu PowerShell, musisz również posiadać [jq](https://stedolan.github.io/jq/) zainstalowane. Jq to narzędzie do pracy z dokumentów JSON. Jest on używany w **wszystkich** przykłady powłoki Bash, i **jeden** przykładów programu PowerShell.
 

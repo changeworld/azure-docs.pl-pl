@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: d7b29980321f04d1ad9325580bc48ab944f60d1c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 73c68e6946b3715bfa67561141e6c18e32e20c18
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633720"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011763"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
-[Apache Hive](http://hive.apache.org/) to system magazynu danych dla usługi Apache Hadoop. Gałąź umożliwia dane podsumowań, zapytań i analizy danych. Zapytania programu hive są zapisywane w HiveQL, który jest językiem zapytań, podobnych do bazy danych SQL.
+[Apache Hive](https://hive.apache.org/) to system magazynu danych dla usługi Apache Hadoop. Gałąź umożliwia dane podsumowań, zapytań i analizy danych. Zapytania programu hive są zapisywane w HiveQL, który jest językiem zapytań, podobnych do bazy danych SQL.
 
 Gałąź pozwala na strukturę projektu w dużej mierze pozbawionych struktury danych. Po zdefiniowaniu struktury, można użyć HiveQL do wykonywania zapytań o dane bez znajomości języka Java lub MapReduce.
 
@@ -193,7 +193,7 @@ Te instrukcje, wykonaj następujące czynności:
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](http://tez.apache.org) to struktura, która umożliwia aplikacji intensywnie korzystających z danych, takich jak Hive, umożliwia bardziej wydajne uruchamianie na dużą skalę. Tez jest włączona domyślnie w przypadku klastrów HDInsight opartych na systemie Linux.
+[Apache Tez](https://tez.apache.org) to struktura, która umożliwia aplikacji intensywnie korzystających z danych, takich jak Hive, umożliwia bardziej wydajne uruchamianie na dużą skalę. Tez jest włączona domyślnie w przypadku klastrów HDInsight opartych na systemie Linux.
 
 > [!NOTE]
 > Tez jest obecnie domyślnie wyłączona w przypadku klastrów HDInsight z systemem Windows i musi być włączona. Aby móc korzystać z aplikacji Tez, następującą wartość musi być ustawiona dla zapytania programu Hive:
@@ -246,18 +246,18 @@ Teraz, kiedy znasz już gałąź jest i jak z niej korzystać z usługą Hadoop 
 * [Korzystanie z języka Pig z usługą HDInsight][hdinsight-use-pig]
 * [Korzystanie z zadań MapReduce z HDInsight][hdinsight-use-mapreduce]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: http://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[hivetask]: https://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
+[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
+[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -272,7 +272,7 @@ Teraz, kiedy znasz już gałąź jest i jak z niej korzystać z usługą Hadoop 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx

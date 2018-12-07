@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2aec4f48febb6ff8f7f7c14202011784288b200
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a81cb9041b905cfb00183981036116fbc61f376a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52729589"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000876"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Zarządzanie cenami i ilością danych w usłudze Application Insights
 
@@ -170,4 +170,4 @@ Aby wyłączyć dzienny wolumin limit wiadomości e-mail, w obszarze **Konfiguru
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
-[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/

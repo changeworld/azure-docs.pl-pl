@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: juliako
-ms.openlocfilehash: 7ff48962d01a83e8c9fce380d92fbc196ff96533
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2dbc2b4e316155e880d3baa900196d5cdd31be72
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585544"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011780"
 ---
 # <a name="liveevent-types-comparison"></a>Porównanie typów element LiveEvent
 
@@ -42,6 +42,7 @@ W poniższej tabeli porównano funkcje dwa typy element LiveEvent.
 | Obsługiwana głębokość bitów wideo, dane wejściowe i wyjściowe|Maksymalnie 10-bitowy tym HDR 10/HLG|8-bitowa|
 | Obsługiwane wejściowe audio kodery-dekodery|AAC-LC, HE-AAC v1, v2 HE AAC|AAC-LC, HE-AAC v1, v2 HE AAC|
 | Dane wyjściowe obsługiwanych koderów-dekoderów audio|Takie same jak dane wejściowe|AAC-LC|
+| Maksymalna rozdzielczość wideo wyjścia wideo|Takie same jak dane wejściowe|720p (o 30 klatek na sekundę)|
 | Protokoły danych wejściowych|RTMP, fragmentacji — w formacie MP4 (Smooth Streaming)|RTMP, fragmentacji — w formacie MP4 (Smooth Streaming)|
 | Cena|Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "Wideo na żywo"|Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "Wideo na żywo"|
 | Maksymalny czas działania|24 x 365 live liniowego|Całodobowo|

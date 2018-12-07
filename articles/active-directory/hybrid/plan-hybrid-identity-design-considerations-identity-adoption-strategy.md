@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5aeefe82255d40938eff09d7920e2fd5aca94c95
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313642"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999098"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiowanie strategii wdrażania tożsamości hybrydowej
 To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej dla Twojego rozwiązania tożsamości hybrydowej w celu spełnienia wymagań biznesowych, które zostały omówione w:
@@ -92,7 +92,7 @@ Należy również pamiętać o jakie funkcje nie będą dostępne:
 * Przejście pakietu Office uwierzytelnianiem pasywnym pozwala, aby zapewnić obsługę czystego SAML 2.0 dostawców, ale nadal będzie pomocy technicznej na podstawie danych klienta przez klienta
 
 > [!NOTE]
-> Aby uzyskać najbardziej zaktualizowanej listy, przeczytaj artykuł https://aka.ms/ssoproviders.
+> Aby uzyskać najbardziej zaktualizowanej listy, przeczytaj artykuł [listę zgodności federacyjnych usługi Azure AD](how-to-connect-fed-compatibility.md).
 > 
 > 
 
@@ -191,7 +191,7 @@ Mimo że możesz mogą mieć rozliczane na rozwiązanie strategii, nadal należy
 
 | Lokalizacja użytkownika | Opcja preferowane rozwiązanie |
 | --- | --- |
-| Azure Active Directory |Multi-FactorAuthentication w chmurze |
+| Usługa Azure Active Directory |Multi-FactorAuthentication w chmurze |
 | Usługa Azure AD i lokalna usługa AD przy użyciu federacji z usługami AD FS |Oba |
 | Usługa Azure AD i lokalnej usługi AD za pomocą usługi Azure AD Connect Brak synchronizacji haseł |Oba |
 | Usługa Azure AD i lokalnych przy użyciu usługi Azure AD Connect z funkcją synchronizacji haseł |Oba |

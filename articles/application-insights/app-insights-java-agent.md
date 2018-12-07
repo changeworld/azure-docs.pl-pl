@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c5a98b9182e3a644a808b363df2fd44b115828f0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a62c6cbb6594aaf7c2c57d7efee1832d7b1430b7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727702"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000725"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitoruj zależności, wyjątki przechwycony i czasy wykonania metody w aplikacji sieci web w języku Java
 
@@ -27,7 +27,7 @@ Jeśli masz [instrumentacji aplikacji sieci web Java za pomocą usługi Applicat
 * **Zależności:** dane dotyczące wywołań wykonywanych przez aplikację do innych składników, w tym:
   * **Wywołania REST** wprowadzone za pośrednictwem HttpClient, OkHttp i RestTemplate (Spring) są przechwytywane.
   * **Redis** wywołania za pośrednictwem klient Jedis są przechwytywane.
-  * **[Wywołania JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  — polecenia MySQL, SQL Server i Oracle DB automatycznie są przechwytywane. Jeśli wywołanie trwa dłużej niż 10s, agent programu MySQL, raporty planu zapytania.
+  * **[Wywołania JDBC](https://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  — polecenia MySQL, SQL Server i Oracle DB automatycznie są przechwytywane. Jeśli wywołanie trwa dłużej niż 10s, agent programu MySQL, raporty planu zapytania.
 * **Przechwycono wyjątkami:** informacji o wyjątkach, które są obsługiwane w kodzie.
 * **Czas wykonania metody:** informacji na temat czas potrzebny do wykonania konkretnych metod.
 

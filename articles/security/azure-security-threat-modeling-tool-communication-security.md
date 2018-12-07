@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247385"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013189"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: Bezpieczeństwo komunikacji | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -34,7 +34,7 @@ ms.locfileid: "51247385"
 | **Klientów urządzeń przenośnych** | <ul><li>[Implementowanie przypinania certyfikatu](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[Włącz protokół HTTPS — należy zabezpieczyć kanał transportu](#https-transport)</li><li>[WCF: Zabezpieczenia komunikatów zestaw poziom ochrony EncryptAndSign](#message-protection)</li><li>[Usługi WCF: Użyj najmniej uprzywilejowane konto uruchamiania usługi WCF](#least-account-wcf)</li></ul> |
 | **Interfejs API sieci Web** | <ul><li>[Wymuszenie całego ruchu do interfejsów API sieci Web za pośrednictwem połączenia HTTPS](#webapi-https)</li></ul> |
-| **Azure Redis Cache** | <ul><li>[Upewnij się, że komunikacja z usługi Azure Redis Cache za pośrednictwem protokołu SSL](#redis-ssl)</li></ul> |
+| **Pamięć podręczna systemu Azure dla usługi Redis** | <ul><li>[Upewnij się, że komunikacja pamięć podręczna systemu Azure dla usługi Redis za pośrednictwem protokołu SSL](#redis-ssl)</li></ul> |
 | **Bramy w terenie IoT** | <ul><li>[Zabezpieczenia urządzenia do bramy w terenie komunikacji](#device-field)</li></ul> |
 | **Brama chmury IoT** | <ul><li>[Zabezpieczenia urządzenia komunikację bramy w chmurze przy użyciu protokołu SSL/TLS](#device-cloud)</li></ul> |
 
@@ -372,16 +372,16 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a id="redis-ssl"></a>Upewnij się, że komunikacja z usługi Azure Redis Cache za pośrednictwem protokołu SSL
+## <a id="redis-ssl"></a>Upewnij się, że komunikacja pamięć podręczna systemu Azure dla usługi Redis za pośrednictwem protokołu SSL
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Redis Cache | 
+| **Składnik**               | Azure Cache for Redis | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Usługa Azure redis Cache Obsługa protokołu SSL](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **Kroki** | Redis gotowych serwer nie obsługuje protokołu SSL, ale nie usługi Azure Redis Cache. Jeśli łączysz się usługi Azure Redis Cache, a Twój klient obsługuje protokół SSL, takich jak StackExchange.Redis, należy używać protokołu SSL. Domyślnie port bez protokołu SSL jest wyłączony dla nowych wystąpień usługi Azure Redis Cache. Upewnij się, czy bezpieczne ustawienia domyślne nie są zmieniane, chyba że istnieje zależność na temat obsługi protokołu SSL dla klientów usługi redis. |
+| **Kroki** | Redis server nie obsługuje protokołu SSL gotowych, ale nie w pamięci podręcznej Azure redis Cache. Jeśli łączysz się pamięć podręczna systemu Azure dla usługi Redis i klient obsługuje protokół SSL, takich jak StackExchange.Redis, należy używać protokołu SSL. Domyślnie port bez protokołu SSL jest wyłączony dla nowej usługi Azure Cache dla wystąpień usługi Redis. Upewnij się, czy bezpieczne ustawienia domyślne nie są zmieniane, chyba że istnieje zależność na temat obsługi protokołu SSL dla klientów usługi redis. |
 
 Należy pamiętać, że Redis jest przeznaczona do uzyskiwał dostęp do zaufanych klientów w środowiskach zaufanych. Oznacza to, że zwykle nie jest dobry pomysł, aby udostępnić wystąpienia pamięci podręcznej Redis bezpośrednio do Internetu lub ogólnie rzecz biorąc, w środowisku, gdzie niezaufani klienci mogą uzyskać bezpośredni dostęp do portu Redis TCP lub w gnieździe systemu UNIX. 
 

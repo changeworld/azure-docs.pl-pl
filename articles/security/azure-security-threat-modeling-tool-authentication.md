@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: e502004db62713585d68cdda6f80b4e4024dde28
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1170266ed0b59c53adce4e44fe3e7a0bc62f394e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971219"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014865"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Zabezpieczeń ramka: Uwierzytelnianie | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -245,7 +245,7 @@ ms.locfileid: "52971219"
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Wdrażanie serwera tożsamości — pamięć podręczna](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **Kroki** | <p>IdentityServer ma proste wbudowanej w pamięci podręcznej. Gdy jest to dobra w przypadku aplikacji natywnych na małą skalę, go trudna w skalowaniu mid aplikacji warstwy i wewnętrznej bazy danych z następujących powodów:</p><ul><li>Te aplikacje są dostępne dla wielu użytkowników jednocześnie. Zapisywanie wszystkich tokenów dostępu w tym samym magazynie tworzy problemy izolacji i przedstawia informacje o wyzwania działających na dużą skalę: wielu użytkowników, z których każdy z dowolną liczbę tokenów jako zasoby aplikacja uzyskuje dostęp w ich imieniu, może oznaczać ogromną i operacji bardzo kosztowna wyszukiwania</li><li>Te aplikacje są zazwyczaj wdrożone w topologii rozproszonej, w której wiele węzłów musi mieć dostęp do tej samej pamięci podręcznej</li><li>Tokeny pamięci podręcznej musi być odporny, odtwarzanie procesów i deactivations</li><li>Wszystkie z powyższych powodów podczas wdrażania aplikacji sieci web, zalecane jest aby zastąpić domyślny serwer tożsamości pamięć podręczną tokenu skalowalne alternatywne, takich jak Azure Redis cache</li></ul>|
+| **Kroki** | <p>IdentityServer ma proste wbudowanej w pamięci podręcznej. Gdy jest to dobra w przypadku aplikacji natywnych na małą skalę, go trudna w skalowaniu mid aplikacji warstwy i wewnętrznej bazy danych z następujących powodów:</p><ul><li>Te aplikacje są dostępne dla wielu użytkowników jednocześnie. Zapisywanie wszystkich tokenów dostępu w tym samym magazynie tworzy problemy izolacji i przedstawia informacje o wyzwania działających na dużą skalę: wielu użytkowników, z których każdy z dowolną liczbę tokenów jako zasoby aplikacja uzyskuje dostęp w ich imieniu, może oznaczać ogromną i operacji bardzo kosztowna wyszukiwania</li><li>Te aplikacje są zazwyczaj wdrożone w topologii rozproszonej, w której wiele węzłów musi mieć dostęp do tej samej pamięci podręcznej</li><li>Tokeny pamięci podręcznej musi być odporny, odtwarzanie procesów i deactivations</li><li>Wszystkie z powyższych powodów podczas wdrażania aplikacji sieci web, zalecane jest aby zastąpić domyślny serwer tożsamości pamięć podręczną tokenu jest alternatywą skalowalne, takich jak pamięć podręczna systemu Azure dla usługi Redis</li></ul>|
 
 ## <a id="binaries-signed"></a>Upewnij się, że pliki binarne wdrożonej aplikacji są podpisane cyfrowo
 
@@ -361,7 +361,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Nowoczesne uwierzytelnianie w usłudze Azure Active Directory dla aplikacji sieci Web](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [przy użyciu usługi Redis jako pamięci podręcznej tokenu ADAL](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
-| **Kroki** | <p>Pamięć podręczna domyślnej, która używa biblioteki ADAL (Active Directory Authentication Library) jest w pamięci podręcznej, która opiera się na statyczne magazynu, dostępne całego procesu. Gdy działa to w przypadku aplikacji natywnych, jego trudna w skalowaniu mid aplikacji warstwy i wewnętrznej bazy danych z następujących powodów:</p><ul><li>Te aplikacje są dostępne dla wielu użytkowników jednocześnie. Zapisywanie wszystkich tokenów dostępu w tym samym magazynie tworzy problemy izolacji i przedstawia informacje o wyzwania działających na dużą skalę: wielu użytkowników, z których każdy z dowolną liczbę tokenów jako zasoby aplikacja uzyskuje dostęp w ich imieniu, może oznaczać ogromną i operacji bardzo kosztowna wyszukiwania</li><li>Te aplikacje są zazwyczaj wdrożone w topologii rozproszonej, w której wiele węzłów musi mieć dostęp do tej samej pamięci podręcznej</li><li>Tokeny pamięci podręcznej musi być odporny, odtwarzanie procesów i deactivations</li></ul><p>Wszystkie z powyższych powodów podczas wdrażania aplikacji sieci web, zalecane jest aby zastąpić domyślny pamięci podręcznej tokenu ADAL przy użyciu skalowalna alternatywne, takich jak Azure Redis cache.</p>|
+| **Kroki** | <p>Pamięć podręczna domyślnej, która używa biblioteki ADAL (Active Directory Authentication Library) jest w pamięci podręcznej, która opiera się na statyczne magazynu, dostępne całego procesu. Gdy działa to w przypadku aplikacji natywnych, jego trudna w skalowaniu mid aplikacji warstwy i wewnętrznej bazy danych z następujących powodów:</p><ul><li>Te aplikacje są dostępne dla wielu użytkowników jednocześnie. Zapisywanie wszystkich tokenów dostępu w tym samym magazynie tworzy problemy izolacji i przedstawia informacje o wyzwania działających na dużą skalę: wielu użytkowników, z których każdy z dowolną liczbę tokenów jako zasoby aplikacja uzyskuje dostęp w ich imieniu, może oznaczać ogromną i operacji bardzo kosztowna wyszukiwania</li><li>Te aplikacje są zazwyczaj wdrożone w topologii rozproszonej, w której wiele węzłów musi mieć dostęp do tej samej pamięci podręcznej</li><li>Tokeny pamięci podręcznej musi być odporny, odtwarzanie procesów i deactivations</li></ul><p>Wszystkie z powyższych powodów podczas wdrażania aplikacji sieci web, zalecane jest aby zastąpić domyślny pamięci podręcznej tokenu ADAL za pomocą skalowalnej alternatywne, takie jak pamięć podręczna systemu Azure dla usługi Redis.</p>|
 
 ## <a id="tokenreplaycache-adal"></a>Upewnij się, że TokenReplayCache używany w celu zapobiegania powtórzeń tokenów uwierzytelniania ADAL
 

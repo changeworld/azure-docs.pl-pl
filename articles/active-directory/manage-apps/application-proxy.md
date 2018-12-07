@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 212628c0ec97524e91ab8eaeb766c3e405023aaf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aabbcb45edf087b4a7d6268dcca90b21afa16f7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846168"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998109"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych
 
@@ -59,16 +59,16 @@ Serwer Proxy aplikacji usługi Azure AD umożliwia dostęp do różnych typów a
 * Rozbudowane aplikacje klienckie, które są zintegrowane z Active Directory Authentication Library (ADAL)
 
 ## <a name="how-does-application-proxy-work"></a>Jak działa serwer Proxy aplikacji
-Istnieją dwa składniki, które należy skonfigurować, aby serwer Proxy aplikacji, które działają: łącznikiem i zewnętrzny punkt końcowy. 
+Istnieją dwa składniki, które należy skonfigurować, aby serwer Proxy aplikacji, które działają: łącznika i punktu końcowego. 
 
 Łącznik jest uproszczone agenta, który znajduje się w systemie Windows Server w Twojej sieci. Łącznik umożliwia przepływ ruchu z serwera Proxy aplikacji usługi w chmurze do aplikacji lokalnych. Funkcja ta używa tylko połączeń wychodzących, dzięki czemu nie trzeba otworzyć żadnych portów przychodzących lub umieść niczego w sieci obwodowej. Łączniki są bezstanowe i pobierania informacji z chmury, zgodnie z potrzebami. Aby uzyskać więcej informacji na temat łączników, takich jak jak one Równoważenie obciążenia i uwierzytelniania, zobacz [łączników serwera Proxy aplikacji usługi AD Azure zrozumienie](application-proxy-connectors.md). 
 
-Jest zewnętrzny punkt końcowy jest o tym, jak użytkownicy osiągną aplikacji znajduje się poza siecią. Albo może przejść bezpośrednio do zewnętrznego adresu URL, który należy określić lub mogą uzyskiwać dostęp do aplikacji za pośrednictwem portalu MyApps. Użytkownicy, przejdź do jednego z tych punktów końcowych, uwierzytelniania w usłudze Azure AD i następnie są kierowane za pośrednictwem łącznika do aplikacji w środowisku lokalnym.
+Punkt końcowy może być adresem URL lub [portalu użytkownika](end-user-experiences.md). Użytkownicy mogą korzystać z aplikacji znajduje się poza siecią, uzyskując dostęp do zewnętrznego adresu URL. Użytkownicy w Twojej sieci dostęp do aplikacji za pomocą adresu URL lub portalu użytkownika końcowego. Użytkownicy, przejdź do jednego z tych punktów końcowych, uwierzytelniania w usłudze Azure AD i następnie są kierowane za pośrednictwem łącznika do aplikacji w środowisku lokalnym.
 
  ![Diagram serwera Proxy aplikacji usługi Azure AD](./media/application-proxy/azureappproxxy.png)
 
-1. Użytkownik uzyskuje dostęp do aplikacji za pośrednictwem usługi Serwer Proxy aplikacji i zostanie skierowany do strony logowania usługi Azure AD do uwierzytelniania.
-2. Po pomyślnym zalogowaniu token jest generowane i wysyłane do urządzenia klienckiego.
+1. Po użytkownik uzyskał dostęp do aplikacji za pośrednictwem punktu końcowego, użytkownik jest kierowany do strony logowania usługi Azure AD. 
+2. Po pomyślnym zalogowaniu token jest generowane i wysyłane do urządzenia klienckiego przez użytkownika.
 3. Klient wysyła ten token do usługi serwera Proxy aplikacji, która pobiera główna nazwa użytkownika (UPN) i nazwy podmiotu zabezpieczeń (SPN) z tokenu, a następnie kieruje żądanie do łącznika serwera Proxy aplikacji.
 4. Po skonfigurowaniu rejestracji jednokrotnej, łącznik wykonuje wszelkie dodatkowe uwierzytelnianie, wymagana w imieniu użytkownika.
 5. Łącznik wysyła żądanie do aplikacji w środowisku lokalnym.  

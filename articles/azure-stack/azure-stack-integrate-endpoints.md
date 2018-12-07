@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: a2c08c541c3726579d57d99141a147d98bf45849
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 1800ab19e2d99eb639ef4064e64d7bc475aa0c36
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996715"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014875"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -86,7 +86,7 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 > Wychodzące adresy URL są równoważone za pomocą usługi Azure traffic manager, aby zapewnić najlepszą łączność możliwe na podstawie lokalizacji geograficznej. Adresy URL równoważenia obciążenia, zaktualizować i zmienić punktów końcowych zaplecza bez wywierania wpływu na klientów firmy Microsoft. Firma Microsoft udostępnia listę adresów IP dla ze zrównoważonym obciążeniem: adresy URL. Należy używać urządzenia, które obsługuje filtrowanie według adresu URL, a nie adresu IP.
 
 > [!Note]  
-> W 1809 infrastruktura kopii zapasowej usługa komunikuje się z serwerem plików zewnętrznych z sieci publicznych adresów VIP. Przed 1809 usługa komunikuje się za pośrednictwem sieci infrastruktury publicznych. Jeśli Twoje środowisko nie zezwala na dostęp do zasobów infrastruktury z sieci publicznych adresów VIP, zastosuj najnowsze poprawki 1809 dla usługi Azure Stack. Ta poprawka będzie powrót infrastruktury usługi kopii zapasowej do sieci publicznych infrastruktury. W 1811 Jeśli zastosowano poprawkę 1809 infrastruktura kopii zapasowej usługa nadal korzystać z sieci publicznych infrastruktury. Jeżeli nie zastosowano poprawkę, aktualizacja zostanie wróć usługi do sieci publicznych infrastruktury.
+> W 1809 infrastruktura kopii zapasowej usługa komunikuje się z serwerem plików zewnętrznych z sieci publicznych adresów VIP. Przed 1809 usługa przekazywane za pośrednictwem sieci infrastruktury publicznych. Jeśli w danym środowisku nie zezwala na dostęp do zasobów infrastruktury z sieci publicznych adresów VIP, zastosuj najnowsze [poprawkę 1809](azure-stack-update-1809.md#post-update-steps) dla usługi Azure Stack. Ta poprawka będzie powrót infrastruktury usługi kopii zapasowej do sieci publicznych infrastruktury. Jeśli należy zastosować poprawkę 1809 w 1811, infrastruktury usługi kopii zapasowej są pozostaje w sieci publicznych infrastruktury. Jeśli nie zostanie zastosowana poprawka, aktualizacja przeniesienie usługi sieci publicznych infrastruktury.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

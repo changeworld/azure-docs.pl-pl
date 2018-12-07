@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2306c03480956a63859355428cbffe0706f43cbc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312480"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999234"
 ---
-# <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Zadania po konfiguracji dla dołączenie do hybrydowej usługi Azure AD
+# <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Zadania pokonfiguracyjne dotyczące dołączania do hybrydowej usługi Azure AD
 
 Po uruchomieniu usługi Azure AD Connect, aby skonfigurować organizacji do hybrydowej usługi Azure AD join, istnieje kilka dodatkowych kroków, które należy wykonać w celu zakończenia tej instalacji.  Wykonaj kroki, które są stosowane do urządzeń.
 
@@ -77,7 +77,7 @@ Aby zarejestrować urządzenia niskiego poziomu Windows, należy się upewnić, 
 
 Dodaj punkt końcowy uwierzytelniania na urządzeniu usługi Azure AD do lokalnej strefy Intranet na urządzeniach Windows niższego poziomu w celu uniknięcia monity certyfikatu podczas uwierzytelniania urządzenia: https://device.login.microsoftonline.com 
 
-Jeśli używasz [bezproblemowe logowanie Jednokrotne](https://aka.ms/hybrid/sso)również włączyć "Zezwalaj na aktualizacje paska stanu za pomocą skryptu" w tej strefie i Dodaj następujący punkt końcowy: https://autologon.microsoftazuread-sso.com 
+Jeśli używasz [bezproblemowe logowanie Jednokrotne](how-to-connect-sso.md)również włączyć "Zezwalaj na aktualizacje paska stanu za pomocą skryptu" w tej strefie i Dodaj następujący punkt końcowy: https://autologon.microsoftazuread-sso.com 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Zainstaluj Microsoft dołączanie do miejsca pracy na urządzeniach z Windows niższego poziomu
 

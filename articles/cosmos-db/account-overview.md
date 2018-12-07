@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: dea343dee65ab66d52b431614fd334fd6e380f50
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9f237d9eed5b8500f0f80b8b73d638f374bf5ca9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629056"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999524"
 ---
-# <a name="working-with-azure-cosmos-db-accounts"></a>Praca z kontami usługi Azure Cosmos DB
+# <a name="working-with-azure-cosmos-account"></a>Praca z kontem usługi Azure Cosmos
 
-Usługa Azure Cosmos DB to w pełni zarządzana platforma as-a-service (PaaS). Aby rozpocząć korzystanie z usługi Azure Cosmos DB, początkowo należy utworzyć konto usługi Azure Cosmos DB w ramach subskrypcji platformy Azure. Twoje konto usługi Azure Cosmos zawiera unikatową nazwę DNS, a konto można zarządzać za pomocą witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub przy użyciu różnych zestawów SDK specyficzne dla języka. Aby uzyskać więcej informacji, zobacz [jak zarządzać kontem usługi Azure Cosmos](how-to-manage-database-account.md).
+Usługa Azure Cosmos DB to w pełni zarządzana platforma as-a-service (PaaS). Aby rozpocząć korzystanie z usługi Azure Cosmos DB, początkowo należy utworzyć konto usługi Azure Cosmos w subskrypcji platformy Azure. Twoje konto usługi Azure Cosmos zawiera unikatową nazwę DNS, a konto można zarządzać za pomocą witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub przy użyciu różnych zestawów SDK specyficzne dla języka. Aby uzyskać więcej informacji, zobacz [jak zarządzać kontem usługi Azure Cosmos](how-to-manage-database-account.md).
 
-Konto usługi Azure Cosmos DB jest podstawową jednostką globalnej dystrybucji i wysokiej dostępności. Globalnie dystrybucji danych i przepływności w wielu regionach platformy Azure, możesz Dodawanie i usuwanie regionów platformy Azure do swojego konta usługi Azure Cosmos, w dowolnym momencie. Można skonfigurować swoje konto usługi Azure Cosmos, aby mieć jedną lub wiele regionów zapisu. Aby uzyskać więcej informacji, zobacz [jak dodawanie i usuwanie regionów platformy Azure do swojego konta usługi Azure Cosmos](how-to-manage-database-account.md). Można skonfigurować [domyślna spójność](consistency-levels.md) poziomu konta usługi Azure Cosmos. Usługa Azure Cosmos DB zapewnia kompleksowe umowy SLA, obejmujący przepustowość, opóźnienie w 99. percentylu, spójności i wysokiej dostępności. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB SLA](https://azure.microsoft.com/en-us/support/legal/sla/cosmos-db/v1_2/).
+Konto usługi Azure Cosmos jest podstawową jednostką globalnej dystrybucji i wysokiej dostępności. Globalnie dystrybucji danych i przepływności w wielu regionach platformy Azure, możesz Dodawanie i usuwanie regionów platformy Azure do swojego konta usługi Azure Cosmos, w dowolnym momencie. Można skonfigurować swoje konto usługi Azure Cosmos, aby mieć jedną lub wiele regionów zapisu. Aby uzyskać więcej informacji, zobacz [jak dodawanie i usuwanie regionów platformy Azure do swojego konta usługi Azure Cosmos](how-to-manage-database-account.md). Można skonfigurować [domyślna spójność](consistency-levels.md) poziomu konta usługi Azure Cosmos. Usługa Azure Cosmos DB zapewnia kompleksowe umowy SLA, obejmujący przepustowość, opóźnienie w 99. percentylu, spójności i wysokiej dostępności. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
 
 Bezpieczne zarządzanie dostępem do wszystkich danych w ramach konta usługi Azure Cosmos, można użyć kluczy głównych skojarzonych z Twoim kontem. Aby dodatkowo zabezpieczyć dostęp do danych można skonfigurować punkt końcowy usługi sieci Wirtualnej i zapory adresów IP na Twoim koncie usługi Azure Cosmos. 
 
@@ -38,7 +38,7 @@ Teraz można przystąpić do Dowiedz się, jak zarządzać kontem usługi Azure 
 * [Dystrybucja globalna](distribute-data-globally.md)
 * [Poziomy spójności](consistency-levels.md)
 * [Praca z kontenerów w usłudze Azure Cosmos i elementów](databases-containers-items.md)
-* [Punkt końcowy usługi sieci Wirtualnej dla konta usługi Azure Cosmos](firewall-support.md)
-* [Zapory adresów IP dla konta usługi Azure Cosmos](vnet-service-endpoint.md)
+* [Punkt końcowy usługi sieci Wirtualnej dla konta usługi Azure Cosmos](vnet-service-endpoint.md)
+* [Zapory adresów IP dla konta usługi Azure Cosmos](firewall-support.md)
 * [Instrukcje dodawania i usuwania regiony platformy Azure do swojego konta usługi Azure Cosmos](how-to-manage-database-account.md)
-* [Umowy SLA usługi Azure Cosmos DB](https://azure.microsoft.com/en-us/support/legal/sla/cosmos-db/v1_2/)
+* [Umowy SLA usługi Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

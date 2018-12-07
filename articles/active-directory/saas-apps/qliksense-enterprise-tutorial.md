@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/06/2018
 ms.author: jeedes
-ms.openlocfilehash: a8816451b45171e0ba8cbd7acc937201c587c481
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 24353f89f7c833a16675841f741a4a81ac34597c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627954"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015229"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Qlik Sense Enterprise
 
@@ -86,11 +86,11 @@ W programie Qlik Sense Enterprise należy przypisać wartość **nazwy użytkown
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Qlik Sense przedsiębiorstwa, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on) ** — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) ** — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Qlik Sense Enterprise](#create-a-qlik-sense-enterprise-test-user) ** — aby odpowiednikiem Britta Simon w Qlik Sense przedsiębiorstwa, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) ** — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on) ** — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Qlik Sense Enterprise](#create-a-qlik-sense-enterprise-test-user)**  — aby odpowiednikiem Britta Simon w Qlik Sense przedsiębiorstwa, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -113,6 +113,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+    
     | |
     |--|
     | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
@@ -283,7 +284,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="create-a-qlik-sense-enterprise-test-user"></a>Tworzenie użytkownika testowego Qlik Sense przedsiębiorstwa
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Qlik Sense przedsiębiorstwa. Praca z [zespołem pomocy technicznej Qlik Sense Enterprise Client](https://www.qlik.com/us/services/support) Aby dodać użytkowników na platformie Qlik Sense przedsiębiorstwa. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Qlik Sense przedsiębiorstwa. Praca z [zespołem pomocy technicznej Qlik Sense Enterprise Client](https://www.qlik.com/us/services/support) Aby dodać użytkowników na platformie Qlik Sense przedsiębiorstwa. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

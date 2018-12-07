@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: b8b562e1f783a9da7621b29fbf6d5bd1ff6ca5ef
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499114"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013513"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności dla klastrów HDInsight
 
@@ -97,7 +97,7 @@ Opłaty są naliczane za okres istnienia klastra. Jeśli są tylko określone go
 
 Czasami błędów może wystąpić z powodu równoległe wykonywanie wielu mapowań i ograniczyć składników w klastrze z wieloma węzłami. Aby wyizolować problem, należy spróbować rozproszonego testowania przez uruchomienie współbieżnych wiele zadań w klastrze z jednym węzłem, rozwiń to podejście do uruchamiania wielu zadań jednocześnie na klastrach zawierających więcej niż jeden węzeł. Aby utworzyć jednowęzłowy klaster HDInsight na platformie Azure, użyj *zaawansowane* opcji.
 
-Można również zainstalować środowisko programistyczne z jednym węzłem na komputerze lokalnym i przetestować rozwiązanie. Hortonworks zapewnia z jednym węzłem lokalnego środowiska deweloperskiego dla rozwiązań opartych na usłudze Hadoop, jest przydatne w przypadku weryfikacji koncepcji, początkowego projektowania i testowania. Aby uzyskać więcej informacji, zobacz [Piaskownicą Hortonworks](http://hortonworks.com/products/hortonworks-sandbox/).
+Można również zainstalować środowisko programistyczne z jednym węzłem na komputerze lokalnym i przetestować rozwiązanie. Hortonworks zapewnia z jednym węzłem lokalnego środowiska deweloperskiego dla rozwiązań opartych na usłudze Hadoop, jest przydatne w przypadku weryfikacji koncepcji, początkowego projektowania i testowania. Aby uzyskać więcej informacji, zobacz [Piaskownicą Hortonworks](https://hortonworks.com/products/hortonworks-sandbox/).
 
 Aby zidentyfikować problem na lokalny klaster jednowęzłowy możesz ponownie uruchomić zadania zakończone niepowodzeniem i dostosować dane wejściowe lub użyć mniejszych zestawów danych. Jak uruchamiać te zadania zależy od platformy i typu aplikacji.
 

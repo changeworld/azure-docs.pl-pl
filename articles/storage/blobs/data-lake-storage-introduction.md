@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 3b0a2e4f39b3b523743768e96bfe9a63b1795f60
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a273d0bd4d064cb1c6ac4d3951af8a493e303f51
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975319"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015895"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
@@ -41,7 +41,7 @@ W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w
 
 -   **Nadzbiór uprawnień POSIX**: model zabezpieczeń Data Lake Gen2 obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą Eksploratora usługi Storage lub środowisk, takich jak Hive, jak i platformy Spark.
 
--   **Niskie koszty**: Data Lake Storage Gen2 oferuje ekonomiczne pojemności i transakcji. Jako przejścia danych za pośrednictwem jego pełny cykl życia, stawki rozliczeniowe zmienia zachowanie kosztów do minimum, za pomocą wbudowanych funkcji takich jak [cykl życia magazynu obiektów Blob platformy Azure](../common/storage-lifecycle-management-concepts.md).
+-   **Niskie koszty**: Data Lake Storage Gen2 oferuje ekonomiczne pojemności i transakcji. Jako przejścia danych za pośrednictwem jego pełny cykl życia, stawki rozliczeniowe zmienia zachowanie kosztów do minimum, za pomocą wbudowanych funkcji takich jak [cykl życia magazynu obiektów Blob platformy Azure](storage-lifecycle-management-concepts.md).
 
 -   **Sterownik zoptymalizowane**: sterownik abfs [specjalnie zoptymalizowane pod kątem](data-lake-storage-abfs-driver.md) do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
 

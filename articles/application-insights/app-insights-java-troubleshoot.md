@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: e39fb82796c8e6b09f624b2030ff6266bd4189f1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 95eb5475f5584830eac5bd9c690be4a6a85de5c8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720426"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016731"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Rozwiązywanie problemów oraz pytania i odpowiedzi dotyczące usługi Application Insights dla języka Java
 Pytania lub problemy z [usługi Azure Application Insights w języku Java][java]? Poniżej przedstawiono kilka wskazówek.
@@ -56,7 +56,7 @@ Pytania lub problemy z [usługi Azure Application Insights w języku Java][java]
 ### <a name="java-agent-cannot-capture-dependency-data"></a>Agenta Java nie może przechwytywać dane zależności
 * Skonfigurowano usługę agenta Java wykonując [skonfigurować agenta Java](app-insights-java-agent.md) ?
 * Upewnij się, że zarówno jar agenta java, jak i plik Agent.xml sztucznej Inteligencji są umieszczane w tym samym folderze.
-* Upewnij się, że zależności, w którym próbujesz się do automatycznego zebrania jest obsługiwana przez automatyczne tworzenie kolekcji. Aktualnie obsługiwany jest tylko MySQL, MsSQL, Oracle DB i kolekcję zależności pamięci podręcznej Redis.
+* Upewnij się, że zależności, w którym próbujesz się do automatycznego zebrania jest obsługiwana przez automatyczne tworzenie kolekcji. Aktualnie obsługiwany jest tylko MySQL, MsSQL, Oracle DB i pamięć podręczna systemu Azure dla usługi Redis zależności kolekcji.
 * Czy używasz zestaw JDK 1.7 lub 1.8? Obecnie nie obsługujemy kolekcję zależności w zestaw JDK 9.
 
 ## <a name="no-usage-data"></a>Brak danych użycia
@@ -156,7 +156,7 @@ Usługa Application Insights używa `org.apache.http`. To jest przenoszony w pli
 * [Przechwytywanie dziennika diagnostycznego][javalogs]
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Prześlij zgłoszenie w witrynie GitHub](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->

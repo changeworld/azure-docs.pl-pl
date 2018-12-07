@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 8124b399b859f812ec3bf9f7ea64b6643446a1b5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249329"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011998"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Usługa Azure schematów usługi Event Grid na potrzeby zdarzeń usługi Media Services
 
@@ -112,9 +112,12 @@ Obiekt danych ma następujące właściwości:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | previousState | ciąg | Stan zadania przed wystąpieniem zdarzenia. |
-| state | ciąg | Nowy stan zadania zgłoszonego w tym zdarzeniu. Na przykład "kolejce: zadanie oczekuje na zasoby" lub "zaplanowane: zadanie jest gotowe do rozpoczęcia".|
+| state | ciąg | Nowy stan zadania zgłoszonego w tym zdarzeniu. Na przykład "zaplanowane: zadanie jest gotowe do rozpoczęcia" lub "Zakończono: zadanie jest zakończone".|
 
 Gdy stan zadania może być jedna z wartości: *kolejce*, *zaplanowane*, *przetwarzania*, *Zakończono*, *błąd*, *Anulowane*, *anulowanie*
+
+> [!NOTE]
+> *W kolejce* ma znajdować się w **previousState** właściwości, ale nie **stanu** właściwości.
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobCanceling JobScheduled, JobProcessing,
 

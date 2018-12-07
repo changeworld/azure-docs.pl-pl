@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: ceb0b1ce0d04c15a5b949519caad65d2c33b40ed
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c91508cbd98f18c875411cc7a36f9d71d817fb31
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092454"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997868"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Eksportowanie interfejsu API hostowanych na platformie Azure do usług PowerApps i Microsoft Flow
 
@@ -25,7 +25,7 @@ ms.locfileid: "44092454"
 Podobnie deweloperów, które mają być swoje interfejsy API szerzej w organizacji można udostępnić swoje interfejsy API twórcy aplikacji i przepływów. W tym temacie pokazano, jak można wyeksportować interfejsu API utworzonych za pomocą [usługi Azure Functions](../azure-functions/functions-overview.md) lub [usługi Azure App Service](../app-service/app-service-web-overview.md). Staje się wyeksportowanego interfejsu API *łącznika niestandardowego*, używany w usługach PowerApps i Microsoft Flow, podobnie jak wbudowanego łącznika.
 
 ## <a name="create-and-export-an-api-definition"></a>Tworzenie i eksportowanie definicji interfejsu API
-Przed wyeksportowaniem interfejsu API, należy opisać interfejs API za pomocą definicji interfejsu OpenAPI (wcześniej znanej jako [Swagger](http://swagger.io/) pliku). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API. Usługi PowerApps i Microsoft Flow można tworzyć łączniki niestandardowe dla dowolnego definicji interfejsu OpenAPI 2.0. Usługa Azure Functions i Azure App Service ma wbudowaną obsługę tworzenia, obsługi i zarządzania definicji interfejsu OpenAPI. Aby uzyskać więcej informacji, zobacz [hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
+Przed wyeksportowaniem interfejsu API, należy opisać interfejs API za pomocą definicji interfejsu OpenAPI (wcześniej znanej jako [Swagger](https://swagger.io/) pliku). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API. Usługi PowerApps i Microsoft Flow można tworzyć łączniki niestandardowe dla dowolnego definicji interfejsu OpenAPI 2.0. Usługa Azure Functions i Azure App Service ma wbudowaną obsługę tworzenia, obsługi i zarządzania definicji interfejsu OpenAPI. Aby uzyskać więcej informacji, zobacz [hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
 > Możesz także tworzyć łączniki niestandardowe w usłudze PowerApps i Microsoft Flow UI, bez korzystania z definicji interfejsu OpenAPI. Aby uzyskać więcej informacji, zobacz [rejestrowanie i używanie łącznika niestandardowego (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) i [rejestrowanie i używanie łącznika niestandardowego (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/).
@@ -113,7 +113,7 @@ Aby zaimportować definicję interfejsu API do usług PowerApps i Microsoft Flow
 
 4. Na **ogólne** kartę, zapoznaj się z informacjami, który pochodzi z definicji interfejsu OpenAPI.
 
-5. Na **zabezpieczeń** kartę, jeśli zostanie wyświetlony monit o podanie szczegółów uwierzytelniania, wprowadź wartości odpowiednich dla typu uwierzytelniania. Kliknij przycisk **nadal**.
+5. Na **zabezpieczeń** kartę, jeśli zostanie wyświetlony monit o podanie szczegółów uwierzytelniania, wprowadź wartości odpowiednich dla typu uwierzytelniania. Kliknij pozycję **Kontynuuj**.
 
     ![Karta Zabezpieczenia](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

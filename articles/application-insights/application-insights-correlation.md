@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 2f10db6eddcfc7d398072a3c0aa709798c72c72e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: da9ec327edc27e2f37f76704d6b5481869621049
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721046"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997474"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -104,7 +104,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>Usługa Application Insights i Otwórz śledzenie
 
-[Specyfikacją modelu danych Otwórz śledzenie](http://opentracing.io/) i modeli danych usługi Application Insights mapowanie w następujący sposób:
+[Specyfikacją modelu danych Otwórz śledzenie](https://opentracing.io/) i modeli danych usługi Application Insights mapowanie w następujący sposób:
 
 | Application Insights                  | Otwórz śledzenie                                      |
 |------------------------------------   |-------------------------------------------------  |

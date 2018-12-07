@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 0c59405cc6d46bcaffbab0e2a746467eec26de69
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e106094ce94b7f232fd5687988af2bd11b971e3f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024124"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001931"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Tworzenie bramy aplikacji przy użyciu opartego na ścieżkach reguł routingu, za pomocą witryny Azure portal
 
@@ -39,11 +39,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com)
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com)
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Sieć wirtualna jest wymagane do komunikacji między zasobami, które tworzysz. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla serwerów zaplecza. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji.
+Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla serwerów zaplecza. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji.
 
 1. Kliknij przycisk **New** w lewym górnym rogu witryny Azure portal.
 2. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
@@ -55,7 +55,7 @@ Sieć wirtualna jest wymagane do komunikacji między zasobami, które tworzysz. 
     ![Tworzenie nowej bramy aplikacji](./media/create-url-route-portal/application-gateway-create.png)
 
 4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
-5. Kliknij przycisk **wybierz sieć wirtualną**, kliknij przycisk **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
+5. Kliknij kolejno pozycje **Wybierz sieć wirtualną**, **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
 
     - *myVNet* — jako nazwę sieci wirtualnej.
     - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
@@ -83,7 +83,7 @@ Sieć wirtualna jest wymagane do komunikacji między zasobami, które tworzysz. 
 W tym przykładzie utworzysz trzy maszyny wirtualne do użycia jako serwery zaplecza w usłudze application gateway. Zainstaluj również usługi IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 
 1. Kliknij przycisk **Nowy**.
-2. Kliknij przycisk **obliczenia** , a następnie wybierz **systemu Windows Server 2016 Datacenter** na liście proponowany.
+2. Kliknij pozycję **Compute** (Wystąpienia obliczeniowe), a następnie z listy Polecane wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
 
     - *myVM1* — jako nazwę maszyny wirtualnej.

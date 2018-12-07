@@ -10,16 +10,17 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 1bbbbbada07dc898a4c1424a315d472cf910926f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987005"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010828"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatyczne skalowanie w górę jednostek przepływności usługi Azure Event Hubs
 
@@ -49,13 +50,13 @@ Można włączyć lub wyłączyć automatyczne rozszerzanie w przestrzeni nazw u
 
 Podczas tworzenia przestrzeni nazw usługi Event Hubs, możesz włączyć automatyczne rozszerzanie funkcji:
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+![Włącz automatyczne rozszerzanie podczas tworzenia Centrum zdarzeń czasu](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
 Po włączeniu tej opcji możesz zacząć od małej przy użyciu jednostek przepływności i skalowanie w górę użycie wymaga zwiększenia. Górny limit inflacji natychmiast wpływa na ceny, która jest zależna od liczby jednostek przepływności na godzinę.
 
 Można również włączyć automatyczne rozszerzanie przy użyciu **skalowania** opcji w okienku ustawień w portalu:
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+![Włącz automatyczne rozszerzanie przy użyciu opcji skalowania](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
 
 
 > [!NOTE]

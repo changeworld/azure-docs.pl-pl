@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 82792414da9df32524e48031089dc18d2dc521cc
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 94dec611a04819580696133c48db66da1ea9c463
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288122"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000432"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — motywacja i korzyści
 
@@ -32,7 +32,7 @@ Usługa Azure HDInsight jest dystrybucją w chmurze składniki platformy Hadoop 
 - Apache HBase
 - R
 
-## <a name="advantages-that-azure-hdinsight-offers-over-on-premises-hadoop"></a>Korzyści oferowanych przez usługi Azure HDInsight za pośrednictwem lokalnej usługi Hadoop
+## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Usługa Azure HDInsight zalet w porównaniu z lokalnej usługi Hadoop
 
 - **Niski koszt** — można zmniejszyć koszty przez [tworząc klastry na żądanie](../hdinsight-hadoop-create-linux-clusters-adf.md) i płacąc wyłącznie za rzeczywiste użycie. Oddzielenie obliczeń i magazynu zapewnia elastyczność, przechowując ilość danych niezależnie od rozmiaru klastra.
 
@@ -67,7 +67,7 @@ Usługa Azure HDInsight jest dystrybucją w chmurze składniki platformy Hadoop 
 
 - **Samonaprawiania procesów i składniki** — HDInsight nieustannie analizuje składników infrastruktury i typu open source, za pomocą własnej infrastruktury monitorowania. Również automatycznie odzyskuje błędy krytyczne, takie jak niedostępność składników typu open source i węzłów. Alerty są wyzwalane w Ambari, jeśli dowolny składnik OSS nie powiodło się.
 
-Aby uzyskać więcej informacji, zobacz artykuł [co to jest Azure HDInsight oraz stosu technologii Hadoop](../hadoop/apache-hadoop-introduction.md).
+Aby uzyskać więcej informacji, zobacz artykuł [co to jest Azure HDInsight oraz stosu technologii Apache Hadoop](../hadoop/apache-hadoop-introduction.md).
 
 ## <a name="migration-planning-process"></a>Proces planowania migracji
 

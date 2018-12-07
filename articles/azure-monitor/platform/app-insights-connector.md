@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c704639ce696672a87485a36d43a282d04a47a7e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5183e626ac990e265e9f4794220f24d43d865ed7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845180"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999988"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (wersja zapoznawcza)
 
 ![Application Insights symboli](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Dzięki obsłudze [zapytania obejmujące wiele zasobów](../../log-analytics/log-analytics-cross-workspace-search.md), rozwiązanie do zarządzania łącznika usługi Application Insights nie jest już wymagany i staną się przestarzałe. Począwszy od lipca, nie można połączyć nowe zasoby usługi Application Insights do obszarów roboczych usługi Log Analytics. Istniejące linki i pulpity nawigacyjne będą nadal działać do listopada 2018 r. Aby uzyskać więcej informacji, zobacz [portalu pakietu OMS na platformę Azure](../../log-analytics/log-analytics-oms-portal-transition.md).
+> Dzięki obsłudze [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md), rozwiązanie do zarządzania łącznika usługi Application Insights nie jest już wymagany i staną się przestarzałe. Począwszy od lipca, nie można połączyć nowe zasoby usługi Application Insights do obszarów roboczych usługi Log Analytics. Istniejące linki i pulpity nawigacyjne będą nadal działać do listopada 2018 r. Aby uzyskać więcej informacji, zobacz [portalu pakietu OMS na platformę Azure](../../azure-monitor/platform/oms-portal-transition.md).
 
 Rozwiązanie łącznik aplikacji usługi Insights pomaga diagnozować problemy z wydajnością i zrozumieć do czego służą użytkowników z aplikacją, gdy są monitorowane [usługi Application Insights](../../application-insights/app-insights-overview.md). Widoki te same dane telemetryczne aplikacji, który zobaczą deweloperzy w usłudze Application Insights są dostępne w usłudze Log Analytics. Jednak gdy możesz zintegrować swoje aplikacje usługi Application Insights z usługą Log Analytics, widoczność aplikacji zwiększa się przez umieszczenie danych i danych aplikacji w jednym miejscu. O tej samej widoków ułatwia współpracę z deweloperów aplikacji. Wspólne widoki mogą pomóc w skróceniu czasu wykrywanie i rozwiązywanie zarówno aplikacji, jak i problemy dotyczące platformy.
 
@@ -46,7 +46,7 @@ W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane
 | --- | --- | --- |
 | [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
 | [Agenci dla systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
-| [Grupy zarządzania SCOM](../../log-analytics/log-analytics-om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
+| [Grupy zarządzania SCOM](../../azure-monitor/platform/om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
 | [Konto usługi Azure Storage](collect-azure-metrics-logs.md) | Nie | Działa to rozwiązanie nie zbierania informacji z usługi Azure storage. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne

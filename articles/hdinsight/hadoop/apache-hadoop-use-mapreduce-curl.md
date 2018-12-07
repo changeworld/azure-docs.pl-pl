@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: afa9b57d9c0e2acf81b5307273ac038e92073655
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 75f615f63b0741899995c2728f93231d8e46734a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632298"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016184"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu interfejsu REST
 
@@ -27,14 +27,14 @@ Dowiedz się, jak uruchamiać zadania MapReduce na technologii Apache Hadoop w k
 ## <a id="prereq"></a>Wymagania wstępne
 
 * W klastrze HDInsight Hadoop
-* Program Windows PowerShell lub [Curl](http://curl.haxx.se/) i [jq](http://stedolan.github.io/jq/)
+* Program Windows PowerShell lub [Curl](https://curl.haxx.se/) i [jq](https://stedolan.github.io/jq/)
 
 ## <a id="curl"></a>Uruchom zadanie MapReduce
 
 > [!NOTE]
 > Używając programu Curl lub innego połączenia REST z usługą WebHCat, należy uwierzytelnić żądania, podając nazwę użytkownika administratora klastra HDInsight i hasło. Należy użyć nazwy klastra jako części identyfikatora URI, który jest używany do wysyłania żądań do serwera.
 >
-> Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego dostępu](http://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS, aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera.
+> Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego dostępu](https://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS, aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera.
 
 1. Aby ustawić logowania do klastra, który jest używany przez skrypty w tym dokumencie, użyj jednego z poleceń followig:
 

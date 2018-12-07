@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: ce539da92b9d58282ab44a3729f4bf4fb8eaedf5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840337"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997679"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Rozstrzyganie różnic języka Transact-SQL podczas migracji do usługi SQL Database
 
@@ -45,25 +45,37 @@ Podstawowe instrukcji DDL (języka definicji danych) są dostępne, ale niektór
 
 Oprócz instrukcji języka Transact-SQL, związane z nieobsługiwanych funkcji opisanych w [porównanie funkcji usługi Azure SQL Database](sql-database-features.md), nie są obsługiwane następujące instrukcje i grupy instrukcji. W efekcie Jeśli bazy danych do zmigrowania używa dowolnej z następujących funkcji, ponownie inżynier z języka T-SQL, aby wyeliminować te funkcje języka T-SQL i instrukcji.
 
--Obiekty sortowania systemu - związane połączenie: instrukcje Endpoint. Usługa SQL Database nie obsługuje uwierzytelniania systemu Windows, ale obsługuje podobne uwierzytelnianie usługi Azure Active Directory. Niektóre typy uwierzytelniania wymagają najnowszej wersji usługi SSMS. Aby uzyskać więcej informacji, zobacz [nawiązywania połączenia z bazą danych SQL lub SQL danych magazynu przez przy użyciu usługi Azure Active Directory Authentication](sql-database-aad-authentication.md).
--Obejmujące wiele kwerend bazy danych za pomocą trzech lub czterech nazwy części. (Zapytania wielu baz danych tylko do odczytu są obsługiwane przy użyciu [zapytanie elastycznej bazy danych](sql-database-elastic-query-overview.md).) — między łańcucha własności bazy danych `TRUSTWORTHY` ustawienie - `EXECUTE AS LOGIN` Użyj "Wykonywanie jako użytkownik" zamiast niego.
-— Szyfrowanie jest obsługiwane z wyjątkiem rozszerzonego zarządzania kluczami - obsługi zdarzeń: zdarzenia, powiadomienia o zdarzeniach kwerendy powiadomienia — rozmieszczenia pliku: Składnia związanych z rozmieszczenia pliku bazy danych, rozmiaru i plików bazy danych, które są zarządzane automatycznie przez program Microsoft Azure.
+- Sortowanie obiektów systemu
+- Dotyczące połączeń: instrukcje Endpoint. Usługa SQL Database nie obsługuje uwierzytelniania systemu Windows, ale obsługuje podobne uwierzytelnianie usługi Azure Active Directory. Niektóre typy uwierzytelniania wymagają najnowszej wersji usługi SSMS. Aby uzyskać więcej informacji, zobacz artykuł [Connecting to SQL Database or SQL Data Warehouse By Using Azure Active Directory Authentication](sql-database-aad-authentication.md) (Nawiązywanie połączeń z usługami SQL Database lub SQL Data Warehouse przy użyciu uwierzytelniania usługi Azure Active Directory).
+- Zapytania obejmujące wiele baz danych, korzystające z nazw trój- i czteroczęściowych. (Zapytania tylko do odczytu obejmujące wiele baz danych są obsługiwane za pomocą [zapytania elastycznej bazy danych](sql-database-elastic-query-overview.md)).
+- Tworzenie łańcucha własności między wieloma bazami danych, ustawienie `TRUSTWORTHY`
+- `EXECUTE AS LOGIN` Zamiast tego użyj instrukcji „EXECUTE AS USER”.
+- Szyfrowanie jest obsługiwane z wyjątkiem rozszerzonego zarządzania kluczami
+- Obsługa zdarzeń: Zdarzenia, powiadomienia o zdarzeniach, powiadomienia o zapytaniach
+- Położenie pliku: Składnia związanych z rozmieszczenia pliku bazy danych, rozmiaru i plików bazy danych, które są zarządzane automatycznie przez program Microsoft Azure.
 - Wysoka dostępność: Składnia związane z wysoką dostępność, która jest zarządzana przy użyciu konta usługi Microsoft Azure. Obejmuje to składnię kopii zapasowych, przywracania, funkcji Always On, dublowania bazy danych, wysyłania dziennika oraz trybów odzyskiwania.
--Czytnika dziennika: składnia, która opiera się na odczytywaniu dziennika, która nie jest dostępna w usłudze SQL Database: Push Replication, Change Data Capture. Baza danych SQL Database może być subskrybentem artykułu replikacji wypychanej.
-— Funkcje: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes` -sprzętu: Składnia związane z ustawieniami związanych ze sprzętem serwera: takich jak pamięć, wątki robocze, koligacje Procesora, flagi śledzenia. Użyj warstwy usług i zamiast tego obliczenia rozmiarów.
-- `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`i czteroczęściowe nazwy — .NET Framework: integrację środowiska CLR przy użyciu poświadczeń programu SQL Server — wyszukiwanie semantyczne -: Użyj [zakresu poświadczeń bazy danych](https://msdn.microsoft.com/library/mt270260.aspx) zamiast tego.
--Elementy server-level: role serwera `sys.login_token`. Instrukcje `GRANT`, `REVOKE` i `DENY` w odniesieniu do uprawnień na poziomie serwera nie są dostępne, chociaż niektóre zostały zastąpione przez uprawnienia na poziomie bazy danych. Niektóre przydatne dynamiczne widoki zarządzania na poziomie serwera mają swoje odpowiedniki na poziomie bazy danych.
-- `SET REMOTE_PROC_TRANSACTIONS`
-- `SHUTDOWN`
-- `sp_addmessage`
-- `sp_configure` Opcje i `RECONFIGURE`. Niektóre opcje są dostępne za pośrednictwem [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
-- `sp_helpuser`
-- `sp_migrate_user_to_contained`
+- Czytnik dziennika: składnia, która opiera się na odczytywaniu dziennika, która nie jest dostępna w usłudze SQL Database: Push Replication, Change Data Capture. Baza danych SQL Database może być subskrybentem artykułu replikacji wypychanej.
+- Funkcje: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
+- Sprzęt: Składnia związane z ustawieniami związanych ze sprzętem serwera: takich jak pamięć, wątki robocze, koligacje Procesora, flagi śledzenia. Użyj warstwy usług i zamiast tego obliczenia rozmiarów.
+- `KILL STATS JOB`
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`i czteroczęściowe nazwy
+- .NET framework: Integracja środowiska CLR programu z programem SQL Server
+- Wyszukiwanie semantyczne
+- Poświadczenia serwera: Użyj [zakresu poświadczeń bazy danych](https://msdn.microsoft.com/library/mt270260.aspx) zamiast tego.
+- Elementy na poziomie serwera: role serwera `sys.login_token`. Instrukcje `GRANT`, `REVOKE` i `DENY` w odniesieniu do uprawnień na poziomie serwera nie są dostępne, chociaż niektóre zostały zastąpione przez uprawnienia na poziomie bazy danych. Niektóre przydatne dynamiczne widoki zarządzania na poziomie serwera mają swoje odpowiedniki na poziomie bazy danych.
+- `SET REMOTE_PROC_TRANSACTIONS`
+- `SHUTDOWN`
+- `sp_addmessage`
+- Opcje polecenia `sp_configure` i instrukcja `RECONFIGURE`. Niektóre opcje są dostępne po użyciu instrukcji [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
+- `sp_helpuser`
+- `sp_migrate_user_to_contained`
 - Agent programu SQL Server: Składni, która opiera się na bazie danych MSDB lub agenta programu SQL Server: alerty, operatory, centralne serwery zarządzania. Zamiast tego używaj skryptów, takich jak Azure PowerShell.
-— Inspekcja SQL Server: SQL korzystaj z bazy danych inspekcji zamiast tego.
-— Flagi śledzenia trace program SQL Server —: niektóre elementy flag śledzenia zostały przeniesione do trybów zgodności.
-— Debugowanie transact-SQL - wyzwala: o zakresie serwera lub Wyzwalacze logowania — `USE` instrukcji: Aby zmienić kontekst bazy danych do innej bazy danych, należy wprowadzić nowe połączenie z bazą danych.
+- Inspekcja programu SQL Server: SQL korzystaj z bazy danych inspekcji zamiast tego.
+- Śledzenie programu SQL Server
+- Flagi śledzenia: niektóre elementy flag śledzenia zostały przeniesione do trybów zgodności.
+- Debugowanie języka Transact-SQL
+- Wyzwalacze: wyzwalacze zakresu serwera lub wyzwalacze logowania
+- Instrukcja `USE`: aby zmienić kontekst bazy danych na inną bazę danych, należy wprowadzić nowe połączenie z nową bazą danych.
 
 ## <a name="full-transact-sql-reference"></a>Pełna dokumentacja języka Transact-SQL
 

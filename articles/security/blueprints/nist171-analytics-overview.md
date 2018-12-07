@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: f4d8f4a927415426248860b07a40e7294c84de59
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a4f84d6e61d3a100f952908883e6eb70d81f66b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406964"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998800"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu — analiza danych dla SP NIST 800-171
 
@@ -69,7 +69,7 @@ W poniższej sekcji przedstawiono elementy wdrożenia i implementacji.
 
 **Usługa Azure Functions**: [usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) to bezserwerowa usługa obliczeniowa, która uruchamia kod na żądanie. Nie trzeba jawnego przydzielania infrastruktury ani zarządzania tą infrastrukturą. Za pomocą usługi Azure Functions można uruchamiać skrypty lub fragmenty kodu w reakcji na różne zdarzenia.
 
-**Usługa Azure Machine Learning**: [uczenia maszynowego](https://docs.microsoft.com/azure/machine-learning/preview/) to technika do nauki o danych, która zezwala na komputerach, aby korzystać z istniejących danych w celu przewidywania przyszłych zachowań, rezultatów i trendów.
+**Usługa Azure Machine Learning**: [uczenia maszynowego](https://docs.microsoft.com/azure/machine-learning/service/) to technika do nauki o danych, która zezwala na komputerach, aby korzystać z istniejących danych w celu przewidywania przyszłych zachowań, rezultatów i trendów.
 
 **Usługa Azure Data Catalog**: [Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) sprawia, że źródła danych jest łatwe odnajdywanie i zrozumienie przez użytkowników, którzy zarządzają danymi. Typowe źródła danych można zarejestrowany, oznaczone i wyszukiwane dane. Dane pozostają w istniejącej lokalizacji, ale kopia ich metadanych jest dodawany do usługi Data Catalog. Odwołanie do lokalizacji źródła danych jest dołączony. Metadane są indeksowane, aby ułatwić odnajdywanie za pomocą wyszukiwania dla każdego źródła danych. Indeksowanie sprawia, że jej zrozumiałe dla użytkowników, którzy je odnajdą.
 

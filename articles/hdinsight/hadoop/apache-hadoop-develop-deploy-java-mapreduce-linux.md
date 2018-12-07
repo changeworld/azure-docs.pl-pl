@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c16d85479399d7988be18f9b852563617bb824b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 42fc92b0cee20679ab72a389cc11522c0ca4e0fd
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632656"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013758"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Opracowywanie programów MapReduce w języku Java dla usługi Apache Hadoop w HDInsight
 
@@ -25,12 +25,12 @@ Informacje o sposobie tworzenia aplikacji opartych na języku Java MapReduce, a 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zestaw Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 lub nowszy (lub równoważny, taki jak OpenJDK).
+* [Zestaw Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 lub nowszy (lub równoważny, taki jak OpenJDK).
     
     > [!NOTE]
     > HDInsight w wersji 3.4 i starszych korzystanie z języka Java 7. HDInsight 3.5 i nowszych używa Java 8.
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 ## <a name="configure-development-environment"></a>Konfigurowanie środowiska programowania
 
@@ -63,7 +63,7 @@ Następujące zmienne środowiskowe można ustawić podczas instalacji języka J
 
     To polecenie tworzy katalog o nazwie określonej przez `artifactID` parametru (**wordcountjava** w tym przykładzie.) Ten katalog zawiera następujące elementy:
 
-   * `pom.xml` [Modelu obiektu projektu (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) zawierający informacje i szczegóły konfiguracji używane do tworzenia projektu.
+   * `pom.xml` [Modelu obiektu projektu (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) zawierający informacje i szczegóły konfiguracji używane do tworzenia projektu.
 
    * `src` Katalog, który zawiera aplikację.
 
@@ -94,7 +94,7 @@ Następujące zmienne środowiskowe można ustawić podczas instalacji języka J
     </dependency>
    ```
 
-    Definiuje wymaganych bibliotek (wymienione w ramach &lt;artifactId\>) z określoną wersją (wymienione w ramach &lt;wersji\>). W czasie kompilacji te zależności są pobierane z repozytorium Maven domyślne. Możesz użyć [funkcji wyszukiwania narzędzia Maven repozytorium](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) Aby wyświetlić więcej.
+    Definiuje wymaganych bibliotek (wymienione w ramach &lt;artifactId\>) z określoną wersją (wymienione w ramach &lt;wersji\>). W czasie kompilacji te zależności są pobierane z repozytorium Maven domyślne. Możesz użyć [funkcji wyszukiwania narzędzia Maven repozytorium](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) Aby wyświetlić więcej.
    
     `<scope>provided</scope>` Informuje o narzędzia Maven, nie można spakować te zależności z aplikacją, ponieważ są one udostępniane przez klaster usługi HDInsight w czasie wykonywania.
 
@@ -138,7 +138,7 @@ Następujące zmienne środowiskowe można ustawić podczas instalacji języka J
     </build>
    ```
 
-    Konfiguruje pierwszy wtyczki [wtyczki odcień Maven](http://maven.apache.org/plugins/maven-shade-plugin/), który jest używany do tworzenia uberjar (nazywane czasem fatjar), która zawiera zależności wymagane przez aplikację. Uniemożliwia ona dublowania licencji w ramach pakiet jar, co może powodować problemy w niektórych systemach.
+    Konfiguruje pierwszy wtyczki [wtyczki odcień Maven](https://maven.apache.org/plugins/maven-shade-plugin/), który jest używany do tworzenia uberjar (nazywane czasem fatjar), która zawiera zależności wymagane przez aplikację. Uniemożliwia ona dublowania licencji w ramach pakiet jar, co może powodować problemy w niektórych systemach.
 
     Druga wtyczka konfiguruje docelowej wersji języka Java.
 
@@ -291,9 +291,9 @@ W tym dokumencie mają przedstawiono sposób tworzenia zadania MapReduce w języ
 
 Aby uzyskać więcej informacji, zobacz też [Centrum deweloperów języka Java](https://azure.microsoft.com/develop/java/).
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-use-sqoop]:hdinsight-use-sqoop.md
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
@@ -303,5 +303,5 @@ Aby uzyskać więcej informacji, zobacz też [Centrum deweloperów języka Java]
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-power-query]:apache-hadoop-connect-excel-power-query.md
 
-[powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
+[powershell-PSCredential]: https://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 

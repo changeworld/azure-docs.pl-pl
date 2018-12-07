@@ -9,12 +9,13 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 11/08/2018
-ms.openlocfilehash: f4340d1ef30bb4317e658c9a9a936f009054e784
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: 3033b049b3d4bbe49b6a30be7ec78e1c2caf49ef
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710634"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011146"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 
@@ -45,8 +46,6 @@ Dane wyjściowe pobiera zapisane w obiekcie Blob platformy Azure. Ponieważ dane
 /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
->[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 0.1.74
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -136,7 +135,7 @@ Możesz zatrzymać zbieranie danych w dowolnym momencie. Użyj kodu w języku Py
 
   1. Przejdź do **wdrożeń** -> **wybierz usługę** -> **Edytuj**.
 
-    [![Edytowanie usługi](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+    [![Edytowanie opcji](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. W **Zaawansowane ustawienia**, usuń zaznaczenie opcji **zbierania danych modelu Włącz**. 
 
@@ -172,7 +171,7 @@ Aby szybko uzyskać dostęp do danych z obiektu blob:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Analizowanie danych modelu za pomocą usługi Power BI
 
-1. Pobierz i Otwórz [pulpit nawigacyjny usługi PowerBi](http://www.powerbi.com)
+1. Pobierz i Otwórz [pulpit nawigacyjny usługi PowerBi](https://www.powerbi.com)
 
 1. Wybierz **Pobierz dane** i kliknij pozycję [ **usługi Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
@@ -231,8 +230,6 @@ Aby szybko uzyskać dostęp do danych z obiektu blob:
 
 ## <a name="example-notebook"></a>Przykład notesu
 
-[00. Started/12.enable-data-collection-for-models-in-aks.ipynb wprowadzenie](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/12.enable-data-collection-for-models-in-aks) koncepcji w tym artykule pokazano, notesu.  
+[How-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb) koncepcji w tym artykule pokazano, notesu.  
 
-Pobierz ten notes:
- 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: dd876462559ac10fc0463c64413bf11eabbc88a1
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: d0af6c098f68c23bf9ef6161bd307afec518ead7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443529"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011696"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o usłudze Azure Virtual Networks start z informacjami w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -120,7 +120,7 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
 | * / jest 25                       | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
 | * w / 587                      | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
 | * / 25028                    | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
-| * / 6381 - 6383              | Dla ruchu przychodzącego i wychodzącego | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Dostęp do wystąpień usługi Redis Cache między RoleInstances          | Zewnętrzne i wewnętrzne  |
+| * / 6381 - 6383              | Dla ruchu przychodzącego i wychodzącego | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Uzyskiwanie dostępu do usługi Azure Cache dla wystąpienia usługi Redis między RoleInstances          | Zewnętrzne i wewnętrzne  |
 | * / *                        | Przychodzący            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Moduł równoważenia obciążenia infrastruktury platformy Azure                          | Zewnętrzne i wewnętrzne  |
 
 >[!IMPORTANT]

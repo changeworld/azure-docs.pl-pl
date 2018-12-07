@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6a3fab0e6b3b092ddb55043882c4d284268abfc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c2fd32ad15366c76c061ba42fa0a59d43a317b43
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006859"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012763"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Użyj usługi Azure Data Lake tools for Visual Studio z Piaskownicą Hortonworks
 
-Usługa Azure Data Lake obejmuje narzędzia do pracy z klastrami Hadoop ogólnego. Ten dokument zawiera kroki niezbędne do korzystania z narzędzi Data Lake z Piaskownicą Hortonworks w lokalnej maszyny wirtualnej.
+Usługa Azure Data Lake obejmuje narzędzia do pracy z ogólnych klastry platformy Apache Hadoop. Ten dokument zawiera kroki niezbędne do korzystania z narzędzi Data Lake z Piaskownicą Hortonworks w lokalnej maszyny wirtualnej.
 
 Korzystanie z Piaskownicą Hortonworks umożliwia lokalnie pracować z usługą Hadoop w środowisku deweloperskim. Po opracowaniu rozwiązania, a następnie można wdrożyć je na dużą skalę, można przenieść do klastra usługi HDInsight.
 
@@ -34,7 +34,7 @@ Korzystanie z Piaskownicą Hortonworks umożliwia lokalnie pracować z usługą 
 
 ## <a name="configure-passwords-for-the-sandbox"></a>Konfigurowanie haseł dla obszaru piaskownicy
 
-Upewnij się, że działa Piaskownicą Hortonworks. Następnie postępuj zgodnie z instrukcjami w [rozpocząć pracę z Piaskownicą Hortonworks](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentu. Te kroki skonfigurować hasło usługi SSH `root` konta i Ambari `admin` konta. Te hasła są używane podczas łączenia z piaskownicy za pomocą programu Visual Studio.
+Upewnij się, że działa Piaskownicą Hortonworks. Następnie postępuj zgodnie z instrukcjami w [rozpocząć pracę z Piaskownicą Hortonworks](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentu. Te kroki skonfigurować hasło usługi SSH `root` konta i Apache Ambari `admin` konta. Te hasła są używane podczas łączenia z piaskownicy za pomocą programu Visual Studio.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Połącz narzędzia do piaskownicy
 
@@ -71,7 +71,7 @@ Upewnij się, że działa Piaskownicą Hortonworks. Następnie postępuj zgodnie
 
 Po wykonaniu tych kroków, masz teraz **lokalny klaster HDInsight** wpis w oknie Eksploratora serwera w obszarze **HDInsight** sekcji.
 
-## <a name="write-a-hive-query"></a>Napisz zapytanie Hive
+## <a name="write-an-apache-hive-query"></a>Napisz zapytanie technologii Hive
 
 Gałąź zawiera język zapytań przypominający SQL (HiveQL) do pracy z danymi strukturalnymi. Wykonaj następujące kroki, aby dowiedzieć się, jak uruchamiać zapytania na żądanie w klastrze lokalnym.
 
@@ -100,7 +100,7 @@ Gałąź zawiera język zapytań przypominający SQL (HiveQL) do pracy z danymi 
     Po **stan zadania** zmieni się na **Zakończono**, przekierowanie acykliczne wykresu (DAG) jest wyświetlana. Ten diagram w tym artykule opisano ścieżki wykonywania, który został określony poprzez Tez, podczas przetwarzania zapytania programu Hive. Tez jest domyślny aparat wykonywania programu Hive w klastrze lokalnym.
 
     > [!NOTE]
-    > Tez jest również wartością domyślną, korzystając z klastrami HDInsight opartych na systemie Linux. Nie jest domyślny w HDInsight z systemem Windows. Aby go użyć, należy dodać wiersz `set hive.execution.engine = tez;` początek zapytania Hive.
+    > Apache Tez jest również wartością domyślną, korzystając z klastrami HDInsight opartych na systemie Linux. Nie jest domyślny w HDInsight z systemem Windows. Aby go użyć, należy dodać wiersz `set hive.execution.engine = tez;` początek zapytania Hive.
 
     Użyj **dane wyjściowe zadania** link, aby wyświetlić dane wyjściowe. W tym przypadku jest to 823, liczba wierszy w tabeli sample_08. Informacje diagnostyczne o zadaniu można wyświetlić przy użyciu **dziennik zadań** i **Pobierz dziennik usługi YARN** łącza.
 
@@ -127,7 +127,7 @@ Można również utworzyć projekt, który zawiera wiele skryptów programu Hive
 
 **Hive przykładowe** projekt zawiera dwa skrypty **WebLogAnalysis.hql** i **SensorDataAnalysis.hql**. Możesz przesłać te skrypty, korzystając z tych samych **przesyłania** znajdujący się u góry okna.
 
-## <a name="create-a-pig-project"></a>Utwórz projekt usługi Pig
+## <a name="create-an-apache-pig-project"></a>Tworzenie projektu Apache Pig
 
 Hive zapewnia języka przypominającego SQL do pracy z danymi strukturalnymi, Pig działa, gdy, wykonując przekształcenia na danych. Pig zawiera język (Pig Latin), który umożliwia tworzenie potoku przekształcenia. Aby korzystanie z języka Pig z lokalnym klastrem, wykonaj następujące kroki:
 
@@ -200,5 +200,5 @@ Następnie można utworzyć tabeli za pomocą formularza. W dolnej części poni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Nauka podstaw Piaskownicą Hortonworks](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Samouczek Hadoop — wprowadzenie do HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Nauka podstaw Piaskownicą Hortonworks](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Samouczek platformy Apache Hadoop — wprowadzenie do HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

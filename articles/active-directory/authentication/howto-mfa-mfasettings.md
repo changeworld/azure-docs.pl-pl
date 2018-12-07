@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e0c612407047a51c4e3d4101a0ee192f55458afe
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 772807fc0a1378eea662a7c4a7e3c720d7092bef
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497003"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013018"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -384,3 +384,7 @@ Ta funkcja zmniejsza liczbę uwierzytelnień w aplikacji sieci web, które zwykl
 ### <a name="mark-a-device-as-trusted"></a>Oznacz urządzenie jako zaufany
 
 Po włączeniu funkcji uwierzytelniania wieloskładnikowego Zapamiętaj, użytkownicy mogą oznaczać urządzenia jako zaufany podczas logowania się przez wybranie **nie pytaj ponownie**.
+
+# <a name="next-steps"></a>Kolejne kroki
+
+[Modyfikowanie znakowanie strony logowania usługi Azure AD](..\fundamentals\customize-branding.md)

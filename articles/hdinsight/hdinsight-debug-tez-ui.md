@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c96e195d425cff640a4961e34305c1af447f6f28
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1e529b2276d2e68c67696ba9d142760f5881a25e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499438"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012814"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Debugowanie zadań tez przy na podstawie Windows HDInsight przy użyciu interfejsu użytkownika Tez Apache
 [Apache TEZ](https://tez.apache.org/) interfejsu użytkownika może służyć do debugowania [Apache Hive](https://hive.apache.org/) zadania, które używają Tez jako aparatu wykonywania. Interfejsu użytkownika Tez wizualizuje zadania wykres połączonych elementów, można przejść do każdego elementu i pobierania statystyk i rejestrowania informacji.
@@ -136,4 +136,4 @@ Wykonaj następujące kroki, aby uruchomić zapytanie programu Hive, który uży
 ## <a name="next-steps"></a>Następne kroki
 Teraz, gdy wiesz jak używać [Apache TEZ](https://tez.apache.org/) wyświetlanie, Dowiedz się więcej o [przy użyciu Apache Hive on HDInsight](hadoop/hdinsight-use-hive.md).
 
-Aby uzyskać szczegółowe informacje techniczne na temat aplikacji Tez, zobacz [strony Apache Tez w Hortonworks](http://hortonworks.com/hadoop/tez/).
+Aby uzyskać szczegółowe informacje techniczne na temat aplikacji Tez, zobacz [strony Apache Tez w Hortonworks](https://hortonworks.com/hadoop/tez/).

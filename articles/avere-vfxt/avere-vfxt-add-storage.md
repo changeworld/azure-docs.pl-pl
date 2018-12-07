@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163175"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001974"
 ---
 # <a name="configure-storage"></a>Konfigurowanie magazynu
 
@@ -19,6 +19,12 @@ W tym kroku konfiguruje system magazynu zaplecza dla vFXT klastra.
 
 > [!TIP]
 > Jeśli użyto `create-cloudbacked-cluster` prototypu skrypt, aby utworzyć nowy kontener obiektów Blob, wraz z klastrem vFXT Avere, czy kontener jest już skonfigurowany do użycia i nie trzeba dodać magazyn.
+>
+> Jednak jeśli nowego kontenera obiektu Blob została zaszyfrowana przy użyciu domyślnego klucza szyfrowania, należy pobrać plik klucza odzyskiwania z klastra lub zastąpić domyślny klucz przy użyciu nowego klucza przed zapisaniem danych. Domyślny klucz są zapisywane tylko w klastrze i nie można pobrać, jeśli klaster zostanie utracony lub jest niedostępna.
+>
+> Po nawiązaniu połączenia do panelu sterowania Avere kliknij **ustawienia** kartę, a następnie wybierz **filtr Core** > **ustawienia szyfrowania w chmurze**. W **Store klucza lokalnego** sekcji, wybierz jedną z następujących opcji: 
+> * Użyj **Pobierz ponownie odzyskiwanie pliku** przycisk, aby uzyskać plik odzyskiwania dla istniejącego klucza. Plik odzyskiwania jest szyfrowana za pomocą hasło administracyjne klastra. Upewnij się zapisać plik w miejscu, niezawodne. 
+> * Postępuj zgodnie z instrukcjami w **wygenerować nowy klucz główny** części strony Aby utworzyć nowy klucz szyfrowania, które możesz kontrolować. Ta opcja pozwala określić unikatowe hasło. Ponadto wymaga ona przekazywanie i ponownie Pobierz plik odzyskiwania, aby zweryfikować pary pliku hasła.
 
 Wykonaj te instrukcje, jeśli użyto `create-minimal-cluster` skryptu prototypu dla klastra, lub jeśli chcesz dodać dodatkowego sprzętu lub systemu magazynu w chmurze.
 
@@ -91,7 +97,7 @@ Aby dodać magazyn obiektów Blob, po utworzeniu klastra, wykonaj następujące 
    * **Grupa zasobów** — jest to taka sama jak Grupa klastra vFXT (opcjonalnie)
    * **Lokalizacja** — jest to taka sama jak vFXT klastra
    * **Wydajność** — standardowe (Premium storage jest nieobsługiwana)
-   * **Rodzaj konta** — ogólnego przeznaczenia w wersji 2 (StorageV2)
+   * **Rodzaj konta** -General-purpose V2 (StorageV2)
    * **Replikacja** — magazyn lokalnie nadmiarowy (LRS)
    * **Warstwa dostępu** — gorąca
    * **Wymagany bezpieczny transfer** -Wyłącz tę opcję (innych niż domyślne wartości)

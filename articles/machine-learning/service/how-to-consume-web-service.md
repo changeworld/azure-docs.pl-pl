@@ -1,6 +1,6 @@
 ---
 title: Jak używać wdrożeń usług internetowych — usługa Azure Machine Learning
-description: Informacje o sposobie korzystania z usługi sieci web utworzone przez wdrożenie model usługi Azure Machine Learning. Wdrażanie modelu usługi Azure Machine Learning tworzy usługi sieci web, który uwidacznia interfejs API REST. Można utworzyć klientów dla tego interfejsu API przy użyciu preferowanego języka programowania. W tym dokumencie, jak uzyskać dostęp do interfejsu API przy użyciu języka Python i C#.
+description: Informacje o sposobie korzystania z usługi sieci web, który został wygenerowany, gdy model został wdrożony za pomocą modelu usługi Azure Machine Learning. Usługa sieci web, która uwidacznia interfejs API REST. Tworzenie klientów dla tego interfejsu API przy użyciu preferowanego języka programowania.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
-ms.date: 10/30/2018
-ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/03/2018
+ms.custom: seodec18
+ms.openlocfilehash: d964eef08557ddd95ff86bc9e7de806cd4a8ca18
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262911"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016644"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
@@ -100,7 +101,7 @@ Interfejs API REST oczekuje, że treść żądania jako dokument JSON o następu
 > [!IMPORTANT]
 > Struktury danych wymaga do dopasowania, jakie oceniania skrypt i modelu w oczekiwanej usługi. Skrypt oceniania może modyfikować danych przed przekazaniem go do modelu.
 
-Na przykład modelu w [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) przykład oczekuje tablicy 10 kolejnych liczb. Skrypt oceniania w tym przykładzie tworzy tablicę Numpy z żądania i przekazuje je do modelu. Poniższy przykład przedstawia dane, które oczekuje na tę usługę:
+Na przykład modelu w [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykład oczekuje tablicy 10 kolejnych liczb. Skrypt oceniania w tym przykładzie tworzy tablicę Numpy z żądania i przekazuje je do modelu. Poniższy przykład przedstawia dane, które oczekuje na tę usługę:
 
 ```json
 {
@@ -126,7 +127,7 @@ Usługa sieci web może akceptować wiele zestawów danych w jednym żądaniu. Z
 
 ## <a name="call-the-service-c"></a>Wywołania tej usługi (C#)
 
-W tym przykładzie przedstawiono sposób użycia C# wywołać usługę sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) przykładu:
+W tym przykładzie przedstawiono sposób użycia C# wywołać usługę sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu:
 
 ```csharp
 using System;
@@ -215,7 +216,7 @@ Zwrócone wyniki są podobne do następujących dokumentów JSON:
 
 ## <a name="call-the-service-go"></a>Wywoływanie usługi (Przejdź do)
 
-W tym przykładzie pokazano, jak za pomocą języka Go do wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) przykładu:
+W tym przykładzie pokazano, jak za pomocą języka Go do wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu:
 
 ```go
 package main
@@ -307,7 +308,7 @@ Zwrócone wyniki są podobne do następujących dokumentów JSON:
 
 ## <a name="call-the-service-java"></a>Wywoływanie usługi (Java)
 
-W tym przykładzie pokazano, jak używać języka Java w celu wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) przykładu:
+W tym przykładzie pokazano, jak używać języka Java w celu wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu:
 
 ```java
 import java.io.IOException;
@@ -387,7 +388,7 @@ Zwrócone wyniki są podobne do następujących dokumentów JSON:
 
 ## <a name="call-the-service-python"></a>Wywoływanie usługi (Python)
 
-W tym przykładzie pokazano, jak używać języka Python do wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) przykładu:
+W tym przykładzie pokazano, jak używać języka Python do wywoływania usługi sieci web utworzone na podstawie [szkolenie w notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) przykładu:
 
 ```python
 import requests

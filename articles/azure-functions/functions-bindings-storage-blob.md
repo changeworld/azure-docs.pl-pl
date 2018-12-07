@@ -9,14 +9,14 @@ keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie d
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 09/03/2018
+ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 4f8135dd26b58b5b285798af5c420aa09b03074b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b386cf72525c6ef6234d99255ca0eed5ade32066
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850124"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000483"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -29,11 +29,11 @@ W tym artykule wyjaśniono, jak pracować z powiązania magazynu obiektów Blob 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Na użytek wyzwalacza usługi Event Grid zamiast wyzwalaczy magazynu obiektów Blob tylko do obiektów blob konta magazynu, wysokiej skali lub w celu uniknięcia opóźnień zimnego startu. Aby uzyskać więcej informacji, zobacz [wyzwalacza](#trigger) sekcji.
+> Na użytek wyzwalacza usługi Event Grid zamiast wyzwalaczy magazynu obiektów Blob tylko do obiektów blob konta magazynu, na dużą skalę lub w celu zmniejszenia opóźnienia. Aby uzyskać więcej informacji, zobacz [wyzwalacza](#trigger) sekcji.
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania magazynu obiektów Blob znajdują się w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) repozytorium GitHub.
+Powiązania magazynu obiektów Blob znajdują się w [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -55,7 +55,7 @@ Użyj usługi Event Grid zamiast wyzwalacz usługi Blob storage w następującyc
 
 * Konta usługi Blob Storage
 * Wysoka skalowalność
-* Minimalizuje opóźnienia zimnego startu
+* Minimalizuje opóźnienie
 
 ### <a name="blob-storage-accounts"></a>Konta usługi Blob Storage
 
@@ -65,9 +65,9 @@ Użyj usługi Event Grid zamiast wyzwalacz usługi Blob storage w następującyc
 
 Zapewnia wysoką skalowalność, które mogą być swobodnie definiowane jako kontenery zawierające ponad 100 000 obiektów blob w nich lub kont magazynu, który ma więcej niż 100 aktualizacji obiektu blob na sekundę.
 
-### <a name="cold-start-delay"></a>Opóźnienie zimnego startu
+### <a name="latency-issues"></a>Problemów z opóźnieniem
 
-W przypadku aplikacji funkcji w planie zużycie, może istnieć maksymalnie 10 minut opóźnienia w przetwarzaniu nowe obiekty BLOB, jeśli aplikacja funkcji przeszedł bezczynności. Aby uniknąć tego opóźnienia zimnego startu, możesz przełączyć się do planu usługi App Service przy użyciu zawsze włączonej włączone lub użyć inny typ wyzwalacza.
+W przypadku aplikacji funkcji w planie zużycie, może istnieć maksymalnie 10 minut opóźnienia w przetwarzaniu nowe obiekty BLOB, jeśli aplikacja funkcji przeszedł bezczynności. Aby uniknąć ten czas oczekiwania, możesz przełączyć do planu usługi App Service przy użyciu zawsze włączonej włączone. Można również użyć [wyzwalacza usługi Event Grid](functions-bindings-event-grid.md) przy użyciu konta usługi Blob storage. Aby uzyskać przykład, zobacz [samouczka usługi Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json). 
 
 ### <a name="queue-storage-trigger"></a>Wyzwalacz kolejki usługi storage
 

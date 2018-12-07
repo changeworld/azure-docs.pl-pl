@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34161251ac52323bc3eff66cfe30f3de34bdf60c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 998c3f1fcfbf53f6f0dfb5ddf34d420f2b31a0b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715463"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001876"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -169,7 +169,7 @@ W tym przypadku odwołasz się do wartości zmiennych za pośrednictwem rozwiąz
 **DependsOn** element Określa [zależności](../../azure-resource-manager/resource-group-define-dependencies.md) na inny zasób.  Po zainstalowaniu rozwiązania zasób nie został utworzony, dopóki wszystkie jego zależności zostały utworzone.  Na przykład może być rozwiązania [uruchamiania elementu runbook](solutions-resources-automation.md#runbooks) po jej zainstalowaniu, za pomocą [zadania zasobów](solutions-resources-automation.md#automation-jobs).  Zasób zadanie będzie zależał od zasobu elementu runbook, aby upewnić się, czy element runbook został utworzony przed utworzeniem zadania.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Obszar roboczy usługi log Analytics i konto usługi Automation
-Rozwiązania do zarządzania wymagają [obszaru roboczego usługi Log Analytics](../../log-analytics/log-analytics-manage-access.md) zawierają widoki i [konta usługi Automation](../../automation/automation-security-overview.md#automation-account-overview) zawiera elementy runbook i powiązane zasoby.  Te muszą być dostępne, zanim zasobów w rozwiązaniu są tworzone i nie powinna być zdefiniowana w samym rozwiązaniem.  Użytkownik zostanie [Określ obszar roboczy i konto](solutions.md#log-analytics-workspace-and-automation-account) podczas ich wdrażania rozwiązania, ale Autor należy wziąć pod uwagę następujące kwestie.
+Rozwiązania do zarządzania wymagają [obszaru roboczego usługi Log Analytics](../../azure-monitor/platform/manage-access.md) zawierają widoki i [konta usługi Automation](../../automation/automation-security-overview.md#automation-account-overview) zawiera elementy runbook i powiązane zasoby.  Te muszą być dostępne, zanim zasobów w rozwiązaniu są tworzone i nie powinna być zdefiniowana w samym rozwiązaniem.  Użytkownik zostanie [Określ obszar roboczy i konto](solutions.md#log-analytics-workspace-and-automation-account) podczas ich wdrażania rozwiązania, ale Autor należy wziąć pod uwagę następujące kwestie.
 
 
 ## <a name="solution-resource"></a>Rozwiązanie zasobów

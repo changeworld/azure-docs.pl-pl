@@ -1,5 +1,5 @@
 ---
-title: Exchange zdarzeń między konsumentów i producentów, które używają różnych protokołów w usłudze Azure Event Hubs | Dokumentacja firmy Microsoft
+title: Exchange zdarzeń między aplikacjami, które używają różnych protokołów — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
 description: W tym artykule pokazano, jak konsumentów i producentów, które używają różnych protokołów (AMQP, Apache Kafka i HTTPS) programu exchange zdarzenia w przypadku korzystania z usługi Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
@@ -8,17 +8,17 @@ manager: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.custom: mvc
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/05/2018
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 54edeafbe950cde88c2c6051f95825cfaed52ac7
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1345a5814faefd4074e7d9548d374bd79d977514
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284949"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015589"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Exchange zdarzeń między konsumentów i producentów, które używają różnych protokołów: AMQP, Kafka i HTTPS
 Usługa Azure Event Hubs obsługuje trzy protokoły dla konsumentów i producentów: AMQP, Kafka i HTTPS. Każda z tych protokołów ma swój własny sposób przedstawiania wiadomości, więc naturalnie pojawia się następujące pytanie: aplikacja wysyła zdarzenia do Centrum zdarzeń za pomocą jednego protokołu i wykorzystuje je z innym protokołem, co zrobić, jeżeli różnych części i wartości Zdarzenie wyglądać po ich nadejściu na użytkownika? W tym artykule omówiono najlepsze rozwiązania dotyczące zarówno producentów i konsumentów upewnić się, że wartości w ramach zdarzenia są prawidłowo interpretowane przez aplikacja odbierająca komunikaty.

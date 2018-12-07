@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: d1b91d62eaafa60426c837cd0e40faaf7b60600b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 747ce8dc4a4e4c8ac1e26e5b051a431176096d71
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844587"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015980"
 ---
 # <a name="introduction-to-azure-advisor"></a>Wprowadzenie do usługi Azure Advisor
 
@@ -63,7 +63,7 @@ Możesz uzyskać dostęp zalecenia usługi Advisor jako *właściciela*, *Wspó�
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Jakie zasoby usługi Advisor zapewnia zalecenia dotyczące?
 
-Usługa Advisor udostępnia zalecenia dotyczące maszyn wirtualnych, zestawy dostępności, bramy application Gateway, App Services, serwery SQL i Redis Cache.
+Usługa Advisor udostępnia zalecenia dotyczące maszyn wirtualnych, zestawy dostępności, bramy application Gateway, usługi aplikacji, serwerów SQL i pamięć podręczna systemu Azure dla usługi Redis.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Można odroczyć lub odrzucić zalecenie?
 

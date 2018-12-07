@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 48b1e47befa647a9d221e5cdf5bf0485c3b66028
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 588e56c9ae22578c08dbca07c7c576fe8b577b58
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423831"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012338"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Samouczek: Integracja usługi Azure Active Directory z małych ulepszenia
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD z ulepszeniami małych, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Ulepszenia małych logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację małych ulepszeń w usłudze Azure AD, należy do
 
 **Aby dodać małych ulepszenia z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -216,7 +216,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ulepszenia mały
 
     b. Wprowadź **nazwisko** użytkownika, takich jak **Simon**.
 
-    c. Wprowadź **E-mail** użytkownika, takich jak **brittasimon@contoso.com**. 
+    c. Wprowadź **E-mail** użytkownika, takich jak <strong>brittasimon@contoso.com</strong>. 
 
     d. Możesz również wprowadzić osobistą wiadomość w **Wyślij wiadomość e-mail z powiadomieniem** pole. Jeśli nie chcesz wysłać powiadomienie, usuń zaznaczenie tego pola wyboru.
 

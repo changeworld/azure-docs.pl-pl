@@ -9,12 +9,13 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 44c5cce103996f1774fb87b46760c23dc9ab575c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ae61f6fe24486eb1d4d5deecf5fb005a4d71b5fc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957712"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016167"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Śledzenie eksperymentów i szkolenia metryk w usłudze Azure Machine Learning
 
@@ -241,7 +242,7 @@ Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obse
    RunDetails(run).show()
    ```
 
-  ![Zrzut ekranu aplikacji Jupyter notebook widżetu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+  ![Widżet notesu programu Jupyter dla automatycznego Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
 Aby wyświetlić więcej szczegółów, kliknij potok w potoku chcesz eksplorować w tabeli i wykresów będą renderowane w podręcznym w witrynie Azure portal.
@@ -264,7 +265,7 @@ Po zakończeniu eksperymentu, możesz przejść do zarejestrowanych uruchomienie
 
 Link do uruchomienia oferuje bezpośrednio do strony szczegółów przebiegu w witrynie Azure portal. Tutaj widać, właściwości, śledzonych metryki, obrazów i wykresów, które są rejestrowane w eksperymencie. W tym przypadku możemy rejestrowane MSE i wartości alfa.
 
-  ![Zrzut ekranu przedstawiający szczegóły przebiegu w witrynie Azure portal](./media/how-to-track-experiments/run-details-page-web.PNG)
+  ![Szczegóły przebiegu w witrynie Azure portal](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Można również wyświetlić wszystkie dane wyjściowe lub dzienniki dla uruchomienia lub Pobierz migawkę eksperymentu, przesłania więc folderu eksperymentu można udostępniać innym osobom.
 
@@ -300,15 +301,15 @@ Dowiedz się więcej o usługach:
 
 1. Wybierz eksperyment, który Cię interesuje.
 
-  ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+  ![Lista eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
 
 1. W tabeli wybierz numer uruchomienia.
 
-   ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
+   ![Uruchomienie eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
 
 1.  W tabeli wybierz liczbę iteracji dla modelu, który chcesz dalszego zbadania.
 
-   ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
+   ![Model doświadczenia](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
 
 
 

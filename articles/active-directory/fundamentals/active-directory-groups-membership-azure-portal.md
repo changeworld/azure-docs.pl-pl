@@ -12,12 +12,12 @@ ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2d05a31c56cfe8ea92a933696ca3c9b0fadbd4d3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468034"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000305"
 ---
 # <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Porady: Dodawanie lub usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory
 Ten artykuł ułatwia dodawanie i usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory.
@@ -29,7 +29,7 @@ Ten artykuł ułatwia dodawanie i usuwanie grupy z innej grupy za pomocą usług
 Można dodać istniejącej grupy zabezpieczeń do innej istniejącej grupy zabezpieczeń (nazywane również zagnieżdżone grupy), tworzenia elementu członkowskiego grupy (podgrupy) i grupy nadrzędnej. Element członkowski grupy dziedziczy atrybuty i właściwości grupy nadrzędnej, zaoszczędzić czas.
 
 >[!Important]
->Obecnie nie obsługujemy:<ul><li>Dodawanie grup zabezpieczeń do grup usługi Office 365</li><li>Dodawanie grup usługi Office 365 do grupy zabezpieczeń lub inne grupy usługi Office 365</li><li>Przypisywanie aplikacji do grup zagnieżdżonych</li><li>Stosowanie licencji do grupy zagnieżdżone</li></ul>
+>Obecnie nie obsługujemy:<ul><li>Dodawanie grupy do grupy synchronizowane z usługą Active Directory w środowisku lokalnym</li><li>Dodawanie grup zabezpieczeń do grup usługi Office 365</li><li>Dodawanie grup usługi Office 365 do grupy zabezpieczeń lub inne grupy usługi Office 365</li><li>Przypisywanie aplikacji do grup zagnieżdżonych</li><li>Stosowanie licencji do grupy zagnieżdżone</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Aby dodać grupę, jest członkiem innej grupy
 
