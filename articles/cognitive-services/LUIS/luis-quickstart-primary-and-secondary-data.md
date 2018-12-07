@@ -108,22 +108,22 @@ Po oznaczeniu jednostek w przykładowych wypowiedziach ważne jest dodanie listy
 
     |Wypowiedź|Jednostka Job (Stanowisko)|
     |:--|:--|
-    |I'm applying for the Program Manager desk in R&D|Program Manager|
-    |Here is my line cook application.|line cook|
-    |My resume for camp counselor is attached.|camp counselor|
-    |This is my c.v. for administrative assistant.|administrative assistant|
-    |I want to apply for the management job in sales.|management, sales|
-    |This is my resume for the new accounting position.|accounting|
-    |My application for barback is included.|barback|
-    |I'm submitting my application for roofer and framer.|roofer, framer|
-    |My c.v. for bus driver is here.|bus driver|
-    |I'm a registered nurse. Here is my resume.|registered nurse|
-    |I would like to submit my paperwork for the teaching position I saw in the paper.|teaching|
-    |This is my c.v. for the stocker post in fruits and vegetables.|stocker|
-    |Apply for tile work.|kafelek|
-    |Attached resume for landscape architect.|landscape architect|
-    |My curriculum vitae for professor of biology is enclosed.|professor of biology|
-    |I would like to apply for the position in photography.|photography|git 
+    |Jestem I stosowania dla działu Kierownik ds. programów w programie R & D|Kierownik programów|
+    |Oto Moja aplikacja Cooka wiersza.|Cooka wiersza|
+    |Życiorysem dla kamping counselor jest dołączony.|kamping counselor|
+    |To jest Moja doświadczeń Aby uzyskać Asystenta administracyjnego.|Asystent|
+    |Czy chcesz zastosować dla zadania zarządzania w sprzedaży.|Zarządzanie, sprzedaży|
+    |Jest to życiorysem dla nowej pozycji ewidencjonowania aktywności.|Księgowość|
+    |Moja aplikacja dla barback jest dołączony.|barback|
+    |Składam Moja aplikacja roofer i framer.|roofer, framer|
+    |Moje doświadczeń Service bus sterownik jest tutaj.|Sterownik magistrali|
+    |Jestem pielęgniarki zarejestrowana. Oto życiorysem.|pielęgniarki zarejestrowane|
+    |Chcę przesłać Moje dokumentacji dla pozycji nauczania, który wystąpił w dokumencie.|nauczania|
+    |To jest Moja doświadczeń wpis stocker owoców i warzyw.|stocker|
+    |Mają zastosowanie do pracy kafelka.|kafelek|
+    |Dołączone wznowienie dla architektury pozioma.|Architekt pozioma|
+    |Moje życiorys dla Profesor biologii jest ujęte.|Profesor związane z biologią|
+    |Chcę otrzymywać do zastosowania dla pozycji w fotografii.|zdjęć|git 
 
 ## <a name="label-entity-in-example-utterances"></a>Oznaczanie jednostki etykietami w przykładowych wypowiedziach
 

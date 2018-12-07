@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 10/29/2018
-ms.openlocfilehash: c6bf3c50958085f45c52ec2fa3cbdfba8adbe35f
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e46b2c0de1b65d2355e7258e9940ee1fee6be071
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711722"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872139"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Wdrażanie modelu jako usługi sieci web na FPGA za pomocą usługi Azure Machine Learning
 
@@ -165,14 +165,6 @@ registered_model.delete()
 
 Azure modeli usługi Machine Learning systemem układów FPGA zapewniają obsługę protokołu SSL i uwierzytelniania opartego na kluczu. Dzięki temu można ograniczyć dostęp do swojej usługi i zabezpieczanie danych przesyłanych przez klientów. [Dowiedz się, jak zabezpieczyć usługę sieci web](how-to-secure-web-service.md).
 
-
-## <a name="sample-notebook"></a>Przykładowy notes
-
-Koncepcji w tym artykule przedstawiono w [project-brainwave/project-brainwave-quickstart.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/project-brainwave/project-brainwave-quickstart.ipynb) notesu.
-
-Pobierz ten notes:
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
