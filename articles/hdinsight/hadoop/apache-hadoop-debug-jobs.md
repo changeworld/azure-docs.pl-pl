@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c997b2644be3798629afce6d826c53b1d9492597
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634638"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017018"
 ---
 # <a name="analyze-hadoop-logs"></a>Analizowanie dzienników usługi Hadoop
 
@@ -103,7 +103,7 @@ Można teraz używać programu Excel do filtrowania i sortowania, zgodnie z potr
 
 Aby wyświetlić dzienniki, zobacz [aplikacji usługi YARN dostępu loguje HDInsight opartych na systemie Linux](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-Aby uzyskać więcej informacji na temat dzienników aplikacji, zobacz [uproszczenie zarządzania logowania użytkownika i dostępu w YARN](http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+Aby uzyskać więcej informacji na temat dzienników aplikacji, zobacz [uproszczenie zarządzania logowania użytkownika i dostępu w YARN](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
 
 ## <a name="view-cluster-health-and-job-logs"></a>Wyświetl dzienniki klastra kondycji i zadania
 ### <a name="access-the-ambari-ui"></a>Dostęp do interfejsu użytkownika Ambari

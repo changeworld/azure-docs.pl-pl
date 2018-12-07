@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/09/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 99e42f404fe103f406c4b3835f8c455bc2b91e07
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273803"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017692"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę dzięki usłudze Azure Cost Management
 
@@ -140,7 +140,7 @@ Aby uzyskać więcej informacji, zobacz [analiza kosztów](quick-acm-cost-analys
 
 ### <a name="export-billing-data-on-a-schedule"></a>Eksportowanie danych dotyczących rozliczeń zgodnie z harmonogramem
 
-Potrzebujesz do importowania danych dotyczących rozliczeń do systemu zewnętrznego, podobnie jak pulpit nawigacyjny lub finansowych systemu? Można zaplanować automatyczne raportów, które codziennie, aby uniknąć ręcznego pobierania plików, co miesiąc. I wyeksportować dane rozliczeń na koncie usługi Azure storage i otrzymaj powiadomienie za pomocą [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md). Następnie przy użyciu Twoje dane platformy Azure, aby połączyć je przy użyciu niestandardowych danych używanego we własnych systemach.
+Potrzebujesz do importowania danych dotyczących rozliczeń do systemu zewnętrznego, podobnie jak pulpit nawigacyjny lub finansowych systemu? Skonfiguruj automatyczne eksportowanie do usługi Azure Storage i uniknąć ręcznego pobierania plików co miesiąc. Możesz następnie łatwo skonfigurować automatyczne integracji z innymi systemami do synchronizowania danych dotyczących rozliczeń.
 
 Aby uzyskać więcej informacji na temat eksportowania danych dotyczących rozliczeń, zobacz [tworzenie i zarządzanie nimi wyeksportowane dane](tutorial-export-acm-data.md).
 

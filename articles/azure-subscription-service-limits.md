@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: byvinyal
-ms.openlocfilehash: bd20ea58c7693b3be8f583810384aa26dde572d8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 2ee5eca6f138d9aaa1a2b7cebb61b56fd26e17cc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219566"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017213"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -54,7 +54,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Azure Redis Cache](#azure-redis-cache-limits)
+* [Pamięć podręczna systemu Azure dla usługi Redis](#azure-redis-cache-limits)
 * [Tworzenie kopii zapasowych](#backup-limits)
 * [Batch](#batch-limits)
 * [Usługa Batch — sztuczna inteligencja](#batch-ai-limits)
@@ -329,7 +329,7 @@ Aby dowiedzieć się więcej o limitach na bardziej szczegółowym poziomie, tak
 ### <a name="api-management-limits"></a>Limity usługi API Management
 [!INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]
 
-### <a name="azure-redis-cache-limits"></a>Limity usługi Azure Redis Cache
+### <a name="azure-cache-for-redis-limits"></a>Pamięć podręczna systemu Azure, limity pamięci podręcznej Redis
 [!INCLUDE [redis-cache-service-limits](../includes/redis-cache-service-limits.md)]
 
 ### <a name="key-vault-limits"></a>Limity usługi Key Vault

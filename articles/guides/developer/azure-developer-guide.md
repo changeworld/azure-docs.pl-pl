@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 80a32335b8b9b89bdc5bf53cbed994d78a6ca81e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956446"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017607"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -92,7 +92,7 @@ A nie o kompilowania i zarządzanie całą aplikację ani infrastrukturę do uru
 
 Usługa Azure Service Fabric to platforma systemów rozproszonych, która ułatwia tworzenie, pakowanie, wdrażanie i zarządzanie skalowalnych i niezawodnych mikrousług. Zapewnia również kompleksowe funkcje zarządzania aplikacjami dla inicjowania obsługi, wdrażanie, monitorowanie, uaktualnianie/poprawianie i usuwanie wdrożonych aplikacji. Wdrożenie aplikacji działających w ramach współużytkowanej puli maszyn, można zacząć od małej i skalowania do setek lub tysięcy maszyn, zgodnie z potrzebami.
 
-Usługa Service Fabric obsługuje interfejs WebAPI z Open Web Interface for .NET (OWIN) i ASP.NET Core. Udostępnia zestawy SDK do tworzenie usług w systemie Linux w języku Java i .NET Core. Aby dowiedzieć się więcej na temat usługi Service Fabric, zobacz [ścieżka szkoleniowa usługi Service Fabric](https://azure.microsoft.com/documentation/learning-paths/service-fabric/).
+Usługa Service Fabric obsługuje interfejs WebAPI z Open Web Interface for .NET (OWIN) i ASP.NET Core. Udostępnia zestawy SDK do tworzenie usług w systemie Linux w języku Java i .NET Core. Aby dowiedzieć się więcej na temat usługi Service Fabric, zobacz [dokumentacja usługi Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/).
 
 >**Kiedy należy używać:** usługi Service Fabric to dobry wybór, podczas tworzenia aplikacji lub ponownego tworzenia istniejącej aplikacji do opartych na architekturze mikrousług. Jeśli potrzebujesz więcej kontroli nad lub bezpośredni dostęp do podstawowej infrastruktury za pomocą usługi Service Fabric.
 
@@ -245,7 +245,7 @@ Usługi takie jak [Mobile Apps](../../app-service-mobile/app-service-mobile-dotn
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Uruchamianie aplikacji na platformie Azure, prawdopodobnie wiąże się z pracą z wieloma usługami platformy Azure, z których wszystkie postępuj zgodnie z takim samym cyklem życia i można traktować jako jednostki logicznej. Na przykład aplikacja sieci web może użyć aplikacji sieci Web, bazy danych SQL Database, Storage, usługi Azure Redis Cache i usługi Azure Content Delivery Network. [Usługa Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) umożliwia pracę z zasobami w aplikacji jako grupą. Można wdrożyć, zaktualizować lub usunąć wszystkie zasoby w jednej, skoordynowanej operacji.
+Uruchamianie aplikacji na platformie Azure, prawdopodobnie wiąże się z pracą z wieloma usługami platformy Azure, z których wszystkie postępuj zgodnie z takim samym cyklem życia i można traktować jako jednostki logicznej. Na przykład aplikacji sieci web może użyć aplikacji sieci Web i bazy danych SQL Database, Storage, pamięć podręczna systemu Azure dla usługi Redis i usługi Azure Content Delivery Network. [Usługa Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) umożliwia pracę z zasobami w aplikacji jako grupą. Można wdrożyć, zaktualizować lub usunąć wszystkie zasoby w jednej, skoordynowanej operacji.
 
 Oprócz logicznego grupowania i zarządzania zasobami powiązane, usługi Azure Resource Manager obejmuje możliwości wdrażania, które umożliwiają dostosowanie wdrażania i konfigurowania powiązane zasoby. Na przykład za pomocą usługi Resource Manager, możesz wdrożyć i skonfigurować aplikację, która składa się z wielu maszyn wirtualnych, moduł równoważenia obciążenia i usługi Azure SQL database jako pojedyncza jednostka.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 13bb128836590fb43e0c6a2f7131f83a99a23eaf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 871abffc07ee29df388205395110e89a85dd7344
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506682"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017658"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Samouczek: Integracja usługi Azure Active Directory z ProMaster (przez Inlogik)
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą ProMaster (przez Inlogik), potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - ProMaster (przez Inlogik) logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Aby skonfigurować integrację ProMaster (przez Inlogik) w usłudze Azure AD, na
 
 **Aby dodać ProMaster (przez Inlogik) z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -111,6 +111,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![ProMaster (przez Inlogik) domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/promaster-tutorial/tutorial_promaster_url1.png)
 
     a. W **identyfikator** pola tekstowego, użyj jednego z następujących wzorzec adresu URL:
+
     | |
     | - |-|
     |  `https://secure.inlogik.com/<COMPANYNAME>`|
@@ -118,6 +119,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | |
 
     b. W **adres URL odpowiedzi** pola tekstowego, użyj jednego z następujących wzorzec adresu URL:
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
@@ -129,6 +131,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![ProMaster (przez Inlogik) domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/promaster-tutorial/tutorial_promaster_url2.png)
 
     W **adres URL logowania** pola tekstowego, użyj jednego z następujących wzorzec adresu URL:
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs `|
@@ -182,7 +185,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="create-a-promaster-by-inlogik-test-user"></a>Tworzenie użytkownika testowego ProMaster (przez Inlogik)
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w ProMaster (przez Inlogik). Praca z [zespołem pomocy technicznej ProMaster (przez Inlogik)](mailto:michael.boldiston@inlogik.com) Aby dodać użytkowników na platformie ProMaster (przez Inlogik). Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w ProMaster (przez Inlogik). Praca z [zespołem pomocy technicznej ProMaster (przez Inlogik)](mailto:michael.boldiston@inlogik.com) Aby dodać użytkowników na platformie ProMaster (przez Inlogik). Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

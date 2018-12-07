@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 6613def8891109e3a0ddf818111898a893a8035d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b632ef49f49768c86b7a7ce2efc601f036532a29
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629133"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017590"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Przewodnik dotyczący Java Enterprise dla usługi App Service w systemie Linux
 
@@ -27,17 +27,18 @@ Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów w przed
 
 ## <a name="scale-with-app-service"></a>Skalowanie przy użyciu usługi App Service 
 
-Serwer aplikacji WildFly działającej w usłudze App Service w systemie Linux jest uruchamiany w trybie autonomicznym, nie znajduje się w konfiguracji domeny. 
+Serwer aplikacji WildFly działającej w usłudze App Service w systemie Linux jest uruchamiany w trybie autonomicznym, nie znajduje się w konfiguracji domeny. Skalowanie w poziomie Plan usługi App Service, każde wystąpienie WildFly jest skonfigurowany jako serwer autonomiczny.
 
- Skalowanie aplikacji w pionie lub w poziomie za pomocą [skalowanie reguły](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json) i [zwiększyć swoje liczba wystąpień](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+ Skalowanie aplikacji w pionie lub w poziomie za pomocą [skalowanie reguły](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json) i [zwiększyć swoje liczba wystąpień](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). 
 
 ## <a name="customize-application-server-configuration"></a>Dostosuj konfigurację serwera aplikacji
 
-Programiści mogą pisać uruchamiania skryptu powłoki systemowej do wykonania dodatkowych czynności konfiguracyjnych potrzebnych do swojej aplikacji, takich jak:
+Wystąpienia aplikacji sieci Web są bezstanowe, więc każde wystąpienie nowej pracy musi być skonfigurowany przy uruchamianiu w celu zapewnienia obsługi konfiguracji Wildfly, wymagane przez aplikację.
+Uruchamianie skryptu powłoki systemowej w celu wywołania WildFly interfejs wiersza polecenia i można napisać:
 
 - Konfigurowanie źródła danych
 - Konfigurowanie dostawców obsługi komunikatów
-- Dodawanie innych modułach i dependnecies Wildfly konfiguracji serwera.
+- Do konfiguracji serwera Wildfly, należy dodać inne moduły i zależności.
 
  Skrypt jest uruchamiany, gdy Wildfly jest uruchomiona, ale przed uruchomieniem aplikacji. Należy użyć skryptu [JBOSS interfejsu wiersza polecenia](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) wywoływane z `/opt/jboss/wildfly/bin/jboss-cli.sh` skonfigurować serwer aplikacji z konfiguracji lub zmian po uruchomieniu serwera. 
 
@@ -51,7 +52,7 @@ Przekaż skrypt uruchamiania `/home/site/deployments/tools` w wystąpieniu usłu
 
 Ustaw **skryptu uruchamiania** pola w witrynie Azure portal do lokalizacji uruchamiania skryptu powłoki, na przykład `/home/site/deployments/tools/your-startup-script.sh`.
 
-Użyj [ustawienia aplikacji](/azure/app-service/web-sites-configure#application-settings) można ustawić zmienne środowiskowe do wykorzystania w skrypcie. Te ustawienia są dostępne do uruchamiania skryptu środowiska i przechowywać parametry połączenia i inne wpisy tajne z kontroli wersji.
+Podaj [ustawienia aplikacji](/azure/app-service/web-sites-configure#application-settings) w konfiguracji aplikacji, aby przekazać zmienne środowiskowe do wykorzystania w skrypcie. Ustawienia aplikacji przechowywać parametry połączenia i innych wpisów tajnych, wymagane do skonfigurowania aplikacji z systemu kontroli wersji.
 
 ## <a name="modules-and-dependencies"></a>Moduły i zależności
 
@@ -102,7 +103,7 @@ Domyślnie usługi App Service w systemie Linux użyje plików cookie koligacji 
 - Jeśli wystąpienie aplikacji zostanie ponownie uruchomiony lub skalowane w dół, stan sesji użytkownika na serwerze aplikacji zostaną utracone.
 - Jeśli ustawienia limitu czasu sesji długi lub stała liczba użytkowników aplikacji, może upłynąć trochę czasu, przez funkcję nowe wystąpienia mogą odbierać obciążenia, ponieważ tylko nowe sesje będą kierowane do nowo rozpoczęte wystąpień.
 
-Można skonfigurować Wildfly, aby korzystać z magazynu zewnętrznego sesji, takie jak [pamięci podręcznej Redis](/azure/redis-cache/). Konieczne będzie [wyłączanie istniejących koligacja ARR w wystąpieniu](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurację, aby wyłączyć sesji na podstawie plików cookie routingu i umożliwić skonfigurowanego magazynu sesji Wildfly działanie bez zakłóceń.
+Można skonfigurować Wildfly, aby korzystać z magazynu zewnętrznego sesji, takie jak [pamięci podręcznej Redis Azure](/azure/azure-cache-for-redis/). Konieczne będzie [wyłączanie istniejących koligacja ARR w wystąpieniu](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurację, aby wyłączyć sesji na podstawie plików cookie routingu i umożliwić skonfigurowanego magazynu sesji Wildfly działanie bez zakłóceń.
 
 ## <a name="enable-web-sockets"></a>Włącz gniazda sieci web
 

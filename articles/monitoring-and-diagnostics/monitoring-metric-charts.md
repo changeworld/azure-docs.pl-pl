@@ -5,25 +5,25 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/17/2017
+ms.date: 12/05/2018
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: d1cfaadd06d20a0f57d75cd43d00040c9e44c429
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ff487fef9400803de0dba78352a1d29c5a71e6d2
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966028"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017923"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
 
 Eksplorator metryk usługi Azure Monitor to składnik systemu Microsoft Azure portal, która umożliwia wykreślanie wykresów, wizualne korelowanie trendów i badanie wzrostów i spadki wartości metryk. Eksplorator metryk jest istotne punkt początkowy, badania różne problemy z wydajnością i dostępności przy użyciu aplikacji i infrastruktury hostowany na platformie Azure lub monitorowane przez usługi Azure Monitor. 
 
-## <a name="what-are-metrics-in-azure"></a>Co to są metryki na platformie Azure?
+## <a name="metrics-in-azure"></a>Metryki na platformie Azure
 
 Metryki w systemie Microsoft Azure są szeregu mierzonych i liczniki, które są zbierane i przechowywane wraz z upływem czasu. Brak metryk standardowa (lub "platforma") i metryki niestandardowe. Metryki standardowe są dostarczane przez samą platformę Azure. Standardowa metryki odzwierciedlają statystyki użycia i kondycji zasobów platformy Azure. Natomiast metryki niestandardowe są wysyłane do platformy Azure przy użyciu aplikacji przy użyciu [interfejsu API usługi Application Insights dla niestandardowych zdarzeń](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Metryki niestandardowe są przechowywane w zasoby usługi Application Insights wraz z innymi metrykami określonych aplikacji.
 
-## <a name="how-do-i-create-a-new-chart"></a>Jak utworzyć nowy wykres?
+## <a name="create-a-new-chart"></a>Utwórz nowy wykres
 
 1. Otwórz witrynę Azure portal
 2. Przejdź do nowego **Monitor** , a następnie wybierz pozycję **metryki**.
@@ -54,11 +54,11 @@ Metryki w systemie Microsoft Azure są szeregu mierzonych i liczniki, które są
    > [!NOTE]
    > Zwykle nie chcesz mieć metryki różne jednostki miary (np. "milisekund" i "kilobajtów") lub z znacząco odmiennych skalowania na jeden wykres. Zamiast tego należy wziąć pod uwagę przy użyciu wielu wykresów. Kliknij przycisk Dodaj wykres, aby utworzyć wiele wykresów w Eksploratorze metryk.
 
-## <a name="how-do-i-apply-filters-to-the-charts"></a>Jak zastosować filtry do wykresów?
+## <a name="apply-filters-to-charts"></a>Zastosuj filtry do wykresów
 
 Filtry można stosować do wykresów przedstawiających metryk z wymiarami. Na przykład, jeśli metryki "Liczba transakcji" ma wymiar, "Typ odpowiedzi", który wskazuje, czy odpowiedź z transakcji zakończyło się pomyślnie lub nie powiodło się, następnie filtrowanie tego wymiaru będzie wykreślanie wiersz wykresów dla tylko pomyślne (lub tylko nie powiodło się) transakcji. 
 
-### <a name="to-add-a-filter"></a>Aby dodać filtr:
+### <a name="to-add-a-filter"></a>Aby dodać filtr
 
 1. Kliknij ikonę Dodaj filtr ![ikona filtru](./media/monitoring-metric-charts/icon002.png) nad wykresem
 
@@ -76,11 +76,11 @@ Filtry można stosować do wykresów przedstawiających metryk z wymiarami. Na p
 
 5. Możesz powtórzyć kroki 1 – 4, aby zastosować wiele filtrów do tych samych wykresów.
 
-## <a name="how-do-i-segment-a-chart"></a>Jak podzielić wykres?
+## <a name="segment-a-chart"></a>Segment wykresu
 
 Podziel metryki według wymiaru, aby zwizualizować segmentów jak różne metryki porównania między nimi i zidentyfikować odległe mniejsze segmenty wymiaru. 
 
-### <a name="to-segment-a-chart"></a>Aby podzielić wykres:
+### <a name="to-segment-a-chart"></a>Aby podzielić wykres
 
 1. Kliknij ikonę Dodawanie grupowania  ![metryki obrazu](./media/monitoring-metric-charts/icon003.png) nad wykresem.
  
@@ -100,7 +100,7 @@ Podziel metryki według wymiaru, aby zwizualizować segmentów jak różne metry
    > [!NOTE]
    > Umożliwia filtrowanie i grupowanie w oparciu o ten sam wymiar Ukryj segmentów, które są nieodpowiednie dla danego scenariusza i była łatwiejsza do odczytania wykresy.
 
-## <a name="how-do-i-lock-lower-and-upper-boundaries-of-the-chart-y-axis"></a>Jak zablokować granic dolnym i górnym numerem osi y wykresu?
+## <a name="lock-boundaries-of-chart-y-axis"></a>Granice blokady osi y wykresu
 
 Blokowanie zakres osi y staje się ważne, gdy na wykresie widać mniejszych wahania większe wartości. 
 
@@ -110,12 +110,12 @@ Innym przykładem jest fluktuacje w dostępnej pamięci, gdy wartość będzie z
 
 Aby kontrolować zakres osi y, użyj "..." menu wykresu, a następnie wybierz **Edytuj wykres** dostęp do zaawansowanych ustawień wykresu. Zmodyfikuj wartości w sekcji zakres osi y lub użyj **automatycznie** przycisk, aby przywrócić ustawienia domyślne.
 
-![metryki obrazu](./media/monitoring-metric-charts/0013.png)
+![metryki obrazu](./media/monitoring-metric-charts/0014-manually-set-granularity.png)
 
 > [!WARNING]
 > Blokowanie granice osi y wykresy, które śledzą różne liczby lub sumuje w przedziale czasu (i dlatego liczba używanych, sum, minimalnych i maksymalnych agregacji) zwykle wymagają określania stopnia szczegółowości stały czas, a nie opierając się na automatyczne ustawienia domyślne. Jest to konieczne, ponieważ wartości na wykresach zmianie, gdy stopień szczegółowości czasu automatycznie zostanie zmodyfikowany przez użytkownika zmiany rozmiaru okna przeglądarki lub ruch rozdzielczość ekranu co do innego. Wartość wynikowa zmiana efekty stopień szczegółowości czasu wygląd wykresu, powodując unieważnienie bieżące zaznaczenie zakresu osi y.
 
-## <a name="how-do-i-pin-charts-to-dashboards"></a>Jak przypiąć wykresów do pulpitów nawigacyjnych?
+## <a name="pin-charts-to-dashboards"></a>Przypnij wykresy do pulpitów nawigacyjnych
 
 Po skonfigurowaniu wykresów, warto dodać do pulpitów nawigacyjnych, aby można go wyświetlić, prawdopodobnie w kontekście innych telemetrii monitorowania, lub udostępnienia swojemu zespołowi. 
 

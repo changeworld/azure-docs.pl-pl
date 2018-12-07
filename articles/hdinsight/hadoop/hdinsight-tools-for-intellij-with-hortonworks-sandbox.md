@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 56747179c69e6495e9a764f81e0827e29cb077e6
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015591"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017410"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks
 
-Dowiedz się, jak narzędzia HDInsight Tools for IntelliJ umożliwia tworzenie aplikacji Apache Scala, a następnie przetestować aplikacje na [Piaskownicą Hortonworks](http://hortonworks.com/products/sandbox/) uruchomionych na danym komputerze. 
+Dowiedz się, jak narzędzia HDInsight Tools for IntelliJ umożliwia tworzenie aplikacji Apache Scala, a następnie przetestować aplikacje na [Piaskownicą Hortonworks](https://hortonworks.com/products/sandbox/) uruchomionych na danym komputerze. 
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) jest Java zintegrowanego środowiska programistycznego (IDE) do tworzenia oprogramowania. Po tworzenia i testowania swoich aplikacji na Piaskownicą Hortonworks, można przenieść aplikacje [Azure HDInsight](apache-hadoop-introduction.md).
 
@@ -29,7 +29,7 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
 
 - Hortonworks Data Platform (HDP) 2.4 na Piaskownicą Hortonworks uruchomiony na komputerze lokalnym. Aby skonfigurować HDP, zobacz [rozpoczęcie pracy w ekosystemie usługi Hadoop z piaskownicy usługi Hadoop na maszynie wirtualnej](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
-    > Narzędzia HDInsight Tools for IntelliJ zostało przetestowane tylko w przypadku HDP 2.4. Aby uzyskać HDP 2.4, rozwiń węzeł **archiwum piaskownica Hortonworks** na [witryny pobierania plików Piaskownicą Hortonworks](http://hortonworks.com/downloads/#sandbox).
+    > Narzędzia HDInsight Tools for IntelliJ zostało przetestowane tylko w przypadku HDP 2.4. Aby uzyskać HDP 2.4, rozwiń węzeł **archiwum piaskownica Hortonworks** na [witryny pobierania plików Piaskownicą Hortonworks](https://hortonworks.com/downloads/#sandbox).
 
 - [Java Developer Kit (JDK) w wersji 1.8 lub nowszej](https://aka.ms/azure-jdks). Zestaw narzędzi platformy Azure dla środowiska IntelliJ wymaga zestawu JDK.
 

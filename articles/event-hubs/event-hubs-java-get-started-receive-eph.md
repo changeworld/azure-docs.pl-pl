@@ -7,14 +7,15 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 08/26/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: dce7c4067ba6d96bf14f4e3300d951b594afe930
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4768fbb845eb09e8aa3469dc2c4c29c4a323d662
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240636"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017308"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java
 
@@ -44,11 +45,11 @@ Aby używać klasy EventProcessorHost, musisz mieć [konta usługi Azure Storage
 1. Zaloguj się do [witryny Azure portal][Azure portal]i kliknij przycisk **+ Utwórz zasób** po lewej stronie ekranu.
 2. Kliknij pozycję **Magazyn**, a następnie pozycję **Konto magazynu**. W **Tworzenie konta magazynu** okna i wpisz nazwę konta magazynu. Wykonaj pozostałe pola, wybierz odpowiedni region, a następnie kliknij **Utwórz**.
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Tworzenie konta magazynu](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
 3. Kliknij nowo utworzone konto magazynu, a następnie kliknij przycisk **klucze dostępu**:
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Uzyskiwanie dostępu do kluczy](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
     Skopiuj wartość klucz 1 do lokalizacji tymczasowej. Będziesz jej używać w dalszej części tego samouczka.
 
@@ -277,7 +278,7 @@ Utwórz klasę, która implementuje com.microsoft.azure.eventprocessorhost.IChec
 
 Użyj niestandardowych implementacji Menedżer punktów kontrolnych (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
 
-W ramach wdrożenia można zastąpić domyślny mechanizm tworzenia punktów kontrolnych i zaimplementować własną punkty kontrolne, w oparciu o własny magazyn danych (SQL Server, bazy danych cosmos DB, Redis Cache itd). Zaleca się, że magazyn używany do wykonania kopii implementacji Menedżera punktu kontrolnego jest dostępny dla wszystkich wystąpień EPH skuteczność przetwarzania zdarzeń dla grupy odbiorców.
+W ramach wdrożenia można zastąpić domyślny mechanizm tworzenia punktów kontrolnych i zaimplementować własną punkty kontrolne, w oparciu o własny magazyn danych (SQL Server, bazy danych cosmos DB, pamięci podręcznej Azure redis Cache itd.). Zaleca się, że magazyn używany do wykonania kopii implementacji Menedżera punktu kontrolnego jest dostępny dla wszystkich wystąpień EPH skuteczność przetwarzania zdarzeń dla grupy odbiorców.
 
 Możesz użyć dowolnego magazynu danych, która jest dostępna w danym środowisku.
 

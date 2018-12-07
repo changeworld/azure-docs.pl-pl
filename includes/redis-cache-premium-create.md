@@ -4,19 +4,19 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: 2c96604093542c2697c691ad8fb8bf11e77e2d0b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 0e0d0586a253b3e0a73637fda2150a9b6d1351b6
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572494"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53020212"
 ---
-Aby utworzyć cache w warstwie premium, zaloguj się do [witryny Azure portal](https://portal.azure.com) i kliknij przycisk **Utwórz zasób** > **baz danych** > **pamięci podręcznej Redis** .
+Aby utworzyć cache w warstwie premium, zaloguj się do [witryny Azure portal](https://portal.azure.com) i kliknij przycisk **Utwórz zasób** > **baz danych** > **pamięć podręczna systemu Azure dla usługi Redis**.
 
 ![Tworzenie pamięci podręcznej](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
 > [!NOTE]
-> Oprócz tworzenia pamięci podręcznych w witrynie Azure Portal, możesz również utworzyć je przy użyciu programu PowerShell, interfejsu wiersza polecenia platformy Azure oraz szablonów usługi Resource Manager. Aby uzyskać więcej informacji o tworzeniu pamięci podręcznej Azure Redis Cache, zobacz [Tworzenie pamięci podręcznej](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+> Oprócz tworzenia pamięci podręcznych w witrynie Azure Portal, możesz również utworzyć je przy użyciu programu PowerShell, interfejsu wiersza polecenia platformy Azure oraz szablonów usługi Resource Manager. Aby uzyskać więcej informacji na temat tworzenia pamięci podręcznej Redis Azure usługi Azure Cache, zobacz [Tworzenie pamięci podręcznej](../articles/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 > 
 > 
 

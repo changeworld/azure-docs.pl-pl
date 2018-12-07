@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: mavane
-ms.openlocfilehash: f1ff151c0b8d89910949d961b732c10901f19293
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc1ca468545dc3a715fb11dbec459e14e60ade5b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38590534"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017777"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 
@@ -434,7 +434,7 @@ Zasoby mogą mieć odwołania do innych usług na platformie. Na przykład publi
 Dwa poniższe przykłady są wspólnej przestrzeni nazw punktu końcowego, które muszą być jawnie określone podczas tworzenia zasobu:
 
 * Kont usługi Storage (blob, kolejki, tabela i plik)
-* Parametry połączenia dla bazy danych i Redis Cache
+* Parametry połączenia dla baz danych i pamięci podręcznej Azure redis Cache
 
 Punkt końcowy w przestrzeni nazw można również w danych wyjściowych szablonu jako informacje dla użytkownika po ukończeniu wdrażania. Poniżej przedstawiono typowe przykłady:
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 45a5e4c895a0c7a8f76bb34aa5aaf22fa31f4333
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 07ea61ffe3ffc17cd255b826e3506ffe2b1ce9cd
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864863"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017726"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Wybierz, a następnie użyć obliczeniowego elementu docelowego do nauczenia modelu
 
@@ -139,7 +139,8 @@ Można utworzyć obliczeniowego usługi Azure Machine Learning na żądanie, aby
 
 Można utworzyć obliczeniowego usługi Azure Machine Learning jako cel obliczenia w czasie wykonywania. W takim przypadku zasoby obliczeniowe są tworzone automatycznie dla użytkownika Uruchom następujący skrypt, można skalować do max_nodes określoną w pliku config wykonywania i jest następnie __usunięte automatycznie__ po ukończeniu uruchomienia.
 
-Ta funkcja jest obecnie dostępna w wersji zapoznawczej i nie będzie działać z zadaniami do strojenia Hiperparametrycznego lub zautomatyzowane uczenia maszynowego.
+> [!IMPORTANT]
+> Tworzenie na podstawie wykonywania mocy obliczeniowej usługi Azure Machine Learning jest obecnie w stanie wersji zapoznawczej. Tworzenie na podstawie wykonywania nie należy używać, jeśli używasz do strojenia Hiperparametrycznego lub zautomatyzowane uczenia maszynowego. Jeśli musisz użyć do strojenia Hiperparametrycznego lub zautomatyzowane uczenia maszynowego, Utwórz obliczeniowych usługi Azure Machine Learning przed przesłaniem przebiegu.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute

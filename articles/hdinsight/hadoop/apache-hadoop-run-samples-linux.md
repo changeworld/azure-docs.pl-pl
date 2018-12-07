@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 283171fa00837a8a7b4e0a13d7bca5645cf63a83
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bf1fa41abe1c1f9b0d07ee7d77fe1c819e88ddc1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633069"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017624"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Uruchamianie przykładów technologii MapReduce zawarte w HDInsight
 
@@ -167,7 +167,7 @@ Wartość zwracana przez to polecenie jest podobne do **3.14159155000000000000**
 
 GraySort jest sortowanie testów porównawczych. Metryki jest wskaźnikiem sortowania (TB/minutę), które odbywa się podczas sortowania dużych ilości danych, zazwyczaj 100 TB minimalnej.
 
-Ta próbka używa skromną 10 GB danych, dzięki czemu mogą być uruchamiane względnie szybko. Używa ona aplikacje MapReduce, opracowane przez Owen O'Malley oraz organizacji i Arun Murthy. Te aplikacje wygrał roczne porównawczych sortowania terabajt ogólnego przeznaczenia ("daytona") w 2009 r. o częstotliwości 0.578 TB na minutę (100 TB w ciągu minut 173). Aby uzyskać więcej informacji na ten temat i inne wzorce sortowania, zobacz [Sortbenchmark](http://sortbenchmark.org/) lokacji.
+Ta próbka używa skromną 10 GB danych, dzięki czemu mogą być uruchamiane względnie szybko. Używa ona aplikacje MapReduce, opracowane przez Owen O'Malley oraz organizacji i Arun Murthy. Te aplikacje wygrał roczne porównawczych sortowania terabajt ogólnego przeznaczenia ("daytona") w 2009 r. o częstotliwości 0.578 TB na minutę (100 TB w ciągu minut 173). Aby uzyskać więcej informacji na ten temat i inne wzorce sortowania, zobacz [Sortbenchmark](https://sortbenchmark.org/) lokacji.
 
 W tym przykładzie użyto trzy rodzaje programów MapReduce:
 

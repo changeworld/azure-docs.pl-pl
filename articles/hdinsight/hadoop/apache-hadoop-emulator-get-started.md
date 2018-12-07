@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: fc5f27ee17ba750e47c5609d9deb94d7f7c9dd8a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 074e2dd932cada5ae46ee0423dbc29fc8bc7495d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631561"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016780"
 ---
 # <a name="get-started-with-a-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Rozpoczynanie pracy z piaskownicą Apache Hadoop, emulator na maszynie wirtualnej
 
@@ -27,7 +27,7 @@ Dowiedz się, jak zainstalować piaskownicy usługi Apache Hadoop firmy Hortonwo
 
 
 ## <a name="download-and-install-the-virtual-machine"></a>Pobierz i zainstaluj maszynę wirtualną
-1. Przejdź do [Hortonworks pliki do pobrania](http://hortonworks.com/downloads/#sandbox).
+1. Przejdź do [Hortonworks pliki do pobrania](https://hortonworks.com/downloads/#sandbox).
 
 2. Kliknij przycisk **Pobierz VIRTUALBOX** do pobierania najnowszych Piaskownicą Hortonworks na maszynie Wirtualnej. Monit o zarejestrowanie Hortonworks, przed rozpoczęciem pobierania. Trwa jednej do dwóch godzin do pobrania w zależności od szybkości sieci.
    
@@ -78,6 +78,6 @@ Aby pobrać starsze piaskownicy wersji HDP, rozwiń archiwum:
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Dowiedz się, jak używać programu Visual Studio z Piaskownicą Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
-* [Nauka podstaw Piaskownicą Hortonworks](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Samouczek Hadoop — wprowadzenie do HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Nauka podstaw Piaskownicą Hortonworks](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Samouczek Hadoop — wprowadzenie do HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 

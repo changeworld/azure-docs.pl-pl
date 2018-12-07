@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388324"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017103"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Zaufany wskazówki połączeń internetowych
 
@@ -157,7 +157,7 @@ Usług, które obsługują wdrażanie wystąpień dedykowanych w sieci wirtualne
 |Usługa Azure Active Directory                | Ogólna dostępność               |
 |Azure Batch                           | Ogólna dostępność               |
 |Środowisko usługi App Service               | Ogólna dostępność               |
-|Azure Redis Cache                     | Ogólna dostępność               |
+|Azure Cache for Redis                     | Ogólna dostępność               |
 |Azure HDInsight                       | Ogólna dostępność               |
 |Zestaw skalowania maszyn wirtualnych             | Ogólna dostępność               |
 |usług Azure Cloud Services                  | Ogólna dostępność               |
@@ -263,7 +263,7 @@ Można łatwo skonfigurować dostęp dla Microsoft Azure, Office 365 i Dynamics 
 | Database (Baza danych) | Azure Database for PostgreSQL | | | Yes |
 | Database (Baza danych) | Azure SQL Data Warehouse | | | Yes |
 | Database (Baza danych) | Azure Cosmos DB | | | Yes |
-| Database (Baza danych) | Azure Redis Cache | | Yes | |
+| Database (Baza danych) | Azure Cache for Redis | | Yes | |
 | Magazyn | Azure Blob Storage | Yes | | |
 | Magazyn | Azure Files | Yes | | |
 | Magazyn | Usługa Azure Queue storage | Yes | | |

@@ -8,22 +8,23 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 27d4ad03e4a7f911fe3c9981618337a2fff51317
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: dcd7b58e2c1f4d6e556515ad7db778f2989588b9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114621"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017427"
 ---
-# <a name="how-to-train-pytorch-models"></a>Sposób trenowania modeli PyTorch
+# <a name="pytorch-models-with-azure-machine-learning-service"></a>Modele PyTorch za pomocą usługi Azure Machine Learning
 
 Za pomocą PyTorch szkolenia sieci neuronowej (DNN), usługi Azure Machine Learning zapewnia niestandardowego `PyTorch` klasy `Estimator`. Zestaw Azure SDK `PyTorch` narzędzie do szacowania umożliwia łatwe przesyłanie zadania szkolenia PyTorch uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
 
 ## <a name="single-node-training"></a>Szkolenie z jednym węzłem
 Szkolenie z `PyTorch` narzędzie do szacowania jest podobne do [podstawowy `Estimator` ](how-to-train-ml-models.md), więc najpierw przeczytać artykuł porad i upewnij się, zrozumieniu pojęć wprowadzonych w.
   
-Aby uruchomić zadanie PyTorch, utworzyć `PyTorch` obiektu. Powinna już utworzono usługi [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#batch) obiektu `compute_target` i [datastore](how-to-access-data.md) obiektu `ds`.
+Aby uruchomić zadanie PyTorch, utworzyć `PyTorch` obiektu. Powinna już utworzono usługi [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#amlcompute) obiektu `compute_target` i [datastore](how-to-access-data.md) obiektu `ds`.
 
 ```Python
 from azureml.train.dnn import PyTorch
@@ -44,7 +45,7 @@ Parametr | Opis
 --|--
 `source_directory` |  Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń
 `script_params` |  Określanie argumentów wiersza polecenia do skryptu szkolenia słownika `entry_script`, w postaci < argument wiersza polecenia, wartość > par
-`compute_target` |  Zdalne obliczeń, uruchamianego skrypt szkolenia, w tym przypadku [usługi Batch AI](how-to-set-up-training-targets.md#batch) klastra
+`compute_target` |  Zdalne obliczeniowego elementu docelowego, uruchamianego skrypt szkolenia, w tym przypadku Azure obliczeniowego usługi Machine Learning ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) klastra
 `entry_script` |  FilePath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
 `conda_packages` |  Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia. Konstruktor ma inny parametr o nazwie `pip_packages` używanego do dowolnego pakietu pip, wymagane
 `use_gpu` |  Ustaw tę flagę `True` wykorzystanie procesora GPU do trenowania. Wartość domyślna to `False`
@@ -100,13 +101,9 @@ run = exp.submit(pt_est)
 ```
 
 ## <a name="examples"></a>Przykłady
-Samouczek dotyczący szkolenia PyTorch jednym węzłem zobacz:
-* [Training/01.Train-hyperparameter-Tune-Deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/01.train-hyperparameter-tune-deploy-with-pytorch)
 
-Samouczek dotyczący rozproszonego PyTorch z Horovod zobacz:
-* [szkolenie/02.distributed-pytorch z horovod](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/02.distributed-pytorch-with-horovod)
-
-Pobierz te notesy:
+Notesy w rozproszonej uczenia głębokiego zobacz:
+* [How-to-use-azureml/Training-with-deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

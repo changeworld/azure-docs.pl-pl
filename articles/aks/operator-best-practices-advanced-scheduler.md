@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3fa2183a5bb3239059c349e8417aeb52553829cf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 395b0cadf3ba3313a9a1304d9244f1fe72a8209c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428984"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016882"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze Azure Kubernetes Service (AKS)
 
@@ -151,14 +151,14 @@ Aby uzyskać więcej informacji, zobacz [koligacji i antykoligację][k8s-affinit
 
 Jedno z podejść końcowe usługi scheduler Kubernetes do logicznie izolowania obciążeń używa koligację między zasobnika lub konfiguracji zapobiegającej koligacji. Ustawienia definiują tego zasobników *nie powinien* można zaplanować na węzeł, który ma istniejące odpowiadającego zasobnika lub, *powinien* zaplanowane. Domyślnie harmonogram Kubernetes próbuje zaplanować wielu zasobnikach w zestawie węzłów replik. Można zdefiniować bardziej szczegółowych reguł dotyczących tego zachowania.
 
-Dobrym przykładem jest aplikacja sieci web, która również korzysta z pamięci podręcznej Redis. Reguły konfiguracji zapobiegającej koligacji zasobnika służy do żądania, że harmonogram Kubernetes dystrybuuje replik w węzłach. Następnie możesz ise koligacji reguły, aby upewnić się, że każdy składnik aplikacji sieci web jest zaplanowane na tym samym hoście jako odpowiedniej pamięci podręcznej. Rozkład zasobników w węzłach wygląda następująco:
+Dobrym przykładem jest aplikacja sieci web, która również korzysta z usługi Azure Cache dla usługi Redis. Reguły konfiguracji zapobiegającej koligacji zasobnika służy do żądania, że harmonogram Kubernetes dystrybuuje replik w węzłach. Następnie możesz ise koligacji reguły, aby upewnić się, że każdy składnik aplikacji sieci web jest zaplanowane na tym samym hoście jako odpowiedniej pamięci podręcznej. Rozkład zasobników w węzłach wygląda następująco:
 
 | **Węzeł 1** | **Węzeł 2** | **Węzeł 3** |
 |------------|------------|------------|
 | Aplikacja sieci Web 1   | Aplikacja sieci Web 2   | Aplikacja sieci Web 3   |
 | pamięć podręczna-1    | pamięć podręczna 2    | pamięć podręczna 3    |
 
-W tym przykładzie jest bardziej złożonym wdrożeniu, niż w przypadku selektorów węzła lub koligacji węzłów. Umożliwia wdrożenie kontrolę nad jak Kubernetes planuje zasobników w węzłach i logicznie można izolować zasoby. Aby uzyskać pełny przykład tej aplikacji sieci web za pomocą przykład pamięci podręcznej redis cache, zobacz [kolokacja zasobników, w tym samym węźle][k8s-pod-affinity].
+W tym przykładzie jest bardziej złożonym wdrożeniu, niż w przypadku selektorów węzła lub koligacji węzłów. Umożliwia wdrożenie kontrolę nad jak Kubernetes planuje zasobników w węzłach i logicznie można izolować zasoby. Aby uzyskać pełny przykład tej aplikacji sieci web za pomocą usługi Azure Cache, na przykład pamięci podręcznej Redis, zobacz [kolokacja zasobników, w tym samym węźle][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Kolejne kroki
 

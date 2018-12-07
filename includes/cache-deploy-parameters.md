@@ -4,15 +4,15 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: wesmc
-ms.openlocfilehash: 1ddb81de479317a098f9de8aa5756cbaae59cb72
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3252a6454bf3f70250d2d792ca1f36a819ab22bf
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331316"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53020185"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
-Warstwa cenowa nowej usługi Azure Redis Cache.
+Warstwa cenowa nowej usługi Azure Cache platformy Azure dla usługi Redis.
 
     "cacheSKUName": {
       "type": "string",
@@ -22,7 +22,7 @@ Warstwa cenowa nowej usługi Azure Redis Cache.
       ],
       "defaultValue": "Basic",
       "metadata": {
-        "description": "The pricing tier of the new Azure Redis Cache."
+        "description": "The pricing tier of the new Azure Azure Cache for Redis."
       }
     },
 
@@ -45,7 +45,7 @@ Rodzina dla jednostki sku.
 
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
-Rozmiar nowego wystąpienia usługi Azure Redis Cache. 
+Rozmiar nowej usługi Azure Cache platformy Azure dla wystąpienia usługi Redis. 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -60,7 +60,7 @@ Rozmiar nowego wystąpienia usługi Azure Redis Cache.
       ],
       "defaultValue": 0,
       "metadata": {
-        "description": "The size of the new Azure Redis Cache instance. "
+        "description": "The size of the new Azure Azure Cache for Redis instance. "
       }
     }
 
