@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: b6df4ada1aa13e20c7ad52d2b58cdf9c783f9e24
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: bc311ca5c49584ae3715fa4507e1fd678bcc93bb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716241"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53007932"
 ---
 Maszyny Wirtualnej zoptymalizowane pod kątem procesora GPU z jednym lub wieloma procesorami GPU firmy NVIDIA wyspecjalizowane maszyny wirtualne o rozmiarach. Te rozmiary są przeznaczone dla obciążeń intensywnie korzystających z obliczeń, bogatych w elementy graficzne i wizualizacji. Ten artykuł zawiera informacje o liczbie i rodzaju procesorów GPU, procesorów wirtualnych, dysków z danymi i kart sieciowych. Przepustowość przepływności i sieć magazynu dostępne są również dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -27,7 +27,7 @@ Usługa Premium Storage: Nieobsługiwane
 
 Buforowanie Premium Storage: Nieobsługiwane
 
-Maszyny wirtualne z serii NC są obsługiwane przez [procesory GPU NVIDIA Tesla K80](http://images.nvidia.com/content/pdf/kepler/Tesla-K80-BoardSpec-07317-001-v05.pdf) karty. Użytkownicy mogą przetwarzanie danych szybciej dzięki wykorzystaniu architektury CUDA dla aplikacji eksploracji energii, symulacji awarii, ray śledzenia renderowania, uczenie głębokie i inne. Konfigurację NC24r zapewnia małe opóźnienia interfejsu sieci o wysokiej przepływności zoptymalizowany pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych.
+Maszyny wirtualne z serii NC są obsługiwane przez [procesory GPU NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) karty. Użytkownicy mogą przetwarzanie danych szybciej dzięki wykorzystaniu architektury CUDA dla aplikacji eksploracji energii, symulacji awarii, ray śledzenia renderowania, uczenie głębokie i inne. Konfigurację NC24r zapewnia małe opóźnienia interfejsu sieci o wysokiej przepływności zoptymalizowany pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych.
 
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |

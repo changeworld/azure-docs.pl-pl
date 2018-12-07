@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 2c5e99c16ed6ae0df9af4783fb6431edcbb6f100
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 11e9099ba9008ead6583eaf30292cdec63475f02
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725407"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994269"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek wyjątków w aplikacjach .NET
 
-Gdy wystąpi wyjątek, może automatycznie zbierać migawek debugowania z działającej aplikacji internetowej. Migawka przedstawia stan zmiennych i kod źródłowy w momencie utworzenia zgłoszenia wyjątku. Rozszerzenie Snapshot Debugger (wersja zapoznawcza) w [usługi Azure Application Insights](app-insights-overview.md) monitoruje dane telemetryczne dotyczące wyjątków z aplikacji sieci web. Zbiera migawki na listy wyjątków zgłaszanie górnej dzięki temu uzyskasz informacje potrzebne do diagnozowania problemów w środowisku produkcyjnym. Obejmują [pakiet NuGet modułu zbierającego migawki](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) w aplikacji i opcjonalnie skonfigurować kolekcję parametrów w [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Migawki są wyświetlane na [wyjątki](app-insights-asp-net-exceptions.md) w portalu Application Insights.
+Gdy wystąpi wyjątek, może automatycznie zbierać migawek debugowania z działającej aplikacji internetowej. Migawka przedstawia stan zmiennych i kod źródłowy w momencie utworzenia zgłoszenia wyjątku. Rozszerzenie Snapshot Debugger (wersja zapoznawcza) w [usługi Azure Application Insights](app-insights-overview.md) monitoruje dane telemetryczne dotyczące wyjątków z aplikacji sieci web. Zbiera migawki na listy wyjątków zgłaszanie górnej dzięki temu uzyskasz informacje potrzebne do diagnozowania problemów w środowisku produkcyjnym. Obejmują [pakiet NuGet modułu zbierającego migawki](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) w aplikacji i opcjonalnie skonfigurować kolekcję parametrów w [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Migawki są wyświetlane na [wyjątki](app-insights-asp-net-exceptions.md) w portalu Application Insights.
 
 Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Aby uzyskać bardziej zaawansowane środowisko debugowania z kodem źródłowym, należy otworzyć migawki za pomocą programu Visual Studio 2017 Enterprise. W programie Visual Studio, możesz również [Ustaw punkty przyciągania do interaktywnego robienia migawek](https://aka.ms/snappoint) bez oczekiwania na wyjątek.
 
@@ -45,7 +45,7 @@ Są obsługiwane w następujących środowiskach:
 
 1. [Włącz usługę Application Insights w aplikacji sieci web](app-insights-asp-net.md), jeśli nie została ona jeszcze zrobione.
 
-2. Obejmują [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w swojej aplikacji.
+2. Obejmują [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w swojej aplikacji.
 
 3. Przejrzyj opcje domyślne, które pakiet dodane do [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
 
@@ -91,7 +91,7 @@ Są obsługiwane w następujących środowiskach:
     > [!NOTE]
     > Należy się upewnić, że aplikacja odwołuje się do wersji 2.1.1 lub nowszego, pakietu Microsoft.ApplicationInsights.AspNetCore.
 
-2. Obejmują [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w swojej aplikacji.
+2. Obejmują [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w swojej aplikacji.
 
 3. Modyfikowanie aplikacji `Startup` klasy można dodawać i konfigurować modułu zbierającego migawki danych telemetrycznych procesora.
 
@@ -168,7 +168,7 @@ Są obsługiwane w następujących środowiskach:
 
 1. Jeśli aplikacja nie jest już za pomocą usługi Application Insights, zacznij od [włączenie usługi Application Insights i ustawić dla klucza Instrumentacji](app-insights-windows-desktop.md).
 
-2. Dodaj [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w swojej aplikacji.
+2. Dodaj [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w swojej aplikacji.
 
 3. Migawki są zbierane tylko na wyjątki, które są zgłaszane do usługi Application Insights. Może być konieczne zmodyfikowanie kodu na zgłoszenie ich. Kodu obsługi wyjątków zależy od struktury aplikacji, ale przykład znajduje się poniżej:
     ```csharp
@@ -225,7 +225,7 @@ Migawki mogą zawierać poufne informacje, a domyślnie nie są widoczne. Aby wy
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Debugowanie migawki za pomocą programu Visual Studio 2017 Enterprise
 1. Kliknij przycisk **Pobierz migawkę** przycisk, aby pobrać `.diagsession` plików, które mogą być otwierane w programie Visual Studio 2017 Enterprise.
 
-2. Aby otworzyć `.diagsession` pliku, musisz mieć zainstalowany składnik VS debugera migawki. Składnik debugera migawki jest wymaganym składnikiem obciążenia programu ASP.net w programie VS i można wybrać z listy poszczególnych składników w Instalatorze programu VS. Jeśli używasz wersji programu Visual Studio przed 15.5 będą musieli zainstalować rozszerzenie z [VS marketplace](http://aka.ms/snapshotdebugger).
+2. Aby otworzyć `.diagsession` pliku, musisz mieć zainstalowany składnik VS debugera migawki. Składnik debugera migawki jest wymaganym składnikiem obciążenia programu ASP.net w programie VS i można wybrać z listy poszczególnych składników w Instalatorze programu VS. Jeśli używasz wersji programu Visual Studio przed 15.5 będą musieli zainstalować rozszerzenie z [VS marketplace](https://aka.ms/snapshotdebugger).
 
 3. Po otwarciu pliku migawki zostanie wyświetlona strona minizrzutu w programie Visual Studio. Kliknij przycisk **debugowanie kodu zarządzanego** można rozpocząć debugowania migawki. Migawka zostanie otwarty do wiersza kodu, w którym wystąpił wyjątek, aby można było debugować bieżący stan procesu.
 

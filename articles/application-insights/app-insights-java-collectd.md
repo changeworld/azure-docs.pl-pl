@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6cc817b86170ddab3152a041924ae99ff52a23ec
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 528b344063dd9f84720ee55c4b3663c20127e5fe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723928"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995050"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>zebrane: metryki wydajności systemu Linux w usłudze Application Insights
 
 
-Aby zapoznać się z metryk wydajności systemu Linux w [usługi Application Insights](app-insights-overview.md), zainstaluj [zebrane](http://collectd.org/), wraz z jej usługi Application Insights wtyczki. To rozwiązanie typu open-source zbiera różne statystyki systemu i sieciowych.
+Aby zapoznać się z metryk wydajności systemu Linux w [usługi Application Insights](app-insights-overview.md), zainstaluj [zebrane](https://collectd.org/), wraz z jej usługi Application Insights wtyczki. To rozwiązanie typu open-source zbiera różne statystyki systemu i sieciowych.
 
 Zazwyczaj służy zebrane Jeśli masz już [Instrumentacji usługi sieci web Java za pomocą usługi Application Insights][java]. Oferuje on większej ilości danych, aby pomóc zwiększyć wydajność aplikacji lub diagnozować problemy. 
 
@@ -38,7 +38,7 @@ Wykonaj kopię klucza instrumentacji, który identyfikuje zasób.
 ## <a name="install-collectd-and-the-plug-in"></a>Zainstaluj zebrane i wtyczki
 Na komputerach serwerów Linux:
 
-1. Zainstaluj [zebrane](http://collectd.org/) wersji 5.4.0 lub nowszej.
+1. Zainstaluj [zebrane](https://collectd.org/) wersji 5.4.0 lub nowszej.
 2. Pobierz [wtyczką składnik zapisywania usługi Application Insights zebrane](https://aka.ms/aijavasdk). Zanotuj numer wersji.
 3. Wtyczka JAR do kopiowania `/usr/share/collectd/java`.
 4. Edytuj `/etc/collectd/collectd.conf`:

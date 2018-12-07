@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie klastrem Kubernetes na platformie Azure przy użyciu interfejsu użytkownika sieci web
+title: (PRZESTARZAŁE) Zarządzanie klastrem Kubernetes na platformie Azure przy użyciu interfejsu użytkownika sieci web
 description: Przy użyciu interfejsu użytkownika sieci web rozwiązania Kubernetes w usłudze Azure Container Service
 services: container-service
 author: bburns
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: b5079ddb63f468f924577f61adda6a3056ec8c6c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998529"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996132"
 ---
-# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Usługa Azure Container Service przy użyciu interfejsu użytkownika sieci web rozwiązania Kubernetes
+# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(PRZESTARZAŁE) Usługa Azure Container Service przy użyciu interfejsu użytkownika sieci web rozwiązania Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby uzyskać zaktualizowaną wersję tego artykułu, który korzysta z usługi Azure Kubernetes Service, zobacz [dostęp do pulpitu nawigacyjnego sieci web rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)](../../aks/kubernetes-dashboard.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym przewodniku przyjęto założenie, iż [utworzone za pomocą usługi Azure Container Service klastra Kubernetes](container-service-kubernetes-walkthrough.md).

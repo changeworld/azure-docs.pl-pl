@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9832281b586bf4377096ff28362b4fc180480aea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246148"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993064"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Powiązania usługi Twilio dla usługi Azure Functions
 
@@ -27,13 +27,13 @@ W tym artykule wyjaśniono, jak wysyłać wiadomości SMS za pomocą [Twilio](ht
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania usługi Twilio, znajdują się w [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) pakietu NuGet w wersji 1.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) repozytorium GitHub.
+Powiązania usługi Twilio, znajdują się w [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) pakietu NuGet w wersji 1.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
 
-Powiązania usługi Twilio, znajdują się w [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) repozytorium GitHub.
+Powiązania usługi Twilio, znajdują się w [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) repozytorium GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -404,8 +404,8 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type**|**type**| Musi być równa `twilioSms`.|
 |**direction**|**direction**| Musi być równa `out`.|
 |**Nazwa**|**Nazwa**| Nazwa zmiennej, używane w kodzie funkcji wiadomości SMS usługi Twilio. |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, np. zawierającą Sid konta usługi Twilio TwilioAccountSid. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAccountSid". |
-|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, który zawiera token uwierzytelniania usługi Twilio, np. TwilioAccountAuthToken. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAuthToken". |
+|**accountSid**|**accountSidSetting**| **accountSidSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, np. zawierającą Sid konta usługi Twilio TwilioAccountSid. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAccountSid". |
+|**authToken**|**authTokenSetting**|**authTokenSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, który zawiera token uwierzytelniania usługi Twilio, np. TwilioAccountAuthToken. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAuthToken". |
 |**Aby**| N/d - określić w kodzie | **Do**| Ta wartość jest równa numer telefonu, tekst wiadomości SMS wysyłane do.|
 |**Z**|**Z** | **From**| Ta wartość jest równa numer telefonu, który tekst wiadomości SMS są wysyłane z.|
 |**body**|**body** | **Treść**| Ta wartość może służyć do ciężko kodu wiadomość SMS, jeśli nie potrzebujesz dynamicznie ustawić go w kodzie funkcji. |  

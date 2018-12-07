@@ -1,5 +1,5 @@
 ---
-title: Ciągła Integracja/ciągłe dostarczanie za pomocą usługi Azure Container Service i Swarm
+title: (PRZESTARZAŁE) Ciągła Integracja/ciągłe dostarczanie za pomocą usługi Azure Container Service i Swarm
 description: Za pomocą usługi Azure Container Service Docker Swarm, usługi Azure Container Registry i DevOps platformy Azure do ciągłego dostarczania wielokontenerowej aplikacji .NET Core
 services: container-service
 author: jcorioland
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 3b91c269104e740add1d3a5b8ecaee93ca269188
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302830"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992545"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu rozwiązania Docker Swarm przy użyciu usługi DevOps platformy Azure
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(PRZESTARZAŁE) Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu rozwiązania Docker Swarm przy użyciu usługi DevOps platformy Azure
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Jedną z największych wyzwań podczas tworzenia nowoczesnych aplikacji dla chmury jest możliwość ciągłe dostarczanie tych aplikacji. W tym artykule dowiesz się, jak zaimplementować pełnej ciągłą integrację i potok ciągłego wdrażania (CI/CD) przy użyciu usługi Azure Container Service przy użyciu rozwiązania Docker Swarm, usługi Azure Container Registry i potoki usługi Azure management.
 

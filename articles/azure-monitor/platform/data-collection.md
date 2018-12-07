@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 3ea446a726634ead520b902bd00a54cd8ae32b70
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 19d448634998f01505c0e274377e1aa8cd788728
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844128"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993803"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../../azure-monitor/overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -131,7 +131,7 @@ Dzienniki są szczególnie przydatne dla łączenie danych z różnych źródeł
 Zebrane przez usługi Azure Monitor dzienniki są przechowywane w usłudze Log Analytics, która zbiera dane telemetryczne i inne dane z różnych źródeł. Udostępnia zaawansowany język zapytań i aparat analityczny, który zapewnia wgląd w działania aplikacji i zasobów. Usługi inne platformy Azure, takich jak [usługi Azure Security Center](../../security-center/security-center-intro.md) przechowują swoje dane w usłudze Log Analytics w celu zapewnienia wspólną platformę danych zarządzania systemu Azure.
 
 > [!IMPORTANT]
-> Dane z usługi Application Insights są przechowywane w usłudze Log Analytics w podobnie jak inne dane dziennika, z tą różnicą, że jest on przechowywany w oddzielnej partycji. W ten sposób realizowany taką samą funkcjonalność jak inne dane usługi Log Analytics, ale muszą używać [konsoli Application Insights](../../application-insights/app-insights-analytics.md) lub [interfejsu API usługi Application Insights](https://dev.applicationinsights.io/) na dostęp do tych danych. Możesz użyć [zapytania obejmujące wiele zasobów](../../log-analytics/log-analytics-cross-workspace-search.md) do analizowania danych aplikacji wraz z innymi danymi dziennika.
+> Dane z usługi Application Insights są przechowywane w usłudze Log Analytics w podobnie jak inne dane dziennika, z tą różnicą, że jest on przechowywany w oddzielnej partycji. W ten sposób realizowany taką samą funkcjonalność jak inne dane usługi Log Analytics, ale muszą używać [konsoli Application Insights](../../application-insights/app-insights-analytics.md) lub [interfejsu API usługi Application Insights](https://dev.applicationinsights.io/) na dostęp do tych danych. Możesz użyć [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) do analizowania danych aplikacji wraz z innymi danymi dziennika.
 
 
 ### <a name="sources-of-log-data"></a>Źródła danych dziennika
@@ -144,7 +144,7 @@ Usługa log Analytics może zbierać dane z różnych źródeł, zarówno w obr�
 - Dane zabezpieczeń gromadzone przez [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/).
 - [Metryki](#metrics) z zasobów platformy Azure. Dzięki temu można przechowywać metryki, przez czas dłuższy niż 93 dni i Analizuj je z innymi danymi dziennika.
 - Zapisane dane telemetryczne [usługi Azure Storage](../../azure-monitor/platform/azure-storage-iis-table.md).
-- Niestandardowe dane za pomocą dowolnego klienta interfejsu API REST przy użyciu [interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md) klienta lub z [aplikacji logiki platformy Azure](https://docs.microsoft.com/azure/logic-apps/) przepływu pracy.
+- Niestandardowe dane za pomocą dowolnego klienta interfejsu API REST przy użyciu [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md) klienta lub z [aplikacji logiki platformy Azure](https://docs.microsoft.com/azure/logic-apps/) przepływu pracy.
 
 ![Składniki usługi Log Analytics](media/data-collection/logs-overview.png)
 
@@ -154,14 +154,14 @@ Usługa log Analytics może zbierać dane z różnych źródeł, zarówno w obr�
 ### <a name="what-can-you-do-with-logs"></a>Co można zrobić za pomocą dzienników?
 Następujące zadania, które można wykonywać za pomocą dzienników:
 
-- Użyj [strony Log Analytics](../../log-analytics/query-language/get-started-analytics-portal.md) w witrynie Azure portal do pisania zapytań, analizowanie danych dzienników.  Wyniki renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).
+- Użyj [strony Log Analytics](../../azure-monitor/log-query/get-started-portal.md) w witrynie Azure portal do pisania zapytań, analizowanie danych dzienników.  Wyniki renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurowanie [reguł alertów dzienników](../../monitoring-and-diagnostics/alert-log.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](../../monitoring-and-diagnostics/monitoring-action-groups.md) po wyniki zapytania pasują do konkretnego wyniku.
 - Tworzenie przepływu pracy na podstawie danych w usłudze Log Analytics przy użyciu [Logic Apps](~/articles/logic-apps/index.yml).
-- Eksportowanie wyników kwerendy, aby [usługi Power BI](../../log-analytics/log-analytics-powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.
+- Eksportowanie wyników kwerendy, aby [usługi Power BI](../../azure-monitor/platform/powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.
 - Dostęp do wartości metryk z wiersza polecenia lub niestandardowych aplikacji przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) lub [interfejsu API REST](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Wyświetlanie danych dzienników
-Wszystkie dane z usługi Log Analytics są pobierane przy użyciu [zapytanie dziennika](../../azure-monitor/log-query/log-query-overview.md) określający określonego zestawu danych. Zapytania są zapisywane z użyciem [języka zapytań usługi Log Analytics](../../log-analytics/query-language/get-started-queries.md) czyli zaawansowany język zapytań do szybkiego pobierania, konsolidacji i analizowania zebranych danych. Użyj [strony Log Analytics](../../log-analytics/log-analytics-log-search-portals.md) w witrynie Azure portal, aby bezpośrednio analizować dane w swoje metryki przechowywania i wykres wartości wielu metryk wraz z upływem czasu. Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać za pomocą metryk [platformy Azure, interfejsu API REST monitorowania](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
+Wszystkie dane z usługi Log Analytics są pobierane przy użyciu [zapytanie dziennika](../../azure-monitor/log-query/log-query-overview.md) określający określonego zestawu danych. Zapytania są zapisywane z użyciem [języka zapytań usługi Log Analytics](../../azure-monitor/log-query/get-started-queries.md) czyli zaawansowany język zapytań do szybkiego pobierania, konsolidacji i analizowania zebranych danych. Użyj [strony Log Analytics](../../azure-monitor/log-query/portals.md) w witrynie Azure portal, aby bezpośrednio analizować dane w swoje metryki przechowywania i wykres wartości wielu metryk wraz z upływem czasu. Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać za pomocą metryk [platformy Azure, interfejsu API REST monitorowania](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 ![Dzienniki](media/data-collection/logs.png)
 

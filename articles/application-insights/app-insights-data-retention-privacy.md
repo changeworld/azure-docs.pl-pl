@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2814ecb0ff9fc49e4763dbe604fef353394f9aac
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 613e0f51ae7bbb0b295f13d50fc95683085d7da9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965244"
+ms.locfileid: "52995798"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -28,14 +28,14 @@ Pierwszy, krótka odpowiedź:
 * Moduły standardowe dane telemetryczne, które Uruchom "fabrycznej" prawdopodobnie nie wysyłać danych poufnych do usługi. Dane telemetryczne dotyczy obciążenia, metryki wydajności i użycia, raporty dotyczące wyjątków i inne dane diagnostyczne. Dane użytkownika głównego widoczne w raporty diagnostyczne są adresami URL; ale aplikacja nie powinna w każdym przypadku poufnych danych w postaci zwykłego tekstu w adresie URL.
 * Można napisać kod, który wysyła dodatkowe niestandardowych danych telemetrycznych do udzielenia odpowiedzi na dane diagnostyczne i użycia monitorowania. (Rozszerzania jest atrakcyjną funkcją usługi Application Insights). Będzie to możliwe, przez pomyłkę, aby napisać ten kod, aby obejmowała osobistych, jak i innych poufnych danych. Jeśli aplikacja działa przy użyciu tych danych, należy zastosować procesy szczegółowej weryfikacji do tworzonego kodu.
 * Podczas tworzenia i testowania aplikacji, to łatwo sprawdzić, co jest wysyłane przez zestaw SDK. Dane są wyświetlane w oknie danych wyjściowych debugowania w IDE i przeglądarki. 
-* Dane są przechowywane w [Microsoft Azure](http://azure.com) serwerów w Stanach Zjednoczonych lub Europy. (Ale aplikację można uruchomić gdziekolwiek). Platforma Azure ma [silne zabezpieczenie przetwarza i spełnia szeroki zakres standardami](https://azure.microsoft.com/support/trust-center/). Tylko dla Ciebie i Twojego zespołu wyznaczonym należy mieć dostęp do danych. Pracownicy firmy Microsoft mogą mieć ograniczony dostęp do jej tylko w szczególnych okolicznościach ograniczone, korzystając ze znajomości. Szyfrowane podczas przesyłania, ale nie na serwerach.
+* Dane są przechowywane w [Microsoft Azure](https://azure.com) serwerów w Stanach Zjednoczonych lub Europy. (Ale aplikację można uruchomić gdziekolwiek). Platforma Azure ma [silne zabezpieczenie przetwarza i spełnia szeroki zakres standardami](https://azure.microsoft.com/support/trust-center/). Tylko dla Ciebie i Twojego zespołu wyznaczonym należy mieć dostęp do danych. Pracownicy firmy Microsoft mogą mieć ograniczony dostęp do jej tylko w szczególnych okolicznościach ograniczone, korzystając ze znajomości. Szyfrowane podczas przesyłania, ale nie na serwerach.
 
 W pozostałej części tego artykułu bardziej pełni rosnącego odpowiedzi na te pytania. Ustalono, aby być na niezależne tak, aby je pokazać współpracownikom, którzy nie należą do natychmiastowego zespołu.
 
 ## <a name="what-is-application-insights"></a>Co to jest usługa Application Insights?
 [Usługa Azure Application Insights] [ start] jest usługę oferowaną przez firmę Microsoft, która pomaga zwiększyć wydajność i użyteczność działającej aplikacji. Monitoruje ona cały czas, którym jest uruchomiona, podczas testowania i po jej wdrożeniu lub opublikowanych aplikacji. Usługa Application Insights tworzy wykresy i tabele, w których znajdziesz informacje, na przykład, jakich porach dnia otrzymasz większość użytkowników, jak szybko reagujących aplikacji jest i jak dobrze jest obsługiwany przez zewnętrzne usługi, których jest zależna. Jeśli występują awarie, błędy lub problemy z wydajnością, możesz wyszukać dane telemetryczne szczegółowo przyczynę. I Usługa wyśle do Ciebie wiadomości e-mail, jeśli wystąpiły jakiekolwiek zmiany w dostępności i wydajności aplikacji.
 
-W aplikacji, która staje się częścią jego kodu, aby pobrać tę funkcję, zainstaluj zestaw SDK usługi Application Insights. Gdy aplikacja jest uruchomiona, zestaw SDK monitoruje jego działanie i wysyła dane telemetryczne do usługi Application Insights. Jest to usługa w chmurze hostowana przez [Microsoft Azure](http://azure.com). (Ale usługi Application Insights działa w przypadku aplikacji, nie tylko te, które są hostowane na platformie Azure).
+W aplikacji, która staje się częścią jego kodu, aby pobrać tę funkcję, zainstaluj zestaw SDK usługi Application Insights. Gdy aplikacja jest uruchomiona, zestaw SDK monitoruje jego działanie i wysyła dane telemetryczne do usługi Application Insights. Jest to usługa w chmurze hostowana przez [Microsoft Azure](https://azure.com). (Ale usługi Application Insights działa w przypadku aplikacji, nie tylko te, które są hostowane na platformie Azure).
 
 ![Zestaw SDK w Twojej aplikacji wysyła dane telemetryczne do usługi Application Insights.](./media/app-insights-data-retention-privacy/01-scheme.png)
 
@@ -204,7 +204,7 @@ Firma Microsoft nie zaleca się jawne ustawienie bezwzględnie konieczne, poniew
 |.NET | Obsługiwane, konfiguracja jest zależna od wersji. | Informacje o konfiguracji szczegółowe dla platformy .NET 4.7 i wcześniejsze wersje można znaleźć [w instrukcjach](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Monitor stanu | Obsługiwane, wymagana jest Konfiguracja | Monitor stanu opiera się na [Konfiguracja systemu operacyjnego](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfiguracja .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) do obsługi protokołu TLS 1.2.
 |Node.js |  Obsługiwane w v10.5.0, może być wymagana konfiguracja. | Użyj [oficjalnej dokumentacji środowiska Node.js protokołów TLS/SSL](https://nodejs.org/api/tls.html) dla żadnej konfiguracji określonej aplikacji. |
-|Java | Obsługiwane, zestawu JDK obsługę protokołu TLS 1.2 został dodany w [zestaw JDK 6 aktualizacja 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) i [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Używa JDK 8 [protokołu TLS 1.2, domyślnie](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+|Java | Obsługiwane, zestawu JDK obsługę protokołu TLS 1.2 został dodany w [zestaw JDK 6 aktualizacja 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) i [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Używa JDK 8 [protokołu TLS 1.2, domyślnie](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Dystrybucje systemu Linux, zwykle zależą od [OpenSSL](https://www.openssl.org) obsługę protokołu TLS 1.2.  | Sprawdź [dziennika zmian OpenSSL](https://www.openssl.org/news/changelog.html) aby upewnić się, używana wersja biblioteki openssl jest obsługiwana.|
 | Windows 8.0 10 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [domyślne ustawienia](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
 | System Windows Server 2012 2016 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [ustawienia domyślne](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
@@ -230,7 +230,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Dane osobowe przechowywane w usłudze Application Insights
 
-Nasze [usługi Application Insights dane osobowe artykułu](../log-analytics/log-analytics-personal-data-mgmt.md) ten problem, szczegółowe.
+Nasze [usługi Application Insights dane osobowe artykułu](../azure-monitor/platform/personal-data-mgmt.md) ten problem, szczegółowe.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Moi użytkownicy wyłączyć usługi Application Insights?
 Nie bezpośrednio. Firma Microsoft nie oferuje przełącznik, który użytkownicy mogą działać wyłączenia usługi Application Insights.
@@ -281,10 +281,10 @@ Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokument
 Możesz [wyłączyć niektórych danych, edytując plik ApplicationInsights.config][config]
 
 > [!NOTE]
-> Klient IP jest używany w celu lokalizacji geograficznej, ale domyślnie nie jest już przechowywania danych adresów IP i zer są zapisywane w odpowiednim polu. Aby dowiedzieć się więcej na temat obsługi danych osobowych jest to zalecane [artykułu](../log-analytics/log-analytics-personal-data-mgmt.md#application-data). Jeśli potrzebujesz przechować adres IP możesz to zrobić za pomocą [inicjatora telemetrii](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
+> Klient IP jest używany w celu lokalizacji geograficznej, ale domyślnie nie jest już przechowywania danych adresów IP i zer są zapisywane w odpowiednim polu. Aby dowiedzieć się więcej na temat obsługi danych osobowych jest to zalecane [artykułu](../azure-monitor/platform/personal-data-mgmt.md#application-data). Jeśli potrzebujesz przechować adres IP możesz to zrobić za pomocą [inicjatora telemetrii](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="credits"></a>Napisy końcowe
-Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind dostępne [ http://www.maxmind.com ](http://www.maxmind.com).
+Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind dostępne [ https://www.maxmind.com ](https://www.maxmind.com).
 
 
 
@@ -297,7 +297,7 @@ Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind dostępne [ http://www
 [greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
 [platforms]: app-insights-platforms.md
-[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 

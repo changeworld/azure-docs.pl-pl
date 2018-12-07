@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 52fe5ac108e2788e481d89901dd24098cdb3c9b4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 937cbc1346ce41670270b911e474e900f406a93b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965210"
+ms.locfileid: "52993616"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -74,7 +74,7 @@ Wstaw skrypt tuż przed tagiem `</head>` na każdej stronie, którą chcesz śle
 
 Skrypt zawiera klucz instrumentacji, który kieruje dane do odpowiedniego zasobu usługi Application Insights. 
 
-([Dokładniejsze objaśnienia dotyczące skryptu](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/)).
+([Dokładniejsze objaśnienia dotyczące skryptu](https://apmtips.com/blog/2015/03/18/javascript-snippet-explained/)).
 
 ## <a name="detailed-configuration"></a>Konfiguracja szczegółowa
 Istnieje kilka [parametrów](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config), które można ustawić, chociaż w większości przypadków nie jest to potrzebne. Na przykład można wyłączyć zgłaszanie wywołań Ajax lub ograniczyć liczbę tych wywołań zgłaszanych na wyświetlenie strony (w celu zmniejszenia ruchu). Można także ustawić tryb debugowania, aby dane telemetrii były szybciej przesyłane przez potok, a nie przekazywane w trybie wsadowym.
@@ -125,7 +125,7 @@ Blok Przeglądarka jest [blokiem Eksploratora metryk](app-insights-metrics-explo
 ## <a name="page-load-performance"></a>Wydajność ładowania strony
 U góry znajduje się segmentowany wykres czasów ładowania strony. Całkowita wysokość wykresu reprezentuje średni czas ładowania oraz wyświetlania stron z aplikacji w przeglądarkach użytkowników. Czas jest mierzony od momentu wysłania z przeglądarki początkowego żądania HTTP do momentu przetworzenia wszystkich synchronicznych zdarzeń ładowania, wraz z układem i uruchamianiem skryptów. Nie obejmuje zadań asynchronicznych, takich jak ładowanie składników Web Part z wywołań AJAX.
 
-Na wykresie całkowity czas ładowania strony jest podzielony na segmenty obejmujące [standardowe chronometraże zdefiniowane przez organizację W3C](http://www.w3.org/TR/navigation-timing/#processing-model). 
+Na wykresie całkowity czas ładowania strony jest podzielony na segmenty obejmujące [standardowe chronometraże zdefiniowane przez organizację W3C](https://www.w3.org/TR/navigation-timing/#processing-model). 
 
 ![](./media/app-insights-javascript/08-client-split.png)
 

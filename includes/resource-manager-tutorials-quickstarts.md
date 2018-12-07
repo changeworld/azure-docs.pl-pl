@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 936c9198eebfa229db6ac34426e435c9e6ed96e8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 46618b76f43247199e85c2023a5391c5566f3394
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254625"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978761"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Przewodniki Szybki start i samouczki
 
@@ -43,8 +43,9 @@ Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, użyj 
     |[Używanie warunków](../articles/azure-resource-manager/resource-manager-tutorial-use-conditions.md)|Wdrażanie zasobów na podstawie wartości parametrów. W tym samouczku zdefiniujesz szablon umożliwiający utworzenie nowego konta magazynu lub użyjesz istniejącego konta magazynu na podstawie wartości parametru.|
     |[Integrowanie usługi Key Vault](../articles/azure-resource-manager/resource-manager-tutorial-use-key-vault.md)|Pobieranie wpisów tajnych/haseł z usługi Azure Key Vault. W tym samouczku utworzysz maszynę wirtualną.  Hasło administratora maszyny wirtualnej jest pobierane z usługi Key Vault.|
     |[Create linked templates (Tworzenie połączonych szablonów)](../articles/azure-resource-manager/resource-manager-tutorial-create-linked-templates.md)|Modularyzacja szablonów i wywoływanie innych szablonów za pomocą szablonu. W tym samouczku utworzysz sieć wirtualną, maszynę wirtualną i zasoby zależne.  Zależne konto magazynu jest zdefiniowane w połączonym szablonie. |
-    |[Wdrażanie rozszerzenia maszyny wirtualnej](../articles/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)|Wykonaj zadania po wdrożeniu przy użyciu rozszerzeń. W tym samouczku wdrożysz rozszerzenia skryptów klienta w celu zainstalowania serwera sieci web na maszynie wirtualnej. |
+    |[Wdrażanie rozszerzeń maszyny wirtualnej](../articles/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)|Wykonaj zadania po wdrożeniu przy użyciu rozszerzeń. W tym samouczku wdrożysz rozszerzenia skryptów klienta w celu zainstalowania serwera sieci web na maszynie wirtualnej. |
     |[Wdrażanie rozszerzenia SQL](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|Wykonaj zadania po wdrożeniu przy użyciu rozszerzeń. W tym samouczku wdrożysz rozszerzenia skryptów klienta w celu zainstalowania serwera sieci web na maszynie wirtualnej. |
+    |[Zabezpieczanie artefaktów](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|Zabezpiecz artefaktów potrzebnych do ukończenia wdrożenia. W tym samouczku dowiesz się, jak zabezpieczyć artefaktu używanego w tym samouczku rozszerzenia wdrożenia programu SQL. |
     |[Korzystanie z praktyk bezpiecznego wdrażania](../articles/azure-resource-manager/deployment-manager-tutorial.md)|Używanie usługi Azure Deployment Manager. |
 
 Te samouczki można indywidualnie lub jako serię się główne pojęcia programowania szablonu usługi Resource Manager.

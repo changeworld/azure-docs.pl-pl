@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 536ae926ad8f401f952a41e17074536cc2b3c5f1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832041"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993918"
 ---
 # <a name="manage-analysis-services"></a>Zarządzanie usług Analysis Services
 Po utworzeniu serwera usług Analysis Services na platformie Azure, może to być niektóre administrowanie i zarządzanie zadania, które należy wykonać w dół po drodze następnie od razu lub później. Na przykład uruchomić przetwarzania odświeżania danych, kontrolowania, kto może uzyskiwać dostęp do modeli na serwerze lub monitorowanie kondycji serwera. Niektóre zadania zarządzania, można wykonać tylko w witrynie Azure portal, inne osoby w SQL Server Management Studio (SSMS), a niektóre zadania może odbywać się w jednym.
@@ -35,7 +35,7 @@ Aby uzyskać najnowsze funkcje i daje płynne doświadczenia podczas nawiązywan
 
 
 ### <a name="to-connect-with-ssms"></a>Aby połączyć za pomocą programu SSMS
- Korzystając z programu SSMS, przed nawiązaniem połączenia z serwerem po raz pierwszy, upewnij się, że Twoja nazwa użytkownika jest uwzględniona w grupie Administratorzy usług Analysis Services. Aby dowiedzieć się więcej, zobacz [administratorom serwerów](#server-administrators) w dalszej części tego artykułu.
+ Korzystając z programu SSMS, przed nawiązaniem połączenia z serwerem po raz pierwszy, upewnij się, że Twoja nazwa użytkownika jest uwzględniona w grupie Administratorzy usług Analysis Services. Aby dowiedzieć się więcej, zobacz [bazy danych użytkowników i administratorów serwera](#server-administrators-and-database-users) w dalszej części tego artykułu.
 
 1. Przed nawiązaniem połączenia, należy uzyskać nazwę serwera. Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa serwera**.
    

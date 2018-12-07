@@ -13,12 +13,12 @@ ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: d173cd8ddcd713e39fc925a101b42bdd918e5499
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7da0717273892893bec03c164b9b297f28e5218d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721158"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995547"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Rozwiązywanie problemów z narzędzi analizy zachowania użytkownika w usłudze Application Insights
 Masz pytania dotyczące [narzędzi analizy zachowania użytkownika w usłudze Application Insights](app-insights-usage-overview.md): [użytkownicy, sesje, zdarzenia](app-insights-usage-segmentation.md), [Lejki](usage-funnels.md), [przepływyużytkownika](app-insights-usage-flows.md), [Przechowywania](app-insights-usage-retention.md), lub kohorty? Poniżej przedstawiono odpowiedzi.
@@ -56,5 +56,5 @@ Jeśli Twoja aplikacja wysyła za dużo nazw zdarzeń niestandardowych, należy 
 * [Omówienie narzędzia analizy zachowania użytkowników](app-insights-usage-overview.md)
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

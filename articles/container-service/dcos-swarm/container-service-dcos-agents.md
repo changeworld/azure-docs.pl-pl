@@ -1,5 +1,5 @@
 ---
-title: Pule agentów platformy DC/OS usługi kontenera platformy Azure
+title: (PRZESTARZAŁE) Pule agentów platformy DC/OS usługi kontenera platformy Azure
 description: Jak działają pul agentów publicznych i prywatnych przy użyciu klastra usługi Azure Container Service DC/OS
 services: container-service
 author: iainfoulds
@@ -9,14 +9,17 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9c614d18b96c182fa166a4bc43fb1bb2f8d5d6f5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: ee1a2a75d6a003a6bc53c5216dd01d379193ea77
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976739"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994952"
 ---
-# <a name="dcos-agent-pools-for-azure-container-service"></a>Pule agentów platformy DC/OS usługi kontenera platformy Azure
+# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(PRZESTARZAŁE) Pule agentów platformy DC/OS usługi kontenera platformy Azure
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
+
 Klastry DC/OS w usłudze Azure Container Service zawiera węzły agenta w dwie pule, pulę publicznych i prywatnych puli. Aplikację można wdrożyć do jednej puli wpływu na dostępność między komputerami w usłudze kontenera. Maszyny można połączenie z Internetem (publicznego) lub przechowywane wewnętrzny (prywatny). Ten artykuł zawiera krótkie omówienie, dlatego istnieją pule prywatnych i publicznych.
 
 

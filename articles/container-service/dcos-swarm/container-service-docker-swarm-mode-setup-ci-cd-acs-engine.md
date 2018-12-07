@@ -1,5 +1,5 @@
 ---
-title: Ciągła Integracja/ciągłe dostarczanie z aparatem usługi kontenera platformy Azure i tryb Swarm
+title: (PRZESTARZAŁE) Ciągła Integracja/ciągłe dostarczanie z aparatem usługi kontenera platformy Azure i tryb Swarm
 description: Użyj aparat usługi Azure Container Service przy użyciu trybu Docker Swarm, usługi Azure Container Registry i DevOps platformy Azure do ciągłego dostarczania wielokontenerowej aplikacji .NET Core
 services: container-service
 author: diegomrtnzg
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 296c097ee3302eaa39210274b16c6352866eac8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 52d20004f43b5c553a17c44f3f35d30fd5693286
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299580"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995066"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu aparatu usługi ACS i trybu Docker Swarm przy użyciu DevOps platformy Azure
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(PRZESTARZAŁE) Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu aparatu usługi ACS i trybu Docker Swarm przy użyciu DevOps platformy Azure
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 *Ten artykuł jest oparty na [potoku pełnej ciągłą Integrację/ciągłe dostarczanie, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu rozwiązania Docker Swarm przy użyciu usługi Azure DevOps](container-service-docker-swarm-setup-ci-cd.md) dokumentacji*
 

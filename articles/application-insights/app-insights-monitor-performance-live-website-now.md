@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3be368f128e4436cd58812937aaaf82a909b2645
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 0618a580c6bdcef8f28a439cd79e67d863e58b9e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720768"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995233"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentowanie aplikacji internetowych w czasie wykonywania za pomocą usługi Application Insights
 
-Możliwe jest instrumentowanie działającej aplikacji internetowej za pomocą usługi Azure Application Insights bez konieczności modyfikowania kodu ani jego ponownego wdrażania. Jeśli Twoje aplikacje są hostowane na lokalnym serwerze IIS, zainstaluj monitor stanu. Jeśli są to aplikacje internetowe platformy Azure lub jeśli działają one na maszynie wirtualnej platformy Azure, możesz włączyć monitorowanie usługi Application Insights z poziomu panelu sterowania platformy Azure. Istnieją także osobne artykuły na temat instrumentacji [działających aplikacji internetowych w technologii J2EE](app-insights-java-live.md) i [usług Azure Cloud Services](app-insights-cloudservices.md). Potrzebna jest subskrypcja platformy [Microsoft Azure](http://azure.com).
+Możliwe jest instrumentowanie działającej aplikacji internetowej za pomocą usługi Azure Application Insights bez konieczności modyfikowania kodu ani jego ponownego wdrażania. Jeśli Twoje aplikacje są hostowane na lokalnym serwerze IIS, zainstaluj monitor stanu. Jeśli są to aplikacje internetowe platformy Azure lub jeśli działają one na maszynie wirtualnej platformy Azure, możesz włączyć monitorowanie usługi Application Insights z poziomu panelu sterowania platformy Azure. Istnieją także osobne artykuły na temat instrumentacji [działających aplikacji internetowych w technologii J2EE](app-insights-java-live.md) i [usług Azure Cloud Services](app-insights-cloudservices.md). Potrzebna jest subskrypcja platformy [Microsoft Azure](https://azure.com).
 
 ![Zrzut ekranu usługi App Insights — Omówienie wykresów zawierających informacje dotyczące żądań zakończonych niepowodzeniem, czas odpowiedzi serwera i żądań serwera](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
@@ -242,7 +242,7 @@ W przypadku aplikacji już instrumentowanych w czasie kompilacji:
  * Wywołania zależności (.NET 4.5); wartości zwracane w wywołaniach zależności (.NET 4.6).
  * Wartości śladu stosu wyjątków.
 
-[Dowiedz się więcej](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[Dowiedz się więcej](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>Połączenia wideo
 

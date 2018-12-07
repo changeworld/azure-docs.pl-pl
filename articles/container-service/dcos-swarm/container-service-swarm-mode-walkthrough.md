@@ -1,5 +1,5 @@
 ---
-title: Szybki start — klaster Azure Docker CE dla systemu Linux
+title: (PRZESTARZAŁE) Przewodnik Szybki Start — klaster Azure Docker CE dla systemu Linux
 description: Szybka nauka tworzenia klastra Docker CE dla kontenerów systemu Linux w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964449"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994291"
 ---
-# <a name="deploy-docker-ce-cluster"></a>Wdrażanie klastra Docker CE
+# <a name="deprecated-deploy-docker-ce-cluster"></a>(PRZESTARZAŁE) Wdrażanie klastra Docker CE
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 W tym przewodniku Szybki start klaster Docker CE jest wdrażany za pomocą interfejsu wiersza polecenia platformy Azure. Następnie w klastrze jest wdrażana i uruchamiana aplikacja obsługująca wiele kontenerów, która składa się z frontonu internetowego i wystąpienia pamięci podręcznej Redis. Po ukończeniu aplikacja będzie dostępna w Internecie.
 

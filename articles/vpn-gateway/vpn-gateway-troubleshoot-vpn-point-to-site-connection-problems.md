@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 12/05/2018
 ms.author: genli
-ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238328"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994177"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: Problemy z połączeniem usługi Azure point-to-site
 
@@ -300,7 +300,7 @@ Ten problem może wystąpić, jeśli klient sieci VPN nie otrzymują trasy z bra
 
 ### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, [Resetowanie bramy Azure VPN gateway](vpn-gateway-resetgw-classic.md).
+Aby rozwiązać ten problem, [Resetowanie bramy Azure VPN gateway](vpn-gateway-resetgw-classic.md). Aby upewnić się, że są używane nowe trasy, klienci sieci VPN typu punkt-lokacja musi zostać ponownie pobrana po komunikacji równorzędnej sieci wirtualnych zostało pomyślnie skonfigurowane.
 
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Błąd: "Funkcja odwołania nie mógł sprawdzić odwołania, ponieważ serwer odwołań jest w trybie offline. (Błąd 0x80092013)"
 

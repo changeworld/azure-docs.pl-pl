@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 4711c766c2a074c25f019ce5b523e0ba8b599c17
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971321"
+ms.locfileid: "52994539"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
 
@@ -154,7 +154,7 @@ Wygenerowany *function.json* plik zawiera `configurationSource` właściwość, 
 
 ## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
-*Function.json* Generowanie pliku jest wykonywane przez pakiet NuGet [Microsoft\.NET\.Sdk\.funkcji](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+*Function.json* Generowanie pliku jest wykonywane przez pakiet NuGet [Microsoft\.NET\.Sdk\.funkcji](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
 Jest używany ten sam pakiet, dla obu wersji 1.x i 2.x środowisko uruchomieniowe usługi Functions. Platforma docelowa to, co odróżnia 1.x projektu z projektu 2.x. Oto odpowiednie części *.csproj* pliki, przedstawiający różne docelowych struktur i tym samym `Sdk` pakietu:
 
@@ -183,7 +183,7 @@ Jest używany ten sam pakiet, dla obu wersji 1.x i 2.x środowisko uruchomieniow
 
 Wśród `Sdk` zależności pakietów są wyzwalaczy i powiązań. Projekt 1.x odnosi się do 1.x wyzwalaczy i powiązań, ponieważ te dla środowiska .NET Framework, podczas gdy 2.x wyzwalaczy i powiązań docelowej platformy .NET Core.
 
-`Sdk` Pakietu zależy również od [Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json), a następnie pośrednio na [WindowsAzure.Storage](http://www.nuget.org/packages/WindowsAzure.Storage). Te zależności, upewnij się, że projekt korzysta z wersji tych pakietów, które działają z wersją środowiska uruchomieniowego funkcji, cele projektu. Na przykład `Newtonsoft.Json` ma wersji 11 dla programu .NET Framework 4.6.1, ale środowisko uruchomieniowe funkcji, który jest przeznaczony dla platformy .NET Framework 4.6.1 jest zgodna tylko z `Newtonsoft.Json` 9.0.1. Dlatego ma również kod funkcji w tym projekcie do użycia `Newtonsoft.Json` 9.0.1.
+`Sdk` Pakietu zależy również od [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json), a następnie pośrednio na [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Te zależności, upewnij się, że projekt korzysta z wersji tych pakietów, które działają z wersją środowiska uruchomieniowego funkcji, cele projektu. Na przykład `Newtonsoft.Json` ma wersji 11 dla programu .NET Framework 4.6.1, ale środowisko uruchomieniowe funkcji, który jest przeznaczony dla platformy .NET Framework 4.6.1 jest zgodna tylko z `Newtonsoft.Json` 9.0.1. Dlatego ma również kod funkcji w tym projekcie do użycia `Newtonsoft.Json` 9.0.1.
 
 Kod źródłowy `Microsoft.NET.Sdk.Functions` jest dostępny w repozytorium GitHub [azure\-funkcje\-vs\-kompilacji\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 

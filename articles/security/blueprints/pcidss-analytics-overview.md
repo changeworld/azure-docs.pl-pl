@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 32f37acd95494cbfceac5429442e0e655cf74e4d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 23ed7da53253eec39bebf34b4baf5efd2d7690e1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405314"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994812"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: analiza PCI DSS
 
@@ -71,7 +71,7 @@ W poniższej sekcji przedstawiono elementy wdrożenia i implementacji.
 
 **Usługa Azure Functions**: [usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) to usługa obliczeniowa bez serwera, która umożliwia użytkownikom uruchamianie kodu na żądanie bez konieczności jawnego przydzielania infrastruktury ani zarządzania tą infrastrukturą. Za pomocą usługi Azure Functions można uruchamiać skrypty lub fragmenty kodu w reakcji na różne zdarzenia.
 
-**Usługa Azure Machine Learning**: [usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/) to technika do nauki o danych, która zezwala na komputerach, aby korzystać z istniejących danych w celu przewidywania przyszłych zachowań, rezultatów i trendów.
+**Usługa Azure Machine Learning**: [usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) to technika do nauki o danych, która zezwala na komputerach, aby korzystać z istniejących danych w celu przewidywania przyszłych zachowań, rezultatów i trendów.
 
 **Usługa Azure Data Catalog**: [Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) sprawia, że źródła danych łatwe do zrozumienia i prostsze do odnalezienia przez użytkowników, którzy zarządzają danymi. Wspólnych źródeł danych można zarejestrować, oznaczone i wyszukiwane dane finansowe. Dane pozostają w istniejącej lokalizacji, ale kopia ich metadanych jest dodawany do usługi Data Catalog wraz z odwołaniem do lokalizacji źródła danych. Te metadane są również indeksowane, aby można było je łatwo odnaleźć za pomocą wyszukiwania oraz uczynić je zrozumiałymi dla użytkowników, którzy je odnajdą.
 

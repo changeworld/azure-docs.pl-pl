@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 76b3d23a042fae452b25b0a707e3c7ff9bbda613
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838196"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992128"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure – Azure
 
@@ -114,7 +114,10 @@ W tym przykładzie pokazano, jak skonfigurować reguły sieciowej grupy zabezpie
 
       ![tag magazynu](./media/azure-to-azure-about-networking/storage-tag.png)
 
-2. Tworzenie reguły ruchu wychodzącego 443 protokołu HTTPS dla wszystkich zakresów adresów IP, które odnoszą się do usługi Office 365 [uwierzytelnianie i tożsamość punktami końcowymi adresów IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+2. Utwórz regułę zabezpieczeń dla ruchu wychodzącego HTTPS (443) dla usługi "AzureActiveDirectory" w sieciowej grupie zabezpieczeń, jak pokazano na poniższym zrzucie ekranu.
+
+      ![tag usługi AAD](./media/azure-to-azure-about-networking/aad-tag.png)
+
 3. Tworzenie reguły ruchu wychodzącego HTTPS (443) dla adresów IP odzyskiwania lokacji, które odnoszą się do lokalizacji docelowej:
 
    **Lokalizacja** | **Adres IP odzyskiwania lokacji** |  **Adres IP monitorowania odzyskiwania lokacji**
@@ -127,7 +130,7 @@ Te zasady są niezbędne, tak że można włączyć replikację z regionu docelo
 
 1. Utwórz regułę zabezpieczeń dla ruchu wychodzącego 443 protokołu HTTPS dla "Storage.CentralUS" w sieciowej grupie zabezpieczeń.
 
-2. Tworzenie reguły ruchu wychodzącego 443 protokołu HTTPS dla wszystkich zakresów adresów IP, które odnoszą się do usługi Office 365 [uwierzytelnianie i tożsamość punktami końcowymi adresów IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+2. Utwórz regułę zabezpieczeń dla ruchu wychodzącego HTTPS (443) dla usługi "AzureActiveDirectory" w sieciowej grupie zabezpieczeń.
 
 3. Tworzenie reguły ruchu wychodzącego HTTPS (443) dla adresów IP odzyskiwania lokacji, które odnoszą się do lokalizacji źródłowej:
 

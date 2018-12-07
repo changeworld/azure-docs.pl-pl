@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie klastrem Azure DC/OS za pomocą interfejsu API REST platformy Marathon
+title: (PRZESTARZAŁE) Zarządzanie klastrem Azure DC/OS za pomocą interfejsu API REST platformy Marathon
 description: Wdrażanie kontenerów do klastra usługi Azure Container Service DC/OS za pomocą interfejsu API REST platformy Marathon.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 34fc6f946d172f1431367e84f9d4d8a6855003ed
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901771"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52991712"
 ---
-# <a name="dcos-container-management-through-the-marathon-rest-api"></a>Zarządzanie kontenerem DC/OS za pomocą interfejsu API REST platformy Marathon
+# <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(PRZESTARZAŁE) Zarządzanie kontenerem DC/OS za pomocą interfejsu API REST platformy Marathon
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Platforma DC/OS dostarcza środowisko wdrażania i skalowania obciążeń klastrowanych, zapewniając jednocześnie abstrakcyjność sprzętu bazowego. Ponad systemem DC/OS istnieje platforma, która zarządza planowaniem i wykonywaniem obciążeń obliczeniowych. Chociaż struktur są dostępne dla wielu popularnych zadań, ten dokument ułatwia rozpoczęcie pracy tworzenia i skalowania wdrożenia kontenerów przy użyciu interfejsu API REST platformy Marathon. 
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: a7d498349342e34cb56f031bfe1440e01e79173b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2906f6dff84cdd6a09c05734988ee005a3d65aac
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841850"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994634"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -40,7 +40,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 **Migrowanie maszyn wirtualnych między regionami w ramach klastrów geograficzne obsługiwane (wewnątrz i między subskrypcjami)** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory.
 **Migrowanie maszyn wirtualnych w tym samym regionie** | Nieobsługiwane.
 
-# <a name="region-support"></a>Obsługa regionu
+## <a name="region-support"></a>Obsługa regionu
 
 Można replikować i odzyskiwanie maszyn wirtualnych między wszystkie dwóch regionach w obrębie tego samego klastra geograficznego.
 
@@ -62,11 +62,10 @@ Chiny | Chiny wschodnie, Chiny Północne
 
 Ta tabela zawiera podsumowanie obsługi dla konta magazynu pamięci podręcznej, które są używane przez usługę Site Recovery podczas replikacji.
 
-**Ustawienie** | **Szczegóły**
---- | ---
+**Ustawienie** | **Pomoc techniczna** | **Szczegóły**
+--- | --- | ---
 Kont ogólnego przeznaczenia V2 storage (gorąca i chłodna warstwa) | Nieobsługiwane. | To ograniczenie istnieje dla magazynu pamięci podręcznej, ponieważ koszty transakcji dla wersji 2 są znacznie wyższe niż w wersji 1 konta magazynu.
-Usługa Azure Storage zapory dla sieci wirtualnych  | Nie | Zezwalanie na dostęp do określonych sieci wirtualnej platformy Azure dla kont magazynu pamięci podręcznej używane do przechowywania replikowanych danych nie jest obsługiwane.
-
+Usługa Azure Storage zapory dla sieci wirtualnych  | Obsługiwane | Jeśli używasz konta magazynu pamięci podręcznej włączona jest Zapora lub docelowe konto magazynu, upewnij się, że ["Zezwalaj na zaufane usługi firmy Microsoft"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 
 ## <a name="replicated-machine-operating-systems"></a>Systemy operacyjne replikowanych maszyn
@@ -145,7 +144,7 @@ SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem 
 --- | --- | ---
 Rozmiar | Dowolny rozmiar maszyny Wirtualnej platformy Azure, co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM | Sprawdź [rozmiarów maszyn wirtualnych platformy Azure](../virtual-machines/windows/sizes.md).
 Zestawy dostępności | Obsługiwane | Po włączeniu replikacji dla maszyny Wirtualnej platformy Azure z opcjami domyślnymi, zestaw dostępności jest tworzony automatycznie w oparciu o ustawienia regionu źródłowego. Te ustawienia można modyfikować.
-Strefy dostępności | Nieobsługiwane | Obecnie nie można replikować maszyny wirtualne wdrożone w strefach dostępności.
+Strefy dostępności | Obsługiwane |  
 Korzyści z używania hybrydowej (HUB) | Obsługiwane | Jeśli źródłowa maszyna wirtualna ma włączone, licencję Centrum testowania trybu failover lub przełączone w tryb failover maszyny Wirtualnej używa również licencji KONCENTRATORA.
 Zestawy skalowania maszyn wirtualnych | Nieobsługiwane |
 Obrazy z galerii platformy Azure — Microsoft opublikowane | Obsługiwane | Obsługiwane, jeśli maszyna wirtualna uruchamia się w obsługiwanym systemie operacyjnym.
@@ -194,7 +193,7 @@ GRS | Obsługiwane |
 RA-GRS | Obsługiwane |
 ZRS | Nieobsługiwane |  
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
-Usługa Azure Storage zapory sieci wirtualnej  | Yes | Jeśli jest ograniczenie dostępu sieci wirtualnej, dla kont magazynu, upewnij się, że zaufanych usług firmy Microsoft będą miały dostęp do konta magazynu.
+Usługa Azure Storage zapory sieci wirtualnej  | Obsługiwane | Jeśli do kont magazynu, jest ograniczenie dostępu sieci wirtualnej, upewnij się, że ["Zezwalaj na zaufane usługi firmy Microsoft"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorąca i chłodna warstwa) | Nie | Wzrost kosztów transakcji znacznie w porównaniu do ogólnego przeznaczenia w wersji 1 konta magazynu
 
 >[!IMPORTANT]

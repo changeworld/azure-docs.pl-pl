@@ -6,14 +6,14 @@ author: normesta
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: 83e9dfbe18dd79e8547e6b48daef39a5aed2cced
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 29fe100821e5ad2d9d5d340a1178c19c60c6d821
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975284"
+ms.locfileid: "52995446"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -35,7 +35,9 @@ Niezarządzane dyski maszyny wirtualnej (VM) zależą od tych interfejsów API, 
 
 ## <a name="azure-storage-explorer"></a>Eksplorator usługi Azure Storage
 
-Niektóre funkcje, w Eksploratorze usługi Storage jeszcze nie działają z systemem plików usługi Azure Data Lake Storage Gen2. Te ograniczenia mają zastosowanie do obu [autonomiczna wersja](https://azure.microsoft.com/features/storage-explorer/) Eksploratora usługi Azure Storage, a także wersji, która pojawia się w witrynie Azure portal.
+Aby wyświetlić lub zarządzać konta Data Lake Storage Gen2 za pomocą Eksploratora usługi Azure Storage, użytkownik musi mieć co najmniej wersji `1.6.0` narzędzia, który jest dostępny jako [bezpłatne materiały do pobrania](https://azure.microsoft.com/features/storage-explorer/).
+
+Należy zauważyć, że wersja programu Storage Explorer, który jest osadzony w witrynie Azure Portal jest aktualnie nie obsługuje wyświetlanie i zarządzanie konta Data Lake Storage Gen2 przy użyciu włączonych hierarchicznej przestrzeni nazw.
 
 ## <a name="blob-viewing-tool"></a>Narzędzie do przeglądania obiektu blob
 
@@ -57,21 +59,9 @@ Zamiast tego należy użyć najnowszej wersji wstępnej narzędzia AzCopy ( [AzC
 
 Usługi, takie jak usługi Azure Databricks, HDInsight i Azure Data Factory jeszcze nie integrować z tokenu uwierzytelniania elementu nośnego OAuth usługi Azure Active Directory (Azure AD).
 
-## <a name="access-control-lists-acl"></a>Listy kontroli dostępu (ACL)
-
-Katalog i listy kontroli dostępu na poziomie pliku (ACL) są trudne do zarządzania. Istnieje nie oparty na interfejsie użytkownika narzędzia, który służy do pobierania i ustawiania tych list kontroli dostępu.
-
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
 [Usługa Azure Event Grid](https://azure.microsoft.com/services/event-grid/) nie odbieranie zdarzeń z konta usługi Azure Data Lake Gen2, ponieważ te konta nie generują jeszcze je.  
-
-## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
-
-Kontrola dostępu oparta na roli nie można zastosować do obiektów systemu plików na koncie usługi Azure Data Lake Storage Gen2.
-
-## <a name="sql-data-warehouse-polybase"></a>Program PolyBase magazynu danych SQL
-
-Jeżeli zapór usługi Storage są włączone na koncie usługi Azure Storage, SQL Data Warehouse [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017) nie może uzyskać dostępu tych kont.
 
 ## <a name="soft-delete-and-snapshots"></a>Usuwanie nietrwałe i migawki
 

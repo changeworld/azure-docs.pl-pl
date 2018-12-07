@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74987d09a9b8979d3c3596c87764f8f3bd4b5795
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d2f1035427815facf501c1349619a73e0f134eff
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846683"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995611"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ W tym artykule założono, że znasz już sposób [utworzyć to rozwiązanie do 
 
 
 ## <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
-Wszystkie zasoby w usłudze Log Analytics są zawarte w [obszaru roboczego](../../log-analytics/log-analytics-manage-access.md).  Zgodnie z opisem w [obszar roboczy usługi Log Analytics i konto usługi Automation](solutions.md#log-analytics-workspace-and-automation-account), obszar roboczy nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępne, zainstaluj rozwiązania kończy się niepowodzeniem.
+Wszystkie zasoby w usłudze Log Analytics są zawarte w [obszaru roboczego](../../azure-monitor/platform/manage-access.md).  Zgodnie z opisem w [obszar roboczy usługi Log Analytics i konto usługi Automation](solutions.md#log-analytics-workspace-and-automation-account), obszar roboczy nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępne, zainstaluj rozwiązania kończy się niepowodzeniem.
 
 Nazwa obszaru roboczego jest nazwę każdego zasobu usługi Log Analytics.  Jest to realizowane w rozwiązaniu za pomocą **obszaru roboczego** parametru, jak w poniższym przykładzie zasobów zapisanego wyszukiwania.
 

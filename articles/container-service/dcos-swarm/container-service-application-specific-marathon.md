@@ -1,5 +1,5 @@
 ---
-title: Aplikacja lub usługa Marathon specyficzne dla użytkownika
+title: (PRZESTARZAŁE) Aplikacja lub usługa Marathon specyficzna dla użytkownika
 description: Tworzenie usługi Marathon specyficznej dla aplikacji lub użytkownika
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 4ff263fe0ca4f435199127ed64faadee1c2527f9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164544"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996113"
 ---
-# <a name="create-an-application-or-user-specific-marathon-service"></a>Tworzenie usługi Marathon specyficznej dla aplikacji lub użytkownika
+# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(PRZESTARZAŁE) Tworzenie aplikacji lub usługa Marathon specyficzna dla użytkownika
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Usługa kontenera platformy Azure oferuje zestaw serwerów głównych, na których wstępnie konfigurujemy usługi Apache Mesos i Marathon. Mogą one być używane do organizowania aplikacji w klastrze, ale stosowanie w tym celu serwerów głównych nie jest zalecane. Na przykład dostosowywanie konfiguracji usługi Marathon wymaga logowania do serwerów głównych i wprowadzania zmian. Oznacza to, że należy używać unikatowych serwerów głównych, które są nieco inne niż standardowe i wymagają niezależnej obsługi oraz zarządzania. Ponadto konfiguracja wymagana przez jeden zespół może nie być konfiguracją optymalną dla innego zespołu.
 

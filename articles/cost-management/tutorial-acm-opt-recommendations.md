@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4d9e47d6da45eaba19cbe089de3fdf053c36046a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bb18a7338eb688ab427725933b9fc3f73b44b502
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030681"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992047"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Samouczek: Optymalizowanie kosztów od zalecanych
 
@@ -29,7 +29,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Sprawdź akcji, aby upewnić się, że maszyna wirtualna został pomyślnie zmieniony
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Zalecenia są dostępne dla wszystkich [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) klientów. Użytkownik musi mieć co najmniej odczytu dostęp do co najmniej jedną z następujących zakresów do wyświetlania danych kosztów.
+Rekomendacje są dostępne dla wszystkich klientów z umową [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów.
 
 - Subskrypcja
 - Grupa zasobów

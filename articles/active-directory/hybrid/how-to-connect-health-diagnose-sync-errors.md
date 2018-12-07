@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: c077e8592157b5c09dd1bc99934afd9f687b1da1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8841a4d216160af4ed731570b40754307ffbb5a4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282530"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996045"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Zdiagnozować i rozwiązać błędy synchronizacji zduplikowanym atrybutem
 
@@ -28,7 +28,7 @@ Funkcja diagnostyki ma następujące korzyści:
 - Zapewnia procedury diagnostycznej, który zawęża zduplikowanym atrybutem błędy synchronizacji. A także zapewnia określone poprawki.
 - Ma to zastosowanie poprawki dla dedykowanych scenariuszy z usługi Azure AD, aby rozwiązać problem w jednym kroku.
 - Nie uaktualnienia lub konfiguracja jest wymagana, aby włączyć tę funkcję.
-Aby uzyskać więcej informacji na temat usługi Azure AD, zobacz [tożsamości synchronizacji i odporności zduplikowanego atrybutu](https://aka.ms/dupattributeresdocs).
+Aby uzyskać więcej informacji na temat usługi Azure AD, zobacz [tożsamości synchronizacji i odporności zduplikowanego atrybutu](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
 ## <a name="problems"></a>Problemy
 ### <a name="a-common-scenario"></a>Typowy scenariusz

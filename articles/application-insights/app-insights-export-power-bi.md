@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a30e562b04a3414a1305604a521e0d659753142
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720409"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993358"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
-[Usługa Power BI](http://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](app-insights-overview.md).
+[Usługa Power BI](https://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](app-insights-overview.md).
 
 Istnieją trzy metody eksportowania danych usługi Application Insights do usługi Power BI:
 
@@ -40,7 +40,7 @@ Aby zaimportować zapytanie usługi Application Insights, należy użyć klasycz
 Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Eksportuj zapytania usługi Analytics
-1. [Otwórz analizę i zapisać zapytania](../log-analytics/query-language/get-started-analytics-portal.md).
+1. [Otwórz analizę i zapisać zapytania](../azure-monitor/log-query/get-started-portal.md).
 2. Przetestuj i uściślenie kwerendy, dopóki nie jesteś zadowolony z wyników. Upewnij się, że zapytanie działa prawidłowo w usłudze Analytics przed wykonaniem eksportu.
 3. Na **wyeksportować** menu, wybierz **usługi Power BI (M)**. Zapisz plik tekstowy.
    
@@ -152,6 +152,6 @@ Możesz edytować pulpit nawigacyjny, łącząc wykresy usługi Application Insi
 Po imporcie początkowym pulpit nawigacyjny i raporty będą aktualizowane codziennie. Możesz kontrolować harmonogram odświeżania zestawu danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Usługa Power BI — informacje](http://www.powerbi.com/learning/)
-* [Samouczek analiz](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Usługa Power BI — informacje](https://www.powerbi.com/learning/)
+* [Samouczek analiz](../azure-monitor/log-query/get-started-portal.md)
 

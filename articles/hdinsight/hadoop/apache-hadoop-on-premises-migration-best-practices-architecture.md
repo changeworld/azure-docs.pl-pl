@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7558a853657e3e3764cd8e3faf6dd466e9ead35e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008185"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994146"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania architektury
 
@@ -49,7 +49,7 @@ W poniższej tabeli przedstawiono różne metody, które mogą służyć do twor
 |[Zestaw SDK Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Szablony usługi Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
-Aby uzyskać więcej informacji, zobacz artykuł [klastra typów w HDInsight](../hadoop/apache-hadoop-introduction.md)
+Aby uzyskać więcej informacji, zobacz artykuł [klastra typów w HDInsight](../hadoop/apache-hadoop-introduction.md).
 
 ## <a name="use-transient-on-demand-clusters"></a>Używaj przejściowy klastrów na żądanie
 
@@ -57,7 +57,7 @@ Klastry HDInsight nieużywane przejść przez długi czas. Aby zaoszczędzić na
 
 Po usunięciu klastra skojarzone konto magazynu i metadane zewnętrznych nie są usuwane. Klaster można później ponownie utworzyć przy użyciu tego samego konta magazynu i magazynami metadanych.
 
-Usługa Azure Data Factory może służyć do zaplanowania Tworzenie klastrów HDInsight na żądanie. Aby uzyskać więcej informacji, zobacz artykuł [tworzyć klastry usługi Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
+Usługa Azure Data Factory może służyć do zaplanowania Tworzenie klastrów HDInsight na żądanie. Aby uzyskać więcej informacji, zobacz artykuł [utworzyć klastry platformy Apache Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
 
 ## <a name="decouple-storage-from-compute"></a>Rozdzielenie magazyn od zasobów obliczeniowych
 
@@ -65,33 +65,33 @@ Typowe lokalnych wdrożeń usługi Hadoop na użytek ten sam zestaw maszyn magaz
 
 W klastrach HDInsight Magazyn musi być wspólnie przechowywane z mocą obliczeniową i mogą albo należeć do usługi Azure storage, usługi Azure Data Lake Storage lub obu. Oddzielenie magazyn od zasobów obliczeniowych ma następujące zalety:
 
-- Udostępnianie danych między klastrami
-- Korzystanie z klastrów przejściowy, ponieważ dane nie są zależne od klastra
-- Mniejsze koszty magazynowania
-- Skalowanie magazynu i obliczeń osobno
-- Replikacja danych między regionami
+- Udostępnianie danych między klastrami.
+- Korzystanie z klastrów przejściowy, ponieważ dane nie są zależne od klastra.
+- Mniejsze koszty magazynowania.
+- Skalowanie magazynu i obliczeń oddzielnie.
+- Replikacja danych między regionami.
 
 Obliczeniowe tworzenia klastrów w pobliżu zasobów konta magazynu w regionie platformy Azure, aby zmniejszyć koszt wydajności związany z oddzielenie zasobów obliczeniowych i magazynowych. Szybkich sieci, należy wydajny dostęp węzłów obliczeniowych do danych wewnątrz usługi Azure storage.
 
 ## <a name="use-external-metadata-stores"></a>Korzystanie z zewnętrznych magazynów metadanych
 
-Istnieją dwa główne magazyny metadanych, które działają z klastrami HDInsight: Hive, jak i technologii Oozie. Magazyn metadanych Hive jest repozytorium centralnej schematu, które mogą być używane przez silniki przetwarzania danych, w tym usługi Hadoop, Spark, LLAP, Presto i Pig. Magazyn metadanych programu Oozie przechowuje szczegółowe informacje dotyczące planowania i ich stan w toku i zakończonych zadań usługi Hadoop.
+Istnieją dwa główne magazyny metadanych, które działają z klastrami HDInsight: [Apache Hive](https://hive.apache.org/) i [Apache Oozie](https://oozie.apache.org/). Magazyn metadanych Hive jest repozytorium centralnym schematu, które mogą być używane przez silniki przetwarzania danych, w tym usługi Hadoop, Spark, LLAP, Presto i Apache Pig. Magazyn metadanych programu Oozie przechowuje szczegółowe informacje dotyczące planowania i ich stan w toku i zakończonych zadań usługi Hadoop.
 
 HDInsight używa usługi Azure SQL Database dla gałęzi i Oozie magazyny metadanych. Istnieją dwa sposoby konfigurowania metadanych w klastrach HDInsight:
 
 1. Domyślny magazyn metadanych
 
-    - Bez dodatkowych kosztów
-    - Gdy klaster jest usuwany zostaje usunięty Magazyn metadanych
-    - Magazyn metadanych nie może być współużytkowane przez różnych klastrów
+    - Bez dodatkowych kosztów.
+    - Magazyn metadanych jest usuwany, gdy klaster jest usuwany.
+    - Magazyn metadanych nie może być współużytkowane przez różnych klastrach.
     - Używa podstawowe bazy danych SQL Azure, która ma ograniczenie do pięciu jednostek DTU.
 
 1. Niestandardowe zewnętrzny Magazyn metadanych
 
     - Określ zewnętrznej bazy danych SQL Azure jako magazynu metadanych.
     - Klastry można tworzyć i usunięte bez utraty metadane, takie jak szczegóły zadania Oozie schematu programu Hive.
-    - Pojedynczy Magazyn metadanych bazy danych mogą być udostępniane w różnych typów klastrów
-    - Magazyn metadanych można przeskalować w górę odpowiednio do potrzeb
+    - Pojedynczy Magazyn metadanych bazy danych mogą być udostępniane w różnych typów klastrów.
+    - Magazyn metadanych można przeskalować w górę odpowiednio do potrzeb.
     - Aby uzyskać więcej informacji, zobacz [używać zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
 
 ## <a name="best-practices-for-hive-metastore"></a>Najlepsze rozwiązania dotyczące Hive magazynu metadanych
@@ -106,7 +106,7 @@ Najważniejsze wskazówki magazynu metadanych HDInsight Hive są następujące:
 - Monitorowanie magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub usługi Azure Log Analytics.
 - Wykonaj **ANALIZOWANIE tabeli** polecenia na potrzeby generowania statystyk dla tabel i kolumn. Na przykład `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
-## <a name="best-practices-for-different-types-of-workloads"></a>Najlepsze rozwiązania dotyczące różnych rodzajów obciążeń
+## <a name="best-practices-for-different-workloads"></a>Najlepsze rozwiązania dotyczące różnych obciążeń
 
 - Należy wziąć pod uwagę przy użyciu funkcji LLAP klastra dla interakcyjnych zapytań Hive z czasem odpowiedzi ulepszone [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) to nowa funkcja programu Hive w wersji 2.0 umożliwiająca wewnątrzpamięciowa pamięć podręczna zapytań. LLAP sprawia, że zapytania programu Hive, które znacznie szybciej, maksymalnie [26 x szybciej niż Hive 1.x w niektórych przypadkach](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 - Należy wziąć pod uwagę przy użyciu zadań platformy Spark, zamiast zadań Hive.

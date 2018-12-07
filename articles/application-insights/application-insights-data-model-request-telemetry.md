@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d3a2fe9b51e0e6e9de653abb1bfa56a2529218cb
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2092816946dae20f5b3ae5b0a09179197dda00eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722469"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992824"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Dane telemetryczne dotyczące żądań: model danych usługi Application Insights
 
@@ -29,7 +29,7 @@ Elementu telemetrii żądania (w [usługi Application Insights](app-insights-ove
 
 Nazwa żądania reprezentuje ścieżkę kodu do przetwarzania żądania. Kardynalność niskiej wartości lepiej grupowanie żądań. Dla żądań HTTP, jego reprezentuje metody HTTP i szablon ścieżki adresu URL, takich jak `GET /values/{id}` bez rzeczywistego `id` wartość.
 
-Application Insights w sieci web zestaw SDK wysyła Nazwa żądania "w jakim jest" w odniesieniu do rozróżniania wielkości liter. Grupowanie w interfejsie użytkownika jest uwzględniana wielkość liter, `GET /Home/Index` jest liczone oddzielnie od `GET /home/INDEX` mimo że często powodują one ten sam wykonywania akcji i kontrolerów. Przyczyna tego jest to, że adresy URL ogólnie rzecz biorąc są [liter](http://www.w3.org/TR/WD-html40-970708/htmlweb.html). Warto sprawdzić, czy wszystkie `404` wystąpiło adresy URL wpisane pisane wielkimi literami. Możesz przeczytać więcej na żądania nazwy kolekcji przez zestaw SDK usługi sieci Web platformy ASP.Net w [wpis w blogu](http://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights w sieci web zestaw SDK wysyła Nazwa żądania "w jakim jest" w odniesieniu do rozróżniania wielkości liter. Grupowanie w interfejsie użytkownika jest uwzględniana wielkość liter, `GET /Home/Index` jest liczone oddzielnie od `GET /home/INDEX` mimo że często powodują one ten sam wykonywania akcji i kontrolerów. Przyczyna tego jest to, że adresy URL ogólnie rzecz biorąc są [liter](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Warto sprawdzić, czy wszystkie `404` wystąpiło adresy URL wpisane pisane wielkimi literami. Możesz przeczytać więcej na żądania nazwy kolekcji przez zestaw SDK usługi sieci Web platformy ASP.Net w [wpis w blogu](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Maksymalna długość: 1024 znaki
 
@@ -69,7 +69,7 @@ Dla aplikacji sieci web usługi Application Insights Definiuj żądanie jako zak
 
 Częściowo zaakceptowane zawartości `206` może wskazywać na błąd żądania ogólnego. Na przykład punkt końcowy usługi Application Insights odbiera partii elementów telemetrii jako pojedynczego żądania. Zwraca `206` gdy niektóre elementy w partii nie zostały przetworzone pomyślnie. Rosnąca liczba `206` wskazuje problem, który musi sprawdzić. Podobne logika dotyczy `207` wiele stanów, w których Powodzenie mogą być najgorszy kodów odpowiedzi oddzielne.
 
-Możesz przeczytać więcej w wyniku żądania kodu i kod stanu w [wpis w blogu](http://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+Możesz przeczytać więcej w wyniku żądania kodu i kod stanu w [wpis w blogu](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Właściwości niestandardowe
 

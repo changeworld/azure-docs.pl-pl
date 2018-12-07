@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: ''
-ms.openlocfilehash: c1af9cc9bc558fc610cdeeb81cda92082769b8cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c43b2e265903b119812d16ef4ef329393c725e71
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975389"
+ms.locfileid: "52992991"
 ---
 # <a name="log-analytics-for-service-providers"></a>Usługa log Analytics dla dostawców usług
 Usługa log Analytics może pomóc dostawcom usług zarządzanych (msp), dla dużych przedsiębiorstw, niezależnych dostawców oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w klienta w środowisku lokalnym lub w infrastrukturze chmury. 
@@ -75,12 +75,12 @@ Dostępne są dwie opcje do zaimplementowania centralnej lokalizacji w usłudze 
 
 1. Centralny obszar roboczy: dostawca usług można utworzyć obszaru roboczego w jego dzierżawie i użyć skryptu, który korzysta z [interfejsu API zapytań](https://dev.loganalytics.io/) z [interfejsu API zbierania danych](../../azure-monitor/platform/data-collector-api.md) do przenoszenia danych z różnych obszarów roboczych do tego centralnej lokalizacji. Inną opcją niż skryptu, jest użycie [usługi Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. Usługa Power BI jako centralnej lokalizacji: Usługa Power BI może działać jako centralnej lokalizacji, różne obszary robocze eksportowania danych do niego przy użyciu integrację między usługami Log Analytics i [usługi Power BI](../../log-analytics/log-analytics-powerbi.md). 
+2. Usługa Power BI jako centralnej lokalizacji: Usługa Power BI może działać jako centralnej lokalizacji, różne obszary robocze eksportowania danych do niego przy użyciu integrację między usługami Log Analytics i [usługi Power BI](../../azure-monitor/platform/powerbi.md). 
 
 
 ## <a name="next-steps"></a>Następne kroki
 * Automatyzować tworzenie i konfigurowanie obszarami roboczymi przy użyciu [szablonów usługi Resource Manager](template-workspace-configuration.md)
 * Automatyzacja tworzenia obszarów roboczych przy użyciu [programu PowerShell](../../log-analytics/log-analytics-powershell-workspace-configuration.md) 
 * Użyj [alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) do integracji z istniejącymi systemami
-* Generowanie raportu podsumowania przy użyciu [usługi Power BI](../../log-analytics/log-analytics-powerbi.md)
+* Generowanie raportu podsumowania przy użyciu [usługi Power BI](../../azure-monitor/platform/powerbi.md)
 * Przegląd procesu [konfigurowania usługi Log Analytics i usługą Power BI do monitorowania wielu klientów programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

@@ -6,32 +6,32 @@ manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: d72848e2-4b65-4c84-94bc-e2a90a6e7f47
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 1f37dcd14c1b3e85c3fae3bbf7aa67c16b8a898d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3eea59eba9fc1fc79a6f72a61860ee7e66a7df5b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249020"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994284"
 ---
 # <a name="input-metadata"></a>Metadane wejściowe
+
 Zadania kodowania jest skojarzony z wejściowego elementu (lub zasoby), w której chcesz wykonać kilka zadań kodowania.  Po zakończeniu zadania elementu zawartości wyjściowej jest generowany.  Elementu zawartości wyjściowej zawiera film wideo, audio, miniatury, manifest itp. Elementu zawartości wyjściowej zawiera także plik o metadane dotyczące zasobu danych wejściowych. Nazwa pliku XML metadanych ma następujący format: &lt;asset_id&gt;_metadata.xml (na przykład 41114ad3-eb5e - 4c, d 57 8 92-5354e2b7d4a4_metadata.xml), gdzie &lt;asset_id&gt; jest wartością AssetId zasób wejściowy.  
+
+Usługi Media Services nie skanuje uprzedzając zdarzenie wejściowe zasoby do generowania metadanych. Metadane wejściowe zostanie wygenerowany tylko jako artefakt, gdy dane wejściowe, zasób jest przetwarzana w ramach zadania. Dlatego ten artefakt jest zapisywany w danych wyjściowych zasobów. Różne narzędzia są używane do generowania metadanych dla zasobów danych wejściowych i wyjściowych zasoby. Dlatego metadanych wejściowych ma schemat nieco inne niż metadanych danych wyjściowych.
 
 Jeśli chcesz sprawdzić plik metadanych, możesz utworzyć **sygnatury dostępu Współdzielonego** lokalizatora i pobierania plików na komputerze lokalnym. Przykład można znaleźć na temat sposobu tworzenia lokalizatora SAS następuje i Pobierz plik [przy użyciu rozszerzenia SDK .NET usługi Media Services](media-services-dotnet-get-started.md).  
 
 W tym artykule omówiono elementów i typów schematu XML, na którym metada danych wejściowych (&lt;asset_id&gt;_metadata.xml) opiera się.  Aby uzyskać informacje o pliku który zawiera metadane dotyczące elementu zawartości wyjściowej, zobacz [zwróci metadane z](media-services-output-metadata-schema.md).  
 
-> [!NOTE]
-> Możesz znaleźć [kod schematu](media-services-input-metadata-schema.md#code) [XML — przykład](media-services-input-metadata-schema.md#xml) na końcu tego artykułu.  
-> 
-> 
+Możesz znaleźć [kod schematu](media-services-input-metadata-schema.md#code) [XML — przykład](media-services-input-metadata-schema.md#xml) na końcu tego artykułu.  
+ 
 
 ## <a name="AssetFiles"></a> Element AssetFiles (element główny)
 Zawiera kolekcję [elementu AssetFile](media-services-input-metadata-schema.md#AssetFile)s dla zadania kodowania.  

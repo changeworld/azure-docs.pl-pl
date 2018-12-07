@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: lagayhar
-ms.openlocfilehash: 46ba2aa42f6669443354ceb7661684612e26f45f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9f58c8c99fa48c0ffb4c76dd9752993b5e7d092e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728042"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994386"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -74,7 +74,7 @@ Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
     </dependencies>
 ```
 
-* *Błędy kompilacji lub walidacji sumy kontrolnej?* Spróbuj użyć określonej wersji, np.: `<version>2.0.n</version>`. Najbardziej aktualną wersję znajdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) lub wśród [artefaktów Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Błędy kompilacji lub walidacji sumy kontrolnej?* Spróbuj użyć określonej wersji, np.: `<version>2.0.n</version>`. Najbardziej aktualną wersję znajdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) lub wśród [artefaktów Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Trzeba zaktualizować zestaw SDK?* Odśwież zależności projektu.
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Jeśli używasz narzędzia Gradle... <a name="gradle-setup" />
@@ -97,7 +97,7 @@ Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Jeśli używasz środowiska Eclipse do tworzenia dynamicznego projektu internetowego...
 Użyj [wtyczki zestawu SDK Application Insights dla środowiska Java][eclipse]. Uwaga: ta wtyczka pozwala szybciej rozpocząć pracę z usługą Application Insights (przy założeniu, że nie używasz programu Maven/Gradle), ale nie udostępnia funkcji systemu zarządzania zależnościami. Oznacza to, że zaktualizowanie wtyczki nie powoduje automatycznego zaktualizowania bibliotek usługi Application Insights w projekcie.
 
-* *Błędy kompilacji lub walidacji sumy kontrolnej?* Spróbuj użyć określonej wersji, np.: `version:'2.0.n'`. Najbardziej aktualną wersję znajdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) lub wśród [artefaktów Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Błędy kompilacji lub walidacji sumy kontrolnej?* Spróbuj użyć określonej wersji, np.: `version:'2.0.n'`. Najbardziej aktualną wersję znajdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) lub wśród [artefaktów Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Aby zaktualizować zestaw SDK do nowej wersji*, odśwież zależności projektu.
 
 #### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>W innym przypadku, jeśli ręcznie zarządzasz zależnościami...

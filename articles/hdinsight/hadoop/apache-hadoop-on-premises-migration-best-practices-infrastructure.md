@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08238732c9e2d4e09e1f956c18768a15c95828c2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6a1641a76d43cdbac6253e00ea35f70325870853
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958186"
+ms.locfileid: "52993380"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania infrastruktury
 
 Ten artykuł zawiera zalecenia dotyczące zarządzania infrastrukturą klastrów Azure HDInsight. Jest częścią serii, która zapewnia najlepsze rozwiązania w celu ułatwienia migrowania lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
 
-## <a name="plan-well-for-the-capacity-needed-for-hdinsight-clusters"></a>Również planowanie pojemności wymagane w przypadku klastrów HDInsight
+## <a name="plan-for-hdinsight-cluster-capacity"></a>Planowanie pojemności klastra HDInsight
 
 Kluczowe wyborów Planowanie pojemności klastra HDInsight są następujące:
 
@@ -29,13 +29,13 @@ Kluczowe wyborów Planowanie pojemności klastra HDInsight są następujące:
 - **Wybierz rozmiar maszyny Wirtualnej i typ (obsługuje teraz serii G)** — każdy typ klastra zawiera zbiór typy węzłów, a każdy typ węzła zawiera szczegółowe opcje ich rozmiar maszyny Wirtualnej i typu. Rozmiar maszyny Wirtualnej i typ jest określany przez wykorzystanie Procesora mocy obliczeniowej, pamięci RAM i opóźnienie sieci. Symulowane obciążenie może służyć do określenia optymalnego rozmiaru maszyny Wirtualnej i typ dla każdego typu węzła.
 - **Wybierz liczbę węzłów procesu roboczego** — początkowa liczba węzłów procesu roboczego można ustalić przy użyciu symulowanych obciążeń. Klastra mogą być skalowane później, dodając większą liczbę węzłów procesu roboczego do obsłużenia szczytowego zapotrzebowania obciążenia. Później można skalować klastra, ponownie, gdy nie są wymagane dodatkowe węzły procesów roboczych.
 
-Aby uzyskać więcej informacji, zobacz artykuł [planowania pojemności dla klastrów HDInsight](../hdinsight-capacity-planning.md)
+Aby uzyskać więcej informacji, zobacz artykuł [planowania pojemności dla klastrów HDInsight](../hdinsight-capacity-planning.md).
 
-## <a name="use-the-recommended-virtual-machine-types-for-cluster-nodes"></a>Używanie typów maszyn wirtualnych zalecane dla węzłów klastra
+## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Użyj typu maszyn wirtualnych zalecane dla klastra
 
 Zobacz [domyślne rozmiary maszyn wirtualnych i konfiguracja węzła klastrów](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) zaleca się typów maszyn wirtualnych dla każdego typu klastra HDInsight.
 
-## <a name="check-the-availability-of-hadoop-components-in-hdinsight"></a>Sprawdzanie dostępności składników usługi Hadoop w HDInsight
+## <a name="check-hadoop-components-availability-in-hdinsight"></a>Sprawdzanie dostępności składników usługi Hadoop w HDInsight
 
 Każda wersja HDInsight jest dystrybucją chmury wersji Hortonworks Data Platform (HDP) i składa się z zestawu składników ekosystemu Hadoop. Zobacz [HDInsight Component Versioning](../hdinsight-component-versioning.md) szczegółowe informacje dotyczące wszystkich składników HDInsight i ich bieżącej wersji.
 
@@ -97,7 +97,7 @@ Akcje skryptu można także publikować w portalu Azure Marketplace jako aplikac
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Instalowanie aplikacji platformy Hadoop innych firm na HDInsight](../hdinsight-apps-install-applications.md)
+- [Instalowanie aplikacji platformy Hadoop Apache innych firm na HDInsight](../hdinsight-apps-install-applications.md)
 - [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md)
 - [Publikowanie aplikacji HDInsight w witrynie Azure Marketplace](../hdinsight-apps-publish-applications.md)
 
@@ -128,9 +128,9 @@ New—AzureRmHDInsightCluster `
     —Config $config
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł [HDInsight Dostosowywanie klastrów za pomocą narzędzia Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md)
+Aby uzyskać więcej informacji, zobacz artykuł [HDInsight Dostosowywanie klastrów za pomocą narzędzia Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="use-edge-nodes-on-hadoop-clusters-in-hdinsight-to-access-the-client-tools"></a>Użyj węzłów krawędzi w klastrach usługi Hadoop w HDInsight, aby dostęp do narzędzi klienta
+## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Węzły krawędzi klastra narzędzia klienta dostępu z usługi HDInsight Hadoop
 
 Pustego węzła krawędzi jest maszyną wirtualną systemu Linux przy użyciu tych samych narzędzi klienta, które są zainstalowane i skonfigurowane jako o węzłach głównych, ale z nie usług Hadoop działających. W węźle brzegowym może służyć do następujących celów:
 
@@ -140,9 +140,9 @@ Pustego węzła krawędzi jest maszyną wirtualną systemu Linux przy użyciu ty
 
 Węzły brzegowe mogą być tworzone i usunąć za pomocą witryny Azure portal i może być używany podczas lub po tworzenie klastra. Po utworzeniu węzła krawędzi możesz nawiązać połączenie z węzłem krawędzi za pomocą protokołu SSH i uruchom narzędzia klienta, aby uzyskać dostęp do klastra usługi Hadoop w HDInsight. W węźle brzegowym ssh punkt końcowy jest `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
 
-Aby uzyskać więcej informacji, zobacz artykuł [używanie pustych węzłów brzegowych w klastrach usługi Hadoop w HDInsight](../hdinsight-apps-use-edge-node.md)
+Aby uzyskać więcej informacji, zobacz artykuł [używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight](../hdinsight-apps-use-edge-node.md).
 
-## <a name="use-the-scale-up-and-scale-down-feature-of-clusters"></a>Funkcja skalowania w górę i w dół klastrów
+## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Funkcja skalowania w górę i w dół klastrów
 
 HDInsight zapewnia elastyczność, oferując możliwość skalowania w górę i skalowania w dół liczbę węzłów procesu roboczego w klastrach. Ta funkcja umożliwia zmniejszania klastra po godzinach lub w weekendy i rozwiń go podczas szczytowego zapotrzebowania biznesowych.
 
@@ -174,7 +174,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 
 Po wyjściu z trybu awaryjnego, można ręcznie usunąć pliki tymczasowe lub poczekaj, aż gałęzi po pewnym czasie pora to oczyścić automatycznie.
 
-Aby uzyskać więcej informacji, zobacz artykuł [klastrów HDInsight skalowania](../hdinsight-scaling-best-practices.md)
+Aby uzyskać więcej informacji, zobacz artykuł [klastrów HDInsight skalowania](../hdinsight-scaling-best-practices.md).
 
 ## <a name="use-hdinsight-with-azure-virtual-network"></a>HDInsight za pomocą sieci wirtualnej platformy Azure
 
@@ -196,7 +196,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Azure — sieci — Omówienie wirtualnych](../../virtual-network/virtual-networks-overview.md)
 - [Rozszerzenie Azure HDInsight przy użyciu sieci wirtualnej platformy Azure](../hdinsight-extend-hadoop-virtual-network.md)
 
-## <a name="use-azure-virtual-network-service-endpoints-to-securely-connect-to-other-azure-services"></a>Punkty końcowe usługi sieci wirtualnej platformy Azure umożliwia bezpieczne łączenie się z innymi usługami platformy Azure
+## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Bezpieczne łączenie z usługami platformy Azure z punktami końcowymi usługi Azure Virtual Network
 
 HDInsight obsługuje [punkty końcowe usługi sieci wirtualnej](../../virtual-network/virtual-network-service-endpoints-overview.md) umożliwiają nawiązania bezpiecznego połączenia bazy danych usługi Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB i SQL. Po włączeniu punktu końcowego usługi dla usługi Azure HDInsight ruch odbywa się za pośrednictwem zabezpieczonej trasy z w obrębie centrum danych platformy Azure. Podwyższony poziom zabezpieczeń na poziomie warstwy sieci możesz zablokować kont magazynu danych big data do ich określonej sieci wirtualne (Vnet) i nadal używać klastrów HDInsight bezproblemowo uzyskać dostęp do przetwarzania tych danych.
 

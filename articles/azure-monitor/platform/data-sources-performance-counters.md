@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 1069916efc1932b0a1a3139d015f448d4f8153a4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5df4ae93930002a00be4097e3eaa80ff77446a18
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843125"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994622"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics
 Liczniki wydajności, Windows i Linux zapewniają wgląd w wydajność składniki sprzętowe, systemów operacyjnych i aplikacji.  Usługa log Analytics można zebrać liczników wydajności w krótkich odstępach czasu do analizy prawie czasie rzeczywistym (nRT, NEAR) oprócz agregowania danych wydajności dla dłuższy okres analizy i raportowania.
@@ -228,4 +228,4 @@ Poniższa tabela zawiera różne przykłady przeszukiwania dzienników, które p
 ## <a name="next-steps"></a>Kolejne kroki
 * [Liczniki wydajności są zbierane z poziomu aplikacji systemu Linux](data-sources-linux-applications.md) tym MySQL i Apache HTTP Server.
 * Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
-* Zebrane dane, aby wyeksportować [usługi Power BI](../../log-analytics/log-analytics-powerbi.md) dodatkowych wizualizacji i analizy.
+* Zebrane dane, aby wyeksportować [usługi Power BI](../../azure-monitor/platform/powerbi.md) dodatkowych wizualizacji i analizy.

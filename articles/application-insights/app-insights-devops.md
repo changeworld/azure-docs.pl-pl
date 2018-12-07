@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 57e201403374ac72ef79bb4335294e1e937c8757
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bf096032d0ab429a5c6c06d5ada568c4bfb56d9f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720308"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994420"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji internetowych i usług dzięki usłudze Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Dlaczego muszę usługi Application Insights?
@@ -79,7 +79,7 @@ Główne kategorie danych są:
 * Ślady dzienników używana do debugowania.
 
 ## <a name="case-study-real-madrid-fc"></a>Analiza przypadku: Real Madryt F.C.
-Usługa sieci web [Real Madryt Football Club](http://www.realmadrid.com/) służy około 450 milionom fanów z całego świata. Fanów uzyskać do niego dostęp zarówno za pośrednictwem przeglądarki sieci web i aplikacje mobilne Club. Fanów można nie tylko Zarezerwuj biletów, ale również dostęp do klipów informacji i wideo na wyniki, graczy i nadchodzących gry. Za pomocą filtrów można wyszukiwania, takie jak liczby celów oceniane. Dostępne są także łącza do mediów społecznościowych. Środowisko użytkownika jest wysoce spersonalizowanych i został zaprojektowany jako komunikacja dwukierunkowa, dzięki którym można zaangażować fanów.
+Usługa sieci web [Real Madryt Football Club](https://www.realmadrid.com/) służy około 450 milionom fanów z całego świata. Fanów uzyskać do niego dostęp zarówno za pośrednictwem przeglądarki sieci web i aplikacje mobilne Club. Fanów można nie tylko Zarezerwuj biletów, ale również dostęp do klipów informacji i wideo na wyniki, graczy i nadchodzących gry. Za pomocą filtrów można wyszukiwania, takie jak liczby celów oceniane. Dostępne są także łącza do mediów społecznościowych. Środowisko użytkownika jest wysoce spersonalizowanych i został zaprojektowany jako komunikacja dwukierunkowa, dzięki którym można zaangażować fanów.
 
 Rozwiązanie [system usług i aplikacji w systemie Microsoft Azure to](https://www.microsoft.com/inculture/sports/real-madrid/). Skalowalność to kluczowe: ruch jest zmienna i mogą dotrzeć bardzo dużej ilości danych, podczas i wokół dopasowań.
 

@@ -12,27 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: e92bcd412071d1a991a0bd3ec7b28df9f509c54c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250890"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994674"
 ---
 # <a name="output-metadata"></a>Metadane wyjściowe
 ## <a name="overview"></a>Przegląd
 Zadania kodowania jest skojarzony z wejściowego elementu (lub zasoby), w której chcesz wykonać kilka zadań kodowania. Na przykład kodowanie pliku MP4 do H.264 MP4 o adaptacyjnej szybkości transmisji bitów zestawów; Tworzenie miniatur; Tworzenie nakładek. Po zakończeniu zadania elementu zawartości wyjściowej jest generowany.  Elementu zawartości wyjściowej zawiera film wideo, audio, miniatury, itp. Elementu zawartości wyjściowej zawiera także plik o metadane dotyczące elementu zawartości wyjściowej. Nazwa pliku XML metadanych ma następujący format: &lt;source_file_name&gt;_manifest.xml (na przykład BigBuckBunny_manifest.xml).  
 
+Usługi Media Services nie skanuje uprzedzając zdarzenie wejściowe zasoby do generowania metadanych. Metadane wejściowe zostanie wygenerowany tylko jako artefakt, gdy dane wejściowe, zasób jest przetwarzana w ramach zadania. Dlatego ten artefakt jest zapisywany w danych wyjściowych zasobów. Różne narzędzia są używane do generowania metadanych dla zasobów danych wejściowych i wyjściowych zasoby. Dlatego metadanych wejściowych ma schemat nieco inne niż metadanych danych wyjściowych.
+
 Jeśli chcesz sprawdzić plik metadanych, możesz utworzyć **sygnatury dostępu Współdzielonego** lokalizatora i pobierania plików na komputerze lokalnym.  
 
 W tym artykule omówiono elementów i typów schematu XML, na którym metada danych wyjściowych (&lt;source_file_name&gt;_manifest.xml) opiera się. Aby uzyskać informacje o pliku, który zawiera metadane dotyczące zasobu danych wejściowych, zobacz [metadanych wejściowych](media-services-input-metadata-schema.md).  
 
-> [!NOTE]
-> Można znaleźć schematu kompletny kod i XML — przykład na końcu tego artykułu.  
->
->
+Można znaleźć schematu kompletny kod i XML — przykład na końcu tego artykułu.  
 
 ## <a name="AssetFiles "></a> Element główny AssetFiles
 Kolekcja wpisów AssetFile dla zadania kodowania.  

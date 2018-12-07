@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 492087f7eeca8628ac6ac9a9e42f355a9356f1ce
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 54741bd2d76a7ba414613a40e07c47be703aa033
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584710"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994406"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania migracji danych
 
 Ten artykuł zawiera zalecenia dotyczące migracji danych do usługi Azure HDInsight. Jest częścią serii, która zapewnia najlepsze rozwiązania w celu ułatwienia migrowania lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
 
-## <a name="migrate-data-from-on-premises-to-azure"></a>Migrowanie danych ze środowiska lokalnego na platformę Azure
+## <a name="migrate-on-premises-data-to-azure"></a>Migracja danych lokalnych na platformę Azure
 
 Istnieją dwie główne opcje migracji danych ze środowiska lokalnego do środowiska platformy Azure:
 
@@ -49,7 +49,7 @@ Poniższa tabela zawiera czas transferu przybliżony danych na podstawie przepus
 
 Narzędzia natywnej na platformie Azure, takich jak narzędzia DistCp, usługi Azure Data Factory i AzureCp, może służyć do przesyłania danych za pośrednictwem sieci. Narzędzia innych firm platforma WANDisco można również w tym samym celu. Narzędzia Mirrormaker platformy Kafka i Sqoop mogą służyć do transferu bieżące dane ze środowiska lokalnego do systemów usługi Azure storage.
 
-## <a name="performance-considerations-when-using-apache-distcp"></a>Zagadnienia dotyczące wydajności w przypadku korzystania z narzędzia DistCp Apache
+## <a name="performance-considerations-with-apache-distcp"></a>Zagadnienia związane z wydajnością za pomocą narzędzia DistCp Apache
 
 Narzędzia DistCp jest projektu Apache, który używa zadania MapReduce mapy w celu transferu danych, obsługa błędów i odzyskać z tych błędów. Lista plików źródłowych przypisuje do każdego zadania mapy. Zadanie mapy następnie kopiuje wszystkie jego pliki przypisane do miejsca docelowego. Istnieje kilka technik może poprawić wydajność DistCp.
 
@@ -92,14 +92,14 @@ Magazyn metadanych hive można migrować za pomocą skryptów lub przy użyciu f
 
 #### <a name="hive-metastore-migration-using-scripts"></a>Migracja magazynu metadanych hive za pomocą skryptów
 
-1. Generuj Hive DDLs z Magazyn metadanych Hive środowiska lokalnego. Ten krok można wykonać przy użyciu [otoki skryptu powłoki systemowej]. (https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
-1. Edytuj wygenerowany kod DDL, aby zastąpić adres url systemu HDFS przy użyciu adresów URL usługi ADLS/WASB/ABFS
-1. Uruchom zaktualizowane DDL na magazynu metadanych klastra HDInsight
-1. Upewnij się, czy wersja magazynu metadanych Hive jest zgodna między lokalizacją lokalną i chmurą
+1. Generuj Hive DDLs z Magazyn metadanych Hive środowiska lokalnego. Ten krok można wykonać przy użyciu [skryptu powłoki systemowej otoki](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
+1. Edytuj wygenerowany kod DDL, aby zastąpić adres url systemu HDFS przy użyciu adresów URL usługi ADLS/WASB/ABFS.
+1. Uruchom zaktualizowane DDL na Magazyn metadanych z klastra HDInsight.
+1. Upewnij się, że wersja magazynu metadanych Hive jest zgodna między lokalizacją lokalną i chmurą.
 
 #### <a name="hive-metastore-migration-using-db-replication"></a>Migracja magazynu metadanych hive przy użyciu replikacji bazy danych
 
-- Konfigurowanie replikacji bazy danych między Magazyn metadanych Hive lokalnej bazy danych i magazynu metadanych HDInsight bazy danych
+- Konfigurowanie replikacji bazy danych między Magazyn metadanych Hive lokalnej bazy danych i magazynu metadanych HDInsight bazy danych.
 - Użyj "Hive MetaTool", aby zastąpić adres url systemu HDFS ADLS/WASB/ABFS adresów URL, na przykład:
 
 ```bash

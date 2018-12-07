@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307660"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994761"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Ramka zabezpieczeń: Autoryzacja | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -220,7 +220,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Document DB | 
+| **Składnik**               | Baza danych Documentdb platformy Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -349,7 +349,7 @@ Przy użyciu w pełni kwalifikowane nazwy (silną) unikatowo identyfikuje typ i 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólna NET Framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Kroki** | <p>Ta usługa nie używa kontrolkę autoryzacji. Gdy klient wywołuje określonej usługi WCF, WCF zapewnia różnych systemów autoryzacji, które pozwalają sprawdzić, czy obiekt wywołujący ma uprawnienia do wykonania metody usługi na serwerze. Jeśli kontrolek autoryzacji nie są włączone dla usługi WCF, uwierzytelniony użytkownik może osiągnąć podwyższenie poziomu uprawnień.</p>|
 
 ### <a name="example"></a>Przykład

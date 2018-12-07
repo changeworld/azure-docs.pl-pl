@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: d9bf3618b32ce7c5ba7a300a929428dd0614743d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9e845d005af9481919472d8baba0aea17a877a5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276248"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992345"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Zarządzanie danymi użytkownika w Centrum zabezpieczeń Azure badanie
 Ten artykuł zawiera informacje na temat sposobu zarządzania danymi użytkownika w funkcji badania w usłudze Azure Security Center. Badanie dane są przechowywane w [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md) i widoczne w usłudze Security Center. Zarządzanie danymi użytkowników obejmuje możliwość usunięcia lub eksportowanie danych.
@@ -58,4 +58,4 @@ Użytkownik usługi Security Center przypisaną rolę właściciela, współauto
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat zarządzających danymi użytkowników zobacz [zarządzanie danymi użytkownika w usłudze Azure Security Center](security-center-privacy.md).
-Aby dowiedzieć się więcej na temat usuwania danych prywatnych w usłudze Log Analytics, zobacz [sposobu eksportowania i usuwania danych prywatnych](../log-analytics/log-analytics-personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Aby dowiedzieć się więcej na temat usuwania danych prywatnych w usłudze Log Analytics, zobacz [sposobu eksportowania i usuwania danych prywatnych](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).

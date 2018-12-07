@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 58cc59b4922a654377dc0d5d2c38c9c0ed7199e0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 1988f5790b719acf4e5dad1a378139c8d74b56f9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892622"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995343"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Aby zachować istniejącą inwestycję w [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) i rozszerzone możliwości za pomocą usługi Log Analytics, Operations Manager można zintegrować z obszaru roboczego usługi Log Analytics. Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
@@ -43,8 +43,8 @@ Przed rozpoczęciem sprawdź następujące wymagania.
 
 * Usługa log Analytics obsługuje tylko System Center Operations Manager 1807, Operations Manager 1801, Operations Manager 2016 Operations Manager 2012 SP1 UR6 lub nowszej, a programu Operations Manager 2012 R2 UR2 lub nowszej. Obsługa serwera proxy została dodana w programach Operations Manager 2012 SP1 UR7 i Operations Manager 2012 R2 UR3.
 * Wszystkie agenty programu Operations Manager muszą spełniać minimalne wymagania dotyczące obsługi. Upewnij się, że agenci są przy minimalnej aktualizacji, w przeciwnym razie komunikacji agenta Windows może zakończyć się niepowodzeniem i generować błędy w dzienniku zdarzeń programu Operations Manager.
-* Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, przejrzyj [Omówienie obszaru roboczego usługi Log Analytics](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json).
-* Uwierzytelnianie na platformie Azure przy użyciu konta będącego członkiem [roli Współautor usługi Log Analytics](../../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users).  
+* Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, przejrzyj [Omówienie obszaru roboczego usługi Log Analytics](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).
+* Uwierzytelnianie na platformie Azure przy użyciu konta będącego członkiem [roli Współautor usługi Log Analytics](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]
 >Ostatnie zmiany do interfejsów API platformy Azure będzie uniemożliwić klientom pomyślnie skonfigurować integrację między grupą zarządzania i usługi Log Analytics po raz pierwszy. W przypadku klientów, którzy zintegrowano już program ich grupy zarządzania w usłudze nie są zagrożone o ile nie trzeba ponownie skonfigurować istniejące połączenie.  

@@ -9,37 +9,37 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: fa72765e02592b72efb09320958a0aa244ae8b08
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 548992ac221b1b6f9a29082eb986aa42c6a2807e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265291"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993991"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — zabezpieczenia i najlepsze rozwiązania metodyki DevOps
 
 Ten artykuł zawiera zalecenia dotyczące zabezpieczeń i metodyki DevOps w systemach usługi Azure HDInsight. Jest częścią serii, która zapewnia najlepsze rozwiązania w celu ułatwienia migrowania lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
 
-## <a name="use-the-enterprise-security-package-to-secure-and-govern-the-cluster"></a>Pakiet Enterprise Security umożliwia bezpieczne i określają sposób klastra
+## <a name="secure-and-govern-cluster-with-enterprise-security-package"></a>Zabezpieczanie i kontrolować klastra z pakietem Enterprise Security
 
-Pakiet zabezpieczeń przedsiębiorstwa (ESP) obsługuje uwierzytelnianie oparte na usłudze Active Directory, obsługa wielu użytkowników i kontroli dostępu opartej na rolach. Z wybraną opcją ESP klaster HDInsight jest przyłączony do domeny usługi Active Directory, a administrator przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach (RBAC) dla zabezpieczeń Hive przy użyciu struktury Apache Ranger. Administrator może również przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian zasad kontroli dostępu.
+Pakiet zabezpieczeń przedsiębiorstwa (ESP) obsługuje uwierzytelnianie oparte na usłudze Active Directory, obsługa wielu użytkowników i kontroli dostępu opartej na rolach. Z wybraną opcją ESP klaster HDInsight jest przyłączony do domeny usługi Active Directory, a administrator przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach (RBAC) dla zabezpieczeń Apache Hive przy użyciu struktury Apache Ranger. Administrator może również przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian zasad kontroli dostępu.
 
 ESP jest dostępna w następujących typów klastrów: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka i zapytania interakcyjnego (LLAP programu Hive). 
 
 Aby wdrożyć klaster HDInsight przyłączone do domeny, należy użyć następujące czynności:
 
-- Wdrażanie usługi Azure Active Directory (AAD), przekazując nazwy domeny
-- Wdrażanie usługi Azure Active Directory Domain Services (DS usługi AAD)
-- Tworzenie wymaganych sieci wirtualnej i podsieci
-- Wdrażanie maszyny Wirtualnej w sieci wirtualnej do zarządzania DS usługi AAD
-- Przyłącz maszynę Wirtualną do domeny
-- Instalowanie usługi AD i narzędzia systemu DNS
-- Poproś administratora DS usługi AAD, utworzenie jednostki organizacyjnej (OU)
-- Włączanie protokołu LDAPS dla DS usługi AAD
+- Wdrażanie usługi Azure Active Directory (AAD), przekazując nazwę domeny.
+- Wdrażanie usługi Azure Active Directory Domain Services (DS usługi AAD).
+- Utwórz wymagane sieć wirtualną i podsieć.
+- Wdrażanie maszyny Wirtualnej w sieci wirtualnej do zarządzania DS usługi AAD.
+- Przyłącz do domeny.
+- Zainstaluj usługi AD i narzędzi.
+- Poproś administratora DS usługi AAD, tworzenie jednostki organizacyjnej (OU).
+- Włączanie protokołu LDAPS dla DS usługi AAD.
 - Utwórz konto usługi w usłudze Azure Active Directory za pomocą delegowanego odczytu & admin uprawnienia do zapisu w jednostce Organizacyjnej, tak, że jest to możliwe. To konto usługi można, a następnie dołączysz maszyny do domeny i umieścić podmiotów maszyn w jednostce Organizacyjnej. Można również utworzyć jednostki usługi w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
 
     > [!Note]
-    > Konto usługi nie musi być kontem administratora domeny usługi AD
+    > Konto usługi nie musi być kontem administratora domeny usługi AD.
 
 - Wdrażanie klastra HDInsight ESP, ustawiając następujące parametry:
     - **Nazwa domeny**: nazwa domeny, która jest skojarzona z usługi Azure AD DS.
@@ -51,33 +51,33 @@ Aby wdrożyć klaster HDInsight przyłączone do domeny, należy użyć następu
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Wprowadzenie do zabezpieczeń usługi Hadoop przy użyciu klastrów HDInsight przyłączone do domeny](../domain-joined/apache-domain-joined-introduction.md)
+- [Wprowadzenie do zabezpieczeń platformy Apache Hadoop przy użyciu klastrów HDInsight przyłączone do domeny](../domain-joined/apache-domain-joined-introduction.md)
 - [Planowanie Azure klastrów Hadoop przyłączonych do domeny w HDInsight](../domain-joined/apache-domain-joined-architecture.md)
 - [Konfigurowanie klastra HDInsight przyłączone do domeny za pomocą usługi Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 - [Synchronizowanie użytkowników usługi Azure Active Directory do klastra usługi HDInsight](../hdinsight-sync-aad-users-to-cluster.md)
-- [Konfigurowanie zasad usługi Hive HDInsight przyłączone do domeny](../domain-joined/apache-domain-joined-run-hive.md)
+- [Konfigurowanie zasad usługi Apache Hive HDInsight przyłączone do domeny](../domain-joined/apache-domain-joined-run-hive.md)
 - [Uruchamiaj klastry Apache Oozie w przyłączonym do domeny usługi HDInsight Hadoop](../domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)
 
-## <a name="implement-end-to-end-enterprise-security-management"></a>Implementowanie enterprise kompleksowe zarządzanie zabezpieczeniami
+## <a name="implement-end-to-end-enterprise-security"></a>Implementowanie zabezpieczeń przedsiębiorstwa typu end to end
 
 Kompleksowa Usługa zabezpieczeń przedsiębiorstwa można osiągnąć przy użyciu następujących formantów:
 
 - **Potok danych prywatnych i chronionych (granicznej zabezpieczeń na poziomie)**
-    - Obwodowej poziom zabezpieczeń, można osiągnąć przy użyciu usługi Azure Virtual Networks, sieciowe grupy zabezpieczeń i usługi bramy
+    - Obwodowej poziom zabezpieczeń, można osiągnąć przy użyciu usługi Azure Virtual Networks, sieciowe grupy zabezpieczeń i usługi bramy.
 
 - **Uwierzytelnianie i autoryzacja dostępu do danych**
-    - Tworzenie klastra HDInsight przyłączone do domeny przy użyciu usługi Azure Active Directory Domain Services. (Pakiet Enterprise Security)
-    - Używać narzędzia Ambari w celu zapewnienia opartej na rolach dostęp do zasobów klastra dla użytkowników usługi AD
+    - Tworzenie klastra HDInsight przyłączone do domeny przy użyciu usługi Azure Active Directory Domain Services. (Pakiet Enterprise Security).
+    - Użyj narzędzia Ambari, aby podać opartej na rolach dostęp do zasobów klastra dla użytkowników usługi AD.
     - Użyj struktury Apache Ranger do ustawiania zasad kontroli dostępu dla usługi Hive w tabeli / kolumny / wiersz poziom.
     - Dostęp SSH do klastra może być ograniczona tylko do administratora.
 
 - **Inspekcja**
     - Wyświetl i raportować wszystkie przypadki dostępu do danych i zasobów klastra usługi HDInsight.
-    - Wyświetlanie i raportować wszystkie zmiany wprowadzane do zasad kontroli dostępu
+    - Wyświetl i raportować wszystkie zmiany wprowadzane do zasad kontroli dostępu.
 
 - **Szyfrowanie**
     - Przezroczyste szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez firmę Microsoft lub kluczy zarządzanych przez klienta.
-    - W przypadku szyfrowania przesyłania przy użyciu szyfrowania po stronie klienta, https i protokołu TLS
+    - W przypadku szyfrowania przesyłania przy użyciu szyfrowania po stronie klienta, https i TLS.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
@@ -106,13 +106,13 @@ Regularnie uaktualnienia do najnowszej wersji HDInsight, aby korzystać z zalet 
 1. Importowanie danych przejściowych, która została utworzona kopia zapasowa.
 1. Rozpoczęcie zadania/kontynuować przetwarzanie za pomocą nowego klastra.
 
-Aby uzyskać więcej informacji, zobacz artykuł: [klastra HDInsight uaktualnienie do nowej wersji](../hdinsight-upgrade-cluster.md)
+Aby uzyskać więcej informacji, zobacz artykuł: [klastra HDInsight uaktualnienie do nowej wersji](../hdinsight-upgrade-cluster.md).
 
 ## <a name="patch-cluster-operating-systems"></a>Poprawka klastrowanie systemów operacyjnych
 
 Jako zarządzana usługa Hadoop HDInsight zajmuje się stosowanie poprawek systemu operacyjnego maszyny wirtualne używane przez klastry HDInsight.
 
-Aby uzyskać więcej informacji, zobacz artykuł: [for HDInsight stosowania poprawek systemu operacyjnego](../hdinsight-os-patching.md)
+Aby uzyskać więcej informacji, zobacz artykuł: [stosowania poprawek systemu operacyjnego dla HDInsight](../hdinsight-os-patching.md).
 
 ## <a name="post-migration"></a>Po przeprowadzeniu migracji
 
@@ -122,4 +122,4 @@ Aby uzyskać więcej informacji, zobacz artykuł: [for HDInsight stosowania popr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przeczytaj więcej na temat [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction)
+- Przeczytaj więcej na temat [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction).

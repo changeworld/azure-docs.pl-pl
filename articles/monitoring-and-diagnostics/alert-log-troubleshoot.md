@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 94c03c9aa6e361167b396af5218b308e6cacfafe
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e11833feba9466fed6ea6b4f698ba2184ad129e2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879812"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962202"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 ## <a name="overview"></a>Przegląd
 W tym artykule pokazano, jak rozwiązywanie typowych problemów występujących podczas konfigurowania alertów dzienników w usłudze Azure monitor. Zapewnia również rozwiązania często zadawane pytania dotyczące funkcji lub konfiguracji alertów dzienników. 
 
-Termin **alertów dzienników** opisuje alerty, że ognia na podstawie niestandardowych zapytania w [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
+Termin **alertów dzienników** opisuje alerty, że ognia na podstawie niestandardowych zapytania w [usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
 
 > [!NOTE]
 > W tym artykule nie bierze pod uwagę przypadków, gdy witryna Azure portal Wyświetla i alertu wyzwolona reguła i powiadomień, wykonywane przez skojarzonych grup akcji. W takich przypadkach można znaleźć szczegółowe informacje w artykule na [grup akcji](monitoring-action-groups.md).
@@ -30,7 +30,7 @@ Termin **alertów dzienników** opisuje alerty, że ognia na podstawie niestanda
 Poniżej przedstawiono niektóre typowe przyczyny, dlaczego skonfigurowanego [reguł alertów dzienników w usłudze Azure Monitor](alert-log.md) nie wyświetla stan [jako *wyzwolone* Oczekiwano](monitoring-alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Czas wprowadzania danych dla dzienników
-Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
+Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
 
 Aby zminimalizować opóźnienie pozyskiwania danych, system czeka i ponawia zapytanie alertu wiele razy, jeśli stwierdzi, że potrzebne dane nie są jeszcze pozyskiwane. System ma wykładniczo zwiększa czasu oczekiwania. Dziennik alertów wyzwalaczy tylko po danych jest dostępna, więc ich opóźnienie może być spowodowany pozyskiwanie danych wolnego dziennika. 
 

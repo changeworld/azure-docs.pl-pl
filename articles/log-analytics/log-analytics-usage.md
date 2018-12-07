@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c72e1c92815f70838db20ab67c3f70fc5223ac03
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 535bb76faeaff53a262abbecc59021b5de5ff7da
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964751"
+ms.locfileid: "52994374"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 
 > [!NOTE]
 > W tym artykule opisano sposób analizowania użycia danych w usłudze Log Analytics.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
-> - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](log-analytics-manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
+> - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](../azure-monitor/platform/manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
 > - [Monitorowanie użycia i szacowanych kosztów](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
 
 ## <a name="understand-usage"></a>Analizy użycia

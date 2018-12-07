@@ -1,5 +1,5 @@
 ---
-title: Skalowanie klastra usługi kontenera platformy Azure
+title: (PRZESTARZAŁE) Skalowanie klastra usługi kontenera platformy Azure
 description: Jak skalować węzły agenta w klastrze DC/OS, Docker Swarm lub Kubernetes w usłudze Azure Container Service przy użyciu wiersza polecenia platformy Azure lub w witrynie Azure portal.
 services: container-service
 author: sauryadas
@@ -9,15 +9,16 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 8fc78a84d624f9339b9b77e748b3c36e38d3ae5a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d259d5d53ec8d45f584eebe614a0bd8892514a4c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38310151"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996012"
 ---
-# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Skalowanie węzłów agenta w klastrze usługi Container Service
+# <a name="deprecated-scale-agent-nodes-in-a-container-service-cluster"></a>(PRZESTARZAŁE) Skalowanie węzłów agenta w klastrze usługi Container Service
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby uzyskać zaktualizowaną wersję tego artykułu, który korzysta z usługi Azure Kubernetes Service, zobacz [skalowanie klastra usługi Azure Kubernetes Service (AKS)](../../aks/scale-cluster.md).
 
 [!INCLUDE [container-service-scale.md](../../../includes/container-service-scale.md)]

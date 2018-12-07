@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: daeb2a08e29c71465581e3c51a92cb238a77417e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 140e9699f19986c929aaa58872b420dd97568c5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681844"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995450"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Przewodnik: Eksportowanie do bazy danych SQL z usługi Application Insights przy użyciu usługi Stream Analytics
 W tym artykule pokazano, jak przenieść dane telemetryczne z [usługi Azure Application Insights] [ start] do usługi Azure SQL database przy użyciu [eksportu ciągłego] [ export] i [usługi Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -259,6 +259,6 @@ Po kilku minutach wróć do narzędzi zarządzania serwerem SQL i obejrzyj dane 
 [diagnostic]: app-insights-diagnostic-search.md
 [export]: app-insights-export-telemetry.md
 [metrics]: app-insights-metrics-explorer.md
-[portal]: http://portal.azure.com/
+[portal]: https://portal.azure.com/
 [start]: app-insights-overview.md
 

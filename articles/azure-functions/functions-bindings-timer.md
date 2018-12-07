@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 6589a90f6eea2bfd7188e89b701233b37c162d54
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 10cfaab44343a494dd654d0e930e12fa268ea2e3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978770"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992885"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -28,13 +28,13 @@ W tym artykule wyjaśniono, jak pracować z wyzwalaczami czasomierza w usłudze 
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu znajduje się w [zestawu sdk rozszerzenia, usługi azure webjobs w-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) repozytorium GitHub.
+Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu znajduje się w [zestawu sdk rozszerzenia, usługi azure webjobs w-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
 
-Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu znajduje się w [zestawu sdk rozszerzenia, usługi azure webjobs w-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) repozytorium GitHub.
+Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu znajduje się w [zestawu sdk rozszerzenia, usługi azure webjobs w-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -50,7 +50,7 @@ Zobacz przykład specyficzny dla języka:
 
 ### <a name="c-example"></a>Przykład w języku C#
 
-W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , które jest uruchamiane co pięć minut:
+W poniższym przykładzie przedstawiono [ C# funkcja](functions-dotnet-class-library.md) , jest wykonywane za każdym razem, minuty mają wartość podzielna przez pięć (na przykład jeśli funkcja rozpoczyna się od 18:57:00, następna wydajności będzie 19:00:00):
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -92,9 +92,9 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-### <a name="f-example"></a>Przykład F #
+### <a name="f-example"></a>F#przykład
 
-W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [funkcja skryptu języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących.
+W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [ F# skryptu funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących.
 
 Oto powiązanie danych w *function.json* pliku:
 
@@ -107,7 +107,7 @@ Oto powiązanie danych w *function.json* pliku:
 }
 ```
 
-Poniżej przedstawiono kod skryptu F #:
+Oto F# kod skryptu:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger ) =
@@ -150,7 +150,7 @@ module.exports = function (context, myTimer) {
 
 ### <a name="java-example"></a>Przykładzie w języku Java
 
-Poniższy przykład funkcja wyzwala i wykonuje co pięć minut. `@TimerTrigger` Adnotacja dla funkcji definiuje harmonogramu przy użyciu tego samego formatu ciągu jako [wyrażeń CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression).
+Poniższy przykład funkcja wyzwala i wykonuje co pięć minut. `@TimerTrigger` Adnotacja dla funkcji definiuje harmonogramu przy użyciu tego samego formatu ciągu jako [wyrażeń CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
 ```java
 @FunctionName("keepAlive")

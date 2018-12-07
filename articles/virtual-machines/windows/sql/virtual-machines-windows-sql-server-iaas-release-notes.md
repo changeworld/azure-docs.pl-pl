@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2018
 ms.author: mathoma
-ms.openlocfilehash: 44aee447c7f935cd67ca55902c53c5f6f9eb6fda
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 52036d8f5d25fc4a4f2d1b602428e9cba4762b7f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500351"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993138"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Program SQL Server na maszynie wirtualnej platformy Azure — informacje o wersji
 
@@ -28,8 +28,8 @@ Platforma Azure umożliwia wdrażanie maszyny wirtualnej za pomocą obrazu progr
 
 
 ## <a name="november-2018"></a>Listopada 2018 r.
-- **Nowego dostawcy zasobów bazy danych SQL**: Brak nowego dostawcę zasobów dla maszyn wirtualnych SQL, które umożliwiają lepsze zarządzanie maszyną Wirtualną. Aby uzyskać więcej informacji na temat rejestrowania maszyny Wirtualnej, zobacz [rejestrowanie starszej wersji maszyny Wirtualnej SQL przy użyciu nowego dostawcę zasobów](virtual-machines-windows-sql-ahb.md#register-legacy-sql-vm-with-new-resource-provider).
-- **Model licencjonowania przełącznika**: Możesz teraz przełączać się między model płatności za użycie i bring your own licencji dla maszyny Wirtualnej SQL przy użyciu wiersza polecenia platformy Azure lub programu Powershell. Aby uzyskać więcej informacji, zobacz [jak zmienić modelu licencjonowania dla maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md)
+- **Nowego dostawcy zasobów bazy danych SQL**: Brak nowego dostawcę zasobów dla maszyn wirtualnych SQL, które umożliwiają lepsze zarządzanie maszyną Wirtualną. Aby uzyskać więcej informacji na temat rejestrowania maszyny Wirtualnej, zobacz [zarejestrować istniejącej maszyny Wirtualnej SQL przy użyciu nowego dostawcę zasobów](virtual-machines-windows-sql-ahb.md#register-existing-sql-vm-with-new-resource-provider).
+- **Model licencjonowania przełącznika**: Możesz teraz przełączać się między model płatności za użycie i bring your own licencji dla maszyny Wirtualnej SQL przy użyciu wiersza polecenia platformy Azure lub programu PowerShell. Aby uzyskać więcej informacji, zobacz [jak zmienić modelu licencjonowania dla maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md)
 
 
 
