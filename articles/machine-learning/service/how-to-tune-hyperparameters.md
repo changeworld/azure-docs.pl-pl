@@ -1,5 +1,6 @@
 ---
-title: Dostosowywanie hiperparametrów dla modelu przy użyciu usługi Azure Machine Learning
+title: Dostosowywanie hiperparametrów dla modelu
+titleSuffix: Azure Machine Learning service
 description: Efektywne dostrojenie hiperparametrów dla modelu uczenie głębokie uczenie / machine przy użyciu usługi Azure Machine Learning. Dowiesz się jak zdefiniować parametr przestrzeni wyszukiwania, określić podstawową metrykę do optymalizacji i wczesne zakończyć niskiej wydajności działa.
 ms.author: swatig
 author: swatig007
@@ -8,15 +9,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: da809aaaa1dd46c1232d0b032136833caaf0d2d0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140810"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100739"
 ---
-# <a name="tune-hyperparameters-for-your-model"></a>Dostosowywanie hiperparametrów dla modelu
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Dostosowywanie hiperparametrów dla modelu za pomocą usługi Azure Machine Learning
 
 Efektywne dostrojenie hiperparametrów dla modelu przy użyciu usługi Azure Machine Learning.  Do strojenia Hiperparametrycznego obejmuje następujące kroki:
 
@@ -36,8 +38,6 @@ W scenariuszach uczenie głębokie uczenie / machine modelu wydajność zależy 
 
 Usługa Azure Machine Learning pozwala na zautomatyzowanie eksploracji hiperparametrycznego w sposób efektywny, zaoszczędzić znaczną ilość czasu i zasobów. Określ zakres wartości hiperparametrycznego i maksymalna liczba szkolenia przebiegów. System następnie uruchamia wielu równoczesnych uruchomień przy użyciu różnych parametrów konfiguracji i automatycznie wyszukuje konfigurację, która powoduje najlepszą wydajność, mierzone metryki, które wybierzesz. Nieprawidłowo działających przebiegów szkoleniowych są automatycznie wczesne zakończone, zmniejszając nadmierne użycie nadmierny zasobów obliczeniowych. Te zasoby zamiast tego są używane do eksplorowania inne konfiguracje hiperparametrycznego.
 
->[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 0.168 
 
 ## <a name="define-search-space"></a>Definiowanie przestrzeni wyszukiwania
 
@@ -311,7 +311,7 @@ hyperdrive_run = experiment.submit(hyperdrive_run_config)
 Zestaw SDK usługi Azure Machine Learning zapewnia uruchomienia elementu widget Notes, która wizualizuje postęp szkolenia. Poniższy fragment kodu wizualizuje swoje hiperparametrycznego dostrajania jest uruchamiany w jednym miejscu w notesie Jupyter:
 
 ```Python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(hyperdrive_run).show()
 ```
 
@@ -348,10 +348,9 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Przykładowy notes
-Zapoznaj się 
-* [Training/03.Train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow) samouczek dotyczący Dostosowywanie hiperparametrów modelu Tensorflow. 
-
-Pobierz ten notes:
+Zapoznaj się z tymi notesów:
+* [How-to-use-azureml/Training-with-deep-Learning/Train-hyperparameter-Tune-Deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) 
+* [How-to-use-azureml/Training-with-deep-Learning/Train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -4,17 +4,17 @@ description: W tym artykule opisano, jak używać programu Visual Studio, monito
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/10/2018
-ms.openlocfilehash: 9cc65fc5119bedc816f825b7aae6120f4bca3b12
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: e673d4f1c2d58a61c541cca4f8448dffc003f9fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061054"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101019"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Monitorowanie i zarządzanie nimi zadania usługi Stream Analytics za pomocą programu Visual Studio
 
@@ -31,14 +31,14 @@ W tym artykule przedstawiono sposób monitorowania zadania usługi Stream Analyt
 
 Można zwinąć **Podsumowanie zadania** i kliknij przycisk **metryk zadań** kartę, aby wyświetlić na wykresie ważne metryki. Sprawdzanie i usuń zaznaczenie typy metryk do dodawania i usuwania ich z wykresu.
 
-![Stream Analytics metryki](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
+![Stream Analytics metryki w programie Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
 ## <a name="error-monitoring"></a>Błąd monitorowania
 
 Można również monitorować błędy, klikając **błędy** kartę.
 
-![Stream Analytics błędy](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Stream Analytics błędów w programie Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej

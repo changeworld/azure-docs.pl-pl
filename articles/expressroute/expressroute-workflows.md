@@ -1,23 +1,24 @@
 ---
-title: Przepływy pracy do skonfigurowania obwodu usługi Azure ExpressRoute | Dokumentacja firmy Microsoft
-description: Ta strona przeprowadzi Cię przez przepływy pracy do skonfigurowania obwodu usługi ExpressRoute i połączeń komunikacji równorzędnej
+title: 'Przepływy pracy configuration — ExpressRoute Circuit: Azure | Dokumentacja firmy Microsoft'
+description: Ta strona zawiera przepływy pracy do skonfigurowania obwodu usługi ExpressRoute i połączeń komunikacji równorzędnej
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.custom: seodec18
+ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301042"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101691"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Przepływy pracy ExpressRoute dla aprowizacji obwodu i stanów obwodu
 Ta strona przeprowadzi Cię przez usługę aprowizacji i routing konfiguracji przepływów pracy na wysokim poziomie.
 
-![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
+![przepływ pracy obwodu](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
 Poniższa ilustracja i odpowiadające jej kroki pokazują zadania, które należy wykonać, aby mogła mieć obwodu usługi ExpressRoute zainicjowanego end-to-end. 
 
@@ -35,7 +36,7 @@ Poniższa ilustracja i odpowiadające jej kroki pokazują zadania, które należ
      > 
      > 
      
-     ![](./media/expressroute-workflows/routing-workflow.png)
+     ![przepływy pracy routingu](./media/expressroute-workflows/routing-workflow.png)
 5. Łączenie sieci wirtualnych obwodów usługi ExpressRoute — można połączyć sieci wirtualnych na obwód usługi ExpressRoute. Postępuj zgodnie z instrukcjami [połączyć sieci wirtualne](expressroute-howto-linkvnet-arm.md) do obwodu. Te sieci wirtualne mogą być w tej samej subskrypcji platformy Azure jako obwód usługi ExpressRoute lub mogą znajdować się w innej subskrypcji.
 
 ## <a name="expressroute-circuit-provisioning-states"></a>Obwód usługi ExpressRoute w Stanach aprowizacji

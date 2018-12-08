@@ -1,5 +1,5 @@
 ---
-title: Wdrożyć moduły usługi Azure IoT Edge (VS Code) | Dokumentacja firmy Microsoft
+title: Wdrażanie modułów z programu Visual Studio Code — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Użyj programu Visual Studio Code, aby wdrożyć moduły na urządzeniu usługi IoT Edge
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a7f0fc0c3169aadac78609830dda55ae1ec7ea46
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 212f103a356dc3663795a5e5453869c99da3fff9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567847"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100824"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Wdrażanie usługi Azure IoT Edge modułów z programu Visual Studio Code
 
@@ -109,7 +110,7 @@ Rozszerzenia usługi Azure IoT dla programu Visual Studio Code służy do wykony
 
 2. W dolnej części Eksploratora rozwiń **Azure IoT Hub Devices** sekcji. 
 
-   ![Rozwiń węzeł urządzenia w usłudze Azure IoT Hub](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![Rozwiń sekcję usługi Azure IoT Hub Devices](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
 3. Kliknij pozycję **...**  w **Azure IoT Hub Devices** nagłówek sekcji. Jeśli nie widzisz wielokropka, umieść kursor nad nagłówka. 
 

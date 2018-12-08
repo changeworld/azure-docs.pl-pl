@@ -1,25 +1,24 @@
 ---
-title: Korzystanie z platformy Mongoose przy użyciu usługi Azure Cosmos DB | Microsoft Docs
+title: Przy użyciu platformy mongoose z usługą Azure Cosmos DB
 description: Dowiedz się, jako połączyć aplikację Mongoose napisaną w języku Node.js z usługą Azure Cosmos DB
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: sclyon
-ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 6f84dfac7b556e59ec3ad76ff7d2c6e5f5105293
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857401"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101436"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: korzystanie z platformy Mongoose przy użyciu usługi Azure Cosmos DB
 
-W tym samouczku przedstawiono sposób użycia [platformy Mongoose](http://mongoosejs.com/) do zapisywania danych w usłudze Azure Cosmos DB. W tym przewodniku do obsługi usługi Azure Cosmos DB jest używany interfejs API MongoDB. Mongoose to platforma modelowania obiektów usługi MongoDB w środowisku Node.js. Udostępnia ona także proste, bazujące na schematach rozwiązanie do modelowania danych aplikacji.
+W tym samouczku przedstawiono sposób użycia [platformy Mongoose](https://mongoosejs.com/) do zapisywania danych w usłudze Azure Cosmos DB. W tym przewodniku do obsługi usługi Azure Cosmos DB jest używany interfejs API MongoDB. Mongoose to platforma modelowania obiektów usługi MongoDB w środowisku Node.js. Udostępnia ona także proste, bazujące na schematach rozwiązanie do modelowania danych aplikacji.
 
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
@@ -96,7 +95,7 @@ Dla każdego utworzonego modelu platforma Mongoose tworzy nową kolekcję usług
 
 W tym przewodniku opisano oba modele. Najpierw zostanie omówiony proces przechowywania jednego typu danych w jednej kolekcji. Jest to domyślne zachowanie platformy Mongoose.
 
-Na platformie Mongoose funkcjonuje też pojęcie [dyskryminatorów](http://mongoosejs.com/docs/discriminators.html). Dyskryminatory to mechanizm dziedziczenia schematów. Umożliwiają one posiadanie wielu modeli z nakładającymi się schematami w jednej bazowej kolekcji usługi MongoDB.
+Na platformie Mongoose funkcjonuje też pojęcie [dyskryminatorów](https://mongoosejs.com/docs/discriminators.html). Dyskryminatory to mechanizm dziedziczenia schematów. Umożliwiają one posiadanie wielu modeli z nakładającymi się schematami w jednej bazowej kolekcji usługi MongoDB.
 
 Dzięki temu można przechowywać różne modele danych w tej samej kolekcji, a następnie, korzystając z klauzuli filtru w czasie przetwarzania zapytania, pobierać tylko potrzebne dane.
 
@@ -196,7 +195,7 @@ Domyślnym zachowaniem platformy Mongoose jest tworzenie kolekcji usługi MongoD
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Korzystanie z dyskryminatorów platformy Mongoose w celu umożliwienia przechowywania danych w pojedynczej kolekcji
 
-W przypadku tej metody użyjemy [dyskryminatorów platformy Mongoose](http://mongoosejs.com/docs/discriminators.html), aby pomóc zoptymalizować koszty poszczególnych kolekcji usługi Azure Cosmos DB. Dyskryminatory umożliwiają zdefiniowanie różnicującego „klucza”, który umożliwi przechowywanie, różnicowanie i filtrowanie różnych modeli obiektów.
+W przypadku tej metody użyjemy [dyskryminatorów platformy Mongoose](https://mongoosejs.com/docs/discriminators.html), aby pomóc zoptymalizować koszty poszczególnych kolekcji usługi Azure Cosmos DB. Dyskryminatory umożliwiają zdefiniowanie różnicującego „klucza”, który umożliwi przechowywanie, różnicowanie i filtrowanie różnych modeli obiektów.
 
 W tym miejscu utworzymy bazowy model obiektów, zdefiniujemy klucz różnicujący i dodamy modele „Family” i „VacationDestinations” jako rozszerzenia modelu bazowego.
 

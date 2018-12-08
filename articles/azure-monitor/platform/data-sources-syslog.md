@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 292def9303cf74142a55e1101fe6371476f9f09d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c5fe310e4ba491180b9905ee7e4c80cf814eb9ef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845216"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106298"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>SYSLOG źródeł danych w usłudze Log Analytics
 SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux.  Aplikacje będzie wysyłać komunikaty, które mogą być przechowywane na komputerze lokalnym lub dostarczane do modułu zbierającego Syslog.  Po zainstalowaniu agenta pakietu OMS dla systemu Linux umożliwia skonfigurowanie lokalnego demona usługi Syslog do przekazywania komunikatów do agenta.  Agent wysyła następnie komunikatu do usługi Log Analytics, gdzie odpowiedni rekord zostanie utworzony w repozytorium pakietu OMS.  
@@ -45,7 +45,7 @@ Można dodawać nowych funkcji, wpisując jej nazwę, a następnie klikając pol
 Domyślnie wszystkie zmiany konfiguracji są automatycznie przekazywane do wszystkich agentów.  Jeśli chcesz skonfigurować dziennik systemowy ręcznie na każdym agencie systemu Linux, usuń zaznaczenie pola *Zastosuj poniższą konfigurację do moich maszyn z systemem Linux*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurowanie usługi Syslog na agenta systemu Linux
-Gdy [OMS agent jest zainstalowany na komputerze klienckim systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md), program domyślny plik konfiguracji usługi syslog do definiowania funkcji i ważność komunikatów, które są zbierane.  Można zmodyfikować tego pliku, aby zmienić konfigurację.  Plik konfiguracyjny różni się w zależności od demona dziennika systemu, który klient został zainstalowany.
+Gdy [OMS agent jest zainstalowany na komputerze klienckim systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), program domyślny plik konfiguracji usługi syslog do definiowania funkcji i ważność komunikatów, które są zbierane.  Można zmodyfikować tego pliku, aby zmienić konfigurację.  Plik konfiguracyjny różni się w zależności od demona dziennika systemu, który klient został zainstalowany.
 
 > [!NOTE]
 > Jeśli edytujesz konfigurację dziennika systemu, należy ponownie uruchomić demona dziennika systemu, aby zmiany zaczęły obowiązywać.
@@ -208,5 +208,5 @@ Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobiera
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
-* Użyj [pól niestandardowych](../../log-analytics/log-analytics-custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
-* [Konfigurowanie agentów systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) do gromadzenia innych typów danych.
+* Użyj [pól niestandardowych](../../azure-monitor/platform/custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
+* [Konfigurowanie agentów systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) do gromadzenia innych typów danych.

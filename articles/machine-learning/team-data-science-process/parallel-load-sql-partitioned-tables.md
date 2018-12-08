@@ -1,6 +1,6 @@
 ---
-title: Tworzenia i optymalizowania tabele, szybkie równoległe importowania danych do programu SQL Server na Maszynie wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Równoległy zbiorczy import danych przy użyciu tabeli partycji SQL
+title: Równoległy zbiorczy import danych przy użyciu tabel partycji SQL na Maszynie wirtualnej platformy Azure
+description: Twórz partycjonowane tabele, szybkie równoległy zbiorczy importowania danych do bazy danych programu SQL Server.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: f437de3043cbd3d689f85dc3524b419b1633553f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 5645799b0f1be1c2c6117a314920ee996880cb37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446470"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101210"
 ---
-# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Równoległy zbiorczy import danych przy użyciu tabeli partycji SQL
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Tworzenia i optymalizowania tabele, szybkie równoległe importowania danych do programu SQL Server na Maszynie wirtualnej platformy Azure
 
 W tym artykule opisano sposób tworzenia partycjonowane tabele, szybkie równoległy zbiorczy importowania danych do bazy danych programu SQL Server. Ładowanie danych big data/transferu do usługi SQL database, importowanie danych do bazy danych SQL i kolejne zapytania można zwiększyć za pomocą *partycjonowane tabele i widoki*. 
 

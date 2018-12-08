@@ -1,6 +1,6 @@
 ---
-title: Jak dodać lub usunąć grupę z innej grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać lub usunąć grupę z innej grupy za pomocą usługi Azure Active Directory.
+title: Dodawanie lub usuwanie grupy z innej grupy — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące dodawania lub usuwania grupy z innej grupy za pomocą usługi Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,16 +10,16 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 2d05a31c56cfe8ea92a933696ca3c9b0fadbd4d3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 12f557e9453db0d8bff2ab91fe8453e026e0320c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000305"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104275"
 ---
-# <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Porady: Dodawanie lub usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory
+# <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Dodawanie lub usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory
 Ten artykuł ułatwia dodawanie i usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory.
 
 >[!Note]

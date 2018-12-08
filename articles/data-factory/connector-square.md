@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f63dcc73532426b07f792f631f934587fca08605
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 80389be735d337f72426f0745fee5717b96fa78a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129000"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100875"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopiowanie danych z kwadrat przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -78,7 +78,12 @@ Następujące właściwości są obsługiwane w przypadku kwadratowy połączone
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych w kształcie kwadratu.
 
-Aby skopiować dane z kwadratowych, należy ustawić właściwość typu zestawu danych na **SquareObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z kwadratowych, należy ustawić właściwość typu zestawu danych na **SquareObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **SquareObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -90,7 +95,8 @@ Aby skopiować dane z kwadratowych, należy ustawić właściwość typu zestawu
         "linkedServiceName": {
             "referenceName": "<Square linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -99,14 +105,14 @@ Aby skopiować dane z kwadratowych, należy ustawić właściwość typu zestawu
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło w kształcie kwadratu.
 
-### <a name="squaresource-as-source"></a>SquareSource jako źródło
+### <a name="square-as-source"></a>Kwadratowe jako źródło
 
 Aby skopiować dane z kwadratowych, należy ustawić typ źródła w działaniu kopiowania, aby **SquareSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **SquareSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Business"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Business"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

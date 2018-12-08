@@ -1,11 +1,12 @@
 ---
 title: Platformy uczenia głębokiego i sztucznej Inteligencji — Azure | Dokumentacja firmy Microsoft
-description: Platformy sztucznej inteligencji i uczenia głębokiego
+description: Więcej informacji na temat głębokiego uczenia, strukturami i narzędziami obsługiwanych na maszynie wirtualnej do nauki o danych.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: fbe3aeac3918142388edfa8cd053badd362d7fd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5bf9a0e9cbbcf2a4144255ac0bfbd4bd48e956c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241926"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104470"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Platformy sztucznej inteligencji i uczenia głębokiego
 [Maszyny wirtualnej do nauki o danych](https://aka.ms/dsvm) (DSVM) i [VM uczenia głębokiego](https://aka.ms/dsvm/deeplearning) obsługuje wiele platform uczenia głębokiego, aby ułatwić tworzenie aplikacji sztucznej inteligencji (AI) przy użyciu analizy predykcyjnej i możliwości poznawcze, takich jak obraz i language understanding. 

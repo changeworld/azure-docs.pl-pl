@@ -1,6 +1,6 @@
 ---
-title: Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu języka Python | Dokumentacja firmy Microsoft
-description: Rozpocznij wysyłanie zdarzeń do usługi Event Hubs przy użyciu języka Python
+title: Wysyłanie zdarzeń za pomocą języka Python — Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji Node.js, która wysyła zdarzenia do usługi Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: 41d0c8daedeb73ceffc9f4890d1e805e199bc2a3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b7adf3976f5f7e028ffa9ffeb13db22d3d4bba8e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956895"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102983"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Wysyłanie zdarzeń do usługi Event Hubs przy użyciu języka Python
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e052b656f12a9059a5ee9d3ea21d0fa20fc00c6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 75594bf77f9bde7549b14e3a154f18ba67ebac3d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123066"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103391"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopiowanie danych z Zoho przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -74,7 +74,12 @@ Następujące właściwości są obsługiwane w przypadku Zoho połączone usłu
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Zoho.
 
-Aby skopiować dane z Zoho, należy ustawić właściwość typu zestawu danych na **ZohoObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z Zoho, należy ustawić właściwość typu zestawu danych na **ZohoObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **ZohoObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -86,7 +91,8 @@ Aby skopiować dane z Zoho, należy ustawić właściwość typu zestawu danych 
         "linkedServiceName": {
             "referenceName": "<Zoho linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -95,14 +101,14 @@ Aby skopiować dane z Zoho, należy ustawić właściwość typu zestawu danych 
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Zoho.
 
-### <a name="zohosource-as-source"></a>ZohoSource jako źródło
+### <a name="zoho-as-source"></a>Zoho jako źródło
 
 Aby skopiować dane z Zoho, należy ustawić typ źródła w działaniu kopiowania, aby **ZohoSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **ZohoSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Accounts"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Accounts"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 78984cf9f73fd0cdd6e28e20e1d54d5b1198b7be
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6963bb44e6377bcfbb2cb647f1508f075b4268be
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687490"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101850"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -69,7 +69,7 @@ Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scen
 
 ## <a name="how-does-data-sync-work"></a>Jak działa synchronizacja danych 
 
--   **Śledzenie zmiany danych:** Data Sync śledzi zmiany przy użyciu Wstawianie, aktualizowanie i usuwanie wyzwalaczy. Zmiany są zapisywane w tabeli w bazie danych użytkownika po stronie.
+-   **Śledzenie zmiany danych:** Data Sync śledzi zmiany przy użyciu Wstawianie, aktualizowanie i usuwanie wyzwalaczy. Zmiany są zapisywane w tabeli w bazie danych użytkownika po stronie. Należy pamiętać, że BULK INSERT nie zostać wywołane wyzwalaczy domyślnie. Jeśli nie określono FIRE_TRIGGERS, wyzwalacze wstawiania nie wykonać. Dodaj opcję FIRE_TRIGGERS, aby synchronizacja danych mogą śledzić te operacje wstawiania. 
 
 -   **Synchronizowanie danych:** zaprojektowano synchronizacji danych w modelu gwiazdy. Centrum przeprowadza synchronizację z każdym elementem członkowskim indywidualnie. Zmiany w Centrum są pobierane do elementu członkowskiego, a następnie zmiany w porównaniu z elementu członkowskiego są przekazywane do Centrum.
 
@@ -82,7 +82,7 @@ Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scen
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Konfigurowanie synchronizacji danych w witrynie Azure portal
 
 -   [Set up Azure SQL Data Sync (Konfigurowanie usługi Azure SQL Data Sync)](sql-database-get-started-sql-data-sync.md)
--   Dane synchronizacji Agent - [danych synchronizacji agenta dla usługi Azure SQL Data Sync](sql-database-data-sync-agent.md)
+-   Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
 
 ### <a name="set-up-data-sync-with-powershell"></a>Konfiguruj synchronizację danych przy użyciu programu PowerShell
 

@@ -1,9 +1,9 @@
 ---
-title: Wyświetl i Usuń dane z galerii sztucznej Inteligencji platformy Azure — usłudze Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+title: Zarządzanie danymi z galerii sztucznej Inteligencji platformy Azure — usłudze Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Możesz wyeksportować i usuwania danych użytkownika w ramach produktu przy użyciu galerii sztucznej Inteligencji Azure za pomocą interfejsu lub interfejs API wykazu galerii sztucznej Inteligencji. W tym artykule przedstawiono, jak.
 services: machine-learning
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: cgronlun
 ms.reviewer: jmartens, mldocs
@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
 ms.date: 05/25/2018
-ms.openlocfilehash: 6603428599a84a265566fb98da0b151ab4962f81
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ec8dea405f745b3dffb99688b256b3d8fcf2e3c3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314460"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101130"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Wyświetlanie i usunąć dane użytkownika w produkcie z galerii sztucznej Inteligencji platformy Azure
 

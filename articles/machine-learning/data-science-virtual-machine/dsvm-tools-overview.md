@@ -1,11 +1,12 @@
 ---
-title: Omówienie narzędzia maszyny wirtualnej nauki danych - Azure | Dokumentacja firmy Microsoft
-description: Dane nauki wirtualnej maszyny Omówienie narzędzia.
-keywords: narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux
+title: Omówienie narzędzia maszyny wirtualnej do nauki o danych — Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat narzędzia i programy narzędziowe, wstępnie zainstalowanych na maszynie wirtualnej do nauki o danych.
+keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,26 +16,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9f10c30c8619a32e65063bbc83fd885aee93a4fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7c51a44f7fcd46e9c15700fe91a4c86afbe02801
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407032"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100960"
 ---
-# <a name="get-to-know-your-data-science-virtual-machine"></a>Poznawanie nauki danych maszyny wirtualnej
+# <a name="get-to-know-your-data-science-virtual-machine"></a>Poznaj maszyny wirtualnej do nauki o danych
 
-Maszyna wirtualna nauki danych (DSVM) zawiera obszernej listy nauki popularnych danych, machine learning/AI narzędzia i platformy danych. Narzędzie konfiguracji szczegółowa analiza są testowane przez programistów i analityków danych firmy Microsoft i przez społeczność szerszych nauki danych do zapewnienia stabilności i żywotność ogólne.
+Maszyna wirtualna do nauki o danych (DSVM) zawiera obszerną listę do nauki o danych popularne, machine learning/narzędzia sztucznej Inteligencji i platform danych. Konfiguracje narzędzia są rygorystycznie testowane przez analitykom danych i deweloperom w firmie Microsoft oraz przez szerszą społeczność rozwiązań do nauki o danych zapewnienie stabilności i efektywność ogólne.
 
-DSVM zawiera także wiele przykłady i wskazówki w formie notesów Jupyter, które mogą być wykonywane lokalnie. Istnieje również dokumentacji dla tych przykładów w celu ułatwienia zrozumienia. 
+Maszyny DSVM zawiera również wiele wskazówki i przykłady kodu w formie notesów programu Jupyter, które mogą być wykonywane lokalnie. Istnieje również dokumentacji dla tych przykładów ułatwić zrozumienie. 
 
-Narzędzia platformy, narzędzia i przykłady, które znajdują się w maszynie Wirtualnej nauki danych są podzielone na następujące sekcje:
+Narzędzi, platform, narzędzi i przykładów, które znajdują się na maszynie Wirtualnej do nauki o danych są podzielone na następujące sekcje:
 
-1. **[Głębokie uczenie i struktur AI](dsvm-deep-learning-ai-frameworks.md)**
-2. **[Uczenie maszynowe i narzędzia do analizy danych](dsvm-ml-data-science-tools.md)**
+1. **[Uczenie głębokie i struktury sztucznej Inteligencji](dsvm-deep-learning-ai-frameworks.md)**
+2. **[Machine Learning i narzędzia do analizy danych](dsvm-ml-data-science-tools.md)**
 3. **[Języki programowania](dsvm-languages.md)**
-4. **[Narzędzia deweloperskie i IDEs](dsvm-tools-development.md)**
-5. **[Narzędzia wprowadzanie danych](dsvm-tools-ingestion.md)**
-6. **[Eksploracja danych i narzędzi wizualizacji](dsvm-tools-explore-and-visualize.md)**
+4. **[Narzędzia programistyczne i środowisk IDE](dsvm-tools-development.md)**
+5. **[Narzędzia do wprowadzania danych](dsvm-tools-ingestion.md)**
+6. **[Eksplorowanie danych i narzędzi do wizualizacji](dsvm-tools-explore-and-visualize.md)**
 7. **[Data Platforms](dsvm-data-platforms.md)**
-8. **[Przykłady i wskazówki](dsvm-samples-and-walkthroughs.md)**
+8. **[Przykłady i przewodniki](dsvm-samples-and-walkthroughs.md)**

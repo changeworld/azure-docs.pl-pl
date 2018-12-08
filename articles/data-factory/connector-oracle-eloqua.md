@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 56160b8db3bad5ebd04fc30442833d36f1633ed1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a8bb5e7ca71a24f36b102938668d57bdccd0b0b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123525"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101810"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopiowanie danych z bazy danych Oracle Eloqua, za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -76,7 +76,12 @@ Następujące właściwości są obsługiwane dla Oracle Eloqua połączone usł
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Oracle Eloqua.
 
-Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić właściwość typu zestawu danych na **EloquaObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić właściwość typu zestawu danych na **EloquaObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **EloquaObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -88,7 +93,8 @@ Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić właściwość
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -97,14 +103,14 @@ Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić właściwość
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Oracle Eloqua.
 
-### <a name="eloquasource-as-source"></a>EloquaSource jako źródło
+### <a name="eloqua-as-source"></a>Eloqua jako źródło
 
 Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić typ źródłowego w działaniu kopiowania, aby **EloquaSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **EloquaSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Accounts"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Accounts"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

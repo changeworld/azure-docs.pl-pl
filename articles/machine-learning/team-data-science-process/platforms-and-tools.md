@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5df2cbabeb704453d71a0ac1db14c618dae352d2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 96548b5db1051c751f6468cb330cb5049182ce95
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446453"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104258"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia dla projektów do nauki o danych
 
@@ -129,17 +129,17 @@ Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usłu
         ssh-keygen
         cat .ssh/id_rsa.pub
 
-![](./media/platforms-and-tools/resources-1-generate_ssh.png)
+![Polecenia, aby wygenerować klucz SSH](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Skopiuj cały ssh w tym klucza *ssh-rsa*. 
 - Zaloguj się do usługi Azure DevOps. 
 - Kliknij przycisk **< imię i nazwisko\>**  w prawym górnym rogu strony i kliknij przycisk **zabezpieczeń**. 
     
-    ![](./media/platforms-and-tools/resources-2-user-setting.png)
+    ![Kliknij swoją nazwę użytkownika, a następnie kliknij przycisk zabezpieczeń](./media/platforms-and-tools/resources-2-user-setting.png)
 
 - Kliknij przycisk **kluczy publicznych SSH**i kliknij przycisk **+ Dodaj**. 
 
-    ![](./media/platforms-and-tools/resources-3-add-ssh.png)
+    ![Kliknij przycisk kluczy publicznych SSH, a następnie kliknij pozycję + Dodaj](./media/platforms-and-tools/resources-3-add-ssh.png)
 
 - Wklej ssh key właśnie został skopiowany do pola tekstowego, a następnie zapisz.
 

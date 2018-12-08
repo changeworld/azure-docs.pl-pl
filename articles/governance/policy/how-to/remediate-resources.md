@@ -4,25 +4,25 @@ description: Niniejszy instruktaż przeprowadzi Cię przez czynności naprawcze 
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/25/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5b503c1a96d0c0a5ce3d14e98622040116873045
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 62b59fa5a7955d9cab41591606c595adae41ba9f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724659"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103850"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 
-Zasoby, które nie są zgodne na **deployIfNotExists** zasad można umieścić w stanu zgodności za pośrednictwem **korygowania**. Korygowanie odbywa się przez poinstruowanie zasady uruchomią **deployIfNotExists** wpływu przypisanych zasad na istniejących zasobów. Niniejszy instruktaż poprowadzi kroki niezbędne do to osiągnąć.
+Zasoby, które nie są zgodne na **deployIfNotExists** zasad można umieścić w stanu zgodności za pośrednictwem **korygowania**. Korygowanie odbywa się przez poinstruowanie zasady uruchomią **deployIfNotExists** wpływu przypisanych zasad na istniejących zasobów. W tym artykule przedstawiono kroki niezbędne do zrozumienia i wykonać korygowanie za pomocą zasad.
 
 ## <a name="how-remediation-security-works"></a>Jak działają zabezpieczenia korygowania
 
 Po uruchomieniu szablon zasad **deployIfNotExists** definicji zasad, jak za pomocą [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md).
-Zasady tworzenia zarządzanych tożsamości dla każdego przypisania dla Ciebie, ale należy podać szczegółowe informacje o jakie role, aby przyznać tożsamości zarządzanej. Jeśli tożsamość zarządzana brakuje ról, jest on wyświetlany podczas przypisywania zasad lub inicjatywy zawierający zasady. Korzystając z portalu, automatycznie przyzna zasada tożsamość zarządzaną wymienionych ról po zainicjowaniu przypisania.
+Zasady tworzy tożsamość zarządzaną dla każdego przypisania, ale musi mieć szczegółowe informacje o jakie role, aby przyznać tożsamości zarządzanej. Jeśli tożsamość zarządzana brakuje ról, ten błąd jest wyświetlany podczas przypisywania zasad lub inicjatywy. Korzystając z portalu, automatycznie przyzna zasada tożsamość zarządzaną wymienionych ról po uruchomieniu przypisania.
 
 ![Tożsamość zarządzana — Brak roli](../media/remediate-resources/missing-role.png)
 
@@ -31,8 +31,7 @@ Zasady tworzenia zarządzanych tożsamości dla każdego przypisania dla Ciebie,
 
 ## <a name="configure-policy-definition"></a>Skonfiguruj definicję zasad
 
-Pierwszym krokiem jest zdefiniowanie ról, **deployIfNotExists** musi w definicji zasad, aby pomyślnie wdrożyć zawartość dołączone szablonu. W obszarze **szczegóły** właściwości, Dodaj **roleDefinitionIds** właściwości. Jest to tablica ciągów, które odpowiadają ról w danym środowisku.
-Aby uzyskać pełny przykład, zobacz [przykład deployIfNotExists](../concepts/effects.md#deployifnotexists-example).
+Pierwszym krokiem jest zdefiniowanie ról, **deployIfNotExists** musi w definicji zasad, aby pomyślnie wdrożyć zawartość dołączone szablonu. W obszarze **szczegóły** właściwości, Dodaj **roleDefinitionIds** właściwości. Ta właściwość jest tablicą ciągów, które odpowiadają ról w danym środowisku. Aby uzyskać pełny przykład, zobacz [przykład deployIfNotExists](../concepts/effects.md#deployifnotexists-example).
 
 ```json
 "details": {
@@ -56,7 +55,7 @@ Get-AzureRmRoleDefinition -Name 'Contributor'
 
 ## <a name="manually-configure-the-managed-identity"></a>Ręcznie skonfiguruj tożsamość zarządzaną
 
-Podczas tworzenia przydziału przy użyciu portalu, zasady generuje tożsamość zarządzaną i spowoduje przyznanie role zdefiniowane w **roleDefinitionIds**. W następujących warunkach kroki, aby utworzyć tożsamość zarządzaną i przypisz mu uprawnienia muszą być wykonywane ręcznie:
+Podczas tworzenia przydziału przy użyciu portalu, zasady generuje tożsamość zarządzaną i spowoduje przyznanie role zdefiniowane w **roleDefinitionIds**. W następujących warunkach kroki, aby utworzyć tożsamość zarządzaną i przypisz mu uprawnienia musi być wykonywane ręcznie:
 
 - Podczas korzystania z zestawu SDK (np. programu Azure PowerShell)
 - Po zmodyfikowaniu zasobu poza zakres przypisania przez szablon
@@ -129,7 +128,7 @@ Aby dodać rolę przydział tożsamość zarządzaną, wykonaj następujące kro
 
 ## <a name="create-a-remediation-task"></a>Utwórz zadanie korygowania
 
-Podczas obliczania wartości, przypisanie zasad o **deployIfNotExists** efekt Określa, czy istnieją niezgodne zasoby. Gdy zostaną odnalezione niezgodnych zasobów, szczegółowe informacje znajdują się na **korygowania** strony. Wraz z listy zasad, które mają niezgodne zasoby to opcja umożliwiająca wyzwalanie **zadań korygowania**. Jest to, co tworzy wdrożenie z **deployIfNotExists** szablonu.
+Podczas obliczania wartości, przypisanie zasad o **deployIfNotExists** efekt Określa, czy istnieją niezgodne zasoby. Gdy zostaną odnalezione niezgodnych zasobów, szczegółowe informacje znajdują się na **korygowania** strony. Wraz z listy zasad, które mają niezgodne zasoby to opcja umożliwiająca wyzwalanie **zadań korygowania**. Ta opcja jest, co tworzy wdrożenie z **deployIfNotExists** szablonu.
 
 Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
 
@@ -146,21 +145,21 @@ Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
    > [!NOTE]
    > Alternatywny sposób, aby otworzyć **zadań korygowania** strony jest znalezienie i kliknij zasady, które z **zgodności** stronie, a następnie kliknij przycisk **Utwórz zadanie korygowania** przycisku.
 
-1. Na **nowe zadanie korygowania** strony, Filtruj zasoby, aby skorygować za pomocą **zakres** wielokropek, aby wybrać zasoby podrzędne, z których przypisano zasad (w tym do pojedynczego zasobu obiekty). Ponadto, za pomocą **lokalizacje** rozwinięcie listy w celu dalszego filtrowania zasobów. Tylko zasoby wymienione w tabeli zostaną skorygowane.
+1. Na **nowe zadanie korygowania** strony, Filtruj zasoby, aby skorygować za pomocą **zakres** wielokropek, aby wybrać zasoby podrzędne, z której jest przypisany zasad (w tym do pojedynczego zasobu obiekty). Ponadto, za pomocą **lokalizacje** rozwinięcie listy w celu dalszego filtrowania zasobów. Tylko zasoby wymienione w tabeli zostaną skorygowane.
 
    ![Korygowanie — Wybierz zasoby](../media/remediate-resources/select-resources.png)
 
-1. Zainicjować zadanie korygowania, gdy zasoby zostały przefiltrowane przez kliknięcie przycisku **Koryguj**. Zostanie otwarta strona zgodność zasad **zadania korygowania** kartę, aby wyświetlić stan postępu zadań.
+1. Rozpocznij zadanie korygowania po zasobów zostały przefiltrowane przez kliknięcie przycisku **Koryguj**. Zostanie otwarta strona zgodność zasad **zadania korygowania** kartę, aby wyświetlić stan postępu zadań.
 
    ![Korygowanie — postęp zadania](../media/remediate-resources/task-progress.png)
 
-1. Kliknij pozycję **zadań korygowania** ze strony zasad zgodności, aby uzyskać szczegółowe informacje o postępie. Filtrowanie używane dla tego zadania są wyświetlane wraz z listy zasobów są rozwiązane.
+1. Kliknij pozycję **zadań korygowania** ze strony zasad zgodności, aby uzyskać szczegółowe informacje o postępie. Filtrowanie używane dla tego zadania jest wyświetlana wraz z listy zasobów są rozwiązane.
 
-1. Z **zadań remedation** stronie, kliknij prawym przyciskiem myszy na zasób, aby wyświetlić albo wdrożenia zadania korygowania lub zasobu. Na końcu wiersza kliknij **zdarzenia związane z** Aby wyświetlić szczegóły, takie jak komunikat o błędzie.
+1. Z **zadań korygowania** stronie, kliknij prawym przyciskiem myszy na zasób, aby wyświetlić albo wdrożenia zadania korygowania lub zasobu. Na końcu wiersza kliknij **zdarzenia związane z** Aby wyświetlić szczegóły, takie jak komunikat o błędzie.
 
    ![Korygowanie — menu kontekstowe zadania zasobów](../media/remediate-resources/resource-task-context-menu.png)
 
-Zasoby wdrożone za pośrednictwem **zadań korygowania** zostaną dodane do **wdrożonych zasobów** karty na stronie zasad zgodności z niewielkim opóźnieniem.
+Zasoby wdrożone za pośrednictwem **zadań korygowania** są dodawane do **wdrożonych zasobów** karty na stronie zasad zgodności.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

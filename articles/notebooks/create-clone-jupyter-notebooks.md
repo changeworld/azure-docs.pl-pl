@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i klonowanie notesy Jupyter notebook na platformie Azure | Dokumentacja firmy Microsoft
+title: Tworzenie i klonowanie notesy Jupyter notebook na platformie Azure
 description: Projekty platformy Azure notesów zarządzanie kolekcją notesów i powiązane pliki, których można tworzyć nowe lub sklonować z innego źródła.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 36de7ce0cbbc1c3a2c12682b6882dc4d5491eb10
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c4325f0c9de0d945d1612a3ab4171a2bfe1be25b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856235"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106519"
 ---
 # <a name="create-and-clone-projects"></a>Tworzenie i klonowanie projektów
 
@@ -49,7 +49,7 @@ Co można zrobić na pulpicie nawigacyjnym, zależy od tego, czy po zarejestrowa
 
 Kiedy używasz **udziału** polecenia, a następnie wybierz pozycję **osadzania** karty, możesz skopiować kod HTML lub języka znaczników Markdown, który tworzy wskaźnik "uruchamiania notesu":
 
-    ![Launch notebook badge ](https://notebooks.azure.com/launch.png)
+![Uruchamianie notesu wskaźnika ](https://notebooks.azure.com/launch.png)
 
 Jeśli nie masz projektu notesów usługi Azure można utworzyć łącze, które klony z serwisu GitHub bezpośrednio przy użyciu następujących szablonów, podstawiając odpowiednie nazwy użytkownika i nazwy repozytoriów:
 

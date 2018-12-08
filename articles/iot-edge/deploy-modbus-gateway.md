@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie protokołu Modbus w usłudze Azure IoT Edge | Microsoft Docs
+title: Tłumaczenie protokołów modbus z bramami — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Zezwalanie urządzeniom korzystających z protokołu Modbus TCP na komunikację z usługą Azure IoT Hub poprzez utworzenie urządzenia bramy usługi IoT Edge
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: d8675042874ffaa824ccd1bf3b0017f0219268b8
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 51c1a9a6fe997249f543348c95c0c02dfa47ceaf
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566401"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101623"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Łączenie urządzeń Modbus TCP za pośrednictwem bramy urządzeń usługi IoT Edge
 

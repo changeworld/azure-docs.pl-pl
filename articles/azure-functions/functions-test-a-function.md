@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: c91254b3a4a7037e24b22ba226c66141707d0c10
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 44d2960d9cf5828af588f9392667553c18dedb0f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016576"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103459"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usłudze Azure Functions
 
@@ -29,7 +29,7 @@ Zawartość występującego jest podzielona na dwie różne sekcje przeznaczone 
 - [C#w programie Visual Studio w narzędziu xUnit](#c-in-visual-studio)
 - [Język JavaScript w programie VS Code z Jest](#javascript-in-vs-code)
 
-Przykładowe repozytorium jest dostępna w [GitHub](https://github.com/craigshoemaker/azure-functions-tests).
+Przykładowe repozytorium jest dostępna w [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
 
 ## <a name="c-in-visual-studio"></a>C#w programie Visual Studio
 Poniższy przykład zawiera opis sposobu tworzenia C# aplikacji w programie Visual Studio funkcji i Uruchamianie testów za pomocą [xUnit](https://xunit.github.io).

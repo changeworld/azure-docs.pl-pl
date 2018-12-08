@@ -1,11 +1,13 @@
 ---
-title: Aprowizowanie maszyny wirtualnej do nauki o danych z systemu Linux (Ubuntu) na platformie Azure | Dokumentacja firmy Microsoft
+title: Tworzenie maszyny wirtualnej do nauki o danych Ubuntu Linux
+titleSuffix: Azure
 description: Skonfiguruj i Utwórz Data Science maszyny wirtualnej dla systemu Linux (Ubuntu) na platformie Azure w celu analizy i uczenia maszynowego.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 ms.author: gokuma
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -14,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: cf5a15a55cf3f0d33edeec9440e745c9dce996c1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e3f17dd3717a57d184be7c9b8c73855c3fd2a768
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244869"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106774"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 

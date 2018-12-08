@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2017
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 29ac668ddb9d5df88d5f743630eaf2d9288b8727
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 905431c73488ddc6ebf2d13823e4bb705d16304c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123440"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102014"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopiowanie danych z Presto przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -88,7 +88,12 @@ Następujące właściwości są obsługiwane w przypadku Presto połączonej us
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez Presto zestawu danych.
 
-Aby skopiować dane z Presto, należy ustawić właściwość typu zestawu danych na **PrestoObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z Presto, należy ustawić właściwość typu zestawu danych na **PrestoObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **PrestoObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -100,7 +105,8 @@ Aby skopiować dane z Presto, należy ustawić właściwość typu zestawu danyc
         "linkedServiceName": {
             "referenceName": "<Presto linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -109,14 +115,14 @@ Aby skopiować dane z Presto, należy ustawić właściwość typu zestawu danyc
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwane przez Presto źródło.
 
-### <a name="prestosource-as-source"></a>PrestoSource jako źródło
+### <a name="presto-as-source"></a>Presto jako źródło
 
 Aby skopiować dane z Presto, należy ustawić typ źródła w działaniu kopiowania, aby **PrestoSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **PrestoSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

@@ -1,6 +1,7 @@
 ---
-title: Włącz usługę Application Insights dla usługi Azure Machine Learning
-description: Dowiedz się, jak skonfigurować usługę Application Insights dla usług wdrożonych przez usługę Azure Machine Learning
+title: Modele monitorowanie za pomocą usługi Application Insights
+titleSuffix: Azure Machine Learning service
+description: Usługa Application Insights umożliwia monitorowanie usług sieci web wdrażane za pomocą usługi Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
 ms.custom: seodec18
-ms.openlocfilehash: ef26bd433d311e63e122f48871654c9fbc26216a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2b97ee8853ba49a3b12d98aeb2b494aa890c8e8f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013172"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102287"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitoruj swoje modele usługi Azure Machine Learning z usługą Application Insights
 
@@ -49,7 +50,7 @@ W tym artykule dowiesz się, jak skonfigurować usługi Azure Application Insigh
     ```
 
 ### <a name="log-custom-traces-in-your-service"></a>Ślady niestandardowych dzienników w usłudze
-Do dziennika śledzenia niestandardowe, należy wykonać proces wdrożenia standardowego [AKS](how-to-deploy-to-aks.md) lub [ACI](how-to-deploy-to-aci.md) . Następnie:
+Jeśli chcesz ślady niestandardowych dzienników, postępuj zgodnie z procesem standardowego wdrożenia dla usługi AKS lub ACI w [sposób wdrażania i gdzie](how-to-deploy-and-where.md) dokumentu. Następnie wykonaj następujące czynności:
 
 1. Zaktualizuj plik oceniania przez dodanie instrukcji drukowania.
     

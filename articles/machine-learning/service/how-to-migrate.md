@@ -1,5 +1,6 @@
 ---
-title: Przeprowadź migrację do usługi Azure Machine Learning
+title: Migrowanie z aplikacji Workbench
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak uaktualnienie lub migrację do wersji opóźnione usługa Azure Machine Learning ze starszej wersji.
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cc60fd6a9d5f154d26fc9c495f190296453a0db0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253452"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106655"
 ---
-# <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Migracja do najnowszej wersji usługi Azure Machine Learning 
+# <a name="migrate-from-workbench-to-the-latest-version-of-azure-machine-learning-service"></a>Migrowanie z aplikacji Workbench do najnowszej wersji usługi Azure Machine Learning 
 
-**Jeśli zainstalowano aplikację Workbench (wersja zapoznawcza) lub mają eksperymentowanie i zarządzanie modelami konta w wersji zapoznawczej, aby przeprowadzić migrację do najnowszej wersji, skorzystaj z tego artykułu.**  Jeśli nie masz wersji zapoznawczej Workbench zainstalowana, lub eksperymentowania i/lub konta zarządzania modelami, nie trzeba niczego migracji.
+**Jeśli zainstalowano aplikację Workbench lub mieć eksperymentowanie i zarządzanie modelami konta w wersji zapoznawczej, aby przeprowadzić migrację do najnowszej wersji, skorzystaj z tego artykułu.**  Jeśli nie masz wersji zapoznawczej Workbench zainstalowana, lub eksperymentowania i/lub konta zarządzania modelami, nie trzeba niczego migracji.
 
 ## <a name="what-can-i-migrate"></a>Co można migrować?
 Większość artefaktów, utworzonego w pierwszej wersji zapoznawczej usługi Azure Machine Learning są przechowywane w lokalnym własnych lub magazyn w chmurze. Te artefakty nie są usuwane. Aby przeprowadzić migrację, należy ponownie zarejestrować artefaktów w usłudze Azure Machine Learning zaktualizowane. 
@@ -52,7 +53,7 @@ Dowiedz się więcej o [co zmieniło się w tej wersji](overview-what-happened-t
 
 Zasoby, takie jak konta eksperymentowanie w usłudze, konta zarządzania modelami i uczenia maszynowego obliczeniowe środowiska nie można migrować za pośrednictwem do najnowszej wersji usługi Azure Machine Learning. Zobacz [osi czasu](overview-what-happened-to-workbench.md#timeline) na jak długo zasobów będą nadal działać.
 
-Rozpocznij pracę z najnowszą wersją, tworząc obszar roboczy usługi Azure Machine Learning w [witryny Azure portal](quickstart-get-started.md). Pulpit nawigacyjny obszaru roboczego w portalu jest obsługiwany tylko w przeglądarkach Edge, Chrome i Firefox.
+Rozpocznij pracę z najnowszą wersją, tworząc obszar roboczy usługi Azure Machine Learning w [witryny Azure portal](quickstart-get-started.md). Pulpit nawigacyjny obszaru roboczego w portalu jest obsługiwany tylko w przeglądarkach Microsoft Edge, Chrome i Firefox.
 
 Ten nowy obszar roboczy jest zasobem najwyższego poziomu usługi i umożliwia korzystanie ze wszystkich najnowszych funkcji usługi Azure Machine Learning. Dowiedz się więcej na ten temat [obszar roboczy i architektura](concept-azure-machine-learning-architecture.md).
 
@@ -75,11 +76,10 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 Aby przeprowadzić migrację usług sieci web, należy ponownie wdrożyć swoje modele przy użyciu nowego zestawu SDK lub interfejsu wiersza polecenia do nowych celów wdrożenia. Nie ma potrzeby zmiany oryginalny plik oceniania, plików zależności pliku modelu, pliku środowiska i pliki schematów. 
 
-W najnowszej wersji modeli są wdrażane jako usług sieci web [usługi Azure Container Instances](how-to-deploy-to-aci.md) (ACI) lub [usługi Azure Kubernetes Service](how-to-deploy-to-aks.md) klastrów (AKS). 
+W najnowszej wersji modeli są wdrażane jako usługi sieci web do klastrów usługi Azure Container Instances (ACI) lub Azure Kubernetes Service (AKS). 
 
 Dowiedz się więcej, zobacz następujące artykuły:
-+ [Wdrażanie w usłudze ACI](how-to-deploy-to-aci.md)
-+ [Wdrażanie w usłudze AKS](how-to-deploy-to-aks.md)
++ [Jak wdrażać i którym](how-to-deploy-and-where.md)
 + [Samouczek: Wdrażanie modeli przy użyciu usługi Azure Machine Learning](tutorial-deploy-models-with-aml.md)
 
 Gdy [obsługę poprzednie punkty końcowe interfejsu wiersza polecenia](overview-what-happened-to-workbench.md#timeline), nie będzie można zarządzać usługami sieci web pierwotnie wdrożone przy użyciu konta zarządzania modelami. Jednak te usługi sieci web będą w dalszym ciągu działać w przypadku, tak długo, jak usługi Azure Container Service (ACS) nadal jest obsługiwany.

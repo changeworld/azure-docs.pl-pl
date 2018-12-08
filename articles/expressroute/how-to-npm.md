@@ -1,29 +1,23 @@
 ---
-title: Konfigurowanie monitora wydajności sieci dla obwodów usługi ExpressRoute platformy Azure | Dokumentacja firmy Microsoft
+title: Konfigurowanie monitora wydajności sieci dla obwodów usługi ExpressRoute — Azure | Dokumentacja firmy Microsoft
 description: Konfigurowanie monitorowania (NPM) dla obwodów usługi ExpressRoute platformy Azure sieci opartych na chmurze. W tym artykule opisano monitorowania za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute i komunikacji równorzędnej firmy Microsoft.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 93bafb739c35b81796186dc845f7933a82e1675b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: e72c2ceaedd23f4e3ee2006930302321498eb736
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968122"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104734"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute
 
-Network Performance Monitor (NPM) jest sieci opartych na chmurze rozwiązanie monitorujące, które monitoruje łączność między wdrożeniami w chmurze platformy Azure i lokalizacjami lokalnymi (oddziałów, itp.). NPM jest częścią usługi Log Analytics. NPM oferuje rozszerzenie dla usługi ExpressRoute, która umożliwia monitorowanie wydajności sieci obwodach usługi ExpressRoute, które są skonfigurowane do korzystania z prywatnej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft. Po skonfigurowaniu NPM dla usługi ExpressRoute, można wykryć problemy z siecią, aby zidentyfikować i wyeliminować. Ta usługa jest również dostępny dla chmury dla instytucji rządowych platformy Azure.
+Ten artykuł pomoże Ci skonfigurować rozszerzenia programu Network Performance Monitor do monitorowania usługi ExpressRoute. Network Performance Monitor (NPM) jest sieci opartych na chmurze rozwiązanie monitorujące, które monitoruje łączność między wdrożeniami w chmurze platformy Azure i lokalizacjami lokalnymi (oddziałów, itp.). NPM jest częścią usługi Log Analytics. NPM oferuje rozszerzenie dla usługi ExpressRoute, która umożliwia monitorowanie wydajności sieci obwodach usługi ExpressRoute, które są skonfigurowane do korzystania z prywatnej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft. Po skonfigurowaniu NPM dla usługi ExpressRoute, można wykryć problemy z siecią, aby zidentyfikować i wyeliminować. Ta usługa jest również dostępny dla chmury dla instytucji rządowych platformy Azure.
 
 Możesz:
 
@@ -182,7 +176,7 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [
   ![Konfiguracja funkcji](./media/how-to-npm/npm2.png)
 3. Na stronie konfiguracji przejdź do karty "Komunikacje równorzędne usługi ExpressRoute", znajduje się w panelu po lewej stronie. Następnie kliknij przycisk **odnajdywanie teraz**.
 
-  ![Odnajdywanie](./media/how-to-npm/13.png)
+  ![odnajdź](./media/how-to-npm/13.png)
 4. Po zakończeniu odnajdowania, zostanie wyświetlona lista zawierająca następujące elementy:
   * Wszystkie połączenia komunikacji równorzędnej firmy Microsoft w obwody usługi ExpressRoute, które są skojarzone z tą subskrypcją.
   * Wszystkie połączenia prywatnej komunikacji równorzędnej, łączących się z sieciami wirtualnymi skojarzone z tą subskrypcją.
@@ -265,7 +259,7 @@ Aby wyświetlić topologię obwodu, kliknij **topologii** kafelka. Spowoduje to 
 
 Możesz zwiększyć poziom widoczności do uwzględnienia w środowisku lokalnym przeskoków, przenosząc poniżej paska suwaka **filtry**. Przenoszenie paska suwaka do lewej lub prawej strony, zwiększa/zmniejsza liczbę przeskoków na wykresie topologii. Opóźnienie w każdym segmencie jest widoczny, co umożliwia szybsze izolacji segmentów duże opóźnienie w sieci.
 
-![Filtry](./media/how-to-npm/topology.png)
+![filtry](./media/how-to-npm/topology.png)
 
 #### <a name="detailed-topology-view-of-a-circuit"></a>Szczegółowy widok topologii obwodu
 

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/04/2018
+ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 1df4e345645fb216f1656b2bbe87396cf0719d1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 57b13f5ae37fa4d8d5dbbdc00b9fedbb0f1c9163
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994980"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101854"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers-preview"></a>Jak zatrzymać monitorowanie usługi Azure Kubernetes Service (AKS) z usługą Azure Monitor dla kontenerów (wersja zapoznawcza)
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zatrzymać monitorowanie usługi Azure Kubernetes Service (AKS) z usługą Azure Monitor dla kontenerów
 
-Jeśli po włączeniu monitorowania klastra usługi AKS, okażą się już nie chcesz, aby ją monitorować, możesz *zrezygnować*.  W tym artykule pokazano, jak to zrobić przy użyciu wiersza polecenia platformy Azure lub przy użyciu dostarczonych szablonów usługi Azure Resource Manager.  
+Po włączeniu monitorowania klastra usługi AKS, można zatrzymać monitorowania klastra, jeśli zdecydujesz, że już nie chcesz monitorować ją. W tym artykule pokazano, jak to zrobić przy użyciu wiersza polecenia platformy Azure lub przy użyciu dostarczonych szablonów usługi Azure Resource Manager.  
 
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure

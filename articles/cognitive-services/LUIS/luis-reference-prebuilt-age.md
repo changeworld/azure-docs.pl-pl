@@ -1,21 +1,22 @@
 ---
-title: Usługa LUIS ze wstępnie utworzonych jednostek wiek dokumentacja — Azure | Dokumentacja firmy Microsoft
+title: Wiek wstępnie utworzone jednostki
 titleSuffix: Azure
 description: Ten artykuł zawiera wiek informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 63ff00c29548af2f26a2b7b5e5ac68b5397671ec
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 2965f9fcedba55536ef25469975679bffe27b4e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441829"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102660"
 ---
 # <a name="age-entity"></a>Age, jednostka
 Wiek wstępnie utworzone jednostki przechwytuje wartość wieku zarówno liczbowo i pod względem dni, tygodnie, miesiące i lata. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający wiek do intencji aplikacji. Okres ważności jednostki jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
@@ -26,7 +27,7 @@ Okres ważności jest zarządzana z [aparatów rozpoznawania tekstu](https://git
 ## <a name="resolution-for-prebuilt-age-entity"></a>Rozpoznawanie wiek wstępnie utworzone jednostki
 W poniższym przykładzie pokazano rozdzielczość **builtin.age** jednostki.
 
-```JSON
+```json
 {
   "query": "A 90 day old utilities bill is quite late.",
   "topScoringIntent": {

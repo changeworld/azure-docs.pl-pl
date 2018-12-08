@@ -1,23 +1,24 @@
 ---
-title: Dane usługi Insights aplikacji Luis przy użyciu środowiska Node.js
+title: Usługa Application Insights, środowiska Node.js
 titleSuffix: Azure Cognitive Services
 description: Twórz Boty zintegrowana z usługą aplikacji LUIS i przy użyciu środowiska Node.js w usłudze Application Insights.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6199e4a681f7f58ea0cf57b575afb2a63d160eee
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4461ac71ba5f9ab5901c5d7b72c15c0c165621e3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321958"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103969"
 ---
-# <a name="add-luis-results-to-application-insights"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights
+# <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights i Azure functions
 W tym samouczku dodaje informacje do żądania i odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
 
 Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
@@ -58,7 +59,7 @@ Przechwytywanie LUIS żądania i odpowiedzi, bot aplikacji sieci web musi **[us�
 
 3. W konsoli wprowadź następujące polecenie, aby zainstalować usługi Application Insights i pakietów podkreślenia:
 
-    ```
+    ```console
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
@@ -66,7 +67,7 @@ Przechwytywanie LUIS żądania i odpowiedzi, bot aplikacji sieci web musi **[us�
 
     Poczekaj, aż pakiety do zainstalowania:
 
-    ```
+    ```console
     luisbot@1.0.0 D:\home\site\wwwroot
     `-- applicationinsights@1.0.1 
       +-- diagnostic-channel@0.2.0 
@@ -142,7 +143,7 @@ Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za 
 
 3. Aby wyciągnąć z góry przeznaczenie, ocena i wypowiedź, dodaj następującą tuż nad ostatni wiersz w oknie zapytania:
 
-    ```SQL
+    ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
     | extend score = todouble(customDimensions.LUIS_intent_score)
     | extend utterance = tostring(customDimensions.LUIS_text)

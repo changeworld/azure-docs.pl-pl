@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a576b94881e114a97e58bf93515e372221da3346
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b97b8e145e2a770a00c77eefc9ce6d323fd6222e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096279"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101846"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopiowanie danych z chmury usługi bazy danych Oracle przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -80,7 +80,12 @@ Następujące właściwości są obsługiwane dla usługi w chmurze usługi Orac
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi w chmurze firmy Oracle.
 
-Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić właściwość typu zestawu danych na **OracleServiceCloudObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić właściwość typu zestawu danych na **OracleServiceCloudObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **OracleServiceCloudObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -92,7 +97,8 @@ Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić właściw
         "linkedServiceName": {
             "referenceName": "<OracleServiceCloud linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -109,7 +115,7 @@ Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić typ źró
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **OracleServiceCloudSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 427eb8abdede8c821d214d9f6a64fc6a122699de
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: f2bbcf0218291f91d3ee5b25e89a5f580e0c1c86
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002025"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105737"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -95,7 +95,7 @@ Podczas tworzenia subskrypcji zdarzeń, jeśli jest wyświetlany komunikat o bł
 
 ### <a name="event-delivery-security"></a>Zabezpieczenia dostarczania zdarzeń
 
-Punkt końcowy usługi elementu webhook można zabezpieczyć, dodając parametry zapytania do adresu URL elementu webhook, podczas tworzenia subskrypcji zdarzeń. Ustaw jeden z tych parametrów zapytania jako klucz tajny, takich jak [token dostępu](https://en.wikipedia.org/wiki/Access_token). Element webhook umożliwiają Rozpoznawaj zdarzenia pochodzi z usługi Event Grid przy użyciu prawidłowe uprawnienia. Usługa Event Grid będzie zawierać te parametry zapytań w każdym dostarczanie zdarzeń do elementu webhook.
+Punkt końcowy usługi elementu webhook można zabezpieczyć, dodając parametry zapytania do adresu URL elementu webhook, podczas tworzenia subskrypcji zdarzeń. Ustaw jeden z tych parametrów zapytania jako klucz tajny, takich jak [token dostępu](https://en.wikipedia.org/wiki/Access_token). Element webhook umożliwiają Rozpoznawaj zdarzenia pochodzi z usługi Event Grid przy użyciu prawidłowe uprawnienia klucza tajnego. Usługa Event Grid będzie zawierać te parametry zapytań w każdym dostarczanie zdarzeń do elementu webhook.
 
 Podczas edytowania subskrypcji zdarzeń, parametry zapytania nie są wyświetlane lub zwracane, chyba że [— obejmują — pełny — — adres url punktu końcowego](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) parametr jest używany na platformie Azure [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 

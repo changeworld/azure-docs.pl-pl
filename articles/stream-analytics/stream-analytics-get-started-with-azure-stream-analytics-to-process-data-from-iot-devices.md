@@ -2,19 +2,19 @@
 title: Korzystanie ze strumieni danych IoT w czasie rzeczywistym za pomocą usługi Azure Stream Analytics
 description: Używanie tagów czujników IoT i strumieni danych z analizą strumieni i przetwarzaniem danych w czasie rzeczywistym
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 56243be40a4d47f315ff6599ff2d50c83e44afbc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: b008fe128aa760197c34d8c14c4d3b92cbed2bd2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849551"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103170"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Wprowadzenie do usługi Azure Stream Analytics służącej do przetwarzania danych z urządzeń IoT
 Korzystając z tego samouczka, nauczysz się tworzyć logikę przetwarzania strumieni w celu zbierania danych z urządzeń Internetu rzeczy (IoT). Użyjemy w nim rzeczywistych przypadków użycia Internetu rzeczy (IoT) w celu zademonstrowania szybkiego i ekonomicznego kompilowania rozwiązań.
@@ -56,35 +56,35 @@ W celu ułatwienia pracy w tym przewodniku z wprowadzeniem udostępniono przykł
    > 
 4. Zaznacz pole wyboru, aby umieścić zadanie na pulpicie nawigacyjnym, a następnie kliknij pozycję **UTWÓRZ**.
    
-    ![trwa tworzenie zadania](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
+    ![Trwa tworzenie zadania usługi Stream analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
 5. W prawym górnym rogu okna przeglądarki powinien być widoczny komunikat „Wdrażanie rozpoczęte...”. Wkrótce zostanie on zmieniony na okna ukończenia przedstawione poniżej.
    
-    ![trwa tworzenie zadania](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
+    ![Stream analytics wdrażanie zakończyło się pomyślnie](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>Tworzenie zapytania usługi Azure Stream Analytics
 Po utworzeniu zadania należy je otworzyć i utworzyć zapytanie. Dostęp do zadania można łatwo uzyskać, klikając w tym celu kafelek.
 
-![Kafelek zadania](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+![Stream Analytics Kafelek zadania w witrynie Azure portal](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
 W okienku **Topologia zadań** kliknij pozycję **ZAPYTANIE**, aby przejść do edytora zapytań. Edytor **ZAPYTANIE** umożliwia wprowadzenie zapytania T-SQL, które wykonuje przekształcenie danych przychodzących zdarzenia.
 
-![Pole Zapytanie](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Stream Analytics pulpit nawigacyjny zapytania kafelka](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 ### <a name="query-archive-your-raw-data"></a>Zapytanie: archiwizowanie danych pierwotnych
 Najprostszą postacią zapytania jest przekazywanie, które powoduje archiwizowanie wszystkich danych wejściowych w określonej lokalizacji wyjściowej. Pobierz przykładowy plik danych z usługi [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) do lokalizacji na komputerze. 
 
 1. Wklej zapytanie z pliku PassThrough.txt. 
    
-    ![Testowy strumień wejściowy](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
+    ![Wklej zapytanie w edytorze zapytań usługi Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 2. Kliknij przycisk z wielokropkiem obok wprowadzanych danych i zaznacz pole **Przekaż dane przykładowe z pliku**.
    
-    ![Testowy strumień wejściowy](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
+    ![Wybierz pozycję Przekaż przykładowe dane z pliku](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
 3. W rezultacie zostanie otwarte okienko po prawej stronie. W tym okienku wybierz plik danych HelloWorldASA-InputStream.json z lokalizacji pobierania i kliknij przycisk **OK** u dołu okienka.
    
-    ![Testowy strumień wejściowy](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
+    ![Przekaż plik danych przykładowych json](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
 4. Następnie kliknij koło zębate **Test** w lewym górnym rogu okna i przetwórz zapytanie testowe względem zestawu danych przykładowych. Po zakończeniu przetwarzania pod zapytaniem zostanie otwarte okno wyników.
    
-    ![Wyniki testu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+    ![Wyniki testu dla zapytania usługi Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Zapytanie: filtrowanie danych na podstawie warunku
 Poniżej przedstawiono filtrowanie wyników na podstawie warunku. Chcielibyśmy wyświetlić wyniki tylko dla tych zdarzeń, które pochodzą z czujnika "sensorA". Zapytanie znajduje się w pliku Filtering.txt.

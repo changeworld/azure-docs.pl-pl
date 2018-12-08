@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych do i z usługi Azure Cosmos DB przy użyciu usługi fabryka danych | Dokumentacja firmy Microsoft
+title: Kopiowanie danych z usługi Azure Cosmos DB (interfejs API SQL) lub za pomocą usługi Data Factory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane z magazynów danych obsługiwanych źródłowych do lub z usługi Azure Cosmos DB do ujścia obsługiwanych magazynów za pomocą usługi Data Factory.
 services: data-factory, cosmosdb
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9a75ae8645503366a490dbc0ea65d2fdc73d7c61
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 16c02f1f47f556f550519feec78e7dd26b302e18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167294"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103799"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-db-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure Cosmos DB przy użyciu usługi Azure Data Factory
+# <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Cosmos DB (interfejs API SQL) lub za pomocą usługi Azure Data Factory
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-azure-documentdb-connector.md)
@@ -39,6 +39,9 @@ Można użyć łącznika usługi Azure Cosmos DB w celu:
 - Importowanie i eksportowanie dokumentów JSON jako — jest lub kopiowania danych z lub do tabelarycznego zestawu danych. Przykłady obejmują bazy danych SQL i w pliku CSV. Skopiuj dokumenty w formacie — pliki do lub z formatu JSON lub do lub z innej kolekcji usługi Azure Cosmos DB, zobacz [importowanie lub eksportowanie dokumentów JSON](#importexport-json-documents).
 
 Data Factory integruje się z [biblioteki wykonawca zbiorcze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) aby zapewnić najlepszą wydajność podczas zapisu do usługi Azure Cosmos DB.
+
+>[!NOTE]
+>Ten łącznik jest obsługiwany tylko kopiowanie danych z interfejsu API SQL usługi Cosmos DB.
 
 > [!TIP]
 > [Migracji danych wideo](https://youtu.be/5-SRNiC_qOU) przeprowadzi Cię przez kroki kopiowania danych z usługi Azure Blob storage do usługi Azure Cosmos DB. Film wideo zawiera także dostrajanie wydajności uwagi, służy do wprowadzania danych do usługi Azure Cosmos DB w zasadzie.
@@ -182,8 +185,11 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
 |:--- |:--- |:--- |
 | type | **Typu** właściwość ujścia działania kopiowania musi być równa **DocumentDbCollectionSink**. |Yes |
 | writeBehavior |Opisuje sposób zapisywania danych do usługi Azure Cosmos DB. Dozwolone wartości: **Wstaw** i **upsert**.<br/><br/>Zachowanie **upsert** zastąpi dokumentu, jeśli dokument o tym samym identyfikatorze już istnieje; w przeciwnym razie Wstaw dokumentu.<br /><br />**Uwaga**: Data Factory automatycznie generuje identyfikator dla dokumentu, jeśli identyfikator nie został określony w oryginalnym dokumencie lub mapowania kolumn. Oznacza to, że użytkownik musi zapewnić, że dla **upsert** działała zgodnie z oczekiwaniami, dokument ma identyfikator. |Nie<br />(wartość domyślna to **Wstaw**) |
-| writeBatchSize | Fabryka danych używa [biblioteki wykonawca zbiorcze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) można zapisać danych do usługi Azure Cosmos DB. **WriteBatchSize** właściwość steruje rozmiarem pamięci dokumentów, które firma Microsoft zapewnia do biblioteki. Można spróbować zwiększyć wartość **writeBatchSize** poprawić wydajność. |Nie<br />(wartość domyślna to **10 000**) |
+| writeBatchSize | Fabryka danych używa [biblioteki wykonawca zbiorcze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) można zapisać danych do usługi Azure Cosmos DB. **WriteBatchSize** właściwość steruje rozmiarem pamięci dokumentów, które firma Microsoft zapewnia do biblioteki. Można spróbować zwiększyć wartość **writeBatchSize** Aby zwiększyć wydajność i zmniejszenie wartości, jeśli dokument jest duży rozmiar — zobacz poniższe porady. |Nie<br />(wartość domyślna to **10 000**) |
 | nestingSeparator |Znaki specjalne w **źródła** nazwy kolumny, która wskazuje, że zagnieżdżone dokumentu jest potrzebna. <br/><br/>Na przykład `Name.First` w wyjściowy zestaw danych struktury generuje następującej strukturze JSON w usłudze Azure Cosmos DB dokumentu, gdy **nestedSeparator** jest **.** (kropka): `"Name": {"First": "[value maps to this column from source]"}`  |Nie<br />(wartość domyślna to **.** (kropka)) |
+
+>[!TIP]
+>Usługa cosmos DB ogranicza rozmiar pojedynczego żądania do 2MB. Formuła jest rozmiar żądania = rozmiar pojedynczego dokumentu * zapisu rozmiar partii. Jeśli napotkasz błąd powiedzenie **"Żądania" rozmiar jest za duży.** , **zmniejszyć `writeBatchSize` wartość** w konfiguracji obiektu sink kopiowania.
 
 **Przykład**
 

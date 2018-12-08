@@ -1,18 +1,19 @@
 ---
-title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute: programu PowerShell: usługi Azure Resource Manager | Dokumentacja firmy Microsoft'
-description: W tym artykule opisano sposób tworzenia, udostępniania, sprawdź, aktualizacji, usuwania i anulować aprowizację obwodu usługi ExpressRoute.
+title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute — program PowerShell: Azure | Dokumentacja firmy Microsoft'
+description: Tworzenie, aprowizować, sprawdź, aktualizacji, usuwania i anulować aprowizację obwodu usługi ExpressRoute.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: f95bdfe9a61a271825ff9bbe5ca7f84330c98df5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257456"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105006"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Tworzenie i modyfikowanie obwodu ExpressRoute za pomocą programu PowerShell
 > [!div class="op_single_selector"]
@@ -23,7 +24,7 @@ ms.locfileid: "51257456"
 > * [PowerShell (klasyczny)](expressroute-howto-circuit-classic.md)
 >
 
-W tym artykule opisano, jak utworzyć obwód usługi ExpressRoute systemu Azure za pomocą poleceń cmdlet programu PowerShell i modelu wdrażania usługi Azure Resource Manager. W tym artykule przedstawiono również sposób Sprawdź stan obwodu, zaktualizuj go, lub usuń i anulować aprowizację go.
+Ten artykuł pomoże Ci utworzyć obwodu ExpressRoute za pomocą poleceń cmdlet programu PowerShell i modelu wdrażania usługi Azure Resource Manager. Można również sprawdzić stan, aktualizacji, usunięcia lub anulować aprowizację obwodu.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

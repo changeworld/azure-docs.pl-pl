@@ -1,20 +1,21 @@
 ---
-title: Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak odbieranie zdarzeń z usługi Event Hubs przy użyciu środowiska Node.js.
+title: Odbieranie zdarzeń za pomocą środowiska Node.js — Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji Node.js, która odbiera zdarzenia z usługi Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 09/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2f59b7f47acc8ce8e566b7f0e2bcfed379ea60d2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 9d7ec781fbc559b434b51db4a5dd8ffb1b6ef11f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239088"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103234"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu środowiska Node.js
 

@@ -1,6 +1,6 @@
 ---
-title: Jak dodać lub usunąć użytkowników w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać nowych użytkowników lub usunąć istniejących użytkowników przy użyciu usługi Azure Active Directory.
+title: Dodawanie lub usuwanie użytkowników — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące sposobu dodawania nowych użytkowników lub usunąć istniejących użytkowników przy użyciu usługi Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 782363144a6b1dd87aff515c38588b6ce70b61bd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: dd4a9132d5f04870239be3127f723afb60b3ecef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295108"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104683"
 ---
-# <a name="how-to-add-or-delete-users-using-azure-active-directory"></a>Porady: Dodawanie lub usuwanie użytkowników za pomocą usługi Azure Active Directory
-Dodaj nowych użytkowników lub usuń istniejący użytkownicy z dzierżawy usługi Azure Active Directory (Azure AD) przy użyciu usługi Azure AD.
+# <a name="add-or-delete-users-using-azure-active-directory"></a>Dodawanie lub usuwanie użytkowników za pomocą usługi Azure Active Directory
+Dodawanie nowych użytkowników lub usuń istniejący użytkownicy z dzierżawy usługi Azure Active Directory (Azure AD).
 
 ## <a name="add-a-new-user"></a>Dodawanie nowego użytkownika
-Można utworzyć nowego użytkownika za pomocą usługi Azure Active Directory.
+Można utworzyć nowego użytkownika przy użyciu portalu Azure Active Directory.
 
 ### <a name="to-add-a-new-user"></a>Aby dodać nowego użytkownika
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny lub administrator użytkowników w katalogu.
@@ -58,10 +58,10 @@ Można utworzyć nowego użytkownika za pomocą usługi Azure Active Directory.
 Jeśli masz środowisko z usługi Azure Active Directory (w chmurze) i Active Directory systemu Windows Server (lokalnie), można dodać nowych użytkowników, synchronizowanie danych istniejącego konta użytkownika. Aby uzyskać więcej informacji na temat środowisk hybrydowych i użytkowników, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ## <a name="delete-a-user"></a>Usuwanie użytkownika
-Można usunąć istniejącego użytkownika przy użyciu usługi Azure Active Directory.
+Można usunąć istniejącego użytkownika przy użyciu portalu Azure Active Directory.
 
 ### <a name="to-delete-a-user"></a>Aby usunąć użytkownika
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wyszukaj i wybierz użytkownika, aby usunąć z dzierżawą usługi Azure AD. Na przykład _Mary Parker_.
 

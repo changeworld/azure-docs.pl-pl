@@ -1,6 +1,6 @@
 ---
 title: Identyfikowanie scenariuszy i planowanie proces analizy — Azure | Dokumentacja firmy Microsoft
-description: Wybierz plan zapewniający zaawansowane funkcje analityczne, biorąc pod uwagę szereg pytań kluczowych.
+description: Identyfikowanie scenariuszy i planowanie zaawansowanego przetwarzania danych analizy, biorąc pod uwagę szereg pytań kluczowych.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b61f6c12aaa94fc61063e8d3bd7e339f1548781c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: feea90b20bac1bce9924731119fab6e3fab04450
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446428"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105908"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Identyfikowanie scenariuszy i planowanie zaawansowanego przetwarzania danych analizy
 Jakie zasoby należy zaplanować do uwzględnienia podczas konfigurowania środowiska do zaawansowanej analizy, przetwarzanie w zestawie danych? W tym artykule sugeruje szereg pytań do zadania ułatwiające identyfikowanie własnego scenariusza zadania i odpowiednie zasoby. Kolejność etapów wysokiego poziomu do analizy predykcyjnej jest opisany w [co to jest Team Data Science naukowych?](overview.md). Każdy z tych kroków wymaga określonych zasobów dla zadania, które są odpowiednie dla danego scenariusza. Kluczowe pytania do identyfikowanie własnego scenariusza dotyczą danych logistycznych, właściwości, jakości zestawy danych, narzędzia i języki, aby wykonać analizy.

@@ -1,21 +1,22 @@
 ---
-title: Odwołanie usługi LUIS wstępnie datetimeV2 jednostek — Azure | Dokumentacja firmy Microsoft
+title: DatetimeV2 ze wstępnie utworzonych jednostek
 titleSuffix: Azure
 description: Ten artykuł zawiera datetimeV2 informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: bd28981ae0c5b4d6ccff3168f92f0f99be768b10
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: f59c429906d6cee2b9f4aff6e16ba23e8d28c97b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335780"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105856"
 ---
 # <a name="datetimev2-entity"></a>DatetimeV2, jednostka
 
@@ -27,7 +28,7 @@ DatetimeV2 jest zarządzana z [aparatów rozpoznawania tekstu](https://github.co
 ## <a name="example-json"></a>Przykładowy plik JSON 
 Poniższy przykład odpowiedź w formacie JSON zawiera `datetimeV2` jednostki o podtypem `datetime`. Przykłady innych typów jednostek datetimeV2, zobacz [podtypy datetimeV2](#subtypes-of-datetimev2)</a>.
 
-```JSON
+```json
 "entities": [
   {
     "entity": "8am on may 2nd 2017",
@@ -103,7 +104,7 @@ Na przykład biorąc pod uwagę wypowiedź "2 maja":
 Poniższy przykład pokazuje rozwiązanie "2 maja" jednostki. Tego rozwiązania przyjęto założenie, że dziś jest data między maj 2017 2 i 1. w maju 2018 r.
 Pola z `X` w `timex` pola są części daty, które nie są jawnie określone w wypowiedź.
 
-```JSON
+```json
   "entities": [
     {
       "entity": "may 2nd",
@@ -132,7 +133,7 @@ Pola z `X` w `timex` pola są części daty, które nie są jawnie określone w 
 
 `datetimeV2` Jednostki wyodrębnia zakresów daty i godziny. `start` i `end` pola określają początek i koniec zakresu. Wypowiedź "Maja 2 do 5 maja.", udostępnia usługi LUIS **daterange** wartości zarówno dla bieżącego roku i następny rok. W `timex` pola `XXXX` wartości wskazują niejednoznaczności roku. `P3D` Wskazuje okres trzech dni.
 
-```JSON
+```json
 "entities": [
     {
       "entity": "may 2nd to may 5th",
@@ -163,7 +164,7 @@ Pola z `X` w `timex` pola są części daty, które nie są jawnie określone w 
 
 W poniższym przykładzie pokazano, jak korzysta z usługi LUIS **datetimeV2** rozpoznać wypowiedź "Wtorek na czwartek". W tym przykładzie bieżąca data jest 19 czerwca. Obejmuje usługi LUIS **daterange** wartości dla obu zakresów dat, które poprzedzają i postępuj zgodnie z bieżącą datą.
 
-```JSON
+```json
   "entities": [
     {
       "entity": "tuesday to thursday",
@@ -196,7 +197,7 @@ Tablica wartości ma dwa elementy w czasie, jeśli czas lub zakres czasu jest ni
 
 W poniższym przykładzie pokazano, jak korzysta z usługi LUIS **datetimeV2** rozpoznać wypowiedź, która ma zakres czasu.
 
-```
+```json
   "entities": [
     {
       "entity": "6pm to 7pm",

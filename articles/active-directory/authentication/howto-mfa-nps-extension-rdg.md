@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 6f8999f0af50eb50b5ebca9acd57f573cfc71961
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 410e9df588ad4aba52d1d69349f5df67fa1826a3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877497"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100943"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrowanie infrastruktury bramy usług pulpitu zdalnego przy użyciu rozszerzenia serwera zasad sieciowych (NPS) i Azure AD
 
@@ -33,7 +33,7 @@ Zasad sieciowych i dostępu do usług (NPS) umożliwia organizacjom wykonaj nast
 
 Zazwyczaj organizacji, Użyj serwera zasad Sieciowych (RADIUS), aby uprościć i scentralizowane zarządzanie VPN zasad. Jednak w wielu organizacjach również użyć serwera zasad Sieciowych można uproszczenie i scentralizowane zarządzanie zasady autoryzacji połączeń usług pulpitu usług pulpitu zdalnego (RD CAP).
 
-Organizacje, można również zintegrować serwera NPS z usługą Azure MFA, aby zwiększyć bezpieczeństwo i zapewnia wysoki poziom zgodności. Pozwala to zagwarantować, że użytkownicy ustanawiać weryfikacji dwuetapowej, aby zalogować się do bramy usług pulpitu zdalnego. Użytkownikom można udzielić dostępu musi podać ich kombinacji nazwy użytkownika/hasła, wraz z informacjami, których użytkownik ma w swojej kontrolce. Te informacje, musi być zaufany i nie można łatwo zduplikować, takie jak numer telefonu komórkowego, numer telefonu stacjonarnego, aplikacja na urządzeniu przenośnym i tak dalej.
+Organizacje, można również zintegrować serwera NPS z usługą Azure MFA, aby zwiększyć bezpieczeństwo i zapewnia wysoki poziom zgodności. Pozwala to zagwarantować, że użytkownicy ustanawiać weryfikacji dwuetapowej, aby zalogować się do bramy usług pulpitu zdalnego. Użytkownikom można udzielić dostępu musi podać ich kombinacji nazwy użytkownika/hasła, wraz z informacjami, których użytkownik ma w swojej kontrolce. Te informacje, musi być zaufany i nie można łatwo zduplikować, takie jak numer telefonu komórkowego, numer telefonu stacjonarnego, aplikacja na urządzeniu przenośnym i tak dalej. Aby uzyskać więcej informacji na temat obsługiwanych metod uwierzytelniania, zobacz sekcję [Określanie metody uwierzytelniania, które służą użytkownikom](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
 
 Przed dostępność rozszerzenia serwera NPS dla platformy Azure klienci, którzy chcieliby zaimplementować weryfikację dwuetapową dla zintegrowanych środowisk serwera zasad Sieciowych i usługi Azure MFA miał konfigurowania i konserwacji osobny serwer usługi MFA w środowisku lokalnym, zgodnie z opisem w [ Brama pulpitu zdalnego i korzystanie z usługi RADIUS serwera Azure Multi-Factor Authentication](howto-mfaserver-nps-rdg.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie i zarządzanie projektami notesu platformy Azure | Dokumentacja firmy Microsoft
+title: Konfigurowanie i zarządzanie projektami notesu platformy Azure
 description: Jak zarządzać metadanych projektu, pliki projektu, projekt środowiska i etapy instalacji za pośrednictwem interfejsu użytkownika usługi Azure notesów i bezpośredni dostęp do terminala.
 services: app-service
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 0e24d06cfeefd8315e21a45b833e6bf0e5f9dfd9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d948be88fd75202dea010520d3531f151d6934b0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856335"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104088"
 ---
-# <a name="manage-and-configure-projects"></a>Zarządzanie i konfigurowanie projektów
+# <a name="manage-and-configure-projects"></a>Konfigurowanie projektów i zarządzanie nimi
 
 Projekt w notesach Azure jest zasadniczo konfiguracji podstawowej maszyny wirtualnej systemu Linux, w którym uruchamiany notesów programu Jupyter, wraz z opisowymi metadanymi i folderu plików. Pulpit nawigacyjny projektu w notesach Azure umożliwia zarządzanie plikami, a w przeciwnym razie Konfigurowanie właściwości projektu:
 
@@ -74,7 +74,7 @@ Każdy element na liście plik projektu zawiera poleceń w menu kontekstowym kli
 
 ![Polecenia w menu kontekstowym pliku](media/project-file-commands.png)
 
-| Polecenie | Skróty klawiaturowe | Akcja |
+| Polecenie | Skrót klawiaturowy | Akcja |
 | --- | --- | --- |
 | Uruchom polecenie | r (lub kliknij przycisk) | Uruchamia plik notesu. Inne typy plików są otwarte do wyświetlenia.  |
 | Kopiuj łącze | Y | Kopiuje łącza do pliku do Schowka. |
@@ -92,7 +92,7 @@ Podgląd pliku lub notes jest widok tylko do odczytu zawartości; Uruchamianie n
 
 Na stronie (wersja zapoznawcza) obsługuje kilka poleceń narzędzi za pomocą skrótów klawiaturowych:
 
-| Polecenie | Skróty klawiaturowe | Akcja |
+| Polecenie | Skrót klawiaturowy | Akcja |
 | --- | --- | --- |
 | Udostępnij | s | Wyświetla udostępniania okna podręcznego, z którego można uzyskać link, Udostępnij w mediach społecznościowych, uzyskać osadzenia HTML i Wyślij wiadomość e-mail. |
 | Klonowanie | c  | Klonuj Notes do Twojego konta. |

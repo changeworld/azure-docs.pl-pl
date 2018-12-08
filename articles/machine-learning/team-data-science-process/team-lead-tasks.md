@@ -1,6 +1,6 @@
 ---
-title: Zespół lider zespołu procesu do nauki o danych zadania — Azure | Dokumentacja firmy Microsoft
-description: Konspekt zadań dla zespołu potencjalnego klienta w projekcie zespołowym do nauki o danych.
+title: Zadania dla zespołu prowadzić do zespołu danych do analizy procesu zespołu - Azure
+description: Zarys zadania, które zespół prowadzić w projekcie zespołowym do nauki o danych oczekuje się, aby ukończyć dla zespołu do nauki o danych.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2004396266d4bde9f3be540408524b668bbb863d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 68fd0abf314eb4fde5ff335acc161d82ad78cd0c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443853"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106638"
 ---
-# <a name="team-lead-tasks"></a>Zadania kierownik zespołu
+# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Zadania dla zespołu prowadzić w zespole procesu do nauki o danych zespołu
 
 W tym temacie wymieniono zadania, które jest lider zespołu oczekiwano dla swojego zespołu do nauki o danych. Celem jest zapewnienie środowiska zespół współpracowników, standardowego na [zespołu danych dla celów naukowych](overview.md) (TDSP). Przetwarzanie TDSP jest metodologia nauki o danych agile, iteracyjne wydajnie dostarczać rozwiązania do analizy predykcyjnej i inteligentnych aplikacji. Zaprojektowano go, aby poprawić współpracę i szkolenia zespołu. Ten proces jest destylacji najlepsze rozwiązania i struktury zarówno firmy Microsoft, a także z branży służące do pomyślnego wdrożenia inicjatyw do nauki o danych, aby pomóc firmom w pełni korzystać z zalet ich programy analizy. Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
 

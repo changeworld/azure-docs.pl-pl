@@ -1,5 +1,6 @@
 ---
-title: Przekształcanie danych za pomocą Azure Machine Learning danych Prep SDK — języka Python
+title: Przekształcanie i przygotowuj dane za pomocą zestawu SDK języka Python w środowisku przedprodukcyjnym danych
+titleSuffix: Azure Machine Learning service
 description: Więcej informacji na temat przekształcania i czyszczenie danych przy użyciu zestawu SDK usługi Azure Machine Learning danych przedprodukcyjnym. Dodawanie kolumn odfiltrować zbędne wiersze lub kolumny i przypisują brakujące wartości, należy użyć metod transformacji.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,14 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: 988301f24f710a3e29fad1254d405501166e8a4e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: c734605cd67fcd2490aef0ddc6732dad112424b7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309797"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101793"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
@@ -216,16 +218,16 @@ builder.preview(skip=30)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|30|11/1/2015 22:54|Od 1 stycznia 2015 r. 22: 00 - 00: 00|
-|31|11/1/2015 23:54|Od 1 stycznia 2015 r. 22: 00 - 00: 00|
-|32|11/1/2015 23:59|Od 1 stycznia 2015 r. 22: 00 - 00: 00|
-|33|2-11-2015 0:54|1 lutego 2015 0: 00 – 2: 00|
-|34|2015-11-2 1:00|1 lutego 2015 0: 00 – 2: 00|
-|35|2015-11-2 1:54|1 lutego 2015 0: 00 – 2: 00|
-|36|2015-11-2 2:54|Od 1 lutego 2015 r. 2: 00 – 4: 00|
-|37|2015-11-2-3:54|Od 1 lutego 2015 r. 2: 00 – 4: 00|
-|38|2015-11-2-4:00|Od 1 lutego 2015 r. 4: 00 - 6: 00|
-|39|2015-11-2-4:54|Od 1 lutego 2015 r. 4: 00 - 6: 00|
+|30|1/1/2015 22:54|Od 1 stycznia 2015 r. 22: 00 - 00: 00|
+|31|1/1/2015 23:54|Od 1 stycznia 2015 r. 22: 00 - 00: 00|
+|32|1/1/2015 23:59|Od 1 stycznia 2015 r. 22: 00 - 00: 00|
+|33|1/2/2015 0:54|1 lutego 2015 0: 00 – 2: 00|
+|34|1/2/2015 1:00|1 lutego 2015 0: 00 – 2: 00|
+|35|1/2/2015 1:54|1 lutego 2015 0: 00 – 2: 00|
+|36|1/2/2015 2:54|Od 1 lutego 2015 r. 2: 00 – 4: 00|
+|37|2015-1-2-3:54|Od 1 lutego 2015 r. 2: 00 – 4: 00|
+|38|1/2/2015 4:00|Od 1 lutego 2015 r. 4: 00 - 6: 00|
+|39|1/2/2015 4:54|Od 1 lutego 2015 r. 4: 00 - 6: 00|
 
 W tym miejscu zobaczysz wystąpił problem z wygenerowanego programu. Wyłącznie na podstawie jednego przykładu podane powyżej, program pochodnych wybrała można przeanalizować daty jako "Dzień/miesiąc/rok", czyli nie chcesz w tym przypadku. Aby rozwiązać ten problem, podaj inny przykład przy użyciu `add_example()` działać na `builder` zmiennej.
 

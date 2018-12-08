@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 531b431a0753e34592e88211d8a58328fe8a4e45
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d3fbc8e5b6595b52fe5ab9e766a108d271f2f448
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014552"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104598"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -75,6 +75,7 @@ W programie Visual Studio:
 
     ![Zrzut ekranu opcji narzędzi okna dialogowego](media/common/VerbositySetting.PNG)
     
+### <a name="multi-stage-dockerfiles"></a>Wieloetapowe pliki Dockerfile:
 Ten błąd może zostać wyświetlony podczas próby użycia wieloetapowych pliku Dockerfile. Pełne dane wyjściowe będą wyglądać następująco:
 
 ```cmd
@@ -91,6 +92,21 @@ Service cannot be started.
 ```
 
 Jest to spowodowane węzłów AKS uruchomić starszej wersji platformy docker, który nie obsługuje wieloetapowych kompilacji. Konieczne będzie ponowne zapisywanie adresów z pliku Dockerfile, aby uniknąć wieloetapowych kompilacji.
+
+### <a name="re-running-a-service-after-controller-re-creation"></a>Ponowne uruchomienie usługi po ponownego utworzenia kontrolera
+Ten błąd może zostać wyświetlony podczas próby ponownego uruchomienia usługi po usunięte i tworzony ponownie kontroler Azure Dev miejsca do magazynowania, skojarzone z tym klastrem. Pełne dane wyjściowe będą wyglądać następująco:
+
+```cmd
+Installing Helm chart...
+Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+```
+
+Jest to spowodowane usunięcie kontrolera Dev miejsca do magazynowania nie powoduje usunięcia usług zainstalowanych wcześniej przez tego kontrolera. Ponowne tworzenie kontrolera, a następnie próbując do uruchamiania usług przy użyciu nowego kontrolera nie działa, ponieważ stare usługi wciąż znajdują się w miejscu.
+
+Aby rozwiązać ten problem, należy użyć `kubectl delete` polecenie, aby ręcznie usunąć stary usługi z klastrem, a następnie ponownie uruchom Dev miejsca do magazynowania, aby zainstalować nowych usług.
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Rozpoznawanie nazw DNS nie powiedzie się publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania
 
@@ -195,6 +211,15 @@ Nie masz rozszerzenie programu VS Code Azure Dev spacje zainstalowany na kompute
 
 ### <a name="try"></a>Wypróbuj:
 Zainstaluj [rozszerzenie programu VS Code dla usługi Azure Dev miejsca do magazynowania](get-started-netcore.md).
+
+## <a name="debugging-error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Debugowanie błąd "nieprawidłowy"cwd"wartość" / src ". System nie może odnaleźć określonego pliku." lub "Uruchom: program"/ src / [ścieżka do pliku binarnego projektu]"nie istnieje."
+Uruchamianie debugera programu VS Code zgłasza błąd `Invalid 'cwd' value '/src'. The system cannot find the file specified.` i/lub `launch: program '/src/[path to project executable]' does not exist`
+
+### <a name="reason"></a>Przyczyna
+Domyślnie używa rozszerzenia programu VS Code `src` jako katalog roboczy dla projektu w kontenerze. Jeśli zaktualizowano swoje `Dockerfile` Aby określić inny katalog roboczy, może zostać wyświetlony ten błąd.
+
+### <a name="try"></a>Wypróbuj:
+Aktualizacja `launch.json` plik `.vscode` podkatalogu w folderze projektu. Zmiana `configurations->cwd` dyrektywy, aby wskazywała na tym samym katalogu co `WORKDIR` zdefiniowane w swoim projekcie `Dockerfile`. Również może być konieczne zaktualizowanie `configurations->program` również dyrektywę.
 
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Nie można odnaleźć nazwy typu lub przestrzeni nazw "MojaBiblioteka"
 

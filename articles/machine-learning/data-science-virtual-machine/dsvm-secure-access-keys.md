@@ -1,11 +1,12 @@
 ---
 title: Store bezpieczny - dostęp poświadczeń na maszynie wirtualnej do nauki o danych platformy Azure | Dokumentacja firmy Microsoft
-description: Store dostępu bezpiecznie poświadczeń na maszynie wirtualnej do nauki o danych.
+description: Dowiedz się, jak bezpiecznie przechowywać poświadczenia dostępu na maszynie wirtualnej do nauki o danych. Dowiesz się jak używać tożsamości usługi zarządzanej i usługi Azure Key Vault do przechowywania poświadczeń dostępu.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 1bf3150fc79f86e196be120fef78b76be8e47f63
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d7d68e784aab371503e4828ce51387b86502de62
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344510"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103442"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Store dostępu bezpiecznie poświadczeń na maszynie wirtualnej do nauki o danych
 

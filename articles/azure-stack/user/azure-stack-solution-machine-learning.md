@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: e503a394eed7d5c4bdd4c93037dc86442097f72e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 057df4260da267254cb764e58fdac749bee3b842
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002171"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106757"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie przeglądarki edge rozwiązanie uczenia maszynowego z platformą Azure i usługi Azure Stack
 
@@ -357,7 +357,7 @@ Aplikacja Azure Machine Learning Workbench jest dostępna dla systemów Windows 
     | Project name (Nazwa projektu) | myIris | Wprowadź unikatową nazwę, która identyfikuje konto. Użyj dla działów lub nazwę projektu, która najlepiej identyfikuje eksperyment. Nazwa powinna mieć od 2 do 32 znaków. Powinna ona zawierać tylko znaki alfanumeryczne i znak łącznika (-). |
     | Katalog projektu | c:\Temp\ | Określ katalog, w którym zostanie utworzony projekt. |
     | Opis projektu | Pozostaw to pole puste | Pole opcjonalne przydatne do opisywania projektów. |
-    | Adres URL repozytorium usługi GIT VisualStudio.com | Pozostaw to pole puste | Pole opcjonalne. Skojarz projekt z repozytorium Git w usłudze Visual Studio Team Services do kontroli źródła i współpracy. |
+    | Adres URL repozytorium usługi GIT VisualStudio.com | Pozostaw to pole puste | Pole opcjonalne. Skojarz projekt z repozytorium Git z repozytoriów platformy Azure na potrzeby kontroli źródła i współpracy. |
     | Wybrany obszar roboczy | IrisGarden (jeśli istnieje) | Wybierz obszar roboczy utworzony dla konta eksperymentowania w witrynie Azure portal. <br>Korzystając z przewodnika Szybki Start, znajduje się obszar roboczy nazwie IrisGarden. W przeciwnym razie Użyj obszaru roboczego przy użyciu nazwy konta eksperymentowania lub nazwę preferowanego konta. |
     | Szablon projektu | Classifying Iris | Szablony zawierają skrypty i dane, pozwala zapoznać się z produktem. Ten szablon zawiera skrypty i dane wymagane przez ten przewodnik Szybki Start i samouczków w tej witrynie dokumentacji. |
 
@@ -1420,7 +1420,7 @@ Kubectl get deployments
 
 Wdrożenie może potrwać pewien czas.
 
-### <a name="configure-visual-studio-team-services-to-deploy-automatically"></a>Konfigurowanie programu Visual Studio Team Services, aby wdrożyć automatycznie
+### <a name="configure-azure-devops-to-deploy-automatically"></a>Konfigurowanie DevOps platformy Azure, aby wdrożyć automatycznie
 
 #### <a name="create-a-team-project"></a>Utwórz projekt zespołowy
 
@@ -1760,7 +1760,7 @@ Teraz, gdy nawiązywane są połączenia, zostaną ręcznie mapy utworzony punkt
 
     ![Tekst alternatywny](media/azure-stack-solution-machine-learning/image110.png)
 
-1.  Nazwa artefaktu **iris_deployment** i wybrać lokalizację publikacji na **Visual Studio Team Services/TFS**.
+1.  Nazwa artefaktu **iris_deployment** i wybrać lokalizację publikacji na **potoki Azure**.
 
     ![Tekst alternatywny](media/azure-stack-solution-machine-learning/image111.png)
 

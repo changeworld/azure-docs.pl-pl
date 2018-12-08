@@ -1,5 +1,5 @@
 ---
-title: Tworzenie grupy przestrzeni nazw i konsumentów usługi Azure Event Hubs za pomocą szablonu | Dokumentacja firmy Microsoft
+title: Utwórz grupę przestrzeni nazw i konsumentów usługi Azure Event Hubs za pomocą szablonu | Dokumentacja firmy Microsoft
 description: Tworzenie przestrzeni nazw usługi Event Hubs z Centrum zdarzeń i grupy odbiorców za pomocą szablonów usługi Azure Resource Manager
 services: event-hubs
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 452e866a801a27d0a9681802706abb06f214bd6d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fefaadcbe88a79f260e8061ce0b380f3e18f688c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962321"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103017"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Szybki Start: Tworzenie Centrum zdarzeń przy użyciu szablonu usługi Azure Resource Manager
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: cdd01953e4053eec6e8b0cb57c7a68bb2ae01673
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d2e76bde90c0bf2d411697998fe140eb1b706b9b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957486"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106468"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
 Ten dokument jest przeznaczony do dostarczają informacje charakterystyczne do usługi Log Analytics, która jest funkcją usługi Azure monitor, aby uzupełnić informacje na [Centrum zaufania systemu Azure](../../security/security-microsoft-trust-center.md).  
@@ -181,7 +181,7 @@ Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od
 Aby uzyskać dostęp do obszaru roboczego usługi Log Analytics, możesz zarejestrować się do witryny Azure portal przy użyciu konta organizacji lub konta Microsoft, które wcześniej. Cały ruch między portalem i usługą Log Analytics są wysyłane za pośrednictwem bezpiecznego kanału protokołu HTTPS. Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarka sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Gdy zakończone, pamięci podręcznej zostaną usunięte. Pliki cookie po stronie klienta, które nie zawierają danych osobowych, nie są automatycznie usuwane. Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są chronione. Po upływie wstępnie ustaloną bezczynności sesji portalu platformy Azure zostanie zakończony.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak zbierać dane z usługą Log Analytics na potrzeby Twojego następujące maszyny wirtualne platformy Azure [Szybki Start maszyna wirtualna platformy Azure](../../log-analytics/log-analytics-quick-collect-azurevm.md).  
+* Dowiedz się, jak zbierać dane z usługą Log Analytics na potrzeby Twojego następujące maszyny wirtualne platformy Azure [Szybki Start maszyna wirtualna platformy Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-*  Jeśli chcesz zbierać dane z fizycznych i wirtualnych komputerów Windows lub Linux w środowisku, zobacz [szybkiego startu dla komputerów z systemem Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) lub [komputerów Szybki Start dla Windows](../../azure-monitor/learn/quick-collect-windows-computer.md)
+*  Jeśli chcesz zbierać dane z fizycznych i wirtualnych komputerów Windows lub Linux w środowisku, zobacz [szybkiego startu dla komputerów z systemem Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) lub [komputerów Szybki Start dla Windows](../../azure-monitor/learn/quick-collect-windows-computer.md)
 

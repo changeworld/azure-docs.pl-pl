@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0618a580c6bdcef8f28a439cd79e67d863e58b9e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: abc3d5832cd85cb3297077f2d661ec8fe32fde9e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995233"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105295"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentowanie aplikacji internetowych w czasie wykonywania za pomocą usługi Application Insights
 
@@ -119,6 +119,7 @@ Jeśli chcesz ponownie przeprowadzić publikację bez dodawania usługi Applicat
   * W Menedżerze usług IIS wybierz pulę aplikacji, otwórz **Ustawienia zaawansowane** i zapamiętaj tożsamość w obszarze **Model procesu**.
   * W panelu sterowania Zarządzanie komputerem dodaj tę tożsamość do grupy Użytkownicy monitora wydajności.
 * Jeśli na serwerze jest zainstalowany agent MMA/SCOM (Systems Center Operations Manager), niektóre wersje mogą powodować konflikt. Odinstaluj oprogramowanie SCOM i monitor stanu, a następnie ponownie zainstaluj najnowsze wersje.
+* Stan monitora Dzienniki znajdują się w tej lokalizacji domyślnie: "C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log"
 * Zobacz [Rozwiązywanie problemów][qna].
 
 ## <a name="system-requirements"></a>Wymagania systemu
@@ -217,9 +218,12 @@ Nie zbiera on telemetrii samodzielnie. Po prostu konfiguruje aplikacje interneto
 
 Po wybraniu aplikacji internetowej do instrumentacji za pomocą monitora stanu:
 
-* Pobiera i umieszcza zestawy usługi Application Insights i pliku config w folderze plików binarnych aplikacji internetowej.
-* Modyfikuje plik `web.config` w celu dodania modułu śledzenia protokołu HTTP usługi Application Insights.
+* Pobiera i umieszcza zestawy usługi Application Insights i pliku ApplicationInsights.config w folderze plików binarnych aplikacji sieci web.
 * Umożliwia profilowanie aparatu CLR w celu gromadzenia wywołań zależności.
+
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Jakie wersje zestawu SDK usługi Application Insights Zainstaluj Monitor stanu
+
+Aktualnie Monitora stanu można zainstalować tylko zestaw SDK usługi Application Insights w wersji 2.3 lub 2.4.
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Czy monitor stanu należy uruchamiać podczas każdej aktualizacji aplikacji?
 

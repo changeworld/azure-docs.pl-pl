@@ -4,17 +4,16 @@ description: W tym artykule opisano sposób użycia funkcji zdefiniowanych przez
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 024d7094a9baa90eebd57b4c76db367f81bd0400
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 12/07/2018
+ms.openlocfilehash: cea810a5e57f4b10c170038108226c4e0f1320bc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700871"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104940"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Usługi Machine Learning integracji w usłudze Stream Analytics
 Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika, które wywołują z punktami końcowymi usługi Azure Machine Learning. Obsługa interfejsu API REST, aby ta funkcja została szczegółowo opisana w [biblioteki interfejsu API REST usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ten artykuł zawiera dodatkowe informacje wymagane do pomyślnego wdrożenia tej funkcji w usłudze Stream Analytics. Samouczek również została opublikowana i jest dostępny [tutaj](stream-analytics-machine-learning-integration-tutorial.md).
@@ -51,7 +50,7 @@ Na przykład następujący przykładowy kod tworzy skalarny systemu plików UDF 
 
 Przykład treść żądania:  
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -67,7 +66,7 @@ Przykład treść żądania:
             }
         }
     }
-````
+```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Wywołanie punktu końcowego RetrieveDefaultDefinition domyślnego systemu plików UDF
 Po szkielet UDF kompletną definicję funkcji zdefiniowanej przez użytkownika jest wymagana. Punkt końcowy RetreiveDefaultDefinition ułatwiają definicji domyślnej dla funkcji skalarnej, który jest powiązany z punktu końcowego usługi Azure Machine Learning. Ładunek poniżej wymaga można pobrać definicji domyślnej funkcji zdefiniowanej przez użytkownika, dla funkcji skalarnej, który jest powiązany z punktu końcowego usługi Azure Machine Learning. Nie go określić istniejący punkt końcowy, ponieważ już zostało podane podczas wykonywania żądania PUT. Stream Analytics wywołuje punkt końcowy, podany w żądaniu, jeśli podano jawnie. W przeciwnym razie używa jednego pierwotnie odwołania. W tym miejscu przyjmuje funkcji zdefiniowanej przez użytkownika, w jeden ciąg parametrów (zdanie) i zwraca pojedynczy danych wyjściowych typu ciąg, co oznacza "opinie" etykietę dla tego zdania.
@@ -78,7 +77,7 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 
 Przykład treść żądania:  
 
-````
+```json
     {
         "bindingType": "Microsoft.MachineLearning/WebService",
         "bindingRetrievalProperties": {
@@ -86,11 +85,11 @@ Przykład treść żądania:
             "udfType": "Scalar"
         }
     }
-````
+```
 
 Przykład danych wyjściowych, to czy Szukaj coś w rodzaju poniżej.  
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -126,7 +125,7 @@ Przykład danych wyjściowych, to czy Szukaj coś w rodzaju poniżej.
             }
         }
     }
-````
+```
 
 ## <a name="patch-udf-with-the-response"></a>Poprawka funkcji zdefiniowanej przez użytkownika z odpowiedzią
 Teraz funkcji zdefiniowanej przez użytkownika należy poprawić z poprzedniej odpowiedzi, jak pokazano poniżej.
@@ -137,7 +136,7 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 Treść żądania (dane wyjściowe z RetrieveDefaultDefinition):
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -173,12 +172,12 @@ Treść żądania (dane wyjściowe z RetrieveDefaultDefinition):
             }
         }
     }
-````
+```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Implementowanie przekształcania usługi Stream Analytics do wywołania funkcji zdefiniowanej przez użytkownika
 Teraz zapytanie funkcji zdefiniowanej przez użytkownika (w tym miejscu o nazwie scoreTweet) dla każdego zdarzenia wejściowe i zapisywać dane wyjściowe odpowiedzi dla tego zdarzenia.  
 
-````
+```json
     {
         "name": "transformation",
         "properties": {
@@ -186,7 +185,7 @@ Teraz zapytanie funkcji zdefiniowanej przez użytkownika (w tym miejscu o nazwie
             "query": "select *,scoreTweet(Tweet) TweetSentiment into blobOutput from blobInput"
         }
     }
-````
+```
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy

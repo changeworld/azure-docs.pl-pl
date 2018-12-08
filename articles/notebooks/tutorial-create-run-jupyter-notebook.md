@@ -1,5 +1,5 @@
 ---
-title: Samouczek — tworzenie i uruchamianie notesu programu Jupyter na platformie Azure | Dokumentacja firmy Microsoft
+title: Samouczek — tworzenie i uruchamianie notesu programu Jupyter na platformie Azure
 description: Jak utworzyć uruchomienia notesu programu Jupyter w notesach platformy Azure, który demonstruje proces regresji liniowej w zakresie analizy danych.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a73a3e89c2f1c2b852193ae916d73675b5b0fbcd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856347"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106682"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Samouczek: tworzenie i uruchamianie notesu Jupyter przy użyciu języka Python
 
@@ -54,7 +54,12 @@ Tworzenie notesu uczenia modelu regresji liniowej rysuje danych z pliku w projek
 ### <a name="upload-the-data-file"></a>Przekaż plik danych
 
 1. Na pulpicie nawigacyjnym projektu w notesach platformy Azure, wybierz **przekazywanie** > **z adresu URL**
-1. W okienku wyskakującym wprowadź adres URL `https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv` w **adres URL pliku** i *cricket_chirps.csv* w **nazwy pliku**, a następnie wybierz **gotowe**.
+1. W okienku wyskakującym wprowadź następujący adres URL w **adres URL pliku** i *cricket_chirps.csv* w **nazwy pliku**, a następnie wybierz **gotowe**.
+
+    ```url
+    https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
+    ```
+
 1. *Cricket_chirps.csv* plik teraz powinien być widoczny na liście plików projektu:
 
     ![Nowo utworzony plik CSV, wyświetlane na liście plików projektu](media/tutorial/csv-file-in-project.png)
@@ -87,7 +92,7 @@ Tworzenie notesu uczenia modelu regresji liniowej rysuje danych z pliku w projek
 
 1. Wybierz **Zapisz plik** Zapisz plik i powróć do pulpitu nawigacyjnego projektu.
 
-## <a name="install-python-packages-at-the-project-level"></a>Zainstaluj pakiety języka Python na poziomie projektu
+## <a name="install-project-level-packages"></a>Instalowanie pakietów na poziomie projektu
 
 W notesie, zawsze można użyć poleceń, takich jak `!pip install` w komórce kodu, aby zainstalować wymagane pakiety. Jednak takie polecenia są uruchamiane za każdym razem, gdy uruchomienia komórki kodu w notesie, a może zająć znaczną ilość czasu. Z tego powodu, możesz zamiast tego zainstalować pakiety na poziomie projektu przy użyciu `requirements.txt` pliku.
 
@@ -113,7 +118,7 @@ W notesie, zawsze można użyć poleceń, takich jak `!pip install` w komórce k
 
 Ten krok konfiguracji w miejscu każdego dostępnego po uruchomieniu w projekcie będą uruchamiane w środowisku zainstalowanym te pakiety.
 
-## <a name="create-the-notebook-file-and-start-jupyter"></a>Tworzenie pliku notesu i uruchamianie programu Jupyter
+## <a name="create-and-run-a-notebook"></a>Tworzenie i uruchamianie notesu
 
 Dzięki zestawowi środowiska projektu i pliku danych, które jest gotowy można tworzyć i otworzyć notes.
 
@@ -125,7 +130,7 @@ Dzięki zestawowi środowiska projektu i pliku danych, które jest gotowy można
 
     [![](media/tutorial/tutorial-new-notebook.png "Widok początkowy nowy notes w notesach platformy Azure")](media/tutorial/tutorial-new-notebook.png#lightbox)
 
-## <a name="a-brief-tour-of-the-notebook-interface"></a>Krótki przewodnik po interfejsie notesu
+## <a name="tour-the-notebook-interface"></a>Przewodnik po interfejsie notesu
 
 Z notesem uruchomiony możesz dodać kod komórek języka znaczników Markdown, uruchom tych komórek i zarządzać działaniem notesu. Po pierwsze jednak warto trwa kilka minut na zapoznanie się z interfejsem. Pełną dokumentację można wybrać **pomocy** > **pomocy notesu** polecenia menu.
 
@@ -404,7 +409,7 @@ Można również użyć **pliku** > **Utwórz kopię** polecenie w dowolnym mome
 
 Po zakończeniu korzystania z notesu, użyj **pliku** > **Zamknij i zatrzymania** polecenia, które powoduje zamknięcie notesu i zamyka jądra, która działa go. Notesy platformy Azure następnie na karcie przeglądarki zostanie automatycznie zamknięte.
 
-## <a name="debugging-code-in-a-notebook-using-visual-studio-code"></a>Debugowanie kodu w notesie programu Visual Studio Code
+## <a name="debug-notebooks-using-visual-studio-code"></a>Debugowanie notesów programu Visual Studio Code
 
 Jeśli komórki kodu w notesie nie działają w taki sposób, w których oczekujesz, możesz mieć kod błędy lub inne usterki. Jednak inne niż przy użyciu `print` instrukcji, aby wyświetlić wartości zmiennych, notesu programu Jupyter nie oferuje żadnych urządzeń debugowania.
 

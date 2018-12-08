@@ -1,6 +1,6 @@
 ---
-title: Jak zresetować hasło użytkownika w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zresetować hasło użytkownika za pomocą usługi Azure Active Directory.
+title: Resetowanie hasła użytkownika — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące resetowania hasła użytkownika przy użyciu usługi Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,19 +12,22 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 3803808ab589c3d880111421f650141f0d829f0b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: c8dd387104d52075425d881363dbcbaac700461a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736099"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103374"
 ---
-# <a name="how-to-reset-a-users-password-using-azure-active-directory"></a>Porady: resetowanie hasła użytkownika przy użyciu usługi Azure Active Directory
-Możesz zresetować hasła użytkownika, czy zapomniane hasło, jeśli użytkownik pobiera blokada urządzenia, czy hasło nigdy nie odebrane przez użytkownika.
+# <a name="reset-a-users-password-using-azure-active-directory"></a>Zresetuj hasło użytkownika przy użyciu usługi Azure Active Directory
+Jako administrator możesz zresetować hasła użytkownika, czy zapomniane hasło, jeśli użytkownik pobiera blokada urządzenia, czy hasło nigdy nie odebrane przez użytkownika.
 
 >[!Note]
 >Chyba że dzierżawy usługi Azure AD jest katalogu macierzystego użytkownika, nie można zresetować swoje hasło. Oznacza to, że jeśli użytkownik loguje się do swojej organizacji za pomocą konta z innej organizacji, konta Microsoft lub konto Google, nie można zresetować swoje hasło.<br><br>Jeśli użytkownik ma źródło Urząd jako Windows Server Active Directory, tylko wtedy będzie można zresetować hasła, jeśli włączono funkcję zapisywania zwrotnego haseł.<br><br>Jeśli użytkownik ma źródło Urząd jako zewnętrzne usługi Azure AD, nie można zresetować hasło. Tylko użytkownik lub Konfigurator w zewnętrznej usłudze Azure AD, można zresetować hasła.
+
+>[!Note]
+>Jeśli nie jesteś administratorem i zamiast tego szukasz instrukcje dotyczące resetowania hasła firmowego lub szkolnego, zobacz [Resetowanie hasła służbowego](../user-help/active-directory-passwords-update-your-own-password.md).
 
 ## <a name="to-reset-a-password"></a>Aby zresetować hasło
 

@@ -1,21 +1,22 @@
 ---
-title: 'Samouczek 2: Test usługi Batch przy użyciu zestawu wypowiedzi 1000 '
+title: Test usługi Batch
 titleSuffix: Azure Cognitive Services
 description: Ten samouczek pokazuje, jak za pomocą testowania partii znaleźć wypowiedź prognozowania problemy w aplikacji i je rozwiązać.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162545"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106043"
 ---
 # <a name="tutorial-2-batch-test-data-sets"></a>Samouczek 2: Zestawy danych testowych partii
 
@@ -31,11 +32,11 @@ Wymagania dotyczące testowania usługi batch:
 
 Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wypowiedzi przykład już dodany do intencji. 
 
-**W tym samouczku dowiesz się, jak:**
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Użyj istniejącego samouczek aplikacji
+> * Korzystanie z istniejącej aplikacji samouczka
 > * Utwórz plik wsadowy testu 
 > * Uruchom test usługi batch
 > * Przejrzyj wyniki testu
@@ -44,19 +45,19 @@ Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wyp
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Użyj istniejącej aplikacji
+## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
 
-Kontynuuj aplikację utworzoną w samouczku ostatni o nazwie **kadry**. 
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następujących czynności:
+Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
 
-1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
 
-2. Importuj dane JSON do nowej aplikacji.
+2. Zaimportuj plik JSON do nowej aplikacji.
 
-3. Z **Zarządzaj** sekcji na **wersji** kartę, klonowanie wersji i nadaj mu nazwę `batchtest`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używany jako część trasy adresu URL, nazwa nie może zawierać żadnych znaków, które nie są prawidłowe w adresie URL. 
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `batchtest`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL. 
 
-4. Uczenie aplikacji.
+4. Przeszkol aplikację.
 
 ## <a name="batch-file"></a>Plik wsadowy
 

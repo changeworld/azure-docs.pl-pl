@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9ed4c98af94b56876266d5425111bc3f842c5e87
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 94b1b4cfbc5e7a96be389f315a1c58dc311c60a0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892592"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104951"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Utwórz zasady automatycznego skalowania dla aplikacji usługi Service Fabric siatki
 Jedną z głównych zalet wdrażania aplikacji w usłudze Service Fabric Mesh jest możliwość łatwego skalowania usług w pionie lub poziomie. Powinno to służyć do obsługi różnych ilości obciążenia w usługach lub do poprawiania dostępności. Można ręcznie skalować swoje usługi wewnątrz lub na zewnątrz lub skonfiguruj zasady skalowania automatycznego.
@@ -30,9 +30,9 @@ Jedną z głównych zalet wdrażania aplikacji w usłudze Service Fabric Mesh je
 ## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Opcje automatycznego skalowania zasad, wyzwalacz i mechanizm tworzenia
 Zasady skalowania automatycznie jest zdefiniowana dla każdej usługi, który chcesz skalować. Zasada jest zdefiniowana w pliku YAML zasób usługi lub szablon wdrożenia JSON. Wszystkie zasady skalowania składa się z dwóch części: wyzwalacz i mechanizm skalowania.
 
-Wyzwalacz definiuje, gdy zostanie wywołana zasadę automatycznego skalowania.  Określ rodzaj metryki monitorowania (procesor CPU lub pamięci) i wyzwalaczy (średnie obciążenie).  Progi obciążenia górny i dolny, określony jako wartość procentowa. Interwału skalowania definiuje, jak często chcesz sprawdzać (w sekundach) określonego wykorzystania (na przykład średnie obciążenie procesora CPU) we wszystkich wystąpieniach w obecnie wdrożonej usłudze.  Ten mechanizm jest wyzwalany, gdy monitorowane metryki spadnie poniżej niższego progu, lub zwiększa powyżej górnej wartości progowej.  Aby uzyskać więcej informacji, zobacz [AutoScalingTrigger](/rest/api/servicefabric/sfmeshrp-model-autoscalingtrigger).
+Wyzwalacz definiuje, gdy zostanie wywołana zasadę automatycznego skalowania.  Określ rodzaj metryki monitorowania (procesor CPU lub pamięci) i wyzwalaczy (średnie obciążenie).  Progi obciążenia górny i dolny, określony jako wartość procentowa. Interwału skalowania definiuje, jak często chcesz sprawdzać (w sekundach) określonego wykorzystania (na przykład średnie obciążenie procesora CPU) we wszystkich wystąpieniach w obecnie wdrożonej usłudze.  Ten mechanizm jest wyzwalany, gdy monitorowane metryki spadnie poniżej niższego progu, lub zwiększa powyżej górnej wartości progowej.  
 
-Mechanizm skalowania definiuje sposób wykonywania operacji skalowania po wyzwoleniu zasad.  Określ rodzaj mechanizmu (Dodawanie/usuwanie repliki), repliki minimalnej i maksymalnej liczby (jako liczby całkowite).  Liczba replik usługi nigdy nie będzie można skalować, poniżej minimalnej liczby lub powyżej maksymalna liczba.  Przyrost skalowania można również określić jako liczba całkowita, która jest liczba replik, które zostaną dodane lub usunięte w ramach operacji skalowania.  Aby uzyskać więcej informacji, zobacz [AutoScalingMechanism](/rest/api/servicefabric/sfmeshrp-model-autoscalingmechanism).
+Mechanizm skalowania definiuje sposób wykonywania operacji skalowania po wyzwoleniu zasad.  Określ rodzaj mechanizmu (Dodawanie/usuwanie repliki), repliki minimalnej i maksymalnej liczby (jako liczby całkowite).  Liczba replik usługi nigdy nie będzie można skalować, poniżej minimalnej liczby lub powyżej maksymalna liczba.  Przyrost skalowania można również określić jako liczba całkowita, która jest liczba replik, które zostaną dodane lub usunięte w ramach operacji skalowania.  
 
 ## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Zdefiniuj automatycznie zasady skalowania w szablonie JSON
 

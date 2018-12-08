@@ -1,11 +1,12 @@
 ---
 title: Aprowizowanie maszyny wirtualnej z geograficznie sztucznej inteligencji na platformie Azure — Azure | Dokumentacja firmy Microsoft
-description: Jak wykonać aprowizację maszyny wirtualnej geograficznie sztucznej Inteligencji na platformie Azure.
+description: Dowiedz się, jak utworzyć i skonfigurować maszynę wirtualną do nauki o danych sztucznej Inteligencji geograficznie. Maszyny wirtualnej do nauki o danych sztucznej Inteligencji geograficzną udostępnia narzędzia umożliwiające tworzenie rozwiązań sztucznej Inteligencji i uczenia Maszynowego za pomocą danych geograficznych.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, Geoprzestrzenna analiza
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 395604da3465e66214f89b4f74ddf9d6bcdc48f8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239801"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103952"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej z geograficznie sztucznej inteligencji na platformie Azure 
 

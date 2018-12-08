@@ -1,20 +1,22 @@
 ---
-title: Usługa Azure Disk Encryption for Windows i maszyn wirtualnych IaaS z systemem Linux | Dokumentacja firmy Microsoft
+title: Dodatek — usługa Azure Disk Encryption dla maszyn wirtualnych IaaS | Dokumentacja firmy Microsoft
 description: Ten artykuł stanowi dodatek dla programu Microsoft Azure dysku szyfrowanie dla Windows i maszyn wirtualnych IaaS z systemem Linux.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 11/12/2018
-ms.openlocfilehash: e5c7d51428c66bf9e6c245f28fb13b8d4a316d18
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d6e186f25cc69791d939d93d24a37cadb1113353
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614679"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105046"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
+
 Ten artykuł stanowi dodatek do [usługi Azure Disk Encryption dla maszyn wirtualnych IaaS](azure-security-disk-encryption-overview.md). Upewnij się, że odczytu usługa Azure Disk Encryption dla maszyn wirtualnych IaaS artykułów najpierw po to, aby zrozumieć kontekst. W tym artykule opisano sposób przygotowania zaszyfrowane wstępnie wirtualnych dysków twardych i innych zadań.
 
 ## <a name="connect-to-your-subscription"></a>Nawiązywanie połączenia z subskrypcją
@@ -57,7 +59,7 @@ Przed rozpoczęciem należy przejrzeć [wymagania wstępne](azure-security-disk-
 
 ### <a name="bkmk_ConnectCLI"></a> Nawiązać połączenie z subskrypcji przy użyciu wiersza polecenia platformy Azure
 
-1. Logowanie do platformy Azure za pomocą [az login](/cli/azure/authenticate-azure-cli#interactive-log-in). 
+1. Logowanie do platformy Azure za pomocą [az login](/cli/azure/authenticate-azure-cli#sign-in-interactively). 
      
      ```azurecli
      az login
@@ -189,7 +191,7 @@ Dla systemu Windows Server 2008 R2 należy użyć następującego polecenia:
 
     ServerManagerCmd -install BitLockers
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Przygotowanie woluminu systemu operacyjnego do używania funkcji BitLocker przy użyciu `bdehdcfg`
-Aby skompresować partycji systemu operacyjnego i przygotowuje komputer do używania funkcji BitLocker, należy wykonać [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment#using-bitlocker-to-encrypt-volumescommand) w razie potrzeby:
+Aby skompresować partycji systemu operacyjnego i przygotowuje komputer do używania funkcji BitLocker, należy wykonać [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) w razie potrzeby:
 
     bdehdcfg -target c: shrink -quiet 
 
@@ -295,23 +297,23 @@ Konfigurowanie szyfrowania podczas instalacji dystrybucji, wykonując następuj�
 
 1. Wybierz **Konfigurowanie woluminów zaszyfrowanych** po partycji dysków.
 
- ![Instalator systemu Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+ ![Ubuntu 16.04 Konfigurowanie — Konfigurowanie zaszyfrowanych woluminów](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. Tworzenie dysku rozruchowego oddzielne nie muszą być szyfrowane. Szyfrowanie dysku głównego.
 
- ![Instalator systemu Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+ ![Instalator systemu Ubuntu 16.04 - wybierz urządzenia do zaszyfrowania](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. Podaj hasło. Jest to hasło, który został przekazany do magazynu kluczy.
 
- ![Instalator systemu Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+ ![Ubuntu 16.04 Konfigurowanie — Podaj hasło](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. Zakończ partycjonowania.
 
- ![Instalator systemu Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+ ![Ubuntu 16.04 Konfigurowanie — Zakończ partycjonowania](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. Podczas rozruchu maszyny Wirtualnej i monit o podanie hasła, należy użyć hasło, które podano w kroku 3.
 
- ![Instalator systemu Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+ ![Ubuntu 16.04 Konfigurowanie — Podaj hasło podczas rozruchu](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure przy użyciu [w instrukcjach](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
@@ -377,7 +379,7 @@ Konfigurowanie szyfrowania do pracy z platformą Azure, wykonując następujące
 
 7. Teraz można anulować aprowizację maszyny Wirtualnej.
 
- ![Instalator systemu Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+ ![Instalator systemu Ubuntu 16.04 - initramfs aktualizacji](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. Przejdź do kolejnego etapu i przekazywanie wirtualnego dysku twardego na platformie Azure.
 
@@ -385,11 +387,11 @@ Konfigurowanie szyfrowania do pracy z platformą Azure, wykonując następujące
 Aby skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonaj następujące czynności:
 1. Podczas dzielenia dysków na partycje wybrać **szyfrowanie woluminu grupy**, a następnie wprowadź hasło. To hasło, które należy przekazać do magazynu kluczy.
 
- ![openSUSE 13.2 Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+ ![openSUSE 13.2 instalacji — grupa szyfrowania woluminów](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
 2. Rozruch maszyny Wirtualnej, przy użyciu hasła.
 
- ![openSUSE 13.2 Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+ ![openSUSE 13.2 Konfigurowanie — Podaj hasło podczas rozruchu](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
 3. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure, postępując zgodnie z instrukcjami wyświetlanymi w [przygotowywanie maszyny wirtualnej systemu SLES lub openSUSE dla platformy Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
@@ -453,19 +455,19 @@ na:
 Aby skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonaj następujące czynności:
 1. Wybierz **szyfrowanie danych** po partycji dysków.
 
- ![Instalator centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+ ![Konfigurowanie centOS 7 - miejsce docelowe instalacji](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
 2. Upewnij się, że **Szyfruj** jest zaznaczone dla partycji katalogu głównego.
 
- ![Instalator centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+ ![Konfigurowanie centOS 7 - wybierz szyfrowania dla partycji katalogu głównego](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
 3. Podaj hasło. Jest to hasło, które należy przekazać do magazynu kluczy.
 
- ![Instalator centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+ ![Instalator centOS 7 - Podaj hasło](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
 
 4. Podczas rozruchu maszyny Wirtualnej i monit o podanie hasła, należy użyć hasło, które podano w kroku 3.
 
- ![Instalator centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+ ![CentOS 7 Konfigurowanie — wprowadź hasło w rozruchu](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
 5. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure przy użyciu instrukcji "CentOS 7.0 +" w [przygotowywanie maszyny wirtualnej z systemem CentOS dla platformy Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
@@ -526,7 +528,7 @@ na
     ```    
 5. Uruchom "/ usr/sbin/dracut - f - v" można zaktualizować initrd.
 
-![Instalator centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
+![CentOS 7 - /usr/sbin/dracut -f - v działanie Instalatora](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="bkmk_UploadVHD"></a> Przekazywanie zaszyfrowanego dysku VHD do konta usługi Azure storage
 Po włączeniu funkcji BitLocker szyfrowania lub szyfrowania DM-Crypt lokalny wirtualny dysk twardy zaszyfrowanych wymaga do przekazania do swojego konta magazynu.

@@ -1,20 +1,21 @@
 ---
-title: Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
-description: Wprowadzenie do wysyłania zdarzeń do usługi Event Hubs przy użyciu środowiska Node.js.
+title: Wysyłanie zdarzeń za pomocą środowiska Node.js — Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji Node.js, która wysyła zdarzenia z usługi Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 12/05/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e64aab3aed582a60140ee1357e79ee5ee4a4cdf4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 15ba584e882dd5a28b74094f949843ed653ad400
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965040"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104071"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu środowiska Node.js
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 383b73d335c8993aa99109c7430d2292a3bfea4a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c451482f0aa9c2e6c0a15ab048885920889a2708
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836444"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106400"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -42,7 +42,7 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 vSphere hosta ESXi 5.5, 6.0 i 6.5
 
 #### <a name="prepare-a-linux-server"></a>Przygotowanie na serwerze z systemem Linux
-Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie dane usługi syslog hostów ESXi. [Agenta Log Analytics dla systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) to punkt kolekcji wszystkie dane usługi syslog hosta ESXi. Do przekazywania dzienników na jednym serwerze z systemem Linux, jak w poniższym przykładzie, można użyć wielu hostach ESXi.
+Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie dane usługi syslog hostów ESXi. [Agenta Log Analytics dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) to punkt kolekcji wszystkie dane usługi syslog hosta ESXi. Do przekazywania dzienników na jednym serwerze z systemem Linux, jak w poniższym przykładzie, można użyć wielu hostach ESXi.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 

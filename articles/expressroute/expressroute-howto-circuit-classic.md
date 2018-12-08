@@ -5,14 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 6e8eac885303531abc7014f2fadc7b6056bde510
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 0d6d8af9456f5f943eb70b5a63b69e2f7f16a4cb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251699"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104241"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Modyfikowanie obwodu ExpressRoute za pomocą programu PowerShell (wersja klasyczna)
 
@@ -24,13 +25,13 @@ ms.locfileid: "51251699"
 > * [PowerShell (klasyczny)](expressroute-howto-circuit-classic.md)
 >
 
-W tym artykule przedstawiono również sposób Sprawdź stan, update lub delete i anulować aprowizację obwodu usługi ExpressRoute.
+W tym artykule przedstawiono kroki, aby sprawdzić stan, update lub delete i anulować aprowizację obwodu usługi ExpressRoute modelu wdrożenia klasycznego. Dotyczy on klasycznego modelu wdrożenia.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **Modele wdrażania Azure — informacje**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

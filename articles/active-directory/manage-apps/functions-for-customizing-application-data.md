@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: e5db47cabddb2898667ff9d6cdac41cf3b953099
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 058cadec0776e05daf9fddbf715020953478ff58
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843584"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105159"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -79,7 +79,7 @@ Jeśli jedna z wartości źródła jest atrybutu wielowartościowego, każda war
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
 | **Separator** |Wymagane |Ciąg |Ciąg używany do oddzielania wartości źródła, gdy są one połączone w jeden ciąg. Może być "" Jeśli separator nie jest wymagana. |
-| ** źródło1... źródłoN ** |Wymagana zmienna — liczba razy |Ciąg |Ciąg wartości, które mają zostać połączone ze sobą. |
+| **źródło1... źródłoN** |Wymagana zmienna — liczba razy |Ciąg |Ciąg wartości, które mają zostać połączone ze sobą. |
 
 - - -
 ### <a name="mid"></a>MID
@@ -141,6 +141,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
   * Jeśli **źródła** ma wartość, używa **regexPattern** i **regexGroupName** można wyodrębnić wartość zastąpienia z właściwości o **replacementPropertyName** . Wartość zastąpienia jest zwracana w wyniku
 
 **Parametry:**<br> 
+
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
@@ -166,7 +167,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| ** uniqueValueRule1... uniqueValueRuleN ** |Co najmniej 2 są wymagane, nie górnej granicy |Ciąg | Lista reguł generowania unikatową wartość do oceny |
+| **uniqueValueRule1... uniqueValueRuleN** |Co najmniej 2 są wymagane, nie górnej granicy |Ciąg | Lista reguł generowania unikatową wartość do oceny |
 
 
 - - -

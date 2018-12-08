@@ -1,21 +1,22 @@
 ---
 title: Konfigurowanie kontenerów
-titlesuffix: Face - Cognitive Services - Azure
+titlesuffix: Face - Azure Cognitive Services
 description: Ustawienia konfiguracji dla kontenerów.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 1009660df94eb145bbc37c27662411032bd87110
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 30546d31e96d7d7fa1009f16a50fe8fda12ead67
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970947"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105108"
 ---
 # <a name="configure-containers"></a>Konfigurowanie kontenerów
 
@@ -144,7 +145,7 @@ Scenariusz magazynowania są obsługiwane niezależnie od instalacji i wyjściow
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), I [ `Eula` ](#eula-configuration-setting) ustawienia konfiguracji są używane razem. Ponadto należy podać prawidłowe wartości dla wszystkich trzech ich; w przeciwnym razie nie uruchamia się kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](face-how-to-install-containers.md#billing).
 
-Kontenery usługi cognitive Services są licencjonowane w ramach umowy regulującej korzystanie z platformy Azure. Jeśli nie masz istniejącej umowy regulujących korzystanie z platformy Azure, zgadzasz się, czy umowy regulującej korzystanie z platformy Azure jest Microsoft Online Subscription — Umowa (co zawiera warunki usług Online). Dla wersji zapoznawczych wyrażasz zgodę również na dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft. Przy użyciu kontenera jest równoznaczne z wyrażeniem zgody na te warunki.
+Kontenery usługi cognitive Services są licencjonowane w ramach [umowy](https://go.microsoft.com/fwlink/?linkid=2018657) regulujących korzystanie z platformy Azure. Jeśli nie masz istniejącej umowy regulujących korzystanie z platformy Azure, potwierdzam, że umowy regulującej korzystanie z platformy Azure są [Microsoft Online Subscription — Umowa](https://go.microsoft.com/fwlink/?linkid=2018755) (który obejmuje dokument [Online Services — warunki ](https://go.microsoft.com/fwlink/?linkid=2018760)). Dla wersji zapoznawczych, wyrażasz zgodę na [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://go.microsoft.com/fwlink/?linkid=2018815). Przy użyciu kontenera jest równoznaczne z wyrażeniem zgody na te warunki.
 
 ## <a name="fluentd-configuration-settings"></a>Ustawienia konfiguracji Fluentd
 

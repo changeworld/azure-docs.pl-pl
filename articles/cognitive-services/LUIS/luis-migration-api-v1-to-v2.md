@@ -1,21 +1,22 @@
 ---
-title: Przewodnik po migracji interfejsu API z v1 na v2
+title: Aby migracja interfejsu API w wersji 2 w wersji 1
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak migracja do najnowszych interfejsu API do zestawu.
+description: Dowiedz się, jak przeprowadzić migrację do najnowszej zestawu interfejsów API.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 7514390593b4afca4793923089516f3393db0428
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646579"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105839"
 ---
 # <a name="api-v2-migration-guide"></a>Przewodnik migracji usługi interfejsu API w wersji 2
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) staną się przestarzałe interfejsy API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
@@ -27,7 +28,7 @@ Usługa LUIS ma nowy [regionów](https://aka.ms/LUIS-regions) podany dla interfe
 Trasy interfejsu API tworzenia zmieniła się z pomocą **programu** tras za pomocą **interfejsu api** trasy.
 
 
-| wersja | trasa |
+| version | trasa |
 |--|--|
 |1|/Luis/V1.0/**programu**/apps|
 |2|/Luis/**api**/v2.0/apps|
@@ -36,14 +37,14 @@ Trasy interfejsu API tworzenia zmieniła się z pomocą **programu** tras za pom
 ## <a name="endpoint-route-changes"></a>Zmiany trasy punktu końcowego
 Punkt końcowy interfejsu API ma nowe parametry querystring, a także różnych odpowiedzi. Jeśli flaga pełne ma wartość true, wszystkie opcje, niezależnie od tego, wynik, są zwracane w tablicy o nazwie intencji oprócz topScoringIntent.
 
-| wersja | Pobierz trasę |
+| version | Pobierz trasę |
 |--|--|
 |1|/Luis/V1/Application? ID = {appId} & q = {pytania}|
 |2|/ luis/v2.0/apps/{appId}?q={q} [& timezoneOffset] [-verbose] [& Sprawdzanie pisowni] [& przemieszczania] [& bing pisowni wyboru subscription-key] [& dziennika]|
 
 
 odpowiedź sukcesu punkt końcowy 1:
-```JSON
+```json
 {
   "odata.metadata":"https://dialogice.cloudapp.net/odata/$metadata#domain","value":[
     {
@@ -54,7 +55,7 @@ odpowiedź sukcesu punkt końcowy 1:
 ```
 
 odpowiedź sukcesu punktu końcowego v2:
-```JSON
+```json
 {
   "query": "forward to frank 30 dollars through HSBC",
   "topScoringIntent": {
@@ -106,7 +107,7 @@ odpowiedź sukcesu punktu końcowego v2:
 ## <a name="key-management-no-longer-in-api"></a>Zarządzanie kluczami nie jest już w interfejsie API
 Klucz punktu końcowego subskrypcji interfejsy API są przestarzałe zwracanie 410 GONE.
 
-| wersja | trasa |
+| version | trasa |
 |--|--|
 |1|/Luis/V1.0/prog/Subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
@@ -116,7 +117,7 @@ Azure [klucze punktu końcowego](luis-how-to-azure-subscription.md) są generowa
 ## <a name="new-versioning-route"></a>Nową trasę przechowywania wersji
 V2 model jest teraz zawarty w [wersji](luis-how-to-manage-versions.md). Nazwa wersji jest 10 znaków w trasie. Domyślna wersja to "0.1".
 
-| wersja | trasa |
+| version | trasa |
 |--|--|
 |1|/Luis/V1.0/**programu**/apps/ {appId} / jednostek|
 |2|/Luis/**api**/v2.0/apps/{appId}/**wersji**/ {versionId} / jednostek|
@@ -135,7 +136,7 @@ Kilka interfejsów API, które zwracają metadanych usługi LUIS mają nowe nazw
 ## <a name="sample-renamed-to-suggest"></a>"Przykładowy" zmieniona na "Zaproponuj"
 Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) , może pomóc w lepszym modelu. W poprzedniej wersji, ta nosiła nazwę **przykładowe**. W nowej wersji nazwa została zmieniona z przykładu, aby **zasugerować**. Jest to nazywane **[Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md)** w witrynie internetowej usługi LUIS.
 
-| wersja | trasa |
+| version | trasa |
 |--|--|
 |1|/Luis/V1.0/**programu**/entities/ /apps/ {appId} {entityId} /**próbki**|
 |1|/Luis/V1.0/**programu**/intents/ /apps/ {appId} {intentId} /**próbki**|

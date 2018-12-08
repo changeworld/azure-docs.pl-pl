@@ -1,21 +1,22 @@
 ---
-title: Odwołanie wbudowanych domeny — Azure | Dokumentacja firmy Microsoft
+title: Dokumentacja wstępnie utworzonych domen
 titleSuffix: Azure
 description: Dokumentacja ze wstępnie utworzonych domen, które są wstępnie kolekcjami intencje i podmioty z Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 287a0986d921798bc7735e5a75d279f010712b16
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a47fb82b1e6d42bdebff8cc4f3cb4c3c87025831
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335627"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106247"
 ---
 # <a name="prebuilt-domain-reference"></a>Dokumentacja wstępnie utworzonych domen
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
@@ -266,11 +267,12 @@ When is Captain Omar showing?
 Domeny utworów muzycznych zapewnia intencje i podmioty, związane z odtwarzaniem utworów muzycznych na odtwarzacz muzyczny.
 
 ### <a name="examples"></a>Przykłady
-```
-play Beethoven
-Increase track volume
-Skip to the next song
-```
+
+|Przykłady|
+|--|
+|Odtwórz Beethoven|
+|Zwiększ wolumin śledzenie|
+|Przejdź do następnego utworu|
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -297,11 +299,12 @@ Skip to the next song
 Domeny Uwaga zapewnia intencje i podmioty, związane z tworzeniem, edytowaniem i znajdowanie uwagi.
 
 ### <a name="examples"></a>Przykłady
-```
-Add to my groceries note lettuce tomato bread coffee
-Check off bananas from my grocery list
-Remove all items from my vacation list
-```
+
+|Przykłady|
+|--|
+|Dodaj do mojego artykuły spożywcze Uwaga sałaty pomidora chleb kawy|
+|Usunięcie pozycji banany z mojej listy połówce|
+|Usuń wszystkie elementy z listy urlopu|
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -330,11 +333,13 @@ Remove all items from my vacation list
 Domeny OnDevice zapewnia intencje i podmioty, związane z sterowania urządzeniem.
 
 ### <a name="examples"></a>Przykłady
-```
-Close video player
-Cancel playback
-Can you make the screen brighter?
-```
+
+|Przykłady|
+|--|
+|Zamknij odtwarzacza wideo|
+|Anulowanie odtwarzania|
+|Czy można utworzyć ekran jaśniejszy?|
+
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -381,11 +386,13 @@ Can you make the screen brighter?
 Domena miejsc zapewnia intencji do obsługi zapytań dotyczących takich firm, instytucja, restauracje, publicznego miejsca do magazynowania i adresów miejsc.
 
 ### <a name="examples"></a>Przykłady
-```
-Save this location to my favorites
-How far away is Holiday Inn?
-At what time does Safeway close?
-```
+
+|Przykłady|
+|--|
+|Zapisz tę lokalizację do moich ulubionych|
+|Jak daleko jest dniem wolnym od pracy Inn?|
+|W jakich czasie Safeway zamknąć?|
+
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -450,11 +457,13 @@ restart|
 Domeny przypomnienie zapewnia intencje i podmioty, do tworzenia, edytowania i znajdowanie przypomnienia.
 
 ### <a name="examples"></a>Przykłady
-```
-Change my interview to 9 am tomorrow
-Remind me to buy milk on my way back home
-Can you check if I have a reminder about Christine's birthday?
-```
+
+|Przykłady|
+|--|
+|Zmień moje wywiad na jutro 9: 00|
+|Przypomnij mi kupić mleka w mojej sposób kraju|
+|Można sprawdzić Jeśli przypomnienie o datę urodzin Christine firmy?|
+
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -473,11 +482,12 @@ Can you check if I have a reminder about Christine's birthday?
 Domeny RestaurantReservation zapewnia intencje i podmioty, powiązane z zarządzaniem rezerwacje restauracji.
 
 ### <a name="examples"></a>Przykłady
-```
-Reserve at Zucca for two for tonight
-Book a table at BJ's for tomorrow
-Table for 3 in Palo Alto at 7
-```
+
+|Przykłady|
+|--|
+|Zarezerwuj w Zucca dla dwa tonight|
+|Zarezerwuj tabeli na firmy BJ na jutro|
+|Tabela 3 w Palo Alto na 7|
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -502,11 +512,12 @@ Table for 3 in Palo Alto at 7
 Domeny taksówek zapewnia intencje i podmioty, do tworzenia i zarządzania rezerwacje taksówek.
 
 ### <a name="examples"></a>Przykłady
-```
-Get me a cab at 3 pm
-How much longer do I have to wait for my taxi?
-Cancel my Uber
-```
+
+|Przykłady|
+|--|
+|Pobierz plik cab w 15: 00|
+|Jak długo ma czekać na Moje taksówek|
+|Anuluj mojej Uber|
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -531,11 +542,13 @@ Cancel my Uber
 Domeny Translate zapewnia intencje i podmioty, związane z tłumaczenie tekstu na język docelowy.
 
 ### <a name="examples"></a>Przykłady
-```
-Translate to French
-Translate hello to German
-Translate this sentence to English
-```
+
+|Przykłady|
+|--|
+|Tłumaczenie na Francuską|
+|Tłumaczenie hello na język niemiecki|
+|Tłumaczenie to pole następujące zdanie do języka angielskiego|
+
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -554,11 +567,12 @@ Translate this sentence to English
 Domeny TV przewiduje intencje i podmioty kontrolowanie TV.
 
 ### <a name="examples"></a>Przykłady
-```
-Switch channel to BBC
-Show TV guide
-Watch National Geographic
-```
+
+|Przykłady|
+|--|
+|Kanał przełącznika BBC|
+|Przewodnik po Telewizyjnych show|
+|Obejrzyj National geograficzne|
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -576,11 +590,13 @@ Watch National Geographic
 Domena narzędzi zapewnia intencji zadań, które są wspólne dla wielu zadań, takich jak greetings anulowania, potwierdzenie, pomoc, powtórzenia, nawigacja, uruchamianie i zatrzymywanie.
 
 ### <a name="examples"></a>Przykłady
-```
-Go back to Twitter
-Please help
-Repeat last question please
-```
+
+|Przykłady|
+|--|
+|Wróć do usługi Twitter|
+|Pomóż|
+|Powtórz ostatnie pytanie.|
+
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -600,11 +616,13 @@ Repeat last question please
 Domeny pogody przewiduje intencje i podmioty wprowadzenie prognoz i raporty o pogodzie.
 
 ### <a name="examples"></a>Przykłady
-```
-weather in London in september
-What?s the 10 day forecast?
-What's the average temperature in India in september?
-```
+
+|Przykłady|
+|--|
+|Pogoda w Londynie we wrześniu|
+|Jakie? s 10 dni prognozy?|
+|Co to jest średnia temperatura w Indiach we wrześniu?|
+
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
@@ -621,11 +639,12 @@ What's the average temperature in India in september?
 Domeny sieci Web udostępnia intencji do nawigowania do witryny sieci Web.
 
 ### <a name="examples"></a>Przykłady
-```
-Navigate to facebook.com
-Go to www.twitter.com
-Navigate to www.bing.com
-```
+
+|Przykłady|
+|--|
+|Przejdź do facebook.com|
+|Przejdź do www.twitter.com|
+|Przejdź do www.bing.com|
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |

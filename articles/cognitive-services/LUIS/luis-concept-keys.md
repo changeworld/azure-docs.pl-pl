@@ -1,26 +1,27 @@
 ---
-title: Zrozumienie klucze usługi LUIS
-titleSuffix: Azure Cognitive Services
-description: Usługa LUIS używa dwa klucze, tworzenia i punktu końcowego. Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, możesz potrzebne do utworzenia klucza punktu końcowego przypisać go do swojej aplikacji usługi LUIS, a pomocą kwerendy punktu końcowego.
+title: Klucze subskrypcji
+titleSuffix: Language Understadning - Azure Cognitive Services
+description: LUIS używa dwa klucze, bezpłatny klucz tworzenia pakietów administracyjnych, aby utworzyć model i klucza punktu końcowego mierzonych podczas wykonywania zapytań do endpoint prognoz z wypowiedzi użytkowników.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f7c1753e71025d3ce39b1b6e3fb7362f2df212f5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 9b660743f335e1aa9ef7e7b569738d9ee3ca139d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637835"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104530"
 ---
 # <a name="keys-in-luis"></a>Klucze usługi LUIS
 Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, musisz [tworzenia klucza punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ją przypisać](luis-how-to-manage-keys.md#assign-endpoint-key) z aplikacją usługi LUIS i [pomocą kwerendy punktu końcowego](#use-endpoint-key-in-query). 
 
-|Klawisz|Przeznaczenie|
+|Klucz|Przeznaczenie|
 |--|--|
 |[Tworzenie klucza](#programmatic-key)|Tworzenie, publikowanie, zarządzanie współpracownikom, przechowywanie wersji|
 |[Klucz punktu końcowego](#endpoint-key)| Wykonywanie zapytania|

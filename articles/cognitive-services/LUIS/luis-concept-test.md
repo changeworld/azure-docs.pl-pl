@@ -1,21 +1,21 @@
 ---
 title: Przetestuj aplikację usługi LUIS
-titleSuffix: Azure Cognitive Services
-description: Testowanie jest procesem świadczenie usługi LUIS wypowiedzi próbki i uzyskiwanie odpowiedzi rozpoznawane LUIS intencje i podmioty. Usługa LUIS można przetestować interaktywnie wypowiedź jednego naraz, lub podaj partii wypowiedzi. Za pomocą testowania, możesz porównać bieżącego aktywnego modelu do opublikowanego modelu.
-services: cognitive-services
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Testowanie jest procesem świadczenie usługi LUIS wypowiedzi próbki i uzyskiwanie odpowiedzi rozpoznawane LUIS intencje i podmioty.
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 58bcf45d1a45d448f2f5845ffe43ad07f886a6fc
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5aeb955b579a15f29429c585720dbef1b9560efa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637015"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105533"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testowanie przykład wypowiedzi w usługi LUIS
 
@@ -54,7 +54,7 @@ Wypowiedzi usługa LUIS jest pewności, jakie są wymienione w **[Przejrzyj wypo
 ## <a name="remember-to-train"></a>Pamiętaj, aby uczyć
 Pamiętaj, aby [szkolenie](luis-how-to-train.md) LUIS po wprowadzeniu zmian do modelu. Zmiany w aplikacji usługi LUIS nie są widoczne podczas badania, dopóki skonfigurowanych pod kątem aplikacji. 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 Dowiedz się, [najlepsze praktyki](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,23 +1,24 @@
 ---
-title: Dane usługi Insights aplikacji Luis przy użyciu języka C#
+title: Application Insights przy użyciuC#
 titleSuffix: Azure Cognitive Services
 description: Twórz Boty zintegrowana z usługą aplikacji LUIS i Application Insights przy użyciu języka C#.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: c7f12352355b12cf1a7363a2a82fa786248cdc6f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fb7ce154985db97dba2a36b4b0d834cada1605d9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965295"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101062"
 ---
-# <a name="add-luis-results-to-application-insights"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights
+# <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z botem wC#
 
 W tym samouczku dodaje informacje o odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
 
@@ -174,7 +175,7 @@ W witrynie Azure portal Znajdź bot aplikacji sieci web, a następnie otwórz go
 
 3. W oknie konsoli wprowadź następujące polecenie:
 
-    ```
+    ```console
     cd site\wwwroot && build.cmd
     ```
 
@@ -190,11 +191,12 @@ W witrynie Azure portal Znajdź bot aplikacji sieci web, a następnie otwórz go
 
 3. Powinien zostać wyświetlony żadnej różnicy w odpowiedzi chatbot. Zmiana wysyła dane do usługi Application Insights nie znajduje się w bot odpowiedzi. Wprowadź kilka wypowiedzi więcej, więc ma nieco większej ilości danych w usłudze Application Insights:
 
-```
-Please deliver a pizza
-Turn off all the lights
-Turn on the hall light
-```
+|Wypowiedzi|
+|--|
+|Należy dostarczyć pizza|
+|Wyłącz wszystkie światła|
+|Włącz światła hall|
+
 
 ## <a name="view-luis-entries-in-application-insights"></a>Wyświetlanie usługi LUIS wpisów w usłudze Application Insights
 
@@ -231,7 +233,7 @@ Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za 
 
 3. Aby wyciągnąć z góry przeznaczenie, ocena i wypowiedź, dodaj następującą tuż nad ostatni wiersz w oknie zapytania:
 
-    ```SQL
+    ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent)
     | extend score = todouble(customDimensions.LUIS_topScoringIntentScore)
     | extend utterance = tostring(customDimensions.LUIS_query)
