@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 06a7ce6301af6e5a7c04ac5c5a0a1240c21f834e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997016"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887512"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Samouczek: debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym
 
 Ten samouczek to druga część serii. Przedstawiono w nim sposób tworzenia i debugowania aplikacji usługi Azure Service Fabric Mesh w lokalnym klastrze projektowym.
 
-Ten samouczek zawiera następujące informacje:
+Niniejszy samouczek zawiera informacje na temat następujących zagadnień:
 
 > [!div class="checklist"]
 > * Co się dzieje w przypadku utworzenia aplikacji usługi Azure Service Fabric Mesh
@@ -52,7 +52,7 @@ Przed rozpoczęciem tego samouczka:
 
 ## <a name="download-the-to-do-sample-application"></a>Pobieranie przykładowej aplikacji z zadaniami do wykonania
 
-Jeśli nie utworzono przykładowej aplikacji z zadaniami do wykonania w [pierwszej części tej serii samouczków](service-fabric-mesh-tutorial-create-dotnetcore.md), można ją pobrać. W oknie polecenia uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na komputer lokalny.
+Jeśli nie utworzono aplikacji przykładowej z zadaniami do wykonania w [pierwszej części tej serii samouczków](service-fabric-mesh-tutorial-create-dotnetcore.md), można ją pobrać. W oknie polecenia uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na komputer lokalny.
 
 ```
 git clone https://github.com/azure-samples/service-fabric-mesh
@@ -74,9 +74,11 @@ Naciśnij klawisz **F5**, aby skompilować usługę i uruchomić ją lokalnie. W
 
 Po zakończeniu lokalnego wdrożenia i uruchomieniu aplikacji w programie Visual Studio zostanie otwarte okno przeglądarki z wyświetloną domyślną, przykładową stroną internetową.
 
-**Wskazówki dotyczące debugowania**
+## <a name="debugging-tips"></a>Wskazówki dotyczące debugowania
 
-Obecnie występuje problem, który powoduje wywołanie `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())`, powodujące niepowodzenie połączenia z usługą. Tak może się zdarzyć w przypadku zmiany adresu IP hosta. Aby rozwiązać ten problem:
+Znacznie przyspiesz swoje pierwsze debugowanie (F5), postępując zgodnie z instrukcjami w sekcji [Optymalizowanie wydajności programu Visual Studio](service-fabric-mesh-howto-optimize-vs.md).
+
+Obecnie występuje problem, który powoduje, że nawiązanie połączenia z usługą za pomocą wywołania `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` kończy się niepowodzeniem. Tak może się zdarzyć w przypadku zmiany adresu IP hosta. Aby rozwiązać ten problem:
 
 1. Usuń aplikację z klastra lokalnego (w programie Visual Studio wybierz pozycję **Kompilacja** > **Wyczyść rozwiązanie**).
 2. Z poziomu menedżera klastra lokalnego usługi Service Fabric wybierz pozycję **Zatrzymaj klaster lokalny**, a następnie **Uruchom klaster lokalny**.
@@ -90,13 +92,13 @@ Jeśli wystąpią błędy kompilacji pliku **service.yaml**, upewnij się, że d
 
 ### <a name="debug-in-visual-studio"></a>Debugowanie w programie Visual Studio
 
-Podczas debugowania aplikacji usługi Service Fabric Mesh w programie Visual Studio używany jest lokalny klaster projektowy usługi Service Fabric. Aby zobaczyć, jak elementy do wykonania są pobierane z usługi zaplecza, przeprowadź debugowanie metody OnGet().
+Podczas debugowania aplikacji usługi Service Fabric Mesh w programie Visual Studio używany jest lokalny klaster programowania usługi Service Fabric. Aby zobaczyć, jak elementy do wykonania są pobierane z usługi zaplecza, przeprowadź debugowanie metody OnGet().
 1. W projekcie **WebFrontEnd** otwórz plik **Strony** > **Index.cshtml** > **Index.cshtml.cs** i ustaw punkt przerwania w metodzie **Get** (wiersz 17).
 2. W projekcie **ToDoService** otwórz plik **TodoController.cs** i ustaw punkt przerwania w metodzie **OnGet** (wiersz 15).
 3. Odśwież stronę w przeglądarce. Działanie aplikacji zostanie zatrzymane w punkcie przerwania w metodzie `OnGet()` frontonu internetowego. Możesz zbadać wartość zmiennej `backendUrl`, aby sprawdzić, w jaki sposób zmienne środowiskowe zdefiniowane w pliku **service.yaml** zostały połączone w adres URL używany do komunikacji z usługą zaplecza.
 4. Pomiń (F10) wywołanie `client.GetAsync(backendUrl).GetAwaiter().GetResult())`. Działanie aplikacji zatrzyma się w punkcie przerwania `Get()` kontrolera. W tej metodzie możesz zobaczyć, jak lista elementów do wykonania jest pobierana z listy w pamięci.
 5. Gdy skończysz, zatrzymaj debugowanie projektu w programie Visual Studio, naciskając klawisze **Shift+F5**.
- 
+
 ## <a name="next-steps"></a>Następne kroki
 
 W tej części samouczka przedstawiono informacje na temat wykonywania następujących czynności:

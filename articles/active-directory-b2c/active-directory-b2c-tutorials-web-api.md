@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.author: davidmu
-ms.date: 01/23/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: bd900071bbcd894d4fe71e0f8a265d98348eb262
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604345"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726410"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET z aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 
@@ -120,7 +120,7 @@ Przykładowy internetowy interfejs API jest zawarty w projekcie pobranym w samou
 
 Przykładowe rozwiązanie zawiera dwa projekty:
 
-**Przykładowa aplikacja internetowa (TaskWebApp):** aplikacja internetowa do tworzenia i edytowania listy zadań. Ta aplikacja internetowa używa **zasad rejestracji lub logowania**, aby rejestrować lub logować użytkowników za pomocą adresu e-mail.
+**Przykładowa aplikacja internetowa (TaskWebApp):** aplikacja internetowa do tworzenia i edytowania listy zadań. Ta aplikacja internetowa używa przepływu użytkownika **rejestracja lub logowanie**, aby rejestrować lub logować użytkowników za pomocą adresu e-mail.
 
 **Przykładowa aplikacja internetowego interfejsu API (TaskService):** Internetowy interfejs API, który obsługuje funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
 
@@ -162,10 +162,10 @@ Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
     <add key="ida:ClientId" value="<The Application ID for your web API obtained from the Azure portal>"/>
     ```
 
-4. Zaktualizuj ustawienie zasad, używając nazwy wygenerowanej podczas tworzenia zasad rejestracji i logowania.
+4. Zaktualizuj ustawienie przepływu użytkownika, używając nazwy wygenerowanej podczas tworzenia przepływu użytkownika rejestracji i logowania.
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
+    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_SiUpIn" />
     ```
 
 5. Skonfiguruj ustawienie zakresów tak, aby było zgodne z ustawieniami utworzonymi w portalu.

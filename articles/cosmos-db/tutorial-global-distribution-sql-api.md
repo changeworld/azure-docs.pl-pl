@@ -1,22 +1,20 @@
 ---
-title: Samouczek dystrybucji globalnej usługi Azure Cosmos DB dla interfejsu API SQL | Microsoft Docs
+title: Samouczek dystrybucji globalnej usługi Azure Cosmos DB dla interfejsu API SQL
 description: Dowiedz się, jak skonfigurować dystrybucję globalną usługi Azure Cosmos DB przy użyciu interfejsu SQL API.
 services: cosmos-db
 keywords: Dystrybucja globalna
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 624c5e78287fac57b06f6b5112d2523e31256ae0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8bef38aca9c14dbddb30b57871267490bc03e00f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049772"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863486"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Konfigurowanie dystrybucji globalnej usługi Azure Cosmos DB przy użyciu interfejsu SQL API
 

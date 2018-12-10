@@ -12,16 +12,16 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: b7a3fc6e5dafb59d6981ff4302d4b060b0c73d6b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d5be25abc634200e0c0afed6946b38fd163fb78e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499254"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890504"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
-Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia [wystąpienia zarządzanego](sql-database-managed-instance.md) usługi Azure SQL Database w witrynie Azure Portal. 
+Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia [wystąpienia zarządzanego](sql-database-managed-instance.md) usługi Azure SQL Database w witrynie Azure Portal.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -45,7 +45,7 @@ Poniższe kroki przedstawiają sposób tworzenia wystąpienia zarządzanego.
    | ------ | --------------- | ----------- |
    | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w której masz uprawnienie do tworzenia nowych zasobów |
    |**Nazwa wystąpienia zarządzanego**|Dowolna prawidłowa nazwa|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Identyfikator logowania administratora wystąpienia zarządzanego**|Dowolna prawidłowa nazwa użytkownika|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie używaj nazwy „serveradmin”, gdyż jest ona zarezerwowana dla roli poziomu serwera.| 
+   |**Identyfikator logowania administratora wystąpienia zarządzanego**|Dowolna prawidłowa nazwa użytkownika|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie używaj nazwy „serveradmin”, gdyż jest ona zarezerwowana dla roli poziomu serwera.|
    |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 16 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Lokalizacja**|Lokalizacja, w której chcesz utworzyć wystąpienie zarządzane|Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/).|
    |**Sieć wirtualna**|Wybierz pozycję **Utwórz nową sieć wirtualną** lub sieć wirtualną, która została wcześniej utworzona w grupie zasobów określonej w tym formularzu.| Aby skonfigurować sieć wirtualną dla wystąpienia zarządzanego z użyciem ustawień niestandardowych, zobacz temat [Configure SQL Managed Instance virtual network environment template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) (Konfigurowanie szablonu środowiska sieci wirtualnej wystąpienia zarządzanego SQL) w usłudze Github. Aby uzyskać informacje o wymaganiach dotyczących konfigurowania środowiska sieci dla wystąpienia zarządzanego, zobacz [Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-vnet-configuration.md). |
@@ -53,15 +53,16 @@ Poniższe kroki przedstawiają sposób tworzenia wystąpienia zarządzanego.
 
    ![formularz wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Wybierz pozycję **Warstwa cenowa**, aby ustalić rozmiar zasobów obliczeniowych i magazynu, a także sprawdzić opcje warstw cenowych. Wartość domyślna to warstwa cenowa Ogólnego przeznaczenia z 32 GB pamięci i 16 rdzeniami wirtualnymi.
-6. Użyj suwaków lub pól tekstowych, aby określić ilość pamięci i liczbę rdzeni wirtualnych. 
-7. Po zakończeniu wybierz pozycję **Zastosuj**, aby zapisać wybór.  
-8. Wybierz pozycję **Utwórz**, aby wdrożyć wystąpienie zarządzane.
-9. Wybierz ikonę **Powiadomienia**, aby wyświetlić stan wdrożenia.
+5. Aby użyć wystąpienia zarządzanego jako pomocniczej grupy trybu failover wystąpienia, zaznacz pole wyboru i określ wystąpienie zarządzane DnsAzurePartner. Ta funkcja jest dostępna w wersji zapoznawczej i nie jest pokazana na towarzyszącym zrzucie ekranu.
+6. Wybierz pozycję **Warstwa cenowa**, aby ustalić rozmiar zasobów obliczeniowych i magazynu, a także sprawdzić opcje warstw cenowych. Wartość domyślna to warstwa cenowa Ogólnego przeznaczenia z 32 GB pamięci i 16 rdzeniami wirtualnymi.
+7. Użyj suwaków lub pól tekstowych, aby określić ilość pamięci i liczbę rdzeni wirtualnych.
+8. Po zakończeniu wybierz pozycję **Zastosuj**, aby zapisać wybór.  
+9. Wybierz pozycję **Utwórz**, aby wdrożyć wystąpienie zarządzane.
+10. Wybierz ikonę **Powiadomienia**, aby wyświetlić stan wdrożenia.
 
     ![postęp wdrożenia wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/deployment-progress.png)
 
-10. Wybierz pozycję **Wdrażanie jest w toku**, aby otworzyć okno wystąpienia zarządzanego i dokładniej monitorować postęp wdrażania. 
+11. Wybierz pozycję **Wdrażanie jest w toku**, aby otworzyć okno wystąpienia zarządzanego i dokładniej monitorować postęp wdrażania.
 
 > [!IMPORTANT]
 > W przypadku pierwszego wystąpienia w podsieci czas wdrożenia jest zazwyczaj znacznie dłuższy niż w kolejnych wystąpieniach. Nie anuluj operacji wdrażania, ponieważ proces trwa dłużej niż oczekiwano. Utworzenie drugiego wystąpienia zarządzanego w podsieci trwa tylko kilka minut.
@@ -78,7 +79,6 @@ Po pomyślnym ukończeniu wdrażania przejrzyj utworzone zasoby i pobierz w peł
 
 3. Na karcie **Omówienie** znajdź właściwość **Host** i skopiuj w pełni kwalifikowany adres hosta dla wystąpienia zarządzanego.
 
-
    ![Zasoby wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/host-name.png)
 
    Nazwa jest podobna do **nazwa_maszyny.a1b2c3d4e5f6.database.windows.net**.
@@ -90,4 +90,4 @@ Po pomyślnym ukończeniu wdrażania przejrzyj utworzone zasoby i pobierz w peł
   - Aby skorzystać z samouczka przedstawiającego sposób łączenia wystąpienia zarządzanego z maszyny wirtualnej platformy Azure, zobacz [Configure an Azure virtual machine connection](sql-database-managed-instance-configure-vm.md) (Konfigurowanie połączenia maszyny wirtualnej platformy Azure).
   - Aby skorzystać z przewodnika Szybki start przedstawiającego sposób łączenia wystąpienia zarządzanego z poziomu lokalnego komputera klienckiego za pomocą połączenia typu punkt-lokacja, zobacz [Konfigurowanie połączenia punkt-lokacja](sql-database-managed-instance-configure-p2s.md).
 - Aby przywrócić istniejącą bazę danych programu SQL ze środowiska lokalnego do wystąpienia zarządzanego, możesz użyć [usługi Azure Database Migration Service (DMS) na potrzeby migracji](../dms/tutorial-sql-server-to-managed-instance.md) lub [polecenia T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md) w celu przywrócenia z pliku kopii zapasowej bazy danych.
-- Aby uzyskać informacje na temat zaawansowanego monitorowania wydajności bazy danych wystąpienia zarządzanego z wbudowaną analizą rozwiązywania problemów, zobacz [Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md)
+- Aby uzyskać informacje na temat zaawansowanego monitorowania wydajności bazy danych wystąpienia zarządzanego z wbudowaną analizą rozwiązywania problemów, zobacz [Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)

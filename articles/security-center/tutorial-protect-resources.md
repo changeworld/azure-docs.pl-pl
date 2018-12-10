@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1d3d775a13f83ada6ca702eb984262668507f7e9
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 19b5f6d6cb8e0e17dba9944e8b72c6938f168c70
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025450"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839351"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Samouczek: Ochrona zasobów przy użyciu usługi Azure Security Center
 Usługa Security Center ogranicza narażenia na zagrożenia poprzez zastosowanie kontroli dostępu i aplikacji w celu blokowania złośliwych działań. Dostęp just in time do maszyny wirtualnej redukuje narażenie na ataki, umożliwiając odmówienie trwałego dostępu do maszyn wirtualnych. Zamiast tego możesz zapewnić kontrolowany, monitorowany dostęp do maszyn wirtualnych tylko w razie potrzeby. Adaptacyjne kontrole aplikacji pomagają zabezpieczać maszyny wirtualne przed złośliwym oprogramowaniem poprzez kontrolowanie aplikacji, które mogą być uruchamiane na maszynach wirtualnych. Usługa Security Center analizuje procesy uruchomione na maszynie wirtualnej przy użyciu uczenia maszynowego i za pomocą tej analizy ułatwia zastosowanie listy reguł elementów dozwolonych.
@@ -34,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby wypróbować funkcje omówione w tym samouczku, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Standardową warstwę cenową usługi Security Center możesz wypróbować bezpłatnie przez pierwsze 60 dni. Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej.
+Aby wypróbować funkcje omówione w tym samouczku, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/). Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej.
 
 ## <a name="manage-vm-access"></a>Zarządzanie dostępem do maszyny wirtualnej
 Dostęp just in time do maszyny wirtualnej może być używany do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure w celu zmniejszenia narażenia na ataki przy zapewnianiu łatwego dostępu do łączenia się z maszynami wirtualnymi w razie potrzeby.

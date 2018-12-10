@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 9f0a6a910ab9b9589e09b6c8e1e7b16f7e63c5c8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4605ef3876d7a21f99e775b49d7da30ff947fa8e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258973"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877926"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Szybki start: tworzenie centrum zdarzeń za pomocą programu Azure PowerShell
 
@@ -56,10 +56,11 @@ New-AzureRmEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName n
 
 ## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
-Teraz, gdy masz przestrzeń nazw usługi Event Hubs, utwórz centrum zdarzeń w ramach tej przestrzeni nazw:
+Teraz, gdy masz przestrzeń nazw usługi Event Hubs, utwórz centrum zdarzeń w ramach tej przestrzeni nazw:  
+Dozwolony okres dla parametru `MessageRetentionInDays` to od 1 do 7 dni.
 
 ```azurepowershell-interactive
-New-AzureRmEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name
+New-AzureRmEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name -MessageRetentionInDays 3
 ```
 
 Gratulacje! Za pomocą programu Azure PowerShell utworzono przestrzeń nazw usługi Event Hubs i centrum zdarzeń w ramach tej przestrzeni nazw. 

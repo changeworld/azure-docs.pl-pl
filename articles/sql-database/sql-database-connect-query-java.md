@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/20/2018
-ms.openlocfilehash: afa975a593fd962050c9f894ec091d7f64579138
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 5c12bd54c0ea96ac915fedab94f03cf044330dcf
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52332616"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723299"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Java do wykonywania zapytań w bazie danych Azure SQL
 
@@ -44,13 +44,13 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
 ## <a name="create-the-project"></a>Tworzenie projektu
 
-1. Z poziomu terminalu utwórz nowy projekt rozwiązania Maven o nazwie *sqltest*.
+1. Z poziomu wiersza polecenia utwórz nowy projekt rozwiązania Maven o nazwie *sqltest*.
 
     ```bash
     mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
     ```
 
-1. Zmień katalog na *sqltest*, a następnie otwórz plik *pom.xml* w ulubionym edytorze tekstów. Dodaj **sterownik JDBC firmy Microsoft dla programu SQL Server** do zależności projektu, używając poniższego kodu.
+1. Zmień folder na *sqltest*, a następnie otwórz plik *pom.xml* w ulubionym edytorze tekstów. Dodaj **sterownik JDBC firmy Microsoft dla programu SQL Server** do zależności projektu, używając poniższego kodu.
 
     ```xml
     <dependency>
@@ -93,10 +93,10 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
         public static void main(String[] args) {
 
             // Connect to database
-            String hostName = "your_server.database.windows.net";
-            String dbName = "your_database";
-            String user = "your_username";
-            String password = "your_password";
+            String hostName = "your_server.database.windows.net"; // update me
+            String dbName = "your_database"; // update me
+            String user = "your_username"; // update me
+            String password = "your_password"; // update me
             String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
                 + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
             Connection connection = null;
@@ -139,7 +139,7 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-1. W wierszu polecenia uruchom program.
+1. W wierszu polecenia uruchom aplikację.
 
     ```bash
     mvn package -DskipTests

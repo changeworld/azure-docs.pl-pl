@@ -1,21 +1,19 @@
 ---
-title: Dowiedz się, jak ustawić wartość czasu wygaśnięcia dla dokumentów bazy danych usługi Cosmos Azure utworzonych za pośrednictwem interfejsu API bazy danych MongoDB w celu automatycznego przeczyszczania ich z systemu po upływie określonego czasu.
-description: Dokumentacja funkcji czasu wygaśnięcia (TTL) poszczególnych dokumentów w bazie danych MongoDB.
+title: Funkcja czasu wygaśnięcia (TTL) poszczególnych dokumentów w bazie danych MongoDB w usłudze Azure Cosmos DB
+description: Dowiedz się, jak ustawić wartość czasu wygaśnięcia dla dokumentów bazy danych usługi Cosmos Azure utworzonych za pośrednictwem interfejsu API bazy danych MongoDB w celu automatycznego przeczyszczania ich z systemu po upływie określonego czasu.
 services: cosmos-db
 author: orestis-ms
-manager: kfile
-editor: ''
+ms.author: orkostak
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 08/10/2018
-ms.author: orkostak
-ms.openlocfilehash: 8679da0dfe92b1d611fd0b61b9f7404256b2b688
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 547ee489581b7e7e9203151fbfcdaad45dca8ea1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239869"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868765"
 ---
 # <a name="expire-data-in-azure-cosmos-db-mongodb-api"></a>Wygasanie danych w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB
 

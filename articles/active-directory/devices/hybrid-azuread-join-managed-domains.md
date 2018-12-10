@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963935"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887801"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen zarządzanych
 
@@ -140,6 +140,8 @@ Jeśli część urządzeń dołączonych do domeny to urządzenia z systemem Win
  
 - Konfigurowanie ustawień lokalnego intranetu na potrzeby rejestracji urządzeń
 
+- Konfigurowanie bezproblemowego logowania jednokrotnego
+
 - Kontrolowanie urządzeń z systemem Windows niższego poziomu 
 
 
@@ -166,6 +168,11 @@ Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD dla urz
 - `https://autologon.microsoftazuread-sso.com`.
 
 Ponadto musisz włączyć opcję **Zezwalaj na aktualizacje na pasku stanu za pomocą skryptu** w lokalnej strefie intranetu użytkownika.
+
+
+### <a name="configure-seamless-sso"></a>Konfigurowanie bezproblemowego logowania jednokrotnego
+
+Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD urządzeń niższego poziomu z systemem Windows w domenie zarządzanej, w której jako metoda uwierzytelniania w chmurze używane jest uwierzytelnianie przekazywane lub synchronizacja skrótów haseł, należy również [skonfigurować bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
 
 
 ### <a name="control-windows-down-level-devices"></a>Kontrolowanie urządzeń z systemem Windows niższego poziomu 

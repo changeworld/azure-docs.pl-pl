@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: d02c71865f900c2b75da60bd2e989e04a6823d11
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7783a10badd98a29488732d68267241ff619b645
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005244"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838671"
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>Przewodnik szybkiego startu: Łączenie rozwiązań zabezpieczeń z usługą Security Center
 
@@ -33,7 +33,7 @@ W tym przewodniku szybkiego startu przedstawiono sposób wykonywania następują
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnego konta](https://azure.microsoft.com/free/).
 
-Aby wypróbować funkcje omówione w tym przewodniku szybkiego startu, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Standardową warstwę cenową usługi Security Center możesz wypróbować bezpłatnie przez pierwsze 60 dni. Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej.
+Aby wypróbować funkcje omówione w tym przewodniku szybkiego startu, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
 Potrzebujesz również [komputera z systemem Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-linux) i usługą Syslog, która jest już połączona z usługą Security Center.
 

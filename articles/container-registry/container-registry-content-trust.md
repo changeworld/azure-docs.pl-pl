@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: 1f1e7ce41c00078c0181fc5f32c43b7e5885eef8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 6db5bb4ee1995e08bd00588203db1fdba87a3db5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857673"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727347"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Zaufanie do zawartości w usłudze Azure Container Registry
 
@@ -77,7 +77,7 @@ Szczegóły dotyczące przydzielania roli `AcrImageSigner` w witrynie Azure Port
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Przejdź do rejestru w witrynie Azure Portal, a następnie wybierz pozycję **Kontrola dostępu (IAM)** > **Dodaj**. W obszarze **Dodawanie uprawnień** wybierz pozycję `AcrImageSigner` w obszarze **Rola**, a następnie **wybierz** co najmniej jednego użytkownika lub jedną jednostkę usługi, po czym wybierz pozycję **Zapisz**.
+Przejdź do rejestru w witrynie Azure Portal, a następnie wybierz pozycję **Kontrola dostępu (IAM)** > **Dodaj przypisanie roli**. W obszarze **Dodawanie przypisania roli** wybierz pozycję `AcrImageSigner` w obszarze **Rola**, a następnie **wybierz** co najmniej jednego użytkownika lub jedną jednostkę usługi, po czym wybierz pozycję **Zapisz**.
 
 W tym przykładzie przypisano rolę `AcrImageSigner` dwóm jednostkom: jednostce usługi o nazwie „service-principal” i użytkownikowi o nazwie „Azure User”.
 

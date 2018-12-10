@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 42a25d6c13fe1052f4aa14696a66c9c7f1fb4d65
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8c31e410713e4ba8ce6443170ba5ad5c2e740419
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685688"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52677937"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 
@@ -174,6 +174,10 @@ Jeśli chcesz wyświetlić pełne dane wyjściowe JSON dla każdego polecenia, p
 ### <a name="reconfigure-azure-ad-administrator"></a>Ponowne konfigurowanie administratora usługi Azure AD
 
 Wcześniej przypisano tożsamość zarządzaną jako administrator usługi Azure AD dla usługi SQL Database. Tej tożsamości nie można użyć do logowania interaktywnego (aby dodać użytkowników bazy danych), więc należy użyć rzeczywistego użytkownika usługi Azure AD. Aby dodać użytkownika usługi Azure AD, wykonaj kroki opisane w temacie [Provision an Azure Active Directory administrator for your Azure SQL Database Server](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) (Udostępnianie administratora usługi Azure Active Directory dla serwera usługi Azure SQL Database). 
+
+> [!IMPORTANT]
+> Po dodaniu nie usuwaj tego administratora usługi Azure AD dla usługi SQL Database, chyba że chcesz całkowicie wyłączyć dostęp z usługi Azure AD do usługi SQL Database (ze wszystkich kont usługi Azure AD).
+> 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Nadawanie uprawnień grupie usługi Azure Active Directory
 

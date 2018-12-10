@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 6b44e08fc1dce489e703bea1cbef2a7e94ae0f2a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 83785e532523c3e921b0772ddaa50502b2dc867d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961045"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633796"
 ---
 # <a name="manage-conflicts-between-regions"></a>Zarządzanie konfliktami między regionami
 
@@ -20,7 +20,7 @@ Dzięki modułom zapisującym obsługującym wiele regionów, gdy wystąpi konfl
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Tworzenie niestandardowych zasad rozwiązywania konfliktów
 
-Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestandardowych zasad rozwiązywania konfliktów. Te konflikty będą widoczne w kanale informacyjnym konfliktów.
+Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestandardowych zasad rozwiązywania konfliktów. Te konflikty są widoczne w kanale informacyjnym konfliktów.
 
 ### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
 
@@ -83,9 +83,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-stored-procedure"></a>Tworzenie niestandardowych zasad rozwiązywania konfliktów z procedurą składowaną
+## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>Tworzenie niestandardowych zasad rozwiązywania konfliktów z procedurą składowaną
 
-Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestandardowych zasad rozwiązywania konfliktów z procedurą składowaną, aby rozwiązać konflikt. Te konflikty **nie** będą widoczne w kanale informacyjnym konfliktu, chyba że w procedurze składowanej wystąpi błąd.
+Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestandardowych zasad rozwiązywania konfliktów z procedurą składowaną, aby rozwiązać konflikt. Te konflikty nie są widoczne w kanale informacyjnym konfliktów, chyba że w procedurze składowanej wystąpi błąd.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -102,7 +102,7 @@ DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-Procedurę składowaną `resolver` należy utworzyć po utworzeniu kontenera.
+Po utworzeniu kontenera należy utworzyć procedurę składowaną `resolver`.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
 
@@ -114,7 +114,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Procedurę składowaną `resolver` należy utworzyć po utworzeniu kontenera.
+Po utworzeniu kontenera należy utworzyć procedurę składowaną `resolver`.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -127,7 +127,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Procedurę składowaną `resolver` należy utworzyć po utworzeniu kontenera.
+Po utworzeniu kontenera należy utworzyć procedurę składowaną `resolver`.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -146,7 +146,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Procedurę składowaną `resolver` należy utworzyć po utworzeniu kontenera.
+Po utworzeniu kontenera należy utworzyć procedurę składowaną `resolver`.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -154,11 +154,11 @@ Procedurę składowaną `resolver` należy utworzyć po utworzeniu kontenera.
 
 ```
 
-Procedurę składowaną `resolver` należy utworzyć po utworzeniu kontenera.
+Po utworzeniu kontenera należy utworzyć procedurę składowaną `resolver`.
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Tworzenie zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego
 
-Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego. Jeśli ścieżka nie zostanie ustawiona lub będzie nieprawidłowa, domyślnie zostanie przyjęta właściwość `_ts` (pole znacznika czasu). Te konflikty **nie** będą widoczne w kanale informacyjnym konfliktów.
+Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego. Jeśli nie ustawiono ścieżki lub jest ona nieprawidłowa, przyjmuje wartość domyślną z właściwości `_ts`. Ta właściwość jest polem znacznika czasu. Te konflikty nie są widoczne w kanale informacyjnym konfliktów.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -210,7 +210,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Jeżeli właściwość `conflictResolutionPath` zostanie pominięta, domyślnie zostanie przyjęta właściwość `_ts`.
+Jeśli pominiesz właściwość `conflictResolutionPath`, jej wartością domyślną będzie właściwość `_ts`.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
 
@@ -277,8 +277,8 @@ while conflict:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz możesz przejść dalej i zapoznać się z następującymi koncepcjami usługi Cosmos DB:
+Poznaj następujące pojęcia dotyczące usługi Azure Cosmos DB:
 
 * [Partycjonowanie i dystrybucja danych](partition-data.md)
-* [Indeksowanie w usłudze Cosmos DB](indexing-policies.md)
+* [Indeksowanie w usłudze Azure Cosmos DB](indexing-policies.md)
 

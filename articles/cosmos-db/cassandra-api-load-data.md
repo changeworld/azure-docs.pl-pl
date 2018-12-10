@@ -1,30 +1,32 @@
 ---
-title: Ładowanie przykładowych danych do tabeli interfejsu API Cassandra usługi Azure Cosmos DB za pomocą aplikacji języka Java | Microsoft Docs
-description: W tym artykule przedstawiono sposób ładowania przykładowych danych użytkownika do tabeli w ramach konta interfejsu API Cassandra usługi Azure Cosmos DB przy użyciu aplikacji języka Java.
-services: cosmos-db
+title: 'Samouczek: ładowanie przykładowych danych do tabeli interfejsu API Cassandra w usłudze Azure Cosmos DB za pomocą aplikacji języka Java | Microsoft Docs'
+description: W tym samouczku pokazano, jak załadować przykładowe dane użytkownika do tabeli na koncie interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java.
 author: kanshiG
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 12/03/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e116dbf1d49fed1a47b830f9a57cd77a33b7ea9c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
+ms.openlocfilehash: fad6d34a3d3712a036e0275717754f75d5314aae
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740724"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863657"
 ---
-# <a name="tutorial-load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>Samouczek: ładowanie przykładowych danych do tabeli interfejsu API Cassandra usługi Azure Cosmos DB
+# <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Samouczek: ładowanie przykładowych danych do tabeli interfejsu API Cassandra w usłudze Azure Cosmos DB
 
-W tym samouczku przedstawiono jak załadować przykładowe dane użytkownika do tabeli na koncie interfejsu API Cassandra usługi Azure Cosmos DB przy użyciu aplikacji języka Java. Aplikacja języka Java używa [sterownika języka Java](https://github.com/datastax/java-driver) i ładuje dane użytkownika, takie jak identyfikator, nazwa i miasto użytkownika. 
+Jako deweloper być może masz aplikacje, które używają par klucz-wartość. Możesz przechowywać dane kluczy/wartości i zarządzać nimi przy użyciu konta interfejsu API Cassandra w usłudze Azure Cosmos DB. W tym samouczku pokazano, jak załadować przykładowe dane użytkownika do tabeli na koncie interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java. Aplikacja języka Java używa [sterownika języka Java](https://github.com/datastax/java-driver) i ładuje dane użytkownika, takie jak identyfikator, nazwa i miasto użytkownika. 
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Ładowanie danych do tabeli Cassandra
 > * Uruchamianie aplikacji
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -74,7 +76,7 @@ Wykonaj poniższe czynności, aby załadować dane do tabeli interfejsu API Cass
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-Otwórz wiersz polecenia lub okno terminala i zmień ścieżkę na folder, w którym utworzono projekt. Uruchom polecenie „mvn clean install”, aby wygenerować plik cosmosdb-cassandra-examples.jar w folderze docelowym, a następnie uruchom aplikację. 
+Otwórz wiersz polecenia lub okno terminalu i zmień ścieżkę na folder, w którym utworzono projekt. Uruchom polecenie „mvn clean install”, aby wygenerować plik cosmosdb-cassandra-examples.jar w folderze docelowym, a następnie uruchom aplikację. 
 
 ```bash
 cd "cassandra-demo"
@@ -88,7 +90,7 @@ Teraz możesz otworzyć Eksploratora danych w witrynie Azure Portal, aby upewni�
     
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób ładowania przykładowych danych do konta interfejsu API Cassandra usługi Azure Cosmos DB. Teraz możesz przejść do następnego artykułu:
+W tym samouczku przedstawiono sposób ładowania przykładowych danych do konta interfejsu API Cassandra w usłudze Azure Cosmos DB. Teraz możesz przejść do następnego artykułu:
 
 > [!div class="nextstepaction"]
 > [Odpytywanie danych z konta interfejsu API Cassandra](cassandra-api-query-data.md)

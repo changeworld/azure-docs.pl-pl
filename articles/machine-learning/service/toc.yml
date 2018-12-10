@@ -83,13 +83,12 @@ items:
       href: how-to-set-up-training-targets.md
     - name: Uzyskiwanie dostępu do danych w ramach szkolenia
       href: how-to-access-data.md
-    - name: Tworzenie narzędzi do szacowania
+    - name: Tworzenie estymatorów na potrzeby trenowania
       href: how-to-train-ml-models.md
-      items:
-      - name: PyTorch
-        href: how-to-train-pytorch.md
-      - name: TensorFlow
-        href: how-to-train-tensorflow.md
+    - name: Korzystanie z biblioteki PyTorch
+      href: how-to-train-pytorch.md
+    - name: Korzystanie z biblioteki TensorFlow
+      href: how-to-train-tensorflow.md
     - name: Dostrajanie hiperparametrów
       displayName: parameter
       href: how-to-tune-hyperparameters.md
@@ -110,18 +109,10 @@ items:
   - name: Wdrażanie modeli
     items:
     - name: Gdzie należy wdrażać modele
-      displayName: publish
+      displayName: publish, azure kubernetes, azure container instances
       href: how-to-deploy-and-where.md
-    - name: Wdrażanie w usłudze ACI
-      displayName: Azure Container Instances
-      href: how-to-deploy-to-aci.md
-    - name: Wdrażanie w usłudze AKS
-      displayName: Azure Kubernetes
-      href: how-to-deploy-to-aks.md
     - name: Wdrażanie w układach FPGA
       href: how-to-deploy-fpga-web-service.md
-    - name: Wdrażanie w usłudze IoT Edge
-      href: how-to-deploy-to-iot.md
     - name: Rozwiązywanie problemów
       href: how-to-troubleshoot-deployment.md
     - name: Zabezpieczanie przy użyciu protokołu SSL
@@ -175,7 +166,7 @@ items:
     href: how-to-export-delete-data.md
   - name: Przestarzała dokumentacja
     items:
-    - name: Jak przeprowadzić migrację
+    - name: Migrowanie z aplikacji Workbench
       displayName: Workbench, upgrade, update, transfer
       href: how-to-migrate.md
     - name: Eksportowanie lub usuwanie danych konta (przestarzałe)
@@ -374,9 +365,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Stare problemy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 087d101a655d87bdb4c8f7de2b39a5358c21e00e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a5c26bd2ef020ca737907c8a66776a3769bfeefd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962549"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101249"

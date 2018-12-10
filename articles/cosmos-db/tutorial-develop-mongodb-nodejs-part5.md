@@ -1,10 +1,8 @@
 ---
-title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 5 | Microsoft Doc
+title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 5
 description: Część 5 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB przy użyciu usługi Angular i języka Node dla usługi Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: e9a1b7951d111606d84e235864e3649a742e874e
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: ce4ad1c069d34e79c81b8335bf2d58cb95068b9a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741508"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866189"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB — część 5: łączenie z usługą Azure Cosmos DB przy użyciu wtyczki Mongoose
 

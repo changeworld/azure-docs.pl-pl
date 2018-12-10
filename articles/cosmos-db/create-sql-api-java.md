@@ -1,9 +1,8 @@
 ---
-title: Tworzenie bazy danych dokumentów usługi Azure Cosmos DB przy użyciu języka Java | Microsoft Docs
+title: Tworzenie bazy danych dokumentów Azure Cosmos DB przy użyciu języka Java
 description: Przykładowy kod Java, którego można używać do nawiązywania połączeń z interfejsem API SQL usługi Azure Cosmos DB i wykonywania względem niego zapytań
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc, devcenter
@@ -11,17 +10,18 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: moderakh
-ms.openlocfilehash: 399db2d7ed5d1c94fe359cb55e9b90df3d99e003
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 65af8a27d864231e6302d813836e2f63803234d2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421292"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844791"
 ---
 # <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>Tworzenie zasobów konta interfejsu API SQL usługi Azure Cosmos DB i zarządzanie nimi przy użyciu aplikacji Java
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
+> * [.NET (wersja zapoznawcza)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)

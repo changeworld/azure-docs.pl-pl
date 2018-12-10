@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 329bc41555f2def0e2b7001a7b445cd3de16d439
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 51c19447e115426bd39d39fedc86193c8f091df1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51826400"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843312"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Samouczek: Wykrywanie anomalii na urządzeniach brzegowych za pomocą akceleratora rozwiązań do zdalnego monitorowania
 
@@ -24,16 +24,26 @@ Aby przedstawić sposób przetwarzania danych na urządzeniach brzegowych za pom
 
 Firma Contoso chce wdrożyć moduł inteligentnego urządzenia brzegowego, wykrywający anomalie temperatury pompy. Kolejny moduł brzegowy będzie wysyłać alerty do rozwiązania do zdalnego monitorowania. Po otrzymaniu alertu operator w firmie Contoso może wysłać technika w celu przeprowadzenia konserwacji. Firma Contoso może również skonfigurować działanie automatyczne, na przykład wysłanie wiadomości e-mail po otrzymaniu alertu przez rozwiązanie.
 
-W tym samouczku jako urządzenie usługi IoT Edge zostanie użyta lokalna maszyna deweloperska z systemem Windows. Zainstalujesz moduły brzegowe do symulowania urządzenia pompy olejowej i wykrywania anomalii temperatury.
+Na poniższym diagramie przedstawiono najważniejsze składniki w tym scenariuszu samouczka:
+
+![Omówienie](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 W tym samouczku zostaną wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Dodawanie urządzenia usługi IoT Edge do rozwiązania
 > * Tworzenie manifestu usługi Edge
-> * Importowanie pakietu definiującego moduły uruchamiane na urządzeniu
+> * Importowanie manifestu jako pakietu definiującego moduły uruchamiane na urządzeniu
 > * Wdrażanie pakietu na urządzeniu usługi IoT Edge
 > * Wyświetlanie alertów z urządzenia
+
+Na urządzeniu usługi IoT Edge:
+
+* Środowisko uruchomieniowe odbiera pakiet i instaluje moduły.
+* Moduł usługi Stream Analytics wykrywa anomalie temperatury w pompie i wysyła polecenia w celu rozwiązania tego problemu.
+* Moduł usługi Stream Analytics przekazuje odfiltrowane dane do akceleratora rozwiązań.
+
+W tym samouczku jako urządzenie usługi IoT Edge jest używana maszyna wirtualna z systemem Linux. Instalujesz również moduł usługi Edge symulujący urządzenie pompy olejowej.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -111,54 +121,23 @@ Urządzenia usługi Edge wymagają zainstalowanego środowiska uruchomieniowego 
     az vm create \
       --resource-group IoTEdgeDevices \
       --name EdgeVM \
-      --image Canonical:UbuntuServer:16.04-LTS:latest \
+      --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest \
       --admin-username azureuser \
       --generate-ssh-keys \
       --size Standard_B1ms
     ```
 
-    Zanotuj publiczny adres IP, który będzie potrzebny w następnym kroku do nawiązania połączenia za pomocą protokołu SSH.
-
-1. Aby połączyć się z maszyną wirtualną przy użyciu protokołu SSH, uruchom następujące polecenie w usłudze Cloud Shell:
+1. Aby skonfigurować parametry połączenia urządzenia w środowisku uruchomieniowym usługi Edge, uruchom następujące polecenie, podając parametry połączenia urządzenia zanotowane wcześniej:
 
     ```azurecli-interactive
-    ssh azureuser@{vm IP address}
+    az vm run-command invoke \
+      --resource-group IoTEdgeDevices \
+      --name EdgeVM \
+      --command-id RunShellScript \
+      --scripts 'sudo /etc/iotedge/configedge.sh "YOUR_DEVICE_CONNECTION_STRING"'
     ```
 
-1. Po nawiązaniu połączenia z maszyną wirtualną uruchom następujące polecenia, aby skonfigurować na niej repozytorium:
-
-    ```azurecli-interactive
-    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-    ```
-
-1. Aby zainstalować kontener i środowisko uruchomieniowe usługi Edge na maszynie wirtualnej, uruchom następujące polecenia:
-
-    ```azurecli-interactive
-    sudo apt-get update
-    sudo apt-get install moby-engine
-    sudo apt-get install moby-cli
-    sudo apt-get update
-    sudo apt-get install iotedge
-    ```
-
-1. Aby skonfigurować środowisko uruchomieniowe usługi Edge przy użyciu parametrów połączenia urządzenia, edytuj plik konfiguracji:
-
-    ```azurecli-interactive
-    sudo nano /etc/iotedge/config.yaml
-    ```
-
-    Przypisz parametry połączenia urządzenia do zmiennej **device_connection_string**, zapisz zmiany i zamknij edytor.
-
-1. Uruchom ponownie środowisko uruchomieniowe usługi Edge, aby zastosować nową konfigurację:
-
-    ```azurecli-interactive
-    sudo systemctl restart iotedge
-    ```
-
-1. Możesz teraz zakończyć sesję SSH i zamknąć usługę Cloud Shell.
+    Pamiętaj, aby ująć parametry połączenia w cudzysłów.
 
 Masz teraz zainstalowane i skonfigurowane środowisko uruchomieniowe usługi IoT Edge na urządzeniu z systemem Linux. W dalszej części tego samouczka użyjesz rozwiązania do zdalnego monitorowania, aby wdrożyć moduły usługi IoT Edge na tym urządzeniu.
 

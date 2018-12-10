@@ -1,9 +1,8 @@
 ---
-title: 'Szybki start: interfejs API języka Gremlin i język Python — Azure Cosmos DB | Microsoft Docs'
+title: 'Szybki start: interfejs API języka Gremlin za pomocą języka Python — Azure Cosmos DB'
 description: W tym przewodniku Szybki start przedstawiono użycie interfejsu API języka Gremlin usługi Azure Cosmos DB do utworzenia aplikacji konsolowej przy użyciu witryny Azure Portal i języka Python
 services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
@@ -11,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: d01ee78c4e3fdf0eab694deaeed03e0f61989851
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: eb7959b1a41c602ce4f34750802d962fe4ff84cf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699451"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839317"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: tworzenie grafowej bazy danych przy użyciu języka Python i witryny Azure Portal
 

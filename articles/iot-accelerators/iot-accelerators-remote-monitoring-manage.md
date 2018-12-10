@@ -1,35 +1,32 @@
 ---
-title: Zarządzanie urządzeniami w rozwiązaniu do zdalnego monitorowania opartym na platformie Azure — samouczek | Microsoft Docs
-description: W tym samouczku pokazano, w jaki sposób zarządzać urządzeniami połączonymi z akceleratorem rozwiązań do zdalnego monitorowania.
+title: Konfigurowanie urządzeń w rozwiązaniu do zdalnego monitorowania opartym na platformie Azure — samouczek | Microsoft Docs
+description: W tym samouczku pokazano, w jaki sposób konfigurować urządzenia połączone z akceleratorem rozwiązań do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821073"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679158"
 ---
-# <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania i zarządzanie nimi
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania
 
-W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania, aby skonfigurować połączone urządzenia IoT i nimi zarządzać. Dodasz nowe urządzenie do akceleratora rozwiązań, skonfigurujesz je i zaktualizujesz jego oprogramowanie układowe.
+W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania, aby skonfigurować połączone urządzenia IoT i nimi zarządzać. Dodasz nowe urządzenie do akceleratora rozwiązań i skonfigurujesz je.
 
-Firma Contoso zamówiła nowe maszyny, aby rozwinąć jedną ze swoich placówek. Czekając na dostawę nowych maszyn, chcesz uruchomić symulację, aby przetestować działanie rozwiązania. Aby uruchomić symulację, dodasz nowy symulowany silnik do akceleratora rozwiązań do zdalnego monitorowania i sprawdzisz, czy symulowane urządzenie prawidłowo reaguje na działania i aktualizacje konfiguracji.
-
-Aby zapewnić rozszerzalny sposób konfigurowania urządzeń i zarządzania nimi, akcelerator rozwiązań do zdalnego monitorowania korzysta z funkcji centrum IoT Hub, takich jak [zadania](../iot-hub/iot-hub-devguide-jobs.md) i [metody bezpośrednie](../iot-hub/iot-hub-devguide-direct-methods.md). W tym samouczku używane są urządzenia symulowane, ale deweloper urządzeń może wdrażać metody bezpośrednie na [urządzeniu fizycznym połączonym z akceleratorem rozwiązań do zdalnego monitorowania](iot-accelerators-connecting-devices.md).
+Firma Contoso zamówiła nowe maszyny, aby rozwinąć jedną ze swoich placówek. Czekając na dostawę nowych maszyn, chcesz uruchomić symulację, aby przetestować działanie rozwiązania. Aby uruchomić symulację, dodasz nowy symulowany silnik do akceleratora rozwiązań do zdalnego monitorowania i sprawdzisz, czy symulowane urządzenie prawidłowo reaguje na aktualizacje konfiguracji. W tym samouczku używane są urządzenia symulowane, ale deweloper urządzeń może wdrażać metody bezpośrednie na [urządzeniu fizycznym połączonym z akceleratorem rozwiązań do zdalnego monitorowania](iot-accelerators-connecting-devices.md).
 
 W tym samouczku zostaną wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Aprowizowanie symulowanego urządzenia.
 > * Testowanie symulowanego urządzenia.
-> * Aktualizowanie oprogramowania układowego urządzenia.
 > * Zmiana konfiguracji urządzenia.
 > * Organizowanie urządzeń.
 
@@ -60,24 +57,6 @@ W polu **Szczegóły urządzenia** sprawdź, czy nowe urządzenie wysyła dane t
 Panel **Szczegóły urządzenia** zawiera inne informacje dotyczące urządzenia, takie jak wartości tagów, obsługiwane metody oraz właściwości zgłaszane przez urządzenie.
 
 Aby wyświetlić szczegółowe dane diagnostyczne, przewiń w dół zawartość panelu **Szczegóły urządzenia** aż do sekcji **Diagnostyka**.
-
-## <a name="act-on-a-device"></a>Wykonywanie akcji względem urządzenia
-
-Aby sprawdzić, czy symulowany silnik prawidłowo reaguje na akcje zainicjowane z poziomu pulpitu nawigacyjnego, uruchom metodę **FirmwareUpdate**. Aby uruchomić metodę na urządzeniu, wybierz je z listy urządzeń, a następnie kliknij przycisk **Zadania**. Możesz wybrać więcej niż jedno urządzenie, jeśli chcesz wykonać akcję na wielu urządzeniach. Na panelu **Zadania** wybierz pozycję **Metody**. Model urządzenia **Engine** (Silnik) określa trzy metody: **FirmwareUpdate**, **FillTank** i **EmptyTank**:
-
-[![Metody urządzenia Engine](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
-
-Wybierz pozycję **FirmwareUpdate**, ustaw nazwę zadania **UpdateEngineFirmware**, ustaw wersję oprogramowania układowego **2.0.0**, ustaw identyfikator URI oprogramowania układowego **http://contoso.com/engine.bin**, a następnie kliknij przycisk **Zastosuj**:
-
-[![Planowanie metody aktualizacji oprogramowania układowego](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-expanded.png#lightbox)
-
-Aby śledzić stan zadania, kliknij pozycję **Wyświetl stan zadania**:
-
-[![Monitorowanie zaplanowanego zadania aktualizacji oprogramowania układowego](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-expanded.png#lightbox)
-
-Po zakończeniu zadania wróć do strony **Urządzenia**. Jest wyświetlana nowa wersja oprogramowania układowego silnika.
-
-Jeśli wybierzesz wiele urządzeń różnych typów na stronie **Urządzenia**, nadal możesz utworzyć zadanie, aby uruchomić metodę na tych urządzeniach. Na panelu **Zadania** wyświetlane są tylko metody wspólne dla wszystkich wybranych urządzeń.
 
 ## <a name="reconfigure-a-device"></a>Zmiana konfiguracji urządzenia
 

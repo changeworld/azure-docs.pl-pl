@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f8310885ddf7e2229054f36b8fda92b92c1ab01e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406504"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868552"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Samouczek: monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure
 
@@ -208,7 +208,7 @@ Aby zaplanować nowe wdrożenie aktualizacji dla maszyny wirtualnej, wybierz poz
 * **Klasyfikacja aktualizacji** — wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. Dostępne są następujące typy klasyfikacji:
   * Aktualizacje krytyczne i zabezpieczeń
   * Inne aktualizacje
-* **Aktualizacje do wykluczenia** — umożliwia określenie listy nazw pakietów, które należy pominąć podczas wdrażania aktualizacji. Nazwy pakietów obsługują symbole wieloznaczne (takie jak \*kernal\*).
+* **Aktualizacje do wykluczenia** — umożliwia określenie listy nazw pakietów, które należy pominąć podczas wdrażania aktualizacji. Nazwy pakietów obsługują symbole wieloznaczne (takie jak \*kernel\*).
 
   ![Ekran ustawień harmonogramu aktualizacji](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 

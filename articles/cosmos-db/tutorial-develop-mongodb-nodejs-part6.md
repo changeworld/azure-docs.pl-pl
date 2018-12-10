@@ -1,10 +1,8 @@
 ---
-title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 6 | Microsoft Doc
+title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 6
 description: Część 6 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB przy użyciu usługi Angular i języka Node dla usługi Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 06/17/2018
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 667c1fbce398e06f9f2a6edca21935ae1062a737
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 5188065022ef19a72068aa0bbb36b1c603d830dd
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740574"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869268"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB — część 6: dodawanie funkcji Post, Put i Delete do aplikacji
 

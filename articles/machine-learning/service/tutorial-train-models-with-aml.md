@@ -8,19 +8,19 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 11/21/2018
-ms.openlocfilehash: 53de4715a458c5713a31541da64a4a671bf8c132
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/04/2018
+ms.openlocfilehash: 8d3dd87adaad168d193b53507dbbb40efab57810
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496224"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879489"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Samouczek nr 1: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
-W tym samouczku przeprowadzisz uczenie modelu uczenia maszynowego zarówno lokalnie, jak i na zdalnych zasobach obliczeniowych. Zastosujesz przepływ pracy uczenia i wdrażania dla usługi Azure Machine Learning (wersja zapoznawcza) w notesie Jupyter języka Python.  Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
+W tym samouczku przeprowadzisz uczenie modelu uczenia maszynowego zarówno lokalnie, jak i na zdalnych zasobach obliczeniowych. Zastosujesz przepływ pracy trenowania i wdrażania dla usługi Azure Machine Learning w notesie Jupyter języka Python.  Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
 
-Ten samouczek uczy prostej regresji logistycznej przy użyciu zestawu danych [MNIST](http://yann.lecun.com/exdb/mnist/), biblioteki [scikit-learn](http://scikit-learn.org) oraz usługi Azure Machine Learning.  MNIST jest popularnym zestawem danych składającym się z 70 000 obrazów w skali szarości. Każdy obraz ma rozmiar 28 x 28 pikseli i przedstawia odręcznie napisaną cyfrę z zakresu od 0 do 9. Celem jest utworzenie klasyfikatora wieloklasowego do identyfikacji cyfry reprezentowanej przez dany obraz. 
+Ten samouczek uczy prostej regresji logistycznej przy użyciu zestawu danych [MNIST](https://yann.lecun.com/exdb/mnist/), biblioteki [scikit-learn](https://scikit-learn.org) oraz usługi Azure Machine Learning.  MNIST jest popularnym zestawem danych składającym się z 70 000 obrazów w skali szarości. Każdy obraz ma rozmiar 28 x 28 pikseli i przedstawia odręcznie napisaną cyfrę z zakresu od 0 do 9. Celem jest utworzenie klasyfikatora wieloklasowego do identyfikacji cyfry reprezentowanej przez dany obraz. 
 
 Instrukcje:
 
@@ -36,16 +36,14 @@ Tego, jak wybrać i wdrożyć model, dowiesz się później, z [drugiej części
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 0.1.79
+> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.2
 
 ## <a name="get-the-notebook"></a>Pobieranie notesu
 
-Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://aka.ms/aml-notebook-tut-01). Uruchom notes `01.train-models.ipynb` w usłudze Azure Notebooks lub na własnym serwerze notesów Jupyter.
+Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb). Uruchom notes `tutorials/img-classification-part1-training.ipynb` w usłudze Azure Notebooks lub na własnym serwerze notesów Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
->[!NOTE]
-> Ten samouczek został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 0.1.74 
 
 ## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
 
@@ -94,11 +92,11 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-remote-compute-target"></a>Tworzenie zdalnego docelowego zasobu obliczeniowego
+### <a name="create-or-attach-existing-amlcompute"></a>Tworzenie lub dołączanie istniejącej usługi AMlCompute
 
-Azure ML Managed Compute to usługa zarządzana, która umożliwia analitykom danych uczenie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure, w tym maszyn wirtualnych z obsługą procesorów GPU.  W tym samouczku utworzysz klaster usługi Azure Managed Compute jako środowisko uczenia. Ten kod utworzy za Ciebie klaster, jeśli nie istnieje on jeszcze w Twoim obszarze roboczym. 
+Azure Machine Learning Managed Compute (AmlCompute) to usługa zarządzana, która umożliwia analitykom danych trenowanie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure, w tym maszyn wirtualnych z obsługą procesorów GPU.  W tym samouczku utworzysz usługę AmlCompute jako środowisko trenowania. Ten kod utworzy za Ciebie klastry obliczeniowe, jeśli nie istnieją one jeszcze w Twoim obszarze roboczym.
 
- **Tworzenie klastra zajmuje około 5 minut.** Jeśli klaster znajduje się już w obszarze roboczym, ten kod skorzysta z niego i pominie proces tworzenia.
+ **Tworzenie klastrów obliczeniowych zajmuje około 5 minut.** Jeśli klastry obliczeniowe znajdują się już w obszarze roboczym, ten kod skorzysta z nich i pominie proces tworzenia.
 
 
 ```python
@@ -107,12 +105,17 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("BATCHAI_CLUSTER_NAME", "cpucluster")
-compute_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 0)
-compute_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 4)
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+import os
+
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
 # This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
-vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_D2_V2")
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
 
 
 if compute_name in ws.compute_targets:
@@ -132,7 +135,7 @@ else:
     # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
+     # For a more detailed view of current AmlCompute status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -320,11 +323,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 Zwróć uwagę, jak skrypt pobiera dane i zapisuje modele:
 
 + Skrypt uczenia odczytuje argument, aby znaleźć katalog zawierający dane.  Podczas późniejszego przesyłania zadania wskażesz magazyn danych dla tego argumentu: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
-    
+
 + Skrypt uczenia zapisuje model w katalogu o nazwie outputs. <br/>
 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu.
-
 Plik `utils.py` jest wywoływany przez skrypt uczenia, aby prawidłowo załadować zestaw danych.  Skopiuj ten skrypt do folderu skryptów, aby był dostępny wraz ze skryptem uczenia zasobu zdalnego.
 
 
@@ -340,12 +342,12 @@ Obiekt narzędzia do szacowania służy do przesyłania przebiegu.  Utwórz narz
 
 * Nazwa obiektu narzędzia do szacowania, `est`.
 * Katalog zawierający Twoje skrypty. Wszystkie pliki w tym katalogu są przekazywane do węzłów klastra w celu wykonania. 
-* Docelowy zasób obliczeniowy.  W tym przypadku użyjesz utworzonego przez siebie klastra usługi Batch AI.
+* Docelowy zasób obliczeniowy.  W tym przypadku użyjesz utworzonego klastra obliczeniowego usługi Azure Machine Learning.
 * Nazwa skryptu uczenia, train.py.
 * Wymagane parametry skryptu uczenia. 
 * Pakiety języka Python wymagane na potrzeby uczenia.
 
-W tym samouczku elementem docelowym jest klaster usługi Batch AI. Wszystkie pliki w folderze skryptów są przekazywane do węzłów klastra w celu wykonania. Jako folder danych ustawiono magazyn danych — `ds.as_mount()`.
+W tym samouczku elementem docelowym jest usługa AmlCompute. Wszystkie pliki w folderze skryptów są przekazywane do węzłów klastra w celu wykonania. Jako folder danych ustawiono magazyn danych — `ds.as_mount()`.
 
 ```python
 from azureml.train.estimator import Estimator

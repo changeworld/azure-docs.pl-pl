@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ae014597a89c75e4426715227bbb19f1e98a438
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7c6f5e199041af7d0ecd829ace2b56f5789f4955
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189293"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890453"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Samouczek: tworzenie kopii zapasowych i przywracanie plików dla maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -47,7 +47,7 @@ Utwórz prostą, zaplanowaną, codzienną operację tworzenia kopii zapasowych w
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. W menu po lewej stronie wybierz pozycję **Maszyny wirtualne**. 
 3. Z listy wybierz maszynę wirtualną do utworzenia kopii zapasowej.
-4. W bloku maszyny wirtualnej w sekcji **Ustawienia** kliknij pozycję **Kopia zapasowa**. Spowoduje to otwarcie bloku **Włącz kopię zapasową**.
+4. W bloku maszyny wirtualnej w sekcji **Operacje** kliknij pozycję **Kopia zapasowa**. Spowoduje to otwarcie bloku **Włącz kopię zapasową**.
 5. W **Magazynie usługi Recovery Services** kliknij pozycję **Utwórz nowy** i podaj nazwę nowego magazynu. Nowy magazyn zostanie utworzony w tej samej lokalizacji i tej samej grupie zasobów co maszyna wirtualna.
 6. Kliknij opcję **Zasady tworzenia kopii zapasowych**. W tym przykładzie zachowaj ustawienia domyślne i kliknij przycisk **OK**.
 7. W bloku **Włącz kopię zapasową** kliknij pozycję **Włącz kopię zapasową**. Spowoduje to codzienne tworzenie kopii zapasowej na podstawie harmonogramu domyślnego.

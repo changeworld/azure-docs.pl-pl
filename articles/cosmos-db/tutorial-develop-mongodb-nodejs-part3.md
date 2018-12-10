@@ -1,10 +1,8 @@
 ---
-title: Samouczek bazy danych MongoDB, platformy Angular i języka Node dla platformy Azure — część 3 | Microsoft Doc
+title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 3
 description: Część 3 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB za pomocą platformy Angular i języka Node w usłudze Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB.
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: c71e0d221e4605d95dc754127ec44c62a64472f1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fc60e66a2e4433ca1dc44470789fe2fc091c46d7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702286"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870218"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Tworzenie aplikacji bazy danych MongoDB za pomocą platformy Angular i usługi Azure Cosmos DB — część 3: Tworzenie interfejsu użytkownika z użyciem platformy Angular
 

@@ -1,7 +1,6 @@
 ---
-title: Wykonywanie zapytań dotyczących danych z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB
-description: W tym artykule przedstawiono sposób wykonywania zapytań o dane użytkownika z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java.
-services: cosmos-db
+title: 'Samouczek: wykonywanie zapytań względem danych z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB'
+description: W tym samouczku przedstawiono sposób wykonywania zapytań względem danych użytkownika z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java.
 ms.service: cosmos-db
 author: kanshiG
 ms.author: govindk
@@ -9,22 +8,25 @@ ms.reviewer: sngun
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: a06e7e6159953bfeffa966759d29b91bbcbafd37
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
+ms.openlocfilehash: 57d83516708e3105ba32f8b83420f06aadf0ace1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739213"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867516"
 ---
-# <a name="tutorial-query-data-from-an-azure-cosmos-db-cassandra-api-account"></a>Samouczek: wykonywanie zapytań względem danych z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB
+# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Samouczek: wykonywanie zapytań względem danych z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB
 
-W tym samouczku przedstawiono sposób wykonywania zapytań o dane użytkownika z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java. Aplikacja języka Java używa [sterownika Java](https://github.com/datastax/java-driver) i wykonuje zapytania o dane użytkownika, takie jak identyfikator użytkownika, nazwa użytkownika i miasto użytkownika. 
+Jako deweloper być może masz aplikacje, które używają par klucz-wartość. Możesz przechowywać dane kluczy/wartości i tworzyć zapytania względem nich przy użyciu konta interfejsu API Cassandra w usłudze Azure Cosmos DB. W tym samouczku przedstawiono sposób wykonywania zapytań względem danych użytkownika z poziomu konta interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java. Aplikacja języka Java używa [sterownika Java](https://github.com/datastax/java-driver) i wykonuje zapytania względem danych użytkownika, takie jak identyfikator użytkownika, nazwa użytkownika i miasto użytkownika. 
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Wykonywanie zapytań dotyczących danych z tabeli bazy danych Cassandra
+> * Wykonywanie zapytań względem danych z tabeli bazy danych Cassandra
 > * Uruchamianie aplikacji
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,7 +40,7 @@ Przeprowadź poniższe czynności, aby wykonać zapytania względem danych z poz
 
    * Wykonywanie zapytań względem wszystkich użytkowników w bazie danych
    * Wykonywanie zapytań względem określonego użytkownika przefiltrowanego według identyfikatora
-   * Usuwanie tabeli.
+   * Usuwanie tabeli
 
    ```java
    /**
@@ -103,9 +105,13 @@ Przeprowadź poniższe czynności, aby wykonać zapytania względem danych z poz
 
 2. Teraz w witrynie Azure Portal otwórz **Eksplorator danych** i upewnij się, że tabela użytkowników została usunięta.
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Możesz usunąć grupę zasobów, konto usługi Azure Cosmos oraz wszystkie powiązane zasoby, gdy nie będą już potrzebne. Aby to zrobić, wybierz grupę zasobów maszyny wirtualnej, wybierz pozycję **Usuń**, a następnie potwierdź nazwę grupy zasobów, którą chcesz usunąć.
+
 ## <a name="next-steps"></a>Następne kroki
 
-* W tym samouczku przedstawiono sposób wykonywania zapytań dotyczących danych z poziomu konta interfejsu API Cassandra usługi Azure Cosmos DB. Teraz możesz przejść do następnego artykułu:
+W tym samouczku przedstawiono sposób wykonywania zapytań o dane z poziomu konta interfejsu API Cassandra usługi Azure Cosmos DB. Teraz możesz przejść do następnego artykułu:
 
 > [!div class="nextstepaction"]
 > [Migrowanie danych do konta interfejsu API Cassandra](cassandra-import-data.md)

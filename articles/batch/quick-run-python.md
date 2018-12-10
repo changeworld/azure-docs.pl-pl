@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0ce9d6854f464efdf0ff6eea8644fedc5ad90d1f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 13ed37dddefc5e71e972248545c3e9242bd233ad
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427332"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678204"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu API języka Python
 
@@ -110,7 +110,7 @@ Typowy czas wykonywania wynosi mniej więcej 3 minuty w przypadku uruchomienia a
 Aplikacja w języku Python omawiana w tym przewodniku Szybki start wykonuje następujące akcje:
 
 * Przekazuje trzy małe pliki tekstowe do kontenera obiektów blob na koncie usługi Azure Storage. Te pliki to dane wejściowe do przetworzenia przez zadania podrzędne usługi Batch.
-* Tworzy pulę dwóch węzłów obliczeniowych z systemem Ubuntu 16.04 LTS.
+* Tworzy pulę dwóch węzłów obliczeniowych z systemem Ubuntu 18.04 LTS.
 * Tworzy zadanie i trzy zadania podrzędne do uruchomienia w tych węzłach. Każde zadanie podrzędne przetwarza jeden z plików wejściowych przy użyciu wiersza polecenia powłoki Bash.
 * Wyświetla pliki zwrócone przez zadania podrzędne.
 
@@ -151,7 +151,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Tworzenie puli węzłów obliczeniowych
 
-Aby utworzyć pulę usługi Batch, aplikacja ustawia liczbę węzłów, rozmiar maszyny wirtualnej i konfigurację puli za pomocą klasy [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter). W tym przypadku obiekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) określa parametr [ImageReference](/python/api/azure.batch.models.imagereference) z odwołaniem do obrazu systemu Ubuntu Server 16.04 LTS opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów systemów Linux i Windows Server pochodzących z witryny Azure Marketplace, a także niestandardowe obrazy maszyn wirtualnych.
+Aby utworzyć pulę usługi Batch, aplikacja ustawia liczbę węzłów, rozmiar maszyny wirtualnej i konfigurację puli za pomocą klasy [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter). W tym przypadku obiekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) określa parametr [ImageReference](/python/api/azure.batch.models.imagereference) z odwołaniem do obrazu systemu Ubuntu Server 18.04 LTS opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów systemów Linux i Windows Server pochodzących z witryny Azure Marketplace, a także niestandardowe obrazy maszyn wirtualnych.
 
 Liczba węzłów (`_POOL_NODE_COUNT`) i rozmiar maszyny wirtualnej (`_POOL_VM_SIZE`) to zdefiniowane stałe. Domyślnie przykładowa aplikacja tworzy pulę składającą się z 2 węzłów o rozmiarze *Standard_A1_v2*. Sugerowany rozmiar oferuje dobry kompromis między wydajnością a kosztem na potrzeby tego krótkiego przykładu.
 
@@ -164,10 +164,10 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04-LTS",
+            sku="18.04-LTS",
             version="latest"
             ),
-        node_agent_sku_id="batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=config._POOL_VM_SIZE,
     target_dedicated_nodes=config._POOL_NODE_COUNT
 )

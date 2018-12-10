@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2018
+ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1eab54d16dcc0facace9a51a4cf5b5d1243baf4f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 48a04bbe77a6fe836c282556709e13bb9cd9a337
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025397"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848195"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Linux do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów z systemem Linux uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta systemu Linux.
@@ -30,7 +30,7 @@ Ten przewodnik Szybki start przedstawia sposób instalacji agenta systemu Linux 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
 
-Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed rozpoczęciem tego przewodnika Szybki start. Zobacz [Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa](security-center-get-started.md), aby uzyskać instrukcje dotyczące uaktualnienia. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie przez pierwsze 60 dni.
+Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed rozpoczęciem tego przewodnika Szybki start. Zobacz [Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa](security-center-get-started.md), aby uzyskać instrukcje dotyczące uaktualnienia. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Dodawanie nowego komputera z systemem Linux
 

@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 08/08/2018
+ms.date: 11/29/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: 0531985cbab9c10b4df8ea3f27ac6c7903790da5
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: bec0b9a7e34f1577f80a99f5380795c479c04bc8
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978234"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890470"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Konfigurowanie środowiska deweloperskiego w systemie Windows w celu tworzenia aplikacji usługi Service Fabric Mesh
 
@@ -36,7 +36,7 @@ Do wdrażania aplikacji usługi Service Fabric Mesh jest wymagany program Visual
 * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
 * Programowanie na platformie Azure
 
-## <a name="install-docker"></a>Instalowanie platformy Docker
+## <a name="install-docker"></a>Zainstaluj platformę Docker
 
 #### <a name="windows-10"></a>Windows 10
 
@@ -73,27 +73,31 @@ Zainstaluj środowisko uruchomieniowe, zestaw SDK oraz narzędzia usługi Servic
 
 ## <a name="build-a-cluster"></a>Tworzenie klastra
 
+> [!IMPORTANT]
+> Utworzenie klastra **wymaga**  uruchomienia platformy Docker.
+> Aby sprawdzić, czy platforma Docker jest uruchomiona, otwórz okno terminalu i uruchom polecenie `docker ps`. Jeśli odpowiedź nie wskazuje na wystąpienie błędu, oznacza to, że platforma Docker jest uruchomiona i można przystąpić do tworzenia klastra.
+
 Jeśli używasz programu Visual Studio, możesz pominąć tę sekcję, ponieważ program Visual Studio automatycznie utworzy klaster lokalny, jeśli taki klaster jeszcze nie istnieje.
 
 Aby uzyskać najlepszą wydajność debugowania tworzonych i uruchamianych aplikacji usługi Service Fabric, zaleca się utworzenie lokalnego klastra projektowego z jednym węzłem. Ten klaster musi być uruchomiony podczas każdego wdrażania lub debugowania projektu usługi Service Fabric Mesh.
 
-Utworzenie klastra **wymaga**  uruchomienia platformy Docker. Aby sprawdzić, czy platforma Docker jest uruchomiona, otwórz okno terminalu i uruchom polecenie `docker ps`. Jeśli odpowiedź nie wskazuje na wystąpienie błędu, oznacza to, że platforma Docker jest uruchomiona i można przystąpić do tworzenia klastra.
-
-Po zainstalowaniu środowiska uruchomieniowego, zestawów SDK i narzędzi programu Visual Studio utwórz klaster projektowy.
+Po zainstalowaniu środowiska uruchomieniowego, zestawów SDK, narzędzi programu Visual Studio i platformy Docker oraz uruchomieniu platformy Docker utwórz klaster projektowy.
 
 1. Zamknij okno programu PowerShell.
 2. Otwórz nowe okno programu PowerShell jako administrator. Ten krok jest niezbędny do załadowania zainstalowanych uprzednio modułów usługi Service Fabric.
 3. Utwórz klaster projektowy za pomocą następującego polecenia programu PowerShell:
 
     ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster -UseMachineName
+    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateMeshCluster -CreateOneNodeCluster
     ```
-
 4. Uruchom menedżera klastra lokalnego za pomocą następującego polecenia programu PowerShell:
 
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
+5. Gdy narzędzie menedżera klastra usługi jest uruchomione (jest wyświetlane na pasku zadań), kliknij je prawym przyciskiem myszy, a następnie kliknij pozycję **Uruchom klaster lokalny**.
+
+![Rysunek 1. Uruchamianie klastra lokalnego](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 
 Możesz już tworzyć aplikacje usługi Service Fabric Mesh.
 
@@ -109,5 +113,5 @@ Znajdź odpowiedzi na [często zadawane pytania](service-fabric-mesh-faq.md).
 [download-runtime]: https://aka.ms/sfruntime
 [download-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK
 [download-sdkmesh]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-SDK-Mesh
-[download-tools]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.ServiceFabricMesh
+[download-tools]: https://aka.ms/sfmesh_vs2017tools
 [download-visual-studio]: https://www.visualstudio.com/downloads/

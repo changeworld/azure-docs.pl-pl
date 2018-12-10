@@ -3,18 +3,18 @@ title: Interaktywne wyszukiwanie na mapie przy użyciu usługi Azure Maps | Micr
 description: Przewodnik Szybki start platformy Azure — Uruchamianie pokazu interaktywnego wyszukiwania na mapie za pomocą usługi Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/26/2018
+ms.date: 12/02/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d2aa3385dd7556cfc169b42b36d94a3e1d9ee3dd
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5f828bfd2ceee81daf86382846be0c5ee7f1fe8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209976"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836580"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>Uruchamianie interaktywnego wyszukiwania na mapie przy użyciu usługi Azure Maps
 
@@ -35,7 +35,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
     - *Nazwa* nowego konta.
     - *Subskrypcja*, która ma być używana dla tego konta.
     - *Grupa zasobów* dla tego konta. Można wybrać pozycję *Utwórz nowe* lub *Użyj istniejącego* dla grupy zasobów.
-    - Wybierz *lokalizację grupy zasobów*.
+    - Wybierz *warstwę cenową*.
     - Zapoznaj się z *Licencją* oraz *Zasadami zachowania poufności informacji* i zaznacz pole wyboru, aby zaakceptować warunki.
     - Na koniec kliknij przycisk **Utwórz**.
 

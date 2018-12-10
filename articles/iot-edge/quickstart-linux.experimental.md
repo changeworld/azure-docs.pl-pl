@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 639eea43f9302ab5a4f298da3777b1b4d5259987
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2d988d70285e64414277bc2337a564aa87e45201
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500227"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888141"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux x64
 
@@ -55,13 +55,17 @@ Zasoby w chmurze:
 
 Urządzenie usługi IoT Edge:
 
-* Urządzenie lub maszyna wirtualna z systemem Linux, która będzie działać jako urządzenie usługi IoT Edge. Jeśli chcesz utworzyć maszynę wirtualną na platformie Azure, użyj następującego polecenia, aby szybko rozpocząć pracę:
+* Urządzenie lub maszyna wirtualna z systemem Linux, która będzie działać jako urządzenie usługi IoT Edge. Zaleca się użycie maszyny wirtualnej z [usługą Azure IoT Edge w systemie Ubuntu](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) dostarczanej przez firmę Microsoft, która preinstaluje środowisko uruchomieniowe usługi IoT Edge. Utwórz tę maszynę wirtualną za pomocą następującego polecenia:
 
    ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
-   Podczas tworzenia nowej maszyny wirtualnej zanotuj wartość elementu **publicIpAddress**. Jest ona widoczna w danych wyjściowych polecenia create. Ten publiczny adres IP zostanie użyty później w tym przewodniku Szybki start do nawiązania połączenia z maszyną wirtualną.
+   Podczas tworzenia nowej maszyny wirtualnej zanotuj wartość elementu **publicIpAddress**. Jest ona widoczna w danych wyjściowych polecenia create. Tego publicznego adresu IP użyjesz później w tym przewodniku Szybki start do nawiązania połączenia z maszyną wirtualną.
+
+* Jeśli wolisz użyć środowiska uruchomieniowego usługi Azure IoT Edge w systemie lokalnym, postępuj zgodnie z instrukcjami w artykule [Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)](how-to-install-iot-edge-linux.md).
+
+* Jeśli chcesz użyć urządzenia z architekturą ARM32, takiego jak Raspberry Pi, postępuj zgodnie z instrukcjami w artykule [Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md).
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -104,7 +108,7 @@ Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urzą
 
 3. Skopiuj parametry połączenia i zapisz je. Za pomocą tej wartości skonfigurujesz środowisko uruchomieniowe usługi IoT Edge w następnej sekcji. 
 
-## <a name="install-and-start-the-iot-edge-runtime"></a>Instalowanie i uruchamianie środowiska uruchomieniowego usługi IoT Edge
+## <a name="connect-the-iot-edge-device-to-iot-hub"></a>Łączenie urządzenia usługi IoT Edge z centrum IoT Hub
 
 Zainstaluj i uruchom środowisko uruchomieniowe usługi Azure IoT Edge na urządzeniu usługi IoT Edge. 
 ![Rejestrowanie urządzenia](./media/quickstart-linux/start-runtime.png)
@@ -113,82 +117,21 @@ Zainstaluj i uruchom środowisko uruchomieniowe usługi Azure IoT Edge na urząd
 
 Podczas konfigurowania środowiska uruchomieniowego należy podać parametry połączenia urządzenia. Użyj parametrów pobranych za pomocą wiersza polecenia platformy Azure. Za pomocą tych parametrów urządzenie fizyczne jest kojarzone z tożsamością urządzenia usługi IoT Edge na platformie Azure. 
 
-### <a name="connect-to-your-iot-edge-device"></a>Nawiązywanie połączenia z urządzeniem usługi IoT Edge
+### <a name="set-the-connection-string-on-the-iot-edge-device"></a>Ustawianie parametrów połączenia na urządzeniu usługi IoT Edge
 
-Wszystkie kroki opisane w tej sekcji są wykonywane na urządzeniu usługi IoT Edge. Jeśli jako urządzenia usługi IoT Edge używasz swojej własnej maszyny, możesz pominąć tę część. Jeśli używasz maszyny wirtualnej lub dodatkowego sprzętu, należy teraz nawiązać połączenie z tą maszyną. 
+* Jeśli korzystasz z maszyny wirtualnej z usługą Azure IoT Edge w systemie Ubuntu, użyj parametrów połączenia urządzenia skopiowanych wcześniej, aby zdalnie skonfigurować urządzenie usługi IoT Edge:
 
-Jeśli utworzono maszynę wirtualną platformy Azure na potrzeby tego przewodnika Szybki start, pobierz publiczny adres IP wyświetlany w danych wyjściowych polecenia tworzenia. Publiczny adres IP możesz również znaleźć na stronie przeglądu swojej maszyny wirtualnej w witrynie Azure Portal. Użyj następującego polecenia, aby nawiązać połączenie z maszyną wirtualną. Zastąp ciąg **{publicIpAddress}** adresem swojej maszyny. 
-
-```azurecli-interactive
-ssh azureuser@{publicIpAddress}
-```
-
-### <a name="register-your-device-to-use-the-software-repository"></a>Rejestrowanie urządzenia w celu korzystania z repozytorium oprogramowania
-
-Pakiety potrzebne do uruchamiania środowiska uruchomieniowego usługi IoT Edge są zarządzane w repozytorium oprogramowania. Urządzenie usługi IoT Edge należy skonfigurować do uzyskiwania dostępu do tego repozytorium. 
-
-Czynności opisane w tej sekcji dotyczą urządzeń z architekturą x64 i systemem **Ubuntu 16.04**. Aby uzyskać dostęp do repozytorium oprogramowania dla innych wersji systemu Linux lub dla urządzeń z inną architekturą, zobacz [Install the Azure IoT Edge runtime on Linux (x64)](how-to-install-iot-edge-linux.md) (Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux — x64) lub [Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) (Linux — ARM32v7/armhf).
-
-1. Na maszynie używanej jako urządzenie usługi IoT Edge zainstaluj konfigurację repozytorium.
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```azurecli-interactive
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
    ```
 
-2. Zainstaluj klucz publiczny umożliwiający uzyskiwanie dostępu do repozytorium.
+   Na potrzeby kolejnych kroków pobierz publiczny adres IP zwrócony przez polecenie tworzenia. Publiczny adres IP możesz również znaleźć na stronie przeglądu swojej maszyny wirtualnej w witrynie Azure Portal. Użyj następującego polecenia, aby nawiązać połączenie z maszyną wirtualną. Zastąp ciąg **{publicIpAddress}** adresem swojej maszyny. 
 
-   ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```azurecli-interactive
+   ssh azureuser@{publicIpAddress}
    ```
 
-### <a name="install-a-container-runtime"></a>Instalowanie środowiska uruchomieniowego kontenera
-
-Środowisko uruchomieniowe usługi IoT Edge to jest zestaw kontenerów oraz logika wdrażana na urządzeniu IoT Edge w postaci pakietu kontenerów. Przygotuj urządzenie do użycia tych składników, instalując środowisko uruchomieniowe kontenera.
-
-1. Zaktualizuj element **apt-get**.
-
-   ```bash
-   sudo apt-get update
-   ```
-
-2. Zainstaluj środowisko uruchomieniowe kontenera **Moby**.
-
-   ```bash
-   sudo apt-get install moby-engine
-   ```
-
-3. Zainstaluj polecenia interfejsu wiersza polecenia dla środowiska Moby. 
-
-   ```bash
-   sudo apt-get install moby-cli
-   ```
-
-### <a name="install-and-configure-the-iot-edge-security-daemon"></a>Zainstalowanie i konfigurowanie demona zabezpieczeń usługi IoT Edge
-
-Demon zabezpieczeń jest instalowany jako usługa systemowa, aby środowisko uruchomieniowe usługi IoT Edge rozpoczynało działanie po każdym uruchomieniu urządzenia. Instalacja obejmuje również wersję elementu **hsmlib**, która umożliwia demonowi zabezpieczeń interakcję z zabezpieczeniami sprzętowymi urządzenia. 
-
-1. Pobierz i zainstaluj demona zabezpieczeń usługi IoT Edge. 
-
-   ```bash
-   sudo apt-get update
-   sudo apt-get install iotedge
-   ```
-
-2. Otwórz plik konfiguracji usługi IoT Edge. Jest to plik chroniony, więc może zajść potrzeba użycia podwyższonych uprawnień w celu uzyskania dostępu do tego pliku.
-   
-   ```bash
-   sudo nano /etc/iotedge/config.yaml
-   ```
-
-3. Dodaj parametry połączenia urządzenia usługi IoT Edge. Znajdź zmienną **device_connection_string** i zmień jej wartość na ciąg skopiowany po zarejestrowaniu urządzenia. Za pomocą tych parametrów połączenia urządzenie fizyczne jest kojarzone z tożsamością urządzenia utworzoną na platformie Azure.
-
-4. Zapisz i zamknij plik. 
-
-   `CTRL + X`, `Y`, `Enter`
-
-5. Uruchom ponownie demona zabezpieczeń usługi IoT Edge, aby zastosować wprowadzone zmiany.
+* Jeśli korzystasz z usługi IoT Edge na maszynie lokalnej lub z urządzenia z architekturą ARM32, otwórz plik konfiguracji /etc/iotedge/config.yaml i zaktualizuj zmienną **device_connection_string** za pomocą wartości skopiowanej wcześniej, a następnie uruchom ponownie demona zabezpieczeń usługi IoT Edge, aby zastosować zmiany:
 
    ```bash
    sudo systemctl restart iotedge
@@ -236,7 +179,7 @@ Zarządzając urządzeniem usługi Azure IoT Edge z chmury, wdróż moduł przes
 
 W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wypchnięcia modułu usługi IoT Edge do uruchomienia na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. W tym przypadku wypchnięty moduł tworzy dane środowiskowe, których można użyć na potrzeby samouczków.
 
-Ponownie otwórz wiersz polecenia na urządzeniu usługi IoT Edge. Upewnij się, że moduł wdrożony z chmury jest uruchomiony na urządzeniu usługi IoT Edge:
+Otwórz ponownie wiersz polecenia na urządzeniu usługi IoT Edge lub użyj połączenia SSH z interfejsu wiersza polecenia platformy Azure. Upewnij się, że moduł wdrożony z chmury jest uruchomiony na urządzeniu usługi IoT Edge:
 
    ```bash
    sudo iotedge list

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426111"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724098"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Tworzenie konta usługi Batch w witrynie Azure Portal
 
@@ -91,11 +91,11 @@ Podczas tworzenia pierwszego konta usługi Batch w trybie subskrypcji użytkowni
 
     ![Rejestrowanie dostawcy Microsoft.Batch][register_provider]
 
-1. Na stronie **Subskrypcja** wybierz pozycję **Kontrola dostępu (IAM)** > **Dodaj**.
+1. Na stronie **Subskrypcja** wybierz pozycję **Kontrola dostępu (IAM)** > **Przypisania ról** > **Dodaj przypisanie roli**.
 
     ![Kontrola dostępu do subskrypcji][subscription_access]
 
-1. Na stronie **Dodawanie uprawnień** wybierz rolę **Współautor** i wyszukaj interfejs API usługi Batch. Wyszukuj następujące ciągi, aż znajdziesz odpowiedni interfejs API:
+1. Na stronie **Dodawanie przypisania roli** wybierz rolę **Współautor** i wyszukaj interfejs API usługi Batch. Wyszukuj następujące ciągi, aż znajdziesz odpowiedni interfejs API:
     1. **MicrosoftAzureBatch**.
     1. **Microsoft Azure Batch**. W przypadku nowszych dzierżaw usługi Azure AD może być używana ta nazwa.
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** to identyfikator interfejsu API usługi Batch. 

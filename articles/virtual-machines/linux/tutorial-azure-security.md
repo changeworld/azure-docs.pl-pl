@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 562fc267a056d6908af5b89fd7a93e858f1c6165
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ba23e9b8ac79a0a2a3899332bfc373665cf561af
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092615"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841170"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
 
@@ -106,7 +106,7 @@ W miarę stosowania się do zaleceń są one oznaczane jako rozwiązane.
 
 Oprócz zaleceń dotyczących konfiguracji zasobów usługa Security Center wyświetla alerty dotyczące wykrywania zagrożeń. Funkcja alertów zabezpieczeń agreguje dane zbierane z każdej maszyny wirtualnej, dzienników sieci platformy Azure i połączonych rozwiązań partnerów w celu wykrywania zagrożeń bezpieczeństwa dotyczących zasobów platformy Azure. Aby uzyskać szczegółowe informacje na temat możliwości wykrywania zagrożeń w usłudze Security Center, zobacz [Funkcje wykrywania usługi Azure Security Center](../../security-center/security-center-detection-capabilities.md).
 
-Funkcja alertów zabezpieczeń wymaga podniesienia warstwy cenowej usługi Security Center z *Bezpłatna* do *Standardowa*. Przy przechodzeniu na tę wyższą warstwę cenową dostępny jest 60-dniowy **bezpłatny okres próbny**. 
+Funkcja alertów zabezpieczeń wymaga podniesienia warstwy cenowej usługi Security Center z *Bezpłatna* do *Standardowa*. Przy przechodzeniu na tę wyższą warstwę cenową jest dostępna **bezpłatna wersja próbna**. 
 
 Aby zmienić warstwę cenową:  
 

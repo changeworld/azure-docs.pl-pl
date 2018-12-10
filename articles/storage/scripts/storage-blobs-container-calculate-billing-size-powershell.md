@@ -1,6 +1,6 @@
 ---
-title: Skrypt programu PowerShell Azure przykładowe — Oblicz łączny rozmiar rozliczeń kontenera obiektów blob | Dokumentacja firmy Microsoft
-description: Oblicz łączny rozmiar kontenera w magazynie obiektów Blob platformy Azure na potrzeby rozliczeń.
+title: Przykładowy skrypt programu Azure PowerShell — obliczanie łącznego rozmiaru rozliczeniowego kontenera obiektów blob | Microsoft Docs
+description: Oblicz łączny rozmiar kontenera w usłudze Azure Blob Storage na potrzeby rozliczeń.
 services: storage
 documentationcenter: na
 author: fhryo-msft
@@ -15,33 +15,33 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: c37b416578a76e9b12e29d68e413d851796ccc6f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7e28b8938c8c0eb258fbb599dd5765258a4d52e4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26368548"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867379"
 ---
-# <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Oblicz łączny rozmiar rozliczeń kontenera obiektów blob
+# <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Obliczanie łącznego rozmiaru kontenera obiektów blob
 
-Ten skrypt oblicza rozmiar kontenera w magazynie obiektów Blob platformy Azure na potrzeby Szacowanie kosztów rozliczeń. Skrypt sumy rozmiar obiektów blob w kontenerze.
+Ten skrypt oblicza rozmiar kontenera w usłudze Azure Blob Storage na potrzeby szacowania kosztów rozliczeń. Skrypt sumuje rozmiar obiektów blob w kontenerze.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> Ten skrypt programu PowerShell oblicza rozmiar kontenera do celów rozliczeń. Jeśli są obliczania rozmiaru kontenera do innych celów, zobacz [Oblicz łączny rozmiar kontenera magazynu obiektów Blob](../scripts/storage-blobs-container-calculate-size-powershell.md) dla prostsze skrypt, który udostępnia szacowania.
+> Ten skrypt programu PowerShell oblicza rozmiar kontenera na potrzeby rozliczeń. Jeśli obliczasz rozmiar kontenera na inne potrzeby, zobacz [Obliczanie łącznego rozmiaru kontenera w usłudze Blob Storage](../scripts/storage-blobs-container-calculate-size-powershell.md), aby uzyskać prostszy skrypt, obliczający przybliżony rozmiar.
 
 ## <a name="determine-the-size-of-the-blob-container"></a>Określanie rozmiaru kontenera obiektów blob
 
 Całkowity rozmiar kontenera obiektów blob obejmuje rozmiar samego kontenera i rozmiar wszystkich obiektów blob w kontenerze.
 
-Następujące sekcje w tym artykule opisano obliczania pojemności dla obiekt blob kontenerów i obiektów blob. W poniższej sekcji Len(X) oznacza liczbę znaków w ciągu.
+W poniższej sekcji opisano sposób obliczania pojemności magazynu dla kontenerów obiektów blob i obiektów blob. W poniższej sekcji Len(X) oznacza liczbę znaków w ciągu.
 
-### <a name="blob-containers"></a>Kontenerów obiektów blob
+### <a name="blob-containers"></a>Kontenery obiektów blob
 
-Następujące obliczenia opisano sposób oszacować ilość miejsca w magazynie, który jest używany na kontenera obiektów blob:
+Następujące obliczenie opisuje sposób szacowania pojemności magazynu używanej przez kontener obiektów blob:
 
 `
 48 bytes + Len(ContainerName) * 2 bytes +
@@ -50,19 +50,19 @@ For-Each Signed Identifier[512 bytes]
 `
 
 Podział jest następujący:
-* 48 bajtów koszty dla każdego kontenera obejmuje czasu ostatniej modyfikacji, uprawnienia ustawienia publicznego i niektóre metadane systemu.
+* 48 bajtów narzutu dla każdego kontenera obejmuje godzinę ostatniej modyfikacji, uprawnienia, ustawienia publiczne i niektóre metadane systemu.
 
-* Nazwa kontenera jest przechowywane w formacie Unicode, więc wykonaj liczbę znaków i pomnożyć przez dwa.
+* Nazwa kontenera jest przechowywana w formacie Unicode, więc należy pomnożyć liczbę znaków przez 2.
 
-* Dla każdego bloku metadanych kontenera obiektów blob, który jest przechowywany przechowujemy długość nazwy (ASCII) oraz długość wartości ciągu.
+* Dla każdego bloku przechowywanych metadanych kontenera obiektów blob przechowujemy długość nazwy (ASCII) plus długość wartości ciągu.
 
-* 512 bajtów na identyfikator podpisane między innymi nazwą podpisanych identyfikatora czas rozpoczęcia, czas wygaśnięcia i uprawnienia.
+* 512 bajtów na każdy podpisany identyfikator obejmuje nazwę podpisanego identyfikatora, godzinę rozpoczęcia, czas wygaśnięcia i uprawnienia.
 
 ### <a name="blobs"></a>Obiekty blob
 
-Poniższe obliczenia przedstawiają sposób oszacować ilość miejsca w magazynie zużytych według obiektu blob.
+Następujące obliczenia pokazują sposób szacowania pojemności magazynu używanej przez obiekt blob.
 
-* Obiekt blob blokowy (podstawowy obiektów blob lub migawki):
+* Blokowy obiekt blob (podstawowy obiekt blob lub migawka):
 
    `
    124 bytes + Len(BlobName) * 2 bytes +
@@ -72,7 +72,7 @@ Poniższe obliczenia przedstawiają sposób oszacować ilość miejsca w magazyn
    SizeInBytes(data in uncommitted data blocks)
    `
 
-* Stronicowych obiektów blob (podstawowy obiektów blob lub migawki):
+* Stronicowy obiekt blob (podstawowy obiekt blob lub migawka):
 
    `
    124 bytes + Len(BlobName) * 2 bytes +
@@ -83,38 +83,38 @@ Poniższe obliczenia przedstawiają sposób oszacować ilość miejsca w magazyn
 
 Podział jest następujący:
 
-* 124 bajtów koszty dla obiekt blob, który zawiera:
+* 124 bajty narzutu dla obiektu blob, który obejmuje następujące elementy:
     - Godzina ostatniej modyfikacji
     - Rozmiar
     - Cache-Control
     - Content-Type
-    - Język zawartości
-    - Kodowanie zawartości
+    - Content-Language
+    - Content-Encoding
     - Content-MD5
     - Uprawnienia
-    - Informacje o migawki
-    - Dzierżawy
+    - Informacje migawki
+    - Dzierżawa
     - Niektóre metadane systemu
 
-* Nazwa obiektu blob jest przechowywane w formacie Unicode, więc wykonaj liczbę znaków i pomnożyć przez dwa.
+* Nazwa obiektu blob jest przechowywana w formacie Unicode, więc należy pomnożyć liczbę znaków przez 2.
 
-* Dla każdego bloku metadanych, które są przechowywane należy dodać długość nazwy (przechowywany w formacie ASCII), oraz długość wartości ciągu.
+* Dla każdego bloku przechowywanych metadanych przechowujemy długość nazwy (ASCII) plus długość wartości ciągu.
 
 * Dla blokowych obiektów blob:
-    * 8 bajtów zablokowanych.
-    * Liczba bloków czasu identyfikator bloku rozmiar w bajtach.
-    * Rozmiar danych we wszystkich blokach zatwierdzonej i niezatwierdzone. 
-    
-    >[!NOTE]
-    >Gdy migawki są używane, ten rozmiar zawiera tylko unikatowe dane dla tego obiektu blob podstawowej lub migawki. Niezatwierdzone bloki nie są używane po upływie tygodnia, są zbierane z pamięci. Po wykonaniu tej nie są wliczane do rozliczeń.
+    * 8 bajtów dla listy bloków.
+    * Liczba bloków razy rozmiar identyfikatora bloku w bajtach.
+    * Rozmiar danych we wszystkich zatwierdzonych i niezatwierdzonych blokach.
 
-* Stronicowych obiektów blob:
-    * Liczba zakresów niesąsiadujące strony z danymi czasu 12 bajtów. Jest to liczba zakresów unikatową stronę podczas wywoływania **GetPageRanges** interfejsu API.
-
-    * Rozmiar danych w bajtach wszystkich przechowywanych stron. 
-    
     >[!NOTE]
-    >Gdy migawki są używane, ten rozmiar zawiera tylko unikatowe strony podstawowej obiektów blob lub migawki obiektu blob, który inwentaryzacji.
+    >Gdy są używane migawki, rozmiar obejmuje tylko unikatowe dane dla tej bazy lub obiektu blob migawki. Jeśli niezatwierdzone bloki nie będą używane przez tydzień, zostaną usunięte. Nie będą wtedy uwzględniane w rozliczeniu.
+
+* Dla stronicowych obiektów blob:
+    * Liczba niesąsiadujących zakresów stron z danymi razy 12-bajtów. Jest to liczba unikatowych zakresów stron wyświetlanych podczas wywoływania interfejsu API **GetPageRanges**.
+
+    * Rozmiar danych w bajtach wszystkich przechowywanych stron.
+
+    >[!NOTE]
+    >Gdy są używane migawki, ten rozmiar uwzględnia tylko unikatowe strony dla podstawowego obiektu blob lub obiektu blob migawki, który jest liczony.
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -122,10 +122,10 @@ Podział jest następujący:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [Oblicz łączny rozmiar kontenera magazynu obiektów Blob](../scripts/storage-blobs-container-calculate-size-powershell.md) dla prostego skrypt, który zawiera oszacowanie rozmiaru kontenera.
+- Zobacz [Obliczanie łącznego rozmiaru kontenera w usłudze Blob Storage](../scripts/storage-blobs-container-calculate-size-powershell.md), aby uzyskać prostszy skrypt, obliczający przybliżony rozmiar kontenera.
 
-- Aby uzyskać więcej informacji dotyczących rozliczeń usługi Azure Storage, zobacz [opis systemu Windows Azure magazynu rozliczeń](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
+- Aby uzyskać więcej informacji na temat rozliczeń za usługę Azure Storage, zobacz [Informacje o rozliczeniach usługi Windows Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentacji programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.1).
+- Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.1).
 
-- Można znaleźć dodatkowe przykłady skryptów PowerShell magazynu w [przykłady środowiska PowerShell dla usługi Azure Storage](../blobs/storage-samples-blobs-powershell.md).
+- Więcej przykładowych skryptów programu PowerShell dla usługi Storage można znaleźć w artykule [Przykładowe skrypty programu PowerShell dla usługi Azure Storage](../blobs/storage-samples-blobs-powershell.md).

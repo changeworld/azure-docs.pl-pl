@@ -5,38 +5,87 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/26/2018
+ms.date: 11/28/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: c30f4b9de279f8c02b7f6bc7fa7d9765972899b1
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: dc37ff85deccdd5a1f8703033d300d878f9a7e4c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977435"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887988"
 ---
-# <a name="set-up-the-service-fabric-mesh-cli"></a>Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric mesh
-Interfejs wiersza polecenia usługi Service Fabric Mesh jest wymagany do wdrażania zasobów i zarządzania nimi w usłudze Service Fabric Mesh. 
+# <a name="set-up-service-fabric-mesh-cli"></a>Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric Mesh
+Interfejs wiersza polecenia usługi Service Fabric Mesh jest wymagany do wdrażania zasobów i zarządzania nimi lokalnie oraz w usłudze Azure Service Fabric Mesh. 
+
+Istnieją trzy typy interfejsów wiersza polecenia, które mogą być używane. Ich podsumowanie znajduje się w poniższej tabeli. 
+
+| Moduł interfejsu wiersza polecenia | Środowisko docelowe |  Opis | 
+|---|---|---|
+| az mesh | Azure Service Fabric Mesh | Podstawowy interfejs wiersza polecenia umożliwiający wdrażanie aplikacji i zarządzanie zasobami w ramach środowiska Azure Service Fabric Mesh. 
+| sfctl | Klastry lokalne | Interfejs wiersza polecenia usługi Service Fabric umożliwiający wdrażanie i testowanie zasobów usługi Service Fabric w ramach klastrów lokalnych.  
+| Interfejs wiersza polecenia programu Maven | Klastry lokalne i usługa Azure Service Fabric Mesh | Otoka modułów „az mesh” i „sfctl” umożliwiająca deweloperom języka Java używanie znanego środowiska wiersza polecenia do celów programistycznych — zarówno lokalnie, jak i na platformie Azure.  
 
 Na potrzeby wersji zapoznawczej interfejs wiersza polecenia usługi Azure Service Fabric mesh jest napisany jako rozszerzenie interfejsu wiersza polecenia platformy Azure. Zainstalować go można w usłudze Azure Cloud Shell lub w lokalnej instalacji wiersza polecenia platformy Azure. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-## <a name="install-the-service-fabric-mesh-cli-locally"></a>Instalowanie lokalne interfejsu wiersza polecenia usługi Service Fabric Mesh
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, musisz zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0.43 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Aby zainstalować najnowszą wersję interfejsu wiersza polecenia lub uaktualnić do niej, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+## <a name="install-the-azure-service-fabric-mesh-cli"></a>Instalowanie interfejsu wiersza polecenia usługi Azure Service Fabric Mesh
+1. Należy zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0.43 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Aby zainstalować najnowszą wersję interfejsu wiersza polecenia lub uaktualnić do niej, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
-Zainstaluj moduł rozszerzenia interfejsu wiersza polecenia usługi Azure Service Fabric mesh za pomocą następującego polecenia. 
+2. Zainstaluj moduł rozszerzenia interfejsu wiersza polecenia usługi Azure Service Fabric Mesh za pomocą poniższego polecenia. 
 
-```azurecli-interactive
-az extension add --name mesh
+    ```azurecli-interactive
+    az extension add --name mesh
+    ```
+
+3. Zaktualizuj istniejący moduł interfejsu wiersza polecenia usługi Azure Service Fabric Mesh za pomocą poniższego polecenia.
+
+    ```azurecli-interactive
+    az extension update --name mesh
+    ```
+
+## <a name="install-the-service-fabric-cli-sfctl"></a>Instalowanie interfejsu wiersza polecenia usługi Service Fabric (sfctl) 
+
+Postępuj zgodnie z instrukcjami w sekcji [Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). Modułu **sfctl** można używać do wdrażania aplikacji opartych na modelu zasobów w ramach klastrów usługi Service Fabric na maszynie lokalnej. 
+
+## <a name="install-the-maven-cli"></a>Instalowanie interfejsu wiersza polecenia programu Maven 
+
+Aby korzystać z interfejsu wiersza polecenia programu Maven, na maszynie muszą być zainstalowane następujące elementy: 
+
+* [Java](https://www.azul.com/downloads/zulu/)
+* [Maven](http://maven.apache.org/download.cgi)
+* [Usługa Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* Interfejs wiersza polecenia usługi Azure Mesh (az mesh) — pod kątem usługi Azure Service Fabric Mesh 
+* Interfejs SFCTL (sfctl) — pod kątem klastrów lokalnych 
+
+Interfejs wiersza polecenia programu Maven dla usługi Service Fabric jest nadal w wersji zapoznawczej. 
+
+Aby używać wtyczki programu Maven w aplikacji Java programu Maven, dodaj poniższy fragment kodu do pliku pom.xml:
+
+```XML
+<project>
+  ...
+  <build>
+    ...
+    <plugins>
+      ...
+      <plugin>
+        <groupId>com.microsoft.azure</groupId>
+          <artifactId>azure-sf-maven-plugin</artifactId>
+          <version>0.1.0</version>
+          <configuration>
+            ...
+          </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
 ```
 
-Aby zaktualizować istniejący moduł interfejsu wiersza polecenia usługi Azure Service Fabric Mesh, uruchom następujące polecenie.
+Zapoznaj się z sekcją zawierającą [dokumentację interfejsu wiersza polecenia programu Maven](service-fabric-mesh-reference-maven.md), aby uzyskać informacje dotyczące szczegółów użycia.
 
-```azurecli-interactive
-az extension update --name mesh
-```
 ## <a name="next-steps"></a>Następne kroki
 
 Skonfigurować możesz również [środowisko deweloperskie w systemie Windows](service-fabric-mesh-howto-setup-developer-environment-sdk.md).

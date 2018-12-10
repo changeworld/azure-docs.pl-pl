@@ -1,5 +1,5 @@
 ---
-title: Szybki start — udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i witryny Azure Portal | Microsoft Docs
+title: Samouczek — udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i witryny Azure Portal | Microsoft Docs
 description: Użyj kontroli dostępu na podstawie ról (RBAC), aby przyznać uprawnienia użytkownikowi, przypisując rolę w witrynie Azure Portal.
 services: role-based-access-control
 documentationCenter: ''
@@ -8,21 +8,27 @@ manager: mtillman
 editor: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: quickstart
+ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/11/2018
+ms.date: 11/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 74ecca671409b6e163bc0db29d66167d240b645c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8caa5c3b33ac1b483429251e0c1256636c4ece1a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092526"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634476"
 ---
-# <a name="quickstart-grant-access-for-a-user-using-rbac-and-the-azure-portal"></a>Szybki start: udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i witryny Azure Portal
+# <a name="tutorial-grant-access-for-a-user-using-rbac-and-the-azure-portal"></a>Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i witryny Azure Portal
 
-Kontrola dostępu na podstawie ról (RBAC, Role Based Access Control) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym przewodniku Szybki start udzielisz użytkownikowi praw dostępu do tworzenia maszyn wirtualnych i zarządzania nimi w grupie zasobów.
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym samouczku udzielisz użytkownikowi praw dostępu do tworzenia maszyn wirtualnych i zarządzania nimi w grupie zasobów.
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+
+> [!div class="checklist"]
+> * Udzielanie dostępu użytkownikowi w zakresie grupy zasobów
+> * Usuwanie dostępu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,7 +44,7 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
    ![Dodawanie nowej grupy zasobów](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. W polu **Nazwa grupy zasobów** wprowadź ciąg **rbac-quickstart-resource-group**.
+1. W polu **Nazwa grupy zasobów** wprowadź nazwę **rbac-resource-group**.
 
 1. Wybierz subskrypcję i lokalizację.
 
@@ -54,17 +60,19 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
 Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli.
 
-1. Na liście **grup zasobów** wybierz nową grupę zasobów **rbac-quickstart-resource-group**.
+1. Na liście **Grupy zasobów** wybierz nową grupę zasobów **rbac-resource-group**.
 
-1. Wybierz pozycję **Kontrola dostępu (Zarządzanie dostępem i tożsamościami)**, aby wyświetlić bieżącą listę przypisań ról.
+1. Wybierz pozycję **Kontrola dostępu (IAM)**.
+
+1. Wybierz kartę **Przypisania ról**, aby wyświetlić bieżącą listę przypisań ról.
 
    ![Blok Kontrola dostępu (IAM) dla grupy zasobów](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Wybierz pozycję **Dodaj**, aby otworzyć okienko **Dodaj uprawnienia**.
+1. Wybierz pozycję **Dodaj przypisanie roli**, aby otworzyć okienko Dodawanie przypisania roli.
 
-   Jeśli nie masz uprawnień do przypisywania ról, nie zobaczysz opcji **Dodaj**.
+   Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
 
-   ![Okienko dodawania uprawnień](./media/quickstart-assign-role-user-portal/add-permissions.png)
+   ![Okienko Dodawanie przypisania roli](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
 1. Z listy rozwijanej **Rola** wybierz pozycję **Współautor·maszyny·wirtualnej**.
 
@@ -72,7 +80,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
 
 1. Wybierz pozycję **Zapisz**, aby utworzyć przypisanie roli.
 
-   Po kilku chwilach użytkownik zostanie przypisany do roli Współautor maszyny wirtualnej w zakresie grupy zasobów rbac-quickstart-resource-group.
+   Po kilku chwilach użytkownik zostanie przypisany do roli Współautor maszyny wirtualnej w zakresie grupy zasobów rbac-resource-group.
 
    ![Przypisanie roli Współautor maszyny wirtualnej](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
 
@@ -92,13 +100,13 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 1. Na liście nawigacji wybierz pozycję **Grupy zasobów**.
 
-1. Wybierz pozycję **rbac-quickstart-resource-group**, aby otworzyć grupę zasobów.
+1. Wybierz pozycję **rbac-resource-group**, aby otworzyć grupę zasobów.
 
 1. Wybierz pozycję **Usuń grupę zasobów**, aby usunąć grupę zasobów.
 
    ![Usuwanie grupy zasobów](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
-1. W bloku **Czy na pewno chcesz usunąć** wpisz nazwę grupy zasobów: **rbac-quickstart-resource-group**.
+1. W bloku **Czy na pewno chcesz usunąć** wpisz nazwę grupy zasobów: **rbac-resource-group**.
 
 1. Wybierz pozycję **Usuń**, aby usunąć grupę zasobów.
 

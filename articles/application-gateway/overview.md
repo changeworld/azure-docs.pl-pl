@@ -3,25 +3,25 @@ title: Co to jest Azure Application Gateway
 description: Dowiedz się, jak za pomocą usługi Azure Application Gateway zarządzać ruchem internetowym kierowanym do aplikacji.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: 8352a95fa0701f6d2a0261d8d2fe2431971eccef
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b58237f25a51438f0255243f960cc2a6aed2b0ca
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068099"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679175"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
-Azure Application Gateway to moduł równoważenia obciążenia ruchu internetowego, który umożliwia zarządzanie ruchem kierowanym do aplikacji internetowych. 
+Azure Application Gateway to moduł równoważenia obciążenia ruchu internetowego, który umożliwia zarządzanie ruchem kierowanym do aplikacji internetowych. Tradycyjne moduły równoważenia obciążenia działają w warstwie transportu (warstwie OSI 4 — TCP i UDP) i kierują ruch na podstawie źródłowego adresu IP i portu do docelowego adresu IP i portu.
 
-Tradycyjne moduły równoważenia obciążenia działają w warstwie transportu (warstwie OSI 4 — TCP i UDP) i kierują ruch na podstawie źródłowego adresu IP i portu do docelowego adresu IP i portu. Jednak usługa Application Gateway umożliwia bardziej szczegółowe zarządzanie ruchem. Na przykład można kierować ruch na podstawie przychodzącego adresu URL. Jeśli w przychodzącym adresie URL jest element `/images`, można kierować ruch do określonego zestawu serwerów (nazywanego pulą) skonfigurowanego na potrzeby obrazów. Jeśli w adresie URL jest element `/video`, ruch jest kierowany do innej puli zoptymalizowanej pod kątem wideo.
+![Koncepcja modułu Application Gateway](media/overview/figure1-720.png)
+
+Jednak usługa Application Gateway umożliwia bardziej szczegółowe zarządzanie ruchem. Na przykład można kierować ruch na podstawie przychodzącego adresu URL. Jeśli w przychodzącym adresie URL jest element `/images`, można kierować ruch do określonego zestawu serwerów (nazywanego pulą) skonfigurowanego na potrzeby obrazów. Jeśli w adresie URL jest element `/video`, ruch jest kierowany do innej puli zoptymalizowanej pod kątem wideo.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
@@ -45,6 +45,10 @@ Oprócz funkcji opisanych w tym artykule usługa Application Gateway oferuje ró
 
 Aby uzyskać więcej informacji na temat funkcji usługi Application Gateway w publicznej wersji zapoznawczej, zobacz [Autoskalowana i strefowo nadmiarowa usługa Application Gateway (publiczna wersja zapoznawcza)](application-gateway-autoscaling-zone-redundant.md).
 
+## <a name="secure-sockets-layer-ssl-termination"></a>Kończenie żądań protokołu Secure Sockets Layer (SSL)
+
+Usługa Application Gateway obsługuje przerywanie połączenia SSL na bramie, po którym ruch na ogół płynie niezaszyfrowany do serwerów zaplecza. Ta funkcja umożliwia odciążenie serwerów sieci Web z nadmiaru kosztownych operacji szyfrowania i odszyfrowywania. Jednak czasami nieszyfrowana komunikacja z serwerami jest opcją niemożliwą do zaakceptowania. Może to być spowodowane wymaganiami dotyczącymi zabezpieczeń lub zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji usługa Application Gateway obsługuje kompleksowe szyfrowanie SSL.
+
 ## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Kontroler ruchu przychodzącego w usłudze Azure Kubernetes Service (AKS) — wersja zapoznawcza 
 
 Kontroler ruchu przychodzącego w usłudze Application Gateway jest uruchamiany jako zasobnik w ramach klastra usługi AKS i umożliwia usłudze Application Gateway obsługę ruchu przychodzącego do klastra usługi AKS. 
@@ -59,10 +63,6 @@ Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli za
 Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
 
 Aby uzyskać więcej informacji, zobacz [Create Application Gateway custom error pages (Tworzenie niestandardowych stron błędów w usłudze Application Gateway)](custom-error.md).
-
-## <a name="secure-sockets-layer-ssl-termination"></a>Kończenie żądań protokołu Secure Sockets Layer (SSL)
-
-Usługa Application Gateway obsługuje przerywanie połączenia SSL na bramie, po którym ruch na ogół płynie niezaszyfrowany do serwerów zaplecza. Ta funkcja umożliwia odciążenie serwerów sieci Web z nadmiaru kosztownych operacji szyfrowania i odszyfrowywania. Jednak czasami nieszyfrowana komunikacja z serwerami jest opcją niemożliwą do zaakceptowania. Może to być spowodowane wymaganiami dotyczącymi zabezpieczeń lub zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji brama aplikacji obsługuje kompleksowe szyfrowanie SSL.
 
 ## <a name="web-application-firewall"></a>Zapora aplikacji internetowej
 
@@ -96,22 +96,15 @@ Obsługa przekierowania dla usługi Application Gateway oferuje następujące mo
 - Przekierowanie na podstawie ścieżki. Ten typ przekierowania umożliwia przekierowanie protokołu HTTP do HTTPS tylko w określonym obszarze witryny, na przykład obszarze koszyka określonym przez element `/cart/*`.
 - Przekierowanie do zewnętrznej witryny.
 
-
-
 ## <a name="session-affinity"></a>Koligacja sesji
 
 Funkcja koligacji sesji na podstawie plików cookie jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym serwerze. Używając plików cookie zarządzanych przez bramę, usługa Application Gateway może kierować dalszy ruch z sesji użytkownika na ten sam serwer w celu przetwarzania. Jest to ważne w przypadkach, w których stan sesji jest zapisywany lokalnie na serwerze dla sesji użytkownika.
 
-
-
-
 ## <a name="websocket-and-http2-traffic"></a>Ruch protokołów WebSocket i HTTP/2
 
 Usługa Application Gateway zapewnia natywną obsługę protokołów WebSocket i HTTP/2. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. Obsługę protokołu HTTP/2 można włączyć przy użyciu programu Azure PowerShell.
- 
+
 Protokoły WebSocket i HTTP/2 umożliwiają pełnodupleksową komunikację między serwerem i klientem przez długotrwałe połączenie TCP. Pozwala to na bardziej interaktywną komunikację między serwerem internetowym a klientem, która może być dwukierunkowa bez konieczności sondowania, co jest wymagane w implementacjach opartych na protokole HTTP. Te protokoły mają niskie obciążenie, w odróżnieniu od protokołu HTTP, i mogą ponownie używać tego samego połączenia TCP dla wielu żądań/odpowiedzi, co zapewnia bardziej efektywne wykorzystanie zasobów. Te protokoły są przeznaczone do pracy z użyciem tradycyjnych portów HTTP, tj. 80 i 443.
-
-
 
 ## <a name="next-steps"></a>Następne kroki
 

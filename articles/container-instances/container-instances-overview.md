@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 10/02/2018
+ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 33d6d89e91ecdec00c1b17ecddf91128e9d07526
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: b5f97dac202edd5405c51b75581275166042ac38
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802104"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841459"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -38,6 +38,8 @@ W przeszłości kontenery oferowały zarządzanie zasobami i izolację zależno�
 
 Kontenery są przeważnie optymalizowane do uruchamiania tylko jednej aplikacji, ale szczegółowe potrzeby poszczególnych aplikacji mogą się bardzo różnić. Usługa Azure Container Instances zapewnia optymalne wykorzystanie, zezwalając na korzystanie z dokładnych specyfikacji rdzeni procesora i pamięci. Opłaty są naliczane zgodnie z zapotrzebowaniem i za sekundę, dlatego można skutecznie dostosować wydatki w oparciu o potrzeby.
 
+W przypadku zadań wykorzystujących znaczną moc obliczeniową, takich jak uczenie maszynowe, usługa Azure Container Instances może zaplanować używanie [zasobów procesorów GPU](container-instances-gpu.md) NVIDIA Tesla (wersja zapoznawcza) przez kontenery systemu Linux.
+
 ## <a name="persistent-storage"></a>Magazyn trwały
 
 Aby umożliwić pobieranie i utrwalanie stanu przy użyciu usługi Azure Container Instances, firma Microsoft oferuje bezpośrednie [instalowanie udziałów usługi Azure Files](container-instances-mounting-azure-files-volume.md).
@@ -59,7 +61,7 @@ Usługa Azure Container Instances obsługuje planowanie [grup wielu kontenerów]
 Ta funkcja usługi Azure Container Instances (obecnie dostępna w wersji zapoznawczej) umożliwia [wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure](container-instances-vnet.md). Wdrożenie wystąpień kontenerów w podsieci w sieci wirtualnej umożliwia bezpieczną komunikację z innymi zasobami w sieci wirtualnej, w tym z zasobami lokalnymi (przy użyciu [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) lub [usługi ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 > [!IMPORTANT]
-> Wdrażanie grup kontenerów w sieci wirtualnej jest obecnie dostępne w wersji zapoznawczej i [obowiązują pewne ograniczenia](container-instances-vnet.md#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Niektóre funkcje usługi Azure Container Instances są w wersji zapoznawczej i [obowiązują pewne ograniczenia](container-instances-vnet.md#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy tych funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 ## <a name="next-steps"></a>Następne kroki
 

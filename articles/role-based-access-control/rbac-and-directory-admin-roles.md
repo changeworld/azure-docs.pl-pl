@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 5e32968ae83ef826fbc8e81f1b04eca687642343
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 9fce35f811a4d2440ba73e4f305ede6891928069
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637672"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633286"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD
 
@@ -77,13 +77,13 @@ Pozostałe role wbudowane umożliwiają zarządzanie określonymi zasobami platf
 
 Tylko witryna Azure Portal i interfejsy API usługi Azure Resource Manager obsługują kontrolę RBAC. Użytkownicy, grupy i aplikacje, którym zostały przypisane role RBAC, nie mogą używać [interfejsów API klasycznego modelu wdrażania platformy Azure](../azure-resource-manager/resource-manager-deployment-model.md).
 
-W witrynie Azure Portal przypisania ról dokonane przy użyciu kontroli dostępu opartej na rolach pojawiają się w bloku **Zarządzanie dostępem i tożsamościami (IAM)**. Ten blok można znaleźć w dowolnym miejscu witryny Portal, np. dotyczącym subskrypcji, grup zasobów i różnych zasobów.
+W witrynie Azure Portal przypisania ról dokonane przy użyciu kontroli dostępu opartej na rolach pojawiają się w bloku **Zarządzanie dostępem i tożsamościami (IAM)**. Ten blok można znaleźć w różnych miejscach witryny Portal, na przykład dotyczących grup zarządzania, subskrypcji, grup zasobów i różnych zasobów.
 
-![Blok zarządzania dostępem i tożsamościami (IAM) w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/access-control.png)
+![Blok zarządzania dostępem i tożsamościami (IAM) w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
 Po kliknięciu pozycji **Role** zostanie wyświetlona lista wbudowanych i niestandardowych ról.
 
-![Wbudowane role w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/built-in-roles.png)
+![Wbudowane role w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/roles-list.png)
 
 ## <a name="azure-ad-administrator-roles"></a>Role administratora usługi Azure AD
 

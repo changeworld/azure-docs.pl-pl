@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: e0261f96b1b097cba753ec905bc590a35e9a2c24
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f00de9095e45901f92fcf3004a5f51cfdd709da2
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623608"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724778"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem klucza dostępu przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux
 
@@ -65,7 +65,7 @@ Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Az
 
 1. Przejdź z powrotem do nowo utworzonego konta magazynu.
 2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  
-3. Kliknij przycisk **+ Dodaj** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej.
+3. Kliknij przycisk **+ Dodaj przypisanie roli** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej
 4. Ustaw opcję **Rola** na „Rola usługi operatora kluczy konta magazynu” w prawej części strony. 
 5. Na kolejnej liście rozwijanej ustaw opcję **Przypisz dostęp do** na zasób „Maszyna wirtualna”.  
 6. Następnie upewnij się, że odpowiednia subskrypcja znajduje się na liście rozwijanej **Subskrypcja**, po czym ustaw opcję **Grupa zasobów** na wartość „Wszystkie grupy zasobów”.  

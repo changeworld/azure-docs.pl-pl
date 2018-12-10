@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ee2def6287a845cd0fd0260254efb20f9638ab2c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467433"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839045"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Samouczek: konfigurowanie laboratorium przy użyciu usługi Azure DevTest Labs
 W tym samouczku utworzysz laboratorium za pomocą witryny Azure Portal. Administrator laboratorium konfiguruje laboratorium w organizacji, tworzy maszyny wirtualne w laboratorium i konfiguruje zasady. Użytkownicy laboratorium (na przykład deweloper i testerzy) przejmują maszyny wirtualne w laboratorium, nawiązują połączenie z nimi i korzystają z nich. 
@@ -80,15 +80,11 @@ Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest L
 1. Z menu po lewej stronie wybierz pozycję **Konfiguracja i zasady**. 
 
     ![Konfiguracja i zasady](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. Z menu wybierz pozycję **Kontrola dostępu (IAM)**, a następnie wybierz pozycję **+ Dodaj** na pasku narzędzi. 
-
-    ![Kontrola dostępu — przycisk dodawania użytkownika](./media/tutorial-create-custom-lab/access-control-add.png)
+1. Z menu wybierz pozycję **Kontrola dostępu (Zarządzanie dostępem i tożsamościami)**, a następnie wybierz pozycję **+ Dodaj przypisanie roli** na pasku narzędzi. 
 1. Na stronie **Dodawanie uprawnień** wykonaj następujące czynności:
     1. W obszarze **Rola** wybierz pozycję **Użytkownik usługi DevTest Labs**. 
     2. Wybierz **użytkownika**, którego chcesz dodać. 
     3. Wybierz pozycję **Zapisz**.
-
-        ![Dodawanie uprawnień](./media/tutorial-create-custom-lab/add-lab-user.png)
 4. Aby zamknąć okno **Konfiguracja i zasady — Kontrola dostępu (IAM)**, wybierz pozycję **X** w prawym rogu. 
 
 ## <a name="cleanup-resources"></a>Oczyszczanie zasobów

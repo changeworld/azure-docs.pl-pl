@@ -1,9 +1,8 @@
 ---
-title: Połączenie aplikacji MongoDB z usługą Azure Cosmos DB za pomocą środowiska Node.js | Microsoft Docs
+title: Łączenie aplikacji MongoDB z usługą Azure Cosmos DB za pomocą środowiska Node.js
 description: Dowiedz się, jako połączyć istniejącą aplikację MongoDB w języku Node.js z usługą Azure Cosmos DB
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc, devcenter
@@ -11,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: sngun
-ms.openlocfilehash: 00824dc7a4fa7589fd01568b82351a68e1d44faa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6844fc2450154b7e71c74ad9728929c3dc9df2f9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983569"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844485"
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: migracja istniejącej aplikacji internetowej MongoDB w środowisku Node.js 
 

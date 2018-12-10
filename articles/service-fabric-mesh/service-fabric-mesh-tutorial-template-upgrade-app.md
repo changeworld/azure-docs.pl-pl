@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c82e0cd5bd6a15ff33f51b4e88f68c13080f595d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f617be79cb61932f79728feef76f056ce72ae0ab
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967969"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891133"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Samouczek: uaktualnianie aplikacji usługi Service Fabric uruchomionej w usłudze Service Fabric Mesh
 
-Ten samouczek jest trzecią częścią serii. Dowiesz się, jak uaktualnić aplikację usługi Service Fabric, która została [wcześniej wdrożona do usługi Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md), zwiększając przydzielone zasoby procesora.  Po zakończeniu będziesz mieć usługę frontonu internetowego z większą liczbą zasobów procesora.
+Ten samouczek jest trzecią częścią serii. Dowiesz się, jak uaktualnić aplikację usługi Service Fabric, która została [wcześniej wdrożona do usługi Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md), zwiększając przydzielone zasoby procesora.  Po zakończeniu usługa frontonu internetowego będzie działać i mieć dostęp do większych zasobów procesora.
 
 Część trzecia serii zawiera informacje na temat wykonywania następujących czynności:
 
@@ -47,7 +47,7 @@ Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Otwórz usługę [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) lub [zainstaluj lokalnie interfejs wiersza polecenia platformy Azure oraz interfejs wiersza polecenia usługi Service Fabric Mesh](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally).
+* Otwórz usługę [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) lub [zainstaluj lokalnie interfejs wiersza polecenia platformy Azure oraz interfejs wiersza polecenia usługi Service Fabric Mesh](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="upgrade-application-configurations"></a>Uaktualnianie konfiguracji aplikacji
 
@@ -59,7 +59,7 @@ W tym samouczku jako przykładu użyto listy zadań do wykonania, którą [wcze�
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-W szablonie wdrażania dla zasobu aplikacji każda usługa ma właściwość *cpu*, która może służyć do ustawiania żądanych zasobów procesora. Aplikacja może składać się z wielu usług, z których każda ma unikatowe ustawienie *cpu* oraz które są razem wdrażane i zarządzane. Aby zwiększyć liczbę zasobów procesora usługi frontonu internetowego, zmodyfikuj wartość *cpue* w szablonie wdrożenia lub pliku parametrów.  Następnie uaktualnij aplikację.
+W szablonie wdrażania dla zasobu aplikacji każda usługa ma właściwość *cpu*, która może służyć do ustawiania żądanych zasobów procesora. Aplikacja może składać się z wielu usług, z których każda ma unikatowe ustawienie *cpu* oraz które są razem wdrażane i zarządzane. Aby zwiększyć ilość zasobów procesora usługi frontonu internetowego, zmodyfikuj wartość *cpue* w szablonie wdrożenia lub pliku parametrów.  Następnie uaktualnij aplikację.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Modyfikowanie parametrów szablonu wdrożenia
 

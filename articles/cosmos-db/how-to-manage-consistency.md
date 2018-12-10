@@ -7,20 +7,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 68c8c3767ff3a3d2873c1ff50928ab8d2cada4b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 9d8c1296fc811d97dc9e7e66ad9bd9fdc79d66f9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263755"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634340"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
 
-W tym artykule opisano różne sposoby ustawiania spójności domyślnej, zastępowania tej spójności na urządzeniu klienckim, ręcznego zarządzania tokenami sesji i interpretowania metryki PBS (Probabilistically Bounded Staleness).
+W tym artykule wyjaśniono, jak zarządzać poziomami spójności w usłudze Azure Cosmos DB. Dowiesz się, jak skonfigurować domyślny poziom spójności, zastąpić spójność domyślną, ręcznie zarządzać tokenami sesji oraz jak rozumieć metrykę PBS (Probabilistically Bounded Staleness).
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurowanie domyślnego poziomu spójności
 
-Domyślny poziom spójności to taki, którego klienci będą używać domyślnie. Może on być zastępowany przez klientów.
+Domyślny poziom spójności to taki, którego klienci używają domyślnie. Klienci mogą go zastąpić.
 
 ### <a name="cli"></a>Interfejs wiersza polecenia
 
@@ -34,7 +34,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-Poniższy przykład tworzy nowe konto usługi Cosmos DB z obsługą wielowzorcowości w regionach Wschodnie stany USA i Zachodnie stany USA, ustawiając domyślne zasady spójności na wartość Sesja.
+W tym przykładzie jest tworzone nowe konto usługi Azure Cosmos DB z obsługą wielowzorcowości w regionach Wschodnie stany USA i Zachodnie stany USA. Domyślne zasady spójności są ustawiane jako Sesja.
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -60,13 +60,13 @@ New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="portal"></a>Portal
 
-Aby wyświetlić lub zmodyfikować domyślny poziom spójności, zaloguj się do witryny Azure Portal. Znajdź swoje konto usługi Cosmos DB i otwórz okienko **Domyślna spójność**. W tym okienku wybierz nowy domyślny poziom spójności, a następnie kliknij przycisk Zapisz.
+Aby wyświetlić lub zmodyfikować domyślny poziom spójności, zaloguj się do witryny Azure Portal. Znajdź swoje konto usługi Azure Cosmos DB i otwórz okienko **Domyślna spójność**. Wybierz odpowiedni poziom spójności jako nowe ustawienie domyślne, a następnie wybierz pozycję **Zapisz**.
 
-![Obraz menu spójności w witrynie Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
+![Menu spójności w witrynie Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Zastępowanie domyślnego poziomu spójności
 
-Klienci mogą zastąpić domyślny poziom spójności, który jest ustawiony przez usługę. Można to zrobić dla całego klienta lub dla poszczególnych żądań.
+Klienci mogą zastąpić domyślny poziom spójności, który jest ustawiony przez usługę. Tę opcję można ustawić dla całego klienta lub dla poszczególnych żądań.
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -131,7 +131,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ## <a name="utilize-session-tokens"></a>Korzystanie z tokenów sesji
 
-Jeśli chcesz ręcznie zarządzać tokenami sesji, możesz uzyskiwać je z odpowiedzi i ustawiać je dla poszczególnych żądań. Jeśli nie istnieje potrzeba ręcznego zarządzania tokenami sesji, nie musisz używać poniższych przykładów. Jeśli nie ustawisz tokenu sesji samodzielnie, zestaw SDK będzie automatycznie śledzić tokeny sesji i używać najnowszego.
+Aby ręcznie zarządzać tokenami sesji, pobieraj token sesji z odpowiedzi i ustawiaj go dla poszczególnych żądań. Jeśli nie chcesz ręcznie zarządzać tokenami sesji, nie musisz korzystać z tych przykładów. Zestaw SDK automatycznie śledzi tokeny sesji. Jeśli nie ustawisz tokenu sesji ręcznie, zestaw SDK domyślnie użyje najnowszego tokenu sesji.
 
 ### <a id="utilize-session-tokens-dotnet"></a>.NET SDK
 
@@ -208,15 +208,15 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorowanie metryki PBS (Probabilistically Bounded Staleness)
 
-Aby wyświetlić metrykę PBS, przejdź do swojego konta usługi Cosmos DB w witrynie Azure Portal, a następnie otwórz okienko **Metryki**. W tym okienku kliknij kartę **Spójność** i spójrz na wykres o nazwie „**Probability of strongly consistent reads based on your workload (see PBS)**” (Prawdopodobieństwo silnie spójnych odczytów na podstawie obciążenia (patrz PBS)).
+Aby wyświetlić metrykę PBS, przejdź do swojego konta usługi Azure Cosmos DB w witrynie Azure Portal. Otwórz okienko **Metryki** i wybierz kartę **Spójność**. Spójrz na wykres o nazwie **Probability of strongly consistent reads based on your workload (see PBS)** (Prawdopodobieństwo silnie spójnych odczytów na podstawie obciążenia (zobacz PBS)).
 
-![Obraz wykresu metryki PBS w witrynie Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
+![Wykres PBS w witrynie Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
-Aby wyświetlić tę metrykę, użyj menu metryki usługi Cosmos DB. Nie będzie ona widoczna w środowisku metryk monitorowania platformy Azure.
+Aby wyświetlić tę metrykę, użyj menu metryk usługi Azure Cosmos DB. Nie jest ona widoczna w środowisku metryk monitorowania platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Korzystając z poniższych dokumentów, możesz dowiedzieć się więcej o zarządzaniu konfliktami danych lub przejść do następnego kluczowego pojęcia w usłudze Cosmos DB:
+Dowiedz się więcej o zarządzaniu konfliktami danych lub przejdź do następnej kluczowej koncepcji w usłudze Azure Cosmos DB. Zobacz następujące artykuły:
 
-* [Jak zarządzać konfliktami między regionami](how-to-manage-conflicts.md)
+* [Zarządzanie konfliktami między regionami](how-to-manage-conflicts.md)
 * [Partycjonowanie i dystrybucja danych](partition-data.md)

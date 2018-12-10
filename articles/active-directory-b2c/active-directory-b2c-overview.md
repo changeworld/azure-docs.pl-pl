@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fdb856f92bf790df0065cfc74ce5896f1d10c47b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954110"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724030"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co to jest usługa Azure Active Directory B2C?
 
@@ -60,9 +60,9 @@ Usługa Azure AD B2C wchodzi w interakcję z dostawcami tożsamości, klientami 
 
 Usługa Azure AD B2C chroni aplikacje przed atakami typu „odmowa usługi” i próbami złamania hasła. Usługa Azure AD B2C używa technik wykrywania i łagodzenia skutków ataków typu „odmowa usługi”, takich jak pliki cookie SYN oraz limity szybkości i połączenia. Techniki łagodzenia są również stosowane w przypadku ataków siłowych i słownikowych ukierunkowanych na złamanie hasła.
 
-#### <a name="built-in-policies"></a>Wbudowane zasady
+#### <a name="user-flows"></a>Przepływy użytkowników
 
-Każde żądanie wysłane do usługi Azure AD B2C określa zasady. Zasady sterują interakcjami aplikacji z usługą Azure AD B2C. Wbudowane zasady są wstępnie zdefiniowane w przypadku większości typowych zadań związanych z tożsamością, takich jak rejestrowanie, logowanie i edytowanie profilu.  Na przykład zasada rejestracji pozwala na kontrolowanie zachowania dzięki skonfigurowaniu następujących ustawień:
+Każde żądanie wysyłane do usługi Azure AD B2C określa przepływ użytkownika, czyli zasady sterujące sposobem interakcji aplikacji z usługą Azure AD B2C. W portalu usługi Azure AD B2C są dostępne wstępnie zdefiniowane przepływy użytkowników dla większości typowych zadań związanych z tożsamością, takich jak rejestrowanie, logowanie i edytowanie profilu.  Na przykład przepływ użytkownika rejestracji pozwala na kontrolowanie zachowania dzięki skonfigurowaniu następujących ustawień:
 
 - Konta społecznościowe, których klient używa do zarejestrowania się w aplikacji
 - Dane zbierane od klientów, takie jak imię i nazwisko lub kod pocztowy

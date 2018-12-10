@@ -1,9 +1,8 @@
 ---
-title: 'Azure Cosmos DB: Tworzenie aplikacji internetowej za pomocą programu .NET i interfejsu API usługi MongoDB | Microsoft Docs'
+title: 'Azure Cosmos DB: tworzenie aplikacji internetowej za pomocą programu .NET i interfejsu API usługi MongoDB'
 description: Przykładowy kod programu .NET, którego można używać do nawiązywania połączeń z interfejsem API MongoDB usługi Azure Cosmos DB i wykonywania względem niego zapytań
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc
@@ -11,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: sclyon
-ms.openlocfilehash: 7ab02cf2cc9a25a5c4c7aa6d782d37d932dc8369
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a0255257ca4f9ebfd0ae230a872be34c4dbec02a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701955"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846712"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji internetowej interfejsu API usługi MongoDB za pomocą programu .NET i witryny Azure Portal
 

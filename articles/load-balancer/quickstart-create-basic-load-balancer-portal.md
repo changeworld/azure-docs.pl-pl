@@ -14,189 +14,265 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.date: 11/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 523f5eba632b15eaaf45f24be820f7b255aae7c0
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 2e4e4e7cb1ae49a856bbfed0716936b7b5b13d19
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616031"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635105"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: tworzenie publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
 
-Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między wiele maszyn wirtualnych. Za pomocą witryny Azure Portal można utworzyć moduł równoważenia obciążenia, który będzie równoważyć obciążenie maszyn wirtualnych. W tym przewodniku Szybki start pokazano, jak utworzyć zasoby sieciowe, serwery zaplecza oraz moduł równoważenia obciążenia w warstwie cenowej Podstawowa.
+Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między maszyny wirtualne. Za pomocą witryny Azure Portal można utworzyć moduł równoważenia obciążenia i równoważyć obciążenie wśród maszyn wirtualnych. W tym przewodniku Szybki start pokazano, jak utworzyć i skonfigurować moduł równoważenia obciążenia, serwery zaplecza i zasoby sieciowe w warstwie cenowej Podstawowa.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
-
-W przypadku wszystkich zadań z tego przewodnika Szybki start musisz zalogować się do witryny [Azure Portal](http://portal.azure.com).
+Aby wykonać zadania z tego przewodnika Szybki start, zaloguj się do witryny [Azure Portal](http://portal.azure.com).
 
 ## <a name="create-a-basic-load-balancer"></a>Tworzenie podstawowego modułu równoważenia obciążenia
 
-W tej sekcji utworzysz publiczny podstawowy moduł równoważenia obciążenia przy użyciu portalu. Publiczny adres IP jest automatycznie konfigurowany jako fronton modułu równoważenia obciążenia w przypadku tworzenia zasobu publicznego adresu IP i modułu równoważenia obciążenia za pomocą portalu. Nazwa frontonu to **myLoadBalancer**.
+Najpierw utwórz publiczny podstawowy moduł równoważenia obciążenia przy użyciu portalu. Utworzona przez Ciebie nazwa i publiczny adres IP są automatycznie konfigurowane jako fronton modułu równoważenia obciążenia.
 
 1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
-2. W okienku **Tworzenie modułu równoważenia obciążenia** wprowadź następujące wartości:
-   - **myLoadBalancer** — jako nazwę modułu równoważenia obciążenia
-   - **Public** — jako typ modułu równoważenia obciążenia 
-   - **myPublicIP** — jako publiczny adres IP do utworzenia z jednostką **SKU** ustawioną na **Podstawowa** i pozycją **Przypisanie** ustawioną na **Dynamiczne**
-   - **myResourceGroupLB** — jako nazwę nowej grupy zasobów
-3. Wybierz pozycję **Utwórz**.
+   
+1. W okienku **Tworzenie modułu równoważenia obciążenia** wpisz lub wybierz następujące wartości:
+   
+   - **Nazwa**: wpisz *MyLoadBalancer*.
+   - **Typ**: wybierz opcję **Publiczny**. 
+   - **Jednostka SKU**: wybierz pozycję **Podstawowa**.
+   - **Publiczny adres IP**: wybierz pozycję **Utwórz nowy**. 
+     - Pole **Publiczny adres IP**: wpisz *MyPublicIP*.
+     - **Skonfiguruj publiczny adres IP** > **Przypisanie**: wybierz pozycję **Dynamiczne**.
+   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wprowadź nazwę *MyResourceGroupLB* i wybierz przycisk **OK**. 
+   
+1. Wybierz pozycję **Utwórz**.
    
 ![Tworzenie modułu równoważenia obciążenia](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
-
 ## <a name="create-back-end-servers"></a>Tworzenie serwerów zaplecza
 
-W tej sekcji utworzysz sieć wirtualną, a następnie utworzysz dwie maszyny wirtualne w puli zaplecza podstawowego modułu równoważenia obciążenia. Następnie zainstalujesz usługi Internet Information Services (IIS) na maszynach wirtualnych, aby ułatwić testowanie modułu równoważenia obciążenia.
+Następnie utwórz sieć wirtualną i dwie maszyny wirtualne w puli zaplecza podstawowego modułu równoważenia obciążenia. 
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
-1. W lewej górnej części portalu wybierz pozycję **Nowy** > **Sieć** > **Sieć wirtualna**.
-2. W okienku **Tworzenie sieci wirtualnej** wprowadź poniższe wartości, a następnie wybierz pozycję **Utwórz**:
-   - **myVnet** — jako nazwę sieci wirtualnej
-   - **myResourceGroupLB** — jako nazwę istniejącej grupy zasobów
-   - **myBackendSubnet** — jako nazwę podsieci
+
+1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
+   
+1. W okienku **Tworzenie sieci wirtualnej** wpisz lub wybierz następujące wartości:
+   
+   - **Nazwa**: wpisz *MyVnet*.
+   - **Grupa zasobów**: lista rozwijana **Wybierz istniejącą**, wybierz pozycję **MyResourceGroupLB**. 
+   - **Podsieć** > **Nazwa**: wpisz *MyBackendSubnet*.
+   
+1. Wybierz pozycję **Utwórz**.
 
    ![Tworzenie sieci wirtualnej](./media/load-balancer-get-started-internet-portal/2-load-balancer-virtual-network.png)
 
 ### <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
-1. W lewej górnej części portalu wybierz pozycje **Nowy** > **Compute** > **Windows Server 2016 Datacenter**. 
-2. Wprowadź poniższe wartości dla maszyny wirtualnej, a następnie wybierz przycisk **OK**:
-   - **myVM1** — jako nazwę maszyny wirtualnej.        
-   - **azureuser** — jako nazwę użytkownika administratora.    
-   - **myResourceGroupLB** — jako grupę zasobów. (W obszarze **Grupa zasobów** wybierz opcję **Użyj istniejącej**, a następnie wybierz wartość **myResourceGroupLB**).   
-3. Wybierz **DS1_V2** jako rozmiar maszyny wirtualnej, a następnie kliknij pozycję **Wybierz**.
-4. Wprowadź następujące wartości ustawień maszyny wirtualnej:
-   - **myAvailabilitySet** — jako nazwę nowego zestawu dostępności, który tworzysz.
-   - **myVnet** — jako nazwę sieci wirtualnej. (Upewnij się, że wybrano tę opcję).
-   - **myBackendSubnet** — jako nazwę podsieci. (Upewnij się, że wybrano tę opcję).
-   - **myVM1-ip** — jako publiczny adres IP.
-   - **myNetworkSecurityGroup** — jako nazwę nowej sieciowej grupy zabezpieczeń (zapory), którą musisz utworzyć.
-5. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
-6. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie wybierz pozycję **Utwórz**.
-7. Wykonując kroki 1–6, utwórz drugą maszynę wirtualną o nazwie **VM2** z następującymi ustawieniami:
-   - **myAvailabilityset** jako zestawem dostępności.
-   - **myVnet** jako siecią wirtualną.
-   - **myBackendSubnet** jako podsiecią.
-   - **myNetworkSecurityGroup** jako sieciową grupą zabezpieczeń. 
-
-### <a name="create-nsg-rules"></a>Tworzenie reguł sieciowej grupy zabezpieczeń
-
-W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na połączenia przychodzące używające protokołów HTTP i RDP.
-
-1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Na liście zasobów wybierz pozycję **myNetworkSecurityGroup** w grupie zasobów **myResourceGroupLB**.
-2. W obszarze **Ustawienia** wybierz pozycję **Reguły zabezpieczeń dla ruchu przychodzącego**, a następnie wybierz pozycję **Dodaj**.
-3. Wprowadź następujące wartości dla reguły zabezpieczeń dla ruchu przychodzącego o nazwie **myHTTPRule**, aby umożliwić obsługę przychodzących połączeń protokołu HTTP używających portu 80. Następnie wybierz przycisk **OK**.
-   - **Tag usługi** — w polu **Źródło**
-   - **Internet** — w polu **Tag usługi źródłowej**
-   - **80** — w polu **Docelowe zakresy portów**
-   - **TCP** — w polu **Protokół**
-   - **Zezwalaj** — w polu **Akcja**
-   - **100** — w polu **Priorytet**
-   - **myHTTPRule** — w polu **Nazwa**
-   - **Zezwalaj na HTTP** — w polu **Opis**
- 
-   ![Tworzenie reguły sieciowej grupy zabezpieczeń](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
-4. Powtórz kroki od 2 do 3, aby utworzyć inną regułę o nazwie **myRDPRule** zezwalającą na przychodzące połączenia protokołu RDP za pośrednictwem portu 3389. Wprowadź następujące wartości:
-   - **Tag usługi** — w polu **Źródło**
-   - **Internet** — w polu **Tag usługi źródłowej**
-   - **3389** — w polu **Docelowe zakresy portów**
-   - **TCP** — w polu **Protokół**
-   - **Zezwalaj** — w polu **Akcja**
-   - **200** — w polu **Priorytet**
-   - **myRDPRule** — w polu **Nazwa**
-   - **Zezwalaj na RDP** — w polu **Opis**
-
+1. W lewej górnej części portalu wybierz pozycję **Utwórz zasób** > **Compute** > **Windows Server 2016 Datacenter**. 
    
+1. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
+   - **Subskrypcja** > **Grupa zasobów**: rozwiń listę i wybierz pozycję **MyResourceGroupLB**.
+   - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej**: wpisz *MyVM1*.
+   - **Szczegóły wystąpienia** > **Opcje dostępności**: 
+     1. rozwiń listę i wybierz pozycję **Zestaw dostępności**. 
+     2. Wybierz pozycję **Utwórz nowy**, wpisz *MyAvailabilitySet* i wybierz przycisk **OK**.
+   - **Konto administratora** > **Nazwa użytkownika**: wpisz *azureuser*.
+   - **Konto administratora** > **Hasło**: wpisz *Azure1234567*. 
+     Wpisz ponownie hasło w polu **Potwierdź hasło**.
+   
+1. Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**. 
+   
+   Upewnij się, że zostały wybrane następujące opcje:
+   - **Sieć wirtualna**: **MyVnet**
+   - **Podsieć**: **MyBackendSubnet**
+   - **Publiczny adres IP**: **MyVM1-ip**
+   
+   Aby utworzyć nową sieciową grupę zabezpieczeń (NSG, network security group), czyli pewien typ zapory, w obszarze **Sieciowa grupa zabezpieczeń** wybierz pozycję **Zaawansowane**. 
+   1. W polu **Konfigurowanie sieciowej grupy zabezpieczeń** wybierz pozycję **Utwórz nową**. 
+   1. Wpisz *MyNetworkSecurityGroup* i wybierz przycisk **OK**. 
+   
+1. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej** > **Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
+   
+1. Wybierz pozycję **Przegląd + utwórz**.
+   
+1. Przejrzyj ustawienia, a następnie wybierz pozycję **Utwórz**. 
 
-### <a name="install-iis"></a>Instalowanie usług IIS
+1. Postępuj zgodnie z instrukcjami, aby utworzyć drugą maszynę wirtualną o nazwie *MyVM2* z adresem **publicznego adresu IP** w postaci *MyVM2-ip* i wszystkimi innymi ustawieniami takimi samymi, jak w przypadku maszyny MyVM1. 
 
-1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **myVM1** w grupie zasobów **myResourceGroupLB**.
-2. Na stronie **Przegląd** wybierz pozycję **Połącz** dla protokołu RDP z maszyną wirtualną.
-3. Zaloguj się do maszyny wirtualnej przy użyciu nazwy użytkownika **azureuser** i hasła **Azure123456!**.
-4. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows** > **Menedżer serwera**.
-5. W Menedżerze serwera wybierz pozycję **Zarządzaj**, a następnie wybierz pozycję **Dodaj role i funkcje**.
-   ![Dodawanie roli Menedżera serwera](./media/load-balancer-get-started-internet-portal/servermanager.png)
-6. W Kreatorze dodawania ról i funkcji użyj następujących wartości:
-   - Na stronie **Wybieranie typu instalacji** wybierz pozycję **Instalacja oparta na rolach lub funkcjach**.
-   - Na stronie **Wybieranie serwera docelowego** wybierz pozycję **myVM1**.
-   - Na stronie **Wybieranie roli serwera** wybierz pozycję **Serwer internetowy (IIS)**.
-   - Postępuj zgodnie z instrukcjami, aby ukończyć pozostałą część kreatora. 
-7. Powtórz kroki od 1 do 6 dla maszyny wirtualnej **myVM2**.
+### <a name="create-nsg-rules-for-the-vms"></a>Tworzenie reguł sieciowej grupy zabezpieczeń dla maszyn wirtualnych
 
-## <a name="create-resources-for-the-basic-load-balancer"></a>Tworzenie zasobów na potrzeby podstawowego modułu równoważenia obciążenia
+W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń (NSG) dla maszyn wirtualnych, aby zezwolić na przychodzące połączenia internetowe (HTTP) i połączenia pulpitu zdalnego (RDP).
 
-W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza i sondy kondycji. Określisz również reguły modułu równoważenia obciążenia i reguły translatora adresów sieciowych.
+1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Na liście zasobów wybierz pozycję **MyNetworkSecurityGroup** w grupie zasobów **MyResourceGroupLB**.
+   
+1. W obszarze **Ustawienia** wybierz pozycję **Reguły zabezpieczeń dla ruchu przychodzącego**, a następnie wybierz pozycję **Dodaj**.
+   
+1. W oknie dialogowym **Dodawanie reguły zabezpieczeń dla ruchu przychodzącego** dla reguły protokołu HTTP wpisz lub wybierz następujące opcje:
+   
+   - **Źródło**: wybierz pozycję **Tag usługi**.  
+   - **Tag usługi źródłowej**: wybierz pozycję **Internet**. 
+   - **Zakresy portów docelowych**: wpisz *80*.
+   - **Protokół**: wybierz pozycję **TCP**. 
+   - **Akcja**: wybierz pozycję **Zezwalaj**.  
+   - **Priorytet**: wpisz *100*. 
+   - **Nazwa**: wpisz *MyHTTPRule*. 
+   - **Opis**: wpisz *Zezwalaj na HTTP*. 
+   
+1. Wybierz pozycję **Dodaj**. 
+   
+   ![Tworzenie reguły sieciowej grupy zabezpieczeń](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
+   
+1. Powtórz powyższe kroki dla reguły ruchu przychodzącego protokołu RDP z następującymi różnymi wartościami:
+   - **Zakresy portów docelowych**: wpisz *3389*.
+   - **Priorytet**: wpisz *200*. 
+   - **Nazwa**: wpisz *MyRDPRule*. 
+   - **Opis**: wpisz *Zezwalaj na RDP*. 
 
+## <a name="create-resources-for-the-load-balancer"></a>Tworzenie zasobów na potrzeby modułu równoważenia obciążenia
+
+W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza, sondy kondycji i reguły modułu równoważenia obciążenia.
 
 ### <a name="create-a-back-end-address-pool"></a>Tworzenie puli adresów zaplecza
 
-Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adresów zaplecza, zawierająca adresy IP wirtualnych kart sieciowych połączonych z modułem równoważenia obciążenia. Utwórz pulę adresów zaplecza **myBackendPool** obejmującą maszyny wirtualne **VM1** i **VM2**.
+Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia używa puli adresów zaplecza. Ta pula adresów zaplecza zawiera adresy IP wirtualnych interfejsów sieciowych (NIC, virtual network interface) połączonych z modułem równoważenia obciążenia. 
 
-1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **myLoadBalancer** na liście zasobów.
-2. W obszarze **Ustawienia** wybierz pozycję **Pule zaplecza**, a następnie wybierz pozycję **Dodaj**.
-3. Na stronie **Dodawanie puli zaplecza** wykonaj poniższe czynności, a następnie wybierz przycisk **OK**:
-   - W polu **Nazwa** wprowadź ciąg **myBackEndPool**.
-   - W polu **Skojarzone z** z menu rozwijanego wybierz pozycję **Zestaw dostępności**.
-   - W polu **Zestaw dostępności** wybierz pozycję **myAvailabilitySet**.
-   - Wybierz pozycję **Dodaj docelową konfigurację adresu IP sieci**, aby dodać każdą utworzoną maszynę wirtualną (**myVM1** i **myVM2**) do puli zaplecza.
+**Aby utworzyć pulę adresów zaplecza, która obejmuje maszyny VM1 i VM2:**
 
-   ![Dodawanie do puli adresów zaplecza](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
-
-3. Upewnij się, że ustawienie puli zaplecza modułu równoważenia obciążenia wyświetla obie maszyny wirtualne — **VM1** i **VM2**.
+1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
+   
+1. W obszarze **Ustawienia** wybierz pozycję **Pule zaplecza**, a następnie wybierz pozycję **Dodaj**.
+   
+1. Na stronie **Dodawanie puli zaplecza** wpisz lub wybierz następujące wartości:
+   
+   - **Nazwa**: wpisz *MyBackEndPool*.
+   - **Skojarzone z**: rozwiń listę i wybierz pozycję **Zestaw dostępności**.
+   - **Zestaw dostępności**: wybierz pozycję **MyAvailabilitySet**.
+   
+1. Wybierz pozycję **Dodaj docelową konfigurację protokołu IP sieci**. 
+   1. Dodaj utworzone maszyny wirtualne (**MyVM1** i **MyVM2**) do puli zaplecza.
+   2. Po dodaniu każdej maszyny otwórz listę rozwijaną i wybierz dla niej pozycję **Konfiguracja adresu IP sieci**. 
+   
+1. Kliknij przycisk **OK**.
+   
+   ![Dodawanie puli adresów zaplecza](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
+   
+1. Na stronie **Pule zaplecza** rozwiń węzeł **MyBackendPool** i upewnij się, że na liście znajdują się obydwie maszyny wirtualne: **VM1** i **VM2**.
 
 ### <a name="create-a-health-probe"></a>Tworzenie sondy kondycji
 
-Aby zezwolić podstawowemu modułowi równoważenia obciążenia na monitorowanie stanu aplikacji, należy użyć sondy kondycji. Dynamicznie dodaje lub usuwa maszyny wirtualne w rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na kontrole kondycji. Utwórz sondę kondycji o nazwie **myHealthProbe**, aby monitorować kondycję maszyn wirtualnych.
+Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie stanu maszyny wirtualnej. Dynamicznie dodaje lub usuwa maszyny wirtualne w rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na kontrole kondycji. 
 
-1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **myLoadBalancer** na liście zasobów.
-2. W obszarze **Ustawienia** wybierz pozycję **Sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
-3. Użyj tych wartości, a następnie wybierz przycisk **OK**:
-   - **myHealthProbe** — jako nazwy sondy kondycji
-   - **HTTP** — jako typu protokołu
-   - **80** — jako numeru portu
-   - **Healthprobe.aspx** jako ścieżki identyfikatora URI. Możesz zastąpić tę wartość dowolnym innym identyfikatorem URI lub zachować domyślną wartość ścieżki **"\\"**, aby uzyskać domyślny identyfikator URI.
-   - **15** — w polu **Interwał** jako liczby sekund między próbami sondy
-   - **2** — w polu **Próg złej kondycji** jako liczby kolejnych niepowodzeń sondy, które muszą wystąpić, aby maszyna wirtualna została uznana za będącą w złej kondycji
+**Aby utworzyć sondę kondycji w celu monitorowania kondycji maszyn wirtualnych:**
 
+1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
+   
+1. W obszarze **Ustawienia** wybierz pozycję **Sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
+   
+1. Na stronie **Dodawanie sondy kondycji** wpisz lub wybierz następujące wartości:
+   
+   - **Nazwa**: wpisz *MyHealthProbe*.
+   - **Protokół**: rozwiń listę i wybierz pozycję **HTTP**. 
+   - **Port**: wpisz *80*. 
+   - **Ścieżka**: zaakceptuj */* dla domyślnego identyfikatora URI. Tę wartość można zastąpić dowolnym innym identyfikatorem URI. 
+   - **Interwał**: wpisz *15*. Interwał to liczba sekund między próbami sondy.
+   - **Próg złej kondycji**: wpisz *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
+   
+1. Kliknij przycisk **OK**.
+   
    ![Dodawanie sondy](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
 
 ### <a name="create-a-load-balancer-rule"></a>Tworzenie reguły modułu równoważenia obciążenia
 
-Reguła modułu równoważenia obciążenia jest używana do definiowania sposobu dystrybucji ruchu do maszyn wirtualnych. Zdefiniuj konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. 
+Reguła modułu równoważenia obciążenia definiuje sposób dystrybucji ruchu do maszyn wirtualnych. Reguła definiuje konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego, pulę adresów IP zaplecza do odbierania ruchu oraz wymagany port źródłowy i docelowy. 
 
-Utwórz regułę modułu równoważenia obciążenia o nazwie **myLoadBalancerRuleWeb** do nasłuchiwania na porcie 80 frontonu **LoadBalancerFrontEnd**. Reguła umożliwia też wysyłanie ruchu sieciowego ze zrównoważonym obciążeniem do puli adresów zaplecza **myBackEndPool**, również przy użyciu portu 80. 
+Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nasłuchuje na porcie 80 frontonu **LoadBalancerFrontEnd**. Ta reguła wysyła ruch sieciowy do puli adresów zaplecza **MyBackEndPool**, również przy użyciu portu 80. 
 
-1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **myLoadBalancer** na liście zasobów.
-2. W obszarze **Ustawienia** wybierz pozycję **Reguły równoważenia obciążenia**, a następnie wybierz pozycję **Dodaj**.
-3. Użyj tych wartości, a następnie wybierz przycisk **OK**:
-   - **myHTTPRule** — jako nazwy reguły równoważenia obciążenia
-   - **TCP** — jako typu protokołu
-   - **80** — jako numeru portu
-   - **80** —jako portu zaplecza
-   - **myBackendPool** — jako nazwy puli zaplecza
-   - **myHealthProbe** — jako nazwy sondy kondycji
-    
-   ![Dodawanie reguły modułu równoważenia obciążenia](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
+**Aby utworzyć regułę modułu równoważenia obciążenia:**
+
+
+1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
+   
+1. W obszarze **Ustawienia** wybierz pozycję **Reguły równoważenia obciążenia**, a następnie wybierz pozycję **Dodaj**.
+   
+1. Na stronie **Dodawanie reguły równoważenia obciążenia** wpisz lub wybierz następujące wartości:
+   
+   - **Nazwa**: wpisz *MyLoadBalancerRule*.
+   - **Adres IP frontonu:** wpisz *LoadBalancerFrontend*.
+   - **Protokół**: wybierz pozycję **TCP**.
+   - **Port**: wpisz *80*.
+   - **Port zaplecza**: wpisz *80*.
+   - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
+   - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
+   
+1. Kliknij przycisk **OK**.
+   
+  ![Dodawanie reguły modułu równoważenia obciążenia](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
-1. Znajdź publiczny adres IP dla usługi Load Balancer na ekranie **Przegląd**. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myPublicIP**.
 
-2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. W przeglądarce jest wyświetlana domyślna strona internetowego serwera usług IIS.
+W celu przetestowania modułu równoważenia obciążenia na maszynach wirtualnych użyjesz publicznego adresu IP. 
 
-   ![Internetowy serwer usług IIS](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
+W portalu na stronie **Przegląd** dla modułu **MyLoadBalancer** znajdź publiczny adres IP w obszarze **Publiczny adres IP**. Umieść kursor na tym adresie i wybierz ikonę **Kopiuj**, aby go skopiować. 
+
+### <a name="install-iis-on-the-vms"></a>Instalowanie usług IIS na maszynach wirtualnych
+
+Zainstaluj usługi Internet Information Services (IIS) na maszynach wirtualnych, aby ułatwić testowanie modułu równoważenia obciążenia.
+
+**Aby połączyć pulpit zdalny (RDP) z maszyną wirtualną:**
+
+1. W portalu wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **MyVM1** w grupie zasobów **MyResourceGroupLB**.
+   
+1. Na stronie **Przegląd** wybierz pozycję **Połącz**, a następnie wybierz pozycję **Pobierz plik RDP**. 
+   
+1. Otwórz pobrany plik RDP i wybierz pozycję **Połącz**.
+   
+1. Na ekranie zabezpieczeń systemu Windows wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. 
+   
+   Wprowadź nazwę użytkownika *azureuser* i hasło *Azure1234567* i wybierz przycisk **OK**.
+   
+1. Na każdy monit dotyczący certyfikatu odpowiedz **Tak**. 
+   
+   Pulpit maszyny wirtualnej zostanie otwarty w nowym oknie. 
+   
+**Aby zainstalować usługi IIS na maszynie wirtualnej:**
+
+1. Jeśli **Menedżer serwera** nie jest jeszcze otwarty na pulpicie serwera, przejdź do ekranu **Narzędzia administracyjne systemu Windows** > **Menedżer serwera**.
+   
+1. W **Menedżerze serwera** wybierz pozycję **Dodaj role i funkcje**.
+   
+   ![Dodawanie roli Menedżera serwera](./media/load-balancer-get-started-internet-portal/servermanager.png)
+   
+1. W **kreatorze dodawania ról i funkcji**:
+   1. Na stronie **Wybieranie typu instalacji** wybierz pozycję **Instalacja oparta na rolach lub funkcjach**.
+   1. Na stronie **Wybieranie serwera docelowego** wybierz pozycję **MyVM1**.
+   1. Na stronie **Wybieranie roli serwera** wybierz pozycję **Serwer internetowy (IIS)**. 
+   1. Po wyświetleniu monitu o zainstalowanie wymaganych narzędzi wybierz pozycję **Dodaj funkcje**. 
+   1. Zaakceptuj ustawienia domyślne i wybierz pozycję **Instaluj**. 
+   1. Po zakończeniu instalowania funkcji wybierz pozycję **Zamknij**. 
+   
+1. Powtórz te kroki dla maszyny wirtualnej **MyVM2**, tylko dla serwera docelowego ustaw wartość **MyVM2**.
+
+### <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
+
+Na każdej maszynie wirtualnej otwórz przeglądarkę i odpowiedz **OK** na wszelkie monity dotyczące konfiguracji. 
+
+Wklej publiczny adres IP swojego modułu równoważenia obciążenia na pasku adresu przeglądarki. W przeglądarce powinna zostać wyświetlona domyślna strona serwera internetowego usług IIS.
+
+![Internetowy serwer usług IIS](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Grupę zasobów, moduł równoważenia obciążenia i wszystkie pokrewne zasoby można usunąć, gdy nie będą już potrzebne. Wybierz grupę zasobów zawierającą moduł równoważenia obciążenia, a następnie wybierz pozycję **Usuń**.
+Aby usunąć moduł równoważenia obciążenia i wszystkie powiązane z nim zasoby, kiedy nie będą już potrzebne, otwórz grupę zasobów **MyResourceGroupLB** i wybierz pozycję **Usuń grupę zasobów**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start utworzono grupę zasobów, zasoby sieciowe i serwery zaplecza. Te zasoby są następnie używane do utworzenia podstawowego modułu równoważenia obciążenia. Aby dowiedzieć się więcej na temat usługi Azure Load Balancer, przejdź do samouczków dotyczących usługi Azure Load Balancer.
+W tym przewodniku Szybki Start utworzono moduł równoważenia obciążenia w warstwie Podstawowa. Utworzono i skonfigurowano grupę zasobów, zasoby sieciowe, serwery zaplecza, sondę kondycji i reguły do użytku z modułem równoważenia obciążenia. Zainstalowano usługi IIS na maszynach wirtualnych i użyto ich do przetestowania modułu równoważenia obciążenia. 
+
+Aby dowiedzieć się więcej na temat usługi Azure Load Balancer, przejdź do samouczków.
 
 > [!div class="nextstepaction"]
 > [Samouczki usługi Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1b0a6c6d6daa686404021afb2e10b25bb9f54191
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 682291cfe0e7a06aca1d4b1bef48ba36c72f48d9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319391"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839878"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej. Usługa Security Center umożliwia stosowanie zasad zabezpieczeń do różnych obciążeń, ograniczanie podatności na zagrożenia i wykrywanie ataków oraz reagowanie na nie.
@@ -162,7 +162,7 @@ Aby uzyskać więcej informacji, zobacz [Integrowanie rozwiązań w zakresie zab
 ## <a name="next-steps"></a>Następne kroki
 
 - Do rozpoczęcia pracy z usługą Security Center jest wymagana subskrypcja platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
-- Usługa Security Center w warstwie cenowej Bezpłatna jest włączona w ramach subskrypcji platformy Azure. Aby móc korzystać z zaawansowanych możliwości wykrywania zagrożeń i zarządzania zabezpieczeniami, musisz przeprowadzić uaktualnienie do warstwy cenowej Standardowa. Korzystanie z warstwy Standardowa jest bezpłatne przez pierwszych 60 dni. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+- Usługa Security Center w warstwie cenowej Bezpłatna jest włączona w ramach subskrypcji platformy Azure. Aby móc korzystać z zaawansowanych możliwości wykrywania zagrożeń i zarządzania zabezpieczeniami, musisz przeprowadzić uaktualnienie do warstwy cenowej Standardowa. Warstwę Standardowa można wypróbować bezpłatnie. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 - Jeśli możesz już włączyć usługę Security Center w warstwie Standardowa, skorzystaj z przewodnika [Szybki start: dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md), który przeprowadzi Cię przez ten proces.
 
 

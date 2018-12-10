@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/06/2018
-ms.openlocfilehash: 8b0e15ac6cd59a77e283d9256ab5fa4542dfc9a9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 12/04/2018
+ms.openlocfilehash: 3c3127c7fd94ae0f66cd083e8a83dd9119f71dcb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960518"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867940"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Samouczek: migrowanie programu MySQL do usługi Azure Database for MySQL w trybie online przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu MySQL do usługi [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) z minimalnym przestojem. Innymi słowy migrację można przeprowadzić przy minimalnych przestojach w działaniu aplikacji. W tym samouczku przeprowadzisz migrację przykładowej bazy danych **Employees** z lokalnego wystąpienia programu MySQL 5.7 do usługi Azure Database for MySQL za pomocą działania migracji w trybie online w usłudze Azure Database Migration Service.
@@ -28,6 +28,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie projektu migracji za pomocą usługi Azure Database Migration Service.
 > * Uruchamianie migracji.
 > * Monitorowanie migracji.
+
+> [!NOTE]
+> Przeprowadzenie migracji online przy użyciu usługi Azure Database Migration Service wymaga utworzenia wystąpienia opartego na warstwie cenowej Premium (wersja zapoznawcza).
 
 > [!IMPORTANT]
 > W celu uzyskania optymalnego środowiska migracji firma Microsoft zaleca utworzenie wystąpienia usługi Azure Database Migration Service w tym samym regionie platformy Azure, w którym znajduje się docelowa baza danych. Przenoszenie danych między regionami lub lokalizacjami geograficznymi może spowalniać proces migracji i powodować błędy.

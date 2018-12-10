@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: uzyskiwanie obsługiwanych języków, C# — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: uzyskiwanie listy obsługiwanych języków, C# — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/15/2018
+ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: cc5d9efd017ec2045cc94bbad98e26e8b95e071d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 54896e96658286297d90f488bd02f11da505ec50
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334690"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889093"
 ---
-# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-c"></a>Szybki start: uzyskiwanie obsługiwanych języków przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (C#)
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>Szybki start: uzyskiwanie listy obsługiwanych języków za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator przy użyciu języka C#
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 
@@ -28,7 +28,7 @@ Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](http
 * [Zestaw SDK platformy .NET](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Pakiet NuGet platformy Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
 * Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
-* Klucz subskrypcji platformy Azure dla usługi mowy
+* Klucz subskrypcji platformy Azure na potrzeby tłumaczenia tekstu w usłudze Translator
 
 ## <a name="create-a-net-core-project"></a>Tworzenie projektu platformy .NET Core
 

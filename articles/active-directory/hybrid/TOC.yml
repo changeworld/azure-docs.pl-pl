@@ -17,8 +17,56 @@ items:
   expanded: true
 - name: Pojęcia
   items:
+  - name: Programy Azure AD Connect i Connect Health
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+    items:
+    - name: Co to są Azure AD Connect Health i Connect Health?
+      href: whatis-azure-ad-connect.md
+    - name: Wybieranie odpowiedniego uwierzytelniania
+      href: https://docs.microsoft.com/azure/security/azure-ad-choose-authn
+    - name: Synchronizacja tożsamości i odporność względem zduplikowanych atrybutów
+  - name: Synchronizacja skrótów haseł
+    items:
+    - name: Co to jest synchronizacja skrótów haseł?
+      href: whatis-phs.md
+    - name: Jak działa synchronizacja skrótów haseł
+      href: how-to-connect-password-hash-synchronization.md
+  - name: Uwierzytelnianie przekazywane
+    items:
+    - name: Co to jest uwierzytelnianie przekazywane?
+      href: how-to-connect-pta.md
+    - name: Jak działa uwierzytelnianie przekazywane
+      href: how-to-connect-pta-how-it-works.md
+    - name: Bieżące ograniczenia uwierzytelniania przekazywanego
+      href: how-to-connect-pta-current-limitations.md
+    - name: Szczegółowe informacje na temat zabezpieczeń uwierzytelniania przekazywanego
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: Uwierzytelnianie przekazywane i prywatność użytkowników
+      href: how-to-connect-pta-user-privacy.md
+  - name: Federacja
+    items:
+    - name: Co to jest federacja?
+      href: whatis-fed.md
+    - name: Jak działa federacja
+      href: how-to-connect-fed-whatis.md
+    - name: Lista zgodności usługi Azure AD z usługami federacyjnymi
+      href: how-to-connect-fed-compatibility.md
+  - name: Logowanie jednokrotne
+    items:
+    - name: Co to jest logowanie jednokrotne?
+      href: how-to-connect-sso.md
+    - name: Jak działa logowanie jednokrotne
+      href: how-to-connect-sso-how-it-works.md
+    - name: Logowanie jednokrotne i prywatność użytkowników
+      href: how-to-connect-sso-user-privacy.md
   - name: Azure AD Connect Sync
     items:
+    - name: Co to jest program Azure AD Connect Sync?
+      href: how-to-connect-sync-whatis.md
+    - name: Funkcje programu Azure AD Connect Sync
+      href: how-to-connect-syncservice-features.md
+    - name: Co to jest menedżer usługi programu Azure AD Connect Sync?
+      href: how-to-connect-sync-service-manager-ui.md
     - name: Zagadnienia techniczne związane z programem Azure AD Connect Sync
       href: how-to-connect-sync-technical-concepts.md
     - name: Omówienie architektury programu Azure AD Connect Sync
@@ -33,8 +81,6 @@ items:
       href: concept-azure-ad-connect-sync-user-and-contacts.md
     - name: Omówienie atrybutów w tle
       href: how-to-connect-syncservice-shadow-attributes.md
-  - name: Synchronizacja tożsamości i odporność względem zduplikowanych atrybutów
-    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Instalacja i uaktualnianie
@@ -119,8 +165,6 @@ items:
         href: plan-hybrid-identity-design-considerations-tools-comparison.md
   - name: Zarządzanie programem Azure AD Connect
     items:
-    - name: Co to jest synchronizacja skrótów haseł?
-      href: how-to-connect-password-hash-synchronization.md
     - name: Włączanie zapisywania zwrotnego urządzeń
       href: how-to-connect-device-writeback.md
     - name: Opcje urządzenia
@@ -141,10 +185,14 @@ items:
       href: how-to-connect-sync-change-addsacct-pass.md
     - name: Co to jest moduł ADConnectivityTools programu PowerShell?
       href: how-to-connect-adconnectivitytools.md
+  - name: Zarządzanie uwierzytelnianiem przekazującym
+    items:
+    - name: Rozpoczynanie pracy z uwierzytelnianiem przekazywanym
+      href: how-to-connect-pta-quick-start.md
+    - name: Często zadawane pytania o uwierzytelnianie przekazywane
+      href: how-to-connect-pta-faq.md
   - name: Zarządzanie usługami Federation Services
     items:
-    - name: Co to jest federacja z programem Azure AD Connect?
-      href: how-to-connect-fed-whatis.md
     - name: Zarządzanie federacją z programem Azure AD Connect
       href: how-to-connect-fed-management.md
     - name: Obsługa wielu domen do federowania
@@ -159,40 +207,14 @@ items:
       href: how-to-connect-azure-ad-trust.md
     - name: Zmienianie algorytmu wyznaczania wartości skrótu dla jednostki zależnej usługi O365
       href: how-to-connect-fed-sha256-guidance.md
-    - name: Lista zgodności usługi Azure AD z usługami federacyjnymi
-      href: how-to-connect-fed-compatibility.md
     - name: Używanie serwera SAML 2.0 jako dostawcy tożsamości
       href: how-to-connect-fed-saml-idp.md
     - name: Zadania pokonfiguracyjne dotyczące dołączania do hybrydowej usługi Azure AD
       href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
-  - name: Zarządzanie uwierzytelnianiem przekazującym
-    items:
-    - name: Co to jest uwierzytelnianie przekazywane?
-      href: how-to-connect-pta.md
-    - name: Rozpoczynanie pracy z uwierzytelnianiem przekazywanym
-      href: how-to-connect-pta-quick-start.md
-    - name: Jak działa uwierzytelnianie przekazywane
-      href: how-to-connect-pta-how-it-works.md
-    - name: Bieżące ograniczenia uwierzytelniania przekazywanego
-      href: how-to-connect-pta-current-limitations.md
-    - name: Szczegółowe informacje na temat zabezpieczeń uwierzytelniania przekazywanego
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: Uwierzytelnianie przekazywane i prywatność użytkowników
-      href: how-to-connect-pta-user-privacy.md
-    - name: Bieżące ograniczenia uwierzytelniania przekazywanego
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: Często zadawane pytania o uwierzytelnianie przekazywane
-      href: how-to-connect-pta-faq.md
   - name: Zarządzanie logowaniem jednokrotnym
     items:
-    - name: Co to jest logowanie jednokrotne?
-      href: how-to-connect-sso.md
     - name: Rozpoczynanie pracy z logowaniem jednokrotnym
       href: how-to-connect-sso-quick-start.md
-    - name: Jak działa logowanie jednokrotne
-      href: how-to-connect-sso-how-it-works.md
-    - name: Logowanie jednokrotne i prywatność użytkowników
-      href: how-to-connect-sso-user-privacy.md
     - name: Często zadawane pytania o logowanie jednokrotne
       href: how-to-connect-sso-faq.md
   - name: Zarządzanie programem Azure AD Connect Health
@@ -213,10 +235,6 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: Zarządzanie programem Azure AD Connect Sync
     items:
-    - name: Co to jest program Azure AD Connect Sync?
-      href: how-to-connect-sync-whatis.md
-    - name: Funkcje programu Azure AD Connect Sync
-      href: how-to-connect-syncservice-features.md
     - name: Zarządzanie zadaniem operacyjnym
       href: how-to-connect-sync-operations.md
     - name: Najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej
@@ -233,8 +251,6 @@ items:
       href: how-to-connect-sync-feature-scheduler.md
     - name: Menedżer usługi programu Azure AD Connect Sync
       items:
-      - name: Co to jest menedżer usługi programu Azure AD Connect Sync?
-        href: how-to-connect-sync-service-manager-ui.md
       - name: Zarządzanie kartą operacji menedżera usługi
         href: how-to-connect-sync-service-manager-ui-operations.md
       - name: Używanie łączników z menedżerem usługi
@@ -303,9 +319,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Informacje o module ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 07a3bfd816cd57ecbe77bf7e7435be99a0321fd2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: b3488ec5aec1c5bd1d3f38a2bf87ab1d8d3a87f1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335457"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080150"

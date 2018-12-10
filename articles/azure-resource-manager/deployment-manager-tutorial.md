@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e4489fd9119bce0e38e14f536f41940b74205e95
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8ec180b40e52c5702495a0124bf8ae33d2dc24a1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425007"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727787"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (prywatna wersja zapoznawcza)
 
@@ -152,7 +152,7 @@ Musisz utworzyć tożsamość zarządzaną przypisaną przez użytkownika i skon
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Utwórz [tożsamość zarządzaną przypisaną przez użytkownika](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. W portalu wybierz opcję **Subskrypcje** z menu po lewej stronie, a następnie wybierz swoją subskrypcję.
-4. Wybierz opcję **Kontrola dostępu (IAM)**, a następnie wybierz opcję **Dodaj**
+4. Wybierz opcję **Kontrola dostępu (IAM)**, a następnie wybierz opcję **Dodaj przypisanie roli**.
 5. Wprowadź lub wybierz poniższe wartości:
 
     ![Samouczek dotyczący usługi Azure Deployment Manager — kontrola dostępu tożsamości zarządzanej przypisanej przez użytkownika](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)

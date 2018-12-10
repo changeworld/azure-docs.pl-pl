@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Kubernetes Service (AKS) za pomocą usługi Azure DevOps Projects'
+title: 'Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Kubernetes Service za pomocą usługi Azure DevOps Projects'
 description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Za pomocą usługi DevOps Projects możesz wdrożyć aplikację ASP.NET Core za pomocą usługi Azure Kubernetes Service (AKS) w kilku prostych krokach.
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 6e2b53e51d7da117a7f690cb676d0ec096bcb1cd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7980ea439cfd3eaefcaa308795836a909f980043
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165557"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620646"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-kubernetes-service-aks-by-using-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Kubernetes Service (AKS) za pomocą usługi Azure DevOps Projects
+# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Kubernetes Service za pomocą usługi Azure DevOps Projects
 
 Usługa Azure DevOps Projects stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub wybrać aplikację przykładową, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure. 
 
@@ -24,6 +24,7 @@ Usługa DevOps Projects wykonuje również następujące działania:
 * Automatycznie tworzy zasoby platformy Azure, takie jak usługa Azure Kubernetes Service (AKS).
 * Tworzy i konfiguruje potok wydania w usłudze Azure DevOps, który konfiguruje potok kompilacji i wydania na potrzeby ciągłej integracji/ciągłego wdrażania.
 * Tworzy zasób usługi Azure Application Insights na potrzeby monitorowania.
+* Włącza [usługę Azure Monitor dla kontenerów](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) w celu monitorowania wydajności dla obciążeń kontenerów w klastrze usługi AKS
 
 W tym samouczku zostaną wykonane następujące czynności:
 

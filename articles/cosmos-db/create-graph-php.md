@@ -1,9 +1,8 @@
 ---
-title: 'Szybki start: interfejs API języka Gremlin dla języka PHP — Azure Cosmos DB | Microsoft Docs'
+title: 'Szybki start: interfejs API języka Gremlin za pomocą języka PHP — Azure Cosmos DB'
 description: W tym przewodniku Szybki start przedstawiono użycie interfejsu API języka Gremlin usługi Azure Cosmos DB do utworzenia aplikacji konsolowej przy użyciu witryny Azure Portal i języka PHP
 services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
@@ -11,12 +10,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 06f54429957a84de81e3dfaae00c6126b5340b74
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e5a7d40007076d09695d166148d84684c1cccee5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702497"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839623"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: tworzenie bazy danych grafów przy użyciu języka PHP i witryny Azure Portal
 

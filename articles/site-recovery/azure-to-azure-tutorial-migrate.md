@@ -1,30 +1,30 @@
 ---
-title: Migrowanie maszyn wirtualnych IaaS platformy Azure do innego regionu platformy Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
-description: Używanie usługi Azure Site Recovery do migrowania maszyn wirtualnych IaaS platformy Azure z jednego regionu platformy Azure do innego.
+title: Przenoszenie maszyn wirtualnych IaaS platformy Azure do innego regionu świadczenia usługi Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
+description: Używanie usługi Azure Site Recovery do przenoszenia maszyn wirtualnych IaaS platformy Azure z jednego regionu świadczenia usługi Azure do innego.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9ad994ad3dc1fc350a9a41c23574acfa2bae9629
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 656f58bb9864757635ab5752da6bf31320504415
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212288"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843261"
 ---
-# <a name="migrate-azure-vms-to-another-region"></a>Migrowanie maszyn wirtualnych platformy Azure do innego regionu
+# <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
-Oprócz używania usługi [Azure Site Recovery](site-recovery-overview.md) do zarządzania odzyskiwaniem maszyn lokalnych i maszyn wirtualnych platformy Azure po awarii i ich organizowania dla celów zapewniania ciągłości działania i odzyskiwania po awarii (BCDR, business continuity and disaster recovery) można ją stosować również do zarządzania migracją maszyn wirtualnych platformy Azure do regionu pomocniczego. Aby migrować maszyny wirtualne platformy Azure, należy włączyć ich replikację, a następnie przełączyć je w tryb failover z regionu podstawowego do wybranego regionu pomocniczego.
+Oprócz używania usługi [Azure Site Recovery](site-recovery-overview.md) do zarządzania odzyskiwaniem maszyn lokalnych i maszyn wirtualnych platformy Azure po awarii oraz ich organizowania dla celów zapewniania ciągłości działania i odzyskiwania po awarii (BCDR, business continuity and disaster recovery) można ją stosować również do zarządzania przenoszeniem maszyn wirtualnych platformy Azure do regionu pomocniczego. Aby przenieść maszyny wirtualne platformy Azure, należy włączyć ich replikację, a następnie przełączyć je w tryb failover z regionu podstawowego do wybranego regionu pomocniczego.
 
-Ten samouczek przedstawia sposób migracji maszyn wirtualnych platformy Azure do innego regionu. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek przedstawia sposób przenoszenia maszyn wirtualnych platformy Azure do innego regionu. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu usługi Recovery Services
 > * Włączanie replikacji maszyny wirtualnej
-> * Uruchamianie trybu failover w celu migrowania maszyny wirtualnej
+> * Uruchamianie trybu failover w celu przeniesienia maszyny wirtualnej
 
 W tym samouczku założono, że masz już subskrypcję platformy Azure. Jeśli jeszcze jej nie masz, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -34,7 +34,7 @@ W tym samouczku założono, że masz już subskrypcję platformy Azure. Jeśli j
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Upewnij się, że w regionie platformy Azure, z którego chcesz przeprowadzić migrację, znajdują się maszyny wirtualne platformy Azure.
+- Upewnij się, że w regionie świadczenia usługi Azure, z którego chcesz przenieść, znajdują się maszyny wirtualne platformy Azure.
 - Przeanalizuj informacje o [składnikach i architekturze scenariusza](azure-to-azure-architecture.md).
 - Zapoznaj się z [ograniczeniami i wymaganiami dotyczącymi pomocy technicznej](azure-to-azure-support-matrix.md).
 
@@ -66,12 +66,12 @@ Jeśli bezpłatne konto platformy Azure zostało właśnie utworzone, jesteś ad
 
 ### <a name="verify-vm-outbound-access"></a>Sprawdzanie wychodzącego dostępu do maszyny wirtualnej
 
-1. Upewnij się, że nie używasz uwierzytelniania serwera proxy do kontrolowania łączności sieciowej dla maszyn wirtualnych, które chcesz migrować. 
-2. Do celów tego samouczka założono, że maszyny wirtualne do migracji mogą uzyskiwać dostęp do Internetu oraz że nie używasz serwera proxy zapory do kontrolowania dostępu wychodzącego. Jeśli tak jest, sprawdź wymagania [tutaj](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+1. Upewnij się, że nie używasz uwierzytelniania serwera proxy do kontrolowania łączności sieciowej dla maszyn wirtualnych, które chcesz przenieść. 
+2. Do celów tego samouczka założono, że maszyny wirtualne do przeniesienia mogą uzyskiwać dostęp do Internetu oraz że nie używasz serwera proxy zapory do kontrolowania dostępu wychodzącego. Jeśli tak jest, sprawdź wymagania [tutaj](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
 
 ### <a name="verify-vm-certificates"></a>Weryfikowanie certyfikatów maszyn wirtualnych
 
-Sprawdź, czy na maszynach wirtualnych platformy Azure, które mają być migrowane, są obecne wszystkie najnowsze certyfikaty główne. Jeśli brakuje najnowszych certyfikatów głównych, nie można zarejestrować maszyny wirtualnej w usłudze Site Recovery ze względu na ograniczenia związane z zabezpieczeniami.
+Sprawdź, czy na maszynach wirtualnych platformy Azure, które chcesz przenieść, są obecne wszystkie najnowsze certyfikaty główne. Jeśli brakuje najnowszych certyfikatów głównych, nie można zarejestrować maszyny wirtualnej w usłudze Site Recovery ze względu na ograniczenia związane z zabezpieczeniami.
 
 - Aby zainstalować wszystkie zaufane certyfikaty główne na maszynach wirtualnych z systemem Windows, zainstaluj wszystkie najnowsze aktualizacje systemu Windows. W środowisku bez połączenia postępuj zgodnie ze standardową procedurą usługi Windows Update i procedurą aktualizacji certyfikatów, które są używane w danej organizacji.
 - Aby zainstalować najnowsze wymagane certyfikaty główne i listę odwołania certyfikatów na maszynach wirtualnych z systemem Linux, postępuj zgodnie ze wskazówkami dystrybutora systemu Linux.
@@ -113,7 +113,7 @@ Usługa Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypc
 
 
 1. W witrynie Azure Portal kliknij pozycję **Maszyny wirtualne**.
-2. Wybierz maszynę wirtualną, którą chcesz migrować. Następnie kliknij przycisk **OK**.
+2. Wybierz maszynę wirtualną, którą chcesz przenieść. Następnie kliknij przycisk **OK**.
 3. W obszarze **Ustawienia** kliknij pozycję **Odzyskiwanie po awarii**.
 4. W obszarze **Konfigurowanie odzyskiwania po awarii** > **Region docelowy** wybierz region docelowy, w którym maszyna będzie replikowana.
 5. Dla celów tego samouczka zaakceptuj inne ustawienia domyślne.
@@ -136,7 +136,7 @@ Usługa Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypc
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przeprowadzono migrację maszyny wirtualnej platformy Azure do innego regionu platformy Azure. Teraz możesz skonfigurować odzyskiwanie po awarii dla migrowanej maszyny wirtualnej.
+W tym samouczku przeniesiono maszynę wirtualną platformy Azure do innego regionu świadczenia usługi Azure. Teraz możesz skonfigurować odzyskiwanie po awarii dla przeniesionej maszyny wirtualnej.
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie odzyskiwania po awarii po migracji](azure-to-azure-quickstart.md)

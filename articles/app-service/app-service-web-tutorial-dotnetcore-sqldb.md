@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f870902e5bd5ef92d12d1e5e846696c4b26362a3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e0161073c0c3e7d6ef491a4f2b86510e826b85dc
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425106"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678665"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>Samouczek: tworzenie aplikacji internetowej platformy .NET Core i usługi SQL Database w usłudze Azure App Service
 
@@ -215,6 +215,10 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 Jeśli kod wykryje, że został uruchomiony w środowisku produkcyjnym (co wskazuje na środowisko platformy Azure), używa skonfigurowanych parametrów połączenia w celu połączenia z bazą danych SQL Database.
 
 Wywołanie `Database.Migrate()` jest pomocne, gdy działa na platformie Azure, ponieważ automatycznie tworzy bazy danych, których potrzebuje aplikacja .NET Core, w oparciu o konfigurację migracji. 
+
+> [!IMPORTANT]
+> W przypadku aplikacji produkcyjnych wymagających skalowania w poziomie postępuj zgodnie z najlepszymi rozwiązaniami opisanymi w rozdziale [Stosowanie migracji w środowisku produkcyjnym](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production).
+> 
 
 Zapisz zmiany, a następnie zatwierdź je w repozytorium Git. 
 

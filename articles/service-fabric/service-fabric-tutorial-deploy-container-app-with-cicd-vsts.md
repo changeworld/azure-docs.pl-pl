@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 06bc4be6ee485e61523d210b692c3fe2567cc62c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 2320aaf2d502280a29562a49dfff1e4e9244d079
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443495"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872972"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 
@@ -65,7 +65,7 @@ Sprawdź swój adres e-mail i wybierz swoją organizację z listy rozwijanej **K
 
 Opublikowanie repozytorium powoduje utworzenie nowego projektu zespołowego na Twoim koncie o takiej samej nazwie jak lokalne repozytorium. Aby utworzyć repozytorium w istniejącym projekcie zespołowym, kliknij pozycję **Zaawansowane** obok nazwy **Repozytorium**, a następnie wybierz projekt zespołowy. Aby wyświetlić kod w Internecie, wybierz polecenie **Wyświetl w Internecie**.
 
-## <a name="configure-continuous-delivery-with-vsts"></a>Konfigurowanie ciągłego dostarczania za pomocą usługi VSTS
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Konfigurowanie ciągłego dostarczania za pomocą usługi Azure Pipelines
 
 Definicja kompilacji usługi Azure DevOps zawiera opis przepływu pracy, który składa się z zestawu kroków kompilacji wykonywanych sekwencyjnie. Utwórz definicję kompilacji, która spowoduje wygenerowanie pakietu aplikacji usługi Service Fabric i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej o [definicjach kompilacji usługi Azure DevOps](https://www.visualstudio.com/docs/build/define/create). 
 

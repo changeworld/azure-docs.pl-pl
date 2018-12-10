@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 32fa417d5fcb5c8547dfc7c10b34b3c97ed70559
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 16bcc56dd05c86b7c2adb324de480e7482f80fef
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626069"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724302"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem poświadczeń SAS przy użyciu przypisanej przez system tożsamości maszyny wirtualnej z systemem Linux
 
@@ -68,9 +68,9 @@ Później przekażemy i pobierzemy plik do nowego konta magazynu. Ponieważ plik
 
 Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD.  Możesz jednak użyć przypisanej przez system tożsamości zarządzanej maszyny wirtualnej, aby pobrać sygnaturę SAS magazynu z usługi Resource Manager, a następnie użyć sygnatury SAS do uzyskania dostępu do magazynu.  W tym kroku udzielasz przypisanej przez system tożsamości zarządzanej maszyny wirtualnej dostępu do sygnatury SAS konta magazynu.   
 
-1. Przejdź z powrotem do nowo utworzonego konta magazynu.   
+1. Przejdź z powrotem do nowo utworzonego konta magazynu.
 2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  
-3. Kliknij przycisk **+ Dodaj** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej.
+3. Kliknij przycisk **+ Dodaj przypisanie roli** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej
 4. Ustaw opcję **Rola** na „Współautor konta magazynu” w prawej części strony. 
 5. Na kolejnej liście rozwijanej ustaw opcję **Przypisz dostęp do** na zasób „Maszyna wirtualna”.  
 6. Następnie upewnij się, że odpowiednia subskrypcja znajduje się na liście rozwijanej **Subskrypcja**, po czym ustaw opcję **Grupa zasobów** na wartość „Wszystkie grupy zasobów”.  

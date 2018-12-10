@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 12880c3aada46b1656cf37b0cb539292cce930ef
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a720bb906192731b8b636939e22b13a8e52bbe76
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625712"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632895"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Samouczek: wdrażanie klastra usługi Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
 
 Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się w nim, jak wdrożyć klaster usługi Service Fabric, na którym działa system Windows w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md) i [sieciowej grupie zabezpieczeń](../virtual-network/virtual-networks-nsg.md) za pomocą programu PowerShell i szablonu. Po wykonaniu tych czynności powstanie działający w chmurze klaster, w którym można będzie wdrażać aplikacje.  Aby utworzyć klaster z systemem Linux za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie bezpiecznego klastra z systemem Linux na platformie Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
-W tym samouczku opisano scenariusz produkcyjny.  Jeśli chcesz szybko utworzyć niewielki klaster do celów testowych, zobacz [Tworzenie klastra testowego z trzema węzłami](./scripts/service-fabric-powershell-create-test-cluster.md).
+W tym samouczku opisano scenariusz produkcyjny.  Jeśli chcesz szybko utworzyć mniejszy klaster do celów testowych, zobacz [Tworzenie klastra testowego](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.author: davidmu
-ms.date: 3/02/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 0f2fa2bb8e20ce4cc187fe6f061d2d8c251c4673
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: cce76a0e97e039ec6e6c3a976d1fc7caca7fde73
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945216"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834438"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania aplikacji jednostronicowej przy użyciu kont w usłudze Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Rejestrowanie przykładowej aplikacji jednostronicowej w katalogu usługi Azure AD B2C.
-> * Tworzenie zasad rejestracji, logowania, edytowania profilów i resetowania haseł użytkowników.
+> * Tworzenie przepływów użytkownika na potrzeby tworzenia konta, logowania, edytowania profilów i resetowania haseł użytkowników.
 > * Konfigurowanie przykładowej aplikacji w celu korzystania z katalogu usługi Azure AD B2C.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -69,72 +69,95 @@ Zarejestrowane aplikacje są wyświetlane na liście aplikacji dla katalogu usł
 
 Zwróć uwagę na wartość **Identyfikator klienta aplikacji**. Ten identyfikator unikatowo identyfikuje aplikację i jest potrzebny podczas późniejszego konfigurowania aplikacji w samouczku.
 
-## <a name="create-policies"></a>Tworzenie zasad
+## <a name="create-user-flows"></a>Tworzenie przepływów użytkownika
 
-Zasady usługi Azure AD B2C definiują przepływy pracy użytkowników. Typowe przepływy pracy to na przykład logowanie, rejestracja, zmienianie haseł i edytowanie profilów.
+Przepływ użytkownika usługi Azure AD B2C definiuje środowisko użytkownika na potrzeby zadania obsługi tożsamości. Typowe przepływy użytkownika to na przykład logowanie, tworzenie kont, zmienianie haseł i edytowanie profilów.
 
-### <a name="create-a-sign-up-or-sign-in-policy"></a>Tworzenie zasad rejestracji lub logowania
+### <a name="create-a-sign-up-or-sign-in-user-flow"></a>Tworzenie przepływu użytkownika dotyczącego tworzenia konta lub logowania
 
-Aby umożliwić użytkownikom rejestrowanie się w celu uzyskiwania dostępu i logowanie się do aplikacji internetowej, utwórz **zasady rejestracji lub logowania**.
+Aby umożliwić użytkownikom tworzenie kont w celu uzyskiwania dostępu i logowanie się do aplikacji internetowej, utwórz **przepływ użytkownika dotyczący tworzenia konta lub logowania**.
 
-1. Na stronie portalu usługi Azure AD B2C wybierz pozycję **Zasady logowania lub tworzenia konta** i kliknij pozycję **Dodaj**.
+1. Na stronie portalu usługi Azure AD B2C wybierz pozycję **Przepływy użytkownika** i kliknij pozycję **Nowy przepływ użytkownika**.
+2. Na karcie **Zalecane** kliknij pozycję **Tworzenie konta i logowanie**.
 
-    Aby skonfigurować zasady, użyj następujących ustawień:
+    Aby skonfigurować przepływ użytkownika, użyj następujących ustawień:
 
-    ![Dodawanie zasad rejestracji lub logowania](media/active-directory-b2c-tutorials-web-app/add-susi-policy.png)
-
-    | Ustawienie      | Sugerowana wartość  | Opis                                        |
-    | ------------ | ------- | -------------------------------------------------- |
-    | **Nazwa** | SiUpIn | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **B2C_1_SiUpIn**. | 
-    | **Dostawca tożsamości** | Rejestracja e-mail | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
-    | **Atrybuty tworzenia konta** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które mają być zbierane od użytkownika podczas rejestracji. |
-    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, użytkownik jest nowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token). |
-
-2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
-
-### <a name="create-a-profile-editing-policy"></a>Tworzenie zasad edytowania profilów
-
-Aby umożliwić użytkownikom samodzielne resetowanie informacji w ich profilach użytkownika, utwórz **zasady edytowania profilów**.
-
-1. Na stronie portalu usługi Azure AD B2C wybierz pozycję **Zasady edytowania profilu** i kliknij pozycję **Dodaj**.
-
-    Aby skonfigurować zasady, użyj następujących ustawień:
+    ![Dodawanie przepływu użytkownika dotyczącego tworzenia konta lub logowania](media/active-directory-b2c-tutorials-spa/add-susi-user-flow.png)
 
     | Ustawienie      | Sugerowana wartość  | Opis                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Nazwa** | SiPe | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **B2C_1_SiPe**. | 
-    | **Dostawca tożsamości** | Logowanie za pomocą konta lokalnego | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
-    | **Atrybuty profilu** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które użytkownicy mogą modyfikować podczas edytowania profilu. |
-    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token) po pomyślnym edytowaniu profilu. |
+    | **Nazwa** | SiUpIn | Wprowadź **nazwę** przepływu użytkownika. Nazwa przepływu użytkownika ma prefiks **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa przepływu użytkownika **B2C_1_SiUpIn**. | 
+    | **Dostawcy tożsamości** | Rejestracja e-mail | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
 
-2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
+3. W obszarze **Atrybuty użytkownika i oświadczenia** kliknij pozycję **Pokaż więcej** i wybierz następujące ustawienia:
 
-### <a name="create-a-password-reset-policy"></a>Tworzenie zasad resetowania haseł
+    ![Dodawanie przepływu użytkownika dotyczącego tworzenia konta lub logowania](media/active-directory-b2c-tutorials-spa/add-attributes-and-claims.png)
 
-Aby umożliwić resetowanie haseł w aplikacji, należy utworzyć **zasady resetowania haseł**. Te zasady opisują obsługę użytkownika podczas resetowania hasła oraz zawartość tokenów, które aplikacja otrzyma po jego pomyślnym ukończeniu.
+    | Kolumna      | Sugerowana wartość  | Opis                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Zbierz atrybut** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które mają być zbierane od użytkownika podczas rejestracji. |
+    | **Zwróć oświadczenie** | Nazwa wyświetlana, kod pocztowy, użytkownik jest nowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token). |
 
-1. Na stronie portalu usługi Azure AD B2C wybierz pozycję **Zasady resetowania hasła** i kliknij pozycję **Dodaj**.
+4. Kliknij przycisk **OK**.
+5. Kliknij przycisk **Utwórz**, aby utworzyć przepływ użytkownika. 
 
-    Aby skonfigurować zasady, użyj następujących ustawień.
+### <a name="create-a-profile-editing-user-flow"></a>Tworzenie przepływu użytkownika dotyczącego edytowania profilu
+
+Aby umożliwić użytkownikom samodzielne resetowanie informacji w ich profilach użytkownika, utwórz **przepływ użytkownika dotyczący edytowania profilów**.
+
+1. Na stronie portalu usługi Azure AD B2C wybierz pozycję **Przepływy użytkownika** i kliknij pozycję **Nowy przepływ użytkownika**.
+2. Na karcie **Zalecane** kliknij pozycję **Edytowanie profilu**.
+
+    Aby skonfigurować przepływ użytkownika, użyj następujących ustawień:
 
     | Ustawienie      | Sugerowana wartość  | Opis                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Nazwa** | SSPR | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **B2C_1_SSPR**. | 
-    | **Dostawca tożsamości** | Resetuj hasło przy użyciu adresu e-mail | Jest to dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
-    | **Oświadczenia aplikacji** | Identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token) po pomyślnym zresetowaniu hasła. |
+    | **Nazwa** | SiPe | Wprowadź **nazwę** przepływu użytkownika. Nazwa przepływu użytkownika ma prefiks **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa przepływu użytkownika **B2C_1_SiPe**. | 
+    | **Dostawcy tożsamości** | Logowanie za pomocą konta lokalnego | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
 
-2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
+3.  W obszarze **Atrybuty użytkownika** kliknij pozycję **Pokaż więcej** i wybierz następujące ustawienia:
+
+    | Kolumna      | Sugerowana wartość  | Opis                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Zbierz atrybut** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które użytkownicy mogą modyfikować podczas edytowania profilu. |
+    | **Zwróć oświadczenie** | Nazwa wyświetlana, kod pocztowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token) po pomyślnym edytowaniu profilu. |
+
+4. Kliknij przycisk **OK**.
+5. Kliknij przycisk **Utwórz**, aby utworzyć przepływ użytkownika. 
+
+### <a name="create-a-password-reset-user-flow"></a>Tworzenie przepływu użytkownika dotyczącego resetowania haseł
+
+Aby umożliwić resetowanie haseł w aplikacji, należy utworzyć **przepływ użytkownika dotyczący resetowania haseł**. Ten przepływ użytkownika opisuje środowisko pracy użytkownika podczas resetowania hasła oraz zawartość tokenów, które aplikacja otrzymuje po jego pomyślnym ukończeniu.
+
+1. Na stronie portalu usługi Azure AD B2C wybierz pozycję **Przepływy użytkownika** i kliknij pozycję **Nowy przepływ użytkownika**.
+2. Na karcie **Zalecane** kliknij pozycję **Resetowanie hasła**.
+
+    Aby skonfigurować przepływ użytkownika, użyj następujących ustawień.
+
+    | Ustawienie      | Sugerowana wartość  | Opis                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Nazwa** | SSPR | Wprowadź **nazwę** przepływu użytkownika. Nazwa przepływu użytkownika ma prefiks **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa przepływu użytkownika **B2C_1_SSPR**. | 
+    | **Dostawcy tożsamości** | Resetuj hasło przy użyciu adresu e-mail | Jest to dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
+
+3. W obszarze **Oświadczenia aplikacji** kliknij pozycję **Pokaż więcej** i wybierz następujące ustawienie:
+
+    | Kolumna      | Sugerowana wartość  | Opis                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Zwróć oświadczenie** | Identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token) po pomyślnym zresetowaniu hasła. |
+
+4. Kliknij przycisk **OK**.
+5. Kliknij przycisk **Utwórz**, aby utworzyć przepływ użytkownika. 
 
 ## <a name="update-single-page-app-code"></a>Aktualizowanie kodu aplikacji jednostronicowej
 
-Po zarejestrowaniu aplikacji i utworzeniu zasad należy skonfigurować aplikację w celu korzystania z katalogu usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację SPA JavaScript, którą można pobrać z witryny GitHub. 
+Po zarejestrowaniu aplikacji i utworzeniu przepływów użytkownika należy skonfigurować aplikację w celu korzystania z katalogu usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację SPA JavaScript, którą można pobrać z witryny GitHub. 
 
 [Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
-Przykładowa aplikacja pokazuje, jak aplikacja jednostronicowa może używać usługi Azure AD B2C na potrzeby tworzenia nowych kont i logowania użytkowników, a także wywoływania chronionego internetowego interfejsu API. Należy zmodyfikować aplikację tak, aby korzystała z rejestracji aplikacji w Twoim katalogu i konfigurowała utworzone zasady. 
+Przykładowa aplikacja pokazuje, jak aplikacja jednostronicowa może używać usługi Azure AD B2C na potrzeby tworzenia nowych kont i logowania użytkowników, a także wywoływania chronionego internetowego interfejsu API. Należy zmodyfikować aplikację tak, aby korzystała z rejestracji aplikacji w Twoim katalogu i konfigurowała utworzone przepływy użytkownika. 
 
 Aby zmienić ustawienia aplikacji:
 
@@ -151,7 +174,7 @@ Aby zmienić ustawienia aplikacji:
     };
     ```
 
-    Nazwa zasad używanych w tym samouczku to **B2C_1_SiUpIn**. Jeśli używasz innej nazwy zasad, użyj jej w obszarze wartości `authority`.
+    Nazwa przepływu użytkownika używanego w tym samouczku to **B2C_1_SiUpIn**. Jeśli używasz innej nazwy przepływu użytkownika, użyj jej w obszarze wartości `authority`.
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
@@ -175,11 +198,11 @@ Przykładowa aplikacja obsługuje rejestrację, logowanie, edytowanie profilów 
 
 ### <a name="sign-up-using-an-email-address"></a>Rejestrowanie się przy użyciu adresu e-mail
 
-1. Kliknij przycisk **Zaloguj się**, aby zarejestrować się jako użytkownik aplikacji SPA. W tym procesie są używane zasady **B2C_1_SiUpIn** zdefiniowane w poprzednim kroku.
+1. Kliknij przycisk **Zaloguj się**, aby zarejestrować się jako użytkownik aplikacji SPA. W tym procesie jest używany przepływ użytkownika **B2C_1_SiUpIn** zdefiniowany w poprzednim kroku.
 
 2. Usługa Azure AD B2C wyświetli stronę logowania z linkiem rejestracji. Ponieważ nie masz jeszcze konta, kliknij link **Sign up now** (Zarejestruj się teraz). 
 
-3. W przepływie pracy rejestracji jest wyświetlana strona do zbierania i weryfikowania tożsamości użytkownika przy użyciu adresu e-mail. Przepływ pracy rejestracji zbiera też hasło użytkownika i żądane atrybuty zdefiniowane w zasadach.
+3. W przepływie pracy rejestracji jest wyświetlana strona do zbierania i weryfikowania tożsamości użytkownika przy użyciu adresu e-mail. Przepływ pracy rejestracji zbiera też hasło użytkownika i żądane atrybuty zdefiniowane w przepływie użytkownika.
 
     Użyj prawidłowego adresu e-mail i przeprowadź weryfikację przy użyciu kodu weryfikacyjnego. Ustaw hasło. Wprowadź wartości żądanych atrybutów. 
 
@@ -198,7 +221,7 @@ Jeśli planujesz wypróbować inne samouczki usługi Azure AD B2C, możesz uży�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pokazano, jak utworzyć katalog usługi Azure AD B2C, utworzyć zasady i zaktualizować przykładową aplikację jednostronicową w celu korzystania z katalogu usługi Azure AD B2C. Przejdź do następnego samouczka, aby dowiedzieć się, jak rejestrować, konfigurować i wywoływać chroniony internetowy interfejs API z poziomu aplikacji klasycznej.
+W tym samouczku pokazano, jak utworzyć katalog usługi Azure AD B2C, utworzyć przepływy użytkownika i zaktualizować przykładową aplikację jednostronicową w celu korzystania z katalogu usługi Azure AD B2C. Przejdź do następnego samouczka, aby dowiedzieć się, jak rejestrować, konfigurować i wywoływać chroniony internetowy interfejs API z poziomu aplikacji klasycznej.
 
 > [!div class="nextstepaction"]
 > [Przykłady kodu usługi Azure AD B2C](https://azure.microsoft.com/resources/samples/?service=active-directory-b2c&sort=0)

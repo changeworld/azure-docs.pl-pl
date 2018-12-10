@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: c5dcfcb61903c3dbb92e942a5d3dca264ad454e3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166903"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834387"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Omówienie integracji usług Azure Service Bus i Event Grid
 
@@ -36,10 +36,7 @@ Do włączenia tej funkcji potrzebne są następujące elementy:
 ![19][]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Weryfikowanie dostępu współautora
-
-Przejdź do przestrzeni nazw usługi Service Bus i wybierz opcję **Kontrola dostępu (IAM)**, jak pokazano tutaj:
-
-![1][]
+Przejdź do przestrzeni nazw usługi Service Bus, a następnie wybierz opcję **Kontrola dostępu (IAM)** i kartę **Przypisania ról**. Sprawdź, czy masz dostęp współautora do przestrzeni nazw. 
 
 ### <a name="events-and-event-schemas"></a>Zdarzenia i schematy zdarzeń
 

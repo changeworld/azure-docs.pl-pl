@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 3fe1ee3d23594d5c1697ed08b17cb0b4d5b7a2fd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9e8a72564151bea9194ef5180589fa8eae001df5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857639"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863724"
 ---
 # <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Samouczek: wdrażanie kontenera w usłudze Azure Container Instances
 
@@ -52,10 +52,10 @@ az acr credential show --name <acrName> --query "passwords[0].value"
 
 ### <a name="deploy-container"></a>Wdrażanie kontenera
 
-Teraz użyj polecenia [az container create][az-container-create], aby wdrożyć kontener. Zastąp elementy `<acrLoginServer>` i `<acrPassword>` wartościami uzyskanymi przy użyciu dwóch poprzednich poleceń. Zastąp wartość `<acrName>` nazwą rejestru kontenerów.
+Teraz użyj polecenia [az container create][az-container-create], aby wdrożyć kontener. Zastąp elementy `<acrLoginServer>` i `<acrPassword>` wartościami uzyskanymi przy użyciu dwóch poprzednich poleceń. Zastąp wartość `<acrName>` nazwą rejestru kontenerów oraz wartość `<aciDnsLabel>` żądaną nazwą DNS.
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
 W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy Azure. Wartość `--dns-name-label` musi być unikatowa w regionie platformy Azure, w którym tworzysz wystąpienia kontenera. Zmodyfikuj wartość w poprzednim poleceniu, jeśli podczas wykonywania polecenia zostanie wyświetlony komunikat o błędzie **etykiety nazwy DNS**.

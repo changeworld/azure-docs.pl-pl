@@ -4,18 +4,16 @@ description: Samouczek dotyczący sposobu konfigurowania przepływu pracy kompil
 services: cosmos-db
 keywords: Emulator usługi Azure Cosmos DB
 author: deborahc
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 782975cfa548d214515761e45b8f79a2219831e2
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8b64142a7d693e8e48e1739a61978abbab740e3d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036975"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875216"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -23,7 +21,7 @@ Emulator usługi Azure Cosmos DB zapewnia środowisko lokalne, które emuluje us
 
 Zadanie kompilacji emulatora usługi Azure Cosmos DB dla usługi Azure DevOps umożliwia wykonanie tych czynności w środowisku ciągłej integracji. Dzięki zadaniu kompilacji możesz uruchamiać testy z użyciem emulatora w ramach przepływów pracy kompilacji i wydania. Zadanie uruchamia kontener platformy Docker z uruchomionym emulatorem i dostarcza punkt końcowy, który może być używany przez pozostałą część definicji kompilacji. Możesz utworzyć i uruchomić dowolną liczbę wystąpień emulatora — każde w oddzielnym kontenerze. 
 
-W tym artykule pokazano, jak skonfigurować potok ciągłej integracji w usłudze Azure DevOps dla aplikacji ASP.NET, w której wykorzystano zadanie kompilacji emulatora usługi Cosmos DB w celu wykonywania testów. 
+W tym artykule pokazano, jak skonfigurować potok ciągłej integracji w usłudze Azure DevOps dla aplikacji ASP.NET, w której wykorzystano zadanie kompilacji emulatora usługi Cosmos DB w celu wykonywania testów. Za pomocą podobnego podejścia można skonfigurować potok ciągłej integracji dla aplikacji Node.js lub Python. 
 
 ## <a name="install-the-emulator-build-task"></a>Instalowanie zadania kompilacji emulatora
 
@@ -82,6 +80,8 @@ Poniżej przedstawiono przykładowy plik **.runsettings**, który definiuje para
   </TestRunParameters>
 </RunSettings>
 ```
+
+Jeśli konfigurujesz potok ciągłej integracji/ciągłego wdrażania dla aplikacji, która używa interfejsu API bazy danych MongoDB usługi Azure Cosmos DB, to parametry połączenia bazy danych MongoDB domyślnie zawierają numer portu 10255. Jednak ten port nie jest obecnie otwarty. Jako alternatywny należy używać portu 10250 w celu ustanowienia połączenia. Parametry połączenia interfejsu API bazy danych MongoDB pozostają takie same, z wyjątkiem obsługiwanego numeru portu: 10250 zamiast 10255.
 
 Te parametry `TestRunParameters` są wywoływane za pośrednictwem właściwości `TestContext` w projekcie testowym aplikacji. Oto przykład testu wykonywanego względem usługi Cosmos DB.
 

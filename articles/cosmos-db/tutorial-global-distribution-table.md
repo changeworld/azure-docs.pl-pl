@@ -1,23 +1,21 @@
 ---
-title: Samouczek dotyczący dystrybucji globalnej usługi Azure Cosmos DB dla interfejsu API tabel | Microsoft Docs
+title: Samouczek dystrybucji globalnej usługi Azure Cosmos DB dla interfejsu API tabel
 description: Dowiedz się, jak skonfigurować dystrybucję globalną usługi Azure Cosmos DB przy użyciu interfejsu API tabel.
 services: cosmos-db
 keywords: global distribution, Table
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-table
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7baa1e5b4b50d1f420b514854fa4d4c9ef786c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 12/13/2017
+ms.openlocfilehash: 92ae0c3dc07c6dada80e081c65484e4f6bf4f947
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582139"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874876"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Konfigurowanie dystrybucji globalnej usługi Azure Cosmos DB przy użyciu interfejsu API tabel
 

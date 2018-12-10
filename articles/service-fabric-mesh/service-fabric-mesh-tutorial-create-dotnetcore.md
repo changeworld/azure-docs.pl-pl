@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb68c7aacb4c62237fc4cd75ec430997b0145454
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979198"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888753"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Samouczek: tworzenie, debugowanie, wdrażanie i aktualizowanie aplikacji usługi Service Fabric Mesh dla wielu usług
 
@@ -80,7 +80,7 @@ W polu **Nazwa usługi** wpisz **WebFrontEnd**. Naciśnij przycisk **OK**, aby u
 
 ![Okno dialogowe nowego projektu usługi Service Fabric Mesh w programie Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-service-fabric-service.png)
 
-Pojawi się okno dialogowe **Nowa aplikacja internetowa platformy ASP.NET Core**. W oknie dialogowym **Nowa aplikacja internetowa platformy ASP.NET Core** wybierz pozycję **Aplikacja internetowa**, a następnie kliknij przycisk **OK**.
+Zostanie wyświetlone okno dialogowe Aplikacja internetowa platformy ASP.NET Core. Wybierz pozycję **Aplikacja internetowa**, a następnie kliknij przycisk **OK**.
 
 ![Nowa aplikacja platformy ASP.NET Core w programie Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
@@ -88,13 +88,13 @@ Masz już aplikację usługi Service Fabric Mesh. Kolejnym krokiem jest utworzen
 
 ## <a name="create-the-to-do-items-model"></a>Tworzenie modelu elementów do wykonania
 
-Dla uproszczenia elementy do wykonania są przechowywane na liście w pamięci. Utwórz bibliotekę klas do obsługi elementów do wykonania oraz listę służącą do ich przechowywania. W programie Visual Studio przy załadowanym projekcie **todolistapp** wybierz pozycję **Plik** > **Dodaj** > **Nowy projekt**.
+Dla uproszczenia elementy do wykonania są przechowywane na liście w pamięci. Utwórz bibliotekę klas do obsługi elementów do wykonania oraz listę służącą do ich przechowywania. W programie Visual Studio przy załadowanym rozwiązaniu **todolistapp** wybierz pozycję **Plik** > **Dodaj** > **Nowy projekt**.
 
-W oknie dialogowym **Nowy projekt** w polu **Wyszukaj** u góry wpisz `C# .net core class`. Wybierz szablon **Biblioteka klas (.NET Core)**.
+W oknie dialogowym **Dodawanie nowego projektu** w polu **Wyszukaj** u góry wpisz `C# .net core class`. Wybierz szablon **Biblioteka klas (.NET Core)**.
 
 W polu **Nazwa** wpisz `Model`. Kliknij przycisk **OK**, aby utworzyć bibliotekę klas.
 
-W eksploratorze rozwiązań w obszarze **Model** kliknij prawym przyciskiem myszy pozycję **Class1.cs** i wybierz polecenie **Zmień nazwę**. Zmień nazwę klasy **ToDoItem.cs**. Jeśli pojawi się monit o zmianę nazw wszystkich odwołań, kliknij przycisk **Tak**.
+W eksploratorze rozwiązań w obszarze **Model** kliknij prawym przyciskiem myszy pozycję **Class1.cs** i wybierz polecenie **Zmień nazwę**. Zmień nazwę klasy **ToDoItem.cs**. Gdy pojawi się monit o zmianę nazw wszystkich odwołań, kliknij przycisk **Tak**.
 
 Do pustego elementu `class ToDoItem` skopiuj następującą zawartość:
 
@@ -124,7 +124,7 @@ public class ToDoItem
 }
 ```
 
-Ta klasa reprezentuje poszczególne elementy do wykonania.
+Ta klasa reprezentuje elementy do wykonania.
 
 W programie Visual Studio kliknij prawym przyciskiem myszy bibliotekę klas **Model**, a następnie wybierz polecenie **Dodaj** > **Klasa...**, aby utworzyć listę do przechowywania elementów do wykonania. Zostanie wyświetlone okno dialogowe **Dodawanie nowego elementu**. Opcję **Nazwa** ustaw na wartość `ToDoList.cs` i kliknij przycisk **Dodaj**.
 
@@ -186,9 +186,9 @@ Następnym krokiem jest utworzenie usługi Service Fabric, która będzie śledz
 
 W programie Visual Studio w oknie **eksploratora rozwiązań** kliknij prawym przyciskiem myszy pozycję **todolistapp** i kliknij polecenie **Dodaj** > **Nowa usługa Service Fabric...**
 
-Pojawi się okno dialogowe **Nowa usługa Service Fabric**. Wybierz typ projektu **ASP.NET Core** i upewnij się, że opcja **System operacyjny kontenera** jest ustawiona na wartość **Windows**.
+Pojawi się okno dialogowe **Nowa usługa Service Fabric**. Wybierz typ projektu **ASP.NET Core** i upewnij się, że opcja **System operacyjny kontenera** jest ustawiona na wartość **Windows**. W polu **Nazwa usługi** wpisz **ToDoService**. Kliknij przycisk **OK**, aby utworzyć usługę platformy ASP.NET Core.
 
-W polu **Nazwa usługi** wpisz **ToDoService**. Kliknij przycisk **OK**, aby utworzyć usługę platformy ASP.NET Core. Pojawi się okno dialogowe **Nowa aplikacja internetowa platformy ASP.NET Core**. W tym oknie dialogowym wybierz pozycję **API**, a następnie przycisk **OK** — projekt usługi zostanie dodany do rozwiązania.
+Pojawi się okno dialogowe **Nowa aplikacja internetowa platformy ASP.NET Core**. W tym oknie dialogowym wybierz pozycję **API**, a następnie przycisk **OK** — projekt usługi zostanie dodany do rozwiązania.
 
 ![Nowa aplikacja platformy ASP.NET Core w programie Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-webapi.png)
 
@@ -203,7 +203,7 @@ W oknie dialogowym **Menadżer odwołań** zaznacz pole wyboru obok pozycji **Mo
 Kolejnym krokiem jest utworzenie kontekstu danych, który umożliwia koordynowanie wysyłania danych z modelu danych.
 
 Aby dodać klasę kontekstu danych, w Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **ToDoService**, a następnie kliknij polecenie **Dodaj** > **Klasa**.
-W wyświetlonym oknie dialogowym **Dodawanie nowego elementu** upewnij się, że wybrano opcję **Klasa**, w polu **Nazwa** ustaw wartość `DataContext`, a następnie kliknij przycisk **Dodaj**.
+W wyświetlonym oknie dialogowym **Dodawanie nowego elementu** upewnij się, że wybrano opcję **Klasa**, w polu **Nazwa** ustaw wartość `DataContext.cs`, a następnie kliknij przycisk **Dodaj**.
 
 W pliku **DataContext.cs** do pustego elementu `class DataContext` skopiuj następującą zawartość:
 
@@ -313,7 +313,8 @@ Zastąp całą zawartość pliku poniższym kodem HTML, który definiuje prostą
 </div>
 ```
 
-Wyświetl kod strony Index w **Eksploratorze rozwiązań**, otwierając plik **Index.cshtml**, a następnie plik **Index.cshtml.cs**.
+Kliknij ikonę listy rozwijanej dla pliku **Index.cshtml** w **Eksploratorze rozwiązań**, a następnie otwórz plik **Index.cshtml.cs**.
+
 W górnej części pliku **Index.cshtml.cs** dodaj element `using System.Net.Http;`
 
 Zastąp zawartość elementu `public class IndexModel` następującym kodem:
@@ -352,26 +353,41 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 
 Adres URL składa się z nazwy usługi i portu. Wszystkie te informacje można znaleźć w pliku service.yaml znajdującym się w projekcie **ToDoService**.
 
+> [!IMPORTANT]
+> W poniższych krokach zostaną zmodyfikowane pliki YAML.
+> Do uzyskania efektu wcięcia zmiennych w pliku service.yaml należy użyć spacji, a nie znaków tabulacji. W przeciwnym razie plik nie zostanie skompilowany. Program Visual Studio może wstawiać znaki tabulacji podczas tworzenia zmiennych środowiskowych. Wszystkie znaki tabulacji należy zastąpić spacjami. Mimo że dane wyjściowe debugowania **kompilacji** będą zawierać błędy, aplikacja zostanie uruchomiona, lecz nie będzie działać poprawnie do momentu przekonwertowania tabulatorów na spacje i ponownego skompilowania. Aby upewnić się, że plik service.yaml nie zawiera znaków tabulacji, w edytorze Visual Studio można włączyć wyświetlanie białych znaków, wybierając pozycję **Edytuj**  > **Zaawansowane**  > **Wyświetl białe znaki**.
+> Należy pamiętać, że pliki service.yaml są przetwarzane przy użyciu ustawień regionalnych języka angielskiego. Na przykład dla separatora dziesiętnego należy zastosować kropkę, a nie przecinek.
+
 W **Eksploratorze rozwiązań** przejdź do projektu **ToDoService**, a następnie otwórz plik **Zasoby usługi** > **service.yaml**.
 
 ![Rysunek 1. Plik service.yaml projektu ToDoService](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
-* Nazwa usługi, `ToDoService`, znajduje się w sekcji `services:` po elemencie `name:` — patrz (1) na powyższej ilustracji.
-* Port, `20008`, znajduje się w sekcji `endpoints:` po elemencie `port:` — patrz (2) na powyższej ilustracji. Numer portu w Twoim projekcie może być inny.
+* Nazwa usługi, `ToDoService`, znajduje się w sekcji `services:` — patrz (1) na powyższej ilustracji.
+* Port, `80`, znajduje się w sekcji `endpoints:` — patrz (2) na powyższej ilustracji. Numer portu w Twoim projekcie będzie prawdopodobnie inny.
 
-Następnym krokiem jest zdefiniowanie w projekcie WebFrontEnd zmiennych środowiskowych reprezentujących nazwę usługi i numer portu w celu umożliwienia wywoływania usługi zaplecza.
+Następnie należy zdefiniować zmienne środowiskowe reprezentujące nazwę usługi i numer portu w projekcie usługi WebFrontEnd, aby umożliwić wywoływanie usługi zaplecza.
 
 W **Eksploratorze rozwiązań** przejdź do pozycji **WebFrontEnd** > **Zasoby usługi** > **service.yaml**, aby zdefiniować zmienne, które określają adres usługi zaplecza.
 
-W pliku service.yaml dodaj następujące zmienne w sekcji `environmentVariables`. Odstępy mają znaczenie — dodawane zmienne muszą zostać wyrównane względem innych zmiennych w sekcji `environmentVariables:`
+W pliku service.yaml dodaj następujące zmienne w ramach elementu `environmentVariables:` (najpierw należy usunąć znak komentarza `#`, aby usunąć oznaczenie elementu `environmentVariables:` jako komentarza). Odstępy są uwzględniane, więc należy wyrównać zmienne do innych zmiennych w ramach elementu `environmentVariables:`. Bardzo ważne jest, aby wartość elementu ApiHostPort odpowiadała wartości portu elementu ToDoServiceListener dostępnej w pliku service.yaml usługi ToDoService.
 
-> [!IMPORTANT]
-> Do uzyskania efektu wcięcia zmiennych w pliku service.yaml należy użyć spacji, a nie znaków tabulacji. W przeciwnym razie plik nie zostanie skompilowany. Program Visual Studio może wstawiać znaki tabulacji podczas tworzenia zmiennych środowiskowych. Wszystkie znaki tabulacji należy zastąpić spacjami. Mimo że w procesie **kompilacji** w danych wyjściowych debugowania będą wyświetlane błędy, aplikacja zostanie uruchomiona. Jednak nie będzie ona działać do momentu przekonwertowania znaków tabulacji na spacje. Aby upewnić się, że plik service.yaml nie zawiera znaków tabulacji, w edytorze Visual Studio można włączyć wyświetlanie białych znaków, wybierając pozycję **Edytuj**  > **Zaawansowane**  > **Wyświetl białe znaki**.
-> Należy pamiętać, że pliki service.yaml są przetwarzane przy użyciu ustawień regionalnych języka angielskiego.  Jeśli na przykład jest potrzebne użycie separatora dziesiętnego, należy zastosować kropkę, a nie przecinek.
+```yaml
+- name: ApiHostPort
+  value: 
+- name: ToDoServiceName
+  value: ToDoService
+```
+
+> [!Tip]
+> Istnieją dwa sposoby określenia wartości dla elementu `ToDoServiceName`: 
+> - Za pomocą nazwy usługi rozpoznawanej zarówno w scenariuszu debugowania w systemie Windows 10, jak i podczas wdrażania usługi w usłudze Azure Service Fabric Mesh.
+> - W pełni kwalifikowana nazwa to servicename.appname. Ta opcja działa tylko podczas debugowania w systemie Windows 10.
+> Dobrym rozwiązaniem jest używanie tylko nazwy usługi do rozpoznawania usługi.
 
 Plik **service.yaml** w Twoim projekcie **WebFrontEnd** powinien wyglądać mniej więcej tak, mimo że wartość `ApiHostPort` prawdopodobnie będzie inna:
 
 ![Plik service.yaml w projekcie WebFrontEnd](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-envvars.png)
+
 
 Teraz możesz przystąpić do tworzenia i wdrażania obrazu aplikacji usługi Service Fabric Mesh oraz usługi internetowej zaplecza w lokalnym klastrze.
 

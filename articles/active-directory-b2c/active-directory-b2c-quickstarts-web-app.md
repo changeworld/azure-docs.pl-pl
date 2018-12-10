@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c4fa3f9cbba558cd743f85119dd9e91bd73ce062
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: edfd17763a7d555e773e7d271ed5cc22a0307996
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250604"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726597"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji platformy ASP.NET przy użyciu usługi Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamoś
 
     Przykładowe rozwiązanie zawiera dwa projekty:
 
-    - **TaskWebApp** — aplikacja internetowa, która pozwala tworzyć i edytować listę zadań. Ta aplikacja internetowa używa zasad **rejestracji lub logowania** na potrzeby rejestrowania lub logowania użytkowników.
+    - **TaskWebApp** — aplikacja internetowa, która pozwala tworzyć i edytować listę zadań. Ta aplikacja internetowa używa przepływu użytkownika **rejestracji lub logowania** na potrzeby rejestrowania lub logowania użytkowników.
     - **TaskService** — internetowy interfejs API, który obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
 
 ## <a name="run-the-application-in-visual-studio"></a>Uruchamianie aplikacji w programie Visual Studio
@@ -67,7 +67,7 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamoś
 
 ## <a name="edit-your-profile"></a>Edycja profilu
 
-Usługa Azure Active Directory B2C zawiera funkcję umożliwiającą użytkownikom aktualizowanie profilów. Przykładowa aplikacja internetowa używa zasad profilu edycji usługi Azure AD B2C dla przepływu pracy. 
+Usługa Azure Active Directory B2C zawiera funkcję umożliwiającą użytkownikom aktualizowanie profilów. Przykładowa aplikacja internetowa używa przepływu użytkownika profilu edycji usługi Azure AD B2C dla przepływu pracy. 
 
 1. Na pasku menu aplikacji kliknij nazwę profilu, a następnie wybierz pozycję **Edit profile** (Edytuj profil), aby edytować utworzony profil.
 

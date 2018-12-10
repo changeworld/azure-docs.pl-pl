@@ -8,19 +8,19 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: b8263c399f287be79590860cce7036207ef2e3f7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: db09203e86c32a7e03b4b2c4bcc670d16583ab20
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243747"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879438"
 ---
-# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Co się dzieje z aplikacją Workbench w usłudze Azure Machine Learning (wersja zapoznawcza)?
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning"></a>Co się dzieje z aplikacją Workbench w usłudze Azure Machine Learning?
 
-Aplikacja Workbench i niektóre inne wczesne funkcje zostały zastąpione w wersji z września 2018 r., aby zwolnić miejsce na ulepszoną [architekturę](concept-azure-machine-learning-architecture.md). Wersja zawiera wiele znaczących aktualizacji wprowadzonych w oparciu o opinie klientów, które mają na celu udoskonalenie środowiska użytkownika. Podstawowe funkcje od przebiegów eksperymentalnych do wdrożenia modelu nie zmieniły się, ale teraz można używać niezawodnego <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK</a> i [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) do wykonywania zadań i potoków uczenia maszynowego.  
+Aplikacja Workbench i niektóre inne wczesne funkcje zostały wycofane i zastąpione w wersji z września 2018 r., aby zwolnić miejsce na ulepszoną [architekturę](concept-azure-machine-learning-architecture.md). Wersja zawiera wiele znaczących aktualizacji wprowadzonych w oparciu o opinie klientów, które mają na celu udoskonalenie środowiska użytkownika. Podstawowe funkcje od przebiegów eksperymentalnych do wdrożenia modelu nie zmieniły się, ale teraz można używać niezawodnego <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK</a> i [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) do wykonywania zadań i potoków uczenia maszynowego.  
 
-Z tego artykułu dowiesz się, co się zmieniło i jak zmiany wpłynęły na zadania wykonywane obecnie przy użyciu usługi Azure Machine Learning.
+Z tego artykułu dowiesz się, co się zmieniło i jak zmiany wpłynęły na zadania wykonywane obecnie przy użyciu aplikacji Azure Machine Learning Workbench i jej interfejsów API.
 
 ## <a name="what-changed"></a>Co się zmieniło?
 
@@ -44,10 +44,10 @@ Większość artefaktów utworzonych w starszej wersji usługi Azure Machine Lea
 
 Z kont eksperymentowania i zarządzania modelami oraz z aplikacji Workbench można korzystać jeszcze przez jakiś czas po wrześniu 2018 r. Pomoc techniczna dla wymienionych zasobów będzie wycofywana stopniowo w ciągu 3–4 miesięcy po tym wydaniu. Dokumentację dla starych funkcji nadal można znaleźć w [sekcji Zasoby](../desktop-workbench/tutorial-classifying-iris-part-1.md) w dolnej części spisu treści.
 
-|Etap|Szczegóły pomocy technicznej dla wcześniejszych funkcji|
+|Faza&nbsp;wycofania|Szczegóły pomocy technicznej dla wcześniejszych funkcji|
 |:---:|----------------|
-|1|Kończy się możliwość tworzenia _konta usługi Eksperymentowanie w usłudze Azure Machine Learning_ i _konta usługi Zarządzanie modelami_ w witrynie Azure Portal i za pomocą interfejsu wiersza polecenia. Możliwość tworzenia środowisk obliczeniowych usługi ML z poziomu interfejsu wiersza polecenia także jest wycofywana. Jeśli masz istniejące konto, interfejs wiersza polecenia i aplikacja klasyczna Workbench na tym etapie nadal będą działać.|
-|2|Pomoc techniczna dla wszystkich innych zasobów, w tym dla pozostałych interfejsów API i klasycznej aplikacji Workbench jest na tym etapie wycofywana.|
+|4 grudnia 2018 r.|Nie ma już możliwości tworzenia _konta usługi Eksperymentowanie w usłudze Azure Machine Learning_ i _konta usługi Zarządzanie modelami_ w witrynie Azure Portal i za pomocą interfejsu wiersza polecenia. Możliwość tworzenia środowisk obliczeniowych usługi ML z poziomu interfejsu wiersza polecenia także została wycofana. Jeśli masz istniejące konto, interfejs wiersza polecenia i aplikacja klasyczna Workbench na tym etapie nadal będą działać.|
+|9 stycznia 2019 r.|W tym dniu kończy się pomoc techniczna dla wszystkich innych zasobów, w tym dla pozostałych interfejsów API i klasycznej aplikacji Workbench.|
 
 [Zacznij migrację](how-to-migrate.md) już dziś. Wszystkie najnowsze możliwości są dostępne za pomocą nowego zestawu <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) i witryny [Portal](quickstart-get-started.md).
 
@@ -92,15 +92,15 @@ W nowszej wersji modele są wdrażane jako usługi internetowe w klastrach usłu
 
 ## <a name="what-about-the-old-sdk--cli"></a>Co stanie się ze starym zestawem SDK i interfejsem wiersza polecenia?
 
-Będą one nadal działać przez pewien czas (zobacz [oś czasu](#timeline) powyżej). Zalecamy rozpoczęcie tworzenia nowych eksperymentów i modeli przy użyciu najnowszego zestawu SDK i/lub interfejsu wiersza polecenia.
+Będą one nadal działać do stycznia (zobacz [oś czasu](#timeline) powyżej). Zalecamy rozpoczęcie tworzenia nowych eksperymentów i modeli przy użyciu najnowszego zestawu SDK i/lub interfejsu wiersza polecenia.
 
 W najnowszej wersji nowy zestaw SDK języka Python umożliwia interakcję z usługą Azure Machine Learning w dowolnym środowisku języka Python. Dowiedz się, jak zainstalować najnowszy <a href="https://aka.ms/aml-sdk" target="_blank">zestaw SDK</a>.  Można również użyć [zaktualizowanego rozszerzenia uczenia maszynowego dla interfejsu wiersza polecenia platformy Azure](reference-azure-machine-learning-cli.md) z bogatym zestawem poleceń `az ml`, aby pracować z usługą w dowolnym środowisku wiersza polecenia, w tym w usłudze Cloud Shell witryny Azure Portal.
 
-## <a name="what-about-vs-code-tools-for-ai"></a>Co się stanie z narzędziami VS Code Tools for AI?
+## <a name="what-about-azure-machine-learning-for-visual-studio-code"></a>A co z usługą Azure Machine Learning dla programu Visual Studio Code?
 
-W najnowszej wersji rozszerzenie Visual Studio (VS) Code Tools for AI zostało rozbudowane i ulepszone w celu umożliwienia współpracy z wspomnianymi powyżej nowymi funkcjami.
+W najnowszej wersji usługa Azure Machine Learning dla programu Visual Studio (VS) Code została rozbudowana i ulepszona w celu umożliwienia współpracy ze wspomnianymi powyżej nowymi funkcjami.
 
-[ ![Visual Studio Code Tools for AI](./media/overview-what-happened-to-workbench/vscode.png) ] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[ ![Azure Machine Learning dla programu Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png) ] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>Co się stanie z pakietami domen?
 

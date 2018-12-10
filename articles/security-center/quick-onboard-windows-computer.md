@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/2/2018
+ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 55bb7242427bf85d10fac0a44e2b2eac3a5181ad
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 57560a035f4d0468625e4c8f3ad6b7a7e516590f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023004"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850682"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Windows do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta Microsoft Monitoring Agent.
@@ -30,7 +30,7 @@ Ten przewodnik Szybki start przedstawia sposób instalowania agenta Microsoft Mo
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
 
-Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed rozpoczęciem tego przewodnika Szybki start. Zobacz [Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa](security-center-get-started.md), aby uzyskać instrukcje dotyczące uaktualnienia. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie przez pierwsze 60 dni.
+Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed rozpoczęciem tego przewodnika Szybki start. Zobacz [Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa](security-center-get-started.md), aby uzyskać instrukcje dotyczące uaktualnienia. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Dodawanie nowego komputera z systemem Windows
 
@@ -75,7 +75,7 @@ Teraz musisz zainstalować pobrany plik na komputerze docelowym.
 
 Po ukończeniu instalacji program **Microsoft Monitoring Agent** będzie wyświetlany w **Panelu sterowania**. Możesz tam przejrzeć konfigurację i sprawdzić, czy agent został połączony.
 
-Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta, zobacz [Connect Windows computers (Łączenie komputerów z systemem Windows)](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard).
+Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta, zobacz [Connect Windows computers (Łączenie komputerów z systemem Windows)](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
 Teraz możesz monitorować maszyny wirtualne platformy Azure oraz komputery spoza platformy Azure w jednym miejscu. W obszarze **Obliczanie** zawarto przegląd wszystkich maszyn wirtualnych i komputerów wraz z zaleceniami. Każda kolumna reprezentuje jeden zestaw zaleceń. Kolor reprezentuje bieżący stan zabezpieczeń maszyny wirtualnej lub komputera dla tego zalecenia. Ponadto usługa Security Center przedstawia wszelkie wykrycia dotyczące tych komputerów w alertach zabezpieczeń.
 

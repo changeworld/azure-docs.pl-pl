@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: d032d8cc33d33954406ad45e64fc199d569abf41
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9c2280d2b571bf9f08adb69b67992376a71c1463
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620939"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723639"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure Storage
 
@@ -74,7 +74,7 @@ Przypisanej przez system tożsamości zarządzanej maszyny wirtualnej można uż
 
 1. Przejdź z powrotem do nowo utworzonego konta magazynu.  
 2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  
-3. Kliknij przycisk **+ Dodaj** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej.
+3. Kliknij przycisk **+ Dodaj przypisanie roli** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej.
 4. W obszarze **Rola** wybierz z listy rozwijanej pozycję **Czytnik danych obiektu blob magazynu (wersja zapoznawcza)**. 
 5. Z następnej listy rozwijanej w obszarze **Przypisz dostęp do** wybierz pozycję **Maszyna wirtualna**.  
 6. Następnie upewnij się, że odpowiednia subskrypcja znajduje się na liście rozwijanej **Subskrypcja**, po czym ustaw opcję **Grupa zasobów** na wartość **Wszystkie grupy zasobów**.  

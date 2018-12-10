@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 179a13d6fbb162ae7727c6a176b60879901dc4d1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426190"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633728"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -40,7 +40,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie testowego środowiska sieciowego
 > * Wdrażanie zapory
 > * Tworzenie trasy domyślnej
-> * Konfigurowanie aplikacji w celu umożliwienia dostępu do witryny github.com
+> * Konfigurowanie aplikacji w celu umożliwienia dostępu do witryny msn.com
 > * Konfigurowanie reguły sieci w celu umożliwienia dostępu do zewnętrznych serwerów DNS
 > * Testowanie zapory
 
@@ -136,7 +136,7 @@ Wdróż zaporę w sieci wirtualnej.
 2. Kliknij pozycję **Sieć**, a po liście **Polecane** kliknij pozycję **Zobacz wszystko**.
 3. Kliknij pozycję **Zapora** > **Utwórz**. 
 4. Na stronie **Tworzenie zapory** strony skorzystaj z poniższej tabeli, aby skonfigurować zaporę:
-   
+
    |Ustawienie  |Wartość  |
    |---------|---------|
    |Name (Nazwa)     |Test-FW01|
@@ -146,12 +146,12 @@ Wdróż zaporę w sieci wirtualnej.
    |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: Test-FW-VN|
    |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 
-2. Kliknij pozycję **Przegląd + utwórz**.
-3. Przejrzyj podsumowanie, a następnie kliknij pozycję **Utwórz**, aby utworzyć zaporę.
+5. Kliknij pozycję **Przegląd + utwórz**.
+6. Przejrzyj podsumowanie, a następnie kliknij pozycję **Utwórz**, aby utworzyć zaporę.
 
    Wdrożenie potrwa klika minut.
-4. Po zakończeniu wdrażania przejdź do grupy zasobów **Test-FW-RG**, a następnie kliknij zaporę **Test-FW01**.
-6. Zanotuj prywatny adres IP. Użyjesz go później podczas tworzenia trasy domyślnej.
+7. Po zakończeniu wdrażania przejdź do grupy zasobów **Test-FW-RG**, a następnie kliknij zaporę **Test-FW01**.
+8. Zanotuj prywatny adres IP. Użyjesz go później podczas tworzenia trasy domyślnej.
 
 ## <a name="create-a-default-route"></a>Tworzenie trasy domyślnej
 
@@ -182,7 +182,7 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 
 ## <a name="configure-an-application-rule"></a>Konfigurowanie reguły aplikacji
 
-Jest to reguła aplikacji, która umożliwia ruchowi wychodzącemu dostęp do witryny github.com.
+Jest to reguła aplikacji, która umożliwia ruchowi wychodzącemu dostęp do witryny msn.com.
 
 1. Otwórz pozycję **Test-FW-RG** i kliknij zaporę **Test-FW01**.
 2. Na stronie **Test-FW01** w obszarze **Ustawienia** kliknij pozycję **Reguły**.
@@ -194,7 +194,7 @@ Jest to reguła aplikacji, która umożliwia ruchowi wychodzącemu dostęp do wi
 8. W obszarze **Reguły**, **Docelowa nazwa FQDN** w polu **Nazwa** wpisz wartość **AllowGH**.
 9. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
 10. W polu **Protocol:port** wpisz wartość **http, https**.
-11. W polu **Docelowa nazwa FQDN** wpisz wartość **github.com**
+11. W polu **Docelowa nazwa FQDN** wpisz wartość **msn.com**
 12. Kliknij pozycję **Add** (Dodaj).
 
 Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrastruktury, które domyślnie są dozwolone. Te nazwy FQDN są specyficzne dla platformy i nie można ich używać do innych celów. Aby uzyskać więcej informacji, zobacz [Infrastrukturalne nazwy FQDN](infrastructure-fqdns.md).
@@ -204,17 +204,17 @@ Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrast
 Jest to reguła sieci, która umożliwia ruchowi wychodzącemu dostęp do dwóch adresów IP na porcie 53 (DNS).
 
 1. Kliknij kartę **Kolekcja reguł sieci**.
-1. Kliknij pozycję **Dodaj kolekcję reguł sieci**.
-2. W polu **Nazwa** wpisz wartość **Net-Coll01**.
-3. W polu **Priorytet** wpisz wartość **200**.
-4. W polu **Akcja** wybierz opcję **Zezwalaj**.
+2. Kliknij pozycję **Dodaj kolekcję reguł sieci**.
+3. W polu **Nazwa** wpisz wartość **Net-Coll01**.
+4. W polu **Priorytet** wpisz wartość **200**.
+5. W polu **Akcja** wybierz opcję **Zezwalaj**.
 
 6. W obszarze **Reguły** w polu **Nazwa** wpisz wartość **AllowDNS**.
-8. W polu **Protokół** wybierz **UDP**.
-9. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
-10. W polu Adres docelowy wpisz wartość **209.244.0.3,209.244.0.4**
-11. W polu **Porty docelowe** wpisz wartość **53**.
-12. Kliknij pozycję **Add** (Dodaj).
+7. W polu **Protokół** wybierz **UDP**.
+8. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
+9. W polu Adres docelowy wpisz wartość **209.244.0.3,209.244.0.4**
+10. W polu **Porty docelowe** wpisz wartość **53**.
+11. Kliknij pozycję **Add** (Dodaj).
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Zmienianie podstawowego i pomocniczego adresu DNS dla interfejsu sieciowego **Srv-Work**
 
@@ -235,12 +235,12 @@ Teraz przetestuj zaporę, aby się upewnić, że działa ona zgodnie z oczekiwan
 1. W witrynie Azure Portal sprawdź ustawienia sieci dla maszyny wirtualnej **Srv-Work** i zanotuj prywatny adres IP.
 2. Połącz pulpit zdalny z maszyną wirtualną **Srv-Jump**, a następnie z tego miejsca otwórz połączenie pulpitu zdalnego z prywatnym adresem IP **Srv-Work**.
 
-5. Otwórz program Internet Explorer i przejdź do http://github.com.
-6. Kliknij przyciski **OK** > **Zamknij** dla alertów zabezpieczeń.
+3. Otwórz program Internet Explorer i przejdź do http://msn.com.
+4. Kliknij przyciski **OK** > **Zamknij** dla alertów zabezpieczeń.
 
-   Powinna zostać wyświetlona strona główna usługi GitHub.
+   Powinna zostać wyświetlona strona główna witryny MSN.
 
-7. Przejdź do http://www.msn.com.
+5. Przejdź do http://www.msn.com.
 
    Dostęp powinien zostać zablokowany przez zaporę.
 

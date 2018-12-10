@@ -1,9 +1,8 @@
 ---
-title: 'Szybki start: interfejs API tabel z językiem Python — Azure Cosmos DB | Microsoft Docs'
+title: 'Szybki start: interfejs API tabel z językiem Python — Azure Cosmos DB'
 description: Ten przewodnik Szybki start przedstawia sposób używania interfejsu API tabel usługi Azure Cosmos DB do tworzenia aplikacji przy użyciu witryny Azure Portal i języka Python
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: python
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 614e22cbbb6a94d9b148b29474a5fc82c3f0fef4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 70a7f17ed0ecb78337d13f68a260fc9f860e3a4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696789"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837022"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji interfejsu API tabel przy użyciu języka Python i usługi Azure Cosmos DB
 

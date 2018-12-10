@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób odnajdowania lokalnych maszyn wirtua
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2018
+ms.date: 11/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 18e1ecd4896277f0dd0dfc2ceac2185cbdd09b93
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: dddfbab1d40c03659ba346c9f0e898cfefc8d55e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241110"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847987"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Odnajdowanie i ocenianie lokalnych maszyn wirtualnych VMware pod kątem migracji na platformę Azure
 
@@ -26,16 +26,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie lokalnej maszyny wirtualnej modułu zbierającego w celu odnajdowania lokalnych maszyn wirtualnych VMware do oceny.
 > * Grupowanie maszyn wirtualnych i tworzenie oceny.
 
-
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **VMware**: do zarządzania maszynami wirtualnymi, które mają być poddane migracji, musi być używany program vCenter Server w wersji 5.5, 6.0 lub 6.5. Ponadto wymagany jest jeden host ESXi z wersją 5.0 lub nowszą w celu wdrożenia maszyny wirtualnej modułu zbierającego.
 - **Konto serwera vCenter**: wymagane jest konto tylko do odczytu w celu uzyskania dostępu do serwera vCenter. To konto jest używane w usłudze Azure Migrate do odnajdowania lokalnych maszyn wirtualnych.
 - **Uprawnienia**: na serwerze vCenter są wymagane uprawnienia do tworzenia maszyn wirtualnych przez zaimportowanie pliku w formacie OVA.
-- **Ustawienia statystyk**: to wymaganie wstępne dotyczy tylko modelu jednorazowego odnajdywania. Aby jednorazowe odnajdywanie działało, przed rozpoczęciem wdrażania należy ustawić poziom 3 w ustawieniach statystyk serwera vCenter. Jeśli poziom będzie niższy niż 3, ocena zostanie wykonana, ale nie zostaną zebrane dane dotyczące wydajności magazynu i sieci. W takim przypadku zalecenia dotyczące rozmiaru zostaną określone na podstawie danych dotyczących wydajności procesora i pamięci oraz danych konfiguracyjnych dysku i kart sieciowych.
 
 ## <a name="create-an-account-for-vm-discovery"></a>Tworzenie konta na potrzeby odnajdowania maszyny wirtualnej
 
@@ -67,20 +64,21 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 Usługa Azure Migrate tworzy lokalną maszynę wirtualną, nazywaną modułem zbierającym. Ta maszyna wirtualna służy do odnajdowania lokalnych maszyn wirtualnych VMware i wysyłania dotyczących ich metadanych do usługi Azure Migrate. Aby skonfigurować urządzenie modułu zbierającego, należy pobrać plik OVA i zaimportować go na lokalny serwer vCenter w celu utworzenia maszyny wirtualnej.
 
 1. W projekcie usługi Azure Migrate kliknij pozycję **Wprowadzenie** > **Odnajdź i oceń** > **Odnajdź maszyny**.
-2. W obszarze **Odnajdź maszyny** dostępne są dwie opcje dla urządzenia. Kliknij przycisk **Pobierz**, aby pobrać odpowiednie urządzenie na podstawie swoich preferencji.
+2. W obszarze **Odnajdywanie maszyn** kliknij pozycję **Pobierz**, aby pobrać urządzenie.
 
-    a. **Odnajdywanie jednorazowe:** urządzenie dla tego modelu komunikuje się z serwerem vCenter, aby zebrać metadane dotyczące maszyn wirtualnych. Podczas zbierania danych wydajności maszyn wirtualnych opiera się ono na historycznych danych wydajności przechowywanych na serwerze vCenter i zbiera historię wydajności za ostatni miesiąc. W tym modelu usługa Azure Migrate zbiera średnie dane licznika (w porównaniu z licznikiem szczytowym) dla każdej metryki, [dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Ponieważ jest to odnajdywanie jednorazowe, zmiany w środowisku lokalnym nie są odzwierciedlane po ukończeniu odnajdywania. Jeśli chcesz odzwierciedlić zmiany, musisz przeprowadzić ponowne odnajdywanie w tym samym środowisku dla tego samego projektu.
-
-    b. **Ciągłe odnajdywanie:** urządzenie dla tego modelu stale profiluje środowisko lokalne w celu zebrania danych użycia w czasie rzeczywistym dla każdej maszyny wirtualnej. W tym modelu liczniki szczytowe są zbierane dla każdej metryki (użycie procesora CPU, użycie pamięci itp.). Ten model nie zależy od ustawień statystyk serwera vCenter na potrzeby zbierania danych o wydajności. Z urządzenia możesz w dowolnym momencie zatrzymać ciągłe profilowanie.
-
-    Należy pamiętać, że urządzenie zbiera w sposób ciągły tylko dane dotyczące wydajności i nie wykrywa żadnych zmian konfiguracji w środowisku lokalnym (tzn. dodania lub usunięcia maszyny wirtualnej, dodania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
-
-    1. Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
-
-    2. Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
+    Urządzenie usługi Azure Migrate komunikuje się z programem vCenter Server i stale profiluje środowisko lokalne w celu zbierania danych użycia w czasie rzeczywistym dla każdej maszyny wirtualnej. Zbiera ono liczniki szczytowe dla każdej metryki (użycie procesora CPU, użycie pamięci itp.). Ten model nie zależy od ustawień statystyk serwera vCenter na potrzeby zbierania danych o wydajności. Z urządzenia możesz w dowolnym momencie zatrzymać ciągłe profilowanie.
 
     > [!NOTE]
-    > Funkcjonalność ciągłego odnajdywania jest dostępna w wersji zapoznawczej. Zalecamy używanie tej metody, ponieważ zbiera ona szczegółowe dane wydajności i daje w wyniku dokładne szacunki rozmiaru.
+    > Urządzenie jednorazowego odnajdywania jest już przestarzałe, ponieważ ta metoda opierała się na ustawieniach statystyk programu vCenter Server w zakresie dostępności punktów danych wydajności i zbierała średnią liczników wydajności, co powodowało określanie zbyt małego rozmiaru maszyn wirtualnych na potrzeby migracji na platformę Azure.
+
+    **Natychmiastowa gratyfikacja:** w przypadku urządzenia ciągłego odnajdywania po ukończeniu odnajdywania (które trwa kilka godzin w zależności od liczby maszyn wirtualnych) możesz od razu tworzyć oceny. Ponieważ zbieranie danych o wydajności rozpoczyna się wraz z rozpoczęciem odnajdywania, jeśli potrzebujesz natychmiastowych wyników, wybierz w ocenie kryterium ustalania rozmiaru *zgodnie ze środowiskiem lokalnym*. W przypadku ocen na podstawie wydajności zaleca się poczekanie przez co najmniej jeden dzień po rozpoczęciu odnajdywania, aby uzyskać miarodajne zalecenia dotyczące rozmiaru.
+
+    Urządzenie zbiera w sposób ciągły tylko dane dotyczące wydajności i nie wykrywa żadnych zmian konfiguracji w środowisku lokalnym (tzn. dodania lub usunięcia maszyny wirtualnej, dodania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
+
+    - Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
+
+    - Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
+
 
 3. W obszarze **Skopiuj poświadczenia projektu** skopiuj identyfikator projektu i klucz. Będą potrzebne do skonfigurowania modułu zbierającego.
 
@@ -96,7 +94,20 @@ Przed wdrożeniem pliku OVA sprawdź, czy jest on bezpieczny.
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Wygenerowany skrót powinien odpowiadać następującym ustawieniom.
 
-#### <a name="one-time-discovery"></a>Jednorazowe odnajdywanie
+#### <a name="continuous-discovery"></a>Ciągłe odnajdywanie
+
+  Do OVA w wersji 1.0.10.4
+
+  **Algorytm** | **Wartość skrótu**
+  --- | ---
+  MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
+  SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
+  SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
+
+
+#### <a name="one-time-discovery-deprecated-now"></a>Jednorazowe odnajdywanie (obecnie przestarzałe)
+
+Ten model jest już przestarzały, pomoc techniczna będzie zapewniania dla istniejących urządzeń.
 
   OVA w wersji 1.0.9.15
 
@@ -121,33 +132,6 @@ Przed wdrożeniem pliku OVA sprawdź, czy jest on bezpieczny.
   MD5 | d0363e5d1b377a8eb08843cf034ac28a
   SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
   SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
-
-  OVA w wersji 1.0.9.8
-
-  **Algorytm** | **Wartość skrótu**
-  --- | ---
-  MD5 | b5d9f0caf15ca357ac0563468c2e6251
-  SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
-  SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
-
-
-  OVA w wersji 1.0.9.7
-
-  **Algorytm** | **Wartość skrótu**
-  --- | ---
-  MD5 | d5b6a03701203ff556fa78694d6d7c35
-  SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-  SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-
-#### <a name="continuous-discovery"></a>Ciągłe odnajdywanie
-
-  Do OVA w wersji 1.0.10.4
-
-  **Algorytm** | **Wartość skrótu**
-  --- | ---
-  MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
-  SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
-  SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
 
 ## <a name="create-the-collector-vm"></a>Tworzenie maszyny wirtualnej modułu zbierającego
 
@@ -195,12 +179,9 @@ Zaimportuj pobrany plik na serwer vCenter.
 > Jeśli zmienisz ustawienia na ocenianej maszynie, przed uruchomieniem oceny ponownie wyzwól odnajdywanie. W tym celu w module zbierającym użyj opcji **Ponownie uruchom zbieranie**. Po zakończeniu zbierania wybierz opcję **Oblicz ponownie** dla oceny w portalu, aby pobrać zaktualizowane wyniki oceny.
 
 
-
 ### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
-W przypadku jednorazowego odnajdywania czas odnajdywania zależy od liczby odnajdywanych maszyn wirtualnych. Zazwyczaj dla 100 maszyn wirtualnych, gdy moduł zbierający zakończy działanie, zakończenie zbierania danych konfiguracji i wydajności trwa około godziny. Możesz utworzyć oceny (zarówno oparte na wydajności, jak i oceny lokalne) natychmiast po zakończeniu odnajdywania.
-
-W przypadku ciągłego odnajdywania (w wersji zapoznawczej) moduł zbierający będzie stale profilował środowisko lokalne i będzie nadal wysyłał dane dotyczące wydajności w godzinnych odstępach. Możesz przejrzeć maszyny w portalu po godzinie od rozpoczęcia odnajdywania. Zdecydowanie zalecamy poczekać co najmniej dzień przed utworzeniem jakichkolwiek ocen na podstawie wydajności dla maszyn wirtualnych.
+Urządzenie zbierające będzie stale profilować środowisko lokalne i będzie nadal wysyłać dane dotyczące wydajności w godzinnych odstępach. Możesz przejrzeć maszyny w portalu po godzinie od rozpoczęcia odnajdywania.
 
 1. W projekcie migracji kliknij pozycję **Zarządzaj** > **Maszyny**.
 2. Sprawdź, czy maszyny wirtualne, które miały zostać odnalezione, są widoczne w portalu.
@@ -208,7 +189,7 @@ W przypadku ciągłego odnajdywania (w wersji zapoznawczej) moduł zbierający b
 
 ## <a name="create-and-view-an-assessment"></a>Tworzenie i wyświetlanie oceny
 
-Po odnalezieniu maszyn wirtualnych należy je zgrupować i utworzyć ocenę.
+Po odnalezieniu maszyn wirtualnych w portalu należy je pogrupować i utworzyć oceny. Oceny zgodnie ze środowiskiem lokalnym możesz tworzyć od razu po odnalezieniu maszyn wirtualnych w portalu. Zalecamy poczekać co najmniej dzień przed utworzeniem jakichkolwiek ocen na podstawie wydajności, aby uzyskać miarodajne zalecenia dotyczące rozmiaru.
 
 1. Na stronie **Omówienie** projektu kliknij pozycję **+Utwórz ocenę**.
 2. Kliknij pozycję **Wyświetl wszystko**, aby sprawdzić właściwości oceny.
@@ -219,7 +200,7 @@ Po odnalezieniu maszyn wirtualnych należy je zgrupować i utworzyć ocenę.
 7. Kliknij polecenie **Eksportuj ocenę**, aby pobrać ocenę jako plik programu Excel.
 
 > [!NOTE]
-> W przypadku ciągłego odnajdywania zdecydowanie zalecamy poczekać co najmniej dzień po uruchomieniu odnajdywania, a przed utworzeniem oceny. Jeśli chcesz zaktualizować istniejącą ocenę przy użyciu najnowszych danych wydajności, możesz użyć polecenia **Oblicz ponownie** w ramach oceny, aby ją zaktualizować.
+> Przed utworzeniem oceny zdecydowanie zalecamy poczekać co najmniej dzień od uruchomienia odnajdywania. Jeśli chcesz zaktualizować istniejącą ocenę przy użyciu najnowszych danych wydajności, możesz użyć polecenia **Oblicz ponownie** w ramach oceny, aby ją zaktualizować.
 
 ### <a name="assessment-details"></a>Szczegóły oceny
 
@@ -272,22 +253,14 @@ W przypadku ustalania rozmiaru na podstawie wydajności usługa Azure Migrate po
 
 Ocena może nie mieć dostępnych wszystkich punktów danych z jednego z następujących powodów:
 
-**Jednorazowe odnajdywanie**
-
-- Ustawienie statystyk w programie vCenter Server jest inne niż poziom 3. Ponieważ model jednorazowego odnajdywania zależy od ustawień statystyk serwera vCenter, jeśli ustawienie statystyk na serwerze vCenter jest niższe niż poziom 3, dane wydajności dla dysku i sieci nie są zbierane z serwera vCenter. W takim przypadku zalecenie określane przez usługę Azure Migrate dla dysku i sieci nie opiera się na użyciu. Bez uwzględniania liczby operacji we/wy na sekundę/przepływności dysku usługa Azure Migrate nie może określić, czy dysk będzie potrzebować dysku w warstwie Premium na platformie Azure, dlatego w tym przypadku usługa Azure Migrate zaleca wszystkie dyski w warstwie Standardowa.
-- Ustawienie statystyk na serwerze vCenter zostało ustawione na poziom 3 przez krótszy czas przed rozpoczęciem odnajdywania. Rozważmy na przykład scenariusz, w którym dzisiaj zmienisz poziom ustawień statystyk na 3 i jutro rozpoczniesz odnajdowanie przy użyciu urządzenia modułu zbierającego (po 24 godzinach). Jeśli tworzysz ocenę dla jednego dnia, masz wszystkie punkty danych i oceną zaufania dla oceny będzie 5 gwiazdek. Ale jeśli zmieniasz czas trwania wydajności we właściwościach oceny na jeden miesiąc, ocena zaufania spada, ponieważ dane o wydajności dysku i sieci dla ostatniego miesiąca byłyby niedostępne. Jeśli chcesz wziąć pod uwagę dane wydajności za ostatni miesiąc, zaleca się utrzymanie ustawienia statystyk programu vCenter Server na poziomie 3 przez jeden miesiąc przed rozpoczęciem odnajdywania.
-
-**Ciągłe odnajdywanie**
-
 - Nie profilujesz swojego środowiska przez czas trwania, dla którego tworzysz ocenę. Jeśli na przykład tworzysz ocenę z czasem trwania wydajności ustawionym na 1 dzień, musisz poczekać co najmniej dzień po uruchomieniu odnajdywania, aby zebrać wszystkie punkty danych.
 
-**Typowe przyczyny**  
-
 - Kilka maszyn wirtualnych zostało wyłączonych w czasie, dla którego jest obliczana ocena. Jeśli którakolwiek maszyna wirtualna została odłączona od zasilania na pewien czas, nie będziemy mogli zebrać danych o wydajności dla tego okresu.
+
 - Kilka maszyn wirtualnych zostało utworzonych w czasie, dla którego jest obliczana ocena. Jeśli na przykład tworzysz ocenę dla historii wydajności za ostatni miesiąc, ale kilka maszyn wirtualnych zostało utworzonych w środowisku tylko tydzień temu. W takich przypadkach historia wydajności nowych maszyn wirtualnych nie będzie dotyczyła całego czasu oceny.
 
 > [!NOTE]
-> Jeśli ocena zaufania dowolnej oceny jest poniżej 4 gwiazdek dla modelu odnajdywania jednorazowego, zalecamy zmianę ustawienia poziomu statystyk serwera vCenter na 3, odczekanie przez czas, który chcesz wziąć pod uwagę podczas oceny (1 dzień/1 tydzień/1 miesiąc), a następnie przeprowadzenie odnajdywania i oceny. W przypadku modelu ciągłego odnajdywania poczekaj co najmniej dzień, aby urządzenie przeprowadziło profilowanie w środowisku, a następnie *Oblicz ponownie* ocenę. Jeśli nie można wykonać powyższego, ustalanie rozmiaru na podstawie wydajności może nie być wiarygodne i zaleca się, aby przełączyć się na *ustalanie rozmiaru jako lokalnego*, zmieniając właściwości oceny.
+> Jeśli ocena zaufania dowolnej oceny jest niższa niż 5 gwiazdek, poczekaj co najmniej dzień, aby urządzenie przeprowadziło profilowanie w środowisku, a następnie *Oblicz ponownie* ocenę. Jeśli nie można wykonać powyższego, ustalanie rozmiaru na podstawie wydajności może nie być wiarygodne i zaleca się, aby przełączyć się na *ustalanie rozmiaru jako lokalnego*, zmieniając właściwości oceny.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: ab869e53810f049593803d58b3df75d0c083bbd2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 12/04/2018
+ms.openlocfilehash: ccbfc6e204981a4e14812759715d0482e5b6cb67
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962898"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874766"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Samouczek: migracja online programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzanego usługi Azure SQL Database](../sql-database/sql-database-managed-instance.md) z minimalnym czasem przestoju. Dodatkowe metody, które mogą wymagać ręcznej pracy, są dostępne w artykule [SQL Server instance migration to Azure SQL Database Managed Instance (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database)](../sql-database/sql-database-managed-instance-migrate.md).
@@ -32,6 +32,12 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie projektu migracji i rozpoczynanie migracji online za pomocą usługi Azure Database Migration Service.
 > * Monitorowanie migracji.
 > * Przeprowadzanie migracji jednorazowej, gdy wszystko będzie gotowe.
+
+> [!NOTE]
+> Przeprowadzenie migracji online przy użyciu usługi Azure Database Migration Service wymaga utworzenia wystąpienia opartego na warstwie cenowej Premium (wersja zapoznawcza).
+
+> [!IMPORTANT]
+> W celu uzyskania optymalnego środowiska migracji firma Microsoft zaleca utworzenie wystąpienia usługi Azure Database Migration Service w tym samym regionie platformy Azure, w którym znajduje się docelowa baza danych. Przenoszenie danych między regionami lub lokalizacjami geograficznymi może spowalniać proces migracji i powodować błędy.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 

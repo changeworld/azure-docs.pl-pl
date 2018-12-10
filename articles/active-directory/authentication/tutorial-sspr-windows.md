@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277770"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844842"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -101,23 +101,29 @@ Gdy użytkownicy próbują się zalogować, widzą teraz link resetowania, któr
 
 Wskazówki dotyczące używania tej funkcji będzie można znaleźć w artykule [Reset your work or school password (Resetowanie hasła służbowego)](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)
 
-## <a name="common-issues"></a>Typowe problemy
+Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i typu klienta, które są powiązane z żądaniem resetowania hasła.
+
+![Przykład resetowania hasła na ekranie logowania w dzienniku inspekcji usługi Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+## <a name="limitations"></a>Ograniczenia
 
 Podczas testowania tej funkcjonalności za pomocą funkcji Hyper-V link „Resetuj hasło” nie jest wyświetlany.
 
 * Przejdź do maszyny wirtualnej używanej do testowania, kliknij pozycję **Widok**, a następnie usuń zaznaczenie pola wyboru **Sesja rozszerzona**.
 
-Podczas testowania tej funkcjonalności za pomocą pulpitu zdanego link „Resetuj hasło” nie jest wyświetlany.
+Podczas testowania tej funkcjonalności za pomocą pulpitu zdalnego lub rozszerzonej sesji maszyny wirtualnej link „Resetuj hasło” nie jest wyświetlany.
 
 * Resetowanie hasła nie jest obecnie obsługiwane z poziomu pulpitu zdalnego.
 
-Jeśli ekran blokady systemu Windows zostanie wyłączony za pomocą klucza rejestru lub zasad grupy, pozycja **Resetuj hasło** nie będzie dostępna.
-
 Jeśli zasady wymagają naciśnięcia klawiszy Ctrl+Alt+Del lub powiadomienia na ekranie blokady są wyłączone, pozycja **Resetuj hasło** nie będzie działać.
 
-Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i typu klienta, które są powiązane z żądaniem resetowania hasła.
+Wiadomo, że następujące ustawienia zasad zakłócają możliwość resetowania haseł
 
-![Przykład resetowania hasła na ekranie logowania w dzienniku inspekcji usługi Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+   * Ustawienie HideFastUserSwitching jest włączone lub ustawione na wartość 1
+   * Ustawienie DontDisplayLastUserName jest włączone lub ustawione na wartość 1
+   * Ustawienie NoLockScreen jest włączone lub ustawione na wartość 1
+   * Ustawienie EnableLostMode jest określone na urządzeniu
+   * Plik Explorer.exe został zastąpiony niestandardową powłoką
 
 Jeśli Twoje maszyny z systemem Windows 10 znajdują się za serwerem proxy lub zaporą, ruch HTTPS (443) na adresy passwordreset.microsoftonline.com i ajax.aspnetcdn.com powinien być dozwolony.
 

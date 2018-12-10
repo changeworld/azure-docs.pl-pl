@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cca18b2aa5cb6f27df45e4b63e55251bea058625
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a9ae18c7fbf3b0f663396099f065c76969206f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968853"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890385"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Samouczek: wdrażanie aplikacji w usłudze Service Fabric Mesh przy użyciu szablonu
 
@@ -49,9 +49,9 @@ Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* [Instalowanie platformy Docker](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
+* [Zainstaluj platformę Docker](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [Zainstaluj lokalnie interfejs wiersza polecenia platformy Azure oraz interfejs wiersza polecenia usługi Service Fabric Mesh](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally).
+* [Zainstaluj lokalnie interfejs wiersza polecenia platformy Azure oraz interfejs wiersza polecenia usługi Service Fabric Mesh](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
@@ -359,9 +359,27 @@ Aby wdrożyć aplikację, uruchom następujące polecenie:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Po kilku minutach powinien zostać wyświetlony następujący wynik:
+To polecenie powoduje wygenerowanie fragmentu kodu JSON, który pokazano poniżej. W sekcji ```outputs``` danych wyjściowych JSON skopiuj właściwość ```publicIPAddress```.
 
-`todolistappNetwork has been deployed successfully on todolistappNetwork with public ip address <IP Address>`
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+Te dane pochodzą z sekcji ```outputs``` szablonu ARM. Jak pokazano poniżej, ta sekcja przywołuje zasób bramy w celu pobrania publicznego adresu IP. 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('helloWorldGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>Otwieranie aplikacji
 

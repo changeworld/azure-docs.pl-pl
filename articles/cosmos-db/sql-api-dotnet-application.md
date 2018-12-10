@@ -1,24 +1,22 @@
 ---
-title: 'Samouczek platformy ASP.NET MVC dla usługi Azure Cosmos DB: opracowywanie aplikacji internetowych | Microsoft Docs'
+title: 'Samouczek platformy ASP.NET MVC dla usługi Azure Cosmos DB: opracowywanie aplikacji internetowych'
 description: Samouczek platformy ASP.NET MVC, który umożliwia utworzenie aplikacji internetowych MVC za pomocą usługi Azure Cosmos DB. Zapiszesz dane w postaci kodu JSON i uzyskasz do nich dostęp za pomocą aplikacji listy rzeczy do zrobienia hostowanej w usłudze Azure Websites — szczegółowy samouczek dla platformy ASP.NET MVC.
 keywords: samouczek asp.net mvc, programowanie aplikacji internetowej, aplikacja internetowa mvc, samouczek krok po kroku asp.net mvc
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
-ms.workload: azure-vs
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 22856b6e9b543504db66bce074d32d9ad70f5238
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8230c2ba8c7fdb10d7e37a317d4eeb5abb120d60
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247674"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868722"
 ---
 # <a name="_Toc395809351"></a>Samouczek platformy ASP.NET MVC: Opracowywanie aplikacji internetowych za pomocą usługi Azure Cosmos DB
 

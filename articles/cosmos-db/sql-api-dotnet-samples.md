@@ -1,22 +1,19 @@
 ---
-title: 'Azure Cosmos DB: przykłady platformy .NET dla interfejsu SQL API | Microsoft Docs'
+title: 'Azure Cosmos DB: przykłady platformy .NET dla interfejsu SQL API'
 description: Znajdź w witrynie GitHub przykłady platformy .NET w języku C# służące do wykonywania typowych zadań przy użyciu interfejsu SQL API w usłudze Azure Cosmos DB, w tym operacji CRUD.
 keywords: Przykład w języku NoSQL
-services: cosmos-db
 author: rnagpal
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
-ms.devlang: na
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 5cee4a736232e7734be85b2940ce457bfbfd1613
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 39eacca1e5ddb4c7024c5195dc1823f2c3c651e7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262299"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875267"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: przykłady platformy .NET dla interfejsu SQL API
 > [!div class="op_single_selector"]
@@ -29,10 +26,12 @@ ms.locfileid: "52262299"
 > 
 > 
 
-Ostatnie przykładowe rozwiązania do wykonywania operacji CRUD i innych typowych działań na zasobach usługi Azure Cosmos DB można znaleźć w repozytorium [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) w witrynie GitHub. Ten artykuł zawiera:
+Ostatnie przykładowe rozwiązania do wykonywania operacji CRUD i innych typowych działań na zasobach usługi Azure Cosmos DB można znaleźć w repozytorium [azure-cosmos-dotnet-v2](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) w witrynie GitHub. Ten artykuł zawiera:
 
 * Linki do zadań w poszczególnych plikach projektów przykładowych w języku C#. 
 * Linki do powiązanej dokumentacji interfejsu API.
+
+Aby uzyskać przykłady kodu dla zestawu .NET SDK w wersji 3.0 (wersja zapoznawcza), zobacz najnowsze przykłady w repozytorium [azure-cosmos-dotnet-v3](https://github.com/Azure/azure-cosmos-dotnet-v3) w witrynie GitHub. 
 
 **Wymagania wstępne**
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: de15d1f8c268e80ac1659c53a141ec39cc6d3cb8
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5d03b7075b1ae590c400eb96525ab84d8487fa3e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564813"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840099"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu (wersja zapoznawcza)
 
@@ -66,6 +66,7 @@ Po wyświetleniu monitu wybierz środowisko uruchomieniowe procesów roboczych s
 
 * `dotnet`: tworzy projekt biblioteki klas platformy .NET (csproj).
 * `node`: tworzy projekt w języku JavaScript.
+* `python`: tworzy projekt w języku Python.
 
 Gdy polecenie zostanie wykonane, zostaną zwrócone dane wyjściowe podobne do następujących:
 

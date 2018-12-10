@@ -1,21 +1,19 @@
 ---
-title: Obsługa języka Gremlin w usłudze Azure Cosmos DB | Microsoft Docs
+title: Obsługa języka Gremlin w usłudze Azure Cosmos DB
 description: Poznaj język Gremlin ze struktury Apache TinkerPop. Dowiedz się, jakie funkcjonalności i kroki są dostępne w usłudze Azure Cosmos DB
 services: cosmos-db
 author: LuisBosquez
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: 593b7ac636b92db5c72cfad8f73fc2c418639358
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1c54eff207de61a02a1ef752da66bb3b4f6d1580
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700216"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850350"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Obsługa grafu Gremlin w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB obsługuje język przechodzenia przez graf struktury [Apache TinkerPop](http://tinkerpop.apache.org), [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), w postaci interfejsu API języka Gremlin do tworzenia jednostek grafu oraz wykonywania operacji zapytań na grafie. Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 

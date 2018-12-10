@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 05b35ac182d70d6d7a7630a14c8a8aa3b7a6a9fd
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 7ff57519cfbb99fa705aff6c970951730c501f3e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634315"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846457"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Tworzenie pierwszej funkcji z poziomu wiersza polecenia
 
@@ -79,11 +79,11 @@ cd MyFunctionProj
 
 Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia środowisko do bezserwerowego wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. Utwórz aplikację funkcji przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create). 
 
-W poniższym poleceniu w miejsce symbolu zastępczego `<app_name>` wstaw unikatową nazwę aplikacji funkcji, a w miejsce symbolu zastępczego `<storage_name>` wstaw nazwę konta magazynu. Nazwa `<app_name>` jest używana jako domyślna domena DNS aplikacji funkcji, więc nazwa ta musi być unikatowa wśród wszystkich aplikacji na platformie Azure. Parametr _deployment-source-url_ to przykładowe repozytorium GitHub, które zawiera funkcję „Hello world” wyzwalaną za pośrednictwem protokołu HTTP.
+W poniższym poleceniu w miejsce symbolu zastępczego `<app_name>` wstaw unikatową nazwę aplikacji funkcji, a w miejsce symbolu zastępczego `<storage_name>` wstaw nazwę konta magazynu. Nazwa `<app_name>` jest używana jako domyślna domena DNS aplikacji funkcji, więc nazwa ta musi być unikatowa wśród wszystkich aplikacji na platformie Azure. Należy również ustawić środowisko uruchomieniowe `<language>` dla aplikacji funkcji za pomocą pozycji `dotnet` (C#) lub `node` (JavaScript).
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westeurope \
---name <app_name> --storage-account  <storage_name>  
+--name <app_name> --storage-account  <storage_name> --runtime <language> 
 ```
 
 Ustawienie parametru _consumption-plan-location_ oznacza, że funkcja aplikacji jest hostowana w planie hostingu Zużycie. W tym planie bezserwerowym zasoby są dodawane dynamicznie zgodnie z wymaganiami Twoich funkcji i płacisz tylko wtedy, kiedy funkcje są uruchomione. Aby uzyskać więcej informacji, zobacz [Wybieranie odpowiedniego planu hostingu](functions-scale.md).
@@ -107,19 +107,6 @@ Po utworzeniu aplikacji funkcji interfejs wiersza polecenia platformy Azure wyś
     // Remaining output has been truncated for readability.
 }
 ```
-
-### <a name="configure-the-function-app-nodejs"></a>Konfigurowanie aplikacji funkcji (środowisko Node.js)
-
-Podczas tworzenia aplikacji funkcji w języku JavaScript ważne jest wybranie odpowiedniej wersji środowiska Node.js. Wersja 2.x środowiska uruchomieniowego funkcji wymaga środowiska Node.js w wersji 8.x. Ustawienie aplikacji `WEBSITE_NODE_DEFAULT_VERSION` kontroluje wersję środowiska Node.js, która jest używana przez aplikację funkcji na platformie Azure. Użyj polecenia [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set), aby ustawić wersję środowiska Node.js na wartość `8.11.1`.
-
-W poniższym poleceniu interfejsu wiersza polecenia platformy Azure wartość „<app_name>” to nazwa Twojej aplikacji funkcji.
-
-```azurecli-interactive
-az functionapp config appsettings set --resource-group myResourceGroup \
- --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
-```
-
-Sprawdź nowe ustawienie w danych wyjściowych.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 

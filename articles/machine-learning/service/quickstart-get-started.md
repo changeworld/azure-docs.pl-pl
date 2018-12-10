@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
-ms.date: 09/24/2018
-ms.openlocfilehash: 7ed45b5e8a8c3cab26c0998260055ffd7a0f0c5d
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/04/2018
+ms.openlocfilehash: 59887c46e3ce06eae250e106a01239a1ba969e7f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710260"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875318"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Szybki start: rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal
 
@@ -35,7 +35,7 @@ Do obszaru roboczego zostaną automatycznie dodane następujące zasoby platform
   - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
   - [Usługa Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-Utworzone zasoby mogą być używane jako wstępnie wymagane składniki w innych samouczkach usługi Machine Learning i artykułach z instrukcjami. Podobnie jak w przypadku innych usług platformy Azure korzystanie z pewnych zasobów skojarzonych z usługą Machine Learning jest ograniczone określonymi limitami. Przykładem jest rozmiar klastra usługi Azure Batch AI. Informacje na temat domyślnych limitów i zwiększania limitu przydziału można znaleźć w [tym artykule](how-to-manage-quotas.md).
+Utworzone zasoby mogą być używane jako wstępnie wymagane składniki w innych samouczkach usługi Machine Learning i artykułach z instrukcjami. Podobnie jak w przypadku innych usług platformy Azure korzystanie z pewnych zasobów skojarzonych z usługą Machine Learning, takich jak rozmiar klastra obliczeniowego, jest ograniczone określonymi limitami. Dowiedz się więcej o [limitach domyślnych i sposobach zwiększania limitów przydziału](how-to-manage-quotas.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
 
@@ -69,7 +69,7 @@ Wybierz pozycję `Open Azure Notebooks`, aby wypróbować pierwszy eksperyment.
 
 Organizacja może wymagać [zgody administratora](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) przed zalogowaniem się.
 
-Po zalogowaniu zostanie otwarta nowa karta z wyświetlonym monitem `Clone Library`. Wybierz pozycję `Clone`
+Po zalogowaniu zostanie otwarta nowa karta z wyświetlonym monitem `Clone Library`. Wybierz pozycję `Clone`.
 
 
 ### <a name="run-the-notebook"></a>Uruchamianie notesu

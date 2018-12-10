@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 638946f0ffa8b6540f55fb7a22ac17bd262269bf
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ea3868b66ec44057f9e84292d30b1aaf6affdf1c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621687"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888056"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Samouczek: używanie tożsamości zarządzanej przypisanej przez użytkownika na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Resource Manager
 
@@ -84,10 +84,10 @@ Odpowiedź zawiera szczegóły utworzonej tożsamości zarządzanej przypisanej 
 
 Tożsamość zarządzana przypisana przez użytkownika może być używana przez klientów w obrębie wielu zasobów platformy Azure. Użyj poniższych poleceń, aby przypisać tożsamość zarządzaną przypisaną przez użytkownika do pojedynczej maszyny wirtualnej. Użyj właściwości `Id` zwróconej w poprzednim kroku dla parametru `-IdentityID`.
 
-Przypisz przypisaną przez użytkownika tożsamość zarządzaną do maszyny wirtualnej z systemem Linux przy użyciu polecenia [az vm assign-identity](/cli/azure/vm#az-vm-assign-identity). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. Użyj właściwości `id` zwróconej w poprzednim kroku dla wartości parametru `--identities`.
+Przypisz tożsamość zarządzaną przypisaną przez użytkownika do maszyny wirtualnej z systemem Linux za pomocą polecenia [az vm identity assign](/cli/azure/vm#az-vm-identity-assign). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. Użyj właściwości `id` zwróconej w poprzednim kroku dla wartości parametru `--identities`.
 
 ```azurecli-interactive
-az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"
+az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"
 ```
 
 ## <a name="grant-your-user-assigned-managed-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Udzielanie tożsamości zarządzanej przypisanej przez użytkownika dostępu do grupy zasobów w usłudze Azure Resource Manager 

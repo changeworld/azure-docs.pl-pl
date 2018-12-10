@@ -1,107 +1,111 @@
 ---
-title: Szybki start — tworzenie strefy i rekordu DNS w witrynie Azure Portal
-description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć strefę i rekord DNS w usłudze Azure DNS. W tym szczegółowym przewodniku pokazano, jak utworzyć po raz pierwszy strefę i rekord DNS przy użyciu witryny Azure Portal.
+title: Szybki start — tworzenie strefy DNS i rekordu w witrynie Azure Portal
+description: Ten szczegółowy przewodnik Szybki start przedstawia tworzenie strefy usługi Azure DNS i rekordu przy użyciu witryny Azure Portal.
 services: dns
 author: vhorne
-manager: jeconnoc
 ms.service: dns
 ms.topic: quickstart
-ms.date: 6/13/2018
+ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: 0acb5bf18c078d8b7eb6a5c14a61fcef622f9f2d
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: f54a9e40c4f75704e66c4a3a90ad4b293d1e6309
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831131"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889229"
 ---
-# <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>Szybki start: konfigurowanie usługi Azure DNS do rozpoznawania nazw w witrynie Azure Portal
+# <a name="quickstart-configure-azure-dns-for-name-resolution-by-using-the-portal"></a>Szybki start: konfigurowanie usługi Azure DNS do rozpoznawania nazw za pomocą portalu
 
- Możesz skonfigurować usługę Azure DNS do rozpoznawania nazw hostów w domenie publicznej. Na przykład w przypadku zakupu nazwy domeny contoso.com u rejestratora nazw domen możesz skonfigurować usługę Azure DNS tak, aby hostowała domenę contoso.com oraz rozpoznawała nazwę www.contoso.com jako adres IP serwera internetowego lub aplikacji internetowej.
+Możesz skonfigurować usługę Azure DNS do rozpoznawania nazw hostów w domenie publicznej. Jeśli na przykład zakupiono nazwę domeny *contoso.com* u rejestratora nazw domen, możesz skonfigurować usługę Azure DNS tak, aby hostowała domenę *contoso.com* oraz rozpoznawała nazwę *www.contoso.com* jako adres IP serwera internetowego lub aplikacji internetowej.
 
-Podczas pracy z tym przewodnikiem Szybki start utworzysz domenę testową, a następnie utworzysz rekord adresu o nazwie „www”, rozpoznawany jako adres IP 10.10.10.10.
+Podczas pracy z tym przewodnikiem Szybki start utworzysz domenę testową, a następnie rekord adresu powodujący rozpoznawanie nazwy *www* jako adresu IP *10.10.10.10*.
 
-Należy pamiętać, że wszystkie nazwy i adresy IP używane w tym przewodniku Szybki start są jedynie przykładami, a więc nie odzwierciedlają rzeczywistego scenariusza. Jednak w stosownych przypadkach rzeczywiste scenariusze również zostały opisane.
+>[!IMPORTANT]
+>Wszystkie nazwy i adresy IP w tym przewodniku Szybki start są przykładowe i nie reprezentują rzeczywistych scenariuszy. Ten przewodnik Szybki start omawia także rzeczywiste skutki tam, gdzie takie występują.
 
 <!---
 You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
 --->
 
-Strefa DNS jest używana do hostowania wpisów DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy wpis (rekord) DNS domeny zostanie utworzony w tej strefie DNS. Poniższa procedura pokazuje, jak to zrobić.
-
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+W przypadku wszystkich kroków wykonywanych w portalu należy się zalogować do [witryny Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-dns-zone"></a>Tworzenie strefy DNS
 
-1. Zaloguj się do Portalu Azure.
-2. W lewym górnym rogu kliknij kolejno pozycje **+ Utwórz zasób** i **Sieć**, a następnie kliknij pozycję **Strefa DNS**, aby otworzyć stronę **Tworzenie strefy DNS**.
+Strefa DNS zawiera wpisy DNS dla domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, należy utworzyć strefę DNS dla tej nazwy domeny. 
 
-    ![Strefa DNS](./media/dns-getstarted-portal/openzone650.png)
+**Aby utworzyć strefę DNS:**
 
-4. Na stronie **Tworzenie strefy DNS** wprowadź następujące wartości i kliknij pozycję **Utwórz**:
+1. W lewym górnym rogu wybierz pozycję **Utwórz zasób**, a następnie **Sieć** i **Strefa DNS**.
+   
+1. Na stronie **Tworzenie strefy DNS** wpisz lub wybierz następujące wartości:
+   
+   - **Nazwa**: wpisz *contoso.xyz* dla przykładu w tym przewodniku Szybki start. Nazwa strefy DNS może być dowolną wartością, która nie jest już skonfigurowana na serwerach usługi Azure DNS. W rzeczywistym scenariuszu tą wartością byłaby domena kupiona u rejestratora nazw domen.
+   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz wartość *dns-test* i wybierz pozycję **OK**. Nazwa grupy zasobów musi być unikatowa w ramach subskrypcji platformy Azure. 
+   
+1. Wybierz pozycję **Utwórz**.
 
-
-   | **Ustawienie** | **Wartość** | **Szczegóły** |
-   |---|---|---|
-   |**Nazwa**|contoso.xyz|Nazwa strefy DNS w tym przykładzie może być dowolną wartością, której chcesz użyć na potrzeby tego przewodnika Szybki start, o ile taka wartość nie została jeszcze skonfigurowana na serwerach usługi Azure DNS. W rzeczywistym scenariuszu tą wartością byłaby domena kupiona u rejestratora nazw domen.|
-   |**Subskrypcja**|[Twoja subskrypcja]|Wybierz subskrypcję, aby utworzyć w jej ramach strefę DNS.|
-   |**Grupa zasobów**|**Utwórz nową:** dns-test|Utwórz grupę zasobów. Nazwa grupy zasobów musi być unikatowa w obrębie wybranej subskrypcji. |
-   |**Lokalizacja**|Wschodnie stany USA||
-
+   ![Strefa DNS](./media/dns-getstarted-portal/openzone650.png)
+   
 Tworzenie strefy może potrwać kilka minut.
 
 ## <a name="create-a-dns-record"></a>Tworzenie rekordu DNS
 
-Teraz możesz utworzyć nowy rekord adresu (rekord „A”). Rekordy A są używane do rozpoznawania nazwy hosta jako adresu IPv4.
+Wpisy, czyli rekordy, DNS tworzy się dla domeny w strefie DNS. Utwórz nowy rekordu adresu, czyli rekord „A”, aby umożliwić rozpoznawanie nazwy hosta jako adresu IPv4.
 
-1. W okienku **Ulubione** witryny Azure Portal kliknij pozycję **Wszystkie zasoby**. Na stronie Wszystkie zasoby kliknij strefę DNS **contoso.xyz**. Jeśli wybrana subskrypcja zawiera kilka zasobów, możesz wpisać **contoso.xyz** w polu **Filtruj według nazwy**, aby łatwo uzyskać dostęp do strefy DNS.
+**Aby utworzyć rekord „A”:**
 
-1. W górnej części strony **Strefa DNS** wybierz pozycję **+ Zestaw rekordów**, aby otworzyć stronę **Dodaj zestaw rekordów**.
+1. W witrynie Azure Portal w obszarze **Wszystkie zasoby** otwórz strefę DNS **contoso.xyz** w grupie zasobów **dns-test**. Wartość *contoso.xyz* można wpisać w polu **Filtruj według nazwy**, aby łatwiej znaleźć strefę.
 
-1. Na stronie **Dodaj zestaw rekordów** wprowadź następujące wartości, a następnie kliknij przycisk **OK**. W tym przykładzie utworzysz rekord A.
+1. W górnej części strony **Strefa DNS** wybierz pozycję **+ Zestaw rekordów**.
 
-   |**Ustawienie** | **Wartość** | **Szczegóły** |
-   |---|---|---|
-   |**Nazwa**|www|Nazwa rekordu. Jest to nazwa używana dla hosta, który ma być rozpoznawany jako określony adres IP.|
-   |**Typ**|A| Typ rekordu DNS, który ma zostać utworzony. Rekordy A są najbardziej typowe, ale istnieją też inne typy rekordów, związane z serwerami pocztowymi (MX), adresami IPv6 (AAAA) itd. |
-   |**Czas wygaśnięcia**|1|Czas wygaśnięcia żądania DNS. Określa czas, przez jaki serwery DNS i klienci mogą przechowywać odpowiedź w pamięci podręcznej.|
-   |**Jednostka czasu wygaśnięcia**|hours|Pomiar wartości czasu wygaśnięcia.|
-   |**Adres IP**|10.10.10.10| Ta wartość jest adresem IP rozpoznawanym przez rekord A. Jest po prostu wartość testowa dla tego przewodnika Szybki start. W rzeczywistym scenariuszu byłby to na przykład publiczny adres IP Twojego serwera internetowego.|
+1. Na stronie **Dodawanie zestawu rekordów** wpisz lub wybierz następujące wartości:
 
+   - **Nazwa**: wpisz wartość *www*. Nazwa rekordu to nazwa hosta, która ma być rozpoznawana jako określony adres IP.
+   - **Typ**: wybierz wartość **A**. Rekordy „A” są najczęściej używane, ale istnieją też inne typy rekordów: dla serwerów poczty e-mail („MX”), adresów IPv6 („AAAA”) itd. 
+   - **Czas wygaśnięcia**: wpisz wartość *1*. *Czas wygaśnięcia* żądania DNS określa, jak długo serwery i klienci DNS mogą buforować odpowiedź.
+   - **Jednostka czasu wygaśnięcia**: wybierz opcję **Godziny**. Jest to jednostka czasu dla wartości **Czas wygaśnięcia**. 
+   - **Adres IP**: dla tego przykładu przewodnika Szybki start wpisz *10.10.10.10*. Ta wartość to adres IP rozpoznawany w przypadku nazwy rekordu. W rzeczywistym scenariuszu byłby to na przykład publiczny adres IP serwera internetowego.
 
-Ponieważ w tym przewodniku Szybki start nazwa domeny nie została faktycznie kupiona, nie trzeba konfigurować usługi Azure DNS jako serwera nazw u rejestratora nazw domen. Natomiast w rzeczywistym scenariuszu byłoby wskazane, aby każdy użytkownik w Internecie mógł rozpoznać nazwę Twojego hosta i połączyć się z serwerem lub aplikacją. Aby uzyskać więcej informacji na temat tego rzeczywistego scenariusza, zobacz [Delegowanie domeny do usługi Azure DNS](dns-delegate-domain-azure-dns.md).
-
+Ponieważ ten przewodnik Szybki start nie korzysta z rzeczywistej domeny, nie ma potrzeby konfigurowania serwerów nazw usługi Azure DNS u rejestratora nazw domen. W przypadku rzeczywistej domeny celem byłoby umożliwienie każdej osobie w Internecie rozpoznania nazwy hosta w celu połączenia się z serwerem internetowym lub aplikacją. Odwiedzisz rejestratora nazw domen, aby zastąpić rekordy serwera nazw serwerami nazw usługi Azure DNS. Aby uzyskać więcej informacji, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="test-the-name-resolution"></a>Testowanie rozpoznawania nazw
 
-Po utworzeniu strefy z rekordem A na potrzeby testów możesz przetestować rozpoznawanie nazw za pomocą narzędzia o nazwie *nslookup*. 
+Po utworzeniu testowej strefy DNS z rekordem „A” możesz przetestować rozpoznawanie nazw za pomocą narzędzia o nazwie *nslookup*. 
 
-1. Najpierw należy zanotować serwery nazw usługi Azure DNS, które będą używane w narzędziu nslookup. 
+**Aby przetestować rozpoznawanie nazw DNS:**
 
-   Serwery nazw dla strefy są wymienione na stronie **Przegląd** tej strefy DNS. Skopiuj nazwę jednego z serwerów nazw:
+1. W witrynie Azure Portal w obszarze **Wszystkie zasoby** otwórz strefę DNS **contoso.xyz** w grupie zasobów **dns-test**. Wartość *contoso.xyz* można wpisać w polu **Filtruj według nazwy**, aby łatwiej znaleźć strefę.
 
-   ![strefa](./media/dns-getstarted-portal/viewzonens500.png)
-
-2. Teraz otwórz wiersz polecenia i uruchom następujące polecenie:
-
-   ```
-   nslookup <host name> <name server>
+1. Skopiuj jedną z nazw serwerów nazw z listy serwerów nazw na stronie **Przegląd**. 
    
-   For example:
+   ![strefa](./media/dns-getstarted-portal/viewzonens500.png)
+   
+   >[!NOTE]
+   >W przypadku rzeczywistego scenariusza należałoby skopiować nazwy wszystkich czterech serwerów nazw wraz z końcowymi kropkami i użyć ich jako nowych nazw serwerów nazw usługi Azure DNS u rejestratora domen. Aby uzyskać więcej informacji, zobacz [Delegowanie domeny do usługi Azure DNS](dns-delegate-domain-azure-dns.md)
+   
+1. Otwórz wiersz polecenia i uruchom następujące polecenie:
 
-   nslookup www.contoso.xyz ns1-08.azure-dns.com
    ```
+   nslookup <host name> <name server name>
+   ```
+   
+   Na przykład:
+   
+   ```
+   nslookup www.contoso.xyz ns1-08.azure-dns.com.
+   ```
+   
+   Powinna zostać wyświetlona treść podobna do tej na następującym ekranie:
+   
+   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Powinna zostać wyświetlona zawartość podobna do tej widocznej na poniższym zrzucie ekranu:
-
-![nslookup](media/dns-getstarted-portal/nslookup.PNG)
-
-To potwierdza, że rozpoznawanie nazw działa poprawnie. Nazwa www.contoso.xyz jest rozpoznawana jako adres IP 10.10.10.10, zgodnie z ustawieniami!
+Nazwa **www.contoso.xyz** jest rozpoznawana jako adres IP **10.10.10.10** zgodnie z konfiguracją. Taki wynik potwierdza, że rozpoznawanie nazw działa poprawnie. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli zasoby utworzone w tym przewodniku Szybki start nie są już potrzebne, możesz je usunąć, usuwając grupę zasobów **dns-test**. W tym celu kliknij grupę zasobów **dns-test**, a następnie kliknij polecenie **Usuń grupę zasobów**.
-
+Jeśli nie potrzebujesz już zasobów utworzonych w tym przewodniku Szybki start, usuń je, usuwając grupę zasobów **dns-test**. Otwórz grupę zasobów **dns-test**, a następnie wybierz polecenie **Usuń grupę zasobów**.
 
 ## <a name="next-steps"></a>Następne kroki
 

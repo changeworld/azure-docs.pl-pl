@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 19285bf7a1323e9698fe408566304d0596d1c983
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311269"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867902"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co to jest kontrola dostępu oparta na rolach?
 
@@ -50,13 +50,14 @@ Jeśli korzystasz z kontroli dostępu opartej na rolach, sterowanie dostępem po
 
 ### <a name="security-principal"></a>Podmiot zabezpieczeń
 
-*Podmiot zabezpieczeń* to obiekt reprezentujący użytkownika, grupę lub jednostkę usługi, które żądają dostępu do zasobów na platformie Azure.
+*Podmiot zabezpieczeń* to obiekt reprezentujący użytkownika, grupę, jednostkę usługi lub tożsamość zarządzaną, które żądają dostępu do zasobów na platformie Azure.
 
 ![Podmiot zabezpieczeń w przypisaniu roli](./media/overview/rbac-security-principal.png)
 
 - Użytkownik — osoba mająca profil w usłudze Azure Active Directory. Można również przypisywać role do użytkowników w innych dzierżawach. Aby uzyskać informacje na temat użytkowników w innych organizacjach, zobacz [Azure Active Directory B2B (Współpraca B2B w usłudze Azure Active Directory)](../active-directory/b2b/what-is-b2b.md).
 - Grupa — zbiór użytkowników, utworzony w usłudze Azure Active Directory. W przypadku przypisania roli do grupy wszyscy użytkownicy w grupie otrzymają tę rolę. 
 - Jednostka usługi — tożsamość zabezpieczeń używana przez aplikacje lub usługi w celu uzyskania dostępu do określonych zasobów platformy Azure. Można traktować ją jako odpowiednik *tożsamości użytkownika* (nazwy użytkownika i hasła lub certyfikatu) w przypadku aplikacji.
+- Tożsamość zarządzana — tożsamość w usłudze Azure Active Directory, która jest automatycznie zarządzana przez platformę Azure. [Tożsamości zarządzanych](../active-directory/managed-identities-azure-resources/overview.md) używa się zazwyczaj podczas tworzenia aplikacji w chmurze w celu zarządzania poświadczeniami do uwierzytelniania w usługach platformy Azure.
 
 ### <a name="role-definition"></a>Definicja roli
 
@@ -91,7 +92,7 @@ Gdy udzielisz dostępu w zakresie nadrzędnym, te uprawnienia są dziedziczone p
 
 ### <a name="role-assignments"></a>Przypisania ról
 
-*Przypisanie roli* to proces powiązania definicji roli z użytkownikiem, grupą lub jednostką usługi oraz wybranym zakresem w celu udzielenia dostępu. Udzielenie dostępu polega na utworzeniu przypisania roli, a odwołanie dostępu — na usunięciu przypisania roli.
+*Przypisywanie roli* to proces dołączania definicji roli do użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w wybranym zakresie w celu udzielenia dostępu. Udzielenie dostępu polega na utworzeniu przypisania roli, a odwołanie dostępu — na usunięciu przypisania roli.
 
 Na poniższym diagramie przedstawiono przykład przypisania roli. W tym przykładzie do grupy Marketing przypisano rolę [współautora](built-in-roles.md#contributor) w grupie zasobów pharma-sales. To oznacza, że użytkownicy należący do grupy Marketing mogą tworzyć dowolne zasoby platformy Azure w grupie zasobów pharma-sales i zarządzać nimi. Użytkownicy należący do grupy Marketing nie mają dostępu do zasobów spoza grupy zasobów pharma-sales, o ile nie przypisano do nich innej roli.
 
@@ -101,9 +102,7 @@ Przypisania ról można tworzyć, korzystając z witryny Azure Portal, interfejs
 
 ## <a name="deny-assignments"></a>Przypisania odmowy
 
-Poprzedni model kontroli dostępu opartego na rolach umożliwiał wyłącznie zezwolenie, bez możliwości odmowy. Obecny model obsługuje w ograniczony sposób również przypisania odmowy. Podobnie jak przypisanie roli *przypisanie odmowy* wiąże zestaw akcji odmowy z użytkownikiem, grupą lub jednostką usługi w określonym zakresie w celu odmowy dostępu. Przypisanie roli definiuje zestaw akcji, które są *dozwolone*, podczas gdy przypisanie odmowy definiuje zestaw akcji, które są *niedozwolone*. Innymi słowy przypisanie odmowy uniemożliwia użytkownikom wykonywanie określonych akcji, nawet jeśli przypisanie roli daje im taki dostęp. Przypisanie odmowy ma pierwszeństwo przed przypisaniem roli.
-
-Obecnie przypisania odmowy są **tylko do odczytu** i mogą zostać ustawione wyłącznie przez platformę Azure. Nawet jeśli nie możesz utworzyć własnych przypisań odmowy, możesz wyświetlić listę przypisań odmowy, ponieważ mogą one mieć wpływ na Twoje uprawnienia. Aby uzyskać informacje na temat przypisania odmowy, musisz mieć uprawnienie `Microsoft.Authorization/denyAssignments/read`, które jest uwzględnione w większości [wbudowanych ról](built-in-roles.md#owner). Aby uzyskać więcej informacji, zobacz [Understand deny assignments (Czym są przypisania odmowy)](deny-assignments.md).
+Poprzedni model kontroli dostępu opartego na rolach umożliwiał wyłącznie zezwolenie, bez możliwości odmowy. Obecny model obsługuje w ograniczony sposób również przypisania odmowy. Podobnie jak przypisanie roli *przypisanie odmowy* dołącza zestaw akcji odmowy do użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w określonym zakresie w celu odmowy dostępu. Przypisanie roli definiuje zestaw akcji, które są *dozwolone*, podczas gdy przypisanie odmowy definiuje zestaw akcji, które są *niedozwolone*. Innymi słowy przypisanie odmowy uniemożliwia użytkownikom wykonywanie określonych akcji, nawet jeśli przypisanie roli daje im taki dostęp. Przypisanie odmowy ma pierwszeństwo przed przypisaniem roli. Obecnie przypisania odmowy są **tylko do odczytu** i mogą zostać ustawione wyłącznie przez platformę Azure. Aby uzyskać więcej informacji, zobacz [Opis przypisań odmowy](deny-assignments.md) i [Wyświetlanie przypisań odmowy za pomocą witryny Azure Portal](deny-assignments-portal.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>W jaki sposób kontrola dostępu oparta na rolach określa, czy użytkownik ma dostęp do zasobu
 

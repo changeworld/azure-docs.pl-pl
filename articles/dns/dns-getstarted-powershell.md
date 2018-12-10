@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 07/16/2018
+ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: e5801e9ed512a32d793f7b4b71be86174f656ab0
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: db6ac089f11477ecdb1568195855fae00d3eac61
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089982"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888362"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Szybki start — tworzenie strefy i rekordu usługi Azure DNS przy użyciu programu Azure PowerShell
 
@@ -58,7 +58,6 @@ Aby wyświetlić listę rekordów DNS w strefie, należy użyć:
 Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup
 ```
 
-
 ## <a name="update-name-servers"></a>Aktualizowanie serwerów nazw
 
 Po poprawnym skonfigurowaniu strefy i rekordów DNS należy skonfigurować nazwę domeny w celu użycia serwerów nazw usługi Azure DNS. Umożliwi to innym użytkownikom w Internecie znalezienie Twoich rekordów DNS.
@@ -77,7 +76,7 @@ NumberOfRecordSets    : 3
 MaxNumberOfRecordSets : 5000
 ```
 
-Te serwery nazw powinny zostać skonfigurowane u rejestratora nazw domen (w miejscu zakupu nazwy domeny). Rejestrator zaoferuje opcję skonfigurowania serwerów nazw na potrzeby domeny. Aby uzyskać więcej informacji, zobacz [Delegowanie domeny do usługi Azure DNS](dns-domain-delegation.md).
+Te serwery nazw powinny zostać skonfigurowane u rejestratora nazw domen (w miejscu zakupu nazwy domeny). Rejestrator zaoferuje opcję skonfigurowania serwerów nazw na potrzeby domeny. Aby uzyskać więcej informacji, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="delete-all-resources"></a>Usuwanie wszystkich zasobów
 
