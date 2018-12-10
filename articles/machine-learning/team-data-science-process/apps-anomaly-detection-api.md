@@ -1,5 +1,5 @@
 ---
-title: Usługi Azure Machine Learning interfejs API wykrywania anomalii | Dokumentacja firmy Microsoft
+title: Usługi Azure Machine Learning interfejs API — zespołu danych dla celów naukowych wykrywania anomalii
 description: Interfejs API wykrywania anomalii jest przykładem utworzonych za pomocą programu Microsoft Azure Machine Learning, która wykrywa anomalie w danych szeregów czasowych za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
-ms.custom: (previous author=alokkirpal, ms.author=alok)
-ms.openlocfilehash: 485cf6af9f019bc43ee862627db8549240690247
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
+ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443937"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134798"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>W usłudze Machine Learning interfejs API wykrywania anomalii
 ## <a name="overview"></a>Przegląd
@@ -37,9 +37,9 @@ Oferta wykrywania anomalii jest dostarczany z przydatnymi narzędziami, które u
 > [!NOTE]
 > Spróbuj **rozwiązania IT Anomaly Insights** działającemu [tego interfejsu API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
 > 
-> Aby uzyskać to kompleksowe rozwiązanie wdrożone do subskrypcji platformy Azure <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank"> **Szybki Start >**</a>
-> 
->
+<!-- This Solution is no longer available
+> To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
+--> 
 
 ## <a name="api-deployment"></a>Wdrażanie interfejsu API
 Aby można było używać interfejsu API, należy wdrożyć je do subskrypcji platformy Azure, w którym będzie obsługiwana jako usługi sieci web Azure Machine Learning.  Można to zrobić z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Wdroży to dwie usługi sieci Web Azure ml (i ich powiązane zasoby) do subskrypcji platformy Azure — jeden dla wykrywanie anomalii przy użyciu wykrywania sezonowości i jedną bez wykrycia sezonowość.  Po zakończeniu wdrożenia można zarządzać z interfejsów API [usług sieci web Azure ml](https://services.azureml.net/webservices/) strony.  Na tej stronie można znaleźć swoje lokalizacje punktów końcowych, klucze interfejsu API, a także przykładowego kodu dla wywołania interfejsu API.  Bardziej szczegółowe instrukcje są dostępne [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).

@@ -1,22 +1,22 @@
 ---
-title: Przy użyciu platformy mongoose z usługą Azure Cosmos DB
-description: Dowiedz się, jako połączyć aplikację Mongoose napisaną w języku Node.js z usługą Azure Cosmos DB
-services: cosmos-db
-author: slyons
+title: Łączenie aplikacji Node.js platformy Mongoose w usłudze Azure Cosmos DB
+description: Dowiedz się, jak używać Framework platformy Mongoose do przechowywania danych i zarządzanie nimi w usłudze Azure Cosmos DB.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 01/08/2018
-ms.author: sclyon
-ms.openlocfilehash: 6f84dfac7b556e59ec3ad76ff7d2c6e5f5105293
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 12/06/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: ec47c265c3d6f826bc1b7e7d8038e284c6981b7a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101436"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134934"
 ---
-# <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: korzystanie z platformy Mongoose przy użyciu usługi Azure Cosmos DB
+# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Łączenie aplikacji Node.js platformy Mongoose w usłudze Azure Cosmos DB
 
 W tym samouczku przedstawiono sposób użycia [platformy Mongoose](https://mongoosejs.com/) do zapisywania danych w usłudze Azure Cosmos DB. W tym przewodniku do obsługi usługi Azure Cosmos DB jest używany interfejs API MongoDB. Mongoose to platforma modelowania obiektów usługi MongoDB w środowisku Node.js. Udostępnia ona także proste, bazujące na schematach rozwiązanie do modelowania danych aplikacji.
 

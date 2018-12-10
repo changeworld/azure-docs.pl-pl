@@ -1,6 +1,6 @@
 ---
-title: Projekt systemu multi-DRM ochrony zawartości przy użyciu kontrolki cccess przy użyciu usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu licencjonowania, Microsoft Smooth Streaming klienta przenoszenie Kit.
+title: Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu — usługi Azure Media Services | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat licencjonowania programu Microsoft Smooth Streaming klienta przenoszenie SDK.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: willzhan
-ms.openlocfilehash: d65007ed2a0ce5a827eadca31dd9df8704e2c905
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec18
+ms.openlocfilehash: ec354cc91b22905c399d7bb19107db1b94e9925f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958197"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136277"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu 
 
@@ -401,15 +402,15 @@ Poniższych zrzutach ekranu przedstawiono różne stron logowania w usługach u�
 
 **Niestandardowy usługi Azure AD dzierżawy konta domeny**: dostosowanego strony logowania w niestandardowych usługi Azure AD dzierżawy domeny.
 
-![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
+![Konto domeny dzierżawy niestandardowy usługi Azure AD, jeden](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
 **Konto domeny firmy Microsoft przy użyciu karty inteligentnej**: strona logowania dostosowywane przez firmy Microsoft IT za pomocą uwierzytelniania dwuskładnikowego.
 
-![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
+![Konto domeny dzierżawy niestandardowy usługi Azure AD dwóch](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
 **Konto Microsoft**: strony logowania konta Microsoft dla konsumentów.
 
-![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
+![Konto domeny dzierżawy niestandardowy usługi Azure AD trzy](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="use-encrypted-media-extensions-for-playready"></a>Używanie rozszerzeń zaszyfrowanych multimediów dla usług PlayReady
 Na nowoczesnej przeglądarce z Encrypted Media Extensions (EME) do obsługi technologii PlayReady, takich jak program Internet Explorer 11 na Windows 8.1 lub nowszym i przeglądarki Microsoft Edge w systemie Windows 10 Usługa Playroute jest podstawowym DRM dla EME.

@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2321ccf115e3b517bdc593c0c428c61d5dd90968
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 976118514dbcb4cee9675ae357d857e7b90e8c0c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367093"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140483"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Zagadnienia dotyczące topologii sieci przy użyciu serwera Proxy usługi Azure Active Directory Application
 
@@ -40,7 +40,7 @@ Po opublikowaniu aplikacji za pośrednictwem serwera Proxy aplikacji usługi Azu
 
 Po zarejestrowaniu się dla dzierżawy usługi Azure AD z regionem danej dzierżawy zależy od kraju, w którym można określić. Po włączeniu serwera Proxy aplikacji, wystąpień usługi Serwer Proxy aplikacji dla Twojej dzierżawy są wybrane lub utworzone w tym samym regionie, co dzierżawy usługi Azure AD lub najbliższego regionu do niego.
 
-Na przykład jeśli region dzierżawy usługi Azure AD jest Unii Europejskiej (UE), wszystkich łączników serwera Proxy aplikacji użyj wystąpień usługi w centrach danych platformy Azure na terenie UE. Podczas publikowania aplikacji dostępu użytkownikom ich ruch jest przesyłany za pośrednictwem wystąpień usługi Serwer Proxy aplikacji w tej lokalizacji.
+Na przykład w przypadku dzierżawy usługi Azure AD kraj lub region Zjednoczone Królestwo, wszystkich łączników serwera Proxy aplikacji użyj wystąpień usług w centrach danych Europa. Podczas publikowania aplikacji dostępu użytkownikom ich ruch jest przesyłany za pośrednictwem wystąpień usługi Serwer Proxy aplikacji w tej lokalizacji.
 
 ## <a name="considerations-for-reducing-latency"></a>Zagadnienia dotyczące zredukowanie opóźnień
 
@@ -85,9 +85,9 @@ W sieci klienta, należy umieścić łącznika blisko aplikacji docelowej. Ta ko
 
 Jeśli Twój łącznik linii wzroku do kontrolera domeny, ten wzorzec jest korzystne. Większość naszych klientów Użyj tego wzorca, ponieważ działa dobrze w przypadku większości scenariuszy. Ten wzorzec można również łączyć z wzorcem 2, aby zoptymalizować ruch między usługą i łącznik.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>Wzorzec 2: Skorzystaj z zalet usługi ExpressRoute w publicznej komunikacji równorzędnej
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>Wzorzec 2: Skorzystaj z zalet usługi ExpressRoute za pomocą komunikacji równorzędnej firmy Microsoft
 
-W przypadku konfigurowania w publicznej komunikacji równorzędnej usługi ExpressRoute umożliwia szybsze połączenia ExpressRoute dla ruchu między serwera Proxy aplikacji i łącznika. Łącznik jest nadal w sieci, blisko aplikacji.
+W przypadku usługi ExpressRoute skonfigurować za pomocą komunikacji równorzędnej firmy Microsoft umożliwia szybsze połączenia ExpressRoute dla ruchu między serwera Proxy aplikacji i łącznik. Łącznik jest nadal w sieci, blisko aplikacji.
 
 ### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Wzorzec 3: Korzystanie z zalet usługi ExpressRoute za pomocą prywatnej komunikacji równorzędnej
 
@@ -137,13 +137,13 @@ Ponownie wspólny wzorzec do optymalizacji przeskoku 3, umieszcza się łącznik
 
 ### <a name="use-case-3"></a>Przypadek użycia 3
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych. Istnieje usługi ExpressRoute w publicznej komunikacji równorzędnej między platformą Azure i siecią firmową.
+**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych. Usługi ExpressRoute za pomocą komunikacji równorzędnej firmy Microsoft istnieje między platformą Azure i siecią firmową.
 
 **Zalecenie:** postępuj zgodnie z wzorców 1 i 2, opisane w poprzedniej sekcji.
 
 Po pierwsze umieść łącznika możliwie blisko aplikacji. Następnie system automatycznie korzysta z usługi ExpressRoute dla przeskoku 2. 
 
-Jeśli link usługi ExpressRoute używa publicznej komunikacji równorzędnej, ruch między serwera proxy i łącznik przepływy za pośrednictwem tego łącza. Przeskok 2 ma zoptymalizowane pod kątem opóźnień.
+Jeśli link usługi ExpressRoute używa komunikacji równorzędnej firmy Microsoft, ruch między serwera proxy i łącznik przepływy za pośrednictwem tego łącza. Przeskok 2 ma zoptymalizowane pod kątem opóźnień.
 
 ![Diagram przedstawiający usługi ExpressRoute między serwera proxy i łącznik](./media/application-proxy-network-topology/application-proxy-pattern3.png)
 
@@ -173,7 +173,7 @@ Można również rozważyć użycie jednego innych wariant w takiej sytuacji. W 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Włącz serwer Proxy aplikacji](application-proxy-enable.md)
+- [Włącz serwer Proxy aplikacji](application-proxy-add-on-premises-application.md)
 - [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Włączanie dostępu warunkowego](application-proxy-integrate-with-sharepoint-server.md)
 - [Rozwiązywanie problemów z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)

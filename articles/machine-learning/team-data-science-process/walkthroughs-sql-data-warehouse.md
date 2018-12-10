@@ -1,5 +1,5 @@
 ---
-title: Usługa SQL Data Warehouse przewodniki dotyczące przetwarzania danych przy użyciu języka T-SQL i języka Python na platformie Azure | Dokumentacja firmy Microsoft
+title: Analiza w usłudze SQL Data Warehouse przy użyciu języka T-SQL, Python - zespołu danych dla celów naukowych
 description: Przykłady, które pomagają przy użyciu magazynu danych SQL do analizy predykcyjnej.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 425b28a3bfff46de3cb37562be8c6f868117a421
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 7d5b4d5d797b56407712494ca3702586a33c9fca
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444992"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138028"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Usługa SQL Data Warehouse przewodniki dotyczące przetwarzania danych przy użyciu języka T-SQL i języka Python na platformie Azure
 

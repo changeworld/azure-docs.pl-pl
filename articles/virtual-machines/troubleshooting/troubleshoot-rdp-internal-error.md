@@ -13,24 +13,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 7d0d4a34a31f15c23638eba1f14794838780f2b0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd75d5a3186bbb6ba82e2deb83a7e8429e32a3f2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307164"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134526"
 ---
-#  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Występuje błąd wewnętrzny podczas próby połączenia z Maszyną wirtualną platformy Azure za pośrednictwem pulpitu zdalnego 
+#  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Występuje błąd wewnętrzny podczas próby połączenia z Maszyną wirtualną platformy Azure za pośrednictwem pulpitu zdalnego
 
 W tym artykule opisano błędem, które mogą wystąpić podczas próby nawiązania połączenia z maszyną wirtualną (VM) w systemie Microsoft Azure.
-> [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania. 
+> [!NOTE]
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
-## <a name="symptoms"></a>Objawy 
+## <a name="symptoms"></a>Objawy
 
 Nie można nawiązać Maszynie wirtualnej platformy Azure przy użyciu protokołu remote desktop protocol (RDP). Połączenie zablokowania w sekcji "Konfigurowanie zdalnego" lub pojawi się następujący komunikat o błędzie:
 
-- Błąd wewnętrzny protokołu RDP 
+- Błąd wewnętrzny protokołu RDP
 - Wystąpił błąd wewnętrzny
 - Ten komputer nie można połączyć z komputerem zdalnym. Spróbuj ponownie nawiązać połączenie. Jeśli problem będzie się powtarzał, skontaktuj się z właścicielem komputera zdalnego lub z administratorem sieci
 
@@ -43,7 +43,7 @@ Ten problem może wystąpić z następujących powodów:
 - Protokół TLS jest wyłączony.
 - Certyfikat jest uszkodzony lub wygasła.
 
-## <a name="solution"></a>Rozwiązanie 
+## <a name="solution"></a>Rozwiązanie
 
 Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 
@@ -52,7 +52,7 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej lub [napraw maszy
 
 ### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
 
-Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShell](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do strony [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline) sekcji.
 
 #### <a name="step-1-check-the-rdp-port"></a>Krok 1. sprawdzenie portu RDP
@@ -63,35 +63,35 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
         Netstat -anob |more
 2. Jeśli Termservice.exe używa portu 8080, przejdź do kroku 2. Jeśli przez inną usługę lub aplikację inną niż Termservice.exe używa portu 8080, wykonaj następujące kroki:
 
-    A. Zatrzymaj usługę dla aplikacji, która używa usługi 3389: 
+    1. Zatrzymaj usługę dla aplikacji, która używa usługi 3389:
 
-        Stop-Service -Name <ServiceName>
+        Stop-Service - Name <ServiceName>
 
-    B. Uruchom usługę terminalu: 
+    2. Uruchom usługę terminalu:
 
-        Start-Service -Name Termservice
+        Start-Service - nazwa Termservice
 
 2. Jeśli nie można zatrzymać aplikacji lub jeśli ta metoda nie ma zastosowania do użytkownika, należy zmienić port dla protokołu RDP:
 
-    A. Zmień numer portu:
+    1. Zmień numer portu:
 
-        Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
+        Set-zmieniona właściwość elementu — ścieżki "Tcp Server\WinStations\RDP HKLM\SYSTEM\CurrentControlSet\Control\Terminal" — numer_portu nazwa-wartość <Hexportnumber>
 
-        Stop-Service -Name Termservice Start-Service -Name Termservice
- 
-    B. Ustaw zaporę dla nowego portu:
+        Stop-Service - nazwa Termservice Start-Service-nazwa Termservice
 
-        Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
+    2. Ustaw zaporę dla nowego portu:
 
-    C. [Aktualizowanie sieciowej grupy zabezpieczeń dla nowego portu](../../virtual-network/security-overview.md) w portalu Azure portem RDP.
+        Set-NetFirewallRule-Name "Pulpit zdalny-przekierowywania-w-TCP" - LocalPort < nowy PORT (dziesiętna) >
+
+    3. [Aktualizowanie sieciowej grupy zabezpieczeń dla nowego portu](../../virtual-network/security-overview.md) w portalu Azure portem RDP.
 
 #### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Uprawnienia są poprawne certyfikatu z podpisem własnym protokołu RDP
 
 1.  W wystąpieniu programu PowerShell uruchom następujące polecenia pojedynczo, aby odnowić certyfikat z podpisem własnym protokołu RDP:
 
-        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint 
+        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint
 
-        Stop-Service -Name "SessionEnv" 
+        Stop-Service -Name "SessionEnv"
 
         Start-Service -Name "SessionEnv"
 
@@ -101,24 +101,24 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
     2. Na **pliku** menu, wybierz opcję **Dodaj/Usuń przystawkę**, wybierz opcję **certyfikaty**, a następnie wybierz pozycję **Dodaj**.
     3. Wybierz **kont komputerów**, wybierz opcję **inny komputer**, a następnie dodaj adres IP problem maszyny Wirtualnej.
     4. Przejdź do **zdalnego Desktop\Certificates** folderu, kliknij prawym przyciskiem myszy certyfikat, wybierz opcję a następnie **Usuń**.
-    5. W wystąpieniu programu PowerShell z poziomu konsoli szeregowej Uruchom ponownie usługę konfiguracji pulpitu zdalnego: 
+    5. W wystąpieniu programu PowerShell z poziomu konsoli szeregowej Uruchom ponownie usługę konfiguracji pulpitu zdalnego:
 
-            Stop-Service -Name "SessionEnv" 
+            Stop-Service -Name "SessionEnv"
 
             Start-Service -Name "SessionEnv"
 3. Resetuj uprawnienia do folderu MachineKeys.
-    
-        remove-module psreadline icacls 
+
+        remove-module psreadline icacls
 
         md c:\temp
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt Restart-Service TermService -Force
 
@@ -129,9 +129,9 @@ Krok 3: Włącz wszystkie obsługiwane wersje protokołu TLS
 Klient protokołu RDP korzysta z protokołu TLS 1.0 jako domyślnego protokołu. Jednak to można zmienić do protokołu TLS 1.1 stał się nowym standardem. Wyłączenie protokołu TLS 1.1 na maszynie Wirtualnej, połączenie nie powiedzie się.
 1.  W wystąpieniu CMD Włącz protokół TLS:
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
+        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
+        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
         reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
 2.  Aby uniknąć zastępowania zmian zasad AD, Zatrzymaj tymczasowo aktualizacji zasad grupy:
@@ -201,23 +201,23 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt
 
-#### <a name="enable-all-supported-tls-versions"></a>Włącz wszystkie obsługiwane wersje protokołu TLS 
+#### <a name="enable-all-supported-tls-versions"></a>Włącz wszystkie obsługiwane wersje protokołu TLS
 
 1.  Otwórz sesję wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**), a następnie uruchom następujące polecenia. Poniższy skrypt zakłada się, czy literę został przypisany do dołączonym dysku systemu operacyjnego jest Zamień F. tę literę dysku z odpowiednią wartością dla maszyny Wirtualnej.
 2.  Sprawdzanie, który protokół TLS jest włączony:
 
         reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
 
 3.  Jeśli klucz nie istnieje lub jego wartość wynosi **0**, Włącz protokół, uruchamiając następujące skrypty:
@@ -238,22 +238,22 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
 
 4.  Włączanie uwierzytelniania na poziomie sieci:
 
-        REM Enable NLA 
+        REM Enable NLA
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f 
-    
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f 
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f 
-        
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
+
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
 5.  [Odłącz dysk systemu operacyjnego i ponowne utworzenie maszyny Wirtualnej](../windows/troubleshoot-recovery-disks-portal.md), a następnie sprawdź, czy problem został rozwiązany.
 
 
 
-    
- 
+
+

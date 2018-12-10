@@ -1,6 +1,6 @@
 ---
-title: Szablony usługi Azure Resource Manager w celu zachowania spójności w chmurze | Dokumentacja firmy Microsoft
-description: Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze. Tworzenie nowego elementu lub aktualizowanie istniejących szablonów dla usługi Azure Stack.
+title: Ponowne użycie szablonów dla chmur — usługi Azure Resource Manager
+description: Tworzenie szablonów usługi Azure Resource Manager, stale działające dla środowisk inną chmurę. Tworzenie nowego elementu lub aktualizowanie istniejących szablonów dla usługi Azure Stack.
 services: azure-resource-manager
 documentationcenter: na
 author: marcvaneijk
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/09/2018
 ms.author: mavane
-ms.openlocfilehash: fc1ca468545dc3a715fb11dbec459e14e60ade5b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: 28542bb66fe1e523201967a9dd67fd7e41fed7a0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017777"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135631"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 

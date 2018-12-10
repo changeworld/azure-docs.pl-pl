@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: f48bab5cec1e8c3836ab5044fbff1a843ede249b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3f4e7a911e98ea09376b4b6ac56e9441fe98e426
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978385"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135196"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w usłudze Azure Database for MySQL za pomocą wiersza polecenia platformy Azure
 
@@ -71,9 +71,10 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 ```
 
 `az mysql server restore` Polecenie wymaga następujących parametrów:
-| Ustawienie | Sugerowana wartość | Opis  |
+
+| Ustawienie | Sugerowana wartość | Opis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje na serwerze źródłowym.  |
+| resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje na serwerze źródłowym.  |
 | name | mydemoserver-restored | Nazwa nowego serwera utworzonego za pomocą polecenie przywracania. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Wybierz punkt w czasie do przywrócenia. Ta data i godzina musi przypadać w okresie przechowywania kopii zapasowej serwera źródłowego. Użyj formatu ISO8601 daty i godziny. Na przykład takie jak możesz użyć własnej lokalnej strefy czasowej, `2018-03-13T05:59:00-08:00`. Można również użyć formatu UTC Zulu, na przykład `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Nazwa lub identyfikator serwera źródłowego, z którego ma zostać przeprowadzone przywrócenie. |
@@ -108,13 +109,14 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 ```
 
 `az mysql server georestore` Polecenia requies następujące parametry:
-| Ustawienie | Sugerowana wartość | Opis  |
+
+| Ustawienie | Sugerowana wartość | Opis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Nazwa grupy zasobów, nowy serwer będzie znajdować się.|
 |name | mydemoserver-georestored | Nazwa nowego serwera. |
 |source-server | mydemoserver | Nazwa istniejącego serwera, którego geograficznie nadmiarowy tworzenia kopii zapasowych są używane. |
 |location | eastus | Lokalizacja nowego serwera. |
-|Nazwa jednostki SKU| GP_Gen4_8 | Ten parametr ustawia cen warstwy, Generowanie obliczeń i liczba rdzeni wirtualnych nowego serwera. GP_Gen4_8 mapuje do ogólnego przeznaczenia, serwer Gen 4 z 8 rdzeniami wirtualnymi.|
+|sku-name| GP_Gen4_8 | Ten parametr ustawia cen warstwy, Generowanie obliczeń i liczba rdzeni wirtualnych nowego serwera. GP_Gen4_8 mapuje do ogólnego przeznaczenia, serwer Gen 4 z 8 rdzeniami wirtualnymi.|
 
 
 >[!Important]

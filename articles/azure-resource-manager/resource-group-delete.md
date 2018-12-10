@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Resource Manager usuń grupę zasobów
-description: W tym artykule opisano, jak usługi Azure Resource Manager porządkuje usuwania zasobów, podczas usuwania grupy zasobów.
+title: Usuń grupę zasobów i zasoby — usługi Azure Resource Manager
+description: W tym artykule opisano, jak usługi Azure Resource Manager porządkuje usuwania zasobów, podczas usuwania grupy zasobów. Opisano w nim kodów odpowiedzi i jak Menedżera zasobów obsługuje je, aby określić, jeśli usunięcie powiodło się.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8b0711cab07584aa84ab437a2a4efb5aab92f3d1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: b8c4fdc942af291e912a4c1e74d1292279cf9f8c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319358"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132333"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Usuwanie grupy zasobów w usłudze Azure Resource Manager
 
@@ -32,7 +33,7 @@ Podczas usuwania grupy zasobów usługi Resource Manager, określa kolejność, 
 
 3. Pozostałe zasoby są usuwane po poprzednich dwóch kategorii.
 
-## <a name="resource-deletion"></a>Usunięcie zasobu
+## <a name="resource-deletion"></a>Usuwanie zasobów
 
 Po kolejność jest określana, Menedżer zasobów wystawia operację usuwania dla każdego zasobu. Czeka on na wszystkie zależności zakończyć działanie przed kontynuowaniem.
 
@@ -68,4 +69,4 @@ Dla innych kodów błędu usługi Resource Manager nie usunięcia zasobu.
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby zrozumieć pojęcia usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).
-* Aby wyświetlić operacje dla dostawcy zasobów, zobacz [interfejsu API REST usługi Azure](/rest/api/).
+* Usuwanie poleceń można znaleźć [PowerShell](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup), [wiersza polecenia platformy Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete), i [interfejsu API REST](/rest/api/resources/resourcegroups/delete).

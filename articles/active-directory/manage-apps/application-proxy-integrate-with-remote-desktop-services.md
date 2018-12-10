@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2afe75045444fbc0ca36ee1cfca3d96f5b218ab0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230798"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135495"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikowanie usług pulpitu zdalnego z serwerem Proxy aplikacji usługi Azure AD
 
@@ -49,7 +49,7 @@ We wdrożeniu usług pulpitu zdalnego roli usług pulpitu zdalnego w sieci Web i
 
 - Punkty końcowe sieci Web usług pulpitu zdalnego i bramy usług pulpitu zdalnego muszą znajdować się na na tym samym komputerze, a także z typowy katalog główny. Sieci Web usług pulpitu zdalnego i bramy usług pulpitu zdalnego są publikowane jako pojedynczą aplikacją przy użyciu serwera Proxy aplikacji, dzięki czemu mają funkcji logowania jednokrotnego między dwiema aplikacjami.
 
-- Konto powinno mieć już [wdrożonych usług pulpitu zdalnego](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), i [włączono serwer Proxy aplikacji](application-proxy-enable.md).
+- Konto powinno mieć już [wdrożonych usług pulpitu zdalnego](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), i [włączono serwer Proxy aplikacji](application-proxy-add-on-premises-application.md).
 
 - W tym scenariuszu przyjmuje go użytkownikom końcowym za pomocą programu Internet Explorer na komputerach stacjonarnych Windows 7 lub Windows 10, łączących się za pośrednictwem strony sieci Web usług pulpitu zdalnego. Jeśli potrzebujesz do obsługi innych systemów operacyjnych, zobacz [Obsługa innych konfiguracji klienta](#support-for-other-client-configurations).
 
@@ -63,7 +63,7 @@ Po skonfigurowaniu usług pulpitu zdalnego i aplikacji serwera Proxy Azure AD dl
 
 ### <a name="publish-the-rd-host-endpoint"></a>Publikowanie usług pulpitu zdalnego punktu końcowego hosta
 
-1. [Opublikuj nową aplikację serwera Proxy aplikacji](application-proxy-publish-azure-portal.md) z następującymi wartościami:
+1. [Opublikuj nową aplikację serwera Proxy aplikacji](application-proxy-add-on-premises-application.md) z następującymi wartościami:
    - Wewnętrzny adres URL: `https://\<rdhost\>.com/`, gdzie `\<rdhost\>` jest typowy katalog główny, które współdzielą sieci Web usług pulpitu zdalnego i bramy usług pulpitu zdalnego.
    - Zewnętrzny adres URL: To pole jest wypełniane automatycznie na podstawie nazwy aplikacji, ale można go zmodyfikować. Użytkownicy zaczną się do tego adresu URL, przy uzyskiwaniu dostępu RDS.
    - Metoda uwierzytelniania wstępnego: Usługa Azure Active Directory

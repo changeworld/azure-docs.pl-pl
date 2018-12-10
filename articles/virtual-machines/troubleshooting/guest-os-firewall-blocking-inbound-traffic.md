@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 3ddd2f122de832654be295c5978a88bec702558c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319435"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134441"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blokuje ruch przychodzący zaporę systemu operacyjnego gościa maszyny Wirtualnej platformy Azure
 
@@ -31,17 +31,17 @@ Za pomocą połączenia RDP nie można połączyć z maszyną wirtualną (VM) pl
 
 ## <a name="cause"></a>Przyczyna
 
-### <a name="cause-1"></a>Przyczyny 1 
+### <a name="cause-1"></a>Przyczyny 1
 
 Aby zezwolić na ruch RDP nie skonfigurowano regułę protokołu RDP.
 
-### <a name="cause-2"></a>Przyczyny 2 
+### <a name="cause-2"></a>Przyczyny 2
 
 Profile zapory systemu gościa są skonfigurowane do blokowania wszystkich połączeń przychodzących, łącznie z ruchem RDP.
 
 ![Ustawienia zapory](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
-## <a name="solution"></a>Rozwiązanie 
+## <a name="solution"></a>Rozwiązanie
 
 Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemowego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 
@@ -49,7 +49,7 @@ Aby rozwiązać ten problem, użyj jednej z metod opisanych w [sposobu rozwiązy
 
 ### <a name="online-troubleshooting"></a>Rozwiązywanie problemów z usługi online
 
-Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie programu PowerShell](serial-console-windows.md#open-cmd-or-powershell-in-serial-console). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do strony "[napraw Offline maszyny Wirtualnej](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
+Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie programu PowerShell](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do strony "[napraw Offline maszyny Wirtualnej](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
 
 #### <a name="mitigation-1"></a>Środki zaradcze 1
 
@@ -80,7 +80,7 @@ Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie progra
     ```cmd
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
     ```
-    
+
     W przeciwnym razie można otworzyć określonej pulpitu zdalnego (ruch przychodzący TCP) reguły, uruchom następujące polecenie:
 
     ```cmd
@@ -94,7 +94,7 @@ Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie progra
     ```
 
     Po zakończeniu rozwiązywania problemów i ustawienie zapory poprawnie, należy ponownie włączyć zapory.
-    
+
     > [!Note]
     > Nie trzeba ponownie uruchomić maszynę Wirtualną, aby zastosować te zmiany.
 
@@ -128,11 +128,11 @@ Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie progra
     ```
 
     > [!Note]
-    > Nie trzeba ponownie uruchomić maszynę Wirtualną, aby zastosować zmiany. 
+    > Nie trzeba ponownie uruchomić maszynę Wirtualną, aby zastosować zmiany.
 
 4.  Dostęp do maszyny Wirtualnej za pośrednictwem protokołu RDP, spróbuj ponownie.
 
-### <a name="offline-mitigations"></a>Środki zaradcze w trybie offline 
+### <a name="offline-mitigations"></a>Środki zaradcze w trybie offline
 
 1.  [Dołącz dysk systemu do odzyskiwania maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
 
@@ -159,7 +159,7 @@ Zobacz [sposób włączenia i wyłączenia zapory reguły w dokumentacji system
     robocopy f:\windows\system32\config f:\windows\system32\config.BACK /MT
 
     REM Mount the hive
-    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM 
+    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM
 
     REM Delete the keys to block all inbound connection scenario
     REG DELETE "HKLM\BROKENSYSTEM\ControlSet001\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /v DoNotAllowExceptions

@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: c219b2fb58d46d9280ef5c022140e0499e3ac54c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 81a3064290e0aa720a4fe6b0fa0d8eb13cfe6903
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347715"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141802"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Nie można pulpitu zdalnego do maszyn wirtualnych platformy Azure z powodu statyczny adres IP
 
 W tym artykule opisano problem, w którym nie jest możliwe pulpitu zdalnego do platformy Azure Windows Virtual Machines (VMs) po skonfigurowaniu statyczny adres IP na maszynie wirtualnej.
 
-> [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania. 
+> [!NOTE]
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
-## <a name="symptoms"></a>Objawy 
+## <a name="symptoms"></a>Objawy
 
 Po wprowadzeniu z połączeniem RDP z maszyną wirtualną na platformie Azure, pojawi się następujący komunikat o błędzie:
 
@@ -47,7 +47,7 @@ Podczas ewidencjonowania zrzucie ekranu [diagnostykę rozruchu](../troubleshooti
 
 Maszyna wirtualna ma statyczny adres IP, która jest zdefiniowana w interfejsie sieciowym w Windows. Ten adres IP różni się od adresu, który jest zdefiniowany w witrynie Azure portal.
 
-## <a name="solution"></a>Rozwiązanie 
+## <a name="solution"></a>Rozwiązanie
 
 Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 
@@ -55,7 +55,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
 ### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
 
-1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, zobacz [interfejs sieciowy resetowania](reset-network-interface.md).
 2. Sprawdź, czy DHCP jest wyłączony w interfejsie sieciowym:
 
@@ -63,7 +63,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 3. Jeżeli DHCP jest wyłączona, należy przywrócić konfigurację interfejsu sieciowego do używania protokołu DHCP:
 
         netsh interface ip set address name="<NIC Name>" source=dhc
-        
+
     Na przykład jeśli interfejs interwork nazwy "Ethernet 2", uruchom następujące polecenie:
 
         netsh interface ip set address name="Ethernet 2" source=dhc

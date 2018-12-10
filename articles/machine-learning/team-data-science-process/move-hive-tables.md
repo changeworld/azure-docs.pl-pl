@@ -1,6 +1,6 @@
 ---
-title: Tworzenie tabel programu Hive i ładowanie danych z usługi Azure Blob Storage | Dokumentacja firmy Microsoft
-description: Tworzenie tabel programu Hive i ładowanie danych w obiekcie blob do tabel programu hive
+title: Tworzenie tabel programu Hive i ładowanie danych z magazynu obiektów Blob — zespołu danych dla celów naukowych
+description: Korzystanie z zapytań Hive, aby utworzyć tabele programu Hive i ładowanie danych z usługi Azure blob storage. Partycjonowanie tabel programu Hive i użyj zoptymalizowane pod kątem wiersz kolumnowych (ORC) odpowiadający ustawieniom lokalnym poprawić wydajność zapytań.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 42911c347cd055f37f7fe8f31b6d22cc18a78662
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5d88974fd1fb3d8784416ad3895fe139a3275e01
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442884"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134951"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Tworzenie tabel programu Hive i ładowanie danych z usługi Azure Blob Storage
 
@@ -65,14 +65,14 @@ Istnieją trzy sposoby, aby przesłać zapytania Hive w wierszu polecenia usług
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Przesłać zapytania Hive bezpośrednio w wiersza polecenia usługi Hadoop.
 Możesz uruchomić polecenie, takie jak `hive -e "<your hive query>;` do przesyłania prostych zapytań programu Hive bezpośrednio w wiersza polecenia usługi Hadoop. Oto przykład, gdzie czerwoną otoczkę przedstawiono polecenia, który przesyła zapytania programu Hive i zielone pole przedstawia wyniki zapytania programu Hive.
 
-![Tworzenie obszaru roboczego](./media/move-hive-tables/run-hive-queries-1.png)
+![Polecenie, aby przesłać zapytania Hive z danymi wyjściowymi z zapytań Hive](./media/move-hive-tables/run-hive-queries-1.png)
 
 #### <a name="submit-hive-queries-in-hql-files"></a>Przesłać zapytania Hive w plikach .hql
 Jeśli zapytanie Hive jest bardziej skomplikowane i ma wiele wierszy, edytowanie zapytań, w wierszu polecenia lub konsoli poleceń programu Hive nie jest praktyczne. Alternatywą jest Użyj edytora tekstów węzłem głównym klastra usługi Hadoop, aby zapisać zapytania programu Hive w pliku .hql w katalogu lokalnym węzła głównego. Następnie można przesłać zapytania Hive w pliku .hql przy użyciu `-f` argument w następujący sposób:
 
     hive -f "<path to the .hql file>"
 
-![Tworzenie obszaru roboczego](./media/move-hive-tables/run-hive-queries-3.png)
+![Zapytania hive w pliku .hql](./media/move-hive-tables/run-hive-queries-3.png)
 
 **Pomiń wydruku ekranu stanu postępu zapytań Hive**
 
@@ -84,7 +84,7 @@ Domyślnie po wysłaniu zapytania programu Hive w wierszu polecenia usługi Hado
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Przesłać zapytania Hive w konsoli poleceń programu Hive.
 Możesz również najpierw wprowadzić konsoli poleceń gałęzi, uruchamiając polecenie `hive` w wierszu polecenia usługi Hadoop i następnie przesłać zapytania Hive w konsoli poleceń programu Hive. Oto przykład. W tym przykładzie dwie czerwone pola Zaznacz polecenia służące do wprowadzania konsoli poleceń programu Hive i zapytania programu Hive przesłanego w konsoli poleceń programu Hive, odpowiednio. Zielone pole prezentuje dane wyjściowe z zapytania programu Hive.
 
-![Tworzenie obszaru roboczego](./media/move-hive-tables/run-hive-queries-2.png)
+![Otwórz konsolę polecenia Hive i wprowadź polecenie, wyświetlanie wyników zapytania programu Hive](./media/move-hive-tables/run-hive-queries-2.png)
 
 Poprzednie przykłady danych wyjściowych bezpośrednio wyniki zapytania programu Hive na ekranie. W węźle głównym lub obiektu blob platformy Azure, można zapisać danych wyjściowych do pliku lokalnego. Następnie można użyć innych narzędzi, aby dalej analizować dane wyjściowe zapytań programu Hive.
 
@@ -95,7 +95,7 @@ Aby dane wyjściowe wyniki zapytania programu Hive w lokalnym katalogu w węźle
 
 W poniższym przykładzie danych wyjściowych zapytania programu Hive są zapisywane w pliku `hivequeryoutput.txt` w katalogu `C:\apps\temp`.
 
-![Tworzenie obszaru roboczego](./media/move-hive-tables/output-hive-results-1.png)
+![Dane wyjściowe zapytania programu Hive](./media/move-hive-tables/output-hive-results-1.png)
 
 **Dane wyjściowe wyniki zapytania programu Hive do obiektu blob platformy Azure**
 
@@ -105,11 +105,11 @@ Mogą również przesyłać dane wyjściowe wyniki zapytania programu Hive do ob
 
 W poniższym przykładzie danych wyjściowych zapytania programu Hive są zapisywane w katalogu obiektów blob `queryoutputdir` w kontenerze domyślnego klastra usługi Hadoop. W tym miejscu wystarczy podać nazwę katalogu bez nazwy obiektu blob. Błąd jest generowany, jeśli podasz nazwy katalogu i obiektów blob, takich jak `wasb:///queryoutputdir/queryoutput.txt`.
 
-![Tworzenie obszaru roboczego](./media/move-hive-tables/output-hive-results-2.png)
+![Dane wyjściowe zapytania programu Hive](./media/move-hive-tables/output-hive-results-2.png)
 
 Jeśli otworzysz domyślnego kontenera w klastrze usługi Hadoop, za pomocą Eksploratora usługi Azure Storage, możesz wyświetlić dane wyjściowe zapytania programu Hive, jak pokazano na poniższej ilustracji. Filtr (wyróżniony za czerwoną otoczkę) można zastosować tylko pobrać obiekt blob z określonej litery w nazwach.
 
-![Tworzenie obszaru roboczego](./media/move-hive-tables/output-hive-results-3.png)
+![Eksplorator usługi Azure Storage przedstawiający dane wyjściowe zapytania programu Hive](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. Przesyłanie zapytań programu Hive za pomocą edytora programu Hive
 Umożliwia także z konsoli zapytań (Edytor Hive), wprowadzając adres URL w formacie *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* w przeglądarce sieci web. Musi być zalogowany widzą tę konsolę i dlatego należy poświadczeń klastra usługi Hadoop.

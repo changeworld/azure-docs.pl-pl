@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: fe564e9809a3621ca04e4dad75488fb255f7dc0e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5e18a4690eacaaeaa4422379fc8a4e3d2a02e717
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682949"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134169"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -40,7 +40,7 @@ Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych:
 
 * Zapisywanie ich [ **konta magazynu** ](monitoring-archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić przy użyciu czasu (w dniach) przechowywania **ustawień diagnostycznych zasobu**.
 * [Stream im **usługi Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
-* Analizuj je za pomocą [usługi Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md)
+* Analizuj je za pomocą [usługi Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md), gdzie dane są zapisywane bezpośrednio do usługi Log Analytics bez konieczności najpierw zapisać dane do magazynu.  
 
 Można użyć konta magazynu lub przestrzeni nazw usługi Event Hubs, która nie znajduje się w tej samej subskrypcji co emitowane dzienniki. Użytkownik, który konfiguruje ustawienie, musi mieć odpowiedni dostęp RBAC do obu subskrypcji.
 
@@ -63,7 +63,7 @@ Dzienniki diagnostyczne zasobu są skonfigurowane za pomocą ustawień diagnosty
     - Jeśli ustawiono zasady przechowywania, ale przechowywania dzienników na koncie magazynu jest wyłączona (na przykład, jeśli tylko są zaznaczone opcje usługi Event Hubs lub usługi Log Analytics), zasad przechowywania przyniosło żadnego skutku.
     - Zasady przechowywania są stosowane dziennie, aby na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu.
 
-Te ustawienia można łatwo skonfigurować za pomocą ustawień diagnostycznych w witrynie portal, za pomocą programu Azure PowerShell i interfejsu wiersza polecenia lub za pośrednictwem [interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/).
+Te ustawienia są łatwo konfigurować na podstawie ustawień diagnostycznych w portalu, za pomocą poleceń programu Azure PowerShell i interfejsu wiersza polecenia lub przy użyciu [interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/).
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.

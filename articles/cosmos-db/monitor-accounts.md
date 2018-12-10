@@ -1,20 +1,22 @@
 ---
-title: Monitorowanie żądań usługi Azure Cosmos DB i magazynu
+title: Monitoruj metryki wydajności i magazynu w usłudze Azure Cosmos DB
 description: Dowiedz się, jak monitorować swoje konto usługi Azure Cosmos DB dla metryki wydajności, takie jak żądania i błędy serwera i metryk użycia, takich jak użycie magazynu.
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/19/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: f8dc62907748df23ecfb1434d28b36b4e03904c5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: fe527e6e9933d25d7f1a16561ce4822d7b9a33ab
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875607"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135886"
 ---
-# <a name="monitor-azure-cosmos-db"></a>Monitorowanie usługi Azure Cosmos DB
+# <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Monitoruj metryki wydajności i magazynu w usłudze Azure Cosmos DB
+
 Możesz monitorować kont usługi Azure Cosmos DB w [witryny Azure portal](https://portal.azure.com/). Dla każdego konta usługi Azure Cosmos DB pełny pakiet metryki są dostępne dla monitorowania przepływności, magazynu, dostępności, opóźnienia i spójności.
 
 Metryki można wyświetlić na stronie konta nową stronę metryk lub w usłudze Azure Monitor.

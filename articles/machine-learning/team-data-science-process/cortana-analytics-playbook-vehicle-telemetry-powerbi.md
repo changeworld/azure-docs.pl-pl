@@ -1,6 +1,6 @@
 ---
-title: Pulpit nawigacyjny usługi Power BI dla kondycję pojazdów i nawyki kierowców — Azure | Dokumentacja firmy Microsoft
-description: Korzystając z możliwości pakietu Cortana Intelligence możesz uzyskać w czasie rzeczywistym i predykcyjny wgląd w kondycję pojazdów i nawyki nawyków.
+title: Pulpit nawigacyjny usługi Power BI dla kondycję pojazdów i nawyki kierowców - zespołu danych dla celów naukowych
+description: Tworzenie pulpitu nawigacyjnego usługi Power BI uzyskiwanie w czasie rzeczywistym, predykcyjne i batch wgląd w kondycję pojazdów i nawyki nawyków.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b4d36b7d68bad658200024a2fe31a876d411536c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a964820979f24af1fee2be65461302be73b9e77b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444653"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135121"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Instrukcje instalacji pulpit nawigacyjny Telemetrii Analytics szablon rozwiązania usługi Power BI pojazdu
 
@@ -26,8 +26,8 @@ Aby przejrzeć podsumowanie tego rozwiązania, zobacz [podręcznik dotyczący ro
 Aby zapoznać się jeszcze bardziej tego rozwiązania, zobacz [podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów: szczegółami rozwiązania](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Wdrażanie [analiza Telemetrii pojazdów](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) rozwiązania. 
-* [Instalowanie programu Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331).
+* Wdrażanie [analiza Telemetrii pojazdów](https://gallery.cortanaintelligence.com/Solutions/5bdb23f3abb448268b7402ab8907cc90) rozwiązania. 
+* [Instalowanie programu Power BI Desktop](https://aka.ms/pbidesktopstore).
 * Uzyskaj [subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/). Jeśli nie masz subskrypcji platformy Azure, Zacznij korzystać z bezpłatnej subskrypcji platformy Azure.
 * Otwórz konto usługi Power BI.
 
@@ -345,7 +345,7 @@ Pomyślnie utworzono pulpit nawigacyjny w czasie rzeczywistym. W miarę postępu
 
 ### <a name="configure-power-bi-reports"></a>Konfigurowanie raportów usługi Power BI
 
-1. Otwórz plik projektanta **ConnectedCarsPbiReport.pbix** przy użyciu programu Power BI Desktop. Jeśli nie masz jeszcze je, zainstaluj program Power BI Desktop z [instalacji programu Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331) witryny sieci Web.
+1. Otwórz plik projektanta **ConnectedCarsPbiReport.pbix** przy użyciu programu Power BI Desktop. Jeśli nie masz jeszcze je, zainstaluj program Power BI Desktop z [instalacji programu Power BI Desktop](https://aka.ms/pbidesktopstore) witryny sieci Web.
 
 1. Wybierz **Edytuj zapytania**.
 

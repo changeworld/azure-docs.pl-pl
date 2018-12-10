@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i wdrażanie modelu uczenia maszynowego, za pomocą programu SQL Server na Maszynie wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Proces zaawansowane funkcje analityczne i technologii w działaniu
+title: Tworzenie i wdrażanie modelu w maszynę Wirtualną SQL Server — zespołu danych dla celów naukowych
+description: Tworzenie i wdrażanie przy użyciu programu SQL Server na Maszynie wirtualnej platformy Azure przy użyciu publicznie dostępnego zestawu danych model uczenia maszynowego.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: cad56d2e8de071feb9a02e0cfc6bcc884eebe91a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445467"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141411"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Zespół danych dla celów naukowych w działaniu: przy użyciu programu SQL Server
 W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu programu SQL Server i publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje pracy do analizy danych w warstwie standardowa: pozyskiwanie i eksplorować dane, Projektuj funkcje ułatwić szkolenia, a następnie utworzyć i wdrożyć model.

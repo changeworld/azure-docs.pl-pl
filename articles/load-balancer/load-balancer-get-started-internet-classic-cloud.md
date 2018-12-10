@@ -1,25 +1,25 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu dla usług Azure Cloud Services | Microsoft Docs
+title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu dla usług Azure cloud services
+titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć dostępny z Internetu moduł równoważenia obciążenia w klasycznym modelu wdrażania do usług w chmurze
 services: load-balancer
 documentationcenter: na
 author: genlin
 manager: cshepard
 tags: azure-service-management
-ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: b292739f5f4b7184a24ac9b14d40ed98d4921bde
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: HT
+ms.openlocfilehash: 66c978a7eb151ce9df939a11e2e3c0016c8e7c9e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067490"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138096"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>Wprowadzenie do tworzenia dostępnego z Internetu modułu równoważenia obciążenia do usług w chmurze
 
@@ -82,7 +82,7 @@ Definicja sondy kontroluje również częstotliwość jej wysyłania. W podanym 
 
 Aby dowiedzieć się więcej, zapoznaj się ze schematem definicji usługi [sondy kondycji](https://msdn.microsoft.com/library/azure/jj151530.aspx).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Get started configuring an internal load balancer](load-balancer-get-started-ilb-arm-ps.md) (Wprowadzenie do konfigurowania wewnętrznego modułu równoważenia obciążenia)
 

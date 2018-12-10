@@ -1,6 +1,6 @@
 ---
-title: Przewodnik programowania dotyczący usługi Azure Event Hubs | Microsoft Docs
-description: Pisanie kodu dla usługi Azure Event Hubs przy użyciu zestawu Azure .NET SDK.
+title: Podręcznik programowania — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje na temat sposobu pisanie kodu dla usługi Azure Event Hubs przy użyciu zestawu Azure .NET SDK.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cd97aed36e9fd82df0d37913d5ea9e57c875a673
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011457"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138079"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Przewodnik programowania dotyczący usługi Azure Event Hubs
 W tym artykule omówiono kilka typowych scenariuszy, w pisaniu kodu za pomocą usługi Azure Event Hubs. Przyjęto założenie, że wstępnie znasz i rozumiesz usługę Event Hubs. Omówienie koncepcji usługi Event Hubs można znaleźć w temacie [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -76,7 +76,7 @@ Podczas wysyłania danych zdarzenia, można określić wartość, która jest pr
 
 ### <a name="availability-considerations"></a>Zagadnienia dotyczące dostępności
 
-Użycie klucza partycji jest opcjonalna i należy rozważyć, czy do korzystania z jednego. W wielu przypadkach przy użyciu klucza partycji jest dobrym rozwiązaniem, jeśli zdarzenie kolejność jest ważna. Użycie klucza partycji, partycje te wymagają dostępności w jednym węźle, a awarii wraz z upływem czasu; na przykład, gdy obliczeń ponownego uruchomienia węzłów i patch. W efekcie Jeśli ustawisz identyfikator partycji: partycji stanie się niedostępna z powodu, próba uzyskania dostępu do danych w tej partycji zakończy się niepowodzeniem. Jeśli wysokiej dostępności jest najważniejsza, nie należy określać klucz partycji. w takim przypadku zdarzenia są wysyłane na partycje przy użyciu modelu działania okrężnego opisanych powyżej. W tym scenariuszu w przypadku wprowadzania jawną wyboru między dostępnością (Brak Identyfikatora partycji) i spójności (przypinanie zdarzenia do Identyfikatora partycji).
+Użycie klucza partycji jest opcjonalna i należy rozważyć, czy do korzystania z jednego. Jeśli nie określisz klucza partycji podczas publikowania zdarzenia, używane jest przypisanie działania okrężnego. W wielu przypadkach przy użyciu klucza partycji jest dobrym rozwiązaniem, jeśli zdarzenie kolejność jest ważna. Użycie klucza partycji, partycje te wymagają dostępności w jednym węźle, a awarii wraz z upływem czasu; na przykład, gdy obliczeń ponownego uruchomienia węzłów i patch. W efekcie Jeśli ustawisz identyfikator partycji: partycji stanie się niedostępna z powodu, próba uzyskania dostępu do danych w tej partycji zakończy się niepowodzeniem. Jeśli wysokiej dostępności jest najważniejsza, nie należy określać klucz partycji. w takim przypadku zdarzenia są wysyłane na partycje przy użyciu modelu działania okrężnego opisanych powyżej. W tym scenariuszu w przypadku wprowadzania jawną wyboru między dostępnością (Brak Identyfikatora partycji) i spójności (przypinanie zdarzenia do Identyfikatora partycji).
 
 Inną ważną kwestią jest obsługa opóźnienia w przetwarzaniu zdarzeń. W niektórych przypadkach może być lepszym rozwiązaniem porzucić danych i ponów próbę niż próbować na bieżąco przetwarzania, co może powodować dalsze opóźnienia w przetwarzaniu podrzędnym. Na przykład za pomocą giełdowej lepiej jest oczekiwania kompletne aktualne dane, ale w Czat na żywo lub scenariusza VOIP zamiast trzeba je szybko, nawet jeśli nie zostało zakończone.
 

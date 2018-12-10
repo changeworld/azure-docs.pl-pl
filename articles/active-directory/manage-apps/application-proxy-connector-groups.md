@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622637"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139029"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników
 
@@ -32,7 +32,7 @@ Wszystkie aplikacje są przypisane do grupy łączników. Jeśli nie utworzysz g
 >W przypadku dużego wdrożenia serwera Proxy aplikacji nie przypisuj aplikacji do domyślnej grupy łączników. W ten sposób nowe łączniki nie otrzymasz żadnych aktywny ruch, dopóki nie zostanie przypisana do grupy łącznika usługi active. Ta konfiguracja umożliwia również umieścić łączników w trybie bezczynności, przenosząc je z powrotem do domyślnej grupy, dzięki czemu można wykonać konserwacji bez wywierania wpływu na użytkowników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do grupy łączników, należy upewnić się, że [zainstalowano wiele łączników](application-proxy-enable.md). Po zainstalowaniu nowego łącznika, automatycznie dołączeniu **domyślne** grupy łączników.
+Do grupy łączników, należy upewnić się, że [zainstalowano wiele łączników](application-proxy-add-on-premises-application.md). Po zainstalowaniu nowego łącznika, automatycznie dołączeniu **domyślne** grupy łączników.
 
 ## <a name="create-connector-groups"></a>Tworzenie grupy łączników
 Użyj tych kroków można utworzyć dowolną liczbę grup łącznika. 

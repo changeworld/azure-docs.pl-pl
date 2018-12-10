@@ -1,5 +1,5 @@
 ---
-title: Eksploruj dane w klastrze usługi Hadoop i tworzyć modele w usłudze Azure Machine Learning | Dokumentacja firmy Microsoft
+title: Eksplorowanie danych w klastrze usługi Hadoop — zespołu danych dla celów naukowych
 description: Scenariusz end-to-end, wykorzystujące klastra usługi HDInsight Hadoop, aby skompilować i wdrożyć model, za pomocą procesie nauki o danych zespołu.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 1b494f78998a03d39b18d4f9bba80642c04c483e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444209"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139626"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Zespół danych dla celów naukowych w działaniu: klastry użycia usługi Azure HDInsight Hadoop
 W tym przewodniku używamy [Team Data Science naukowych](overview.md) w scenariuszu end-to-end. Używamy [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) przechowywać, eksplorować, inżynier ds. funkcji dane i z publicznie dostępnych [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych i obniżenie częstotliwości próbkowania danych. Aby obsłużyć binarne i wieloklasowej klasyfikacji i regresji predykcyjnego zadań, firma Microsoft tworzy modele danych przy użyciu usługi Azure Machine Learning. 
@@ -416,7 +416,7 @@ W wierszu polecenia katalogu programu Hive uruchom następujące polecenie:
 > 
 > 
 
-Podczas eksplorowania zestawu danych, często chcemy sprawdzić liczbę wystąpień co grupy wartości. Ta sekcja zawiera przykład sposobu wykonania tego zadania dla plików cab i sterowników.
+Podczas eksplorowania zestawu danych, często chcemy sprawdzić liczbę wystąpień wspólnej grupy wartości. Ta sekcja zawiera przykład sposobu wykonania tego zadania dla plików cab i sterowników.
 
 **Przykładowe\_hive\_podróży\_liczba\_przez\_Medalionu\_license.hql** dataset taryfy grup plików na **Medalionu** i **hack_license**i zwraca liczbę dla każdej kombinacji. Oto jego zawartość:
 
@@ -765,7 +765,7 @@ Teraz można przystąpić do konstruowania modelu i wdrażania modelu w [uczenia
 
   Na poniższym diagramie przedstawiono naszych eksperymentu w celu przewidywania, czy porady zapłacono komunikacji dwustronnej danego:
 
-  ![Diagram przedstawiający eksperymentu](./media/hive-walkthrough/QGxRz5A.png)
+  ![Diagram przedstawiający eksperymentu w celu przewidywania, jeśli została zapłacona Porada](./media/hive-walkthrough/QGxRz5A.png)
 
   b. W tym eksperymencie naszych dystrybucje etykiety docelowej zostały około 1:1.
 
@@ -785,7 +785,7 @@ Teraz można przystąpić do konstruowania modelu i wdrażania modelu w [uczenia
 
   Na poniższym diagramie przedstawiono eksperymentu w celu przewidywania, w których bin Porada jest mogącego wchodzić. Pojemniki to: klasy 0: Porada = 0 zł, klasy 1: Porada > 0 USD i Porada < = 5 USD; klasy 2: Porada > 5 USD i Porada < = 10 USD, klasy 3: Porada > w wysokości 10 USD i Porada < = 20 USD i klasy 4: Porada > 20 USD.
 
-  ![Diagram przedstawiający eksperymentu](./media/hive-walkthrough/5ztv0n0.png)
+  ![Diagram przedstawiający eksperymentu do prognozowania pojemnika dla wskazówki](./media/hive-walkthrough/5ztv0n0.png)
 
   Teraz pokazujemy, jak wygląda rozkład klasy rzeczywiste testu. Klasa 0 i 1 klasy są powszechnie znane i innych klas są rzadkie.
 
@@ -805,7 +805,7 @@ Teraz można przystąpić do konstruowania modelu i wdrażania modelu w [uczenia
 
   Na poniższym diagramie przedstawiono eksperymentu do prognozowania kwotę napiwku danego:
 
-  ![Diagram przedstawiający eksperymentu](./media/hive-walkthrough/11TZWgV.png)
+  ![Diagram przedstawiający eksperymentu do prognozowania ilość Porada](./media/hive-walkthrough/11TZWgV.png)
 
   b. W przypadku problemów z regresji mierzymy dokładności przewidywania patrząc pierwiastek błędu w prognoz i współczynnika determinacji:
 

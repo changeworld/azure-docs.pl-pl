@@ -1,5 +1,5 @@
 ---
-title: Zespół danych dla celów naukowych w działaniu — przy użyciu klastra usługi Azure HDInsight Hadoop na zestawie 1 TB danych | Dokumentacja firmy Microsoft
+title: Użyj usługi Azure HDInsight Hadoop klastra na zestaw 1 TB danych — danych zespołu dla celów naukowych
 description: Scenariusz end-to-end zatrudniających klastra usługi HDInsight Hadoop, aby skompilować i wdrożyć model przy użyciu dużego (1 TB) publicznie dostępnego zestawu danych za pomocą Team danych dla celów naukowych
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 3aef1b85a462eea74fbe977e9a48054f11acf47a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447048"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135818"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Zespół danych dla celów naukowych w działaniu — przy użyciu klastra usługi Azure HDInsight Hadoop na zestawie danych 1 TB
 
@@ -478,7 +478,7 @@ Może to być milionów unikatowe wartości w przypadku niektórych kategorii fu
 ##### <a name="building-counting-transforms"></a>Tworzenie zliczanie przekształceń
 Aby tworzyć funkcje count, należy użyć **kompilacji zliczanie Przekształcanie** modułu, który jest dostępny w usłudze Azure Machine Learning. Moduł wygląda następująco:
 
-![Utworzenie modułu zliczanie Przekształcanie](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+![Zliczanie przekształcania modułu właściwości kompilacji](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![kompilacji zliczanie przekształcania modułu](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT] 

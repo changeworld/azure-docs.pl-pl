@@ -1,5 +1,5 @@
 ---
-title: Wybór w procesie nauki o danych zespołu funkcji | Dokumentacja firmy Microsoft
+title: Wybór funkcji w procesie nauki o danych zespołu
 description: Zawiera wyjaśnienie przeznaczenia wybór funkcji i przykłady ich rolę w procesie rozszerzenia danych, uczenia maszynowego.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b439f7245dd09a2f8a7ffe5f3b3c5396786220af
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: de8070906f7b2470378fb631f2e94a96b4a2960d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442382"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138657"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Wybór funkcji w zespołowym przetwarzaniu danych dla celów naukowych
 W tym artykule wyjaśniono celów wybór funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego. Te przykłady są pobierane z usługi Azure Machine Learning Studio. 
@@ -42,21 +42,21 @@ Między innymi jedną kategorię powszechnie stosowane metody wyboru funkcji w k
 
 W usłudze Azure Machine Learning Studio są moduły spośród funkcji. Jak pokazano na poniższej ilustracji, obejmują moduły [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] i [Fishera analiza liniowa w Discriminant] [ fisher-linear-discriminant-analysis].
 
-![Przykład wyboru funkcji](./media/select-features/feature-Selection.png)
+![Modułów wyboru funkcji](./media/select-features/feature-Selection.png)
 
 Na przykład, rozważ użycie [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] modułu. Dla wygody nadal korzystając z przykładu wyszukiwania tekstu. Przyjęto założenie, chcesz zbudowania modelu regresji, po utworzeniu zestawu funkcji 256 za pośrednictwem [Tworzenie skrótu funkcji] [ feature-hashing] modułu, a zmienna odpowiedzi jest "Col1" zawierający książki przeglądu oceny w zakresie od 1 do 5. Przez ustawienie "Funkcji oceniania metody" jako "Korelacji Pearsona", "kolumna docelowa" "Col1" i "Liczba żądanych funkcji" do 50. Następnie moduł [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] tworzy zestaw danych zawierający 50 funkcji wraz z atrybut target "Col1". Na poniższej ilustracji przedstawiono przepływ ten eksperyment i parametry wejściowe:
 
-![Przykład wyboru funkcji](./media/select-features/feature-Selection1.png)
+![Właściwości modułu na podstawie wybór funkcji filtru](./media/select-features/feature-Selection1.png)
 
 Na poniższej ilustracji przedstawiono wynikowe zestawy danych:
 
-![Przykład wyboru funkcji](./media/select-features/feature-Selection2.png)
+![Wynikowy zestaw danych dla modułu filtru na podstawie funkcji wyboru](./media/select-features/feature-Selection2.png)
 
 Każda funkcja jest oceniany na podstawie korelacji Pearsona między sobą i atrybut target "Col1". Oceny najważniejszych funkcji są zachowywane.
 
 Odpowiednie wyniki wybrane funkcje są wyświetlane na poniższej ilustracji:
 
-![Przykład wyboru funkcji](./media/select-features/feature-Selection3.png)
+![Wyniki dla modułu filtru na podstawie funkcji wyboru](./media/select-features/feature-Selection3.png)
 
 Stosując to [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] modułu, 50 poza 256 funkcje są zaznaczone, ponieważ mają one najbardziej skorelowany funkcji zawiera zmienną docelową "Col1" oparte na metodzie oceniania "Korelacji Pearsona".
 

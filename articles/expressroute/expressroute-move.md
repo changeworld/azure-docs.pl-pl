@@ -1,25 +1,19 @@
 ---
-title: Przenoszenie obwodów usługi ExpressRoute z modelu klasycznego do usługi Resource Manager | Microsoft Docs
-description: Ta strona zawiera niezbędne informacje dotyczące łączenia modeli wdrażania klasycznego i usługi Resource Manager.
-documentationcenter: na
+title: 'Przenoszenie obwodów z wersji klasycznej do usługi Resource Manager — usługi ExpressRoute: Azure | Dokumentacja firmy Microsoft'
+description: Przegląd łączenie klasycznej sieci wirtualnej i modelem wdrażania usługi Resource Manager.
 services: expressroute
 author: ganesr
-manager: carmonm
-editor: ''
-ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: ganesr
-ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: dfa2bbc735a79555da0421f64ca644adbd7a1701
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22710069"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135920"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Przenoszenie obwodów usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Resource Manager | Microsoft Azure
 W tym artykule wyjaśniono przenoszenie obwodu usługi Azure ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager.
@@ -64,7 +58,7 @@ Poniższe operacje klasyczne są obsługiwane w obwodzie usługi ExpressRoute, g
 * Tworzenie/aktualizowanie/pobieranie/usuwanie linków sieci wirtualnej do klasycznych sieci wirtualnych
 * Tworzenie/aktualizowanie/pobieranie/usuwanie autoryzacji linków sieci wirtualnej względem łączności obejmującej wiele subskrypcji
 
-Nie można wykonać poniższych operacji klasycznych, jeśli parametr **allowClassicOperations** jest ustawiony na wartość PRAWDA:
+Jednak gdy **allowClassicOperations** jest ustawiona na wartość PRAWDA, nie można wykonać poniższych operacji klasycznych:
 
 * Tworzenie/aktualizowanie/pobieranie/usuwanie komunikacji równorzędnej protokołu BGP dla komunikacji równorzędnej prywatnej i publicznej Azure oraz Microsoft
 * Usuwanie obwodów usługi ExpressRoute
@@ -97,7 +91,7 @@ W tej sekcji opisano, jakie operacje nie są obsługiwane dla obwodów usługi E
 ## <a name="configuration"></a>Konfigurowanie
 Wykonaj instrukcje opisane w artykule [Move an ExpressRoute circuit from the classic to the Resource Manager deployment model](expressroute-howto-move-arm.md) (Przenoszenie obwodu usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Resource Manager).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Migrowanie sieci wirtualnych połączonych z obwodem usługi ExpressRoute z modelu klasycznego do modelu usługi Azure Resource Manager](expressroute-migration-classic-resource-manager.md)
 * Informacje o przepływach pracy można znaleźć w artykule [ExpressRoute circuit provisioning workflows and circuit states](expressroute-workflows.md) (Przepływy pracy inicjowania obsługi obwodu i stany obwodu usługi ExpressRoute).
 * Konfigurowanie połączenia usługi ExpressRoute:

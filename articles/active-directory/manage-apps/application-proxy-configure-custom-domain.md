@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 090df19861e00a99f0bb63bf20eb2f26dc6761fd
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b0ad4aa63dbeefce6b55e099fd51d3608ae3abb8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369037"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133353"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD
 
@@ -40,7 +40,7 @@ Zaleca się, że Konfigurowanie domen niestandardowych dla aplikacji, jeśli to 
 Przed skonfigurowaniem domenę niestandardową, upewnij się, że masz następujące wymagania, które są przygotowywane: 
 - A [zweryfikowaną domenę dodane do usługi Azure Active Directory](../fundamentals/add-custom-domain.md).
 - Niestandardowy certyfikat dla domeny, w postaci pliku PFX. 
-- Aplikację w środowisku lokalnym [opublikowane za pośrednictwem serwera Proxy aplikacji](application-proxy-publish-azure-portal.md).
+- Aplikację w środowisku lokalnym [opublikowane za pośrednictwem serwera Proxy aplikacji](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Konfigurowanie domeny niestandardowej
 

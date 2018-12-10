@@ -7,19 +7,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 3142cabf28dd60fa49bed4cc153eaba096a2782e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1493eb6978b00771aa8ed4d8cfc28c37a9dde5b6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109939"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139751"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Najlepsze rozwiązania w celu skonfigurowania sieci w przypadku obciążeń migracji na platformę Azure
 
-Projektowanie pod kątem migracji, oprócz myśleć o migracji, oraz plan jest jedną z najważniejszych etapów projektowania i implementowania sieci platformy Azure. W tym artykule opisano informacje na temat planowania i najlepsze rozwiązania dotyczące sieci podczas migracji do implementacji rozwiązań IaaS i PaaS na platformie Azure.
+Projektowanie pod kątem migracji, oprócz migracji, oraz plan jest jedną z najważniejszych etapów projektowania i implementowania sieci platformy Azure. W tym artykule opisano najlepsze rozwiązania dotyczące sieci podczas migrowania do implementacji rozwiązań IaaS i PaaS na platformie Azure.
 
 > [!IMPORTANT]
-> Najlepsze rozwiązania i opinie opisanych w tym artykule opierają się na platformie Azure oraz z funkcji dostępnych w momencie pisania. Funkcje i możliwości zmiany w czasie. Nie wszystkie zalecenia może być odpowiednie dla danego wdrożenia, dlatego wybierz te, które działają w danym środowisku.
+> Najlepsze rozwiązania i opinie opisanych w tym artykule opierają się na platformie Azure oraz z funkcji dostępnych w momencie pisania. Funkcje i możliwości zmiany w czasie. Nie wszystkie zalecenia może być odpowiednie dla danego wdrożenia, dlatego wybierz te, które będą dla Ciebie.
 
 
 ## <a name="design-virtual-networks"></a>Projektowanie sieci wirtualnych

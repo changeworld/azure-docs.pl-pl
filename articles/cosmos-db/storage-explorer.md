@@ -1,26 +1,21 @@
 ---
-title: Zarządzanie usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage
-description: Dowiedz się, jak zarządzać usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage.
-Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
-services: cosmos-db
+title: Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu Eksploratora usługi Azure Storage
+description: Dowiedz się, jak nawiązać połączenie z usługi Azure Cosmos DB i zarządzania jej zasobami za pomocą Eksploratora usługi Azure Storage.
 author: Jejiang
-manager: kfile
-editor: ''
 tags: Azure Cosmos DB
 ms.service: cosmos-db
-ms.custom: Azure Cosmos DB active
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 12/07/2018
 ms.author: jejiang
-ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261164"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138130"
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Zarządzanie usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage
+# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu Eksploratora usługi Azure Storage
 
 Korzystanie z usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage pozwala użytkownikom zarządzać jednostkami usługi Azure Cosmos DB, wykonywać operacje na danych oraz aktualizować procedury składowane i wyzwalacze, a także inne jednostki platformy Azure, takie jak obiekty blob i kolejki usługi Storage. Za pomocą jednego narzędzia można teraz centralnie zarządzać różnymi jednostkami platformy Azure. Aktualnie Eksplorator usługi Azure Storage obsługuje konta baz danych SQL i MongoDB, programu Graph oraz tabel.
 
@@ -152,7 +147,7 @@ Po kliknięciu prawym przyciskiem myszy subskrypcji w okienku Eksploratora pojaw
 - Aby usunąć wybrany dokument, kliknij przycisk **Usuń**.
 
 #### <a name="query-for-documents"></a>Wykonywanie zapytań dotyczących dokumentów
-- Aby zmodyfikować filtr dokumentu, wprowadź [zapytanie SQL](sql-api-sql-query.md), a następnie kliknij przycisk **Zastosuj**.
+- Aby zmodyfikować filtr dokumentu, wprowadź [zapytanie SQL](how-to-sql-query.md), a następnie kliknij przycisk **Zastosuj**.
 
     ![Filtr dokumentu](./media/storage-explorer/document-filter.png)
 
@@ -242,8 +237,8 @@ Jeśli nie możesz odnaleźć żadnych certyfikatów z podpisem własnym za pomo
 
 Jeśli nie możesz pobrać subskrypcji po pomyślnym zalogowaniu:
 
-- Sprawdź, czy Twoje konto użytkownika ma dostęp do subskrypcji, logując się do witryny [Azure Portal](http://portal.azure.com/)
-- Upewnij się, że podczas logowania używasz poprawnego środowiska ([Azure](http://portal.azure.com/), [Azure — Chiny](https://portal.azure.cn/), [Azure — Niemcy](https://portal.microsoftazure.de/), [Azure — instytucje rządowe USA](http://portal.azure.us/) lub niestandardowe środowisko/usługa Azure Stack)
+- Sprawdź, czy Twoje konto użytkownika ma dostęp do subskrypcji, logując się do witryny [Azure Portal](https://portal.azure.com/)
+- Upewnij się, że podczas logowania używasz poprawnego środowiska ([Azure](https://portal.azure.com/), [Azure — Chiny](https://portal.azure.cn/), [Azure — Niemcy](https://portal.microsoftazure.de/), [Azure — instytucje rządowe USA](https://portal.azure.us/) lub niestandardowe środowisko/usługa Azure Stack)
 - Jeśli znajdujesz się za serwerem proxy, upewnij się, że masz poprawnie skonfigurowany serwer proxy Eksploratora usługi Storage
 - Spróbuj usunąć i ponownie dodać konto
 - Spróbuj usunąć następujące pliki z katalogu macierzystego (takiego jak: C:\Users\ContosoUser), a następnie ponownie dodać konto:

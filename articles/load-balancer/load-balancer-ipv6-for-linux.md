@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux | Dokumentacja firmy Microsoft
+title: Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux
+titlesuffix: Azure Load Balancer
 description: Jak skonfigurować protokołu DHCPv6 dla maszyn wirtualnych systemu Linux.
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publi
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 7ef376c044bceb14614388a72c11942869dbde07
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: ea1ef845f55fbdadeea1992e167ef6568572abc9
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741627"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141717"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux
 

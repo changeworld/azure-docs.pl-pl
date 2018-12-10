@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ad659cfcf1bfdad440968da5568b993724a5f351
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319547"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137841"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Usługa Azure zapory systemu operacyjnego gościa maszyny Wirtualnej jest błędnie skonfigurowane
 
@@ -33,7 +33,7 @@ Ten artykuł wprowadza jak naprawić gościa nieprawidłowo działających Zapor
 
 ## <a name="cause"></a>Przyczyna
 
-Błędnej konfiguracji zapory systemu gościa można zablokować niektóre lub wszystkie rodzaje ruchu sieciowego do maszyny Wirtualnej. 
+Błędnej konfiguracji zapory systemu gościa można zablokować niektóre lub wszystkie rodzaje ruchu sieciowego do maszyny Wirtualnej.
 
 ## <a name="solution"></a>Rozwiązanie
 
@@ -43,11 +43,11 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej lub [napraw maszy
 
 ## <a name="online-mitigations"></a>Środki zaradcze w trybie online
 
-Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie programu PowerShell](serial-console-windows.md#open-cmd-or-powershell-in-serial-console). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do sekcji "Napraw maszynę Wirtualną w tryb Offline" w artykule platformy Azure:
+Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie programu PowerShell](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do sekcji "Napraw maszynę Wirtualną w tryb Offline" w artykule platformy Azure:
 
  [Występuje błąd wewnętrzny podczas próby połączenia z Maszyną wirtualną platformy Azure za pośrednictwem pulpitu zdalnego](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
-Następujące reguły można edytować, albo umożliwiające dostęp do maszyny Wirtualnej (za pośrednictwem protokołu RDP) lub w celu udostępnienia środowiska łatwiejsze do rozwiązywania problemów: 
+Następujące reguły można edytować, albo umożliwiające dostęp do maszyny Wirtualnej (za pośrednictwem protokołu RDP) lub w celu udostępnienia środowiska łatwiejsze do rozwiązywania problemów:
 
 *   Pulpit zdalny (ruch przychodzący TCP): Jest to standardowy regułę, która zapewnia dostępu do maszyny Wirtualnej, umożliwiając protokołu RDP na platformie Azure.
 
@@ -55,7 +55,7 @@ Następujące reguły można edytować, albo umożliwiające dostęp do maszyny 
 
 *   Udostępnianie plików i drukarek (ruch przychodzący SMB): Ta reguła umożliwia dostęp do udziału sieciowego jako opcji rozwiązywania problemów.
 
-*   Udostępnianie plików i drukarek (żądanie echa — ICMPv4-In): Ta reguła umożliwia wysłać polecenie ping maszyny Wirtualnej. 
+*   Udostępnianie plików i drukarek (żądanie echa — ICMPv4-In): Ta reguła umożliwia wysłać polecenie ping maszyny Wirtualnej.
 
 W przypadku dostępu do konsoli szeregowej można tworzyć zapytania bieżący stan reguły zapory.
 
@@ -83,7 +83,7 @@ W przypadku dostępu do konsoli szeregowej można tworzyć zapytania bieżący s
     netsh advfirewall firewall set rule name="<RULE NAME>" new enable=yes
     ```
 
-*   Na potrzeby rozwiązywania problemów można wyłączyć profile zapory: 
+*   Na potrzeby rozwiązywania problemów można wyłączyć profile zapory:
 
     ```cmd
     netsh advfirewall set allprofiles state off

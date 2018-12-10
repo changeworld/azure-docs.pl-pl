@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 91bbbf6cced8dc3ade4906961d68a99f810d9fd9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c27649bc92b9874c6a669911d2b86273cf7adf0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956990"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136336"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Jak skonfigurować logowanie jednokrotne do aplikacji serwera Proxy aplikacji
 
@@ -29,7 +29,7 @@ Logowanie jednokrotne (SSO) umożliwia użytkownikom dostęp do aplikacji bez uw
 ## <a name="how-to-configure-single-sign-on"></a>Konfigurowanie logowania jednokrotnego na
 Aby skonfigurować logowanie Jednokrotne, najpierw upewnij się, że aplikacja jest skonfigurowana do uwierzytelniania wstępnego za pomocą usługi Azure Active Directory. Aby przeprowadzić tę konfigurację, przejdź do **usługi Azure Active Directory**  - &gt; **aplikacje dla przedsiębiorstw**  - &gt; **wszystkie aplikacje**   - &gt; Aplikacji  **- &gt; serwera Proxy aplikacji**. Na tej stronie można znaleźć w polu "Uwierzytelniania Pre" i upewnij się, która jest ustawiona na "Azure Active Directory. 
 
-Aby uzyskać więcej informacji na temat metod uwierzytelniania wstępnego, zobacz krok 4 [dokumentu publikowania aplikacji](application-proxy-publish-azure-portal.md).
+Aby uzyskać więcej informacji na temat metod uwierzytelniania wstępnego, zobacz krok 4 [dokumentu publikowania aplikacji](application-proxy-add-on-premises-application.md).
 
    ![Metoda uwierzytelniania wstępnego w witrynie Azure portal](./media/application-proxy-config-sso-how-to/app-proxy.png)
 

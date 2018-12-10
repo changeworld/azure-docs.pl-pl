@@ -1,6 +1,6 @@
 ---
-title: 'Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse | Dokumentacja firmy Microsoft'
-description: Proces zaawansowane funkcje analityczne i technologii w działaniu
+title: Tworzenie i wdrażanie modelu przy użyciu SQL Data Warehouse — zespołu danych dla celów naukowych
+description: Tworzenie i wdrażanie przy użyciu SQL Data Warehouse przy użyciu publicznie dostępnego zestawu danych model uczenia maszynowego.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 87c3b0b597a401041b8bf1b6f3997431d8816e92
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ed3731db88d7f829634a03c55e5ec033c03e4b0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445715"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139134"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse
 W tym samouczku, w jaki sposób Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu magazynu danych SQL (SQL data Warehouse) dla publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany przewiduje czy Porada czy płatna komunikacji dwustronnej i modele wieloklasowej klasyfikacji i regresji zostały również omówione, które przewidzieć dystrybucja przypadku ilości Porada płatne.
@@ -117,7 +117,7 @@ Otwórz konsolę polecenia programu Windows PowerShell. Uruchom następujące po
 
 Po pomyślnym wykonaniu Twojego bieżącego katalogu roboczego zmienia się na *- DestDir*. Powinno być możliwe zobaczyć ekran, takich jak poniżej:
 
-![][19]
+![Zmiany w bieżącym katalogu roboczym][19]
 
 W swojej *- DestDir*, uruchom następujący skrypt programu PowerShell w trybie administratora:
 
@@ -321,7 +321,7 @@ Musisz zdecydować co robią, jeśli masz zduplikowane pliki źródłowe i docel
 > 
 > 
 
-![#21 wykreślania][21]
+![Dane wyjściowe z narzędzia AzCopy][21]
 
 Można użyć własnych danych. W przypadku danych na maszynie lokalnej w realnym aplikacji, możesz nadal używać narzędzia AzCopy do przekazania danych lokalnych do swojej prywatnej usługi Azure blob storage. Musisz zmienić **źródła** lokalizacji `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, w poleceniu narzędzia AzCopy pliku skryptu programu PowerShell do katalogu lokalnego, które zawiera dane.
 
@@ -334,7 +334,7 @@ Ten skrypt programu Powershell także podłączyć w informacjach o usłudze Azu
 
 Po pomyślnym wykonaniu, zostanie wyświetlony ekran, takich jak poniżej:
 
-![][20]
+![Dane wyjściowe wykonania pomyślnego skryptu][20]
 
 ## <a name="dbexplore"></a>Eksplorowanie danych i inżynieria funkcji w usłudze Azure SQL Data Warehouse
 W tej sekcji wykonamy Generowanie funkcji i eksploracji danych dzięki uruchamianiu zapytania SQL bezpośrednio przy użyciu usługi Azure SQL DW **Visual Studio Tools danych**. Wszystkie zapytania SQL używany w tej sekcji znajdują się w przykładowym skrypcie o nazwie *SQLDW_Explorations.sql*. Ten plik został już pobrany z katalogiem lokalnym za pomocą skryptu programu PowerShell. Możesz również pobrać go z [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). Ale pliku w usłudze GitHub nie ma informacji usługi Azure SQL data Warehouse jest podłączony.
@@ -571,16 +571,16 @@ Jeśli obszar roboczy usługi Azure ml ma już skonfigurowane, możesz bezpośre
 
 1. Zaloguj się do swojego obszaru roboczego usługi Azure ml, kliknij przycisk "Studio" u góry, a następnie kliknij przycisk "NOTESÓW" po lewej stronie strony sieci web.
    
-    ![#22 wykreślania][22]
+    ![Kliknij przycisk Studio, a następnie NOTESÓW][22]
 2. Kliknij przycisk "Nowy" w lewym dolnym rogu strony sieci web, a następnie wybierz pozycję "Python 2". Następnie podaj nazwę w notesie i kliknij znacznik wyboru, aby utworzyć nowy pusty IPython Notebook.
    
-    ![#23 wykreślania][23]
+    ![Kliknij pozycję Nowy, a następnie wybierz opcję 2 dla języka Python][23]
 3. Kliknij symbol "Jupyter" w lewym górnym rogu nowe IPython Notebook.
    
-    ![#24 wykreślania][24]
+    ![Kliknij Jupyter symbol][24]
 4. Przeciąganie i upuszczanie przykładowe IPython Notebook na **drzewa** strony z usługi Azure ml IPython Notebook, a następnie kliknij przycisk **przekazywanie**. Następnie przykład IPython Notebook zostanie przekazany do usługi Azure ml IPython Notebook.
    
-    ![#25 wykreślania][25]
+    ![Kliknij przycisk Przekaż][25]
 
 Aby można było uruchomić przykładowy plik, Python następujące pakiety są wymagane skryptu IPython Notebook lub Python. Jeśli używasz usługi Azure ml IPython Notebook te pakiety zostały wstępnie zainstalowane.
 
@@ -684,7 +684,7 @@ Następnie przyjrzymy się skrzynkowy odległość podróży quantiles wizualiza
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![Wykreślania #1][1]
+![Okno danych wyjściowych z wykresu][1]
 
 ### <a name="visualization-distribution-plot-example"></a>Wizualizacji: Przykładowy diagram dystrybucji
 Wykresy wizualizowaniem dystrybucji i histogram odległości próbkowanych podróży.
@@ -695,7 +695,7 @@ Wykresy wizualizowaniem dystrybucji i histogram odległości próbkowanych podr�
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![Wykreślania #2][2]
+![Diagram dystrybucji w danych wyjściowych][2]
 
 ### <a name="visualization-bar-and-line-plots"></a>Pasek wizualizacji: I drukuje wiersza
 W tym przykładzie firma Microsoft bin odległość podróży do pięciu pojemników, a wizualizacja wyników pakowania.
@@ -709,26 +709,26 @@ Możemy wykresu powyżej dystrybucji bin na pasku lub linii wykresu za pomocą:
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![Wykreślania #3][3]
+![Pasek wykresu danych wyjściowych][3]
 
 i
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![Wykreślania #4][4]
+![Dane wyjściowe wiersza wykresu][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Wizualizacji: Przykłady wykres punktowy
 Pokazujemy, wykres punktowy między **podróży\_czasu\_w\_s** i **podróży\_odległość** można sprawdzić, czy jest wszelka korelacja
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![Wykreślania #6][6]
+![Wykres punktowy danych wyjściowych relacji między czasem i odległości][6]
 
 Podobnie można sprawdzić relacje między **współczynnik\_kodu** i **podróży\_odległość**.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![#8 wykreślania][8]
+![Wykres punktowy danych wyjściowych relacji między kodem i odległości][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>Eksplorowanie danych na próbki danych przy użyciu zapytań SQL w IPython notebook
 W tej sekcji omówimy dystrybucji danych przy użyciu próbki danych, które są utrwalane w nowej tabeli, którą utworzyliśmy powyżej. Należy pamiętać, że podobne eksploracji mogą być wykonywane przy użyciu oryginalnego tabel.

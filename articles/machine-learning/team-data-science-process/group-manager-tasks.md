@@ -1,5 +1,5 @@
 ---
-title: Menedżer grupy procesów do nauki o danych zespołu zadania — Azure | Dokumentacja firmy Microsoft
+title: Zadania menedżera grupy danych dla celów naukowych zespołu
 description: Zarys zadania dla menedżera grupy, w projekcie zespołowym do nauki o danych.
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: ee10f17f76f7c3745cb32223c58b0d2d12f7d6b6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d44b13bb087f171c3f0474cde73167481221274f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446351"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136585"
 ---
-# <a name="group-manager-tasks"></a>Menedżer grupy zadań
+# <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>Zadania dla menedżera grupy, w projekcie zespołowym do nauki o danych
 
 W tym temacie wymieniono, zadania, które Menedżer grupy oczekuje się, aby ukończyć w celu elementy / swojej organizacji do nauki o danych. Celem jest zapewnienie środowiska współpracy grupy, które standaryzuje na [zespołu danych dla celów naukowych](overview.md) (TDSP). Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
 

@@ -1,23 +1,22 @@
 ---
-title: Usługa Azure Cosmos DB — często zadawane pytania
+title: Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi Azure Cosmos DB, to usługa globalnie dystrybuowanej, wielomodelowej bazy danych. Więcej informacji na temat pojemności, poziomów wydajności i skalowania.
 keywords: Pytania dotyczące bazy danych, często zadawane pytania, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: e4ed9ee34260dfffc0034fb7524a037e957fab3f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: fc5b397f64bead38e630cb994d1d325a85b11cda
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851183"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139660"
 ---
-# <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
-
-## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
+# <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
 ### <a name="what-happened-to-the-documentdb-api"></a>Co się stało z interfejsu API usługi DocumentDB?
 
@@ -78,7 +77,7 @@ Można również użyć [emulatora usługi Azure Cosmos DB](local-emulator.md) n
 Aby zadawać pytania techniczne, możesz wpis do jednej z tych dwóch pytań i odpowiedzi na forach:
 
 * [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najważniejsze pytania na temat programowania. Upewnij się, Twoje pytanie jest [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, dzięki czemu zapytania teraz bardziej czytelne i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask).
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najważniejsze pytania na temat programowania. Upewnij się, Twoje pytanie jest [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, dzięki czemu zapytania teraz bardziej czytelne i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask).
 
 Aby poprosić o nowe funkcje, należy utworzyć nowe żądanie na [User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
@@ -125,10 +124,6 @@ Po ustawieniu regionu, należy pamiętać, że usługi Azure Cosmos DB szanuje c
 ### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Jest możliwe przełączyć się z poziomu przepływności kontenerów aprowizacji aprowizacji poziomu przepływności bazy danych? I odwrotnie
 
 Kontener i aprowizacji poziomu przepływności bazy danych to osobne oferty i przełączania się między jedną z tych wersji wymagają migracji danych ze źródła do miejsca docelowego. Oznacza to, należy utworzyć nową bazę danych lub nową kolekcję, a następnie przeprowadzić migrację danych za pomocą [biblioteki wykonawca zbiorcze](bulk-executor-overview.md) lub [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
-
-### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>Jak utworzyć stałej kolekcji za pomocą klucza partycji
-
-Obecnie można utworzyć kolekcję przy przepływności klucza partycji przy użyciu [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metody .net SDK lub przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). Tworzenie stałej kolekcji za pomocą witryny Azure portal nie jest obecnie obsługiwane.
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Usługa Azure cosmos DB obsługuje analiza serii czasu?
 
@@ -304,7 +299,7 @@ Podziel się swoją opinią, w dowolnym z następujących sposobów:
 
 * [Głos użytkownika](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najważniejsze pytania na temat programowania. Upewnij się, Twoje pytanie jest [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, dzięki czemu zapytania teraz bardziej czytelne i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask).
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najważniejsze pytania na temat programowania. Upewnij się, Twoje pytanie jest [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, dzięki czemu zapytania teraz bardziej czytelne i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Co to jest ciąg połączenia, wymagających do nawiązywania połączenia z interfejsem API tabel?
 
@@ -525,7 +520,7 @@ Usługa Azure Cosmos DB jest oparte na umowie SLA udostępniającego opóźnieni
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Dla języka C# / programowanie na platformie .NET, należy używać pakietu Microsoft.Azure.Graphs lub Gremlin.NET?
 
-Interfejs API usługi Azure Cosmos DB Gremlin wykorzystuje sterowników open source jako główny łączniki dla usługi. Dlatego zalecaną opcją jest użycie [sterowniki, które są obsługiwane przez przez witrynę Apache Tinkerpop](http://tinkerpop.apache.org/).
+Interfejs API usługi Azure Cosmos DB Gremlin wykorzystuje sterowników open source jako główny łączniki dla usługi. Dlatego zalecaną opcją jest użycie [sterowniki, które są obsługiwane przez przez witrynę Apache Tinkerpop](https://tinkerpop.apache.org/).
 
 ### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Jak są rozliczane jednostek RU/s podczas uruchamiania zapytań w bazie danych programu graph?
 
@@ -539,7 +534,7 @@ Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak chronić przed atakami polegającymi na iniekcji przy użyciu języka Gremlin sterowniki?
 
-Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Dlaczego otrzymuję "Błąd kompilacji zapytania języka Gremlin: nie można odnaleźć dowolną metodę" Błąd?
 

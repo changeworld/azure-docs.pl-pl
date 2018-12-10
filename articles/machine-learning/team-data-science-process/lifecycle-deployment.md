@@ -1,5 +1,5 @@
 ---
-title: Etap wdrożenia cyklu życia zespołowego danych naukowych — Azure | Dokumentacja firmy Microsoft
+title: Etap wdrożenia cyklu życia zespołowego danych dla celów naukowych
 description: Cele, zadania i elementy dostarczane na etapie wdrażania projektów do nauki o danych
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 30d54b1475188fa886a811b22460d88e53aa564e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d05f831aa1ae1f9b0912dce66bf7f5e15c109d49
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446589"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138572"
 ---
-# <a name="deployment"></a>Wdrożenie
+# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Etap wdrożenia cyklu życia zespołowego danych dla celów naukowych
 
 W tym artykule opisano cele, zadania i cele do zrealizowania skojarzonym z wdrożeniem procesu do nauki o danych zespołu (TDSP). Ten proces obejmuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia przedstawia główne etapy, które projekty zazwyczaj są wykonywane, często iteracyjne:
 

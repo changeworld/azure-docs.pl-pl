@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: cc60fd6a9d5f154d26fc9c495f190296453a0db0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 22e7e513c7ec015b070ae37c1dbdd168404ee768
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106655"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140755"
 ---
 # <a name="migrate-from-workbench-to-the-latest-version-of-azure-machine-learning-service"></a>Migrowanie z aplikacji Workbench do najnowszej wersji usługi Azure Machine Learning 
 
@@ -108,7 +108,7 @@ az ml history download
 <a name="dataprep"></a>
 
 ## <a name="data-preparation-files"></a>Pliki przygotowywania danych
-Pliki przygotowywania danych nie są przenośne bez aplikacji Workbench. Ale nadal można przygotować dowolnego rozmiaru zestawu danych w przypadku modelowania, za pomocą nowego Machine Learning danych Prep zestawu SDK usługi Azure lub przy użyciu usługi Azure Databricks dla zestawów danych big Data.  [Dowiedz się, jak uzyskać przygotowywanie danych zestawu SDK](how-to-data-prep.md). 
+Pliki przygotowywania danych nie są przenośne bez aplikacji Workbench. Ale nadal można przygotować dowolnego rozmiaru zestawu danych w przypadku modelowania, za pomocą nowego Machine Learning danych Prep zestawu SDK usługi Azure lub przy użyciu usługi Azure Databricks dla zestawów danych big Data. [Dowiedz się, jak uzyskać przygotowywanie danych zestawu SDK](https://aka.ms/data-prep-sdk).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej | Dokumentacja firmy Microsoft
+title: Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej - zespołu danych dla celów naukowych
 description: Kompleksowy opis do nauki o danych, zapewniająca rozwiązania do konserwacji zapobiegawczej w wielu branżach pionowy.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
-ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 1538357a744e4a2c885b6552ca94efc6642d2880
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
+ms.openlocfilehash: 8d2a16047a741daf484d6ccdc48453d49355d443
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444923"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135692"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -289,11 +289,11 @@ Technik klasyfikacji wieloklasowej może służyć w rozwiązaniach program PdM 
 #### <a name="label-construction-for-multi-class-classification"></a>Konstrukcja etykiety klasyfikacji wieloklasowej
 Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób usługi zakończy się niepowodzeniem w ciągu następnych _nZ_ jednostki czasu, gdy _n_ to liczba okresów?" Aby odpowiedzieć na to pytanie, etykiety rekordów nZ przed awarią zasobów przy użyciu przedziały czasu (3Z 2Z-Z). Wszystkie inne etykiety rejestruje "normal" (Etykieta = 0). W przypadku tej metody zawiera zmienną docelową _podzielonych na kategorie_ wartości. (Zobacz rysunek 5).
 
-![Rysunek 5. Etykietowanie wieloklasowej klasyfikacji dla błędu czasu prognoz](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) rysunek 5. Etykiety klasyfikacji wieloklasowej dla błędu czasu prognoz
+![Rysunek 5. Błąd czasu prognoz etykiety klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) rysunek 5. Etykiety klasyfikacji wieloklasowej dla błędu czasu prognoz
 
 Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu z powodu problemu z/głównej przyczyny _P<sub>i</sub>_?" gdzie _i_ jest liczba możliwych przyczyn. Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "wkrótce się niepowodzeniem z powodu przyczyny _P<sub>i</sub>_" (etykieta = _P<sub>i</sub>_). Etykieta wszystkie rekordy jako "normal" (Etykieta = 0). W przypadku tej metody etykiety są również podzielone na kategorie (zobacz rysunek 6).
 
-![Rysunek 6. Etykietowanie wieloklasowej klasyfikacji dla głównej przyczyny prognozowania](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) rysunek 6. Etykiety klasyfikacji wieloklasowej dla głównej przyczyny prognoz
+![Rysunek 6. Główna przyczyna prognozowania etykiety klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) rysunek 6. Etykiety klasyfikacji wieloklasowej dla głównej przyczyny prognoz
 
 Model przypisuje prawdopodobieństwo awarii, ze względu na każdym _P<sub>i</sub>_  oraz prawdopodobieństwo bez błędów. Tych prawdopodobieństw może zostać określona przez wielkość umożliwia prognozowanie problemy, które z największym prawdopodobieństwem mogą wystąpić w przyszłości.
 

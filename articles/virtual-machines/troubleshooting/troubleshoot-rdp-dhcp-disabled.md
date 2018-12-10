@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: a469fe0d6057d865ec006d9eb14ad95f2d4b7005
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2299dd6c723aa3059c293170c655918e5236ca0e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308444"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138164"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nie można wykonać protokołu RDP na maszynach wirtualnych platformy Azure, ponieważ usługa klienta DHCP jest wyłączona
 
@@ -26,7 +26,7 @@ W tym artykule opisano problem, w którym nie jest możliwe pulpitu zdalnego do 
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="symptoms"></a>Objawy 
+## <a name="symptoms"></a>Objawy
 
 Nie można wprowadzać z połączeniem RDP maszyny Wirtualnej na platformie Azure, ponieważ usługa klienta DHCP jest wyłączona na maszynie wirtualnej. Podczas ewidencjonowania zrzucie ekranu [diagnostykę rozruchu](../troubleshooting/boot-diagnostics.md) w witrynie Azure portal, zostanie wyświetlony wykonać normalnego rozruchu maszyny Wirtualnej i czeka na poświadczenia na ekranie logowania. Zdalne wyświetlanie dzienników zdarzeń maszyny wirtualnej za pomocą Podglądu zdarzeń. Zobaczysz, że usługa klienta DHCP nie jest uruchomiona lub nie została uruchomiona. Następujące przykładowe dziennika:
 
@@ -36,7 +36,7 @@ Nie można wprowadzać z połączeniem RDP maszyny Wirtualnej na platformie Azur
 **Identyfikator zdarzenia**: 7022 </br>
 **Zadanie kategorii**: Brak </br>
 **Poziom**: błąd </br>
-**Słowa kluczowe**: klasyczny</br> 
+**Słowa kluczowe**: klasyczny</br>
 **Użytkownik**: n/d </br>
 **Komputer**: myvm.cosotos.com</br>
 **Opis**: Usługa klienta DHCP zawiesiła się podczas uruchamiania.</br>
@@ -49,12 +49,12 @@ Dla klasycznych maszyn wirtualnych konieczne będzie działać w trybie OFFLINE 
 
 ## <a name="cause"></a>Przyczyna
 
-Usługa klienta DHCP nie jest uruchomiona na maszynie Wirtualnej. 
+Usługa klienta DHCP nie jest uruchomiona na maszynie Wirtualnej.
 
 > [!NOTE]
-> Ten artykuł ma zastosowanie tylko w przypadku usługi klienta DHCP, a nie serwera DHCP. 
+> Ten artykuł ma zastosowanie tylko w przypadku usługi klienta DHCP, a nie serwera DHCP.
 
-## <a name="solution"></a>Rozwiązanie 
+## <a name="solution"></a>Rozwiązanie
 
 Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 
@@ -62,7 +62,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
 ### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
 
-1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, zobacz [interfejs sieciowy resetowania](reset-network-interface.md).
 2. Sprawdź, czy DHCP jest wyłączony w interfejsie sieciowym:
 
@@ -70,7 +70,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 3. Jeżeli DHCP jest zatrzymana, spróbuj uruchomić usługę
 
         sc start DHCP
-        
+
 4. Zapytanie usługi ponownie, aby upewnić się, że usługa została uruchomiona pomyślnie.
 
         sc query DHCP
@@ -89,9 +89,9 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
     |1069 - ERROR_SERVICE_LOGON_FAILED   |  Zobacz [Usługa klienta DHCP zakończy się niepowodzeniem z powodu niepowodzenia logowania](#dhcp-client-service-fails-because-of-logon-failure) |
     | 1070 - ERROR_SERVICE_START_HANG  | Zobacz [Usługa klienta DHCP ulega awarii lub zawiesza się](#dhcp-client-service-crashes-or-hangs).  |
     | 1077 - ERROR_SERVICE_NEVER_STARTED  | Zobacz [Usługa klienta DHCP jest wyłączona](#dhcp-client-service-is-disabled).  |
-    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybko rozwiązać problem.  | 
+    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybko rozwiązać problem.  |
     |1053 | [Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybko rozwiązać problem.  |
-    
+
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>Usługa klienta DHCP jest zatrzymana z powodu błędu odmowy dostępu
 
@@ -99,18 +99,18 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 2. Pobierz narzędzia Monitor procesu w systemie, uruchamiając następujący skrypt:
 
    ```
-   remove-module psreadline  
-   $source = "https://download.sysinternals.com/files/ProcessMonitor.zip" 
-   $destination = "c:\temp\ProcessMonitor.zip" 
-   $wc = New-Object System.Net.WebClient 
-   $wc.DownloadFile($source,$destination) 
+   remove-module psreadline
+   $source = "https://download.sysinternals.com/files/ProcessMonitor.zip"
+   $destination = "c:\temp\ProcessMonitor.zip"
+   $wc = New-Object System.Net.WebClient
+   $wc.DownloadFile($source,$destination)
    ```
 3. Teraz rozpocząć **procmon** śledzenia:
 
    ```
-   procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
+   procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML
    ```
-4. Odtwórz problem przez uruchomienie usługi, która generuje **dostępu** komunikat: 
+4. Odtwórz problem przez uruchomienie usługi, która generuje **dostępu** komunikat:
 
    ```
    sc start DHCP
@@ -118,8 +118,8 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
    Jeśli nie powiedzie się, zakończenia śledzenia procesu monitora:
 
-   ```   
-   procmon /Terminate 
+   ```
+   procmon /Terminate
    ```
 5. Zbieraj **c:\temp\ProcMonTrace.PML** pliku:
 
@@ -132,7 +132,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
     ![Filtruj według wynik na liście Monitor procesu](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
-7. Usuń klucze rejestru, foldery lub pliki, które znajdują się w danych wyjściowych. Zazwyczaj ten problem występuje po konto logowania, która jest używana w usłudze nie ma uprawnienia listy ACL dostępu do tych obiektów. Aby określić odpowiednie uprawnienie listy kontroli dostępu dla konta logowania, można sprawdzić w dobrej kondycji maszyny Wirtualnej. 
+7. Usuń klucze rejestru, foldery lub pliki, które znajdują się w danych wyjściowych. Zazwyczaj ten problem występuje po konto logowania, która jest używana w usłudze nie ma uprawnienia listy ACL dostępu do tych obiektów. Aby określić odpowiednie uprawnienie listy kontroli dostępu dla konta logowania, można sprawdzić w dobrej kondycji maszyny Wirtualnej.
 
 #### <a name="dhcp-client-service-is-disabled"></a>Usługa klienta DHCP jest wyłączona.
 
@@ -158,7 +158,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
 #### <a name="dhcp-client-service-fails-because-of-logon-failure"></a>Usługa klienta DHCP zakończy się niepowodzeniem z powodu niepowodzenia logowania
 
-1. Ponieważ ten problem występuje, gdy konto uruchamiania usługi został zmieniony, przywróć konto do stanu domyślnego: 
+1. Ponieważ ten problem występuje, gdy konto uruchamiania usługi został zmieniony, przywróć konto do stanu domyślnego:
 
         sc config DHCP obj= 'NT Authority\Localservice'
 2. Uruchom usługę:
@@ -167,7 +167,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 3. Spróbuj nawiązać połączenie z maszyną Wirtualną przy użyciu pulpitu zdalnego.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>Usługa klienta DHCP ulega awarii lub zawiesza się
-1. Jeśli stan usługi utkwiła w automatycznej **od** lub **zatrzymywanie** stanu, spróbuj zatrzymać usługę: 
+1. Jeśli stan usługi utkwiła w automatycznej **od** lub **zatrzymywanie** stanu, spróbuj zatrzymać usługę:
 
         sc stop DHCP
 2. Izoluj usługę na własnym kontenerze "svchost":
@@ -184,12 +184,12 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 
 1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
 2. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania. Upewnij się, że dysk dołączony jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
-3.  Otwórz wiersz polecenia z podwyższonym wystąpienie (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Ten skrypt zakłada, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest **F**. Zastąp literę z wartością z maszyną Wirtualną. 
+3.  Otwórz wiersz polecenia z podwyższonym wystąpienie (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Ten skrypt zakłada, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest **F**. Zastąp literę z wartością z maszyną Wirtualną.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM
 
-    REM Set default values back on the broken service 
+    REM Set default values back on the broken service
     reg add "HKLM\BROKENSYSTEM\ControlSet001\services\DHCP" /v start /t REG_DWORD /d 2 /f
     reg add "HKLM\BROKENSYSTEM\ControlSet001\services\DHCP" /v ObjectName /t REG_SZ /d "NT Authority\LocalService" /f
     reg add "HKLM\BROKENSYSTEM\ControlSet001\services\DHCP" /v type /t REG_DWORD /d 16 /f

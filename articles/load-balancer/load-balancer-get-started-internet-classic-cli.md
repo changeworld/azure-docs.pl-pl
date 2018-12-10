@@ -1,24 +1,26 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu — klasyczny interfejs wiersza polecenia platformy Azure | Microsoft Docs
+title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu — Azure klasyczny interfejs wiersza polecenia
+titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć dostępny z Internetu moduł równoważenia obciążenia w klasycznym modelu wdrażania za pomocą klasycznego interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
 author: genlin
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a0640e3d0b7ccc11ee5603a9b1f21daf53318266
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: fa89117e85bc3d3c9664e6aa037fac923b7432ce
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740505"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135750"
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-classic-cli"></a>Wprowadzenie do tworzenia dostępnego z Internetu modułu równoważenia obciążenia (klasycznego) za pomocą klasycznego interfejsu wiersza polecenia platformy Azure
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-classic-cli"></a>Wprowadzenie do tworzenia modułu równoważenia obciążenia (klasycznego) nakierowanego na Internet w usłudze Azure klasyczny interfejs wiersza polecenia
 
 > [!div class="op_single_selector"]
 > * [Program PowerShell](../load-balancer/load-balancer-get-started-internet-classic-ps.md)
@@ -143,7 +145,7 @@ azure vm endpoint delete web1 tcp-80-80
 > [!NOTE]
 > Możesz poznać więcej opcji zarządzania punktem końcowym, korzystając z polecenia `azure vm endpoint --help`
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Get started configuring an internal load balancer](load-balancer-get-started-ilb-arm-ps.md) (Wprowadzenie do konfigurowania wewnętrznego modułu równoważenia obciążenia)
 

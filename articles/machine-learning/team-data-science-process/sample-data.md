@@ -1,6 +1,6 @@
 ---
-title: Przykładowe dane w kontenerach obiektów blob platformy Azure, programu SQL Server i tabel programu Hive | Dokumentacja firmy Microsoft
-description: Instrukcje, zapoznaj się z danych przechowywanych w różnych enviromnents platformy Azure.
+title: Przykładowe dane w lokalizacjach innego magazynu platformy Azure — zespołu danych dla celów naukowych
+description: Przykładowe dane w usłudze Azure blob kontenerów, programu SQL Server i tabel, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w obsłudze programu Hive.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 679d812c239e0f626d2872d29bc9de7848399bc6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 7bc4174121a58353219e73eef86ec6c64f806647
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844604"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133217"
 ---
 # <a name="heading"></a>Przykładowe dane w kontenerach obiektów blob platformy Azure, programu SQL Server i tabel programu Hive
 

@@ -1,6 +1,6 @@
 ---
-title: Wykonanie projekty do nauki o danych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Jak analitykiem danych, można śledzić postęp projektu nauki o danych.
+title: Śledzenie postępu projekty do nauki o danych — danych zespołu dla celów naukowych
+description: Jak menedżerowie grupy do nauki o danych, zespół dzierżawy i projektu potencjalnych klientów można śledzić postęp projektu nauki o danych.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 202ac89b8a281012dbcf5f4c4df11e97ba2c8c65
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a9616a4f80a3105118b82ce3f4106a65fdd9ddfe
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441472"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134306"
 ---
-# <a name="track-progress-of-data-science-projects"></a>Śledzenie postępu projekty do nauki o danych
+# <a name="tracking-the-progress-of-data-science-projects"></a>Śledzenie postępu projekty do nauki o danych
 
 Menedżerowie grupy do nauki o danych, zespołów i potencjalnych klientów projektu musisz śledzić postęp projektów, pracy, jaka została przeprowadzona na nich i przez kogo i pozostaje na listy zadań do wykonania. 
 

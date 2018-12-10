@@ -1,6 +1,6 @@
 ---
-title: Generuje szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Opisuje sposób zdefiniowania danych wyjściowych dla szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
+title: Generuje szablon usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób definiowania danych wyjściowych dla szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: e3c5a581b02f1dd7b7415ebd93de0e425ac2f8ae
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85aab429fd59afd36cd026e6d8aef2b7e6f6e122
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358369"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140459"
 ---
-# <a name="outputs-section-in-azure-resource-manager-templates"></a>Sekcja danych wyjściowych w szablonach usługi Azure Resource Manager
-W sekcji danych wyjściowych można określić wartości, które są zwracane z wdrożenia. Na przykład można zwrócić identyfikator URI do uzyskania dostępu do zasobu wdrożone.
+# <a name="outputs-section-in-azure-resource-manager-templates"></a>Sekcję danych wyjściowych w szablonach usługi Azure Resource Manager
+W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Na przykład można zwrócić identyfikator URI do dostępu do wdrożonych zasobów.
 
-## <a name="define-and-use-output-values"></a>Definiowanie i korzystanie z wartościami danych wyjściowych
+## <a name="define-and-use-output-values"></a>Definiowanie i korzystanie z wartości danych wyjściowych
 
-Poniższy przykład przedstawia sposób zwrócenia identyfikator zasobu do publicznego adresu IP:
+Poniższy przykład pokazuje, jak zwraca identyfikator zasobu dla publicznego adresu IP:
 
 ```json
 "outputs": {
@@ -36,7 +36,7 @@ Poniższy przykład przedstawia sposób zwrócenia identyfikator zasobu do publi
 }
 ```
 
-Po wdrożeniu można pobrać wartość przy użyciu skryptu. W przypadku programu PowerShell użyj polecenia:
+Po wdrożeniu można pobrać wartość za pomocą skryptu. W przypadku programu PowerShell użyj polecenia:
 
 ```powershell
 (Get-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
@@ -48,9 +48,11 @@ W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 az group deployment show -g <resource-group-name> -n <deployment-name> --query properties.outputs.resourceID.value
 ```
 
-Można pobrać wartość wyjściowa szablonu połączone za pomocą [odwołania](resource-group-template-functions-resource.md#reference) funkcji. Można pobrać wartości danych wyjściowych z połączonego szablonu, pobrać wartość właściwości składnię: `"[reference('<name-of-deployment>').outputs.<property-name>.value]"`.
+Możesz pobrać wartość danych wyjściowych z dołączonego szablonu, za pomocą [odwołania](resource-group-template-functions-resource.md#reference) funkcji. Aby uzyskać wartość wyjściową dołączonego szablonu, pobrać wartość właściwości przy użyciu składni, takich jak: `"[reference('deploymentName').outputs.propertyName.value]"`.
 
-Na przykład należy określić adres IP modułu równoważenia obciążenia przy odczytywania wartości z połączonych szablonu.
+Podczas pobierania właściwości danych wyjściowych z dołączonego szablonu, nazwy właściwości nie może zawierać kreskę.
+
+Na przykład można ustawić adresu IP modułu równoważenia obciążenia, poprzez pobranie wartości z połączonych szablonu.
 
 ```json
 "publicIPAddress": {
@@ -58,11 +60,11 @@ Na przykład należy określić adres IP modułu równoważenia obciążenia prz
 }
 ```
 
-Nie można użyć `reference` funkcji w sekcji danych wyjściowych [szablon zagnieżdżony](resource-group-linked-templates.md#link-or-nest-a-template). Aby zwrócić wartości dla wdrożonych zasobów w szablonie zagnieżdżonych, przekonwertować szablon zagnieżdżony połączonego szablonu.
+Nie można użyć `reference` funkcji w danych wyjściowych części [zagnieżdżonych szablonów](resource-group-linked-templates.md#link-or-nest-a-template). Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
 
 ## <a name="available-properties"></a>Dostępne właściwości
 
-W poniższym przykładzie przedstawiono struktura definicji danych wyjściowych:
+Poniższy przykład pokazuje strukturę definicję danych wyjściowych:
 
 ```json
 "outputs": {
@@ -76,12 +78,12 @@ W poniższym przykładzie przedstawiono struktura definicji danych wyjściowych:
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | outputName |Yes |Nazwa wartości danych wyjściowych. Musi być prawidłowym identyfikatorem języka JavaScript. |
-| type |Yes |Typ wartości danych wyjściowych. Dane wyjściowe wartości obsługuje te same typy tablic jako parametrów wejściowych szablonu. |
-| wartość |Yes |Wyrażenia języka szablonu, który jest obliczany i zwracany, jako wartość wyjściowa. |
+| type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. |
+| wartość |Yes |Wyrażenie języka szablonu, który jest obliczany i zwracany, jako wartość danych wyjściowych. |
 
 ## <a name="recommendations"></a>Zalecenia
 
-Jeśli szablon umożliwia tworzenie publicznych adresów IP, należy uwzględnić sekcji danych wyjściowych, która zwraca szczegółowe informacje dotyczące adresu IP i w pełni kwalifikowaną nazwę (FQDN). Można użyć wartości danych wyjściowych można łatwo pobrać szczegółowe informacje dotyczące publicznych adresów IP i nazw FQDN po wdrożeniu.
+Jeśli używasz szablonu, aby utworzyć publiczne adresy IP, należy uwzględnić sekcję danych wyjściowych, które zwraca szczegółowe informacje o adresie IP i w pełni kwalifikowana nazwa domeny (FQDN). Można użyć wartości danych wyjściowych można łatwo pobrać szczegółowe informacje dotyczące publicznych adresów IP i nazw FQDN po wdrożeniu.
 
 ```json
 "outputs": {
@@ -96,18 +98,18 @@ Jeśli szablon umożliwia tworzenie publicznych adresów IP, należy uwzględni�
 }
 ```
 
-## <a name="example-templates"></a>Przykład szablonów
+## <a name="example-templates"></a>Przykładowe szablony
 
 
 |Szablon  |Opis  |
 |---------|---------|
-|[Skopiuj zmiennych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy zmienne złożone i zapisuje te wartości. Nie powoduje wdrożenia żadnych zasobów. |
-|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP i danych wyjściowych z identyfikatorem zasobu. |
-|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Łącza do poprzedniego szablonu. Używa Identyfikatora zasobu w danych wyjściowych podczas tworzenia modułu równoważenia obciążenia. |
+|[Skopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy zmienne złożone i wysyła te wartości. Nie należy wdrażać żadnych zasobów. |
+|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP, a następnie generuje identyfikator zasobu. |
+|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Zawiera łącza do Powyższy szablon. Używa Identyfikatora zasobu w danych wyjściowych, podczas tworzenia modułu równoważenia obciążenia. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
-* Aby uzyskać więcej informacji o funkcje, których można użyć z w ramach szablonu, zobacz [funkcje szablonów usługi Azure Resource Manager](resource-group-template-functions.md).
-* Aby połączyć wiele szablonów podczas wdrażania, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
-* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współdzielone przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).
+* Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
+* Aby połączyć wiele szablonów podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współużytkowane przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).

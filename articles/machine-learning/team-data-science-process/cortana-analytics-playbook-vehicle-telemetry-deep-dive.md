@@ -1,6 +1,6 @@
 ---
-title: Szczegółowo omówi sposób przewidywania usterek w kondycję pojazdów i nawyki kierowców — Azure | Dokumentacja firmy Microsoft
-description: Korzystając z możliwości pakietu Cortana Intelligence możesz uzyskać w czasie rzeczywistym i predykcyjny wgląd w kondycję pojazdów i nawyki nawyków.
+title: Szczegółowo omówi sposób przewidywania usterek w kondycję pojazdów i nawyki kierowców - zespołu danych dla celów naukowych
+description: Do każdej z poszczególnych etapów rozwiązania dla uzyskiwanie w czasie rzeczywistym i predykcyjny wgląd w kondycję pojazdów i nawyki nawyków szczegółów.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b1c01bcd15c5cfc63eae7c2b1983fc9075d4220c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: b8bd0286a2fa800dd2d5b8ac9c4df1a29809f7f9
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444388"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142040"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów: szczegółami rozwiązania
 

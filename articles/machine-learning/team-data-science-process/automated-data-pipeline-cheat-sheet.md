@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Machine Learning zautomatyzowanego potoku danych, okno ściągawka | Dokumentacja firmy Microsoft
+title: Usługa Azure Machine Learning danych potoku cheat-sheet — zespołu danych dla celów naukowych
 description: Drukowalnych ściągawką pokazujący, jak skonfigurować zautomatyzowanego potoku danych do usługi sieci web Azure Machine Learning, czy Twoje dane znajdują się w środowisku lokalnym, przesyłania strumieniowego na platformie Azure lub w usłudze w chmurze innych firm.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
-ms.custom: (previous author=garyericson, ms.author=garye)
-ms.openlocfilehash: 07f7334a98c1220d051ed1be9d04e4e4e86d4dcc
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
+ms.openlocfilehash: 627729ef4f2b6a8df96d9e3b794a1ba24143b4d7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444439"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132673"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Ściągawka dotycząca zautomatyzowanego potoku danych dla prognoz usługi Azure Machine Learning
 **Microsoft Azure Machine Learning zautomatyzowanego potoku danych, okno ściągawka** ułatwia nawigowanie przy użyciu technologii, można użyć, aby przesłać dane do usługi Machine Learning web service, gdzie może zostać ocenione usługi analizy predykcyjnej model.

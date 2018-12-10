@@ -1,5 +1,5 @@
 ---
-title: Zadania dla zespołu prowadzić do zespołu danych do analizy procesu zespołu - Azure
+title: Zadania dla zespołu prowadzić w zespole procesu do nauki o danych zespołu
 description: Zarys zadania, które zespół prowadzić w projekcie zespołowym do nauki o danych oczekuje się, aby ukończyć dla zespołu do nauki o danych.
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
-ms.openlocfilehash: 68fd0abf314eb4fde5ff335acc161d82ad78cd0c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: faf0e06a0649c31cec840a5043a11af601ba5c47
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106638"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139643"
 ---
 # <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Zadania dla zespołu prowadzić w zespole procesu do nauki o danych zespołu
 

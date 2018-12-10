@@ -14,34 +14,34 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: e4deb40f2c9dfb080739f4426129223b152baea9
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6905db3c042693fabea368bfd57547914fa01206
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335661"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141139"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>Konsola szeregowa maszyny wirtualnej dla Windows
 
-Konsoli szeregowej maszyny wirtualnej (VM) w witrynie Azure portal zapewnia dostęp do konsoli usługi oparte na tekście dla maszyn wirtualnych Windows. To połączenie szeregowe łączy do portu szeregowego COM1 maszyny wirtualnej, zapewniając dostęp do niego niezależnie od stanu sieci lub systemu operacyjnego maszyny wirtualnej. Dostęp do konsoli szeregowej maszyny wirtualnej jest możliwe tylko przy użyciu witryny Azure portal. Jest ona dozwolona tylko dla tych użytkowników, którzy mają dostęp do rolę Współautor maszyny wirtualnej lub nowszego do maszyny wirtualnej. 
+Konsoli szeregowej maszyny wirtualnej (VM) w witrynie Azure portal zapewnia dostęp do konsoli usługi oparte na tekście dla maszyn wirtualnych Windows. To połączenie szeregowe łączy do portu szeregowego COM1 maszyny wirtualnej, zapewniając dostęp do niego niezależnie od stanu sieci lub systemu operacyjnego maszyny wirtualnej. Dostęp do konsoli szeregowej maszyny wirtualnej jest możliwe tylko przy użyciu witryny Azure portal. Jest ona dozwolona tylko dla tych użytkowników, którzy mają dostęp do rolę Współautor maszyny wirtualnej lub nowszego do maszyny wirtualnej.
 
 Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych systemu Linux, zobacz [Konsola szeregowa maszyny wirtualnej dla systemu Linux](serial-console-linux.md).
 
-> [!NOTE] 
+> [!NOTE]
 > Konsoli szeregowej dla maszyn wirtualnych jest ogólnie dostępna w regionach platformy Azure na świecie. Nie jest jeszcze dostępne w Azure dla instytucji rządowych lub chmury chińskiej wersji platformy Azure.
 
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, należy użyć modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane. 
+* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, należy użyć modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane.
 
-* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej muszą mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone. 
+* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej muszą mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone.
 
     ![Ustawienia diagnostyki rozruchu](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-* Konto usługi przy użyciu konsoli szeregowej muszą mieć [rola Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu. 
+* Konto usługi przy użyciu konsoli szeregowej muszą mieć [rola Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu.
 
-* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, musisz mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcji rozszerzenia dostępu do maszyny Wirtualnej. Wybierz **Resetuj hasło** z **pomoc techniczna i rozwiązywanie problemów z** sekcji. 
+* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, musisz mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcji rozszerzenia dostępu do maszyny Wirtualnej. Wybierz **Resetuj hasło** z **pomoc techniczna i rozwiązywanie problemów z** sekcji.
 
 
 ## <a name="get-started-with-the-serial-console"></a>Wprowadzenie do konsoli szeregowej
@@ -52,18 +52,19 @@ Konsoli szeregowej dla maszyn wirtualnych jest dostępna tylko za pośrednictwem
   1. Wybierz maszynę Wirtualną na liście. Zostanie otwarta strona Przegląd dla maszyny Wirtualnej.
   1. Przewiń w dół do **pomoc techniczna i rozwiązywanie problemów z** i wybierz pozycję **konsoli szeregowej**. Nowe okienko z konsolą szeregową otwiera się i rozpoczyna połączenie.
 
+## <a name="enable-serial-console-functionality"></a>Włącz funkcjonalność konsoli szeregowej
 
-## <a name="enable-the-serial-console-in-custom-or-older-images"></a>Włącz konsoli szeregowej na obrazach niestandardowych lub starszy
-Nowsze obrazy systemu Windows Server na platformie Azure mają [specjalnej konsoli administracyjnej](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) domyślnie włączone (SAC). Konsola SAC jest obsługiwane w wersji Windows server, ale nie jest dostępna w wersji klienta (na przykład systemu Windows 10, Windows 8 lub Windows 7). 
+### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Włącz konsoli szeregowej na obrazach niestandardowych lub starszy
+Nowsze obrazy systemu Windows Server na platformie Azure mają [specjalnej konsoli administracyjnej](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) domyślnie włączone (SAC). Konsola SAC jest obsługiwane w wersji Windows server, ale nie jest dostępna w wersji klienta (na przykład systemu Windows 10, Windows 8 lub Windows 7).
 
 Starsze obrazów systemu Windows Server (utworzone przed lutym 2018 r.) można automatycznie włączyć konsoli szeregowej, za pomocą funkcji polecenia uruchomienia witryny Azure portal. W witrynie Azure portal wybierz **Uruchom polecenie**, następnie wybierz polecenie o nazwie **EnableEM** z listy.
 
 ![Uruchom listy poleceń](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
 
-Alternatywnie aby ręcznie włączyć konsoli szeregowej dla maszyn wirtualnych Windows utworzone przed lutym 2018 roku, wykonaj następujące kroki: 
+Alternatywnie aby ręcznie włączyć konsoli szeregowej dla maszyn wirtualnych Windows utworzone przed lutym 2018 roku, wykonaj następujące kroki:
 
 1. Połącz się z maszyną wirtualną Windows przy użyciu pulpitu zdalnego
-1. W administracyjnym wierszu polecenia Uruchom następujące polecenia: 
+1. W administracyjnym wierszu polecenia Uruchom następujące polecenia:
     - `bcdedit /ems {current} on`
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. Ponowny rozruch systemu pod kątem Konsola SAC włączenia.
@@ -72,64 +73,71 @@ Alternatywnie aby ręcznie włączyć konsoli szeregowej dla maszyn wirtualnych 
 
 Jeśli to konieczne, konsola SAC można włączyć w trybie offline oraz:
 
-1. Dołącz dysk systemu windows, dla którego chcesz SAC skonfigurowany jako dysk danych do istniejącej maszyny Wirtualnej. 
+1. Dołącz dysk systemu windows, dla którego chcesz SAC skonfigurowany jako dysk danych do istniejącej maszyny Wirtualnej.
 
-1. W administracyjnym wierszu polecenia Uruchom następujące polecenia: 
+1. W administracyjnym wierszu polecenia Uruchom następujące polecenia:
    - `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
    - `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-### <a name="how-do-i-know-if-sac-is-enabled"></a>Jak sprawdzić, czy włączono SAC?
+#### <a name="how-do-i-know-if-sac-is-enabled"></a>Jak sprawdzić, czy włączono SAC?
 
 Jeśli [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nie jest włączona, konsoli szeregowej nie będzie wyświetlać monitu SAC. W niektórych przypadkach wyświetlane są informacje o kondycji maszyny Wirtualnej, a w innych przypadkach jest on pusty. Jeśli używasz obrazu systemu Windows Server, utworzone przed lutym 2018 roku SAC prawdopodobnie nie jest włączony.
 
-## <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>Włącz menu Windows rozruchowego w konsoli szeregowej 
+### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>Włącz menu Windows rozruchowego w konsoli szeregowej
 
 Jeśli musisz włączyć Windows rozruchowego modułu ładującego monity do wyświetlenia w konsoli szeregowej, można dodać następujące dodatkowe opcje do danych konfiguracji rozruchu. Aby uzyskać więcej informacji, zobacz [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set).
 
 1. Połącz się z maszyną wirtualną Windows przy użyciu pulpitu zdalnego.
 
-1. W administracyjnym wierszu polecenia Uruchom następujące polecenia: 
+1. W administracyjnym wierszu polecenia Uruchom następujące polecenia:
    - `bcdedit /set {bootmgr} displaybootmenu yes`
    - `bcdedit /set {bootmgr} timeout 10`
    - `bcdedit /set {bootmgr} bootems yes`
 
 1. Ponowne uruchomienie systemu pod kątem menu rozruchu jest włączona
 
-> [!NOTE] 
+> [!NOTE]
 > Limit czasu, ustawionego dla menu Menedżera rozruchu, aby wyświetlić będzie miało wpływ na czas rozruchu systemu operacyjnego. Jeśli uważasz, że wartość 10-sekundowy limit jest za krótka lub za długa, ustaw ją na inną wartość.
 
-## <a name="use-the-serial-console-for-nmi-calls-in-windows-vms"></a>Użyj konsoli szeregowej NMI wywołań na maszynach wirtualnych Windows
-Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który oprogramowania na maszynie wirtualnej nie są ignorowane. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy. Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z się systemów.
+## <a name="use-serial-console"></a>Użyj konsoli szeregowej
 
-Konsoli szeregowej może służyć do wysyłania NMI na maszynie wirtualnej platformy Azure przy użyciu ikonę klawiatury na pasku poleceń. Po NMI zostało dostarczone, konfiguracja maszyny wirtualnej będzie kontrolować, jak zachowuje się system. Windows można skonfigurować do awarii i tworzenie pliku zrzutu pamięci podczas odbierania NMI.
-
-![Wyślij NMI](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
-
-Aby uzyskać informacje na temat konfigurowania Windows, aby utworzyć plik zrzutu awaryjnego, po odebraniu NMI, zobacz [sposób generowania pliku zrzutu awaryjnego przy użyciu NMI](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
-
-## <a name="open-cmd-or-powershell-in-serial-console"></a>Otwórz CMD lub programu Powershell w konsoli szeregowej
+### <a name="use-cmd-or-powershell-in-serial-console"></a>Użyj polecenia lub programu PowerShell w konsoli szeregowej
 
 1. Łączenie z konsolą szeregową. Jeśli udało się połączyć, monit jest **SAC >**:
 
     ![Nawiązać połączenie z SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  Wprowadź `cmd` do utworzenia kanału, który znajduje się wystąpienie CMD. 
+1.  Wprowadź `cmd` do utworzenia kanału, który znajduje się wystąpienie CMD.
 
-1.  Wprowadź `ch -si 1` Aby przełączyć się do kanału, który jest uruchomione wystąpienie polecenia. 
+1.  Wprowadź `ch -si 1` Aby przełączyć się do kanału, który jest uruchomione wystąpienie polecenia.
 
 1.  Naciśnij klawisz **Enter**, a następnie wprowadź poświadczenia logowania z uprawnieniami administracyjnymi.
 
 1.  Po wprowadzeniu prawidłowych poświadczeń wystąpienia CMD otwiera.
 
-1.  Aby uruchomić wystąpienie programu PowerShell, należy wprowadzić `PowerShell` wystąpienia CMD, a następnie naciśnij klawisz **Enter**. 
+1.  Aby uruchomić wystąpienie programu PowerShell, należy wprowadzić `PowerShell` wystąpienia CMD, a następnie naciśnij klawisz **Enter**.
 
     ![Otwórz wystąpienie programu PowerShell](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
+### <a name="use-the-serial-console-for-nmi-calls"></a>Użyj konsoli szeregowej NMI wywołań
+Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który oprogramowania na maszynie wirtualnej nie są ignorowane. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy. Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z się systemów.
 
-## <a name="disable-the-serial-console"></a>Wyłącz konsoli szeregowej
+Konsoli szeregowej może służyć do wysyłania NMI na maszynie wirtualnej platformy Azure przy użyciu ikonę klawiatury na pasku poleceń. Po NMI zostało dostarczone, konfiguracja maszyny wirtualnej będzie kontrolować, jak zachowuje się system. Windows można skonfigurować do awarii i tworzenie pliku zrzutu pamięci podczas odbierania NMI.
+
+### <a name="use-function-keys-in-serial-console"></a>Użyj klawiszy funkcyjnych w konsoli szeregowej
+Klawiszy funkcyjnych są włączone dla użycia konsoli szeregowej na maszynach wirtualnych Windows. F8 na liście rozwijanej konsoli szeregowej udostępnia wygodne łatwe wprowadzanie menu Zaawansowane ustawienia rozruchu, ale konsoli szeregowej jest zgodny z innymi klawiszy funkcyjnych. Może być konieczne naciśnięcie **Fn** + **F1** (lub F2 i F3, itp.) na klawiaturze, w zależności od komputera są przy użyciu konsoli szeregowej.
+
+### <a name="use-wsl-in-serial-console"></a>Użyj WSL w konsoli szeregowej
+Podsystem Windows dla systemu Linux (WSL) została włączona dla systemu Windows Server 2019 lub nowszego, więc istnieje również możliwość włączenia WSL do użycia w konsoli szeregowej, jeśli korzystasz z systemu Windows Server 2019 lub nowszej. Może to być przydatne w przypadku użytkowników, którzy mają również znajomość polecenia systemu Linux. Aby uzyskać instrukcje, aby umożliwić WSL dla systemu Windows Server, zobacz [Przewodnik instalacji](https://docs.microsoft.com/windows/wsl/install-on-server).
+
+![Wyślij NMI](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+
+Aby uzyskać informacje na temat konfigurowania Windows, aby utworzyć plik zrzutu awaryjnego, po odebraniu NMI, zobacz [sposób generowania pliku zrzutu awaryjnego przy użyciu NMI](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
+
+## <a name="disable-serial-console"></a>Wyłącz konsoli szeregowej
 Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.
 
-> [!NOTE]       
+> [!NOTE]
 > Aby włączyć lub wyłączyć konsoli szeregowej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Uprawnienia te obejmują, ale nie są ograniczone do ról administratora lub właściciela. Role niestandardowe może również mieć uprawnienia do zapisu.
 
 ### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji
@@ -137,19 +145,19 @@ Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej 
 
 ![Wypróbuj interfejs API REST](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
-Alternatywnie można następujący zestaw poleceń powłoki bash w usłudze Cloud Shell wyłączanie, włączanie i wyświetlanie wyłączone stanu konsoli szeregowej subskrypcji: 
+Alternatywnie można następujący zestaw poleceń powłoki bash w usłudze Cloud Shell wyłączanie, włączanie i wyświetlanie wyłączone stanu konsoli szeregowej subskrypcji:
 
 * Aby wyświetlić stan wyłączenia konsoli szeregowej dla subskrypcji:
     ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
 
     $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
     ```
 * Aby wyłączyć konsoli szeregowej subskrypcji:
-    ```azurecli-interactive 
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+    ```azurecli-interactive
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
 
@@ -157,7 +165,7 @@ Alternatywnie można następujący zestaw poleceń powłoki bash w usłudze Clou
     ```
 * Aby włączyć konsoli szeregowej subskrypcji:
     ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
 
@@ -167,34 +175,25 @@ Alternatywnie można następujący zestaw poleceń powłoki bash w usłudze Clou
 ### <a name="vm-level-disable"></a>Wyłącz poziomie maszyny Wirtualnej
 Konsoli szeregowej można wyłączyć dla określonej maszyny Wirtualnej przez wyłączenie ustawienia diagnostyki rozruchu dla tej maszyny Wirtualnej. Wyłącz funkcję diagnostyki rozruchu z witryny Azure portal, aby wyłączyć konsoli szeregowej maszyny wirtualnej.
 
-## <a name="serial-console-security"></a>Zabezpieczenia konsoli szeregowej 
+## <a name="serial-console-security"></a>Zabezpieczenia konsoli szeregowej
 
-### <a name="access-security"></a>Zabezpieczenia dostępu 
+### <a name="access-security"></a>Zabezpieczenia dostępu
 Dostęp do konsoli szeregowej jest ograniczony do użytkowników, którzy mają dostęp do roli z [Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) lub nowszej, aby maszyna wirtualna. Jeśli Twoja dzierżawa usługi Azure Active Directory wymaga uwierzytelniania wieloskładnikowego (MFA), a następnie dostęp do konsoli szeregowej będą także potrzebować MFA, ponieważ dostęp do konsoli szeregowej za pośrednictwem [witryny Azure portal](https://portal.azure.com).
 
 ### <a name="channel-security"></a>Zabezpieczenia kanału
 Wszystkie dane, które są wysyłane w obie strony są szyfrowane w sieci.
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
-Dostęp do konsoli szeregowej jest aktualnie zalogowany [diagnostykę rozruchu](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) dzienniki maszyny wirtualnej. Dostęp do tych dzienników są własnością i kontrolowane przez administratora maszyny wirtualnej platformy Azure.  
+Dostęp do konsoli szeregowej jest aktualnie zalogowany [diagnostykę rozruchu](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) dzienniki maszyny wirtualnej. Dostęp do tych dzienników są własnością i kontrolowane przez administratora maszyny wirtualnej platformy Azure.
 
->[!CAUTION] 
-Żadne hasła dostępu do konsoli są rejestrowane. Jednak jeśli polecenia uruchamiane w ramach konsoli zawierają lub danych wyjściowych haseł, kluczy tajnych, nazwy użytkowników lub jakąkolwiek inną formę identyfikowalne dane osobowe (PII), te będą zapisywane do dzienników diagnostyki rozruchu maszyny Wirtualnej. One będą zapisywane wraz z wszystkich innych widocznych tekstu, jako część wykonania wstecz przewijania konsoli szeregowej funkcji. Te dzienniki są cykliczne i tylko osoby z uprawnieniami do odczytu do konta magazynu diagnostyki mieli do nich dostęp. Jednak zaleca się następujące najlepsze rozwiązanie polegające na przy użyciu pulpitu zdalnego dla wszystkich elementów, które mogą obejmować wpisów tajnych i/lub dane osobowe. 
+>[!CAUTION]
+Żadne hasła dostępu do konsoli są rejestrowane. Jednak jeśli polecenia uruchamiane w ramach konsoli zawierają lub danych wyjściowych haseł, kluczy tajnych, nazwy użytkowników lub jakąkolwiek inną formę identyfikowalne dane osobowe (PII), te będą zapisywane do dzienników diagnostyki rozruchu maszyny Wirtualnej. One będą zapisywane wraz z wszystkich innych widocznych tekstu, jako część wykonania wstecz przewijania konsoli szeregowej funkcji. Te dzienniki są cykliczne i tylko osoby z uprawnieniami do odczytu do konta magazynu diagnostyki mieli do nich dostęp. Jednak zaleca się następujące najlepsze rozwiązanie polegające na przy użyciu pulpitu zdalnego dla wszystkich elementów, które mogą obejmować wpisów tajnych i/lub dane osobowe.
 
 ### <a name="concurrent-usage"></a>Współbieżne użycie
 Jeśli użytkownik jest połączony z konsoli szeregowej i inny użytkownik pomyślnie żąda dostępu do tej samej maszyny wirtualnej, pierwszy użytkownik zostanie odłączony, a drugi użytkownik nawiązał połączenie z tą samą sesją.
 
->[!CAUTION] 
-Oznacza to, że użytkownik, który jest odłączony nie będzie można wylogować. Możliwość wymuszenia wylogowania po rozłączenia (przy użyciu SIGHUP lub podobny mechanizm) nadal działa w planach. Dla Windows to automatyczne limitu czasu w SAC; włączone w przypadku systemu Linux można skonfigurować ustawienie limitu czasu w terminalu. 
-
-## <a name="common-scenarios-for-accessing-the-serial-console"></a>Typowe scenariusze dotyczące uzyskiwania dostępu do konsoli szeregowej 
-Scenariusz          | Akcje w konsoli szeregowej                
-:------------------|:-----------------------------------------
-Reguły zapory niepoprawne | Dostęp do serial konsoli i napraw zasady Windows w zapory. 
-System plików uszkodzenie/wyboru | Dostęp do konsoli szeregowej i odzyskiwanie systemu plików. 
-Problemy z konfiguracją protokołu RDP | Dostęp do konsoli szeregowej i zmienić ustawienia. Aby uzyskać więcej informacji, zobacz [dokumentacji protokołu RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-Blokowanie sieci w systemie | W witrynie Azure portal do zarządzania systemem, należy uzyskać dostęp do konsoli szeregowej. Niektóre polecenia sieci są wymienione w [Windows polecenia: programu PowerShell i CMD](serial-console-cmd-ps-commands.md). 
-Interakcja z programu inicjującego | Dostęp do danych konfiguracji rozruchu za pośrednictwem konsoli szeregowej. Aby uzyskać informacje, zobacz [Włącz menu Windows rozruchowego w konsoli szeregowej](#enable-the-windows-boot-menu-in-the-serial-console). 
+>[!CAUTION]
+Oznacza to, że użytkownik, który jest odłączony nie będzie można wylogować. Możliwość wymuszenia wylogowania po rozłączenia (przy użyciu SIGHUP lub podobny mechanizm) nadal działa w planach. Dla Windows to automatyczne limitu czasu w SAC; włączone w przypadku systemu Linux można skonfigurować ustawienie limitu czasu w terminalu.
 
 ## <a name="accessibility"></a>Ułatwienia dostępu
 Dostępność jest kluczowym dla konsoli szeregowej platformy Azure. W tym celu upewniliśmy się, że konsoli szeregowej jest dostępny dla wizualizacji i wysłuchaniu osłabiona, a także osoby, które mogą okazać się niemożliwe przy użyciu myszy.
@@ -205,12 +204,22 @@ Użyj **kartę** kluczowe na klawiaturze, aby przejść w interfejsie konsoli sz
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>Użyj konsoli szeregowej przy użyciu czytnika zawartości ekranu
 Konsoli szeregowej ma wbudowaną obsługę czytników zawartości ekranu. Przemieszczać się przy użyciu czytnika zawartości ekranu włączone umożliwi tekst alternatywny dla aktualnie wybranego przycisku zostanie odczytany na głos przez czytnik zawartości ekranu.
 
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>Typowe scenariusze dotyczące uzyskiwania dostępu do konsoli szeregowej
+Scenariusz          | Akcje w konsoli szeregowej
+:------------------|:-----------------------------------------
+Reguły zapory niepoprawne | Dostęp do serial konsoli i napraw zasady Windows w zapory.
+System plików uszkodzenie/wyboru | Dostęp do konsoli szeregowej i odzyskiwanie systemu plików.
+Problemy z konfiguracją protokołu RDP | Dostęp do konsoli szeregowej i zmienić ustawienia. Aby uzyskać więcej informacji, zobacz [dokumentacji protokołu RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
+Blokowanie sieci w systemie | W witrynie Azure portal do zarządzania systemem, należy uzyskać dostęp do konsoli szeregowej. Niektóre polecenia sieci są wymienione w [Windows polecenia: programu PowerShell i CMD](serial-console-cmd-ps-commands.md).
+Interakcja z programu inicjującego | Dostęp do danych konfiguracji rozruchu za pośrednictwem konsoli szeregowej. Aby uzyskać informacje, zobacz [Włącz menu Windows rozruchowego w konsoli szeregowej](#enable-the-windows-boot-menu-in-the-serial-console).
+
+
 ## <a name="errors"></a>Błędy
 Ponieważ większość błędów przejściowych, ponawianie próby połączenia można często je naprawić. W poniższej tabeli przedstawiono listę błędy i środki zaradcze.
 
-Błąd                            |   Środki zaradcze 
+Błąd                            |   Środki zaradcze
 :---------------------------------|:--------------------------------------------|
-Nie można pobrać ustawień diagnostyki rozruchu dla  *&lt;VMNAME&gt;*. Aby korzystać z konsoli szeregowej, upewnij się, że Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej. | Upewnij się, że maszyna wirtualna ma [diagnostykę rozruchu](boot-diagnostics.md) włączone. 
+Nie można pobrać ustawień diagnostyki rozruchu dla  *&lt;VMNAME&gt;*. Aby korzystać z konsoli szeregowej, upewnij się, że Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej. | Upewnij się, że maszyna wirtualna ma [diagnostykę rozruchu](boot-diagnostics.md) włączone.
 Maszyna wirtualna jest w stanie zatrzymania, przydział zostanie cofnięty. Uruchom maszynę Wirtualną i spróbuj ponownie nawiązać połączenie konsoli szeregowej. | Maszyna wirtualna musi być w stanie uruchomionym uzyskać dostęp do konsoli szeregowej
 Nie masz wymaganych uprawnień do używania konsoli szeregowej maszyny Wirtualnej. Upewnij się, że co najmniej uprawnienia roli Współautor maszyny wirtualnej.| Dostęp do konsoli szeregowej wymaga pewnych uprawnień. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
 Nie można określić grupy zasobów dla konta magazynu diagnostyki rozruchu  *&lt;STORAGEACCOUNTNAME&gt;*. Sprawdź, czy Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej, i czy masz dostęp do tego konta magazynu. | Dostęp do konsoli szeregowej wymaga pewnych uprawnień. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
@@ -218,10 +227,10 @@ Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta 
 Gniazda sieci Web został zamknięty lub nie można otworzyć. | Może być konieczne do listy dozwolonych `*.console.azure.com`. Bardziej szczegółowe, ale dłużej podejście jest do listy dozwolonych adresów [zakresów adresów IP centrum danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653), które są stosunkowo regularnie zmieniane.
 Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| Ten błąd występuje, jeśli nie włączono specjalnej konsoli administracyjnej dla obrazu systemu Windows. Zobacz [Włącz konsoli szeregowej na obrazach niestandardowych lub starsze](#enable-the-serial-console-in-custom-or-older-images) instrukcje na temat sposobu ręcznego włączenia SAC na maszynie Wirtualnej Windows. Aby uzyskać więcej informacji, zobacz [sygnałów kondycji Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 
-## <a name="known-issues"></a>Znane problemy 
+## <a name="known-issues"></a>Znane problemy
 Mamy świadomość problemy z konsoli szeregowej. Poniżej przedstawiono listę tych problemów oraz kroki dotyczące ograniczania ryzyka.
 
-Problem                             |   Środki zaradcze 
+Problem                             |   Środki zaradcze
 :---------------------------------|:--------------------------------------------|
 Naciśnięcie klawisza **Enter** po transparent połączenia nie powoduje, że monit logowania do wyświetlenia. | Aby uzyskać więcej informacji, zobacz [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ten błąd może wystąpić, jeśli używasz niestandardowej maszyny Wirtualnej, urządzenia ze wzmocnionymi zabezpieczeniami lub konfiguracji rozruchu, który powoduje, że Windows niepowodzenie prawidłowo połączenia do portu szeregowego. To również wystąpi błąd Jeśli korzystasz z klienta systemu Windows 10 maszyny Wirtualnej, ponieważ tylko systemu Windows Server dla maszyn wirtualnych są skonfigurowane do mieć włączony pakiet EMS.
 Nie można wpisać w SAC stanie się monit, jeśli włączone jest debugowanie jądra. | Nawiązać połączenia RDP z maszyną Wirtualną i uruchom `bcdedit /debug {current} off` z wiersza polecenia z podwyższonym poziomem uprawnień. Jeśli z jakiegoś powodu protokołu RDP, możesz zamiast tego Dołącz dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure i zmodyfikuj go, gdy dołączony jako dysk danych, uruchamiając `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, następnie zamienianie dysku w ponownie.
@@ -230,7 +239,7 @@ Niektóre dane wejściowe z klawiatury generuje dziwne SAC dane wyjściowe (na p
 Wklejanie ciągów długich nie działa. | Konsoli szeregowej ogranicza długość ciągów w terminalu, aby 2048 znaków, aby zapobiec przeciążeniu przepustowość portu szeregowego.
 
 
-## <a name="frequently-asked-questions"></a>Często zadawane pytania 
+## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 **PYTANIA I ODPOWIEDZI. Jak wysłać opinię?**
 
@@ -246,7 +255,7 @@ A. Aby włączyć lub wyłączyć konsoli szeregowej na poziomie całej subskryp
 
 **PYTANIA I ODPOWIEDZI. Kto ma dostęp do konsoli szeregowej dla mojej maszyny Wirtualnej?**
 
-A. Konieczne jest posiadanie rola Współautor maszyny wirtualnej lub nowszej, aby uzyskać dostęp do konsoli szeregowej maszyny Wirtualnej maszyny Wirtualnej. 
+A. Konieczne jest posiadanie rola Współautor maszyny wirtualnej lub nowszej, aby uzyskać dostęp do konsoli szeregowej maszyny Wirtualnej maszyny Wirtualnej.
 
 **PYTANIA I ODPOWIEDZI. Moje konsoli szeregowej nie są wyświetlane wszystko, co należy zrobić?**
 

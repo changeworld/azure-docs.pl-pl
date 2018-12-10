@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 200c87bdf2f0d686cd2e768d3b6b9a7fe3a5691b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c5a69e0c15d6d75bb4f182c1d8f62863aae7c760
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282519"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140850"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
@@ -51,7 +51,7 @@ Ten artykuł jest przeznaczony dla osób, które publikujesz aplikację, w tym s
 
 Jeśli już masz włączony serwer Proxy aplikacji i mieć zainstalowanego łącznika, możesz pominąć tę sekcję i przejdź do [Dodaj swoją aplikację do usługi Azure AD przy użyciu serwera Proxy aplikacji](#add-your-app-to-azure-ad-with-application-proxy).
 
-Łącznik serwera Proxy aplikacji jest usługę systemu Windows Server, która kieruje ruch z pracownicy zdalni do opublikowanej aplikacji. Aby uzyskać szczegółowe instrukcje dotyczące instalacji, zobacz [Włączanie serwera Proxy aplikacji w witrynie Azure portal](application-proxy-enable.md).
+Łącznik serwera Proxy aplikacji jest usługę systemu Windows Server, która kieruje ruch z pracownicy zdalni do opublikowanej aplikacji. Aby uzyskać szczegółowe instrukcje dotyczące instalacji, zobacz [Włączanie serwera Proxy aplikacji w witrynie Azure portal](application-proxy-add-on-premises-application.md).
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny.
 2. Wybierz **usługi Azure Active Directory** > **serwera proxy aplikacji**.
@@ -66,7 +66,7 @@ Jeśli już masz włączony serwer Proxy aplikacji i mieć zainstalowanego łąc
 
 Istnieją dwie akcje, które należy wykonać w witrynie Azure portal. Najpierw musisz opublikować aplikację przy użyciu serwera Proxy aplikacji. Następnie należy zebrać pewne informacje o aplikacji, można użyć podczas czynności PingAccess.
 
-Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy przewodnik dotyczący kroki 1-8, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md).
+Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy przewodnik dotyczący kroki 1-8, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md).
 
 1. Jeśli nie jest w ostatniej sekcji, zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator globalny.
 2. Wybierz **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw**.

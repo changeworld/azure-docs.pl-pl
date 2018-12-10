@@ -1,24 +1,24 @@
 ---
-title: Korzystać z programu Studio 3T (z programu MongoChef) przy użyciu usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z programu Studio 3T przy użyciu konta z interfejsem API MongoDB usługi Azure Cosmos DB
+title: Łączenie się z kontem bazy danych MongoDB przy użyciu z programu Studio 3T (z programu MongoChef)
+titleSuffix: Azure Cosmos DB
+description: Dowiedz się, jak nawiązać połączenie z interfejsem API MongoDB w usłudze Azure Cosmos DB, korzystając z programu Studio 3T oraz jak utworzyć bazę danych, kolekcji i dokumentów po nawiązaniu połączenia.
 keywords: mongochef, studio 3T
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/18/2018
+ms.date: 12/06/2018
 ms.author: sclyon
-ms.openlocfilehash: af66f413055c01d9a4c3e94c7d3b9c5f1d5917b0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.custom: seodec18
+ms.openlocfilehash: 5bdcf035f892f1cbdb8bb43579dba547f0ec8bfd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055497"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135660"
 ---
-# <a name="azure-cosmos-db-use-studio-3t-with-a-mongodb-api-account"></a>Azure Cosmos DB: Z programu użyj programu Studio 3T przy użyciu konta interfejsu API usługi MongoDB
+# <a name="connect-to-mongodb-account-using-studio-3t-mongochef"></a>Łączenie się z kontem bazy danych MongoDB przy użyciu z programu Studio 3T (z programu MongoChef)
 
 Aby połączyć konto z interfejsem API MongoDB usługi Azure Cosmos DB, musisz mieć:
 

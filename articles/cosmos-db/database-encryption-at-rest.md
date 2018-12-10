@@ -1,18 +1,18 @@
 ---
-title: 'Szyfrowanie bazy danych w spoczynku: usługi Azure Cosmos DB'
-description: Dowiedz się, jak usługa Azure Cosmos DB zapewnia domyślne szyfrowanie wszystkich danych.
-services: cosmos-db
+title: Szyfrowanie w spoczynku w usłudze Azure Cosmos DB
+description: Dowiedz się, jak usługa Azure Cosmos DB udostępnia szyfrowanie nieużywanych danych i jak jest zaimplementowana.
 author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2017
-ms.author: rafats
-ms.openlocfilehash: c58d294707d347ce979af80f63e1edb7be1c1a40
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/06/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: 8138a7dcae427d5f5f622170a7825306a7bf8dae
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835512"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140323"
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Azure Cosmos DB szyfrowania bazy danych w spoczynku
 

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 7f429778429e2d98d5abd655ee4b9acdc1472ff2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 21b2ee99fa8f9b22b4dfccadfaadf1d4a10980cf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878690"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138147"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Arkusze porad zapytania w usłudze Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Pobierz [arkusze porad zapytania o rozmiarze usługi Azure Cosmos DB A3](https:/
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać dodatkową pomoc, Pisanie zapytań zobacz następujące artykuły:
-* Dla interfejsu API SQL zapytań, zobacz [wykonywać zapytania za pomocą interfejsu SQL API](tutorial-query-sql-api.md), [zapytań SQL usługi Azure Cosmos DB](how-to-sql-query.md), i [dokumentacja składni SQL](sql-api-sql-query-reference.md)
+* Dla interfejsu API SQL zapytań, zobacz [wykonywać zapytania za pomocą interfejsu SQL API](tutorial-query-sql-api.md), [zapytań SQL usługi Azure Cosmos DB](how-to-sql-query.md), i [dokumentacja składni SQL](sql-api-query-reference.md)
 * Dla zapytań bazy danych MongoDB, zobacz [wykonywać zapytania za pomocą interfejsu API usługi MongoDB](tutorial-query-mongodb.md) i [obsługę interfejsu API usługi MongoDB bazy danych MongoDB, funkcji i składni](mongodb-feature-support.md)
 * Interfejs API Gremlin zapytań, zobacz [wykonywać zapytania za pomocą interfejsu API języka Gremlin](tutorial-query-graph.md) i [obsługi programu graph usługi Azure Cosmos DB w języku Gremlin](gremlin-support.md)
 * Dla interfejsu API tabeli zapytań, zobacz [wykonywać zapytania za pomocą interfejsu API tabel](tutorial-query-table.md)

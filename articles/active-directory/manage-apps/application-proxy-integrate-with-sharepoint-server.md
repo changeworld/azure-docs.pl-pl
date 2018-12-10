@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 89852e90daa548dc82455cb6317d367b7423ba65
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0f1b46176ba440a11d1584846019859c63d2f263
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425212"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135784"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Zdalny dostęp do programu SharePoint przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -163,7 +163,7 @@ Aby skonfigurować ograniczonego delegowania protokołu Kerberos, wykonaj nastę
 
 Teraz, po włączeniu programu SharePoint dla protokołu Kerberos i skonfigurowanym ograniczonego delegowania protokołu Kerberos, jesteś gotowy do opublikowania farmy programu SharePoint dla dostępu zdalnego za pośrednictwem serwera Proxy aplikacji usługi Azure AD.
 
-1. Publikowanie witryny programu SharePoint z następującymi ustawieniami. Aby uzyskać instrukcje krok po kroku, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). 
+1. Publikowanie witryny programu SharePoint z następującymi ustawieniami. Aby uzyskać instrukcje krok po kroku, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md). 
    - **Wewnętrzny adres URL**: adres URL witryny programu SharePoint, takich jak **https://SharePoint/**. W tym przykładzie, upewnij się, że używasz **protokołu https**
    - **Metoda uwierzytelniania wstępnego**: Usługa Azure Active Directory
    - **Przetłumacz URL w nagłówkach**: Brak

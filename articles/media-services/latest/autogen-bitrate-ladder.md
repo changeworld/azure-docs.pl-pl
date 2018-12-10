@@ -1,6 +1,6 @@
 ---
-title: Użyj koder w warstwie standardowa w usłudze Azure Media Services do kodowania materiałów wideo za pomocą drabiny szybkości transmisji bitów z automatycznego generowania | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak używać kodera w warstwie standardowa w usłudze Media Services do kodowania danych wejściowych wystąpili drabiny szybkości transmisji bitów z wygenerowany automatycznie, na podstawie rozdzielczości i szybkości transmisji bitów. Rozdzielczości i szybkości transmisji bitów nigdy nie zostanie przekroczony. Na przykład jeśli dane wejściowe są 720p na 3 MB/s, dane wyjściowe będą pozostają w najlepszym 720p i rozpocznie się stawek niższy niż 3 MB/s.
+title: Kodowanie wideo za pomocą kodera w warstwie standardowa w usłudze Media Services — Azure | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak używać kodera w warstwie standardowa w usłudze Media Services do kodowania danych wejściowych wystąpili drabiny szybkości transmisji bitów z wygenerowany automatycznie, na podstawie rozdzielczości i szybkości transmisji bitów.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: ec1b4b88e5b9639c3ee9debbd8ac7d48544344dc
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.custom: seodec18
+ms.openlocfilehash: 976e1ea013c6a30615bdc742ed79e76ec35258a1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378962"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132810"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kodowanie za pomocą drabiny szybkości transmisji bitów z wygenerowany automatycznie
 

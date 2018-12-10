@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a34ad340463faf0cdccdb7fa8b87283de60b4cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253342"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141615"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Zawartość pakietu autonomicznego sieci szkieletowej usługi dla systemu Windows Server
 W [pobrane](https://go.microsoft.com/fwlink/?LinkId=730690) pakietu usługi Service Fabric autonomicznego, znajdziesz następujące pliki:
@@ -40,6 +40,7 @@ W [pobrane](https://go.microsoft.com/fwlink/?LinkId=730690) pakietu usługi Serv
 | Tools\ServiceFabricUpdateService.zip |Narzędzie umożliwiają automatyczne uaktualnianie kodu w przypadku klastrów, które nie mają dostępu do Internetu. Więcej szczegółów można znaleźć [tutaj](service-fabric-cluster-upgrade-windows-server.md)|
 
 **Szablony** 
+
 | **Nazwa pliku** | **Krótki opis** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |Klaster przykładowy plik konfiguracji zawierający ustawienia dla niezabezpieczonym, trzema węzłami pojedynczego komputera (lub klaster maszyn wirtualnych) rozwoju, włącznie z informacjami dla każdego węzła w klastrze. |

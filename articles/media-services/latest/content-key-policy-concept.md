@@ -1,5 +1,5 @@
 ---
-title: Zawartości klucza zasad w usłudze Azure Media Services | Dokumentacja firmy Microsoft
+title: Zawartość zasady kluczy w usłudze Media Services — Azure | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera wyjaśnienie, co to są zasady klucz zawartości i jak są one używane przez usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 541713677184d93eb78856e3c3373ab432d5f0cf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085961"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141533"
 ---
 # <a name="content-key-policies"></a>Zasady kluczy zawartości
 

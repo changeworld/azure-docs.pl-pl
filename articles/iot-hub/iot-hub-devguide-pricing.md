@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 247c12fb15fe8aa82c3a29c4c2d1e704db40e424
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584102"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141513"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informacje o cenach usługi Azure IoT Hub
 
@@ -35,6 +35,7 @@ ms.locfileid: "47584102"
 | Zapytania dotyczące bliźniaczych reprezentacji urządzeń i modułu | Zapytania są rozliczane jako komunikaty, w zależności od rozmiaru wynik we fragmentach 512-bajtowego. |
 | Operacje zadań <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | Nie są naliczane. |
 | Operacje dotyczące zadań poszczególnych urządzeń. | Operacje dotyczące zadań (na przykład liczba aktualizacji bliźniaczej reprezentacji i metody) są naliczane w zwykły sposób. Na przykład zadanie, co w wywołaniach metod 1000 żądań na 1 KB i pusta treść odpowiedzi jest rozliczany według 1000 komunikatów. |
+| Komunikaty utrzymywania aktywności | Podczas korzystania z protokołów AMQP lub protokołu MQTT, komunikatów wymienianych do nawiązania połączenia i wiadomości wymieniane w negocjacji nie są naliczane. |
 
 > [!NOTE]
 > Wszystkie rozmiary są obliczane, biorąc pod uwagę rozmiar ładunku w bajtach (ramek protokołu jest ignorowany). Dla wiadomości, które mają właściwości i treści, rozmiar jest obliczany w sposób niezależny od protokołu. Aby uzyskać więcej informacji, zobacz [format komunikatów usługi IoT Hub](iot-hub-devguide-messages-construct.md).

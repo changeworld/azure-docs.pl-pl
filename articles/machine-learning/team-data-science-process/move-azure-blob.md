@@ -1,5 +1,5 @@
 ---
-title: Przenoszenie danych do i z usługi Azure Blob storage | Dokumentacja firmy Microsoft
+title: Przenoszenie danych do i z usługi Azure Blob storage — zespołu danych dla celów naukowych
 description: Przenoszenie danych do i z usługi Azure Blob storage
 services: machine-learning
 author: marktab
@@ -10,17 +10,20 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: fa3fd5dfdd0fbdb8200b0c5c8df512caedbe735c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a37c19ac0d3c053644b2f1f970ef9f84eac2f1df
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441846"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139861"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Przenoszenie danych do i z usługi Azure Blob storage
 
 Proces analizy danych zespołu wymaga, aby dane można pozyskane lub ładowany w różnych środowiskach innego magazynu należy przetworzyć lub analizowany w najlepszy sposób na każdym etapie procesu.
+
+## <a name="different-technologies-for-moving-data"></a>Różne technologie przenoszenia danych
+
 Następujące artykuły zawierają instrukcje dotyczące przenoszenia danych do i z usługi Azure Blob storage przy użyciu różnych technologii.
 
 * [— Eksplorator usługi Azure Storage](move-data-to-azure-blob-using-azure-storage-explorer.md)
@@ -35,6 +38,8 @@ Jakiej metody jest dla Ciebie najlepsza, zależy od danego scenariusza. [Scenari
 > 
 > 
 
+## <a name="using-azure-data-factory"></a>Używanie usługi Azure Data Factory
+
 Alternatywnie, można użyć [usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/) do: 
 
 * Tworzenie i zaplanować potok, który pobiera dane z usługi Azure blob storage 
@@ -45,7 +50,7 @@ Alternatywnie, można użyć [usługi Azure Data Factory](https://azure.microsof
 Aby uzyskać więcej informacji, zobacz [tworzyć potoki predykcyjne przy użyciu usługi Azure Data Factory i Azure Machine Learning](../../data-factory/transform-data-using-machine-learning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym dokumencie przyjęto założenie, że masz subskrypcję platformy Azure, konta magazynu i odpowiedniego klucza magazynu dla tego konta. Przed Trwa przekazywanie/pobieranie danych, musisz wiedzieć, usługa Azure storage konta nazwy i klucza konta usługi.
+W tym artykule założono, że masz subskrypcję platformy Azure, konta magazynu i odpowiedniego klucza magazynu dla tego konta. Przed Trwa przekazywanie/pobieranie danych, musisz wiedzieć, usługa Azure storage konta nazwy i klucza konta usługi.
 
 * Aby skonfigurować subskrypcję platformy Azure, zobacz [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 * Aby uzyskać instrukcje dotyczące tworzenia konta magazynu oraz w celu uzyskania konta i informacje o kluczu, zobacz [kontach magazynu Azure o](../../storage/common/storage-create-storage-account.md).

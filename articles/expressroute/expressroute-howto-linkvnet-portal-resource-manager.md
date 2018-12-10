@@ -1,26 +1,19 @@
 ---
-title: 'Łączenie sieci wirtualnej z obwodem usługi ExpressRoute: Azure portal | Dokumentacja firmy Microsoft'
+title: 'Łączenie sieci wirtualnej z obwodem — ExpressRoute: Azure portal | Dokumentacja firmy Microsoft'
 description: Łączenie sieci wirtualnej z obwodem usługi ExpressRoute platformy Azure. Instrukcje.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 47c0db66889dae5d74e2fcf46a27ec1397930e53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: f2b22eb779a8ebe1d1fd804443663abc9a4245ec
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256786"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141649"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą portalu
 > [!div class="op_single_selector"]

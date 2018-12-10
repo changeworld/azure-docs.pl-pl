@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 8cdb5b89bf43d3265f3f9c73d29708f11e17b21c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6ae7cff42a9b744409fa454199155796c8c06713
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624033"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138970"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Hasło vaulting dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji
 
@@ -26,7 +26,7 @@ Usługa Azure Active Directory serwera Proxy aplikacji pomaga zwiększyć wydajn
 
 Serwer Proxy aplikacji obsługuje kilka [pojedynczego logowania jednokrotnego tryby](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Logowanie na podstawie hasła jest przeznaczony dla aplikacji, które używają kombinacji nazwy użytkownika i hasła do uwierzytelniania. Podczas konfigurowania opartego na hasłach logowania jednokrotnego dla aplikacji, użytkownicy muszą zalogować się do aplikacji lokalnej jeden raz. Po tym usługi Azure Active Directory są przechowywane informacje logowania i automatycznie przekazuje go do aplikacji w przypadku użytkowników dostępu zdalnego. 
 
-Powinna już opublikowania i przetestować aplikację za pomocą serwera Proxy aplikacji. Jeśli nie, wykonaj kroki opisane w [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md) następnie wróć tutaj. 
+Powinna już opublikowania i przetestować aplikację za pomocą serwera Proxy aplikacji. Jeśli nie, wykonaj kroki opisane w [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md) następnie wróć tutaj. 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>Skonfiguruj hasło vaulting dla aplikacji
 

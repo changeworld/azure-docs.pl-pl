@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: dbb7fca08e8d5c59842f7ddfb02b463a42efadb7
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 565e7379ad12222e459bd61ed50fa38f9f9b12fc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422287"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136250"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Ograniczone delegowanie protokołu Kerberos do logowania jednokrotnego do aplikacji przy użyciu serwera Proxy aplikacji
 
@@ -75,7 +75,7 @@ Konfiguracja usługi Active Directory różni się w zależności od tego, czy T
 Konto komputera dodatki Service Pack lub konto usługi, w którym jest uruchomiona pula aplikacji dodatki Service Pack, może być Sharepointserviceaccount.
 
 ## <a name="configure-single-sign-on"></a>Konfigurowanie logowania jednokrotnego 
-1. Opublikowanie aplikacji zgodnie z instrukcji przedstawionych w temacie [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-publish-azure-portal.md). Upewnij się, że wybrano **usługi Azure Active Directory** jako **metoda uwierzytelniania wstępnego**.
+1. Opublikowanie aplikacji zgodnie z instrukcji przedstawionych w temacie [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-add-on-premises-application.md). Upewnij się, że wybrano **usługi Azure Active Directory** jako **metoda uwierzytelniania wstępnego**.
 2. Gdy aplikacja zostanie wyświetlony na liście aplikacji dla przedsiębiorstw, zaznacz go i kliknij **logowanie jednokrotne**.
 3. Ustaw tryb logowania pojedynczego **zintegrowane uwierzytelnianie Windows**.  
 4. Wprowadź **główna nazwa usługi aplikacji wewnętrznej** serwera aplikacji. W tym przykładzie nazwy SPN dla opublikowanych aplikacji jest http/www.contoso.com. Tę nazwę SPN, musi znajdować się na liście usług, do których łącznik może przedstawiać delegowane poświadczenia. 

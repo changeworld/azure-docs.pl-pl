@@ -1,5 +1,5 @@
 ---
-title: Przenoszenie danych z lokalnego programu SQL Server do usługi SQL Azure z usługą Azure Data Factory | Dokumentacja firmy Microsoft
+title: Dane programu SQL Server do usługi SQL Azure z usługą Azure Data Factory — zespołu danych dla celów naukowych
 description: Konfigurowanie potoku usługi ADF, który komponuje się dwa działania migracji danych, które przenoszą dane ze sobą codziennie między bazami danych w środowisku lokalnym i w chmurze.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: bddb54d9a00c5ec88fcebe498d7f959c0f8e3dbf
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 87aa1c30bb567c6820e2d9ecacfc3f8cd2338339
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447040"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137773"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Przenoszenie danych z lokalnego programu SQL server do usługi SQL Azure z usługą Azure Data Factory
 
@@ -43,7 +43,7 @@ Skonfigurujemy potoku usługi ADF, który komponuje się dwa działania migracji
 * Kopiowanie danych z konta usługi Azure Blob Storage do usługi Azure SQL Database.
 
 > [!NOTE]
-> Kroki opisane w tym miejscu zostały zaczerpnięte z bardziej szczegółowy samouczek dotyczący dostarczane przez zespół usługi ADF: [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzania danymi](../../data-factory/tutorial-hybrid-copy-portal.md) odwołania do odpowiednich sekcji tego tematu są udostępniane, gdy jest to konieczne.
+> Kroki opisane w tym miejscu zostały zaczerpnięte z bardziej szczegółowy samouczek dotyczący dostarczane przez zespół usługi ADF: [kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob storage](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal/) odwołania do odpowiednich sekcji tego tematu znajdują się kiedy jest to właściwe.
 >
 >
 
@@ -68,15 +68,10 @@ Możesz dostosować procedury w tym miejscu do zestawu danych użytkownika lub z
 ## <a name="create-adf"></a> Tworzenie fabryki danych platformy Azure
 Instrukcje dotyczące tworzenia nowej fabryki danych platformy Azure i grupę zasobów w [witryny Azure portal](https://portal.azure.com/) znajdują się [Tworzenie usługi Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Nazwa nowego wystąpienia usługi ADF *adfdsp* i nazwy grupy zasobów utworzonej *adfdsprg*.
 
-## <a name="install-and-configure-up-the-data-management-gateway"></a>Instalowanie i konfigurowanie się brama zarządzania danymi
-Aby włączyć potoki w fabryce danych platformy Azure do pracy z programem SQL Server w środowisku lokalnym, należy dodać go jako połączona usługa do fabryki danych. Aby utworzyć połączoną usługę dla lokalnego programu SQL Server, musisz mieć:
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Instalowanie i konfigurowanie usługi Azure Data Factory Integration Runtime 
+Środowisko IR to infrastruktura integracji danych zarządzanych klientów, używane przez usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. To środowisko wykonawcze był wcześniej nazywany "Brama zarządzania danymi". 
 
-* Pobierz i zainstaluj bramę zarządzania danymi firmy Microsoft na komputerze lokalnym.
-* Konfigurowanie połączonej usługi dla źródła danych lokalnych do używania bramy.
-
-Brama zarządzania danymi serializuje i deserializuje dane źródłowe i ujścia, na komputerze, na którym jest hostowana.
-
-Aby uzyskać instrukcje dotyczące konfiguracji oraz szczegółowe informacje na temat bramy zarządzania danymi, zobacz [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzania danymi](../../data-factory/tutorial-hybrid-copy-portal.md)
+Aby skonfigurować, [wykonaj instrutions do tworzenia potoku](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="adflinkedservices"></a>Utwórz połączone usługi, aby połączyć się z zasobami danych
 Połączona usługa definiuje informacje wymagane przez usługę Azure Data Factory, aby nawiązać połączenie z zasobem danych. Mamy trzy zasoby w tym scenariuszu, dla którego połączone usługi są potrzebne:

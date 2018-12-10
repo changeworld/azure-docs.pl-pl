@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: e346aed2efaab6afcd24e622f577708221b47cb1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e8d880534a39651024b60ef10a9fbadb9e109a4e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965858"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138249"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -172,6 +172,48 @@ Umożliwia aplikacji funkcji do uruchamiania z pliku zainstalowanego pakietu.
 |WITRYNY SIECI WEB\_URUCHOM\_FROM\_PAKIETU|1|
 
 Prawidłowe wartości to URL, który jest rozpoznawany jako lokalizacja pliku wdrożenia pakietu lub `1`. Po ustawieniu `1`, pakiet musi znajdować się w `d:\home\data\SitePackages` folderu. Korzystając z pliku zip wdrożenia to ustawienie, pakiet jest automatycznie przekazywana do tej lokalizacji. W wersji zapoznawczej, to ustawienie nosiła nazwę `WEBSITE_RUN_FROM_ZIP`. Aby uzyskać więcej informacji, zobacz [uruchamiać swoje funkcje na podstawie pliku pakietu](run-functions-from-deployment-package.md).
+
+## <a name="azurefunctionproxydisablelocalcall"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+Domyślnie skrót do wysyłania wywołania interfejsu API z serwerów proxy bezpośrednio do funkcji w tej samej aplikacji funkcji, zamiast tworzenia nowego żądania HTTP będzie korzystać z serwerów proxy usługi Functions. To ustawienie pozwala wyłączyć to zachowanie.
+
+|Klucz|Wartość|Opis|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Wywołania z adres url wewnętrznej funkcji w funkcji lokalnej nie być wysyłane bezpośrednio do funkcji, a zamiast tego nastąpi przekierowanie do HTTP frontonu dla aplikacji funkcji|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Jest to wartość domyślna. Wywołania z adres url wewnętrznej funkcji lokalnej aplikacji funkcji zostaną przekazane bezpośrednio do tej funkcji|
+
+
+## <a name="azurefunctionproxybackendurldecodeslashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+To ustawienie określa, czy % 2F jest zdekodowany jako ukośnikami w parametrów trasy, gdy są wstawiane URL wewnętrznej bazy danych. 
+
+|Klucz|Wartość|Opis|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry trasy z ukośnikami zakodowany będzie je zdekodowane. `example.com/api%2ftest` staną się `example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|To zachowanie domyślne. Wszystkie trasy, który zostanie przekazany parametry bez zmian|
+
+### <a name="example"></a>Przykład
+
+Oto przykładowy plik proxies.json w aplikacji funkcji w myfunction.com adresu URL
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+|Dekodowanie adresu URL|Dane wejściowe|Dane wyjściowe|
+|-|-|-|
+|true|MyFunction.com/test%2fapi|example.com/test/API
+|false|MyFunction.com/test%2fapi|example.com/test%2fapi|
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

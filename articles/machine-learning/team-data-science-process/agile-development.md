@@ -1,5 +1,5 @@
 ---
-title: Programowanie metodą agile projektów do nauki o danych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+title: Programowanie metodą agile projektów do nauki o danych — danych zespołu dla celów naukowych
 description: Jak deweloperów, można wykonać projektu nauki o danych w systematyczne, niepoddany kontroli wersji i sposób współpracy w ramach zespołu projektu przy użyciu procesu do nauki o danych zespołu.
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 9fd8714e4c9fdc89036a3b05ba835b140363c0e3
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ee8e3e3ef33a8b09b92d4dfc262fce26dd60abb3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443376"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134407"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Programowanie metodą agile projektów do nauki o danych
 

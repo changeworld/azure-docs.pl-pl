@@ -1,6 +1,6 @@
 ---
-title: Kod do nauki o danych, testowanie na platformie Azure za pomocą UCI treści dla dorosłych dochodu prognozowania zestawu danych — zespołu danych dla celów naukowych i usługom DevOps platformy Azure
-description: Testowanie za pomocą danymi przewidywań treści dla dorosłych dochodu UCI kod do nauki o danych
+title: Testowanie kodu do nauki o danych dzięki usługom DevOps platformy Azure — zespołu danych dla celów naukowych
+description: Kod do nauki o danych, testowanie na platformie Azure przy użyciu UCI treści dla dorosłych dochodu prognozowania zestaw danych o procesie nauki o danych zespołu i usługom DevOps platformy Azure
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: tdsp
-ms.custom: (previous author=weig, ms.author=weig)
-ms.openlocfilehash: d04f50bc3de34c28c10be7ba429f85a99096de47
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
+ms.openlocfilehash: d8c3bafaa42e68eb7f6b5212c055793a1f2b1137
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443954"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134543"
 ---
-# <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Testowanie z zestawem danych Prognozowanie przychodów treści dla dorosłych UCI kod do nauki o danych
+# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Kod do nauki o danych, testowanie na platformie Azure za pomocą zespołowego danych naukowych i usługom DevOps platformy Azure
 Ten artykuł zawiera wskazówki wstępne do testowania kodu w przepływie pracy do analizy danych. Takie testy daje analitykom danych systematyczne i wydajny sposób kontroli jakości i oczekiwany wynik swój kod. Używamy Team Data Science naukowych [projektu, który używa zestawu danych na rachunku treści dla dorosłych](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , opublikowaliśmy wcześniej pokazanie sposobu testowania kodu może odbywać się. 
 
 ## <a name="introduction-on-code-testing"></a>Wprowadzenie na testowanie kodu

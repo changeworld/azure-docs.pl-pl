@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f340b9843ed5763a20d2035e3add86123a1298e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: abc551f796cb2d8921b6b1f67fb6a6714655ffde
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971148"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134679"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Skonfiguruj prywatne adresy IP dla maszyny wirtualnej (model klasyczny) przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
 
@@ -75,7 +75,7 @@ Aby utworzyć nową maszynę Wirtualną o nazwie *DNS01* w nowej usługi w chmur
    * **TestService**. Nazwa usługi w chmurze tworzona maszyna wirtualna.
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**. Obraz użyty do utworzenia maszyny Wirtualnej.
    * **adminuser**. Administrator lokalny na maszynie Wirtualnej Windows.
-   * **AdminP@ssw0rd**. Hasło administratora lokalnego dla maszyn wirtualnych Windows.
+   * <strong>AdminP@ssw0rd</strong>. Hasło administratora lokalnego dla maszyn wirtualnych Windows.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak pobrać statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej
 Aby wyświetlić statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej utworzone za pomocą skryptu powyżej, uruchom następujące polecenie z wiersza polecenia platformy Azure i sprawdź wartość *StaticIP sieci*:

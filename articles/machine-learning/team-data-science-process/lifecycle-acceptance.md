@@ -1,5 +1,5 @@
 ---
-title: Etap akceptacji klienta cykl życia zespołowego danych naukowych — Azure | Dokumentacja firmy Microsoft
+title: Klient akceptacji etap cyklu życia zespołowego danych dla celów naukowych
 description: Cele, zadania i elementy dostarczane dla etapu akceptacji klienta projektów do nauki o danych
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: a60594123346b599270f2a7763e98fc863f85067
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 7a00f18a8ae51d5118275e904e2ca76fc167d987
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441489"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132622"
 ---
-# <a name="customer-acceptance"></a>Akceptacja klienta
+# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Klient akceptacji etap cyklu życia zespołowego danych dla celów naukowych
 
 W tym artykule opisano cele, zadania i cele do zrealizowania skojarzone z etapem akceptacji klienta procesu do nauki o danych zespołu (TDSP). Ten proces obejmuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia przedstawia główne etapy, które projekty zazwyczaj są wykonywane, często iteracyjne:
 

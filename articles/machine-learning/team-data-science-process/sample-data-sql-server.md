@@ -1,6 +1,6 @@
 ---
-title: Przykładowe dane w programie SQL Server na platformie Azure | Dokumentacja firmy Microsoft
-description: Przykładowe dane w programie SQL Server na platformie Azure
+title: Przykładowe dane w programie SQL Server na platformie Azure — zespołu danych dla celów naukowych
+description: Przykładowe dane przechowywane w programie SQL Server na platformie Azure przy użyciu bazy danych SQL lub języka programowania Python, a następnie przenieś go do usługi Azure Machine Learning.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 1520e683fdd4ab2f2731f5eb0d3a1a30fed81723
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: fec649706be1b3db01a5c6cbc8f395e8c7e1a4d2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833486"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134339"
 ---
 # <a name="heading"></a>Przykładowe dane w programie SQL Server na platformie Azure
 

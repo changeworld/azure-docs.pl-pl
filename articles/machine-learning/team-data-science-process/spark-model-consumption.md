@@ -1,5 +1,5 @@
 ---
-title: Zoperacjonalizować modele uczenia maszynowego utworzonych na platformie Spark | Dokumentacja firmy Microsoft
+title: Zoperacjonalizować modele uczenia maszynowego platformy Spark utworzonych - zespołu danych dla celów naukowych
 description: Jak załadować i ocenianie modeli uczenia przechowywanych w usłudze Azure Blob Storage (WASB) za pomocą języka Python.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 6ffe1dd960b6fd09539d093d8a632efc99452c00
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 543ae7cecf9edcb5997a0bae66e0722d258a4523
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442509"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135309"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zoperacjonalizować modele uczenia maszynowego utworzonych na platformie Spark
 

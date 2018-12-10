@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 85e6dc8d72588ff64c0119a6c1944755ce5686f4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720936"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139269"
 ---
 <a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
 =================================
@@ -177,7 +177,7 @@ Ten parametr służy do jednoznacznego identyfikowania sesji testowej w razie po
 
 Zasoby platformy Azure, takich jak konta magazynu lub nazwy DNS wymaga globalnie unikatowe nazwy.
 
-Oznacza to, że za każdym razem, gdy wersja testowa służy do wdrażania szablonu usługi Resource Manager, tworzy ono **nową grupę zasobów o unikatowej nazwie** dla wszystkich jego\' zasobów **.** W związku z tym jest wymagany do użycia [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) funkcja połączona z Twojej nazwy zmiennych w grupie zasobów identyfikatorów do wygenerowania losowych unikatowe wartości:
+Oznacza to, że za każdym razem, gdy wersja testowa służy do wdrażania szablonu usługi Resource Manager, tworzy ono **nową grupę zasobów o unikatowej nazwie** dla wszystkich jego\' zasobów. W związku z tym jest wymagany do użycia [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) funkcja połączona z Twojej nazwy zmiennych w grupie zasobów identyfikatorów do wygenerowania losowych unikatowe wartości:
 
       "variables": {
       ...

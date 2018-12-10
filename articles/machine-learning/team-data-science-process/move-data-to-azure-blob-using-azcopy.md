@@ -1,5 +1,5 @@
 ---
-title: Przenoszenie danych do i z usługi Azure Blob Storage przy użyciu narzędzia AzCopy | Dokumentacja firmy Microsoft
+title: Przenoszenie danych do magazynu obiektów Blob za pomocą narzędzia AzCopy - zespołu danych dla celów naukowych
 description: Przenoszenie danych do oraz z usługi Azure Blob Storage za pomocą usługi AzCopy
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 9e8b852b9f13e8f41daff27e305bc9c0cda78cb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6a204c68a05cec827fa8e432889cc60296132d4e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443002"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140584"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>Przenoszenie danych do i z usługi Azure Blob Storage przy użyciu narzędzia AzCopy
 AzCopy to narzędzie wiersza polecenia, zaprojektowana pod kątem przekazywanie, pobieranie i kopiowanie danych do i z obiektów blob, plików i usługi table storage Microsoft Azure.

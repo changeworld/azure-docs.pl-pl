@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 647ff43d0b1e0dc52ccecd2dad709af969c61c15
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840676"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141938"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Przenieś aplikacje z usług AD FS do usługi Azure AD 
 
@@ -82,7 +82,7 @@ Aplikacje federacyjne to aplikacje, które należą do następujących kategorii
 
 ### <a name="non-federated-apps"></a>Aplikacje inne niż federacyjne
 Aplikacje inne niż federacyjne można zintegrować z usługą Azure AD przy użyciu serwera proxy aplikacji usługi Azure AD i powiązanych możliwości. Aplikacje inne niż federacyjne obejmują:
-- Aplikacje korzystające ze zintegrowanego uwierzytelniania systemu Windows bezpośrednio z usługą Active Directory. Te aplikacje można zintegrować z usługą Azure AD za pomocą [serwera proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md).
+- Aplikacje korzystające ze zintegrowanego uwierzytelniania systemu Windows bezpośrednio z usługą Active Directory. Te aplikacje można zintegrować z usługą Azure AD za pomocą [serwera proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md).
 - Aplikacje integrowane z dostawcą logowania jednokrotnego za pośrednictwem agenta i używające nagłówków na potrzeby autoryzacji. Aplikacje lokalne, które używają zainstalowanego agenta do logowania oraz autoryzacji opartej na nagłówkach, można skonfigurować na potrzeby logowania opartego na usłudze Azure AD za pośrednictwem serwera proxy aplikacji usługi Azure AD i funkcji [dostępu usługi Ping dla usługi Azure AD](https://blogs.technet.microsoft.com/enterprisemobility/2017/06/15/ping-access-for-azure-ad-is-now-generally-available-ga/).
 
 ## <a name="translating-on-premises-federated-apps-to-azure-ad"></a>Tłumaczenie lokalnych aplikacji federacyjnych na usługę Azure AD 

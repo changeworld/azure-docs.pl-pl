@@ -2,16 +2,17 @@
 title: Praca ze zmianą Obsługa kanału informacyjnego w usłudze Azure Cosmos DB
 description: Obsługa kanału informacyjnego zmian usługi Azure Cosmos DB umożliwia śledzenie zmian w dokumentach i wykonać przetwarzanie oparte na zdarzeniach, takich jak wyzwalacze i aktualizowanie systemów pamięci podręczne i analizy.
 author: rafats
+ms.author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: dfb0048b29c5d63a2eee4c239e17ef222aad331e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837464"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133761"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Zmiana źródła danych w usłudze Azure Cosmos DB
 
@@ -82,7 +83,7 @@ Na przykład za pomocą zestawienia zmian można wykonać następujące zadania 
 
 Poniżej przedstawiono niektóre scenariusze, które można łatwo zaimplementować za pomocą kanału informacyjnego zmian:
 
-* W ramach Twojej [bezserwerowe](http://azure.com/serverless) aplikacje internetowe lub mobilne, można śledzić zdarzenia, takie jak wszystkie zmiany do profilu klienta, preferencje lub ich lokalizacji i wyzwalania określonych czynności, na przykład wysyłanie powiadomień wypychanych do urządzeń za pomocą [usługi Azure Functions](#azure-functions). 
+* W ramach Twojej [bezserwerowe](https://azure.microsoft.com/en-us/solutions/serverless/) aplikacje internetowe lub mobilne, można śledzić zdarzenia, takie jak wszystkie zmiany do profilu klienta, preferencje lub ich lokalizacji i wyzwalania określonych czynności, na przykład wysyłanie powiadomień wypychanych do urządzeń za pomocą [usługi Azure Functions](change-feed-functions.md).
 
 * Jeśli używasz usługi Azure Cosmos DB do tworzenia gier, możesz, na przykład użyj Zmień źródło danych do zaimplementowania rankingi w czasie rzeczywistym, w oparciu o wyniki z gry ukończone.
 

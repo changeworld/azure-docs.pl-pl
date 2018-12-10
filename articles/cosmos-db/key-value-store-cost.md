@@ -1,19 +1,18 @@
 ---
-title: Usługa Azure Cosmos DB jako wartości klucza magazynu — omówienie kosztów
-description: Więcej informacji na temat niskie koszty korzystania z usługi Azure Cosmos DB do przechowywania wartości klucza.
-keywords: Magazyn wartości klucza
-services: cosmos-db
+title: Usługi Azure Cosmos DB do przechowywania wartości klucza, opłat za jednostki żądań
+description: Więcej informacji na temat opłat za jednostki żądań w usłudze Azure Cosmos DB dla prostych zapisu, a operacje odczytu, gdy jest ona używana jako magazyn klucz/wartość.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 7331db23757ab4eaae054c7fe640952fe22a7917
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 3ab066cc3d2b06dc12c2399d718aeec6aac03b25
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840879"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134186"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Usługa Azure Cosmos DB jako wartości klucza magazynu — omówienie kosztów
 
@@ -36,9 +35,9 @@ W poniższej tabeli przedstawiono liczbę jednostek zarezerwowanych, wymagane do
 
 ## <a name="cost-of-reads-and-writes"></a>Koszt odczyty i zapisy
 
-Jeśli aprowizować 1000 jednostek żądań na sekundę, ta ilość 3.6 mln jednostek RU/godz. i będzie koszt 0,08 USD za godzinę (w Stanach Zjednoczonych i Europie). Dla dokumentu o rozmiarze 1 KB, oznacza to, że mogą wykorzystywać odczyty 3.6-m lub m 0,72 zapisuje (3,6 mln jednostek RU / 5) przy użyciu aprowizowanej przepływności. Znormalizowane do milionów operacji odczytu i zapisu, opłata wyniesie odczyty /m 0,022 $ (0,08 USD / 3.6) i zapisuje 0.111 $/ m (0,08 USD / 0,72). Koszt za mln staje się minimalny, jak pokazano w poniższej tabeli.
+Jeśli aprowizować 1000 jednostek żądań na sekundę, ta ilość jednostek RU/godz. i będzie 3.6 m kosztów 0,08 USD za godzinę (w Stanach Zjednoczonych i Europie). Dla dokumentu o rozmiarze 1 KB, oznacza to, że mogą wykorzystywać odczyty 3.6-m lub m 0,72 zapisuje (3.6 mln jednostek RU / 5) przy użyciu aprowizowanej przepływności. Znormalizowane do milionów operacji odczytu i zapisu, opłata wyniesie odczyty /m 0,022 $ (0,08 USD / 3.6) i zapisuje 0.111 $/ m (0,08 USD / 0,72). Koszt za mln staje się minimalny, jak pokazano w poniższej tabeli.
 
-|Rozmiar elementu|Odczyt 1-m|1-m zapisu|
+|Rozmiar elementu|Odczyt 1-m|1 mln zapisu|
 |-------------|-------|--------|
 |1 KB|$0.022|$0.111|
 |100 KB|$0.222|$1.111|

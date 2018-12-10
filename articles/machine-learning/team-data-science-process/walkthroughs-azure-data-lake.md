@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Data Lake przewodniki dotyczące przetwarzania danych przy użyciu języka U-SQL | Dokumentacja firmy Microsoft
+title: Analizy przy użyciu języka U-SQL w usłudze Azure Data Lake — zespołu danych dla celów naukowych
 description: Przykłady, które pomagają przy użyciu języka U-SQL w usłudze Azure Data Lake analizy predykcyjnej.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2f01ec6dc97dccbca15c61d4f1a087f6f1a9abe2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ecf19ec484e03f4cbc9e396ff80818c192da4d17
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444226"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132793"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Usługa Azure Data Lake przewodniki dotyczące przetwarzania danych przy użyciu języka U-SQL
 

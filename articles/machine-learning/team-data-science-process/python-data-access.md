@@ -1,5 +1,5 @@
 ---
-title: Dostęp do zestawów danych za pomocą biblioteki klienta języka Python Machine Learning | Dokumentacja firmy Microsoft
+title: Dostęp do zestawów danych za pomocą biblioteki klienta Python - zespołu danych dla celów naukowych
 description: Zainstaluj i dostęp do danych i zarządzanie nimi usługi Azure Machine Learning bezpieczne od lokalnego środowiska Python za pomocą biblioteki klienta języka Python.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: e81efb0a7977bbd50c63834f676b7cc75201dc68
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680689"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140034"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Dostęp do zestawów danych z językiem Python za pomocą biblioteki klienta Python usługi Azure Machine Learning
 Biblioteki klienta języka Python usługi Microsoft Azure Machine Learning w wersji zapoznawczej można włączyć bezpieczny dostęp do usługi Azure Machine Learning zestawów danych z lokalnego środowiska Python i umożliwia tworzenie i Zarządzanie zestawami danych w obszarze roboczym.
@@ -38,7 +38,7 @@ Biblioteki klienta Python został przetestowany w następujących środowiskach:
 
 Ma zależności na następujące pakiety:
 
-* żądania/żądań
+* Żądania
 * dateutil języka Python
 * pandas
 
@@ -92,10 +92,10 @@ Tokeny autoryzacji są zarządzane na **TOKENACH autoryzacji** strony w obszarze
     ![Zestawy danych][datasets]
 4. Wybierz fragment kodu z okna, które zostanie wyświetlone, a następnie skopiuj go do Schowka.
    
-    ![Kod dostępu][dataset-access-code]
+    ![Generowanie przycisku kodu dostępu do danych][dataset-access-code]
 5. Wklej kod do notesu lokalnych aplikacji w języku Python.
    
-    ![Notes][ipython-dataset]
+    ![Wklej kod do notesu][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Dostęp do zestawów danych pośrednich od eksperymenty usługi Machine Learning
 Po uruchomieniu eksperymentu w usłudze Machine Learning Studio, istnieje możliwość dostępu do pośredniego zestawów danych z węzłów wyjściowych modułów. Pośredni zestawy danych są dane, które zostały utworzone i jest używany dla kroki pośrednie po uruchomieniu narzędzia modelu.
@@ -133,10 +133,10 @@ Poniższe kroki pokazują przykładowi, który tworzy eksperymentu, uruchomi go 
     ![Menu kontekstowe][experiment]
 8. Wybierz fragment kodu, a następnie skopiuj go do Schowka w wyświetlonym oknie.
    
-    ![Kod dostępu][intermediate-dataset-access-code]
+    ![Generowanie kodu dostępu z poziomu menu kontekstowego][intermediate-dataset-access-code]
 9. Wklej kod w notesie.
    
-    ![Notes][ipython-intermediate-dataset]
+    ![Wklej kod do notesu][ipython-intermediate-dataset]
 10. Można wizualizować dane przy użyciu matplotlib. Spowoduje to wyświetlenie w histogram kolumny okres ważności:
     
     ![Histogram][ipython-histogram]

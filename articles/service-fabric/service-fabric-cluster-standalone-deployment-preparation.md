@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9918c4b022fc2aca4bfc1ddba5649d7f0efe1256
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259092"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138793"
 ---
 <a id="preparemachines"></a>
 
@@ -83,6 +83,7 @@ Tworzenie klastra autonomicznego należy utworzyć autonomiczny klaster ClusterC
 Aby uzyskać szczegółowe informacje na sekcje, w tym pliku, zobacz [ustawienia konfiguracji dla autonomicznego klastra Windows](service-fabric-cluster-manifest.md).
 
 Otwórz jeden z plików ClusterConfig.json z pakietu, które zostały pobrane i zmodyfikować następujące ustawienia:
+
 | **Ustawienia konfiguracji** | **Opis** |
 | --- | --- |
 | **Elementy NodeType** |Typy węzłów umożliwiają oddzielenie węzły klastra w różnych grupach. Klaster musi mieć co najmniej jeden element NodeType. Wszystkie węzły w grupie mają następujące cechy wspólne: <br> **Nazwa** — jest to nazwa typu węzła. <br>**Porty punktów końcowych** — te mają różne nazwy punktów końcowych (porty), które są skojarzone z tym typem węzła. Można użyć dowolnego numeru portu, chcesz, tak długo, jak nie powodują konfliktów z niczego więcej w tym manifeście i nie są już używane przez wszystkie inne aplikacje uruchomione na maszynie/na maszynie Wirtualnej. <br> **Właściwości umieszczania** — te opisują właściwości dla tego typu węzła używanego jako ograniczeniami dotyczącymi umieszczania dla usług systemu lub usługi. Te właściwości to pary klucz/wartość zdefiniowanych przez użytkownika, które zapewniają dodatkowe metadane dla danego węzła. Przykłady — właściwości węzła byłaby, czy węzeł zawiera dysk twardy lub karty graficznej, od liczby dysków w jego dysku twardym, rdzeni i inne właściwości fizyczne. <br> **Pojemności** — wydajność węzłów zdefiniować nazwę i sumę określonego zasobu, określony węzeł jest dostępne do użycia. Na przykład węzeł mogą określić, czy ma ona wydajności dla metryki o nazwie "MemoryInMb" i ma dostępne 2048 MB, domyślnie. Te możliwości są używane w czasie wykonywania, aby upewnić się, że usługi, które wymagają określonej ilości zasobów są umieszczane w węzły, które mają te zasoby, które są dostępne w ilości wymaganych.<br>**IsPrimary** — Jeśli masz więcej niż jeden element NodeType zdefiniowane upewnij się, że tylko jedna jest ustawiona na podstawowej z wartością *true*, czyli, gdzie system usług przebiegu. Wszystkie pozostałe typy węzła powinna być równa wartości *false* |
@@ -97,20 +98,20 @@ Po konfiguracji klastra miał wszystkie ustawienia skonfigurowane w środowisku,
 Gdy administrator klastra umożliwia skonfigurowanie klastra autonomicznego usługi Service Fabric, środowisko musi można skonfigurować przy użyciu następujących kryteriów: <br>
 1. Użytkownik tworzący klaster powinien mieć uprawnienia zabezpieczeń na poziomie administratora do wszystkich maszyn, które są wymienione jako węzły w pliku konfiguracji klastra.
 2. Komputer, z którego został utworzony klaster, a także każdego komputera węzła klastra musi:
-* Odinstalowano zestaw SDK usługi Service Fabric
-* Środowiska uruchomieniowego usługi Service Fabric odinstalowane 
-* Czy włączono usługę Windows zapory (mpssvc)
-* Czy włączono usługę Rejestr zdalny (Rejestr zdalny)
-* Plik włączenia udostępniania serwera (SMB)
-* Masz wymagane porty otwarte, oparta na portach konfiguracji klastra
-* Masz wymagane porty otworzyć dla usługi Windows SMB i Rejestr zdalny: 135, 137, 138, 139 i 445
-* Mieć łączność sieciową ze sobą
+   * Odinstalowano zestaw SDK usługi Service Fabric
+   * Środowiska uruchomieniowego usługi Service Fabric odinstalowane 
+   * Czy włączono usługę Windows zapory (mpssvc)
+   * Czy włączono usługę Rejestr zdalny (Rejestr zdalny)
+   * Plik włączenia udostępniania serwera (SMB)
+   * Masz wymagane porty otwarte, oparta na portach konfiguracji klastra
+   * Masz wymagane porty otworzyć dla usługi Windows SMB i Rejestr zdalny: 135, 137, 138, 139 i 445
+   * Mieć łączność sieciową ze sobą
 3. Żadna z maszyn węzeł klastra powinien być kontrolerem domeny.
 4. Jeśli można wdrożyć klaster jest zabezpieczony klaster, sprawdź poprawność niezbędne wymagania wstępne znajdują się w miejscu i są poprawnie skonfigurowane dla konfiguracji zabezpieczeń.
 5. Jeśli na komputerach klastra nie są dostępne za pośrednictwem Internetu, należy ustawić następującą w konfiguracji klastra:
-* Wyłączanie telemetrii: w obszarze *właściwości* ustaw *"enableTelemetry": false*
-* Wyłącz automatyczne pobieranie wersja sieci szkieletowej & powiadomienia, że bieżąca wersja klastra zbliża się koniec obsługi: w obszarze *właściwości* ustaw *"fabricClusterAutoupgradeEnabled": false*
-* Alternatywnie dostęp do sieci internet jest ograniczona do biały na liście domen, domen poniżej są wymagane dla automatyczne uaktualnianie: witrynie download.microsoft.com go.microsoft.com
+   * Wyłączanie telemetrii: w obszarze *właściwości* ustaw *"enableTelemetry": false*
+   * Wyłącz automatyczne pobieranie wersja sieci szkieletowej & powiadomienia, że bieżąca wersja klastra zbliża się koniec obsługi: w obszarze *właściwości* ustaw *"fabricClusterAutoupgradeEnabled": false*
+   * Alternatywnie dostęp do sieci internet jest ograniczona do biały na liście domen, domen poniżej są wymagane dla automatyczne uaktualnianie: witrynie download.microsoft.com go.microsoft.com
 
 6. Ustaw odpowiednie wyjątki programu antywirusowego usługi Service Fabric:
 

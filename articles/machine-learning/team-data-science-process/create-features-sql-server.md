@@ -1,6 +1,6 @@
 ---
-title: Tworzenie funkcji dla danych w programie SQL Server przy użyciu języków SQL i języka Python | Dokumentacja firmy Microsoft
-description: Przetwarzanie danych z usługi SQL Azure
+title: Tworzenie funkcji w programie SQL Server przy użyciu programu SQL i Python — zespołu danych dla celów naukowych
+description: Generowanie funkcji dla danych przechowywanych na maszynę Wirtualną programu SQL Server na platformie Azure przy użyciu programu SQL i Python — część procesu do nauki o danych zespołu.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7178f368f7ede8918f316caa46234f63db6414ee
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: bf6f27b7720cf4a30aa08ca02f9150aebe564244
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445450"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135944"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Tworzenie funkcji dla danych w programie SQL Server przy użyciu języka SQL i Python
 W tym dokumencie przedstawiono sposób generowania funkcji dla danych przechowywanych w maszynę Wirtualną programu SQL Server na platformie Azure, ułatwiającą algorytmy wydajniej informacje z danych. Można użyć bazy danych SQL lub języka programowania, takich jak Python, aby wykonać to zadanie. Oba podejścia są przedstawione w tym artykule.

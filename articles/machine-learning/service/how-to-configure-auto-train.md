@@ -1,5 +1,6 @@
 ---
-title: Skonfiguruj Twoje zautomatyzowane eksperymentu uczenia maszynowego — Azure Machine Learning
+title: Konfigurowanie automatycznych eksperymentów uczenia maszynowego
+titleSuffix: Azure Machine Learning service
 description: Uczenie maszynowe automatycznych wybiera algorytm dla Ciebie i generuje gotowe do wdrożenia modelu. Dowiedz się, opcje, które umożliwiają skonfigurowanie automatycznych eksperymentów uczenia maszynowego.
 author: nacharya1
 ms.author: nilesha
@@ -9,14 +10,15 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: b2be09d69013cc8361f92cb0b6e3aa5fef3bcc02
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: e1dd0cf995d7d9c263e49735decc5573107b1add
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000292"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140170"
 ---
-# <a name="configure-your-automated-machine-learning-experiment"></a>Skonfiguruj Twoje zautomatyzowane eksperymentu uczenia maszynowego
+# <a name="configure-automated-machine-learning-experiments"></a>Konfigurowanie automatycznych eksperymentów uczenia maszynowego
 
 Uczenie maszynowe automatycznych wybiera algorytm i hiperparametrów dla Ciebie i generuje gotowe do wdrożenia modelu. Istnieje kilka opcji, które umożliwiają skonfigurowanie automatycznych eksperymentów uczenia maszynowego. W tym przewodniku Dowiedz się, jak zdefiniować różne ustawienia konfiguracji.
 
@@ -214,7 +216,7 @@ Właściwość |  Opis | Wartość domyślna
 `iterations` |Maksymalna liczba iteracji. Każda iteracja jest równy zadania szkolenia, powstałego w potoku. Potok to wstępne przetwarzanie danych i modelu. Aby uzyskać modeli wysokiej jakości, użyj 250 lub więcej    | 100
 `max_concurrent_iterations`|    Maksymalna liczba iteracji do równoległego uruchamiania. To ustawienie działa tylko w przypadku zdalnego obliczeń.|   1
 `max_cores_per_iteration`   | Wskazuje, jak wiele rdzeni na obliczeniowego elementu docelowego będzie używana do nauczenia jeden potok. Jeśli algorytm można wykorzystać wiele rdzeni, to zwiększa wydajność na maszynie wielordzeniowych. Jest on ustawiany na wartość -1 do użycia rdzeni dostępnych na komputerze.|  1
-`Iteration_timeout_minutes` |   Ogranicza czas (w minutach), jaki zajmuje konkretnej iteracji. Jeśli iteracji przekroczy określony, pobiera anulowane tej iteracji. W przeciwnym razie zestaw, a następnie iteracji będzie nadal działać, dopóki zostanie zakończone. |   Brak
+`iteration_timeout_minutes` |   Ogranicza czas (w minutach), jaki zajmuje konkretnej iteracji. Jeśli iteracji przekroczy określony, pobiera anulowane tej iteracji. W przeciwnym razie zestaw, a następnie iteracji będzie nadal działać, dopóki zostanie zakończone. |   Brak
 `n_cross_validations`   |Liczba podziałów krzyżowego sprawdzania poprawności| Brak
 `validation_size`   |Rozmiar sprawdzania poprawności, Ustaw jako wartość procentowa próbki szkolenia.|  Brak
 `preprocess` | PRAWDA/FAŁSZ <br/>Wartość true włącza eksperymentów do wykonywania przetwarzania wstępnego w danych wejściowych. Poniżej przedstawiono część przetwarzania wstępnego<li>Brak danych: Imputes, Brak danych liczbowych ze średnią, tekst z większości wystąpienia </li><li>Wartości podzielonych na kategorie: Jeśli typ danych liczbowych i liczba unikatowych wartości jest mniejsza niż 5 procent, konwertuje do hot jednego procesu kodowania </li><li>Itp. Aby uzyskać pełną listę wyboru [repozytorium GitHub](https://aka.ms/aml-notebooks)</li><br/>Uwaga: Jeśli dane są rozrzedzonej nie można użyć wstępnie Przetwórz = true |  False | 

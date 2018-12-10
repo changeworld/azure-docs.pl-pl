@@ -1,22 +1,18 @@
 ---
-title: Skalowanie usługi Azure Cosmos DB i testów wydajnościowych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wykonać skalowalności i wydajności, testowanie za pomocą usługi Azure Cosmos DB
-keywords: Testowanie wydajności
-services: cosmos-db
+title: Wydajność i skalę, testowanie za pomocą usługi Azure Cosmos DB
+description: Dowiedz się, jak skalować i wydajności, testowanie za pomocą usługi Azure Cosmos DB. Następnie będziesz w stanie ocenić funkcje usługi Azure Cosmos DB dla scenariuszy aplikacji o wysokiej wydajności.
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/29/2017
+ms.date: 12/07/2017
 ms.author: sngun
-ms.openlocfilehash: 09ed72c73acf16f944c3b1101aff5ea04acb624d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: 776956624dc1da12427d6e4f79ea5e59788f2459
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308175"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135359"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Wydajność i skalę, testowanie za pomocą usługi Azure Cosmos DB
 

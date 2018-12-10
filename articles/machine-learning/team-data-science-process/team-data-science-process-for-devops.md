@@ -1,6 +1,6 @@
 ---
-title: Zespół DevOps danych dla celów naukowych | Dokumentacja firmy Microsoft
-description: Zawiera wskazówki, aby zrozumieć obciążenie analiza przy użyciu Team danych dla celów naukowych i Azure Machine Learning.
+title: Zespół danych dla celów naukowych dla metodyki DevOps
+description: Funkcje operacji (DevOps) dla deweloperów, które są specyficzne dla implementacji rozwiązania Advanced Analytics i Cognitive Services.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: af6468e0d9deb08d0a2902de2a6b413b4b9052b8
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 3fc6f72571f110b0dbcb25ccbfadd400dfa787ef
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447082"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135852"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Zespół danych dla celów naukowych operacji dla deweloperów
 

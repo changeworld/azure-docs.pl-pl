@@ -1,5 +1,5 @@
 ---
-title: Konserwacji predykcyjnej w lotnictwie i kosmonautyce z systemem Azure — podręcznik techniczny rozwiązania Cortana Intelligence | Dokumentacja firmy Microsoft
+title: Przewodnik dotyczący Konserwacja zapobiegawcza na potrzeby lotnictwa i kosmonautyki - zespołu danych dla celów naukowych
 description: Podręcznik techniczny do szablonu rozwiązania za pomocą pakietu Microsoft Cortana Intelligence pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce, narzędzia i transportu.
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
-ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: d5f6934385d616390baf336404ddd79d4bc2a490
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
+ms.openlocfilehash: d7acb24a6fef0435d59e5a07f5312f1e6368fe52
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965440"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140187"
 ---
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Podręcznik techniczny do szablonu Cortana Intelligence rozwiązania pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce i innych firm
+# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce
 
 >[!Important]
 W tym artykule jest przestarzała. Omówienie konserwacji predykcyjnej w lotnictwie i Kosmonautyce jest nadal są prawidłowe, ale aby uzyskać aktualne informacje, zapoznaj się [— Omówienie rozwiązania dla użytkowników biznesowych](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace).
@@ -55,7 +55,7 @@ Aby uzyskać instrukcje, aby pobrać i zainstalować tę aplikację, wybierz wę
 
 Aplikacja generowanie zdarzeń wypełnia usługi Azure Event Hub tylko wtedy, gdy jest wykonywany na komputerze.  
 
-### <a name="azure-event-hub"></a>Centrum zdarzeń Azure  
+### <a name="azure-event-hub"></a>Azure Event Hub  
 [Usługi Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) service to odbiorca danych wejściowych dostarczonych przez syntetyczne źródło danych.
 
 ## <a name="data-preparation-and-analysis"></a>Przygotowywanie danych i analiza  
@@ -83,7 +83,7 @@ Jest mało prawdopodobne, że zestaw danych odpowiada zbioru danych używanego p
 
 W poniższych sekcjach omówiono te części szablonu, które wymaga modyfikacji, gdy wprowadzono nowy zestaw danych.
 
-### <a name="azure-event-hub"></a>Centrum zdarzeń Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 Usługa Azure Event Hub jest ogólny; dane mogą być przesyłane do koncentratora, w formacie CSV lub JSON. Brak specjalnego przetwarzania odbywa się w Centrum zdarzeń Azure, ale jest zrozumieć dane, które są przekazywane do jej.
 
 W tym dokumencie nie opisano sposobu pozyskiwania danych, ale można łatwo wysłać zdarzenia lub dane do Centrum zdarzeń platformy Azure przy użyciu interfejsów API Centrum zdarzeń.

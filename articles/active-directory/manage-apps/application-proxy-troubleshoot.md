@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 8be0e909ea391ed1b66fc78349cc2283d009e8cb
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2904de3243e37d7ee575a504934d5975789c00ef
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240379"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135070"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpią błędy podczas uzyskiwania dostępu do opublikowanej aplikacji lub publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji programu Microsoft Azure AD działa prawidłowo:
@@ -49,7 +49,7 @@ Po znalezieniu błąd łącznika z dziennika zdarzeń, użyj tej tabeli typowych
 
 | Błąd | Zalecane czynności |
 | ----- | ----------------- |
-| Rejestracja łącznika nie powiodła się: Upewnij się, włączony serwer Proxy aplikacji w portalu zarządzania systemu Azure i poprawnie wprowadzono nazwę użytkownika usługi Active Directory i hasło. : "Co najmniej jeden błąd." | Jeśli okno Rejestracja została zamknięta bez rejestrowania się w usłudze Azure AD, uruchom ponownie Kreatora łącznika i rejestrowanie łącznika. <br><br> Jeśli okno Rejestracja zostanie otwarty i natychmiast zamykane bez dzięki czemu możesz się zalogować, prawdopodobnie otrzymasz tego błędu. Ten błąd występuje, gdy występuje błąd sieci w Twoim systemie. Upewnij się, że jest możliwość nawiązywania połączeń z przeglądarki do publicznej witryny sieci Web i że porty są otwarte, jak to określono w [wymagania wstępne dotyczące serwera Proxy aplikacji](application-proxy-enable.md). |
+| Rejestracja łącznika nie powiodła się: Upewnij się, włączony serwer Proxy aplikacji w portalu zarządzania systemu Azure i poprawnie wprowadzono nazwę użytkownika usługi Active Directory i hasło. : "Co najmniej jeden błąd." | Jeśli okno Rejestracja została zamknięta bez rejestrowania się w usłudze Azure AD, uruchom ponownie Kreatora łącznika i rejestrowanie łącznika. <br><br> Jeśli okno Rejestracja zostanie otwarty i natychmiast zamykane bez dzięki czemu możesz się zalogować, prawdopodobnie otrzymasz tego błędu. Ten błąd występuje, gdy występuje błąd sieci w Twoim systemie. Upewnij się, że jest możliwość nawiązywania połączeń z przeglądarki do publicznej witryny sieci Web i że porty są otwarte, jak to określono w [wymagania wstępne dotyczące serwera Proxy aplikacji](application-proxy-add-on-premises-application.md). |
 | Wyczyść błędu są prezentowane w oknie rejestracji. Nie można kontynuować | Jeśli zostanie wyświetlony ten błąd, a następnie okno zostanie zamknięte, wprowadzono nieprawidłową nazwą użytkownika lub hasło. Spróbuj ponownie. |
 | Rejestracja łącznika nie powiodła się: Upewnij się, włączony serwer Proxy aplikacji w portalu zarządzania systemu Azure i poprawnie wprowadzono nazwę użytkownika usługi Active Directory i hasło. Błąd: "AADSTS50059: żadnych informacji do identyfikowania dzierżawy odnaleziony ani w żądaniu lub implikowana przez żaden podane poświadczenia i wyszukiwanie według usługi URI jednostki nie powiodła się. | Próbujesz zalogować się przy użyciu Account firmy Microsoft i nie domeny należącego do organizacji w katalogu, który próbujesz uzyskać dostęp. Upewnij się, że administrator jest częścią tej samej nazwy domeny jako domena dzierżawy, na przykład, jeśli domena usługi Azure AD to contoso.com, administratorem powinien być admin@contoso.com. |
 | Nie można pobrać bieżące zasady wykonywania w uruchomionych skryptów PowerShell. | Jeśli instalacja łącznika nie powiedzie się, sprawdź, upewnij się, że zasady wykonywania programu PowerShell nie jest wyłączone. <br><br>1. Otwórz Edytor zasad grupy.<br>2. Przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >   **Program Windows PowerShell** i kliknij dwukrotnie **Włącz wykonywanie skryptu**.<br>3. Zasady wykonywania może być ustawiony na **nieskonfigurowane** lub **włączone**. Jeśli ustawiono **włączone**, upewnij się, że w obszarze Opcje, zasady wykonywania jest ustawiony na **Zezwalaj na lokalne i zdalne podpisanych skryptów** lub **zezwolić na uruchamianie wszystkich skryptów**. |
@@ -86,8 +86,8 @@ Ta lista zawiera błędy, które użytkownicy końcowi mogą wystąpić, gdy uż
 Jeśli wystąpi błąd lub problem z aplikacji serwera Proxy Azure AD, nie ma na liście w tym przewodniku rozwiązywania problemów, prosimy o poświęcenie czekamy na jego temat. Wyślij wiadomość e-mail do naszej [zespołu opinii](mailto:aadapfeedback@microsoft.com) ze szczegółowymi informacjami o błędzie.
 
 ## <a name="see-also"></a>Zobacz także
-* [Włącz serwer Proxy aplikacji usługi Azure Active Directory](application-proxy-enable.md)
-* [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-publish-azure-portal.md)
+* [Włącz serwer Proxy aplikacji usługi Azure Active Directory](application-proxy-add-on-premises-application.md)
+* [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-add-on-premises-application.md)
 * [Włącz logowanie jednokrotne](application-proxy-configure-single-sign-on-with-kcd.md)
 * [Włączanie dostępu warunkowego](application-proxy-integrate-with-sharepoint-server.md)
 

@@ -5,18 +5,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: f4e067bc1d9a6d738a1289216acc0571661959ea
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 03a60940b4889671149c49becb0f823da89781ff
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110060"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135563"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Najlepsze rozwiązania dotyczące obciążeń wyceny i zmiany rozmiaru migracji na platformę Azure
 
-Jako plan i projektowanie pod kątem migracji skupiając się na kosztach zapewnia długoterminowym sukcesie migracji do platformy Azure. W czasie trwania projektu migracji, jest krytyczny, że wszystkie zespoły (finanse, zarządzania, aplikacji teams itp.) zrozumieć powiązanych z nimi kosztów. Przed migracją, Szacowanie migracji spędzają, przy użyciu planu bazowego co miesiąc, co kwartał, i roczne cele budżetu ma kluczowe znaczenie dla sukcesu. Po migracji należy zoptymalizować koszty, ciągłe monitorowanie obciążeń i planowanie wzorce użycia w przyszłości. Migrowanych zasobów może uruchomić jako jeden typ obciążenia, ale do innego typu z czasem ewoluować, na podstawie użycia, koszty i zmiany wymagań biznesowych.
+Jako plan i projektowanie pod kątem migracji skupiając się na kosztach zapewnia długoterminowym sukcesie migracji do platformy Azure. W czasie trwania projektu migracji, jest krytyczny, że wszystkie zespoły (finanse, zarządzania, aplikacji teams itp.) zrozumieć powiązanych z nimi kosztów.
+- Przed migracją, Szacowanie migracji spędzają, przy użyciu planu bazowego co miesiąc, co kwartał, i roczne cele budżetu ma kluczowe znaczenie dla sukcesu.
+- Po migracji należy zoptymalizować koszty, ciągłe monitorowanie obciążeń i planowanie wzorce użycia w przyszłości. Migrowanych zasobów może uruchomić jako jeden typ obciążenia, ale do innego typu z czasem ewoluować, na podstawie użycia, koszty i zmiany wymagań biznesowych.
 
 W tym artykule opisano najlepsze rozwiązania dotyczące kosztów i zmiany rozmiaru przed i po migracji.  
 

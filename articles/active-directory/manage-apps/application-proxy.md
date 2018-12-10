@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: aabbcb45edf087b4a7d6268dcca90b21afa16f7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec5c75b5de912988efeb5167107f6d0dfe07da2e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998109"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139962"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych
 
@@ -88,8 +88,8 @@ Przed skonfigurowaniem serwera Proxy aplikacji, upewnij się, że istnieje obsł
 
 Rozpoczynanie pracy z usługą serwera Proxy aplikacji w dwóch etapach:
 
-1. [Włącz serwer Proxy aplikacji i skonfigurować łącznik](application-proxy-enable.md).    
-2. [Publikowanie aplikacji](application-proxy-publish-azure-portal.md) — uruchamiaj swoje aplikacje w środowisku lokalnym opublikowane i jest dostępny zdalnie za pomocą Kreatora szybkie i łatwe.
+1. [Włącz serwer Proxy aplikacji i skonfigurować łącznik](application-proxy-add-on-premises-application.md).    
+2. [Publikowanie aplikacji](application-proxy-add-on-premises-application.md) — uruchamiaj swoje aplikacje w środowisku lokalnym opublikowane i jest dostępny zdalnie za pomocą Kreatora szybkie i łatwe.
 
 ## <a name="whats-next"></a>Co dalej?
 Gdy publikujesz swoją pierwszą aplikację, istnieje wiele innych, które można wykonać przy użyciu serwera Proxy aplikacji:

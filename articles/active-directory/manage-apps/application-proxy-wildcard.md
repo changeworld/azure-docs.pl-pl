@@ -15,12 +15,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 638ae4c779af3bebb68622ccee6932618d42e4f0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8c876f220cde99bbeb3b5d9f8f8878acb5584802
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057216"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140051"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikacje z symbolami wieloznacznymi serwera proxy aplikacji usługi Azure Active Directory 
 
@@ -49,7 +49,7 @@ Na przykład: `http(s)://*.adventure-works.com`. Gdy wewnętrzne i zewnętrzne a
 
 Jeśli masz dodatkowe aplikacje za pomocą różnych ustawień konfiguracji, należy opublikować te wyjątki, jako osobne aplikacje zastąpić wartości domyślne ustawione dla symbolu wieloznacznego. Aplikacje bez symboli wieloznacznych zawsze pierwszeństwo aplikacje z symbolami wieloznacznymi. Z perspektywy konfiguracji są "tak" zwykłych aplikacji.
 
-Tworzenie aplikacji z symbolami wieloznacznymi opiera się na tym samym [przepływ publikowania aplikacji](application-proxy-publish-azure-portal.md) dostępnej dla wszystkich innych aplikacji. Jedyna różnica polega na zawierać symbol wieloznaczny w adresy URL i potencjalnie konfiguracji logowania jednokrotnego.
+Tworzenie aplikacji z symbolami wieloznacznymi opiera się na tym samym [przepływ publikowania aplikacji](application-proxy-add-on-premises-application.md) dostępnej dla wszystkich innych aplikacji. Jedyna różnica polega na zawierać symbol wieloznaczny w adresy URL i potencjalnie konfiguracji logowania jednokrotnego.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -137,7 +137,7 @@ Wszystkie trzy aplikacje:
 - Ma te same właściwości
 
 
-Możesz opublikować aplikację symboli wieloznacznych wykonując kroki opisane w [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). W tym scenariuszu przyjmuje:
+Możesz opublikować aplikację symboli wieloznacznych wykonując kroki opisane w [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md). W tym scenariuszu przyjmuje:
 
 - Dzierżawy z następującym Identyfikatorem: `000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -145,7 +145,7 @@ Możesz opublikować aplikację symboli wieloznacznych wykonując kroki opisane 
 
 - A **CNAME** wpis, który wskazuje `*.adventure-works.com` do `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` została utworzona.
 
-Następujące [opisane kroki](application-proxy-publish-azure-portal.md), Utwórz nową aplikację serwera proxy aplikacji w dzierżawie. W tym przykładzie symbol wieloznaczny znajduje się w następujących pól:
+Następujące [opisane kroki](application-proxy-add-on-premises-application.md), Utwórz nową aplikację serwera proxy aplikacji w dzierżawie. W tym przykładzie symbol wieloznaczny znajduje się w następujących pól:
 
 - Wewnętrzny adres URL:
 
@@ -184,7 +184,7 @@ W tym scenariuszu należy ponadto trzy aplikacje ogólne innej aplikacji, `finan
 
 Należy upewnić się, że rekordy CNAME istnieje, na którą wskazuje `finance.adventure-works.com` aplikacji określonego punktu końcowego, określonej na stronie serwer Proxy aplikacji dla aplikacji. W tym scenariuszu `finance.adventure-works.com` wskazuje `https://finance-awcycles.msappproxy.net/`. 
 
-Następujące [opisane kroki](application-proxy-publish-azure-portal.md), ten scenariusz wymaga następujących ustawień:
+Następujące [opisane kroki](application-proxy-add-on-premises-application.md), ten scenariusz wymaga następujących ustawień:
 
 
 - W **wewnętrzny adres URL**, możesz ustawić **finance** zamiast symbolu wieloznacznego. 
@@ -215,6 +215,6 @@ Aby uzyskać więcej informacji na temat:
 
 - **Domeny niestandardowe**, zobacz [Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md).
 
-- **Publikowanie aplikacji**, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md)
+- **Publikowanie aplikacji**, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md)
 
 

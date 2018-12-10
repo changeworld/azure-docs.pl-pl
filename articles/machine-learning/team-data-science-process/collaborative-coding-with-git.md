@@ -1,5 +1,5 @@
 ---
-title: Wspólne kodowanie przy użyciu narzędzia Git - usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+title: Wspólne kodowanie przy użyciu narzędzia Git - zespołu danych dla celów naukowych
 description: Jak przeprowadzić tworzenie współpracy kodu dla projektów do nauki o danych przy użyciu narzędzia Git przy użyciu elastycznego planowania.
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 4ea9aa10ba40d734e064d34da2536e28a619201f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 95285bf82fbf1582abcb5d95424b472d392a7a59
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444243"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134492"
 ---
 # <a name="collaborative-coding-with-git"></a>Wspólne kodowanie przy użyciu narzędzia Git
 

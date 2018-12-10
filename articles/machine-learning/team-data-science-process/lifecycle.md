@@ -1,5 +1,5 @@
 ---
-title: Cykl życia zespołowego danych naukowych — Azure | Dokumentacja firmy Microsoft
+title: Cykl życia zespołowego danych dla celów naukowych
 description: Kroki niezbędne do wykonania swoje projekty do nauki o danych
 services: machine-learning
 author: marktab
@@ -10,19 +10,21 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 24807d00170ed46a95d2726e1172b15775e0376d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a2a4a8c895bddb03271014c50f57b666faa0c2cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443396"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135954"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Cykl życia zespołowego danych dla celów naukowych
 
 Team Data Science naukowych oferuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia zawiera opis kroków, od początku do końca, że projekty zazwyczaj należy wykonać podczas są wykonywane. Jeśli używasz innego cyklu życia do nauki o danych, takich jak między branży standardowego procesu do wyszukiwania danych [(WYSOKĄ-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), Knowledge Discovery w bazach danych [(KDD)](https://wikipedia.org/wiki/Data_mining#Process), lub proces niestandardowej w organizacji , nadal można korzystać z przetwarzania TDSP opartego na zadaniach. 
 
 Ten cykl życia jest przeznaczona dla projektów do nauki o danych, które są przeznaczone do wysłania jako część inteligentnych aplikacji. Te aplikacje wdrażania modeli uczenia i sztucznej inteligencji maszynowego do analizy predykcyjnej. Poznawcze nauki o danych i analizy ad-hoc projektów mogą również skorzystać z użycia tego procesu. Jednak w tych projektach, niektóre kroki opisane w tym miejscu może być niepotrzebne. 
+
+## <a name="five-lifecycle-stages"></a>Pięć etapów cyklu życia
 
 Cykl życia przetwarzania TDSP składa się z pięć etapów głównych, które są wykonywane wielokrotnie. Etapy te obejmują:
 

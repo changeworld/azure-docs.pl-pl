@@ -1,5 +1,6 @@
 ---
-title: Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+title: Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 — interfejs wiersza polecenia platformy Azure
+titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia przy użyciu protokołu IPv6 przy użyciu wiersza polecenia platformy Azure.
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publi
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
-ms.openlocfilehash: e3d6611c8a5c6faf3d1e070d1bafa2027adfc0cb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739842"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142023"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 przy użyciu wiersza polecenia platformy Azure
 

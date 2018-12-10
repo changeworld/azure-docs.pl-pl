@@ -1,6 +1,6 @@
 ---
-title: Skalowanie Media zastrzeżone jednostki — Azure | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono omówienie skalowanie przetwarzania multimediów za pomocą usługi Azure Media Services.
+title: Interfejs wiersza polecenia umożliwiają tworzenie filtrów za pomocą usługi Azure Media Services | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak tworzenie filtrów za pomocą usługi Media Services za pomocą interfejsu wiersza polecenia.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 9099429097efb17629e88318430f004f0f763cc5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336960"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133863"
 ---
 # <a name="creating-filters-with-cli"></a>Tworzenie filtrów za pomocą interfejsu wiersza polecenia 
 

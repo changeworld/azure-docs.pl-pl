@@ -1,6 +1,6 @@
 ---
-title: Zespół prowadzić projektu procesu do nauki o danych zadania — Azure | Dokumentacja firmy Microsoft
-description: Zarys zadania dla kierownika projektu w projekcie zespołowym do nauki o danych.
+title: Zadania w projekcie przewodzenia w procesie nauki o danych zespołu
+description: Konspekt zadań, które prowadzą projektu oczekuje się zakończyć w projekcie zespołowym do nauki o danych.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 0b5129c4642a0c4381591f751bc4d5a51990b256
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 39e8c5b8dab33ba95b34c4edb9d0a994bc8ec6dc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442901"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135168"
 ---
-# <a name="project-lead-tasks"></a>Zadania potencjalnego klienta w projekcie
+# <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Zadania w projekcie przewodzenia w procesie nauki o danych zespołu
 
 W tym samouczku wymieniono zadania, które jest kierownika projektu oczekiwano dla swojego zespołu projektu. Celem jest zapewnienie środowiska zespół współpracowników, standardowego na [zespołu danych dla celów naukowych](overview.md) (TDSP). Przetwarzania TDSP jest opracowanym przez firmę Microsoft, który zawiera structured sekwencja działań do wykonania wydajne rozwiązania oparte na chmurze analizy predykcyjnej. Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
 
@@ -27,7 +27,8 @@ A **projektu** zarządza codziennych działań poszczególnych naukowców pracuj
 
 W tym temacie omówiono obecnie zadania 1,2 i 6 tego przepływu pracy dla projektu potencjalnych klientów.
 
->[AZURE.NOTE] Firma Microsoft opisano kroki niezbędne do konfigurowania środowiska TDSP zespołu dla projektu DevOps platformy Azure w poniższych instrukcjach. Firma Microsoft umożliwia określenie sposobu wykonywania tych zadań, za pomocą DevOps platformy Azure, ponieważ jest to, jak wygląda implementacja przetwarzania TDSP w firmie Microsoft. Jeśli innej platformie hosting kodu jest używany dla tej grupy, zadania, które muszą zostać wykonane przez lider zespołu, zazwyczaj nie należy zmieniać. Ale sposobem wykonania tych zadań ma być inna.
+> [!NOTE]
+> Firma Microsoft opisano kroki niezbędne do konfigurowania środowiska TDSP zespołu dla projektu DevOps platformy Azure w poniższych instrukcjach. Firma Microsoft umożliwia określenie sposobu wykonywania tych zadań, za pomocą DevOps platformy Azure, ponieważ jest to, jak wygląda implementacja przetwarzania TDSP w firmie Microsoft. Jeśli innej platformie hosting kodu jest używany dla tej grupy, zadania, które muszą zostać wykonane przez lider zespołu, zazwyczaj nie należy zmieniać. Ale sposobem wykonania tych zadań ma być inna.
 
 
 ## <a name="repositories-and-directories"></a>Repozytoria i katalogi
@@ -195,7 +196,8 @@ Teraz należy wypychać zawartość w **_DSProject1_** do _R5_ repozytorium w pr
     
 - Zatwierdź zmianę i wypychania. 
 
->[AZURE.NOTE] Jeśli po raz pierwszy, zatwierdzenia do repozytorium Git, należy skonfigurować parametry globalne *user.name* i *user.email* przed uruchomieniem `git commit` polecenia. Uruchom dwa poniższe polecenia:
+> [!NOTE]
+> Jeśli po raz pierwszy, zatwierdzenia do repozytorium Git, należy skonfigurować parametry globalne *user.name* i *user.email* przed uruchomieniem `git commit` polecenia. Uruchom dwa poniższe polecenia:
         
     git config --global user.name <your name>
     git config --global user.email <your email address>

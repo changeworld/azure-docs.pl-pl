@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: bb04f1965764413c474c2e0d057d77d5d30edd07
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b8c69ebec2258581954e26dc6181d5f4b57f461c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623115"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137705"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Praca z aplikacji obsługujących oświadczenia na serwerze Proxy aplikacji
 [Aplikacje obsługujące oświadczenia](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) wykonania przekierowania do Usługa tokenu zabezpieczającego (STS). Usługa STS żąda poświadczeń użytkownika w zamian za token, a następnie przekierowuje użytkownika do aplikacji. Istnieje kilka sposobów, aby włączyć serwer Proxy aplikacji do pracy z tymi przekierowania. Aby skonfigurować wdrożenie aplikacji z obsługą oświadczeń, należy użyć w tym artykule. 
@@ -29,7 +29,7 @@ Upewnij się, że usługą STS, która przekierowuje obsługującej oświadczeni
 
 ## <a name="publish-your-application"></a>Publikowanie aplikacji
 
-1. Opublikowanie aplikacji zgodnie z instrukcji przedstawionych w temacie [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-publish-azure-portal.md).
+1. Opublikowanie aplikacji zgodnie z instrukcji przedstawionych w temacie [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-add-on-premises-application.md).
 2. Przejdź do strony aplikacji w portalu i wybierz **logowanie jednokrotne**.
 3. W przypadku wybrania **usługi Azure Active Directory** jako swojej **metoda uwierzytelniania wstępnego**, wybierz opcję **usługi Azure AD logowanie jednokrotne wyłączone** jako swoje **wewnętrzne Metoda uwierzytelniania**. Jeśli została wybrana opcja **przekazywanie** jako swojej **metoda uwierzytelniania wstępnego**, nie trzeba wprowadzić zmiany.
 
