@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6c8d7221e367abbbcb1a7968003c1cd25106b866
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a2a701f86b922924a7568cc1d906d7a3c6b1fdc9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871227"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096863"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 
 <table>
 
-<tr><td>**Zestaw SDK do pobrania**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
+<tr><td>**Zestaw SDK do pobrania**</td><td>[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
 
 <tr><td>**Dokumentacja interfejsu API**</td><td>[Dokumentacja interfejsu API języka Java](/java/api/com.microsoft.azure.documentdb)</td></tr>
 
