@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 50a46b37be3115b92a3f8bc7cf426c8c7df78ce9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994131"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103425"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn Understanding management raportów kosztów
 
@@ -25,7 +25,7 @@ Ten artykuł ułatwia zrozumienie struktury podstawowe raporty zarządzania kosz
 
 Poniżej przedstawiono przykładowy raport kosztu w czasie. Większość raportów Cloudyn mają podobny układ.
 
-![przykładowy raport](./media/understanding-cost-reports/sample-report.png)
+![Przykładowy raport kosztu w czasie z obszarami numerowane odpowiadający opisów](./media/understanding-cost-reports/sample-report.png)
 
 Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisane w następujących informacji:
 
@@ -47,11 +47,11 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
 
     Według tagów kategorii, należy użyć obszaru tagów do grupy. Znaczniki wyświetlane w menu są działu na platformie Azure lub tagów Centrum kosztu lub są kosztu firmy Cloudyn tagi jednostki i subskrypcji. Wybierz tagi do filtrowania wyników. Możesz również wpisać nazwę tagu (słowo kluczowe), aby filtrować wyniki.
 
-    ![Wybierz opcje](./media/understanding-cost-reports/select-options.png)
+    ![Przykład listy tagów, aby przefiltrować wyniki według](./media/understanding-cost-reports/select-options.png)
 
     Kliknij przycisk **Dodaj** można dodać nowego filtru.
 
-    ![Dodaj filtr](./media/understanding-cost-reports/add-filter.png)
+    ![Dodaj pole filtru przedstawiający opcje i warunki, aby filtrować według](./media/understanding-cost-reports/add-filter.png)
 
     Tag, grupowanie i filtrowanie nie odnosi się do zasobów platformy Azure lub tagi z grupy zasobów.
 
@@ -61,9 +61,9 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
 
     Używanie grup w analizy kosztów raporty muszą pokazywać w warstwie standardowa podzielonych na kategorie z danych w raporcie rozliczeń.  Jednak grupy alokacji kosztów raporty pokazu wyświetlić kategorie na podstawie tagów. Kategorie na podstawie tagów są zdefiniowane w model przydzielania kosztów oraz standardowe kategorie dla pozycji z danych dotyczących rozliczeń.
 
-    ![tagi grup](./media/understanding-cost-reports/groups-tags01.png)
+    ![Pierwszy przykład listę znaczników, które można pogrupować wg](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![tagi grup](./media/understanding-cost-reports/groups-tags02.png)
+    ![Drugi przykład listę znaczników, które można pogrupować wg](./media/understanding-cost-reports/groups-tags02.png)
 
     W raportach alokacji kosztów grup w kategorie na podstawie tagu grupy mogą być następujące:
       - Tagi
@@ -166,7 +166,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
 
     Użyj formatów wyświetlania, aby wybrać różne widoki wykres lub tabelę.
 
-    ![Formaty wyświetlania](./media/understanding-cost-reports/display-formats.png)
+    ![Symbole formaty wyświetlania, które można wybierać](./media/understanding-cost-reports/display-formats.png)
 
 13. **Wielu kolorów**
 

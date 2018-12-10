@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 35329468ee01d5b70d654c1eb4a908db9d3fcb5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: cfebbdb9b88a1de6a05f06e6ed72ebc9cddddcf6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184828"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074455"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą platformy .NET w usłudze Azure Stack
 
@@ -80,7 +80,7 @@ Za pomocą zestawu Azure .NET SDK usługi Azure Stack, należy podać następuj�
 
 Aby znaleźć identyfikator dzierżawy usługi Azure Stack, postępuj zgodnie z instrukcjami przedstawionymi [tutaj](../azure-stack-csp-ref-operations.md). Aby ustawić zmienne środowiskowe, wykonaj następujące czynności:
 
-### <a name="microsoft-windows"></a>Program Microsoft Windows
+### <a name="microsoft-windows"></a>Microsoft Windows
 
 Aby ustawić zmienne środowiskowe w wierszu polecenia Windows, użyj następującego formatu:
 
@@ -193,7 +193,9 @@ Można użyć poniższych przykładów, znaleziono w repozytoriach usługi GitHu
 
 1.  Sklonuj repozytorium przy użyciu następującego polecenia:
 
-    `git clone <https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject>`
+    ```shell
+    git clone https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm.git
+    ```
 
 2.  Tworzenie jednostki usługi platformy Azure i przypisywanie roli dostęp do subskrypcji. Aby uzyskać instrukcje dotyczące tworzenia jednostki usługi, zobacz [Tworzenie jednostki usługi przy użyciu certyfikatu za pomocą programu Azure PowerShell][].
 

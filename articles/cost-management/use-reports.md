@@ -1,23 +1,23 @@
 ---
 title: Użyj raportach usługi Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak używać raportów w portalu Cloudyn.
+description: W tym artykule opisano celem raporty Cloudyn, które znajdują się w portalu Cloudyn, aby pomóc Ci efektywnie używać ich.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: c3f1fec21ab2c71f75677e814a6e19e1e540dddb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: fa322a0521b3b2c408bfe6d50411c62068b77229
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994745"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075884"
 ---
-# <a name="use-cloudyn-reports"></a>Raporty platformy Cloudyn
+# <a name="reports-available-in-the-cloudyn-portal"></a>Raporty dostępne w portalu Cloudyn
 
 W tym artykule opisano celem raporty Cloudyn, które znajdują się w portalu Cloudyn. Opisano również, jak skutecznie używać raportów. Większość raportów są intuicyjne i jednolity wygląd i sposób działania. Większość działań, które można wykonać w jednym raporcie, możesz również wykonać w innych raportach. Aby uzyskać ogólne informacje o sposobie raporty usługi Cloudyn, jak zapisywać i dostosowywać lub aby zaplanować raporty, w tym temacie [omówienie raportów kosztów](understanding-cost-reports.md).
 
@@ -59,7 +59,7 @@ Pulpity nawigacyjne w Cloudy przedstawia ogólny widok raportów. Pulpity nawiga
 
 ## <a name="budget-information-in-reports"></a>Informacje dotyczące budżetu w raportach
 
-Wiele raportów Cloudyn Pokaż budżetu informacji po został ręcznie utworzony. Aby raporty nie zawierają informacje budżetu, dopóki nie zostanie utworzony budżetu. Aby uzyskać więcej informacji, zobacz [budżetu ustawienia](#budget-settings).
+Wiele raportów Cloudyn Pokaż budżetu informacji po został ręcznie utworzony. Aby raporty nie zawierają informacje budżetu, dopóki nie zostanie utworzony budżetu. Aby uzyskać więcej informacji, zobacz [ustawienia łatwość zarządzania budżetem](#budget-management-settings).
 
 ## <a name="reports-and-reporting-features"></a>Raporty i funkcji raportowania
 
