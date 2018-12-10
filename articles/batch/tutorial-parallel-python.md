@@ -2,20 +2,20 @@
 title: Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska Python
 description: Samouczek — Równoległe przetwarzanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch Python
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 11/29/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 3636faa9478555b64bb94f7dcfb1f3f587ecdca9
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 6ece4d7d0a39f5ea9dd4d9503d3bdd11a4bffd89
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814172"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678580"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API Python
 
@@ -89,7 +89,7 @@ python batch_python_tutorial_ffmpeg.py
 Po uruchomieniu aplikacji przykładowej dane wyjściowe w konsoli będą wyglądać mniej więcej następująco. W czasie wykonywania nastąpi wstrzymanie operacji w momencie wyświetlenia komunikatu `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` podczas uruchamiania węzłów obliczeniowych puli. 
    
 ```
-Sample start: 12/12/2017 3:20:21 PM
+Sample start: 11/28/2018 3:20:21 PM
 
 Container [input] created.
 Container [output] created.
@@ -105,7 +105,7 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Success! All tasks completed successfully within the specified timeout period.
 Deleting container [input]....
 
-Sample end: 12/12/2017 3:29:36 PM
+Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
@@ -166,7 +166,7 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Tworzenie puli węzłów obliczeniowych
 
-Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie usługi Batch z wywołaniem funkcji `create_pool`. Ta zdefiniowana funkcja określa liczbę węzłów, rozmiar maszyny wirtualnej i konfigurację puli za pomocą klasy [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) usługi Batch. W tym przypadku obiekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) określa parametr [ImageReference](/python/api/azure.batch.models.imagereference) z odwołaniem do obrazu systemu Ubuntu Server 16.04 LTS opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów maszyn wirtualnych z witryny Azure Marketplace oraz niestandardowe obrazy maszyn wirtualnych.
+Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie usługi Batch z wywołaniem funkcji `create_pool`. Ta zdefiniowana funkcja określa liczbę węzłów, rozmiar maszyny wirtualnej i konfigurację puli za pomocą klasy [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) usługi Batch. W tym przypadku obiekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) określa parametr [ImageReference](/python/api/azure.batch.models.imagereference) z odwołaniem do obrazu systemu Ubuntu Server 18.04 LTS opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów maszyn wirtualnych z witryny Azure Marketplace oraz niestandardowe obrazy maszyn wirtualnych.
 
 Liczba węzłów i rozmiar maszyny wirtualnej są ustawiane przy użyciu zdefiniowanych stałych. Usługa Batch obsługuje węzły dedykowane oraz [węzły o niskim priorytecie](batch-low-pri-vms.md). W puli możesz użyć dowolnego z tych typów węzłów lub obu. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. Domyślnie przykładowa aplikacja tworzy pulę zawierającą tylko 5 węzłów o niskim priorytecie i rozmiarze *Standardowa_A1_v2*. 
 
@@ -181,10 +181,10 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04-LTS",
+            sku="18.04-LTS",
             version="latest"
             ),
-        node_agent_sku_id="batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_DEDICATED_POOL_NODE_COUNT,
     target_low_priority_nodes=_LOW_PRIORITY_POOL_NODE_COUNT,
