@@ -1,5 +1,6 @@
 ---
-title: Jak działa usługa Azure Machine Learning?
+title: Jak to działa?
+titleSuffix: Azure Machine Learning service
 description: Więcej informacji na temat architektury, terminologii i pojęcia związane z usługi Azure Machine Learning. Poznasz również ogólny przepływ pracy zalety korzystania z usługi i usług platformy Azure, które są używane przez usługę Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -8,13 +9,14 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 10/24/2018
-ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: MT
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 4e006c3ac9684cc9e51e8b3505659864123758d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706810"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098002"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: pojęcia i architektura
 
@@ -33,8 +35,6 @@ Przepływ pracy jest zwykle obejmuje następujące kroki:
 1. __Tworzenie obrazu__ i zarejestrować ją w __rejestru obrazów__. 
 1. __Wdrażanie obrazu__ jako __usługi sieci web__ na platformie Azure.
 
-
-[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 > [!NOTE]
 > Chociaż w tym dokumencie definiuje terminy i pojęcia używane przez usługi Azure Machine Learning, nie definiuje terminy i pojęcia związane z platformą Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
@@ -65,7 +65,7 @@ Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy 
 
 Poniższy diagram jest taksonomii obszaru roboczego:
 
-[![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/taxonomy.png)](./media/concept-azure-machine-learning-architecture/taxonomy.png#lightbox)
+[![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="model"></a>Modelowanie
 
@@ -169,19 +169,23 @@ Cel obliczenia jest zasobu obliczeniowego, używane do uruchamiania skryptu szko
 | Obliczeniowego elementu docelowego | Szkolenia | Wdrożenie |
 | ---- |:----:|:----:|
 | Komputer lokalny | ✓ | &nbsp; |
+| Usługi Azure Machine Learning obliczeń | ✓ | &nbsp; |
 | Maszyny Wirtualnej z systemem Linux na platformie Azure</br>(na przykład maszyna wirtualna do nauki o danych) | ✓ | &nbsp; |
-| Usługa Azure Batch AI klastra | ✓ | &nbsp; |
 | Azure Databricks | ✓ | &nbsp; | &nbsp; |
 | Azure Data Lake Analytics | ✓ | &nbsp; |
 | Platforma Apache Spark dla HDInsight | ✓ | &nbsp; |
-| Wystąpienie kontenera platformy Azure | ✓ | ✓ |
+| Wystąpienie kontenera platformy Azure | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
 | Project Brainwave</br>(Programowalny bramy array) | &nbsp; | ✓ |
 
 Obliczeniowych elementów docelowych są dołączone do obszaru roboczego. Obliczeniowe elementy docelowe, innym niż komputer lokalny są udostępniane przez użytkowników obszaru roboczego.
 
-Większość obliczeń obiekty docelowe mogą być tworzone za pomocą witryny Azure portal, zestawu SDK usługi Azure Machine Learning lub wiersza polecenia platformy Azure bezpośrednio za pomocą obszaru roboczego. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone przez inny proces (na przykład, witryny Azure portal lub interfejsu wiersza polecenia platformy Azure), możesz dodać (dołączanie) je do swojego obszaru roboczego. Niektóre obliczeniowych elementów docelowych muszą być tworzone spoza obszaru roboczego i następnie dołączyć.
+### <a name="managed-and-unmanaged-compute-targets"></a>Zarządzane i niezarządzane obliczeniowych elementów docelowych
+
+**Zarządzane** obliczeniowych elementów docelowych są tworzone i zarządzane przez usługę Azure Machine Learning. Te obliczenia obiekty docelowe są zoptymalizowane na potrzeby obciążeń uczenia Maszynowego. __Usługa Azure obliczeniowego usługi Machine Learning__ jest jedyną zarządzanych obliczeniowych elementów docelowych w tej chwili (4 grudnia 2018 r.). Dodatkowe zasoby obliczeniowe zarządzane obiekty docelowe mogą być dodawane w przyszłości. Za pomocą witryny Azure portal, zestawu SDK usługi Azure Machine Learning lub wiersza polecenia platformy Azure bezpośrednio za pomocą obszaru roboczego można tworzyć wystąpień środowiska obliczeniowego usługi ML. Wszystkie inne obliczeniowych elementów docelowych muszą być tworzone spoza obszaru roboczego i następnie jest podłączone do niego.
+
+**Niezarządzane** obliczeniowych elementów docelowych nie są zarządzane usługi Azure Machine Learning. Może być konieczne, utwórz je poza usługi Azure Machine Learning, a następnie dołącz je do swojego obszaru roboczego przed użyciem. Te obliczeniowych elementów docelowych wymagają wykonania dodatkowych czynności w celu zachowania, lub zwiększenia wydajności dla obciążeń uczenia Maszynowego.
 
 Więcej informacji o dobieraniu obliczeniowego elementu docelowego dla szkolenia, zobacz [wybierz, a następnie użyć obliczeniowego elementu docelowego na podstawie uczyć modele](how-to-set-up-training-targets.md) dokumentu.
 

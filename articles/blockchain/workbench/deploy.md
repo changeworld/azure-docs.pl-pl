@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 12/4/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 33fce88e7108ee45236e20b1f20dde56bb7446b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5f2f262d5ec4b9e8884e47c6c064927da2af4790
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616388"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876153"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie aplikacji Azure Blockchain Workbench
 
@@ -44,6 +44,9 @@ Poniżej przedstawiono przykład wdrożenia utworzone w **myblockchain** grupy z
 
 Koszt Blockchain Workbench jest agregacją koszt podstawowych usług platformy Azure. Informacje o cenach dla usług platformy Azure mogą być obliczane przy użyciu [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/).
 
+> [!IMPORTANT]
+> Jeśli używasz subskrypcji za pomocą niski limity, takie jak subskrypcję platformy Azure w warstwie bezpłatna, wdrożenie może zakończyć się niepowodzeniem z powodu za mały limit przydziału rdzeni maszyn wirtualnych. Przed wdrożeniem Sprawdź przy użyciu wskazówek z limitu przydziału [limity przydziału procesorów wirtualnych maszyny wirtualnej](../../virtual-machines/windows/quotas.md) artykułu. Domyślny wybór maszyny Wirtualnej wymaga 6 rdzeni maszyn wirtualnych. Zmiana do mniejszego rozmiaru maszyny Wirtualnej, takie jak *standardowa DS1 wersja 2* zmniejsza liczbę rdzeni do 4.
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Azure Blockchain Workbench wymaga rejestracji konfiguracji i aplikacji usługi Azure AD. Użytkownik może zrobić w usłudze Azure AD [konfiguracje ręcznie](#azure-ad-configuration) przed przystąpieniem do wdrożenia lub uruchom skrypt po wdrożeniu. W przypadku ponownego wdrażania aplikacji Blockchain Workbench, zobacz [konfiguracji usługi Azure AD](#azure-ad-configuration) Aby sprawdzić konfigurację usługi Azure AD.
@@ -59,7 +62,7 @@ Po ukończeniu kroków wymagań wstępnych można przystąpić do wdrażania apl
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz swoje konto w prawym górnym prawym rogu i przejdź do żądanej usługi Azure AD dzierżawy, którym chcesz wdrożyć aplikacji Azure Blockchain Workbench.
-3. W okienku po lewej stronie wybierz **Utwórz zasób**. Wyszukaj `Azure Blockchain Workbench` w **Przeszukaj witrynę Marketplace** pasku wyszukiwania. 
+3. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**. Wyszukaj `Azure Blockchain Workbench` w **Przeszukaj witrynę Marketplace** pasku wyszukiwania. 
 
     ![Pasek wyszukiwania w witrynie Marketplace](media/deploy/marketplace-search-bar.png)
 
@@ -99,7 +102,7 @@ Po ukończeniu kroków wymagań wstępnych można przystąpić do wdrażania apl
     |---------|--------------|
     | Monitorowanie | Wybierz, czy chcesz włączyć usługi Azure Monitor do monitorowania sieci łańcucha bloków |
     | Ustawienia usługi Azure Active Directory | Wybierz **później dodać**.</br>Uwaga: Jeśli została wybrana opcja [wstępne skonfigurowanie usługi Azure AD](#azure-ad-configuration) lub ponownego wdrażania, możliwość *Dodaj teraz*. |
-    | Wybór maszyny Wirtualnej | Wybierz preferowany rozmiar maszyny Wirtualnej dla sieci łańcucha bloków. |
+    | Wybór maszyny Wirtualnej | Wybierz preferowany rozmiar maszyny Wirtualnej dla sieci łańcucha bloków. Wybierz mniejszego rozmiaru maszyny Wirtualnej, takie jak *standardowa DS1 wersja 2* jeśli znajdują się w subskrypcji przy użyciu limity niski usług, takich jak bezpłatną warstwę platformy Azure. |
 
     Aby uzyskać **Użyj istniejącej**:
 
