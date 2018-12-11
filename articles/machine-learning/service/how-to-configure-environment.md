@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+title: Konfigurowanie środowiska deweloperskiego
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak skonfigurować środowisko programowania, podczas pracy z usługą Azure Machine Learning. W tym dokumencie Dowiedz się, jak używać środowisk Conda, Utwórz pliki konfiguracyjne i skonfiguruj notesów programu Jupyter, notesy platformy Azure, środowiska IDE, edytory kodu i maszyna wirtualna do nauki o danych.
 services: machine-learning
 author: rastala
@@ -9,13 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 11/6/2018
-ms.openlocfilehash: fa70e0dfa1f131e38e43faa3d80497d50a52e135
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: MT
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6e2222d56ea37983b1efafedaac8e01058cb44fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275218"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098053"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -24,9 +26,10 @@ W tym dokumencie opisano konfigurowanie środowiska deweloperskiego do pracy z u
 Ten dokument koncentruje się na następujących konkretnych środowisk i narzędzia:
 
 * [Notesy platformy Azure](#aznotebooks): notesów programu Jupyter usługi hostowanej w chmurze platformy Azure. Jest __najprostsza__ sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
-* [Maszyna wirtualna do nauki o danych](#dsvm): maszynę wirtualną w chmurze platformy Azure, która jest __przeznaczony do pracy nauki o danych__. Python 3, Conda, notesy Jupyter i zestawu SDK usługi Azure Machine Learning są już zainstalowane. Maszyna wirtualna jest dostarczany z popularnych struktur, narzędzi i edytory do opracowywania rozwiązań uczenia Maszynowego uczenia Maszynowego. Jest to prawdopodobnie __najbardziej kompletne__ środowisko programistyczne przeznaczone do uczenia Maszynowego na platformie Azure.
+* [Maszyna wirtualna do nauki o danych](#dsvm): A __środowiska wstępnie skonfigurowane programowanie/eksperymentowania__ na platformie Azure w chmurze oznacza to __przeznaczony do pracy nauki o danych__ i którą można wdrożyć do jednej Tylko wystąpienia maszyn wirtualnych procesora CPU lub GPU wystąpienia w pamięci masowej. Python 3, Conda, notesy Jupyter i zestawu SDK usługi Azure Machine Learning są już zainstalowane. Maszyna wirtualna jest dostarczany z popularnych ML / głębokiego uczenia struktur, narzędzi i edytory związane z opracowywaniem rozwiązań uczenia Maszynowego. Jest to prawdopodobnie __najbardziej kompletne__ środowisko programistyczne przeznaczone do uczenia Maszynowego na platformie Azure.
 * [Program Jupyter Notebooks](#jupyter): Jeśli już używasz notesów programu Jupyter, zestaw SDK zawiera niektóre dodatki, które należy zainstalować.
 * [Visual Studio Code](#vscode): Jeśli używasz programu Visual Studio Code, istnieją pewne przydatne rozszerzenia, które można zainstalować.
+* [Usługa Azure Databricks](#aml-databricks): platformy do analizy danych popularnych oparte na platformie Apache Spark. Dowiedz się, jak uzyskać Machine Learning zestawu SDK usługi Azure do klastra, dzięki czemu można wdrażać modele.
 
 Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczące instalowania zestawu SDK, zobacz [komputera lokalnego](#local) sekcji.
 
@@ -57,20 +60,49 @@ Aby rozpocząć tworzenie aplikacji za pomocą notesów usługi Azure, postępuj
 
 ## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
 
-Maszyna wirtualna do nauki o danych (DSVM) jest dostosowany obraz maszyny wirtualnej (VM) **przeznaczony do pracy nauki o danych**. Zawiera ona:
+Maszyna wirtualna do nauki o danych (DSVM) jest dostosowany obraz maszyny wirtualnej (VM) **przeznaczony do pracy nauki o danych** to wstępnie skonfigurowane przy użyciu:
 
-  - Narzędzia do analizy danych popularnych
-  - Zintegrowanych środowisk projektowych (IDE), takich jak platformy PyCharm i programu RStudio
-  - Pakietów, takich jak notesów Jupyter i Tensorflow
+  - Pakietów, takich jak Tensorflow, Pytorch, scikit-dowiedzieć się, Xgboost i zestawu SDK usługi Azure ML
+  - Narzędzi nauki o danych popularne, takich jak Spark autonomicznej testowania odzyskiwania po awarii
+  - Narzędzia platformy Azure, takich jak Eksplorator interfejsu wiersza polecenia narzędzia Azcopy i magazynu
+  - Zintegrowanych środowisk projektowych (IDE) takich jak Visual Studio Code, platformy PyCharm i programu RStudio
+  - Serwer notesu programu Jupyter 
 
-Zestaw SDK usługi Azure Machine Learning działa w wersji Ubuntu albo Windows DSVM. Aby użyć maszyny wirtualnej DSVM jako środowiska deweloperskiego, wykonaj następujące kroki:
+Zestaw SDK usługi Azure Machine Learning działa w wersji Ubuntu albo Windows DSVM. Aby używać maszyna wirtualna do nauki o danych jako środowisko projektowe, użyj następujące czynności:
 
-1. Aby utworzyć maszynę wirtualną do nauki o danych, wykonaj czynności opisane w jednej z następujących dokumentów:
+1. Aby utworzyć maszynę wirtualną do nauki o danych, użyj jednej z następujących metod:
 
-    * [Tworzenie maszyny wirtualnej do nauki o danych Ubuntu](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
-    * [Utwórz maszynę wirtualną do nauki o danych Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
+    * W witrynie Azure Portal:
 
-1. Zestaw SDK usługi Azure Machine Learning jest **zainstalowane** na maszyny DSVM. Aby użyć środowiska Conda, który zawiera zestaw SDK, użyj jednej z następujących poleceń:
+        * [Tworzenie __Ubuntu__ maszyny wirtualnej do nauki o danych](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+
+        * [Tworzenie __Windows__ maszyny wirtualnej do nauki o danych](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
+
+    * Przy użyciu wiersza polecenia platformy Azure:
+
+        > [!IMPORTANT]
+        > Korzystając z wiersza polecenia platformy Azure, należy najpierw zalogować do subskrypcji platformy Azure przy użyciu `az login` polecenia.
+        >
+        > Korzystając z polecenia w tym kroku, należy podać nazwę grupy zasobów, nazwę maszyny Wirtualnej, nazwę użytkownika i hasła.
+
+        * Aby utworzyć __Ubuntu__ maszyny wirtualnej do nauki o danych, użyj następującego polecenia:
+
+            ```azurecli
+            # create a Ubuntu DSVM in your resource group
+            # note you need to be at least a contributor to the resource group in order to execute this command successfully
+            # If you need to create a new resource group use: "az group create --name YOUR-RESOURCE-GROUP-NAME --location YOUR-REGION (For example: westus2)"
+            az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:linux-data-science-vm-ubuntu:linuxdsvmubuntu:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --generate-ssh-keys --authentication-type password
+            ```
+
+        * Aby utworzyć __Windows__ maszyny wirtualnej do nauki o danych, użyj następującego polecenia:
+
+            ```azurecli
+            # create a Windows Server 2016 DSVM in your resource group
+            # note you need to be at least a contributor to the resource group in order to execute this command successfully
+            az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
+            ```    
+
+2. Zestaw SDK usługi Azure Machine Learning jest **zainstalowane** na maszyny DSVM. Aby użyć środowiska Conda, który zawiera zestaw SDK, użyj jednej z następujących poleceń:
 
     * Na __Ubuntu__ nauki, użyj tego polecenia:
 
@@ -150,17 +182,11 @@ Kroki opisane w [komputera lokalnego](#local) sekcji zainstalować składniki op
 
 1. Otwórz wiersz polecenia lub powłokę.
 
-1. Aby zainstalować serwer notesu programu Jupyter obsługujących conda i włączyć widżetów eksperymentu, użyj następujących poleceń:
+1. Aby zainstalować serwer notesu programu Jupyter obsługujących conda przy użyciu następującego polecenia:
 
     ```shell
     # install Jupyter
     conda install nb_conda
-
-    # install experiment widget
-    jupyter nbextension install --py --user azureml.widgets
-
-    # enable experiment widget
-    jupyter nbextension enable --py --user azureml.widgets
     ```
 
 1. Otwieranie notesu Jupyter, za pomocą następującego polecenia:
@@ -195,9 +221,35 @@ Aby użyć programu Visual Studio Code do tworzenia aplikacji, użyj następują
     azureml.core.VERSION
     ```
 
-1. Aby zainstalować narzędzia Visual Studio code dla sztucznej Inteligencji rozszerzenia, zobacz [Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) strony.
+1. Aby zainstalować rozszerzenia usługi Azure Machine Learning dla programu Visual Studio Code, zobacz [Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) strony.
 
-    Aby uzyskać więcej informacji, zobacz [Użyj programu VS Code Tools dla sztucznej Inteligencji za pomocą usługi Azure Machine Learning](how-to-vscode-tools.md) dokumentu.
+    Aby uzyskać więcej informacji, zobacz [przy użyciu usługi Azure Machine Learning dla programu Visual Studio Code](how-to-vscode-tools.md).
+
+<a name="aml-databricks"></a>
+
+## <a name="azure-databricks"></a>Azure Databricks
+
+Niestandardową wersję Machine Learning zestawu SDK usługi Azure dla usługi Azure Databricks służy do end-to-end niestandardowego uczenia maszynowego. Lub uczenie modelu w usłudze Databricks i użyj [programu Visual Studio Code](how-to-vscode-train-deploy.md#deploy-your-service-from-vs-code) wdrażanie modelu
+
+Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
+
+1. Tworzenie [klastra usługi Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) z wersją środowiska uruchomieniowego usługi Databricks 4.x (wysoka współbieżność preferowana) za pomocą **Python 3**. 
+
+1. Utworzyć bibliotekę do [zainstalować i dołączyć](https://docs.databricks.com/user-guide/libraries.html#create-a-library) Azure Machine Learning zestaw SDK for Python `azureml-sdk[databricks]` PyPi pakietu do klastra. Gdy wszystko będzie gotowe, zobaczysz biblioteki dołączona, jak pokazano na tej ilustracji. Należy pamiętać o tych [typowych problemów w usłudze Databricks](resource-known-issues.md#databricks).
+
+   ![Zestaw SDK w usłudze Databricks ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
+
+   Jeśli ten krok nie powiedzie się, uruchom ponownie klaster:
+   1. Wybierz `Clusters`w okienku po lewej stronie. Wybierz nazwę klastra w tabeli. 
+   1. Na `Libraries` zaznacz `Restart`.
+
+1. Pobierz [usługi Azure Databricks / Notes zestawu SDK usługi Azure Machine Learning archiwum pliku](https://github.com/Azure/MachineLearningNotebooks/blob/master/databricks/Databricks_AMLSDK_github.dbc).
+
+   >[!Warning]
+   > Wiele notesów próbki są dostępne do użycia z usługą Azure Machine Learning. Te przykładowe notesy pracy z usługą Azure Databricks: https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks
+
+1.  [Zaimportować ten plik archiwum](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do Twojej usługi Databricks klastra i zacznij przeglądać jako [opisane w tym miejscu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks).
+
 
 ## <a id="workspace"></a>Utwórz plik konfiguracji obszaru roboczego
 

@@ -1,5 +1,6 @@
 ---
-title: ONNX i usługi Azure Machine Learning | Tworzenie i wdrażanie modeli
+title: Tworzenie i wdrażanie modelami ONNX międzyoperacyjnych
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się więcej o ONNX i jak tworzyć i wdrażać modele ONNX za pomocą usługi Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e5c0e479d5564a48048b9fa9c67ad8870122601
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 5fc0e00d9c4404a1c6a757c354a9c7116dfeffa7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706062"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094019"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX i Azure Machine Learning: tworzenie i wdrażanie interoperacyjne modeli sztucznej Inteligencji
 
@@ -32,7 +34,7 @@ Możesz tworzyć modele ONNX z wielu platform, w tym PyTorch, Chainer, Microsoft
 
 Istnieje również ekosystemu narzędzi do wizualizacji i skróceniu modelami ONNX. Liczbę wstępnie szkolone modele ONNX są również dostępne dla typowych scenariuszy.
 
-[Można wdrażać modele ONNX](#deploy) w chmurze za pomocą usługi Azure Machine Learning i środowiska uruchomieniowego ONNX. Można je również wdrożyć na urządzeniach z systemem Windows 10 przy użyciu [Windows ML](https://docs.microsoft.com/windows/ai/). Nawet wdrażania ich na innych platformach przy użyciu konwertery są dostępne przez społeczność ONNX. 
+[Można wdrażać modele ONNX](#deploy) w chmurze za pomocą usługi Azure Machine Learning i środowisko uruchomieniowe ONNX. Można je również wdrożyć na urządzeniach z systemem Windows 10 przy użyciu [Windows ML](https://docs.microsoft.com/windows/ai/). Nawet wdrażania ich na innych platformach przy użyciu konwertery są dostępne przez społeczność ONNX. 
 
 [ ![Diagram przepływu ONNX pokazujący, szkolenia, konwerterów i wdrażania](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
 
@@ -63,18 +65,18 @@ Można znaleźć najnowszą listę obsługiwanych platform i konwertery na [loka
 
 ## <a name="deploy-onnx-models-in-azure"></a>Wdrażaj modele ONNX na platformie Azure
 
-Za pomocą usługi Azure Machine Learning można wdrażać, zarządzanie i monitorowanie swoimi modelami ONNX. Przy użyciu standardu [przepływ pracy wdrażania](concept-model-management-and-deployment.md) i środowisko uruchomieniowe ONNX, można utworzyć punktu końcowego REST, hostowane w chmurze. Zobacz pełny przykład notesu Jupyter na końcu tego artykułu, aby wypróbować to samodzielnie. 
+Za pomocą usługi Azure Machine Learning można wdrażać, zarządzanie i monitorowanie swoimi modelami ONNX. Przy użyciu standardu [przepływ pracy wdrażania](concept-model-management-and-deployment.md) i ONNX środowiska uruchomieniowego, można utworzyć punktu końcowego REST, hostowane w chmurze. Zobacz pełny przykład notesu Jupyter na końcu tego artykułu, aby wypróbować to samodzielnie. 
 
-### <a name="install-and-configure-the-onnx-runtime"></a>Instalowanie i konfigurowanie środowiska uruchomieniowego ONNX
+### <a name="install-and-configure-onnx-runtime"></a>Instalowanie i konfigurowanie środowiska uruchomieniowego ONNX
 
-Środowisko uruchomieniowe ONNX jest aparatem wnioskowania o wysokiej wydajności modelami ONNX. Go dołączono interfejs API języka Python i zapewnia przyspieszanie sprzętowe na GPU i CPU. Obecnie obsługuje modele ONNX 1.2 i działa w systemie Ubuntu 16.04 Linux. Zarówno [Procesora](https://pypi.org/project/onnxruntime) i [procesora GPU](https://pypi.org/project/onnxruntime-gpu) pakiety są dostępne na [PyPi.org](https://pypi.org).
+Środowisko uruchomieniowe ONNX jest aparat typu open source wnioskowania o wysokiej wydajności dla modelami ONNX. Zapewnia przyspieszanie sprzętowe na procesor CPU i procesora GPU z interfejsami API dostępnymi dla języka Python, C#, i środowiska uruchomieniowego ONNX C. obsługuje ONNX 1.2 + modeli i działa w systemie Linux, Windows i Mac. Pakiety języka Python są dostępne na [PyPi.org](https://pypi.org) ([procesora CPU](https://pypi.org/project/onnxruntime), [procesora GPU](https://pypi.org/project/onnxruntime-gpu)), a [ C# pakietu](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) znajduje się na [Nuget.org](https://www.nuget.org). Zobacz więcej informacji o projekcie w [Github](https://github.com/Microsoft/onnxruntime). 
 
-Aby zainstalować środowisko uruchomieniowe ONNX, należy użyć:
+Aby zainstalować środowisko uruchomieniowe ONNX dla języka Python, należy użyć:
 ```python
 pip install onnxruntime
 ```
 
-Aby wywołać ONNX środowiska uruchomieniowego w skrypcie języka Python, należy użyć:
+Aby wywołać ONNX w czasie wykonywania w skrypcie języka Python, należy użyć:
 ```python
 import onnxruntime
 
@@ -94,7 +96,7 @@ results = session.run(["output1", "output2"], {"input1": indata1, "input2": inda
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-Aby uzyskać pełną dokumentację interfejsu API, zobacz [dokumentacja środowiska uruchomieniowego ONNX](https://aka.ms/onnxruntime-python).
+Aby uzyskać pełną dokumentację interfejsu API języka Python, zobacz [dokumentacja środowiska uruchomieniowego ONNX](https://aka.ms/onnxruntime-python).
 
 ### <a name="example-deployment-steps"></a>Przykład kroki związane z wdrażaniem
 
@@ -183,24 +185,12 @@ Oto przykład wdrażania modelu ONNX:
     f.write(myenv.serialize_to_string())
    ```
 
-4. Wdrażanie modelu ONNX za pomocą usługi Azure Machine Learning, aby:
-   + Azure Container Instances (ACI): [Dowiedz się, jak...](how-to-deploy-to-aci.md)
-
-   + Usługa Azure Kubernetes Service (AKS): [Dowiedz się, jak...](how-to-deploy-to-aks.md)
+4. Aby wdrożyć modelu, zobacz [sposób wdrażania i gdzie](how-to-deploy-and-where.md) dokumentu.
 
 
 ## <a name="examples"></a>Przykłady
  
-Następujące notesów pokazują, jak tworzyć modele ONNX i wdrażać je za pomocą usługi Azure Machine Learning: 
-+ [onnx/onnx-modelzoo-aml wdrażanie resnet50.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb)
-+ [onnx/onnx-convert-aml wdrażanie tinyyolo.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb)
-+ [onnx/onnx-Train-pytorch-AML-Deploy-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb)
-
-Następujące notesów pokazują, jak wdrażać istniejące modele ONNX za pomocą usługi Azure Machine Learning: 
-+ [onnx/onnx wnioskowania-mnist ręcznie zapisanych deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist-deploy.ipynb) 
-+ [onnx/onnx-inference-facial-Expression-Recognition-Deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-facial-expression-recognition-deploy.ipynb)
- 
-Pobierz te notesy:
+Zobacz [jak-to-użyj-usługi Azure ml/wdrażanie/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) na przykład notesów, które umożliwiają tworzenie i wdrażanie modelami ONNX.
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
@@ -210,3 +200,8 @@ Dowiedz się więcej o ONNX lub współtworzenia projektu:
 + [ONNX projektu witryny sieci Web](https://onnx.ai)
 
 + [Kod ONNX w serwisie GitHub](https://github.com/onnx/onnx)
+
+Dowiedz się więcej na temat środowiska uruchomieniowego ONNX lub współtworzenia projektu:
++ [Repozytorium Github, aby ONNX środowiska uruchomieniowego](https://github.com/Microsoft/onnxruntime)
+
+
