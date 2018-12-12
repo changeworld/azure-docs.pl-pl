@@ -49,7 +49,7 @@ Dane znajdują się w Europie w następujących krajach/regionach:
 
 Pozostałe kraje/regiony są właśnie dodawane do listy.  Teraz można nadal używać usługi Azure AD B2C, wybierając jedną z krajów/regionów powyżej.
 
-> Afganistan, Argentyny, Australii, Brazylia, Chile, Kolumbia, Ekwador, SRA Hongkong SAR, Indie, Indonezja, Irak, Japonia, Korea, Malezja, Nowej Zelandii, Paragwaj, Peru, Filipiny, Singapur, Sri Lanka, Tajwan, Tajlandia, Urugwaj i Wenezuela.
+> Afganistan, Argentyny, Australii, Brazylia, Chile, Kolumbia, Ekwador, SRA Hongkong, Indie, Indonezja, Irak, Japonia, Korea, Malezja, Nowej Zelandii, Paragwaj, Peru, Filipiny, Singapur, Sri Lanka, Tajwan, Tajlandia, Urugwaj i Wenezuela.
 
 ## <a name="preview-tenant"></a>Podgląd dzierżawy
 Jeśli dzierżawa B2C została utworzona w okresie zapoznawczym usługa Azure AD B2C, istnieje duże prawdopodobieństwo, Twoje **dzierżawy typu** mówi **Podgląd dzierżawy**. Jeśli jest to możliwe, należy użyć swojej dzierżawy, tylko w przypadku tworzenia i testowania, a nie dla aplikacji produkcyjnych.

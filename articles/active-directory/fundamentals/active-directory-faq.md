@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Active Directory — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Dowiedz się, typowych pytań i odpowiedzi na pytania dotyczące platformy Azure i usługi Azure Active Directory, zarządzanie hasłami i uzyskiwaniem dostępu do aplikacji.
+title: Często zadawane pytania (FAQ) — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Typowe pytania i odpowiedzi na pytania dotyczące platformy Azure i usługi Azure Active Directory, zarządzanie hasłami i uzyskiwaniem dostępu do aplikacji.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: lizross
-ms.openlocfilehash: b004968fc53e368497632cb18d6bb7a254d347e6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: a3571ff24c36b7f2129f60348414d4d178ef30d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621755"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084098"
 ---
-# <a name="azure-active-directory-faq"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
+# <a name="frequently-asked-questions-about-azure-active-directory"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
 
 Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directory?](active-directory-whatis.md).

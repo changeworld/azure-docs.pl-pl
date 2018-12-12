@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: bcda662790c1af72e28b8968142bab15f62e83bf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c58b956a0fc1899b12050daf0fbf61514ca24407
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127182"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095141"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopiowanie danych z usługa internetowa witryny Amazon Marketplace przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -85,7 +85,12 @@ Usługa internetowa witryny Amazon Marketplace połączone usługi są obsługiw
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługa internetowa witryny Amazon Marketplace.
 
-Aby skopiować dane z usługa internetowa witryny Amazon Marketplace, należy ustawić właściwość typu zestawu danych na **AmazonMWSObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z usługa internetowa witryny Amazon Marketplace, należy ustawić właściwość typu zestawu danych na **AmazonMWSObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **AmazonMWSObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -97,7 +102,8 @@ Aby skopiować dane z usługa internetowa witryny Amazon Marketplace, należy us
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -107,14 +113,14 @@ Aby skopiować dane z usługa internetowa witryny Amazon Marketplace, należy us
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło usługa internetowa witryny Amazon Marketplace.
 
-### <a name="amazonmwssource-as-source"></a>AmazonMWSSource jako źródło
+### <a name="amazon-mws-as-source"></a>Amazon MWS jako źródło
 
 Aby skopiować dane z usługa internetowa witryny Amazon Marketplace, należy ustawić typ źródła w działaniu kopiowania, aby **AmazonMWSSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **AmazonMWSSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

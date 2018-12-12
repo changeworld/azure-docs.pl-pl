@@ -1,21 +1,22 @@
 ---
-title: Planowanie aplikacji usługi Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
+title: Planowanie aplikacji
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Konspekt odpowiednią aplikację intencje i podmioty, a następnie utwórz swoje plany aplikacji w Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: diberry
-ms.openlocfilehash: e8e6c32eca932803acfe0e7854de885e7ab129fc
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: e14b9f2930ed9c170f31bd654829efe3b5a99446
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267668"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091310"
 ---
 # <a name="plan-your-luis-app"></a>Planowanie aplikacji usługi LUIS
 
@@ -77,10 +78,10 @@ Jednostki listy to lista wyraźnie określonych wartości. Każda wartość skł
 
 Zobacz [wyodrębnianie danych](luis-concept-data-extraction.md#list-entity-data) dowiedzieć się więcej o wyodrębniania listy jednostek z punktu końcowego odpowiedź JSON na zapytanie. Skorzystaj z tej [Szybki Start](luis-quickstart-intent-and-list-entity.md) Aby dowiedzieć się więcej o sposobie używania obiektami listy.
 
-### <a name="regular-expression-entity"></a>Wyrażenie regularne jednostki
+### <a name="regular-expression-entity"></a>Jednostka wyrażenia regularnego
 Jednostka wyrażenia regularnego umożliwia LUIS można wyodrębnić dobrze sformatowane dane z wypowiedź oparte na wyrażeniu regularnym.
 
-![Wyrażenie regularne jednostki](./media/luis-plan-your-app/regex-entity.png)
+![Jednostka wyrażenia regularnego](./media/luis-plan-your-app/regex-entity.png)
 
 Zobacz [wyodrębnianie danych](luis-concept-data-extraction.md#regular-expression-entity-data) dowiedzieć się więcej o wyodrębnianie jednostek wyrażenia regularnego z punktu końcowego odpowiedź JSON na zapytanie. Spróbuj [Szybki Start](luis-quickstart-intents-regex-entity.md) Aby dowiedzieć się więcej o sposobie używania jednostki wyrażenia regularnego.
 

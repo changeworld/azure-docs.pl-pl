@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bcb135e19796bcab8a8e06e3c1896b247188a58c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5a0d7a0e96a788c3136adba70fb27a2c98674e7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970845"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088055"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -70,17 +70,6 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 - <!-- 2702741 -  IS, ASDK --> Rozwiązano problem, w której publiczne adresy IP, które zostały wdrożone za pomocą dynamicznej alokacji metoda nie jest gwarantowana zostaną zachowane po wystawieniu Zatrzymaj anulowanie. Teraz są zachowywane.
 
 - <!-- 3078022 - IS, ASDK --> Jeśli maszyna wirtualna została zatrzymana z cofniętą alokacją przed 1808 nie można jej ponownie przydzielić po 1808 aktualizacji.  Ten problem został rozwiązany w 1809. Wystąpienia, które zostały w tym stanie i nie może zostać uruchomiony, może zostać uruchomiony w 1809 dzięki tej poprawce. Poprawka zapobiega także ten problem pojawiał.
-
-<!-- 3090289 – IS, ASDK --> 
-- Rozwiązano problem, gdzie po zastosowaniu tej aktualizacji 1808, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
-
-   1. Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażania maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
-      1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
-      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
-   2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
-      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4481066).
-      2. Postępuj zgodnie z instrukcjami w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
-
 
 ### <a name="changes"></a>Zmiany
 
@@ -173,7 +162,7 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 > Przygotuj wdrożenia usługi Azure Stack na hoście rozszerzenia, który został włączony przez następny pakiet aktualizacji. Przygotowanie systemu przy użyciu poniższych wskazówek, [przygotować się do hosta rozszerzenia dla usługi Azure Stack](azure-stack-extension-host-prepare.md).
 
 Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md).  
-- [KB 4477849 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
+- [KB 4481548 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1809.12.114](https://support.microsoft.com/help/4481548/)  
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
 
@@ -226,7 +215,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
    
   Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) polecenia cmdlet, aby sprawdzić kondycję wystąpień roli infrastruktury i skalowanie węzłów jednostki. Brak problemów w przypadku wykrycia przez [AzureStack testu](azure-stack-diagnostic-test.md), można zignorować te alerty. W przypadku wykrycia problemu można spróbować uruchomić wystąpienie roli infrastruktury lub węzła przy użyciu portalu administracyjnego lub programu PowerShell.
 
-  Ten problem jest rozwiązany w najnowszej [wersji poprawki 1809](https://support.microsoft.com/help/4477849/), dlatego należy tę poprawkę należy zainstalować, jeśli występują problem. 
+  Ten problem jest rozwiązany w najnowszej [wersji poprawki 1809](https://support.microsoft.com/help/4481548/), dlatego należy tę poprawkę należy zainstalować, jeśli występują problem. 
 
 <!-- 1264761 - IS ASDK -->  
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
@@ -292,7 +281,18 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
    Aby znaleźć danych metryk, takich jak wykres procent użycia procesora CPU dla maszyny Wirtualnej, przejdź do okna metryk i wyświetlić wszystkie obsługiwane metryki gościa maszyny Wirtualnej Windows.
 
+<!-- 3507629 - IS, ASDK --> 
+- Dyski zarządzane tworzy dwa nowe [typy limitów przydziału obliczeniowych](azure-stack-quota-types.md#compute-quota-types) ograniczenie maksymalnej pojemności dysków zarządzanych, które mogą być udostępniane. Domyślnie 2048 GiB jest przydzielany dla każdego typu przydziału dysków zarządzanych. Jednakże można napotkać następujące problemy:
 
+   - Aby przydziały utworzone przed aktualizacją 1808 przydziału dysków Managed Disks wyświetli wartości 0 w portalu administratora, mimo że jest przydzielany 2048 GiB. Można zwiększyć lub zmniejszyć wartość na podstawie Twoich potrzeb rzeczywiste i nowo ustawiony wartości przydziału na zastępuje domyślne GiB 2048.
+   - Jeśli zaktualizujesz wartości limitu przydziału na 0 jest równoważna wartość domyślną 2048 GiB. Obejść ten problem należy ustawić wartość limitu przydziału na 1.
+
+<!-- TBD - IS ASDK --> Po zastosowaniu 1809 aktualizacji, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
+
+   - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażanie maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
+      1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
+      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
+   2. Po skonfigurowaniu środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się komunikat o błędzie wewnętrznym. Aby naprawić błąd, wykonaj następujące kroki w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
 
 ### <a name="networking"></a>Networking  
 

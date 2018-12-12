@@ -1,28 +1,29 @@
 ---
-title: Najlepsze rozwiązania dotyczące tworzenia aplikacji z użyciem usługi LUIS — Language Understanding
-titleSuffix: Azure Cognitive Services
-description: Dowiedz się, usługa LUIS najlepsze rozwiązania w celu uzyskania najlepszych wyników.
+title: Najlepsze praktyki
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Poznaj najlepsze rozwiązania usługi LUIS w celu uzyskania najlepszych wyników z aplikacją usługi LUIS modelu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6b7b9c8a2a3e7da1628ef3e6f93a4b632ce38615
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e63d6ed584c0e8afc823bbcdc6e70ceabbf43db6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637784"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085284"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji interpretacji języka, dzięki usługom Cognitive Services
 Użyj procesu tworzenia aplikacji do tworzenia aplikacji usługi LUIS. 
 
 * Tworzenie modelu językowego
 * Dodawanie wypowiedzi przykładu w usłudze kilka szkolenia (10 – 15 na intencje)
-* Publikuj 
+* Publikowanie 
 * Test z punktu końcowego 
 * Dodawanie funkcji
 
@@ -50,10 +51,10 @@ Jeśli słownictwa między dwiema opcjami jest taka sama, Połącz intencji i ko
 
 Należy wziąć pod uwagę następujące wypowiedzi przykładu:
 
-```
-Book a flight
-Book a hotel
-```
+|Przykładowe wypowiedzi|
+|--|
+|Zarezerwuj lot|
+|Zarezerwuj hotelu|
 
 "Zarezerwuj lot" i "Zarezerwuj hotel" Używanie tego samego słownictwa "book". Pokrywa to dlatego powinna być taka sama intencji z innych wyrazów lotów i hoteli wyodrębnione jednostek. 
 

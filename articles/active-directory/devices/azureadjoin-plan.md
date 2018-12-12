@@ -167,7 +167,7 @@ Poniższe sekcje zawierają informacje dotyczące różnych typów aplikacji i z
 
 ### <a name="cloud-based-applications"></a>Aplikacje oparte na chmurze
 
-Jeśli aplikacja zostanie dodany do galerii aplikacji Azure AD, użytkownicy otrzymują logowania jednokrotnego za pośrednictwem urządzeń przyłączonych do usługi Azure AD. Dodatkowa konfiguracja nie jest wymagana. Użytkownicy pobierają logowanie Jednokrotne zarówno, przeglądarek Edge i Chrome. Dla programu Chrome, musisz wdrożyć [rozszerzenie systemu Windows 10 kont](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
+Jeśli aplikacja zostanie dodany do galerii aplikacji Azure AD, użytkownicy otrzymują logowania jednokrotnego za pośrednictwem urządzeń przyłączonych do usługi Azure AD. Dodatkowa konfiguracja nie jest wymagana. Użytkownicy pobierają logowanie Jednokrotne zarówno, przeglądarek Microsoft Edge i Chrome. Dla programu Chrome, musisz wdrożyć [rozszerzenie systemu Windows 10 kont](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
 
 Wszystkie aplikacje Win32 który:
 

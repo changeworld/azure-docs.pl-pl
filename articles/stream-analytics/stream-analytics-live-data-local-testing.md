@@ -1,5 +1,5 @@
 ---
-title: Testowanie danych na żywo lokalnie przy użyciu usługi Azure Stream Analytics tools for Visual Studio (wersja zapoznawcza)
+title: Testowanie danych na żywo z usługą Azure Stream Analytics dla programu Visual Studio
 description: Dowiedz się, jak przetestować zadanie usługi Azure Stream Analytics lokalnie za pomocą danych transmisji strumieniowej na żywo.
 services: stream-analytics
 author: mamccrea
@@ -7,13 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f0a8978a9c2e0538a2e7bc4eab202604913e700b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: ea55d2f96a87503d43a69d288ce85dcff32a39ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984164"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090333"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Testowanie danych na żywo lokalnie przy użyciu usługi Azure Stream Analytics tools for Visual Studio (wersja zapoznawcza)
 
@@ -33,28 +34,28 @@ Obsługiwane są następujące opcje testowania lokalnego:
 
 1. Po utworzeniu [projektu w programie Visual Studio w chmurze usługi Azure Stream Analytics](stream-analytics-quick-create-vs.md), otwórz **script.asaql**. Lokalne testowanie używa lokalnych danych wejściowych i wyjściowych lokalnym domyślnie.
 
-   ![Azure Stream Analytics programu Visual Studio lokalne testowanie za pomocą lokalnych danych wejściowych i wyjściowych lokalne](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
+   ![Usługa Azure lokalne Stream Analytics, Visual Studio, dane wejściowe i lokalnych danych wyjściowych](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
 2. Aby przetestować dane na żywo, wybierz **użycia chmury w danych wejściowych** w polu listy rozwijanej.
 
-   ![Usługa Azure Stream Analytics programu Visual Studio lokalne testowanie przy użyciu danych wejściowych w chmurze na żywo](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
+   ![Usługa Azure Stream Analytics, Visual Studio chmurze na żywo w danych wejściowych](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
 
 
 3. Ustaw **czas rozpoczęcia** do zdefiniowania, kiedy zadanie zostanie uruchomione, przetwarzania danych wejściowych. Zadanie może być konieczne odczytanie danych wejściowych z wyprzedzeniem, aby zapewnić dokładne wyniki. Domyślny czas jest ustawiona na 30 minut przed bieżącym czasem.
 
-   ![Usługa Azure Stream Analytics programu Visual Studio lokalne testowanie na czas rozpoczęcia danych na żywo](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
+   ![Czas rozpoczęcia danych na żywo usługi Azure Stream Analytics, Visual Studio](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
 4. Kliknij przycisk **uruchamiane lokalnie**. Za pomocą uruchomionej metryk postępu i zadania pojawi się okno konsoli. Jeśli chcesz zatrzymać proces, możesz to zrobić ręcznie. 
 
-   ![Azure Stream Analytics, Visual Studio lokalne testowanie za pomocą okna przetwarzania danych na żywo](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
+   ![Okno procesu na żywo dane w usłudze Azure Stream Analytics, Visual Studio](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
    Wyniki dane wyjściowe są odświeżane co trzy sekundy z pierwszych wierszy 500 danych wyjściowych w oknie wyniku lokalnego uruchomienia i pliki wyjściowe są umieszczane w ścieżce projektu **ASALocalRun** folderu. Pliki wyjściowe można również otworzyć, klikając **Otwórz Folder wyników** przycisk w oknie wyniku lokalnego uruchomienia.
 
-   ![Usługa Azure Stream Analytics programu Visual Studio Otwórz lokalnego testowania przy użyciu bieżących danych powoduje folderu](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
+   ![Danych na żywo usługi Azure Stream Analytics, Visual Studio, otwórz folder wyników](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
 
 5. Aby przekazywać wyniki do ujść danych wyjściowych z chmury, należy wybrać **dane wyjściowe do chmury** w drugim polu listy rozwijanej. Usługa Power BI i usługi Azure Data Lake Storage nie są ujść obsługiwanych danych wyjściowych.
 
-   ![Usługa Azure Stream Analytics programu Visual Studio lokalne testowanie przy użyciu bieżących danych wyjściowych do chmury](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
+   ![Danych platformy Azure Stream Analytics, Visual Studio na żywo dane wyjściowe do chmury](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
  
 ## <a name="limitations"></a>Ograniczenia
 

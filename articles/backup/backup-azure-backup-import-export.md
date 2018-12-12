@@ -109,7 +109,7 @@ W tej sekcji opisano przepływ pracy w trybie offline z kopii zapasowej, dzięki
     * Komputer kopiowania ma dostęp do lokalizacji tymczasowej dla przepływu pracy w trybie offline rozmieszczania przy użyciu tej samej ścieżki sieciowej została podana w **inicjowanie kopii zapasowej offline** przepływu pracy.
     * Funkcja BitLocker jest włączona na komputerze kopiowania.
     * Zainstalowano program Azure PowerShell numer 3.7.0.
-    * Zainstalowano najnowsze przeglądarki zgodne (Edge lub Internet Explorer 11) i języka JavaScript jest włączona. 
+    * Zainstalowano najnowsze przeglądarki zgodne (Microsoft Edge lub Internet Explorer 11) i języka JavaScript jest włączona. 
     * Komputer kopiowania można uzyskać dostęp do witryny Azure portal. Jeśli to konieczne, komputer kopia może być taka sama jak komputera źródłowego.
     
     > [!IMPORTANT] 

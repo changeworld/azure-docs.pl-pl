@@ -117,7 +117,7 @@ Formularz witryny Marketplace zawiera pola, które są widoczne w witrynach [Azu
 
 ### <a name="preview-subscription-ids"></a>Identyfikatory subskrypcji wersji zapoznawczej
 
-Wprowadź listę identyfikatorów subskrypcji platformy Azure, które mogą uzyskać dostęp do oferty po jej opublikowaniu. Przy użyciu tych dozwolonych subskrypcji można przetestować ofertę w wersji zapoznawczej zanim zostanie aktywowana. Biała lista może składać się z maksymalnie 100 subskrypcji w portalu dla partnerów.
+Wprowadź listę identyfikatorów subskrypcji platformy Azure, które mogą uzyskać dostęp do oferty po jej opublikowaniu. Przy użyciu tych dozwolonych subskrypcji można przetestować ofertę w wersji zapoznawczej zanim zostanie aktywowana. Lista może składać się z maksymalnie 100 subskrypcji w portalu dla partnerów.
 
 ### <a name="suggested-categories"></a>Sugerowane kategorie
 

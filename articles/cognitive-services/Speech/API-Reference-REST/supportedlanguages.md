@@ -39,7 +39,7 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
 | pl-PL | Angielski (Stany Zjednoczone) | ru-RU | Rosyjski (Rosja) |
 | es-ES | Hiszpański (Hiszpania) | sv-SE | Szwedzki (Szwecja) |
 | es-MX | Hiszpański (Meksyk) |zh-CN | Chiński (mandaryński uproszczony)  |
-| fi-FI | Fiński (Finlandia) |zh-HK | Chiński (Hongkong SAR) |
+| fi-FI | Fiński (Finlandia) |zh-HK | Chiński (SRA Hongkong) |
 | fr-CA | Francuski (Kanada) | zh-TW | Chiński (mandaryński, tajwańskich)|
 | fr-FR | Francuski (Francja) | ||
 

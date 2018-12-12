@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 99e108da5fc9c13d0a9ec65a485055d1b990f8b7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 83216091c950593b16f158ea3d8df5a194ecee02
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838231"
+ms.locfileid: "52869827"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -74,7 +74,7 @@ Można replikować dowolną aplikację lub obciążenia uruchomione na maszynie 
 Usługa Site Recovery replikuje dane ze środowiska lokalnego do usługi Azure storage za pośrednictwem publicznego punktu końcowego lub przy użyciu usługi ExpressRoute publicznej komunikacji równorzędnej. Replikacja za pośrednictwem sieci VPN typu lokacja lokacja nie jest obsługiwana.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Można replikować na platformę Azure przy użyciu usługi ExpressRoute?
-Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na platformie Azure. Usługa Site Recovery replikuje dane do konta usługi Azure Storage za pośrednictwem publicznego punktu końcowego i należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) dla replikacji usługi Site Recovery. Po maszyny wirtualne nie za pośrednictwem sieci wirtualnej platformy Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na platformie Azure. Usługa Site Recovery replikuje dane do konta usługi Azure Storage za pośrednictwem publicznego punktu końcowego i należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) dla replikacji usługi Site Recovery. Po maszyny wirtualne nie za pośrednictwem sieci wirtualnej platformy Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?

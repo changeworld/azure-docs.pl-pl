@@ -62,7 +62,7 @@ Aby zainstalować rozszerzenie przeglądarki panelu dostępu, wykonaj następuj�
 Możesz również pobrać rozszerzenie dla programu Chrome i Microsoft Edge bezpośrednio z następujących witryn:
 
 - [Rozszerzenie przeglądarki Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Rozszerzenie Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Rozszerzenie Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Użyj mojej aplikacji bezpiecznego logowania rozszerzenia
 * Jeśli używasz Mój adres URL aplikacji innych niż `https://myapps.microsoft.com`, skonfigurować domyślny adres URL, wykonując następujące czynności:
@@ -93,7 +93,7 @@ Możesz również pobrać rozszerzenie dla programu Chrome i Microsoft Edge bezp
     4. Teraz możesz przejść do adresu URL wewnętrzne firmy, nawet podczas pracy zdalnej.
 
 > [!NOTE]
-> Poprzedni opcje są dostępne tylko dla przeglądarki Edge, Chrome i Firefox.
+> Poprzedni opcje są dostępne tylko dla przeglądarki Microsoft Edge, Chrome i Firefox.
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>Konfigurowanie zasad grupy dla programu Internet Explorer
 

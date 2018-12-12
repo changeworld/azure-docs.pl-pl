@@ -1,5 +1,5 @@
 ---
-title: Wdrożyć moduły usługi Azure IoT Edge (CLI) | Dokumentacja firmy Microsoft
+title: Wdrażać moduły z wiersza polecenia — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Użyj rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure, aby wdrożyć moduły na urządzeniu usługi IoT Edge
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8f39befbe1a329091da19eeba14a8dcc749fa93
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: f9aa3fff8750dc20053072c939a6db9362a2b0d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564990"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093577"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Wdrożyć moduły usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure
 
@@ -117,7 +118,7 @@ Aby zastosować konfigurację do urządzenia usługi IoT Edge, użyj następują
 
 Parametr id urządzeń jest uwzględniana wielkość liter. Punktów zawartości parametru do wdrożenia w manifeście zapisany plik. 
 
-   ![Zestaw modułów](./media/how-to-deploy-cli/set-modules.png)
+   ![AZ iot edge zestaw modułów w danych wyjściowych](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>Wyświetlanie modułów na urządzeniu z systemem
 
@@ -131,7 +132,7 @@ Wyświetl moduły znajdujące się na urządzeniu usługi IoT Edge:
 
 Parametr id urządzeń jest uwzględniana wielkość liter.
 
-   ![Wyświetlanie listy modułów](./media/how-to-deploy-cli/list-modules.png)
+   ![dane wyjściowe az iot hub tożsamości modułu listy](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

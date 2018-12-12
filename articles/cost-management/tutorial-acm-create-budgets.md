@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: f64a82cc3096c3c4d2a47568f4d6d516c685ee04
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: fc38c6278590e213674a2522169f988eaeea9cc4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991749"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081357"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie i zarządzanie nimi budżetów platformy Azure
 
@@ -45,7 +45,7 @@ Aby uzyskać więcej informacji na temat przypisywania uprawnień do danych rozw
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-- Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
+- Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Tworzenie budżetu w witrynie Azure portal
 
@@ -57,23 +57,23 @@ Po utworzeniu budżetów pokazują widok prosty bieżące wydatki względem nich
 
 Kliknij pozycję **Add** (Dodaj).
 
-![Zarządzanie budżetów kosztów](./media/tutorial-acm-create-budgets/budgets01.png)
+![Koszt zarządzania budżetów wyświetlane w witrynie Azure portal](./media/tutorial-acm-create-budgets/budgets01.png)
 
 W **budżetu Utwórz** okna, wprowadź nazwę budżetu i budżetu. Następnie wybierz, co miesiąc, co kwartał, lub roczna czasu trwania. Następnie wybierz datę zakończenia. Budżetów wymagają co najmniej jeden koszt progu (% budżetu) i odpowiedniego adresu e-mail. Możesz opcjonalnie dołączyć maksymalnie pięć progi i pięciu adresów e-mail w jednym budżetu. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin.
 
 Oto przykład tworzenia miesięcznego budżetu dla 4500 zł. Wiadomość e-mail z alertem pobiera wygenerowany, gdy zostanie osiągnięta 90% budżetu.
 
-![Miesięczne przykład budżetu](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+![Przykładowe informacje wyświetlane w polu Utwórz budżetu](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
 Po utworzeniu co kwartał budżetu działa w taki sam sposób jak miesięcznego budżetu. Różnica polega na tym, że kwota budżetu na kwartał jest równomiernie podzielone między trzy miesiące kwartału. Zgodnie z oczekiwaniami, roczne kwota budżetu jest równomiernie podzielone między wszystkie 12 miesięcy w roku kalendarzowego.
 
 Bieżących wydatków w porównaniu do budżetów jest aktualizowana po każdym Cost Management otrzymuje zaktualizowane dane rozliczeń. Zwykle, codziennie.
 
-![Bieżąca wydatków w porównaniu do budżetów](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
+![Przykładowe informacje wyświetlane bieżącego wydatków w porównaniu do budżetów](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
 
 Po utworzeniu budżetu, jest wyświetlana na analizy kosztów. Przeglądanie budżetu względem Twojej trendu wydatków jest jednym z pierwszych kroków, gdy rozpocznie się [analizowanie koszty i wydatki](quick-acm-cost-analysis.md).
 
-![Budżet objętego analiza kosztów](./media/tutorial-acm-create-budgets/cost-analysis.png)
+![Przykład budżetu i wydatków objętego analiza kosztów](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
 W powyższym przykładzie utworzono budżetu na subskrypcję. Jednak można również utworzyć budżetu dla grupy zasobów. Jeśli chcesz utworzyć budżet dla grupy zasobów, przejdź do **Zarządzanie kosztami i rozliczenia** &gt; **subskrypcje** &gt; wybrać subskrypcję > **zasobów grupy** > Wybierz grupę zasobów > **budżetów** > a następnie **Dodaj** budżetu.
 
@@ -81,7 +81,7 @@ W powyższym przykładzie utworzono budżetu na subskrypcję. Jednak można rów
 
 W zależności od poziomu dostępu użytkownika można edytować budżetu, aby zmienić jego właściwości. W poniższym przykładzie niektóre właściwości są tylko do odczytu, ponieważ użytkownik ma tylko uprawnienia współautora do subskrypcji. Obecnie **datę wygaśnięcia** jest wyłączona i nie może być modyfikowany po ustawieniu.
 
-![Edytuj budżet — uprawnienia współautora](./media/tutorial-acm-create-budgets/edit-budget.png)
+![Przykład edycji budżetu można zmieniać właściwości](./media/tutorial-acm-create-budgets/edit-budget.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

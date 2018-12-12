@@ -1,6 +1,6 @@
 ---
-title: Jak dodać znakowanie na stronę logowania w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać organizacji użytkownika znakowania na stronie logowania w usłudze Azure Active Directory.
+title: Dodawać oznaczenia marki do Twojej organizacji strony logowania — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące sposobu dodawania organizacji znakowania na stronie logowania w usłudze Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-custom: it-pro
-ms.openlocfilehash: cdf1c8bfb8e623956d50975f36faafe10b534d06
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 0ce0d42e37bcc5c936798947bacf0232891c24ab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367564"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090316"
 ---
-# <a name="how-to-add-branding-to-your-azure-active-directory-sign-in-page"></a>Porady: dodawanie znakowania na stronie logowania usługi Azure Active Directory
+# <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Dodawanie znakowania na stronie logowania w usłudze Azure Active Directory w organizacji
 Zapewnienie spójnego wyglądu i działania na stronach logowania w usłudze Azure Active Directory (Azure AD), należy użyć logo organizacji i niestandardowych schematów kolorów. Strony logowania są wyświetlane, gdy użytkownicy logują się do Twojej organizacji opartej na sieci web aplikacji, takich jak Office 365, która używa usługi Azure AD jako dostawcy tożsamości.
 
 >[!Note]
->Dodając niestandardowe znakowanie wymaga użycia usługi Azure Active Directory Premium 1, 2 — wersja Premium lub wersji podstawowa lub mieć licencję usługi Office 365. Aby uzyskać więcej informacji o licencjonowaniu i wersji, zobacz [Załóż konto usługi Azure AD Premium](active-directory-get-started-premium.md).<br><br>Klienci w Chinach mogą używać wersji Premium i Podstawowa usługi Azure AD za pośrednictwem wystąpienia usługi Azure Active Directory dostępnego na całym świecie. Wersje usługi Azure AD Premium i podstawowa nie są obecnie obsługiwane w usłudze platformy Azure, obsługiwana przez firmę 21Vianet w Chinach. Aby uzyskać więcej informacji, Porozmawiaj z nami za pomocą [Forum usługi Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/).
+>Dodając niestandardowe znakowanie wymaga użycia usługi Azure Active Directory Premium 1, 2 — wersja Premium lub wersji podstawowa lub mieć licencję usługi Office 365. Aby uzyskać więcej informacji o licencjonowaniu i wersji, zobacz [Załóż konto usługi Azure AD Premium](active-directory-get-started-premium.md).<br><br>Klienci w Chinach mogą używać wersji Premium i Podstawowa usługi Azure AD za pośrednictwem wystąpienia usługi Azure Active Directory dostępnego na całym świecie. Wersje Premium i Podstawowa usługi Azure AD nie są obecnie obsługiwane w usłudze platformy Azure świadczonej przez firmę 21Vianet w Chinach. Aby uzyskać więcej informacji, porozmawiaj z nami, korzystając z [forum usługi Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Dostosuj swoją stronę logowania w usłudze Azure AD
 Można dostosować swoje usługi Azure AD logowania stron, które są wyświetlane, gdy użytkownicy logują się do aplikacji specyficznym dla dzierżawy organizacji, takich jak [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), lub przy przekazywaniu zmiennej domeny, takich jak [ *https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com).
@@ -34,7 +34,7 @@ Niestandardowe znakowanie nie od razu pojawi się w przypadku użytkowników, pr
 > Wszystkie elementy znakowania są opcjonalne. Na przykład jeśli określisz Baner logo z Brak obrazu tła strony logowania Pokaż logo przy użyciu domyślnego obrazu tła, z lokacji docelowej (na przykład Office 365).<br><br>Ponadto znakowanie strony logowania nie jest przenoszone do osobistych kont Microsoft. Jeśli użytkowników lub Goście biznesowi logują się przy użyciu osobistego konta Microsoft, strony logowania nie będzie zawierać znakowania organizacji.
 
 ### <a name="to-customize-your-branding"></a>Aby dostosować znakowanie
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **marką firmy**, a następnie wybierz pozycję **Konfiguruj**.
 
@@ -92,7 +92,7 @@ Niestandardowe znakowanie nie od razu pojawi się w przypadku użytkowników, pr
 Po utworzeniu niestandardowe znakowanie może Przejdź wstecz i wszystkich danych, które chcesz zmienić.
 
 ### <a name="to-edit-your-custom-branding"></a>Aby edytować niestandardowe znakowanie
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **marką firmy**, a następnie wybierz pozycję **Konfiguruj**.
 
@@ -109,7 +109,7 @@ Nie można zmienić język oryginalną konfigurację z językiem domyślnym. Jed
 
 ### <a name="to-add-a-language-specific-branding-configuration"></a>Aby dodać konfigurację znakowania specyficzny dla języka
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **marką firmy**, a następnie wybierz pozycję **nowy język**.
 

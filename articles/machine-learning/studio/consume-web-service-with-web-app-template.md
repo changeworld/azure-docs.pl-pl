@@ -1,11 +1,11 @@
 ---
-title: Korzystania z usługi internetowej Machine Learning za pomocą szablonu aplikacji sieci web - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+title: Używanie usługi sieci web za pomocą szablonu aplikacji sieci web - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Użyj szablonu aplikacji sieci web w witrynie Azure Marketplace z predykcyjna usługa internetowa Azure Machine Learning.
 keywords: Usługa sieci Web, operacjonalizacja, interfejs API REST usługi machine learning
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 2c0bba4a442b73b82ebc271c3516f65954d6d8a4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 3eaf881ea1b8831891588310bfcec5e8fb146978
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311572"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078586"
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Korzystanie z usługi sieci web Azure Machine Learning za pomocą szablonu aplikacji sieci web
 

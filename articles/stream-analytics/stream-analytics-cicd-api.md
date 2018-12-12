@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 57ba02049d6008d8b68a5a5d217d4e28cc55dcb4
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 727c1ce79fbd20252f7455f95ad00a6c44d67c65
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892616"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090520"
 ---
 # <a name="implement-cicd-for-stream-analytics-using-apis"></a>Implementowanie ciągłej integracji/ciągłego wdrażania dla usługi Stream Analytics przy użyciu interfejsów API
 
@@ -253,7 +253,7 @@ Przykład Manifest wdrożenia:
 } 
 ```
 
-Po przeprowadzeniu konfiguracji manifestu wdrażania, można znaleźć [modułów wdrożenia usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure](/iot-edge/how-to-deploy-modules-cli) dla wdrożenia.
+Po przeprowadzeniu konfiguracji manifestu wdrażania, można znaleźć [modułów wdrożenia usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure](/iot-edge/how-to-deploy-modules-cli.md) dla wdrożenia.
 
 
 ## <a name="next-steps"></a>Kolejne kroki 

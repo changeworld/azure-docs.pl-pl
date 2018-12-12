@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7575d55f65598d39a8ffe0c3802cf11fa7470180
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 56275a2d37c9b1dc92aad973507204295fbfe06f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837787"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087664"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Przeszukiwanie dzienników grup komputerów w usłudze Log Analytics
 
@@ -70,7 +70,7 @@ Konfigurowanie usługi Log Analytics można zaimportować grupy zabezpieczeń us
 
 Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
 
-### <a name="windows-server-update-service"></a>Windows Server Update Service
+### <a name="windows-server-update-service"></a>Usługa Windows Update Server
 Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usług WSUS, analizuje określania wartości docelowej członkostwa w grupie komputerów za pomocą agenta usługi Log Analytics.  Jeśli używasz klienta przeznaczone dla dowolnego komputera, który jest podłączony do usługi Log Analytics i jest częścią dowolnego programu WSUS przeznaczone dla grup ma jego członkostwo w grupie zaimportowany do usługi Log Analytics. Jeśli używasz po stronie serwera dla usługi Log Analytics agent powinien być zainstalowany na serwerze programu WSUS w taki sposób, w kolejności, aby uzyskać informacje o członkostwie grupy do zaimportowania do usługi Log Analytics.  To członkostwo jest stale aktualizowany co 4 godziny. 
 
 Konfigurowanie usługi Log Analytics do zaimportowania grup usług WSUS z usługą Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **WSUS**, a następnie **członkostwa w grupach importu programu WSUS**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
@@ -82,7 +82,7 @@ Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą 
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
 Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w kolekcjach programu Configuration Manager tworzy grupy komputerów, dla każdej kolekcji.  Informacje o członkostwo w kolekcji jest pobierana co 3 godziny, aby zapewnić aktualność grup komputerów. 
 
-Przed zaimportowaniem kolekcji programu Configuration Manager, należy najpierw [łączenia programu Configuration Manager do usługi Log Analytics](../../log-analytics/log-analytics-sccm.md).  Następnie można skonfigurować importowania z usługi Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **SCCM**, a następnie **członkostwa w kolekcjach programu Configuration Manager importu**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Przed zaimportowaniem kolekcji programu Configuration Manager, należy najpierw [łączenia programu Configuration Manager do usługi Log Analytics](../../azure-monitor/platform/collect-sccm.md).  Następnie można skonfigurować importowania z usługi Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **SCCM**, a następnie **członkostwa w kolekcjach programu Configuration Manager importu**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ![Grupy komputerów z programu SCCM](media/computer-groups/configure-sccm.png)
 

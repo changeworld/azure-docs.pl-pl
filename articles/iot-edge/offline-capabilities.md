@@ -1,6 +1,6 @@
 ---
-title: Możliwości usługi Azure IoT Edge w trybie offline | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak urządzenia usługi IoT Edge i moduły mogą działać w trybie offline dłuższy czas i jak włączyć regularne urządzeniach IoT, aby działać w trybie offline za usługi IoT Edge.
+title: Obsługuj urządzenia w trybie offline — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak urządzenia usługi IoT Edge i moduły mogą działać bez połączenia internetowego przez dłuższy czas i jak włączyć regularne urządzeniach IoT, aby działać w trybie offline za usługi IoT Edge.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3ab775d57ba188930cc66b0fa1655307e9a78179
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec18
+ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284646"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096948"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Zrozumienie rozszerzone możliwości w trybie offline dla urządzeń usługi IoT Edge, moduły i podrzędny urządzenia (wersja zapoznawcza)
 

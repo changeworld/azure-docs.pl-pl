@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 2f642a91bd656cb74cdce2a98c44372a64f23cb9
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: MT
+ms.openlocfilehash: ef9f1e0c043370bdfacf654cffb524b716a34446
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50237881"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872338"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Narzędzia programistyczne na maszynie wirtualnej do nauki o danych
 
@@ -32,7 +32,7 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 | Co to jest?   | Ogólnego przeznaczenia IDE      |
 | Wersje maszyny DSVM obsługiwane      | Windows      |
 | Typowe zastosowania      | Tworzenie oprogramowania    |
-| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?      | Obciążenie analizy danych (Narzędzia języka Python i R), obciążenie platformy Azure (Hadoop, Data Lake), Node.js, narzędzia programu SQL Server [Visual Studio Tools for AI](https://github.com/Microsoft/vs-tools-for-ai)    |
+| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?      | Obciążenie analizy danych (Narzędzia języka Python i R), obciążenie platformy Azure (Hadoop, Data Lake), Node.js, narzędzia programu SQL Server [usługi Azure Machine Learning dla programu Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Jak używać / ją uruchomić?      | Skrót na pulpicie (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
 | Pokrewne narzędzia na maszyny DSVM      |     Visual Studio Code, RStudio, Juno  |
 

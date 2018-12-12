@@ -1,10 +1,12 @@
 ---
-title: Aprowizacja maszyny wirtualnej do nauki o danych Windows na platformie Azure | Dokumentacja firmy Microsoft
+title: Utwórz maszynę wirtualną do nauki o danych Windows
+titleSuffix: Azure
 description: Konfigurowanie i tworzenie maszyny wirtualnej do nauki o danych na platformie Azure, analizy i uczenia maszynowego.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -13,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 20867b6bfecb981a9bc47180cb39a1c489b19d2f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5dacbbcba44879b28e311f08b089d10d0ad8d95b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959754"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079640"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Aprowizacja maszyny wirtualnej do nauki o danych Windows na platformie Azure
 Microsoft Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej (VM) platformy Windows Azure. Ma wstępnie zainstalowane i skonfigurowane za pomocą kilku narzędzi, które są używane do analizy danych i uczenia maszynowego. Uwzględnione są następujące narzędzia:

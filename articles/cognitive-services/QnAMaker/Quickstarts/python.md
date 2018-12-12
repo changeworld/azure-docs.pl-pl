@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 1eff6ab146bb3a7ee053b8ac7fe3137d7c58c93a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: e9d3e2a790f22e3b230203ca835afd88a528e049
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212475"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089942"
 ---
-# <a name="qna-maker-rest-api-with-python"></a>Interfejs API REST usługi QnA Maker za pomocą języka Python
+# <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>Jak używać usługi QnA Maker interfejsu API REST przy użyciu języka Python
 <a name="HOLTop"></a>
 
 W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA Maker](../Overview/overview.md) przy użyciu języka Python, wykonaj następujące czynności.

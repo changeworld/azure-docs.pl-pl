@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: eaabb29a492ec6a0ef4c85afe839a9df5f588958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567489"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087171"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
@@ -71,15 +71,15 @@ W modelu stylu POSIX używanym przez Data Lake Storage Gen1 uprawnienia dla elem
 
 Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, jakie uprawnienia są wymagane do wykonania operacji na koncie Data Lake Storage Gen1.
 
-|    Operacja             |    /    | Seattle / | Portland / | Data.txt     |
-|--------------------------|---------|----------|-----------|--------------|
-| Przeczytaj Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Dołącz do Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Usuń Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Utwórz Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Lista /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| Lista /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| Lista /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Operacja | Obiekt              |    /      | Seattle /   | Portland /   | Data.txt       |
+|-----------|---------------------|-----------|------------|-------------|----------------|
+| Odczyt      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Dołączanie do | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Usuwanie    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Przycisk Utwórz    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| List      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| List      | /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]

@@ -1,5 +1,6 @@
 ---
-title: Tworzenie wewnętrznego modułu równoważenia obciążenia — klasyczny interfejs wiersza polecenia platformy Azure | Microsoft Docs
+title: Tworzenie wewnętrznego modułu równoważenia obciążenia — klasycznego wiersza polecenia platformy Azure
+titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia w klasycznym modelu wdrażania przy użyciu klasycznego interfejsu wiersza polecenia Azure
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: genlin
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c7659937599d778d9dc945254fcfff52840622dc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 991e6554df62591dea5c126f8ea82704373d6ffd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415070"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084927"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Wprowadzenie do tworzenia wewnętrznego modułu równoważenia obciążenia przy użyciu klasycznego interfejsu wiersza polecenia Azure
 

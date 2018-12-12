@@ -27,7 +27,7 @@ Należy pamiętać, że chcesz pracować w dowolnym innym języku niż `en-US`, 
 |:----------- |:-------------:|
 | Arabski      | `ar`          |
 | Chiński (Chińska Republika Ludowa)     | `zh-CN`          |
-| Chiński (Hongkong SAR)    | `zh-HK`          |
+| Chiński (SRA Hongkong)    | `zh-HK`          |
 | Chiński (Tajwan)     | `zh-TW`          |
 | Duński      | `da`          |
 | Holenderski (Belgia)       | `nl-BE`          |

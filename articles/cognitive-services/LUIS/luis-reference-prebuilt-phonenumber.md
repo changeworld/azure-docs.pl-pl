@@ -1,21 +1,22 @@
 ---
-title: Usługa LUIS ze wstępnie utworzonych jednostek phone odwołania do numerów — Azure | Dokumentacja firmy Microsoft
+title: Wstępnie utworzonych jednostek numeru telefonu
 titleSuffix: Azure
 description: Ten artykuł zawiera wstępnie utworzone jednostki informacja o numerze telefonu w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 9a8fcbaf946f936d7a6d6d883a0416fce9d0c158
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: MT
+ms.openlocfilehash: 3c2a873514c7355cdf7fa08372e1e17409021d56
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441720"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081068"
 ---
 # <a name="phonenumber-entity"></a>Phonenumber, jednostka
 `phonenumber` Jednostki wyodrębnia różne numery telefonów, łącznie z kodem kraju. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład do aplikacji. `phonenumber` Jednostki jest obsługiwana w `en-us` tylko kultury. 
@@ -26,7 +27,7 @@ Numer telefonu jest zarządzana z [aparatów rozpoznawania tekstu](https://githu
 ## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Rozpoznawanie phonenumber wstępnie utworzone jednostki
 W poniższym przykładzie pokazano rozdzielczość **builtin.phonenumber** jednostki.
 
-```JSON
+```json
 {
   "query": "my mobile is 00 44 161 1234567",
   "topScoringIntent": {

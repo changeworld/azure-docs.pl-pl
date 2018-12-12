@@ -1,6 +1,6 @@
 ---
-title: Wbudowane zasady w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Temat na rozszerzalna struktura zasad usługi Azure Active Directory B2C i jak tworzyć różne typy zasad.
+title: Przepływy użytkownika w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Temat na rozszerzalna struktura zasad usługi Azure Active Directory B2C i na temat tworzenia różnych typach przepływów użytkownika.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4a0dfcbba1867d4792a0e4a383ee097df0ea410b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d4a93b04b8ad86a6a6d36a5bdaf3209b49e7a9dc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835815"
+ms.locfileid: "52877086"
 ---
 # <a name="azure-active-directory-b2c-user-flows"></a>Usługa Azure Active Directory B2C: Przepływy użytkownika
 

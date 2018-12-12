@@ -143,7 +143,7 @@ Będziesz mieć do momentu 1 listopada 2018 można ustawić nowej ceny dla regio
 | **Czechy**       | CZECHY        | EUR                         |
 | **Egipt**                | NA PRZYKŁAD        | USD                         |
 | **Gwatemala**            | GT        | USD                         |
-| **Hongkong**            | HK        | USD                         |
+| **SRA Hongkong**            | HK        | USD                         |
 | **Węgry**              | HU        | EUR                         |
 | **Islandia**              | JEST        | EUR                         |
 | **Indonezja**            | ID        | USD                         |

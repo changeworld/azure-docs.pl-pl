@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4db786723793ca309b8c0abe7c6ede848649576b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 956ffb298301aef914221a8d2e623b19191909c0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834608"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095367"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -201,7 +201,7 @@ Aby wyłączyć zbieranie danych [Zaloguj się do witryny Azure portal](https://
 Można włączyć zbierania danych dla subskrypcji platformy Azure w ramach zasad zabezpieczeń. Aby włączyć zbieranie danych. [Zaloguj się do witryny Azure portal](https://portal.azure.com), wybierz opcję **Przeglądaj**, wybierz opcję **usługi Security Center**i wybierz **zasady zabezpieczeń**. Wybierz subskrypcję, której chcesz włączyć automatyczną aprowizację. Po wybraniu subskrypcji **zasady zabezpieczeń — zbierania danych** zostanie otwarty. W obszarze **automatycznej aprowizacji**, wybierz opcję **na**.
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>Co się stanie, gdy jest włączone zbieranie danych?
-Po włączeniu automatycznej aprowizacji Security Center aprowizuje program Microsoft Monitoring Agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszelkie nowe, które są tworzone. Automatycznej aprowizacji jest zdecydowanie zalecane, ale jest również dostępna ręcznej instalacji agenta. [Dowiedz się, jak można zainstalować rozszerzenia Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+Po włączeniu automatycznej aprowizacji Security Center aprowizuje program Microsoft Monitoring Agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszelkie nowe, które są tworzone. Automatycznej aprowizacji jest zdecydowanie zalecane, ale jest również dostępna ręcznej instalacji agenta. [Dowiedz się, jak można zainstalować rozszerzenia Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
 Agent umożliwia zdarzeń tworzenia procesu 4688 i *CommandLine* pola wewnątrz zdarzeń 4688. Nowe procesy utworzone na maszynie Wirtualnej są rejestrowane w dzienniku zdarzeń i monitorowana przez Centrum zabezpieczeń usługi wykrywania. Instrukcje dotyczące szczegółów dla każdego nowego procesu, zobacz [pola Opis 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agent również zbiera dane zdarzeń 4688, utworzony na maszynie Wirtualnej i przechowuje je w polu wyszukiwania.
 

@@ -4,17 +4,17 @@ description: Dowiedz się, jak korzysta z usługi Azure Policy konfiguracji goś
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ca96aea8f359f1df7da48f84a3317a2d8c7b52e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 19bc8a58c1ad2115afdfd1d7e59b714ba19cadec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167945"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078892"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -29,7 +29,7 @@ Inspekcja ustawień na maszynie wirtualnej [rozszerzenie maszyny wirtualnej](../
 
 ### <a name="register-guest-configuration-resource-provider"></a>Procedura Rejestruj dostawcę zasobów konfiguracji gościa
 
-Zanim użyjesz konfiguracji gościa, należy zarejestrować dostawcę zasobów. Można to zrobić za pośrednictwem portalu lub za pomocą programu PowerShell.
+Zanim użyjesz konfiguracji gościa, należy zarejestrować dostawcę zasobów. Możesz zarejestrować się za pośrednictwem portalu lub za pomocą programu PowerShell.
 
 #### <a name="registration---portal"></a>Rejestracja — Portal
 
@@ -90,23 +90,23 @@ W poniższej tabeli wymieniono systemy operacyjne, które nie są obsługiwane:
 
 ## <a name="guest-configuration-definition-requirements"></a>Wymagania dotyczące definicji konfiguracji gościa
 
-Każdy inspekcji, wykonywane przez gościa konfiguracji wymaga dwiema definicjami zasad **DeployIfNotExists** i **AuditIfNotExists**. **DeployIfNotExists** służy do przygotowywania maszyny wirtualnej za pomocą agenta gościa, konfiguracji i inne składniki do obsługi [narzędzia do sprawdzania poprawności](#validation-tools).
+Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjami zasad **DeployIfNotExists** i **AuditIfNotExists**. **DeployIfNotExists** służy do przygotowywania maszyny wirtualnej za pomocą agenta gościa, konfiguracji i inne składniki do obsługi [narzędzia do sprawdzania poprawności](#validation-tools).
 
-**DeployIfNotExists** definicji zasad sprawdza i naprawia następujące czynności:
+**DeployIfNotExists** definicji zasad sprawdza i naprawia następujące elementy:
 
-- Upewnij się, że maszyna wirtualna została przypisana konfiguracji w celu oceny. W przypadku aktualnie nie przypisania uzyskać przydział i przygotowywanie maszyny wirtualnej za pomocą:
+- Sprawdzanie poprawności konfiguracji w celu oceny zostały przypisane maszyny wirtualnej. W przypadku aktualnie nie przypisania uzyskać przydział i przygotowywanie maszyny wirtualnej za pomocą:
   - Uwierzytelnianie na maszynę wirtualną przy użyciu [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md)
   - Instalowanie najnowszej wersji **Microsoft.GuestConfiguration** rozszerzenia
   - Instalowanie [narzędzia do sprawdzania poprawności](#validation-tools) i zależności, jeśli to konieczne
 
-Gdy **DeployIfNotExists** jest zgodne, **AuditIfNotExists** definicji zasad używa lokalna Weryfikacja narzędzi w celu ustalenia, czy przypisanie przypisanej konfiguracji jest zgodne lub Niezgodne. Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji gościa, która przekazuje je do rozszerzenia gościa, aby był dostępny za pośrednictwem dostawcy zasobów gościa konfiguracji.
+Gdy **DeployIfNotExists** jest zgodne, **AuditIfNotExists** definicji zasad używa lokalna Weryfikacja narzędzi w celu ustalenia, czy przypisanie przypisanej konfiguracji jest zgodne lub Niezgodne. Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji gościa. Klient przesyła wyniki z rozszerzeniem gościa i udostępnia je za pośrednictwem dostawcy zasobów gościa konfiguracji.
 
 Usługa Azure Policy korzysta z dostawców zasobów gościa konfiguracji **complianceStatus** właściwości raportu zgodności w **zgodności** węzła. Aby uzyskać więcej informacji, zobacz [pobierania danych zgodności](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
 > Dla każdej definicji konfiguracji gościa zarówno **DeployIfNotExists** i **AuditIfNotExists** definicje zasad, musi istnieć.
 
-Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane inicjatywę o nazwie *[wersja zapoznawcza]: ustawienia zabezpieczeń inspekcji hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* zawiera zasady 18. Sześć **DeployIfNotExists** i **AuditIfNotExists** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji zapewnia tylko docelowego systemu operacyjnego jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
+Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane inicjatywę o nazwie *[wersja zapoznawcza]: ustawienia zabezpieczeń inspekcji hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* zawiera zasady 18. Sześć **DeployIfNotExists** i **AuditIfNotExists** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -115,5 +115,5 @@ Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do g
 - Przegląd [zrozumienia efektów zasad](effects.md)
 - Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md)
 - Dowiedz się, jak [uzyskać dane na temat zgodności](../how-to/getting-compliance-data.md)
-- Odkryj jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md)
+- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md)
 - Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/index.md)

@@ -1,7 +1,7 @@
 ---
-title: Wypróbuj bezpłatnie usługę rozpoznawania mowy
+title: Wypróbuj bezpłatnie usługi mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak można Wypróbuj tę usługę rozpoznawania mowy, bez ponoszenia kosztów.
+description: Wprowadzenie do usługi rozpoznawania mowy jest proste i niedrogie. 30-dniowej bezpłatnej wersji próbnej umożliwia odnajdywanie usługi wykonaj co zdecydować, czy jest on odpowiedni dla twojej aplikacji potrzebom.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 4e29f2e77ad2b4e993fbe6a39b90325a0738f538
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 69e2c094e1fca57d0dddc662cc1dae6453897c38
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471394"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079113"
 ---
 # <a name="try-the-speech-service-for-free"></a>Wypróbuj bezpłatnie usługę rozpoznawania mowy
 
@@ -36,7 +37,7 @@ Aby zarejestrować się w 30-dniowej bezpłatnej wersji próbnej:
 1. Wybierz **interfejsy API rozpoznawania mowy** kartę.
 
    ![Karta usługi mowy](media/index/try-speech-api-free-trial1.png)
-   
+
 1. W obszarze **usług przetwarzania mowy**, wybierz opcję **Uzyskaj klucz interfejsu API** przycisku.
 
    ![Klucz interfejsu API](media/index/try-speech-api-free-trial2.png)

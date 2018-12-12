@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: c9d36014bc364d8b016221e6b9ff380b0bd4b8ed
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 059e959aec34503f31cbf87266d0633865cbff46
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854171"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098750"
 ---
-# <a name="create-a-knowledge-base"></a>Tworzenie bazy wiedzy
+# <a name="create-a-knowledge-base-in-qna-maker"></a>Tworzenie bazy wiedzy w usługi QnA Maker
 
 Usługa QnA Maker pozwala w prosty sposób dodać istniejących źródeł danych, tworząc wiedzy. Możesz utworzyć nowe narzędzie QnA Maker wiedzy z następujących typów dokumentów:
 

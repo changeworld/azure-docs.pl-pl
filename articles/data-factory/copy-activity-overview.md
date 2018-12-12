@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: df1fbcb09310985b7ca9d9fd2e7a987fc6e2b2dc
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 1958d694ab87d635624884b43486761269e37c37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457093"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082650"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
@@ -173,6 +173,7 @@ Szczegóły wykonania działania kopiowania i charakterystyk wydajności są tak
 | DataRead | Rozmiar danych odczytu ze źródła | Wartość Int64 **bajtów** |
 | DataWritten | Rozmiar danych zapisany do ujścia | Wartość Int64 **bajtów** |
 | filesRead | Liczba plików kopiowanych podczas kopiowania danych z usługi file storage. | Wartość Int64 (Brak jednostki) |
+| fileScanned | Liczba plików skanowanych od magazynu pliku źródłowego. | Wartość Int64 (Brak jednostki) |
 | filesWritten | Liczba plików kopiowanych podczas kopiowania danych do usługi file storage. | Wartość Int64 (Brak jednostki) |
 | rowsCopied | Liczba wierszy, kopiowane (nie dotyczy kopia binarna). | Wartość Int64 (Brak jednostki) |
 | rowsSkipped | Liczba niezgodnych wierszy jest pomijane. Tę funkcję można włączyć przez zestaw "enableSkipIncompatibleRow" na wartość true. | Wartość Int64 (Brak jednostki) |

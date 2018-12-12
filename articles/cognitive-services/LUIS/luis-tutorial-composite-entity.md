@@ -1,21 +1,22 @@
 ---
-title: 'Samouczek 6: Wyodrębnianie danych złożonych z jednostką złożonego usługi LUIS'
+title: Złożone entity"
 titleSuffix: Azure Cognitive Services
 description: Dodaj złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8f7edecf1abd1f01a2f40f1420a6a85224271239
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b5923d5cd4a704dda76e33ee6a2b76cfd903219d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423505"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079215"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>Samouczek 6: Grupowanie i Wyodrębnij powiązanych danych
 W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
@@ -70,7 +71,7 @@ Przykład wypowiedzi w **MoveEmployee** intencji obejmują:
 
 Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwrócić go w `RequestEmployeeMove` złożonego jednostki:
 
-```JSON
+```json
 "compositeEntities": [
   {
     "parentType": "RequestEmployeeMove",
@@ -103,22 +104,22 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróci
 
 3. Wybierz ikonę lupy, na pasku narzędzi, aby filtrować listę wypowiedzi. 
 
-    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\" z wyróżnionym przyciskiem szkło powiększające i")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee" z wyróżnionym przyciskiem szkło powiększające i](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\" z wyróżnionym przyciskiem szkło powiększające i")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
 4. Wprowadź `tomorrow` w polu tekstowym filtru, aby znaleźć wypowiedź `shift x12345 to h-1234 tomorrow`.
 
-    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\" za pomocą filtru \"jutro\" wyróżniony")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee" za pomocą filtru "jutro" wyróżnione](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "wyróżnione zrzut ekranu usługi LUIS na intencje \"MoveEmployee\" za pomocą filtru \"jutro\"")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
     Inną metodą jest filtrowanie jednostki według datetimeV2, wybierając **filtry jednostki** polecenie **datetimeV2** z listy. 
 
 5. Wybierz pierwszy obiekt `Employee`, a następnie wybierz **opakować w jednostce złożone** na liście menu podręcznego. 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając pierwszy obiekt złożony wyróżnione")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee", wybierając pierwszy obiekt złożony z wyróżnioną pozycją](media/luis-tutorial-composite-entity/hr-create-entity-1.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając pierwszy obiekt złożony wyróżnione")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
 
 6. Następnie od razu wybierz ostatni obiekt `datetimeV2` w wypowiedź. Zielony pasek jest rysowana w ramach wybranego słowa wskazujący złożonego jednostki. W menu podręcznym wprowadź nazwę złożonego `RequestEmployeeMove` a następnie wybierz enter. 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając ostatni obiekt w jednostce złożone i tworzenia wyróżniony")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee", wybierając ostatni obiekt złożony i tworzenia jednostki wyróżnione](media/luis-tutorial-composite-entity/hr-create-entity-2.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając ostatni obiekt złożony i tworzenia jednostki wyróżnione")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
 7. W **jakiego typu jednostki, czy chcesz utworzyć?**, prawie wszystkie pola wymagane znajdują się na liście. Brak tylko lokalizacji źródłowej. Wybierz **Dodawanie jednostki podrzędne**, wybierz opcję **Locations::Origin** z listy istniejących jednostek, następnie wybierz pozycję **gotowe**. 
 
@@ -135,15 +136,15 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróci
 
 1. W każdym wypowiedź przykład wybierz jednostki najdalej po lewej stronie, która powinna znajdować się w złożonego. Następnie wybierz pozycję **opakować w jednostce złożone**.
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając pierwszy obiekt złożony wyróżnione")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee", wybierając pierwszy obiekt złożony z wyróżnioną pozycją](media/luis-tutorial-composite-entity/hr-label-entity-1.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając pierwszy obiekt złożony wyróżnione")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
 2. Wybierz ostatni wyraz w jednostce złożone, a następnie wybierz **RequestEmployeeMove** z menu podręcznego. 
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając ostatni obiekt złożony wyróżniony")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
+    [![Zrzut ekranu usługi LUIS na intencje "MoveEmployee", wybierając ostatni obiekt złożony z wyróżnioną pozycją](media/luis-tutorial-composite-entity/hr-label-entity-2.png "zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając ostatni obiekt złożony wyróżniony")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
 3. Sprawdź, czy wszystkie wypowiedzi w celem są oznaczone etykietami z jednostką złożonego. 
 
-    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "Zrzut ekranu usługi LUIS na \"MoveEmployee\" przy użyciu wszystkich wypowiedzi etykietą")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
+    [![Zrzut ekranu usługi LUIS na "MoveEmployee" przy użyciu wszystkich wypowiedzi etykietą](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "zrzut ekranu usługi LUIS na \"MoveEmployee\" przy użyciu wszystkich wypowiedzi etykietą")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train"></a>Szkolenie
 
@@ -161,7 +162,7 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróci
 
     Ponieważ ten test jest upewnij się, że złożonego jest wyodrębniany poprawnie, test można dołączyć istniejącego wypowiedź próbki lub nowe wypowiedź. Dobry test umożliwiający jest uwzględnienie wszystkich obiektów podrzędnych w jednostce złożone.
 
-    ```JSON
+    ```json
     {
       "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
       "topScoringIntent": {

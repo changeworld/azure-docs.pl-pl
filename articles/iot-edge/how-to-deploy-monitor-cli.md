@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie i monitorowanie modułów dla usługi Azure IoT Edge (interfejs wiersza polecenia) | Dokumentacja firmy Microsoft
-description: Zarządzanie modułów, które działają na urządzeniach brzegowych
+title: Tworzenie wdrożeń w automatycznych z wiersza polecenia — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Tworzenie automatycznego wdrażania dla grup usługi IoT Edge urządzenia za pomocą rozszerzenia IoT dla wiersza polecenia platformy Azure
 keywords: ''
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f2e7de6b32b4cca6320933050775f843e2cdf39
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 64c4b82208b2f8a20f7fd00fb574d5e017030e81
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567937"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094155"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu wiersza polecenia platformy Azure
 
@@ -192,7 +193,7 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 * **— Ustaw** — tak zaktualizować odnośną właściwość we wdrożeniu. Można aktualizować następujące właściwości:
     * targetCondition — przykład `targetCondition=tags.location.state='Oregon'`
     * etykiety 
-    * priorytet
+    * priority
 
 
 ## <a name="delete-a-deployment"></a>Usuwanie wdrożenia

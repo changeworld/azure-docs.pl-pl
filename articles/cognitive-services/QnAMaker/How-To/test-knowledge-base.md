@@ -10,23 +10,24 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 6ce3fc774d23914ab150e1dc1371391fc9fc548b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 5b0dfe1753686015c88bdc1214273354dd00c958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034389"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086319"
 ---
-# <a name="test-your-knowledge-base"></a>Testowanie bazy wiedzy
+# <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Testowanie bazy wiedzy interaktywnie w usługi QnA Maker
 
 Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyjny, aby poprawić dokładność odpowiedzi zostały zwrócone. Możesz przetestować wiedzy za pośrednictwem czatu rozszerzonego interfejsu, który umożliwia także, że możesz wprowadzać zmiany.
 
 ## <a name="test-answer-matching"></a>Dopasowanie odpowiedzi testu
 
-1.  Dostęp do bazy wiedzy, wybierając jego nazwę na **moich baz wiedzy** strony.
-2.  Aby uzyskać dostęp do panelu slajdów w poziomie testu, wybierz pozycję **testu** w Twojej aplikacji na górnym panelu.
+1.  Dostęp do bazy wiedzy, wybierając jego nazwę na **moich baz wiedzy** strony.
+2.  Aby uzyskać dostęp do panelu slajdów w poziomie testu, wybierz pozycję **testu** w Twojej aplikacji na górnym panelu.
 
-    ![Dostęp do testu](../media/qnamaker-how-to-test-kb/access-test.png)
+    ![Dostęp do panelu testu](../media/qnamaker-how-to-test-kb/access-test.png)
 
 3.  Wprowadź zapytanie w polu tekstowym i naciśnij klawisz Enter.
 
@@ -34,17 +35,17 @@ Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyj
 
 ## <a name="clear-test-panel"></a>Testu zwykłego panelu
 
-Aby wyczyścić wszystkie zapytania wprowadzony testu i ich wyniki z konsoli testów, wybierz **zacząć od początku** w lewym górnym rogu panelu testu.
+Aby wyczyścić wszystkie zapytania wprowadzony testu i ich wyniki z konsoli testów, wybierz **zacząć od początku** w lewym górnym rogu panelu testu.
 
 ## <a name="close-test-panel"></a>Test Zamknij panel
 
-Aby zamknąć panel testu, wybierz **testu** ponownie przycisk. Gdy Test jest otwarty panel, nie można edytować zawartość bazy wiedzy Knowledge Base.
+Aby zamknąć panel testu, wybierz **testu** ponownie przycisk. Gdy Test jest otwarty panel, nie można edytować zawartość bazy wiedzy Knowledge Base.
 
 ## <a name="inspect-score"></a>Sprawdź wynik
 
 Możesz sprawdzić szczegóły wyniku testu w panelu Sprawdź.
 
-1.  Otwórz panel slajdów w poziomie testu wybierz **Sprawdź** więcej informacji na temat tej odpowiedzi.
+1.  Otwórz panel slajdów w poziomie testu wybierz **Sprawdź** więcej informacji na temat tej odpowiedzi.
 
     ![Sprawdź odpowiedzi](../media/qnamaker-how-to-test-kb/inspect.png)
 
@@ -54,13 +55,13 @@ Możesz sprawdzić szczegóły wyniku testu w panelu Sprawdź.
 
 Jeśli u góry oceniania odpowiedzi jest niepoprawny, wybierz poprawną odpowiedź z listy i wybierz przycisk **Zapisz i szkolenie**.
 
-![Dostęp do testu](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![Popraw górnej oceniania odpowiedzi](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ## <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
 
 Możesz dodać inne formy pytanie do danej odpowiedzi. Typ odpowiedzi alternatywna w polu tekstowym i kliknij przycisk enter, aby je dodać. Wybierz **Zapisz i szkolenie** do przechowywania aktualizacji.
 
-![Dostęp do testu](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Dodaj alternatywne pytania](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ## <a name="add-a-new-answer"></a>Dodaj nową odpowiedź
 
@@ -68,7 +69,7 @@ Jeśli któreś z istniejących odpowiedzi, które zostały dopasowane są niepo
 
 Wybierz **Zapisz i szkolenie** można utrwalić tej odpowiedzi. Nową parę odpowiedź na pytanie został dodany do bazy wiedzy.
 
-![Dostęp do testu](../media/qnamaker-how-to-test-kb/add-answer.png)
+![Dodaj nową parę pytań i odpowiedzi](../media/qnamaker-how-to-test-kb/add-answer.png)
 
 > [!NOTE]
 > Wszystkie zmiany do bazy wiedzy tylko są zapisywane po naciśnięciu klawisza **Zapisz i szkolenie** przycisku.

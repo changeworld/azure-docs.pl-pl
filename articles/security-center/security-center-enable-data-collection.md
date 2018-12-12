@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 27d27f582c1306d8a8370567fd9c6858ad439ca8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851149"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082457"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -261,7 +261,7 @@ Program Microsoft Monitoring Agent, można zainstalować ręcznie, dzięki czemu
     a.  [Zainstaluj rozszerzenie maszyny wirtualnej pakietu OMS dla Windows](../virtual-machines/extensions/oms-windows.md)
     
     b.  [Zainstaluj rozszerzenie maszyny wirtualnej pakietu OMS dla systemu Linux](../virtual-machines/extensions/oms-linux.md)
-5.  Aby wdrożyć rozszerzeń na istniejących maszynach wirtualnych, postępuj zgodnie z instrukcjami [zbierać dane o maszynach wirtualnych Azure](../log-analytics/log-analytics-quick-collect-azurevm.md).
+5.  Aby wdrożyć rozszerzeń na istniejących maszynach wirtualnych, postępuj zgodnie z instrukcjami [zbierać dane o maszynach wirtualnych Azure](../azure-monitor/learn/quick-collect-azurevm.md).
 
   > [!NOTE]
   > Sekcja **zbierania danych zdarzeń i wydajności** jest opcjonalne.

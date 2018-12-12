@@ -1,6 +1,6 @@
 ---
-title: Przechwytywanie zdarzeń przesyłanych strumieniowo za pomocą usługi Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Przechwytywanie danych telemetrycznych z usługi Event Hubs Capture
+title: Przechwytywanie zdarzeń przesyłania strumieniowego — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie funkcji przechwytywania, która pozwala na Przechwytywanie zdarzeń przesyłanych strumieniowo za pomocą usługi Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fe096c0ee1747b3162f80ba4230ebf470ad50343
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8e44db9c992a2c4905a392323994c67befea9a9a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011491"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096727"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
 Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo, w centrach zdarzeń w [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) lub [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) wybrane konto usługi, przy użyciu dodanych elastycznych określenie interwału czasu lub rozmiaru. Konfigurowanie Capture jest szybkie, istnieją żadnych dodatkowych kosztów administracyjnych, aby go uruchomić i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-features.md#capacity). Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.

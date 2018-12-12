@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e8b8dac6d877ab8ab4a0abcdd64ceae1aa48d3ad
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 33ceece70c920bcb8bfd49fcfc8ff544af592b6b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848548"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088208"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
 
@@ -52,7 +52,7 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 | Usługi wyszukiwania         | Microsoft.Search/searchServices         | Diagnostyka | Diagnostyka | |
 | Przestrzeń nazw magistrali usług   | Microsoft.ServiceBus/namespaces         | Diagnostyka | Diagnostyka | [Usługa Service Bus analiza (Podgląd)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 | Service Fabric          |                                         | Magazyn     |             | [Analiza usługi Service Fabric (wersja zapoznawcza)](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
-| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnostyka | [Usługi Azure SQL Analytics (wersja zapoznawcza)](../../log-analytics/log-analytics-azure-sql.md) |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnostyka | [Usługi Azure SQL Analytics (wersja zapoznawcza)](../../azure-monitor/insights/azure-sql.md) |
 | Magazyn                 |                                         |             | Skrypt      | [Usługa Azure Storage Analytics (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Maszyny wirtualne        | Microsoft.Compute/virtualMachines       | Wewnętrzny   | Wewnętrzny <br> Diagnostyka  | |
 | Zestawy skalowania maszyn wirtualnych | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnostyka | |
@@ -61,7 +61,7 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 
 
 > [!NOTE]
-> Do monitorowania maszyn wirtualnych platformy Azure (Linux i Windows), zaleca się zainstalowanie [rozszerzenia Log Analytics VM](../../log-analytics/log-analytics-quick-collect-azurevm.md). Agent udostępnia szczegółowe informacje zebrane z w obrębie maszyn wirtualnych. Można również użyć rozszerzenia dla zestawów skalowania maszyn wirtualnych.
+> Do monitorowania maszyn wirtualnych platformy Azure (Linux i Windows), zaleca się zainstalowanie [rozszerzenia Log Analytics VM](../../azure-monitor/learn/quick-collect-azurevm.md). Agent udostępnia szczegółowe informacje zebrane z w obrębie maszyn wirtualnych. Można również użyć rozszerzenia dla zestawów skalowania maszyn wirtualnych.
 >
 >
 
@@ -151,7 +151,7 @@ Dowiedz się więcej o [łącznik usługi Application Insights](https://blogs.te
 
 ## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>Skrypty do zbierania i dane post do usługi Log Analytics
 
-Dla usług platformy Azure, które nie mają bezpośredni sposób wysyłania dzienników i metryk do usługi Log Analytics skrypt usługi Azure Automation służy do zbierania dzienników i metryk. Skrypt następnie możesz wysłać dane do usługi Log Analytics przy użyciu [interfejs API modułu zbierającego dane](../../log-analytics/log-analytics-data-collector-api.md)
+Dla usług platformy Azure, które nie mają bezpośredni sposób wysyłania dzienników i metryk do usługi Log Analytics skrypt usługi Azure Automation służy do zbierania dzienników i metryk. Skrypt następnie możesz wysłać dane do usługi Log Analytics przy użyciu [interfejs API modułu zbierającego dane](../../azure-monitor/platform/data-collector-api.md)
 
 Galeria szablonów platformy Azure ma [przykłady użycia usługi Azure Automation](https://azure.microsoft.com/resources/templates/?term=OMS) do zbierania danych z usług i wysłanie go do usługi Log Analytics.
 

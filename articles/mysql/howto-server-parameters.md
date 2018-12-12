@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 07/18/2018
-ms.openlocfilehash: 686db4dc15eb42abead3eef6798ed2b83e248811
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.date: 12/06/2018
+ms.openlocfilehash: 451316b32bcda43d62bbabf0c4f73d239698c85b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136455"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078726"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Jak konfigurować parametry serwera w usłudze Azure Database for MySQL za pomocą witryny Azure portal
 
@@ -42,9 +42,9 @@ Pula buforów aparatu InnoDB i maksymalna liczba połączeń nie są konfigurowa
 
 |**Warstwa cenowa**| **Generacja obliczeń**|**rdzenie wirtualne:**|**Pula buforów aparatu InnoDB (MB)**| **Maksymalna liczba połączeń**|
 |---|---|---|---|--|
-|Podstawowa| 4. generacja| 1| 1024| 50|
+|Podstawowa| 4. generacja| 1| 960| 50|
 |Podstawowa| 4. generacja| 2| 2560| 100|
-|Podstawowa| 5. generacja| 1| 1024| 50|
+|Podstawowa| 5. generacja| 1| 960| 50|
 |Podstawowa| 5. generacja| 2| 2560| 100|
 |Ogólne zastosowanie| 4. generacja| 2| 3584| 300|
 |Ogólne zastosowanie| 4. generacja| 4| 7680| 625|
@@ -56,16 +56,18 @@ Pula buforów aparatu InnoDB i maksymalna liczba połączeń nie są konfigurowa
 |Ogólne zastosowanie| 5. generacja| 8| 15360| 1250|
 |Ogólne zastosowanie| 5. generacja| 16| 31232| 2500|
 |Ogólne zastosowanie| 5. generacja| 32| 62976| 5000|
+|Ogólne zastosowanie| 5. generacja| 64| 125952| 10 000|
 |Pamięć| 5. generacja| 2| 7168| 600|
 |Pamięć| 5. generacja| 4| 15360| 1250|
 |Pamięć| 5. generacja| 8| 30720| 2500|
 |Pamięć| 5. generacja| 16| 62464| 5000|
+|Pamięć| 5. generacja| 32| 125952| 10 000|
 
 Te parametry dodatkowy serwer nie są konfigurowane w systemie:
 
 |**Parametr**|**Stała wartość**|
 | :------------------------ | :-------- |
-|innodb_file_per_table w warstwie podstawowa|WYŁ.|
+|innodb_file_per_table w warstwie podstawowa|WYŁĄCZONE|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|

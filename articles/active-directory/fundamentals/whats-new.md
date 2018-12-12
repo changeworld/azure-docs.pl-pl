@@ -1,6 +1,6 @@
 ---
-title: Co nowego? Informacje o wersji dla usługi Azure AD | Dokumentacja firmy Microsoft
-description: Poznaj nowości z usługą Azure Active Directory (Azure AD), takich jak najnowsze informacje o wersji — znane problemy, poprawki, przestarzałe funkcje i nadchodzących zmianach.
+title: Co nowego? Informacje o wersji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Aby dowiedzieć się o nowych za pomocą usługi Azure Active Directory, takie jak najnowszej wersji, znanych problemów i poprawek błędów przestarzałe funkcje i nadchodzących zmian.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: dc4e421808ab0f79070224edea4b75f527affaf0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: MT
+ms.custom: it-pro
+ms.openlocfilehash: 8ed51a5f61ca48434fd837449ecc2b6b8c3d74dc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426241"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083521"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -92,7 +93,7 @@ Aby uzyskać więcej informacji, zobacz [usuwanie nazwy domeny niestandardowej](
 
 ## <a name="september-2018"></a>Wrzesień 2018 r.
  
-### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>Zaktualizowane uprawnienia roli administratora dla grup dynamicznych
+### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>Uprawnienia roli administrator zaktualizowane grup dynamicznych
 
 **Typ:** stałej  
 **Kategoria usług:** Zarządzanie grupami  
@@ -112,7 +113,7 @@ Aby uzyskać więcej informacji, zobacz [utworzyć grupę dynamiczną i sprawdzi
 
 ---
 
-### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Uproszczone ustawienia konfiguracji logowania jednokrotnego dla niektórych aplikacji innej firmy
+### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Uproszczone ustawienia konfiguracji pojedynczego logowania jednokrotnego (SSO) w przypadku niektórych aplikacji innych firm
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -142,7 +143,7 @@ Aby skorzystać z tej funkcji i uzyskać więcej informacji, zobacz [usługi Azu
 
 ---
 
-### <a name="new-deployment-plan-available-for-the-my-apps-access-panel"></a>Nowy plan wdrożenia dostępny dla panelu Dostęp do moich aplikacji
+### <a name="new-deployment-plan-available-for-the-my-apps-access-panel"></a>Nowy plan wdrażania dostępne do panelu dostępu usługi Moje aplikacje
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** Moje aplikacje  
@@ -155,7 +156,7 @@ Aby uzyskać więcej informacji, zobacz [co to jest portal Moje aplikacje?](http
 
 ---
 
-### <a name="new-troubleshooting-and-support-tab-on-the-sign-ins-logs-page-of-the-azure-portal"></a>Nowa karta Rozwiązywanie problemów i pomoc techniczna na stronie dzienników logowań witryny Azure Portal
+### <a name="new-troubleshooting-and-support-tab-on-the-sign-ins-logs-page-of-the-azure-portal"></a>Karta nowe Rozwiązywanie problemów i pomocy technicznej na stronie dzienniki operacji logowania w witrynie Azure Portal
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** raportowania  
@@ -167,7 +168,7 @@ Nowy **Rozwiązywanie problemów i pomoc techniczna** karcie **logowania** stron
 
 ---
 
-### <a name="enhanced-support-for-custom-extension-properties-used-to-create-dynamic-membership-rules"></a>Ulepszona obsługa niestandardowych właściwości rozszerzenia używanych do tworzenia reguł członkostwa dynamicznego
+### <a name="enhanced-support-for-custom-extension-properties-used-to-create-dynamic-membership-rules"></a>Rozszerzona obsługa właściwości niestandardowe rozszerzenie użyte do utworzenia reguły członkostwa dynamicznego
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** Zarządzanie grupami  
@@ -179,7 +180,7 @@ Aby uzyskać więcej informacji o używaniu właściwości rozszerzenia niestand
 
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzone aplikacje klienckie na potrzeby opartego na aplikacjach dostępu warunkowego w usłudze Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla dostępu warunkowego opartego na aplikacji usługi Azure AD
 
 **Typ:** Planowanie zmian  
 **Kategoria usług:** dostępu warunkowego  
@@ -197,7 +198,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 ---
 
-### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Nowa funkcja obsługi samoobsługowego resetowania hasła z ekranu blokady systemu Windows 7/8/8.1
+### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Nowa funkcja obsługi samoobsługowego resetowania hasła na ekranie blokady 7/8/8.1 Windows
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** samoobsługowego resetowania HASEŁ  
@@ -209,7 +210,7 @@ Aby uzyskać więcej informacji, zobacz [jak włączyć funkcję resetowania z W
 
 ---
 
-### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Powiadomienie o zmianie: kody autoryzacji nie będą już dostępne do ponownego użycia 
+### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Zmień powiadomienie: kody autoryzacji nie będzie już dostępny do ponownego wykorzystania 
 
 **Typ:** Planowanie zmian  
 **Kategoria usług:** uwierzytelnienia (logowania)  
@@ -223,7 +224,7 @@ Ta i inne zmiany dotyczące protokołów, zobacz [pełną listę Nowości dla uw
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — wrzesień 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — września 2018 r.
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -237,7 +238,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ---
 
-### <a name="support-for-additional-claims-transformations-methods"></a>Obsługa dodatkowych metod przekształceń oświadczeń
+### <a name="support-for-additional-claims-transformations-methods"></a>Obsługa dodatkowych oświadczeń przekształcenia metod
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -249,7 +250,7 @@ Aby uzyskać więcej informacji, zobacz [Dostosowywanie oświadczeń wystawionyc
 
 ---
 
-### <a name="updated-saml-based-app-configuration-ui-preview"></a>Zaktualizowany interfejs użytkownika konfiguracji aplikacji opartej na języku SAML (wersja zapoznawcza)
+### <a name="updated-saml-based-app-configuration-ui-preview"></a>Zaktualizowano konfigurację aplikacji opartej na SAML interfejsu użytkownika (wersja zapoznawcza)
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -275,7 +276,7 @@ Aby włączyć ten zaktualizowany widok, kliknij przycisk **wypróbować nasze n
 
 ## <a name="august-2018"></a>Sierpień 2018 r.
 
-### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Zmiany zakresów adresów IP usługi Azure Active Directory
+### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Zmiany do zakresów adresów adresów IP platformy Azure Active Directory
 
 **Typ:** Planowanie zmian  
 **Kategoria usług:** innych  
@@ -293,7 +294,7 @@ Zdecydowanie zaleca się nie usuwa starych zakresów adresów IP, dopóki wszyst
 
 ---
 
-### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Powiadomienie o zmianie: kody autoryzacji nie będą już dostępne do ponownego użycia 
+### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Zmień powiadomienie: kody autoryzacji nie będzie już dostępny do ponownego wykorzystania 
 
 **Typ:** Planowanie zmian  
 **Kategoria usług:** uwierzytelnienia (logowania)  
@@ -307,7 +308,7 @@ Ta i inne zmiany dotyczące protokołów, zobacz [pełną listę Nowości dla uw
  
 ---
 
-### <a name="converged-security-info-management-for-self-service-password-sspr-and-multi-factor-authentication-mfa"></a>Zarządzanie zbieżnymi informacjami zabezpieczającymi na potrzeby samoobsługowego resetowania hasła i usługi Multi-Factor Authentication (MFA)
+### <a name="converged-security-info-management-for-self-service-password-sspr-and-multi-factor-authentication-mfa"></a>Zarządzanie informacjami konwergentnej zabezpieczeń haseł (SSPR) i usługi Multi-Factor Authentication (MFA)
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** samoobsługowego resetowania HASEŁ  
@@ -321,7 +322,7 @@ Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Admi
 
 ---
 
-### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Nowe ustawienie Pliki cookie HTTP-Only w aplikacjach serwera proxy aplikacji usługi Azure AD
+### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Nowe tylko HTTP ustawienia dotyczącego plików cookie w aplikacje serwera proxy aplikacji usługi Azure AD
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** serwera Proxy aplikacji  
@@ -335,7 +336,7 @@ Aby uzyskać więcej informacji na temat ustawień plików cookie HTTP-Only zoba
 
 ---
 
-### <a name="privileged-identity-management-pim-for-azure-resources-supports-management-group-resource-types"></a>Usługa Privileged Identity Management (PIM) dla zasobów platformy Azure obsługuje typy zasobów grupy zarządzania
+### <a name="privileged-identity-management-pim-for-azure-resources-supports-management-group-resource-types"></a>Privileged Identity Management (PIM) dla zasobów platformy Azure obsługuje typy zasobów w grupie zarządzania
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** Privileged Identity Management  
@@ -359,7 +360,7 @@ Obecnie dostęp do aplikacji obsługuje tylko środowisko portalu usługi Azure 
  
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---august-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — sierpień 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---august-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — sierpnia 2018
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -373,7 +374,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ---
 
-### <a name="native-tableau-support-is-now-available-in-azure-ad-application-proxy"></a>Natywna obsługa usługi Tableau jest obecnie dostępna na serwerze proxy aplikacji usługi Azure AD
+### <a name="native-tableau-support-is-now-available-in-azure-ad-application-proxy"></a>Natywna obsługa Tableau jest teraz dostępna na serwerze Proxy aplikacji usługi Azure AD
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** serwera Proxy aplikacji  
@@ -385,7 +386,7 @@ Aby uzyskać więcej informacji na temat naszych natywną obsługę Tableau, zob
 
 ---
 
-### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>Nowa funkcja obsługi dodawania usługi Google jako dostawcy tożsamości dla użytkowników gości B2B w usłudze Azure Active Directory (wersja zapoznawcza)
+### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>Obsługa nowych dodać Google jako dostawcy tożsamości dla użytkowników-gości B2B w usłudze Azure Active Directory (wersja zapoznawcza)
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** B2B  
@@ -399,7 +400,7 @@ Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Aby 
 
 ## <a name="july-2018"></a>Lipiec 2018 r.
 
-### <a name="improvements-to-azure-active-directory-email-notifications"></a>Udoskonalenia powiadomień e-mail w usłudze Azure Active Directory
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Ulepszenia powiadomień e-mail w usłudze Azure Active Directory
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** innych  
@@ -423,7 +424,7 @@ Na przykład niektóre nowe projekty poczty e-mail i więcej informacji, zobacz 
 
 ---
 
-### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Dzienniki aktywności usługi Azure AD są teraz dostępne za pośrednictwem usługi Azure Monitor
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Dzienniki aktywności w usłudze Azure AD są teraz dostępne za pośrednictwem usługi Azure Monitor
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** raportowania  
@@ -441,7 +442,7 @@ Aby uzyskać więcej informacji o tych nowych funkcjach, zobacz nasz blog [Dzien
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Informacje o dostępie warunkowym dodane do raportu operacji logowania usługi Azure AD
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Informacje o dostępie warunkowym dodany do raportów logowania usługi Azure AD
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** raportowania  
@@ -451,7 +452,7 @@ Ta aktualizacja pozwala zobaczyć, które zasady są oceniane, gdy użytkownik l
 
 ---
 
-### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Wyświetlanie starszych uwierzytelnień za pomocą dzienników aktywności logowań
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Widok starszych uwierzytelnienia za pomocą dzienników aktywności logowania
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** raportowania  
@@ -461,7 +462,7 @@ Wraz z wprowadzeniem **aplikację kliencką** dzienniki pola w aktywności logow
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — lipiec 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — lipca 2018 r.
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -475,7 +476,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Integracje aplikacji SaaS służące do aprowizacji nowych użytkowników — lipiec 2018
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Nowy użytkownik inicjowania obsługi administracyjnej integracji aplikacji SaaS — lipca 2018 r.
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** Aprowizację aplikacji  
@@ -493,7 +494,7 @@ Aby uzyskać listę wszystkich aplikacji, które obsługują aprowizowania użyt
 
 ---
 
-### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync — prostszy sposób naprawiania błędów synchronizacji związanych z osieroconymi lub zduplikowanymi atrybutami
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health do celów synchronizacji — łatwiejszy sposób naprawić błędy synchronizacji oddzielone i zduplikowanego atrybutu
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** AD Connect  
@@ -511,7 +512,7 @@ Aby uzyskać więcej informacji, zobacz [diagnozowanie i rozwiązywanie błędó
 
 ---
 
-### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Aktualizacje wizualne w środowiskach logowania usługi Azure AD i MSA.
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Visual aktualizacji do usługi Azure AD i logowania konta Microsoft napotyka
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** usługi Azure AD  
@@ -521,7 +522,7 @@ Zaktualizowaliśmy interfejs użytkownika dla usług online firmy Microsoft śro
 
 ---
 
-### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nowa wersja programu Azure AD Connect — lipiec 2018
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nowa wersja programu Azure AD Connect — lipca 2018 r.
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** Aprowizację aplikacji  
@@ -539,7 +540,7 @@ Aby uzyskać więcej informacji na temat tej aktualizacji, zobacz [program Azure
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizacje interfejsu użytkownika końcowego warunków użytkowania
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizacje do Interfejsu użytkownika końcowego warunków użytkowania (ToU)
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** warunki użytkowania  
@@ -573,7 +574,7 @@ Uwierzytelnianie przekazywane teraz obsługuje starszych protokołów i aplikacj
 
 ---
  
-### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Zarządzanie zbieżnymi informacjami zabezpieczającymi na potrzeby samoobsługowego resetowania hasła i uwierzytelniania wieloskładnikowego
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Zarządzanie zabezpieczeniami konwergentnej informacje samoobsługowego resetowania haseł i uwierzytelniania wieloskładnikowego
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** samoobsługowego resetowania HASEŁ  
@@ -587,7 +588,7 @@ Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Admi
 
 ---
  
-### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Korzystanie z aplikacji Microsoft Authenticator w celu weryfikowania swojej tożsamości podczas resetowania hasła
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Korzystanie z aplikacji Microsoft Authenticator do zweryfikowania Twojej tożsamości podczas resetowania hasła
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** samoobsługowego resetowania HASEŁ  

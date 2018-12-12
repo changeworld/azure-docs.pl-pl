@@ -1,5 +1,5 @@
 ---
-title: Nie znaleziono żadnych subskrypcji błąd podczas próby Zaloguj się do witryny Azure portal lub Centrum konta platformy Azure | Dokumentacja firmy Microsoft
+title: Nie znaleziono żadnych subskrypcji błąd - portalu logowania do platformy Azure | Dokumentacja firmy Microsoft
 description: Zawiera rozwiązanie problemu, w którym subskrypcji nie można odnaleźć wystąpienia błędu podczas Zaloguj się do witryny Azure portal lub Centrum konta platformy Azure.
 services: ''
 documentationcenter: ''
@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 584342b3dd223c45495db36ad49d83dece858137
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: cef34d4e22732c2d718daf7ce10c23b25ff4649d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581786"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081307"
 ---
-# <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Nie znaleziono żadnych subskrypcji błąd w witrynie Azure portal lub w Centrum konta platformy Azure
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Nie znaleziono żadnych subskrypcji logowanie w wyniku błędu dla witryny Azure portal lub Centrum konta platformy Azure
 
 Można otrzymać komunikat o błędzie "Nie znaleziono żadnych subskrypcji", gdy próbuje zalogować się do [witryny Azure portal](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions). Ten artykuł zawiera rozwiązanie tego problemu.
 

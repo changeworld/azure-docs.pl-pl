@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie, monitorowanie modułów dla usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Zarządzanie modułów, które działają na urządzeniach brzegowych
+title: Tworzenie automatycznego wdrożenia w witrynie Azure portal — usługa Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Tworzenie automatycznego wdrażania dla grup usługi IoT Edge urządzenia za pomocą witryny Azure portal
 keywords: ''
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ebd2a4e24a5f0bd9a9adad97bf26ae61219c8e0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 20f50e286e30e32f066fe3d214bfc4c1a155776e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566249"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083924"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal
 

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure IoT Edge | Microsoft Docs
-description: Rozwiązywanie typowych problemów i nabywanie umiejętności rozwiązywania problemów z usługą Azure IoT Edge
+title: Rozwiązywanie problemów — usługa Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Skorzystaj z tego artykułu się standardowa umiejętności diagnostyczne dla usługi Azure IoT Edge, takie jak pobieranie dzienniki i stanem składnika i rozwiązywania typowych problemów
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a553798a3ac15340805984a0e87312875f82c46c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 448fe3e7d6f3129ce6a40494abcf993f6dc4e4f7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567659"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081408"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -243,7 +244,7 @@ Gdy zostanie wyświetlony ten błąd, możesz rozwiązać ten problem, konfiguro
 1. W witrynie Azure portal przejdź do strony Przegląd swojej maszyny wirtualnej. 
 2. Wybierz **skonfigurować** pod nazwą DNS. Jeśli maszyna wirtualna ma już nazwę DNS skonfigurowany, nie trzeba skonfigurować nowe konto. 
 
-   ![Konfigurowanie nazwy DNS](./media/troubleshoot/configure-dns.png)
+   ![Skonfiguruj nazwę DNS maszyny wirtualnej](./media/troubleshoot/configure-dns.png)
 
 3. Wprowadź wartość w polu **etykiety nazwy DNS** i wybierz **Zapisz**.
 4. Skopiuj nową nazwę DNS, która powinna być w formacie  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
@@ -274,7 +275,7 @@ W Interfejsie użytkownika:
 
 W portalu pochodzące ze *szczegóły urządzenia*->*Ustaw moduły*->*skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge*, Utwórz zmienną środowiskową wywołuje się *OptimizeForPerformance* który jest skonfigurowany do *false* dla *Centrum usługi Edge*.
 
-![optimizeforperformance](./media/troubleshoot/OptimizeForPerformanceFalse.png)
+![OptimizeForPerformance ustawiony na wartość false](./media/troubleshoot/optimizeforperformance-false.png)
 
 **OR**
 
@@ -331,7 +332,7 @@ Usługa Azure IoT Edge umożliwia komunikację z serwer graniczny środowiska lo
 
 Chociaż usługi IoT Edge zapewnia rozszerzoną konfigurację do zabezpieczania środowiska uruchomieniowego usługi Azure IoT Edge i wdrożone moduły, jest nadal zależne od podstawowej konfiguracji komputera i sieci. W związku z tym koniecznie upewnij się, że odpowiednie reguły sieci i zapory są skonfigurowane do bezpiecznego urządzeniami brzegowymi w celu komunikacji z chmury. Następujące może służyć jako wytyczne podczas konfiguracji zapory reguły dla podstawowych serwerów hostujące środowisko uruchomieniowe usługi Azure IoT Edge:
 
-|Protokół|Port|przychodzące|Wychodzący|Wskazówki|
+|Protokół|Port|przychodzące|Wychodzące|Wskazówki|
 |--|--|--|--|--|
 |MQTT|8883|ZABLOKOWANE (ustawienie domyślne)|ZABLOKOWANE (ustawienie domyślne)|<ul> <li>Skonfiguruj wychodzące (wychodzące) jest otwarte, gdy jako protokół komunikacji przy użyciu protokołu MQTT.<li>1883 dla protokołu MQTT nie jest obsługiwany przez usługi IoT Edge. <li>Połączenia przychodzące (przychodzące) powinien być blokowany.</ul>|
 |AMQP|5671|ZABLOKOWANE (ustawienie domyślne)|Otwórz (ustawienie domyślne)|<ul> <li>Protokół komunikacji domyślnego dla usługi IoT Edge. <li> Musi być skonfigurowany jako Otwórz, czy usługi Azure IoT Edge nie jest skonfigurowany dla innych obsługiwanych protokołów AMQP jest protokół komunikacyjny żądaną.<li>5672 dla protokołu AMQP nie jest obsługiwany przez usługi IoT Edge.<li>Zablokować tego portu, w przypadku usługi Azure IoT Edge, używa innej usługi IoT Hub z obsługiwanych protokołów.<li>Połączenia przychodzące (przychodzące) powinien być blokowany.</ul></ul>|

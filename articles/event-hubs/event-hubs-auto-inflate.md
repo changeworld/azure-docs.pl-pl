@@ -1,5 +1,5 @@
 ---
-title: Automatyczne skalowanie w górę jednostek przepływności usługi Azure Event Hubs | Dokumentacja firmy Microsoft
+title: Automatyczne skalowanie w górę jednostek przepływności — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
 description: Włączyć automatyczne rozszerzanie przestrzeni nazw, aby automatycznie skalować w górę jednostek przepływności.
 services: event-hubs
 documentationcenter: na
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 1bbbbbada07dc898a4c1424a315d472cf910926f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: cf0c7a5339d2880bbed01fc95b54038d15f1c2ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010828"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083538"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatyczne skalowanie w górę jednostek przepływności usługi Azure Event Hubs
-
 Azure Event Hubs to wysoce skalowana platforma do strumieniowego przesyłania danych. W efekcie użycia usługi Event Hubs często zwiększa się po rozpoczęciu korzystania z usługi. Wymaga tych danych użycia, zwiększając wstępnie [jednostek przepływności](event-hubs-features.md#throughput-units) skalowania usługi Event Hubs i obsługiwać większe szybkości transferu. **Automatyczne rozszerzanie** funkcji usługi Event Hubs automatycznie jest skalowany w górę, zwiększając liczbę jednostek przepływności, aby zaspokoić potrzeby użycia wymagań. Zwiększenie jednostek przepływności zapobiega scenariuszy, w którym ograniczania przepływności:
 
 * Stawki transferu danych przychodzących danych przekracza zestaw jednostek przepływności.

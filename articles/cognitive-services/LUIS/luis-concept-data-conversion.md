@@ -1,23 +1,24 @@
 ---
-title: Pojęcia dotyczące konwersji danych usługi LUIS — Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Konwersja danych
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Dowiedz się, jak można zmienić wypowiedzi przed prognozy w Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9324f7b4f7bed844f16d17b8960878892be4b165
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: dc9040661eee4cafc655deb2436130f1abcfcfd5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638396"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094801"
 ---
-# <a name="data-conversion-concepts-in-luis"></a>Pojęcia dotyczące konwersji danych usługi LUIS
+# <a name="convert-data-format-of-utterances"></a>Konwertuj wypowiedzi format danych
 Usługa LUIS używa usługi mowy w usłudze Cognitive Services konwersji wypowiedzi prowadzone wypowiedzi wypowiedzi tekstu przed prognozy. 
 
 ## <a name="speech-to-intent-conversion-concepts"></a>Zamiana mowy na pojęcia konwersji elementu intent

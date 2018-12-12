@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: ee88c8dca1521f4cdc2e3ea141d5c1d497061bb4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422358"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082241"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -44,7 +44,7 @@ Jest to najczęściej spotykanym typem z często Zadawanymi pytaniami, w którym
 
 Poniżej przedstawiono przykład zwykłego strony — często zadawane pytania:
 
-![Zwykła strona często zadawane pytania](../media/qnamaker-concepts-datasources/plain-faq.png) 
+![Zwykły przykładowa strona — często zadawane pytania dla bazy wiedzy](../media/qnamaker-concepts-datasources/plain-faq.png) 
 
  
 ### <a name="faq-pages-with-links"></a>Często zadawane pytania dotyczące strony wraz z łączami 
@@ -53,7 +53,7 @@ W tym typie — często zadawane pytania pytania są zagregowane ze sobą i są 
 
 Poniżej przedstawiono przykład strony — często zadawane pytania wraz z łączami w sekcji, które znajdują się w tej samej stronie:
 
- ![Sekcja Łącze często zadawane pytania dotyczące strony](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
+ ![Przykładowa strona łącze — często zadawane pytania sekcji dla bazy wiedzy](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
 
 
 ### <a name="faq-pages-with-a-topics-homepage"></a>Często zadawane pytania dotyczące stron przy użyciu określonej strony głównej — tematy
@@ -62,7 +62,7 @@ Ten typ — często zadawane pytania ma stronę główną z tematów, gdzie każ
 
 Poniżej przedstawiono przykład często Zadawanymi pytaniami, gdzie głównej tematów zawiera linki do sekcji często zadawane pytania na różnych stronach. 
 
- ![Strona link bezpośredni — często zadawane pytania](../media/qnamaker-concepts-datasources/topics-faq.png) 
+ ![Przykładowa strona link bezpośredni — często zadawane pytania dla bazy wiedzy](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
 ## <a name="pdf-doc-files"></a>Plik PDF / pliki dokumentacji
@@ -77,7 +77,7 @@ Podręcznik jest zazwyczaj materiały wskazówki towarzyszące produktu. Umożli
 
 Poniżej znajduje się przykład ręcznie za pomocą strony indeksu i zawartości hierarchicznej
 
- ![Przykład ręczne produktu](../media/qnamaker-concepts-datasources/product-manual.png) 
+ ![Ręczne przykład wiedzy produktu](../media/qnamaker-concepts-datasources/product-manual.png) 
 
 > [!NOTE]
 > Wyodrębnianie sprawdza się najlepiej w instrukcji, które mają spisu treści i/lub strony indeksu oraz z nagłówkami hierarchiczną strukturę.
@@ -106,7 +106,7 @@ Answer2
 
 Poniżej przedstawiono przykład ze strukturą dokument programu word pytań i odpowiedzi:
 
- ![Dokument o określonej strukturze pytań i odpowiedzi](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+ ![Strukturalne pytań i odpowiedzi dokumentu przykład wiedzy](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>Strukturalne *TXT*, *TSV* i *XLS* plików
 
@@ -121,7 +121,7 @@ Wszelkie dodatkowe kolumny w pliku źródłowym są ignorowane.
 
 Poniżej znajduje się przykład ze strukturą QnA *xls* plik z zawartością HTML:
 
- ![W programie excel ze strukturą pytań i odpowiedzi](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![Przykład wiedzy pytań i odpowiedzi ze strukturą w programie excel](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 ## <a name="structured-data-format-through-import"></a>Format danych ze strukturą za pośrednictwem importu
 

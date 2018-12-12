@@ -1,6 +1,6 @@
 ---
-title: Dodaj informacje o prywatności w organizacji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak dodać informacje o prywatności w organizacji do obszaru właściwości usługi Azure Active Directory (Azure AD).
+title: Dodawanie organizacji zachowania poufności informacji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące sposobu dodawania informacji o prywatności w organizacji do obszaru właściwości usługi Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: lizross
 ms.reviewer: bpham
-ms.custom: it-pro
-ms.openlocfilehash: f32eeee8f02cee32eb05e14aa98387a20cb2e626
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 50fcafbdef4fc09532d03ae145183dd45c381c73
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904296"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083839"
 ---
-# <a name="how-to-add-your-privacy-info-using-azure-active-directory"></a>Instrukcje: Dodawanie informacji zabezpieczających zachowania przy użyciu usługi Azure Active Directory
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Dodaj informacje o prywatności w organizacji za pomocą usługi Azure Active Directory
 W tym artykule wyjaśniono, jak dodać informacje dotyczące ochrony prywatności do dzierżawy usługi Azure Active Directory (Azure AD) w organizacji, w witrynie Azure portal jako Administrator dzierżawy.
 
 Zdecydowanie zalecamy dodawanie przez osobę kontaktową globalne ochrona prywatności i poufności informacji w organizacji, więc pracowników wewnętrznych i zewnętrznych gości, można przejrzeć swoje zasady. Ponieważ zasady zachowania poufności informacji jednoznacznie są tworzone i przeznaczonym dla każdej firmy, zdecydowanie zalecamy się z prawnikiem uzyskania pomocy.

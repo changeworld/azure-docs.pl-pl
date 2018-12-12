@@ -1,6 +1,6 @@
 ---
-title: Użyj usługi Azure Event Hubs z poziomu aplikacji platformy Apache Kafka | Dokumentacja firmy Microsoft
-description: Omówienie i wprowadzenie do platformy Kafka włączone usługi Azure Event Hubs
+title: Użyj Centrum zdarzeń z aplikacji platformy Apache Kafka — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje na temat obsługi platformy Apache Kafka w usłudze Azure Event Hubs.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 4f1cb4e3e8572ee5edbadfb7d2a1771ae9a80341
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1c484b6418fd5a453713bc464fff690ef444f109
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014688"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091190"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Za pomocą usługi Azure Event Hubs z poziomu aplikacji platformy Apache Kafka
 Usługa Event Hubs zapewnia punktu końcowego platformy Kafka, który może być używany przez istniejącą platformy Kafka na podstawie aplikacji zamiast uruchamiania klastra Kafka. Usługa Event Hubs obsługuje [protokołu platformy Apache Kafka w wersji 1.0 lub nowszy](https://kafka.apache.org/documentation/)i współpracuje z istniejącymi aplikacjami platformy Kafka, w tym narzędzia MirrorMaker.  

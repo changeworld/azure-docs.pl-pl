@@ -1,6 +1,6 @@
 ---
-title: Tworzenie przezroczystej bramy za pomocą usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Używanie usługi Azure IoT Edge urządzenia rolę przezroczystej bramy, która pozwala na przetwarzanie informacji dla wielu urządzeń
+title: Tworzenie przezroczystej bramy urządzenia — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Używanie usługi Azure IoT Edge urządzenia rolę przezroczystej bramy, która może przetwarzać informacje z urządzeń podrzędne
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 55968393ff64d9eed1f5b384094a77d0d169dc5d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18
+ms.openlocfilehash: 29c7fc279aec79750df48c70be7792869e89ae78
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681198"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094359"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -31,7 +32,7 @@ Podrzędne urządzenie może pozostawać w dowolnej aplikacji lub platformy, kt�
 
 Można utworzyć żadnej infrastruktury certyfikatów, umożliwiająca zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, że tę samą konfigurację certyfikatu, który zostanie wykorzystany do włączenia [zabezpieczeń urzędu certyfikacji X.509](../iot-hub/iot-hub-x509ca-overview.md) w usłudze IoT Hub, który obejmuje certyfikat X.509 urzędu certyfikacji, powiązanych z określonej usługi IoT hub (IoT hub właściciel urzędu certyfikacji) i serii certyfikatów, zarejestrowana za pomocą tego urzędu certyfikacji i urzędu certyfikacji do urządzenia usługi Edge.
 
-![Instalator bramy](./media/how-to-create-transparent-gateway/gateway-setup.png)
+![Konfiguracja certyfikatu bramy](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 Brama przedstawia swój certyfikat urzędu certyfikacji urządzenia Edge na urządzeniu podrzędnego podczas inicjowania połączenia. Podrzędne urządzenie sprawdza upewnij się, że certyfikat urzędu certyfikacji urządzenia Edge jest podpisany przez właściciela certyfikatu urzędu certyfikacji. Ten proces umożliwia podrzędnym urządzenia upewnić się, że brama pochodzi z zaufanego źródła.
 

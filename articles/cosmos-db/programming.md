@@ -1,25 +1,23 @@
 ---
-title: Programowanie JavaScript po stronie serwera dla usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Programowanie JavaScript po stronie serwera dla usługi Azure Cosmos DB
 description: Dowiedz się, jak napisać procedury składowane, wyzwalacze bazy danych i funkcji zdefiniowanych przez użytkownika (UDF) w języku JavaScript za pomocą usługi Azure Cosmos DB. Uzyskuj wskazówki programistyczne bazy danych i nie tylko.
 keywords: Bazy danych, wyzwalacze, procedury składowanej, procedury składowanej, program bazy danych, procedury sproc, azure, Microsoft azure
 services: cosmos-db
 author: aliuy
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: dd1fff79d6f611ae29307d666860d3740f4372f1
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9f36d6761e61f0de610cb3f612cd069092cdc242
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162130"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083703"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programowanie po stronie serwera w usłudze Azure Cosmos DB: procedury składowane, wyzwalacze bazy danych i funkcji zdefiniowanych przez użytkownika
 
-Dowiedz się, jak usługi Azure Cosmos DB wykonywania języku zintegrowanym, transakcyjne języka JavaScript umożliwia programistom pisanie **procedur składowanych**, **wyzwalaczy**, i **funkcje zdefiniowane przez użytkownika (UDF)**  natywnie w [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) języka JavaScript. Integracja z językiem JavaScript umożliwia pisanie logiki programu, które mogą być dostarczane i wykonywane bezpośrednio w ramach partycji magazynu bazy danych. 
+Dowiedz się, jak usługi Azure Cosmos DB wykonywania języku zintegrowanym, transakcyjne języka JavaScript umożliwia programistom pisanie **procedur składowanych**, **wyzwalaczy**, i **funkcje zdefiniowane przez użytkownika (UDF)**  natywnie w [ECMAScript 2015](https://www.ecma-international.org/ecma-262/6.0/) języka JavaScript. Integracja z językiem JavaScript umożliwia pisanie logiki programu, które mogą być dostarczane i wykonywane bezpośrednio w ramach partycji magazynu bazy danych. 
 
 W tym artykule dowiesz się, odpowiedzi na następujące pytania:  
 
@@ -46,7 +44,7 @@ To podejście *"JavaScript jako nowoczesnego dzień języka T-SQL"* ułatwia dew
 
 Utworzenie i wykonanie wyzwalacze bazy danych, procedury składowane i niestandardowych operatorów zapytań, jest świadczona za pośrednictwem [witryny Azure portal](https://portal.azure.com), [interfejsu API REST](/rest/api/cosmos-db/), [usługi Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), i [zestawów SDK klienta](sql-api-sdk-dotnet.md) na wielu platformach, w tym .NET, Node.js i JavaScript.
 
-W tym samouczku [zestawu SDK środowiska Node.js za pomocą funkcji pytania i odpowiedzi obietnic](http://azure.github.io/azure-documentdb-node-q/) aby zilustrować składni i użycia, procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika.   
+W tym samouczku [zestawu SDK środowiska Node.js za pomocą funkcji pytania i odpowiedzi obietnic](https://azure.github.io/azure-documentdb-node-q/) aby zilustrować składni i użycia, procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika.   
 
 ## <a name="stored-procedures"></a>Procedury składowane
 ### <a name="example-write-a-stored-procedure"></a>Przykład: Napisać procedurę składowaną
@@ -668,7 +666,7 @@ Poniższe opisy wyjaśnienia każdego zapytania w powyższej tabeli.
 
 
 ## <a name="runtime-support"></a>Obsługa środowiska uruchomieniowego
-Azure Cosmos DB [interfejsu API po stronie serwera języka JavaScript](https://azure.github.io/azure-cosmosdb-js-server/) zapewnia obsługę najbardziej typowe funkcje języka JavaScript jako standardowy przez [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Azure Cosmos DB [interfejsu API po stronie serwera języka JavaScript](https://azure.github.io/azure-cosmosdb-js-server/) zapewnia obsługę najbardziej typowe funkcje języka JavaScript jako standardowy przez [ECMA-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
 ### <a name="security"></a>Bezpieczeństwo
 Procedury składowane JavaScript i wyzwalacze są w trybie piaskownicy tak, aby skutki jednego skryptu w nie nastąpił przeciek do drugiego bez pośrednictwa izolacji transakcji migawki na poziomie bazy danych. Środowiska uruchomieniowe w puli, ale oczyszczone kontekstu po każdym uruchomieniu. Dlatego mają gwarancję, że bezpieczne z dowolnego wystąpienie niezamierzonych skutków ubocznych od siebie nawzajem.
@@ -833,7 +831,7 @@ Można również znaleźć następujące informacje i zasoby przydatne w ścież
 
 * [Dokumentacja interfejsu API po stronie serwera w usłudze Azure Cosmos DB JavaScript](https://azure.github.io/azure-cosmosdb-js-server/)
 * [Studio bazy danych DocumentDB](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-* [Rozszerzalność bezpieczne i przenośnej bazy danych](http://dl.acm.org/citation.cfm?id=276339) 
-* [Usługa zorientowanej na architekturę bazy danych](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
-* [Hostowanie środowiska uruchomieniowego .NET, programie Microsoft SQL server](http://dl.acm.org/citation.cfm?id=1007669)
+* [JavaScript ECMA-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
+* [Rozszerzalność bezpieczne i przenośnej bazy danych](https://dl.acm.org/citation.cfm?id=276339) 
+* [Usługa zorientowanej na architekturę bazy danych](https://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
+* [Hostowanie środowiska uruchomieniowego .NET, programie Microsoft SQL server](https://dl.acm.org/citation.cfm?id=1007669)

@@ -1,6 +1,6 @@
 ---
-title: Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java | Dokumentacja firmy Microsoft
-description: Wprowadzenie do odbierania z usługi Event Hubs przy użyciu języka Java
+title: Odbieranie zdarzeń za pomocą języka Java — Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji w języku Java, która odbiera zdarzenia z usługi Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 4768fbb845eb09e8aa3469dc2c4c29c4a323d662
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e29cf43f490bf5e8bac5e5c36b16476f93d80bfa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017308"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081965"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java
 

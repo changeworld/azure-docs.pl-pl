@@ -4,18 +4,18 @@ description: Zaktualizowano schemat wersja 2015-08-01-preview dla definicji apli
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: stepsic-microsoft-com
-ms.author: stepsic
-ms.reviewer: klam, estfan, LADocs
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
 ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.topic: article
 ms.date: 05/31/2016
-ms.openlocfilehash: dd05543c2a727f010432ecb54c2dc3e77a245de4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ec6f98ca0f0260a0d7bed16538f557931cd2e33e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122781"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080014"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Aktualizacje schematu dla usługi Azure Logic Apps — 1 sierpnia 2015 r. (wersja zapoznawcza)
 
@@ -72,12 +72,16 @@ W tej definicji, te działania są nazywane `APIConnection`. Oto przykład poł�
 }
 ```
 
-`host` Obiekt jest częścią danych wejściowych, jest unikatowy dla połączenia interfejsu API, która zawiera następujące segmenty: `api` i `connection`. `api` Obiekt określa środowisko uruchomieniowe znajduje się adres URL, dla których, zarządzać interfejsu API. Możesz zobaczyć wszystkie dostępne interfejsy API zarządzane przez przez wywołanie metody `GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview`.
+`host` Obiekt jest częścią danych wejściowych, jest unikatowy dla połączenia interfejsu API, która zawiera następujące segmenty: `api` i `connection`. `api` Obiekt określa środowisko uruchomieniowe znajduje się adres URL, dla których, zarządzać interfejsu API. Możesz zobaczyć wszystkie dostępne zarządzane interfejsy API, przez wywołanie tej metody:
+
+```text
+GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
+```
 
 Korzystając z interfejsu API tego interfejsu API może być lub może nie zdefiniowano żadnego *parametry połączenia*. Tak Jeśli interfejs API nie zdefiniowano tych parametrów, połączenie nie jest wymagane. Jeśli interfejs API definiowania tych parametrów, należy utworzyć połączenie z określoną nazwą.  
 Następnie odwoływać się tą nazwą w `connection` wewnątrz `host` obiektu. Aby utworzyć połączenie w grupie zasobów, należy wywołać tej metody:
 
-```
+```text
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview
 ```
 
@@ -99,8 +103,8 @@ Następujące jednostki:
 
 ### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Wdrażanie zarządzanych interfejsów API w szablonie usługi Azure Resource Manager
 
-W szablonie usługi Azure Resource Manager można utworzyć pełnej aplikacji, tak długo, jak interakcyjnego logowania nie jest wymagane.
-Jeśli logowania jest wymagane, możesz skonfigurować wszystko, co przy użyciu szablonu usługi Azure Resource Manager, ale nadal jest konieczne można znaleźć w portalu Azure w celu autoryzowania połączeń. 
+Podczas logowania interaktywnego nie jest wymagane, można utworzyć pełnej aplikacji przy użyciu szablonu usługi Resource Manager.
+Jeśli logowania jest wymagana, można nadal używać szablonu usługi Resource Manager, ale trzeba autoryzowania połączeń za pośrednictwem witryny Azure portal. 
 
 ``` json
 "resources": [ {
@@ -194,7 +198,7 @@ Widać, w tym przykładzie, że połączenia są tylko zasoby, które znajdują 
 
 ### <a name="your-custom-web-apis"></a>Niestandardowe interfejsy API sieci Web
 
-Jeśli używasz własnych interfejsów API, a nie zarządzanych przez firmę Microsoft z nich, Użyj wbudowanych **HTTP** akcji do wywołania. Idealne środowisko pracy należy udostępnić punktu końcowego struktury Swagger dla interfejsu API. Ten punkt końcowy umożliwia Projektant aplikacji logiki do renderowania danych wejściowych i danych wyjściowych dla interfejsu API. Bez struktury Swagger projektanta można wyświetlić tylko dane wejściowe i wyjściowe jako nieprzezroczysty obiektów JSON.
+Jeśli korzystasz z własnymi interfejsami API, a nie z nich zarządzanych przez firmę Microsoft, należy użyć wbudowanego **HTTP** akcji do wywołania interfejsów API. W idealnym przypadku należy podać punktu końcowego struktury Swagger dla interfejsu API. Ten punkt końcowy pomaga w Projektancie aplikacji logiki, Pokaż dane wejściowe i wyjściowe Twój interfejs API. Bez punktu końcowego struktury Swagger projektanta można wyświetlić tylko dane wejściowe i wyjściowe jako nieprzezroczysty obiekty JSON.
 
 Oto przykład przedstawiający nowy `metadata.apiDefinitionUrl` właściwości:
 
@@ -259,7 +263,7 @@ Na przykład, jeśli używasz usługi Dropbox, aby wyświetlić listę plików u
 }
 ```
 
-Teraz możesz teraz utworzyć równoważne Akcja HTTP, jak w poniższym przykładzie, pozostawiając sekcji parametrów dla definicji aplikacji logiki:
+Teraz, teraz możesz tworzyć podobne Akcja HTTP i pozostaw definicji aplikacji logiki `parameters` sekcji bez zmian, na przykład:
 
 ``` json
 "actions": {
@@ -292,8 +296,8 @@ Zapoznaniu się z tymi właściwościami jeden po drugim:
 | `metadata.apiDefinitionUrl` | Aby użyć tej akcji w Projektancie aplikacji logiki, obejmują punkt końcowy metadanych, które są konstruowane na podstawie: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
 | `inputs.uri` | Skonstruowany na podstawie: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
 | `inputs.method` | zawsze `POST` |
-| `inputs.body` | Taka sama jak parametry aplikacji interfejsu API |
-| `inputs.authentication` | Taka sama jak uwierzytelniania aplikacji interfejsu API |
+| `inputs.body` | Takie same jak parametry aplikacji interfejsu API |
+| `inputs.authentication` | Takie same jak uwierzytelniania aplikacji interfejsu API |
 
 Ta metoda powinna działać dla wszystkich akcji w aplikacji interfejsu API. Należy jednak pamiętać, że tych poprzedniej aplikacji interfejsu API nie są już obsługiwane. Dlatego należy przenieść się do jednego z dwóch innych poprzedniej opcji, zarządzany interfejs API lub hostowanie niestandardowego interfejsu API sieci Web.
 
@@ -407,15 +411,15 @@ Teraz możesz użyć tej wersji:
 
 ## <a name="native-http-listener"></a>Natywne odbiornika HTTP
 
-Możliwości odbiornika HTTP są teraz wbudowane. Więc nie potrzebujesz już możliwość wdrożenia aplikacji interfejsu API odbiornika HTTP. Zobacz [pełne szczegóły jak punkt końcowy aplikacji logiki wywoływane tutaj](../logic-apps/logic-apps-http-endpoint.md). 
+Funkcje odbiornika HTTP są teraz wbudowane, więc nie trzeba wdrożyć aplikację interfejsu API odbiornika HTTP. Aby uzyskać więcej informacji, Dowiedz się, jak [upewnij punktu końcowego aplikacji logiki jako wywoływane](../logic-apps/logic-apps-http-endpoint.md). 
 
-Za pomocą tych zmian, firma Microsoft usunęła `@accessKeys()` funkcji, która zastąpiliśmy z `@listCallbackURL()` funkcji w celu uzyskania punktu końcowego, gdy jest to konieczne. Ponadto teraz należy zdefiniować co najmniej jeden wyzwalacz w aplikacji logiki. Jeśli chcesz `/run` przepływu pracy, musi mieć jedną z tych wyzwalaczy: `manual`, `apiConnectionWebhook`, lub `httpWebhook`.
+Za pomocą tych zmian, Logic Apps zastępuje `@accessKeys()` funkcją `@listCallbackURL()` funkcji, która pobiera punktu końcowego, gdy jest to konieczne. Ponadto teraz należy zdefiniować co najmniej jeden wyzwalacz w aplikacji logiki. Jeśli chcesz `/run` przepływu pracy, należy użyć jednego z następujących typów wyzwalacza: `Manual`, `ApiConnectionWebhook`, lub `HttpWebhook`
 
 <a name="child-workflows"></a>
 
 ## <a name="call-child-workflows"></a>Wywoływanie podrzędnego przepływów pracy
 
-Wcześniej wywoływania podrzędnego przepływów pracy wymagane, przechodząc do przepływu pracy, uzyskiwanie tokenu dostępu i wklejając token w definicji aplikacji logiki, które chcesz wywołać ten podrzędny przepływ pracy. Przy użyciu nowego schematu aparat usługi Logic Apps automatycznie generuje sygnaturę dostępu Współdzielonego w czasie wykonywania dla podrzędny przepływ pracy, więc nie trzeba wkleić jakichkolwiek kluczy tajnych w definicji. Oto przykład:
+Wcześniej wywoływania podrzędnego przepływów pracy wymagane, przechodząc do przepływu pracy, uzyskiwanie tokenu dostępu i wklejając token w definicji aplikacji logiki, które chcesz wywołać ten podrzędny przepływ pracy. Za pomocą tego schematu aparat usługi Logic Apps automatycznie generuje sygnaturę dostępu Współdzielonego w czasie wykonywania dla podrzędny przepływ pracy, więc nie trzeba wkleić jakichkolwiek kluczy tajnych w definicji. Oto przykład:
 
 ``` json
 "myNestedWorkflow": {
@@ -441,9 +445,9 @@ Wcześniej wywoływania podrzędnego przepływów pracy wymagane, przechodząc d
 }
 ```
 
-Drugi poprawy jest udostępniamy możliwość podrzędne przepływy pracy pełny dostęp do żądania przychodzącego. Oznacza to, że można przekazać parametry w *zapytania* sekcji i w *nagłówki* obiektu i czy można zdefiniować w pełni całej treści.
+Ponadto podrzędne przepływy pracy Uzyskaj pełny dostęp do żądania przychodzącego. Tak, można przekazać parametry `queries` sekcji i w `headers` obiektu. Można również w pełni zdefiniować całą `body` sekcji.
 
-Ponadto istnieją zmiany wymagane w celu podrzędny przepływ pracy. Gdy wcześniej można bezpośrednio wywoływać podrzędny przepływ pracy, teraz należy zdefiniować punkt końcowy wyzwalacza w przepływie pracy nadrzędnego do wywołania. Ogólnie rzecz biorąc, należy dodać wyzwalacza, który ma `manual` typu, a następnie użyj tego wyzwalacza w definicji nadrzędnej. Uwaga `host` właściwość specjalnie ma `triggerName` ponieważ należy zawsze określić, której wyzwalacz wywoływania.
+Na koniec przepływy pracy podrzędne mają wymagane zmiany. Można wcześniej, i bezpośrednio wywołać podrzędny przepływ pracy, teraz należy zdefiniować punkt końcowy wyzwalacza w przepływie pracy nadrzędnego do wywołania. Ogólnie rzecz biorąc, należy dodać wyzwalacza, który ma `Manual` typu, a następnie użyj tego wyzwalacza w definicji nadrzędnej. `host` Właściwość specjalnie ma `triggerName` ponieważ należy zawsze określić, że wyzwalacz jest wywoływany.
 
 ## <a name="other-changes"></a>Inne zmiany
 
@@ -453,8 +457,8 @@ Wszystkie typy akcji obsługują teraz nowe dane wejściowe o nazwie `queries`. 
 
 ### <a name="renamed-parse-function-to-json"></a>Zmieniono nazwę parse() funkcji "json()"
 
-Dodajemy więcej zawartości wpisze wkrótce, dzięki czemu możemy zmienić nazwy `parse()` funkcja `json()`.
+`parse()` Funkcja została zmieniona `json()` funkcji dla typów zawartości w przyszłości.
 
-## <a name="coming-soon-enterprise-integration-apis"></a>Już wkrótce: interfejsy API integracji przedsiębiorstw
+## <a name="enterprise-integration-apis"></a>Interfejsy API integracji przedsiębiorstw
 
-Nie mamy zarządzanych jeszcze wersji Enterprise integracji interfejsów API, takich jak AS2. W międzyczasie możesz użyć istniejących wdrożonej BizTalk interfejsów API za pomocą akcji HTTP. Aby uzyskać szczegółowe informacje, zobacz "Za pomocą już wdrożonej aplikacji interfejsu API" w [planu integracji](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Ten schemat jeszcze nie obsługuje wersji zarządzanych interfejsów API integracji przedsiębiorstwa, takich jak AS2. Można jednak użyć istniejących wdrożonej interfejsów API usługi BizTalk przy użyciu akcji HTTP. Aby uzyskać więcej informacji, zobacz "Za pomocą już wdrożonej aplikacji interfejsu API" w [planu integracji](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 

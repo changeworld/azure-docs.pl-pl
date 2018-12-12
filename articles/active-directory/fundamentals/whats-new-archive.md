@@ -1,5 +1,5 @@
 ---
-title: Archiwum nowości? w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Archiwum nowości? — Usługa azure Active Directory | Dokumentacja firmy Microsoft
 description: Co to jest nowe informacje o wersji w ramach przeglądu sekcji tego zestawu zawartości zawiera 6 miesięcy działania. Po upływie 6 miesięcy elementy są usuwane z głównego artykułu i umieścić w tym artykule archiwum.
 services: active-directory
 author: eross-msft
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 54e63cf90d72b64dbe00ab8b65179f015c23b646
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: MT
+ms.openlocfilehash: 2a2b0da34357572ab63ed9ac0d6d17766466ca8f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427611"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079844"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiwum nowości? w usłudze Azure Active Directory
 
@@ -675,7 +675,7 @@ Moje aplikacje rozszerzenia przeglądarki jest teraz dostępna za pośrednictwem
 - Możliwość bezpośrednio zalogować się do logowania jednokrotnego hasła opartego na aplikacji z poziomu strony logowania w aplikacji
 - Uruchamianie dowolnej aplikacji przy użyciu funkcji szybkiego wyszukiwania
 - Skróty do ostatnio używane aplikacje z rozszerzenia
-- Rozszerzenie jest dostępna dla przeglądarki Edge, Chrome i Firefox.
+- Rozszerzenie jest dostępna dla przeglądarki Microsoft Edge, Chrome i Firefox.
  
 Aby uzyskać więcej informacji, zobacz [Moje zabezpieczenia aplikacji logowania rozszerzenia](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension).
 
@@ -890,7 +890,7 @@ Aby uzyskać więcej informacji, zobacz [dostęp warunkowy w usłudze Azure AD](
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzone aplikacje klienckie na potrzeby opartego na aplikacjach dostępu warunkowego w usłudze Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla dostępu warunkowego opartego na aplikacji usługi Azure AD
 
 **Typ:** Planowanie zmian  
 **Kategoria usług:** dostępu warunkowego  
@@ -1035,7 +1035,7 @@ W Centrum administracyjnym usługi Azure AD możesz teraz:
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzone aplikacje klienckie na potrzeby opartego na aplikacjach dostępu warunkowego w usłudze Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla dostępu warunkowego opartego na aplikacji usługi Azure AD
  
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** dostępu warunkowego  

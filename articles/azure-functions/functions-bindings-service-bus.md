@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: bacb2cfffe567808f95e42e5ee6e2070815eace6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 80091ce94e9798af46348e8ceb658c8db9c30e0e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996723"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087564"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Service Bus dla usługi Azure Functions
 
@@ -625,7 +625,7 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|autoRenewTimeout|00:05:00|Maksymalny czas trwania, w którym blokadę komunikatu zostanie odnowiony automatycznie.| 
+|maxAutoRenewDuration|00:05:00|Maksymalny czas trwania, w którym blokadę komunikatu zostanie odnowiony automatycznie.| 
 |Autouzupełnianie|false|Czy wyzwalacz powinien natychmiast Oznacz jako ukończone (automatycznego uzupełniania) lub poczekaj przetwarzania rozmowę.| 
 |maxConcurrentCalls|16|Maksymalna liczba równoczesnych wywołań wywołanie zwrotne, które powinno zainicjować "pompy komunikatów". Domyślnie środowisko uruchomieniowe usługi Functions przetwarza wiele wiadomości jednocześnie. Aby skierowania czasu przetwarzania tylko jednej kolejki lub tematu wiadomości w czasie, należy ustawić `maxConcurrentCalls` 1. | 
 |prefetchCount|Nie dotyczy|Domyślnie PrefetchCount używanej przez MessageReceiver bazowego.| 

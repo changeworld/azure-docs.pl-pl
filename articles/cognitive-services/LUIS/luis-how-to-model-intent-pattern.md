@@ -1,21 +1,22 @@
 ---
-title: Dodawanie szablonów wzorzec zamiast więcej wypowiedzi w aplikacjach usługi LUIS
-titleSuffix: Azure Cognitive Services
+title: Wzorce Dodaj dokładności
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Informacje dotyczące dodawania szablonów wzorzec Language Understanding (LUIS) aplikacji w celu zwiększenia dokładności prognozy.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6c15fc256a330c7de154c551c1ef4c78913f470a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: MT
+ms.openlocfilehash: 20a486a048fe6287544a9fec35a95c88f6194a66
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885890"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093186"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorców w celu zwiększenia dokładności prognozy
 Gdy aplikacją usługi LUIS otrzyma wypowiedzi punktu końcowego, należy użyć [koncepcji](luis-concept-patterns.md) wzorców w celu zwiększenia dokładności prognozy dla wypowiedzi zawiera wzorca w porządku program word i wybór programu word. Wzorce użycia [jednostek](luis-concept-entity-types.md) i ich ról, aby wyodrębnić dane przy użyciu składni z określonym wzorcem. 
@@ -125,7 +126,7 @@ Wzorzec można utworzyć na podstawie istniejących wypowiedź w dowolnym **inte
 
 1. W zaznaczonym wierszu wypowiedź wybierz przycisk wielokropka (***...*** ) znajdujący się po prawej stronie wypowiedź i wybierz **Dodaj jako wzorca**.
 
-    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Zrzut ekranu przedstawiający wypowiedzi tabeli za pomocą wzorca Dodaj wyróżnione w menu Opcje")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
+    [![Zrzut ekranu przedstawiający wypowiedzi tabeli za pomocą wzorca Dodaj wyróżnione w menu Opcje](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "zrzut ekranu przedstawiający wypowiedzi tabeli za pomocą wzorca Dodaj wyróżnione w menu Opcje")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
 2. Modyfikowanie wzorzec zgodnie z opisem w [reguły składni](luis-concept-patterns.md#pattern-syntax). Wypowiedź, wybrane jest oznaczona przy użyciu jednostek, te jednostki są już we wzorcu z poprawną składnię.
 

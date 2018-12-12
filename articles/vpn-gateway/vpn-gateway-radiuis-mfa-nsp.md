@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 12e2f96e66305370499fbacf9ae6a834a22eb504
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fec5ef3ef190270d22e9a7d0306eb9477b39a8c8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412503"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095239"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrowanie uwierzytelniania RADIUS bramy sieci VPN platformy Azure za pomocą serwera NPS do uwierzytelniania wieloskładnikowego 
 
@@ -58,7 +58,7 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkownicy muszą być w us
     - **Adres (IP lub DNS)**: wpisz podsieć bramy, który został utworzony w kroku 1.
     - **Wspólny klucz tajny**: wpisz wszelkie klucz tajny i Zapamiętaj je w celu późniejszego użycia.
 
-    ![Obraz informacje o ustawieniach klienta RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![Obraz informacje o ustawieniach klienta RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Na **zaawansowane** karcie należy ustawić nazwę dostawcy **RADIUS Standard** i upewnij się, że **dodatkowe opcje** nie zaznaczono pole wyboru.
@@ -77,7 +77,7 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkownicy muszą być w us
     - **Typ uwierzytelniania**: Wybierz **uwierzytelnianie usługi RADIUS**.
     - **Adres IP serwera**: wpisz adres IP serwera NPS.
 
-    ![Obraz dotyczący wskaż Ustawienia witryny](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
+      ![Obraz dotyczący wskaż Ustawienia witryny](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6a096d95ee883556c03bbaef026c1d0fc8430797
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 424b54e2dfe73951839031a1cc35ecdd82d526bb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844033"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086108"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Azure Log Analytics
 
@@ -36,7 +36,7 @@ Przed analizowanie i przetwarzanie zebranych danych, należy najpierw zainstalow
 
 Agent dla systemu Linux i Windows komunikuje się za pośrednictwem portu TCP 443 wychodzących do usługi Log Analytics, a jeśli komputer, który nawiązuje połączenie za pośrednictwem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, zapoznaj się z wymaganiami poniżej, aby zrozumieć konfigurację sieci Wymagane. Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, możesz skonfigurować [bramy usługi Log Analytics](gateway.md) , a następnie skonfigurować agenta Aby nawiązać połączenie za pośrednictwem bramy do usługi Log Analytics. Agenta można odbierać informacje o konfiguracji i Wyślij dane zbierane w zależności od tego, jakie dane zasad zbierania i monitorowania rozwiązań jest włączona. 
 
-Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym, może być wieloadresowych z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager](../../log-analytics/log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z usługą Log Analytics nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Windows agent może raportować do czterech obszarów roboczych usługi Log Analytics, a agenta systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
+Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym, może być wieloadresowych z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager](../../azure-monitor/platform/om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z usługą Log Analytics nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Windows agent może raportować do czterech obszarów roboczych usługi Log Analytics, a agenta systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
 
 Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywania połączenia z usługi Log Analytics, usługi Azure Automation do obsługi roli procesu roboczego hybrydowego elementu Runbook i innych usług, takich jak obsługuje również [Change Tracking](../../automation/automation-change-tracking.md) i [rozwiązania Update Management](../../automation/automation-update-management.md). Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
@@ -73,7 +73,7 @@ Jeśli używasz dostępnych dla określonych dystrybucji lub wersji, który nie 
 >
 
 ## <a name="tls-12-protocol"></a>Protokół TLS 1.2
-Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Log Analytics, zdecydowanie zachęcamy do konfigurowania agenta do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../log-analytics/log-analytics-data-security.md#sending-data-securely-using-tls-12). 
+Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Log Analytics, zdecydowanie zachęcamy do konfigurowania agenta do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-firewall-requirements"></a>Wymagania dotyczące zapory sieciowej
 Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych informacji dla agenta systemu Linux i Windows, do komunikowania się z usługą Log Analytics.  
@@ -115,10 +115,10 @@ Na przykład: `https://user01:password@proxy01.contoso.com:30443`
 
 |Element źródłowy | Metoda | Opis|
 |-------|-------------|-------------|
-|Maszyna wirtualna platformy Azure| -Log Analytics VM rozszerzenie [Windows](../../virtual-machines/extensions/oms-windows.md) lub [Linux](../../virtual-machines/extensions/oms-linux.md) przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Azure Resource Manager<br>- [Ręcznie w witrynie Azure portal](../../log-analytics/log-analytics-quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json). | Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje je do istniejącego obszaru roboczego usługi Azure Monitor.|
+|Maszyna wirtualna platformy Azure| -Log Analytics VM rozszerzenie [Windows](../../virtual-machines/extensions/oms-windows.md) lub [Linux](../../virtual-machines/extensions/oms-linux.md) przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Azure Resource Manager<br>- [Ręcznie w witrynie Azure portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json). | Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje je do istniejącego obszaru roboczego usługi Azure Monitor.|
 | Hybrydowy komputer z systemem Windows|- [Instalacja ręczna](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Szablon usługi Resource Manager z usługą Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Zainstaluj Microsoft Monitoring agent z wiersza polecenia lub przy użyciu zautomatyzowanej metody, takie jak usługi Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), lub przy użyciu szablonu usługi Azure Resource Manager, jeśli wdrożono firmy Microsoft Usługa Azure Stack w centrum danych.| 
-| Hybrydowy komputer z systemem Linux| [Instalacja ręczna](../../log-analytics/log-analytics-quick-collect-linux-computer.md)|Zainstaluj agenta dla systemu Linux w serwisie GitHub skrypt otoki podczas wywoływania. | 
-| System Center Operations Manager|[Integrowanie programu Operations Manager z usługą Log Analytics](../../log-analytics/log-analytics-om-agents.md) | Skonfiguruj integrację między programem Operations Manager i usługi Log Analytics do przekazywania zebrane dane z komputerów z systemami Linux i Windows raportujących do grupy zarządzania.|  
+| Hybrydowy komputer z systemem Linux| [Instalacja ręczna](../../azure-monitor/learn/quick-collect-linux-computer.md)|Zainstaluj agenta dla systemu Linux w serwisie GitHub skrypt otoki podczas wywoływania. | 
+| System Center Operations Manager|[Integrowanie programu Operations Manager z usługą Log Analytics](../../azure-monitor/platform/om-agents.md) | Skonfiguruj integrację między programem Operations Manager i usługi Log Analytics do przekazywania zebrane dane z komputerów z systemami Linux i Windows raportujących do grupy zarządzania.|  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

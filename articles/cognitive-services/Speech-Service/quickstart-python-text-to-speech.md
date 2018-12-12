@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Konwertuj tekst na mowę, językiem Python — usługa rozpoznawania mowy'
+title: 'Szybki Start: Konwertuj tekst na mowę, językiem Python — usługi mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki Start dowiesz się, jak konwertować zamiany tekstu na mowę przy użyciu języka Python i interfejsu API REST zamiany tekstu na mowę. Przykładowy tekst uwzględnione w tym przewodniku mają strukturę jako język znaczników synteza mowy (SSML). Dzięki temu możliwe jest wybranie głos i język odpowiedzi mowy. Interfejs API REST obsługuje również zwykły tekst (ASCII lub UTF-8), jednak w przypadku zwykłego tekstu jest pod warunkiem, że odpowiedź zostanie zwrócony w głos domyślny usługi rozpoznawania mowy i języka.
+description: W tym przewodniku Szybki Start dowiesz się, jak konwertować zamiany tekstu na mowę przy użyciu języka Python i interfejsu API REST zamiany tekstu na mowę. Przykładowy tekst uwzględnione w tym przewodniku mają strukturę jako język znaczników synteza mowy (SSML). Dzięki temu możliwe jest wybranie głos i język odpowiedzi mowy.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 38bcd67dfb6d9b1a1955658872fee7b8b7a14a0c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 7512c443c49f1518d6a6f7ace7e981d3508b1d7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447484"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090061"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Szybki Start: Konwertuj tekst na mowę, przy użyciu języka Python
 
@@ -28,7 +29,7 @@ Ten przewodnik Szybki Start wymaga [konta usług Azure Cognitive Services](https
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 * Środowisko Python 2.7.x lub 3.x
-* [Program Visual Studio](https://visualstudio.microsoft.com/downloads/), [programu Visual Studio Code](https://code.visualstudio.com/download), lub ulubionego edytora tekstu
+* Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
 * Klucz subskrypcji platformy Azure dla usługi mowy
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
@@ -151,7 +152,7 @@ Po wyświetleniu monitu wpisz dowolną chcesz przekonwertować z zamiany tekstu 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Upewnij się usunąć wszelkie informacje poufne z kodu źródłowego aplikacji przykładowej, takie jak klucze subskrypcji.
+Upewnij się, że wszystkie poufne informacje, takie jak klucze subskrypcji, zostały usunięte z kodu źródłowego przykładowej aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

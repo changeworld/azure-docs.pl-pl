@@ -1,21 +1,22 @@
 ---
-title: Usługa LUIS ze wstępnie utworzonych jednostek numer odwołania — Azure | Dokumentacja firmy Microsoft
+title: Liczba wstępnie utworzone jednostki
 titleSuffix: Azure
 description: Ten artykuł zawiera informacje o numerze wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: b3ac42f5ecd1dc14055b0767e057a1da093042f9
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: ead544400f97f9a49296cc43552bea3a6f3def98
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334571"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095322"
 ---
 # <a name="number-entity"></a>Number, jednostka
 Istnieje wiele sposobów, w których wartości liczbowe są używane do Szacowanie ilościowe, express i opisują informacje. W tym artykule opisano tylko niektóre z przykładów. Usługa LUIS interpretuje wahania wypowiedzi użytkowników i zwraca spójną wartości liczbowych. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierające liczbę intencji aplikacji. 
@@ -42,7 +43,7 @@ Usługa LUIS zawiera wartość **`builtin.number`** jednostki w `resolution` pol
 ## <a name="resolution-for-prebuilt-number"></a>Rozwiązania dla wbudowanych numeru
 Poniższy kod przedstawia odpowiedź JSON, Luis, zawierającej rozpoznawanie wartości 24, wypowiedź "dwadzieścia".
 
-```JSON
+```json
 {
   "query": "order two dozen eggs",
   "topScoringIntent": {

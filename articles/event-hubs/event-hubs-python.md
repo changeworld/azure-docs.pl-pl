@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie i odbieranie komunikatów z usługi Azure Event Hubs przy użyciu języka Python | Dokumentacja firmy Microsoft
+title: Wysyłanie i odbieranie komunikatów — usługi Azure Event Hubs przy użyciu języka Python | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wysyłać zdarzenia do odbierania zdarzeń z i Przechwytywanie zdarzeń przesyłanych strumieniowo za pomocą usługi Event Hubs przy użyciu języka Python.
 keywords: ''
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 9c9c1bd909222ebb3fed57fb31c4f19404382cd4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a0e2cd7e0c768512e1aafc042fe55338fdc206e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52730293"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084978"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Jak używać usługi Azure Event Hubs z poziomu aplikacji Python
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Event Hubs](event-hubs-what-is-event-hubs.md). 

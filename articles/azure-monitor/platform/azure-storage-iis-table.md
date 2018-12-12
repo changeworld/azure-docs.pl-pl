@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: df5c52de14368896f77e48ebfd4ba7e4b4f38b67
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: bf02fb315162ffa183ed4137734ff8041ef75fe5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837683"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096629"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Użyj usługi Azure blob storage usług IIS i platformą Azure table Storage w przypadku zdarzeń z usługą Log Analytics
 
@@ -45,7 +45,7 @@ Dla usługi Log Analytics do zbierania tych dzienników diagnostyki platformy Az
 | Zdarzeń operacyjnych usługi Service Fabric |Węzły usługi Service Fabric |WADServiceFabricSystemEventTable |
 | Usługa Service Fabric Reliable Actor zdarzenia |Węzły usługi Service Fabric |WADServiceFabricReliableActorEventTable |
 | Zdarzenia usługi Reliable Service Fabric usługi |Węzły usługi Service Fabric |WADServiceFabricReliableServiceEventTable |
-| Dzienniki zdarzeń systemu Windows |Węzły usługi Service Fabric <br> Maszyny wirtualne <br> Role sieci Web <br> Role procesów roboczych |WADWindowsEventLogsTable (Table Storage) |
+| Dzienniki zdarzeń Windows |Węzły usługi Service Fabric <br> Maszyny wirtualne <br> Role sieci Web <br> Role procesów roboczych |WADWindowsEventLogsTable (Table Storage) |
 | Dzienniki Windows ETW |Węzły usługi Service Fabric <br> Maszyny wirtualne <br> Role sieci Web <br> Role procesów roboczych |WADETWEventTable (Table Storage) |
 
 > [!NOTE]
@@ -53,7 +53,7 @@ Dla usługi Log Analytics do zbierania tych dzienników diagnostyki platformy Az
 >
 >
 
-W przypadku maszyn wirtualnych ma możliwości zainstalowania [agenta usługi Log Analytics](../../log-analytics/log-analytics-quick-collect-azurevm.md) połączenie z maszyną wirtualną, aby włączyć dodatkowe informacje szczegółowe. Oprócz możliwości analizowania dzienników usług IIS i dzienniki zdarzeń, możesz wykonać dodatkową analizę, takich jak śledzenie zmian konfiguracji, ocena SQL i oceny aktualizacji.
+W przypadku maszyn wirtualnych ma możliwości zainstalowania [agenta usługi Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md) połączenie z maszyną wirtualną, aby włączyć dodatkowe informacje szczegółowe. Oprócz możliwości analizowania dzienników usług IIS i dzienniki zdarzeń, możesz wykonać dodatkową analizę, takich jak śledzenie zmian konfiguracji, ocena SQL i oceny aktualizacji.
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Włącz diagnostykę platformy Azure na maszynie wirtualnej do dziennika zdarzeń i IIS zbierania dzienników
 Poniższa procedura umożliwia Włącz diagnostykę platformy Azure na maszynie wirtualnej, do dziennika zdarzeń i IIS zbieranie dzienników przy użyciu portalu Microsoft Azure.
@@ -148,7 +148,7 @@ W ciągu 30 minut jesteś w stanie wyświetlić dane z konta magazynu w usłudze
 >
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Włącz diagnostykę platformy Azure na maszynie wirtualnej w dzienniku zdarzeń i IIS dziennika kolekcji przy użyciu programu PowerShell
-Użyj kroków w [konfigurowania usługi Log Analytics do indeksowania usługi Diagnostyka Azure](../../log-analytics/log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) odczytywać diagnostyki platformy Azure, które są zapisywane w usłudze table storage przy użyciu programu PowerShell.
+Użyj kroków w [konfigurowania usługi Log Analytics do indeksowania usługi Diagnostyka Azure](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) odczytywać diagnostyki platformy Azure, które są zapisywane w usłudze table storage przy użyciu programu PowerShell.
 
 Przy użyciu programu Azure PowerShell można bardziej precyzyjnie określić zdarzenia, które są zapisywane do usługi Azure Storage.
 Aby uzyskać więcej informacji, zobacz [Włączanie diagnostyki w usłudze Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).

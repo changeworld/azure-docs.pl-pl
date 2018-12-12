@@ -1,7 +1,7 @@
 ---
 title: Dodawanie chit czatu do wiedzy usługi QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Dodawanie osobistych rozmowy chit do bota sprawia, że konwersacji i bardziej angażujące kiedy tworzysz bazę wiedzy. Usługa QnA Maker umożliwia łatwe dodawanie wstępnie wypełnionych zbiór najważniejsze rozmowy chit, do wiedzy. To jest punkt wyjścia dla czatu internetowego chit Twój bot i zaoszczędzić czas i pieniądze, zapisywania ich od podstaw.
+description: Dodawanie osobistych rozmowy chit do bota sprawia, że konwersacji i bardziej angażujące kiedy tworzysz bazę wiedzy. Usługa QnA Maker umożliwia łatwe dodawanie wstępnie wypełnionych zbiór najważniejsze rozmowy chit, do wiedzy.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: tulasim
-ms.openlocfilehash: ddd78cbfff2b1ee450a26306dce528cd89fea788
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: 7c54628faba4a3d7a89c1944e2f434a83035707b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228928"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081766"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Dodaj Chit czatu do bazy wiedzy
 

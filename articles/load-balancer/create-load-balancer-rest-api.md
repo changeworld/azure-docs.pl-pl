@@ -1,5 +1,6 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia platformy Azure przy użyciu interfejsu API REST | Dokumentacja firmy Microsoft
+title: Tworzenie usługi Azure Load Balancer przy użyciu interfejsu API REST
+titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć za pomocą interfejsu API REST usługi Azure Load Balancer.
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
-ms.openlocfilehash: 2f5d3584a429ce35e6905b14bb412c3782fb0185
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416923"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079725"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Tworzenie usługi Azure podstawowego modułu równoważenia obciążenia przy użyciu interfejsu API REST
 

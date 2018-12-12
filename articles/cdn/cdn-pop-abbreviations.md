@@ -77,9 +77,9 @@ FTY | Atlanta, Georgia, USA | Ameryki Północnej: USA wschodniego wybrzeża
 GIG | Rio de Janeiro, Brazil | Ameryka Łacińska
 GRU | São Paulo, Brazil | Ameryka Łacińska
 HEL | Helsinki, Finlandia | Europa
-HHP | Hongkong | Azja
-HKC | Hongkong | Azja
-HKG | Hongkong | Azja
+HHP | SRA Hongkong | Azja
+HKC | SRA Hongkong | Azja
+HKG | SRA Hongkong | Azja
 HND | Tokio, Japonia | Azja
 IAD | Ashburn, Virginia, USA | Ameryki Północnej: USA wschodniego wybrzeża
 ICN | Seul, Korea | Azja

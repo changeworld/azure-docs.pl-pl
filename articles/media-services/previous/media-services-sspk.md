@@ -149,7 +149,7 @@ Przejściowe i końcowe SSPK licencjobiorców mogą przesyłać pytania technicz
 * SmarDTV SA
 * SoftAtHome
 * Sony Corporation
-* Ograniczone TCL Zbiorowość Marketing (urządzeniach oddalonych od brzegu komercyjne Makau)
+* Ograniczone TCL Zbiorowość Marketing (urządzeniach oddalonych od brzegu komercyjne SRA Makau)
 * Technicolor dostarczanie technologii, sygnatury dostępu Współdzielonego
 * Tongfang globalnego Ltd.
 * TOP zwycięstwa inwestycje, Ltd.

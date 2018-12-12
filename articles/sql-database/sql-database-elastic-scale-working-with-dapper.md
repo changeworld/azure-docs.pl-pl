@@ -3,7 +3,7 @@ title: Za pomocą biblioteki klienckiej elastycznej bazy danych z programem Dapp
 description: Używanie biblioteki klienckiej elastycznej bazy danych z programem Dapper.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3a25d68b0f0bdd97b204906af87fac8013ad3cff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253027"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866308"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Za pomocą biblioteki klienckiej elastycznej bazy danych z programem Dapper
 Ten dokument stanowi dla deweloperów, które zależą od programem Dapper do tworzenia aplikacji, ale także wykorzystywać [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md) do tworzenia aplikacji fragmentowania tej implementacji, aby skalować warstwę danych.  Ten dokument przedstawia zmiany w aplikacji opartych na programem Dapper, które są niezbędne w celu integracji z narzędziami elastycznej bazy danych. Naszym głównym celem jest tworzenie zarządzania fragmentami elastycznych baz danych i routingu zależnego od danych z programem Dapper. 

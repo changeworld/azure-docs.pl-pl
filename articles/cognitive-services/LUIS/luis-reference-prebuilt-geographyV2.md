@@ -1,23 +1,24 @@
 ---
-title: Lokalizacja geograficzna V2 wstępnie utworzone jednostki — dokumentacja usługi LUIS
+title: Lokalizacja geograficzna V2 wstępnie utworzone jednostki
 titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera geographyV2 informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cjgronlund
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 3559bc02944f88f486104d4d9553f0c45a1f1754
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 07bbb8e17a9f75bd878c384b5b8d90798d043814
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983416"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086230"
 ---
-# <a name="geographyv2-entity"></a>GeographyV2 jednostki
+# <a name="geographyv2-entity"></a>GeographyV2, jednostka
 Jednostki wstępnie geographyV2 wykrywa miejsc. Ponieważ przeprowadzono już uczenie tę jednostkę, dodawanie wypowiedzi przykład zawierający GeographyV2 do intencji aplikacji nie jest konieczne. Jednostka GeographyV2 jest obsługiwane w języku angielskim [kultury](luis-reference-prebuilt-entities.md).
 
 ## <a name="subtypes"></a>Podtypy
@@ -35,7 +36,7 @@ Lokalizacje geograficzne istnieją podtypy:
 ## <a name="resolution-for-geographyv2-entity"></a>Rozpoznawanie GeographyV2 jednostki
 W poniższym przykładzie pokazano rozdzielczość **builtin.geographyV2** jednostki.
 
-```JSON
+```json
 {
     "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
     "topScoringIntent": {

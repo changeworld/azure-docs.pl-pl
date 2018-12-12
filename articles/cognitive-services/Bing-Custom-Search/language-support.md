@@ -42,7 +42,7 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Finlandia|FI|
 |Francja|PW|
 |Niemcy|DE|
-|Hongkong|HK|
+|SRA Hongkong|HK|
 |Indie|INDIE|
 |Indonezja|ID|
 |Włochy|IT|
@@ -86,7 +86,7 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Finlandia|Fiński|fi-FI|
 |Francja|Francuski|fr-FR|
 |Niemcy|Niemiecki|de-DE.|
-|Hongkong|Chiński (tradycyjny)|zh-HK|
+|SRA Hongkong|Chiński (tradycyjny)|zh-HK|
 |Indie|Polski|EN-IN|
 |Indonezja|Polski|EN-ID|
 |Włochy|Włoski|IT-IT|

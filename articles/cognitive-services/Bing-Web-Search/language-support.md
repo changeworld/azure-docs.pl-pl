@@ -3,19 +3,19 @@ title: Obsługa języków - API wyszukiwania w Internecie Bing
 titleSuffix: Azure Cognitive Services
 description: Lista języków naturalnych, krajów i regionów, które są obsługiwane przez interfejs API wyszukiwania wiadomości Bing.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: erhopf
-ms.openlocfilehash: c15e1ddd35e625a713ff569f26e9312d9dcd0bc8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: aahi
+ms.openlocfilehash: 6d7b227ac182ca2cd30d6a6eaa428ea86757214c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435555"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164404"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Obsługa języka i regionu API wyszukiwania w Internecie Bing
 
@@ -32,31 +32,31 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Argentyna|AR|
 |Australia|AU|
 |Austria|AT|
-|Belgia|MOŻNA|
-|Brazylia|BRAZYLIA|
-|Kanada|Urząd certyfikacji|
+|Belgia|BE|
+|Brazylia|BR|
+|Kanada|CA|
 |Chile|CL|
 |Dania|DK|
 |Finlandia|FI|
 |Francja|PW|
 |Niemcy|DE|
-|Hongkong|HK|
-|Indie|INDIE|
+|SRA Hongkong|HK|
+|Indie|IN|
 |Indonezja|ID|
 |Włochy|IT|
 |Japonia|JP|
 |Korea|KR|
-|Malezja|MOJE|
+|Malezja|MY|
 |Meksyk|MX|
-|Holandia|HOLANDIA|
+|Holandia|NL|
 |Nowa Zelandia|NZ|
-|Norwegia|NIE|
+|Norwegia|NO|
 |Chiny|CN|
 |Polska|PL|
-|Portugalia|(CZAS PACYFICZNY)|
+|Portugalia|PT|
 |Filipiny|PH|
-|Rosja|JEDNOSTKA ŻĄDANIA|
-|Arabia Saudyjska|AMERYKA POŁUDNIOWA|
+|Rosja|RU|
+|Arabia Saudyjska|SA|
 |Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
@@ -83,7 +83,7 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Finlandia|Fiński|fi-FI|
 |Francja|Francuski|fr-FR|
 |Niemcy|Niemiecki|de-DE.|
-|Hongkong|Chiński (tradycyjny)|zh-HK|
+|SRA Hongkong|Chiński (tradycyjny)|zh-HK|
 |Indie|Polski|EN-IN|
 |Indonezja|Polski|EN-ID|
 |Włochy|Włoski|IT-IT|

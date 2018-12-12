@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 9ed9f85691c41fa514956763edd1a759f9f57c04
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 4907bbc9ed7a32e74175a4c6a178ac41bc165961
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019732"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085216"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Tworzenie pamięci podręcznej Azure dla usługi Redis
 
@@ -30,7 +30,7 @@ W tym scenariuszu dowiesz się, jak utworzyć pamięć podręczna systemu Azure 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-azurecli[main](../../../cli_scripts/redis-cache/create-cache/create-cache.sh "Azure Azure Cache for Redis")]
+[!code-azurecli[main](../../../cli_scripts/redis-cache/create-cache/create-cache.sh "Azure Cache for Redis")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/redis-cli-script-clean-up.md)]
 

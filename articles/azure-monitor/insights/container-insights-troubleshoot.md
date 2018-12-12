@@ -1,5 +1,5 @@
 ---
-title: Jak rozwiązywanie problemów z usługi Azure Monitor dla kontenerów (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Jak rozwiązywanie problemów z usługi Azure Monitor dla kontenerów | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak rozwiązywać problemy i rozwiązywanie problemów z usługą Azure Monitor dla kontenerów.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
+ms.date: 11/30/2018
 ms.author: magoedte
-ms.openlocfilehash: f5b08efda80eefad736386cd74ec1d40f05a6f3a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 4957665391dab5a88941fa84c03152e33718de3b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994818"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095265"
 ---
-# <a name="troubleshooting-azure-monitor-for-containers-preview"></a>Rozwiązywanie problemów z usługi Azure Monitor dla kontenerów (wersja zapoznawcza)
+# <a name="troubleshooting-azure-monitor-for-containers"></a>Rozwiązywanie problemów z usługi Azure Monitor dla kontenerów
 
 Po skonfigurowaniu monitorowania klastra usługi Azure Kubernetes Service (AKS) z usługą Azure Monitor dla kontenerów, można napotkać problem uniemożliwia zbieranie danych i raportowania stanu. Ten artykuł szczegółowo opisuje niektóre typowe problemy i kroki rozwiązywania problemów.
 

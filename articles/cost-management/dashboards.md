@@ -1,21 +1,21 @@
 ---
 title: Wyświetlaj kluczowe metryki, za pomocą pulpitów nawigacyjnych Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób wyświetlania kluczowych metryk za pomocą pulpitów nawigacyjnych w rozwiązaniu Cloudyn.
+description: W tym artykule opisano, jak można wyświetlić kluczowe metryki za pomocą pulpitów nawigacyjnych w rozwiązaniu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: a058757c3b4ae5087d89cdbdc1ede5fe780606ea
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: f232ee89993998eb25ecce73e9c2ac8e08f3198b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997067"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094116"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Wyświetl klucz koszt metryki za pomocą pulpitów nawigacyjnych
 
@@ -43,7 +43,7 @@ Aby szybko rozpocząć pracę z niestandardowego pulpitu nawigacyjnego można zd
 Aby utworzyć niestandardowego pulpitu nawigacyjnego:
 
 1. Na stronie głównej kliknij **Dodaj nowe +**. Zostanie wyświetlona strona Mój pulpit nawigacyjny.  
-    ![Mój pulpit nawigacyjny](./media/dashboards/my-dashboard.png)
+    ![Moje strony pulpitu nawigacyjnego, w którym dodawane są nowe raporty](./media/dashboards/my-dashboard.png)
 2. Kliknij przycisk **Dodaj nowy raport**. Zostanie wyświetlone okno dodawania raportu.
 3. Wybierz raport, który chcesz dodać do elementu widget pulpitu nawigacyjnego. Widżet zostanie dodana do pulpitu nawigacyjnego.
 4. Powtórz te czynności, aż do pulpitu nawigacyjnego.
@@ -63,7 +63,7 @@ Niestandardowy pulpit nawigacyjny można udostępnić innym użytkownikom _publi
 Aby udostępnić niestandardowy pulpit nawigacyjny do publicznego:
 
 1. Na pulpicie nawigacyjnym kliknij **ustawienia pulpitu nawigacyjnego**. Zostanie wyświetlone okno Ustawienia pulpitu nawigacyjnego.  
-    ![Opcje pulpitu nawigacyjnego](./media/dashboards/dashboard-options.png)
+    ![ustawienia pulpitu nawigacyjnego dla niestandardowego pulpitu nawigacyjnego](./media/dashboards/dashboard-options.png)
 2. W oknie Ustawienia pulpitu nawigacyjnego kliknij symbol koła strzałkę, a następnie kliknij przycisk **publicznych**. Zostanie wyświetlone okno dialogowe potwierdzenia publicznych pulpitu nawigacyjnego.
 3. Kliknij przycisk **tak**. Pulpit nawigacyjny jest teraz dostępne dla innych użytkowników.
 
@@ -116,13 +116,13 @@ Można ustawić dowolny pulpit nawigacyjny jako domyślne. Ustawienie domyślne 
 — Lub —
 
 1. Kliknij przycisk **ustawienia pulpitu nawigacyjnego** zapoznać się z listą dostępnych pulpitów nawigacyjnych i wybierz pulpit nawigacyjny, który chcesz ustawić jako domyślny.  
-    ![Opcje pulpitu nawigacyjnego](./media/dashboards/dashboard-options.png)
+    ![Opcje pulpitu nawigacyjnego dla domyślnego pulpitu nawigacyjnego](./media/dashboards/dashboard-options.png)
 2. Kliknij przycisk **domyślne** w wierszu pulpitu nawigacyjnego. Zostanie wyświetlone okno potwierdzenia domyślny pulpit nawigacyjny.
 3. Kliknij przycisk **Yes** (Tak). Pulpit nawigacyjny jest ustawiona jako domyślna.
 
 ## <a name="management-dashboard"></a>Pulpit nawigacyjny zarządzania
 Zarządzanie (lub MSP pulpitu nawigacyjnego, aby użytkownicy MSP) pulpit nawigacyjny zawiera najważniejsze typy głównego raportu.  
-![Pulpit nawigacyjny zarządzania](./media/dashboards/management-dash.png)
+![Wyświetlanie raportów pulpit nawigacyjny zarządzania](./media/dashboards/management-dash.png)
 
 ### <a name="cost-entity-summary-enterprise-only"></a>Podsumowanie jednostki kosztu (tylko wersja Enterprise)
 Ten element widget zawiera podsumowanie jednostki kosztu zarządzanych, w tym liczbę jednostek i liczbę kont.
@@ -158,7 +158,7 @@ Ten element widget Wyświetla usługi storage używane według działów. Umieś
 
 ## <a name="cost-controller-dashboard"></a>Koszt pulpit nawigacyjny kontrolera
 Pulpit nawigacyjny kontroler kosztów zawiera najważniejsze funkcje alokacji kosztów wstępnie ustalony.  
-![Koszt pulpit nawigacyjny kontrolera](./media/dashboards/cost-controller-dashboard.png)
+![Wyświetlanie raportów kosztów pulpit nawigacyjny kontrolera](./media/dashboards/cost-controller-dashboard.png)
 
 ### <a name="cost-over-time"></a>Koszt w funkcji czasu
 Ten element widget pomaga wykryć trendy związane z kosztami. Zawiera opis koszt w ciągu ostatniego dnia w oparciu trendów z ostatnich 30 dni.
@@ -198,7 +198,7 @@ Ten element widget najważniejsze funkcje wydania w ciągu ostatnich sześciu mi
 ## <a name="asset-controller-dashboard"></a>Pulpit nawigacyjny kontrolera zasobów
 
 Ten pulpit nawigacyjny Wyświetla liczbę uruchomionych wystąpień, dostępnych i używanych dysków, dystrybucję typów wystąpień i informacje dotyczące magazynu.  
-![Pulpit nawigacyjny kontrolera zasobów](./media/dashboards/asset-controller-dashboard.png)
+![Wyświetlanie raportów pulpit nawigacyjny kontrolera zasobów](./media/dashboards/asset-controller-dashboard.png)
 
 ### <a name="compute-instances"></a>Wystąpienia obliczeniowe
 Ten element widget Wyświetla liczbę uruchomionych wystąpień, w oparciu o trendu użycia z ostatnich 30 dni.
@@ -227,13 +227,13 @@ Ten element widget wyróżnia liczby uruchomionych wystąpień Amazon usług pul
 
 ## <a name="optimizer-dashboard"></a>Optymalizator pulpitu nawigacyjnego
 Ten pulpit nawigacyjny Wyświetla redukcję zatrudnienia zalecenia, nieużywane zasoby i potencjalne oszczędności.  
-![Optymalizator pulpitu nawigacyjnego](./media/dashboards/optimizer-dashboard.png)
+![Pulpit nawigacyjny Optymalizator przedstawiający różne raporty](./media/dashboards/optimizer-dashboard.png)
 
 ### <a name="ri-calculator"></a>Kalkulator wystąpień Zarezerwowanych
 Ten element widget Wyświetla liczbę zalecenia zakupu wystąpień Zarezerwowanych i wyróżnienie potencjalne oszczędności roczne.
 - Kliknij element widget, aby otworzyć Kalkulator wystąpienia zarezerwowane, gdzie można określić, kiedy należy używać na żądanie a zastrzeżone planów cenowych.
 
-### <a name="sizing"></a>Zmiana rozmiaru
+### <a name="sizing"></a>Zmiany rozmiaru
 Ten element widget wyróżnia zalecanych rozmiarów i potencjalne oszczędności, jeśli zaimplementowana.
 - Kliknij element widget, aby otworzyć raport usługi EC2 Cost Effective Sizing zalecenia.
 
@@ -257,7 +257,7 @@ Zalecenia dotyczące optymalizacji są oparte na dane dotyczące użycia i wydaj
 
 ## <a name="s3-tracker-dashboard"></a>Pulpit nawigacyjny śledzenia S3
 Pulpit nawigacyjny śledzenia S3 pomaga znaleźć, analizowania i wyświetlić swoje bieżące użycie magazynu oraz trendów.  
-![Pulpit nawigacyjny śledzenia S3](./media/dashboards/s3-tracker-dashboard.png)
+![Pulpit nawigacyjny śledzenia S3 przedstawiający różne raporty](./media/dashboards/s3-tracker-dashboard.png)
 
 ### <a name="all-buckets"></a>Wszystkie pakiety
 Ten element widget wyróżnia łączny rozmiar wszystkich swoje zasobników w GB i całkowita liczba obiektów w swojej zasobników.
@@ -281,7 +281,7 @@ Ten element widget prezentuje liczbę obiektów dla przedziału w rzeczywista li
 
 ## <a name="cloud-comparison-dashboard"></a>Pulpit nawigacyjny rozwiązania cloud porównania
 Pulpit nawigacyjny porównania chmurze ułatwia porównanie kosztów od różnych dostawców w chmurze na podstawie ceny, typ Procesora i pamięci RAM.  
-![Pulpit nawigacyjny rozwiązania cloud porównania](./media/dashboards/cloud-comparison-dashboard.png)
+![Wyświetlanie raportów pulpit nawigacyjny rozwiązania cloud porównania](./media/dashboards/cloud-comparison-dashboard.png)
 
 ### <a name="ec2-cost-in-azure-by-instance-type"></a>Usługi EC2 Koszt na platformie Azure dzięki typu wystąpienia
 Ten element widget wyróżnia ostatnich 30 dni użytkowania kursów na żądanie. Porównuje koszty dzięki bieżącym vs koszt Amazon EC2 potencjalnych kosztów na platformie Azure.

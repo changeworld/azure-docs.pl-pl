@@ -70,7 +70,7 @@ Oto przykład:
 
 1.  Nie jest możliwe do generowania obrazu sprite, z jednym wierszem obrazów (SpriteColumn = 1 powoduje obrazu z jedną kolumną).
 2.  Segmentu obrazów sprite na umiarkowanie wielkości obrazy JPEG nie jest jeszcze obsługiwany. Z tego powodu należy uważać na ograniczenie liczby miniatur i ich rozmiar, tak aby wynikowe połączone Sprite miniaturę wokół 8 pikseli M lub mniej.
-3.  Usługa Azure Media Player obsługuje obrazki w przeglądarkach Edge, Chrome i Firefox. Podczas analizowania VTT nie jest obsługiwana w programie IE11.
+3.  Usługa Azure Media Player obsługuje obrazki w przeglądarkach Microsoft Edge, Chrome i Firefox. Podczas analizowania VTT nie jest obsługiwana w programie IE11.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

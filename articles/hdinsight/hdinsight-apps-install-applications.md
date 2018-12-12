@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e1a6b453bb92ca57a1c9be9bff958ac0780ea12e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 47a634ca1c4e904cc1054db3a834483489ade0ec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498037"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093560"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalowanie aplikacji Apache Hadoop innych firm w usłudze Azure HDInsight
 
@@ -29,7 +29,7 @@ Na poniższej liście przedstawiono opublikowane aplikacje:
 * **DATAIKU DDS w HDInsight** umożliwia informatykom danych prototypów, tworzenie i wdrażanie wysoce specjalizowane usługi przekształcające surowe dane w trafne przewidywania biznesowe.
 * **Datameer** jest skalowalna platforma samoobsługowa do przygotowywania, eksplorowania, i dotyczących danych na potrzeby analizy przyspiesza Przekształcanie złożonych z wielu źródeł danych w cenne informacje biznesowe, dostarczanie szybciej i MĄDRZEJ szczegółowych informacji w skali przedsiębiorstwa.
 * **H2O sztucznej inteligencji dla HDInsight (wersja Beta)** H2O Sparkling Water obsługuje następujące algorytmów rozproszonych: GLM Bayesa, rozproszonych Random lasu, gradientu zwiększania wyniku maszyny, głębokie sieci neuronowe, głębokim uczeniem K-średnich, analizie PCA, Uogólnione niski modele klasyfikacji, wykrywanie anomalii i Autoencoders.
-* **Kyligence Analytics Platform** Kyligence Analytics Platform (KAP) to gotowa do użycia w przedsiębiorstwie danych obsługiwane przez Apache Kylin i rozwiązania Apache Hadoop, co zapewnia subsecond zapytania czas oczekiwania na ogromną skalę w zestawie danych i upraszcza analizy danych Użytkownicy biznesowi i analityków. 
+* **Kyligence Enterprise**, obsługiwane przez Apache Kylin, zapewnia błyskawiczny wgląd w dane na ogromnych zestawów danych dla analityków danych i użytkowników biznesowych. Przy użyciu uczenia maszynowego najnowocześniejszych technologii i inteligentnym danym i funkcje modelowania znacznie zwiększa wydajność analizy danych big data. 
 * **Samoobsługa Adaptive przygotowywania danych**
 * **Serwer zadań Spark dla wykonawcy Spark KNIME** serwer zadań Spark dla wykonawcy Spark KNIME służy do łączenia platforma analityczna KNIME klastrów HDInsight.
 * **Gwiazda Presto** Presto jest szybka i skalowalna rozproszonych aparatu zapytań SQL. Zaprojektowana z myślą o separacji magazynu i mocy obliczeniowej, Presto to idealne rozwiązanie dla wykonywanie zapytań o dane w usługi Azure Data Lake Storage, bazy danych usługi Azure Blob Storage, SQL i NoSQL oraz innych źródeł danych.

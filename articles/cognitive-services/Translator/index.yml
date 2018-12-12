@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d74ef4b68545c349c8df2cb7090ee8c26e2cd3e4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dd13a8178fd74f54ffa6fa5d9d8c23d214965dca
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622861"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866972"
 documentType: LandingData
 title: Dokumentacja tłumaczenia tekstu w usłudze Translator
 metadata:
@@ -37,7 +37,7 @@ sections:
       html: <p>Informacje o rozszerzeniu Custom Translator</p>
       image:
         src: ../media/index/i_overview.svg
-      title: Co to jest rozszerzenie Custom Translator (wersja zapoznawcza)?
+      title: Co to jest rozszerzenie Custom Translator?
     - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
       html: <p>Dowiedz się, jak rozpocząć pracę z rozszerzeniem Custom Translator</p>
       image:

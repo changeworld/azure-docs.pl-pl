@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c9445793061b84a1bd1632d00b64ea99800bc2d1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 8da42ee6db4b9ec76fa97e94a77076ed347e2952
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643005"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080678"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Jak rozwiązywać problemy związane z agenta usługi Log Analytics dla systemu Linux 
 
@@ -62,7 +62,7 @@ Jeśli żadna z powyższych czynności działa, następujących kanałów pomocy
 | NOT_DEFINED | Ponieważ nie są zainstalowane niezbędne zależności, wtyczka auditd auoms nie zostaną zainstalowane | Instalację auoms nie powiodło się, wykorzystują pakiet. |
 | 2 | Nieprawidłowa opcja udostępniane przez pakiet powłoki. Uruchom `sudo sh ./omsagent-*.universal*.sh --help` za użycie |
 | 3 | Brak opcji udostępniane przez pakiet powłoki. Uruchom `sudo sh ./omsagent-*.universal*.sh --help` do użycia. |
-| 4 | Nieprawidłowy pakiet typu lub nieprawidłowe ustawienia serwera proxy; omsagent -*obr. / min*SH pakiety można zainstalować tylko na komputerach z systemem obr. / min, a następnie omsagent*deb*SH pakiety można zainstalować tylko w systemach oparta na rozwiązaniu Debian. Jest zaleca się używać universal Instalatora z [najnowszej wersji](../../log-analytics/log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux). Również [Przejrzyj](#issue:-unable-to-connect-through-proxy-to-log-analytics) Aby sprawdzić, czy ustawienia serwera proxy. |
+| 4 | Nieprawidłowy pakiet typu lub nieprawidłowe ustawienia serwera proxy; omsagent -*obr. / min*SH pakiety można zainstalować tylko na komputerach z systemem obr. / min, a następnie omsagent*deb*SH pakiety można zainstalować tylko w systemach oparta na rozwiązaniu Debian. Jest zaleca się używać universal Instalatora z [najnowszej wersji](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Również [Przejrzyj](#issue:-unable-to-connect-through-proxy-to-log-analytics) Aby sprawdzić, czy ustawienia serwera proxy. |
 | 5 | Pakiet shell musi zostać wykonana jako główny lub wystąpił błąd 403 zwrócił zestawu dokumentacji podczas dołączania. Uruchamianie przy użyciu polecenia `sudo`. |
 | 6 | Nieprawidłowy pakiet architektury lub wystąpił błąd błąd 200 zwrócił zestawu dokumentacji podczas dołączania; omsagent -*x64.sh pakiety można zainstalować tylko w systemach 64-bitowych, a następnie omsagent*x86.sh pakiety można zainstalować tylko w systemach 32-bitowych. Pobierz właściwy pakiet dla architektury z [najnowszej wersji](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Nie można zainstalować pakietu OMS. Przejrzyj dane wyjściowe polecenia niepowodzenia głównego. |
@@ -410,7 +410,7 @@ Możesz kontynuować reonboard po użyciu `--purge` opcji
 ### <a name="resolution"></a>Rozwiązanie 
 Wykonaj poniższe kroki, aby rozwiązać ten problem.
 1. Usuń rozszerzenie z witryny Azure portal.
-2. Zainstalować agenta po [instrukcje](../../log-analytics/log-analytics-quick-collect-linux-computer.md).
+2. Zainstalować agenta po [instrukcje](../../azure-monitor/learn/quick-collect-linux-computer.md).
 3. Uruchom ponownie agenta, uruchamiając następujące polecenie: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 * Poczekaj kilka minut i aprowizowania stan zmieni się na **Aprowizowanie zakończyło się pomyślnie**.
 

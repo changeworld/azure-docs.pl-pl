@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d834b7f43d961400e2d5080a46cf921d719f3393
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9f2ed9c9059fa76a55ebd26fa3175605e89a4cdd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684862"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090275"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Praca z baz danych Azure Cosmos, kontenery i elementów
 
@@ -53,7 +53,7 @@ Podczas tworzenia kontenera usługi Azure Cosmos, należy skonfigurować przepł
 
 * **Udostępnione aprowizowanej przepływności** tryb: te kontenery Udostępnianie innych kontenerów w tej samej bazy danych (z wyjątkiem tych kontenerów, które zostały skonfigurowane za pomocą dedykowanego aprowizowanej przepływności) aprowizowanej przepływności. Innymi słowy aprowizowaną przepływność w bazie danych jest udostępniany "udostępnione" kontenerów. Aby dowiedzieć się więcej, zobacz [sposobu konfigurowania aprowizowaną przepływność na bazę danych Azure Cosmos](how-to-provision-database-throughput.md).
 
-Cosmos Azure kontenera można skalować elastycznie, czy tworzyć kontenery z oboma "udostępnione" lub "dedykowane" aprowizowana przepływność tryby, oznacza to, że mają nieograniczony magazyn i aprowizowanej przepływności.  
+Kontener usługi Azure Cosmos można elastycznie skalować, tworzenie kontenerów przy użyciu albo "udostępnione" lub "dedykowane" aprowizowana przepływność tryby.
 
 Kontener usługi Azure Cosmos jest kontenerem niezależnej od schematu elementów. Elementy w kontenerze mogą mieć dowolną schematów. Na przykład element reprezentujący osoby, element reprezentujący samochodów można umieścić w tym samym kontenerze. Domyślnie wszystkie elementy, które dodajesz do kontenera, Uzyskaj automatycznie indeksowane i bez wymagania żadnych jawnych indeksu ani zarządzania schematami. Możesz dostosować zachowanie indeksowania przez skonfigurowanie zasad indeksowania w kontenerze. 
 
@@ -105,7 +105,7 @@ W zależności od wybranego interfejsu API element Azure Cosmos może reprezento
 
 | **Jednostka cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- |
-|Usługa Azure Cosmos elementu | Element | Wiersz | Dokument | Węzła lub krawędzi | Element |
+|Usługa Azure Cosmos elementu | Element | wiersz | Dokument | Węzła lub krawędzi | Element |
 
 ### <a name="properties-of-an-item"></a>Właściwości elementu
 

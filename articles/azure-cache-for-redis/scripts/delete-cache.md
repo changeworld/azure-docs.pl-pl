@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 8d8912b047004a86ad49d855f7b69a6ffaa293e0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 58ee6c7239e3a71fed9a9ab987b962abcc9c0508
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019728"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085206"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Usunięcie pamięci podręcznej Azure redis Cache
 
@@ -30,7 +30,7 @@ W tym scenariuszu dowiesz się, jak usunąć pamięć podręczna systemu Azure d
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-azurecli[main](../../../cli_scripts/redis-cache/delete-cache/delete-cache.sh "Azure Azure Cache for Redis")]
+[!code-azurecli[main](../../../cli_scripts/redis-cache/delete-cache/delete-cache.sh "Azure Cache for Redis")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/redis-cli-script-clean-up.md)]
 

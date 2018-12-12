@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 0cb82cfcecbb719b357cda46bf969acf6c6cefe7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 98828589832d69ada11205e471314a153a566766
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015300"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080269"
 ---
 # <a name="configure-containers"></a>Konfigurowanie kontenerów
 
@@ -84,7 +84,7 @@ To ustawienie można znaleźć w dwóch miejscach:
 |--|------|-----------|-------------|
 |Yes| `Eula` | Ciąg | Akceptacja licencji<br><br>Przykład:<br>`Eula=accept` |
 
-Kontenery usługi cognitive Services są licencjonowane w ramach umowy regulującej korzystanie z platformy Azure. Jeśli nie masz istniejącej umowy regulujących korzystanie z platformy Azure, zgadzasz się, czy umowy regulującej korzystanie z platformy Azure jest Microsoft Online Subscription — Umowa (co zawiera warunki usług Online). Dla wersji zapoznawczych wyrażasz zgodę również na dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft. Przy użyciu kontenera jest równoznaczne z wyrażeniem zgody na te warunki.
+Kontenery usługi cognitive Services są licencjonowane w ramach [umowy](https://go.microsoft.com/fwlink/?linkid=2018657) regulujących korzystanie z platformy Azure. Jeśli nie masz istniejącej umowy regulujących korzystanie z platformy Azure, potwierdzam, że umowy regulującej korzystanie z platformy Azure są [Microsoft Online Subscription — Umowa](https://go.microsoft.com/fwlink/?linkid=2018755), który obejmuje dokument [Online Services — warunki ](https://go.microsoft.com/fwlink/?linkid=2018760). Dla wersji zapoznawczych, wyrażasz zgodę na [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://go.microsoft.com/fwlink/?linkid=2018815). Przy użyciu kontenera jest równoznaczne z wyrażeniem zgody na te warunki.
 
 ## <a name="fluentd-settings"></a>Ustawienia Fluentd
 

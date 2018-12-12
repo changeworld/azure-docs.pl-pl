@@ -3,7 +3,7 @@ title: Użyj usługi Azure Resource Health, aby monitorować kondycję bazy dany
 description: Użyj usługi Azure Resource Health, aby monitorować kondycję bazy danych SQL, pomaga diagnozować i uzyskać pomoc techniczną, gdy problem z platformą Azure wpłynie na Twoje zasoby programu SQL.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 9cbe88a44ba598a22fab628ae01605ac9d63bece
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 12/06/2018
+ms.openlocfilehash: dc20ffb0ce8add08a396a4c0ba5b496e80d04aa1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632632"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083890"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Umożliwia Rozwiązywanie problemów z łącznością dla usługi Azure SQL Database Resource Health
 
@@ -41,7 +41,7 @@ Stan **dostępne** oznacza, że kondycja zasobu nie wykrył niepowodzeń logowan
 
 ### <a name="degraded"></a>Obniżono poziom
 
-Stan **obniżony** oznacza, że kondycja zasobu wykrył większość pomyślnego logowania, ale także niektóre błędy. Są to najbardziej prawdopodobne błędy przejściowe logowania. Aby zmniejszyć wpływ problemów z łącznością powodowanych przez błędy przejściowe logowania, zaimplementuj [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) w kodzie.
+Stan **Obniżona sprawność** oznacza, że usługa Resource Health zarejestrowała w większości zakończone sukcesem próby zalogowania się, ale wystąpiły pewne błędy. Są to najbardziej prawdopodobne błędy przejściowe logowania. Aby zmniejszyć wpływ problemów z łącznością powodowanych przez błędy przejściowe logowania, zaimplementuj [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) w kodzie.
 
 ![Obniżono poziom](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
@@ -63,20 +63,20 @@ Możesz uzyskać dostęp do 14 dni historii kondycji w historii kondycji częśc
 
 ### <a name="downtime-reasons"></a>Przyczyny przestojów
 
-W przypadku bazy danych SQL napotyka Przestój, aby zidentyfikować przyczynę jest wykonywana analiza. Jeśli jest dostępny, z powodu przestojów jest zgłaszany w historii kondycji części kondycji zasobu. Czas przestoju przyczyny są zazwyczaj opublikowane w ciągu 30 minut po wystąpieniu zdarzenia.
+W przypadku bazy danych SQL napotyka Przestój, aby zidentyfikować przyczynę jest wykonywana analiza. Jeśli jest dostępny, z powodu przestojów jest zgłaszany w historii kondycji części kondycji zasobu. Przyczyny przestojów są zazwyczaj publikowane w ciągu 30 minut po wystąpieniu zdarzenia.
 
 #### <a name="planned-maintenance"></a>Planowana konserwacja
 
-Infrastruktura platformy Azure okresowo przeprowadza planowaną konserwację — Uaktualnij składniki sprzętowe lub programowe w centrum danych. Gdy baza danych jest poddawany konserwacji, SQL może zakończyć niektóre istniejące połączenia i odmówić nowe. Błędy podczas planowanej konserwacji mają zwykle charakter przejściowy i Logika ponawiania próby logowania zmniejsza wpływ. Jeśli nadal występują błędy podczas logowania, skontaktuj się z pomocą techniczną.
+Infrastruktura platformy Azure okresowo przeprowadza planowaną konserwację — Uaktualnij składniki sprzętowe lub programowe w centrum danych. Gdy baza danych jest poddawany konserwacji, SQL może zakończyć niektóre istniejące połączenia i odmówić nowe. Niepowodzenia logowania podczas planowanej konserwacji mają zwykle charakter przejściowy i [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) pomaga zredukować wpływ. Jeśli nadal występują błędy podczas logowania, skontaktuj się z pomocą techniczną.
 
 #### <a name="reconfiguration"></a>Ponowne konfigurowanie
 
-Reconfigurations są traktowane jako przejściowe warunki, a oczekuje się od czasu do czasu. Te zdarzenia mogą być wywoływane przez błędy ładowania równoważenia lub oprogramowanie i sprzęt. Każda aplikacja kliencka produkcji, który nawiązuje połączenie z usługą bazy danych w chmurze powinny implementować logikę ponawiania niezawodne połączenia, z logiki wycofywania, może pomóc rozwiązać tych sytuacji, a powinien ogólnie przezroczystego błędy użytkownikowi końcowemu.
+Reconfigurations są traktowane jako przejściowe warunki, a oczekuje się od czasu do czasu. Te zdarzenia mogą być wywoływane przez błędy ładowania równoważenia lub oprogramowanie i sprzęt. Każda aplikacja kliencka produkcji, który nawiązuje połączenie z bazą danych w chmurze powinny implementować niezawodne połączenia [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), ponieważ może ułatwić uniknięcie sytuacji i powinien ogólnie przezroczystego błędy użytkownikowi końcowemu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [Logika ponawiania próby dla błędów przejściowych](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
-- [Rozwiązywanie problemów, diagnozowanie i zapobieganie błędom połączeń SQL](./sql-database-connectivity-issues.md)
+- [Troubleshoot, diagnose, and prevent SQL connection errors](./sql-database-connectivity-issues.md) (Rozwiązywanie problemów, diagnozowanie i zapobieganie błędom połączeń SQL)
 - Dowiedz się więcej o [Konfigurowanie alertów dotyczących kondycji zasobu](/articles/service-health/resource-health-alert-arm-template-guide.md)
 - Zapoznaj się z omówieniem programu [Resource Health](/articles/service-health/resource-health-overview.md)
 - [Usługa Resource Health — często zadawane pytania](/articles/service-health/resource-health-faq.md)

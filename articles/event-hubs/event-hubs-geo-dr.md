@@ -1,5 +1,5 @@
 ---
-title: Odzyskiwanie po awarii geograficzne w usłudze Azure Event Hubs | Dokumentacja firmy Microsoft
+title: Odzyskiwanie po awarii Geo - usługi Azure Event Hubs | Dokumentacja firmy Microsoft
 description: Jak używać regionów geograficznych do trybu failover i odzyskiwanie danych po awarii w usłudze Azure Event Hubs
 services: event-hubs
 documentationcenter: ''
@@ -11,18 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 89ecfd93c22fe72fee3befd8d4a722eb41d816af
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747175"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091350"
 ---
-# <a name="azure-event-hubs-geo-disaster-recovery"></a>Usługa Azure odzyskiwanie po awarii geograficznego usługi Event Hubs
+# <a name="azure-event-hubs---geo-disaster-recovery"></a>Usługa Azure Event Hubs — odzyskiwanie po awarii geograficznie 
 
-Gdy cały regiony platformy Azure lub w centrach danych (Jeśli nie [strefy dostępności](../availability-zones/az-overview.md) są używane) doświadczają przestoju, koniecznie do przetwarzania danych w dalszym ciągu działać w innym regionie lub w centrum danych. W efekcie *odzyskiwania po awarii geograficznie* i *Geografickou replikaci* są ważne funkcje w każdej firmie. Usługa Azure Event Hubs obsługuje zarówno odzyskiwania po awarii geograficzne i replikacja geograficzna, na poziomie przestrzeni nazw. 
+Gdy cały regiony platformy Azure lub w centrach danych (Jeśli nie [strefy dostępności](../availability-zones/az-overview.md) są używane) doświadczają przestoju, koniecznie do przetwarzania danych w dalszym ciągu działać w innym regionie lub w centrum danych. W efekcie *odzyskiwania po awarii geograficznie* i *Geografickou replikaci* są ważne funkcje w każdej firmie. Usługa Azure Event Hubs obsługuje zarówno odzyskiwania po awarii geograficzne i replikacja geograficzna, na poziomie przestrzeni nazw. 
 
 Funkcji odzyskiwania po awarii geograficznej jest ogólnie dostępna w ramach jednostki SKU standardowa centrów zdarzeń.
 

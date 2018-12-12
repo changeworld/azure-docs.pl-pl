@@ -4,7 +4,7 @@ description: Dowiedz się więcej o zarządzanie zabezpieczeniami bazy danych SQ
 keywords: zabezpieczenia bazy danych sql, zarządzanie zabezpieczeniami bazy danych, zabezpieczenia logowania, zabezpieczenia bazy danych, dostęp do bazy danych
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/29/2018
-ms.openlocfilehash: 56a121e8b8f7f929b16a0c3507d45402ff586b96
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c234ac95d0e02857fe87afe3a734d77f00954477
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682677"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864948"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych SQL Database i SQL Data Warehouse
 

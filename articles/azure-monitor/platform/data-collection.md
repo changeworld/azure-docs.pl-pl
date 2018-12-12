@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19d448634998f01505c0e274377e1aa8cd788728
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: caab6083bc12ffafe669c86bea4824ea0b31339a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993803"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079674"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../../azure-monitor/overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -138,7 +138,7 @@ Zebrane przez usługi Azure Monitor dzienniki są przechowywane w usłudze Log A
 Usługa log Analytics może zbierać dane z różnych źródeł, zarówno w obrębie platformy Azure i z zasobami lokalnymi. Następujące źródła danych zapisanych w usłudze Log Analytics:
 
 - [Dzienniki aktywności](../../azure-monitor/platform/collect-activity-logs.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) zapewniające wgląd w ich działania.
-- Agenci na [Windows](../../log-analytics/log-analytics-windows-agent.md) i [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Log Analytics zgodnie z opisem w [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) , należy skonfigurować.
+- Agenci na [Windows](../../log-analytics/log-analytics-windows-agent.md) i [Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Log Analytics zgodnie z opisem w [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) , należy skonfigurować.
 - Dane aplikacji są zbierane przez [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Danych zapewniające wgląd w określonej aplikacji lub usługi [rozwiązania do monitorowania](../insights/solutions.md) lub funkcje, takie jak szczegółowe informacje o kontenerze, szczegółowych informacji z maszyny Wirtualnej lub grupy zasobów w szczegółowe informacje.
 - Dane zabezpieczeń gromadzone przez [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/).

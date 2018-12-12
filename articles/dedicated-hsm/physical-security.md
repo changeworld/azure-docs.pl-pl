@@ -1,22 +1,23 @@
 ---
-title: Fizyczne zabezpieczeń platformy Azure w wersji dedykowanej przez moduł HSM | Dokumentacja firmy Microsoft
-description: Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń udostępnia możliwości magazynu kluczy w ramach platformy Azure, która spełnia FIPS 140-2 Level 3 certyfikacji
+title: Zabezpieczenia fizycznego przez moduł HSM — sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
+description: Informacje o bezpieczeństwo fizyczne urządzenia sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej w centrach danych
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/21/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: a0f85c755b269d95720137368a4ff438031a9fae
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 662800d2b9db7d7a19861431354e55b3897e020a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319365"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080048"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Fizyczne zabezpieczeń platformy Azure w wersji dedykowanej przez moduł HSM
 
@@ -56,6 +57,6 @@ Zaleca się, że wszystkie najważniejsze pojęcia związane z usług, takich ja
 
 * [Wysoka dostępność](high-availability.md)
 * [Sieć](networking.md)
-* [Wsparcie dla](supportability.md)
+* [Możliwości obsługi](supportability.md)
 * [Monitorowanie](monitoring.md)
 * [Architektura wdrożenia](deployment-architecture.md)

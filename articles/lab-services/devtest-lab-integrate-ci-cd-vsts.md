@@ -1,6 +1,6 @@
 ---
-title: Integrowanie usługi Azure DevTest Labs w potoku usługi VSTS ciągłej integracji i dostarczania | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zintegrować usługi Azure DevTest Labs usługi VSTS potok ciągłej integracji i dostarczania
+title: Integrowanie usługi Azure DevTest Labs z potokiem Azure potoków ciągłej integracji i dostarczania | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zintegrować usługi Azure DevTest Labs w sieci Web Azure potoków ciągłej integracji i potoku dostaw
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301212"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082955"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Integrowanie usługi Azure DevTest Labs usługi Azure DevOps potok ciągłej integracji i dostarczania
 Możesz użyć *Azure DevTest Labs zadania* rozszerzenia, które jest instalowane w DevOps platformy Azure można łatwo zintegrować potokiem ciągłej integracji/ciągłego Dostarczania kompilacji i wydania przy użyciu usługi Azure DevTest Labs. Rozszerzenie instaluje trzy zadania: 
@@ -138,7 +138,7 @@ Następny etap wdrożenia to utworzenie maszyny Wirtualnej do użycia jako "zło
 1. W potoku wydań wybierz **dodawać zadania** a następnie na **Wdróż** kartę, należy dodać *programu Azure PowerShell* zadania. Skonfiguruj zadania w następujący sposób:
 
    > [!NOTE]
-   > Aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs, zobacz [Wdróż: programu Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) i uruchom skrypt.
+   > Aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs, zobacz [Wdróż: programu Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) i uruchom skrypt.
 
    a. Aby uzyskać **typu połączenia platformy Azure**, wybierz opcję **usługi Azure Resource Manager**.
 

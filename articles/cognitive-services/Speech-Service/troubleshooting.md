@@ -1,21 +1,22 @@
 ---
-title: Rozwiązywanie problemów z zestawu SDK usługi mowy
+title: Rozwiązywanie problemów z mowy SDK — usługi mowy
 titleSuffix: Azure Cognitive Services
-description: Rozwiązywanie problemów z zestawu SDK usługi mowy.
+description: Ten artykuł zawiera informacje, aby pomóc w rozwiązywaniu problemów, które można napotkać, korzystając z zestawu SDK usługi mowy.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 9f0cea263262d83d9a95012f6cd09fa9acdc0141
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 04a1f3222b17d91889eb580d9d4e8206d8156d37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464575"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095487"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Rozwiązywanie problemów z zestawu SDK usługi mowy
 
@@ -23,7 +24,7 @@ Ten artykuł zawiera informacje, aby pomóc w rozwiązywaniu problemów, które 
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: Uaktualnienie WebSocket nie powiodło się z powodu błędu uwierzytelniania (403)
 
-Konieczne może być nieprawidłowy punkt końcowy dla Twojego regionu lub usługi. Sprawdź identyfikator URI, aby upewnić się, że jest on poprawny. 
+Konieczne może być nieprawidłowy punkt końcowy dla Twojego regionu lub usługi. Sprawdź identyfikator URI, aby upewnić się, że jest on poprawny.
 
 Ponadto może być problem z Twoim klucz subskrypcji lub autoryzacji tokenu. Aby uzyskać więcej informacji zobacz następną sekcję.
 
@@ -78,19 +79,19 @@ Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poni
     ```Powershell
     $SpeechServiceURI =
     'https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US'
-    
+
     # $OAuthToken is the authorization token returned by the token service.
     $RecoRequestHeader = @{
       'Authorization' = 'Bearer '+ $OAuthToken
       'Transfer-Encoding' = 'chunked'
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
-    
+
     # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
-    
+
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
-    
+
     # Show the result.
     $RecoResponse
     ```
@@ -122,4 +123,3 @@ Ten problem jest zazwyczaj spowodowane danych audio. Może zostać wyświetlony 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Zapoznaj się z informacjami o wersji](releasenotes.md)
-

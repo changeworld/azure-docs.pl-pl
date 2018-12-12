@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 10867974c6f1c3fae6965b1888db3c4448b26a38
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f5fb62a04f1829726796b674a8e6e72951e6bb35
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364110"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083380"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopiowanie danych z bazy danych HBase za pomocą usługi Azure Data Factory 
 
@@ -119,7 +119,12 @@ Następujące właściwości są obsługiwane dla bazy danych HBase, połączone
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych bazy danych HBase.
 
-Aby skopiować dane z bazy danych HBase, należy ustawić właściwość typu zestawu danych na **HBaseObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z bazy danych HBase, należy ustawić właściwość typu zestawu danych na **HBaseObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **HBaseObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -131,7 +136,8 @@ Aby skopiować dane z bazy danych HBase, należy ustawić właściwość typu ze
         "linkedServiceName": {
             "referenceName": "<HBase linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -147,7 +153,7 @@ Aby skopiować dane z bazy danych HBase, należy ustawić typ źródłowego w dz
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **HBaseSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

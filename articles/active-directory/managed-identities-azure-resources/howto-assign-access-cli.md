@@ -1,6 +1,6 @@
 ---
-title: Jak przypisać tożsamości usługi Zarządzanej dostępu do zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure
-description: Krok po kroku instrukcje dotyczące przypisywania Instalatora MSI dla jednego zasobu, uzyskać dostęp do innego zasobu przy użyciu wiersza polecenia platformy Azure.
+title: Jak przypisać z tożsamości zarządzanej dostępu do zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure
+description: Krok po kroku instrukcje dotyczące przypisywania tożsamość zarządzaną w jeden zasób, uzyskać dostęp do innego zasobu przy użyciu wiersza polecenia platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -12,36 +12,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2017
+ms.date: 12/06/2017
 ms.author: daveba
-ms.openlocfilehash: 2e3b85251b9dabd6efd23e5b41372703a237d227
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 25d92c6c8c03f277b4219cd7d2a83afbb81e2b10
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949081"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081374"
 ---
-# <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Przypisywanie dostępu tożsamości usługi zarządzanej (MSI) do zasobów przy użyciu wiersza polecenia platformy Azure
+# <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Przypisywanie dostępu tożsamości zarządzanej do zasobów przy użyciu wiersza polecenia platformy Azure
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Po skonfigurowaniu zasobu platformy Azure przy użyciu pliku MSI, można zapewnić dostęp MSI do innego zasobu, tak jak dowolnego podmiotu zabezpieczeń. W tym przykładzie pokazano, jak przyznać maszynie wirtualnej platformy Azure lub dostępu tożsamości usługi Zarządzanej zestaw skalowania maszyn wirtualnych do konta usługi Azure storage przy użyciu wiersza polecenia platformy Azure.
+Po skonfigurowaniu zasobu platformy Azure za pomocą tożsamości zarządzanej, można zapewnić dostęp tożsamość zarządzaną, do innego zasobu, podobnie jak podmiot zabezpieczeń. W tym przykładzie pokazano, jak przyznać maszynie wirtualnej platformy Azure lub zestawu skalowania maszyn wirtualnych tożsamość zarządzaną dostęp do konta usługi Azure storage przy użyciu wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
-Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, masz trzy opcje:
-
-- Użyj [usługi Azure Cloud Shell](../../cloud-shell/overview.md) w witrynie Azure portal (patrz następny rozdział).
-- Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu.
-- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) Jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. 
+- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-it-work)**.
+- Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+- Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, masz trzy opcje:
+    - Użyj [usługi Azure Cloud Shell](../../cloud-shell/overview.md) w witrynie Azure portal (patrz następny rozdział).
+    - Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu.
+    - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) Jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Przypisywanie dostępu tożsamości usługi Zarządzanej do innego zasobu przy użyciu kontroli RBAC
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Przypisywanie dostępu tożsamości zarządzanej do innego zasobu przy użyciu kontroli RBAC
 
-Po włączeniu tożsamości usługi Zarządzanej w obrębie zasobu platformy Azure, takich jak [maszyny wirtualnej platformy Azure](qs-configure-cli-windows-vm.md) lub [zestawu skalowania maszyn wirtualnych platformy Azure](qs-configure-cli-windows-vmss.md): 
+Po włączeniu tożsamości zarządzanej w obrębie zasobu platformy Azure, takich jak [maszyny wirtualnej platformy Azure](qs-configure-cli-windows-vm.md) lub [zestawu skalowania maszyn wirtualnych platformy Azure](qs-configure-cli-windows-vmss.md): 
 
 1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az-login). Użyj konta które jest skojarzone z subskrypcją platformy Azure w ramach której chcesz wdrożyć zestaw skalowania maszyny Wirtualnej lub maszyny wirtualnej:
 
@@ -49,7 +48,7 @@ Po włączeniu tożsamości usługi Zarządzanej w obrębie zasobu platformy Azu
    az login
    ```
 
-2. W tym przykładzie udostępniamy możliwość dostępu do maszyny wirtualnej platformy Azure na koncie magazynu. Najpierw używamy [az resource list](/cli/azure/resource/#az-resource-list) można pobrać nazwy głównej usługi dla maszyny wirtualnej o nazwie "myVM":
+2. W tym przykładzie udostępniamy możliwość dostępu do maszyny wirtualnej platformy Azure na koncie magazynu. Najpierw używamy [az resource list](/cli/azure/resource/#az-resource-list) można pobrać nazwy głównej usługi dla maszyny wirtualnej o nazwie myVM:
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
@@ -66,20 +65,8 @@ Po włączeniu tożsamości usługi Zarządzanej w obrębie zasobu platformy Azu
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct
    ```
 
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
+## <a name="next-steps"></a>Kolejne kroki
 
-Plik MSI dla zasobu nie jest wyświetlany na liście dostępnych tożsamości, sprawdź, czy poprawnie włączono pliku MSI. W naszym przypadku możemy przejść z powrotem do maszyny wirtualnej platformy Azure lub zestawu skalowania maszyn wirtualnych w [witryny Azure portal](https://portal.azure.com) oraz:
-
-- Spójrz na stronie "Konfiguracja" i upewnij się, włączoną tożsamością usługi Zarządzanej = "Yes".
-- Spójrz na stronie "Rozszerzenia" i upewnij się, z rozszerzeniem MSI zostało pomyślnie wdrożone (**rozszerzenia** strona nie jest dostępna dla zestawu skalowania maszyn wirtualnych platformy Azure).
-
-Jeśli jest albo nieprawidłowa, może być konieczne ponownie Wdróż ponownie MSI Twojego zasobu i rozwiązywanie problemów błędu wdrożenia.
-
-## <a name="related-content"></a>Powiązana zawartość
-
-- Aby uzyskać omówienie MSI, zobacz [Przegląd tożsamości usługi zarządzanej](overview.md).
-- Aby włączyć MSI w maszynie wirtualnej platformy Azure, zobacz [konfigurowania Azure VM tożsamość usługi zarządzanej (MSI) przy użyciu wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md).
-- Aby włączyć tożsamości usługi Zarządzanej w zestawie skalowania maszyn wirtualnych platformy Azure, zobacz [Konfigurowanie usługi Azure Virtual Machine skalowania Ustaw tożsamość usługi zarządzanej (MSI) przy użyciu witryny Azure portal](qs-configure-portal-windows-vmss.md)
-
-W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połącz kształt naszej zawartości.
-
+- [Zarządzanych tożsamości dla zasobów platformy Azure — omówienie](overview.md)
+- Aby włączyć tożsamość zarządzana na maszynie wirtualnej platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md).
+- Aby włączyć tożsamość zarządzaną w zestawie skalowania maszyn wirtualnych platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure](qs-configure-cli-windows-vmss.md).

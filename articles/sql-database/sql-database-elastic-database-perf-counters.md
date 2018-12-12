@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/31/2018
-ms.openlocfilehash: d4ecfe700c90beb94455e3607cee4ea30227bd0e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f98c09a7e51fa729ef4a940e5f3c03de55d8dfd2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166240"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875284"
 ---
 # <a name="performance-counters-for-shard-map-manager"></a>Liczniki wydajności dla menedżera map fragmentów
 Możesz przechwycić wydajności [Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md), zwłaszcza w przypadku korzystania [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md). Liczniki są tworzone za pomocą metod klasy Microsoft.Azure.SqlDatabase.ElasticScale.Client.  
@@ -31,7 +31,7 @@ Liczniki są używane do śledzenia wydajności [routing zależny od danych](sql
 * Aby utworzyć wystąpienie licznika wydajności i zaktualizować liczników, użytkownik musi być członkiem **Administratorzy** lub **Użytkownicy monitora wydajności** grupy. 
 
 ## <a name="create-performance-category-and-counters"></a>Tworzenie kategorii wydajności i liczników
-Aby utworzyć liczników, wywołaj metodę CreatePeformanceCategoryAndCounters [klasy ShardMapManagmentFactory](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Tylko administrator może wykonać metodę: 
+Aby utworzyć liczników, wywołaj metodę CreatePeformanceCategoryAndCounters [klasy ShardMapManagementFactory](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Tylko administrator może wykonać metodę: 
 
     ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 

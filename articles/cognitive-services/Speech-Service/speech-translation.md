@@ -1,21 +1,22 @@
 ---
-title: Tłumaczenie mowy — informacje
+title: Tłumaczenie mowy — usługi mowy — informacje
 titlesuffix: Azure Cognitive Services
-description: Omówienie funkcji tłumaczenia mowy
+description: Interfejs API usługi mowy umożliwia dodanie end-to-end, w czasie rzeczywistym, wielu języków tłumaczenia mowy do aplikacji, narzędzi i urządzeń. Tego samego interfejsu API może służyć do tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 9d94105377597ca8e79cc43ed0903371e185d510
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469147"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086712"
 ---
 # <a name="about-the-speech-translation-api"></a>Interfejs API tłumaczenia mowy — informacje
 

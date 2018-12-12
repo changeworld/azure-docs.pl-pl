@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Konwertuj tekst na mowę, .NET Core — usługa rozpoznawania mowy'
+title: 'Szybki Start: Konwertuj tekst na mowę, .NET Core — usługi mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki Start dowiesz się, jak konwertować mowę przy użyciu interfejsu API REST zamiany tekstu na mowę. Przykładowy tekst uwzględnione w tym przewodniku mają strukturę jako język znaczników synteza mowy (SSML). Dzięki temu możliwe jest wybranie głos i język odpowiedzi mowy.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: erhopf
-ms.openlocfilehash: 4f424e73fbe1f05155e7f051d90dd72d57405adf
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641586"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089874"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Szybki Start: Konwertuj tekst na mowę, przy użyciu platformy .NET Core
 
@@ -28,19 +28,19 @@ Ten przewodnik Szybki Start wymaga [konta usług Azure Cognitive Services](https
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 * [Zestaw SDK platformy .NET](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Program Visual Studio](https://visualstudio.microsoft.com/downloads/), [programu Visual Studio Code](https://code.visualstudio.com/download), lub ulubionego edytora tekstu
+* Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
 * Klucz subskrypcji platformy Azure dla usługi mowy
 
 ## <a name="create-a-net-core-project"></a>Tworzenie projektu platformy .NET Core
 
-Otwórz nowy wiersz polecenia (lub sesji terminalowej), a następnie uruchom następujące polecenia:
+Otwórz nowy wiersz polecenia (lub sesję terminalową), a następnie uruchom następujące polecenia:
 
 ```console
 dotnet new console -o tts-sample
 cd tts-sample
 ```
 
-Pierwsze polecenie wykonuje dwie czynności. Tworzy nową aplikację konsolową .NET i tworzy katalog o nazwie `tts-sample`. Drugie polecenie zmienia się w katalogu projektu.
+Pierwsze polecenie wykonuje dwie czynności. Tworzy nową aplikację konsolową platformy .NET i katalog o nazwie `tts-sample`. Drugie polecenie zmienia katalog na katalog projektu.
 
 ## <a name="select-the-c-language-version"></a>Wybierz C# wersja językowa
 
@@ -56,9 +56,9 @@ Otwórz swój projekt, a następnie otwórz `tts-sample.csproj`. Upewnij się, �
 
 Upewnij się zapisać zmiany.
 
-## <a name="add-required-namespaces-to-your-project"></a>Dodaj wymaganego obszary nazw do projektu
+## <a name="add-required-namespaces-to-your-project"></a>Dodawanie wymaganych obszarów nazw do projektu
 
-`dotnet new console` Polecenia, który został przeprowadzony wcześniej utworzony projekt, w tym `Program.cs`. Ten plik jest, w którym zostanie umieszczony kod aplikacji. Otwórz `Program.cs`i Zastąp istniejące instrukcje using. Te instrukcje upewnij się, że masz dostęp do wszystkich typów, które są wymagane do kompilowania i uruchamiania przykładowej aplikacji.
+Uruchomione wcześnie polecenie `dotnet new console` spowodowało utworzenie projektu obejmującego plik `Program.cs`. W tym pliku umieścisz kod aplikacji. Otwórz plik `Program.cs` i zastąp istniejące instrukcje using. Te instrukcje gwarantują dostęp do wszystkich typów wymaganych do skompilowania i uruchomienia przykładowej aplikacji.
 
 ```csharp
 using System;
@@ -193,7 +193,6 @@ using (var client = new HttpClient())
         // Update your resource name
         request.Headers.Add("User-Agent", "YOUR_RESOURCE_NAME");
         request.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
-        request.Headers.Add("Connection", "Keep-Alive");
         // Create a request
         Console.WriteLine("Calling the TTS service. Please wait... \n");
         using (var response = await client.SendAsync(request).ConfigureAwait(false))
@@ -237,4 +236,5 @@ Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Samouczek: Rozpoznawanie mowy intencji](how-to-recognize-intents-from-speech-csharp.md)
+* [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)
+* [Próbki głosu rekord do utworzenia niestandardowych voice](record-custom-voice-samples.md)

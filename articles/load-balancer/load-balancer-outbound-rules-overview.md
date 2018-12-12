@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: MT
+ms.openlocfilehash: 34a80a180d4c08027e4c975d4f7955966eec7307
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219379"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086372"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -67,9 +67,9 @@ Wersja "2018-07-01" interfejsu API pozwala na definicję reguły ruchu wychodzą
 
 Chociaż regułę dla ruchu wychodzącego, mogą być używane z tylko jednego publicznego adresu IP, reguły ruchu wychodzącego do jej obsługi ułatwiają obciążenia konfiguracji skalowania wychodzących reguł NAT. Wiele adresów IP umożliwia zaplanowanie na dużą skalę scenariuszach i można użyć reguł dla ruchu wychodzącego, aby uniknąć [wyczerpania SNAT](load-balancer-outbound-connections.md#snatexhaust) podatne wzorców.  
 
-Poszczególnych dodatkowych adresów IP, które są dostarczane przez frontonu zapewnia 64 000 portów tymczasowych dla modułu równoważenia obciążenia do użycia jako SNAT portów. Chociaż Równoważenie obciążenia i reguł translatora adresów Sieciowych dla ruchu przychodzącego pojedynczego serwera sieci Web, reguły ruchu wychodzącego rozwija pojęcie frontonu i zezwala na wiele frontonów dla każdej reguły.  Wiele frontonów dla każdej reguły ilość dostępnych portów SNAT jest mnożona każdy publiczny adres IP i dużych scenariusze, które mogą być obsługiwane.
+Poszczególnych dodatkowych adresów IP, które są dostarczane przez frontonu zapewnia 51,200 portów tymczasowych dla modułu równoważenia obciążenia do użycia jako SNAT portów. Chociaż Równoważenie obciążenia i reguł translatora adresów Sieciowych dla ruchu przychodzącego pojedynczego serwera sieci Web, reguły ruchu wychodzącego rozwija pojęcie frontonu i zezwala na wiele frontonów dla każdej reguły.  Wiele frontonów dla każdej reguły ilość dostępnych portów SNAT jest mnożona każdy publiczny adres IP i dużych scenariusze, które mogą być obsługiwane.
 
-Ponadto można użyć [publiczny prefiks IP](https://aka.ms/lbpublicipprefix) bezpośrednio za pomocą regułę dla ruchu wychodzącego.  Za pomocą publicznego adresu IP prefiksu umożliwia łatwiejsze skalowanie i uproszczone stosując białą listę przepływów, pochodzących z wdrożenie systemu Azure. Można skonfigurować konfigurację adresu IP frontonu w ramach zasobu modułu równoważenia obciążenia można przywoływać publiczny prefiks adresu IP bezpośrednio.  Dzięki temu moduł równoważenia obciążenia wyłączną kontrolę nad publiczny prefiks adresu IP i reguły ruchu wychodzącego automatycznie użyje wszystkich publicznych adresów IP zawartych w publiczny prefiks adresu IP dla połączeń wychodzących.  Każdy z adresów IP w zakresie publiczny prefiks IP zapewniają 64 000 portów tymczasowych dla adresu IP dla modułu równoważenia obciążenia do użycia jako SNAT portów.   
+Ponadto można użyć [publiczny prefiks IP](https://aka.ms/lbpublicipprefix) bezpośrednio za pomocą regułę dla ruchu wychodzącego.  Za pomocą publicznego adresu IP prefiksu umożliwia łatwiejsze skalowanie i uproszczone stosując białą listę przepływów, pochodzących z wdrożenie systemu Azure. Można skonfigurować konfigurację adresu IP frontonu w ramach zasobu modułu równoważenia obciążenia można przywoływać publiczny prefiks adresu IP bezpośrednio.  Dzięki temu moduł równoważenia obciążenia wyłączną kontrolę nad publiczny prefiks adresu IP i reguły ruchu wychodzącego automatycznie użyje wszystkich publicznych adresów IP zawartych w publiczny prefiks adresu IP dla połączeń wychodzących.  Każdy z adresów IP w zakresie publiczny prefiks IP zapewniają 51,200 portów tymczasowych dla adresu IP dla modułu równoważenia obciążenia do użycia jako SNAT portów.   
 
 Nie może mieć poszczególne zasoby adresów publicznych adresów IP utworzone na podstawie publiczny prefiks adresu IP przy użyciu tej opcji, jak reguły ruchu wychodzącego musi mieć pełną kontrolę nad publiczny prefiks adresu IP.  Jeśli potrzebujesz bardziej szczegółową kontrolę poprawnie, można utworzyć indywidualne zasób publicznego adresu IP z publicznych adresów IP prefiksu i przypisać wiele publicznych adresów IP indywidualnie do frontonu regułę dla ruchu wychodzącego.
 
@@ -82,7 +82,7 @@ Użyj następującego parametru przydzielić SNAT 10 000 portów dla maszyny Wir
 
           "allocatedOutboundPorts": 10000
 
-Każdy publiczny adres IP z frontonów wszystkie reguły ruchu wychodzącego przyczynia się do 64 000 portów tymczasowych do użycia jako SNAT porty.  Moduł równoważenia obciążenia przydziela SNAT porty wielokrotność liczby 8. Jeśli podasz wartość nie podzielna przez 8 operacja konfiguracji jest odrzucane.  Jeśli użytkownik spróbuje przydzielić więcej SNAT portów, niż jest dostępnych na podstawie liczby publicznych adresów IP, operacja konfiguracji zostanie odrzucone.  Na przykład jeśli przydzielisz 10 000 portów dla maszyny Wirtualnej i 7 maszyn wirtualnych w wewnętrznej bazie danych będzie udostępnianie jednego publicznego adresu IP puli, konfiguracja zostanie odrzucone (7 x 10,0000 SNAT porty > 64 000 SNAT porty).  Możesz dodać więcej publiczne adresy IP do serwera sieci Web, reguły ruchu wychodzącego do scenariusza.
+Każdy publiczny adres IP z frontonów wszystkie reguły ruchu wychodzącego przyczynia się do 51,200 portów tymczasowych do użycia jako SNAT porty.  Moduł równoważenia obciążenia przydziela SNAT porty wielokrotność liczby 8. Jeśli podasz wartość nie podzielna przez 8 operacja konfiguracji jest odrzucane.  Jeśli użytkownik spróbuje przydzielić więcej SNAT portów, niż jest dostępnych na podstawie liczby publicznych adresów IP, operacja konfiguracji zostanie odrzucone.  Na przykład jeśli przydzielisz 10 000 portów dla maszyny Wirtualnej i 7 maszyn wirtualnych w wewnętrznej bazie danych będzie udostępnianie jednego publicznego adresu IP puli, konfiguracja zostanie odrzucone (7 x 10,0000 SNAT porty > 51,200 SNAT porty).  Możesz dodać więcej publiczne adresy IP do serwera sieci Web, reguły ruchu wychodzącego do scenariusza.
 
 Można powrócić do [automatyczna alokacja portu SNAT oparte na rozmiar puli zaplecza](load-balancer-outbound-connections.md#preallocatedports) , określając 0 dla liczby portów.
 
@@ -160,7 +160,7 @@ Jeśli użytkownik nie chce dla reguły równoważenia obciążenia ma być uży
 
 Można użyć reguł dla ruchu wychodzącego do dostrojenia [automatyczna alokacja portu SNAT oparte na rozmiar puli zaplecza](load-balancer-outbound-connections.md#preallocatedports).
 
-Na przykład jeśli masz dwie maszyny wirtualne do udostępniania jednego publicznego adresu IP dla NAT dla ruchu wychodzącego, możesz zwiększyć liczbę portów SNAT przydzielony z domyślnych portów 1024, jeśli występują SNAT wyczerpania. Każdy publiczny adres IP może przyczynić się do 64 000 portów tymczasowych.  Jeśli skonfigurujesz regułę dla ruchu wychodzącego z jednym frontonu publiczny adres IP można rozpowszechniać w sumie 64 000 portów SNAT do maszyn wirtualnych w puli zaplecza.  Dla dwóch maszyn wirtualnych można przydzielić maksymalnie 32 000 porty SNAT za pomocą regułę dla ruchu wychodzącego (2 x 32 000 = 64 000).
+Na przykład jeśli masz dwie maszyny wirtualne do udostępniania jednego publicznego adresu IP dla NAT dla ruchu wychodzącego, możesz zwiększyć liczbę portów SNAT przydzielony z domyślnych portów 1024, jeśli występują SNAT wyczerpania. Każdy publiczny adres IP może przyczynić się do 51,200 portów tymczasowych.  Jeśli skonfigurujesz regułę dla ruchu wychodzącego z jednym frontonu publiczny adres IP można rozpowszechniać w sumie 51,200 porty SNAT do maszyn wirtualnych w puli zaplecza.  Dla dwóch maszyn wirtualnych można przydzielić maksymalnie 25,600 porty SNAT za pomocą regułę dla ruchu wychodzącego (2 x 25,600 = 51,200).
 
 Przegląd [połączeń wychodzących](load-balancer-outbound-connections.md) i szczegółowe informacje na temat [SNAT](load-balancer-outbound-connections.md#snat) porty są przydzielone i używane.
 
@@ -202,7 +202,7 @@ Korzystając z wewnętrznego standardowego modułu równoważenia obciążenia, 
 
 ## <a name="limitations"></a>Ograniczenia
 
-- Maksymalna liczba można używać portów tymczasowych dla adresu IP frontonu wynosi 64 000.
+- Maksymalna liczba można używać portów tymczasowych dla adresu IP frontonu jest 51,200.
 - Zakres konfigurowalnych limitu czasu bezczynności ruchu wychodzącego jest 4-66 minut (240 do 4000 w sekundach).
 - Moduł równoważenia obciążenia nie obsługuje protokołu ICMP dla wychodzących reguł NAT.
 - Portal nie można skonfigurować lub wyświetlać reguły dla ruchu wychodzącego.  Zamiast tego użyj szablonów, interfejs API REST, Az interfejsu wiersza polecenia w wersji 2.0 lub programu PowerShell.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5e19c7c1ed15183fdb796a6fa4e537da946b40b9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 5294d5919b6d4d80c61e183866409123a9edbb60
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642536"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082667"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics
 W tym dokumencie opisano sposób konfigurowania komunikacji z usługą Azure Automation i Log Analytics przy użyciu bramy usługi Log Analytics, w przypadku bezpośredniego połączenia lub programu Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Bramy usługi Log Analytics, która jest przekierowania serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP, można zbierać dane i wysyłać je do usługi Azure Automation i Log Analytics w ich imieniu.  
@@ -74,7 +74,7 @@ Brama usługi Log Analytics jest dostępna w następujących językach:
 - Węgierski
 - Włoski
 - Japoński
-- Koreański
+- koreański
 - Polski
 - Portugalski (Brazylia)
 - Portugalski (Portugalia)
@@ -82,7 +82,7 @@ Brama usługi Log Analytics jest dostępna w następujących językach:
 - Hiszpański (międzynarodowy)
 
 ### <a name="supported-encryption-protocols"></a>Szyfrowanie obsługiwane protokoły
-Brama usługi Log Analytics obsługuje tylko zabezpieczeń TLS (Transport Layer) 1.0, 1.1 i 1.2.  Nie obsługuje protokołu Secure Sockets Layer (SSL).  Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Log Analytics, zdecydowanie zachęcamy do skonfigurowania bramy do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../log-analytics/log-analytics-data-security.md#sending-data-securely-using-tls-12). 
+Brama usługi Log Analytics obsługuje tylko zabezpieczeń TLS (Transport Layer) 1.0, 1.1 i 1.2.  Nie obsługuje protokołu Secure Sockets Layer (SSL).  Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Log Analytics, zdecydowanie zachęcamy do skonfigurowania bramy do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Obsługiwana liczba połączeń agenta
 W poniższej tabeli wymieniono obsługiwane liczbę agentów komunikacji z serwerem bramy.  Ta funkcja opiera się na agentów przekazywania ~ 200KB danych co 6 sekund. Ilość danych na agenta testowana jest około 2.7GB dziennie.
@@ -142,7 +142,7 @@ Aby dowiedzieć się, jak zaprojektować i wdrożyć klaster równoważenia obci
 Poniższa sekcja zawiera instrukcje dotyczące sposobu konfigurowania bezpośrednio połączonych agentów usługi Log Analytics, grupy zarządzania programu Operations Manager lub usługi Azure Automation hybrydowych — procesów roboczych Runbook z bramą usługi Log Analytics do komunikowania się z usługi Azure Automation i Log Analiza ruchu.  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>Konfigurowanie autonomicznego agenta usługi Log Analytics
-Aby poznać wymagania i procedury dotyczące sposobu instalowania agenta usługi Log Analytics na komputerach Windows bezpośredniego połączenia z usługą Log Analytics, zobacz [Windows łączenie komputerów do usługi Log Analytics](agent-windows.md) lub dla systemu Linux, zobacz komputery [ Łączenie komputerów z systemem Linux do usługi Log Analytics](../../log-analytics/log-analytics-quick-collect-linux-computer.md). Określanie serwera proxy podczas konfigurowania agenta, do miejsca tej wartości Zamień adres IP serwera bramy programu Log Analytics i jego numer portu.  Jeśli wdrożono wiele serwerów bramy za modułem równoważenia obciążenia sieciowego konfiguracji serwera proxy agenta usługi Log Analytics jest wirtualny adres IP Równoważenie obciążenia Sieciowego.  
+Aby poznać wymagania i procedury dotyczące sposobu instalowania agenta usługi Log Analytics na komputerach Windows bezpośredniego połączenia z usługą Log Analytics, zobacz [Windows łączenie komputerów do usługi Log Analytics](agent-windows.md) lub dla systemu Linux, zobacz komputery [ Łączenie komputerów z systemem Linux do usługi Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Określanie serwera proxy podczas konfigurowania agenta, do miejsca tej wartości Zamień adres IP serwera bramy programu Log Analytics i jego numer portu.  Jeśli wdrożono wiele serwerów bramy za modułem równoważenia obciążenia sieciowego konfiguracji serwera proxy agenta usługi Log Analytics jest wirtualny adres IP Równoważenie obciążenia Sieciowego.  
 
 Aby uzyskać informacje dotyczące automatyzacji hybrydowego procesu roboczego Runbook, zobacz [wdrażanie hybrydowego procesu roboczego Runbook](../../automation/automation-hybrid-runbook-worker.md).
 

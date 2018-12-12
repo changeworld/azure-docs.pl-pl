@@ -117,7 +117,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Dominika                  | ✓ | ✓ |
 | Dominikana        | ✓ | ✓ |
 | Ekwador                   |   | ✓ |
-| Falklandy (Malwiny) |   | ✓ |
+| Falklandy |   | ✓ |
 | Gujana Francuska             | ✓ | ✓ |
 | Grenlandia                 |   | Ø |
 | Grenada                   | ✓ | ✓ |
@@ -169,7 +169,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Wyspy Kokosowe (Keelinga)   |   | Ø |
 | Koreańska Republika Ludowo-Demokratyczna |   | Ø |
 | Dokdo/Takeshima       |   | Ø |
-| Hongkong                 | ✓ | ✓ |
+| SRA Hongkong                 | ✓ | ✓ |
 | Indonezja                 | ✓ | ✓ |
 | Iran                      |   | Ø |
 | Irak                      | ✓ | ✓ |

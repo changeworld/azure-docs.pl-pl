@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 86fcec0321e8f1b92fdc554532cb8f949b1b1569
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496195"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081393"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>O usłudze VPN gateway dla usługi Azure Stack
 
@@ -108,9 +108,9 @@ W poniższej tabeli przedstawiono typy bram i szacowaną agregowaną przepływno
 
 |   | Przepływność bramy sieci VPN *(1)* | Tuneli protokołu IPsec max bramy sieci VPN *(2)* |
 |-------|-------|-------|
-|**Podstawowa jednostka SKU** ***(3)***    | 100 Mb/s  | 10    |
-|**Standardowa jednostka SKU**       | 100 Mb/s  | 10    |
-|**Jednostka SKU wysokiej wydajności** | 200 Mb/s    | 5 |
+|**Podstawowa jednostka SKU** ***(3)***    | 100 Mb/s  | 20    |
+|**Standardowa jednostka SKU**       | 100 Mb/s  | 20    |
+|**Jednostka SKU wysokiej wydajności** | 200 Mb/s    | 10    |
 
 **Uwagi dotyczące tabeli:**
 

@@ -1,21 +1,22 @@
 ---
-title: 'Samouczek: Bota pytań i odpowiedzi z usługi Azure Bot Service — QnA Maker'
+title: Bot pytań i odpowiedzi — usługa Azure Bot Service — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Ten samouczek przeprowadzi Cię przez tworzenie bota pytań i odpowiedzi, przy użyciu usługi Azure Bot service w wersji 3 w witrynie Azure portal.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker`
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: tulasim
-ms.openlocfilehash: 19c56cf05e307deca52808b0eeba65b8949ffc0b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f5587e14a0250e7312f1c95598b481bd052931c3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212747"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094835"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Samouczek: Tworzenie Bota pytań i odpowiedzi za pomocą usługi Azure Bot Service w wersji 3
 
@@ -60,11 +61,11 @@ Musisz mieć wiedzy opublikowane w ramach tego samouczka. Jeśli nie masz, wykon
 
 5. Wybierz **pytanie i odpowiedź** szablonu w polu szablonu Bota, a następnie Zapisz ustawienia szablonu, wybierając **wybierz**.
 
-    ![Wybieranie usługi BOT](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+    ![Zapisz bot wybór szablonu usługi](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
 
 6. Przejrzyj ustawienia, a następnie wybierz **Utwórz**. To tworzy i wdraża usługi botów za pomocą platformy Azure.
 
-    ![Wybieranie usługi BOT](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+    ![Tworzenie botów](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
 
 7. Upewnij się, czy usługa bot service został pomyślnie wdrożony.
 

@@ -1,5 +1,5 @@
 ---
-title: Próbki głosu rekord do tworzenia niestandardowych voice
+title: Rejestrowanie niestandardowych voice przykłady — usługi mowy
 titleSuffix: Azure Cognitive Services
 description: Należy głosu niestandardowe jakości produkcyjnej Przygotowywanie skryptu niezawodne, zatrudniania dobre głosu talent, i rejestrując profesjonalnie.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 07/5/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: b1b189db56eb3f70f23940a8612d310d2ba8566f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 6aaa638504dd441240879050531952b269d02d15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471190"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081085"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Próbki głosu rekord do utworzenia niestandardowych voice
 
@@ -50,7 +51,7 @@ Wybieranie głosowe talent, którego naturalnego głosu możesz np. Istnieje mo�
 > [!TIP]
 > Ogólnie rzecz biorąc, należy unikać rozpoznawalnych głosów do tworzenia niestandardowych voice — chyba że oczywiście dowiesz się, jak utworzyć głosu osobistości. Głosy mniejszym znane są zazwyczaj mniej rozprasza uwagę użytkowników.
 
-Najważniejszym czynnikiem dotyczące wybierania głosowego talent jest spójność. Nagrań powinny wszystkie dźwięku tak jak zostały wprowadzone w dniu, w tym samym pomieszczeniu. Można podejście to idealne rozwiązanie za pomocą nagrywania dobre praktyki i inżynierii. 
+Najważniejszym czynnikiem dotyczące wybierania głosowego talent jest spójność. Nagrań powinny wszystkie dźwięku tak jak zostały wprowadzone w dniu, w tym samym pomieszczeniu. Można podejście to idealne rozwiązanie za pomocą nagrywania dobre praktyki i inżynierii.
 
 Talent Twojego głosu jest druga połowa równania. Użytkownik musi mieć możliwość Porozmawiaj z szybkości spójne, poziom głośności, skoku i sygnału. Wyczyść diction to. Talent musi być w stanie zachować ścisłą kontrolę własnego pomysłu odmiany, emocjonalnej wpływ i mannerisms mowy.
 
@@ -71,7 +72,7 @@ Wypowiedzi w skrypcie mogą pochodzić z dowolnego miejsca: Fikcja bez fikcja, z
 
 Swoje wypowiedzi nie muszą pochodzić z tego samego źródła lub tego samego rodzaju źródła. Jeszcze nie muszą mieć związek z siebie nawzajem. Jednak jeśli wykonasz Użyj ustawić wyrażenia (na przykład, "użytkownik pomyślnie zalogował się") w aplikacji funkcji rozpoznawania mowy, upewnij się uwzględnić je w skrypcie. Zapewni to Twój głos niestandardowe zwiększa prawdopodobieństwo dobrze ustalające tych wyrażeń. I należy zdecydujesz się używać rejestrowania zamiast syntezatora mowy, będą już mieć go przy użyciu tego samego głosu.
 
-Kluczowa jest Wybieranie głosowe talent, różnych jest kluczowa dobre skryptu. Skrypt powinien zawierać wiele inne słowa i zdania z różnymi rodzajami długości zdania, struktur i nastrój. Każdy dźwięk w języku powinien być reprezentowana wiele razy, a w wielu kontekstach (o nazwie *fonetycznych pokrycia*). 
+Kluczowa jest Wybieranie głosowe talent, różnych jest kluczowa dobre skryptu. Skrypt powinien zawierać wiele inne słowa i zdania z różnymi rodzajami długości zdania, struktur i nastrój. Każdy dźwięk w języku powinien być reprezentowana wiele razy, a w wielu kontekstach (o nazwie *fonetycznych pokrycia*).
 
 Co więcej tekst powinno zawierać wszystkie sposoby, może być reprezentowany w formie pisemnej określony dźwięk i umieść każdy dźwięk w różnych miejscach w zdaniach. Deklaratywne zdania i pytania należy uwzględnione i odczytać przy użyciu odpowiednich maksimów.
 
@@ -188,9 +189,9 @@ Zarejestruj dobre pięć sekund wyciszenia przed pierwszym rejestrowania do prze
 > [!TIP]
 > Wszystko, czego naprawdę potrzebne do przechwytywania jest głos talent, dzięki czemu można podejmować monophonic nagrywanie (jednego kanału) tylko wiersze. Jednak jeśli rejestrujesz stereo można użyć drugiego kanału do rejestrowania chatter w pomieszczeniu sterowania, aby przechwycić dyskusję na temat konkretnych wierszy lub trwa. Usuń tę ścieżkę, z wersji, który jest przekazywany do portalu usługi Custom Voice.
 
-Posłuchaj ściśle, użycie słuchawek wydajności talent głosu. Szukasz diction dobra, ale fizycznych, poprawna wymowa i braku niechciane dźwięki. Nie wahaj się poproś użytkownika talent, aby ponownie zarejestrować wypowiedź, które nie spełniają te standardy. 
+Posłuchaj ściśle, użycie słuchawek wydajności talent głosu. Szukasz diction dobra, ale fizycznych, poprawna wymowa i braku niechciane dźwięki. Nie wahaj się poproś użytkownika talent, aby ponownie zarejestrować wypowiedź, które nie spełniają te standardy.
 
-> [!TIP] 
+> [!TIP]
 > Jeśli używasz dużej liczby wypowiedzi pojedynczego wypowiedź utracić znaczącego wpływu na wynikowe niestandardowych voice. Może być wskazane więcej po prostu pamiętać wypowiedzi z problemami, wykluczyć je z zestawu danych i zobacz, jak Twój głos niestandardowych, okaże się nim. Zawsze możesz wrócić do studio i później zarejestrować brakujących przykładów.
 
 Należy pamiętać, liczba take lub kod, nad skryptem czasu dla każdego wypowiedź. Poproś inżynier do oznaczania każdej wypowiedź w metadanych nagrywania lub także arkuszu wskaźnika.

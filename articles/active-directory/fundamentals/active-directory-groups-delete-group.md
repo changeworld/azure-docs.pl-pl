@@ -1,6 +1,6 @@
 ---
-title: Jak usunąć grupę przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak usunąć grupę przy użyciu usługi Azure Active Directory.
+title: Usuwanie grupy — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące usuwania grupy za pomocą usługi Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 014fe487d23a6c75e94ca2708ed15044bd6cf53b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6c08022b47fb1a118e95a54eedf9b5239496ebf7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574335"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092234"
 ---
-# <a name="how-to-delete-a-group-using-azure-active-directory"></a>Porady: usuwanie grupy za pomocą usługi Azure Active Directory
-Możesz usunąć grupę dla dowolnej liczby powodów, ale zazwyczaj będzie się, ponieważ możesz:
+# <a name="delete-a-group-using-azure-active-directory"></a>Usuń grupę przy użyciu usługi Azure Active Directory
+Możesz usunąć grupę usługi Azure Active Directory (Azure AD) na dowolną liczbę powodów, ale zazwyczaj będzie się, ponieważ możesz:
 
 - Niepoprawnie ustawione **typ grupy** do niewłaściwej opcji
 
@@ -29,7 +29,7 @@ Możesz usunąć grupę dla dowolnej liczby powodów, ale zazwyczaj będzie się
 - Nie są już potrzebne grupy
 
 ## <a name="to-delete-a-group"></a>Aby usunąć grupę
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **grup**.
 

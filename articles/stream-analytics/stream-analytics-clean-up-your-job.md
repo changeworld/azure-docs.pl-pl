@@ -1,20 +1,20 @@
 ---
 title: Czyszczenie zadania usługi Azure Stream Analytics
-description: Ten artykuł to podręcznik sposobu usuwania zadań usługi Azure Stream Analytics.
+description: W tym artykule przedstawiono różne metody usuwania zadań usługi Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
-manager: kfile
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/22/2018
-ms.openlocfilehash: 580d05909ff3c94c982be5353b3b5e86a78fc43f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 85db38fef5e69c4de855f8cb6d54151496faebbe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969344"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090248"
 ---
 # <a name="clean-up-your-azure-stream-analytics-job"></a>Czyszczenie zadania usługi Azure Stream Analytics
 
@@ -31,7 +31,7 @@ Zadania usługi Azure Stream Analytics można łatwo usunąć za pomocą witryny
 
 3. Na stronie zadania usługi Stream Analytics wybierz **zatrzymać** zatrzymania zadania. 
 
-   ![Zatrzymaj zadanie](./media/stream-analytics-clean-up-your-job/stop-job.png)
+   ![Zatrzymaj zadanie usługi Azure Stream Analytics](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
 
 ## <a name="delete-a-job-in-azure-portal"></a>Usuwanie zadania w witrynie Azure portal
@@ -42,7 +42,7 @@ Zadania usługi Azure Stream Analytics można łatwo usunąć za pomocą witryny
 
 3. Na stronie zadania usługi Stream Analytics wybierz **Usuń** można usunąć zadania. 
 
-   ![Usuń zadanie](./media/stream-analytics-clean-up-your-job/delete-job.png)
+   ![Usuń zadanie usługi Azure Stream Analytics](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 
 
 ## <a name="stop-or-delete-a-job-using-powershell"></a>Zatrzymać lub usunąć zadania przy użyciu programu PowerShell

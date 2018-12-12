@@ -1,23 +1,24 @@
 ---
-title: Przejrzyj wypowiedzi punktu końcowego na korzystanie z aktywnej nauki interpretacji języka (LUIS)
-titleSuffix: Azure Cognitive Services
-description: Aktywna nauka jest jednym z trzech strategii w celu zwiększenia dokładności prognozy i najłatwiejsza do wdrożenia. Aktywna nauka, swoje wypowiedzi punkt końcowy Przegląd poprawne intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, który jest nieznany.
+title: Przejrzyj wypowiedzi użytkowników
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Aktywna nauka, swoje wypowiedzi punkt końcowy Przegląd poprawne intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, który jest nieznany.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/07/2018
 ms.author: diberry
-ms.openlocfilehash: 4ef6f5022b3c38eab2cda20123f179811f46390f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.openlocfilehash: ca8a6b05722ac2edc91d7459c64c2bdb312a7016
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637242"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080966"
 ---
-# <a name="enable-active-learning-by-reviewing-endpoint-utterances"></a>Włącz aktywne uczenie, przeglądając wypowiedzi punktu końcowego
+# <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Pojęcia dotyczące włączania aktywne uczenie, przeglądając wypowiedzi punktu końcowego
 Aktywna nauka jest jednym z trzech strategii w celu zwiększenia dokładności prognozy i najłatwiejsza do wdrożenia. Aktywna nauka, swoje wypowiedzi punkt końcowy Przegląd poprawne intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, który jest nieznany.
 
 ## <a name="what-is-active-learning"></a>Co to jest aktywna nauka

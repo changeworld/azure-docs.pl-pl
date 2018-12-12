@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304241"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089705"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Tworzenie szablonów usługi Azure Resource Manager do wdrażania aplikacji logiki
 
@@ -173,7 +173,7 @@ Jeśli masz istniejący projekt grupy zasobów, można dodać aplikacji logiki d
 
 ## <a name="deploy-a-logic-app-template"></a>Wdrażanie szablonu aplikacji logiki
 
-Szablonu można wdrożyć przy użyciu dowolnych narzędzi, takich jak PowerShell, interfejsu API REST, [usługi Azure DevOps Release Management](#team-services)i wdrażanie szablonu przy użyciu witryny Azure portal.
+Szablonu można wdrożyć przy użyciu dowolnych narzędzi, takich jak PowerShell, interfejsu API REST, [potoki usługi Azure DevOps platformy Azure](#team-services)i wdrażanie szablonu przy użyciu witryny Azure portal.
 Ponadto do przechowywania wartości parametrów, firma Microsoft zaleca utworzenie [plik parametrów](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
 Dowiedz się, jak [wdrażanie zasobów za pomocą szablonów usługi Azure Resource Manager i programu PowerShell](../azure-resource-manager/resource-group-template-deploy.md) lub [wdrażanie zasobów za pomocą szablonów usługi Azure Resource Manager i witryny Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
@@ -185,11 +185,11 @@ Do autoryzowania połączeń protokołu OAuth, Otwórz aplikację logiki w Proje
 Brak przykładowy skrypt w usłudze GitHub w ramach [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projektu.
 
 <a name="team-services"></a>
-## <a name="azure-devops-release-management"></a>Usługa Azure DevOps Release Management
+## <a name="azure-devops-azure-pipelines"></a>Potoki usługi Azure DevOps platformy Azure
 
-Typowy scenariusz wdrażania i zarządzania nimi w środowisku jest za pomocą narzędzia, takiego jak program Release Management w DevOps platformy Azure, Szablon wdrożenia aplikacji logiki. Obejmuje usługi Azure DevOps [wdrażanie grupy zasobów platformy Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) zadań, można dodać do dowolnej kompilacji lub potoku wydania. Musisz mieć [nazwy głównej usługi](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) dla autoryzacji do wdrożenia, a następnie można wygenerować potoku tworzenia wersji.
+Typowy scenariusz wdrażania i zarządzania nimi w środowisku jest za pomocą narzędzia, takiego jak Azure potoków w DevOps platformy Azure, Szablon wdrożenia aplikacji logiki. Obejmuje usługi Azure DevOps [wdrażanie grupy zasobów platformy Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) zadań, można dodać do dowolnej kompilacji lub potoku wydania. Musisz mieć [nazwy głównej usługi](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) dla autoryzacji do wdrożenia, a następnie można wygenerować potoku tworzenia wersji.
 
-1. Release Management, wybierz **pusty** tak, aby utworzyć pustym potoku.
+1. W potokach Azure wybierz **pusty** tak, aby utworzyć pustym potoku.
 
     ![Tworzenie pustego potoku][1]
 

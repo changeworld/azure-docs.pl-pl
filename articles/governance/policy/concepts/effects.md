@@ -4,21 +4,21 @@ description: Definicja zasad platformy Azure ma różne efekty, określające sp
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/30/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 4668b1fe6e59898d81fc71558e21acd1a89be767
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: MT
+ms.openlocfilehash: 2bed2f52f29d5c97ab576fae73498b60fb7ecc30
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279502"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079804"
 ---
 # <a name="understand-policy-effects"></a>Interpretacja efektów działania zasad
 
-Każda definicja zasad w zasadach usługi Azure ma wpływ jednego, który określa, co się dzieje podczas skanowania, kiedy **Jeśli** segmentu reguła zasad jest oceniany w celu on niezgodny z zasobem skanowania. Efekty można także zachowywać się inaczej, jeśli są one dla nowego zasobu, zasób zaktualizowane lub istniejący zasób.
+Każda definicja zasad w zasadach usługi Azure ma wpływ jednego. Powiadamiaj decyduje o tym, co się stanie, gdy reguła zasad jest oceniany w celu dopasowania. Efekty zachowywać się inaczej, jeśli są one dla nowego zasobu, zasób zaktualizowane lub istniejącego zasobu.
 
 Obecnie istnieją sześć efektów, które są obsługiwane w definicji zasad:
 
@@ -31,29 +31,28 @@ Obecnie istnieją sześć efektów, które są obsługiwane w definicji zasad:
 
 ## <a name="order-of-evaluation"></a>Kolejność obliczania
 
-Po wysłaniu żądania do tworzenia lub aktualizowania zasobów za pomocą usługi Azure Resource Manager, zasady są przetwarzane kilka efektów przed przekazanie żądania do odpowiedniego dostawcy zasobów.
-Uniemożliwi to niepotrzebne przetwarzania przez dostawcę zasobów, gdy zasób nie spełnia zaprojektowane nadzoru kontrolki zasad. Zasady tworzy listę wszystkie definicje zasad przypisany przez przypisanie inicjatywy lub zasad, które dotyczą według zakresu (minus wykluczenia) zasobu i przygotowuje się do oceny zasobu wobec każdej definicji.
+Żądania można utworzyć lub zaktualizować zasobów za pomocą usługi Azure Resource Manager są obliczane najpierw przez zasady. Zasady tworzy listę wszystkich przydziałów, stosowanie do zasobu, które ocenia następnie zasobu wobec każdej definicji. Zasady kilka efektów są przetwarzane przed przekazaniem żądania do odpowiedniego dostawcy zasobów. Uniemożliwi to niepotrzebne przetwarzania przez dostawcę zasobów, gdy zasób nie spełnia wymagań zaprojektowane nadzoru kontrolki zasad.
 
 - **Wyłączone** jest najpierw sprawdzane w celu określenia, jeśli powinna być oceniana reguła zasad.
 - **Dołącz** jest następnie oceniany. Ponieważ Dołącz może zmienić żądania, zmiany wprowadzone przez dołączanie może uniemożliwić inspekcji lub odmówić efekt wraz z.
 - **Odmów** jest następnie oceniany. Oceniając odmówić przed inspekcji, double rejestrowanie niepożądane zasobów nie będzie mógł.
-- **Inspekcja** jest następnie oceniany przed żądanie, przechodząc do dostawcy zasobów.
+- **Inspekcja** jest następnie oceniany przed żądaniem, przechodząc do dostawcy zasobów.
 
-Gdy żądanie znajduje się na potrzeby dostawcy zasobów i dostawcy zasobów zwraca kod stanu powodzenia **AuditIfNotExists** i **DeployIfNotExists** są obliczane, aby określić, czy monitowania wymagana jest zgodność rejestrowania lub akcji.
+Po dostawcy zasobów zwróci kod powodzenia, **AuditIfNotExists** i **DeployIfNotExists** obliczenia w celu określenia, czy konieczne jest dodatkowe zgodności rejestrowania lub akcji.
 
 ## <a name="disabled"></a>Disabled (Wyłączony)
 
-Efekt jest przydatna przy testowaniu w sytuacji, a gdy definicja zasad ma sparametryzowane efekt. Staje się można wyłączyć pojedynczego przypisanie tej zasady, zmieniając parametr przypisania efektu zamiast wyłączać wszystkie przypisania zasad.
+Efekt jest przydatna do testowania sytuacji lub gdy definicja zasad ma sparametryzowane efekt. Ta elastyczność sprawia, że można wyłączyć jednego przypisania zamiast wyłączać wszystkie przypisania tej zasady.
 
 ## <a name="append"></a>Append
 
-Dołącz służy do dodania kolejnych pól do żądanego zasobu podczas jej tworzenia lub aktualizacji. Może być przydatne w przypadku dodawania tagów na zasoby, takie jak costCenter lub określając dozwolone adresy IP dla zasobów magazynu.
+Dołącz służy do dodania kolejnych pól do żądanego zasobu podczas jej tworzenia lub aktualizacji. Typowym przykładem jest dodawanie tagów do zasobów, takich jak costCenter lub określając dozwolone adresy IP dla zasobów magazynu.
 
 ### <a name="append-evaluation"></a>Dołącz oceny
 
-Jak wspomniano wcześniej, Dołącz ocenia przed żądania przetwarzane przez dostawcę zasobów podczas tworzenia lub aktualizowania zasobu. Dołącz dodanie pola do zasobu podczas **Jeśli** warunek reguły jest spełniony. Jeśli efekt Dołącz przesłonić wartość oryginalne żądanie, podając inną wartość, następnie go działa jako efektu odrzucenia i odrzucić żądanie.
+Dołącz ocenia przed żądania przetwarzane przez dostawcę zasobów podczas tworzenia lub aktualizowania zasobu. Dołącz dodaje pola do zasobu podczas **Jeśli** warunek reguły jest spełniony. Jeśli efekt Dołącz przesłonić wartość oryginalne żądanie, podając inną wartość, następnie go działa jako efektu odrzucenia i odrzuca żądanie.
 
-Po uruchomieniu definicji zasad przy użyciu efektu dołączania w ramach cyklu oceny nie powoduje ona zmiany do zasobów, które już istnieją. Zamiast tego oznacza dowolnego zasobu, który spełnia **Jeśli** warunek jako niezgodne.
+Po uruchomieniu definicji zasad przy użyciu efektu dołączania w ramach cyklu oceny go nie zmieniać zasoby, które już istnieją. Zamiast tego oznacza dowolnego zasobu, który spełnia **Jeśli** warunek jako niezgodne.
 
 ### <a name="append-properties"></a>Dołącz właściwości
 
@@ -73,7 +72,7 @@ Przykład 1: Pojedynczy **pól i wartości** Paruj, aby dołączyć tag.
 }
 ```
 
-Przykład 2: Wiele **pól i wartości** pary do dołączenia zestawu tagów.
+Przykład 2: Dwa **pól i wartości** pary do dołączenia zestawu tagów.
 
 ```json
 "then": {
@@ -107,13 +106,13 @@ Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu [alias](definit
 
 ## <a name="deny"></a>Zablokuj
 
-Odmów używany w celu zapobiegania żądania zasobów nie jest zgodna z odpowiednią standardów za pośrednictwem definicji zasad, która kończy się niepowodzeniem żądania.
+Odmów używany w celu zapobiegania żądania zasobów nie jest zgodna standardów zdefiniowanych za pośrednictwem definicji zasad, która kończy się niepowodzeniem żądania.
 
 ### <a name="deny-evaluation"></a>Odmów oceny
 
-Podczas tworzenia lub aktualizowania zasobu, Odmów zapobiega żądania przed są wysyłane do dostawcy zasobów. Żądanie jest zwracana jako 403 (zabronione). W portalu można wyświetlić zabronione stanu wdrożenia, która nie została uruchomiona z powodu przypisania zasad.
+Podczas tworzenia lub aktualizowania zasobem dopasowane Odmów zapobiega żądanie przed wysłaniem do dostawcy zasobów. Żądanie jest zwracana jako `403 (Forbidden)`. W portalu można wyświetlić zabronione stanu wdrożenia, która została uniemożliwiona przez przypisanie zasad.
 
-Podczas cyklu oszacowania definicji zasad przy użyciu efektu odrzucenia, dopasowywanie zasobów, które są oznaczone jako niezgodne, ale na taki zasób jest wykonywana żadna akcja.
+Podczas oceny istniejących zasobów zasobów, które pasują do definicji zasad odmowy są oznaczone jako niezgodne.
 
 ### <a name="deny-properties"></a>Odmów właściwości
 
@@ -131,11 +130,11 @@ Przykład: Użycie efektu odrzucenia.
 
 ## <a name="audit"></a>Inspekcja
 
-Efekt inspekcji służy do tworzenia to zdarzenie ostrzegawcze w dzienniku aktywności, gdy niezgodnych zasobów jest obliczane, ale nie zatrzymuje żądania.
+Inspekcja służy do tworzenia to zdarzenie ostrzegawcze w dzienniku aktywności, oceniając niezgodnym zasobem, ale go nie zatrzymuje żądania.
 
 ### <a name="audit-evaluation"></a>Ocena inspekcji
 
-Efekt inspekcji jest ostatnim do uruchomienia podczas tworzenia lub aktualizacji zasobu przed zasobu są wysyłane do dostawcy zasobów. Działa tak samo dla żądania zasobów i cykl oceny, inspekcji i wykonuje `Microsoft.Authorization/policies/audit/action` operacji z dziennikiem aktywności. W obu przypadkach zasobu jest oznaczone jako niezgodne.
+Inspekcja jest ostatni efekt sprawdzana przez zasady podczas jej tworzenia lub aktualizacji zasobu. Zasady wysyła następnie zasobu na potrzeby dostawcy zasobów. Inspekcja działa tak samo, dla żądania zasobów i cykl oceny. Dodaje zasady `Microsoft.Authorization/policies/audit/action` operacji z dziennikiem aktywności i oznaczy zasobu jako niezgodne.
 
 ### <a name="audit-properties"></a>Właściwości inspekcji
 
@@ -153,11 +152,11 @@ Przykład: Użycie efektu audytu.
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-AuditIfNotExists umożliwia inspekcję na zasób, który odpowiada **Jeśli** warunku, ale nie ma elementów określonych w **szczegóły** z **następnie** warunku.
+AuditIfNotExists umożliwia inspekcję na zasoby, które odpowiadają **Jeśli** warunku, ale nie ma elementów określonych w **szczegóły** z **następnie** warunku.
 
 ### <a name="auditifnotexists-evaluation"></a>Ocena AuditIfNotExists
 
-AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania tworzenia lub aktualizacji do zasobu i zwrócił kod stanu powodzenia. Efekt jest wyzwalany, jeśli nie ma żadnych powiązanych zasobów lub zasoby zdefiniowane przez **ExistenceCondition** zostało oszacowane jako prawdziwe. Po wyzwoleniu efekt `Microsoft.Authorization/policies/audit/action` operacja z dziennikiem aktywności jest wykonywana w taki sam sposób jak efektu audytu. Po wyzwoleniu zasób, który spełnione **Jeśli** warunek jest zasobem, który jest oznaczony jako niezgodne.
+AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania tworzenia lub aktualizacji zasobu i zwrócił kod stanu powodzenia. Audyt występuje, jeśli nie ma żadnych powiązanych zasobów lub zasoby zdefiniowane przez **ExistenceCondition** nie zostało oszacowane jako prawdziwe. Dodaje zasady `Microsoft.Authorization/policies/audit/action` na działanie operacji logowania tak samo jako efekt inspekcji. Po wyzwoleniu zasób, który spełnione **Jeśli** warunek jest zasobem, który jest oznaczony jako niezgodne.
 
 ### <a name="auditifnotexists-properties"></a>Właściwości AuditIfNotExists
 
@@ -180,9 +179,9 @@ AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania twor
   - Aby uzyskać _subskrypcji_, odpytuje całej subskrypcji dla powiązanych zasobów.
   - Wartość domyślna to _ResourceGroup_.
 - **ExistenceCondition** (opcjonalnie)
-  - Jeśli nie zostanie określony, wszystkie powiązane zasoby **typu** spełniający efekt i nie będzie wyzwalać inspekcji.
+  - Jeśli nie zostanie określony, wszystkie powiązane zasoby **typu** spełniający efekt i nie spowoduje wyzwolenia inspekcji.
   - Używa tego samego języka co reguły dla **Jeśli** warunku, ale jest obliczany osobno dla poszczególnych powiązanych zasobów.
-  - Jeśli wszystkie dopasowania powiązanego zasobu zwraca wartość true, efekt jest spełniony i nie będzie wyzwalać inspekcji.
+  - Jeśli wszystkie dopasowania powiązanego zasobu zwraca wartość true, efekt jest spełniony i nie spowoduje wyzwolenia inspekcji.
   - Umożliwia [field()] Sprawdź równoważność wartości w **Jeśli** warunku.
   - Na przykład, można sprawdzić, czy zasób nadrzędny (w **Jeśli** warunku) znajduje się w tej samej lokalizacji zasobów zgodnych powiązanego zasobu.
 
@@ -225,9 +224,9 @@ Podobnie jak AuditIfNotExists, wdrożenie szablonu wykonuje DeployIfNotExists, g
 
 ### <a name="deployifnotexists-evaluation"></a>Ocena DeployIfNotExists
 
-DeployIfNotExists również jest uruchamiane po dostawcy zasobów obsłużonych tworzenia lub aktualizacji żądania do zasobu i zwrócił kod stanu powodzenia. Efekt jest wyzwalany, jeśli nie ma żadnych powiązanych zasobów lub zasoby zdefiniowane przez **ExistenceCondition** zostało oszacowane jako prawdziwe. Po wyzwoleniu efekt wdrożenie szablonu jest wykonywany.
+DeployIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania tworzenia lub aktualizacji zasobu i zwrócił kod stanu powodzenia. Wdrożenie szablonu występuje, jeśli nie ma żadnych powiązanych zasobów lub zasoby zdefiniowane przez **ExistenceCondition** nie zostało oszacowane jako prawdziwe.
 
-Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowywanie zasobów, które są oznaczone jako niezgodne, ale na taki zasób jest wykonywana żadna akcja.
+Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowywanie zasobów, które są oznaczone jako niezgodne, ale nie podjęto żadnej akcji dla tego zasobu.
 
 ### <a name="deployifnotexists-properties"></a>Właściwości DeployIfNotExists
 
@@ -319,21 +318,32 @@ Przykład: Ocenia baz danych SQL Server w celu ustalenia, czy włączono transpa
 
 ## <a name="layering-policies"></a>Zasady warstwowe
 
-Zasób może mieć wpływ wiele przydziałów. W tym samym zakresie (określonego zasobu, grupy zasobów, subskrypcji lub grupy zarządzania) lub w różnych zakresach, może być tych przydziałów. Każdy z tych przydziałów jest również mogą mieć różne efekty zdefiniowane. Niezależnie od tego warunek i efekt dla poszczególnych zasad (przypisane bezpośrednio lub w ramach inicjatywy) jest niezależne oceniany. Na przykład jeśli zasady 1 ma warunek, który ogranicza możliwość użycia dla lokalizacji zasobów dla subskrypcji A można tworzyć tylko w 'westus' przy użyciu efektu odrzucenia, a zasady 2 można warunek, który ogranicza możliwość użycia dla lokalizacji zasobów dla zasobów — Grupa B (która znajduje się w subskrypcji A) do tylko utworzone w "eastus" począwszy inspekcji są przypisane, wynik wynikowy będzie::
+Zasób może mieć wpływ kilka przypisania. W tym samym zakresie lub w różnych zakresach, może być tych przydziałów. Każdy z tych przydziałów jest również mogą mieć różne efekty zdefiniowane. Warunek i efekt dla każdej zasady niezależnie jest oceniany. Na przykład:
 
-- Żaden zasób już w grupie zasobów B w "eastus" jest zgodne z zasadami 2, ale są oznaczone jako niezgodne z zasadami 1.
-- Żaden zasób już w grupie zasobów B nie znajduje się w "eastus" zostaną oznaczone jako niezgodne z zasadami 2 i będzie również być oznaczone jako niezgodne do zasad 1, jeśli nie 'westus'.
-- Nowego zasobu w ramach subskrypcji, A nie w 'westus' odrzucone przez zasady 1.
-- Nowego zasobu w ramach subskrypcji A / grupy zasobów B w 'westus' może być oznaczony jako niezgodne zasady 2, ale będzie można utworzyć (zgodnych polityki 1 i 2 zasad jest inspekcji, a nie odmawiać).
+- Zasady 1
+  - Ogranicza lokalizację zasobu 'westus'
+  - Przypisany do subskrypcji A
+  - Odmów efektu
+- Zasady 2
+  - Ogranicza możliwość użycia zasobów lokalizację "eastus"
+  - Przypisane do grupy zasobów B w subskrypcji A
+  - Efekt inspekcji
+  
+Ten Instalator mogłoby spowodować następujące wyniki:
 
-Jeśli zasady 1 i 2 zasad miała efektu metod deny, zmienić tę sytuację:
+- Żaden zasób już w grupie zasobów B w "eastus" jest zgodne z zasadami 2 i niezgodne z zasadami 1
+- Żaden zasób już w grupie zasobów B nie znajduje się w "eastus" jest niezgodne z zasadami 2 i niezgodne z zasadami 1 w przeciwnym razie w 'westus'
+- Wszelkie nowy zasób, a subskrypcja nie znajduje się w 'westus' zostanie odrzucona przez zasady 1
+- Nowego zasobu w subskrypcji A i grupa zasobów B w 'westus' został utworzony i niezgodne zasady 2
 
-- Żaden zasób już w grupie zasobów B nie znajduje się w "eastus" zostaną oznaczone jako niezgodne z zasadami 2.
-- Żaden zasób już w grupie zasobów B w 'westus' nie są oznaczane jako niezgodne z zasadami 1.
-- Nowego zasobu w ramach subskrypcji, A nie w 'westus' odrzucone przez zasady 1.
-- Nowego zasobu w ramach subskrypcji A / odrzucone zasobów — Grupa B (ponieważ lokalizacji nigdy nie może spełnić zasady 1 i 2 zasady).
+Jeśli zasady 1 i 2 zasad miała efektu metod deny, sytuacji zmieni się na:
 
-Ponieważ każde przypisanie jest szacowana osobno, nie ma szansy sprzedaży dla tego zasobu do dokumentu za pośrednictwem przerwy z powodu różnic w zakresie. W związku z tym, wynikiem zasady warstwowe lub zasad nakładają się w sieci jest uważany za **zbiorczą najbardziej restrykcyjne**. Innymi słowy zasób, który ma zostać utworzony mogą zostać zablokowane z powodu nakładających się i konflikty zasad, takich jak w powyższym przykładzie, gdyby zasady 1 i 2 zasad efektu odrzucenia. Jeśli nadal potrzebujesz zasobu do utworzenia w zakresie docelowym, przejrzyj wykluczenia dla każdego przydziału, aby upewnić się, że odpowiednie zasady mają wpływ na odpowiednie zakresy.
+- Żaden zasób już w grupie zasobów B nie znajduje się w "eastus" nie jest zgodna z zasadami 2
+- Żaden zasób już w grupie zasobów B nie znajduje się w 'westus' nie jest zgodna z zasadami 1
+- Wszelkie nowy zasób, a subskrypcja nie znajduje się w 'westus' zostanie odrzucona przez zasady 1
+- Nowego zasobu w grupie zasobów B, a subskrypcja zostanie odrzucone.
+
+Każdego przydziału jest szacowana osobno. Jako takie nie ma szansę zasobu do dostawy za pośrednictwem przerwa z różnic w zakresie. Wynikiem zasady warstwowe lub zasad nakładają się w sieci jest uważany za **zbiorczą najbardziej restrykcyjne**. Na przykład efektu odrzucenia, gdyby obie zasady 1 i 2 zasobem zostałby zablokowany za pomocą zasad nakładających się i powodujące konflikt. Jeśli nadal potrzebujesz zasób, który ma być tworzonych w zakresie docelowym, przejrzyj wykluczenia na każdego przypisania, aby sprawdzić odpowiednie zasady mają wpływ na odpowiednie zakresy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -341,5 +351,5 @@ Ponieważ każde przypisanie jest szacowana osobno, nie ma szansy sprzedaży dla
 - Przegląd [struktura definicji zasad](definition-structure.md)
 - Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md)
 - Dowiedz się, jak [uzyskać dane na temat zgodności](../how-to/getting-compliance-data.md)
-- Odkryj jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md)
+- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md)
 - Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/overview.md)

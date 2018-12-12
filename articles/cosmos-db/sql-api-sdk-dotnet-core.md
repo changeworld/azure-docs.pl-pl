@@ -1,10 +1,8 @@
 ---
-title: 'Azure Cosmos DB: Interfejs API SQL platformy .NET Core SDK i zasoby | Dokumentacja firmy Microsoft'
+title: 'Azure Cosmos DB: Interfejs API SQL platformy .NET Core SDK i zasoby'
 description: Poznaj interfejs API SQL platformy .NET Core i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami usługi Azure Cosmos DB .NET Core SDK.
 services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
@@ -12,12 +10,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a0fb429c36005edca579cbdb7b379e6b04be60b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: bcd8fe040cb4d36bc98700816d6a7ebe711f13f5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840847"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093454"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB zestawu .NET Core SDK interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -213,7 +211,7 @@ Azure Cosmos DB platformy .NET Core w wersji zapoznawczej SDK ma równoważnośc
 * [Kolekcje partycjonowane](partition-data.md). 
 * [Multiregionalne konta baz danych i replikacja geograficzna](distribute-data-globally.md).
 
-Jeśli masz pytania dotyczące tego zestawu SDK, Opublikuj [StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb), lub Prześlij zgłoszenie do [repozytorium github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
+Jeśli masz pytania dotyczące tego zestawu SDK, Opublikuj [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), lub Prześlij zgłoszenie do [repozytorium github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
 
 ## <a name="release--retirement-dates"></a>Wersja & dat wycofywania
 

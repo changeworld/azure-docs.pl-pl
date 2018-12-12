@@ -1,5 +1,5 @@
 ---
-title: Regiony usługi mowy
+title: Regionów — usługi mowy
 titlesuffix: Azure Cognitive Services
 description: Odwołanie dla regionów usługi mowy.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.author: mahilleb
-ms.openlocfilehash: 8d36036332e939075ffac8763bec9c23d8e4a3f7
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712895"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091649"
 ---
 # <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
@@ -45,7 +46,7 @@ Zestaw SDK rozpoznawania mowy jest dostępna w regionach w celu **rozpoznawania 
 
 ### <a name="intent-recognition"></a>Rozpoznawanie intencji
 
-**Rozpoznawanie intencji** udziałów zestaw SDK rozpoznawania mowy regiony obsługują z użyciem usługi LUIS. Aby uzyskać pełną listę dostępnych regionów, zobacz [publikowania regionów i punkty końcowe — usługi LUIS](https://docs.microsoft.comazure/cognitive-services/luis/luis-reference-regions)
+**Rozpoznawanie intencji** udziałów zestaw SDK rozpoznawania mowy regiony obsługują z użyciem usługi LUIS. Aby uzyskać pełną listę dostępnych regionów, zobacz [publikowania regionów i punkty końcowe — usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)
 
 Dostępne regiony dla **rozpoznawanie intencji** za pośrednictwem mowy usługi SDK są wymienione na [strony region usługi Language Understanding](/azure/cognitive-services/luis/luis-reference-regions).
 
@@ -55,7 +56,7 @@ Dla każdego regionu publikowania na liście, użyj podanych **nazwa regionu int
 
 Usługa rozpoznawania mowy udostępnia również punkty końcowe REST dla żądania zamiany mowy na tekst i zamiany tekstu na mowę.
 
-### <a name="speech-to-text"></a>Zamiana mowy na tekst
+### <a name="speech-to-text"></a>Zamiany mowy na tekst
 
 Aby uzyskać dokumentację referencyjną mowy na tekst, zobacz [interfejsów API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
 

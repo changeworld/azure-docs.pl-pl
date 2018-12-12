@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie sieci VPN lokacja lokacja za pośrednictwem komunikacji równorzędnej dla usługi Azure ExpressRoute firmy Microsoft | Dokumentacja firmy Microsoft
+title: Konfigurowanie sieci VPN lokacja lokacja za pośrednictwem komunikacji równorzędnej Azure - ExpressRoute — firmy Microsoft | Dokumentacja firmy Microsoft
 description: Konfigurowanie połączeń protokołu IPsec/IKE z platformą Azure za pośrednictwem komunikacji równorzędnej obwodu usługi ExpressRoute firmy Microsoft przy użyciu bramy sieci VPN typu lokacja lokacja.
 services: expressroute
 author: cherylmc
@@ -7,25 +7,25 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3ba9d7ab9e05c3c5480e1832cc5ddd0ce91a3ae1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240915"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094206"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurowanie sieci VPN lokacja lokacja za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute
 
-Ten artykuł pomaga skonfigurować bezpieczne zaszyfrowane połączenia między swoją siecią lokalną i sieci wirtualnych platformy Azure (Vnet) za pośrednictwem połączenia prywatnego usługi ExpressRoute. Konfigurowanie bezpieczny tunel za pośrednictwem usługi ExpressRoute umożliwia wymianę danych z poufności, powtarzaniu, autentyczności i integralności.
+Ten artykuł pomaga skonfigurować bezpieczne zaszyfrowane połączenia między swoją siecią lokalną i sieci wirtualnych platformy Azure (Vnet) za pośrednictwem połączenia prywatnego usługi ExpressRoute. Możesz użyć programu Microsoft komunikację równorzędną, aby ustanowić tunel protokołu IPsec/IKE sieci VPN lokacja lokacja między sieciami wirtualnymi platformy Azure i wybranych dla sieci lokalnych. Konfigurowanie bezpieczny tunel za pośrednictwem usługi ExpressRoute umożliwia wymianę danych z poufności, powtarzaniu, autentyczności i integralności.
 
-## <a name="architecture"></a>Architektura
-
-Możesz korzystać z firmy Microsoft, komunikację równorzędną, aby ustanowić tunel protokołu IPsec/IKE sieci VPN lokacja lokacja między sieciami wirtualnymi platformy Azure i wybranych dla sieci lokalnych.
-
-  >[!NOTE]
+>[!NOTE]
 >Po skonfigurowaniu sieci VPN typu lokacja lokacja za pośrednictwem firmy Microsoft komunikacji równorzędnej, opłaty są naliczane za bramą sieci VPN i sieci VPN ruch wychodzący. Aby uzyskać więcej informacji, zobacz [cennik bramy sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
+
+## <a name="architecture"></a>Architektura
+
 
   ![Omówienie połączenia](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 

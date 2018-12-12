@@ -1,5 +1,5 @@
 ---
-title: Etykieta jednostki automatycznie z jednostką listy przy użyciu Nodejs | Dokumentacja firmy Microsoft
+title: Ekstrakt tekstu dopasowania jednostek
 description: Dowiedz się, jak dodać jednostkę listy, ułatwiające odmiany etykieta usługi LUIS wyrazu lub frazy.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 42fde2b24f851129e24257bbfe6d65a96e235485
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: cb8f2ef4afa83b8e4d258a4227795593242e84bd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036783"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082258"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Użyj jednostki listy w celu zwiększenia wykrywania jednostki 
 W tym samouczku zademonstrowano użycie [listy jednostek](luis-concept-entity-types.md) zwiększenia wykrywania jednostki. Lista jednostek jest konieczne etykietą, ponieważ są one dokładne dopasowanie warunków.  
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Najnowsze [środowiska Node.js](https://nodejs.org)
-> * [Aplikacją usługi LUIS HomeAutomation](luis-get-started-create-app.md). Jeśli nie masz aplikacji Home automatyzacji utworzone, Utwórz nową aplikację i dodać domenę wstępnie **HomeAutomation**. Uczenie i publikowanie aplikacji. 
+> * [Aplikacją usługi LUIS HomeAutomation](luis-get-started-create-app.md). Jeśli nie masz aplikacji Home automatyzacji utworzone, Utwórz nową aplikację i dodać domenę wstępnie **HomeAutomation**. Przeszkol i opublikuj aplikację. 
 > * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (jeśli jest wykonywane zapytanie wiele razy), identyfikator aplikacji, identyfikator wersji i [region](luis-reference-regions.md) dla aplikacji usługi LUIS.
 
 > [!Tip]
@@ -81,15 +81,16 @@ Utwórz plik w technologii Node.js i skopiuj następujący kod do niego. Zmień 
 
 Aby zainstalować zależności rozwiązania NPM i uruchomić kod, aby utworzyć jednostkę listy, użyj następującego polecenia:
 
-```Javascript
+```console
 npm install && node add-entity-list.js
 ```
 
 Dane wyjściowe przebiegu jest identyfikator obiektu listy:
 
-```Javascript
+```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
+
 ## <a name="train-the-model"></a>Uczenie modelu
 Szkolenie usługi LUIS w kolejności, aby uzyskać nową listę, aby mieć wpływ na wyniki zapytania. Szkolenie jest proces dwuetapowy, szkolenia, jeżeli odbywa się szkolenie Trwa sprawdzanie stanu. Aplikację z wieloma modelami może potrwać kilka chwil do nauczenia. Poniższy kod szkolenie modeli aplikacji, a następnie czeka, aż szkolenia zakończy się pomyślnie. Kod używa strategię oczekiwania i ponawiania, aby uniknąć 429 "zbyt wiele żądań" błąd. 
 
@@ -99,13 +100,13 @@ Utwórz plik w technologii Node.js i skopiuj następujący kod do niego. Zmień 
 
 Aby uruchomić kod to w opracowywaniu aplikacji, użyj następującego polecenia:
 
-```Javascript
+```console
 node train.js
 ```
 
 Dane wyjściowe przebiegu jest jego stan każdej iteracji szkolenie modeli usługi LUIS. Wykonanie następujących wymagany tylko jeden wyboru szkolenia:
 
-```Javascript
+```console
 1 trained = true
 [ { modelId: '2c549f95-867a-4189-9c35-44b95c78b70f',
     details: { statusId: 2, status: 'UpToDate', exampleCount: 45 } },
@@ -130,13 +131,13 @@ Utwórz plik w technologii Node.js i skopiuj następujący kod do niego. Zmień 
 
 Aby uruchomić kod do wykonywania zapytań w aplikacji, użyj następującego polecenia:
 
-```Javascript
+```console
 node publish.js
 ```
 
 Następujące dane wyjściowe obejmują adres url punktu końcowego dla dowolnego zapytania. Rzeczywiste wyniki JSON obejmuje appID rzeczywistych. 
 
-```JSON
+```json
 { 
   versionId: null,
   isStaging: false,
@@ -157,13 +158,13 @@ Utwórz plik w technologii Node.js i skopiuj następujący kod do niego. Zmień 
 
 Użyj następującego polecenia do uruchomienia kodu i wykonywania zapytań względem aplikacji:
 
-```Javascript
+```console
 node train.js
 ```
 
 Dane wyjściowe są wyniki zapytania. Ponieważ kod dodany **pełne** pary nazwa/wartość do ciągu zapytania, dane wyjściowe obejmują wszystkie intencje i ich wyniki:
 
-```JSON
+```json
 {
   "query": "turn up the heat",
   "topScoringIntent": {

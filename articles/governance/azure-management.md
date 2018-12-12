@@ -5,51 +5,52 @@ author: DCtheGeek
 manager: carmonm
 ms.service: governance
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f058bf8195c56681be0419a0a30f3d814e5d1906
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f417338205b17c8b949156a6d5a60ef609458fc1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960836"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088140"
 ---
 # <a name="management-in-azure"></a>Zarządzanie na platformie Azure
 
-Ład na platformie Azure jest jednym z aspektów zarządzania. W tym artykule krótko opisano różne obszary zarządzania wymagane do wdrażania i obsługi aplikacji i zasobów na platformie Azure oraz podano linki do dokumentacji umożliwiającej rozpoczęcie pracy.
+Ład na platformie Azure jest jednym z aspektów zarządzania. W tym artykule opisano różne obszary zarządzania, wdrażania i konserwowania zasobów na platformie Azure.
 
-Zarządzanie dotyczy zadań i procesów wymaganych do obsługi aplikacji biznesowych i zasobów, które je obsługują. Platforma Azure zawiera wiele usług i narzędzi, które współpracują ze sobą w celu zapewnienia pełnego zarządzania nie tylko dla Twoich aplikacji uruchomionych na platformie Azure, ale też dla innych chmur i rozwiązań lokalnych. Zrozumienie dostępnych narzędzi i sposobu ich wspólnego używania w różnych scenariuszach zarządzania jest pierwszym krokiem projektowania pełnego środowiska zarządzania.
+Zarządzanie dotyczy zadań i procesów wymaganych do obsługi aplikacji biznesowych i zasobów, które je obsługują. Platforma Azure oferuje wiele usług i narzędzi, które współpracują ze sobą w celu zapewnienia pełnego zarządzania. Usługi te nie są tylko w przypadku zasobów na platformie Azure, ale także w innych chmurach i w środowisku lokalnym. Opis różnych narzędzi i jak one współdziałają ze sobą jest pierwszym krokiem projektowania pełnego środowiska zarządzania.
 
-Poniższy diagram przedstawia różne obszary zarządzania wymagane do obsługi dowolnej aplikacji lub zasobu. Te obszary można rozumieć jako ciągły cykl, w którym każdy obszar jest kolejno wymagany w okresie istnienia zasobu. Ten cykl zaczyna się od początkowego wdrożenia, po czym następuje działanie, a na koniec wycofanie zasobu.
+Poniższy diagram przedstawia różne obszary zarządzania wymagane do obsługi dowolnej aplikacji lub zasobu. Te obszary można traktować jako cykl życia. Każdy obszar jest wymagany kolejno ciągłe okresie istnienia zasobu. Cykl życia tego zasobu zaczyna się od początkowego wdrożenia, następuje działanie, a na koniec podczas wycofania.
 
-![Możliwości zarządzania](../monitoring/media/management-overview/management-capabilities.png)
+![Zasady zarządzania](../monitoring/media/management-overview/management-capabilities.png)
 
-Żadna pojedyncza usługa platformy Azure nie spełnia całkowicie wymagań określonego obszaru zarządzania, lecz każdy obszar jest obsługiwany przez różne współpracujące ze sobą usługi. Niektóre usługi oferują ukierunkowane funkcje, takie jak usługa Application Insights zapewniająca monitorowanie aplikacji internetowych. Inne dostarczają typowe funkcje, na przykład usługa Log Analytics przechowuje dane zarządzania dla innych usług, co umożliwia analizowanie danych różnych typów zbieranych przez różne usługi.
+Nie pojedyncza usługa platformy Azure nie spełnia całkowicie wymagań dla obszaru zarządzania określonego. Zamiast tego każdy jest wykonywane przez wiele usług, współpracujących. Niektóre usługi, takie jak usługa Application Insights, oferują ukierunkowane funkcje monitorowania dla aplikacji sieci web. Inne, takie jak usługa Log Analytics, przechowywania danych zarządzania dla innych usług. Ta funkcja umożliwia analizowanie danych różnych typów zbieranych przez różne usługi.
 
 W poniższych sekcjach krótko opisano różne obszary zarządzania oraz podano linki do szczegółowych informacji o głównych usługach platformy Azure dotyczących tych obszarów.
 
 ## <a name="monitor"></a>Monitorowanie
 
-Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajności, kondycji i dostępności aplikacji biznesowych i zasobów, od których one zależą. Skuteczna strategia monitorowania pomoże poznać szczegółowe działanie różnych składników aplikacji i zwiększyć czas aktywności przez proaktywne powiadamianie o istotnych kwestiach w celu umożliwienia rozwiązywania ich, zanim staną się problemami. Temat [Monitoring Azure applications and resources](../monitoring/monitoring-overview.md) (Monitorowanie aplikacji i zasobów platformy Azure) zawiera omówienie monitorowania na platformie Azure, w którym podano różne usługi używane w strategii monitorowania.
+Monitorowanie to proces zbierania i analizowania danych inspekcji wydajności, kondycja i dostępność zasobów. Skuteczna Strategia monitorowania pomoże Ci zrozumienie sposobu działania, składników i zwiększyć czas aktywności z powiadomieniami. Przeczytaj omówienie monitorowania, która obejmuje różne usługi używane w [monitorowania platformy Azure, aplikacje i zasoby](../monitoring/monitoring-overview.md).
 
 ## <a name="configure"></a>Konfigurowanie
 
-Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji. Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność. [Usługa Azure Automation](../automation/automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji. Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
+Konfigurowanie dotyczy początkowego wdrażania i konfiguracji zasobów i rutynowej konserwacji.
+Automatyzacja tych zadań pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność. [Usługa Azure Automation](../automation/automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji. Podczas gdy elementy runbook obsługują automatyzację procesów, zarządzanie konfiguracją i aktualizacjami pomaga zarządzać konfiguracją.
 
 ## <a name="govern"></a>Ład
 
 Ład dotyczy mechanizmów i procesów kontrolowania aplikacji i zasobów na platformie Azure. Obejmuje to planowanie inicjatyw i wyznaczanie strategicznych priorytetów.
-Ład na platformie Azure jest zaimplementowany głównie za pomocą dwóch usług. [Zasady platformy Azure](../azure-policy/azure-policy-introduction.md) pozwalają tworzyć i przypisywać definicje zasad oraz zarządzać nimi. Te definicje wymuszają różne reguły i działania dotyczące zasobów, aby pozostały one zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. [Usługa Azure Cost Management firmy Cloudyn](../cost-management/overview.md) umożliwia śledzenie użycia chmury i wydatków na zasoby platformy Azure i innych dostawców rozwiązań w chmurze, w tym AWS i Google.
+Ład na platformie Azure jest zaimplementowany głównie za pomocą dwóch usług. [Usługa Azure Policy](./policy/overview.md) służy do tworzenia, przypisywania oraz zarządzanie nimi definicji zasad w celu wymuszania reguł dla zasobów. Ta funkcja zapewnia tych zasobów zgodnie ze standardami firmy. [Usługa Azure Cost Management firmy cloudyn](../cost-management/overview.md) umożliwia śledzenie użycia chmury i wydatków na zasoby platformy Azure i innych dostawców rozwiązań w chmurze.
 
 ## <a name="secure"></a>Bezpieczeństwo
 
-Zarządzanie zabezpieczeniami aplikacji, zasobów i danych obejmuje ocenę zagrożeń, zbieranie i analizowanie danych zabezpieczeń i zapewnienie, że aplikacje i zasoby są zaprojektowane i konfigurowane w bezpieczny sposób. Zabezpieczenia monitorowania i analizy zagrożeń są dostarczane przez usługi Azure Security Center, która obejmuje ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w obciążeniach chmury hybrydowej. Zapoznaj się też z tematem [Introduction to Azure Security](../security/azure-security.md) (Wprowadzenie do zabezpieczeń platformy Azure), aby uzyskać obszerne informacje o zabezpieczeniach na platformie Azure oraz wskazówki dotyczące bezpiecznego konfigurowania jej zasobów.
+Zarządzać zabezpieczeniami zasobów i danych. Program zabezpieczeń obejmuje ocenę zagrożeń, zbieranie i analizowanie danych, a także zgodności aplikacji i zasobów. Zabezpieczenia monitorowania i analizy zagrożeń są dostarczane przez [usługi Azure Security Center](../security-center/security-center-intro.md), która obejmuje ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w obciążeniach chmury hybrydowej. Zobacz [wprowadzenie do zabezpieczeń platformy Azure](../security/azure-security.md) wyczerpujące informacje i wskazówki dotyczące zabezpieczenia zasobów platformy Azure.
 
 ## <a name="protect"></a>Ochrona
 
-Ochrona dotyczy zapewniania, że aplikacje i dane są zawsze dostępne, nawet w przypadku awarii poza Twoją kontrolą. Ochrona na platformie Azure jest zapewniana przez dwie usługi. [Usługa Azure Backup](../backup/backup-introduction-to-azure-backup.md)zapewnia kopii zapasowych i odzyskiwania danych w chmurze lub lokalnie. [Usługa Azure Site Recovery](../site-recovery/site-recovery-overview.md) zapewnia wysoką dostępność aplikacji, gwarantując ciągłość działania i natychmiastowe odzyskiwanie w przypadku awarii.
+Ochrona odnosi się do aplikacji i danych jest dostępne, nawet w przypadku awarii, które są poza Twoją kontrolą. Ochrona na platformie Azure jest zapewniana przez dwie usługi. [Usługa Azure Backup](../backup/backup-introduction-to-azure-backup.md)zapewnia kopii zapasowych i odzyskiwania danych w chmurze lub lokalnie. [Usługa Azure Site Recovery](../site-recovery/site-recovery-overview.md) zapewnia ciągłość działania i natychmiastowe odzyskiwanie podczas awarii.
 
 ## <a name="migrate"></a>Migrate (Migracja)
 
 Migracja dotyczy przenoszenia obciążeń działających obecnie lokalnie do chmury platformy Azure.
-[Usługa Azure Migrate](../migrate/migrate-overview.md) pomaga oceniać gotowość do migracji maszyn wirtualnych do platformy Azure, uwzględniając dostosowywanie rozmiaru do wydajności oraz szacunkowe koszty. Usługa Azure Site Recovery może ułatwić rzeczywistą migrację maszyn wirtualnych [ze środowiska lokalnego](../site-recovery/migrate-tutorial-on-premises-azure.md) lub [z usług Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md). [Usługa Azure Database Migration](../dms/dms-overview.md) pomaga w migracji wielu źródłowych baz danych do platformy danych Azure.
+[Usługa Azure Migrate](../migrate/migrate-overview.md) jest usługą, która ułatwia ocenę przydatności migrację lokalnych maszyn wirtualnych na platformie Azure. Usługa Azure Site Recovery umożliwia migrowanie maszyn wirtualnych [ze środowiska lokalnego](../site-recovery/migrate-tutorial-on-premises-azure.md) lub [z usług Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md). [Usługa Azure Database Migration](../dms/dms-overview.md) pomaga w migracji źródeł baz danych do platformy danych.

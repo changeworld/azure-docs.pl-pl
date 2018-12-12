@@ -1,21 +1,22 @@
 ---
-title: Publikowanie regionów i punkty końcowe — usługi LUIS
+title: Publikowanie regionów i punktów końcowych
 titleSuffix: Azure Cognitive Services
 description: Region, w którym możesz opublikować aplikację usługi LUIS odnosi się do regionu lub lokalizacji w witrynie Azure portal podczas tworzenia klucza punktu końcowego usługi LUIS platformy Azure. Po opublikowaniu aplikacji LUIS automatycznie generuje adres URL punktu końcowego dla regionu skojarzonego z kluczem. Aby opublikować więcej niż jeden region z aplikacją usługi LUIS, potrzebujesz co najmniej jeden klucz dla regionu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: diberry
-ms.openlocfilehash: 205a17a985986aab8039afe824e7e872a9885169
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: bf3cad5dac3686d58575e2e9d1ed8467692ea5c8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039415"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088157"
 ---
 # <a name="regions-and-keys"></a>Regiony i klucze
 
@@ -80,7 +81,7 @@ W poniższej tabeli opisano parametry, oznaczony za pomocą nawiasów klamrowych
 |--|--|
 |region|Region platformy Azure — tworzenie i publikowanie mają różnych regionach|
 |appID|Identyfikator aplikacji usługi LUIS używane w trasy adresu URL i znalezione na pulpit nawigacyjny aplikacji|
-|pytania i odpowiedzi|tekstowe wypowiedź wysyłane z aplikacji klienckiej, takich jak czatbot|
+|q|tekstowe wypowiedź wysyłane z aplikacji klienckiej, takich jak czatbot|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

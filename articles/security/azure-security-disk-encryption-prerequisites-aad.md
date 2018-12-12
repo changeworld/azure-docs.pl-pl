@@ -1,18 +1,19 @@
 ---
-title: Usługa Azure Disk Encryption przy użyciu usługi Azure AD App wstępnie wymagane składniki (poprzedniej wersji) | Dokumentacja firmy Microsoft
+title: Usługa Azure Disk Encryption przy użyciu usługi Azure AD App wstępnie wymagane składniki (poprzedniej wersji)
 description: Ten artykuł zawiera wymagania wstępne dotyczące korzystania z systemu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/12/2018
-ms.openlocfilehash: d81925589eefa0ea5851180c83db5bc3540aabda
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: ff9f06f3ff062889c9e77163f66527af97bb527d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262690"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094496"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Usługa Azure Disk Encryption wymagania wstępne dotyczące (poprzedniej wersji)
 
@@ -259,7 +260,7 @@ Do zapisu kluczy tajnych szyfrowania określonej usługi Key Vault, usługa Azur
 > Usługa Azure Disk Encryption, musisz skonfigurować następujące zasady dostępu do aplikacji klienta usługi Azure AD: _WrapKey_ i _ustaw_ uprawnienia.
 
 ### <a name="bkmk_KVAPPSH"></a> Ustawianie zasad dostępu magazynu kluczy dla aplikacji usługi Azure AD przy użyciu programu Azure PowerShell
-Aplikacja usługi Azure AD wymaga praw dostępu do kluczy lub wpisów tajnych w magazynie. Użyj [AzureKeyVaultAccessPolicy zestaw](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) polecenia cmdlet, aby udzielić uprawnień do aplikacji przy użyciu Identyfikatora klienta, (który został wygenerowany, gdy aplikacja została zarejestrowana) jako _— ServicePrincipalName_ wartość parametru. Aby dowiedzieć się więcej, zobacz wpis w blogu [usługi Azure Key Vault — krok po kroku](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
+Aplikacja usługi Azure AD wymaga praw dostępu do kluczy lub wpisów tajnych w magazynie. Użyj [AzureKeyVaultAccessPolicy zestaw](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) polecenia cmdlet, aby udzielić uprawnień do aplikacji przy użyciu Identyfikatora klienta, (który został wygenerowany, gdy aplikacja została zarejestrowana) jako _— ServicePrincipalName_ wartość parametru. Aby dowiedzieć się więcej, zobacz wpis w blogu [usługi Azure Key Vault — krok po kroku](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
 
 1. Jeśli to konieczne, [nawiązać połączenie z subskrypcją platformy Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
 2. Ustawianie zasad dostępu magazynu kluczy dla aplikacji usługi AD za pomocą programu PowerShell.

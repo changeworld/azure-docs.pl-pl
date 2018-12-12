@@ -230,7 +230,7 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Kanada Wschodnia | Miasto Quebec |
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
-| Azja Wschodnia | Hongkong |
+| Azja Wschodnia | SRA Hongkong |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Środkowo-północne stany USA | Illinois |

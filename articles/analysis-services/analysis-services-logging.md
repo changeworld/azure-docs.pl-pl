@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ba2d42f0f0908273065be268646a0fb7eb8b96e5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a7098e5ee5f6a7f45507f93771409595f79debf5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001106"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083686"
 ---
 # <a name="setup-diagnostic-logging"></a>Konfigurowanie rejestrowania diagnostycznego
 
@@ -46,7 +46,7 @@ Wybieranie **aparatu** rejestruje wszystkie [xEvents](https://docs.microsoft.com
 |Wykrywanie     |   Odkryj zakończenia      |
 |Powiadomienia     |    Powiadomienia     |
 |Sesja     |  Inicjowanie sesji       |
-|Blokady    |  Zakleszczenie       |
+|Blokady    |  Zakleszczenia       |
 |Przetwarzanie zapytań     |   VertiPaq SE Query Begin      |
 |Przetwarzanie zapytań     |   VertiPaq SE Query End      |
 |Przetwarzanie zapytań     |   VertiPaq SE Query Cache Match      |
@@ -82,7 +82,7 @@ Kategoria metryk rejestruje takie same [metryk serwera](analysis-services-monito
 
     * **Zarchiwizuj na koncie magazynu**. Aby użyć tej opcji, należy istniejące konto magazynu, aby nawiązać połączenie. Zobacz [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md). Postępuj zgodnie z instrukcjami, aby utworzyć Menedżera zasobów, konto ogólnego przeznaczenia, a następnie wybierz swoje konto magazynu, zwracając do tej strony w portalu. Może upłynąć kilka minut, zanim konta nowo utworzonego magazynu pojawią się w menu rozwijanym.
     * **Stream do usługi event hub**. Aby użyć tej opcji, należy istniejącego Centrum zdarzeń przestrzeni nazw i Centrum zdarzeń, aby nawiązać połączenie. Aby dowiedzieć się więcej, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą witryny Azure portal](../event-hubs/event-hubs-create.md). Następnie wróć do tej strony w portalu, aby wybrać nazwę przestrzeni nazw i zasad Centrum zdarzeń.
-    * **Wysyłanie do usługi Log Analytics**. Aby użyć tej opcji, użyj istniejącego obszaru roboczego albo utwórz nowy obszar roboczy usługi Log Analytics, wykonując następujące kroki, aby [Utwórz nowy obszar roboczy](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace) w portalu. Aby uzyskać więcej informacji dotyczących przeglądania dzienników w usłudze Log Analytics, zobacz [widoku dzienników w usłudze Log Analytics](#view-logs-in-log-analytics) w tym artykule.
+    * **Wysyłanie do usługi Log Analytics**. Aby użyć tej opcji, użyj istniejącego obszaru roboczego albo utwórz nowy obszar roboczy usługi Log Analytics, wykonując następujące kroki, aby [Utwórz nowy obszar roboczy](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) w portalu. Aby uzyskać więcej informacji dotyczących przeglądania dzienników w usłudze Log Analytics, zobacz [widoku dzienników w usłudze Log Analytics](#view-logs-in-log-analytics) w tym artykule.
 
     * **Engine**. Wybierz tę opcję, aby rejestrować xEvents. Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są autodeleted, po upływie okresu przechowywania.
     * **Usługa**. Wybierz tę opcję, aby rejestrować zdarzenia na poziomie usługi. Jeśli archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są autodeleted, po upływie okresu przechowywania.

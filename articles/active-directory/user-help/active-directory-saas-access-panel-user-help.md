@@ -90,7 +90,7 @@ Jeśli zainstalowano rozszerzenie i nadal występują problemy, spróbuj wykona�
        Ostatnie trzy aplikacje, które wykorzystano są wyświetlane na **ostatnio używane** listy skrótów.
 
 > [!NOTE]
-> Te opcje są dostępne tylko dla przeglądarki Edge, Chrome i Firefox.
+> Te opcje są dostępne tylko dla przeglądarki Microsoft Edge, Chrome i Firefox.
 
 ## <a name="how-do-i-add-a-new-app"></a>Jak dodać nową aplikację?
 

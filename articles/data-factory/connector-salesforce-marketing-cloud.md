@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 07c58ea964d6af1ffe1a447d8b52879753f1951c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a9916a412341d0b345bfc7a0e0f28d8e0add1846
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123355"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081460"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopiowanie danych z usług Salesforce: Marketing Cloud przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -78,7 +78,12 @@ Następujące właściwości są obsługiwane w przypadku usługi Salesforce Mar
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Salesforce Marketing Cloud.
 
-Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić właściwość typu zestawu danych na **SalesforceMarketingCloudObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić właściwość typu zestawu danych na **SalesforceMarketingCloudObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **SalesforceMarketingCloudObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -90,7 +95,8 @@ Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić wła�
         "linkedServiceName": {
             "referenceName": "<SalesforceMarketingCloud linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -106,7 +112,7 @@ Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić typ �
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **SalesforceMarketingCloudSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

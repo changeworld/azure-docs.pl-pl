@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie urządzeń usługi Azure IoT Edge dla serwerów proxy sieci | Dokumentacja firmy Microsoft
+title: Konfigurowanie urządzeń dla serwerów proxy sieci — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Jak skonfigurować środowisko uruchomieniowe usługi Azure IoT Edge i wszystkie moduły usługi IoT Edge Internetu komunikację za pośrednictwem serwera proxy.
 author: kgremban
 manager: ''
@@ -8,12 +8,13 @@ ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.custom: seodec18
+ms.openlocfilehash: a7d32c98b77568e02fa14b70e969eeb254989062
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913227"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100483"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy
 
@@ -169,11 +170,11 @@ Kiedy używać **Ustaw moduły** kreatora w celu utworzenia wdrożenia dla usłu
 
 Aby skonfigurować agenta usługi Edge i moduły Centrum usługi Edge, wybierz **skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge** w pierwszym kroku kreatora. 
 
-![Konfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge](./media/how-to-configure-proxy-support/configure-runtime.png)
+![Skonfiguruj ustawienia zaawansowane środowisko uruchomieniowe usługi Edge](./media/how-to-configure-proxy-support/configure-runtime.png)
 
 Dodaj **https_proxy** zmiennej środowiskowej, aby agent usługi Edge i definicje modułów Centrum usługi Edge. W przypadku dołączenia **UpstreamProtocol** zmiennej środowiskowej w pliku config.yaml na urządzeniu usługi IoT Edge, dodaj ją do definicji modułu agenta usługi Edge zbyt. 
 
-![Ustawianie zmiennych środowiskowych](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
+![Ustaw dla zmiennej https_proxy](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
 Wszystkie moduły, które dodajesz do manifestu wdrażania postępuj zgodnie z tym samym wzorcem. Na stronie, gdzie ustawiasz Nazwa modułu i obrazów Brak sekcji zmiennych środowiskowych.
 

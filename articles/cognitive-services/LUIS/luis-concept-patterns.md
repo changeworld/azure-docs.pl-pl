@@ -1,21 +1,22 @@
 ---
-title: Dowiedz się, jak wzorce zwiększenia dokładności prognozy
-titleSuffix: Azure Cognitive Services
-description: Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne. Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej.
+title: Wzorce pomocy prognoz
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: MT
+ms.openlocfilehash: 3c33612ef76a572bd4bf63a5e7d6f05e36c7847b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300374"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082003"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
 Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 
@@ -50,7 +51,7 @@ Jeśli dwa lub więcej jednostek w wzorzec kontekstowe są powiązane, wzorców 
 Mając wystarczająco dużo wypowiedzi przykładu, LUIS będą mogli zwiększyć ufności prognoz bez wzorców. Wzorce zwiększyć współczynnik ufności bez konieczności podawania tyle wypowiedzi.  
 
 ## <a name="pattern-matching"></a>Dopasowanie wzorca
-Wzorzec jest takie samo zależnie od wykrywania jednostek w wzorzec najpierw, a następnie weryfikowania reszty słów i kolejność słów w wzorca. Jednostki są wymagane w wzorzec wzorzec do dopasowania. 
+Wzorzec jest takie samo zależnie od wykrywania jednostek w wzorzec najpierw, a następnie weryfikowania reszty słów i kolejność słów w wzorca. Jednostki są wymagane w wzorzec wzorzec do dopasowania. Wzorzec jest stosowany na poziomie token, a nie na poziomie znaków. 
 
 ## <a name="pattern-syntax"></a>Składnia wzorca
 Składnia wzorca jest szablonem wypowiedź. Szablon powinien zawierać słów i jednostkami, z którymi chcesz dopasować, a także słów i znaków interpunkcyjnych, który chcesz zignorować. Jest **nie** wyrażenia regularnego. 

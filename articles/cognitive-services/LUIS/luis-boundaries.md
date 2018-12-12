@@ -1,6 +1,6 @@
 ---
-title: Granice i limity Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
+title: Limity
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ten artykuł zawiera znanych ograniczeń dla usługi Azure Cognitive Services Language Understanding (LUIS). Usługa LUIS ma kilka obszarów granic. Model granic steruje intencji, jednostek i funkcji usługi LUIS. Limity przydziału, w oparciu o typ klucza. Kombinacja klawiszy kontrolki witryny sieci Web usługi LUIS.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,13 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b7a2d1554d668b4000b87b210a69b290def9b19e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 6f2f69fc746da049e8e48f870fc0e03ffd8ee1a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035440"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078943"
 ---
 # <a name="luis-boundaries"></a>Granice usługi LUIS
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 

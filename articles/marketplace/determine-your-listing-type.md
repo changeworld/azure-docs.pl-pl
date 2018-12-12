@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261075"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081544"
 ---
 # <a name="determine-your-publishing-option"></a>Określić swoje opcja publikowania
 Opcja publikowania, wybranej oferty bezpośrednio dotyczy zarówno wymagania kwalifikacyjne, jak i portalu marketplace GTM korzyści. Co ważniejsze wybór publikowania opcja i typ oferty w portalu Cloud Partner definiuje interakcji użytkowników z oferty w portalu marketplace.
 
 Wybieranie typu oferty, a następnie tworząc oferty w portalu marketplace w portalu Cloud Partner, można włączyć opcje publikowania. Aby to zrobić, należy zrozumieć następujące pojęcia klucza witryny marketplace: opcje publikowania oferty, typy i konfiguracji i wywołania do akcji, pierwszeństwo ma niniejsza jak i, w której oferty są prezentowane w witryny sklepów.
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/options-table/articles/marketplace/media/marketplace-publishers-guide/storefronts_options_table.png?raw=true)
+![](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
 >[!Note]
 >Tabeli powyżej w tym artykule opisano sposób rozwiązania lub usługa mapowania storefront, opcja publikowania i typ oferty, używany do wyświetlania zawartości oferty w portalu marketplace.

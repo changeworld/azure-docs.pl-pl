@@ -1,26 +1,29 @@
 ---
-title: Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS w — omówienie | Dokumentacja firmy Microsoft
+title: Przegląd — usługa Azure Disk Encryption dla maszyn wirtualnych IaaS | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera omówienie programu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/14/2018
-ms.openlocfilehash: 1328effbc495422e5190362c562928fbb1742e1b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913210"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093288"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS 
+# <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS
+
 Microsoft Azure jest zobowiązana do zapewnienia prywatności danych i niezależność danych. System Azure umożliwia kontrolowanie danych hostowanymi na platformie Azure za pomocą wielu zaawansowanych technologii szyfrowania, kontroli i zarządzanie kluczami szyfrowania i kontroli i inspekcji dostępu do danych. Formant ten zapewnia klientom platformy Azure z możliwością wyboru rozwiązania, który najlepiej zaspokaja ich potrzeby biznesowe. W tym artykule poznasz rozwiązanie technologiczne: "Usługa Azure Disk Encryption for Windows IaaS i Linux virtual machines (VMs)". Technologia ta pomaga chronić i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 
 ## <a name="overview"></a>Przegląd
+
 Usługa Azure Disk Encryption jest możliwość ułatwiające szyfrowanie dysków Windows i maszyn wirtualnych IaaS z systemem Linux. Szyfrowanie dysków wykorzystuje będące standardami branżowymi [funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) funkcja systemu Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkcji systemu Linux, aby zapewnić szyfrowanie woluminów dysków systemu operacyjnego i danych. To rozwiązanie jest zintegrowana z usługą [usługi Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ułatwiają kontrolowanie i zarządzaniu wpisami tajnymi i kluczami szyfrowania dysków. To rozwiązanie zapewnia również, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane, gdy w usłudze Azure storage.
 
 Szyfrowanie dysków dla Windows i maszyn wirtualnych IaaS z systemem Linux jest ogólnie dostępna we wszystkich publicznych regionach platformy Azure i regiony platformy Azure Government dla standardowych maszyn wirtualnych i maszyn wirtualnych przy użyciu usługi Azure Premium Storage. Po zastosowaniu rozwiązania do zarządzania szyfrowanie dysków może spełnić następujące wymagania biznesowe:
@@ -37,6 +40,7 @@ Jeśli używasz usługi Azure Security Center, jest alert, jeśli masz maszyny w
 
 
 ## <a name="encryption-scenarios"></a>Scenariuszy szyfrowania
+
 Rozwiązanie szyfrowanie dysków obsługuje następujących scenariuszy:
 
 * Włącza szyfrowanie na nowe Windows IaaS maszyny wirtualne utworzone na podstawie zaszyfrowane wstępnie wirtualnego dysku twardego i kluczy szyfrowania.
@@ -87,6 +91,7 @@ Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii:
 * Windows maszyn wirtualnych, które są skonfigurowane przy użyciu systemów opartych na oprogramowaniu RAID.
 
 ## <a name="encryption-features"></a>Funkcje szyfrowania
+
 Po włączeniu i wdrożeniu szyfrowanie dysków maszyn wirtualnych IaaS platformy Azure, w zależności od konfiguracji podane są włączone następujące możliwości:
 
 * Szyfrowanie woluminu systemu operacyjnego, aby chronić wolumin rozruchowy przechowywanych w magazynie.

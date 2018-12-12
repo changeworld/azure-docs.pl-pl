@@ -1,11 +1,12 @@
 ---
 title: Machine narzędzia do analizy nauki i dane — Azure | Dokumentacja firmy Microsoft
-description: Narzędzia do analizy nauki i dane maszyny
+description: Więcej informacji na temat narzędzi i platform wstępnie zainstalowanych na maszynie wirtualnej do nauki o danych uczenia maszynowego.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9308c51c0ff5fc7278eab632f9d23f23cf016a2a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d8c607b5f1d338ca3a2bd3844b26ef51d801c720
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901672"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086074"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Narzędzia do analizy nauki i dane maszyny
 Maszyn wirtualnych do nauki o danych zawiera bogaty zestaw narzędzi i biblioteki dla usługi machine learning (ML) dostępna w popularnych języków, takich jak Python, R i Julia. 

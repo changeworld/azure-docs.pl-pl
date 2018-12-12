@@ -1,5 +1,5 @@
 ---
-title: Budowy modułu usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+title: Zadeklaruj, moduły i trasy z manifesty wdrożenia — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak manifest wdrożenia oświadcza, które moduły do wdrożenia, jak wdrażać je oraz sposób tworzenia trasy wiadomości między nimi.
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 106ad5d4649b2845327eadd99972d56f1503b3e4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 0b221274923a6270e980d027aadc58154c7054b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584812"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099974"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Dowiedz się, jak wdrażać moduły oraz określenia trasy w usługi IoT Edge
 

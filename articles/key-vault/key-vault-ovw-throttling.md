@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: bryanla
-ms.openlocfilehash: eba4499a71efc84a142e8839861e33c7d7db5461
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f119e4a5b5c5f97848c588636a3a707428abbd5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011896"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082530"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Wskazówki dotyczące ograniczania usługi Azure Key Vault
 
@@ -42,7 +42,7 @@ Poniżej przedstawiono **najlepsze praktyki** ograniczania aplikacji:
 
 Podczas implementowania obsługi błędów aplikacji, należy użyć kod błędu HTTP 429 można wykrywać ograniczania po stronie klienta. Jeśli żądanie nie powiedzie się ponownie z kodem błędu HTTP 429, nadal występują ograniczenia usług platformy Azure. Nadal używać zalecanych klienta ograniczania metody, ponowieniem próby żądania, aż do skutku.
 
-Zaimplementuj kod, który obsługuje wykładniczego wycofywania. Na przykład w tym [samouczek](tutorial-net-create-vault-azure-web-app.md) pokazujemy, jak to zrobić z wykorzystaniem wykładniczego wycofywania
+Poniżej przedstawiono kod, który implementuje wykładniczego wycofywania. 
 ```
      public async Task OnGetAsync()
      {
@@ -51,7 +51,6 @@ Zaimplementuj kod, który obsługuje wykładniczego wycofywania. Na przykład w 
          bool retry = false;
          try
          {
-             /* The below 4 lines of code shows you how to use AppAuthentication library to fetch secrets from your Key Vault*/
              AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
              KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
              var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")

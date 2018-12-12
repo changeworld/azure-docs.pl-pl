@@ -1,20 +1,21 @@
 ---
-title: Używać zarządzanych tożsamości do uwierzytelniania usługi Azure Stream Analytics zadania usługi Azure Data Lake Storage Gen1 typie danych wyjściowych (wersja zapoznawcza)
-description: ''
+title: Uwierzytelnianie usługi Azure Stream Analytics zadania usługi Azure Data Lake Storage Gen1 w danych wyjściowych
+description: W tym artykule opisano, jak korzystać z zarządzanych tożsamości do uwierzytelniania usługi Azure Data Lake Storage Gen1 danych wyjściowych zadania usługi Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/27/2018
-ms.openlocfilehash: 41b3dcc03f7cfbfee11798738a3b2daaf5e96741
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365292"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090435"
 ---
-# <a name="use-managed-identities-to-authenticate-azure-stream-analytics-jobs-to-azure-data-lake-storage-gen1-output-preview"></a>Używać zarządzanych tożsamości do uwierzytelniania usługi Azure Stream Analytics zadania usługi Azure Data Lake Storage Gen1 typie danych wyjściowych (wersja zapoznawcza)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 przy użyciu tożsamości zarządzanej (wersja zapoznawcza)
 
 Usługa Azure Stream Analytics obsługuje uwierzytelnianie tożsamości zarządzanej z danymi wyjściowymi Gen1 usługi Azure Data Lake Storage (ADLS). Tożsamość jest zarządzanej aplikacji zarejestrowanych w usłudze Azure Active Directory, który reprezentuje dane zadanie usługi Stream Analytics i może być używany do uwierzytelniania zasobów docelowych. Zarządzanych tożsamości wyeliminować ograniczenia metody uwierzytelniania oparte na użytkownikach, takich jak konieczności ponownego uwierzytelnienia z powodu zmiany hasła lub wygaśnięcia tokenu użytkownika, które występują co 90 dni. Ponadto zarządzanych tożsamości pomóc automatyzację wdrożenia zadania usługi Stream Analytics, które dane wyjściowe do usługi Azure Data Lake Storage Gen1.
 
@@ -32,7 +33,7 @@ W tym artykule przedstawiono Włączanie zarządzanych tożsamości dla zadania 
 
    Podczas zapisywania konfiguracji identyfikator obiektu (OID) nazwy głównej usługi jest wymieniony jako identyfikator podmiotu zabezpieczeń, jak pokazano poniżej:
 
-   ![Identyfikator podmiotu zabezpieczeń Analytics Stream](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
+   ![Identyfikator jednostki usługi Stream Analytics](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
    Jednostka usługi ma taką samą nazwę jak zadanie usługi Stream Analytics. Na przykład, jeśli nazwa zadania jest **MyASAJob**, nazwa utworzono nazwę główną usługi jest również **MyASAJob**.
 
@@ -56,11 +57,11 @@ W tym artykule przedstawiono Włączanie zarządzanych tożsamości dla zadania 
  
 8. W **uprawnienia** okienku wyboru **zapisu** i **Execute** uprawnienia i przypisz ją do **ten Folder i wszystkie obiekty podrzędne**. Następnie kliknij przycisk **Ok**.
 
-   ![Wybierz uprawnienie](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
+   ![Wybierz opcję uprawnień zapisu i wykonywania](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
 9. Nazwa główna usługi jest wyświetlana w obszarze **przypisane uprawnienia** na **dostępu** okienko, jak pokazano poniżej. Możesz teraz Przejdź wstecz i uruchomić zadania usługi Stream Analytics.
 
-   ![Lista dostępu](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
+   ![Stream Analytics, dostęp do listy w portalu](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    Aby dowiedzieć się więcej na temat uprawnień systemu plików Data Lake Storage Gen1, zobacz [kontroli dostępu w usłudze Azure Data Lake magazynu Gen1](../data-lake-store/data-lake-store-access-control.md).
 

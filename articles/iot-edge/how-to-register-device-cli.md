@@ -1,6 +1,6 @@
 ---
-title: Rejestrowanie nowego urządzenia usługi Azure IoT Edge (CLI) | Dokumentacja firmy Microsoft
-description: Użyj rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure, aby zarejestrować nowe urządzenie usługi IoT Edge
+title: Rejestrowanie nowego urządzenia z wiersza polecenia — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Zarejestrować nowe urządzenie usługi IoT Edge i pobieranie parametrów połączenia za pomocą rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 737a2dfe5c3b3382db00785b3465147143b17e9e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 28f20157de603cf20cb33e9db569064f87922bf8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569254"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081837"
 ---
 # <a name="register-a-new-azure-iot-edge-device-with-azure-cli"></a>Rejestrowanie nowego urządzenia usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure
 
@@ -43,7 +44,7 @@ Tego polecenia obejmuje trzy parametry:
 * **Nazwa koncentratora**: Podaj nazwę Centrum IoT Hub.
 * **włączone usługi Edge**: ten parametr deklaruje, że urządzenie jest przeznaczona do użytku z usługą IoT Edge.
 
-   ![Tworzenie urządzenia usługi IoT Edge](./media/how-to-register-device-cli/Create-edge-device.png)
+   ![AZ iot hub — tożsamość urządzenia — Tworzenie danych wyjściowych](./media/how-to-register-device-cli/Create-edge-device.png)
 
 ## <a name="view-all-devices"></a>Wyświetl wszystkie urządzenia
 

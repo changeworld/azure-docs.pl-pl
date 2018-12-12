@@ -1,24 +1,24 @@
 ---
-title: Azure w wersji dedykowanej przez moduł HSM — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń udostępnia możliwości magazynu kluczy w ramach platformy Azure, która spełnia FIPS 140-2 Level 3 certyfikacji
+title: Często zadawane pytania — sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące różnych tematów dotyczących sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
+ms.custom: mvc
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: concepts
-ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 3179fd3cf7a595b4491aec77e221aca3960c8ecb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 949281b1415e2098fb7bf0d3e9e9fbe0a5f5c835
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319449"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081000"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 

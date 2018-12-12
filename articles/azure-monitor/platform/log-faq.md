@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0d96844d9e156c702a5a6273b5181db04e5a79c5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: a27513f9ae3d2b4cfff77f4fd410fdc77e060feb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994730"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081680"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -218,7 +218,7 @@ Odp.: należy dodać "element etag" w treści interfejsu API lub właściwości 
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>PYTANIE: Jak dużo danych można wysyłać za pośrednictwem agenta do usługi Log Analytics? Czy istnieje maksymalna ilość danych klienta?
 A. Bezpłatny plan Ustawia dzienny limit 500 MB danego obszaru roboczego. Plany w warstwach standardowa i premium nie mają limitu ilości danych, który zostanie przekazany. Jako usługa w chmurze, usługi Log Analytics jest przeznaczona do automatyczne skalowanie w górę do uchwytu woluminu pochodzące od klientów — nawet jeśli jest on terabajtów dziennie.
 
-Agenta usługi Log Analytics zaprojektowano tak, aby upewnić się, że ma niewielkie rozmiary. Ilość danych w zależności od rozwiązania, które zostanie włączone. Można znaleźć szczegółowe informacje na temat ilości danych i wyświetlić podział według rozwiązania [użycia](../../log-analytics/log-analytics-usage.md) strony.
+Agenta usługi Log Analytics zaprojektowano tak, aby upewnić się, że ma niewielkie rozmiary. Ilość danych w zależności od rozwiązania, które zostanie włączone. Można znaleźć szczegółowe informacje na temat ilości danych i wyświetlić podział według rozwiązania [użycia](../../azure-monitor/platform/data-usage.md) strony.
 
 Aby uzyskać więcej informacji można znaleźć [blogu klienta](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) wyświetlanie ich wyników, po dokonaniu oceny wykorzystanie zasobów (zużycie) agenta pakietu OMS.
 
@@ -234,7 +234,7 @@ A. Ilość danych wysyłanych na agenta zależy od:
 * Liczba dzienniki i liczniki wydajności są zbierane
 * Ilość danych w dziennikach
 
-Bezpłatna warstwa cenowa jest dobrym sposobem na dołączanie kilka serwerów i miernika woluminu typowych danych. Ogólne użycie jest pokazywane w [użycia](../../log-analytics/log-analytics-usage.md) strony.
+Bezpłatna warstwa cenowa jest dobrym sposobem na dołączanie kilka serwerów i miernika woluminu typowych danych. Ogólne użycie jest pokazywane w [użycia](../../azure-monitor/platform/data-usage.md) strony.
 
 Dla komputerów, które można uruchomić agenta danych o komunikacji sieciowej użyj następującego zapytania, aby zobaczyć, jak dużo danych jest wysyłanych:
 

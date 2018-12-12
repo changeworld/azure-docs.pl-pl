@@ -1,7 +1,7 @@
 ---
 title: Kody odpowiedzi HTTP interfejsu API — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Zrozumienie, jakie kody odpowiedzi HTTP są zwracane za pomocą interfejsów API usługi QnA Maker
+description: Dowiedz się, jakie kody odpowiedzi HTTP są zwracane za pomocą interfejsów API usługi QnA Maker. Ułatwi to usuń wszelkie błędy.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: luis
 ms.topic: article
 ms.date: 10/09/2018
 ms.author: tulasim
-ms.openlocfilehash: 96782d32817e4989c02e0ed098d7772c80aa26c8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.custom: seodec18
+ms.openlocfilehash: d41f434b4e90c3f3850b8cb2e2d5c09fd23fc2cf
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079683"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085438"
 ---
 # <a name="qna-maker-api-http-response-codes"></a>Kody odpowiedzi usługi QnA Maker API HTTP
 [Zarządzania](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) i prognozowania interfejsy API zwracają kody odpowiedzi HTTP. Chociaż komunikatach odpowiedzi zawiera informacje specyficzne dla żądania, kod stanu odpowiedzi HTTP jest ogólny. 

@@ -68,7 +68,7 @@ W przypadku logowania jednokrotnego opartego na hasłach może być przeglądark
 
 -   Internet Explorer 8, 9, 10, 11 — Windows 7 lub nowszy
 
--   Edge w systemie Windows 10 Anniversary Edition lub nowszy
+-   Microsoft Edge w systemie Windows 10 Anniversary Edition lub nowszy
 
 -   Chrome — W systemie Windows 7 lub nowszy i System MacOS x lub nowszym
 

@@ -1,7 +1,7 @@
 ---
 title: Limity i granice — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Pełną listę limitów przez narzędzie QnA Maker.
+description: Usługa QnA Maker ma meta limity dla części bazy wiedzy knowledge base i usługi. Należy zachować wiedzy w ramach tych limitów w celu testowania i publikowania.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: seodec18
+ms.openlocfilehash: 772153040ac76f4b7bbee55c48527a841fc69037
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137297"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084792"
 ---
-# <a name="qna-maker-limits"></a>Limity usługi QnA Maker
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
 Pełną listę limitów przez narzędzie QnA Maker.
 
 ## <a name="knowledge-bases"></a>Bazy wiedzy

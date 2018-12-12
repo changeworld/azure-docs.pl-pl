@@ -1,21 +1,22 @@
 ---
-title: Usługa Azure Cloud Shell dane użycia usługi LUIS
-titleSuffix: Azure Cognitive Services
+title: Użycie danych — usługa Cloud Shell
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Dowiedz się, jak uzyskać informacje dotyczące użycia w usłudze Azure Cloud Shell dla usługi LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: aca81bd529fe6151dce7aba6754874355189fc59
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: MT
+ms.openlocfilehash: 3264a94c26339bc99a82ebd6770a3cae7d8ab3fb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444396"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086775"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Dane użycia usługi LUIS z usługi Azure Cloud Shell
 Portal systemu Azure pozwala na używanie poleceń cmdlet programu PowerShell do pracy z zasobami usługi LUIS. 

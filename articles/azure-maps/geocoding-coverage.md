@@ -106,7 +106,7 @@ Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokład
 | Fidżi |                 |                |              |      ✓     |          ✓         |
 | Polinezja Francuska                                    |                 |                |              |      ✓     |          ✓         |
 | Wyspy Heard i McDonalda                   |                 |                |              |      ✓     |          ✓         |
-| Hongkong                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| SRA Hongkong                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonezja                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indie       |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japonia                                               |                 |                |              |      ✓     |          ✓         |

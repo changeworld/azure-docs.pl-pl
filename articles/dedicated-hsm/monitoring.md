@@ -1,22 +1,23 @@
 ---
-title: Azure w wersji dedykowanej monitorowania przez moduł HSM | Dokumentacja firmy Microsoft
-description: Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń udostępnia możliwości magazynu kluczy w ramach platformy Azure, która spełnia FIPS 140-2 Level 3 certyfikacji
+title: Monitorowanie opcji - sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
+description: Omówienie platformy Azure w wersji dedykowanej sprzętowego modułu zabezpieczeń monitorowanie obowiązki i opcje monitorowania
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 4e2089c62da5fec1e1cfe96ce27b363cfb35eadf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b577c2c68512c6e7e36f80b75245d9db4f839d9e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319575"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085693"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Monitorowanie platformy Azure w wersji dedykowanej przez moduł HSM
 
@@ -42,4 +43,4 @@ Zaleca się, że wszystkie najważniejsze pojęcia związane z usługi, takie ja
 * [Wysoka dostępność](high-availability.md)
 * [Zabezpieczenia fizyczne](physical-security.md)
 * [Sieć](networking.md)
-* [Wsparcie dla](supportability.md)
+* [Możliwości obsługi](supportability.md)
