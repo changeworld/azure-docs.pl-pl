@@ -50,6 +50,6 @@ Interfejs Web Language Model API obsługuje maksymalnie 4 operacje wyszukiwania:
 
 Poniższy dokument zawiera szczegółowe informacje na temat rozwoju tych modeli językowych i powinien być cytowany w publikacjach badawczych korzystających z tej usługi:
 
-- [An Overview of Microsoft Web N-gram Corpus and Applications](https://research.microsoft.com/apps/pubs/default.aspx?id=130762) (Omówienie aplikacji i n-gramowego korpusu internetowego firmy Microsoft), NAACL HLT 2010
+- [Omówienie aplikacji i n-gramowego korpusu internetowego firmy Microsoft](https://research.microsoft.com/apps/pubs/default.aspx?id=130762), NAACL HLT 2010
 
 Kliknij [tutaj](https://academic.microsoft.com/#/search?iq=And%28Ty%3D'0'%2CRId%3D2145833060%29&q=papers%20citing%20an%20overview%20of%20microsoft%20web%20n%20gram%20corpus%20and%20applications&filters=&from=0&sort=0), aby uzyskać listę artykułów, w których cytowana jest ta praca.
