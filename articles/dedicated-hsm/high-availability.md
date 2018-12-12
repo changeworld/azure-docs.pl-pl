@@ -1,22 +1,23 @@
 ---
-title: Wysokiej dostępności platformy Azure w wersji dedykowanej przez moduł HSM | Dokumentacja firmy Microsoft
-description: Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń udostępnia możliwości magazynu kluczy w ramach platformy Azure, która spełnia FIPS 140-2 Level 3 certyfikacji
+title: Wysoka dostępność — sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
+description: Przykład wysokiej dostępności w usłudze Azure w wersji dedykowanej przez moduł HSM i podstawowe zagadnienia
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: b02e3da086a3f33a55650fa72661f65028bfb78b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 991482d3d6be4d09b37014e5bb03708987e0f74e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680025"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078178"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Platformy Azure w wersji dedykowanej HSM wysokiej dostępności.
 
@@ -38,7 +39,7 @@ Dodatkowe tematy poziomu pojęcia:
 * [Architektura wdrożenia](deployment-architecture.md)
 * [Zabezpieczenia fizyczne](physical-security.md)
 * [Sieć](networking.md)
-* [Wsparcie dla](supportability.md)
+* [Możliwości obsługi](supportability.md)
 * [Monitorowanie](monitoring.md)
 
 Aby uzyskać szczegółowe informacje na temat konfigurowania urządzenia HSM wysokiej dostępności można znaleźć Portal obsługi klienta firmy Gemalto przewodniki administratora i sekcja 6.

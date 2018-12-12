@@ -1,21 +1,22 @@
 ---
-title: Omówienie dostępu do aplikacji usługi LUIS
-titleSuffix: Azure Cognitive Services
-description: Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych.
+title: Współpraca w aplikacji innym osobom
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d0f9d0834cffd642961b2c49d5d252a665b49e73
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.openlocfilehash: adf5395f94b55e956d9ea561c5b4541cd04f4dcc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637414"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081017"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
 Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
@@ -33,7 +34,7 @@ Właściciela i współpracowników wszystkie mają dostęp do tworzenia aplikac
 |Importowanie wersji||
 |Upublicznić aplikacji|Gdy aplikacja jest publiczny, każda osoba z kluczem tworzenia lub punkt końcowy kwerendy aplikacji.|
 |Modyfikowanie modelu|
-|Publikuj|
+|Publikowanie|
 |Przejrzyj wypowiedzi punktu końcowego dla [aktywne uczenie](luis-how-to-review-endoint-utt.md)|
 |Szkolenie|
 

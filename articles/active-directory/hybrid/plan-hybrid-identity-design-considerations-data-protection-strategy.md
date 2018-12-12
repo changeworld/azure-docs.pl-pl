@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 20782679a4e73c029d6c83fd3bc57914b4d28691
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238152"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865050"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiowanie strategii ochrony danych dla rozwiązania tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategię ochrony danych do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w:
@@ -92,7 +92,7 @@ Dzięki wykorzystaniu uwierzytelniania, autoryzacji i kontroli dostępu, któryc
 
 Scentralizowane zarządzanie i w pełni integrację z innych katalogów
 
-Usługa Azure Active Directory umożliwia logowanie jednokrotne do tysięcy aplikacji SaaS i aplikacje sieci web w środowisku lokalnym. Zobacz [listę zgodności federacyjnych usługi Azure Active Directory: dostawcy tożsamości innych firm, które mogą służyć do implementowania logowania jednokrotnego](https://msdn.microsoft.com/library/azure/jj679342.aspx) artykuł, aby uzyskać więcej szczegółów na temat logowania jednokrotnego innej firmy, które zostały przetestowane przez firmę Microsoft. Ta funkcja umożliwia organizacji do implementacji różnych scenariuszy B2B przy jednoczesnym zachowaniu kontroli zarządzania tożsamościami i dostępem. Jednak w trakcie B2B Projektowanie procesu, jest ważne poznać metodę uwierzytelniania, która jest używana przez partnera i sprawdź, czy ta metoda jest obsługiwana przez platformę Azure. Obecnie następujące metody są obsługiwane przez usługę Azure AD:
+Usługa Azure Active Directory umożliwia logowanie jednokrotne do tysięcy aplikacji SaaS i aplikacje sieci web w środowisku lokalnym. Zobacz [listę zgodności federacyjnych usługi Azure Active Directory: dostawcy tożsamości innych firm, które mogą służyć do implementowania logowania jednokrotnego](how-to-connect-fed-compatibility.md) artykuł, aby uzyskać więcej szczegółów na temat logowania jednokrotnego innej firmy, które zostały przetestowane przez firmę Microsoft. Ta funkcja umożliwia organizacji do implementacji różnych scenariuszy B2B przy jednoczesnym zachowaniu kontroli zarządzania tożsamościami i dostępem. Jednak w trakcie B2B Projektowanie procesu, jest ważne poznać metodę uwierzytelniania, która jest używana przez partnera i sprawdź, czy ta metoda jest obsługiwana przez platformę Azure. Obecnie następujące metody są obsługiwane przez usługę Azure AD:
 
 * Security Assertion Markup Language (SAML)
 * OAuth

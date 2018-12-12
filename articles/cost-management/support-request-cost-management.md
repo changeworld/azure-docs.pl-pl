@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: ce6847accef6290497ff0833901a1c07ee59b7b6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4118e0bb0e42a1eec707b2fdb6682333400e2e1a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998021"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099838"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Utwórz żądanie pomocy technicznej dla platformy Cloudyn
 
@@ -43,7 +43,7 @@ Jeśli chcesz utworzyć bilet pomocy technicznej rozliczeń usługi Cost Managem
 
 Aby sprawdzić stan zdarzenie, które zostały wprowadzone, zobacz [wszystkie żądania obsługi](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
 
-Jeśli jesteś użytkownikiem platformy Cloudyn starszej wersji, bez konta platformy Azure, możesz otworzyć żądania pomocy technicznej w http://support.microsoft.com/oas/default.aspx?prid=16451.
+Jeśli jesteś użytkownikiem platformy Cloudyn starszej wersji, bez konta platformy Azure, możesz otworzyć żądania pomocy technicznej w https://support.microsoft.com/oas/default.aspx?prid=16451.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

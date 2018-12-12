@@ -2,19 +2,19 @@
 title: Tworzenie rozwiązania IoT przy użyciu usługi Azure Stream Analytics
 description: Wprowadzenie do samouczka dotyczącego rozwiązania Stream Analytics IoT scenariusza budki
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: jasonh, sngun
+ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/21/2018
-ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: MT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 230318dc8e352a3adc970b13f20fa992954e3b15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978795"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091098"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Tworzenie rozwiązania IoT przy użyciu usługi Stream Analytics
 
@@ -36,7 +36,7 @@ Potrzebne są następujące wymagania wstępne do ukończenia tego rozwiązania:
 ## <a name="scenario-introduction-hello-toll"></a>Wprowadzenie do scenariusza: "Hello, płatny!"
 Płatny stacji jest typowym zjawiskiem. Użytkownik je napotka na wielu trasy szybkiego ruchu, mostków i tunele na całym świecie. Każda stacja płatny ma wiele kabiny płatny. Ręczne kabiny można zatrzymać płatne Opiekun płatny. Na automatyczne kabiny czujnika na górze każdej stoisku skanuje karty RFID, które jest umieszczone na szyby pojazdu, jak przekazać stoisku płatny. To ułatwia wizualizowanie przejście pojazdów przez te stacje płatny jako strumień zdarzeń, w którym można wykonać operacji interesujące.
 
-![Obraz samochodów na płatny kabiny](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
+! [Obraz samochodów na płatny kabiny] (media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth jpg)
 
 ## <a name="incoming-data"></a>Dane przychodzące
 To rozwiązanie działa z dwóch strumieni danych. Czujniki zainstalowane w wejścia i wyjścia z stacje płatny utworzyć pierwszy strumienia. Drugi strumień jest statyczny wyszukiwania zestawu danych, zawierającej dane rejestracyjne pojazdów.
@@ -44,7 +44,7 @@ To rozwiązanie działa z dwóch strumieni danych. Czujniki zainstalowane w wej�
 ### <a name="entry-data-stream"></a>Strumień danych wpisu
 Strumień danych wpis zawiera informacji na temat samochodów wejdzie z stacje płatny. Zakończ zdarzenia danych działają strumieniowo do kolejki usługi Centrum zdarzeń z aplikacji sieci Web zawarte w przykładowej aplikacji.
 
-| TollID | EntryTime | LicensePlate | Stan | Wprowadź | Modelowanie | VehicleType | VehicleWeight | Płatny | Tag |
+| TollID | EntryTime | LicensePlate | Stan | Tworzenie | Modelowanie | VehicleType | VehicleWeight | Płatny | Tag |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -61,7 +61,7 @@ Poniżej przedstawiono krótki opis kolumny:
 | EntryTime |Data i godzina zgłoszenia pojazdu na stoisku płatny w formacie UTC |
 | LicensePlate |Numer rejestracyjny pojazdu |
 | Stan |Stan, w Stanach Zjednoczonych |
-| Wprowadź |Producent samochodów |
+| Tworzenie |Producent samochodów |
 | Modelowanie |Liczba modeli samochodów |
 | VehicleType |1 dla pojazdów pasażerskich lub 2 dla pojazdów komercyjnych |
 | WeightType |Masy pojazdu w tonach; 0 dla pojazdów pasażerskich |
@@ -310,7 +310,7 @@ Skalowanie w górę zadania przesyłania strumieniowego do większej liczby jedn
 ## <a name="monitor-the-job"></a>Monitorowanie zadania
 **MONITOR** obszar zawiera dane statystyczne o uruchomionego zadania. Konfiguracja po raz pierwszy jest potrzebna do używania konta magazynu, w tym samym regionie (nazwa numer płatny takich jak pozostałej części tego dokumentu).   
 
-![Zrzut ekranu przedstawiający monitorowanie](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
+![Usługa Azure Stream Analytics zadania monitorowania](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
 Możesz uzyskać dostęp **dzienników aktywności** na pulpicie nawigacyjnym zadania **ustawienia** także obszaru.
 

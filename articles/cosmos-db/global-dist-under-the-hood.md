@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 5db43c6488a4592eb46d9a0fe9a044dde36fc494
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54511505841f170180bce0fccd8bd289ba24de2b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423351"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073362"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Usługa Azure Cosmos DB globalną dystrybucję - kulisy
 
@@ -43,7 +43,7 @@ Dystrybucji globalnej usługi cosmos DB opiera się na dwa kluczowe elementy abs
 
 ## <a name="replica-sets"></a>Zestawów replik
 
-Partycja zasobu jest zmaterializowany jako grupa samozarządzanej i dynamicznego równoważenia obciążenia repliki rozkładają się na wielu domenach błędów, o nazwie zestawu replik. Ten zestaw zbiorczo implementuje protokół maszyny replikowanych stanie sprawić, że dane w partycji zasobów wysoko dostępne, niezawodne i spójne. Dynamiczne członkostwo zestawu replik N — ją zachowuje informujących o NMin i nmaks na podstawie błędy, operacje administracyjne i czas dla replik nie powiodło się ponowne generowanie/odzyskiwanie. Na podstawie członkostwa zmian, replikacja protokołu również Rekonfiguruj rozmiar odczytu i zapisu kworum. Aby równomiernie rozłożyć przepływność, która jest przypisana do partycji danego zasobu, stosujemy dwóch pomysłów: po pierwsze, kosztów przetwarzania żądań zapisu na lidera jest wyższy niż koszt zastosowania aktualizacji w poniżej. Odpowiednio lidera jest w budżecie więcej zasobów systemowych niż obserwatorów. Po drugie w miarę możliwości odczytu kworum dla poziomu spójności danego składa się wyłącznie z replikami poniżej. Unikaj firma Microsoft, kontaktując się z liderem do obsługi operacji odczytu, chyba że wymagane. Stosujemy szereg pomysły z badań na relacje [obciążenia i wydajności](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) w systemach kworum dla modeli spójności pięć Cosmos DB obsługuje.  
+Partycja zasobu jest zmaterializowany jako grupa samozarządzanej i dynamicznego równoważenia obciążenia repliki rozkładają się na wielu domenach błędów, o nazwie zestawu replik. Ten zestaw zbiorczo implementuje protokół maszyny replikowanych stanie sprawić, że dane w partycji zasobów wysoko dostępne, niezawodne i spójne. Dynamiczne członkostwo zestawu replik N — ją zachowuje informujących o NMin i nmaks na podstawie błędy, operacje administracyjne i czas dla replik nie powiodło się ponowne generowanie/odzyskiwanie. Na podstawie członkostwa zmian, replikacja protokołu również Rekonfiguruj rozmiar odczytu i zapisu kworum. Aby równomiernie rozłożyć przepływność, która jest przypisana do partycji danego zasobu, stosujemy dwóch pomysłów: po pierwsze, kosztów przetwarzania żądań zapisu na lidera jest wyższy niż koszt zastosowania aktualizacji w poniżej. Odpowiednio lidera jest w budżecie więcej zasobów systemowych niż obserwatorów. Po drugie w miarę możliwości odczytu kworum dla poziomu spójności danego składa się wyłącznie z replikami poniżej. Unikaj firma Microsoft, kontaktując się z liderem do obsługi operacji odczytu, chyba że wymagane. Stosujemy szereg pomysły z badań na relacje [obciążenia i wydajności](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) w systemach kworum dla modeli spójności pięć Cosmos DB obsługuje.  
 
 ## <a name="partition-sets"></a>Zestawy partycji
 
@@ -57,7 +57,7 @@ Usługa pozwala na skonfigurowanie baz danych Cosmos z regionu zapisu w jednym l
 
 ## <a name="conflict-resolution"></a>Rozwiązywanie konfliktów
 
-Nasze projektowanie pod kątem propagacji aktualizacji, rozwiązywanie konfliktów i przyczynowości śledzenia są INSPIROWANE od wcześniejszego pracy na [epidemii algorytmy](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) i [Bayou](http://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) systemu. Jądra pomysły przetrwały i zapewniają wygodny układem odniesienia do komunikowania się projekt systemu usługi Cosmos DB, również przeszły znaczące przekształcenia, jak firma Microsoft stosowane do systemu usługi Cosmos DB. Było to wymagane, ponieważ wcześniejsze systemy zostały zaprojektowane, ani o zarządzanie zasobami przy użyciu skali, w którym usługi Cosmos DB musi działać ani możliwości (na przykład spójności powiązana nieaktualność) i rygorystyczne oraz kompleksową Umowy SLA, które usługi Cosmos DB zapewnia swoim klientom.  
+Nasze projektowanie pod kątem propagacji aktualizacji, rozwiązywanie konfliktów i przyczynowości śledzenia są INSPIROWANE od wcześniejszego pracy na [epidemii algorytmy](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) i [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) systemu. Jądra pomysły przetrwały i zapewniają wygodny układem odniesienia do komunikowania się projekt systemu usługi Cosmos DB, również przeszły znaczące przekształcenia, jak firma Microsoft stosowane do systemu usługi Cosmos DB. Było to wymagane, ponieważ wcześniejsze systemy zostały zaprojektowane, ani o zarządzanie zasobami przy użyciu skali, w którym usługi Cosmos DB musi działać ani możliwości (na przykład spójności powiązana nieaktualność) i rygorystyczne oraz kompleksową Umowy SLA, które usługi Cosmos DB zapewnia swoim klientom.  
 
 Pamiętaj, że zestaw partycji jest rozpowszechniana w wielu regionach i korzysta z protokołu replikacji bazy danych Cosmos (Multi-master) do replikacji danych między partycjami fizycznymi wchodzących w skład danego zestawu partycji. Każda partycja zasobów (z zestaw partycji) akceptuje zapisów i zazwyczaj służy odczytów do klientów, którzy są lokalne w danym regionie. Zaakceptowane przez partycję zasobu w obrębie regionu zapisu są trwale zatwierdzone i wprowadzone o wysokiej dostępności w ramach partycji zasobów przed wysłane do klienta. Te są wstępne operacje zapisu i są propagowane do innych fizycznych partycji w obrębie zestawu partycji przy użyciu kanału zapobieganie entropii. Klienci mogą żądać zapisów wstępnie zaakceptowane lub zatwierdzone przez przekazanie nagłówek żądania. Propagacja zapobieganie entropii (w tym częstotliwość propagacji) jest dynamiczny, na podstawie topologii zestawu partycji i regionalnym bliskość partycje fizyczne i spójności, poziom skonfigurowany. W ramach zestawu partycji Cosmos DB jest zgodny schemat podstawowy zatwierdzenia z partycją dynamicznie wybrane kryterium. Wybór kryterium jest dynamiczne i jest integralną częścią ponownej konfiguracji zestawu partycji na podstawie topologii nakładki. Zatwierdzone operacje zapisu (w tym wielu-row/partii aktualizacje) jest gwarantowana do zamówienia. 
 

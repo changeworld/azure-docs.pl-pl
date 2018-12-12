@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: c9c80da55737d0093813b84e33d3d90c5d7d4603
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 4d4e6a47b35d3cb98e4425c11628625818642fa0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309144"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867855"
 ---
 # <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Usługa Azure Machine Learning Studio — często zadawane pytania: rozliczenia, możliwości, ograniczeń i pomocy technicznej
 Przedstawione tutaj często zadawane pytania i odpowiedzi dotyczą usługi Azure Machine Learning, która jest usługą w chmurze przeznaczoną do tworzenia modeli predykcyjnych i rozwiązań operacyjnych za pośrednictwem usług sieci Web. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej.
@@ -32,7 +32,7 @@ Dla usługi Azure Machine Learning udostępniono forum w witrynie MSDN, gdzie cz
 ## <a name="general-questions"></a>Pytania ogólne
 **Co to jest Machine Learning Studio?**
 
-Machine Learning Studio to środowisko robocze, do którego można uzyskiwać dostęp za pośrednictwem przeglądarki sieci Web. Usługa Machine Learning Studio udostępnia paletę modułów w interfejsie graficznym do tworzenia, który pomaga tworzyć kompletne przepływy pracy do analizy danych w formie eksperymentów.
+Machine Learning Studio to środowisko kanwy przeciągania i upuszczania, które możesz uzyskać dostęp za pomocą przeglądarki sieci web. Usługa Machine Learning Studio udostępnia paletę modułów w interfejsie graficznym do tworzenia, który pomaga tworzyć kompletne przepływy pracy do analizy danych w formie eksperymentów.
 
 Aby uzyskać więcej informacji o usłudze Machine Learning Studio, zobacz [What is Machine Learning Studio?](what-is-ml-studio.md) (Co to jest Machine Learning Studio?).
 

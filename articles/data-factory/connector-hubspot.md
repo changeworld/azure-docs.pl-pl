@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 69994d0e2f945f54ccc10bcf067fa46bb3befd23
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4b0023c42d99842c704734d4f994273436f201e4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121876"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077651"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopiowanie danych z HubSpot przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -84,7 +84,12 @@ Następujące właściwości są obsługiwane w przypadku HubSpot połączone us
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych HubSpot.
 
-Aby skopiować dane z HubSpot, należy ustawić właściwość typu zestawu danych na **HubspotObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z HubSpot, należy ustawić właściwość typu zestawu danych na **HubspotObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **HubspotObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -96,7 +101,8 @@ Aby skopiować dane z HubSpot, należy ustawić właściwość typu zestawu dany
         "linkedServiceName": {
             "referenceName": "<Hubspot linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -112,7 +118,7 @@ Aby skopiować dane z HubSpot, należy ustawić typ źródła w działaniu kopio
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **HubspotSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Companies where Company_Id = xxx"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

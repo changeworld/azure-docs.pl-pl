@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 01/26/2018
-ms.openlocfilehash: f865086a7e57898adb7d43ec0c02c7d38ef0da9c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 85436fedacc765dcdf6a8005cf96f3d63312504c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365576"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868807"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -34,7 +34,7 @@ Jeśli tworzysz aplikację na użytek wewnętrzny lub dla klientów zewnętrznyc
 
 Jeśli nie wiesz, czy Twoje dane mają postać szeregów czasowych, oto informacje, z którymi warto się zapoznać.  Dane szeregów czasowych przedstawiają, jak zasób lub proces zmienia się wraz z upływem czasu.  Charakterystyczne jest to, że dane te zawierają sygnatury czasowe, a czas najlepiej jest przedstawiać jako oś.  Dane szeregów czasowych zazwyczaj są dostarczane jako uszeregowane według czasu i zwykle są traktowane jako dane, które są dodawane do bazy danych, a nie w niej aktualizowane.  Ponieważ usługa Time Series Insights przechwytuje i magazynuje każde nowe zdarzenie jako wiersz, zmiana jest mierzona w czasie, umożliwiając spoglądanie wstecz i przewidywanie przyszłych zmian.  W przypadku dużych woluminów przechowywanie, indeksowanie, odpytywanie, analizowanie i wizualizowanie danych szeregów czasowych może być trudne.  
 
-## <a name="video"></a>Wideo: 
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>W tym wideo omawiamy usługę Time Series Insights, platformę do analizy IoT w chmurze.</br>
 

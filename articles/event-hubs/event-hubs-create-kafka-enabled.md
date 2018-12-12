@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klastra Apache Kafka włączone usługi Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Tworzenie platformy Kafka włączona przestrzeń nazw usługi Azure Event Hubs przy użyciu witryny Azure portal
+title: Tworzenie Centrum zdarzeń włączone platformy Apache Kafka — Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wskazówki dotyczące tworzenia klastra Apache Kafka włączony przestrzeni nazw usługi Azure Event Hubs przy użyciu witryny Azure portal.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: b72f6b190aad436398629c67f271020ffd0a8da9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf78ac6bce23b739ed661929f6fe90eddc9b4d94
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822079"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090783"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Tworzenie usługi event hubs platformy Apache Kafka włączone
 

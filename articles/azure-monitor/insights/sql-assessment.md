@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5afb8e03dedbe09c2c95495fb6ff18333f4c648d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 7ca8230717860d82fdc7942641bb684b897f9312
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847596"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888957"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optymalizowanie środowiska SQL za pomocą rozwiązania sprawdzanie kondycji serwera SQL w usłudze Log Analytics
 
@@ -55,7 +55,7 @@ Aby przeprowadzić sprawdzenie kondycji serwerów programu SQL Server, wymagają
 
 1. Zainstaluj [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Jeśli serwer nie jest już monitorowane przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
 2. Jeśli grupa zarządzania nie jest zintegrowana z usługą Log Analytics jest monitorowana przy użyciu programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2, serwer może być wieloadresowe z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal monitorowane przez program Operations Manager.  
-3. W przeciwnym razie, jeśli grupa zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny do zbierania danych przez usługę, wykonaj czynności w ramach [dodać komputery zarządzane z wykorzystaniem agentów](../../log-analytics/log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po włączeniu rozwiązania w Twoim obszarze roboczym.  
+3. W przeciwnym razie, jeśli grupa zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny do zbierania danych przez usługę, wykonaj czynności w ramach [dodać komputery zarządzane z wykorzystaniem agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) po włączeniu rozwiązania w Twoim obszarze roboczym.  
 
 Agent na serwerze SQL, które raporty z grupą zarządzania programu Operations Manager służy do zbierania danych, przekazuje do jego serwera zarządzania w przypisanej, a następnie będą wysyłane bezpośrednio z serwera zarządzania do usługi Log Analytics.  Dane nie są zapisywane w bazach danych programu Operations Manager.  
 

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: panosper
-ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c176e35cbc75747230e429d0ddae9d420db8b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467722"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867584"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -87,7 +87,7 @@ Na przykład:
 System niestandardowych voice normalizuje zapisy, dokonując przekonwertowania tekst na małe litery i usunąć nadmiarowe znaki interpunkcyjne. Jest ważne, czy zapisy są transkrypcje dokładne 100% odpowiedniego nagrań audio.
 
 > [!TIP]
-> Gdy kompilowanie produkcji zamiany tekstu na mowę głosów, wybierz wypowiedzi (lub skryptów), która uwzględniać konta fonetycznych pokrycia i wydajność. Wystąpił problem podczas pobierania wyników chcesz? [Skontaktuj się z zespołem Custom Voice](mailto:tts@microsoft.com) można znaleźć poza więcej informacji na temat o nas zapoznaj się z.
+> Gdy kompilowanie produkcji zamiany tekstu na mowę głosów, wybierz wypowiedzi (lub skryptów), która uwzględniać konta fonetycznych pokrycia i wydajność. Wystąpił problem podczas pobierania wyników chcesz? [Skontaktuj się z zespołem Custom Voice](mailto:speechsupport@microsoft.com) można znaleźć poza więcej informacji na temat o nas zapoznaj się z.
 
 ## <a name="upload-your-datasets"></a>Przekazywanie swoich zestawów danych
 

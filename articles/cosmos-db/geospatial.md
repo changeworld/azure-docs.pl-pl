@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 947a39a3660e0755efbf99b74b66d2c16e331e07
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 29bb495bbbd56ab39964b34db35fb4d222a60179
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837056"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074699"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Dane lokalizacji geograficznych i GeoJSON za pomocą konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -305,7 +305,7 @@ Podobnie w tym miejscu jest zapytania służące do znajdowania wszystkich dokum
 Skoro zrobiliśmy poznać sposób wykonywania zapytań dla dokumentów za pomocą LINQ i SQL, Spójrzmy na sposób konfigurowania usługi Azure Cosmos DB dla indeksowania przestrzennego.
 
 ## <a name="indexing"></a>Indeksowanie
-Zgodnie z opisem firma Microsoft w [schemat niezależny od indeksowania za pomocą usługi Azure Cosmos DB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) papieru, został zaprojektowany aparatu bazy danych Azure Cosmos DB to naprawdę niezależnej od schematu i zapewnienia pierwszorzędnej obsługi dla formatu JSON. Aparat bazy danych zoptymalizowany pod kątem zapisu w usłudze Azure Cosmos DB natywną obsługę danych przestrzennych (punkty, wielokąty i wierszy), reprezentowana w standardzie GeoJSON.
+Zgodnie z opisem firma Microsoft w [schemat niezależny od indeksowania za pomocą usługi Azure Cosmos DB](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) papieru, został zaprojektowany aparatu bazy danych Azure Cosmos DB to naprawdę niezależnej od schematu i zapewnienia pierwszorzędnej obsługi dla formatu JSON. Aparat bazy danych zoptymalizowany pod kątem zapisu w usłudze Azure Cosmos DB natywną obsługę danych przestrzennych (punkty, wielokąty i wierszy), reprezentowana w standardzie GeoJSON.
 
 Mówiąc, przewidywany geodezyjnej współrzędne na płaszczyznę 2D następnie stopniowo dzielą komórek przy użyciu geometrii **obszaru quadtree**. Tych komórek są mapowane na 1D na podstawie lokalizacji komórkę w **krzywej wypełnianie miejsca Hilberta**, który zachowuje lokalizacja punktów. Ponadto po zindeksowaniu danych lokalizacji, przechodzi on przez proces ten jest znany jako **mozaikowania**, oznacza to, że wszystkie komórki, które przecinają lokalizacji zostały zidentyfikowane i są przechowywane jako klucze do indeksu usługi Azure Cosmos DB. Podczas przeszukiwania argumentów, takich jak punktów i wielokątów są również tesselowaną można wyodrębnić zakresów identyfikator odpowiednich komórek, a następnie używane do pobierania danych z indeksu.
 
@@ -389,7 +389,7 @@ A Oto, jak można zmodyfikować istniejącą kolekcję z zalet indeksowania prze
 Teraz, gdy wiesz jak rozpocząć pracę z obsługą dane geograficzne w usłudze Azure Cosmos DB, następnie można wykonywać następujące czynności:
 
 * Rozpocznij kodowanie dzięki [przykładów kodu .NET dane geograficzne w usłudze GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
-* Zapoznaj się z danymi geograficznymi zapytań w [Plac zabaw dla usługi Azure Cosmos DB zapytań](http://www.documentdb.com/sql/demo#geospatial)
+* Zapoznaj się z danymi geograficznymi zapytań w [Plac zabaw dla usługi Azure Cosmos DB zapytań](https://www.documentdb.com/sql/demo#geospatial)
 * Dowiedz się więcej o [usługi Azure Cosmos DB zapytania](how-to-sql-query.md)
 * Dowiedz się więcej o [zasad indeksowania usługi Azure Cosmos DB](index-policy.md)
 

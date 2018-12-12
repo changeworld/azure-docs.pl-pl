@@ -1,10 +1,10 @@
 ---
-title: 'Usługi Machine learning web services: Wdrażanie i korzystanie - Azure Machine Learning Studio | Dokumentacja firmy Microsoft'
+title: Wdrażanie i korzystanie - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a192bb50fe6931130492fad037f83e301e401762
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: a596fe572e31a330fa976470d31dc7d0de5b0398
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315549"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073741"
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Usługi sieci Web Azure Machine Learning: wdrażanie i korzystanie
 Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez Internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. Ponieważ usługi sieci web są zgodne ze specyfikacją REST, można je wywoływać z różnych języków programowania i platform, takich jak .NET, Java i z aplikacji, takich jak program Excel.

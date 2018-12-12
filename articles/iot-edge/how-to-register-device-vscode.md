@@ -1,6 +1,6 @@
 ---
-title: Rejestrowanie nowego urządzenia usługi Azure IoT Edge (VS Code) | Dokumentacja firmy Microsoft
-description: Użyj programu Visual Studio Code, aby utworzyć nowe urządzenie usługi IoT Edge w usłudze Azure IoT hub
+title: Rejestrowanie nowego urządzenia z programu Visual Studio Code — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Użyj programu Visual Studio Code, aby utworzyć nowe urządzenie usługi IoT Edge w usłudze Azure IoT hub i pobieranie parametrów połączenia
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf9603c65454f076a494789e784c9352fb7bef33
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: cc812cc7f628f533cbf342edee66e01ce703678f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578709"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099791"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>Rejestrowanie nowego urządzenia usługi Azure IoT Edge z programu Visual Studio Code
 
@@ -35,7 +36,7 @@ Rozszerzenia usługi Azure IoT dla programu Visual Studio Code służy do wykony
 
 2. W dolnej części Eksploratora rozwiń **Azure IoT Hub Devices** sekcji. 
 
-   ![Rozwiń węzeł urządzenia w usłudze Azure IoT Hub](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
+   ![Rozwiń sekcję usługi Azure IoT Hub Devices](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
 3. Kliknij pozycję **...**  w **Azure IoT Hub Devices** nagłówek sekcji. Jeśli nie widzisz wielokropka, kliknąć lub Najedź kursorem na nagłówek. 
 
@@ -63,7 +64,7 @@ Dane wyjściowe na ekranie zobaczysz wynik użycia polecenia. Informacje o urzą
 
 Wszystkie urządzenia łączące się z Centrum IoT są wymienione w **Azure IoT Hub Devices** sekcji Eksploratorze kodu programu Visual Studio. Urządzenia usługi IoT Edge różnią się od urządzeń-Edge z inną ikonę i fakt, że ich można rozszerzyć, aby pokazać moduły wdrożone do każdego urządzenia. 
 
-   ![Wyświetl urządzenia w programie VS Code](./media/how-to-register-device-vscode/view-devices.png)
+   ![Wyświetl wszystkie urządzenia usługi IoT Edge w usłudze IoT hub](./media/how-to-register-device-vscode/view-devices.png)
 
 ## <a name="retrieve-the-connection-string"></a>Pobieranie parametrów połączenia
 

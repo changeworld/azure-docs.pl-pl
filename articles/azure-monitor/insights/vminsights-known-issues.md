@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza), znane problemy z | Dokumentacja firmy Microsoft
-description: Usługa Azure Monitor dla maszyn wirtualnych to rozwiązanie na platformie Azure, która łączy kondycji i wydajności monitorowania systemu operacyjnego maszyny Wirtualnej platformy Azure, a także automatycznie odnajdywania składników aplikacji i zależności z innymi zasobami oraz mapuje komunikację między je. W tym artykule opisano znane problemy.
+title: Usługa Azure Monitor znane problemy dotyczące maszyn wirtualnych (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano znane problemy z usługą Azure Monitor dla maszyn wirtualnych, rozwiązanie na platformie Azure, który łączy monitorowania kondycji i wydajności systemu operacyjnego maszyny Wirtualnej platformy Azure. Usługa Azure Monitor dla maszyn wirtualnych automatycznie odnajduje składniki aplikacji i zależności z innymi zasobami i mapuje komunikację między nimi.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -14,51 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 99f84e9784c448091c0257218855c3bf32c2f8f4
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.openlocfilehash: d720a7401b9ed1188a01d3cc2cc9ec7b66b640ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715524"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091555"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Znane problemy z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
-Następujące znane problemy z funkcją usługi Azure Monitor kondycji dla maszyn wirtualnych:
+W tym artykule opisano znane problemy z usługą Azure Monitor dla maszyn wirtualnych, rozwiązanie na platformie Azure, który łączy monitorowania kondycji i wydajności systemu operacyjnego maszyny Wirtualnej platformy Azure. 
 
-- Funkcja kondycji jest włączona dla wszystkich maszyn wirtualnych, połączone z obszarem roboczym usługi Log Analytics, nawet wtedy, gdy jest inicjowane i ukończyć z jednej maszyny Wirtualnej.
-- Jeśli po wyłączeniu monitorowanie dla maszyny Wirtualnej przy użyciu obsługiwanych metod, podczas dołączania zostanie podjęta ponownie, należy to zrobić, na tym samym obszarze roboczym.  Jeśli nowy obszar roboczy jest używany podczas wyświetlania stanu kondycji dla tej maszyny Wirtualnej, może pokazywać nietypowego zachowania.
-- Jeśli Maszynę wirtualną platformy Azure nie istnieje więcej, ponieważ został usunięty albo usunięta, jej pojawi się w widoku listy maszyn wirtualnych przez 3 – 7 dni. Ponadto kliknięcie stan usunięto ani nie usunięto maszyny Wirtualnej może uruchomić **Diagnostyka kondycji** widok, który następnie przechodzi w pętli ładowania. Wybierając nazwę usuniętej maszyny Wirtualnej spowoduje uruchomienie bloku komunikat informujący, że maszyna wirtualna została usunięta.
+Następujące znane problemy z funkcją kondycji:
+
+- Funkcja kondycji jest włączona dla wszystkich maszyn wirtualnych, które są połączone z obszarem roboczym usługi Log Analytics. To dlatego nawet kiedy akcja rozpoczyna się i kończy się na jednej maszynie Wirtualnej.
+- Po zakończeniu Wyłącz monitorowanie dla maszyny Wirtualnej za pomocą obsługiwanych metod i przystąpieniem do wdrażania go ponownie, należy wdrożyć ją w tym samym obszarze roboczym. Jeśli używasz nowy obszar roboczy i spróbuj, aby wyświetlić stan kondycji dla tej maszyny Wirtualnej, może zawierać nietypowego zachowania.
+- Jeśli Maszynę wirtualną platformy Azure zostało usunięte lub usunięte, jest on wyświetlany w widoku listy maszyn wirtualnych przez 3 – 7 dni. Ponadto kliknięcie stan usunięto ani nie usunięto maszyny Wirtualnej spowoduje otwarcie **Diagnostyka kondycji** wyświetlić, a następnie inicjuje pętli ładowania. Wybierając nazwę usuniętej maszyny Wirtualnej powoduje otwarcie okienka z komunikat informujący, że maszyna wirtualna została usunięta.
 - W tej wersji nie można zmodyfikować okres czasu i częstotliwość kryteria kondycji. 
 - Nie można wyłączyć kryteria kondycji. 
-- Po dołączeniu, może upłynąć czas, po którym dane są wyświetlane w usłudze Azure Monitor -> maszyny wirtualne -> kondycja lub z bloku zasobu maszyny Wirtualnej -> szczegółowe informacje
-- Diagnostyka kondycji środowiska szybciej niż w innych widokach aktualizacji, dzięki czemu mogą wystąpić opóźnienia informacji podczas przełączania się między widokami  
-- Podsumowanie alertów zawarte w usłudze Azure Monitor dla maszyny Wirtualnej są przeznaczone tylko dla alertów została wyzwolona dla problemów dotyczących kondycji wykrytych za pomocą monitorowanych maszynach wirtualnych platformy Azure.
-- **Listy alertów** widoku strony w pojedynczej maszyny Wirtualnej i usługi Azure Monitor przedstawia alerty, której warunek monitora jest ustawiona na "wyzwolone" w ostatnich 30 dni.  Nie są one konfigurowane. Jednak po raz klikając podsumowania **Lista alertów** strona widoku jest uruchamiany, można zmienić wartość filtru zarówno monitor stanu i zakres czasu.
-- Na **listy alertów** strona widoku, zalecamy nie modyfikują **typ zasobu**, **zasobów**, i **usługi Monitor** filtrów w miarę ich skonfigurowano specyficzne dla rozwiązania (ten widok listy przedstawiono niektóre dodatkowe pola w porównaniu do usługi Azure monitor -> Widok listy alertów).    
-- Na maszynach wirtualnych z systemem Linux **Diagnostyka kondycji** widok zawiera nazwę domeny całą maszynę Wirtualną zamiast nazwy maszyny Wirtualnej użytkownika.
-- Zamykanie maszyny wirtualne zaktualizuje część jej kryteria kondycji do stanu krytycznego i innych użytkowników do prawidłowego stanu ze stanem sieci maszyny wirtualnej w stanie krytycznym.
-- Ważność alertu kondycji nie może być modyfikowany, ich można tylko włączać lub wyłączać.  Ponadto niektóre ważności aktualizacji na podstawie stanu kondycji kryteriów.
-- Modyfikowanie wszelkie ustawienia wystąpienia kryterium kondycji, doprowadzi do modyfikacji tego samego ustawienia we wszystkich wystąpieniach kryteria kondycji tego samego typu na maszynie Wirtualnej. Na przykład jeśli próg dysku wolnego miejsca na kondycji kryterium wystąpienia odpowiadający dysku logicznego C: zostanie zmodyfikowany, a następnie tego progu będą stosowane do wszystkich innych dysków logicznych odnalezione i monitorowane pod kątem tej samej maszyny Wirtualnej.   
-- Progi dla następujące kryteria kondycji przeznaczonych dla maszyny Wirtualnej z systemem Windows nie można modyfikować, ponieważ ich stany kondycji są już ustawione **systemem** lub **dostępne**. Po otrzymaniu kwerendy od [API Monitor obciążenia](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager), przedstawia stan kondycji *OperatorPorównania* wartość **mniejsze** lub **większe**z *próg* wartość **4** usługi lub jednostki jeśli:
+- Po wdrożeniu, może upłynąć czas, po którym dane są wyświetlane w **usługi Azure Monitor** > **maszyn wirtualnych** > **kondycji** okienka lub  **Zasób maszyny Wirtualnej** > **Insights** okienka.
+- Diagnostyka kondycji środowiska aktualizacje szybciej niż w innych widokach. Informacje mogą zostać opóźnione, gdy przełączać się między widokami. 
+- Podsumowanie alertów, znajdującej się w usłudze Azure Monitor dla maszyny Wirtualnej wyświetla tylko alerty, że w wyniku problemów z kondycją, które są wykrywane przy użyciu monitorowane maszyny wirtualne platformy Azure.
+- **Listy alertów** okienko w pojedynczej maszyny Wirtualnej i usługi Azure Monitor wyświetla alerty, w której warunek monitora jest ustawiona na *wywoływane* w ciągu ostatnich 30 dni. Alerty nie są konfigurowalne. Jednak po ukończeniu **Lista alertów** zostanie otwarte okienko, możesz kliknąć pozycję podsumowanie, aby zmienić wartość filtru zarówno monitor stanu i zakres czasu.
+- W **listy alertów** okienko, zaleca się nie modyfikowanie **typ zasobu**, **zasobów**, i **usługi Monitor** filtrów. One już skonfigurowano specyficzne dla rozwiązania. Ten widok listy zawiera więcej pól niż **usługa Azure monitor** > **alerty** jest widok listy.   
+- Na maszynach wirtualnych z systemem Linux **Diagnostyka kondycji** widoku wyświetla nazwę całej domeny maszyny Wirtualnej, zamiast nazwy maszyny Wirtualnej użytkownika.
+- Zamykanie maszyny wirtualne aktualizuje niektóre kryteria kondycji *krytyczne* i nie tylko na *dobrej kondycji*. Net stan maszyny Wirtualnej jest wyświetlany jako *krytyczne*.
+- Nie można zmodyfikować ważność alertu kondycji. Można tylko włączone lub wyłączone. Ponadto niektóre poziomy ważności są aktualizowane na podstawie stanu kondycji kryteriów.
+- W przypadku zmodyfikowania wszystkie ustawienia wystąpienia kryterium kondycji wszystkich wystąpień tego samego typu na maszynie Wirtualnej kryteria kondycji są modyfikowane. Na przykład w przypadku modyfikowania próg wystąpienia kryterium kondycji wolnego miejsca na dysku, które odnosi się do dysku logicznego C: tego progu ma zastosowanie do wszystkich innych dysków logicznych, które są odnajdywane i monitorowane pod kątem tej samej maszyny Wirtualnej.  
+- Progi dla kryteria kondycji, których platformą docelową maszyny Wirtualnej z systemem Windows nie są można modyfikować, ponieważ ich stany kondycji są ustawione na *systemem* lub *dostępne*. Podczas wysyłania zapytania stanu kondycji z [API Monitor obciążenia](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager), wyświetla *OperatorPorównania* wartość **mniejsze** lub **większe** z *próg* wartość **4** usługi lub jednostki jeśli:
    - Kondycja usługi klienta DNS — usługa nie jest uruchomiona. 
    - Kondycja usługi klienta DHCP — usługa nie jest uruchomiona. 
-   - Kondycja usługi RPC — usługa nie działa 
-   - Kondycja usługi zapory Windows — usługa nie działa
-   - Kondycja usługi dziennika zdarzeń Windows — usługa nie działa 
-   - Kondycja usługi Serwer — usługa nie działa 
-   - Kondycja usługi zdalnego zarządzania Windows — usługa nie jest uruchomiona. 
-   - Błąd systemu plików lub uszkodzeniem — dysku logicznego jest niedostępny
+   - Kondycja usługi RPC — usługa nie jest uruchomiona. 
+   - Kondycja usługi zapory Windows — usługa nie jest uruchomiona.
+   - Kondycja usługi dziennika zdarzeń Windows — usługa nie jest uruchomiona. 
+   - Kondycja usługi Serwer — usługa nie jest uruchomiona. 
+   - Kondycja usługi zdalnego zarządzania Windows — usługi nie jest uruchomiony. 
+   - Błąd systemu plików lub uszkodzeniem — dysku logicznego jest niedostępny.
 
-- Progi dla następujące kryteria kondycji systemu Linux nie można modyfikować, ponieważ ich kondycji są już ustawione **true**.  Przedstawia stan kondycji *OperatorPorównania* z wartością **mniejsze** i *próg* wartość **1** po otrzymaniu kwerendy od obciążenia Monitorowanie interfejsu API dla jednostki, w zależności od jej kontekstu:
+- Progi następujące kryteria kondycji systemu Linux nie są można modyfikować, ponieważ ich kondycji, są już ustawione na *true*. Wyświetla stan kondycji *OperatorPorównania* z wartością **mniejsze** i *próg* wartość **1** po otrzymaniu kwerendy od Obciążenie monitorowania interfejsu API dla jednostki, w zależności od jej kontekstu:
    - Stan dysku logicznego — dysk logiczny nie jest online / dostępne
    - Stan dysku — dysku nie jest online / dostępne
    - Stan karty sieciowej — karty sieciowej jest wyłączona.  
 
-- **Łączna liczba wykorzystanie procesora CPU** kryterium kondycji w Windows pokazuje próg **nie jest równa 4** z portalu i po otrzymaniu kwerendy z interfejsu API monitorowania obciążenia, gdy użycie procesora CPU jest większa niż 95% i długość kolejki systemu większe niż 15. Nie można zmodyfikować tego kryterium kondycji w tej wersji.  
-- Zmiany konfiguracji, takie jak aktualizowanie wartości progowej, trwa maksymalnie 30 minut zaczęły obowiązywać, nawet jeśli portal lub interfejsu API Monitor obciążenie może wykonać natychmiastową aktualizację.  
-- Poszczególne procesora i kryteria kondycji poziomu procesor logiczny nie są dostępne w Windows, tylko **łączne wykorzystanie procesora CPU** jest dostępna dla maszyn wirtualnych Windows.  
-- Reguły alertów zdefiniowane dla każdego kryterium kondycji nie są widoczne w witrynie Azure portal. Są one konfigurowane z [API Monitor obciążenia](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager) Aby włączyć lub wyłączyć regułę alertu kondycji.  
-- Przypisywanie [grupy akcji usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-action-groups.md) programu health alertów nie jest możliwe w witrynie Azure portal. Interfejs API ustawienie powiadomień umożliwiają tylko skonfigurowanie grupy akcji wyzwolenie przy każdym wyzwoleniu alertu kondycji. Obecnie można przypisać grup akcji względem maszyny Wirtualnej tak, aby wszystkie *alerty dotyczące kondycji* uruchamiane względem wyzwalacza maszyny Wirtualnej tych samych grup akcji. Nie obowiązuje koncepcja grupy osobną akcję dla każdego kondycji reguły alertu, takie jak tradycyjnych alertów platformy Azure. Ponadto podczas są wyzwalane przez alerty dotyczące kondycji są obsługiwane tylko grupy akcji skonfigurowana do wysyłania powiadomień, wysyłając wiadomość e-mail lub SMS. 
+- *Łączny procesora* kryterium kondycji w Windows wyświetla próg **nie jest równa 4** zarówno w portalu, jak i interfejs API monitorowania obciążenia. Osiągnięciu progu, kiedy *łączny procesora* jest większa niż 95% i system długość kolejki jest większa niż 15. Nie można zmodyfikować tego kryterium kondycji w tej wersji. 
+- Nawet wtedy, gdy portal lub interfejsu API Monitor obciążenie może je wykonać natychmiastową aktualizację, zmiany konfiguracji, takie jak aktualizowanie wartości progowej, potrwać do 30 minut. 
+- Poszczególne procesora i kryteria kondycji poziomu procesor logiczny nie są dostępne w Windows. Tylko łączne wykorzystanie procesora CPU dostępnej dla maszyn wirtualnych Windows. 
+- Reguły alertów, które są zdefiniowane dla każdego kryterium kondycji nie są wyświetlane w witrynie Azure portal. Można włączać lub wyłączać alert o kondycji reguły tylko w [API Monitor obciążenia](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager). 
+- Nie można przypisać [grupy akcji usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-action-groups.md) dla alertów dotyczących kondycji w witrynie Azure portal. Tylko powiadomienia ustawienie interfejsu API umożliwiają skonfigurowanie grupy akcji wyzwolenie przy każdym wyzwoleniu alertu kondycji. Obecnie można przypisać grup akcji względem maszyny Wirtualnej tak, aby wszystkie *alerty dotyczące kondycji* uruchamiane względem wyzwalacza maszyn wirtualnych tej samej grupy akcji. W przeciwieństwie do tradycyjnych alertów platformy Azure nie obowiązuje koncepcja grupy osobną akcję dla każdej reguły alertu kondycji. Ponadto podczas są wyzwalane przez alerty dotyczące kondycji są obsługiwane tylko grupy akcji, które są skonfigurowane do dostarczania poczty e-mail lub powiadomienia SMS. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przegląd [dołączanie usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md) , aby zrozumieć wymagania i metody, aby włączyć monitorowanie maszyn wirtualnych.
+Aby poznać wymagania i metod umożliwiających monitorowanie maszyn wirtualnych, zobacz [wdrożenia usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md).

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 623e4392ff8ff75d09da92c54b9e4dc620146432
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 47f3e8ab14ecd50e958c57ba4c8f9f098fd5bb7b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251079"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868365"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Zarządzanie infrastruktury usługi Azure DevTest Labs — Zarządzanie kosztami i własność
 Koszt i własności są podstawowe kwestie, należy wziąć pod uwagę tworzenia programowanie i testowanie środowisk. W tej sekcji znajdziesz informacje, które pomaga w optymalizacji kosztów i dopasuj własności w środowisku.
@@ -40,7 +40,7 @@ To podejście oferuje wiele korzyści:
  
 Tylko aktywni subskrybenci programu Visual Studio (subskrypcje standardowe, rocznych subskrypcji chmury i miesięczne subskrypcje chmury) mogą korzystać z zasobów platformy Azure w obrębie przedsiębiorstwa subskrypcji i testowania aplikacji. Jednak użytkownicy końcowi mogą uzyskiwać dostęp aplikacji do przesłania opinii lub przeprowadzenia testów akceptacyjnych. Użycie zasobów w ramach tej subskrypcji jest ograniczone do tworzenia i testowania aplikacji bez gwarancji czasu dostępności.
 
-Jeśli zdecydujesz się używać oferty DevTest, należy pamiętać, że ta korzyść jest przeznaczona wyłącznie do celów tworzenia i testowania aplikacji. Użycie w ramach subskrypcji nie jest objęte gwarantowaną finansowo umową SLA, z wyjątkiem korzystania z programu Visual Studio Team Services i platformy HockeyApp.
+Jeśli zdecydujesz się używać oferty DevTest, należy pamiętać, że ta korzyść jest przeznaczona wyłącznie do celów tworzenia i testowania aplikacji. Użycie w ramach subskrypcji nie jest objęte gwarantowaną finansowo umową SLA, z wyjątkiem korzystania z usługi Azure DevOps i platformy HockeyApp.
 
 ## <a name="define-a-role-based-access-across-your-organization"></a>Zdefiniuj opartej na rolach dostęp do całej organizacji
 ### <a name="question"></a>Pytanie
@@ -57,7 +57,7 @@ Zasób usługi DevTest Labs powinna być własnością właścicieli, którzy zn
 
 Członkowie zespołu projektu/aplikacji, należy dodać do roli usługi DevTest Labs użytkowników. Tacy użytkownicy umożliwia tworzenie maszyn wirtualnych (wbudowane z laboratorium i zasadami poziomu subskrypcji). Można również zarządzać maszyn wirtualnych. Nie mogą zarządzać maszyn wirtualnych, które należą do innych użytkowników.
 
-Aby uzyskać więcej informacji, zobacz [szkielet platformy Azure w przedsiębiorstwach — narzucony nadzór subskrypcji](/architecture/cloud-adoption/appendix/azure-scaffold) dokumentacji.
+Aby uzyskać więcej informacji, zobacz [szkielet platformy Azure w przedsiębiorstwach — narzucony nadzór subskrypcji](/azure/architecture/cloud-adoption/appendix/azure-scaffold) dokumentacji.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: 29fe100821e5ad2d9d5d340a1178c19c60c6d821
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: fb0a67a9b3b556a85a2b28989fe15dfeea1f0d72
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995446"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099593"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -27,11 +27,23 @@ Jeśli potrzebujesz używać tego samego narzędzia do pracy z całej zawartośc
 
 ## <a name="blob-storage-apis"></a>Magazyn obiektów blob interfejsów API
 
-Magazyn obiektów blob interfejsy API nie są jeszcze dostępne dla konta usługi Azure Data Lake Storage Gen 2.
+Magazyn obiektów blob interfejsy API nie są jeszcze dostępne dla konta usługi Azure Data Lake Storage Gen2.
 
 Te interfejsy API są wyłączone, aby zapobiec nieumyślnemu danych problemów dotyczących dostępu, które mogą wystąpić, ponieważ interfejsy API usługi Blob Storage nie są jeszcze współpracujący z interfejsów API usługi Azure Data Lake Gen2.
 
-Niezarządzane dyski maszyny wirtualnej (VM) zależą od tych interfejsów API, dlatego jeśli chcesz włączyć hierarchiczne przestrzenie nazw na koncie magazynu, należy rozważyć umieszczenie niezarządzanych dysków maszyn wirtualnych na konto magazynu, który nie ma włączonych hierarchicznej przestrzeni nazw.
+Jeśli te interfejsy API są używane do ładowania danych, zanim zostały wyłączone, a nie produkcyjne do nich dostęp, następnie skontaktuj się z Microsoft Support z następującymi informacjami:
+
+* Identyfikator subskrypcji (identyfikator GUID, a nie nazwę)
+
+* Nazwy kont magazynu
+
+* Czy aktywnie dotyczy Cię w środowisku produkcyjnym, a jeśli tak, dla których kont magazynu?
+
+* Nawet wtedy, gdy użytkownik nie aktywnie dotyczą w środowisku produkcyjnym, powiedz nam, czy potrzebujesz tych danych do skopiowania do innego konta magazynu z jakiegoś powodu i dlaczego?
+
+W tych okolicznościach firma Microsoft może przywrócenia dostępu do interfejsu API obiektu Blob na pewien czas tak, aby można było skopiować te dane do konta magazynu, który nie ma włączonych hierarchicznej przestrzeni nazw.
+
+Niezarządzane dyski maszyny wirtualnej (VM) zależą od wyłączone interfejsów API Blob Storage, dlatego jeśli chcesz włączyć hierarchicznej przestrzeni nazw na konto magazynu należy rozważyć umieszczenie niezarządzanych dysków maszyn wirtualnych na konto magazynu, który nie ma włączonych hierarchicznej przestrzeni nazw.
 
 ## <a name="azure-storage-explorer"></a>Eksplorator usługi Azure Storage
 

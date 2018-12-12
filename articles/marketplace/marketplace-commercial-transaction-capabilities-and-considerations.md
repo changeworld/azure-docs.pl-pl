@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 32198387be680fd01558e900e4c438cde2cdc5b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b2f106edf69b57410fd1990d0888cf9d3a71be56
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266929"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880186"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace transakcji handlowych możliwości i zagadnienia
 
@@ -177,8 +177,9 @@ Na przykład, jeśli klient zakupi, korzystając z karty kredytowej:
 |Data obliczenia informacje dotyczące wypłat (co miesiąc na 15) | 1 października 2018 r. |
 |Informacje dotyczące wypłat daty | 15 października 2018 r. |
 
-Jeśli klient zakupi przy użyciu umowy Enterprise Agreement:  
-|Opis    |    Date  |
+Jeśli klient zakupi przy użyciu umowy Enterprise Agreement:
+
+| Opis |    Date  |
 |----------|----------|
 |Okres zamówienia | 15 sierpnia 2018 r. — 30 sierpnia 2018 r. |
 |Kończenie termin (kwartał) | 30 września 2018 r. |

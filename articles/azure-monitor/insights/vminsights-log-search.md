@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: d12de42be9cf5d1a48288aabf21b25546e5b4bbc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 17d663873639cc36e9727881d990a3f32697c798
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833080"
+ms.locfileid: "52872156"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych zbiera metryki wydajności i połączenia, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do magazynu danych usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -238,5 +238,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Jeśli dopiero zaczynasz Pisanie zapytań w usłudze Log Analytics, zapoznaj się z [sposób użycia na stronie usługi Log Analytics](../../log-analytics/query-language/get-started-analytics-portal.md) w witrynie Azure portal, aby pisać zapytania usługi Log Analytics.
-* Dowiedz się więcej o [Pisanie zapytań wyszukiwania](../../log-analytics/query-language/search-queries.md).
+* Jeśli dopiero zaczynasz Pisanie zapytań w usłudze Log Analytics, zapoznaj się z [sposób użycia na stronie usługi Log Analytics](../../azure-monitor/log-query/get-started-portal.md) w witrynie Azure portal, aby pisać zapytania usługi Log Analytics.
+* Dowiedz się więcej o [Pisanie zapytań wyszukiwania](../../azure-monitor/log-query/search-queries.md).

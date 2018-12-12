@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 62c89861d784931b2a13297abac578010e0fea5f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 61ec9d0639f4bee950be69ee951492974ac95c64
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251075"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867481"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Organizowanie wdrażania usługi Azure DevTest Labs
 Ten artykuł zawiera zalecane podejście do szybkiego wdrażania i stosowania usługi Azure DevTest Labs. Poniższa ilustracja kładzie nacisk całego procesu jako wskazówki podczas obserwowania elastyczność do obsługi różnych wymagania branżowe i scenariuszy.
@@ -46,7 +46,7 @@ Po umieszczeniu topologii sieci w miejscu laboratorium pierwszy/projekt pilotaż
 2. Określ dopuszczalny rozmiar obrazów maszyn wirtualnych i rozmiarach do użytku z programem lab. Zdecyduj, czy obrazy niestandardowe można przekazać na platformę Azure do użycia z usługą DevTest Labs.
 3. Bezpieczny dostęp do laboratorium, tworząc początkowej ról Base dostęp do formantów (RBAC) dla lab (laboratorium właścicieli i użytkowników laboratorium). Zalecane jest użycie kont synchronizacja usługi active directory z usługą Azure Active Directory dla tożsamości z usługą DevTest Labs.
 4. Konfigurowanie usługi DevTest Labs korzystania z zasad, takie jak harmonogramy, koszt zarządzania, przejęcia maszyn wirtualnych, niestandardowych obrazów i formuł.
-5. Należy ustanowić repozytorium online, takich jak Git/usługi VSTS.
+5. Należy ustanowić repozytorium online, takich jak Azure repozytoriów/Git.
 6. Zdecyduj, przy użyciu repozytoriów publicznych lub prywatnych lub kombinację obu tych elementów. Organizowanie szablonów JSON dla wdrożeń i sustainment długoterminowego.
 7. Jeśli to konieczne, należy utworzyć niestandardowe artefakty. Ten krok jest opcjonalny. 
 

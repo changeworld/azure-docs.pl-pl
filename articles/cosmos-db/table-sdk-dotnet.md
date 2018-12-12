@@ -1,21 +1,20 @@
 ---
-title: Usługi Azure Cosmos DB Table API .NET SDK i zasoby | Dokumentacja firmy Microsoft
+title: Usługa Azure Cosmos DB Table API .NET SDK i zasoby
 description: Dowiedz się wszystkiego o usłudze Azure Cosmos DB interfejsu API tabel tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami.
 services: cosmos-db
 author: rnagpal
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.author: rnagpal
-ms.openlocfilehash: 6d2ede88e9e218ddbdfed0add48e7df8bfae0b60
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7092daa7cf3a1cfcbeac06db308fa53e18d27131
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466464"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878588"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table — interfejs API platformy .NET: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]

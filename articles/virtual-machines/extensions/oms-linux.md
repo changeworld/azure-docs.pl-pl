@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 93e64aaa436b23390de328a9268dcfcb773c279f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 08a114b7f1ea3c422489a830676d859a9da88b7c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728169"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075307"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Zaloguj się rozszerzenie maszyny wirtualnej Analytics dla systemu Linux
 
@@ -81,7 +81,7 @@ Rozszerzenie Log Analytics Agent dla systemu Linux wymaga, że docelowej maszyny
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Rozszerzenie wymaga Identyfikatora obszaru roboczego i klucz obszaru roboczego w obszarze roboczym usługi Log Analytics docelowym; te wartości mogą być [znalezione w obszarze roboczym usługi Log Analytics](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) w witrynie Azure portal. Ponieważ klucz obszaru roboczego, powinny być traktowane jako poufne dane, powinny być przechowywane w chronionym ustawienia konfiguracji. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **klucz workspaceKey** jest rozróżniana wielkość liter.
+Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Rozszerzenie wymaga Identyfikatora obszaru roboczego i klucz obszaru roboczego w obszarze roboczym usługi Log Analytics docelowym; te wartości mogą być [znalezione w obszarze roboczym usługi Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) w witrynie Azure portal. Ponieważ klucz obszaru roboczego, powinny być traktowane jako poufne dane, powinny być przechowywane w chronionym ustawienia konfiguracji. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **klucz workspaceKey** jest rozróżniana wielkość liter.
 
 ```json
 {

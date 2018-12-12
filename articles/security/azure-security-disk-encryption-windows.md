@@ -1,20 +1,21 @@
 ---
-title: Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych IaaS Windows | Dokumentacja firmy Microsoft
+title: Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych IaaS Windows
 description: Ten artykuł zawiera instrukcje dotyczące włączania Microsoft dysku szyfrowanie dla Windows IaaS maszyn wirtualnych platformy Azure.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/12/2018
-ms.openlocfilehash: 545723a020609766b9556746e6547eb8b93e5de9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
-ms.translationtype: MT
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: c4cada102a4996a388ce3a6ac7d8f83e79f1b074
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687524"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076750"
 ---
-# <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych IaaS Windows 
+# <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych IaaS Windows
 
 Można włączyć wiele scenariuszy szyfrowania dysku i kroki zależą od scenariusza. W poniższych częściach omówiono scenariuszach szczegółowo dla maszyn wirtualnych IaaS Windows. Zanim będzie można użyć szyfrowania dysku [wymagania wstępne dotyczące usługi Azure Disk Encryption](../security/azure-security-disk-encryption-prerequisites.md) należy wykonać. 
 
@@ -194,13 +195,13 @@ Użyj [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/azurerm.comput
 
 ### <a name="register-for-disk-encryption-preview-using-azure-cli"></a>Rejestrowanie na potrzeby wersji zapoznawczej szyfrowania dysku przy użyciu wiersza polecenia platformy Azure
 
-Usługa Azure disk encryption dla zestawów skalowania maszyn wirtualnych w wersji zapoznawczej, musisz zarejestrować się samodzielnie subskrypcji za pomocą [az feature register](/cli/azure/feature#az_feature_register). Wystarczy użycie funkcji w wersji zapoznawczej szyfrowania dysku po raz pierwszy należy wykonać następujące czynności:
+Usługa Azure disk encryption dla zestawów skalowania maszyn wirtualnych w wersji zapoznawczej, musisz zarejestrować się samodzielnie subskrypcji za pomocą [az feature register](/cli/azure/feature#az-feature-register). Wystarczy użycie funkcji w wersji zapoznawczej szyfrowania dysku po raz pierwszy należy wykonać następujące czynności:
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-Może upłynąć do 10 minut dla żądania rejestrowania do propagowania. Można sprawdzić stanu rejestracji za pomocą [az feature show](/cli/azure/feature#az_feature_show). Gdy `State` raporty *zarejestrowanej*, ponownie zarejestrować *Microsoft.Compute* dostawcy o [az provider register](/cli/azure/provider#az_provider_register):
+Może upłynąć do 10 minut dla żądania rejestrowania do propagowania. Można sprawdzić stanu rejestracji za pomocą [az feature show](/cli/azure/feature#az-feature-show). Gdy `State` raporty *zarejestrowanej*, ponownie zarejestrować *Microsoft.Compute* dostawcy o [az provider register](/cli/azure/provider#az-provider-register):
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute

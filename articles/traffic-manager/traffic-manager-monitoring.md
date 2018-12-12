@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2017
+ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 27057f16d10d0859a486551091e135bfb9160813
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138144"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890351"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 

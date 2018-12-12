@@ -3,7 +3,7 @@ title: Rozwiązywanie typowych problemów z połączeniem z usługą Azure SQL D
 description: Kroki w celu zidentyfikowania i rozwiązania typowych błędów połączenia usługi Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: daleche
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 99c7e73bb133349ef1c14295a49f278d64a15226
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 53061cde5621be06df8f992278a6510d62e51934
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257963"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872582"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Rozwiązywanie problemów z połączeniem do usługi Azure SQL Database
 Gdy połączenie usługi Azure SQL Database nie powiodło się, pojawi się [komunikaty o błędach](sql-database-develop-error-messages.md). Ten artykuł stanowi scentralizowane temat, który pomoże Ci rozwiązać problemy z połączeniem usługi Azure SQL Database. Wprowadza [najczęstszych przyczyn](#cause) z problemów z łącznością, zaleca się [narzędzia rozwiązywania problemów](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) ulec pomaga tożsamości problem, a także kroki rozwiązywania problemów, aby rozwiązać [przejściowe błędy](#troubleshoot-transient-errors) i [trwałego lub inne niż przejściowe błędy](#troubleshoot-persistent-errors). 

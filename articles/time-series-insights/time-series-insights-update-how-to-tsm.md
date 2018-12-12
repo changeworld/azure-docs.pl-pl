@@ -8,19 +8,19 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: 926d1a35cb10d50ddeacbed5476e2dcf14d0999d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.date: 12/03/2018
+ms.openlocfilehash: dc6244b6e263d3fb963d40b2f0c626cdfa9ecff8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856632"
+ms.locfileid: "52873465"
 ---
 # <a name="data-modeling-in-azure-time-series-insights"></a>Modelowanie danych w usłudze Azure Time Series Insights
 
 W tym dokumencie opisano sposób pracy z **modeli szeregów czasowych** zgodnie z usługi Azure Time Series Insights (wersja zapoznawcza). Szczegółowe informacje dotyczące kilka typowych scenariuszy danych.
 
-Odczyt [Azure TSI Explorer (wersja zapoznawcza)](./time-series-insights-update-explorer.md) artykułu, aby dowiedzieć się więcej o przechodząc prywatnej wersji zapoznawczej.
+Odczyt [Eksplorator usługi Azure TSI (wersja zapoznawcza)](./time-series-insights-update-explorer.md) artykułu, aby dowiedzieć się więcej o przechodząc aktualizacji.
 
 ## <a name="types"></a>Typy
 
@@ -130,9 +130,11 @@ Odczyt [Azure TSI Explorer (wersja zapoznawcza)](./time-series-insights-update-e
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odczyt [modeli szeregów czasowych](./time-series-insights-update-tsm.md) Aby uzyskać więcej informacji na temat **modeli szeregów czasowych**.
+Przeczytaj o [modelowania danych](./time-series-insights-update-tsm.md) Aby uzyskać więcej informacji na temat **modeli szeregów czasowych**.
 
-Wyświetl Azure TSI Explorer (wersja zapoznawcza) [artykułu](./time-series-insights-update-explorer.md) Aby dowiedzieć się więcej na temat korzystania z wersji zapoznawczej.
+Wyświetl w Eksploratorze TSI Azure (wersja zapoznawcza) [artykułu](./time-series-insights-update-explorer.md) Aby dowiedzieć się więcej na temat korzystania z wersji zapoznawczej.
+
+Dowiedz się więcej o obsługiwane kształty JSON, czytając [obsługiwane kształty JSON](./time-series-insights-send-events.md#json).
 
 <!-- Images -->
 [1]: media/v2-update-how-to-tsm/portal_one.png

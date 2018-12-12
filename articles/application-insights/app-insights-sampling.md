@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/02/2018
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: d9dfedd89e362f12f97d0106f3e56d465a89bb76
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 103f4b10d5fbb7fbcf9c3721a82fe4075abe0dc4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723858"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877619"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -34,7 +34,7 @@ Próbkowania zmniejsza koszty ruchu sieciowego i danych i pomaga uniknąć ogran
 * Można również ustawić ręcznie próbkowania, albo w portalu na użycie i szacowane koszty strony. lub w zestawie SDK platformy ASP.NET w pliku Config. lub zestawu SDK języka Java w pliku ApplicationInsights.xml do również zmniejszenie ruchu w sieci.
 * Jeśli rejestrować zdarzenia niestandardowe i chcesz upewnić się, że zestaw zdarzeń jest zatrzymany lub odrzucone ze sobą, upewnij się, że mają taką samą wartość OperationId.
 * Dzielnik próbkowania *n* jest zgłaszany w każdym rekordzie we właściwości `itemCount`, w polu wyszukiwania widocznego w obszarze przyjazna nazwa "licznik żądanie" lub "liczba zdarzeń". Podczas pobierania próbek nie znajduje się w operacji `itemCount==1`.
-* Jeśli piszesz zapytania analityczne, wykonaj następujące czynności [uwzględnienia próbkowania](../log-analytics/query-language/aggregations.md). W szczególności, a nie po prostu wciąż dochodzą nowe rekordy, należy użyć `summarize sum(itemCount)`.
+* Jeśli piszesz zapytania analityczne, wykonaj następujące czynności [uwzględnienia próbkowania](../azure-monitor/log-query/aggregations.md). W szczególności, a nie po prostu wciąż dochodzą nowe rekordy, należy użyć `summarize sum(itemCount)`.
 
 ## <a name="types-of-sampling"></a>Typy próbkowania
 Istnieją trzy metody alternatywnej próbkowania:

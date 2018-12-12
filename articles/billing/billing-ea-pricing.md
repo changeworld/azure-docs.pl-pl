@@ -1,6 +1,6 @@
 ---
 title: Wyświetl cennik platformy Azure w przedsiębiorstwie | Dokumentacja firmy Microsoft
-description: ''
+description: Dowiedz się, jak wyświetlić i pobrać cen lub Oszacuj koszty przy użyciu umowy Enterprise Agreement ceny.
 services: ''
 documentationcenter: ''
 author: adpick
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: cwatson
-ms.openlocfilehash: 8e7c3542a6c97e06eeeedc60b285c1aee1cad075
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: b1f3d6ec2a8563ccfffd1e1c3c7cf1869a42769a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500376"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090860"
 ---
 # <a name="view-your-organizations-azure-enterprise-agreement-pricing"></a>Wyświetl cennik usługi Azure Enterprise Agreement swojej organizacji 
 

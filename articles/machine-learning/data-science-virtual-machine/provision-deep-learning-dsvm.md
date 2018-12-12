@@ -1,10 +1,12 @@
 ---
-title: Aprowizowanie maszyny wirtualnej do nauki o danych na platformie Azure do uczenia głębokiego | Dokumentacja firmy Microsoft
+title: Tworzenie maszyny wirtualnej do nauki o danych do uczenia głębokiego
+titleSuffix: Azure
 description: Konfigurowanie i tworzenie głębokiego uczenia maszyny wirtualnej analizy danych na platformie Azure, analizy i uczenia maszynowego.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -13,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9d64ad70ea49f7fbffd8bd6a5a77177fe490b832
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6963515958cd55314562e37ffc6ab1d8e0af5bee
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229666"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078760"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej na platformie Azure do uczenia głębokiego 
 

@@ -1,21 +1,22 @@
 ---
-title: Kody odpowiedzi HTTP interfejsu API Understanding (LUIS) języka — Azure | Dokumentacja firmy Microsoft
+title: Kody odpowiedzi HTTP interfejsu API
 titleSuffix: Azure
 description: Zrozumienie, jakie kody odpowiedzi HTTP są zwracane z tworzenia usługi LUIS i interfejsów API punktu końcowego
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6ffab581420c3c74ed659be2b82e2f9c7fda13d0
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 478727a4d3628fbe6a385e3beb28201c228f9e2d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443835"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078242"
 ---
 # <a name="luis-api-http-response-codes"></a>Kody odpowiedzi HTTP interfejsu API usługi LUIS
 [Tworzenia](https://aka.ms/luis-authoring-apis) i [punktu końcowego](https://aka.ms/luis-endpoint-apis) interfejsy API zwracają kody odpowiedzi HTTP. Chociaż komunikatach odpowiedzi zawiera informacje specyficzne dla żądania, kod stanu odpowiedzi HTTP jest ogólny. 

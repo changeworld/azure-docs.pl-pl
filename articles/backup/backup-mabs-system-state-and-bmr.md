@@ -2,19 +2,19 @@
 title: Usługa Azure Backup Server stanu systemu chroni i przywraca komputerów bez systemu operacyjnego
 description: Usługi Azure Backup Server umożliwia tworzenie kopii zapasowej stanu systemu, a także zapewnienia ochrony odzyskiwania systemu od zera (BMR).
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: ''
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal
-ms.openlocfilehash: 7cb87847d6a1e191fb20dfa9cdf263066704eb6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238815"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880101"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Tworzenie kopii zapasowej stanu systemu i przywracanie na komputerach bez systemu operacyjnego za pomocą usługi Azure Backup Server
 

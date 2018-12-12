@@ -3,7 +3,7 @@ title: SQL Database odzyskiwanie po awarii | Dokumentacja firmy Microsoft
 description: Dowiedz się, wskazówki i najlepsze rozwiązania dotyczące usługi Azure SQL Database, aby wykonać odzyskiwanie po awarii.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: c861163670b05b01c9c6d64b81f6e83c979a2af8
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: 4ed98d80f54ba781e7230a7081b85a4437d20242
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163039"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877017"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Wykonywanie próbnego odzyskiwania po awarii
 Zalecane jest, okresowo wykonywać sprawdzanie poprawności gotowość aplikacji do przepływu pracy odzyskiwania. Weryfikowanie zachowanie aplikacji oraz wpływ utraty danych i/lub zakłócenie polega na tryb failover jest dobrą praktykę. Jest również wymagane przez większość standardy branżowe w ramach certyfikacji ciągłości biznesowej.

@@ -8,22 +8,19 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: edc1dac05a8ab4281eee3ee0eb4c5e6b7571b404
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.date: 12/03/2018
+ms.openlocfilehash: 17528b148c04f48fa8222f64900bdf5c3b95ee25
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856434"
+ms.locfileid: "52873652"
 ---
 # <a name="shaping-events-with-azure-time-series-insights-preview"></a>Kształtowanie zdarzeń za pomocą usługi Azure Time Series Insights (wersja zapoznawcza)
 
-Ten artykuł zawiera wskazówki dotyczące kształtowania JSON, aby zmaksymalizować wydajność, w przypadku zapytań usługi Azure Time Series Insights (wersja zapoznawcza).
+Ten artykuł zawiera wskazówki dotyczące kształtowania JSON, aby zmaksymalizować wydajność kwerend w wersji zapoznawczej usługi Azure Time Series Insights (TSI).
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-
-> [!NOTE]
-> Dla usługi Azure TSI (wersja zapoznawcza) nie należy stosować ograniczenia właściwości 600 800 S1/S2.
 
 Należy wziąć pod uwagę sposób wysyłania zdarzeń do usługi Azure TSI. To znaczy należy zawsze:
 
@@ -108,7 +105,7 @@ Czas wystąpienia serii (Uwaga: **identyfikator serii czasu** jest *deviceId*):
   },
 ```
 
-Usługa TSI Przesyła połączony tabeli (po spłaszczanie) podczas przeszukiwania. Tabela będzie zawierać dodatkowe kolumny, takie jak typ. W tym przykładzie przedstawiono, jak można przekształcić dane telemetryczne:
+Usługa TSI Przesyła połączony tabeli (po spłaszczanie) podczas przeszukiwania. Tabela będzie zawierać dodatkowe kolumny, takie jak typ. W tym przykładzie przedstawiono, jak można [kształt](./time-series-insights-send-events.md#json) dane telemetryczne:
 
 | deviceId  | Typ | L1 | PAMIĘCI PODRĘCZNEJ L2 | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -130,3 +127,5 @@ Należy pamiętać, że w poprzednim przykładzie:
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby umieścić te wytyczne w praktyce, zobacz [składni zapytań usługi Azure TSI](./time-series-insights-query-data-csharp.md) dowiedzieć się więcej o składni zapytań dla interfejsu API REST dostępu do danych usługi TSI.
+
+Dowiedz się więcej o obsługiwane kształty JSON, czytając [obsługiwane kształty JSON](./time-series-insights-send-events.md#json).

@@ -3,19 +3,19 @@ title: Obsługa błędów przejściowych łączności dla usługi Azure Database
 description: Informacje o sposobie obsługi błędów przejściowych łączności dla usługi Azure Database for PostgreSQL.
 keywords: połączenie postgresql, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 services: postgresql
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: 0459c8ff31564adfbaa3e1735535cd24c3064663
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 021fad5e59e76444351711fb529c542d428af189
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284980"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890064"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-postgresql"></a>Obsługa błędów przejściowych łączności dla usługi Azure Database for PostgreSQL
 
@@ -49,4 +49,4 @@ Upewnij się, że można przetestować Logika ponawiania próby. Na przykład sp
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Rozwiązywać problemy z połączeniem do usługi Azure Database for PostgreSQL](howto-troubleshoot-common-connection-issues.md)
+* [Rozwiązywanie problemów z połączeniem z usługą Azure Database for PostgreSQL](howto-troubleshoot-common-connection-issues.md)

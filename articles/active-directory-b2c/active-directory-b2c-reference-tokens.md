@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 81927c4e69f36fbc4859ac2865bc15cbfacb17fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d1c9101f10342f98803a4ace420abbed5d49ba23
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843873"
+ms.locfileid: "52880118"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Usługi Azure AD B2C: Odwołanie tokenu
 
@@ -89,7 +89,7 @@ Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w
 ### <a name="refresh-tokens"></a>Tokenów odświeżania
 Odśwież tokeny są tokeny zabezpieczające, które aplikacji można użyć do uzyskania nowych tokenów Identyfikatora i dostępu do tokenów w przepływ OAuth 2.0. Zapewniają one aplikację długoterminowe dostęp do zasobów w imieniu użytkowników, bez konieczności interakcji z tymi użytkownikami.
 
-Do odbierania odświeżenia tokenu w odpowiedzi tokenu, aplikacja musi żądać `offline_acesss` zakresu. Aby dowiedzieć się więcej na temat `offline_access` zakresu, zapoznaj się [odwołanie do usługi Azure AD B2C protokołu](active-directory-b2c-reference-protocols.md).
+Do odbierania odświeżenia tokenu w odpowiedzi tokenu, aplikacja musi żądać `offline_access` zakresu. Aby dowiedzieć się więcej na temat `offline_access` zakresu, zapoznaj się [odwołanie do usługi Azure AD B2C protokołu](active-directory-b2c-reference-protocols.md).
 
 Tokenów odświeżania są i będą zawsze, całkowicie nieprzezroczysty do swojej aplikacji. Wystawione przez usługi Azure AD i mogą być kontrolowane i interpretowane tylko przez usługę Azure AD. Są one długotrwałe, ale aplikacja nie powinna być zapisana przy założeniu, że token odświeżania jest ważny w określonym okresie czasu. Tokeny odświeżania można unieważniany w każdej chwili różnych powodów. Jedynym sposobem dla swojej aplikacji dowiedzieć się, czy token odświeżania jest prawidłowy jest próba Zrealizuj go, wprowadzając żądania tokenu do usługi Azure AD.
 

@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) to rozwiązanie na platformie Azure, który łączy kondycji i wydajności monitorowania systemu operacyjnego maszyny Wirtualnej platformy Azure, a także automatycznie odnajdywania składników aplikacji i zależności z innymi zasobami oraz mapuje komunikację między nimi. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
+description: Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) to rozwiązanie na platformie Azure, który łączy monitorowania kondycji i wydajności systemu operacyjnego maszyny Wirtualnej platformy Azure. Automatycznie odnajduje składniki aplikacji i zależności z innymi zasobami oraz mapuje komunikację między nimi. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -14,90 +14,93 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: 028179fb7718587ec2c277e1c3feb1569e76510d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: f5865cf72f413db49e70a08305de54aff955607b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335746"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075237"
 ---
-# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
-Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
+# <a name="azure-monitor-for-vms-preview-faq"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjnego platformy Azure](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy często zadawanych pytań, dodamy ich do tego artykułu, dzięki czemu są one szybko i łatwo.
 
-## <a name="can-i-onboard-to-an-existing-workspace"></a>Mogę dołączyć do istniejącego obszaru roboczego?
-W przypadku maszyn wirtualnych są już połączone z obszarem roboczym usługi Log Analytics, mogą nadal używać tego obszaru roboczego podczas dołączania do usługi Azure Monitor w przypadku maszyn wirtualnych pod warunkiem, że jest w jednym z obsługiwanych regionów na liście [tutaj](vminsights-onboard.md#prerequisites).
+## <a name="can-i-deploy-vms-to-an-existing-workspace"></a>Czy mogę wdrożyć maszyny wirtualne do istniejącego obszaru roboczego?
+Maszyn wirtualnych są już połączone z obszarem roboczym usługi Log Analytics, można nadal używać tego obszaru roboczego, wdrażając je do usługi Azure Monitor dla maszyn wirtualnych. Obszar roboczy musi istnieć w jednym z obsługiwanych regionów wymienionych w sekcji "Wymagania wstępne" [wdrożenia usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)](vminsights-onboard.md#prerequisites).
 
-Podczas dołączania, firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego, który spowoduje, że wszystkie maszyny wirtualne raportowania danych do obszaru roboczego, aby rozpocząć zbieranie tych informacji do wyświetlania i analizy w usłudze Azure Monitor dla maszyn wirtualnych.  W rezultacie zobaczysz dane dotyczące wydajności z wszystkich maszyn wirtualnych połączonych z wybranym obszarem roboczym.  Funkcje kondycji i mapy tylko są włączone dla maszyn wirtualnych, które wybrano dołączyć.
+Podczas wdrażania firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego. Ta akcja powoduje, że maszyny wirtualne, które dane raportu do obszaru roboczego, aby rozpocząć zbieranie informacji dla wyświetlania i analizy w usłudze Azure Monitor dla maszyn wirtualnych. W rezultacie zobaczysz dane dotyczące wydajności ze wszystkich maszyn wirtualnych, które są połączone z wybranym obszarem roboczym. Funkcje kondycji i mapy są włączone tylko dla maszyn wirtualnych, które zostały określone dla wdrożenia.
 
-Aby uzyskać więcej informacji o wydajności, które są włączone liczniki, zobacz nasze [dołączania](vminsights-onboard.md) artykułu.
+Aby uzyskać więcej informacji o wydajności, które są włączone liczniki, zobacz [wdrożenia usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)](vminsights-onboard.md).
 
-## <a name="can-i-onboard-to-a-new-workspace"></a>Mogę dołączyć do nowego obszaru roboczego? 
-Jeśli maszyny wirtualne nie są aktualnie połączone do istniejącego obszaru roboczego usługi Log Analytics, musisz utworzyć nowy obszar roboczy do przechowywania danych.  Tworzenie nowego domyślnego obszaru roboczego odbywa się automatycznie w przypadku skonfigurowania jednej maszyny Wirtualnej platformy Azure dla usługi Azure Monitor dla maszyn wirtualnych za pośrednictwem witryny Azure portal.
+## <a name="can-i-deploy-vms-to-a-new-workspace"></a>Czy mogę wdrożyć maszyny wirtualne do nowego obszaru roboczego? 
+Jeśli Twoje maszyny wirtualne nie są obecnie połączone z istniejącego obszaru roboczego usługi Log Analytics, musisz utworzyć nowy obszar roboczy do przechowywania danych. Można utworzyć, wykonując automatyczne konfigurowanie pojedynczej maszyny Wirtualnej dla usługi Azure Monitor dla maszyn wirtualnych w witrynie Azure portal.
 
-Jeśli zdecydujesz się użyć metody opartych na skryptach, te kroki są objęte [dołączania](vminsights-onboard.md) artykułu. 
+Jeśli zdecydujesz się użyć metody opartych na skryptach, zobacz [wdrożenia usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)](vminsights-onboard.md). 
 
-## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Co należy zrobić, jeśli Moja maszyna wirtualna jest już raportowania do istniejącego obszaru roboczego?
-Jeśli są już zbieranie danych z maszyn wirtualnych, może już skonfigurowano je raportować dane do istniejącego obszaru roboczego usługi Log Analytics.  Tak długo, jak ten obszar roboczy znajduje się w jednym z naszych obsługiwane regiony, do tego istniejącego obszaru roboczego można włączyć usługi Azure Monitor dla maszyn wirtualnych.  Jeśli obszar roboczy, z którego korzystasz już nie jest w jednym z naszych obsługiwane regiony, będzie niemożliwe do dołączenia do usługi Azure Monitor dla maszyn wirtualnych w tej chwili.  Pracujemy nad do obsługi dodatkowych regionów.
+## <a name="what-can-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Co mogę zrobić, jeśli Moja maszyna wirtualna jest już raportowania do istniejącego obszaru roboczego?
+Jeśli masz już zbieranie danych z maszyn wirtualnych, może być już skonfigurowano je raportować dane do istniejącego obszaru roboczego usługi Log Analytics. Tak długo, jak ten obszar roboczy znajduje się w jednym z naszych obsługiwane regiony, do istniejącego obszaru roboczego można włączyć usługi Azure Monitor dla maszyn wirtualnych. Pracujemy nad do obsługi dodatkowych regionów.
 
 >[!NOTE]
->Firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego, który ma wpływ na wszystkie maszyny wirtualne, które raportują do obszaru roboczego, czy została wybrana do dołączenia ich do usługi Azure Monitor dla maszyn wirtualnych. Aby uzyskać szczegółowe informacje na temat sposobu konfiguracji liczników wydajności dla obszaru roboczego, można znaleźć na naszej [dokumentacji](../../azure-monitor/platform/data-sources-performance-counters.md). Informacji na temat liczników skonfigurowany dla usługi Azure Monitor dla maszyn wirtualnych, można znaleźć na naszej [dostęp do dokumentacji dołączania](vminsights-onboard.md#performance-counters-enabled).  
+>Firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego, który ma wpływ na wszystkie maszyny wirtualne, które raportują do obszaru roboczego, czy zamierzasz wdrożyć je do usługi Azure Monitor dla maszyn wirtualnych. Aby uzyskać więcej informacji na temat sposobu konfiguracji liczników wydajności dla obszaru roboczego, zobacz sekcję "Konfigurowanie liczników" [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md). Aby uzyskać informacji na temat liczników skonfigurowany dla usługi Azure Monitor dla maszyn wirtualnych, zobacz [wdrożenia usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)](vminsights-onboard.md). 
 
-## <a name="why-did-my-vm-fail-to-onboard"></a>Dlaczego moja maszyna wirtualna nie dołączania?
-Podczas dołączania maszyny Wirtualnej platformy Azure w witrynie Azure portal, wykonywane są następujące kroki:
+## <a name="why-did-my-vm-deployment-fail"></a>Dlaczego nie Moje wdrożenie maszyny Wirtualnej?
+Gdy wdrożysz Maszynę wirtualną platformy Azure w witrynie Azure portal, zachodzą następujące zdarzenia:
 
 * Domyślnego obszaru roboczego usługi Log Analytics zostanie utworzony, jeśli wybrano opcję.
-* Liczniki wydajności są skonfigurowane dla wybranego obszaru roboczego. Jeśli ten krok nie powiedzie się, można zauważyć, że niektóre wykresy wydajności i tabele nie są wyświetlane dane dla maszyny Wirtualnej została dołączona. Można to naprawić, uruchamiając skrypt programu PowerShell udokumentowane [tutaj](vminsights-onboard.md#enable-with-powershell).
-* Agenta usługi Log Analytics jest zainstalowany na maszynach wirtualnych platformy Azure przy użyciu rozszerzenia maszyny Wirtualnej, jeśli ustalił, że jest to wymagane.  
-* Usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych jest zainstalowany na maszynach wirtualnych platformy Azure przy użyciu rozszerzenia, jeśli ustalił, że jest to wymagane.  
-* Obsługa funkcji kondycji składników platformy Azure Monitor są skonfigurowane, jeśli to konieczne, a maszyna wirtualna jest skonfigurowana do danych raportu o kondycji.
+* Liczniki wydajności są skonfigurowane dla wybranego obszaru roboczego. Jeśli ten krok nie powiedzie się, niektóre wykresy wydajności i tabele nie są wyświetlane dane dla maszyny Wirtualnej została wdrożona. Możesz rozwiązać ten problem, uruchamiając skrypt programu PowerShell, które jest opisane w sekcji "Włączanie przy użyciu programu PowerShell" [wdrożenia usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)](vminsights-onboard.md#enable-with-powershell).
+* Agenta usługi Log Analytics jest instalowany na maszynach wirtualnych Azure z rozszerzenia maszyny Wirtualnej, jeśli jest to wymagane. 
+* Usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych jest zainstalowany na maszynach wirtualnych platformy Azure z rozszerzeniem, jeśli jest to wymagane. 
+* Składniki platformy Azure Monitor, które obsługują tę funkcję kondycji są skonfigurowane, jeśli to konieczne, a maszyna wirtualna jest skonfigurowana do danych raportu o kondycji.
 
-Podczas procesu dołączania, możemy sprawdzić stan każdego z powyższych próbę zwrócenia stanu powiadomień do Ciebie w portalu.  Konfiguracja obszaru roboczego i podczas instalacji agenta zwykle trwa 5 – 10 minut.  Wyświetlanie danych monitorowania i kondycji w portalu wykonaj dodatkowe 5 do 10 minut.  
+Podczas wdrażania możemy sprawdzić stan dla każdego z powyższych kroków i zwrócenia stanu powiadomień do Ciebie w portalu. Konfiguracja obszaru roboczego i podczas instalacji agenta zwykle trwa 5 – 10 minut. Wyświetlanie danych monitorowania i kondycji w witrynie Azure portal wykonać dodatkowe 5 do 10 minut. 
 
-Jeśli zainicjowano dołączania i wyświetlić komunikaty wskazujący, że maszyna wirtualna musi być dołączona umożliwiają do 30 minut dla maszyny Wirtualnej ukończyć proces. 
+Jeśli zainicjowano wdrożenia i wyświetlone komunikaty wskazujące, czy należy wdrożyć maszynę Wirtualną, zezwala na maksymalnie 30 minut dla maszyny Wirtualnej ukończyć proces. 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Nie widzę żadnych danych w przypadku wykresów wydajności dla mojej maszyny Wirtualnej
-Jeśli nie widzisz dane dotyczące wydajności w tabeli dysku lub niektóre wykresy wydajności liczniki wydajności nie może być skonfigurowany w obszarze roboczym. Aby rozwiązać problem, uruchom następujące polecenie [skrypt programu PowerShell](vminsights-onboard.md#enable-with-powershell).
+Jeśli dane wydajności nie jest wyświetlane w tabeli dysku lub wykresy wydajności, liczniki wydajności mogą nie być skonfigurowane w obszarze roboczym. Aby rozwiązać ten problem, uruchom skrypt programu PowerShell, które jest opisane w sekcji "Włączanie przy użyciu programu PowerShell" [wdrożenia usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)](vminsights-onboard.md#enable-with-powershell).
 
-## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Czym różni się usługi Azure Monitor dla funkcji mapy maszyn wirtualnych z mapy usługi?
-Usługi Azure Monitor dla funkcji mapy maszyn wirtualnych jest oparty na mapie usługi, ale się w następujący sposób:
+## <a name="how-is-the-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Czym różni się usługi Azure Monitor dla funkcji mapy maszyn wirtualnych z mapy usługi?
+Usługi Azure Monitor dla funkcji mapy maszyn wirtualnych zależy od rozwiązania Service Map, ale się w następujący sposób:
 
-* Widok mapy jest możliwy z bloku maszyny Wirtualnej i z usługi Azure Monitor dla maszyn wirtualnych w ramach usługi Azure Monitor.
-* Połączenia na mapie teraz kliknąć, aby wyświetlić dane metryk połączenia w panelu po stronie dla wybranego połączenia.
-* Brak nowego interfejsu API, który jest używany do tworzenia mapy w celu skuteczniejszej obsługi bardziej złożone mapy.
-* Monitorowane maszyny wirtualne znajdują się teraz w węźle grupy klienta i wykres pierścieniowy zawiera część monitorowanych vs niemonitorowanych maszyn wirtualnych w grupie.  Jego można również filtrować listę maszyn, gdy grupa jest rozwinięta.
-* Monitorowane maszyny wirtualne znajdują się teraz w węzłach grupy portów serwera, a wykres pierścieniowy zawiera część monitorowanych vs niemonitorowanych maszyn w grupie.  Jego można również filtrować listę maszyn, gdy grupa jest rozwinięta.
-* Zaktualizowano style mapy są bardziej spójne z mapy aplikacji z usługi Application insights.
-* Panele po stronie zostały zaktualizowane, ale jeszcze nie masz pełny zestaw integracji firmy, były obsługiwane w rozwiązania Service Map — zarządzanie aktualizacjami, śledzenie zmian, zabezpieczeń i pomocy technicznej. 
-* Opcja dotyczące wybierania grup i komputerów do mapowania została zaktualizowana i obsługuje teraz subskrypcji, grupy zasobów, zestawy skalowania maszyn wirtualnych platformy Azure i usług w chmurze.
-* Nie można utworzyć nowych grup składników mapy usług maszyny w usłudze Azure Monitor dla funkcji mapy maszyn wirtualnych.  
+* Widoku mapy są dostępne z poziomu okienka maszyny Wirtualnej i z usługi Azure Monitor, maszyn wirtualnych w usłudze Azure Monitor.
+* Połączenia na mapie teraz wyświetlenia wizytówki dane metryk połączenia w panelu po stronie.
+* Nowy interfejs API jest używany do utworzenia mapy w celu skuteczniejszej obsługi bardziej złożone mapy.
+* Monitorowane maszyny wirtualne są teraz w węźle grupy klienta i pierścieniowej wykres przedstawia współczynnik monitorowanych do niemonitorowanych maszyn wirtualnych. Można również filtrować listę komputerów, gdy grupa jest rozwinięta.
+* Monitorowane maszyny wirtualne są teraz w węzłach grupy portów serwera, a wykres pierścieniowy Wyświetla stopień monitorowanych do niemonitorowanych maszyn. Można również filtrować listę komputerów, gdy grupa jest rozwinięta.
+* Zaktualizowano style mapy są bardziej spójne z mapy aplikacji z usługi Azure Application Insights.
+* Panele po stronie zostały zaktualizowane, ale jeszcze nie masz pełny zestaw integracji, które były obsługiwane w rozwiązania Service Map: zarządzanie aktualizacjami, śledzenie zmian, zabezpieczeń i pomocy technicznej. 
+* Zaktualizowano opcję wybierania grup i komputerów do mapowania. Obsługuje teraz subskrypcji, grupy zasobów, zestawy skalowania maszyn wirtualnych platformy Azure i usług w chmurze.
+* Nie można utworzyć nowych grup składników mapy usług maszyny w usłudze Azure Monitor dla funkcji mapy maszyn wirtualnych. 
 
 ## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Dlaczego mój wykresy wydajności są wyświetlane linie kropkowane?
 
-Może to wystąpić z kilku powodów.  W przypadkach, w przypadku, gdy występuje przerwa w zbieraniu danych Firma Microsoft będzie przedstawiać wiersze jako kropkami.  Jeśli zmodyfikowano częstotliwość próbkowania danych liczników wydajności, włączone (ustawienie domyślne jest do zbierania danych co 60 sekund), można wyświetlić linii kropkowanej wykresu wybierz zakres czasu wąskie wykresu i Twoje częstotliwość próbkowania jest mniejsza niż użyte w wykresie rozmiaru przedziału (na przykład częstotliwość próbkowania wynosi 10 minut i każdego przedziału na wykresie wynosi 5 minut).  Wybieranie szerszy zakres czasu, aby wyświetlić powinno spowodować linii wykresu, w tym przypadku były wyświetlane jako linia ciągła, a nie kropki.
+Wykresy wydajności wyświetlanie linii kropkowanej zamiast linia ciągła z kilku powodów:
+* Może być przerwa w zbieraniu danych. 
+
+* Ustawieniem domyślnym dla pobierania próbek danych jest co 60 sekund. Kropkowane linie mogą być wyświetlane, jeśli wybierz zakres czasu wąskie wykresu, a Twoje częstotliwość próbkowania jest mniejsza niż rozmiar zasobnika użyte w wykresie. Załóżmy, że wybrano opcję częstotliwości próbkowania 10 minut każdego przedziału na wykresie wynosi 5 minut. W tym przypadku wybierania szerszy zakres czasu, aby wyświetlić powinno spowodować linii wykresu pojawiało się jako linia ciągła, a nie kropki.
 
 ## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Grupy obsługujące z usługą Azure Monitor dla maszyn wirtualnych?
-Tak, po zainstalowaniu agenta zależności, zbierane są informacje z maszyn wirtualnych, aby wyświetlić grupy na podstawie subskrypcji, grupy zasobów, maszyna wirtualna zestawów skalowania i usług w chmurze.  Jeśli masz doświadczenie z rozwiązania Service Map i utworzono grupy na komputerze, są one widoczne również.  Grupy komputerów pojawi się także w filtrze grup Jeśli utworzono je do obszaru roboczego, który jest wyświetlany. 
+Tak, po zainstalowaniu agenta zależności, zbierane są informacje z maszyn wirtualnych, aby wyświetlić grupy na podstawie subskrypcji, grupy zasobów, maszyna wirtualna zestawów skalowania i usług w chmurze. Jeśli wcześniej użyto rozwiązania Service Map i utworzono grupy na komputerze, te grupy są wyświetlane również. Grupy komputerów pojawi się także w filtrze grup, jeśli zostały utworzone dla obszaru roboczego, który jest wyświetlany. 
 
-## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Jak wyświetlić szczegóły dla czego zależy używany 95. percentyl zagregowanego wydajności wykresy liniowe?
-Domyślnie lista jest sortowana Wam maszyn wirtualnych, które mają najwyższą wartość 95. percentyl dla wybranej metryki, z wyjątkiem wykres dostępnej pamięci, który pokazuje maszyn o najniższej wartości 5. percentyl.  Kliknięcie na wykresie spowoduje otwarcie **lista N najlepszych** widok z odpowiednią wybraną metryką.
+## <a name="how-can-i-display-the-details-about-whats-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Jak wyświetlić szczegółowe informacje o czego zależy używany 95. percentyl zagregowanego wydajności wykresy liniowe?
+Domyślnie lista jest sortowana Wam maszyn wirtualnych, które mają najwyższą wartość 95. percentyl dla wybranej metryki. Wyjątek stanowi **dostępnej pamięci** wykres, który pokazuje maszyn o najniższej wartości percentyla piąty. Wybierz wykres, aby otworzyć **lista N najlepszych** widok z odpowiednią wybraną metryką.
 
-## <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Jak funkcja mapy obsługuje zduplikowane adresy IP w różnych sieciach wirtualnych i podsieci?
-Jeśli są duplikowania zakresów adresów IP przy użyciu maszyn wirtualnych lub maszyn wirtualnych zestawów skalowania w podsieci i sieci wirtualne, może to spowodować usługi Azure Monitor dla maszyn wirtualnych mapę, aby wyświetlić nieprawidłowe informacje. Jest to znany problem i Rozpatrujemy różne opcje, aby ulepszyć to środowisko.
+## <a name="how-does-the-map-feature-handle-duplicate-ips-across-various-virtual-networks-and-subnets"></a>Jak funkcja mapy obsługuje zduplikowane adresy IP w różnych sieciach wirtualnych oraz podsieci?
+Jeśli masz duplikowania zakresów adresów IP przy użyciu obu maszyn wirtualnych lub zestawów skalowania maszyn wirtualnych platformy Azure między podsieciami i sieciami wirtualnymi, może to spowodować usługi Azure Monitor dla funkcji mapy maszyn wirtualnych do wyświetlenia nieprawidłowe informacje. Jesteśmy pamiętać o tym problemie i Rozpatrujemy różne opcje, aby ulepszyć środowisko pracy.
 
-## <a name="does-map-feature-support-ipv6"></a>Jest mapowany obsługi różnych funkcji IPv6?
-Funkcja mapy aktualnie obsługuje tylko IPv4, dlatego Rozpatrujemy Obsługa protokołu IPv6. Obsługujemy również IPv4, który tunel wewnątrz protokołu IPv6.
+## <a name="does-the-map-feature-support-ipv6"></a>Funkcja mapy obsługuje protokół IPv6?
+Funkcja mapy aktualnie obsługuje tylko protokół IPv4, dlatego Rozpatrujemy Obsługa protokołu IPv6. Obsługujemy również IPv4, który tunel wewnątrz protokołu IPv6.
 
-## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Po załadowaniu mapę dla grupy zasobów lub innych dużych mapy jest trudny do wyświetlenia
-Gdy wprowadziliśmy ulepszenia do mapy do obsługi dużych i złożonych konfiguracji Zdajemy sobie sprawę, mapy może mieć wiele węzłów, połączeń i języka node działa jako klaster.  Ponadto zobowiązujemy się do zwiększenia pomocy technicznej w celu zwiększenia skalowalności w dalszym ciągu.   
+## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-why-is-the-map-difficult-to-view"></a>Po załadowaniu mapy dla grupy zasobów lub innych dużych, dlaczego jest plan utrudniało wyświetlanie?
+Mimo że firma Microsoft ulepszyła funkcji mapy do obsługi dużych i złożonych konfiguracji, firma Microsoft zorientujesz się, że mapa może mieć wiele węzłów, połączeń i węzłów działających jako klaster. Ponadto zobowiązujemy się do zwiększenia pomocy technicznej w celu zwiększenia skalowalności w dalszym ciągu.  
 
-## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Dlaczego Wykres sieci na karcie Wydajność wygląda inaczej niż wykresu sieci, na stronie Omówienie maszyny Wirtualnej platformy Azure?
+## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-from-the-network-chart-on-the-azure-vm-overview-page"></a>Dlaczego Wykres sieci na karcie wydajność się różnić od wykresu sieci, na stronie Omówienie maszyny Wirtualnej platformy Azure?
 
-Strona przeglądu Maszynie wirtualnej platformy Azure Wyświetla wykresy oparte na hosta pomiaru działań w maszynie Wirtualnej gościa.  Wykresu sieci na omówienie maszyny Wirtualnej platformy Azure tylko Wyświetla ruch sieciowy będą naliczane.  Obejmuje to ruch między sieciami wirtualnymi.  Dane i wykresy wyświetlane dla usługi Azure Monitor dla maszyn wirtualnych na podstawie danych z maszyny Wirtualnej gościa i wykresach sieci są wyświetlane wszystkie TCP/IP ruchu przychodzącego i wychodzącego do tej maszyny Wirtualnej, w tym między sieciami wirtualnymi.
+Strona przeglądu Maszynie wirtualnej platformy Azure Wyświetla wykresy oparte na hosta pomiaru działań w maszynie Wirtualnej gościa. Wykres sieci, na stronie Omówienie maszyny Wirtualnej platformy Azure przedstawia tylko ruch sieciowy będą naliczane. Ten ekran nie uwzględnia ruchu między sieciami wirtualnymi. Dane i wykresy wyświetlane dla usługi Azure Monitor dla maszyn wirtualnych na podstawie danych z maszyny Wirtualnej gościa, a na wykresach sieci są wyświetlane wszystkie TCP/IP ruchu, który ma ruchu przychodzącego i wychodzącego do tej maszyny Wirtualnej, uwzględniając ruch między sieciami wirtualnymi.
 
-## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Czy ich ograniczenia, jeśli jestem na Log Analytics bezpłatnego planu cenowego?
-Jeśli skonfigurowano usługi Azure Monitor z obszaru roboczego usługi Log Analytics przy użyciu *bezpłatna* warstwy cenowej, usługi Azure Monitor dla funkcji mapy maszyn wirtualnych obsługują tylko pięć maszyn połączonych połączone z obszarem roboczym. W przypadku pięciu maszyn wirtualnych podłączone do obszaru roboczego warstwy bezpłatna rozłączyć jednej z maszyn wirtualnych, a następnie później Połącz z nową maszynę Wirtualną, nowa maszyna wirtualna nie jest monitorowane i widoczne na stronie mapy.  
+## <a name="what-are-the-limitations-of-the-log-analytics-free-pricing-plan"></a>Jakie są ograniczenia planu cenowego bezpłatnych analizy dziennika?
+Jeśli skonfigurowano usługi Azure Monitor z obszarem roboczym usługi Log Analytics przy użyciu *bezpłatna* warstwy cenowej, usługi Azure Monitor dla funkcji mapy maszyny wirtualne obsługuje połączeń tylko pięć maszyn do obszaru roboczego. 
 
-W tej sytuacji, zostanie wyświetlony monit o **Wypróbuj teraz usługę** opcji otwieranie maszyny Wirtualnej i wybrania **Insights (wersja zapoznawcza)** z okienka po lewej stronie, nawet po jego zainstalowaniu już na maszynie Wirtualnej.  Jednak monit nie jest z opcjami jak zwykle może wystąpić, jeśli ta maszyna wirtualna nie zostały dołączone do usługi Azure Monitor dla maszyn wirtualnych. 
+Załóżmy na przykład, że masz pięć maszyny wirtualne podłączone do obszaru roboczego warstwy bezpłatna. Jeśli rozłączyć jedną maszynę Wirtualną, a później połączyć nowy nowej maszyny Wirtualnej nie jest monitorowane i widoczne na stronie mapy. W tym scenariuszu po otwarciu nowej maszyny Wirtualnej zostanie wyświetlony monit użyj **Wypróbuj teraz usługę** opcji, a następnie wybierz pozycję **Insights (wersja zapoznawcza)** z okienka po lewej stronie, nawet w przypadku, po jego zainstalowaniu na maszynie Wirtualnej. Jednakże zostanie wyświetlony monit z opcjami jak zwykle będzie Jeśli maszyna wirtualna nie zostały wdrożone do usługi Azure Monitor dla maszyn wirtualnych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przegląd [dołączanie usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md) , aby zrozumieć wymagania i metody, aby włączyć monitorowanie maszyn wirtualnych.
+Aby poznać wymagania i metod umożliwiających monitorowanie maszyn wirtualnych, zobacz [wdrożenia usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)](vminsights-onboard.md).

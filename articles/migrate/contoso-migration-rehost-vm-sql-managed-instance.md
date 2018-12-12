@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: ae719e6daa3c07ffe298cfefcc5a0a2846a49032
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 35d2234ee52516c4ebf3e354e1ab6890144cdd5d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231825"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879472"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migracja Contoso: ponowne hostowanie aplikacji w środowisku lokalnym na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database
 
@@ -186,14 +186,14 @@ Administratorzy firmy Contoso Skonfiguruj sieć wirtualną w następujący spos�
     - **SQLMI-DS-EUS2** (10.235.0.0.25)
     - **SQLMI-SAW-EUS2** (10.235.0.128/29). Ta podsieć jest używana do dołączenia w katalogu do wystąpienia zarządzanego.
 
-    ![Zarządzane wystąpienia — tworzenie sieci wirtualnej](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
+      ![Zarządzane wystąpienia — tworzenie sieci wirtualnej](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
 
 4. Po wdrożeniu sieci wirtualnej i podsieci są komunikację równorzędną sieci w następujący sposób:
 
     - Elementy równorzędne **EUS2-VNET-SQLMI** z **VNET-HUB-EUS2** (centralnej sieci wirtualnej dla wschodnie stany USA 2).
     - Elementów równorzędnych **EUS2-VNET-SQLMI** z **VNET-PROD-EUS2** (produkcyjnego).
 
-    ![Komunikacja równorzędna w sieci](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
+      ![Komunikacja równorzędna w sieci](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
 
 5. Ustawiają niestandardowych ustawień DNS. DNS wskazuje najpierw kontrolery domeny systemu Azure firmy Contoso. System DNS Azure jest dodatkowej. Kontrolery domeny Contoso Azure znajdują się w następujący sposób:
 
@@ -202,7 +202,7 @@ Administratorzy firmy Contoso Skonfiguruj sieć wirtualną w następujący spos�
     - **CONTOSODC4** adres: 10.245.42.5
     - Program rozpoznawania nazw DNS platformy Azure: 168.63.129.16
 
-     ![Serwery DNS w sieci](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
+      ![Serwery DNS w sieci](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
 
 *Potrzebujesz dodatkowej pomocy?*
 
@@ -254,7 +254,7 @@ Teraz firmy Contoso, Administratorzy mogą aprowizować wystąpienie zarządzane
     - Klaster wirtualny w przypadku firmy Contoso ma wiele wystąpień zarządzanych.
     - Wystąpienie zarządzane bazy danych programu SQL Server. 
 
-    ![Wystąpienie zarządzane](media/contoso-migration-rehost-vm-sql-managed-instance/mi-resources.png)
+      ![Wystąpienie zarządzane](media/contoso-migration-rehost-vm-sql-managed-instance/mi-resources.png)
 
 *Potrzebujesz dodatkowej pomocy?*
 
@@ -615,7 +615,7 @@ Aby dowiedzieć się więcej na temat praktyk w zakresie zabezpieczeń dla maszy
 
 Ciągłość prowadzenia działalności biznesowej i odzyskiwania po awarii (BCDR) Contoso wykonuje następujące akcje:
 
-- Zabezpieczanie danych: Contoso tworzy kopię zapasową danych na maszynach wirtualnych za pomocą usługi Azure Backup. [Dowiedz się więcej] https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Zabezpieczanie danych: Contoso tworzy kopię zapasową danych na maszynach wirtualnych za pomocą usługi Azure Backup. [Dowiedz się więcej](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - Zachowaj aplikacji działanie: Contoso replikowane maszyny wirtualne na platformie Azure aplikacji przy użyciu Site Recovery w regionie pomocniczym. [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 - Contoso dowiaduje się więcej na temat zarządzania wystąpienia zarządzanego usługi SQL, w tym [kopie zapasowe bazy danych](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups).
 

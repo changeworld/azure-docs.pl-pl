@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5cbf0895274672c053158cf07acb344908b37831
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 98a1dd3fb3fd733cc17ac9c6ccf9d0dfc77737e1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623472"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868025"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Często zadawane pytania dotyczące usługi Azure Active Directory raporty
 
@@ -94,7 +94,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 **P: które interfejsów API należy używać, aby uzyskać informacje na temat dzienników aktywności usługi Office 365?**
 
-**Odp.:** użyj [interfejsów API zarządzania usługi Office 365](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview) dostęp do dzienników aktywności usługi Office 365 za pośrednictwem interfejsu API.
+**Odp.:** użyj [interfejsów API zarządzania usługi Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) dostęp do dzienników aktywności usługi Office 365 za pośrednictwem interfejsu API.
 
 ---
 

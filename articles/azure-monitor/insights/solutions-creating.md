@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c842efd6c66fd70bbac3969090b71c42c725545
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 24ffe9eded908c82750ce5a6d6fbe87991bdae72
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839641"
+ms.locfileid: "52872862"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Zaprojektować i zbudować rozwiązanie do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -46,7 +46,7 @@ Pierwszym krokiem projektowania rozwiązania jest określenie danych, które wym
 
 Istnieje kilka sposobów źródeł danych, które mogą być zbierane w repozytorium usługi Log Analytics, zgodnie z opisem w [źródeł danych w usłudze Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Ta obejmuje zdarzenia w dzienniku zdarzeń Windows lub wygenerowane Syslog oprócz liczniki wydajności dla klientów systemów Windows i Linux.  Można także gromadzić dane z zasobów platformy Azure, zbieranych przez usługi Azure Monitor.  
 
-Jeśli potrzebujesz danych, która nie jest dostępna za pośrednictwem dowolnych dostępnych źródeł danych, a następnie można użyć [interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md) pozwala zapisywać dane w repozytorium usługi Log Analytics za pomocą dowolnego klienta, który można wywołać interfejs API REST.  Najbardziej typowe oznacza, że zbieranie danych niestandardowych w rozwiązaniu do zarządzania jest utworzenie [elementu runbook w usłudze Azure Automation](../../automation/automation-runbook-types.md) który gromadzi informacje o wymaganych danych z zasobów platformy Azure lub zewnętrznych i używa interfejsu API modułu zbierającego dane do zapisu do repozytorium.  
+Jeśli potrzebujesz danych, która nie jest dostępna za pośrednictwem dowolnych dostępnych źródeł danych, a następnie można użyć [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md) pozwala zapisywać dane w repozytorium usługi Log Analytics za pomocą dowolnego klienta, który można wywołać interfejs API REST.  Najbardziej typowe oznacza, że zbieranie danych niestandardowych w rozwiązaniu do zarządzania jest utworzenie [elementu runbook w usłudze Azure Automation](../../automation/automation-runbook-types.md) który gromadzi informacje o wymaganych danych z zasobów platformy Azure lub zewnętrznych i używa interfejsu API modułu zbierającego dane do zapisu do repozytorium.  
 
 ### <a name="log-searches"></a>Wyszukiwanie w Dzienniku
 [Przeszukiwanie dzienników](../../azure-monitor/log-query/log-query-overview.md) służą do wyodrębniania i analizować dane w repozytorium usługi Log Analytics.  Są one używane przez widoki i alerty, oprócz umożliwienia użytkownikowi przeprowadzenie analizy ad-hoc danych w repozytorium.  

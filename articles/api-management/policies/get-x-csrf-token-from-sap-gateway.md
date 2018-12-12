@@ -1,6 +1,6 @@
 ---
-title: Azure próbce interfejsu API zarządzania zasad - X-CSRF implementacji wzorca | Dokumentacja firmy Microsoft
-description: Przykładowe zasady zarządzania Azure API - pokazano, jak zaimplementować wzorzec X CSRF używany przez wiele interfejsów API. Ten przykład jest specyficzny dla bramy SAP.
+title: Interfejs API zarządzania zasad przykładowy Azure — wzorzec implementacji X-CSRF | Dokumentacja firmy Microsoft
+description: Przykład zasad zarządzania Azure interfejsu API — demonstruje sposób implementacji wzorca X CSRF używany przez wiele interfejsów API. Ten przykład jest specyficzny dla bramy SAP.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 3a2067836a1488d117dced96f3935f2d1f8b1b48
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 2f4d26702443ef3113dad98cde1d13b292fe657a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946027"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870014"
 ---
-# <a name="implement-x-csrf-pattern"></a>Implementowanie X-CSRF wzorca
+# <a name="implement-x-csrf-pattern"></a>Wzorzec implementacji X-CSRF
 
-W tym artykule przedstawiono przykładowe zasady zarządzania interfejsu API usługi Azure, który demonstruje sposób wykonania X CSRF wzorzec używany przez wiele interfejsów API. Ten przykład jest specyficzny dla bramy SAP. Aby ustawić lub zmodyfikować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
+W tym artykule przedstawiono przykładowy zasady zarządzania interfejsem API usługi Azure, który demonstruje sposób implementacji wzorca X CSRF używany przez wiele interfejsów API. Ten przykład jest specyficzny dla bramy SAP. Można ustawiać lub edytować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
 
 ## <a name="policy"></a>Zasady
 
-Wklej kod do **przychodzących** bloku.
+Wklej kod do **dla ruchu przychodzącego** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get X-CSRF token from SAP gateway using send request.policy.xml)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o zasadach APIM:
+Dowiedz się więcej na temat usługi APIM zasad:
 
 + [Zasady transformacji](../api-management-transformation-policies.md)
 + [Przykłady zasad](../policy-samples.md)

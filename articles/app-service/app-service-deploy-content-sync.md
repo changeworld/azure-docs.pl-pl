@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 3796f5c8956b633a4789baaf31a439746dc96b96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 10a33163b2bfe6a1c9c24b9de58f83813e7534a6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233766"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863928"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizuj zawartość z folderu w chmurze w usłudze Azure App Service
 W tym artykule dowiesz się, jak zsynchronizować zawartość do [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) z usługą Dropbox i OneDrive. 
@@ -61,7 +61,7 @@ Gdy chcesz zsynchronizować zawartość folderu w chmurze z usługą App Service
 
 Aby wyłączyć funkcję synchronizacji zawartości, przejdź do strony aplikacji usługi App Service w [witryny Azure portal](https://portal.azure.com).
 
-W menu po lewej stronie kliknij **Centrum wdrażania** > **OneDrive** lub **Dropbox** > **rozłączenia**.
+W menu po lewej stronie kliknij **Centrum wdrażania** > **rozłączenia**.
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

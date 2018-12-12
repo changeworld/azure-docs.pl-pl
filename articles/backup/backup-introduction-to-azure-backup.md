@@ -2,20 +2,20 @@
 title: Co to jest Azure Backup?
 description: Usługa Azure Backup umożliwia wykonywanie kopii zapasowych oraz przywracanie danych i obciążeń z serwerów i stacji roboczych z systemem Windows, serwerów programu System Center DPM, a także maszyn wirtualnych platformy Azure.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: tworzenie i przywracanie kopii zapasowej; recovery services; rozwiązania kopii zapasowych
 ms.service: backup
 ms.topic: overview
 ms.date: 8/2/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480977"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878335"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Omówienie funkcji usługi Azure Backup
 Azure Backup to oparta na platformie Azure usługa, która umożliwia tworzenie kopii zapasowej (lub ochronę) i przywracanie danych w chmurze Microsoft Cloud. Usługa Azure Backup pozwala zastąpić dotychczasowe rozwiązania tworzenia kopii zapasowych, istniejące lokalnie lub poza siedzibą firmy, rozwiązaniem opartym na chmurze, które jest niezawodne, bezpieczne i konkurencyjne cenowo. Usługa Azure Backup oferuje wiele składników, które możesz pobrać i wdrożyć na odpowiednim komputerze, serwerze lub w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki usługi Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Recovery Services na platformie Azure. Informacje o tym, jakich składników należy użyć do ochrony konkretnych danych, aplikacji lub obciążeń, znajdują się w [tabeli składników usługi Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (w dalszej części tego artykułu).

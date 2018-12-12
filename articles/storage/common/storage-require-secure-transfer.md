@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 201bf1e5d3580902934f139b70ca5363e7cc5930
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 72e0937e91a7287d240bbdb25996865f934d432d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523019"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876506"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Wymaganie bezpiecznego transferu w usłudze Azure Storage
 
 Opcja "Wymagany bezpieczny transfer" podnosi poziom bezpieczeństwa konta magazynu, zezwalając jedynie na żądania do konta z bezpiecznych połączeń. Na przykład w przypadku wywoływania interfejsów API REST dostępu do konta magazynu, musisz połączyć za pośrednictwem protokołu HTTPS. "Wymagany bezpieczny transfer" odrzuca żądania, które używają protokołu HTTP.
 
-Korzystając z usługi pliki Azure, każde połączenie bez szyfrowania nie powiedzie się, gdy "Wymagany bezpieczny transfer" jest włączona. W tym scenariuszami korzystającymi z protokołu SMB 2.1, protokołu SMB 3.0 bez szyfrowania i niektóre wersje klienta SMB w systemie Linux. 
+Korzystając z usługi pliki Azure, każde połączenie bez szyfrowania nie powiedzie się, gdy "Wymagany bezpieczny transfer" jest włączona. W tym scenariuszami korzystającymi z protokołu SMB 2.1, protokołu SMB 3.0 bez szyfrowania i niektóre wersje klienta SMB w systemie Linux. 
 
-Domyślnie opcja "Wymagany bezpieczny transfer" jest wyłączona.
+Domyślnie opcja "Wymagany bezpieczny transfer" jest wyłączona podczas tworzenia konta magazynu przy użyciu zestawu SDK. I jest włączona domyślnie po utworzeniu konta magazynu w witrynie Azure Portal.
 
 > [!NOTE]
 > Ponieważ usługi Azure Storage nie obsługuje protokołu HTTPS dla nazw domen niestandardowych, ta opcja nie została zastosowana podczas korzystania z niestandardowej nazwy domeny. I klasycznych kont magazynu nie są obsługiwane.

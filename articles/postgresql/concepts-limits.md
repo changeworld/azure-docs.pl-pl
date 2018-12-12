@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/30/2018
-ms.openlocfilehash: f24f15134bf189097f20f75ff0b23b72a3e48363
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: MT
+ms.date: 12/03/2018
+ms.openlocfilehash: 2f4f5bf19815469f76c1ee18ff42177f77faec28
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299610"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871119"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Ograniczenia dotyczące usługi Azure Database for PostgreSQL
 W poniższych sekcjach opisano, pojemnością i limitami funkcjonalności w usłudze bazy danych.
@@ -31,10 +31,12 @@ Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następ
 |Ogólne zastosowanie| 8| 480|
 |Ogólne zastosowanie| 16| 950|
 |Ogólne zastosowanie| 32| 1500|
+|Ogólne zastosowanie| 64| 1900|
 |Pamięć| 2| 300|
 |Pamięć| 4| 500|
 |Pamięć| 8| 960|
 |Pamięć| 16| 1900|
+|Pamięć| 32| 3000|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
 > Błąd krytyczny: Niestety, zbyt wielu klientów już

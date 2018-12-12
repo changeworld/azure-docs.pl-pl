@@ -1,6 +1,6 @@
 ---
-title: Wizualizowanie danych w Eksploratorze usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: W tym artykule opisano funkcje i opcje dostępne w aplikacji sieci web Eksploratora usługi Azure czas Series Insights w wersji zapoznawczej.
+title: Wizualizowanie danych w ramach aktualizacji Eksploratora usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+description: Azure Time Series Insights aktualizacja programu explorer
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,73 +9,73 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 3a2958d838f0646ac030421b3785fc11a1466dd6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 48f3be2de2f23cef311994c603d50544b5d13a6e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086729"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879795"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Wizualizowanie danych w programie explorer (wersja zapoznawcza)
 
-W tym artykule opisano funkcje i opcje dostępne w wersji zapoznawczej Azure czas serii Insights [aplikacji sieci web w Eksploratorze](https://insights.timeseries.azure.com/preview/samples).
+W tym artykule opisano funkcje i opcje dostępne w ramach usługi Azure Time Series Insights (wersja zapoznawcza) [aplikacji sieci web w Eksploratorze](https://insights.timeseries.azure.com/preview/samples).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed skorzystaniem z Eksploratora usługi Azure czas Series Insights w wersji zapoznawczej, musisz mieć:
+Przed skorzystaniem z Eksploratora usługi Azure Time Series Insights (wersja zapoznawcza), musisz mieć:
 
-* Masz środowisko usługi Time Series Insights Konfigurowanie. Aby uzyskać więcej informacji, zobacz [samouczek: Azure czas Series Insights w wersji zapoznawczej](./time-series-insights-update-create-environment.md).
-* Zapewnia dostęp do danych do środowiska usługi Time Series Insights, który został utworzony dla konta. Można zapewnić dostęp do innych użytkowników oraz do siebie.
+* Masz środowisko usługi Time Series Insights aprowizowane. Dowiedz się więcej na temat aprowizowania w środowisku usługi Time Series Insights.
+* Zapewnia dostęp do danych do środowiska usługi Time Series Insights, utworzony dla konta. Mogą być dostarczane dostępu do innych użytkowników, jak również samodzielnie.
 * Dodawanie źródła zdarzeń do środowiska usługi Time Series Insights w celu wypychania danych do środowiska.
 
-## <a name="learn-about-the-azure-time-series-insights-preview-explorer"></a>Dowiedz się więcej o Eksploratorze usługi Azure czas Series Insights w wersji zapoznawczej
+## <a name="learn-about-the-azure-time-series-insights-preview-explorer"></a>Dowiedz się więcej o Eksploratorze usługi Azure Time Series Insights (wersja zapoznawcza)
 
   ![jeden Explorer][1]
 
-Eksplorator usługi Azure czas Series Insights w wersji zapoznawczej obejmuje następujące elementy:
+Eksplorator usługi Azure Time Series Insights (wersja zapoznawcza) jest podzielone na siedem następujących elementów:
 
-* **Pasek nawigacyjny**: pozwala na przełączanie między stronami analizy i modelu.
-* **Drzewo hierarchia**: Umożliwia wybranie określonych danych elementów do wykreślenia.
-* **Czas serii dobrze**: wyświetla elementów aktualnie wybranych danych.
-* **Panel wykresu**: Wyświetla bieżące wykresu pracy.
-* **Oś czasu**: umożliwia modyfikowanie przedział czasu swojej pracy.
-* **Pasek aplikacji**: zawiera użytkownika opcje zarządzania, takich jak bieżącej dzierżawy i pozwala na zmianę ustawień motywu i języka.
+1. Pasek nawigacyjny TSI (wersja zapoznawcza) umożliwia przełączanie między stronami analizy i modelu.
+1. Drzewo hierarchia TSI (wersja zapoznawcza) wybierz elementy określonych danych do wykreślenia.
+1. Szeregi czasowe TSI (wersja zapoznawcza) zawiera również wszystkie elementy aktualnie wybrane dane.
+1. Panel wykresu TSI (wersja zapoznawcza) Wyświetla bieżącego wykresu pracy.
+1. Oś czasu TSI (wersja zapoznawcza) umożliwia modyfikowanie przedział czasu swojej pracy.
+1. Pasek aplikacji TSI (wersja zapoznawcza) zawiera opcje zarządzania użytkownika (na przykład bieżącej dzierżawy) i umożliwia zmianę ustawień motywu i języka.
 
-## <a name="time-series-insights-preview-environment-panel"></a>Panel środowiska Series Insights w wersji zapoznawczej czasu
+## <a name="tsi-preview-environment-panel"></a>Panel środowiska TSI (wersja zapoznawcza)
 
-Na panelu środowiska są wyświetlane wszystkie środowiska usługi Time Series Insights, do których masz dostęp do. Lista zawiera środowiska zgodnie z rzeczywistym użyciem (wersja zapoznawcza) i S1/S2 środowisk (GA). Po prostu kliknij środowiska usługi Time Series Insights, które chcesz użyć.
+Na panelu środowiska są wyświetlane wszystkie środowiska TSI, do których masz dostęp do. Obejmuje to lista środowisk zgodnie z rzeczywistym użyciem (wersja zapoznawcza) oraz środowisk S1/S2 (GA). Po prostu kliknij środowiska TSI, którego chcesz użyć.
 
   ![dwa Explorer][2]
 
-## <a name="time-series-insights-preview-navigation-menu"></a>Menu nawigacji Series Insights w wersji zapoznawczej czasu
+## <a name="time-series-insights-preview-navigation-menu"></a>Menu nawigacji Insights (wersja zapoznawcza) serii czasu
 
   ![trzy Explorer][3]
 
-Z menu nawigacji można przełączać się między aplikacjami usługi Time Series Insights:
+W menu nawigacji służy do przełączania się między aplikacjami TSI:
 
-* **Analizowanie**: pozwala na wykresie i wykonywać zaawansowane analizy na modelowanych lub niemodelowanych szeregami czasowymi.
+* Analizuj — pozwala na wykresie i wykonywać zaawansowane analizy na modelowanych lub niemodelowanych szeregami czasowymi.
 
-* **Model**: umożliwia wypychanie nowe typy czasu Series Insights w wersji zapoznawczej, hierarchie i wystąpień do modelu usługi Time Series Insights.
+* Model - umożliwia wypychanie nowych typów aktualizacji TSI, hierarchie i wystąpienia do modelu usługi TSI.
 
-## <a name="time-series-insights-preview-model-authoring"></a>Time Series Insights w wersji zapoznawczej modelu tworzenia
+## <a name="time-series-insights-update-model-authoring"></a>Usługa Time Series Insights aktualizacji, tworzenia modelu
 
-Za pomocą tej aplikacji można wykonywać operacje tworzenia, odczytu, aktualizowania lub usuwania (CRUD) w swojej modelu szeregów czasowych.  
+Ta aplikacja zapewnia możliwość wykonywania operacji CRUD na Twoje modelu szeregów czasowych.  
 
-* **Typ modelu serii czasu**: typy umożliwiają definiowanie zmiennych lub formuły do wykonywania obliczeń usługi Time Series Insights. Są one skojarzone z danego wystąpienia usługi Time Series Insights. Typ może mieć co najmniej jednej zmiennej.
-* **Czas hierarchii modelu szeregów**: hierarchie są systematycznego organizacji danych. Hierarchie przedstawiać relacje między różnymi jednostkami danych usługi Time Series Insights.
-* **Wystąpienie modelu serii czasu**: wystąpienia są szeregów czasowych, samodzielnie. W większości przypadków są DeviceID lub AssetID, który jest unikatowy identyfikator elementu zawartości w środowisku.
+* Typ TSM — typy TSI umożliwiają definiowanie zmiennych lub formuły do wykonywania obliczeń, są one skojarzone z danego wystąpienia usługi TSI. Typ może mieć co najmniej jednej zmiennej.
+* Hierarchia TSM — hierarchie są systematycznego organizacji danych. Hierarchie przedstawiać relacje między różnymi jednostkami danych usługi TSI.
+* Wystąpienia TSM — wystąpienia są szeregów czasowych, samodzielnie. W większości przypadków będzie to **DeviceID** lub **AssetID**, który jest unikatowy identyfikator elementu zawartości w środowisku.
 
-Aby dowiedzieć się więcej na temat modelu szeregów czasowych, zobacz [modeli szeregów razy](./time-series-insights-update-tsm.md).
+Aby dowiedzieć się więcej na temat TSM, przeczytaj [modeli szeregów razy](./time-series-insights-update-tsm.md).
 
-## <a name="time-series-insights-preview-model-search-panel"></a>Czas Series Insights w wersji zapoznawczej modelu wyszukiwania Panelu
+## <a name="time-series-insights-preview-model-search-panel"></a>Czas serii Insights (wersja zapoznawcza) modelu wyszukiwania Panelu
 
-Panel wyszukiwania modelu pozwala na łatwe wyszukiwanie i przejdź hierarchii modelu szeregów czasowych, aby znaleźć wystąpień serii określony czas, które mają być wyświetlane na wykresie. Po wybraniu wystąpień, dodawane zarówno bieżącego wykresu, jak i dane oraz.
+Panel wyszukiwania modelu pozwala na łatwe wyszukiwanie i przejdź hierarchii TSM można znaleźć wystąpienia serii określony czas, które mają być wyświetlane na wykresie. Po wybraniu wystąpień, nie są dodawane tylko do bieżącego wykresu, ale są również dodawane do danych dobrze.
 
   ![cztery Explorer][4]
 
-## <a name="time-series-insights-preview-well"></a>Dobrze Time Series Insights w wersji zapoznawczej
+## <a name="time-series-insights-preview-well"></a>Czas Series Insights (wersja zapoznawcza) dobrze
 
-Również wyświetla pola wystąpienia i inne metadane skojarzone z wybranym wystąpienia serii. Pole wyboru po prawej stronie umożliwiają ukryć lub wyświetlić określone wystąpienia z bieżącego wykresu. Można również usunąć elementy określonych danych z bieżących danych, klikając kontrolki czerwony znak x z prawej strony elementu.
+Również wyświetla pola wystąpienia i inne metadane skojarzone z wybranym wystąpienia serii. Pola wyboru po prawej stronie umożliwiają ukryć lub wyświetlić określone wystąpienia z bieżącego wykresu. Można również usunąć elementy określonych danych z bieżących danych, klikając kontrolki czerwony znak x z prawej strony elementu.
 
   ![pięć Explorer][5]
 
@@ -84,67 +84,68 @@ Można również oknach panelu telemetrię można również pobrać lepiej widok
   ![Eksplorator 6][6]
 
 > [!NOTE]
-> Jeśli zobaczysz następujący komunikat, podczas wybrany przedział czasu wystąpienia nie ma żadnych danych. Aby rozwiązać ten problem, można zwiększyć zakres czasu lub upewnij się, że wystąpienie jest wypychanie danych.
->
-> ![Eksplorator 7][7]
+> Jeśli widzisz następującej ikony, wystąpienie nie ma żadnych danych podczas wybrany zakres czasu.
+> Aby rozwiązać problem, można zwiększyć wybrany zakres czasu lub upewnij się, że wystąpienie jest wypychanie danych.
 
-## <a name="time-series-insights-preview-chart"></a>Wykres Series Insights w wersji zapoznawczej w czasie
+  ![Eksplorator 7][7]
 
-Za pomocą wykresu można wyświetlić wystąpienia serii czasu jako wiersze. Można zwinąć panelu środowiska, modelu danych i godzina w Panelu sterowania zakresu, klikając kontrolki sieci web, aby powiększyć wykresu.
+## <a name="time-series-insights-preview-chart"></a>Wykres Insights (wersja zapoznawcza) szeregów czasowych
+
+Wykres umożliwia wyświetlanie wystąpienia serii czasu jako wiersze. Można zwinąć panelu środowiska, modelu danych i godzina w Panelu sterowania zakresu, klikając kontrolki sieci web, aby powiększyć wykresu.
 
   ![Eksplorator 8][8]
 
-1. **Wybrany zakres dat**: formanty elementy danych, które są dostępne dla wizualizacji.
+1. **Wybrany zakres dat** — zaznaczony zakres dat dla panelu wykresu, to określa elementy, które dane będą dostępne dla wizualizacji.
 
-1. **Wewnętrzny narzędzia suwaka zakresu dat**: za pomocą dwóch formantów punktu końcowego, przeciągając je w okresie żądany czas.
+1. **Wewnętrzny narzędzia suwaka zakresu dat** — należy użyć dwóch kontrolek punktu końcowego, klikając i przeciągając je wraz z upływem czasu żądaną span.
 
-1. **Czas formantu Zwiń zakresu**: zwija i rozwija Edytor panelu zakresu czasu.
+1. **Czas formantu Zwiń zakresu** -zwija i rozwija Edytor panelu zakresu czasu tej kontrolki.
 
-1. **Formant formatu osi y**: przełączanie po kolei dostępne opcje osi y w widoku:
+1. **Formant formatu osi y** — kliknij przycisk tego formantu można przechodzić przez dostępne opcje osi y w widoku. Są dostępne opcje osi y w widoku:
 
-    * `Default`: Każdy wiersz zawiera poszczególne osi y.
-    * `Stacked`: Służy do stosu wielu wierszy w tej samej osi y, przy użyciu danych osi y zmiany na podstawie wiersza zaznaczone.
-    * `Shared`: Wyświetlane razem wszystkie dane osi y.
+    * `Default`  -Każdy wiersz zawiera poszczególne osi y
+    * `Stacked` — Dzięki temu można stosu wielu wierszy w tej samej osi y, za pomocą osi y zmiany danych na podstawie wiersza wybrane
+    * `Shared` — Wszystkie dane osi y wyświetlane razem
 
-1. **Bieżący element danych**: obecnie wybranego elementu danych i jego szczegóły.
+1. **Bieżący element danych** — zaznaczony element danych i jego szczegóły.
 
-Można przejść do szczegółów w wycinka danych określonego przez kliknięcie lewym przyciskiem myszy punkt danych na bieżącego wykresu, a następnie przeciągając zaznaczonego obszaru do wybranego punktu końcowego. Kliknij prawym przyciskiem myszy obszar wygaszone, wybrane, a następnie kliknij przycisk powiększenia, jak pokazano to na poniższej ilustracji:
+Można przejść do szczegółów w wycinka danych określonych przez kliknięcie lewym przyciskiem myszy punkt danych na wykresie bieżącego podczas przytrzymując przycisk myszy, a następnie przeciągając zaznaczonego obszaru do wybranego punktu końcowego. Kliknij prawym przyciskiem myszy obszar wygaszone, wybrane, a następnie kliknij przycisk powiększenia, jak pokazano poniżej. Możesz również wykonać następujące czynności:
 
   ![dziewięć Explorer][9]
 
-Po wykonaniu akcji powiększania, zobaczysz wybrany zestaw danych. Kliknij formant formatu osi y, aby przechodzić między trzy reprezentacje osi y dane usługi Time Series Insights.
+Po wykonaniu akcji powiększania, zobaczą teraz wybrany zestaw danych. Kliknij na formancie format osi y, aby przechodzić między trzy różne reprezentacje osi y danych TSI.
 
   ![dziesięć Explorer][10]
 
-Tutaj można zobaczyć przykład osiami udostępnione:
+Tutaj można zobaczyć przykład udostępnionego osiami y.
 
   ![Eksplorator eleven][11]
 
-## <a name="time-series-insights-preview-time-editor-panel"></a>Panel Edytor czasu Series Insights w wersji zapoznawczej czasu
+## <a name="time-series-insights-preview-time-editor-panel"></a>Panel Edytor czasu Insights (wersja zapoznawcza) serii czasu
 
-Podczas pracy z czasu Series Insights w wersji zapoznawczej, najpierw należy wybrać przedział czasu. Określa zakres czasu wybrany określa zestaw danych, która jest dostępna do manipulowania widżetów czasu Series Insights w wersji zapoznawczej. Następujące kontrolki sieci web są dostępne w czasie Series Insights w wersji zapoznawczej dotyczące wybierania usługi przedział czasu pracy.
+Podczas pracy z usługi TSI, możesz najpierw wybrać przedział czasu. Wybrany okres będzie kontrolować zestawu danych, która jest dostępna do manipulowania widżetów aktualizacji usługi TSI. Następujące kontrolki sieci web są dostępne w aktualizacji usługi TSI służąca do wybierania usługi przedział czasu pracy.
 
   ![dwanaście Explorer][12]
 
-1. **Narzędzie suwaka zakresu dat wewnętrzny**: za pomocą dwóch formantów punktu końcowego, przeciągając je w okresie żądany czas. Ten zakres dat wewnętrzny jest ograniczony przez formant suwaka zakresu dat zewnętrznego.
+1. **Narzędzie suwaka zakresu dat wewnętrzny** — należy użyć dwóch kontrolek punktu końcowego, klikając i przeciągając je wraz z upływem czasu żądaną span. Ten zakres "Wewnętrzny daty" będzie ograniczone przez kontrolki suwaka zakresu "Zewnętrzne daty" wymienionych poniżej.
 
-1. **Zwiększać i zmniejszać przycisków zakresu dat**: zwiększyć lub zmniejszyć czas span, wybierając przycisk albo interwał ma.
+1. Zwiększyć i zmniejszenie data zakresu przyciski ** — zwiększenie lub zmniejszenie swoje przedział czasu, klikając przycisk albo dla interwału, który ma.
 
-1. **Czas formantu Zwiń zakresu**: tego formantu sieci web można ukrywać wszystkich kontrolek z wyjątkiem narzędzia suwaka zakresu dat wewnętrzny.
+1. **Czas formantu Zwiń zakresu** -tego formantu sieci web pozwala na ukrycie formantów, z wyjątkiem narzędzia suwaka zakresu dat wewnętrzny.
 
-1. **Kontrolka suwaka zakresu dat zewnętrzne**: Użyj formantów punktu końcowego, aby wybrać zakres zewnętrzne daty, która będzie dostępna dla kontrolki zakres dat wewnętrzny.
+1. **Kontrolka suwaka zakresu dat zewnętrzne** — za pomocą formantów punktu końcowego wybierz zakres dat zewnętrznego, która będzie dostępna dla kontrolki zakresu "Wewnętrzny daty".
 
-1. **Krótkie okresy daty rozwijanej zakresu**: umożliwia szybkie przełączanie się między wstępnie ustawiony czas zakresu wybrane opcje, takie jak ostatnie 30 minut, z ostatnich 12 godzin lub niestandardowy zakres. Zmiana ta wartość zmienia się również zakresy dostępne interwał omówione w narzędziu suwaka rozmiar interwału.
+1. **Krótkie okresy daty rozwijanej zakresu** — daje możliwość szybkiego przełączania się między wstępnie ustawiony czas zakresu opcje ostatnich 30 minut ostatnich 12 godzin, niestandardowego zakresu, np. Zmiana ta wartość zmienia się również zakresy dostępne interwał omówionej w narzędziu interwał Rozmiar suwaka.
 
-1. **Rozmiar interwału suwak**: okresu umożliwia można powiększyć lub pomniejszyć odstępach czasu za pośrednictwem takie same. Ta akcja zapewnia dokładniejszą kontrolę ruchu między wycinkami dużych czasu. Wyświetla smooth trendów w dół wycinki tak małej, jak milisekund, dzięki czemu możesz widzieć cenowe szczegółowe, wysokiej rozdzielczości, dane. Domyślne suwaka punkt początkowy ustawiono jako najbardziej optymalną wgląd w dane z zaznaczenia rozdzielczości, szybkości zapytań i stopień szczegółowości.
+1. **Rozmiar interwału suwak** — narzędzie suwaka rozmiar interwału umożliwia powiększanie i pomniejszanie odstępach czasu za pośrednictwem tego samego przedział czasu. Zapewnia to dokładniejszą kontrolę ruchu pomiędzy dużych okresy przedstawiających smooth trendy w dół wycinki tak małej, jak milisekund, dzięki czemu możesz widzieć cenowe szczegółowe, wysokiej rozdzielczości, dane. Domyślne suwaka punkt początkowy jest ustawiony jako najbardziej optymalną wgląd w dane z zaznaczenia; Równoważenie rozdzielczość, prędkość wysyłania zapytań i stopień szczegółowości.
 
-1. **Zakres do i z formantu sieci web dat**: za pomocą tego formantu sieci web można łatwo kliknij i wybierz odpowiednią datę i zakresy czasu. Kontrolka umożliwia również przełączać się między różnych strefach czasowych. Po wprowadzeniu zmian w celu zastosowania do Twojego bieżącego obszaru roboczego wybierz **Zapisz**.
+1. **Zakres do i z formantu sieci web dat** — za pomocą tego formantu sieci web, można łatwo kliknąć i wybierz odpowiednią datę i zakresy czasu. Kontrolka umożliwia również przełączać się między różnych strefach czasowych. Po wprowadzeniu zmian, czy chcesz zastosować do bieżących obszar roboczy, kliknij przycisk Zapisz przycisku.
 
   ![Eksplorator trzynaście][13]
 
-## <a name="time-series-insights-preview-navigation-panel"></a>Panel nawigacji Series Insights w wersji zapoznawczej czasu
+## <a name="time-series-insights-preview-navigation-panel"></a>Panel nawigacji Series Insights (wersja zapoznawcza) czasu
 
-Panel nawigacyjny czasu Series Insights w wersji zapoznawczej oferuje następujące funkcje:
+Panel nawigacyjny aktualizacji TSI oferuje następujące funkcje:
 
   ![Eksplorator czternastu][14]
 
@@ -152,7 +153,7 @@ Panel nawigacyjny czasu Series Insights w wersji zapoznawczej oferuje następuj�
 
   ![Eksplorator 15][15]
 
-Wybierz łącze kontrolki sieci web (wyróżnione), można wygenerować adresu URL, aby zapisać lub udostępnić bieżącej sesji usługi Azure Time Series Insights, w tym:
+Kliknij link kółku kontrolki sieci web do generowania adresu URL, aby zapisać lub udostępnić bieżącej sesji pracy Azure TSI, która obejmuje:
 
 * Obecnie wybranego zakresu czasu
 * Rozmiar interwału zaznaczony
@@ -162,15 +163,15 @@ Wybierz łącze kontrolki sieci web (wyróżnione), można wygenerować adresu U
 
   ![Eksplorator 16][16]
 
-* Wyświetla bieżące informacje o koncie logowania usługi Time Series Insights.
-* Umożliwia przechodzenie między dostępne motywy usługi Time Series Insights.
+* Wyświetla bieżące informacje o koncie logowania TSI
+* Pozwala przełączać się między dostępnych motywów TSI.
 
 ### <a name="theme-selection"></a>Wybór motywu
 
-Azure czas Series Insights w wersji zapoznawczej obsługuje dwa motywy:
+Azure TSI (wersja zapoznawcza) obsługuje dwa motywy:
 
-* **Motyw jasny**: motyw domyślny, przedstawione w tym dokumencie.
-* **Motyw ciemny**: renderuje Eksploratora, jak pokazano poniżej:
+* **Motyw jasny**: jest to domyślny motyw, przedstawione w tym dokumencie.
+* **Motyw ciemny**: Ta opcja powoduje wyświetlenie Eksploratora do motyw ciemny jak pokazano poniżej:
 
   ![Eksplorator siedemnastu][17]
 
@@ -178,47 +179,46 @@ W tym miejscu możesz również zmienić między obsługiwanych języków.
 
 ## <a name="s1s2-environment-controls"></a>Kontrolki środowiska S1/S2
 
-### <a name="time-series-insights-preview-terms-panel"></a>Panel terminów Series Insights w wersji zapoznawczej czasu
+### <a name="time-series-insights-preview-terms-panel"></a>Panel terminów Insights (wersja zapoznawcza) serii czasu
 
-Ta sekcja dotyczy tylko do istniejących środowisk S1/S2, które próbują w Interfejsie użytkownika zaktualizowane przy użyciu Eksploratora. Można używać w połączeniu GA produktu i w wersji zapoznawczej. Niektóre funkcje z istniejącego interfejsu użytkownika do dodaliśmy zaktualizowane explorer, ale można uzyskać pełnego środowiska interfejsu użytkownika dla środowiska S1/S2 w istniejących Eksploratora usługi Time Series Insights.  
+Ta sekcja dotyczy tylko istniejących środowisk S1/S2 próby w Interfejsie użytkownika zaktualizowane przy użyciu Eksploratora. Można to zrobić, aby zostanie zaktualizowany (wersja zapoznawcza) w połączeniu ze sobą i korzystania z produktu w wersji ogólnie dostępnej. Firma Microsoft dodane niektóre funkcje z istniejącego interfejsu użytkownika do zaktualizowanych explorer, ale o tym, że zawsze można uzyskać pełnego środowiska interfejsu użytkownika dla środowiska S1/S2 w istniejących Eksplorator usługi TSI.  
 
-Audytów hierarchii zostanie wyświetlony panel terminów usługi Time Series Insights, w którym definiowania kwerend w danym środowisku. Dzięki temu można filtrować dane na podstawie predykatu.
+Audytów hierarchii zostanie wyświetlony panel terminów TSI. Jest to, gdzie definiowania kwerend w danym środowisku. Daje możliwość filtrowania danych na podstawie przy użyciu predykat.
 
   ![Eksplorator 18][18]
 
-Panel Edytor warunków czasu Series Insights w wersji zapoznawczej przyjmuje następujące parametry:
+Panel Edytor (wersja zapoznawcza) w usłudze TSI terminów przyjmuje następujące parametry
 
-**Gdzie**: gdzie klauzula umożliwia szybkie filtr zdarzeń za pomocą zbiór operandów wymienione w poniższej tabeli. Jeśli wyszukiwania, wybierając operand, predykat jest automatycznie aktualizowana, oparte na tym wyszukiwaniem. Operand obsługiwane typy:
+**Gdzie**: gdzie klauzula umożliwia szybkie filtrowanie zdarzeń przy użyciu zestawu argumentów wymienione poniżej. Jeśli wyszukiwania, wybierając klikając, predykatu będą automatycznie aktualizowane na podstawie tego wyszukiwania. Operand obsługiwane typy:
 
 | Operacja | Obsługiwane typy   | Uwagi |
 | --- | --- | --- |
-| `<`, `>`, `<=`, `>=` | Double, DateTime, TimeSpan | |
-| `=`, `!=`, `<>` | String, Bool, Double, DateTime, przedział czasu, wartość NULL |
-| `IN` | String, Bool, Double, DateTime, przedział czasu, wartość NULL | Wszystkie argumenty powinny być tego samego typu lub być stała NULL. |
-| `HAS` | Ciąg | Po prawej stronie dozwolone są tylko stałe literałów. Pusty ciąg i wartości NULL są niedozwolone. |
-
-Więcej informacji na temat zapytania obsługiwane operacje i typy danych, czytając [wyrażenie serii czasu (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx).
+| `<`, `>`, `<=`, `>=` |    Double, DateTime, TimeSpan  | |
+| `=`, `!=`, `<>`   | String, Bool, Double, DateTime, przedział czasu, wartość NULL    |
+| `IN` |    String, Bool, Double, DateTime, przedział czasu, wartość NULL |    Wszystkie argumenty powinny być tego samego typu lub być stała NULL. |
+| `HAS` |   Ciąg |    Po prawej stronie dozwolone są tylko stałe literałów. Pusty ciąg i wartości NULL są niedozwolone. |
 
 ### <a name="examples-of-where-clauses"></a>Przykłady gdzie klauzule
 
   ![Eksplorator tysiąc][19]
 
-**Miara**: Ta lista rozwijana zawiera wszystkie kolumny liczbowe (**wartości podwójnej precyzji**), można użyć jako elementy, dla bieżącego wykresu.
+**Miara**: Ta lista rozwijana pokazuje wszystkie kolumny liczbowe (**wartości podwójnej precyzji**), można użyć jako elementy, dla bieżącego wykresu.
 
-**Podziel według**: tej listy rozwijanej są wyświetlane wszystkie dostępne podzielonych na kategorie kolumny (ciągi) w modelu, można grupować dane przy. Możesz dodać maksymalnie pięć warunki, aby wyświetlić na tej samej osi x. Wprowadź odpowiednie parametry, a następnie wybierz pozycję **Dodaj** można dodać nowej termin.
+**Podziel według**: tej listy rozwijanej wyświetlane wszystkie kolumny podzielone na kategorie (ciągi) w modelu dostępne, służące do grupowania danych przez. Możesz dodać maksymalnie pięć warunki, aby wyświetlić na tej samej osi x. Wprowadź odpowiednie parametry, a następnie użyj **Dodaj** przycisk, aby dodać świeże termin.
 
   ![dwadzieścia Explorer][20]
 
-Można pokazać i ukryć elementy w panelu wykresu, wybierając ikonę widoczne, jak pokazano na poniższej ilustracji. Zapytania można całkowicie usunąć, klikając czerwoną **x**.
+Można ukryć i pokazać elementy z panelu wykresu, klikając ikonę widoczne, jak pokazano poniżej. Zapytania można całkowicie usunąć, klikając czerwoną `X` pokazano poniżej.
 
   ![Eksplorator dwadzieścia jednego][21]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz następujące artykuły:
-* [Usługi Azure storage czasu Series Insights w wersji zapoznawczej i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md)
-* [Modelowanie danych](./time-series-insights-update-tsm.md)
-* [Diagnozowanie i rozwiązywanie problemów](./time-series-insights-update-how-to-troubleshoot.md)
+Odczyt [magazynu Azure TSI (wersja zapoznawcza) i ruch przychodzący](./time-series-insights-update-storage-ingress.md).
+
+Przeczytaj o [modelowania danych](./time-series-insights-update-tsm.md).
+
+Dowiedz się więcej o [diagnozowanie i rozwiązywanie problemów z](./time-series-insights-update-how-to-troubleshoot.md).
 
 <!-- Images -->
 [1]: media/v2-update-explorer/explorer-one.png

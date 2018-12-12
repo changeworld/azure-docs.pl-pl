@@ -1,5 +1,6 @@
 ---
-title: Zarządzanie i wdrażanie modeli usługi Azure Machine Learning
+title: Zarządzanie i wdrażanie modeli
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak wdrażanie, zarządzanie i monitorowanie swoje modele, aby nieustannie podnosić je za pomocą usługi Azure Machine Learning. Można wdrażać te modele, które uczony przy użyciu usługi Azure Machine Learning, na komputerze lokalnym lub z innych źródeł.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: ec0ab07d6bd35557e173641fbfbbc3621ad0ede2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885071"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097559"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 

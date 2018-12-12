@@ -1,33 +1,31 @@
 ---
-title: Platforma Apache Spark nawiązać połączenie z usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Platforma Apache Spark nawiązać połączenie z usługi Azure Cosmos DB
 description: Dowiedz się więcej na temat łącznika usługi Azure Cosmos DB Spark, która umożliwia łączenie platformy Apache Spark w usłudze Azure Cosmos DB. Agregacje rozproszonych można wykonać w systemie wielodostępnym, globalnie rozproszona baza danych firmy Microsoft.
 keywords: Platforma Apache spark
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 62395ff5370a057ca1888dd135b83be9d6f34f8d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: fd1fa105a880acb0d2b18a3b69ba8d475d8f82a3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707184"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081595"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Przyspiesz analizy danych big data przy użyciu platformy Apache Spark do łącznika usługi Azure Cosmos DB
  
-Łącznik platformy Apache Spark dla usługi Azure Cosmos DB umożliwia usłudze Azure Cosmos DB pełnienie funkcji wejścia lub wyjścia zadań platformy Apache Spark. Łączenie [Spark](http://spark.apache.org/) do [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) przyspiesza rozwiązania zmieniających problemów do nauki o danych. Azure Cosmos DB umożliwia szybkie zostaną zachowane, a wykonywanie zapytań o dane. Łącznik efektywnie używa natywnych indeksów zarządzanych usługi Azure Cosmos DB. Indeksy umożliwiają aktualizowanie kolumn podczas przeprowadzania analizy i filtrowania przewidywania w zakresie przekazywania względem szybko zmieniających się globalnie rozproszonych danych. Tego rodzaju danych może wynosić od Internetu rzeczy (IoT) w scenariuszach analizy i analizy danych.
+Łącznik platformy Apache Spark dla usługi Azure Cosmos DB umożliwia usłudze Azure Cosmos DB pełnienie funkcji wejścia lub wyjścia zadań platformy Apache Spark. Łączenie [Spark](https://spark.apache.org//) do [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) przyspiesza rozwiązania zmieniających problemów do nauki o danych. Azure Cosmos DB umożliwia szybkie zostaną zachowane, a wykonywanie zapytań o dane. Łącznik efektywnie używa natywnych indeksów zarządzanych usługi Azure Cosmos DB. Indeksy umożliwiają aktualizowanie kolumn podczas przeprowadzania analizy i filtrowania przewidywania w zakresie przekazywania względem szybko zmieniających się globalnie rozproszonych danych. Tego rodzaju danych może wynosić od Internetu rzeczy (IoT) w scenariuszach analizy i analizy danych.
 
 ## <a name="connector-components"></a>Składniki łącznika
 
 Platforma Spark może łącznika usługi Azure Cosmos DB zawiera następujące składniki:
 
-* [Usługa Azure Cosmos DB](http://documentdb.com) pozwala aprowizować i elastycznie Skaluj przepływność i Magazyn, w dowolnej liczbie regionów geograficznych.  
+* [Usługa Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) pozwala aprowizować i elastycznie Skaluj przepływność i Magazyn, w dowolnej liczbie regionów geograficznych.  
 
-* [Platforma Apache Spark](http://spark.apache.org/) to aparat przetwarzania zaawansowane "open source", zbudowane wokół szybkość i łatwość użycia i zaawansowanych możliwości analitycznych.  
+* [Platforma Apache Spark](https://spark.apache.org/) to aparat przetwarzania zaawansowane "open source", zbudowane wokół szybkość i łatwość użycia i zaawansowanych możliwości analitycznych.  
 
 * [Klaster Apache Spark w usłudze Azure Databricks](https://docs.azuredatabricks.net/getting-started/index.html) pozwala na uruchamianie zadania Spark w klastrze Spark.
 
@@ -179,7 +177,7 @@ Komunikacja między platformami Spark i usługa Azure Cosmos DB jest znacznie sz
 
 4. Wyodrębnij zawartość przykładowej kanale w serwisie Twitter, a następnie otwórz plik config.py. Zaktualizuj wartości masterKey, host, databaseId, collectionId i preferredLocations.  
 
-5. Przejdź do `http://apps.twitter.com/`i zarejestruj kanale aplikacji w serwisie Twitter. Po wybraniu nazwy aplikacji, będziesz otrzymywać z **konsumenta, klucz tajny klienta, token dostępu i klucz tajny tokenu dostępu**. Skopiuj te wartości i zaktualizuj je w pliku config.py, aby zapewnić, że w serwisie Twitter application programowy dostęp do usługi Twitter.   
+5. Przejdź do `https://apps.twitter.com/`i zarejestruj kanale aplikacji w serwisie Twitter. Po wybraniu nazwy aplikacji, będziesz otrzymywać z **konsumenta, klucz tajny klienta, token dostępu i klucz tajny tokenu dostępu**. Skopiuj te wartości i zaktualizuj je w pliku config.py, aby zapewnić, że w serwisie Twitter application programowy dostęp do usługi Twitter.   
 
 6. Zapisz plik config.py. Otwórz wiersz polecenia i uruchom aplikację w języku Python za pomocą następującego polecenia:
 
@@ -513,4 +511,4 @@ Jeśli jeszcze nie, Pobierz platformy Spark do łącznika usługi Azure Cosmos D
 * [Przykłady agregacji](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [Przykładowe skrypty i notesów](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-Możesz również przejrzeć [Apache Spark SQL, przewodnik zestawy danych i elementy Dataframe](http://spark.apache.org/docs/latest/sql-programming-guide.html)i [platformy Apache Spark w usłudze Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) artykułu.
+Możesz również przejrzeć [Apache Spark SQL, przewodnik zestawy danych i elementy Dataframe](https://spark.apache.org/docs/latest/sql-programming-guide.html)i [platformy Apache Spark w usłudze Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) artykułu.

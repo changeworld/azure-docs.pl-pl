@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.openlocfilehash: 28327a650bad529595ec843ed73f00a9dfcfa58a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082955"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874230"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Integrowanie usługi Azure DevTest Labs usługi Azure DevOps potok ciągłej integracji i dostarczania
 Możesz użyć *Azure DevTest Labs zadania* rozszerzenia, które jest instalowane w DevOps platformy Azure można łatwo zintegrować potokiem ciągłej integracji/ciągłego Dostarczania kompilacji i wydania przy użyciu usługi Azure DevTest Labs. Rozszerzenie instaluje trzy zadania: 
@@ -138,7 +138,7 @@ Następny etap wdrożenia to utworzenie maszyny Wirtualnej do użycia jako "zło
 1. W potoku wydań wybierz **dodawać zadania** a następnie na **Wdróż** kartę, należy dodać *programu Azure PowerShell* zadania. Skonfiguruj zadania w następujący sposób:
 
    > [!NOTE]
-   > Aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs, zobacz [Wdróż: programu Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) i uruchom skrypt.
+   > Aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs, zobacz [Wdróż: programu Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) i uruchom skrypt.
 
    a. Aby uzyskać **typu połączenia platformy Azure**, wybierz opcję **usługi Azure Resource Manager**.
 

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9dc0ca53433d27a36c21604b8462520c278a8969
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 962ced808f97dd1fea3805fa8c953e6d7563cd17
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845658"
+ms.locfileid: "52871748"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Program VMware do architektury odzyskiwania po awarii platformy Azure
 
@@ -44,7 +44,7 @@ Poniższej tabeli i grafika przedstawia ogólny widok składniki używane do odz
         - **Czas przechowywania punktu odzyskiwania**. To ustawienie określa, jak daleko wstecz w czasie, który ma nastąpić przejście po wystąpieniu przerwy w działaniu. Maksymalny czas przechowywania w magazynie premium storage wynosi 24 godziny. W magazynie standard storage to 72 godziny. 
         - **Migawki spójne z aplikacji**. Migawka spójności aplikacji może potrwać co 1 do 12 godzin, zależnie od potrzeb aplikacji. Migawki są migawki standardowych obiektów blob platformy Azure. Agenta mobilności uruchomionego na maszynie Wirtualnej żąda migawkę usługi VSS zgodnie z tego ustawienia i zakładki wskazujące punkt w czasie jako spójne na poziomie aplikacji w usłudze stream replikacji.
 
-2. Ruch są replikowane do usługi Azure storage publicznych punktów końcowych za pośrednictwem Internetu. Alternatywnie można użyć usługi Azure ExpressRoute za pomocą [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#azure-public-peering). Replikowanie ruchu za pośrednictwem lokacja lokacja wirtualnej sieci prywatnej (VPN) z lokacji lokalnej do platformy Azure nie jest obsługiwane.
+2. Ruch są replikowane do usługi Azure storage publicznych punktów końcowych za pośrednictwem Internetu. Alternatywnie można użyć usługi Azure ExpressRoute za pomocą [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering). Replikowanie ruchu za pośrednictwem lokacja lokacja wirtualnej sieci prywatnej (VPN) z lokacji lokalnej do platformy Azure nie jest obsługiwane.
 3. Po zakończeniu replikacji początkowej rozpoczyna się replikacja zmian różnicowych do platformy Azure. Śledzone zmiany dla maszyny są wysyłane do serwera przetwarzania.
 4. Komunikacja odbywa się w następujący sposób:
 

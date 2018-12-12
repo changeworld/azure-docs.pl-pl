@@ -114,6 +114,10 @@ items:
     items:
     - name: Praca z bazami danych, kontenerami i elementami
       href: databases-containers-items.md
+    - name: Dokumentacja języka SQL
+      href: sql-api-sql-query-reference.md
+    - name: Przykłady zapytań w języku SQL
+      href: how-to-sql-query.md
     - name: Indeksowanie
       items:
       - name: Omówienie
@@ -262,8 +266,6 @@ items:
         href: /rest/api/cosmos-db/
       - name: Dostawca zasobów REST
         href: /rest/api/cosmos-db-resource-provider/
-      - name: Składnia języka SQL
-        href: sql-api-sql-query-reference.md
   - name: Dokumentacja interfejsu API usługi MongoDB
     items:
     - name: Wprowadzenie
@@ -445,8 +447,6 @@ items:
       href: how-to-create-container.md
     - name: Wykonywanie zapytania względem kontenera
       href: how-to-query-container.md
-    - name: Wykonywanie zapytań o dane za pomocą zapytań SQL
-      href: how-to-sql-query.md
   - name: Indeksowanie
     items:
     - name: Konfigurowanie indeksowania
@@ -583,9 +583,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: b3094d99c13b228a4a4165a1a1a49a97a7517cb0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 413ec7cc09f748948cab92dd10495b667be06f40
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833724"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961233"

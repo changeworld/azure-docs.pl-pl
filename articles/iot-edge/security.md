@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia w usłudze Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Zabezpieczenia, uwierzytelnianie i autoryzacja urządzenia usługi IoT Edge
+title: Struktury zabezpieczeń — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zabezpieczeń, uwierzytelniania i standardami autoryzacji, które były używane do tworzenia usługi Azure IoT Edge i powinny być uznane za projektowanie rozwiązania
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,14 +8,15 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4292dc3abf775d48ee33cc7a48793d080156efb1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 1042f53147122a7370b464f6bfc892dcee70fe70
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568941"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100144"
 ---
-# <a name="securing-azure-iot-edge"></a>Zabezpieczanie usługi Azure IoT Edge
+# <a name="security-standards-for-azure-iot-edge"></a>Standardy zabezpieczeń usługi Azure IoT Edge
 
 Zabezpieczanie inteligentnych rozwiązań brzegowych jest przyznanie zaufania w operacji kompleksowe rozwiązania IoT. Usługa Azure IoT Edge jest przeznaczona dla zabezpieczeń, które jest rozszerzyć, aby profile ryzyka inną, wdrożeń i oferuje taką samą ochronę, który można oczekiwać od wszystkich usług platformy Azure.
 

@@ -3,7 +3,7 @@ title: Zapytania w bazach danych w chmurze z różnymi schematami | Dokumentacja
 description: sposób konfigurowania wielu baz danych za pośrednictwem partycje pionowe
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 5dbf6fb1b59999481348d3b4ad4775a77295b70d
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 75c021f7b2c2584580f2d9dbf30cbcdf11d3fdc5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238901"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875369"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Wykonywanie zapytań w bazach danych w chmurze z różnymi schematami (wersja zapoznawcza)
 ![Wykonywanie zapytań względem tabel w różnych bazach danych][1]

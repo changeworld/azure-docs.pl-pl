@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9c638ed9132612db7b82168d3a57057aba9b2d60
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996217"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870338"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Konserwacja zapobiegawcza na potrzeby scenariuszy w rzeczywistych warunkach
 
@@ -98,13 +98,13 @@ Notesy przykład są przechowywane w katalogu kodu. Notesów są konfigurowane d
 
 ## <a name="data-description"></a>Opis danych
 
-[Symulowane dane](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) składa się z pięciu plików z wartościami rozdzielanymi przecinkami (CSV). Użyj poniższych linków, aby uzyskać szczegółowe opisy zestawów danych.
+[Symulowane dane](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide) składa się z następujących [wartości pięciu rozdzielanych przecinkami (.csv) plików](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data):
 
-* [Maszyny](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv): funkcje wyróżniającego się na każdym komputerze, takie jak wiek i modelu.
-* [Błąd](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv): dziennik błędów zawiera błędy niepowodujące niezgodności, które są zgłaszane, gdy komputer jest nadal działa. Te błędy nie są uważane za błędy, chociaż może być predykcyjne zdarzenia błędu w przyszłości. Wartości daty i godziny dla błędów są zaokrąglane do najbliższego godzinę, ponieważ dane telemetrii są zbierane na podstawie stawki godzinowej.
-* [Konserwacja](https://pdmmodelingguide.blob.core.windows.net/pdmdata/maint.csv): dziennik konserwacji zawiera rekordy zarówno planowanych i nieplanowanych konserwacji. Zaplanowana konserwacja odpowiada regularnej inspekcji składników. Niezaplanowaną konserwację mogą wynikać z awarii mechanicznych lub innych spadek wydajności. Wartości daty i godziny konserwacji są zaokrąglane do najbliższego godzinę, ponieważ dane telemetrii są zbierane na podstawie stawki godzinowej.
-* [Dane telemetryczne](https://pdmmodelingguide.blob.core.windows.net/pdmdata/telemetry.csv): dane telemetryczne składa się z pomiarów serii czasu z wielu czujników w ramach poszczególnych maszyn. Dane są rejestrowane przez średniej wartości z czujników w poszczególnych przedziałach jedną godzinę.
-* [Błędy](https://pdmmodelingguide.blob.core.windows.net/pdmdata/failures.csv): błędy odpowiadają zamiany składnika w dzienniku konserwacji. Każdy rekord zawiera identyfikator maszyny, typ składnika, a zastąpienie datę i godzinę. Te rekordy są używane do tworzenia etykiety, które podejmuje próbę przewidywania modelu uczenia maszynowego.
+* [Maszyny](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/machines.csv): funkcje wyróżniającego się na każdym komputerze, takie jak wiek i modelu.
+* [Błędy](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/errors.csv): dziennik błędów zawiera błędy niepowodujące niezgodności, które są zgłaszane, gdy komputer jest nadal działa. Te błędy nie są uważane za błędy, chociaż może być predykcyjne zdarzenia błędu w przyszłości. Wartości daty i godziny dla błędów są zaokrąglane do najbliższego godzinę, ponieważ dane telemetrii są zbierane na podstawie stawki godzinowej.
+* [Konserwacja](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/maint.csv): dziennik konserwacji zawiera rekordy zarówno planowanych i nieplanowanych konserwacji. Zaplanowana konserwacja odpowiada regularnej inspekcji składników. Niezaplanowaną konserwację mogą wynikać z awarii mechanicznych lub innych spadek wydajności. Wartości daty i godziny konserwacji są zaokrąglane do najbliższego godzinę, ponieważ dane telemetrii są zbierane na podstawie stawki godzinowej.
+* [Dane telemetryczne](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/telemetry.csv): dane telemetryczne składa się z pomiarów serii czasu z wielu czujników w ramach poszczególnych maszyn. Dane są rejestrowane przez średniej wartości z czujników w poszczególnych przedziałach jedną godzinę.
+* [Błędy](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/failures.csv): błędy odpowiadają zamiany składnika w dzienniku konserwacji. Każdy rekord zawiera identyfikator maszyny, typ składnika, a zastąpienie datę i godzinę. Te rekordy są używane do tworzenia etykiety, które podejmuje próbę przewidywania modelu uczenia maszynowego.
 
 Aby pobrać zestawy danych pierwotnych z repozytorium GitHub i Utwórz zestawy danych PySpark na potrzeby tej analizy, zobacz [pozyskiwanie danych](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb) scenariusza notesu Jupyter w katalogu z kodem.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 42b0a2440fa459fa31a7d6e137d124883646c205
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
-ms.translationtype: MT
+ms.openlocfilehash: 013c425e911340a1b85c21ff6fc89819087e90a1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686014"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869164"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu witryny Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -28,7 +28,7 @@ Azure portal to narzędzie do zarządzania opartego na sieci web dla usług i za
 * **Nowoczesne przeglądarki**. Witryna Azure portal używa języka Javascript i HTML5 i mogą nie działać poprawnie w starszych przeglądarkach sieci web.
 
 ## <a name="create-clusters"></a>Tworzenie klastrów
-Witryna Azure portal udostępnia większość właściwości klastra. Przy użyciu szablonu usługi Azure Resource Manager, można ukryć wiele szczegółów. Aby uzyskać więcej informacji, zobacz [opartych na systemie Linux z Tworzenie klastrów usługi Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+Witryna Azure portal udostępnia większość właściwości klastra. Przy użyciu szablonu usługi Azure Resource Manager, można ukryć wiele szczegółów. Aby uzyskać więcej informacji, zobacz [klastrów opartych na systemie Linux z tworzenia Apache Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -136,23 +136,23 @@ W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, że udało Ci się utworzyć klaster usługi HDInsight, należy użyć następującego, aby dowiedzieć się, jak pracować z klastrem:
 
-### <a name="hadoop-clusters"></a>Klastry usługi Hadoop
-* [Korzystanie z programu Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z usługą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
+### <a name="apache-hadoop-clusters"></a>Klastry platformy Apache Hadoop
+* [Use Apache Hive z HDInsight](hadoop/hdinsight-use-hive.md)
+* [UseApache z języka Pig z HDInsight](hadoop/hdinsight-use-pig.md)
+* [Za pomocą usług Apache Hadoop MapReduce HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>Klastry baz danych HBase
-* [Wprowadzenie do usługi HBase w usłudze HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Opracowywanie aplikacji w języku Java dla bazy danych HBase na HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
+* [Rozpoczynanie pracy z usługą Apache HBase na HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Twórz aplikacje Java dla bazy danych Apache HBase na HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a>Klastry STORM
-* [Opracowywanie topologii języka Java dla systemu Storm w HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Użyj języka Python składników systemu Storm w HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Wdrażanie i monitorowanie topologii z systemu Storm w HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+### <a name="apache-storm-clusters"></a>Klastrów Apache Storm
+* [Opracowywanie topologii języka Java dla usługi Storm Apache na HDInsight](storm/apache-storm-develop-java-topology.md)
+* [Używanie składników języka Python w Storm Apache na HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Wdrażanie i monitorowanie topologii za pomocą Storm Apache na HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
 
-### <a name="spark-clusters"></a>Klastry Spark
+### <a name="apache-spark-clusters"></a>Klastry platformy Apache Spark
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](spark/apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze Spark przy użyciu programu Livy](spark/apache-spark-livy-rest-interface.md)
-* [Platforma Spark i analiza biznesowa: interakcyjna analiza danych na platformie Spark w usłudze HDInsight z użyciem narzędzi do analizy biznesowej](spark/apache-spark-use-bi-tools.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników kontroli żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](spark/apache-spark-livy-rest-interface.md)
+* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](spark/apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
 

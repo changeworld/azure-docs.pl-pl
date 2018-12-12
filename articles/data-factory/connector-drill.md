@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 166dffc6f79784b9a62cea4cb545aee32001441d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 180489aecc5eb5e937b4c163bc40937f3f6d2d80
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124681"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077668"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Kopiowanie danych z testowania odzyskiwania po awarii przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -74,7 +74,12 @@ Następujące właściwości są obsługiwane w przypadku testowania odzyskiwani
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych testowania odzyskiwania po awarii.
 
-Aby skopiować dane z testowania odzyskiwania po awarii, należy ustawić właściwość typu zestawu danych na **DrillTable**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z testowania odzyskiwania po awarii, należy ustawić właściwość typu zestawu danych na **DrillTable**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **DrillTable** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -86,7 +91,8 @@ Aby skopiować dane z testowania odzyskiwania po awarii, należy ustawić właś
         "linkedServiceName": {
             "referenceName": "<Drill linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -102,7 +108,7 @@ Aby skopiować dane z testowania odzyskiwania po awarii, należy ustawić typ ź
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **DrillSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

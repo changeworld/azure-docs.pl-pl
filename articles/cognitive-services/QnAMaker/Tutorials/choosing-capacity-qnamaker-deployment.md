@@ -1,7 +1,7 @@
 ---
 title: Pojemność zasobów dla wdrożenia — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Przewodnik dotyczący wybranie pojemności dla danego wdrożenia usługi QnA Maker
+description: Przed przystąpieniem do tworzenia usługi QnA Maker możesz zdecydować, którą warstwę usług powyżej jest odpowiednia dla Ciebie.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 582ace641cadbc7ad3a622def07f70ed51ccac53
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: 9e197929ce08f4e0c665f96d1c4ddbd382fdfb22
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389806"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084463"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Wybieranie pojemności dla danego wdrożenia usługi QnA Maker
 

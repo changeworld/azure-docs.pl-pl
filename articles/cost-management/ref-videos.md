@@ -5,24 +5,29 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 9c1df577dec5fe271d19be0d01d5b68ace8aaac1
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 13d1548e9b9c721d44c8d5af99bfdcc691c4866d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993593"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100620"
 ---
-# <a name="cloudyn-training-videos"></a>Filmy szkoleniowe Cloudyn
+# <a name="cloudyn-walk-through-training-videos"></a>Filmy szkoleniowe przewodniku Cloudyn
 
 Następujące filmy zawierające pokazów przeprowadzi Cię przez wprowadzenie do korzystania z platformy Cloudyn i używania jej funkcji. Cloudyn obsługuje kosztami wielu chmur, śledzenie i optymalizację, m.in. Microsoft Azure, Amazon Web Services i Google Cloud Platform.
+
+## <a name="overview-video"></a>Klip wideo z omówieniem
 
 [Wprowadzenie do rozwiązania Cloudyn](https://youtu.be/NWIRny6Wpsk)
 
 >[!VIDEO https://www.youtube.com/embed/NWIRny6Wpsk]
+
+## <a name="walk-through-videos"></a>Przewodnik wideo
 
 [Analizowanie danych rozliczeń chmury, a razem z platformy Cloudyn](https://youtu.be/7LsVPHglM0g)
 

@@ -1,6 +1,6 @@
 ---
-title: Jak zainstalować usługi Azure IoT Edge na Windows za pomocą kontenerów systemu Linux | Dokumentacja firmy Microsoft
-description: Usługa Azure IoT Edge instrukcje dotyczące instalacji na Windows za pomocą kontenerów systemu Linux
+title: Instalowanie usługi Azure IoT Edge w Windows za pomocą kontenerów systemu Linux | Dokumentacja firmy Microsoft
+description: Instrukcje instalacji usługi Azure IoT Edge na urządzeniach Windows skonfigurowana dla kontenerów systemu Linux
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
@@ -9,12 +9,13 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 7bae81f2f8b9ef9f7da45aed3bf8d7b6e15c9d0b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 470b2ccbafffc298022b8ba1ff757cb7fa3a32c5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568271"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099336"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows do korzystania z kontenerów systemu Linux
 

@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Blob Storage na urządzeniach z usługą Azure IoT Edge | Dokumentacja firmy Microsoft
+title: Store blokowych obiektów blob na urządzeniach — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Wdróż moduł usługi Azure Blob Storage do urządzenia usługi IoT Edge do przechowywania danych na urządzeniach brzegowych.
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa88ff46b4fb93d55aa0087cca0e6184f3e087a0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: e56d49208740686b51cdaef1bab778e2c08a9b58
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567285"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077924"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -40,7 +41,7 @@ Urządzenie usługi Azure IoT Edge:
    | Serwer Ubuntu 18.04 | AMD64 |
    | Windows 10 IoT Core (aktualizacja z października) | AMD64 |
    | Windows 10 IoT Enterprise (aktualizacja z października) | AMD64 |
-   | System Windows Server 2019 r | AMD64 |
+   | Windows Server 2019 | AMD64 |
    | Raspbian Stretch | ARM32 |
 
 Zasoby w chmurze:
@@ -105,7 +106,7 @@ Wybierz jedną z dwóch sposobów, aby znaleźć moduł magazynu obiektów blob:
    > [!CAUTION]
    > Nie zmieniaj "/ blobroot" dla systemów Linux i "C:/BlobRoot" dla Windows, aby uzyskać  **\<powiązania katalogu magazynu >** wartości.
 
-    ![Zaktualizuj wartości modułu](./media/how-to-store-data-blob/edit-module.png)
+    ![Aktualizacja modułu kontenera tworzenie opcji — portal](./media/how-to-store-data-blob/edit-module.png)
 
 6. **Zapisz** wartości "IoT Edge niestandardowe moduły"
 7. Kliknij przycisk **dalej** w sekcji "Ustaw moduły"
@@ -149,7 +150,7 @@ Szablon rozwiązania, tworzy szablon manifestu wdrożenia, który zawiera obraz 
    {\"Env\": [\"LOCAL_STORAGE_ACCOUNT_NAME=$STORAGE_ACCOUNT_NAME\",\" LOCAL_STORAGE_ACCOUNT_KEY=$STORAGE_ACCOUNT_KEY\"],\"HostConfig\": {\"Binds\": [\"<storage directory bind>\"],\"PortBindings\": {\"11002/tcp\": [{\"HostPort\":\"11002\"}]}}}
    ```
 
-   ![Opcje tworzenia modułu aktualizacji](./media/how-to-store-data-blob/create-options.png)
+   ![Zaktualizuj moduł CreateOptions, można żądań — program VS Code](./media/how-to-store-data-blob/create-options.png)
 
 4. W opcji tworzenia JSON, zaktualizuj `<storage directory bind>` w zależności od używanego systemu operacyjnego kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) bramy lub bezwzględna do katalogu na urządzeniu usługi IoT Edge, którego moduł obiektu blob do przechowywania swoich danych.  
 

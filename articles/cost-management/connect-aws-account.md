@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 3fa1083961caa4788516aba2bc7a04b456df285c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 0e3d6255d6e2787d407d24a4217a0262ae4c974d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996102"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098481"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Nawiązać połączenie z kontem usług Amazon Web Services
 
@@ -38,7 +38,7 @@ Pierwszym krokiem jest uzyskanie hasła unikatowego połączenia w portalu Cloud
 2. Kliknij symbol koła zębatego, a następnie wybierz pozycję **kont w chmurze**.
 3. Zarządzanie kontami, wybierz **kont platformy AWS** kartę, a następnie kliknij przycisk **Dodaj nowe +**.
 4. W **Dodawanie konta usługi AWS** okno dialogowe, kopia **Identyfikatora zewnętrznego** i Zapisz wartość dla roli usługi AWS tworzenia kroki opisane w następnej sekcji. Identyfikator zewnętrzny jest unikatowy dla swojego konta. Przykład Identyfikator zewnętrzny jest — na poniższej ilustracji _Contoso_ następuje numer. Twój identyfikator różni się.  
-    ![Identyfikator zewnętrzny](./media/connect-aws-account/external-id.png)
+    ![Identyfikator zewnętrzny wyświetlane w oknie Dodaj konto usług AWS](./media/connect-aws-account/external-id.png)
 
 ### <a name="add-aws-read-only-role-based-access"></a>Dodawanie usług AWS dostęp tylko do odczytu opartej na rolach
 
@@ -46,12 +46,12 @@ Pierwszym krokiem jest uzyskanie hasła unikatowego połączenia w portalu Cloud
 2. Kliknij przycisk **Utwórz rolę** , a następnie wybierz **konta usług AWS innego**.
 3. W **Accountid** pole, Wklej `432263259397`. Ten identyfikator konta jest konto modułu zbierającego dane Cloudyn przypisane w usługach AWS z usługą Cloudyn. Użyj dokładnie pokazany identyfikator konta.
 4. Obok pozycji **opcje**, wybierz opcję **wymagają Identyfikatora zewnętrznego**. Wklej Twoja unikatowa wartość, która wcześniej skopiowany z **Identyfikatora zewnętrznego** pola w rozwiązaniu Cloudyn. Następnie kliknij przycisk **dalej: uprawnienia**.  
-    ![Tworzenie roli](./media/connect-aws-account/create-role01.png)
+    ![Wklej Identyfikator zewnętrzny z platformy Cloudyn, na stronie Tworzenie roli](./media/connect-aws-account/create-role01.png)
 5. W obszarze **Dołącz zasady uprawnień**w **typ zasad** filtru pole wyszukiwania, typ `ReadOnlyAccess`, wybierz opcję **ReadOnlyAccess**, następnie kliknij przycisk **dalej: Przegląd**.  
-    ![Dostęp tylko do odczytu](./media/connect-aws-account/readonlyaccess.png)
+    ![Wybierz tylko do odczytu na liście nazwy zasad](./media/connect-aws-account/readonlyaccess.png)
 6. Na stronie Przegląd upewnij się, wybrane opcje są poprawne i wpisz **nazwy roli**. Na przykład *Azure-Cost-Mgt*. Wprowadź **opis roli**. Na przykład _przypisania roli na platformie Cloudyn_, następnie kliknij przycisk **tworzenia ról**.
 7. W **role** listy, kliknij rolę został utworzony i skopiuj **ARN roli** wartości na stronie podsumowania. Użyj wartości ARN roli (nazwa zasobu Amazon) później, po zarejestrowaniu konfigurację w rozwiązaniu Cloudyn.  
-    ![Rola ARN](./media/connect-aws-account/role-arn.png)
+    ![Skopiuj ARN roli na stronie podsumowania](./media/connect-aws-account/role-arn.png)
 
 ### <a name="configure-aws-iam-role-access-in-cloudyn"></a>Skonfigurowanie dostępu roli usług AWS zarządzania tożsamościami i Dostępem w rozwiązaniu Cloudyn
 
@@ -61,12 +61,12 @@ Pierwszym krokiem jest uzyskanie hasła unikatowego połączenia w portalu Cloud
 4. W **nazwa konta**, wpisz nazwę konta.
 5. Obok pozycji **typ dostępu**, wybierz opcję **Rola zarządzania tożsamościami i Dostępem**.
 6. W **ARN roli** pole, Wklej wartość skopiowany wcześniej, a następnie kliknij przycisk **Zapisz**.  
-    ![Dodaj pole konta usług AWS](./media/connect-aws-account/add-aws-account-box.png)
+    ![Wklej ARN roli okno Dodawanie konta usługi AWS](./media/connect-aws-account/add-aws-account-box.png)
 
 
 Konta usługi AWS pojawia się na liście kont. **Identyfikator właściciela** wymienione dopasowuje wartość ARN roli. Twoje **stan konta** powinny mieć symbol zielony znacznik wyboru wskazujący, że Cloudyn można uzyskać dostępu do konta usługi AWS. Do momentu włączenia szczegółowe rozliczeń usługi AWS swój status konsolidacji pojawia się jako **autonomiczny**.
 
-![Stan konta usług AWS](./media/connect-aws-account/aws-account-status01.png)
+![Stan konta usługi AWS wyświetlany na stronie Zarządzanie kontami](./media/connect-aws-account/aws-account-status01.png)
 
 Cloudyn rozpoczyna się zbieranie danych i wypełniania raportów. Następnie [Włączanie szczegółowe rozliczeń usługi AWS](#enable-detailed-aws-billing).
 
@@ -81,14 +81,14 @@ Poniższe sekcje prowadzą użytkownika przez proces tworzenia użytkownika tylk
 2. Kliknij przycisk **Dodaj użytkownika**.
 3. W **nazwa_użytkownika** wpisz nazwę użytkownika.
 4. Dla **dostęp typu**, wybierz opcję **dostęp programowy** i kliknij przycisk **dalej: uprawnienia**.  
-    ![Dodaj użytkownika](./media/connect-aws-account/add-user01.png)
+    ![Wprowadź nazwę użytkownika na stronie Dodawanie użytkownika](./media/connect-aws-account/add-user01.png)
 5. Uprawnienia, można wybrać **Dołącz istniejące zasady bezpośrednio**.
 6. W obszarze **Dołącz zasady uprawnień**w **typ zasad** filtru pole wyszukiwania, typ `ReadOnlyAccess`, wybierz opcję **ReadOnlyAccess**, a następnie kliknij przycisk **dalej : Przejrzyj**.  
-    ![Ustaw uprawnienia dla użytkownika](./media/connect-aws-account/set-permission-for-user.png)
+    ![Wybierz ReadOnlyAccess, aby ustawić uprawnienia dla użytkownika](./media/connect-aws-account/set-permission-for-user.png)
 7. Na stronie Przegląd upewnij się, wybrane opcje są poprawne, a następnie kliknij przycisk **Utwórz użytkownika**.
 8. Na stronie pełny dostęp do kluczowych identyfikator i klucz tajny klucz dostępu są wyświetlane. Te informacje umożliwiają konfigurowanie rejestracji w rozwiązaniu Cloudyn.
 9. Kliknij przycisk **Pobierz CSV** i Zapisz plik credentials.csv w bezpiecznej lokalizacji.  
-    ![Pobierz poświadczenia](./media/connect-aws-account/download-csv.png)
+    ![Kliknij przycisk pobierania CSV, aby zapisać poświadczenia](./media/connect-aws-account/download-csv.png)
 
 ### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>Konfigurowanie dostępu oparte na użytkownikach zarządzanie dostępem i Tożsamościami w usłudze AWS w rozwiązaniu Cloudyn
 
@@ -122,7 +122,7 @@ Możesz utworzyć przedział S3 do przechowywania szczegółowych informacji dot
 2. W polu wyszukiwania usługi pole typu *S3*i wybierz **S3**.
 3. Na stronie Amazon S3 kliknij **zasobnika Utwórz**.
 4. W kreatorze tworzenia zasobnika Wybierz przedział nazwę i Region, a następnie kliknij przycisk **dalej**.  
-    ![Utwórz przedział](./media/connect-aws-account/create-bucket.png)
+    ![Przykładowe informacje, jeden, Utwórz stronę zasobnika](./media/connect-aws-account/create-bucket.png)
 5. Na **Ustaw właściwości** strony, Zachowaj wartości domyślne, a następnie kliknij przycisk **dalej**.
 6. Na stronie Przegląd kliknij **zasobnika Utwórz**. Jest wyświetlana na liście przedziału.
 7. Kliknij przedział, który został utworzony, a następnie wybierz pozycję **uprawnienia** , a następnie wybierz pozycję **zasad zasobnika**. Zostanie otwarty Edytor zasad przedziału.
@@ -130,7 +130,7 @@ Możesz utworzyć przedział S3 do przechowywania szczegółowych informacji dot
   - Zastąp `<BillingBucketName>` nazwą Twojego przedział S3.
   - Zastąp `<ReadOnlyUserOrRole>` z rolą lub ARN użytkownika, który skopiowany wcześniej.
 
-  ```
+  ```json
   {
     "Version": "2012-10-17",
     "Id": "Policy1426774604000",
@@ -173,7 +173,7 @@ Możesz utworzyć przedział S3 do przechowywania szczegółowych informacji dot
   ```
 
 9. Kliknij pozycję **Zapisz**.  
-    ![Edytor zasad zasobnika](./media/connect-aws-account/bucket-policy-editor.png)
+    ![Kliknij przycisk Zapisz w edytorze zasad zasobnika](./media/connect-aws-account/bucket-policy-editor.png)
 
 
 ### <a name="enable-aws-billing-reports"></a>Włączanie rozliczeń raporty usług AWS
@@ -183,11 +183,11 @@ Po utworzeniu i skonfigurowaniu przedział S3, przejdź do [rozliczeń preferenc
 1. Na stronie preferencji wybierz **otrzymywać raporty rozliczeń**.
 2. W obszarze **otrzymywać raporty rozliczeń**, wprowadź nazwę pakietu, który został utworzony, a następnie kliknij przycisk **Sprawdź**.  
 3. Wybierz wszystkie cztery opcje poziom szczegółowości raportów, a następnie kliknij przycisk **Zapisz preferencje**.  
-    ![Włącz raporty](./media/connect-aws-account/enable-reports.png)
+    ![Wybierz poziom szczegółowości, aby włączyć raporty](./media/connect-aws-account/enable-reports.png)
 
 Cloudyn pobiera szczegółowe informacje rozliczeniowe z Twojej przedział S3 i wypełnia raportów, po włączeniu szczegółowe rozliczeń. Może upłynąć do 24 godzin, dopóki szczegółowych danych dotyczących rozliczeń jest wyświetlana w konsoli usługi Cloudyn. Po udostępnieniu szczegółowych danych dotyczących rozliczeń stanie konsolidacji konta pojawi się jako **skonsolidowanych**. Stan konta zostanie wyświetlony jako **Ukończono**.
 
-![Skonsolidowane stanu konta](./media/connect-aws-account/consolidated-status.png)
+![Stan konsolidacji pokazywanymi na karcie kont platformy AWS](./media/connect-aws-account/consolidated-status.png)
 
 Niektóre raporty optymalizacji mogą wymagać kilku dni dane, aby uzyskać rozmiar próbki danych odpowiednich dla dokładnego zalecenia.
 

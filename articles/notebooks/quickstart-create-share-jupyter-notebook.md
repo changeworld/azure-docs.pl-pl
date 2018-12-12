@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i udostępnianie notesu programu Jupyter na platformie Azure | Dokumentacja firmy Microsoft
+title: Tworzenie i udostępnianie notesu programu Jupyter na platformie Azure
 description: Szybko Utwórz uruchamiania notesu programu Jupyter na notesy platformy Azure, a następnie udostępniać innym użytkownikom tego notesu.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 9f7659dadb4c710169ec1e700d31e60cbc957ac1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 96eb6a823299521a071edc87b5bce95409405ffb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856296"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096277"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Szybki Start: Tworzenie i udostępnianie notesu
 
@@ -97,11 +97,11 @@ ms.locfileid: "52856296"
 
 ## <a name="share-the-notebook"></a>Udostępnianie notesu
 
-1. Aby udostępnić notesu, przejdź z powrotem do strony projektu w razie potrzeby, kliknij prawym przyciskiem myszy plik Notes, wybierz **Kopiuj Link** (skrót klawiaturowy: y) i wkleić ten link do odpowiedni komunikat (wiadomość e-mail, wiadomości Błyskawicznych itp.).
+Aby udostępnić notesu, przejdź z powrotem do strony projektu w razie potrzeby, kliknij prawym przyciskiem myszy plik Notes, wybierz **Kopiuj Link** (skrót klawiaturowy: y) i wkleić ten link do odpowiedni komunikat (wiadomość e-mail, wiadomości Błyskawicznych itp.).
 
-    Na stronie projektu można również użyć **udziału** kod osadzania, menu, aby uzyskać link, Utwórz wiadomość e-mail z linkiem lub uzyskać HTML i języka Markdown:
+Na stronie projektu można również użyć **udziału** kod osadzania, menu, aby uzyskać link, Utwórz wiadomość e-mail z linkiem lub uzyskać HTML i języka Markdown:
 
-    ![Udostępnij projekt — polecenie](media/quickstarts/share-project-command.png)
+![Udostępnij projekt — polecenie](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

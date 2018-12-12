@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 694682264a38d0b35f00fb6611f843ae7e518ba0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8af76c64e755b9c72ae4ebcc223e5f69549b92b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838178"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076737"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Wdrażanie usługi Azure Cosmos DB i Azure App Service Web Apps przy użyciu szablonu usługi Azure Resource Manager
 W tym samouczku pokazano, jak szablon usługi Azure Resource Manager umożliwia wdrażanie i integrowanie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) aplikacji sieci web i przykładowej aplikacji sieci web.
@@ -119,7 +119,7 @@ Teraz Zajmijmy się wdrożeniem drugiego szablonu.  Ten szablon jest przydatny d
 ## <a name="next-steps"></a>Kolejne kroki
 Gratulacje! Udało Ci się wdrożyć usługi Azure Cosmos DB, aplikacji sieci web usługi App Service i przykładowej aplikacji sieci web przy użyciu szablonów usługi Azure Resource Manager.
 
-* Aby dowiedzieć się więcej o usłudze Azure Cosmos DB, kliknij przycisk [tutaj](http://azure.com/docdb).
+* Aby dowiedzieć się więcej o usłudze Azure Cosmos DB, kliknij przycisk [tutaj](https://azure.microsoft.com/services/cosmos-db/).
 * Aby dowiedzieć się więcej o usłudze Azure App Service Web apps, kliknij przycisk [tutaj](https://go.microsoft.com/fwlink/?LinkId=325362).
 * Aby dowiedzieć się więcej na temat szablonów usługi Azure Resource Manager, kliknij przycisk [tutaj](https://msdn.microsoft.com/library/azure/dn790549.aspx).
 

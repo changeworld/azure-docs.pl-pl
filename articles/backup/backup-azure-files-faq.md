@@ -2,18 +2,18 @@
 title: Tworzenie kopii zapasowej plików w usłudze Azure Files — często zadawane pytania
 description: Ten artykuł zawiera szczegółowe informacje dotyczące ochrony plików w udziałach plików platformy Azure.
 services: backup
-author: markgalioto
-ms.author: markgal
+author: rayne-wiselman
+ms.author: raynew
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: de91559d9c3626bdd07c2e497a8aa0b124f00b57
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 9ef3525d7867d0ef01b6f17035039d4a4e6def93
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434845"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874570"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).

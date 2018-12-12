@@ -1,7 +1,7 @@
 ---
 title: Współczynnik ufności — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Wyjaśnia współczynnik ufności
+description: Współczynnik ufności wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika.
 services: cognitive-services
 author: tulasim88
 manager: pchoudh
@@ -10,14 +10,15 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
-ms.openlocfilehash: b1126b2cdb7a5cd7451a916558bc928653bc0027
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: 8fe4ecfe241422c03a2de8d0634ef1e1395aa050
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577927"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081323"
 ---
-# <a name="confidence-score"></a>Współczynnik ufności
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Współczynnik ufności z bazy wiedzy usługi QnA Maker
 Jeśli kwerenda użytkownika są dopasowywane do wiedzy, narzędzie QnA Maker zwraca odpowiednich odpowiedzi, wraz z współczynnik ufności. Ten wynik wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika. 
 
 Współczynnik ufności jest liczbą z zakresu od 0 do 100. Wynikiem 100 prawdopodobnie jest dokładne dopasowanie, podczas gdy wynik 0 oznacza, że, które można odnaleźć pasującego odpowiedzi. Im większy wynik - większą pewnością w odpowiedzi na pytanie. Dla danego zapytania może istnieć wiele odpowiedzi zwrócony. W takim przypadku odpowiedzi są zwracane w kolejności malejących współczynnik ufności.
@@ -78,15 +79,15 @@ Po znalezieniu niezgodności dobre, oceniania współczynnik ufności 0.0, lub "
 
 2. Kliknij, aby otworzyć **usługi App Service**.
 
-    ![Dostęp do usługi App service](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![W witrynie Azure portal dostęp do usługi App service dotyczące usługi QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
 3. Kliknij pozycję **ustawienia aplikacji** i edytować **DefaultAnswer** pole odpowiedź domyślną. Kliknij pozycję **Zapisz**.
 
-    ![Zmień domyślną odpowiedź](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![Wybierz ustawienia aplikacji, a następnie edytuj DefaultAnswer dotyczące usługi QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
 
 4. Uruchom ponownie usługi App service
 
-    ![Ponowne uruchomienie usługi App Service usługa QnA Maker](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![Po zmianie DefaultAnswer, uruchom ponownie usługi QnA Maker usługi App Service](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

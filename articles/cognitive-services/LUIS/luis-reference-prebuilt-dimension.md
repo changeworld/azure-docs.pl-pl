@@ -1,8 +1,9 @@
 ---
-title: Usługa LUIS ze wstępnie utworzonych jednostek wymiaru dokumentacja — Azure | Dokumentacja firmy Microsoft
+title: Wymiar ze wstępnie utworzonych jednostek
 titleSuffix: Azure
 description: Ten artykuł zawiera wymiar informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
+ms.custom: seodec18
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
@@ -10,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 138cf1d2fbc050797c133afaffdb2a9820e2717f
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: 775c7800c2ea9abe4b960a2e82cebb85e3c74d3b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52332922"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098776"
 ---
 # <a name="dimension-entity"></a>Dimension, jednostka
 Jednostki wymiaru wbudowanych wykrywa różnego rodzaju wymiarów, niezależnie od kultury aplikacji usługi LUIS. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierającego wymiary do intencji aplikacji. Wymiar jednostki jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
@@ -28,7 +29,7 @@ Wymiar jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Mi
 ## <a name="resolution-for-dimension-entity"></a>Rozpoznawanie jednostki wymiaru
 W poniższym przykładzie pokazano rozdzielczość **builtin.dimension** jednostki.
 
-```JSON
+```json
 {
   "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
   "topScoringIntent": {

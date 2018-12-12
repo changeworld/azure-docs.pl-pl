@@ -2,18 +2,18 @@
 title: Instalacja dyskretna z usługi Azure Backup Server w wersji 2
 description: Użyj skryptu programu PowerShell do przeprowadzenia instalacji dyskretnej usługi Azure Backup Server w wersji 2. Tego rodzaju instalacji jest również nazywany instalacji nienadzorowanej.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: markgal
-ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: raynew
+ms.openlocfilehash: dd66710a24ca28b78c6b3e0a8197a078f17524db
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612699"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868144"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Uruchomić nienadzorowaną instalację serwera usługi Azure Backup
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 36afc89ef583baa5484aa4e69c6969e7448c93c1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 03757aaf13d48730a3061f07ae3138f0aadbdf00
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127588"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077855"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Kopiowanie danych z Magento przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -77,7 +77,12 @@ Następujące właściwości są obsługiwane w przypadku Magento połączone us
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Magento.
 
-Aby skopiować dane z Magento, należy ustawić właściwość typu zestawu danych na **MagentoObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z Magento, należy ustawić właściwość typu zestawu danych na **MagentoObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **MagentoObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -89,7 +94,8 @@ Aby skopiować dane z Magento, należy ustawić właściwość typu zestawu dany
         "linkedServiceName": {
             "referenceName": "<Magento linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -98,14 +104,14 @@ Aby skopiować dane z Magento, należy ustawić właściwość typu zestawu dany
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Magento.
 
-### <a name="magentosource-as-source"></a>MagentoSource jako źródło
+### <a name="magento-as-source"></a>Magento jako źródło
 
 Aby skopiować dane z Magento, należy ustawić typ źródła w działaniu kopiowania, aby **MagentoSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **MagentoSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Customers"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Customers"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: 6055b70c7df2704a334b7f14c9365863ddafbd5a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a66f5ca9501d09f2ef89f421191f617c177e10eb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44164550"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52886226"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w usłudze Azure Cloud Shell
 Usługa cloud Shell korzysta z usługi Azure File storage, aby utrwalać pliki między sesjami. W menu start początkowej usługi Cloud Shell monituje o skojarzyć udział plików nowej lub istniejącej utrwalanie plików między sesjami.
@@ -35,11 +35,14 @@ Udział plików zawiera także obraz 5 GB, który jest tworzony który automatyc
 
 ## <a name="use-existing-resources"></a>Korzystać z istniejących zasobów
 
-Za pomocą zaawansowanych opcji, należy skojarzyć istniejących zasobów. Gdy zostanie wyświetlony monit o konfiguracji magazynu, wybierz pozycję **Pokaż zaawansowane ustawienia** Aby wyświetlić dodatkowe opcje. Filtr opcje wypełnione magazynu dla magazynu lokalnie nadmiarowego (LRS), Magazyn geograficznie nadmiarowy (GRS) i konta magazynu strefowo nadmiarowego (ZRS). Przejdź [tutaj, aby dowiedzieć się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy#choosing-a-replication-option) temat opcji replikacji dla kont usługi Azure Storage.
+Za pomocą zaawansowanych opcji, należy skojarzyć istniejących zasobów. Podczas wybierania regionu usługi Cloud Shell, musisz wybrać konto magazynu zapasowego wspólnie w tym samym regionie. Na przykład jeśli przypisany regionu zachodnie stany USA, niż należy skojarzyć udział plików, które również znajdują się w regionie zachodnie stany USA.
+
+Gdy zostanie wyświetlony monit o konfiguracji magazynu, wybierz pozycję **Pokaż zaawansowane ustawienia** Aby wyświetlić dodatkowe opcje. Filtr opcje wypełnione magazynu dla magazynu lokalnie nadmiarowego (LRS), Magazyn geograficznie nadmiarowy (GRS) i konta magazynu strefowo nadmiarowego (ZRS). 
+
+> [!NOTE]
+> Za pomocą GRS lub ZRS kont magazynu są zalecane w przypadku dodatkową odporność zapasowy udziału plików. Jakiego typu nadmiarowości zależy od tego, cele i preferencji ceny. [Dowiedz się więcej na temat opcji replikacji dla kont usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy#choosing-a-replication-option).
 
 ![Ustawienie Grupa zasobów](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
-
-Podczas wybierania regionu usługi Cloud Shell, musisz wybrać do instalacji zapasowego konta magazynu, w tym regionie, jak również.
 
 ### <a name="supported-storage-regions"></a>Obsługiwane regiony
 Skojarzonych kont muszą znajdować się w tym samym regionie, co komputer Cloud Shell, na którym jest zainstalowanie, ich do magazynu platformy Azure. Można znaleźć usługi bieżącego regionu, możesz uruchomić `env` w powłoce Bash i Znajdź zmienną `ACC_LOCATION`. Udziały plików wyświetlany obraz 5 GB do utrwalenia swoje `$Home` katalogu.

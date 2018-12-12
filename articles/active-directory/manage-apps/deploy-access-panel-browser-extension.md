@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a21a21f40e731e8bc1d20e01d3671c372df65d84
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: be3950d199b4362caa5fcd3f66b948802cfa1c49
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622044"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877480"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Jak wdrożyć rozszerzenia Panelu dostępu do programu Internet Explorer przy użyciu zasad grupy
 W tym samouczku pokazano, jak za pomocą zasad grupy do zdalnej instalacji rozszerzenia Panelu dostępu dla programu Internet Explorer na komputerach użytkowników. To rozszerzenie jest wymagane dla programu Internet Explorer, użytkownicy muszą logować się do aplikacji, które są skonfigurowane przy użyciu [opartego na hasłach logowania jednokrotnego](what-is-single-sign-on.md#password-based-sso).
@@ -54,7 +54,7 @@ Po pierwsze należy umieścić pakiet Instalatora w lokalizacji sieciowej, któr
 1. Zaloguj się do serwera, który obsługuje instalację usługi Active Directory Domain Services (AD DS).
 2. W Menedżerze serwera, przejdź do **narzędzia** > **Zarządzanie zasadami grupy**.
    
-    ![Przejdź do pozycji Narzędzia > zarządzania zasadami grupy](./media/deploy-access-panel-browser-extension/tools-gpm.png)
+    ![Przejdź do pozycji Narzędzia > Zarządzanie zasadami grupy](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 3. W okienku po lewej stronie **Zarządzanie zasadami grupy** okna, wyświetlanie hierarchii jednostki organizacyjnej (OU) i określić, w zakresie, które chcesz zastosować zasady grupy. Na przykład konieczne może być pobranie małych jednostek organizacyjnych do wdrożenia na kilku użytkowników do testowania lub może wybrać jednostka Organizacyjna najwyższego poziomu do wdrożenia w całej organizacji.
    
    > [!NOTE]

@@ -1,11 +1,13 @@
 ---
-title: Dziesięć rzeczy, które można zrobić na maszyny wirtualnej analizy danych na platformie Azure | Dokumentacja firmy Microsoft
+title: Eksplorowanie i modelowanie maszyny wirtualnej do nauki o danych danych
+titleSuffix: Azure
 description: Na maszynie wirtualnej analizy danych, należy wykonać różne eksploracji danych i zadań modelowania.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52f0a298b1a9e9f3f209f51c1bc0362b8ddf2c4e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250921"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075690"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -62,7 +64,7 @@ Dla języka Python można użyć środowiska IDE, takie jak Visual Studio Commun
 
 Oto jak wygląda instalacji środowiska niestandardowego w programie Visual Studio.
 
-![Instalacji narzędzi PTVS](./media/vm-do-ten-things/PTVSSetup.png)
+![Zrzut ekranu programu Visual Studio za pomocą narzędzi Python Tools for Visual Studio wybrane](./media/vm-do-ten-things/PTVSSetup.png)
 
 Zobacz [dokumentacja narzędzi PTVS](https://aka.ms/ptvsdocs) Aby uzyskać więcej informacji na temat tworzenia środowiska Python.
 
@@ -249,7 +251,7 @@ Aby pobrać kod z repozytorium GitHub, należy użyć ```git clone``` polecenia.
 
 W programie Visual Studio możesz tworzyć tej samej operacji klonowania. Poniższy zrzut ekranu pokazuje, jak dostęp do narzędzia Git i GitHub w programie Visual Studio.
 
-![Git w programie Visual Studio](./media/vm-do-ten-things/VSGit.PNG)
+![Zrzut ekranu programu Visual Studio przy użyciu połączenia usługi GitHub, wyświetlane](./media/vm-do-ten-things/VSGit.PNG)
 
 Można znaleźć więcej informacji na temat korzystania z narzędzia Git do pracy z repozytorium GitHub z kilku dostępnych zasobów w witrynie github.com. [Cheat-sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) jest odwołaniem przydatne.
 
@@ -261,12 +263,12 @@ Obiektów blob platformy Azure to niezawodne i ekonomiczne przechowywanie w chmu
 
 * **Tworzenie konta usługi Azure Blob storage z [witryny Azure portal](https://portal.azure.com).**
 
-![Create_Azure_Blob](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Zrzut ekranu przedstawiający proces tworzenia konta magazynu w witrynie Azure portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Upewnij się, że wstępnie zainstalowane narzędzie wiersza polecenia narzędzia AzCopy znajduje się na ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Katalog zawierający azcopy.exe jest już w zmiennej środowiskowej PATH, aby uniknąć wpisywania ścieżki pełne polecenie podczas uruchamiania tego narzędzia. Aby uzyskać więcej informacji na temat narzędzia AzCopy, zapoznaj się [dokumentację programu AzCopy](../../storage/common/storage-use-azcopy.md)
 * Uruchom narzędzie Eksplorator usługi Azure Storage. Można go pobrać ze [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
 
-![AzureStorageExplorer_v4](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
+![Zrzut ekranu przedstawiający Eksplorator usługi Azure Storage uzyskiwania dostępu do konta magazynu](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
 **Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: narzędzia AzCopy**
 
@@ -276,7 +278,7 @@ Do przenoszenia danych między lokalnymi plikami i usługi blob storage, narzęd
 
 Zastąp **C:\myfolder** do ścieżki, w którym jest zapisany plik, **mystorageaccount** na nazwę konta magazynu obiektów blob, **mycontainer** do nazwy kontenera **klucz konta magazynu** na klucz dostępu do magazynu obiektów blob. Można znaleźć poświadczeń konta magazynu w [witryny Azure portal](https://portal.azure.com).
 
-![StorageAccountCredential_v2](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
+![Zrzut ekranu przedstawiający kluczy konta magazynu i kontener informacji w witrynie Azure portal](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 W programie PowerShell lub wierszu polecenia, Uruchom polecenia narzędzia AzCopy. Poniżej przedstawiono przykłady użycia polecenia narzędzia AzCopy:
 
@@ -291,20 +293,20 @@ W programie PowerShell lub wierszu polecenia, Uruchom polecenia narzędzia AzCop
 
 Po uruchomieniu polecenia narzędzia AzCopy do kopiowania do obiektu blob platformy Azure, zobaczysz, że plik pojawia się w Eksploratorze usługi Storage Azure wkrótce.
 
-![AzCopy_run_finshed_Storage_Explorer_v3](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
+![Zrzut ekranu przedstawiający konto magazynu, wyświetlanie przekazanego pliku CSV](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
 **Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: Azure Storage Explorer**
 
 Możesz również przekazać dane z pliku lokalnego na maszynie wirtualnej za pomocą Eksploratora usługi Azure Storage:
 
-* Aby przekazać dane do kontenera, wybierz kontener docelowy, a następnie kliknij przycisk **przekazywanie** przycisku.![ Przekazywanie w Eksploratorze usługi Storage](./media/vm-do-ten-things/storage-accounts.png)
-* Kliknij pozycję **...**  po prawej stronie **pliki** wybierz jednego lub wielu plików do przekazania z systemu plików, a następnie kliknij przycisk **przekazywanie** Rozpocznij przekazywanie plików.![ Przekazywanie plików do obiektu blob](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Aby przekazać dane do kontenera, wybierz kontener docelowy, a następnie kliknij przycisk **przekazywanie** przycisku.![ Zrzut ekranu przedstawiający przycisk Przekaż w Eksploratorze usługi Azure Storage](./media/vm-do-ten-things/storage-accounts.png)
+* Kliknij pozycję **...**  po prawej stronie **pliki** wybierz jednego lub wielu plików do przekazania z systemu plików, a następnie kliknij przycisk **przekazywanie** Rozpocznij przekazywanie plików.![ Zrzut ekranu przedstawiający okno dialogowe przekazywania plików](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 **Odczytywanie danych z obiektów Blob platformy Azure: moduł czytnika usługi Machine Learning**
 
 W usłudze Azure Machine Learning Studio, można użyć **modułu importu danych** można odczytać danych z obiektu blob.
 
-![AML_ReaderBlob_Module_v3](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![Zrzut ekranu przedstawiający modułu importu danych w usłudze Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
 **Odczytywanie danych z obiektów Blob platformy Azure: ODBC języka Python**
 
@@ -352,7 +354,7 @@ Następnie podłącz poświadczeń konta usługi Azure Blob i odczytywanie danyc
 
 Dane są odczytywane w jako ramkę danych:
 
-![IPNB_data_readin](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![Zrzut ekranu przedstawiający pierwszych 10 wierszy danych](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Usługi Azure Data Lake Storage to ogromne repozytorium dla obciążeń analizy danych big data i zgodny z pliku System (HDFS, Hadoop Distributed). Działa z usługi Hadoop, Spark i Azure Data Lake Analytics. W tej sekcji dowiesz się, jak przenieść dane do usługi Azure Data Lake Store i wykonywać analizy przy użyciu usługi Azure Data Lake Analytics.
@@ -361,17 +363,17 @@ Usługi Azure Data Lake Storage to ogromne repozytorium dla obciążeń analizy 
 
 * Tworzenie usługi Azure Data Lake Analytics w [witryny Azure portal](https://portal.azure.com).
 
-![Azure_Data_Lake_Create_v2](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+![Zrzut ekranu przedstawiający tworzenie usługi Data Lake Analytics w witrynie Azure portal](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
 * **Azure Data Lake Tools** w **programu Visual Studio** adrese to [łącze](https://www.microsoft.com/download/details.aspx?id=49504) jest już zainstalowana na Visual Studio Community Edition, znajduje się na maszynie wirtualnej. Uruchamianie programu Visual Studio i rejestrowanie w ramach subskrypcji platformy Azure, powinno pojawić Twoje konto platformy Azure, analiza danych i magazynu w panelu po lewej stronie programu Visual Studio.
 
-![Azure_Data_Lake_PlugIn_v2](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
+![Zrzut ekranu przedstawiający narzędzi Data Lake Tools w programie Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
 **Przenoszenie danych z maszyny Wirtualnej do usługi Data Lake: Eksplorator usługi Azure Data Lake**
 
 Możesz użyć **usługi Azure Data Lake Explorer** do przekazania danych z plików lokalnych na maszynie wirtualnej do magazynu usługi Data Lake.
 
-![Azure_Data_Lake_UploadData](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+![Zrzut ekranu przedstawiający przekazywanie plików przy użyciu programu Data Lake Explorer](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
 Możesz również tworzyć potoku danych do obsługi operacji usługi przenoszenia danych do i z usługi Azure Data Lake za pomocą [Factory(ADF) danych platformy Azure](https://azure.microsoft.com/services/data-factory/). Zapoznaj się z tym [artykułu](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) przeprowadzenie Cię przez kroki do utworzenia danych potoków.
 
@@ -379,11 +381,11 @@ Możesz również tworzyć potoku danych do obsługi operacji usługi przenoszen
 
 Jeśli dane znajdują się w usłudze Azure Blob storage, mogą bezpośrednio odczytywać dane z usługi Azure storage blob zapytania U-SQL. Przed redagowania zapytania U-SQL, upewnij się, że konto usługi blob storage jest połączone z usługi Azure Data Lake. Przejdź do **witryny Azure portal**, Znajdź pulpit nawigacyjny usługi Azure Data Lake Analytics, kliknij przycisk **Dodaj źródło danych**, wybierz typ magazynu **usługi Azure Storage** i dołączyć konta usługi Azure Storage Nazwa i klucz. Następnie możesz się odwoływać się do danych przechowywanych na koncie magazynu.
 
-![Wprowadź konto magazynu oraz klucz](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![Zrzut ekranu przedstawiający okno dialogowe Dodaj źródło danych](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 W programie Visual Studio można odczytać danych z magazynu obiektów blob, wykonaj operacje na danych, inżynieria i dane wyjściowe dane wynikowe do usługi Azure Data Lake lub usługi Azure Blob Storage. Gdy odwołujesz się dane w magazynie obiektów blob, użyj **wasb: / /**; Gdy odwołujesz się dane w usłudze Azure Data Lake, użyj **swbhdfs: / /**
 
-![Ramki danych](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![Zrzut ekranu zapytania z wyróżnioną pozycją wpisem WASB](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Możesz wykorzystać następujące zapytania U-SQL w programie Visual Studio:
 
@@ -429,7 +431,7 @@ Możesz wykorzystać następujące zapytania U-SQL w programie Visual Studio:
 
 Po przesłaniu zapytania do serwera jest wyświetlany diagram przedstawiający stan zadania.
 
-![Diagram stanu zadania](./media/vm-do-ten-things/USQL_Job_Status.PNG)
+![Zrzut ekranu przedstawiający okno dialogowe Stan zadania](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
 **Wykonywanie zapytań dotyczących danych w usłudze Data Lake: U-SQL**
 
@@ -437,11 +439,11 @@ Po zestawu danych, pobieranym do usługi Azure Data Lake, można użyć [języka
 
 Po kwerendy jest przesyłany do serwera, tripdata_summary. CSV znajdują się wkrótce w **usługi Azure Data Lake Explorer**, użytkownik może wyświetlić podgląd danych, kliknij prawym przyciskiem myszy plik.
 
-![Plik w usłudze Azure Data Lake Explorer](./media/vm-do-ten-things/USQL_create_summary.png)
+![Zrzut ekranu przedstawiający plik csv w Data Lake Explorer](./media/vm-do-ten-things/USQL_create_summary.png)
 
 Aby wyświetlić informacje o pliku:
 
-![Plik podsumowania](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![Zrzut ekranu przedstawiający podsumowanie informacji o pliku](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>Klastry usługi HDInsight Hadoop
 Usługa Azure HDInsight to zarządzana usługa Apache Hadoop, Spark, HBase i Storm w chmurze. Można było łatwo pracować z klastrami usługi Azure HDInsight z maszyny wirtualnej do nauki o danych.
@@ -450,7 +452,7 @@ Usługa Azure HDInsight to zarządzana usługa Apache Hadoop, Spark, HBase i Sto
 
 * Tworzenie konta usługi Azure Blob storage z [witryny Azure portal](https://portal.azure.com). To konto magazynu jest używane do przechowywania danych w przypadku klastrów HDInsight.
 
-![Tworzenie konta magazynu obiektów Blob platformy Azure](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Zrzut ekranu przedstawiający tworzenie HDInsight w witrynie Azure portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Dostosowywanie klastrów usługi Azure HDInsight Hadoop, z [witryny Azure portal](../team-data-science-process/customize-hadoop-cluster.md)
   
@@ -460,7 +462,7 @@ Usługa Azure HDInsight to zarządzana usługa Apache Hadoop, Spark, HBase i Sto
 
 * Włącz **dostępu zdalnego** z węzłem głównym klastra po jego utworzeniu. Pamiętaj poświadczenia dostępu zdalnego, określone w tym miejscu, ponieważ będą one potrzebne w następnej procedurze.
 
-![Włącz dostęp zdalny](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![Włącz dostęp zdalny z klastrem HDInsight](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
 * Tworzenie obszaru roboczego usługi Azure Machine Learning. Twoje eksperymenty uczenia maszynowego są przechowywane w tym obszarze roboczym usługi Machine Learning. Wybieranie opcji wyróżnionych w portalu, jak pokazano na poniższym zrzucie ekranu:
 
@@ -638,7 +640,7 @@ Można również obliczyć odległość między lokalizacji odbioru i dropoff lo
     results.head(5)
 
 
-![Wybieranie i dropoff tabeli](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![Pierwsze wiersze w tabeli odbiór i dropoff](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -782,7 +784,7 @@ Po krótkiej chwili widać, że dane zostały załadowane w klastrach usługi Ha
     pd.read_sql(queryString,connection)
 
 
-![Tabela danych](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![Pierwsze wiersze danych z tabeli](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 **Odczytywanie danych z usługi HDI przy użyciu usługi Machine Learning: moduł czytnika**
 

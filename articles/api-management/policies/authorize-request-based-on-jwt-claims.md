@@ -1,6 +1,6 @@
 ---
-title: Zasady zarządzania interfejsu API Azure przykładowe — autoryzować dostęp na podstawie oświadczeń JWT | Dokumentacja firmy Microsoft
-description: Przykładowe zasady zarządzania Azure API - pokazuje, jak się autoryzacja dostępu do określonej metody HTTP na interfejs API na podstawie oświadczeń JWT.
+title: Zasady usługi Azure API management przykładowy — autoryzować dostęp na podstawie oświadczeń JWT | Dokumentacja firmy Microsoft
+description: Przykład zasad zarządzania Azure interfejsu API — pokazuje, jak do autoryzacji dostępu do określonej metody HTTP dla interfejsu API opartego na oświadczeniach JWT.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 78ea1b51dea0a65aede0e75e3a8c1d424689854e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 60b36ceeac1cd4578ca81ac908c1a8a03c9d0180
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285377"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869130"
 ---
-# <a name="authorize-access-based-on-jwt-claims"></a>Autoryzacja dostępu na podstawie oświadczeń JWT
+# <a name="authorize-access-based-on-jwt-claims"></a>Autoryzowanie dostępu opartego na oświadczeniach JWT
 
-W tym artykule przedstawiono przykładowe zasady zarządzania interfejsu API platformy Azure, który demonstruje sposób autoryzowania dostępu do określonej metody HTTP na interfejs API na podstawie oświadczeń JWT. Aby ustawić lub zmodyfikować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
+W tym artykule przedstawiono przykładowy zasad zarządzania interfejsu API platformy Azure, który demonstruje sposób autoryzacji dostępu do określonej metody HTTP dla interfejsu API opartego na oświadczeniach JWT. Można ustawiać lub edytować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
 
 ## <a name="policy"></a>Zasady
 
-Wklej kod do **przychodzących** bloku.
+Wklej kod do **dla ruchu przychodzącego** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Pre-authorize requests based on HTTP method with validate-jwt.policy.xml)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o zasadach APIM:
+Dowiedz się więcej na temat usługi APIM zasad:
 
 + [Zasady transformacji](../api-management-transformation-policies.md)
 + [Przykłady zasad](../policy-samples.md)

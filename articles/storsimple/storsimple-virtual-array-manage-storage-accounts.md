@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: d2b6b7a5d2baf9e46cca18aec97f31beda1e2a38
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736737"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867614"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Menedżer urządzeń StorSimple Użyj zarządzania poświadczeń konta magazynu dla macierzy wirtualnej StorSimple
 
@@ -148,7 +148,7 @@ Informowanie usługi Menedżer urządzeń StorSimple zmiany, należy uzyskać do
     
 4. W usłudze Menedżer urządzeń StorSimple należy zaktualizować klucz, który wcześniej został zmieniony w usłudze Microsoft Azure Storage. W **klucza konta magazynu Synchronize** bloku, jeśli podstawowy klucz dostępu został zmieniony (Wygenerowano), kliknij pozycję podstawowy, a następnie kliknij **Synchronizuj klucz**. Jeśli klucz pomocniczy został zmieniony, kliknij przycisk **dodatkowej**, a następnie kliknij przycisk **Synchronizuj klucz**.
    
-    ![Synchronizuj klucz dostępu](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-acess-key.png)
+    ![Synchronizuj klucz dostępu](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, jak [administrowania rozwiązania StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).

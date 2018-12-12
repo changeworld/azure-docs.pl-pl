@@ -16,12 +16,12 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65f8eb0752a181eda312515e557bb733c091e2e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fd511a8a9d17bf79f1237bbfe2dc2ddbc5ec1b2e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505393"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867430"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Zarządzanie kontami usługi Batch i przydziałów za pomocą biblioteki klienta Batch Management dla platformy .NET
 
@@ -153,7 +153,7 @@ Biblioteka zarządzania partiami platformy .NET jest klientem dostawcy zasobów 
 
 ## <a name="sample-project-on-github"></a>Przykładowy projekt w witrynie GitHub
 
-Aby zobaczyć zarządzania partiami platformy .NET w akcji, obejrzyj [AccountManagment] [ acct_mgmt_sample] przykładowy projekt w witrynie GitHub. Przykładowa aplikacja AccountManagment pokazuje następujące operacje:
+Aby zobaczyć zarządzania partiami platformy .NET w akcji, obejrzyj [zarządzania kontem] [ acct_mgmt_sample] przykładowy projekt w witrynie GitHub. Przykładowa aplikacja zarządzania kontem pokazuje następujące operacje:
 
 1. Uzyskiwanie tokenu zabezpieczającego z usługi Azure AD przy użyciu [ADAL][aad_adal]. Jeśli użytkownik nie jest już zalogowany, są monitowani o podanie poświadczeń platformy Azure.
 2. Z tokenem zabezpieczającym, uzyskany z usługi Azure AD, Utwórz [SubscriptionClient] [ resman_subclient] do wykonywania zapytań usługi Azure, aby uzyskać listę subskrypcji skojarzonych z kontem. Użytkownik może wybrać subskrypcję z listy, jeśli zawiera więcej niż jedną subskrypcję.

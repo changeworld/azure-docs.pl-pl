@@ -1,6 +1,6 @@
 ---
-title: Jak przypisać lub usunąć licencji usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Przypisywanie lub usuwanie licencji usługi Azure Active Directory użytkowników lub grup za pomocą usługi Azure Active Directory.
+title: Przypisywanie lub usuwanie licencji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące sposobu przypisywania i usuwania licencji usługi Azure Active Directory użytkowników lub grup.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603893"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077465"
 ---
-# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>Porady: Przypisywanie lub usuwanie licencji usługi Azure Active Directory
+# <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory
 Wiele usług Azure Active Directory (Azure AD) wymagają aktywacji produktu usługi Azure AD i wszystkich użytkowników lub grup (i skojarzone elementy członkowskie) licencji dla tego produktu. Tylko użytkownicy z liczby aktywnych licencji będą mogli uzyskać dostęp do licencjonowanych usługi Azure AD.
 
 ## <a name="available-product-editions"></a>Wersje dostępnych produktów
@@ -40,7 +40,7 @@ Aby uzyskać szczegółowe informacje o poszczególnych wersji produktu i skojar
 Możesz wyświetlić dostępne produkty, w poszczególnych licencji, w tym sprawdzania pod kątem dowolnej daty wygaśnięcia oczekujące i liczba przypisań dostępne.
 
 ### <a name="to-find-your-product-and-license-details"></a>Aby uzyskać szczegółowe informacje produktu i licencji
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **licencji**.
 
