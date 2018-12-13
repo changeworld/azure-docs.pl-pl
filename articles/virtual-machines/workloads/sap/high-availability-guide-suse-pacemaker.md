@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 34a72bb38c87902648ad92261a70d6545f10d0fa
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723690"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076359"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -436,7 +436,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Dodaj następującą zawartość bold do pliku, jeśli wartości nie są tam lub innej. Upewnij się zmienić token 30000 umożliwia zachowywanie konserwacji pamięci. Aby uzyskać więcej informacji, zobacz [ten artykuł dla systemu Linux] [ virtual-machines-linux-maintenance] lub [Windows][virtual-machines-windows-maintenance].
+   Dodaj następującą zawartość bold do pliku, jeśli wartości nie są tam lub innej. Upewnij się zmienić token 30000 umożliwia zachowywanie konserwacji pamięci. Aby uzyskać więcej informacji, zobacz [ten artykuł dla systemu Linux] [ virtual-machines-linux-maintenance] lub [Windows][virtual-machines-windows-maintenance]. Upewnij się również usunąć mcastaddr parametru.
 
    <pre><code>[...]
      <b>token:          30000
@@ -449,6 +449,8 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
         [...] 
      }
      <b>transport:      udpu</b>
+     # remove parameter mcastaddr
+     <b># mcastaddr: IP</b>
    } 
    <b>nodelist {
      node {
