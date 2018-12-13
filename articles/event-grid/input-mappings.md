@@ -6,20 +6,20 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: ce9df1d45de82c759883dc90d50c28551bf62cdf
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: de509ab4fa3eb4dcc647877ed6d6ee0f114fb6f4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287308"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090278"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mapowanie pól niestandardowych na schemat usługi Event Grid
 
 Jeśli dane zdarzenie nie odpowiada oczekiwanej [schematu usługi Event Grid](event-schema.md), można nadal używać usługi Event Grid zdarzenia trasy dla subskrybentów. W tym artykule opisano sposób mapowania schematu do schematu usługi Event Grid.
 
-## <a name="install-preview-feature"></a>Zainstaluj funkcję w wersji zapoznawczej
+## <a name="install-preview-feature"></a>Instalowanie funkcji w wersji zapoznawczej
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -103,7 +103,7 @@ W następnym przykładzie użyto schemat danych wejściowych zdarzenia:
 az eventgrid event-subscription create \
   --source-resource-id $topicid \
   --name eventsub2 \
-  --event-delivery-schema inputeventschema \
+  --event-delivery-schema custominputschema \
   --endpoint <endpoint_URL>
 ```
 

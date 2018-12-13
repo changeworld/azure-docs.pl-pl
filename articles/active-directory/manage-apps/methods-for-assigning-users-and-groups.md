@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d99209af9b1b6697419a046812928e75fed70321
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044488"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076958"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Przypisywanie użytkowników i grup do aplikacji w usłudze Azure Active Directory
 W tym artykule pokazano, jak przypisać użytkowników lub grup do aplikacji w usłudze Azure Active Directory (Azure AD). Użytkownicy najpierw muszą być przypisani do aplikacji, zanim administrator może nadać im dostęp do następujących:
@@ -57,7 +57,7 @@ Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wyko
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+    * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
 6.  Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
 
@@ -95,7 +95,7 @@ Aby przypisać co najmniej jedną grupę aplikacji bezpośrednio, wykonaj nastę
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+    * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
 6.  Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
 

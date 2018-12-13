@@ -1,20 +1,21 @@
 ---
-title: Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą języka Go | Dokumentacja firmy Microsoft
-description: Rozpocznij wysyłanie zdarzeń do usługi Event Hubs za pomocą języka Go
+title: Wysyłanie zdarzeń za pomocą języka Go — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji języka Go, która wysyła zdarzenia z usługi Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2cc7c19d623427f7c98bbb66089b764bb067136b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 44cbea8cc40f83ed5fdd2863da0cb0a01e8dc2b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954914"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091064"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>Wysyłanie zdarzeń do usługi Event Hubs za pomocą języka Go
 

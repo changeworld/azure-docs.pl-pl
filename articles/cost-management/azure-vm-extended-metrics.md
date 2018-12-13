@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 manager: vitavor
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
-ms.custom: ''
-ms.openlocfilehash: b244c7347b458439e9c1c088cf83cff3d0ec5a2e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 9bb8d74b012b25ca959cdb87b8a3d5e4284b6497
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001118"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097220"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Dodawanie rozszerzonych metryk dla maszyn wirtualnych platformy Azure
 
@@ -35,7 +35,7 @@ Na przykład możesz chcieć Monitoruj procent użycia procesora CPU i procent p
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Czy są włączone rozszerzonych metryk
 
-1. Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
+1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 2. W obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną i w obszarze **monitorowanie**, wybierz opcję **metryki**. Jest wyświetlana lista dostępnych metryk.
 3. Wybierz niektóre metryki, a wykres przedstawia dane dla nich.  
     ![Przykładowe metryki — host procentowe użycie procesora CPU](./media/azure-vm-extended-metrics/metric01.png)
@@ -55,18 +55,18 @@ Należy pamiętać, że zarówno platformy Azure, jak i Linux monitorowania na p
 1. W **maszyn wirtualnych**, Wyświetl listę maszyn wirtualnych, a następnie wybierz Maszynę wirtualną.
 2. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
 3. Na stronie ustawienia diagnostyki kliknij **Włącz monitorowanie na poziomie gościa**.  
-    ![Włącz monitorowanie na poziomie gościa](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
+    ![Aby włączyć gościa poziomu monitorowanie na stronie przeglądu](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Po kilku minutach agenta funkcji Diagnostyka Azure jest zainstalowany na maszynie Wirtualnej. Podstawowy zestaw metryk są dodawane. Odśwież stronę. Dodano liczników są wyświetlane na karcie Przegląd.
 5. W obszarze monitorowania, wybierz **metryki**.
 6. Wykres metryk w obszarze **Namespace metryki**, wybierz opcję **gościa (wersja klasyczna)**.
 7. Na liście metryki można wyświetlić wszystkich dostępnych liczników wydajności na maszynie Wirtualnej gościa.  
-    ![Rozszerzonych metryk](./media/azure-vm-extended-metrics/extended-metrics.png)
+    ![Lista przykład rozszerzonych metryk](./media/azure-vm-extended-metrics/extended-metrics.png)
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Aby włączyć monitorowanie poziomie gościa, na nowych maszynach wirtualnych
 
 Po utworzeniu nowych maszyn wirtualnych, na karcie Zarządzanie wybierz **na** dla **systemu operacyjnego gościa diagnostyki**.
 
-![Włącz diagnostykę systemu operacyjnego gościa](./media/azure-vm-extended-metrics/new-enable-diag.png)
+![Ustaw Diagnostyka systemu operacyjnego gościa na](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
 Aby uzyskać więcej informacji na temat włączania rozszerzonych metryk dla maszyn wirtualnych platformy Azure, zobacz [zrozumienia i przy użyciu agenta usługi Azure Linux](../virtual-machines/extensions/agent-linux.md) i [agenta maszyny wirtualnej platformy Azure — omówienie](../virtual-machines/extensions/agent-windows.md).
 
@@ -82,7 +82,7 @@ Można włączyć metryki maszyny Wirtualnej za pomocą skryptów programu Azure
 
 Aby wyświetlić metryki wydajności swoich wystąpień usługi Azure w portalu Cloudyn, przejdź do **zasoby** > **obliczenia** > **wystąpienia Eksploratora**. Na liście wystąpień maszyn wirtualnych Rozwiń wystąpienie, a następnie rozwiń zasobów, aby wyświetlić szczegóły.
 
-![Eksplorator wystąpienia](./media/azure-vm-extended-metrics/instance-explorer.png)
+![Przykładowe informacje wyświetlane w Eksploratorze wystąpienia](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

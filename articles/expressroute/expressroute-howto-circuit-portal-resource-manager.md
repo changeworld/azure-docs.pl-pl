@@ -1,26 +1,19 @@
 ---
-title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute: Azure portal | Dokumentacja firmy Microsoft'
-description: W tym artykule opisano sposób tworzenia, udostępniania, sprawdź, aktualizacji, usuwania i anulować aprowizację obwodu usługi ExpressRoute.
-documentationcenter: na
+title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute — portalu: Azure | Dokumentacja firmy Microsoft'
+description: Tworzenie, aprowizować, sprawdź, aktualizacji, usuwania i anulować aprowizację obwodu usługi ExpressRoute.
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/20/2017
+ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: 94d7b743bdec0d22254144d5316e0d94f5660a55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235330"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091531"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Tworzenie i modyfikowanie obwodu usługi ExpressRoute
 > [!div class="op_single_selector"]
@@ -31,7 +24,7 @@ ms.locfileid: "51235330"
 > * [PowerShell (klasyczny)](expressroute-howto-circuit-classic.md)
 >
 
-W tym artykule opisano, jak utworzyć obwód usługi ExpressRoute systemu Azure za pomocą witryny Azure portal i modelu wdrażania usługi Azure Resource Manager. Poniższe kroki pokazują również jak sprawdzić stan obwodu, zaktualizuj go, lub usuń i deprovision go.
+Ten artykuł pomoże Ci utworzyć obwodu ExpressRoute za pomocą witryny Azure portal i modelu wdrażania usługi Azure Resource Manager. Można również sprawdzić stan, aktualizacji, usunięcia lub anulować aprowizację obwodu.
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem

@@ -1,10 +1,10 @@
 ---
-title: 'Krok 5: Wdrażanie usługi sieci web Machine Learning Studio | Dokumentacja firmy Microsoft'
+title: 'Krok 5: Wdrażanie usługi sieci web - Azure Machine Learning Studio | Dokumentacja firmy Microsoft'
 description: 'Krok 5 Programowanie przewodnik rozwiązania do analizy predykcyjnej: wdrożyć eksperyment predykcyjny w usłudze Machine Learning Studio jako usługę sieci web.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 33965270c2be6f70614def79a49f1c4aa1a8fbbc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: b0da85625ab938ea050ec6ae7bb1d66b095370b6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309933"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077141"
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>Przewodnik, krok 5: Wdrażanie usługi sieci web Azure Machine Learning Studio
 Jest to krok piąty tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)

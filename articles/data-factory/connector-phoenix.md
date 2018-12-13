@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 78e432bf526ad270ae8543ad1be40727ed560d4b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f155ee7dbea697c72bbd53b933a7410faa828b6c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367903"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089925"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopiowanie danych z oprogramowania Phoenix za pomocą usługi Azure Data Factory 
 
@@ -85,7 +85,12 @@ Następujące właściwości są obsługiwane w przypadku Phoenix połączone us
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Phoenix.
 
-Aby skopiować dane z rozwiązania Phoenix, należy ustawić właściwość typu zestawu danych na **PhoenixObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z rozwiązania Phoenix, należy ustawić właściwość typu zestawu danych na **PhoenixObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **PhoenixObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -97,7 +102,8 @@ Aby skopiować dane z rozwiązania Phoenix, należy ustawić właściwość typu
         "linkedServiceName": {
             "referenceName": "<Phoenix linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -106,14 +112,14 @@ Aby skopiować dane z rozwiązania Phoenix, należy ustawić właściwość typu
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Phoenix.
 
-### <a name="phoenixsource-as-source"></a>PhoenixSource jako źródło
+### <a name="phoenix-as-source"></a>Phoenix jako źródło
 
 Aby skopiować dane z rozwiązania Phoenix, należy ustawić typ źródła w działaniu kopiowania, aby **PhoenixSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **PhoenixSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

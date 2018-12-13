@@ -1,6 +1,6 @@
 ---
-title: Więcej informacji na temat zarządzania dostępem dla aplikacji i zasobów przy użyciu grup usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat zarządzania dostępem do aplikacji w chmurze, lokalnych aplikacji i zasobów przy użyciu grup usługi Azure Active Directory w organizacji.
+title: Zarządzanie dostępem do aplikacji i zasobów przy użyciu grup — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o tym, jak zarządzać dostępem do aplikacji w chmurze, lokalnych aplikacji i zasobów przy użyciu grup usługi Azure Active Directory w organizacji.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,15 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 69be2cb8b57b34502d5a5688ac163d7451abe48e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 5a706a2a879ae3b4c4adb2690faa77846474ce49
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223976"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087290"
 ---
-# <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Więcej informacji na temat zarządzania dostępem przy użyciu grup usługi Azure Active Directory
+# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Zarządzanie dostępem do aplikacji i zasobów przy użyciu grup usługi Azure Active Directory
 Azure Active Directory (Azure AD) pomaga w zarządzaniu aplikacji opartych na chmurze, lokalnych aplikacji i zasoby przy użyciu grup w organizacji. Twoje zasoby mogą być częścią katalogu, takie jak uprawnienia do zarządzania obiektami za pomocą ról w katalogu lub zewnętrznie w stosunku do katalogu, takie jak do oprogramowania jako usługi (SaaS), Azure services witryn programu SharePoint i zasobów lokalnych.
 
 >[!NOTE]

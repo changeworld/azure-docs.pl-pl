@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ef689aec58624495a61f5fde2a8050fb7400f56e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.openlocfilehash: e86499fea76b8223b161d6cff3bb1231398f63a6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888855"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093527"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbierz informacje na temat infrastruktury DNS za pomocą rozwiązania DNS Analytics w wersji zapoznawczej
 
@@ -45,7 +45,7 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 | **Połączone źródło** | **Pomoc techniczna** | **Opis** |
 | --- | --- | --- |
 | [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów dla Windows. |
-| [Agenci dla systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje DNS z bezpośrednich agentów systemu Linux. |
+| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje DNS z bezpośrednich agentów systemu Linux. |
 | [Grupa zarządzania programu System Center Operations Manager](../../azure-monitor/platform/om-agents.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów w połączonej grupie zarządzania programu Operations Manager. Bezpośrednie połączenie agenta programu Operations Manager z usługą Log Analytics nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 | [Konto usługi Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nie | Usługa Azure storage nie jest używana przez to rozwiązanie. |
 

@@ -1,18 +1,19 @@
 ---
-title: Usługa Azure ExpressRoute — często zadawane pytania | Dokumentacja firmy Microsoft
+title: Często zadawane pytania — usługa Azure ExpressRoute | Dokumentacja firmy Microsoft
 description: Często zadawane pytania dotyczące usługi ExpressRoute zawiera informacje o obsługiwanych usług platformy Azure, kosztów, danych i połączeń, umowy SLA, dostawcy i lokalizacje, przepustowości i dodatkowe szczegóły techniczne.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/28/2018
-ms.author: jaredro;cherylmc
-ms.openlocfilehash: 728e5b9b4934372e060374aeb273843d695c4ba8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.author: jaredro
+ms.custom: seodec18
+ms.openlocfilehash: 0621c2d1632dead41463810b9e71ebf0404a8cbe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972460"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077753"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
