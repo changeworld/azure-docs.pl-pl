@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.component: ''
-ms.openlocfilehash: 7227fd68f696e827a076005bcd116e222f23e9b0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: e910a953743e8b43f51add5a1e74b3d612b62ba8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883278"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190071"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
 
@@ -162,7 +161,7 @@ Jeśli używasz rozwiązania mapy usługi, można wyświetlić elementy działu 
 
 ![Ekran analiza dziennika](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Więcej informacji: [mapy usługi](../../azure-monitor/insights/service-map.md)
+Więcej informacji: [Mapa usługi](../../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Dodatkowe informacje
@@ -176,7 +175,7 @@ Poniżej przedstawiono przykłady danych zbieranych przez ITSMC:
 
 > W zależności od typu elementu roboczego importowane do usługi Log Analytics **ServiceDesk_CL** zawiera następujące pola:
 
-**Element roboczy:** **zdarzenia**  
+**Element roboczy:** **Zdarzenia**  
 ServiceDeskWorkItemType_s="Incident"
 
 **Pola**
@@ -203,7 +202,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Computer (Komputer)
 
 
-**Element roboczy:** **żądania zmiany**
+**Element roboczy:** **Żądania zmiany**
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 

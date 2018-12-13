@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: b1a63862444969bbb7058841fb755e147dcf6909
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 878d9e635d82e52d8a47d47a135ba865f140c9e9
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015844"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321890"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?
 
@@ -28,7 +28,7 @@ Usługa Azure HDInsight obsługuje wielu wersjach klastrów Hadoop, które możn
 
 Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poniższej tabeli: 
 
-> [!NOTE]
+> [!NOTE]  
 > Wersja domyślna dla usługi HDInsight mogą ulec zmianie bez powiadomienia. Jeśli masz zależność wersji, wersji HDInsight można określić podczas tworzenia klastrów za pomocą zestawu SDK platformy .NET przy użyciu programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure.
 
 | Składnik | HDInsight 4.0 (wersja zapoznawcza) | HDInsight 3.6 (ustawienie domyślne) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
@@ -60,9 +60,7 @@ Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poni�
 
 Wersje składników ekosystemu Hadoop skojarzone z wersji klastra HDInsight można zmienić za pomocą aktualizacji HDInsight. Aby sprawdzić składniki usługi Hadoop i sprawdź, które wersje są używane dla klastra, należy użyć interfejsu API REST Ambari. **GetComponentInformation** polecenie umożliwia pobranie informacji o składnikach usługi. Aby uzyskać więcej informacji, zobacz [dokumentację Apache Ambari][ambari-docs].
 
-W przypadku klastrów Windows innym sposobem, aby sprawdzić wersję składnika jest Zaloguj się do klastra przy użyciu pulpitu zdalnego i sprawdź zawartość katalogu C:\apps\dist\.
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux jest jedynym systemem operacyjnym na HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz [wycofanie Windows w HDInsight](#hdinsight-windows-retirement).
 
 ### <a name="release-notes"></a>Informacje o wersji
@@ -84,7 +82,7 @@ W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w witrynie
 
 *&ast; Obsługa HDInsight 3.5 został rozszerzony tylko dla typów klastrów Spark*
 
-> [!NOTE]
+> [!NOTE]  
 > Po pomocy technicznej dla wersji wygasła, może nie być dostępne za pośrednictwem portalu Microsoft Azure. Natomiast wersjach klastra nadal dostępne za pośrednictwem `Version` parametru w programie Windows PowerShell [poleceniu New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) polecenia i zestawu .NET SDK do wersji dacie wycofania.
 >
 
@@ -104,7 +102,7 @@ W poniższej tabeli wymieniono wersje HDInsight, które są **nie** dostępne w 
 | HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 r. |Do 31 maja 2015 r. |Yes |Nie |
 | HDInsight w wersji 1.6 |HDP 1.1 | |28 października 2013 |26 kwietnia 2014 r. |Do 31 maja 2015 r. |Nie |Nie |
 
-> [!NOTE]
+> [!NOTE]  
 > Klastrów o wysokiej dostępności przy użyciu dwa węzły główne są wdrażane domyślnie HDInsight w wersji 2.1 i nowszych. Nie są one dostępne dla klastrów HDInsight w wersji 1.6.
 
 ## <a name="enterprise-security-package-for-hdinsight"></a>Pakiet Enterprise Security for HDInsight
@@ -198,7 +196,7 @@ Umowa dotycząca poziomu usług (SLA) jest definiowane w kategoriach _okna obsł
 
 _Dacie wycofania_ jest data, po upływie którego nie można utworzyć wersji klastra HDInsight. Od 31 lipca 2017 r. nie można rozmiaru klastra usługi HDInsight po dacie wycofania. 
 
-> [!NOTE]
+> [!NOTE]  
 > Klastry HDInsight Windows (z uwzględnieniem wersji 2.1, 3.0, 3.1, 3.2 i 3.3) uruchom rodziny systemów operacyjnych gościa platformy Azure w wersji 4, która korzysta z 64-bitowej wersji systemu Windows Server 2012 R2. Rodzina systemów operacyjnych gościa platformy Azure w wersji 4 obsługuje wersje .NET Framework 4.0, 4.5, 4.5.1 i 4.5.2.
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Hortonworks informacje o wersji skojarzony z wersjami HDInsight
@@ -222,41 +220,36 @@ Sekcja zawiera łącza do wersji, aby dystrybucji Hortonworks Data Platform i Ap
 
 
 
-
-
-
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Domyślne rozmiary maszyn wirtualnych i konfiguracja węzła klastrów
-W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przypadku klastrów HDInsight.
+W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przypadku klastrów HDInsight.  Ten wykres jest niezbędne do zrozumienia rozmiarów maszyn wirtualnych do użycia podczas tworzenia skryptów programu PowerShell lub wiersza polecenia platformy Azure, aby wdrożyć klastry HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Jeśli potrzebujesz więcej niż 32 węzły procesu roboczego w klastrze, należy wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
-> 
-> 
 
 * Wszystkie obsługiwane regiony z wyjątkiem Brazylii Południowej i Japonia, część zachodnia:
 
-  | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne | Storm | platforma Spark | ML Server |
+  | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne | Storm | platforma Spark  | ML Server |
   | --- | --- | --- | --- | --- | --- | --- |
-  | Główny: domyślny rozmiar maszyny Wirtualnej |D3 v2 |D3 v2 | D13, D14 |A4 v2 |D12 v2 |D12 v2 |
-  | Główny: zalecane rozmiary maszyn wirtualnych |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A4, wersja 2, A8, wersja 2, A2m, wersja 2 |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
-  | Proces roboczy: domyślny rozmiar maszyny Wirtualnej |D3 v2 |D3 v2  | D13, D14 |D3 v2 |Windows: D12 v2; Linux: D4, wersja 2 |Windows: D12 v2; Linux: D4, wersja 2 |
-  | Proces roboczy: zalecane rozmiary maszyn wirtualnych |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14, wersja 2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14, wersja 2 |
+  | Główny: domyślny rozmiar maszyny Wirtualnej |D3 v2 |D3 v2 | D13,<br/> D14 |A4 v2 |D12 v2 |D12 v2 |
+  | Główny: zalecane rozmiary maszyn wirtualnych |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2 |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2  | D13,<br/> D14 |A4, wersja 2,<br/> A8, wersja 2,<br/> A2m v2 |D12 v2<br/> D13 v2<br/> D14 v2 |D12 v2<br/> D13 v2<br/> D14 v2 |
+  | Proces roboczy: domyślny rozmiar maszyny Wirtualnej |D3 v2 |D3 v2  | D13,<br/> D14 |D3 v2 |D4 v2 | D4 v2 |
+  | Proces roboczy: zalecane rozmiary maszyn wirtualnych |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2 |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2  | D13,<br/> D14 |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2 |Typów D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |Typów D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
   | Dozorcy: domyślny rozmiar maszyny Wirtualnej | |A4 v2 | |A2 v2 | | |
-  | Dozorcy: zalecane rozmiary maszyn wirtualnych | |A4, wersja 2, A8, wersja 2, A2m, wersja 2 | | A2 v2, A4, wersja 2, A8, wersja 2 | | |
-  | Edge: domyślny rozmiar maszyny Wirtualnej | | | | | |Windows: D12 v2; Linux: D4, wersja 2 |
-  | Edge: zalecany rozmiar maszyny Wirtualnej | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14, wersja 2 |
+  | Dozorcy: zalecane rozmiary maszyn wirtualnych | |A4, wersja 2,<br/> A8, wersja 2,<br/> A2m v2 | | A2 v2<br/> A4, wersja 2,<br/> A8 v2 | | |
+  | Edge: domyślny rozmiar maszyny Wirtualnej | | | | | |D4 v2 |
+  | Edge: zalecany rozmiar maszyny Wirtualnej | | | | | |Typów D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
 * Brazylia Południowa i Japonia, część zachodnia tylko (nie rozmiary v2):
 
   | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne |Storm | platforma Spark | Usługi ML |
   | --- | --- | --- | --- | --- | --- | --- |
-  | Główny: domyślny rozmiar maszyny Wirtualnej |D3 |D3  | D13, D14 |A3 |D12 |D12 |
-  | Główny: zalecane rozmiary maszyn wirtualnych |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |
-  | Proces roboczy: domyślny rozmiar maszyny Wirtualnej |D3 |D3  | D13, D14 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
-  | Proces roboczy: zalecane rozmiary maszyn wirtualnych |D3, D4, D12 |D3, D4, D12  | D13, D14 |D3, D4, D12 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Główny: domyślny rozmiar maszyny Wirtualnej |D3 |D3  | D13,<br/> D14 |A3 |D12 |D12 |
+  | Główny: zalecane rozmiary maszyn wirtualnych |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
+  | Proces roboczy: domyślny rozmiar maszyny Wirtualnej |D3 |D3  | D13,<br/> D14 |D3 |D4 |D4 |
+  | Proces roboczy: zalecane rozmiary maszyn wirtualnych |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
   | Dozorcy: domyślny rozmiar maszyny Wirtualnej | |A2 | | A2 | | |
-  | Dozorcy: zalecane rozmiary maszyn wirtualnych | |A2, A3, A4 | |A2, A3, A4 | | |
-  | Edge: rozmiary maszyny Wirtualnej domyślne | | | | | |Windows: D12; Linux: D4 |
-  | Edge: zalecane rozmiary maszyn wirtualnych | | | | | |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Dozorcy: zalecane rozmiary maszyn wirtualnych | |A2,<br/> A3<br/> A4 | |A2,<br/> A3<br/> A4 | | |
+  | Edge: rozmiary maszyny Wirtualnej domyślne | | | | | |D4 |
+  | Edge: zalecane rozmiary maszyn wirtualnych | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
 
 > [!NOTE]
 > - Head jest znany jako *Nimbus* Storm typ klastra.

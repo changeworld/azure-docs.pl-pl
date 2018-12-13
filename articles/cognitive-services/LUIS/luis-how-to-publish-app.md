@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fe8806b4cc84bb9a15ce5620366fee23bba328c4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 73788b05cad3abac19b1ef509f1250542d10dba2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106434"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136651"
 ---
 # <a name="publish-your-trained-app"></a>Opublikuj aplikację uczonego
 
@@ -38,7 +38,7 @@ Aplikacja została opublikowana do wszystkich regionów skojarzonych z zasobami 
 
 Po pomyślnym opublikowaniu aplikacji u góry strony w przeglądarce zostanie wyświetlone powiadomienie o powodzeniu zielony. Na pasku powiadomień zielony zawiera również link do punktów końcowych. 
 
-![Publikowanie okna podręcznego](./media/luis-how-to-publish-app/publish-success.png)
+![Publikowanie okno podręczne z linkiem do punktu końcowego](./media/luis-how-to-publish-app/publish-success.png)
 
 Jeśli potrzebujesz adresu URL punktu końcowego, wybierz łącze. Można także uzyskać adresy URL punktu końcowego, wybierając **Zarządzaj** w górnym menu, a następnie zaznacz **kluczy i punktów końcowych** w menu po lewej stronie. 
 

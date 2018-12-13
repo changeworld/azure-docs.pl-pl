@@ -4,15 +4,15 @@ description: Ten artykuł zawiera podsumowanie często zadawane pytania, podczas
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 83216091c950593b16f158ea3d8df5a194ecee02
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.author: mayg
+ms.openlocfilehash: d7b3919d0f970190238dbc5899a20f2d9e7d8cd4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869827"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256518"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -27,7 +27,7 @@ Przegląd [cennika usługi Azure Site Recovery](https://azure.microsoft.com/pric
 Podczas replikacji dane są replikowane do usługi Azure storage, a nie płacić za wszelkie zmiany maszyny Wirtualnej. Po uruchomieniu trybu failover na platformie Azure Site Recovery automatycznie tworzy maszyny wirtualne IaaS platformy Azure. Po tym są naliczane za zasoby obliczeniowe, które zostaną zużyte na platformie Azure.
 
 ### <a name="what-can-i-do-with-vmware-to-azure-replication"></a>Co można zrobić z oprogramowania VMware do platformy Azure replikacji?
-- **Odzyskiwanie po awarii**: możesz skonfigurować odzyskiwanie po awarii w pełnej. W tym scenariuszu można replikować maszyny wirtualne VMware w środowisku lokalnym, do usługi Azure storage. Następnie, jeśli z infrastruktury lokalnej jest niedostępna, może zostać przeniesiony, do platformy Azure. Po przełączeniu w tryb failover maszyn wirtualnych platformy Azure są tworzone przy użyciu replikowanych danych. Dostępne aplikacje i obciążenia na maszynach wirtualnych platformy Azure, dopóki w lokalnym centrum danych stanie się ponownie dostępny. Następnie można powrotu po awarii z platformy Azure do lokacji lokalnej.
+- **Odzyskiwanie po awarii**: Możesz skonfigurować odzyskiwanie po awarii w pełnej. W tym scenariuszu można replikować maszyny wirtualne VMware w środowisku lokalnym, do usługi Azure storage. Następnie, jeśli z infrastruktury lokalnej jest niedostępna, może zostać przeniesiony, do platformy Azure. Po przełączeniu w tryb failover maszyn wirtualnych platformy Azure są tworzone przy użyciu replikowanych danych. Dostępne aplikacje i obciążenia na maszynach wirtualnych platformy Azure, dopóki w lokalnym centrum danych stanie się ponownie dostępny. Następnie można powrotu po awarii z platformy Azure do lokacji lokalnej.
 - **Migracja**: Usługa Site Recovery umożliwia migrowanie lokalnych maszyn wirtualnych z programu VMware na platformę Azure. W tym scenariuszu można replikować maszyny wirtualne VMware w środowisku lokalnym, do usługi Azure storage. Następnie możesz Failover ze środowiska lokalnego do platformy Azure. Po przejściu w tryb failover swoje aplikacje i obciążenia są dostępne i działają na maszynach wirtualnych platformy Azure.
 
 
@@ -146,11 +146,14 @@ Tak. Pobierz MySQL i umieść go w **C:\Temp\ASRSetup** folderu. Następnie zain
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Można I uniknąć pobierania MySQL, ale pozwól Site Recovery zainstaluj go?
 Tak. Pobierz Instalator MySQL i umieść go w **C:\Temp\ASRSetup** folderu.  Po skonfigurowaniu serwera konfiguracji maszyny Wirtualnej, należy zaakceptować warunki, a następnie kliknij **Pobierz i zainstaluj**, portal użyje Instalator dodaje zainstalować oprogramowanie MySQL.
  
-### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>CanL używam serwera konfiguracji maszyny Wirtualnej na nic innego?
+### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Serwera konfiguracji maszyny Wirtualnej można używać do innych?
 Nie, możesz należy używać tylko maszyny Wirtualnej serwera konfiguracji. 
 
+### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>Można sklonować serwer konfiguracji i używać go w ramach aranżacji?
+Nie, należy skonfigurować serwer nowej konfiguracji, aby uniknąć problemów z rejestracji.
+
 ### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>Czy można zmienić magazynu zarejestrowany na serwerze konfiguracji?
-Nie. Po zarejestrowaniu magazynu z serwera konfiguracji nie można zmienić.
+Nie. Po zarejestrowaniu magazynu z serwera konfiguracji nie można zmienić. Przegląd [w tym artykule](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) kroków ponownej rejestracji.
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych można użyć tego samego serwera konfiguracji
 Tak, ale należy pamiętać, ten komputer fizyczny można tylko można ponownie do maszyny Wirtualnej VMware.

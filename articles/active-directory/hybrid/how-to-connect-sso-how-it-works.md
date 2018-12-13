@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Bezproblemowego logowania jednokrotnego — jak działa | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Bezproblemowe logowanie jednokrotne — jak działa | Dokumentacja firmy Microsoft'
 description: W tym artykule opisano, jak działa funkcja usługi Azure Active Directory bezproblemowego logowania jednokrotnego.
 services: active-directory
 keywords: Co to jest program Azure AD Connect, instalowanie usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 236a9dac64fa98b9db68a610de097c1deba3e7ee
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 54b614e49bc7c03325ebeada60232fca861874e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970431"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193080"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: techniczne
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Techniczne
 
 Ten artykuł zawiera szczegółowe informacje techniczne, w jak działa funkcja usługi Azure Active Directory bezproblemowe logowanie jednokrotne (bezproblemowe logowanie Jednokrotne).
 
@@ -58,8 +58,8 @@ Przepływ logowania w przeglądarce sieci web jest następująca:
 2. Jeśli użytkownik nie jest już zalogowany, użytkownik jest przekierowany do strony logowania usługi Azure AD.
 3. Użytkownik wpisze nazwy użytkownika do strony logowania usługi Azure AD.
 
-  >[!NOTE]
-  >Aby uzyskać [niektóre aplikacje](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), są pomijane kroki 2 i 3.
+   >[!NOTE]
+   >Aby uzyskać [niektóre aplikacje](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), są pomijane kroki 2 i 3.
 
 4. Przy użyciu języka JavaScript w tle, usługa Azure AD wyzwań przeglądarki, za pośrednictwem nieautoryzowanych uzyskanie odpowiedzi 401, aby zapewnić biletu protokołu Kerberos.
 5. Z kolei przeglądarki, żąda biletu z usługi Active Directory dla `AZUREADSSOACC` konto komputera, (który reprezentuje usługę Azure AD).

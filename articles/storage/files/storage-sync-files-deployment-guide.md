@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: f32dd0fb1ffd1bbd2c58f187b2dbc310a48f65ff
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ee0d46cd07de4e9b123357bcc4ee9d1e51926f49
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011072"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312980"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -136,10 +136,10 @@ Aby wdrożyć usługę synchronizacji magazynu, przejdź do [witryny Azure porta
 
 W otwartym okienku wprowadź następujące informacje:
 
-- **Nazwa**: unikatową nazwę (na subskrypcję) usługa synchronizacji magazynu.
-- **Subskrypcja**: subskrypcja, w której chcesz utworzyć usługę synchronizacji magazynu. W zależności od strategii konfiguracji Twojej organizacji może mieć dostęp do co najmniej jedną subskrypcję. Subskrypcja platformy Azure jest najbardziej podstawowym kontenerem dla rozliczeń dla każdej usługi w chmurze (np. usługi Azure Files).
+- **Nazwa**: Unikatowa nazwa (na subskrypcję) dla usługi synchronizacji magazynu.
+- **Subskrypcja**: Subskrypcja, w której chcesz utworzyć usługę synchronizacji magazynu. W zależności od strategii konfiguracji Twojej organizacji może mieć dostęp do co najmniej jedną subskrypcję. Subskrypcja platformy Azure jest najbardziej podstawowym kontenerem dla rozliczeń dla każdej usługi w chmurze (np. usługi Azure Files).
 - **Grupa zasobów**: Grupa zasobów to logiczna grupa zasobów platformy Azure, takich jak konto magazynu lub usługa synchronizacji magazynu. Można utworzyć nową grupę zasobów lub użyj istniejącej grupy zasobów dla usługi Azure File Sync. (Zaleca się używanie grup zasobów jak kontenery do izolować zasoby logicznie dla organizacji, takich jak grupowania, godzinę zasoby lub dla określonego projektu.)
-- **Lokalizacja**: region, w której chcesz wdrożyć usługę Azure File Sync. Tylko regiony obsługiwane są dostępne na tej liście.
+- **Lokalizacja**: Region, w której chcesz wdrożyć usługę Azure File Sync. Tylko regiony obsługiwane są dostępne na tej liście.
 
 Gdy skończysz, wybierz pozycję **Utwórz** wdrożyć usługę synchronizacji magazynu.
 
@@ -201,7 +201,7 @@ if ($resourceGroups -notcontains $resourceGroup) {
 # it enables subsequent AFS cmdlets to be executed with minimal 
 # repetition of parameters or separate authentication 
 Login-AzureRmStorageSync `
-    –SubscriptionId $subID `
+    -SubscriptionId $subID `
     -ResourceGroupName $resourceGroup `
     -TenantId $tenantID `
     -Location $region
@@ -223,13 +223,13 @@ Zarejestrowanie systemu Windows Server za pomocą usługi synchronizacji magazyn
 > Rejestracja serwera używa poświadczeń platformy Azure w celu utworzenia relacji zaufania między Usługa synchronizacji magazynu i systemu Windows Server, jednak później serwer tworzy i używa własną tożsamość, która jest prawidłowa, tak długo, jak serwer pozostaje zarejestrowany i bieżący token Shared Access Signature (SAS magazynu) jest prawidłowa. Nie można wystawić nowy token sygnatury dostępu Współdzielonego z serwerem, gdy serwer jest zarejestrowany, dlatego usunięcie serwera możliwość dostępu do udziałów plików platformy Azure, w zatrzymywanie wszelkie synchronizacji.
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
-Interfejs użytkownika rejestracji serwera powinno spowodować otwarcie automatycznie po zakończeniu instalacji agenta usługi Azure File Sync. W przeciwnym razie można otworzyć go ręcznie w lokalizacji jego pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otwarciu interfejsu użytkownika rejestracji serwera wybierz **logowania** do rozpoczęcia.
+Interfejs użytkownika rejestracji serwera powinno spowodować otwarcie automatycznie po zakończeniu instalacji agenta usługi Azure File Sync. Jeśli nie, można otworzyć go ręcznie z lokalizacji pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otwarciu interfejsu użytkownika rejestracji serwera wybierz **logowania** do rozpoczęcia.
 
 Po zalogowaniu zostanie wyświetlony monit o następujące informacje:
 
 ![Zrzut ekranu przedstawiający interfejs użytkownika rejestracji serwera](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- **Subskrypcja platformy Azure**: subskrypcji, która zawiera usługę synchronizacji magazynu (zobacz [wdrożyć usługę synchronizacji magazynu](#deploy-the-storage-sync-service)). 
+- **Subskrypcja platformy Azure**: Subskrypcji, która zawiera usługę synchronizacji magazynu (zobacz [wdrożyć usługę synchronizacji magazynu](#deploy-the-storage-sync-service)). 
 - **Grupa zasobów**: Grupa zasobów, która zawiera usługę synchronizacji magazynu.
 - **Usługa synchronizacji magazynu**: Nazwa usługi synchronizacji magazynu, z którym chcesz zarejestrować.
 
@@ -245,7 +245,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Tworzenie grupy synchronizacji i punktu końcowego w chmurze
 Grupa synchronizacji definiuje topologię synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Grupa synchronizacji musi zawierać jeden punkt końcowy chmury, który reprezentuje udział plików platformy Azure, i co najmniej jeden punkt końcowy serwera. Punkt końcowy serwera reprezentuje ścieżkę na zarejestrowanego serwera. Serwer może mieć punkty końcowe serwera w wiele grup synchronizacji. Można utworzyć dowolną liczbę grup synchronizacji należy odpowiednio opisują topologii żądaną synchronizacji.
 
-Punkt końcowy w chmurze jest wskaźnikiem do udziału plików platformy Azure. Wszystkie punkty końcowe serwera zsynchronizuje się z punktem końcowym chmury, dzięki czemu punkt końcowy w chmurze z Centrum. Konto magazynu dla udziału plików platformy Azure musi znajdować się w tym samym regionie co usługa synchronizacji magazynu. Zostanie on zsynchronizowany materiałami udziału plików platformy Azure z jednym wyjątkiem: zostanie udostępniony folder specjalny porównywalne z ukrytym folderze "System Volume Information" w woluminie NTFS. Ten katalog jest nazywany ". SystemShareInformation". Zawiera on istotne synchronizację metadanych, które nie będą synchronizowane z innych punktów końcowych. Nie używać ani nie usuwaj go!
+Punkt końcowy w chmurze jest wskaźnikiem do udziału plików platformy Azure. Wszystkie punkty końcowe serwera zsynchronizuje się z punktem końcowym chmury, dzięki czemu punkt końcowy w chmurze z Centrum. Konto magazynu dla udziału plików platformy Azure musi znajdować się w tym samym regionie co usługa synchronizacji magazynu. Całość udziału plików platformy Azure zostaną zsynchronizowane z jednym wyjątkiem: Folder specjalny porównywalne z ukrytym folderze "System Volume Information" w woluminie NTFS będzie gotowa. Ten katalog jest nazywany ". SystemShareInformation". Zawiera on istotne synchronizację metadanych, które nie będą synchronizowane z innych punktów końcowych. Nie używać ani nie usuwaj go!
 
 > [!Important]  
 > Można wprowadzić zmiany do dowolnego punktu końcowego w chmurze lub punkt końcowy serwera w grupie synchronizacji i zsynchronizowaniu pliki do punktów końcowych w grupie synchronizacji. Jeśli wprowadzisz zmiany do końcowego w chmurze (udział plików platformy Azure) bezpośrednio, zmiany najpierw muszą być odnajdowane przez zadanie wykrywania zmian usługi Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze tylko raz na 24 godziny. Aby uzyskać więcej informacji, zobacz [usługi Azure Files — często zadawane pytania](storage-files-faq.md#afs-change-detection).
@@ -258,7 +258,7 @@ Aby utworzyć grupę synchronizacji w [witryny Azure portal](https://portal.azur
 W otwartym okienku wprowadź następujące informacje, aby utworzyć grupę synchronizacji z punktem końcowym chmury:
 
 - **Nazwa grupy synchronizacji**: Nazwa grupy synchronizacji, która ma zostać utworzony. Ta nazwa musi być unikatowa w obrębie usługi synchronizacji magazynu, ale może być to dowolna nazwa logiczna z Twojego punktu widzenia.
-- **Subskrypcja**: subskrypcja, w której została wdrożona usługa synchronizacji magazynu w [wdrożyć usługę synchronizacji magazynu](#deploy-the-storage-sync-service).
+- **Subskrypcja**: Subskrypcja, w której została wdrożona usługa synchronizacji magazynu w [wdrożyć usługę synchronizacji magazynu](#deploy-the-storage-sync-service).
 - **Konto magazynu**: Jeśli wybierzesz **wybierz konto magazynu**, pojawi się na nim inną okienko, w którym można wybrać konto magazynu, który ma udziału plików platformy Azure, które mają być synchronizowane ze.
 - **Udział plików platformy Azure**: Nazwa udziału plików platformy Azure, z którym mają być synchronizowane.
 
@@ -303,7 +303,7 @@ if ($fileShare -eq $null) {
 New-AzureRmStorageSyncCloudEndpoint `
     -StorageSyncServiceName $storageSyncName `
     -SyncGroupName $syncGroupName ` 
-    -StorageAccountResourceId $storageAccount.Id
+    -StorageAccountResourceId $storageAccount.Id `
     -StorageAccountShareName $fileShare.Name
 ```
 
@@ -320,9 +320,9 @@ Aby dodać punkt końcowy serwera, przejdź do grupy synchronizacji nowo utworzo
 W okienku **Dodawanie punktu końcowego serwera** wprowadź następujące informacje, aby utworzyć punkt końcowy serwera:
 
 - **Zarejestrowany serwer**: Nazwa serwera lub klastra, w której chcesz utworzyć punkt końcowy serwera.
-- **Ścieżka**: ścieżka systemu Windows Server, można synchronizować w ramach grupy synchronizacji.
-- **Obsługa poziomów w chmurze**: przełącznik, aby włączyć lub wyłączyć chmury warstw. Dzięki chmurze warstw, rzadko używane lub uzyskać dostępu do plików może należeć do warstwy do usługi Azure Files.
-- **Wolne miejsce w woluminie**: ilość wolnego miejsca, aby zarezerwować na woluminie, na którym znajduje się punkt końcowy serwera. Na przykład jeśli wolne miejsce w woluminie wynosi 50% na woluminie z punktem końcowym pojedynczego serwera, około połowę ilość danych jest warstwy do usługi Azure Files. Niezależnie od tego, czy w chmurze warstw jest włączona, udziału plików platformy Azure ma zawsze pełne kopii danych w grupie synchronizacji.
+- **Ścieżka**: Ścieżka systemu Windows Server zostanie on zsynchronizowany w ramach grupy synchronizacji.
+- **Obsługa warstw w chmurze**: Przełącznik, aby włączyć lub wyłączyć chmury warstw. Dzięki chmurze warstw, rzadko używane lub uzyskać dostępu do plików może należeć do warstwy do usługi Azure Files.
+- **Wolne miejsce w woluminie**: Ilość wolnego miejsca, aby zarezerwować na woluminie, na którym znajduje się punkt końcowy serwera. Na przykład jeśli wolne miejsce w woluminie wynosi 50% na woluminie z punktem końcowym pojedynczego serwera, około połowę ilość danych jest warstwy do usługi Azure Files. Niezależnie od tego, czy w chmurze warstw jest włączona, udziału plików platformy Azure ma zawsze pełne kopii danych w grupie synchronizacji.
 
 Aby dodać punkt końcowy serwera, wybierz **Utwórz**. Pliki są teraz synchronizowane między udziału plików platformy Azure i systemu Windows Server. 
 
@@ -367,7 +367,7 @@ else {
 Zalecane czynności do dołączenia w usłudze Azure File Sync w pierwszym z zero Przestój, przy zachowaniu pełnego pliku wierności i listy kontroli dostępu (ACL) są następujące:
  
 1. Wdróż usługę synchronizacji magazynu.
-2. Tworzenie grupy synchronizacji.
+2. Utwórz grupę synchronizacji.
 3. Zainstaluj agenta usługi Azure File Sync na serwer z pełnym zestawem danych.
 4. Zarejestruj ten serwer i utworzyć punkt końcowy serwera w udziale. 
 5. Pozwól synchronizacji wykonaj pełny przekazywania do udziału plików platformy Azure (punkt końcowy w chmurze).  

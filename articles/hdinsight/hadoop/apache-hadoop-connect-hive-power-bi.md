@@ -1,5 +1,5 @@
 ---
-title: Wizualizowanie danych big data dzięki usłudze Power BI w usłudze Azure HDInsight
+title: Wizualizuj dane Apache Hive z usługą Power BI — Azure HDInsight
 description: Dowiedz się, jak usługa Microsoft Power BI w celu wizualizacji danych Hive przetwarzanych przez usługi Azure HDInsight.
 keywords: Usługa hdinsight, hadoop, hive, interaktywne zapytania interaktywne usługi hive, LLAP, odbc
 services: hdinsight
@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 12/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6711a5595c6b7c6caaff97f4c1996817be1abce
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 86006e68ac06ce26eb58cc14d4d881f81981183c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634553"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164300"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Wizualizuj dane Apache Hive z usługą Microsoft Power BI w usłudze Azure HDInsight przy użyciu interfejsu ODBC
 
-Dowiedz się, jak nawiązać połączenie usługi Azure HDInsight przy użyciu interfejsu ODBC usługi Microsoft Power BI i wizualizuj dane z Apache Hive. 
+Dowiedz się, jak nawiązać połączenie usługi Azure HDInsight przy użyciu interfejsu ODBC usługi Microsoft Power BI i wizualizuj dane z Apache Hive.
 
 >[!IMPORTANT]
 > Można wykorzystać sterownika ODBC programu Hive można zaimportować za pomocą ogólnego łącznika ODBC w programie Power BI Desktop. Jednak nie zaleca dla obciążeń analizy Biznesowej ze względu na charakter nieinterakcyjnych aparatu zapytań programu Hive. [Łącznik interaktywnego zapytania HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) i [łącznika usługi HDInsight Spark](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) są lepsze możliwości ich wydajność.

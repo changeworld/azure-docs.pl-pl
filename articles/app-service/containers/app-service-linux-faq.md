@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure App Service w systemie Linux — często zadawane pytania | Dokumentacja firmy Microsoft
+title: Usługi App Service w systemie Linux — często zadawane pytania — Azure | Dokumentacja firmy Microsoft
 description: Usługa Azure App Service w systemie Linux — często zadawane pytania.
 keywords: Usługa Azure app service, aplikacji sieci web, — często zadawane pytania, linux, oss, usługi web app for containers, obsługującej wiele kontenerów, multicontainer
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
-ms.openlocfilehash: 94e61cf5bf4f629dfd776cf9ea2ae54233e91dc6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 7fe9fd68e03fc36f5aac5d6c27c07896715af906
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417586"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261164"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -74,7 +75,7 @@ Tak, musisz ustawić aplikacji nosi nazwę `WEBSITE_WEBDEPLOY_USE_SCM` do *false
 
 W przypadku niepowodzenia wdrożenia narzędzia Git do aplikacji sieci web w systemie Linux, należy wybrać jedną z następujących opcji wdrażania kodu aplikacji:
 
-- Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): można przechowywać kodu źródłowego aplikacji w repozytorium DevOps Git platformy Azure lub w repozytorium GitHub do używania ciągłego dostarczania platformy Azure. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ciągłe dostarczanie dla aplikacji sieci web w systemie Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): Kod źródłowy aplikacji można przechowywać w repozytorium DevOps Git platformy Azure lub w repozytorium GitHub do używania ciągłego dostarczania platformy Azure. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ciągłe dostarczanie dla aplikacji sieci web w systemie Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
 - Użyj [ZIP wdrażania interfejsu API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API [SSH w aplikacji sieci web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) i przejdź do folderu, w której chcesz wdrożyć swój kod. Uruchom następujący kod:
 

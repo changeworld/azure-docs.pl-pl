@@ -1,5 +1,5 @@
 ---
-title: Importowanie danych do usługi Azure Search w portalu | Microsoft Docs
+title: Importowanie danych do indeksu wyszukiwania przy użyciu witryny Azure portal — usługa Azure Search
 description: Dowiedz się, jak używać Kreatora importu danych w witrynie Azure portal Przeszukuj dane platformy Azure z usługi Cosmos DB, magazynu obiektów Blob, usługi table storage, SQL Database i programu SQL Server na maszynach wirtualnych platformy Azure.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: dcdc0501d94191cf2c281a4f880ddab3db023fc0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: ceca9b8e89a963cd9a9226be143d24ed5429747b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004951"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316477"
 ---
 # <a name="how-to-import-data-into-azure-search-index-using-the-azure-portal"></a>Jak importować dane do indeksu usługi Azure Search przy użyciu witryny Azure portal
 

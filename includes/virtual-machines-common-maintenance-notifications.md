@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 609389460ab18ba947130e64dbe7b599574816a5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981649"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53215988"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>View VMs zaplanowana do konserwacji w portalu
 
@@ -29,7 +29,7 @@ Można użyć witryny Azure portal i wyszukaj zaplanowana konserwacja maszyn wir
 
 4. Wybierz i dodaj następujące kolumny:
 
-   **Konserwacja**: Wyświetla stan konserwacji maszyny wirtualnej. Poniżej przedstawiono potencjalne wartości:
+   **Konserwacja**: Pokazuje stan konserwacji maszyny wirtualnej. Poniżej przedstawiono potencjalne wartości:
       
       | Wartość | Opis |
       |-------|-------------|
@@ -41,15 +41,15 @@ Można użyć witryny Azure portal i wyszukaj zaplanowana konserwacja maszyn wir
       | - | Maszyna wirtualna nie jest częścią planowanej konserwacji. |
       
 
-   **Konserwacja — okno samoobsługi**: wyświetlany przedział czasu, kiedy własnym możesz uruchomić konserwację na maszynach wirtualnych.
+   **Konserwacja — okno samoobsługi**: Pokazuje przedział czasu, gdy samodzielnie możesz uruchomić konserwację na maszynach wirtualnych.
    
-   **Konserwacja — okno zaplanowanej**: wyświetlany przedział czasu, kiedy Azure zachowają maszyny Wirtualnej w celu obsługi. 
+   **Konserwacja — okno zaplanowanej**: Pokazuje przedział czasu, gdy Azure zachowają maszyny Wirtualnej w celu obsługi. 
 
 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Powiadomienia i alerty w portalu
 
-Azure komunikuje się harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do grupy właściciel i współwłaściciele subskrypcji. Możesz dodać dodatkowych adresatów oraz kanały do komunikacji przez tworzenie alertów dziennika aktywności platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
+Azure komunikuje się harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do grupy właściciel i współwłaściciele subskrypcji. Możesz dodać dodatkowych adresatów oraz kanały do komunikacji przez tworzenie alertów dziennika aktywności platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 Upewnij się, możesz ustawić **typ zdarzenia** jako **planowanej konserwacji** i **usług** jako **Virtual Machine Scale Sets** i/lub **Maszyn wirtualnych**
     

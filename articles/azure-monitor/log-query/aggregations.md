@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 76bb6136b21f697eaa9a80c5fa6265b5c2dfd45c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: f5ecd68c1538fb9e21345221aa22c28217002271
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883260"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185753"
 ---
 # <a name="aggregations-in-log-analytics-queries"></a>Agregacje w zapytań usługi Log Analytics
 
@@ -129,7 +128,7 @@ Perf
 
 To pokazuje niektóre komputera procesory CPU mają podobne wartości mediany, że mimo że niektóre stały wokół mediany, inne komputery zgłaszali znacznie niższe a wyższe wartości procesora CPU, co oznacza, że wystąpił skoki.
 
-### <a name="variance"></a>WARIANCJA
+### <a name="variance"></a>Wariancja
 Aby ocenić bezpośrednio wariancję wartości, należy użyć odchylenie standardowe i Wariancja metody:
 
 ```Kusto

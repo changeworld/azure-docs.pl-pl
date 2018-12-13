@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 411ffd9479c3f686495de21b60ef0a811915c260
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e81b87a6cbaddf61492fa1fc41e66950eb7ce1d7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834574"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191635"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Rozwiązywanie problemów dotyczących użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 
@@ -31,7 +31,7 @@ W przypadku wykrycia nietypowych działań, które mogą wskazywać na nieautory
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>Uzyskiwanie dostępu do raportu dotyczącego użytkowników oflagowanych w związku z ryzykiem
 
-Możesz przejrzeć użytkowników oznaczonych flagą ryzyka za pośrednictwem [raport dotyczący narażonych użytkowników](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) w witrynie Azure portal. Jeśli nie masz usługi Azure AD, możesz zapisać się za darmo w [ https://aka.ms/AccessAAD ](https://aka.ms/AccessAAD). 
+Możesz przejrzeć użytkowników oznaczonych flagą ryzyka za pośrednictwem [raport dotyczący narażonych użytkowników](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) w witrynie Azure portal. Jeśli nie masz usługi Azure AD, możesz zapisać się za darmo w [ https://aka.ms/AccessAAD ](https://aka.ms/AccessAAD). 
 
 Od użytkowników oflagowanych w raporcie o podwyższonym ryzyku można wykonać następujące czynności dla każdego użytkownika:
 

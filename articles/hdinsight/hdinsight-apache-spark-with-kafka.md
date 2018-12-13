@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 110357a7a84aa8cc6bd7dcb5bbef9ca02879a9cb
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c0687ec94af60d3683d3f129eff2bad8fb97d786
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494280"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165808"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Platforma Apache Spark streaming (DStream) przykład z platformy Apache Kafka w HDInsight
 
@@ -59,15 +59,15 @@ Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Sp
 
     * **Lokalizacja**: Wybierz lokalizację lokalizacji geograficznej blisko.
 
-    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa dla aparatu Spark i klastry platformy Kafka. Na przykład wprowadzenie **hdistreaming** tworzony klaster Spark, o nazwie __spark hdistreaming__ i klastra platformy Kafka o nazwie **kafka hdistreaming**.
+    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa w przypadku klastrów Spark i Kafka. Na przykład wprowadzenie **hdistreaming** tworzony klaster Spark, o nazwie __spark hdistreaming__ i klastra platformy Kafka o nazwie **kafka hdistreaming**.
 
-    * **Nazwa użytkownika logowania klastra**: nazwa użytkownika będącego administratorem klastrów Spark i Kafka.
+    * **Nazwa użytkownika logowania klastra**: Nazwa użytkownika administratora dla klastrów Spark i Kafka.
 
-    * **Hasło logowania klastra**: hasło użytkownika będącego administratorem klastrów Spark i Kafka.
+    * **Hasło logowania klastra**: Hasło użytkownika będącego administratorem klastrów Spark i Kafka.
 
-    * **Nazwa użytkownika SSH**: użytkownik SSH do tworzenia klastrów Spark i Kafka.
+    * **Nazwa użytkownika SSH**: Użytkownika SSH do tworzenia klastrów Spark i Kafka.
 
-    * **Hasło SSH**: hasło użytkownika SSH w przypadku klastrów Spark i Kafka.
+    * **SSH hasła**: Hasło użytkownika SSH w przypadku klastrów Spark i Kafka.
 
 3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
 

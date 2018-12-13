@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c8aa337be2dd3c4209a3095d8733893d78f6cb74
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6579e2ced3742eb1a70ccca96b9608fc6da628ee
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314867"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190639"
 ---
-# <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: wprowadzać zmiany w konfiguracji domyślnej
+# <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Zmiany w konfiguracji domyślnej
 Ten artykuł ma na celu objaśniono sposób wprowadzania zmian w domyślnej konfiguracji synchronizacji usługi Azure Active Directory (Azure AD) Connect. Zapewnia on kroki kilka typowych scenariuszy. Za pomocą tej wiedzy można wszechstronną własnych konfiguracji na podstawie własnych reguł biznesowych.
 
 > [!WARNING]
@@ -61,11 +61,11 @@ Najbardziej typowe zmiany dotyczą przepływy atrybutów. Dane w katalogu źród
    ![Liczba przychodzących reguł filtrowania](./media/how-to-connect-sync-change-the-configuration/description2.png)  
    * **Nazwa**: Nadaj regule nazwę opisową.
    * **Opis**: Podaj niektórych wyjaśnienie, aby ktoś inny mógł zrozumieć, co to jest reguła.
-   * **Połączony System**: to jest system, w którym można znaleźć obiektu. W takim przypadku wybierz **łącznika usługi Active Directory**.
-   * **Typ obiektu systemu/Metaverse podłączonej**: Wybierz **użytkownika** i **osoby**odpowiednio.
-   * **Typ łącza**: zmienić tę wartość na **Dołącz**.
+   * **Połączony System**: Jest to system, w którym można znaleźć obiektu. W takim przypadku wybierz **łącznika usługi Active Directory**.
+   * **Typ obiektu systemu/Metaverse podłączonej**: Wybierz **użytkownika** i **osoby**, odpowiednio.
+   * **Typ łącza**: Zmienić tę wartość na **Dołącz**.
    * **Pierwszeństwo**: Podaj wartość, która jest unikatowa w systemie. Niższa wartość liczbowa oznacza wyższy priorytet.
-   * **Tag**: należy pozostawić to puste. Tylko out-of-box zasady firmy Microsoft powinna mieć to pole wypełnione wartością.
+   * **Tag**: Pozostaw puste. Tylko out-of-box zasady firmy Microsoft powinna mieć to pole wypełnione wartością.
 3. Na **filtru Scoping** wpisz **givenName ISNOTNULL**.  
    ![Reguła filtru określania zakresu ruchu przychodzącego](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    W tej sekcji służy do definiowania, aby obiekty, które powinno być stosowane reguły. Jeśli pozostanie puste, reguła będzie stosowana do wszystkie obiekty użytkowników. Jednak Obejmowałoby to sale konferencyjne, konta usług i innych obiektów użytkownika innych osób.
@@ -201,7 +201,7 @@ Azure AD Connect obsługuje synchronizację **UserType** atrybutu dla **użytkow
 
 Domyślnie atrybut UserType nie włączono synchronizacji, ponieważ nie ma odpowiedniego UserType atrybutu w usłudze Active Directory w środowisku lokalnym. Należy ręcznie włączyć synchronizację. Przed wykonaniem tego musi Zwróć uwagę na następujące zachowanie wymuszane przez usługę Azure AD:
 
-- Usługa Azure AD akceptuje tylko dwie wartości dla atrybutu UserType: **elementu członkowskiego** i **gościa**.
+- Usługa Azure AD akceptuje tylko dwie wartości dla atrybutu UserType: **Element członkowski** i **gościa**.
 - Jeśli atrybut UserType nie jest włączona dla synchronizacji w programie Azure AD Connect, użytkowników usługi Azure AD, utworzony za pomocą synchronizacji katalogów będzie mieć atrybut UserType ustawiony na **elementu członkowskiego**.
 - Usługa Azure AD nie zezwala na atrybut UserType na istniejących użytkowników usługi Azure AD, które mają być zmienione przez program Azure AD Connect. Można można ustawić tylko podczas tworzenia użytkowników usługi Azure AD.
 
@@ -211,7 +211,7 @@ Przed włączeniem synchronizacji atrybut UserType, należy najpierw zdecyduj, j
 
     Jeśli wybierzesz tę opcję, należy upewnić się wyznaczonym atrybutu jest wypełniana poprawną wartość dla wszystkich istniejących obiektów użytkowników w usłudze Active Directory w środowisku lokalnym, które są synchronizowane z usługą Azure AD przed włączeniem synchronizacji atrybut UserType .
 
-- Alternatywnie możesz mogą dziedziczyć po wartości atrybutu UserType inne właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako **gościa** Jeśli lokalnych atrybut userPrincipalName AD kończy się część domeny *@partners.fabrikam123.org*. 
+- Alternatywnie możesz mogą dziedziczyć po wartości atrybutu UserType inne właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako **gościa** Jeśli lokalnych atrybut userPrincipalName AD kończy się część domeny <em>@partners.fabrikam123.org</em>. 
 
     Jak wspomniano wcześniej, program Azure AD Connect nie zezwala na atrybut UserType na istniejących użytkowników usługi Azure AD, które mają być zmienione przez program Azure AD Connect. W związku z tym należy zagwarantować, że logika zostały określone, jest zgodna z jak atrybut UserType jest już skonfigurowany dla wszystkich istniejących użytkowników usługi Azure AD w swojej dzierżawie.
 
@@ -228,7 +228,7 @@ Kroki, aby włączyć synchronizację atrybut UserType można podsumować jako:
 >[!NOTE]
 > Pozostała część tej sekcji omówiono następujące kroki. Zostały one opisane w kontekście wdrożenia usługi Azure AD z topologią obejmujących jeden las i bez reguł niestandardowych. W przypadku topologii z wieloma lasami reguły synchronizacji niestandardowych skonfigurowany lub masz serwer przejściowy, musisz odpowiednio dostosować czynności.
 
-### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1: Wyłącz programu sync scheduler i sprawdzić, czy jest brak synchronizacji w toku
+### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1. Wyłącz harmonogram synchronizacji i sprawdzić, czy jest brak synchronizacji w toku
 Aby uniknąć eksportowanie niezamierzone zmiany do usługi Azure AD, upewnij się, że synchronizacja nie ma miejsce, gdy trwa aktualizowanie reguł synchronizacji. Aby wyłączyć harmonogram synchronizacji wbudowane:
 
  1. Uruchom sesję programu PowerShell na serwerze programu Azure AD Connect.
@@ -236,7 +236,7 @@ Aby uniknąć eksportowanie niezamierzone zmiany do usługi Azure AD, upewnij si
  3. Otwórz Menedżera usługi synchronizacji, przechodząc do **Start** > **usługi synchronizacji**.
  4. Przejdź do **operacji** kartę i upewnij się, brak żadna operacja ze stanem *w toku*.
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2: Dodawanie atrybutu źródłowego do serwera lokalnego schemat łącznika AD
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2. Dodawanie atrybutu źródłowego do serwera lokalnego schemat łącznika AD
 Nie wszystkie atrybuty usługi Azure AD są importowane do lokalnego obszaru łącznika usługi AD. Aby dodać atrybut źródłowy do listy atrybutów zaimportowane:
 
  1. Przejdź do **łączników** kartę w Menedżerze usługi synchronizacji.
@@ -246,7 +246,7 @@ Nie wszystkie atrybuty usługi Azure AD są importowane do lokalnego obszaru ł�
  5. Kliknij przycisk **OK** do zapisania.
 ![Dodaj atrybut źródłowy do sieci lokalnej schemat łącznika AD](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Krok 3: Dodawanie UserType schematu łącznik usługi Azure AD
+### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Krok 3. Dodaj UserType schematu łącznik usługi Azure AD
 Domyślnie atrybut UserType nie jest zaimportowany do platformy Azure AD Connect miejsca. Aby dodać atrybut UserType do listy atrybutów zaimportowane:
 
  1. Przejdź do **łączników** kartę w Menedżerze usługi synchronizacji.
@@ -257,7 +257,7 @@ Domyślnie atrybut UserType nie jest zaimportowany do platformy Azure AD Connect
 
 ![Dodaj atrybut źródłowy ze schematem łącznik usługi Azure AD](./media/how-to-connect-sync-change-the-configuration/usertype2.png)
 
-### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Krok 4: Tworzenie reguła synchronizacji ruchu przychodzącego, które będą przepływać wartości atrybutu z usługi Active Directory w środowisku lokalnym
+### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Krok 4: Utwórz regułę synchronizacji ruchu przychodzącego na przepływ wartości atrybutu z usługi Active Directory w środowisku lokalnym
 Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, które będą przepływać z atrybutu źródłowego z usługi Active Directory środowiska lokalnego do środowiska metaverse:
 
 1. Otwórz narzędzia Synchronization Rules Editor, przechodząc do **Start** > **Synchronization Rules Editor**.
@@ -272,7 +272,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, któ
     | Połączonego systemu | *Wybierz lokalny łącznik usługi AD* |  |
     | Połączony System typu obiektu | **Użytkownik** |  |
     | Typ obiektu Metaverse | **Osoby** |  |
-    | Typ linku | **Join** |  |
+    | Typ linku | **Dołącz** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do **filtru Scoping** karta i Dodaj **pojedynczą grupę filtrów określania zakresu** z następującą klauzulę:
@@ -289,7 +289,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, któ
     | --- | --- | --- | --- | --- |
     | Bezpośrednie | UserType | extensionAttribute1 | Niezaznaczone | Aktualizacja |
 
-    W kolejnym przykładzie chcesz dziedziczyć wartość atrybutu UserType inne właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako gościa, jeśli ich w środowisku lokalnym atrybut userPrincipalName AD kończy się część domeny *@partners.fabrikam123.org*. Można zaimplementować wyrażenia następująco:
+    W kolejnym przykładzie chcesz dziedziczyć wartość atrybutu UserType inne właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako gościa, jeśli ich w środowisku lokalnym atrybut userPrincipalName AD kończy się część domeny <em>@partners.fabrikam123.org</em>. Można zaimplementować wyrażenia następująco:
 
     | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
@@ -299,7 +299,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, któ
 
 ![Utwórz regułę synchronizacji ruchu przychodzącego](./media/how-to-connect-sync-change-the-configuration/usertype3.png)
 
-### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Krok 5: Tworzenie reguły synchronizacji ruchu wychodzącego, które będą przepływać wartości atrybutu do usługi Azure AD
+### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Krok 5: Utwórz regułę synchronizacji ruchu wychodzącego do przepływu wartość atrybutu do usługi Azure AD
 Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą przepływać z obiektu metaverse w atrybut UserType w usłudze Azure AD:
 
 1. Przejdź do narzędzia Synchronization Rules Editor.
@@ -314,7 +314,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
     | Połączonego systemu | *Wybierz łącznik usługi AAD* ||
     | Połączony System typu obiektu | **Użytkownik** ||
     | Typ obiektu Metaverse | **Osoby** ||
-    | Typ linku | **Join** ||
+    | Typ linku | **Dołącz** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do **filtru Scoping** karta i Dodaj **pojedynczą grupę filtrów określania zakresu** z dwóch klauzul:
@@ -336,7 +336,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 
 ![Utwórz regułę synchronizacji ruchu wychodzącego](./media/how-to-connect-sync-change-the-configuration/usertype4.png)
 
-### <a name="step-6-run-a-full-synchronization-cycle"></a>Krok 6: Uruchamianie cyklu pełną synchronizację
+### <a name="step-6-run-a-full-synchronization-cycle"></a>Krok 6: Uruchom pełną synchronizację cyklu
 Ogólnie rzecz biorąc cyklu Pełna synchronizacja jest wymagana, ponieważ firma Microsoft ma dodaje nowe atrybuty do usługi Active Directory, jak i łącznik usługi Azure AD schematów i wprowadzić reguły synchronizacji niestandardowych. Chcesz zweryfikować zmiany przed rozpoczęciem eksportowania ich do usługi Azure AD. 
 
 Następujące kroki można użyć, aby zweryfikować zmiany podczas ręcznego uruchamiania czynności, które tworzą cyklu pełną synchronizację.
@@ -349,7 +349,7 @@ Następujące kroki można użyć, aby zweryfikować zmiany podczas ręcznego ur
    4. Poczekaj na zakończenie operacji.
 
     > [!NOTE]
-    > Możesz pominąć pełny import na lokalną łącznik AD, jeśli atrybut źródłowy znajduje się już na liście zaimportowane atrybutów. Oznacza to, trzeba wprowadzać żadnych zmian podczas [krok 2: Dodaj atrybut źródłowy do sieci lokalnej schemat łącznika AD](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
+    > Możesz pominąć pełny import na lokalną łącznik AD, jeśli atrybut źródłowy znajduje się już na liście zaimportowane atrybutów. Oznacza to, trzeba wprowadzać żadnych zmian podczas [krok 2: Dodawanie atrybutu źródłowego do serwera lokalnego łącznika AD schematu](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
 
 2. Uruchom **pełny import** na **łącznik usługi Azure AD**:
 
@@ -375,7 +375,7 @@ Następujące kroki można użyć, aby zweryfikować zmiany podczas ręcznego ur
    2. W **wyszukiwania obszaru łącznika** wyskakujące okno dialogowe:
 
       - Ustaw **zakres** do **operacja eksportowania oczekująca**.
-      - Zaznacz wszystkie trzy pola wyboru: **Dodaj**, **Modyfikuj**, i **Usuń**.
+      - Zaznacz wszystkie trzy pola wyboru: **Dodaj**, **zmodyfikować**, i **Usuń**.
       - Kliknij przycisk **wyszukiwania** przycisk, aby uzyskać listę obiektów, ze zmianami, które mają zostać wyeksportowane. Aby sprawdzić zmiany dla danego obiektu, kliknij dwukrotnie obiekt.
       - Upewnij się, czy zmiany są oczekiwane.
 
@@ -388,7 +388,7 @@ Następujące kroki można użyć, aby zweryfikować zmiany podczas ręcznego ur
 > [!NOTE]
 > Te kroki nie obejmują pełnej synchronizacji i kroki w programie Azure AD Connector eksportowania. Te kroki nie są wymagane, ponieważ wartości atrybutów przepływają do usługi Azure AD tylko z usługi Active Directory w środowisku lokalnym.
 
-### <a name="step-7-re-enable-the-sync-scheduler"></a>Krok 7: Ponownie włączyć harmonogram synchronizacji
+### <a name="step-7-re-enable-the-sync-scheduler"></a>Krok 7: Ponowne włączenie programu sync scheduler
 Ponownie włączyć harmonogram synchronizacji wbudowane:
 
 1. Uruchom sesję programu PowerShell.
@@ -401,5 +401,5 @@ Ponownie włączyć harmonogram synchronizacji wbudowane:
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

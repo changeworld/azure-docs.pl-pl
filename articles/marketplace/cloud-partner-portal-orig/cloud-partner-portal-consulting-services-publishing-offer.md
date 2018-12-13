@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7ea4a58f072071f60cf87d1e8817ae19658be5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037774"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310423"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Platforma Azure i oferty usług doradczych dotyczących Dynamics 365
 
 <table> <tr> <td>W tej sekcji opisano sposób publikowania usługa doradcza do firmy Microsoft <a href="https://azuremarketplace.microsoft.com">portalu Azure Marketplace</a> lub <a href="https://appsource.microsoft.com">Marketplace usługi AppSource</a>. Rozwiązania oparte na programie Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://products.office.com">usługi Office 365</a>, <a href="https://powerbi.microsoft.com">usługi Power BI</a>, i <a href="https://powerapps.microsoft.com">PowerApps</a> mogą pojawić się w usłudze AppSource. Inne oferty na podstawie innych firmy Microsoft <a href="https://azure.microsoft.com/services">usług platformy Azure</a> kwalifikują się do listy w witrynie Azure Marketplace. </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
 
 
-# <a name="publishing-benefits"></a>Publikowanie korzyści
+## <a name="publishing-benefits"></a>Publikowanie korzyści
 
 Publikowanie do jednej z platformach handlowych firmy Microsoft ma znaczące korzyści:
 
@@ -36,13 +36,11 @@ Publikowanie do jednej z platformach handlowych firmy Microsoft ma znaczące kor
 - Uzyskaj usługi wspierane przez zespoły pola i telesales firmy Microsoft.
 
 
-<a name="define-your-consulting-services-offer"></a>Zdefiniuj oferty usług doradczych
--------------------------------------
+## <a name="define-your-consulting-services-offer"></a>Zdefiniuj oferty usług doradczych
 
 Zdefiniuj spakowanych doradcze oferty usługi. Skupić się na zakres stały, stała szacowany czas trwania, stała cena (lub zwolnij) i głównie zorientowane na sales wstępnej ofert dla jednego klienta. Wybierz powtarzalne spakowanych engagements, które zostały popularnych i efektywne, prowadzenie nową działalność dla Ciebie.
 
-<a name="publish-a-consulting-service-offer"></a>Opublikuj ofertę usługi doradcze
-----------------------------------
+## <a name="publish-a-consulting-service-offer"></a>Opublikuj ofertę usługi doradcze
 
 W poniższych sekcjach opisano proces publikowania oferty usług doradczych
 
@@ -62,7 +60,7 @@ Aby utworzyć nową ofertę, wykonaj następujące czynności:
 
 ### <a name="define-offer-settings"></a>Zdefiniuj ustawienia oferty
 
-Na ekranie nowa oferta pierwszym krokiem jest utworzenie tożsamości oferty.  Tożsamość oferty składa się z trzech części: **identyfikatora oferty Offer ID**, **Identyfikatora wydawcy**, i **nazwa**.  Każdy z tych elementów zostały omówione w poniższych sekcjach.
+Na ekranie nowa oferta pierwszym krokiem jest utworzenie tożsamości oferty.  Tożsamość oferty składa się z trzech części: **Identyfikator oferty**, **Identyfikatora wydawcy**, i **nazwa**.  Każdy z tych elementów zostały omówione w poniższych sekcjach.
 
 #### <a name="offer-id"></a>Identyfikator oferty
 
@@ -80,7 +78,7 @@ Ten identyfikator jest związane z Twoim kontem. Gdy użytkownik jest zalogowany
 
 Ten ciąg jest o tym, co będzie wyświetlana jako nazwa oferty w usłudze AppSource lub witrynie Azure Marketplace.
 
-**Ważne:** wprowadzić tylko nazwę nazwa rzeczywistej usługi. Nie dołączaj czas trwania i typ usługi.
+**Ważne:** Wprowadź tylko nazwę nazwa rzeczywistej usługi. Nie dołączaj czas trwania i typ usługi.
 
 Poniższy przykład przez Edgewater Fullscope pokazuje, jak nazwa oferty jest składany. Nazwa oferty wygląda następująco:
 
@@ -98,12 +96,12 @@ Poniższa lista zawiera kilka nazw dobrze nazwane oferty:
 -   Podstawy dla profesjonalnych usług: 1-godzinnego widoków
 -   Platforma usług w chmurze migracji: 1-godzinnego widoków
 -   Usługa PowerApps i Microsoft Flow: 1-dniowych warsztatów
--   Usługi Azure Machine Learning: tydzień 3 PoC
+-   Usługi Azure Machine Learning Services: Weryfikacja koncepcji 3 tygodnie
 -   Kostki, a następnie kliknij przycisk handlu detalicznego rozwiązania: 1-godzinnego widoków
--   Możesz używać własnych danych: warsztaty 1 tydzień
+-   Możesz używać własnych danych: Warsztaty 1 tydzień
 -   Analiza w chmurze: 3-dniowych warsztatów
 -   Usługa Power BI szkolenia: 3-dniowych warsztatów
--   Rozwiązania do zarządzania sprzedaży: implementacja 1 tydzień
+-   Rozwiązanie do zarządzania sprzedaży: Implementacja 1 tydzień
 -   Szybki Start CRM: 1-dniowych warsztatów
 -   Dynamics 365 for Sales: 2-dniowych oceny
 
@@ -131,28 +129,28 @@ Podsumowanie oferty jest krótki opis oferty, zostanie wyświetlony tuż poniże
 
 *Przykład 1*
 
--   **Nazwa oferty:** analizy chmur: 3-dniowych warsztatów
--   **Oferują Podsumowanie:** omówienie platformy Microsoft Azure i usługi Power BI, ocenę bieżącego środowiska i mini weryfikacji Koncepcji.
+-   **Nazwa oferty:** Analiza w chmurze: 3-dniowych warsztatów
+-   **Podsumowanie oferty:** Omówienie programu Microsoft Azure i usługi Power BI, ocenę bieżącego środowiska i mini weryfikacji Koncepcji.
 
 *Przykład 2*
 
--   **Nazwa oferty:** przemysłowego Internetu rzeczy platformy Azure: 30-dniowej weryfikacji koncepcji
--   **Oferują Podsumowanie:** tworzenie pilotażu przemysłowych połączonych produktów do bezpiecznego łączenia urządzeń, w polu do rozwiązania Azure IoT Hub za pomocą pulpitów nawigacyjnych, raportów i powiadomień.
+-   **Nazwa oferty:** Przemysłowego Internetu rzeczy platformy Azure: 30-dniowej weryfikacji koncepcji
+-   **Podsumowanie oferty:** Utwórz pilotażu przemysłowych połączonych produktów do bezpiecznego łączenia urządzeń, w polu do rozwiązania Azure IoT Hub za pomocą pulpitów nawigacyjnych, raportów i powiadomień.
 
 *Przykład 3*
 
--   **Nazwa oferty:** specjalistyczne: 1-godzinnego widoków
--   **Podsumowanie:** omówienie i wersji demonstracyjnej, wstępnie skonfigurowane, rozszerzony Dynamics 365 for dostarczanie rozwiązań operacje usprawnione zarządzanie projektami, rozliczeń i zasoby dla profesjonalnych usług.
+-   **Nazwa oferty:** Profesjonalne usługi: 1-godzinnego widoków
+-   **Podsumowanie oferty:** Przegląd i pokaz wstępnie skonfigurowane, rozszerzone Dynamics 365 dla rozwiązania Operations, zapewniając rozszerzone Zarządzanie projektami, rozliczeń i zasobami dla profesjonalnych usług.
 
 *Przykład 4*
 
--   **Nazwa oferty:** usługi Power BI w świecie Your: warsztaty 4 godz.
--   **Oferują Podsumowanie:** Szybkie rozpoczynanie pracy z swój pierwszy pulpit nawigacyjny i poznać najlepsze rozwiązania. Dla uczniów i studentów do 12 należy przeprowadzić na miejscu.
+-   **Nazwa oferty:** Usługa Power BI w sieci World: Warsztaty 4 godz.
+-   **Podsumowanie oferty:** Szybkie rozpoczynanie pracy z swój pierwszy pulpit nawigacyjny i poznać najlepsze rozwiązania. Dla uczniów i studentów do 12 należy przeprowadzić na miejscu.
 
 *Przykład 5*
 
--   **Nazwa oferty:** Dynamics i projektów: ocena 3 dni
--   **Oferują Podsumowanie:** zbieranie informacji o wymaganiach i oceny dla rozwiązania ERP i przeniesieniu jej przeznaczone dla profesjonalnych usług przedsiębiorstw i przedsiębiorstw oparte na projekt.
+-   **Nazwa oferty:** Dynamics i projektów: Ocena 3 dni
+-   **Podsumowanie oferty:** Zbieranie informacji o wymaganiach i oceny dla rozwiązania ERP i przeniesieniu jej przeznaczone dla profesjonalnych usług przedsiębiorstw i przedsiębiorstw oparte na projekt.
 
 ##### <a name="offer-description"></a>Opis oferty
 
@@ -168,11 +166,11 @@ Zachowaj krótki opis oferty i stosować limit znaków, jak jest użytkowników 
 
 Poniższy przykład pokazuje, oraz złożone opis oferty i nazwy powiązane i Podsumowanie:
 
-**Nazwa oferty:** analizy chmur: 3-dniowych warsztatów
+**Nazwa oferty:** Analiza w chmurze: 3-dniowych warsztatów
 
-**Oferują Podsumowanie:** omówienie platformy Microsoft Azure i usługi Power BI, ocenę bieżącego środowiska i mini weryfikacji Koncepcji.
+**Podsumowanie oferty:** Omówienie programu Microsoft Azure i usługi Power BI, ocenę bieżącego środowiska i mini weryfikacji Koncepcji.
 
-**Opis oferty:** ten 3-dniowych warsztatów służy do liderów technicznych i biznesowych i są przechowywane na miejscu we klienta.
+**Opis oferty:** Ten 3-dniowych warsztatów służy do liderów technicznych i biznesowych i są przechowywane na miejscu we klienta.
 
 ***Plan***
 
@@ -236,11 +234,11 @@ Firma Microsoft jest ukierunkowywanie wyłącznie na zakres stały, stały czas 
 
 Uwzględnione są następujące pięć typów ofert:
 
--   **Ocena:** ocenę środowiska klienta, aby określić możliwości zastosowania rozwiązania i Oszacuj koszt i czas.
--   **Widoków:** wprowadzenie do rozwiązania lub usługa doradcza do rysowania odsetek klientów przy użyciu struktur, demonstracje i przykłady klientów. Sprawozdaniach musi być przeprowadzone u klienta.
--   **Implementacja:** pełna instalacja, która powstaje w pełni działającego rozwiązania. Ten program pilotażowy firma Microsoft zaleca, ograniczenie do rozwiązania, które mogą być implementowane w tygodniu lub mniej.
--   **Weryfikacja koncepcji:** implementacji ograniczonym zakresie, aby określić, jeśli to rozwiązanie będzie spełniać wymagania klientów.
--   **Warsztaty:** interaktywne konsultacje przeprowadzone lokalnie klienta, które mogą zawierać sesji szkoleniowych, sprawozdaniach, ocen i pokazy oparta na danych lub środowisko klienta.
+-   **Ocena:** Ocena środowiska klienta, aby określić możliwości zastosowania rozwiązania i Oszacuj koszt i czas.
+-   **Widoków:** Wprowadzenie do rozwiązania lub usługa doradcza do rysowania odsetek klientów przy użyciu struktur, demonstracje i przykłady klientów. Sprawozdaniach musi być przeprowadzone u klienta.
+-   **Implementacja:** Pełna instalacja wyniki w pełni działającego rozwiązania. Ten program pilotażowy firma Microsoft zaleca, ograniczenie do rozwiązania, które mogą być implementowane w tygodniu lub mniej.
+-   **Weryfikacja koncepcji:** Implementacja ograniczonym zakresie, aby określić, jeśli to rozwiązanie będzie spełniać wymagania klientów.
+-   **Warsztaty:** Interaktywne konsultacje przeprowadzone lokalnie klienta, które mogą zawierać sesji szkoleniowych, sprawozdaniach, ocen i pokazy oparta na danych lub środowisko klienta.
 
 **Dostępność kraj/region**
 

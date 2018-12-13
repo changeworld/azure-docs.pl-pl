@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6f538fa821e546d12c5a2bdb9585cc85871241fa
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 010fd442419f57f8b53705be8d3f49fdb84e28fd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094156"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262456"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Przykłady manifestu wielokontenerowej aplikacji i usługi
 Poniżej przedstawiono przykłady manifestów aplikacji i usługi dla aplikacji usługi Service Fabric obsługującej wiele kontenerów. Te przykłady ma na celu Pokaż jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usługi są oparte na [przykład kontenera systemu Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) manifestów.
@@ -295,7 +295,7 @@ Określa zasady do aktywacji na hostach kontenerów. Aby uzyskać więcej inform
 Poświadczenia dla repozytorium obrazów kontenera do ściągania obrazów z. Aby uzyskać więcej informacji, zobacz [RepositoryCredentials — Element](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
 ### <a name="portbinding-element"></a>PortBinding Element
-Określa zasobu punktu końcowego, który chcesz powiązać ujawnionych portów kontenera. Aby uzyskać więcej informacji, zobacz [PortBinding — Element](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+Określa zasobu punktu końcowego, który chcesz powiązać ujawnionych portów kontenera. Aby uzyskać więcej informacji, zobacz [PortBinding — Element](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInServicePackageContainerPolicyTypecomplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
 ### <a name="volume-element"></a>Element woluminu
 Określa wolumin, który może być powiązane z kontenera. Aby uzyskać więcej informacji, zobacz [Element woluminu](service-fabric-service-model-schema-elements.md#VolumeElementContainerVolumeTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
@@ -313,7 +313,7 @@ Obraz kontenera odpowiadający numer wersji kompilacji systemu operacyjnego do u
  Aby uzyskać więcej informacji, zobacz [EnvironmentOverrides — Element](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="environmentvariable-element"></a>Element zmiennych środowiskowych
-zmiennej środowiskowej. Aby uzyskać więcej informacji, zobacz [Element zmiennych środowiskowych](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)
+zmiennej środowiskowej. Aby uzyskać więcej informacji, zobacz [Element zmiennych środowiskowych](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="certificateref-element"></a>CertificateRef Element
 Określa informacje o X509 certyfikatu, który ma być udostępniana dla środowiska kontenera. Certyfikat musi być zainstalowany w magazynie LocalMachine wszystkich węzłów klastra.
@@ -356,7 +356,7 @@ Repozytorium i obraz na https://hub.docker.com lub Azure Container Registry. Aby
 Przekazać zmienne środowiskowe do kontenera lub pliku exe.  Aby uzyskać więcej informacji, zobacz [EnvironmentVariables — Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="environmentvariable-element"></a>Element zmiennych środowiskowych
-zmiennej środowiskowej. Aby uzyskać więcej informacji, zobacz [Element zmiennych środowiskowych](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)
+zmiennej środowiskowej. Aby uzyskać więcej informacji, zobacz [Element zmiennych środowiskowych](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage Element
 Deklaruje folderu nazwane nazwy atrybutu, który zawiera Settings.xml plik. Ten plik zawiera sekcje ustawień zdefiniowanych przez użytkownika, pary klucz wartość pary, które ten proces może odczytywać Wstecz w czasie wykonywania. Podczas uaktualniania Jeśli istnieją tylko w wersji ConfigPackage został zmieniony, następnie uruchomiony proces nie zostanie ponownie uruchomiony. Zamiast tego wywołania zwrotnego powiadamia procesu, które uległy zmianie ustawień konfiguracji, aby dynamicznie załadowania. Aby uzyskać więcej informacji, zobacz [ConfigPackage — Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
@@ -403,7 +403,7 @@ Rozdzielany przecinkami listę poleceń należy przekazać do kontenera. Aby uzy
 Przekazać zmienne środowiskowe do kontenera lub pliku exe.  Aby uzyskać więcej informacji, zobacz [EnvironmentVariables — Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="environmentvariable-element"></a>Element zmiennych środowiskowych
-zmiennej środowiskowej. Aby uzyskać więcej informacji, zobacz [Element zmiennych środowiskowych](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)
+zmiennej środowiskowej. Aby uzyskać więcej informacji, zobacz [Element zmiennych środowiskowych](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage Element
 Deklaruje folderu nazwane nazwy atrybutu, który zawiera Settings.xml plik. Ten plik zawiera sekcje ustawień zdefiniowanych przez użytkownika, pary klucz wartość pary, które ten proces może odczytywać Wstecz w czasie wykonywania. Podczas uaktualniania Jeśli istnieją tylko w wersji ConfigPackage został zmieniony, następnie uruchomiony proces nie zostanie ponownie uruchomiony. Zamiast tego wywołania zwrotnego powiadamia procesu, które uległy zmianie ustawień konfiguracji, aby dynamicznie załadowania. Aby uzyskać więcej informacji, zobacz [ConfigPackage — Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)

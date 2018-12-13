@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 2909f586ce102b319ca9dfeea191c7812e3f6b06
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 24a737a728b0a249fda76cbff481bea284ac24aa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883123"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53182948"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>wyrażenie Workspace() zapytanie usługi Log Analytics
 
@@ -32,7 +31,7 @@ ms.locfileid: "52883123"
 
 ## <a name="arguments"></a>Argumenty
 
-- *Identyfikator*: identyfikuje obszaru roboczego przy użyciu jednego z formatów w poniższej tabeli.
+- *Identyfikator*: Identyfikuje obszaru roboczego przy użyciu jednego z formatów w poniższej tabeli.
 
 | Identyfikator | Opis | Przykład
 |:---|:---|:---|

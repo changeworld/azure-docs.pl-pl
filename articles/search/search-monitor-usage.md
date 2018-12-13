@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie użycia i statystyk w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Monitorowanie użycia i statystyk usługi wyszukiwania — usługa Azure Search
 description: Śledzenie użycia i indeks rozmiar zasobu usługi Azure Search, Usługa wyszukiwania w hostowanej chmurze Microsoft Azure.
 author: HeidiSteen
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 274513c7e8ad1ca9ed0452f6237eec4ebb38e9cd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.custom: seodec2018
+ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134866"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314163"
 ---
-# <a name="monitoring-an-azure-search-service"></a>Monitorowanie usługi Azure Search
+# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Monitorowanie usługi Azure Search w witrynie Azure portal
 
 Usługa Azure Search udostępnia różne zasoby dla śledzenia użycia i wydajności usługi wyszukiwania. Daje ona dostęp do metryk, dzienników, statystyki indeksu i rozszerzone możliwości monitorowania w usłudze Power BI. W tym artykule opisano sposób włączania różne strategie monitorowania i jak interpretować dane wynikowe.
 
@@ -26,9 +27,9 @@ Metryki umożliwiają niemal w czasie rzeczywistym wgląd w usługi wyszukiwania
 
 Usługa Azure Search służy do zbierania danych, aby uzyskać trzy różne metryki:
 
-* Opóźnienie wyszukiwania: czas usługę wyszukiwania, potrzebne do przetwarzania kwerend wyszukiwania, zagregowane na minutę.
-* Wyszukaj zapytań na sekundę (QPS): liczba wyszukiwania kwerend odebranych na sekundę, zagregowane na minutę.
-* Wyszukiwania z ograniczoną przepustowością zapytania procent: procent zapytań wyszukiwania, które zostały ograniczone zagregowane na minutę.
+* Opóźnienie wyszukiwania: Czas usługę wyszukiwania, potrzebne do przetwarzania kwerend wyszukiwania, zagregowane na minutę.
+* Zapytania wyszukiwania na sekundę (QPS): Liczba wyszukiwania kwerend odebranych na sekundę, zagregowane na minutę.
+* Procent zapytań wyszukiwania z ograniczoną przepustowością: Procent zapytań wyszukiwania, które zostały ograniczone zagregowane na minutę.
 
 ![Zrzut ekranu QPS działania][1]
 
@@ -71,7 +72,7 @@ Dzienniki operacji można wyeksportować do usługi i dane pierwotne dotyczące 
 ### <a name="enabling-monitoring"></a>Włączanie monitorowania
 Otwórz swoją usługę Azure Search w [witryny Azure portal](http://portal.azure.com) pod opcją Włącz monitorowanie.
 
-Wybierz dane, którą chcesz wyeksportować: dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysyłać je do Centrum zdarzeń lub wyeksportować je do usługi Log Analytics.
+Wybierz dane, które mają zostać wyeksportowane: Dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysyłać je do Centrum zdarzeń lub wyeksportować je do usługi Log Analytics.
 
 ![Jak włączyć monitorowanie w portalu][3]
 
@@ -99,7 +100,7 @@ Każdy obiekt blob ma rekordów o nieudanej operacji, które miało miejsce w ci
 | operationName |ciąg |"Query.Search" |Nazwa operacji |
 | operationVersion |ciąg |"2015-02-28" |Używana wersja interfejsu api |
 | category |ciąg |"OperationLogs" |Stałe |
-| resultType |ciąg |Komunikat "success" |Możliwe wartości: powodzenie lub niepowodzenie |
+| resultType |ciąg |Komunikat "success" |Możliwe wartości: Powodzenie lub niepowodzenie |
 | resultSignature |int |200 |Kod wyniku protokołu HTTP |
 | durationMS |int |50 |Czas trwania działania (w milisekundach) |
 | properties |obiekt |Zobacz poniższą tabelę |Obiekt zawierający dane specyficzne dla operacji |

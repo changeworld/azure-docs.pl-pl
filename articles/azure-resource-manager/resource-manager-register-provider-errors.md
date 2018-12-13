@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/07/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 787d6549eb8413c9dcfc0c906167cc36d4cff6b0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135716"
+ms.locfileid: "53184546"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Rozwiązywanie błędów dla rejestracji dostawcy zasobów
 
@@ -47,9 +47,9 @@ Komunikat o błędzie powinien zapewnić sugestie dotyczące obsługiwane lokali
 
 Te błędy są jednego z trzech powodów:
 
-1. Dostawca zasobów nie został zarejestrowany dla Twojej subskrypcji
-1. Wersja interfejsu API, które nie są obsługiwane dla typu zasobu
-1. Lokalizacja nie jest obsługiwana dla typu zasobu
+* Dostawca zasobów nie został zarejestrowany dla Twojej subskrypcji
+* Wersja interfejsu API, które nie są obsługiwane dla typu zasobu
+* Lokalizacja nie jest obsługiwana dla typu zasobu
 
 ## <a name="solution-1---powershell"></a>Rozwiązanie 1 — PowerShell
 

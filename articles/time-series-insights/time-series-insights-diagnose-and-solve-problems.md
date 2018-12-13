@@ -1,5 +1,5 @@
 ---
-title: Diagnozowanie i rozwiązywanie problemów w usłudze Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Usługa Azure Time Series Insights Rozwiązywanie problemów — diagnozowanie i rozwiązywanie problemów w usłudze Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób diagnozowania, rozwiązywanie problemów i rozwiązywanie typowych problemów, które mogą wystąpić w danym środowisku usługi Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,92 +10,109 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: ef06e7b1abd66a2204ef982943fe24354bd7f122
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 8e9a2bc8378f71e510d11b3e28438489d620ff6f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837447"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322332"
 ---
-# <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w danym środowisku usługi Time Series Insights
+# <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w danym środowisku usługi Time Series Insights
 
-W tym artykule opisano niektóre problemy, które można napotkać w danym środowisku usługi Time Series Insights. Oferuje ona potencjalne przyczyny i potencjalne rozwiązania do rozpoznania.
+W tym artykule opisano niektóre problemy, które mogą wystąpić w danym środowisku usługi Azure Time Series Insights. Artykuł zawiera potencjalne przyczyny i potencjalne rozwiązania do rozpoznania.
 
 ## <a name="video"></a>Wideo: 
 
-### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>W tym filmie omówione typowych wyzwań klienta usługi Time Series Insights i środki zaradcze.</br>
+W tym filmie omówione typowych wyzwań klienta usługi Time Series Insights i środki zaradcze:</br>
 
 > [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
-## <a name="problem-1-no-data-is-shown"></a>Problem 1: Brak danych jest wyświetlany.
-Istnieje kilka przyczyn typowych, dlaczego mogą nie być wyświetlane dane w [Azure Eksplorator usługi Time Series Insights](https://insights.timeseries.azure.com):
+## <a name="problem-1-no-data-is-shown"></a>Problem 1: Dane nie są wyświetlane
 
-### <a name="possible-cause-a-event-source-data-is-not-in-json-format"></a>Możliwa przyczyna A: zdarzenia źródła danych nie jest w formacie JSON
+Brak danych w [Eksploratora usługi Azure Time Series Insights](https://insights.timeseries.azure.com) może wystąpić z kilku typowych powodów:
+
+### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Przyczyna Odp.: Zdarzenia źródła danych nie jest w formacie JSON
+
 Usługa Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady kodu JSON, zobacz [kształty JSON obsługiwany](./how-to-shape-query-json.md).
 
-### <a name="possible-cause-b-event-source-key-is-missing-a-required-permission"></a>Klucz źródła zdarzeń B: możliwą przyczyną jest brak wymaganych uprawnień
-* Dla usługi IoT Hub, musisz podać klucz, który ma **połączenie z usługą** uprawnień.
+### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Przyczyna B: Klucz źródła zdarzeń nie ma wymaganych uprawnień
 
-   ![Uprawnienia do połączenia z usługi IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
+* Dla usługi IoT hub w usłudze Azure IoT Hub, musisz podać klucz, który ma **połączenie z usługą** uprawnienia. Jedną z **iothubowner** lub **usługi** zasady będą działać, ponieważ mają one zarówno **połączenie z usługą** uprawnienia.
 
-   Pokazany na wcześniejszej ilustracji, albo zasady **iothubowner** i **usługi** będzie działać, ponieważ mają **połączenie z usługą** uprawnień.
+   ![Usługa IoT Hub połączyć uprawnienia](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
-* Centrum zdarzeń, musisz podać klucz, który ma **nasłuchiwania** uprawnień.
 
-   ![Uprawnienie nasłuchiwania Centrum zdarzeń](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)
+* Centrum zdarzeń w usłudze Azure Event Hubs, należy podać klucz, który ma **nasłuchiwania** uprawnienia. Jedną z **odczytu** lub **zarządzanie** zasady będą działać, ponieważ mają one zarówno **nasłuchiwania** uprawnienia.
 
-   Pokazany na wcześniejszej ilustracji, albo zasady **odczytu** i **zarządzanie** będzie działać, ponieważ mają **nasłuchiwania** uprawnień.
+   ![Uprawnienia nasłuchiwania Centrum zdarzeń](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)
 
-### <a name="possible-cause-c-the-consumer-group-provided-is-not-exclusive-to-time-series-insights"></a>Możliwe, że C: Podana grupa odbiorców, nie jest dostępna wyłącznie dla usługi Time Series Insights
-Podczas rejestracji am usługi IoT Hub lub Centrum zdarzeń można określić grupy odbiorców, które mają być używane do odczytywania danych. Ta grupa odbiorców musi **nie** można udostępniać. Jeśli grupa odbiorców jest udostępniony, podstawowe Centrum zdarzeń automatycznie Odłącza jeden czytników losowo. Podaj grupy odbiorców unikatowy dla usługi Time Series Insights do odczytu.
+### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Przyczyna C: Grupa odbiorców, pod warunkiem jest wyłącznie dla usługi Time Series Insights
 
-## <a name="problem-2-some-data-is-shown-but-some-is-missing"></a>Problem 2: Niektóre dane są wyświetlane, ale brakuje
-Gdy dane można wyświetlić częściowo, ale opóźnionych dane, istnieją należy wziąć pod uwagę kilka możliwości:
+Po zarejestrowaniu Centrum IoT hub lub Centrum zdarzeń, jest ważne, aby ustawić grupy odbiorców, które chcesz użyć do odczytywania danych. Ta grupa odbiorców *nie może być współużytkowana*. Jeśli grupa odbiorców jest udostępniony, podstawowej usługi IoT hub lub Centrum zdarzeń losowo i automatycznie Odłącza jeden czytników. Podaj grupy odbiorców unikatowy dla usługi Time Series Insights do odczytu.
 
-### <a name="possible-cause-a-your-environment-is-getting-throttled"></a>Odp.: środowisko z możliwych przyczyn jest ograniczany
-Jest to powszechny problem, gdy środowiska są aprowizowane po utworzeniu źródła zdarzeń z danymi.  Usługi Azure IoT Hub i centrów zdarzeń maksymalnie danych siedem dni.  Usługa TSI Przesyła zawsze rozpocznie od najstarszych zdarzeń (FIFO) w źródle zdarzenia.  Dlatego jeśli masz pięć milionów zdarzeń w źródle zdarzenia podczas łączenia z S1 środowiska TSI pojedynczej jednostki, TSI odczyta około 1 milion zdarzeń dziennie.  To może pojawić się wyglądać tak, jakby TSI występuje pięć dni czas oczekiwania na pierwszy rzut oka.  Co naprawdę dzieje się to środowisko jest ograniczane.  Jeśli masz stare zdarzenia w źródle zdarzenia może zbliżać się jeden z dwóch sposobów:
+## <a name="problem-2-some-data-is-shown-but-data-is-missing"></a>Problem 2: Niektóre dane są wyświetlane, ale brakuje danych
 
-- Zmień limity przechowywania źródło zdarzeń, aby pomóc usunąć stare zdarzenia, które nie mają być wyświetlane w usłudze TSI
-- Aprowizuj większy rozmiar środowiska (pod względem liczby jednostek) w celu zwiększenia przepływności starych zdarzeń.  W powyższym przykładzie, korzystając z zwiększenie tym samym środowisku S1 do pięciu jednostek przez jeden dzień, środowisko należy — wyrównywanie do chwili w ciągu dnia.  Jeśli w środowisku produkcyjnym zdarzenie stanie stabilności jest 1 MB lub mniej zdarzeń na dzień, następnie można zmniejszyć pojemność zdarzeń wróci ponownie do jednej jednostki po złapał w.  
+Gdy dane są wyświetlane tylko częściowo i dane wydaje się być opóźnione, rozważ kilka możliwości.
 
-Limit ograniczania są wymuszane na podstawie typu jednostki SKU środowiska i pojemności. Wszystkie źródła zdarzeń w środowisku udostępnianie tej pojemności. Jeśli źródła zdarzeń dla usługi IoT Hub lub Centrum zdarzeń jest wypychania danych poza granicami wymuszone, zobaczysz ograniczania przepustowości i aktualizowany z opóźnieniem.
+### <a name="cause-a-your-environment-is-being-throttled"></a>Przyczyna Odp.: Środowisko jest ograniczane
 
-Na poniższym diagramie przedstawiono środowisko usługi Time Series Insights, które ma jednostkę SKU S1 i pojemność 3. Jest to możliwe ruch przychodzący 3 mln zdarzeń każdego dnia.
+Ograniczanie przepływności jest typowym problemem, gdy środowiska są aprowizowane po utworzeniu źródła zdarzeń, która zawiera dane. Usługa Azure IoT Hub i centra zdarzeń Azure przechowywać dane przez maksymalnie siedem dni. Usługa Time Series Insights zawsze zaczynać najstarszych zdarzeń w zdarzeniu źródła (pierwszy in, first-out lub *FIFO*). 
+
+Na przykład jeśli masz 5 milionów zdarzeń źródła zdarzeń po podłączeniu do S1, środowiska usługi Time Series Insights pojedynczej jednostki, usługi Time Series Insights odczytuje około 1 mln zdarzeń dziennie. Wygląda, takich jak usługi Time Series Insights występuje pięć dni opóźnienia. Co się dzieje jest jednak, że środowisko jest ograniczane. 
+
+Jeśli masz stare zdarzenia w źródle zdarzenia masz podejście ograniczania przepustowości w jeden z dwóch sposobów:
+
+- Zmień limity przechowywania źródła zdarzeń, aby usunąć stare zdarzenia, które nie mają być wyświetlane w usłudze Time Series Insights.
+- Aprowizuj większy rozmiar środowiska (liczbę jednostek) w celu zwiększenia przepływności starych zdarzeń. Użyty w poprzednim przykładzie, jeśli zwiększyć w tym samym środowisku S1 do pięciu jednostek przez jeden dzień, środowisko należy zapoznać się z nimi w ciągu dnia. Jeśli stan zdarzenia w środowisku produkcyjnym jest 1 miliona lub mniej zdarzeń dziennie, można zmniejszyć pojemność zdarzeń jedną jednostkę po jej wyrównywane.
+
+Limit ograniczania są wymuszane na podstawie typu jednostki SKU środowiska i pojemności. Wszystkie źródła zdarzeń w środowisku udostępnianie tej pojemności. Jeśli źródła zdarzeń dla usługi IoT hub lub Centrum zdarzeń przekazujący dane poza granicami wymuszone, zobaczysz ograniczania przepustowości i aktualizowany z opóźnieniem.
+
+Na poniższej ilustracji przedstawiono środowisko usługi Time Series Insights, które ma jednostkę SKU S1 i pojemność 3. Jest to możliwe ruch przychodzący 3 mln zdarzeń każdego dnia.
 
 ![Bieżąca pojemność jednostki SKU środowiska](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)
 
-Na przykład załóżmy, że to środowisko jest wprowadzane komunikaty z Centrum zdarzeń. Zwróć szybkość transferu danych przychodzących, pokazano na poniższym diagramie:
+Na przykład załóżmy, że to środowisko pozyskuje komunikaty z Centrum zdarzeń. Na poniższej ilustracji przedstawiono szybkość transferu danych przychodzących:
 
 ![Przykład szybkość transferu danych przychodzących dla Centrum zdarzeń](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)
 
-Jak pokazano na diagramie, dziennych ruch przychodzący jest ~ 67,000 wiadomości. Ten kurs tłumaczy około 46 komunikatów na minutę. Jeśli każdy komunikat do Centrum zdarzeń jest spłaszczany do jednego zdarzenia usługi Time Series Insights, to środowisko zobaczy, bez ograniczania przepływności. Jeśli każdy komunikat do Centrum zdarzeń jest spłaszczany 100 zdarzeń usługi Time Series Insights, następnie 4,600 zdarzenia powinny być pozyskiwane co minutę. Środowisko S1 SKU usługi, które ma pojemność wynoszącą 3 można tylko 2100 zdarzeń przychodzących na minutę (1 mln zdarzeń każdego dnia = 700 zdarzeń na minutę na poziomie 3 jednostki = 2100 zdarzeń na minutę). W związku z tym zostanie wyświetlony opóźnienie z powodu dławienia. 
+Stawka dzienna ruch przychodzący jest ~ 67,000 wiadomości. Ten kurs przekłada się na około 46 komunikatów na minutę. Jeśli każdy komunikat do Centrum zdarzeń jest spłaszczany do jednego zdarzenia usługi Time Series Insights, ograniczanie przepustowości nie zachodzi. Jeśli każdy komunikat do Centrum zdarzeń jest spłaszczany 100 zdarzeń usługi Time Series Insights, 4,600 zdarzenia powinny przetwarzanych na minutę. Środowisko S1 SKU usługi, które ma pojemność wynoszącą 3 można tylko 2100 zdarzeń przychodzących na minutę (1 mln zdarzeń każdego dnia = 700 zdarzeń na minutę na trzech jednostek = 2100 zdarzeń na minutę). Dla tej konfiguracji zobaczysz opóźnienie z powodu dławienia. 
 
 Ogólne zrozumieć sposób działania spłaszczania logiki, zobacz [kształty JSON obsługiwany](./how-to-shape-query-json.md).
 
-### <a name="recommended-resolution-steps-for-excessive-throttling"></a>Kroki zalecane rozwiązanie nadmierne ograniczania
-Aby usunąć opóźnienie, należy zwiększyć pojemność jednostki SKU środowiska. Aby uzyskać więcej informacji, zobacz [sposób skalowania środowiska usługi Time Series Insights](time-series-insights-how-to-scale-your-environment.md).
+#### <a name="recommended-resolutions-for-excessive-throttling"></a>Zalecane rozwiązania nadmierne ograniczania
 
-### <a name="possible-cause-b-initial-ingestion-of-historical-data-is-causing-slow-ingress"></a>Powoduje wolnego transferu danych przychodzących z możliwych przyczyn B: początkowej pozyskiwania danych historycznych
-Jeśli łączysz się z istniejącym źródłem zdarzeń, istnieje prawdopodobieństwo, że Twojego Centrum IoT Hub lub zdarzenie zawiera już dane w nim. Środowisko rozpoczyna ściągania danych z początkiem okresu przechowywania wiadomości źródła zdarzeń.
+Aby usunąć opóźnienie, należy zwiększyć pojemność jednostki SKU środowiska. Aby uzyskać więcej informacji, zobacz [Skalowanie środowiska usługi Time Series Insights](time-series-insights-how-to-scale-your-environment.md).
 
-To zachowanie jest zachowaniem domyślnym i nie może być zastąpiona. Angażowanie, ograniczania i może potrwać chwilę, aby uzyskać informacje na historyczne dane wprowadzane.
+### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Przyczyna B: Początkowa pozyskiwania danych historycznych spowalnia transferu danych przychodzących
 
-#### <a name="recommended-resolution-steps-of-large-initial-ingestion"></a>Zalecane rozwiązanie kroki dużej początkowy pozyskiwania
-Aby usunąć opóźnienie, wykonaj następujące czynności:
-1. Zwiększ możliwości SKU maksymalną dozwoloną wartość (10, w tym przypadku). Po jest zwiększenie pojemności, rozpocznie się proces transferu danych przychodzących, przechwytywanie o wiele szybciej. Można zwizualizować, jak szybko są Przechwytywanie poprzez wykres dostępności w [Eksploratora usługi Time Series Insights](https://insights.timeseries.azure.com). Opłaty są naliczane za zwiększenia pojemności.
-2. Po zawiera opóźnienie zmniejszyć pojemność jednostki SKU powrót do normalnego transfer przychodzący.
+Jeśli możesz połączyć istniejące źródło zdarzenia, istnieje prawdopodobieństwo, że usłudze IoT hub lub Centrum zdarzeń zawiera już dane. Środowisko rozpoczyna ściągania danych z początkiem okresu przechowywania wiadomości źródła zdarzeń. To jest przetwarzanie domyślne i nie może być zastąpiona. Możesz zaangażować ograniczania przepustowości. Ograniczanie może potrwać nadążyć go pozyskuje dane historyczne.
 
-## <a name="problem-3-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Problem 3: Moje źródła zdarzeń *nazwie właściwości sygnatury czasowej* ustawienie nie działa
-Upewnij się, że z nazwą i wartością są zgodne z następującymi zasadami:
-* Nazwa właściwości sygnatury czasowej jest _liter_.
-* Wartość właściwości sygnatury czasowej, która pochodzi ze źródła zdarzenia użytkownika jako ciąg JSON powinien mieć format _RRRR-MM-Ddtgg. FFFFFFFK_. Na przykład taki ciąg "2008-04-12T12:53Z".
+#### <a name="recommended-resolutions-for-large-initial-ingestion"></a>Zalecane rozwiązania dużej początkowy pozyskiwania
 
-Najprostszym sposobem zapewnienia, że Twoje *nazwie właściwości sygnatury czasowej* są przechwytywane i działa poprawnie przy użyciu Eksploratora usługi TSI.  W Eksploratorze TSI, za pomocą wykresu, wybierz okres czasu, po podane *nazwie właściwości sygnatury czasowej*.  Kliknij prawym przyciskiem myszy zaznaczenie, a następnie wybierz *Eksploruj zdarzenia* opcji.  Pierwszy nagłówek kolumny powinna być Twoje *nazwie właściwości sygnatury czasowej* i powinien mieć *($ts)* obok wyraz *sygnatura czasowa*, zamiast:
-- *(abc)* , który będzie wskazywać TSI odczytuje wartości danych jako ciągi
-- *Ikona kalendarza*, który będzie wskazywać TSI odczytuje wartości danych jako *daty/godziny*
-- *#*, który będzie wskazywać TSI odczytuje wartości danych jako liczba całkowita
+Aby naprawić opóźnienie:
+
+1. Zwiększ możliwości SKU maksymalną dozwoloną wartość (w tym przypadku 10). Po zwiększenie pojemności nadążyć znacznie szybciej rozpoczyna się proces transferu danych przychodzących. Opłaty są naliczane za zwiększenia pojemności. Aby zwizualizować, jak szybko są Przechwytywanie up, możesz wyświetlić wykres dostępności w [Eksploratora usługi Time Series Insights](https://insights.timeseries.azure.com). 
+
+2. Gdy opóźnienie zostaje przechwycony w, należy zmniejszyć pojemność jednostki SKU do normalnego transfer przychodzący.
+
+## <a name="problem-3-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Problem 3: Ustawienie nazwę właściwości sygnatury czasowej źródła zdarzeń nie działa
+
+Upewnij się, że sygnatura czasowa nazwy i wartości właściwości są zgodne z następujących reguł:
+* Nazwę właściwości sygnatury czasowej jest uwzględniana wielkość liter.
+* Wartość właściwości sygnatury czasowej, która pochodzi ze źródła zdarzenia, zgodnie z ciągu JSON powinien mieć format _RRRR-MM-Ddtgg. FFFFFFFK_. Na przykład **2008-04-12T12:53Z**.
+
+Najprostszym sposobem zapewnienia, że nazwę właściwości sygnatury czasowej są przechwytywane i działa poprawnie za pomocą Eksploratora usługi Time Series Insights. W Eksploratorze usługi Time Series Insights za pomocą wykresu wybierz okres czasu, po wprowadzeniu nazwę właściwości sygnatury czasowej. Kliknij prawym przyciskiem myszy zaznaczenie, a następnie wybierz **Eksploruj zdarzenia** opcji. 
+
+Pierwszy nagłówek kolumny powinien być nazwę właściwości sygnatury czasowej. Obok wyraz **sygnatura czasowa**, powinien zostać wyświetlony **($ts)**. 
+
+Nie powinny zostać wyświetlone następujące wartości:
+- *(abc)* : Wskazuje, że usługa Time Series Insights odczytuje wartości danych jako ciągi.
+- *Ikona kalendarza*: Wskazuje, że usługi Time Series Insights odczytuje wartości danych jako *daty/godziny*.
+- *#*: Wskazuje, że usługa Time Series Insights odczytuje wartości danych jako liczba całkowita.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby uzyskać dodatkową pomoc, Rozpocznij konwersację na [forum MSDN dotyczącym](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). 
-- Można również użyć [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) opcji asystowanej pomocy technicznej.
+
+- Aby uzyskać pomoc, Rozpocznij konwersację [forum MSDN dotyczącym](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). 
+- Opcje asystowanej pomocy technicznej, można użyć [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/).

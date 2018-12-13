@@ -3,7 +3,7 @@ title: Wytyczne i zalecenia dotyczące elementów Reliable Collections na platfo
 description: Wskazówki i zalecenia dotyczące używania usługi Service Fabric elementy Reliable Collections
 services: service-fabric
 documentationcenter: .net
-author: mcoskun
+author: tylermsft
 manager: timlt
 editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
-ms.author: mcoskun
-ms.openlocfilehash: 72091d592475e41f254ef7c3882e3d3fee0c491b
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.author: twhitney
+ms.openlocfilehash: d50fee06a291e11898de19fd49bd657d2e1a6d00
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389535"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184943"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Wskazówki i zalecenia dotyczące elementów Reliable Collections w usłudze Azure Service Fabric
 Ta sekcja zawiera wskazówki dotyczące korzystania z Reliable State Manager i elementów Reliable Collections. Celem jest pomaganie użytkownikom uniknąć typowych pułapek.

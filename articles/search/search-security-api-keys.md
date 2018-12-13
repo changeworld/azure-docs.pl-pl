@@ -1,5 +1,5 @@
 ---
-title: Tworzenie, zarządzanie i zabezpieczanie administratora i zapytania klucze api KEY dla usługi Azure Search | Dokumentacja firmy Microsoft
+title: Tworzenie, zarządzanie i zabezpieczanie administratora i zapytania klucze api Key - usługi Azure Search
 description: klucze interfejsu API kontrola dostępu do punktu końcowego usługi. Klucze administratora przyznają dostęp do zapisu. Aby uzyskać dostęp tylko do odczytu można tworzyć klucze zapytania.
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0a8975fad21645535a6e7407bcd2d59f537a9fff
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec2018
+ms.openlocfilehash: 6ba63fa776e92dd2f8035cfbbdb8cea2860d106f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727977"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316933"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Tworzenie i zarządzanie nimi klucze api KEY dla usługi Azure Search
 
@@ -67,7 +68,7 @@ Zabezpieczeń klucza jest zapewniana przez ograniczenie dostępu za pośrednictw
 
 + Na pulpicie nawigacyjnym usługi kliknij **kontrola dostępu (IAM)** i następnie **przypisań ról** kartę, aby wyświetlić przypisania roli dla usługi.
 
-Członkami następujących ról można wyświetlić lub ponownie wygenerować klucze: właściciel, współautor, [współautorów usługi wyszukiwania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
+Członkami następujących ról można przeglądać i ponowne generowanie kluczy: Właściciel, współautor, [współautorów usługi wyszukiwania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 
 > [!Note]
 > W przypadku dostępu na podstawie tożsamości za pośrednictwem wyników wyszukiwania można utworzyć filtry zabezpieczeń, aby przyciąć wyniki według tożsamości, usuwanie dokumentów, dla których obiekt żądający nie powinny mieć dostępu. Aby uzyskać więcej informacji, zobacz [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) i [bezpiecznego z usługą Active Directory](search-security-trimming-for-azure-search-with-aad.md).

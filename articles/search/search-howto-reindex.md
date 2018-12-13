@@ -1,5 +1,5 @@
 ---
-title: Ponownie skompiluj usługi Azure Search zawartość do przeszukiwania indeksu lub odświeżania | Dokumentacja firmy Microsoft
+title: Ponowne kompilowanie indeksu usługi Azure Search, lub Odśwież zawartość do przeszukiwania — usługa Azure Search
 description: Dodawanie nowych elementów, a następnie zaktualizować istniejące elementy lub dokumentów lub usuwanie przestarzałych dokumentów w ponownej pełnej kompilacji lub częściowe Indeksowanie przyrostowe, w celu odświeżenia indeksu usługi Azure Search.
 services: search
 author: HeidiSteen
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 374e7601169647f0eb7d3a214cf15567b7b11090
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.custom: seodec2018
+ms.openlocfilehash: 9c9af69e45af6a70c5327393a1c10385ba2c2aed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34641428"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316900"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Jak odbudować indeksu usługi Azure Search
 
@@ -35,7 +36,7 @@ Plan w pełni częste, ponownie kompiluje podczas tworzenia active, gdy indeks s
 
 | Modyfikacja | Ponownie skompiluj stanu|
 |--------------|---------------|
-| Zmień nazwę pola, typ danych, lub jego [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) | Zazwyczaj zmiana definicji pola spowoduje naliczenie opłaty karnej ponownej kompilacji, z wyjątkiem tych [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index): pobieranie, SearchAnalyzer, SynonymMaps. Atrybuty możliwość pobierania, SearchAnalyzer i SynonymMaps można dodać do istniejącego pola, bez konieczności ponownego kompilowania jego indeksu.|
+| Zmień nazwę pola, typ danych, lub jego [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) | Zazwyczaj zmiana definicji pola spowoduje naliczenie opłaty karnej ponownej kompilacji, z wyjątkiem tych [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index): Pobieranie, SearchAnalyzer, SynonymMaps. Atrybuty możliwość pobierania, SearchAnalyzer i SynonymMaps można dodać do istniejącego pola, bez konieczności ponownego kompilowania jego indeksu.|
 | Dodaj pole | Ma rygorystyczne wymagania na ponowną kompilację. Istniejących dokumentów indeksowanych podano wartość null dla nowego pola. W przyszłości reindex wartości ze źródła danych zastąpić wartości null, dodawane przez usługę Azure Search. |
 | Usuń pole | Nie można bezpośrednio usunąć pole z indeksu usługi Azure Search. Zamiast tego należy zignorować pole "usunięte" w celu uniknięcia korzystania z niego aplikacji. Fizycznie definicję pola i zawartość pozostają w indeksie aż do następnego odbudowanie indeksu przy użyciu schematu, które pomija w danym polu.|
 

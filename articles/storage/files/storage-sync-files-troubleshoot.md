@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0787d023676c707a987b4b69cb5601394db4bd3b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6ee16a0483b13471f12654f82ef6972b41ace634
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728382"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316951"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -40,7 +40,7 @@ Przejrzyj installer.log, aby ustalić przyczynę niepowodzenia instalacji.
 <a id="agent-installation-on-DC"></a>**Instalacja agenta nie powiedzie się na kontrolerze domeny usługi Active Directory**  
 Jeśli spróbujesz zainstalować agenta synchronizacji na kontrolerze domeny usługi Active Directory, gdzie właściciela roli kontrolera PDC jest w systemie Windows Server 2008 R2 lub niższej wersji systemu operacyjnego, można napotkać problem gdzie agenta synchronizacji nie zostanie zainstalowana.
 
-Aby rozwiązać problem, Przenieś rolę podstawowego kontrolera domeny, do innej domeny kontroler uruchomionej Windows Server 2012 R2 lub nowszej, a następnie zainstaluj synchronizacji.
+Aby rozwiązać problem, należy przenieść rolę kontrolera PDC do innego kontrolera domeny z systemem Windows Server 2012 R2 lub nowszej, zainstaluj synchronizacji.
 
 <a id="server-registration-missing"></a>**Serwer nie znajduje się w obszarze zarejestrowane serwery w witrynie Azure portal**  
 Jeśli serwer nie jest wymieniony w obszarze **zarejestrowane serwery** usługi synchronizacji magazynu:
@@ -48,7 +48,7 @@ Jeśli serwer nie jest wymieniony w obszarze **zarejestrowane serwery** usługi 
 2. Otwórz Eksploratora plików, a następnie przejdź do katalogu instalacyjnego agenta synchronizacji magazynu (domyślna lokalizacja to C:\Program Files\Azure\StorageSyncAgent). 
 3. Uruchom ServerRegistration.exe i Ukończ pracę kreatora, aby zarejestrować serwer przy użyciu usługi synchronizacji magazynu.
 
-<a id="server-already-registered"></a>**Rejestracja serwera wyświetla następujący komunikat podczas instalacji agenta usługi Azure File Sync: "ten serwer jest już zarejestrowany"** 
+<a id="server-already-registered"></a>**Rejestracja serwera wyświetla następujący komunikat podczas instalacji agenta usługi Azure File Sync: "Ten serwer jest już zarejestrowany"** 
 
 ![Zrzut ekranu przedstawiający okno dialogowe rejestracji serwera z powodu błędu "serwer jest już zarejestrowany" wiadomości](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
@@ -68,7 +68,7 @@ Reset-StorageSyncServer
 Ten problem występuje, gdy **zwiększonych zabezpieczeń programu Internet Explorer** zasady są włączone podczas rejestracji serwera. Aby uzyskać więcej informacji na temat sposobu wyłączania poprawnie **zwiększonych zabezpieczeń programu Internet Explorer** zasad, zobacz [przygotowanie systemu Windows Server za pomocą usługi Azure File Sync](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) i [sposób wdrażania usługi Azure File Synchronizacja](storage-sync-files-deployment-guide.md).
 
 ## <a name="sync-group-management"></a>Zarządzanie grupami synchronizacji
-<a id="cloud-endpoint-using-share"></a>**Tworzenie punktu końcowego w chmurze zakończy się niepowodzeniem, z powodu następującego błędu: "Określony udział plików platformy Azure jest już używany przez inny CloudEndpoint"**  
+<a id="cloud-endpoint-using-share"></a>**Tworzenie punktu końcowego w chmurze zakończy się niepowodzeniem z powodu następującego błędu: "Określony udział plików platformy Azure jest już używany przez inny CloudEndpoint"**  
 Ten problem występuje, gdy udział plików platformy Azure jest już używany przez inny punkt końcowy w chmurze. 
 
 Jeśli widzisz ten komunikat i udziału plików platformy Azure nie jest obecnie używany przez punkt końcowy w chmurze, wykonaj następujące kroki, aby wyczyścić metadanych usługi Azure File Sync w udziale plików platformy Azure:
@@ -80,13 +80,13 @@ Jeśli widzisz ten komunikat i udziału plików platformy Azure nie jest obecnie
 2. Kliknij prawym przyciskiem myszy udział plików platformy Azure, a następnie wybierz **edytowanie metadanych**.
 3. Kliknij prawym przyciskiem myszy **SyncService**, a następnie wybierz pozycję **Usuń**.
 
-<a id="cloud-endpoint-authfailed"></a>**Tworzenie punktu końcowego w chmurze zakończy się niepowodzeniem, z powodu następującego błędu: "AuthorizationFailed"**  
+<a id="cloud-endpoint-authfailed"></a>**Tworzenie punktu końcowego w chmurze zakończy się niepowodzeniem z powodu następującego błędu: "AuthorizationFailed"**  
 Ten problem występuje, gdy konto użytkownika nie ma wystarczających praw, aby utworzyć punkt końcowy w chmurze. 
 
 Aby utworzyć punkt końcowy w chmurze, Twoje konto użytkownika musi mieć następujące uprawnienia Authorization firmy Microsoft:  
-* Odczyt: Pobieranie definicji roli
+* Odczyt: Pobranie definicji roli
 * Zapis: Utwórz lub zaktualizuj niestandardową definicję roli
-* Odczyt: Pobieranie przypisania roli
+* Odczyt: Pobranie przypisania roli
 * Zapis: Utwórz przypisanie roli
 
 Następujące role wbudowane mają wymagane uprawnienia Authorization Microsoft:  
@@ -102,10 +102,10 @@ Aby określić, czy rola konto użytkownika ma wymagane uprawnienia:
     * **Przypisanie roli** powinny mieć **odczytu** i **zapisu** uprawnienia.
     * **Definicja roli** powinny mieć **odczytu** i **zapisu** uprawnienia.
 
-<a id="server-endpoint-createjobfailed"></a>**Tworzenie punktu końcowego serwera nie powiedzie się, z powodu następującego błędu: "MgmtServerJobFailed" (kod błędu:-2134375898)**  
+<a id="server-endpoint-createjobfailed"></a>**Tworzenie punktu końcowego serwera nie powiodło się z powodu następującego błędu: "MgmtServerJobFailed" (kod błędu:-2134375898)**  
 Ten problem występuje, gdy ścieżka punktu końcowego serwera znajduje się na woluminie systemowym i w chmurze warstw jest włączona. Chmura obsługi warstw nie jest obsługiwana na woluminie systemowym. Aby utworzyć punkt końcowy serwera na woluminie systemowym, należy wyłączyć obsługi warstw podczas tworzenia punktu końcowego serwera w chmurze.
 
-<a id="server-endpoint-deletejobexpired"></a>**Usuwanie punktu końcowego serwera nie powiedzie się, z powodu następującego błędu: "MgmtServerJobExpired"**                
+<a id="server-endpoint-deletejobexpired"></a>**Usuwanie punktu końcowego serwera nie powiodła się z powodu następującego błędu: "MgmtServerJobExpired"**                
 Ten problem występuje, jeśli serwer jest w trybie offline lub nie ma łączności sieciowej. Jeśli serwer nie jest już dostępna, należy wyrejestrować serwera w witrynie portal, co spowoduje usunięcie punkty końcowe serwera. Aby usunąć punkty końcowe serwera, wykonaj kroki, które są opisane w [Wyrejestruj serwer usługi Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
 
 <a id="server-endpoint-provisioningfailed"></a>**Nie można otworzyć stronę właściwości punktu końcowego serwera lub zaktualizować zasady obsługi warstw w chmurze**  
@@ -132,7 +132,7 @@ Ten problem może wystąpić, jeśli proces Monitor synchronizacji magazynu nie 
 
 Aby rozwiązać ten problem, wykonaj następujące czynności:
 
-1. Otwórz Menedżera zadań na serwerze i upewnij się, że proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli nie jest uruchomiony proces, najpierw spróbują ponowne uruchomienie serwera. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, Uaktualnij agenta usługi Azure File Sync do wersji [3.3.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018) Jeśli nie jest obecnie zainstalowane.
+1. Otwórz Menedżera zadań na serwerze i upewnij się, że proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli nie jest uruchomiony proces, najpierw spróbują ponowne uruchomienie serwera. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, uaktualnienie do najnowszej usługi Azure File Sync [wersja agenta](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
 2. Sprawdź, czy ustawienia zapory i serwera Proxy zostały prawidłowo skonfigurowane:
     - Jeśli serwer znajduje się za zaporą, sprawdź, czy jest dozwolony przez port 443 wychodzących. Jeśli zapora będzie ograniczała ruch do określonych domen, upewnij się, domen, na liście w zaporze [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) są dostępne.
     - Jeśli serwer znajduje się za serwerem proxy, skonfiguruj ustawienia serwera proxy dla komputera lub specyficzne dla aplikacji, wykonując kroki na serwerze proxy [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).

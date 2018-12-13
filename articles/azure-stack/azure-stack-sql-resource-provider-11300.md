@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: d2dda25c63a6e4a73205b9e4a830a211d025b3ed
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.reviewer: georgel
+ms.openlocfilehash: 7bcec2d17f61345986c1676d13011946a0036666
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688169"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164732"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>Informacje o wersji dostawcy 1.1.30.0 zasobów SQL
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Te informacje o wersji opisano ulepszenia i znane problemy w wersji dostawcy zasobów 1.1.30.0 SQL.
 
@@ -62,11 +62,25 @@ Ta wersja dostawcy zasobów usługi Azure Stack SQL obejmuje następujące uleps
 
 - **Ponownie nazw logowania SQL**. Próba utworzenia nowego SQL Zaloguj się przy użyciu tej samej nazwy użytkownika jako istniejące dane logowania w tej samej subskrypcji spowoduje ponowne użycie tych samych danych logowania i hasło istniejącego. 
 
-    **Obejście**: używać różnych nazw użytkowników, podczas tworzenia nowych nazw logowania w ramach tej samej subskrypcji lub utworzyć nazwy logowania przy użyciu tej samej nazwy użytkownika w różnych subskrypcjach.
+    **Obejście**: Używać różnych nazw użytkowników, podczas tworzenia nowych nazw logowania w ramach tej samej subskrypcji lub utworzyć nazwy logowania przy użyciu tej samej nazwy użytkownika w różnych subskrypcjach.
 
 - **Udostępnione nazw logowania SQL spowodować niespójność danych**. Jeśli identyfikator logowania SQL jest udostępniony dla wielu baz danych SQL w ramach tej samej subskrypcji, zmiana hasła logowania spowoduje niespójność danych.
 
-    **Obejście**: zawsze używać różnych identyfikatorów logowania dla różnych baz danych w ramach tej samej subskrypcji.
+    **Obejście**: Zawsze należy używać różnych identyfikatorów logowania dla różnych baz danych w ramach tej samej subskrypcji.
+
+- **Wymaganie obsługi protokołu TLS 1.2**. Jeśli zostanie podjęta próba wdrożeniem lub aktualizację dostawcy zasobu języka SQL z komputera, na którym nie włączono protokołu TLS 1.2, operacja może zakończyć się niepowodzeniem. Uruchom następujące polecenie programu PowerShell na komputerze, używany do wdrażania lub zaktualizuj dostawcę zasobów, aby sprawdzić, czy protokół TLS 1.2, jest zwracana jako obsługiwane:
+
+  ```powershell
+  [System.Net.ServicePointManager]::SecurityProtocol
+  ```
+
+  Jeśli **Tls12** jest nie jest uwzględniony w danych wyjściowych polecenia, protokołu TLS 1.2 nie jest włączona na komputerze.
+
+    **Obejście**: Uruchom następujące polecenie programu PowerShell w celu włączenia protokołu TLS 1.2 i następnie Rozpocznij wdrażanie dostawcy zasobów lub zaktualizować skrypt z tej samej sesji programu PowerShell:
+
+    ```powershell
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+    ```
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Znane problemy dotyczące administratorów chmury, działania usługi Azure Stack
 Zapoznaj się z dokumentacją w [informacje o wersji programu Azure Stack](azure-stack-servicing-policy.md).

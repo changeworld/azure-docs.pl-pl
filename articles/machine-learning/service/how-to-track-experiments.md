@@ -1,5 +1,5 @@
 ---
-title: Eksperymenty śledzenia i metryki szkolenia
+title: Śledź eksperymentów & metrykę szkolenia
 titleSuffix: Azure Machine Learning service
 description: Za pomocą usługi Azure Machine Learning można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. Dowiedz się, jak dodać rejestrowania skrypt szkolenia, jak przesyłanie eksperymentu, sprawdzanie postępu zadania uruchomione i jak wyświetlać wyniki przebiegu.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7137d43805065a8f29aa8fcf5307dd5b8947b345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c45023a462a5c01dfde806d7abbb9714aaf09b85
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101351"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189476"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Śledzenie eksperymentów i szkolenia metryk w usłudze Azure Machine Learning
 
@@ -60,7 +60,7 @@ Przed dodaniem rejestrowania i przesyłanie eksperymentu, należy skonfigurować
                resource_group = <<resource_group>>)
    ```
   
-## <a name="option-1-use-startlogging"></a>Opcja 1: Użycie start_logging
+## <a name="option-1-use-startlogging"></a>Opcja 1: Użyj start_logging
 
 **start_logging** tworzy interakcyjnego wykonywania do użytku w scenariuszach takich jak notesy. Wszystkie metryki, które są rejestrowane w trakcie sesji są dodawane do rekordu uruchomienia w eksperymencie.
 
@@ -122,7 +122,7 @@ Poniższy przykład przygotowuje prosty model Ridge skryptu sklearn lokalnie w p
 
 Skrypt kończy się ```run.complete()```, która oznacza Uruchom jako ukończone.  Ta funkcja jest zwykle używana w scenariuszach notesu interakcyjnego.
 
-## <a name="option-2-use-scriptrunconfig"></a>Opcja 2: Użycie ScriptRunConfig
+## <a name="option-2-use-scriptrunconfig"></a>Opcja 2: Użyj ScriptRunConfig
 
 **ScriptRunConfig** jest klasą konfigurowania konfiguracje skrypt jest uruchamiany. Po wybraniu tej opcji można dodać kod monitorowania, aby otrzymywać powiadomienia o zakończeniu lub można pobrać visual widżetu do monitorowania.
 
@@ -330,9 +330,9 @@ Macierz pomyłek służy do opisywania wydajność model klasyfikacji. Każdy wi
 
 W przypadku problemów z klasyfikacji usługi Azure Machine Learning automatycznie zapewnia macierz pomyłek dla każdego modelu, który jest skompilowany. Dla każdego macierz pomyłek automatycznych ML zostaną wyświetlone poprawnie sklasyfikowane etykiety jako etykiety zielony i niepoprawnie sklasyfikowanych w kolorze czerwonym. Rozmiar koła reprezentuje liczbę próbek w nim. Ponadto liczba częstotliwość każdej etykiety przewidywane i każdej etykiety wartość true, znajduje się w sąsiadujących wykresów słupkowych. 
 
-Przykład 1: Klasyfikacja modelu z niską dokładność ![model klasyfikacji o niskiej dokładności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
+Przykład 1: Model klasyfikacji o niskiej dokładność ![model klasyfikacji o niskiej dokładności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
 
-Przykład 2: Klasyfikacja modelu z wysoką dokładność (idealne) ![model klasyfikacji o wysokiej dokładności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
+Przykład 2: Model klasyfikacji o wysokiej dokładności (idealne) ![model klasyfikacji o wysokiej dokładności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
 
 
 #### <a name="precision-recall-chart"></a>Precision-recall wykresu
@@ -343,15 +343,15 @@ Termin dokładności reprezentuje zdolność klasyfikatora poprawnie oznaczenie 
 
 Przykład 1: Model klasyfikacji o niskiej dokładności i niski wycofaniu ![model klasyfikacji o niskim dokładności i niski odwołania](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
 
-Przykład 2: Klasyfikacja modelu z ~ 100% dokładności i ~ 100% odwołania (idealne) ![dużej dokładności modelu klasyfikacji i odwołań](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
+Przykład 2: Model klasyfikacji o ~ 100% dokładności i ~ 100% odwołania (idealne) ![dużej dokładności modelu klasyfikacji i odwołań](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
 
 #### <a name="roc"></a>ROC
 
 Odbiornik operacyjnego cechy (lub ROC) jest wykres poprawnie sklasyfikowane etykiety, a niepoprawnie sklasyfikowane etykiety dla określonego modelu. Może być mniej informacyjne krzywej ROC, gdy szkolenie modeli w zestawach danych przy użyciu wysokie odchylenie, ponieważ nie będą widoczne fałszywie dodatnie etykiety.
 
-Przykład 1: Klasyfikacja modelu z niska wartość true, etykiety i wysoka etykiety false ![model klasyfikacji z niska wartość true, etykiety i wysoka etykiety false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
+Przykład 1: Model klasyfikacji o niska wartość true, etykiety i wysoka etykiety false ![model klasyfikacji z niska wartość true, etykiety i wysoka etykiety false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
 
-Przykład 2: Klasyfikacja modelu z wysoką wartość true, etykiety i niski etykiety false ![model klasyfikacji z wysoką wartość true, etykiety i niski etykiety wartość false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
+Przykład 2: Model klasyfikacji z wysoką wartość true, etykiety i niski etykiety false ![model klasyfikacji z wysoką wartość true, etykiety i niski etykiety wartość false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
 
 #### <a name="lift-curve"></a>Przenoszenie krzywej
 
@@ -369,9 +369,9 @@ Wykres zyski ocenia wydajność model klasyfikacji przez każdy fragment danych.
 
 Użyj wykresu skumulowanego zyski ułatwiające wybór odcięcia Klasyfikacja za pomocą wartość procentową, która odnosi się do żądanego korzyści z modelu. Informacje te stanowią innym sposobem spojrzenie na wyniki na wykresie przyrostu towarzyszącej.
 
-Przykład 1: Klasyfikacja modelu z minimalnym zysk ![model klasyfikacji o minimalnym korzyści](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
+Przykład 1: Model klasyfikacji o minimalnym zysk ![model klasyfikacji o minimalnym korzyści](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
 
-Przykład 2: Klasyfikacja modelu z znaczne korzyści ![model klasyfikacji o znaczące korzyści](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
+Przykład 2: Model klasyfikacji o znaczące korzyści ![model klasyfikacji o znaczące korzyści](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
 
 #### <a name="calibration-plot"></a>Wykres odwzorowania
 
@@ -379,7 +379,7 @@ W przypadku wszystkich problemów klasyfikacji możesz przejrzeć odwzorowania l
 
 Wykres odwzorowania służy do wyświetlania zaufania modelu predykcyjnego. Odbywa się to poprzez przedstawiający relację między prawdopodobieństwa przewidywanych i rzeczywistych prawdopodobieństwo, gdzie "prawdopodobieństwo" oznacza prawdopodobieństwo, że konkretnego wystąpienia, należy w ramach niektóre etykiety. Dobrze pomiarowej modelu wyrównane y = x wiersza, gdzie jest względnie pewność, że jej prognozy. Model nadmiernego confident wyrównane y = 0 wiersza, w którym przewidywany prawdopodobieństwo, że jest zainstalowany, ale istnieje nie rzeczywiste prawdopodobieństwo.
 
-Przykład 1: Bardziej dobrze pomiarowej modelem ![ bardziej dobrze pomiarowej modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve1.PNG)
+Przykład 1: Więcej dobrze pomiarowej modelu ![ bardziej dobrze pomiarowej modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve1.PNG)
 
 Przykład 2: Model nadmiernego confident ![nadmiernego confident modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve2.PNG)
 
@@ -396,7 +396,7 @@ Przewidywane programu vs. Wartość true przedstawiono relacje między wartości
 
 Po każdym uruchomieniu widać przewidywane a true wykresu dla każdego modelu regresji. Aby zapewnić ochronę prywatności danych, wartości są ze sobą kwanty, a rozmiar każdego kwantu jest wyświetlany jako wykres słupkowy w dolnej części obszaru wykresu. Model predykcyjny, można porównać z modułem jaśniejszy odcień marginesów błąd, względem idealne wartości, z którym model powinien być.
 
-Przykład 1: Model regresji o niskim dokładności prognozy ![modelu regresji przy niskim dokładności prognozy](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.PNG)
+Przykład 1: Model regresji, za pomocą niski dokładności prognozy ![modelu regresji przy niskim dokładności prognozy](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.PNG)
 
 Przykład 2: Model regresji o wysokiej dokładności w jej prognozy ![modelu regresji przy użyciu wysokiej dokładności w jej prognozy](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.PNG)
 

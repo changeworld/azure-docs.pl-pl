@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3caa4f2dbe36f86c9b15a83303e90b16d06c56fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419405"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192060"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Zainstaluj agenta maszyny wirtualnej platformy Azure w trybie offline 
 
@@ -36,7 +36,7 @@ Zainstaluj agenta maszyny Wirtualnej w trybie offline w następujących scenariu
 
 Wykonaj następujące kroki, aby zainstalować agenta maszyny Wirtualnej w trybie offline.
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Krok 1: Dołącz dysk systemu operacyjnego maszyny wirtualnej do innej maszyny Wirtualnej jako dysk z danymi
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Krok 1. Dołącz dysk systemu operacyjnego maszyny wirtualnej do innej maszyny Wirtualnej jako dysk z danymi
 
 1.  Usuń maszynę Wirtualną. Pamiętaj o wybraniu **zachować dyski** opcji po usunięciu maszyny Wirtualnej.
 
@@ -44,7 +44,7 @@ Wykonaj następujące kroki, aby zainstalować agenta maszyny Wirtualnej w trybi
 
 3.  Połączyć się do rozwiązywania problemów z maszyny Wirtualnej. Otwórz **Zarządzanie komputerem** > **Zarządzanie dyskami**. Upewnij się, że dysk systemu operacyjnego jest w trybie online i przypisania litery dysku do partycji dysku.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Krok 2: Modyfikowanie dysku systemu operacyjnego do zainstalowania agenta maszyny Wirtualnej platformy Azure
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Krok 2. Modyfikowanie dysku systemu operacyjnego do zainstalowania agenta maszyny Wirtualnej platformy Azure
 
 1.  Podłączanie pulpitu zdalnego należy dokonać do rozwiązywania problemów z maszyny Wirtualnej.
 
@@ -76,7 +76,7 @@ Wykonaj następujące kroki, aby zainstalować agenta maszyny Wirtualnej w trybi
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
-        ![Eksportowanie podkluczy rejestru](./media/install-vm-agent-offline/backup-reg.png)
+          ![Eksportowanie podkluczy rejestru](./media/install-vm-agent-offline/backup-reg.png)
 
     2. Edytowanie plików rejestru. W każdym pliku, należy zmienić wartość wpisu **systemu** do **BROKENSYSTEM** (jak pokazano na poniższych ilustracjach) i Zapisz plik. Należy pamiętać, **ImagePath** bieżącego agenta maszyny Wirtualnej. Konieczne będzie skopiuj odpowiedni folder na dołączonym dysku systemu operacyjnego. 
 

@@ -1,6 +1,6 @@
 ---
-title: Indeksowanie obiektów blob JSON za pomocą indeksatora obiektów blob usługi Azure Search
-description: Indeksowanie obiektów blob JSON za pomocą indeksatora obiektów blob usługi Azure Search
+title: Indeksowanie obiektów blob JSON z indeksatora obiektów Blob platformy Azure w celu wyszukiwania pełnotekstowego — usługa Azure Search
+description: Można przeszukiwać JSON usługi Azure blob dla zawartości tekstu za pomocą indeksatora obiektów Blob platformy Azure Search. Indeksatory zautomatyzować pozyskiwanie danych dla wybranych źródeł danych takich jak usługi Azure Blob storage.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 0dbf8a44007fbba39f6ac4c20e375a6d13ac9021
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec2018
+ms.openlocfilehash: 7eb215271a8d5d21403cc7c5a49028bb366e61fd
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711076"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312531"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indeksowanie obiektów blob JSON za pomocą indeksatora obiektów blob usługi Azure Search
 W tym artykule pokazano, jak skonfigurować indeksator obiektów blob usługi Azure Search można wyodrębnić zawartości ze strukturą z obiektów blob JSON w usłudze Azure Blob storage.
@@ -45,14 +46,14 @@ Pierwszym krokiem jest ustanowienie połączenia informacje o źródle danych u�
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
 
-### <a name="step-2-create-a-target-search-index"></a>Krok 2: Tworzenie docelowym indeksem wyszukiwania 
+### <a name="step-2-create-a-target-search-index"></a>Krok 2. Utwórz docelowym indeksem wyszukiwania 
 
 Indeksatory są skojarzone ze schematem indeksu. Korzystając z interfejsu API (zamiast portalu), przygotuj indeksu z wyprzedzeniem, aby można je określić na indeksatora. 
 
 > [!Note]
 > Indeksatory są widoczne w portalu za pomocą **importu** akcji dla ograniczonej liczby ogólnie dostępnych indeksatorów. Często Importowanie przepływu pracy, często można skonstruować wstępny indeks na podstawie metadanych w źródle. Aby uzyskać więcej informacji, zobacz [importowanie danych do usługi Azure Search w portalu](search-import-data-portal.md).
 
-### <a name="step-3-configure-and-run-the-indexer"></a>Krok 3: Skonfigurować i uruchomić indeksatora
+### <a name="step-3-configure-and-run-the-indexer"></a>Krok 3. Konfigurowanie i uruchamianie indeksatora
 
 Do tej pory definicje dla źródła danych i indeksu zostały parsingMode niezależny od. Jednak w kroku 3 dla konfiguracji indeksatora, ścieżka diverges w zależności od sposobu obiektu blob JSON zawartości przeanalizowano i ze strukturą w indeksie usługi Azure Search.
 
@@ -186,7 +187,7 @@ Może również odnosić się do elementów tablicy poszczególnych przy użyciu
 >
 >
 
-## <a name="example-indexer-request-with-field-mappings"></a>Przykład: Indeksator żądania przy użyciu mapowań pól
+## <a name="example-indexer-request-with-field-mappings"></a>Przykład: Żądania indeksowania przy użyciu mapowań pól
 
 Poniższy przykład to ładunek pełni określonego indeksatora, łącznie z mapowania pól:
 

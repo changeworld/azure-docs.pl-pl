@@ -7,7 +7,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 76898d2b55d5187e12b91dbd6c9a85af6a274726
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8f82332b02d2e7bbf937a84de42714392e3fccd6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091717"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258189"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Zarządzanie za pomocą interfejsu API zarządzania usługami sieci web Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
@@ -224,7 +223,7 @@ Kliknij przycisk **tak** publikowanie eksperymentu.
 ![tak publikowania](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Test usługi sieci web
-Usługi sieci web Azure ml składa się z RSS (żądania/odpowiedzi usługi) i BES (batch wykonywania) punktom. Funkcja RSS jest synchronicznej. Usługi BES służy do wykonywania zadania asynchronicznego. Aby przetestować usługę sieci web z przykładowym źródle Python poniżej, konieczne może być Pobierz i zainstaluj zestaw Azure SDK dla języka Python (patrz: [sposobu instalowania języka Python](../../python-how-to-install.md)).
+Usługi sieci web Azure ml składa się z RSS (żądania/odpowiedzi usługi) i BES (batch wykonywania) punktom. Funkcja RSS jest synchronicznej. Usługi BES służy do wykonywania zadania asynchronicznego. Aby przetestować usługę sieci web z przykładowym źródle Python poniżej, konieczne może być Pobierz i zainstaluj zestaw Azure SDK dla języka Python (zobacz: [Jak zainstalować Python](../../python-how-to-install.md)).
 
 Należy również **obszaru roboczego**, **usługi**, i **api_key** eksperymentu źródła przykładowe poniżej. Obszar roboczy i usługi można znaleźć, klikając wartość **żądań/odpowiedzi** lub **wykonywanie wsadowe** swojego eksperymentu w pulpicie nawigacyjnym usługi sieci web.
 

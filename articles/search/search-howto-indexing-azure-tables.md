@@ -1,6 +1,6 @@
 ---
-title: Indeksowanie w usłudze Azure Table storage z usługą Azure Search | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i indeksowanie danych przechowywanych w usłudze Azure Table storage z usługą Azure Search
+title: Indeksowanie zawartości z usługi Azure Table storage w celu wyszukiwania pełnotekstowego — usługa Azure Search
+description: Dowiedz się, jak i indeksowanie danych przechowywanych w usłudze Azure Table storage z usługą Azure Search.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 738518f94869a55cf80db1c87b8c74b167f5cce1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 39455669dd739309ac0201de49b390c2390e0067
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406929"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317274"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Indeks usługi Azure Table storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danych przechowywanych w usłudze Azure Table storage.
@@ -66,9 +67,9 @@ Aby uzyskać więcej informacji na temat interfejsu API tworzenia źródła dany
 
 Można podać poświadczenia dla tabeli w jednym z następujących sposobów: 
 
-- **Parametry połączenia konta magazynu pełny dostęp**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` parametry połączenia można uzyskać w witrynie Azure portal, przechodząc do **blok konto magazynu** > **ustawienia**  >  **Klucze** (w przypadku klasycznych kont magazynu) lub **ustawienia** > **klucze dostępu** (w przypadku magazynu usługi Azure Resource Manager konta).
-- **Konto magazynu udostępnionych parametrów połączenia sygnatury dostępu**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` sygnatury dostępu współdzielonego powinni mieć listy i uprawnienia do odczytu w kontenerach (tabele, w tym przypadku) i obiekty (wiersze tabeli).
--  **Sygnatura dostępu współdzielonego tabeli**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` sygnatury dostępu współdzielonego mają uprawnienia do zapytań (odczyt) w tabeli.
+- **Parametry połączenia konta magazynu pełny dostęp**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Parametry połączenia można uzyskać w witrynie Azure portal, przechodząc do **blok konto magazynu** > **ustawienia** > **klucze** (w przypadku klasycznego konta magazynu) lub **ustawienia** > **klucze dostępu** (dla kont magazynu usługi Azure Resource Manager).
+- **Konto magazynu udostępnionych parametrów połączenia sygnatury dostępu**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` Sygnatura dostępu współdzielonego powinni mieć listy i uprawnienia do odczytu w kontenerach (tabele, w tym przypadku) i obiekty (wiersze tabeli).
+-  **Sygnatura dostępu współdzielonego tabeli**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` Sygnatura dostępu współdzielonego musi mieć uprawnienia do zapytań (odczyt) w tabeli.
 
 Aby uzyskać więcej informacji na temat magazynu udostępnionego sygnatury dostępu, zobacz [używanie sygnatury dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 

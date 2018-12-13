@@ -1,5 +1,6 @@
 ---
-title: Monitorowanie operacji, zdarzenia i liczniki dla publiczny podstawowy moduł równoważenia obciążenia | Dokumentacja firmy Microsoft
+title: Monitorowanie operacji, zdarzenia i liczniki publiczny podstawowy moduł równoważenia obciążenia
+titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak włączyć zdarzenia alarmowe i sondy kondycji stanu rejestrowania publiczny podstawowy moduł równoważenia obciążenia
 services: load-balancer
 documentationcenter: na
@@ -7,27 +8,28 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261506"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164130"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>Analiza dzienników dotyczących publiczny podstawowy moduł równoważenia obciążenia
 
 >[!IMPORTANT] 
->Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat Balancer w warstwie standardowa, zobacz [omówienie Standard Load Balancer](load-balancer-standard-overview.md) która udostępnia dane telemetryczne za pomocą metryk wielowymiarowych w usłudze Azure Monitor.
+>Usługa Azure Load Balancer obsługuje dwa różne typy: Basic i Standard. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat Balancer w warstwie standardowa, zobacz [omówienie Standard Load Balancer](load-balancer-standard-overview.md) która udostępnia dane telemetryczne za pomocą metryk wielowymiarowych w usłudze Azure Monitor.
 
 Różne typy dzienników platformy Azure umożliwia zarządzanie i rozwiązywanie problemów podstawowe usługi równoważenia obciążenia. Niektóre z tych dzienników jest możliwy za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z usługi Azure blob storage i wyświetlane w różnych narzędzi, takich jak program Excel i usługi Power BI. Można znaleźć więcej informacji na temat różnych typów dzienników z poniższej listy.
 
-* **Dzienniki inspekcji:** można użyć [dzienników inspekcji platformy Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (wcześniej znane jako dzienniki operacyjne) aby wyświetlić wszystkie operacje są przesyłane do subskrypcji platformy Azure i ich stan. Dzienniki inspekcji są domyślnie włączone i mogą być wyświetlane w witrynie Azure portal.
-* **Zgłoś alert, dzienniki zdarzeń:** można użyć tego dziennika, aby wyświetlić alerty wygenerowane przez moduł równoważenia obciążenia. Stan modułu równoważenia obciążenia jest zbieranych co pięć minut. Tylko ten dziennik jest zapisywany, jeśli zdarzenie alertu modułu równoważenia obciążenia jest zgłaszane w.
-* **Dzienników sond kondycji:** ten dziennik służy do wyświetlania problemów wykrytych przez Twoje sondę kondycji, np. liczbę wystąpień w puli zaplecza, które nie otrzymuje żądania z modułu równoważenia obciążenia z powodu niepowodzeń sondy kondycji. Ten dziennik jest zapisywany po zmianę stanu sondy kondycji.
+* **Dzienniki inspekcji:** Możesz użyć [dzienników inspekcji platformy Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (wcześniej znane jako dzienniki operacyjne) aby wyświetlić wszystkie operacje są przesyłane do subskrypcji platformy Azure i ich stan. Dzienniki inspekcji są domyślnie włączone i mogą być wyświetlane w witrynie Azure portal.
+* **Dzienniki zdarzeń alertów:** Korzystanie z tego dziennika, aby wyświetlić alerty wygenerowane przez moduł równoważenia obciążenia. Stan modułu równoważenia obciążenia jest zbieranych co pięć minut. Tylko ten dziennik jest zapisywany, jeśli zdarzenie alertu modułu równoważenia obciążenia jest zgłaszane w.
+* **Dzienników sond kondycji:** Ten dziennik służy do wyświetlania problemów wykrytych przez Twoje sondę kondycji, np. liczbę wystąpień w puli zaplecza, które nie otrzymuje żądania z modułu równoważenia obciążenia z powodu niepowodzeń sondy kondycji. Ten dziennik jest zapisywany po zmianę stanu sondy kondycji.
 
 > [!IMPORTANT]
 > Zaloguj się analytics obecnie działa tylko w przypadku publicznych podstawowe usługi równoważenia obciążenia. Dzienniki są dostępne tylko dla zasobów wdrożonych w modelu wdrażania usługi Resource Manager. Nie można używać dzienników zasobów w klasycznym modelu wdrażania. Aby uzyskać więcej informacji na temat modeli wdrażania, zobacz [wdrażania Understanding Resource Manager oraz wdrażania klasycznego](../azure-resource-manager/resource-manager-deployment-model.md).
@@ -131,7 +133,7 @@ Wyświetlone dane wyjściowe JSON w polu właściwości podstawowe informacje do
 
 Można wyświetlać i analizować dane dzienników inspekcji przy użyciu dowolnej z następujących metod:
 
-* **Narzędzia platformy Azure:** pobieranie informacji z dzienników inspekcji za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure (CLI), Azure REST API lub portalu Azure w wersji zapoznawczej. Instrukcje krok po kroku dla każdej metody są szczegółowo opisane w [inspekcji operacji przy użyciu usługi Resource Manager](../azure-resource-manager/resource-group-audit.md) artykułu.
+* **Narzędzia platformy Azure:** Pobieranie informacji z dzienników inspekcji za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure (CLI), Azure REST API lub portalu Azure w wersji zapoznawczej. Instrukcje krok po kroku dla każdej metody są szczegółowo opisane w [inspekcji operacji przy użyciu usługi Resource Manager](../azure-resource-manager/resource-group-audit.md) artykułu.
 * **Usługa Power BI:** Jeśli nie masz jeszcze [usługi Power BI](https://powerbi.microsoft.com/pricing) konta, możesz ją wypróbować bezpłatnie. Za pomocą [dzienników inspekcji platformy Azure pakietu zawartości dla usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs), można analizować dane przy użyciu wstępnie skonfigurowane pulpity nawigacyjne lub dostosować widoki ze swoimi potrzebami.
 
 ## <a name="view-and-analyze-the-health-probe-and-event-log"></a>Wyświetlanie i analizowanie sondy kondycji oraz dziennik zdarzeń

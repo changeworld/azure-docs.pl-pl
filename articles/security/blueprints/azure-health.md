@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: ca844c89b657bc3286f3472af3acbf937ef1e20f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891065"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315778"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -61,7 +61,7 @@ Podstawowa architektura składa się z następujących składników:
 
 -   **[Przegląd kondycji.](https://aka.ms/healthreviewpaper)** Rozwiązanie został zrecenzowany przez Coalfire systems, Inc. Zgodność kondycji (ustawy HIPAA i HITRUST) wskazówki dotyczące wdrażania i przejrzyj zawiera rewidenta\'przeglądu s rozwiązanie i uwagi dotyczące przekształcania planu wdrożenie gotowe do produkcji.
 
-# <a name="architectural-diagram"></a>Diagram architektury
+## <a name="architectural-diagram"></a>Diagram architektury
 
 
 ![](images/ra2.png)
@@ -76,11 +76,11 @@ Planu definiuje dwie role użytkowników administracyjnych (operatorów) i trzy 
 
 Administrator lokacji jest odpowiedzialny za subskrypcję platformy Azure przez klienta. Ich kontrolować ogólne wdrażanie, ale nie mają dostępu do kartoteki pacjentów.
 
--   Domyślne przypisania roli: [właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
+-   Domyślne przypisania roli: [Właściciel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
--   Przypisania ról niestandardowych: n/d
+-   Przypisania roli niestandardowej: ND
 
--   Zakres: subskrypcja
+-   Zakres: Subskrypcja
 
 ### <a name="database-analyst"></a>Analityk bazy danych
 
@@ -89,9 +89,9 @@ One nie mają dostępu do kartoteki pacjentów.
 
 -   Przypisań ról wbudowanych: [Współautor bazy danych SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [Współautor serwera SQL Server](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
--   Przypisania ról niestandardowych: n/d
+-   Przypisania roli niestandardowej: ND
 
--   Zakres: Grupa zasobów
+-   Zakres: ResourceGroup
 
  ### <a name="data-scientist"></a>Analityk danych
 
@@ -100,9 +100,9 @@ Analityk danych działa w usłudze Azure Machine Learning Studio. Mogą importow
 
 -   Przypisań ról wbudowanych: [Współautor konta magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
--   Przypisania ról niestandardowych: n/d
+-   Przypisania roli niestandardowej: ND
 
--   Zakres: Grupa zasobów
+-   Zakres: ResourceGroup
 
 ### <a name="chief-medical-information-officer-cmio"></a>Dyrektor ds. informacji medycznych (ds. informacji medycznych)
 
@@ -119,20 +119,20 @@ Ta rola wymaga monitorowania stanu poszczególnych pacjentów oraz zapewniania, 
 
 -   Przypisań ról wbudowanych: Brak
 
--   Przypisania ról niestandardowych: ma uprawnienia do uruchamiania HealthcareDemo.ps1 celu obu przyjęcia pacjenta i wykonywania.
+-   Przypisania roli niestandardowej: Ma uprawnienia do uruchamiania HealthcareDemo.ps1 celu obu przyjęcia pacjenta i wykonywania.
 
--   Zakres: Grupa zasobów
+-   Zakres: ResourceGroup
 
 ### <a name="auditor"></a>Audytor
 
 
 Audytor ocenia rozwiązania pod kątem zgodności. Nie mają bezpośredniego dostępu do sieci.
 
--   Przypisań ról wbudowanych: [czytnika](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   Przypisań ról wbudowanych: [Czytelnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
--   Przypisania ról niestandardowych: n/d
+-   Przypisania roli niestandardowej: ND
 
--   Zakres: subskrypcja
+-   Zakres: Subskrypcja
 
 ## <a name="example-use-case"></a>Przykład przypadek użycia
 
@@ -184,7 +184,7 @@ Jako osoba bezpośrednio odpowiedzialni za zarządzanie przyjęcia pacjenta, a z
 Hanowi jest certyfikowanym rewidenta, który ma doświadczenie inspekcji dla ISO, SOC i HiTrust. Hanowi został zatrudniony do przeglądania sieci Contosoclinc firmy. Hanowi przejrzeć macierzy odpowiedzialność klienta dostarczane za pomocą rozwiązania do upewnij się, że rozwiązanie LOS i planu może służyć do przechowujących, przetwarzających i wyświetlania wrażliwe dane osobowe.
 
 
-# <a name="design-configuration"></a>Konfiguracja projektu
+## <a name="design-configuration"></a>Konfiguracja projektu
 
 
 Tej sekcji opisano szczegółowo domyślnych konfiguracji i środków bezpieczeństwa wbudowaną planu opisanych na:
@@ -267,8 +267,8 @@ Ponadto funkcję platformy azure został zaprojektowany do odczytywania i chroni
 
 **2. Dopuszczenie nowych pacjentów**
 
-Korzystając z pokaz skryptu. . \\HealthcareDemo.ps1 z **BulkPatientadmission** przełącznika zgodnie z opisem w **wdrażanie i uruchamianie demonstracyjnego** wykonuje następujące potoku przetwarzania: ![](images/securetransact.png) 
- **1. Funkcja Azure** wyzwolone, a funkcja żądań dla [tokenu elementu nośnego](/rest/api/) z usługi Azure Active directory.
+Korzystając z pokaz skryptu. . \\HealthcareDemo.ps1 z **BulkPatientadmission** przełącznika zgodnie z opisem w **wdrażanie i uruchamianie demonstracyjnego** wykonuje następujące potoku przetwarzania: ![](images/securetransact.png)
+**1. Funkcja Azure** wyzwolone, a funkcja żądań dla [tokenu elementu nośnego](/rest/api/) z usługi Azure Active directory.
 
 **2. Usługa Key Vault** żądane dla klucza tajnego, który jest skojarzony z żądanego tokenu.
 

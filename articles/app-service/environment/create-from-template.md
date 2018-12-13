@@ -1,5 +1,5 @@
 ---
-title: Tworzenie środowiska usługi Azure App Service przy użyciu szablonu usługi Resource Manager
+title: Tworzenie środowiska usługi App Service przy użyciu szablonu usługi Resource Manager — Azure
 description: Wyjaśnia, jak utworzyć środowisko zewnętrznego lub wewnętrznego modułu równoważenia obciążenia Azure App Service przy użyciu szablonu usługi Resource Manager
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: bdd8ac47f709153b17e2dcf44ff9a2c568e650cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958751"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277475"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Tworzenie środowiska ASE przy użyciu szablonu usługi Azure Resource Manager
 
@@ -49,9 +50,9 @@ Szablon usługi Resource Manager, który tworzy środowisko ASE i jego skojarzon
 
 Jeśli chcesz utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia, użyj tych szablonu usługi Resource Manager [przykłady][quickstartilbasecreate]. One adresowanych do których przypadek użycia. Większość parametrów w *azuredeploy.parameters.json* pliku są wspólne dla tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia i zewnętrznego środowiska ASE. Poniższa lista wywołuje parametry ważne lub są unikatowe, po utworzeniu środowiska ASE z wewnętrznym modułem równoważenia obciążenia:
 
-* *Tryb internalLoadBalancingMode*: W większości przypadków będzie powiązany zestaw to 3, co oznacza, że ruch HTTP/HTTPS na portach 80/443 i kontroli/danych portów kanału posłuchaliśmy przez usługę FTP w środowisku ASE, przydzielone do wewnętrznego modułu równoważenia obciążenia siecią wirtualną wewnętrzny adres. Jeśli ta właściwość jest równa 2, tylko związanych z usługą portów FTP (kanały zarówno kontroli, jak i dane) są powiązane z adresu wewnętrznego modułu równoważenia obciążenia. Ruch HTTP/HTTPS pozostaje na publicznych adresów VIP.
-* *sufiks DNS*: ten parametr określa domeny katalogu głównego domyślnego, która jest przypisana do środowiska ASE. W publicznej wersji usługi Azure App Service, domyślnej domeny katalogu głównego dla wszystkich aplikacji sieci web jest *azurewebsites.net*. Ponieważ środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest wewnętrzny do sieci wirtualnej klienta, nie ma sensu do korzystania z domeny katalogu głównego domyślnego usług publicznych. Zamiast tego środowisko ASE z wewnętrznym modułem równoważenia obciążenia powinien mieć domyślnej domeny katalogu głównego, pasującą do użycia w wewnętrznej sieci wirtualnej firmy. Na przykład firma Contoso może użyć domyślnej domeny katalogu głównego, z *wewnętrznego contoso.com* dla aplikacji, które mają być rozpoznawany i jest dostępny tylko w obrębie sieci wirtualnej firmy Contoso. 
-* *ipSslAddressCount*: ten automatycznie parametr na wartość 0 w *azuredeploy.json* pliku, ponieważ środowiska ASE z wewnętrznym modułem równoważenia obciążenia ma tylko jeden adres wewnętrznego modułu równoważenia obciążenia. Nie ma żadnych jawnych adresów IP SSL za środowisko ASE wewnętrznego modułu równoważenia obciążenia. Dzięki temu puli adresów IP protokołu SSL dla środowiska ASE z wewnętrznym modułem równoważenia obciążenia musi być równa zero. W przeciwnym razie wystąpi błąd inicjowania obsługi administracyjnej. 
+* *Tryb internalLoadBalancingMode*: W większości przypadków będą powiązane zestaw, który to 3, co oznacza, że ruch HTTP/HTTPS na portach 80/443 i kontroli/danych portów kanału posłuchaliśmy przez usługę FTP w środowisku ASE, do wewnętrznego adresu przydzielone wewnętrznego modułu równoważenia obciążenia sieci wirtualnej. Jeśli ta właściwość jest równa 2, tylko związanych z usługą portów FTP (kanały zarówno kontroli, jak i dane) są powiązane z adresu wewnętrznego modułu równoważenia obciążenia. Ruch HTTP/HTTPS pozostaje na publicznych adresów VIP.
+* *sufiks DNS*: Ten parametr określa domeny katalogu głównego domyślnego, która jest przypisana do środowiska ASE. W publicznej wersji usługi Azure App Service, domyślnej domeny katalogu głównego dla wszystkich aplikacji sieci web jest *azurewebsites.net*. Ponieważ środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest wewnętrzny do sieci wirtualnej klienta, nie ma sensu do korzystania z domeny katalogu głównego domyślnego usług publicznych. Zamiast tego środowisko ASE z wewnętrznym modułem równoważenia obciążenia powinien mieć domyślnej domeny katalogu głównego, pasującą do użycia w wewnętrznej sieci wirtualnej firmy. Na przykład firma Contoso może użyć domyślnej domeny katalogu głównego, z *wewnętrznego contoso.com* dla aplikacji, które mają być rozpoznawany i jest dostępny tylko w obrębie sieci wirtualnej firmy Contoso. 
+* *ipSslAddressCount*: Ten parametr domyślnie przyjmuje wartość na wartość 0 w *azuredeploy.json* pliku, ponieważ środowiska ASE z wewnętrznym modułem równoważenia obciążenia ma tylko jeden adres wewnętrznego modułu równoważenia obciążenia. Nie ma żadnych jawnych adresów IP SSL za środowisko ASE wewnętrznego modułu równoważenia obciążenia. Dzięki temu puli adresów IP protokołu SSL dla środowiska ASE z wewnętrznym modułem równoważenia obciążenia musi być równa zero. W przeciwnym razie wystąpi błąd inicjowania obsługi administracyjnej. 
 
 Po *azuredeploy.parameters.json* pliku jest wypełnione, należy utworzyć środowisko ASE przy użyciu fragmentu kodu programu PowerShell. Zmiana ścieżek plików, aby dopasować lokalizacje pliku szablonu usługi Resource Manager na komputerze. Pamiętaj, aby podać własne wartości dla nazwy wdrażania usługi Resource Manager i nazwę grupy zasobów:
 
@@ -69,8 +70,8 @@ Certyfikat SSL musi być skojarzony z ASE jako certyfikat SSL "domyślna", któr
 
 Uzyskaj certyfikat protokołu SSL za pomocą wewnętrznych urzędów certyfikacji, zakup certyfikat od wystawcy zewnętrznego lub przy użyciu certyfikatu z podpisem własnym. Niezależnie od źródła certyfikatu SSL musi być prawidłowo skonfigurowane następujące atrybuty certyfikatu:
 
-* **Temat**: ten atrybut musi być równa **lokalizacji głównego domain-here.com*.
-* **Alternatywna nazwa podmiotu**: ten atrybut musi zawierać zarówno **lokalizacji głównego domain-here.com* i **.SCM.domena-głównego-domeny — here.com*. Połączenia SSL z witryną SCM/Kudu skojarzonych z poszczególnymi aplikacjami, użyj adresu w postaci *your-app-name.scm.your-root-domain-here.com*.
+* **Temat**: Ten atrybut musi być równa **lokalizacji głównego domain-here.com*.
+* **Alternatywna nazwa podmiotu**: Ten atrybut musi zawierać zarówno **lokalizacji głównego domain-here.com* i **.SCM.domena-głównego-domeny — here.com*. Połączenia SSL z witryną SCM/Kudu skojarzonych z poszczególnymi aplikacjami, użyj adresu w postaci *your-app-name.scm.your-root-domain-here.com*.
 
 Za pomocą ważnego certyfikatu SSL w kasie potrzebne są dwa dodatkowe kroki przygotowawcze. Przekonwertuj lub zapisz certyfikat SSL jako plik pfx. Należy pamiętać, że plik PFX musi obejmować wszystkie pośrednie i certyfikaty główne. Zabezpiecz go przy użyciu hasła.
 
@@ -104,11 +105,11 @@ Gdy certyfikat SSL jest pomyślnie i konwertowana na ciąg kodowany w formacie b
 Parametry w *azuredeploy.parameters.json* pliku na liście:
 
 * *appServiceEnvironmentName*: Nazwa środowiska ASE wewnętrznego modułu równoważenia obciążenia jest skonfigurowany.
-* *existingAseLocation*: ciąg tekstowy zawierający regionu platformy Azure, w której wdrożono środowisko ASE wewnętrznego modułu równoważenia obciążenia.  Na przykład: "Południowo-środkowe stany USA".
-* *pfxBlobString*: Ciąg zakodowany w formacie based64 reprezentacja pliku .pfx. Użyj fragmentu kodu pokazano wcześniej i skopiuj ciąg znajdujący się w "exportedcert.pfx.b64". Wklej je jako wartość *pfxBlobString* atrybutu.
-* *hasło*: hasło używane do zabezpieczania plików PFX.
+* *existingAseLocation*: Ciąg tekstowy zawierający regionu platformy Azure, w której wdrożono środowisko ASE wewnętrznego modułu równoważenia obciążenia.  Na przykład: "Południowo-środkowe stany USA".
+* *pfxBlobString*: Ciąg kodowany w formacie based64 reprezentacja pliku .pfx. Użyj fragmentu kodu pokazano wcześniej i skopiuj ciąg znajdujący się w "exportedcert.pfx.b64". Wklej je jako wartość *pfxBlobString* atrybutu.
+* *hasło*: Hasło używane do zabezpieczania plików PFX.
 * *certificateThumbprint*: Odcisk palca certyfikatu. Jeśli pobierania tej wartości ze środowiska PowerShell (na przykład *$certificate. Odcisk palca* z wcześniejszych fragment kodu), możesz użyć wartości, ponieważ jest. Jeśli kopiujesz wartości w oknie dialogowym certyfikat Windows, pamiętaj, aby usunąć nadmiarowe miejsca do magazynowania. *CertificateThumbprint* powinien wyglądać podobnie AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *certificateName*: identyfikator ciągu przyjazna, wybranej przez użytkownika używane do identyfikowania certyfikatu. Nazwa jest używana jako część Unikatowy identyfikator usługi Resource Manager *Microsoft.Web/certificates* jednostki, która reprezentuje certyfikatu SSL. Nazwa *musi* kończy się następującym sufiksem: \_yourASENameHere_InternalLoadBalancingASE. Korzysta z witryny Azure portal ten sufiks jako wskazówka, że certyfikat jest używany do zabezpieczania środowiska ASE z obsługą wewnętrznego modułu równoważenia obciążenia.
+* *certificateName*: Identyfikator ciągu przyjazna swoje własne, wybierając używane do identyfikowania certyfikatu. Nazwa jest używana jako część Unikatowy identyfikator usługi Resource Manager *Microsoft.Web/certificates* jednostki, która reprezentuje certyfikatu SSL. Nazwa *musi* kończy się następującym sufiksem: \_yourASENameHere_InternalLoadBalancingASE. Korzysta z witryny Azure portal ten sufiks jako wskazówka, że certyfikat jest używany do zabezpieczania środowiska ASE z obsługą wewnętrznego modułu równoważenia obciążenia.
 
 Przykład skróconej *azuredeploy.parameters.json* jest następująca:
 
@@ -155,7 +156,7 @@ Po zakończeniu działania tego szablonu, dostęp do aplikacji w środowisku ASE
 Jednak podobnie jak aplikacje uruchamiane w usłudze wielodostępnych publicznych, deweloperzy mogą konfigurować nazwy niestandardowego hosta dla poszczególnych aplikacji. Mogą również skonfigurować unikatowych powiązań certyfikatów SNI SSL dla poszczególnych aplikacji.
 
 ## <a name="app-service-environment-v1"></a>Środowisko usługi App Service — wersja 1 ##
-Środowisko App Service Environment występuje w dwóch wersjach: ASEv1 i ASEv2. Podane wcześniej informacje dotyczyły wersji 2 — ASEv2. W tej sekcji przedstawiono różnice między środowiskami ASEv1 i ASEv2.
+Środowisko usługi App Service ma dwie wersje: Środowiska ASEv1 i ASEv2. Podane wcześniej informacje dotyczyły wersji 2 — ASEv2. W tej sekcji przedstawiono różnice między środowiskami ASEv1 i ASEv2.
 
 W przypadku środowiska ASEv1 możesz zarządzać wszystkimi zasobów ręcznie. Obejmuje to frontony, procesy robocze oraz adresy IP używane do obsługi połączeń SSL opartych na protokole IP. Zanim będzie można skalować w poziomie plan usługi App Service, musisz przeprowadzać skalowanie w poziomie pulę procesów roboczych, którą chcesz udostępnić go.
 

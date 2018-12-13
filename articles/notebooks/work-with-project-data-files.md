@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b0b52fc32b2895fdcd994bad5bfc73dbf938add2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ae50581404dceb7b59b2ca145207f7d4ade23440
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102082"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309250"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Praca z plikami danych w projektach notesu platformy Azure
 
@@ -46,13 +46,13 @@ Przenoszenie plików do projektu na pulpicie nawigacyjnym projektu lub w ramach 
 
     ![Przekaż z adresu URL okna podręcznego](media/quickstarts/upload-from-url-popup.png)
 
-    - **Z poziomu komputera**: przeciągnij i upuść pliki w okienku wyskakującym lub wybierz **Wybieranie plików**, a następnie wyszukaj i wybierz pliki danych, który chcesz zaimportować. Można usunąć lub wybrać dowolną liczbę plików dowolnego typu i formatu, ponieważ to Ty kodu w notesie, otwórz plik i analizować swoje dane.
+    - **Z poziomu komputera**: Przeciągnij i upuść pliki w okienku wyskakującym lub wybierz **Wybieranie plików**, a następnie wyszukaj i wybierz pliki danych, który chcesz zaimportować. Można usunąć lub wybrać dowolną liczbę plików dowolnego typu i formatu, ponieważ to Ty kodu w notesie, otwórz plik i analizować swoje dane.
 
     ![Przekaż z komputera okna podręcznego](media/quickstarts/upload-from-computer-popup.png)
 
 1. Po zaimportowaniu plików są wyświetlane na pulpicie nawigacyjnym projekt i są dostępne w ramach kodu notesu przy użyciu nazw względnych ścieżek do folderu zawierającego.
 
-### <a name="import-files-from-the-data-menu-in-a-notebook"></a>Zaimportuj pliki z menu dane w notesie
+### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Zaimportuj pliki z menu Plik w notesie
 
 1. W uruchomionej Notes, wybierz **pliku** > **przekazywanie** polecenia:
 
@@ -62,7 +62,7 @@ Przenoszenie plików do projektu na pulpicie nawigacyjnym projektu lub w ramach 
 
 1. W **stan przekazywania** okna podręcznego, który jest wyświetlany, wybierz **Folder docelowy** z listy rozwijanej:
 
-    - Folder sesji (*~/* ): przesyła pliki do bieżącej sesji Notes, ale nie tworzy pliki w projekcie. Folder sesji jest równorzędny folder projektu, ale nie jest zachowana po zakończeniu sesji. Aby uzyskać dostęp do plików sesji w kodzie, prefiks nazw plików ze ścieżką względną *... /*.
+    - Folder sesji (*~/* ): Przesyła pliki do bieżącej sesji Notes, ale nie tworzy pliki w projekcie. Folder sesji jest równorzędny folder projektu, ale nie jest zachowana po zakończeniu sesji. Aby uzyskać dostęp do plików sesji w kodzie, prefiks nazw plików ze ścieżką względną *... /*.
 
         Za pomocą folderu sesji jest przydatne do eksperymentowania i pozwala uniknąć przeładowania projekt z plikami, może być lub może nie być potrzebna w dłuższym okresie. Można również przekazać pliki do folderu sesji, który miało identyczne nazwy plików w projekcie, bez powodowania konfliktów i bez konieczności zmień nazwy plików. Na przykład, załóżmy, że masz jedną wersję *data.csv* w projekcie, ale chcesz eksperymentować z inną wersję *data.csv*. Przekazując plik do folderu, w sesji, można uruchomić Notes, przy użyciu danych w przekazanym pliku (odwołując się do niego w kodzie za pomocą *... /Data.csv*) zamiast dane w pliku projektu.
 

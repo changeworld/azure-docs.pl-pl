@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 6354212eb95fbefb217dd5339613d050da55f4ba
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.reviewer: georgel
+ms.openlocfilehash: 2f300e496873c0b048ccc1acc078bf1650e6bd9c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688155"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166289"
 ---
 # <a name="mysql-resource-provider-11300--release-notes"></a>Informacje o wersji 1.1.30.0 dostawcy zasobów MySQL
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Te informacje o wersji opisano ulepszenia i znane problemy w bazie danych MySQL w wersja dostawcy zasobów 1.1.30.0.
 
@@ -60,9 +60,22 @@ Ta wersja dostawcy zasobów usługi Azure Stack MySQL obejmuje następujące ule
 
 - **Ponownie logowania MySQL**. Próba utworzenia nowego MySQL Zaloguj się przy użyciu tej samej nazwy użytkownika jako istniejące dane logowania w tej samej subskrypcji spowoduje ponowne użycie tych samych danych logowania i hasło istniejącego. 
 
-    **Obejście**: używać różnych nazw użytkowników, podczas tworzenia nowych nazw logowania w ramach tej samej subskrypcji lub utworzyć nazwy logowania przy użyciu tej samej nazwy użytkownika w różnych subskrypcjach.
+    **Obejście**: Używać różnych nazw użytkowników, podczas tworzenia nowych nazw logowania w ramach tej samej subskrypcji lub utworzyć nazwy logowania przy użyciu tej samej nazwy użytkownika w różnych subskrypcjach.
 
+- **Wymaganie obsługi protokołu TLS 1.2**. Jeśli zostanie podjęta próba wdrożeniem lub aktualizację dostawcy zasobów MySQL z poziomu komputera, na którym nie włączono protokołu TLS 1.2, operacja może zakończyć się niepowodzeniem. Uruchom następujące polecenie programu PowerShell na komputerze, używany do wdrażania lub zaktualizuj dostawcę zasobów, aby sprawdzić, czy protokół TLS 1.2, jest zwracana jako obsługiwane:
 
+  ```powershell
+  [System.Net.ServicePointManager]::SecurityProtocol
+  ```
+
+  Jeśli **Tls12** jest nie jest uwzględniony w danych wyjściowych polecenia, protokołu TLS 1.2 nie jest włączona na komputerze.
+
+    **Obejście**: Uruchom następujące polecenie programu PowerShell w celu włączenia protokołu TLS 1.2 i następnie Rozpocznij wdrażanie dostawcy zasobów lub zaktualizować skrypt z tej samej sesji programu PowerShell:
+
+    ```powershell
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+    ```
+ 
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Znane problemy dotyczące administratorów chmury, działania usługi Azure Stack
 Zapoznaj się z dokumentacją w [informacje o wersji programu Azure Stack](azure-stack-servicing-policy.md).
 

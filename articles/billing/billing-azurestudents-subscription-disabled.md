@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 03/01/2018
 ms.author: cwatson
 ROBOTS: NOINDEX
-ms.openlocfilehash: c8d78d51425ea5a5fc2f3b326710b3c2ad5a6a06
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 0e4c7ca6776e2016bf0d34d856c4c2332a0bece0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581854"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250454"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Dlaczego jest moich subskrypcji Azure for Students wyłączone i jak go uaktywnić?
 
-Twojej subskrypcji Azure for Students może uzyskać wyłączone, ponieważ wykorzystano wszystkie środki, Twoje środki wygasły lub przypadkowo Anulowano subskrypcję. Zobacz, z jakim problemem ma zastosowanie do Ciebie i Dowiedz się, jak się dostać ponowne aktywowanie subskrypcji.
+Twojej subskrypcji Azure for Students może uzyskać wyłączone, ponieważ wykorzystano wszystkie środki, Twoje środki wygasły lub przypadkowo anulowaniu subskrypcji. Zobacz, z jakim problemem ma zastosowanie do Ciebie i Dowiedz się, jak się dostać ponowne aktywowanie subskrypcji.
 
-## <a name="you-have-used-all-of-your-credit"></a>Wykorzystano wszystkie środki
+## <a name="youve-used-all-of-your-credit"></a>Wykorzystano wszystkie środki
 
-Konto Azure for Students zapewnia 100 USD kredytu i ograniczoną ilość bezpłatnych usług przez 12 miesięcy. Użycie po przekroczeniu bezpłatnych usług i ilości jest odejmowany od środków. Gdy skończy się środków platformy Azure powoduje wyłączenie usług i subskrypcji. Aby nadal korzystać z usług platformy Azure, należy uaktualnić subskrypcję do subskrypcji, zgodnie z rzeczywistym użyciem, kontaktując się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) i dostarczając dane karty kredytowej. Po zakończeniu uaktualnienia subskrypcji nadal ma dostęp do bezpłatnych usług przez 12 miesięcy od Twojej rejestracji daty. Zostanie naliczona tylko za użycie wykraczające poza bezpłatnych usług i ilości.
+Konto Azure for Students zapewnia 100 USD kredytu i ograniczoną ilość bezpłatnych usług przez 12 miesięcy. Użycie po przekroczeniu bezpłatnych usług i ilości jest odejmowany od środków. Gdy skończy się środków platformy Azure powoduje wyłączenie usług i subskrypcji. Aby nadal korzystać z usług platformy Azure, należy uaktualnić subskrypcję do subskrypcji, zgodnie z rzeczywistym użyciem, kontaktując się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Po zakończeniu uaktualnienia subskrypcji nadal ma dostęp do bezpłatnych usług przez 12 miesięcy od Twojej rejestracji daty. Zostanie naliczona tylko za użycie wykraczające poza bezpłatnych usług i ilości.
 
 Pozostałe środki możesz sprawdzić na [dostępu Sponsorowanego Microsoft Azure portal](https://www.microsoftazuresponsorships.com/balance)
 
@@ -43,19 +43,17 @@ Pozostałe środki możesz sprawdzić na [dostępu Sponsorowanego Microsoft Azur
 
 Tabela zawiera następujące kolumny:
 
-* **Nazwa usługi:** usługa, która zużywa środków platformy Azure.
-* **Zasób usługi:** jednostkę miary wykorzystywanego usługi.
-* **Wydatki:** kwota kredytu USD($) poświęcony usłudze.
-
+* **Nazwa usługi:** Usługa, która zużywa środków platformy Azure.
+* **Zasób usługi:** Jednostka miary, które są używane usługi.
+* **Wydatki:** Kwota kredytu USD($) poświęcony usłudze.
 
 ## <a name="your-credit-has-expired"></a>Twoje środki wygasły
 
-Twoje środków platformy Azure dla studentów wygasa po upływie 12 miesięcy. Po wygaśnięciu środków platformy Azure powoduje wyłączenie subskrypcji. Aby nadal korzystać z usług platformy Azure, należy uaktualnić subskrypcję do subskrypcji płatności, kontaktując się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) i dostarczając dane karty kredytowej. Po zakończeniu uaktualnienia na platformie Azure obowiązuje możesz stawki dla wszystkich usług, którego używasz.
+Twoje środków platformy Azure dla studentów wygasa po upływie 12 miesięcy. Po wygaśnięciu środków platformy Azure powoduje wyłączenie subskrypcji. Aby nadal korzystać z usług platformy Azure, należy uaktualnić subskrypcję do subskrypcji płatności, kontaktując się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Po zakończeniu uaktualnienia na platformie Azure obowiązuje możesz stawki dla wszystkich usług, których używasz.
 
+## <a name="youve-accidentally-canceled-your-subscription"></a>Przypadkowo anulowaniu subskrypcji
 
-## <a name="you-have-accidentally-canceled-your-subscription"></a>Przypadkowo Anulowano subskrypcję
-
-Jeśli przypadkowo Anulowano Twojej subskrypcji Azure for Students, możesz uaktywnić go ponownie, kontaktując się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Po aktywowaniu, nadal masz dostęp do pozostałe środki i bezpłatnych usług przez 12 miesięcy z datą rejestracji.
+Jeśli została przypadkowo anulowana Twojej subskrypcji Azure for Students, możesz uaktywnić go ponownie, kontaktując się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Po aktywowaniu, nadal masz dostęp do pozostałe środki i bezpłatnych usług przez 12 miesięcy z datą rejestracji.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 

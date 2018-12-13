@@ -1,5 +1,5 @@
 ---
-title: Co nowego
+title: Co nowego w wersji?
 titleSuffix: Azure Machine Learning service
 description: Informacje o najnowszych aktualizacjach usługi Azure Machine Learning.
 services: machine-learning
@@ -11,18 +11,18 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea9f8e07b627b7f3554e390063d61ef984f30dad
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 73f4aeb77124c21a07771ab080b88a56231e50da
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105142"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185719"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning. 
 
-## <a name="2018-12-04-general-availability"></a>2018--12 04: ogólna dostępność
+## <a name="2018-12-04-general-availability"></a>2018-12-04: Ogólna dostępność
 
 Usługa Azure Machine Learning jest teraz ogólnie dostępna.
 
@@ -235,9 +235,9 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
 
 ## <a name="2018-09-public-preview-refresh"></a>2018-09 (w wyniku odświeżenia publiczna wersja zapoznawcza)
 
-Element nowych, całkowicie odświeżane wersji usługi Azure Machine Learning: Dowiedz się więcej o tej wersji: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
+Nowy, całkowicie odświeżona wersja usługi Azure Machine Learning: Dowiedz się więcej na temat tej wersji: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
-## <a name="older-notes-sept-2017---jun-2018"></a>Informacje o starszych: września 2017 — cze 2018 r.
+## <a name="older-notes-sept-2017---jun-2018"></a>Informacje o starszych: Września 2017 — cze 2018 r.
 ### <a name="2018-05-sprint-5"></a>2018-05 (sprint 5)
 
 W tej wersji usługi Azure Machine Learning możesz wykonywać następujące czynności:
@@ -542,7 +542,7 @@ Poniżej przedstawiono listę szczegółowych aktualizacji w każdym obszarze sk
 - Serwer Jupyter teraz poprawnie zamknięty podczas logowania użytkownika z aplikacji.
 
 ##### <a name="azure-portal"></a>Azure Portal
-- Konta eksperymentowania oraz konta zarządzania modelami można teraz tworzyć tak w dwóch nowych regionów systemu Azure: Europa Zachodnia i Azja południowo-wschodnia.
+- Teraz można utworzyć konta eksperymentowania oraz konta zarządzania modelami w dwóch nowych regionów systemu Azure: Europa Zachodnia i Azja południowo-wschodnia.
 - Plan usługi DevTest konta zarządzania modelu teraz jest dostępna tylko po to pierwszy z nich ma być utworzony w ramach subskrypcji. 
 - Link pomoc w witrynie Azure portal jest aktualizowana, aby wskazywał na stronie dokumentacji poprawne.
 - Pole opisu jest usuwany z strony szczegółów obrazu platformy Docker, ponieważ nie ma zastosowania.

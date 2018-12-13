@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7bafc30bbf8661f7054e49c36af420507f37c989
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227423"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53326632"
 ---
-Możesz z łatwością [automatyczne skalowanie](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md) swoje [maszyn wirtualnych (VM)](../articles/virtual-machines/windows/overview.md) zastosowania [zestawy skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) i [funkcja automatycznego skalowania platformy Azure Monitor](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). Maszyny wirtualne muszą należeć do zestawu skalowania automatycznego skalowania. Ten artykuł zawiera informacje, która pozwala na lepsze zrozumienie, jak skalowanie w pionie i w poziomie przy użyciu automatycznej i ręcznej metody maszyn wirtualnych.
+Możesz z łatwością [automatyczne skalowanie](../articles/azure-monitor/platform/autoscale-best-practices.md) swoje [maszyn wirtualnych (VM)](../articles/virtual-machines/windows/overview.md) zastosowania [zestawy skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) i [funkcja automatycznego skalowania platformy Azure Monitor](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). Maszyny wirtualne muszą należeć do zestawu skalowania automatycznego skalowania. Ten artykuł zawiera informacje, która pozwala na lepsze zrozumienie, jak skalowanie w pionie i w poziomie przy użyciu automatycznej i ręcznej metody maszyn wirtualnych.
 
 ## <a name="horizontal-or-vertical-scaling"></a>Skalowanie w poziomie lub w pionie
 
@@ -35,7 +35,7 @@ Można włączyć automatyczne skalowanie, podczas tworzenia zestawu skalowania 
  
 ### <a name="metrics"></a>Metryki
 
-Funkcja automatycznego skalowania usługi Azure Monitor pozwala na skalowanie liczba uruchomionych maszyn wirtualnych w lub w dół na podstawie [metryki](../articles/monitoring-and-diagnostics/insights-autoscale-common-metrics.md). Domyślnie maszyny wirtualne zapewniają podstawowe metryki na poziomie hosta dla dysku, sieci i użycie procesora CPU. Podczas konfigurowania zbierania danych diagnostycznych za pomocą diagnostycznego rozszerzenia, liczniki wydajności systemu operacyjnego gościa dodatkowe stają się dostępne dla dysku, Procesora i pamięci.
+Funkcja automatycznego skalowania usługi Azure Monitor pozwala na skalowanie liczba uruchomionych maszyn wirtualnych w lub w dół na podstawie [metryki](../articles/azure-monitor/platform/autoscale-common-metrics.md). Domyślnie maszyny wirtualne zapewniają podstawowe metryki na poziomie hosta dla dysku, sieci i użycie procesora CPU. Podczas konfigurowania zbierania danych diagnostycznych za pomocą diagnostycznego rozszerzenia, liczniki wydajności systemu operacyjnego gościa dodatkowe stają się dostępne dla dysku, Procesora i pamięci.
 
 ![Kryteria metryki](./media/virtual-machines-autoscale/virtual-machines-autoscale-criteria.png)
 
@@ -49,7 +49,7 @@ Jeśli Twoja aplikacja potrzebuje skalowania na podstawie metryk, które nie są
  
 ### <a name="notifications"></a>Powiadomienia
 
-Możesz [ustawić wyzwalacze](../articles/monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md) tak, aby konkretne adresy URL są nazywane lub wiadomości e-mail są wysyłane na podstawie reguł skalowania automatycznego, które tworzysz. Elementy Webhook pozwalają kierować powiadomienia o alertach platformy Azure z innymi systemami powiadomień przetwarzania końcowego lub niestandardowy.
+Możesz [ustawić wyzwalacze](../articles/azure-monitor/platform/autoscale-webhook-email.md) tak, aby konkretne adresy URL są nazywane lub wiadomości e-mail są wysyłane na podstawie reguł skalowania automatycznego, które tworzysz. Elementy Webhook pozwalają kierować powiadomienia o alertach platformy Azure z innymi systemami powiadomień przetwarzania końcowego lub niestandardowy.
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>Ręczne skalowanie maszyn wirtualnych w zestawie skalowania
 

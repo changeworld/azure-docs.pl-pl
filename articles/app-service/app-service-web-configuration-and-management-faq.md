@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja często zadawane pytania dotyczące usługi Azure web apps | Dokumentacja firmy Microsoft
+title: Konfiguracja — często zadawane pytania — usługa Azure App Service | Dokumentacja firmy Microsoft
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące konfiguracji i zarządzania problemy dla funkcji Web Apps w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: b98b0ea68e91bad2a62f40d3dc611308f1bed2de
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c2758084331a487d65235b70bed803a74d0a34b5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967746"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322537"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfiguracja i zarządzanie nim często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -296,7 +296,7 @@ To najszybszy sposób, aby znaleźć wersję programu Microsoft .NET, która jes
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Dlaczego funkcja automatycznego skalowania nie działa zgodnie z oczekiwaniami?
 
-Jeśli skalowania automatycznego platformy Azure nie przeskalować w pionie lub skalowanie wystąpienia aplikacji sieci web, zgodnie z oczekiwaniami, możliwe, że uruchomione w scenariuszu, w którym celowo Wybierzmy skali, aby uniknąć wejścia w nieskończoną pętlę ze względu na "niestabilny." Zwykle dzieje się tak, gdy nie ma odpowiedni poziom między wartościami progowymi skalowalnego w poziomie i skalowania na zewnątrz. Aby dowiedzieć się, jak można uniknąć "niestabilny" i informacji o najlepszych rozwiązaniach dotyczących innych skalowania, zobacz [najlepszych praktykach dotyczących skalowania](../monitoring-and-diagnostics/insights-autoscale-best-practices.md#autoscale-best-practices).
+Jeśli skalowania automatycznego platformy Azure nie przeskalować w pionie lub skalowanie wystąpienia aplikacji sieci web, zgodnie z oczekiwaniami, możliwe, że uruchomione w scenariuszu, w którym celowo Wybierzmy skali, aby uniknąć wejścia w nieskończoną pętlę ze względu na "niestabilny." Zwykle dzieje się tak, gdy nie ma odpowiedni poziom między wartościami progowymi skalowalnego w poziomie i skalowania na zewnątrz. Aby dowiedzieć się, jak można uniknąć "niestabilny" i informacji o najlepszych rozwiązaniach dotyczących innych skalowania, zobacz [najlepszych praktykach dotyczących skalowania](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Dlaczego funkcja automatycznego skalowania czasami skalowany tylko częściowo?
 

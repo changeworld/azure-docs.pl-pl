@@ -13,14 +13,14 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/31/2018
-ms.openlocfilehash: 71a23e982f1e4ae5609d4f9a160cd1861e043ea1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 00fe4e109df2ac8954e657a1a567842ec5eb7d37
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251819"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317461"
 ---
-# <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich, SQL Database: błędy połączeń i inne problemy z bazy danych
+# <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich bazy danych SQL: Błędy połączenia bazy danych i inne problemy
 
 Ten artykuł zawiera listę kodów błędów programu SQL dla aplikacji klienckich bazy danych SQL, w tym błędów połączenia bazy danych, błędy przejściowe (nazywane również błędów przejściowych), błędy nadzoru zasobów, problemów kopii bazy danych, puli elastycznej i inne błędy. Większość kategorii dla usługi Azure SQL Database, a nie dotyczą programu Microsoft SQL Server. Zobacz też [komunikaty o błędach systemu](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx).
 
@@ -37,7 +37,7 @@ Błędów przejściowych błędów zwykle objawiać się jedną z następującyc
 * Baza danych &lt;db_name&gt; na serwerze &lt;Azure_instance&gt; nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id&gt;
 * Baza danych &lt;db_name&gt; na serwerze &lt;Azure_instance&gt; nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id&gt;. (Program Microsoft SQL Server, błąd: 40613)
 * Istniejące połączenie zostało zamknięte przez hosta zdalnego.
-* System.Data.Entity.Core.EntityCommandExecutionException: Wystąpił błąd podczas wykonywania definicji polecenia. Zobacz wyjątek wewnętrzny, aby uzyskać szczegółowe informacje. ---> System.Data.SqlClient.SqlException: Wystąpił błąd poziomu transportu, podczas odbierania wyników z serwera. (Dostawca: Dostawca sesji, błąd: 19 – fizyczne połączenie nie jest używany)
+* System.Data.Entity.Core.EntityCommandExecutionException: Wystąpił błąd podczas wykonywania definicji polecenia. Zobacz wyjątek wewnętrzny, aby uzyskać szczegółowe informacje. ---> System.Data.SqlClient.SqlException: Poziom transportu wystąpił błąd podczas odbierania wyników z serwera. (Dostawca: Dostawcy sesji, błąd: 19 - fizyczne połączenie nie jest używany)
 * Próba połączenia pomocniczej bazy danych nie powiodła się, ponieważ baza danych jest w trakcie ponownej konfiguracji i jest zajęty, zastosowanie nowych stron w trakcie wykonywania aktywnej transakcji w głównej bazie danych. 
 
 Aby uzyskać przykłady kodu logikę ponawiania próby zobacz:
@@ -90,12 +90,12 @@ Następujące błędy są spowodowane nadmiernego wykorzystania zasobów podczas
 
 Tematy pokrewne:
 
-* Więcej szczegółowych informacji znajduje się tutaj: [limity zasobów usługi Azure SQL Database](sql-database-service-tiers-dtu.md).
+* Więcej szczegółowych informacji znajduje się tutaj: [Limity zasobów usługi Azure SQL Database](sql-database-service-tiers-dtu.md).
 
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
-| 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać więcej informacji, zobacz [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637). W przeciwnym razie spróbuj ponownie później.<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server). W przeciwnym razie spróbuj ponownie później.<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Baza danych osiągnęła limit przydziału rozmiaru. Partycji lub Usuń dane, Porzuć indeksy lub zapoznaj się z dokumentacją, aby ustalić możliwe rozwiązania. |
 | 40549 |16 |Sesja jest przerwana z powodu długotrwałej transakcji. Spróbuj skrócić transakcję. |
 | 40550 |16 |Sesja została przerwana, ponieważ uzyskała zbyt wiele blokad. Spróbuj odczytu lub modyfikować mniej wierszy w ramach jednej transakcji. |
@@ -109,7 +109,7 @@ Następujące błędy odnoszą się do tworzenia i używania pul elastycznych:
 | Kod błędu | Ważność | Opis | Działania naprawcze |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Osiągnięto limit przestrzeni dyskowej w puli elastycznej. Użycie magazynu dla puli elastycznej nie może przekroczyć (%d) MB. Podjęto próbę zapisu danych do bazy danych, gdy został osiągnięty limit magazynu elastycznej puli. |Należy rozważyć zwiększenie Dtu i/lub Dodawanie magazynu do elastycznej puli, jeśli jest to możliwe, aby zwiększyć limit przestrzeni dyskowej, zmniejszenie miejsca używanego przez poszczególnych baz danych w puli elastycznej lub usuwać bazy danych z puli elastycznej. |
-| 10929 | 16 |Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Zobacz [ http://go.microsoft.com/fwlink/?LinkId=267637 ](https://go.microsoft.com/fwlink/?LinkId=267637) uzyskać pomoc. W przeciwnym razie spróbuj ponownie później. Jednostka DTU / minimalna liczba rdzeni wirtualnych na bazę danych; Jednostka DTU / maksymalna liczba na bazę danych rdzeni wirtualnych. Całkowita liczba współbieżnych procesów roboczych (żądań) we wszystkich bazach danych w puli elastycznej próba przekracza limit puli. |Należy rozważyć zwiększenie liczby jednostek Dtu lub rdzeni wirtualnych w puli elastycznej w miarę możliwości w celu zwiększenia limitu jego procesów roboczych lub usuwać bazy danych z puli elastycznej. |
+| 10929 | 16 |Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server) uzyskać pomoc. W przeciwnym razie spróbuj ponownie później. Jednostka DTU / minimalna liczba rdzeni wirtualnych na bazę danych; Jednostka DTU / maksymalna liczba na bazę danych rdzeni wirtualnych. Całkowita liczba współbieżnych procesów roboczych (żądań) we wszystkich bazach danych w puli elastycznej próba przekracza limit puli. |Należy rozważyć zwiększenie liczby jednostek Dtu lub rdzeni wirtualnych w puli elastycznej w miarę możliwości w celu zwiększenia limitu jego procesów roboczych lub usuwać bazy danych z puli elastycznej. |
 | 40844 | 16 |Baza danych "%ls" na serwerze "%ls" jest bazą danych w wersji "%ls" w puli elastycznej i nie może mieć relacji ciągłych kopii.  |ND |
 | 40857 | 16 |Nie znaleziono serwera puli elastycznej: "%ls", nazwa puli elastycznej: "%ls". Określona pula elastyczna nie istnieje na określonym serwerze. | Podaj nazwę puli elastycznej prawidłowe. |
 | 40858 | 16 |Pula elastyczna "%ls" już istnieje na serwerze: "%ls". Określona pula elastyczna jest już istnieje na określonym serwerze logicznym. | Podaj nową nazwę puli elastycznej. |
@@ -144,7 +144,7 @@ Następujące błędy, które nie należą do żadnych poprzednich kategorii.
 | 15006 |16 |(AdministratorLogin) nie jest prawidłową nazwą, ponieważ zawiera ona nieprawidłowe znaki. |
 | 18452 |14 |Logowanie nie powiodło się. Nazwa logowania pochodzi z niezaufanej domeny i nie można używać z systemu Windows authentication.%.&#x2a;ls (nazwy logowania systemu Windows nie są obsługiwane w tej wersji programu SQL Server). |
 | 18456 |14 |Nie można zalogować użytkownika "%. &#x2a;ls'.%. &#x2a;ls %. &#x2a;ls (nie można zalogować użytkownika "%.&#x2a; ls".) |
-| 18470 |14 |Logowanie nie powiodło się dla użytkownika '%.&#x2a;ls'. Przyczyna: Konto jest disabled.%.&#x2a;ls |
+| 18470 |14 |Logowanie nie powiodło się dla użytkownika '%.&#x2a;ls'. Przyczyna: Konto jest disabled.%. &#x2a;ls |
 | 40014 |16 |Nie można używać wielu baz danych w ramach jednej transakcji. |
 | 40054 |16 |Tabele bez indeksu klastrowanego są nieobsługiwane w tej wersji programu SQL Server. Utwórz indeks klastrowany i spróbuj ponownie. |
 | 40133 |15 |Ta operacja jest nieobsługiwana w tej wersji programu SQL Server. |

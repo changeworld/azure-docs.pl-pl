@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 03a60940b4889671149c49becb0f823da89781ff
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135563"
+ms.locfileid: "53163773"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Najlepsze rozwiązania dotyczące obciążeń wyceny i zmiany rozmiaru migracji na platformę Azure
 
@@ -34,20 +34,20 @@ Najlepsze rozwiązania w tej sekcji ułatwiają Szacowanie kosztów, wykonać od
 
 
 
-## <a name="best-practice-estimate-monthly-workload-costs"></a>Najlepsze rozwiązanie: Oszacuj miesięczne koszty używania obciążenia
+## <a name="best-practice-estimate-monthly-workload-costs"></a>Najlepszym rozwiązaniem jest: Oszacuj miesięczne koszty używania obciążenia
  
 Aby przeprowadzić prognozowanie, rachunek miesięczny dla migrowanych obciążeń, istnieje szereg narzędzi, których można użyć.
 
-- **Kalkulator cen platformy Azure**: zaznacz produkty, aby oszacować, na przykład maszyny wirtualne i magazyn. Koszty są wprowadzane do Kalkulatora cen, aby zbudować oszacowanie.
+- **Kalkulator cen platformy Azure**: Możesz wybrać produkty, aby oszacować, na przykład maszyny wirtualne i magazyn. Koszty są wprowadzane do Kalkulatora cen, aby zbudować oszacowanie.
 
  ![Kalkulator cen platformy Azure](./media/migrate-best-practices-costs/pricing.png) *kalkulatora cen platformy Azure*
 
-- **Usługa Azure Migrate**: aby oszacować koszty, należy przejrzeć i kont dla wszystkich zasobów, które są wymagane do uruchamiania obciążeń na platformie Azure. Aby uzyskać te dane, należy utworzyć spis zasobów, w tym serwerów, maszyn wirtualnych, baz danych i magazynu. Usługa Azure Migrate służy do zebrania tych informacji.
+- **Usługa Azure Migrate**: Aby oszacować koszty, należy przejrzeć i kont dla wszystkich zasobów, które są wymagane do uruchamiania obciążeń na platformie Azure. Aby uzyskać te dane, należy utworzyć spis zasobów, w tym serwerów, maszyn wirtualnych, baz danych i magazynu. Usługa Azure Migrate służy do zebrania tych informacji.
 
  - Usługa Azure Migrate umożliwia odnalezienie i ocenia środowisku lokalnych w celu zapewnienia magazynu.
  - Usługa Azure Migrate można mapować i wyświetlić zależności między maszynami wirtualnymi, aby mieć pełny obraz.
  - Ocena usługi Azure Migrate zawiera szacowany koszt.
-    - Koszty operacji obliczeniowych: przy użyciu rozmiaru maszyny Wirtualnej platformy Azure, zalecany, jeśli tworzysz ocenę, usługę Azure migrate interfejs API rozliczeń do obliczania szacowany miesięczny koszt maszyny Wirtualnej. Oszacowanie uwzględnia systemu operacyjnego, programu software assurance, zarezerwowane wystąpienia, maszyny Wirtualnej przestojów, lokalizacji i ustawienia waluty. Agreguje koszt wszystkich maszyn wirtualnych do oceny i oblicza łączny koszt miesięczny obliczeń.
+    - Koszty operacji obliczeniowych: Przy użyciu rozmiaru maszyny Wirtualnej platformy Azure, zalecany, jeśli tworzysz ocenę, usługa Azure Migrate używa interfejsu API rozliczeń do obliczania szacowany miesięczny koszt maszyny Wirtualnej. Oszacowanie uwzględnia systemu operacyjnego, programu software assurance, zarezerwowane wystąpienia, maszyny Wirtualnej przestojów, lokalizacji i ustawienia waluty. Agreguje koszt wszystkich maszyn wirtualnych do oceny i oblicza łączny koszt miesięczny obliczeń.
     - Koszt usługi Storage: Usługa Azure Migrate oblicza całkowite miesięczne koszty magazynu przez agregowanie koszty magazynowania wszystkich maszyn wirtualnych w ocenie. Miesięczny koszt przechowywania dla konkretnej maszyny można obliczyć przez agregowanie miesięcznych kosztów wszystkie dyski dołączone do niego. 
 
     ![Usługa Azure Migrate](./media/migrate-best-practices-costs/assess.png) *oceny usługa Azure Migrate*
@@ -58,7 +58,7 @@ Aby przeprowadzić prognozowanie, rachunek miesięczny dla migrowanych obciąże
 - [Przeczytaj o](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation) oceny usługa Azure Migrate.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/dms/dms-overview) o Database Migration Service (DMS).
 
-## <a name="best-practice-right-size-vms"></a>Najlepsze rozwiązanie: odpowiedni rozmiar maszyn wirtualnych
+## <a name="best-practice-right-size-vms"></a>Najlepszym rozwiązaniem jest: Odpowiedni rozmiar maszyn wirtualnych
 
 Można wybrać kilka opcji, gdy wdrażanie maszyn wirtualnych platformy Azure w celu obsługi obciążeń. Każdy typ maszyny Wirtualnej ma określonych funkcji i różnymi kombinacjami procesora CPU, pamięci i dysków. Maszyny wirtualne są zgrupowane w następujący sposób.
 
@@ -80,7 +80,7 @@ Można wybrać kilka opcji, gdy wdrażanie maszyn wirtualnych platformy Azure w 
 - [Planowanie](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs) rozmiaru maszyny Wirtualnej.
 - [Przegląd](https://docs.microsoft.com/azure/migrate/contoso-migration-assessment) przykładowa ocena dla fikcyjnej firmy Contoso.
 
-## <a name="best-practice-select-the-right-storage"></a>Najlepsze rozwiązanie: wybierz odpowiednie Magazyn
+## <a name="best-practice-select-the-right-storage"></a>Najlepszym rozwiązaniem jest: Wybierz odpowiednie Magazyn
 
 Dostrajanie i zachowaniu magazynu lokalnego (sieci SAN i NAS) i sieci obsługujących je, może być kosztowne i czasochłonne. Do chmury, aby zmniejszyć operacyjne i zarządzania problemy najczęściej są migrowane dane plików (magazyn). Firma Microsoft oferuje kilka opcji przenoszenia danych na platformie Azure, a potrzebne do podejmowania decyzji o tych opcjach. Pobrania odpowiedni typ magazynu danych można zapisać organizacji kilka tysięcy dolarów każdego miesiąca. Kilka istotnych kwestii:
 
@@ -96,7 +96,7 @@ System Azure oferuje różne typy magazynu danych.
 --- | --- |  ---
 **Obiekty blob** | Zoptymalizowane pod kątem przechowywania dużych ilości pozbawionych struktury obiektów, takich jak dane tekstowe lub binarne<br/><br/> | Dostęp do danych z dowolnego miejsca za pośrednictwem protokołu HTTP/HTTPS. | Użycie dla scenariuszy dostępu losowa i przesyłania strumieniowego. Na przykład do udostępniania obrazów i dokumentów bezpośrednio w przeglądarce, przesyłanie strumieniowe audio i wideo i przechowywania danych odzyskiwania kopii zapasowych i odzyskiwanie po awarii.
 **Pliki** | Zarządzane udziały plików udostępnianych za pośrednictwem protokołu SMB 3.0 | Podczas migrowania lokalnych udziałów plików i w celu zapewnienia wielu połączeń/dostępu do danych plików.
-**Dyski** | Oparte na stronicowych obiektów blob.<br/><br/> (Szybkość) typ dysku: standardowa (HDD lub SSD) lub Premium (SSD).<br/><br/>Zarządzanie dyskami: niezarządzane (zarządzasz ustawień dysku i magazynu) lub zarządzany (Wybierz typ dysku i platformy Azure zarządza dysku). | Używanie dysków w warstwie Premium dla maszyn wirtualnych. Używanie dysków zarządzanych dla proste zarządzanie i skalowania.
+**Dyski** | Oparte na stronicowych obiektów blob.<br/><br/> Typ dysku (szybkość): Standardowa (HDD lub SSD) lub Premium (SSD).<br/><br/>Zarządzanie dyskami: Niezarządzane (zarządzasz ustawień dysku i magazynu) lub zarządzany (Wybierz typ dysku i platformy Azure zarządza dysku). | Używanie dysków w warstwie Premium dla maszyn wirtualnych. Używanie dysków zarządzanych dla proste zarządzanie i skalowania.
 **kolejki** | Store i pobierania dużej liczby wiadomości, dostępne za pośrednictwem uwierzytelnionych połączeń (HTTP lub HTTPS) | Połącz składniki aplikacji za pomocą Kolejkowanie komunikatów asynchronicznych.
 **Tabele** | Store tabel. | Teraz część interfejsu API tabeli usługi Azure Cosmos DB.
 
@@ -129,7 +129,7 @@ Konta magazynu można użyć różne rodzaje nadmiarowości w celu zapewnienia o
 **Typ** | **Szczegóły** | **Użycie**
 --- | --- | ---
 **Magazyn lokalnie nadmiarowy (LRS)** | Chroni przed awarią lokalnej replikacji w ramach danej jednostki pojedynczy magazyn do awarii oddzielne domeny i domeny aktualizacji. Zachowuje wiele kopii danych w jednym centrum danych. Zawiera co najmniej 99,999999999% (11 9\'s) trwałości obiektów w danym roku. | Należy wziąć pod uwagę, jeśli aplikacja przechowuje dane, które można łatwo odtworzone.
-**Magazyn strefowo nadmiarowy (ZRS)** | Chroni ponownie awarii centrum danych poprzez replikację między trzy klastry magazynu w jednym regionie. Każdy klaster magazyn jest fizycznie oddzielone i znajduje się w jego własnej strefie dostępności. Zawiera co najmniej 99,9999999999% (12 9\'s) trwałości obiektów w danym roku przez przechowywanie wielu kopii danych w wielu centrach danych lub regionach. | Należy wziąć pod uwagę, jeśli potrzebujesz spójności, trwałości i wysokiej dostępności. Nie może chronić przed regionalnej awarii, w przypadku wielu stref permenently, których to dotyczy.
+**Magazyn strefowo nadmiarowy (ZRS)** | Chroni ponownie awarii centrum danych poprzez replikację między trzy klastry magazynu w jednym regionie. Każdy klaster magazyn jest fizycznie oddzielone i znajduje się w jego własnej strefie dostępności. Zawiera co najmniej 99,9999999999% (12 9\'s) trwałości obiektów w danym roku przez przechowywanie wielu kopii danych w wielu centrach danych lub regionach. | Należy wziąć pod uwagę, jeśli potrzebujesz spójności, trwałości i wysokiej dostępności. Nie może chronić przed regionalnej awarii, gdy trwale dotyczy wiele stref.
 **Magazyn geograficznie nadmiarowy (GRS)** | Chroni przed awarią cały region replikowanie danych do regionie pomocniczym oddalonym setki mil od podstawowego. Zawiera co najmniej 99,99999999999999% (16 9\'s) trwałości obiektów w danym roku. | Replika danych jest niedostępna, chyba że firma Microsoft zainicjuje tryb failover do regionu pomocniczego. W przypadku przejścia do trybu failover odczytu i zapisu jest dostępna.
 **Magazyn geograficznie nadmiarowy do odczytu (RA-GRS)** | Podobnie jak magazyn GRS. Zawiera co najmniej 99,99999999999999% (16 9\'s) trwałości obiektów w danym roku | Zapewnia i dostępność przez 99,99% dostępności do odczytu, umożliwiając dostęp do odczytu z drugiego regionu magazynu grs.
 
@@ -144,7 +144,7 @@ Konta magazynu można użyć różne rodzaje nadmiarowości w celu zapewnienia o
 
 
 
-## <a name="best-practice-leverage-azure-hybrid-benefits"></a>Najlepsze rozwiązanie: korzyści użycia hybrydowego platformy Azure korzystanie
+## <a name="best-practice-leverage-azure-hybrid-benefits"></a>Najlepszym rozwiązaniem jest: Korzystać z korzyści użycia hybrydowego platformy Azure
 
 Z powodu lat inwestycji w oprogramowanie w systemach, takich jak system Windows Server i programu SQL Server firma Microsoft jest w stanie unikatowy zaoferować klientom wartości w chmurze, za pomocą znaczne rabaty, zapewniających innych dostawców rozwiązań w chmurze nie zawsze. 
 
@@ -157,7 +157,7 @@ Zintegrowany pakiet produktów na lokalnym/Azure Microsoft generuje zalety konku
 - [Przegląd](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) ceny wskazówki dotyczące maszyn wirtualnych programu SQL Server Azure.
 
 
-## <a name="best-practice-use-reserved-vm-instances"></a>Najlepsze rozwiązanie: Użyj wystąpień zarezerwowanych maszyn wirtualnych
+## <a name="best-practice-use-reserved-vm-instances"></a>Najlepszym rozwiązaniem jest: Użyj wystąpienia zarezerwowane maszyn wirtualnych
 
 Większość platform w chmurze są konfigurowane jako płatność za rzeczywiste użycie. Będzie to przedstawia zalety modelu, a ponieważ nie zawsze wiadomo, jak dynamiczna obciążenia. Po określeniu wyczyść zamiarach w przypadku obciążeń, ułatwiają planowanie infrastruktury.
 
@@ -177,7 +177,7 @@ Korzystając z wystąpieniami zarezerwowanymi maszyn wirtualnych platformy Azure
 - [Uzyskaj cen wskazówki](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) maszyn wirtualnych programu SQL Server platformy Azure.
 
 
-## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>Najlepsze rozwiązanie: wydatki na chmurę agregacji w subskrypcjach
+## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>Najlepszym rozwiązaniem jest: Wydatki na chmurę agregacji w subskrypcjach
 
 Jest nieuniknione, że po pewnym czasie będziesz mieć więcej niż jedną subskrypcję platformy Azure. Na przykład może być konieczne dodatkową subskrypcję do oddzielania granice rozwoju i produkcji lub może być to platforma, która wymaga oddzielnej subskrypcji dla każdego klienta. O możliwość agregowania danych raportowania we wszystkich subskrypcjach w pojedynczej platformy jest funkcją wartościowe.
 
@@ -197,7 +197,7 @@ Po zakończeniu pomyślną migrację obciążeń oraz kilku tygodni od zbierania
 
 Najlepsze rozwiązania w tej sekcji obejmują koszt budżetowanie i analizy, monitorowanie zasobów i budżetów grupy zasobów i wdrażaniu monitorowania magazynu i maszyn wirtualnych przy użyciu usługi Azure Cost Management.
 
-## <a name="best-practice-use-azure-cost-management"></a>Najlepsze rozwiązanie: Usługa Azure Cost Management
+## <a name="best-practice-use-azure-cost-management"></a>Najlepszym rozwiązaniem jest: Użyj usługi Azure Cost Management
 
 Firma Microsoft udostępnia usługi Azure Cost Management, aby ułatwić śledzenie wydatków w następujący sposób:
 
@@ -210,21 +210,21 @@ Firma Microsoft udostępnia usługi Azure Cost Management, aby ułatwić śledze
 W Cost Management możesz wykonywać następujące czynności:
 
 
-- **Tworzenie budżetu**: tworzenie budżetu odpowiedzialności finansowej.
-    - Użytkownik może uwzględnić services używają lub subskrybować dla określonego okresu (co miesiąc, co kwartał, co roku) i ascope (subskrypcjach/grupach zasobów). Na przykład można utworzyć budżetu subskrypcji platformy Azure w okresie miesięcznym, kwartałów lub.
+- **Tworzenie budżetu**: Tworzenie budżetu odpowiedzialności finansowej.
+    - Użytkownik może uwzględnić services używają lub subskrybować dla określonego okresu (co miesiąc, co kwartał, co roku) i zakresu (subskrypcjach/grupach zasobów). Na przykład można utworzyć budżetu subskrypcji platformy Azure w okresie miesięcznym, kwartałów lub.
     - Po utworzeniu budżetu, jest wyświetlana na analizy kosztów. Przeglądanie budżetu względem bieżących wydatków jest jednym z pierwszych kroków w razie analizując koszty i wydatki.
     - Mogą być wysyłane powiadomienia e-mail, po osiągnięciu progów budżetu.
     - Możesz wyeksportować dane zarządzania kosztami, do usługi Azure storage do analizy.
 
     ![Budżet kosztów zarządzania](./media/migrate-best-practices-costs/budget.png) *budżetu w usłudze Azure Cost Management*
 
-- **Wykonaj analizę kosztów**: rozpoczynanie analizy kosztów, aby eksplorować i analizować koszty organizacji, które pomagają zrozumieć, jak są naliczane koszty i identyfikowania trendów wydatków.
+- **Wykonaj analizę kosztów**: Rozpoczynanie analizy kosztów, aby eksplorować i analizować koszty organizacji, które pomagają zrozumieć, jak są naliczane koszty i identyfikowania trendów wydatków.
     - Analiza kosztów jest dostępna dla użytkowników, umowy EA.
     - Możesz wyświetlić dane analizy kosztów liczbę zakresów, m.in. przez dział, konta, subskrypcji lub grupy zasobów.
     - Możesz uzyskać analizy kosztów, które przedstawia łączne koszty dla bieżącego miesiąca i skumulowany dziennych kosztów. 
 
     ![Zarządzanie analiza kosztów](./media/migrate-best-practices-costs/analysis.png) *analizy usługi Azure Cost Management*
-- **Uzyskiwanie zaleceń dotyczących**: Uzyskaj zalecenia usługi Advisor, które pokazują, jak zoptymalizować i zwiększyć wydajność.
+- **Uzyskiwanie zaleceń dotyczących**: Uzyskuj zalecenia usługi Advisor, które pokazują, jak zoptymalizować i zwiększyć wydajność.
 
 
 **Dowiedz się więcej:**
@@ -235,9 +235,9 @@ W Cost Management możesz wykonywać następujące czynności:
 - [Pobierz samouczek](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json) dotyczące optymalizacji kosztów z zaleceń.
 - [Przegląd](https://docs.microsoft.com/rest/api/consumption/budgets) użycie platformy Azure, interfejsu API.
 
-## <a name="best-practice-monitor-resource-utilization"></a>Najlepsze rozwiązanie: monitorowania wykorzystania zasobów
+## <a name="best-practice-monitor-resource-utilization"></a>Najlepszym rozwiązaniem jest: Monitorowanie wykorzystania zasobów
 
-Na platformie Azure płacisz za to, czego używasz, podczas gdy zasoby są używane, a nie płać, gdy nie są one. W przypadku maszyn wirtualnych rozliczeń występuje, gdy maszyny Wirtualnej została przydzielona i nie są naliczane po cofnięciu przydziału maszyny Wirtualnej. Pamiętając o tym powinien monitorować maszyny wirtualne w użyciu i Sprawdź zmiany rozmiaru maszyny Wirtualnej.
+Na platformie Azure płacisz za to, czego używasz, gdy zasoby są używane i nie płać, gdy nie są one. W przypadku maszyn wirtualnych rozliczeń występuje, gdy maszyny Wirtualnej została przydzielona i nie są naliczane po cofnięciu przydziału maszyny Wirtualnej. Pamiętając o tym powinien monitorować maszyny wirtualne w użyciu i Sprawdź zmiany rozmiaru maszyny Wirtualnej.
 
 - Stale ocenia obciążenia maszyny Wirtualnej do określenia podstawy.
 - Na przykład jeśli obciążenie jest używany w dużym stopniu od poniedziałku do piątku, 8: 00 do 18: 00, jednak rzadko używana poza tymi godzinami, możesz obniżyć maszyn wirtualnych poza godziny szczytu. Może to oznaczać, zmienianie rozmiarów maszyn wirtualnych lub zestawów za pomocą skalowania maszyn wirtualnych do maszyn wirtualnych z funkcją automatycznego skalowania w górę lub w dół.
@@ -251,7 +251,7 @@ Na platformie Azure płacisz za to, czego używasz, podczas gdy zasoby są używ
 - [Dowiedz się, jak [optymalizować koszty od zalecanych](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), i [uniknąć nieoczekiwanych opłat](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
 - [Dowiedz się więcej o](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/) zestaw narzędzi do optymalizacji (ARO) zasobów platformy Azure
 
-## <a name="best-practice-implement-resource-group-budgets"></a>Najlepsze rozwiązanie: Implementowanie budżetów grupy zasobów
+## <a name="best-practice-implement-resource-group-budgets"></a>Najlepszym rozwiązaniem jest: Implementowanie budżetów grupy zasobów
 
 Często grupy zasobów są używane do reprezentowania granicach kosztów. Wraz z tego wzorca użycia zespołu platformy Azure nadal twórz nowe i ulepszone sposoby śledzić i analizować zasobów wydatków na różnych poziomach, w tym możliwość tworzenia budżet na grupę zasobów i zasoby.  
 
@@ -264,7 +264,7 @@ Często grupy zasobów są używane do reprezentowania granicach kosztów. Wraz 
 - [Ten samouczek](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json) tworzenie i zarządzanie nimi budżetu na platformie Azure.
 
 
-## <a name="best-practice-optimize-azure-monitor-retention"></a>Najlepsze rozwiązanie: Optymalizowanie przechowywania usługi Azure Monitor
+## <a name="best-practice-optimize-azure-monitor-retention"></a>Najlepszym rozwiązaniem jest: Optymalizowanie przechowywania usługi Azure Monitor
 
 Przenoszenie zasobów na platformie Azure i włączyć rejestrowanie diagnostyczne dla nich, możesz wygenerować dużą ilość danych dziennika. Te dane dziennika jest typowo wysyłana do konta magazynu, który jest mapowany do obszaru roboczego usługi Log Analytics.
 
@@ -278,7 +278,7 @@ Przenoszenie zasobów na platformie Azure i włączyć rejestrowanie diagnostycz
 
 - [Dowiedz się więcej o](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs) monitorowanie użycia i szacowanych kosztów.
  
-## <a name="best-practice-optimize-storage"></a>Najlepsze rozwiązanie: Optymalizacja magazynu
+## <a name="best-practice-optimize-storage"></a>Najlepszym rozwiązaniem jest: Optymalizuj magazynowanie
 
 Jeśli wykonano najlepsze rozwiązania dotyczące wybierania magazynu przed migracją są prawdopodobnie Owszem niektóre korzyści. Są jednak nadal można optymalizować koszty prawdopodobnie dodatkowego miejsca do magazynowania. Wraz z upływem czasu plików i obiektów blob stają się nieaktualne. Dane nie mogą być używane z już jednak wymagania prawne może oznaczać konieczność zapewnienia jego przez pewien okres. W efekcie nie może być konieczne zapisać go w używanym do migracji oryginalny magazyn o wysokiej wydajności.
 
@@ -291,7 +291,7 @@ Identyfikowanie i przeniesienie starych danych na tańsze obszary do przechowywa
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) dotyczące warstwy dostępu.
 - [Zapoznaj się z omówieniem](https://docs.microsoft.com/azure/azure-monitor/overview) magazynu storsimple, a [ceny usługi StorSimple](https://azure.microsoft.com/pricing/details/storsimple/).
 
-## <a name="best-practice-automate-vm-optimization"></a>Najlepsze rozwiązanie: Automatyzacja optymalizacji maszyn wirtualnych
+## <a name="best-practice-automate-vm-optimization"></a>Najlepszym rozwiązaniem jest: Automatyzowanie optymalizacji maszyn wirtualnych
 
 Ostatecznym celem uruchomioną Maszynę wirtualną w chmurze jest zmaksymalizować procesora CPU, pamięci i dysku, która jest używana. Jeśli odnajdywanie maszyn wirtualnych, które nie są zoptymalizowane pod kątem lub mają okresy częste, gdy maszyny wirtualne nie są używane, dobrym pomysłem będzie je wyłączyć lub skalować w dół je za pomocą zestawów skalowania maszyn wirtualnych.
 
@@ -304,7 +304,7 @@ Można zoptymalizować Maszynę wirtualną za pomocą usługi Azure Automation, 
 - [Dowiedz się, jak](https://docs.microsoft.com/azure/automation/automation-solution-vm-management) uruchamianiem lub zatrzymywaniem maszyn wirtualnych poza godzinami pracy w usłudze Azure Automation.
 - [Uzyskaj więcej informacji] o [usługi Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview)i [zestaw narzędzi do optymalizacji zasobów platformy Azure (ARO)](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/).
 
-## <a name="best-practices-use-logic-apps-and-runbooks-with-budgets-api"></a>Najlepsze praktyki: elementy runbook za pomocą interfejsu API budżetów i użyj Logic Apps
+## <a name="best-practices-use-logic-apps-and-runbooks-with-budgets-api"></a>Najlepsze rozwiązania: Logic Apps i elementów runbook za pomocą interfejsu API budżetów
 
 Platforma Azure udostępnia interfejs API REST, który ma dostęp do informacji rozliczeniowych dzierżawy.
 
@@ -320,7 +320,7 @@ Platforma Azure udostępnia interfejs API REST, który ma dostęp do informacji 
 - [Uzyskiwanie szczegółowych informacji](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview) do użycia platformy Azure przy użyciu interfejsu API rozliczeń.
 
 
-## <a name="best-practice-implement-serverless-technologies"></a>Najlepsze rozwiązanie: Implementowanie technologii bezserwerowych
+## <a name="best-practice-implement-serverless-technologies"></a>Najlepszym rozwiązaniem jest: Implementowanie technologii bezserwerowych
 
 Obciążenia maszyn wirtualnych są często migrowane "is" w celu uniknięcia przestojów. Często maszyny wirtualne mogą być hostowane zadania, które są tymczasowymi, biorąc krótki okres, aby uruchomić, lub też wiele godzin. Na przykład maszyny wirtualne, które są uruchamiane zaplanowane zadania, takie jak Windows zadań harmonogramu lub skryptów programu PowerShell. Podczas tych zadań nie są uruchomione, niemniej one przejmowania maszyny Wirtualnej i dysku koszty magazynowania.
 

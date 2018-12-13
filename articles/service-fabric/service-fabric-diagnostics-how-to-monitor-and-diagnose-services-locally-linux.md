@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5aeb87538968304d3eaf73873d4c4c762c07329c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051378"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309165"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w lokalnym komputerze deweloperskim
 
@@ -35,7 +35,7 @@ Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów z umożliwi
 
 ## <a name="debugging-service-fabric-java-applications"></a>Debugowanie aplikacji Java usługi Service Fabric
 
-W przypadku aplikacji Java [wiele struktur rejestrowania](http://en.wikipedia.org/wiki/Java_logging_framework) są dostępne. Ponieważ `java.util.logging` to opcja domyślna, za pomocą środowiska JRE, służy również do [przykładów kodu w serwisie github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  Następujące dyskusji opisano sposób konfigurowania `java.util.logging` framework.
+W przypadku aplikacji Java [wiele struktur rejestrowania](http://en.wikipedia.org/wiki/Java_logging_framework) są dostępne. Ponieważ `java.util.logging` to opcja domyślna, za pomocą środowiska JRE, służy również do [przykładów kodu w serwisie GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started). Następujące dyskusji opisano sposób konfigurowania `java.util.logging` framework.
 
 Za pomocą java.util.logging można przekierować Dzienniki aplikacji do pamięci, strumienie wyjściowe, pliki konsoli lub gniazda. Dla każdej z tych opcji Brak obsługi domyślne poprawiał w ramach. Możesz utworzyć `app.properties` plik do skonfigurowania obsługi plików dla aplikacji w taki sposób przekierować wszystkie dzienniki do pliku lokalnego.
 
@@ -48,7 +48,7 @@ java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
 java.util.logging.FileHandler.count = 10
-java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
+java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
 Folder wskazywany przez `app.properties` plik musi istnieć. Po `app.properties` tworzony jest plik, musisz także zmodyfikować skrypt punktu wejścia `entrypoint.sh` w `<applicationfolder>/<servicePkg>/Code/` folder, aby ustawić właściwości `java.util.logging.config.file` do `app.propertes` pliku. Wpis powinien wyglądać w następujący fragment kodu:
@@ -64,7 +64,7 @@ Ta konfiguracja powoduje dzienniki są zbierane w sposób rotacji na `/tmp/servi
 
 Domyślnie jeśli żadna procedura obsługi nie jest jawnie skonfigurowany, obsługi konsoli jest zarejestrowany. Jeden można przeglądać dzienniki usługi SYSLOG w obszarze /var/log/syslog.
 
-Aby uzyskać więcej informacji, zobacz [przykładów kodu w serwisie github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
+Aby uzyskać więcej informacji, zobacz [przykładów kodu w serwisie GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Debugowanie aplikacji usługi Service Fabric C#
@@ -83,8 +83,8 @@ Niestandardowe EventListener służy do nasłuchiwania zdarzeń usługi, a nast�
 
 ```csharp
 
- public class ServiceEventSource : EventSource
- {
+public class ServiceEventSource : EventSource
+{
         public static ServiceEventSource Current = new ServiceEventSource();
 
         [NonEvent]
@@ -105,8 +105,8 @@ Niestandardowe EventListener służy do nasłuchiwania zdarzeń usługi, a nast�
 
 
 ```csharp
-   internal class ServiceEventListener : EventListener
-   {
+internal class ServiceEventListener : EventListener
+{
 
         protected override void OnEventSourceCreated(EventSource eventSource)
         {
@@ -114,20 +114,20 @@ Niestandardowe EventListener służy do nasłuchiwania zdarzeń usługi, a nast�
         }
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
-            using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        { 
-                 // report all event information               
-         Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
-                if (eventData.Message != null)              
-            Out.WriteLine(eventData.Message, eventData.Payload.ToArray());              
-            else             
-        { 
-                    string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
-                    Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");             
+                using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))
+                {
+                        // report all event information
+                        Out.Write(" {0} ", Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
+                        if (eventData.Message != null)
+                                Out.WriteLine(eventData.Message, eventData.Payload.ToArray());
+                        else
+                        {
+                                string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
+                                Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");
+                        }
+                }
         }
-           }
-        }
-    }
+}
 ```
 
 

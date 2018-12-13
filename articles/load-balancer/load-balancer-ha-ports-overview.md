@@ -11,24 +11,24 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/07/2018
+ms.date: 12/11/2018
 ms.author: kumud
-ms.openlocfilehash: e37b127b112768cd09989e1a4b5edf99ca101983
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f1d95534fb553c6a6d1be4d72a3251ad6a573f20
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141870"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317206"
 ---
 # <a name="high-availability-ports-overview"></a>Omówienie portów wysokiej dostępności
 
 Standardowa usługa równoważenia obciążenia Azure pomaga w przepływy TCP i UDP Równoważenie obciążenia na wszystkich portach jednocześnie podczas korzystania z wewnętrznego modułu równoważenia obciążenia. 
 
-Reguły portów wysokiej dostępności (HA) to wariant reguły równoważenia obciążenia, skonfigurowane na wewnętrzny standardowego modułu równoważenia obciążenia. Korzystanie z usługi równoważenia obciążenia można uprościć, podając jedną regułę równoważenia obciążenia, wszystkie protokoły TCP i UDP przepływy, pojawiające się na wszystkich portach wewnętrznego standardowego modułu równoważenia obciążenia. Decyzja równoważenia obciążenia składa się na przepływ. Ta akcja jest oparty na następujące połączenia 5-elementowe spójne kolekcje: źródłowy adres IP, port źródłowy, docelowy adres IP, port docelowy i protokołu.
+Reguły równoważenia obciążenia portów wysokiej dostępności (HA) to wariant reguły równoważenia obciążenia skonfigurowany na wewnętrzny standardowego modułu równoważenia obciążenia. Korzystanie z usługi równoważenia obciążenia można uprościć, podając jedną regułę równoważenia obciążenia, wszystkie protokoły TCP i UDP przepływy, pojawiające się na wszystkich portach wewnętrznego standardowego modułu równoważenia obciążenia. Decyzja równoważenia obciążenia składa się na przepływ. Ta akcja jest oparty na następujące połączenia 5-elementowe spójne kolekcje: źródłowy adres IP, port źródłowy, docelowy adres IP, port docelowy i protokół
 
-Funkcja portów wysokiej dostępności pomaga scenariuszy o kluczowym znaczeniu, takich jak wysoka dostępność i skala dla wirtualnych urządzeń sieciowych (urządzeń WUS) w sieciach wirtualnych. Ta funkcja może również pomóc w przypadku dużej liczby portów muszą być ze zrównoważonym obciążeniem. 
+Reguły równoważenia obciążenia o wysokiej dostępności portów ułatwiają scenariuszy o kluczowym znaczeniu, takich jak wysoka dostępność i skala dla wirtualnych urządzeń sieciowych (urządzeń WUS) w sieciach wirtualnych. Ta funkcja może również pomóc w przypadku dużej liczby portów muszą być ze zrównoważonym obciążeniem. 
 
-Funkcja portów wysokiej dostępności jest skonfigurowana po ustawieniu portów frontonu i zaplecza na **0** i protokół **wszystkich**. Zasób modułu równoważenia obciążenia wewnętrznego równoważy następnie wszystkie przepływy TCP i UDP, niezależnie od tego, numer portu.
+Reguły równoważenia obciążenia portów wysokiej dostępności skonfigurowano ustawienie portów frontonu i zaplecza na **0** i protokół **wszystkich**. Zasób modułu równoważenia obciążenia wewnętrznego równoważy następnie wszystkie przepływy TCP i UDP, niezależnie od tego, numer portu
 
 ## <a name="why-use-ha-ports"></a>Dlaczego warto używać portów wysokiej dostępności?
 
@@ -44,8 +44,9 @@ W przypadku scenariuszy urządzeń WUS wysokiej dostępności portów HA następ
 - Podaj *n*— scenariusze aktywnych i aktywny / pasywny
 - Eliminuje potrzebę stosowania złożonych rozwiązań, takich jak Apache ZooKeeper węzłów na potrzeby monitorowania urządzeń
 
-Na poniższym diagramie przedstawiono wdrożenie Gwiazda — sieci wirtualnej. Wymuś tunelowanie szprychy ruch w sieci wirtualnej koncentratora i przez urządzenie WUS przed opuszczeniem zaufanych miejsca. Urządzenia WUS są za wewnętrznego standardowego modułu równoważenia obciążenia z konfiguracją portów wysokiej dostępności. Cały ruch można przetwarzane i przesyłane dalej odpowiednio.
+Na poniższym diagramie przedstawiono wdrożenie Gwiazda — sieci wirtualnej. Wymuś tunelowanie szprychy ruch w sieci wirtualnej koncentratora i przez urządzenie WUS przed opuszczeniem zaufanych miejsca. Urządzenia WUS są za wewnętrznego standardowego modułu równoważenia obciążenia z konfiguracją portów wysokiej dostępności. Cały ruch można przetwarzane i przesyłane dalej odpowiednio. Po skonfigurowaniu jako Pokaż na poniższym diagramie, porty wysokiej dostępności reguły równoważenia obciążenia dodatkowo zapewnia symetrię przepływu ruch przychodzący i wychodzący.
 
+<a node="diagram"></a>
 ![Diagram przedstawiający Gwiazda — sieci wirtualnej z urządzeniami WUS wdrożone w trybie wysokiej dostępności](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
@@ -99,7 +100,7 @@ Można skonfigurować *jeden* zasób publicznego standardowego modułu równowa�
 
 - Funkcja portów wysokiej dostępności jest niedostępna dla protokołu IPv6.
 
-- Symetrii przepływu dla scenariuszy urządzenie WUS jest obsługiwany tylko jedną kartę Sieciową. Zobacz opis i diagram dla [sieciowych urządzeń wirtualnych](#nva). Jednak jeśli miejsce docelowe pracować translatora adresów Sieciowych dla danego scenariusza, można go do upewnij się, że wewnętrznego modułu równoważenia obciążenia wysyła ruch powrotny do tego samego urządzenia WUS.
+- Przepływ symetrii (głównie dla scenariuszy, urządzenie WUS) jest obsługiwane w przypadku wystąpień zaplecza i jednej karty Sieciowej (i jednej konfiguracji adresu IP) tylko wtedy, gdy jest używane, jak pokazano na [diagram](#diagram) reguły równoważenia obciążenia porty wysokiej dostępności powyżej i korzystać z funkcji. Nie znajduje się w każdej innej sytuacji. Oznacza to, co najmniej dwóch zasobów modułu równoważenia obciążenia i ich przepisami niezależne decyzje i nigdy nie są koordynowane. Zobacz opis i diagram dla [sieciowych urządzeń wirtualnych](#nva). Gdy odbywają się za pomocą wielu kart sieciowych lub sandwiching urządzenie WUS między public i internal Load Balancer, symetrii przepływ nie jest dostępna.  Można obejść ten problem przez źródło NAT'ing ruch przychodzący przepływ do adresu IP urządzenia, aby umożliwić odpowiedzi pojawić się na tym samym urządzeniu WUS.  Jednak zdecydowanie zalecamy przy użyciu jednej karty Sieciowej i przy użyciu architektury referencyjnej objętego [diagram](#diagram) powyżej.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: 0e316bf06cc6e2915adca5e7961083e6668bbfc1
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.date: 12/11/2018
+ms.openlocfilehash: 644a3a2fe6bce6ccc99b0c1c99ea07b129676653
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889127"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320850"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Usługa Azure Database for MySQL warstw cenowych
 
-Serwer Azure Database for MySQL można utworzyć w jednym z trzech różnych warstw cenowych: podstawowa, ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera MySQL. Serwer może zawierać jeden lub wiele baz danych.
+Serwer Azure Database for MySQL można utworzyć w jednym z trzech różnych warstw cenowych: Podstawowa, ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera MySQL. Serwer może zawierać jeden lub wiele baz danych.
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
@@ -42,6 +42,9 @@ Po utworzeniu serwera, liczba rdzeni wirtualnych, generacja sprzętu i ceny wars
 ## <a name="compute-generations-and-vcores"></a>Generacji zasobów obliczeniowych i rdzeni wirtualnych
 
 Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezentuje logiczny procesor CPU bazowego sprzętu. Obecnie można wybrać z obu generacji obliczeń Gen 4 i 5 ogólnego. Logiczne procesory CPU 4 generacji wykorzystują procesory Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów. Logiczne procesory CPU 5 generacji wykorzystują procesory Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów. Gen 4 i 5 ogólnego są dostępne w następujących regionach ("X" oznacza dostępne).
+
+> [!IMPORTANT]
+> Począwszy od 12 grudnia 2018 r nowi klienci nie będą mogli aprowizować serwery generacja 4 obliczeniowych w regionie Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Azja Wschodnia, wschodnie stany USA 2, Indie środkowe, Indie Zachodnie, Japonia, część zachodnia, północno-środkowe stany USA, zachodnie stany USA. Generacja obliczeń, który 4 serwery zostaną zmigrowane do 5, od 1 lutego 2019 w tych regionach Generowanie obliczeń zostały utworzone wcześniej.
 
 | **Region platformy Azure** | **4. generacji** | **5. generacji** |
 |:---|:----------:|:--------------------:|

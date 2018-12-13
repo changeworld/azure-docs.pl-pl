@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z porady dotyczące wyszukiwania kognitywnego w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Wskazówki dotyczące rozwiązywania problemów dla wyszukiwania kognitywnego — usługa Azure Search
 description: Porady i rozwiązywanie problemów dotyczących konfigurowania cognitive Wyszukaj potoki w usłudze Azure Search.
 services: search
 manager: pablocas
@@ -10,20 +10,21 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3d0d468674a2284e9925c1410f2bb8bcbde8f73f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 5f21fe3c65e37d3fee4043526762a7fafdea5cc4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575316"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316298"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Wskazówki dotyczące rozwiązywania problemów dla wyszukiwania kognitywnego
 
 Ten artykuł zawiera listę porady i wskazówki, aby utrzymać przenoszenia, ponieważ wprowadzenie możliwości wyszukiwania kognitywnego w usłudze Azure Search. 
 
-Jeśli jeszcze tego nie zrobiono, należy przejść przez [samouczek: Dowiedz się, jak wywołać wyszukiwania kognitywnego interfejsów API](cognitive-search-quickstart-blob.md) praktyki stosowania wzbogacenia wyszukiwania kognitywnego ze źródłem danych obiektów blob.
+Jeśli jeszcze tego nie zrobiono, należy przejść przez [samouczka: Dowiedz się, jak wywołać wyszukiwania kognitywnego interfejsów API](cognitive-search-quickstart-blob.md) praktyki stosowania wzbogacenia wyszukiwania kognitywnego ze źródłem danych obiektów blob.
 
-## <a name="tip-1-start-with-a-small-dataset"></a>Porada 1: Rozpoczynać się od małego zestawu danych
+## <a name="tip-1-start-with-a-small-dataset"></a>Porada 1: Rozpocznij z małego zestawu danych
 Najlepszym sposobem na szybkie znajdowanie problemów jest zwiększyć szybkość, z jaką można rozwiązać problemy. Najlepszym sposobem, aby skrócić czas indeksowania jest zmniejszenie liczby dokumentów, które mają być indeksowane. 
 
 Rozpocznij od utworzenia źródła danych za pomocą tylko kilku dokumentów/rekordów. Przykład dokumentu powinny być dobrym reprezentacja różnych dokumentów, które będą indeksowane. 
@@ -36,7 +37,7 @@ Połączenia ze źródłem danych nie zostanie zweryfikowana, dopóki nie można
 https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) Aby dowiedzieć się więcej o różnych formatach obsługiwane.
 - Twoja nazwa kontenera w indeksatorze jest poprawna.
 
-## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Porada 3: Zobacz, co działa, nawet jeśli występują pewne awarie
+## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Porada 3: Zobacz, jakie rozwiązanie sprawdzi się nawet w przypadku niektórych błędów
 Czasami małych błąd zatrzymuje indeksatora w jego ścieżki. Jest dobrym rozwiązaniem, jeśli planujesz rozwiązywać problemy pojedynczo. Jednak warto Ignoruj określonego typu wystąpienia błędu, umożliwiając indeksatora kontynuować, dzięki czemu można zobaczyć, co przepływy faktycznie pracy.
 
 W takim przypadku można stwierdzić, indeksator, ignorowanie błędów. To zrobić, ustawiając *maxFailedItems* i *maxFailedItemsPerBatch* -1 jako część definicji indeksatora.
@@ -83,7 +84,7 @@ Dodaj ```enriched``` pola jako część definicji indeksu na potrzeby debugowani
 
 Brak zawartości może być wynikiem dokumentów porzucane podczas indeksowania. Warstwy bezpłatna i podstawowa mają niski limity rozmiaru dokumentu. Każdy plik przekracza limit zostanie usunięte podczas indeksowania. Możesz sprawdzić, czy porzuconych dokumentów w witrynie Azure portal. Na pulpicie nawigacyjnym usługi wyszukiwania kliknij dwukrotnie Kafelek indeksatorów. Przejrzyj współczynnik pomyślnie zindeksowanych dokumentów. Jeśli nie jest 100%, możesz kliknąć współczynnik, aby uzyskać więcej informacji. 
 
-Jeśli problem jest związany z rozmiar pliku, możesz zobaczyć następujący błąd: "< nazwa pliku > blob" ma rozmiar < plik-> bajtów, co powoduje przekroczenie maksymalnego rozmiaru wyodrębniania dokumentu w bieżącej warstwie usługi. " Aby uzyskać więcej informacji na temat limitów indeksatora, zobacz [limitów usług](search-limits-quotas-capacity.md).
+Problem jest związany z rozmiar pliku, może zostać wyświetlony błąd taki jak ten: "< Nazwa pliku > blob" ma rozmiar < plik-> bajtów, co powoduje przekroczenie maksymalnego rozmiaru wyodrębniania dokumentu w bieżącej warstwie usługi". Aby uzyskać więcej informacji na temat limitów indeksatora, zobacz [limitów usług](search-limits-quotas-capacity.md).
 
 Drugi Przyczyna, dla zawartości, które nie są wyświetlane, może być błędy powiązane mapowania wejścia/wyjścia. Na przykład nazwa docelowego dane wyjściowe to "Ludzie", ale nazwa pola indeksu to małe "ludzie". System może zwrócić 201 komunikaty sukces dla całego potoku, dlatego uważasz, że indeksowanie zakończyło się pomyślnie, gdy w rzeczywistości pole jest puste. 
 
@@ -97,7 +98,7 @@ Zaplanowane indeksatorów indeksowanie wznawia zgodnie z harmonogramem w ostatni
 
 Oparte na portalu indeksowania (zgodnie z opisem w przewodniku Szybki Start), wybierając indeksatora "uruchom raz" opcji limitów przetwarzania do 1 godziny (`"maxRunTime": "PT1H"`). Można rozszerzyć okna przetwarzania coś o nim więcej.
 
-## <a name="tip-7-increase-indexing-throughput"></a>Porada 7: Zwiększyć przepływność indeksowania
+## <a name="tip-7-increase-indexing-throughput"></a>Porada 7: Zwiększ przepływność indeksowania
 
 Dla [równoległe indeksowania](search-howto-large-index.md), umieść dane w wielu kontenerach lub wielu wirtualnych folderów, w tym samym kontenerze. Następnie utwórz wiele par źródło danych i indeksatora. Wszystkie indeksatory można użyć tego samego zestawu umiejętności i zapisu do tego samego docelowym indeksem wyszukiwania, więc aplikacji wyszukiwania nie musi wiedzieć, z tym partycjonowanie.
 Aby uzyskać więcej informacji, zobacz [indeksowania dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).

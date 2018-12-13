@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309366"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310376"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Porady: Planowanie wdrożenia usługi Azure AD join
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
 
 Przyłączanie do usługi Azure AD można dołączać urządzenia bezpośrednio do usługi Azure AD bez konieczności dołączania do usługi Active Directory w środowisku lokalnym przy jednoczesnym zachowaniu użytkownikom w wydajnej i bezpiecznej pracy. Azure AD join jest gotowa do użycia w przedsiębiorstwie zarówno na dużą skalę, jak i wdrożeń o określonym zakresie.   
@@ -91,9 +91,9 @@ Te scenariusze nie wymagają skonfigurowania serwera federacyjnego uwierzytelnia
 
 Środowisku federacyjnym powinna mieć dostawcę tożsamości, który obsługuje zarówno protokołu WS-Trust i WS-Fed:
 
-- **WS-Fed:** ten protokół jest wymagany do przyłączania urządzenia do usługi Azure AD.
+- **WS-Fed:** Ten protokół jest wymagany do przyłączania urządzenia do usługi Azure AD.
 
-- **WS-Trust:** ten protokół jest wymagana do logowania się na urządzeniu dołączonym do usługi Azure AD. 
+- **WS-Trust:** Ten protokół jest wymagana do logowania się na urządzeniu dołączonym do usługi Azure AD. 
 
 Jeśli dostawca tożsamości nie obsługuje tych protokołów, dołączania do usługi Azure AD nie działa natywnie. Począwszy od systemu Windows 10 1809 użytkownicy zalogować się do urządzenia połączonego z usługi Azure AD za pomocą dostawcy tożsamości opartej na SAML za pośrednictwem [sieci web logowania w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci web jest tylko do wersji zapoznawczej funkcji.
 
@@ -127,7 +127,7 @@ Funkcja Azure AD join:
 
 - Nie ma zastosowania do poprzednich wersji systemu Windows lub innych systemów operacyjnych. Jeśli masz urządzenia z systemem Windows 7/8.1, należy uaktualnić do systemu Windows 10 do wdrożenia usługi Azure AD join.
  
-**Zalecenie:** zawsze używaj najnowszej wersji systemu Windows 10 można korzystać ze zaktualizowanych funkcji.
+**Zalecenie:** Zawsze używaj najnowszej wersji systemu Windows 10, aby korzystać ze zaktualizowanych funkcji.
 
 
 ### <a name="management-platform"></a>Platforma zarządzania
@@ -155,7 +155,7 @@ Jeśli rozwiązania MDM nie jest dostępna za pośrednictwem galerii aplikacji A
 
 Za pomocą współzarządzania programu SCCM służy również do zarządzania niektórymi aspektami urządzeń, podczas gdy zasady są dostarczane za pośrednictwem platformy zarządzania urządzeniami Przenośnymi. Microsoft Intune umożliwia wspólne zarządzanie za pomocą programu SCCM. Aby uzyskać więcej informacji, zobacz [współzarządzania dla systemu Windows 10 urządzenia](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Jeśli używasz produktu zarządzania urządzeniami Przenośnymi innego niż usługi Intune, skontaktuj się z dostawcą zarządzania urządzeniami Przenośnymi na scenariuszach stosowanych współzarządzania.
 
-**Zalecenie:** rozważ zarządzania urządzeniami Przenośnymi tylko do urządzeń przyłączonych do zarządzania dla usługi Azure AD.
+**Zalecenie:** Tylko urządzenia przyłączone do zarządzania dla usługi Azure AD, należy wziąć pod uwagę zarządzania urządzeniami Przenośnymi.
 
 
 
@@ -185,13 +185,13 @@ Jeśli Twoje aplikacje są niestandardowe skompilowane i/lub hostowanych lokalni
 
 Jeśli używasz usług AD FS, zobacz [Sprawdź i zarządzanie nimi logowanie jednokrotne za pomocą usług AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
-**Zalecenie:** należy wziąć pod uwagę hostingu w chmurze (na przykład Azure) oraz integracji z usługą Azure AD, aby uzyskać lepsze efekty.
+**Zalecenie:** Należy wziąć pod uwagę hostingu w chmurze (na przykład Azure) oraz integracji z usługą Azure AD, aby uzyskać lepsze efekty.
 
 ### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Opierając się na starszych protokołów aplikacji lokalnych
 
 Użytkownicy pobierają logowania jednokrotnego z usługi Azure AD przyłączone do urządzenia, jeśli urządzenie ma dostęp do kontrolera domeny. 
 
-**Zalecenie:** Wdróż [serwera proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) Aby włączyć bezpieczny dostęp do tych aplikacji.
+**Zalecenie:** Wdrażanie [serwera proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) Aby włączyć bezpieczny dostęp do tych aplikacji.
 
 
 ### <a name="on-premises-network-shares"></a>Udziały sieciowe w środowisku lokalnym
@@ -209,11 +209,11 @@ Gdy drukarki nie może automatycznie odnalezione w środowisku tylko na chmurze,
 
 Urządzenia usługi Azure AD przyłączone nie obsługują aplikacje lokalne, opierając się na uwierzytelnianie komputera. 
 
-**Zalecenie:** należy wziąć pod uwagę wycofania tych aplikacji i przeniesienie do ich nowoczesnych rozwiązań alternatywnych.
+**Zalecenie:** Należy wziąć pod uwagę wycofania tych aplikacji i przeniesienie do ich nowoczesnych rozwiązań alternatywnych.
 
 ### <a name="remote-desktop-services"></a>Usługi pulpitu zdalnego
 
-Podłączanie pulpitu zdalnego na urządzeniach przyłączonych do usługi Azure AD wymaga komputer hosta musi być albo dołączone do usługi Azure AD lub hybrydowe przyłączone do usługi Azure AD. Pulpit zdalny z urządzenia z systemem odłączony lub inne niż Windows nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [komputera przyłączonego do Connect do zdalnej usługi Azure AD](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc)
+Podłączanie pulpitu zdalnego na urządzeniach przyłączonych do usługi Azure AD wymaga komputer hosta musi być albo dołączone do usługi Azure AD lub hybrydowe przyłączone do usługi Azure AD. Pulpit zdalny z urządzenia z systemem odłączony lub inne niż Windows nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [komputera przyłączonego do Connect do zdalnej usługi Azure AD](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)
 
 
 ## <a name="understand-your-provisioning-options"></a>Opis opcji inicjowania obsługi administracyjnej
@@ -312,7 +312,7 @@ Oparte na zakresie Twoich obowiązków, jedną z następujących sytuacji:
 
 - **Użytkownik, który znajduje się w zakresie zarządzania urządzeniami Przenośnymi**: Jeśli masz subskrypcję usługi Azure AD Premium, rejestracji w rozwiązaniu MDM jest zautomatyzowany wraz z usługi Azure AD join. Wszyscy użytkownicy o określonym zakresie muszą mieć odpowiednią licencję dla usługi zarządzania urządzeniami przenośnymi. W przypadku niepowodzenia rejestracji w rozwiązaniu MDM w tym scenariuszu dołączania do usługi Azure AD zostanie również wycofana.
     
-- **Użytkownik nie jest w zakresie zarządzania urządzeniami Przenośnymi**: Jeśli użytkownicy nie znajdują się w zakresie zarządzania urządzeniami Przenośnymi, dołączania do usługi Azure AD zostanie ukończone bez rejestracji w rozwiązaniu MDM. Skutkuje to niezarządzanego urządzenia.
+- **Użytkownik nie jest w zakresie zarządzania urządzeniami Przenośnymi**: Jeśli użytkownicy nie są w zakresie zarządzania urządzeniami Przenośnymi, usługi Azure AD join kończy się bez rejestracji w rozwiązaniu MDM. Skutkuje to niezarządzanego urządzenia.
 
 
 ### <a name="mdm-urls"></a>Adresy URL zarządzania urządzeniami Przenośnymi

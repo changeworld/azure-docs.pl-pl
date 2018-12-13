@@ -1,6 +1,6 @@
 ---
-title: Filtry języków w usłudze Azure Search | Dokumentacja firmy Microsoft
-description: Filtruj kryteria przez tożsamość zabezpieczeń użytkownika, języka, lokalizacji geograficznej lub wartości liczbowych, aby ograniczyć wyniki wyszukiwania dla zapytań w usłudze Azure Search, Usługa wyszukiwania w hostowanej chmurze Microsoft Azure.
+title: Filtry języka dla wielu języków zawartość w indeksie wyszukiwania — usługa Azure Search
+description: Filtruj kryteria, które obsługują wielu języka wyszukiwania, określania zakresu wykonywanie zapytania do pól określonego języka.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,12 +9,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
-ms.openlocfilehash: 2bacffe64fed3e2ee0cc2eb983776b4ab7086e51
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec2018
+ms.openlocfilehash: aae081232d3633d3f7d8094979764606bf99430d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466589"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311188"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Jak filtrować za pomocą języka w usłudze Azure Search 
 

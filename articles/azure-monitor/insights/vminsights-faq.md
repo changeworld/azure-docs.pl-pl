@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: f5865cf72f413db49e70a08305de54aff955607b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a97a7be0eaa8438a4df27b610106ec6ab9f60d30
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075237"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184395"
 ---
 # <a name="azure-monitor-for-vms-preview-faq"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjnego platformy Azure](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy często zadawanych pytań, dodamy ich do tego artykułu, dzięki czemu są one szybko i łatwo.
@@ -67,7 +66,7 @@ Usługi Azure Monitor dla funkcji mapy maszyn wirtualnych zależy od rozwiązani
 * Monitorowane maszyny wirtualne są teraz w węźle grupy klienta i pierścieniowej wykres przedstawia współczynnik monitorowanych do niemonitorowanych maszyn wirtualnych. Można również filtrować listę komputerów, gdy grupa jest rozwinięta.
 * Monitorowane maszyny wirtualne są teraz w węzłach grupy portów serwera, a wykres pierścieniowy Wyświetla stopień monitorowanych do niemonitorowanych maszyn. Można również filtrować listę komputerów, gdy grupa jest rozwinięta.
 * Zaktualizowano style mapy są bardziej spójne z mapy aplikacji z usługi Azure Application Insights.
-* Panele po stronie zostały zaktualizowane, ale jeszcze nie masz pełny zestaw integracji, które były obsługiwane w rozwiązania Service Map: zarządzanie aktualizacjami, śledzenie zmian, zabezpieczeń i pomocy technicznej. 
+* Panele po stronie zostały zaktualizowane, ale jeszcze nie masz pełny zestaw integracji, które były obsługiwane na mapie usługi: Zarządzanie aktualizacjami, śledzenie zmian, zabezpieczeń i pomocy technicznej. 
 * Zaktualizowano opcję wybierania grup i komputerów do mapowania. Obsługuje teraz subskrypcji, grupy zasobów, zestawy skalowania maszyn wirtualnych platformy Azure i usług w chmurze.
 * Nie można utworzyć nowych grup składników mapy usług maszyny w usłudze Azure Monitor dla funkcji mapy maszyn wirtualnych. 
 

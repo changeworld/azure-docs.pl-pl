@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: a27513f9ae3d2b4cfff77f4fd410fdc77e060feb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8d062108dbb27095e978b4973cb7bc5172a4d814
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081680"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186280"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -27,13 +26,13 @@ Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące u
 
 ## <a name="new-logs-experience"></a>Nowe środowisko dzienników
 
-### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>P: jaka jest różnica między nowe środowisko dzienniki i usługi Log Analytics?
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>PYT.: Jaka jest różnica między nowe środowisko dzienniki i usługi Log Analytics?
 
-Odp.: są to samo. [Usługa log Analytics jest integrowany jako funkcję w usłudze Azure Monitor](../../azure-monitor/azure-monitor-rebrand.md) zapewnienie bardziej jednolite środowisko monitorowania. Nowe środowisko dzienników w usłudze Azure Monitor jest dokładnie taka sama jak zapytań usługi Log Analytics, które już masz doświadczenie z wielu klientów.
+ODP.: Są one tak samo. [Usługa log Analytics jest integrowany jako funkcję w usłudze Azure Monitor](../../azure-monitor/azure-monitor-rebrand.md) zapewnienie bardziej jednolite środowisko monitorowania. Nowe środowisko dzienników w usłudze Azure Monitor jest dokładnie taka sama jak zapytań usługi Log Analytics, które już masz doświadczenie z wielu klientów.
 
-### <a name="q-can-i-still-use-log-search"></a>P: czy można nadal korzystać z wyszukiwania w dziennikach? 
+### <a name="q-can-i-still-use-log-search"></a>PYT.: Można nadal korzystać z wyszukiwania w dziennikach? 
 
-A: wyszukiwanie w dzienniku trwa nadal dostępne w portalu pakietu OMS i w witrynie Azure portal w obszarze nazwy **dzienniki (wersja klasyczna)**. Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019 r. Klasyczne środowisko dzienników w witrynie Azure portal zostaną stopniowo wycofane i zastąpione nowe środowisko dzienniki. 
+ODP.: Wyszukiwanie w dzienniku aktualnie jest nadal dostępny w portalu pakietu OMS i w witrynie Azure portal w obszarze nazwy **dzienniki (wersja klasyczna)**. Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019 r. Klasyczne środowisko dzienników w witrynie Azure portal zostaną stopniowo wycofane i zastąpione nowe środowisko dzienniki. 
 
 ### <a name="q-can-i-still-use-advanced-analytics-portal"></a>PYTANIE: Można nadal korzystać z portalu Advanced Analytics? 
 Nowe środowisko dzienników w witrynie Azure portal jest oparty na portalu usługi analiza zaawansowana, ale jest nadal dostępny spoza witryny Azure portal. Plan wycofywania tego zewnętrznego portalu zostanie ogłoszona wkrótce.
@@ -44,30 +43,30 @@ Nowe środowisko dzienników w witrynie Azure portal jest oparty na portalu usł
 
 ### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>PYTANIE: Jak wyodrębnić pól niestandardowych w nowym środowisku dzienniki? 
 
-Odp.: niestandardowe wyodrębniania pól są obecnie obsługiwane w modelu klasycznym, które dzienniki środowiska. 
+ODP.: Pola niestandardowe wyodrębniania są obecnie obsługiwane w klasycznym korzystaj z dzienników. 
 
 ### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>PYTANIE: Gdzie znaleźć widok listy w nowe dzienniki? 
 
-Odp.: widok listy nie jest dostępna w nowe dzienniki. Strzałka w lewo każdy rekord w tabeli wyników nie istnieje. Strzałki można otworzyć szczegóły dla określonego rekordu. 
+ODP.: Widok listy nie jest dostępna w nowe dzienniki. Strzałka w lewo każdy rekord w tabeli wyników nie istnieje. Strzałki można otworzyć szczegóły dla określonego rekordu. 
 
 ### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>PYTANIE: Po uruchomieniu kwerendy, listę sugerowanych filtry jest wyświetlane, ale nie zawiera wszystkie filtry. Jak zobaczyć pozostałe? 
 
-Odp.: co aktualnie wyświetlane są wersję zapoznawczą nowej implementacji filtrów. Teraz jest oparta na wynik Twojego pełnego ustawić zamiast jest ograniczona przez limit 10 000 rekordów interfejsu użytkownika. Obecnie jest lista najpopularniejszych filtry i 10 najczęściej dla każdego filtru. 
+ODP.: Obecnie wyświetlanych jest w wersji zapoznawczej, implementacji nowych filtrów. Teraz jest oparta na wynik Twojego pełnego ustawić zamiast jest ograniczona przez limit 10 000 rekordów interfejsu użytkownika. Obecnie jest lista najpopularniejszych filtry i 10 najczęściej dla każdego filtru. 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>PYTANIE: Dlaczego otrzymuję błąd: "Zarejestruj dostawcę zasobów"Microsoft.Insights"dla tej subskrypcji. Aby włączyć to zapytanie" w dziennikach, po przechodzenia do szczegółów z maszyny Wirtualnej? 
 
-Odp.: domyślnie automatycznie zarejestrowano wielu dostawców zasobów, jednak należy ręcznie zarejestrować niektórzy dostawcy zasobów. Pozwoli to na skonfigurowanie subskrypcji do pracy za pomocą dostawcy zasobów. Zakres do rejestracji jest zawsze subskrypcji. Aby uzyskać więcej informacji, zobacz [Dostawcy zasobów i ich typy](../../azure-resource-manager/resource-manager-supported-services.md#portal).
+ODP.: Domyślnie automatycznie zarejestrowano wielu dostawców zasobów, jednak należy ręcznie zarejestrować niektórzy dostawcy zasobów. Pozwoli to na skonfigurowanie subskrypcji do pracy za pomocą dostawcy zasobów. Zakres do rejestracji jest zawsze subskrypcji. Aby uzyskać więcej informacji, zobacz [Dostawcy zasobów i ich typy](../../azure-resource-manager/resource-manager-supported-services.md#portal).
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>PYTANIE: Dlaczego mogę komunikat o błędzie nie dostępu do błędu podczas uzyskiwania dostępu do dzienników ze strony maszyny Wirtualnej? 
 
-Odp.: Aby wyświetlić dzienniki maszyny Wirtualnej, musisz być nadane uprawnienia do odczytu do obszarów roboczych, które są przechowywane dzienniki maszyny Wirtualnej. W takich przypadkach administrator musi udzielić użytkownikowi uprawnień na platformie Azure.
+ODP.: Aby wyświetlić dzienniki maszyny Wirtualnej, musisz być nadane uprawnienia do odczytu do obszarów roboczych, które są przechowywane dzienniki maszyny Wirtualnej. W takich przypadkach administrator musi udzielić użytkownikowi uprawnień na platformie Azure.
 
 ### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>PYTANIE: Dlaczego mogę można skorzystać z mojego obszaru roboczego w portalu pakietu OMS, ale jest zgłaszany błąd "nie masz dostępu" w witrynie Azure portal?  
 
-Odp.: Aby uzyskać dostęp do obszaru roboczego na platformie Azure, musi mieć przypisane uprawnienia platformy Azure. Istnieją przypadki, gdy nie masz wystarczających uprawnień dostępu. W takich przypadkach administrator musi przyznać uprawnienia w Azure.See [portalu pakietu OMS na platformę Azure](/../../azure-monitor/platform/oms-portal-transition.md) Aby uzyskać więcej informacji.
+ODP.: Aby uzyskać dostęp do obszaru roboczego na platformie Azure, musi mieć przypisane uprawnienia platformy Azure. Istnieją przypadki, gdy nie masz wystarczających uprawnień dostępu. W takich przypadkach administrator musi przyznać uprawnienia w Azure.See [portalu pakietu OMS na platformę Azure](/../../azure-monitor/platform/oms-portal-transition.md) Aby uzyskać więcej informacji.
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>PYTANIE: Dlaczego nie nie widzę Projektant widoków zapisu w dziennikach? 
-Odp.: Pokaż projektanta jest dostępna tylko w dziennikach dla użytkowników przypisanych z uprawnieniami współautora lub nowszej.
+ODP.: Projektant widoków jest dostępna tylko w dziennikach dla użytkowników przypisanych z uprawnieniami współautora lub nowszej.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>PYTANIE: Można nadal korzystać z portalu usługi analiza spoza platformy Azure?
 A. Tak, stronie dzienniki na platformie Azure i portalu analizy zaawansowanej opierają się na ten sam kod. Usługa log Analytics jest integrowany jako funkcję w usłudze Azure Monitor, aby zapewnić bardziej ujednoliconego środowiska monitorowania. Nadal możesz uzyskiwać dostęp do portalu analizy przy użyciu adresu URL: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
@@ -78,20 +77,20 @@ A. Tak, stronie dzienniki na platformie Azure i portalu analizy zaawansowanej op
 
 ### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>PYTANIE: Jak mogę sprawdzić Mój widoki i rozwiązania w witrynie Azure portal? 
 
-Odp.: Lista widoków i zainstalowane rozwiązania są dostępne w witrynie Azure portal. Kliknij opcję **Wszystkie usługi**. Na liście zasobów wybierz **Monitor**, następnie kliknij przycisk **... Więcej**. Wybrano ostatni używanych obszaru roboczego, ale można wybrać inny obszar roboczy. 
+ODP.: Lista widoków i zainstalowane rozwiązania są dostępne w witrynie Azure portal. Kliknij opcję **Wszystkie usługi**. Na liście zasobów wybierz **Monitor**, następnie kliknij przycisk **... Więcej**. Wybrano ostatni używanych obszaru roboczego, ale można wybrać inny obszar roboczy. 
 
 ### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>PYTANIE: Dlaczego nie mogę utworzyć obszary robocze w regionie zachodnio-środkowe stany USA? 
 
-Odp.: ten region jest na limit pojemności tymczasowych. Limit jest planowana należy się zająć w pierwszej połowie 2019 r.
+ODP.: Ten region osiągnęło limit pojemności tymczasowe. Limit jest planowana należy się zająć w pierwszej połowie 2019 r.
 
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>PYTANIE: Usługa Log Analytics używa ten sam agent Azure Security Center?
 
-Odp.: w początku czerwca 2017 roku usługa Azure Security Center rozpoczęło się przy użyciu programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Azure Security Center platformy migracji — często zadawane pytania](../../security-center/security-center-enable-data-collection.md).
+ODP.: Na początku czerwca 2017 roku usługa Azure Security Center zaczęli korzystać z funkcji programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Azure Security Center platformy migracji — często zadawane pytania](../../security-center/security-center-enable-data-collection.md).
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>PYTANIE: Jakie są sprawdzane przez usługi AD i rozwiązania SQL Assessment?
 
-Odp.: następujące zapytanie zawiera opis wszystkich testów, które aktualnie wykonywane:
+ODP.: Następujące zapytanie zawiera opis wszystkich testów, które aktualnie wykonywane:
 
 ```
 (Type=SQLAssessmentRecommendation OR Type=ADAssessmentRecommendation) | dedup RecommendationId | select FocusArea, ActionArea, Recommendation, Description | sort Type, FocusArea,ActionArea, Recommendation
@@ -101,17 +100,17 @@ Następnie można wyeksportować wyniki do programu Excel w celu dalszego przegl
 
 ### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>PYTANIE: Dlaczego warto zobaczyć coś innego niż pakietu OMS w konsoli programu System Center Operations Manager
 
-Odp.: zależności od jakich Update Rollup programu Operations Manager znajdują się na, może być wyświetlany węzeł *System Center Advisor*, *usługi Operational Insights*, lub *usługi Log Analytics*.
+ODP.: Zależności od tego, jakie Update Rollup programu Operations Manager znajdują się na, może być wyświetlany węzeł *System Center Advisor*, *usługi Operational Insights*, lub *usługi Log Analytics*.
 
 Aktualizacja ciąg tekstu *OMS* znajduje się w pakiecie administracyjnym, należy zaimportować ręcznie. Aby zobaczyć aktualny tekst i funkcjonalność, postępuj zgodnie z instrukcjami na najnowsze systemu Centrum Operations Manager aktualizacji pakietu zbiorczego wiedzy i Odśwież konsolę.
 
-### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>P: czy istnieje — lokalną wersją usługi Log Analytics?
+### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>PYT.: Czy istnieje — lokalną wersją usługi Log Analytics?
 
-Odpowiedź: nie. Usługa log Analytics to usługa w chmurze skalowalne, która przetwarza i przechowuje duże ilości danych. 
+ODP.: Nie. Usługa log Analytics to usługa w chmurze skalowalne, która przetwarza i przechowuje duże ilości danych. 
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>PYTANIE: Jak rozwiązywać, jeśli nie jest już usługi Log Analytics zbiera dane?
 
-Odp.: dla subskrypcji i obszar roboczy utworzony przed 2 kwietnia 2018 r., która znajduje się na *bezpłatna* warstwy cenowej, jeśli więcej niż 500 MB danych zostanie wysłany w ciągu dnia, zatrzymuje zbieranie danych przez pozostałą część dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  
+ODP.: Dla subskrypcji i obszar roboczy utworzony przed 2 kwietnia 2018 r., która znajduje się na *bezpłatna* warstwy cenowej, jeśli więcej niż 500 MB danych zostanie wysłany w ciągu dnia, zatrzymuje zbieranie danych przez pozostałą część dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  
 
 Usługa log Analytics tworzy zdarzenie typu *pulsu* i może służyć do określenia, jeśli zatrzymuje zbieranie danych. 
 
@@ -134,7 +133,7 @@ Usługi log Analytics korzysta z czasu UTC, a każdy dzień rozpoczyna się o p�
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>PYTANIE: Jak mogę otrzymywać powiadomienia po zatrzymaniu zbierania danych?
 
-Odp.: wykonaj czynności opisane w [utworzyć nowego alertu dziennika](../../monitoring-and-diagnostics/alert-metric.md) zgłaszane po zatrzymaniu zbierania danych.
+ODP.: Wykonaj czynności opisane w [utworzyć nowego alertu dziennika](../../azure-monitor/platform/alerts-metric.md) zgłaszane po zatrzymaniu zbierania danych.
 
 Podczas tworzenia alertu dla zatrzymania zbierania danych, ustaw:
 
@@ -148,7 +147,7 @@ Podczas tworzenia alertu dla zatrzymania zbierania danych, ustaw:
    - **Nazwa** do *zbierania danych zatrzymane*
    - **Ważność** na *Ostrzeżenie*
 
-Określ istniejącą lub Utwórz nową [grupy akcji](../../monitoring-and-diagnostics/monitoring-action-groups.md) tak, aby po alertu dziennika odpowiadającego kryteriom, otrzymasz powiadomienie, jeśli masz pulsu, brak ponad 15 minut.
+Określ istniejącą lub Utwórz nową [grupy akcji](../../azure-monitor/platform/action-groups.md) tak, aby po alertu dziennika odpowiadającego kryteriom, otrzymasz powiadomienie, jeśli masz pulsu, brak ponad 15 minut.
 
 ## <a name="configuration"></a>Konfigurowanie
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>PYTANIE: Czy można zmienić nazwy tabeli/kontenera obiektów blob używane do odczytywania z usługi Azure Diagnostics (WAD)?
@@ -175,36 +174,36 @@ Ta zmiana może również w witrynie Azure portal.
 
 Nie można przenieść dane z jednego obszaru roboczego usługi Log Analytics do innego lub zmienić dane usługi Log Analytics są przechowywane w regionie.
 
-### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>P: jak dodać usługi Log Analytics programu System Center Operations Manager?
+### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>PYT.: Jak dodać usługi Log Analytics programu System Center Operations Manager?
 
-Odp.: Aktualizacja do najnowszego pakietu zbiorczego aktualizacji i importowania pakietów administracyjnych umożliwia łączenie programu Operations Manager do usługi Log Analytics.
+ODP.:  Aktualizowanie do najnowszego pakietu zbiorczego aktualizacji i importowania pakietów administracyjnych umożliwia łączenie programu Operations Manager do usługi Log Analytics.
 
 >[!NOTE]
 >Połączenie programu Operations Manager do usługi Log Analytics jest dostępna tylko dla programu System Center Operations Manager 2012 z dodatkiem SP1 lub nowszy.
 
-### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>P: jak można potwierdzić, że agent jest w stanie nawiązać połączenia z usługą Log Analytics?
+### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>PYT.: Jak można potwierdzić, że agent jest w stanie nawiązać połączenia z usługą Log Analytics?
 
-Odp.: aby upewnić się, że agent może komunikować się z usługą OMS, przejdź do: Panelu sterowania, zabezpieczeń i ustawień, **Microsoft Monitoring Agent**.
+ODP.: Aby upewnić się, że agent może komunikować się z usługą OMS, przejdź do: Kontrolowanie panelu, zabezpieczeń i ustawień, **Microsoft Monitoring Agent**.
 
 W obszarze **Azure Log Analytics (OMS)** kartę, poszukaj zielony znacznik wyboru. Zielona ikona znacznika wyboru potwierdza, że agent jest w stanie komunikować się z usługą Azure.
 
 Żółtą ikoną ostrzeżenia oznacza, że agent występują problemy z komunikacji z usługą Log Analytics. Jedną typową przyczyną jest to, że usługa Microsoft Monitoring Agent została zatrzymana. Aby ponownie uruchomić usługę, należy użyć Menedżera sterowania usługami.
 
-### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>P: jak zatrzymać agenta komunikowanie się z usługą Log Analytics?
+### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>PYT.: Jak zatrzymać agenta komunikowanie się z usługą Log Analytics?
 
-Odp.: W programie System Center Operations Manager, Usuń komputer z listy zarządzanych komputerów pakietu OMS. Programu Operations Manager zaktualizuje konfigurację agenta nie jest już raport do usługi Log Analytics. Dla agentów bezpośrednio podłączone do usługi Log Analytics, możesz je zatrzymać komunikację za pośrednictwem: Panelu sterowania, zabezpieczeń i ustawień, **Microsoft Monitoring Agent**.
+ODP.: W programie System Center Operations Manager należy usunąć komputer z listy zarządzanych komputerów pakietu OMS. Programu Operations Manager zaktualizuje konfigurację agenta nie jest już raport do usługi Log Analytics. Dla agentów bezpośrednio podłączone do usługi Log Analytics możesz zatrzymać je komunikację za pośrednictwem: Kontrolowanie panelu, zabezpieczeń i ustawień, **Microsoft Monitoring Agent**.
 W obszarze **Azure Log Analytics (OMS)**, Usuń wszystkie obszary robocze na liście.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Pyt.: Dlaczego otrzymuję błąd przy próbie przenieść mój obszar roboczy z jedną subskrypcją platformy Azure do innego?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>PYT.: Dlaczego otrzymuję błąd przy próbie przenieść mój obszar roboczy z jedną subskrypcją platformy Azure do innego?
 
-Odp.: Aby przenieść obszar roboczy do innej subskrypcji lub grupy zasobów, musi najpierw odłączyć konto usługi Automation, w obszarze roboczym. Odłączanie konta usługi Automation wymaga usunięcia tych rozwiązań, jeśli są zainstalowane w obszarze roboczym: zarządzanie aktualizacjami, śledzenie zmian lub uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu są usuwane. Po usunięciu tych rozwiązań odłączanie konta usługi Automation, wybierając **połączone obszary robocze** w okienku po lewej stronie w usłudze Automation konta zasobu, a następnie kliknij przycisk **odłączanie obszaru roboczego** na Wstążce.
+ODP.: Aby przenieść obszar roboczy do innej subskrypcji lub grupy zasobów, należy najpierw odłączyć konto usługi Automation, w obszarze roboczym. Odłączanie konta usługi Automation wymaga usunięcia tych rozwiązań, jeśli są zainstalowane w obszarze roboczym: Zarządzanie aktualizacjami, śledzenie zmian lub uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu są usuwane. Po usunięciu tych rozwiązań odłączanie konta usługi Automation, wybierając **połączone obszary robocze** w okienku po lewej stronie w usłudze Automation konta zasobu, a następnie kliknij przycisk **odłączanie obszaru roboczego** na Wstążce.
  > Usunięte rozwiązania konieczność ponownego zainstalowania w obszarze roboczym, a łącze automatyzacji do obszaru roboczego musi być przekształcone po przeniesieniu.
 
 Upewnij się, że masz uprawnienia w obu subskrypcjach platformy Azure.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>Pyt.: Dlaczego otrzymuję błąd podczas próby można zaktualizować zapisanego wyszukiwania?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>PYT.: Dlaczego otrzymuję błąd podczas próby można zaktualizować zapisanego wyszukiwania?
 
-Odp.: należy dodać "element etag" w treści interfejsu API lub właściwości szablonu usługi Azure Resource Manager:
+ODP.: Należy dodać "element etag" w treści interfejsu API lub właściwości szablonu usługi Azure Resource Manager:
 ```
 "properties": {
    "etag": "*",

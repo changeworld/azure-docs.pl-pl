@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 5f74ee390ac327a9e697d3dc67da4ea604b64d69
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e4d96fa558e1122ef9e0fe0b265166757c45e678
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686896"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321054"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
 
@@ -105,7 +105,9 @@ Oto wygenerowanego odpowiadającego `function.json` przez [maven wtyczki, azure 
 
 ## <a name="jdk-runtime-availability-and-support"></a>Zestaw JDK środowiska uruchomieniowego dostępność i pomoc techniczna 
 
-Pobieranie i używanie [Azul Zulu dla platformy Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK z [firmy Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) potrzeby lokalnego programowania aplikacji funkcji w języku Java. JDK są dostępne dla Windows, Linux i macOS. [Pomoc techniczna platformy Azure](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) jest dostępna z [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
+Pobieranie i używanie [Azul Zulu Enterprise na platformie Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDK 8 z [firmy Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) potrzeby lokalnego programowania aplikacji funkcji w języku Java. Usługa Azure Functions używa środowiska uruchomieniowego Azul Java 8 JDK, podczas wdrażania aplikacji funkcji w chmurze.
+
+[Pomoc techniczna platformy Azure](https://azure.microsoft.com/en-us/support/) w przypadku problemów z JDK i funkcja jest dostępna z aplikacji [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
 
 ## <a name="third-party-libraries"></a>Bibliotek innych firm 
 
@@ -361,11 +363,11 @@ Musisz włączyć systemu plików, logowania w witrynie Azure Portal lub interfe
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
-W przypadku funkcji [ustawienia aplikacji](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings), takie jak połączenia z usługą ciągów, są widoczne jako zmiennych środowiskowych podczas wykonywania. Możesz uzyskać dostęp tych ustawień, korzystając z, `System.getenv("AzureWebJobsStorage")`
+W przypadku funkcji [ustawienia aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings), takie jak połączenia z usługą ciągów, są widoczne jako zmiennych środowiskowych podczas wykonywania. Możesz uzyskać dostęp tych ustawień, korzystając z, `System.getenv("AzureWebJobsStorage")`
 
 Przykład:
 
-Dodaj [AppSetting](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings) przy użyciu nazwy testAppSettingValue testAppSetting i wartości
+Dodaj [AppSetting](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) przy użyciu nazwy testAppSettingValue testAppSetting i wartości
 
 ```java
 

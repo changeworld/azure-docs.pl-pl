@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e5943dde86b96dc0f95df0620212daf9a972fccf
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: bc3ab808234ee0759abea0520ea0336489fc60d6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882865"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309607"
 documentType: LandingData
 title: Usługa Azure SQL Database — Pojedyncza baza danych
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 12/01/2018
   ms.author: jovanpop-msft
 abstract:
-  description: Azure SQL Database to relacyjna baza danych jako usługa (DBaaS) oparta na najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. Usługa SQL Database to wysokiej wydajności niezawodna i bezpieczna baza danych, za pomocą której można tworzyć oparte na danych aplikacje i witryny internetowe w wybranym języku programowania bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
+  description: Azure SQL Database to relacyjna baza danych jako usługa (DBaaS) oparta na najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. SQL Database to wysokiej wydajności, łatwy w użyciu, niezawodną i bezpiecznej bazie danych, których można użyć do tworzenia nowych aplikacji, witryn sieci Web i mikrousług w wybranym języku programowania bez konieczności zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
   aside:
     image:
       alt: 
@@ -68,6 +68,17 @@ sections:
       html: <p>Zabezpieczenia bazy danych przy użyciu uwierzytelniania usługi Azure AD, sieci wirtualne, zapory, zawsze szyfrowane połączenia. Identyfikowanie zagrożeń i luk w zabezpieczeniach za pomocą wbudowanych zabezpieczeń.</p>
       image:
         src: media/index/i_security.svg
+- title: Nowe i funkcje w wersji zapoznawczej
+  items:
+  - type: paragraph
+    text: 'Jesteśmy ciągłe zwiększanie bazy danych SQL za pomocą nowych funkcji i chcielibyśmy poznać Twoją opinię na temat następujące nowe funkcje:'
+  - type: list
+    style: unordered
+    items:
+    - html: (Wersja zapoznawcza) <a href="sql-database-service-tier-hyperscale">Hiperskali</a> warstwę, która obsługuje maksymalnie 100 TB baz danych i wiele replik z możliwością odczytu.
+    - html: (Wersja zapoznawcza) Nowy program SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">przetwarzania zapytań inteligentnych</a> funkcje, takie jak <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">zmiennej tabeli odroczone kompilacji</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">tryb usługi batch w tabelach magazynu wierszy</a>, i <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> skalarne funkcji zdefiniowanej przez użytkownika ze śródwierszowaniem</a>.
+    - html: (Wersja zapoznawcza) Nowe funkcje języka Transact-SQL, takich jak <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">agregacji APPROX_COUNT_DISTINCT</a> i <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">IMPORTOWANIA ZBIORCZEGO z usługą Azure Blob storage</a>.
+    - html: (Wersja zapoznawcza) Nowe Online programu SQL Server 2019 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">kompilacji</a> i skompiluj ponownie operacje indeksów KLASTROWANEGO magazynu kolumn.
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph

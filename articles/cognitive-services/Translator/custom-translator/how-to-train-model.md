@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 9ec8cbe3d2467714a4b2586db79566aaef30d6d7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 60e0485c28d90050a6ff775db41f8696a09fe033
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627424"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165762"
 ---
 # <a name="train-a-model"></a>Szkolenie modelu
 
@@ -26,21 +26,17 @@ Do nauczenia modelu:
 
 2.  Na karcie danych dla projektu zostaną wyświetlone wszystkie dokumenty dla pary języka projektu. Ręcznie wybrać dokumenty, które chcesz użyć do uczenia modelu. Możesz wybrać szkolenia, dostosowywania i testowania dokumentów za pośrednictwem tego ekranu. Również możesz po prostu wybrać zestaw szkoleniowy i niestandardowe w usłudze Translator tworzenie, dostosowywanie i testowanie zestawy dla Ciebie.
 
-    -  Nazwa dokumentu: nazwa dokumentu.
+    -  Nazwa dokumentu: Nazwa dokumentu.
 
-    -  Parowanie: Jeśli ten dokument jest równoległe lub jednojęzyczne dokumentu.
+    -  Parowanie: Jeśli w tym dokumencie jest równoległe lub jednojęzyczne dokumentu. Jednojęzyczne dokumenty nie są obecnie obsługiwane dla szkolenia.
 
-    - Jednojęzyczne dokumenty nie są obecnie obsługiwane dla szkolenia.
-
-    -  Typ dokumentu: może być szkolenia, dostosowywania, testy lub słownika.
+    -  Typ dokumentu: Może być szkolenia, dostosowywania, testy lub słownika.
 
     -  Para języka: Pokaż to źródłowy i docelowy język dla projektu.
 
-    -  Źródło zdania: Pokazuje liczbę wyodrębnione ze zdań
-    - plik źródłowy.
+    -  Zdania źródła: Przedstawia liczbę zdań wyodrębnione z pliku źródłowego.
 
-    -  Docelowa zdania: Pokazuje liczbę wyodrębnione ze zdań
-    - Plik docelowy.
+    -  Zdania docelowej: Przedstawia liczbę zdań wyodrębnione z pliku docelowego.
 
     ![Trenowanie modelu](media/how-to/how-to-train-model.png)
 
@@ -67,7 +63,7 @@ Możesz edytować model przy użyciu łącza edycji na stronie szczegółów mod
 
 2.  W polu Zmień okna dialogowego
 
-    1.  Model (wymagane): nadaj nazwę opisową modelu.
+    1.  Nazwa modelu (wymagane): Nazwij swój model zrozumiałe.
 
         ![Więcej okno dialogowe Edycja](media/how-to/how-to-edit-model-dialog.png)
 

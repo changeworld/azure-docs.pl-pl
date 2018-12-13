@@ -12,65 +12,73 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 986741a68113da00800a18cb58648ac66b1de116
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978405"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322026"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL
 
-W tym artykule opisano architekturę łączności usługi Azure SQL Database i wyjaśniono, jak różne składniki funkcji kierować ruch do wystąpienia usługi Azure SQL Database. Te usługi Azure SQL Database łączności składniki funkcji do kierowania ruchu sieciowego do bazy danych platformy Azure z klientów łączących się z w obrębie platformy Azure i klientów łączących się z spoza platformy Azure. Ten artykuł zawiera także przykłady skryptów, aby zmienić sposób występuje łączności i zagadnienia związane z Zmienianie domyślnych ustawień połączenia.
+W tym artykule opisano również architektura łączności usługi Azure SQL Database, jak różne składniki funkcji kierować ruch do wystąpienia usługi Azure SQL Database. Te usługi Azure SQL Database łączności składniki funkcji do kierowania ruchu sieciowego do bazy danych platformy Azure z klientów łączących się z w obrębie platformy Azure i klientów łączących się z spoza platformy Azure. Ten artykuł zawiera także przykłady skryptów, aby zmienić sposób występuje łączności i zagadnienia związane z Zmienianie domyślnych ustawień połączenia.
+
+> [!IMPORTANT]
+> **[Nadchodzącą zmianą] Dla połączeń punkt końcowy usługi z serwerami usługi Azure SQL `Default` zachowanie łączności zmienia `Redirect`.**
+>
+> Zmiana obowiązuje już z 10 listopada 2019 dla regionu Brazylia Południowa i Europa Zachodnia. Wszystkie inne regiony zmiany będą obowiązywać od 2 stycznia 2019 r.
+>
+> Aby uniemożliwić łączność za pośrednictwem punktu końcowego usługi podziału w istniejących środowiskach, w wyniku tej zmiany, używamy telemetrii wykonaj następujące czynności:
+> - W przypadku serwerów, które zostanie wykryte, które były dostępne za pośrednictwem punktów końcowych usługi przed zmianą, firma Microsoft przełącznika typ połączenia na `Proxy`.
+> - Dla innych serwerów, możemy przełączyć połączenia typu zostaną przełączeni na `Redirect`.
+>
+> Nadal może mieć wpływ na użytkowników punktu końcowego usługi w następujących scenariuszach: 
+> - Aplikacja łączy się z istniejącego serwera rzadko, nasza telemetria nie przechwyciła informacji o tych aplikacjach 
+> - Logika automatycznego wdrażania tworzy serwer logiczny przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy` 
+>
+> Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags). Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
 
 Na poniższym diagramie przedstawiono ogólny przegląd architektury połączenia usługi Azure SQL Database.
 
-![Omówienie architektury](./media/sql-database-connectivity-architecture/architecture-overview.png)
+![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
-W poniższych krokach opisano, jak jest nawiązywane połączenie z bazą danych Azure SQL za pomocą usługi Azure SQL Database oprogramowania równoważenia obciążenia (SLB) i bramy usługi Azure SQL Database.
+W poniższych krokach opisano, jak jest nawiązywane połączenie z bazą danych Azure SQL:
 
-- Klienci połączyć się SLB, która ma publiczny adres IP i nasłuchuje na porcie 1433.
-- SLB przesyła dalej ruch do bramy usługi Azure SQL Database.
-- Brama w zależności od zasad połączenia skuteczne, przekierowuje lub serwery proxy ruchu do oprogramowania pośredniczącego prawidłowy serwer proxy.
-- Oprogramowanie pośredniczące serwera proxy przekazuje ruch z odpowiednią bazą danych Azure SQL.
-
-> [!IMPORTANT]
-> Każdego z tych składników ma distributed denial protection service (DDoS) wbudowanych w sieci i warstwy aplikacji.
+- Klienci połączenia z bramą, ma publiczny adres IP, która nasłuchuje na porcie 1433.
+- Brama w zależności od zasad połączenia skuteczne, przekierowuje lub serwery proxy ruchu do klastra właściwej bazy danych.
+- Wewnątrz bazy danych ruchu klastra jest przekazywany do odpowiedniej bazy danych Azure SQL.
 
 ## <a name="connection-policy"></a>Zasady połączenia
 
 Usługa Azure SQL Database obsługuje poniższe trzy opcje ustawienia zasad połączenia z serwerem bazy danych SQL:
 
-- **Przekierowania (zalecane):** klientów nawiązywać połączenia z bezpośrednio na węzeł, w którym baza danych. Aby włączyć łączność, klienci muszą zezwalać na reguły zapory dla ruchu wychodzącego dla wszystkich adresów IP platformy Azure w regionie (Wypróbuj to przy użyciu grup zabezpieczeń sieci (NSG) za pomocą [tagów usług](../virtual-network/security-overview.md#service-tags)), nie tylko adresy IP bramy bazy danych SQL Azure. Ponieważ pakietów przejść bezpośrednio do bazy danych, opóźnienia i przepływności mają większą wydajność.
-- **Serwer proxy:** w tym trybie wszystkie połączenia są przekazywane za pośrednictwem bramy usługi Azure SQL Database. Aby włączyć łączność, klient musi mieć reguł zapory dla ruchu wychodzącego, które umożliwiają tylko adresy IP bramy bazy danych SQL Azure (zazwyczaj dwa adresy IP na region). Wybór ten tryb może spowodować wyższe opóźnienie i niższych przepływności, w zależności od rodzaju obciążenia. Zdecydowanie zalecamy zasady przekierowania połączenia za pośrednictwem zasad połączenia serwera Proxy dla najmniejszego opóźnienia i najwyższy przepływność.
-- **Wartość domyślna:** to obowiązuje zasada połączenia na wszystkich serwerach po utworzeniu, chyba że jawnie zmienić zasady połączenia serwera Proxy lub przekierowania. Efektywnych zasad zależy od tego, czy połączenia pochodzą z w obrębie platformy Azure (przekierowanie) lub spoza platformy Azure (Proxy).
+- **Przekierowanie (zalecane):** Klienci ustanowić połączenia bezpośrednio z węzeł, w którym baza danych. Aby włączyć łączność, klienci muszą zezwalać na reguły zapory dla ruchu wychodzącego dla wszystkich adresów IP platformy Azure w regionie przy użyciu grup zabezpieczeń sieci (NSG) za pomocą [tagów usług](../virtual-network/security-overview.md#service-tags)), nie tylko adresy IP bramy usługi Azure SQL Database. Ponieważ pakietów przejść bezpośrednio do bazy danych, opóźnienia i przepływności mają większą wydajność.
+- **Serwer proxy:** W tym trybie wszystkie połączenia są przekazywane za pośrednictwem bramy usługi Azure SQL Database. Aby włączyć łączność, klient musi mieć wychodzących reguł zapory zezwalających wyłącznie bramy usługi Azure SQL Database, adresy IP (zazwyczaj dwa adresy IP na region). Wybór ten tryb może spowodować wyższe opóźnienie i niższych przepływności, w zależności od rodzaju obciążenia. Zdecydowanie zaleca się `Redirect` zasad połączenia za pośrednictwem `Proxy` zasady połączenia do najmniejszego opóźnienia i najwyższy przepływność.
+- **Wartość domyślna:** To połączenie zasady obowiązywać na wszystkich serwerach po utworzeniu, chyba że jawnie zmienić zasady połączenia albo `Proxy` lub `Redirect`. Efektywnych zasad zależy od tego, czy połączenia pochodzą z w obrębie platformy Azure (`Redirect`) lub spoza platformy Azure (`Proxy`).
 
 ## <a name="connectivity-from-within-azure"></a>Łączność z w obrębie platformy Azure
 
-W przypadku łączenia z w obrębie platformy Azure na serwerze, który został utworzony po 10 listopada 2018 r połączenia mają zasady połączenia **przekierowania** domyślnie. Zasady **przekierowania** oznacza, że połączenia po TCP ustanowieniu sesji w bazie danych Azure SQL, sesja klienta jest następnie przekierowywane do oprogramowania pośredniczącego serwera proxy w przypadku zmiany docelowego wirtualnego adresu IP niż platformy Azure Brama bazy danych SQL do tego oprogramowania pośredniczącego serwera proxy. Dzięki temu wszystkie kolejne pakiety przepływ bezpośrednio za pomocą oprogramowania pośredniczącego serwera proxy, z pominięciem bramy usługi Azure SQL Database. Na poniższym diagramie przedstawiono ten przepływ ruchu.
+Jeśli łączysz się z w obrębie platformy Azure połączenia mają zasady połączenia `Redirect` domyślnie. Zasady `Redirect` oznacza, że po ustanowieniu sesji TCP do bazy danych Azure SQL sesji klienta jest następnie przekierowywane do klastra właściwej bazy danych w przypadku zmiany docelowego wirtualnego adresu IP niż w przypadku bramy usługi Azure SQL Database klaster. Dzięki temu wszystkie kolejne pakiety przepływ bezpośrednio do klastra, z pominięciem bramy usługi Azure SQL Database. Na poniższym diagramie przedstawiono ten przepływ ruchu.
 
-![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
-
-> [!IMPORTANT]
-> Jeśli utworzono serwer bazy danych SQL przed 10 listopada 2018 zasad połączenia ustawiono jawnie na **Proxy**. Korzystając z punktów końcowych usługi, zdecydowanie zaleca się zmianę zasad połączenia do **przekierowania** umożliwiające lepszą wydajność. W przypadku zmiany zasad połączenia do **przekierowania**, nie będą wystarczające, aby umożliwić ruchu wychodzącego w sieciowej grupie zabezpieczeń do bramy usługi Azure SQL Database, adresów IP wymienionych poniżej, musisz zezwolić na ruch wychodzący do wszystkich adresów IP bazy danych SQL Azure. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](../virtual-network/security-overview.md#service-tags).
+![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Łączność z spoza platformy Azure
 
-Jeśli nawiązujesz połączenie spoza platformy Azure, Twoje połączenia mają zasady połączenia **Proxy** domyślnie. Zasady **Proxy** oznacza, że zostanie utworzona sesja protokołu TCP, za pośrednictwem bramy usługi Azure SQL Database i wszystkie kolejne pakiety przepływu za pośrednictwem bramy. Na poniższym diagramie przedstawiono ten przepływ ruchu.
+Jeśli nawiązujesz połączenie spoza platformy Azure, Twoje połączenia mają zasady połączenia `Proxy` domyślnie. Zasady `Proxy` oznacza, że zostanie utworzona sesja protokołu TCP, za pośrednictwem bramy usługi Azure SQL Database i wszystkie kolejne pakiety przepływu za pośrednictwem bramy. Na poniższym diagramie przedstawiono ten przepływ ruchu.
 
-![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
+![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Adresy IP bramy usługi Azure SQL Database
 
-Aby nawiązać połączenie z bazą danych Azure SQL z zasobami lokalnymi, należy zezwolić na wychodzący ruch sieciowy do bramy usługi Azure SQL Database dla regionu platformy Azure. Połączenia przejść tylko za pośrednictwem bramy podczas nawiązywania połączenia w trybie serwera Proxy, który jest domyślną kolekcją podczas nawiązywania połączenia z zasobami lokalnymi.
+Aby nawiązać połączenie z bazą danych Azure SQL z zasobami lokalnymi, należy zezwolić na wychodzący ruch sieciowy do bramy usługi Azure SQL Database dla regionu platformy Azure. Połączenia go tylko za pośrednictwem bramy podczas nawiązywania połączenia w `Proxy` tryb, w którym jest domyślną kolekcją podczas nawiązywania połączenia z zasobów lokalnych.
 
 Poniższa tabela zawiera listę podstawowych i pomocniczych adresów IP bramy usługi Azure SQL Database dla wszystkich obszarach danych. W niektórych regionach istnieją dwa adresy IP. W tych regionach podstawowy adres IP jest bieżący adres IP bramy, a drugi adres IP jest adresem IP trybu failover. Adres trybu failover jest adresem, do którego możemy przenieść serwer zapewnienie wysokiej dostępności usługi. W tych regionach zaleca się zezwolenie wychodzące adresy IP. Drugi adres IP jest własnością firmy Microsoft i nie będzie nasłuchiwać na wszystkie usługi, dopóki nie zostanie aktywowany przez usługę Azure SQL Database do akceptowania połączeń.
 
 | Nazwa regionu | Podstawowy adres IP | Adres IP pomocniczego |
 | --- | --- |--- |
-| Australia Wschodnia | 191.238.66.109 | 13.75.149.87 |
+| Australia Wschodnia | 13.75.149.87 | 40.79.161.1 |
 | Australia Południowo-Wschodnia | 191.239.192.109 | 13.73.109.251 |
 | Brazylia Południowa | 104.41.11.5 | |
 | Kanada Środkowa | 40.85.224.249 | |
@@ -107,14 +115,14 @@ Poniższa tabela zawiera listę podstawowych i pomocniczych adresów IP bramy us
 | Zachodnie stany USA 2 | 13.66.226.202 | |
 ||||
 
-\* **Uwaga:** *wschodnie stany USA 2* ma również trzeciorzędny adres IP `52.167.104.0`.
+\* **UWAGA:** *Wschodnie stany USA 2* ma również trzeciorzędny adres IP `52.167.104.0`.
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Zmień zasady połączenia usługi Azure SQL Database
 
 Aby zmienić zasady połączenia usługi Azure SQL Database dla serwera usługi Azure SQL Database, użyj [zasad połąc](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) polecenia.
 
-- Jeśli ustawiono zasady połączenia **Proxy**, wszystkich sieci przepływu pakietów za pośrednictwem bramy usługi Azure SQL Database. To ustawienie, należy zezwolić na ruch wychodzący do IP bramy usługi Azure SQL Database. Przy użyciu ustawień programu **Proxy** ma więcej opóźnienia, niż ustawienie **przekierowania**.
-- Jeśli to ustawienie zasad połączenia **przekierowania**, wszystkich sieci przepływu pakietów bezpośrednio do serwera proxy oprogramowania pośredniczącego. To ustawienie, należy zezwolić na ruch wychodzący do wielu adresów IP.
+- Jeśli ustawiono zasady połączenia `Proxy`, wszystkich sieci przepływu pakietów za pośrednictwem bramy usługi Azure SQL Database. To ustawienie, należy zezwolić na ruch wychodzący do IP bramy usługi Azure SQL Database. Przy użyciu ustawień programu `Proxy` ma więcej opóźnienia, niż ustawienie `Redirect`.
+- Jeśli to ustawienie zasad połączenia `Redirect`, wszystkich sieci przepływu pakietów bezpośrednio z klastrem bazy danych. To ustawienie, należy zezwolić na ruch wychodzący do wielu adresów IP.
 
 ## <a name="script-to-change-connection-settings-via-powershell"></a>Skrypt, aby zmienić ustawienia połączenia za pośrednictwem programu PowerShell
 
@@ -125,55 +133,17 @@ Aby zmienić zasady połączenia usługi Azure SQL Database dla serwera usługi 
 Poniższy skrypt programu PowerShell pokazuje, jak zmienić zasady połączenia.
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName <Subscription Name>
+# Get SQL Server ID
+$sqlserverid=(Get-AzureRmSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
 
-# Azure Active Directory ID
-$tenantId = "<Azure Active Directory GUID>"
-$authUrl = "https://login.microsoftonline.com/$tenantId"
+# Set URI
+$id="$sqlserverid/connectionPolicies/Default"
 
-# Subscription ID
-$subscriptionId = "<Subscription GUID>"
+# Get current connection policy
+(Get-AzureRmResource -ResourceId $id).Properties.connectionType
 
-# Create an App Registration in Azure Active Directory.  Ensure the application type is set to NATIVE
-# Under Required Permissions, add the API:  Windows Azure Service Management API
-
-# Specify the redirect URL for the app registration
-$uri = "<NATIVE APP - REDIRECT URI>"
-
-# Specify the application id for the app registration
-$clientId = "<NATIVE APP - APPLICATION ID>"
-
-# Logical SQL Server Name
-$serverName = "<LOGICAL DATABASE SERVER - NAME>"
-
-# Resource Group where the SQL Server is located
-$resourceGroupName= "<LOGICAL DATABASE SERVER - RESOURCE GROUP NAME>"
-
-
-# Login and acquire a bearer token
-$AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
-$result = $AuthContext.AcquireToken(
-"https://management.core.windows.net/",
-$clientId,
-[Uri]$uri,
-[Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Auto
-)
-
-$authHeader = @{
-'Content-Type'='application\json; '
-'Authorization'=$result.CreateAuthorizationHeader()
-}
-
-#Get current connection Policy
-Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method GET -Headers $authHeader
-
-#Set connection policy to Proxy
-$connectionType="Proxy" <#Redirect / Default are other options#>
-$body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
-
-# Apply Changes
-Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
+# Update connection policy
+Set-AzureRmResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
 ## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skrypt, aby zmienić ustawienia połączenia za pośrednictwem wiersza polecenia platformy Azure
@@ -184,9 +154,8 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 Poniższy skrypt interfejsu wiersza polecenia pokazuje, jak zmienić zasady połączenia.
 
 ```azurecli-interactive
-<pre>
 # Get SQL Server ID
-sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
 
 # Set URI
 id="$sqlserverid/connectionPolicies/Default"
@@ -196,8 +165,6 @@ az resource show --ids $id
 
 # Update connection policy
 az resource update --ids $id --set properties.connectionType=Proxy
-
-</pre>
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

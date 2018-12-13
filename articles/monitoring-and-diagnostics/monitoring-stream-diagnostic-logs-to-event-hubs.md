@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: d178041a420c49480c6043869f139eb3a09c91fd
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b7c2c28ab049f0cce26f306736ec938955156ebb
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959277"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322588"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream dzienniki diagnostyczne platformy Azure do Centrum zdarzeń
 **[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure interfejsu wiersza polecenia.
@@ -44,14 +44,14 @@ Oto kilka sposobów, można na przykład możliwość przesyłania strumienioweg
 Aby umożliwić przesyłanie strumieniowe dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). W obu przypadkach można utworzyć ustawienie diagnostyczne, w którym należy określić przestrzeni nazw usługi Event Hubs i kategorie dzienników i metryk, które chcesz wysłać do przestrzeni nazw. Centrum zdarzeń jest tworzony w przestrzeni nazw dla każdej kategorii dziennika, w której zostanie włączone. Diagnostyka **kategoria dziennika** jest typem dziennika, który może zbierać zasobu.
 
 > [!WARNING]
-> Strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych (na przykład maszyny wirtualne lub usługi Service Fabric) i włączenie [wymaga innego zestawu kroków](azure-diagnostics-streaming-event-hubs.md).
+> Strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych (na przykład maszyny wirtualne lub usługi Service Fabric) i włączenie [wymaga innego zestawu kroków](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 Usługa Event Hubs, których nazw nie muszą znajdować się w tej samej subskrypcji co zasób emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do subskrypcji i obu subskrypcji są częścią tej samej dzierżawie usługi AAD.
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
-> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
+> *Na przykład*: Metrykę "Komunikaty przychodzące" w Centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
 >
 
@@ -191,7 +191,7 @@ Można wyświetlić listę wszystkich dostawców zasobów, które obsługują pr
 
 ## <a name="stream-data-from-compute-resources"></a>Stream dane z zasobów obliczeniowych
 
-Obejmuje także strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych, przy użyciu agenta usługi Windows Azure Diagnostics. [Ten artykuł](azure-diagnostics-streaming-event-hubs.md) jak to skonfigurować.
+Obejmuje także strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych, przy użyciu agenta usługi Windows Azure Diagnostics. [Ten artykuł](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md) jak to skonfigurować.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: Klaster SAP ASCS/SCS wystąpienia klastra trybu failover z systemem Windows przy użyciu udziału plików na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak klaster z wystąpieniem SAP ASCS/SCS klastra trybu failover z systemem Windows przy użyciu udziału plików na platformie Azure.
+title: Klaster wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików na platformie Azure.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 646c30be171a5aaaa17e40eae3cef6952b2b2747
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf50dad01cf9893209cc861d29d275ec114966c4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657064"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186161"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -91,7 +91,7 @@ ms.locfileid: "34657064"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności identyfikatora SID multi SAP)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności — wiele identyfikatorów SID SAP)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -204,160 +204,160 @@ ms.locfileid: "34657064"
 
 [1869038]:https://launchpad.support.sap.com/#/notes/1869038 
 
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Klaster SAP ASCS/SCS wystąpienia klastra trybu failover z systemem Windows przy użyciu udziału plików na platformie Azure
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Klaster wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików na platformie Azure
 
 > ![Windows][Logo_Windows] Windows
 >
 
-Klaster pracy awaryjnej systemu Windows Server jest podstawą SAP ASCS/SCS instalacji wysokiej dostępności i bazami danych w systemie Windows.
+Klaster trybu failover systemu Windows Server jest podstawą SAP ASCS/SCS instalacji o wysokiej dostępności i systemu DBMS na platformie Windows.
 
-Klaster trybu failover to grupa 1 + n niezależnych serwerów (węzłów), które współpracują ze sobą w celu zwiększenia dostępności aplikacji i usług. W przypadku awarii węzła klastra trybu failover systemu Windows Server oblicza liczbę błędów, które mogą wystąpić i zachować dobrej kondycji klastra zapewnienie aplikacji i usług. Istnieje możliwość z kworum różne tryby osiągnięcia klastra trybu failover.
+Klaster trybu failover to grupa 1 + n niezależnych serwerów (węzłów), które współpracują ze sobą, aby zwiększyć dostępność aplikacji i usług. W przypadku awarii węzła klastra trybu failover systemu Windows Server oblicza liczbę błędów, które mogą wystąpić i nadal utrzymuje dobrej kondycji klastra, aby zapewnić aplikacji i usług. Istnieje możliwość z trybów kworum różnych osiągnąć klastra trybu failover.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem zadań, które zostały opisane w tym artykule, należy przejrzeć ten artykuł:
+Przed przystąpieniem do wykonywania zadań, które są opisane w tym artykule, należy przejrzeć ten artykuł:
 
-* [Scenariusze dla programu SAP NetWeaver i Azure architektura wysokiej dostępności maszyny wirtualnej][sap-high-availability-architecture-scenarios]
+* [Architektura wysokiej dostępności na platformie Azure maszyn wirtualnych i scenariusze SAP NetWeaver][sap-high-availability-architecture-scenarios]
 
 > [!IMPORTANT]
-> Klastrowanie SAP ASCS/SCS wystąpienia przy użyciu udziału plików jest obsługiwane dla programu SAP NetWeaver 7.40 (i nowszych) z programu SAP 7.49 jądra (i nowszych).
+> Klaster wystąpienia SAP ASCS/SCS przy użyciu udziału plików jest obsługiwany dla SAP NetWeaver 7.40 (i nowszych) przy użyciu 7.49 jądra SAP (i nowszych).
 >
 
 
-## <a name="windows-server-failover-clustering-in-azure"></a>Awaryjnej systemu Windows Server na platformie Azure
+## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server klaster trybu failover na platformie Azure
 
-W porównaniu do wdrożenia bez systemu operacyjnego lub prywatnej chmury, maszynach wirtualnych platformy Azure wymaga dodatkowych kroków, aby skonfigurować klaster pracy awaryjnej systemu Windows Server. Podczas tworzenia klastra, należy ustawić kilka adresów IP i nazwy hostów wirtualnych dla wystąpienia programu SAP ASCS/SCS.
+W porównaniu do wdrożenia bez systemu operacyjnego lub prywatnej chmury, maszyn wirtualnych platformy Azure wymaga dodatkowych kroków, aby skonfigurować klaster trybu failover systemu Windows Server. Podczas tworzenia klastra, musisz ustawić kilka adresów IP i nazwy hostów wirtualnych na potrzeby wystąpienia SAP ASCS/SCS.
 
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Rozpoznawanie nazw w usłudze Azure i nazwę hosta wirtualnego klastra
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Rozpoznawanie nazw na platformie Azure i nazwę hosta wirtualnego klastra
 
-Chmury Azure platforma nie oferuje opcję, aby skonfigurować wirtualne adresy IP, takie jak adresy IP zmiennoprzecinkowych. Należy rozwiązań alternatywnych, aby skonfigurować wirtualny adres IP do zasobu klastra w chmurze. 
+Platforma usług w chmurze platformy Azure nie oferuje opcję, aby skonfigurować wirtualne adresy IP, takie jak adresy IP zmiennoprzecinkowy. Należy skonfigurować wirtualny adres IP, aby dotrzeć do zasobu klastra w chmurze alternatywnym rozwiązaniem. 
 
-Usługa równoważenia obciążenia Azure udostępnia *wewnętrznego modułu równoważenia obciążenia* dla platformy Azure. Z wewnętrznego modułu równoważenia obciążenia klienci osiągnąć klastra za pośrednictwem wirtualnego adresu IP klastra. 
+Usługa Azure Load Balancer zapewnia *wewnętrznego modułu równoważenia obciążenia* dla platformy Azure. Przy użyciu wewnętrznego modułu równoważenia obciążenia klienci dotrzeć do klastra za pośrednictwem wirtualnego adresu IP klastra. 
 
-Wdróż wewnętrznego modułu równoważenia obciążenia w grupie zasobów, która zawiera węzły klastra. Następnie należy skonfigurować wszystkie niezbędne portu przekazywania reguł za pomocą sondy porty wewnętrznego modułu równoważenia obciążenia. Klienci mogą łączyć się za pomocą nazwy hostów wirtualnych. Serwer DNS rozpoznaje adres IP klastra. Wewnętrzny moduł równoważenia obciążenia obsługuje przekazywanie portu do aktywnego węzła klastra.
+Wdrażanie wewnętrznego modułu równoważenia obciążenia w grupie zasobów, która zawiera węzły klastra. Następnie należy skonfigurować wszystkie niezbędne portu reguły przekazywania za pomocą sondy porty wewnętrznego modułu równoważenia obciążenia. Klienci mogą łączyć się za pomocą nazwy hosta wirtualnego. Serwer DNS jest rozpoznawana jako adres IP klastra. Wewnętrzny moduł równoważenia obciążenia obsługuje przekierowania portów do aktywnego węzła klastra.
 
-![Rysunek 1: Windows Server Failover Clustering konfiguracji platformy Azure bez udostępnionego dysku][sap-ha-guide-figure-1001]
+![Rysunek 1: Windows Server Failover Clustering konfiguracji na platformie Azure, bez udostępnionego dysku][sap-ha-guide-figure-1001]
 
-_**Rysunek 1.** konfiguracji platformy Azure bez udostępnionego dysku awaryjnej systemu Windows Server_
+_**Rysunek 1:** Konfiguracja na platformie Azure bez udostępnionego dysku awaryjnej w systemie Windows Server_
 
-## <a name="sap-ascsscs-ha-with-file-share"></a>SAP ASCS/SCS HA z udziału plików
+## <a name="sap-ascsscs-ha-with-file-share"></a>SAP ASCS/SCS zaświadczanie o kondycji z udziałem plików
 
-SAP opracowany nowe podejście, a zamiast klastra dyski udostępnione dla klastra SAP ASCS/SCS wystąpienia klastra trybu failover z systemem Windows. Zamiast używać udostępnionego klastra dysków, udziału plików SMB służy do wdrożenia SAP globalne hosta plików.
+SAP opracowane nowe podejście i alternatywę dla klastra udostępnione dyski dla klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows. Zamiast korzystać z udostępnionych dysków, udziału plików SMB służy do wdrażania plików globalnego hosta SAP.
 
 > [!NOTE]
-> Udziału plików SMB jest to alternatywa dla użycia dysków klastra udostępnionego dla klastra SAP ASCS/SCS wystąpień.  
+> Udział plików SMB jest alternatywa dla użycia dysków udostępnionego klastra dla klastra wystąpienia SAP ASCS/SCS.  
 >
 
-Taka architektura jest określone w następujący sposób:
+Ta architektura jest określone w następujący sposób:
 
-* Usługi centralnej SAP (z własnego pliku struktury i komunikat i umieścić w kolejce procesów) są niezależne od plików hosta globalne SAP.
-* Usługi centralnej SAP uruchamiana z wystąpieniem SAP ASCS/SCS.
-* Wystąpienie programu SAP ASCS/SCS jest klastrowany i jest dostępny za pomocą \<nazwy hostów wirtualnych ASCS/SCS\> nazwę hosta wirtualnego.
-* Pliki globalne SAP są umieszczane w udziale plików SMB i są dostępne za pomocą \<hosta globalne SAP\> nazwy hosta: \\ \\ &lt;hosta globalne SAP&gt;\sapmnt\\ &lt;SID&gt;\SYS\....
-* Wystąpienie programu SAP ASCS/SCS jest zainstalowany na dysku lokalnym na obu węzłów klastra.
-* \<Nazwy hostów wirtualnych ASCS/SCS\> Nazwa sieciowa różni się od &lt;hosta globalne SAP&gt;.
+* Usług SAP central services (przy użyciu własnego pliku struktury i komunikat i umieścić w kolejce procesów) są niezależne od plików globalnego hosta SAP.
+* Uruchamianie usług SAP central services w ramach wystąpienia SAP ASCS/SCS.
+* Wystąpienia SAP ASCS/SCS jest klastrowany i są dostępne za pomocą \<nazwy hostów wirtualnych ASCS/SCS\> nazwę hosta wirtualnego.
+* Pliki globalne SAP są umieszczane w udziale plików SMB i są dostępne przy użyciu \<globalnego hosta SAP\> nazwy hosta: \\\\&lt;Globalne hosta SAP&gt;\sapmnt\\&lt;SID&gt;\SYS\....
+* Wystąpienie SAP ASCS/SCS jest zainstalowane na dysku lokalnym na obu węzłach klastra.
+* \<Nazwy hostów wirtualnych ASCS/SCS\> Nazwa sieciowa różni się od &lt;globalnego hosta SAP&gt;.
 
-![Rysunek 2: SAP ASCS/SCS HA architektury z udziału plików SMB][sap-ha-guide-figure-8004]
+![Rysunek 2: Architektura SAP ASCS/SCS zaświadczanie o kondycji z udziałem plików SMB][sap-ha-guide-figure-8004]
 
-_**Rysunek 2.** SAP ASCS/SCS HA architektura z udziału plików SMB_
+_**Rysunek 2:** SAP ASCS/SCS HA architektura z udziałem plików SMB_
 
 Wymagania wstępne dotyczące udziału plików SMB:
 
-* Protokół SMB 3.0 (lub nowszej) protokołu.
-* Możliwość określenia dostępu do usługi Active Directory formantu listy (kontroli dostępu ACL) dla grup użytkowników usługi Active Directory i `computer$` obiektu komputera.
+* Protokół SMB 3.0 (lub późniejszy) protokół.
+* Możliwość ustawienia dostępu do usługi Active Directory formantu listy (kontroli dostępu ACL) dla grup użytkowników usługi Active Directory i `computer$` obiekt komputera.
 * Udział plików musi być włączona wysokiej dostępności:
-    * Dysków używanych do przechowywania plików nie może być pojedynczym punktem awarii.
-    * Serwera lub przestoju maszyna wirtualna nie powoduje przestój w udziale plików.
+    * Dyski używane do przechowywania plików nie może być pojedynczym punktem awarii.
+    * Serwer lub przestoju maszyny Wirtualnej nie powoduje przestojów w udziale plików.
 
-SAP \<SID\> roli klastra nie zawiera dysków udostępnionym w klastrze lub zasób klastra udziału pliku ogólnego.
-
-
-![Rysunek 3: SAP \<SID\> roli zasoby dotyczące korzystania z udziału plików klastra][sap-ha-guide-figure-8005]
-
-_**Rysunek 3.** SAP &lt;SID&gt; roli zasoby dotyczące korzystania z udziału plików klastra_
+SAP \<SID\> roli klastra nie zawiera dysków klastrowych udostępnione lub zasób klastra udziału pliku ogólnego.
 
 
-## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Udziały plików skalowalne w poziomie bezpośrednich miejsc do magazynowania na platformie Azure jako SAPMNT udziału plików
+![Rysunek 3: SAP \<SID\> klastra rolę zasoby dotyczące korzystania z udziału plików][sap-ha-guide-figure-8005]
 
-Udziału plików skalowalnego w poziomie służy do hosta i chronić pliki globalne hosta SAP. Udziału plików skalowalnego w poziomie oferuje również wysokiej dostępności usługi udziału plików SAPMNT.
+_**Rysunek 3:** SAP &lt;SID&gt; klastra rolę zasoby dotyczące korzystania z udziału plików_
 
-![Rysunek 4: Udziału plików skalowalnego w poziomie używane do ochrony plików hosta globalne SAP][sap-ha-guide-figure-8006]
 
-_**Rysunek 4:** udziału plików skalowalnego w poziomie, używane do ochrony plików hosta globalne SAP_
+## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Udziały plików skalowalnego w poziomie z bezpośrednimi miejscami do magazynowania na platformie Azure jako udział plików SAPMNT
 
-> [!IMPORTANT]
-> Udziały plików skalowalne w poziomie są w pełni obsługiwane w chmurze Microsoft Azure i w środowisku lokalnym.
->
+Za pomocą udziału plików skalowalnego w poziomie do hosta i ochrony plików globalnego hosta SAP. Udziału plików skalowalnego w poziomie zapewnia również usługę udziału plików o wysokiej dostępności SAPMNT.
 
-Udziału plików skalowalnego w poziomie oferuje wysokiej dostępności i skalowalnego w poziomie udział plików SAPMNT.
+![Rysunek 4: Udziału plików skalowalnego w poziomie, używane do ochrony plików globalnego hosta SAP][sap-ha-guide-figure-8006]
 
-Bezpośrednie miejsca do magazynowania służy jako udostępniony dysk do udziału plików skalowalnego w poziomie. Bezpośrednie miejsca do magazynowania umożliwia tworzenie wysokiej dostępności i skalowalności magazynu przy użyciu serwerów z magazynem lokalnym. Udostępnionego magazynu, który jest używany do udziału plików skalowalnego w poziomie, takich jak SAP globalne hosta plików, nie jest pojedynczym punktem awarii.
+_**Rysunek 4:** Udział plików skalowalnego w poziomie, używane do ochrony plików globalnego hosta SAP_
 
 > [!IMPORTANT]
->Jeśli użytkownik *nie* planu, aby skonfigurować odzyskiwania po awarii, zalecamy użycie udziału plików skalowalnego w poziomie jako rozwiązaniem dla udziału plików o wysokiej dostępności na platformie Azure.
+> Udziały plików skalowalnego w poziomie są w pełni obsługiwane w chmurze Microsoft Azure i w środowiskach lokalnych.
 >
 
-### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Wymagania wstępne SAP dla udziałów plików skalowalnych w poziomie na platformie Azure
+Udziału plików skalowalnego w poziomie zawiera udział plików o wysokiej dostępności i skalowalna w poziomie SAPMNT.
 
-Aby używać udziału plików skalowalnego w poziomie, system musi spełniać następujące wymagania:
+Bezpośrednimi miejscami do magazynowania jest używany jako udostępniony dysk dla udziału plików skalowalnego w poziomie. Bezpośrednimi miejscami do magazynowania umożliwia tworzenie wysokiej dostępności i skalowalności magazynu przy użyciu serwerów za pomocą magazynu lokalnego. Udostępniony magazyn, który jest używany dla udziału plików skalowalnego w poziomie, takich jak SAP globalnego hosta plików, nie jest pojedynczym punktem awarii.
 
-* Co najmniej dwóch klastra węzłów do udziału plików skalowalnego w poziomie.
+> [!IMPORTANT]
+>Jeśli użytkownik *nie* plan, aby skonfigurować odzyskiwanie po awarii, zaleca się korzystania z udziału plików skalowalnego w poziomie jako rozwiązanie dla udziału plików o wysokiej dostępności na platformie Azure.
+>
+
+### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Wymagania wstępne SAP udziałów plików skalowalnego w poziomie na platformie Azure
+
+Aby użyć udziału plików skalowalnego w poziomie, system musi spełniać następujące wymagania:
+
+* Co najmniej dwa węzły dla udziału plików skalowalnego w poziomie klastra.
 * Każdy węzeł musi mieć co najmniej dwa dyski lokalne.
-* Z powodu wydajności, należy użyć *dublowania odporności*:
-    * Dwukierunkowe dublowania udziału plików skalowalnego w poziomie z dwoma węzłami klastra.
-    * Trzystopniowo dublowania udziału plików skalowalnego w poziomie z trzech (lub więcej) węzły klastra.
-* Zalecamy trzy (lub więcej) węzły klastra dla udziału plików skalowalnego w poziomie, z dublowania trzystopniowego.
-    Ta konfiguracja zapewnia większą skalowalność i większą elastyczność magazynu niż konfiguracji udziału plików skalowalnego w poziomie z dwóch węzłów klastra i dublowanie dwustopniowe.
-* Należy użyć dysków Azure Premium.
-* Firma Microsoft zaleca użycie dysków zarządzanych platformy Azure.
-* Firma Microsoft zaleca formatowanie woluminów przy użyciu System plików Refs (Resilient).
-    * Aby uzyskać więcej informacji, zobacz [1869038 Uwaga SAP - SAP obsługę systemu plików ReFs] [ 1869038] i [Wybieranie systemu plików] [ planning-volumes-s2d-choosing-filesystem] rozdziału Artykuł woluminów planowanie w bezpośrednie miejsca do magazynowania.
+* Przyczyny wydajności, należy użyć *dublowania odporności*:
+    * Dwukierunkowe dublowania dla udziału plików skalowalnego w poziomie z dwoma węzłami klastra.
+    * Trzy kierunkową dublowania dla udziału plików skalowalnego w poziomie za pomocą trzech (lub więcej) węzłów klastra.
+* Firma Microsoft zaleca trzy (lub więcej) węzłów klastra dla udziału plików skalowalnego w poziomie, z dublowania trzystopniowego.
+    Ta konfiguracja zapewnia lepszą skalowalność i większą elastyczność magazynu niż instalacja udziału plików skalowalnego w poziomie za pomocą dwóch węzłach klastra i możliwe było dublowanie dwustopniowe.
+* Należy użyć dysków w warstwie Premium platformy Azure.
+* Zaleca się, że używasz usługi Azure Managed Disks.
+* Firma Microsoft zaleca formatowanie woluminów przy użyciu odporność System plików (ReFS).
+    * Aby uzyskać więcej informacji, zobacz [1869038 Uwaga SAP - pomocy technicznej SAP do systemu plików ReFs] [ 1869038] i [wybranie systemu plików] [ planning-volumes-s2d-choosing-filesystem] rozdział Artykuł planowanie woluminy bezpośrednimi miejscami do magazynowania.
     * Pamiętaj, że instalujesz program [aktualizacji zbiorczej firmy Microsoft KB4025334][kb4025334].
-* Możesz użyć rozmiary serii DS lub serii DSv2 maszyny Wirtualnej platformy Azure.
-* Wydajności dobrej sieci między maszynami wirtualnymi, które jest potrzebne do celów synchronizacji dysku bezpośrednie miejsca do magazynowania, należy użyć typu maszyny Wirtualnej, która ma co najmniej "high" przepustowości.
+* Rozmiary serii DS lub maszyny Wirtualnej platformy Azure serii DSv2 można użyć.
+* Wydajności dobre sieci między maszynami wirtualnymi, które jest potrzebne w celu bezpośrednimi miejscami do magazynowania dysk synchronizacji, użyj typu maszyny Wirtualnej, która ma "co najmniej jeden wysoka" przepustowość sieci.
     Aby uzyskać więcej informacji, zobacz [serii DSv2] [ dv2-series] i [serii DS] [ ds-series] specyfikacji.
-* Firma Microsoft zaleca, aby zarezerwować niektóre nieprzydzielonego miejsca w puli magazynu. Pozostawienie niektórych nieprzydzielonego pojemności w puli magazynu zapewnia woluminy miejsca, aby naprawić "w miejscu", jeśli dysk nie powiedzie się. Zwiększa to bezpieczeństwo danych i wydajności.  Aby uzyskać więcej informacji, zobacz [wybranie rozmiaru woluminu][choosing-the-size-of-volumes-s2d].
-* Udziału plików skalowalnego w poziomie maszynach wirtualnych platformy Azure musi być wdrażana w własny zestaw dostępności Azure.
-* Nie trzeba skonfigurować Azure wewnętrznego modułu równoważenia obciążenia dla nazwy sieci udziału plików skalowalnego w poziomie, takich jak dla \<hosta globalne SAP\>. Jest to wykonywane \<nazwy hostów wirtualnych ASCS/SCS\> wystąpienia SAP ASCS/SCS lub systemu DBMS. Udziału plików skalowalnego w poziomie skaluje się obciążenia we wszystkich węzłach klastra. \<Globalne hosta SAP\> używa lokalny adres IP dla wszystkich węzłów klastra.
+* Firma Microsoft zaleca zastrzega sobie niektóre nieprzydzielone pojemności w puli magazynów. Pozostawienie niektórych nieprzydzielone pojemności w puli magazynu zapewnia woluminy miejsca, aby naprawić "w miejscu", jeśli dysk nie powiedzie się. Zwiększa to bezpieczeństwo danych i wydajności.  Aby uzyskać więcej informacji, zobacz [wybierając rozmiar woluminu][choosing-the-size-of-volumes-s2d].
+* Udziału plików skalowalnego w poziomie maszyn wirtualnych platformy Azure, musi zostać wdrożony we własnym zestawie dostępności platformy Azure.
+* Nie trzeba skonfigurować Azure wewnętrznego modułu równoważenia obciążenia dla nazwy sieci udziału plików skalowalnego w poziomie, takich jak dla \<globalnego hosta SAP\>. Jest to wykonywane \<nazwy hostów wirtualnych ASCS/SCS\> wystąpienia SAP ASCS/SCS lub systemu DBMS. Udziału plików skalowalnego w poziomie skalowania obciążenia we wszystkich węzłach klastra. \<Globalne hosta SAP\> używa lokalnego adresu IP dla wszystkich węzłów klastra.
 
 
 > [!IMPORTANT]
-> Nie można zmienić nazwy SAPMNT udziału plików, która wskazuje na \<hosta globalne SAP\>. SAP obsługuje tylko udziału nazwy "sapmnt."
+> Nie można zmienić nazwy SAPMNT udział plików, które wskazuje \<globalnego hosta SAP\>. SAP obsługuje tylko udziału nazwy "sapmnt."
+>
+> Aby uzyskać więcej informacji, zobacz [Uwaga SAP 2492395 — może zmienić sapmnt nazwy udziału?][2492395]
 
-> Aby uzyskać więcej informacji, zobacz [Uwaga SAP 2492395 — może sapmnt nazwa udziału można zmienić?][2492395]
+### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Skonfiguruj SAP ASCS/SCS wystąpień i skalowalnego w poziomie udziału plików w dwóch klastrach
 
-### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Skonfiguruj SAP ASCS/SCS wystąpień i skalowalnego w poziomie udziału plików w dwóch klastrów
-
-Można wdrożyć SAP ASCS/SCS wystąpień w jednym klastrze z własnych SAP \<SID\> roli klastra. W takim przypadku udział plików skalowalnego w poziomie można skonfigurować w innym klastrze z inną rolą klastra.
+Można wdrożyć wystąpienia SAP ASCS/SCS w jednym klastrze za pomocą ich własnych SAP \<SID\> roli klastra. W tym przypadku Konfigurowanie udziału plików skalowalnego w poziomie innego klastra przy użyciu innej roli klastra.
 
 > [!IMPORTANT]
->W tym scenariuszu wystąpieniem SAP ASCS/SCS skonfigurowano dostęp do hosta globalne SAP przy użyciu ścieżki UNC \\ \\ &lt;hosta globalne SAP&gt;\sapmnt\\&lt;SID&gt;\SYS\.
+>W tym scenariuszu wystąpienia SAP ASCS/SCS jest skonfigurowany dostęp do hosta globalnego SAP przy użyciu ścieżki UNC \\ \\ &lt;globalnego hosta SAP&gt;\sapmnt\\&lt;SID&gt;\SYS\.
 >
 
-![Rysunek 5: Wystąpienie programu SAP ASCS/SCS i udziału plików skalowalnego w poziomie wdrożonych w dwa klastry][sap-ha-guide-figure-8007]
+![Rysunek 5: Wystąpienia SAP ASCS/SCS i udziału plików skalowalnego w poziomie wdrożonych w dwóch klastrach][sap-ha-guide-figure-8007]
 
-_**Rysunek 5.** wystąpieniem SAP ASCS/SCS i skalowanie w poziomie pliku udziału wdrożone w dwóch klastrów_
+_**Rysunek 5:** Wystąpienie SAP ASCS/SCS i udziału plików skalowalnego w poziomie wdrożonych w dwóch klastrach_
 
 > [!IMPORTANT]
-> W chmurze Azure Ustaw każdego klastra, który jest używany dla SAP i plików skalowalnego w poziomie udziałów muszą być wdrożone w jego własnej dostępności Azure. Dzięki temu rozproszonej umieszczania maszyn wirtualnych klastra w ramach podstawowej infrastruktury platformy Azure.
+> W chmurze platformy Azure ustaw każdy klaster, który służy do SAP i plików skalowalnego w poziomie udziały musi zostać wdrożony w jego własnej dostępności platformy Azure. Dzięki temu rozproszonych umieszczania maszyn wirtualnych klastra między podstawową infrastrukturą platformy Azure.
 >
 
-## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Udział plików ogólnego DataKeeper SIOS jako udostępnione dyski klastra
+## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Udział plików ogólnego oprogramowanie SIOS DataKeeper jako klastra udostępnione dyski
 
 
 > [!IMPORTANT]
-> Zaleca się rozwiązanie udziału plików skalowalnego w poziomie udziału plików o wysokiej dostępności.
+> Firma Microsoft zaleca rozwiązania udziału plików skalowalnego w poziomie na jeden udział plików o wysokiej dostępności.
 >
-> Jeśli planujesz włączyć również odzyskiwanie po awarii dla swojego udziału plików o wysokiej dostępności, możesz korzystać udziału plików ogólnego i SISO DataKeeper dla dysków udostępnionego klastra.
+> Jeśli użytkownik chce również ustawić odzyskiwania po awarii dla udziału plików o wysokiej dostępności, należy użyć udziału plików ogólnego i SISO DataKeeper dla dysków udostępnionego klastra.
 >
 
-Udział plików ogólnego jest inną opcją w przypadku osiągnięcia udziału plików o wysokiej dostępności.
+Udział plików ogólnego to kolejna opcja umożliwiająca osiągnięcie udział plików o wysokiej dostępności.
 
-W takim przypadku można użyć rozwiązania innych firm SIOS jako udostępniony dysk klastra.
+W takim przypadku można użyć rozwiązania innych firm oprogramowanie SIOS jako udostępniony dysk klastra.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Przygotowanie infrastruktury platformy Azure dla programu SAP HA dzięki użyciu udziału klastra i plików trybu failover systemu Windows dla programu SAP ASCS/SCS wystąpienia][sap-high-availability-infrastructure-wsfc-file-share]
-* [Zainstaluj SAP NetWeaver HA na Windows trybu failover klastra i udział plików dla wystąpienia programu SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]
-* [Wdrażanie dwa węzły serwera plików skalowalnego w poziomie bezpośrednie miejsca do magazynowania dla magazynu UPD na platformie Azure][deploy-sofs-s2d-in-azure]
-* [Bezpośrednie miejsca do magazynowania w systemie Windows Server 2016][s2d-in-win-2016]
-* [Nowości: woluminy w bezpośrednie miejsca do magazynowania][deep-dive-volumes-in-s2d]
+* [Przygotowanie infrastruktury platformy Azure do SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików na potrzeby wystąpienia SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-file-share]
+* [Zainstaluj oprogramowanie SAP NetWeaver zaświadczanie o kondycji na Windows trybu failover klastra i udział plików na potrzeby wystąpienia SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]
+* [Wdrażanie dwóch węzłów serwera plików skalowalnego w poziomie bezpośrednimi miejscami do magazynowania dla magazynu UPD na platformie Azure][deploy-sofs-s2d-in-azure]
+* [Bezpośrednie miejsca do funkcji miejsca do magazynowania w systemie Windows Server 2016][s2d-in-win-2016]
+* [Szczegółowe informacje: Bezpośrednie woluminy w funkcji miejsca do magazynowania][deep-dive-volumes-in-s2d]

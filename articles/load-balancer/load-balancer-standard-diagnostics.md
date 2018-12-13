@@ -1,13 +1,11 @@
 ---
-title: Diagnostyka Azure Load Balancer w warstwie standardowa | Dokumentacja firmy Microsoft
+title: Diagnostyka Azure Load Balancer w warstwie standardowa
+titlesuffix: Azure Load Balancer
 description: Na użytek dostępne metryki i informacje o kondycji dla diagnostyki Azure Standard Load Balancer.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 258e093acd50946e95360416f89b2ceb96ee35d3
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426472"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189051"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metryki i kondycji diagnostyki dla standardowego modułu równoważenia obciążenia
 
 Usługa Azure Load Balancer Standard uwidacznia standardowa usługi Azure Load Balancer zapewnia następujące funkcje diagnostyczne zasobów:
-* **Metryk wielowymiarowych**: oferuje nowe funkcje diagnostyczne wielowymiarowych za pośrednictwem [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) publicznych i wewnętrznych obciążenia konfiguracji modułu równoważenia. Można monitorować, zarządzanie i rozwiązywanie problemów z zasobami usługi równoważenia obciążenia.
+* **Metryk wielowymiarowych**: Oferuje nowe funkcje diagnostyczne wielowymiarowych za pośrednictwem [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) publicznych i wewnętrznych obciążenia konfiguracji modułu równoważenia. Można monitorować, zarządzanie i rozwiązywanie problemów z zasobami usługi równoważenia obciążenia.
 
-* **Usługa Resource health**: strony modułu równoważenia obciążenia w witrynie Azure portal i strony Resource Health (w obszarze monitorowanie) udostępnianie sekcji kondycja zasobu dla konfiguracji modułu równoważenia obciążenia publiczny Standard Load Balancer.
+* **Usługa Resource health**: Na stronie modułu równoważenia obciążenia w witrynie Azure portal i na stronie kondycji zasobów (w obszarze monitorowanie) ujawniają sekcji kondycja zasobu dla konfiguracji modułu równoważenia obciążenia publiczny Standard Load Balancer.
 
 W tym artykule przedstawiono szybki przegląd tych możliwości, jak również sposoby używania ich do standardowego modułu równoważenia obciążenia.
 
@@ -59,7 +57,7 @@ Aby wyświetlić metryki dla zasobów usługi Load Balancer w warstwie standardo
 
 ![Metryki (wersja zapoznawcza) dla standardowego modułu równoważenia obciążenia](./media/load-balancer-standard-diagnostics/LBMetrics1.png)
 
-*Rysunek: DIP dostępności i metryki stan sondy kondycji Balancer w warstwie standardowa*
+*Rysunek: Dostępność DIP i kondycji sondowania stanu metryki dla standardowego modułu równoważenia obciążenia*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Pobieranie metryk wielowymiarowych programowo za pośrednictwem interfejsów API
 
@@ -82,7 +80,7 @@ Aby uzyskać dostępność adresu VIP dla zasobów usługi Load Balancer w warst
 
 ![Sondowanie adresów VIP](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Rysunek:: Obciążenia adresu VIP modułu równoważenia sondowanie szczegóły*
+*Rysunek: Sondowanie szczegóły adresu VIP modułu równoważenia obciążenia*
 
 Metryka jest generowany przez aktywne, wewnątrzpasmowe miary. Usługa badania w obrębie regionu pochodzi ruch do pomiaru. Usługa została aktywowana, natychmiast Utwórz wdrożenie z publicznych frontonu i kontynuuje, dopóki nie usuniesz frontonu. 
 
@@ -109,7 +107,7 @@ Aby uzyskać dostępność DIP dla zasobów usługi Load Balancer w warstwie sta
 
 ![Dostępność DIP](./media/load-balancer-standard-diagnostics/LBMetrics-DIPAvailability.png)
 
-*Rysunku: Dostępność adresu VIP modułu równoważenia obciążenia*
+*Rysunek: Dostępność adresu VIP modułu równoważenia obciążenia*
 
 Sondy kondycji się nie powieść z następujących powodów:
 - Konfigurowanie sondy kondycji do portu, który jest nie nasłuchuje lub Agent nie odpowiada lub używa tej nazwy nieprawidłowy protokół. Jeśli usługa korzysta z bezpośredniego zwrotu z serwera (DSR, lub pływający adres IP) reguły, upewnij się, czy usługa nasłuchuje na adresie IP w konfiguracji adresu IP karty Sieciowej i nie tylko na sprzężenie zwrotne, którego skonfigurowano adres IP frontonu adresów.
@@ -129,7 +127,7 @@ Aby wyświetlić statystyki połączeń SNAT:
 
 ![Połączeń SNAT](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-*Rysunku: Liczba połączeń SNAT modułu równoważenia obciążenia*
+*Rysunek: Liczba połączeń SNAT modułu równoważenia obciążenia*
 
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Jak sprawdzić prób nawiązania połączenia przychodzącego/wychodzącego dla mojej usługi?
@@ -140,7 +138,7 @@ Użyj **całkowita** jako agregacji w przypadku większości scenariuszy.
 
 ![SYN połączenia](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-*Rysunku: Liczba SYN modułu równoważenia obciążenia*
+*Rysunek: Liczba SYN modułu równoważenia obciążenia*
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Jak sprawdzić mojej zużycie przepustowości sieci? 
@@ -157,7 +155,7 @@ Aby uzyskać pakiet lub bajt statystykę wyrazów:
 
 ![Liczba bajtów](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-*Rysunku: Liczba bajtów modułu równoważenia obciążenia*
+*Rysunek: Liczba bajtów modułu równoważenia obciążenia*
 
 #### <a name = "vipavailabilityandhealthprobes"></a>Jak zdiagnozować Moje wdrożenie modułu równoważenia obciążenia?
 
@@ -169,7 +167,7 @@ Można zabrać krok dalej i Użyj metryki dostępności adresu VIP, aby uzyskać
 
 ![Diagnostyka adresów VIP](./media/load-balancer-standard-diagnostics/LBMetrics-DIPnVIPAvailability.png)
 
-*Rysunek: Łączenie metryki dostępności DIP i adresów VIP*
+*Rysunek: Łącząc metryki dostępności DIP i adresów VIP*
 
 Na wykresie kreślone są następujące informacje:
 - Infrastruktury, sama został dobrej kondycji infrastruktury hostingu maszyn wirtualnych był dostępny i więcej niż jedna maszyna wirtualna została umieszczona w wewnętrznej. Informacja ta jest wskazywany przez niebieski śledzenia dostępności adresu VIP, który wynosi 100 procent. 
@@ -193,7 +191,7 @@ Aby wyświetlić kondycję zasobów publicznych standardowego modułu równoważ
 
    ![Strona monitorowania](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *Rysunek: Link Service Health w usłudze Azure Monitor*
+   *Rysunek: Link kondycji usługi Azure Monitor*
 
 2. Wybierz **Resource Health**, a następnie upewnij się, że **identyfikator subskrypcji** i **typ zasobu = modułu równoważenia obciążenia** są zaznaczone.
 
@@ -205,7 +203,7 @@ Aby wyświetlić kondycję zasobów publicznych standardowego modułu równoważ
 
     ![Stan kondycji modułu równoważenia obciążenia](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *Rysunku: Widoku kondycji zasobu modułu równoważenia obciążenia*
+   *Rysunek: Widoku kondycji zasobu modułu równoważenia obciążenia*
  
 W poniższej tabeli przedstawiono różne stany kondycji zasobów i ich opisy: 
 
@@ -213,7 +211,7 @@ W poniższej tabeli przedstawiono różne stany kondycji zasobów i ich opisy:
 | --- | --- |
 | Dostępne | Zasób modułu równoważenia obciążenia standardowy publiczny jest w dobrej kondycji i dostępności. |
 | Niedostępny | Zasób modułu równoważenia obciążenia standardowy publiczny nie jest w dobrej kondycji. Diagnozowanie kondycji, wybierając **usługi Azure Monitor** > **metryki**.<br>(*Unavailable* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.) |
-| Nieznany | Kondycja zasobu dla zasobu modułu równoważenia obciążenia standardowy publiczny nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.)  |
+| Nieznane | Kondycja zasobu dla zasobu modułu równoważenia obciążenia standardowy publiczny nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.)  |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

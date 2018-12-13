@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: eb60afc21b7f8e21c4573e46165696c3461d3613
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 06f6db35d5a16e7e6ad3583d4e5e8a1b32991067
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963867"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322878"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integracje partnerów w usłudze Azure Monitor
 | Partnerzy |  |  |
@@ -235,7 +235,7 @@ Usługa Turbonomic automatyzuje obciążenia dla chmur hybrydowych, jednocześni
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dokumentacja Dynatrace."
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Dokumentację programu elastic."
 [grafana-doc]: ./monitor-send-to-grafana.md "Integracja z usługą Azure Monitor Grafana."
-[influxdata-doc]: ./metrics-store-custom-linux-telegraf.md "Integracja z usługą Azure Monitor Influxdata Telegraf."
+[influxdata-doc]: ./../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Integracja z usługą Azure Monitor Influxdata Telegraf."
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Dokumentacja usługi Logic monitora."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Dokumentacja Moogsoft."
 [newrelic-doc]: https://newrelic.com/azure "Dokumentacja usługi NewRelic."

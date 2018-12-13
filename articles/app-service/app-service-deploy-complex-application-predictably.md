@@ -1,5 +1,5 @@
 ---
-title: Inicjowanie obsługi oraz wdrażanie mikrousług przewidywalny na platformie Azure
+title: Inicjowanie obsługi oraz wdrażanie mikrousług przewidywalny — usłudze Azure App Service
 description: Dowiedz się, jak wdrożyć aplikację złożone z mikrousług w usłudze Azure App Service jako pojedyncza jednostka i w przewidywalny sposób przy użyciu szablony grup zasobów w formacie JSON i skryptów programu PowerShell.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: c4071da60ed1311d8dd75d6a369c48cf711778cb
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: aa7cf765a523f319850528b29316e254ebcabc13
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243218"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256591"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Inicjowanie obsługi oraz wdrażanie mikrousług przewidywalny na platformie Azure
 W tym samouczku pokazano, jak aprowizować i wdrażanie aplikacji składających się z [mikrousług](https://en.wikipedia.org/wiki/Microservices) w [usługi Azure App Service](https://azure.microsoft.com/services/app-service/) jako pojedyncza jednostka i w przewidywalny sposób za pomocą szablonów grup zasobów JSON i Wykonywanie skryptów programu PowerShell. 
@@ -161,7 +162,7 @@ Parametry połączenia są również określone jako zasób zagnieżdżonych.
 W `properties` elementu `config/connectionstrings`, każdy ciąg połączenia jest również zdefiniowana jako parę nazwa: wartość w określonym formacie `"<name>" : {"value": "…", "type": "…"}`. Aby uzyskać `type` elementu, możliwe wartości to `MySql`, `SQLServer`, `SQLAzure`, i `Custom`.
 
 > [!TIP]
-> Ostateczne listę typów ciągów połączeń, uruchom następujące polecenie w programie Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+> Ostateczne listę typów ciągów połączeń uruchom następujące polecenie w programie Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: fe096efba5419b283981f27e16c3e30a791412da
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979203"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322674"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfiguracja i zarządzanie nim problemów dotyczących usług Azure Cloud Services: często zadawane pytania (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfiguracja i problemów z zarządzaniem usług Azure Cloud Services: Często zadawane pytania (FAQ)
 
 Ten artykuł zawiera często zadawane pytania dotyczące konfiguracji i zarządzania problemy dotyczące [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Można także zapoznać się [strony rozmiar maszyny Wirtualnej usługi w chmurze](cloud-services-sizes-specs.md) Aby uzyskać informacje o rozmiarze.
 
@@ -170,7 +170,7 @@ Limit czasu można określić w pliku definicji (csdef) usługi następująco:
     </Endpoints>
   </WorkerRole>
 ```
-Zobacz [New: można skonfigurować limit czasu bezczynności dla modułu równoważenia obciążenia Azure](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) Aby uzyskać więcej informacji.
+Zobacz [nowe: Można skonfigurować limit czasu bezczynności dla modułu równoważenia obciążenia Azure](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) Aby uzyskać więcej informacji.
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Jak skojarzyć statycznego adresu IP do usługi w chmurze?
 Aby skonfigurować statyczny adres IP, należy utworzyć zastrzeżonego adresu IP. Ten zastrzeżony adres IP może być skojarzone z nową usługą w chmurze lub do istniejącego wdrożenia. Zobacz następujące dokumenty, aby uzyskać szczegółowe informacje:
@@ -190,7 +190,7 @@ Firma Microsoft stale monitoruje serwery, sieci i aplikacji w celu wykrywania za
 Windows 10 i Windows Server 2016 pochodzą z obsługą protokołu HTTP/2 po stronie klienta i serwera. Jeśli Twój klient (przeglądarka) nawiązuje połączenie z serwerem usług IIS za pośrednictwem protokołu TLS, negocjuje protokołu HTTP/2 za pośrednictwem rozszerzenia protokołu TLS, a następnie nie trzeba wprowadzać zmian po stronie serwera. Jest to spowodowane za pośrednictwem protokołu TLS, nagłówka h2-14, określając korzystanie z protokołu HTTP/2 są domyślnie wysyłane. Jeśli z drugiej strony klienta wysyła uaktualnienia nagłówka, aby uaktualnić do protokołu HTTP/2, należy wprowadzić zmianę poniżej po stronie serwera, aby upewnić się, że uaktualnienie działa i znajdą się za pośrednictwem połączenia HTTP/2. 
 
 1. Uruchom regedit.exe.
-2. Przejdź do klucza rejestru: pozycji HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Przejdź do klucza rejestru: Pozycji HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Utwórz nową wartość DWORD o nazwie **DuoEnabled**.
 4. Ustaw jego wartość na 1.
 5. Uruchom ponownie serwer.
@@ -199,7 +199,7 @@ Windows 10 i Windows Server 2016 pochodzą z obsługą protokołu HTTP/2 po stro
 Aby uzyskać więcej informacji, zobacz:
 
 - [Protokołu HTTP/2 w programie IIS](https://blogs.iis.net/davidso/http2)
-- [Wideo: Protokołu HTTP/2 w systemie Windows 10: przeglądarki, aplikacji i serwera sieci Web](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [Wideo: Protokołu HTTP/2 w systemie Windows 10: Przeglądarka, aplikacje i serwera sieci Web](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
 Te kroki można zautomatyzować za pomocą zadań uruchamiania, tak, aby zawsze wtedy, gdy tworzone jest nowe wystąpienie PaaS, można to zrobić zmiany powyżej w rejestrze systemu. Aby uzyskać więcej informacji, zobacz [sposób konfigurowania i uruchamiania zadania uruchamiania dla usługi w chmurze](cloud-services-startup-tasks.md).
@@ -244,7 +244,7 @@ Aby obejść ten problem, można użyć usługi Application Insights. Automatycz
 
 Aby uzyskać więcej informacji na temat Korzystanie z metryk niestandardowych za pomocą usługi Application Insights, aby skonfigurować automatyczne skalowanie w usługach Cloud Services, zobacz [wprowadzenie automatyczne skalowanie według metryki niestandardowe na platformie Azure](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
 
-Aby uzyskać więcej informacji na temat sposobu integrowania usługi Azure Diagnostics za pomocą usługi Application Insights dla usług Cloud Services, zobacz [wysyłania usługi w chmurze, maszyny wirtualnej lub usługi Service Fabric danych diagnostycznych do usługi Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+Aby uzyskać więcej informacji na temat sposobu integrowania usługi Azure Diagnostics za pomocą usługi Application Insights dla usług Cloud Services, zobacz [wysyłania usługi w chmurze, maszyny wirtualnej lub usługi Service Fabric danych diagnostycznych do usługi Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
 Aby uzyskać więcej informacji na temat Włącz usługę Application Insights dla usług Cloud Services, zobacz [usługi Application Insights dla usług Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 
@@ -303,7 +303,7 @@ Aby uzyskać więcej informacji o scenariuszach wdrażania ochrony przed złośl
 
 Należy włączyć SNI w usługach w chmurze przy użyciu jednej z następujących metod:
 
-**Metoda 1: Przy użyciu programu PowerShell**
+**Metoda 1. Za pomocą programu PowerShell**
 
 Powiązanie SNI można skonfigurować przy użyciu polecenia cmdlet programu PowerShell **New WebBinding** w zadaniu uruchamiania dla wystąpienia roli usługi w chmurze, tak jak pokazano poniżej:
     
@@ -318,7 +318,7 @@ Zgodnie z opisem [tutaj](https://technet.microsoft.com/library/ee790567.aspx), $
 |2 |SNI bez powiązania, który używa Store certyfikatu centralnego|
 |3|Powiązanie SNI, która używa certyfikatu centralnego przechowywania |
  
-**Metoda 2: Użycie kodu**
+**Metoda 2. Użyj kodu**
 
 Powiązanie SNI można również skonfigurować za pomocą kodu w uruchamiania roli zgodnie z opisem w tym [wpis w blogu](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 

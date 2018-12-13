@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bc0cf0900ec9f87c75091b3bf219d92e0859aa1f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b98b528d2d78d2285977dec49da18081df47e9d6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282143"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166136"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Tworzenie modelu uczeń konwersacji za pomocą środowiska Node.js
 
@@ -61,7 +61,7 @@ Uczeń konwersacji projekt składa się z zestawu SDK, Dodaj do bota i usługi w
     > [!NOTE]
     > Podczas `npm install`, możesz zignorować ten błąd, jeśli występuje: `gyp ERR! stack Error: Can't find Python executable`
 
-2. Skonfiguruj:
+2. Konfiguruj:
 
    Utwórz plik o nazwie `.env` w katalogu `cl-bot-01`.  Zawartość pliku powinna być:
 
@@ -164,11 +164,11 @@ Ta metoda korzysta standardowej konfiguracji, która pozwala na uruchamianie bot
 
 - Oznacz pytania [Stack Overflow](https://stackoverflow.com) za pomocą "microsoft cognitive"
 - Prośba o funkcję na naszych [stronę z opiniami użytkowników](https://aka.ms/conversation-learner-uservoice)
-- Otwórz problem w naszym [repozytorium github](https://github.com/Microsoft/ConversationLearner-Samples)
+- Otwórz problem w naszym [repozytorium GitHub](https://github.com/Microsoft/ConversationLearner-Samples)
 
 ## <a name="contributing"></a>Współtworzenie
 
-W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/). Aby uzyskać więcej informacji, zobacz [kodu postępowania FAQ](https://opensource.microsoft.com/codeofconduct/faq/) lub skontaktuj się z [ opencode@microsoft.com ](mailto:opencode@microsoft.com) z jakichkolwiek dodatkowych pytań lub komentarzy.
+W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/). Aby uzyskać więcej informacji, zobacz [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) (Często zadawane pytania dotyczące kodeksu postępowania) lub wyślij wiadomość e-mail na adres [opencode@microsoft.com](mailto:opencode@microsoft.com) w przypadku jakichkolwiek dodatkowych pytań lub komentarzy.
 
 ## <a name="source-repositories"></a>Repozytoriów źródłowych
 

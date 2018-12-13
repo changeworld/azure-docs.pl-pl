@@ -1,6 +1,6 @@
 ---
-title: Najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji node w usłudze Azure Web Apps
-description: Poznaj najlepsze rozwiązania i kroki rozwiązywania problemów aplikacji node w usłudze Azure Web Apps.
+title: Najlepsze rozwiązania i rozwiązywanie problemów z platformą Node.js — usłudze Azure App Service
+description: Poznaj najlepsze rozwiązania i kroki rozwiązywania problemów aplikacji node w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: nodejs
 author: ranjithr
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
-ms.openlocfilehash: 6918d216be11763a34d7738c616e917a2db01ade
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961444"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315727"
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji node w usłudze Azure Web Apps
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji node w usłudze Azure App Service Windows
 
 W tym artykule dowiesz się, najważniejsze wskazówki i procedury rozwiązywania problemów z [aplikacji node](app-service-web-get-started-nodejs.md) uruchomiona w usłudze Azure Web Apps (przy użyciu [iisnode](https://github.com/azure/iisnode)).
 
@@ -282,6 +283,6 @@ Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat aplikacj
 * [Wprowadzenie do aplikacji sieci Web Node.js w usłudze Azure App Service](app-service-web-get-started-nodejs.md)
 * [How to debug a Node.js web app in Azure App Service (Jak debugować aplikację internetową Node.js w usłudze Azure App Service)](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [Using Node.js Modules with Azure applications (Używanie modułów Node.js z aplikacjami platformy Azure)](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps: Node.js (Aplikacje internetowe w usłudze Azure App Service: Node.js)](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Usługa Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Centrum deweloperów środowiska Node.js](../nodejs-use-node-modules-azure-apps.md)
 * [Exploring the Super Secret Kudu Debug Console (Szczegółowe informacje o ściśle tajnej konsoli debugowania aparatu Kudu)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

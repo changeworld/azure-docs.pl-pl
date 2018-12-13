@@ -5,9 +5,8 @@ keywords: Przewodnik Szybki Start, języka r, język programowania r, samouczek 
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317674"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278665"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning Studio
 
@@ -33,7 +32,7 @@ Ten samouczek szybkiego startu pomaga szybko rozpocząć rozszerzanie usługi Az
 
 Microsoft Azure Machine Learning zawiera wiele zaawansowanych machine learning i modułów manipulowania danymi. Zaawansowany język R został opisany jako franca język analizy. Trafem korzysta manipulowania analizy i danych w usłudze Azure Machine Learning można rozszerzyć za pomocą języka R. Ta kombinacja zapewnia skalowalność i łatwość wdrażania usługi Azure Machine Learning z elastyczności i szczegółowe analizy języka r.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="forecasting-and-the-dataset"></a>Prognozowanie i zestaw danych
 Prognozowanie jest metodą analitycznych powszechnie wykorzystywane i bardzo użyteczne. Typowe zastosowania w zakresie od Prognozowanie sprzedaż elementów sezonowe, określanie poziomy zapasów optymalne przewidzenia makroekonomicznej zmiennych. Prognozowanie zwykle odbywa się przy użyciu modeli szeregów czasowych.
@@ -61,7 +60,7 @@ Będę używać programu RStudio opracowywanie, testowanie i debugowanie kodu j�
 ### <a name="the-execute-r-script-module"></a>Moduł wykonywania skryptu języka R
 W usłudze Machine Learning Studio, skryptów języka R są uruchamiane w ramach [wykonanie skryptu języka R] [ execute-r-script] modułu. Przykładem [wykonanie skryptu języka R] [ execute-r-script] modułu w usłudze Machine Learning Studio jest pokazany na rysunku 1.
 
- ![Język programowania R: moduł wykonanie skryptu języka R, wybranego w usłudze Machine Learning Studio][1]
+ ![Język programowania R: Moduł wykonywania skryptu języka R, wybranego w usłudze Machine Learning Studio][1]
 
 *Rysunek 1. Środowiska usługi Machine Learning Studio przedstawiający wybrano modułu wykonywania skryptu języka R.*
 
@@ -1211,7 +1210,7 @@ Uruchomienie tego kodu tworzy wyświetlanego w rysunek 27 na port wyjściowy zes
 
 Z tymi wynikami widzimy, że dodawanie sezonowych czynników do modelu zmniejsza błędu RMS znacznie. Nie za zaskakująco błąd usługi RMS, aby uzyskać dane szkoleniowe jest nieco mniej niż prognozy.
 
-## <a id="appendixa"></a>Dodatek A: Przewodnik programu RStudio
+## <a id="appendixa"></a>DODATEK A: Przewodnik dotyczący programu RStudio
 Program RStudio jest dość dobrze udokumentowane, więc w niniejszym załączniku podam kilka linków do kluczowe części dokumentacji programu RStudio ułatwią Ci rozpoczęcie pracy.
 
 1. Tworzenie projektów
@@ -1228,7 +1227,7 @@ Program RStudio jest dość dobrze udokumentowane, więc w niniejszym załączni
    
    Punkt przerwania funkcji rozwiązywania problemów są udokumentowane na https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting.
 
-## <a id="appendixb"></a>Dodatek B: Dalsze informacje.
+## <a id="appendixb"></a>DODATEK B: Dalsze informacje
 Ten samouczek programowania R obejmuje podstawy, co jest potrzebne do języka R za pomocą usługi Azure Machine Learning Studio. Jeśli nie jesteś zaznajomiony z języka R, dwa wprowadzeń są dostępne w sieci CRAN:
 
 * R dla początkujących przez Emmanuel Paradis jest dobrym miejscem do śledzenia rozpoczynają się od http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
@@ -1236,7 +1235,7 @@ Ten samouczek programowania R obejmuje podstawy, co jest potrzebne do języka R 
 
 Istnieje wiele książek na R, które mogą pomóc Ci rozpocząć pracę. Poniżej przedstawiono kilka, które mogę być przydatne:
 
-* Art programowania w języku R: samouczek z statystyczne projektowania oprogramowania, Kerth Matloff jest znakomite wprowadzenie do programowania w języku R.  
+* Art of programowania w języku R: Samouczek z statystyczne projektowania oprogramowania, Kerth Matloff jest znakomite wprowadzenie do programowania w języku R.  
 * Podręcznik języka R, Paul Teetor dostarcza rozwiązanie problemu i rozwiązania do używania języka R.  
 * R w działaniu, Robert Kabacoff jest innej książki wprowadzające przydatne. Szybkie R pomocnika witryny sieci Web jest użytecznym zasobem w http://www.statmethods.net/.
 * R Inferno przez Patrick Burns jest zdumiewająco humorystyczną książki, który zajmuje się liczba trudne i trudne tematów, które można napotkać podczas programowania w języku R. Książki jest dostępna bezpłatnie w http://www.burns-stat.com/documents/books/the-r-inferno/.

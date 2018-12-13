@@ -1,5 +1,5 @@
 ---
-title: Pełne Architektura aparatu (Lucene) wyszukiwanie tekstu w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Architektura aparatu (Lucene) wyszukiwania pełnotekstowego — usługa Azure Search
 description: Wyjaśnienie Lucene i przetwarzania dokumentów pobierania kwestie dotyczące zapytań w celu wyszukiwania pełnotekstowego, w odniesieniu do usługi Azure Search.
 manager: jlembicz
 author: yahnoosh
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.custom: seodec2018
+ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036874"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315812"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search
 
@@ -95,7 +96,7 @@ Analizator składni zapytań restrukturyzuje podzapytania w *Drzewo zapytań* (w
 
  ![Atrybut typu wartość logiczna wszelkie zapytania searchmode][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>Obsługiwane parsery: prosty i pełne Lucene 
+### <a name="supported-parsers-simple-and-full-lucene"></a>Obsługiwane analizatory składni: Proste i pełne Lucene 
 
  Usługa Azure Search udostępnia dwa języki inne zapytanie, `simple` (ustawienie domyślne) i `full`. Ustawiając `queryType` parametru do żądania wyszukiwania, wskazujemy analizator składni zapytań języka zapytań, które wybierzesz tak aby wie, jak interpretować, operatorów i składni. [Prostego zapytania języka](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) jest intuicyjna i niezawodne, często odpowiednie interpretowanie danych wprowadzonych przez użytkownika jako — bez przetwarzania po stronie klienta. Obsługuje ona operatorów zapytań, które dobrze znanych z aparatów wyszukiwania w sieci web. [Język zapytań Lucene pełne](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), którego można uzyskać przez ustawienie `queryType=full`, rozszerza język proste zapytanie domyślne przez dodanie obsługi więcej operatorów i typów zapytań, takich jak symbole wieloznaczne, rozmytego, wyrażeń regularnych i zapytania należące do pola. Na przykład wyrażenie regularne wysyłane prosta składnia zapytań może być interpretowany jako ciąg zapytania, a nie wyrażenia. Przykładowe żądanie, w tym artykule używa języka zapytań Lucene pełne.
 
@@ -127,7 +128,7 @@ Drzewo zmodyfikowane zapytanie dla tego zapytania będą następująco, gdzie pa
 > Wybieranie `searchMode=any` za pośrednictwem `searchMode=all` jest najlepszych decyzji dotarły za pomocą uruchamiania zapytań językiem. Użytkownicy, którzy mogą zawierać operatorów (wspólne, jeśli przechowuje wyszukiwanie dokumentów) stało się wyniki bardziej intuicyjne `searchMode=all` informuje konstrukcji logicznych zapytania. Aby uzyskać więcej informacji na temat biurowymi między `searchMode` i operatorów, zobacz [prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
-## <a name="stage-2-lexical-analysis"></a>Etap 2: Poddawać analizie Leksykalnej 
+## <a name="stage-2-lexical-analysis"></a>Etap 2: Poddawać analizie leksykalnej 
 
 Proces analizatory leksykalne *termin zapytania* i *frazę zapytania* po mają strukturę drzewa zapytań. Analizator akceptuje dane wejściowe tekstu udzielone przez analizator, przetwarza tekst, a następnie wysyła ponownie podzielić na tokeny warunki, należy włączyć do drzewa zapytań. 
 
@@ -314,7 +315,7 @@ Podczas wykonywania zapytania pojedynczych zapytań są wykonywane względem pol
 
 Dla całego dla danego zapytania, dokumenty, które odpowiadają są 1, 2, 3. 
 
-## <a name="stage-4-scoring"></a>Etap 4: oceniania  
+## <a name="stage-4-scoring"></a>Etap 4: Ocenianie  
 
 Każdy dokument w zestawie wyników wyszukiwania jest przypisywany wskaźnikiem istotności. Funkcja istotności jest wyższy stopień tych dokumentów, które najlepiej odpowiadają pytanie użytkownika, wyrażonych w zapytaniu wyszukiwania. Wynik jest obliczana w zależności od właściwości statystyczne warunki pasujących do. Oceny formuły jest [TF/IDF (częstotliwość dokumentu odwrotność częstotliwość termin)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). Zapytania zawierające rzadkich i typowe warunki TF/IDF promuje wyniki zawierające termin rzadkie. Na przykład w indeks hipotetyczny z wszystkie artykuły Wikipedia z dokumentów wynik kwerendy *Prezes*, dokumentów na *prezesa* są uznawane za istotne więcej niż dokumenty *na*.
 

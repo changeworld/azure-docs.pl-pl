@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: c7d2004da52d83ceda62dc31583797d9a218ef48
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 69aa2cbcaa6861b1d5c5c71769be2fb8046d9ea5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085455"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188517"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co to jest usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)?
 
@@ -27,9 +26,9 @@ Usługa Azure Monitor dla maszyn wirtualnych monitoruje usługi Azure virtual ma
 
 Rozwiązanie usługi Azure Monitor dla maszyn wirtualnych obejmuje obsługę monitorowania wydajności i aplikacji zależności dla maszyn wirtualnych, które są hostowane lokalnie lub u innego dostawcy chmury. Trzy kluczowe funkcje dostarczać dokładniejsze omówienie:
 
-* **Logiczne składniki maszyn wirtualnych platformy Azure, który uruchamiany Windows i Linux**: są mierzone względem kryteria kondycji wstępnie skonfigurowane, i ich wysyłania alertów, gdy ocenianą warunek jest spełniony.  
+* **Logiczne składniki maszyn wirtualnych platformy Azure, który uruchamiany Windows i Linux**: Są mierzone względem kryteria kondycji wstępnie skonfigurowane, i ich wysyłania alertów, gdy ocenianą warunek jest spełniony.  
 
-* **Wstępnie zdefiniowane, popularne wykresy wydajności**: wyświetlić podstawowe metryki wydajności z systemu operacyjnego gościa maszyny Wirtualnej.
+* **Wstępnie zdefiniowane, popularne wykresy wydajności**: Wyświetla podstawowe metryki wydajności z systemu operacyjnego gościa maszyny Wirtualnej.
 
 * **Mapa zależności**: Wyświetla powiązanych elementów z maszyną Wirtualną z różnych subskrypcji i grupy zasobów.  
 
@@ -46,8 +45,8 @@ Integracja z usługą Log Analytics oferuje zaawansowane agregacji i filtrowania
 
 Dane te można wyświetlić bezpośrednio w pojedynczej maszyny Wirtualnej z maszyny wirtualnej lub usługi Azure Monitor umożliwia dostarczanie zagregowany widok maszyn wirtualnych. Ten widok jest oparty na perspektywy każdą z tych funkcji:
 
-* **Kondycja**: maszyny wirtualne są powiązane z grupą zasobów.
-* **Mapa** i **wydajności**: maszyny wirtualne są skonfigurowane do zgłaszania do określonego obszaru roboczego usługi Log Analytics.
+* **Kondycja**: Maszyny wirtualne są powiązane z grupą zasobów.
+* **Mapa** i **wydajności**: Maszyny wirtualne są skonfigurowane do raportu do określonego obszaru roboczego usługi Log Analytics.
 
 ![Maszyna wirtualna perspektywy szczegółowych informacji w witrynie Azure portal](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
 

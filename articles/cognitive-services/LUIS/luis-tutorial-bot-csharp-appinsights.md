@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: fb7ce154985db97dba2a36b4b0d834cada1605d9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a5150d3f318fce2f66adfa4bdc43ae8aec651223
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101062"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251151"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z botem wC#
 
@@ -39,7 +39,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!Tip]
 > Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Cały kod w tym samouczku jest dostępny na [przykłady usługi LUIS, repozytorium github](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//LUIS Tutorial:`.
+Cały kod w tym samouczku jest dostępny na [repozytorium GitHub usługi LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//LUIS Tutorial:`.
 
 ## <a name="review-luis-web-app-bot"></a>Przejrzyj bot aplikacji sieci web usługi LUIS
 

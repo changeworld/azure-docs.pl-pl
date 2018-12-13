@@ -5,19 +5,19 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: ''
-ms.devlang: pwershell
+ms.devlang: powershell
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 36b03794f4b55af3de89f96ecee02f5542f40f01
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972103"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278461"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Tworzenie i zarządzanie nimi zadania elastyczne bazy danych SQL przy użyciu programu PowerShell (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Interfejsy API programu PowerShell dla **zadania Elastic Database** (w wersji za
 * Subskrypcja platformy Azure. Bezpłatnej wersji próbnej, zobacz [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 * Zestaw baz danych utworzonych za pomocą narzędzi elastycznych baz danych. Zobacz [Rozpocznij pracę z narzędziami elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
 * Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell).
-* **Zadania elastic Database** pakietami programu PowerShell: zobacz [zadania instalowania elastycznych baz danych](sql-database-elastic-jobs-service-installation.md)
+* **Zadania elastic Database** pakietami programu PowerShell: Zobacz [zadania instalowania elastycznych baz danych](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Wybierz swoją subskrypcję platformy Azure
 Aby wybrać subskrypcję należy Twojego identyfikatora subskrypcji (**- SubscriptionId**) lub Nazwa subskrypcji (**- SubscriptionName**). Jeśli masz wiele subskrypcji możesz uruchomić **Get-AzureRmSubscription** polecenia cmdlet i skopiować informacje o odpowiedniej subskrypcji, z wyniku ustawione. Po uzyskaniu informacji o subskrypcji, uruchom następujące polecenie cmdlet można ustawić tej subskrypcji jako wartość domyślna, czyli cel dla tworzenia zadania i zarządzać nimi:
@@ -193,8 +193,8 @@ Zadanie wykonuje skrypty języka Transact-SQL (T-SQL) lub aplikacji DACPACs mię
 
 Istnieją dwa typy grup, które można utworzyć: 
 
-* [Mapowanie fragmentów w postaci](sql-database-elastic-scale-shard-map-management.md) grupy: po przesłaniu zadania pod kątem mapowania fragmentów w postaci zadania wykonuje kwerendę mapowania fragmentów, aby ustalić swój bieżący zestaw fragmentów i utworzy podrzędne zadania dla każdego fragmentu w ramach mapowania fragmentów.
-* Niestandardowe grupy kolekcji: niestandardowy zdefiniowany zestaw baz danych. Gdy zadanie jest przeznaczony dla niestandardowej kolekcji, tworzy podrzędne zadania dla każdej bazy danych obecnie w kolekcji niestandardowej.
+* [Mapowanie fragmentów w postaci](sql-database-elastic-scale-shard-map-management.md) grupy: Po przesłaniu zadania pod kątem mapowania fragmentów w postaci zadania wykonuje kwerendę mapowania fragmentów, aby ustalić swój bieżący zestaw fragmentów, a następnie tworzy podrzędne zadania dla każdego fragmentu w ramach mapowania fragmentów.
+* Niestandardowe grupy kolekcji: Niestandardowy zestaw określonych baz danych. Gdy zadanie jest przeznaczony dla niestandardowej kolekcji, tworzy podrzędne zadania dla każdej bazy danych obecnie w kolekcji niestandardowej.
 
 ## <a name="to-set-the-elastic-database-jobs-connection"></a>Aby ustawić elastycznej bazy danych zadania połączeń
 Połączenie musi być ustawiona na zadania *bazy danych kontroli* przed przy użyciu zadań interfejsów API. Uruchomienie tego polecenia cmdlet wyzwala okno poświadczeń przeskoczyć do góry żądania nazwy użytkownika i hasło utworzone podczas instalacji zadań Elastic Database. Wszystkie przykłady w tym temacie założono, że pierwszym kroku została już wykonana.
@@ -416,19 +416,19 @@ Zezwalaj na aktualnie zasad wykonywania do definiowania:
 
 * Nazwa: Identyfikator zasad wykonywania programu.
 * Limit czasu zadania: Całkowity czas, zanim zadanie zostanie anulowane przez zadania Elastic Database.
-* Początkowa interwał ponawiania prób: Interwał oczekiwania przed pierwszym ponowieniem próby.
-* Maksymalny interwał ponawiania prób: Limit interwałów ponawiania do użycia.
-* Ponów próbę interwał wycofywania współczynnik: Współczynnik używany do obliczania kolejny odstęp czasu między kolejnymi próbami.  Używana jest następująca formuła: (początkowa interwał ponawiania próby) * Math.Pow — ((interwał wycofywania współczynnik) (liczba prób) - 2). 
-* Maksymalna liczba prób: Maksymalna liczba ponownych prób próbuje wykonać w ramach danego zadania.
+* Interwał ponawiania początkowa: Interwał oczekiwania przed pierwszym ponowieniem próby.
+* Interwał maksymalną liczbę ponownych prób: Limit interwałów ponawiania do użycia.
+* Ponów próbę interwał wycofywania współczynnik: Współczynnik używany do obliczania kolejny odstęp czasu między kolejnymi próbami.  Używana jest następująca formuła: (Początkowej interwał ponawiania) * Math.Pow — ((interwał wycofywania współczynnik) (liczba ponownych prób) - 2). 
+* Maksymalna liczba prób: Maksymalna liczba ponownych prób do wykonania w ramach danego zadania.
 
 Domyślne zasady wykonywania korzysta z następujących wartości:
 
 * Nazwa: Domyślne zasady wykonywania
 * Limit czasu zadania: 1 tydzień
-* Początkowej interwał ponawiania prób: 100 milisekund
-* Maksymalny interwał ponawiania prób: 30 minut
-* Ponów próbę wykonania współczynnik interwał: 2
-* Maksymalna liczba prób: 2 147 483 647
+* Interwał ponawiania początkowa:  100 MS
+* Interwał maksymalną liczbę ponownych prób: 30 minut
+* Ponów próbę współczynnik interwału: 2
+* Maksymalna liczba prób: 2,147,483,647
 
 Utwórz zasady wykonywania żądanego:
 
@@ -459,8 +459,8 @@ Zadania elastic Database obsługuje żądania anulowania zadań.  Jeśli zadania
 
 Istnieją dwa różne sposoby, że zadania Elastic Database może wykonywać anulowania:
 
-1. Anuluj aktualnie wykonywanych zadań: Jeśli anulowania zostanie wykryte, gdy zadanie jest obecnie uruchomiony, anulowania, zostanie podjęta w aktualnie wykonywanej aspekcie zadania.  Na przykład: w przypadku obecnie jest wykonywana, gdy podejmowana jest próba anulowania wolno działające zapytanie, nastąpi próba anulować wykonywanie zapytania.
-2. Trwa anulowanie ponownych prób wykonania zadania: w przypadku anulowania wykrycia przez wątek kontroli przed uruchomiono zadanie do wykonania, wątek kontroli będzie uniknąć natychmiastowego generowania zadania i zadeklarować żądania, ponieważ zostało anulowane.
+1. Anuluj aktualnie wykonywanych zadań: W przypadku wykrycia anulowania, gdy zadanie jest obecnie uruchomiony, anulowanie zostanie podjęta w ramach aktualnie wykonywanej aspekt zadania.  Na przykład: W przypadku obecnie jest wykonywana, gdy podejmowana jest próba anulowania wolno działające zapytanie, nastąpi próba anulować wykonywanie zapytania.
+2. Trwa anulowanie ponownych prób wykonania zadania: W przypadku anulowania wykrycia przez wątek kontroli przed uruchomiono zadanie do wykonania, wątek kontroli uniknąć natychmiastowego generowania zadania i zadeklarować żądania, ponieważ zostało anulowane.
 
 W przypadku anulowania zadania jest wymagany dla zadania nadrzędnego, dla zadania nadrzędnego i wszystkie jego zadania podrzędne będą honorowane żądanie anulowania.
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 772807fc0a1378eea662a7c4a7e3c720d7092bef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013018"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320662"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -87,8 +87,8 @@ Konfigurowanie _oszustwa_ funkcji, dzięki czemu użytkownicy mogą raportować 
 
 ### <a name="configuration-options"></a>Opcje konfiguracji
 
-* **Blokuj użytkownika, gdy zostaje zgłoszone oszustwo**: Jeśli użytkownik zgłosi oszustwa, jego konto zostało zablokowane przez 90 dni lub dopóki administrator odblokowuje swojego konta. Administrator może przejrzeć logowania za pomocą raportów logowania i podjąć odpowiednie działania w celu zapobiegania oszustwom w przyszłości. Administrator może następnie [odblokować](#unblock-a-user) konta użytkownika.
-* **Kod zgłoszenia oszustwa w trakcie początkowego pozdrowienia**: gdy użytkownicy otrzymają rozmowę telefoniczną w celu weryfikacji dwuetapowej, zwykle naciśnięciu **#** o potwierdzenie ich logowania. Zgłaszanie nadużyć użytkownik musi wprowadzić kod przed naciśnięcie **#**. Ten kod jest **0** domyślnie, ale można go dostosować.
+* **Blokuj użytkownika, gdy zostaje zgłoszone oszustwo**: Jeśli użytkownik zgłosi oszustwa, ich konta jest zablokowany przez 90 dni lub dopóki administrator odblokowuje swojego konta. Administrator może przejrzeć logowania za pomocą raportów logowania i podjąć odpowiednie działania w celu zapobiegania oszustwom w przyszłości. Administrator może następnie [odblokować](#unblock-a-user) konta użytkownika.
+* **Kod zgłoszenia oszustwa w trakcie początkowego pozdrowienia**: Gdy użytkownicy otrzymają rozmowę telefoniczną w celu weryfikacji dwuetapowej, zwykle naciśnięciu **#** o potwierdzenie ich logowania. Zgłaszanie nadużyć użytkownik musi wprowadzić kod przed naciśnięcie **#**. Ten kod jest **0** domyślnie, ale można go dostosować.
 
    >[!NOTE]
    >Pozdrowienia głosowe domyślnej od firmy Microsoft poinstruować użytkowników o naciśnięcie **0#** przesłać oszustwa. Jeśli chcesz użyć innych niż kod **0**, rejestrowania i przekazać własne niestandardowe pozdrowienia głosowe odpowiednie instrukcje dla użytkowników.
@@ -257,12 +257,15 @@ Użytkownicy mogą również tworzyć hasła aplikacji po rejestracji. Hasła ap
 
 _Zaufane adresy IP_ funkcji usługi Azure Multi-Factor Authentication jest używana przez administratorów dzierżawy zarządzanych lub federacyjnego. Funkcja Pomija weryfikację dwuetapową dla użytkowników, którzy zalogować się z firmową siecią intranet. Ta funkcja jest dostępna z pełną wersję usługi Azure Multi-Factor Authentication i nie bezpłatną wersją dla administratorów. Aby uzyskać szczegółowe informacje dotyczące sposobu uzyskania pełną wersję usługi Azure Multi-Factor Authentication, zobacz [usługi Azure Multi-Factor Authentication](multi-factor-authentication.md).
 
+> [!NOTE]
+> Uwierzytelnianie wieloskładnikowe zaufanych adresów IP i dostępu warunkowego, lokalizacje z nazwą działają tylko przy użyciu adresów IPV4.
+
 Jeśli Twoja organizacja wdraża rozszerzenia serwera NPS w celu zapewnienia uwierzytelniania Wieloskładnikowego Uwaga aplikacji w środowisku lokalnym źródłowy adres IP będzie zawsze pojawiają się jako serwer NPS uwierzytelnianie próba odbywa się za pośrednictwem.
 
 | Typ dzierżawy usługi Azure AD | Zaufane adresy IP opcji |
 |:--- |:--- |
 | Zarządzane |**Konkretnego zakresu adresów IP**: Administratorzy, określić zakres adresów IP, które można pominąć weryfikację dwuetapową dla użytkowników, którzy zalogować się z firmową siecią intranet.|
-| Federacyjne |**Wszyscy użytkownicy federacyjnych**: wszystkich użytkowników federacyjnych, którzy Zaloguj się za pomocą wewnątrz organizacji, można pominąć weryfikację dwuetapową. Użytkownicy pomijania weryfikacji przy użyciu oświadczeń, wystawiony przez usługi Active Directory Federation Services (AD FS).<br/>**Konkretnego zakresu adresów IP**: Administratorzy, określić zakres adresów IP, które można pominąć weryfikację dwuetapową dla użytkowników, którzy zalogować się z firmową siecią intranet. |
+| Federacyjne |**Wszystkie federacyjna użytkowników**: Wszystkich użytkowników federacyjnych, którzy Zaloguj się za pomocą wewnątrz organizacji, można pominąć weryfikację dwuetapową. Użytkownicy pomijania weryfikacji przy użyciu oświadczeń, wystawiony przez usługi Active Directory Federation Services (AD FS).<br/>**Konkretnego zakresu adresów IP**: Administratorzy, określić zakres adresów IP, które można pominąć weryfikację dwuetapową dla użytkowników, którzy zalogować się z firmową siecią intranet. |
 
 Zaufane adresy IP obejścia działa tylko z wewnątrz firmową siecią intranet. Jeśli wybierzesz **wszystkich użytkowników federacyjnych** opcji i użytkownik zaloguje się z poza firmową siecią intranet, użytkownik będzie musiał uwierzytelnić przy użyciu weryfikacji dwuetapowej. Proces jest taki sam, nawet wtedy, gdy użytkownik przedstawia oświadczenia usług AD FS. 
 
@@ -385,6 +388,6 @@ Ta funkcja zmniejsza liczbę uwierzytelnień w aplikacji sieci web, które zwykl
 
 Po włączeniu funkcji uwierzytelniania wieloskładnikowego Zapamiętaj, użytkownicy mogą oznaczać urządzenia jako zaufany podczas logowania się przez wybranie **nie pytaj ponownie**.
 
-# <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-[Modyfikowanie znakowanie strony logowania usługi Azure AD](..\fundamentals\customize-branding.md)
+[Modyfikowanie znakowanie strony logowania usługi Azure AD](../fundamentals/customize-branding.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 5feedcd750841be159a7cf4a31f408aec2fffd38
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 214598291e69acfec2064738f798a48180ad05a6
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712980"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322999"
 ---
 # <a name="azure-security-white-papers"></a>Usługa Azure Security oficjalne dokumenty
 | | |
@@ -31,7 +31,7 @@ ms.locfileid: "51712980"
 |[Usługa Azure data szyfrowanie w spoczynku](azure-security-encryption-atrest.md)|Koncentruje się na sposób ochrony danych przechowywanych na platformie Azure i różnych składników biorących udział w implementacji ochrony danych. Przeglądy dotyczące zalet i wad różnych zarządzania kluczami metod ochrony.|
 |[Rejestrowanie i przeprowadzanie inspekcji na platformie Azure](azure-log-audit.md)|Wprowadzenie do generowania, zbierania i analizowania dzienników zabezpieczeń z usług hostowanych na platformie Azure. Te dzienniki mogą pomóc uzyskać wgląd w zabezpieczenia do wdrożeń platformy Azure. |
 |[Zabezpieczenia sieci na platformie Azure](abstract-azure-network-security.md)|Stanowi wprowadzenie do szerokiej gamy kontrolek sieci, które można skonfigurować tak, aby zwiększyć bezpieczeństwo rozwiązania, które można wdrożyć na platformie Azure. Koncentruje się kontroli zabezpieczeń sieci dla klientów.|
-|[Usługa Azure Functions i zabezpieczenia z platformą bez użycia serwera](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Ten dokument do pobrania, omówiono korzyści wynikające z operacji obliczeniowych, przy jednoczesnym zapewnieniu zagadnienia dotyczące zabezpieczeń i środki zaradcze w kontekście platformy Azure. |
+|[Usługa Azure Functions i zabezpieczenia z platformą bez użycia serwera](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-functions-serverless-platform-security/Microsoft%20Serverless%20Platform.pdf)|Ten dokument do pobrania, omówiono korzyści wynikające z operacji obliczeniowych, przy jednoczesnym zapewnieniu zagadnienia dotyczące zabezpieczeń i środki zaradcze w kontekście platformy Azure. |
 |[Zabezpieczenia kontenerów na platformie Microsoft Azure](abstract-container-security-microsoft-azure.md)|W tym artykule opisano kontenery, wdrażanie kontenerów i zarządzania oraz usługi platformy natywnej. Omówiono także problemów zabezpieczeń w czasie wykonywania, które wynikają z użyciem kontenery na platformie Azure. |
 |[Bezpieczeństwo działania platformy Azure](abstract-azure-operational-security.md)|Udostępnia kompleksowych informacji o dostępności usług i technologii bezpieczeństwa przeznaczonych dla klientów z platformą Azure.|
 |[Możliwości techniczne zabezpieczeń platformy Azure](azure-security-technical-capabilities.md)|Koncentruje się na funkcje zabezpieczeń i funkcji obsługi usługi Azure Storage, Azure SQL Database, modelu maszyny wirtualnej platformy Azure i narzędzi i infrastruktury, które zarządzają wszystkimi.|

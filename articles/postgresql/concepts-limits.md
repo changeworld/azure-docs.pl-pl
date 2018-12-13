@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 12/03/2018
-ms.openlocfilehash: 2f4f5bf19815469f76c1ee18ff42177f77faec28
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/12/2018
+ms.openlocfilehash: 108d2ac83c0dc317dee2f8c66f95f01d3569a7c4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871119"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311664"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Ograniczenia dotyczące usługi Azure Database for PostgreSQL
 W poniższych sekcjach opisano, pojemnością i limitami funkcjonalności w usłudze bazy danych.
@@ -58,6 +58,9 @@ Azure system wymaga pięć połączeń do monitorowania usługi Azure Database f
 - Podczas korzystania z funkcji Odzyskiwanie, nowy serwer jest tworzony z takie same konfiguracje warstwy cenowej jako serwer, na którym opiera się na.
 - Nowy serwer utworzone podczas przywracania nie ma reguł zapory, które istniały na oryginalnym serwerze. Reguły zapory muszą ustawić oddzielnie dla tego nowego serwera.
 - Przywracanie usuniętych serwera nie jest obsługiwana.
+
+### <a name="utf-8-characters-on-windows"></a>Znaki UTF-8 na Windows
+- W niektórych scenariuszach znaków UTF-8 nie są obsługiwane w pełni w bazy danych PostgreSQL na Windows, który ma wpływ na — Azure Database for PostgreSQL typu open source. Zapoznaj się wątek [15476 # usterkę w postgresql w warstwie archiwum](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Zrozumienie [co jest dostępne w każdej warstwy cenowej](concepts-pricing-tiers.md)

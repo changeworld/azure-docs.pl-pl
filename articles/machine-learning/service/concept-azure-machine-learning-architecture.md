@@ -1,5 +1,5 @@
 ---
-title: Jak to działa?
+title: 'Uczenie Maszynowe w chmurze: warunki i architektura'
 titleSuffix: Azure Machine Learning service
 description: Więcej informacji na temat architektury, terminologii i pojęcia związane z usługi Azure Machine Learning. Poznasz również ogólny przepływ pracy zalety korzystania z usługi i usług platformy Azure, które są używane przez usługę Azure Machine Learning.
 services: machine-learning
@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e006c3ac9684cc9e51e8b3505659864123758d7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3966d4b27f0e3d42f47d84fb5c9f5c8519a27b6c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098002"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184733"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: pojęcia i architektura
 
@@ -75,7 +75,7 @@ Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Moż
 
 Usługa Machine Learning jest niezależny od framework. Podczas tworzenia modelu, na przykład scikit, można użyć dowolnej architektury uczenia maszynowego popularnych — Dowiedz się, xgboost, PyTorch, TensorFlow, Chainer i CNTK.
 
-Przykład uczenia modelu, zobacz [Szybki Start: tworzenie obszaru roboczego usługi uczenia maszynowego](quickstart-get-started.md) dokumentu.
+Aby uzyskać przykład uczenia modelu, zobacz [Szybki Start: Tworzenie obszaru roboczego usługi uczenia maszynowego](quickstart-get-started.md) dokumentu.
 
 ### <a name="model-registry"></a>Model rejestru
 
@@ -99,8 +99,8 @@ Obrazy umożliwiają niezawodne wdrażanie modelu, oraz wszystkie składniki wym
 
 Istnieją dwa typy obrazów, które mogą być tworzone przez usługi Azure Machine Learning:
 
-* Obraz FPGA: używana podczas wdrażania na tablicę programowalny bramy w chmurze platformy Azure.
-* Obraz platformy docker: używana do celów innych niż FPGA obliczeń podczas wdrażania. Na przykład w usłudze Azure Container Instances i Azure Kubernetes Service.
+* Obraz FPGA: Używana podczas wdrażania na tablicę programowalny bramy w chmurze platformy Azure.
+* Obraz platformy docker: Używane podczas wdrażania do celów innych niż FPGA obliczeń. Na przykład w usłudze Azure Container Instances i Azure Kubernetes Service.
 
 Aby uzyskać przykład tworzenia obrazu, zobacz [wdrożyć model klasyfikacji obrazów w wystąpieniu kontenera platformy Azure](tutorial-deploy-models-with-aml.md) dokumentu.
 
@@ -148,13 +148,13 @@ Przebieg jest rekord, który zawiera następujące informacje:
 
 Uruchom jest generowany, gdy prześlesz skryptu w celu nauczenia modelu. Uruchom może mieć zero lub więcej uruchomień podrzędnych. Więc wykonywania najwyższego poziomu może mieć dwa przebiegi podrzędnych, z których każdy może mieć własne podrzędne działa.
 
-Aby uzyskać przykład wyświetlanie działa produkowane uczenia modelu, zobacz [Szybki Start: wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md) dokumentu.
+Aby uzyskać przykład wyświetlanie działa produkowane uczenia modelu, zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
 ## <a name="experiment"></a>Eksperyment
 
 Eksperyment to zbiór wielu uruchomień z danego skryptu. Zawsze należy do obszaru roboczego. Po przesłaniu przebiegu można podać nazwę eksperymentu. Informacje dotyczące uruchomienia są przechowywane w ramach tego eksperymentu. Jeśli przesłać przebiegu i określ nazwę eksperymentu, który nie istnieje, automatycznie zostanie utworzony nowy eksperyment o tej nazwie.
 
-Na przykład z użyciem eksperymentu zobacz [Szybki Start: wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md) dokumentu.
+Na przykład z użyciem eksperymentu zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
 ## <a name="pipeline"></a>Potok
 
@@ -227,5 +227,5 @@ Działania może zapewnić powiadomienia za pośrednictwem zestawu SDK lub inter
 Aby rozpocząć korzystanie z usługi Azure Machine Learning, należy użyć następujących łączy:
 
 * [Co to jest usługa Azure Machine Learning](overview-what-is-azure-ml.md)
-* [Quickstart: Create a workspace with Python](quickstart-get-started.md) (Szybki start: tworzenie obszaru roboczego przy użyciu języka Python)
-* [Tutorial: Train a model](tutorial-train-models-with-aml.md) (Samouczek: uczenie modelu)
+* [Szybki Start: Utwórz obszar roboczy za pomocą języka Python](quickstart-get-started.md)
+* [Samouczek: Uczenie modelu](tutorial-train-models-with-aml.md)

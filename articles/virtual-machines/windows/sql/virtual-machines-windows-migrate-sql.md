@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: jroth
-ms.openlocfilehash: 0677faa90c73ffe4c0c1c48600c2f1ef2d05eb50
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 298a8597ae111550dfbd44d1e7bd9efb212f08af
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628787"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323221"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrowanie bazy danych programu SQL Server do programu SQL Server na maszynie wirtualnej platformy Azure
 
@@ -36,7 +36,7 @@ Dostępne są następujące metody migracji głównej:
 * Odłącz kopiowania plików dziennika i danych do usługi Azure blob storage i następnie dołączyć do programu SQL Server na maszynie Wirtualnej platformy Azure z adresu URL
 * Konwertuj maszynę fizyczną w środowisku lokalnym do wirtualnego dysku twardego funkcji Hyper-V, Przekaż do usługi Azure Blob storage i następnie wdrożyć nowe maszyny Wirtualnej przy użyciu przekazany wirtualny dysk twardy
 * Dostarczaj dysku twardego za pomocą usługi Import/Export Windows
-* Jeśli masz wdrożenia zawsze włączonych w środowisku lokalnym, użyj [Kreatora dodawania repliki platformy Azure](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) tworzenia replik w Azure, a następnie trybu failover, wskazując użytkowników do wystąpienia usługi Azure database
+* Jeśli masz wdrożenia zawsze włączonej grupy dostępności w środowisku lokalnym, użyj [Kreatora dodawania repliki platformy Azure](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) tworzenia replik w Azure, a następnie trybu failover, wskazując użytkowników do wystąpienia usługi Azure database
 * Użyj programu SQL Server [replikacji transakcyjnej](https://msdn.microsoft.com/library/ms151176.aspx) do skonfiguruj wystąpienie serwera SQL Azure jako subskrybenta, a następnie wyłącz replikację, wskazując użytkowników do wystąpienia usługi Azure database
 
 > [!TIP]

@@ -1,48 +1,49 @@
 ---
-title: Filtry zabezpieczeń dla wyników przycinania w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Filtry zabezpieczeń do przycinania wyniki — usługa Azure Search
 description: Kontrolę dostępu do zawartości usługi Azure Search przy użyciu filtrów zabezpieczeń i tożsamości użytkowników.
 ms.service: search
 ms.topic: conceptual
 services: search
 ms.date: 08/07/2017
-author: revitalbarletz
-ms.author: revitalb
+author: brjohnstmsft
+ms.author: brjohnst
 manager: jlembicz
-ms.openlocfilehash: dd26676b74431566b3631b8a79cd06bcf3022518
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792804"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314231"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Filtry zabezpieczeń dla wyników przycinania w usłudze Azure Search
 
-Możesz zastosować filtry zabezpieczeń, aby przyciąć wyniki wyszukiwania w usłudze Azure Search na podstawie tożsamości użytkownika. Ta wersja wyszukiwania wymaga zwykle porównanie tożsamości kto żądania wyszukiwania względem pola zawierającego zasady, którzy mają uprawnienia do dokumentu. Po znalezieniu dopasowania użytkownika lub podmiot zabezpieczeń (np. grupy lub roli) ma dostęp do tego dokumentu.
+Można stosować filtry zabezpieczeń można przycięcia wyniki wyszukiwania w usłudze Azure Search na podstawie tożsamości użytkownika. To środowisko wyszukiwania wymaga zwykle porównanie tożsamości spojrzenia żądania wyszukiwania względem pola zawierającego zasady, którzy mają uprawnienia do dokumentu. Gdy zostanie znalezione dopasowanie, użytkownik lub ta jednostka (np. grupy lub roli) ma dostęp do tego dokumentu.
 
-Jednym ze sposobów osiągnięcia zabezpieczeń filtrowania odbywa się za pośrednictwem skomplikowane rozłączenia wyrażeń równości: na przykład `Id eq 'id1' or Id eq 'id2'`, itd. Ta metoda jest podatne na błędy, trudne w utrzymaniu i w przypadkach, gdy lista zawiera setek lub tysięcy wartości spowalnia czas odpowiedzi na zapytanie o liczbę sekund. 
+Jednym ze sposobów osiągnięcia bezpieczeństwa filtrowanie opiera się skomplikowane rozłączenia wyrażeń równości: na przykład `Id eq 'id1' or Id eq 'id2'`, i tak dalej. To podejście jest podatne na błędy, trudne w utrzymaniu oraz w przypadkach, gdy lista zawiera setek lub tysięcy wartości spowalnia przez czas w sekundach czas odpowiedzi na zapytanie. 
 
-Podejście łatwiejsze i szybsze odbywa się za pośrednictwem `search.in` funkcji. Jeśli używasz `search.in(Id, 'id1, id2, ...')` zamiast wyrażenia równości, może spodziewać się odpowiedzi podrzędne sekundę razy.
+Podejście prostszy i szybszy jest za pośrednictwem `search.in` funkcji. Jeśli używasz `search.in(Id, 'id1, id2, ...')` zamiast wyrażenie równości, można oczekiwać, że reakcji poniżej sekundy czasu.
 
-W tym artykule przedstawiono sposób wykonania filtrowanie zabezpieczeń, wykonując następujące czynności:
+W tym artykule pokazano, jak wykonać filtrowanie zabezpieczeń wykonując następujące czynności:
 > [!div class="checklist"]
-> * Utwórz pole, które zawiera identyfikatory główna 
-> * Push lub zaktualizuj istniejących dokumentów z odpowiednimi identyfikatorami główna
-> * Wysłać żądania wyszukiwania z `search.in` `filter`
+> * Tworzenie pola, które zawiera identyfikatory jednostki 
+> * Wypychanie lub zaktualizować istniejące dokumenty przy użyciu odpowiednich identyfikatorów jednostki
+> * Żądania wyszukiwania za pomocą `search.in` `filter`
 
 >[!NOTE]
-> Proces pobierania główna identyfikatory nie opisano w tym dokumencie. Należy pobrać go z dostawcą usług tożsamości.
+> Proces pobierania identyfikatorów jednostki nie pasuje do tego dokumentu. Należy pobrać go z dostawcą tożsamości usługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym artykule przyjęto założenie, masz [subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [usługi Azure Search](https://docs.microsoft.com/azure/search/search-create-service-portal), i [indeksu usługi Azure Search](https://docs.microsoft.com/azure/search/search-create-index-portal).  
+W tym artykule założono, masz [subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [usługi Azure Search](https://docs.microsoft.com/azure/search/search-create-service-portal), i [indeksu wyszukiwania platformy Azure](https://docs.microsoft.com/azure/search/search-create-index-portal).  
 
 ## <a name="create-security-field"></a>Utwórz pole zabezpieczeń
 
-Dokumenty musi zawierać pole określania, które grupy mają dostęp. Te informacje będą kryteria filtrowania, względem których dokumenty są wybrane lub odrzucone z zestaw wyników zwrócony do wystawcy.
-Załóżmy, że mamy indeksu zabezpieczonych plików, a każdy plik jest dostępny przez inny zestaw użytkowników.
-1. Dodaj pole `group_ids` (możesz wybrać dowolną nazwę tutaj) jako `Collection(Edm.String)`. Upewnij się, że pole ma `filterable` ustawić atrybutu `true` celu wyniki wyszukiwania są filtrowane na podstawie użytkownik ma dostęp. Na przykład jeśli ustawisz `group_ids` do `["group_id1, group_id2"]` dla dokumentu z `file_name` "secured_file_b", tylko użytkownicy należący do grupy identyfikatorów "group_id1" lub "group_id2" mają dostęp do odczytu pliku.
-   Upewnij się, że w polu `retrievable` atrybut ma ustawioną `false` tak, aby nie są zwracane jako część żądania wyszukiwania.
-2. Dodaj również `file_id` i `file_name` pól dla tego przykładu.  
+Dokumenty mogą zawierać pole określania, które grupy mają dostęp. Te informacje będą kryteria filtrowania, wobec których dokumenty zostaną wybrane lub odrzucone z zestaw wyników zwrócony z wystawcą.
+Załóżmy, że mamy indeksu zabezpieczonych plików, a każdy plik jest dostępny za pomocą innego zestawu użytkowników.
+1. Dodaj pole `group_ids` (można wybrać dowolną nazwę, w tym miejscu) jako `Collection(Edm.String)`. Upewnij się, że pole ma `filterable` ustawioną wartość atrybutu `true` tak, aby wyniki wyszukiwania są filtrowane na podstawie uprawnień użytkownika. Na przykład jeśli ustawisz `group_ids` pole `["group_id1, group_id2"]` dokumentu o `file_name` "secured_file_b", tylko użytkownicy, którzy należą do grupy identyfikatorów "group_id1" lub "group_id2" po ich przeczytaniu dostępu do pliku.
+   Upewnij się, w polu `retrievable` ma ustawioną wartość atrybutu `false` tak, aby nie jest zwracana jako część żądania wyszukiwania.
+2. Również dodać `file_id` i `file_name` pól do celów tego przykładu.  
 
 ```JSON
 {
@@ -55,9 +56,9 @@ Załóżmy, że mamy indeksu zabezpieczonych plików, a każdy plik jest dostęp
 }
 ```
 
-## <a name="pushing-data-into-your-index-using-the-rest-api"></a>Przekazywanie danych do indeksu przy użyciu interfejsu API REST
+## <a name="pushing-data-into-your-index-using-the-rest-api"></a>Wypychanie danych do indeksu przy użyciu interfejsu API REST
   
-Wysłać żądanie HTTP POST do punktu końcowego adresu URL Twojego indeksu. Treść żądania HTTP jest obiektem JSON zawierającego dokumenty przeznaczone do dodania:
+Wyślij żądanie HTTP POST do punktu końcowego adresu URL Twojego indeksu. Treść żądania HTTP jest obiektem JSON zawierającym dokumenty do dodania:
 
 ```
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=[api-version]  
@@ -65,7 +66,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-W treści żądania Określ zawartość dokumentów:
+W treści żądania należy określić zawartość dokumentów:
 
 ```JSON
 {
@@ -92,7 +93,7 @@ W treści żądania Określ zawartość dokumentów:
 }
 ```
 
-Jeśli musisz zaktualizować istniejący dokument z listy grup, można użyć `merge` lub `mergeOrUpload` akcji:
+Jeśli musisz zaktualizować istniejący dokument z listy grup, możesz użyć `merge` lub `mergeOrUpload` akcji:
 
 ```JSON
 {
@@ -106,16 +107,16 @@ Jeśli musisz zaktualizować istniejący dokument z listy grup, można użyć `m
 }
 ```
 
-Aby uzyskać szczegółowe informacje dotyczące dodawania lub aktualizowania dokumentów, możesz przeczytać [edycji dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Aby uzyskać szczegółowe informacje o Dodawanie lub aktualizowanie dokumentów, możesz przeczytać [edycji dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
    
 ## <a name="apply-the-security-filter"></a>Zastosuj filtr zabezpieczeń
 
-Aby przyciąć dokumentów na podstawie `group_ids` dostępu, powinien wystawiać zapytania wyszukiwania z `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filtru, gdzie "group_id1 group_id2..." grup, do których należy wystawcy żądania wyszukiwania.
-Ten filtr dopasowuje wszystkie dokumenty dla którego `group_ids` pole zawiera jeden z danym identyfikatorów.
-Aby uzyskać szczegółowe informacje na wyszukiwanie dokumentów za pomocą usługi Azure Search, możesz przeczytać [dokumenty wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Aby przyciąć dokumentów na podstawie `group_ids` dostępu, należy wydać zapytania wyszukiwania z `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filtr, gdzie "group_id1 group_id2..." grup, do których należy wydawcy żądania wyszukiwania.
+Ten filtr dopasowuje wszystkie dokumenty, dla którego `group_ids` pole zawiera jeden z identyfikatorów danego.
+Aby uzyskać szczegółowe informacje na wyszukiwanie dokumentów za pomocą usługi Azure Search, możesz przeczytać [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 Należy pamiętać, że w tym przykładzie przedstawiono sposób wyszukiwania dokumentów za pomocą żądania POST.
 
-Problem żądanie HTTP POST:
+Wysłać żądanie HTTP POST:
 
 ```
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=[api-version]  
@@ -131,7 +132,7 @@ Określ filtr w treści żądania:
 }
 ```
 
-Należy pobrać je ponownie, gdy `group_ids` zawiera "group_id1" lub "group_id2". Innymi słowy należy pobrać dokumentów, do których wystawcy żądania ma dostęp do odczytu.
+Pobieraj dokumenty Wstecz, gdzie `group_ids` zawiera "group_id1" lub "group_id2". Innymi słowy możesz uzyskać dokumentów, do których wydawcy żądania ma dostęp do odczytu.
 
 ```JSON
 {
@@ -151,10 +152,10 @@ Należy pobrać je ponownie, gdy `group_ids` zawiera "group_id1" lub "group_id2"
 ```
 ## <a name="conclusion"></a>Podsumowanie
 
-Jest to, jak można filtrować wyniki na podstawie tożsamości użytkownika i usługi Azure Search `search.in()` funkcji. Ta funkcja służy do przekazania w identyfikatorach podmiotu zabezpieczeń dla użytkownika do dopasowania do głównej identyfikatorów skojarzonych z każdym dokumencie docelowym. Podczas obsługi żądania wyszukiwania `search.in` funkcja odfiltrowuje wyniki wyszukiwania, dla których żaden z podmiotów zabezpieczeń użytkownika nie ma dostępu do odczytu. Identyfikatory główna może reprezentować np. grupy zabezpieczeń, ról lub nawet tożsamości przez użytkownika.
+Jest to, jak możesz filtrować wyniki na podstawie tożsamości użytkownika i usługa Azure Search `search.in()` funkcji. Ta funkcja służy do przekazywania identyfikatorów jednostki dla użytkownika do dopasowywania identyfikatorów jednostki skojarzone z każdym dokumencie docelowym. Podczas obsługi żądania wyszukiwania `search.in` funkcja filtruje wyniki wyszukiwania, dla których żadna z podmiotami zabezpieczeń użytkownika nie ma dostępu do odczytu. Identyfikatory jednostki może reprezentować elementów, takich jak grupy zabezpieczeń, ról lub nawet tożsamości przez użytkownika.
  
 ## <a name="see-also"></a>Zobacz także
 
-+ [Kontrola dostępu na podstawie tożsamości katalogu Active za pomocą usługi Azure Search filtrów](search-security-trimming-for-azure-search-with-aad.md)
++ [Aktywna kontrola dostępu na podstawie tożsamości katalogu przy użyciu filtrów usługi Azure Search](search-security-trimming-for-azure-search-with-aad.md)
 + [Filtry w usłudze Azure Search](search-filters.md)
-+ [Dane zabezpieczeń i kontroli dostępu w ramach operacji usługi Azure Search](search-security-overview.md)
++ [Danych zabezpieczeń i kontroli dostępu w ramach operacji usługi Azure Search](search-security-overview.md)

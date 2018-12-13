@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania dotyczące wdrażania aplikacji internetowych platformy Azure | Dokumentacja firmy Microsoft
+title: Wdrażanie — często zadawane pytania — usługa Azure App Service | Dokumentacja firmy Microsoft
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące wdrażania dla funkcji Web Apps w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: b38291df576d1dbd180f741659dbc379ca006d8e
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec18
+ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748446"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262116"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wdrażania dla aplikacji sieci Web na platformie Azure
 
@@ -39,7 +40,7 @@ Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji w usłudze App Ser
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Widzę komunikat o błędzie podczas próby wdrożenia w programie Visual Studio. Jak rozwiązać ten problem?
 
-Jeśli zobaczysz następujący komunikat, być może używasz starszej wersji zestawu SDK: "Wystąpił błąd podczas wdrażania zasobu"YourResourceName"w grupie zasobów"YourResourceGroup": MissingRegistrationForLocation: subskrypcja nie jest zarejestrowana dla Typ zasobu "składniki" w lokalizacji "Środkowe stany USA". Zarejestruj ponownie dla tego dostawcy. Aby uzyskać dostęp do tej lokalizacji." 
+Jeśli zobaczysz następujący komunikat, być może używasz starszej wersji zestawu SDK: "Wystąpił błąd podczas wdrażania zasobu"YourResourceName"w grupie zasobów"YourResourceGroup": MissingRegistrationForLocation: Subskrypcja nie jest zarejestrowana dla typu zasobu "składniki" w lokalizacji "Środkowe stany USA". Zarejestruj ponownie dla tego dostawcy. Aby uzyskać dostęp do tej lokalizacji." 
 
 Aby rozwiązać ten problem, przeprowadź uaktualnienie do [najnowszy zestaw SDK](https://azure.microsoft.com/downloads/). Jeśli widzisz ten komunikat i masz najnowszy zestaw SDK, Prześlij żądanie pomocy technicznej.
 

@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 65de18445f114f468dd42c5a7e7128dd2f63d44c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959835"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185872"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorowanie elementów runbook z alertów dotyczących metryk
 
@@ -51,7 +51,7 @@ W witrynie Azure portal przejdź do swojego konta usługi Automation. W obszarze
 
 ### <a name="define-the-action-to-take"></a>Zdefiniuj akcję do wykonania
 
-1. W obszarze **3. Zdefiniuj grupę akcji** kliknij przycisk **+ Nowa grupa akcji**. Grupy akcji jest grupą akcji, które można użyć w więcej niż jeden alert. Te mogą obejmować, ale nie są ograniczone do wiadomości e-mail powiadomienia, elementy runbook, elementy webhook i wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Tworzenie i zarządzanie grupami akcji](../monitoring-and-diagnostics/monitoring-action-groups.md)
+1. W obszarze **3. Zdefiniuj grupę akcji** kliknij przycisk **+ Nowa grupa akcji**. Grupy akcji jest grupą akcji, które można użyć w więcej niż jeden alert. Te mogą obejmować, ale nie są ograniczone do wiadomości e-mail powiadomienia, elementy runbook, elementy webhook i wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Tworzenie i zarządzanie grupami akcji](../azure-monitor/platform/action-groups.md)
 
 1. W polu **Nazwa grupy akcji** wpisz przyjazną nazwę i nazwę krótką. Nazwa krótka jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
 

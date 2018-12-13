@@ -8,18 +8,17 @@ manager: jwhit
 editor: tysonn
 ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: b590a6ce6d92c78f2020d5ef7cffe6d7f277433c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828460"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187215"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Mapa usługi integracji programu System Center Operations Manager
   > [!NOTE]
@@ -98,7 +97,7 @@ Folder rozwiązania Service Map ma cztery węzły:
 
     ![W okienku monitorowanie serwerów programu Operations Manager](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Widoki zależności dla grup usługi Machine**: Wyświetla wszystkie grupy maszyny, które są synchronizowane z mapy usługi. Możesz kliknąć dowolną grupę, aby wyświetlić jego diagramu aplikacji rozproszonej.
+* **Widoki zależności grupy na komputerze**: Wyświetla listę wszystkich grup maszyny, które są synchronizowane z mapy usługi. Możesz kliknąć dowolną grupę, aby wyświetlić jego diagramu aplikacji rozproszonej.
 
     ![Diagramu aplikacji rozproszonej programu Operations Manager](media/service-map-scom/scom-group-dad.png)
 
@@ -121,10 +120,10 @@ Reguła _Microsoft.SystemCenter.ServiceMapImport.Rule_, zostanie utworzona okres
 
 ![W oknie właściwości zastępuje programu Operations Manager](media/service-map-scom/scom-overrides.png)
 
-* **Włączone**: Włączanie lub wyłączanie automatycznych aktualizacji. 
-* **IntervalMinutes**: resetowanie czasu między aktualizacjami. Domyślny interwał to jedna godzina. Jeśli chcesz zsynchronizować serwera mapy częściej, możesz zmienić wartość.
+* **Włączone**: Włącz lub wyłącz automatyczne aktualizacje. 
+* **IntervalMinutes**: Resetowanie czasu między aktualizacjami. Domyślny interwał to jedna godzina. Jeśli chcesz zsynchronizować serwera mapy częściej, możesz zmienić wartość.
 * **TimeoutSeconds**: Resetuj czas, zanim upłynie limit czasu żądania. 
-* **TimeWindowMinutes**: resetowanie przedział czasu na wykonywanie zapytań o dane. Domyślna to 60-minutowe okna. Maksymalna wartość dozwolona przez rozwiązania Service Map jest 60 minut.
+* **TimeWindowMinutes**: Resetuj przedział czasu na wykonywanie zapytań o dane. Domyślna to 60-minutowe okna. Maksymalna wartość dozwolona przez rozwiązania Service Map jest 60 minut.
 
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
 

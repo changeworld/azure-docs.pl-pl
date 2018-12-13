@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 4df7975d4d52e00cce7b57c6f207eb6cb9ea3be3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847902"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310525"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia programów Citrix XenApp i XenDesktop wielowarstwowej
 
@@ -131,15 +131,15 @@ Grupy razem maszyny wirtualne mają podobne wymagania dotyczące trybu failover 
 1. Dodaj składnik XenApp wirtualne w planie odzyskiwania.
 2. Kliknij opcję plany odzyskiwania -> + planu odzyskiwania. Podaj nazwę intuicyjne dla planu odzyskiwania.
 3. W przypadku maszyn wirtualnych programu VMware: Wybierz źródło jako serwer przetwarzania VMware, element docelowy jako Microsoft Azure i modelu wdrażania usługi Resource Manager i kliknij pozycję Wybierz elementy.
-4. W przypadku maszyn wirtualnych funkcji Hyper-V: Wybierz źródło jako serwer programu VMM, docelowy jako Microsoft Azure i modelu wdrażania przy użyciu jako usługi Resource Manager i kliknij pozycję Wybierz elementy, a następnie wybierz XenApp wdrażania maszyn wirtualnych.
+4. Dla maszyn wirtualnych funkcji Hyper-V: Wybierz źródło jako serwer programu VMM, element docelowy jako Microsoft Azure i modelu wdrażania przy użyciu jako usługi Resource Manager i kliknij pozycję Wybierz elementy, a następnie wybierz XenApp wdrażania maszyn wirtualnych.
 
 ### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grupy trybu failover
 
 Plany odzyskiwania można dostosować w taki sposób, aby dodać grupy trybu failover dla określonej kolejności uruchamiania, skrypty i działania ręczne. Następujące grupy muszą zostać dodane do planu odzyskiwania.
 
-1. Grupa1 trybu failover: DNS AD
-2. Trybu failover grupa2: Maszyny wirtualne SQL Server
-2. Grupa trybu failover 3: VDA głównego obrazu w maszynie Wirtualnej
+1. Grupa1 trybu failover: USŁUGI AD DNS
+2. Group2 trybu failover: Maszyny wirtualne z programem SQL Server
+2. Grupa trybu failover 3: VDA maszynę Wirtualną z obrazu Master
 3. Grupa trybu failover 4: Kontroler dostarczania StoreFront maszyny wirtualne i server
 
 
@@ -149,14 +149,15 @@ Można uruchamiać skrypty przed lub po określonej grupy w planie odzyskiwania.
 
 Plan odzyskiwania dostosowany wygląda jak poniżej:
 
-1. Grupa1 trybu failover: DNS AD
-2. Trybu failover grupa2: Maszyny wirtualne SQL Server
-3. Grupa trybu failover 3: VDA głównego obrazu w maszynie Wirtualnej
+1. Grupa1 trybu failover: USŁUGI AD DNS
+2. Group2 trybu failover: Maszyny wirtualne z programem SQL Server
+3. Grupa trybu failover 3: VDA maszynę Wirtualną z obrazu Master
 
    >[!NOTE]     
    >Kroki od 4, 6 i 7 zawierający akcje ręczne lub skrypt mają zastosowanie do lokalnych XenApp > środowisko z katalogami MCS/Odwiedziny.
 
-4. Akcja ręczna lub skryptu grupa 3: zamykania wzorca VDA maszynę Wirtualną Master VDA maszyna wirtualna przełączone w tryb failover Azure będzie w stanie uruchomienia. Aby utworzyć nowe katalogi MCS przy użyciu hostingu platformy Azure, wzorca VDA maszyna wirtualna jest wymagane będzie zatrzymane (przydzielone de) stanu. Zamknij maszynę Wirtualną z witryny Azure portal.
+4. Akcja ręczna lub skryptu grupa 3: Zamknij wzorca VDA maszyny Wirtualnej.
+Wzorzec VDA maszyna wirtualna przełączone w tryb failover Azure będzie w stanie uruchomienia. Aby utworzyć nowe katalogi MCS przy użyciu hostingu platformy Azure, wzorca VDA maszyna wirtualna jest wymagane będzie zatrzymane (przydzielone de) stanu. Zamknij maszynę Wirtualną z witryny Azure portal.
 
 5. Grupa trybu failover 4: Kontroler dostarczania StoreFront maszyny wirtualne i server
 6. Grupa 3 ręczny lub skryptu akcji 1:

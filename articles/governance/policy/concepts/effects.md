@@ -1,5 +1,5 @@
 ---
-title: Omówienie usługi Azure Policy efekty
+title: Zrozumienie, jak działają efekty
 description: Definicja zasad platformy Azure ma różne efekty, określające sposób zarządzania i podać zgodności.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 2bed2f52f29d5c97ab576fae73498b60fb7ecc30
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079804"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310848"
 ---
 # <a name="understand-policy-effects"></a>Interpretacja efektów działania zasad
 
@@ -120,7 +120,7 @@ Efektu odrzucenia nie ma żadnych dodatkowych właściwości do użycia w **nast
 
 ### <a name="deny-example"></a>Przykład Odmów
 
-Przykład: Użycie efektu odrzucenia.
+Przykład: Przy użyciu efektu odrzucenia.
 
 ```json
 "then": {
@@ -142,7 +142,7 @@ Efekt inspekcji nie ma żadnych dodatkowych właściwości do użycia w **nastę
 
 ### <a name="audit-example"></a>Przykład inspekcji
 
-Przykład: Użycie efektu audytu.
+Przykład: Przy użyciu efektu audytu.
 
 ```json
 "then": {
@@ -187,7 +187,7 @@ AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania twor
 
 ### <a name="auditifnotexists-example"></a>Przykład AuditIfNotExists
 
-Przykład: Ocenia maszyn wirtualnych, aby określić, jeśli rozszerzenia ochrony przed złośliwym oprogramowaniem istnieje, a następnie przeprowadza inspekcję, gdy brak.
+Przykład: Oblicza maszyn wirtualnych, aby określić, jeśli rozszerzenia ochrony przed złośliwym oprogramowaniem istnieje, a następnie przeprowadza inspekcję, gdy brak.
 
 ```json
 {
@@ -265,7 +265,7 @@ Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowyw
 
 ### <a name="deployifnotexists-example"></a>Przykład DeployIfNotExists
 
-Przykład: Ocenia baz danych SQL Server w celu ustalenia, czy włączono transparentDataEncryption. Jeśli nie, następnie jest wykonywany wdrożenia, aby go włączyć.
+Przykład: Oblicza baz danych SQL Server w celu ustalenia, czy włączono transparentDataEncryption. Jeśli nie, następnie jest wykonywany wdrożenia, aby umożliwić.
 
 ```json
 "if": {

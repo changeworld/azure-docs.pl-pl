@@ -1,5 +1,5 @@
 ---
-title: 'Zestaw SDK platformy .NET: Operacje systemu plików w usługi Azure Data Lake Storage Gen1 | Dokumentacja firmy Microsoft'
+title: 'ZESTAW SDK PLATFORMY .NET: Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
 description: Użyj usługi Azure Storage Gen1 .NET zestawu SDK Data Lake można wykonywać operacje systemu plików w Data Lake Storage Gen1, takie jak tworzenie folderów itp.
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 71ddbc2363075b721bfbd418bd29e5154baba866
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391491"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163241"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -146,7 +146,7 @@ Poniższy fragment kodu zwraca właściwości skojarzone z plikiem lub katalogie
     var directoryEntry = client.GetDirectoryEntry(fileName);
     PrintDirectoryEntry(directoryEntry);
 
-Definicja metody `PrintDirectoryEntry` jest dostępna w ramach przykładu [w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted). 
+Definicja `PrintDirectoryEntry` metoda jest dostępna w ramach przykładu [w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted). 
 
 ## <a name="rename-a-file"></a>Zmienianie nazwy pliku
 Poniższy fragment kodu zmienia nazwę istniejącego pliku w ramach konta Data Lake Storage Gen1.
@@ -164,7 +164,7 @@ Poniższy fragment kodu wylicza katalogi na koncie usługi Data Lake Storage Gen
         PrintDirectoryEntry(entry);
     }
 
-Definicja metody `PrintDirectoryEntry` jest dostępna w ramach przykładu [w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted).
+Definicja `PrintDirectoryEntry` metoda jest dostępna w ramach przykładu [w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted).
 
 ## <a name="delete-directories-recursively"></a>Rekursywne usuwanie katalogów
 Poniższy fragment kodu rekursywnie usuwa katalog i wszystkie jego podkatalogi.
