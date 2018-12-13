@@ -1,5 +1,5 @@
 ---
-title: Wizualizowanie danych w Eksploratorze usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
+title: Eksplorator usługi Azure Insights serii czasu w wersji zapoznawczej — wizualizowanie danych w Eksploratorze usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
 description: W tym artykule opisano funkcje i opcje dostępne w aplikacji sieci web Eksploratora usługi Azure czas Series Insights w wersji zapoznawczej.
 author: ashannon7
 ms.author: anshan
@@ -9,12 +9,13 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 3a2958d838f0646ac030421b3785fc11a1466dd6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 5372a36291ee13966d497bdae83a6e214dce99b9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086729"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272341"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Wizualizowanie danych w programie explorer (wersja zapoznawcza)
 
@@ -24,7 +25,7 @@ W tym artykule opisano funkcje i opcje dostępne w wersji zapoznawczej Azure cza
 
 Przed skorzystaniem z Eksploratora usługi Azure czas Series Insights w wersji zapoznawczej, musisz mieć:
 
-* Masz środowisko usługi Time Series Insights Konfigurowanie. Aby uzyskać więcej informacji, zobacz [samouczek: Azure czas Series Insights w wersji zapoznawczej](./time-series-insights-update-create-environment.md).
+* Masz środowisko usługi Time Series Insights Konfigurowanie. Aby uzyskać więcej informacji, zobacz [samouczka: Wersja zapoznawcza usługi Azure Time Series Insights](./time-series-insights-update-create-environment.md).
 * Zapewnia dostęp do danych do środowiska usługi Time Series Insights, który został utworzony dla konta. Można zapewnić dostęp do innych użytkowników oraz do siebie.
 * Dodawanie źródła zdarzeń do środowiska usługi Time Series Insights w celu wypychania danych do środowiska.
 
@@ -34,12 +35,12 @@ Przed skorzystaniem z Eksploratora usługi Azure czas Series Insights w wersji z
 
 Eksplorator usługi Azure czas Series Insights w wersji zapoznawczej obejmuje następujące elementy:
 
-* **Pasek nawigacyjny**: pozwala na przełączanie między stronami analizy i modelu.
+* **Pasek nawigacyjny**: Umożliwia przechodzenie między stronami analizy i modelu.
 * **Drzewo hierarchia**: Umożliwia wybranie określonych danych elementów do wykreślenia.
-* **Czas serii dobrze**: wyświetla elementów aktualnie wybranych danych.
-* **Panel wykresu**: Wyświetla bieżące wykresu pracy.
-* **Oś czasu**: umożliwia modyfikowanie przedział czasu swojej pracy.
-* **Pasek aplikacji**: zawiera użytkownika opcje zarządzania, takich jak bieżącej dzierżawy i pozwala na zmianę ustawień motywu i języka.
+* **Czas serii dobrze**: Wyświetla elementów aktualnie wybranych danych.
+* **Panel wykresu**: Wyświetla bieżący wykresu pracy.
+* **Oś czasu**: Umożliwia modyfikowanie przedział czasu swojej pracy.
+* **Pasek aplikacji**: Zawiera opcje zarządzania użytkownika, takie jak bieżącej dzierżawy i pozwala na zmianę ustawień motywu i języka.
 
 ## <a name="time-series-insights-preview-environment-panel"></a>Panel środowiska Series Insights w wersji zapoznawczej czasu
 
@@ -53,17 +54,17 @@ Na panelu środowiska są wyświetlane wszystkie środowiska usługi Time Series
 
 Z menu nawigacji można przełączać się między aplikacjami usługi Time Series Insights:
 
-* **Analizowanie**: pozwala na wykresie i wykonywać zaawansowane analizy na modelowanych lub niemodelowanych szeregami czasowymi.
+* **Analizowanie**: Umożliwia wykresu i wykonywać zaawansowane analizy na modelowanych lub niemodelowanych szeregami czasowymi.
 
-* **Model**: umożliwia wypychanie nowe typy czasu Series Insights w wersji zapoznawczej, hierarchie i wystąpień do modelu usługi Time Series Insights.
+* **Model**: Umożliwia wypychanie nowe typy czasu Series Insights w wersji zapoznawczej, hierarchie i wystąpień do modelu usługi Time Series Insights.
 
 ## <a name="time-series-insights-preview-model-authoring"></a>Time Series Insights w wersji zapoznawczej modelu tworzenia
 
 Za pomocą tej aplikacji można wykonywać operacje tworzenia, odczytu, aktualizowania lub usuwania (CRUD) w swojej modelu szeregów czasowych.  
 
-* **Typ modelu serii czasu**: typy umożliwiają definiowanie zmiennych lub formuły do wykonywania obliczeń usługi Time Series Insights. Są one skojarzone z danego wystąpienia usługi Time Series Insights. Typ może mieć co najmniej jednej zmiennej.
-* **Czas hierarchii modelu szeregów**: hierarchie są systematycznego organizacji danych. Hierarchie przedstawiać relacje między różnymi jednostkami danych usługi Time Series Insights.
-* **Wystąpienie modelu serii czasu**: wystąpienia są szeregów czasowych, samodzielnie. W większości przypadków są DeviceID lub AssetID, który jest unikatowy identyfikator elementu zawartości w środowisku.
+* **Typ modelu serii czasu**: Typy Series Insights czasu Włącz definiowania zmiennych lub formuły do wykonywania obliczeń. Są one skojarzone z danego wystąpienia usługi Time Series Insights. Typ może mieć co najmniej jednej zmiennej.
+* **Czas hierarchii modelu szeregów**: Hierarchie to systematycznego organizacji danych. Hierarchie przedstawiać relacje między różnymi jednostkami danych usługi Time Series Insights.
+* **Wystąpienie modelu serii czasu**: Wystąpienia są szeregów czasowych, samodzielnie. W większości przypadków są DeviceID lub AssetID, który jest unikatowy identyfikator elementu zawartości w środowisku.
 
 Aby dowiedzieć się więcej na temat modelu szeregów czasowych, zobacz [modeli szeregów razy](./time-series-insights-update-tsm.md).
 
@@ -94,19 +95,19 @@ Za pomocą wykresu można wyświetlić wystąpienia serii czasu jako wiersze. Mo
 
   ![Eksplorator 8][8]
 
-1. **Wybrany zakres dat**: formanty elementy danych, które są dostępne dla wizualizacji.
+1. **Wybrany zakres dat**: Określa elementy danych, które są dostępne dla wizualizacji.
 
-1. **Wewnętrzny narzędzia suwaka zakresu dat**: za pomocą dwóch formantów punktu końcowego, przeciągając je w okresie żądany czas.
+1. **Wewnętrzny narzędzia suwaka zakresu dat**: Za pomocą dwóch formantów punktu końcowego, przeciągając je w okresie żądany czas.
 
-1. **Czas formantu Zwiń zakresu**: zwija i rozwija Edytor panelu zakresu czasu.
+1. **Czas formantu Zwiń zakresu**: Zwija i rozwija Edytor panelu zakresu czasu.
 
-1. **Formant formatu osi y**: przełączanie po kolei dostępne opcje osi y w widoku:
+1. **Formant formatu osi y**: Przełączanie po kolei dostępne opcje osi y w widoku:
 
     * `Default`: Każdy wiersz zawiera poszczególne osi y.
-    * `Stacked`: Służy do stosu wielu wierszy w tej samej osi y, przy użyciu danych osi y zmiany na podstawie wiersza zaznaczone.
+    * `Stacked`: Umożliwia stosu wielu wierszy w tej samej osi y, przy użyciu danych osi y zmiany na podstawie wiersza zaznaczone.
     * `Shared`: Wyświetlane razem wszystkie dane osi y.
 
-1. **Bieżący element danych**: obecnie wybranego elementu danych i jego szczegóły.
+1. **Bieżący element danych**: Element aktualnie wybrane dane i jego szczegóły.
 
 Można przejść do szczegółów w wycinka danych określonego przez kliknięcie lewym przyciskiem myszy punkt danych na bieżącego wykresu, a następnie przeciągając zaznaczonego obszaru do wybranego punktu końcowego. Kliknij prawym przyciskiem myszy obszar wygaszone, wybrane, a następnie kliknij przycisk powiększenia, jak pokazano to na poniższej ilustracji:
 
@@ -126,19 +127,19 @@ Podczas pracy z czasu Series Insights w wersji zapoznawczej, najpierw należy wy
 
   ![dwanaście Explorer][12]
 
-1. **Narzędzie suwaka zakresu dat wewnętrzny**: za pomocą dwóch formantów punktu końcowego, przeciągając je w okresie żądany czas. Ten zakres dat wewnętrzny jest ograniczony przez formant suwaka zakresu dat zewnętrznego.
+1. **Narzędzie suwaka zakresu dat wewnętrzny**: Za pomocą dwóch formantów punktu końcowego, przeciągając je w okresie żądany czas. Ten zakres dat wewnętrzny jest ograniczony przez formant suwaka zakresu dat zewnętrznego.
 
-1. **Zwiększać i zmniejszać przycisków zakresu dat**: zwiększyć lub zmniejszyć czas span, wybierając przycisk albo interwał ma.
+1. **Zwiększać i zmniejszać przycisków zakresu dat**: Zwiększanie lub zmniejszanie swoje przedział czasu, wybierając przycisk albo dla interwału, który ma.
 
-1. **Czas formantu Zwiń zakresu**: tego formantu sieci web można ukrywać wszystkich kontrolek z wyjątkiem narzędzia suwaka zakresu dat wewnętrzny.
+1. **Czas formantu Zwiń zakresu**: Tego formantu sieci web pozwala na ukrywanie wszystkich kontrolek z wyjątkiem narzędzia suwaka zakresu dat wewnętrzny.
 
-1. **Kontrolka suwaka zakresu dat zewnętrzne**: Użyj formantów punktu końcowego, aby wybrać zakres zewnętrzne daty, która będzie dostępna dla kontrolki zakres dat wewnętrzny.
+1. **Kontrolka suwaka zakresu dat zewnętrzne**: Użyj kontrolki punktu końcowego, aby wybrać zakres zewnętrzne daty, która będzie dostępna dla kontrolki zakres dat wewnętrzny.
 
-1. **Krótkie okresy daty rozwijanej zakresu**: umożliwia szybkie przełączanie się między wstępnie ustawiony czas zakresu wybrane opcje, takie jak ostatnie 30 minut, z ostatnich 12 godzin lub niestandardowy zakres. Zmiana ta wartość zmienia się również zakresy dostępne interwał omówione w narzędziu suwaka rozmiar interwału.
+1. **Krótkie okresy daty rozwijanej zakresu**: Pozwala na szybkie przełączanie się między wstępnie ustawiony czas zakresu wybrane opcje, takie jak ostatnie 30 minut, z ostatnich 12 godzin lub niestandardowy zakres. Zmiana ta wartość zmienia się również zakresy dostępne interwał omówione w narzędziu suwaka rozmiar interwału.
 
-1. **Rozmiar interwału suwak**: okresu umożliwia można powiększyć lub pomniejszyć odstępach czasu za pośrednictwem takie same. Ta akcja zapewnia dokładniejszą kontrolę ruchu między wycinkami dużych czasu. Wyświetla smooth trendów w dół wycinki tak małej, jak milisekund, dzięki czemu możesz widzieć cenowe szczegółowe, wysokiej rozdzielczości, dane. Domyślne suwaka punkt początkowy ustawiono jako najbardziej optymalną wgląd w dane z zaznaczenia rozdzielczości, szybkości zapytań i stopień szczegółowości.
+1. **Rozmiar interwału suwak**: Umożliwia powiększanie i pomniejszanie odstępach czasu za pośrednictwem tego samego przedział czasu. Ta akcja zapewnia dokładniejszą kontrolę ruchu między wycinkami dużych czasu. Wyświetla smooth trendów w dół wycinki tak małej, jak milisekund, dzięki czemu możesz widzieć cenowe szczegółowe, wysokiej rozdzielczości, dane. Domyślne suwaka punkt początkowy ustawiono jako najbardziej optymalną wgląd w dane z zaznaczenia rozdzielczości, szybkości zapytań i stopień szczegółowości.
 
-1. **Zakres do i z formantu sieci web dat**: za pomocą tego formantu sieci web można łatwo kliknij i wybierz odpowiednią datę i zakresy czasu. Kontrolka umożliwia również przełączać się między różnych strefach czasowych. Po wprowadzeniu zmian w celu zastosowania do Twojego bieżącego obszaru roboczego wybierz **Zapisz**.
+1. **Zakres do i z formantu sieci web dat**: Za pomocą tego formantu sieci web można łatwo kliknąć i wybrać odpowiednią datę i zakresy czasu. Kontrolka umożliwia również przełączać się między różnych strefach czasowych. Po wprowadzeniu zmian w celu zastosowania do Twojego bieżącego obszaru roboczego wybierz **Zapisz**.
 
   ![Eksplorator trzynaście][13]
 
@@ -169,8 +170,8 @@ Wybierz łącze kontrolki sieci web (wyróżnione), można wygenerować adresu U
 
 Azure czas Series Insights w wersji zapoznawczej obsługuje dwa motywy:
 
-* **Motyw jasny**: motyw domyślny, przedstawione w tym dokumencie.
-* **Motyw ciemny**: renderuje Eksploratora, jak pokazano poniżej:
+* **Motyw jasny**: Motyw domyślny, przedstawione w tym dokumencie.
+* **Motyw ciemny**:  Renderuje Eksploratora, jak pokazano poniżej:
 
   ![Eksplorator siedemnastu][17]
 
@@ -188,7 +189,7 @@ Audytów hierarchii zostanie wyświetlony panel terminów usługi Time Series In
 
 Panel Edytor warunków czasu Series Insights w wersji zapoznawczej przyjmuje następujące parametry:
 
-**Gdzie**: gdzie klauzula umożliwia szybkie filtr zdarzeń za pomocą zbiór operandów wymienione w poniższej tabeli. Jeśli wyszukiwania, wybierając operand, predykat jest automatycznie aktualizowana, oparte na tym wyszukiwaniem. Operand obsługiwane typy:
+**Gdzie**: Where — klauzula umożliwia szybkie filtr zdarzeń za pomocą zbiór operandów wymienione w poniższej tabeli. Jeśli wyszukiwania, wybierając operand, predykat jest automatycznie aktualizowana, oparte na tym wyszukiwaniem. Operand obsługiwane typy:
 
 | Operacja | Obsługiwane typy   | Uwagi |
 | --- | --- | --- |
@@ -205,7 +206,7 @@ Więcej informacji na temat zapytania obsługiwane operacje i typy danych, czyta
 
 **Miara**: Ta lista rozwijana zawiera wszystkie kolumny liczbowe (**wartości podwójnej precyzji**), można użyć jako elementy, dla bieżącego wykresu.
 
-**Podziel według**: tej listy rozwijanej są wyświetlane wszystkie dostępne podzielonych na kategorie kolumny (ciągi) w modelu, można grupować dane przy. Możesz dodać maksymalnie pięć warunki, aby wyświetlić na tej samej osi x. Wprowadź odpowiednie parametry, a następnie wybierz pozycję **Dodaj** można dodać nowej termin.
+**Podziel według**: Tej listy rozwijanej wyświetla wszystkie dostępne podzielonych na kategorie kolumny (ciągi) w modelu, można grupować dane przez. Możesz dodać maksymalnie pięć warunki, aby wyświetlić na tej samej osi x. Wprowadź odpowiednie parametry, a następnie wybierz pozycję **Dodaj** można dodać nowej termin.
 
   ![dwadzieścia Explorer][20]
 

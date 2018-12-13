@@ -5,9 +5,8 @@ keywords: Importowanie danych, formatu danych, typów danych, źródeł danych, 
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c194ee3b-838c-4efe-bb2a-c1d052326216
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 8f6bc6e1e13de879f81e6fc6f1f447d0c2856ced
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2f8c1eb43fddb21a59d4f00fd86b08d3fb3608f4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315260"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269961"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Importowanie danych szkoleniowych do usługi Azure Machine Learning Studio z różnych źródeł danych
 
@@ -39,10 +38,6 @@ Aby skorzystać z własnych danych w usłudze Machine Learning Studio, tworzenie
 > 
 
 Ten artykuł wprowadzający również w tym artykule omówiono sposób przygotowania danych do użycia w usłudze Machine Learning Studio i w tym artykule opisano, które formaty danych i typy danych są obsługiwane.
-
-> [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-> 
-> 
 
 ## <a name="get-data-ready-for-use-in-azure-machine-learning-studio"></a>Pobieranie danych gotowe do użycia w usłudze Azure Machine Learning Studio
 Usługa Machine Learning Studio jest przeznaczony do pracy z prostokątne lub tabelaryczne dane, takie jak dane tekstowe, rozdzielonych lub ze strukturą danych z bazy danych, chociaż w niektórych sytuacjach może użyć danych innych niż prostokątne.

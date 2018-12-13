@@ -4,9 +4,8 @@ description: Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azur
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -16,25 +15,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 501a9834e598fc8b1c11a86ef0ae9db1c19a66a7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311501"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269944"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Ocenianie wydajności modelu w usłudze Azure Machine Learning
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Ocenianie wydajności modelu w usłudze Azure Machine Learning Studio
+
 Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania. Przedstawiono trzy typowe scenariusze uczenia nadzorowanego: 
 
 * Regresji
 * Klasyfikacja binarna 
 * Wieloklasowej klasyfikacji
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Ocena wydajności modelu jest jednym z podstawowych etapów w procesie nauki o danych. Oznacza to, jak pomyślnie oceniania (prognozy) zestaw został przez uczonego modelu. 
 
-Usługę Azure Machine Learning obsługuje oceny modelu dwie jego główne maszyny modułów uczenia: [Evaluate Model] [ evaluate-model] i [krzyżowa Weryfikacja modelu] [ cross-validate-model]. Zezwalaj na te moduły, można zobaczyć, jak model działa pod względem liczby metryk, które są często używane podczas uczenia maszynowego i statystyki.
+Usługę Azure Machine Learning obsługuje oceny modelu dwie jego główne maszyny uczenia modułów: [Ocena modelu] [ evaluate-model] i [krzyżowa Weryfikacja modelu][cross-validate-model]. Zezwalaj na te moduły, można zobaczyć, jak model działa pod względem liczby metryk, które są często używane podczas uczenia maszynowego i statystyki.
 
 ## <a name="evaluation-vs-cross-validation"></a>Ocena programu vs. Krzyżowe sprawdzanie poprawności
 Ocena i krzyżowego sprawdzania poprawności są standardowe metody zadaniem jest mierzenie wydajności modelu. Zarówno generują metryki oceny, które można sprawdzić lub porównać te z innymi modelami.
@@ -64,7 +64,7 @@ Połączyć porty, jak pokazano poniżej na rysunku 1 i ustaw kolumny etykiety [
 Rysunek 1. Oceniania modelu regresji.
 
 ### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
-Po uruchomieniu eksperymentu, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję *Visualize* aby zobaczyć wyniki oceny. Są dostępne dla modele regresji metryk oceny: *oznacza błąd absolutny*, *głównego oznacza błąd absolutny*, *względny błąd absolutny*,  *Względna kwadrat błąd*i *determinacji*.
+Po uruchomieniu eksperymentu, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję *Visualize* aby zobaczyć wyniki oceny. Są dostępne dla modele regresji metryk oceny: *Średni bezwzględny błąd*, *Root Mean błąd absolutny*, *względny błąd absolutny*, *względem kwadrat błąd*i *współczynnik Oznaczanie*.
 
 Termin "error" w tym miejscu reprezentuje różnicy między wartością prognozowaną a wartością true. Wartość bezwzględna lub kwadrat różnica ta zazwyczaj obliczany jest do przechwytywania całkowita wielkość błąd we wszystkich wystąpieniach jako różnicy między wartością przewidywane i true może być ujemna w niektórych przypadkach. Metryki błąd zadaniem jest mierzenie wydajności predykcyjnego modelu regresji pod względem odchylenie oznacza jego przewidywań wartości true. Niższe wartości błąd oznacza, że model, który jest bardziej precyzyjne w podejmowaniu prognozy. Metrykę ogólny błąd zero oznacza, że model doskonałe dopasowanie danych.
 
@@ -106,7 +106,7 @@ Połączyć porty, jak pokazano poniżej na rysunku 5 i ustaw kolumny etykiety [
 Rysunek 5. Ocena Model klasyfikacji binarnej.
 
 ### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
-Po uruchomieniu eksperymentu, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję *Visualize* aby zobaczyć wyniki oceny (rysunek 7). Są dostępne dla modeli klasyfikacji binarnej metryki oceny: *dokładność*, *dokładności*, *Odwołaj*, *wynik F1*i  *AUC*. Ponadto moduł generuje macierz pomyłek, w którym wyświetlana jest liczba prawdziwie dodatnie, fałszywych wyników negatywnych, liczbę wyników fałszywie dodatnich i negatywów wartość true, a także *ROC*, *dokładności/odwołania*, i  *Przenoszenie* krzywych.
+Po uruchomieniu eksperymentu, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję *Visualize* aby zobaczyć wyniki oceny (rysunek 7). Są dostępne dla modeli klasyfikacji binarnej metryki oceny: *Dokładność*, *dokładności*, *Odwołaj*, *wynik F1*, i *AUC*. Ponadto moduł generuje macierz pomyłek, w którym wyświetlana jest liczba prawdziwie dodatnie, fałszywych wyników negatywnych, liczbę wyników fałszywie dodatnich i negatywów wartość true, a także *ROC*, *dokładności/odwołania*, i  *Przenoszenie* krzywych.
 
 Dokładność jest po prostu część wystąpień poprawnie sklasyfikowane. Zazwyczaj jest pierwszym metrykę, które przyjrzymy się podczas oceny klasyfikatora. Jednakże, gdy dane testowe jest niezrównoważone (gdzie większość wystąpień należą do jednej z klas) lub interesuje Cię bardziej w czasie wykonywania w jednej z klas, dokładność naprawdę nie odzwierciedla skuteczność klasyfikatora. W scenariuszu poziomu Klasyfikacja dochodu przyjęto założenie, że testujesz niektórych danych, gdzie 99% wystąpień reprezentują osób, które kwota zobowiązania, tym mniejsza lub równa 50 K rocznie. Jest możliwe uzyskanie 0.99 dokładności, przewidując klasy "< = 50K" dla wszystkich wystąpień. Klasyfikator w tym przypadku wydaje się być wysoki poziom ogólną, ale w rzeczywistości nie jest on sklasyfikować dowolny high-income (1%) dla użytkowników indywidualnych poprawnie.
 
@@ -116,13 +116,13 @@ Z tego powodu warto obliczenia dodatkowe metryki, które przechwycić bardziej k
 
 Rysunek 6. Macierz pomyłek klasyfikacji binarnej.
 
-Wracając do problemu klasyfikacji przychodów, firma Microsoft będzie chciała zadawać na kilka pytań oceny, które pomagają nam zrozumieć wydajność klasyfikatora używane. Bardzo naturalnych pytaniem jest: "poza osób, których model przewiduje się być zarabiać > 50 K (TP + FP), jak wiele zostały poprawnie klasyfikowane (TP)?" To pytanie, można uzyskać, analizując **dokładności** modelu, który jest część alarmów, które są poprawnie klasyfikowane: TP/(TP+FP). Jest inny, często zadawane pytania "poza wszystkich wysokiej zarabiać pracownikom dochodu > 50 k (TP + FN), ile klasyfikatora klasyfikowania poprawnie (TP)". Jest to rzeczywiście **Odwołaj**, lub wartość true, wartości dodatnich: TP/(TP+FN) klasyfikatora. Może się okazać, czy jest oczywisty kompromisu między dokładności i odwołania. Na przykład biorąc pod uwagę zestaw stosunkowo o zrównoważonym obciążeniu, klasyfikatora, który prognozuje przede wszystkim dodatnią wystąpień miałby wysokiej odwołania, ale raczej niski dokładności tyle wystąpień ujemna może być źle zakwalifikowane skutkuje dużą liczbę wyników fałszywie dodatnich. Aby zobaczyć, jak te dwie metryki w zależności od wykres, możesz kliknąć **dokładności/odwołania** krzywą na stronie dane wyjściowe wyniku oceny (część lewym górnym rogu rysunek 7).
+Wracając do problemu klasyfikacji przychodów, firma Microsoft będzie chciała zadawać na kilka pytań oceny, które pomagają nam zrozumieć wydajność klasyfikatora używane. Bardzo naturalnych pytaniem jest: "Poza osób, których model przewiduje się być zarabiać > 50 K (TP + FP), jak wiele zostały poprawnie klasyfikowane (TP)?" To pytanie, można uzyskać, analizując **dokładności** modelu, który jest część alarmów, które są poprawnie klasyfikowane: TP/(TP+FP). Jest inny, często zadawane pytania "poza wszystkich wysokiej zarabiać pracownikom dochodu > 50 k (TP + FN), ile klasyfikatora klasyfikowania poprawnie (TP)". Jest to rzeczywiście **Odwołaj**, lub wartość true, wartości dodatnich: TP/(TP+FN) klasyfikatora. Może się okazać, czy jest oczywisty kompromisu między dokładności i odwołania. Na przykład biorąc pod uwagę zestaw stosunkowo o zrównoważonym obciążeniu, klasyfikatora, który prognozuje przede wszystkim dodatnią wystąpień miałby wysokiej odwołania, ale raczej niski dokładności tyle wystąpień ujemna może być źle zakwalifikowane skutkuje dużą liczbę wyników fałszywie dodatnich. Aby zobaczyć, jak te dwie metryki w zależności od wykres, możesz kliknąć **dokładności/odwołania** krzywą na stronie dane wyjściowe wyniku oceny (część lewym górnym rogu rysunek 7).
 
 ![Wyniki oceny Klasyfikacja binarna](./media/evaluate-model-performance/7.png)
 
 Rysunek 7. Wyniki oceny klasyfikacji binarnej.
 
-Innego powiązane metryki, która jest często używana jest **wynik F1**, który przyjmuje dokładności i wycofaniu pod uwagę. Jest harmoniczną tych metryk 2 i jest obliczana jako takie: F1 = 2 (wycofaniu dokładności x) / (dokładności + odwołania). Wynik F1 jest dobrym sposobem na podsumowanie oceny w liczbie pojedynczej, ale zawsze jest dobrym rozwiązaniem, Przyjrzyj się dokładności i wycofaniu ze sobą, aby lepiej zrozumieć sposób działania klasyfikatora.
+Innego powiązane metryki, która jest często używana jest **wynik F1**, który przyjmuje dokładności i wycofaniu pod uwagę. Jest harmoniczną tych metryk 2 i jest obliczana w związku z tym: F1 = 2 (wycofaniu dokładności x) / (dokładności + odwołania). Wynik F1 jest dobrym sposobem na podsumowanie oceny w liczbie pojedynczej, ale zawsze jest dobrym rozwiązaniem, Przyjrzyj się dokładności i wycofaniu ze sobą, aby lepiej zrozumieć sposób działania klasyfikatora.
 
 Ponadto jeden sprawdzić wartość true, zawartość dodatnich a wyników fałszywie dodatnich w **odbiorcy operacyjnego cechy (ROC)** krzywej i odpowiedni **powierzchni pod krzywą (AUC)** wartość. Im bliżej krzywej na lewym górnym rogu, tym lepiej wydajności klasyfikatora (który jest maksymalizowanie true dodatnich przy jednoczesnym zmniejszeniu fałszywie dodatnich). Krzywe, które znajdują się blisko przekątnej wykres, wynikiem klasyfikatorów, które przeważnie do przewidywania przyszłych zdarzeń znajdujących się blisko zgadywania losowych.
 

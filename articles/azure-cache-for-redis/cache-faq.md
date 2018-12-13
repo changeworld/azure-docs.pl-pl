@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 3af59bd3b19744983a44157e108430620fae3532
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 311a576381927536386f5852336c3713fca5c3bf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020220"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260756"
 ---
-# <a name="azure-cache-for-redis-faq"></a>Pamięć podręczna systemu Azure dla usługi Redis — często zadawane pytania
+# <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Dowiedz się, jak się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli moje pytanie nie ma tutaj odpowiedzi?
@@ -35,30 +35,30 @@ Jeśli Twoje pytanie nie ma na liście, Daj nam znać, a my pomożemy Ci znaleź
 ## <a name="azure-cache-for-redis-basics"></a>Pamięć podręczna systemu Azure, aby uzyskać podstawowe informacje o pamięci podręcznej Redis
 Często zadawane pytania w tej sekcji obejmują niektóre z podstawy pamięć podręczna systemu Azure dla usługi Redis.
 
-* [Co to jest Azure pamięci podręcznej redis Cache?](#what-is-azure-redis-cache)
-* [Jak mogę rozpocząć pracę z usługą Azure Cache dla usługi Redis?](#how-can-i-get-started-with-azure-redis-cache)
+* [Co to jest Azure pamięci podręcznej redis Cache?](#what-is-azure-cache-for-redis)
+* [Jak mogę rozpocząć pracę z usługą Azure Cache dla usługi Redis?](#how-can-i-get-started-with-azure-cache-for-redis)
 
 Poniższe często zadawane pytania obejmuje podstawowe pojęcia i pytania dotyczące usługi Azure Cache dla usługi Redis i odpowiedzi są w innej sekcji często zadawane pytania.
 
-* [Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?](#what-redis-cache-offering-and-size-should-i-use)
-* [Jakie usługi Azure Cache dla klientów usługi Redis można używać?](#what-redis-cache-clients-can-i-use)
-* [Dla usługi Redis jest lokalnym emulator dla usługi Azure Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
+* [Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
+* [Jakie usługi Azure Cache dla klientów usługi Redis można używać?](#what-azure-cache-for-redis-clients-can-i-use)
+* [Dla usługi Redis jest lokalnym emulator dla usługi Azure Cache?](#is-there-a-local-emulator-for-azure-cache-for-redis)
 * [Jak monitorować kondycję i wydajność przepełnieniu pamięci podręcznej?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 
 ## <a name="planning-faqs"></a>Często zadawane pytania dotyczące planowania
-* [Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?](#what-redis-cache-offering-and-size-should-i-use)
-* [Pamięć podręczna systemu Azure, wydajność pamięci podręcznej Redis](#azure-redis-cache-performance)
+* [Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
+* [Pamięć podręczna systemu Azure, wydajność pamięci podręcznej Redis](#azure-cache-for-redis-performance)
 * [W jakim regionie ma szukać przepełnieniu pamięci podręcznej?](#in-what-region-should-i-locate-my-cache)
-* [Jak są rozliczane dla pamięci podręcznej Azure redis Cache?](#how-am-i-billed-for-azure-redis-cache)
-* [Dla pamięci podręcznej Redis w chmurze Azure Government, Azure albo chmura lub Microsoft Azure (Niemcy) można używać usługi Azure Cache?](#can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+* [Jak są rozliczane dla pamięci podręcznej Azure redis Cache?](#how-am-i-billed-for-azure-cache-for-redis)
+* [Dla pamięci podręcznej Redis w chmurze Azure Government, Azure albo chmura lub Microsoft Azure (Niemcy) można używać usługi Azure Cache?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>Programowanie — często zadawane pytania
 * [Co zrobić opcje konfiguracji StackExchange.Redis](#what-do-the-stackexchangeredis-configuration-options-do)
-* [Jakie usługi Azure Cache dla klientów usługi Redis można używać?](#what-redis-cache-clients-can-i-use)
-* [Dla usługi Redis jest lokalnym emulator dla usługi Azure Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
+* [Jakie usługi Azure Cache dla klientów usługi Redis można używać?](#what-azure-cache-for-redis-clients-can-i-use)
+* [Dla usługi Redis jest lokalnym emulator dla usługi Azure Cache?](#is-there-a-local-emulator-for-azure-cache-for-redis)
 * [Jak uruchomić polecenia Redis](#how-can-i-run-redis-commands)
-* [Dlaczego nie ma MSDN odwołanie do biblioteki klas np. niektóre z innymi usługami platformy Azure w pamięci podręcznej Redis Azure?](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
-* [Czy można używać usługi Azure Cache dla usługi Redis jako pamięci podręcznej sesji PHP?](#can-i-use-azure-redis-cache-as-a-php-session-cache)
+* [Dlaczego nie ma MSDN odwołanie do biblioteki klas np. niektóre z innymi usługami platformy Azure w pamięci podręcznej Redis Azure?](#why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
+* [Czy można używać usługi Azure Cache dla usługi Redis jako pamięci podręcznej sesji PHP?](#can-i-use-azure-cache-for-redis-as-a-php-session-cache)
 * [Co to są bazy danych Redis?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Często zadawane pytania zabezpieczeń
@@ -104,18 +104,18 @@ Każda pamięć podręczna Azure, oferty pamięci podręcznej Redis zapewnia ró
 
 Poniżej przedstawiono zagadnienia dotyczące wybierania oferty pamięci podręcznej.
 
-* **Pamięć**: warstwy podstawowa i standardowa oferują 250 MB – 53 GB. Warstwa Premium zapewnia do 530 GB. Aby uzyskać więcej informacji, zobacz [pamięci podręcznej Azure redis Cache cennik](https://azure.microsoft.com/pricing/details/cache/).
-* **Wydajność sieci**: w przypadku obciążenia, która wymaga wysokiej przepływności w warstwie Premium oferuje większej przepustowości w porównaniu do Standard lub Basic. Również w każdej warstwie większy rozmiar pamięci podręcznych korzystania z większej przepustowości z powodu podstawowej maszyny Wirtualnej, który jest hostem pamięci podręcznej. Zobacz [następujących tabeli](#cache-performance) Aby uzyskać więcej informacji.
-* **Przepływność**: warstwa Premium oferuje maksymalną przepustowość dostępna. Jeśli pamięć podręczna serwera lub klienta osiągnie limity przepustowości, może pojawić się przekroczeń limitu czasu po stronie klienta. Aby uzyskać więcej informacji zobacz w poniższej tabeli.
-* **Wysoka dostępność/SLA**: pamięci podręcznej Azure redis Cache gwarantuje, że standardowa/Premium pamięć podręczna jest dostępna co najmniej 99,9% czasu. Aby dowiedzieć się więcej o umowach SLA, zobacz [pamięci podręcznej Azure redis Cache cennik](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Umowa SLA obejmuje jedynie połączenia z punktami końcowymi pamięci podręcznej. Nie zapewnia ona ochrony przed utratą danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych.
-* **Trwałość danych redis**: warstwa Premium umożliwia utrwalanie danych pamięci podręcznej na koncie usługi Azure Storage. W pamięci podręcznej podstawowa i standardowa wszystkie dane są przechowywane tylko w pamięci. W przypadku podstawowych problemy dotyczące infrastruktury może być możliwej utracie danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych. Pamięć podręczna systemu Azure dla usługi Redis zapewnia RDB i AOF (wkrótce) opcje w stan trwały pamięci podręcznej Redis. Aby uzyskać więcej informacji, zobacz [Konfigurowanie trwałości dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-persistence.md).
-* **Klaster redis**: do utworzenia buforuje większe niż 53 GB i współdzielenie danych między wieloma węzłami Redis, umożliwia klastrowanie Redis, która jest dostępna w warstwie Premium. Każdy węzeł składa się z pary pamięci podręcznej podstawowy i węzeł repliki w celu zapewnienia wysokiej dostępności. Aby uzyskać więcej informacji, zobacz [Konfigurowanie klastrowania dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-clustering.md).
-* **Ulepszone zabezpieczenia i sieci izolacji**: Wdrażanie usługi Azure Virtual Network (VNET) zapewnia lepsze zabezpieczenia i izolację pamięci podręcznej usługi Azure redis cache, a także podsieci, zasady kontroli dostępu, i inne funkcje ograniczające dostęp. Aby uzyskać więcej informacji, zobacz [Konfigurowanie obsługi sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-vnet.md).
-* **Konfiguruj magazyn Redis**: W warstwach Standard i Premium, możesz skonfigurować dla powiadomienia przestrzeni kluczy pamięci podręcznej Redis.
-* **Maksymalna liczba połączeń klienta**: warstwa Premium oferuje maksymalną liczbę klientów, które można nawiązać połączenia z pamięci podręcznej Redis przy użyciu większej liczby połączeń dla większej wielkości pamięci podręcznych. Klaster nie zwiększa liczbę połączeń, które są dostępne dla klastra pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [pamięci podręcznej Azure Redis cennik](https://azure.microsoft.com/pricing/details/cache/).
-* **Dedykowany serwer Redis Core**: wszystkie rozmiary pamięci podręcznej w warstwie Premium mają rdzeni dedykowanych dla usługi Redis. W warstwach podstawowa i standardowa, rozmiar C1 powyżej się rdzeni dedykowanych dla serwera Redis.
+* **Pamięć**: Warstwy podstawowa i standardowa oferują 250 MB – 53 GB. Warstwa Premium zapewnia do 530 GB. Aby uzyskać więcej informacji, zobacz [pamięci podręcznej Azure redis Cache cennik](https://azure.microsoft.com/pricing/details/cache/).
+* **Wydajność sieci**: Jeśli masz obciążenie, która wymaga wysokiej przepływności, warstwa Premium oferuje większej przepustowości w porównaniu do wersji Standard lub Basic. Również w każdej warstwie większy rozmiar pamięci podręcznych korzystania z większej przepustowości z powodu podstawowej maszyny Wirtualnej, który jest hostem pamięci podręcznej. Zobacz [następujących tabeli](#cache-performance) Aby uzyskać więcej informacji.
+* **Przepływność**: Warstwa Premium oferuje maksymalną przepustowość dostępna. Jeśli pamięć podręczna serwera lub klienta osiągnie limity przepustowości, może pojawić się przekroczeń limitu czasu po stronie klienta. Aby uzyskać więcej informacji zobacz w poniższej tabeli.
+* **Wysoka dostępność/SLA**: Pamięć podręczna systemu Azure dla usługi Redis gwarantuje, że standardowa/Premium pamięć podręczna jest dostępna co najmniej 99,9% czasu. Aby dowiedzieć się więcej o umowach SLA, zobacz [pamięci podręcznej Azure redis Cache cennik](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Umowa SLA obejmuje jedynie połączenia z punktami końcowymi pamięci podręcznej. Nie zapewnia ona ochrony przed utratą danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych.
+* **Trwałość danych redis**: Warstwa Premium umożliwia utrwalanie danych pamięci podręcznej na koncie usługi Azure Storage. W pamięci podręcznej podstawowa i standardowa wszystkie dane są przechowywane tylko w pamięci. W przypadku podstawowych problemy dotyczące infrastruktury może być możliwej utracie danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych. Pamięć podręczna systemu Azure dla usługi Redis zapewnia RDB i AOF (wkrótce) opcje w stan trwały pamięci podręcznej Redis. Aby uzyskać więcej informacji, zobacz [Konfigurowanie trwałości dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-persistence.md).
+* **Klaster redis**: Tworzenie pamięci podręcznych większych niż 53 GB i współdzielenie danych między wieloma węzłami Redis, umożliwia klastrowanie Redis, która jest dostępna w warstwie Premium. Każdy węzeł składa się z pary pamięci podręcznej podstawowy i węzeł repliki w celu zapewnienia wysokiej dostępności. Aby uzyskać więcej informacji, zobacz [Konfigurowanie klastrowania dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-clustering.md).
+* **Ulepszone zabezpieczenia i sieci izolacji**: Wdrożenie usługi Azure Virtual Network (VNET) zapewnia lepsze zabezpieczenia i izolację pamięci podręcznej usługi Azure redis cache, a także podsieci, zasady kontroli dostępu, i inne funkcje ograniczające dostęp. Aby uzyskać więcej informacji, zobacz [Konfigurowanie obsługi sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-vnet.md).
+* **Konfiguruj magazyn Redis**: W warstwach Standard i Premium możesz skonfigurować dla powiadomienia przestrzeni kluczy pamięci podręcznej Redis.
+* **Maksymalna liczba połączeń klienta**: Warstwa Premium oferuje maksymalną liczbę klientów, które można nawiązać połączenia z pamięci podręcznej Redis przy użyciu większej liczby połączeń dla większej wielkości pamięci podręcznych. Klaster nie zwiększa liczbę połączeń, które są dostępne dla klastra pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [pamięci podręcznej Azure Redis cennik](https://azure.microsoft.com/pricing/details/cache/).
+* **Dedykowany serwer Redis Core**: W warstwie Premium dowolnej wielkości pamięci podręcznej ma rdzeni dedykowanych dla usługi Redis. W warstwach podstawowa i standardowa, rozmiar C1 powyżej się rdzeni dedykowanych dla serwera Redis.
 * **Redis jest jednowątkowym** więc mających więcej niż dwa rdzenie nie zapewnia dodatkowych korzyści w posiadanie tylko dwa rdzenie, ale większe rozmiary maszyny Wirtualnej zwykle mają większą przepustowość niż mniejsze rozmiary. Jeśli pamięć podręczna serwera lub klienta osiągnie limity przepustowości, zostanie wyświetlony przekroczeń limitu czasu po stronie klienta.
-* **Ulepszenia wydajności**: pamięci podręczne w warstwie Premium są wdrażane na sprzęcie, który ma szybszymi procesorami, zapewniając lepszą wydajność w porównaniu do warstwy podstawowa lub standardowa. Podręczna w warstwie Premium mają większą przepływnością i mniejszymi opóźnieniami.
+* **Ulepszenia wydajności**: Pamięci podręczne w warstwie Premium są wdrażane na sprzęcie, który ma szybszymi procesorami, co zapewnia lepszą wydajność w porównaniu do warstwy podstawowa lub standardowa. Podręczna w warstwie Premium mają większą przepływnością i mniejszymi opóźnieniami.
 
 <a name="cache-performance"></a>
 
@@ -349,7 +349,7 @@ Poniższe polecenia zawierają z przykładem użycia benchmark.exe pamięci podr
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50`
 * Żądań GET potokowe testu przy użyciu 1 ładunku k.
-  Uwaga: Uruchom zestaw test pokazano powyżej, najpierw w celu wypełnienia pamięci podręcznej
+  UWAGA: Uruchom test zestaw powyżej pierwszego w celu wypełnienia pamięci podręcznej
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50`
 

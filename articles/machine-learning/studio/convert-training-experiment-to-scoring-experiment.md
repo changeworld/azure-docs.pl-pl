@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: c08d098c5df968d15ff236121dc641dd53b27157
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ef54281b91147060e9c00bcc6e45e0db0fb8933a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102184"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273106"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio
 
@@ -29,11 +28,11 @@ Usługa Azure Machine Learning Studio zapewnia narzędzia potrzebne do opracowan
 
 Aby to zrobić, użyj Studio do tworzenia eksperymentu - o nazwie *eksperymentu szkolenia* — gdzie szkolenie, ocena i edytowanie modelu. Po zakończeniu, otrzymasz modelu gotowe do wdrożenia przez konwertowanie eksperymentu szkolenia do *eksperyment predykcyjny* skonfigurowanego na dane użytkownika wynik.
 
-Możesz zobaczyć przykład ten proces w [wskazówki: tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+Możesz zobaczyć przykład ten proces w [instruktażu: Tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
 
 Ten artykuł przedstawia szczegółowo omówi sposób eksperymentu szkolenia są konwertowane na eksperyment predykcyjny i sposób wdrażania tego eksperyment predykcyjny. Dzięki zrozumieniu tymi szczegółowymi informacjami, nauczysz się, jak skonfigurować wdrożonego modelu się bardziej skuteczne.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>Przegląd 
 

@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a596fe572e31a330fa976470d31dc7d0de5b0398
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ed57f80a210cdb9c7ff8e77da2269d8494892fcc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073741"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268431"
 ---
-# <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Usługi sieci Web Azure Machine Learning: wdrażanie i korzystanie
+# <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Usługi Azure Machine Learning Studio, usług sieci Web: Wdrażanie i korzystanie
 Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez Internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. Ponieważ usługi sieci web są zgodne ze specyfikacją REST, można je wywoływać z różnych języków programowania i platform, takich jak .NET, Java i z aplikacji, takich jak program Excel.
 
 W kolejnych sekcjach zawierają łącza do przewodników, kod i dokumentację ułatwiającą rozpoczęcie pracy.
@@ -37,10 +36,10 @@ Poniższe linki zawierają ogólne informacje o sposobie wdrażania nowej usług
 
 * Aby uzyskać ogólne informacje o sposobie wdrażania nowej usługi sieci web, który jest oparty na usłudze Resource Manager, zobacz [Wdrażanie nowej usługi sieci web](publish-a-machine-learning-web-service.md).
 * Aby uzyskać wskazówki dotyczące wdrażania usługi sieci web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
-* Pełny przewodnik o tym, jak utworzyć i wdrożyć usługi sieci web, zobacz [wskazówki krok 1: tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md).
+* Pełny przewodnik o tym, jak utworzyć i wdrożyć usługi sieci web, zobacz [wskazówki krok 1: Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md).
 * Aby uzyskać szczegółowe przykłady, które wdrażanie usługi sieci web zobacz:
 
-  * [Przewodnik, krok 5: Wdrażanie usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md)
+  * [Przewodnik, krok 5 Wdrażanie usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md)
   * [Jak wdrożyć usługę sieci web do wielu regionów](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Za pomocą dostawcy zasobów usługi sieci web API (interfejsów API usługi Azure Resource Manager)
@@ -90,7 +89,7 @@ Można testować usługi sieci web z poziomu portalu usług sieci Web Azure Mach
 
 * [Wdrażanie nowej usługi sieci Web](publish-a-machine-learning-web-service.md)
 * [Wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md)
-* [Przewodnik, krok 5: Wdrażanie usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md)
+* [Przewodnik, krok 5 Wdrażanie usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md)
 
 ### <a name="from-excel"></a>Z poziomu programu Excel
 Można pobrać szablonu programu Excel, który wykorzystuje usługę sieci web:

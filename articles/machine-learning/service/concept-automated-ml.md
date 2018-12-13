@@ -1,7 +1,7 @@
 ---
-title: Co to jest automatyczne usługi Machine Learning
+title: Automatyczne wybieranie algorytmu uczenia Maszynowego i dostosowywania
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się o usługi Azure Machine Learning można automatycznie wybrać algorytm dla Ciebie i wygenerować model w celu zapisania czasu przy użyciu parametrów i kryteria, aby wybrać najlepszy algorytm dla modelu.
+description: Dowiedz się, jak usługa Azure Machine Learning automatycznie wybrać algorytm dla Ciebie i wygenerować model z niego, aby zaoszczędzić czas przy użyciu parametrów i kryteria można wybrać najlepszy algorytm dla modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8c1641c975ff235b581f784f0965caf203a9562f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 09d4ef0b6a3455728ddab0484db4c701c6764214
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142534"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270930"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 

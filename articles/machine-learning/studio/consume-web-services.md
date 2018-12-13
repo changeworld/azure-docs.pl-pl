@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: 7f1950afc8e84f0bfeba7d51aa68ee126db38e2e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d7a48dcb56d2bed0e84714087bb9fda3fae65fc1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075136"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273786"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Jak używać usługi sieci web Azure Machine Learning Studio
 
@@ -33,7 +32,7 @@ Można znaleźć więcej informacji o tym, jak utworzyć i wdrożyć usługi Mac
 * Aby uzyskać więcej informacji na temat wdrażania usługi sieci Web, zobacz [wdrażanie usługi Machine Learning w sieci Web](publish-a-machine-learning-web-service.md).
 * Aby uzyskać więcej informacji na temat usługi Machine Learning ogólnie rzecz biorąc, odwiedź stronę [Centrum dokumentacji usługi Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>Przegląd
 Za pomocą usługi Azure Machine Learning w sieci Web aplikacji zewnętrznej komunikowanie się z modelem oceniania przepływu pracy usługi Machine Learning w czasie rzeczywistym. Wywołanie usługi Machine Learning w sieci Web zwraca wyniki prognozowania do aplikacji zewnętrznej. Wywołanie usługi Machine Learning w sieci Web polega na przekazaniu klucza interfejsu API, który jest tworzony podczas wdrożenia przewidywanie. Usługa Machine Learning w sieci Web jest oparta na interfejsu REST — popularnej architektury w projektach programistycznych w sieci web.
@@ -102,13 +101,13 @@ Aby nawiązać połączenie z usługą Machine Learning w sieci Web, **Microsoft
 
 **Instalowania Menedżera Microsoft.AspNet.WebApi.Client NuGet w programie Visual Studio**
 
-1. Publikowanie zestawu pobierania danych z UCI: 2 treści dla dorosłych klasy dataset usługi sieci Web.
+1. Publikowanie zestawu pobierania danych z UCI: Zawartość dla dorosłych 2 klasy zestawu danych usługi sieci Web.
 2. Kliknij pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.
 3. Wybierz **Microsoft.AspNet.WebApi.Client Install-Package**.
 
 **Aby uruchomić przykładowy kod**
 
-1. Publikowanie "przykład 1: Pobierz zestaw danych z UCI: zawartość dla dorosłych 2 klasy w zestawie danych" eksperyment i jest częścią usługi Machine Learning pobieranie próbek.
+1. Publikowanie "przykładowy 1: Pobierz zestaw danych z UCI: Zawartość dla dorosłych 2 klasy dataset"eksperymentu, część pobieranie próbek uczenia maszynowego.
 2. Przypisz apiKey przy użyciu klucza z usługi sieci Web. Zobacz **uzyskiwanie klucza autoryzacji usługi Azure Machine Learning** powyżej.
 3. Przypisz serviceUri o identyfikatorze URI żądania.
 
@@ -204,7 +203,7 @@ Aby połączyć się z usługą Machine Learning w sieci Web, użyj **urllib2** 
 
 **Aby uruchomić przykładowy kod**
 
-1. Wdrażanie "przykład 1: Pobierz zestaw danych z UCI: zawartość dla dorosłych 2 klasy w zestawie danych" eksperyment i jest częścią usługi Machine Learning pobieranie próbek.
+1. Wdrażanie "przykładowy 1: Pobierz zestaw danych z UCI: Zawartość dla dorosłych 2 klasy dataset"eksperymentu, część pobieranie próbek uczenia maszynowego.
 2. Przypisz apiKey przy użyciu klucza z usługi sieci Web. Zobacz **uzyskiwanie klucza autoryzacji usługi Azure Machine Learning** sekcji na początku tego artykułu.
 3. Przypisz serviceUri o identyfikatorze URI żądania.
 

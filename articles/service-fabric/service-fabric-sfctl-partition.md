@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 93478e5d13ef649b86ebc047f4e53f1486e2ff68
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c2bb1c0147d38b4286e2cdfb2d161eaa0704e393
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493957"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271491"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Zapytanie partycji i zarządzania nimi dla dowolnej usługi.
@@ -30,9 +30,9 @@ Zapytanie partycji i zarządzania nimi dla dowolnej usługi.
 | --- | --- |
 | utrata danych | Ten interfejs API będzie wywoływać utrata danych dla określonej partycji. |
 | data-loss-status | Pobiera postęp pracy przy użyciu interfejsu API StartDataLoss operacji utraty danych partycji. |
-| kondycja | Pobiera kondycji określonej partycji usługi Service Fabric. |
+| zdrowie | Pobiera kondycji określonej partycji usługi Service Fabric. |
 | informacje | Pobiera informacje o partycji usługi Service Fabric. |
-| lista | Pobiera listę partycji usługi Service Fabric. |
+| list | Pobiera listę partycji usługi Service Fabric. |
 | ładowanie | Pobiera informacje o ładowaniu określonej partycji usługi Service Fabric. |
 | Resetowanie obciążenia | Resetuje bieżącego obciążenia partycji usługi Service Fabric. |
 | utraciła kworum | Wywołuje utraciła kworum dla partycji danej usługi stanowej. |
@@ -47,8 +47,9 @@ Zapytanie partycji i zarządzania nimi dla dowolnej usługi.
 ## <a name="sfctl-partition-data-loss"></a>Interfejs sfctl partycji z utratą danych
 Ten interfejs API będzie wywoływać utrata danych dla określonej partycji.
 
-Wywoła wywołanie interfejsu API OnDataLossAsync partycji.  Ten interfejs API będzie wywoływać utrata danych dla określonej partycji. Wywoła wywołanie interfejsu API OnDataLoss partycji. Utrata danych rzeczywistych będzie zależeć od określonej tryb DataLossMode. <br> PartialDataLoss — tylko kworum replik są usuwane i OnDataLoss zostanie wywołany dla partycji, ale utraty rzeczywistych danych zależy od obecności śledząc replikacji. <br>FullDataLoss — wszystkie repliki są usunięte dlatego wszystkie dane zostaną utracone i OnDataLoss zostanie wywołany. <br>Ten interfejs API powinna być wywoływana z usługą stanową jako element docelowy. Wywołanie tego interfejsu API z usługą system jako element docelowy nie jest zalecane. 
-> [!NOTE]
+Wywoła wywołanie interfejsu API OnDataLossAsync partycji.  Ten interfejs API będzie wywoływać utrata danych dla określonej partycji. Wywoła wywołanie interfejsu API OnDataLoss partycji. Utrata danych rzeczywistych będzie zależeć od określonej tryb DataLossMode.  <br> -PartialDataLoss — tylko kworum replik są usuwane i OnDataLoss zostanie wywołany dla partycji, ale utraty rzeczywistych danych zależy od obecności śledząc replikacji.  <br> -FullDataLoss — wszystkie repliki są usuwane. Dlatego wszystkie dane zostaną utracone i OnDataLoss zostanie wywołany. Ten interfejs API powinna być wywoływana z usługą stanową jako element docelowy. Wywołanie tego interfejsu API z usługą system jako element docelowy nie jest zalecane.
+
+> [!NOTE] 
 > Po wywołaniu tego interfejsu API nie można cofnąć. Wywoływanie CancelOperation tylko zatrzymać wykonywanie i wyczyścić stanu systemu wewnętrznego. Go nie spowoduje przywrócenia danych Jeśli polecenie zanotowano daleko, aby spowodować utratę danych. Wywołaj interfejs API GetDataLossProgress z tym samym identyfikatorem OperationId do zwracania informacji o nieudanej operacji pracę z tym interfejsem API.
 
 ### <a name="arguments"></a>Argumenty
@@ -314,9 +315,9 @@ Raporty stan kondycji określonej partycji usługi Service Fabric. Raport musi z
 | --kondycji — właściwość [wymagane] | Właściwość o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągu i stałych wyliczenia aby zezwalał na elastyczność reportera do kategoryzowania warunek stanu, która powoduje uruchomienie raportu. Na przykład reportera o ID "LocalWatchdog" można monitorować stan wolnego w węźle, aby go zgłosić właściwości "AvailableDisk" w tym węźle. Ten sam reportera monitorować łączność węzeł tak go zgłosić właściwości "Łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia dotyczące kondycji oddzielnych dla określonego węzła. Wraz z SourceId właściwość jednoznacznie identyfikuje informacje o kondycji. |
 | — stan kondycji [wymagane] | Możliwe wartości to\: "Nieprawidłowy", "Ok", "Ostrzeżenie", "Error", "Nieznany". |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która określa składnik systemu klienta/strażnika, który wygenerował informacji o kondycji. |
+| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która identyfikuje składnik klienta/strażnika/systemu, który wygenerował informacji o kondycji. |
 | — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst, które umożliwiają dodawanie ludzi do odczytu informacji na temat raportu. Maksymalna długość ciągu opisu wynosi 4096 znaków. Jeśli podany ciąg jest dłuższy, zostaną automatycznie obcięte. W przypadku obcięty, ostatnie znaki opis zawiera znacznik "[obcięte]", a ciąg łączny rozmiar wynosi 4096 znaków. Obecność znacznika wskazuje, aby użytkownicy tej obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
-| --bezpośrednim | Flaga oznaczająca, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
+| --bezpośrednim | Flaga, która wskazuje, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
 | --remove gdy wygasł | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ustawiono wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po upływie. Wartość tej właściwości to false domyślnie. Gdy klienci okresowo raportu ustala RemoveWhenExpired false (domyślnie). W ten sposób jest zgłaszającą ma problemy (np. zakleszczenia) i nie można zgłosić jednostki jest oceniany na błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
 | --numer sekwencyjny | Numer sekwencji dla tego raportu o kondycji jako ciągu numerycznego. <br><br> Numer sekwencyjny raportu służy magazynu kondycji do wykrywania stare raportów. Jeśli nie zostanie określony, numer sekwencyjny został wygenerowany automatycznie przez klienta usługi kondycji po dodaniu raportu. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |

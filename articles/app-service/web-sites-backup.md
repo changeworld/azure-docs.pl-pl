@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kopii zapasowej aplikacji na platformie Azure
+title: Tworzenie kopii zapasowej aplikacji — usłudze Azure App Service
 description: Dowiedz się, jak tworzyć kopie zapasowe swoich aplikacji w usłudze Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 8035a704a76d8f6287addff9c5503eb93f8e04fc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 95fc4567248ca8201174494eee2da5922b7d0f0e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227845"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269230"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [usługi Azure App Service](app-service-web-overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem. Aplikację można przywrócić do migawki poprzedniego stanu przez zastąpienie istniejącej aplikacji lub przywrócenie do innej aplikacji. 
@@ -75,7 +76,7 @@ Następujące rozwiązania bazy danych są obsługiwane za pomocą funkcji Kopia
 
 2. W **kopii zapasowej** stronie, kliknij **Konfiguruj**
 ![kliknij przycisk Konfiguruj](./media/web-sites-backup/ClickConfigure1.png)
-3. W **konfiguracji kopii zapasowej** kliknij **magazynu: nieskonfigurowane** konfigurowania konta magazynu.
+3. W **konfiguracji kopii zapasowej** kliknij **magazynu: Nieskonfigurowane** konfigurowania konta magazynu.
    
     ![Wybierz konto magazynu][ChooseStorageAccount]
 4. Wybierz miejsce docelowe kopii zapasowej, wybierając **konta magazynu** i **kontenera**. Konto magazynu musi należeć do tej samej subskrypcji co aplikacja, który chcesz utworzyć kopię zapasową. Jeśli chcesz, można utworzyć nowe konto magazynu lub nowy kontener na odpowiednich stronach. Gdy wszystko będzie gotowe, kliknij przycisk **wybierz**.

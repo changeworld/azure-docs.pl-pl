@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 526c89a83a102c80bf1ddb5a5d950b0367a9cd69
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b929608d64e747d6e768da4ee6627f9e6b09a83a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076377"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270095"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Korzystanie z parametrów usług sieci web Azure Machine Learning Studio
 Usługi sieci web Azure Machine Learning jest tworzony przez opublikowanie eksperyment, który zawiera moduły z konfigurowalne parametry. W niektórych przypadkach można zmienić zachowanie modułu, gdy jest uruchomiona usługa sieci web. *Parametry usługi w sieci Web* pozwalają wykonać to zadanie. 
@@ -30,7 +29,7 @@ Typowym przykładem jest konfigurowanie [importu danych] [ reader] modułu, aby 
 
 Można ustawić parametry usługi sieci Web i skojarzyć je z co najmniej jeden parametr modułu w eksperymencie. Ponadto można określić, czy są one wymagane lub opcjonalne. Użytkownik usługi sieci web może następnie udostępniać wartości dla tych parametrów, gdy będą wywoływać usługi sieci web. 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="how-to-set-and-use-web-service-parameters"></a>Jak ustawić i korzystanie z parametrów usług sieci Web
 Należy zdefiniować parametr usługi sieci Web, klikając ikonę obok parametrów dla modułu i wybierając polecenie "Ustaw jako parametr usługi sieci web". Tworzy nowy parametr usługi sieci Web i łączy ją do tego parametru modułu. Następnie podczas uzyskiwania dostępu do usługi sieci web użytkownik może określić wartość dla parametru usługi sieci Web i zostanie zastosowany do parametru modułu.

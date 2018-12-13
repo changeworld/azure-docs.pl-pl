@@ -1,5 +1,5 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: Zmiana konta usługi Azure AD Connect Sync | Dokumentacja firmy Microsoft'
+title: 'Synchronizacja programu Azure AD Connect:  Zmiana konta usługi Azure AD Connect Sync | Dokumentacja firmy Microsoft'
 description: W tym dokumencie tematu opisano klucza szyfrowania oraz jak je porzucić, po zmianie hasła.
 services: active-directory
 keywords: Konto usługi synchronizacji programu Azure AD, hasło
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a0cdaa54d0da58a02cbe9fcda36cbaff6b1fab4a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747256"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184903"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Zmienianie hasła konta usługi synchronizacji Azure AD Connect
 Jeśli zmienisz hasło do konta usługi Azure AD Connect sync, usługa synchronizacji nie będzie możliwe start poprawnie dopiero po przeprowadzeniu zostały porzucone klucza szyfrowania i ponownie zainicjować hasło do konta usługi Azure AD Connect sync. 
@@ -39,12 +39,12 @@ Najpierw należy zmienić hasło w obszarze Menedżer sterowania usługami Windo
 
 
 - Jeśli spróbujesz uruchomić usługi synchronizacji w Menedżerze kontroli usług Windows, wystąpi błąd "**Windows nie można uruchomić usługi Microsoft Azure AD Sync na komputerze lokalnym**". **Błąd 1069: Usługa nie została uruchomiona z powodu niepowodzenia logowania.** "
-- W Podglądzie zdarzeń Windows w dzienniku zdarzeń systemowych zawiera błąd związany z **7038 identyfikator zdarzenia** i komunikatem "**usługa ADSync nie może zalogować się podobnie jak w przypadku aktualnie skonfigurowanym hasłem z powodu następującego błędu: użytkownik Nazwa lub hasło jest niepoprawne.** "
+- W obszarze podglądu zdarzeń Windows, w dzienniku zdarzeń systemu zawiera błąd **7038 identyfikator zdarzenia** i komunikatem "**usługa ADSync nie może zalogować się podobnie jak w przypadku aktualnie skonfigurowanym hasłem z powodu następującego błędu: Nazwa użytkownika lub hasło jest niepoprawne.** "
 
 Po drugie w określonych warunkach, jeśli hasło zostanie zaktualizowane, usługa synchronizacji można już pobierać klucz szyfrowania za pośrednictwem interfejsu DPAPI. Bez klucza szyfrowania usługi synchronizacji nie może odszyfrować hasła wymagane do synchronizacji z lokalnej usługi AD i Azure AD.
 Pojawią się błędy takie jak:
 
-- W obszarze Menedżer sterowania usługami Windows Jeśli użytkownik próbuje uruchomić usługi synchronizacji i nie może pobrać klucza szyfrowania go zakończy się niepowodzeniem z powodu błędu "**Windows Microsoft Azure AD Sync nie można uruchomić na komputerze lokalnym.** Aby uzyskać więcej informacji przejrzyj dziennik zdarzeń systemu. **Jeśli jest to usługa firmy Microsoft, skontaktuj się z dostawcą usługi i odwołać się do kodu błędu usługi \*\*-21451857952**\*\*."
+- W obszarze Menedżer sterowania usługami Windows Jeśli użytkownik próbuje uruchomić usługi synchronizacji i nie może pobrać klucza szyfrowania go zakończy się niepowodzeniem z powodu błędu "<strong>Windows Microsoft Azure AD Sync nie można uruchomić na komputerze lokalnym. Aby uzyskać więcej informacji przejrzyj dziennik zdarzeń systemu. Jeśli jest to usługa firmy Microsoft, skontaktuj się z dostawcą usługi i odwołać się do kodu błędu usługi-21451857952</strong>. "
 - W obszarze Windows podglądu zdarzeń, w dzienniku zdarzeń aplikacji zawiera błąd przy użyciu **6028 identyfikator zdarzenia** i komunikat o błędzie *"**nie można uzyskać dostępu do klucza szyfrowania serwera.**"*
 
 Aby upewnić się, że nie będą odbierać te błędy, wykonaj procedury opisane w [porzucenie klucza szyfrowania usługi Azure AD Connect Sync](#abandoning-the-azure-ad-connect-sync-encryption-key) podczas zmiany hasła.
@@ -121,6 +121,6 @@ Skoro Usługa synchronizacji ma dostęp do klucza szyfrowania i hasła, które s
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

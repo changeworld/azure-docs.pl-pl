@@ -12,38 +12,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959030"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185736"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Kluczowe funkcje i pojęcia w usłudze Azure Stack
 Jeśli jesteś nowym użytkownikiem usługi Microsoft Azure Stack, te warunki i opisy funkcji może być przydatny.
 
 ## <a name="personas"></a>Osoby
-Istnieją dwie odmiany użytkowników dla usługi Microsoft Azure Stack, operator chmury (dostawca) i dzierżawy (użytkownik).
+Istnieją dwie odmiany użytkowników dla usługi Microsoft Azure Stack, Operator oraz użytkownika.
 
-* A **operatorowi chmury** skonfigurować usługę Azure Stack i zarządzać oferty, plany, usług, limity przydziału i cennika do zapewniania zasobów dla swoich dzierżaw.  Operatorzy chmur również zarządzanie pojemnością i odpowiadanie na alerty.  
-* A **dzierżawy** (określane również jako użytkownik) korzysta z usług oferowanych przez administratora chmury. Dzierżawcy można aprowizować, monitorować i zarządzać usługami, dla których masz subskrypcję, takich jak aplikacje sieci Web, magazynu i maszyn wirtualnych.
+* Azure Stack **Operator** można skonfigurować usługi Azure Stack Zarządzanie ofertami, plany, usługi, limity przydziału i cennika użytkownikom zasobów dla swojej dzierżawy. Operatory również zarządzanie pojemnością i odpowiadanie na alerty.  
+* Azure Stack **użytkownika** (określane również jako dzierżawca) korzysta z usług oferowanych przez operatora. Użytkowników można aprowizować, monitorowanie i zarządzanie usługami, które masz subskrypcję, takich jak aplikacje sieci web, magazynu i maszyn wirtualnych.
 
 ## <a name="portal"></a>Portal
-Podstawowe metody interakcji z usługą Microsoft Azure Stack to portal administratora portalu użytkownika i programu PowerShell.
+Podstawowe metody interakcji z usługą Microsoft Azure Stack to portal administratora portalu użytkowników i programu PowerShell.
 
-Każdy portali usługi Azure Stack są wspierane przez osobnych wystąpień usługi Azure Resource Manager.  Operator chmury korzysta z portalu administratora do zarządzania usługi Azure Stack i do wykonywania czynności takich, jak utworzyć dzierżawę ofert.  Portal użytkowników (nazywane również portalu dzierżawcy) zapewnia Samoobsługowe zużycia zasobów w chmurze, takich jak maszyny wirtualne, konta magazynu i aplikacje sieci Web. Aby uzyskać więcej informacji, zobacz [przy użyciu portali administratora i użytkownika usługi Azure Stack](azure-stack-manage-portals.md).
+Każdy portali usługi Azure Stack są wspierane przez osobnych wystąpień usługi Azure Resource Manager. Operator używa portalu administracyjnego do zarządzania usługi Azure Stack i do wykonywania czynności takich, jak utworzyć dzierżawę ofert. Portal użytkowników (nazywane również portalu dzierżawcy) zapewnia Samoobsługowe zużycia zasobów w chmurze, takich jak maszyny wirtualne, konta magazynu i aplikacje sieci web. Aby uzyskać więcej informacji, zobacz [przy użyciu portali administratora i użytkownika usługi Azure Stack](azure-stack-manage-portals.md).
 
 ## <a name="identity"></a>Tożsamość 
-Usługa Azure Stack korzysta z usługi Azure Active Directory (AAD) lub usługi Active Directory Federation Services (AD FS) jako dostawcy tożsamości.  
+Usługa Azure Stack korzysta z usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) jako dostawcy tożsamości.  
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
-Usługa Azure Active Directory to dostawca tożsamości opartej na chmurze, wielodostępna firmy Microsoft.  Większość scenariuszy hybrydowych usługa Azure Active Directory jako magazynu tożsamości.
+Usługa Azure AD jest dostawca tożsamości wielodostępnych, oparte na chmurze firmy Microsoft. Większość scenariuszy hybrydowych używać usługi Azure AD jako magazynu tożsamości.
 
-### <a name="active-directory-federation-services"></a>Usługi federacyjne Active Directory
-Można użyć Active Directory Federation Services (AD FS) w przypadku odłączonych wdrożeń usługi Azure Stack.  Usługi Azure Stack, dostawcy zasobów i inne aplikacje działają podobnie jak z usługami AD FS, tak samo, jak za pomocą usługi Azure Active Directory. Usługa Azure Stack obejmuje wystąpienia usług AD FS i usługi Active Directory i Active interfejsu API programu Graph katalogu. Usługa Azure Stack Development Kit obsługuje następujące scenariusze usług AD FS:
+### <a name="active-directory-federation-services"></a>Usługi Active Directory Federation Services
+Można użyć Active Directory Federation Services (AD FS) w przypadku odłączonych wdrożeń usługi Azure Stack. Dostawcy zasobów usługi Azure Stack i inne aplikacje działają podobnie jak z usługami AD FS tak samo, jak za pomocą usługi Azure AD. Usługa Azure Stack obejmuje własne wystąpienie usługi Active Directory i Active interfejsu API programu Graph katalogu. Usługa Azure Stack Development Kit obsługuje następujące scenariusze usług AD FS:
 
 - Zaloguj się do wdrożenia przy użyciu usług AD FS.
 - Utwórz maszynę wirtualną przy użyciu kluczy tajnych w usłudze Key Vault
@@ -93,9 +93,9 @@ Dla administratora subskrypcję dostawcy domyślne jest tworzone podczas wdraża
 Za pomocą usługi Azure Resource Manager, można pracować z zasobami infrastruktury w modelu opartym na szablonie, deklaratywny.   Zapewnia jeden interfejs, który służy do wdrażania i zarządzania nimi składniki rozwiązania. Aby uzyskać pełne informacje i wskazówki, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ### <a name="resource-groups"></a>Grupy zasobów
-Grupy zasobów to zbiór zasobów, usług i aplikacji — i każdy zasób ma typ, takie jak maszyny wirtualne, sieci wirtualne, publiczne adresy IP, kont magazynu i witryn sieci Web. Każdy zasób musi należeć do grupy zasobów i tak grup zasobów pomóc logicznie organizowania zasobów, takich jak obciążenia lub lokalizacji.  Zasoby, takie jak plany i oferty w usłudze Microsoft Azure Stack, również odbywa się w grupach zasobów.
+Grupy zasobów to zbiór zasobów, usług i aplikacji — i każdy zasób ma typ, takie jak maszyny wirtualne, sieci wirtualne, publiczne adresy IP, kont magazynu i witryn sieci Web. Każdy zasób musi należeć do grupy zasobów i tak grup zasobów pomóc logicznie organizowania zasobów, takich jak obciążenia lub lokalizacji. Zasoby, takie jak plany i oferty w usłudze Azure Stack, również odbywa się w grupach zasobów.
 
-W odróżnieniu od [Azure](../azure-resource-manager/resource-group-move-resources.md), nie można przenieść zasobów między grupami zasobów. Podczas przeglądania właściwości zasobu lub grupy zasobów w portalu administracyjnym usługi Azure Stack *przenieść* przycisk jest wyszarzona i niedostępna. 
+W odróżnieniu od [Azure](../azure-resource-manager/resource-group-move-resources.md), nie można przenieść zasobów usługi Azure Stack, między grupami zasobów. Podczas przeglądania właściwości zasobu lub grupy zasobów w portalu administracyjnego usługi Azure Stack *przenieść* przycisk jest wyszarzona i niedostępna. Ponadto użycie **Zmień grupę zasobów** lub **zmienić subskrypcję** akcji z grupy zasobów lub właściwości elementu grupy zasobów nie jest również obsługiwany. Wszystkich prób przenosić operacje zakończą się niepowodzeniem.
  
 ### <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 Za pomocą usługi Azure Resource Manager można utworzyć szablon (w formacie JSON) do definiowania wdrażania i konfiguracji aplikacji. Ten szablon jest znany jako szablonu usługi Azure Resource Manager i pozwala na deklaratywne Definiowanie wdrożeń. Dzięki szablonowi można wielokrotnie wdrażać aplikację w całym jej cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu.
@@ -103,7 +103,7 @@ Za pomocą usługi Azure Resource Manager można utworzyć szablon (w formacie J
 ## <a name="resource-providers-rps"></a>Dostawcy zasobów (jednostek uzależnionych)
 Dostawcy zasobów to usługi sieci web, które stanowią podstawę dla wszystkich opartych na platformie Azure IaaS i PaaS usług. Usługa Azure Resource Manager, zależy od różnych RPs, aby zapewnić dostęp do usług.
 
-Istnieją cztery podstawowe RPs: sieć, Magazyn, obliczeniowej i magazynu kluczy. Każda z tych RPs ułatwi Ci skonfigurowanie i kontrolować jej odpowiednich zasobów. Administratorzy usługi można również dodać nowych dostawców zasobów niestandardowych.
+Istnieją cztery podstawowe RPs: Sieci, magazynowania, obliczeń i magazynu kluczy. Każda z tych RPs ułatwi Ci skonfigurowanie i kontrolować jej odpowiednich zasobów. Administratorzy usługi można również dodać nowych dostawców zasobów niestandardowych.
 
 ### <a name="compute-rp"></a>Obliczenia RP
 Dostawcy zasobów obliczeniowych (CRP) umożliwia usłudze Azure Stack dzierżawcom tworzenie własnych maszyn wirtualnych. Rozwiązanie CRP obejmuje możliwość tworzenia maszyn wirtualnych, a także rozszerzenia maszyny wirtualnej. Usługa rozszerzenia maszyny wirtualnej zapewnia możliwości IaaS dla maszyn wirtualnych Windows i Linux.  Na przykład rozwiązanie CRP służy również do aprowizowania maszyny wirtualnej z systemem Linux i uruchamiać skrypty powłoki systemowej podczas wdrażania, aby skonfigurować maszynę Wirtualną.
@@ -129,7 +129,7 @@ Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmu
 KeyVault RP zapewnia zarządzanie i inspekcji kluczy tajnych, takich jak hasła i certyfikaty. Na przykład dzierżawca umożliwia KeyVault RP podać hasło administratora lub kluczy podczas wdrażania maszyny Wirtualnej.
 
 ## <a name="high-availability-for-azure-stack"></a>Wysoka dostępność dla usługi Azure Stack
-*Dotyczy: Azure Stack 1802 lub nowsze wersje*
+*Dotyczy: Usługa Azure Stack 1802 lub nowsze wersje*
 
 Aby osiągnąć wysoką dostępność w systemie produkcyjnym wielu maszyn wirtualnych na platformie Azure, maszyny wirtualne są umieszczane w zestawie dostępności, który rozprzestrzenia się je w wielu domenach błędów i domenach aktualizacji. W ten sposób [maszyn wirtualnych wdrożonych w zestawach dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) są fizycznie odizolowane od siebie nawzajem na osobnym serwerze stojakami umożliwiające odporności błędów, jak pokazano na poniższym diagramie:
 
@@ -150,7 +150,7 @@ Dla zestawów skalowania maszyn wirtualnych, zestaw dostępności jest tworzona 
 ## <a name="role-based-access-control-rbac"></a>Oparta na rolach kontrola dostępu (RBAC)
 RBAC służy do udzielania dostępu do systemu do grona upoważnionych użytkowników, grup i usług, przypisując im role w subskrypcji, grupy zasobów lub poszczególnych zasobów. Każda rola definiuje poziom dostępu użytkownika, grupy lub usługi ma nad zasobami Microsoft Azure Stack.
 
-RBAC platformy Azure ma trzy podstawowe role, które są stosowane do wszystkich typów zasobów: właściciela, współautora i czytelnika. Właściciel ma pełny dostęp do wszystkich zasobów łącznie z prawej strony można delegować dostępu do innych osób. Współautor mogą tworzyć i zarządzać nimi wszystkie typy zasobów platformy Azure, ale nie może przyznawać dostępu innym osobom. Czytelnik mogą wyświetlać tylko istniejących zasobów platformy Azure. Pozostałe role RBAC na platformie Azure umożliwiają zarządzanie określonych zasobów platformy Azure. Na przykład rola Współautor maszyny wirtualnej umożliwia tworzenie i zarządzanie maszynami wirtualnymi, ale nie jest możliwe zarządzanie sieci wirtualnej lub podsieci, która łączy się z maszyny wirtualnej.
+RBAC platformy Azure ma trzy podstawowe role, które są stosowane do wszystkich typów zasobów: Właściciela, współautora i czytelnika. Właściciel ma pełny dostęp do wszystkich zasobów łącznie z prawej strony można delegować dostępu do innych osób. Współautor mogą tworzyć i zarządzać nimi wszystkie typy zasobów platformy Azure, ale nie może przyznawać dostępu innym osobom. Czytelnik mogą wyświetlać tylko istniejących zasobów platformy Azure. Pozostałe role RBAC na platformie Azure umożliwiają zarządzanie określonych zasobów platformy Azure. Na przykład rola Współautor maszyny wirtualnej umożliwia tworzenie i zarządzanie maszynami wirtualnymi, ale nie jest możliwe zarządzanie sieci wirtualnej lub podsieci, która łączy się z maszyny wirtualnej.
 
 ## <a name="usage-data"></a>Dane użycia
 Microsoft Azure Stack umożliwia zbieranie informacji o agreguje dane dotyczące użycia we wszystkich dostawców zasobów i przekazuje go do platformy Azure do przetwarzania przez handlu platformy Azure. Można wyświetlić danych użycia zbieranych w usłudze Azure Stack za pośrednictwem interfejsu API REST. Istnieje interfejs API dzierżawcy spójnych z platformą Azure, a także dostawcy i delegować interfejsy API dostawcy można pobrać danych użycia dla wszystkich subskrypcji dzierżawcy. Te dane można zintegrować z zewnętrznego narzędzia lub usługi do rozliczeń i obciążeń zwrotnych. Po przetworzeniu użycia platformy Azure handlu mogą można wyświetlić w portalu rozliczeń systemu Azure.

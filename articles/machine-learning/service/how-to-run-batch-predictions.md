@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: cd9b0a117439f603e4820cb2dec2984aa2d68e73
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a711b80471da0677c5e2d0dd0ee5e371e5a16f75
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074337"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268653"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Uruchom prognoz usługi batch w dużych zestawach danych przy użyciu usługi Azure Machine Learning
 
@@ -31,7 +31,7 @@ W poniższych krokach utworzysz [potoku uczenia maszynowego](concept-ml-pipeline
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konieczna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz  [bezpłatne konto](https://aka.ms/AMLfree) .
+- Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem należy utworzyć bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
 
 - Konfigurowanie środowiska deweloperskiego, aby zainstalować zestaw SDK usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning](how-to-configure-environment.md).
 

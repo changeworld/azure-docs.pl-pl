@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 17d663873639cc36e9727881d990a3f32697c798
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 676baa6947eaf8b3842b0100657f42a1e6438061
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872156"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184886"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych zbiera metryki wydajności i połączenia, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do magazynu danych usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -29,8 +28,8 @@ Jeden rekord jest generowany na godzinę dla każdego komputera unikatowy i proc
 
 Istnieją wewnętrznie generowane właściwości, które służy do identyfikacji procesów unikatowy i komputerów:
 
-- Komputera: Użyj *ResourceId* lub *ResourceName_s* do unikatowej identyfikacji komputera w obszarze roboczym usługi Log Analytics.
-- Procesu: Użyj *ResourceId* do unikatowej identyfikacji procesów w obrębie obszaru roboczego usługi Log Analytics. *ResourceName_s* jest unikatowa w obrębie kontekstu komputera, na którym proces działa (MachineResourceName_s) 
+- Komputer: Użyj *ResourceId* lub *ResourceName_s* do unikatowej identyfikacji komputera w obszarze roboczym usługi Log Analytics.
+- Proces: Użyj *ResourceId* do unikatowej identyfikacji procesów w obrębie obszaru roboczego usługi Log Analytics. *ResourceName_s* jest unikatowa w obrębie kontekstu komputera, na którym proces działa (MachineResourceName_s) 
 
 Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym okresie, zapytania może zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby dołączyć tylko najnowsze rekord, należy dodać "| Funkcja deduplikacji ResourceId"zapytania.
 

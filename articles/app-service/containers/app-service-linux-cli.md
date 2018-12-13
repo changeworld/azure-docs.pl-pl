@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+title: Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure.
 keywords: Usługa Azure app service, aplikacji sieci web, interfejsu wiersza polecenia, linux, oss
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.openlocfilehash: 024ca5bcf9c1f82f07656691d6ef5358ca3d5111
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.custom: seodec18
+ms.openlocfilehash: 0b125903493712dca3b8c8c3a9ce663f9e1b408c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998495"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257645"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie automatycznych eksperymentów uczenia maszynowego
+title: Tworzenie zautomatyzowanych eksperymentów uczenia Maszynowego
 titleSuffix: Azure Machine Learning service
 description: Uczenie maszynowe automatycznych wybiera algorytm dla Ciebie i generuje gotowe do wdrożenia modelu. Dowiedz się, opcje, które umożliwiają skonfigurowanie automatycznych eksperymentów uczenia maszynowego.
 author: nacharya1
@@ -11,22 +11,22 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e1dd0cf995d7d9c263e49735decc5573107b1add
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f5237ab2b6970772e1f08264bb44223640c33a37
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140170"
+ms.locfileid: "53187266"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurowanie automatycznych eksperymentów uczenia maszynowego
 
 Uczenie maszynowe automatycznych wybiera algorytm i hiperparametrów dla Ciebie i generuje gotowe do wdrożenia modelu. Istnieje kilka opcji, które umożliwiają skonfigurowanie automatycznych eksperymentów uczenia maszynowego. W tym przewodniku Dowiedz się, jak zdefiniować różne ustawienia konfiguracji.
 
-Aby wyświetlić przykłady automatycznych eksperymentów uczenia maszynowego, zobacz [samouczek: Wytrenuj model klasyfikacji przy użyciu uczenia maszynowego automatycznych](tutorial-auto-train-models.md) lub [uczenia modeli za pomocą automatycznych machine learning w chmurze](how-to-auto-train-remote.md).
+Aby wyświetlić przykłady automatycznych eksperymentów uczenia maszynowego, zobacz [samouczka: Wytrenuj model klasyfikacji przy użyciu uczenia maszynowego automatycznych](tutorial-auto-train-models.md) lub [uczenia modeli za pomocą automatycznych machine learning w chmurze](how-to-auto-train-remote.md).
 
 Opcje konfiguracji dostępne w automatycznych machine learning:
 
-* Wybierz typ eksperymentu: klasyfikacji, regresji lub Prognozowanie
+* Wybierz typ eksperymentu: Klasyfikacji, regresji lub prognozowania
 * Źródła danych, formatów i pobierania danych
 * Wybierz obliczeniowego elementu docelowego: lokalnych lub zdalnych
 * Automatyczne usługi machine learning ustawienia eksperymentu
@@ -219,7 +219,7 @@ Właściwość |  Opis | Wartość domyślna
 `iteration_timeout_minutes` |   Ogranicza czas (w minutach), jaki zajmuje konkretnej iteracji. Jeśli iteracji przekroczy określony, pobiera anulowane tej iteracji. W przeciwnym razie zestaw, a następnie iteracji będzie nadal działać, dopóki zostanie zakończone. |   Brak
 `n_cross_validations`   |Liczba podziałów krzyżowego sprawdzania poprawności| Brak
 `validation_size`   |Rozmiar sprawdzania poprawności, Ustaw jako wartość procentowa próbki szkolenia.|  Brak
-`preprocess` | PRAWDA/FAŁSZ <br/>Wartość true włącza eksperymentów do wykonywania przetwarzania wstępnego w danych wejściowych. Poniżej przedstawiono część przetwarzania wstępnego<li>Brak danych: Imputes, Brak danych liczbowych ze średnią, tekst z większości wystąpienia </li><li>Wartości podzielonych na kategorie: Jeśli typ danych liczbowych i liczba unikatowych wartości jest mniejsza niż 5 procent, konwertuje do hot jednego procesu kodowania </li><li>Itp. Aby uzyskać pełną listę wyboru [repozytorium GitHub](https://aka.ms/aml-notebooks)</li><br/>Uwaga: Jeśli dane są rozrzedzonej nie można użyć wstępnie Przetwórz = true |  False | 
+`preprocess` | PRAWDA/FAŁSZ <br/>Wartość true włącza eksperymentów do wykonywania przetwarzania wstępnego w danych wejściowych. Poniżej przedstawiono część przetwarzania wstępnego<li>Brak danych: Imputes, Brak danych liczbowych ze średnią, tekst z większości wystąpienia </li><li>Wartości podzielonych na kategorie: Jeśli typ danych liczbowych i liczbie unikatowych wartości jest mniejsza niż 5 procent, konwertuje do hot jednego procesu kodowania </li><li>Itp. Aby uzyskać pełną listę wyboru [repozytorium GitHub](https://aka.ms/aml-notebooks)</li><br/>Uwaga: Jeśli dane są rozrzedzonej nie można użyć wstępnie Przetwórz = true |  False | 
 `blacklist_models`  | Automatyczne eksperymentu uczenia maszynowego, ma wiele różnych algorytmów, które podejmuje próby. Skonfiguruj, aby wykluczyć niektóre algorytmy z eksperymentu. Parametr jest przydatne, jeśli masz świadomość, że algorytmy nie działają dobrze sprawdza się w zestawie danych. Z wyjątkiem algorytmów można skrócić zasobów obliczeniowych i czasu szkoleń.<br/>Dozwolone wartości klasyfikacji<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Dozwolone wartości regresji<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Dozwolone wartości dla Prognozowanie<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   Brak
 `whitelist_models`  | Automatyczne eksperymentu uczenia maszynowego, ma wiele różnych algorytmów, które podejmuje próby. Skonfiguruj obejmujący niektóre algorytmy eksperymentu. Parametr jest przydatne, jeśli masz świadomość, że algorytmy będą działać dobrze w przypadku zestawu danych. <br/>Dozwolone wartości klasyfikacji<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Dozwolone wartości regresji<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Dozwolone wartości dla Prognozowanie<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  Brak
 `verbosity` |Określa poziom rejestrowania, z użyciem informacji są pełne i najbardziej krytyczne jest najmniej. Poziom szczegółowości ma takie same wartości zgodnie z definicją w pakiecie rejestrowania języka python. Dozwolone wartości to:<br/><li>logging.INFO</li><li>rejestrowanie. OSTRZEŻENIE</li><li>rejestrowanie. BŁĄD</li><li>rejestrowanie. KRYTYCZNE</li>  | logging.INFO</li> 
@@ -244,8 +244,8 @@ Jeśli używasz `preprocess=True`, następujące dane przetwarzania wstępnego k
     *   W przypadku funkcji numerycznych przypisują brakujące wartości przy użyciu średnią z wartości w kolumnie.
     *   W przypadku kategorii funkcji przypisują brakujące wartości przy użyciu wartości najczęściej.
 1.  Generuj dodatkowe funkcje
-    * Funkcje daty/godziny: rok, miesiąc, dzień, dzień tygodnia, dnia rok, kwartał, tydzień roku, godzina, minuta, sekunda.
-    * Funkcje tekstowe: określenie częstotliwości oparte na słowo unigram, gram Power bi i tri-gram, liczba automatycznej wektoryzacji.
+    * Funkcje daty/godziny: Rok, miesiąc, dzień, dzień tygodnia, dnia rok, kwartał, tydzień roku, godzina, minuta, sekunda.
+    * Funkcje tekstowe: Częstotliwość termin oparte na słowo unigram, gram Power bi i tri-gram, liczba automatycznej wektoryzacji.
 1.  Przekształcenia i kodowania
     * Funkcje liczbowe z bardzo niewielkiej liczbie unikatowych wartości przekształcone w kategorii funkcji.
     * W zależności od kardynalności kategorii funkcji należy wykonać etykiety kodowania lub (wyznaczania wartości skrótu) hot jeden kodowania.

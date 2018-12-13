@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 5a542ae23bf500125fd08338b2efd30dd42d9a8d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840915"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255979"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -32,23 +32,23 @@ Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migr
 - Ten model nie są zależne od ustawienia statystyk serwera vCenter, tak aby zbierać dane dotyczące wydajności.
 - Aby zatrzymać, ciągłe profilowania w dowolnym momencie z modułu zbierającego.
 
-**Natychmiastowej gratyfikacji:** przy użyciu urządzenia odnajdywania ciągłe, po zakończeniu odnajdywania (zajmuje kilka godzin w zależności od liczby maszyn wirtualnych), możesz od razu utworzyć oceny. Ponieważ zbierania danych o wydajności rozpoczyna się, gdy jest rozpoczynane odnajdywania, jeśli szukasz natychmiastowej gratyfikacji, należy wybrać kryterium ustalania rozmiaru w ocenie jako *jako lokalne*. Aby w przypadku oceny na podstawie wydajności zalecane jest poczekać co najmniej jednego dnia po uruchamiania odnajdywania można pobrać zaleceń dotyczących rozmiarów niezawodne.
+**Natychmiastowej gratyfikacji:** Przy użyciu urządzenia odnajdywania ciągłe, po zakończeniu odnajdywania (zajmuje kilka godzin w zależności od liczby maszyn wirtualnych), możesz od razu utworzyć oceny. Ponieważ zbieranie danych o wydajności rozpoczyna się wraz z rozpoczęciem odnajdywania, jeśli potrzebujesz natychmiastowych wyników, wybierz w ocenie kryterium ustalania rozmiaru *zgodnie ze środowiskiem lokalnym*. W przypadku ocen na podstawie wydajności zaleca się poczekanie przez co najmniej jeden dzień po rozpoczęciu odnajdywania, aby uzyskać miarodajne zalecenia dotyczące rozmiaru.
 
 Urządzenie ciągle tylko zbiera dane wydajności, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
 
-- Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
+- Dodawanie elementów (maszyn wirtualnych, dysków, rdzenie itp.): Aby uwzględnić te zmiany w witrynie Azure portal, można zatrzymać odnajdywania przez urządzenie i uruchom go ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
 
-- Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
+- Usunięcie maszyn wirtualnych: Ze względu na sposób, w jaki zaprojektowano urządzenia usunięcie maszyn wirtualnych nie jest widoczna, nawet jeśli należy zatrzymać i uruchomić odnajdywanie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
 
 > [!NOTE]
-> Urządzenie jednorazowe odnajdywania jest już przestarzały, ta metoda polegać vCenter w ustawieniach statystyk serwera dostępność punktu danych wydajności i zebrane liczniki wydajności średni, które spowodowało niepełną rozmiarów maszyn wirtualnych do migracji na platformę Azure.
+> Urządzenie jednorazowego odnajdywania jest już przestarzałe, ponieważ ta metoda opierała się na ustawieniach statystyk programu vCenter Server w zakresie dostępności punktów danych wydajności i zbierała średnią liczników wydajności, co powodowało określanie zbyt małego rozmiaru maszyn wirtualnych na potrzeby migracji na platformę Azure.
 
 ## <a name="deploying-the-collector"></a>Wdrażanie modułu zbierającego
 
 Możesz wdrożyć urządzenie modułu zbierającego przy użyciu szablonu pakietu OVF:
 
 - Szablon OVF możesz pobrać z usługi Azure Migrate projektu w witrynie Azure portal. Możesz zaimportować pobrany plik programem vCenter Server, aby skonfigurować urządzenie modułu zbierającego maszyny Wirtualnej.
-- Z pakietu OVF VMware konfiguruje Maszynę wirtualną z 4 rdzenie, 8 GB pamięci RAM i jeden dysk 80 GB. System operacyjny to Windows Server 2012 R2 (64-bitowy).
+- Z pakietu OVF VMware konfiguruje Maszynę wirtualną z 8 rdzeni, 16 GB pamięci RAM i jeden dysk 80 GB. System operacyjny jest system Windows Server 2016 (64-bitowy).
 - Po uruchomieniu modułu zbierającego, uruchom szereg wymagań wstępnych, aby upewnij się, czy moduł zbierający łączy się usługa Azure Migrate.
 
 - [Dowiedz się więcej](tutorial-assessment-vmware.md#create-the-collector-vm) dotyczących tworzenia modułu zbierającego.
@@ -58,21 +58,25 @@ Możesz wdrożyć urządzenie modułu zbierającego przy użyciu szablonu pakiet
 
 Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby zapewnić możliwość połączenia z usługi Azure Migrate w Internecie i przekazywanie odnalezionych danych.
 
-- **Sprawdź połączenie internetowe**: moduł zbierający można połączyć się z Internetem bezpośrednio lub za pośrednictwem serwera proxy.
+- **Sprawdź chmury platformy Azure**: Moduł zbierający musi wiedzieć, w chmurze platformy Azure, do którego jest planowana migracja.
+    - Jeśli planujesz migrację do chmury platformy Azure dla instytucji rządowych, wybierz pozycję Azure dla instytucji rządowych.
+    - Wybierz Azure Global, jeśli planujesz migrację do chmury komercyjnej platformy Azure.
+    - Oparte na chmurze, określone w tym miejscu, urządzenie będzie wysyłać odnalezione metadane do odpowiednich punktów końcowych.
+- **Sprawdź połączenie internetowe**: Moduł zbierający można połączyć się z Internetem bezpośrednio lub za pośrednictwem serwera proxy.
     - Sprawdzanie wymagań wstępnych sprawdza łączność z [adresów URL wymaganych i opcjonalnych](#connect-to-urls).
     - Jeśli masz bezpośrednie połączenie z Internetem, brak określonej czynności jest wymagany, innym niż upewniając się, że moduł zbierający może osiągnąć wymaganych adresów URL.
     - Jeśli łączysz się za pośrednictwem serwera proxy, weź pod uwagę [poniższe wymagania](#connect-via-a-proxy).
-- **Sprawdź synchronizację czasu**: moduł zbierający powinien zsynchronizowany z internetowym serwerem czasu w celu zapewnienia uwierzytelniania żądań do usługi.
+- **Sprawdź synchronizację czasu**: Moduł zbierający powinien być zsynchronizowany z internetowym serwerem czasu w celu zapewnienia, że żądania do usługi są uwierzytelniane.
     - Portal.azure.com adres url powinien być dostępny z modułem zbierającym, dzięki czemu można zweryfikować czasu.
     - Jeśli komputer nie jest zsynchronizowany, musisz zmienić czas zegara na maszynie Wirtualnej modułu zbierającego, aby dopasować bieżący czas. Aby zrobić to otwórz wiersz administratora na maszynie Wirtualnej Uruchom **w32tm /tz** do sprawdzenia strefy czasowej. Uruchom **w32tm/resync** do synchronizacji czasu.
-- **Sprawdź uruchomiona usługa modułu zbierającego**: Usługa Azure Migrate Collector powinna działać na maszynie Wirtualnej modułu zbierającego.
+- **Sprawdź uruchomiona usługa modułu zbierającego**:  Usługa Azure Migrate Collector powinny działać na maszynie Wirtualnej modułu zbierającego.
     - Ta usługa jest uruchamiana automatycznie podczas rozruchu maszyny.
     - Jeśli usługa nie jest uruchomiona, należy ją uruchomić z poziomu Panelu sterowania.
     - Usługa modułu zbierającego nawiązanie połączenia z serwerem vCenter, służy do zbierania danych wydajności i metadanych maszyny Wirtualnej i wysyła je do usługi Azure Migrate.
-- **Sprawdź VMware PowerCLI 6.5 został zainstalowany**: moduł programu PowerShell programu VMware PowerCLI 6.5 musi być zainstalowany na maszynie Wirtualnej z modułu zbierającego, tak, aby go może komunikować się z serwerem vCenter.
+- **Sprawdź VMware PowerCLI 6.5 został zainstalowany**: Moduł PowerShell programu VMware PowerCLI 6.5 musi być zainstalowany na maszynie Wirtualnej modułu zbierającego, tak aby może komunikować się z serwerem vCenter.
     - Jeśli moduł zbierający dostęp do adresów URL, wymagane do zainstalowania modułu, jest on zainstalowany automatycznie podczas wdrażania modułu zbierającego.
     - Jeśli moduł zbierający nie może zainstalować moduł podczas wdrażania, musisz najpierw [ręcznie zainstalować](#install-vwware-powercli-module-manually).
-- **Sprawdź połączenie z programem vCenter Server**: moduł zbierający musi umożliwiać programu vCenter Server i zapytanie o maszyny wirtualne, metadane i liczników wydajności. [Sprawdź wymagania wstępne dotyczące](#connect-to-vcenter-server) łączenia.
+- **Sprawdź połączenie z programem vCenter Server**: Moduł zbierający musi mieć możliwość programu vCenter Server i zapytanie o maszyny wirtualne, metadane i liczników wydajności. [Sprawdź wymagania wstępne dotyczące](#connect-to-vcenter-server) łączenia.
 
 
 ### <a name="connect-to-the-internet-via-a-proxy"></a>Połącz się z Internetem za pośrednictwem serwera proxy
@@ -107,7 +111,8 @@ Sprawdzenie łączności jest weryfikowana przez nawiązanie połączenia listę
 
 **Adres URL** | **Szczegóły**  | **Sprawdzanie wymagań wstępnych**
 --- | --- | ---
-*.portal.azure.com | Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
+*.portal.azure.com | Dotyczy globalna platforma Azure. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
+*. portal.azure.us | Dotyczy tylko systemu Azure dla instytucji rządowych. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Umożliwia pobieranie modułu programu PowerShell vCenter PowerCLI. | Dostęp do adresów URL jest opcjonalne.<br/><br/> Sprawdzanie wymagań wstępnych nie będzie się nie powieść.<br/><br/> Instalacja automatyczna modułu na maszynie Wirtualnej modułu zbierającego nie powiedzie się. Należy ręcznie zainstalować moduł.
 
 
@@ -216,7 +221,7 @@ Urządzenie modułu zbierającego umożliwia odnalezienie następujących metada
 
  Urządzenie modułu zbierającego zbiera następujące liczniki wydajności dla każdej maszyny Wirtualnej z hosta ESXi w interwału wynoszącego 20 sekund. Te liczniki są liczniki vCenter i chociaż terminologii mówi średnia próbek 20-sekundowe liczników w czasie rzeczywistym. Dane wydajności dla maszyn wirtualnych zostanie uruchomiony, stają się dostępne w portalu po dwóch godzinach od zostały rozpoczęte odnajdywania. Zdecydowanie zaleca się poczekać co najmniej dzień przed utworzeniem oceny na podstawie wydajności, aby uzyskać dokładne zalecenia dotyczące doboru wielkości. Jeśli szukasz natychmiastowej gratyfikacji, możesz utworzyć oceny przy użyciu kryterium ustalania rozmiaru jako *jako lokalne* zostaną nie będą dane dotyczące wydajności w przypadku ustalania rozmiaru po prawej stronie.
 
-**Licznik** |  **Wpływ na ocenę**
+**Counter** |  **Wpływ na ocenę**
 --- | ---
 cpu.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
 mem.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  

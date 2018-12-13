@@ -4,14 +4,14 @@ description: Często zadawane pytania dotyczące usługi Azure Migrate adresów
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.author: snehaa
-ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256379"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257798"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -44,11 +44,16 @@ Usługa Azure Migrate jest migracji za pomocą narzędzia do planowania i planis
 
 **Migracja z funkcji Hyper-V na platformę Azure**: Usługa Azure Migrate aktualnie obsługuje tylko oceny maszyn wirtualnych VMware do migracji na platformę Azure. Obsługa funkcji Hyper-V znajduje się w planie dla usługi Azure Migrate. W międzyczasie można użyć Planisty wdrożenia usługi Site Recovery. Po włączeniu obsługi funkcji Hyper-V w usłudze Azure Migrate służy usługa Azure Migrate dotyczące planowania migracji obciążeń funkcji Hyper-V.
 
-**Odzyskiwanie po awarii z programu VMware/funkcji Hyper-V na platformę Azure**: Jeśli użytkownik zamierza wykonać odzyskiwanie po awarii (DR) na platformie Azure przy użyciu usługi Azure Site Recovery (Usługa Site Recovery), na użytek planista wdrażania usługi Site Recovery planowania odzyskiwania po awarii. Planista wdrażania usługi Site Recovery wykonuje głęboką, specyficzne dla usługi ASR oceny środowiska lokalnego. Zapewnia zaleceń, które są wymagane przez usługę Site Recovery dla pomyślnego operacji odzyskiwania po awarii, takich jak replikacja, failover maszyn wirtualnych.  
+**Odzyskiwanie po awarii z programu VMware/funkcji Hyper-V na platformę Azure**: Jeśli planujesz wykonać odzyskiwanie po awarii (DR) na platformie Azure przy użyciu usługi Azure Site Recovery (Usługa Site Recovery), na użytek planista wdrażania usługi Site Recovery planowania odzyskiwania po awarii. Planista wdrażania usługi Site Recovery wykonuje głęboką, specyficzne dla usługi ASR oceny środowiska lokalnego. Zapewnia zaleceń, które są wymagane przez usługę Site Recovery dla pomyślnego operacji odzyskiwania po awarii, takich jak replikacja, failover maszyn wirtualnych.  
 
-### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Które regiony platformy Azure są obsługiwane przez usługę Azure Migrate?
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Które lokalizacje geograficzne platformy Azure są obsługiwane przez usługę Azure Migrate?
 
-Usługa Azure Migrate obsługuje obecnie wschodnie stany USA i zachodnie stany USA jako lokalizacje projektu migracji. Mimo że projekty migracji można tworzyć tylko w zachodnio-środkowe stany USA i wschodnie stany USA, można nadal oceniać gotowość maszyn w celu [wielu lokalizacjach docelowych](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Lokalizacja projektu jest używana wyłącznie do przechowywania odnalezione dane.
+Usługa Azure Migrate obsługuje obecnie Stanów Zjednoczonych i Azure dla instytucji rządowych jako lokalizacje geograficzne projektu. Mimo, że projekty migracji można tworzyć tylko w tych lokalizacjach geograficznych, można nadal oceniać gotowość maszyn w celu [wielu lokalizacjach docelowych](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Geograficzne projektu jest używana wyłącznie do przechowywania metadanych wykrytych.
+
+**Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
+--- | ---
+Łączy w sobie stanów | Zachód środkowe stany USA lub wschodnie stany USA
+Azure Government | Administracja USA — Wirginia
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak lokacją lokalną łączyć się z usługi Azure Migrate?
 
@@ -137,9 +142,12 @@ Może odnajdywać 1500 maszyn wirtualnych w projekcie migracji. Jeśli masz wię
 Usługa Azure Migrate nie obsługuje obecnie Szacowanie kosztów dla [oferty z umową Enterprise Agreement](https://azure.microsoft.com/offers/enterprise-agreement-support/). Obejście polega na określić płatność za rzeczywiste użycie jako oferty i ręcznie określania procent rabatu (dotyczy subskrypcji) w polu "Zniżka" we właściwościach oceny.
 
   ![Rabat](./media/resources-faq/discount.png)
-  
+
 
 ## <a name="dependency-visualization"></a>Wizualizacja zależności
+
+> [!NOTE]
+> Funkcji wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
 ### <a name="what-is-dependency-visualization"></a>Co to jest wizualizacji zależności?
 
@@ -151,7 +159,7 @@ Nie. Więcej informacji o cenach usługi Azure Migrate można uzyskać [tutaj](h
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Czy należy zainstalować żadnych wizualizacji zależności?
 
-Aby użyć wizualizacji zależności, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który ma zostać oceniona. 
+Aby użyć wizualizacji zależności, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który ma zostać oceniona.
 
 - [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musi być zainstalowany na każdym komputerze.
 - [Agenta zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musi być zainstalowany na każdym komputerze.

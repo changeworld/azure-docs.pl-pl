@@ -12,18 +12,18 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/19/2018
-ms.openlocfilehash: 6432c6b2c1c224f44b962df63e1502729f69e57f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fb9332832f46dc5c39bf932ce91cd3d3f3d7354f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470663"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269621"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Serwerami logicznymi usługi Azure SQL Database i zarządzanie nimi
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Co to jest serwer logiczny Azure SQL
 
-Serwer logiczny działa jako centralny punkt administracyjny dla wielu pojedynczego lub [puli](sql-database-elastic-pool.md) baz danych, [logowania](sql-database-manage-logins.md), [reguły zapory](sql-database-firewall-configure.md), [zasadyinspekcji](sql-database-auditing.md), [zasady wykrywania zagrożeń](sql-database-threat-detection.md), i [grupy trybu failover](sql-database-geo-replication-overview.md). Serwer logiczny może być w regionie innym niż jego grupie zasobów. Serwer logiczny musi istnieć przed utworzeniem bazy danych Azure SQL. Wszystkie bazy danych na serwerze są tworzone w tym samym regionie co serwer logiczny.
+Serwer logiczny działa jako centralny punkt administracyjny dla wielu pojedynczego lub [puli](sql-database-elastic-pool.md) baz danych, [logowania](sql-database-manage-logins.md), [reguły zapory](sql-database-firewall-configure.md), [zasadyinspekcji](sql-database-auditing.md), [zasady wykrywania zagrożeń](sql-database-threat-detection.md), i [grupy trybu failover](sql-database-auto-failover-group.md) serwer logiczny może być w innym regionie niż jego grupie zasobów. Serwer logiczny musi istnieć przed utworzeniem bazy danych Azure SQL. Wszystkie bazy danych na serwerze są tworzone w tym samym regionie co serwer logiczny.
 
 Serwer logiczny jest konstrukcją logiczną, która różni się od wystąpienia programu SQL Server, który można zapoznać się z w środowisku lokalnym. W szczególności usługa SQL Database nie udziela żadnych gwarancji dotyczących lokalizacji baz danych w odniesieniu do ich serwerów logicznych i nie uwidacznia dostępu ani żadnych funkcji na poziomie wystąpienia. Z kolei server w wystąpieniu zarządzanym bazy danych SQL jest podobny do wystąpienia programu SQL Server, który można zapoznać się z w środowisku lokalnym.
 

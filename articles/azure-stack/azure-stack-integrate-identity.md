@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: b59d503b8aadef9e8f9c2d7db71ff60aee3b6387
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 9d9e97d81e33487a5f23197912eba3802e83a32e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300714"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257380"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -131,7 +131,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
-|CustomAdfsName|Nazwa dostawcy oświadczeń. <cr>Wygląda na to w ten sposób na stronie docelowej usług AD FS.|Contoso|
+|CustomAdfsName|Nazwa dostawcy oświadczeń.<br>Wygląda na to w ten sposób na stronie docelowej usług AD FS.|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|Łącza do metadanych Federacji|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 
@@ -215,7 +215,7 @@ Do wykonania tej procedury należy użyć komputera, który może komunikować s
 
 Firma Microsoft udostępnia skryptu konfigurującego zaufania jednostki uzależnionej, w tym reguły przekształcania oświadczeń. Za pomocą skryptu jest opcjonalne, jak ręcznie uruchomić polecenia.
 
-Możesz pobrać skrypt pomocnika z [narzędzia usługi Azure Stack](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) w witrynie Github.
+Możesz pobrać skrypt pomocnika z [narzędzia usługi Azure Stack](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) w witrynie GitHub.
 
 Jeśli postanowisz ręcznie uruchomić polecenia, wykonaj następujące czynności:
 

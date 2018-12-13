@@ -1,5 +1,5 @@
 ---
-title: Rozproszona geograficznie skala przy użyciu środowisk usługi App Service
+title: Skala geograficznie rozproszona ze środowisk usługi App Service, Azure
 description: Dowiedz się, jak skalować w poziomie aplikacje przy użyciu rozkładu geograficznego usługi Traffic Manager i środowiska usługi App Service.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.openlocfilehash: bc85139dfa3589baf6505fac2269f8755dcaddc8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.custom: seodec18
+ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213252"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273871"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Rozproszona geograficznie skala przy użyciu środowisk usługi App Service
 ## <a name="overview"></a>Przegląd
@@ -42,18 +43,18 @@ W pozostałej części tego tematu przedstawiono kroki związane z konfiguracją
 ## <a name="planning-the-topology"></a>Planowanie topologii
 Przed kompilacją limit rozmiaru aplikacji rozproszonej, warto ma kilka informacji fragmentów.
 
-* **Domena niestandardowa dla aplikacji:** co to jest nazwa domeny niestandardowej, który użytkownicy będą używać do dostępu do aplikacji?  Przykładowa aplikacja niestandardowa nazwa domeny jest *www.scalableasedemo.com*
-* **Domeny usługi Traffic Manager:** nazwę domeny, należy wybrać podczas tworzenia [profilu usługi Azure Traffic Manager][AzureTrafficManagerProfile].  Ta nazwa zostanie połączony z elementem *trafficmanager.net* sufiks Rejestracja zapisu domeny, który jest zarządzany przez usługę Traffic Manager.  Przykładowa aplikacja jest wybrana nazwa *pokaz skalowalne środowisko ase*.  Dzięki temu jest pełna nazwa domeny, który jest zarządzany przez usługę Traffic Manager *demo.trafficmanager.net skalowalne środowisko ase*.
-* **Strategia skalowania zasięgu aplikacji:** będą śladu aplikacji rozproszone na wielu środowisk App Service Environment w jednym regionie?  Wiele regionów?  Różne podejścia w obu przypadkach efekt?  Decyzja powinna być oparta na oczekiwania, z której pochodzą ruchu klientów, a także jak można skalować w pozostałej części aplikacji obsługi infrastruktury zaplecza.  Na przykład za pomocą aplikacji bezstanowych w 100% aplikacji może być wysoce skalowana na region platformy Azure, pomnożona przez środowisk usługi App Service wdrożone w wielu regionach platformy Azure przy użyciu kombinacji wielu środowisk usługi App Service.  Klienci z 15 + publicznych regionach platformy Azure dostępne do wyboru naprawdę mogą tworzyć zużycie aplikacja ogromnego na całym świecie.  Przykładowa aplikacja używana w tym artykule, aby uzyskać trzy środowisk usługi App Service zostały utworzone w jednym regionie platformy Azure (południowo-środkowe stany USA).
-* **Konwencje nazewnictwa dla środowisk usługi App Service:** każde środowisko App Service Environment wymaga unikatowej nazwy.  Po przekroczeniu jednego lub dwóch środowisk usługi App Service warto mają konwencję nazewnictwa ułatwiają identyfikację każdego środowiska App Service Environment.  Dla przykładowej aplikacji użyto prostych konwencji nazewnictwa.  Nazwy trzech środowisk App Service Environment są *fe1ase*, *fe2ase*, i *fe3ase*.
-* **Konwencje nazewnictwa dla aplikacji:** ponieważ wiele wystąpień aplikacji zostanie wdrożony, nazwy jest wymagane dla poszczególnych wystąpień wdrożonej aplikacji.  Jedną mało znanego, ale bardzo wygodne funkcji środowiska usługi App Service jest, że taką samą nazwę aplikacji można stosować w wielu środowiskach usługi App Service.  Ponieważ każdy środowiska App Service Environment ma sufiks domeny unikatowy, deweloperom możliwość ponownego użycia otrzyma taką samą nazwę aplikacji w każdym środowisku.  Na przykład deweloper może mieć aplikacji o nazwie w następujący sposób: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*itp.  Dla przykładowej aplikacji do każdego wystąpienia aplikacji również ma unikatową nazwę.  Nazwy wystąpienia aplikacji, które są używane są *webfrontend1*, *webfrontend2*, i *webfrontend3*.
+* **Domeny niestandardowej do aplikacji:**  Jaka jest nazwa domeny niestandardowej, który użytkownicy będą używać do dostępu do aplikacji?  Przykładowa aplikacja niestandardowa nazwa domeny jest *www.scalableasedemo.com*
+* **Domena usługi Traffic Manager:**  Nazwa domeny, należy wybrać podczas tworzenia [profilu usługi Azure Traffic Manager][AzureTrafficManagerProfile].  Ta nazwa zostanie połączony z elementem *trafficmanager.net* sufiks Rejestracja zapisu domeny, który jest zarządzany przez usługę Traffic Manager.  Przykładowa aplikacja jest wybrana nazwa *pokaz skalowalne środowisko ase*.  Dzięki temu jest pełna nazwa domeny, który jest zarządzany przez usługę Traffic Manager *demo.trafficmanager.net skalowalne środowisko ase*.
+* **Strategia skalowania zasięgu aplikacji:**  Zużycie aplikacji będą rozproszone na wielu środowisk App Service Environment w jednym regionie?  Wiele regionów?  Różne podejścia w obu przypadkach efekt?  Decyzja powinna być oparta na oczekiwania, z której pochodzą ruchu klientów, a także jak można skalować w pozostałej części aplikacji obsługi infrastruktury zaplecza.  Na przykład za pomocą aplikacji bezstanowych w 100% aplikacji może być wysoce skalowana na region platformy Azure, pomnożona przez środowisk usługi App Service wdrożone w wielu regionach platformy Azure przy użyciu kombinacji wielu środowisk usługi App Service.  Klienci z 15 + publicznych regionach platformy Azure dostępne do wyboru naprawdę mogą tworzyć zużycie aplikacja ogromnego na całym świecie.  Przykładowa aplikacja używana w tym artykule, aby uzyskać trzy środowisk usługi App Service zostały utworzone w jednym regionie platformy Azure (południowo-środkowe stany USA).
+* **Konwencje nazewnictwa dla środowisk usługi App Service:**  Każdy środowiska App Service Environment wymaga unikatowej nazwy.  Po przekroczeniu jednego lub dwóch środowisk usługi App Service warto mają konwencję nazewnictwa ułatwiają identyfikację każdego środowiska App Service Environment.  Dla przykładowej aplikacji użyto prostych konwencji nazewnictwa.  Nazwy trzech środowisk App Service Environment są *fe1ase*, *fe2ase*, i *fe3ase*.
+* **Konwencje nazewnictwa dla aplikacji:**  Ponieważ wiele wystąpień aplikacji zostanie wdrożony, nazwy jest wymagane dla poszczególnych wystąpień wdrożonej aplikacji.  Jedną mało znanego, ale bardzo wygodne funkcji środowiska usługi App Service jest, że taką samą nazwę aplikacji można stosować w wielu środowiskach usługi App Service.  Ponieważ każdy środowiska App Service Environment ma sufiks domeny unikatowy, deweloperom możliwość ponownego użycia otrzyma taką samą nazwę aplikacji w każdym środowisku.  Na przykład deweloper może mieć aplikacji o nazwie w następujący sposób: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*itp.  Dla przykładowej aplikacji do każdego wystąpienia aplikacji również ma unikatową nazwę.  Nazwy wystąpienia aplikacji, które są używane są *webfrontend1*, *webfrontend2*, i *webfrontend3*.
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>Konfigurowanie profilu usługi Traffic Manager
 Wiele wystąpień aplikacji, wdrożenie w wielu środowiskach usługi App Service wystąpień poszczególnych aplikacji można zarejestrować za pomocą usługi Traffic Manager.  Przykładowa aplikacja usługi Traffic Manager profil na potrzeby dla *demo.trafficmanager.net skalowalne środowisko ase* która może kierować klientów do żadnego z następujących wystąpień wdrożonej aplikacji:
 
-* **webfrontend1.fe1ase.p.azurewebsites.NET:** wystąpienie przykładowej aplikacji wdrożonych na pierwszej usługi App Service Environment.
-* **webfrontend2.fe2ase.p.azurewebsites.NET:** wystąpienie przykładowej aplikacji wdrożonych na drugim środowisku usługi App Service.
-* **webfrontend3.fe3ase.p.azurewebsites.NET:** wystąpienie przykładowej aplikacji wdrożonych w trzecim usługi App Service Environment.
+* **webfrontend1.fe1ase.p.azurewebsites.NET:**  Wystąpienie przykładowej aplikacji wdrożonych na pierwszej usługi App Service Environment.
+* **webfrontend2.fe2ase.p.azurewebsites.NET:**  Wystąpienie przykładowej aplikacji wdrożonych na drugim środowisku usługi App Service.
+* **webfrontend3.fe3ase.p.azurewebsites.NET:**  Wystąpienie przykładowej aplikacji wdrożonych w trzecim usługi App Service Environment.
 
 Najprostszym sposobem zarejestrować wiele usługi Azure App Service punktów końcowych, działającą w **tego samego** region platformy Azure, to przy użyciu programu Powershell [pomocy technicznej usługi Azure Resource Manager Traffic Manager] [ ARMTrafficManager].  
 

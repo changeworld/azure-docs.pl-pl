@@ -1,5 +1,5 @@
 ---
-title: Jak skalować środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Usługa Azure Time Series Insights skalowanie — jak skalować środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób skalowania środowiska Azure Time Series Insights. Aby zwiększyć lub zmniejszyć pojemność w ramach cen jednostki SKU, należy użyć witryny Azure portal.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: f80c3ad28c3944bd365100d1d873231869da46f8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 1adb93d935e16bdce23e35e306592a9575967452
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629722"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271865"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak skalować środowiska usługi Time Series Insights
 

@@ -1,5 +1,5 @@
 ---
-title: Jak skalować aplikację w środowisku usługi App Service
+title: Jak skalować aplikację w środowisku usługi App Service — platformy Azure
 description: Skalowanie aplikacji w środowisku usługi App Service
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-ms.openlocfilehash: 3b2f93c9763805377ed534d59b1025a5aa1a32e8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: c94e7f761dcbc7e05965e359d7f9a864335c9c6b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955534"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269349"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Skalowanie aplikacji w środowisku usługi App Service
 W usłudze Azure App Service są zwykle trzy rzeczy, które można skalować:
@@ -39,7 +40,7 @@ Zmiana albo element odbywa się za pośrednictwem odpowiedni interfejs użytkown
 
 ![][1]
 
-Nie można skalować przekracza liczbę zasobów obliczeniowych dostępnych w puli procesów roboczych, które strona ASP jest strona ASP.  Jeśli potrzebujesz obliczenia zasobów w puli procesów roboczych należy uzyskać administrator środowiska ASE, aby dodać je.  Aby uzyskać informacje dotyczące ponowne konfigurowanie środowiska ASE przeczytaj informacje w tym miejscu: [jak skonfigurować środowisko App Service environment][HowtoConfigureASE].  Można również korzystać z funkcji automatycznego skalowania środowiska ASE można dodać pojemność na podstawie harmonogramu lub metryk.  Aby uzyskać więcej informacji na temat konfigurowania automatycznego skalowania dla środowiska ASE, sama zobacz [Konfigurowanie skalowania automatycznego dla środowiska App Service Environment][ASEAutoscale].
+Nie można skalować przekracza liczbę zasobów obliczeniowych dostępnych w puli procesów roboczych, które strona ASP jest strona ASP.  Jeśli potrzebujesz obliczenia zasobów w puli procesów roboczych należy uzyskać administrator środowiska ASE, aby dodać je.  Aby uzyskać informacje dotyczące ponowne konfigurowanie środowiska ASE przeczytać informacje w tym miejscu: [Jak skonfigurować środowisko App Service environment][HowtoConfigureASE].  Można również korzystać z funkcji automatycznego skalowania środowiska ASE można dodać pojemność na podstawie harmonogramu lub metryk.  Aby uzyskać więcej informacji na temat konfigurowania automatycznego skalowania dla środowiska ASE, sama zobacz [Konfigurowanie skalowania automatycznego dla środowiska App Service Environment][ASEAutoscale].
 
 Można utworzyć wiele aplikacji planów usług z pul innego procesu roboczego przy użyciu zasobów obliczeniowych, lub można użyć tej samej puli procesów roboczych.  Na przykład jeśli masz (10) zasobów obliczeniowych dostępnych na 1 puli procesów roboczych, można utworzyć jeden plan usługi app service przy użyciu zasobów obliczeniowych (6) i drugi usługi app service plan, który używa (4) zasoby obliczeniowe.
 

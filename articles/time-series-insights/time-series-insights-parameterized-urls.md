@@ -1,5 +1,5 @@
 ---
-title: Udostępnianie widoków niestandardowych usługi Azure Time Series Insights za pomocą sparametryzowanych adresów URL | Microsoft Docs
+title: Czas serii Insights adresy URL platformy Azure — widoki niestandardowe udziału usługi Azure Time Series Insights za pomocą sparametryzowanych adresów URL | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób opracowywania sparametryzowanych adresów URL w usłudze Azure Time Series Insights na potrzeby łatwego udostępniania widoku klienta.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: dbd717d79230c5dc2fc823484376267e7b7b8ab1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 5b43ba4c3f88c678b160e8aec442fa92b4822a3d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628804"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274364"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 
@@ -70,7 +71,7 @@ Parametr `timeSeriesDefinitions=<collection of term objects>` określa terminy w
   - Nazwa kolumny *miary*.
 - "predicate":"<string>"
   - Klauzula *where* na potrzeby filtrowania po stronie serwera.
--  "useSum":"true"
+- "useSum":"true"
   - Jest to opcjonalny parametr określający użycie sumy dla miary.  Uwaga: Jeśli wybrana miara to „Events”, domyślnie jest zaznaczona liczba.  Jeśli miara „Events” nie jest zaznaczona, domyślnie jest zaznaczona średnia.  
 
 Parametr „multiChartStack=<true/false>” umożliwia umieszczanie na stosie na wykresie, a parametr „multiChartSameScale=<true/false>” dopuszcza tę samą skalę osi Y dla warunków w ramach parametru opcjonalnego.  

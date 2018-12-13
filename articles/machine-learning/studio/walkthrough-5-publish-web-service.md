@@ -1,12 +1,11 @@
 ---
 title: 'Krok 5: Wdrażanie usługi sieci web - Azure Machine Learning Studio | Dokumentacja firmy Microsoft'
-description: 'Krok 5 Programowanie przewodnik rozwiązania do analizy predykcyjnej: wdrożyć eksperyment predykcyjny w usłudze Machine Learning Studio jako usługę sieci web.'
+description: 'Krok 5 Programowanie przewodnik rozwiązania do analizy predykcyjnej: Jako usługę sieci web, należy wdrożyć eksperyment predykcyjny w usłudze Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cgronlun
 ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: b0da85625ab938ea050ec6ae7bb1d66b095370b6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ab23636aa0480532606268efedcc76ea1ddd339a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077141"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253735"
 ---
-# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>Przewodnik, krok 5: Wdrażanie usługi sieci web Azure Machine Learning Studio
+# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>Przewodnik, krok 5 Wdrażanie usługi sieci web Azure Machine Learning Studio
 Jest to krok piąty tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md)
@@ -205,7 +204,7 @@ Aby monitorować wydajność usługi sieci web:
 4. Kliknij przycisk **pulpitu nawigacyjnego**
 
 - - -
-**Następnie: [dostęp do usługi sieci web](walkthrough-6-access-web-service.md)**
+**Dalej: [Dostęp do usługi sieci web](walkthrough-6-access-web-service.md)**
 
 [3]: ./media/walkthrough-5-publish-web-service/publish3.png
 [3a]: ./media/walkthrough-5-publish-web-service/publish3a.png
