@@ -2,19 +2,19 @@
 title: Planowanie infrastruktury kopii zapasowej maszyny Wirtualnej na platformie Azure
 description: Istotne zagadnienia dotyczące planowania, tworzenia kopii zapasowych maszyn wirtualnych na platformie Azure
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: kopie zapasowe maszyn wirtualnych, kopie zapasowe maszyn wirtualnych
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
-ms.author: markgal
-ms.openlocfilehash: 806d68370921a7658066a9bad770b36b4e8e59bf
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.author: raynew
+ms.openlocfilehash: 7ebb71c6c5968f8f3548f1accd8d659039e6b545
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680042"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871646"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planowanie infrastruktury kopii zapasowych maszyny wirtualnej na platformie Azure
 Ten artykuł zawiera wydajności i sugestii zasobu, aby ułatwić planowanie infrastruktury kopii zapasowej maszyny Wirtualnej. Definiuje również kluczowe aspekty w usłudze Kopia zapasowa; te aspekty mogą być szczególnie ważne w określaniu architektury, planowania pojemności i planowania. Jeśli masz [przygotować środowisko](backup-azure-arm-vms-prepare.md), planowania jest kolejnym krokiem przed rozpoczęciem [do tworzenia kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md). Aby uzyskać więcej informacji na temat maszyn wirtualnych platformy Azure, zobacz [dokumentacja dotycząca maszyn wirtualnych](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -144,7 +144,7 @@ Cennik tworzenia kopii zapasowych maszyn wirtualnych nie jest oparty na maksymal
 
 Za przykład niech posłuży A2 standardowy rozmiar maszyny wirtualnej, która ma dwa dyski dodatkowe dane o maksymalnym rozmiarze 4 TB. W poniższej tabeli przedstawiono rzeczywiste dane przechowywane na każdym z tych dysków:
 
-| Typ dysku | Maksymalny rozmiar | Rzeczywiste dane |
+| Typ dysku | Maks. rozmiar | Rzeczywiste dane |
 | --------- | -------- | ----------- |
 | Dysk systemu operacyjnego |4095 GB |17 GB |
 | Dysk lokalny / tymczasowe dysku |135 GB |5 GB (nie dołączona do tworzenia kopii zapasowych) |

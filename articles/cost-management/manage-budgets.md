@@ -1,23 +1,23 @@
 ---
 title: Zarządzanie budżetów Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł ułatwia tworzenie i zarządzanie nimi budżetów w rozwiązaniu Cloudyn.
+description: Ten artykuł ułatwia szybkie tworzenie budżetów i rozpocząć zarządzanie nimi w rozwiązaniu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: ef2ccd1d1fb5583d1356969ca759e5fb58a81936
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 44062670283a15f678da45e13a831e73a7738c39
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997567"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075492"
 ---
-# <a name="manage-budgets"></a>Zarządzanie budżetami
+# <a name="manage-azure-budgets-with-cloudyn"></a>Zarządzanie budżetów platformy Azure z usługą Cloudyn
 
 Ustawienie zapasowej budżetów i oparte na budżecie alerty pomocy, aby ulepszyć swoje nadzoru na chmurę i odpowiedzialności. Ten artykuł ułatwia szybkie tworzenie budżetów i rozpocząć zarządzanie nimi w rozwiązaniu Cloudyn.
 
@@ -40,7 +40,7 @@ Aby utworzyć budżet i przypisać ją do jednostki:
 3. W tym roku budżetu wybierz roku, w którym chcesz utworzyć budżetu.
 4. W każdym miesiącu ustaw wartość budżetu. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
 W tym przykładzie $135,000 ustawiono miesięczne budżetu czerwca 2018 r. Łączny budżet na rok jest 1,615,000.00 $.
-![Tworzenie budżetu](./media/manage-budgets/set-budget.png)
+![Utwórz stronę budżetu, gdzie ustawiasz budżetu w każdym miesiącu](./media/manage-budgets/set-budget.png)
 
 
 Aby zaimportować plik do rocznych budżetu:
@@ -64,11 +64,11 @@ W tym przykładzie przyjęto założenie, bieżąca data to 22 czerwca. Koszt cz
 
 Innym sposobem, aby wyświetlić raport jest Przyjrzyj się programu vs skumulowany koszt Twojego budżetu. Aby wyświetlić w obszarze łączne koszty **Pokaż/Ukryj pola**, wybierz opcję **skumulowany koszt** i **łączny budżet**. Oto przykład pokazujący skumulowany koszt od początku roku.
 
-![Skumulowana budżetu](./media/manage-budgets/accumulated-budget.png)
+![Przykład zgromadzonych kosztów i Łączny budżet objętego Cost vs. Raport budżetu względem czasu](./media/manage-budgets/accumulated-budget.png)
 
 W przyszłości chwilę skumulowany koszt może przekraczać Twojego budżetu. Możesz łatwiej zobaczyć, że w przypadku zmiany widoku wykresu do _wiersza_ typu.
 
-![Wyświetlane na wykresie liniowym budżetu](./media/manage-budgets/budget-line.png)
+![Budżet wyświetlane na wykresie liniowym kosztów według miesięcy raportu](./media/manage-budgets/budget-line.png)
 
 ## <a name="create-budget-alerts-for-a-filter"></a>Tworzenie alertów budżetu filtru
 
@@ -81,7 +81,7 @@ Przyjrzyjmy się przykładowi.
 
 W porównaniu z kosztami. Budżetu w czasie — raport, kliknij przycisk **akcje** , a następnie wybierz **zaplanować raport**. Na karcie wartości progowej wybierz metrykę, wartość progową. Na przykład **budżet vs procent kosztów**. Wybierz typ alertu, a następnie wprowadź wartość procentową budżetu. Wybrać opcję otrzymywania tylko raz, **liczbę kolejnych alertów** , a następnie wpisz _1_. Kliknij pozycję **Zapisz**.
 
-![Alert dotyczący budżetu](./media/manage-budgets/budget-alert.png)
+![Tworzenie alert dotyczący budżetu na Zapisz lub harmonogram tego pola raportu](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

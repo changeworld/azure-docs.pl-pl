@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d83af114ebb5e5ff78372897d3e08ed592d4012
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 854f457e6731f69c64bf2036840d9e1c18a1cbf2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093905"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075094"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Dołączanie dysku danych zarządzanych do maszyny Wirtualnej z systemem Windows przy użyciu witryny Azure portal
 
@@ -52,30 +52,6 @@ W tym artykule pokazano, jak dołączyć nowy dysk danych zarządzanych na maszy
 8. W **Formatuj nowy dysk** , sprawdź ustawienia, a następnie wybierz pozycję **Start**.
 9. Zostanie wyświetlone ostrzeżenie z informacją, że formatowanie dyski na partycje powoduje usunięcie wszystkich danych. Kliknij przycisk **OK**.
 10. Po zakończeniu formatowania wybierz **OK**.
-
-## <a name="use-trim-with-standard-storage"></a>TRIM za pomocą magazynu w warstwie standardowa
-
-Jeśli używasz magazynu w warstwie standardowa (HDD), należy włączyć **TRIM** polecenia. **TRIM** polecenia odrzuca nieużywanych bloków na dysku, dlatego, że opłaty są naliczane tylko za magazyn, który rzeczywiście używasz. Za pomocą **TRIM**, można zmniejszyć koszty Jeśli tworzenie dużych plików, a następnie później usunąć je. 
-
-Aby sprawdzić **TRIM** ustawienie, otwórz wiersz polecenia na maszynie Wirtualnej Windows, a następnie wprowadź następujące polecenie:
-
-```
-fsutil behavior query DisableDeleteNotify
-```
-
-Jeśli polecenie zwraca 0, **TRIM** prawidłowo włączona. W przeciwnym razie, jeśli zwraca wartość 1, uruchom następujące polecenie, aby włączyć **TRIM**:
-
-```
-fsutil behavior set DisableDeleteNotify 0
-```
-
-Po usunięciu danych z dysku, można zapewnić **TRIM** operacji opróżniania poprawnie, uruchamiając defragmentowania z **TRIM**:
-
-```
-defrag.exe <volume:> -l
-```
-
-Możesz również sformatować wolumin, aby upewnić się, że cały wolumin są spacje.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

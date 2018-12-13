@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 4845fdbbfa4dfabf53b1f7e747668cf7f5108eb7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4f4c52bd217bf67206fe1208c1d5402216bd8178
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232712"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879455"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migracja Contoso: ponowne hostowanie aplikacji systemu Linux w środowisku lokalnym do maszyn wirtualnych platformy Azure
 
@@ -145,7 +145,7 @@ Firma Contoso potrzebuje kilka składników platformy Azure dla usługi Site Rec
     - Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
     - Używają konta ogólnego przeznaczenia z magazynu w warstwie standardowa i replikacją LRS.
 
-    ![Site Recovery magazynu](./media/contoso-migration-rehost-linux-vm/asr-storage.png)
+      ![Site Recovery magazynu](./media/contoso-migration-rehost-linux-vm/asr-storage.png)
 
 2. Za pomocą konta magazynu i sieci w miejscu utworzyć magazyn (ContosoMigrationVault) i umieść go w **ContosoFailoverRG** grupę zasobów, w regionie wschodnie stany USA 2 podstawowym.
 

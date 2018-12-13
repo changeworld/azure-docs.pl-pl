@@ -10,20 +10,20 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f02c495c7448334529de2d5b42cda02206daea0d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229683"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877976"
 ---
 # <a name="customize-your-text-translations"></a>Dostosuj tłumaczenia tekstu
 
-Microsoft niestandardowe w usłudze Translator w wersji zapoznawczej to funkcja usługi Microsoft Translator, która umożliwia użytkownikom dostosowywanie zaawansowane neuronowego tłumaczenia maszynowego Microsoft Translator podczas tłumaczenia tekstu przy użyciu interfejsu API tłumaczenia tekstu (tylko wersja 3).
+Usługa Microsoft Translator niestandardowe to funkcja usługi Microsoft Translator, która umożliwia użytkownikom dostosowywanie zaawansowane neuronowego tłumaczenia maszynowego Microsoft Translator podczas tłumaczenia tekstu przy użyciu interfejsu API tłumaczenia tekstu (tylko wersja 3).
 
-Tej funkcji można również dostosować tłumaczenia mowy, gdy jest używane z [mowy w usłudze Cognitive Services w wersji zapoznawczej](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+Tej funkcji można również dostosować tłumaczenia mowy, gdy jest używane z [mowy w usłudze Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
-## <a name="custom-translator"></a>Niestandardowe w usłudze Translator
+## <a name="custom-translator"></a>Custom Translator
 
 Translator niestandardowe umożliwiają tworzenie tłumaczenie neuronowe systemami, zapoznaj się z terminologią używane we własnych firm i branży. System tłumaczeń dostosowany zostanie następnie integrowanie istniejących aplikacji, przepływów pracy i witryn sieci Web.
 
@@ -48,7 +48,7 @@ Starsze Centrum w usłudze Translator firmy Microsoft może służyć do transla
 
 |   | **Centrum** | **Niestandardowe w usłudze Translator**|
 |:-----|:----:|:----:|
-|Stan funkcji dostosowywania   | Ogólna dostępność  | Wersja zapoznawcza |
+|Stan funkcji dostosowywania   | Ogólna dostępność  | Ogólna dostępność |
 | Interfejs API tłumaczenia tekstu w wersji  | Tylko w wersji 2   | Tylko w wersji 3 |
 | Dostosowywanie SMT | Yes   | Nie |
 | Dostosowywanie NMT | Nie    | Yes |

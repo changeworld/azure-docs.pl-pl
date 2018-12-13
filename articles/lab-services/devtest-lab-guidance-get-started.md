@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1d00dbe23fbd724893ba2b964fc54a3ea9066dcb
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 87baef8ddb5b5d8fc979ba5afb9f9b13cb4fc2ef
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251071"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876540"
 ---
 # <a name="get-started-with-using-azure-devtest-labs"></a>Rozpoczynanie pracy z usługą za pomocą usługi Azure DevTest Labs
 Po podjęciu decyzji zapoznać się z usługi DevTest Labs, istnieją dwie ścieżki ogólnego do przodu — vs weryfikacji koncepcji wdrożenia skalowany. 
@@ -51,7 +51,7 @@ Tworzenie i zarządzanie nimi środowisk testowych w całym przedsiębiorstwie, 
 
 - Testerzy można przetestować najnowszą wersję aplikacji, szybko aprowizując środowiska Windows i Linux przy użyciu szablonów i artefaktów.
 - Testerzy można zwiększać ich testy obciążeniowe, aprowizując wielu agentów testowych
-- Administratorzy mogą laboratorium łączyć się z usługi VSTS, która umożliwia realizację scenariuszy DevOps
+- Administratorzy mogą laboratorium łączyć się z DevOps platformy Azure, która umożliwia realizację scenariuszy DevOps
 - Administratorzy mogą kontrolować koszty za zapewnienie, że:
     - Testerzy nie można pobrać więcej maszyn wirtualnych, niż jest to wymagane
     - Maszyny wirtualne zostaną wyłączone w dół, gdy nieużywany

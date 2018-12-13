@@ -1,10 +1,8 @@
 ---
-title: Interfejs API tabel usługi Azure Cosmos DB dla środowiska Node.js | Dokumentacja firmy Microsoft
+title: Interfejs API tabel usługi Azure Cosmos DB dla środowiska Node.js
 description: Dowiedz się wszystkiego o usłudze Azure Cosmos DB interfejsu API tabel tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami.
 services: cosmos-db
 author: yarong
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: ''
-ms.openlocfilehash: 4bdcb7c587ef05ced3c163136c52c81433a98cf4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: MT
+ms.openlocfilehash: 7ffcf656762c82d81c86eb394b028722566dafdb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468708"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864421"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Usługa Azure Cosmos DB interfejsu API tabel dla środowiska Node.js: informacje o wersji i zasoby
 > [!div class="op_single_selector"]

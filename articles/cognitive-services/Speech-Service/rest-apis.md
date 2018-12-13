@@ -1,5 +1,5 @@
 ---
-title: Mowy usługi REST API — usługa rozpoznawania mowy
+title: Speech Services — interfejsy API REST — usługi mowy
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak używać interfejsów API REST mowy na tekst i zamiany tekstu na mowę. W tym artykule dowiesz się o opcjach autoryzacji, opcje zapytania, jak struktury żądania i odpowiedzi.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: ce9b3df5093d51eac0a151269b486b5f1310700c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 5a3c160fcb550fc4f0c92145733aa993b95bd112
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584863"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089348"
 ---
 # <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
@@ -30,7 +31,7 @@ Przed rozpoczęciem korzystania z interfejsów API REST, należy zrozumieć:
 
 Każde żądanie albo mowy na tekst i zamiany tekstu na mowę interfejsu API REST wymaga nagłówka autoryzacji. W poniższej tabeli zestawiono, które nagłówki są obsługiwane dla każdej usługi:
 
-| Nagłówki obsługiwane autoryzacji | Zamiana mowy na tekst | Zamiana tekstu na mowę |
+| Nagłówki obsługiwane autoryzacji | Zamiany mowy na tekst | Zamiana tekstu na mowę |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Yes | Nie |
 | Autoryzacja: elementu nośnego | Yes | Yes |

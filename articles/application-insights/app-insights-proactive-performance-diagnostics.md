@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 1b3b0a1fca01b80459571efff74f1d4da19d133e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b9428e4451ebef921907809b1250238bf084706d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725203"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864965"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
@@ -184,7 +184,7 @@ Te narzędzia diagnostyczne ułatwiają sprawdzanie danych telemetrycznych z Two
 
 * [Profiler](app-insights-profiler.md) 
 * [Rozszerzenie Snapshot debugger](app-insights-snapshot-debugger.md)
-* [Analiza](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analiza](../azure-monitor/log-query/get-started-portal.md)
 * [Analiza inteligentna Diagnostyka](app-insights-analytics.md)
 
 Wykrywanie inteligentne są całkowicie automatyczny. A może chcesz skonfigurować niektóre alerty więcej?

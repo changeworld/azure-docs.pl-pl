@@ -2,19 +2,19 @@
 title: Typowe problemy można rozwiązać w usłudze Azure Stream Analytics
 description: W tym artykule opisano kilka typowych problemów z usługi Azure Stream Analytics i kroki, aby rozwiązać te problemy.
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 2fe180873f8f410d80b06d29d16881eb49f7fc2a
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: a2c7ceae342124f06fcfe8dc18b1a69f7176f4e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978448"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090979"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Typowe problemy w usłudze Stream Analytics i kroki umożliwiające rozwiązywanie problemów
 
@@ -24,7 +24,7 @@ ms.locfileid: "50978448"
  
  Gdy zadanie usługi Stream Analytics otrzymuje nieprawidłowo sformułowany komunikat z danych wejściowych, porzuca wiadomość i powiadamia użytkownika z ostrzeżeniem. Symbol ostrzeżenia jest wyświetlany na **dane wejściowe** Kafelek zadania usługi Stream Analytics (ta oznaczeniem ostrzeżenia istnieje tak długo, jak długo zadanie jest w stanie uruchomienia):
 
-![Kafelku dane wejściowe](media/stream-analytics-malformed-events/inputs_tile.png)
+![Dane wejściowe kafelka na pulpicie nawigacyjnym usługi Azure Stream Analytics](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 Aby uzyskać więcej informacji, Włącz dzienniki diagnostyczne wyświetlić szczegóły ostrzeżenia. Źle sformułowane zdarzenia wejściowe, dzienniki wykonywania zawierać wpis ze komunikat, który wygląda następująco: "komunikat: nie można przeprowadzić deserializacji zdarzeń wejściowych z zasobu <blob URI> jako dane json". 
 
@@ -34,7 +34,7 @@ Aby uzyskać więcej informacji, Włącz dzienniki diagnostyczne wyświetlić sz
 
 2. Na kafelku dane wejściowe, wyświetla zestaw ostrzeżeń wraz ze szczegółów o problemie. Poniżej przedstawiono przykładowy komunikat ostrzegawczy, komunikat ostrzegawczy pokazuje partycji, przesunięcie i sekwencji cyfry w przypadku, gdy są źle sformułowane dane JSON. 
 
-   ![Komunikat ostrzegawczy z przesunięciem](media/stream-analytics-malformed-events/warning_message_with_offset.png)
+   ![Wejściowy komunikat ostrzegawczy z przesunięciem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
 3. Aby uzyskać dane JSON, który ma niepoprawny format, należy uruchomić kod CheckMalformedEvents.cs. Ten przykład jest dostępny w [repozytorium przykładów usługi GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Ten kod odczytuje identyfikator partycji: przesunięcie i drukuje dane, które znajdują się w tym przesunięciu. 
 

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure AD Lista kontrolna wdrażania 30 dni, w ciągu 90 dni, a nie tylko
-description: Usługa Azure Active Directory Premium P2 funkcji listy kontrolnej dotyczącej wdrożenia
+title: Premium P2 licencjonowania funkcji checklist — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Lista kontrolna wdrażania usługi Azure Active Directory Premium P2 funkcji wdrażania w ciągu 30 dni, 90 dni i nie tylko.
 services: active-directory
 ms.service: active-directory
 ms.component: ''
@@ -9,13 +9,13 @@ ms.date: 09/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: ''
-ms.openlocfilehash: 86561cd835a36282ca1b38638ab4372c6b360617
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705655"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078243"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Usługa Azure Active Directory Premium P2 licencjonowania lista funkcji
 

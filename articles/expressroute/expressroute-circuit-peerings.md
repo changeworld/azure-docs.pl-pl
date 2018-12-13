@@ -6,17 +6,18 @@ author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.author: mialdrid
-ms.openlocfilehash: e9acf05562d5fb443e0340e18bc6bc259d3e8f52
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.author: mialdridm
+ms.custom: seodec18
+ms.openlocfilehash: 095d637eac5478c65ca3f15cc845518a94aa5149
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868654"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080337"
 ---
 # <a name="expressroute-circuits-and-peering"></a>Obwody usługi ExpressRoute i komunikacji równorzędnej
 
-Obwody usługi ExpressRoute umożliwiają podłączenia infrastruktury lokalnej do firmy Microsoft za pośrednictwem dostawcy łączności. Ten artykuł pomaga zrozumieć obwodów usługi ExpressRoute i routing domen/komunikacji równorzędnej. Na poniższej ilustracji przedstawiono logiczną reprezentację łączność sieci WAN, a firmy Microsoft.
+Obwody usługi ExpressRoute z infrastruktury lokalnej firmą Microsoft za pośrednictwem dostawcy łączności. Ten artykuł pomaga zrozumieć obwodów usługi ExpressRoute i routing domen/komunikacji równorzędnej. Na poniższej ilustracji przedstawiono logiczną reprezentację łączność sieci WAN, a firmy Microsoft.
 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
@@ -72,7 +73,7 @@ W poniższej tabeli porównano trzy komunikacji równorzędnej:
 | **Maksymalna liczba. prefiksy # obsługiwane na połączenie komunikacji równorzędnej** |4000 domyślnie 10 000 operacji przy użyciu usługi ExpressRoute Premium |200 |200 |
 | **Obsługiwane zakresów adresów IP** |Dowolny prawidłowy adres IP w sieci WAN. |Publiczne adresy IP posiadane przez Ciebie lub dostawcą łączności. |Publiczne adresy IP posiadane przez Ciebie lub dostawcą łączności. |
 | **JAKO liczba wymagań** |Prywatne i publiczne numery AS. Musi być właścicielem publicznie jako liczbę, jeśli zdecydujesz się go użyć. |Prywatne i publiczne numery AS. Jednak musisz udowodnić, że własność publicznych adresów IP. |Prywatne i publiczne numery AS. Jednak musisz udowodnić, że własność publicznych adresów IP. |
-| **Obsługiwane protokoły IP**| Protokół IPv4 |  IPv4, IPv6 | Protokół IPv4 |
+| **Obsługiwane protokoły IP**| IPv4 |  IPv4, IPv6 | IPv4 |
 | **Routing adresów IP interfejsu** |RFC1918 i publiczne adresy IP |Publiczne adresy IP zarejestrowane na Ciebie w rejestrów routingu. |Publiczne adresy IP zarejestrowane na Ciebie w rejestrów routingu. |
 | **Skrót MD5 pomocy technicznej** |Yes |Yes |Yes |
 

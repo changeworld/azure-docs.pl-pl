@@ -1,11 +1,12 @@
 ---
-title: Narzędzia wprowadzanie danych maszyny wirtualnej nauki danych - Azure | Dokumentacja firmy Microsoft
-description: Narzędzia wprowadzanie danych maszyny wirtualnej nauki danych
-keywords: narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux
+title: Maszyna wirtualna do analizy danych narzędzia do wprowadzania danych — Azure | Dokumentacja firmy Microsoft
+description: Informacje na temat narzędzia do wprowadzania danych i narzędzia wstępnie zainstalowane na maszynie wirtualnej do nauki o danych.
+keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,96 +16,96 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 7aeb0476fffb8c9e5cf2b0b5d89a2a387bd6364a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 75f068a857be33337348958fbc472f37f6d84e12
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411349"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075859"
 ---
-# <a name="data-science-virtual-machine-data-ingestion-tools"></a>Narzędzia wprowadzanie danych maszyny wirtualnej nauki danych
+# <a name="data-science-virtual-machine-data-ingestion-tools"></a>Narzędzia do wprowadzania danych maszyny wirtualnej do nauki o danych
 
-Pierwszy techniczne czynności w nauce danych lub w projekcie AI jest zidentyfikowanie zestawy danych do użycia i dostosować je do środowiska usługi analytics. Maszyna wirtualna nauki danych (DSVM) zawiera narzędzia i biblioteki, aby przenieść dane z różnych źródeł w magazynie danych analitycznych, lokalnie na DSVM lub na platformie danych w chmurze lub lokalnie. 
+Jest jedną z pierwszych kroków pomoc do nauki o danych lub projektu sztucznej Inteligencji do identyfikowania zestawów danych, można użyć do dostosowania ich do środowiska usługi analytics. Maszyna wirtualna do nauki o danych (DSVM) udostępnia narzędzia i biblioteki, aby wyświetlić dane z różnych źródeł w magazynie danych analitycznych, lokalnie na maszyny DSVM lub na platformie danych w chmurze lub lokalnie. 
 
-Poniżej przedstawiono niektóre narzędzia przepływu danych, które firma Microsoft umieściła na DSVM. 
+Poniżej przedstawiono niektóre narzędzia przenoszenia danych, które udostępniliśmy maszyny DSVM. 
 
-## <a name="adlcopy"></a>AdlCopy
+## <a name="adlcopy"></a>Narzędzia AdlCopy
 
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   | Narzędzie można skopiować danych z obiektów blob magazynu Azure do usługi Azure Data Lake Store. Można także skopiować dane między dwa konta usługi Azure Data Lake Store.      |
-| DSVM obsługiwane wersje      | Windows      |
-| Typowe zastosowania      | Importowanie wielu obiektów blob magazynu Azure do usługi Azure Data Lake Store.      |
-|  Jak używać / uruchom go?    |   Otwórz wiersz polecenia, wpisz `adlcopy` Aby uzyskać pomoc.    |
-| Łącza do próbek      | [Korzystanie z narzędzia AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
-| Pokrewne narzędzia na DSVM      | Narzędzia AzCopy, wiersza polecenia platformy Azure     |
+| Co to jest?   | Narzędzie, aby skopiować dane z usługi Azure storage BLOB do usługi Azure Data Lake Store. Ponadto można kopiować dane między dwa konta usługi Azure Data Lake Store.      |
+| Wersje maszyny DSVM obsługiwane      | Windows      |
+| Typowe zastosowania      | Importowanie wielu obiektów blob z usługi Azure storage do usługi Azure Data Lake Store.      |
+|  Jak używać / ją uruchomić?    |   Otwórz wiersz polecenia, a następnie wpisz `adlcopy` Aby uzyskać pomoc.    |
+| Zawiera linki do przykładów      | [Korzystanie z narzędzia AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Pokrewne narzędzia na maszyny DSVM      | Narzędzia AzCopy, wiersza polecenia platformy Azure     |
 
 ## <a name="azure-command-line"></a>Wiersza polecenia platformy Azure
 
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   | Narzędzie do zarządzania dla platformy Azure. Zawiera także zleceń polecenie, aby przenieść dane z usługi Azure data platform, takich jak obiekty BLOB magazynu Azure, Azure Data Lake Storage     |
-| DSVM obsługiwane wersje      | Windows, Linux     |
-| Typowe zastosowania      | Importowanie i eksportowanie danych do i z magazynu Azure, Azure Data Lake Store      |
-|  Jak używać / uruchom go?    |   Otwórz wiersz polecenia, wpisz `az` Aby uzyskać pomoc.    |
-| Łącza do próbek      | [Korzystanie z interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)     |
-| Pokrewne narzędzia na DSVM      | AzCopy, AdlCopy      |
+| Co to jest?   | Narzędzie do zarządzania dla platformy Azure. Zawiera ona także zlecenia polecenia, aby przenieść dane z usługi Azure data platform, takich jak usługi Azure storage blob usługi Azure Data Lake Storage     |
+| Wersje maszyny DSVM obsługiwane      | Windows, Linux     |
+| Typowe zastosowania      | Importowanie i eksportowanie danych do i z usługi Azure storage, Azure Data Lake Store      |
+|  Jak używać / ją uruchomić?    |   Otwórz wiersz polecenia, a następnie wpisz `az` Aby uzyskać pomoc.    |
+| Zawiera linki do przykładów      | [Korzystanie z interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)     |
+| Pokrewne narzędzia na maszyny DSVM      | AzCopy, AdlCopy      |
 
 
 ## <a name="azcopy"></a>Narzędzie AzCopy
 
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   | Narzędzie można skopiować danych do i z lokalnych plików, obiektów blob magazynu Azure, plików i tabele.      |
-| DSVM obsługiwane wersje      | Windows      |
-| Typowe zastosowania      | Kopiowanie plików do magazynu obiektów blob, kopiowania obiektów blob między kontami.      |
-|  Jak używać / uruchom go?    |   Otwórz wiersz polecenia, wpisz `azcopy` Aby uzyskać pomoc.    |
-| Łącza do próbek      | [Narzędzie AzCopy w systemie Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
-| Pokrewne narzędzia na DSVM      | AdlCopy     |
+| Co to jest?   | Narzędzie do kopiowania danych do i z plików lokalnych, usługi Azure storage blob, tabel i plików.      |
+| Wersje maszyny DSVM obsługiwane      | Windows      |
+| Typowe zastosowania      | Kopiowanie plików do magazynu obiektów blob, kopiowanie obiektów blob między kontami.      |
+|  Jak używać / ją uruchomić?    |   Otwórz wiersz polecenia, a następnie wpisz `azcopy` Aby uzyskać pomoc.    |
+| Zawiera linki do przykładów      | [Narzędzie AzCopy w systemie Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
+| Pokrewne narzędzia na maszyny DSVM      | Narzędzia AdlCopy     |
 
 
-## <a name="azure-cosmos-db-data-migration-tool"></a>Azure narzędzia migracji danych DB rozwiązania Cosmos
+## <a name="azure-cosmos-db-data-migration-tool"></a>Narzędzie do migracji danych usługi Cosmos DB platformy Azure
 
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   | Narzędzie do importowania danych z różnych źródeł, takich jak pliki w formacie JSON, CSV plików SQL, bazy danych MongoDB, Magazyn tabel Azure, Amazon DynamoDB i interfejsu API Azure rozwiązania Cosmos bazy danych SQL kolekcje do bazy danych Azure rozwiązania Cosmos.      |
-| DSVM obsługiwane wersje      | Windows      |
-| Typowe zastosowania      | Importowanie plików z maszyny Wirtualnej do CosmosDB, importowanie danych z magazynu tabel platformy Azure do CosmosDB lub importowanie danych z bazy danych programu SQL Server do CosmosDB.     |
-|  Jak używać / uruchom go?    |   Aby użyć wiersza polecenia wersji, otwórz wiersz polecenia, wpisz `dt`. Aby użyć narzędzia graficznego interfejsu użytkownika, otwórz wiersz polecenia, wpisz `dtui`.    |
-| Łącza do próbek      | [Importowanie CosmosDB danych](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
-| Pokrewne narzędzia na DSVM      | AzCopy, AdlCopy      |
+| Co to jest?   | Narzędzie do importowania danych z różnych źródeł, takich jak pliki w formacie JSON, pliki CSV, SQL, bazy danych MongoDB, magazynu tabel Azure, Amazon DynamoDB i interfejsu API SQL usługi Azure Cosmos DB kolekcji do usługi Azure Cosmos DB.      |
+| Wersje maszyny DSVM obsługiwane      | Windows      |
+| Typowe zastosowania      | Importowanie plików z maszyny Wirtualnej do bazy danych cosmos DB, importowanie danych z usługi Azure table storage do bazy danych cosmos DB lub importowania danych z bazy danych programu SQL Server do bazy danych cosmos DB.     |
+|  Jak używać / ją uruchomić?    |   Aby użyć wiersza polecenia, a następnie wpisz wersję, otwórz wiersz polecenia `dt`. Za pomocą narzędzia z graficznym interfejsem użytkownika, otwórz wiersz polecenia, a następnie wpisz `dtui`.    |
+| Zawiera linki do przykładów      | [Importowanie bazy danych cosmos DB danych](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| Pokrewne narzędzia na maszyny DSVM      | AzCopy, AdlCopy      |
 
 
 ## <a name="bcp"></a>bcp
 
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   | Narzędzie SQL Server, aby skopiować danych między programami SQL Server i plik danych.      |
-| DSVM obsługiwane wersje      | Windows      |
+| Co to jest?   | Narzędzia programu SQL Server do skopiowania danych między programu SQL Server i plik danych.      |
+| Wersje maszyny DSVM obsługiwane      | Windows      |
 | Typowe zastosowania      | Importowanie pliku CSV do tabeli programu SQL Server, eksportowanie tabeli programu SQL Server do pliku.      |
-|  Jak używać / uruchom go?    |   Otwórz wiersz polecenia, wpisz `bcp` Aby uzyskać pomoc.    |
-| Łącza do próbek      | [Bulk Copy Utility](https://docs.microsoft.com/sql/tools/bcp-utility)      |
-| Pokrewne narzędzia na DSVM      | SQL Server, narzędzia sqlcmd      |
+|  Jak używać / ją uruchomić?    |   Otwórz wiersz polecenia, a następnie wpisz `bcp` Aby uzyskać pomoc.    |
+| Zawiera linki do przykładów      | [Bulk Copy Utility](https://docs.microsoft.com/sql/tools/bcp-utility)      |
+| Pokrewne narzędzia na maszyny DSVM      | SQL Server, narzędzia sqlcmd      |
 
 ## <a name="blobfuse"></a>blobfuse
 
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   | Narzędzie do zainstalowania kontenera obiektów blob platformy Azure w systemie Linux.      |
-| DSVM obsługiwane wersje      | Linux      |
+| Co to jest?   | Narzędzie do zamontowania kontenera obiektów blob platformy Azure w systemie plików systemu Linux.      |
+| Wersje maszyny DSVM obsługiwane      | Linux      |
 | Typowe zastosowania      | Odczytywanie i zapisywanie do obiektów blob w kontenerze      |
-|  Jak używać / uruchom go?    |   Uruchom _blobfuse_ w terminalu.    |
-| Łącza do próbek      | [blobfuse w witrynie GitHub](https://github.com/Azure/azure-storage-fuse)      |
-| Pokrewne narzędzia na DSVM      | Wiersza polecenia platformy Azure      |
+|  Jak używać / ją uruchomić?    |   Uruchom _blobfuse_ w terminalu.    |
+| Zawiera linki do przykładów      | [blobfuse w witrynie GitHub](https://github.com/Azure/azure-storage-fuse)      |
+| Pokrewne narzędzia na maszyny DSVM      | Wiersza polecenia platformy Azure      |
 
 
 ## <a name="microsoft-data-management-gateway"></a>Brama zarządzania danymi firmy Microsoft
 
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   | Narzędzie nawiązać lokalnych źródeł danych do usługi do użycia w chmurze.      |
-| DSVM obsługiwane wersje      | Windows      |
-| Typowe zastosowania      | Łączenie maszyny Wirtualnej z lokalnego źródła danych.      |
-|  Jak używać / uruchom go?    |   Uruchom "Brama zarządzania danymi firmy Microsoft" z Start Menu.    |
-| Łącza do próbek      | [Brama zarządzania danymi](https://msdn.microsoft.com/library/dn879362.aspx)      |
-| Pokrewne narzędzia na DSVM      | AzCopy, AdlCopy, bcp    |
+| Co to jest?   | Narzędzie do łączenia z lokalnych źródeł danych do usługi do użycia w chmurze.      |
+| Wersje maszyny DSVM obsługiwane      | Windows      |
+| Typowe zastosowania      | Łączenie maszyny Wirtualnej ze źródłem danych lokalnych.      |
+|  Jak używać / ją uruchomić?    |   Uruchom "Brama zarządzania danymi firmy Microsoft" z Start Menu.    |
+| Zawiera linki do przykładów      | [Brama zarządzania danymi](https://msdn.microsoft.com/library/dn879362.aspx)      |
+| Pokrewne narzędzia na maszyny DSVM      | AzCopy, AdlCopy, bcp    |

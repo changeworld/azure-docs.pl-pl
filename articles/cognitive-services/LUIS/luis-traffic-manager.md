@@ -1,21 +1,22 @@
 ---
-title: Użyj usługi Microsoft Azure Traffic Manager, aby zwiększyć limit przydziału punktu końcowego w Language Understanding (LUIS)
+title: Zwiększ limit przydziału punktu końcowego
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji.
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 28fc0d0061d1826f0e17c26325ea227e001dccda
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3f3dddca7944403ace6a9779be07b0d458fb3cd1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042180"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076767"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy
 Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji. 
@@ -36,7 +37,7 @@ Przed utworzeniem zasobów platformy Azure, Utwórz grupę zasobów zawierając�
 
 Utwórz grupę zasobów za pomocą **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.2.0)** polecenia cmdlet:
 
-```PowerShell
+```powerShell
 New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 ```
 
@@ -69,7 +70,7 @@ Aby utworzyć profil usługi Traffic Manager w regionie wschodnie stany USA, ist
 
     Użyj następującego polecenia cmdlet, aby utworzyć profil. Upewnij się, że zmiana `appIdLuis` i `subscriptionKeyLuis`. SubscriptionKey jest klucza wschodnie stany USA usługi LUIS. Jeśli ścieżka jest nieprawidłowy, LUIS identyfikator i punktu końcowego klucza aplikacji, w tym sondowania usługi Traffic Manager jest stan `degraded` ponieważ Traffic Manager nie może pomyślnie żądania punktu końcowego usługi LUIS. Upewnij się, że wartość `q` jest `traffic-manager-east` można wyświetlić tę wartość w dziennikach punktu końcowego usługi LUIS.
 
-    ```PowerShell
+    ```powerShell
     $eastprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
     ```
     
@@ -89,7 +90,7 @@ Aby utworzyć profil usługi Traffic Manager w regionie wschodnie stany USA, ist
 
 2. Dodaj punkt końcowy wschodnie stany USA, za pomocą **[Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/add-azurermtrafficmanagerendpointconfig?view=azurermps-6.2.0)** polecenia cmdlet
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
     ```
     W następującej tabeli opisano każdej zmiennej w poleceniu cmdlet:
@@ -105,7 +106,7 @@ Aby utworzyć profil usługi Traffic Manager w regionie wschodnie stany USA, ist
 
     Odpowiedź oznaczająca Powodzenie wygląda następująco:
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-eastus
     Name                             : luis-profile-eastus
     ResourceGroupName                : luis-traffic-manager
@@ -124,7 +125,7 @@ Aby utworzyć profil usługi Traffic Manager w regionie wschodnie stany USA, ist
 
 3. Ustaw punkt końcowy wschodnie stany USA, z **[polecenia Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerprofile?view=azurermps-6.2.0)** polecenia cmdlet
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $eastprofile
     ```
 
@@ -137,7 +138,7 @@ Aby utworzyć profil usługi Traffic Manager dla regionu zachodnie stany USA, wy
 
     Użyj następującego polecenia cmdlet, aby utworzyć profil. Upewnij się, że zmiana `appIdLuis` i `subscriptionKeyLuis`. SubscriptionKey jest klucza wschodnie stany USA usługi LUIS. Jeśli ścieżka nie jest poprawny, w tym klucza identyfikator i punktu końcowego aplikacji usługi LUIS, sondowania usługi Traffic Manager jest stan `degraded` ponieważ Traffic Manager nie może pomyślnie żądania punktu końcowego usługi LUIS. Upewnij się, że wartość `q` jest `traffic-manager-west` można wyświetlić tę wartość w dziennikach punktu końcowego usługi LUIS.
 
-    ```PowerShell
+    ```powerShell
     $westprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
     ```
     
@@ -157,7 +158,7 @@ Aby utworzyć profil usługi Traffic Manager dla regionu zachodnie stany USA, wy
 
 2. Dodaj punkt końcowy zachodnie stany USA, za pomocą **[Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** polecenia cmdlet
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
     ```
 
@@ -174,7 +175,7 @@ Aby utworzyć profil usługi Traffic Manager dla regionu zachodnie stany USA, wy
 
     Odpowiedź oznaczająca Powodzenie wygląda następująco:
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-westus
     Name                             : luis-profile-westus
     ResourceGroupName                : luis-traffic-manager
@@ -193,7 +194,7 @@ Aby utworzyć profil usługi Traffic Manager dla regionu zachodnie stany USA, wy
 
 3. Ustaw punkt końcowy zachodnie stany USA, z **[polecenia Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Set-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** polecenia cmdlet
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $westprofile
     ```
 
@@ -204,7 +205,7 @@ Utwórz element nadrzędny profilu usługi Traffic Manager i połączyć dwa pro
 
 1. Utwórz profil nadrzędnej z **[polecenia New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/New-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** polecenia cmdlet
 
-    ```PowerShell
+    ```powerShell
     $parentprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-parent -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-parent -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/"
     ```
 
@@ -224,7 +225,7 @@ Utwórz element nadrzędny profilu usługi Traffic Manager i połączyć dwa pro
 
 2. Dodaj profil podrzędnych wschodnie stany USA do elementu nadrzędnego z **[Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** i **NestedEndpoints** typu
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
     ```
 
@@ -242,7 +243,7 @@ Utwórz element nadrzędny profilu usługi Traffic Manager i połączyć dwa pro
 
     Wygląd odpowiedź oznaczająca Powodzenie podobnie do następujących i zawiera nową `child-endpoint-useast` punktu końcowego:    
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-parent
     Name                             : luis-profile-parent
     ResourceGroupName                : luis-traffic-manager
@@ -261,7 +262,7 @@ Utwórz element nadrzędny profilu usługi Traffic Manager i połączyć dwa pro
 
 3. Dodaj profil podrzędnych zachodnie stany USA do elementu nadrzędnego z **[Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** polecenia cmdlet i **NestedEndpoints** typu
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
     ```
 
@@ -279,7 +280,7 @@ Utwórz element nadrzędny profilu usługi Traffic Manager i połączyć dwa pro
 
     Wygląd pomyślnej odpowiedzi, takie jak i obejmuje zarówno z poprzednich `child-endpoint-useast` punktu końcowego, a nowe `child-endpoint-uswest` punktu końcowego:
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-parent
     Name                             : luis-profile-parent
     ResourceGroupName                : luis-traffic-manager
@@ -298,7 +299,7 @@ Utwórz element nadrzędny profilu usługi Traffic Manager i połączyć dwa pro
 
 4. Ustaw punkty końcowe z **[polecenia Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Set-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** polecenia cmdlet 
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $parentprofile
     ```
 
@@ -309,7 +310,7 @@ W poprzednich sekcjach, zostały utworzone trzy zmienne programu PowerShell: `$e
 
 Zastąpienie elementów w nawiasy kątowe `<>`, za pomocą poprawne wartości dla każdego z trzech profilów, potrzebujesz. 
 
-```PowerShell
+```powerShell
 $<variable-name> = Get-AzureRmTrafficManagerProfile -Name <profile-name> -ResourceGroupName luis-traffic-manager
 ```
 
@@ -329,7 +330,7 @@ Traffic Manager sonduje ścieżkę każdego punktu końcowego, aby upewnić się
 ### <a name="validate-traffic-manager-polling-works"></a>Weryfikowanie usługi Traffic Manager działa sondowania
 Innym sposobem, aby sprawdzić poprawność działania sondowania usługi traffic manager jest za pomocą dzienników punktu końcowego usługi LUIS. Na [LUIS] [ LUIS] listy aplikacji witryny sieci Web strony, Eksportuj Dziennik punktu końcowego dla aplikacji. Usługa Traffic Manager sonduje często pod kątem dwa punkty końcowe, dlatego są wpisy w dziennikach nawet wtedy, gdy zostały one tylko w ciągu kilku minut. Pamiętaj poszukać wpisów, gdzie zapytanie zaczyna się od `traffic-manager-`.
 
-```text
+```console
 traffic-manager-west    6/7/2018 19:19  {"query":"traffic-manager-west","intents":[{"intent":"None","score":0.944767}],"entities":[]}
 traffic-manager-east    6/7/2018 19:20  {"query":"traffic-manager-east","intents":[{"intent":"None","score":0.944767}],"entities":[]}
 ```
@@ -339,7 +340,7 @@ Aby zweryfikować, że odpowiedź DNS zwraca punkt końcowy usługi LUIS, żąda
 
 Poniższy kod Node.js sprawia, że żądanie dotyczące profilu nadrzędnego i zwraca punkt końcowy usługi LUIS:
 
-```javascript
+```nodejs
 const dns = require('dns');
 
 dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {

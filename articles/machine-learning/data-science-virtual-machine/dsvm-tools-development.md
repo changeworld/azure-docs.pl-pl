@@ -1,11 +1,12 @@
 ---
 title: Narzędzia programistyczne maszyna wirtualna do analizy danych — Azure | Dokumentacja firmy Microsoft
-description: Dane wirtualne do analizy narzędzia programistyczne maszyny.
+description: Dowiedz się więcej o narzędziach i zintegrowanych środowisk projektowych, które są wstępnie zainstalowanych na maszynie wirtualnej do nauki o danych.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: ef9f1e0c043370bdfacf654cffb524b716a34446
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: ee1e7003a9f1479db7311072e29132cf491cbc88
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872338"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073758"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Narzędzia programistyczne na maszynie wirtualnej do nauki o danych
 

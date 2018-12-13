@@ -8,13 +8,13 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.openlocfilehash: 438d71997d2c92e377cd068615d274af6b8b5edb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.date: 12/03/2018
+ms.openlocfilehash: c385d10aac01c844f1d4b390c0bb3d064b9befa3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856482"
+ms.locfileid: "52878707"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska usługi Azure Time Series Insights (wersja zapoznawcza)
 
@@ -22,19 +22,24 @@ W tym artykule opisano najlepsze rozwiązania do planowania i rozpocząć pracę
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Najlepsze rozwiązania dotyczące planowania i przygotowania
 
-Należy dysponować następującymi elementami gotowe przed rozpoczęciem:
+Aby rozpocząć korzystanie z usługi Time Series Insights (TSI), najlepiej jest należy zrozumieć następujące kwestie:
 
-* Zidentyfikowaniu swoje **identyfikatory serii czasu**
-* Masz usługi **sygnatura czasowa** właściwość gotowe
-* Gdy masz utworzoną swoje **modelu szeregów czasowych**
-* Możesz dowiedzieć się, jak wysyłać zdarzenia, które są wydajnie nieznormalizowany w formacie JSON
+* Jakie występują podczas aprowizacji środowiska TSI (wersja zapoznawcza).
+* Co Twoja **identyfikatory serii czasu** i **sygnatura czasowa** właściwości są.
+* Jakie nowe **modelu szeregów czasowych** jest i jak tworzyć własne.
+* Jak skutecznie wysyłać zdarzenia w formacie JSON.  
+* Usługa TSI Przesyła firm opcje odzyskiwania po awarii.
 
-O tych elementów gotowe pomaga uprościć planowania i przygotowywania. Ponadto dobrze jest Planuj z wyprzedzeniem i ustalić biznesowej odzyskiwania po awarii (BCDR) wymaga przed utworzeniem wystąpienia (a nie później). Sposób wcześniejsze pomaga upewnić się, że wystąpienie przechowywany jest gotowa.
+Aktualizacja usługi Time Series Insights wykorzystuje model biznesowy zgodnie z rzeczywistym użyciem.  Aby uzyskać więcej informacji na temat opłat i pojemności, zobacz [cennik usługi Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
-> [!TIP]
-> Skonfiguruj środowisko do swoich potrzeb BCDR wcześniej, a nie w przypadku, po utworzeniu wystąpienia usługi.
+## <a name="the-time-series-insights-preview-environment"></a>Środowisko usługi Time Series Insights (wersja zapoznawcza)
 
-Azure TSI (wersja zapoznawcza) wykorzystuje model biznesowy zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat opłat i pojemności, zobacz [cennik usługi Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights).
+Podczas aprowizowania środowiska TSI (wersja zapoznawcza) jest utworzenie dwóch zasobów platformy Azure:
+
+* Środowisko usługi TSI (wersja zapoznawcza)
+* Usługa Azure storage ogólnego przeznaczenia w wersji 1 konta
+
+Aby rozpocząć pracę, należy trzy dodatkowe elementy.  Pierwsza to [modelu szeregów czasowych](./time-series-insights-update-tsm.md), druga jest [połączony źródła zdarzeń usługi Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md), a trzecia będzie [zdarzeń otrzymywanych przez źródło zdarzenia](./time-series-insights-send-events.md) , są mapowana do modelu i mają prawidłowy format JSON.  
 
 ## <a name="configure-your-time-series-ids-and-timestamp-properties"></a>Konfigurowanie właściwości identyfikatorów serii czasu i znacznik czasu:
 
@@ -43,9 +48,9 @@ Aby utworzyć nowe środowisko TSI, wybierz **identyfikator serii czasu**. Spowo
 > [!IMPORTANT]
 > **Czas serii identyfikatory** są **niezmienialnych** i **nie można później zmienić**. Sprawdź każdy przed ostatecznego wyboru, a pierwszym użyciu.
 
-Możesz wybrać maksymalnie **trzy** klucze (3), aby jednoznacznie odróżnienia Twoich zasobów. Odczyt [najlepsze rozwiązania dotyczące wybierania Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md) artykuł, aby uzyskać więcej informacji.
+Możesz wybrać maksymalnie **trzy** klucze (3), aby jednoznacznie odróżnienia Twoich zasobów. Odczyt [najlepsze rozwiązania dotyczące wybierania Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md) i [magazynu i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md) artykuły, aby uzyskać więcej informacji.
 
-Każde źródło zdarzenia ma opcjonalny **sygnatura czasowa** właściwość, która jest używana do źródła śledzenia zdarzeń, wraz z upływem czasu. **Sygnatura czasowa** wartości jest rozróżniana wielkość liter i musi być sformatowany do poszczególnych specyfikacji każdego źródła zdarzeń.
+**Sygnatura czasowa** bardzo ważne jest również właściwość. Można określić tę właściwość, podczas dodawania źródła zdarzeń. Każde źródło zdarzenia ma opcjonalny **sygnatura czasowa** właściwość, która jest używana do źródła śledzenia zdarzeń, wraz z upływem czasu. **Sygnatura czasowa** wartości jest rozróżniana wielkość liter i musi być sformatowany do poszczególnych specyfikacji każdego źródła zdarzeń.
 
 > [!TIP]
 > Sprawdź wymagania dotyczące formatowania i analizowania źródeł zdarzeń.
@@ -56,9 +61,9 @@ Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** zdarzenia 
 
 Teraz możesz skonfigurować środowisko usługi TSI **modelu szeregów czasowych**. Nowy model sprawia, że można łatwo znaleźć i analizowanie danych IoT. Nie tak, należy włączyć nadzorowaną, konserwacja i Wzbogacanie danych szeregów czasowych i pomaga przygotować przygotowane zestawów danych. Model wykorzystuje **identyfikatory serii czasu**, które mapowania na wystąpienie kojarzenie unikatowy zasób z zmienne (znanych jako typy) i hierarchii. Przeczytaj o nowym [modelu szeregów czasowych](./time-series-insights-update-tsm.md).
 
-Model jest dynamiczny, dzięki czemu mogą wbudowane w dowolnym momencie. Można jednak szybciej rozpocząć pracę, jeśli jego została skompilowana i przekazana przed po raz pierwszy do wypychania danych do usługi TSI. Aby utworzyć model, zapoznaj się z [modelu szeregów czasowych](./time-series-insights-update-tsm.md) artykułu.
+Model jest dynamiczny, dzięki czemu mogą wbudowane w dowolnym momencie. Można jednak szybciej rozpocząć pracę, jeśli jego została skompilowana i przekazana przed po raz pierwszy do wypychania danych do usługi TSI. Aby utworzyć model, zapoznaj się z [sposób używania TSM](./time-series-insights-update-how-to-tsm.md) artykułu.
 
-Dla wielu klientów, oczekujemy, że **modelu szeregów czasowych** do mapowania na istniejący model zasobu lub system ERP i przeniesieniu jej już w miejscu. Dla tych klientów, którzy nie mają istniejącego modelu, jest gotowych komfortu [podane](https://github.com/Microsoft/tsiclient) uzyskać szybko uruchamiać wdrożenia.
+Dla wielu klientów, oczekujemy, że **modelu szeregów czasowych** do mapowania na istniejący model zasobu lub system ERP i przeniesieniu jej już w miejscu. Dla tych klientów, którzy nie mają istniejącego modelu, jest gotowych komfortu [podane](https://github.com/Microsoft/tsiclient) uzyskać szybko uruchamiać wdrożenia. Można traktować jak model może pomóc, przeglądając nasze [środowisku pokazu przykładowe](https://insights.timeseries.azure.com/preview/demo).  
 
 ## <a name="shaping-your-events"></a>Kształtowanie zdarzeń
 
@@ -71,7 +76,7 @@ Regułą:
   * **Identyfikator serii czasu**
   * **Znacznik czasu:**
 
-Przegląd [jak zdarzenia kształtu](./time-series-insights-update-how-to-shape-events.md) artykułu bardziej szczegółowo.
+Przegląd [jak zdarzenia kształtu](./time-series-insights-send-events.md#json) artykułu bardziej szczegółowo.
 
 ## <a name="business-disaster-recovery"></a>Odzyskiwanie po awarii biznesowych
 
@@ -93,7 +98,7 @@ Określone kroki, aby osiągnąć ten cel, są następujące:
 
 1. Należy utworzyć środowisko, w drugim regionie. Przeczytaj o [środowisk TSI](./time-series-insights-get-started.md).
 1. Utwórz drugi dedykowanej grupy klientów dla źródła zdarzeń i łączenie źródła zdarzeń do nowego środowiska. Pamiętaj wyznaczyć grupy odbiorców drugi, dedykowanych. Dowiedz się więcej z [dokumentacja usługi IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) lub [dokumentacja Centrum zdarzeń](./time-series-insights-data-access.md).
-1. Jeśli swój region podstawowy został zmieniony podczas zdarzenia po awarii, należy przekierować operacje tworzenia kopii zapasowej środowiska TSI.
+1. Jeśli swój region podstawowy jest obniżona podczas zdarzenia po awarii, należy przekierować operacje tworzenia kopii zapasowej środowiska TSI.
 
 > [!IMPORTANT]
 > * Należy zauważyć, że opóźnienie mogą się pojawić w przypadku pracy awaryjnej.
@@ -102,6 +107,6 @@ Określone kroki, aby osiągnąć ten cel, są następujące:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odczyt [Azure TSI (wersja zapoznawcza), magazynu i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md).
+Odczyt [magazynu Azure TSI (wersja zapoznawcza) i ruch przychodzący](./time-series-insights-update-storage-ingress.md).
 
-Przeczytaj o nowym [modelu szeregów czasowych](./time-series-insights-update-tsm.md).
+Przeczytaj o [modelowania danych](./time-series-insights-update-tsm.md).

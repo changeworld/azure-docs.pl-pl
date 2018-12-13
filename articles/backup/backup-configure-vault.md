@@ -2,19 +2,19 @@
 title: Tworzenie kopii zapasowych plików i folderów przy użyciu agenta usługi Azure Backup
 description: Użyj agenta usługi Microsoft Azure Backup, aby utworzyć kopię zapasową Windows plików i folderów na platformie Azure. Utwórz magazyn usługi Recovery Services, zainstaluj agenta kopii zapasowej, definiowanie zasad tworzenia kopii zapasowej i uruchom tworzenie początkowej kopii zapasowej plików i folderów.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: Magazyn kopii zapasowych; Tworzenie kopii zapasowej serwera Windows; Tworzenie kopii zapasowych;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
-ms.author: markgal
-ms.openlocfilehash: 8107af53a78960d29f506c77f8ba9697c7a49d1c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252908"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874009"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Tworzenie kopii zapasowych systemu Windows Server lub Client na platformie Azure przy użyciu modelu wdrażania używającego usługi Resource Manager
 W tym artykule opisano sposób tworzenia kopii zapasowej systemu Windows Server (lub klienta Windows) plików i folderów na platformie Azure przy użyciu usługi Azure Backup przy użyciu modelu wdrażania usługi Resource Manager.

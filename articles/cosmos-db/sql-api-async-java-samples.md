@@ -1,22 +1,20 @@
 ---
-title: 'Azure Cosmos DB: przykłady asynchronicznego kodu Java dla interfejsu API SQL | Microsoft Docs'
+title: 'Azure Cosmos DB: przykłady asynchronicznego kodu Java dla interfejsu API SQL'
 description: Znajdź w witrynie GitHub przykłady asynchronicznego kodu w języku Java służące do wykonywania typowych zadań przy użyciu interfejsu API SQL w usłudze Azure Cosmos DB, w tym operacji CRUD.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 documentationcenter: java
 ms.service: cosmos-db
-ms.workload: data-services
 ms.devlang: java
 ms.topic: sample
 ms.date: 06/18/2018
 ms.author: sngun
-ms.openlocfilehash: 08ef3651b08534b94e1e1a55c16b17313bbbe9f2
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 4c3f731695c21f85c1ceea908e0aee5cd340d3b2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284969"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880067"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: przykłady asynchronicznego kodu Java dla interfejsu API SQL
 

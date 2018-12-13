@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: a52dbdad3842760c447e22f4274ab944750840e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b2ab2ad1c31337e006b613ad7f17b4ad22495893
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816790"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870424"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch Management z usługą Active Directory
 
@@ -28,7 +28,7 @@ Aplikacje, które wywołują usługi Azure Batch Management uwierzytelnianie za 
 
 Biblioteki Batch Management .NET ujawnia typy do pracy z kontami usługi Batch, klucze konta, aplikacje i pakiety aplikacji. Biblioteka zarządzania partiami platformy .NET jest klientem dostawcy zasobów platformy Azure i jest używany razem z [usługi Azure Resource Manager] [ resman_overview] Aby programistycznie zarządzać tymi zasobami. Usługa Azure AD jest wymagane do uwierzytelnienia żądania wysyłane za pośrednictwem dowolnego klienta dostawcy zasobów platformy Azure, w tym biblioteki Batch Management .NET oraz [usługi Azure Resource Manager][resman_overview].
 
-W tym artykule omówimy przy użyciu usługi Azure AD do uwierzytelniania w aplikacjach korzystających z bibliotek zarządzania partiami platformy .NET. Firma Microsoft pokazują, jak używać usługi Azure AD do uwierzytelniania administratora subskrypcji lub administratora współpracującego, przy użyciu uwierzytelniania zintegrowanego. Używamy [AccountManagment] [ acct_mgmt_sample] przykładowy projekt, dostępne w serwisie GitHub w celu zaprezentowania, za pomocą usługi Azure AD przy użyciu biblioteki zarządzania partiami platformy .NET.
+W tym artykule omówimy przy użyciu usługi Azure AD do uwierzytelniania w aplikacjach korzystających z bibliotek zarządzania partiami platformy .NET. Firma Microsoft pokazują, jak używać usługi Azure AD do uwierzytelniania administratora subskrypcji lub administratora współpracującego, przy użyciu uwierzytelniania zintegrowanego. Używamy [zarządzania kontem] [ acct_mgmt_sample] przykładowy projekt, dostępne w serwisie GitHub w celu zaprezentowania, za pomocą usługi Azure AD przy użyciu biblioteki zarządzania partiami platformy .NET.
 
 Aby dowiedzieć się więcej o korzystaniu z przykład zarządzania kontem i biblioteki Batch Management .NET, zobacz [partii Zarządzanie kontami i limitami przydziału za pomocą biblioteki klienta Batch Management dla platformy .NET](batch-management-dotnet.md).
 

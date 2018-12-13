@@ -1,5 +1,6 @@
 ---
-title: Dostęp do danych w magazynów danych z usługi Azure Machine Learning
+title: Dostęp do danych w magazynów danych
+titleSuffix: Azure Machine Learning service
 description: Jak korzystać z magazynów danych w magazynie danych programu access w czasie szkolenie przy użyciu usługi Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +11,14 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 50df0647372832647712d514dd9d4651d8d9cc2d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: bce6d636dd80820732d4911c1b24ef00118b594e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014058"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073470"
 ---
-# <a name="how-to-access-data-during-training"></a>Jak uzyskać dostęp do danych podczas szkolenia
+# <a name="access-data-during-training-from-your-datastores"></a>Dostęp do danych podczas szkolenia z magazynów danych
 Magazyn danych umożliwia dostęp i interakcję z danymi w usłudze Azure Machine Learning w przepływach pracy.
 
 Magazyn danych w usłudze Azure Machine Learning to Abstrakcja za pośrednictwem [usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction). Magazyn danych może odwoływać się albo [obiektów Blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) kontenera lub [udziału plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) jako podstawowy magazyn. 

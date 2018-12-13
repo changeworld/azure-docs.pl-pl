@@ -3,7 +3,7 @@ title: Konfigurowanie długoterminowego przechowywania kopii zapasowych — usł
 description: Dowiedz się, jak do przechowywania automatycznych kopii zapasowych w magazynie usługi Azure Recovery Services i przywracania z magazynu usługi Azure Recovery Services
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 499689e4d36f368746e5e0ea9e6bc3f3bf0ec0d9
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 6d5fe500b4cc98be53b1dd2fe06e341e7ae6f61f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868236"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870830"
 ---
 # <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurowanie długoterminowego przechowywania kopii zapasowych przy użyciu magazynu usługi Azure Recovery Services
 

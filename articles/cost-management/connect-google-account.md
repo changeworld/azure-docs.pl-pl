@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: f0a119bb7a2e18b04caa52319e4908fa5f6241dc
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 45d5cee92ce75c2e13f602d1ea6540698ea8abf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000327"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078365"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Nawiązać połączenie z kontem Google Cloud Platform
 
@@ -30,7 +30,7 @@ Należy rozpocząć od zbierania informacji o projekcie.
 
 1. Zaloguj się do konsoli usługi Google Cloud Platform na [ https://console.cloud.google.com ](https://console.cloud.google.com).
 2. Przejrzyj informacje o projekcie, który chcesz dołączyć do rozwiązania Cloudyn i zanotuj **Nazwa projektu** i **identyfikator projektu**. Zachowaj informacje przydatne do wykonania kolejnych kroków.  
-    ![Konsolę Google Cloud Platform](./media/connect-google-account/gcp-console01.png)
+    ![Nazwa projektu i pokazany w konsoli usługi Google Cloud Platform identyfikator projektu](./media/connect-google-account/gcp-console01.png)
 3. Jeśli rozliczeń nie jest włączone i połączone z projektem, należy utworzyć konta rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Utwórz nowe konto rozliczeniowe](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
 ## <a name="enable-storage-bucket-billing-export"></a>Włącz eksportowanie rozliczeń zasobnika magazynu
@@ -41,7 +41,7 @@ Za pomocą usłudze Google Cloud Storage do przechowywania raportów użycia spo
 
 1. Jeśli nie włączono rozliczeń Eksport do pliku, postępuj zgodnie z instrukcjami w artykule [włączania rozliczeń Eksport do pliku](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Można użyć JSON lub CSV rozliczeń format eksportu.
 2. W przeciwnym razie w konsoli usługi Google Cloud Platform, przejdź do **rozliczeń** > **eksportu rozliczeń**. Należy pamiętać, rozliczeniami **Nazwa zasobnika** i **przedrostek raportu**.  
-    ![Eksportowanie rozliczeń](./media/connect-google-account/billing-export.png)
+    ![Rozliczenia eksportowanie informacji wyświetlany na stronie Eksportowanie rozliczeń](./media/connect-google-account/billing-export.png)
 
 ## <a name="enable-google-cloud-platform-apis"></a>Włącz interfejsy API platformy Google Cloud
 
@@ -69,7 +69,7 @@ Aby zebrać informacje użycia i zasobów, Cloudyn musi następujące Google Clo
 4. W **nazwa konta Google**, wprowadź adres e-mail konta rozliczeniowego, a następnie kliknij przycisk **dalej**.
 5. W oknie dialogowym uwierzytelniania Google, wybierz lub wprowadź konto Google i następnie **Zezwalaj** cloudyn.com dostęp do Twojego konta.
 6. Dodaj informacje o projekcie żądania zauważyć, że mamy poprzedniego. Obejmują one **identyfikator projektu**, **projektu** nazwy **rozliczeń** Nazwa zasobnika i **rozliczeń pliku** prefiks raportu, a następnie kliknij przycisk  **Zapisz**.  
-    ![Dodaj projekt Google](./media/connect-google-account/add-project.png)
+    ![Dodaj projekt Google do konta platformy Cloudyn](./media/connect-google-account/add-project.png)
 
 Konto Google, który pojawia się na liście kont i powinna być widoczna nazwa **uwierzytelniony**. Znajdujący się w nim swoją nazwę projektu Google i identyfikator należy pojawiają się i ma zielony znacznik wyboru. Stan konta powinna być widoczna nazwa **Ukończono**.
 

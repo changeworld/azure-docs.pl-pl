@@ -1,21 +1,20 @@
 ---
-title: Usługa Azure porady dotyczące wydajności usługi Cosmos DB for Java (asynchroniczny) | Dokumentacja firmy Microsoft
+title: Usługa Azure porady dotyczące wydajności usługi Cosmos DB for Java (asynchroniczny)
 description: Dowiedz się więcej opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure Cosmos DB
 keywords: jak poprawić wydajność bazy danych
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: a2c66894270a537239c5328eff0acdc4b8339994
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8cfc62948df679fa900099c0e5dbb33a60e42b08
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443546"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876253"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i Java (asynchroniczny)
 

@@ -79,7 +79,7 @@ Aby logować się na podstawie hasła logowania jednokrotnego, należy użyć ro
 - Możesz użyć firmy wewnętrznych adresów URL, podczas pracy zdalnej za pośrednictwem [serwera Proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
 > [!NOTE]
-> Dodatkowe funkcje są dostępne tylko dla przeglądarki Edge, Chrome i Firefox.
+> Dodatkowe funkcje są dostępne tylko dla przeglądarki Microsoft Edge, Chrome i Firefox.
 >
 Możesz pobrać rozszerzenia bezpośrednio z następujących witryn:
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)

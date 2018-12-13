@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e2dabc66a906d35525f51bf9a1c09b62430ded55
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a1e9647e64556a7c7f2444fa2711a2eb61d230a3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434011"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874587"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -147,7 +147,7 @@ Jeśli interesuje Cię zachowaniu dłużej zdarzeń inspekcji, użyj interfejsu 
 
 ![Dzienników maszyny wirtualnej, które używają usługi Azure Diagnostics](./media/azure-log-audit/azure-log-audit-fig3.png)
 
-### <a name="azure-virtual-machineshttpsazuremicrosoftcomdocumentationlearning-pathsvirtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>[Usługa Azure virtual machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/) z systemem Microsoft Windows i [usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)
+### <a name="azure-virtual-machineslearnpathsdeploy-a-website-with-azure-virtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>[Usługa Azure virtual machines](/learn/paths/deploy-a-website-with-azure-virtual-machines/) z systemem Microsoft Windows i [usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)
 
 Należy włączyć diagnostyki platformy Azure na maszynie wirtualnej, wykonując dowolną z następujących czynności:
 

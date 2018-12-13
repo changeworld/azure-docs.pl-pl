@@ -5,17 +5,18 @@ description: Ten artykuł zawiera adres e-mail informacji wstępnie utworzone je
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6d05f62ad725a89b0a34b21b8a8d36bb8fa464b1
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: MT
+ms.openlocfilehash: 07fe8a0d48d59da89ad76f1648b75332d23005a2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441015"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074083"
 ---
 # <a name="email-entity"></a>Email, jednostka
 Wyodrębniania wiadomości e-mail zawiera adres e-mail całego z wypowiedź. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający do intencji aplikacji poczty e-mail. Adres e-mail jednostki jest obsługiwana w `en-us` tylko kultury. 
@@ -23,7 +24,7 @@ Wyodrębniania wiadomości e-mail zawiera adres e-mail całego z wypowiedź. Pon
 ## <a name="resolution-for-prebuilt-email"></a>Rozwiązania do obsługi poczty e-mail wstępnie
 W poniższym przykładzie pokazano rozdzielczość **builtin.email** jednostki.
 
-```JSON
+```json
 {
   "query": "please send the information to patti.owens@microsoft.com",
   "topScoringIntent": {

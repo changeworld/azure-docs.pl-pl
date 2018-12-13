@@ -1,6 +1,6 @@
 ---
-title: Przykładowe zasady zarządzania interfejsu API platformy Azure — Dodaj nagłówek zawierający identyfikator korelacji | Dokumentacja firmy Microsoft
-description: Przykładowe zasady zarządzania Azure API - pokazano, jak dodać nagłówek zawierający identyfikator korelacji żądania przychodzącego.
+title: Przykładowe zasady usługi Azure API management — Dodaj nagłówek zawierający identyfikator korelacji | Dokumentacja firmy Microsoft
+description: Przykład zasady zarządzania Azure interfejsu API — pokazuje, jak dodać nagłówek zawierający identyfikator korelacji żądania przychodzącego.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 68f42124369194124ae1f8ebb93834a5be4e0128
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 126701674b6dc529404f5a7854cda9b31c336170
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287378"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868433"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>Dodaj nagłówek zawierający identyfikator korelacji
 
-W tym artykule przedstawiono przykład zasad interfejsu API Azure zarządzania, który pokazuje, jak dodać nagłówek zawierający identyfikator korelacji żądania przychodzącego. Aby ustawić lub zmodyfikować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
+W tym artykule przedstawiono przykładowy zasad zarządzania interfejsu API platformy Azure, który demonstruje, jak dodać nagłówek zawierający identyfikator korelacji żądania przychodzącego. Można ustawiać lub edytować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
 
 ## <a name="policy"></a>Zasady
 
-Wklej kod do **przychodzących** bloku.
+Wklej kod do **dla ruchu przychodzącego** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Add correlation id to inbound request.policy.xml)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o zasadach APIM:
+Dowiedz się więcej na temat usługi APIM zasad:
 
 + [Zasady transformacji](../api-management-transformation-policies.md)
 + [Przykłady zasad](../policy-samples.md)

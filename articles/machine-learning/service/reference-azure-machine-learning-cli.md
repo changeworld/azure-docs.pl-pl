@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 09/24/2018
-ms.openlocfilehash: 13d09471191deed670db97a9f18e15bc9577dd1a
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.date: 12/04/2018
+ms.openlocfilehash: 3ab348ce3a6d45c2ac4d2d14978781e57a8b5d17
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713422"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872858"
 ---
 # <a name="use-the-azure-machine-learning-cli-extension"></a>Rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
@@ -50,7 +50,7 @@ Interfejs wiersza polecenia nie jest zamiennikiem dla zestawu SDK usługi Azure 
 Aby zainstalować rozszerzenie interfejsu wiersza polecenia Machine Learning, użyj następującego polecenia:
 
 ```azurecli-interactive
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.2-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 Po wyświetleniu monitu wybierz `y` można zainstalować rozszerzenia.
@@ -79,22 +79,33 @@ Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azu
 
 + Utwórz obszar roboczy usługi Azure Machine Learning:
 
-   ```azurecli-interactive
-   az ml workspace create -n myworkspace -g myresourcegroup
-   ```
+    ```azurecli-interactive
+    az ml workspace create -n myworkspace -g myresourcegroup
+    ```
 
 + Ustaw domyślnego obszaru roboczego:
 
-   ```azurecli-interactive
-   az configure --defaults aml_workspace=myworkspace group=myresourcegroup
-   ```
+    ```azurecli-interactive
+    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
+    ```
 
-+ Tworzenie maszyny wirtualnej DSVM (maszyny Wirtualnej analizy danych). Można również utworzyć klastrów BatchAI dla rozproszonego szkolenia lub klastry usługi AKS na potrzeby wdrożenia.
++ Tworzenie zarządzanego obliczeniowego elementu docelowego dla rozproszonego szkolenia:
 
+    ```azurecli-interactive
+    az ml computetarget create amlcompute -n mycompute --max_nodes 4 --size Standard_NC6
+    ```
 
-  ```azurecli-interactive
-  az ml computetarget setup dsvm -n mydsvm
-  ```
+* Aktualizowanie zarządzanych obliczeniowego elementu docelowego:
+
+    ```azurecli-interactive
+    az ml computetarget update --name mycompute --workspace –-group --max_nodes 4 --min_nodes 2 --idle_time 300
+    ```
+
+* Dołącz obiekt docelowy niezarządzanych obliczeń szkolenia lub wdrożenia:
+
+    ```azurecli-interactive
+    az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace
+    ```
 
 ## <a name="experiments"></a>Eksperymenty
 

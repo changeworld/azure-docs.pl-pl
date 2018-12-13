@@ -1,21 +1,22 @@
 ---
-title: Typy jednostek w aplikacjach usługi LUIS — Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Typy jednostek
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Dodaj jednostki (kluczowe dane w domenie aplikacji) w aplikacjach Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: MT
+ms.openlocfilehash: 761b2101ed7b55de27628882778c51bc86c70ef4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085868"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075662"
 ---
 # <a name="entities-in-luis"></a>Jednostki w usługi LUIS
 
@@ -71,7 +72,7 @@ Usługa LUIS oferuje wiele typów jednostek; wstępnie utworzonych jednostek nie
 | Name (Nazwa) | Można oznaczyć | Opis |
 | -- |--|--|
 | **Wstępnie utworzone** <br/>[Custom](#prebuilt)| |  **Definicja**<br>Wbudowane typy, które reprezentują typowe pojęcia. <br><br>**Lista**<br/>numer kluczowych, numer, temperatury, wymiar, pieniądze, wiek, procent, poczty e-mail, adres URL, numer telefonu i kluczowych. <br><br>Wstępnie utworzone jednostki nazwy są zarezerwowane. <br><br>Wszystkie wstępnie utworzonych jednostek, które są dodawane do aplikacji są zwracane w [punktu końcowego](luis-glossary.md#endpoint) zapytania. Aby uzyskać więcej informacji, zobacz [ze wstępnie utworzonych jednostek](./luis-prebuilt-entities.md). <br/><br/>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **Wyrażenie regularne**<br/>[Wyrażenie regularne](#regex)||**Definicja**<br>Niestandardowe wyrażenie regularne dla tekstu sformatowanego wypowiedź raw. On ignoruje wielkość liter i ignoruje wariant kultury.  <br><br>Ta jednostka jest dobrym słów i fraz, spójnie sformatowanych przy użyciu dowolnych wariantów, który również jest zgodny.<br><br>Dopasowywanie wyrażeń regularnych są stosowane po zmianach sprawdzania pisowni. <br><br>Jeśli wyrażenie regularne jest zbyt złożone, np. przy użyciu wielu nawiasie, nie jest możliwe dodać wyrażenie do modelu. <br><br>**Przykład**<br>`kb[0-9]{6,}` Dopasowuje kb123456.<br/><br/>[Szybki start](luis-quickstart-intents-regex-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **Wyrażenie regularne**<br/>[Wyrażenie regularne](#regex)||**Definicja**<br>Niestandardowe wyrażenie regularne dla tekstu sformatowanego wypowiedź raw. On ignoruje wielkość liter i ignoruje wariant kultury.  <br><br>Ta jednostka jest dobrym słów i fraz, spójnie sformatowanych przy użyciu dowolnych wariantów, który również jest zgodny.<br><br>Dopasowywanie wyrażeń regularnych są stosowane po sprawdzania pisowni zmiany na poziomie znak, a nie na poziomie tokenu. Używa części, ale nie wszystkie [.Net wyrażenia regularnego](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) biblioteki.<br><br>Jeśli wyrażenie regularne jest zbyt złożone, np. przy użyciu wielu nawiasie, nie jest możliwe dodać wyrażenie do modelu. <br><br>**Przykład**<br>`kb[0-9]{6,}` Dopasowuje kb123456.<br/><br/>[Szybki start](luis-quickstart-intents-regex-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md)|
 | **Proste** <br/>[Przedstawiono maszyny](#machine-learned) | ✔ | **Definicja**<br>Proste jednostka jest jednostce ogólnej, opisujący pojedynczego pojęcia i udostępnionej z kontekstu maszyny do opanowania. Kontekst obejmują wybór programu word, wyraz umieszczania i długość wypowiedź.<br/><br/>Jest to dobry jednostki słów i fraz, które nie są spójnie sformatowanych, ale wskazują ten sam efekt. <br/><br/>[Szybki start](luis-quickstart-primary-and-secondary-data.md)<br/>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#simple-entity-data)|  
 | **Lista** <br/>[Dokładne dopasowanie](#exact-match)|| **Definicja**<br>Lista jednostek reprezentują zbiór powiązanych słów, wraz z ich synoymns stały, zamknięte w systemie. <br><br>Każda jednostka listy może mieć co najmniej jednego formularza. Najlepiej nadaje się do znanego zestawu zmian dotyczących sposobów reprezentują tego samego pojęcia.<br/><br/>Usługa LUIS nie wykrywa dodatkowe wartości dla jednostek z listy. Użyj **zaleca się** funkcji, aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy.<br/><br>Jeśli istnieje więcej niż jednej jednostki listy z taką samą wartość, każdy obiekt jest zwracany w kwerendy punktu końcowego. <br/><br/>[Szybki start](luis-quickstart-intent-and-list-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Mieszane](#mixed) | ✔|**Definicja**<br>Patterns.any jest symbolem zastępczym o zmiennej długości, używana tylko w wypowiedź szablonu wzorca w do oznaczania, gdzie jednostka rozpoczyna się i kończy.  <br><br>**Przykład**<br>Biorąc pod uwagę wypowiedź Wyszukaj książki na podstawie tytułu, pattern.any wyodrębnia pełną tytuł. Jest wypowiedź szablonu, za pomocą pattern.any `Who wrote {BookTitle}[?]`.<br/><br/>[Samouczek](luis-tutorial-pattern.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#composite-entity-data)|  
@@ -98,7 +99,7 @@ Przegląd [limity](luis-boundaries.md#model-boundaries) Aby dowiedzieć się, il
 
 ## <a name="roles-versus-hierarchical-entities"></a>Role i hierarchiczne jednostek
 
-Aby uzyskać więcej informacji, zobacz [ról i hierarchiczne jednostek](luis-concept-roles.md#roles-versus-hierarchical-entities).
+Aby uzyskać więcej informacji, zobacz [Role a jednostki hierarchiczne](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="composite-vs-hierarchical-entities"></a>Jednostki hierarchiczne złożonego programu vs
 Composite jednostek i hierarchiczne jednostek zarówno mają relacji nadrzędny podrzędny i przedstawiono maszyny. Usługi machine learning umożliwia usługi LUIS do informacje o jednostkach, w oparciu o różne konteksty (rozmieszczenie wyrazów). Złożone jednostki są bardziej elastyczne, ponieważ umożliwiają one typów jednostek innej jako elementy podrzędne. Hierarchiczna jednostki podrzędne są tylko proste jednostki. 

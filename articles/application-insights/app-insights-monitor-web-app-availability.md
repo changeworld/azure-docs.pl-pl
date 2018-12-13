@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 686e878b25c79538f3d228398bcb665622c2c36b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: MT
+ms.openlocfilehash: a5177293b24ec400714d8f87be4198a76d59214a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721667"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878724"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 Po wdrożeniu aplikacji internetowej lub witryny internetowej na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
@@ -182,7 +182,7 @@ W wyniku testu dostępności zobaczysz szczegółów transakcji dotyczące wszys
 
 * Zbadać odpowiedź odebraną z serwera.
 * Diagnozowanie błędów przy użyciu danych telemetrycznych po stronie serwera skorelowany zebranych podczas przetwarzania testu dostępności nie powiodło się.
-* Zarejestrować problem lub element roboczy w usłudze Git bądź VSTS w celu prześledzenia problemu. Błąd będzie zawierać link do tego zdarzenia.
+* Zaloguj się problem lub element roboczy w repozytorium Git lub tablice platformy Azure w celu prześledzenia problemu. Błąd będzie zawierać link do tego zdarzenia.
 * Otworzyć wynik testu sieci Web w programie Visual Studio.
 
 Dowiedz się więcej o diagnostyce transakcji typu end to end środowisko [tutaj](app-insights-transaction-diagnostics.md).

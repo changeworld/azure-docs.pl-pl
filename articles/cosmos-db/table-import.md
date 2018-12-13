@@ -1,21 +1,19 @@
 ---
-title: Importowanie danych do użycia z interfejsem API tabel usługi Azure Cosmos DB | Microsoft Docs
+title: Importowanie danych do użycia z interfejsem API tabel usługi Azure Cosmos DB
 description: Dowiedz się, jak zaimportować dane do użycia z interfejsem API tabel usługi Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 8614bf7009afab8c005d2ffb8b1a78f3694d2af7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d277df3fa98564ebec92e548fa070e92cf76f200
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247513"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874043"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrowanie danych na konto interfejsu API tabel w usłudze Azure Cosmos DB
 

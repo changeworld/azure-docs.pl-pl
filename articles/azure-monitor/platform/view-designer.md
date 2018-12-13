@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: af2ecad79bef0889ca0d1e47171ebaf9777418ca
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 2aa2f4e55d375f6ed7960af8bbe327d45b5ea025
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833401"
+ms.locfileid: "52871765"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Log Analytics
 Przy użyciu projektanta widoku w [usługi Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
@@ -55,7 +55,7 @@ W poniższej tabeli opisano opcje:
 | Opcja | Opis |
 |:--|:--|
 | Odświeżanie   | Odświeża widok przy użyciu najnowszych danych. | 
-| Analiza | Otwiera [portalu analizy zaawansowanej](../../log-analytics/log-analytics-log-search-portals.md) do analizowania danych za pomocą zapytań log. |
+| Analiza | Otwiera [portalu analizy zaawansowanej](../../azure-monitor/log-query/portals.md) do analizowania danych za pomocą zapytań log. |
 | Edytuj       | Otwiera widok w Projektancie widoku do edycji jej zawartość i konfigurację.  |
 | Klonowanie      | Tworzy nowy widok, a zostanie on otwarty w Projektancie widoku. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale z *kopiowania* dołączone do niego. |
 | Zakres dat | Ustaw datę i godzinę filtru zakresu danych, który znajduje się w widoku. Ten zakres dat jest stosowany przed wszystkie zakresy dat w zapytaniach w widoku.  |

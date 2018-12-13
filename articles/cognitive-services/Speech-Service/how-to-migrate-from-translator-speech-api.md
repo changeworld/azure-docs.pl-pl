@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: 81513819fd60dc088c2ed4a781562684c84e803a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: dec903d8557145701e06ddd588a58eb11fef96f5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415478"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879315"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrowanie z API mowy usługi Translator z usługą mowy
 
@@ -45,7 +45,7 @@ Skorzystaj z tego artykułu do migracji aplikacji z interfejsu API mowy usługi 
 | Informacje o chronometrażu                                       | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                 |
 | Identyfikator korelacji                                    | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
 | Niestandardowe modele mowy                              | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Usługa rozpoznawania mowy oferuje niestandardowe modele mowy dopasowane umożliwiają dostosowywanie rozpoznawania mowy do słownictwa unikatowy w Twojej organizacji.                                                                                                                                           |
-| Modele tłumaczenia niestandardowych                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Subskrybowanie interfejsu API tłumaczenia tekstu firmy Microsoft pozwala na użycie [niestandardowe w usłudze Translator](https://www.microsoft.com/translator/business/customization/) (obecnie w wersji zapoznawczej) można skorzystać z własnych danych w poszukiwaniu tłumaczeń bardziej precyzyjne operacje.                                                 |
+| Modele tłumaczenia niestandardowych                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Subskrybowanie interfejsu API tłumaczenia tekstu firmy Microsoft pozwala na użycie [niestandardowe w usłudze Translator](https://www.microsoft.com/translator/business/customization/) do swoich danych na użytek bardziej precyzyjne tłumaczenia.                                                 |
 
 ## <a name="migration-strategies"></a>Strategie migracji
 

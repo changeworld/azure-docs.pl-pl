@@ -3,7 +3,7 @@ title: Dodawanie fragmentu, za pomocą narzędzi elastycznych baz danych | Dokum
 description: Interfejsy API elastycznego skalowania umożliwiają dodawanie nowych fragmentów do fragmentu zestawu.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3be9723d0beddc6bfcd6b6a34b56f4b8fd80aa31
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 46580efa697c174743228fcc9eee82e0a67e1912
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239937"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864609"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Dodawanie fragmentu, za pomocą narzędzi elastycznych baz danych
 ## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Aby dodać nowy zakres lub klucz fragmentu

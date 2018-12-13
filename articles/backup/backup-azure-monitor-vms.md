@@ -1,129 +1,129 @@
 ---
-title: Monitoruj alerty kopii zapasowej maszyn wirtualnych platformy Azure
-description: Monitorowanie zdarzeń i alertów z zadań tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. Wyślij wiadomość e-mail na podstawie alertów.
+title: Monitorowanie alertów kopii zapasowych maszyn wirtualnych platformy Azure
+description: Monitorowanie zdarzeń i alertów z zadania tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. Wyślij wiadomość e-mail na podstawie alertów.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: markgal
-ms.openlocfilehash: 3783014738ec4e8f185531773b1259dc63e7f49f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: raynew
+ms.openlocfilehash: 0cfbb258364ed684ff38b2be9f998d8ff0656251
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606311"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864540"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Monitorowanie alertów związanych z kopiami zapasowymi maszyny wirtualnej platformy Azure
-Alerty są odpowiedzi z usługi, czy próg zdarzenia zostały spełnione lub przekroczenia. Uzyskiwanie informacji o tym, gdy rozpoczęcia problemów może być krytyczne zachowaniu niskich kosztów biznesowych. Alerty zwykle nie występują zgodnie z harmonogramem, a więc warto wiedzieć, jak najszybciej po wystąpieniu alerty. Na przykład gdy zadanie tworzenia kopii zapasowej lub przywracania nie powiodło się, alert występuje w ciągu pięciu minut błędu. Na pulpicie nawigacyjnym magazynu w kafelku alerty kopii zapasowej Wyświetla zdarzeń krytycznych i poziom ostrzeżeń. W ustawieniach alerty kopii zapasowej można wyświetlić wszystkie zdarzenia. Ale co zrobić, jeśli alarm występuje, gdy pracujesz na oddzielnych problem? Jeśli nie znasz w przypadku alertu, może to być pomocnicza niedogodności lub może naruszyć bezpieczeństwo danych. Aby upewnić się, że osobom potrafią alertu — Jeśli występuje on, należy skonfigurować usługę, aby wysłać powiadomienia o alertach pocztą e-mail. Aby uzyskać więcej informacji na temat konfigurowania powiadomień e-mail, zobacz [skonfigurować powiadomienia](backup-azure-monitor-vms.md#configure-notifications).
+Alerty są odpowiedzi z usługi, że ma osiągnięciu lub przekroczenia próg zdarzenia. Wiedząc, podczas rozpoczęcia problemów może okazać się niezbędne do niskich kosztów działalności. Alerty zwykle nie występują zgodnie z harmonogramem, a zatem warto wiedzieć, jak najszybciej po alerty występują. Na przykład gdy zadanie tworzenia kopii zapasowej lub przywracania zakończy się niepowodzeniem, pojawia się alert w ciągu pięciu minut błędu. Na pulpicie nawigacyjnym magazynu na kafelku alerty kopii zapasowej Wyświetla zdarzenia krytyczne i poziom ostrzeżeń. W ustawieniach alerty kopii zapasowej możesz wyświetlić wszystkie zdarzenia. Ale co zrobić, jeśli alarm występuje, gdy użytkownik pracuje na oddzielnych problem? Jeśli nie znasz sytuacji alert pomocnicza niedogodności może to być lub może naruszyć bezpieczeństwo danych. Aby upewnić się, że właściwych osób świadomość alertu — po jego wystąpieniu, należy skonfigurować usługę, aby wysyłać powiadomienia o alertach za pośrednictwem poczty e-mail. Aby uzyskać więcej informacji na temat konfigurowania powiadomień e-mail, zobacz [Konfigurowanie powiadomień](backup-azure-monitor-vms.md#configure-notifications).
 
 ## <a name="how-do-i-find-information-about-the-alerts"></a>Jak znaleźć informacje o alertach?
-Aby wyświetlić informacje o zdarzeniu, która wywołała alert, należy otworzyć sekcji alerty kopii zapasowej. Istnieją dwa sposoby otwarta sekcja alerty kopii zapasowej: z alerty kopii zapasowej kafelka na pulpicie nawigacyjnym magazynu lub z sekcji alertów i zdarzeń.
+Aby wyświetlić informacje o zdarzeniu, który wygenerował alert, należy otworzyć w sekcji alerty kopii zapasowej. Istnieją dwa sposoby otwierania sekcja alerty kopii zapasowej: z alertami wykonywania kopii zapasowej kafelka na pulpicie nawigacyjnym magazynu lub w sekcji alerty i zdarzenia.
 
-Aby otworzyć blok alerty kopii zapasowej w kafelku alerty kopii zapasowej:
+Aby otworzyć blok kafelka alerty kopii zapasowej na kafelku alerty kopii zapasowej:
 
-* Na **alerty kopii zapasowej** kafelka na pulpicie nawigacyjnym magazynu, kliknij przycisk **krytyczny** lub **ostrzeżenie** można wyświetlać zdarzenia operacyjne dla tego poziomu ważności.
+* Na **alerty kopii zapasowej** kafelków na pulpicie nawigacyjnym magazynu, kliknij przycisk **krytyczny** lub **ostrzeżenie** można wyświetlać zdarzenia operacyjne tego poziomu ważności.
 
     ![Kafelek alerty kopii zapasowej](./media/backup-azure-monitor-vms/backup-alerts-tile.png)
 
-Aby otworzyć blok alerty kopii zapasowej z sekcji alerty i zdarzenia:
+Aby otworzyć blok kopia zapasowa alerty z sekcji alerty i zdarzenia:
 
-1. Na pulpicie nawigacyjnym magazynu, kliknij **wszystkie ustawienia**. ![Przycisk wszystkie ustawienia](./media/backup-azure-monitor-vms/all-settings-button.png)
-2. Na **ustawienia** bloku, kliknij przycisk **alerty i zdarzenia**. ![Przycisk alertów i zdarzeń](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
-3. Na **alerty i zdarzenia** bloku, kliknij przycisk **alerty kopii zapasowej**. ![Przycisk tworzenia kopii zapasowej alertów](./media/backup-azure-monitor-vms/backup-alerts.png)
+1. Na pulpicie nawigacyjnym magazynu kliknij **wszystkie ustawienia**. ![Przycisk wszystkie ustawienia](./media/backup-azure-monitor-vms/all-settings-button.png)
+2. Na **ustawienia** bloku kliknij **alerty i zdarzenia**. ![Alerty i zdarzenia przycisku](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
+3. Na **alerty i zdarzenia** bloku kliknij **alerty kopii zapasowej**. ![Przycisk tworzenia kopii zapasowej alertów](./media/backup-azure-monitor-vms/backup-alerts.png)
 
-    **Alerty kopii zapasowej** sekcji otwiera i wyświetla filtrowane alerty.
+    **Alerty kopii zapasowej** sekcji otwiera i wyświetla alerty filtrowane.
 
     ![Kafelek alerty kopii zapasowej](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
-4. Aby wyświetlić szczegółowe informacje na temat określonego alertu, z listy zdarzeń, kliknij alert, aby otworzyć jego **szczegóły** sekcji.
+4. Aby wyświetlić szczegółowe informacje na temat konkretnego alertu z listy zdarzeń, kliknij alert, aby otworzyć jego **szczegóły** sekcji.
 
     ![Szczegół zdarzenia](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
-    Aby dostosować wyświetlane na liście atrybutów, zobacz [wyświetlić atrybuty dodatkowe zdarzenia](backup-azure-monitor-vms.md#view-additional-event-attributes)
+    Aby dostosować atrybuty wyświetlane na liście, zobacz [wyświetlić atrybuty dodatkowe zdarzenia](backup-azure-monitor-vms.md#view-additional-event-attributes)
 
 ## <a name="configure-notifications"></a>Konfigurowanie powiadomień
- Można skonfigurować usługę do wysyłania powiadomień e-mail dla alertów, które wystąpiły w ciągu ostatnich godzin lub po wystąpieniu określonych typach zdarzeń.
+ Można skonfigurować usługę, aby wysyłała powiadomienia e-mail dla alertów, które wystąpiły w ciągu ostatniej godziny, lub gdy wystąpią określone typy zdarzeń.
 
-Aby skonfigurować powiadomienia e-mail dla alertów
+Aby skonfigurować powiadomienia e-mail o alertach
 
-1. W menu alerty kopii zapasowej, kliknij przycisk **skonfigurować powiadomienia**
+1. W menu alerty kopii zapasowej kliknij **skonfigurowanie powiadomień**
 
     ![Menu alerty kopii zapasowej](./media/backup-azure-monitor-vms/backup-alerts-menu.png)
 
-    Otwiera sekcji konfiguracji powiadomień.
+    Zostanie otwarta sekcja powiadomienia Konfiguruj.
 
     ![Konfigurowanie powiadomień bloku](./media/backup-azure-monitor-vms/configure-notifications.png)
-2. W sekcji Konfigurowanie powiadomień wiadomości E-mail z powiadomieniem, kliknij polecenie **na**.
+2. W sekcji powiadomienia Konfigurowanie powiadomień E-mail kliknij **na**.
 
-    Adresatów i ważność okien dialogowych mieć gwiazdką, ponieważ te informacje są wymagane. Podaj co najmniej jeden adres e-mail, a następnie wybierz co najmniej jeden ważność.
-3. W **adresatów (Poczta E-mail)** okna dialogowego, wpisz adresy e-mail, na który otrzymywać powiadomienia. Użyj formatu: username@domainname.com. Oddzielaj adresy e-mail średnikami (;).
-4. W **powiadamiania** obszaru, wybierz **na Alert** można wysłać powiadomienia, gdy wystąpi określony alert, lub **co godzinę szyfrowanego** do wysłania podsumowanie dla ostatniej godziny.
-5. W **ważność** okno dialogowe, wybierz co najmniej jeden poziom, które wyzwalacza powiadomienia e-mail.
+    Odbiorcy i ważności okien dialogowych mają gwiazdkę obok nich, ponieważ te informacje są wymagane. Podaj co najmniej jeden adres e-mail, a następnie wybierz co najmniej jedną ważność.
+3. W **adresaci (E-mail)** okno dialogowe, wpisz adresy e-mail, na który otrzymywać powiadomienia. Użyj formatu: username@domainname.com. Poszczególne adresy e-mail średnikami (;).
+4. W **powiadamiania** obszaru, wybierz **na Alert** można wysłać powiadomienia, gdy wystąpi określony alert, lub **podsumowanie godzinowe** do wysłania podsumowanie dla ostatniej godziny.
+5. W **ważność** okno dialogowe, wybierz co najmniej jeden poziomy, które ma wyzwalać powiadomienie e-mail.
 6. Kliknij pozycję **Zapisz**.
 
-   ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Jakie typy alertów są dostępne dla kopii zapasowych maszyn wirtualnych IaaS platformy Azure?
+   ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Jakie typy alertów są dostępne dla maszyn wirtualnych IaaS platformy Azure?
    | Poziom alertu | Wysyłania alertów |
    | --- | --- |
-   | Krytyczne | niepowodzenia tworzenia kopii zapasowej, niepowodzenia odzyskiwania |
-   | Ostrzeżenie | w przypadku zadań tworzenia kopii zapasowej zakończyło się pomyślnie z ostrzeżeniami (na przykład: Niektóre moduły zapisujące nie powiodło się podczas tworzenia migawki) |
-   | Informacyjne | obecnie alerty informacyjne nie są dostępne dla kopii zapasowej maszyny Wirtualnej Azure |
+   | Krytyczny | Niepowodzenie kopii zapasowej, niepowodzenia odzyskiwania |
+   | Ostrzeżenie | dla zadania tworzenia kopii zapasowej zakończyło się pomyślnie z ostrzeżeniami (na przykład: Niektóre moduły zapisujące nie powiodło się podczas tworzenia migawki) |
+   | Informacyjne | obecnie nie alerty informacyjne są dostępne dla kopii zapasowej maszyny Wirtualnej platformy Azure |
 
 ### <a name="are-there-situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Czy występują sytuacje, w których wiadomość e-mail nie jest wysyłana, mimo że powiadomienia zostały skonfigurowane?
-Istnieją sytuacje, w którym alert nie są wysyłane, nawet jeśli powiadomienia zostały prawidłowo skonfigurowane. W następujących sytuacjach wiadomości e-mail powiadomienia nie są wysyłane do uniknięcia szumu alertu:
+Istnieją sytuacje, gdy alert nie zostanie wysłany, mimo że powiadomienia zostały prawidłowo skonfigurowane. W następujących sytuacjach, w wiadomości e-mail powiadomienia nie są wysyłane do uniknij szumu spowodowanego alertu:
 
-* Jeśli skonfigurowano powiadomienia szyfrowanego co godzinę, a alert jest uruchamiany i rozpoznać w ciągu godziny.
+* Jeśli powiadomień skonfigurowano ustawienie podsumowanie godzinowe oraz alert jest wyświetlany i rozwiązywany w ciągu godziny.
 * Zadanie zostało anulowane.
-* Zadanie tworzenia kopii zapasowej zostanie wywołany, a następnie nie, a inne zadanie tworzenia kopii zapasowej jest w toku.
+* Zadanie tworzenia kopii zapasowej jest wyzwalane, a następnie kończy się niepowodzeniem, a inne zadanie kopii zapasowej jest w toku.
 * Uruchamia zaplanowane zadanie tworzenia kopii zapasowej dla maszyny Wirtualnej z obsługą usługi Resource Manager, ale maszyna wirtualna już nie istnieje.
 
-## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>Aby otrzymywać powiadomienia dla pomyślnie utworzone kopie zapasowe przy użyciu Dzienniki aktywności
+## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>Otrzymuj powiadomienia dla pomyślnie tworzyć kopie zapasowe przy użyciu dzienników aktywności
 
-Jeśli chcesz zgłaszane po kopii zapasowych zakończą się pomyślnie, można użyć alerty oparte na [Dzienniki aktywności](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) magazynu.
+Jeśli chcesz otrzymać powiadomienie po pomyślnym kopie zapasowe, można użyć alerty oparte na [dzienników aktywności](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) magazynu.
 
-### <a name="login-into-azure-portal"></a>Zaloguj się do portalu Azure
-Zaloguj się do portalu Azure i przejść do odpowiedniego magazynu usług odzyskiwania Azure i kliknij sekcję "Dziennik aktywności" we właściwościach.
+### <a name="login-into-azure-portal"></a>Zaloguj się do witryny Azure portal
+Zaloguj się do witryny Azure portal i przejść do odpowiedniego magazynu Azure Recovery Services i kliknij sekcję "Dziennik aktywności" we właściwościach.
 
-### <a name="identify-appropriate-log"></a>Zidentyfikuj odpowiednie dziennika
+### <a name="identify-appropriate-log"></a>Określenie odpowiedniego dziennika
 
-Zastosuj filtry przedstawiono na rysunku poniżej, aby sprawdzić, czy są odbiera Dzienniki aktywności dla pomyślnie utworzone kopie zapasowe. Zmień zakres czasu odpowiednio do wyświetlania rekordów.
+Zastosuj filtry pokazano na poniższej ilustracji, aby sprawdzić, czy otrzymujesz dzienników aktywności dla pomyślnie tworzyć kopie zapasowe. Odpowiednio zmienić zakres czasu, aby wyświetlić rekordy.
 
 ![Dzienniki aktywności](./media/backup-azure-monitor-vms/activity-logs-identify.png)
 
-Po kliknięciu segmentu "JSON", aby uzyskać więcej szczegółowych informacji i go wyświetlać przez kopiowania wklejenie go do edytora tekstu. Powinna zostać wyświetlona szczegółów magazynu i elementów, które uruchamiane dziennik aktywności, tj. element kopii zapasowej.
+Po kliknięciu segmentu "JSON", aby uzyskać więcej szczegółów i go wyświetlać przez kopiowanie wklejanie go do edytora tekstów. Powinna zostać wyświetlona szczegóły magazynu i elementów, która wywołała dziennik aktywności, czyli element kopii zapasowej.
 
-Następnie kliknij przycisk "Dodaj alert dziennika aktywności" do generowania alertów dotyczących wszystkich tych dzienników.
+Następnie kliknij przycisk "Dodaj alert dziennika aktywności" do generowania alertów dla wszystkich tych dzienników.
 
 ### <a name="add-activity-log-alert"></a>Dodaj alert dziennika aktywności
 
-Klikając przycisk "Dodaj działanie dziennika alert" wyświetli ekranu w sposób przedstawiony poniżej
+Klikając pozycję "Dodaj alert dziennika aktywności" przedstawia ekranu pokazany poniżej
 
 ![Alert dziennika aktywności](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png)
     
-Subskrypcji i grupy zasobów są używane do przechowywania alertu. Kryteria, zostaną wstępnie wypełnione. Upewnij się, że wszystkie wartości są istotne dla Twojej wymagań.
+Subskrypcji i grupy zasobów są używane do przechowywania alertu. Kryteria zostaną wstępnie wypełnione. Upewnij się, że wszystkie wartości są istotne dla Twojej wymagań.
 
-Pomyślnie utworzone kopie zapasowe, aby uzyskać poziomu jest oznaczony jako "Informacyjny" i stan "Powodzenie".
+Dla pomyślnie tworzyć kopie zapasowe "Poziom" jest oznaczony jako "Informacyjne" i stan jako "Powodzenie".
 
-W przypadku wybrania "Zasób" powyżej, alert zostanie wygenerowany, gdy dzienniki aktywności są rejestrowane dla tego zasobu lub magazynu. Jeśli chcesz reguły mają zastosowanie do wszystkich magazynów, pozostaw "Zasób" powinien być pusty.
+Jeśli wybierzesz opcję "Zasób" powyżej, alert zostanie wygenerowany, gdy dzienniki aktywności są rejestrowane dla tego zasobu lub magazynu. Jeśli chcesz, aby reguła mogła być stosowana do wszystkich magazynów, należy pozostawić "Zasób" powinien być pusty.
 
-### <a name="define-action-on-alert-firing"></a>Zdefiniuj akcji dla uruchamiania alertu
+### <a name="define-action-on-alert-firing"></a>Zdefiniuj akcję na uruchomieniu którego alertu
 
-"Grupa akcji" służy do definiowania akcji podczas generowania alertu. Możesz kliknąć opcję "Typ akcji" Aby dowiedzieć się więcej o dostępnych akcji takich/SMS/Integracja z pocztą e-mail z Zarządzanie usługami IT — itp.
+Użyj "grupy akcji" do zdefiniowania akcji podczas generowania alertu. Możesz kliknąć "Akcji typu", aby dowiedzieć się więcej o dostępnych akcji takich/SMS/Integracja z pocztą e-mail za pomocą narzędzia ITSM itd.
 
-![Grupy akcji dziennika działań](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
+![Grupy akcji dziennika aktywności](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
 
 
-Po kliknięciu przycisku OK zostanie wygenerowany alert dziennika aktywności i Dzienniki aktywności kolejnych zarejestrowane dla pomyślnie utworzone kopie zapasowe będą uruchamiane akcji, zgodnie z definicją w grupie akcji.
+Po kliknięciu przycisku OK spowoduje wygenerowanie alertu dziennika aktywności i dzienników kolejne działania rejestrowane dla pomyślnie tworzyć kopie zapasowe będą uruchamiane akcji, zgodnie z definicją w grupy akcji.
 
 ### <a name="limitations-on-alerts"></a>Ograniczenia dotyczące alertów
-Alerty oparte na zdarzeniu obowiązują następujące ograniczenia:
+Alerty oparte na zdarzeniach podlegają następującym ograniczeniom:
 
-1. Alerty są wyzwalane na wszystkich maszynach wirtualnych w magazynie usług odzyskiwania. Nie można dostosować alert dotyczący podzbiór maszyn wirtualnych w magazynie usług odzyskiwania.
-2. Alerty są wysyłane z "alerts-noreply@mail.windowsazure.com". Obecnie nie można zmodyfikować nadawcą wiadomości e-mail.
+1. Alerty są wyzwalane na wszystkich maszynach wirtualnych w magazynie usługi Recovery Services. Nie można dostosować alert dla podzbioru maszyn wirtualnych w magazynie usługi Recovery Services.
+2. Alerty są wysyłane z "alerts-noreply@mail.windowsazure.com". Obecnie nie można zmodyfikować nadawcy wiadomości e-mail.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Informacje dotyczące ponownego tworzenia maszyny wirtualnej z punktu odzyskiwania, zapoznaj się z [przywracanie maszyn wirtualnych Azure](backup-azure-arm-restore-vms.md).
+Informacje na temat ponownego tworzenia maszyny wirtualnej z punktu odzyskiwania, zapoznaj się z [przywracania maszyn wirtualnych platformy Azure](backup-azure-arm-restore-vms.md).
 
-Jeśli potrzebujesz informacji na temat ochrony maszyn wirtualnych, zobacz [Pierwsze spojrzenie: Utwórz kopię zapasową maszyn wirtualnych do magazynu usług odzyskiwania](backup-azure-vms-first-look-arm.md). 
+Aby uzyskać informacje na temat ochrony maszyn wirtualnych, zobacz [Pierwsze spojrzenie: tworzenie kopii zapasowych maszyn wirtualnych w magazynie usługi Recovery Services](backup-azure-vms-first-look-arm.md). 
 
-Dowiedz się więcej o zadaniach zarządzania dla kopii zapasowych maszyn wirtualnych w artykule [kopii zapasowych maszyn wirtualnych Azure zarządzanie](backup-azure-manage-vms.md).
+Dowiedz się więcej o zadaniach zarządzania dla kopii zapasowych maszyn wirtualnych w artykule [kopii zapasowych maszyn wirtualnych Azure zarządzać](backup-azure-manage-vms.md).

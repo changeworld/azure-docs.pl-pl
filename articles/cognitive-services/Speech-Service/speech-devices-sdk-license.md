@@ -1,5 +1,5 @@
 ---
-title: Umowa licencyjna Speech Devices SDK
+title: Zestaw Speech Devices SDK licencji umowy — usługi mowy
 titleSuffix: Azure Cognitive Services
 description: Zestaw Speech Devices SDK umowę licencyjną.
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: dea27d7363210580d5f040de7ea1db770701d9c9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: b1605337a810c635bfa40cd05e2f9b15d2e5a7e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466124"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078518"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Umowa licencyjna Speech Devices SDK
 
-## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>POSTANOWIENIA LICENCYJNE DOTYCZĄCE OPROGRAMOWANIA FIRMY MICROSOFT<br>MOWY URZĄDZEŃ SOFTWARE DEVELOPMENT KIT (SDK) 
+## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>POSTANOWIENIA LICENCYJNE DOTYCZĄCE OPROGRAMOWANIA FIRMY MICROSOFT<br>MOWY URZĄDZEŃ SOFTWARE DEVELOPMENT KIT (SDK)
 
 > JEŚLI MIESZKA (LUB SĄ DZIAŁALNOŚCI Z MIEJSCA JEDNOSTKI PRACY W) STANY ZJEDNOCZONE, PRZECZYTAJ SEKCJĘ "ARBITRAŻU I WNIESIENIA POZWU" PONIŻEJ. DOTYCZY ONA ROZSTRZYGANIA SPORÓW.
 
@@ -57,7 +58,7 @@ f) należy użyć oprogramowania tylko w połączeniu z usług Microsoft Azure C
 
 **5\. OPINII.** Jeśli nadasz swoją opinię na temat oprogramowania do firmy Microsoft, udzielasz firmie Microsoft, bez opłaty, prawa do używania, udostępniania i komercjalizowania opinii użytkownika w dowolny sposób i w dowolnym celu. Użytkownik nie będzie przesyłał opinii podlegającej licencji, która wymaga od firmy Microsoft licencjonowania swojego oprogramowania lub dokumentacji stronom trzecim, ponieważ firma Microsoft udostępnia swoją opinię w nich. Te prawa nie są unieważniane niniejszej Umowy.
 
-**6\. OKRES.** Niniejsza Umowa obowiązuje zaakceptowania i może zostać zakończone przez użytkownik lub firma Microsoft w dowolnym momencie. 
+**6\. OKRES.** Niniejsza Umowa obowiązuje zaakceptowania i może zostać zakończone przez użytkownik lub firma Microsoft w dowolnym momencie.
 
 **7\. ZAKOŃCZENIA.** Bez uszczerbku dla żadnych innych praw firmy Microsoft może rozwiązać niniejszą Umowę, jeżeli nie są zgodne ze wszystkimi jej postanowień lub warunków. W takim przypadku użytkownik musi zniszczyć wszystkie kopie oprogramowania i wszystkie jego składniki.
 

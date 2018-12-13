@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: ec5e9f92114e9bae1aaa840a1d02f5a42b2fd7bf
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 68fcc8b324bebfc7ca4fa94b2633b475137ea580
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857176"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075598"
 ---
-# <a name="knowledge-base-lifecycle"></a>Cykl życia w bazie wiedzy Knowledge base
+# <a name="knowledge-base-lifecycle-in-qna-maker"></a>Cykl życia wiedzy, w usługi QnA Maker
 Usługa QnA Maker uczy się najlepiej w iteracyjny cykl zmiany modelu, przykłady wypowiedź, publikowanie oraz zbieranie danych z punktu końcowego zapytań. 
 
 ![Cykl tworzenia](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
@@ -31,7 +32,7 @@ Baza wiedzy jest gotowe do testowania, gdy jest on wypełniany zawartości, prze
 Dla dużych artykułów bazy wiedzy testowania można zautomatyzować za pomocą generateAnswer interfejsów API. 
 
 ## <a name="publish-the-knowledge-base"></a>Publikowanie bazy wiedzy
-Gdy skończysz testowanie bazy wiedzy knowledge base, możesz ją opublikować. Publikowanie wypchnięć najnowszą wersję przetestowane wiedzy do dedykowanych usługi Azure Search index reprezentujący **opublikowane** bazy wiedzy knowledge base. Tworzy również punkt końcowy, który można wywoływać w aplikacji lub czatbot.
+Gdy skończysz testowanie bazy wiedzy knowledge base, możesz ją opublikować. Publikowanie wypchnięć najnowszą wersję przetestowane wiedzy do dedykowanych usługi Azure Search index reprezentujący **opublikowane** bazy wiedzy knowledge base. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 
 Dzięki temu wszelkie zmiany zostaną wprowadzone do wersji testu w bazie wiedzy knowledge base nie wpływają na opublikowanej wersji, które mogą okazać się na żywo w aplikacji produkcyjnej.
 

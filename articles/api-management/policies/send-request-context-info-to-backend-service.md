@@ -1,6 +1,6 @@
 ---
-title: Azure próbce interfejsu API zarządzania zasad — informacje o kontekście żądania wysłania do usługi zaplecza | Dokumentacja firmy Microsoft
-description: Przykładowe zasady zarządzania Azure API - pokazuje, jak wysłać informacje o kontekście żądania do usługi zaplecza.
+title: Interfejs API zarządzania zasad przykładowy Azure — informacje o kontekście żądania wysyłania do usługi zaplecza | Dokumentacja firmy Microsoft
+description: Przykład zasad zarządzania Azure interfejsu API — pokazuje, jak wysyłać informacje o kontekście żądania do usługi zaplecza.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: d6cfd6e63dbc8a56179197b2942c52d15539ae74
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3369f3b3349e8daf9ff540b824c10bbd618a1147
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285551"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873431"
 ---
 # <a name="send-request-context-information-to-the-backend-service"></a>Wyślij informacje o kontekście żądania do usługi zaplecza
 
-W tym artykule przedstawiono przykładowe zasady zarządzania interfejsu API usługi Azure, który demonstruje sposób wysłać informacje o kontekście żądania do usługi zaplecza. Aby ustawić lub zmodyfikować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
+W tym artykule przedstawiono przykładowy zasady zarządzania interfejsem API usługi Azure, który demonstruje, jak wysyłać informacje o kontekście żądania do usługi zaplecza. Można ustawiać lub edytować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
 
 ## <a name="policy"></a>Zasady
 
-Wklej kod do **przychodzących** bloku.
+Wklej kod do **dla ruchu przychodzącego** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Send request context information to the backend service.policy.xml)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o zasadach APIM:
+Dowiedz się więcej na temat usługi APIM zasad:
 
 + [Zasady transformacji](../api-management-transformation-policies.md)
 + [Przykłady zasad](../policy-samples.md)

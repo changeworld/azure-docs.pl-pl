@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 016daa7ed57650a42b224df4e4173c7593893eb7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8165efaa10eb31410f00dfa9bfffb2c02d7396ae
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251118"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872337"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Zarządzanie infrastruktury usługi Azure DevTest Labs — firmowe zasady i zgodność
 Ten artykuł zawiera wskazówki dotyczące dotyczących zasad firmowych i zgodności w zakresie infrastruktury usługi Azure DevTest Labs. 
@@ -42,10 +42,10 @@ Należy organizacji planowanie jednym repozytorium lub zezwolić na wiele repozy
 ### <a name="answer"></a>Odpowiedź
 Jako część ogólnej nadzoru Twojej organizacji i strategii zarządzania konfiguracji zaleca się, że używasz scentralizowane repozytorium. Korzystając z wieloma repozytoriami, może zostać silosów niezarządzanych oprogramowania wraz z upływem czasu. Z centralnym repozytorium wielu zespołów można skorzystać z artefaktów z tego repozytorium do swoich projektów. Wymusza normalizacji, zabezpieczenia i łatwość zarządzania i eliminuje dublowania wysiłków. W ramach centralnego wskazówki dotyczące zarządzania długoterminowego i dbałość zaleca się następujące akcje:
 
-- Visual Studio Team Services należy skojarzyć z tą samą dzierżawą usługi Azure Active Directory, używanej subskrypcji platformy Azure do uwierzytelniania i autoryzacji.
+- Z tą samą dzierżawą usługi Azure Active Directory, używanej subskrypcji platformy Azure do uwierzytelniania i autoryzacji, należy skojarzyć repozytoriów platformy Azure.
 - Utwórz grupę o nazwie **wszystkim deweloperom laboratoria DevTest** w usłudze Azure Active Directory, które jest zarządzane centralnie. Każdy deweloper, który przyczynia się do rozwoju artefaktu będzie umieszczona w tej grupie.
-- Tej samej grupy usługi Azure Active Directory mogą służyć do zapewnienia dostępu do repozytorium usługi Visual Studio Team Services i laboratorium.
-- W programie Visual Studio Team Services tworzenia rozgałęzień lub tworzenia rozwidlenia powinny służyć do repozytorium oddzielne w rozwoju z repozytorium produkcji podstawowej. Zawartość jest dodawana tylko do gałęzi głównej, przy użyciu żądania ściągnięcia, po dokonaniu przeglądu prawidłowego kodu. Gdy recenzent kodu zatwierdza zmiany, główny programista, który jest odpowiedzialny za konserwację gałęzi głównej, scala zaktualizowany kod. 
+- Tej samej grupy usługi Azure Active Directory mogą służyć do zapewnienia dostępu do repozytorium Azure repozytoriów i laboratorium.
+- W repozytoriach usługi Azure tworzenia rozgałęzień lub rozwidlenia powinny służyć do repozytorium oddzielne w rozwoju z repozytorium produkcji podstawowej. Zawartość jest dodawana tylko do gałęzi głównej, przy użyciu żądania ściągnięcia, po dokonaniu przeglądu prawidłowego kodu. Gdy recenzent kodu zatwierdza zmiany, główny programista, który jest odpowiedzialny za konserwację gałęzi głównej, scala zaktualizowany kod. 
 
 ## <a name="corporate-security-policies"></a>Zasady zabezpieczeń firmy
 

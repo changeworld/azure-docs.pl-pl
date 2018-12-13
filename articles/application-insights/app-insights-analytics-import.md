@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 40b2959a59acb10443dfa917814f42cf98954640
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 7160232cf511226b26c15e6476ff75fcdf5ad33e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682711"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866604"
 ---
 # <a name="import-data-into-analytics"></a>Importowanie danych do analizy
 
@@ -368,5 +368,5 @@ Użyj tego kodu dla każdego obiektu blob.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Samouczek języka zapytań usługi Log Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Samouczek języka zapytań usługi Log Analytics](../azure-monitor/log-query/get-started-portal.md)
 * Jeśli używasz programu Logstash, użyj [wtyczkę Logstash w celu wysyłania danych do usługi Application Insights](https://github.com/Microsoft/logstash-output-application-insights)

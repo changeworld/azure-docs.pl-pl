@@ -12,39 +12,42 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 99ec559429d66becc20e038e43349f5369afac39
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 45ddf1c75dd22f5074c2017185bc0ed3be0b2a80
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856259"
+ms.locfileid: "52872700"
 ---
-# <a name="discover-azure-sql-database-managed-instance-management-endpoint"></a>Odnajdywanie punktu końcowego zarządzania wystąpienia zarządzanego Azure SQL Database 
+# <a name="discover-azure-sql-database-managed-instance-management-endpoint"></a>Odnajdywanie punktu końcowego zarządzania wystąpienia zarządzanego Azure SQL Database
 
-## <a name="overview"></a>Przegląd
-Wystąpienie zarządzane SQL Azure [klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md) zawiera punkt końcowy zarządzania używane przez firmę Microsoft do zarządzania wystąpienia.  
+Azure SQL Database Managed Instance [klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md) zawiera punkt końcowy zarządzania, używane przez firmę Microsoft do zarządzania wystąpienia zarządzanego. Punkt końcowy zarządzania jest chroniony za pomocą wbudowanej zapory sieciowej poziomu i wzajemne certyfikat weryfikacji na poziomie aplikacji.
 
-Punkt końcowy zarządzania jest chroniony za pomocą wbudowanej zapory sieciowej poziomu i wzajemne certyfikat weryfikacji na poziomie aplikacji. 
-
-Po zainicjowaniu połączenia z wewnątrz wystąpienia zarządzanego (CLR, połączonego serwera, kopie zapasowe, dziennik inspekcji, itp.) wygląda na to, że ruch pochodzi z adresu IP publicznego punktu końcowego zarządzania. Można ograniczyć dostęp usług publicznych z wystąpieniem zarządzanym przez ustawienie reguły zapory zezwalające na tylko ten adres IP.
+Gdy połączenia były inicjowane z wewnątrz wystąpienia zarządzanego (kopia zapasowa, dziennik inspekcji) wygląda na to, że ruch pochodzący z punktu końcowego zarządzania publicznego adresu IP. Można ograniczyć dostęp usług publicznych z wystąpieniem zarządzanym przez ustawienie reguły zapory zezwalające na tylko za pomocą adresu IP wystąpienia zarządzanego.
 
 > [!NOTE]
-> To nie ma zastosowania do ustawiania reguły zapory dla usług platformy Azure, które znajdują się w tym samym regionie, co wystąpienie zarządzane usługi platformy ma optymalizacji dla ruchu, który przechodzi między usługami, które są zlokalizowana. 
+> To nie ma zastosowania do ustawiania reguły zapory dla usług platformy Azure, które znajdują się w tym samym regionie, co wystąpienie zarządzane usługi platformy Azure ma optymalizacji dla ruchu, który przechodzi między usługami, które są zlokalizowana.
 
 W tym artykule wyjaśniono, jak można pobrać zarządzania punktu końcowego publicznego adresu IP oraz jak można sprawdzić jego ochronę za pomocą wbudowanych zapory.
 
-## <a name="finding-management-endpoint-public-ip-address"></a>Znajdowanie punktu końcowego publiczny adres IP zarządzania
-Załóżmy, że MI host to _mi demo.xxxxxx.database.windows.net_. Uruchom _nslookup_ przy użyciu nazwy hosta.
+## <a name="finding-the-management-endpoint-public-ip-address"></a>Znajdowanie punktu końcowego na publiczny adres IP zarządzania
+
+Załóżmy, że to wystąpienie zarządzane usługi hosta `mi-demo.xxxxxx.database.windows.net`. Uruchom `nslookup` przy użyciu nazwy hosta.
 
 ![Rozpoznawanie nazwy hosta wewnętrznego](./media/sql-database-managed-instance-management-endpoint/01_find_internal_host.png)
 
-Teraz zrobić innego _nslookup_ wyróżnione nazwy z removed_.vnet._segment. Przedstawiamy publiczny adres IP w wyniku wykonania tego polecenia.
+Teraz zrobić innego `nslookup` usuwania nazwy wyróżnione `.vnet.` segmentu. Przedstawiamy publiczny adres IP w wyniku wykonania tego polecenia.
 
 ![Rozpoznawanie publiczny adres IP](./media/sql-database-managed-instance-management-endpoint/02_find_public_ip.png)
 
-## <a name="verifying-managed-instance-built-in-firewall"></a>Sprawdzanie, czy Zapora wbudowane wystąpienia zarządzanego
-Wystąpienie zarządzane [reguły zabezpieczeń ruchu przychodzącego obowiązkowe](sql-database-managed-instance-vnet-configuration.md#mandatory-inbound-security-rules) wymaga portów zarządzania 9000, 9003, 1438, 1440, 1452 należy otworzyć z dowolnego źródła na sieciową grupę zabezpieczeń, która chroni wystąpienia zarządzanego. Mimo że te porty zostały otwarte na poziomie sieciowych grup zabezpieczeń, są chronione na poziomie sieci przez zapory wbudowanych.
+## <a name="verifying-the-managed-instance-built-in-firewall"></a>Weryfikowanie wbudowanej zapory wystąpienia zarządzanego
 
-Aby sprawdzić, czy te porty, możesz użyć dowolnego narzędzia skanera zabezpieczeń do przetestowania tych portów. Poniższy zrzut ekranu pokazuje, jak użyć jednej z tych narzędzi.
+Wystąpienie zarządzane [reguły zabezpieczeń ruchu przychodzącego obowiązkowe](sql-database-managed-instance-vnet-configuration.md#mandatory-inbound-security-rules) wymaga portów zarządzania 9000, 9003, 1438, 1440, 1452 być otwarte z **dowolnego źródła** na grupy zabezpieczeń sieci (NSG), chroniące zarządzane Wystąpienie. Mimo że te porty zostały otwarte na poziomie sieciowych grup zabezpieczeń, są chronione na poziomie sieci przez zapory wbudowanych.
+
+Aby sprawdzić, czy te porty, należy użyć dowolnego narzędzia skanera zabezpieczeń do przetestowania tych portów. Poniższy zrzut ekranu pokazuje, jak użyć jednej z tych narzędzi.
 
 ![Weryfikowanie wbudowanej zapory](./media/sql-database-managed-instance-management-endpoint/03_verify_firewall.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Aby uzyskać więcej informacji na temat wystąpienia zarządzane przez usługę i łączność, zobacz [architektura łączności usługi Azure SQL bazy danych zarządzane wystąpienia](sql-database-managed-instance-connectivity-architecture.md).

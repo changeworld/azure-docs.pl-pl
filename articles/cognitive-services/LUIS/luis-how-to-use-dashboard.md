@@ -1,21 +1,22 @@
 ---
-title: Pulpit nawigacyjny aplikacji dla aplikacji Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Pulpit nawigacyjny aplikacji
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Dowiedz się więcej na temat pulpitu nawigacyjnego aplikacji narzędziu do raportowania zwizualizowanego, która umożliwia monitorowanie aplikacji w jednym skrócie.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: fa5560c008270635d0d93b8004e017c810c9c27a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335014"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074422"
 ---
 # <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 Pulpit nawigacyjny aplikacji umożliwia monitorowanie aplikacji w jednym skrócie. **Pulpit nawigacyjny** są wyświetlane po otwarciu aplikacji, klikając nazwę aplikacji **Moje aplikacje** stronie wybierz **pulpit nawigacyjny** z górnym panelu. 

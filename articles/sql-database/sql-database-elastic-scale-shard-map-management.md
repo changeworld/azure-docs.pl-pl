@@ -3,7 +3,7 @@ title: Skalowanie w poziomie bazą danych Azure SQL database | Dokumentacja firm
 description: Jak używać ShardMapManager, biblioteka kliencka elastic database
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/16/2018
-ms.openlocfilehash: 71496a11deff5236161931d572e75d4a84b75c5f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 28387c1487c506173cba2eaaf3364dab36c7f70f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162070"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865856"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Skalowanie w poziomie bazy danych z Menedżera map fragmentów
 Aby łatwo skalować w poziomie bazy danych SQL Azure, użyj Menedżera mapowań fragmentów. Menedżera mapowań fragmentów to specjalne bazy danych, która utrzymuje Mapowanie globalne informacje o wszystkich fragmentów (baz danych) w zestawie fragmentu. Metadane temu aplikacja może nawiązać połączenie z odpowiednią bazą danych na podstawie wartości **klucz fragmentowania**. Ponadto każdy fragment w zestawie zawiera mapowania, które śledzą dane lokalne fragmentów (nazywane **podfragmentów**). 
@@ -52,8 +52,8 @@ Elastyczne skalowanie obsługuje następujące typy jako klucze dzielenia na fra
 | .NET | Java |
 | --- | --- |
 | liczba całkowita |liczba całkowita |
-| dł. |dł. |
-| Identyfikator GUID |Identyfikator UUID |
+| długi |długi |
+| Identyfikator GUID |uuid |
 | byte[]  |byte[] |
 | datetime | sygnatura czasowa |
 | Przedział czasu | czas trwania|

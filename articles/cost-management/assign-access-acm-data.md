@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 55d0d029e8b22833b61ec3232e0027644296ced7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: secdec18
+ms.openlocfilehash: ab5f334b1c830ea5e9c0164b8e75ef0f4fab8e1b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001709"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075645"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych rozwiązania Cost Management
 
@@ -64,12 +64,12 @@ Dostęp do rozliczeń zakresu konto wymaga uprawnień administratora przedsiębi
 1. Zaloguj się do portalu EA w [ https://ea.azure.com ](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
 2. Wybierz **Zarządzaj** w okienku po lewej stronie.
 3. Na **rejestracji** , a następnie wybierz rejestracji, który chcesz zarządzać.  
-    ![Portalu EA portal](./media/assign-access-acm-data/ea-portal.png)
+    ![Wybierz pozycję rejestracja w witrynie EA portal](./media/assign-access-acm-data/ea-portal.png)
 4. Kliknij przycisk **+ Dodaj administratora**.
 5. W oknie dialogowym Dodawanie administratora wybierz typ uwierzytelniania, a następnie wpisz adres e-mail użytkownika.
 6. Jeśli użytkownik powinien mieć dostęp tylko do odczytu do danych kosztów i użycia, w obszarze **tylko do odczytu**, wybierz opcję **tak**.  W przeciwnym razie wybierz **nie**.
 7. Kliknij przycisk **Dodaj** do utworzenia konta.  
-    ![Dodaj pole administratora](./media/assign-access-acm-data/add-admin.png)
+    ![Przykładowe informacje wyświetlane w oknie Dodaj administratora](./media/assign-access-acm-data/add-admin.png)
 
 Może potrwać do 30 minut, zanim nowy użytkownik mają dostęp do danych w Cost Management.
 
@@ -85,7 +85,7 @@ Dostęp do zakresu działu wymaga dostępu (DA Wyświetl opłaty) administratora
 6. Jeśli użytkownik powinien mieć dostęp tylko do odczytu do danych kosztów i użycia, w obszarze **tylko do odczytu**, wybierz opcję **tak**.  W przeciwnym razie wybierz **nie**.
 7. Wybierz działów, które chcesz udzielić uprawnień administracyjnych działu do.
 8. Kliknij przycisk **Dodaj** do utworzenia konta.  
-    ![Dodaj pole do administratora działu](./media/assign-access-acm-data/add-depart-admin.png)
+    ![Wprowadź wymagane informacje w polu Dodaj działu administratora](./media/assign-access-acm-data/add-depart-admin.png)
 
 ## <a name="assign-enrollment-account-scope-access"></a>Przypisz dostęp do zakresu konta rejestracji
 
@@ -99,7 +99,7 @@ Dostęp do zakresu konta rejestracji wymaga dostępu (AO Wyświetl opłaty) do w
 6. Wybierz typ uwierzytelniania, a następnie wpisz nazwę konta.
 7. Wpisz adres e-mail użytkownika, a następnie opcjonalnie wpisz centrum kosztów.
 8. Kliknij pozycję **Dodaj** do utworzenia konta.  
-    ![Dodaj pole konta](./media/assign-access-acm-data/add-account.png)
+    ![Wprowadź wymagane informacje w polu Konto Dodaj konta rejestracji](./media/assign-access-acm-data/add-account.png)
 
 Po wykonaniu powyższych kroków, konto użytkownika, staje się kontem rejestracji w witrynie Enterprise portal i można tworzyć subskrypcje. Użytkownik może uzyskać dostęp do kosztów i użycia danych w przypadku subskrypcji, które tworzą.
 
@@ -107,7 +107,7 @@ Po wykonaniu powyższych kroków, konto użytkownika, staje się kontem rejestra
 
 Dostęp do zakresu grupy zarządzania wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia dla grupy zarządzania, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla grupy zarządzania włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
 
-1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _grup zarządzania_, a następnie wybierz **grup zarządzania**.
 3. Wybierz grupy zarządzania w hierarchii.
 4. Obok nazwy grupy zarządzania, kliknij przycisk **szczegóły**.
@@ -117,13 +117,13 @@ Dostęp do zakresu grupy zarządzania wymaga co najmniej uprawnienia czytnika za
 8. W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika usługi Azure AD, grupa lub aplikacja**.
 9. Aby przypisać dostęp, wyszukiwania, a następnie wybierz użytkownika.
 10. Kliknij pozycję **Zapisz**.  
-    ![Dodaj pole uprawnień](./media/assign-access-acm-data/add-permissions.png)
+    ![Przykładowe informacje w polu Dodaj uprawnienia dla grupy zarządzania](./media/assign-access-acm-data/add-permissions.png)
 
 ## <a name="assign-subscription-scope-access"></a>Przypisywanie subskrypcji zakresu dostępu
 
 Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia do subskrypcji, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla subskrypcji włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
 
-1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _subskrypcje_, a następnie wybierz **subskrypcje**.
 3. Wybierz subskrypcję.
 4. Wybierz **kontrola dostępu (IAM)** z okienka po lewej stronie.
@@ -137,7 +137,7 @@ Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika zarządzania kosz
 
 Dostęp do grupy zasobów wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia do grupy zasobów, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla grupy zasobów włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
 
-1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _grup zasobów_, a następnie wybierz **grup zasobów**.
 3. Wybierz grupę zasobów.
 4. Wybierz **kontrola dostępu (IAM)** z okienka po lewej stronie.

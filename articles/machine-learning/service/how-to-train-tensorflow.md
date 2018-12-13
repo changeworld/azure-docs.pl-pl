@@ -1,6 +1,5 @@
 ---
-title: Szkolenie modeli za pomocą TensorFlow
-titleSuffix: Azure Machine Learning service
+title: Szkolenia TensorFlow modeli za pomocą usługi Azure Machine Learning
 description: Dowiedz się, jak uruchamiać jednym węzłem i rozproszonego szkolenia TensorFlow modeli z TensorFlow narzędzie do szacowania
 services: machine-learning
 ms.service: machine-learning
@@ -10,15 +9,14 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.custom: seodec18
-ms.openlocfilehash: d15d3ed115009ad1395a85d36e833d85197d4d19
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.openlocfilehash: 5746180b894da265dfc02176c13b5f9b60f4df96
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094115"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872785"
 ---
-# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>Szkolenia TensorFlow modeli za pomocą usługi Azure Machine Learning
+# <a name="how-to-train-tensorflow-models"></a>Jak szkolenia TensorFlow modeli
 
 Szkolenia sieci neuronowej (DNN) przy użyciu TensorFlow, Azure Machine Learning zapewnia niestandardowego `TensorFlow` klasy `Estimator`. Zestaw Azure SDK `TensorFlow` narzędzie do szacowania (nie można być conflated z [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) klasy) umożliwia łatwe przesyłanie zadania szkolenia TensorFlow uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
-ms.date: 9/24/2018
-ms.openlocfilehash: 411beacd65915c30338ab415b095acc1a0c8cbe6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: MT
+ms.date: 10/24/2018
+ms.openlocfilehash: c40837baf66b39d98da17c244f462f356d2b1f26
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238859"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864353"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co to jest FPGA i Project Brainwave?
 
@@ -37,7 +37,7 @@ Układów FPGA zawierała tablicę bloków programowalny i typu hierarchii możl
 
 [Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) to architektura ekonomiczne sprzętu firmy Microsoft, oparte na urządzeniach FPGA firmy Intel, że programistów i analityków danych umożliwia przyspieszenie w czasie rzeczywistym obliczeń sztucznej Inteligencji.  Ta architektura włączone FPGA oferuje **wydajności**, **elastyczność**, i **skalowania** i jest dostępna na platformie Azure.
 
-**Układów FPGA umożliwiają uzyskanie małych opóźnień dla żądań wnioskowania w czasie rzeczywistym.** Przetwarzanie wsadowe oznacza zbieranie dużej ilości danych i wprowadzając do niej z procesorem, aby poprawić wykorzystanie sprzętu. Przetwarzanie wsadowe może spowodować opóźnienia, ponieważ wymaga przetworzenia większej ilości danych, ale może to zwiększyć przepływność. Project Brainwave implementacje jednostek przetwarzania neuronowych nie wymagają dzielenia na partie; w związku z tym opóźnienie może być wiele razy niższa w porównaniu do GPU i CPU.
+**Układów FPGA umożliwiają uzyskanie małych opóźnień dla żądań wnioskowania w czasie rzeczywistym.** Żądań asynchronicznych (batch) nie są potrzebne. Przetwarzanie wsadowe może spowodować opóźnienia, ponieważ wymaga przetworzenia większej ilości danych, ale może to zwiększyć przepływność w niektórych kontekstach. Project Brainwave implementacje jednostek przetwarzania neuronowych nie wymagają dzielenia na partie; w związku z tym opóźnienie może być wiele razy niższa w porównaniu do GPU i CPU.
 
 ### <a name="reconfigurable-power"></a>Możliwych do ponownego skonfigurowania zasilania
 **Układów FPGA można skonfigurować dla różnych typów modeli uczenia maszynowego.** Ta elastyczność ułatwia przyspieszenie aplikacji na podstawie najbardziej optymalną precyzja wartości liczbowych i model pamięci używane.
@@ -68,7 +68,7 @@ Następujące scenariusze użycia FPGA w architekturze Project Brainwave:
 
 Poniżej przedstawiono przepływ pracy do tworzenia usługi rozpoznawania obrazów na platformie Azure przy użyciu obsługiwanych sieci jako featurized do wdrożenia na platformie Azure układów FPGA:
 
-1. Użyj usługi Azure Machine Learning zestaw SDK for Python do tworzenia definicji usługi, który jest plikiem zawierająca opis potoku wykresów (dane wejściowe, featurized i klasyfikatora) oparte na TensorFlow. Polecenie wdrożenia zostanie automatycznie skompresuj wykresów i definicji do pliku ZIP i przekazywanie pliku ZIP do usługi Azure Blob storage.  System DNN została już wdrożona na Project Brainwave do uruchamiania na FPGA.
+1. Użyj [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) do tworzenia definicji usługi, która jest plikiem opisujące potoku wykresów (dane wejściowe, featurized i klasyfikatora) w oparciu o TensorFlow. Polecenie wdrożenia zostanie automatycznie skompresuj wykresów i definicji do pliku ZIP i przekazywanie pliku ZIP do usługi Azure Blob storage.  System DNN została już wdrożona na Project Brainwave do uruchamiania na FPGA.
 
 1. Zarejestruj model przy użyciu zestawu SDK przy użyciu pliku ZIP w usłudze Azure Blob storage.
 

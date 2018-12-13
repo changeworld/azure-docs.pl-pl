@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 18041c95405614768845399f92efac229db53b20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ff8f5c51f17375208fdb32e521bfc85ee3f0c77
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250734"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880220"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migracja Contoso: ponowne hostowanie aplikacji w środowisku lokalnym, na maszynach wirtualnych platformy Azure i grupy dostępności AlwaysOn programu SQL Server
 
@@ -186,11 +186,11 @@ Administratorzy firmy Contoso skonfiguruj klaster w następujący sposób:
     - Ich umieszczenia maszyn w sieci produkcyjnej, wschodnie stany USA 2 podstawowego regionu (**VNET-PROD-EUS2**), w podsieci bazy danych (**PROD-DB-EUS2**).
     - Tworzą nowy zestaw dostępności: **SQLAOGAVSET**z dwóch domenach błędów i pięcioma domenami aktualizacji.
 
-    ![MASZYNY WIRTUALNEJ SQL](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
+      ![Maszyna wirtualna SQL](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
 
 4. W **ustawień programu SQL Server**, łączność z serwerem SQL w sieci wirtualnej (prywatny), ich limit domyślnego portu 1433. Dla uwierzytelniania używają tych samych poświadczeń co u klienta (**contosoadmin**).
 
-    ![MASZYNY WIRTUALNEJ SQL](media/contoso-migration-rehost-vm-sql-ag/sql-vm-db.png)
+    ![Maszyna wirtualna SQL](media/contoso-migration-rehost-vm-sql-ag/sql-vm-db.png)
 
 **Potrzebujesz dodatkowej pomocy?**
 
@@ -235,11 +235,11 @@ Przed rozpoczęciem konfigurowania klastra, Administratorzy Contoso migawki dysk
 
 ![migawka](media/contoso-migration-rehost-vm-sql-ag/snapshot.png)
 
-2. Następnie ich za pomocą skryptu została ze sobą w celu utworzenia klastra pracy awaryjnej Windows.
+1. Następnie ich za pomocą skryptu została ze sobą w celu utworzenia klastra pracy awaryjnej Windows.
 
     ![Tworzenie klastra](media/contoso-migration-rehost-vm-sql-ag/create-cluster1.png)
 
-3. Po utworzeniu klastra, okaże się, że maszyny wirtualne są wyświetlane jako węzły klastra.
+2. Po utworzeniu klastra, okaże się, że maszyny wirtualne są wyświetlane jako węzły klastra.
 
      ![Tworzenie klastra](media/contoso-migration-rehost-vm-sql-ag/create-cluster2.png)
 
@@ -351,7 +351,7 @@ Administratorzy firmy Contoso należy je ustawić w następujący sposób:
     - Używają konto ogólnego przeznaczenia z magazynu w warstwie standardowa i replikacją LRS.
     - Konto musi być w tym samym regionie co magazyn.
 
-    ![Site Recovery magazynu](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
+      ![Site Recovery magazynu](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
 
 3. Za pomocą konta magazynu i sieci w miejscu magazynu usługi Recovery Services teraz utworzyć (**ContosoMigrationVault**) i umieścić go w **ContosoFailoverRG** grupę zasobów, w regionie podstawowym wschodnie stany USA 2 .
 
@@ -403,15 +403,15 @@ Po przejściu w tryb failover Contoso chce można było połączyć się z maszy
 
 1. Aby uzyskać dostęp za pośrednictwem Internetu one:
 
- - Włącz protokół RDP na maszynie Wirtualnej w środowisku lokalnym przed włączeniem trybu failover
- - Upewnij się, że reguły TCP i UDP zostały dodane do **publicznych** profilu.
- - Sprawdź, czy RDP jest dozwolona w **zapory Windows** > **dozwolone aplikacje** we wszystkich profilach.
+   - Włącz protokół RDP na maszynie Wirtualnej w środowisku lokalnym przed włączeniem trybu failover
+   - Upewnij się, że reguły TCP i UDP zostały dodane do **publicznych** profilu.
+   - Sprawdź, czy RDP jest dozwolona w **zapory Windows** > **dozwolone aplikacje** we wszystkich profilach.
  
 2. Aby uzyskać dostęp za pośrednictwem sieci VPN typu lokacja lokacja są:
 
- - Włącz protokół RDP na maszynie lokalnej.
- - Zezwalaj na RDP w **zapory Windows** -> **dozwolone aplikacje i funkcje**, aby uzyskać **domena i prywatne** sieci.
- - Ustaw zasady sieci SAN systemu operacyjnego na maszynie Wirtualnej w środowisku lokalnym **OnlineAll**.
+   - Włącz protokół RDP na maszynie lokalnej.
+   - Zezwalaj na RDP w **zapory Windows** -> **dozwolone aplikacje i funkcje**, aby uzyskać **domena i prywatne** sieci.
+   - Ustaw zasady sieci SAN systemu operacyjnego na maszynie Wirtualnej w środowisku lokalnym **OnlineAll**.
 
 Ponadto po uruchomieniu trybu failover muszą sprawdzenie następujących kwestii:
 

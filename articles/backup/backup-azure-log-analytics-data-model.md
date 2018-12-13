@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f4ecc87a0a7a0c74b02b72164fe129daa6530ea2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635156"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877585"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Model danych analizy dzienników dla danych usługi Azure Backup
 Tworzenie raportów przy użyciu modelu danych usługi Log Analytics. Z modelem danych utworzenia niestandardowych kwerend i pulpitów nawigacyjnych lub dostosowywanie danych usługi Azure Backup możesz dowolnie.
@@ -30,7 +30,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące alertów powiązanych pól
 | AlertUniqueId_s |Tekst |Unikatowy identyfikator wygenerowany alert |
 | AlertType_s |Tekst |Typ alertu, na przykład kopię zapasową |
 | AlertStatus_s |Tekst |Stan alertu, na przykład aktywny |
-| AlertOccurenceDateTime_s |Data/godzina |Data i godzina utworzenia alertu |
+| AlertOccurrenceDateTime_s |Data/godzina |Data i godzina utworzenia alertu |
 | AlertSeverity_s |Tekst |Ważność alertu, na przykład, krytyczny |
 | EventName_s |Tekst |Nazwa zdarzenia. Zawsze AzureBackupCentralReport |
 | BackupItemUniqueId_s |Tekst |Unikatowy identyfikator elementu kopii zapasowej skojarzonego z alertem |

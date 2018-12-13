@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 078f6bcd7aa48f2a63118e6dfb625d9b2c69fbb3
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248027"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879392"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Obsługa Platform do usługi Azure IoT SDK
 
@@ -20,7 +20,7 @@ ms.locfileid: "48248027"
 
 Firma Microsoft obsługuje wiele różnych systemów operacyjnych/platform/platform i można rozszerzyć za pomocą zestawu SDK C usługi IoT platformy Azure. Niektóre są obsługiwane oficjalnie przez zespół, pogrupowane według warstwy, które reprezentują poziom pomocy technicznej, które użytkownicy mogą oczekiwać. *W pełni obsługiwane platformy* oznacza, że firma Microsoft:
 
-    * Stale kompiluje i uruchamia testy end-to-end na głównej maszynie wirtualnej i wersje obsługiwane LTS.
+    * Stale kompiluje i uruchamia testy end-to-end na głównej maszynie wirtualnej i wersje obsługiwane LTS.  Aby zapewnić pokrycie testu w różnych wersjach, firma Microsoft zwykle testowania wstępnego najnowszej wersji LTS i najpopularniejszych wersji.  Inne wersje tej samej platformy, może być obsługiwany za pośrednictwem zgodność wersji platformy.
     * Zawiera wskazówki dotyczące instalacji lub pakietów, jeśli ma to zastosowanie.
     * W pełni obsługuje platformy w witrynie GitHub.
 
@@ -31,7 +31,6 @@ Ponadto listy partnerów ma przenoszone naszego zestawu SDK języka C na wielu p
 * Windows CE 2013 (wycofana w października 2018 r.)
 * .NET standard 1.3 przy użyciu platformy .NET Core 2.1 i .NET Framework 4.7
 * Platformy Xamarin iOS, Android i platformy uniwersalnej systemu Windows
-* Android przy użyciu języka Java
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
 
@@ -83,6 +82,7 @@ Istnieje kilka obsługiwane platformy.
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
+| Interfejs API systemu android 28 | X64  | Java 8       |
 
 ## <a name="partner-supported-platforms"></a>Platformy obsługiwane przez partnerów
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 876cb037aab718a91f469f8862c501bb9a29e4d6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 8f2bf9707d28744707c39a507108120e948dde7f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846434"
+ms.locfileid: "52866682"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych ze swojego obszaru roboczego usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
@@ -324,7 +324,7 @@ Separator nazw i wartości to ogranicznik można użyć do analizowania właści
 Na przykład rozważmy właściwość o nazwie *lokalizacji* , takich jak uwzględnione wartości *41 budynku Redmond* i *12 budynku Bellevue*. Separator nazw i wartości można określić kreski (-) i *budowania miast* dla nazwy. To podejście analizuje każdej wartości w dwie właściwości o nazwie *Miasto* i *budynku*.
 
 ### <a name="click-through-navigation"></a>Nawigacja za pomocą kliknięć
-Nawigacja za pomocą kliknięć definiuje, jakie działania zostaną wykonane po kliknięciu na nagłówek lub element listy w widoku.  To spowoduje to otwarcie kwerendy w [portalu przeszukiwania dzienników](../../log-analytics/log-analytics-log-search-portals.md) lub uruchomić inny widok.
+Nawigacja za pomocą kliknięć definiuje, jakie działania zostaną wykonane po kliknięciu na nagłówek lub element listy w widoku.  To spowoduje to otwarcie kwerendy w [portalu przeszukiwania dzienników](../../azure-monitor/log-query/portals.md) lub uruchomić inny widok.
 
 W poniższej tabeli opisano ustawienia dla nawigacji za pomocą kliknięć.
 

@@ -1,22 +1,20 @@
 ---
-title: Korzystanie z preferencji odczytu bazy danych MongoDB przy użyciu interfejs API usługi MongoDB usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Korzystanie z preferencji odczytu bazy danych MongoDB za pomocą usługi Azure Cosmos DB bazy danych MongoDB API
 description: Dowiedz się, jak użyć preferencji odczytu bazy danych MongoDB przy użyciu interfejsu API MongoDB usługi Azure Cosmos DB
 services: cosmos-db
 author: vidhoonv
-manager: kfile
+ms.author: sclyon
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.custom: ''
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.author: sclyon
-ms.openlocfilehash: b0af47f9ed72507fe9bc47023b456fcb157e25de
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4f40a2dac04102a19be7b3209c6bf37be9252cde
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091684"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875352"
 ---
 # <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Jak globalnie dystrybuować odczytuje korzystanie z preferencji odczytu z interfejsem API MongoDB usługi Azure Cosmos DB 
 
@@ -78,7 +76,7 @@ readFromSecondaryfunc query completed!
 
 Bazy danych MongoDB oferuje następujące tryby preferencji odczytu, aby klienci mogli używać:
 
-1. PODSTAWOWY
+1. GŁÓWNY
 2. PRIMARY_PREFERRED
 3. POMOCNICZY
 4. SECONDARY_PREFERRED

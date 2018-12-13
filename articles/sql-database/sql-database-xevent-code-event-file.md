@@ -3,7 +3,7 @@ title: Plik zdarzeń systemu XEvent kodu dla usługi SQL Database | Dokumentacja
 description: Udostępnia program PowerShell oraz języka Transact-SQL przykładowy kod dwufazowego, który demonstruje obiekt docelowy pliku zdarzenia rozszerzone zdarzenia w usłudze Azure SQL Database. Usługa Azure Storage jest wymaganym elementem tego scenariusza.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 33bd4e39018f9789464d213ccf7921993e2da142
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232080"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864728"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kod docelowy pliku zdarzenia dla rozszerzonych zdarzeń w bazie danych SQL
 

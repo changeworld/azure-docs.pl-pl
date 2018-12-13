@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 04/05/2018
+ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61db5e9eedc57ef6316cb760499362ed856e38c6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 379e5503900621381bbc27c6604cc8208cfdb80e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822759"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076461"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
@@ -53,11 +53,17 @@ Aby wyświetlić wszystkie metryki konta usługi Batch:
 
 Aby programowo pobrać metryki, należy użyć interfejsów API usługi Azure Monitor. Na przykład zobacz [metryki pobierania usługi Azure Monitor przy użyciu platformy .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/).
 
+## <a name="batch-metric-reliability"></a>Niezawodność metryki usługi Batch
+
+Metryki są przeznaczone do służyć do określania trendów i przeprowadzać analizę danych. Dostarczanie metryk nie jest gwarantowane i może ulec dostarczania poza kolejnością, utraty danych i/lub dublowania. Przy użyciu pojedynczego zdarzenia do funkcji alertu lub wyzwalacz nie jest zalecane. Zobacz [Batch alertów dotyczących metryk](#batch-metric-alerts) sekcji, aby uzyskać więcej informacji na temat sposobu Ustaw progi alertów.
+
+Metryki emitowane w ciągu ostatnich 3 minut mogą nadal być agregowania. Tym horyzoncie czasowym wartości metryk mogą niespójność.
+
 ## <a name="batch-metric-alerts"></a>Alerty metryki usługi Batch
 
-Opcjonalnie można skonfigurować w czasie zbliżonym do rzeczywistego *alertów dotyczących metryk* wyzwalacza, gdy wartość określonej metryki przekracza wartość progową, który przypiszesz. Generuje alert [powiadomień](../monitoring-and-diagnostics/insights-alerts-portal.md) możesz wybrać, gdy alert jest "aktywny" (po przekroczeniu progu, i jest spełniony warunek alertu), a także gdy go jest "rozwiązany" (po przekroczeniu progu ponownie i warunek jest nie już spełniany). 
+Opcjonalnie można skonfigurować w czasie zbliżonym do rzeczywistego *alertów dotyczących metryk* wyzwalacza, gdy wartość określonej metryki przekracza wartość progową, który przypiszesz. Generuje alert [powiadomień](../monitoring-and-diagnostics/insights-alerts-portal.md) możesz wybrać, gdy alert jest "aktywny" (po przekroczeniu progu, i jest spełniony warunek alertu), a także gdy go jest "rozwiązany" (po przekroczeniu progu ponownie i warunek jest nie już spełniany). Alerty oparte na pojedyncze punkty danych nie jest zalecane, ponieważ metryk jest zależna od dostarczania poza kolejnością, utraty danych i/lub dublowania. Alerty należy wprowadzić Użyj wartości progowych, aby uwzględnić problemy powodujące te niespójności.
 
-Na przykład można skonfigurować alertu dotyczącego metryki, gdy Twoje liczba rdzeni o niskim priorytecie znajduje się na określonym poziomie, aby można było zmienić skład puli.
+Na przykład można skonfigurować alertu dotyczącego metryki, gdy Twoje liczba rdzeni o niskim priorytecie znajduje się na określonym poziomie, aby można było zmienić skład puli. Zalecane jest, aby ustawić okres co najmniej 10 minut, gdzie alertów wyzwalacza, jeśli liczba rdzeni średni, niski priorytet spadnie poniżej wartości progowej przez cały okres. Alerty dotyczące okres od 1 do 5 minut, jak metryki nadal może być agregowana jest niezalecane.
 
 Aby skonfigurować alert metryki w portalu:
 

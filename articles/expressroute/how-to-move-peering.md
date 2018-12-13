@@ -1,33 +1,23 @@
 ---
-title: Przenieś publicznej komunikacji równorzędnej w ramach usługi Azure ExpressRoute do komunikacji równorzędnej firmy Microsoft | Dokumentacja firmy Microsoft
+title: Przenieś publicznej komunikacji równorzędnej do firmy Microsoft komunikacji równorzędnej — usługi Azure ExpressRoute | Dokumentacja firmy Microsoft
 description: W tym artykule przedstawiono kroki, aby przenieść swoje publicznej komunikacji równorzędnej do firmy Microsoft komunikacji równorzędnej usługi ExpressRoute.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 579f8874459004ef6bfa0d0794ab09333e053acb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 6b2bce6b488698db0a72c9a17f67c2555c6afa5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966129"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100025"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Przenieś publicznej komunikacji równorzędnej do komunikacji równorzędnej firmy Microsoft
 
-Usługa ExpressRoute obsługuje komunikację równorzędną firmy Microsoft z filtrami tras na potrzeby usług typu PaaS na platformie Azure, takich jak Azure Storage i Azure SQL Database. Teraz potrzebujesz tylko jednej domeny routingu, aby mieć dostęp do usług PaaS i SaaS firmy Microsoft. Filtry tras umożliwiają selektywne anonsowanie prefiksów usług PaaS dla regionów świadczenia usługi Azure, z których chcesz korzystać.
-
-Ten artykuł ułatwia przenoszenie konfiguracji publicznej komunikacji równorzędnej do komunikacji równorzędnej bez przestojów firmy Microsoft. Aby uzyskać więcej informacji na temat routingu domen i komunikacji równorzędnej, zobacz [ExpressRoute obwody i domeny routingu](expressroute-circuit-peerings.md).
-
+Ten artykuł ułatwia przenoszenie konfiguracji publicznej komunikacji równorzędnej do komunikacji równorzędnej bez przestojów firmy Microsoft. Usługa ExpressRoute obsługuje komunikację równorzędną firmy Microsoft z filtrami tras na potrzeby usług typu PaaS na platformie Azure, takich jak Azure Storage i Azure SQL Database. Teraz potrzebujesz tylko jednej domeny routingu, aby mieć dostęp do usług PaaS i SaaS firmy Microsoft. Filtry tras umożliwiają selektywne anonsowanie prefiksów usług PaaS dla regionów świadczenia usługi Azure, z których chcesz korzystać. Aby uzyskać więcej informacji na temat routingu domen i komunikacji równorzędnej, zobacz [ExpressRoute obwody i domeny routingu](expressroute-circuit-peerings.md).
 
 ## <a name="before"></a>Przed rozpoczęciem
 

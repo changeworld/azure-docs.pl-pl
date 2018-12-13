@@ -1,21 +1,22 @@
 ---
-title: Zrozumieć intencje w aplikacjach usługi LUIS
-titleSuffix: Azure Cognitive Services
-description: Intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub celem wyrażone w wypowiedź użytkownika. Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chcą w aplikacji.
+title: Zamiarach użytkownika
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub celem wyrażone w wypowiedź użytkownika.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5ccfe781b3632bd7ccfc532398a00faf7a87b63f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.openlocfilehash: b3285e242b88f2bdc07390db49a1fe582a5c7f09
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637215"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075574"
 ---
 # <a name="intents-in-luis"></a>Intencje w usługi LUIS
 

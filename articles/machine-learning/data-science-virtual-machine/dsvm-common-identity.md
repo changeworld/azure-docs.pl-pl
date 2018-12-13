@@ -1,11 +1,12 @@
 ---
 title: Skonfiguruj wspólną tożsamość dla maszyny wirtualnej analizy danych — Azure | Dokumentacja firmy Microsoft
-description: Skonfiguruj wspólną tożsamość w środowiskach DSVM zespołu w przedsiębiorstwie.
+description: Dowiedz się, jak utworzyć typowych kont użytkowników, których można użyć między wieloma maszynami wirtualnymi analizy danych. Azure Active Directory lub lokalnej usługi Active Directory służy do uwierzytelniania kont użytkowników do maszyny wirtualnej do nauki o danych.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6be7c63d3879c7ed89cd97eaecd6d59b6b5aadd4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436305"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075475"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Skonfiguruj wspólną tożsamość na maszynie wirtualnej do nauki o danych
 

@@ -92,9 +92,9 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Australia                      |        ✓       |
 | Brunei                         |        ✓       |
 | Guam                           |        ✓       |
-| Hongkong                      |        ✓       |
+| SRA Hongkong                      |        ✓       |
 | Indonezja                      |        ✓       |
-| Makau                          |        ✓       |
+| SRA Makau                          |        ✓       |
 | Malezja                       |        ✓       |
 | Nowa Zelandia                    |        ✓       |
 | Filipiny                    |        ✓       |

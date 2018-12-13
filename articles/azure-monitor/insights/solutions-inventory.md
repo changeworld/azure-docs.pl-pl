@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 38ed7a7fff08003563147d6b8eb9bbc33fb32bc9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 4e7bcfbbec7be7320328df9ed2fa34ba7f7dbfc6
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836155"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888396"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure
 Ten artykuł zawiera listę [rozwiązań do zarządzania](solutions.md) udostępnianych przez firmę Microsoft wraz z łączami do ich szczegółowej dokumentacji.  Zawiera także informacje o ich metody i częstotliwość zbierania danych w usłudze Log Analytics.  Identyfikowanie różnych rozwiązaniach dostępnych i zrozumienie wymagań połączenia i przepływu danych dla rozwiązań do zarządzania różnych, można użyć informacji w tym artykule. 
@@ -31,10 +31,10 @@ W poniższej tabeli wymieniono [rozwiązań do zarządzania](solutions.md) na pl
 Wyjaśnienie kolumn są następujące:
 
 - **Agent monitorowania Microsoft** -Agent używany w systemach Windows i Linux do uruchamiania pakietu zarządzania z rozwiązania programu SCOM i zarządzania na platformie Azure. W tej konfiguracji agenta jest podłączony bezpośrednio do usługi Log Analytics bez połączenia z grupą zarządzania programu Operations Manager. 
-- **Operations Manager** — identyczne agenta jako Microsoft monitoring agent. W tej konfiguracji ma ona [połączonych z grupą zarządzania programu Operations Manager](../../log-analytics/log-analytics-om-agents.md) połączoną z usługą Log Analytics. 
+- **Operations Manager** — identyczne agenta jako Microsoft monitoring agent. W tej konfiguracji ma ona [połączonych z grupą zarządzania programu Operations Manager](../../azure-monitor/platform/om-agents.md) połączoną z usługą Log Analytics. 
 -  **Usługa Azure Storage** — rozwiązanie zbiera dane z konta usługi Azure storage. 
 - **Wymagane programu Operations Manager?** -Podłączonej grupy zarządzania programu Operations Manager jest wymagany do zbierania danych przez rozwiązanie do zarządzania. 
-- **Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania** — jeśli agent jest [podłączonej do grupy zarządzania SCOM](../../log-analytics/log-analytics-om-agents.md), a następnie przesyłane do usługi Log Analytics z serwera zarządzania. W takim przypadku agent nie musi połączyć się bezpośrednio do usługi Log Analytics. Jeśli to pole nie jest zaznaczone, następnie dane będą wysyłane z agenta bezpośrednio do usługi Log Analytics nawet wtedy, gdy agent jest połączony z grupą zarządzania programu SCOM. Musisz mieć możliwość komunikacji z usługą Log Analytics za pośrednictwem [bramy usługi Log Analytics](../../azure-monitor/platform/gateway.md).
+- **Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania** — jeśli agent jest [podłączonej do grupy zarządzania SCOM](../../azure-monitor/platform/om-agents.md), a następnie przesyłane do usługi Log Analytics z serwera zarządzania. W takim przypadku agent nie musi połączyć się bezpośrednio do usługi Log Analytics. Jeśli to pole nie jest zaznaczone, następnie dane będą wysyłane z agenta bezpośrednio do usługi Log Analytics nawet wtedy, gdy agent jest połączony z grupą zarządzania programu SCOM. Musisz mieć możliwość komunikacji z usługą Log Analytics za pośrednictwem [bramy usługi Log Analytics](../../azure-monitor/platform/gateway.md).
 - **Częstotliwość zbierania** -określa częstotliwość, dane są zbierane przez rozwiązanie do zarządzania. 
 
 
@@ -54,12 +54,12 @@ Wyjaśnienie kolumn są następujące:
 | [Usługi Azure Application Gateway Analytics](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | na powiadomienie |
 | **Rozwiązanie do zarządzania** | **Platforma** | **Agent monitorowania firmy Microsoft** | **Agent programu Operations Manager** | **Magazyn platformy Azure** | **Wymagane programu Operations Manager?** | **Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania** | **Częstotliwość zbierania** |
 | [Analiza sieciowej grupy zabezpieczeń platformy Azure (przestarzałe)](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | na powiadomienie |
-| [Usługi Azure SQL Analytics (wersja zapoznawcza)](../../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 min |
+| [Usługi Azure SQL Analytics (wersja zapoznawcza)](../../azure-monitor/insights/azure-sql.md) | Windows | | | | | | 1 min |
 | [Tworzenie kopii zapasowych](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | na powiadomienie |
 | [Pojemność i wydajność (wersja zapoznawcza)](../../azure-monitor/insights/capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |Po dostarczeniu |
 | [Śledzenie zmian](../../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |co godzinę |
 | [Śledzenie zmian](../../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |co godzinę |
-| [Containers](../../log-analytics/log-analytics-containers.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
+| [Containers](../../azure-monitor/insights/containers.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
 | [Analiza usługi Key Vault](../../azure-monitor/insights/azure-key-vault.md) |Windows | | | | | |na powiadomienie |
 | [Ocena złośliwego oprogramowania](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |co godzinę |
 | [Monitor wydajności sieci](../../azure-monitor/insights/network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | Uzgodnienia protokołu TCP co 5 sekund, dane wysyłane co 3 minuty |

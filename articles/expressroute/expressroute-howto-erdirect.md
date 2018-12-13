@@ -1,18 +1,19 @@
 ---
-title: Konfigurowanie platformy Azure bezpośrednio z usługi ExpressRoute | Dokumentacja firmy Microsoft
-description: Ta strona służy do konfigurowania usługi ExpressRoute bezpośrednich (wersja zapoznawcza)
+title: Konfigurowanie usługi ExpressRoute bezpośrednio — Azure | Dokumentacja firmy Microsoft
+description: Ta strona służy do konfigurowania usługi ExpressRoute bezpośrednich (wersja zapoznawcza).
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
-ms.openlocfilehash: 857602cf9c3c743e91ea6dace64e71e03cdd879b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.custom: seodec18
+ms.openlocfilehash: 9dadd61c8c4c2d1cd2305aa852e4528bfb9a1421
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959677"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076614"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>Konfigurowanie usługi ExpressRoute bezpośrednich (wersja zapoznawcza)
 

@@ -1,5 +1,5 @@
 ---
-title: Integrowanie platformy Apache Spark z usługą Azure Event Hubs | Dokumentacja firmy Microsoft
+title: Integracja z platformą Apache Spark — usługi Azure Event Hubs | Dokumentacja firmy Microsoft
 description: Integracja z platformą Apache Spark umożliwiające przesyłanie strumieniowe ze strukturą z usługi Event Hubs
 services: event-hubs
 documentationcenter: na
@@ -11,14 +11,15 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 688daedf29bbd68c7451be66b47ac90e404d4093
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 194898f658c08a3a5a9d8c1d601ea53c817e7649
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746664"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076819"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Integrowanie platformy Apache Spark z usługą Azure Event Hubs
 

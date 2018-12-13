@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 453101b1f5368dba9aa9dbfc89f5b893d42a0542
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: MT
+ms.openlocfilehash: 280df7ff80e637539f85c5d7ddafbb564b8fe562
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684593"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879562"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Tworzenie potoku danych przy użyciu interfejsu API modułu zbierającego dane
 
-[Interfejsu API modułu zbierającego dane usługi Log Analytics](../../log-analytics/log-analytics-data-collector-api.md) umożliwia zaimportowanie dowolnego niestandardowe dane do usługi Log Analytics. Jedynymi wymogami są na tym, że dane mają być sformatowanego JSON i dzielenie, do 30 MB lub mniej segmentów. Jest to całkowicie elastyczny mechanizm, który można podłączyć do na wiele sposobów: dane są wysyłane bezpośrednio z aplikacji do ad hoc jednorazowe przekazanie. W tym artykule opisują kilka punktów początkowych dla typowego scenariusza: trzeba przekazać dane przechowywane w plikach na podstawie regularnych, automatycznych. Chociaż przedstawione potok w tym miejscu nie będzie większość wydajne lub w przeciwnym razie jest zoptymalizowana, ma ona służyć jako punkt wyjścia do tworzenia potoku produkcji własne.
+[Interfejsu API modułu zbierającego dane usługi Log Analytics](../../azure-monitor/platform/data-collector-api.md) umożliwia zaimportowanie dowolnego niestandardowe dane do usługi Log Analytics. Jedynymi wymogami są na tym, że dane mają być sformatowanego JSON i dzielenie, do 30 MB lub mniej segmentów. Jest to całkowicie elastyczny mechanizm, który można podłączyć do na wiele sposobów: dane są wysyłane bezpośrednio z aplikacji do ad hoc jednorazowe przekazanie. W tym artykule opisują kilka punktów początkowych dla typowego scenariusza: trzeba przekazać dane przechowywane w plikach na podstawie regularnych, automatycznych. Chociaż przedstawione potok w tym miejscu nie będzie większość wydajne lub w przeciwnym razie jest zoptymalizowana, ma ona służyć jako punkt wyjścia do tworzenia potoku produkcji własne.
 
 ## <a name="example-problem"></a>Przykład problem
 W pozostałej części tego artykułu będziemy sprawdzać dane dotyczące wyświetleń stron w usłudze Application Insights. W naszym scenariuszu hipotetyczny chcemy skorelować zbierane domyślnie zestaw SDK usługi Application Insights do danych niestandardowych, zawierających populacji każdego kraju w świecie, w celu określenia, gdzie firma powinna spędzać większość informacji geograficznych Marketing dolarów. 
@@ -173,4 +173,4 @@ W tym artykule prezentowane prototyp pracy, logiki mogą być stosowane do prawd
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [interfejsu API modułu zbierającego dane](../../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.
+Dowiedz się więcej o [interfejsu API modułu zbierającego dane](../../azure-monitor/platform/data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.

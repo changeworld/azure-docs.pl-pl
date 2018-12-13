@@ -1,21 +1,22 @@
 ---
 title: Tłumaczenie mowy za pomocą mowy zestawu SDK dla języka Java
 titleSuffix: Azure Cognitive Services
-description: Pokazuje, jak tłumaczenie mowy za pomocą mowy zestawu SDK dla języka Java.
+description: Ten artykuł zawiera przykładowy kod do tłumaczenia mowy w środowisku Java za pomocą zestawu SDK rozpoznawania mowy.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 53d15e56284c24e6bacf382aa9aab7548b930191
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 233c6b33a4b6dea8ae5aea56272d43bee228d71f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464118"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092251"
 ---
 # <a name="translate-speech-with-the-speech-sdk-for-java"></a>Tłumaczenie mowy z zestawem SDK rozpoznawania mowy, języka Java
 

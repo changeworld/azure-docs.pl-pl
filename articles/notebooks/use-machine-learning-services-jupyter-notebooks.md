@@ -1,5 +1,5 @@
 ---
-title: Użyj usługi Azure Machine Learning Services w notesy platformy Azure | Dokumentacja firmy Microsoft
+title: Użyj usługi Azure Machine Learning Services w notesy platformy Azure
 description: Przegląd notesów próbki dla usług Azure Machine Learning, za pomocą notesów usługi Azure.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: fabd89f7591abafd68b318921fb7723f3eb7373d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 1508ccc151aaafd7e0c0b46345c4dcb1a5b7b03c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856452"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083669"
 ---
 # <a name="use-azure-machine-learning-services-in-a-notebook"></a>Użyj usług Azure Machine Learning w notesie
 
@@ -47,9 +47,9 @@ Notesy platformy Azure ma wstępnie skonfigurowany środowiska niezbędne do pra
 
 Dokumentacja usług Azure Machine Learning zawiera szereg innych zasobów, które pomagają w pracy z usługi Machine Learning w notesach:
 
-- [Szybki Start: Za pomocą języka Python Rozpoczynanie pracy z usługą Azure Machine Learning](/azure/machine-learning/service/quickstart-create-workspace-with-python.md)
-- [Samouczek #1: Uczenie modelu Klasyfikacja obrazów przy użyciu usługi Azure Machine Learning](/azure/machine-learning/service/tutorial-train-models-with-aml.md)
-- [Samouczek #2: Wdrażanie model klasyfikacji obrazów w wystąpieniu kontenera platformy Azure (ACI)](/azure/machine-learning/service/tutorial-deploy-models-with-aml.md)
-- [Samouczek: Wytrenuj model klasyfikacji z automatycznych machine learning w usłudze Azure Machine Learning](/azure/machine-learning/service/tutorial-auto-train-models.md)
+- [Szybki Start: Za pomocą języka Python Rozpoczynanie pracy z usługą Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
+- [Samouczek #1: Uczenie modelu Klasyfikacja obrazów przy użyciu usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
+- [Samouczek #2: Wdrażanie model klasyfikacji obrazów w wystąpieniu kontenera platformy Azure (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
+- [Samouczek: Wytrenuj model klasyfikacji z automatycznych machine learning w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
-Ponadto można znaleźć w dokumentacji [Azure Machine Learning SDK dla języka Python](/python/api/overview/azure/ml/intro.md?view=azure-ml-py).
+Ponadto można znaleźć w dokumentacji [Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
