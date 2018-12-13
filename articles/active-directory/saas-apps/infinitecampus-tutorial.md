@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 837d18a04a0cd22f29a5cbcb8b06b7e3f5fae255
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9f4adbacf2749e8c8ff2da8f331a007e8dcaaea3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632810"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Samouczek: Integracja usługi Azure Active Directory z Kampusu nieskończona
 
@@ -111,11 +111,11 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
 
-5. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy** (krok **11.b**), wykonaj następujące czynności:
+5. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy** (Przejdź do kroku **11.c**), wykonaj następujące czynności:
 
     a. Kliknij przycisk **przekazywania pliku metadanych**.
 
-    ![image](common/b9_saml.png)
+        ![image](common/b9_saml.png)
 
     b. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
 
@@ -128,9 +128,9 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     d. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca (przy użyciu modelu hostingu mogą się różnić domeny): `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
-    > Możesz uzyskać **plik metadanych usługodawcy** na stronie Konfiguracja dostawcy usługi logowania jednokrotnego nieskończonej Campus, które zostało wyjaśnione w dalszej części tego samouczka.
+    > Możesz uzyskać **plik metadanych usługodawcy** na stronie Konfiguracja dostawcy usługi logowania jednokrotnego nieskończonej Campus, które zostało wyjaśnione w dalszej części tego samouczka. Jeśli zaczynasz przy użyciu nowej konfiguracji SAML dostawcy usług w nieskończonej Campus, przejdź do **kroku 11** aby zakończyć eksportowanie pliku metadanych dostawcy usług.
 
-6. Jeśli nie masz **plik metadanych usługodawcy**, wykonaj następujące czynności:
+6. Jeśli nie masz **plik metadanych usługodawcy**, wykonaj następujące czynności (należy pamiętać, że domena zależy od modelu hostingu):
 
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
@@ -169,10 +169,10 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     ![Usługa rejestracji jednokrotnej](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
     a. Wybierz **Włącz SAML logowania jednokrotnego**.
+    
+    b. Na **opcję Pobierz dane serwera dostawcy tożsamości (IDP)** wybierz **adres URL metadanych**, Wklej **adres Url metadanych Federacji aplikacji** w oknie dialogowym a Kliknij przycisk **synchronizacji**.
 
-    b. Kliknij pozycję **metadanych dostawcy usługi** łącze, aby zapisać **plik metadanych usługodawcy** na komputerze i przekaż go w **podstawową konfigurację protokołu SAML** sekcji, aby automatycznie polulate **identyfikator** i **adres URL odpowiedzi** wartości w witrynie Azure portal (zobacz krok 5).
-
-    c. Na **opcję Pobierz dane serwera dostawcy tożsamości (IDP)** wybierz **adres URL metadanych** i Wklej **adres Url metadanych Federacji aplikacji** w polu tekstowym i następnie kliknij pozycję **synchronizacji**.
+    c. Kliknij **metadanych dostawcy usługi** łącze, aby zapisać **plik metadanych dostawcy usług** na komputerze, a następnie przekaż go w **podstawową konfigurację protokołu SAML** sekcji, aby automatycznie Wypełnij **identyfikator** i **adres URL odpowiedzi** wartości w witrynie Azure portal (w tym celu należy odwoływać się do kroku 4 do przekazywania i automatyczne wypełnianie wartości, lub krok 5 do ręcznego wprowadzania).
 
     d. Po kliknięciu przycisku **synchronizacji** wartości pobrać, automatycznie wypełnione w **Konfiguracja dostawcy usługi logowania jednokrotnego** strony.
 

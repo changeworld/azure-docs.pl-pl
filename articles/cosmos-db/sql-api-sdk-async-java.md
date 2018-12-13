@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: 01d353d3f1b59fecbb1894d08c6404f441422593
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fadefe09f9f744fabe0f0f3f3cb519b3abb50b41
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872904"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098887"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Async zestawu Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "52872904"
 > * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
 
-Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla interfejsu API SQL, podając operacji asynchronicznych z obsługą [Netty biblioteki](http://netty.io/). Istniejących wcześniej [zestawu SDK Java interfejsu API SQL](sql-api-sdk-java.md) nie obsługuje operacji asynchronicznych. 
+Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla interfejsu API SQL, podając operacji asynchronicznych z obsługą [Netty biblioteki](https://netty.io/). Istniejących wcześniej [zestawu SDK Java interfejsu API SQL](sql-api-sdk-java.md) nie obsługuje operacji asynchronicznych. 
 
 <table>
 
@@ -113,7 +113,7 @@ Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla in
 * Pliki nagłówkowe stały Java generowania dokumentacji java właściwe.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Ogólnie zestawu SDK, dzięki obsłudze end-to-end bez blokowania We/Wy przy użyciu [Netty biblioteki](http://netty.io/) w trybie bramy. 
+* Ogólnie zestawu SDK, dzięki obsłudze end-to-end bez blokowania We/Wy przy użyciu [Netty biblioteki](https://netty.io/) w trybie bramy. 
 
 ## <a name="release-and-retirement-dates"></a>Daty wydania i wycofania
 Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.

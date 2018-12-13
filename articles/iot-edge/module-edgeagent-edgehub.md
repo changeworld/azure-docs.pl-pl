@@ -1,5 +1,5 @@
 ---
-title: Dokumentacja usługi Azure IoT EdgeAgent i EdgeHub | Dokumentacja firmy Microsoft
+title: EdgeAgent i EdgeHub żądane odwołanie do właściwości — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Przejrzyj określonych właściwości i ich wartości dla edgeAgent i edgeHub bliźniaczych reprezentacjach modułów
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 01e1942b12de126aa34130f5a4b77dd0fb958aa6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: a0834e5886a1a088486109f967baf357e375ad05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568924"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100287"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Właściwości agenta usługi Edge i bliźniaczych reprezentacjach modułów Centrum usługi Edge
 
