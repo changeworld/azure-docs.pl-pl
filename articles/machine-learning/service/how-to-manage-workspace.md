@@ -9,12 +9,13 @@ ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
-ms.openlocfilehash: 1565c54779278b440cfe631951e964921cc85720
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 647af189319a1fa7b80b10410ad96f3297c18192
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51709886"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083771"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Tworzenie i zarządzanie obszarami roboczymi usługi Azure Machine Learning
 
@@ -36,11 +37,11 @@ Aby utworzyć obszar roboczy, musisz mieć subskrypcję platformy Azure. Jeśli 
 
 1. W wynikach filtrowania, wybierz **obszaru roboczego usługi Machine Learning** Aby wyświetlić listę swoich obszarów roboczych. 
 
-   ![Wyszukaj w obszarze roboczym usługi Azure Machine Learning](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Lista obszarów roboczych usługi Azure Machine Learning](media/how-to-manage-workspace/allservices-search.PNG)
 
 1. Przejrzyj listę obszarów roboczych, można odnaleźć. Można filtrować na podstawie subskrypcji, grupy zasobów i lokalizacji.  
 
-   ![Lista obszaru roboczego usługi w usłudze Azure Machine Learning](media/how-to-manage-workspace/allservices_view_workspace.PNG)
+   ![Wyświetl obszary robocze](media/how-to-manage-workspace/allservices_view_workspace.PNG)
 
 1. Wybierz obszar roboczy został utworzony, aby wyświetlić jego właściwości.
 
@@ -50,7 +51,7 @@ Aby utworzyć obszar roboczy, musisz mieć subskrypcję platformy Azure. Jeśli 
 
 Przycisk Usuń w górnej części obszaru roboczego, który chcesz usunąć.
 
-  ![PNG](media/how-to-manage-workspace/delete-workspace.png)
+  ![Usuwanie przycisku](media/how-to-manage-workspace/delete-workspace.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 

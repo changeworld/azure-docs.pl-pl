@@ -1,21 +1,22 @@
 ---
-title: Zarządzanie wersjami w aplikacjach usługi LUIS
-titleSuffix: Azure Cognitive Services
+title: Zarządzanie wersjami
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Wersje umożliwiają tworzenie i publikowanie różnych modeli. Dobrą praktyką jest, aby sklonować bieżącego aktywnego modelu do innej wersji aplikacji przed wprowadzeniem zmian w modelu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: db461191b70aabc322e570ecc814a076c21206f2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: 454f45b692a87dbd47ca1ca70880323912693839
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033791"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082700"
 ---
 # <a name="manage-versions"></a>Zarządzanie wersjami
 
@@ -25,7 +26,7 @@ Aby pracować z wersjami, Otwórz aplikację, wybierając jego nazwę na **Moje 
 
 Listę wersji pokazują, które wersje są publikowane, gdzie są publikowane i która wersja jest obecnie aktywny. 
 
-[![](./media/luis-how-to-manage-versions/versions-import.png "Zarządzanie sekcję strony z wersjami")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[![Sekcji Zarządzanie, strona wersji](./media/luis-how-to-manage-versions/versions-import.png "sekcji Zarządzanie, strona wersji")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>Klonowanie wersji
 
@@ -44,7 +45,7 @@ Listę wersji pokazują, które wersje są publikowane, gdzie są publikowane i 
 
 Wybierz wersję z listy, a następnie wybierz **wprowadzić Active** na pasku narzędzi. 
 
-[![](./media/luis-how-to-manage-versions/versions-other.png "Zarządzanie sekcję strony z wersjami")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![Sekcji Zarządzanie, strona wersji](./media/luis-how-to-manage-versions/versions-other.png "sekcji Zarządzanie, strona wersji")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Wersja importu
 

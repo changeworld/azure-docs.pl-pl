@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: c4175a22cc503113f3b3ef64f03f0ae0913bd20e
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 6898b007287e4f4c87010649c6f0b66c03f7cf8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364901"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086270"
 ---
 # <a name="create-a-qna-maker-service"></a>Tworzenie usługi QnA Maker
 
@@ -27,7 +28,7 @@ Ten Instalator wdraża kilka zasobów platformy Azure. Razem te zasoby zarządza
 
 2.  Kliknij pozycję **Dodaj nowy zasób**, wpisz "usługi qna maker" w polu wyszukiwania i wybierz zasób usługi QnA Maker
 
-    ![Utwórz nową usługę QnA Maker](../media/qnamaker-how-to-setup-service/create-new-resource.png)
+    ![Utwórz nową usługę QnA Maker — dodać nowego zasobu](../media/qnamaker-how-to-setup-service/create-new-resource.png)
 
 3.  Kliknij pozycję **Utwórz** zapoznanie się z warunków i postanowień.
 
@@ -35,7 +36,7 @@ Ten Instalator wdraża kilka zasobów platformy Azure. Razem te zasoby zarządza
 
 4. W **QnA Maker**, wybierz odpowiednią warstwy i regiony.
 
-    ![Utwórz nową usługę QnA Maker](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Tworzenie nowej usługi QnA Maker — warstwa cenowa i regiony](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
     * Wypełnij **nazwa** na unikatową nazwę do identyfikacji usługi QnA Maker. Ta nazwa identyfikuje również punkt końcowy usługi QnA Maker, do którego mają zostać skojarzone z bazy wiedzy.
     * Wybierz **subskrypcji** , w którym zostanie wdrożone do zasobu usługi QnA Maker.
@@ -44,7 +45,7 @@ Ten Instalator wdraża kilka zasobów platformy Azure. Razem te zasoby zarządza
     * Wybierz **warstwa cenowa wyszukiwania** usługi Azure Search. Jeśli widzisz opcję w warstwie bezpłatna wyszarzone, oznacza to, że masz już wdrożone w subskrypcji warstwy bezpłatna usługi Azure Search. W takim przypadku konieczne będzie rozpoczęcie od warstwy podstawowa usługi Azure Search. Zobacz szczegóły cennika usługi Azure search [tutaj](https://azure.microsoft.com/pricing/details/search/).
     * Wybierz **Lokalizacja wyszukiwania** miejscu danych usługi Azure Search do wdrożenia. Ograniczenia, w której muszą być przechowywane dane klientów poinformuje lokalizacji, wybrany dla usługi Azure Search.
     * Nadaj nazwę usłudze App service w **nazwy aplikacji**.
-    * Domyślnie usługa App service domyślnie do warstwy standardowa (S1). Plan można zmienić po utworzeniu. Zobacz więcej szczegółów dotyczących App service — ceny [tutaj](https://azure.microsoft.com/en-in/pricing/details/app-service/).
+    * Domyślnie usługa App service domyślnie do warstwy standardowa (S1). Plan można zmienić po utworzeniu. Zobacz więcej szczegółów dotyczących App service — ceny [tutaj](https://azure.microsoft.com/pricing/details/app-service/).
     * Wybierz **lokalizacja witryny sieci Web** wdrożonym usługi App Service.
 
         > [!NOTE]
@@ -57,7 +58,7 @@ Ten Instalator wdraża kilka zasobów platformy Azure. Razem te zasoby zarządza
 
 6.  Po zakończeniu wdrożenia zostanie wyświetlony następujące zasoby utworzone w ramach subskrypcji.
 
-    ![Utwórz nową usługę QnA Maker](../media/qnamaker-how-to-setup-service/resources-created.png)
+    ![Nowa usługa QnA Maker utworzony zasób](../media/qnamaker-how-to-setup-service/resources-created.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

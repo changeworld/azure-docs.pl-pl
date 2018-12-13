@@ -1,5 +1,5 @@
 ---
-title: Przykładowe notesów programu Jupyter do notesów usługi Azure | Dokumentacja firmy Microsoft
+title: Przykładowe notesów programu Jupyter do notesów usługi Azure
 description: Przykłady są doskonałym sposobem na środowisko notesów programu Jupyter, uruchomiony w bezpłatnej notesów usługi Azure, usług w chmurze.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c355996d7d02a4027e4b2be49dc5c661cce64abe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8ba94cd94003ee51a621923d3b1dbf2a402c5cfb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856292"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082336"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Odnajdywanie i korzystanie z notesów próbki
 
@@ -32,10 +32,10 @@ Po zidentyfikowaniu Notes, którą chcesz, aby zapoznać się z poniżej przedst
 ## <a name="great-sample-notebooks"></a>Notesy przygotowania doskonałego przykładu
 
 - [Azure notesów początkowy zestaw](https://notebooks.azure.com/#sample-redirect) zawiera wprowadzenie do języka Python, R, a F#, wraz z notesów ukazujące dostęp do danych, usług Azure Machine Learning i kilka ćwiczenia do nauki o danych.
-- [Wprowadzenie do notesów programu Jupyter](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
+- [Wprowadzenie do notesów programu Jupyter](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
 - [Wprowadzenie do nauki o danych](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings) przez Jake Vanderplas.
 - [Galeria interesujące notesów](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projekt w witrynie GitHub)
-- [nbviewer.jupyter.org](http://nbviewer.jupyter.org)
+- [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Fizyka instrukcji z [dział fizyki na angielskie College London](https://notebooks.azure.com/cvanbreu/libraries)
 - [Usługa Azure Machine Learning przykłady umożliwiające rozpoczęcie pracy](https://notebooks.azure.com/azureml/projects/0f41b597b1ea)
 

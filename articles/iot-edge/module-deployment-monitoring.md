@@ -1,6 +1,6 @@
 ---
-title: Wdrożenie modułów dla usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu modułów wdrożony na urządzeniach brzegowych
+title: Automatyczne wdrażanie do grupy urządzeń — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Umożliwia automatyczne wdrożenia w usłudze Azure IoT Edge Zarządzanie grupami urządzeń na podstawie udostępnionych tagów
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584846"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100110"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Omówienie automatycznego wdrożenia usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali
 
@@ -44,7 +45,7 @@ Można skonfigurować tylko na urządzeniach usługi IoT Edge z wdrożeniem. Nas
 * System zarządzania kontenera, takich jak Moby lub rozwiązania Docker
 * Inicjowanie obsługi środowiska uruchomieniowego usługi IoT Edge 
 
-### <a name="deployment-manifest"></a>Manifest wdrażania
+### <a name="deployment-manifest"></a>Manifest wdrożenia
 
 Manifest wdrożenia jest to dokument JSON, który opisuje modułów, które mają być skonfigurowane na docelowe urządzenia usługi IoT Edge. Zawiera ona metadanych konfiguracji dla wszystkich modułów, w tym moduły wymagany system (w szczególności agenta usługi IoT Edge i Centrum usługi IoT Edge).  
 

@@ -104,9 +104,9 @@ items:
     href: expressroute-howto-coexist-resource-manager.md
   - name: Konfigurowanie usługi ExpressRoute Direct
     items:
-    - name: Konfigurowanie usługi ExpressRoute Direct — PowerShell
+    - name: Azure PowerShell
       href: expressroute-howto-erdirect.md
-    - name: Konfigurowanie usługi ExpressRoute Direct — interfejs wiersza polecenia
+    - name: Interfejs wiersza polecenia platformy Azure
       href: expressroute-howto-expressroute-direct-cli.md
   - name: Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft
     items:
@@ -225,9 +225,9 @@ items:
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/
     - name: Konfigurowanie publicznej komunikacji równorzędnej dla obwodu
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/
-ms.openlocfilehash: a078613e1aa94ea5410e6d3bc69e46deb67eb27d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9980b405670b3fee0d1aa47c746e8f33001ba335
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879226"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083992"

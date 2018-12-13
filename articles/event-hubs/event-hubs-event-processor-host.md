@@ -1,6 +1,6 @@
 ---
-title: Co to jest hosta procesora zdarzeń centra zdarzeń Azure i dlaczego warto jej używać | Dokumentacja firmy Microsoft
-description: Omówienie i wprowadzenie do hosta procesora zdarzeń z centrów zdarzeń platformy Azure
+title: Odbieranie zdarzeń za pomocą hosta procesora zdarzeń — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: W tym artykule opisano hosta procesora zdarzeń w usługi Azure Event Hubs, co upraszcza zarządzanie tworzenie punktów kontrolnych, dzierżawienie i odczytywania zdarzeń jon równoległych.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 236103861ce8a296c77f708dbb4a7cc7e03f10f3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a28ae46a449d4aacf046636793585a84adc5ba83
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258956"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089637"
 ---
-# <a name="azure-event-hubs-event-processor-host-overview"></a>Omówienie usługi Azure hosta procesora zdarzeń centrów zdarzeń
+# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>Odbieranie zdarzeń z usługi Azure Event Hubs za pomocą hosta procesora zdarzeń
 
 Azure Event Hubs to usługa do pozyskiwania zaawansowanych danych telemetrycznych, która umożliwia strumieniowe przesyłanie milionów zdarzeń przy niskich kosztach. W tym artykule opisano sposób wykorzystywania odebrane zdarzenia przy użyciu *hosta procesora zdarzeń* (EPH); inteligentny agent odbiorcy, który ułatwia zarządzanie tworzenie punktów kontrolnych, dzierżawienie i czytników zdarzeń równoległych.  
 

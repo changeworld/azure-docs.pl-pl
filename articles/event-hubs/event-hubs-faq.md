@@ -1,20 +1,21 @@
 ---
-title: Usługi Azure Event Hubs — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Usługa Azure Event Hubs — często zadawane pytania (FAQ)
+title: Często zadawane pytania — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera listę często zadawanych pytań (FAQ) dla usługi Azure Event Hubs i odpowiedzi.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 10/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9bd1649c0ec89abf660865971314becb6580852f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 7308b122d878c225aa98a19a303bc9520f3201ef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300679"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088239"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 

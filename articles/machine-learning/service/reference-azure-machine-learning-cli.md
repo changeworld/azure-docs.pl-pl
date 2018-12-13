@@ -1,5 +1,6 @@
 ---
-title: Jak używać rozszerzenia interfejsu wiersza polecenia usługi Azure Machine Learning
+title: Przy użyciu interfejsu wiersza polecenia rozszerzenia uczenia maszynowego
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się więcej o rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning dla wiersza polecenia platformy Azure. Wiersza polecenia platformy Azure jest narzędziem wiersza polecenia dla wielu platform, która umożliwia pracę z zasobami w chmurze platformy Azure. Rozszerzenie usługi Machine Learning umożliwia pracę z usługą Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
-ms.openlocfilehash: 3ab348ce3a6d45c2ac4d2d14978781e57a8b5d17
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: e1e94c2301cdbacf2ade037fe04cc8359ed06598
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872858"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078195"
 ---
-# <a name="use-the-azure-machine-learning-cli-extension"></a>Rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
+# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Na użytek rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
 Interfejsu wiersza polecenia usługi Azure Machine Learning to rozszerzenie [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), interfejs wiersza polecenia dla wielu platform na platformie Azure. To rozszerzenie zawiera polecenia służące do pracy z usługą Azure Machine Learning z poziomu wiersza polecenia. Umożliwia tworzenia skryptów automatyzujących przepływy pracy uczenia maszynowego. Na przykład można utworzyć skrypty, które wykonują następujące czynności:
 

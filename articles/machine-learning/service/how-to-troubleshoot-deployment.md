@@ -1,5 +1,6 @@
 ---
-title: Wdrożenia przewodnik rozwiązywania problemów dla usługi Azure Machine Learning
+title: Przewodnik rozwiązywania problemów z wdrażaniem
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak obejść, rozwiązania i rozwiązywanie typowych problemów wdrażania platformy Docker za pomocą usługi AKS i ACI przy użyciu usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.author: haining
 author: hning86
 ms.reviewer: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: ed6fed58aac236f143345a9504ece21aceae09d2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 6bd3bc86aa828ab28462de9d45f660889634cbd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865373"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100518"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Rozwiązywanie problemów z wdrożeniami usługi AKS i ACI usługi Azure Machine Learning
 
@@ -222,10 +224,6 @@ def run(input_data):
 ## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o wdrażaniu: 
-* [Jak wdrożyć w usłudze ACI](how-to-deploy-to-aci.md)
+* [Jak wdrażać i którym](how-to-deploy-and-where.md)
 
-* [Sposób wdrażania usługi AKS](how-to-deploy-to-aks.md)
-
-* [Samouczek, część 1: uczenie modelu](tutorial-train-models-with-aml.md)
-
-* [Samouczek, część 2: Wdrażanie modelu](tutorial-deploy-models-with-aml.md)
+* [Samouczek: Uczenie i wdrażanie modeli](tutorial-train-models-with-aml.md)

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8d2550d6a1f99adaec7423997365412eb61ffbdf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e9271081b36681c4011d96b329de5058aeaf8472
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124699"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090622"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Kopiowanie danych z Shopify przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -74,7 +74,12 @@ Następujące właściwości są obsługiwane w przypadku Shopify połączone us
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Shopify.
 
-Aby skopiować dane z Shopify, należy ustawić właściwość typu zestawu danych na **ShopifyObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z Shopify, należy ustawić właściwość typu zestawu danych na **ShopifyObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **ShopifyObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -86,7 +91,8 @@ Aby skopiować dane z Shopify, należy ustawić właściwość typu zestawu dany
         "linkedServiceName": {
             "referenceName": "<Shopify linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -95,14 +101,14 @@ Aby skopiować dane z Shopify, należy ustawić właściwość typu zestawu dany
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Shopify.
 
-### <a name="shopifysource-as-source"></a>ShopifySource jako źródło
+### <a name="shopify-as-source"></a>Shopify jako źródło
 
 Aby skopiować dane z Shopify, należy ustawić typ źródła w działaniu kopiowania, aby **ShopifySource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **ShopifySource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 

@@ -5,7 +5,7 @@ keywords: wprowadzenie do uczenia maszynowego,modelowanie predykcyjne,co to jest
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 4d4e6a47b35d3cb98e4425c11628625818642fa0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867855"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091298"
 ---
-# <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Usługa Azure Machine Learning Studio — często zadawane pytania: rozliczenia, możliwości, ograniczeń i pomocy technicznej
+# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Usługa Azure Machine Learning Studio — często zadawane pytania: Rozliczenia, możliwości, ograniczeń i pomocy technicznej
 Przedstawione tutaj często zadawane pytania i odpowiedzi dotyczą usługi Azure Machine Learning, która jest usługą w chmurze przeznaczoną do tworzenia modeli predykcyjnych i rozwiązań operacyjnych za pośrednictwem usług sieci Web. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej.
 
 **Masz pytania, których nie możesz tu znaleźć?**

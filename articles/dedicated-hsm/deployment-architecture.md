@@ -1,24 +1,25 @@
 ---
-title: Architektura wdrożenia na platformie Azure w wersji dedykowanej przez moduł HSM | Dokumentacja firmy Microsoft
-description: Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń udostępnia możliwości magazynu kluczy w ramach platformy Azure, która spełnia FIPS 140-2 Level 3 certyfikacji
+title: Architektura wdrożenia - sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
+description: Podstawowe zagadnienia, korzystając z platformy Azure w wersji dedykowanej w module HSM w ramach architektury aplikacji
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 8481f444464135a24d42612f334ac6096cba7b21
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 913be9d1ee6ce92d71f5f0c7eda46a618483ce8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319414"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078297"
 ---
-# <a name="deployment-architecture"></a>Architektura wdrożenia
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura usługi Azure w wersji dedykowanej wdrożenia przez moduł HSM
 
 Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń udostępnia kryptograficznych magazynu kluczy na platformie Azure. Spełnia wymagania dotyczące bezpieczeństwa. Klienci będą mogli korzystać z przy użyciu sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej, jeśli one:
 
@@ -61,5 +62,5 @@ Dodatkowe tematy poziomu pojęcia:
 * [Wysoka dostępność](high-availability.md)
 * [Zabezpieczenia fizyczne](physical-security.md)
 * [Sieć](networking.md)
-* [Wsparcie dla](supportability.md)
+* [Możliwości obsługi](supportability.md)
 * [Monitorowanie](monitoring.md)

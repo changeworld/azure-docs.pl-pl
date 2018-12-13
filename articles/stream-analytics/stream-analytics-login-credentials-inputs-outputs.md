@@ -2,19 +2,19 @@
 title: Zamiana poświadczeń logowania w zadaniach usługi Azure Stream Analytics
 description: W tym artykule opisano, jak można zaktualizować poświadczeń w danych wejściowych i danych wyjściowych wychwytywanie w usłudze Azure Stream Analytics, zadania.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 362fdca3b9a54ea0a8785ae37b32b88cbe0f67ba
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 14e24c1e9a61eb7ea73a949e17ffbf8c5b768f05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978778"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099073"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Zamiana poświadczeń logowania na potrzeby wejść i wyjść zadania usługi Stream Analytics
 
@@ -27,20 +27,20 @@ W tej sekcji omówimy proces zostanie wygenerowane ponownie poświadczenia dla u
 ### <a name="blob-storagetable-storage"></a>Usługi blob storage i Table storage
 1. Zaloguj się do witryny Azure portal > Przejdź do konta magazynu używany jako dane wejściowe i wyjściowe dla zadania usługi Stream Analytics.    
 2. W sekcji Ustawienia Otwórz **klucze dostępu**. Pomiędzy kluczami dwóch domyślnych (klucz1, klucz2) wybierz ten, który nie jest używany przez zadania i ponownie je wygenerować:  
-   ![Ponowne generowanie kluczy konta magazynu](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+   ![Ponowne generowanie kluczy konta magazynu](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. Skopiuj klucz nowo wygenerowane.    
 4. W witrynie Azure portal, przeglądać zadania usługi Stream Analytics > Wybierz **zatrzymać** i zaczekaj na zatrzymanie zadania.    
 5. Znajdź obiekt Blob/Table storage wejścia/wyjścia, dla której chcesz zaktualizować poświadczenia.    
 6. Znajdź **klucza konta magazynu** pola, a następnie wklej swój klucz nowo wygenerowane > kliknij **Zapisz**.    
 7. Test połączenia zostanie automatycznie uruchomiony po zapisaniu zmian, można je wyświetlić, korzystając z karty powiadomienia. Istnieją dwa jednego powiadomienia odnosi się do zapisywania aktualizacji i innych odnosi się do testowania połączenia:  
-   ![Powiadomienia po wprowadzeniu zmian klucza](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+   ![Powiadomienia po wprowadzeniu zmian klucza](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Przejdź do [Uruchom zadanie z ostatniego czasu zatrzymania](#start-your-job-from-the-last-stopped-time) sekcji.
 
 ### <a name="event-hubs"></a>Usługa Event Hubs
 
 1. Zaloguj się do witryny Azure portal > Przejdź do Centrum zdarzeń, które jest używane jako dane wejściowe/wyjściowe jako zadania usługi Stream Analytics.    
 2. W sekcji Ustawienia Otwórz **zasady dostępu współdzielonego** i wybierz zasady wymaganego dostępu. Między **klucza podstawowego** i **klucz pomocniczy**, wybierz ten, który nie jest używany przez zadania i ponownie je wygenerować:  
-   ![Ponowne generowanie kluczy dla Centrum zdarzeń](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+   ![Ponowne generowanie kluczy dla usługi Event Hubs](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. Skopiuj klucz nowo wygenerowane.    
 4. W witrynie Azure portal, przeglądać zadania usługi Stream Analytics > Wybierz **zatrzymać** i zaczekaj na zatrzymanie zadania.    
 5. Znajdź zdarzenie hubs wejścia/wyjścia, dla której chcesz zaktualizować poświadczenia.    
@@ -54,7 +54,7 @@ Należy połączyć się z bazą danych SQL, aby zaktualizować poświadczenia l
 
 1. Zaloguj się do witryny Azure portal > Przejdź do bazy danych SQL, które jest używane jako dane wyjściowe jako zadanie usługi Stream Analytics.    
 2. Z **Eksplorator danych**, logowania/połączeniem się z bazy danych > Wybierz typ autoryzacji jako **uwierzytelniania programu SQL server** > wpisz swoje **logowania** i  **Hasło** szczegóły > Wybierz **Ok**.  
-   ![Wygeneruj ponownie poświadczenia dla bazy danych SQL](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
+   ![Wygeneruj ponownie poświadczenia dla bazy danych SQL](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. Na karcie zapytania, należy zmienić hasło dla jednego użytkownika, uruchamiając następujące zapytanie (Upewnij się zastąpić `<user_name>` ze swoją nazwą użytkownika i `<new_password>` przy użyciu nowego hasła):  
 
@@ -79,7 +79,7 @@ Należy połączyć się z bazą danych SQL, aby zaktualizować poświadczenia l
 
 1. Przejdź do zadania **Przegląd** okienko > Wybierz **Start** Aby uruchomić zadanie.    
 2. Wybierz **ostatnio zatrzymane** > kliknij **Start**. Należy zauważyć, że opcja "ostatnio zatrzymane" pojawia się tylko, jeśli potrzebujesz wcześniej uruchomiono zadanie i pewne dane wyjściowe generowane. Zadanie jest uruchamiane ponownie oparte na od czasu ostatniej wartości danych wyjściowych.
-   ![Uruchamianie zadania](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
+   ![Uruchamianie zadania usługi Stream Analytics](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
