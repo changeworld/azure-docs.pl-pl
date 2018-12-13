@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: b310c06f508395635976009005dd2c4db2917abc
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 1b39de45d5046ce5a59dcaf0648b87aca2a5c6f5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218746"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868348"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS): wysoko dostępnych aplikacji usługi Azure Storage
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -81,7 +81,7 @@ Możesz poprosić o migracji na żywo za pośrednictwem [portalu pomocy technicz
     - **Typ problemu**: Wybierz **migracji danych**.
     - **Kategoria**: Wybierz **migracja do magazynu ZRS w obrębie regionu**.
     - **Tytuł**: Wpisz opisowy tytuł, na przykład **ZRS konta migracji**.
-    - **Szczegóły**: wpisz dodatkowe informacje w **szczegóły** pole, na przykład chcę przeprowadzić migrację do magazynu ZRS z [LRS, GRS] w regionie ___. 
+    - **Szczegóły**: wpisz dodatkowe informacje w **szczegóły** pole, na przykład chcę przeprowadzić migrację do magazynu ZRS z [LRS, GRS] w \_ \_ regionu. 
 5. Wybierz opcję **Dalej**.
 6. Sprawdź poprawność na informacje kontaktowe **informacje kontaktowe** bloku.
 7. Wybierz pozycję **Utwórz**.

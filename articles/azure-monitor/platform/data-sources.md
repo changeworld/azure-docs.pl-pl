@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 5b673af317189da1876328c0cad0fa8f510aae4f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: cb38a8a4c6e92dae1ed4d505c810027fb93e4a3c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844060"
+ms.locfileid: "52871439"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Źródła danych w usłudze Azure Monitor
 W tym artykule opisano źródeł danych zbieranych przez usługi Azure Monitor do monitorowania kondycji i wydajności zasobów oraz aplikacje uruchomione na nich. Te zasoby może być na platformie Azure, w innej chmurze lub lokalnie.  Zobacz [dane zebrane przez usługi Azure Monitor](data-collection.md) szczegółowe informacje na temat sposobu przechowywania tych danych i jak można je wyświetlić.
@@ -50,7 +50,7 @@ Możesz wyświetlić dziennik aktywności dla określonego zasobu, na jej stroni
 
 
 
-## <a name="azure-services"></a>Usługi systemu Azure
+## <a name="azure-services"></a>Usługi platformy Azure
 Metryki i zasobów poziom dzienniki diagnostyczne zawierają informacje o _wewnętrzny_ operacji zasobów platformy Azure. Są one dostępne dla większości usług platformy Azure i rozwiązań do zarządzania zapewniania dodatkowego wglądu w określonej usługi.
 
 ![Kolekcja zasobów platformy Azure](media/data-sources/azure-resource-collection.png)
@@ -107,7 +107,7 @@ Oprócz standardowych warstw aplikacji może być konieczne monitorowanie innych
 ![Zbieranie danych niestandardowych](media/data-sources/custom-collection.png)
 
 ### <a name="data-collector-api"></a>Interfejs API modułu zbierającego dane
-Usługa Azure Monitor może zbierać dane dzienników z dowolnego klienta REST przy użyciu [interfejsu API modułu zbierającego dane](../../log-analytics/log-analytics-data-collector-api.md). Dzięki temu można tworzyć niestandardowe scenariusze monitorowania i rozszerzania monitorowania do zasobów, które nie udostępniają danych telemetrycznych za pośrednictwem innych źródeł.
+Usługa Azure Monitor może zbierać dane dzienników z dowolnego klienta REST przy użyciu [interfejsu API modułu zbierającego dane](../../azure-monitor/platform/data-collector-api.md). Dzięki temu można tworzyć niestandardowe scenariusze monitorowania i rozszerzania monitorowania do zasobów, które nie udostępniają danych telemetrycznych za pośrednictwem innych źródeł.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

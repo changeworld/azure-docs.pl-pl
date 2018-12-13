@@ -4,7 +4,7 @@ description: Dowiedz się, w jaki sposób usługa Azure SQL Database obsługuje 
 keywords: business continuity,cloud business continuity,database disaster recovery,database recovery
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 9dab136795094350abe29e7d779a22ec1c94ef70
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: MT
+ms.openlocfilehash: c391df27b8ee0d5ceadcd388fffcafe0f756ec40
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986666"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866180"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -28,7 +28,7 @@ Usługa Azure SQL Database jest implementacją najnowszy stabilny, aparatu bazy 
 - Złośliwy osoba atakująca pomyślnie usunąć dane i usuniesz bazę danych.
 - Trzęsienie ziemi spowodowane awarii zasilania i tymczasowego wyłączenia centrum danych.
 
-Takiej sytuacji nie mogą być kontrolowane przez usługę Azure SQL Database, dlatego należy korzystać z funkcji ciągłości działania firmy w usłudze SQL Database, która umożliwia odzyskiwanie danych i Zachowaj działanie swoich aplikacji.
+Takiej sytuacji nie mogą być kontrolowane przez usługę Azure SQL Database, dlatego należy używać funkcji ciągłości działania w usłudze SQL Database, która umożliwia odzyskiwanie danych i Zachowaj działanie swoich aplikacji.
 
 W tym omówieniu opisano możliwości usługi Azure SQL Database w zakresie zapewniania ciągłości działalności biznesowej i odzyskiwania po awarii. Dowiedz się więcej na temat opcji, zalecenia i samouczki dotyczące odzyskiwania po wystąpieniu zdarzeń powodujących zakłócenia, które mogą spowodować utratę danych lub spowodować, że bazy danych i aplikacja staną się niedostępne. Dowiedz się, co należy zrobić po błędzie użytkownika lub aplikacji wpływa na integralność danych, region platformy Azure wystąpiła awaria lub aplikacja wymaga konserwacji.
 

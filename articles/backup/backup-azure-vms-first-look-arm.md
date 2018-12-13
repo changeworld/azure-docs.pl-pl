@@ -2,21 +2,21 @@
 title: 'Pierwsze spojrzenie: ochrona maszyn wirtualnych platformy Azure przy użyciu magazynu usługi Recovery Services'
 description: Ochrona maszyn wirtualnych platformy Azure przy użyciu magazynu usługi Recovery Services. Tworzenie kopii zapasowych maszyn wirtualnych wdrożonych przez usługę Resource Manager, maszyn wirtualnych wdrożonych klasycznie i maszyn wirtualnych usługi Premium Storage, szyfrowanych maszyn wirtualnych oraz maszyn wirtualnych na dyskach zarządzanych pozwala na ochronę danych. Utwórz i zarejestruj magazyn usługi Recovery Services. Rejestruj maszyny wirtualne, twórz zasady i chroń maszyny wirtualne na platformie Azure.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: H1Hack27Feb2017
 keywords: kopie zapasowe Kopia zapasowa maszyny wirtualnej
-ms.openlocfilehash: daa2355d028af9b61b0b14a453452c1a96487403
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233545"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869932"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
 

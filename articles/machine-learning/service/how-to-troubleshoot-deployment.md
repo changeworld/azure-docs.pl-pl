@@ -1,6 +1,6 @@
 ---
 title: Wdrożenia przewodnik rozwiązywania problemów dla usługi Azure Machine Learning
-description: Dowiedz się, jak obejść, rozwiązania i rozwiązywanie typowych problemów wdrażania platformy Docker za pomocą usługi Azure Machine Learning.
+description: Dowiedz się, jak obejść, rozwiązania i rozwiązywanie typowych problemów wdrażania platformy Docker za pomocą usługi AKS i ACI przy użyciu usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: jmartens
-ms.date: 10/01/2018
-ms.openlocfilehash: a10b05e95fa719b80775191e48bd4117e3a785fd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: MT
+ms.date: 12/04/2018
+ms.openlocfilehash: ed6fed58aac236f143345a9504ece21aceae09d2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321686"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865373"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-deployments"></a>Rozwiązywanie problemów z wdrożeniami usługi Azure Machine Learning
+# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Rozwiązywanie problemów z wdrożeniami usługi AKS i ACI usługi Azure Machine Learning
 
-W tym artykule dowiesz się, jak obejść lub Rozwiązywanie typowych błędów wdrażania platformy Docker za pomocą usługi Azure Machine Learning.
+W tym artykule dowiesz się, jak obejść lub Rozwiązywanie typowych błędów wdrażania platformy Docker za pomocą usługi Azure Container Instances (ACI) i Azure Kubernetes Service (AKS), za pomocą usługi Azure Machine Learning.
 
 W przypadku wdrażania modelu w usłudze Azure Machine Learning, system wykonuje wiele zadań. Jest to złożonej sekwencji zdarzeń, a czasami pojawiają się problemy. Dostępne są następujące zadania wdrażania:
 
@@ -117,7 +117,7 @@ print(ws.webservices()['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>Debuguj lokalnie za pomocą obrazu platformy Docker
-Sytuacje dziennik platformy Docker nie emituje wystarczającej ilości informacji o co będzie problem. Można wykonaj krok dalej i ściągnąć utworzony obraz platformy Docker, uruchom lokalny kontener i interakcyjnie debugować bezpośrednio w kontenerze na żywo. Aby uruchomić lokalny kontener, konieczne jest posiadanie aparat platformy Docker działa lokalnie, a będzie o wiele prostsze, jeśli masz też [wiersza polecenia platformy azure](/cli/azure/install-azure-cli?view=azure-cli-latest) zainstalowane.
+Sytuacje dziennik platformy Docker nie emituje wystarczającej ilości informacji o co będzie problem. Można wykonaj krok dalej i ściągnąć utworzony obraz platformy Docker, uruchom lokalny kontener i interakcyjnie debugować bezpośrednio w kontenerze na żywo. Aby uruchomić lokalny kontener, konieczne jest posiadanie aparat platformy Docker działa lokalnie, a będzie o wiele prostsze, jeśli masz też [wiersza polecenia platformy azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) zainstalowane.
 
 Najpierw musimy sprawdzić lokalizację obrazu:
 

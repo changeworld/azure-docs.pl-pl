@@ -29,7 +29,7 @@ Nowa brama sieci VPN jednostki SKU usprawnić zestawy funkcji oferowane w bramac
 
 | **SKU**| **Funkcje**|
 | ---    | ---         |
-|**Podstawowe** (*)   | **Sieć VPN oparta na trasy**: 10 tuneli dla połączeń S2S /; nie uwierzytelniania RADIUS na potrzeby P2S; bez protokołu IKEv2 dla P2S<br>**Sieć VPN oparta na zasadach**: (IKEv1): 1 tunel S2S i połączenie; bez P2S|
+|**Podstawowe** (\*\*)   | **Sieć VPN oparta na trasy**: 10 tuneli dla połączeń S2S /; nie uwierzytelniania RADIUS na potrzeby P2S; bez protokołu IKEv2 dla P2S<br>**Sieć VPN oparta na zasadach**: (IKEv1): 1 tunel S2S i połączenie; bez P2S|
 | **VpnGw1, VpnGw2 i VpnGw3** | **Sieć VPN oparta na trasy**: maksymalnie 30 tuneli (*) P2S, BGP, aktywne aktywne, niestandardowe protokołu IPsec/IKE zasady, współistnienie ExpressRoute/VPN |
 |        |             |
 
@@ -44,7 +44,7 @@ Z powodu różnic w umowach SLA i zestawach funkcji zaleca się następujące je
 | **Obciążenie**                       | **Jednostki SKU**               |
 | ---                                | ---                    |
 | **Tryb produkcyjny, obciążenia krytyczne** | VpnGw1, VpnGw2, VpnGw3 |
-| **Środowisko tworzenia i testowania lub weryfikacja koncepcji**   | Basic (*)                 |
+| **Środowisko tworzenia i testowania lub weryfikacja koncepcji**   | Basic (\*\*)                 |
 |                                    |                        |
 
 (\*\*) Podstawowa jednostka SKU jest uznawany za starszej wersji jednostki SKU i ma ograniczenia funkcji. Sprawdź, czy funkcji, które są potrzebne jest obsługiwana przed skorzystaniem z podstawowej jednostki SKU.

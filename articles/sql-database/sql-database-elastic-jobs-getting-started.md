@@ -3,7 +3,7 @@ title: Wprowadzenie do zadań elastycznych baz danych | Dokumentacja firmy Micro
 description: Zadania elastic database umożliwia wykonywanie skryptów T-SQL, obejmujące wiele baz danych.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,27 +12,27 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: ada95f9fc09aeb7e8dac67bc5f9c4af96f9700df
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241365"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863537"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Wprowadzenie do zadań elastycznych baz danych
 
-
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
 
 Zadania elastic Database (wersja zapoznawcza) dla usługi Azure SQL Database umożliwia niezawodne wykonywanie skryptów T-SQL, obejmujące wiele baz danych podczas Automatyczne ponawianie próby i ostateczną uzupełniania gwarantuje dostarczanie. Aby uzyskać więcej informacji na temat funkcji zadań elastycznej bazy danych, zobacz [zadań elastycznych](sql-database-elastic-jobs-overview.md).
 
 W tym artykule rozszerza przykładu w [rozpoczęcie korzystania z narzędzi elastycznych baz danych](sql-database-elastic-scale-get-started.md). Po zakończeniu dowiesz się, jak tworzyć i zarządzać zadaniami, które zarządzają grupą powiązanych baz danych. Nie jest wymagane do używania narzędzia elastyczne skalowanie, aby można było korzystać z zalet zadań elastycznych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Pobierz i uruchom [wprowadzenie do przykładowej narzędzi elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Tworzenie fragmentu manager mapy za pomocą przykładowej aplikacji
+
 Tu możesz tworzyć mapowania fragmentów w postaci manager oraz kilka fragmentów, a następnie wstawiania danych na fragmenty. Jeśli masz już skonfigurować przy użyciu danych podzielonych na fragmenty w tych fragmentach, możesz pominąć poniższe kroki i przejść do następnej sekcji.
 
 1. Kompilowanie i uruchamianie **rozpoczęcie korzystania z narzędzi elastycznych baz danych** przykładowej aplikacji. Postępuj zgodnie z instrukcjami aż do kroku 7 w sekcji [pobieranie i uruchamianie aplikacji przykładowej](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Na końcu krok 7 zostanie wyświetlony następujący wiersz polecenia:
@@ -48,8 +48,9 @@ Tu możesz tworzyć mapowania fragmentów w postaci manager oraz kilka fragment�
 
 W tym miejscu będą zwykle utworzymy mapowania fragmentów w postaci docelowymi w programie **New AzureSqlJobTarget** polecenia cmdlet. Bazy danych Menedżera mapowań fragmentów musi być ustawiona jako docelowej bazy danych, a następnie mapowania określonych fragmentów jest określony jako element docelowy. Pobierzemy mógł wyliczyć wszystkich baz danych na serwerze i dodawanie baz danych do nowej kolekcji niestandardowych z wyjątkiem bazy danych master.
 
-## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Tworzy kolekcję niestandardową, a następnie dodaj wszystkie bazy danych na serwerze do docelowej kolekcji niestandardowej, z wyjątkiem wzorca.
-   ```
+## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Tworzy kolekcję niestandardową, a następnie dodaj wszystkie bazy danych na serwerze do docelowej kolekcji niestandardowej, z wyjątkiem wzorca
+
+   ```Powershell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -301,23 +302,25 @@ Aktualizuj zasady wykonywania żądanego do aktualizacji:
    ```
 
 ## <a name="cancel-a-job"></a>Anulowanie zadania
+
 Zadania elastic Database obsługuje żądania anulowania zadania.  Zadania Elastic Database wykryje na żądanie anulowania zadania aktualnie wykonywane, próbuje zatrzymać zadanie.
 
 Istnieją dwa różne sposoby, że zadania Elastic Database może wykonywać anulowania:
 
 1. Trwa anulowanie aktualnie wykonywanych zadań: Jeśli anulowania zostanie wykryte, gdy zadanie jest obecnie uruchomiony, w aktualnie wykonywanej aspekcie zadania jest podejmowana próba anulowania.  Na przykład: w przypadku obecnie jest wykonywana, gdy podejmowana jest próba anulowania wolno działające zapytanie jest próba anulować wykonywanie zapytania.
-2. Anulowanie ponownych prób wykonania zadania: W przypadku anulowania wykrycia przez wątek kontroli przed uruchomiono zadanie do wykonania, wątek kontroli pozwala uniknąć uruchamiania zadania i zadeklarować żądania, ponieważ zostało anulowane.
+2. Anulowanie ponownych prób wykonania zadania: W przypadku anulowania wykrycia przez wątek kontroli przed uruchomiono zadanie do wykonania, wątek kontroli pozwala uniknąć uruchamiania zadania i deklaruje żądania, ponieważ zostało anulowane.
 
 W przypadku anulowania zadania jest wymagany dla zadania nadrzędnego, żądanie anulowania zostanie uznane dla zadania nadrzędnego i wszystkich jego zadań podrzędnych.
 
 Aby przesłać żądanie anulowania, należy użyć **Stop AzureSqlJobExecution** polecenia cmdlet i ustaw **JobExecutionId** parametru.
 
-   ```
+   ```Powershell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>Usuwanie zadania według nazwy i historii zadań
+
 Zadania elastic Database obsługuje asynchroniczne usunięcie zadania. Zadanie może być oznaczony do usunięcia, a system spowoduje usunięcie zadania i jego Historia zadania po zakończeniu wszystkich wykonań zadania dla zadania. System automatycznie Anuluj wykonań aktywnych zadań.  
 
 Zamiast tego Stop AzureSqlJobExecution musi można wywołać można anulować wykonań aktywnych zadań.

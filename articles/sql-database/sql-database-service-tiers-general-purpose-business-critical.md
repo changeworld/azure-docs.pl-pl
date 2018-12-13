@@ -11,15 +11,20 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 15fd86a88c3025f81741d614b03d5c4c7c60262c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 11/30/2018
+ms.openlocfilehash: 7de4415dd332254c595b6687dfb9d8db01c42362
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351746"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871717"
 ---
-# <a name="general-purpose-and-business-critical-service-tiers"></a>Warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy
+# <a name="azure-sql-database-service-tiers"></a>Warstwy usługi w usłudze Azure SQL Database
+
+Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych programu SQL Server, która jest uwzględniany w środowisku chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy modele architektury, które są używane w usłudze Azure SQL Database:
+- [Ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) przeznaczone dla większości obciążeń ogólnego.
+- [Krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) przeznaczone dla obciążeń o małym opóźnieniu za pomocą jednej z replik do odczytu.
+- [W Hiperskali](sql-database-service-tier-hyperscale.md) przeznaczony dla bardzo dużych baz danych (maksymalnie 100 TB) przy użyciu wielu replik z możliwością odczytu.
 
 W tym artykule omówiono zagadnienia magazynu i kopii zapasowych dla warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy w modelu zakupu opartego na rdzeniach wirtualnych.
 

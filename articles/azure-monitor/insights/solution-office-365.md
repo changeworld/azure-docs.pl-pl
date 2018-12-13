@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 80a5b49d27ffc2b75cc9a1092a4d9f17e09bef24
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 1e819f819561c5fac722ca6954a10d80a482b5cd
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848871"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889365"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -41,7 +41,7 @@ Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowa
  
 
 ## <a name="management-packs"></a>Pakiety administracyjne
-To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w [podłączone grupy zarządzania](../../log-analytics/log-analytics-om-agents.md).
+To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w [podłączone grupy zarządzania](../../azure-monitor/platform/om-agents.md).
   
 ## <a name="install-and-configure"></a>Instalowanie i konfigurowanie
 Rozpocznij od dodania [rozwiązanie usługi Office 365, aby Twoja subskrypcja](solutions.md#install-a-management-solution). Po dodaniu, należy wykonać kroki konfiguracji w tej sekcji, aby umożliwić dostęp do subskrypcji usługi Office 365.

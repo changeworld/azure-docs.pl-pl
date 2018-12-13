@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 27bac5265a5e884b808c4ccb58fda0b2fffeb774
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3dda3bb5fd39b844f50044c1262008e3610e301
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975662"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871408"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Temat bram sieci wirtualnej strefowo nadmiarowy w strefach dostępności platformy Azure
 
@@ -86,7 +86,7 @@ Tak, można użyć witryny Azure portal do wdrażania nowych jednostek SKU. Jedn
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Jakie regiony są dostępne w użyciu nowych jednostek SKU?
 
-Nowe jednostki SKU są dostępne w regionach platformy Azure, które mają strefy dostępności platformy Azure — środkowe stany USA, Francja Środkowa i Europa Zachodnia. Idąc dalej, firma Microsoft będzie udostępniać strefowo nadmiarowe bramy do Ciebie w innych regionach publicznych platformy Azure.
+Nowe jednostki SKU są dostępne w regionach platformy Azure, które mają strefy dostępności platformy Azure — środkowe stany USA, Francja środkowa, Europa Północna, Europa Zachodnia i zachodnie stany USA 2 regionach. Idąc dalej, firma Microsoft będzie udostępniać strefowo nadmiarowe bramy do Ciebie w innych regionach publicznych platformy Azure.
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Czy mogę zmiany/migracja/uaktualnić Moje istniejącej bramy sieci wirtualnej do bram strefowo nadmiarowego lub strefowych?
 
@@ -98,4 +98,4 @@ Współistnienie bram sieci VPN i Expressroute w tej samej sieci wirtualnej jest
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Tworzenie bramy sieci wirtualnej strefowo nadmiarowej](create-zone-redundant-vnet-gateway.md)
+[Tworzenie strefowo nadmiarowej bramy sieci wirtualnej](create-zone-redundant-vnet-gateway.md)

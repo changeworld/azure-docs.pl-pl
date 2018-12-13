@@ -1,21 +1,19 @@
 ---
-title: 'Wzorzec projektowy w usłudze Azure Cosmos DB: aplikacje mediów społecznościowych | Dokumentacja firmy Microsoft'
+title: 'Wzorzec projektowy w usłudze Azure Cosmos DB: aplikacje mediów społecznościowych'
 description: Dowiedz się więcej o wzorcu projektowym w sieciach społecznościowych dzięki wykorzystaniu elastyczność magazynu usługi Azure Cosmos DB i innymi usługami platformy Azure.
 keywords: aplikacje mediów społecznościowych
 services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: a65ec0a92b8fc245c77ce67c80c1202f73a3ec66
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.openlocfilehash: 73f9de856ac81fcd475f9d77b234ae778f7397fb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711875"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871867"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB w zastosowaniach społecznościowych
 
@@ -100,7 +98,7 @@ Tworzenie źródła danych jest to kwestia tworzenie dokumentów, które mogą z
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Strumień "najnowsza" może mieć z wpisami, uporządkowane według daty utworzenia. Lub masz "najbardziej aktywnych" przesyłanie strumieniowe przy użyciu tych wpisów z polubienia więcej w ciągu ostatnich 24 godzin. Można nawet implementować niestandardowe strumienia dla każdego użytkownika, w oparciu o logikę, takich jak obserwatorów i zainteresowania. Nadal będzie lista wpisów. Jest kwestią dotyczącą tworzenia tych list, ale wydajność odczytu pozostaje swobodnego. Po nabyciu jedną z tych list wydać jedno zapytanie do usługi Cosmos DB przy użyciu [w operatorze](sql-api-sql-query.md#WhereClause) można pobrać strony wpisów w danym momencie.
+Strumień "najnowsza" może mieć z wpisami, uporządkowane według daty utworzenia. Lub masz "najbardziej aktywnych" przesyłanie strumieniowe przy użyciu tych wpisów z polubienia więcej w ciągu ostatnich 24 godzin. Można nawet implementować niestandardowe strumienia dla każdego użytkownika, w oparciu o logikę, takich jak obserwatorów i zainteresowania. Nadal będzie lista wpisów. Jest kwestią dotyczącą tworzenia tych list, ale wydajność odczytu pozostaje swobodnego. Po nabyciu jedną z tych list wydać jedno zapytanie do usługi Cosmos DB przy użyciu [w operatorze](how-to-sql-query.md#WhereClause) można pobrać strony wpisów w danym momencie.
 
 Strumienie źródła danych mogą być zbudowane przy użyciu [usług aplikacji platformy Azure](https://azure.microsoft.com/services/app-service/) procesów w tle: [Webjobs](../app-service/web-sites-create-web-jobs.md). Po utworzeniu wpisu przetwarzania w tle mogą być wyzwalane za pomocą [usługi Azure Storage](https://azure.microsoft.com/services/storage/) [kolejek](../storage/queues/storage-dotnet-how-to-use-queues.md) i wyzwalane za pomocą zadań Webjob [zestawu Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), wdrożenia Opublikuj propagacji wewnątrz strumieni w oparciu o logikę niestandardowego.
 

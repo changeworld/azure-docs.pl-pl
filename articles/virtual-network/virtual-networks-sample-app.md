@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ccdb8254551d0009a71cc047b8399a539edb8e2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23883796"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866854"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Przykładowa aplikacja do użycia z sieci obwodowej
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
 
-Te skrypty programu PowerShell można uruchomić lokalnie na serwerach IIS01 i AppVM01, aby zainstalować i skonfigurować prostą aplikację sieci web wyświetlający stronę html, na serwerze frontonu IIS01 zawartością z wewnętrznego serwera AppVM01.
+Te skrypty programu PowerShell mogą być uruchamiane lokalnie na serwerach IIS01 i AppVM01, aby zainstalować i skonfigurować prostą aplikację sieci web wyświetlający stronę html, na serwerze frontonu IIS01 zawartością z serwerów AppVM01 zaplecza.
 
 Ta aplikacja zawiera prostym środowisku testowym dla wielu przykłady sieci obwodowej i w jaki sposób zmiany punktów końcowych, grup NSG, przez i zapory reguły mogą mieć wpływ na ruch.
 
 ## <a name="firewall-rule-to-allow-icmp"></a>Reguły zapory, aby umożliwić protokołu ICMP
-Proste niniejszych PowerShell można uruchomić na dowolnej maszyny Wirtualnej systemu Windows, aby zezwolić na ruch protokołu ICMP (Ping). Ta aktualizacja zapory umożliwia łatwiejsze Rozwiązywanie problemów i testowanie, zezwalając na polecenie ping protokołu przekazywanie przez zaporę systemu windows (w przypadku większości dystrybucjach systemu Linux, które ICMP jest domyślnie włączona).
+Tej prostej instrukcji programu PowerShell można uruchomić na dowolnej maszynie Wirtualnej Windows, aby zezwolić na ruch protokołu ICMP (Ping). Ta aktualizacja zapory umożliwia łatwiejsze Rozwiązywanie problemów i testowanie, umożliwiając protokół ping do przekazania przez zaporę systemu windows (w przypadku większości dystrybucje systemu Linux, który protokół ICMP jest domyślnie włączone).
 
 ```PowerShell
 # Turn On ICMPv4
@@ -37,18 +37,18 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 ```
 
-Korzystając z poniższych skryptów, to dodawanie reguły zapory jest pierwszą instrukcją.
+Korzystając z poniższych skryptów, to dodawanie reguły zapory jest pierwszą instrukcję.
 
-## <a name="iis01---web-application-installation-script"></a>IIS01 - skrypt instalacji aplikacji sieci Web
-Ten skrypt będzie:
+## <a name="iis01---web-application-installation-script"></a>IIS01 — skrypt instalacji aplikacji sieci Web
+Ten skrypt wykonują następujące czynności:
 
-1. Otwórz IMCPv4 (Ping) na lokalny serwer zapory systemu windows na łatwiejsze testowanie
-2. Instalacja usług IIS i platformy .net Framework 4.5
-3. Utwórz stronę sieci web ASP.NET i plik Web.config
-4. Zmiana domyślnej puli aplikacji, aby ułatwić dostęp do plików
+1. Otwórz IMCPv4 (Ping), zapory systemu windows serwer lokalny, aby ułatwić sobie testowanie
+2. Instalacja usług IIS i .net Framework 4.5
+3. Tworzenie strony sieci web ASP.NET i pliku Web.config
+4. Zmienianie domyślnej puli aplikacji, aby ułatwić dostęp do plików
 5. Ustaw użytkownika anonimowego do konta administratora i hasła
 
-Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie, gdy istniało RDP do IIS01.
+Ten skrypt programu PowerShell powinno być uruchamiane lokalnie, podczas gdy RDP ma pod IIS01.
 
 ```PowerShell
 # IIS Server Post Build Config Script
@@ -132,8 +132,8 @@ Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie, gdy istnia
     $MainPage | Out-File -FilePath "C:\inetpub\wwwroot\Home.aspx" -Encoding ascii
     $WebConfig | Out-File -FilePath "C:\inetpub\wwwroot\Web.config" -Encoding ascii
 
-# Set App Pool to Clasic Pipeline to remote file access will work easier
-    Write-Host "Updaing IIS Settings" -ForegroundColor Cyan
+# Set App Pool to Classic Pipeline to remote file access will work easier
+    Write-Host "Updating IIS Settings" -ForegroundColor Cyan
     c:\windows\system32\inetsrv\appcmd.exe set app "Default Web Site/" /applicationPool:".NET v4.5 Classic"
     c:\windows\system32\inetsrv\appcmd.exe set config "Default Web Site/" /section:system.webServer/security/authentication/anonymousAuthentication /userName:$theAdmin /password:$thePassword /commit:apphost
 
@@ -142,25 +142,25 @@ Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie, gdy istnia
     Restart-Service -Name W3SVC
 
     Write-Host
-    Write-Host "Web App Creation Successfull!" -ForegroundColor Green
+    Write-Host "Web App Creation Successful!" -ForegroundColor Green
     Write-Host
 ```
 
-## <a name="appvm01---file-server-installation-script"></a>AppVM01 - skrypt instalacji serwera plików
-Ten skrypt konfiguruje wewnętrzną Ta prosta aplikacja. Ten skrypt będzie:
+## <a name="appvm01---file-server-installation-script"></a>AppVM01 — skrypt instalacji serwera plików
+Ten skrypt konfiguruje zaplecza dla tej prostej aplikacji. Ten skrypt wykonują następujące czynności:
 
-1. Otwórz IMCPv4 (Ping) na łatwiejsze testowanie zapory
+1. Otwórz IMCPv4 (Ping), na zaporze, aby ułatwić sobie testowanie
 2. Utwórz katalog dla witryny sieci web
-3. Utwórz plik tekstowy zdalnie za dostęp przez stronę sieci web
-4. Ustawianie uprawnień dla katalogu i pliku anonimowy, aby zezwolić na dostęp
-5. Wyłącz zwiększone zabezpieczenia programu Internet Explorer umożliwia łatwiejsze przeglądanie z tego serwera 
+3. Utwórz plik tekstowy jako zdalnego dostępu przez stronę sieci web
+4. Ustaw uprawnienia dla katalogu i pliku na anonimowe, aby zezwolić na dostęp
+5. Wyłącz zwiększone zabezpieczenia programu Internet Explorer umożliwia łatwiejsze przeglądania z tego serwera 
 
 > [!IMPORTANT]
-> **Najlepsze praktyki**: nigdy nie zostanie wyłączone zwiększonych zabezpieczeń programu Internet Explorer na serwerze produkcyjnym, a także ogólnie jest dobrym pomysłem przeglądać sieć web na serwerze produkcyjnym. Otwarcie udziałów plików dla dostępu anonimowego jest również dobrym pomysłem, ale gotowe tutaj dla uproszczenia.
+> **Najlepsze rozwiązanie**: nigdy nie zostanie wyłączone zwiększonych zabezpieczeń programu Internet Explorer na serwerze produkcyjnym, a także zazwyczaj jest to zły pomysł przeglądania stron internetowych z serwera produkcyjnego. Ponadto otwierania udziałów plików dla dostępu anonimowego jest to zły pomysł, ale gotowe w tym miejscu dla uproszczenia.
 > 
 > 
 
-Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie, gdy istniało RDP do AppVM01. PowerShell jest wymagany do uruchamiania jako Administrator, aby zapewnić pomyślne wykonanie.
+Ten skrypt programu PowerShell powinno być uruchamiane lokalnie, podczas gdy RDP ma pod AppVM01. PowerShell jest wymagany do uruchamiania jako Administrator, aby zapewnić pomyślne wykonanie.
 
 ```PowerShell
 # AppVM01 Server Post Build Config Script
@@ -189,17 +189,17 @@ Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie, gdy istnia
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0
 
     Write-Host
-    Write-Host "File Server Set up Successfull!" -ForegroundColor Green
+    Write-Host "File Server Set up Successful!" -ForegroundColor Green
     Write-Host
 ```
 
-## <a name="dns01---dns-server-installation-script"></a>DNS01 - skrypt instalacji serwera DNS
-Nie ma żadnego skryptu zawarte w tej przykładowej aplikacji, aby skonfigurować serwer DNS. Podczas testowania reguł zapory, NSG lub przez musi zawierać ruch DNS, serwera DNS01 musi zostać można skonfigurować ręcznie. Plik xml konfiguracji sieci i szablonu usługi Resource Manager zarówno przykłady zawiera DNS01 jako podstawowy serwer DNS i publiczny serwer DNS w obsługiwanych przez poziom 3 jako kopii zapasowej serwera DNS. Poziom 3 serwer DNS może być używanego serwera DNS dla ruchu innego niż lokalne i z DNS01 nie Instalatora, nie sieci lokalnej, które wystąpiłyby DNS.
+## <a name="dns01---dns-server-installation-script"></a>DNS01 — skrypt instalacji serwera DNS
+Brak skrypt nie jest uwzględniony w tej przykładowej aplikacji, aby skonfigurować serwer DNS. Jeśli testowanie reguł zapory, sieciowej grupy zabezpieczeń lub Routing zdefiniowany przez użytkownika musi zawierać ruch DNS, serwer DNS01 musi ręcznie skonfigurować. Plik xml konfiguracji sieci i szablonu usługi Resource Manager dla obu przykładach zawiera DNS01 jako podstawowy serwer DNS i publiczny serwer DNS hostowane przez poziom 3 jako kopii zapasowej serwera DNS. Poziom 3 serwer DNS może być rzeczywista serwera DNS dla ruchu innego niż lokalne i za pomocą DNS01 nie instalacji żadnych sieci lokalnej, które wystąpiłyby DNS.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Uruchom skrypt IIS01 na serwerze IIS
-* Uruchom skrypt z serwera plików na AppVM01
-* Przejdź do publicznego adresu IP na IIS01 do weryfikacji kompilacji
+* Uruchom skrypt serwera plików na AppVM01
+* Przejdź do publicznego adresu IP w IIS01 do weryfikacji kompilacji
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md

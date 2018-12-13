@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b2243851d62cc17dc52407dce051cc2e0f4bcb12
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404872"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889212"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorowanie klastra usługi Kubernetes przy użyciu usługi Log Analytics
 
@@ -143,7 +143,7 @@ Po uruchomieniu agentów pozyskanie i przetworzenie danych przez usługę Log An
 
 ## <a name="access-monitoring-data"></a>Dostęp do danych monitorowania
 
-Dane monitorowania kontenera można wyświetlać i analizować za pomocą [rozwiązania Containers](../../log-analytics/log-analytics-containers.md) w portalu usługi Log Analytics lub w witrynie Azure Portal.
+Dane monitorowania kontenera można wyświetlać i analizować za pomocą [rozwiązania Containers](../../azure-monitor/insights/containers.md) w portalu usługi Log Analytics lub w witrynie Azure Portal.
 
 Aby zainstalować rozwiązanie Containers przy użyciu [portalu usługi Log Analytics](https://mms.microsoft.com), przejdź do **Galerii rozwiązań**. Następnie dodaj element **Rozwiązanie Containers**. Rozwiązanie Containers możesz też dodać z witryny [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 
@@ -153,7 +153,7 @@ W portalu usługi Log Analytics wyszukaj kafelek podsumowania **Containers** na 
 
 Podobnie w witrynie Azure Portal wybierz pozycję **Log Analytics** i wybierz nazwę obszaru roboczego. Aby wyświetlić kafelek podsumowania **Containers**, kliknij pozycję **Rozwiązania** > **Containers**. Aby wyświetlić szczegóły, kliknij kafelek.
 
-Szczegółowy przewodnik dotyczący odpytywania i analizowania danych monitorowania znajduje się w [dokumentacji usługi Azure Log Analytics](../../log-analytics/log-analytics-queries.md).
+Szczegółowy przewodnik dotyczący odpytywania i analizowania danych monitorowania znajduje się w [dokumentacji usługi Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

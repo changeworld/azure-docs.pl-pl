@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb4ef826ed29187209b28c349445ca0eb5ffe9bb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238403"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864907"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Rozpoczynanie pracy z usługą Azure Key Vault
 Ten artykuł ułatwia rozpoczęcie pracy z usługą Azure Key Vault przy użyciu programu PowerShell i zawiera omówienie następujących działań:
@@ -222,14 +222,14 @@ Aby zarejestrować aplikację w usłudze Azure Active Directory:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie kliknij pozycję **Rejestracje aplikacji**. Jeśli nie widzisz rejestracji aplikacji, kliknij polecenie **więcej usług**.  
->[!NOTE]
-Musisz wybrać ten sam katalog, który zawiera subskrypcję platformy Azure użytą do utworzenia magazynu kluczy. 
+    > [!NOTE]
+    > Musisz wybrać ten sam katalog, który zawiera subskrypcję platformy Azure użytą do utworzenia magazynu kluczy. 
 3. Kliknij pozycję **Rejestrowanie nowej aplikacji**.
 4. W bloku **Tworzenie** podaj nazwę swojej aplikacji, a następnie wybierz pozycję **APLIKACJA SIECI WEB I/LUB INTERFEJS API SIECI WEB** (ustawienie domyślne) i określ **ADRES URL LOGOWANIA** dla aplikacji internetowej. Jeśli nie masz teraz tych informacji, możesz użyć fikcyjnych danych na potrzeby tego kroku (na przykład możesz określić adres http://test1.contoso.com). Nie ma znaczenia, czy takie witryny istnieją. 
 
     ![Rejestrowanie nowej aplikacji](./media/key-vault-get-started/new-application-registration.png)
-    >[!WARNING]
-    Upewnij się, że wybrano pozycję **APLIKACJA INTENETOWA I/LUB INTERNETOWY INTERFEJS API** — w przeciwnym razie w ustawieniach nie będzie widoczna opcja **klucze**.
+    > [!WARNING]
+    > Upewnij się, że wybrano pozycję **APLIKACJA INTENETOWA I/LUB INTERNETOWY INTERFEJS API** — w przeciwnym razie w ustawieniach nie będzie widoczna opcja **klucze**.
 
 5. Kliknij przycisk **Utwórz**.
 6. Po ukończeniu rejestracji aplikacji zostanie wyświetlony na liście zarejestrowanych aplikacji. Znajdź aplikację, która jest zarejestrowana i kliknij go.

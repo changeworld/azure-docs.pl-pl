@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5ef7ddc068fea7703dad67b80b96c292bfd26943
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279737"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870711"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów HDInsight opartych na systemie Linux za pomocą akcji skryptu
 
@@ -111,7 +111,7 @@ Na poniższym diagramie przedstawiono podczas wykonywania w trakcie procesu twor
 Skrypt jest uruchamiany, gdy skonfigurowano HDInsight. Skrypt jest uruchamiany równolegle w określonych węzłów w klastrze i uruchamiane za pomocą uprawnień użytkownika root w węzłach.
 
 > [!NOTE]
-> Można wykonywać operacje, takie jak zatrzymanie i uruchomienie usług, w tym usług związanych z usługi Hadoop. Zatrzymanie usług, upewnij się, kończy usługa Ambari i innych usług związanych z usługi Hadoop, uruchomione przed skryptu. Te usługi są wymagane do określenia pomyślnie kondycję i stan klastra podczas jego tworzenia.
+> Można wykonywać operacje, takie jak zatrzymanie i uruchomienie usług, w tym usług związanych z platformy Apache Hadoop. Zatrzymanie usług, upewnij się, kończy usługa Ambari i innych usług związanych z usługi Hadoop, uruchomione przed skryptu. Te usługi są wymagane do określenia pomyślnie kondycję i stan klastra podczas jego tworzenia.
 
 
 Podczas tworzenia klastra można użyć wielu akcji skryptu na raz. Te skrypty są wywoływane w kolejności, w którym zostały określone.
@@ -168,7 +168,7 @@ Ta sekcja zawiera przykłady na różne sposoby, można użyć akcji skryptu, po
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Za pomocą akcji skryptu, podczas tworzenia klastra w witrynie Azure portal
 
-1. Rozpocznij tworzenie klastra zgodnie z opisem w [Tworzenie klastrów usługi Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Podczas tworzenia klastra zostanie wyświetlony __klastra Podsumowanie__ strony. Z __klastra Podsumowanie__ wybierz opcję __Edytuj__ łączy dla __Zaawansowane ustawienia__.
+1. Rozpocznij tworzenie klastra zgodnie z opisem w [klastrów utworzyć Apache Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Podczas tworzenia klastra zostanie wyświetlony __klastra Podsumowanie__ strony. Z __klastra Podsumowanie__ wybierz opcję __Edytuj__ łączy dla __Zaawansowane ustawienia__.
 
     ![Link do ustawień zaawansowanych](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
@@ -402,11 +402,11 @@ Na przykład pobrać skrypt historii z klastra przy użyciu zestawu .NET SDK, po
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Pomoc techniczna dotycząca oprogramowania typu open-source używane w klastrach HDInsight
 
-Usługa Microsoft Azure HDInsight korzysta z ekosystemu technologii open source utworzonych na platformie Hadoop. Microsoft Azure oferuje ogólnego poziomu pomocy technicznej dla technologii open source. Aby uzyskać więcej informacji, zobacz **zakres pomocy technicznej** części [witryny sieci Web — często zadawane pytania dla pomocy technicznej Azure](https://azure.microsoft.com/support/faq/). Usługa HDInsight zapewnia dodatkowy poziom pomocy technicznej dla wbudowanych składników.
+Usługa Microsoft Azure HDInsight korzysta z ekosystemu technologii open source utworzona wokół Apache Hadoop. Microsoft Azure oferuje ogólnego poziomu pomocy technicznej dla technologii open source. Aby uzyskać więcej informacji, zobacz **zakres pomocy technicznej** części [witryny sieci Web — często zadawane pytania dla pomocy technicznej Azure](https://azure.microsoft.com/support/faq/). Usługa HDInsight zapewnia dodatkowy poziom pomocy technicznej dla wbudowanych składników.
 
 Istnieją dwa typy składników typu open source, które są dostępne w usłudze HDInsight:
 
-* **Wbudowane składniki** — te składniki są wstępnie zainstalowane w klastrach HDInsight i zapewnia podstawowe funkcje klastra. Na przykład Menedżer zasobów usługi YARN, język zapytań programu Hive (HiveQL) i biblioteki mahout dostępnych należą do tej kategorii. Pełną listę składniki klastra jest dostępna w [nowości w wersjach klastra Hadoop dostarczanych przez HDInsight](hdinsight-component-versioning.md).
+* **Wbudowane składniki** — te składniki są wstępnie zainstalowane w klastrach HDInsight i zapewnia podstawowe funkcje klastra. Na przykład [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager, gałąź języka zapytań ([HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)), a [Apache Mahout](https://mahout.apache.org/) biblioteki należą do tej kategorii. Pełną listę składniki klastra jest dostępna w [nowości w wersjach klastra Hadoop dostarczanych przez HDInsight](hdinsight-component-versioning.md).
 * **Składniki niestandardowe** —, jako użytkownik klastra, można zainstalować lub użyj w obciążenia dowolny składnik, dostępne w społeczności lub utworzonej przez użytkownika.
 
 > [!WARNING]
@@ -426,7 +426,7 @@ Usługa HDInsight oferuje kilka sposobów używania niestandardowych składnikó
 
 Interfejs webowy Ambari służy do wyświetlania informacji rejestrowanych przez akcji skryptu. Jeśli skrypt zakończy się niepowodzeniem podczas tworzenia klastra, dzienniki są również dostępne w skojarzonym z klastrem domyślne konto magazynu. Ta sekcja zawiera informacje na temat sposobu pobierania dzienników za pomocą obu tych opcji.
 
-### <a name="using-the-ambari-web-ui"></a>Za pomocą interfejsu użytkownika sieci Web systemu Ambari
+### <a name="using-the-apache-ambari-web-ui"></a>Za pomocą interfejsu użytkownika sieci Web Ambari Apache
 
 1. W przeglądarce przejdź do https://CLUSTERNAME.azurehdinsight.net. Zastąp CLUSTERNAME nazwą klastra usługi HDInsight.
 
@@ -513,8 +513,8 @@ Istnieją jednak dwa wyjątki:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie skryptów Akcja skryptu dla HDInsight](hdinsight-hadoop-script-actions-linux.md)
-* [Instalowanie i korzystanie z platformy Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md)
-* [Instalowanie i używanie systemu Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md)
+* [Instalowanie i używanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md)
+* [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Dodaj dodatkowy magazyn do klastra usługi HDInsight](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Etapy podczas tworzenia klastra"

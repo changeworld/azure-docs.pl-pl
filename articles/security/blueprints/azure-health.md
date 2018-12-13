@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: c0255ff31353ca8fe0cf684af53a12654b400208
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: MT
+ms.openlocfilehash: ca844c89b657bc3286f3472af3acbf937ef1e20f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407558"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891065"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -345,8 +345,8 @@ Rozwiązanie obsługuje usługi Azure Event Grid, pojedynczą usługę zarządza
 ### <a name="machine-learning"></a>Usługa Machine Learning
 
 
--   [Rejestrowanie jest włączone](/azure/machine-learning/studio/web-services-logging) usługi internetowe Machine Learning Studio.
-- za pomocą [usługi Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench wymaga tworzenie eksperymentów, zapewnia możliwość przewidywania do zestawu rozwiązania. [Integrowanie aplikacji workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) można usprawnić zarządzanie eksperymentów.
+- [Rejestrowanie jest włączone](/azure/machine-learning/studio/web-services-logging) usługi internetowe Machine Learning Studio.
+- Za pomocą [usługi Machine Learning Studio](/azure/machine-learning/studio/what-is-ml-studio) wymaga tworzenie eksperymentów, które zapewniają możliwość przewidywania do zestawu rozwiązania.
 
 ## <a name="security"></a>ZABEZPIECZENIA
 

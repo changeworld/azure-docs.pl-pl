@@ -3,7 +3,7 @@ title: Usługa Azure Backup przewodnik rozwiązywania problemów dla maszyn wirt
 description: Informacje dotyczące rozwiązywania problemów do wykonywania kopii zapasowych maszyn wirtualnych programu SQL Server na platformie Azure.
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 3ad4afc740be01644145704679ee2674ebde3d07
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: acbb54da9cf52a73acf11b43d702675544bcc5fa
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720732"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873805"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 

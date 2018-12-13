@@ -1,21 +1,22 @@
 ---
-title: Ze wstępnie utworzonych domen Language Understanding (LUIS)
+title: Ze wstępnie utworzonych domen dla Understa języka
 titleSuffix: Azure Cognitive Services
 description: Usługa LUIS obejmuje zestaw wstępnie utworzonych domen do szybkiego dodawania scenariuszy użytkowników typowe i konwersacyjny.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: b1c7ced4a934ea5d094e0c54a295870986f09933
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 05c6981c4962827154764df0e874824e5398d96d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651878"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074404"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>Dodaj ze wstępnie utworzonych domen dla typowych scenariuszy użycia 
 
@@ -43,13 +44,13 @@ Usługa LUIS zawiera zestaw wbudowanych intencji ze wstępnie utworzonych domen 
 
 1. Wybierz punkt końcowy. Punkt końcowy zostanie otwarta nowa karta przeglądarki. Nie zamykaj kartę przeglądarki i w dalszym ciągu **testu** sekcji.
 
-## <a name="test"></a>Testuj
+## <a name="test"></a>Testowanie
 
 Test nowe opcje w punkcie końcowym dodany przez wartość **q** parametru: `Schedule a meeting with John Smith in Seattle next week`.
 
 Usługa LUIS zwraca poprawne intencji i przedmiot spotkania:
 
-```JSON
+```json
 {
   "query": "Schedule a meeting with John Smith in Seattle next week",
   "topScoringIntent": {

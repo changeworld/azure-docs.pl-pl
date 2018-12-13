@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: quickstart
 ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 9cceec39c8a1609f73401ec18e2c8cb0a278c223
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 1b301f2197b16d8cd74c3cf3616de70f28ac64df
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164290"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874944"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Szybki start: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla języka Python
 
@@ -181,7 +181,6 @@ Aby wysłać obraz do punktu końcowego przewidywania i uzyskać przewidywanie, 
 
 ```Python
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-from azure.cognitiveservices.vision.customvision.prediction.prediction_endpoint import models
 
 # Now there is a trained endpoint that can be used to make a prediction
 

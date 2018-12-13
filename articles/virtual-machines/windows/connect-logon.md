@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: cynthn
-ms.openlocfilehash: b9cce5658b705e9d3255d2662b2a0157a2e548c3
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fdd0c82f64b55c801ef04f1d533ed91683a07f9a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409035"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867073"
 ---
 # <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Sposób nawiązywania połączenia z maszyną wirtualną platformy Azure z systemem Windows oraz logowania się do niej
 Korzystając z przycisku **Połącz** w witrynie Azure Portal, uruchomisz sesję pulpitu zdalnego z poziomu pulpitu systemu Windows. Najpierw nawiążesz połączenie z maszyną wirtualną, a następnie logowania.
@@ -54,6 +54,21 @@ Aby połączyć się z maszyny Wirtualnej z systemem Windows z poziomu komputera
    > 
    > 
 
+## <a name="connect-to-the-virtual-machine-using-powershell"></a>Łączenie z maszyną wirtualną przy użyciu programu PowerShell
+
+Jeśli są przy użyciu programu PowerShell i mieć zainstalowany moduł AzureRM może nawiązywać połączenie przy użyciu `Get-AzureRmRemoteDesktopFile` polecenia cmdlet, jak pokazano poniżej.
+
+W tym przykładzie zostanie uruchomiony natychmiast połączenia RDP, poruszają podobne monity jako powyżej.
+
+```powershell
+Get-AzureRmRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -Launch
+```
+
+Możesz również zapisać plik RDP do użytku w przyszłości.
+
+```powershell
+Get-AzureRmRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli masz trudności z połączeniem, zobacz [połączeń pulpitu zdalnego Rozwiązywanie problemów z](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 

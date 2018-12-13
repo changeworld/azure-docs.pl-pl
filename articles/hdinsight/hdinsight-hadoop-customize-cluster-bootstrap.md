@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: bfa36cfeda514be0941481b0e4ed5ab9b3669b54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2da89e674b967287150b2e8f3a98fc25df2af81e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238101"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878268"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów HDInsight za pomocą narzędzia Bootstrap
 
@@ -50,7 +50,7 @@ Aby uzyskać informacje na temat instalowania dodatkowych składników w klastrz
 * [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
-Następujący kod PowerShell dostosowuje konfiguracji Hive:
+Następujący kod PowerShell dostosowuje [Apache Hive](https://hive.apache.org/) konfiguracji:
 
 ```powershell
 # hive-site.xml configuration
@@ -128,11 +128,11 @@ Usługa ładowania początkowego można użyć w szablonie usługi Resource Mana
 ![HDInsight Hadoop dostosowuje bootstrap szablonu usługi Azure Resource Manager klastra](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Zobacz także
-* [Tworzenie klastrów Hadoop w HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
+* [Tworzenie klastrów usługi Apache Hadoop w HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
 * [Tworzenie akcji skryptu skryptów dla HDInsight][hdinsight-write-script]
-* [Instalowanie i używanie języka Spark w klastrach HDInsight][hdinsight-install-spark]
-* [Instalowanie i korzystanie z platformy Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
-* [Instalowanie i używanie systemu Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]
+* [Instalowanie i używanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
+* [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md

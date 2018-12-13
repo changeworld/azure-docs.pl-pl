@@ -3,7 +3,7 @@ title: Monitorowanie magazynu w pamięci XTP | Dokumentacja firmy Microsoft
 description: Szacowanie i monitorowanie magazynu w pamięci XTP korzystać, pojemności Napraw błąd pojemności 41823
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: genemi
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 2a9c01eb2c237a7c79464b930c9258f791d8f3ce
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ac7b568d95b9a2c382b1c167965942f0733012c4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161628"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874927"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Pojemność magazynu OLTP w pamięci monitora
 Korzystając z [OLTP w pamięci](sql-database-in-memory.md), znajdują się szczegółowe dane w tabelach zoptymalizowanych pod kątem pamięci i zmiennych tabel w pojemność magazynu OLTP w pamięci. Każda warstwa usługi Premium i krytyczne dla działania firmy ma maksymalny rozmiar magazynu OLTP w pamięci. Zobacz [limity zasobów oparty na jednostkach DTU — Pojedyncza baza danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów oparty na jednostkach DTU - pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów opartych na rdzeniach wirtualnych - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).

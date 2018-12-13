@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 022dd52e05b9227e3ce0920a083f75413a2eebc8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 29306fa508a2c0702e69f6b6ebcb7571041d57d6
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836920"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890266"
 ---
 # <a name="data-sources-in-log-analytics"></a>Źródła danych w usłudze Log Analytics
 Log Analytics zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym usługi Log Analytics.  Dane, które są zbierane z każdego jest definiowany przez źródeł danych, które konfigurujesz.  Dane w usłudze Log Analytics są przechowywane jako zestaw rekordów.  Każde źródło danych tworzy rekordy określonego typu, za pomocą poszczególnych typów posiadanie swój własny zestaw właściwości.
@@ -59,7 +59,7 @@ Konfigurowanie źródła danych z **danych** menu w usłudze Log Analytics **Zaa
 ## <a name="data-collection"></a>Zbieranie danych
 Konfiguracje źródeł danych są dostarczane do agentów, które są podłączone bezpośrednio do usługi Log Analytics w ciągu kilku minut.  Określone dane jest zbierane z programu agent i dostarczane bezpośrednio do usługi Log Analytics w odstępach specyficzne dla każdego źródła danych.  Zobacz dokumentację dla każdego źródła danych dla tych szczegółowych informacji.
 
-Agenci programu System Center Operations Manager w podłączonej grupy zarządzania konfiguracje źródeł danych są przetłumaczone na pakiety administracyjne i dostarczane do grupy zarządzania co 5 minut, domyślnie.  Agent pobiera pakiet administracyjny, jak każdy inny i zbiera określone dane. W zależności od źródła danych dane będą albo wysłane do serwera zarządzania, która przekazuje dane do usługi Log Analytics lub agent będzie wysyłać dane do usługi Log Analytics bez przechodzenia przez serwer zarządzania. Zobacz [szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure](../../azure-monitor/insights/solutions-inventory.md) Aby uzyskać szczegółowe informacje.  Możesz przeczytać o szczegółach połączenie programu Operations Manager i usługi Log Analytics i modyfikowanie częstotliwości tej konfiguracji jest dostarczana w [konfigurowania integracji z programem System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md).
+Agenci programu System Center Operations Manager w podłączonej grupy zarządzania konfiguracje źródeł danych są przetłumaczone na pakiety administracyjne i dostarczane do grupy zarządzania co 5 minut, domyślnie.  Agent pobiera pakiet administracyjny, jak każdy inny i zbiera określone dane. W zależności od źródła danych dane będą albo wysłane do serwera zarządzania, która przekazuje dane do usługi Log Analytics lub agent będzie wysyłać dane do usługi Log Analytics bez przechodzenia przez serwer zarządzania. Zobacz [szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure](../../azure-monitor/insights/solutions-inventory.md) Aby uzyskać szczegółowe informacje.  Możesz przeczytać o szczegółach połączenie programu Operations Manager i usługi Log Analytics i modyfikowanie częstotliwości tej konfiguracji jest dostarczana w [konfigurowania integracji z programem System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
 
 Jeśli agent jest w stanie połączyć się z usługi Log Analytics lub Operations Manager, będzie zbierać dane, które będzie dostarczać, jeśli go nawiązuje połączenie.  Dane mogą zostać utracone, jeśli ilość danych osiągnie maksymalny rozmiar pamięci podręcznej klienta lub jeśli agent nie jest w stanie nawiązać połączenie w ciągu 24 godzin.
 

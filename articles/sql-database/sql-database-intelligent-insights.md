@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e87cd3742a5dcd52c3a447bb66ea9089c18d5aee
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: MT
+ms.openlocfilehash: e639bd40c877aded1439fe999fcf3f7114b9a727
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214685"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890674"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Wydajność bazy danych Intelligent Insights za pomocą sztucznej Inteligencji do monitorowania i rozwiązywania problemów
 
@@ -41,7 +41,7 @@ Intelligent Insights jest unikatowa funkcja platformy Azure wbudowane funkcje an
 
 Intelligent Insights analizuje wydajność bazy danych przez porównanie obciążenie bazy danych z ostatniej godziny z ostatnich 7 dniowy plan bazowy obciążeniem. Obciążenie bazy danych składa się z zapytania uznane za najbardziej znaczące wydajności bazy danych, takie jak najczęściej powtarzanych i największy zapytania. Ponieważ każda baza danych jest unikatowy, na podstawie jego struktury danych, użycia i aplikacji, każdej linii bazowej obciążenia, który jest generowany jest określone i unikatowe dla poszczególnych wystąpień. Intelligent Insights, niezależnie od linii bazowej obciążenia również monitoruje bezwzględne progi operacyjną i wykrywa problemy z czasy oczekiwania nadmierne, wyjątki krytyczne i problemy z parameterizations zapytania, które mogłyby wpłynąć na wydajność.
 
-Po wykrycia problemu z wydajnością degradacji z wielu metryk obserwowanych za pomocą sztucznej inteligencji analiza jest wykonywana. Dziennik diagnostyczny jest generowany za pomocą inteligentnego wglądu, co się dzieje z bazą danych. Intelligent Insights ułatwia śledzenie problemów z wydajnością bazy danych od jego pierwszego pojawienia się do czasu rozwiązania problemu. Każdy wykryty problem jest śledzone przy użyciu jej cyklu projektowania z początkowej emisji, wykrywanie i weryfikację poprawę wydajności do jego zakończenia. Aktualizacje są udostępniane w dziennik diagnostyczny co 15 minut.
+Po wykrycia problemu z wydajnością degradacji z wielu metryk obserwowanych za pomocą sztucznej inteligencji analiza jest wykonywana. Dziennik diagnostyczny jest generowany za pomocą inteligentnego wglądu, co się dzieje z bazą danych. Intelligent Insights ułatwia śledzenie problemów z wydajnością bazy danych od jego pierwszego pojawienia się do czasu rozwiązania problemu. Każdy wykryty problem jest śledzone przy użyciu jej cyklu projektowania z początkowej emisji, wykrywanie i weryfikację poprawę wydajności do jego zakończenia.
 
 ![Przepływu pracy analizy wydajności bazy danych](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
@@ -87,7 +87,7 @@ Rozwiązanie SQL Analytics na platformie Azure zapewnia graficzny interfejs uży
 > Szybkie wprowadzenie: Najłatwiejszym sposobem na wyższy, przy użyciu Intelligent Insights jest z niego korzystać, wraz z usługi Azure SQL Analytics, która zapewnia graficzny interfejs użytkownika do problemów z wydajnością bazy danych. Dodawanie rozwiązania do usługi Azure SQL Analytics w portalu Marketplace, Utwórz obszar roboczy, w tym rozwiązaniu i dla każdej bazy danych, które ma zostać włączone Intelligent Insights na, skonfiguruj przesyłania strumieniowego dziennika "SQLInsights" w bloku ustawienia diagnostyki bazy danych do obszar roboczy usługi Azure SQL Analytics.
 >
 
-Wymaganie wstępne dotyczy zostały dodane do pulpitu nawigacyjnego witryny Azure portal z witryny marketplace usługi Azure SQL Analytics i Utwórz obszar roboczy, zobacz [Konfigurowanie usługi Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md#configuration)
+Wymaganie wstępne dotyczy zostały dodane do pulpitu nawigacyjnego witryny Azure portal z witryny marketplace usługi Azure SQL Analytics i Utwórz obszar roboczy, zobacz [Konfigurowanie usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md#configuration)
 
 Aby Intelligent Insights za pomocą usługi Azure SQL Analytics, należy skonfigurować dane dzienników Intelligent Insights strumieniowe przesyłanie do obszaru roboczego usługi Azure SQL Analytics, został utworzony w poprzednim kroku, zobacz [metryk usługi Azure SQL Database i diagnostyki rejestrowanie](sql-database-metrics-diag-logging.md).
 
@@ -179,5 +179,5 @@ Jeśli monitorowana wyjątki krytyczne cross bezwzględne wartości progowe, zar
 
 - Dowiedz się, jak [bazy danych SQL Rozwiązywanie problemów z wydajnością dzięki inteligentnej analizie](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Użyj [dziennik diagnostyczny wydajności bazy danych SQL Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
-- Dowiedz się, jak [monitorowanie bazy danych SQL przy użyciu SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+- Dowiedz się, jak [monitorowanie bazy danych SQL przy użyciu SQL Analytics](../azure-monitor/insights/azure-sql.md).
 - Dowiedz się, jak [zbieranie i używanie dane dzienników z zasobów platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).

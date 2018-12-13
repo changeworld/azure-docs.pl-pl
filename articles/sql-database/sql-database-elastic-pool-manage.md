@@ -3,7 +3,7 @@ title: Tworzenie i zarządzanie nimi elastyczne pule — usługa Azure SQL datab
 description: Tworzenie i zarządzanie elastycznymi pulami Azure SQL.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/29/2018
-ms.openlocfilehash: acf17533ee73313937c2edb9badaef9007309373
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 366bdf73c6b62ffa98ce44076374df8be8b3de3c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243099"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865883"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Tworzenie i zarządzanie elastycznymi pulami w usłudze Azure SQL Database
 

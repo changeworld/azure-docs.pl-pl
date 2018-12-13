@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 76bef5fcae8e95a52b7a35fdbb657db5dde01bc3
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: af6915a522788f95aaac8ec1b690a7e53b31aac6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035190"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863435"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu programu Azure PowerShell
 
@@ -90,16 +90,16 @@ W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z
 
 Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następujących zasobów, aby dowiedzieć się, jak pracować z klastrem.
 
-### <a name="hadoop-clusters"></a>Klastry usługi Hadoop
+### <a name="apache-hadoop-clusters"></a>Klastry platformy Apache Hadoop
 
-* [Korzystanie z programu Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z usługą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Use Apache Hive z HDInsight](hadoop/hdinsight-use-hive.md)
+* [Apache Pig za pomocą HDInsight](hadoop/hdinsight-use-pig.md)
+* [Za pomocą usług Apache HAdoop MapReduce HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>Klastry baz danych HBase
+### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
 
-* [Wprowadzenie do usługi HBase w usłudze HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Opracowywanie aplikacji w języku Java dla bazy danych HBase na HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [Rozpoczynanie pracy z usługą Apache HBase na HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Twórz aplikacje Java dla bazy danych Apache HBase na HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Klastry STORM
 
@@ -107,10 +107,10 @@ Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następują
 * [Użyj języka Python składników systemu Storm w HDInsight](storm/apache-storm-develop-python-topology.md)
 * [Wdrażanie i monitorowanie topologii z systemu Storm w HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
 
-### <a name="spark-clusters"></a>Klastry Spark
+### <a name="apache-spark-clusters"></a>Klastry platformy Apache Spark
 
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](spark/apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze Spark przy użyciu programu Livy](spark/apache-spark-livy-rest-interface.md)
-* [Platforma Spark i analiza biznesowa: interakcyjna analiza danych na platformie Spark w usłudze HDInsight z użyciem narzędzi do analizy biznesowej](spark/apache-spark-use-bi-tools.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników kontroli żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](spark/apache-spark-livy-rest-interface.md)
+* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](spark/apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
 
