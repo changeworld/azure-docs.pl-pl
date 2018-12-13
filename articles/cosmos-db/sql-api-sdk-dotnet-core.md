@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73876d950a34317365c9fceb865a3c473a75780a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bcd8fe040cb4d36bc98700816d6a7ebe711f13f5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874349"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093454"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB zestawu .NET Core SDK interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -211,7 +211,7 @@ Azure Cosmos DB platformy .NET Core w wersji zapoznawczej SDK ma równoważnośc
 * [Kolekcje partycjonowane](partition-data.md). 
 * [Multiregionalne konta baz danych i replikacja geograficzna](distribute-data-globally.md).
 
-Jeśli masz pytania dotyczące tego zestawu SDK, Opublikuj [StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb), lub Prześlij zgłoszenie do [repozytorium github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
+Jeśli masz pytania dotyczące tego zestawu SDK, Opublikuj [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), lub Prześlij zgłoszenie do [repozytorium github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
 
 ## <a name="release--retirement-dates"></a>Wersja & dat wycofywania
 

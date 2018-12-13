@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 820161b5ea5c1d071292897cab30f921f1256cf3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0c6f7b637e56d2bf39d8f03122ccb28bd7b1c773
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019632"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096749"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Pobierz nazwę hosta, portów i kluczy dla usługi Azure Cache dla usługi Redis
 
@@ -30,7 +30,7 @@ W tym scenariuszu dowiesz się, jak pobrać nazwy hosta, porty i klucze używane
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-azurecli[main](../../../cli_scripts/redis-cache/cache-keys-ports/cache-keys-ports.sh "Azure Azure Cache for Redis")]
+[!code-azurecli[main](../../../cli_scripts/redis-cache/cache-keys-ports/cache-keys-ports.sh "Azure Cache for Redis")]
 
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu

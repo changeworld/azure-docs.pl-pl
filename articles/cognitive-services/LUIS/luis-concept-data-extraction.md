@@ -1,23 +1,24 @@
 ---
-title: Pojęcia związane z wyodrębniania danych z usługi LUIS — Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Wyodrębnianie danych
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Dowiedz się, jakiego rodzaju dane można wyodrębnić z Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 284cc8ec6c2325df069d06039a6a22169c3107e7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638345"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098655"
 ---
-# <a name="data-extraction"></a>Wyodrębnianie danych
+# <a name="data-extraction-from-intents-and-entities"></a>Wyodrębnianie danych z intencje i podmioty
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON.
 
 Najtrudniejsze dane do wyodrębnienia to dane maszyny do opanowania, ponieważ nie jest zgodny z tekstu do dokładnego dopasowania. Wyodrębnianie danych z maszyny przedstawiono [jednostek](luis-concept-entity-types.md) musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) aż masz pewność, odbieranie danych, o których oczekujesz.
@@ -105,7 +106,7 @@ Jeśli dodasz ze wstępnie utworzonych domen, intencji wskazuje nazwa domeny, ta
 }
 ```
 
-|Domena|Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
+|Domain|Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
 |--|--|--|--|--|
 |Usługi użyteczności publicznej|Intencja|Ciąg|.intent intencji [0]|"<b>Narzędzia</b>. ShowNext"|
 |Komunikacja|Intencja|Ciąg|.intent intencji [1]|<b>Komunikacja</b>. StartOver"|

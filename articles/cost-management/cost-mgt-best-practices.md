@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 99e42f404fe103f406c4b3835f8c455bc2b91e07
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: 77a5b455e3ef86484119983af24b6461a2fba229
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017692"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074491"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę dzięki usłudze Azure Cost Management
 
@@ -64,7 +64,7 @@ Działanie, aby ograniczyć wydatki. Maksymalne wykorzystanie go na podstawie ot
 
 Wszyscy w Twojej organizacji muszą angażować się w cyklu życia zarządzania kosztami. Muszą one pozostać zaangażowanych w sposób ciągły, aby zoptymalizować koszty. Być rygorystyczne o ten proces iteracyjny i ułatwiają obejmując nadzoru odpowiada chmury w organizacji.
 
-![Podstawowe zasady](./media/cost-mgt-best-practices/principles.png)
+![Podstawowe zasady diagram przedstawiający widoczność, odpowiedzialność i optymalizacja](./media/cost-mgt-best-practices/principles.png)
 
 ## <a name="plan-with-cost-in-mind"></a>Planowanie kosztów na uwadze
 

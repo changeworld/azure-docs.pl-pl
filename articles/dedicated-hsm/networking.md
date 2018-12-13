@@ -1,22 +1,23 @@
 ---
-title: W wersji dedykowanej sieci przez moduł HSM | Dokumentacja firmy Microsoft
-description: Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń udostępnia możliwości magazynu kluczy w ramach platformy Azure, która spełnia FIPS 140-2 Level 3 certyfikacji
+title: Zagadnienia dotyczące sieci — sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
+description: Omówienie sieci zagadnienia, które dotyczą wdrożeń platformy Azure w wersji dedykowanej w module HSM
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: a711fbfe262ea3f9e12e0a4b4f5bf73243a6c726
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 46a4cc5e48a9fe239a3c62bd72cf6a99e9bf76d8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678972"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092891"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Sieci platformy Azure w wersji dedykowanej przez moduł HSM
 
@@ -87,7 +88,7 @@ Globalne wirtualne sieci równorzędne jest niedostępna w łączności między 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Często zadawane pytania](faq.md)
-- [Wsparcie dla](supportability.md)
+- [Możliwości obsługi](supportability.md)
 - [Wysoka dostępność](high-availability.md)
 - [Zabezpieczenia fizyczne](physical-security.md)
 - [Monitorowanie](monitoring.md)

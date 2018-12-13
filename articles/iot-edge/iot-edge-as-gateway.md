@@ -1,6 +1,6 @@
 ---
-title: Użyj urządzenia usługi Azure IoT Edge jako bramy | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure IoT Edge do utworzenia się przezroczyste, nieprzezroczyste lub urządzenie bramy serwera proxy, który wysyła dane z wielu podrzędnych urządzeń do chmury lub przetwarza je lokalnie.
+title: Bramy na potrzeby transmisji urządzeń — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure IoT Edge, aby utworzyć przezroczyste, nieprzezroczyste lub serwer proxy urządzenie bramy, które wysyła dane z wielu podrzędnych urządzeń do chmury i przetwarza je lokalnie.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 11/01/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53f0f1e77f8879807b2fb93b86d825e3bd044f41
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567217"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092285"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak używać urządzenia usługi IoT Edge jako bramy
 
@@ -26,7 +27,7 @@ Istnieją trzy wzorce dotyczące korzystania z urządzenia usługi IoT Edge jako
 * **Protokół tłumaczenia** — tzw. wzorzec nieprzezroczyste bramy, urządzeń, które nie obsługują protokołu MQTT, AMQP lub HTTP można użyć urządzenia bramy do wysyłania danych do usługi IoT Hub w ich imieniu. Brama obsługuje protokół używany przez urządzenia podrzędnego; jednak jest tylko urządzenie, które ma tożsamości w usłudze IoT Hub. Wszystkie informacje prawdopodobnie pochodzi on z jednego urządzenia i bramy. Podrzędne urządzeń należy osadzić dodatkowe informacje identyfikacyjne w ich wiadomości, jeśli chcesz, aby aplikacje w chmurze do analizowania danych w poszczególnych urządzeń. Ponadto usługa IoT Hub w nim elementów podstawowych, takich jak bliźniaczych reprezentacji i metody są dostępne tylko dla urządzenia bramy, a nie podrzędnym urządzenia.
 * **Tłumaczenie tożsamości** — urządzenia, które nie można nawiązać połączenia z Centrum IoT Hub można nawiązać połączenie urządzenia bramy, zamiast tego. Brama zapewnia usługi IoT Hub, tożsamość i protocol tłumaczenia w imieniu urządzeń podrzędnego. Brama jest inteligentne, zrozumieć protokół używany przez urządzenia podrzędnego, potwierdzenie ich tożsamości i tłumaczenie podstawowych usługi IoT Hub. Urządzenia podrzędne są wyświetlane w usłudze IoT Hub jako najwyższej jakości urządzeń za pomocą twins i metody. Użytkownik może wchodzić w interakcje z urządzeniami w usłudze IoT Hub i nie rozpoznaje urządzenie bramy pośredniej.
 
-![Diagramy wzorców bramy](./media/iot-edge-as-gateway/edge-as-gateway.png)
+![Diagram — przezroczyste, protokół i wzorce bramy tożsamości](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
 ## <a name="use-cases"></a>Przypadki zastosowań
 Wszystkie wzorce brama zapewnia następujące korzyści:

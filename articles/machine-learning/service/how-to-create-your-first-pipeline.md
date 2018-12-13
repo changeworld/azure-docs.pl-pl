@@ -1,5 +1,6 @@
 ---
-title: Tworzenie i uruchamianie potoków uczenia Maszynowego — usługa Azure Machine Learning
+title: Tworzenie i uruchamianie potoków uczenia Maszynowego
+titleSuffix: Azure Machine Learning service
 description: Tworzenie i uruchamianie usługi machine learning potoku z zestawem Azure Machine Learning SDK dla języka Python.  Potoki są używane do tworzenia i zarządzania nimi przepływy pracy tej fazy uczenia maszynowego razem Połącz (ML), takich jak przygotowywanie danych, szkolenie modelu, wdrożenie modelu i wnioskowania.
 services: machine-learning
 ms.service: machine-learning
@@ -9,17 +10,17 @@ ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 0119e60a6493ed13b04b36fc5fccc7227503fe0a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 3038d8978ed3705e9e18be58080afd532b9d72d6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015079"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100559"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego, przy użyciu zestawu SDK usługi Azure Machine Learning
 
-W tym artykule dowiesz się, jak tworzenie, publikowanie, uruchom i Śledź [potoku uczenia maszynowego](concept-ml-pipelines.md) przy użyciu [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Te potoki pomagają tworzyć i zarządzać nimi przepływy pracy, które łączyć różnych machine learning faz. Każdej fazy potoku, takich jak przygotowywanie danych i szkoleń modelowych może zawierać jeden lub więcej kroków.
+W tym artykule dowiesz się, jak tworzenie, publikowanie, uruchom i Śledź [potoku uczenia maszynowego](concept-ml-pipelines.md) przy użyciu [zestawu SDK usługi Azure Machine Learning](https://aka.ms/aml-sdk).  Te potoki pomagają tworzyć i zarządzać nimi przepływy pracy, które łączyć różnych machine learning faz. Każdej fazy potoku, takich jak przygotowywanie danych i szkoleń modelowych może zawierać jeden lub więcej kroków.
 
 Potoki tworzenia są widoczne dla członków usługi Azure Machine Learning [obszaru roboczego](how-to-manage-workspace.md). 
 

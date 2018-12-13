@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 88041cf185aeb6ae5cb27f2405b62401cae069d9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964257"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098104"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -275,6 +275,12 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- 3179561 - IS --> 
 - Zarządzane dyski użycia jest zgłaszany w godzinach, zgodnie z opisem w [często zadawane pytania dotyczące usługi Azure Stack użycia](azure-stack-usage-related-faq.md#managed-disks). Jednak opłaty usługi Azure Stack użyje miesięczna cena, dzięki czemu może niepoprawnie jest naliczana za użycie usługi Managed Disks w lub przed 27 września. Firma Microsoft zostały tymczasowo zawieszone opłaty za dyski zarządzane po września 27 do czasu rozliczeniowego problem został rozwiązany. Jeśli ma zostać rozliczenie niepoprawnie użycie usługi Managed Disks, skontaktuj się z działem rozliczeń firmy Microsoft.
 Raporty użycia utworzone podczas korzystania z usługi Azure Stack interfejsów API pokazują poprawne ilości i mogą być używane.
+
+<!-- 3507629 - IS, ASDK --> 
+- Dyski zarządzane tworzy dwa nowe [typy limitów przydziału obliczeniowych](azure-stack-quota-types.md#compute-quota-types) ograniczenie maksymalnej pojemności dysków zarządzanych, które mogą być udostępniane. Domyślnie 2048 GiB jest przydzielany dla każdego typu przydziału dysków zarządzanych. Jednakże można napotkać następujące problemy:
+
+   - Aby przydziały utworzone przed aktualizacją 1808 przydziału dysków Managed Disks wyświetli wartości 0 w portalu administratora, mimo że jest przydzielany 2048 GiB. Można zwiększyć lub zmniejszyć wartość na podstawie Twoich potrzeb rzeczywiste i nowo ustawiony wartości przydziału na zastępuje domyślne GiB 2048.
+   - Jeśli zaktualizujesz wartości limitu przydziału na 0 jest równoważna wartość domyślną 2048 GiB. Obejść ten problem należy ustawić wartość limitu przydziału na 1.
 
 <!-- 2869209 – IS, ASDK --> 
 - Korzystając z [ **AzsPlatformImage Dodaj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), należy użyć **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Jeśli używasz lokalnej ścieżki dysku, polecenia cmdlet zakończy się niepowodzeniem z następującym błędem: *długotrwałych operacji nie powiodło się ze stanem "Niepowodzenie"*. 

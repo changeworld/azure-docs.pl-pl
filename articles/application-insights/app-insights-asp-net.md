@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6977d992bd50ca0f3f03ef10095e12472515b780
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 4b9952cbe034df59dd1f152d5b70b50e9a4db8ab
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682405"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873601"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Konfigurowanie usługi Application Insights dla witryny sieci Web ASP.NET.
 
@@ -149,7 +149,7 @@ Istnieją jeszcze inne tematy, które warto przejrzeć, jeśli interesują Cię 
 
 * **[Praca z usługą Application Insights w programie Visual Studio](app-insights-visual-studio.md)**<br/>Zawiera informacje o debugowaniu przy użyciu telemetrii, wyszukiwaniu diagnostycznym i przechodzeniu do szczegółów kodu.
 * **[Praca z portalem usługi Application Insights](app-insights-dashboards.md)**<br/> Zawiera informacje o pulpitach nawigacyjnych, zaawansowanych narzędziach diagnostycznych i analitycznych, alertach, mapie zależności aplikacji na żywo oraz eksportowaniu telemetrii.
-* **[Analiza](../log-analytics/query-language/get-started-analytics-portal.md)** — zaawansowany język zapytań.
+* **[Analiza](../azure-monitor/log-query/get-started-portal.md)** — zaawansowany język zapytań.
 
 ### <a name="alerts"></a>Alerty
 

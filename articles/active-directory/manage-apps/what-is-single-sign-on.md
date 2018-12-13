@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: c21d78d1e0660b97c44130539ab3b5c71b8d6f6b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: b2eff49f94dfcd67cb9741055520d990429051cd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843040"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098563"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 Dowiedz się, jak wybrać najbardziej odpowiedni pojedynczej metody logowania jednokrotnego, podczas konfigurowania aplikacji w usłudze Azure Active Directory (Azure AD). 
@@ -61,7 +61,6 @@ Opartej na SAML logowania jednokrotnego jest obsługiwana dla aplikacji, które 
 
 - SAML 2.0
 - WS-Federation
-- OpenID connect
 
 Aby skonfigurować aplikację do opartej na SAML logowania jednokrotnego, zobacz [opartej na SAML skonfigurować logowanie jednokrotne](configure-single-sign-on-portal.md). Ponadto wiele aplikacji ma [samouczki specyficzne dla aplikacji](../saas-apps/tutorial-list.md) który krok po kroku przez skonfigurowanie opartej na SAML logowania jednokrotnego dla określonych aplikacji. 
 
@@ -80,7 +79,7 @@ Użyj opartego na hasłach logowania jednokrotnego po:
 Oparte na hasłach logowanie jednokrotne jest obsługiwana dla dowolnej aplikacji opartej na chmurze, który jest oparty na języku HTML strony logowania. Użytkownik może użyć dowolnej z poniższych przeglądarek:
 
 - Internet Explorer 11 w systemie Windows 7 lub nowszy
-- Edge w systemie Windows 10 Anniversary Edition lub nowszy 
+- Microsoft Edge w systemie Windows 10 Anniversary Edition lub nowszy 
 - Dla programu Chrome w Windows 7 lub nowszy, a system MacOS x lub nowszym
 - Firefox 26.0 lub nowszej dla systemu Windows XP SP2 lub nowszy i w systemie Mac OS X 10.6 lub nowszej
 

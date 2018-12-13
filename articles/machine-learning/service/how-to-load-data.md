@@ -1,5 +1,6 @@
 ---
-title: Ładowanie danych w zestawie Azure Machine Learning danych Prep SDK — Python
+title: Obciążenia i przygotowania bazy danych za pomocą zestawu SDK języka Python w środowisku przedprodukcyjnym danych
+titleSuffix: Azure Machine Learning service
 description: Więcej informacji na temat ładowania danych przy użyciu zestawu SDK usługi Azure Machine Learning danych przedprodukcyjnym. Możesz załadować różnego rodzaju dane wejściowe, określić typy plików danych i parametry lub automatycznie Wykryj typ pliku przy użyciu funkcji odczytu inteligentne zestawu SDK.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,13 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 4f4bb4d95548a8c6c373eaa32617245a7ee0910b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 0d7561c0dc89fb47f88ca6e54616736067262391
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865679"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095073"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning
 

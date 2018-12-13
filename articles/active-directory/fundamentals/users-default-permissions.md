@@ -1,5 +1,5 @@
 ---
-title: Jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory? | Microsoft Docs
+title: Domyślne uprawnienia użytkownika — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o uprawnieniach inny użytkownik, dostępne w usłudze Azure Active Directory.
 services: active-directory
 author: eross-msft
@@ -11,16 +11,15 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-custom: it-pro
-ms.openlocfilehash: 9a9bd33dce4b2be9e15df2745dd25338cdb42702
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 496f751c263d17d3c5d8e10321bef8330c2f1a24
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730483"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096605"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?
-
 W usłudze Azure Active Directory (Azure AD) wszystkim użytkownikom jest udzielany zestaw uprawnień domyślnych. Na dostęp użytkownika mają wpływ typ użytkownika, [członkostwa w ramach roli](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) i prawa własności do poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne oraz zawarto porównanie uprawnień domyślnych członka i użytkownika gościa.
 
 ## <a name="member-and-guest-users"></a>Użytkownicy będący członkami i gośćmi

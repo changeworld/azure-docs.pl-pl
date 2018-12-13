@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Event Hubs przydziały i limity | Dokumentacja firmy Microsoft
-description: Limity i przydziały dla usługi Azure Event Hubs
+title: Limity przydziału i limity — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera limity przydziału i ograniczenia dla usługi Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fb75d961b0b7434cdfc51020aa8c6a24d73e5fab
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3cbcf36bdfb6bad3821216605ba86c8cd8332d18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015657"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098950"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Usługa Azure Event Hubs przydziały i limity
 

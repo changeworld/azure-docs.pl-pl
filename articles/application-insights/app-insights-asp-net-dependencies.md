@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 034e611f6ea95675dc3169feefe1916a81c50943
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e94af6e50c923d975c6ce71cca94479354891e0d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972375"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097781"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.
@@ -32,7 +32,7 @@ Monitor zależności poza pole zgłasza aktualnie wywołań do tych typów zale�
 * Strony sieci Web
   * Wywołania AJAX
 
-Monitorowanie działania z zastosowaniem [Instrumentacji kodu bajtów](https://msdn.microsoft.com/library/z9z62c29.aspx) wokół wybranych metod. Obciążenie jest minimalne.
+Monitorowanie działania z zastosowaniem [Instrumentacji kodu bajtów](https://msdn.microsoft.com/library/z9z62c29.aspx) około Wybierz metody lub w oparciu o wywołania zwrotne DiagnosticSource (w najnowsze zestawy SDK platformy .NET) z programu .NET Framework. Obciążenie jest minimalne.
 
 Można również napisać własne wywołania SDK, aby monitorować inne zależności, zarówno w kodzie klienta i serwera przy użyciu [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: a273d0bd4d064cb1c6ac4d3951af8a493e303f51
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0b3c4a4c21bc9b124a98b1f204f85e6e78ff233e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015895"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099566"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
@@ -57,7 +57,7 @@ Ponadto funkcje, takie jak [hierarchicznej przestrzeni nazw](data-lake-storage-n
 
 ### <a name="one-service-multiple-concepts"></a>Jedna usługa, wiele pojęć
 
-Data Lake Storage Gen2 zapewnia dodatkową funkcję analizy danych big data, korzystających z usługi Azure Blob Storage. Dostępnych jest wiele korzyści dzięki wykorzystaniu istniejących składników platformy obiektów blob, aby tworzyć i obsługiwać jeziora danych do analizy, to prowadzić do wielu koncepcji zawierająca tego samego, udostępnionych.
+Data Lake Storage Gen2 zapewnia dodatkową funkcję analizy danych big data, korzystających z usługi Azure Blob storage. Dostępnych jest wiele korzyści dzięki wykorzystaniu istniejących składników platformy obiektów blob, aby tworzyć i obsługiwać jeziora danych do analizy, to prowadzić do wielu koncepcji zawierająca tego samego, udostępnionych.
 
 Poniżej przedstawiono równoważne jednostek, zgodnie z opisem w różnych pojęcia. Chyba że określono inaczej, te jednostki są bezpośrednio równoznaczny:
 
@@ -66,7 +66,7 @@ Poniżej przedstawiono równoważne jednostek, zgodnie z opisem w różnych poj�
 | Obiekty BLOB — magazyn obiektów ogólnego przeznaczenia | Kontener              | Katalog wirtualny (zestaw SDK — nie zapewniają tylko manipulowania atomic) | Obiekt blob           |
 | Azure Data Lake Store Gen2 — Analytics Storage          | System plików             | Katalog                                                           | Plik           |
 
-## <a name="open-source-platforms-that-work-with-data-lake-storage-gen2"></a>Platform typu open source, działające z usługą Data Lake Storage Gen2
+## <a name="supported-open-source-platforms"></a>Obsługiwane platformy typu open source
 
 Wiele platform typu open source obsługi Gen2 magazynu programu Data Lake. Tych platform są wyświetlane w poniższej tabeli.
 
@@ -77,9 +77,9 @@ Wiele platform typu open source obsługi Gen2 magazynu programu Data Lake. Tych 
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 | [Hadoop](https://hadoop.apache.org/) | 2.7+ | [Apache Hadoop zwalnia archiwum](https://hadoop.apache.org/release.html) |
-| [Platformy Cloudera](https://www.cloudera.com/) | 6.1 + | [Informacje o wersji 6.x Claudera przedsiębiorstwa](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
+| [Platformy Cloudera](https://www.cloudera.com/) | 6.1 + | [Informacje o wersji 6.x platformy Cloudera Enterprise](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 4.2 + | [Wersje środowiska uruchomieniowego usługi Databricks](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[HortenWorks](https://hortonworks.com/)| 2.6 | [Dokumentacja HortenWorks](https://docs.hortonworks.com/) |
+|[Hortonworks](https://hortonworks.com/)| 2.6 | [Dokumentacja Hortonworks](https://docs.hortonworks.com/) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -87,5 +87,5 @@ Następujące artykuły opisano niektóre główne pojęcia Data Lake Storage Ge
 
 -   [Hierarchicznej przestrzeni nazw](data-lake-storage-namespace.md)
 -   [Tworzenie konta magazynu](data-lake-storage-quickstart-create-account.md)
--   [Tworzenie klastra usługi HDInsight przy użyciu usługi Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
--   [Użyj konta usługi Azure Data Lake Storage Gen2 w usłudze Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md)
+-   [Tworzenie klastra HDInsight z usługą Data Lake Storage Gen2](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
+-   [Użyj konta Data Lake Storage Gen2 w usłudze Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md)

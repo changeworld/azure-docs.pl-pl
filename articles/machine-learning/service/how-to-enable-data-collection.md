@@ -1,5 +1,6 @@
 ---
-title: Włącz zbieranie danych dla modeli w środowisku produkcyjnym — usługa Azure Machine Learning
+title: Włącz zbieranie danych dla modeli w środowisku produkcyjnym
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak zbierać dane wejściowe modelu usługi Azure Machine Learning w usłudze Azure Blob storage.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 11/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3033b049b3d4bbe49b6a30be7ec78e1c2caf49ef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: e6b6a8e1dd1b3746977062341013b92acff132c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011146"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100549"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 
@@ -55,7 +56,7 @@ Dane wyjściowe pobiera zapisane w obiekcie Blob platformy Azure. Ponieważ dane
 
 - Model uczenia maszynowego uczonego wdrażanych na platformie Azure Kubernetes Service (AKS). Jeśli nie masz, zobacz [szkolenie modeli klasyfikacji obrazów](tutorial-train-models-with-aml.md) samouczka.
 
-- [Klastra AKS](how-to-deploy-to-aks.md).
+- Klaster Azure Kubernetes Service. Aby uzyskać informacje na temat sposobu tworzenia i wdrażania do jednego, zobacz [sposób wdrażania i gdzie](how-to-deploy-and-where.md) dokumentu.
 
 - [Konfigurowanie środowiska](how-to-configure-environment.md) i zainstaluj [monitorowania SDK](https://aka.ms/aml-monitoring-sdk).
 
@@ -103,7 +104,7 @@ Aby ją włączyć, należy:
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
     ``` 
 
-5. [Utwórz nowy obraz i wdróż usługę.](how-to-deploy-to-aks.md) 
+5. Aby utworzyć nowy obraz i wdrożyć usługę, zobacz [sposób wdrażania i gdzie](how-to-deploy-and-where.md) dokumentu.
 
 
 Jeśli masz już usługę z zależnościami, zainstalowane w Twojej **plikiem środowiska** i **plik oceniania**, Włącz zbieranie danych przez:

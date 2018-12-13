@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i udostępnianie notesu programu Jupyter na platformie Azure | Dokumentacja firmy Microsoft
+title: Tworzenie i udostępnianie notesu programu Jupyter na platformie Azure
 description: Szybko Utwórz uruchamiania notesu programu Jupyter na notesy platformy Azure, a następnie udostępniać innym użytkownikom tego notesu.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: eddeb251bac3cc0d02573c4c0b3047a2eafd8237
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 96eb6a823299521a071edc87b5bce95409405ffb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865127"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096277"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Szybki Start: Tworzenie i udostępnianie notesu
 

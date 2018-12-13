@@ -1,21 +1,22 @@
 ---
-title: Wyświetla frazy, aby poprawić wykrywanie przez jednostki
-titleSuffix: Azure Cognitive Services
+title: Listy fraz
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Użyj Language Understanding (LUIS), aby dodać funkcje aplikacji, które może poprawić Prognozowanie intencje i podmioty lub wykrywania tej kategorii i wzorce
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: feb51cd55801addaf5ce2486e5527542f794bbc5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
-ms.translationtype: MT
+ms.openlocfilehash: 905970c3ab449f139710cf974111618f16da141a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580965"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086644"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
 

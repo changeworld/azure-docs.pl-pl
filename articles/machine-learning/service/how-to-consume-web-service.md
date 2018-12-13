@@ -1,5 +1,6 @@
 ---
-title: Jak używać wdrożeń usług internetowych — usługa Azure Machine Learning
+title: Korzystanie z usług wdrożonych w sieci web
+titleSuffix: Azure Machine Learning service
 description: Informacje o sposobie korzystania z usługi sieci web, który został wygenerowany, gdy model został wdrożony za pomocą modelu usługi Azure Machine Learning. Usługa sieci web, która uwidacznia interfejs API REST. Tworzenie klientów dla tego interfejsu API przy użyciu preferowanego języka programowania.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: d964eef08557ddd95ff86bc9e7de806cd4a8ca18
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 0cf585ec3eb95b71080436791fd47d96239dfa9f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016644"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100464"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
@@ -29,7 +30,7 @@ Jest ogólny przepływ pracy podczas tworzenia klienta, który korzysta z uczeni
 1. Określ typ żądania danych używanego przez model
 1. Utwórz aplikację, która wywołuje usługę sieci web
 
-## <a name="connection-information"></a>Informacje o połączeniu
+## <a name="connection-information"></a>informacje o połączeniu
 
 > [!NOTE]
 > Zestaw SDK usługi Azure Machine Learning można uzyskać informacji usługi sieci web. To jest zestaw SDK języka Python. Gdy jest używany do pobierania informacji o usługach sieci web, można użyć dowolnego języka, można utworzyć klienta dla usługi.
@@ -124,6 +125,43 @@ Na przykład modelu w [szkolenie w notesie](https://github.com/Azure/MachineLear
 ``` 
 
 Usługa sieci web może akceptować wiele zestawów danych w jednym żądaniu. Zwraca dokument JSON zawierający tablicę odpowiedzi.
+
+### <a name="binary-data"></a>Dane binarne
+
+Jeśli model akceptuje dane binarne, takie jak obraz, należy zmodyfikować `score.py` plik używany dla danego wdrożenia do akceptowania żądań HTTP raw. Oto przykład `score.py` który akceptuje dane binarne i zwraca odwróconej bajtów dla żądania POST. Dla żądań GET wysyłanych zwraca pełny adres URL w treści odpowiedzi:
+
+```python 
+from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        respBody = bytearray(reqBody)
+        respBody.reverse()
+        respBody = bytes(respBody)
+        return AMLResponse(respBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> Elementy w `azureml.contrib` przestrzeni nazw zmieniają się często jako dążymy do usprawnienia świadczonej usługi. W efekcie niczego w tej przestrzeni nazw powinien być traktowany jako wersji zapoznawczej i nie są w pełni obsługiwane przez firmę Microsoft.
+>
+> Jeśli zachodzi potrzeba testować jej względem swojego lokalnego środowiska deweloperskiego, można zainstalować składniki w przestrzeni nazw contrib, używając następującego polecenia:
+> 
+> ```shell
+> pip install azureml-contrib-services
+> ```
 
 ## <a name="call-the-service-c"></a>Wywołania tej usługi (C#)
 
@@ -447,7 +485,3 @@ Zwrócone wyniki są podobne do następujących dokumentów JSON:
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Dowiedz się, że zawarto informacje dotyczące tworzenia klienta we wdrożonym modelu, jak [wdrażanie modelu na urządzeniu usługi IoT Edge](how-to-deploy-to-iot.md).

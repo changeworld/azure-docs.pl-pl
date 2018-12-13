@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 0a130613d6d2086fda55ca015b1c0ca77c909e3d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d6a1f2829352e8589c8d132a195a425edcbe62c3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684617"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872948"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorowanie SQL Data Sync za pomocą usługi Log Analytics 
 
@@ -97,7 +97,7 @@ Aby uzyskać więcej informacji na temat tworzenia elementu runbook, zobacz [Mó
 
     2.  Informacje o grupie synchronizacji.
 
-    3.  Rejestrowanie informacji analitycznych. Te informacje można znaleźć w witrynie Azure Portal | Ustawienia | Połączone źródła. Aby uzyskać więcej informacji na temat wysyłania danych do usługi Log Analytics, zobacz [wysyłać dane do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (wersja zapoznawcza)](../log-analytics/log-analytics-data-collector-api.md).
+    3.  Rejestrowanie informacji analitycznych. Te informacje można znaleźć w witrynie Azure Portal | Ustawienia | Połączone źródła. Aby uzyskać więcej informacji na temat wysyłania danych do usługi Log Analytics, zobacz [wysyłać dane do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (wersja zapoznawcza)](../azure-monitor/platform/data-collector-api.md).
 
 11. Uruchom element runbook w okienku testu. Sprawdź, upewnij się, że było pomyślne.
 
@@ -196,18 +196,18 @@ Pobierz przykłady kodu, opisane w tym artykule w następujących lokalizacjach:
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 
--   Przegląd — [synchronizowanie danych w wielu bazach danych w chmurze i lokalnych przy użyciu usługi Azure SQL Data Sync](sql-database-sync-data.md)
--   Konfiguruj synchronizację danych
-    - W portalu — [samouczek: Konfigurowanie SQL Data Sync na synchronizowanie danych między Azure SQL Database i programu SQL Server w środowisku lokalnym](sql-database-get-started-sql-data-sync.md)
+-   Omówienie — [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](sql-database-sync-data.md) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)
+-   Konfigurowanie synchronizacji danych
+    - W portalu — [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](sql-database-get-started-sql-data-sync.md) (Samouczek: konfigurowanie usługi SQL Data Sync w celu synchronizowania danych między usługą Azure SQL Database i lokalnym programem SQL Server)
     - Z programem PowerShell
         -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Dane synchronizacji Agent - [danych synchronizacji agenta dla usługi Azure SQL Data Sync](sql-database-data-sync-agent.md)
--   Najlepsze praktyki — [najlepsze rozwiązania dotyczące usługi Azure SQL Data Sync](sql-database-best-practices-data-sync.md)
--   Rozwiązywanie problemów — [Rozwiązywanie problemów z usługą Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md)
+-   Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
+-   Najlepsze rozwiązania — [Best practices for Azure SQL Data Sync](sql-database-best-practices-data-sync.md) (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)
+-   Rozwiązywanie problemów — [Troubleshoot issues with Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md) (Rozwiązywanie problemów z usługą Azure SQL Data Sync)
 -   Aktualizowanie schematu synchronizacji
-    -   Za pomocą instrukcji języka Transact-SQL - [Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync](sql-database-update-sync-schema.md)
-    -   Za pomocą programu PowerShell — [Użyj programu PowerShell do aktualizacji schematu synchronizacji w istniejącej grupie synchronizacji](scripts/sql-database-sync-update-schema.md)
+    -   Za pomocą języka Transact-SQL — [Automate the replication of schema changes in Azure SQL Data Sync](sql-database-update-sync-schema.md) (Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync)
+    -   Używanie programu PowerShell — [Używanie programu PowerShell do zaktualizowania schematu synchronizacji w istniejącej grupie synchronizacji](scripts/sql-database-sync-update-schema.md)
 
 Aby uzyskać więcej informacji na temat usługi SQL Database, zobacz:
 

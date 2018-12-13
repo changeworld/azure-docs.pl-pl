@@ -1,6 +1,6 @@
 ---
-title: Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy Apache Storm | Dokumentacja firmy Microsoft
-description: Wprowadzenie do odbierania z usługi Event Hubs przy użyciu platformy Apache Storm
+title: Odbieranie zdarzeń za pomocą platformy Apache Storm — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje na temat sposobu odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy Apache Storm.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c70096796bb038c27d18bb3467d7c425dafd5c5b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 3c50916f648a2bce634f7aeb109147a873de1de6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42057671"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094614"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Odbieranie zdarzeń z usługi Event Hubs przy użyciu platformy Apache Storm
 
@@ -40,7 +41,7 @@ W tym samouczku [HDInsight Storm] [ HDInsight Storm] instalacji, który jest dos
     ```
 4. W programie Eclipse Utwórz nowy projekt narzędzia Maven (kliknij **pliku**, następnie **New**, następnie **projektu**).
    
-    ![][12]
+    ![Plik -> Nowy -> Projekt][12]
 5. Wybierz **Użyj domyślną lokalizację obszaru roboczego**, następnie kliknij przycisk **dalej**
 6. Wybierz **maven-archetype-quickstart** archetype, następnie kliknij przycisk **dalej**
 7. Wstaw **GroupId** i **ArtifactId**, następnie kliknij przycisk **Zakończ**

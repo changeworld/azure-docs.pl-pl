@@ -1,24 +1,26 @@
 ---
-title: Dostosowywanie Wymowa przy użyciu usługi mowy
+title: Dostosowywanie Wymowa — usługi mowy
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak dostosować Wymowa z usługa mowy.
+description: Dowiedz się, jak dostosować Wymowa z usługa mowy. Za pomocą niestandardowych Wymowa można zdefiniować fonetycznych formularza i wyświetlanie słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: c7f82e9fb286e53f9408e2134dbdc9c2b24ff267
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 6d57bdd8444f5bd6d763400c4df4395bb33a7bdd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837702"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100008"
 ---
 # <a name="enable-custom-pronunciation"></a>Włącz Wymowa niestandardowe
-Za pomocą niestandardowych wymowa, można zdefiniować fonetycznych formularza i wyświetlanie słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko co potrzebne jest plikiem Wymowa (pliku txt prosty).
+
+Za pomocą niestandardowych wymowa, można zdefiniować fonetycznych formularza i wyświetlanie słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt.
 
 Oto, jak to działa. W pliku txt pojedynczego można wprowadzić kilka niestandardowych Wymowa wpisów. Struktura jest następująca:
 
@@ -41,10 +43,10 @@ Każdy plik txt może mieć wiele wpisów, jak pokazano na poniższej ilustracji
 
 ![Przykłady Wymowa akronim](media/stt/custom-speech-pronunciation-file.png)
 
-Mówionej formy jest ciągiem fonetycznych formularz wyświetlania. Składa się z liter, słowa lub sylab. Obecnie nie ma żadnych dalszych wskazówek lub zestaw standardów, aby pomóc w tworzeniu mówionej formy. 
+Mówionej formy jest ciągiem fonetycznych formularz wyświetlania. Składa się z liter, słowa lub sylab. Obecnie nie ma żadnych dalszych wskazówek lub zestaw standardów, aby pomóc w tworzeniu mówionej formy.
 
 ## <a name="supported-pronunciation-characters"></a>Wymowa obsługiwane znaki
-Wymowa niestandardowego jest obecnie obsługiwane dla języka angielskiego (en US) i niemiecki (de-de). Zestaw znaków, który służy do express mówionej formy termin (w pliku niestandardowego Wymowa) są wyświetlane w poniższej tabeli: 
+Wymowa niestandardowego jest obecnie obsługiwane dla języka angielskiego (en US) i niemiecki (de-de). Zestaw znaków, który służy do express mówionej formy termin (w pliku niestandardowego Wymowa) są wyświetlane w poniższej tabeli:
 
 | Język | Znaki |
 |---------- |----------|
@@ -55,10 +57,10 @@ Wymowa niestandardowego jest obecnie obsługiwane dla języka angielskiego (en U
 > Formularz wyświetlania termin (w pliku Wymowa) zapisywane taki sam sposób w zestawie danych dostosowywania języka.
 
 ## <a name="requirements-for-the-display-form"></a>Wymagania dotyczące formularz wyświetlania
-Formularz wyświetlania można tylko niestandardowe słowa, czasu trwania umowy, akronim lub wyrazy złożone łączące istniejące słowa. Można również wprowadzić alternatywne wymowy popularne wyrazy. 
+Formularz wyświetlania można tylko niestandardowe słowa, czasu trwania umowy, akronim lub wyrazy złożone łączące istniejące słowa. Można również wprowadzić alternatywne wymowy popularne wyrazy.
 
 >[!NOTE]
->Nie zaleca się używania tej funkcji, aby sformułować popularnych wyrazów lub zmodyfikować mówionej formy. Zaleca dekodera, aby zobaczyć, czy niektóre nietypowe wyrazów (np. skróty wyrazy techniczne i obce słowa) są niepoprawnie zdekodowane. W takim przypadku należy dodać je do pliku Wymowa niestandardowych. W model języka należy zawsze i tylko używać formularz wyświetlania wyrazu. 
+>Nie zaleca się używania tej funkcji, aby sformułować popularnych wyrazów lub zmodyfikować mówionej formy. Zaleca dekodera, aby zobaczyć, czy niektóre nietypowe wyrazów (np. skróty wyrazy techniczne i obce słowa) są niepoprawnie zdekodowane. W takim przypadku należy dodać je do pliku Wymowa niestandardowych. W model języka należy zawsze i tylko używać formularz wyświetlania wyrazu.
 
 ## <a name="requirements-for-the-file-size"></a>Wymagania dotyczące rozmiaru pliku
 Rozmiar pliku txt, który zawiera wpisy Wymowa jest ograniczona do 1 MB (1KB dla kluczy w warstwie bezpłatna). Zazwyczaj nie trzeba przekazywanie dużych ilości danych przy użyciu tego pliku. Większość plików niestandardowych Wymowa prawdopodobnie kilku kilobajtów (KB/s) w rozmiarze. Kodowanie pliku txt, dla wszystkich ustawień regionalnych powinna być BOM UTF-8. Angielskie ustawienia regionalne dopuszczalne jest również ANSI.
@@ -66,4 +68,3 @@ Rozmiar pliku txt, który zawiera wpisy Wymowa jest ograniczona do 1 MB (1KB dla
 ## <a name="next-steps"></a>Kolejne kroki
 * Popraw dokładności rozpoznawania, tworząc [niestandardowy model akustyczny](how-to-customize-acoustic-models.md).
 * Popraw dokładności rozpoznawania, tworząc [model języka niestandardowego](how-to-customize-language-model.md).
- 

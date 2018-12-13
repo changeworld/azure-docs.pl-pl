@@ -1,19 +1,20 @@
 ---
-title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft usługi ExpressRoute platformy Azure: PowerShell | Dokumentacja firmy Microsoft'
+title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft — usługi ExpressRoute: programu PowerShell: Azure | Dokumentacja firmy Microsoft'
 description: W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu programu PowerShell
 documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
-ms.openlocfilehash: d4ef500185675ab84485c5dd6a9af4034c57b060
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419269"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096300"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: PowerShell
 > [!div class="op_single_selector"]

@@ -1,30 +1,31 @@
 ---
 title: Zrozumienie zadanie monitorowania w usłudze Azure Stream Analytics
-description: W tym artykule opisano sposób monitorowania zadania w usłudze Azure Stream Analytics
+description: W tym artykule opisano sposób monitorowania zadań usługi Azure Stream Analytics w witrynie Azure portal.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 81c5eabcfcca6818293ff9dbbfb1515d5729dd79
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 656f749fd2a930c51bfd7d1a99642fae87694846
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963288"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096623"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Omówienie monitorowania zadań usługi Stream Analytics oraz monitorowanie zapytań
 
 ## <a name="introduction-the-monitor-page"></a>Wprowadzenie: Strona monitorowania
 Azure portal, zarówno powierzchni kluczowe metryki wydajności, który może służyć do monitorowania i rozwiązywania problemów wydajność zapytań i zadania. Aby wyświetlić te metryki, przejdź do zadania usługi Stream Analytics, interesujące Cię metryki i wyświetlić **monitorowanie** sekcji na stronie Przegląd.  
 
-![Monitorowanie łącza](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
+![Link monitorowania zadania Stream Analytics](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
 Zostanie wyświetlone okno, jak pokazano:
 
-![Monitorowanie zadań pulpitu nawigacyjnego](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
+![Pulpit nawigacyjny monitorowania zadania usługi Stream Analytics](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Metryki dostępne dla usługi Stream Analytics
 | Metryka                 | Definicja                               |
@@ -33,23 +34,23 @@ Zostanie wyświetlone okno, jak pokazano:
 | Błędy konwersji danych | Liczba zdarzeń wyjściowych, których nie można przekonwertować schematu oczekiwanych danych wyjściowych. |
 | Wczesne zdarzenia wejściowe       | Liczba zdarzeń otrzymanych wcześnie. |
 | Żądania funkcji zakończone niepowodzeniem | Liczba nieudanych wywołań funkcji usługi Azure Machine Learning (jeśli istnieje). |
-| Zdarzenia — funkcja        | Liczba zdarzeń wysyłanych do funkcji usługi Azure Machine Learning (jeśli istnieje). |
+| Zdarzenia funkcji        | Liczba zdarzeń wysyłanych do funkcji usługi Azure Machine Learning (jeśli istnieje). |
 | Żądania funkcji      | Liczba wywołań funkcji usługi Azure Machine Learning (jeśli istnieje). |
 | Błędy deserializacji danych wejściowych       | Liczba zdarzeń, których nie można wykonać deserializacji.  |
-| Dane wejściowe zdarzenia bajtów      | Ilość danych otrzymywanych przez zadanie usługi Stream Analytics, w bajtach. Może to służyć do sprawdzania, czy zdarzenia są wysyłane do źródła danych wejściowych. |
+| Zdarzenia wejściowe (bajty)      | Ilość danych otrzymywanych przez zadanie usługi Stream Analytics, w bajtach. Może to służyć do sprawdzania, czy zdarzenia są wysyłane do źródła danych wejściowych. |
 | Zdarzenia wejściowe           | Ilość danych otrzymywanych przez zadanie usługi Stream Analytics, w liczbie zdarzeń. Może to służyć do sprawdzania, czy zdarzenia są wysyłane do źródła danych wejściowych. |
-| Odebrano źródeł danych wejściowych       | Liczba zdarzeń przychodzących z źródła danych wejściowych. |
+| Odebrane źródła wejściowe       | Liczba zdarzeń przychodzących z źródła danych wejściowych. |
 | Opóźnione zdarzenia wejściowe      | Liczba zdarzeń przybywających późne ze źródła, które albo zostały usunięte lub sygnatur czasowych została zmieniona na prawidłową, na podstawie konfiguracji zasad kolejność zdarzeń ustawienie Rozpoznanie późnego przybycia okno tolerancji. |
 | Zdarzenia poza kolejnością    | Liczba zdarzeń otrzymanych poza kolejnością, które zostały porzucone lub podane skorygowany sygnatury czasowej, na podstawie zasad kolejność zdarzeń. Może to mieć wpływ konfigurację ustawienia okno tolerancji Out of zamówienia. |
 | Zdarzenia wyjściowe          | Ilość danych wysłanych przez zadanie usługi Stream Analytics do obiektu docelowego dane wyjściowe w liczbie zdarzeń. |
-| Błędy czasu wykonywania         | Całkowita liczba błędów związanych z przetwarzania zapytań (z wyjątkiem błędów znalezionych podczas zbierać zdarzenia lub wyniki outputing) |
-| % Wykorzystania SU       | Użycie jednostek przesyłania strumieniowego jest przypisana do zadania na karcie Skala zadania. Jeżeli ten wskaźnik osiągnie 80% lub powyżej, istnieje wysokie prawdopodobieństwo, że przetwarzanie zdarzeń może być opóźniona lub postępu. |
+| Błędy w czasie wykonywania         | Całkowita liczba błędów związanych z przetwarzania zapytań (z wyjątkiem błędów znalezionych podczas zbierać zdarzenia lub wyniki outputing) |
+| % wykorzystania SU       | Użycie jednostek przesyłania strumieniowego jest przypisana do zadania na karcie Skala zadania. Jeżeli ten wskaźnik osiągnie 80% lub powyżej, istnieje wysokie prawdopodobieństwo, że przetwarzanie zdarzeń może być opóźniona lub postępu. |
 | Opóźnienie znaku wodnego       | Opóźnienie maksymalnego limitu wszystkich partycji wszystkie dane wyjściowe zadania. |
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Dostosowywanie monitorowania w witrynie Azure portal
 Można dostosować typ wykresu, metryki wyświetlane i zakres w ustawieniach Edytuj wykres czasu. Aby uzyskać więcej informacji, zobacz [jak dostosować monitorowanie](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
-  ![Wykres czasu monitora zapytania](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
+  ![Wykres czasu monitora zapytań usługi Stream Analytics](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
 
 ## <a name="latest-output"></a>Najnowsze dane wyjściowe

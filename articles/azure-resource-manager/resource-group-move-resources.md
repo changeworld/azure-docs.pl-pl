@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 27b41655d9a6c9000d9bc3cf98bf3246bb108104
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: d16f05c208e737f7c0095fc95c4272fe216f7a34
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015555"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094937"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -215,6 +215,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Pulpity nawigacyjne portalu
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — Zobacz [ograniczenia publicznego adresu IP](#pip-limitations)
+* Magazyn usługi Recovery Services — muszą być zarejestrowane w prywatnej wersji zapoznawczej. Zobacz [ograniczenia usług Recovery Services](#recovery-services-limitations).
 * Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Scheduler
 * Wyszukiwanie
@@ -259,7 +260,6 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Microsoft Genomics
 * NetApp
 * Publiczny adres IP — Zobacz [ograniczenia publicznego adresu IP](#pip-limitations)
-* Magazyn usługi Recovery Services - również nie przeniesienie zasobów obliczeniowych, sieci i magazynu skojarzonego z magazynem usługi Recovery Services, zobacz [ograniczenia usług Recovery Services](#recovery-services-limitations).
 * Oprogramowanie SAP HANA na platformie Azure
 * Bezpieczeństwo
 * Site Recovery
@@ -446,6 +446,8 @@ Operacja może trwać kilka minut.
 
 ## <a name="recovery-services-limitations"></a>Ograniczenia usług odzyskiwania
 
+Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się w prywatnej wersji zapoznawczej. Aby wypróbować tę funkcję, zapisać AskAzureBackupTeam@microsoft.com.
+
 Przeniesienie nie jest włączone dla zasobów magazynu, sieci lub obliczeń umożliwia konfigurowanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 
 Na przykład załóżmy, że zostały skonfigurowane do replikacji maszyn lokalnych na koncie magazynu (Storage1) i chcesz chronionej maszyny, co pozwoli uzyskać po włączeniu trybu failover na platformie Azure jako maszyna wirtualna (MW1) dołączone do sieci wirtualnej (Network1). Nie można przenieść jedną z następujących zasobów platformy Azure — Storage1, VM1 i Network1 — między grupami zasobów w ramach tej samej subskrypcji lub w różnych subskrypcjach.
@@ -453,7 +455,10 @@ Na przykład załóżmy, że zostały skonfigurowane do replikacji maszyn lokaln
 Aby przenieść Maszynę wirtualną zarejestrowane w **usługa Azure backup** między grupami zasobów:
  1. Tymczasowo Zatrzymaj kopię zapasową i Zachowaj dane kopii zapasowej
  2. Przenieś maszynę Wirtualną do docelowej grupy zasobów
- 3. Włącz ponownie jej ochronę w ramach tego samego/nowego magazynu, które użytkownicy mogą przywracać z dostępnych punktów przywracania utworzonych przed operacji przenoszenia.
+ 3. Ponowne włączanie ochrony w ramach tego samego/nowy magazyn
+
+Użytkownicy mogą przywracać z dostępnych punktów przywracania utworzonych przed operacji przenoszenia.
+
 Jeśli użytkownik przenosi kopii zapasowej maszyny Wirtualnej między subskrypcjami, krok 1 i 2 pozostają takie same. W kroku 3 użytkownik musi ochronę maszyny Wirtualnej w nowym magazynie obecne / utworzonych w subskrypcji docelowej. Magazyn usługi Recovery Services nie obsługuje tworzenia kopii zapasowych między subskrypcjami.
 
 ## <a name="hdinsight-limitations"></a>Ograniczenia HDInsight

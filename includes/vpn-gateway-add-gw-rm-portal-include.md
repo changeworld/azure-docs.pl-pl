@@ -5,38 +5,50 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/17/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e2c05feffc0b0cebe71083b8ec918204843d0720
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 72e61a36b58c0bc666f3e19b71fb1abe842208f5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409833"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111623"
 ---
-1. W portalu po lewej stronie kliknij pozycję **+Utwórz zasób** i wpisz „brama sieci wirtualnej” w polu wyszukiwania. Znajdź pozycję **Brama sieci wirtualnej** w wynikach wyszukiwania i kliknij tę pozycję. Na stronie **Brama sieci wirtualnej** kliknij pozycję **Utwórz** u dołu strony, aby otworzyć stronę **Tworzenie bramy sieci wirtualnej**.
-2. Na stronie **Tworzenie bramy sieci wirtualnej** wypełnij wartości dla swojej bramy sieci wirtualnej.
+1. Zaloguj się w witrynie Azure portal i wybierz **Utwórz zasób**. **New** zostanie otwarta strona.
 
-  ![Pola na stronie Tworzenie bramy sieci wirtualnej](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "Pola na stronie Tworzenie bramy sieci wirtualnej")
-3. Na stronie **Tworzenie bramy sieci wirtualnej** określ wartości dla swojej bramy sieci wirtualnej.
+2. W **pole marketplace wyszukiwania**, wprowadź *bramy sieci wirtualnej*i wybierz **bramy sieci wirtualnej** z listy wyszukiwania. 
 
-  - **Nazwa**: Nadaj nazwę bramie. Nie chodzi o nazwę podsieci bramy. Jest to nazwa obiektu bramy, który zostanie utworzony.
-  - **Typ bramy**: Wybierz pozycję **Sieć VPN**. Bramy sieci VPN używają typu bramy sieci wirtualnej **Sieć VPN**. 
-  - **Typ sieci VPN**: Wybierz typ sieci VPN określony dla danej konfiguracji. Większość konfiguracji wymaga zastosowania typu sieci VPN opartego na trasach.
-  - **Jednostka SKU**: Wybierz jednostkę SKU bramy z listy rozwijanej. Jednostki SKU wymienione na liście rozwijanej zależą od wybranego typu sieci VPN. Więcej informacji o jednostkach SKU bramy zawiera artykuł [Gateway SKUs](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
+3. Na **bramy sieci wirtualnej** wybierz opcję **Utwórz** otworzyć **Tworzenie bramy sieci wirtualnej** strony.
 
-    Ustawienie **Włącz tryb aktywny-aktywny** wybierz tylko wtedy, gdy tworzysz konfigurację bramy typu aktywne-aktywne. W przeciwnym razie pozostaw to ustawienie niewybrane.
-  - **Lokalizacja**: Aby zobaczyć pozycję Lokalizacja, może być konieczne przewinięcie ekranu. Dostosuj pole **Lokalizacja**, aby wskazywało miejsce, w którym znajduje się sieć wirtualna. Na przykład: Zachodnie stany USA. Jeśli lokalizacja nie wskazuje regionu, w którym znajduje się Twoja sieć wirtualna, sieć ta nie będzie widoczna na liście rozwijanej po wybraniu sieci wirtualnej w następnym kroku.
-  - **Sieć wirtualna**: Wybierz sieć wirtualną, do której chcesz dodać tę bramę. Kliknij pozycję **Sieć wirtualna**, aby otworzyć stronę „Wybieranie sieci wirtualnej”. Wybierz sieć wirtualną. Jeśli sieć wirtualna nie jest widoczna, upewnij się, że wartość w polu Lokalizacja wskazuje region, w którym znajduje się sieć wirtualna.
-  - **Zakres adresów podsieci bramy**: to ustawienie będzie wyświetlane tylko w przypadku, jeśli wcześniej nie utworzono podsieci bramy dla sieci wirtualnej. Jeśli wcześniej utworzono prawidłową podsieć bramy, to ustawienie nie będzie wyświetlane.
-  - **Publiczny adres IP**: to ustawienie określa obiekt publicznego adresu IP, który zostaje skojarzony z bramą sieci VPN. Publiczny adres IP jest dynamicznie przypisywany do tego obiektu podczas tworzenia bramy sieci VPN. Brama sieci VPN aktualnie obsługuje tylko *dynamiczne* przypisywanie publicznych adresów IP. Nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
+   ![Pola na stronie Tworzenie bramy sieci wirtualnej](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "Pola na stronie Tworzenie bramy sieci wirtualnej")
 
-    - Pozostaw wybraną opcję **Utwórz nowy**.
-    - W polu tekstowym wprowadź **nazwę** publicznego adresu IP.
+4. Na **Tworzenie bramy sieci wirtualnej** strony, podaj wartości dla swojej bramy sieci wirtualnej:
 
-4. Pozostaw opcję **Skonfiguruj numer ASN protokołu BGP** niewybraną, chyba że Twoja konfiguracja wymaga tego ustawienia. Jeśli to ustawienie jest wymagane, domyślny numer ASN to 65515, ale można go zmienić.
-5. Sprawdź poprawność ustawień. Jeśli chcesz, aby brama była wyświetlana na pulpicie nawigacyjnym, możesz wybrać pozycję **Przypnij do pulpitu nawigacyjnego** u dołu strony. 
-6. Kliknij przycisk **Utwórz**, aby rozpocząć tworzenie bramy sieci VPN. Zostanie sprawdzona poprawność ustawień, a na pulpicie nawigacyjnym pojawi się kafelek „Wdrażanie bramy sieci wirtualnej”. Tworzenie bramy może potrwać do 45 minut. Być może będzie trzeba odświeżyć stronę portalu, aby zobaczyć, czy tworzenie zostało ukończone.
+   - **Nazwa**: Wprowadź nazwę obiektu bramy, tworzysz. Ta nazwa jest inna niż nazwa podsieci bramy. 
 
-Po utworzeniu bramy sprawdź adres IP, który został do niej przypisany, spoglądając na sieć wirtualną w portalu. Brama jest widoczna jako urządzenie podłączone. Możesz kliknąć podłączone urządzenie (bramę sieci wirtualnej), aby wyświetlić więcej informacji.
+   - **Typ bramy**: Wybierz **VPN** dla bram sieci VPN. 
+
+   - **Typ sieci VPN**: Wybierz typ sieci VPN określony dla danej konfiguracji. Większość konfiguracji wymaga zastosowania **oparte na trasach** typu sieci VPN.
+
+   - **Jednostka SKU**: Wybierz jednostkę SKU bramy z listy rozwijanej. Jednostki SKU wymienione na liście rozwijanej zależą od wybranego typu sieci VPN. Więcej informacji o jednostkach SKU bramy zawiera artykuł [Gateway SKUs](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
+
+      Wybierz tylko **Włącz tryb aktywny aktywny** przy tworzeniu konfiguracji aktywne aktywne bramy. W przeciwnym razie pozostaw to ustawienie niewybrane.
+  
+   - **Lokalizacja**: może być konieczne przewinięcie w celu wyświetlenia **lokalizacji**. Ustaw **lokalizacji** do lokalizacji, w którym znajduje się Twoja sieć wirtualna. Na przykład **zachodnie stany USA**. Jeśli nie ustawisz lokalizacji do regionu, w którym znajduje się Twoja sieć wirtualna nie będzie on widoczny na liście rozwijanej po wybraniu sieci wirtualnej.
+
+   - **Sieć wirtualna**: Wybierz sieć wirtualną, do której chcesz dodać tę bramę. Wybierz **sieć wirtualna** otworzyć **wybierz sieć wirtualną** strony i wybierz sieć wirtualną. Jeśli nie widzisz sieci wirtualnej, upewnij się, **lokalizacji** pole jest ustawione na region, w którym znajduje się Twoja sieć wirtualna.
+
+   - **Zakres adresów podsieci bramy**: to ustawienie zostanie wyświetlony tylko, jeśli wcześniej nie utworzono podsieć bramy dla sieci wirtualnej. Jeśli wcześniej utworzono prawidłową podsieć bramy, to ustawienie nie będzie wyświetlane.
+
+   - **Publiczny adres IP**: to ustawienie określa obiektu publicznego adresu IP, skojarzony z bramą sieci VPN. Publiczny adres IP jest dynamicznie przypisywany do tego obiektu podczas tworzenia bramy sieci VPN. Brama sieci VPN aktualnie obsługuje tylko *dynamiczne* publicznych przydzielanie adresów IP. Dynamiczna alokacja nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją zmian publicznego adresu IP jest, gdy usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
+    
+      - Pozostaw wybraną opcję **Utwórz nowy**.
+
+      - W polu tekstowym wprowadź nazwę dla publicznego adresu IP.
+
+   - **Skonfiguruj numer ASN protokołu BGP**: należy pozostawić to ustawienie, niezaznaczone, chyba że specjalnie wymaga konfiguracji. Jeśli to ustawienie jest wymagane, domyślny numer ASN jest *65515*, które można zmienić.
+     
+5. Sprawdź ustawienia i wybierz **Utwórz** aby rozpocząć tworzenie bramy sieci VPN. Ustawienia zostaną zweryfikowane, a zobaczysz **wdrażanie bramy sieci wirtualnej** Kafelek na pulpicie nawigacyjnym. Tworzenie bramy może potrwać do 45 minut. Być może będzie trzeba odświeżyć stronę portalu, aby zobaczyć, czy tworzenie zostało ukończone.
+
+6. Po utworzeniu bramy Sprawdź adres IP, który jest do niej przypisany, wyświetlając sieć wirtualną w portalu. Brama jest widoczna jako urządzenie podłączone. Możesz wybrać podłączone urządzenie (bramę sieci wirtualnej) aby wyświetlić więcej informacji.

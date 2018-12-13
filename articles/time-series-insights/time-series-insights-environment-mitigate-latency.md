@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: e301afaa2fed2b00599fbdde8178203965280c0d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: MT
+ms.openlocfilehash: e2b68982a855b56d97983460f248ef3040d03d79
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364999"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876764"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i minimalizowanie ograniczania w celu zmniejszenia opóźnienia w usłudze Azure Time Series Insights
 Gdy ilość danych przychodzących przekroczy konfiguracji w danym środowisku, mogą wystąpić opóźnienia lub ograniczanie żądań w usłudze Azure Time Series Insights.
@@ -56,9 +56,9 @@ Z tego miejsca można skonfigurować alertów za pomocą następujących metryk:
 |**Ruch przychodzący Odebrano nieprawidłowy komunikaty**     | Liczba komunikatów nieprawidłowy odczytu ze wszystkich źródeł zdarzeń usługi Azure Event Hubs lub usługi Azure IoT Hub.      |
 |**Ruch przychodzący odebranych komunikatów**   | Liczba komunikatów są odczytywane z źródła zdarzeń wszystkie centra zdarzeń lub centra IoT Hub.        |
 |**Ruch przychodzący przechowywane bajtów**     | Całkowity rozmiar zdarzenia zapisane i dostępne dla zapytania. Rozmiar jest obliczana tylko na wartości właściwości.        |
-|**Ruch przychodzący przechowywanych zdarzeń**     |   Liczba zdarzeń spłaszczonych przechowywane i dostępne dla zapytania.      |
-|**Opóźnienie czasowe odebranego komunikatu przychodzącego**    |  Różnica w sekundach między czasem, że wiadomość jest dodawanych do kolejki zdarzeń źródła i czasu, gdy są przetwarzane w transferu danych przychodzących.      |
-|**Ruch przychodzący Odebrano Lag liczba komunikatów**    |  Różnica między liczba sekwencji ostatniej wiadomości w kolejce w zdarzeniu źródła partycji i numer sekwencji przetwarzanego w ruchu przychodzącego komunikatu.      |
+|**Ruch przychodzący przechowywanych zdarzeń**     |   Liczba zdarzeń spłaszczonych przechowywane i dostępne dla zapytania.      |
+|**Opóźnienie czasowe odebranego komunikatu przychodzącego**    |  Różnica w sekundach między czasem, że wiadomość jest dodawanych do kolejki zdarzeń źródła i czasu, gdy są przetwarzane w transferu danych przychodzących.      |
+|**Ruch przychodzący Odebrano Lag liczba komunikatów**    |  Różnica między liczba sekwencji ostatniej wiadomości w kolejce w zdarzeniu źródła partycji i numer sekwencji przetwarzanego w ruchu przychodzącego komunikatu.      |
 
 
 ![Opóźnienie](media/environment-mitigate-latency/latency.png)

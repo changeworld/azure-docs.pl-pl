@@ -1,5 +1,5 @@
 ---
-title: Dotyczących platformy Azure bezpośrednio z usługi ExpressRoute | Dokumentacja firmy Microsoft
+title: Temat usługi ExpressRoute bezpośrednio — Azure | Dokumentacja firmy Microsoft
 description: Ta strona zawiera omówienie usługi ExpressRoute bezpośrednich (wersja zapoznawcza)
 services: expressroute
 author: mialdrid
@@ -7,16 +7,17 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: mialdrid
-ms.openlocfilehash: 3b46f24edf10fee7001b35ffdd9fa218aa438e19
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 2310f007697cf1acbdbc907d4562853a2717eb5d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959684"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097128"
 ---
 # <a name="about-expressroute-direct-preview"></a>Temat usługi ExpressRoute bezpośrednie (wersja zapoznawcza)
 
-Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośrednio z globalną siecią firmy Microsoft w skomunikowanych równorzędnie lokalizacjach strategicznie rozmieszczonych na całym świecie. Bezpośrednie ExpressRoute zapewnia łączność podwójną 100 GB, obsługująca łączność aktywny/aktywny na dużą skalę.
+Umożliwia bezpośrednie ExpressRoute podłączone bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Bezpośrednie ExpressRoute zapewnia łączność podwójną 100 GB, obsługująca łączność aktywny/aktywny na dużą skalę.
 
 Najważniejsze funkcje, które zapewnia usługi ExpressRoute bezpośrednio obejmują, ale nie są ograniczone do:
 

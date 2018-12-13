@@ -9,16 +9,16 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 0b95441fd2805308c601509f1afc477f72bde321
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: edcb2ecb74255ddbb8d601cb69565fb401b756d2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49476250"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52886271"
 ---
-Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu poświadczeń subskrypcji platformy Azure, możesz użyć. Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu poświadczeń subskrypcji platformy Azure, możesz użyć. 
 
-Pulpit nawigacyjny z obszaru roboczego portalu jest obsługiwana na tylko w przeglądarkach Edge, Chrome i Firefox.
+Pulpit nawigacyjny z obszaru roboczego portalu jest obsługiwana na tylko w przeglądarkach Microsoft Edge, Chrome i Firefox.
 
    ![Azure Portal](./media/aml-create-in-portal/portal-dashboard.png)
 

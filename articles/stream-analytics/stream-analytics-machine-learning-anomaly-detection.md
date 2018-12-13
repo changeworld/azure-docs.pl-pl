@@ -4,17 +4,17 @@ description: W tym artykule opisano sposób korzystania ze sobą usługi Azure S
 services: stream-analytics
 author: dubansal
 ms.author: dubansal
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: df1010be8c9f41684af806885db7587bfcf1c540
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567047"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091224"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 
@@ -95,7 +95,7 @@ W miarę postępów czasu modele są uczone z różnymi danymi. Aby poznać wyni
 
 Schematycznie kroki wyglądać w następujący sposób: 
 
-![Szkolenie modeli](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
+![Szkolenie modeli uczenia maszynowego](media/stream-analytics-machine-learning-anomaly-detection/machine-learning-training-model.png)
 
 |**Model** | **Czas rozpoczęcia szkolenia** | **Czas, aby rozpocząć korzystanie z jej wynik** |
 |---------|---------|---------|
@@ -145,15 +145,15 @@ Korzystając z tego wykrywanie, należy rozważyć następujące kwestie:
 
    Jest to pokazane na rysunku 1 i 2 poniżej z użyciem zmian górny limit (ta sama logika dotyczy niższe zmiany limitu). W obu wartości liczbowych kształty fali są nietypowe zmiany poziomu. Pionowe linie pomarańczowy oznaczają granice przeskoku i rozmiar przeskoku jest taka sama jak określono w operatorze AnomalyDetection okna wykrywania. Zielony linie wskazują rozmiar okna szkolenia. Na rysunku 1. rozmiar przeskoku jest taka sama jak czasu, dla których jest dostępna anomalii. Na rysunku 2 rozmiar przeskoku jest połowę czasu, dla których trwa anomalii. We wszystkich przypadkach zostanie wykryta zmiana palcem, ponieważ model wykorzystywany do oceniania został skonfigurowanych pod kątem na normalne danych. Ale oparte na jak działa wykrywanie zmiany poziomu dwukierunkowej, go wykluczyć normalnych wartości z okna szkolenia użyty dla modelu, który ocenia powrotu do normalnego. Na rysunku 1 szkoleń modelowych oceniania obejmuje niektóre zdarzenia normalne, więc nie można wykryć powrót do normalnego. Jednak na rysunku 2, szkolenie obejmuje tylko nietypowe strony, który zapewnia, że wykryto powrotu do normalnego. Mniejsze niż połowy współpracuje również z tego samego powodu należy nic większe znajdą włącznie bitowe normalne zdarzeń. 
 
-   ![Usługi AD o długości anomalii w taki sam rozmiar okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
+   ![Usługi AD o długości anomalii w taki sam rozmiar okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-anomaly-length.png)
 
-   ![AD przy użyciu rozmiaru okna jest równa połowie długość anomalii](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
+   ![AD przy użyciu rozmiaru okna jest równa połowie długość anomalii](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-half-anomaly-length.png)
 
 2. W przypadkach, w których nie można przewidzieć długość anomalii to wykrywanie działa w najlepszym nakładu pracy. Jednak wybór mniejszą niż przedział czasu ogranicza dane szkoleniowe, które będzie zwiększyć prawdopodobieństwo wykrycia powrotu do normalnego. 
 
 3. W poniższym scenariuszu dłużej anomalii nie wykryte jako okno szkolenia zawiera już anomalii o tej samej wysokiej wartości. 
 
-   ![Anomalie z takim samym rozmiarze](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
+   ![Wykryte anomalie z takim samym rozmiarze](media/stream-analytics-machine-learning-anomaly-detection/anomalies-with-same-length.png)
 
 ## <a name="example-query-to-detect-anomalies"></a>Przykładowe zapytanie do wykrywania anomalii 
 

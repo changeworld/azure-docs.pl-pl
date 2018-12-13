@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5c45167255ec91030f07e550de223a7ebed93168
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 0971122ee7b9cde0664ee661454a8b7824f4b7d5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345763"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093911"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -404,7 +404,7 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
 
    1. `fileName` nie zawiera filtr z symbolami wieloznacznymi.
    2. `rowDelimiter` musi być **\n**.
-   3. `nullValue` albo ustawiono **pusty ciąg** ("") lub w lewo jako domyślne, a `treatEmptyAsNull` nie jest ustawiony na wartość false.
+   3. `nullValue` albo ustawiono **pusty ciąg** ("") lub w lewo jako domyślny, i `treatEmptyAsNull` jest pozostanie domyślnie lub wartość true.
    4. `encodingName` ustawiono **utf-8**, która jest wartością domyślną.
    5. `escapeChar`, `quoteChar` i `skipLineCount` nie są określone. Obsługa technologii PolyBase, Pomiń wiersz nagłówka, w którym można skonfigurować jako `firstRowAsHeader` w usłudze ADF.
    6. `compression` może być **bez kompresji**, **GZip**, lub **Deflate**.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 83fbebc07be3a61d7fd54953f842a320a537a7ac
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985016"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091047"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Wykorzystywanie przetwarzania równoległego zapytań w usłudze Azure Stream Analytics
 W tym artykule pokazano, jak korzystać z zalet przetwarzania równoległego w usłudze Azure Stream Analytics. Dowiesz się, jak skalować zadania usługi Stream Analytics, konfigurując partycji danych wejściowych, a następnie dostosowując definicję zapytania usługi analytics.
@@ -51,7 +51,7 @@ Dane wyjściowe usługi Power BI, SQL i magazynu danych SQL nie obsługują part
 Aby uzyskać więcej informacji o partycjach zobacz następujące artykuły:
 
 * [Event Hubs features overview (Omówienie funkcji usługi Event Hubs)](../event-hubs/event-hubs-features.md#partitions)
-* [Partycjonowanie danych](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning#partitioning-azure-blob-storage)
+* [Partycjonowanie danych](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>Zaskakująco równoległymi zadaniami
@@ -80,9 +80,11 @@ W poniższych sekcjach omówiono niektóre przykładowe scenariusze, które są 
 
 Zapytanie:
 
+```SQL
     SELECT TollBoothId
     FROM Input1 Partition By PartitionId
     WHERE TollBoothId > 100
+```
 
 To zapytanie jest proste filtru. W związku z tym nie musimy martwić się o partycjonowanie danych wejściowych, które są wysyłane do Centrum zdarzeń. Należy zauważyć, że kwerenda zawiera **PARTITION BY PartitionId**, więc jego spełnia wymagania #2 z wcześniej. Dla danych wyjściowych, należy skonfigurować dane wyjściowe z Centrum zdarzeń w ramach zadania, aby zestaw kluczy partycji do **PartitionId**. Jeden ostatniego sprawdzenia jest upewnij się, że liczba partycji danych wejściowych jest równa liczbie partycji danych wyjściowych.
 
@@ -93,9 +95,11 @@ To zapytanie jest proste filtru. W związku z tym nie musimy martwić się o par
 
 Zapytanie:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 To zapytanie ma klucz grupowania. W związku z tym należy wysyłać zdarzenia zgrupowane razem na tej samej partycji Centrum zdarzeń. Ponieważ w tym przykładzie pogrupujemy przez TollBoothID, firma Microsoft Pamiętaj, że TollBoothID jest używany jako klucz partycji zdarzenia są wysyłane do Centrum zdarzeń. Następnie w ASA, możemy użyć **PARTITION BY PartitionId** dziedziczyć ten schemat partycji i włączyć pełne przetwarzanie równoległe. Ponieważ dane wyjściowe magazynu obiektów blob, nie potrzebujemy już martwić się o Konfigurowanie wartość klucza partycji dla każdego wymogu #4.
 
@@ -121,6 +125,7 @@ Dane wyjściowe usługi Power BI nie obsługuje obecnie partycjonowania. W zwią
 
 Zapytanie:
 
+```SQL
     WITH Step1 AS (
     SELECT COUNT(*) AS Count, TollBoothId, PartitionId
     FROM Input1 Partition By PartitionId
@@ -130,6 +135,7 @@ Zapytanie:
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1 Partition By TollBoothId
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 Jak widać, drugi etap używa **TollBoothId** jako klucza partycji. Ten krok nie jest taki sam jak pierwszy krok, a w związku z tym wymaga do zrobienia losowa. 
 
@@ -143,6 +149,7 @@ Zapytanie może mieć jeden lub kilka kroków. Każdy krok znajduje się podzapy
 
 Zapytanie:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -151,6 +158,7 @@ Zapytanie:
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute,3), TollBoothId
+```
 
 Ta kwerenda zawiera dwa kroki.
 
@@ -182,20 +190,25 @@ Możesz zobaczyć niektóre **przykłady** w poniższej tabeli.
 
 Następujące zapytanie oblicza liczbę samochodów w oknie trzyminutowe pośrednictwa stacji płatny, która ma trzy tollbooths. To zapytanie może być skalowana w maksymalnie sześć SUs.
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Aby użyć więcej SUs dla zapytania, musi być podzielony strumienia danych wejściowych i zapytania. Ponieważ partycja strumień danych jest ustawiony na 3, następujące zmodyfikowane zapytanie może być skalowana w taki sposób, maksymalnie 18 SUs:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Gdy zapytanie jest podzielone na partycje, zdarzenia wejściowe są przetwarzane i zagregowane w oddzielnej partycji grupy. Zdarzenia wyjściowe również są generowane dla każdej grupy. Partycjonowanie może spowodować, że niektóre nieoczekiwane wyniki podczas **GROUP BY** pole nie jest częścią klucza partycji w strumieniu danych wejściowych. Na przykład **TollBoothId** pola w poprzednim zapytaniu nie jest klucz partycji **wejście1**. Powoduje to, że dane z budki nr 1 mogły być rozkładane w wielu partycjach.
 
 Każdy z **wejście1** partycje będą przetwarzane osobno przez usługę Stream Analytics. W rezultacie wielu rekordów samochodu liczbę elementów w tej samej budki w tym samym oknie wirowania zostanie utworzony. Jeśli nie można zmienić klucza partycji danych wejściowych, można naprawić ten problem, dodając krok-partition do wartości zagregowanych w partycjach, jak w poniższym przykładzie:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -205,6 +218,7 @@ Każdy z **wejście1** partycje będą przetwarzane osobno przez usługę Stream
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 To zapytanie może być skalowane do 24 SUs.
 

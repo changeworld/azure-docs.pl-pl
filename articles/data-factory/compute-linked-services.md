@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 110005469d5ff42af10b29fcee97c2f130ecdc2d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390215"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873831"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Obliczenia środowisk obsługiwanych przez usługę Azure Data Factory
 W tym artykule opisano różnych środowiskach obliczeniowych, które służą do procesu lub przekształcania danych. Udostępniają one także szczegółowe informacje o różnych konfiguracjach (na żądanie i skorzystaj z własnych) obsługiwane przez usługę Data Factory, podczas konfigurowania usługi połączone, łączenia tych obliczeń środowisk na potrzeby usługi Azure data factory.
@@ -30,7 +30,7 @@ Poniższa tabela zawiera listę środowisk obliczeniowych obsługiwanych przez u
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](transform-data-using-machine-learning.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Język U-SQL usługi Data Lake Analytics](transform-data-using-data-lake-analytics.md) |
 | [Usługi Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [programu SQL Server](#sql-server-linked-service) | [Procedura składowana](transform-data-using-stored-procedure.md) |
-| [Usługa Azure Databricks](#azure-databricks-linked-service)         | [Notes](transform-data-databricks-notebook.md), [Jar](transform-data-databricks-jar.md), [języka Python](transform-data-databricks-python.md) |
+| [Azure Databricks](#azure-databricks-linked-service)         | [Notes](transform-data-databricks-notebook.md), [Jar](transform-data-databricks-jar.md), [języka Python](transform-data-databricks-python.md) |
 
 >  
 
@@ -48,11 +48,7 @@ Należy pamiętać o następujących **ważne** punkty o HDInsight na żądanie 
 * Klaster HDInsight na żądanie jest tworzony w ramach Twojej subskrypcji platformy Azure. Jesteś mogli zobaczyć klastra w portalu Azure, gdy klaster działa i jest uruchomiona. 
 * Dzienniki zadań uruchamianych w klastrze usługi HDInsight na żądanie są kopiowane do konta magazynu skojarzonego z klastrem HDInsight. ClusterUserName, clusterPassword, clusterSshUserName, clusterSshPassword zdefiniowane w definicji połączonej usługi są używane do logowania do klastra na potrzeby szczegółowego rozwiązywania problemów podczas cyklu życia klastra. 
 * Opłaty są naliczane tylko za czas, gdy klaster HDInsight działa i uruchomionych zadań.
-* Nie można użyć akcji skryptu za pomocą połączonej usługi Azure HDInsight na żądanie. Jeśli musisz zainstalować inne zależności, na przykład, należy wziąć pod uwagę przy użyciu usługi Azure Automation do uruchomienia skryptu programu PowerShell, który wykonuje następujące czynności:  
-  a. Tworzenie klastra HDInsight.  
-  b. Uruchamianie akcji skryptu, aby zainstalować inne zależności, na przykład.  
-  c. Uruchamianie potoku usługi fabryka danych.  
-  d. Usuwanie klastra.  
+* Akcja skryptu jest teraz obsługiwane w usłudze Azure HDInsight na żądanie połączone.  
 
 > [!IMPORTANT]
 > Trwa zwykle **20 minut** co najmniej do inicjowania obsługi klastra Azure HDInsight na żądanie.
@@ -108,7 +104,7 @@ Następujący kod JSON definiuje opartych na systemie Linux usługi połączonej
 | clusterResourceGroup         | Klaster HDInsight jest tworzony w tej grupie zasobów. | Yes      |
 | TimeToLive                   | Dozwolony czas bezczynności, po dla klastra HDInsight na żądanie. Określa, jak długo klastra HDInsight na żądanie pozostanie aktywny po zakończeniu działania uruchamiania w przypadku żadnych aktywnych działań w klastrze. Minimalne dozwolone wartości to 5 minut (00: 05:00).<br/><br/>Na przykład po uruchomienia działania trwa 6 minut i timetolive jest ustawiony na 5 minut, klaster pozostanie aktywny przez 5 minut po uruchomieniu 6 minut operacji przetwarzania działania. Jeśli uruchomienie innego działania jest wykonywane przy użyciu okna 6 minut, jest on przetwarzany przez tego samego klastra.<br/><br/>Tworzenie klastra usługi HDInsight na żądanie jest kosztowną operacją (może to trochę potrwać), użyj tak, to ustawienie jako potrzebnych do zwiększenia wydajności usługi data factory dzięki ponownemu wykorzystaniu klastra usługi HDInsight na żądanie.<br/><br/>Jeśli wartość timetolive jest ustawiona na wartość 0, klaster jest usuwany natychmiast po zakończeniu przebiegu działania. Natomiast jeśli ustawisz o wysokiej wartości, klaster może pozostać bezczynny zalogować się do rozwiązywania niektórych problemów cel, ale może spowodować wysokie koszty. Dlatego ważne jest, ustaw odpowiednią wartość zgodnie z potrzebami.<br/><br/>Jeśli skonfigurowana wartość właściwości timetolive wiele potoków można udostępniać wystąpienia klastra HDInsight na żądanie. | Yes      |
 | Typ klastra                  | Typ klastra HDInsight, który ma zostać utworzony. Dozwolone wartości to "usługi hadoop" i "spark". Jeśli nie zostanie określony, wartością domyślną jest hadoop. Pakiet Enterprise Security włączone klastra nie jest obecnie obsługiwana | Nie       |
-| wersja                      | Wersja klastra HDInsight. Jeśli nie zostanie określony, to przy użyciu bieżącej wersji zdefiniowanego domyślnego HDInsight. | Nie       |
+| version                      | Wersja klastra HDInsight. Jeśli nie zostanie określony, to przy użyciu bieżącej wersji zdefiniowanego domyślnego HDInsight. | Nie       |
 | hostSubscriptionId           | Identyfikator subskrypcji platformy Azure, użyte do utworzenia klastra HDInsight. Jeśli nie zostanie określony, używa Identyfikatora subskrypcji z kontekstu logowania do platformy Azure. | Nie       |
 | clusterNamePrefix           | Prefiks nazwy klastra usługi HDI sygnaturę czasową będzie automatycznie dołączany na końcu nazwy klastra| Nie       |
 | Parametrami                 | Wersja platformy spark, jeśli typ klastra jest "Spark" | Nie       |

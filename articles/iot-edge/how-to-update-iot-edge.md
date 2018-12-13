@@ -1,5 +1,5 @@
 ---
-title: Zaktualizuj urządzenia do najnowszej wersji usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+title: Aktualizacja wersji usługi IoT Edge na urządzeniach — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Jak zaktualizować urządzeń usługi IoT Edge, aby uruchamiać najnowsze wersje demona zabezpieczeń i środowisko uruchomieniowe usługi IoT Edge
 keywords: ''
 author: kgremban
@@ -9,14 +9,15 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1522d9c9bc4fda178d8571fb57cb9c94ed1044ae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 8b8638d8fa428b1b867e3f126ac8b5cc992cc273
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567795"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095158"
 ---
-# <a name="update-the-iot-edge-runtime"></a>Aktualizacja środowiska uruchomieniowego usługi IoT Edge
+# <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizowanie demona zabezpieczeń usługi IoT Edge i środowiska uruchomieniowego
 
 Jak usługa IoT Edge wydaje nowe wersje, należy zaktualizować urządzenia usługi IoT Edge, aby mieć najnowsze funkcje i poprawki zabezpieczeń. Ten artykuł zawiera informacje o sposobie aktualizowania urządzenia usługi IoT Edge, gdy dostępna jest nowa wersja. 
 
@@ -63,7 +64,7 @@ Sposób aktualizacji agenta usługi Edge i przeglądarki Edge hub kontenerów, z
 
 Zapoznaj się z wersją agenta usługi IoT Edge i moduły Centrum usługi Edge obecnie na twoim urządzeniu, za pomocą poleceń `iotedge logs edgeAgent` lub `iotedge logs edgeHub`. 
 
-  ![Wyświetl wersję kontenera](./media/how-to-update-iot-edge/container-version.png)
+  ![Znajdź wersję kontenera w dziennikach](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>Omówienie usługi IoT Edge tagów
 

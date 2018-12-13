@@ -1,21 +1,22 @@
 ---
-title: Dodawanie intencji w aplikacjach usługi LUIS
-titleSuffix: Azure Cognitive Services
+title: Dodawanie intencji
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Dodawanie intencji z aplikacją usługi LUIS do identyfikowania grup pytania lub polecenia, które mają ten sam intencji.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.component: language-understanding
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: MT
+ms.openlocfilehash: 20d076e256143683b52cfaa713e25e4d31f0f3d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139925"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098699"
 ---
 # <a name="add-intents"></a>Dodawanie intencji 
 
