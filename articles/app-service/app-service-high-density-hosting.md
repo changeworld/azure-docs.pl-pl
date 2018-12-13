@@ -1,5 +1,5 @@
 ---
-title: Hosting o dużej gęstości w usłudze Azure App Service przy użyciu skalowania dla aplikacji | Dokumentacja firmy Microsoft
+title: Hosting o dużej gęstości za pomocą aplikacji skalowanie — w usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Hosting o dużej gęstości w usłudze Azure App Service
 author: btardif
 manager: erikre
@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: e07653db70c5baff038cacf8628351c682e20f7f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: e7ebe3ade66e62e1f42aa304b33c42d96be72c06
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971984"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258920"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosting o dużej gęstości w usłudze Azure App Service przy użyciu skalowania dla aplikacji
 Domyślnie, skalować aplikacje usługi App Service, skalując [planu usługi App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md) działają one na. Gdy wiele aplikacji są uruchamiane w tym samym planie usługi App Service, każdego wystąpienia skalowanego uruchamia wszystkie aplikacje w planie.
@@ -129,10 +130,10 @@ Na skalowanie aplikacji to funkcja, która jest włączona w obu globalnych regi
 Wykonaj następujące kroki, aby skonfigurować o wysokiej gęstości hosting dla aplikacji:
 
 1. Skonfiguruj środowisko usługi App Service i wybierz pulę procesów roboczych przeznaczonych do scenariusza hostingu w sieci o wysokiej gęstości.
-1. Utwórz jeden plan usługi App Service i skalować ją na korzystanie z całej dostępnej pojemności puli procesów roboczych.
-1. Ustaw `PerSiteScaling` flagi na wartość true w planie usługi App Service.
-1. Nowe aplikacje zostały utworzone i przypisane do tego planu usługi App Service przy użyciu **numberOfWorkers** właściwością **1**. Za pomocą tej konfiguracji daje najwyższy gęstość można w tej puli procesów roboczych.
-1. Liczba procesów roboczych, które można niezależnie konfigurować na aplikację, aby udzielić dodatkowych zasobów, zgodnie z potrzebami. Na przykład:
+2. Utwórz jeden plan usługi App Service i skalować ją na korzystanie z całej dostępnej pojemności puli procesów roboczych.
+3. Ustaw `PerSiteScaling` flagi na wartość true w planie usługi App Service.
+4. Nowe aplikacje zostały utworzone i przypisane do tego planu usługi App Service przy użyciu **numberOfWorkers** właściwością **1**. Za pomocą tej konfiguracji daje najwyższy gęstość można w tej puli procesów roboczych.
+5. Liczba procesów roboczych, które można niezależnie konfigurować na aplikację, aby udzielić dodatkowych zasobów, zgodnie z potrzebami. Na przykład:
     - Można ustawić aplikacji obciążonym **numberOfWorkers** do **3** zapewnienie większej pojemności przetwarzania dla danej aplikacji. 
     - Ustawiał niskiego użycia aplikacje **numberOfWorkers** do **1**.
 

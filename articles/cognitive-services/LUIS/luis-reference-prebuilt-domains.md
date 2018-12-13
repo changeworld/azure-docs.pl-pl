@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: a47fb82b1e6d42bdebff8cc4f3cb4c3c87025831
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106247"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140969"
 ---
-# <a name="prebuilt-domain-reference"></a>Dokumentacja wstępnie utworzonych domen
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Dokumentacja ze wstępnie utworzonych domen aplikacją usługi LUIS
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
 
 [Domeny niestandardowe](luis-how-to-start-new-app.md), z drugiej strony, rozpoczynać się nie intencje i modeli. Można dodać żadnych wbudowanych domeny intencje i podmioty do modelu niestandardowego.
@@ -116,7 +116,7 @@ Domain komunikacja zapewnia intencje i podmioty, związane z poczty e-mail, wiad
 | TurnForwardingOff| Rozpoczynanie rozmowy telefonicznej.|<br/><br/>|
 | Wybierz ponownie| Wybierz ponownie lub ponownie wywołaj liczbą.|Wybierz ponownie.<br/>Wybierz ponownie Moje ostatnie wywołanie.|
 | Reject| Odrzucanie połączenia przychodzącego.|Odrzuć wywołanie<br/>Nie można odebrać<br/>Nie są dostępne w tej chwili i wywoła ponownie później.|
-| SendEmail| Wyślij wiadomość e-mail. Celem tego mają zastosowanie do wiadomości e-mail, ale nie wiadomości SMS.|Wiadomość e-mail do wody Mike: Mike, że obiad z ostatniego tygodnia był świetnie.<br/>Wyślij wiadomość e-mail do Boba<br/>|
+| SendEmail| Wyślij wiadomość e-mail. Celem tego mają zastosowanie do wiadomości e-mail, ale nie wiadomości SMS.|Adres e-mail do wody Mike: Mike czy obiad w ostatnim tygodniu została świetnie.<br/>Wyślij wiadomość e-mail do Boba<br/>|
 | SendMessage| Wyślij wiadomość SMS lub wiadomości błyskawicznej.|Wyślij wiadomość SMS, Chris i Karoliny|
 | SetSpeedDial| Ustaw skrót wybierania szybkość dla numeru telefonu kontaktu.|Ustaw szybkiego wybierania, jeden dla Karoliny.<br/>Skonfiguruj szybkie wybieranie dla programu Microsoft Operations Manager.|
 | ShowNext| Zobacz następną sekcję, na przykład listę wiadomości SMS lub wiadomości e-mail.|Pokaż następny.<br/>Przejdź do następnej strony.|
@@ -242,11 +242,12 @@ Domeny HomeAutomation zapewnia intencje i podmioty, związane z kontrolowanie in
 Domeny MovieTickets zapewnia intencje i podmioty, związane z żądania rezerwacji filmy na theater filmu.
 
 ### <a name="examples"></a>Przykłady
-```
-Book me two tickets for Captain Omar and the two Musketeers
-Cancel tickets
-When is Captain Omar showing?
-```
+
+|Przykłady|
+|--|
+|Zarezerwuj dwie bilety kapitana Omar i dwa muszkieterami|
+|Anuluj biletów|
+|Gdy Omar kapitana jest wyświetlane?|
 
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |

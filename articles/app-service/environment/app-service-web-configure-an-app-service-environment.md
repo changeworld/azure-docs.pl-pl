@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować usługę App Service Environment w wersji 1
+title: Jak skonfigurować usługę App Service Environment w wersji 1 - Azure
 description: Konfiguracji, zarządzania i monitorowania środowiska App Service Environment w wersji 1
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 60e086197b61d14394cad3d54a7efc4baede1f7b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 85353b68673ea91711e0c3d93e68bec662f406df
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965824"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272137"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurowanie aplikacji usługi Environment w wersji 1
 
@@ -51,7 +52,7 @@ Zmiana rozmiaru lub ilość nosi nazwę operacji skalowania.  Operacja skalowani
 * Frontony może potrwać do godziny aprowizację. 
 * Dalsze szczegóły skalowania, należy monitorować procent użycia procesora CPU i pamięci oraz metryki aktywne żądania dla puli frontonu. W przypadku wartości procentowych procesora CPU lub pamięci przekracza 70% podczas uruchamiania P3s, Dodaj więcej frontonów. Wartość aktywnych żądań uśrednia do 15 000 do 20 000 żądań na frontonie, należy również dodać więcej frontonów. Podstawowym celem jest zapewnienie procent procesora CPU i pamięci, poniżej 70% i aktywne żądania uśrednianie do poniżej 15 000 żądań na wierzch kończy się po uruchomieniu P3s.  
 
-**Procesy robocze**: procesy robocze są, gdzie faktycznie działają. Skalowanie w górę swoje plany usługi App Service, która korzysta z procesów roboczych w puli procesów roboczych skojarzone.
+**Procesy robocze**: Procesy robocze są, gdzie faktycznie działają. Skalowanie w górę swoje plany usługi App Service, która korzysta z procesów roboczych w puli procesów roboczych skojarzone.
 
 * Nie możesz natychmiast dodać pracowników. One może potrwać do godziny aprowizację.
 * Skalowanie rozmiaru zasobu obliczeniowego, dla każdej puli potrwa < 1 godziny dla domeny aktualizacji. Istnieją 20 domen aktualizacji w środowisku ASE. W przypadku zmiany skali rozmiar obliczeń w puli procesów roboczych z 10 wystąpień może potrwać do 10 godzin.
@@ -68,7 +69,7 @@ Jeśli aplikacje wymagają większy rozmiar zasobów obliczeniowych, nie można 
 * Przypisz ponownie swoje plany usługi App Service, które hostują aplikacje, które muszą większy rozmiar puli procesów roboczych nowo skonfigurowanego. To szybka operacja, która powinno zająć mniej niż minutę.  
 * Skaluj w dół do pierwszej puli procesów roboczych, jeśli nie potrzebujesz już tych nieużywanych wystąpień. Ta operacja trwa kilka minut.
 
-**Skalowanie automatyczne**: jednym z narzędzi, które mogą ułatwić Ci Zarządzanie użycia zasobów obliczeniowych jest skalowanie automatyczne. Możesz użyć skalowania automatycznego dla frontonu lub pule procesów roboczych. Można wykonywanie czynności takich jak wzrost wystąpień dowolnego typu puli rano i zmniejszyć jego wieczorem. Lub może być można dodać wystąpienia, gdy liczba procesów roboczych, które są dostępne w puli procesów roboczych nie spadnie poniżej określonego progu.
+**Skalowanie automatyczne**: Jednym z narzędzi, które mogą ułatwić Ci Zarządzanie użycia zasobów obliczeniowych jest skalowanie automatyczne. Możesz użyć skalowania automatycznego dla frontonu lub pule procesów roboczych. Można wykonywanie czynności takich jak wzrost wystąpień dowolnego typu puli rano i zmniejszyć jego wieczorem. Lub może być można dodać wystąpienia, gdy liczba procesów roboczych, które są dostępne w puli procesów roboczych nie spadnie poniżej określonego progu.
 
 Jeśli chcesz ustawić reguły skalowania automatycznego wokół metryki puli zasobów obliczeniowych, a następnie należy pamiętać, czas, który wymaga inicjowania obsługi administracyjnej. Aby uzyskać więcej szczegółów na temat skalowania automatycznego w środowiskach usługi App Service, zobacz [jak skonfigurować automatyczne skalowanie w środowisku usługi App Service][ASEAutoscale].
 
@@ -132,13 +133,13 @@ W przypadku środowiska ASE wszystkie plany usługi App Service są dedykowane p
 ### <a name="settings"></a>Ustawienia
 W bloku środowisko ASE jest **ustawienia** sekcji, która zawiera kilka ważnych możliwości:
 
-**Ustawienia** > **właściwości**: **ustawienia** automatycznie zostanie otwarty blok po uruchomieniu blok środowiska ASE. U góry znajduje **właściwości**. Istnieje kilka elementów w tym miejscu, które są nadmiarowe, aby zobaczyć w **Essentials**, ale co to jest bardzo przydatny jest **wirtualnego adresu IP**, także **wychodzące adresy IP**.
+**Ustawienia** > **właściwości**: **Ustawienia** automatycznie zostanie otwarty blok po uruchomieniu blok środowiska ASE. U góry znajduje **właściwości**. Istnieje kilka elementów w tym miejscu, które są nadmiarowe, aby zobaczyć w **Essentials**, ale co to jest bardzo przydatny jest **wirtualnego adresu IP**, także **wychodzące adresy IP**.
 
 ![Blok ustawień i właściwości][4]
 
-**Ustawienia** > **adresów IP**: podczas tworzenia aplikacji IP Secure Sockets Layer (SSL) w środowisku ASE, potrzebujesz adresu IP SSL. Aby można było go uzyskać, Twoje środowisko ASE wymaga adresów IP SSL, które jest właścicielem, które mogą być przydzielone. Po utworzeniu środowiska ASE zawiera jeden adres IP SSL w tym celu, ale można dodać więcej. Jest opłata za dodatkowe połączenie IP SSL adresy, jak pokazano na [cennik usługi App Service] [ AppServicePricing] (w sekcji połączenia SSL). Dodatkowe cena to cena połączenie IP SSL.
+**Ustawienia** > **adresów IP**: Po utworzeniu aplikacji IP Secure Sockets Layer (SSL) w środowisku ASE jest potrzebny adres IP SSL. Aby można było go uzyskać, Twoje środowisko ASE wymaga adresów IP SSL, które jest właścicielem, które mogą być przydzielone. Po utworzeniu środowiska ASE zawiera jeden adres IP SSL w tym celu, ale można dodać więcej. Jest opłata za dodatkowe połączenie IP SSL adresy, jak pokazano na [cennik usługi App Service] [ AppServicePricing] (w sekcji połączenia SSL). Dodatkowe cena to cena połączenie IP SSL.
 
-**Ustawienia** > **pula frontonu** / **pule procesów roboczych**: każda z tych bloków puli zasobów oferuje możliwość wyświetlania informacji tylko w tej puli zasobów, w Dodatek do zapewniania formanty do w pełni skalowania tej puli zasobów.  
+**Ustawienia** > **puli frontonu** / **pule procesów roboczych**: Każda z tych bloków puli zasobów oferuje możliwość wyświetlania informacji tylko w tej puli zasobów, oprócz zapewniania formanty do w pełni skalowania tej puli zasobów.  
 
 Podstawowy blok dla każdej puli zasobów zawiera wykres za pomocą metryk dla tej puli zasobów. Podobnie jak z wykresami z poziomu bloku ASE można przejść do wykresu i Konfigurowanie alertów zgodnie z potrzebami. Ustawienie alert z poziomu bloku ASE dla puli zasobów określonych działa tak samo jak to zrobić z puli zasobów. Z puli procesów roboczych **ustawienia** bloku, masz dostęp do wszystkich aplikacji lub plany usługi App Service, które są uruchomione w tej puli procesów roboczych.
 

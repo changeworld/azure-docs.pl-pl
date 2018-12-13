@@ -1,12 +1,11 @@
 ---
-title: Usługa Azure standardowego modułu równoważenia obciążenia i strefy dostępności | Dokumentacja firmy Microsoft
+title: Usługa Azure standardowego modułu równoważenia obciążenia i strefy dostępności
+titlesuffix: Azure Load Balancer
 description: Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/08/2018
 ms.author: kumud
-ms.openlocfilehash: 1f34a9319b8bbfba3f4a6f7446f949fc576aa4fa
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d157c331b633617bacfb5cc7254d188516f10ad7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869061"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187062"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 

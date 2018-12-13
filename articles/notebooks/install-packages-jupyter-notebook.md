@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ed57cb458cc1f71c5d6fd2475c54cc712257dd84
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 5baa392d098b0b0e40986bc426c88785db025a29
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084876"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255299"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Instalowanie pakietów z w ramach notesu
 
@@ -40,13 +40,13 @@ Jeśli dane wyjściowe polecenia wskazuje, że wymaganie już jest spełniony, a
 
 ## <a name="r"></a>R
 
-Można zainstalować pakietów w języku R z sieci CRAN lub Github przy użyciu `install.packages` funkcji w komórce kodu:
+Można zainstalować pakietów w języku R z sieci CRAN lub GitHub przy użyciu `install.packages` funkcji w komórce kodu:
 
 ```r
 install.packages("package_name")
 ```
 
-Z usługi Github za pomocą biblioteki devtools, można zainstalować wersje wstępne i inne pakiety programowania:
+Z usługi GitHub za pomocą biblioteki devtools, można zainstalować wersje wstępne i inne pakiety programowania:
 
 ```r
 options(unzip = 'internal')
@@ -73,5 +73,5 @@ Paket.Package
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Porady: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
-- [Porady: obecne pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+- [Jak: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
+- [Jak: Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)

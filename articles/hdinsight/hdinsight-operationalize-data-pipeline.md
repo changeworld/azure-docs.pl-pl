@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93c2808dc244a86f7a58aa65d649e9c3e8c17f7c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109975"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251712"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operacjonalizacja potoku analizy danych
 
@@ -24,10 +24,10 @@ W tym artykule opisano jak operacjonalizować potoki danych powtarzalności, prz
 
 W poniższym scenariuszu dane wejściowe są prostego pliku zawierającego partii danych lotów przez jeden miesiąc. Te dane lotu obejmują informacje, takie jak port początkowego i docelowego, mil przesyłane, wyjścia i czasy przybycia i tak dalej. Celem z tym potoku jest podsumowanie codzienną wydajność linii lotniczych, gdzie każdy linii lotniczych ma jeden wiersz dla każdego dnia średni wysyłki i przeznaczenia opóźnień w minut, a łączna liczba kilometrów przesyłane, tego samego dnia.
 
-| ROK | MIESIĄC | DAY_OF_MONTH | OPERATORA |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| YEAR | MONTH | DAY_OF_MONTH | OPERATORA |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 1 | 3 | PODOBNIE JAK | 9.435449 | 5.482143 | 572289 |
+| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
 Przykładowy potok czeka, aż danych lotów nowy okres czasu nadejściu, a następnie przechowuje te informacje szczegółowe lot do magazynu danych programu Hive do długoterminowego analiz. Potok tworzy również znacznie mniejszy zestaw danych, który znajduje się podsumowanie tylko dziennego lotu dane. Ta lotu podsumowanie danych dotyczących dziennego są wysyłane do usługi SQL database w odniesieniu do sporządzanie raportów, takich jak witryny sieci Web.
@@ -156,7 +156,7 @@ Wyświetl stan usługi Koordynator i wystąpienia przepływu pracy za pomocą ko
 
 ### <a name="configure-hive"></a>Konfigurowanie programu Hive
 
-1. Pobierz przykładowy plik CSV zawierający dane lotu przez jeden miesiąc. Pobierz swój plik ZIP `2017-01-FlightData.zip` z [repozytorium HDInsight Github](https://github.com/hdinsight/hdinsight-dev-guide) i Rozpakuj go do pliku CSV `2017-01-FlightData.csv`. 
+1. Pobierz przykładowy plik CSV zawierający dane lotu przez jeden miesiąc. Pobierz swój plik ZIP `2017-01-FlightData.zip` z [repozytorium HDInsight GitHub](https://github.com/hdinsight/hdinsight-dev-guide) i Rozpakuj go do pliku CSV `2017-01-FlightData.csv`. 
 
 2. Skopiuj ten plik CSV do konta usługi Azure Storage dołączone do klastra usługi HDInsight i umieść go w `/example/data/flights` folderu.
 
@@ -566,7 +566,7 @@ Jak widać, większość koordynatora po prostu przekazuje informacje o konfigur
 
     Pusty `done-flag` element wskazuje, że podczas Oozie sprawdza obecność danych wejściowych w wyznaczonym czasie, Oozie określa danych czy są dostępne przez obecność pliku lub katalogu. W tym przypadku jest obecność pliku csv. Jeśli plik csv jest obecny, Oozie zakłada danych jest gotowy i uruchamia wystąpienie przepływu pracy do przetwarzania pliku. Jeśli istnieje plik csv, nie jest obecny, Oozie przyjęto założenie, że dane nie są jeszcze gotowe i że przebieg przepływu pracy przechodzi w stan oczekiwania.
 
-* Punkt 3: `data-in` element określa określonej sygnatury czasowej do użycia jako nominalna czas podczas zastępowania wartości w `uri-template` dla skojarzonego zestawu danych.
+* Punkt 3: `data-in` Element określa określonej sygnatury czasowej do użycia jako nominalna czas podczas zastępowania wartości w `uri-template` dla skojarzonego zestawu danych.
 
     ```
     <data-in name="event_input1" dataset="ds_input1">
@@ -582,7 +582,7 @@ Połącz trzech poprzednich punktach umożliwiające uzyskanie sytuacji, w któr
 
 * Punkt 2: Oozie szuka danych dostępnych w `sourceDataFolder/2017-01-FlightData.csv`.
 
-* Punkt 3: Jeśli Oozie znajdzie się ten plik, planowana wystąpienie przepływu pracy, który przetworzy dane do 2017-01-01. Oozie następnie kontynuuje przetwarzanie 2017-01-02. Tego okresu ewaluacji powtarza się maksymalnie z wyjątkiem 2017-01-05.
+* Punkt 3: Jeśli Oozie znajdzie się ten plik, planuje wystąpienie przepływu pracy, który przetworzy dane do 2017-01-01. Oozie następnie kontynuuje przetwarzanie 2017-01-02. Tego okresu ewaluacji powtarza się maksymalnie z wyjątkiem 2017-01-05.
 
 Jak przy użyciu przepływów pracy, konfigurację Koordynator jest zdefiniowany w `job.properties` pliku, który jest nadzbiorem ustawieniami używanymi przez przepływ pracy.
 

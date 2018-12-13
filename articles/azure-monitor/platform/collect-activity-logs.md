@@ -10,17 +10,15 @@ ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: cb246ad927669ac9b8a3981134142ad9be27c6ae
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 1556c228aa2e00cf18f16cc26eefab4691f6de23
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889535"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184954"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics
 
@@ -55,7 +53,7 @@ W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
 | [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
-| [Agenci dla systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
+| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
 | [Grupy zarządzania SCOM](../../azure-monitor/platform/om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
 | [Konto usługi Azure Storage](collect-azure-metrics-logs.md) | Nie | Rozwiązanie zbiera informacje z usługi Azure storage. |
 
@@ -100,5 +98,5 @@ Dane dzienników aktywności jest wyświetlany tylko *po* zostały skonfigurowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Tworzenie [alert](../../monitoring-and-diagnostics/alert-metric.md) podczas określonego działania się dzieje.
+- Tworzenie [alert](../../azure-monitor/platform/alerts-metric.md) podczas określonego działania się dzieje.
 - Użyj [wyszukiwanie w dzienniku](../../azure-monitor/log-query/log-query-overview.md) Aby wyświetlić szczegółowe informacje z dzienników aktywności.

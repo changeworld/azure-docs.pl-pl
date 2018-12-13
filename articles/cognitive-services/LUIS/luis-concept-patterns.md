@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3c33612ef76a572bd4bf63a5e7d6f05e36c7847b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 46c9eb99d808874e0f49dee5fa4865a4867873f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082003"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271525"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
 Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Wzorce rozwiązać niski ufności intencji
-Należy wziąć pod uwagę aplikacja zarządzania zasobami ludzkimi, zawierający raporty dotyczące schematu organizacyjnego w odniesieniu do pracownika. Podana nazwa pracownika i relacji, LUIS zwraca pracowników zaangażowane. Należy wziąć pod uwagę pracownika, Tom, za pomocą Menedżera nazwę Alicja i zespół o nazwie podwładnych: Michael Rebecca i Carl.
+Należy wziąć pod uwagę aplikacja zarządzania zasobami ludzkimi, zawierający raporty dotyczące schematu organizacyjnego w odniesieniu do pracownika. Podana nazwa pracownika i relacji, LUIS zwraca pracowników zaangażowane. Należy wziąć pod uwagę pracownika, Tom, za pomocą Menedżera nazwę Alicja i zespół o nazwie elementów podrzędnych: Michael Rebecca i Carl.
 
 ![Obraz schematu organizacyjnego](./media/luis-concept-patterns/org-chart.png)
 
@@ -43,6 +43,8 @@ Wzorce używać różnych technologii prognozy. Ustawienie przeznaczenie wypowie
 
 ## <a name="patterns-do-not-improve-entity-detection"></a>Wzorce poprawienia wykrywania jednostki
 Podczas gdy wzorce wymagają jednostek, wzorzec nie wykrywania jednostki. Wzorzec jest przeznaczone wyłącznie do pomocy prognozowania intencje i ról.  
+
+Nie spodziewa się zobaczyć prognozowania ulepszone jednostki, czy zwijane wypowiedzi wiele do jednego wzorca. W przypadku prostych jednostek na uruchomienie należy dodawanie wypowiedzi lub korzystanie z listy jednostek else deseń nie zostanie wyzwolony.
 
 ## <a name="patterns-use-entity-roles"></a>Wzorce użycia ról jednostki
 Jeśli dwa lub więcej jednostek w wzorzec kontekstowe są powiązane, wzorców użycia jednostki [role](luis-concept-roles.md) można wyodrębnić informacje kontekstowe dotyczące jednostek. To jest odpowiednikiem hierarchiczne jednostki podrzędne, ale **tylko** dostępne we wzorcach. 

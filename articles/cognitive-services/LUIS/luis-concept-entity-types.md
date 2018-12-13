@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 761b2101ed7b55de27628882778c51bc86c70ef4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f0e543263c7a9890abc485d0f0cd6bec88f16dd4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075662"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135206"
 ---
-# <a name="entities-in-luis"></a>Jednostki w usługi LUIS
+# <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
 Jednostki są wyrazy lub frazy w wypowiedzi, które są kluczowe dane w domenie aplikacji.
 

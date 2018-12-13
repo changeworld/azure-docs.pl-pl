@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: be14b560eb48adc2fcf0ad0a1cf7fe27792a402a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5b8db52623eead2800b0a5d8154a222573808750
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002600"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192434"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w usłudze Log Analytics i usługi Application Insights
 
@@ -44,39 +43,39 @@ Log Analytics jest elastyczne magazynu, umożliwiająca podczas określający sc
 
 ### <a name="log-data"></a>Dane dziennika
 
-* *Adresy IP*: usługi Log Analytics zbiera różne informacje o adresie IP w wielu różnych tabelach. Na przykład następujące zapytanie Wyświetla wszystkie tabele gdzie adresy IPv4 zostały połączone w ciągu ostatnich 24 godzin:
+* *Adresy IP*: Usługa log Analytics zbiera różne informacje o adresie IP w wielu różnych tabelach. Na przykład następujące zapytanie Wyświetla wszystkie tabele gdzie adresy IPv4 zostały połączone w ciągu ostatnich 24 godzin:
     ```
     search * 
     | where * matches regex @'\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' //RegEx originally provided on https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp
     | summarize count() by $table
     ```
-* *Identyfikatory użytkowników*: identyfikatory użytkowników znajdują się w wielu różnych rozwiązań i tabel. Można wyszukać określoną nazwę użytkownika dla całego zestawu danych za pomocą polecenia wyszukiwania:
+* *Identyfikatory użytkowników*: Identyfikatory użytkowników znajdują się w wielu różnych rozwiązań i tabel. Można wyszukać określoną nazwę użytkownika dla całego zestawu danych za pomocą polecenia wyszukiwania:
     ```
     search "[username goes here]"
     ```
 Pamiętaj, że do wyszukiwania nie tylko dla nazwy użytkownika czytelny dla człowieka, ale także identyfikatory GUID, które można bezpośrednio prześledzić dla określonego użytkownika!
-* *Identyfikatory urządzeń*: jak nazwy użytkowników, identyfikatory urządzenia są czasami traktowane jako "private". Użyj tej samej metody wymienionych powyżej dla nazwy użytkownika do identyfikowania tabel w przypadku, gdy może to być istotna. 
-* *Dane niestandardowe*: usługi Log Analytics umożliwia zbieranie w różnych metod: dzienników niestandardowych i pól niestandardowych, [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md) , i niestandardowe dane zbierane w ramach dzienniki zdarzeń systemu. Wszystkie te są podatne na zawierający dane prywatne i należy zbadać, aby sprawdzić, czy istnieje tych danych.
-* *Dane przechwycone przez rozwiązanie*: ponieważ mechanizm rozwiązania jest nieograniczony, zaleca się przegląd wszystkich tabel, generowane przez rozwiązania w celu zapewnienia zgodności.
+* *Identyfikatory urządzeń*: Np. identyfikatory użytkowników w identyfikatorach urządzeń są czasami traktowane jako "private". Użyj tej samej metody wymienionych powyżej dla nazwy użytkownika do identyfikowania tabel w przypadku, gdy może to być istotna. 
+* *Dane niestandardowe*: Usługa log Analytics umożliwia zbieranie w różnych metod: dzienników niestandardowych i pól niestandardowych, [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md) , i niestandardowe dane zbierane w ramach dzienniki zdarzeń systemu. Wszystkie te są podatne na zawierający dane prywatne i należy zbadać, aby sprawdzić, czy istnieje tych danych.
+* *Dane przechwycone przez rozwiązanie*: Ponieważ mechanizm rozwiązania jest nieograniczony, zaleca się przegląd wszystkich tabel, generowane przez rozwiązania w celu zapewnienia zgodności.
 
 ### <a name="application-data"></a>Dane aplikacji
 
-* *Adresy IP*: gdy usługa Application Insights będzie domyślnie zaciemniania wszystkich pól adresu IP "0.0.0.0", jest dość typowy wzorzec, aby zastąpić tę wartość za pomocą adresu IP rzeczywistego użytkownika, aby zachować informacje o sesji. Poniższe zapytanie analizy można znaleźć każda tabela, która zawiera wartości w kolumnie adres IP innego niż "0.0.0.0" w ciągu ostatnich 24 godzin:
+* *Adresy IP*: Usługa Application Insights będzie domyślnie zaciemniania wszystkich pól adresu IP "0.0.0.0", ale jest dość typowy wzorzec, aby zastąpić tę wartość za pomocą adresu IP rzeczywistego użytkownika, aby zachować informacje o sesji. Poniższe zapytanie analizy można znaleźć każda tabela, która zawiera wartości w kolumnie adres IP innego niż "0.0.0.0" w ciągu ostatnich 24 godzin:
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *Identyfikatory użytkowników*: Domyślnie usługa Application Insights użyje losowo generowany identyfikatorów użytkowników i sesji śledzenia. Jednak jest częściej można zobaczyć te pola zastąpiona w celu przechowywania Identyfikatora związaną z aplikacją. Na przykład: nazw użytkowników, GUID usługi AAD itp. Te identyfikatory są często traktowane jako zakresu jako dane osobowe i dlatego powinien zostać obsłużony odpowiednio. Nasze zalecenie, jest zawsze próbuje zaciemniania lub zachowywania anonimowości tych identyfikatorów. Pola, w których często występują te wartości obejmują session_Id, definiując pole user_Id, user_AuthenticatedId, user_AccountId, a także tabeli customDimensions.
-* *Dane niestandardowe*: usługi Application Insights pozwala dołączyć zbiór wymiary niestandardowe dowolnego typu danych. Te wymiary mogą być *wszelkie* danych. Użyj następującego zapytania, aby zidentyfikować wszystkie wymiary niestandardowe zebrane w ciągu ostatnich 24 godzin:
+* *Identyfikatory użytkowników*: Domyślnie usługa Application Insights będzie używać losowo generowany identyfikatorów użytkowników i sesji śledzenia. Jednak jest częściej można zobaczyć te pola zastąpiona w celu przechowywania Identyfikatora związaną z aplikacją. Na przykład: nazw użytkowników, GUID usługi AAD itp. Te identyfikatory są często traktowane jako zakresu jako dane osobowe i dlatego powinien zostać obsłużony odpowiednio. Nasze zalecenie, jest zawsze próbuje zaciemniania lub zachowywania anonimowości tych identyfikatorów. Pola, w których często występują te wartości obejmują session_Id, definiując pole user_Id, user_AuthenticatedId, user_AccountId, a także tabeli customDimensions.
+* *Dane niestandardowe*: Usługa Application Insights pozwala dołączyć zbiór wymiary niestandardowe dowolnego typu danych. Te wymiary mogą być *wszelkie* danych. Użyj następującego zapytania, aby zidentyfikować wszystkie wymiary niestandardowe zebrane w ciągu ostatnich 24 godzin:
     ```
     search * 
     | where isnotempty(customDimensions)
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Dane w pamięci i podczas przesyłania*: usługi Application Insights będzie śledzić wyjątki, żądania, wywołań zależności i śladów. Prywatne dane często mogły być zbierane na poziomie kodu i wywołania HTTP. Przejrzyj wyjątki, żądania, zależności i śladów tabel do identyfikowania tych danych. Użyj [inicjatory telemetrii](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) możliwe do zaciemniania tych danych.
-* *Snapshot Debugger przechwytywania*: [rozszerzenia Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) funkcji w usłudze Application Insights umożliwia zbieranie migawki debugowania zawsze wtedy, gdy wystąpił wyjątek w wystąpieniu produkcyjnych aplikacji. Migawki udostępni pełen ślad stosu prowadzące do wyjątków, a także wartości dla zmiennych lokalnych na każdym etapie w stosie. Niestety ta funkcja nie zezwala na selektywne usuwanie punktów przyciągania lub programowy dostęp do danych w migawce. W związku z tym Jeśli szybkość przechowywania migawek domyślny nie spełnia wymagań dotyczących zgodności, zaleca się wyłączyć funkcję.
+* *Dane w pamięci i podczas przesyłania*: Usługa Application Insights będzie śledzić wyjątki, żądania, wywołań zależności i śladów. Prywatne dane często mogły być zbierane na poziomie kodu i wywołania HTTP. Przejrzyj wyjątki, żądania, zależności i śladów tabel do identyfikowania tych danych. Użyj [inicjatory telemetrii](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) możliwe do zaciemniania tych danych.
+* *Snapshot Debugger przechwytywania*: [Rozszerzenia Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) funkcji w usłudze Application Insights umożliwia zbieranie migawki debugowania zawsze wtedy, gdy wystąpił wyjątek w wystąpieniu produkcyjnych aplikacji. Migawki udostępni pełen ślad stosu prowadzące do wyjątków, a także wartości dla zmiennych lokalnych na każdym etapie w stosie. Niestety ta funkcja nie zezwala na selektywne usuwanie punktów przyciągania lub programowy dostęp do danych w migawce. W związku z tym Jeśli szybkość przechowywania migawek domyślny nie spełnia wymagań dotyczących zgodności, zaleca się wyłączyć funkcję.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Jak eksportować i usuwać dane prywatne
 

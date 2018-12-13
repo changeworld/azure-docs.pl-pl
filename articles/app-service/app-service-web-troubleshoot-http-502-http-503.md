@@ -1,5 +1,5 @@
 ---
-title: Napraw 502 — Zła brama, 503 Usługa niedostępna błędy | Dokumentacja firmy Microsoft
+title: Napraw 502 — Zła brama, 503 Usługa niedostępna błędów — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Rozwiązywanie problemów z 502 — Zła brama i 503 występowanie błędów niedostępności usługi w aplikacji sieci web hostowaną w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: d0d1efcdaab07e77d835319544fc70eb8687702f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: 71842f9dbc8d0454da1847c956dea3b063208836
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316348"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259294"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Rozwiązywanie problemów z błędami HTTP "502 — Zła brama" i "503 Usługa niedostępna" w aplikacjach sieci web platformy Azure
 "502 — Zła brama" i "503 Usługa niedostępna" są typowe błędy w aplikacji sieci web hostowanych w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ten artykuł pomaga rozwiązać te błędy.

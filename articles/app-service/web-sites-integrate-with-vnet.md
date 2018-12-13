@@ -1,5 +1,5 @@
 ---
-title: Integrowanie aplikacji z siecią wirtualną platformy Azure
+title: Integrowanie aplikacji z siecią wirtualną platformy Azure — usłudze Azure App Service
 description: Pokazuje, jak połączyć aplikację w usłudze Azure App Service do nowej lub istniejącej sieci wirtualnej platformy Azure
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
-ms.openlocfilehash: e086c187129799e499c7ac057b1755a35f1f2327
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 265dcccf9202d7b0116bba05b016e8967b68c67a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971151"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273361"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z siecią wirtualną platformy Azure
 Ten dokument zawiera opis funkcji integracji sieci wirtualnej usługi Azure App Service i pokazuje, jak je skonfigurować za pomocą aplikacji w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure] [ VNETOverview] (Vnet) pozwala na umieszczenie wielu zasobów platformy Azure w sieci, lecz-internet. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu technologii sieci VPN. 
@@ -30,7 +31,7 @@ Azure App Service ma dwie formy.
 
 W tym dokumencie omówiono funkcji integracji sieci wirtualnej, która jest przeznaczona do użycia w wielodostępnej usłudze App Service.  Jeśli aplikacja znajduje się w [środowiska App Service Environment][ASEintro], znajduje się już w sieci wirtualnej, a nie wymaga użycia funkcji integracji sieci wirtualnej w celu uzyskania dostępu do zasobów w tej samej sieci wirtualnej.
 
-Integracja sieci wirtualnej zapewnia Twojej aplikacji internetowej dostępu do zasobów w sieci wirtualnej, ale nie są przyznawane prywatny dostęp do aplikacji sieci web z sieci wirtualnej. Dostęp do prywatnej witryny dotyczy tylko udostępnianie aplikacji z sieci prywatnej takich jak z w obrębie sieci wirtualnej platformy Azure. Dostęp do prywatnej witryny jest dostępna tylko dla środowiska ASE skonfigurowane za pomocą wewnętrznego obciążenia równoważenia (ILB). Aby uzyskać szczegółowe informacje na temat korzystania z ASE z wewnętrznym modułem równoważenia obciążenia, rozpoczynać artykuł tutaj: [tworzenie i używanie środowisko ASE z wewnętrznym modułem równoważenia obciążenia][ILBASE]. 
+Integracja sieci wirtualnej zapewnia Twojej aplikacji internetowej dostępu do zasobów w sieci wirtualnej, ale nie są przyznawane prywatny dostęp do aplikacji sieci web z sieci wirtualnej. Dostęp do prywatnej witryny dotyczy tylko udostępnianie aplikacji z sieci prywatnej takich jak z w obrębie sieci wirtualnej platformy Azure. Dostęp do prywatnej witryny jest dostępna tylko dla środowiska ASE skonfigurowane za pomocą wewnętrznego obciążenia równoważenia (ILB). Aby uzyskać szczegółowe informacje na temat korzystania z ASE z wewnętrznym modułem równoważenia obciążenia rozpoczynać artykuł tutaj: [Tworzenie i używanie środowisko ASE z wewnętrznym modułem równoważenia obciążenia][ILBASE]. 
 
 Integracja z siecią wirtualną jest często używane do włączenia dostęp do bazy danych z aplikacji i usług działających w sieci web. Integracja z siecią wirtualną nie wymagają do udostępnienia publicznego punktu końcowego dla aplikacji na maszynie Wirtualnej, ale można zamiast tego użyj prywatnych adresów Routing-internet. 
 
@@ -161,7 +162,7 @@ Istnieją trzy powiązane opłaty do korzystania z funkcji integracji sieci wirt
 * Koszty transferu danych
 * Koszty bramy sieci VPN.
 
-Aplikacje należy standardowa, Premium lub PremiumV2 App Service Plan. Zostanie wyświetlone więcej szczegółów na tych kosztów, w tym miejscu: [App Service — ceny][ASPricing]. 
+Aplikacje należy standardowa, Premium lub PremiumV2 App Service Plan. Te koszty tutaj można zobaczyć więcej szczegółów: [Cennik usługi App Service][ASPricing]. 
 
 Brak opłat za wyjście danych, nawet jeśli sieć wirtualna jest w tym samym centrum danych. Te opłaty są opisane w [Szczegóły ceny transferu danych][DataPricing]. 
 

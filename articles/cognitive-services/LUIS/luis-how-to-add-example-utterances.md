@@ -1,7 +1,7 @@
 ---
 title: Dodawanie przykładowych wypowiedzi
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dowiedz się, jak dodawanie wypowiedzi w aplikacjach Language Understanding (LUIS).
+description: Przykład wypowiedzi są przykładami tekst pytania użytkownika lub poleceń. Aby nauczyć Language Understanding (LUIS), należy dodać wypowiedzi przykład do intencji.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: ada1d7e922bdd47cfc9fe8139ad83adfa45ed073
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 33c941f84952faca1961bb65687b4098b837a2fd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085522"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139175"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Dodawanie jednostki do przykładu wypowiedzi 
 
@@ -90,7 +90,7 @@ Nazwisko pracownika, Jan Kowalski jest wstępnie [personName](luis-reference-pre
 
 1. Wprowadź nazwę jednostki złożonego na liście rozwijanej.
 
-    ![Zrzut ekranu przedstawiający wprowadzanie nazwy jednostki](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
+    ![Zrzut ekranu przedstawiający wprowadź nazwę jednostki złożonej, na liście rozwijanej](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     Jednostki są poprawnie zawijać, zieloną linię podlega cała fraza.
 
@@ -118,7 +118,7 @@ W polu wypowiedź `Move John Smith from Seattle to Cairo`, Seattle, jest to loka
 
 1. Wyraz wypowiedź został oznaczony za pomocą hierarchicznych obiektu nadrzędnego. Musisz przypisać słowo na jednostce podrzędnej. Wróć do wypowiedź na stronie szczegółów intencji. Zaznacz wyraz, a następnie z listy rozwijanej wybierz nazwę jednostki, utworzonej i postępuj zgodnie z menu po prawej stronie wybranie jednostki podrzędne poprawne.
 
-    ![Strona Szczegóły zrzut ekranu z opcjami, z jednostką ToLocation wyróżniony](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
+    ![Strona szczegółów zrzut ekranu z opcjami, w których trzeba przypisać słowo na jednostce podrzędnej](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
 
     >[!CAUTION]
     >Nazwy jednostek podrzędny musi być unikatowa we wszystkich jednostek w jednej aplikacji. Dwoma obiektami hierarchiczne nie może zawierać jednostki podrzędne o takiej samej nazwie. 
@@ -135,7 +135,7 @@ Wybierz wyrazy, które zostaną podkreślone na czerwono na wypowiedź.
 
 Wyświetla pole jednostki **stan jednostki** z czerwony wykrzyknik różnic prognozy. Aby wyświetlić stan jednostki przy użyciu informacji na temat różnic między jednostkami etykietami oraz dostęp do przewidywanych, wybierz **stan jednostki** wybierz element z prawej strony.
 
-![Zrzut ekranu jednostki Stan prognozowania rozbieżność](./media/luis-how-to-add-example-utterances/entity-status.png)
+![Zrzut ekranu przedstawiający Wybieranie poprawny element naprawić niezgodności prognoz](./media/luis-how-to-add-example-utterances/entity-status.png)
 
 Czerwona linia może znajdować się w miejscach występowania dowolnego z następujących godzinach:
 

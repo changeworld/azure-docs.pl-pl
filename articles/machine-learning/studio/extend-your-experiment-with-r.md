@@ -4,9 +4,8 @@ description: Jak rozszerzyć funkcjonalność usługi Azure Machine Learning Stu
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: df6453f1cf6e8b372239d528067a7258d645518d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 74f08421de893a4fe8916a052f8a32134cd222a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311012"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272069"
 ---
 # <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Usługa Azure Machine Learning Studio: Rozszerzanie eksperymentu przy użyciu języka R 
 Funkcje usługi Azure Machine Learning Studio za pośrednictwem języka R można rozszerzyć za pomocą [wykonanie skryptu języka R] [ execute-r-script] modułu.
@@ -58,7 +57,7 @@ Można importować pakiety, które nie są już zainstalowane za pomocą następ
 
 gdzie `my_favorite_package.zip` plik zawiera pakiet.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 
 <!-- Module References -->

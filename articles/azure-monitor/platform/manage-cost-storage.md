@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 744a0f683f58aed98cea7bdef0b2a36af68ad2f1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1ea99c045d5f1bfaacaefab04322b2d4f1123c84
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097577"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183510"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics
 
@@ -77,20 +76,20 @@ Poniżej opisano sposób konfigurowania limit zarządzanie ilością danych, kt�
 5. Dzienny limit jest **OFF** domyślnie — kliknij przycisk **ON** można ją włączyć, a następnie ustaw limit objętość danych w GB/dzień.<br><br> ![Usługa log Analytics skonfigurować limit danych](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-limit-reached"></a>Zgłoś alert, gdy osiągnięto limit
-Gdy możemy przedstawić wizualnie w witrynie Azure portal po spełnieniu próg limitu danych tego zachowania nie musi być wyrównane do, w jaki sposób zarządzasz problemów operacyjnych, które wymaga natychmiastowej uwagi.  Aby otrzymywać powiadomień o alertach, można utworzyć nową regułę alertu w usłudze Azure Monitor.  Aby dowiedzieć się więcej, zobacz [jak tworzyć, wyświetlać alerty i zarządzaj nimi](../../monitoring-and-diagnostics/alert-metric.md).      
+Gdy możemy przedstawić wizualnie w witrynie Azure portal po spełnieniu próg limitu danych tego zachowania nie musi być wyrównane do, w jaki sposób zarządzasz problemów operacyjnych, które wymaga natychmiastowej uwagi.  Aby otrzymywać powiadomień o alertach, można utworzyć nową regułę alertu w usłudze Azure Monitor.  Aby dowiedzieć się więcej, zobacz [jak tworzyć, wyświetlać alerty i zarządzaj nimi](../../azure-monitor/platform/alerts-metric.md).      
 
 Aby ułatwić rozpoczęcie pracy, Oto zalecane ustawienia dla alertu:
 
 * Cel: Wybierz zasób usługi Log Analytics
 * Kryteria: 
-   * Nazwa sygnału: przeszukiwanie dzienników niestandardowych
-   * Zapytanie wyszukiwania: operacja | których szczegóły zawiera "Przekroczenie"
-   * Na podstawie: liczba wyników
-   * Warunek: Większa niż
+   * Nazwa sygnału: Przeszukiwanie dzienników niestandardowych
+   * Zapytanie wyszukiwania: Operacja | których szczegóły zawiera "Przekroczenie"
+   * Na podstawie: Liczba wyników
+   * Warunek: Większe niż
    * Próg: 0
    * Okres: 5 (w minutach)
    * Częstotliwość: 5 (w minutach)
-* Nazwa reguły alertu: osiągnięto dzienny limit danych
+* Nazwa reguły alertu: Osiągnięto dzienny limit danych
 * Ważność: Ostrzegawczy (ważność 1)
 
 Gdy alert jest zdefiniowana i limit zostanie osiągnięty, alert zostanie wyzwolony i wykonuje odpowiedzi zdefiniowany w grupy akcji. Powiadamiaj zespół za pośrednictwem wiadomości e-mail i SMS lub Automatyzuj akcje przy użyciu elementów webhook i runbook usługi Automation lub [integrację z zewnętrznego rozwiązaniem ITSM](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
@@ -103,10 +102,10 @@ Poniżej opisano sposób konfigurowania dziennika jak długo dane są przechowyw
 5. W okienku, przesuń suwak, aby zwiększyć lub zmniejszyć liczbę dni, a następnie kliknij przycisk **OK**.  Jeśli użytkownik pracuje na *bezpłatne* warstwy, nie można zmodyfikować okres przechowywania danych i należy uaktualnić do warstwy płatnej w celu kontrolowania tego ustawienia.<br><br> ![Zmiana ustawienia przechowywania danych w obszarze roboczym](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-**Pytanie**: jak rozwiązać, jeśli nie jest już usługi Log Analytics zbiera dane? 
-**Odpowiedź**: Jeśli są na bezpłatną warstwę cenową i wysłane w ciągu dnia więcej niż 500 MB danych, zbieranie danych nie będzie możliwy do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  
+**Pytanie**: Jak rozwiązywać, jeśli nie jest już usługi Log Analytics zbiera dane? 
+**Odpowiedź**:  Jeśli są w bezpłatnej warstwie cenowej i wysłane w ciągu dnia więcej niż 500 MB danych, gromadzenie danych zatrzymuje się przez pozostałą część dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  
 Usługa log Analytics tworzy zdarzenie typu operacji podczas zbierania danych uruchamia i zatrzymuje.  
-Uruchom następujące zapytanie w polu wyszukiwania, aby sprawdzić, jeśli osiągnięcia dziennego limitu i Brak danych: operacja | gdzie OperationCategory == "Stan zbierania danych"   
+W polu wyszukiwania, aby sprawdzić, jeśli osiągnięcia dziennego limitu i brakujące dane, uruchom następujące zapytanie: Operacja | gdzie OperationCategory == "Stan zbierania danych"   
 Po zatrzymaniu zbierania danych OperationStatus jest ostrzeżenie. Podczas uruchamiania zbierania danych OperationStatus jest zakończyło się pomyślnie.  
 W poniższej tabeli opisano powody, dla których zatrzymuje zbieranie danych i zalecaną akcję, aby wznowić zbieranie danych:  
 
@@ -120,8 +119,8 @@ W poniższej tabeli opisano powody, dla których zatrzymuje zbieranie danych i z
 
 Usługa log Analytics korzysta z czasu UTC. Podczas resetowania waha się między obszarami roboczymi, aby uniemożliwić wszystkie zaczynają ograniczona obszary robocze, które dane są wprowadzane w tym samym czasie. Jeśli obszar roboczy osiągnie limit dzienny, przetwarzanie wznawia działanie po czas resetowania zdefiniowany w **dzienny limit jest ustawiony na**.<br><br> ![Usługa log Analytics ograniczyć strefą czasową UTC](media/manage-cost-storage/data-volume-mgmt-limit-utc.png)
 
-**Pytanie**: jak mogę otrzymywać powiadomienia po zatrzymaniu zbierania danych? 
-**Odpowiedź**: wykonaj czynności opisane w *dziennego limitu danych utwórz* alert, aby otrzymywać powiadomienia, po zatrzymaniu zbierania danych i postępuj zgodnie z instrukcjami, wykonaj czynności opisane w Dodawanie akcji do reguły alertów skonfigurować wiadomości e-mail, element webhook lub runbook Akcja reguły alertu. 
+**Pytanie**: Jak mogę otrzymywać powiadomienia po zatrzymaniu zbierania danych? 
+**Odpowiedź**: Wykonaj czynności opisane w *dziennego limitu danych utwórz* alert, aby otrzymywać powiadomienia, po zatrzymaniu zbierania danych i postępuj zgodnie z instrukcjami, wykonaj czynności opisane w Dodawanie akcji do reguły alertów Konfigurowanie akcji poczty e-mail, element webhook lub runbook dla reguły alertu . 
 
 ## <a name="next-steps"></a>Kolejne kroki  
 

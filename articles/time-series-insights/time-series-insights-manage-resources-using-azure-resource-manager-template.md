@@ -1,5 +1,5 @@
 ---
-title: Jak zarządzać środowiskiem usługi Azure Time Series Insights przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+title: Zarządzanie platformą Azure szablonu usługi Time Series Insights — jak zarządzać środowiskiem usługi Azure Time Series Insights przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak zarządzać środowiskiem usługi Azure Time Series Insights, w sposób programowy za pomocą usługi Azure Resource Manager.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 70f82c19bced7618027379fcf9451348ac2591eb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627131"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270624"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów usługi Time Series Insights przy użyciu szablonów usługi Azure Resource Manager
 
@@ -91,7 +92,7 @@ Aby utworzyć plik parametrów, skopiuj [201-timeseriesinsights środowiska z ev
    | --- | --- |
    | eventHubNamespaceName | Przestrzeń nazw Centrum zdarzeń źródła. |
    | eventHubName | Nazwa Centrum zdarzeń źródła. |
-   | consumerGroupName | Nazwa grupy konsumentów, które będzie używane przez usługę Time Series Insights, można odczytać danych z Centrum zdarzeń. **Uwaga:** Aby uniknąć rywalizacji o zasoby, należy do usługi Time Series Insights w wersji dedykowanej i nie są współdzielone z innymi czytelnikami ta grupa odbiorców. |
+   | consumerGroupName | Nazwa grupy konsumentów, które będzie używane przez usługę Time Series Insights, można odczytać danych z Centrum zdarzeń. **UWAGA:** Aby uniknąć rywalizacji o zasoby, należy do usługi Time Series Insights w wersji dedykowanej i nie są współdzielone z innymi czytelnikami ta grupa odbiorców. |
    | EnvironmentName | Nazwa środowiska. Nazwa nie może zawierać: "<", ">", '%', '&', ': ','\\','?', '/' i znaków kontrolnych. Wszystkie inne znaki są dozwolone.|
    | eventSourceName | Nazwa zasobu podrzędnego źródła zdarzeń. Nazwa nie może zawierać: "<", ">", '%', '&', ': ','\\','?', '/' i znaków kontrolnych. Wszystkie inne znaki są dozwolone. |
 
@@ -99,9 +100,9 @@ Aby utworzyć plik parametrów, skopiuj [201-timeseriesinsights środowiska z ev
 
    | Parametr | Opis |
    | --- | --- |
-   | existingEventHubResourceId | Identyfikator zasobu opcjonalne istniejącym Centrum zdarzeń, które będą podłączone do środowiska usługi Time Series Insights za pośrednictwem źródła zdarzeń. **Uwaga:** użytkownika wdrożenie szablonu musi mieć uprawnienia do wykonania tej operacji klucze listy, w tym Centrum zdarzeń. Jeśli nie przekazano żadnej wartości, nowym Centrum zdarzeń zostanie utworzona przez szablon. |
+   | existingEventHubResourceId | Identyfikator zasobu opcjonalne istniejącym Centrum zdarzeń, które będą podłączone do środowiska usługi Time Series Insights za pośrednictwem źródła zdarzeń. **UWAGA:** Użytkownik wdrożenie szablonu musi mieć uprawnienia do wykonania tej operacji klucze listy, w tym Centrum zdarzeń. Jeśli nie przekazano żadnej wartości, nowym Centrum zdarzeń zostanie utworzona przez szablon. |
    | environmentDisplayName | Opcjonalna nazwa przyjazna do wyświetlenia w interfejsach użytkownika lub narzędzia zamiast nazwy środowiska. |
-   | environmentSkuName | Nazwa jednostki sku. Aby uzyskać więcej informacji, zobacz [stronie cennika usługi Czas serii Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
+   | environmentSkuName | Nazwa jednostki SKU. Aby uzyskać więcej informacji, zobacz [stronie cennika usługi Czas serii Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
    | environmentSkuCapacity | Pojemność jednostki Sku. Aby uzyskać więcej informacji, zobacz [stronie cennika usługi Czas serii Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
    | environmentDataRetentionTime | Minimalna timespan zdarzenia środowiska będą dostępne dla zapytania. Należy określić wartość w formacie ISO 8601, na przykład "P30D" dla zasad przechowywania równy 30 dni. |
    | eventSourceDisplayName | Opcjonalna nazwa przyjazna do wyświetlenia w interfejsach użytkownika lub narzędzia zamiast nazwy źródła zdarzeń. |
@@ -221,7 +222,7 @@ Do uruchomienia [pełną](../azure-resource-manager/deployment-modes.md) wdroże
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-## <a name="verify-the-deployment"></a>Weryfikacja wdrożenia
+## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
 Jeśli zasoby zostały pomyślnie wdrożone, zostanie wyświetlone podsumowanie wdrożenia w oknie programu PowerShell:
 

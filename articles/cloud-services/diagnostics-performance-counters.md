@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: d3aeb930dcb325aebc8c6b0a9dfde3602312618b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001467"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322947"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Liczniki wydajności są zbierane dla usługi w chmurze platformy Azure
 
@@ -127,7 +127,7 @@ Rozszerzenie diagnostyki platformy Azure dla usług w chmurze pozwala określić
 
 Liczniki wydajności, które mają być zbierane są zdefiniowane w **diagnostics.wadcfgx** pliku. Otwórz ten plik (jest on zdefiniowany poszczególnych ról) w programie Visual Studio i Znajdź **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg**  >  **DiagnosticMonitorConfiguration** > **liczniki wydajności** elementu. Dodaj nową **PerformanceCounterConfiguration** element jako element podrzędny. Ten element zawiera dwa atrybuty: `counterSpecifier` i `sampleRate`. `counterSpecifier` Atrybut definiuje wydajności systemu, które można zbierać zestawów liczników (schemat w poprzedniej sekcji). `sampleRate` Wartość wskazuje, jak często jest sondowany tę wartość. Jako całości, wszystkie liczniki wydajności są przesyłane na platformę Azure zgodnie z nadrzędnego `PerformanceCounters` elementu `scheduledTransferPeriod` wartość atrybutu.
 
-Aby uzyskać więcej informacji na temat `PerformanceCounters` elementu schematu, zobacz [schemat usługi Diagnostyka Azure](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element).
+Aby uzyskać więcej informacji na temat `PerformanceCounters` elementu schematu, zobacz [schemat usługi Diagnostyka Azure](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element).
 
 Okres zdefiniowany przez `sampleRate` używa atrybutu, typ danych czasu trwania XML, aby wskazać, jak często jest sondowany licznika wydajności. W poniższym przykładzie ustawiono częstotliwość `PT3M`, co oznacza, że `[P]eriod[T]ime[3][M]inutes`: co trzy minuty.
 
@@ -297,4 +297,4 @@ Jak podano wcześniej, liczniki wydajności, które mają być zbierane są zdef
 - [Usługa Application Insights dla usług Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters)
 - [Liczniki wydajności systemu w usłudze Application Insights](../application-insights/app-insights-performance-counters.md)
 - [Określenie ścieżki licznika](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Schemat usługi Diagnostyka Azure - liczniki wydajności](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)
+- [Schemat usługi Diagnostyka Azure - liczniki wydajności](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

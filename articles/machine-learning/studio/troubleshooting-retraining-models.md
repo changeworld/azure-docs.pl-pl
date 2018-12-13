@@ -4,9 +4,8 @@ description: Zidentyfikować i rozwiązać typowe problemy z napotkano w przypad
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 1105b81d0f8ba80bd76bcdf140fe79b9e8a7102d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0f12627e169af00f575347796d1f2e79fe1f6fa2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307206"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252783"
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Rozwiązywanie problemów z ponownym szkoleniem usługi sieci web Azure Machine Learning Studio
 ## <a name="retraining-overview"></a>Ponowne szkolenie — omówienie
@@ -41,16 +40,16 @@ Następnie można użyć przykładu C# kod ze strony pomocy interfejsu API szkol
 
 Wszystkie elementy w miejscu główne kroki, które należy wykonać, aby ponowne szkolenie modelu są w następujący sposób:
 
-1. Wywoływanie usługi sieci Web szkolenia: wywołanie się do usługi Batch Execution Service (BES), nie Request Response Service (RRS). Można korzystać z przykładu C# kodu na stronie pomocy interfejsu API, aby wykonać wywołanie. 
-2. Znajdź wartości *BaseLocation*, *RelativeLocation*, i *SasBlobToken*: te wartości są zwracane w danych wyjściowych z wywołania do usługi sieci Web szkolenia. 
+1. Wywołanie usługi sieci Web szkolenia:  Wywołanie jest do usługi Batch Execution Service (BES), nie Request Response Service (RRS). Można korzystać z przykładu C# kodu na stronie pomocy interfejsu API, aby wykonać wywołanie. 
+2. Znajdź wartości *BaseLocation*, *RelativeLocation*, i *SasBlobToken*: Te wartości są zwracane w danych wyjściowych z wywołania do usługi sieci Web szkolenia. 
    ![Wyświetlanie danych wyjściowych przykładu ponownego trenowania i BaseLocation, RelativeLocation i SasBlobToken wartości.][image6]
-3. Zaktualizuj dodano punkt końcowy z usługi internetowej przyznawania ocen w nowym uczonego modelu: przy użyciu przykładowy kod podany w modelach Retrain Machine Learning programowo, zaktualizuj nowy punkt końcowy został dodany do oceniania modelu przy użyciu nowo uczonego modelu z Usługa sieci Web szkolenia.
+3. Zaktualizuj dodany punkt końcowy z usługi internetowej przyznawania ocen w nowym modelu uczonego: Przy użyciu przykładowy kod podany w modelach Retrain Machine Learning programowo, zaktualizuj nowy punkt końcowy, dodane do oceniania modelu z nowo uczonego modelu z usługi sieci Web szkolenia.
 
 ## <a name="common-obstacles"></a>Typowych przeszkód
 ### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Sprawdź, czy masz poprawny adres URL poprawki
 Stosowanie poprawek do adresu URL używanego musi być skojarzony z nowego oceniania punktu końcowego, dodane do usługi internetowej przyznawania ocen. Istnieje wiele sposobów, aby uzyskać adres URL poprawki:
 
-**Opcja 1: programowo**
+**Opcja 1: Programowo**
 
 Aby uzyskać poprawny adres URL poprawki:
 
@@ -71,7 +70,7 @@ Aby uzyskać poprawny adres URL poprawki:
 7. W obszarze **poprawki** adresu URL, kliknij przycisk **pomocy interfejsu API** o otwarcie strony pomocy stosowania poprawek.
 
 > [!NOTE]
-> Po dodaniu punktu końcowego z usługą sieci Web szkolenia zamiast predykcyjne usługi sieci Web, zostanie wyświetlony następujący błąd, po kliknięciu **aktualizacja zasobów** łącze: "Niestety, ale ta funkcja nie jest obsługiwana lub dostępna w Ten kontekst. Ta usługa sieci Web ma nie można zaktualizować zasobów. Firma Microsoft Przepraszamy za utrudnienia i działają na poprawę tego przepływu pracy".
+> Po dodaniu punktu końcowego z usługą sieci Web szkolenia zamiast predykcyjne usługi sieci Web, zostanie wyświetlony następujący błąd, po kliknięciu **aktualizacja zasobów** łącza: "Niestety, ale ta funkcja nie jest obsługiwana lub dostępna w tym kontekście. Ta usługa sieci Web ma nie można zaktualizować zasobów. Firma Microsoft Przepraszamy za utrudnienia i działają na poprawę tego przepływu pracy".
 > 
 > 
 
@@ -80,8 +79,8 @@ Strona pomocy poprawki zawiera adres URL poprawki, należy użyć i zawiera przy
 ![Adres URL poprawki.][image5]
 
 ### <a name="check-to-see-that-you-are-updating-the-correct-scoring-endpoint"></a>Sprawdź, czy aktualizujesz właściwego punktu końcowego oceniania
-* Nie patch usługi sieci web szkolenia: operacja patch musi zostać wykonana na usługi internetowej przyznawania ocen.
-* Nie patch domyślny punkt końcowy usługi sieci web: operacja patch musi zostać wykonana na nowe oceniania sieci web usługi punktu końcowego, który został dodany.
+* Nie poprawki szkolenia usługi sieci web: Operacja patch odbywa się na usługi internetowej przyznawania ocen.
+* Nie poprawki domyślny punkt końcowy usługi sieci web: Operacja patch odbywa się na nowe oceniania sieci web usługi punktu końcowego, który został dodany.
 
 Aby sprawdzić, które usługi sieci web punktu końcowego jest włączone przechodzenia do portalu usług sieci Web. 
 

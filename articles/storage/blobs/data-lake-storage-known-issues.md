@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: fb0a67a9b3b556a85a2b28989fe15dfeea1f0d72
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d42d05046f4ef133aa3dfb52bbe4e2b72255ccce
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099593"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322896"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -69,7 +69,7 @@ Zamiast tego należy użyć najnowszej wersji wstępnej narzędzia AzCopy ( [AzC
 
 ## <a name="oauth-authentication"></a>Uwierzytelnianie OAuth
 
-Usługi, takie jak usługi Azure Databricks, HDInsight i Azure Data Factory jeszcze nie integrować z tokenu uwierzytelniania elementu nośnego OAuth usługi Azure Active Directory (Azure AD).
+Usług, takich jak HDInsight i Azure Data Factory jeszcze nie integrować z tokenu uwierzytelniania elementu nośnego OAuth usługi Azure Active Directory (Azure AD).
 
 ## <a name="azure-event-grid"></a>Azure Event Grid
 

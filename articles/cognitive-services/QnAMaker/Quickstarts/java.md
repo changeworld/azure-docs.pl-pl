@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1f28bf71805fbdc86fd0733757c7f2587fc15b12
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1df14d730d83ee367140b4c9a64d0d2bba0aed77
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087714"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163892"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>Jak używać usługi QnA Maker interfejsu API REST przy użyciu języka Java 
 <a name="HOLTop"></a>
@@ -38,7 +38,7 @@ W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA
 - [Uzyskiwanie bieżącego zestawu zmian słów.](#GetAlterations)
 - [Zastępowanie bieżącego zestawu zmian słów.](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

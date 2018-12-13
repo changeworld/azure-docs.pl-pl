@@ -6,16 +6,19 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 3f90fbb4ae30f8cc7730385730c39321974a94c4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c11d2f22fa08417107b0eecdd902b4521410b358
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850707"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252426"
 ---
 # <a name="group-machines-for-assessment"></a>Grupowanie maszyn do oceny
 
 W tym artykule opisano sposób tworzenia grupy komputerów do oceny przez [usługi Azure Migrate](migrate-overview.md). Usługa Azure Migrate ocenia maszyn w grupie, aby sprawdzić, czy są one zostać poddana migracji do platformy Azure i oszacowanie rozmiarów i kosztów dla działającej maszyny na platformie Azure. Jeśli znasz maszyn, które muszą być migrowane razem, należy ręcznie utworzyć grupy w usłudze Azure Migrate, przy użyciu następującej metody. Jeśli nie masz pewności bardzo dotyczące maszyn, które muszą być zgrupowane razem, aby utworzyć grupy za pomocą funkcji wizualizacji zależności w usłudze Azure Migrate. [Dowiedz się więcej.](how-to-create-group-machine-dependencies.md)
+
+> [!NOTE]
+> Funkcji wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
 ## <a name="create-a-group"></a>Tworzenie grupy
 

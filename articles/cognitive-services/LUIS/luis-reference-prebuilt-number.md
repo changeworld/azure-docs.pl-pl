@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: ead544400f97f9a49296cc43552bea3a6f3def98
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: bd42fbb85468ab652741573731515e499fe453da
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095322"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165677"
 ---
-# <a name="number-entity"></a>Number, jednostka
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>Liczba wstępnie utworzone jednostki dla aplikacji usługi LUIS
 Istnieje wiele sposobów, w których wartości liczbowe są używane do Szacowanie ilościowe, express i opisują informacje. W tym artykule opisano tylko niektóre z przykładów. Usługa LUIS interpretuje wahania wypowiedzi użytkowników i zwraca spójną wartości liczbowych. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierające liczbę intencji aplikacji. 
 
 ## <a name="types-of-number"></a>Typy liczb
-Liczba jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) repozytorium Github
+Liczba jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) repozytorium GitHub
 
 ## <a name="examples-of-number-resolution"></a>Przykłady numer rozwiązania
 

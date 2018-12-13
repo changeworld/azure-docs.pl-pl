@@ -1,5 +1,5 @@
 ---
-title: Struktura definicji zasad platformy Azure
+title: Szczegóły struktura definicji zasad
 description: W tym artykule opisano, jak zasobu definicji zasad jest używany przez usługę Azure Policy do ustanawiania konwencje dla zasobów w Twojej organizacji, poprzez opisanie, gdy zasady są wymuszane i wpływ, jaki do wykonania.
 services: azure-policy
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 456ac392d74db0dc596c24a47d176e19d267bc85
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: c09f1f5af8ef417fc4ed195b8ff17cc23c744319
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079521"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313143"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -216,6 +217,8 @@ Obsługiwane są następujące pola:
 - `kind`
 - `type`
 - `location`
+- `identity.type`
+  - Zwraca typ [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md) włączona w zasobie.
 - `tags`
 - `tags.<tagName>`
   - Gdzie **\<tagName\>** jest nazwa tagu do sprawdzania warunku.

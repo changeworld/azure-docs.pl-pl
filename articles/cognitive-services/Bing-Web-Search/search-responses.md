@@ -1,21 +1,22 @@
 ---
-title: Odpowiedzi wyszukiwania - API wyszukiwania w Internecie Bing
+title: Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web
 titleSuffix: Azure Cognitive Services
-description: Więcej informacji na temat typów odpowiedzi i odpowiedzi z API wyszukiwania w Internecie Bing.
+description: Więcej informacji na temat typów odpowiedzi i odpowiedzi używany przez API wyszukiwania w Internecie Bing.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
-ms.author: erhopf
-ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.custom: seodec2018
+ms.openlocfilehash: 1d47d8e35a1be28b5610961c1b1c7b5d1492e871
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123780"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250505"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web  
 
@@ -128,7 +129,7 @@ Poniżej przedstawiono przykład użycia powiązanych zapytań w Bing.com.
 
 ## <a name="videos-answer"></a>Odpowiedź filmów wideo
 
-[Wideo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) odpowiedzi zawiera listę wideo Bing traktować odpowiednich do kwerendy. Każdy [wideo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) na liście zawiera adres URL filmu wideo, jego czas trwania, wymiary i jego format kodowania. Obiekt wideo obejmuje również adres URL miniatury wideo i wymiary miniaturę.
+[Wideo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) odpowiedzi zawiera listę wideo Bing traktować odpowiednich do kwerendy. Każdy [wideo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) na liście zawiera adres URL filmu wideo, jego czas trwania, wymiary i jego format kodowania. Obiekt wideo zawiera także adres URL miniatury wideo i wymiary tej miniatury.
 
 ```json
 {
@@ -166,13 +167,13 @@ W zależności od urządzenia użytkownika będą zwykle wyświetlić podzbiór 
 ![List of video thumbnails](./media/cognitive-services-bing-web-api/bing-web-video-thumbnails.PNG)
 -->
 
-Użytkownik zatrzyma się miniaturę program `motionThumbnailUrl` grać nieco miniatury wideo. Pamiętaj atrybut miniaturę ruchu, podczas wyświetlania go.
+Użytkownik zatrzyma się miniaturę program `motionThumbnailUrl` grać nieco miniatury wideo. Pamiętaj o nadaniu atrybutu wyświetlonej miniaturze ruchu.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![Motion thumbnail of a video](./media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-Jeśli użytkownik kliknie miniatury, są następujące opcje wyświetlania film wideo:
+Po kliknięciu miniatury będą dostępne następujące opcje wyświetlania filmu wideo:
 
 - Użyj `hostPageUrl` Aby obejrzeć film wideo w witrynie sieci Web hosta (na przykład działanie serwisu YouTube)
 - Użyj `webSearchUrl` do wyświetlania wideo w przeglądarce wideo Bing
@@ -182,7 +183,7 @@ Aby uzyskać szczegółowe informacje o wideo odpowiedzi i filmy wideo, zobacz [
 
 ## <a name="news-answer"></a>Odpowiedzi na wiadomości
 
-[Wiadomości](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) odpowiedzi zawiera listę artykuły z wiadomościami, które Bing traktować odpowiednich do kwerendy. Każdy [artykułu z wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) na liście zawiera nazwę, opis i adres URL tego artykułu w artykule w witrynie sieci Web hosta. Jeśli ten artykuł zawiera obraz, obiekt zawiera miniaturę obrazu.
+[Wiadomości](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) odpowiedzi zawiera listę artykuły z wiadomościami, które Bing traktować odpowiednich do kwerendy. Każdy [artykułu z wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) na liście zawiera nazwę, opis i adres URL do artykułu w witrynie internetowej hosta. Jeśli artykuł zawiera obraz, obiekt zawiera miniaturę obrazu.
 
 ```json
 {
@@ -205,7 +206,7 @@ Aby uzyskać szczegółowe informacje o wideo odpowiedzi i filmy wideo, zobacz [
 }, ...
 ```
 
-W zależności od urządzenia użytkownika może wyświetlić podzbiór artykuły z opcją dla użytkownika wyświetlić pozostałe artykuły. Użyj `name` i `url` utworzyć hiperłącze, które przenosi użytkownika do artykułu z wiadomościami na witryny hosta. Jeśli artykuł zawiera obraz, upewnij się, możesz klikać obrazie za pomocą `url`. Należy użyć `provider` atrybutu tego artykułu.
+W zależności od urządzenia użytkownika może wyświetlić podzbiór artykuły z opcją dla użytkownika wyświetlić pozostałe artykuły. Użyj właściwości `name` i `url`, aby utworzyć hiperlink prowadzący użytkownika do artykułu w witrynie hosta. Jeśli artykuł zawiera obraz, upewnij się, możesz klikać obrazie za pomocą `url`. Pamiętaj, aby podać źródło artykułu przy użyciu właściwości `provider`.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display articles in a search results page.

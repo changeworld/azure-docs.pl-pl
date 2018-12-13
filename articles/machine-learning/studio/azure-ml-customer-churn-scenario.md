@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 2063198ab2a7b11e15528e81acb46ba16277782a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 48e3ca0b9910b673491e20e834b38170308aa132
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097645"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272171"
 ---
 # <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
@@ -31,11 +30,11 @@ Ten artykuł przedstawia informacje o referencyjnej implementacji projektu anali
 Ten eksperyment został opracowany i przetestowane przez Serge Berger, badacz danych jednostki w firmie Microsoft i Rogera Barga, wcześniej menedżerem produktu Microsoft Azure Machine Learning. Zespół dokumentacji platformy Azure gratefully potwierdza swoją wiedzę i Dziękujemy udostępnianie ten oficjalny dokument.
 
 > [!NOTE]
-> Dane używane w tym eksperymencie nie jest publicznie dostępna. Na przykład sposobu tworzenia modelu uczenia maszynowego, analizy zmienności zobacz: [handlu detalicznego postęp dokonany w szablonie model](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com/)
+> Dane używane w tym eksperymencie nie jest publicznie dostępna. Aby uzyskać przykład sposobu tworzenia modelu uczenia maszynowego, analizy zmienności zobacz: [Postęp dokonany w sprzedaży detalicznej szablon modelu](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com/)
 > 
 > 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="the-problem-of-customer-churn"></a>Problem zmienności klientów
 Firmom na rynku odbiorców i sektora przedsiębiorstw bez konieczności poświęcania czasu współczynnika zmian. Czasami zmian jest nadmierne i ma wpływ na decyzje dotyczące zasad. Tradycyjne rozwiązanie jest przewidzieć churners tendencje wysokiej i ich potrzeb za pośrednictwem usługi Konsjerż, kampanii marketingowych lub stosując zwolnień specjalne. Te metody mogą się różnić z branży branży. One może nawet różnią się od klastra danego konsumenta do drugiej w ramach jednej branży (na przykład telekomunikacja).
@@ -66,7 +65,7 @@ To podejście do przodu wyglądających jest najlepszym sposobem traktowania wsp
 
 ![][2]
 
-*Rysunek 4: Unified archetype wielu modeli*  
+*Rysunek 4: Ujednolicone archetype wielu modeli*  
 
 Interakcja między modelami jest klucz, jeśli możemy dostarczać kompleksowe podejście do utrzymania klientów. Każdy model niekoniecznie spadku wraz z upływem czasu; w związku z tym, architektura jest niejawne pętli (podobnie jak archetype ustawione przez standard wyszukiwania danych WYSOKĄ-DM, [***3***]).  
 
@@ -112,7 +111,7 @@ Następujące diagramy przedstawiają dane, które zostało użyte.
  
 
 > Należy pamiętać, że te dane są prywatne, jak i w związku z tym nie może być współużytkowana modelu i danych.
-> Jednak dla podobnych modelu przy użyciu publicznie dostępnych danych, zobacz w tym przykładzie przeprowadzanie eksperymentów [galerii Azure AI](http://gallery.cortanaintelligence.com/): [zmienności klientów Telco](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Jednak dla podobnych modelu przy użyciu publicznie dostępnych danych, zobacz w tym przykładzie przeprowadzanie eksperymentów [galerii Azure AI](http://gallery.cortanaintelligence.com/): [Odpływ klientów firmy Telco](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Aby dowiedzieć się więcej na temat sposobu implementacji modelu analizy zmienności, przy użyciu pakietu Cortana Intelligence, zalecamy również [ten film wideo](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) przez Tok Hyong Wee starszy Menedżer programu. 
 > 
@@ -168,7 +167,7 @@ Przyjrzyjmy się relacji w grafikę ich ożywienia, łatwych do zrozumienia prze
 
 ![][8]
 
-*Na rysunku nr 10: Zależnościami między dokładność i precyzja*
+*Rysunek 10. Zależności między dokładność i precyzja*
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Dokładność i dokładność wyników dla modelu drzewa decyzyjnego
 Poniższy wykres przedstawia nieprzetworzonych wyników z oceniania modelu drzewa decyzyjnego, które akurat jest najbardziej dokładna spośród czterech modeli przy użyciu prototypu usługi Machine Learning:  
@@ -217,13 +216,13 @@ W tym dokumencie opisano rozsądne podejście na co dzień do czynienia powszech
  
 
 ## <a name="references"></a>Dokumentacja
-[1] analizy predykcyjnej: poza prognozy McKnight Zach. zarządzania informacją, lipiec/sierpień 2011 r. p.18 20.  
+[1] analizy predykcyjnej: Poza prognozy McKnight Zach. zarządzania informacją, lipiec/sierpień 2011 r. p.18 20.  
 
-[2] artykułu w Wikipedii: [dokładność i precyzja](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] artykułu w Wikipedii: [Dokładność i precyzja](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [WYSOKĄ DM 1.0: Przewodnik wyszukiwania danych krok po kroku](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [WYSOKĄ DM 1.0: Przewodnik dotyczący wyszukiwania danych krok po kroku](http://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [Marketing danych big Data: bardziej efektywnie kontaktować się z klientami i podejmuj wartość](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [Marketing danych big Data: Bardziej efektywne angażować swoich klientów i Zwiększaj wartość](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
 [5] [Telco postęp dokonany w szablonie model](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com/) 
  
@@ -231,7 +230,7 @@ W tym dokumencie opisano rozsądne podejście na co dzień do czynienia powszech
 ## <a name="appendix"></a>Dodatek
 ![][10]
 
-*Rysunek 12: Migawkę prezentacji na prototypu współczynnika zmian*
+*Ilustracja 12 Migawka prezentacji na prototypu współczynnika zmian*
 
 [1]: ./media/azure-ml-customer-churn-scenario/churn-1.png
 [2]: ./media/azure-ml-customer-churn-scenario/churn-2.png

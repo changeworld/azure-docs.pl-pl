@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0e934a629edc41ce09cad810b0d3b9b88e36c6d6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 815388db673673a3802f8e5e515b7e16cb180a29
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996519"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323358"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Usługa Application Insights: Często zadawane pytania
 
@@ -26,7 +26,7 @@ ms.locfileid: "52996519"
 
 * [Aplikacja platformy .NET](app-insights-asp-net-troubleshoot-no-data.md)
 * [Monitorowanie aplikacji już działa](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Diagnostyka Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Diagnostyka Azure](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Aplikacje internetowe w języku Java](app-insights-java-troubleshoot.md)
 
 *Pojawia się żadne dane z serwera*
@@ -102,7 +102,7 @@ Aplikacja klasyczna, używanej na serwerze sieci web usług IIS w celu skonfigur
 Z aplikacji sieci web server:
 
 * Żądania HTTP
-* [Zależności](app-insights-asp-net-dependencies.md). Wywołania: bazy danych SQL; Połączeń HTTP z usług zewnętrznych. Azure Cosmos DB, tabeli, magazynu obiektów blob i kolejki. 
+* [Zależności](app-insights-asp-net-dependencies.md). Wywołania: Bazy danych SQL; Połączeń HTTP z usług zewnętrznych. Azure Cosmos DB, tabeli, magazynu obiektów blob i kolejki. 
 * [Wyjątki](app-insights-asp-net-exceptions.md) i stos danych śledzenia.
 * [Liczniki wydajności](app-insights-performance-counters.md) — Jeśli używasz [Monitora stanu](app-insights-monitor-performance-live-website-now.md), [monitorowania platformy Azure](app-insights-azure-web-apps.md) lub [składnika usługi Application Insights zebrane zapisywania](app-insights-java-collectd.md).
 * [Niestandardowe zdarzenia i metryki](app-insights-api-custom-events-metrics.md) czy kodu.
@@ -118,7 +118,7 @@ Z [stron sieci web klienta](app-insights-javascript.md):
 
 Z innych źródeł, jeśli można je skonfigurować:
 
-* [Diagnostyka Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Diagnostyka Azure](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Kontenery platformy docker](app-insights-docker.md)
 * [Importuj tabele do analizy](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
@@ -137,8 +137,8 @@ Dowiedz się więcej na [ASP.NET](app-insights-api-filtering-sampling.md) lub [J
 
 Możemy wyszukać adres IP (IPv4 lub IPv6) klienta sieci web przy użyciu [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-* Telemetria przeglądarki: zbieramy adres IP nadawcy.
-* Serwer telemetrii: moduł Application Insights zbiera adres IP klienta. Nie są zbierane, jeśli `X-Forwarded-For` jest ustawiona.
+* Telemetria przeglądarki: Firma Microsoft gromadzi adres IP nadawcy.
+* Dane telemetryczne serwera: Moduł usługi Application Insights zbiera informacje o adres IP klienta. Nie są zbierane, jeśli `X-Forwarded-For` jest ustawiona.
 
 Można skonfigurować `ClientIpHeaderTelemetryInitializer` można przyjąć adresu IP z różnych nagłówka. W niektórych systemach, na przykład, jest przenoszony przez serwer proxy, należy załadować równoważenia lub w sieci CDN `X-Originating-IP`. [Dowiedz się więcej](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
@@ -189,7 +189,7 @@ Użyj pojedynczego zasobu dla wszystkich składników lub ról w systemie biznes
 * Aby zidentyfikować zalogowanego użytkownika, maszyn i przeglądarek, dodaj wywołanie [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users).
 
 ## <a name="q17"></a> Czy włączono wszystkiego w usłudze Application Insights?
-| Powinien zostać wyświetlony | Jak przygotować | Dlaczego chcesz |
+| Co powinno zostać wyświetlone | Jak przygotować | Dlaczego chcesz |
 | --- | --- | --- |
 | Wykresy dostępności |[Testy sieci Web](app-insights-monitor-web-app-availability.md) |O tym, że Twoja aplikacja sieci web jest włączony |
 | Serwer aplikacji danych o wydajności: czasy odpowiedzi... |[Dodaj usługę Application Insights do projektu](app-insights-asp-net.md) lub [Instalowanie Monitora stanu sztucznej Inteligencji na serwerze](app-insights-monitor-performance-live-website-now.md) (lub Napisz własny kod do [śledzić zależności](app-insights-api-custom-events-metrics.md#trackdependency)) |Wykrywanie problemom z wydajnością |

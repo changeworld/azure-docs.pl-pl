@@ -1,5 +1,5 @@
 ---
-title: Umiejętności wyszukiwania kognitywnego shaper (Azure Search) | Dokumentacja firmy Microsoft
+title: Umiejętności wyszukiwania kognitywnego shaper — usługa Azure Search
 description: Wyodrębnianie metadanych i ustrukturyzowanych informacji z danych bez struktury i kształtować je jako typ złożony w usłudze Azure Search wzbogacony potok.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 627c53f7339dbc35d822a0bf6038ca0f1ea5e653
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729004"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313840"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper umiejętności cognitive
 
@@ -26,9 +27,6 @@ Umiejętności Shaper umożliwia zasadniczo tworzenia struktury definiuje nazwy 
 Domyślnie ta technika obsługuje obiekty, które są szczegółowe o jeden poziom. W przypadku bardziej złożonych obiektów można połączyć kilka kroków Shaper.
 
 W odpowiedzi Nazwa wyjściowego jest zawsze "output". Wewnętrznie potoku można mapować innej nazwy, takie jak "analyzedText" w poniższych przykładach "wyjściowe", ale Shaper umiejętności, sama zwraca "output" w odpowiedzi. Może to być ważne debugowania wzbogaconego dokumentów i zwróć uwagę, niezgodność nazw lub jeśli Tworzenie niestandardowych umiejętności i struktury odpowiedzi samodzielnie.
-
-> [!NOTE]
-> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności i wyodrębniania obrazu i normalizacji są obecnie oferowane bezpłatnie. W późniejszym czasie cen tych funkcji zostanie ogłoszona. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

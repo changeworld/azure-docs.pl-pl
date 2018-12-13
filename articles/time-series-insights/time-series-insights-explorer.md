@@ -1,5 +1,5 @@
 ---
-title: Eksplorowanie danych za pomocą Eksploratora usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Usługa Azure eksplorację danych Eksploratora usługi Time Series Insights — Eksplorowanie danych za pomocą Eksploratora usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak można szybko wyświetlić globalny widok danych dotyczących danych big data, a następnie sprawdź środowisko IoT za pomocą Eksploratora usługi Azure Time Series Insights w przeglądarce sieci web.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: f4a9d09aa701d490e8391d68435e672ff49c771c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 7508db8bd4b7f21308f2e7b0e92c44570dfc7b18
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364237"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273140"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Eksplorator usługi Azure Time Series Insights
 W tym artykule przeanalizowano różnych funkcji i opcji dostępnych w ramach aplikacji internetowej w Eksploratorze usługi Time Series Insights. Używasz Eksploratora usługi Time Series Insights w przeglądarce sieci web do tworzenia wizualizacji danych.
@@ -55,21 +56,21 @@ W ciągu kilku minut nawiązywania połączenia z źródła zdarzeń do środowi
 
 5. Następnie zostanie wyświetlony wykres, który pokazuje liczbę wszystkich zdarzeń w czasie wybranego przedziału czasu.  W tym miejscu masz wiele formantów:
 
-    **Warunki Panel Edytor**: miejsce termin jest, gdzie zapytanie środowiska.  Znajduje się po lewej stronie ekranu, umożliwia 
-      - **Miara**: Ta lista rozwijana pokazuje wszystkie kolumny liczbowe (wartości podwójnej precyzji)
-      - **Podziel według**: tej listy rozwijanej pokazuje podzielone na kategorie kolumny (ciągi)
+    **Warunki Panel Edytor**:  Miejsce termin jest, gdzie zapytanie środowiska.  Znajduje się po lewej stronie ekranu, umożliwia 
+      - **Miara**:  Tej listy rozwijanej pokazuje wszystkie kolumny liczbowe (wartości podwójnej precyzji)
+      - **Podziel według**: Tej listy rozwijanej pokazuje podzielone na kategorie kolumny (ciągi)
       - Można włączyć interpolacji stopniowej, Pokaż minimalne i maksymalne i dostosowania osi y w Panelu sterowania dalej, aby zmierzyć.  Ponadto można dostosować, czy dane wyświetlane jest liczba, średnia lub suma danych.
       - Możesz dodać maksymalnie pięć warunki, aby wyświetlić na tej samej osi x.  Użyj **kopiowania rozwijanej** przycisk, aby dodać dodatkowy termin lub kliknij **Dodaj** przycisk, aby dodać świeże termin.
      
         ![Panel edytora terminów](media/time-series-insights-explorer/explorer2.png)
 
-      - **Predykat**: Predykat umożliwia szybkie filtrowanie zdarzeń przy użyciu zestawu argumentów wymienione poniżej. Jeśli wyszukiwania, wybierając klikając, predykatu będą automatycznie aktualizowane na podstawie tego wyszukiwania.      Operand obsługiwane typy:
+      - **Predykatu**:  Predykat umożliwia szybkie filtrowanie zdarzeń przy użyciu zestawu argumentów wymienione poniżej. Jeśli wyszukiwania, wybierając klikając, predykatu będą automatycznie aktualizowane na podstawie tego wyszukiwania.      Operand obsługiwane typy:
 
          |Operacja  |Obsługiwane typy  |Uwagi  |
          |---------|---------|---------|
          |<, >, <=, >=     |  Double, DateTime, TimeSpan       |         |
          |=, !=, <>     | String, Bool, Double, DateTime, przedział czasu, wartość NULL        |         |
-         |INDIE     | String, Bool, Double, DateTime, przedział czasu, wartość NULL        |  Wszystkie argumenty powinny być tego samego typu lub być stała NULL.        |
+         |IN     | String, Bool, Double, DateTime, przedział czasu, wartość NULL        |  Wszystkie argumenty powinny być tego samego typu lub być stała NULL.        |
          |MA     | Ciąg        |  Po prawej stronie dozwolone są tylko stałe literałów. Pusty ciąg i wartości NULL są niedozwolone.       |
 
       - **Przykłady zapytań**
@@ -102,7 +103,7 @@ W ciągu kilku minut nawiązywania połączenia z źródła zdarzeń do środowi
 
    ![Mapa cieplna](media/time-series-insights-explorer/explorer6.png)
 
-12. **Zdarzenia**: po wybraniu Eksploruj zdarzenia podczas wybierania lub kliknij prawym przyciskiem myszy, powyżej, w panelu zdarzeń stały się dostępne.  Tutaj widać wszystkie nieprzetworzone zdarzenia i eksportowanie zdarzeń jako pliki JSON lub CSV. Należy pamiętać, że usługa Time Series Insights są przechowywane wszystkie nieprzetworzone dane.
+12. **Zdarzenia**:  Po wybraniu Eksploruj zdarzenia podczas wybierania lub kliknij prawym przyciskiem myszy, powyżej, w panelu zdarzeń jest udostępniana.  Tutaj widać wszystkie nieprzetworzone zdarzenia i eksportowanie zdarzeń jako pliki JSON lub CSV. Należy pamiętać, że usługa Time Series Insights są przechowywane wszystkie nieprzetworzone dane.
 
    ![Zdarzenia](media/time-series-insights-explorer/explorer7.png)
 
@@ -110,7 +111,7 @@ W ciągu kilku minut nawiązywania połączenia z źródła zdarzeń do środowi
 
    - **Wzorce**: tej funkcji i odpowiedzi proaktywnie udostępnia najbardziej są statystycznie istotne wzorców w regionie wybranych danych. To zwalnia z konieczności Przyjrzyj się tysięcy zdarzeń, aby zrozumieć, jakie wzorców najbardziej oświadcza, czasu i energii. Ponadto usługi Time Series Insights pozwala przejść bezpośrednio do tych wzorców są statystycznie istotne, aby kontynuować, przeprowadzanie analizy. Ta funkcja jest również przydatne w przypadku późniejszej śledztwa w danych historycznych. 
 
-   - **Statystyki kolumn**: statystyki kolumn zapewniają wykresów i tabel, które podzielenie danych z każdej kolumny w serii danych wybranego przez wybrany okres.  
+   - **Statystyki kolumn**:  Statystyki kolumn zapewniają wykresów i tabel, które podzielenie danych z każdej kolumny w serii danych wybranego przez wybrany okres.  
  
       ![STATYSTYKI](media/time-series-insights-explorer/explorer8.png) 
 

@@ -1,7 +1,7 @@
 ---
-title: Pobieranie obrazów GIF — interfejs API wyszukiwania obrazów Bing
+title: Wyszukiwanie obrazów GIF przy użyciu interfejsu API wyszukiwania obrazów Bing
 titleSuffix: Azure Cognitive Services
-description: Jak używać interfejsu API wyszukiwania obrazów Bing, aby uzyskać więcej informacji na temat obrazów GIF.
+description: Użyj interfejsu API wyszukiwania obrazów Bing, aby wyszukać obrazów GIF, w sieci Web.
 services: cognitive-services
 author: MikeDodaro
 manager: cgronlun
@@ -10,16 +10,17 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 82a096ccc1ead9bfb542663ae193539fc227c1fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.custom: seodec2018
+ms.openlocfilehash: 7536452d3ed0030b34e4f30deba56d6d8ae1957c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870251"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249315"
 ---
-# <a name="search-for-gif-images-using-the-bing-image-search-api"></a>Wyszukiwanie obrazów GIF przy użyciu interfejsu API wyszukiwania obrazów Bing
+# <a name="search-for-gif-images"></a>Wyszukiwanie obrazów GIF 
 
-Interfejs API wyszukiwania obrazów Bing umożliwia również wyszukiwanie w całym internetowym dla najbardziej istotnych obrazów GIF.  Programiści mogą zintegrować atrakcyjne GIF w różnych scenariuszach w konwersacji. 
+Interfejs API wyszukiwania obrazów Bing umożliwia również wyszukiwanie w całym internetowym dla najbardziej istotnych obrazów GIF.  Programiści mogą zintegrować atrakcyjne GIF w różnych scenariuszach w konwersacji. 
 
 Następujący adres URL jest zapytanie dotyczące obrazów animowany obraz GIF.
 ````
@@ -206,5 +207,5 @@ Ten kod pobiera następujące wyniki jako obiekty JSON:
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Przewodnik Szybki Start języka C#](quickstarts/csharp.md)
+- [Przewodnik Szybki start dla języka C#](quickstarts/csharp.md)
 - [Samouczek aplikacji jednostronicowej wyszukiwania obrazów](tutorial-bing-image-search-single-page-app.md)

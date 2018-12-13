@@ -1,6 +1,6 @@
 ---
-title: Umiejętności wyszukiwania kognitywnego optyczne rozpoznawanie znaków (Azure Search) | Dokumentacja firmy Microsoft
-description: Wyodrębnianie tekstu z plików obrazów w usłudze Azure Search wzbogacony potok.
+title: Optyczne rozpoznawanie znaków wyszukiwania kognitywnego umiejętności — usługa Azure Search
+description: Wyodrębnianie tekstu z plików obrazów za pomocą optycznego rozpoznawania znaków (OCR) w usłudze Azure Search wzbogacony potok.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 97d594a232c3576d0a0163b2d6847f06328bcd7b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: 097fd93955a4ca3fd96ae6452fa3b503b029ffc3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167515"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313228"
 ---
 # <a name="ocr-cognitive-skill"></a>Optyczne rozpoznawanie znaków umiejętności cognitive
 
@@ -29,7 +30,12 @@ ms.locfileid: "49167515"
 + . OBRAZ GIF
 
 > [!NOTE]
-> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności i wyodrębniania obrazu i normalizacji są obecnie oferowane bezpłatnie. W późniejszym czasie cen tych funkcji zostanie ogłoszona. 
+> Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Pozwoli to nam będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również Zaczniemy naliczać opłaty do wyodrębnienia obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+>
+> Wykonanie wbudowanego umiejętności będzie powodować obciążenie opłatami istniejące [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu będzie powodować obciążenie opłatami ceny za wersję zapoznawczą i został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się, [więcej](cognitive-search-attach-cognitive-services.md).
+>
+>  Umiejętności optyczne rozpoznawanie znaków mapuje następujące funkcje usług cognitive services: Gdy textExtractionAlgorithm jest ustawiona na "ręczne", ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) jest używana funkcja.
+>  Gdy textExtractionAlgorithm jest ustawiona na "drukowanych", ["Optyczne rozpoznawanie znaków"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkcji jest używany w językach innych niż angielski. Dla języka angielskiego nowe ["Rozpoznaje Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) jest używana funkcja dla drukowanego tekstu.
 
 ## <a name="skill-parameters"></a>Parametry kwalifikacji
 
@@ -126,7 +132,7 @@ Parametrów jest rozróżniana wielkość liter.
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Przykład: Scalanie tekstu wyodrębnionego z obrazów osadzonych w zawartości dokumentu.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Przykład: Scalanie z tekstu wyodrębnionego z obrazów osadzonych w zawartości dokumentu.
 
 Typowy przypadek użycia dla funkcja scalająca tekst jest możliwość scalania tekstowa reprezentacja obrazów (tekst z umiejętności optyczne rozpoznawanie znaków lub podpis obrazu) do pola zawartości dokumentu. 
 

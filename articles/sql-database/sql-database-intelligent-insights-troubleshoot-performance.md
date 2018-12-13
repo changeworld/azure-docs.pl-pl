@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 60d19f6d598c6090e0dc00c61817a0f8aed35003
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889501"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273939"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
@@ -109,7 +109,7 @@ Można zoptymalizować i usuwać zapytań dotyczących urzędników o największ
 
 Możesz także zmniejszyć obciążenie, optymalizacja lub ich dystrybucję za pośrednictwem wielu baz danych. Lub można rozdzielić obciążenia między wieloma bazami danych. Jeśli te rozwiązania nie są możliwe, należy rozważyć zwiększenie warstwy cenowej subskrypcji bazy danych SQL, aby zwiększyć ilość zasobów pamięci, dostępne w bazie danych.
 
-Aby uzyskać dodatkowe porady dotyczące rozwiązywania problemów, zobacz [pamięci przydziela skalnym: tajemniczymi konsumenta pamięci programu SQL Server z wieloma nazwami](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Aby uzyskać dodatkowe porady dotyczące rozwiązywania problemów, zobacz [pamięci przydziela skalnym: Tajemniczymi konsumenta pamięci programu SQL Server z wieloma nazwami](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
 ## <a name="locking"></a>Blokowanie
 
@@ -227,7 +227,7 @@ Wzorzec ten wykrywalny wydajności wskazuje warunek wydajności bazy danych, w k
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Dziennik diagnostyczny Wyświetla szczegóły rywalizacji o zasoby bazy danych tempDB. Dane można użyć jako punktu wyjścia do rozwiązywania problemów. Istnieją dwie czynności może prowadzić do zmniejszenia tego rodzaju rywalizacji i zwiększyć przepływność całkowitego obciążenia: Możesz zatrzymać użycie tabel tymczasowych. Możesz także użyć tabele zoptymalizowane pod kątem pamięci. 
+Dziennik diagnostyczny Wyświetla szczegóły rywalizacji o zasoby bazy danych tempDB. Dane można użyć jako punktu wyjścia do rozwiązywania problemów. Istnieją dwie rzeczy, które mogą prowadzić do zmniejszenia tego rodzaju rywalizacji i zwiększyć przepływność całkowitego obciążenia: Aby zatrzymać, użycie tabel tymczasowych. Możesz także użyć tabele zoptymalizowane pod kątem pamięci. 
 
 Aby uzyskać więcej informacji, zobacz [wprowadzenie do tabel zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 

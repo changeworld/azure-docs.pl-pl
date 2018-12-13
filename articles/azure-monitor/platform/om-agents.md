@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 1988f5790b719acf4e5dad1a378139c8d74b56f9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 133e617cd6bac1155ba22276887cf0790221e9de
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995343"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186977"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Aby zachować istniejącą inwestycję w [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) i rozszerzone możliwości za pomocą usługi Log Analytics, Operations Manager można zintegrować z obszaru roboczego usługi Log Analytics. Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
@@ -103,19 +102,19 @@ Po zakończeniu poniższe kroki, aby zintegrować z usługą Log Analytics, moż
 1. W konsoli programu Operations Manager wybierz obszar roboczy **Administracja**.
 1. Rozwiń węzeł Operations Management Suite i kliknij pozycję **Połączenie**.
 1. Kliknij link **Zarejestruj się w konsoli Operations Management Suite**.
-1. Na stronie **Kreator dołączania konsoli Operations Management Suite: Uwierzytelnianie** wprowadź adres e-mail lub numer telefonu i hasło konta administratora, które jest skojarzone z subskrypcją pakietu OMS, a następnie kliknij przycisk **Zaloguj się**.
+1. Na **Kreator przechodzenia do pakietu Operations Management Suite: Uwierzytelnianie** strony, wprowadź adres e-mail lub numer telefonu i hasło konta administratora, który jest skojarzony z subskrypcją pakietu OMS, a następnie kliknij przycisk **Zaloguj**.
 
    >[!NOTE]
    >Pakiet OMS jest teraz nazywana usługi Log Analytics.
    
-1. Po pomyślnym uwierzytelnieniu na **Kreator przechodzenia do pakietu Operations Management Suite: Wybieranie obszaru roboczego** stronie zostanie wyświetlony monit wybierz Twojej dzierżawy platformy Azure, subskrypcja i obszar roboczy usługi Log Analytics. Jeśli masz więcej niż jeden obszar roboczy, wybierz z listy rozwijanej ten obszar roboczy, który ma zostać zarejestrowany w grupie zarządzania programu Operations Manager, a następnie kliknij przycisk **Dalej**.
+1. Po pomyślnym uwierzytelnieniu na **Kreator przechodzenia do pakietu Operations Management Suite: Wybierz obszar roboczy** stronie zostanie wyświetlony monit wybierz Twojej dzierżawy platformy Azure, subskrypcja i obszar roboczy usługi Log Analytics. Jeśli masz więcej niż jeden obszar roboczy, wybierz z listy rozwijanej ten obszar roboczy, który ma zostać zarejestrowany w grupie zarządzania programu Operations Manager, a następnie kliknij przycisk **Dalej**.
    
    > [!NOTE]
    > Program Operations Manager obsługuje jednocześnie tylko jeden obszar roboczy usługi Log Analytics. Połączenie i komputery, które były zarejestrowane w usłudze Log Analytics w kontekście poprzedniego obszaru roboczego, zostaną usunięte z usługi Log Analytics.
    > 
    > 
-1. Na stronie **Kreator dołączania konsoli Operations Management Suite: Podsumowanie** sprawdź ustawienia i jeśli są one poprawne, kliknij przycisk **Utwórz**.
-1. Na stronie **Kreator dołączania konsoli Operations Management Suite: Kończenie** kliknij przycisk **Zamknij**.
+1. Na **Kreator przechodzenia do pakietu Operations Management Suite: Podsumowanie** strony, Potwierdź ustawienia, a jeśli są poprawne, kliknij przycisk **Utwórz**.
+1. Na **Kreator przechodzenia do pakietu Operations Management Suite: Zakończ** kliknij **Zamknij**.
 
 ### <a name="add-agent-managed-computers"></a>Dodawanie komputerów zarządzanych przez agenta
 Po skonfigurowaniu integracji z obszarem roboczym usługi Log Analytics, tylko nawiązuje połączenie z usługą, żadne dane nie są zbierane z agentów raportujących do grupy zarządzania. Nie dzieje, aż po skonfigurowaniu, które określone komputery zarządzane z wykorzystaniem agentów zbierania danych dla usługi Log Analytics. Obiekty komputerów można wybierać indywidualnie lub przez wybranie grupy zawierającej obiekty komputerów z systemem Windows. Nie można wybrać grupy zawierającej wystąpienia innej klasy, na przykład dysków logicznych lub baz danych SQL.
@@ -133,7 +132,7 @@ Wykonaj następujące czynności, czy wewnętrzny serwer proxy między grupą za
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
 1. Rozwiń węzeł Operations Management Suite, a następnie kliknij pozycję **Połączenia**.
 1. W widoku Połączenie OMS kliknij pozycję **Konfiguruj serwer proxy**.
-1. Na stronie **Kreator konsoli Operations Management Suite: Serwer proxy** wybierz pozycję **Użyj serwera proxy, aby uzyskać dostęp do konsoli Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http://corpproxy:80 i kliknij przycisk **Zakończ**.
+1. Na **Kreator Operations Management Suite: Serwer proxy** wybierz opcję **Użyj serwera proxy do dostępu do pakietu Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http://corpproxy:80 a następnie kliknij przycisk **Zakończ** .
 
 Jeśli Twój serwer proxy wymaga uwierzytelniania, należy wykonać poniższe kroki, aby skonfigurować poświadczenia i ustawienia, które muszą zostać poddane propagacji na zarządzanych komputerach, które raporty do usługi Log Analytics w grupie zarządzania.
 
@@ -171,7 +170,7 @@ Aby kontynuować, następujące usługi istniejący proces kontroli zmian kontro
 1. Postępuj zgodnie z **Kreator przechodzenia do usługi Log Analytics** i wprowadź adres e-mail adres lub numer telefonu oraz hasło konta administratora, który jest skojarzony z nowym obszarem roboczym usługi Log Analytics.
    
    > [!NOTE]
-   > Na stronie **Kreator dołączania konsoli Operations Management Suite: Wybieranie obszaru roboczego** przedstawiono istniejący używany obszar roboczy.
+   > **Kreator przechodzenia do pakietu Operations Management Suite: Wybierz obszar roboczy** strona przedstawia istniejącego obszaru roboczego, który jest używany.
    > 
    > 
 

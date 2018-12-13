@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c8a932ac06b58a8e683e326f082a3a2c038dba66
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011837"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273714"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream dziennika aktywności platformy Azure do usługi Event Hubs
 Można przesyłać strumieniowo [dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md) niemal w czasie rzeczywistym do aplikacji przez:
@@ -24,7 +24,7 @@ Można przesyłać strumieniowo [dziennika aktywności platformy Azure](monitori
 ## <a name="what-you-can-do-with-the-activity-log-and-event-hubs"></a>Co można zrobić za pomocą dzienników aktywności i usługi Event Hubs
 Poniżej przedstawiono dwie metody, można użyć możliwości przesyłania strumieniowego dla dziennika aktywności:
 
-* **Stream z systemami innych firm rejestrowania i dane telemetryczne**: wraz z upływem czasu przesyłania strumieniowego usługi Azure Event Hubs staną się mechanizm dziennika rozwiązań do analizy i przekazać dziennik aktywności do rozwiązania Siem innych firm.
+* **Stream z systemami innych firm rejestrowania i dane telemetryczne**: Wraz z upływem czasu przesyłania strumieniowego usługi Azure Event Hubs staną się mechanizm dziennika rozwiązań do analizy i przekazać dziennik aktywności do rozwiązania Siem innych firm.
 * **Tworzenie niestandardowej telemetrii i rejestrowania platformy**: Jeśli już masz platformy niestandardowej telemetrii lub są myśleć o zbudowania jej, wysoce skalowalna publikowania/subskrybowania rodzaj usługi Event Hubs umożliwia elastyczne pozyskiwania dziennika aktywności. Aby uzyskać więcej informacji, zobacz [wideo Dan Rosanova o korzystaniu z usługi Event Hubs na platformie danych telemetrycznych w skali globalnej](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="enable-streaming-of-the-activity-log"></a>Włączanie przesyłania strumieniowego dziennika aktywności
@@ -101,5 +101,5 @@ Schemat dla dziennika aktywności jest dostępny w [monitorowania aktywności su
 ## <a name="next-steps"></a>Kolejne kroki
 * [Archiwizowanie dziennika aktywności na koncie magazynu](monitoring-archive-activity-log.md)
 * [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md)
-* [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](monitor-alerts-unified-log-webhook.md)
+* [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](../azure-monitor/platform/alerts-log-webhook.md)
 

@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim88
-ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031088"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166595"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Przy użyciu metadanych i interfejsu API GenerateAnswer
 
@@ -54,14 +54,14 @@ Możesz wywołać GenerateAnswer za pomocą żądania HTTP POST. Przykładowy ko
 - **Adres URL żądania**: punkt końcowy Maker https://{QnA} /knowledgebases/ {identyfikator bazy wiedzy knowledge base} / generateAnswer
 
 - **Parametry żądania**: 
-    - **Identyfikator bazy wiedzy** (ciąg): identyfikator GUID dla Twojej bazy wiedzy.
+    - **Identyfikator bazy wiedzy** (ciąg): Identyfikator GUID bazy wiedzy.
     - **Punkt końcowy interfejsu QnAMaker** (ciąg): Nazwa hosta punktu końcowego, wdrożonych w ramach subskrypcji platformy Azure.
 - **Nagłówki żądania**
-    - **Content-Type** (ciąg): typ nośnika treści wysłanej do interfejsu API.
-    - **Autoryzacja** (ciąg): usługi klucza punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+    - **Content-Type** (ciąg): Typ nośnika treści wysłanej do interfejsu API.
+    - **Autoryzacja** (ciąg): Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
 - **Treść żądania**
-    - **pytanie** (ciąg): pytanie użytkownika, aby być wyszukiwane względem bazy wiedzy.
-    - **TOP** (opcjonalne, liczba całkowita): liczba rangi wyników do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.
+    - **pytanie** (ciąg): Pytanie użytkownika, aby być wyszukiwane względem bazy wiedzy.
+    - **TOP** (opcjonalne, liczba całkowita): Liczba wyników w rankingu do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.
     - **Identyfikator userId** (opcjonalnie, ciąg): Unikatowy identyfikator, aby zidentyfikować użytkownika. Ten identyfikator będą rejestrowane w dziennikach rozmowy.
     - **strictFilters** (opcjonalnie, ciąg): Jeśli zostanie określony, informuje narzędzie QnA Maker, aby zwrócić tylko odpowiedzi, które mają określonych metadanych. Aby uzyskać więcej informacji zobacz poniżej.
     ```json
@@ -81,13 +81,13 @@ Możesz wywołać GenerateAnswer za pomocą żądania HTTP POST. Przykładowy ko
 
 - **Odpowiedź 200** -pomyślnego wywołania zwraca wynik zapytania. Odpowiedź zawiera następujące pola:
     - **odpowiedzi** — Lista odpowiedzi na zapytanie użytkownika, sortowane malejąco według klasyfikacji wynik.
-        - **wynik**: wynik klasyfikacji od 0 do 100.
-        - **pytania dotyczące**: pytania, dostarczone przez użytkownika.
-        - **odpowiedź**: odpowiedź na pytanie.
-        - **źródło**: nazwę źródła, z której wyjęto lub zapisany w bazie wiedzy knowledge base odpowiedź.
-        - **metadane**: metadane skojarzone z odpowiedzią.
-            - Nazwa: Nazwa metadanych. (string, długość maksymalna: 100, wymagane)
-            - wartość: wartość metadanych. (string, długość maksymalna: 100, wymagane)
+        - **wynik**: Wynik klasyfikacji od 0 do 100.
+        - **pytania dotyczące**: Pytania, dostarczone przez użytkownika.
+        - **Odpowiedź**: Odpowiedź na pytanie.
+        - **źródło**: Nazwa źródła, z której wyjęto lub zapisany w bazie wiedzy knowledge base odpowiedź.
+        - **metadane**: Metadane skojarzone z odpowiedzią.
+            - Nazwa: Nazwa metadanych. (string, maksymalna długość: 100, które są wymagane)
+            - Wartość: Wartość metadanych. (string, maksymalna długość: 100, które są wymagane)
         - **Identyfikator**: Unikatowy identyfikator przypisany do odpowiedzi.
     ```json
     {
@@ -167,6 +167,8 @@ Odpowiedź GenerateAnswer zawiera odpowiednie informacje o metadanych zestawu do
 Te informacje może służyć do rejestrowania kontekście poprzedniej rozmowy dla danego Użyj nowszego konwersacji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+Strona publikowania zawiera również informacje potrzebne do generowania odpowiedzi za pomocą [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) i [cURL](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
 > [!div class="nextstepaction"]
 > [Tworzenie bazy wiedzy](./create-knowledge-base.md)

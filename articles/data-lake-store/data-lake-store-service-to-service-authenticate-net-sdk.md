@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 61d9606ff14a48e6c224108596f0f01daa4813e1
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 58d8cfdbd2ad5d7e727decfa3e3cfdd7151b0048
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954294"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250210"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Do usługi uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu zestawu SDK platformy .NET
 > [!div class="op_single_selector"]
@@ -93,7 +93,7 @@ Dodaj następujący fragment kodu w aplikacji klienckiej .NET. Zastąp wartości
         var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
     }
 
-Fragment kodu poprzedzającej używa funkcji pomocnika, która `GetCreds_SPI_SecretKey`. Kod dla tej funkcji pomocnika jest dostępny [tutaj w serwisie Github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
+Fragment kodu poprzedzającej używa funkcji pomocnika, która `GetCreds_SPI_SecretKey`. Kod dla tej funkcji pomocnika jest dostępny [tutaj w serwisie GitHub](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
 
 ## <a name="service-to-service-authentication-with-certificate"></a>Usługa Usługa uwierzytelniania za pomocą certyfikatu
 
@@ -113,7 +113,7 @@ Dodaj następujący fragment kodu w aplikacji klienckiej .NET. Zastąp wartości
         var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
     }
 
-Fragment kodu poprzedzającej używa funkcji pomocnika, która `GetCreds_SPI_Cert`. Kod dla tej funkcji pomocnika jest dostępny [tutaj w serwisie Github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
+Fragment kodu poprzedzającej używa funkcji pomocnika, która `GetCreds_SPI_Cert`. Kod dla tej funkcji pomocnika jest dostępny [tutaj w serwisie GitHub](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób uwierzytelniania w usłudze Data Lake Storage Gen1 za pomocą usługi do uwierzytelniania przy użyciu zestawu .NET SDK. Możesz teraz przejrzeć następujące artykuły, które porozmawiać na temat sposobu pracy z Data Lake Storage Gen1 przy użyciu zestawu SDK platformy .NET.

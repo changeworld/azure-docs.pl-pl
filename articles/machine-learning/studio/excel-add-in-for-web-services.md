@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 2/1/2018
-ms.openlocfilehash: 7e84db390d3a193be5ac1755837e5f9333bebbc9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 02/01/2018
+ms.openlocfilehash: e836323ad452b86d89eee62936b574b2cc9d0337
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097203"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269502"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Dodatek programu Excel dla usług sieci web Azure Machine Learning Studio
 Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pisania kodu.

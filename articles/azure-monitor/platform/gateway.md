@@ -10,17 +10,15 @@ ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 5294d5919b6d4d80c61e183866409123a9edbb60
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082667"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194236"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics
 W tym dokumencie opisano sposób konfigurowania komunikacji z usługą Azure Automation i Log Analytics przy użyciu bramy usługi Log Analytics, w przypadku bezpośredniego połączenia lub programu Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Bramy usługi Log Analytics, która jest przekierowania serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP, można zbierać dane i wysyłać je do usługi Azure Automation i Log Analytics w ich imieniu.  
@@ -89,8 +87,8 @@ W poniższej tabeli wymieniono obsługiwane liczbę agentów komunikacji z serwe
 
 |Brama |O liczbę agentów, obsługiwane|  
 |--------|----------------------------------|  
-|-Procesor CPU: Intel XEON E5 Procesora 2660 v3 \@ 2,6 GHz, 2 rdzenie<br> -Pamięci: 4 GB<br> — Przepustowość sieci: 1 GB/s| 600|  
-|-Procesor CPU: Intel XEON E5 Procesora 2660 v3 \@ 2,6 GHz 4 rdzenie<br> -Pamięci: 8 GB<br> — Przepustowość sieci: 1 GB/s| 1000|  
+|-PROCESOR CPU: Intel XEON E5 Procesora 2660 v3 \@ 2,6 GHz, 2 rdzenie<br> -Pamięci: 4 GB<br> -Przepustowość sieci: 1 Gb/s| 600|  
+|-PROCESOR CPU: Intel XEON E5 Procesora 2660 v3 \@ 2,6 GHz 4 rdzenie<br> -Pamięci: 8 GB<br> -Przepustowość sieci: 1 Gb/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Pobierz bramę usługi Log Analytics
 
@@ -136,7 +134,7 @@ Aby dowiedzieć się, jak zaprojektować i wdrożyć klaster równoważenia obci
 1. Zaloguj się na serwerze Windows, który jest członkiem klastra równoważenia obciążenia Sieciowego przy użyciu konta administracyjnego.  
 1. Otwórz Menedżera równoważenia obciążenia sieciowego w Menedżerze serwera, kliknij pozycję **narzędzia**, a następnie kliknij przycisk **Menedżera równoważenia obciążenia sieciowego**.
 1. Aby połączyć się z serwerem bramy usługi Log Analytics z programu Microsoft Monitoring Agent zainstalowany, kliknij prawym przyciskiem myszy adres IP klastra, a następnie kliknij przycisk **Dodaj hosta do klastra**.<br><br> ![Sieć obciążenia równoważenia Manager — Dodaj hosta do klastra](./media/gateway/nlb02.png)<br> 
-1. Wprowadź adres IP serwera bramy, który chcesz się połączyć.<br><br> ![Sieci Menedżera równoważenia obciążenia — Dodaj hosta do klastra: łączenie](./media/gateway/nlb03.png) 
+1. Wprowadź adres IP serwera bramy, który chcesz się połączyć.<br><br> ![Sieć obciążenia równoważenia Manager — Dodaj hosta do klastra: Połączenie](./media/gateway/nlb03.png) 
     
 ## <a name="configure-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurowanie agenta usługi Log Analytics i grupa zarządzania programu Operations Manager
 Poniższa sekcja zawiera instrukcje dotyczące sposobu konfigurowania bezpośrednio połączonych agentów usługi Log Analytics, grupy zarządzania programu Operations Manager lub usługi Azure Automation hybrydowych — procesów roboczych Runbook z bramą usługi Log Analytics do komunikowania się z usługi Azure Automation i Log Analiza ruchu.  
@@ -183,7 +181,7 @@ W przypadku dużych lub złożonych środowisk może chcesz tylko określonych s
 1. Otwórz konsolę programu Operations Manager i wybierz **tworzenie** obszaru roboczego.  
 1. W obszarze roboczym tworzenie wybierz **reguły** i kliknij przycisk **zakres** przycisk na pasku narzędzi programu Operations Manager. Jeśli ten przycisk jest niedostępny, sprawdź, upewnij się, że wybrany obiekt, nie folder, w okienku monitorowanie. **Zakres obiektów pakietu administracyjnego** okno dialogowe wyświetla listę typowych klas docelowych, grup lub obiektów. 
 1. Typ **usługa kondycji** w **poszukaj** pola, a następnie wybierz ją z listy.  Kliknij przycisk **OK**.  
-1. Wyszukaj regułę **reguła ustawienia serwera Proxy usługi Advisor** a na pasku narzędzi konsoli operacje kliknij **zastępuje** i wskaż **zastąpienia Rule\For konkretnego obiektu klasy: Usługa kondycji**  i wybrać konkretny obiekt z listy.  Opcjonalnie można utworzyć niestandardowe grupy zawierającej obiekt usługi kondycji serwerów, które chcesz zastosować przesłonięcia w celu, a następnie zastosować zastąpienia do tej grupy.
+1. Wyszukaj regułę **reguła ustawienia serwera Proxy usługi Advisor** a na pasku narzędzi konsoli operacje kliknij **zastępuje** i wskaż **zastąpienia Rule\For konkretnego obiektu klasy: Usługa kondycji** i wybrać konkretny obiekt z listy.  Opcjonalnie można utworzyć niestandardowe grupy zawierającej obiekt usługi kondycji serwerów, które chcesz zastosować przesłonięcia w celu, a następnie zastosować zastąpienia do tej grupy.
 1. W **właściwości zastąpienia** okno dialogowe, kliknij, aby zaznaczyć pole wyboru w **zastąpienia** obok kolumny **WebProxyAddress** parametru.  W **wartość zastąpienia** wprowadź adres URL z koniecznością serwer bramy usługi Log Analytics, rozpoczynającego się `http://` prefiks.  
 
     >[!NOTE]
@@ -256,7 +254,7 @@ Polecenia cmdlet ułatwia wykonywanie zadań, które są niezbędne do aktualizo
 1. Jeśli żaden błąd nie wystąpił w poprzednim kroku, moduł został pomyślnie zaimportowany i używać poleceń cmdlet. Typ `Get-Module OMSGateway`
 1. Po wprowadzeniu zmian przy użyciu polecenia cmdlet upewnij się, uruchom ponownie usługę bramy.
 
-Jeśli wystąpi błąd w kroku 3, moduł nie został zaimportowany. Ten błąd może wystąpić po nie można odnaleźć modułu programu PowerShell. Znajdziesz go w ścieżce instalacji bramy: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
+Jeśli wystąpi błąd w kroku 3, moduł nie został zaimportowany. Ten błąd może wystąpić po nie można odnaleźć modułu programu PowerShell. Można go znaleźć w ścieżce instalacji bramy: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
 
 | **Polecenia cmdlet** | **Parametry** | **Opis** | **Przykład** |
 | --- | --- | --- | --- |  

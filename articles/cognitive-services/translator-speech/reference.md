@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: c7e14e2c2d6d38055304610c805a6bede10a6828
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: dea32146c1e00869de43b50823e81853e6543411
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679294"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259430"
 ---
 # <a name="translator-speech-api"></a>Interfejs API tłumaczenia mowy w usłudze Translator
 
@@ -34,9 +34,9 @@ Interfejs API tekstu usługi Translator, konieczne będzie dostęp do [konta na 
 
 Klucz subskrypcji można używać do uwierzytelniania. Interfejs API mowy usługi Translator obsługuje dwa tryby uwierzytelniania:
 
-* **Przy użyciu tokenu dostępu:** w aplikacji, należy uzyskać token dostępu z usługi tokenu. Klucz subskrypcji interfejsu API tłumaczenia mowy umożliwia uzyskanie tokenu dostępu usługi uwierzytelniania usług Azure Cognitive Services. Token dostępu jest ważny przez 10 minut. Uzyskaj nowy token dostępu co 10 minut i Zachowaj przy użyciu tego samego dostępu tokenu dla powtarzanych żądań w ciągu tych 10 minut.
+* **Przy użyciu tokenu dostępu:** W aplikacji należy uzyskać token dostępu z usługi tokenu. Klucz subskrypcji interfejsu API tłumaczenia mowy umożliwia uzyskanie tokenu dostępu usługi uwierzytelniania usług Azure Cognitive Services. Token dostępu jest ważny przez 10 minut. Uzyskaj nowy token dostępu co 10 minut i Zachowaj przy użyciu tego samego dostępu tokenu dla powtarzanych żądań w ciągu tych 10 minut.
 
-* **Bezpośrednio przy użyciu klucza subskrypcji:** w aplikacji, należy przekazać swój klucz subskrypcji jako wartość `Ocp-Apim-Subscription-Key` nagłówka.
+* **Bezpośrednio przy użyciu klucza subskrypcji:** W aplikacji, należy przekazać swój klucz subskrypcji jako wartość `Ocp-Apim-Subscription-Key` nagłówka.
 
 Klucz subskrypcji oraz token dostępu należy traktować jako wpisy tajne, które powinny być ukryte w widoku.
 
@@ -49,7 +49,7 @@ Klucz subskrypcji oraz token dostępu należy traktować jako wpisy tajne, któr
 ## <a name="5-process-the-results"></a>5. Przetwarzanie wyników
 **Przetwarzanie wyników przesyłane strumieniowo z powrotem z usługi.** Format wyników częściowych, wyniki końcowe i zamiany tekstu na mowę segmentów audio są opisane w dokumentacji `/speech/translate` operacji poniżej.
 
-Przykłady kodu, demonstrując korzystanie z interfejsu API mowy usługi Translator są dostępne z [witryny Github w usłudze Translator firmy Microsoft](https://github.com/MicrosoftTranslator).
+Przykłady kodu, demonstrując korzystanie z interfejsu API mowy usługi Translator są dostępne z [witryny GitHub w usłudze Translator firmy Microsoft](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Uwagi dotyczące implementacji
 
@@ -95,13 +95,13 @@ Interfejs API mowy usługi Translator zwraca transkrypcja i tłumaczenie strumie
 ### <a name="final-result"></a>wynik końcowy
 Wynik rozpoznawania mowy jest generowany na końcu wypowiedź. Wynik jest przesyłane z usługi przez klienta za pomocą protokołu WebSocket komunikat typu Text. Zawartość komunikatu jest serializację ciągu JSON obiektu z następującymi właściwościami:
 
-* `type`: Stała ciągu do identyfikowania typu wyniku. Wartość jest ostatnim przypadku wyników końcowych.
+* `type`: Stała typu String do identyfikowania typu wyniku. Wartość jest ostatnim przypadku wyników końcowych.
 * `id`: Ciąg identyfikator przypisany do wyniku rozpoznawania.
 * `recognition`: Rozpoznany tekst w języku źródła. Tekst może być pustym ciągiem w przypadku uznania false.
 * `translation`: Rozpoznany tekst przetłumaczony na język docelowy.
-* `audioTimeOffset`: Przesunięcie czasu początek rozpoznawania w dziesięciomilionowych częściach sekundy (znaczników 1 = 100 nanosekund). To przesunięcie względem początku strumienia.
+* `audioTimeOffset`: Przesunięcie czasu rozpoczęcia rozpoznawania w dziesięciomilionowych częściach sekundy (znaczników 1 = 100 nanosekund). To przesunięcie względem początku strumienia.
 * `audioTimeSize`: Czas trwania w dziesięciomilionowych częściach sekundy (100 nanosekund) uznania.
-* `audioStreamPosition`: Przesunięcie bajtu początek rozpoznawanie. To przesunięcie względem początku strumienia.
+* `audioStreamPosition`: Przesunięcie początku rozpoznawanie w bajtach. To przesunięcie względem początku strumienia.
 * `audioSizeBytes`: Rozmiar w bajtach uznania.
 
 Należy pamiętać, że rozpoznawanie na strumienia audio w układzie nie jest uwzględniony w wynikach domyślnie. `TimingInfo` Funkcji należy wybrać przez klienta (zobacz `features` parametru).
@@ -126,13 +126,13 @@ Wyniki rozpoznawania mowy pośrednie lub częściowe nie są przesyłane strumie
 
 Częściowy wynik są przesyłane z usługi przez klienta za pomocą protokołu WebSocket komunikat typu Text. Zawartość komunikatu jest serializację ciągu JSON obiektu z następującymi właściwościami:
 
-* `type`: Stała ciągu do identyfikowania typu wyniku. Wartość jest częściowe wyniki częściowe.
+* `type`: Stała typu String do identyfikowania typu wyniku. Wartość jest częściowe wyniki częściowe.
 * `id`: Ciąg identyfikator przypisany do wyniku rozpoznawania.
 * `recognition`: Rozpoznany tekst w języku źródła.
 * `translation`: Rozpoznany tekst przetłumaczony na język docelowy.
-* `audioTimeOffset`: Przesunięcie czasu początek rozpoznawania w dziesięciomilionowych częściach sekundy (znaczników 1 = 100 nanosekund). To przesunięcie względem początku strumienia.
+* `audioTimeOffset`: Przesunięcie czasu rozpoczęcia rozpoznawania w dziesięciomilionowych częściach sekundy (znaczników 1 = 100 nanosekund). To przesunięcie względem początku strumienia.
 * `audioTimeSize`: Czas trwania w dziesięciomilionowych częściach sekundy (100 nanosekund) uznania.
-* `audioStreamPosition`: Przesunięcie bajtu początek rozpoznawanie. To przesunięcie względem początku strumienia.
+* `audioStreamPosition`: Przesunięcie początku rozpoznawanie w bajtach. To przesunięcie względem początku strumienia.
 * `audioSizeBytes`: Rozmiar w bajtach uznania.
 
 Należy pamiętać, że rozpoznawanie na strumienia audio w układzie nie jest uwzględniony w wynikach domyślnie. Należy wybrać funkcję TimingInfo przez klienta (patrz parametr funkcji).
@@ -158,10 +158,10 @@ Po włączeniu funkcji zamiany tekstu na mowę (zobacz `features` parametr poni�
 ### <a name="closing-the-connection"></a>Zamykanie połączenia
 Jeśli aplikacja kliencka zostało zakończone, przesyłanie strumieniowe audio, otrzymał ostatni wynik końcowy go zamknąć połączenie, zainicjuj uzgadniania zamknięcia protokołu WebSocket. Istnieją warunki, które spowoduje, że serwer zakończyć połączenie. Następujące kody zamknięcia protokołu WebSocket mogą pojawić się przez klienta:
 
-* `1003 - Invalid Message Type`: Serwer przerywa połączenie, ponieważ nie można zaakceptować, typ danych, który otrzymał. Dzieje się tak często, gdy przychodzący audio nie rozpoczyna się od odpowiedniego nagłówka.
+* `1003 - Invalid Message Type`: Serwer zostanie zakończone połączenia, ponieważ nie można zaakceptować, typ danych, który otrzymał. Dzieje się tak często, gdy przychodzący audio nie rozpoczyna się od odpowiedniego nagłówka.
 * `1000 - Normal closure`: Połączenie zostało zamknięte po żądanie zostało spełnione. Serwer zamknie połączenie: po otrzymaniu bez dźwięku z klienta przez dłuższy czas; gdy wyciszenia jest przesyłany strumieniowo przez dłuższy czas; gdy sesja osiągnie maksymalny czas trwania dozwolone (około 90 minut).
 * `1001 - Endpoint Unavailable`: Wskazuje, że serwer będzie niedostępny. Aplikacja kliencka może podejmować prób ponownego połączenia z limitem liczby ponownych prób.
-* `1011 - Internal Server Error`Połączenie zostanie zamknięte przez serwer z powodu błędu na serwerze.
+* `1011 - Internal Server Error`: Połączenie zostanie zamknięte przez serwer, z powodu błędu na serwerze.
 
 ### <a name="parameters"></a>Parametry
 
@@ -172,9 +172,9 @@ Jeśli aplikacja kliencka zostało zakończone, przesyłanie strumieniowe audio,
 |na|(puste)|Określa język do tłumaczenia uzyskanego tekstu do. Wartość jest jeden z identyfikatorów języka z `text` zakresu w odpowiedzi z interfejsu API języków.|query|ciąg|
 |danych|(puste)   |Rozdzielana przecinkami zestaw funkcji wybierane przez klienta. Dostępne funkcje obejmują:<ul><li>`TextToSpeech`: Określa, że usługa musi zwracać przetłumaczone audio końcowego tłumaczeniem.</li><li>`Partial`: Określa, usługa musi zwracać wyniki pośrednie rozpoznawania podczas audio jest przesyłanie strumieniowe do usługi.</li><li>`TimingInfo`: Określa, czy usługa musi zwrócić informacje o czasie skojarzonych z każdym rozpoznawania.</li></ul>Na przykład określić klienta `features=partial,texttospeech` do odbierania wyników częściowych i zamiany tekstu na mowę, ale nie informacje o czasie. Należy zauważyć, że wyniki końcowe są zawsze przesyłane strumieniowo do klienta.|query|ciąg|
 |Głos|(puste)|Określa, jakie głosowe na potrzeby zamiany tekstu na mowę renderowania przetłumaczonego tekstu. Wartość jest jeden z identyfikatorów głosowej z zakresu tts w odpowiedzi z interfejsu API języków. Jeśli nie określono głosu, że system będzie automatycznie wybierz jedną, po włączeniu funkcji zamiany tekstu na mowę.|query|ciąg|
-|Format|(puste)|Określa format strumienia audio tekstu na mowę, zwracane przez usługę. Dostępne opcje:<ul><li>`audio/wav`: Strumień audio fali. Powinien używać klient do nagłówka WAV poprawnie interpretować audio format. WAV audio tekstu na mowę, jest 16-bitowych, pojedynczy kanał PCM o częstotliwości próbkowania 24kHz lub 16kHz.</li><li>`audio/mp3`: Strumień audio MP3.</li></ul>Wartość domyślna to `audio/wav`.|query|ciąg|
+|format|(puste)|Określa format strumienia audio tekstu na mowę, zwracane przez usługę. Dostępne opcje:<ul><li>`audio/wav`: Strumień audio fali. Powinien używać klient do nagłówka WAV poprawnie interpretować audio format. WAV audio tekstu na mowę, jest 16-bitowych, pojedynczy kanał PCM o częstotliwości próbkowania 24kHz lub 16kHz.</li><li>`audio/mp3`: Strumień audio MP3.</li></ul>Wartość domyślna to `audio/wav`.|query|ciąg|
 |ProfanityAction    |(puste)    |Określa, jak usługa powinna obsługiwać profanities rozpoznawany w mowy. Prawidłowych akcji to:<ul><li>`NoAction`: Profanities są pozostawiane się.</li><li>`Marked`: Profanities są zastępowane znacznik. Zobacz `ProfanityMarker` parametru.</li><li>`Deleted`: Profanities są usuwane. Na przykład jeśli słowo `"jackass"` jest traktowany jako wulgaryzmów frazę `"He is a jackass."` staną się `"He is a .".`</li></ul>Wartość domyślna jest oznaczona.|query|ciąg|
-|ProfanityMarker|(puste)    |Określa, jak wykryte profanities są obsługiwane, gdy `ProfanityAction` ustawiono `Marked`. Prawidłowe opcje to:<ul><li>`Asterisk`: Profanities są zastępowane parametrami `***`. Na przykład jeśli słowo `"jackass"` jest traktowany jako wulgaryzmów frazę `"He is a jackass."` staną się `"He is a ***.".`</li><li>`Tag`: Wulgaryzmów są ujęte w wulgaryzmów — tag XML. Na przykład jeśli słowo `"jackass"` jest traktowany jako wulgaryzmów frazę `"He is a jackass."` staną się `"He is a <profanity>jackass</profanity>."`.</li></ul>Wartość domyślna to `Asterisk`.|query|ciąg|
+|ProfanityMarker|(puste)    |Określa, jak wykryte profanities są obsługiwane, gdy `ProfanityAction` ustawiono `Marked`. Prawidłowe opcje to:<ul><li>`Asterisk`: Profanities są zastępowane parametrami `***`. Na przykład jeśli słowo `"jackass"` jest traktowany jako wulgaryzmów frazę `"He is a jackass."` staną się `"He is a ***.".`</li><li>`Tag`: Wulgaryzmów są ujęte w tagu XML wulgaryzmów. Na przykład jeśli słowo `"jackass"` jest traktowany jako wulgaryzmów frazę `"He is a jackass."` staną się `"He is a <profanity>jackass</profanity>."`.</li></ul>Wartość domyślna to `Asterisk`.|query|ciąg|
 |Autoryzacja|(puste)  |Określa wartość klienta tokenu elementu nośnego. Użyj prefiksu `Bearer` następuje wartość `access_token` wartości zwracanej przez usługę tokenu uwierzytelniania.|nagłówek   |ciąg|
 |OCP-Apim-Subscription-Key|(puste)|Jeśli wymagane `Authorization` nagłówka nie jest określony.|nagłówek|ciąg|
 |access_token|(puste)   |Alternatywny sposób przekazania prawidłowy token dostępu OAuth. Token elementu nośnego znajduje się zwykle z nagłówkiem `Authorization`. Niektóre biblioteki websocket nie zezwalają na kod klienta, aby ustawić nagłówki. W takim przypadku klient może używać `access_token` parametr do przekazania prawidłowy token zapytania. Podczas używania tokenu dostępu na potrzeby uwierzytelniania, jeśli `Authorization` nagłówka nie ustawiono, następnie `access_token` musi być ustawiona. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany. Aby przekazać token klientów należy używać tylko jednej metody.|query|ciąg|

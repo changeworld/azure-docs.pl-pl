@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: d7e5553ec48cfda858f2a463a2df0cc60f0e5c65
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242827"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270403"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database — często zadawane pytania (FAQ)
 
@@ -196,9 +196,9 @@ Na przykład:
 > [!NOTE]
 > Przez ograniczony czas tworzenia kopii zapasowej opłaty za magazyn i we/wy są bezpłatne.
 
-## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>Jak odbywa się korzystanie z aktywnej replikacji geograficznej w puli elastycznej wyświetlane są na rachunku
+## <a name="how-does-the-use-of-active-geo-replication-or-auto-failover-groups-in-an-elastic-pool-show-up-on-my-bill"></a>Jak sposób korzystania z aktywnej replikacji geograficznej lub automatyczny tryb failover grup w puli elastycznej widoczne na rachunku
 
-W przeciwieństwie do pojedynczych baz danych przy użyciu [aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md) dzięki elastycznym bazom danych nie ma bezpośredni wpływ rozliczeń.  Opłaty są naliczane tylko dla zasobów aprowizowanych dla poszczególnych pul (puli podstawowego i pomocniczego puli)
+W przeciwieństwie do pojedynczych baz danych przy użyciu [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) lub [automatyczny tryb failover grupy](sql-database-auto-failover-group.md) dzięki elastycznym bazom danych nie ma bezpośredni wpływ rozliczeń. Opłaty są naliczane tylko dla zasobów aprowizowanych dla poszczególnych pul (puli podstawowego i pomocniczego puli)
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>Sposób użycia funkcji inspekcji obciążać Mój rachunek
 
@@ -217,7 +217,7 @@ Zobacz [Zarządzanie bazami danych i logowaniami](sql-database-manage-logins.md)
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Jak upewnić się, że tylko adresów IP autoryzowanych mogą uzyskać dostęp do serwera
 
-Zobacz [porady: Konfigurowanie ustawień zapory w bazie danych SQL](sql-database-configure-firewall-settings.md).
+Zobacz [jak: Konfigurowanie ustawień zapory w bazie danych SQL](sql-database-configure-firewall-settings.md).
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>Co to jest opóźnienie replikacji oczekiwane, podczas replikacji geograficznej bazy danych między dwoma regionami w ramach tej samej lokalizacji geograficznej z platformy Azure
 

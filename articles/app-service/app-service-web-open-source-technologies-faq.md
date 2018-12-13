@@ -1,5 +1,5 @@
 ---
-title: Aplikacje sieci web w technologii open source często zadawane pytania dotyczące platformy Azure | Dokumentacja firmy Microsoft
+title: Technologie open source — często zadawane pytania — usługa Azure App Service | Dokumentacja firmy Microsoft
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące technologii open source w funkcji Web Apps w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 19168f965f2a98a1dc3f94ae0b029449865a9582
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ac80cd5ee1c530736666338e8bc3763b110c688c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971358"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255537"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie open source często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -113,7 +114,7 @@ Aby uzyskać informacje o instalowaniu Django, zobacz [wdrażanie aplikacji Djan
 
 Portal Azure Marketplace i wdrożeń niestandardowych:
 
-* Lokalizacja folderu: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+* Lokalizacja folderu: D:\home\site\wwwroot\bin\apache-Tomcat-8.0.33\logs
 * Pliki zainteresowania:
     * catalina. *rrrr mm-dd*.log
     * Menedżer hosta. *rrrr mm-dd*.log
@@ -203,8 +204,8 @@ Jeśli okaże się, blokada WordPress po zainstalowaniu ostatnio wtyczkę, może
 
 Istnieje wiele opcji migracji bazy danych MySQL, który jest podłączony do swojej witryny sieci Web WordPress:
 
-* : Deweloperzy [wiersza polecenia lub narzędzia PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Użytkownicy niebędący deweloperami: Użyj [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
+* Deweloperzy: Użyj [wiersza polecenia lub narzędzia PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
+* Non deweloperów: Użyj [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Jak pomóc zabezpieczyć WordPress?
 

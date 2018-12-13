@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3442710e1e1327dcafc1b4ed6617aeb7ff1bf0f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634510"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322434"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Samanage dla automatycznej aprowizacji użytkowników
 
@@ -46,7 +46,7 @@ Przed skonfigurowaniem Samanage dla użytkownika automatyczne Inicjowanie obsłu
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
@@ -54,7 +54,7 @@ Przed skonfigurowaniem Samanage dla użytkownika automatyczne Inicjowanie obsłu
 
 3. Aby dodać Samanage, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Samanage**.
 
@@ -76,7 +76,9 @@ Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy z
 
 ### <a name="important-tips-for-assigning-users-to-samanage"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Samanage
 
-*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Samanage do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+*    Role Samanage są dynamiczne i automatycznie uzupełniane w witrynie Azure portal, interfejsu użytkownika już dziś. Przed przypisaniem Samanage ról do użytkowników, upewnij się, że synchronizacja początkowa jest finalizowane przy użyciu Samanage do pobierania najnowszych role w swojej dzierżawie Samanage.
+
+*    Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Samanage do przetestowania Twojej początkowej automatyczne aprowizowanie użytkowników konfiguracji. Dodatkowych użytkowników i/lub grup można przypisać później po pomyślnych testów.
 
 *   Podczas przypisywania użytkowników do Samanage, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
 

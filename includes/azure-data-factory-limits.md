@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 06/20/2018
+ms.date: 12/12/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 4aa4809c57eaf26b10053d432f9191580ec143a0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 856d702bcf1f566d0cc455cdd2676e6c2e23d179
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44381101"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53326464"
 ---
 Data factory to usługa dla wielu dzierżawców, który ma następujące domyślne limity w miejscu, aby upewnić się, że subskrypcjami klientów są chronione przed jego obciążeń. Wiele limity można łatwo wygenerowany dla Twojej subskrypcji do maksymalnego limitu, kontaktując się z pomocą techniczną.
 
@@ -24,8 +24,7 @@ Data factory to usługa dla wielu dzierżawców, który ma następujące domyśl
 | Fabryki danych w subskrypcji platformy Azure | 50 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Całkowita liczba jednostek (potok, zestawy danych, wyzwalacze, połączonych usług, środowisk Integration Runtime) w ramach usługi data factory | 5000 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Łączna liczba rdzeni procesora CPU dla środowiska Azure-SSIS Integration Runtime(s) w ramach jednej subskrypcji | 128 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Potok równoczesny przebiegów na potoku | 100 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Potok równoczesny przebiegów na usługi data factory | 10 000  | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Potok równoczesny przebiegów na fabryki danych (współużytkowane przez wszystkie potoki w fabryce) | 10 000  | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maksymalna liczba działań na potok (w tym wewnętrznego działania dla kontenerów) | 40 | 40 |
 | Maksymalna liczba parametrów dla potoku | 50 | 50 |
 | Elementy ForEach | 100 000 | 100 000 |

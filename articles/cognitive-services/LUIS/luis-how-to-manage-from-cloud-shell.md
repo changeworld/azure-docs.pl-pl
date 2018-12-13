@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3264a94c26339bc99a82ebd6770a3cae7d8ab3fb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086775"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133482"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Dane użycia usługi LUIS z usługi Azure Cloud Shell
 Portal systemu Azure pozwala na używanie poleceń cmdlet programu PowerShell do pracy z zasobami usługi LUIS. 
@@ -35,7 +35,7 @@ Gdy używasz usługi Azure portal cloud shell, Ty masz zawsze w najnowszej wersj
 
 Użyj **Launch Cloud Shell** przycisk Otwórz usługę Cloud Shell lub Otwórz przeglądarkę z [ https://shell.azure.com ](https://shell.azure.com). Wybierz środowisko powłoki Power Shell. Jeśli nie masz konta usługi Azure Storage, należy ją utworzyć. 
 
-<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
+<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" alt="Start powershell" /></a>
 
 ## <a name="luis-endpoint-usage-information"></a>Informacje o użyciu punktu końcowego usługi LUIS
 
@@ -43,7 +43,7 @@ Polecenia cmdlet programu PowerShell w wersji 6.x, `Get-AzureRmCognitiveServices
 
 Składnia polecenia jest następująca:
 
-```
+```powershell
 Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName my-resource-group -Name my-luis-service-name
 ```
 
@@ -51,7 +51,7 @@ W poniższym przykładzie nazwa grupy zasobów jest `luis-westus-rg` i jest nazw
 
 Polecenie cmdlet zwraca informacje o użyciu 16 10 000 trafienia punktu końcowego, używany w ciągu 30 dni, z okresu kończącego się w dniu 7 czerwca:
 
-```
+```powershell
 CurrentValue  : 16
 Name          : LUIS.Calls
 Limit         : 10000

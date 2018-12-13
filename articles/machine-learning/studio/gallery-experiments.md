@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
 ms.service: machine-learning
@@ -16,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 74791c3dce543ae9c0489a6c6124e4edba9204d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 12fb45b00848e5e34760ccb0691998c1f72237b8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096965"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269305"
 ---
-# <a name="discover-experiments-in-azure-ai-gallery"></a>Odkryj eksperymenty w galerii Azure AI
+# <a name="discover-azure-machine-learning-studio-experiments-in-azure-ai-gallery"></a>Odnajdywanie usługi Azure Machine Learning Studio eksperymenty w galerii Azure AI
 
 [Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com) posiada szereg [eksperymentów](https://gallery.cortanaintelligence.com/experiments) zostały opracowane w [Azure Machine Learning Studio](https://studio.azureml.net). Eksperymenty z zakresu od szybkiego eksperymentów weryfikacji koncepcji, które przedstawiają określonej usługi machine learning technikę do w pełni rozwinięte rozwiązań złożonych machine learning problemów.
 
 > [!NOTE]
-> ***Eksperymentować*** jest kanwy w usłudze Machine Learning Studio, można użyć w celu utworzenia modelu analizy predykcyjnej. Aby utworzyć model łączenia danych z różnych modułów analitycznych. Można spróbować różnych pomysły, czy przebiegi wersji próbnej i po pewnym czasie wdrażania modelu w formie usługi internetowej na platformie Azure. Na przykład sposobu tworzenia eksperymentu podstawowe zobacz [samouczek dotyczący uczenia maszynowego: Tworzenie pierwszego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md). Bardziej szczegółowe instrukcje dotyczące sposobu tworzenia rozwiązania analizy predykcyjnej, zobacz [wskazówki: tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+> ***Eksperymentować*** jest kanwy w usłudze Machine Learning Studio, można użyć w celu utworzenia modelu analizy predykcyjnej. Aby utworzyć model łączenia danych z różnych modułów analitycznych. Można spróbować różnych pomysły, czy przebiegi wersji próbnej i po pewnym czasie wdrażania modelu w formie usługi internetowej na platformie Azure. Na przykład sposobu tworzenia eksperymentu podstawowe zobacz [samouczek dotyczący uczenia maszynowego: Tworzenie pierwszego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md). Bardziej szczegółowe instrukcje dotyczące sposobu tworzenia rozwiązania analizy predykcyjnej, zobacz [instruktażu: Tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
 >
 >
 
@@ -82,7 +81,7 @@ Po zalogowaniu się do galerii, stanie się członkiem społeczności galerii. J
 3. Gdy wszystko będzie gotowe do opublikowania eksperymentu w galerii, na liście poniżej obszaru roboczego eksperymentu, akcje wybierz **publikowania do galerii**.
 
     ![Wybierz pozycję "Publikuj do galerii"](./media/gallery-experiments/publish-experiment-to-gallery.png)
-4. Na **opis eksperymentu** wpisz tytuł i tagów. Należy opisowy tytuł i tagów. Wyróżnij metod, które zostanie użyte lub rozwiązywania problemów rzeczywistych. Na przykład eksperymentu opisowy tytuł "Klasyfikacja binarna: analiza tonacji w usłudze Twitter."
+4. Na **opis eksperymentu** wpisz tytuł i tagów. Należy opisowy tytuł i tagów. Wyróżnij metod, które zostanie użyte lub rozwiązywania problemów rzeczywistych. Na przykład eksperymentu opisowy tytuł "Klasyfikacja binarna: Analiza tonacji usługi Twitter."
 
     ![Wprowadź tytuł i tagi dla publikowania](./media/gallery-experiments/experiment-description.png)
 5. W **podsumowania** wprowadź podsumowanie eksperymentu. Zwięźle opisz problem rozwiązuje eksperymentu, a jak złożoną.
@@ -189,4 +188,4 @@ Po wprowadzeniu tag, aby wprowadzić inny znacznik, naciśnij klawisz Tab.
 
 **[Przejdź do galerii](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+

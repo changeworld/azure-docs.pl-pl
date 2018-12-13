@@ -7,14 +7,15 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: 60248da2bbdac751845a40720f8967203c562b4a
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 48fd64908a5cb2488d58f3c078e0ccb17419352f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085750"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260253"
 ---
-# <a name="quickstart-send-container-registry-events-to-event-grid"></a>Szybki Start: Wysyłanie kontenera rejestru zdarzeń do usługi Event Grid
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Szybki Start: Wysyłanie zdarzeń z prywatnego rejestru kontenerów do usługi Event Grid
 
 Azure Event Grid to w pełni zarządzanej usługi routingu zdarzeń, która umożliwia ujednolicone używanie zdarzeń przy użyciu funkcji publikowania-subskrypcji modelu. Tworzenie rejestru kontenerów, subskrybowanie zdarzeń rejestru, a następnie wdrożysz przykładową aplikację sieci web do odbierania zdarzeń, w tym przewodniku Szybki Start Użyj wiersza polecenia platformy Azure. Na koniec możesz wyzwolić obraz kontenera `push` i `delete` zdarzeń i widok ładunek zdarzenia w przykładowej aplikacji.
 
@@ -212,7 +213,7 @@ Gratulacje! Jeśli widzisz `ImagePushed` i `ImageDeleted` zdarzenia, rejestru wy
 
 Po zakończeniu korzystania z zasobów utworzonych w tym przewodniku Szybki Start, możesz je usunąć wszystkie za pomocą następującego polecenia wiersza polecenia platformy Azure. Podczas usuwania grupy zasobów są wszystkie zasoby, zawartych w nim trwale usunięte.
 
-**Ostrzeżenie**: Ta operacja jest nieodwracalna. Upewnij się, że nie są już potrzebne żadne zasoby w grupie przed uruchomieniem polecenia.
+**OSTRZEŻENIE**: Ta operacja jest nieodwracalna. Upewnij się, że nie są już potrzebne żadne zasoby w grupie przed uruchomieniem polecenia.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

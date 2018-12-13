@@ -1,6 +1,6 @@
 ---
 title: Często zadawane pytania dotyczące usługi Azure Backup
-description: 'Odpowiedzi na typowe pytania dotyczące funkcji usługi Azure Backup, w tym magazynów usług Recovery Services, elementów, których kopie zapasowe można tworzyć, sposobu działania, szyfrowania i ograniczeń. '
+description: 'Odpowiedzi na często zadawane pytania dotyczące: Funkcje usługi Azure Backup w tym usługi Recovery Services magazynów, co ona może tworzyć kopie zapasowe, jak to działa, szyfrowania i limitów. '
 services: backup
 author: rayne-wiselman
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 61e8a7732b7e6dc7fd521819a135fb1a7a6a13b3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 647ed64d405424431419da1e693abea2bdf07ace
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261670"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262269"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -148,7 +148,7 @@ W poniższej tabeli opisano sposób ustalania rozmiaru dla każdego źródła da
 **Źródło danych** | **Szczegóły**
 --- | ---
 Wolumin |Ilość danych kopii zapasowej z jednego woluminu tworzona kopia zapasowa maszyny Wirtualnej.
-Bazy danych programu SQL Server |Rozmiar pojedynczego rozmiar bazy danych SQL Trwa wykonywanie kopii zapasowej.
+Baza danych programu SQL Server |Rozmiar pojedynczego rozmiar bazy danych SQL Trwa wykonywanie kopii zapasowej.
 Sharepoint | Suma zawartości i konfiguracji bazy danych w farmie programu SharePoint, w których powstaje kopia zapasowa.
 Exchange |Suma wszystkich baz danych programu Exchange w serwerze programu Exchange, w których powstaje kopia zapasowa.
 Stan systemu/BMR |Każda pojedyncza kopia BMR lub stanu systemu komputera, w których powstaje kopia zapasowa.
@@ -235,8 +235,8 @@ Tak. Dane są szyfrowane na maszynie lokalnej przy użyciu AES256. Dane są prze
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Czy dane kopii zapasowej na platformie Azure są również szyfrowane?
 
 Tak. Dane na platformie Azure są szyfrowane w spoczynku.
-- Dla lokalnej kopii zapasowej szyfrowanie na resetowanie znajduje się przy użyciu hasła, podane podczas tworzenia kopii zapasowej na platformie Azure.
-- W przypadku maszyn wirtualnych platformy Azure dane są szyfrowane na reset przy użyciu szyfrowania usługi Storage (SSE).
+- Dla lokalnej kopii zapasowej szyfrowanie w spoczynku znajduje się przy użyciu hasła, podane podczas tworzenia kopii zapasowej na platformie Azure.
+- W przypadku maszyn wirtualnych platformy Azure dane są szyfrowane w spoczynku przy użyciu szyfrowania usługi Storage (SSE).
 
 Firma Microsoft nie odszyfrowuje danych kopii zapasowej w żadnym punkcie.
 

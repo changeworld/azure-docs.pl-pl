@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji w usłudze Azure App Service przy użyciu pliku ZIP lub WAR | Dokumentacja firmy Microsoft
+title: Wdrażanie kodu za pomocą pliku ZIP lub WAR — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wdrożyć aplikację w usłudze Azure App Service z pliku ZIP (lub plik WAR dla deweloperów języka Java).
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: b628ae0806febb3ffd4edaf71be45841aff38516
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 437f1aa631e058ee62bb3c08d2ad654c3d0666f3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423032"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259090"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu pliku ZIP lub WAR
 

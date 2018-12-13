@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 9c1c833046c7dff0f26621be57768021dc036846
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 0355b8cf19209509dca2f3cac93c7abb92a63990
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888991"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323324"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure w celu pobrania tokenu dostępu 
 
@@ -51,6 +51,7 @@ Aplikacja kliencka może żądać zarządzanych tożsamości dla zasobów platfo
 | [Uzyskaj token za pośrednictwem protokołu HTTP](#get-a-token-using-http) | Szczegóły protokołu dla zarządzanych tożsamości dla zasobów platformy Azure token punktu końcowego |
 | [Uzyskaj token za pomocą biblioteki Microsoft.Azure.Services.AppAuthentication dla platformy .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Przykładem korzystania z biblioteki Microsoft.Azure.Services.AppAuthentication z klienta programu .NET
 | [Uzyskaj token za pomocą języka C#](#get-a-token-using-c) | Przykład użycia zarządzanych tożsamości dla punktu końcowego REST zasobów platformy Azure z klienta języka C# |
+| [Uzyskaj token za pomocą języka Java](#get-a-token-using-java) | Przykład użycia zarządzanych tożsamości dla punktu końcowego REST zasobów platformy Azure z klienta języka Java |
 | [Uzyskaj token za pomocą języka Go](#get-a-token-using-go) | Przykład użycia zarządzanych tożsamości dla punktu końcowego REST zasobów platformy Azure z klienta z rzeczywistym użyciem |
 | [Uzyskaj token za pomocą programu Azure PowerShell](#get-a-token-using-azure-powershell) | Przykład użycia zarządzanych tożsamości dla punktu końcowego REST zasobów platformy Azure w kliencie programu PowerShell |
 | [Pobierz token, używając programu CURL](#get-a-token-using-curl) | Przykład użycia zarządzanych tożsamości dla punktu końcowego REST zasobów platformy Azure w kliencie programu Bash/CURL |
@@ -172,6 +173,50 @@ catch (Exception e)
     string errorText = String.Format("{0} \n\n{1}", e.Message, e.InnerException != null ? e.InnerException.Message : "Acquire token failed");
 }
 
+```
+
+## <a name="get-a-token-using-java"></a>Uzyskaj token za pomocą języka Java
+
+Użyj tego [biblioteki JSON](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) pobierania tokenu przy użyciu języka Java.
+
+```Java
+import java.io.*;
+import java.net.*;
+import com.fasterxml.jackson.core.*;
+ 
+class GetMSIToken {
+    public static void main(String[] args) throws Exception {
+ 
+        URL msiEndpoint = new URL("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/");
+        HttpURLConnection con = (HttpURLConnection) msiEndpoint.openConnection();
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Metadata", "true");
+ 
+        if (con.getResponseCode()!=200) {
+            throw new Exception("Error calling managed identity token endpoint.");
+        }
+ 
+        InputStream responseStream = con.getInputStream();
+ 
+        JsonFactory factory = new JsonFactory();
+        JsonParser parser = factory.createParser(responseStream);
+ 
+        while(!parser.isClosed()){
+            JsonToken jsonToken = parser.nextToken();
+ 
+            if(JsonToken.FIELD_NAME.equals(jsonToken)){
+                String fieldName = parser.getCurrentName();
+                jsonToken = parser.nextToken();
+ 
+                if("access_token".equals(fieldName)){
+                    String accesstoken = parser.getValueAsString();
+                    System.out.println("Access Token: " + accesstoken.substring(0,5)+ "..." + accesstoken.substring(accesstoken.length()-5));
+                    return;
+                }
+            }
+        }
+    }
+}
 ```
 
 ## <a name="get-a-token-using-go"></a>Uzyskaj token za pomocą języka Go

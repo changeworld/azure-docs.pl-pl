@@ -1,5 +1,5 @@
 ---
-title: Tworzenie usługi App Service Environment w wersji 1
+title: Tworzenie usługi App Service Environment w wersji 1 - Azure
 description: Tworzenie opisu przepływu app service environment w wersji 1
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 289ff76e533497a731a4fc51b3e54101a9d34a68
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 1cfe8dae750cb113dd5346bfba261099fd3b6044
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958370"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276744"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Tworzenie usługi App Service Environment w wersji 1 
 
@@ -55,7 +56,7 @@ Aby utworzyć środowisko App Service Environment w wersji 1, możesz wyszukiwa�
 4. Wybierz odpowiednie opcje sieci wirtualnej i lokalizacji. Można utworzyć nową sieć wirtualną lub wybierz wstępnie istniejącej sieci wirtualnej. Jeśli wybierzesz nową sieć wirtualną, możesz określić nazwę i lokalizację. Nową sieć wirtualną, będzie miał 192.168.250.0/23 zakres adresów i podsieć o nazwie **domyślne** który jest zdefiniowany jako 192.168.250.0/24. Możesz też po prostu wybrać istniejące klasyczne lub siecią wirtualną Menedżera zasobów. Typ adresu VIP ten wybór decyduje, czy Twoje środowisko ASE są bezpośrednio dostępne z Internetu (zewnętrzny), czy używa wewnętrznego modułu równoważenia obciążenia (ILB). Aby dowiedzieć się więcej o nich odczytać [przy użyciu wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service][ILBASE]. Wybierz typ adresu VIP, zewnętrznych można wybrać system jest tworzony z celów IPSSL ile zewnętrzne adresy IP. Jeśli wybierzesz wewnętrzne następnie należy określić domenę podrzędną, która będzie używana w środowisku ASE. Za pomocą środowisk ASE można wdrożyć w sieciach wirtualnych, które używają *albo* zakresów adresów publicznych *lub* przestrzeni adresowych RFC1918 (czyli prywatnych adresów). Aby można było używać sieci wirtualnej z zakresem adresów publicznych, należy utworzyć sieć wirtualną wcześniej. Po wybraniu wstępnie istniejącej sieci wirtualnej należy utworzyć nowej podsieci podczas tworzenia środowiska ASE. **Nie można użyć wstępnie utworzonej podsieci, w portalu. Jeśli tworzysz środowisko ASE przy użyciu szablonu usługi resource manager, możesz utworzyć środowisko ASE przy użyciu wcześniej istniejącej podsieci.** Aby utworzyć środowisko ASE przed użyciem szablonu informacje w tym miejscu [tworzenie środowiska usługi App Service za pomocą szablonu] [ ILBAseTemplate] i w tym miejscu [tworzenie środowiska App Service Environment wewnętrznego modułu równoważenia obciążenia z szablonu] [ASEfromTemplate].
 
 ### <a name="details"></a>Szczegóły
-Środowisko ASE jest tworzony przy użyciu 2 Frontony i 2 procesy robocze. Frontonów działanie jako punktów końcowych HTTP/HTTPS i wysyłania ruchu do pracowników, które są role, które hostują swoje aplikacje. Można dostosować ilość po utworzeniu środowiska ASE i może nawet skonfigurować reguły skalowania automatycznego na tych pul zasobów. Aby uzyskać więcej informacji dotyczących skalowanie ręczne, zarządzania i monitorowania środowiska usługi App Service tutaj: [jak skonfigurować środowisko usługi App Service][ASEConfig] 
+Środowisko ASE jest tworzony przy użyciu 2 Frontony i 2 procesy robocze. Frontonów działanie jako punktów końcowych HTTP/HTTPS i wysyłania ruchu do pracowników, które są role, które hostują swoje aplikacje. Można dostosować ilość po utworzeniu środowiska ASE i może nawet skonfigurować reguły skalowania automatycznego na tych pul zasobów. Aby uzyskać więcej informacji dotyczących skalowanie ręczne zarządzania i monitorowania środowiska usługi App Service tutaj: [Jak skonfigurować środowisko usługi App Service][ASEConfig] 
 
 Tylko jednego środowiska ASE może znajdować się w podsieci używane przez środowisko ASE. Nie można użyć tej podsieci coś innego niż środowiska ASE
 
@@ -67,9 +68,9 @@ Po utworzeniu środowiska ASE można dostosować:
 * Liczba adresów IP dostępnych dla protokołu IP SSL
 * Obliczenia rozmiarów zasobów, które posługują się Frontony i procesy robocze (fronton minimalny rozmiar to P2)
 
-Istnieją szczegółowe wokół ręczne skalowanie, zarządzanie i monitorowanie środowisk usługi App Service w tym miejscu: [jak skonfigurować środowisko usługi App Service][ASEConfig] 
+Dostępne są szczegółowe informacje dotyczące ręczne skalowanie, zarządzanie i monitorowanie środowisk usługi App Service w tym miejscu: [Jak skonfigurować środowisko usługi App Service][ASEConfig] 
 
-Instrukcje dotyczące skalowania automatycznego jest przewodnik tutaj: [Konfigurowanie skalowania automatycznego dla środowiska usługi App Service][ASEAutoscale]
+Instrukcje dotyczące skalowania automatycznego jest przewodnik tutaj: [Jak skonfigurować automatyczne skalowanie dla środowiska usługi App Service][ASEAutoscale]
 
 Istnieją dodatkowe zależności, które nie są możliwe do dostosowania, takie jak bazy danych i magazyn. Te są obsługiwane przez platformę Azure i dołączone do systemu. Magazyn systemu obsługuje maksymalnie 500 GB dla całej usługi App Service Environment i bazy danych jest uwzględniany przez platformę Azure, odpowiednio do potrzeb skalowania systemu.
 

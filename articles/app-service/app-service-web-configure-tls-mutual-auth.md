@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji internetowej
+title: Konfigurowanie wzajemnego uwierzytelniania protokołu TLS — usługa Azure App Service
 description: Dowiedz się, jak skonfigurować aplikację sieci web, aby użyć uwierzytelniania certyfikatu klienta na TLS.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.custom: seodec18
+ms.openlocfilehash: f08e8f60f0e23cce9546e45dcf7b249d38224736
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056212"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252885"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji internetowej
 ## <a name="overview"></a>Przegląd
@@ -51,7 +52,7 @@ Upewnij się zmienić wartość "Lokalizacja" wszędzie tam, gdzie aplikacja sie
 
 Można również użyć https://resources.azure.com przerzucić `clientCertEnabled` właściwość `true`.
 
-> **Uwaga:** po uruchomieniu ARMClient za pomocą programu Powershell, konieczne będzie ucieczki \@ symboli dla pliku JSON z tyłu znaczników ".
+> **Uwaga:** Jeśli uruchamiasz ARMClient za pomocą programu Powershell, konieczne będzie ucieczki \@ symboli dla pliku JSON z tyłu znaczników ".
 > 
 > 
 

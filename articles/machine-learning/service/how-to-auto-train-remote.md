@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie zdalnego obliczeniowych elementów docelowych dla zautomatyzowanych ML
+title: Automatyczne ML zdalnego obliczeniowych elementów docelowych
 titleSuffix: Azure Machine Learning service
-description: W tym artykule wyjaśniono, jak budować modele przy użyciu zautomatyzowanych machine learning na wirtualne do analizy danych cel obliczenia zdalnego machine (DSVM) przy użyciu usługi Azure Machine Learning
+description: Dowiedz się, jak tworzyć modele przy użyciu zautomatyzowanych machine learning na wirtualne do analizy danych cel obliczenia zdalnego machine (DSVM) przy użyciu usługi Azure Machine Learning
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8761b0671de38e7934df56847a5d0a7eafd3649
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 18b2b3df2748392b12b60517604478b120871754
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097719"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256064"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
@@ -41,7 +41,7 @@ ws = Workspace.from_config()
 
 Tworzenie maszyny wirtualnej DSVM w obszarze roboczym (`ws`), jeśli jeszcze nie istnieje. Jeśli wcześniej utworzono maszyny DSVM, ten kod pominie proces tworzenia i ładuje szczegóły dotyczące istniejących zasobów do `dsvm_compute` obiektu.  
 
-**Szacowany czas**: tworzenie maszyny wirtualnej trwa około 5 minut.
+**Szacowany czas**: Tworzenie maszyny wirtualnej zajmuje około 5 minut.
 
 ```python
 from azureml.core.compute import DsvmCompute
@@ -250,12 +250,12 @@ Znajdowanie dzienników na nauki, w obszarze `/tmp/azureml_run/{iterationid}/azu
 
 Pobieranie danych wyjaśnienie modelu pozwala wyświetlić szczegółowe informacje na temat modeli w celu zwiększenia przejrzystości w uruchomionej w zapleczu. W tym przykładzie możesz uruchomić wyjaśnienia modelu tylko najlepszy model dopasowania. Po uruchomieniu wszystkich modeli w potoku, będzie skutkować znaczną ilość czasu wykonywania. Zawiera informacje o wyjaśnienie modelu:
 
-* shape_values: informacji wyjaśnienie, generowanych przez kształt lib
-* expected_values: oczekiwana wartość zastosowany do zestawu danych X_train model.
-* overall_summary: wartości ważności funkcja poziomu modelu posortowane w kolejności malejącej
+* shap_values: Informacje o wyjaśnienie, generowane przez lib kształtu
+* expected_values: Oczekiwana wartość zastosowany do zestawu danych X_train model.
+* overall_summary: Wartości ważności funkcja poziomu modelu posortowane w kolejności malejącej
 * Overall: W nazwach funkcji sortowane w takiej samej kolejności jak overall_summary
-* per_class_summary: wartości ważności funkcja poziomu klasa posortowane w kolejności malejącej. Dostępne tylko w przypadku klasyfikacji
-* per_class: W nazwach funkcji sortowane w takiej samej kolejności jak per_class_summary. Dostępne tylko w przypadku klasyfikacji
+* per_class_summary: Klasa wartości ważności funkcja poziomu posortowane w kolejności malejącej. Dostępne tylko w przypadku klasyfikacji
+* per_class: Sortowane w takiej samej kolejności jak per_class_summary nazwy funkcji. Dostępne tylko w przypadku klasyfikacji
 
 Użyj poniższego kodu, które można wybierać najlepsze potoku swoje iteracje. `get_output` Metoda zwraca najlepszy przebieg i dopasowanego modelu dla ostatniego dopasowania wywołania.
 
@@ -268,7 +268,7 @@ Importuj `retrieve_model_explanation` funkcji i uruchamianie na najlepszy model.
 ```python
 from azureml.train.automl.automlexplainer import retrieve_model_explanation
 
-shape_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
+shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
     retrieve_model_explanation(best_run)
 ```
 

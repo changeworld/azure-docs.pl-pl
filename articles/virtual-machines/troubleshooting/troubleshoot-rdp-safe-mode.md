@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 097b7efd7643e3b8450284d19e13a428dfd48ac2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138861"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316985"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nie można nawiązać połączenia RDP z maszyny Wirtualnej, ponieważ maszyna wirtualna jest uruchamiany w trybie awaryjnym
 
 W tym artykule pokazano, jak rozwiązać problem, w której nie można dołączyć do platformy Azure Windows Virtual Machines (VMs), ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym.
 
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługi Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptoms"></a>Objawy
 
@@ -111,23 +111,24 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
 
     reg unload HKLM\BROKENSYSTEM
+    ```
 
-#### Configure the Windows to boot into normal mode
+#### <a name="configure-the-windows-to-boot-into-normal-mode"></a>Konfigurowanie Windows do rozruchu w trybie normalnym
 
-1. Open an elevated command prompt session (**Run as administrator**).
-2. Check the boot configuration data. In the following commands, we assume that the drive letter that is assigned to the attached OS disk is F. Replace this drive letter with the appropriate value for your VM.
+1. Otwórz sesję wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**).
+2. Sprawdzanie danych konfiguracji rozruchu. W poniższych poleceniach przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest F. Zastąp tę literę dysku z odpowiednią wartością dla maszyny Wirtualnej.
 
         bcdedit /store F:\boot\bcd /enum
-    Take note of the Identifier name of the partition that has the **\windows** folder. By default, the  Identifier name is "Default".
+    Zwróć uwagę na nazwy identyfikatora partycji, który ma **\windows** folderu. Domyślnie nazwa identyfikatora jest "Default".
 
-    If the VM is configured to boot into Safe Mode, you will see an extra flag under the **Windows Boot Loader** section called **safeboot**. If you do not see the **safeboot** flag, this article does not apply to your scenario.
+    Jeśli maszyna wirtualna jest skonfigurowana do rozruchu w trybie awaryjnym, zobaczą dodatkowe flagi, w obszarze **moduł ładujący rozruchu Windows** sekcję o nazwie **tryb awaryjny**. Jeśli nie widzisz **tryb awaryjny** flagi, w tym artykule nie ma zastosowania do danego scenariusza.
 
-    ![The image about boot Identifier](./media/troubleshoot-rdp-safe-mode/boot-id.png)
+    ![Obraz dotyczący rozruchu identyfikator](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
-3. Remove the **safeboot** flag, so the VM will boot into normal mode:
+3. Usuń **tryb awaryjny** flagę, aby maszyna wirtualna zostanie uruchomiony w trybie normalnym:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Check the boot configuration data to make sure that the **safeboot** flag is removed:
+4. Sprawdzanie danych konfiguracji rozruchu, aby upewnić się, że **tryb awaryjny** flaga zostanie usunięty:
 
         bcdedit /store F:\boot\bcd /enum
-5. [Detach the OS disk and recreate the VM](../windows/troubleshoot-recovery-disks-portal.md). Then check whether the issue is resolved.
+5. [Odłącz dysk systemu operacyjnego i ponowne utworzenie maszyny Wirtualnej](../windows/troubleshoot-recovery-disks-portal.md). Sprawdź, czy problem został rozwiązany.

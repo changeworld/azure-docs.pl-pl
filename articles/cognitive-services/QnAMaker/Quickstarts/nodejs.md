@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 8867fd92bc816097bbff9e081a7cb37e1eb80050
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2f57a5ddfdf18214e927a8a903fda54872900375
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093373"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166476"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Jak używać usługi QnA Maker interfejsu API REST przy użyciu środowiska Node.js 
 <a name="HOLTop"></a>
@@ -38,7 +38,7 @@ W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA
 - [Uzyskiwanie bieżącego zestawu zmian słów.](#GetAlterations)
 - [Zastępowanie bieżącego zestawu zmian słów.](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
