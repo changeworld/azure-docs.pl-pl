@@ -1,5 +1,5 @@
 ---
-title: O nazwie rozpoznawanie jednostek wyszukiwania kognitywnego umiejętności (Azure Search) | Dokumentacja firmy Microsoft
+title: O nazwie rozpoznawanie jednostek wyszukiwania kognitywnego umiejętności — usługa Azure Search
 description: Wyodrębnij nazwane jednostek dla organizacji, lokalizacji i osoby z pliku tekstowego w potoku usługi Azure Search w usłudze wyszukiwania poznawczego.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: e63354152f8821c5ce975563639c8b87fb332bd4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442033"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313993"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Nazwane umiejętności cognitive rozpoznawanie jednostek
 
@@ -23,8 +24,10 @@ ms.locfileid: "52442033"
 
 > [!NOTE]
 > <ul>
-> <li>Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Możliwości wykonywania zestawów umiejętności oraz wyodrębniania i normalizacji obrazów są obecnie oferowane bezpłatnie. Cennik dla tych możliwości zostanie opublikowany w późniejszym czasie. </li>
-> <li> Umiejętności rozpoznawanie podmiotów jest traktowane jako "przestarzałe" i nie będzie oficjalnie obsługiwana od 15 lutego 2019 r. Postępuj zgodnie z zaleceniami podanymi w <a href="cognitive-search-skill-deprecated.md">przestarzałe umiejętności poznawcze wyszukiwanie</a> strony, aby dokonać migracji do obsługiwanych umiejętności</li>
+> <li>
+> Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Pozwoli to nam będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również Zaczniemy naliczać opłaty do wyodrębnienia obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.>
+> Wykonanie wbudowanego umiejętności będzie powodować obciążenie opłatami istniejące [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu będzie powodować obciążenie opłatami ceny za wersję zapoznawczą i został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się, [więcej](cognitive-search-attach-cognitive-services.md).</li>
+> <li> Umiejętności rozpoznawanie podmiotów jest traktowane jako "przestarzałe" i nie będzie oficjalnie obsługiwana od 15 lutego 2019 r. Postępuj zgodnie z zaleceniami podanymi w <a href="cognitive-search-skill-deprecated.md">przestarzałe umiejętności poznawcze wyszukiwania</a> strony, aby dokonać migracji do obsługiwanych umiejętności</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill

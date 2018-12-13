@@ -8,18 +8,17 @@ manager: jwhit
 editor: tysonn
 ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 3807dcf9ea4625db72b0579e0609641e3aedb088
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6e0bab08e52233d10cff3ec936d024dcbb86d2a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845726"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188014"
 ---
 # <a name="views-in-management-solutions-preview"></a>Widoki w rozwiązaniach do zarządzania (wersja zapoznawcza)
 > [!NOTE]
@@ -96,9 +95,9 @@ Wszystkie zasoby usługi Log Analytics, zdefiniowane w szablonie usługi Resourc
 
 | Wersja z obszaru roboczego | Wersja interfejsu API | Zapytanie |
 |:---|:---|:---|
-| Wersja 1 (starsza wersja)   | 2015-11-01-preview | Format starszej wersji.<br> Przykład: Wpisz = EventLevelName zdarzenia = błąd  |
-| (uaktualniony) w wersji 2 | 2015-11-01-preview | Format starszej wersji.  Konwertowanie na format uaktualnionego związane z instalacją.<br> Przykład: Wpisz = EventLevelName zdarzenia = błąd<br>Przekonwertowane na: zdarzenie &#124; gdzie EventLevelName == "Error"  |
-| (uaktualniony) w wersji 2 | 2017-03-03-preview | Uaktualnić format. <br>Przykład: Event &#124; gdzie EventLevelName == "Error"  |
+| Wersja 1 (starsza wersja)   | 2015-11-01-preview | Format starszej wersji.<br> Przykład: Typ = EventLevelName zdarzenia = błąd  |
+| (uaktualniony) w wersji 2 | 2015-11-01-preview | Format starszej wersji.  Konwertowanie na format uaktualnionego związane z instalacją.<br> Przykład: Typ = EventLevelName zdarzenia = błąd<br>Przekonwertowane na: Zdarzenie &#124; gdzie EventLevelName == "Error"  |
+| (uaktualniony) w wersji 2 | 2017-03-03-preview | Uaktualnić format. <br>Przykład: Zdarzenie &#124; gdzie EventLevelName == "Error"  |
 
 
 ## <a name="add-the-view-details"></a>Dodawanie szczegółów widoku

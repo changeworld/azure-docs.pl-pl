@@ -1,7 +1,7 @@
 ---
 title: Eksportowanie lub usuwanie danych obszaru roboczego
 titleSuffix: Azure Machine Learning service
-description: W usłudze Azure Machine Learning można eksportować lub Usuń obszar roboczy za pomocą witryny Azure portal, interfejsu wiersza polecenia, zestaw SDK i uwierzytelnionego interfejsów API REST. W tym artykule przedstawiono, jak.
+description: Dowiedz się, jak wyeksportować lub usunąć obszar roboczy za pomocą witryny Azure portal, interfejsu wiersza polecenia, zestaw SDK i uwierzytelnionego interfejsów API REST.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0979c531c90b67cedce544ff2eb6f7aceeb84a44
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 81215058095acfeedd320025457feec73d3b0d23
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093781"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192349"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Eksportowanie lub usuwanie danych obszaru roboczego usługi Machine Learning 
 

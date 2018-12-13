@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: e0ea6a82b1dbd9b3fa4a273fae2b79cdc3629904
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 7f7fe545c10d80fc5a201923679b7d61623786fb
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890725"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193794"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -33,13 +31,13 @@ Rozwiązanie Network Performance Monitor wykrywa problemy sieciowe, takie jak bl
 
 Rozwiązanie Network Performance Monitor oferuje trzy szerokie możliwości: 
 
-* [Monitor wydajności](network-performance-monitor-performance-monitor.md): można monitorować łączność sieciową między wdrożeniami w chmurze i lokalizacjami lokalnymi, wiele centrów danych i biur oddziałów i kluczowych dla działalności aplikacji wielowarstwowej lub mikrousług. Za pomocą Monitora wydajności można wykrywać problemy z siecią, zanim użytkownicy zaczną zgłaszać skargi.
+* [Monitor wydajności](network-performance-monitor-performance-monitor.md): Możesz monitorować łączność sieciową między wdrożeniami w chmurze i lokalizacjami lokalnymi, wiele centrów danych i biur oddziałów i kluczowych dla działalności aplikacji wielowarstwowej lub mikrousług. Za pomocą Monitora wydajności można wykrywać problemy z siecią, zanim użytkownicy zaczną zgłaszać skargi.
 
-* [Monitor łączności usługi](network-performance-monitor-service-endpoint.md): można monitorować łączność użytkowników z usługami interesujące, określić, jaka infrastruktura znajduje się w ścieżce i zidentyfikować, gdzie występują wąskie gardła w sieci. Możesz dowiedzieć się o przerwach w działaniu przed użytkownikami i zobaczyć dokładną lokalizację problemów w ścieżce Twojej sieci. 
+* [Monitor łączności usługi](network-performance-monitor-service-endpoint.md): Możesz monitorować łączność użytkowników z usługami interesujące, określić, jaka infrastruktura znajduje się w ścieżce i zidentyfikować, gdzie występują wąskie gardła w sieci. Możesz dowiedzieć się o przerwach w działaniu przed użytkownikami i zobaczyć dokładną lokalizację problemów w ścieżce Twojej sieci. 
 
     Ta funkcja umożliwia wykonywanie testu w zależności od protokołu HTTP, HTTPS, TCP i ICMP, do monitorowania w czasie rzeczywistym i historycznie dostępność i czas odpowiedzi usługi. Można również monitorować udziału sieci w utracie pakietów i opóźnienia. Za pomocą mapy topologii sieci można izolować spowolnienie sieci. Można zidentyfikować problem punkty, występujących na ścieżce sieciowej z węzła do usługi z danymi opóźnienie każdego przeskoku. Za pomocą wbudowanych testów możesz monitorować łączność sieciową do usługi Office 365 i Dynamics CRM, bez żadnych Konfiguracja wstępna. Dzięki tej możliwości możesz monitorować łączność sieciową do dowolnego punktu końcowego TCP możliwością, takich jak witryny sieci Web, aplikacji SaaS, PaaS aplikacji i baz danych SQL.
 
-* [Monitor usługi ExpressRoute](network-performance-monitor-expressroute.md): Monitorowanie łączności end-to-end i wydajności między oddziałami i platformy Azure, za pośrednictwem usługi Azure ExpressRoute.  
+* [Monitor usługi ExpressRoute](network-performance-monitor-expressroute.md): Monitoruj łączność przez usługę Azure ExpressRoute między oddziałami firmy i platformą Azure oraz jej wydajność.  
 
 Więcej informacji na temat różnych funkcji obsługiwanych przez [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) jest dostępna w trybie online.
  
@@ -65,7 +63,7 @@ Użyj podstawowych procesów, aby zainstalować agentów na [komputerów Windows
 
 ### <a name="where-to-install-the-agents"></a>Gdzie można zainstalować agentów 
 
-* **Monitor wydajności**: Zainstaluj usługi Log Analytics agentów na co najmniej jeden węzeł połączone z każdą podsiecią, z którego chcesz monitorować łączność sieciową do innych podsieci.
+* **Monitor wydajności**: Zainstaluj agentów usługi Log Analytics na co najmniej jednym węźle połączonym z każdą podsiecią, z którego chcesz monitorować łączność sieciową do innych podsieci.
 
     Aby monitorować połączenia sieciowego, należy zainstalować agentów na oba punkty końcowe ten link. Jeśli wiesz o topologii sieci, należy zainstalować agentów na serwerach z obciążeń o znaczeniu krytycznym, między którymi chcesz monitorować wydajność sieci. Na przykład jeśli chcesz monitorować połączenie sieciowe między serwerem sieci web oraz serwera z oprogramowaniem SQL, należy zainstalować agenta na obu serwerach. Agenci monitorować łączność sieciową (linki) między hostami, a nie hosty samodzielnie. 
 
@@ -197,7 +195,7 @@ Po włączeniu rozwiązania Network Performance Monitor, Kafelek rozwiązania **
 
 * **Monitor usługi ExpressRoute**: Ta strona zawiera podsumowania kondycji dla różnych połączeń komunikacji równorzędnej usługi ExpressRoute z rozwiązania monitorów. **Topologii** Kafelek zawiera liczbę ścieżek sieciowych za pośrednictwem obwodów usługi ExpressRoute, które są monitorowane w sieci. Wybierz ten Kafelek, aby przejść do **topologii** widoku.
 
-* **Monitor łączności usługi**: Ta strona zawiera podsumowania kondycji dla różnych testów został utworzony. **Topologii** Kafelek pokazuje liczbę punktów końcowych, które są monitorowane. Wybierz ten Kafelek, aby przejść do **topologii** widoku.
+* **Monitor łączności usługi**: Ta strona zawiera podsumowania kondycji dla różnych testów, które utworzono. **Topologii** Kafelek pokazuje liczbę punktów końcowych, które są monitorowane. Wybierz ten Kafelek, aby przejść do **topologii** widoku.
 
 * **Monitor wydajności**: Ta strona zawiera podsumowania kondycji dla **sieci** łącza i **podsieci** łącza, który monitoruje rozwiązania. **Topologii** Kafelek zawiera liczbę ścieżek sieciowych, które są monitorowane w sieci. Wybierz ten Kafelek, aby przejść do **topologii** widoku. 
 
@@ -281,9 +279,9 @@ Informacje na temat cen są dostępne [online](network-performance-monitor-prici
 
 ## <a name="provide-feedback"></a>Przekazywanie opinii 
 
-* **UserVoice:** może umieszczać swoje pomysły funkcji rozwiązania Network Performance Monitor, które chcesz pracować. Odwiedź stronę [stronie UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
+* **UserVoice:** Możesz zadać pomysłami dotyczącymi funkcji rozwiązania Network Performance Monitor, które chcesz pracować. Odwiedź stronę [stronie UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-* **Dołącz do naszego kohorty:** NAS interesuje zawsze o nowych klientów, Dołącz do naszego kohorty. Jako jej część możesz uzyskać wczesny dostęp do nowych funkcji i możliwość pomóc w ulepszaniu rozwiązania Network Performance Monitor. Jeśli interesuje Cię dołączania, Wypełnij ten [krótką ankietę](https://aka.ms/npmcohort). 
+* **Dołącz do naszego kohorty:** Zawsze możemy interesują Cię o nowych klientów, Dołącz do naszego kohorty. Jako jej część możesz uzyskać wczesny dostęp do nowych funkcji i możliwość pomóc w ulepszaniu rozwiązania Network Performance Monitor. Jeśli interesuje Cię dołączania, Wypełnij ten [krótką ankietę](https://aka.ms/npmcohort). 
 
 ## <a name="next-steps"></a>Kolejne kroki 
 Dowiedz się więcej o [monitora wydajności](network-performance-monitor-performance-monitor.md), [Monitor łączności usługi](network-performance-monitor-performance-monitor.md), i [Monitor usługi ExpressRoute](network-performance-monitor-expressroute.md). 

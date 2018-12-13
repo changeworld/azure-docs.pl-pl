@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 6855521475e24b7243a391abdc6e6cf707991159
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457395"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320696"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak wykonać aprowizację dla wielodostępności 
 
 Zasady alokacji, zdefiniowane przez usługę aprowizacji obsługi różnych scenariuszy alokacji. Dwie typowe scenariusze są następujące:
 
-* **Używanie funkcji Geolokalizacji / GeoLatency**: przemieszcza się w urządzeniu między lokalizacjami, sieci opóźnieniu przez urządzenie aprowizowane do Centrum IoT hub najbardziej zbliżony do każdej lokalizacji. W tym scenariuszu grupę centra IoT Hub, zajmujące się między różnymi regionami, są zaznaczone dla rejestracji. **Najmniejszego opóźnienia** wybrano zasady alokacji dla tych rejestracji. Ta zasada powoduje, że usługi Device Provisioning ocenić opóźnienia urządzenie i określić dystrybucji Centrum IoT hub z grupy centra IoT Hub. 
+* **Używanie funkcji Geolokalizacji / GeoLatency**: Przemieszcza się w urządzeniu między lokalizacjami, opóźnienie sieci poprawia posiadanie urządzenia aprowizowane do Centrum IoT hub najbardziej zbliżony do każdej lokalizacji. W tym scenariuszu grupę centra IoT Hub, zajmujące się między różnymi regionami, są zaznaczone dla rejestracji. **Najmniejszego opóźnienia** wybrano zasady alokacji dla tych rejestracji. Ta zasada powoduje, że usługi Device Provisioning ocenić opóźnienia urządzenie i określić dystrybucji Centrum IoT hub z grupy centra IoT Hub. 
 
-* **Wielodostępność**: urządzenia używane w ramach rozwiązania IoT mogą muszą być przypisani do określonej usługi IoT hub lub grupy centra IoT Hub. Rozwiązanie może wymagać od wszystkich urządzeń do konkretnej dzierżawy do komunikowania się z określonej grupy centra IoT Hub. W niektórych przypadkach dzierżawy może własne centra IoT i wymaga urządzenia, które ma być przypisane do ich centra IoT Hub.
+* **Wielodostępność**: Urządzenia używane w ramach rozwiązania IoT, może być konieczne można przypisać do określonej usługi IoT hub lub grupy centra IoT Hub. Rozwiązanie może wymagać od wszystkich urządzeń do konkretnej dzierżawy do komunikowania się z określonej grupy centra IoT Hub. W niektórych przypadkach dzierżawy może własne centra IoT i wymaga urządzenia, które ma być przypisane do ich centra IoT Hub.
 
 Są często do łączenia tych dwóch scenariuszy. Na przykład wielodostępne rozwiązania IoT często spowoduje przypisanie urządzeń dzierżawy przy użyciu grupy centra IoT, które są rozproszone między regionami. Te urządzenia dzierżawy można przypisać do usługi IoT hub w tej grupie, która ma najniższe opóźnienie, na podstawie lokalizacji geograficznej.
 
@@ -92,11 +92,11 @@ Dla uproszczenia w tym artykule użyto [zaświadczenie klucza symetrycznego](con
 
 3. Na **Dodaj grupę rejestracji**, wprowadź następujące informacje i kliknij przycisk **Zapisz** przycisku.
 
-    **Nazwa grupy**: wprowadź **contoso-us urządzeń**.
+    **Nazwa grupy**: Wprowadź **contoso-us urządzeń**.
 
     **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
 
-    **Automatyczne generowanie kluczy**: to pole wyboru już powinna być sprawdzana.
+    **Automatycznie Generuj klucze**: Już to pole wyboru powinno być zaznaczone.
 
     **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **najmniejszego opóźnienia**.
 
@@ -107,7 +107,7 @@ Dla uproszczenia w tym artykule użyto [zaświadczenie klucza symetrycznego](con
 
     **Subskrypcja**: Jeśli masz wiele subskrypcji, wybierz subskrypcję, w której utworzono regionalnych centrów IoT.
 
-    **Usługa IoT hub**: Wybierz jeden z centra regionalne został utworzony.
+    **Usługa IoT hub**: Wybierz jeden z centra regionalne, który został utworzony.
 
     **Zasady dostępu**: Wybierz **iothubowner**.
 
@@ -130,9 +130,9 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
 
 1. W usłudze Azure Cloud Shell, wykonaj następujące polecenie, aby utworzyć **wschodnie stany USA** regionu maszyn wirtualnych po wprowadzeniu następujących zmian parametr w poleceniu:
 
-    **— Nazwa**: wprowadź unikatową nazwę dla Twojej **wschodnie stany USA** regionalnych urządzenia maszyny Wirtualnej. 
+    **— Nazwa**: Wprowadź unikatową nazwę dla Twojej **wschodnie stany USA** regionalnych urządzenia maszyny Wirtualnej. 
 
-    **Nazwa użytkownika administratora —**: korzystać z własnej nazwy użytkownika administratora.
+    **Nazwa użytkownika administratora —**: Korzystać z własnej nazwy użytkownika administratora.
 
     **hasło — administratora**: Użyj hasła administratora.
 
@@ -151,9 +151,9 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
 
 1. W usłudze Azure Cloud Shell, wykonaj polecenie, aby utworzyć **zachodnie stany USA** regionu maszyn wirtualnych po wprowadzeniu następujących zmian parametr w poleceniu:
 
-    **— Nazwa**: wprowadź unikatową nazwę dla Twojej **zachodnie stany USA** regionalnych urządzenia maszyny Wirtualnej. 
+    **— Nazwa**: Wprowadź unikatową nazwę dla Twojej **zachodnie stany USA** regionalnych urządzenia maszyny Wirtualnej. 
 
-    **Nazwa użytkownika administratora —**: korzystać z własnej nazwy użytkownika administratora.
+    **Nazwa użytkownika administratora —**: Korzystać z własnej nazwy użytkownika administratora.
 
     **hasło — administratora**: Użyj hasła administratora.
 
@@ -220,7 +220,7 @@ W tej sekcji zostanie sklonować zestawu SDK C usługi IoT platformy Azure na ka
 1. Dla obu maszyn wirtualnych, uruchom następujące polecenie tworzy wersję zestawu SDK specyficzną dla platformy klienta deweloperskiego. 
 
     ```bash
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
     Gdy kompilacja zakończy się powodzeniem, kilka ostatnich wierszy danych wyjściowych będzie wyglądać podobnie do następujących danych wyjściowych:

@@ -10,16 +10,16 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9594ccd0449cf68a63c770cfdee03f255aa2beae
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: aa163d215f4b9c396585dbba63883a3d1beff457
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638379"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164266"
 ---
 # <a name="what-is-distributed-tracing"></a>Co to jest rozproszonego śledzenia?
 
-Pojawienie się nowoczesnych architektur mikrousług i chmury spowodowało proste, niezależnie do wdrożenia usług, które mogą pomóc w obniżeniu kosztów przy jednoczesnym zwiększeniu dostępność i przepływność. Ale podczas gdy przesunięcia te mają poszczególnych usług ułatwia zrozumienie jako całości, ich wprowadzone ogólną systemów trudniejsze poprawić i debugowania.
+Pojawienie się nowoczesnym rozwiązaniom w chmurze i [mikrousług](http://azure.com/microservices) architektury spowodowało proste, niezależnie do wdrożenia usług, które mogą pomóc w obniżeniu kosztów przy jednoczesnym zwiększeniu dostępność i przepływność. Ale podczas gdy przesunięcia te mają poszczególnych usług ułatwia zrozumienie jako całości, ich wprowadzone ogólną systemów trudniejsze poprawić i debugowania.
 
 W architekturami monolitycznymi uzyskane używaliśmy do debugowania za pomocą stosów wywołań. Stosy wywołań to doskonały narzędzia do wyświetlania przepływem wykonania (metoda wywoływana metoda B, który wywołuje metodę C), oraz szczegóły i parametry o każdej z tych wywołań. Jest to doskonałe rozwiązanie dla monolitycznych projektów lub usług działających w ramach jednego procesu, ale w jaki sposób możemy debugować kiedy wywołanie jest granicę procesu nie po prostu odwołania na stosie lokalnego? 
 

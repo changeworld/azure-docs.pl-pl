@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492244"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276455"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Pobieranie i ustawianie harmonogramu chaos.
@@ -29,7 +29,7 @@ Pobieranie i ustawianie harmonogramu chaos.
 |Polecenie|Opis|
 | --- | --- |
 | Pobierz | Pobierz harmonogram Chaos określające, kiedy i jak uruchamiać Chaos. |
-| Zestaw | Ustaw harmonogram chaosu, który będzie używany przez Chaos. |
+| set | Ustaw harmonogram używany przez Chaos. |
 
 ## <a name="sfctl-chaos-schedule-get"></a>Pobierz interfejs sfctl chaos harmonogramu
 Pobierz harmonogram Chaos określające, kiedy i jak uruchamiać Chaos.
@@ -53,9 +53,9 @@ Pobiera wersję harmonogram Chaos w użyciu i Chaos harmonogram, który definiuj
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>Ustaw harmonogram chaos sfctl
-Ustaw harmonogram chaosu, który będzie używany przez Chaos.
+Ustaw harmonogram używany przez Chaos.
 
-Ustaw Chaos harmonogram aktualnie używany przez Chaos. Chaos automatycznie będą planować uruchomienia na podstawie harmonogramu Chaos. Wersja w podanych danych wejściowych harmonogramu musi odpowiadać wersji harmonogramu Chaos na serwerze. Jeśli udostępniona wersja nie jest zgodny z wersją na serwerze, harmonogram Chaos nie jest aktualizowana. Jeśli udostępniona wersja zgodna z wersją na serwerze, zaktualizowano harmonogram Chaos i wersję harmonogram Chaos na serwerze jest zwiększany się o jeden, a zawija na 0 po 2 147 483 647. Chaos działa po tym wywołaniu, wywołanie zakończy się niepowodzeniem.
+Chaos automatycznie będą planować uruchomienia na podstawie harmonogramu Chaos. Wersja w podanych danych wejściowych harmonogramu musi odpowiadać wersji harmonogramu Chaos na serwerze. Jeśli udostępniona wersja nie jest zgodny z wersją na serwerze, harmonogram Chaos nie jest aktualizowana. Jeśli udostępniona wersja zgodna z wersją na serwerze, zaktualizowano harmonogram Chaos i wersję harmonogram Chaos na serwerze jest zwiększany się o jeden, a zawija na 0 po 2 147 483 647. Chaos działa po tym wywołaniu, wywołanie zakończy się niepowodzeniem.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -143,6 +143,7 @@ Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący har
         ]
     }
     ]
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.

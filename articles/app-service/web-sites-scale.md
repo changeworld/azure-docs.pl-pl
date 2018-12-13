@@ -1,5 +1,5 @@
 ---
-title: Skalowanie aplikacji na platformie Azure | Dokumentacja firmy Microsoft
+title: Skalowanie w górę funkcje i możliwości — w usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skalować aplikację w usłudze Azure App Service do dodawania pojemności i funkcji.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: e612fc6ce737fba1552c4eacbab133783c9994dd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 2fb1f5ad0c3b46623550cbcc1204761b57f6093b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971236"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251060"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Skalowanie aplikacji na platformie Azure
 
@@ -98,7 +99,7 @@ Dla tabeli limity, przydziały i ograniczenia i funkcji obsługiwanych w poszcze
   
     [Maszyna wirtualna i rozmiary usług w chmurze dla platformy Microsoft Azure][vmsizes]
   
-* Aby uzyskać informacje o usłudze Azure App Service najlepszych rozwiązań, w tym tworzenia architektury skalowalne i odporne na błędy, zobacz [najlepsze rozwiązania: Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
+* Aby uzyskać informacje o usłudze Azure App Service najlepszych rozwiązań, w tym tworzenia architektury skalowalne i odporne na błędy, zobacz [najlepsze rozwiązania: Usługa Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
 * Dla filmów wideo na temat skalowania aplikacji usługi App Service zobacz następujące zasoby:
   
   * [Kiedy skalować witryny sieci Web platformy Azure — za pomocą Stefan Schackow](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)

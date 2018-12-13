@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a20ba54226e5cdcec242e29344110840615a0c95
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238526"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317529"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -41,7 +41,7 @@ W usłudze Batch definiuje się zasoby obliczeniowe Azure do wykonywania aplikac
 * [Podstawy usługi Batch](../../batch/batch-technical-overview.md)
 * [Omówienie funkcji usługi Batch](../../batch/batch-api-basics.md)
 
-Opcjonalnie, aby dowiedzieć się więcej o usłudze Batch, zobacz [ścieżka szkoleniowa dla usługi Batch](https://azure.microsoft.com/documentation/learning-paths/batch/).
+Opcjonalnie, aby dowiedzieć się więcej o usłudze Batch, zobacz [documentatnion partii](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Dlaczego warto wybrać usługę Azure Data Factory?
 Fabryka danych jest usługą integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych. Data Factory służy do tworzenia potoków danych zarządzanych, służące do przenoszenia danych ze środowiska lokalnego i magazynów danych do scentralizowanego magazynu danych w chmurze. Przykładem są usługi Azure Blob storage. Data Factory służy do przetworzenia/przekształcenia danych za pomocą usług, takich jak Azure HDInsight i Azure Machine Learning. Można także zaplanować potoki danych, które będą uruchamiane w sposób zaplanowane, (na przykład co godzinę, codziennie, a co tydzień). Można monitorować i zarządzać potoków w celu zidentyfikowania problemów i podjąć działania.
@@ -51,7 +51,7 @@ Fabryka danych jest usługą integracji danych w chmurze, która służy do aran
 * [Wprowadzenie do usługi Data Factory](data-factory-introduction.md)
 * [Tworzenie pierwszego potoku danych](data-factory-build-your-first-pipeline.md)   
 
-Opcjonalnie, aby dowiedzieć się więcej na temat usługi Data Factory, zobacz [ścieżka szkoleniowa usługi Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/).
+Opcjonalnie, aby dowiedzieć się więcej na temat usługi Data Factory, zobacz [dokumentację usługi Data Factory](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
 
 ## <a name="data-factory-and-batch-together"></a>Data Factory i Batch razem
 Fabryka danych zawiera wbudowane działania. Na przykład działanie kopiowania służy do kopiowania/przenoszenia danych z magazynu danych źródłowych do docelowego magazynu danych. Działanie programu Hive jest używana do przetwarzania danych przy użyciu klastrów usługi Hadoop (HDInsight) na platformie Azure. Aby uzyskać listę działań przekształcania obsługiwane, zobacz [działania przekształcania danych](data-factory-data-transformation-activities.md).
@@ -84,7 +84,7 @@ Poniższa lista zawiera podstawowe kroki procesu. Rozwiązanie zawiera kod i wyj
 ## <a name="implementation-of-the-sample-solution"></a>Implementacja przykładowe rozwiązanie
 Przykładowe rozwiązanie jest celowo proste. Został zaprojektowany tak, aby pokazać sposób używania usługi Data Factory i Batch razem z zestawami danych procesu. Rozwiązanie zlicza liczbę wystąpień wyszukiwany termin "Microsoft" w danych wejściowych plików, które są zorganizowane w szeregach czasowych. Wyświetla liczbę do plików wyjściowych.
 
-**Czas:** Jeśli znasz już podstawy usługi Azure, Data Factory i Batch i zostały wykonane następujące wymagania wstępne, to rozwiązanie trwa jednej do dwóch godzin.
+**Czas:** Jeśli znasz już podstawy usługi Azure, Data Factory i Batch i zostały wykonane następujące wymagania wstępne, to rozwiązanie ma jedną do dwóch godzin.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 #### <a name="azure-subscription"></a>Subskrypcja platformy Azure
@@ -155,7 +155,7 @@ Zainstaluj program Visual Studio 2012 lub nowszy, aby utworzyć niestandardowe d
 ### <a name="create-the-custom-activity"></a>Tworzenie niestandardowego działania
 Niestandardowe działanie fabryki danych jest niezwykle to przykładowe rozwiązanie. Przykładowe rozwiązanie używa usługi Batch, aby uruchamiać działanie niestandardowe. Aby uzyskać informacje dotyczące opracowywania niestandardowych działań i używać ich w potoki fabryki danych, zobacz [korzystanie z działań niestandardowych w potoku usługi fabryka danych](data-factory-use-custom-activities.md).
 
-Aby utworzyć niestandardowe działanie platformy .NET, którego można używać w potoku usługi fabryka danych, należy utworzyć projekt biblioteki klas .NET z klasą, która implementuje interfejsu IDotNetActivity. Ten interfejs ma tylko jedną metodę: wykonywanie. Poniżej znajduje się sygnatura metody:
+Aby utworzyć niestandardowe działanie platformy .NET, którego można używać w potoku usługi fabryka danych, należy utworzyć projekt biblioteki klas .NET z klasą, która implementuje interfejsu IDotNetActivity. Ten interfejs ma tylko jedną metodę: Wykonywanie. Poniżej znajduje się sygnatura metody:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -523,7 +523,7 @@ Zadanie jest tworzone dla każdego uruchomienia działania. W tym przykładzie j
 
 Następujące instruktaż zawiera dodatkowe szczegóły.
 
-#### <a name="step-1-create-the-data-factory"></a>Krok 1: Tworzenie fabryki danych
+#### <a name="step-1-create-the-data-factory"></a>Krok 1. Tworzenie fabryki danych
 1. Po zalogowaniu się do [witryny Azure portal](https://portal.azure.com/), wykonaj następujące czynności:
 
    a. Wybierz **NEW** w menu po lewej stronie.
@@ -546,7 +546,7 @@ Następujące instruktaż zawiera dodatkowe szczegóły.
 
    ![Strona fabryki danych](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>Krok 2: Tworzenie połączonych usług
+#### <a name="step-2-create-linked-services"></a>Krok 2. Tworzenie połączonych usług
 Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką danych. W tym kroku połączysz swoje konto magazynu i konto usługi Batch z fabryką danych.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
@@ -595,7 +595,7 @@ W tym kroku utworzysz połączoną usługę służącą do konta usługi Batch, 
 
 1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
 
-#### <a name="step-3-create-datasets"></a>Krok 3: Tworzenie zestawów danych
+#### <a name="step-3-create-datasets"></a>Krok 3. Tworzenie zestawów danych
 W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wyjściowych.
 
 #### <a name="create-the-input-dataset"></a>Tworzenie wejściowego zestawu danych
@@ -932,9 +932,9 @@ Możesz rozszerzyć ten przykład, aby dowiedzieć się więcej o funkcjach usł
 
 1. Dodaj następujące podfoldery w `inputfolder`: 2015-11-16-05, 2015-11-16-06 201-11-16-07 2011-11-16-08 i 2015-11-16-09. Umieść pliki wejściowe w tych folderach. Zmiana godziny zakończenia potoku z poziomu `2015-11-16T05:00:00Z` do `2015-11-16T10:00:00Z`. W **Diagram** wyświetlić, kliknij dwukrotnie **InputDataset** i upewnij się, że wycinki wejściowe są gotowe. Kliknij dwukrotnie **OutputDataset** sprawdzić stan wycinków danych wyjściowych. Jeśli są w **gotowe** stanie, sprawdź folder wyjściowy dla plików wyjściowych.
 
-1. Zwiększanie lub zmniejszanie **współbieżności** ustawienie, aby zrozumieć, jak wpływa na wydajność rozwiązania, szczególnie przetwarzania, który występuje w usłudze Batch. Aby uzyskać więcej informacji na temat **współbieżności** ustawienie, zobacz "krok 4: tworzenie i uruchamianie potoku za pomocą niestandardowego działania."
+1. Zwiększanie lub zmniejszanie **współbieżności** ustawienie, aby zrozumieć, jak wpływa na wydajność rozwiązania, szczególnie przetwarzania, który występuje w usłudze Batch. Aby uzyskać więcej informacji na temat **współbieżności** ustawienie, zobacz "krok 4: Tworzenie i uruchamianie potoku za pomocą niestandardowego działania".
 
-1. Tworzenie puli za pomocą wyższe/niższe **maksymalna zadań na maszynę Wirtualną**. Aby użyć nowej puli, który został utworzony, należy zaktualizować usługi połączone usługi Batch w rozwiązania fabryki danych. Aby uzyskać więcej informacji na temat **maksymalna zadań na maszynę Wirtualną** ustawienie, zobacz "krok 4: tworzenie i uruchamianie potoku za pomocą niestandardowego działania."
+1. Tworzenie puli za pomocą wyższe/niższe **maksymalna zadań na maszynę Wirtualną**. Aby użyć nowej puli, który został utworzony, należy zaktualizować usługi połączone usługi Batch w rozwiązania fabryki danych. Aby uzyskać więcej informacji na temat **maksymalna zadań na maszynę Wirtualną** ustawienie, zobacz "krok 4: Tworzenie i uruchamianie potoku za pomocą niestandardowego działania".
 
 1. Utwórz pulę usługi Batch przy użyciu **skalowania automatycznego** funkcji. Automatyczne skalowanie węzłów obliczeniowych w puli usługi Batch jest dynamicznego dostosowania mocy obliczeniowej, używanych przez aplikację. 
 
@@ -956,13 +956,13 @@ Możesz rozszerzyć ten przykład, aby dowiedzieć się więcej o funkcjach usł
 
 1. W przykładowym rozwiązaniu **Execute** wywołuje metodę **Calculate** metody, która przetwarza wycinek danych wejściowych w taki sposób, aby utworzyć wycinek danych wyjściowych. Można napisać metodę do przetwarzania danych wejściowych i Zastąp **Calculate** metody wywołania w **Execute** metody przy użyciu wywołania do metody.
 
-### <a name="next-steps-consume-the-data"></a>Następne kroki: korzystają z danych
+### <a name="next-steps-consume-the-data"></a>Następne kroki: Korzystają z danych
 Po użytkownik przetwarzania danych, będzie można korzystać z narzędziami online, takie jak Power BI. Oto łącza, aby lepiej zrozumieć, usługa Power BI i jak z niej korzystać na platformie Azure:
 
 * [Zapoznaj się z zestawu danych w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
 * [Rozpoczynanie pracy z usługą Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Odświeżanie danych w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
-* [Platforma Azure i usługi Power BI: omówienie](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
+* [Azure i usługi Power BI: Ogólne omówienie](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Dokumentacja
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)

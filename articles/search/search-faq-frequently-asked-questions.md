@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania (FAQ) dotyczące usługi Azure Search | Dokumentacja firmy Microsoft
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi Microsoft Azure Search
+title: Często zadawane pytania (FAQ) — usługa Azure Search
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi Microsoft Azure Search, Usługa wyszukiwania hostowane w chmurze w systemie Microsoft Azure.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: 1491fdb0f208100619e569f9a74d5e697a0065a6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.custom: seodec2018
+ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841681"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312820"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Usługa Azure Search — często zadawane pytania (FAQ)
 
@@ -95,6 +96,6 @@ To pytanie dotyczące brakujących funkcji lub funkcje? Żądania funkcji na [wi
 
 ## <a name="see-also"></a>Zobacz także
 
- [Witrynie StackOverflow: Usługa Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
+ [Witryna StackOverflow: Usługa Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search](search-lucene-query-architecture.md)  
  [Co to jest usługa Azure Search?](search-what-is-azure-search.md)

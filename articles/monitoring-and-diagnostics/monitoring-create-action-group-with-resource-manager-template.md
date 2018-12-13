@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 583a84fd943f6dab63f94e2811e21853e6e5f6a1
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0023b8aa5d4f79af397b937030c5308a970af991
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959175"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187504"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Utwórz grupę akcji przy użyciu szablonu usługi Resource Manager
 W tym artykule dowiesz się, jak używać [szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) do skonfigurowania grup akcji. Za pomocą szablonów, można automatycznie skonfigurować grupy akcji, których można użyć ponownie w pewnych typów alertów. Te grupy akcji upewnij się, że poprawne strony powiadomienie, gdy zostanie wyzwolony alert.
@@ -164,6 +164,6 @@ Aby utworzyć grupy akcji przy użyciu szablonu usługi Resource Manager, należ
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [grup akcji](monitoring-action-groups.md).
+* Dowiedz się więcej o [grup akcji](../azure-monitor/platform/action-groups.md).
 * Dowiedz się więcej o [alerty](monitoring-overview-alerts.md).
-* Dowiedz się, jak dodać [alertów przy użyciu szablonu usługi Resource Manager](alert-activity-log.md).
+* Dowiedz się, jak dodać [alertów przy użyciu szablonu usługi Resource Manager](../azure-monitor/platform/alerts-activity-log.md).

@@ -4,10 +4,9 @@ description: Dowiedz się, jak sformułować pytanie do nauki o danych sharp prz
 keywords: problemy związane z analizy danych, pytania do nauki o danych, formułowanie pytania, pytania regresji, klasyfikacji pytania, sharp zapytania
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: c6d42ed7920b634994adf5313656c77e2df6dd5b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310841"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250982"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Zadawanie pytań, na które można odpowiedzieć za pomocą danych
 ## <a name="video-3-data-science-for-beginners-series"></a>Wideo 3: Analiza danych dla początkujących serii
@@ -39,17 +38,17 @@ Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejd�
 *Przetwarzanie danych dla początkujących* jest szybkie wprowadzenie do nauki o danych w pięciu krótkich filmach wideo.
 
 * Wideo 1: [5 pytań, analiza danych daje odpowiedzi](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
-* Wideo 2: [czy Twoje dane są gotowe na analizę danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
-* Wideo 3: Zadać pytanie, na które można odpowiedzieć za pomocą danych
+* Wideo 2: [Czy dane są gotowe do analizy danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
+* Wideo 3: Zadawanie pytań, na które można odpowiedzieć za pomocą danych
 * Wideo 4: [Prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek.)*
-* Wideo 5: [kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
+* Wideo 5: [Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Zapis: Zadać pytanie, na które można odpowiedzieć za pomocą danych
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Zapis: Zadawanie pytań, na które można odpowiedzieć za pomocą danych
 Zapraszamy do zapoznania się trzeci wideo z serii "Przetwarzanie danych dla początkujących."  
 
 W tym obiekcie otrzymasz wskazówki dotyczące opracowywania pytanie, na które można odpowiedzieć za pomocą danych.
 
-Mogą występować więcej poza tym filmie pokazano, jeśli najpierw obejrzeć dwa wideo wcześniej w tej serii: "5 pytań analizy danych pozwala uzyskać odpowiedzi na" lub "Is, Twoje dane są gotowe na analizę danych?"
+Możesz otrzymać więcej poza tym filmie pokazano, jeśli najpierw obejrzeć dwa wideo wcześniej w tej serii: "5 pytań analizy danych pozwala uzyskać odpowiedzi na" lub "Is, Twoje dane są gotowe na analizę danych?"
 
 ## <a name="ask-a-sharp-question"></a>Zadaj pytanie sharp
 Mówiliśmy o tym, jak do nauki o danych jest proces przewidywanie odpowiedzi na pytanie przy użyciu nazwy (nazywane również kategorii lub etykiety) i cyfr. Ale nie może być po prostu każde pytanie; musi ona być *sharp pytanie.*
@@ -62,7 +61,7 @@ Jeśli masz zamiar Zadaj pytanie niejasne, takie jak "Co się dzieje się tak zd
 
 Ale zostałby Zadaj pytanie sharp, takich jak "Co cena detaliczna Moje zasobów będzie w następnym tygodniu?", genie nie jest jednak umożliwiają określonej odpowiedzi i przewidzieć cenę sprzedaży.
 
-## <a name="examples-of-your-answer-target-data"></a>Przykłady odpowiedzi: dane docelowej
+## <a name="examples-of-your-answer-target-data"></a>Przykłady odpowiedzi: Dane docelowego
 Po użytkownik sformułować Twoje pytanie, sprawdź, czy masz przykłady odpowiedzi w Twoich danych.
 
 W przypadku naszej pytanie "Co cena detaliczna Moje zasobów będzie w następnym tygodniu?" następnie mamy upewnij się, że nasze dane obejmują historię cena akcji.

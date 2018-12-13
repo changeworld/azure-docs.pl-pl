@@ -1,19 +1,20 @@
 ---
-title: Zrozumienie języka zapytań wykres zasobów platformy Azure
+title: Zrozumienie języka zapytań
 description: Zawiera opis sposobu działania języka zapytań dla wykresu zasobów platformy Azure.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 09bcedc5250755f06ba23b84a0ae90b4d43a23db
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 62f61bfea3896fd3828253f5ec16cc38fe3ca007
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086169"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316676"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Zrozumienie języka zapytań wykres zasobów platformy Azure
 
@@ -51,6 +52,7 @@ Poniżej przedstawiono listę obsługiwanych funkcji w programie Graph zasobów:
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
 - [toString()](/azure/kusto/query/tostringfunction)
+- [ZIP()](/azure/kusto/query/zipfunction)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 6fe9a95c891ecd560682d02f14485cc9d198a0a4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.openlocfilehash: 2d6df569a2b5b813bd832adf5ef2e1d193de9364
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879159"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187572"
 ---
-# <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
+# <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
-SQL Database automatycznie tworzy kopie zapasowe baz danych i używa platformy Azure dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS), aby zapewnić nadmiarowość geograficzna. Te kopie zapasowe są tworzone automatycznie i bez dodatkowych opłat. Nie trzeba nic robić, aby je zastosować. Kopie zapasowe bazy danych są integralną część wszelkie strategii odzyskiwania firmy, jak ciągłość działalności biznesowej i odzyskiwanie po awarii, ponieważ one ochronę danych przed przypadkowym uszkodzeniem lub usunięciem. Reguły zabezpieczeń wymaga, że kopie zapasowe są dostępne przez dłuższy czas, po skonfigurowaniu długoterminowe zasady przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
+SQL Database automatycznie tworzy kopie zapasowe bazy danych, które są utrzymywane od 7 do 35 dni i używa platformy Azure dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS), aby upewnić się, że zachowane nawet jeśli Centrum danych jest niedostępna. Te kopie zapasowe są tworzone automatycznie i bez dodatkowych opłat. Nie trzeba nic robić, aby je zastosować, a także [zmienić okres przechowywania kopii zapasowej](#how-to-change-the-pitr-backup-retention-period). Kopie zapasowe bazy danych są integralną część wszelkie strategii odzyskiwania firmy, jak ciągłość działalności biznesowej i odzyskiwanie po awarii, ponieważ one ochronę danych przed przypadkowym uszkodzeniem lub usunięciem. Jeśli reguł zabezpieczeń wymaga, że kopie zapasowe są dostępne przez dłuższy czas (maksymalnie 10 lat), możesz skonfigurować [długoterminowego przechowywania](sql-database-long-term-retention.md).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 

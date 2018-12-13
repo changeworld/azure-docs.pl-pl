@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 68ca8593dea93faf076ffb5d99ec7bcad210a810
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ee0de5d03de29adddd8f77efbe7491603cc0e4c4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141836"
+ms.locfileid: "53188796"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -363,7 +362,7 @@ Jeśli masz problemy z Instalowanie i uruchamianie rozwiązania Service Map, w t
 #### <a name="installer-prompts-for-a-reboot"></a>Instalator monituje o ponowne uruchomienie komputera
 Agent zależności *ogólnie* nie jest wymagane ponowne uruchomienie komputera po instalacji lub odinstalowania. Jednak w niektórych przypadkach rzadkich systemu Windows Server wymaga ponownego uruchomienia, aby kontynuować instalację. Dzieje się tak, gdy zależność, zwykle Microsoft Visual C++ Redistributable, wymaga ponownego uruchomienia ze względu na zablokowany plik.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Komunikat "nie można zainstalować agenta zależności: bibliotek środowiska uruchomieniowego Visual Studio instalacja nie powiodła się (kod = [Numer_kodu])" pojawi się
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Komunikat "nie można zainstalować agenta zależności: Visual Studio środowiska uruchomieniowego bibliotek instalacja nie powiodła się (kod = [Numer_kodu]) "pojawi się
 
 Program Microsoft Dependency agent jest oparta na bibliotekach środowiska uruchomieniowego programu Microsoft Visual Studio. Jeśli występuje problem podczas instalacji bibliotek, zostanie wyświetlony komunikat. 
 
@@ -375,14 +374,14 @@ W poniższej tabeli wymieniono numery kodu i sugerowanymi metodami rozwiązania.
 
 | Kod | Opis | Rozwiązanie |
 |:--|:--|:--|
-| 0x17 | Instalator biblioteki wymaga aktualizacji Windows, która nie została ona zainstalowana. | Poszukaj w dzienniku Instalatora usługi najnowszej biblioteki.<br><br>Jeśli odwołanie do "Windows8.1-KB2999226-x64.msu" następuje wiersza "Błąd 0x80240017: nie można wykonać MSU pakietu" nie ma wymagań wstępnych, można zainstalować aktualizacji KB2999226. Postępuj zgodnie z instrukcjami w sekcji wymagania wstępne [uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/kb/2999226). Może być konieczne, uruchom usługę Windows Update i ponownie uruchomić wiele razy, aby można było zainstalować wymagania wstępne.<br><br>Ponownie uruchom Instalatora agenta Dependency firmy Microsoft. |
+| 0x17 | Instalator biblioteki wymaga aktualizacji Windows, która nie została ona zainstalowana. | Poszukaj w dzienniku Instalatora usługi najnowszej biblioteki.<br><br>Jeśli odwołanie do "Windows8.1-KB2999226-x64.msu" następuje wiersza "Błąd 0x80240017: Nie można wykonać MSU pakietu,"nie ma wymagań wstępnych, można zainstalować aktualizacji KB2999226. Postępuj zgodnie z instrukcjami w sekcji wymagania wstępne [uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/kb/2999226). Może być konieczne, uruchom usługę Windows Update i ponownie uruchomić wiele razy, aby można było zainstalować wymagania wstępne.<br><br>Ponownie uruchom Instalatora agenta Dependency firmy Microsoft. |
 
 ### <a name="post-installation-issues"></a>Problemy z instalacją po
 #### <a name="server-doesnt-appear-in-service-map"></a>Serwer nie jest wyświetlane w mapy usługi
 Jeśli instalację agenta zależności zakończyła się pomyślnie, ale nie widać na serwerze usługi w ramach rozwiązania mapy usługi:
 * Agent zależności zainstalowano pomyślnie? Aby to sprawdzić przez sprawdzanie, czy usługa jest zainstalowana i uruchomiona.<br><br>
 **Windows**: Wyszukaj usługę o nazwie "Agent Dependency firmy Microsoft."<br>
-**Linux**: Poszukaj uruchamianie przetwarzania "microsoft--agenta zależności."
+**Linux**: Zwróć uwagę na uruchomionego procesu "microsoft--agenta zależności."
 
 * Czy na [bezpłatnej warstwy Operations Management Suite/Log Analytics cenowej](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Bezpłatny plan zezwala na maksymalnie pięciu unikatowych serwerów mapy usługi. Kolejne serwery będą serwerami nie będą widoczne mapy usługi, nawet wtedy, gdy wcześniejsze pięciu już nie wysyłają dane.
 
@@ -390,7 +389,7 @@ Jeśli instalację agenta zależności zakończyła się pomyślnie, ale nie wid
 
         Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
-Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, usługi Log Analytics Agent jest prawidłowo i komunikacji z usługą Log Analytics. Jeśli nie, sprawdź agenta na serwerze: [agenta usługi Log Analytics na potrzeby rozwiązywania problemów Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) lub [agenta usługi Log Analytics na potrzeby rozwiązywania problemów w systemie Linux](../../azure-monitor/platform/agent-linux-troubleshoot.md).
+Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, usługi Log Analytics Agent jest prawidłowo i komunikacji z usługą Log Analytics. W przeciwnym razie sprawdź agenta na serwerze: [Agent analizy dziennika do rozwiązywania problemów Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) lub [agenta usługi Log Analytics na potrzeby rozwiązywania problemów w systemie Linux](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Serwer jest wyświetlany w rozwiązania Service Map, ale żadne procesy nie ma
 Jeśli zostanie wyświetlony na mapie usługi serwera, ale nie zawiera on procesu lub połączenia danych, który wskazuje agenta zależności jest zainstalowana i uruchomiona, że sterownik jądra nie została załadowana. 

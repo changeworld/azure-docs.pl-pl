@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/19/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b5b94c959ae9820cab338f3ee3317fb3ee166d6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c1e8f94a0131ace6354d070e932e414a1897260e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286605"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166306"
 ---
 # <a name="planning-for-maintenance-on-your-azure-sql-data-warehouse"></a>Planowanie obsługi usługi Azure SQL data warehouse
 
@@ -32,9 +32,9 @@ Otrzymasz powiadomienie przed każde zdarzenie planowanej konserwacji. Zdarzenia
 
 ## <a name="setting-up-alerts"></a>Konfigurowanie alertów
 
-Firma Microsoft zaleca używanie [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) skonfigurować planowanej konserwacji alertów dzienników. Alerty będą pomocne podczas planowania konserwacji wymagane zminimalizować wpływ na prowadzoną działalność. 
+Firma Microsoft zaleca używanie [usługi Azure Monitor](../azure-monitor/platform/alerts-activity-log-service-notifications.md) skonfigurować planowanej konserwacji alertów dzienników. Alerty będą pomocne podczas planowania konserwacji wymagane zminimalizować wpływ na prowadzoną działalność. 
 
-Aby skonfigurować powiadomienia, należy użyć tych [dziennika alertów instrukcje](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+Aby skonfigurować powiadomienia, należy użyć tych [dziennika alertów instrukcje](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat monitorowania zobacz [monitorowanie obciążenia](sql-data-warehouse-manage-monitor.md).

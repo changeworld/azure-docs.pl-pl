@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie środowiska deweloperskiego
+title: Skonfiguruj środowisko programistyczne języka Python
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak skonfigurować środowisko programowania, podczas pracy z usługą Azure Machine Learning. W tym dokumencie Dowiedz się, jak używać środowisk Conda, Utwórz pliki konfiguracyjne i skonfiguruj notesów programu Jupyter, notesy platformy Azure, środowiska IDE, edytory kodu i maszyna wirtualna do nauki o danych.
 services: machine-learning
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6e2222d56ea37983b1efafedaac8e01058cb44fa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 59f847dc38cddfd9185cfd169cf1ef34c744f8f7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098053"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192638"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -25,11 +25,11 @@ W tym dokumencie opisano konfigurowanie środowiska deweloperskiego do pracy z u
 
 Ten dokument koncentruje się na następujących konkretnych środowisk i narzędzia:
 
-* [Notesy platformy Azure](#aznotebooks): notesów programu Jupyter usługi hostowanej w chmurze platformy Azure. Jest __najprostsza__ sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
-* [Maszyna wirtualna do nauki o danych](#dsvm): A __środowiska wstępnie skonfigurowane programowanie/eksperymentowania__ na platformie Azure w chmurze oznacza to __przeznaczony do pracy nauki o danych__ i którą można wdrożyć do jednej Tylko wystąpienia maszyn wirtualnych procesora CPU lub GPU wystąpienia w pamięci masowej. Python 3, Conda, notesy Jupyter i zestawu SDK usługi Azure Machine Learning są już zainstalowane. Maszyna wirtualna jest dostarczany z popularnych ML / głębokiego uczenia struktur, narzędzi i edytory związane z opracowywaniem rozwiązań uczenia Maszynowego. Jest to prawdopodobnie __najbardziej kompletne__ środowisko programistyczne przeznaczone do uczenia Maszynowego na platformie Azure.
+* [Notesy platformy Azure](#aznotebooks): Usługa notesów programu Jupyter, hostowanych w chmurze platformy Azure. Jest __najprostsza__ sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
+* [Maszyna wirtualna do nauki o danych](#dsvm): A __środowiska wstępnie skonfigurowane programowanie/eksperymentowania__ na platformie Azure w chmurze oznacza to __przeznaczony do pracy nauki o danych__ i którą można wdrożyć do dowolnego procesora CPU, tylko wystąpień na podstawie wystąpień maszyn wirtualnych lub procesora GPU. Python 3, Conda, notesy Jupyter i zestawu SDK usługi Azure Machine Learning są już zainstalowane. Maszyna wirtualna jest dostarczany z popularnych ML / głębokiego uczenia struktur, narzędzi i edytory związane z opracowywaniem rozwiązań uczenia Maszynowego. Jest to prawdopodobnie __najbardziej kompletne__ środowisko programistyczne przeznaczone do uczenia Maszynowego na platformie Azure.
 * [Program Jupyter Notebooks](#jupyter): Jeśli już używasz notesów programu Jupyter, zestaw SDK zawiera niektóre dodatki, które należy zainstalować.
-* [Visual Studio Code](#vscode): Jeśli używasz programu Visual Studio Code, istnieją pewne przydatne rozszerzenia, które można zainstalować.
-* [Usługa Azure Databricks](#aml-databricks): platformy do analizy danych popularnych oparte na platformie Apache Spark. Dowiedz się, jak uzyskać Machine Learning zestawu SDK usługi Azure do klastra, dzięki czemu można wdrażać modele.
+* [Program Visual Studio Code](#vscode): Jeśli używasz programu Visual Studio Code, istnieją pewne przydatne rozszerzenia, które można zainstalować.
+* [Usługa Azure Databricks](#aml-databricks): Popularne platformy do analizy danych oparty na platformie Apache Spark. Dowiedz się, jak uzyskać Machine Learning zestawu SDK usługi Azure do klastra, dzięki czemu można wdrażać modele.
 
 Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczące instalowania zestawu SDK, zobacz [komputera lokalnego](#local) sekcji.
 

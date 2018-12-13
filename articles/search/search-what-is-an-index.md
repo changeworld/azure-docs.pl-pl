@@ -1,6 +1,6 @@
 ---
-title: Indeksy w usłudze Azure Search | Microsoft Docs
-description: Poznaj zagadnienia dotyczące indeksów w usłudze Azure Search i dowiedz się, jak te indeksy są wykorzystywane.
+title: Definicja indeksu i pojęcia — usługa Azure Search
+description: Wprowadzenie do koncepcji indeksu w usłudze Azure Search i jak indeksy są używane.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -8,12 +8,13 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: cc2c56d4463203aa2561e820540acdfff651d80a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: e1ff28434dab4e63e10d6b14eb671260650d4ada
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793406"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317070"
 ---
 # <a name="indexes-in-azure-search"></a>Indeksy w usłudze Azure Search
 > [!div class="op_single_selector"]

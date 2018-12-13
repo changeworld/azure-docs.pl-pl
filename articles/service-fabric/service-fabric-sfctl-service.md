@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 84c2faaf137e19d78e7e17527feb50baebf8041b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dbe234b3c6aaeed90f0b95e5118c1ff2f9e2bb24
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494578"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276880"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Tworzenie, usuwanie i zarządzać usługą, typy usług i pakietów usługi.
@@ -36,9 +36,9 @@ Tworzenie, usuwanie i zarządzać usługą, typy usług i pakietów usługi.
 | wdrożony — — lista typów | Pobiera listę zawierającą informacje o typach usługi z poziomu aplikacji wdrożonych w węźle w klastrze usługi Service Fabric. |
 | description | Pobiera opis istniejącej usługi Service Fabric. |
 | Get-container-logs | Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric. |
-| kondycja | Pobiera kondycji określonej usługi Service Fabric. |
+| zdrowie | Pobiera kondycji określonej usługi Service Fabric. |
 | informacje | Pobiera informacje o określonej usługi należące do aplikacji usługi Service Fabric. |
-| lista | Pobiera informacje o wszystkich usług należących do aplikacji, określonego przez identyfikator aplikacji. |
+| list | Pobiera informacje o wszystkich usług należących do aplikacji, określonego przez identyfikator aplikacji. |
 | Manifest | Pobiera manifest opisujące typ usługi. |
 | Wdrażanie pakietu | Pobiera pakiety skojarzone z określoną usługą manifestu do pamięci podręcznej obrazów w określonym węźle. |
 | package-health | Pobiera informacje o kondycji usług pakietu dla określonej aplikacji wdrożone dla węzła usługi Service Fabric i aplikacji. |
@@ -46,7 +46,7 @@ Tworzenie, usuwanie i zarządzać usługą, typy usług i pakietów usługi.
 | package-list | Pobiera listę pakietów usług wdrożonych w węźle usługi Service Fabric. |
 | Odzyskiwanie | Klaster usługi Service Fabric wskazywać, że ma podejmować do odzyskania z określonej usługi, który jest obecnie zablokowany utraciła kworum. |
 | report-health | Wysyła raport o kondycji usługi Service Fabric. |
-| rozwiązania | Rozwiąż partycji usługi Service Fabric. |
+| rozwiąż | Rozwiąż partycji usługi Service Fabric. |
 | Lista typów | Pobiera listę zawierającą informacje o typach usługi, które są obsługiwane przez typ aplikacji aprowizowanych w klastrze usługi Service Fabric. |
 | update | Aktualizuje określonej usługi przy użyciu opisu danej aktualizacji. |
 
@@ -491,9 +491,9 @@ Raporty stan kondycji określonej usługi Service Fabric. Raport musi zawierać 
 | --kondycji — właściwość [wymagane] | Właściwość o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągu i stałych wyliczenia aby zezwalał na elastyczność reportera do kategoryzowania warunek stanu, która powoduje uruchomienie raportu. Na przykład reportera o ID "LocalWatchdog" można monitorować stan wolnego w węźle, aby go zgłosić właściwości "AvailableDisk" w tym węźle. Ten sam reportera monitorować łączność węzeł tak go zgłosić właściwości "Łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia dotyczące kondycji oddzielnych dla określonego węzła. Wraz z SourceId właściwość jednoznacznie identyfikuje informacje o kondycji. |
 | — stan kondycji [wymagane] | Możliwe wartości to\: "Nieprawidłowy", "Ok", "Ostrzeżenie", "Error", "Nieznany". |
 | — Identyfikator usługi [wymagane] | Tożsamość usługi. <br><br> Zazwyczaj jest to pełna nazwa usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która określa składnik systemu klienta/strażnika, który wygenerował informacji o kondycji. |
+| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która identyfikuje składnik klienta/strażnika/systemu, który wygenerował informacji o kondycji. |
 | — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst, które umożliwiają dodawanie ludzi do odczytu informacji na temat raportu. Maksymalna długość ciągu opisu wynosi 4096 znaków. Jeśli podany ciąg jest dłuższy, zostaną automatycznie obcięte. W przypadku obcięty, ostatnie znaki opis zawiera znacznik "[obcięte]", a ciąg łączny rozmiar wynosi 4096 znaków. Obecność znacznika wskazuje, aby użytkownicy tej obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
-| --bezpośrednim | Flaga oznaczająca, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
+| --bezpośrednim | Flaga, która wskazuje, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
 | --remove gdy wygasł | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ustawiono wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po upływie. Wartość tej właściwości to false domyślnie. Gdy klienci okresowo raportu ustala RemoveWhenExpired false (domyślnie). W ten sposób jest zgłaszającą ma problemy (np. zakleszczenia) i nie można zgłosić jednostki jest oceniany na błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
 | --numer sekwencyjny | Numer sekwencji dla tego raportu o kondycji jako ciągu numerycznego. <br><br> Numer sekwencyjny raportu służy magazynu kondycji do wykrywania stare raportów. Jeśli nie zostanie określony, numer sekwencyjny został wygenerowany automatycznie przez klienta usługi kondycji po dodaniu raportu. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
@@ -520,7 +520,7 @@ Rozwiąż partycji usługi Service Fabric można pobrać z punktami końcowymi r
 | --- | --- |
 | — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
 | — Typ w przypadku klucza partycji | Typ klucza partycji. Ten parametr jest wymagany, jeśli schemat partycji dla usługi jest Int64Range lub nazwane. Możliwe wartości są następujące. -Brak (1) — wskazuje, że nie określono parametru PartitionKeyValue. To jest prawidłowy dla partycji z podziałem na partycje schematu jako pojedyncza. Jest to wartość domyślna. Wartość to 1. -Int64Range (2) — wskazuje parametr PartitionKeyValue klucz partycji typu int64. To jest prawidłowy dla partycji przy użyciu schematu jako Int64Range partycjonowania. Wartość jest równa 2. -O nazwie (3) — wskazuje, że parametr PartitionKeyValue nazwę partycji. To jest prawidłowy dla partycji przy użyciu schemat jako nazwanych partycji. Wartość to 3. |
-| --wartości kluczy partycji | Klucz partycji. Jest to wymagane, jeśli schemat partycji dla usługi jest Int64Range lub nazwane. |
+| --wartości kluczy partycji | Klucz partycji. Jest to wymagane, jeśli schemat partycji dla usługi jest Int64Range lub nazwane. To nie jest Identyfikatorem partycji, ale raczej to liczba całkowita klucza, lub nazwa identyfikatora partycji. Na przykład jeśli usługa używa ranged partycji z zakresu od 0 do 10, ich PartitionKeyValue będzie liczbą całkowitą, w tym zakresie. Wyślij zapytanie do opisu usługi, aby zobaczyć, zakresu lub nazwy. |
 | --poprzedniej wersji rsp | Wartość w polu Wersja odpowiedź, która została otrzymana wcześniej. Jest to wymagane, jeśli użytkownik wie, że wynik, który był coraz wcześniej jest przestarzałe. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 

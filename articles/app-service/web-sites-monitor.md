@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie aplikacji w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Monitorowanie aplikacji — usługa Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak monitorować aplikacje w usłudze Azure App Service przy użyciu witryny Azure portal.
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 6334b4cc50bfa6dca709fdc9d65938f0fec3ad1c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 103b5c1d2bc70f187b6e65a9fa9d80a35ad8e0c1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956774"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321583"
 ---
-# <a name="how-to-monitor-apps-in-azure-app-service"></a>Porady: monitorowanie aplikacji w usłudze Azure App Service
+# <a name="how-to-monitor-apps-in-azure-app-service"></a>Instrukcje: Monitorowanie aplikacji w usłudze Azure App Service
 [Usługa App Service](https://go.microsoft.com/fwlink/?LinkId=529714) udostępnia wbudowane funkcje monitorowania w [witryny Azure portal](https://portal.azure.com).
 Witryny Azure portal umożliwia przeglądanie **przydziały** i **metryki** dla aplikacji, a także plan usługi App Service, konfigurowanie **alerty** i nawet **skalowania**  automatycznie w oparciu o te metryki.
 
@@ -53,7 +54,7 @@ Jeśli aplikacja jest hostowana w **podstawowe**, **standardowa** lub **Premium*
 
 Tylko limitu przydziału stosowane w aplikacjach hostowanych w **podstawowe**, **standardowa**, i **Premium** jest plany **systemu plików**.
 
-Więcej informacji na temat określonych przydziały, limity i dostęp do różnych jednostek SKU usługi aplikacji funkcji można znaleźć tutaj: [limity usług subskrypcji platformy Azure](../azure-subscription-service-limits.md#app-service-limits)
+Więcej informacji na temat określonych przydziały, limity i dostęp do różnych jednostek SKU usługi aplikacji funkcji można znaleźć tutaj: [Azure Subscription Service Limits](../azure-subscription-service-limits.md#app-service-limits) (Limity usług subskrypcji platformy Azure)
 
 #### <a name="quota-enforcement"></a>Wymuszanie przydziałów
 Jeśli aplikacja przekracza **Procesora (krótki)**, **Procesora (dzień)**, lub **przepustowości** przydziału następnie aplikacji zostanie zatrzymana, dopóki nie powoduje zresetowanie limitu przydziału. W tym czasie wszystkie żądania przychodzące spowodować **HTTP 403**.
@@ -75,7 +76,7 @@ Aby uzyskać **aplikacji**, są dostępne metryki:
 * **Średni zestaw roboczy pamięci**
   * Średnia ilość pamięci w bazach MIB używanych przez aplikację.
 * **Czas procesora CPU**
-  * Moc procesora CPU w ciągu kilku sekund, używane przez aplikację. Aby uzyskać więcej informacji na temat tej metryki, zobacz: [procent vs Procesor czas procesora CPU](#cpu-time-vs-cpu-percentage)
+  * Moc procesora CPU w ciągu kilku sekund, używane przez aplikację. Aby uzyskać więcej informacji na temat tej metryki zobacz: [Procent procesora CPU w programie vs czasu procesora CPU](#cpu-time-vs-cpu-percentage)
 * **Dane w**
   * Ilość użytej przez aplikację w bazach MIB przychodzących przepustowości.
 * **Dane wyjściowe**
@@ -141,18 +142,18 @@ Metryki dla aplikacji i plan usługi app service są rejestrowane, a następnie 
 Można sprawdzić stan różnych **przydziały** i **metryki** wpływu na aplikację w [witryny Azure portal](https://portal.azure.com).
 
 ![][quotas]
-**Przydziały** można znaleźć w obszarze Ustawienia >**przydziały**. Środowiska użytkownika umożliwia dokonanie przeglądu: (1) nazwę limity przydziału, (2) jej interwał resetowania (3) jego bieżący limit i (4) bieżącą wartość.
+**Przydziały** można znaleźć w obszarze Ustawienia >**przydziały**. Środowiska użytkownika umożliwia dokonanie przeglądu: (1) nazwa limity przydziału, (2) jej interwał resetowania, (3) jego bieżący limit i (4) bieżącą wartość.
 
 ![][metrics]
 **Metryki** możliwy bezpośrednio ze strony zasobu. Można również dostosować wykres przez: (1) **kliknij** i (2) wybierz **edytowanie wykresu**.
 W tym miejscu możesz zmienić (3) **zakres czasu**, (4) **typ wykresu**i 5 **metryki** do wyświetlenia.  
 
-Dowiedz się więcej o metrykach w tym miejscu: [monitorowania metryk usług](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Możesz dowiedzieć się więcej o metrykach w tym miejscu: [Monitorowanie metryk usług](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Alerty i automatyczne skalowanie
 Metryki dla planu usługi aplikacji lub usługi App Service można podłączonymi do alertów. Aby uzyskać więcej informacji, zobacz [otrzymywanie powiadomień o alertach](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-Aplikacje usługi App Service, hostowane w podstawowa, standardowa lub premium obsługi planów usługi App Service **skalowania automatycznego**. Funkcja automatycznego skalowania umożliwia skonfigurowanie reguł, które monitorują metryki planu usługi App Service. Zasady można zwiększyć lub zmniejszyć liczbę wystąpień, zapewniając dodatkowe zasoby, zgodnie z potrzebami. Reguły może również pomóc zaoszczędzić pieniądze, gdy aplikacja jest nadmiernie aprowizowane. Dowiedz się więcej na temat automatycznego skalowania: [jak skalować](../monitoring-and-diagnostics/insights-how-to-scale.md) i tutaj [najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+Aplikacje usługi App Service, hostowane w podstawowa, standardowa lub premium obsługi planów usługi App Service **skalowania automatycznego**. Funkcja automatycznego skalowania umożliwia skonfigurowanie reguł, które monitorują metryki planu usługi App Service. Zasady można zwiększyć lub zmniejszyć liczbę wystąpień, zapewniając dodatkowe zasoby, zgodnie z potrzebami. Reguły może również pomóc zaoszczędzić pieniądze, gdy aplikacja jest nadmiernie aprowizowane. Możesz dowiedzieć się więcej na temat automatycznego skalowania: [Jak skalować](../monitoring-and-diagnostics/insights-how-to-scale.md) i tutaj [najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](../azure-monitor/platform/autoscale-best-practices.md)
 
 > [!NOTE]
 > Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Try App Service](https://azure.microsoft.com/try/app-service/) (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.

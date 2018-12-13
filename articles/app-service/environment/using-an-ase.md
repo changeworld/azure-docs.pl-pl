@@ -1,5 +1,5 @@
 ---
-title: Użyj środowiska usługi Azure App Service
+title: Za pomocą środowiska usługi App Service — platformy Azure
 description: Jak tworzenie, publikowanie i skalowanie aplikacji w środowisku usługi Azure App Service
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 5f2959183e1741c8e37db92ede249d83bb3d53a3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964700"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274721"
 ---
 # <a name="use-an-app-service-environment"></a>Użyj środowiska usługi App Service #
 
@@ -27,12 +28,12 @@ ms.locfileid: "52964700"
 Usługa Azure App Service Environment to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure klienta. Składa się z:
 
 - **Frontonu kończy się**: Frontony są, gdzie kończy HTTP/HTTPS w środowisku usługi App Service (ASE).
-- **Procesy robocze**: procesy robocze są zasoby, które hostują swoje aplikacje.
-- **Baza danych**: baza danych przechowuje informacje, który definiuje środowiska.
+- **Procesy robocze**: Procesy robocze są zasoby, które hostowania aplikacji.
+- **Baza danych**: Baza danych przechowuje informacje, który definiuje środowiska.
 - **Magazyn**: Magazyn jest używany do hostowania aplikacji opublikowanych przez klienta.
 
 > [!NOTE]
-> Istnieją dwie wersje środowiska App Service Environment: ASEv1 i ASEv2. W przypadku środowiska ASEv1 można zarządzać zasobami, zanim będzie można ich użyć. Aby dowiedzieć się, jak skonfigurować i zarządzać nimi środowiska ASEv1, zobacz [Konfigurowanie usługi App Service environment w wersji 1][ConfigureASEv1]. W pozostałej części tego artykułu koncentruje się na ASEv2.
+> Istnieją dwie wersje środowiska App Service Environment: Środowiska ASEv1 i ASEv2. W przypadku środowiska ASEv1 można zarządzać zasobami, zanim będzie można ich użyć. Aby dowiedzieć się, jak skonfigurować i zarządzać nimi środowiska ASEv1, zobacz [Konfigurowanie usługi App Service environment w wersji 1][ConfigureASEv1]. W pozostałej części tego artykułu koncentruje się na ASEv2.
 >
 >
 
@@ -51,7 +52,7 @@ Aby utworzyć aplikację sieci web w środowisku ASE:
 
 1. Wybierz **Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web**.
 
-1. Wprowadź nazwę dla aplikacji sieci web. Jeśli wybrano już plan usługi App Service w środowisku ASE, nazwę domeny dla aplikacji odzwierciedla nazwa domeny środowiska ASE.
+2. Wprowadź nazwę dla aplikacji sieci web. Jeśli wybrano już plan usługi App Service w środowisku ASE, nazwę domeny dla aplikacji odzwierciedla nazwa domeny środowiska ASE.
 
     ![Wybór nazwy aplikacji sieci Web][1]
 
@@ -70,7 +71,7 @@ Aby utworzyć aplikację sieci web w środowisku ASE:
 
     b. Wprowadź nazwę dla planu usługi App Service.
 
-    c. Wybierz środowisko ASE w **lokalizacji** listy rozwijanej. Hosting aplikacji systemu Linux w środowisku ASE jest włączony tylko w regionach, 6, w tym momencie: **zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
+    c. Wybierz środowisko ASE w **lokalizacji** listy rozwijanej. Hosting aplikacji systemu Linux w środowisku ASE jest aktywne tylko w 6 regionów, w tym momencie: **Zachodnie stany USA, wschodnie stany USA, zachodnie Europa, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
 
     d. Wybierz **izolowany** warstwy cenowej. Wybierz **wybierz**.
 

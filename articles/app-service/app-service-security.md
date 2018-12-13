@@ -1,5 +1,5 @@
 ---
-title: Zabezpieczenia w usłudze Azure App Service i Azure Functions | Dokumentacja firmy Microsoft
+title: Przegląd zabezpieczeń — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o jak usługi App Service ułatwia bezpieczne aplikacja i jak można dalej zablokować aplikację z poziomu zagrożenia.
 keywords: usługi Azure app service, aplikacji sieci web, aplikacji mobilnych, aplikacji interfejsu api, aplikacji funkcji, bezpieczeństwo, bezpieczne i zabezpieczony, zgodności i zgodne, certyfikatów, certyfikaty, https, ftps tls, zaufanie, szyfrowanie, szyfrowanie, szyfrowane, ograniczenia adresów ip, uwierzytelnianie, autoryzacja, uwierzytelniania, autho, msi, tożsamość usługi zarządzanej, tożsamość zarządzaną, wpisów tajnych, klucz tajny, poprawek, poprawek, poprawek, wersji, izolacji, izolacji sieci, przed atakami ddos i mitm
 services: app-service
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 3bacc2bf253a6b8c3b869b7a6d4952d982de3ee6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 7c2297fa5f7ebaae1c54794ebbbd37e25d3931ca
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857503"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251474"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Zabezpieczenia w usłudze Azure App Service i Azure Functions
 

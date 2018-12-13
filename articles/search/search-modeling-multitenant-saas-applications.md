@@ -2,19 +2,20 @@
 title: Modelowanie Wielodostępności w usłudze Azure Search | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o często używane wzorce projektowe dla wielodostępnych aplikacji SaaS podczas korzystania z usługi Azure Search.
 manager: jlembicz
-author: ashmaka
+author: LiamCavanagh
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
-ms.author: ashmaka
-ms.openlocfilehash: b7befb46da8674e0bec7d3f73ad33a12529ffc3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: liamca
+ms.custom: seodec2018
+ms.openlocfilehash: 1da9756df4fa05b367665a5fe024528939f22578
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232385"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313041"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Wzorce projektowe dla wielodostępnych aplikacji SaaS i usługa Azure Search
 Wielodostępnej aplikacji to taki, który zawiera te same usług i funkcji do dowolnej liczby dzierżawców, którzy nie może zobaczyć i udostępnianie danych z innymi dzierżawami. W tym dokumencie omówiono strategii izolacji dzierżawy dla aplikacji wielodostępnych utworzonych za pomocą usługi Azure Search.
@@ -57,11 +58,11 @@ Konkretnie usługi S3 może mieć od 1 do 200 indeksy, które ze sobą, może ud
 ## <a name="considerations-for-multitenant-applications"></a>Zagadnienia dotyczące aplikacji wielodostępnych
 Wielodostępne aplikacje muszą efektywnie dystrybuuje zasobów między dzierżawcami przy jednoczesnym zachowaniu pewien poziom prywatności między różnych dzierżawach. Podczas projektowania architektury takiej aplikacji jest kilka istotnych kwestii:
 
-* *Odizolowania dzierżawców:* deweloperzy aplikacji nie muszą podejmować odpowiednie działania, aby upewnij się, że nie dzierżaw nieautoryzowany lub niechcianego dostępu do danych z innych dzierżaw. Poza perspektywy prywatność danych strategii izolacji dzierżawcy wymagają efektywne zarządzanie zasobów udostępnionych i ochrony z najbliższego otoczenia generujące dużo alertów.
-* *Koszt zasobów w chmurze:* zgodnie z każdą aplikacją rozwiązań programowych musi pozostać koszt konkurencyjne jako część aplikacji wielodostępnej.
-* *Łatwość operacji:* podczas tworzenia architektury wielodostępnej, wpływ na operacje i złożoność aplikacji jest ważną kwestią. Usługi Azure Search [poziomem usług 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-* *Globalnemu zasięgowi:* wielodostępnych aplikacji może być konieczne skutecznie obsługiwać dzierżaw, które są rozmieszczone na całym świecie.
-* *Skalowalność:* deweloperom aplikacji muszą wziąć pod uwagę, jak uzgodnienia między utrzymywanie wystarczająco niski poziom złożoności aplikacji i projektowania aplikacji do skalowania liczby dzierżawców i rozmiar danych dzierżawców i obciążenie.
+* *Izolacja dzierżawy:* Deweloperzy aplikacji muszą podjąć właściwe środki, aby upewnić się, że nie dzierżaw nieautoryzowany lub niechcianego dostępu do danych z innych dzierżaw. Poza perspektywy prywatność danych strategii izolacji dzierżawcy wymagają efektywne zarządzanie zasobów udostępnionych i ochrony z najbliższego otoczenia generujące dużo alertów.
+* *Koszt zasobów chmury:* Podobnie jak w przypadku innych aplikacji, rozwiązania oparte na oprogramowaniu musi pozostać koszt konkurencyjne jako część aplikacji wielodostępnej.
+* *Łatwość operacji.* Podczas tworzenia architektury wielodostępnej, ważną kwestią jest negatywny wpływ na operacje i złożoność aplikacji. Usługi Azure Search [poziomem usług 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+* *Globalnemu zasięgowi:* Wielodostępne aplikacje może być konieczne skutecznie obsługiwać dzierżaw, które są rozmieszczone na całym świecie.
+* *Skalowalność:* Deweloperzy aplikacji należy wziąć pod uwagę, jak uzgodnienia między utrzymywanie wystarczająco niski poziom złożoności aplikacji i projektowania aplikacji do skalowania liczby dzierżawców i rozmiaru danych i obciążenie dzierżawców.
 
 Usługa Azure Search udostępnia kilka granic, które mogą być używane do izolowania danych i obciążenie dzierżawców.
 
@@ -69,8 +70,8 @@ Usługa Azure Search udostępnia kilka granic, które mogą być używane do izo
 W przypadku scenariusza wielodostępne Deweloper aplikacji wykorzystuje co najmniej jednej usługi wyszukiwania i dzielenia dzierżawcom między usługami i/lub indeksy. Usługa Azure Search ma kilka typowych wzorców podczas modelowania wielodostępnego scenariusza:
 
 1. *Indeks każdego dzierżawcy:* Każda dzierżawa ma swój własny indeksu w usłudze wyszukiwania, który jest współużytkowany z innymi dzierżawami.
-2. *Usługi w dzierżawie:* Każda dzierżawa ma swój własny dedykowany usługę Azure Search oferuje najwyższy poziom separacji danych i obciążeń.
-3. *Kombinacja obu:* większych i bardziej aktywne dzierżawy są przypisane dedykowanych usługi, gdy mniejszych dzierżawców są przypisywane pojedynczych indeksów w ramach usług udostępnionych.
+2. *Usługi za dzierżawy:* Każda dzierżawa ma swój własny dedykowany usługę Azure Search oferuje najwyższy poziom separacji danych i obciążeń.
+3. *Mieszany obu tych elementów:* Większych i bardziej aktywne dzierżawy są przypisywane dedykowanych usługi, gdy mniejszych dzierżawców są przypisywane pojedynczych indeksów w ramach usług udostępnionych.
 
 ## <a name="1-index-per-tenant"></a>1. Indeks każdego dzierżawcy
 ![Wizerunku modelu indeksu dla dzierżawcy](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)

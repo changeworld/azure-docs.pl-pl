@@ -3,7 +3,7 @@ title: Wdrażanie maszyny Wirtualnej z sieci wirtualnych dysków twardych z rynk
 description: Wyjaśnia, jak zarejestrować Maszynę wirtualną z wirtualnego dysku twardego wdrożonych przez usługę Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: pbutlerm
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 06ef4247d3cd7f87d763feb3f61cb8101d17a2e4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 9157ce7f8f16bc60a6d5c16fa992a5402cf2d7ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877120"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190734"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Wdrażanie maszyny Wirtualnej z sieci wirtualnych dysków twardych
 
-W tym artykule wyjaśniono, jak zarejestrować maszynę wirtualną (VM) z wdrożonych przez usługę Azure wirtualnego dysku twardego (VHD).  Wyświetla listę wymagane narzędzia i jak ich używać do tworzenia obrazu maszyny Wirtualnej użytkownika, a następnie wdrożyć ją na platformie Azure przy użyciu [portalu Microsoft Azure](https://ms.portal.azure.com/) lub skryptów programu PowerShell. 
+W tej sekcji wyjaśniono, jak wdrożyć maszynę wirtualną (VM) z wdrożonych przez usługę Azure wirtualnego dysku twardego (VHD).  Wyświetla listę wymagane narzędzia i jak ich używać do tworzenia obrazu maszyny Wirtualnej użytkownika, a następnie wdrożyć ją na platformie Azure za pomocą skryptów programu PowerShell.
 
 Po przekazaniu wirtualnych dysków twardych (VHD) — uogólnionego wirtualnego dysku twardego systemu operacyjnego i zero lub więcej danych na dysku VHD — do swojego konta usługi Azure storage można zarejestrować je jako obraz maszyny Wirtualnej użytkownika. Następnie można przetestować tego obrazu. Ponieważ wirtualny dysk twardy systemu operacyjnego jest uogólniony, nie można bezpośrednio wdrożyć maszynę Wirtualną, podając adres URL wirtualnego dysku twardego.
 
@@ -33,48 +33,23 @@ Aby dowiedzieć się więcej na temat obrazów maszyn wirtualnych, zobacz nastę
 - [Obraz maszyny Wirtualnej w programie PowerShell "Jak"](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
 
-## <a name="set-up-the-necessary-tools"></a>Konfigurowanie niezbędne narzędzia
+## <a name="prerequisite-install-the-necessary-tools"></a>Wymagania wstępne: Instalacja niezbędne narzędzia
 
 Jeśli jeszcze tego nie zrobiono, należy zainstalować programu Azure PowerShell i wiersza polecenia platformy Azure, korzystając z następujących instrukcji:
-
-<!-- TD: Change the following URLs (in this entire topic) to relative paths.-->
 
 - [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
 - [Zainstaluj interfejs wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
-## <a name="create-a-user-vm-image"></a>Tworzenie obrazu maszyny Wirtualnej użytkownika
+## <a name="deployment-steps"></a>Kroki wdrażania
 
-Następnie utworzysz obrazu niezarządzanego z uogólnionego wirtualnego dysku twardego.
+Poniższe kroki zostaną umożliwia tworzenie i wdrażanie obrazu użytkownika maszyny Wirtualnej:
 
-#### <a name="capture-the-vm-image"></a>Przechwytywanie obrazu maszyny Wirtualnej
+1. Tworzenie obrazu maszyny Wirtualnej użytkownika, co pociąga za sobą przechwytywania i uogólnianie obrazu. 
+2. Tworzenie certyfikatów i przechowywać je w nowej usłudze Azure Key Vault. Certyfikat jest wymagany do ustanawiania bezpiecznego połączenia usługi WinRM na maszynie wirtualnej.  Szablon usługi Azure Resource Manager i skrypt programu Azure PowerShell są dostarczane. 
+3. Wdróż maszynę Wirtualną z obrazu maszyny Wirtualnej użytkownika, przy użyciu dostarczonego szablonu i skryptu.
 
-Postępuj zgodnie z instrukcjami w artykule na przechwytywanie maszyny Wirtualnej, która odnosi się do danej metody dostępu:
-
--  Program PowerShell: [sposób tworzenia obrazu maszyny Wirtualnej niezarządzanej maszyny wirtualnej platformy Azure](../../../virtual-machines/windows/capture-image-resource.md)
--  Interfejs wiersza polecenia platformy Azure: [sposób tworzenia obrazu maszyny wirtualnej lub wirtualnego dysku twardego](../../../virtual-machines/linux/capture-image.md)
--  Interfejs API: [Virtual Machines — przechwytywania](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
-
-### <a name="generalize-the-vm-image"></a>Uogólnij obraz maszyny Wirtualnej
-
-Ponieważ obraz użytkownika został wygenerowany z wcześniej uogólnionego wirtualnego dysku twardego, również powinien być uogólniony.  Ponownie wybierz następującego artykułu, który odnosi się do mechanizmu Twojego dostępu.  (Możesz może mieć już uogólniony dysku podczas została przechwycona.)
-
--  Program PowerShell: [uogólnianie maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Interfejs wiersza polecenia platformy Azure: [krok 2: Utwórz maszynę Wirtualną obrazu](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  Interfejs API: [uogólnić maszyny wirtualne —](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
-
-
-## <a name="deploy-a-vm-from-a-user-vm-image"></a>Wdrażanie maszyny Wirtualnej z obrazu maszyny Wirtualnej użytkownika
-
-Następnie wdrożysz Maszynę wirtualną z obrazu maszyny Wirtualnej użytkownika, za pomocą witryny Azure portal lub programu PowerShell.
-
-<!-- TD: Recapture following hilited images and replace with red-box. -->
-
-### <a name="deploy-a-vm-from-azure-portal"></a>Wdrażanie maszyny Wirtualnej w witrynie Azure portal
-
-Użyj następującego procesu wdrażania użytkownika maszyny Wirtualnej w witrynie Azure portal.
-
-1.  Zaloguj się do [Azure Portal](https://portal.azure.com).
+Po wdrożeniu maszyny Wirtualnej można przystąpić do [certyfikować swój obraz maszyny Wirtualnej](./cpp-certify-vm.md).
 
 2.  Kliknij przycisk **New** i wyszukaj **wdrożenie szablonu**, a następnie wybierz **Utwórz własny szablon w edytorze**.  <br/>
   ![Tworzenie szablonu wdrożenia wirtualnego dysku twardego w witrynie Azure portal](./media/publishvm_021.png)
@@ -124,4 +99,5 @@ Aby wdrożyć dużą maszynę Wirtualną z obrazu uogólnionej maszyny Wirtualne
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po wdrożeniu maszyny Wirtualnej można przystąpić do [konfigurację maszyny Wirtualnej](./cpp-configure-vm.md).
+Następnie zostanie [utworzenie obrazu maszyny Wirtualnej użytkownika](cpp-create-user-image.md) dla Twojego rozwiązania.
+

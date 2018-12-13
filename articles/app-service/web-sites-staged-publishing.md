@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie środowiska tymczasowego dla aplikacji sieci web w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Konfigurowanie środowiska tymczasowego dla aplikacji sieci web — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak korzystać z publikowania etapowego dla aplikacji sieci web w usłudze Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: c6e28554f86a6a7de5d50027ceb552e15856bc96
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 17bc8fe2e5ccd9888777e11f3ca98e6afefb56b7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970862"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277390"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -125,7 +126,7 @@ Kiedy używasz **wymiany z podglądem** opcji (zobacz [zamiana miejsc wdrożenia
 - Dotyczy elementów konfiguracji z miejsca docelowego w miejscu źródłowym, w tym parametry połączenia specyficzne dla miejsca i ustawień aplikacji.
 - Powoduje ponowne uruchomienie procesów roboczych na miejsca źródłowego przy użyciu tych elementów konfiguracji wyżej.
 - Po zakończeniu wymiany: Przenosi miejsca źródłowego wstępnej warmed up do miejsca docelowego. Miejsce docelowe jest przenoszony do miejsca źródłowego, jak ręczne wymiany.
-- Gdy anulować zamianę: Przywrócenie elementów konfiguracji w miejscu źródłowym w miejscu źródłowym.
+- Jeśli anulujesz wymiany: Ponowne zastosowanie elementów konfiguracji w miejscu źródłowym w miejscu źródłowym.
 
 Możesz wyświetlić podgląd dokładnie, jak aplikacja będzie zachowywać z konfiguracją miejsca docelowego. Po zakończeniu walidacji możesz ukończyć wymiany stanowi oddzielny krok. Ten krok ma tę zaletę, że w miejscu źródłowym jest już przygotowaniu z żądaną konfiguracją, a klienci nie żadnej przerwy.  
 

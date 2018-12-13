@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: cwatson
-ms.openlocfilehash: 80721fc82a54c62c982298cb8eabb999caaf1dfb
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: fe3cb2d15602407b54ff47763d409c2e77614f0a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583112"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311137"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie i wyświetlanie Azure faktury i dane dotyczące dziennego wykorzystania
 
@@ -122,7 +122,7 @@ Aby uzyskać więcej informacji na temat dziennego użycia, zobacz [Informacje o
 
 Aby wyświetlić i pobrać dane użycia jako klient korzystający z umową EA, musi być Administrator przedsiębiorstwa lub właściciel konta lub administratora działu z włączonymi zasadami opłaty widoku.
 
-1. Zaloguj się w witrynie [Azure Portal]( http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukiwanie **Cost Management + rozliczenia**.
 
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)

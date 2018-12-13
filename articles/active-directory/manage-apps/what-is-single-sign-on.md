@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: b2eff49f94dfcd67cb9741055520d990429051cd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 627bd114504de20517abcd05f45dc6c58fe80117
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098563"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322708"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 Dowiedz się, jak wybrać najbardziej odpowiedni pojedynczej metody logowania jednokrotnego, podczas konfigurowania aplikacji w usłudze Azure Active Directory (Azure AD). 
@@ -67,7 +67,7 @@ Aby skonfigurować aplikację do opartej na SAML logowania jednokrotnego, zobacz
 Aby uzyskać więcej informacji o tym, jak działa protokół SAML, zobacz [pojedynczego logowania jednokrotnego protokołu SAML](../develop/single-sign-on-saml-protocol.md).
 
 ## <a name="password-based-sso"></a>Usługa rejestracji Jednokrotnej z opartego na hasłach
-Za pomocą opartego na hasłach logowania jednokrotnego aplikacja uwierzytelnia się do aplikacji przy użyciu nazwy użytkownika i hasła. Użytkownicy końcowi Zaloguj się do czasu aplikacji pierwszy, mogą uzyskać do niego dostęp. Po pierwsze logowanie jednokrotne usługi Azure Active Directory zawiera nazwę użytkownika i hasło do aplikacji. 
+Za pomocą opartego na hasłach logowania jednokrotnego użytkownicy końcowi Zaloguj się do aplikacji przy użyciu nazwy użytkownika i hasła podczas pierwszego uzyskiwania dostępu do. Po pierwsze logowanie jednokrotne usługi Azure Active Directory zawiera nazwę użytkownika i hasło do aplikacji. 
 
 Na podstawie hasła logowania jednokrotnego używa istniejącego procesu uwierzytelniania udostępniany przez aplikację. Po włączeniu hasła logowania jednokrotnego dla aplikacji usługi Azure AD zbiera i OS x bezpiecznie przechowa nazwy użytkownika i hasła dla aplikacji. Poświadczenia użytkownika są przechowywane w stanie zaszyfrowane w katalogu. 
 
@@ -177,6 +177,6 @@ Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](
 * [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Samouczek dotyczący konfigurowania logowania jednokrotnego](configure-single-sign-on-portal.md)
 * [Wprowadzenie do zarządzanie dostępem do aplikacji](what-is-access-management.md)
-* Link pobierania: [plan wdrażania rejestracji jednokrotnej](https://aka.ms/SSODeploymentPlan).
+* Link pobierania: [Plan wdrażania rejestracji jednokrotnej](https://aka.ms/SSODeploymentPlan).
 
 

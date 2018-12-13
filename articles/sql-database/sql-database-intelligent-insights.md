@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e639bd40c877aded1439fe999fcf3f7114b9a727
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 573e0dd1bae584b12cfd3859fe63d7ca20bb7b52
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890674"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278138"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Wydajność bazy danych Intelligent Insights za pomocą sztucznej Inteligencji do monitorowania i rozwiązywania problemów
 
@@ -84,7 +84,7 @@ Aby uzyskać więcej informacji na temat włączania rejestrowania Intelligent I
 Rozwiązanie SQL Analytics na platformie Azure zapewnia graficzny interfejs użytkownika, raportowanie i alertów na wydajność bazy danych, wraz z Intelligent Insights danych dziennika diagnostycznego.
 
 > [!TIP]
-> Szybkie wprowadzenie: Najłatwiejszym sposobem na wyższy, przy użyciu Intelligent Insights jest z niego korzystać, wraz z usługi Azure SQL Analytics, która zapewnia graficzny interfejs użytkownika do problemów z wydajnością bazy danych. Dodawanie rozwiązania do usługi Azure SQL Analytics w portalu Marketplace, Utwórz obszar roboczy, w tym rozwiązaniu i dla każdej bazy danych, które ma zostać włączone Intelligent Insights na, skonfiguruj przesyłania strumieniowego dziennika "SQLInsights" w bloku ustawienia diagnostyki bazy danych do obszar roboczy usługi Azure SQL Analytics.
+> Szybkie wprowadzenie do: Najłatwiejszym sposobem na wyższy, przy użyciu Intelligent Insights jest z niego korzystać, wraz z usługi Azure SQL Analytics, która zapewnia graficzny interfejs użytkownika do problemów z wydajnością bazy danych. Dodawanie rozwiązania do usługi Azure SQL Analytics w portalu Marketplace, Utwórz obszar roboczy, w tym rozwiązaniu i dla każdej bazy danych, które ma zostać włączone Intelligent Insights na, skonfiguruj przesyłania strumieniowego dziennika "SQLInsights" w bloku ustawienia diagnostyki bazy danych do obszar roboczy usługi Azure SQL Analytics.
 >
 
 Wymaganie wstępne dotyczy zostały dodane do pulpitu nawigacyjnego witryny Azure portal z witryny marketplace usługi Azure SQL Analytics i Utwórz obszar roboczy, zobacz [Konfigurowanie usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md#configuration)

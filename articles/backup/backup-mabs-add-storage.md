@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: fa19cdbb6c51248b5361ba747829c4f9e617ce6a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: cc76b15c3cb108b5181e22330954dfee789b01ba
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865390"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251117"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Dodawanie magazynu do usługi Azure Backup Server
 
-Usługa Azure Backup Server V2 i nowszej jest dostarczany z System Center 2016 danych ochrony Menedżera Modern Backup Storage. Modern Backup Storage oferuje oszczędności pojemności magazynu 50 procent kopie zapasowe, które są trzy razy szybsze i wydajniejsze magazynu. Zapewnia ona również wydajniejszego magazynu obsługującego obciążenie.
+Usługa Azure Backup Server V2 i jego nowsze wersje obsługują Modern Backup Storage, oferująca oszczędności pojemności magazynu 50 procent kopie zapasowe są trzy razy szybsze i wydajniejsze magazynu. Zapewnia ona również wydajniejszego magazynu obsługującego obciążenie.
 
 > [!NOTE]
 > Aby użyć Modern Backup Storage, należy uruchomić kopii zapasowej serwera w wersji 2 lub 3 w systemie Windows Server 2016 lub 2019 serwera systemu Windows w wersji 3.
@@ -75,7 +75,7 @@ Dzięki magazynowi obsługującemu obciążenie można wybrać woluminów, na kt
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Obsługujący obciążenie Magazyn można skonfigurować za pomocą polecenia cmdlet programu PowerShell Update-DPMDiskStorage. umożliwia zaktualizowanie właściwości woluminu w puli magazynów na serwerze programu Data Protection Manager.
+Wydajniejszego magazynu obsługującego obciążenie można skonfigurować za pomocą polecenia cmdlet programu PowerShell Update-DPMDiskStorage. zaktualizowanie właściwości woluminu w puli magazynów na serwerze usługi Azure Backup. 
 
 Składnia:
 

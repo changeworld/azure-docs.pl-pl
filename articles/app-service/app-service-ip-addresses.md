@@ -1,5 +1,5 @@
 ---
-title: Adresy IP w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Adresy IP ruchu przychodzącego/wychodzącego — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób przychodzących i wychodzących adresów IP adresy są używane w usłudze App Service i jak znaleźć informacje na ich temat dla aplikacji.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
-ms.openlocfilehash: 752f9d82afafaf7324c0c63c0d7377b952fe0716
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec18
+ms.openlocfilehash: cd7f8afabc6df208a187e80ac505ef52141cd62f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003150"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256795"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Przychodzące i wychodzące adresy IP w usłudze Azure App Service
 

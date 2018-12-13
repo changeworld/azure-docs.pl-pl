@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: d852919b762dd7350b74372acbbbcaa31f0a8f90
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ee46fd0b846bb2cf2ad3cd674417d598d0d08e2a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016678"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162906"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Łączenie programu Excel do platformy Apache Hadoop za pomocą dodatku Power Query
 Kluczowa funkcja klasy rozwiązania danych big data firmy Microsoft jest integracja składniki programu Microsoft business intelligence (BI) z klastrami Apache Hadoop w usłudze Azure HDInsight. Podstawowy przykład jest możliwość łączenia programu Excel z kontem usługi Azure Storage, która zawiera dane skojarzone z klastrem usługi Hadoop przy użyciu programu Microsoft Power Query dla dodatku programu Excel. W tym artykule przedstawiono sposób konfigurowania i używania dodatku Power Query przesyłać zapytania dotyczące danych skojarzonych z klastrem usługi Hadoop, zarządzane przy użyciu HDInsight.
@@ -52,9 +52,9 @@ Dodatek Power Query dla programu Excel można łatwo importować dane z klastra 
    
         ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
        
-        **Uwaga:** Jeśli nie widzisz **dodatku Power Query** przejdź do menu **pliku** > **opcje** > **Add-Ins**i wybierz **dodatki COM** z listy rozwijanej **Zarządzaj** u dołu strony. Wybierz **Przejdź...**  znajdujący się i sprawdź, czy zostało zaznaczone pole dla dodatku Power Query dla dodatku programu Excel.
+        **Uwaga:** Jeśli nie widzisz **dodatku Power Query** przejdź do menu **pliku** > **opcje** > **Add-Ins**i wybierz  **Dodatki COM** z listy rozwijanej **Zarządzaj** u dołu strony. Wybierz **Przejdź...**  znajdujący się i sprawdź, czy zostało zaznaczone pole dla dodatku Power Query dla dodatku programu Excel.
        
-        **Uwaga:** dodatku Power Query pozwala również na importowanie danych z systemu plików HDFS, klikając **z innych źródeł**.
+        **Uwaga:** Dodatku Power Query pozwala również na importowanie danych z systemu plików HDFS, klikając **z innych źródeł**.
 4. Aby uzyskać **nazwa konta**, wprowadź nazwę konta magazynu obiektów Blob platformy Azure skojarzony z klastrem, a następnie kliknij przycisk **OK**. To konto może być [domyślne konto magazynu](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account) lub połączone konto magazynu.  Format jest *https://&lt;StorageAccountName >.blob.core.windows.net/*.
 5. Aby uzyskać **klucz konta**, wprowadź klucz dla konta usługi Blob storage, a następnie kliknij przycisk **Zapisz**. (Należy wprowadzić czas informacji tylko pierwszy konta dostępu tego magazynu.)
 6. W **Nawigator** w okienku po lewej stronie edytora zapytań, kliknij dwukrotnie nazwę kontenera magazynu obiektów Blob. Domyślnie nazwa kontenera jest taką samą nazwę jak nazwa klastra.

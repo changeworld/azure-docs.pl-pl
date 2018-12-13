@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 2511a608a74a04314b5fd56a55f4ae93ca0e2978
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017478"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310440"
 ---
 # <a name="api-management-caching-policies"></a>Zasady buforowania usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -80,7 +80,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Przykład przy użyciu wyrażeń zasad  
- Ten przykład przedstawia sposób konfigurowania usługi API Management odpowiedzi czas trwania buforowania zgodną buforowanie odpowiedzi usługi wewnętrznej bazy danych określony przez usługę kopii `Cache-Control` dyrektywy. Demonstracyjne, konfigurowania i korzystania z tych zasad, zobacz [Cloud Cover odcinek 177: więcej funkcji zarządzania interfejsu API za pomocą Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) i szybkie przewijanie do przodu do 25:25.  
+ Ten przykład przedstawia sposób konfigurowania usługi API Management odpowiedzi czas trwania buforowania zgodną buforowanie odpowiedzi usługi wewnętrznej bazy danych określony przez usługę kopii `Cache-Control` dyrektywy. Demonstracyjne, konfigurowania i korzystania z tych zasad, zobacz [Cloud Cover odcinek 177: Więcej funkcji zarządzania interfejsu API za pomocą Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) i szybkie przewijanie do przodu do 25:25.  
   
 ```xml  
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
@@ -118,14 +118,14 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 | Preferencje pamięci podręcznej               | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
 | typ podrzędny dla pamięci podręcznej        | Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> -Brak — buforowanie podrzędnych nie jest dozwolone.<br />— prywatna — podrzędny prywatnej pamięci podręcznej jest dozwolone.<br />-publiczny — prywatny i udostępnianie podrzędnego buforowanie jest dozwolone.                                                                                                          | Nie       | brak              |
 | must-revalidate                | Gdy włączone jest buforowanie podrzędnych tego atrybutu Włącza lub wyłącza `must-revalidate` dyrektywa kontroli pamięci podręcznej w odpowiedziach bramy.                                                                                                                                                                                                                      | Nie       | true              |
-| różnią się przez deweloperów              | Ustaw `true` do pamięci podręcznej odpowiedzi na klucz dla deweloperów.                                                                                                                                                                                                                                                                                                         | Yes      |                   |
-| różnią się przez developer-groups       | Ustaw `true` do pamięci podręcznej odpowiedzi poszczególnych ról użytkownika.                                                                                                                                                                                                                                                                                                             | Yes      |                   |  
+| różnią się przez deweloperów              | Ustaw `true` do pamięci podręcznej odpowiedzi na [klucz subskrypcji](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions).                                                                                                                                                                                                                                                                                                         | Yes      |                   |
+| różnią się przez developer-groups       | Ustaw `true` do pamięci podręcznej odpowiedzi na [grupy użytkowników](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Yes      |                   |  
 
 ### <a name="usage"></a>Sposób użycia  
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Sekcje zasad:** dla ruchu przychodzącego  
--   **Zakresy zasad:** operacji interfejsu API, produktów  
+-   **Zakresy zasad:** Interfejs API operacji, produkt  
   
 ##  <a name="StoreToCache"></a> Store do pamięci podręcznej  
  `cache-store` Zasad buforuje odpowiedzi zgodnie z ustawieniami określonego pamięci podręcznej. Te zasady można stosować w przypadkach, gdzie zawartość odpowiedzi pozostaje statycznych w okresie czasu. Buforowanie odpowiedzi redukuje przepustowość i wymagań dotyczących przetwarzania nałożone na opóźnienie serwera i obniża sieci web zaplecza postrzegane przez konsumentów interfejsu API.  
@@ -159,7 +159,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Przykład przy użyciu wyrażeń zasad  
- Ten przykład przedstawia sposób konfigurowania usługi API Management odpowiedzi czas trwania buforowania zgodną buforowanie odpowiedzi usługi wewnętrznej bazy danych określony przez usługę kopii `Cache-Control` dyrektywy. Demonstracyjne, konfigurowania i korzystania z tych zasad, zobacz [Cloud Cover odcinek 177: więcej funkcji zarządzania interfejsu API za pomocą Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) i szybkie przewijanie do przodu do 25:25.  
+ Ten przykład przedstawia sposób konfigurowania usługi API Management odpowiedzi czas trwania buforowania zgodną buforowanie odpowiedzi usługi wewnętrznej bazy danych określony przez usługę kopii `Cache-Control` dyrektywy. Demonstracyjne, konfigurowania i korzystania z tych zasad, zobacz [Cloud Cover odcinek 177: Więcej funkcji zarządzania interfejsu API za pomocą Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) i szybkie przewijanie do przodu do 25:25.  
   
 ```xml  
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
@@ -197,7 +197,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Sekcje zasad:** ruchu wychodzącego    
--   **Zakresy zasad:** operacji interfejsu API, produktów  
+-   **Zakresy zasad:** Interfejs API operacji, produkt  
   
 ##  <a name="GetFromCacheByKey"></a> Pobiera wartość z pamięci podręcznej  
  Użyj `cache-lookup-value` zasady wykonują wyszukiwanie pamięci podręcznej według klucza i zwracają wartość w pamięci podręcznej. Klucz może mieć wartość dowolny ciąg i zazwyczaj znajduje się za pomocą wyrażenia zasad.  

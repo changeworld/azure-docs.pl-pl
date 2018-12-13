@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 426df541def0aa8d4d8b6a81a7364b32ee7f11dd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f3eb5cd62d24ea7251829aed8abba38415835023
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074716"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162821"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta usługi GitHub za pomocą usługi Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "53074716"
 > Ta funkcja jest dostępna w wersji zapoznawczej.
 > 
 
-Aby użyć konta usługi Github jako dostawcy tożsamości w usłudze Azure Active Directory (Azure AD) B2C, musisz utworzyć aplikację w dzierżawie, który go reprezentuje. Jeśli nie masz jeszcze konta usługi Github, możesz pobrać na stronie [ https://www.github.com/ ](https://www.github.com/).
+Aby użyć konta usługi GitHub jako dostawcy tożsamości w usłudze Azure Active Directory (Azure AD) B2C, musisz utworzyć aplikację w dzierżawie, który go reprezentuje. Jeśli nie masz jeszcze konta usługi GitHub, możesz pobrać na stronie [ https://www.github.com/ ](https://www.github.com/).
 
 ## <a name="create-a-github-oauth-application"></a>Tworzenie aplikacji OAuth usługi GitHub
 
@@ -40,7 +40,7 @@ Aby użyć konta usługi Github jako dostawcy tożsamości w usłudze Azure Acti
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
-5. Podaj **nazwa**. Na przykład, wprowadź *Github*.
-6. Wybierz **typ dostawcy tożsamości**, wybierz opcję **Github (wersja zapoznawcza)** i kliknij przycisk **OK**.
-7. Wybierz **skonfiguruj tego dostawcę tożsamości** i wprowadź identyfikator klienta, który wcześniej zarejestrowane jako **identyfikator klienta** i wprowadź klucz tajny klienta, które są rejestrowane jako **klucz tajny klienta**aplikacji konto usługi Github, która została utworzona wcześniej.
-8. Kliknij przycisk **OK** a następnie kliknij przycisk **Utwórz** można zapisać konfiguracji konta usługi Github.
+5. Podaj **nazwa**. Na przykład, wprowadź *GitHub*.
+6. Wybierz **typ dostawcy tożsamości**, wybierz opcję **GitHub (wersja zapoznawcza)** i kliknij przycisk **OK**.
+7. Wybierz **skonfiguruj tego dostawcę tożsamości** i wprowadź identyfikator klienta, który wcześniej zarejestrowane jako **identyfikator klienta** i wprowadź klucz tajny klienta, które są rejestrowane jako **klucz tajny klienta**aplikacji konto usługi GitHub, która została utworzona wcześniej.
+8. Kliknij przycisk **OK** a następnie kliknij przycisk **Utwórz** można zapisać konfiguracji konta usługi GitHub.

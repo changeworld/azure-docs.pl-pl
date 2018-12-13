@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 49f7e0b19f454e37e70774f3a675bd5094687114
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 686985c705b4026ccc26238fc5919296c98d5cb7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967082"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277526"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -104,7 +104,7 @@ Nie. Sieć wirtualna jest ograniczona do jednego regionu. Sieć wirtualna jednak
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Czy można połączyć sieć wirtualną z inną siecią wirtualną na platformie Azure?
 Tak. Jednej sieci wirtualnej można połączyć z inną siecią wirtualną za pomocą:
 - **Wirtualne sieci równorzędne**: Aby uzyskać więcej informacji, zobacz [Omówienie komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md)
-- **Bramy sieci VPN Azure**: Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+- **Usługi Azure VPN Gateway**: Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 ## <a name="name-resolution-dns"></a>Rozpoznawanie nazw (domen DNS)
 
@@ -137,12 +137,12 @@ Nie. Nie można określić niestandardowe sufiks DNS dla sieci wirtualnych.
 Tak. Wszystkie interfejsy sieciowe (NIC) dołączonych do maszyny Wirtualnej wdrożonej za pomocą modelu wdrażania usługi Resource Manager muszą być podłączone do sieci wirtualnej. Maszyny wirtualne wdrożone za pośrednictwem klasycznego modelu wdrażania można opcjonalnie połączyć z siecią wirtualną.
 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Jakie są różne typy adresów IP, które można przypisać do maszyn wirtualnych?
-* **Prywatne:** przypisane do poszczególnych kart Sieciowych w ramach każdej maszyny Wirtualnej. Adres jest przypisany, używając metody statyczne lub dynamiczne. Prywatne adresy IP są przypisywane z zakresu, który określono w ustawieniach podsieci sieci wirtualnej. Zasoby wdrożone za pośrednictwem klasycznego modelu wdrażania są przypisywane prywatnych adresów IP, nawet jeśli nie masz połączenia z siecią wirtualną. Zachowanie metody alokacji różni się w zależności od tego, czy zasób został wdrożony za pomocą usługi Resource Manager lub Klasyczny model wdrażania: 
+* **Prywatny:** Przypisane do poszczególnych kart Sieciowych w ramach każdej maszyny Wirtualnej. Adres jest przypisany, używając metody statyczne lub dynamiczne. Prywatne adresy IP są przypisywane z zakresu, który określono w ustawieniach podsieci sieci wirtualnej. Zasoby wdrożone za pośrednictwem klasycznego modelu wdrażania są przypisywane prywatnych adresów IP, nawet jeśli nie masz połączenia z siecią wirtualną. Zachowanie metody alokacji różni się w zależności od tego, czy zasób został wdrożony za pomocą usługi Resource Manager lub Klasyczny model wdrażania: 
 
-  - **Menedżer zasobów**: przypisany przy użyciu metody dynamiczny lub statyczny prywatny adres IP pozostanie przydzielony do maszyny wirtualnej (Resource Manager), aż do usunięcia zasobu. Różnica polega na, wybierz adres, który zostanie przypisany przy użyciu statycznej i wybierze platformy Azure, korzystając z dynamicznych. 
-  - **Klasyczne**: prywatnego adresu IP są przypisywane przy użyciu metody dynamiczne mogą ulec zmianie, gdy maszyna wirtualna (klasyczna) ponownego uruchomienia maszyny Wirtualnej po przejściu w stan zatrzymania (przydział zostanie cofnięty). Jeśli potrzebujesz upewnić się, że prywatny adres IP zasobu wdrożone za pośrednictwem klasycznego modelu wdrażania nigdy się nie zmienia, należy przypisać prywatny adres IP za pomocą metody statycznej.
+  - **Menedżer zasobów**: Przypisany przy użyciu metody dynamiczny lub statyczny prywatny adres IP pozostanie przydzielony do maszyny wirtualnej (Resource Manager), aż do usunięcia zasobu. Różnica polega na, wybierz adres, który zostanie przypisany przy użyciu statycznej i wybierze platformy Azure, korzystając z dynamicznych. 
+  - **Klasyczne**: Prywatny adres IP są przypisywane przy użyciu metody dynamicznej mogą ulec zmianie, gdy maszyna wirtualna (klasyczna) ponownego uruchomienia maszyny Wirtualnej po przejściu w stan zatrzymania (przydział zostanie cofnięty). Jeśli potrzebujesz upewnić się, że prywatny adres IP zasobu wdrożone za pośrednictwem klasycznego modelu wdrażania nigdy się nie zmienia, należy przypisać prywatny adres IP za pomocą metody statycznej.
 
-* **Public:** opcjonalnie przypisane do kart sieciowych dołączonych do maszyn wirtualnych wdrożonych za pomocą modelu wdrażania usługi Azure Resource Manager. Przy użyciu metody alokacji statycznej lub dynamicznej można przypisać adresu. Wszystkie maszyny wirtualne i usługi w chmurze wystąpień roli, wdrożone za pośrednictwem klasycznego modelu wdrażania istnieje w ramach usługi w chmurze, która jest przypisana *dynamiczne*, publiczny wirtualny adres IP (VIP). Publiczny *statyczne* adres IP, nazywany [zastrzeżony adres IP](virtual-networks-reserved-public-ip.md), opcjonalnie może być przypisany jako adres VIP. Publiczne adresy IP można przypisać do poszczególnych maszyn wirtualnych ani usług w chmurze wystąpień roli wdrożone za pośrednictwem klasycznego modelu wdrażania. Te adresy są nazywane [poziomu publicznego adresu IP wystąpienia (ILPIP](virtual-networks-instance-level-public-ip.md) adresów, a także mogą być przypisywane dynamicznie.
+* **Publiczny:** Opcjonalnie przypisać do kart sieciowych dołączonych do maszyn wirtualnych wdrożonych za pomocą modelu wdrażania usługi Azure Resource Manager. Przy użyciu metody alokacji statycznej lub dynamicznej można przypisać adresu. Wszystkie maszyny wirtualne i usługi w chmurze wystąpień roli, wdrożone za pośrednictwem klasycznego modelu wdrażania istnieje w ramach usługi w chmurze, która jest przypisana *dynamiczne*, publiczny wirtualny adres IP (VIP). Publiczny *statyczne* adres IP, nazywany [zastrzeżony adres IP](virtual-networks-reserved-public-ip.md), opcjonalnie może być przypisany jako adres VIP. Publiczne adresy IP można przypisać do poszczególnych maszyn wirtualnych ani usług w chmurze wystąpień roli wdrożone za pośrednictwem klasycznego modelu wdrażania. Te adresy są nazywane [poziomu publicznego adresu IP wystąpienia (ILPIP](virtual-networks-instance-level-public-ip.md) adresów, a także mogą być przypisywane dynamicznie.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Czy mogę zarezerwować prywatny adres IP dla maszyny Wirtualnej, która utworzy w późniejszym czasie?
 Nie. Nie można zarezerwować prywatny adres IP. Jeśli prywatny adres IP jest dostępna, jest przypisany do maszyny Wirtualnej lub wystąpienie roli przez serwer DHCP. Maszyna wirtualna może lub nie może być ten, który ma przypisany prywatny adres IP. Prywatny adres IP już utworzonej maszyny Wirtualnej, można jednak zmienić na dowolny dostępny prywatny adres IP.
@@ -326,7 +326,7 @@ Aby zabezpieczyć usługi platformy Azure w wielu podsieciach sieci wirtualnej l
 Jeśli chcesz sprawdzić lub filtrować ruch kierowany do usługi platformy Azure z sieci wirtualnej, możesz wdrożyć sieciowe urządzenie wirtualne w sieci wirtualnej. Punkty końcowe usługi mogą następnie zastosować do podsieci, gdzie wirtualne urządzenie sieciowe to zasoby wdrożone i bezpieczne usługi platformy Azure tylko do tej podsieci za pośrednictwem list ACL sieci wirtualnej. W tym scenariuszu może być również przydatne, jeśli chcesz ograniczyć dostęp do usługi platformy Azure z sieci wirtualnej tylko do określonych zasobów platformy Azure przy użyciu filtrowania sieciowych urządzeń wirtualnych. Aby uzyskać więcej informacji, zobacz [ruch wychodzący z sieciowych urządzeń wirtualnych](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co się stanie, gdy uzyskujesz dostęp do konta usługi platformy Azure z sieci wirtualnej listy kontroli dostępu (ACL) można włączyć spoza sieci wirtualnej?
-Jest zwracany błąd HTTP 404.
+Zwracany jest błąd 403 protokołu HTTP lub HTTP 404.
 
 ### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Czy na podsieci sieci wirtualnej utworzonej w różnych regionach, które mogą uzyskać dostęp do konta usługi platformy Azure w innym regionie? 
 Tak, dla większości usług platformy Azure, sieci wirtualnych utworzonych w różnych regionach mogą uzyskać dostęp do usług platformy Azure w innym regionie za pośrednictwem punktów końcowych usługi sieci wirtualnej. Na przykład jeśli konto usługi Azure Cosmos DB znajduje się w regionie zachodnie stany USA lub wschodnie stany USA i sieci wirtualne znajdują się w wielu regionach, sieci wirtualnej można uzyskać dostęp do usługi Azure Cosmos DB. Storage i SQL są wyjątki są regionalnych z natury i sieci wirtualnej i usługi platformy Azure muszą być w tym samym regionie.
@@ -366,7 +366,7 @@ Nie ma żadnego limitu całkowitej liczby punktów końcowych usługi sieci wirt
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Usługa Azure KeyVault|    128|
+|Usługa Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Centrum zdarzeń Azure|   128|
 |Azure Service Bus| 128|

@@ -4,10 +4,9 @@ description: Omówienie łatwych do zrozumienia podstawy uczenia maszyny zawiera
 keywords: podstawy uczenia maszyny, algorytmami, usługi machine learning dla początkujących, machine learning pytania, popularnych algorytmy, algorytm grafikę informacyjną
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodc18
+ms.author: garye
 editor: cgronlun
 ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
 ms.service: machine-learning
@@ -17,23 +16,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 610cc430170ac31832703b822e027f3dbdd053a2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: df628447a441d1580fa1a3862275f2b461f8d18a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093764"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275741"
 ---
-# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Grafika informacyjna do pobrania: podstawy uczenia maszynowego z przykładowymi algorytmami
+# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Grafika informacyjna do pobrania: Podstawy wraz z przykładami Algorytm uczenia maszynowego
 Pobierz to omówienie informacyjna łatwych do zrozumienia podstawy uczenia maszyny, aby dowiedzieć się więcej na temat popularnych algorytmów odpowiedzi na często zadawane pytania dotyczące machine learning. Algorytmami pomóc początkującym learning maszyny, zrozumieć, jakie algorytmy będzie używany wraz z ich używania.
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Popularne algorytmy w usłudze Machine Learning Studio
 [Usługa Azure Machine Learning Studio](https://studio.azureml.net/) jest dostarczany z dużej biblioteki algorytmów analizy predykcyjnej. Grafikę informacyjną identyfikuje czterech popularnych rodzin algorytmów — regresji, wykrywanie anomalii, klastrowania i klasyfikacji — i zawiera łącza do działających przykładów w [galerii Azure AI](https://gallery.cortanaintelligence.com/). Galeria zawiera przykładowych eksperymentów i samouczków, które pokazują, jak te algorytmy mogą być stosowane w przypadku wielu rozwiązań w rzeczywistych warunkach.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Pobierz grafikę informacyjną z algorytmami
-**[Pobieranie: Grafika informacyjna dotycząca programu machine learning podstawy wraz z łączami do algorytmami (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[Pobieranie: Grafika informacyjna o machine learning podstawy wraz z łączami do algorytmami (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![Grafika informacyjna: Podstawy uczenia maszynowego z algorytmami. Popularnych algorytmów. Machine learning dla początkujących.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Grafika informacyjna: Maszyna podstawy wraz z przykładami algorytmu uczenia. Popularnych algorytmów. Machine learning dla początkujących.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Więcej pomocy przy użyciu algorytmów dla początkujących i zaawansowanych użytkowników
 * Lepiej omówienie różnego rodzaju algorytmów uczenia maszynowego, sposób ich używania oraz sposobu wybierania właściwy dla danego rozwiązania, zobacz [jak wybór algorytmów dla usługi Microsoft Azure Machine Learning](algorithm-choice.md).
@@ -42,7 +41,7 @@ Pobierz to omówienie informacyjna łatwych do zrozumienia podstawy uczenia masz
 * Aby pobrać i wydrukować diagram, który zawiera przegląd możliwości usługi Machine Learning Studio, zobacz [Diagram przeglądowy możliwości usługi Azure Machine Learning Studio](studio-overview-diagram.md).
 * Omówienie Galeria sztucznej Inteligencji platformy Azure i wiele generowanych przez społeczność dostępnych zasobów, zobacz [udziału i odnajdywania zasobów w galerii Azure AI](gallery-how-to-use-contribute-publish.md).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <!-- Module References -->
 [a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx

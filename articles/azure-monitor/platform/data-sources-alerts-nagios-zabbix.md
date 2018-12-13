@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 32c8acb28eba0d5a19144e7c0f922f206976b6d0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 90e0f39b7c67866dbe5647f1392b766c91fa81ce
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833673"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188813"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Log Analytics z agenta usługi Log Analytics dla systemu Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -107,7 +105,7 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 | Typ |*Zgłoś alert* |
 | SourceSystem |*Zabbix* |
 | AlertName | Nazwa alertu. |
-| AlertPriority | Ważność alertu.<br><br>niesklasyfikowanych<br>Informacje o<br>ostrzeżenie<br>Średnia<br>Wysoka<br>po awarii  |
+| AlertPriority | Ważność alertu.<br><br>niesklasyfikowanych<br>informacje<br>ostrzeżenie<br>średnia<br>Wysoka<br>po awarii  |
 | AlertState | Stan alertu.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.  |
 | AlertTypeNumber | Określa, czy alert może wygenerować wiele zdarzeń problem.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.    |
 | Komentarze | Dodatkowe komentarze dla alertu. |

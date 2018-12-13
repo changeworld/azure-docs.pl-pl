@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 496a24f79cee1323077c357789628123d082ceac
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 16a392d83cc24aafc7a84b4fa4c50b752508d9c2
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716240"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53216001"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Biblioteka Microsoft Authentication Library (MSAL) umożliwia logowanie użytkownika
 
@@ -129,7 +129,7 @@ else {
 
 Po kliknięciu **Sign In** przycisku po raz pierwszy `signIn` wywołania metody `loginPopup` do logowania użytkownika. Ta metoda powoduje otwarcie okna podręcznego z *punktu końcowego v2.0 usługi Microsoft Azure Active Directory* Monituj i sprawdzanie poprawności poświadczeń użytkownika. W wyniku pomyślne logowanie, użytkownik jest przekierowany z powrotem do oryginalnego *index.html* strony i token odebraniu przetworzonych przez `msal.js` i informacje zawarte w tokenie są buforowane. Token ten jest znany jako *tokenu Identyfikacyjnego* i zawiera podstawowe informacje o użytkowniku, takie jak nazwa wyświetlana użytkownika. Jeśli planujesz użyć wszystkie dane udostępniane przez ten token do żadnych celów, musisz upewnij się, że token ten jest weryfikowane przez serwer wewnętrznej bazy danych w celu zagwarantowania, że token został wystawiony do prawidłowego użytkownika dla aplikacji.
 
-SPA wygenerowane przez ten przewodnik dotyczący wywołania `acquireTokenSilent` i/lub `acquireTokenPopup` uzyskania *token dostępu* umożliwia tworzenie zapytań dotyczących interfejsu API programu Microsoft Graph, aby uzyskać informacje o profilu użytkownika. Przykład sprawdza poprawność tokenu Identyfikatora, należy spojrzeć na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "przykładowe active-directory-javascript-singlepageapp-dotnet-webapi-v2 Github") ASP korzysta z przykładowej aplikacji w usłudze GitHub — przykład Interfejs API sieci web platformy .NET dla walidacji tokenów.
+SPA wygenerowane przez ten przewodnik dotyczący wywołania `acquireTokenSilent` i/lub `acquireTokenPopup` uzyskania *token dostępu* umożliwia tworzenie zapytań dotyczących interfejsu API programu Microsoft Graph, aby uzyskać informacje o profilu użytkownika. Przykład sprawdza poprawność tokenu Identyfikatora, należy spojrzeć na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "przykładowe active-directory-javascript-singlepageapp-dotnet-webapi-v2 GitHub") ASP korzysta z przykładowej aplikacji w usłudze GitHub — przykład Interfejs API sieci web platformy .NET dla walidacji tokenów.
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 

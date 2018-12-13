@@ -1,5 +1,5 @@
 ---
-title: Przykłady prostego zapytania usługi Azure Search | Dokumentacja firmy Microsoft
+title: Przykłady prostego zapytania — usługa Azure Search
 description: Przykłady prostego zapytania wyszukiwania pełnotekstowego, filtr wyszukiwania, wyszukiwanie geograficzne, wyszukiwanie aspektowe i inne ciągi zapytań, które umożliwia tworzenie zapytań względem indeksu usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 2d9e69a900f6665aa0ee3034cd6f9d7c394e8f0b
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.custom: seodec2018
+ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42057561"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316271"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Prosta składnia zapytań przykłady do tworzenia zapytań w usłudze Azure Search
 
@@ -202,7 +203,7 @@ Możesz również wypróbować to w narzędziu Postman przy użyciu GET:
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
-## <a name="example-6-search-precision"></a>Przykład 6: Wyszukiwanie dokładności
+## <a name="example-6-search-precision"></a>Przykład 6: Dokładność wyszukiwania
 
 Termin zapytania są pojedyncze terminy, może być wiele z nich, które zostaną ocenione niezależnie. Wyrażenie zapytania są ujęte w znaki cudzysłowu i jego ocenie jako ciąg verbatim. Dokładność dopasowania jest kontrolowana przez operatorów i searchMode.
 
@@ -224,7 +225,7 @@ Przykład 3: **`&search="fire department"`** zwraca wyniki 82. Otaczający ciąg
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>Przykład 7: Wartości logiczne, z searchMode
+## <a name="example-7-booleans-with-searchmode"></a>Przykład 7: Wartości logiczne z searchMode
 
 Prosta składnia obsługuje operatory logiczne w formie znaków (`+, -, |`). Parametr searchMode informuje kompromis między dokładności i odwołania, za pomocą `searchMode=any` favoring odwołania (dopasowywania dla dowolnego kryterium kwalifikuje się dokument w zestawie wyników), i `searchMode=all` favoring precyzji (wszystkie kryteria muszą się zgadzać). Wartość domyślna to `searchMode=any`, który mylące, jeśli są układania zapytania przy użyciu wielu operatorów i wprowadzenie szersze zamiast mniejszą niż wyniki. Jest to szczególnie istotne, z użyciem NOT, w którym wyniki obejmują wszystkie dokumenty "nie zawiera" konkretny termin.
 
@@ -243,7 +244,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```
   ![Tryb wyszukiwania wszystkie](media/search-query-simple-examples/searchmodeall.png)
 
-## <a name="example-8-structuring-results"></a>Przykład 8: Wyniki struktury
+## <a name="example-8-structuring-results"></a>Przykład 8: Tworzenie struktury wyników
 
 Kilka kontroli parametry, które pola są w wyszukiwaniu powoduje liczby zwracanych w każdej partii i porządek sortowania dokumentów. W tym przykładzie resurfaces kilka poprzednich przykładach ograniczania wyników określonych pól za pomocą **$select** instrukcji i kryteria wyszukiwania verbatim, zwracając 82 dopasowań 
 

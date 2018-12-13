@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 3c2a873514c7355cdf7fa08372e1e17409021d56
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3a538886b0137e1069af1fa680374b749a9b3f92
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081068"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165417"
 ---
-# <a name="phonenumber-entity"></a>Phonenumber, jednostka
+# <a name="phonenumber-prebuilt-entity-for-a-luis-app"></a>Numer telefonu wstępnie utworzone jednostki dla aplikacji usługi LUIS
 `phonenumber` Jednostki wyodrębnia różne numery telefonów, łącznie z kodem kraju. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład do aplikacji. `phonenumber` Jednostki jest obsługiwana w `en-us` tylko kultury. 
 
 ## <a name="types-of-phonenumber"></a>Typy numer telefonu
-Numer telefonu jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) repozytorium Github
+Numer telefonu jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) repozytorium GitHub
 
 ## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Rozpoznawanie phonenumber wstępnie utworzone jednostki
 W poniższym przykładzie pokazano rozdzielczość **builtin.phonenumber** jednostki.

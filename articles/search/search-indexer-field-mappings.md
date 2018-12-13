@@ -1,6 +1,6 @@
 ---
-title: Mapowania pól w indeksatorach usługi Azure Search
-description: Konfigurowanie mapowania pól indeksator usługi Azure Search na różnice nazw pól i reprezentacji danych
+title: Mapowania pól dla automatycznego indeksowania, przy użyciu indeksatorów — usługa Azure Search
+description: Skonfiguruj mapowania pól indeksator usługi Azure Search na różnice nazw pól i reprezentacji danych.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 01edc7001ec463cb16d8b6c715794b0028508143
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 94a7274c0e950661d118ad5421e7c763fe555434
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404728"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312701"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mapowania pól w indeksatorach usługi Azure Search
 Przy użyciu indeksatorów usługi Azure Search, może co pewien czas zaczniesz w sytuacjach, w którym dane wejściowe nie dość zgodny ze schematem indeksu docelowego. W takich przypadkach można użyć **mapowania pól** przekształcić dane w żądany kształt.
@@ -134,7 +135,7 @@ Jeśli nie określisz dowolny `parameters`, następnie wartość domyślną `use
 <a name="base64details"></a>
 
 ### <a name="details-of-base64-encoding-and-decoding"></a>Szczegóły base64, kodowania i dekodowania
-Usługa Azure Search obsługuje dwa kodowania base64: kodowanie base64 tokenu i bezpieczny adres URL adresu URL HttpServerUtility bez uzupełnień. Należy użyć z tym samym kodowaniem jako funkcji mapowania, aby kodowanie klucz dokumentu, aby się, Koduj wartość ma być zdekodowany, indeksator lub dekodowania pola zakodowany przez indeksator.
+Usługa Azure Search obsługuje dwa kodowania base64: Adres URL HttpServerUtility token i bezpieczny adres URL bez uzupełnień kodowania base64. Należy użyć z tym samym kodowaniem jako funkcji mapowania, aby kodowanie klucz dokumentu, aby się, Koduj wartość ma być zdekodowany, indeksator lub dekodowania pola zakodowany przez indeksator.
 
 Jeśli `useHttpServerUtilityUrlTokenEncode` lub `useHttpServerUtilityUrlTokenDecode` parametry w celu kodowania i dekodowania odpowiednio są ustawione na `true`, następnie `base64Encode` zachowuje się jak [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) i `base64Decode` zachowuje się jak [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 

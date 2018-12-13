@@ -14,26 +14,25 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 82a5ef86d1ca35cddb05cb4e126e64cc3759bcc0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 12ed395855b9d870f8f6e3564dc5b3b899b9c6c1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810289"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313874"
 ---
-<a name="troubleshooting-common-authentication-errors"></a>Rozwiązywanie problemów z typowych błędów uwierzytelniania
-------------------------------------------
+# <a name="troubleshooting-common-authentication-errors"></a>Rozwiązywanie problemów z typowych błędów uwierzytelniania
 
 Ten artykuł zawiera pomoc dotyczącą typowych błędów uwierzytelniania, korzystając z interfejsów API portalu dla partnerów chmury.
 
-### <a name="unauthorized-error"></a>Błąd dotyczący nieautoryzowanego dostępu
+## <a name="unauthorized-error"></a>Błąd dotyczący nieautoryzowanego dostępu
 
 Jeśli stale `401 unauthorized` błędy, sprawdź, czy masz token dostępu nie jest ważna.  Jeśli jeszcze tego nie zrobiono, tworzenie podstawowej aplikacji usługi Azure Active Directory (Azure AD) i jednostki usługi zgodnie z opisem w [w obsłudze portalu do utworzenia usługi Azure Active Directory aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Następnie użyj prostego żądania POST protokołu HTTP lub aplikacji, aby zweryfikować dostęp do usługi.  Będzie zawierać identyfikator dzierżawy, identyfikator aplikacji, identyfikator obiektu i klucz tajny, można uzyskać tokenu dostępu, jak pokazano na poniższej ilustracji:
 
 ![Rozwiązywanie problemów z błąd 401 — dostęp](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 
 
-### <a name="forbidden-error"></a>Błąd "niedozwolone"
+## <a name="forbidden-error"></a>Błąd "niedozwolone"
 
 Jeśli otrzymasz `403 forbidden` błąd, upewnij się, że do swojego konta wydawcy w portalu Cloud Partner dodano poprawną jednostką usługi.
 Postępuj zgodnie z instrukcjami w [wymagania wstępne](./cloud-partner-portal-api-prerequisites.md) stronę, aby dodać jednostki usługi do portalu.

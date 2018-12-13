@@ -1,6 +1,6 @@
 ---
-title: Dodawanie usługi Azure Search do magazynu obiektów Blob | Dokumentacja firmy Microsoft
-description: Tworzenie indeksu za pomocą kodu przy użyciu interfejsu API REST protokołu HTTP usługi Azure Search
+title: Dodaj wyszukiwanie pełnotekstowe w usłudze Azure Blob Storage — usługi Azure Search
+description: Zawartość tekstowa przeszukiwanie magazynu obiektów Blob platformy Azure na potrzeby usługi Azure Search indeksowanie, w kodzie przy użyciu interfejsu API REST protokołu HTTP.
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -8,12 +8,13 @@ ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
 ms.author: magottei
-ms.openlocfilehash: 4f8099bbd5af250e58441eb0e202d4674f0671fe
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 7bd7bcf66f0d91a87519a5d5bff7df7c73e2603f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403229"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310882"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Przeszukiwanie magazynu obiektów blob za pomocą usługi Azure Search
 

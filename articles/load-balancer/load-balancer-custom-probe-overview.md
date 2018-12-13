@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/04/2018
+ms.date: 12/11/2018
 ms.author: kumud
-ms.openlocfilehash: 89ceb6134d19354831a76f814d2ee55053252f62
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d3e0fd510968abed55e0e3fea2a8689027713a2b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083584"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310406"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -186,7 +186,7 @@ Oprócz sondy kondycji modułu równoważenia obciążenia ten adres IP użyty n
 - Włącza agenta maszyny wirtualnej do komunikowania się z platformą do sygnalizowania, że jest on w stanie "Gotowe"
 - Umożliwia komunikację z serwerem wirtualnym DNS, aby zapewnić rozpoznawanie nazw filtrowane do klientów, którzy nie zdefiniujesz niestandardowe serwery DNS.  Filtrowanie gwarantuje, że klienci tylko może rozpoznać nazwy hostów ich wdrożenia.
 
-Sondy kondycji modułu równoważenia obciążenia do oznaczania wystąpienie usługi możesz **musi** zezwolić na ten adres IP na dowolnej platformie Azure [grup zabezpieczeń](../virtual-network/security-overview.md) i zasady lokalne zapory.
+Sondy kondycji modułu równoważenia obciążenia do oznaczania wystąpienie usługi możesz **musi** zezwolić na ten adres IP na dowolnej platformie Azure [grup zabezpieczeń](../virtual-network/security-overview.md) i zasady lokalne zapory.  Domyślnie co sieciowa grupa zabezpieczeń zawiera [tag usługi](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer, aby zezwalać na ruch sondy kondycji.
 
 Jeśli w zasadach zapory nie zezwalaj na ten adres IP, sondy kondycji zakończy się niepowodzeniem, ponieważ nie można nawiązać połączenia z wystąpieniem usługi.  Z kolei modułu równoważenia obciążenia spowoduje oznaczenie dół wystąpienie usługi z powodu błędu sondy kondycji.  Może to spowodować niepowodzenie usługi równoważenia obciążenia. 
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: f9f26f14944986bc673a3b7529adb055ad16d058
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6a22a3dabf1aa71e0d092c4145523da9b0121c8c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003065"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322213"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Włączając diagnostykę platformy Azure w usługach Azure Cloud Services
 Zobacz [Omówienie diagnostyki Azure](../azure-diagnostics.md) w tle w usłudze Diagnostyka Azure.
@@ -38,8 +38,8 @@ W tym artykule założono, mieć subskrypcję platformy Azure i przy użyciu pro
 5. W **konfiguracji** karcie, usuń zaznaczenie **Włącz diagnostykę** wyłączyć Diagnostyka 1.0 (zestaw Azure SDK 2.4 lub starszej).
 6. Skompiluj rozwiązanie, aby sprawdzić, czy żadne błędy.
 
-### <a name="step-2-instrument-your-code"></a>Krok 2: Instrumentować swój kod
-Zastąp zawartość WorkerRole.cs następującym kodem. Odziedziczone po klasie SampleEventSourceWriter, [EventSource — klasa][EventSource Class], implementuje cztery metody rejestrowania: **SendEnums**, **MessageMethod** , **SetOther** i **HighFreq**. Pierwszy parametr **WriteEvent** Metoda określa identyfikator odpowiednie zdarzenie. Metoda Run implementuje nieskończoną pętlę, która wywołuje każdą z metod rejestrowania zaimplementowanych w **SampleEventSourceWriter** klasy co 10 sekund.
+### <a name="step-2-instrument-your-code"></a>Krok 2. Instrumentować swój kod
+Zastąp zawartość WorkerRole.cs następującym kodem. Odziedziczone po klasie SampleEventSourceWriter, [EventSource — klasa][EventSource Class], implementuje cztery metody rejestrowania: **SendEnums**, **MessageMethod**, **SetOther** i **HighFreq**. Pierwszy parametr **WriteEvent** Metoda określa identyfikator odpowiednie zdarzenie. Metoda Run implementuje nieskończoną pętlę, która wywołuje każdą z metod rejestrowania zaimplementowanych w **SampleEventSourceWriter** klasy co 10 sekund.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -122,7 +122,7 @@ namespace WorkerRole1
 ```
 
 
-### <a name="step-3-deploy-your-worker-role"></a>Krok 3: Wdrażanie swojej roli procesu roboczego
+### <a name="step-3-deploy-your-worker-role"></a>Krok 3. Wdrażanie swojej roli procesu roboczego
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -170,8 +170,8 @@ namespace WorkerRole1
 </PublicConfig>
 ```
 
-### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Krok 5: Instalowanie diagnostyki od Twojej roli procesu roboczego
-Polecenia cmdlet programu PowerShell do zarządzania diagnostyki w roli sieci web lub proces roboczy są: AzureServiceDiagnosticsExtension zestawu, Get-AzureServiceDiagnosticsExtension i Usuń AzureServiceDiagnosticsExtension.
+### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Krok 5: Zainstaluj diagnostyki na swojej roli procesu roboczego
+Polecenia cmdlet programu PowerShell do zarządzania diagnostyki w roli sieci web lub proces roboczy są: Zestaw AzureServiceDiagnosticsExtension Get AzureServiceDiagnosticsExtension i Remove AzureServiceDiagnosticsExtension.
 
 1. Otwórz program Azure PowerShell.
 2. Uruchom skrypt do zainstalowania diagnostyki na swojej roli procesu roboczego (Zastąp *StorageAccountKey* przy użyciu klucza konta magazynu dla konta usługi storage wadexample i *config_path* ze ścieżką do  *WadExample.xml* plików):
@@ -197,7 +197,7 @@ Plik konfiguracji diagnostyki definiuje wartości, które są stosowane do inicj
 Jeśli masz problemy, zobacz [Rozwiązywanie problemów z usługi Azure Diagnostics](../azure-diagnostics-troubleshooting.md) Pomoc dotycząca typowych problemów.
 
 ## <a name="next-steps"></a>Następne kroki
-[Wyświetlenie listy pokrewne artykuły diagnostyki maszyny wirtualnej platformy Azure](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) Aby zmienić dane są zbierane, rozwiązywanie problemów, lub Dowiedz się więcej o diagnostyce ogólnie rzecz biorąc.
+[Wyświetlenie listy pokrewne artykuły diagnostyki maszyny wirtualnej platformy Azure](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) Aby zmienić dane są zbierane, rozwiązywanie problemów, lub Dowiedz się więcej o diagnostyce ogólnie rzecz biorąc.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

@@ -1,5 +1,5 @@
 ---
-title: Odwołanie adnotacji w danych wejściowych i wyjściowych w usłudze wyszukiwania poznawczego potoku w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Dokumentacja wejściami i wyjściami, w cognitive Wyszukaj potoki — usługa Azure Search
 description: Opisano składnia adnotacji oraz odwołania do adnotacji w wejść i wyjść zestawu umiejętności w usłudze wyszukiwania poznawczego potoku w usłudze Azure Search.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 57fed710d7d58199fb3cb70640d1f2d3f316f180
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801951"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315834"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Jak odwoływać się do adnotacji w usłudze wyszukiwania poznawczego zestawu umiejętności
 
@@ -33,7 +34,7 @@ Przed zapoznaniem się składni, Wróćmy do kilku ważnych pojęć, aby lepiej 
 | Wzbogacanie kontekstu | Kontekst, w którym wzbogacanie ma miejsce, zgodnie z którą jest wzbogacony elementu. Domyślnie, jest kontekst wzbogacania `"/document"` poziomu, w zakresie do poszczególnych dokumentów. Podczas wykonywania umiejętności, dane wyjściowe stają się umiejętności [właściwości zdefiniowanych kontekstu](#example-2).|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>Przykład 1: Adnotacja proste odwołanie
+## <a name="example-1-simple-annotation-reference"></a>Przykład 1: Odwołanie proste adnotacji
 
 W usłudze Azure Blob storage Załóżmy, że mają różne pliki zawierające odwołania do nazw osób, które mają zostać wyodrębnione przy użyciu rozpoznawanie jednostek znaku. W poniższej definicji umiejętności `"/document/content"` jest tekstową reprezentację całego dokumentu, a "ludzie" wyodrębniania pełne nazwy dla jednostek zidentyfikowane jako osoby.
 
@@ -93,7 +94,7 @@ W przypadku tablic lub kolekcji ciągów adnotacji można pod kątem określonyc
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>Przykład 3: Odwoływać się do elementów członkowskich w tablicy
+## <a name="example-3-reference-members-within-an-array"></a>Przykład 3: Składowe odwołania w tablicy
 
 Czasami zachodzi potrzeba grupy wszystkie adnotacje konkretnego typu do przekazania ich do określonej umiejętności. Należy wziąć pod uwagę hipotetyczny umiejętności niestandardowe, która identyfikuje najbardziej typowe nazwisko ostatniej nazw wyodrębnionych w przykładzie 2. Aby zapewnić tylko nazwiska do niestandardowych umiejętności, określanie kontekstu jako `"/document"` i dane wejściowe jako `"/document/people/*/lastname"`.
 

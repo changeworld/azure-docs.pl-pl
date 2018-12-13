@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 27108d27ee27346e4cba44e6778faff56df70a36
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 455b2a70568566bff5b1ea4c185568a1758f7db3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495132"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274908"
 ---
 # <a name="sfctl-container"></a>sfctl container
 Uruchom kontener związane z poleceń w węźle klastra.
@@ -28,22 +28,22 @@ Uruchom kontener związane z poleceń w węźle klastra.
 
 |Polecenie|Opis|
 | --- | --- |
-| wywoływanie interfejsu api | Wywoływanie interfejsu API REST kontenera. |
-| dzienniki | Podczas pobierania dzienników kontenera. |
+| wywoływanie interfejsu api | Wywołania interfejsu API kontenera, do kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu. |
+| dzienniki | Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu. |
 
 ## <a name="sfctl-container-invoke-api"></a>Interfejs sfctl kontenera wywołania interfejsów api
-Wywoływanie interfejsu API REST kontenera.
+Wywołania interfejsu API kontenera, do kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. |
-| --Kod —-wystąpienie — identyfikator pakietu [wymagane] | Kod pakietu wystąpienia Identyfikatora, który można pobrać za "usługę kod —-lista pakietów". |
-| --Kod pakietu nazwa-[wymagane] | Nazwa pakietu kodu. |
+| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. <br><br> Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
+| --Kod —-wystąpienie — identyfikator pakietu [wymagane] | Identyfikator, który jednoznacznie identyfikuje wystąpienie pakietu kodu, wdrożone w węźle usługi Service fabric. <br><br> Mogą być pobierane przez "Usługa-pakietu — lista kodu". |
+| --Kod pakietu nazwa-[wymagane] | Nazwa pakietu kodu określonego w manifeście usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
 | --container-api ścieżka identyfikatora uri — [wymagane] | Ścieżka identyfikatora URI interfejsu API REST kontenera, użyj "{id}" zamiast identyfikatora nazwy kontenera. |
 | — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --service-manifest-name    [Required] | Nazwa manifestu usługi. |
+| --service-manifest-name    [Required] | Nazwa manifestu usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
 | --container api treści | Treść żądania HTTP dla kontenera interfejsu API REST. |
 | --container-api-content-type | Typ zawartości dla kontenera interfejsu API REST, wartość domyślna to "application/json". |
 | --container-api — — zlecenie http | Czasownik HTTP dla kontenera interfejsu API REST, wartość domyślna to GET. |
@@ -60,18 +60,18 @@ Wywoływanie interfejsu API REST kontenera.
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-container-logs"></a>Interfejs sfctl dzienników kontenera
-Podczas pobierania dzienników kontenera.
+Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. |
+| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. <br><br> Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
 | --Kod —-wystąpienie — identyfikator pakietu [wymagane] | Kod pakietu wystąpienia Identyfikatora, który można pobrać za "usługę kod —-lista pakietów". |
-| --Kod pakietu nazwa-[wymagane] | Nazwa pakietu kodu. |
+| --Kod pakietu nazwa-[wymagane] | Nazwa pakietu kodu określonego w manifeście usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
 | — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --service-manifest-name    [Required] | Nazwa manifestu usługi. |
-| --tail | Ta liczba wierszy dziennika należy zwracać tylko od końca dzienniki. Określ jako liczba całkowita lub wszystkie dane wyjściowe wszystkich wierszy dziennika. Domyślne ustawienia pozycji "all". |
+| --service-manifest-name    [Required] | Nazwa manifestu usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
+| --tail | Liczba wierszy do pokazania od końca dzienniki. Domyślna to 100. "wszystkie", aby wyświetlić pełne dzienniki. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne

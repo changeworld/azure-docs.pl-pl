@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/11/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 023df222ee2e9ca6af1398dd70767938e61c90b7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ea81cb52b8492e429903de15a9ff0156c91abae2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824113"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309590"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -30,7 +30,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
 - System Windows z systemem [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems). 
 - Włącz funkcję BitLocker w systemie Windows. Zobacz [jak włączyć funkcję BitLocker](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-- [Pobierz WAImportExport wersji 1](https://www.microsoft.com/en-us/download/details.aspx?id=42659) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexportv1`. Na przykład `C:\WaImportExportV1`.
+- [Pobierz WAImportExport wersji 1](https://aka.ms/waiev1) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexportv1`. Na przykład `C:\WaImportExportV1`.
 - Mieć konto FedEx/DHL w sprawie.  
     - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
     - Generowanie numer śledzenia, zadanie eksportu.
@@ -39,7 +39,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
         - [Utwórz konto FedEX](https://www.fedex.com/en-us/create-account.html), lub 
         - [Tworzenie konta przez firmę DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-prepare-the-drives"></a>Krok 1: Przygotowanie dysków
+## <a name="step-1-prepare-the-drives"></a>Krok 1. Przygotowywanie dysków
 
 W tym kroku generuje plik dziennika. Plik dziennika zawiera podstawowe informacje, takie jak numer seryjny dysku, klucz szyfrowania i szczegółów konta magazynu. 
 
@@ -79,7 +79,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
     > [!IMPORTANT]
     > - Wraz z pliku dziennika `<Journal file name>_DriveInfo_<Drive serial ID>.xml` plik również jest tworzony w tym samym folderze, w którym znajduje się narzędzie. Plik XML jest używany zamiast pliku dziennika, podczas tworzenia zadania, jeśli plik dziennika jest zbyt duży. 
 
-## <a name="step-2-create-an-import-job"></a>Krok 2: Tworzenie zadania importu
+## <a name="step-2-create-an-import-job"></a>Krok 2. Tworzenie zadania importu
 
 Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
@@ -129,7 +129,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
     ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives"></a>Krok 3: Dostarczaj dyski 
+## <a name="step-3-ship-the-drives"></a>Krok 3. Dostarczaj dyski 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
@@ -138,7 +138,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Sprawdzenie przekazywania danych na platformie Azure
+## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Weryfikowanie przekazania danych na platformę Azure
 
 Śledź zadania do zakończenia. Po zakończeniu zadania Sprawdź, czy danych został przekazany na platformę Azure. Usuń lokalne dane tylko w przypadku, gdy będziesz mieć pewność, że przekazywanie powiodło się.
 

@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 4255b70746eb1d307617a66714301fa7f8609a77
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5726444033d8da14c213918f409ddf5875e026b9
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634272"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322759"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
 Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych z systemem Microsoft Windows i Linux hostowanych na platformie Azure, centrum danych lub innych dostawców rozwiązań w chmurze. Są trzy typy dostępnych do monitorowania maszyn wirtualnych agentów:
@@ -31,7 +30,7 @@ Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z masz
 W tym artykule opisano różnice między nimi i ich funkcje w kolejności, w celu ustalenia, który z nich będzie obsługiwać Twoje zarządzania usługami IT lub ogólnych wymagań dotyczących monitorowania.  
 
 ## <a name="azure-diagnostic-extension"></a>Rozszerzenie diagnostyki platformy Azure
-[Rozszerzenia diagnostyki Azure](../../monitoring-and-diagnostics/azure-diagnostics.md) (często nazywany rozszerzenia diagnostyki Azure Windows (WAD) lub diagnostyki Azure Linux (LAD)), które podano dla usług Azure Cloud Services, ponieważ stały się ogólnie dostępna w 2010 r. jest agent, który dostarcza proste zbierania danych diagnostycznych z zasób obliczeniowy platformy Azure, takich jak maszyny Wirtualnej i utrzymują się do usługi Azure storage. Gdy w usłudze storage została wybrana opcja wyświetlania przy użyciu jednego z kilku dostępnych narzędzi, takich jak [Eksploratora serwera w programie Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) i [Eksploratora usługi Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
+[Rozszerzenia diagnostyki Azure](../../azure-monitor/platform/diagnostics-extension-overview.md) (często nazywany rozszerzenia diagnostyki Azure Windows (WAD) lub diagnostyki Azure Linux (LAD)), które podano dla usług Azure Cloud Services, ponieważ stały się ogólnie dostępna w 2010 r. jest agent, który dostarcza proste zbierania danych diagnostycznych z zasób obliczeniowy platformy Azure, takich jak maszyny Wirtualnej i utrzymują się do usługi Azure storage. Gdy w usłudze storage została wybrana opcja wyświetlania przy użyciu jednego z kilku dostępnych narzędzi, takich jak [Eksploratora serwera w programie Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) i [Eksploratora usługi Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Istnieje możliwość zbierania:
 
@@ -46,7 +45,7 @@ Jeśli chcesz, należy użyć agenta funkcji Diagnostyka Azure:
 
 * Archiwizowanie dzienników i metryk do usługi Azure storage
 * Zintegruj dane monitorowania z narzędziami innych firm. Te narzędzia korzystają z różnych metod, w tym konto magazynu, przesyłane dalej do kwerendy [usługi Event Hubs](../../event-hubs/event-hubs-about.md), lub wykonywanie zapytań za pomocą [interfejsu API REST monitorowania platformy Azure](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
-* Przekazywanie danych do usługi Azure Monitor, tworzenie wykresów metryki w witrynie Azure portal lub utworzyć w czasie zbliżonym do rzeczywistego [alertów dotyczących metryk](../../monitoring-and-diagnostics/alert-metric-overview.md). 
+* Przekazywanie danych do usługi Azure Monitor, tworzenie wykresów metryki w witrynie Azure portal lub utworzyć w czasie zbliżonym do rzeczywistego [alertów dotyczących metryk](../../azure-monitor/platform/alerts-metric-overview.md). 
 * Zestawy skalowania maszyn wirtualnych skalowania automatycznego i klasycznej usługi w chmurze w oparciu metryki systemu operacyjnego gościa.
 * Badanie problemów dotyczących rozruchu maszyny Wirtualnej za pomocą [diagnostyki rozruchu](../../virtual-machines/troubleshooting/boot-diagnostics.md).
 * Zrozumienie, jak działają Twoje aplikacje i aktywnie identyfikuje problemów wpływających na ich za pomocą [usługi Application Insights](../../azure-monitor/overview.md).

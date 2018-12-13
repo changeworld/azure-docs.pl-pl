@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 20d076e256143683b52cfaa713e25e4d31f0f3d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3e6064b4c202c36e4b63d6e06edfbf3149f6665f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098699"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139874"
 ---
 # <a name="add-intents"></a>Dodawanie intencji 
 
@@ -58,7 +58,7 @@ Przykład wypowiedzi są przykładami tekst pytania użytkownika lub poleceń. A
 
 Wypowiedź w intencji może być rozbieżności intencji prognozowania metodę konwersji i ocenianie prognozy. Usługa LUIS wskazuje tę rozbieżność z czerwoną otoczkę wokół pozycji **etykietą intencji** w wierszu wypowiedź przykładu. 
 
-![Strona Szczegóły zrzut ekranu z opcjami, z wyróżnioną pozycją wypowiedź](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+![Strona Szczegóły zrzut ekranu z opcjami, z błędami rozbieżność prognozowania wypowiedź](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
 W górnym menu nawigacyjnym wybierz **Train**. Niezgodność Prognozowanie jest teraz usunięte.
 
@@ -107,7 +107,7 @@ Następujące akcje można wykonać na poszczególnych wypowiedź z menu wielokr
 
 * Edytuj: Zmień tekst wypowiedź
 * Usuń: Usuń wypowiedź z zamiarem. Jeśli chcesz nadal wypowiedź, lepszą metodą jest przenieść ją do **Brak** intencji. 
-* Dodawanie wzorca: wzorzec pozwala wykonać typowe wypowiedź i oznaczyć wymienne tekst i tekstu można zignorować, zmniejszając potrzebę więcej wypowiedzi w celu. 
+* Dodawanie wzorca: Wzorzec umożliwia możesz swobodnie wspólnej wypowiedź oznaczyć wymienne tekst i tekstu można zignorować, zmniejszając potrzebę więcej wypowiedzi w intencji. 
 
 **Etykietą intencji** kolumny pozwala zmienić opcje wypowiedź.
 

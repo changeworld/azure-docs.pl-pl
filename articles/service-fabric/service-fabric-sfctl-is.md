@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 53e49099fd3486d51f021528c9354cf32f4952d2
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: abc1e835fa153fc5d061cca5a3eb009931240332
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492793"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276336"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Zapytania i wysyłanie poleceń do usługi infrastruktury.
@@ -41,7 +41,7 @@ W przypadku klastrów, które mają co najmniej jedno wystąpienie usługi infra
 |Argument|Opis|
 | --- | --- |
 | — polecenie [wymagane] | Tekst polecenia do wywołania. Zawartość polecenia jest specyficzne dla infrastruktury. |
-| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez "sieci szkieletowej" schemat identyfikatora URI. Ten parametr jest wymagane tylko dla klastra który zawiera więcej niż jedno wystąpienie infrastruktury usługa jest uruchomiona. |
+| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez "Service fabric\:" schemat identyfikatora URI. Ten parametr jest wymagane tylko dla klastra który zawiera więcej niż jedno wystąpienie infrastruktury usługa jest uruchomiona. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne

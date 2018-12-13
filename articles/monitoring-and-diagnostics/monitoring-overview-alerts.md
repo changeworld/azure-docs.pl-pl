@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 9340c5a70ac652f1cf0a8b0cddce8488e0a62eee
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: d86e543da5c7000f0140c1b6e53674a0fd22b0e4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978873"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194134"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów na platformie Microsoft Azure 
 
@@ -52,7 +52,7 @@ Dostępne są następujące atrybuty klucza regułę alertu:
 
 **Ważność** — ważność alertu, gdy są spełnione kryteria określone w regule alertu. Ważność może wynosić od 0 do 4.
 
-**Akcja** — określonych działań po wyzwoleniu alertu. Aby uzyskać więcej informacji, zobacz [grup akcji](monitoring-action-groups.md).
+**Akcja** — określonych działań po wyzwoleniu alertu. Aby uzyskać więcej informacji, zobacz [grup akcji](../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Co można alert dla
 
@@ -122,7 +122,7 @@ Utworzysz nową regułę alertu z trzech kroków:
  
 To uproszczony proces tworzenia pakietów administracyjnych nie wymaga już znajomości źródło monitorowania lub sygnałów, które są obsługiwane przed wybraniem zasobu platformy Azure. Lista sygnałów dostępnych automatycznie zostanie odfiltrowana według zasobu docelowego, który wybierzesz. Również na podstawie których platformą docelową, zapoznasz się automatycznie Definiowanie logiki reguły alertu.  
 
-Dowiedz się więcej na temat sposobu tworzenia reguły alertów w [Utwórz, Wyświetl, alerty i zarządzaj nimi przy użyciu usługi Azure Monitor](alert-metric.md).
+Dowiedz się więcej na temat sposobu tworzenia reguły alertów w [Utwórz, Wyświetl, alerty i zarządzaj nimi przy użyciu usługi Azure Monitor](../azure-monitor/platform/alerts-metric.md).
 
 Alerty są dostępne przez kilka usługi monitorowania platformy Azure. Aby uzyskać informacje o tym, jak i kiedy należy używać każdego z tych usług, zobacz [monitorowania platformy Azure, aplikacje i zasoby](../azure-monitor/overview.md). Poniższa tabela zawiera listę typów reguł alertów, które są dostępne na platformie Azure. Zawiera również listę co to jest obecnie obsługiwany w jakiego środowiska korzystania z alertu.
 
@@ -130,7 +130,7 @@ Usługi Azure Monitor, Application Insights, Log Analytics i kondycji usług mia
 
 | **Źródło monitora** | **Typ sygnału**  | **Opis** | 
 |-------------|----------------|-------------|
-| Kondycja usługi | Dziennik aktywności  | Nieobsługiwane. Zobacz [Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](monitoring-activity-log-alerts-on-service-notifications.md).  |
+| Kondycja usługi | Dziennik aktywności  | Nieobsługiwane. Zobacz [Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
 | Application Insights | Testy dostępności sieci Web | Nieobsługiwane. Zobacz [alerty testu internetowego](../application-insights/app-insights-monitor-web-app-availability.md). Dostępne w dowolnej witrynie sieci Web, który został zinstrumentowany na wysyłanie danych do usługi Application Insights. Otrzymuj powiadomienie, gdy dostępności i czasu odpowiedzi witryny sieci Web znajduje się poniżej oczekiwania. |
 
 
@@ -174,13 +174,13 @@ Strona szczegółów alertu zawiera następujące sekcje.
 
 Usługi Azure Monitor metryki i dziennika działań alerty możliwości przed czerwca 2018 r. nosi nazwę "Alerty (klasyczne)". 
 
-Aby uzyskać więcej informacji, zobacz [alerty klasyczne](./monitoring-overview-alerts-classic.md)
+Aby uzyskać więcej informacji, zobacz [alerty klasyczne](./../azure-monitor/platform/alerts-classic.overview.md)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Dowiedz się więcej na temat inteligentnych grup](https://aka.ms/smart-groups)
-- [Dowiedz się więcej o grupach akcji](monitoring-action-groups.md)
+- [Dowiedz się więcej o grupach akcji](../azure-monitor/platform/action-groups.md)
 - [Zarządzanie wystąpieniami alertów na platformie Azure](https://aka.ms/managing-alert-instances)
 - [Zarządzanie grupami inteligentne](https://aka.ms/managing-smart-groups)
 

@@ -1,19 +1,20 @@
 ---
-title: Rozwiązywanie problemów przy użyciu planów usługi Azure
+title: Rozwiązywanie typowych problemów
 description: Dowiedz się, jak rozwiązywać problemy dotyczące tworzenia i przypisywania plany
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/25/2018
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b910f90e70af4ce6d4243c06bfe5bd03d25d74d6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 40668fed2fcc2a04e39fa3a4d7e8e8923c75ae05
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092938"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315531"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów przy użyciu planów usługi Azure
 
@@ -23,7 +24,7 @@ Mogą występować błędy podczas tworzenia lub przypisywanie schematy. W tym a
 
 Wiele błędów będzie wynik przypisanie planu do zakresu. Jeśli przypisanie zakończy się niepowodzeniem, planu zawiera szczegółowe informacje o wdrożenie nie powiodło się. Te informacje wskazują problem, aby można było usunąć i dalej wdrożenie zakończy się pomyślnie.
 
-1. Kliknij pozycję **wszystkich usług** wyszukiwanie i wybieranie **zasad** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
 
 1. Wybierz **przypisane plany** ze strony po lewej stronie i stosowania pole wyszukiwania, aby filtrować przypisań planu można znaleźć przypisania nie powiodło się. Możesz również sortować tabelę przypisania według **stan inicjowania obsługi** kolumny, aby wyświetlić wszystkie nieudane przypisania zgrupowane.
 

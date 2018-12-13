@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: d938b8a7551f77f00b7c18421f07972a508f21ef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c95c40404bb52f739c407eca3c0d48be5e0a86e6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020233"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262439"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano konfiguracje dla pamięci podręcznej Azure dla wystąpienia usługi Redis. W tym temacie omówiono również domyślne Redis konfiguracji serwera dla usługi Azure Cache do wystąpienia usługi Redis.
@@ -46,7 +46,7 @@ Można wyświetlić i skonfigurować następujące ustawienia przy użyciu **Men
 * [Ustawienia](#settings)
     * [Klucze dostępu](#access-keys)
     * [Ustawienia zaawansowane](#advanced-settings)
-    * [Pamięć podręczna systemu Azure dla usługi redis Cache Advisor](#redis-cache-advisor)
+    * [Pamięć podręczna systemu Azure dla usługi redis Cache Advisor](#azure-cache-for-redis-advisor)
     * [Skalowanie](#scale)
     * [Rozmiar klastra redis](#cluster-size)
     * [Trwałość danych Redis](#redis-data-persistence)
@@ -98,7 +98,7 @@ Kliknij przycisk **diagnozowanie i rozwiązywanie problemów** dostarczanych z n
 
 * [Klucze dostępu](#access-keys)
 * [Ustawienia zaawansowane](#advanced-settings)
-* [Pamięć podręczna systemu Azure dla usługi redis Cache Advisor](#redis-cache-advisor)
+* [Pamięć podręczna systemu Azure dla usługi redis Cache Advisor](#azure-cache-for-redis-advisor)
 * [Skalowanie](#scale)
 * [Rozmiar klastra redis](#cluster-size)
 * [Trwałość danych Redis](#redis-data-persistence)
@@ -480,7 +480,7 @@ Można bezpiecznie wysyłać polecenia do wystąpienia pamięci podręcznej Redi
 
 > [!IMPORTANT]
 > - Konsolę pamięci podręcznej Redis nie działa z [sieci Wirtualnej](cache-how-to-premium-vnet.md). Gdy pamięć podręczna jest częścią sieci Wirtualnej, tylko klienci w sieci Wirtualnej można uzyskać dostęp do pamięci podręcznej. Ponieważ konsolę pamięci podręcznej Redis działa w przeglądarce lokalnego znajduje się poza siecią Wirtualną, nie można połączyć pamięci podręcznej.
-> - Nie wszystkie polecenia usługi Redis są obsługiwane w pamięci podręcznej Azure dla usługi Redis. Aby uzyskać listę poleceń pamięci podręcznej Redis, które są wyłączone dla usługi Azure Cache dla pamięci podręcznej Redis, zobacz poprzedni [polecenia nie są obsługiwane w usłudze Azure Cache, dla usługi Redis Redis](#redis-commands-not-supported-in-azure-redis-cache) sekcji. Aby uzyskać więcej informacji na temat polecenia Redis zobacz [ http://redis.io/commands ](http://redis.io/commands).
+> - Nie wszystkie polecenia usługi Redis są obsługiwane w pamięci podręcznej Azure dla usługi Redis. Aby uzyskać listę poleceń pamięci podręcznej Redis, które są wyłączone dla usługi Azure Cache dla pamięci podręcznej Redis, zobacz poprzedni [polecenia nie są obsługiwane w usłudze Azure Cache, dla usługi Redis Redis](#redis-commands-not-supported-in-azure-cache-for-redis) sekcji. Aby uzyskać więcej informacji na temat polecenia Redis zobacz [ http://redis.io/commands ](http://redis.io/commands).
 > 
 > 
 

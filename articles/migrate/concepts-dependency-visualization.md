@@ -4,18 +4,21 @@ description: Zawiera omówienie obliczenia dotyczące oceny usługi Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9cbb1f080b9a5a98984ad48854bccc4fb2044c16
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 88dcc7110acaf42243d0ebb3c1ae25aa6d0bca46
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998351"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257978"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
 [Usługi Azure Migrate](migrate-overview.md) ocenia grupy maszyn lokalnych do migracji na platformę Azure. Skorzystać z funkcji wizualizacji zależności w usłudze Azure Migrate, aby utworzyć grupy. Ten artykuł zawiera informacje o tej funkcji.
+
+> [!NOTE]
+> Funkcji wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
 ## <a name="overview"></a>Przegląd
 

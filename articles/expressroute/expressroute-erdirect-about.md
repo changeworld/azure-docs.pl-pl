@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 2310f007697cf1acbdbc907d4562853a2717eb5d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2f984eb8cb09e5d65c4a366b827f695c739003f3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097128"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163831"
 ---
 # <a name="about-expressroute-direct-preview"></a>Temat usługi ExpressRoute bezpośrednie (wersja zapoznawcza)
 
-Umożliwia bezpośrednie ExpressRoute podłączone bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Bezpośrednie ExpressRoute zapewnia łączność podwójną 100 GB, obsługująca łączność aktywny/aktywny na dużą skalę.
+Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Bezpośrednie ExpressRoute zapewnia łączność podwójną 100 GB, obsługująca łączność aktywny/aktywny na dużą skalę.
 
 Najważniejsze funkcje, które zapewnia usługi ExpressRoute bezpośrednio obejmują, ale nie są ograniczone do:
 
 * Masywne pozyskiwanie danych do usług, takich jak Storage i Cosmos DB
-* Fizyczne odizolowanie dla przedsiębiorstw, które są regulowane i wymagają w wersji dedykowanej i izolowany łączności, takich jak: bankowe dla instytucji rządowych i handlu detalicznego
+* Fizyczne odizolowanie dla przedsiębiorstw, które są regulowane i wymagają dedykowanej i odizolowanej łączności, takich jak: Bankowość, instytucji rządowych i handlu detalicznego
 * Pełna kontrola nad rozmieszczeniem obwodów na podstawie jednostek biznesowych
 
 > [!IMPORTANT]

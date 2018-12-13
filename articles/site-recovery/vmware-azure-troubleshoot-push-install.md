@@ -6,19 +6,20 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 11/27/2018
-ms.openlocfilehash: b3e2beb0245fa790dc60cf742d6ad8938de187f4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/12/2018
+ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832585"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314401"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
-Instalacja usługi mobilności jest krokiem podczas włączania replikacji. Powodzenie ten krok zależy wyłącznie spełnienie wymagań wstępnych i pracą z nimi przy użyciu obsługiwanych konfiguracji. Najbardziej typowe błędy, stosowanych podczas instalacji usługi mobilności są ze względu na
+Instalacja usługi mobilności jest krokiem podczas włączania replikacji. Powodzenie ten krok zależy wyłącznie spełnienie wymagań wstępnych i pracą z nimi przy użyciu obsługiwanych konfiguracji. Są najbardziej typowych błędów, stosowanych podczas instalacji usługi mobilności ze względu na:
 
 * Poświadczenie/uprawnień błędy
+* Niepowodzenia logowania
 * Błędy związane z łącznością
 * Nieobsługiwanych systemów operacyjnych
 * Błędy instalacji usługi VSS
@@ -28,23 +29,63 @@ Po włączeniu replikacji usługa Azure Site Recovery próbuje wypchnąć zainst
 ## <a name="credentials-check-errorid-95107--95108"></a>Sprawdź poświadczenia (identyfikator błędu: 95107 & 95108)
 
 * Sprawdź, czy konto użytkownika podczas. Włączanie replikacji **prawidłowy, dokładne**.
-* Usługa Azure Site Recovery wymaga **uprawnienie administratora** do przeprowadzenia instalacji wypychanej.
-  * Windows, sprawdź, czy konto użytkownika ma dostęp administracyjny lokalnego lub domeny, na maszynie źródłowej.
+* Usługa Azure Site Recovery wymaga **głównego** konto lub konto użytkownika za pomocą **uprawnień administratora** do przeprowadzenia instalacji wypychanej. W przeciwnym wypadku zostanie zablokowane instalację wypychaną na maszynie źródłowej.
+  * For Windows (**błąd 95107**), sprawdź, czy konto użytkownika ma dostęp administracyjny lokalnego lub domeny, na maszynie źródłowej.
   * Jeśli nie używasz konta domeny, należy wyłączyć kontrolę dostępu użytkowników zdalnych na komputerze lokalnym.
     * Aby wyłączyć kontrolę dostępu użytkowników zdalnych, w kluczu rejestru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Dodaj nową wartość typu DWORD: LocalAccountTokenFilterPolicy. Ustaw wartość na 1. Aby wykonać ten krok, uruchom następujące polecenie w wierszu polecenia:
 
          `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
-  * Dla systemu Linux musisz wybrać konto główne dla pomyślnej instalacji agenta mobilności.
+  * Dla systemu Linux (**błąd 95108**), musisz wybrać konto główne dla pomyślnej instalacji agenta mobilności. Ponadto usługi SFTP powinny być uruchomione. Aby włączyć SFTP podsystem i uwierzytelnianie hasłem w pliku sshd_config:
+    1. Zaloguj się jako użytkownik główny.
+    2. Przejdź do pliku /etc/ssh/sshd_config i znajdź wiersz, który rozpoczyna się od PasswordAuthentication.
+    3. Usuń znaczniki komentarza i zmień wartość na Tak.
+    4. Znajdź wiersz, który rozpoczyna się od podsystemu, a następnie usuń znaczniki komentarza.
+    5. Uruchom ponownie usługę sshd.
 
 Jeśli chcesz zmodyfikować poświadczeń konta wybranego użytkownika, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="connectivity-check-errorid-95117--97118"></a>**Sprawdzenie łączności (identyfikator błędu: 95117 & 97118)**
+## <a name="insufficient-privileges-failure-errorid-95517"></a>Niewystarczające uprawnienia błąd (identyfikator błędu: 95517)
+
+Po użytkownik, o których zainstalowano agenta mobilności nie ma uprawnień administratora, konfiguracji proces serwera/skalowalnego w poziomie serwer nie może skopiować oprogramowanie agenta mobilności na maszynie źródłowej. Tak ten błąd jest wynikiem błędu odmowy dostępu. Upewnij się, że konto użytkownika ma uprawnienia administratora.
+
+Jeśli chcesz zmodyfikować poświadczeń konta wybranego użytkownika, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+
+## <a name="insufficient-privileges-failure-errorid-95518"></a>Niewystarczające uprawnienia błąd (identyfikator błędu: 95518)
+
+Ustanowienia relacji zaufania domeny, między domeny głównej i stacji roboczej zakończy się niepowodzeniem podczas próby logowania do maszyny źródłowej, instalacji agenta mobilności nie powiedzie się o identyfikatorze błędu 95518. Dlatego upewnij się, że konto użytkownika używane do instalowania agenta mobilności ma uprawnienia administracyjne, aby zalogować się przy użyciu domeny podstawowej maszyny źródłowej.
+
+Jeśli chcesz zmodyfikować poświadczeń konta wybranego użytkownika, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+
+## <a name="login-failure-errorid-95519"></a>Błąd logowania (identyfikator błędu: 95519)
+
+Wyłączono konto użytkownika, podczas włączania replikacji. Aby włączyć konto użytkownika, można znaleźć w artykule [tutaj](https://aka.ms/enable_login_user) lub uruchom następujące polecenie, zastępując tekst *username* nazwą rzeczywistego użytkownika.
+`net user 'username' /active:yes`
+
+## <a name="login-failure-errorid-95520"></a>Błąd logowania (identyfikator błędu: 95520)
+
+Wiele zakończonych niepowodzeniem ponownych prób działań mających na celu dostęp maszyny zostanie zablokowane konta użytkownika. Błędu mogą być następujące:
+
+* Poświadczenia podane podczas instalacji konfiguracji są nieprawidłowe lub
+* Konto użytkownika, podczas włączania replikacji jest nieprawidłowy
+
+Dlatego modyfikować poświadczeń wybranego przez zgodnie z instrukcjami [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) i spróbuj ponownie wykonać operację po pewnym czasie.
+
+## <a name="login-failure-errorid-95521"></a>Błąd logowania (identyfikator błędu: 95521)
+
+Ten błąd występuje, gdy serwerów logowania nie są dostępne na maszynie źródłowej. Niedostępności serwerów logowania doprowadzi do błędu żądanie logowania i w związku z tym nie można zainstalować agenta mobilności. Pomyślne logowanie upewnij się, że serwery logowania są dostępne na maszynie źródłowej, a następnie uruchom usługę logowania. Aby uzyskać szczegółowe instrukcje, kliknij przycisk [tutaj](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
+
+## <a name="login-failure-errorid-95522"></a>Błąd logowania (identyfikator błędu: 95522)
+
+Usługa logowania nie jest uruchomiona na maszynie źródłowej i powodowała błąd żądanie logowania. Dlatego nie można zainstalować agenta mobilności. Aby rozwiązać problem, upewnij się, że usługa logowania jest uruchomiona na maszynie źródłowej dla pomyślnego logowania. Aby uruchomić usługę logowania, uruchom polecenie "net start logowania" w wierszu polecenia lub uruchom usługę "NetLogon" z poziomu Menedżera zadań.
+
+## <a name="connectivity-failure-errorid-95117--97118"></a>**Błąd łączności (identyfikator błędu: 95117 & 97118)**
+
+Serwer konfiguracji / serwera przetwarzania skalowalnego w poziomie próbuje połączyć się ze źródłem maszynę Wirtualną, aby zainstalować agenta mobilności. Ten błąd występuje, gdy maszyna źródłowa jest nieosiągalna ze względu na problemy z połączeniem sieciowym. Aby rozwiązać problem,
 
 * Upewnij się, że możesz wysłać polecenie ping do komputera źródłowego z serwera konfiguracji. Jeśli serwera przetwarzania skalowalnego w poziomie zostały wybrane podczas. Włączanie replikacji, upewnij się, że jesteś w stanie wysłać polecenie ping z serwera przetwarzania maszyna źródłowa.
   * Z wiersza polecenia komputera serwera źródłowego, użyj Telnet, aby wykonać polecenie ping do serwera konfiguracji / skalowalny w poziomie serwera przetwarzania za pomocą portu https (135), jak pokazano poniżej, aby zobaczyć, jeśli istnieją problemy z połączeniem sieciowym lub problemy z blokowaniem portów zapory.
 
      `telnet <CS/ scale-out PS IP address> <135>`
-  * Sprawdź stan usługi **InMage Scout VX Agent — Sentinel/Outpost**. Uruchom usługę, jeśli nie jest uruchomiona.
 * Ponadto w przypadku **maszyny Wirtualnej systemu Linux**,
   * Sprawdź, czy są zainstalowane najnowsze pakiety openssh, openssh-server i openssl.
   * Sprawdź i upewnij się, że Secure Shell (SSH) jest włączona i działa na porcie 22.
@@ -57,9 +98,13 @@ Jeśli chcesz zmodyfikować poświadczeń konta wybranego użytkownika, postępu
 * Próba połączenia może nie powiodło się jeśli nie będzie odpowiednie odpowiedzi po upływie określonego czasu lub ustanowionego połączenia nie powiodło się, ponieważ połączony host nie odpowiedział.
 * Łączność / / domeny sieciowej może być problemu związanego z. Można również ze względu na nazwę DNS, rozwiązywania problemów lub problem wyczerpanie portów TCP. Sprawdź, czy istnieją znane problemy w domenie.
 
+## <a name="connectivity-failure-errorid-95523"></a>Błąd łączności (identyfikator błędu: 95523)
+
+Ten błąd występuje, gdy w sieci, w której znajduje się na maszynie źródłowej nie można odnaleźć lub została usunięta lub nie jest już dostępna. Jest jedynym sposobem, aby naprawić błąd, zapewniając, że sieć istnieje.
+
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Sprawdzanie usług udostępniania plików i drukarek (identyfikator błędu: 95105 & 95106)
 
-Po sprawdzenie łączności Sprawdź, czy na maszynie wirtualnej włączono usługi udostępniania plików i drukarek.
+Po sprawdzenie łączności Sprawdź, czy na maszynie wirtualnej włączono usługi udostępniania plików i drukarek. Te ustawienia są wymagane, aby skopiować agenta mobilności na maszynie źródłowej.
 
 Aby uzyskać **windows 2008 R2 i wcześniejsze wersje**,
 
@@ -68,16 +113,16 @@ Aby uzyskać **windows 2008 R2 i wcześniejsze wersje**,
   * Znajdź reguły pliku i udostępnianie drukarki (sesji NB — ruch przychodzący) i udostępnianie plików i drukarek (ruch przychodzący SMB). Dla każdej reguły, kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **Włącz regułę**.
 * Aby włączyć udostępnianie za pomocą zasad grupy plików
   * Przejdź do ekranu startowego, wpisz polecenie gpmc.msc i wyszukiwania.
-  * W okienku nawigacji otwórz następujące foldery: lokalne zasady komputera, Konfiguracja użytkownika, Szablony administracyjne, Windows, składników i udostępniania w sieci.
+  * W okienku nawigacji otwórz następujące foldery: Lokalne zasady komputera, Konfiguracja użytkownika, Szablony administracyjne, Windows, składników i udostępnianie w sieci.
   * W okienku szczegółów kliknij dwukrotnie **uniemożliwić użytkownikom udostępnianie plików w swoim profilu**. Aby wyłączyć ustawienia zasad grupy, a następnie włącz możliwość jego udostępniania plików, kliknij przycisk wyłączone. Kliknij przycisk OK, aby zapisać zmiany. Aby dowiedzieć się więcej, kliknij przycisk [tutaj](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
 Aby uzyskać **nowsze wersje**, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-install-mobility-service.md) umożliwiające udostępnianie plików i drukarek.
 
-## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Sprawdzenie konfiguracji Instrumentacji zarządzania Windows (WMI)
+## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Sprawdzenie konfiguracji Instrumentacji zarządzania Windows (WMI) (kod błędu: 95103)
 
-Po sprawdzić usług plików i drukarek, należy włączyć usługę WMI przez zaporę.
+Po sprawdzić usług plików i drukarek, należy włączyć usługi WMI dla profilów prywatnej, publicznej i domeny przez zaporę. Te ustawienia są wymagane do ukończenia zdalne wykonywanie kodu na maszynie źródłowej. Aby włączyć,
 
-* W Panelu sterowania kliknij pozycję zabezpieczenia, a następnie kliknij zaporę Windows.
+* Przejdź do panelu sterowania, kliknij pozycję zabezpieczenia, a następnie kliknij zaporę Windows.
 * Kliknij przycisk Zmień ustawienia, a następnie kliknij kartę Wyjątki.
 * W oknie wyjątki zaznacz pole wyboru dla Windows Management Instrumentation (WMI) aby umożliwić ruch usługi WMI przez zaporę. 
 
@@ -93,6 +138,24 @@ Inne artykuły dotyczące rozwiązywania problemów WMI można znaleźć w nast�
 Inny najbardziej typową przyczyną błędu może być spowodowany nieobsługiwany system operacyjny. Upewnij się, że używasz obsługiwanej wersji jądra systemu operacyjnego/pomyślną instalację usługi mobilności.
 
 Aby dowiedzieć się, o które systemy operacyjne są obsługiwane przez usługę Azure Site Recovery, zobacz nasze [dokumencie macierz obsługi](vmware-physical-azure-support-matrix.md#replicated-machines).
+
+## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Partycje rozruchowe i systemowe woluminy nie są tego samego dysku (identyfikator błędu: 95309)
+
+Przed 9.20 partycje wersji, rozruchowy i systemowy / woluminy na dyskach inną was nieobsługiwaną konfigurację. Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ta konfiguracja jest obsługiwana. Obsługa jest możliwa, należy używać najnowszej wersji.
+
+## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Partycja systemowa na wielu dyskach (identyfikator błędu: 95313)
+
+Przed wersją 9.20 główny partycji lub woluminie, na wielu dyskach był nieobsługiwaną konfigurację. Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ta konfiguracja jest obsługiwana. Obsługa jest możliwa, należy używać najnowszej wersji.
+
+## <a name="lvm-support-from-920-version"></a>Obsługa LVM 9.20 wersji
+
+Przed wersją 9.20 LVM była obsługiwana dla tylko dysków z danymi. / Boot powinny znajdować się na partycji dysku i nie być woluminem LVM.
+
+Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), [dysku systemu operacyjnego na LVM](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) jest obsługiwana. Obsługa jest możliwa, należy używać najnowszej wersji.
+
+## <a name="insufficient-space-errorid-95524"></a>Brak wystarczającej ilości miejsca (identyfikator błędu: 95524)
+
+Jeśli agenta mobilności jest kopiowany na maszynie źródłowej, wymagana jest co najmniej 100 MB wolnego miejsca. Tak upewnij się, że maszyna źródłowa ma wymagana ilość wolnego miejsca i spróbuj ponownie wykonać operację.
 
 ## <a name="vss-installation-failures"></a>Błędy instalacji usługi VSS
 

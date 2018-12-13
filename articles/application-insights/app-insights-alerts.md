@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ac91632656e83fc4262f28240525c8fb106b99ec
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 4400430e012dee7caceba62637db1bf626d02b61
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679136"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277347"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
 [Usługa Azure Application Insights] [ start] może generować alerty na zmiany w metrykach wydajności lub użycia aplikacji sieci web. 
@@ -43,7 +43,7 @@ Otwórz blok reguł alertów, a następnie użyj przycisku Dodaj.
 * Należy zachować ostrożność, należy pamiętać, jednostki, w których pojawi się prośba o podanie wartości progowej.
 * Jeśli zaznaczysz pole "Adres E-mail właścicieli...", alerty są wysyłane za pośrednictwem poczty e-mail dla każdego, kto ma dostęp do tej grupy zasobów. Aby rozszerzyć ten zestaw osób, dodaj je do [grupy zasobów lub subskrypcji](app-insights-resources-roles-access-control.md) (nie zasobu).
 * Jeśli określisz "Dodatkowe adresy e-mail", alerty są wysyłane do tych konkretnych osób lub grup (określa, czy zaznaczono pole "email właścicieli..."). 
-* Ustaw [adres elementu webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) Jeśli skonfigurujesz aplikację internetową, która odpowiada na alerty. Jest on nazywany zarówno po aktywowaniu alertu, jak i kiedy zostanie on rozwiązany. (Ale należy pamiętać, że obecnie parametry zapytania nie są przekazywane jako właściwości elementu webhook).
+* Ustaw [adres elementu webhook](../azure-monitor/platform/alerts-webhooks.md) Jeśli skonfigurujesz aplikację internetową, która odpowiada na alerty. Jest on nazywany zarówno po aktywowaniu alertu, jak i kiedy zostanie on rozwiązany. (Ale należy pamiętać, że obecnie parametry zapytania nie są przekazywane jako właściwości elementu webhook).
 * Możesz wyłączyć lub włączyć alert: wyświetlanie przycisków w górnej części bloku.
 
 *Przycisk Dodaj Alert nie jest widoczny.* 
@@ -51,7 +51,7 @@ Otwórz blok reguł alertów, a następnie użyj przycisku Dodaj.
 * Czy używasz konta organizacyjnego Możesz ustawić alerty, jeśli masz dostęp do tego zasobu aplikacji współautora lub właściciela. Zapoznaj się z bloku kontroli dostępu. [Dowiedz się więcej na temat kontroli dostępu][roles].
 
 > [!NOTE]
-> W bloku alerty, zobaczysz, że istnieje już zestaw alertu: [Proactive Diagnostics](app-insights-proactive-failure-diagnostics.md). Alert automatycznego monitoruje jednego częstość niepowodzeń żądań metryki, określonej. Chyba że zdecydujesz się wyłączanie alertu aktywnego, nie trzeba ustawiać własne alert częstość niepowodzeń żądań. 
+> W bloku alertów zostanie wyświetlony, że istnieje już zestaw alertu: [Diagnostyka proaktywna](app-insights-proactive-failure-diagnostics.md). Alert automatycznego monitoruje jednego częstość niepowodzeń żądań metryki, określonej. Chyba że zdecydujesz się wyłączanie alertu aktywnego, nie trzeba ustawiać własne alert częstość niepowodzeń żądań. 
 > 
 > 
 
@@ -93,7 +93,7 @@ Nie należy zapominać, że [aktywna współczynnik Diagnostyka błędów](app-i
 
 ## <a name="automation"></a>Automatyzacja
 * [Automatyzowanie konfigurowania alertów za pomocą programu PowerShell](app-insights-powershell-alerts.md)
-* [Używanie elementów webhook w celu zautomatyzowania reagowanie na alerty](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [Używanie elementów webhook w celu zautomatyzowania reagowanie na alerty](../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="video"></a>Połączenia wideo
 

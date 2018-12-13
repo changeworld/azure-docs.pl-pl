@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284884"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185073"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Usługa Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe dane
 
@@ -41,7 +41,7 @@ Poniżej przedstawiono kluczowych aspektów zabezpieczeń tej funkcji:
 - Tylko standardowe porty (80 i 443) są używane dla komunikacji wychodzącej z agentów uwierzytelniania w usłudze Azure AD. Nie ma potrzeby otwierania portów przychodzących na zaporze. 
   - Port 443 jest używany dla wszystkich uwierzytelnionych komunikacji wychodzącej.
   - Port 80 jest używana tylko w przypadku pobierania list odwołania certyfikatów (CRL), aby upewnić się, że żaden z certyfikatów używanych przez tę funkcję zostały odwołane.
-  - Aby uzyskać pełną listę wymagań sieci, zobacz [uwierzytelniania przekazywanego usługi Active Directory platformy Azure: Szybki start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
+  - Aby uzyskać pełną listę wymagań sieci, zobacz [uwierzytelnianie przekazywane usługi Azure Active Directory: Szybki start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
 - Hasła podanych przez użytkownika podczas logowania są szyfrowane w chmurze, zanim agentów uwierzytelniania w środowisku lokalnym akceptujesz na weryfikację pod kątem usługi Active Directory.
 - Kanał HTTPS między usługą Azure AD i lokalnego agenta uwierzytelniania są zabezpieczane przy użyciu wzajemnego uwierzytelniania.
 - Chroni Twoje konta użytkownika poprzez bezproblemowe współdziałanie z [zasady dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), łącznie z uwierzytelniania Multi-Factor Authentication (MFA) [blokowanie uwierzytelniania starszych](../conditional-access/conditions.md) i [ Filtrowanie siłowego złamania hasła](../authentication/howto-password-smart-lockout.md).
@@ -49,11 +49,11 @@ Poniżej przedstawiono kluczowych aspektów zabezpieczeń tej funkcji:
 ## <a name="components-involved"></a>Składniki zaangażowane
 
 Ogólne szczegółowe informacje o operacyjne, usługa Azure AD i bezpieczeństwo danych, zobacz [Centrum zaufania](https://azure.microsoft.com/support/trust-center/). Użyj uwierzytelniania przekazującego, podczas logowania użytkownika obejmuje następujące składniki:
-- **Usługa Azure tokenu Zabezpieczającego usług AD**: bezstanowa Usługa tokenu zabezpieczającego (STS) przetwarza żądań logowania, która wystawia tokeny zabezpieczające do przeglądarki, klientów lub usług, zgodnie z potrzebami użytkowników.
-- **Usługa Azure Service Bus**: zapewnia komunikacji w chmurze z obsługą wiadomości przedsiębiorstwa i komunikację przekaźniki pomoże Ci połączyć rozwiązania lokalne z chmurą.
-- **Agent Azure AD Connect uwierzytelniania**: składnik w środowisku lokalnym, który odbiera i odpowiada na żądania weryfikacji hasła.
-- **Usługa Azure SQL Database**: przechowuje informacje dotyczące agentów uwierzytelniania Twojej dzierżawy, w tym do kluczy szyfrowania i metadanych.
-- **Usługi Active Directory**: lokalnej usługi Active Directory, gdzie są przechowywane z kontami użytkowników i haseł.
+- **Tokenu Zabezpieczającego usług Azure AD**: Bezstanowa Usługa tokenu zabezpieczającego (STS) przetwarza żądań logowania, która wystawia tokeny zabezpieczające do przeglądarki, klientów lub usług, zgodnie z potrzebami użytkowników.
+- **Usługi Azure Service Bus**: Zapewnia, że komunikacji w chmurze z obsługą wiadomości przedsiębiorstwa i komunikację przekaźniki pomoże Ci połączyć rozwiązania lokalne z chmurą.
+- **Azure AD Connect Agent uwierzytelniania**: Składnik w środowisku lokalnym, który odbiera i odpowiada na żądania weryfikacji hasła.
+- **Usługa Azure SQL Database**: Przechowuje informacje dotyczące agentów uwierzytelniania Twojej dzierżawy, w tym do kluczy szyfrowania i metadanych.
+- **Usługi Active Directory**: Lokalne usługi Active Directory, w którym są przechowywane kont użytkowników i haseł.
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>Instalowaniem i rejestrowaniem agentów uwierzytelniania
 
@@ -97,8 +97,8 @@ Agentów uwierzytelniania wykonaj następujące kroki, aby zarejestrować się z
 5. Następnie usługa Azure AD podpisuje i wysyła certyfikat tożsamości cyfrowej agenta uwierzytelniania.
     - Główny urząd certyfikacji w usłudze Azure AD jest używany do podpisywania certyfikatu. 
 
-     >[!NOTE]
-     > Ten urząd certyfikacji jest _nie_ w Windows zaufane główne urzędy certyfikacji są przechowywane.
+      > [!NOTE]
+      > Ten urząd certyfikacji jest _nie_ w Windows zaufane główne urzędy certyfikacji są przechowywane.
     - Urząd certyfikacji jest używany tylko przez funkcję uwierzytelniania przekazywanego. Urząd certyfikacji jest używany tylko do podpisania obsługi podczas rejestracji agenta uwierzytelniania.
     -  Żadna z usługi Azure AD, użyj tego urzędu certyfikacji.
     - Podmiot certyfikatu (nazwa wyróżniająca lub DN) jest ustawiona na Twoim identyfikatorem dzierżawy. Ta nazwa Wyróżniająca jest identyfikatorem GUID, który unikatowo identyfikuje dzierżawy. Ta nazwa Wyróżniająca zakresów certyfikatu do użytku tylko z Twojej dzierżawy.
@@ -211,7 +211,7 @@ Aby automatycznie Aktualizuj agenta uwierzytelniania:
 - [Szybki start](how-to-connect-pta-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
 - [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/adfstoptadpdownload) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): Konfigurowanie funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
-- [Jak działa](how-to-connect-pta-how-it-works.md): Poznaj podstawy jak działa uwierzytelnianie usługi Azure AD przekazywane.
-- [Często zadawane pytania dotyczące](how-to-connect-pta-faq.md): odpowiedzi na często zadawane pytania.
+- [Jak działa](how-to-connect-pta-how-it-works.md): Poznaj podstawy działania uwierzytelniania przekazywanego usługi AD platformy Azure.
+- [Często zadawane pytania dotyczące](how-to-connect-pta-faq.md): Znajdź odpowiedzi na często zadawane pytania.
 - [Rozwiązywanie problemów z](tshoot-connect-pass-through-authentication.md): Dowiedz się, jak rozwiązać typowe problemy przy użyciu funkcji uwierzytelniania przekazywanego.
-- [Usługa Azure bezproblemowe logowanie Jednokrotne AD](how-to-connect-sso.md): więcej informacji na temat tej dodatkowej funkcji.
+- [Bezproblemowe logowanie Jednokrotne usługi Azure AD](how-to-connect-sso.md): Dowiedz się więcej na temat tej dodatkowej funkcji.

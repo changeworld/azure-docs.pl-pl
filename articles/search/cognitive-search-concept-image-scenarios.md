@@ -1,5 +1,5 @@
 ---
-title: Przetwarzanie i wyodrębnianie tekstu z obrazów w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Przetwarzanie i wyodrębnianie tekstu z obrazów w usłudze wyszukiwania poznawczego — usługa Azure Search
 description: Przetwarzanie i wyodrębnianie tekstu oraz inne informacje z obrazów w cognitive Wyszukaj potoki w usłudze Azure Search.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 5ee821f3d1e81e581f376d4b14b3e8393a8f190c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444639"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312616"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzanie i wyodrębnianie informacji z obrazów w scenariuszach wyszukiwania kognitywnego
 
@@ -90,7 +91,7 @@ Gdy *imageAction* jest ustawiona na "generateNormalizedImages" nowy *normalized_
 
 ## <a name="image-related-skills"></a>Umiejętności związane z obrazu
 
-Istnieją dwie wbudowane umiejętności poznawcze, które przyjmują obrazów jako dane wejściowe: [optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md) i [analizy obrazów](cognitive-search-skill-image-analysis.md). 
+Istnieją dwie wbudowane umiejętności poznawcze, które przyjmują obrazów jako dane wejściowe: [Optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md) i [obrazu analizy](cognitive-search-skill-image-analysis.md). 
 
 Obecnie tych umiejętności działają tylko z obrazów wygenerowanych z kroku łamania dokumentów. W efekcie tylko obsługiwane dane wejściowe są `"/document/normalized_images"`.
 

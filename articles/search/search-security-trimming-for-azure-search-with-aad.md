@@ -1,19 +1,20 @@
 ---
-title: Filtry zabezpieczeń przycinania w wynikach wyszukiwania platformy Azure przy użyciu tożsamości usługi Active Directory | Dokumentacja firmy Microsoft
-description: Kontrolę dostępu do zawartości usługi Azure Search przy użyciu filtrów zabezpieczeń i tożsamości usługi Active Directory.
-author: revitalbarletz
+title: Filtry zabezpieczeń można przycięcia wyniki za pomocą usługi Active Directory tożsamości — usłudze Azure Search
+description: Kontrolę dostępu do zawartości usługi Azure Search przy użyciu filtrów zabezpieczeń i tożsamości usługi Azure Active Directory (AAD).
+author: brjohnstmsft
 manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
-ms.author: revitalb
-ms.openlocfilehash: b134bc2529bf11557ddb1778b87f127db8da650c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.author: brjohnst
+ms.custom: seodec2018
+ms.openlocfilehash: 2d1ac36341ef47ac95317c583005b675f31f1265
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684641"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308830"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpieczeń do przycinania wyniki usługi Azure Search przy użyciu tożsamości usługi Active Directory
 
@@ -63,7 +64,7 @@ Jednak jeśli nie masz istniejących użytkowników, można użyć interfejsów 
 
 Użytkownika i członkostwa w grupie może być bardzo płynne, szczególnie w dużych organizacjach. Kod, który tworzy tożsamości użytkowników i grup należy uruchamiać wystarczająco często zmian w członkostwie w organizacji. Podobnie indeksu usługi Azure Search wymaga podobne harmonogram aktualizacji, aby odzwierciedlić bieżący stan dozwolonych użytkowników i zasobów.
 
-### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apigrouppostgroups"></a>Krok 1: Tworzenie [grupy usługi AAD](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/group_post_groups) 
+### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apigrouppostgroups"></a>Krok 1. Utwórz [grupy usługi AAD](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/group_post_groups) 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>Krok 2: Tworzenie [użytkownika usługi AAD](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users) 
+### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>Krok 2. Utwórz [użytkownika usługi AAD](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users) 
 ```csharp
 User user = new User()
 {
@@ -92,12 +93,12 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>Krok 3: Kojarzenie użytkowników i grup
+### <a name="step-3-associate-user-and-group"></a>Krok 3. Kojarzenie użytkowników i grup
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Buforowanie identyfikatorów grup
+### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Identyfikatory grup w pamięci podręcznej
 Opcjonalnie Aby zmniejszyć opóźnienia sieci, można buforować skojarzenia grupy użytkowników tak, aby podczas wystawiania żądania wyszukiwania grup są zwracane z pamięci podręcznej, zapisywanie w obie strony do usługi AAD. Możesz użyć [interfejsu API usługi Batch AAD](https://developer.microsoft.com/graph/docs/concepts/json_batching) wysyłanie pojedynczego żądania Http, w których wielu użytkowników i Tworzenie pamięci podręcznej.
 
 Program Microsoft Graph jest przeznaczony do obsługi dużej liczby żądań. Jeśli wystąpi zbyt dużej liczby żądań, programu Microsoft Graph kończy się niepowodzeniem żądania z kodem stanu HTTP 429. Aby uzyskać więcej informacji, zobacz [ograniczania programu Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/throttling).
@@ -136,7 +137,7 @@ Ze względów bezpieczeństwa przycinania wartości w polu zabezpieczeń w indek
 
 Aby filtrować dokumenty zwrócone w wynikach wyszukiwania, na podstawie grup użytkowników, wysyłania żądania, przejrzyj poniższe kroki.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1: Pobieranie identyfikatorów grupy użytkownika
+### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1. Pobieranie identyfikatorów grupy użytkownika
 
 Grupy użytkowników nie zostały jeszcze zapisane lub wygasła pamięć podręczną, należy wydać [grup](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups) żądania
 ```csharp
@@ -164,7 +165,7 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>Krok 2: Tworzą żądania wyszukiwania
+### <a name="step-2-compose-the-search-request"></a>Krok 2. Tworzenie żądania wyszukiwania
 
 Przy założeniu, że członkostwa grupy użytkownika, może wysłać żądanie wyszukiwania przy użyciu wartości odpowiedni filtr.
 
@@ -178,7 +179,7 @@ SearchParameters parameters = new SearchParameters()
 
 DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<SecuredFiles>("*", parameters);
 ```
-### <a name="step-3-handle-the-results"></a>Krok 3: Obsługa wyników
+### <a name="step-3-handle-the-results"></a>Krok 3. Obsługa wyników
 
 Odpowiedź zawiera filtrowana lista dokumentów, składający się z tymi, których użytkownik ma uprawnienia do wyświetlania. W zależności od sposobu konstruowania strony wyników wyszukiwania możesz chcieć dołączyć podpowiedzi wizualne, aby odzwierciedlić zestawu przefiltrowanych wyników.
 

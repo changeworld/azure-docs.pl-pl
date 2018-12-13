@@ -1,5 +1,5 @@
 ---
-title: Use Apache Pig w HDInsight
+title: Korzystanie z języka Pig Apache — usługa Azure HDInsight
 description: Dowiedz się, jak korzystanie z języka Pig z platformą Apache Hadoop w HDInsight.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 4eb4fa201a435df5e2b5016ba9686d76707c0635
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 25a91c6217aac1b2278957c1ff0ed8b7a9b1f6ac
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011634"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166170"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Use Apache Pig z platformą Apache Hadoop w HDInsight
 
@@ -40,11 +40,11 @@ Pig umożliwia definiowanie przetwarzania w postaci serii obiektów przekształc
 
 Język Pig Latin umożliwia opisywanie przepływu danych z nieprzetworzone dane wejściowe, przez co najmniej jeden przekształcenia, aby wygenerować żądaną produktu wyjściowego. Programów pig Latin korzystać z tego wzoru ogólne:
 
-* **Obciążenia**: odczytywanie danych można manipulować z systemu plików
+* **Obciążenia**: Odczyt danych, aby być zmieniane z systemu plików
 
-* **Przekształcanie**: manipulowanie danymi
+* **Przekształcanie**: Manipulowanie danymi
 
-* **Zrzuć ani nie przechowują**: dane wyjściowe do ekranu, czy zapisać je do przetworzenia
+* **Zrzuć ani nie przechowują**: Dane wyjściowe do ekranu, czy zapisać je do przetworzenia
 
 ### <a name="user-defined-functions"></a>Funkcje zdefiniowane przez użytkownika
 

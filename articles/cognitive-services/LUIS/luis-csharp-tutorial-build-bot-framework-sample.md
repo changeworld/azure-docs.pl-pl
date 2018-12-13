@@ -1,5 +1,5 @@
 ---
-title: Bot zC#
+title: Bot — C# -v3
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: Przy użyciu języka C# twórz czatbot zintegrowany z usługą Language Understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 919d48d73a552596c78c3be18e7628ee7700f7e1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b4b074de483d4a1ccd4c934a9fa7254e0f656a1b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080218"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133955"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot usługi LUIS w C# przy użyciu platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x
 
@@ -37,11 +37,11 @@ Przy użyciu języka C# twórz czatbot zintegrowany z usługą Language Understa
 
 1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **Tworzenie nowego zasobu** w górnym menu po lewej stronie.
 
-    ![Tworzenie nowego zasobu](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
+    ![Tworzenie nowego zasobu w witrynie Azure portal](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
 
 2. W polu wyszukiwania, wyszukaj **Bot aplikacji sieci Web**. 
 
-    ![Tworzenie nowego zasobu](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
+    ![Wybierz pozycję web Apps jako typ zasobu](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
 
 3. W oknie Bot aplikacji sieci Web kliknij **Utwórz**.
 

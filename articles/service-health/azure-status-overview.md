@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.author: stbaron
-ms.openlocfilehash: be3c8d10ef034a4bd03f178bc1334b8a9eeb2f58
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7121087d9d9699a73b88e07599f70e0c7c40c1eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282910"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308284"
 ---
 # <a name="azure-status"></a>Stan platformy Azure
 [Stan usługi Azure](https://azure.microsoft.com/status/) zapewnia globalny widok kondycji usług platformy Azure. Stan platformy Azure możesz uzyskać aktualne informacje na temat dostępności usług. Każdy z nich ma dostęp do stanu platformy Azure i Wyświetl wszystkie usługi, których zgłosić ich kondycję usługi. 
@@ -37,8 +37,8 @@ Na stronie stanu platformy Azure zawsze znajdują się najnowsze informacje o ko
 Można wyświetlić zdarzenia w górę do 90 dni w przeszłości, m.in. wstępne przyczyny ograniczania ryzyka i następne kroki na platformie Azure.
 
 ## <a name="rss-feed"></a>Źródło danych RSS
-Stan platformy Azure zapewnia również [kanału informacyjnego RSS](https://azure.microsoft.com/en-us/status/feed/) zmian kondycji usług platformy Azure, które mogą subskrybować.
+Stan platformy Azure zapewnia również [kanału informacyjnego RSS](https://azure.microsoft.com/status/feed/) zmian kondycji usług platformy Azure, które mogą subskrybować.
 
-# <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się, jak uzyskać bardziej spersonalizowany widok w kondycję platformy Azure za pomocą [Service Health](./service-health-overview.md).
 * Dowiedz się, jak uzyskać bardziej szczegółowy widok na temat kondycji określonych zasobów platformy Azure za pomocą [Resource Health](./resource-health-overview.md).

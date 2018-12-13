@@ -12,18 +12,18 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615878"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275673"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Przed wdrożeniem usługi Azure App Service w usłudze Azure Stack, należy wykonać kroki wymagań wstępnych, w tym artykule.
 
@@ -152,6 +152,12 @@ Certyfikat tożsamości musi zawierać podmiotem, który odpowiada następujący
 | Format | Przykład |
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
+
+
+### <a name="validate-certificates"></a>Sprawdzanie poprawności certyfikatów
+Przed wdrożeniem dostawcy zasobów usługi app service, wykonaj następujące czynności [weryfikują certyfikaty, które ma być używany](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) za pomocą narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack dostępnym [galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Narzędzie sprawdzania gotowości stosu Azure sprawdza, czy wygenerowane certyfikaty PKI są odpowiednie na potrzeby wdrożenia usług aplikacji. 
+
+Najlepszym rozwiązaniem, pracując ze wszystkimi niezbędne [certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](azure-stack-pki-certs.md), należy zaplanować zostawić czas do testowania i ponownego wystawienia certyfikatów, jeśli to konieczne. 
 
 ## <a name="virtual-network"></a>Sieć wirtualna
 

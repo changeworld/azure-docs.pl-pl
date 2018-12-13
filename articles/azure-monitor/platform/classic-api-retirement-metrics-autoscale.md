@@ -7,13 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
-ms.component: ''
-ms.openlocfilehash: 450eac3613df18997c5b0f9189555555da20cfcf
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 1ea8fddf2b4e75abba38f011a271aada848a8cb5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585548"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192196"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor procedury wycofywania klasycznego modelu wdrażania interfejsów API dla metryki i automatycznego skalowania
 
@@ -76,9 +75,9 @@ Nie będzie żadnych bezpośredni wpływ na usługi platformy Azure lub ich obci
 
 Wszelkie wywołania do klasycznego interfejsów API wymienionych wcześniej będzie się niepowodzeniem i zwróci komunikaty o błędach podobne poniższych:
 
-Dla skalowania automatycznego: *ten interfejs API jest przestarzały. Użycie witryny Azure portal, szablonów zestawu SDK usługi Azure Monitor, programu PowerShell, interfejsu wiersza polecenia lub usługi Resource Manager do zarządzania ustawieniami skalowania automatycznego*.  
+Dla skalowania automatycznego: *Ten interfejs API jest przestarzały. Użycie witryny Azure portal, szablonów zestawu SDK usługi Azure Monitor, programu PowerShell, interfejsu wiersza polecenia lub usługi Resource Manager do zarządzania ustawieniami skalowania automatycznego*.  
 
-Aby uzyskać metryki: *ten interfejs API jest przestarzały. Użyj witryny Azure portal, zestawu SDK usługi Azure Monitor programu PowerShell, interfejsu wiersza polecenia, aby wykonać zapytanie dotyczące metryk*.
+Aby uzyskać metryki: *Ten interfejs API jest przestarzały. Użyj witryny Azure portal, zestawu SDK usługi Azure Monitor programu PowerShell, interfejsu wiersza polecenia, aby wykonać zapytanie dotyczące metryk*.
 
 ## <a name="email-notifications"></a>Powiadomienia e-mail
 

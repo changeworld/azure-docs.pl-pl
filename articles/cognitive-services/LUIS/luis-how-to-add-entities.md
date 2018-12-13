@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 8a6f0a69f0159a31d9fefcc54a104ebc1ed47ec4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f95d7851241dfd5b077c215e2df893c6ba8ef36c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100348"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139490"
 ---
 # <a name="create-entities-without-utterances"></a>Tworzenie jednostek bez wypowiedzi
 
@@ -157,13 +157,13 @@ W przypadku aplikacji zarządzania zasobami ludzkimi może mieć listę wszystki
 
 1. Więcej znormalizowane elementów na liście, zaznacz **zaleca się** Aby wyświetlić opcje z [semantycznego słownika](luis-glossary.md#semantic-dictionary).
 
-    ![Zrzut ekranu przedstawiający Dodawanie roli źródła do lokalizacji jednostki](./media/add-entities/hr-list-2.png)
+    ![Zrzut ekranu przedstawiający Wybieranie funkcji zaleca się, aby wyświetlić opcje](./media/add-entities/hr-list-2.png)
 
 
 1. Wybierz element na liście zalecane, aby dodać je jako znormalizowaną wartość lub wybierz **Dodaj wszystkie** można dodać wszystkich elementów. 
     Wartości można zaimportować do istniejącej jednostki listy przy użyciu następującego formatu JSON:
 
-    ```
+    ```JSON
     [
         {
             "canonicalForm": "Blue",

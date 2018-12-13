@@ -1,5 +1,5 @@
 ---
-title: Zachowania zabezpieczeń i danych w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Zachowania zabezpieczeń i danych — usługa Azure Search
 description: Usługa Azure Search jest zgodna z SOC 2, HIPAA i innych certyfikatów. Służy do przefiltrowania połączenia i szyfrowania, uwierzytelniania i tożsamości dostęp do danych przez użytkowników i grupy identyfikatorów zabezpieczeń w usłudze Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: heidist
-ms.openlocfilehash: 4b1307aa00fae26d7425c9a95ed673b11ba2e9b4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.custom: seodec2018
+ms.openlocfilehash: 55558f1483a576e7ac3b9ce027588eceabd5db70
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092635"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311715"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zachowania zabezpieczeń i danych w usłudze Azure Search
 
@@ -99,7 +100,7 @@ Dostęp użytkownika do zawartości indeksu jest implementowane za pomocą filtr
 |[Dostosowanie do zabezpieczeń oparte na filtrów tożsamości](search-security-trimming-for-azure-search.md)  | Dokumenty podstawowy przepływ pracy do wykonywania kontroli dostępu tożsamości użytkownika. Obejmuje dodawanie identyfikatorów zabezpieczeń do indeksu i wyjaśnia, filtrowania pod kątem tego pola, aby przyciąć wyniki zabronionych zawartości. |
 |[Dostosowanie do zabezpieczeń oparte na tożsamości usługi Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Ten artykuł stanowi rozszerzenie poprzednim artykule, zapewniając kroki pobierania tożsamości z usługi Azure Active Directory (AAD), jednego z [bezpłatnych usług](https://azure.microsoft.com/free/) na platformie chmury platformy Azure. |
 
-## <a name="table-permissioned-operations"></a>Tabeli: Operacje otrzymało uprawnienia
+## <a name="table-permissioned-operations"></a>Tabela: Operacje otrzymało uprawnienia
 
 W poniższej tabeli przedstawiono operacje, dozwolone w usłudze Azure Search i klucz, który umożliwia odblokowanie dostępu do określonej operacji.
 

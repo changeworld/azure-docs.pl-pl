@@ -1,33 +1,31 @@
 ---
-title: Przykłady dla programu Azure PowerShell | Microsoft Docs
+title: Przykłady dla programu Azure PowerShell
+titlesuffix: Azure Load Balancer
 description: Przykłady dla programu Azure PowerShell
 services: virtual-network
 documentationcenter: load-balancer
 author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 04/17/2018
+ms.date: 12/10/2018
 ms.author: kumud
-ms.openlocfilehash: 7208c29a1f3fa6459599639e478ea24a2fd9e7ac
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cf4e0346a93961df14afe48ec767e383f92eab3b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182472"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253718"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>Przykłady programu Azure PowerShell dla usługi równoważenia obciążenia
 
-Poniższa tabela zawiera linki do skryptów utworzony przy użyciu programu Azure PowerShell.
+Poniższa tabela zawiera linki do skryptów utworzonych przy użyciu programu Azure PowerShell.
 
 | | |
 |-|-|
-| [Ruch równoważenia obciążenia do maszyn wirtualnych wysokiej dostępności](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Tworzy kilka maszyny wirtualne o wysokiej dostępności i konfiguracji równoważenia obciążenia. |
-| [Wiele witryn sieci Web na maszynach wirtualnych Równoważenie obciążenia](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Tworzy dwie maszyny wirtualne z wielu konfiguracji adresów IP, dołączony do platformy Azure zestawu dostępności, dostępny za pośrednictwem usługi równoważenia obciążenia Azure. |
+| [Równoważenie obciążenia ruchem do maszyn wirtualnych wysokiej dostępności](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Tworzy kilka maszyn wirtualnych na platformie o wysokiej dostępności i konfiguracji ze zrównoważonym obciążeniem. |
+| [Równoważ obciążenie powodowane przez wielu witryn sieci Web na maszynach wirtualnych](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Tworzy dwie maszyny wirtualne z wieloma konfiguracjami IP, dołączone do zestawu dostępności platformy Azure, za pośrednictwem usługi Azure Load Balancer. |
 | | |

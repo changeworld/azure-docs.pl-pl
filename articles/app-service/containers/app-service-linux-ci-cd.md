@@ -1,6 +1,6 @@
 ---
-title: Ciągłe wdrażanie z rejestru kontenerów platformy Docker za pomocą usługi Web App for Containers — Azure | Dokumentacja firmy Microsoft
-description: Jak skonfigurować ciągłe wdrażanie z rejestru kontenerów platformy Docker w sieci Web App for Containers.
+title: Ciągłe wdrażanie za pomocą usługi Web App for Containers — usłudze Azure App Service | Dokumentacja firmy Microsoft
+description: Jak skonfigurować ciągłe wdrażanie w sieci Web App for Containers.
 keywords: Usługa Azure app service, linux, docker, rejestru Azure container Registry, oss
 services: app-service
 documentationcenter: ''
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: msangapu;yili
-ms.openlocfilehash: b26366edddc223b842cc5d38473bda42422f1840
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: yili
+ms.custom: seodec18
+ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298543"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315538"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Ciągłe wdrażanie za pomocą usługi Web App for Containers
 

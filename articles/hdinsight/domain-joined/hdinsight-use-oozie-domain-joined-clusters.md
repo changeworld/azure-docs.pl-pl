@@ -1,22 +1,23 @@
 ---
-title: Przepływy Apache Oozie usługi Hadoop w klastrach usługi Azure HDInsight z pakietem Enterprise Security
-description: Używanie technologii Oozie z usługi Hadoop, w pakiecie zabezpieczeń opartych na systemie Linux Enterprise HDInsight. Dowiedz się, jak zdefiniować przepływ pracy programu Oozie i przesłać zadanie usługi Oozie.
+title: Bezpieczne przepływy pracy programu Apache Oozie w z pakietem Enterprise Security — Azure HDInsight
+description: Bezpieczne przepływy pracy programu Apache Oozie przy użyciu pakietu zabezpieczeń Azure HDInsight przedsiębiorstwa. Dowiedz się, jak zdefiniować przepływ pracy programu Oozie i przesłać zadanie usługi Oozie.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: mamccrea
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 298277b720045c06d78f1c4964de2246dac22f08
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d0bc48e07efeaf8f09f177367da0570cf3c250ec
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633669"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165150"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamiaj Apache Oozie w usłudze HDInsight Hadoop klastry z pakietem Enterprise Security
+
 Apache Oozie jest systemem przepływu pracy i koordynacji, który zarządza zadaniami na technologii Apache Hadoop. Oozie jest zintegrowany ze stosem platformy Hadoop i obsługuje następujące zadania:
 - Apache MapReduce
 - Apache Pig
@@ -26,6 +27,7 @@ Apache Oozie jest systemem przepływu pracy i koordynacji, który zarządza zada
 Można również użyć programu Oozie do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
+
 - Klaster usługi Azure HDInsight Hadoop przy użyciu pakietu zabezpieczeń przedsiębiorstwa (ESP). Zobacz [HDInsight konfigurowanie klastrów przy użyciu ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
     > [!NOTE]
@@ -224,8 +226,11 @@ nano workflow.xml
    Ten plik właściwości musi znajdować się lokalnie, podczas uruchamiania zadań programu Oozie.
 
 ## <a name="create-custom-hive-scripts-for-oozie-jobs"></a>Utwórz niestandardowe skrypty Hive dla zadania programu Oozie
+
 Można utworzyć dwa skrypty Hive, Hive server 1 i Hive server 2, jak pokazano w poniższych sekcjach.
+
 ### <a name="hive-server-1-file"></a>Plik serwer 1 programu hive
+
 1.  Tworzenie i edytowanie pliku dla akcji serwer 1 programu Hive:
     ```bash
     nano countrowshive1.hql
@@ -244,6 +249,7 @@ Można utworzyć dwa skrypty Hive, Hive server 1 i Hive server 2, jak pokazano w
     ```
 
 ### <a name="hive-server-2-file"></a>Hive server 2 pliku
+
 1.  Utwórz i Edytuj pole Hive server 2 akcji:
     ```bash
     nano countrowshive2.hql
@@ -262,11 +268,13 @@ Można utworzyć dwa skrypty Hive, Hive server 1 i Hive server 2, jak pokazano w
     ```
 
 ## <a name="submit-oozie-jobs"></a>Przesyłanie zadań programu Oozie
+
 Przesyłanie zadań programu Oozie w przypadku klastrów ESP jest podobne do przesyłania zadań programu Oozie w klastrach-ESP.
 
 Aby uzyskać więcej informacji, zobacz [Użyj Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="results-from-an-oozie-job-submission"></a>Wyniki z Oozie przesłania zadania
+
 Oozie zadania są uruchamiane dla użytkownika. Dlatego zarówno Apache YARN, jak i struktury Apache Ranger inspekcji Pokaż dzienniki zadania są uruchamiane jako nazwa spersonifikowanego użytkownika. Interfejs wiersza polecenia dane wyjściowe zadania Oozie wygląda podobnie do poniższego kodu:
 
 
@@ -304,6 +312,7 @@ Oozie zadania są uruchamiane dla użytkownika. Dlatego zarówno Apache YARN, ja
 Dzienniki inspekcji platformy Ranger Hive server 2 akcji Pokaż Oozie uruchamianie akcji dla użytkownika. Widoki Ranger i YARN są widoczne tylko dla administratora klastra.
 
 ## <a name="configure-user-authorization-in-oozie"></a>Konfigurowanie autoryzacji użytkownika w Oozie
+
 Oozie samodzielnie ma Konfiguracja autoryzacji użytkownika, który może uniemożliwić użytkownikom zatrzymywanie lub usuwanie zadań innym użytkownikom. Aby włączyć tę konfigurację, ustaw `oozie.service.AuthorizationService.security.enabled` do `true`. 
 
 Aby uzyskać więcej informacji, zobacz [Oozie instalacja i Konfiguracja](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
@@ -311,6 +320,7 @@ Aby uzyskać więcej informacji, zobacz [Oozie instalacja i Konfiguracja](https:
 Dla składników, takich jak Hive server 1, w której Ranger wtyczki nie jest dostępna lub nie jest obsługiwany możliwe jest tylko gruboziarnistych autoryzacji systemu plików HDFS. Autoryzacja szczegółowych jest dostępna wyłącznie za pośrednictwem wtyczek platformy Ranger.
 
 ## <a name="get-the-oozie-web-ui"></a>Pobierz interfejs użytkownika sieci web programu Oozie
+
 Interfejs użytkownika sieci web programu Oozie zapewnia widok stanu zadań Oozie opartych na sieci web w klastrze. Aby uzyskać interfejs użytkownika sieci web, wykonaj następujące kroki w klastrach ESP:
 
 1. Dodaj [węzła brzegowego](../hdinsight-apps-use-edge-node.md) i włączyć [uwierzytelnianie SSH Kerberos](../hdinsight-hadoop-linux-use-ssh-unix.md).

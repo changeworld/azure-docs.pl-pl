@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 8491f3f61746374b67e174ca5efff2fbf2fe5fbe
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 2583c64d8a60e31958d2aeb895bbce8fadcb5840
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281901"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323170"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w Microsoft Azure Virtual Machines, Cloud Services i Web Apps
 W tym artykule opisano, jakie Microsoft Azure Skalowanie automatyczne to, jego zalety i sposób rozpoczynania korzystania z niego.  
@@ -38,7 +38,7 @@ Wyjaśnienia poniżej mają zastosowanie do rodzajów poprzedniego diagramu.
 
 ## <a name="resource-metrics"></a>Metryki zasobów
 Zasoby emitują metryki, te metryki są później przetwarzane przez zasady. Metryki są dostarczane za pośrednictwem różnych metod.
-Zestawy skalowania maszyn wirtualnych Użyj danych telemetrycznych z agentów dla diagnostyki platformy Azure, natomiast dane telemetryczne dla aplikacji sieci Web i usług w chmurze pochodzi bezpośrednio z infrastruktury platformy Azure. Niektóre powszechnie używane statystyki obejmują użycie procesora CPU, użycie pamięci, liczby wątków, długość kolejki i użycie dysku. Aby uzyskać listę danych telemetrycznych, jakie można użyć, zobacz [typowe metryki automatycznego skalowania](insights-autoscale-common-metrics.md).
+Zestawy skalowania maszyn wirtualnych Użyj danych telemetrycznych z agentów dla diagnostyki platformy Azure, natomiast dane telemetryczne dla aplikacji sieci Web i usług w chmurze pochodzi bezpośrednio z infrastruktury platformy Azure. Niektóre powszechnie używane statystyki obejmują użycie procesora CPU, użycie pamięci, liczby wątków, długość kolejki i użycie dysku. Aby uzyskać listę danych telemetrycznych, jakie można użyć, zobacz [typowe metryki automatycznego skalowania](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ## <a name="custom-metrics"></a>Metryki niestandardowe
 Można też skorzystać z własnych metryki niestandardowe, że Twoje aplikacje mogą emitowania. Jeśli zostały skonfigurowane w Twojej aplikacji na wysyłanie metryk do usługi Application Insights mogą korzystać z tych metryk przy podejmowaniu decyzji, czy wykonać skalowanie, czy nie.
@@ -83,7 +83,7 @@ Pełną listę można konfigurować pola i opisy jest dostępna w [interfejsu AP
 
 Aby uzyskać przykłady kodu zobacz
 
-* [Zaawansowanej konfiguracji skalowania automatycznego dla zestawów skalowania maszyn wirtualnych przy użyciu szablonów usługi Resource Manager](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
+* [Zaawansowanej konfiguracji skalowania automatycznego dla zestawów skalowania maszyn wirtualnych przy użyciu szablonów usługi Resource Manager](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)  
 * [Interfejs API REST automatycznego skalowania](https://msdn.microsoft.com/library/dn931953.aspx)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>Skalowanie w pionie poziomy vs
@@ -98,7 +98,7 @@ Możesz skonfigurować automatyczne skalowanie za pomocą
 
 * [Azure Portal](monitoring-autoscale-get-started.md)
 * [Program PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
-* [Międzyplatformowy interfejs wiersza polecenia (CLI)](insights-cli-samples.md#autoscale)
+* [Międzyplatformowy interfejs wiersza polecenia (CLI)](../azure-monitor/platform/cli-samples.md#autoscale)
 * [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>Obsługiwane usługi dotyczące automatycznego skalowania
@@ -106,17 +106,17 @@ Możesz skonfigurować automatyczne skalowanie za pomocą
 | --- | --- |
 | Web Apps |[Skalowanie aplikacji sieci Web](monitoring-autoscale-get-started.md) |
 | Cloud Services |[Automatyczne skalowanie usługi w chmurze](../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Maszyny wirtualne: klasyczny |[Skalowanie zestawów dostępności klasycznej maszyny wirtualnej](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| Virtual Machines: Zestawy skalowania Windows |[Skalowanie skalowania maszyn wirtualnych zestawów w Windows](../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
+| Maszyny wirtualne: Wdrożenie klasyczne |[Skalowanie zestawów dostępności klasycznej maszyny wirtualnej](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Maszyny wirtualne: Zestawy skalowania Windows |[Skalowanie skalowania maszyn wirtualnych zestawów w Windows](../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Maszyny wirtualne: Zestawy skalowania systemu Linux |[Skalowanie skalowania maszyn wirtualnych ustawia w systemie Linux](../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| Virtual Machines: Przykład Windows |[Zaawansowanej konfiguracji skalowania automatycznego dla zestawów skalowania maszyn wirtualnych przy użyciu szablonów usługi Resource Manager](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| Maszyny wirtualne: Przykład Windows |[Zaawansowanej konfiguracji skalowania automatycznego dla zestawów skalowania maszyn wirtualnych przy użyciu szablonów usługi Resource Manager](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
 | Usługi API Management|[Automatyczne skalowanie wystąpienia usługi Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat automatycznego skalowania, użyj wskazówki dotyczące skalowania automatycznego wymienionych powyżej, lub zobacz następujące zasoby:
 
-* [Usługa Azure Monitor skalowania automatycznego często używane metryki](insights-autoscale-common-metrics.md)
-* [Najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](insights-autoscale-best-practices.md)
-* [Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach](insights-autoscale-to-webhook-email.md)
+* [Usługa Azure Monitor skalowania automatycznego często używane metryki](../azure-monitor/platform/autoscale-common-metrics.md)
+* [Najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](../azure-monitor/platform/autoscale-best-practices.md)
+* [Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach](../azure-monitor/platform/autoscale-webhook-email.md)
 * [Interfejs API REST automatycznego skalowania](https://msdn.microsoft.com/library/dn931953.aspx)
 * [Rozwiązywania problemów automatyczne skalowanie zestawów skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)

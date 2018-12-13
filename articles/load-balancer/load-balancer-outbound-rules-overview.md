@@ -1,5 +1,6 @@
 ---
-title: Reguły ruchu wychodzącego w usłudze Azure Load Balancer | Dokumentacja firmy Microsoft
+title: Reguły ruchu wychodzącego w module równoważenia obciążenia platformy Azure
+titlesuffix: Azure Load Balancer
 description: Użyj reguł dla ruchu wychodzącego do definiowania tłumaczenia adresu sieciowego ruchu wychodzącego
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 34a80a180d4c08027e4c975d4f7955966eec7307
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3848e2caefbc8fdfb30f36272f1b13e120312a7c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086372"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185022"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -191,14 +193,14 @@ Korzystając z wewnętrznego standardowego modułu równoważenia obciążenia, 
    1. Wyłącz SNAT wychodzących na reguły równoważenia obciążenia.
    2. Skonfiguruj regułę dla ruchu wychodzącego w tym samym module równoważenia obciążenia.
    3. Ponowne użycie puli zaplecza, już używane przez maszyny wirtualne.
-   4. Należy określić "Protokół": "All" w ramach reguły ruchu wychodzącego.
+   4. Określ "Protokół": "All" w ramach reguły ruchu wychodzącego.
 
 - Gdy używane są tylko reguły dla ruchu przychodzącego translatora adresów Sieciowych, znajduje się nie NAT dla ruchu wychodzącego.
 
    1. Umieść maszyny wirtualne w puli zaplecza.
    2. Należy zdefiniować co najmniej jeden konfiguracji adresów IP frontonu z publicznych adresów IP lub publiczny prefiks adresu IP.
    3. Skonfiguruj regułę dla ruchu wychodzącego w tym samym module równoważenia obciążenia.
-   4. Należy określić "Protokół": "All" w ramach reguły ruchu wychodzącego
+   4. Określ "Protokół": "All" w ramach reguły ruchu wychodzącego
 
 ## <a name="limitations"></a>Ograniczenia
 

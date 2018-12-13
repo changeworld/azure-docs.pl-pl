@@ -1,7 +1,7 @@
 ---
-title: Zmień rozmiar i przycinać miniatury Bing — wyszukiwanie wiadomości Bing
+title: Zmień rozmiar i przyciąć obraz miniatury — interfejs API wyszukiwania wiadomości Bing
 titlesuffix: Azure Cognitive Services
-description: Pokazuje, jak zmienić rozmiar i przycinać miniaturach dołączany do odpowiedzi usługi Bing.
+description: Zmień rozmiar i przyciąć obraz miniatury, dołączony do odpowiedzi z interfejsu API wyszukiwania wiadomości Bing.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: bing-news-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: ce3bb3a5001fae28a8ab227b0a390fc3779255d8
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 04565b9eabdff214e27b5f29bb1355f6db236d20
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800439"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251202"
 ---
 # <a name="resizing-and-cropping-thumbnail-images"></a>Zmiana rozmiaru i przycinanie obrazów miniatur
 

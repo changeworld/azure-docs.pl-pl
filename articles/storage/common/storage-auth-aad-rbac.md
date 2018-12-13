@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: ac62800e81cece61e9f51c496ace2868629a49a1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 911b8051530daca57fe26fb22c6dc1be845c6d6d
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960247"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321430"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do obiektów Blob platformy Azure i dane w kolejce przy użyciu RBAC (wersja zapoznawcza)
 
@@ -29,6 +29,7 @@ Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC. Usługa A
 
 - [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
 - [Czytnik danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+- [Właściciel danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
 - [Współautor danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
 - [Czytnik danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
 
@@ -44,7 +45,7 @@ Przypisz rolę RBAC do tożsamości usługi platformy Azure, aby udzielić upraw
 
 |Zakres|Właściciel danych obiektów blob|Współautor danych obiektu blob|Czytnik danych obiektu blob|Współautor danych kolejki|Czytnik danych kolejki|
 |---|---|---|---|---|---|
-|Poziom Subscrition|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji| Dostęp do odczytu do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kolejek w ramach subskrypcji|Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji|
+|Poziom subskrypcji|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji| Dostęp do odczytu do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kolejek w ramach subskrypcji|Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji|
 |Poziomu grupy zasobów|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów|Dostęp do odczytu do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis dostęp do wszystkich kolejek w grupie zasobów|Dostęp do odczytu do wszystkich kolejek w grupie zasobów|
 |Na poziomie konta magazynu|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu|Dostęp do odczytu do wszystkich kontenerów i obiektów blob na koncie magazynu|Odczyt/zapis dostęp do wszystkich kolejek na koncie magazynu|Dostęp do odczytu do wszystkich kolejek na koncie magazynu|
 |Poziom kontenera/kolejki|Odczyt/zapis dostęp do określonego kontenera i jego obiektów blob|Odczyt/zapis dostęp do określonego kontenera i jego obiektów blob|Dostęp do odczytu do określonego kontenera i jego obiektów blob|Odczyt/zapis dostęp do określonej kolejki|Dostęp do odczytu do określonej kolejki|

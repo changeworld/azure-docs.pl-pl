@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 0d728d81a29c5520938c8553c026727c0f94cc43
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 12/10/2018
+ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957007"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272868"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -85,7 +85,91 @@ Jeśli okaże się, że masz problemu z wydajnością dotyczące uruchamiania, c
 > [!IMPORTANT]
 > Aby uzyskać zestaw zapytań T-SQL, przy użyciu tych widoków DMV, aby rozwiązać problemy dotyczące użycia procesora CPU, zobacz [problemy z wydajnością Procesora zidentyfikować](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
+### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>Rozwiązywanie problemów z zapytań z problemami z planu wykonania zależne od parametru zapytania
+
+Problem z parametrem plan poufnych (PSP) odwołuje się do scenariusza, w którym Optymalizator zapytań generuje planu wykonania zapytania, który jest optymalna tylko dla określonego parametru wartości (lub zestaw wartości) i buforowanego planu jest następnie optymalnej wartości parametrów używanych w kolejne wykonania. Inne niż optymalne plany następnie może spowodować problemy z wydajnością zapytań i ogólną degradacji przepływności obciążenia.
+
+Istnieje kilka obejść zastosować, aby zminimalizować problemy, każdy z nich skojarzone wady i zalety i wady:
+
+- Użyj [ponownie SKOMPILOWAĆ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania na wykonanie każdego zapytania. To obejście zamienia wyskalować czas kompilacji i zwiększonej wyposażony w Procesor o lepszej jakości planu. Za pomocą `RECOMPILE` opcja często nie jest możliwe w przypadku obciążeń wymagających wysokiej przepływności.
+- Użyj [opcji (Optymalizuj pod kątem...) ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania, aby zastąpić wartość rzeczywistego parametru z wartością typowy parametr, który tworzy plan wystarczające dla większości możliwości wartość parametru.   Ta opcja wymaga dobrej znajomości sposobu optymalne parametry i właściwości skojarzonego planu.
+- Użyj [(OPTYMALIZUJ dla nieznany) opcja](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania, aby zastąpić wartość rzeczywistego parametru w zamian za przy użyciu Średnia gęstość wektora. Innym sposobem wykonania tych czynności jest przechwytywanie przychodzących wartości parametrów do zmiennych lokalnych, a następnie używając zmiennych lokalnych w ramach predykaty zamiast przy użyciu parametrów, samodzielnie. Średnia gęstość musi być *wystarczająco dobre* przy użyciu tej określonej poprawki.
+- Wyłączyć wykrywanie parametrów, korzystając wyłącznie z [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania.
+- Użyj [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania, aby zapobiec następuje rekompilacja znajduje się w pamięci podręcznej. To rozwiązanie zakłada *dostatecznie dobrej* typowych plan jest już w pamięci podręcznej. Można także wyłączyć aktualizacje automatyczne będą statystyki, aby zmniejszyć prawdopodobieństwo dobrego planu, w której przeprowadzana jest eksmisja i nowy plan zły kompilowanego.
+- Wymuś plan za pomocą jawnego [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania (przez jawne określenie, ustawiając określonego planu przy użyciu Query Store lub przez włączenie [dostrajania automatycznego](sql-database-automatic-tuning.md).
+- Zastąp jednej procedury zagnieżdżony zestaw procedur, które mogą być używane na podstawie logikę warunkową i wartości parametrów skojarzonych.
+- Tworzenie dynamicznych parametrów alternatywy wykonywania w definicji procedury statyczne.
+
+Aby uzyskać dodatkowe informacje na temat rozwiązywania tego rodzaju problemów Zobacz:
+
+- To [powąchać parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) wpis w blogu
+- To [parametru wykrywanie problemów i ich obejść](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/) wpis w blogu
+- To [syna i wykrywanie parametrów myszy](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) wpis w blogu
+- To [dynamiczny język sql, a plan jakości w zapytaniach parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) wpis w blogu
+
+### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Rozwiązywanie problemów z działania kompilacji z powodu nieprawidłowej parametryzacji
+
+Gdy zapytanie ma literały, aparat bazy danych zdecyduje się na automatyczne parametryzacja instrukcji albo użytkownik jawnie możecie go w celu zmniejszenia liczby kompiluje. Duża liczba kompiluje zapytania przy użyciu tego samego wzorca, ale różnych wartości literałów może powodować wysokie wykorzystanie procesora CPU. Podobnie jeśli tylko częściowo Definiowanie parametrów zapytania, które mają literałów w dalszym ciągu aparatu bazy danych parametryzuj go dalej.  Poniżej przedstawiono przykład częściowo sparametryzowanych zapytań:
+
+```sql
+select * from t1 join t2 on t1.c1=t2.c1
+where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+```
+
+W poprzednim przykładem `t1.c1` przyjmuje `@p1` , ale `t2.c2` nadal wykonać GUID jako literał. W tym przypadku, jeśli zmienisz wartość `c2`, zapytanie będzie traktowane jako różne zapytania i nastąpi nowej kompilacji. Aby zmniejszyć kompilacje w poprzedniego przykładu, rozwiązaniem jest również zdefiniować parametry identyfikatora GUID.
+
+Następujące zapytanie Wyświetla liczbę zapytań przez skrót zapytania, aby określić, jeśli zapytanie jest prawidłowo sparametryzowane, lub nie:
+
+```sql
+   SELECT  TOP 10  
+      q.query_hash
+      , count (distinct p.query_id ) AS number_of_distinct_query_ids
+      , min(qt.query_sql_text) AS sampled_query_text
+   FROM sys.query_store_query_text AS qt
+      JOIN sys.query_store_query AS q
+         ON qt.query_text_id = q.query_text_id
+      JOIN sys.query_store_plan AS p 
+         ON q.query_id = p.query_id
+      JOIN sys.query_store_runtime_stats AS rs 
+         ON rs.plan_id = p.plan_id
+      JOIN sys.query_store_runtime_stats_interval AS rsi
+         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+   WHERE
+      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+      AND query_parameterization_type_desc IN ('User', 'None')
+   GROUP BY q.query_hash
+   ORDER BY count (distinct p.query_id) DESC
+```
+
+### <a name="resolve-problem-queries-or-provide-more-resources"></a>Rozwiąż problematycznych zapytań lub podać więcej zasobów
+
 Po zidentyfikowaniu problemu, można dostrajanie problematycznych zapytań lub Uaktualnij rozmiar obliczeń lub warstwę można zwiększyć pojemność usługi Azure SQL database w celu ochrony przed rozproszonymi wymagania dotyczące procesora CPU usługi. Aby uzyskać informacje na temat skalowania zasobów dla pojedynczych baz danych, zobacz [skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database](sql-database-single-database-scale.md) i skalowania zasobów dla pul elastycznych, zobacz [skalowanie elastycznej puli zasobów w usłudze Azure SQL Baza danych](sql-database-elastic-pool-scale.md). Aby uzyskać informacje na temat skalowania wystąpienia zarządzanego, zobacz [limity zasobów na poziomie wystąpienia](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+
+### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>Sprawdza, czy uruchomione problemy ze względu na zwiększenie obciążenia woluminu
+
+Wzrost ruchu aplikacji i obciążeń można uwzględnić zwiększone użycie procesora CPU, ale należy zachować ostrożność prawidłowo zdiagnozować ten problem. W przypadku wysokiej Procesora odpowiedzieć na następujące pytania do określenia, czy rzeczywiście zwiększenie użycia procesora CPU jest z powodu zmiany głośności obciążenia:
+
+1. Czy kwerendy z aplikacji przyczyny tego problemu procesor CPU o wysokiej?
+2. Najważniejsze korzystających z procesora CPU zapytań (które mogą być identyfikowane):
+
+   - Ustal, czy wystąpiły wiele planów wykonywania skojarzony z tego samego zapytania. Jeśli tak, należy określić dlaczego.
+   - Dla zapytań przy użyciu tego samego planu wykonania należy określić czasy wykonania były spójne i zwiększenie liczby wykonań. Jeśli tak, istnieją problemy z wydajnością prawdopodobnie z powodu wzrostu obciążenia.
+
+Aby podsumować, jeśli planu wykonania zapytania nie wykonać inaczej, ale zwiększyć wykorzystanie procesora CPU, oraz liczby wykonań, prawdopodobnie wystąpił problem z wydajnością związanych z wzrostu obciążenia.
+
+Nie zawsze jest łatwy do zawierania jest zmiana wolumenu obciążenia, umożliwiające obsługę problem procesora CPU.   Czynniki do rozważenia: 
+
+- **Użycie zasobów zmienione**
+
+  Na przykład Rozważmy scenariusz, w którym wzrosła procesora CPU do 80% przez dłuższy czas.  Użycie procesora CPU samodzielnie nie oznacza woluminu obciążenia zmienione.  Wyślij zapytanie do planu wykonania, że regresji i zmiany w zakresie dystrybucji danych można również przyczyniają się do więcej użycia zasobów mimo, że aplikacja wykonuje te same obciążenia dokładne.
+
+- **Pojawiły się nowe zapytanie**
+
+   Aplikacja może dysku nowego zestawu zapytań w różnym czasie.
+
+- **Liczba żądań zwiększanie lub zmniejszanie**
+
+   Ten scenariusz jest najbardziej oczywiste miary obciążenia. Liczba zapytań nie zawsze odpowiada więcej wykorzystanie zasobów. Ta metryka jest jednak nadal sygnał znaczące, przy założeniu, że inne czynniki nie ulegną zmianie.
 
 ## <a name="waiting-related-performance-issues"></a>Problemy z wydajnością związanych z oczekiwania
 
@@ -94,6 +178,13 @@ Gdy masz pewność, że nie występują wysoka-procesor CPU, problem z wydajnoś
 - [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) udostępnia statystyki oczekiwania na zapytanie wraz z upływem czasu. W Store zapytania oczekiwania typów są połączone w kategoriach oczekiwania. Mapowanie oczekiwania kategorie typów oczekiwania jest dostępna w [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
 - [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) zwraca informacje o wszystkich czeka napotykanych przez wątki, które są wykonywane podczas operacji. Ten widok zagregowane umożliwia diagnozowanie problemów z wydajnością za pomocą usługi Azure SQL Database, a także przy użyciu określonego zapytania i partie.
 - [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) zwraca informacje o kolejce oczekiwania zadań, które oczekują na niektórych zasobów.
+
+W scenariuszach wysokiej Procesora Store zapytań i statystyki oczekiwania nie zawsze odzwierciedla wykorzystanie procesora CPU w tych dwóch powodów:
+
+- Nadal mogą być wykonywane zapytania zużywające procesor CPU o wysokiej i zapytania nie została zakończona.
+- Zapytania zużywające procesor CPU o wysokiej były uruchomione po przejściu w tryb failover wystąpił
+
+Query Store oczekiwania śledzenia statystyki dynamicznych widoków zarządzania tylko Pokaż wyniki dla pomyślnie zakończonych i upłynął limit czasu zapytania i nie są wyświetlane dane dotyczące (aż do zakończenia) w trakcie wykonywania instrukcji.  Widok dynamiczny zarządzania [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umożliwia śledzenie aktualnie wykonywanych zapytań i czas skojarzonego procesu roboczego.
 
 Jak pokazano na poprzednim wykresie, czeka najczęściej są:
 

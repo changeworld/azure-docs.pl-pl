@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 7474d76537111ebc9f34bb2632a899b7ceb4e50a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 1c90c85f667e18a80c4673a73867ee2d6b3b6294
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643138"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189901"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Łączenie komputerów Windows do usługi Log Analytics na platformie Azure
 
@@ -59,7 +57,7 @@ Aby skonfigurować używanie [protokołu TLS 1.2](https://docs.microsoft.com/win
 
 Konfigurowanie programu .NET Framework 4.6 lub później do obsługi bezpiecznego szyfrowania, ponieważ domyślnie go jest wyłączona. [Silnej kryptografii](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) bezpieczniejsze protokołów sieciowych, takich jak protokół TLS 1.2 i blokuje protokołów, które nie są bezpieczne. 
 
-1. Znajdź następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
+1. Znajdź następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\Software\Microsoft\\. NETFramework\v4.0.30319**.  
 2. Utwórz wartość DWORD **SchUseStrongCrypto** tego podklucza o wartości **1**.  
 3. Znajdź następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
 4. Utwórz wartość DWORD **SchUseStrongCrypto** tego podklucza o wartości **1**. 
@@ -180,7 +178,7 @@ Aby bezpośrednio pobrać kod produktu za pomocą pakietu instalacji agenta, nal
 
 Po zakończeniu instalacji agenta zweryfikowaniem jej został pomyślnie połączony, i raportowania można zrobić na dwa sposoby.  
 
-Z komputera w **Panelu sterowania**, Znajdź element **Microsoft Monitoring Agent**.  Zaznacz go i **usługi Azure Log Analytics** karcie agent powinien być wyświetlany komunikat z informacją: **program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+Z komputera w **Panelu sterowania**, Znajdź element **Microsoft Monitoring Agent**.  Zaznacz go i **usługi Azure Log Analytics** karcie agent powinien być wyświetlany komunikat z informacją: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 Wyszukiwanie w dzienniku proste można również wykonać w witrynie Azure portal.  
 

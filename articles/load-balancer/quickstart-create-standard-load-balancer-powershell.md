@@ -1,5 +1,6 @@
 ---
-title: 'Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa — Azure PowerShell | Microsoft Docs'
+title: 'Szybki Start: Tworzenie standardowego modułu równoważenia obciążenia — program Azure PowerShell'
+titlesuffix: Azure Load Balancer
 description: W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu PowerShell
 services: load-balancer
 documentationcenter: na
@@ -13,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
-ms:custom: mvc
-ms.openlocfilehash: e4e66d18f9dcb7f020cdb881226f6e47118e5186
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms:custom: seodec18
+ms.openlocfilehash: 0db575ee6c04c0fb4639ea2e9e095200da781fe8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578556"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256319"
 ---
-# <a name="get-started"></a>Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell
+# <a name="get-started"></a>Szybki Start: Tworzenie standardowego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Windows Server i zrównoważysz obciążenie aplikacji internetowej między maszynami wirtualnymi. Aby dowiedzieć się więcej na temat usługi Load Balancer w warstwie Standardowa, zobacz [Co to jest usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]

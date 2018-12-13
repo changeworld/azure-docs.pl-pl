@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: 225cb3d2f78f41bdb17763d13644c1d95bc62710
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c565ccf7ac04e2a3ba86e2fa256a05a9649d2de4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014705"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166153"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Zapytanie Apache Hive za pośrednictwem sterownika JDBC w HDInsight
 
@@ -90,7 +90,7 @@ SQuirreL SQL jest klient JDBC, który może służyć do zdalne uruchamianie zap
 
     * **Nazwa**: Hive
     * **Przykładowy adres URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Dodatkowe ścieżki klas**: Dodaj wszystkie pliki jar, pobrane wcześniej za pomocą przycisku Dodaj
+    * **Bardzo klasy ścieżki**: Dodaj wszystkie pliki jar, pobrane wcześniej za pomocą przycisku Dodaj
     * **Nazwa klasy**: org.apache.hive.jdbc.HiveDriver
 
    ![Dodaj okno dialogowe sterownika](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
@@ -103,7 +103,7 @@ SQuirreL SQL jest klient JDBC, który może służyć do zdalne uruchamianie zap
 
 7. Użyj następujących wartości dla **Dodaj Alias** okna dialogowego.
 
-    * **Nazwa**: programu Hive HDInsight
+    * **Nazwa**: Hive on HDInsight
 
     * **Sterownik**: Użyj listy rozwijanej, aby wybrać **Hive** sterownika
 
@@ -113,12 +113,12 @@ SQuirreL SQL jest klient JDBC, który może służyć do zdalne uruchamianie zap
 
     * **Nazwa użytkownika**: Nazwa konta logowania klastra dla klastra usługi HDInsight. Wartość domyślna to `admin`.
 
-    * **Hasło**: hasło dla konta logowania klastra.
+    * **hasło**: Hasło dla konta logowania klastra.
 
  ![Dodaj alias okno dialogowe](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
     > [!IMPORTANT] 
-    > Użyj **testu** przycisk, aby sprawdzić, czy połączenie działa. Gdy **nawiązać połączenie: programu Hive HDInsight** zostanie wyświetlone okno dialogowe, wybierz **Connect** do wykonania testu. Jeśli test zakończy się pomyślnie, zobaczysz **Łączenie przebiegło pomyślnie** okna dialogowego. Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów](#troubleshooting).
+    > Użyj **testu** przycisk, aby sprawdzić, czy połączenie działa. Gdy **nawiązać połączenie: Programu hive HDInsight** zostanie wyświetlone okno dialogowe, wybierz **Connect** do wykonania testu. Jeśli test zakończy się pomyślnie, zobaczysz **Łączenie przebiegło pomyślnie** okna dialogowego. Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów](#troubleshooting).
 
     Aby zapisać alias połączenie, użyj **Ok** znajdujący się u dołu **Dodaj Alias** okna dialogowego.
 
@@ -140,7 +140,7 @@ Przykładem przy użyciu klienta języka Java do wykonywania zapytań programu H
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Wystąpił nieoczekiwany błąd podczas próby otwarcia połączenia SQL
 
-**Objawy**: podczas łączenia z klastra usługi HDInsight, który jest w wersji 3.3 lub większą, może wystąpić błąd, który wystąpił nieoczekiwany błąd. Ślad stosu dla tego błędu rozpoczyna się z następującymi wierszami:
+**Objawy**: W przypadku nawiązywania połączenia z klastra usługi HDInsight, który jest w wersji 3.3 lub większą, może pojawić się błąd, który wystąpił nieoczekiwany błąd. Ślad stosu dla tego błędu rozpoczyna się z następującymi wierszami:
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -148,9 +148,9 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**Przyczyna**: starszy plik commons codec.jar wersji dołączonej SQuirreL przyczyną tego błędu.
+**Przyczyna**: Ten błąd jest spowodowany przez starsze pliku commons codec.jar wersji dołączonej SQuirreL.
 
-**Rozpoznawanie**: Aby naprawić ten błąd, wykonaj następujące czynności:
+**Rozpoznawanie**: Aby naprawić ten błąd, wykonaj następujące kroki:
 
 1. Pobranie pliku jar koder commons z klastra usługi HDInsight.
 

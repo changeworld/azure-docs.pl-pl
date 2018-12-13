@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a76b22feee84820f3acc963af70ec24669a216d7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7037c0b4c1021ac7b91134fa429a774f600a774f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251972"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194168"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure dla Windows
 
 Usługa Azure rozszerzenie maszyny Wirtualnej diagnostyki wydajności pomaga diagnostycznych zbieranie danych dotyczących wydajności z maszyn wirtualnych Windows. Rozszerzenie wykonuje analizę i zapewnia raportu dotyczącego wyników i zalecenia, aby zidentyfikować i rozwiązać problemy z wydajnością dla maszyny wirtualnej. To rozszerzenie instaluje narzędzie rozwiązywania problemów, o nazwie [program PerfInsights](https://aka.ms/perfinsights).
 
 > [!NOTE]
-    > Jeśli chcesz uruchomić diagnostykę na maszynie Wirtualnej w witrynie Azure portal dla maszyn wirtualnych-classic, zaleca się używać nowego środowiska. Aby uzyskać więcej informacji, zobacz [Diagnostyka wydajności maszyn wirtualnych platformy Azure](performance-diagnostics.md) 
+> Jeśli chcesz uruchomić diagnostykę na maszynie Wirtualnej w witrynie Azure portal dla maszyn wirtualnych-classic, zaleca się używać nowego środowiska. Aby uzyskać więcej informacji, zobacz [Diagnostyka wydajności maszyn wirtualnych platformy Azure](performance-diagnostics.md) 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

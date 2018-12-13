@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 367ecd4534a2221e996e706f8b4426ea6f70f213
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d160eb377c3d4d73105cdb61b5722a147d22ed37
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680501"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321181"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
 Wiele zespołów należy ściśle regulowania dostępu do danych monitorowania i ustawień. Na przykład, jeśli posiadasz elementy członkowskie zespołu, którzy pracują wyłącznie na temat monitorowania (pracowników działu pomocy technicznej, inżynierom devops) lub korzystając z dostawcą usługi zarządzanej, można przyznać im dostęp do danych monitorowania tylko jednocześnie ograniczając możliwość tworzenia, modyfikowania, lub Usuń zasoby. W tym artykule pokazano, jak szybko wbudowana rola RBAC monitorowania są stosowane do użytkownika na platformie Azure lub utworzyć własne niestandardowe rolę dla użytkownika, który musi mieć ograniczone uprawnienia monitorowania. Następnie omówiono zagadnienia dotyczące zabezpieczeń na zasoby dotyczące usługi Azure Monitor i jak można ograniczyć dostęp do danych, które zawierają.
 
 ## <a name="built-in-monitoring-roles"></a>Wbudowane role monitorowania
-Usługa Azure Monitor wbudowane role mają na celu ograniczenia dostępu do zasobów w ramach subskrypcji, ograniczając osoby odpowiedzialne za monitorowanie infrastruktury, aby uzyskać i skonfigurować je. Usługa Azure Monitor zapewnia dwie role out-of--box: monitorowanie Czytelnik i współautor monitorowania.
+Usługa Azure Monitor wbudowane role mają na celu ograniczenia dostępu do zasobów w ramach subskrypcji, ograniczając osoby odpowiedzialne za monitorowanie infrastruktury, aby uzyskać i skonfigurować je. Usługa Azure Monitor zapewnia dwie role out-of--box: Monitorowania Czytelnik i współautor monitorowania.
 
 ### <a name="monitoring-reader"></a>Czytelnik monitorowania
 Osoby z przypisaną rolą Czytelnik monitorowania można wyświetlić wszystkie dane monitorowania w ramach subskrypcji, ale nie można zmodyfikować dowolnego zasobu lub edytować wszelkie ustawienia związane z monitorowania zasobów. Ta rola jest odpowiednia dla użytkowników w organizacji, takie jak operacje lub pomocy technicznej inżynierów, którzy muszą mieć możliwość:
 
 * Wyświetlać pulpity nawigacyjne monitorowania w portalu i Utwórz swoje własne prywatne pulpity nawigacyjne monitorowania.
 * Wyświetl reguły alertu zdefiniowane w [Azure Alerts](monitoring-overview-alerts.md)
-* Zapytanie dotyczące korzystania z metryk [interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [poleceń cmdlet programu PowerShell](insights-powershell-samples.md), lub [międzyplatformowego interfejsu wiersza polecenia](insights-cli-samples.md).
+* Zapytanie dotyczące korzystania z metryk [interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [poleceń cmdlet programu PowerShell](insights-powershell-samples.md), lub [międzyplatformowego interfejsu wiersza polecenia](../azure-monitor/platform/cli-samples.md).
 * Wyślij zapytanie do dziennika aktywności przy użyciu portalu, interfejsu API REST usługi Azure Monitor, poleceń cmdlet programu PowerShell lub wieloplatformowego interfejsu wiersza polecenia.
 * Widok [ustawień diagnostycznych](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) dla zasobu.
 * Widok [profil dziennika](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) dla subskrypcji.

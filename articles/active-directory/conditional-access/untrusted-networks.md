@@ -1,8 +1,8 @@
 ---
-title: 'Jak: Konfigurowanie usługi Azure Active Directory zasady dostępu warunkowego dla próby dostępu z niezaufanymi sieciami | Dokumentacja firmy Microsoft'
+title: Instrukcje ustawiania wymogu uwierzytelniania wieloskładnikowego (MFA) dla dostępu z niezaufanymi sieciami przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować zasady dostępu warunkowego w usłudze Azure Active Directory (Azure AD) do podejmowania prób dostępu z niezaufanymi sieciami.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,37 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/23/2018
+ms.date: 12/10/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5ddde65b2a68e71d86af6ce3dcd2847736cf5823
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c40db6c253899d7aab21d277e93b23dd0c6feb97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627189"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314010"
 ---
-# <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>Porady: Konfigurowanie zasad dostępu warunkowego w przypadku próby uzyskania dostępu z niezaufanymi sieciami   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Instrukcje: Wymagać uwierzytelniania Wieloskładnikowego, aby uzyskać dostęp z niezaufanymi sieciami przy użyciu dostępu warunkowego   
 
-W świecie urządzeń przenośnych i chmurze — Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca. W efekcie użytkownicy uzyskają dostęp swoje aplikacje w chmurze, nie tylko z siecią organizacji, ale z dowolnej niezaufanej lokalizacji internetowej. Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), można kontrolować sposób autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze. Jednym z typowych wymagań w tym kontekście jest kontrolowanie dostępu prób inicjowanych z niezaufanymi sieciami. Ten artykuł zawiera informacje potrzebne do konfigurowania zasad dostępu warunkowego, która obsługuje ten wymóg. 
+Usługa Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca. Użytkownicy uzyskają dostęp swoje aplikacje w chmurze, nie tylko z siecią organizacji, ale z dowolnej niezaufanej lokalizacji internetowej. Typowe, najlepszym rozwiązaniem dla dostępu z niezaufanymi sieciami jest wymaganie uwierzytelniania wieloskładnikowego (MFA).
+
+Ten artykuł zawiera informacje potrzebne do konfigurowania zasad dostępu warunkowego, która wymaga uwierzytelniania Wieloskładnikowego dla dostępu z niezaufanymi sieciami. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W tym artykule założono, że znasz: 
 
-- Podstawowe pojęcia związane z dostępu warunkowego usługi Azure AD 
-- Konfigurowanie zasad dostępu warunkowego w witrynie Azure portal
+- [Podstawowe pojęcia](overview.md) dostępu warunkowego usługi Azure AD 
+- [Najlepsze praktyki](best-practices.md) na temat konfigurowania zasad dostępu warunkowego w witrynie Azure portal
 
-Zobacz:
-
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal.md) — Przegląd dostępu warunkowego 
-
-- [Szybki Start: Wymagaj uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md) — Aby uzyskać pewne doświadczenie w konfigurowaniu zasad dostępu warunkowego. 
 
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-Do głównej równowagę między zabezpieczeń i wydajności, może być wystarczające wymagają tylko użytkownika, aby zostać uwierzytelniony przy użyciu hasła. Jednak gdy podejmowana jest próba dostępu z sieci niezaufanej lokalizacji jest zwiększone ryzyko logowania nie są wykonywane przez autoryzowanych użytkowników. Aby rozwiązać ten problem, można zablokować próby dostępu z niezaufanymi sieciami. Alternatywnie możesz również wymagać uwierzytelniania wieloskładnikowego (MFA) do uzyskania ponownie dodatkową pewność, że nastąpiła próba przez prawowitym właścicielem konta. 
+Do głównej równowagę między zabezpieczeń i wydajności, może być wystarczające tylko Wymagaj hasła do logowania z siecią organizacji. Aby uzyskać dostęp z lokalizacji niezaufanych sieci, ma jednak zwiększoną ryzyko logowania nie są wykonywane przez autoryzowanych użytkowników. Aby rozwiązać ten problem, możesz zablokować dostęp z niezaufanymi sieciami. Alternatywnie możesz również wymagać uwierzytelniania wieloskładnikowego (MFA) do uzyskania ponownie dodatkową pewność, że nastąpiła próba przez prawowitym właścicielem konta. 
 
 Przy użyciu dostępu warunkowego usługi Azure AD można rozwiązać tego wymagania, z jedną zasadę, która udziela dostępu: 
 
@@ -54,14 +51,14 @@ Przy użyciu dostępu warunkowego usługi Azure AD można rozwiązać tego wymag
 
 - Wymaganie uwierzytelniania wieloskładnikowego 
 
-- Gdy podejmowana jest próba dostępu od: 
+- Gdy dostęp jest pochodzi od: 
 
     - Lokalizacja, która nie jest zaufana
 
 
-## <a name="considerations"></a>Zagadnienia do rozważenia
+## <a name="implementation"></a>Wdrażanie
 
-Żądanie tego scenariusza jest sformułowanie *gdy podejmowana jest próba dostępu z lokalizacji, która nie jest zaufana* do warunki dostępu warunkowego. W zasadach dostępu warunkowego można skonfigurować [warunek lokalizacji](location-condition.md) dla scenariuszy, które są powiązane z lokalizacji sieciowych. Warunek lokalizacji umożliwia wybranie nazwane lokalizacje, które reprezentują logiczne grupy zakresów adresów IP, innych krajów i regionów.  
+Żądanie tego scenariusza jest sformułowanie *dostępu z sieci niezaufanej lokalizacji* do warunki dostępu warunkowego. W zasadach dostępu warunkowego można skonfigurować [warunek lokalizacji](location-condition.md) dla scenariuszy, które są powiązane z lokalizacji sieciowych. Warunek lokalizacji umożliwia wybranie nazwane lokalizacje, będące logicznie zgrupowanymi zakresów adresów IP, krajów i regionów.  
 
 Zazwyczaj organizacja ma jeden lub więcej zakresów adresów, na przykład 199.30.16.0 - 199.30.16.24.
 Można skonfigurować nazwanych lokalizacji przez:
@@ -73,7 +70,7 @@ Można skonfigurować nazwanych lokalizacji przez:
 
 Zamiast próbować definiowaniu wszystkie lokalizacje, które nie są zaufane, można wykonywać następujące czynności:
 
-- Uwzględnij 
+- Obejmują z dowolnego miejsca 
 
     ![Dostęp warunkowy](./media/untrusted-networks/02.png)
 
@@ -83,9 +80,9 @@ Zamiast próbować definiowaniu wszystkie lokalizacje, które nie są zaufane, m
 
 
 
-## <a name="implementation"></a>Wdrażanie
+## <a name="policy-deployment"></a>Wdrażanie zasad
 
-W przypadku metody opisane w tym artykule można teraz skonfigurować zasady dostępu warunkowego dla niezaufanych lokalizacji. Zasady należy zawsze przetestować przed udostępnieniem jej w środowisku produkcyjnym, aby upewnić się, że działa zgodnie z oczekiwaniami. W idealnym przypadku należy wykonać początkową testów w dzierżawie testowej, jeśli jest to możliwe. Aby uzyskać więcej informacji, zobacz [jak należy wdrożyć nowe zasady](best-practices.md#how-should-you-deploy-a-new-policy). 
+W przypadku metody opisane w tym artykule można teraz skonfigurować zasady dostępu warunkowego dla niezaufanych lokalizacji. Aby upewnić się, że zasad usługi działa zgodnie z oczekiwaniami, zalecanym najlepszym rozwiązaniem jest przetestowanie go przed udostępnieniem jej w środowisku produkcyjnym. W idealnym przypadku umożliwia to dzierżawa testowa Sprawdź, czy nowe zasady działa zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [wdrażanie nowych zasad](best-practices.md#how-should-you-deploy-a-new-policy). 
 
 
 

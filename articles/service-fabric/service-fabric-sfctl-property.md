@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: f24d273afa47466fe53b93d9c9c22bbcb1fc6959
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 78c04abeea1fdc4771f44d44b973ca0dcd2922ea
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493523"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274993"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Właściwości Store i zapytania w obszarze nazw usługi Service Fabric.
@@ -30,7 +30,7 @@ Właściwości Store i zapytania w obszarze nazw usługi Service Fabric.
 | --- | --- |
 | delete | Usuwa określoną właściwość usługi Service Fabric. |
 | Pobierz | Pobiera określoną właściwość usługi Service Fabric. |
-| lista | Pobiera informacje na temat wszystkich właściwości usługi Service Fabric w ramach określonej nazwie. |
+| list | Pobiera informacje na temat wszystkich właściwości usługi Service Fabric w ramach określonej nazwie. |
 | Umieść | Tworzy lub aktualizuje właściwości usługi Service Fabric. |
 
 ## <a name="sfctl-property-delete"></a>Usuń właściwość sfctl

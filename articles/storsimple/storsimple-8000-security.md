@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: ded3c89774c39b5edee02b9e3c6807ce75ff16a4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 2f4bc578b567462c2591c28b270f863ba5756815
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566197"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193913"
 ---
 # <a name="storsimple-security-and-data-protection"></a>Usługa StorSimple zabezpieczeń i ochrony danych
 
@@ -55,7 +55,7 @@ Tylko autoryzowanym StorSimple, urządzenia będą mogły do dołączenia do us�
 
 ![klucz rejestracji usługi](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Aby dowiedzieć się, jak uzyskać klucz rejestracji usługi, przejdź do [krok 2: uzyskanie klucza rejestracji usługi](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
+Aby dowiedzieć się, jak uzyskać klucz rejestracji usługi, przejdź do [krok 2: Pobierz klucz rejestracji usługi](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
 
 Klucz rejestracji usługi jest długa klucz, który zawiera ponad 100 znaków. Można skopiować klucz i zapisz go w pliku tekstowym w bezpiecznej lokalizacji, aby można go autoryzować dodatkowych urządzeń zgodnie z potrzebami. Jeśli klucz rejestracji usługi zostaną utracone po zarejestrowaniu pierwszego urządzenia, należy wygenerować nowy klucz w usłudze Menedżer urządzeń StorSimple. Nie ma to wpływu na działanie istniejących urządzeń.
 
@@ -210,10 +210,10 @@ Usługa StorSimple używa następujących algorytmów szyfrowania w celu ochrony
 Menedżer urządzeń StorSimple dla serii fizycznych i wirtualnych zbiera informacje osobiste w następujących przypadkach klucza:
 
 - Zgłoś alert, ustawienia użytkownika, w którym skonfigurowano adres e-mail użytkowników. Te informacje można wyświetlać i wyczyszczone przez administratora. Dotyczy to zarówno urządzeń z serii StorSimple 8000 oraz macierzy wirtualnych StorSimple.
- * Aby wyświetlić i wyczyścić ustawienia dla serii StorSimple 8000, wykonaj kroki opisane w [widoku StorSimple alerty i zarządzaj nimi](storsimple-8000-manage-alerts.md#configure-alert-settings)
- * Aby wyświetlić i wyczyścić ustawienia dla rozwiązania StorSimple Virtual Array, wykonaj kroki opisane w [widoku StorSimple alerty i zarządzaj nimi](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+  * Aby wyświetlić i wyczyścić ustawienia dla serii StorSimple 8000, wykonaj kroki opisane w [widoku StorSimple alerty i zarządzaj nimi](storsimple-8000-manage-alerts.md#configure-alert-settings)
+  * Aby wyświetlić i wyczyścić ustawienia dla rozwiązania StorSimple Virtual Array, wykonaj kroki opisane w [widoku StorSimple alerty i zarządzaj nimi](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
 - Użytkownicy, którzy mają dostęp do danych znajdujących się w udziałach. Lista użytkowników, którzy mają dostęp do danych udziału jest wyświetlany i mogą być wyświetlane. Ta lista są także usuwane w momencie usunięcia akcji. Dotyczy to tylko macierze wirtualne StorSimple.
- * Aby wyświetlić listę użytkowników, kto może uzyskać dostęp lub aby usunąć udział, wykonaj kroki opisane w [Zarządzanie udziałami w ramach macierzy wirtualnej StorSimple](storsimple-virtual-array-manage-shares.md)
+  * Aby wyświetlić listę użytkowników, kto może uzyskać dostęp lub aby usunąć udział, wykonaj kroki opisane w [Zarządzanie udziałami w ramach macierzy wirtualnej StorSimple](storsimple-virtual-array-manage-shares.md)
 
 Aby uzyskać więcej informacji, zapoznaj się z Zasadami ochrony prywatności firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
@@ -221,65 +221,65 @@ Aby uzyskać więcej informacji, zapoznaj się z Zasadami ochrony prywatności f
 
 Poniżej przedstawiono niektóre pytania i odpowiedzi na pytania dotyczące bezpieczeństwa i Microsoft Azure StorSimple.
 
-**P: czy** mojej usługi zostanie naruszone. Czymś co powinno być następne kroki należy wykonać?
+**PYT.:** Moja usługa zostanie naruszone. Czymś co powinno być następne kroki należy wykonać?
 
-**Odp.:** natychmiast należy zmienić klucz szyfrowania danych usługi i klucze konta magazynu dla konta magazynu, który jest używany w przypadku warstw danych. Aby uzyskać instrukcje przejdź do:
+**ODP.:** Natychmiast należy zmienić klucz szyfrowania danych usługi i klucze konta magazynu dla konta magazynu, który jest używany w przypadku warstw danych. Aby uzyskać instrukcje przejdź do:
 
 * [Zmień klucz szyfrowania danych usługi](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [Wymiana kluczy kont magazynu](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**P: czy** mam nowego urządzenia StorSimple, który pyta o klucz rejestracji usługi. Jak pobrać go
+**PYT.:** Masz nowe urządzenie StorSimple, który pyta o klucz rejestracji usługi. Jak pobrać go
 
-**Odp.:** ten klucz został utworzony podczas pierwszego utworzenia usługi Menedżer urządzeń StorSimple. Korzystając z usługi Menedżer urządzeń StorSimple do nawiązania połączenia z urządzeniem, można użyć strony szybki start usługi, aby wyświetlić lub ponownie wygenerować klucz rejestracji usługi. Generowanie nowego klucza rejestracji usługi nie wpłyną na istniejące zarejestrowane urządzenia. Aby uzyskać instrukcje przejdź do:
+**ODP.:** Ten klucz został utworzony podczas pierwszego utworzenia usługi Menedżer urządzeń StorSimple. Korzystając z usługi Menedżer urządzeń StorSimple do nawiązania połączenia z urządzeniem, można użyć strony szybki start usługi, aby wyświetlić lub ponownie wygenerować klucz rejestracji usługi. Generowanie nowego klucza rejestracji usługi nie wpłyną na istniejące zarejestrowane urządzenia. Aby uzyskać instrukcje przejdź do:
 
 * [Wyświetlić lub ponownie wygenerować klucz rejestracji usługi](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
 
-**P: czy** utratą mój klucz szyfrowania danych usługi. Co mam zrobić?
+**PYT.:** Utratą mój klucz szyfrowania danych usługi. Co mam zrobić?
 
-**Odp.:** skontaktuj się z pomocą techniczną firmy Microsoft. Mogą oni się zalogować do sesji pomocy technicznej na urządzeniu i pomocy pobierania klucza (pod warunkiem co najmniej jedno urządzenie jest w trybie online). Po uzyskaniu klucza szyfrowania danych usługi, należy zmienić go, aby upewnić się, że nowy klucz jest znane tylko dla Ciebie. Aby uzyskać instrukcje przejdź do:
+**ODP.:** Contact Microsoft Support. Mogą oni się zalogować do sesji pomocy technicznej na urządzeniu i pomocy pobierania klucza (pod warunkiem co najmniej jedno urządzenie jest w trybie online). Po uzyskaniu klucza szyfrowania danych usługi, należy zmienić go, aby upewnić się, że nowy klucz jest znane tylko dla Ciebie. Aby uzyskać instrukcje przejdź do:
 
 * [Zmień klucz szyfrowania danych usługi](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**P: czy** autoryzacji urządzenia dla usługi zmiany klucza szyfrowania danych, ale nie zostały uruchomione proces zmiany klucza. Co mam zrobić?
+**PYT.:**  Autoryzacji urządzenia dla usługi zmiany klucza szyfrowania danych, ale nie zostały uruchomione proces zmiany klucza. Co mam zrobić?
 
-**Odp.:** jeśli upłynął limit czasu, należy ponownie autoryzować urządzenia do zmiany klucza szyfrowania danych usługi, a następnie uruchom ponownie proces.
+**ODP.:** Jeśli upłynął limit czasu, należy ponownie autoryzować urządzenia do zmiany klucza szyfrowania danych usługi, a następnie uruchom ponownie proces.
 
-**P: czy** klucza szyfrowania danych usługi zostały zmienione, ale nie udało mi się aktualizacji na innych urządzeniach w ciągu 4 godzin. Czy muszę ponownie uruchomić?
+**PYT.:**  Czy mogę zmienić klucza szyfrowania danych usługi, ale nie udało mi się aktualizacji na innych urządzeniach w ciągu 4 godzin. Czy muszę ponownie uruchomić?
 
-**Odp.:** 4-godzinnego okresu jest tylko w przypadku inicjowania zmiany. Po uruchomieniu procesu aktualizacji na urządzeniu StorSimple autoryzowanych autoryzacji jest prawidłowy, dopóki wszystkie urządzenia są aktualizowane.
+**ODP.:** 4-godzinnego okresu jest tylko w przypadku inicjowania zmiany. Po uruchomieniu procesu aktualizacji na urządzeniu StorSimple autoryzowanych autoryzacji jest prawidłowy, dopóki wszystkie urządzenia są aktualizowane.
 
-**P: czy** administratora nasze usługi StorSimple opuścił firmę. Co mam zrobić?
+**PYT.:** Nasze administratora usługi StorSimple opuścił firmę. Co mam zrobić?
 
-**Odp.:** zmienianie i resetowanie haseł, których zezwolić na dostęp do urządzenia StorSimple i zmień szyfrowania danych usługi klawisz, aby upewnić się, że nowych informacji nie jest znany dla nieautoryzowany personel. Aby uzyskać instrukcje przejdź do:
+**ODP.:** Zmień resetowania haseł, które umożliwiają dostęp do urządzenia StorSimple i Zmień klucz szyfrowania danych usługi, aby upewnić się, że nowych informacji nie jest znany nieautoryzowanym próbom. Aby uzyskać instrukcje przejdź do:
 
 * [Zmienianie haseł usługi storsimple przy użyciu usługi Menedżer urządzeń StorSimple](storsimple-8000-change-passwords.md)
 * [Zmień klucz szyfrowania danych usługi](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [Konfigurowanie protokołu CHAP dla urządzenia StorSimple](storsimple-8000-configure-chap.md)
 
-**P: czy** chcę podać hasło programu StorSimple Snapshot Manager do hosta, który nawiązuje połączenie z urządzeniem StorSimple, ale hasło nie jest dostępna. Co mogę zrobić?
+**PYT.:** Chcę podać hasło programu StorSimple Snapshot Manager do hosta, który nawiązuje połączenie z urządzeniem StorSimple, ale hasło nie jest dostępna. Co mogę zrobić?
 
-**Odp.:** jeśli pamiętasz hasła, należy utworzyć nowe konto. Następnie Pamiętaj wszyscy istniejący użytkownicy informuje, że hasło zostało zmienione i czy powinny one aktualizowane swoich klientów do korzystania z nowego hasła. Aby uzyskać instrukcje przejdź do:
+**ODP.:** Jeśli pamiętasz hasła, należy utworzyć nową. Następnie Pamiętaj wszyscy istniejący użytkownicy informuje, że hasło zostało zmienione i czy powinny one aktualizowane swoich klientów do korzystania z nowego hasła. Aby uzyskać instrukcje przejdź do:
 
 * [Zmień hasło programu StorSimple Snapshot Manager](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
 * [Uwierzytelnienia urządzenia](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**P: czy** certyfikat dostępu zdalnego w programie Windows PowerShell dla usługi StorSimple został zmieniony na urządzeniu. Jak zaktualizować moich klientów dostępu zdalnego?
+**PYT.:** Certyfikat zdalny dostęp do programu Windows PowerShell dla usługi StorSimple została zmieniona na urządzeniu. Jak zaktualizować moich klientów dostępu zdalnego?
 
-**Odp.:** Pobierz nowy certyfikat z usługi Menedżer urządzeń StorSimple, a następnie podać go do zainstalowania w magazynie certyfikatów klientów dostępu zdalnego. Aby uzyskać instrukcje przejdź do:
+**ODP.:** Możesz pobrać nowy certyfikat z usługi Menedżer urządzeń StorSimple, a następnie podać go do zainstalowania w magazynie certyfikatów klientów dostępu zdalnego. Aby uzyskać instrukcje przejdź do:
 
 * [Polecenia cmdlet Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
-**P: czy** czy moje dane są chronione w przypadku naruszenia zabezpieczeń usługi Menedżer urządzeń StorSimple?
+**PYT.:** Jest Moje chronionych danych, jeśli zostanie naruszony usługi Menedżer urządzeń StorSimple?
 
-**Odp.:** danych konfiguracji usługi są zawsze szyfrowane kluczem publicznym, podczas wyświetlania w przeglądarce sieci web. Ponieważ usługa nie ma dostępu do klucza prywatnego, usługa nie będzie można zobaczyć wszystkie dane. W przypadku naruszenia zabezpieczeń usługi Menedżer urządzeń StorSimple nie ma to wpływu, ponieważ brak kluczy przechowywanych w usłudze Menedżer urządzeń StorSimple.
+**ODP.:** Dane konfiguracji usługi są zawsze szyfrowane kluczem publicznym, podczas wyświetlania w przeglądarce sieci web. Ponieważ usługa nie ma dostępu do klucza prywatnego, usługa nie będzie można zobaczyć wszystkie dane. W przypadku naruszenia zabezpieczeń usługi Menedżer urządzeń StorSimple nie ma to wpływu, ponieważ brak kluczy przechowywanych w usłudze Menedżer urządzeń StorSimple.
 
-**P: czy** Jeśli osoba uzyska dostęp do certyfikatu szyfrowania danych, dane może stwarzać zagrożenie?
+**PYT.:** Jeśli osoba uzyska dostęp do certyfikatu szyfrowania danych, dane może stwarzać zagrożenie?
 
-**Odp.:** Microsoft Azure przechowuje klucz szyfrowania danych przez klienta (plik pfx) w postaci zaszyfrowanej. Ponieważ plik PFX jest zaszyfrowany i usługę StorSimple nie ma klucza szyfrowania danych usługi do odszyfrowania pliku PFX, po prostu uzyskiwanie dostępu do pliku .pfx nie udostępni żadnych wpisów tajnych.
+**ODP.:** Microsoft Azure przechowuje klucz szyfrowania danych przez klienta (plik pfx) w postaci zaszyfrowanej. Ponieważ plik PFX jest zaszyfrowany i usługę StorSimple nie ma klucza szyfrowania danych usługi do odszyfrowania pliku PFX, po prostu uzyskiwanie dostępu do pliku .pfx nie udostępni żadnych wpisów tajnych.
 
-**P: czy** co się stanie w przypadku jednostek administracji rządowej organ Microsoft dla moich danych?
+**PYT.:** Co się stanie, jeśli jednostek administracji rządowej prosi firmy Microsoft dla moich danych?
 
-**Odp.:** ponieważ wszystkie dane są szyfrowane na komputerze usługi i klucz prywatny jest przechowywany z urządzeniem, jednostek administracji rządowej, musisz poprosić klienta o dane.
+**ODP.:** Ponieważ wszystkie dane są szyfrowane na komputerze usługi i klucz prywatny jest przechowywany z urządzeniem, jednostek administracji rządowej muszą uzyskać dane klienta.
 
 
 

@@ -4,10 +4,9 @@ description: Do nauki o danych dla początkujących jest omawia podstawowe poję
 keywords: wykonując analizy danych, początkujących do nauki o danych, do nauki o danych dla początkujących podstawy do nauki o danych, pytania do nauki o danych, wideo do nauki o danych, wprowadzenie do nauki o danych
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 1f8de5cca7495c407c4fd7b4bf0b2295b3ae8e16
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 9f6d951dcbb0a0a01961bf3f6c924a0c40fd4d29
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073877"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252919"
 ---
-# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Wideo 1: analiza danych dla początkujących — 5 pytań, na które analiza danych daje odpowiedzi
+# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Przetwarzanie danych dla początkujących wideo 1: 5 pytań, analiza danych daje odpowiedzi
 Skorzystaj z krótkiego wprowadzenia do nauki o danych z *przetwarzanie danych dla początkujących* w pięciu krótkich filmach wideo z najważniejszych danych. Te wideo stanowią podstawowy, ale przydatne, czy interesuje Cię nauki o danych, czy pracujesz z analityków danych.
 
 Jest to pierwszy film wideo o rodzajach pytań, spełniające do nauki o danych. Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
@@ -38,10 +37,10 @@ Jest to pierwszy film wideo o rodzajach pytań, spełniające do nauki o danych.
 *Przetwarzanie danych dla początkujących* jest szybkie wprowadzenie do danych do analizy trwa około 25 minut łączna liczba. Zapoznaj się z pięciu wszystkie filmy wideo dotyczące:
 
 * Wideo 1: 5 pytań, analiza danych daje odpowiedzi
-* Wideo 2: [czy Twoje dane są gotowe na analizę danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
+* Wideo 2: [Czy dane są gotowe do analizy danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
 * Wideo 3: [Zadaj pytanie, można odpowiedzieć za pomocą danych](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek.)*
 * Wideo 4: [Prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek.)*
-* Wideo 5: [kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
+* Wideo 5: [Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>Zapis: 5 pytań, analiza danych daje odpowiedzi
 Cześć! Witamy w serii filmów wideo *przetwarzanie danych dla początkujących*.
@@ -65,9 +64,9 @@ Każdej z nich te pytania jest odbierane przez oddzielne rodziny machine learnin
 Warto wziąć pod uwagę algorytm jako młyna i dane jako składników. Algorytm informuje, jak łączyć i łączyć dane w celu uzyskania odpowiedzi. Komputery są podobne blender. Jak najbardziej trudną pracę algorytmu dla Ciebie i jak ona dość szybko.
 
 ## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>Pytanie 1: Jest to A lub B? używa algorytmów klasyfikacji
-Zacznijmy od kwestii: jest to A lub B?
+Zacznijmy od kwestii: Jest to A lub B?
 
-![Algorytmy klasyfikacji: jest to A lub B?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
+![Algorytmy klasyfikacji: Jest to A lub B?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
 
 Tej rodziny algorytmy nosi nazwę klasyfikacji dwóch klas.
 
@@ -75,29 +74,29 @@ Jest to przydatne w przypadku każde pytanie, który ma tylko dwa możliwe odpow
 
 Na przykład:
 
-* Ta opona nie powiedzie się w następnym milach 1000: Yes lub no?
+* Ta opona nie powiedzie się w następnym milach 1000: Tak lub nie?
 * Który udostępnia w większej liczby klientów: 5 USD kuponu lub rabat w wysokości 25%?
 
-To pytanie może również być rephrased do uwzględnienia więcej niż dwie opcje: jest to A lub B lub C lub D, itp.?  Jest to nazywane wieloklasowej klasyfikacji i jego przydatne w przypadku kilku — lub kilka tysięcy — możliwe odpowiedzi. Klasyfikacji wieloklasowej wybiera ten, który najprawdopodobniej.
+To pytanie może również rephrased w celu uwzględnienia więcej niż dwie opcje: Jest to A lub B lub C lub D, itp.?  Jest to nazywane wieloklasowej klasyfikacji i jego przydatne w przypadku kilku — lub kilka tysięcy — możliwe odpowiedzi. Klasyfikacji wieloklasowej wybiera ten, który najprawdopodobniej.
 
 ## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>Pytanie 2: Jest to nieco dziwne? używa algorytmy wykrywania anomalii
-Następne pytanie do nauki o danych pozwala uzyskać odpowiedzi na to: jest to brzmienia? Zostanie udzielona przez rodzinę algorytmów o nazwie wykrywania anomalii.
+Następne pytanie, na które może odpowiedzieć do nauki o danych to: Jest to nieco dziwne? Zostanie udzielona przez rodzinę algorytmów o nazwie wykrywania anomalii.
 
-![Algorytmy wykrywania anomalii: jest to brzmienia?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
+![Algorytmy wykrywania anomalii: Jest to nieco dziwne?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
 W przypadku karty kredytowej został już korzystali z wykrywania anomalii. Karty kredytowej analizuje Twoich wzorców zakupu, tak aby ich można informujące o możliwym oszustwie. Opłaty, które są "nieco dziwne" może być nabyć pod adresem magazynu, w którym zwykle nie zakupów lub kupić niezwykle kosztownych elementu.
 
 To pytanie może być przydatne na wiele różnych sposobów. Na wystąpienie:
 
-* Jeśli masz samochodu z ciśnieniem mierników, warto wiedzieć: jest tego miernika wykorzystanie odczytywanie normalne?
-* Jeśli monitorujesz Internetu, czy chcesz wiedzieć: jest typowy tego komunikatu z Internetu?
+* Jeśli masz samochodu z ciśnieniem mierników, warto wiedzieć: Miernik to wykorzystania odczytuje normalne?
+* Jeśli monitorujesz Internetu, czy chcesz wiedzieć: Jest typowy tego komunikatu z Internetu?
 
 Wykrywanie anomalii flagi nieoczekiwane lub nietypowe zdarzenia lub zachowania. Ta funkcja zapewnia wskazówki gdzie szukać problemów.
 
 ## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>Pytanie 3: Ile? i wiele? używa algorytmów regresji
 Machine learning można również znacznie przewidywanie odpowiedzi sposób? i wiele? Rodzina algorytmu, który odpowiada na to pytanie jest nazywany regresji.
 
-![Algorytmy regresji: ile? i wiele?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
+![Algorytmy regresji: Ile? i wiele?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
 
 Regresja algorytmów prognozowania wartości liczbowych, takich jak:
 
@@ -113,7 +112,7 @@ Czasami trzeba poznać strukturę zestawu danych — to organizację? Na to pyta
 
 Istnieje wiele sposobów, aby tease struktura danych. Jedno z podejść jest klastrowania. Rozdziela danych do naturalnym "są łączone," ułatwia tłumaczenie. Przy użyciu klastrowania nie ma żadnych jedna prawidłowa odpowiedź.
 
-![Klastrowanie algorytmów: to organizację?](./media/data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
+![Algorytmy klastrowania: To organizację?](./media/data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
 
 Typowe przykłady klastrowania pytania:
 
@@ -122,20 +121,20 @@ Typowe przykłady klastrowania pytania:
 
 Zrozumienie, jak dane są organizowane, można lepiej zrozumieć — i przewidywanie - zachowań i zdarzenia.  
 
-## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>5 pytanie: Co należy zrobić teraz? używa algorytmów uczenia przez wzmacnianie
+## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>Pytanie 5: Co należy zrobić teraz? używa algorytmów uczenia przez wzmacnianie
 Ostatnie pytanie — co należy zrobić? — używa rodziny o nazwie uczenia przez wzmacnianie algorytmów.
 
 Uczenia przez wzmacnianie został zainspirować jak mózgu rat i ludzie zareagować kar i korzyści. Te algorytmy ucz się od wyniki i podjąć decyzję w sprawie następnej akcji.
 
 Zazwyczaj uczenia przez wzmacnianie jest odpowiednia dla zautomatyzowanych systemów, które mają się wiele małych decyzji bez wskazówki ludzi.
 
-![Algorytmy uczenia przez wzmacnianie: co zrobić dalej?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
+![Algorytmów uczenia przez wzmacnianie: Co należy zrobić dalej?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
 
 Pytań, na które odpowiada są zawsze, o jaką akcję należy podjąć — zwykle przez maszynę lub robota. Oto przykłady:
 
-* Jeśli jestem systemem kontroli temperatury budynku: Dopasuj temperatura lub pozostawić je, gdy jest?  
-* Mam własnym opracowuje samochód: żółty światła, hamulca lub przyspieszyć?  
-* Aby uzyskać robot odkurzający: Zachowaj vacuuming lub wróć do ładowania stacji?
+* Mam system kontroli temperatury budynku: Dopasuj temperatura lub pozostawić je, gdy jest?  
+* Jeśli jestem własnym opracowuje samochód: Żółty światła hamulca lub przyspieszyć?  
+* Aby uzyskać robot odkurzający: Zachowaj vacuuming, lub wróć do stacji opłat?
 
 Algorytmów uczenia przez wzmacnianie zbierania danych, zgodnie z ich przejść uczysz się na podstawie prób i błędów.
 

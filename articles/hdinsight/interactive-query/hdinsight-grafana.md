@@ -6,23 +6,21 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/17/2018
-ms.openlocfilehash: 8103c06e3fec51316e367de903ed84d0023568bc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/11/2018
+ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308158"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322298"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Grafana dostępu w usłudze Azure HDInsight
 
 
 [Grafana](https://grafana.com/) to popularny, typu open-source konstruktora wykresu i pulpitu nawigacyjnego. Grafana jest funkcja Zaawansowane; nie tylko jest zezwala użytkownikom na tworzenie można dostosowywać i którą można udostępniać pulpity nawigacyjne, zapewnia ona również oparte na szablonach/inicjowanych przez skrypty pulpitów nawigacyjnych, integracja protokołu LDAP, wiele źródeł danych i.
 
-Obecnie Grafana jest tylko obsługiwana przez typ klastra zapytania interakcyjnego w usłudze Azure HDInsight.
-
+Obecnie w usłudze Azure HDInsight, Grafana jest obsługiwana przy użyciu typy klastrów Hbase i interakcyjnych zapytań.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -65,7 +63,7 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
    
     ![Grupa zasobów wprowadzenia do usługi HDInsight Linux](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Grupa zasobów klastra usługi Azure HDInsight")
     
-5. Kafelek zawiera także nazwę magazynu domyślnego, skojarzonego z klastrem. Każdy klaster zależy od [konta usługi Azure Storage](../hdinsight-hadoop-use-blob-storage.md) lub od [konta usługi Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Jest ono określane jako domyślne konto magazynu. Klaster usługi HDInsight i jego domyślne konto magazynu muszą znajdować się wspólnie w tym samym regionie Azure. Usunięcie klastrów nie powoduje usunięcia konta magazynu.
+5. Kafelek zawiera także nazwę magazynu domyślnego, skojarzonego z klastrem. Każdy klaster zależy od [konta usługi Azure Storage](../hdinsight-hadoop-use-blob-storage.md) lub od [konta usługi Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Jest ono określane jako domyślne konto magazynu. Klaster HDInsight i jego domyślne konto magazynu muszą wspólnie przechowywane w tym samym regionie platformy Azure. Usunięcie klastrów nie powoduje usunięcia konta magazynu.
     
 
 > [!NOTE]
@@ -76,16 +74,22 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
 ## <a name="access-the-grafana-dashboard"></a>Dostęp do pulpitu nawigacyjnego z narzędzia Grafana
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+
 2. Wybierz **klastry HDInsight**, a następnie wybierz nazwę klastra, utworzone w ostatniej sekcji.
+
 3. W obszarze **szybkich łączy**, kliknij przycisk **pulpit nawigacyjny klastra**.
 
     ![Portal pulpit nawigacyjny klastra HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "pulpit nawigacyjny klastra HDInsight w portalu")
 
-4. Z poziomu pulpitu nawigacyjnego, kliknij przycisk **Grafana** kafelka.
+4. Z poziomu pulpitu nawigacyjnego, kliknij przycisk **Grafana** kafelka. Alternatywnie, przejdź do `/grafana/` ścieżki adresu URL klastra. Na przykład `https://<clustername>.azurehdinsight.net/grafana/`.
+
 5. Wprowadź poświadczenia użytkownika klastra Hadoop.
-6. Na pulpicie nawigacyjnym Grafana wygląda następująco:
+
+6. Na pulpicie nawigacyjnym Grafana pojawi się i wygląda następująco:
 
     ![Pulpitem nawigacyjnym HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "pulpitem nawigacyjnym HDInsight Grafana")
+
+   
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. 
@@ -137,5 +141,3 @@ Jeśli chcesz dowiedzieć się więcej o tworzeniu klastra usługi HDInsight i z
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-

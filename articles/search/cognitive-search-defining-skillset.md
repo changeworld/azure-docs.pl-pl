@@ -1,6 +1,6 @@
 ---
-title: Utwórz skillset w potoku kognitywnych wyszukiwania (Azure Search) | Dokumentacja firmy Microsoft
-description: Zdefiniuj wyodrębniania danych, przetwarzanie, języka naturalnego lub obrazu analizy kroki, aby uzupełnić i wyodrębniania informacji z danych do użycia w usłudze Azure Search.
+title: Tworzenie zestawu umiejętności w potoku wyszukiwania kognitywnego — usługa Azure Search
+description: Zdefiniuj wyodrębnianie danych, przetwarzanie języka naturalnego, lub kroki analizy obrazu, aby wzbogacanie i wyodrębnianie informacji z danych do użycia w usłudze Azure Search.
 manager: pablocas
 author: luiscabrer
 services: search
@@ -9,51 +9,52 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 997b106f748a2f18e8141f77f3b9ff8bb6b9d971
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.custom: seodec2018
+ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268234"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320799"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Jak utworzyć skillset w potoku wzbogacenia
+# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Tworzenie zestawu umiejętności w wzbogacony potok
 
-Wyszukiwanie kognitywnych wyodrębnia i wzbogaca danych umożliwia wyszukiwanie w usłudze Azure Search. Nazywamy ekstrakcji i wzbogacenia *kognitywnych umiejętności*, łączonych w *skillset* istnieją odwołania podczas indeksowania. Skillset można użyć [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) lub niestandardowych umiejętności (zobacz [przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md) Aby uzyskać więcej informacji).
+Usługa cognitive search wyodrębnia i uzupełnia danych umożliwiają wyszukiwanie w usłudze Azure Search. Nazywamy ekstrakcji i wzbogacania *umiejętności poznawcze*, połączone do *zestawu umiejętności* istnieją odwołania podczas indeksowania. Można użyć zestawu umiejętności [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) lub umiejętności niestandardowe (zobacz [przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md) Aby uzyskać więcej informacji).
 
-W tym artykule należy Dowiedz się, jak utworzyć potok wzbogacenia umiejętności, którego chcesz użyć. Skillset jest dołączony do usługi Azure Search [indeksatora](search-indexer-overview.md). Konstruuje skillset, się częścią procesu projektowania, omówione w tym artykule. 
+W tym artykule dowiesz się, jak utworzyć potok wzbogacania umiejętności, których chcesz użyć. Zestawu umiejętności jest dołączony do usługi Azure Search [indeksatora](search-indexer-overview.md). Jedną część procesu projektowania, omówione w tym artykule jest konstruowanie samego zestawu umiejętności. 
 
 > [!NOTE]
-> Innej części projektu potoku jest określenie indeksatora, których dotyczy [następnego kroku](#next-step). Definicja indeksatora zawiera odwołanie do skillset, a także mapowania pola służące do połączenia danych wejściowych w celu wyjścia w indeksu docelowego.
+> Inną częścią projektu potoku jest określenie indeksator omówione w [następnego kroku](#next-step). Definicja indeksatora zawiera odwołanie do zestawu umiejętności oraz mapowania pola służące do połączenia danych wejściowych do danych wyjściowych w indeksu docelowego.
 
-Klucz wskazuje Pamiętaj:
+Najważniejsze kwestie należy pamiętać:
 
-+ Może mieć tylko jeden skillset na indeksatora.
-+ Skillset musi mieć co najmniej jeden umiejętności.
-+ Można utworzyć wiele umiejętności tego samego typu (na przykład warianty umiejętności analizy obraz), ale każdej umiejętności może być użyte tylko raz w tym samym skillset.
++ Może mieć tylko jednego zestawu umiejętności na indeksatora.
++ Zestawu umiejętności musi mieć co najmniej jeden umiejętności.
++ Możesz utworzyć wiele umiejętności tego samego typu (na przykład warianty umiejętności analizy obrazu).
 
-## <a name="begin-with-the-end-in-mind"></a>Zaczyna się od zakończenia pamiętać
+## <a name="begin-with-the-end-in-mind"></a>Rozpocznij z zakończeniem należy pamiętać
 
-Zalecanym krokiem początkowej podejmowania decyzji o dane, których można wyodrębnić danych pierwotnych i jak chcesz użyć tych danych w rozwiązaniu do wyszukiwania. Tworzenie ilustrację potoku całego wzbogacenia mogą ułatwić identyfikację niezbędne kroki.
+Zalecane etap początkowy wybierają danych do wyodrębniania danych pierwotnych, oraz jak chcesz używać tych danych w rozwiązaniu do wyszukiwania. Tworzenie ilustrację całego wzbogacony potok może pomóc w zidentyfikowaniu niezbędne kroki.
 
-Załóżmy, że planuje się przetwarzanie zestaw komentarze analityków finansowych. Dla każdego pliku które mają zostać wyodrębnione nazwy firmy i wskaźniki nastrojów klientów ogólne komentarze. Można także zapisać niestandardowe enricher, korzystającą z usługi Bing encji wyszukiwania, aby uzyskać dodatkowe informacje o firmie, takie jak jakiego rodzaju firm Firma jest zaangażowana w. Zasadniczo, które mają zostać wyodrębnione informacje, na przykład następujące polecenie, indeksowanym dla każdego dokumentu:
+Załóżmy, że jesteś zainteresowany przetwarzanie komentarze analityków finansowych. Dla każdego pliku, które mają zostać wyodrębnione nazwy firmy i ogólne opinie, komentarze. Można również napisać niestandardowy enricher, która korzysta z usługi wyszukiwania jednostek Bing, aby uzyskać dodatkowe informacje dotyczące firmy, takich jak jakiego rodzaju firma jest zaangażowana w działalności biznesowej. Zasadniczo, które mają zostać wyodrębnione informacje podobnie do poniższego indeksowane dla poszczególnych dokumentów:
 
-| Rekord tekstu | Firmy | Wskaźniki nastrojów klientów | opisy firmy |
+| Rekord tekstu | Firmy | wskaźniki nastrojów klientów | opisy firmy |
 |--------|-----|-----|-----|
-|Przykładowy rekord| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation jest American międzynarodowej technologii firmy...", "LinkedIn i zatrudnienia biznesowego społecznościowych sieci..."]
+|Przykładowy rekord| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation jest firma American międzynarodowej technologii...", "LinkedIn jest i zatrudnienia biznesowego społecznościowych, sieci..."]
 
-Na poniższym diagramie przedstawiono potoku hipotetyczny wzbogacenia:
+Na poniższym diagramie przedstawiono hipotetyczny wzbogacony potok:
 
-![Potok hipotetyczny wzbogacenia](media/cognitive-search-defining-skillset/sample-skillset.png "potoku hipotetyczny wzbogacenia")
-
-
-Masz raz odpowiedniego informacje o tym, co ma w potoku, można wyrazić skillset, która zapewnia następujące kroki. Funkcjonalnie skillset jest wyrażona, podczas przekazywania definicję indeksatora do usługi Azure Search. Aby uzyskać więcej informacji o przekazywaniu indeksator, zobacz [dokumentacji indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+![Hipotetyczny wzbogacony potok](media/cognitive-search-defining-skillset/sample-skillset.png "hipotetyczny wzbogacony potok")
 
 
-Na diagramie *łamania dokumentu* krok odbywa się automatycznie. Zasadniczo usługi Azure Search umożliwia otwieranie plików dobrze znanych i tworzy *zawartości* pola zawierające tekst wyodrębniony z każdego dokumentu. Białe pola są wbudowane enrichers i enricher niestandardowych, które tworzysz reprezentuje kropkowanej pola "Wyszukiwania usługi Bing jednostki". Zgodnie z opisami, skillset zawiera trzy umiejętności.
+Gdy masz uczciwe informacje o tym, co ma w potoku można wyrazić zestawu umiejętności, która zapewnia następujące kroki. Funkcjonalnie zestawu umiejętności jest wyrażona, gdy Twoja definicja indeksatora możesz przekazać do usługi Azure Search. Aby dowiedzieć się więcej o sposobach przekazywania indeksator, zobacz [dokumentacji indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-## <a name="skillset-definition-in-rest"></a>Definicja Skillset w REST
 
-Skillset jest zdefiniowany jako tablicę umiejętności. Każdy umiejętności definiuje źródło wejścia i nazwę utworzone dane wyjściowe. Przy użyciu [tworzenie Skillset interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-skillset), można zdefiniować skillset, która odpowiada do poprzedniego diagramu: 
+Na diagramie *łamania dokumentów* kroku odbywa się automatycznie. Zasadniczo usługi Azure Search umożliwia otwieranie plików dobrze znanych i tworzy *zawartości* pole zawierające tekstu wyodrębnionego z poszczególnych dokumentów. Białych pól są wbudowane enrichers i kropkowana pole "Wyszukiwania jednostek Bing" reprezentuje enricher niestandardowego, który tworzysz. Zgodnie z opisami, zestawu umiejętności zawiera trzy umiejętności.
+
+## <a name="skillset-definition-in-rest"></a>Definicja zestawu umiejętności w REST
+
+Zestawu umiejętności jest zdefiniowany jako tablica umiejętności. Każdej umiejętności definiuje źródło jego danych wejściowych i nazwę generowane dane wyjściowe. Za pomocą [Tworzenie zestawu umiejętności interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-skillset), można zdefiniować zestawu umiejętności, która odnosi się do poprzedniego diagramu: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
@@ -127,7 +128,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Tworzenie zestawu umiejętności
 
-Podczas tworzenia skillset, musisz podać opis skillset pomocniczy. Opis jest opcjonalny, ale są przydatne w celu śledzenia jest skillset. Ponieważ skillset jest dokumentem JSON, która nie zezwala na komentarze, należy użyć `description` tego elementu.
+Podczas tworzenia zestawu umiejętności, możesz podać opis, aby upewnić się, dokumentowanie własnym zestawu umiejętności. Opis jest opcjonalny, ale przydatne do śledzenia działania zestawu umiejętności. Ponieważ zestawu umiejętności jest dokumentem JSON, który nie zezwala na komentarze, należy użyć `description` tego elementu.
 
 ```json
 {
@@ -137,11 +138,11 @@ Podczas tworzenia skillset, musisz podać opis skillset pomocniczy. Opis jest op
 }
 ```
 
-Następny element w skillset jest tablicą umiejętności. Każdej umiejętności można traktować jako podstawowy wzbogacenia. Każdy umiejętności wykonuje małych zadań w tym potoku wzbogacenia. Każda z nich dane wejściowe (lub zestaw danych wejściowych) i zwraca niektóre dane wyjściowe. Następne sekcje kilka skupić się na sposobu określania umiejętności wstępnie zdefiniowanych i niestandardowych łańcucha umiejętności ze sobą za pośrednictwem odwołania wejściowych i wyjściowych. Dane wejściowe mogą pochodzić ze źródła danych lub z innego umiejętności. Dane wyjściowe może być zamapowane do pola w indeksie wyszukiwania lub używana jako dane wejściowe podrzędne umiejętności.
+Następny fragment w zestawu umiejętności jest tablicą umiejętności. Każdej umiejętności można traktować jako podstawowego wzbogacenia. Każdej umiejętności wykonuje pomniejszego zadania w tym wzbogacony potok. Każdy z nich przyjmuje dane wejściowe (lub zestaw danych wejściowych) i zwraca niektórych danych wyjściowych. Kilka następnych sekcji skoncentrować się na sposób określania umiejętności wstępnie zdefiniowanych i niestandardowych Łączenie łańcuchowe umiejętności za pomocą odwołania wejściowych i wyjściowych. Dane wejściowe mogą pochodzić ze źródła danych lub z innego umiejętności. Dane wyjściowe można zamapowane do pola w indeksie wyszukiwania lub używany jako dane wejściowe do podrzędnego umiejętności.
 
-## <a name="add-predefined-skills"></a>Dodaj wstępnie zdefiniowany umiejętności
+## <a name="add-predefined-skills"></a>Dodaj wstępnie zdefiniowane umiejętności
 
-Przyjrzyjmy się pierwszy umiejętności, który jest wstępnie zdefiniowane [o nazwie umiejętności rozpoznawania jednostki](cognitive-search-skill-named-entity-recognition.md):
+Przyjrzyjmy się pierwszy umiejętności, który jest wstępnie zdefiniowane [o nazwie umiejętności rozpoznawania jednostek](cognitive-search-skill-named-entity-recognition.md):
 
 ```json
     {
@@ -163,23 +164,23 @@ Przyjrzyjmy się pierwszy umiejętności, który jest wstępnie zdefiniowane [o 
     }
 ```
 
-* Każdy wstępnie zdefiniowanych umiejętności ma `odata.type`, `input`, i `output` właściwości. Właściwości specyficzne dla umiejętności zawierają dodatkowe informacje dotyczące umiejętności. Rozpoznawania jednostek `categories` jest jedną jednostkę między ustalony zbiór typy jednostek, które rozpoznają pretrained modelu.
+* Ma co wstępnie zdefiniowane umiejętności `odata.type`, `input`, i `output` właściwości. Właściwości specyficzne dla umiejętności zawierają dodatkowe informacje, które dotyczą umiejętności. Do rozpoznawania jednostek `categories` jest jedną jednostkę wśród stały zestaw typów jednostek, rozpoznających pretrained modelu.
 
-* Każdy umiejętności powinny mieć ```"context"```. Kontekst reprezentuje poziomu, w którym działania mają miejsce. W powyższym umiejętności kontekst jest całego dokumentu, co oznacza, że umiejętności rozpoznawania nazwanej jednostki jest wywoływana raz na dokument. Dane wyjściowe są również tworzone na tym poziomie. W szczególności ```"organizations"``` są generowane jako element członkowski ```"/document"```. W podrzędnym umiejętności mogą odwoływać się do nowo utworzonej informacji jako ```"/document/organizations"```.  Jeśli ```"context"``` pola nie jest jawnie ustawiona, domyślny kontekst jest dokumentem.
+* Powinien mieć każdej umiejętności ```"context"```. Kontekst reprezentuje poziomu, w którym działania mają miejsce. W powyższym umiejętności kontekst jest cały dokument, co oznacza, że umiejętności rozpoznawanie podmiotów jest wywoływana jeden raz dla dokumentu. Dane wyjściowe są również tworzone na tym samym poziomie. W szczególności ```"organizations"``` są generowane jako członek ```"/document"```. W transmisji umiejętności mogą odwoływać się na tę nowo utworzoną informacji jako ```"/document/organizations"```.  Jeśli ```"context"``` pole nie jest jawnie określona, domyślny kontekst jest dokumentu.
 
-* Umiejętności ma jeden danych wejściowych o nazwie "text", przy użyciu zestawu wejściowego źródła do ```"/document/content"```. Umiejętności (o nazwie rozpoznawanie jednostek) działa na *zawartości* pola każdego dokumentu, który jest standardowego pola utworzone przez indeksator obiektów blob platformy Azure. 
+* Umiejętności ma jeden zestaw danych wejściowych o nazwie "text", przy użyciu źródłowy zestaw danych wejściowych do ```"/document/content"```. Umiejętności (o nazwie rozpoznawanie jednostek) działa na *zawartości* pola każdego dokumentu, czyli pola standardowego utworzone przez indeksatora obiektów blob platformy Azure. 
 
-* Umiejętności ma jedno wyjście o nazwie ```"organizations"```. Dane wyjściowe istnieje tylko podczas przetwarzania. To połączenie te dane wyjściowe do wprowadzania podrzędne umiejętności, odwołują się dane wyjściowe jako ```"/document/organizations"```.
+* Umiejętności ma jedno wyjście o nazwie ```"organizations"```. Dane wyjściowe istnieje tylko w trakcie przetwarzania. Aby połączyć w łańcuch te dane wyjściowe podrzędnego umiejętności w danych wejściowych, odwoływać się do danych wyjściowych w formacie ```"/document/organizations"```.
 
-* Dla określonego dokumentu, wartość ```"/document/organizations"``` jest tablicą organizacji wyodrębniony z tekstu. Na przykład:
+* Dla określonego dokumentu, wartość ```"/document/organizations"``` jest tablicą organizacje wyodrębnione z tekstu. Na przykład:
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-Niektóre sytuacje wymagają oddzielnie odwołujące się do każdego elementu tablicy. Załóżmy na przykład, które chcesz przekazać każdy element ```"/document/organizations"``` oddzielnie do innego umiejętności (np. niestandardowe Bing encji wyszukiwania enricher). Może się odwoływać do każdego elementu tablicy, dodając znak gwiazdki na ścieżkę: ```"/document/organizations/*"``` 
+Niektóre sytuacje wymagają oddzielnie odwołujące się do każdego elementu w tablicy. Załóżmy, że chcesz przekazać każdy element obiektu ```"/document/organizations"``` oddzielnie do innego umiejętności (np. niestandardowe Bing jednostki wyszukiwania enricher). Mogą odwoływać się do każdego elementu tablicy, dodając znak gwiazdki w ścieżce: ```"/document/organizations/*"``` 
 
-Drugi umiejętności w celu wyodrębnienia wskaźniki nastrojów klientów jest zgodny ze wzorcem samej jako pierwszy enricher. Trwa ```"/document/content"``` jako dane wejściowe i zwraca wynik każdego wystąpienia elementu content wskaźniki nastrojów klientów. Ponieważ nie określono ```"context"``` jawnie pola, dane wyjściowe (mySentiment) teraz jest elementem podrzędnym ```"/document"```.
+Drugi umiejętności dla tonacji, wyodrębnianie następuje tego samego wzorca jako pierwszy enricher. Trwa ```"/document/content"``` jako dane wejściowe i zwraca wskaźnik nastrojów dla każdego wystąpienia elementu content. Ponieważ nie określono ```"context"``` pola jawnie, dane wyjściowe (mySentiment) teraz jest elementem podrzędnym ```"/document"```.
 
 ```json
     {
@@ -199,9 +200,9 @@ Drugi umiejętności w celu wyodrębnienia wskaźniki nastrojów klientów jest 
     },
 ```
 
-## <a name="add-a-custom-skill"></a>Dodawanie niestandardowych kwalifikacji
+## <a name="add-a-custom-skill"></a>Dodaj umiejętności niestandardowe
 
-Odwołaj struktury niestandardowych enricher wyszukiwania jednostki Bing:
+Odwołaj strukturze niestandardowych enricher wyszukiwania jednostek Bing:
 
 ```json
     {
@@ -227,25 +228,25 @@ Odwołaj struktury niestandardowych enricher wyszukiwania jednostki Bing:
     }
 ```
 
-Ta definicja jest niestandardowe umiejętności, która wywołuje interfejs API sieci web w ramach procesu wzbogacenia. Dla każdej organizacji identyfikowana na podstawie rozpoznawania nazwanej jednostki to umiejętności wymaga składnika web API, aby znaleźć opis tej organizacji. Orchestration sytuacji, w których do wywołania interfejsu API sieci web oraz sposób przepływu otrzymanych informacji jest obsługiwany wewnętrznie przez aparat wzbogacenia. Jednak inicjowania niezbędne do wywoływania ten niestandardowy interfejs API należy podać w formacie JSON (na przykład identyfikator uri, httpHeaders i wejść oczekiwano). Aby uzyskać wskazówki dotyczące tworzenia niestandardowego interfejsu API sieci web dla potoku wzbogacenia, zobacz [sposób definiowania niestandardowy interfejs](cognitive-search-custom-skill-interface.md).
+Ta definicja jest umiejętności niestandardowe, która wywołuje interfejs API sieci web jako część procesu wzbogacania. Dla każdej organizacji identyfikowane przez rozpoznawanie jednostek znaku to umiejętności wywołuje internetowy interfejs API można znaleźć opis tej organizacji. Organizowanie podczas wywołania interfejsu API sieci web i jak przepływ informacji otrzymanych odbywa się wewnętrznie przez aparat wzbogacania. Jednak inicjowania, które są niezbędne do wywoływania niestandardowego interfejsu API musi być podana w formacie JSON (np. Identyfikator uri, elementów httpHeaders i danych wejściowych, oczekiwano). Aby uzyskać wskazówki dotyczące tworzenia niestandardowego internetowego interfejsu API wzbogacony potok, zobacz [jak zdefiniować niestandardowy interfejs](cognitive-search-custom-skill-interface.md).
 
-Należy zauważyć, że ma ustawioną wartość w polu "context" ```"/document/organizations/*"``` gwiazdką, co oznacza wzbogacenia krok jest nazywany *dla każdego* organizacji w obszarze ```"/document/organizations"```. 
+Należy zauważyć, że pole "kontekst" jest ustawione na ```"/document/organizations/*"``` z gwiazdką, co oznacza kroku wzbogacania jest wywoływana *dla każdego* organizacji w obszarze ```"/document/organizations"```. 
 
-Dane wyjściowe, w tym przypadku opis firmy, jest generowany dla każdej organizacji zidentyfikowane. Podczas odwoływania się z opisem w kroku podrzędnych (na przykład w wyodrębniania klucza frazy), należy użyć ścieżki ```"/document/organizations/*/description"``` Aby to zrobić. 
+Dane wyjściowe, w tym przypadku opis firmy, jest generowany dla każdej organizacji zidentyfikowane. Przy odwoływaniu się do opisu w kroku podrzędnego (na przykład w wyodrębnianie kluczowych fraz), należy użyć ścieżki ```"/document/organizations/*/description"``` Aby to zrobić. 
 
-## <a name="enrichments-create-structure-out-of-unstructured-information"></a>Wzbogacenia utworzyć strukturę poza niestrukturalnych informacji
+## <a name="enrichments-create-structure-out-of-unstructured-information"></a>Wzbogacenia Utwórz strukturę poza informacji bez struktury
 
-Skillset generuje informacje o strukturze danych bez struktury. Rozważmy następujący przykład:
+Zestawu umiejętności generuje informacje ze strukturą poza danych bez struktury. Rozważmy następujący przykład:
 
-*"W jego czwarty kwartał Microsoft rejestrowane $1.1 MLD przychody z LinkedIn, firmy sieci społecznościowych go zakupione w ciągu ostatniego roku. Nabycie umożliwia łączenie możliwości LinkedIn z jego CRM i możliwości pakietu Office przez firmę Microsoft. Akcjonariuszy są radością o postępie do tej pory."*
+*"W jego czwarty kwartał Microsoft rejestrowane 1.1 mld USD przychodu z LinkedIn, firma sieci społecznościowych zakupionych w zeszłym roku. Nabycie umożliwia firmie Microsoft połączyć możliwości usługi LinkedIn z jego CRM i możliwościami pakietu Office. Akcjonariuszy Cieszymy się z postępu do tej pory."*
 
-Prawdopodobnie wynik będzie wygenerowany strukturę podobną do poniższej ilustracji:
+Prawdopodobnie wynik będzie strukturę wygenerowane, podobnie jak na poniższej ilustracji:
 
-![Przykładowe dane wyjściowe struktury](media/cognitive-search-defining-skillset/enriched-doc.png "przykładowe dane wyjściowe — struktura")
+![Przykładowe dane wyjściowe struktury](media/cognitive-search-defining-skillset/enriched-doc.png "przykładowe dane wyjściowe struktury")
 
-Odwołaj się, że ta struktura jest wewnętrzny. Faktycznie nie można pobrać tego wykresu w kodzie.
+Pamiętaj, że ta struktura jest wewnętrzny. Faktycznie nie można pobrać tego wykresu w kodzie.
 
 <a name="next-step"></a>
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, po zapoznaniu się z potoku wzbogacenia i skillsets, kontynuuj [jak odwołania adnotacje w skillset](cognitive-search-concept-annotations-syntax.md) lub [sposób mapowania danych wyjściowych do pól w indeksie](cognitive-search-output-field-mapping.md). 
+Teraz, po zapoznaniu się z potoku wzbogacenia i wykorzystując bieżące, kontynuuj [sposobu odwołania adnotacje w zestawu umiejętności](cognitive-search-concept-annotations-syntax.md) lub [sposób mapowania danych wyjściowych do pól w indeksie](cognitive-search-output-field-mapping.md). 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/10/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 44a5b32b68b0365e957d97a516f0d767e6501c0f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: dbced5cfa2a47dc2fdcf630d62104bb7ba8e7bc0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630328"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186654"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Osiągnięcia zbieżności rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication (publiczna wersja zapoznawcza)
 
@@ -74,6 +74,8 @@ Na tej stronie użytkownicy widzą metody uwierzytelniania wcześniej zarejestro
 Dzienniki inspekcji dla tego nowego środowiska istnieje w kategorii metod uwierzytelniania w dzienniku inspekcji.  
 
 ## <a name="known-issues"></a>Znane problemy
+
+Zidentyfikowaliśmy usterkę z rejestracją osiągnięcia zbieżności, gdzie użytkowników-gości B2B, którzy są włączone dla rejestracji konwergentnej nie będą mogli zarejestrować usługi MFA. Kiedy nastąpi przekierowanie do strony rejestracji błędów strony out. Nasi deweloperzy zdawali sobie sprawę z tego problemu i pracujemy nad rozwiązaniem. Na razie zaleca się tworzenie grupy i wykluczyć użytkowników B2B z tej grupy.
 
 **Po użytkownik rejestruje telefonie za pomocą wiadomości SMS, domyślną metodą uwierzytelniania Wieloskładnikowego jest ustawiony na połączenie telefoniczne**
 

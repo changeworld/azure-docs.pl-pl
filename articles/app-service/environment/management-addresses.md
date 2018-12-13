@@ -1,5 +1,5 @@
 ---
-title: Adresy zarządzania w usłudze Azure App Service Environment
+title: Adresy zarządzania środowiska usługi aplikacji — Azure
 description: Wyświetla listę adresów zarządzania używane z poleceniem środowiska usługi App Service
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: b54d5abed3e0d29103f5a15ea7fb6dc37dba240e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 7fb39886b19a2229188821eb39d4fb8a5928bb43
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967814"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276693"
 ---
 # <a name="app-service-environment-management-addresses"></a>Adresy zarządzania środowiska usługi aplikacji
 

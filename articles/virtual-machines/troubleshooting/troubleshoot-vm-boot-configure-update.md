@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie maszyny wirtualnej zatrzymuje się na komunikacie „Przygotowywanie systemu Windows. Nie wyłączaj komputera”. na platformie Azure | Dokumentacja firmy Microsoft
-description: Wprowadzenie kroki, aby rozwiązać ten problem, w jakiej maszynie Wirtualnej uruchamiania jest zablokowany na "Windows przygotowanie. Nie wyłączaj komputera".
+title: Uruchamianie maszyny Wirtualnej znajduje się na "gotowy Windows wprowadzenie. Nie wyłączaj komputera"na platformie Azure | Dokumentacja firmy Microsoft
+description: Wprowadź kroki, aby rozwiązać ten problem, w którym uruchamiania maszyny Wirtualnej znajduje się na "gotowy Windows wprowadzenie. Nie wyłączaj komputera”.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 722bf7b42e500e3e6a46f48646ff1fd2edfb68f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: eb27b4e6c60f23a55a58cd2aae3cff927ffeaf03
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955740"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316101"
 ---
-# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Uruchamianie maszyny wirtualnej zatrzymuje się na komunikacie „Przygotowywanie systemu Windows. Nie wyłączaj komputera”. na platformie Azure
+# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Uruchamianie maszyny Wirtualnej znajduje się na "gotowy Windows wprowadzenie. Nie wyłączaj komputera"na platformie Azure
 
-Ten artykuł pomoże Ci rozwiązać ten problem, gdy utkwiła Twojej maszyny wirtualnej (VM) na "Windows przygotowanie. Nie wyłączaj komputera”. etap podczas uruchamiania.
+Ten artykuł pomoże Ci rozwiązać ten problem, gdy utkwiła maszyny wirtualnej (VM) na "Windows przygotowanie. Nie wyłączaj komputera"etap podczas uruchamiania.
 
 ## <a name="symptoms"></a>Objawy
 
-Kiedy używasz **diagnostykę rozruchu** można pobrać zrzut ekranu maszyny wirtualnej, możesz znaleźć, system operacyjny nie pełni uruchomiona. Ponadto maszyna wirtualna wyświetlenie **"Przygotowanie Windows. Nie wyłączaj komputera."** Komunikat.
+Kiedy używasz **diagnostykę rozruchu** można pobrać zrzut ekranu maszyny wirtualnej, system operacyjny nie pełni uruchomiona. Maszyna wirtualna zostanie wyświetlony komunikat "wprowadzenie Windows gotowe. Nie wyłączaj komputera”.
 
-![Przykładowy komunikat](./media/troubleshoot-vm-configure-update-boot/message1.png)
+![Przykładowy komunikat dla systemu Windows Server 2012 R2](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
 ![Przykładowy komunikat](./media/troubleshoot-vm-configure-update-boot/message2.png)
 
 ## <a name="cause"></a>Przyczyna
 
-Zazwyczaj ten problem występuje, gdy serwer wykonuje końcowe ponowny rozruch po konfiguracji został zmieniony. Zmiana konfiguracji można zainicjować przez aktualizacje Windows lub zmiany na temat ról/funkcji serwera. For Windows Update Jeśli długą rozmiaru aktualizacji systemu operacyjnego należy więcej czasu, aby zmienić konfigurację zmiany.
+Zazwyczaj ten problem występuje, gdy serwer wykonuje końcowe ponowny rozruch po konfiguracji został zmieniony. Zmiana konfiguracji może być zainicjowana przez aktualizacje Windows lub zmiany na temat ról/funkcji serwera. For Windows Update Jeśli długą rozmiaru aktualizacji systemu operacyjnego musi więcej czasu, aby zmienić konfigurację zmiany.
 
 ## <a name="back-up-the-os-disk"></a>Tworzenie kopii zapasowej dysku systemu operacyjnego
 
-Przed podjęciem próby rozwiązania problemu, należy wykonać kopię zapasową dysku systemu operacyjnego:
+Przed podjęciem próby rozwiązania problemu, Utwórz kopię zapasową dysku systemu operacyjnego.
 
 ### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>W przypadku maszyn wirtualnych z zaszyfrowanego dysku musisz odblokować dyski najpierw
 
-Sprawdź, czy maszyna wirtualna jest zaszyfrowanej maszyny Wirtualnej. W tym celu wykonaj następujące kroki:
+Wykonaj następujące kroki, aby ustalić, czy maszyna wirtualna jest zaszyfrowanej maszyny Wirtualnej.
 
-1. W portalu Otwórz maszyny Wirtualnej, a następnie przejdź do dysków.
+1. W witrynie Azure portal Otwórz maszyny Wirtualnej, a następnie przejdź do dysków.
 
-2. Zobaczysz wywołanie "Szyfrowanie", który informuje o włączenie szyfrowania kolumny.
+2. Przyjrzyj się **szyfrowania** kolumny, aby zobaczyć, czy włączono szyfrowanie.
 
-Jeśli dysk systemu operacyjnego jest szyfrowany, odblokuj zaszyfrowanego dysku. W tym celu wykonaj następujące kroki:
+Jeśli dysk systemu operacyjnego jest szyfrowany, odblokuj zaszyfrowanego dysku. Aby odblokować dysk, wykonaj następujące kroki.
 
 1. Tworzenie maszyny Wirtualnej odzyskiwania, który znajduje się w tej samej grupie zasobów, konto magazynu oraz lokalizacji, co dotyczy maszyny Wirtualnej.
 
@@ -72,7 +72,7 @@ Jeśli dysk systemu operacyjnego jest szyfrowany, odblokuj zaszyfrowanego dysku.
     Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq   $vmName) -and ($_.ContentType -eq ‘BEK’)}
     ```
 
-5. Po nazwie klucza tajnego, uruchom następujące polecenia w programie PowerShell:
+5. Po utworzeniu nazwa wpisu tajnego, uruchom następujące polecenia w programie PowerShell.
 
     ```Powershell
     $secretName = 'SecretName'
@@ -80,10 +80,10 @@ Jeśli dysk systemu operacyjnego jest szyfrowany, odblokuj zaszyfrowanego dysku.
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     ```
 
-6. Konwertuj wartość zakodowane w formacie Base64 bajtów i zapisać dane wyjściowe do pliku. 
+6. Konwertuj wartość algorytmem Base64 bajtów i zapisać dane wyjściowe do pliku. 
 
     > [!Note]
-    > Nazwa pliku klucza szyfrowania bloków musi odpowiadać oryginalny klucz szyfrowania bloków identyfikator GUID, jeśli używasz USB odblokować opcji. Ponadto należy utworzyć folder na dysku C, o nazwie "Klucz szyfrowania bloków", zanim będą działać przez następujące kroki.
+    > Jeśli używasz USB odblokować opcji, nazwa pliku klucza szyfrowania bloków musi odpowiadać oryginalny identyfikator GUID klucz szyfrowania bloków. Utwórz folder na dysku C, o nazwie "Klucz szyfrowania bloków", przed wykonaniem tych kroków.
     
     ```Powershell
     New-Item -ItemType directory -Path C:\BEK
@@ -92,22 +92,22 @@ Jeśli dysk systemu operacyjnego jest szyfrowany, odblokuj zaszyfrowanego dysku.
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7. Po plik klucza szyfrowania bloków jest tworzony na komputerze, skopiuj plik do zablokowanej dysku systemu operacyjnego, dołączony do maszyny Wirtualnej odzyskiwania. Uruchom następujące polecenie, przy użyciu klucza szyfrowania bloków lokalizacja pliku:
+7. Po plik klucza szyfrowania bloków jest tworzony na komputerze, skopiuj plik do zablokowanej dysku systemu operacyjnego, dołączony do maszyny Wirtualnej odzyskiwania. Uruchom następujące polecenia, korzystając z lokalizacji pliku klucza szyfrowania bloków.
 
     ```Powershell
     manage-bde -status F:
     manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
     ```
-    **Opcjonalnie** w niektórych scenariuszach może być konieczne, również odszyfrowywania dysku za pomocą tego polecenia.
+    **Opcjonalnie**: W niektórych scenariuszach może być wymagany do odszyfrowania dysku za pomocą tego polecenia.
    
     ```Powershell
     manage-bde -off F:
     ```
 
     > [!Note]
-    > To polega na uwzględnieniu czy dysk do zaszyfrowania znajduje się na literę F:.
+    > Poprzednie polecenie przyjęto założenie, że dysk do zaszyfrowania znajduje się w litery F.
 
-8. Jeśli potrzebujesz dzienniki były zbierane, możesz przejść do ścieżki **litera dysku: \Windows\System32\winevt\Logs**.
+8. Jeśli potrzebujesz dzienniki były zbierane, przejdź do ścieżki **litera dysku: \Windows\System32\winevt\Logs**.
 
 9. Odłączanie dysku od maszyny odzyskiwania.
 
@@ -124,14 +124,14 @@ Użyj kroków w [os Zbierz zrzut](troubleshoot-common-blue-screen-error.md#colle
 Po zebraniu pliku zrzutu, skontaktuj się z pomocą [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) do analizy głównej przyczyny problemu.
 
 
-## <a name="rebuild-the-vm-using-powershell"></a>Ponownie skompiluj maszyny Wirtualnej przy użyciu programu PowerShell
+## <a name="rebuild-the-vm-by-using-powershell"></a>Ponownie utworzyć maszynę Wirtualną przy użyciu programu PowerShell
 
-Po zebraniu w pliku zrzutu pamięci Użyj następujących kroków, aby odbudować maszyny Wirtualnej.
+Po zebraniu w pliku zrzutu pamięci, wykonaj następujące kroki, aby ponownie utworzyć maszynę Wirtualną.
 
 **W przypadku dysków niezarządzanych**
 
 ```PowerShell
-# To login to Azure Resource Manager
+# To log in to Azure Resource Manager
 Login-AzureRmAccount
 
 # To view all subscriptions for your account
@@ -162,7 +162,7 @@ New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
 **Za dyski zarządzane**
 
 ```PowerShell
-# To login to Azure Resource Manager
+# To log in to Azure Resource Manager
 Login-AzureRmAccount
 
 # To view all subscriptions for your account
@@ -183,7 +183,7 @@ $avName = "AvailabilitySetName";
 $osDiskName = "OsDiskName";
 $DataDiskName = "DataDiskName"
 
-#This can be found by selecting the Managed Disks you wish you use in the Azure Portal if the format below doesn't match
+#This can be found by selecting the Managed Disks you wish you use in the Azure portal if the format below doesn't match
 $osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
 $dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
 

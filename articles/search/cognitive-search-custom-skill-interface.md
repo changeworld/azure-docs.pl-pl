@@ -1,5 +1,5 @@
 ---
-title: Interfejs definicji umiejętności niestandardowe w usłudze wyszukiwania poznawczego potoku (Azure Search) | Dokumentacja firmy Microsoft
+title: Definicja interfejsu dla umiejętności niestandardowe w usłudze wyszukiwania poznawczego potoku — usługa Azure Search
 description: Interfejs wyodrębniania danych niestandardowych umiejętności niestandardowego interfejsu api sieci web w usłudze wyszukiwania poznawczego potoku w usłudze Azure Search.
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: luisca
-ms.openlocfilehash: 2218a96702a02a32df18da9640ea9946d05acdb1
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.custom: seodec2018
+ms.openlocfilehash: 1df2a565b1c9e8bd2bea75ce78abc84608c89eea
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058829"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314656"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Jak dodać umiejętności niestandardowe do potoku wyszukiwania kognitywnego
 
@@ -148,7 +149,7 @@ Po utworzeniu enricher interfejsu API sieci Web, wystarczy opisać nagłówków 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-+ [Przykład: Tworzenie niestandardowego umiejętności dla interfejsu API tłumaczenia tekstu](cognitive-search-create-custom-skill-example.md)
++ [Przykład: Tworzenie niestandardowych umiejętności dla interfejsu API tłumaczenia tekstu](cognitive-search-create-custom-skill-example.md)
 + [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Tworzenie zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Sposób mapowania pól wzbogacony](cognitive-search-output-field-mapping.md)

@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do usługi Azure Search w języku Java | Microsoft Docs
+title: Rozpoczynanie pracy z usługą Azure Search w języku Java — Azure Search
 description: Jak utworzyć hostowaną aplikację wyszukiwania w chmurze na platformie Azure, używając języka Java jako języka programowania.
 services: search
 author: jj09
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: d1ca905d415eb8ab49c449a69707c56d5c717081
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec2018
+ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419303"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316975"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Wprowadzenie do usługi Azure Search w języku Java
 > [!div class="op_single_selector"]
@@ -45,13 +46,13 @@ W tej aplikacji program **SearchServlet.java** tworzy i ładuje indeks, używaj�
 ## <a name="about-the-program-files"></a>Informacje o plikach programu
 Na poniższej liście opisano pliki, które mają zastosowanie w tym przykładzie.
 
-* Search.jsp: udostępnia interfejs użytkownika
-* SearchServlet.java: udostępnia metody (podobnie do kontrolera we wzorcu MVC)
-* SearchServiceClient.java: obsługuje żądania HTTP
-* SearchServiceHelper.java: klasa pomocy, która udostępnia metody statyczne
-* Document.java: udostępnia model danych
-* config.properties: ustawia adres URL usługi wyszukiwania i klucz api-key
-* Pom.XML: Zależność narzędzia Maven
+* Search.JSP: Udostępnia interfejs użytkownika
+* SearchServlet.java: Udostępnia metody (podobnie do kontrolera MVC)
+* SearchServiceClient.java: Obsługuje żądania HTTP
+* SearchServiceHelper.java: Klasa pomocnika, która udostępnia metody statyczne
+* Document.Java: Udostępnia model danych
+* config.Properties: Ustawia wyszukiwanie adresu URL usługi i klucza api-key
+* pom.XML: Zależność narzędzia Maven
 
 <a id="sub-2"></a>
 

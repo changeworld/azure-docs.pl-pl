@@ -1,7 +1,7 @@
 ---
-title: Tworzenie i używanie obliczeniowych elementów docelowych do trenowania modelu
+title: Obliczeniowe elementy docelowe do trenowania modelu
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wybrać i skonfigurować środowisk szkolenia (celów obliczeń) używane do trenowania modeli uczenia maszynowego. Usługa Azure Machine Learning pozwala na łatwe szkolenie przełącznikami. Rozpocznij szkolenie lokalnie, a jeśli musisz skalować w poziomie, przełącz się do elementu docelowego mocą obliczeniową opartą na chmurze.
+description: Konfigurowanie środowisk szkolenia (celów obliczeń) dla szkolenie modelu uczenia maszynowego. Można łatwo przełączać szkoleń, środowisk. Rozpocznij szkolenie lokalnie, a jeśli musisz skalować w poziomie, przełącz się do elementu docelowego mocą obliczeniową opartą na chmurze. Databricks
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -12,12 +12,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1a6533c1ec25eb8500f67cb98494463d7daf752b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c91cc8dabc1fcf4918e64c18e5d5975dc7720c30
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080099"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315999"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -27,9 +27,9 @@ Cel obliczenia jest zasobów, w którym jest uruchamiany skrypt szkolenia lub mo
 
 Istnieją trzy szerokimi kategoriami obliczeniowych elementów docelowych, które obsługuje usługi Azure Machine Learning:
 
-* __Lokalne__: komputer lokalny lub oparte na chmurze maszyny Wirtualnej używanej jako Środowisko deweloperskie/eksperymentowania. 
+* __Lokalne__: Komputer lokalny lub oparte na chmurze maszyny Wirtualnej, używanym w środowisku deweloperskim/eksperymentowania. 
 
-* __Zarządzane obliczeń__: obliczeniowego usługi Azure Machine Learning jest obliczeń oferty, który jest zarządzany przez usługę Azure Machine Learning. Umożliwia łatwe tworzenie jednego lub wielu node zasoby obliczeniowe na potrzeby szkoleń, testowania i wnioskowania usługi batch.
+* __Zarządzane obliczeń__: Usługa Azure obliczeniowego usługi Machine Learning jest obliczeń, oferty, który jest zarządzany przez usługę Azure Machine Learning. Umożliwia łatwe tworzenie jednego lub wielu node zasoby obliczeniowe na potrzeby szkoleń, testowania i wnioskowania usługi batch.
 
 * __Dołączone obliczeń__: Możesz również przenieść obliczeń platformy Azure w chmurze i dołączyć go do usługi Azure Machine Learning. Dowiedz się więcej, poniżej dla typów obliczeń obsługiwanych i sposobu ich używania.
 
@@ -43,7 +43,7 @@ Usługa Azure Machine Learning obsługuje różne w różnych lokalizacjach doce
 |[Komputer lokalny](#local)| Być może | &nbsp; | ✓ | &nbsp; |
 |[Usługi Azure Machine Learning obliczeń](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Zdalnego maszyny Wirtualnej](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | ✓ | ✓[*](#pipeline-only) |
 |[Azure Data Lake Analytics](#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Usługa Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
@@ -169,8 +169,8 @@ Trwałe Azure obliczeniowego usługi Machine Learning mogą być ponownie używa
 
 Aby utworzyć trwałe zasobu obliczeniowego usługi Azure Machine Learning, należy określić `vm_size` i `max_nodes` parametrów. Usługa Azure Machine Learning następnie używa inteligentnych wartości domyślnych dla pozostałych parametrów.  Na przykład zasoby obliczeniowe ustawiono automatyczne skalowanie w dół, aby zero węzłów, gdy nie jest używany i tworzenia dedykowanych maszyn wirtualnych do uruchamiania zadań, zgodnie z potrzebami. 
 
-* **vm_size**: rodziny maszyn wirtualnych węzłów utworzone przez obliczeniowego usługi Azure Machine Learning.
-* **max_nodes**: Maksymalna liczba węzłów w celu automatycznego skalowania podczas uruchamiania zadania na obliczeniowego usługi Azure Machine Learning.
+* **vm_size**: Rodzina maszyn wirtualnych węzłów utworzone przez obliczeniowego usługi Azure Machine Learning.
+* **max_nodes**: Maksymalna liczba węzłów do automatycznego skalowania podczas uruchamiania zadania na obliczeniowego usługi Azure Machine Learning.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -198,9 +198,9 @@ Można również skonfigurować kilka właściwości zaawansowane, tworząc obli
 
 Oprócz `vm_size` i `max_nodes`, można użyć następujących właściwości:
 
-* **min_nodes**: co najmniej węzłów (domyślnie 0 węzłów) można skalować w dół w trakcie uruchamiania zadania na obliczeniowego usługi Azure Machine Learning.
-* **vm_priority**: Wybieranie między "dedykowane" (ustawienie domyślne) i "lowpriority" maszyny wirtualne, tworząc obliczeniowego usługi Azure Machine Learning. Maszyn wirtualnych z niskim priorytetem Użyj nadmiarowej pojemności platformy Azure i dlatego są tańsze, ale o podwyższonym ryzyku są wyparte przebieg.
-* **idle_seconds_before_scaledown**: czas bezczynności (ustawienie domyślne 120 sekund) oczekiwania po zakończeniu wykonywania przed skalowania automatycznego w celu min_nodes.
+* **min_nodes**: Minimalna liczba węzłów (domyślnie 0 węzłów), aby skalować w dół w trakcie uruchamiania zadania na obliczeniowego usługi Azure Machine Learning.
+* **vm_priority**: Podczas tworzenia obliczeniowego usługi Azure Machine Learning, należy wybrać opcję "dedykowane" (ustawienie domyślne) lub "lowpriority" maszyn wirtualnych. Maszyn wirtualnych z niskim priorytetem Użyj nadmiarowej pojemności platformy Azure i dlatego są tańsze, ale o podwyższonym ryzyku są wyparte przebieg.
+* **idle_seconds_before_scaledown**: Czas bezczynności (ustawienie domyślne 120 sekund) oczekiwania po zakończeniu wykonywania przed skalowania automatycznego w celu min_nodes.
 * **vnet_resourcegroup_name**: Grupa zasobów __istniejących__ sieci wirtualnej. Usługa Azure obliczeniowego usługi Machine Learning jest tworzony w tej sieci wirtualnej.
 * **vnet_name**: Nazwa sieci wirtualnej. Sieć wirtualna musi znajdować się w tym samym regionie, co Twój obszar roboczy usługi Azure Machine Learning.
 * **subnet_name**: Nazwa podsieci w sieci wirtualnej. Zasoby platformy Azure obliczeniowego usługi Machine Learning zostaną przypisane adresy IP z tego zakresu podsieci.
@@ -312,9 +312,9 @@ Usługa Azure Databricks to oparta na platformie Apache Spark środowisko w chmu
 
 Aby dołączyć usługi Azure Databricks, jako cel obliczenia, możesz użyć zestawu SDK usługi Azure Machine Learning i podaj następujące informacje:
 
-* __Nazwa obliczeniowego__: nazwa, którą chcesz przypisać do tego zasobu obliczeniowego.
+* __Nazwa obliczeniowego__: Nazwa, którą chcesz przypisać do tego zasobu obliczeniowego.
 * __Nazwa obszaru roboczego usługi Databricks__: Nazwa obszaru roboczego usługi Azure Databricks.
-* __Token dostępu__: token dostępu używany do uwierzytelniania usługi Azure Databricks. Aby wygenerować token dostępu, zobacz [uwierzytelniania](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
+* __Token dostępu__: Token dostępu używany do uwierzytelniania usługi Azure Databricks. Aby wygenerować token dostępu, zobacz [uwierzytelniania](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
 
 Poniższy kod przedstawia sposób dołączania usługi Azure Databricks, jako cel obliczenia:
 
@@ -357,8 +357,8 @@ Usługa Azure Data Lake Analytics to platforma analiz danych big data w chmurze 
 
 Aby dołączyć usługi Data Lake Analytics, jako cel obliczenia, możesz użyć zestawu SDK usługi Azure Machine Learning i podaj następujące informacje:
 
-* __Nazwa obliczeniowego__: nazwa, którą chcesz przypisać do tego zasobu obliczeniowego.
-* __Grupa zasobów__: grupy zasobów zawierającej konto usługi Data Lake Analytics.
+* __Nazwa obliczeniowego__: Nazwa, którą chcesz przypisać do tego zasobu obliczeniowego.
+* __Grupa zasobów__: Grupy zasobów zawierającej konto usługi Data Lake Analytics.
 * __Nazwa konta__: Nazwa konta usługi Data Lake Analytics.
 
 Poniższy kod przedstawia sposób dołączania usługi Data Lake Analytics, jako cel obliczenia:
@@ -571,6 +571,6 @@ Zapoznaj się z notesów w następujących lokalizacjach:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Dokumentacja usługi Azure Machine Learning w zestawie SDK](https://aka.ms/aml-sdk)
-* [Tutorial: Train a model](tutorial-train-models-with-aml.md) (Samouczek: uczenie modelu)
+* [Samouczek: Uczenie modelu](tutorial-train-models-with-aml.md)
 * [Gdzie można wdrażać modele](how-to-deploy-and-where.md)
 * [Tworzenie potoków uczenia maszynowego przy użyciu usługi Azure Machine Learning](concept-ml-pipelines.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 8080cdf78333eed9541311ba67221c713341a21a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b961dadbe8743f1485ef0d13a44a1bb0f3ce32b5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741576"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321379"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Ustawia pionowe skalowania automatycznego za pomocą skalowania maszyn wirtualnych
 W tym artykule opisano sposób skalowanie w pionie Azure [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) z lub bez reprovisioning. Skalowanie w pionie maszyn wirtualnych, które nie są w zestawach skalowania, można znaleźć [skalowanie w pionie maszyn wirtualnych platformy Azure z usługą Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -84,7 +84,7 @@ Po zaimportowaniu elementów runbook, Dodaj element webhook do elementu runbook,
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Dodawanie alertu do zestawu skalowania maszyn wirtualnych
-Poniżej jest skrypt programu PowerShell, który pokazuje, jak dodać alert do skalowania maszyn wirtualnych z zestawu. Zapoznaj się z następującym artykułem, aby uzyskać nazwę metryki wyzwolenie alertu na: [typowe metryki automatycznego skalowania usługi Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md).
+Poniżej jest skrypt programu PowerShell, który pokazuje, jak dodać alert do skalowania maszyn wirtualnych z zestawu. Zapoznaj się z następującym artykułem, aby uzyskać nazwę metryki wyzwolenie alertu na: [Usługa Azure Monitor autoscaling często używane metryki](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -120,7 +120,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 Aby uzyskać więcej informacji na temat tworzenia alertów zobacz następujące artykuły:
 
 * [Przykłady szybkiego startu programu Azure PowerShell monitora](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* [Przykłady szybkiego startu usługi Azure Monitor międzyplatformowego interfejsu wiersza polecenia](../monitoring-and-diagnostics/insights-cli-samples.md)
+* [Przykłady szybkiego startu usługi Azure Monitor międzyplatformowego interfejsu wiersza polecenia](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Podsumowanie
 W tym artykule przedstawiono proste przykłady skalowanie pionowe. Przy użyciu tych bloków konstrukcyjnych — konto usługi Automation, elementami runbook, elementy webhook, alerty — możesz łączyć z wielu różnych zdarzeń za pomocą dostosowanego zestawu działań.

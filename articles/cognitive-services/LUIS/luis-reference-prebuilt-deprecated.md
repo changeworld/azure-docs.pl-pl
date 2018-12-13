@@ -11,19 +11,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 2fcd5a784801c3591d76b4c4569a7dda9472686e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7b294b9c528d0b7a93a3e287b37124a26d0851dd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103986"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138062"
 ---
-# <a name="deprecated-entities"></a>Przestarzałe jednostki
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Przestarzałe ze wstępnie utworzonych jednostek w aplikacji usługi LUIS
 Następujące wstępnie utworzone jednostki są przestarzałe i nie można dodawać do nowych aplikacji usługi LUIS.
 
-* **Data i godzina**: LUIS istniejące aplikacje, które używają **daty/godziny** powinny być migrowane do **datetimeV2**, chociaż jednostki daty/godziny w dalszym ciągu działać w istniejących aplikacjach, które go używają.
-* **Lokalizacja geograficzna**: LUIS istniejące aplikacje, które używają **Geografia** jest obsługiwane do grudnia 2018 r.
-* **Encyklopedii**: LUIS istniejące aplikacje, które używają **encyklopedii** jest obsługiwane do grudnia 2018 r.
+* **Data i godzina**: Istniejące aplikacje usługi LUIS, które używają **daty/godziny** powinny być migrowane do **datetimeV2**, chociaż jednostki daty/godziny w dalszym ciągu działać w istniejących aplikacjach, które go używają.
+* **Lokalizacja geograficzna**: Istniejące aplikacje usługi LUIS, które używają **Geografia** jest obsługiwane do grudnia 2018 r.
+* **Encyklopedii**: Istniejące aplikacje usługi LUIS, które używają **encyklopedii** jest obsługiwane do grudnia 2018 r.
 
 ## <a name="geography-culture"></a>Lokalizacja geograficzna kultury
 **Lokalizacja geograficzna** jest dostępna tylko w `en-us` ustawień regionalnych.
@@ -43,7 +43,7 @@ Wstępnie utworzone jednostki   |   Przykładowa wypowiedź   |   JSON
 **Encyklopedii** jest dostępna tylko w `en-US` ustawień regionalnych.
 
 #### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedii
-Wbudowane jednostki encyklopedii zawiera ponad 100 typy podrzędne w poniższej tabeli: Ponadto encyklopedii jednostki są często mapowane na wiele typów. Na przykład zapytanie Ronald Reagan daje: 
+Wbudowane jednostki encyklopedii zawiera ponad 100 typy podrzędne w poniższej tabeli: Ponadto encyklopedii jednostki często są mapowane na wiele typów. Na przykład zapytanie Ronald Reagan daje: 
 
 ```json
 {

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 20a486a048fe6287544a9fec35a95c88f6194a66
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ae0fdb17680f415a1dacce1738fa53fcda943788
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093186"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135002"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorców w celu zwiększenia dokładności prognozy
 Gdy aplikacją usługi LUIS otrzyma wypowiedzi punktu końcowego, należy użyć [koncepcji](luis-concept-patterns.md) wzorców w celu zwiększenia dokładności prognozy dla wypowiedzi zawiera wzorca w porządku program word i wybór programu word. Wzorce użycia [jednostek](luis-concept-entity-types.md) i ich ról, aby wyodrębnić dane przy użyciu składni z określonym wzorcem. 
@@ -96,7 +96,7 @@ Do ponownego przypisania kilka wzorców do innego zamiaru, zaznacz pole wyboru n
 
 2. **Usuń wzorców** pojawi się okno dialogowe potwierdzenia. Wybierz **Ok** na zakończenie usuwania.
 
-    ![Zrzut ekranu przedstawiający usuwanie wielu wzorców](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
+    ![Zrzut ekranu przedstawiający usuwanie kilku okno dialogowe z potwierdzeniem wzorców](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
 
 ## <a name="filter-pattern-list-by-entity"></a>Filtrowanie listy wzorzec przez jednostkę
 
@@ -117,7 +117,7 @@ Po zastosowaniu filtru intencji nazwa jest wyświetlana poniżej paska narzędzi
 ## <a name="remove-entity-or-intent-filter"></a>Usuwanie jednostki lub filtr elementu intent
 Gdy wzorzec lista jest filtrowana, jednostki lub intencji nazwa pojawia się pod paskiem narzędzi. Aby usunąć filtr, wybierz nazwę.
 
-![Zrzut ekranu przedstawiający wzorców filtrowane przez jednostkę](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
+![Zrzut ekranu przedstawiający Usuwanie jednostki z filtru](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
 
 Filtr zostanie usunięty, i wyświetlić wszystkie wzorce. 
 

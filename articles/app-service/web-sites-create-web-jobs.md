@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie zadań w tle za pomocą zadań Webjob w usłudze Azure App Service
+title: Uruchamianie zadań w tle za pomocą zadań Webjob — usłudze Azure App Service
 description: Dowiedz się, jak uruchamiać zadania w tle w usłudze Azure App Service web apps, aplikacje interfejsu API lub aplikacje mobilne za pomocą zadań Webjob.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
-ms.openlocfilehash: 901cf32557e0a437e938ceb50ecd500c69c8c3be
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.custom: seodec18
+ms.openlocfilehash: 1a43c6061c497c92123865e530208f2cbef09359
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364034"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269600"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchamianie zadań w tle za pomocą zadań Webjob w usłudze Azure App Service
 
@@ -75,15 +76,15 @@ when making changes in one don't forget the other two.
 
     ![Strona zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
+3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
 
    ![Dodaj stronę zadania WebJob](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Ustawienie      | Wartość przykładowa   | Opis  |
+   | Ustawienie      | Wartość przykładowa   | Opis  |
    | ------------ | ----------------- | ------------ |
-   | **Nazwa** | myContinuousWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
-   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
-   | **Typ** | Ciągłe | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
+   | **Nazwa** | myContinuousWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
+   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
+   | **Typ** | Ciągłe | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
    | **Skalowanie** | Z wieloma instancjami | Dostępne tylko w przypadku ciągłych zadań Webjob. Określa, czy program lub skrypt jest uruchamiany na wszystkich wystąpień lub tylko jednego wystąpienia. Opcja uruchamiania wielu wystąpień nie ma zastosowania do bezpłatna i współdzielona [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). | 
 
 4. Kliknij przycisk **OK**.
@@ -113,16 +114,16 @@ when making changes in one don't forget the other two.
 
     ![Strona zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
+3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
 
    ![Dodaj stronę zadania WebJob](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Ustawienie      | Wartość przykładowa   | Opis  |
+   | Ustawienie      | Wartość przykładowa   | Opis  |
    | ------------ | ----------------- | ------------ |
-   | **Nazwa** | myTriggeredWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_".|
-   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
-   | **Typ** | Wyzwolone | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
-   | **Wyzwalacze** | Ręczne | |
+   | **Nazwa** | myTriggeredWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_".|
+   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
+   | **Typ** | Wyzwolone | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
+   | **Wyzwalacze** | Ręczne | |
 
 4. Kliknij przycisk **OK**.
 
@@ -151,17 +152,17 @@ when making changes in one don't forget the other two.
 
    ![Strona zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
+3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
 
    ![Dodaj stronę zadania WebJob](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Ustawienie      | Wartość przykładowa   | Opis  |
+   | Ustawienie      | Wartość przykładowa   | Opis  |
    | ------------ | ----------------- | ------------ |
-   | **Nazwa** | myScheduledWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
-   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
-   | **Typ** | Wyzwolone | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
-   | **Wyzwalacze** | Zaplanowane | Podczas planowania niezawodną pracę, należy włączyć funkcję zawsze włączone. Zawsze włączone jest dostępna tylko w języku Basic, Standard i warstw cenowych Premium.|
-   | **Wyrażenie CRON** | 0 0/20 * * * * | [Wyrażenia CRON](#cron-expressions) są opisane w poniższej sekcji. |
+   | **Nazwa** | myScheduledWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
+   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
+   | **Typ** | Wyzwolone | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
+   | **Wyzwalacze** | Zaplanowane | Podczas planowania niezawodną pracę, należy włączyć funkcję zawsze włączone. Zawsze włączone jest dostępna tylko w języku Basic, Standard i warstw cenowych Premium.|
+   | **Wyrażenie CRON** | 0 0/20 * * * * | [Wyrażenia CRON](#cron-expressions) są opisane w poniższej sekcji. |
 
 4. Kliknij przycisk **OK**.
 

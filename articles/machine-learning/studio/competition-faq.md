@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: c423438e5c8088dba5b9d71e8e50a2e9de1371c6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fe4da412aa779e9861446f8dcbb8a807c282c7c6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104969"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268907"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Konkursy dotyczące usługi Microsoft Cortana Intelligence — często zadawane pytania
 **Co to jest pakiet Cortana Intelligence konkursy?**
@@ -70,7 +69,7 @@ Platforma konkurencji nie obsługuje obecnie współdziałania ze strony zespoł
 
 Konkursy są bezpłatne do wzięcia udziału w. Trzeba jednak dostęp do obszaru roboczego usługi Azure Machine Learning do udziału. Można utworzyć obszaru roboczego warstwy bezpłatna bez karty kredytowej, po prostu logując się przy użyciu prawidłowego konta Microsoft lub konta usługi Office 365. Jeśli jesteś już klientem platformy Azure lub pakietu Cortana Intelligence, można tworzyć i używać obszar roboczy warstwy standardowa w ramach tej samej subskrypcji platformy Azure. Jeśli chcesz kupić subskrypcję platformy Azure, przejdź do strony [cennik usługi Azure](https://azure.microsoft.com/pricing) strony. Należy pamiętać, że stawki standardowe będą naliczane, gdy za pomocą obszaru roboczego warstwy standardowa do konstruowania eksperymentów. Aby uzyskać więcej informacji, zobacz [informacje o cenach usługi Azure Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/). 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 **Jakie są wyniki publicznych i prywatnych?**
 

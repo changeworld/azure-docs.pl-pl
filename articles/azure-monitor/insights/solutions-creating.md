@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24ffe9eded908c82750ce5a6d6fbe87991bdae72
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 03a7454aec43963a093dc0d7fcc347dac3ef5d43
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872862"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192927"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Zaprojektować i zbudować rozwiązanie do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -58,7 +57,7 @@ Należy zdefiniować żadnych zapytań, które prawdopodobnie będą pomocne dla
 
 Jeśli ten problem można rozwiązać potencjalnie przy użyciu zautomatyzowanego procesu, następnie zazwyczaj utworzysz element runbook w usłudze Azure Automation, aby to skorygować.  Większość usług platformy Azure można zarządzać za pomocą [poleceń cmdlet](/powershell/azure/overview) której element runbook będzie wykorzystywać do wykonywania takich funkcji.
 
-Jeśli rozwiązanie wymaga funkcji zewnętrznych w odpowiedzi na alert, a następnie można użyć [odpowiedź elementu webhook](../../monitoring-and-diagnostics/alert-metric.md).  Umożliwia wywołanie zewnętrznej usługi internetowej wysyłanie informacji z poziomu alertu.
+Jeśli rozwiązanie wymaga funkcji zewnętrznych w odpowiedzi na alert, a następnie można użyć [odpowiedź elementu webhook](../../azure-monitor/platform/alerts-metric.md).  Umożliwia wywołanie zewnętrznej usługi internetowej wysyłanie informacji z poziomu alertu.
 
 ### <a name="views"></a>Widoki
 Widoki w usłudze Log Analytics są używane do wizualizacji danych z repozytorium usługi Log Analytics.  Każde z tych rozwiązań zwykle będzie zawierać pojedynczy widok przy użyciu [Kafelek](../../azure-monitor/platform/view-designer-tiles.md) , jest wyświetlany na głównym pulpicie nawigacyjnym użytkownika.  Widok może zawierać dowolną liczbę [części wizualizacji](../../azure-monitor/platform/view-designer-parts.md) zapewnienie różnych wizualizacji zebranych danych do użytkownika.

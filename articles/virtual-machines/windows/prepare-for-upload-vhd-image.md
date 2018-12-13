@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6aa13096b61fc1bf44d370b3d7dcc01a0df74e8d
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258463"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321345"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
 Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje **tylko maszyny wirtualne generacji 1** są w formacie pliku wirtualnego dysku twardego oraz mieć stały dysk o rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -283,7 +283,7 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla poł
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    Jeśli repozytorium jest uszkodzony, zobacz [WMI: uszkodzenie repozytorium lub nie](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
+    Jeśli repozytorium jest uszkodzony, zobacz [WMI: Uszkodzenie repozytorium lub nie](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
 5. Upewnij się, że wszystkie inne aplikacje nie korzysta z portu 3389. Port ten jest używany przez usługę protokołu RDP na platformie Azure. Możesz uruchomić **netstat - anob** aby zobaczyć, które porty w używanych na maszynie Wirtualnej:
 
@@ -377,7 +377,7 @@ Aby uzyskać więcej informacji o tym, jak utworzyć maszynę Wirtualną na pods
 - [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku](create-vm-specialized.md)
 - [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-Jeśli chcesz utworzyć uogólnionego obrazu, należy uruchomić programu sysprep. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [sposobu użycia programu Sysprep: wprowadzenie](https://technet.microsoft.com/library/bb457073.aspx). 
+Jeśli chcesz utworzyć uogólnionego obrazu, należy uruchomić programu sysprep. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [sposobu użycia programu Sysprep: Wprowadzenie](https://technet.microsoft.com/library/bb457073.aspx). 
 
 Nie każda rola lub aplikacji, która jest zainstalowana na komputerze z systemem Windows obsługuje to uogólnienie. Dlatego przed uruchomieniem tej procedury zapoznaj się z następującym artykułem, aby upewnić się, że roli tego komputera jest obsługiwana przez program sysprep. Aby uzyskać więcej informacji [Obsługa narzędzia Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
@@ -409,7 +409,7 @@ Następujące ustawienia nie wpływają na przekazywanie wirtualnego dysku tward
 *  Po utworzeniu maszyny Wirtualnej na platformie Azure, zaleca się umieszczenie pliku stronicowania w woluminie "Stacja danych czasowych", aby zwiększyć wydajność. Możesz skonfigurować to w następujący sposób:
 
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile" -Type MultiString -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
     ```
 W przypadku każdego dysku danych, który jest dołączony do maszyny Wirtualnej, litera dysku woluminu dysku danych czasowych jest zazwyczaj "D." Oznaczenie to może być różne w zależności od liczby dostępnych dysków i ustawienia, które wprowadzasz.
 

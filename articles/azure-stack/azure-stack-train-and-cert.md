@@ -6,30 +6,30 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: cf0cc5290f0757723ee067ee8ea84e8d6e7ba845
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376871"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323409"
 ---
 # <a name="azure-stack-training-and-certification"></a>Usługa Azure Stack szkolenia i certyfikacja
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 Następujące możliwości szkolenia i certyfikaty są dostępne dla Dowiedz się więcej o usłudze Azure Stack i zademonstrowania osiągnięcie zaawansowanego poziomu usługi Azure Stack.
 
 ## <a name="training"></a>Szkolenia
 
-- [Kurs 20537A: konfigurowania i używania chmury hybrydowej przy użyciu usługi Microsoft Azure Stack](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
-- [edX: Usługa Azure Stack szkolenia Online](https://aka.ms/AzureStackMOOC)
+- [Kurs 20537A: Konfigurowania i używania chmury hybrydowej przy użyciu usługi Microsoft Azure Stack](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
+- [edX: Szkolenia Online dotyczące usługi Azure Stack](https://aka.ms/AzureStackMOOC)
 - [Role zadania i ścieżki szkoleniowe](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>Certyfikacja
 
-Certyfikaty platformy Azure Stack są obecnie w fazie projektowania. Sprawdź najnowsze aktualizacje.
+*Konfigurowania i używania chmury hybrydowej dzięki certyfikatom Microsoft Azure Stack*, [egzaminu 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

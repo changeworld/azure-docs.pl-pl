@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service | Dokumentacja firmy Microsoft
+title: Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia w środowisku App Service — Azure | Dokumentacja firmy Microsoft
 description: Tworzenie i używanie środowiska ASE z wewnętrznym modułem równoważenia obciążenia
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: fe447a655f579441be667d7555aa83faf2b9385d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957014"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310474"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Przy użyciu wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service
 

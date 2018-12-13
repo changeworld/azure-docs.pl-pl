@@ -1,5 +1,6 @@
 ---
-title: Równoważenia obciążenia na wielu konfiguracji adresu IP na platformie Azure | Dokumentacja firmy Microsoft
+title: Równoważenie obciążenia na wielu konfiguracji adresu IP na platformie Azure
+titlesuffix: Azure Load Balancer
 description: Równoważenie obciążenia w podstawowych i pomocniczych konfiguracji adresów IP.
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0f092c471a7908eabe481adc8c722993818840b8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e6aff89fe45220e1642a91e6a2d31a9da422fdea
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219515"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163535"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Równoważenie obciążenia na wielu konfiguracji adresu IP za pomocą witryny Azure portal
 
@@ -56,7 +58,7 @@ Aby uzyskać więcej informacji na temat tworzenia maszyn wirtualnych z wieloma 
 
 Wykonaj poniższe kroki, aby osiągnąć scenariusz opisany w tym artykule.
 
-### <a name="step-1-configure-the-secondary-nics"></a>Krok 1: Konfigurowanie dodatkową kartą sieciową
+### <a name="step-1-configure-the-secondary-nics"></a>Krok 1. Skonfiguruj dodatkową kartą sieciową
 
 Dla każdej maszyny Wirtualnej w sieci wirtualnej należy dodać konfiguracji adresu IP dla pomocniczej karty Sieciowej:  
 
@@ -128,7 +130,7 @@ Dla każdej witryny sieci Web (contoso.com i fabrikam.com) należy skonfigurowa�
 
 Po skonfigurowaniu puli frontonu adresy IP są wyświetlane w obszarze modułu równoważenia obciążenia **konfiguracja adresu IP frontonu** ustawienia. 
     
-### <a name="step-4-configure-the-back-end-pool"></a>Krok 4. Konfigurowanie puli zaplecza
+### <a name="step-4-configure-the-back-end-pool"></a>Krok 4: Konfigurowanie puli zaplecza
 
 Każda witryna sieci Web (contoso.com i fabrikam.com) można skonfigurować w puli adresów zaplecza modułu równoważenia obciążenia:
         
@@ -154,7 +156,7 @@ Każda witryna sieci Web (contoso.com i fabrikam.com) można skonfigurować w pu
 
 Po skonfigurowaniu puli zaplecza adresy są wyświetlane w obszarze modułu równoważenia obciążenia **puli zaplecza** ustawienia.
 
-### <a name="step-5-configure-the-health-probe"></a>Krok 5. Konfigurowanie sondy kondycji
+### <a name="step-5-configure-the-health-probe"></a>Krok 5: Konfigurowanie sondy kondycji
 
 Konfigurowanie sondy kondycji modułu równoważenia obciążenia:
 
@@ -166,7 +168,7 @@ Konfigurowanie sondy kondycji modułu równoważenia obciążenia:
 
 4. Wpisz nazwę dla sondy kondycji (na przykład **HTTP**). Kliknij przycisk **OK**.
 
-### <a name="step-6-configure-load-balancing-rules"></a>Krok 6. Konfigurowanie reguł równoważenia obciążenia
+### <a name="step-6-configure-load-balancing-rules"></a>Krok 6: Konfigurowanie reguł równoważenia obciążenia
 
 Dla każdej witryny sieci Web (contoso.com i fabrikam.com) należy skonfigurować reguły równoważenia obciążenia:
     
@@ -186,7 +188,7 @@ Dla każdej witryny sieci Web (contoso.com i fabrikam.com) należy skonfigurowa�
 
 Po skonfigurowaniu zasad, zostaną one wyświetlone w obszarze modułu równoważenia obciążenia **reguły równoważenia obciążenia** ustawienia.
 
-### <a name="step-7-configure-dns-records"></a>Krok 7. Konfigurowanie rekordów DNS
+### <a name="step-7-configure-dns-records"></a>Krok 7: Skonfiguruj rekordy DNS
 
 Ostatnim krokiem skonfigurować swoje rekordy zasobów DNS wskaż odpowiednie adresy IP frontonu modułu równoważenia obciążenia. Możesz hostować swoje domeny w usłudze Azure DNS. Aby uzyskać więcej informacji o korzystaniu z usługi Azure DNS przy użyciu modułu równoważenia obciążenia, zobacz [przy użyciu usługi Azure DNS z innymi usługami Azure](../dns/dns-for-azure-services.md).
 

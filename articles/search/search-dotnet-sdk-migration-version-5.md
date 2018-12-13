@@ -1,6 +1,6 @@
 ---
-title: Uaktualnianie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 5 | Dokumentacja firmy Microsoft
-description: Uaktualnianie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 5
+title: Uaktualnienie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 5 - usługi Azure Search
+description: Migrowanie kodu do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 5 ze starszych wersji. Poznaj nowe funkcje i zmiany kodu, które są wymagane.
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,12 +9,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: brjohnst
-ms.openlocfilehash: b08507d7685ce87a4c176385f750a72d6ae51ba3
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: 743ac433418386281acc58ad1deef06ee75e38d9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091144"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316878"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Uaktualnianie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 5
 Jeśli używasz wersji 4.0 preview lub starszy z [zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnić aplikację do używania w wersji 5.
@@ -56,10 +57,10 @@ Gdy problem został rozwiązany wszelkie ostrzeżenia kompilacji, można wprowad
 ## <a name="breaking-changes-in-version-5"></a>Istotne zmiany w wersji 5
 Najbardziej znaczące istotnej zmiany w wersji 5 jest to, że `Microsoft.Azure.Search` zestawu i jego zawartość, ma został podzielony na cztery oddzielne zestawy, które są obecnie dystrybuowane jako cztery oddzielne pakiety NuGet:
 
- - `Microsoft.Azure.Search`: To meta pakiet, który zawiera wszystkie inne pakiety usługi Azure Search jako zależności. Jeśli wykonujesz uaktualnienie z wcześniejszej wersji zestawu SDK, po prostu uaktualnianie tego pakietu i ponowne utworzenie powinny być wystarczająco dużo, aby rozpocząć korzystanie z nowej wersji.
+ - `Microsoft.Azure.Search`: Jest to meta pakiet, który zawiera wszystkie inne pakiety usługi Azure Search jako zależności. Jeśli wykonujesz uaktualnienie z wcześniejszej wersji zestawu SDK, po prostu uaktualnianie tego pakietu i ponowne utworzenie powinny być wystarczająco dużo, aby rozpocząć korzystanie z nowej wersji.
  - `Microsoft.Azure.Search.Data`: Użyj tego pakietu, jeśli tworzysz aplikację .NET za pomocą usługi Azure Search i wystarczy tylko zapytania lub aktualizowanie dokumentów w indeksów. Jeśli trzeba będzie również tworzenie lub aktualizowanie indeksów, map synonimów lub innych zasobów dotyczących poziomu usług, należy użyć `Microsoft.Azure.Search` zamiast tego pakietu.
  - `Microsoft.Azure.Search.Service`: Użyj tego pakietu, jeśli tworzysz automatyzacji na platformie .NET do zarządzania indeksów usługi Azure Search, map synonimów, indeksatory, źródła danych lub innych zasobów na poziomie usługi. Jeśli wymagane jest tylko do dokumentów zapytania lub aktualizacji w indeksów, użyj `Microsoft.Azure.Search.Data` zamiast tego pakietu. Jeśli potrzebujesz wszystkich funkcji usługi Azure Search, użyj `Microsoft.Azure.Search` zamiast tego pakietu.
- - `Microsoft.Azure.Search.Common`: Wymagane przez bibliotekami .NET usługi Azure Search popularnych typów. Nie należy używać tego pakietu bezpośrednio w aplikacji; Jest przeznaczone tylko do użycia jako zależność.
+ - `Microsoft.Azure.Search.Common`: Popularne typy wymagane przez bibliotekami .NET usługi Azure Search. Nie należy używać tego pakietu bezpośrednio w aplikacji; Jest przeznaczone tylko do użycia jako zależność.
  
 Ta zmiana z technicznego punktu widzenia jest istotne, ponieważ wiele typów zostały przeniesione między zestawami. Jest to, dlaczego ponownie skompilować aplikację jest niezbędne w celu uaktualniania do wersji 5 zestawu SDK.
 

@@ -1,12 +1,11 @@
 ---
-title: Omówienie usługi Azure Load Balancer w warstwie standardowa | Dokumentacja firmy Microsoft
+title: Co to jest Azure Balancer w warstwie standardowa?
+titlesuffix: Azure Load Balancer
 description: Omówienie funkcji usługi Azure Standard Load Balancer
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 17b4bc68b2dc996134626b1822cfd17f0a9a7572
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 845f991085a4427ab4f4301cab1dc60215374554
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161645"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185770"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie standardowego modułu równoważenia obciążenia na platformie Azure
 
@@ -40,7 +39,7 @@ Jednym z kluczowych aspektów jest zakres sieci wirtualnej dla zasobu.  Podstawo
 Zasobów modułu równoważenia obciążenia są obiekty, w których można wyrazić jak Azure powinien program swoją infrastrukturę wielodostępnych do osiągnięcia scenariusza, który chcesz utworzyć.  Nie ma bezpośredniej relacji między zasobami usługi równoważenia obciążenia i rzeczywistej infrastruktury. Tworzenie modułu równoważenia obciążenia nie tworzy wystąpienia, jest zawsze dostępna pojemność i nie uruchamiania lub opóźnienia, które należy rozważyć skalowanie. 
 
 >[!NOTE]
-> Platforma Azure udostępnia mechanizm równoważenia w pełni zarządzanych rozwiązań dla swoich scenariuszy.  Jeśli szukasz, kończenie żądań protokołu TLS ("odciążanie protokołu SSL") lub na przetwarzanie warstwy aplikacji żądania HTTP/HTTPS, zapoznaj się z [Application Gateway](../application-gateway/application-gateway-introduction.md).  Jeśli szukasz globalnego DNS równoważenia obciążenia, przejrzyj [usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Scenariuszy end-to-end mogą korzystać z łączenia tych rozwiązań, zgodnie z potrzebami.
+> Platforma Azure udostępnia mechanizm równoważenia w pełni zarządzanych rozwiązań dla swoich scenariuszy.  Jeśli szukasz, kończenie żądań protokołu TLS ("odciążanie protokołu SSL") lub na przetwarzanie warstwy aplikacji żądania HTTP/HTTPS, zapoznaj się z [Application Gateway](../application-gateway/application-gateway-introduction.md).  Jeśli szukasz globalnego modułu równoważenia obciążenia systemu DNS, zapoznaj się z tematem dotyczącym usługi [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Scenariuszy end-to-end mogą korzystać z łączenia tych rozwiązań, zgodnie z potrzebami.
 
 ## <a name="why-use-standard-load-balancer"></a>Dlaczego warto używać standardowego modułu równoważenia obciążenia?
 
@@ -49,7 +48,7 @@ Usługa Load Balancer w warstwie Standardowa pozwala skalować aplikacje i zapew
 Przejrzeć tabelę poniżej omówienie różnic między standardowego modułu równoważenia obciążenia i podstawowego modułu równoważenia obciążenia:
 
 >[!NOTE]
-> Nowe projekty powinna przyjąć standardowego modułu równoważenia obciążenia. 
+> Nowe projekty powinny zostać dostosowane do modułu równoważenia obciążenia w warstwie Standardowa. 
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
@@ -58,7 +57,7 @@ Przegląd [limitów usług dla usługi równoważenia obciążenia](https://aka.
 
 ### <a name="backend"></a>Pula zaplecza
 
-Pule zaplecza modułu równoważenia obciążenia w warstwie standardowa rozszerza się na żaden zasób maszynę wirtualną w sieci wirtualnej.  Może zawierać maksymalnie 1000 wewnętrznej bazy danych wystąpień.  Wystąpienie wewnętrznej bazy danych jest konfiguracji IP, czyli własności zasobów kart Sieciowych.
+Pule zaplecza modułu równoważenia obciążenia w warstwie standardowa rozwinąć dowolny zasób maszyny wirtualnej w sieci wirtualnej.  Może zawierać maksymalnie 1000 wewnętrznej bazy danych wystąpień.  Wystąpienie wewnętrznej bazy danych jest konfiguracji IP, czyli własności zasobów kart Sieciowych.
 
 Pula zaplecza może zawierać autonomicznych maszyn wirtualnych, zestawów dostępności lub zestawach skalowania maszyn wirtualnych.  Można tworzyć zasoby w puli zaplecza. Można połączyć maksymalnie 150 zasobów w puli zaplecza dla każdego zasobu modułu równoważenia obciążenia.
 
@@ -103,9 +102,9 @@ Przegląd [szczegółowe omówienie standardowa diagnostykę modułu równoważe
 
 Load Balancer w warstwie standardowa obsługuje nowy typ reguły.  
 
-Można skonfigurować reguły skalowania aplikacji i jest wysoce niezawodne równoważenia obciążenia. Kiedy używasz porty wysokiej dostępności reguły równoważenia obciążenia standardowego modułu równoważenia obciążenia zapewni na przepływ równoważenia obciążenia na każdym portów efemerycznych adresu IP frontonu dla wewnętrznego standardowego modułu równoważenia obciążenia.  Ta funkcja jest przydatne w przypadku innych scenariuszach, gdzie jest to niepraktyczne lub niepożądane, aby określić poszczególnych portów.
+Można skonfigurować reguły równoważenia obciążenia, skalowania aplikacji i jest wysoce niezawodne. Gdy używasz regułę równoważenia obciążenia porty wysokiej dostępności, Standard Load Balancer, która zapewni na przepływ równoważenia obciążenia na każdym portów efemerycznych adresu IP frontonu dla wewnętrznego standardowego modułu równoważenia obciążenia.  Ta funkcja jest przydatne w przypadku innych scenariuszach, gdzie jest to niepraktyczne lub niepożądane, aby określić poszczególnych portów.
 
-Reguły równoważenia obciążenia porty wysokiej dostępności umożliwia tworzenie aktywny / pasywny lub aktywny aktywny n + 1 scenariusze dla wirtualnych urządzeń sieciowych oraz dowolnej aplikacji, która wymaga duże zakresy portów przychodzących.  Sonda kondycji może służyć do określenia, które zaplecza powinni otrzymywać nowych przepływów.  Sieciowa grupa zabezpieczeń służy do emulowania scenariusz zakresu portów.
+Porty wysokiej dostępności reguły równoważenia obciążenia służy do tworzenia aktywny / pasywny lub aktywny aktywny n + 1 scenariusze dla wirtualnych urządzeń sieciowych oraz dowolnej aplikacji, która wymaga duże zakresy portów przychodzących.  Sonda kondycji może służyć do określenia, które zaplecza powinni otrzymywać nowych przepływów.  Sieciowa grupa zabezpieczeń służy do emulowania scenariusz zakresu portów.
 
 >[!IMPORTANT]
 > Jeśli planujesz używać wirtualnego urządzenia sieciowego, skontaktuj się z dostawcą, aby uzyskać wskazówki dotyczące tego, czy ich produkt był testowany z porty wysokiej dostępności, a następnie postępuj zgodnie z ich dokładne wskazówki dotyczące implementacji. 
@@ -120,7 +119,7 @@ Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń i jak stosow
 
 ### <a name="outbound"></a> Połączenia wychodzące
 
-Moduł równoważenia obciążenia obsługuje scenariusze ruchu przychodzącego i wychodzącego.  Standardowy moduł równoważenia obciążenia różni się znacznie podstawowego modułu równoważenia obciążenia w odniesieniu do połączeń wychodzących.
+Moduł równoważenia obciążenia obsługuje scenariusze ruchu przychodzącego i wychodzącego.  Standardowy moduł równoważenia obciążenia różni się znacznie od podstawowego modułu równoważenia obciążenia w odniesieniu do połączeń wychodzących.
 
 Źródło sieci adresu tłumaczenia (SNAT) są używane do mapowania prywatne, wewnętrzne adresy IP w sieci wirtualnej do publicznych adresów IP na frontonów modułu równoważenia obciążenia.
 
@@ -138,7 +137,7 @@ Oto kluczowe założenia pamiętać podczas pracy z usługą Load Balancer w war
 Jeśli chcesz więcej portów SNAT, ponieważ są oczekiwane lub już występuje duże zapotrzebowanie dla połączeń wychodzących, można również dodać przyrostowe spisu portu SNAT, przez skonfigurowanie dodatkowych frontonów, reguł i pule zaplecza do tej samej maszyny wirtualnej zasoby.
 
 #### <a name="control-which-frontend-is-used-for-outbound"></a>Frontonu, która jest używana do kontroli ruchu wychodzącego
-Jeśli chcesz ograniczyć połączenia wychodzące tylko tak, jakby pochodził z adresu IP określonego serwera sieci Web, opcjonalnie można wyłączyć SNAT wychodzących w regule, który wyrazi mapowania ruchu wychodzącego.
+Jeśli chcesz ograniczyć połączenia wychodzące tylko tak, jakby pochodził z adresu IP określonego serwera sieci Web, opcjonalnie można wyłączyć SNAT wychodzących w regule, który wyraża mapowania ruchu wychodzącego.
 
 #### <a name="control-outbound-connectivity"></a>Łączność wychodząca kontroli
 Standardowy moduł równoważenia obciążenia istnieje w ramach sieci wirtualnej.  Sieć wirtualna jest izolowane sieci prywatnej.  Łączności publicznej nie jest dozwolona, chyba że istnieje skojarzenie z publicznym adresem IP.  Możesz docierać do [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) ponieważ są one oraz lokalnych z siecią wirtualną.  Jeśli chcesz nawiązać łączności wychodzącej do miejsca docelowego spoza sieci wirtualnej, masz dwie opcje:
@@ -154,7 +153,7 @@ Jeśli użytkownik _tylko_ ma wewnętrznego standardowego modułu równoważenia
 Przegląd [szczegółowe omówienie połączeń wychodzących](load-balancer-outbound-connections.md).
 
 ### <a name="multife"></a>Wiele frontonów
-Usługa Load Balancer obsługuje wiele reguł z wielu frontonów.  Load Balancer w warstwie standardowa rozszerza to scenariusze ruchu wychodzącego.  Scenariusze wychodzące są zasadniczo odwrotność reguły równoważenia obciążenia dla ruchu przychodzącego.  Obciążenia dla ruchu przychodzącego, reguły równoważenia również tworzy skojarzenia dla połączeń wychodzących. Standard Load Balancer, która używa wszystkich frontonów skojarzony zasób maszynę wirtualną za pomocą reguły równoważenia obciążenia.  Ponadto parametru na temat równoważenia obciążenia regułę i umożliwia pomijanie równoważenia reguł na potrzeby łączności wychodzącej, który umożliwia wybranie określonych frontonów, w tym none.
+Usługa Load Balancer obsługuje wiele reguł z wielu frontonów.  Load Balancer w warstwie standardowa rozszerza to scenariusze ruchu wychodzącego.  Scenariusze wychodzące są zasadniczo odwrotność regułę równoważenia obciążenia dla ruchu przychodzącego.  Reguła równoważenia obciążenia ruchu przychodzącego tworzy również skojarzyć dla połączeń wychodzących. Standard Load Balancer, która używa frontonów wszystkie skojarzone z zasobu maszyny wirtualnej przez regułę równoważenia obciążenia.  Ponadto parametrów w regule równoważenia obciążenia i umożliwia pomijanie regułę równoważenia obciążenia na potrzeby łączności wychodzącej, który umożliwia wybranie określonych frontonów, w tym none.
 
 Dla porównania podstawowego modułu równoważenia obciążenia wybiera losowo pojedynczego serwera sieci Web, i nie ma możliwość kontrolowania, który z nich został wybrany.
 
@@ -162,7 +161,7 @@ Przegląd [szczegółowe omówienie połączeń wychodzących](load-balancer-out
 
 ### <a name="operations"></a> Operacje zarządzania
 
-Standardowe zasoby modułu równoważenia obciążenia istnieje na platformę infrastruktury w zupełnie nowy.  Pozwala to znacznie szybsze operacje zarządzania dla standardowej jednostki SKU i czasów zakończenia są zazwyczaj mniej niż 30 sekund dla każdego zasobu standardowej jednostki SKU.  Należy pamiętać, że pule zaplecza zwiększenia rozmiaru, czas trwania wymaganych do wewnętrznej bazy danych puli zmienia się również wzrost.
+Standardowe zasoby modułu równoważenia obciążenia istnieje na platformę infrastruktury w zupełnie nowy.  Dzięki temu szybsze operacje zarządzania dla standardowej jednostki SKU i czasów zakończenia są zazwyczaj mniej niż 30 sekund dla każdego zasobu standardowej jednostki SKU.  Pule zaplecza zwiększania rozmiaru czas wymagany do wewnętrznej bazy danych puli zmienia także wzrost.
 
 Można modyfikować zasobów standardowego modułu równoważenia obciążenia i przenieść standardowy publiczny adres IP z jednej maszyny wirtualnej do innego znacznie szybciej.
 
@@ -211,7 +210,7 @@ Standardowe moduły równoważenia obciążenia dostępnych z SLA na poziomie 99
 
 ## <a name="pricing"></a>Cennik
 
-Standard Load Balancer, która jest produktem płatne na podstawie liczby reguł równoważenia obciążenia skonfigurowany i wszystkie dane przychodzące i wychodzące przetworzone. Dla Load Balancer w warstwie standardowa informacje o cenach, odwiedź stronę [cennik usługi Równoważenie obciążenia](https://aka.ms/lbpricing) strony.
+Standard Load Balancer, która jest płatne produktu, na podstawie liczby skonfigurowanych reguł równoważenia obciążenia i wszystkie dane przychodzące i wychodzące przetworzone. Dla Load Balancer w warstwie standardowa informacje o cenach, odwiedź stronę [cennik usługi Równoważenie obciążenia](https://aka.ms/lbpricing) strony.
 
 ## <a name="limitations"></a>Ograniczenia
 
@@ -221,8 +220,8 @@ Standard Load Balancer, która jest produktem płatne na podstawie liczby reguł
 - Frontonów modułu równoważenia obciążenia nie są dostępne w globalne wirtualne sieci równorzędne.
 - [Subskrypcja operacje są przenoszone z](../azure-resource-manager/resource-group-move-resources.md) nie są obsługiwane w przypadku standardowych jednostek SKU równoważenia obciążenia i narzędzie PIP zasobów.
 - Role procesów roboczych w sieci Web bez sieci wirtualnej i innych usług platformy Microsoft może być dostępny, gdy tylko wewnętrznego standardowego modułu równoważenia obciążenia jest używana z powodu efekt uboczny z jak pre-sieć wirtualna usługi i innych platform services — funkcja. Należy nie polegać na tych odpowiednio obsługi autonomiczną usługą Intune a bazowego platformy mogą ulec zmianie bez powiadomienia. Użytkownik musi zawsze zakładaj, że należy utworzyć [łączności wychodzącej](load-balancer-outbound-connections.md) jawnie, jeśli jest to konieczne, korzystając z wewnętrznego standardowego modułu równoważenia obciążenia tylko.
-- Moduł równoważenia obciążenia jest produkt TCP lub UDP do przekierowania portów dla tych określonych protokołów IP i równoważenia obciążenia.  Reguły równoważenia obciążenia i reguł translatora adresów Sieciowych dla ruchu przychodzącego są obsługiwane w przypadku protokołów TCP i UDP i nie jest obsługiwane dla innych protokołów IP, w tym protokołu ICMP. Moduł równoważenia obciążenia nie kończy, odpowiadać lub inny sposób interakcji z ładunku przepływ protokołu UDP lub TCP. Nie jest serwer proxy. Pomyślnej weryfikacji łączności z frontonu musi mieć miejsce wewnątrzpasmowe przy użyciu tego samego protokołu, które są używane w obciążenia równoważenia ruchu przychodzącego translatora adresów Sieciowych regułę lub (TCP lub UDP) _i_ co najmniej jedną z maszyn wirtualnych należy wygenerować odpowiedzi dla klienta Aby zobaczyć odpowiedź z frontonu.  Nie odbiera odpowiedź wewnątrzpasmowe z frontonu modułu równoważenia obciążenia oznacza, że żadne maszyny wirtualne zostały przygotowane.  Nie jest możliwe do interakcji z usługą Load Balancer frontonu nie może odpowiadać maszyny wirtualnej.  Dotyczy to również połączenia wychodzące gdzie [maskująca portu SNAT](load-balancer-outbound-connections.md#snat) jest obsługiwana tylko w przypadku protokołów TCP i UDP; żadnych innych protokołów IP, ICMP w tym również zakończy się niepowodzeniem.  Przypisz adres publiczny adres IP na poziomie wystąpienia, aby uniknąć.
-- Inaczej niż w przypadku publicznych modułów równoważenia obciążenia, które zawierają [połączeń wychodzących](load-balancer-outbound-connections.md) podczas przenoszenia z prywatnych adresów IP w sieci wirtualnej do publicznych adresów IP, wewnętrznego równoważenia obciążenia nie tłumaczenia wychodzącego pochodzi połączenia frontonu dla wewnętrznego modułu równoważenia obciążenia jako znajdują się w prywatnej przestrzeni adresowej IP.  Umożliwia to uniknięcie ryzyko wyczerpania SNAT wewnątrz unikatowy wewnętrznej przestrzeni adresów IP gdzie tłumaczenia nie jest wymagana.  Efekt uboczny jest to, że jeśli przepływu wychodzącego z maszyny Wirtualnej w puli zaplecza prób przepływ frontonu dla wewnętrznego modułu równoważenia obciążenia w puli, która znajduje się _i_ jest mapowany do siebie, zarówno nogi przepływu nie są zgodne i przepływ zakończy się niepowodzeniem. .  Jeśli przepływ nie zamapować powrót do tej samej maszyny Wirtualnej w puli zaplecza, która utworzyła przepływ do frontonu, przepływ zostanie wykonane pomyślnie.   Gdy przepływ mapuje do samego przepływu wychodzącego jest wyświetlana tak, jakby pochodził z maszyny Wirtualnej do frontonu i odpowiednie przepływu ruchu przychodzącego, który pojawia się tak, jakby pochodził z maszyny Wirtualnej do samego siebie. Z punktu widzenia systemu operacyjnego gościa dla ruchu przychodzącego i wychodzącego części takim samym przepływie nie są zgodne na maszynie wirtualnej. Dotyczącą stosu TCP nie rozpozna tych części tego samego przepływu jako część tego samego przepływu jako źródłowe i docelowe nie są zgodne.  Gdy przepływ jest mapowany do innej maszyny Wirtualnej w puli zaplecza, będzie zgodna części przepływu i maszyny Wirtualnej pomyślnie mogą odpowiadać na przepływ.  Objaw w tym scenariuszu jest połączenie przekroczeń limitu czasu. Kilka typowych obejściach, niezawodne realizacji tego scenariusza (pochodzące przepływy z puli zaplecza na serwer zaplecza pul odpowiednich wewnętrznych frontonu modułu równoważenia obciążenia) które obejmują albo wstawiania serwer proxy innych firm za obciążenia wewnętrznego Moduł równoważenia lub [przy użyciu reguł stylu DSR](load-balancer-multivip-overview.md).  Podczas korzystania z publicznej usługi Load Balancer, można rozwiązać, wynikowy scenariusz jest podatna na [wyczerpania SNAT](load-balancer-outbound-connections.md#snat) i należy ich unikać, chyba że uważnie zarządzane.
+- Moduł równoważenia obciążenia to produkt protokołu TCP lub UDP służący do równoważenia obciążenia i przekierowania portów na potrzeby tych konkretnych protokołów IP.  Reguły równoważenia obciążenia i reguły NAT dla ruchu przychodzącego są obsługiwane dla protokołów TCP i UDP, ale nie są obsługiwane dla innych protokołów IP, w tym protokołu ICMP. Moduł równoważenia obciążenia nie kończy, nie odpowiada ani w żaden inny sposób nie wchodzi w interakcję z ładunkiem przepływu protokołu UDP ani TCP. Nie jest to serwer proxy. Pomyślnej weryfikacji łączności z frontonu musi mieć miejsce wewnątrzpasmowe przy użyciu tego samego protokołu, które są używane w obciążenia równoważenia ruchu przychodzącego translatora adresów Sieciowych regułę lub (TCP lub UDP) _i_ co najmniej jedną z maszyn wirtualnych należy wygenerować odpowiedzi dla klienta Aby zobaczyć odpowiedź z frontonu.  Nie odbiera odpowiedź wewnątrzpasmowe z frontonu modułu równoważenia obciążenia oznacza, że żadne maszyny wirtualne zostały przygotowane.  Nie jest możliwe do interakcji z usługą Load Balancer frontonu nie może odpowiadać maszyny wirtualnej.  Dotyczy to również połączeń wychodzących, dla których [translator adresów sieciowych opartych na źródle na potrzeby maskowania portów](load-balancer-outbound-connections.md#snat) jest obsługiwany tylko w przypadku protokołów TCP i UDP; dla wszystkich innych protokołów IP, w tym ICMP, również zakończy się to niepowodzeniem.  Przypisz publiczny adres IP na poziomie wystąpienia, aby rozwiązać ten problem.
+- Inaczej niż w przypadku publicznych modułów równoważenia obciążenia, które zawierają [połączeń wychodzących](load-balancer-outbound-connections.md) podczas przenoszenia z prywatnych adresów IP w sieci wirtualnej do publicznych adresów IP, wewnętrznego równoważenia obciążenia nie tłumaczenia wychodzącego pochodzi połączenia frontonu dla wewnętrznego modułu równoważenia obciążenia jako znajdują się w prywatnej przestrzeni adresowej IP.  Umożliwia to uniknięcie ryzyko wyczerpania SNAT wewnątrz unikatowy wewnętrznej przestrzeni adresów IP gdzie tłumaczenia nie jest wymagana.  Efekt uboczny jest to, że jeśli przepływu wychodzącego z maszyny Wirtualnej w puli zaplecza prób przepływ frontonu dla wewnętrznego modułu równoważenia obciążenia w puli, która znajduje się _i_ jest mapowany do siebie, zarówno nogi przepływu nie są zgodne i przepływ zakończy się niepowodzeniem. .  Jeśli przepływ nie zamapować powrót do tej samej maszyny Wirtualnej w puli zaplecza, która utworzyła przepływ do frontonu, przepływ zostanie wykonane pomyślnie.   Gdy przepływ mapuje do samego przepływu wychodzącego jest wyświetlana tak, jakby pochodził z maszyny Wirtualnej do frontonu i odpowiednie przepływu ruchu przychodzącego, który pojawia się tak, jakby pochodził z maszyny Wirtualnej do samego siebie. Z punktu widzenia systemu operacyjnego gościa części dotyczące ruchu przychodzącego i wychodzącego tego samego przepływu nie są zgodne w ramach maszyny wirtualnej. Stos TCP nie rozpozna tych części jednego przepływu jako należących do tego samego przepływu, ponieważ elementy źródłowe i docelowe nie będą zgodne.  Gdy przepływ jest mapowany do innej maszyny Wirtualnej w puli zaplecza, będzie zgodna części przepływu i maszyny Wirtualnej pomyślnie mogą odpowiadać na przepływ.  Objaw w tym scenariuszu jest połączenie przekroczeń limitu czasu. Kilka typowych obejściach, niezawodne realizacji tego scenariusza (pochodzące przepływy z puli zaplecza na serwer zaplecza pul odpowiednich wewnętrznych frontonu modułu równoważenia obciążenia) które obejmują albo wstawiania serwer proxy innych firm za obciążenia wewnętrznego Moduł równoważenia lub [przy użyciu reguł stylu DSR](load-balancer-multivip-overview.md).  Użycie publicznego modułu równoważenia obciążenia jest możliwe w celu rozwiązania tego problemu, ale wynikowy scenariusz jest podatny na [wyczerpanie translatora adresów sieciowych opartych na źródle](load-balancer-outbound-connections.md#snat) i należy tego unikać lub starannie kontrolować.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: c7084a10aceafcdd1039893b810fcbd8b74b874b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7fa2cbc831c6bcb734b4a4596a3f75f81e8ee085
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967408"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317036"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Omówienie typowe wzorce skalowania automatycznego
 W tym artykule opisano niektóre typowe wzorce skalowania zasobu na platformie Azure.
 
 Skalowanie automatyczne platformy Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usług w chmurze](https://azure.microsoft.com/services/cloud-services/), [App Service — Web Apps](https://azure.microsoft.com/services/app-service/web/), i [usługi API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-# <a name="lets-get-started"></a>Umożliwia rozpoczęcie pracy
+## <a name="lets-get-started"></a>Umożliwia rozpoczęcie pracy
 
 W tym artykule założono, że czytelnik zna automatycznego skalowania. Możesz [Rozpocznij tutaj skalować zasób][1]. Poniżej przedstawiono niektóre typowe wzorce skalowania.
 
@@ -56,7 +56,7 @@ Masz aplikację sieci web (/ zestawu skalowania maszyn wirtualnych/rola usługi 
 
 Masz frontonu sieci web i warstwę interfejsu API, który komunikuje się z wewnętrznej bazy danych.
 
-- Aby skalować warstwę interfejsu API na podstawie niestandardowych zdarzeń frontonu (przykład: Aby przeskalować proces wyewidencjonowania na podstawie liczby elementów w koszyku)
+- Aby skalować warstwę interfejsu API na podstawie niestandardowych zdarzeń frontonu (przykład: Chcesz skalować proces wyewidencjonowania na podstawie liczby elementów w koszyku)
 
 ![Skali, w oparciu o metryki niestandardowe][5]
 

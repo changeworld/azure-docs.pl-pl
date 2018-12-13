@@ -1,5 +1,5 @@
 ---
-title: Zasoby dokumentacji wyszukiwanie kognitywne (Azure Search) | Dokumentacja firmy Microsoft
+title: Usługa cognitive search zasoby dokumentacji — usługa Azure Search
 description: Adnotacjami listę artykułów, samouczki, przykłady i blog publikuje obciążeń związanych z cognitive wyszukiwania w usłudze Azure Search.
 services: search
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: bad73d2bf8bdf4adee4ce6e40550e506a35a2083
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165682"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314605"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Zasoby dokumentacji dla obciążeń wyszukiwania kognitywnego
 

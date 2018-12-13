@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4ef312ebd6c329028a556778c24c5e0e41706056
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239053"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311001"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
@@ -149,9 +149,7 @@ Platforma obliczeniowa platformy Azure opiera się na wirtualizacji maszyny, co 
 
 Każdy węzeł ma również jedną specjalne głównego maszyny Wirtualnej, co działa systemu operacyjnego hosta. Krytyczne granica jest izolacja główną maszynę Wirtualną od maszyn wirtualnych gościa oraz maszyny wirtualne gościa od siebie nawzajem, zarządzane przez funkcję hypervisor i katalog główny systemu operacyjnego. Parowanie funkcji hypervisor/root systemu operacyjnego korzysta z dziesięcioleci firmy Microsoft o środowisko zabezpieczeń systemu operacyjnego i nowszej uczenie się to od firmy Microsoft Hyper-V, aby zapewnić silną izolację maszyn wirtualnych gościa.
 
-Platforma Azure korzysta ze środowiska zwirtualizowanego. Wystąpienia użytkownika działają jako autonomiczne maszyny wirtualne, które nie mają dostępu do serwera fizycznego hosta, a ta Izolacja jest wymuszana przy użyciu procesora fizycznego, poziomach uprawnień (pierścień-0/pierścień-3).
-
-Pierścień 0 to najwyższy poziom uprawnień, a pierścień 3 — najniższy. System operacyjny gościa jest uruchamiany w pierścienia 1 o mniejszym uprzywilejowanego, a aplikacje działają w pierścieniu o najniższych uprawnieniach 3. Ta wirtualizacja zasobów fizycznych prowadzi do wyraźnego rozdzielenia systemu operacyjnego gościa i funkcji hypervisor, co zapewnia dodatkową separację zabezpieczeń.
+Platforma Azure korzysta ze środowiska zwirtualizowanego. Wystąpienia użytkownika działają jako autonomiczne maszyny wirtualne, które nie mają dostępu do fizycznego serwera hosta.
 
 Funkcja hypervisor platformy Azure działa jak mikrojądro i przekazuje wszystkie żądania dostępu do sprzętu z maszyn wirtualnych gościa do hosta w celu przetworzenia, korzystając z interfejsu pamięci współużytkowanej o nazwie VMBus. Uniemożliwia to użytkownikom uzyskiwanie dostępu do nieprzetworzonego odczytu/zapisu/wykonania w systemie i zmniejsza ryzyko związane z udostępnianiem zasobów systemowych.
 
@@ -187,9 +185,9 @@ Domyślnie cały ruch jest blokowany, po utworzeniu maszyny wirtualnej, a nastę
 
 Istnieją dwie kategorie reguł, które są programowane:
 
--   **Reguły konfiguracji lub infrastruktury maszyny:** domyślnie cała komunikacja jest blokowana. Istnieją wyjątki umożliwiające wysyłanie i odbieranie ruchu DHCP i DNS maszyny wirtualnej. Maszyny wirtualne można również wysyłać ruch do "publicznej" sieci internet i przesyłać dane do innych maszyn wirtualnych w ramach tej samej sieci wirtualnej platformy Azure i Serwer aktywacji systemu operacyjnego. Lista dozwolonych miejsc docelowych ruchu wychodzącego maszyn wirtualnych nie zawiera podsieci routera platformy Azure, zarządzania systemu Azure i innych obszarów firmy Microsoft.
+-   **Reguły konfiguracji lub infrastruktury maszyny:** Domyślnie cała komunikacja jest blokowana. Istnieją wyjątki umożliwiające wysyłanie i odbieranie ruchu DHCP i DNS maszyny wirtualnej. Maszyny wirtualne można również wysyłać ruch do "publicznej" sieci internet i przesyłać dane do innych maszyn wirtualnych w ramach tej samej sieci wirtualnej platformy Azure i Serwer aktywacji systemu operacyjnego. Lista dozwolonych miejsc docelowych ruchu wychodzącego maszyn wirtualnych nie zawiera podsieci routera platformy Azure, zarządzania systemu Azure i innych obszarów firmy Microsoft.
 
--   **Plik konfiguracji roli:** definiuje dla ruchu przychodzącego list kontroli dostępu (ACL) oparte na modelu usługi dzierżawcy.
+-   **Plik konfiguracji roli:** Definiuje dla ruchu przychodzącego list kontroli dostępu (ACL) oparte na modelu usługi dzierżawcy.
 
 ### <a name="vlan-isolation"></a>Izolacja sieci VLAN
 W każdym klastrze istnieją trzy sieci VLAN:
@@ -256,7 +254,7 @@ Rozwiązanie Disk Encryption for Windows opiera się na [szyfrowania dysków Mic
 Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, gdy są one włączone w systemie Microsoft Azure:
 -   Integracja z usługą Azure Key Vault
 
--   Maszyny wirtualne w warstwie standardowa: A, D, DS, G, GS i tak dalej, maszyny wirtualne z serii IaaS
+-   W warstwie standardowa maszyny wirtualne: A, D, DS, G, GS i tak dalej, maszyny wirtualne z serii IaaS
 
 -   Włączanie szyfrowania na Windows i maszyn wirtualnych IaaS z systemem Linux
 
@@ -295,7 +293,7 @@ Usługa SQL Database jest usługą relacyjnej bazy danych w chmurze firmy Micros
 
 [Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) baza danych jest oparta na chmurze usługa relacyjnej bazy danych oparta na technologiach programu SQL Server. Zapewnia usługa bazy danych o wysokiej dostępności, skalowalne, wielodostępne należącej do firmy Microsoft w chmurze.
 
-Z perspektywy aplikacji usługi SQL Azure udostępnia następującej hierarchii: każdy poziom ma zawierania jeden do wielu poziomów poniżej.
+Z poziomu aplikacji perspektywy SQL Azure udostępnia następującej hierarchii: Każdy poziom ma zawierania jeden do wielu poziomów poniżej.
 
 ![Model aplikacji usługi Azure SQL](./media/azure-isolation/azure-isolation-fig10.png)
 
@@ -344,7 +342,7 @@ Wdrożenie usługi Azure ma wiele warstw izolacji sieci. Na poniższym diagramie
 
 ![Izolacja sieci](./media/azure-isolation/azure-isolation-fig13.png)
 
-**Izolacji ruchu:** A [sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) jest granicę izolacji ruchu na platformie Azure. Maszyn wirtualnych (VM) w jednej sieci wirtualnej nie może komunikować się bezpośrednio do maszyn wirtualnych w innej sieci wirtualnej, nawet jeśli obie sieci wirtualne są tworzone przez tego samego klienta. Izolacja jest krytyczne właściwości, które gwarantuje, że maszyny wirtualne klientów i komunikacja pozostanie w prywatnej sieci wirtualnej.
+**Izolacja ruchu:** A [sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) jest granicę izolacji ruchu na platformie Azure. Maszyn wirtualnych (VM) w jednej sieci wirtualnej nie może komunikować się bezpośrednio do maszyn wirtualnych w innej sieci wirtualnej, nawet jeśli obie sieci wirtualne są tworzone przez tego samego klienta. Izolacja jest krytyczne właściwości, które gwarantuje, że maszyny wirtualne klientów i komunikacja pozostanie w prywatnej sieci wirtualnej.
 
 [Podsieci](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) zapewnia dodatkową warstwę izolacji dzięki w sieci wirtualnej na podstawie zakresu adresów IP. Adresy IP w sieci wirtualnej, sieć wirtualną można podzielić na wiele podsieci w celu uporządkowania i zapewnienia bezpieczeństwa. Maszyny wirtualne i wystąpienia ról PaaS wdrożone w podsieciach (tych samych lub różnych) w ramach sieci wirtualnej mogą komunikować się ze sobą bez dodatkowego konfigurowania. Można również skonfigurować [sieciowej grupy zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) do blokują lub zezwalają na ruch sieciowy do wystąpień maszyn wirtualnych, na podstawie reguł skonfigurowanych w listy kontroli dostępu (ACL) sieciowej grupy zabezpieczeń. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci.
 

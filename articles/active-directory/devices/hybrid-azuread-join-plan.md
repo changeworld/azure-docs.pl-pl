@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: e273568a04ec2a3758684025acf8034b8e788627
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871357"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274568"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -112,7 +112,6 @@ Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem uwierzytelnion
 
 Dołączenie do hybrydowej usługi Azure AD jest proces automatycznego rejestrowania urządzeń przyłączonych do domeny lokalnej za pomocą usługi Azure AD. Istnieją przypadki, w których nie chcesz wszystkich urządzeń do automatycznej rejestracji. Jeśli to PRAWDA dla Ciebie, zobacz [sposób kontrolowania dołączenie do hybrydowej usługi Azure AD urządzeń](hybrid-azuread-join-control.md).
 
-
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Dowiedz się, jak kontrolować dołączenie do hybrydowej usługi Azure AD urządzeń
 
 Dołączenie do hybrydowej usługi Azure AD jest proces automatycznego rejestrowania urządzeń przyłączonych do domeny lokalnej za pomocą usługi Azure AD. Istnieją przypadki, w których nie chcesz wszystkich urządzeń do automatycznej rejestracji. Jest to przykład wartości true, podczas początkowego wdrożenia, aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami.
@@ -145,7 +144,22 @@ Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia kreator umożl
  Jeśli zainstalowanie wymaganej wersji programu Azure AD Connect nie jest dostępną opcją w, zobacz [jak ręcznie skonfigurować rejestrację urządzeń](../device-management-hybrid-azuread-joined-devices-setup.md). 
 
 
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Alternatywny identyfikator logowania obsługi w dołączenie do hybrydowej usługi Azure AD
 
+Windows 10 hybrydowych w usłudze Azure AD join udostępnia ograniczoną obsługę [alternatywnych identyfikatorów logowania](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na podstawie typu identyfikatora logowania alternatywnej [metodę uwierzytelniania](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn), typ domeny i wersji systemu Windows 10. Istnieją dwa typy alternatywnych identyfikatorów logowania, które może znajdować się w danym środowisku.
+
+ - Routing alternatywnego identyfikatora logowania: Routing alternatywny identyfikator logowania ma prawidłową domenę zweryfikowaną, która jest zarejestrowana za pomocą rejestratora domen. Na przykład, jeśli contoso.com jest domena podstawowa, contoso.org i contoso.co.uk są prawidłowe domen, które są własnością firmy Contoso i [zweryfikowane w usłudze Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)
+ 
+ - Bez obsługi routingu alternatywnego identyfikatora logowania: Nierutowalny alternatywnego identyfikatora logowania nie ma zweryfikowanej domeny. Dotyczy tylko w ramach prywatnej sieci organizacji. Na przykład jeśli podstawowy domena jest domeną contoso.com, contoso.local nie jest możliwe do zweryfikowania domeny w Internecie, ale jest używany w ramach sieci firmy Contoso.
+ 
+Poniższa tabela zawiera szczegółowe informacje na temat obsługi jednej z tych alternatywnych identyfikatorów logowania systemu Windows 10 hybrydowej usługi Azure AD sprzężenia
+
+|Typ identyfikatora logowania alternatywnej|Typ domeny|Wersja systemu Windows 10|Opis|
+|-----|-----|-----|-----|
+|Routing|Federacyjne |W wersji 1703|Ogólnie dostępna|
+|Routing|Zarządzane|W wersji 1709|Obecnie dostępna w prywatnej wersji zapoznawczej. Samoobsługowe Resetowanie HASEŁ usługi Azure AD nie jest obsługiwane. |
+|Bez obsługi routingu|Federacyjne|W wersji 1803|Ogólnie dostępna|
+|Bez obsługi routingu|Zarządzane|Nieobsługiwane||
 
 
 

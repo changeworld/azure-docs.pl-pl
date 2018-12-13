@@ -1,22 +1,24 @@
 ---
-title: Połączenia wychodzące na platformie Azure (model klasyczny) | Dokumentacja firmy Microsoft
+title: Połączenia wychodzące na platformie Azure (wersja klasyczna)
+titlesuffix: Azure Load Balancer
 description: W tym artykule wyjaśniono, jak platforma Azure zapewnia usługi do komunikacji z publicznych usług internetowych w chmurze.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 5cb0647148d2cd90ad4cce6e16de30b72fff8429
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219668"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190003"
 ---
 # <a name="outbound-connections-classic"></a>Połączenia wychodzące (klasyczne)
 
@@ -54,7 +56,7 @@ Różnych wdrożeń w modelu klasycznym mają różne funkcje:
 
 [Algorytm używany do przydzielone porty efemeryczne](#ephemeralports) osobisty token dostępu w przypadku wdrożeń klasycznych jest taka sama, jak w przypadku wdrożenia zasobów usługi Azure Resource Manager.
 
-### <a name="ilpip"></a>Scenariusz 1: Maszyny Wirtualnej, przy użyciu adresu publicznego adresu IP poziomu wystąpienia
+### <a name="ilpip"></a>Scenariusz 1: Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia
 
 W tym scenariuszu maszyna wirtualna ma wystąpienia poziom publicznego adresu IP (ILPIP) do niej przypisany. Jeśli chodzi o połączeniach wychodzących, nie ma znaczenia, czy maszyna wirtualna ma punkt końcowy z równoważeniem obciążenia, czy nie. Ten scenariusz ma pierwszeństwo przed innymi. Gdy używany jest ILPIP, maszyna wirtualna używa ILPIP wszystkie przepływy ruchu wychodzącego.  
 
@@ -62,7 +64,7 @@ Publiczny adres IP przypisane do maszyny Wirtualnej jest 1:1 relację (zamiast 1
 
 Jeśli wystąpią wyczerpanie portów SNAT aplikacji inicjuje wiele przepływów ruchu wychodzącego, należy wziąć pod uwagę przypisywanie [ILPIP złagodzić ograniczenia SNAT](#assignilpip). Przegląd [wyczerpania Zarządzanie SNAT](#snatexhaust) w całości.
 
-### <a name="publiclbendpoint"></a>Scenariusz 2: Publicznego ze zrównoważonym obciążeniem punktu końcowego
+### <a name="publiclbendpoint"></a>Scenariusz 2: Publiczny punkt końcowy z równoważeniem obciążenia
 
 W tym scenariuszu maszyny Wirtualnej lub sieci Web, rola procesu roboczego jest skojarzony z publicznym adresem IP za pośrednictwem punktu końcowego ze zrównoważonym obciążeniem. Maszyna wirtualna nie ma do niej przypisany publiczny adres IP. 
 
@@ -74,7 +76,7 @@ Są wstępnie przydzielonych portów SNAT, zgodnie z opisem w [SNAT zrozumienie 
 
 Gdy [wielu publicznych ze zrównoważonym obciążeniem punktów końcowych](load-balancer-multivip.md) istnieją, są te publiczne adresy IP [Release candidate programu przepływy wychodzące](#multivipsnat), a jeden losowo wybrany.  
 
-### <a name="defaultsnat"></a>Scenariusz 3: Brak publicznego adresu IP skojarzonego
+### <a name="defaultsnat"></a>Scenariusz 3: Brak publicznego adresu IP, które są skojarzone
 
 W tym scenariuszu maszyny Wirtualnej lub sieci Web, rola procesu roboczego nie jest częścią publicznego punktu końcowego o zrównoważonym obciążeniu.  A w przypadku maszyn wirtualnych, nie ma przypisanego adresu ILPIP. Podczas tworzenia maszyny Wirtualnej przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego do publicznych źródłowego adresu IP. Publiczny adres IP używany dla tego przepływu ruchu wychodzącego nie konfiguruje się i nie wliczają subskrypcji publicznego adresu IP limit zasobów.  Platforma Azure automatycznie przydziela ten adres.
 

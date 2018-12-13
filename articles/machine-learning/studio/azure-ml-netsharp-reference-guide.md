@@ -4,9 +4,8 @@ description: 'Składnia dla Net # neuronowych sieci specyfikacji języka, wraz z
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315311"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272239"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
 
@@ -29,7 +28,7 @@ NET # to opracowany przez firmę Microsoft, który jest używany do definiowana 
 
 Można użyć specyfikacji Net # architektury w tych kontekstach:
 
-+ Wszystkie moduły sieć neuronowa firmy Microsoft Azure Machine Learning Studio: [sieci neuronowych kontra](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [sieci neuronowych Two-Class](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), i [neuronowych regresji sieci](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Wszystkie moduły sieć neuronowa firmy Microsoft Azure Machine Learning Studio: [Sieć Neuronowa wieloklasowej](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [sieci neuronowych Two-Class](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), i [regresji sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
 + Funkcje sieci neuronowych w MicrosoftML: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) i [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)dla języka R i [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) dla języka Python.
 
 
@@ -39,7 +38,7 @@ W tym artykule opisano podstawowe pojęcia i potrzebne do tworzenia niestandardo
 + Składni i słów kluczowych języka specyfikacji Net #
 + Przykładów niestandardowych sieci neuronowych utworzone za pomocą Net # 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="neural-network-basics"></a>Podstawowe informacje o sieci neuronowych
 
@@ -114,7 +113,7 @@ output Result[2] from Hidden all;
 ```
 
 + Produkt wymiarów jest liczba węzłów w warstwie. W tym przykładzie istnieją dwa wymiary [5,20], co oznacza, że nie ma 100 węzłów na warstwie.
-+ Warstwy mogą być deklarowane w dowolnej kolejności, z jednym wyjątkiem: Jeśli nie zdefiniowano więcej niż jednej warstwy wejściowych, kolejność, w którym są one zadeklarowane muszą być zgodne kolejność funkcji w danych wejściowych.
++ Warstwy mogą być deklarowane w dowolnej kolejności, z jednym wyjątkiem: Jeśli nie zdefiniowano więcej niż jednej warstwy wejściowych, kolejność, w którym są one zadeklarowane musi być zgodna z kolejność funkcji w danych wejściowych.
 
 Aby określić, że liczba węzłów w warstwie ustalana automatycznie, użyj `auto` — słowo kluczowe. `auto` — Słowo kluczowe ma różne efekty w zależności od warstwy:
 
@@ -219,7 +218,7 @@ Istnieją dwa zestawy właściwości, które kontrolują dopełnienie, właściw
     
     Jeśli wartości dla wymiaru ma wartość False, jądra są zdefiniowane tak, aby liczba węzłów na każdej stronie, która pozostawiono takie same (maksymalnie różnica 1). Wartość domyślna tego atrybutu to krotki ze wszystkimi składnikami równa False.
 
-+ **UpperPad** i **LowerPad**: (opcjonalnie) Podaj większą kontrolę nad wielkość uzupełnienia do użycia. **Ważne:** te atrybuty mogą być zdefiniowane wtedy i tylko wtedy, gdy **dopełnienie** powyższej właściwości jest ***nie*** zdefiniowane. Wartość musi być wartości całkowite krotki o długości, które są liczby argumentów pakietu. Jeśli te atrybuty są określone, "fikcyjny" węzłów są dodawane do dolnym i górnym numerem zakończenia każdego wymiaru warstwy danych wejściowych. Liczba węzłów dodanych do punktów końcowych dolnym i górnym numerem w każdym wymiarze jest określana przez **LowerPad**[i] i **UpperPad**[i] odpowiednio. 
++ **UpperPad** i **LowerPad**: (opcjonalnie) Podaj większą kontrolę nad wielkość uzupełnienia do użycia. **Ważne:** Te atrybuty mogą być zdefiniowane wtedy i tylko wtedy, gdy **dopełnienie** powyższej właściwości jest ***nie*** zdefiniowane. Wartość musi być wartości całkowite krotki o długości, które są liczby argumentów pakietu. Jeśli te atrybuty są określone, "fikcyjny" węzłów są dodawane do dolnym i górnym numerem zakończenia każdego wymiaru warstwy danych wejściowych. Liczba węzłów dodanych do punktów końcowych dolnym i górnym numerem w każdym wymiarze jest określana przez **LowerPad**[i] i **UpperPad**[i] odpowiednio. 
 
     Aby upewnić się, że jądra odpowiadają tylko dla węzłów "członu real", a nie węzłów "fikcyjny", muszą być spełnione następujące warunki:
       - Każdy składnik **LowerPad** musi być mniejsza niż `KernelShape[d]/2`. 
@@ -375,7 +374,7 @@ Można użyć krótkiej formy, tylko wtedy, gdy warstwy zawiera pojedynczy pakie
 
 W tej sekcji przedstawiono kilka przykładów sposobu korzystania z Net # Dodaj ukrytych warstw, definiowania sposobu interakcji z innymi warstwami ukrytych warstw i twórz splotowych sieci.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Definiowanie prostych niestandardowych sieci neuronowych: przykładu "Hello World"
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Zdefiniuj prostą niestandardowych sieci neuronowych: Przykład "Hello World"
 
 Ten prosty przykład przedstawia sposób tworzenia modelu sieci neuronowej, który ma jedną warstwę ukryte.
 

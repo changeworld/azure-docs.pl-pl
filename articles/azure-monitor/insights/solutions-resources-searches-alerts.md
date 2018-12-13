@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2f1035427815facf501c1349619a73e0f134eff
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e060a18f1117a9392f867f0bf42ddfa80f68048d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995611"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277492"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -87,16 +86,16 @@ Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższe
 > Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które może zostać zinterpretowane jako kod JSON.  Na przykład, jeśli zapytanie zostało **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"**, powinny być zapisywane w pliku rozwiązania jako **AzureActivity | OperationName: /\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Alerty
-[Alerty dzienników platformy Azure](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md) są tworzone przez reguły alertów platformy Azure, które uruchamiają zapytania określonego dziennika w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, zostaje utworzony rekord alertu i co najmniej jednej akcji są uruchamiane przy użyciu [grup akcji](../../monitoring-and-diagnostics/monitoring-action-groups.md).  
+[Alerty dzienników platformy Azure](../../azure-monitor/platform/alerts-unified-log.md) są tworzone przez reguły alertów platformy Azure, które uruchamiają zapytania określonego dziennika w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, zostaje utworzony rekord alertu i co najmniej jednej akcji są uruchamiane przy użyciu [grup akcji](../../azure-monitor/platform/action-groups.md).  
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 Reguły alertów w rozwiązaniu do zarządzania składają się z następujących trzech różnych zasobów.
 
 - **Zapisane wyszukiwanie.**  Definiuje przeszukiwania dzienników, która jest uruchamiana.  Wiele reguł alertów można udostępniać pojedynczy zapisanego kryterium wyszukiwania.
 - **Harmonogram.**  Definiuje, jak często wykonywane jest wyszukiwanie w dzienniku.  Każda reguła alertu ma jeden i tylko jeden harmonogram.
-- **Akcja alertu.**  Każda reguła alertu ma jeden zasób grupy akcji lub Akcja zasobu (starsze) z typem **Alert** definiujący szczegóły alertu, takie jak kryteria podczas tworzenia rekordu alertu i ważności alertu. [Grupa akcji](../../monitoring-and-diagnostics/monitoring-action-groups.md) zasób może zawierać listę skonfigurowane akcje do wykonania po wyzwoleniu alertu — takich jak połączenie głosowe i wiadomość SMS, wiadomości e-mail, element webhook, narzędziem ITSM, element runbook usługi automation, aplikacja logiki itp.
+- **Akcja alertu.**  Każda reguła alertu ma jeden zasób grupy akcji lub Akcja zasobu (starsze) z typem **Alert** definiujący szczegóły alertu, takie jak kryteria podczas tworzenia rekordu alertu i ważności alertu. [Grupa akcji](../../azure-monitor/platform/action-groups.md) zasób może zawierać listę skonfigurowane akcje do wykonania po wyzwoleniu alertu — takich jak połączenie głosowe i wiadomość SMS, wiadomości e-mail, element webhook, narzędziem ITSM, element runbook usługi automation, aplikacja logiki itp.
  
 Zasób akcji (starsze) opcjonalnie definiują odpowiedzi poczty e-mail i elementów runbook.
 - **Akcja elementu Webhook (starsza wersja).**  Reguła alertu wywołuje element webhook, a następnie wymaga zasób dodatkowych akcji z typem **elementu Webhook**.    
@@ -146,7 +145,7 @@ Harmonogram może mieć wiele akcji. Akcja może zdefiniować jeden lub więcej 
 Akcje mogą być definiowane przy użyciu [grupy akcji] zasobu lub akcji.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już automatycznie rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już automatycznie rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 
 Istnieją dwa typy działań zasobu określonego przez **typu** właściwości.  Harmonogram wymaga jednego **Alert** akcji, która definiuje szczegóły reguły alertów i jakie akcje są wykonywane podczas tworzenia alertu. Akcja zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
@@ -228,7 +227,7 @@ Ta sekcja jest opcjonalna.  W tej sekcji należy uwzględnić, jeśli chcesz pom
 #### <a name="azure-action-group"></a>Grupa akcji platformy Azure
 Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechanizmu do obsługi akcji. Grupy akcji możesz określić swoje działania raz i skojarz grupę akcji do wielu alertów — na platformie Azure. Bez konieczności wielokrotnego wielokrotnie zadeklarować te same akcje. Grupy akcji obsługują wiele akcji — w tym wiadomości e-mail, wiadomości SMS, połączenie głosowe, połączenia narzędzia ITSM, element Runbook usługi Automation, identyfikator URI elementu Webhook i innych. 
 
-Dla użytkownika, który został rozszerzony alerty na platformie Azure — harmonogram powinno zostać udostępnionych szczegółów grupy akcji przekazywane wraz z wartości progowej, aby można było utworzyć alert. Szczegóły wiadomości e-mail, adresy URL elementu Webhook, szczegóły elementu Runbook usługi Automation i innych działań, muszą być zdefiniowane w stronie grupy akcji przed tworzenia alertu; można utworzyć [grupy akcji z usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-action-groups.md) w portalu lub użyj [grupy akcji — szablon zasobu](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+Dla użytkownika, który został rozszerzony alerty na platformie Azure — harmonogram powinno zostać udostępnionych szczegółów grupy akcji przekazywane wraz z wartości progowej, aby można było utworzyć alert. Szczegóły wiadomości e-mail, adresy URL elementu Webhook, szczegóły elementu Runbook usługi Automation i innych działań, muszą być zdefiniowane w stronie grupy akcji przed tworzenia alertu; można utworzyć [grupy akcji z usługi Azure Monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyj [grupy akcji — szablon zasobu](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
@@ -242,7 +241,7 @@ Dla użytkownika, który został rozszerzony alerty na platformie Azure — harm
 Każdy harmonogram ma jeden **alertu** akcji.  Definiuje szczegóły alertu, i opcjonalnie akcji powiadomienia i korekty.  Powiadomienie wysyła wiadomość e-mail do jednego lub więcej adresów.  Korygowanie uruchamia element runbook w usłudze Azure Automation, aby podjąć próbę rozwiązania wykrytego problemu.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już automatycznie rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już automatycznie rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
  Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby alert ma wysyłać wiadomości e-mail do co najmniej jednego adresata.

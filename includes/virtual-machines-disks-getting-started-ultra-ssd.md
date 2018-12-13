@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b28830ac2634ad2238d834238de83c9184bcd6f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2fd2fd42f41c4f9575ebabd7722ca3e1b6e8c686
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47010395"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194576"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>Włączanie platformy Azure, najwyższej dysków SSD
 
@@ -84,6 +84,6 @@ Po zaaprowizowaniu maszyny Wirtualnej można podzielić na partycje i sformatowa
 - Największa SSD obsługuje dopasowywanie atrybuty wydajności dysku (operacje We/Wy i przepływność) w czasie wykonywania bez odłączeniem dysku od maszyny wirtualnej. Po wystawieniu wydajności operacji zmiany rozmiaru dysku na dysku może potrwać do godziny rzeczywiście zostały wprowadzone zmiany.
 - Pojemność dysku rośnie wymagają cofnięcie przydziału maszyny wirtualnej.
 
-# <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli chcesz spróbować nowy typ dysku, a nie jeszcze zarejestrowanym użytkownikiem wersji zapoznawczej, [żądania dostępu za pośrednictwem tej ankiety](https://aka.ms/UltraSSDPreviewSignUp).

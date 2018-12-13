@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: b52604fa19a5598e8aff5b8a1ea25e7361add553
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 22dab5ecaba71093056e9bb2f6843c19896f845d
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997015"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323392"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługa Application Insights dla usług Azure Cloud Services
 [Aplikacje usługi Microsoft Azure Cloud](https://azure.microsoft.com/services/cloud-services/) mogą być monitorowane przez usługę [Application Insights][start] w celu sprawdzania ich dostępności, wydajności, błędów i użycia. W tym celu dane z zestawów SDK usługi Application Insights są łączone z danymi z usługi [Azure Diagnotics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) pochodzącymi z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -95,14 +95,14 @@ Jeśli zamierzasz używać osobnego zasobu usługi Application Insights dla każ
 
 To powoduje wstawianie kluczy instrumentacji usługi Application Insights do plików o nazwie `ServiceConfiguration.*.cscfg`. ([Przykładowy kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)).
 
-Jeśli chcesz zróżnicować poziom informacji diagnostycznych wysyłanych do usługi Application Insights, możesz to zrobić, [bezpośrednio edytując pliki `.cscfg`](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+Jeśli chcesz zróżnicować poziom informacji diagnostycznych wysyłanych do usługi Application Insights, możesz to zrobić, [bezpośrednio edytując pliki `.cscfg`](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 ## <a name="sdk"></a>Zainstaluj zestaw SDK w każdym projekcie
 Ta opcja dodaje możliwość dodawania niestandardowych telemetrii biznesowych do każdej roli w celu dokładniejszego przeanalizowania sposobu używania i działania aplikacji.
 
 W programie Visual Studio skonfiguruj zestaw SDK usługi Application Insights dla każdego projektu aplikacji w chmurze.
 
-1. **Role sieci Web**: kliknij prawym przyciskiem myszy projekt i wybierz pozycję **Konfiguruj usługę Application Insights** lub **Dodaj > Telemetria usługi Application Insights**.
+1. **Role sieci Web**: Kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Konfiguruj usługę Application Insights** lub **Dodaj > telemetria usługi Application Insights**.
 
 2. **Role procesów roboczych**: 
  * Kliknij prawym przyciskiem myszy projekt i wybierz **Zarządzaj pakietami NuGet**.
@@ -162,7 +162,7 @@ W rolach sieci Web moduł żądań automatycznie zbiera dane o żądaniach HTTP.
 
 Możesz przechwycić wydajności wywołań do ról procesów roboczych, śledząc je w taki sam sposób, jak żądania HTTP. W usłudze Application Insights żądanie typu telemetrii mierzy jednostkę po stronie nazwanego serwera, które może być synchronizowane i może niezależnie zakończyć się sukcesem lub niepowodzeniem. Gdy żądania HTTP są przechwytywane automatycznie przez zestaw SDK, możesz wstawić własny kod do śledzenia żądań dla ról procesów roboczych.
 
-Zobacz dwie role procesu roboczego mające instrumentację do zgłaszania żądania: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) i [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+Zobacz dwie role proces roboczy przykład Instrumentację do zgłaszania żądania: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) i [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Wyjątki
 Zobacz [Monitoring Exceptions in Application Insights](app-insights-asp-net-exceptions.md) (Monitorowanie wyjątków w usłudze Application Insights), aby uzyskać informacje, w jaki sposób możesz gromadzić nieobsługiwane wyjątki z różnych typów aplikacji internetowych.
@@ -203,7 +203,7 @@ Gdy możesz zobaczyć, co doprowadziło do nieudanego lub znacznie opóźnionego
 Oto kroki tej procedury:
 
 * Ustaw identyfikator korelacji na parametr CallContext, jak pokazano [tutaj](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). W takim przypadku użyjemy Identyfikatora żądania jako identyfikatora korelacji
-* Dodaj niestandardową implementację parametru TelemetryInitializer, aby ustawić parametr Operation.Id na ustawiony powyżej correlationId. Tutaj znajduje się przykład: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
+* Dodaj niestandardową implementację parametru TelemetryInitializer, aby ustawić parametr Operation.Id na ustawiony powyżej correlationId. Brak w tym przykładzie: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
 * Dodaj inicjator niestandardowej telemetrii. Można to zrobić w pliku ApplicationInsights.config lub w kodzie pokazany [tutaj](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Telemetria klienta
@@ -230,7 +230,7 @@ Czy to kompilacja dla .NET 4.6? Wersja 4.6 nie jest automatycznie obsługiwana w
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Konfigurowanie wysyłania usługi Diagnostyka Azure do usługi Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Konfigurowanie wysyłania usługi Diagnostyka Azure do usługi Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Automatyczne tworzenie zasobów usługi Application Insights](app-insights-powershell.md)
 * [Automatyzacja usługi Diagnostyka Azure](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

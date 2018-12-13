@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e94af6e50c923d975c6ce71cca94479354891e0d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 77e78e6052e1477696eafa84a3e1c913593ec87e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097781"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268839"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.
@@ -208,8 +208,9 @@ Zapoznaj się z poniższej tabeli, a następnie upewnij się, że wybrano prawid
 | Platforma | Instalowanie |
 | --- | --- |
 | Serwer usług IIS |Albo [Zainstaluj Monitor stanu na serwerze](app-insights-monitor-performance-live-website-now.md). Lub [uaktualnić aplikację .NET Framework 4.6 lub nowszy](https://go.microsoft.com/fwlink/?LinkId=528259) i zainstaluj [zestawu SDK usługi Application Insights](app-insights-asp-net.md) w swojej aplikacji. |
+| IIS Express |Zamiast tego użyj serwera IIS. |
 | Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [otworzyć bloku usługi Application Insights w Panelu sterowania aplikacji sieci web](app-insights-azure-web-apps.md) i wybierz opcję instalacji, jeśli zostanie wyświetlony monit. |
-| Usługa w chmurze platformy Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [Instalowanie programu .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Usługa w chmurze platformy Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [Instalowanie programu .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md). |
 
 ## <a name="video"></a>Połączenia wideo
 

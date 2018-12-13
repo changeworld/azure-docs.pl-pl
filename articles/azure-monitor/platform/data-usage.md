@@ -10,17 +10,15 @@ ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 8a1ee511848cf854374323b356492f374988d5d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: af41e2af87afbbeb8629d07508d4e5244351a4df
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109968"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277355"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 
@@ -174,7 +172,7 @@ W tej sekcji opisano sposób tworzenia alertu w sytuacji, gdy:
 - Ilość danych przekracza określoną wartość.
 - Przewiduje się, że ilość danych przekroczy określoną wartość.
 
-Alerty platformy Azure obsługują [alerty dziennika](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md), które korzystają z zapytań wyszukiwania. 
+Alerty platformy Azure obsługują [alerty dziennika](../../azure-monitor/platform/alerts-unified-log.md), które korzystają z zapytań wyszukiwania. 
 
 Poniższe zapytanie daje rezultat, jeśli w ciągu ostatnich 24 godzin zebrano więcej niż 100 GB danych:
 
@@ -186,7 +184,7 @@ Następujące zapytanie używa prostej formuły umożliwiającej przewidywanie, 
 
 Aby utworzyć alerty dotyczące innego woluminu danych, zmień w zapytaniach wartość 100 na liczbę gigabajtów, po przekroczeniu której ma zostać wyświetlony alert.
 
-Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../../monitoring-and-diagnostics/alert-metric.md), aby otrzymywać powiadomienia w sytuacji, gdy ilość zebranych danych jest większa niż oczekiwano.
+Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../../azure-monitor/platform/alerts-metric.md), aby otrzymywać powiadomienia w sytuacji, gdy ilość zebranych danych jest większa niż oczekiwano.
 
 Podczas tworzenia alertu dla pierwszego zapytania odnoszącego się do przypadku, gdy w ciągu 24 godzin występuje więcej niż 100 GB danych, ustaw wartości elementów:  
 
@@ -200,7 +198,7 @@ Podczas tworzenia alertu dla pierwszego zapytania odnoszącego się do przypadku
    - **Nazwa** na *Data volume greater than 100 GB in 24 hours* (Wolumin danych większy niż 100 GB w ciągu 24 godzin)
    - **Ważność** na *Ostrzeżenie*
 
-Określ istniejącą [grupę akcji](../../monitoring-and-diagnostics/monitoring-action-groups.md) lub utwórz nową, tak aby otrzymywać powiadomienie, gdy alert dziennika spełni kryteria.
+Określ istniejącą [grupę akcji](../../azure-monitor/platform/action-groups.md) lub utwórz nową, tak aby otrzymywać powiadomienie, gdy alert dziennika spełni kryteria.
 
 Podczas tworzenia alertu dla drugiego zapytania dotyczącego przypadku, w którym przewiduje się, że w ciągu 24 godzin wystąpi więcej niż 100 GB danych, ustaw wartości elementów:
 
@@ -214,13 +212,13 @@ Podczas tworzenia alertu dla drugiego zapytania dotyczącego przypadku, w który
    - **Nazwa** na *Data volume expected to greater than 100 GB in 24 hours* (Oczekiwany wolumin danych większy niż 100 GB w ciągu 24 godzin)
    - **Ważność** na *Ostrzeżenie*
 
-Określ istniejącą [grupę akcji](../../monitoring-and-diagnostics/monitoring-action-groups.md) lub utwórz nową, tak aby otrzymywać powiadomienie, gdy alert dziennika spełni kryteria.
+Określ istniejącą [grupę akcji](../../azure-monitor/platform/action-groups.md) lub utwórz nową, tak aby otrzymywać powiadomienie, gdy alert dziennika spełni kryteria.
 
 Po otrzymaniu alertu wykonaj kroki przedstawione w poniższej sekcji, aby rozwiązać problemy związane z większym niż oczekiwano użyciem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](../log-query/log-query-overview.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
-* Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../../monitoring-and-diagnostics/alert-metric.md), aby otrzymywać powiadomienie, gdy kryteria wyszukiwania zostaną spełnione.
+* Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../../azure-monitor/platform/alerts-metric.md), aby otrzymywać powiadomienie, gdy kryteria wyszukiwania zostaną spełnione.
 * Użyj funkcji [określania celu rozwiązania](../insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 * Aby skonfigurować efektywne zasady zbierania zdarzeń zabezpieczeń, przejrzyj [zasady filtrowania usługi Azure Security Center](../../security-center/security-center-enable-data-collection.md).
 * Zmień [konfigurację licznika wydajności](data-sources-performance-counters.md).

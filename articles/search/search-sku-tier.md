@@ -1,6 +1,6 @@
 ---
-title: Wybierz warstwy cenowej lub jednostki SKU dla usługi Azure Search | Dokumentacja firmy Microsoft
-description: 'Usługa Azure Search, mogą być udostępniane w tych jednostkach SKU: bezpłatna, podstawowa i standardowa, których Standard jest dostępna w różnych konfiguracjach zasobów i poziomów wydajności.'
+title: Wybierz warstwy cenowej lub jednostki SKU dla usługi Azure Search — usługa Azure Search
+description: 'Usługa Azure Search można aprowizować w tych jednostkach SKU: Bezpłatna, podstawowa i standardowa, gdzie Standard jest dostępna w różne konfiguracje zasobów i poziomów wydajności.'
 services: search
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.custom: seodec2018
+ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785311"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315557"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -109,7 +110,7 @@ Aby określić rozmiar indeksu, musisz mieć [utworzenia takiego](search-create-
 > Mimo że szacowania przyszłe potrzeby indeksów i przechowywania może sprawiać wrażenie wątpliwości, warto zrobić. Jeśli pojemność warstwy okaże się zbyt niska, będzie trzeba aprowizować nową usługę w wyższej warstwie i następnie [ponowne ładowanie indeksów](search-howto-reindex.md). Nie istnieje żadne uaktualnienia w miejscu, samej usługi z jedną jednostką SKU do innego.
 >
 
-### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>Krok 1: Tworzenie szacunkowe, korzystając z bezpłatnej warstwy
+### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>Krok 1. Twórz szacunkowe, korzystając z bezpłatnej warstwy
 
 Jedno z podejść do oceny wydajności jest rozpoczęcie od **bezpłatna** warstwy. Pamiętamy **bezpłatna** usługa oferuje maksymalnie 3 indeksów, 50 MB miejsca, a 2 minuty, godziny indeksowania. Może stanowić wyzwanie, aby oszacować rozmiar indeksu przewidywane, za pomocą tych ograniczeń, ale poniższy przykład ilustruje sposób podejścia:
 
@@ -119,7 +120,7 @@ Jedno z podejść do oceny wydajności jest rozpoczęcie od **bezpłatna** warst
 
 Przy założeniu, że próbka miała wartość przedstawiciel i dziesięć procent całe źródło danych, indeksu 30 MB staje się średnio 300 MB, jeśli wszystkie dokumenty są indeksowane. Korzystając z tym numerem wstępnego, może być double kwota w budżecie dwa indeksy rozwoju i produkcji, łącznie z 600 MB w wymagania dotyczące magazynu. Jest to prosty sposób spełnione przez **podstawowe** warstwy, aby rozpocząć istnieje.
 
-### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>Krok 2: Tworzenie oszacowania dostosowany za pomocą płatnych warstwy
+### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>Krok 2. Twórz oszacowania dostosowany za pomocą płatnych warstwy
 
 Niektórzy klienci preferują rozpoczynać dedykowane zasoby, które można dopasować większy próbkowania i czasy przetwarzania, a następnie twórz realistyczne oszacowania ilości indeksu, rozmiar i woluminy zapytania podczas tworzenia. Początkowo usługa jest przygotowany na podstawie szacunku podjęcie, a następnie jak dojrzewa projektu tworzenia oprogramowania, zespoły zwykle wiedzą, czy istniejącej usługi jest powyżej lub poniżej pojemności dla obciążeń produkcyjnych przewidywany. 
 

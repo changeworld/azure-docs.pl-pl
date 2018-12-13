@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: c391df27b8ee0d5ceadcd388fffcafe0f756ec40
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.openlocfilehash: aecfecda08a6008b931738802bb89054f9d3963c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866180"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274128"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
-Usługa Azure SQL Database jest implementacją najnowszy stabilny, aparatu bazy danych programu SQL Server skonfigurowane i zoptymalizowane pod kątem środowiska chmury systemu Azure, która zapewnia [wysokiej dostępności](sql-database-high-availability.md) i odporności na błędy, które mogłyby wpłynąć na Twoje Proces biznesowy. **Ciągłość prowadzenia działalności biznesowej** w usłudze Azure SQL Database odnosi się do mechanizmów, zasady i procedury umożliwiające biznesowych do kontynuowania działania w przypadku przerwy w działaniu, zwłaszcza w celu jego infrastruktury obliczeniowej. W większości przypadków usługi Azure SQL Database będzie obsługiwać szkodliwe zdarzenia, które mogą mieć miejsce w środowisku chmury i nadal uruchomione procesy biznesowe. Istnieją jednak pewne szkodliwe zdarzenia, które nie mogą być obsługiwane przez usługę SQL Database takich jak:
+**Ciągłość prowadzenia działalności biznesowej** w usłudze Azure SQL Database odnosi się do mechanizmów, zasady i procedury, które umożliwiają firmie do kontynuowania działania w przypadku przerwy w działaniu, zwłaszcza w celu jego infrastruktury obliczeniowej. W większości przypadków usługi Azure SQL Database będzie obsługiwać szkodliwe zdarzenia, które mogą mieć miejsce w środowisku chmury i zachować swoje aplikacje i procesów biznesowych działających. Istnieją jednak pewne szkodliwe zdarzenia, które nie mogą być obsługiwane przez usługę SQL Database takich jak:
 
 - Użytkownik przypadkowo usunięty lub zaktualizowany wiersz w tabeli.
 - Złośliwy osoba atakująca pomyślnie usunąć dane i usuniesz bazę danych.
@@ -48,7 +48,8 @@ Następnie informacje na temat dodatkowych mechanizmów, które umożliwiają od
 - [Wbudowane automatyczne kopie zapasowe](sql-database-automated-backups.md) i [punktu przywracania do określonego](sql-database-recovery-using-backups.md#point-in-time-restore) umożliwia przywrócenie pełnej bazy danych do pewnego momentu w czasie w ciągu ostatnich 35 dni.
 - Możesz [przywrócić usuniętą bazę](sql-database-recovery-using-backups.md#deleted-database-restore) do punktu, w którym został usunięty, jeśli **nie został usunięty serwer logiczny**.
 - [Długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-retention.md) pozwala na bieżąco kopie zapasowe do 10 lat.
-- [Automatyczny tryb failover grupy](sql-database-geo-replication-overview.md#auto-failover-group-capabilities) umożliwia to aplikacji automatyczne odzyskiwanie w przypadku awarii skali centrum danych.
+- [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) pozwala na tworzenie replik z możliwością odczytu i ręcznego trybu failover do dowolnej repliki w przypadku uaktualniania data center awarii lub aplikacji.
+- [Automatyczny tryb failover grupy](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) umożliwia to aplikacji automatyczne odzyskiwanie w przypadku awarii centrum danych.
 
 Każda z tych funkcji ma różne charakterystyki dotyczące szacowanego czasu odzyskiwania (ERT, estimated recovery time) i potencjalnej utraty danych dotyczących ostatnich transakcji. Po zapoznaniu się z tymi opcjami można dokonać między nimi wyboru, a także — w większości przypadków — użyć ich razem w ramach różnych scenariuszy. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do aplikacji w celu przeprowadzenia pełnego odzyskania jest określany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych (przedział czasu) aplikacja może tolerować momencie odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO).
 
@@ -75,8 +76,7 @@ Zautomatyzowane tworzenie kopii zapasowych i [w momencie przywracania](sql-datab
 - Ma niską częstotliwość zmian danych (mała liczba transakcji na godzinę) i utrata zmian z maksymalnie jednej godziny jest akceptowalna.
 - Jej koszt ma znaczenie.
 
-Jeśli wymagane jest szybsze odzyskiwanie, użyj [grupy trybu failover](sql-database-geo-replication-overview.md#auto-failover-group-capabilities
-) (omówionej poniżej). Jeśli potrzebujesz można było odzyskanie danych starszych niż 35 dni, należy użyć [długoterminowego przechowywania](sql-database-long-term-retention.md).
+Jeśli wymagane jest szybsze odzyskiwanie, użyj [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) lub [automatyczny tryb failover grupy](sql-database-auto-failover-group.md). Jeśli potrzebujesz można było odzyskanie danych starszych niż 35 dni, należy użyć [długoterminowego przechowywania](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region"></a>Odzyskiwanie bazy danych do innego regionu
 
@@ -84,14 +84,14 @@ Sporadycznie centrum danych platformy Azure może mieć awarię. Taka awaria pow
 
 - Jedną z opcji jest oczekiwanie, aż baza danych powróci do trybu online po zakończeniu awarii centrum danych. Takie rozwiązanie sprawdza się dla aplikacji, w przypadku których baza danych może być w trybie offline. Może to na przykład dotyczyć projektu tworzenia oprogramowania lub bezpłatnej wersji próbnej, nad którymi nie trzeba pracować na bieżąco. Centrum danych po awarii nie wiesz, jak długo może trwać awarii, więc ta opcja działa tylko, jeśli nie potrzebujesz bazy danych od pewnego czasu.
 - Innym rozwiązaniem jest Przywracanie bazy danych na dowolnym serwerze w dowolnym regionie świadczenia usługi Azure przy użyciu [kopie zapasowe bazy danych magazynu geograficznie nadmiarowego](sql-database-recovery-using-backups.md#geo-restore) (Przywracanie geograficzne). Przywracanie geograficzne korzysta z geograficznie nadmiarowej kopii zapasowej jako źródła i może służyć do odzyskiwania bazy danych, nawet jeśli bazy danych lub centrum danych jest niedostępna z powodu awarii.
-- Na koniec można szybko odzyskać sprawności po awarii po skonfigurowaniu [automatyczny tryb failover grupy](sql-database-geo-replication-overview.md#auto-failover-group-capabilities) dla baz danych lub bazy danych. Można dostosować zasady trybu failover, aby użyć automatycznej lub ręcznej pracy awaryjnej. Podczas pracy awaryjnej, sama zajmuje tylko kilka sekund, usługa potrwa co najmniej 1 godzina, aby ją uaktywnić. Jest to konieczne upewnić się, aby przejść do trybu failover jest uzasadnione skali awarii. Ponadto przełączenie w tryb failover może spowodować utratę danych małych ze względu na charakter replikacji asynchronicznej. Zobacz tabelę w tym artykule, aby uzyskać szczegółowe informacje automatyczny tryb failover RTO i RPO.
+- Na koniec można szybko odzyskać sprawności po awarii po skonfigurowaniu obu-geograficznych przy użyciu [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) lub [automatyczny tryb failover grupy](sql-database-auto-failover-group.md) dla baz danych lub bazy danych. W zależności od wybranego tych technologii można użyć trybu failover ręcznych lub automatycznych. Podczas pracy awaryjnej, sama zajmuje tylko kilka sekund, usługa potrwa co najmniej 1 godzina, aby ją uaktywnić. Jest to konieczne upewnić się, aby przejść do trybu failover jest uzasadnione skali awarii. Ponadto przełączenie w tryb failover może spowodować utratę danych małych ze względu na charakter replikacji asynchronicznej. Zobacz tabelę w tym artykule, aby uzyskać szczegółowe informacje automatyczny tryb failover RTO i RPO.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 > [!IMPORTANT]
 > Aby korzystać z aktywnej replikacji geograficznej i automatyczny tryb failover grupy, możesz być właścicielem subskrypcji lub mieć uprawnienia administracyjne w programie SQL Server. Można skonfigurować, a także w trybie Failover przy użyciu platformy Azure portal, programu PowerShell lub interfejsu API REST przy użyciu uprawnień subskrypcji platformy Azure lub przy użyciu języka Transact-SQL z uprawnieniami do programu SQL Server.
 
-Użyj grup active automatyczny tryb failover, jeśli Twoja aplikacja spełnia dowolne z poniższych kryteriów:
+Użyj grup automatyczny tryb failover, jeśli Twoja aplikacja spełnia dowolne z poniższych kryteriów:
 
 - Ma kluczowe znaczenie.
 - Ma Umowa dotycząca poziomu usług (SLA), który nie zezwala na 12 godzin lub więcej przestojów.

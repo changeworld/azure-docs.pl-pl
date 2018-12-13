@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e4b33552c4b070164b55a84f1d8586422aced2f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c733c148994b06e6d7cd13ee98e1a8157f26010a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446677"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163181"
 ---
-# <a name="azure-active-directory-b2c-collecting-logs"></a>Usługa Azure Active Directory B2C: Zbierania dzienników
+# <a name="azure-active-directory-b2c-collecting-logs"></a>Usługa Azure Active Directory B2C: Zbieranie dzienników
 
 Ten artykuł zawiera instrukcje do zbierania dzienników z usługi Azure AD B2C, dzięki czemu można diagnozować problemy z zasadami dotyczącymi zasobów niestandardowych.
 
@@ -108,7 +108,7 @@ Wersji przeglądarki, która odczytuje zdarzenia z usługi Application Insights 
 >[!NOTE]
 >Obecnie dzienniki szczegółowe działania opisane w tym miejscu są przeznaczone **tylko** ułatwiające tworzenie niestandardowych zasad. Nie należy używać trybu projektowania w środowisku produkcyjnym.  Dzienniki zbierać wszystkie oświadczenia wysyłane do i z dostawcami tożsamości, podczas programowania.  Jeśli używane w środowisku produkcyjnym, deweloper przyjmuje odpowiedzialność za dane osobowe (prywatnie osobowe) zebrane w dzienniku usługi App Insights, w której jest właścicielem.  Te dzienniki są zbierane tylko, gdy zasady jest umieszczany na **trybu opracowywania**.
 
-[Repozytorium Github na potrzeby nieobsługiwanych Przykłady zasad niestandardowych oraz pokrewnych narzędzi](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
+[Repozytorium GitHub na potrzeby nieobsługiwanych Przykłady zasad niestandardowych oraz pokrewnych narzędzi](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 56a36e61bb9938ceb7e3cdaf2676c24c037b1d16
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a5f1e728f7a13f763367abc3f380fb9fbdb67b5c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585791"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53326641"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -85,9 +85,9 @@ Możesz skonfigurować konto prywatnego magazynu dla maszyny Wirtualnej diagnost
 
 Managed Disks obsługuje trzy kluczy domyślne role:
 
-* Właściciel: Mogą zarządzać wszystkim łącznie z dostępem
+* Właściciel: Może zarządzać wszystkim łącznie z dostępem
 * Współautor: Może zarządzać wszystkim oprócz dostępu
-* Czytnik: Mogą przeglądać wszystko, ale nie może wprowadzać zmian
+* Czytnik: Może przeglądać wszystko, ale nie może wprowadzać zmian
 
 **Czy istnieje sposób, aby I kopiowanie lub eksportowanie dysku zarządzanego na koncie magazynu prywatnego?**
 
@@ -137,9 +137,9 @@ Nie, gdy zostanie utworzony nowy dysk jest autonomiczny pełną kopię tego obie
 
 Za dyski zarządzane nie można ich zmienić. Jednak tak długo, jak nie jest obecnie dołączony do maszyny Wirtualnej lub wirtualnego dysku twardego może zmienić nazwy dysku niezarządzanego.
 
-**Można używać GBT partycji na dysku platformy Azure?**
+**Można używać GPT partycji na dysku platformy Azure?**
 
-Partycjonowanie GBT może służyć tylko na dyskach danych, nie dyski systemu operacyjnego. Dyski systemu operacyjnego, należy użyć stylu partycji MBR.
+Partycjonowanie GPT może służyć tylko na dyskach danych, nie dyski systemu operacyjnego. Dyski systemu operacyjnego, należy użyć stylu partycji MBR.
 
 ## <a name="standard-ssd-disks"></a>Dyski SSD w warstwie standardowa
 
@@ -188,6 +188,10 @@ Nie, dyski standardowe dyski SSD są dostępne tylko jako dyski Managed Disks.
 Nie, standardowe dyski SSD występuje pojedynczego wystąpienia maszyny Wirtualnej umowy SLA. Używanie dysków Premium SSD dla pojedynczego wystąpienia maszyny Wirtualnej umowy SLA.
 
 ## <a name="migrate-to-managed-disks"></a>Migrowanie do usługi Managed Disks
+
+** Jest dowolnym wpływ migracji na wydajność dysków zarządzanych?
+
+Migracja dotyczy przenoszenia dysku z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, co może zająć kilka godzin, zazwyczaj mniej niż 24 godziny, w zależności od ilości danych na dyskach. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.  
 
 **Jakie zmiany są wymagane w przypadku istniejących kopia zapasowa Azure usługi konfiguracji przed lub po migracji do usługi Managed Disks?**
 
@@ -262,7 +266,7 @@ Yes
 
 Nie. Ale jeśli eksportujesz kolekcję wirtualnego dysku twardego do zaszyfrowanego konta magazynu z zaszyfrowanego zarządzane dysku lub migawki, a następnie jest zaszyfrowany. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Dyski w warstwie Premium: zarządzanych i niezarządzanych
+## <a name="premium-disks-managed-and-unmanaged"></a>Dyski w warstwie Premium: Zarządzane i niezarządzane
 
 **Jeśli maszyna wirtualna używa serii rozmiar, który obsługuje dyski SSD w warstwie Premium, takich jak DSv2, można dołączyć dyski danych w warstwie standardowa i premium?** 
 
@@ -292,7 +296,7 @@ Lokalny dysk SSD to magazyn tymczasowy, który jest dołączony zarządzane dysk
 
 Nie ma żadnych wadą wykorzystania PRZYCINANIEM na dyskach platformy Azure w wersji premium albo lub dyski w warstwie standardowa.
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nowe rozmiary dysków: zarządzanych i niezarządzanych
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nowe rozmiary dysków: Zarządzane i niezarządzane
 
 **Co to jest największy rozmiar dysku zarządzanego, obsługiwane w przypadku systemu operacyjnego i dysków z danymi?**
 
@@ -312,10 +316,10 @@ Nie ma potrzeby uaktualniania z istniejącymi narzędziami platformy Azure do tw
 
 |Narzędzia platformy Azure      | Obsługiwane wersje                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Numer wersji 4.1.0: wersji z czerwca 2017 r. lub nowszej|
-|Wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13: maj 2017 release lub nowszy|
+|Azure PowerShell | Numer wersji 4.1.0: Wersji z czerwca 2017 r. lub nowszej|
+|Wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13: Zwolnij maj 2017 lub nowszego|
 |Wiersza polecenia platformy Azure w wersji 2     | Numer wersji 2.0.12: Zwolnij lipca 2017 r. lub nowszej|
-|Narzędzie AzCopy           | Numer wersji 6.1.0: wersji z czerwca 2017 r. lub nowszej|
+|Narzędzie AzCopy           | Numer wersji 6.1.0: Wersji z czerwca 2017 r. lub nowszej|
 
 **Rozmiary dysków P4 i P6 obsługujące dyski niezarządzane i stronicowe obiekty BLOB?**
 
@@ -339,7 +343,7 @@ Największy rozmiar dysku obsługiwane przez usługę Azure Backup i usługi Azu
 
 **Co to jest zalecaną maszynę Wirtualną dla dużych rozmiarów dysków o rozmiarach (> 4TiB) dla dysków standardowych dysków Twardych i SSD w warstwie standardowa w celu osiągnięcia zoptymalizowane pod kątem operacji We/Wy i przepustowości dysku?**
 
-Aby osiągnąć przepływność dysku SSD w warstwie standardowa i standardowych dysków Twardych dyski o dużych rozmiarach (> 4TB) ponad 500 operacji We/Wy i 60 MiB/s, należy użyć jednego z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: seria B, seria DSv2, seria Dsv3 serii ESv3, serii Fs Seria Fsv2, serii M serii GS, seria NCv2, seria NCv3 lub maszyny wirtualne z serii Ls.
+Aby osiągnąć przepływność dysku SSD w warstwie standardowa i standardowych dysków Twardych dyski o dużych rozmiarach (> 4TB) ponad 500 operacji We/Wy i 60 MiB/s, należy użyć jednego z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: Seria B, seria DSv2 serii Dsv3, serii ESv3 serii Fs, Fsv2 serii serii M serii GS serią NCv2, seria NCv3 lub maszyny wirtualne z serii Ls.
 
 **Jakie regiony są większe niż 4 TiB obsługiwane w rozmiary dysków zarządzanych?**
 

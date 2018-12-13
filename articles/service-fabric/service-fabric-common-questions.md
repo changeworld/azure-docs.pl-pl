@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0a78405dc6293a7debd599e0e44754dc59d8af7e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016703"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164651"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania na temat usługi Service Fabric
 
@@ -39,7 +39,7 @@ Tak.
 
 Podstawowe technologie klastra usługi Service Fabric może służyć do łączenia maszyn, w dowolnym miejscu na świecie, tak długo, jak długo mają łączność sieciową między sobą. Jednak kompilowanie i uruchamianie taki klaster może być skomplikowane.
 
-Jeśli interesuje Cię w tym scenariuszu, firma Microsoft zachęca do przekazywania w kontakcie albo za pośrednictwem [liście problemów Github sieci szkieletowej usługi](https://github.com/azure/service-fabric-issues) lub za pośrednictwem przedstawicielem pomocy technicznej w celu uzyskania dodatkowych wskazówek. Zespół usługi Service Fabric działa na zapewnienie dodatkowego wyjaśnienia, wskazówki i zalecenia dotyczące tego scenariusza. 
+Jeśli interesuje Cię w tym scenariuszu, firma Microsoft zachęca do przekazywania w kontakcie albo za pośrednictwem [liście problemów GitHub sieci szkieletowej usługi](https://github.com/azure/service-fabric-issues) lub za pośrednictwem przedstawicielem pomocy technicznej w celu uzyskania dodatkowych wskazówek. Zespół usługi Service Fabric działa na zapewnienie dodatkowego wyjaśnienia, wskazówki i zalecenia dotyczące tego scenariusza. 
 
 Oto kilka rzeczy, które warto przemyśleć: 
 

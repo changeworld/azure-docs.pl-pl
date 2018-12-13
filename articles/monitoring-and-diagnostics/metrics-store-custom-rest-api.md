@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: ccfe108b895450e97df1639f6c47eb01823ce5f4
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 8afa6a29d7d97b1d961f8a8ea44a2b62896ec4da
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636768"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323067"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Wyślij metryki niestandardowe dla zasobów platformy Azure do usługi Azure Monitor metryki magazynu przy użyciu interfejsu API REST
 
@@ -94,7 +94,7 @@ Jeśli zostanie wyświetlony komunikat o błędzie z niektórych części proces
 1. Metryki względem subskrypcji lub grupy zasobów nie mogą wystawiać jako swoich zasobów platformy Azure. 
 1. Nie można umieścić metrykę do magazynu, który jest ponad 20 minut. Metryki magazynu jest zoptymalizowany pod kątem alertów oraz wykresów w czasie rzeczywistym. 
 2. Liczba wymiarów nazw powinny odpowiadać wartości i na odwrót. Sprawdź wartości. 
-2. Może być emitowania metryki względem region, który nie obsługuje metryki niestandardowe. Zobacz [obsługiwane regiony](metrics-custom-overview.md#supported-regions). 
+2. Może być emitowania metryki względem region, który nie obsługuje metryki niestandardowe. Zobacz [obsługiwane regiony](../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
@@ -118,4 +118,4 @@ Jeśli zostanie wyświetlony komunikat o błędzie z niektórych części proces
 
  
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [metryki niestandardowe](metrics-custom-overview.md).
+- Dowiedz się więcej o [metryki niestandardowe](../azure-monitor/platform/metrics-custom-overview.md).

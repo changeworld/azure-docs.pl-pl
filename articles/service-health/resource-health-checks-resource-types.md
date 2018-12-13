@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/15/2018
 ms.author: stbaron
-ms.openlocfilehash: 73e58653c249639d2c2317badcd9995658009b64
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 3abf0268a7a6f84e5c26efc5643d048216fc2215
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710991"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163042"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure resource health
 Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w usłudze resource health według typów zasobów.
@@ -144,4 +144,4 @@ Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w 
 # <a name="next-steps"></a>Następne kroki
 -  Zobacz [wprowadzenie do pulpitu nawigacyjnego usługi Azure Service Health](service-health-overview.md) i [wprowadzenie do usługi Azure Resource Health](resource-health-overview.md) Aby dowiedzieć się więcej o nich. 
 -  [Często zadawane pytania dotyczące usługi Azure Resource Health](resource-health-faq.md)
-- Konfigurowanie alertów, dzięki czemu użytkownik jest powiadamiany o problemów z kondycją. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dla zdarzeń kondycji usługi](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+- Konfigurowanie alertów, dzięki czemu użytkownik jest powiadamiany o problemów z kondycją. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dla zdarzeń kondycji usługi](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 

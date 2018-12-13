@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: de29c24556522abeaff8d942edc027c7444c3ed3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbdacd6947c897d3b137b427c3e4c316869fa401
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965029"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193199"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Alerty i metryki DNS platformy Azure
 System DNS Azure jest usługą hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. W tym artykule opisano, metryk i alertów w usłudze DNS platformy Azure.
@@ -44,14 +44,14 @@ Precyzyjne wymiaru dla tych metryk jest strefy DNS.
 
 ![Wolumin zapytań](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 
-*Rysunku: Metryki platformy Azure wolumin zapytań DNS*
+*Rysunek: Metryki platformy Azure wolumin zapytań DNS*
 
 ### <a name="record-set-count"></a>Liczba zestawu rekordów
 *Liczba zestawu rekordów* Metryka przedstawia liczbę zestawów rekordów w usłudze Azure DNS dla strefy DNS. Zliczane są wszystkie zdefiniowanych zestawów rekordów w strefie. Jednostka miary jest licznik i agregacji jest maksymalną liczbę wszystkich zestawów rekordów. Zaznacz, aby wyświetlić tę metrykę **metryki (wersja zapoznawcza)** środowisko Eksploratora z **Monitor** kartę w witrynie Azure portal. Wybierz strefę DNS z **zasobów** listę rozwijaną, wybierz opcję **liczba zestawu rekordów** metryki, a następnie wybierz **Max** jako **agregacji** . Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-charts.md). 
 
 ![Liczba zestawu rekordów](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
-*Rysunku: Metryki usługi Azure DNS Ustaw liczbę rekordów*
+*Rysunek: Metryki liczba zestawu rekordów DNS platformy Azure*
 
 
 ### <a name="record-set-capacity-utilization"></a>Wykorzystanie pojemności zestawu rekordów
@@ -59,10 +59,10 @@ Precyzyjne wymiaru dla tych metryk jest strefy DNS.
 
 ![Liczba zestawu rekordów](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
-*Rysunku: Metryki usługi Azure DNS wykorzystanie pojemności zestawu rekordów*
+*Rysunek: Metryki użycia pojemności zestawu rekordów DNS platformy Azure*
 
 ## <a name="alerts-in-azure-dns"></a>Alerty w usłudze Azure DNS
-Usługa Azure Monitor zapewnia możliwość alert względem dostępne wartości metryk. Metryki DNS są dostępne w nowym środowisku podczas konfigurowania alertu. Zgodnie z opisem w części [usługi Azure Monitor alertów dokumentacji](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), wybierz strefę DNS jako zasobu, wybierz typ sygnału metryki i Konfigurowanie alertów logiki oraz innych parametrów, takich jak **okres**i **częstotliwość**. Można uściślić [grupy akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) dla kiedy warunek alertu jest spełniony, zgodnie z którą alert będzie świadczona za pośrednictwem wybranego działania. Aby uzyskać więcej informacji na temat konfigurowania alertów w połączeniu z metrykami usługi Azure Monitor, zobacz [Utwórz, Wyświetl, alerty i zarządzaj nimi przy użyciu usługi Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
+Usługa Azure Monitor zapewnia możliwość alert względem dostępne wartości metryk. Metryki DNS są dostępne w nowym środowisku podczas konfigurowania alertu. Zgodnie z opisem w części [usługi Azure Monitor alertów dokumentacji](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), wybierz strefę DNS jako zasobu, wybierz typ sygnału metryki i Konfigurowanie alertów logiki oraz innych parametrów, takich jak **okres**i **częstotliwość**. Można uściślić [grupy akcji](../azure-monitor/platform/action-groups.md) dla kiedy warunek alertu jest spełniony, zgodnie z którą alert będzie świadczona za pośrednictwem wybranego działania. Aby uzyskać więcej informacji na temat konfigurowania alertów w połączeniu z metrykami usługi Azure Monitor, zobacz [Utwórz, Wyświetl, alerty i zarządzaj nimi przy użyciu usługi Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [system DNS Azure](dns-overview.md).

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie replikacji klaster bazy danych HBase w sieci wirtualnej platformy Azure
+title: Konfigurowanie replikacji klaster bazy danych HBase w sieciach wirtualnych platformy Azure — Azure HDInsight
 description: Informacje o sposobie konfigurowania replikacji bazy danych HBase z jednej wersji HDInsight do innego dla równoważenia obciążenia, wysoką dostępność, bez jakichkolwiek przestojów migracji i aktualizacji i odzyskiwania po awarii.
 services: hdinsight,virtual-network
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584183"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163840"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych Apache HBase w sieci wirtualnej platformy Azure
 
@@ -261,12 +261,12 @@ sudo service bind9 status
 Tworzenie [bazy danych Apache HBase](http://hbase.apache.org/) klastrowania w każdym z dwiema sieciami wirtualnymi przy użyciu następującej konfiguracji:
 
 - **Nazwa grupy zasobów**: Użyj tej samej nazwy grupy zasobów, podczas tworzenia sieci wirtualnych.
-- **Typ klastra**: baza danych HBase
-- **Wersja**: baza danych HBase 1.1.2 (HDI 3.6)
+- **Typ klastra**: HBase
+- **Wersja**: Baza danych HBase 1.1.2 (HDI 3.6)
 - **Lokalizacja**: Użyj tej samej lokalizacji co sieć wirtualna.  Domyślnie jest vnet1 *zachodnie stany USA*, a sieć vnet2 *wschodnie stany USA*.
 - **Magazyn**: Utwórz nowe konto magazynu dla klastra.
-- **Sieć wirtualna** (z ustawień zaawansowanych w portalu): Wybierz sieć vnet1 utworzonego w poprzedniej procedurze.
-- **Podsieci**: domyślna nazwa używana w szablonie jest **subnet1**.
+- **Sieć wirtualna** (z ustawień zaawansowanych w portalu): Wybierz sieć vnet1, utworzony w poprzedniej procedurze.
+- **Podsieci**: Domyślna nazwa używana w szablonie jest **subnet1**.
 
 Aby upewnić się, że środowisko jest skonfigurowane prawidłowo, musi być odpytywać FQDN węzła głównego między dwoma klastrami.
 
@@ -274,7 +274,7 @@ Aby upewnić się, że środowisko jest skonfigurowane prawidłowo, musi być od
 
 W przypadku replikacji klastra należy określić tabel, które mają być replikowane. W tej sekcji możesz załadować dane do klastra źródłowego. W następnej sekcji spowoduje włączenie replikacji między dwoma klastrami.
 
-Aby utworzyć **kontakty** tabeli i wstawić dane w tabeli, postępuj zgodnie z instrukcjami w artykule [samouczek bazy danych Apache HBase: rozpoczęcie korzystania z bazy danych Apache HBase w HDInsight](apache-hbase-tutorial-get-started-linux.md).
+Aby utworzyć **kontakty** tabeli i wstawić dane w tabeli, postępuj zgodnie z instrukcjami w artykule [samouczek bazy danych Apache HBase: Rozpoczęcie korzystania z bazy danych Apache HBase w HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
@@ -288,10 +288,10 @@ Poniżej opisano sposób wywoływania akcji skryptu skrypt z witryny Azure porta
 4. W górnej części strony wybierz **Prześlij nową**.
 5. Wybierz lub wprowadź następujące informacje:
 
-  1. **Nazwa**: wprowadź **włączyć replikację**.
-  2. **Adres URL skryptu programu bash**: wprowadź **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  3.  **HEAD**: Upewnij się, ta opcja jest zaznaczona. Wyczyść typy węzłów.
-  4. **Parametry**: następujące przykładowe parametry włączyć replikację dla wszystkich istniejących tabel, a następnie skopiuj wszystkie dane z klastra źródłowego do klastra docelowego:
+  1. **Nazwa**: Wprowadź **włączyć replikację**.
+  2. **Adres URL skryptu programu bash**: Wprowadź **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+  3.  **HEAD**: Upewnij się, że ta opcja jest zaznaczona. Wyczyść typy węzłów.
+  4. **Parametry**: Następujące przykładowe parametry włączyć replikację dla wszystkich istniejących tabel, a następnie skopiuj wszystkie dane z klastra źródłowego do klastra docelowego:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     

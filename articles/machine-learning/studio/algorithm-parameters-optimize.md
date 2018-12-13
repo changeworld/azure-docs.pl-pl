@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
 ms.service: machine-learning
@@ -16,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: b0494a9da422b7c0effc14ff4188d3a5b20b8e9d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 57561c9841297b7ea2991bda1e94065a854597cd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081935"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269417"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Wybór parametrów w celu optymalizacji algorytmów w usłudze Azure Machine Learning Studio
 
 W tym temacie opisano, jak wybrać odpowiednie hiperparametrycznego, ustaw dla algorytmu w usłudze Azure Machine Learning. Większość algorytmów uczenia maszynowego parametrów wymaganych do zestawu. Ucząc model, konieczne jest podanie wartości tych parametrów. Skuteczność uczonego modelu zależy od parametrów modelu, które wybierzesz. Proces odnajdywania optymalny zestaw parametrów jest znany jako *modelu zaznaczenia*.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Istnieją różne sposoby modelu zaznaczenia. W usłudze machine learning krzyżowego sprawdzania poprawności jest jedną z najczęściej używanych metod wybór modelu i jest domyślnego mechanizmu wybór modelu w usłudze Azure Machine Learning. Ponieważ usługa Azure Machine Learning obsługuje języków R i Python, zawsze można zaimplementować własne mechanizmy wybór modelu przy użyciu języka R lub Python.
 
 Istnieją cztery kroki w procesie wyszukiwania najlepszy zestaw parametrów:
 
-1. **Definiowanie przestrzeni parametru**: algorytm, najpierw zdecyduj, wartości parametrów dokładnie chcesz wziąć pod uwagę.
+1. **Definiowanie przestrzeni parametru**: Algorytm najpierw zdecyduj, wartości parametrów dokładnie, których chcesz wziąć pod uwagę.
 2. **Zdefiniuj ustawienia krzyżowego sprawdzania poprawności**: Zdecyduj, jak wybrać złożeń krzyżowego sprawdzania poprawności dla zestawu danych.
 3. **Zdefiniuj Metryka**: Zdecyduj, jakie metryki używaną do określania najlepszy zestaw parametrów, takich jak dokładność, mean głównego kwadrat błąd, dokładności, odwołań lub wynik f.
-4. **Uczenie, ocenę i porównywanie**: każda unikatowa kombinacja wartości parametrów krzyżowego sprawdzania poprawności jest przeprowadzane przez i oparte na metryce błąd, należy zdefiniować. Po ocenie i porównanie możesz wybrać sprzedające modelu.
+4. **Uczenie, ocenę i porównywanie**: Każda unikatowa kombinacja wartości parametrów krzyżowego sprawdzania poprawności jest przeprowadzane przez i oparte na metryce błąd, jaką zdefiniujesz. Po ocenie i porównanie możesz wybrać sprzedające modelu.
 
 Na poniższym obrazie przedstawiono pokazuje, jak można to osiągnąć w usłudze Azure Machine Learning.
 
 ![Znajdź najlepsze zestaw parametrów](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>Zdefiniuj obszaru parametrów
-Można zdefiniować parametrem ustawionym na etapie inicjowania modelu. Okienko parametru wszystkich algorytmów uczenia maszynowego w dwóch trybach trainer: *pojedynczy parametr* i *zakres parametru*. Wybierz tryb parametru zakresu. W trybie parametru zakresu można wprowadzić wiele wartości dla każdego parametru. W polu tekstowym, można wprowadzić wartości rozdzielanych przecinkami.
+Można zdefiniować parametrem ustawionym na etapie inicjowania modelu. W okienku parametrów algorytmów uczenia maszynowego wszystkich ma dwa tryby trainer: *Pojedynczy parametr* i *zakres parametru*. Wybierz tryb parametru zakresu. W trybie parametru zakresu można wprowadzić wiele wartości dla każdego parametru. W polu tekstowym, można wprowadzić wartości rozdzielanych przecinkami.
 
 ![Dwuklasowych wzmocnione drzewo decyzyjnego, jeden parametr](./media/algorithm-parameters-optimize/fig2.png)
 

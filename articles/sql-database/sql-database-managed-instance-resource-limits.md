@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 1512098c29c8916a0486ed66b438654ba29f0601
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/12/2018
+ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968241"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315642"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -49,7 +49,7 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 | --- | --- | --- |
 | Liczba rdzeni wirtualnych\* | 4. generacji: 8, 16, 24<br/>5. generacji: 8, 16, 24, 32, 40, 64, 80 | 4. generacji: 8, 16, 24, 32 <br/> 5. generacji: 8, 16, 24, 32, 40, 64, 80 |
 | Memory (Pamięć) | 4. generacji: 56GB – 156GB<br/>5. generacji: 44GB – 440GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych | 4. generacji: 56GB – 156GB <br/> 5. generacji: 44GB – 440GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych |
-| Maksymalny rozmiar magazynu | 8 TB | Gen 4: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
+| Maksymalny rozmiar magazynu | 8 TB | 4. generacji: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
 | Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |
@@ -70,6 +70,8 @@ Wystąpienie zarządzane obecnie obsługuje wdrożenia tylko dla następujących
 - [Umowy Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Dostawca usług w chmurze (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
+- [Płatność za rzeczywiste użycie, tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p/)
 
 > [!NOTE]
 > To ograniczenie jest tymczasowe. W przyszłości będzie można włączyć nowych typów subskrypcji.
@@ -87,6 +89,8 @@ W poniższej tabeli przedstawiono domyślne limity regionalne dla obsługiwanych
 | :---| :--- | :--- |:--- |:--- |
 |Płatność zgodnie z rzeczywistym użyciem|1 *|4 *|4 *|1 *|
 |CSP |1 *|4 *|4 *|1 *|
+|Płatność za rzeczywiste użycie, tworzenie i testowanie|1 *|4 *|4 *|1 *|
+|Tworzenie i testowanie (przedsiębiorstwo)|1 *|4 *|4 *|1 *|
 |EA|3 **|12 **|12 **|3 **|
 
 \* 1 BC lub 4 wystąpień zasad grupy w jednej podsieci, można wdrożyć albo tak, aby łączna liczba jednostek"wystąpienie" w podsieci nigdy nie przekracza 4.

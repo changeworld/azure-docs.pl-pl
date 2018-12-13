@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6868b842f22a6d107936fcb1e49c46b0c1f58469
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5e2599c2089cbd9961b54966df5f0f98d6badcce
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345309"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274670"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 
@@ -117,8 +117,7 @@ Aby uzyskać szybki start przedstawiający sposób przywracania kopii zapasowej 
 
 Aby zmniejszyć ryzyko migracji, należy zmienić poziom zgodności bazy danych dopiero po monitorowania wydajności. Użyj zapytania Store jako optymalne narzędzia w celu uzyskania informacji na temat wydajność obciążeń przed i po zmianie poziomu zgodności bazy danych, jak wyjaśniono w [zachować wydajność stabilność podczas uaktualnienia do nowszej wersji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 
-Po użytkownik pracuje na w pełni zarządzanej platformy, należy wykonać korzyści, które są dostarczane automatycznie w ramach usługi SQL Database. Na przykład nie trzeba tworzyć kopie zapasowe na wystąpieniu zarządzanym — usługa wykonuje kopie zapasowe dla Ciebie automatycznie. Już nie musisz martwić o planowania, wykonywania i zarządzanie kopiami zapasowymi. Wystąpienie zarządzane zapewnia możliwość przywracania do dowolnego punktu w czasie w ramach tego przechowywania okresu przy użyciu [punktu w czasie odzyskiwania (Odzyskiwanie)](sql-database-recovery-using-backups.md#point-in-time-restore). W publicznej wersji zapoznawczej okres przechowywania zostanie usunięty z siedmiu dni.
-Ponadto nie trzeba już martwić się o Konfigurowanie wysokiej dostępności jako [wysokiej dostępności](sql-database-high-availability.md) jest wbudowany.
+Po użytkownik pracuje na w pełni zarządzanej platformy, należy wykonać korzyści, które są dostarczane automatycznie w ramach usługi SQL Database. Na przykład nie trzeba tworzyć kopie zapasowe na wystąpieniu zarządzanym — usługa wykonuje kopie zapasowe dla Ciebie automatycznie. Już nie musisz martwić o planowania, wykonywania i zarządzanie kopiami zapasowymi. Wystąpienie zarządzane zapewnia możliwość przywracania do dowolnego punktu w czasie w ramach tego przechowywania okresu przy użyciu [punktu w czasie odzyskiwania (Odzyskiwanie)](sql-database-recovery-using-backups.md#point-in-time-restore). Ponadto nie trzeba już martwić się o Konfigurowanie wysokiej dostępności jako [wysokiej dostępności](sql-database-high-availability.md) jest wbudowany.
 
 Do zwiększenia poziomu zabezpieczeń, należy rozważyć zastosowanie niektórych funkcji, które są dostępne:
 

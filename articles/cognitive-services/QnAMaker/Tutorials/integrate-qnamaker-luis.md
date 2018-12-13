@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dd030eeefd731ae176e1fe7907d941fff56a9db1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f2d6f956564f01c14edb213f0bc5ae709892c542
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080031"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163316"
 ---
-# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integracja usługi QnA Maker i LUIS, aby rozprowadzić bazy wiedzy
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Za pomocą bot usługi QnA Maker i LUIS do dystrybucji bazy wiedzy
 Wraz z rozwojem dużej wiedzy usługi QnA Maker staje się trudne w utrzymaniu go jako monolityczny jeden zestaw i ma konieczności dzielenia bazy wiedzy knowledge base na mniejsze części logiczne.
 
 Mimo że jest bardzo proste tworzenie wielu baz wiedzy w usługi QnA Maker, konieczne będzie logikę przekierowywać przychodzące pytanie do odpowiedniej bazy wiedzy. Można to zrobić za pomocą usługi LUIS.

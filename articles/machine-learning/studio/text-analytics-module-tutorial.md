@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: cgronlun
 editor: ''
 ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: ebb5fed079d674a0a8a590f7a955a2fe878807fd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 11f4ad4ff1e8e2eab688596d393e63009f7e5624
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090468"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255486"
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Tworzenie modeli analizy tekstu w usłudze Azure Machine Learning Studio
 Można użyć usługi Azure Machine Learning, aby tworzyć i uruchamiać modele analizy tekstu. Te modele mogą pomóc rozwiązać, na przykład dokument klasyfikację lub tonacji problemy związane z analizą.
@@ -34,7 +33,7 @@ W eksperyment analizy tekstu jak zwykle:
 4. Generowanie wyników i sprawdzania poprawności modelu
 5. Wdrożyć model do produkcji
 
-W tym samouczku dowiesz się, te kroki jako części omówimy model analiza tonacji przy użyciu przeglądów książki Amazon zestawu danych (zobacz ten dokument badań "Biographies, Bollywood, nagle pola i mieszalni: dostosowanie domeny klasyfikacji opinii" przez Blitzer Jan Należy oznaczyć Dredze i Fernando Pereira; Skojarzenie odpowiednie obliczeniowej (ACL), 2007.) Ten zestaw danych składa się z przeglądu oceny (1 – 2 lub 4-5) i tekst w dowolnej postaci. Celem jest zapewnienie przewidywania wyników przeglądu: Niski (1 - 2) lub wysokiej (4-5).
+W tym samouczku dowiesz się, te kroki jako części omówimy model analiza tonacji przy użyciu przeglądów książki Amazon zestawu danych (zobacz ten dokument research "Biographies, Bollywood, nagle pola i mieszalni: Domeny dostosowywania klasyfikacji opinii"przez Blitzer Jan należy oznaczyć Dredze i Fernando Pereira; Skojarzenie odpowiednie obliczeniowej (ACL), 2007.) Ten zestaw danych składa się z przeglądu oceny (1 – 2 lub 4-5) i tekst w dowolnej postaci. Celem jest zapewnienie przewidywania wyników przeglądu: Niski (1 - 2) lub wysokiej (4-5).
 
 Można znaleźć eksperymenty omówione w tym samouczku w galerii sztucznej Inteligencji platformy Azure:
 
@@ -42,7 +41,7 @@ Można znaleźć eksperymenty omówione w tym samouczku w galerii sztucznej Inte
 
 [Przewidywanie przeglądy książki — eksperyment predykcyjny](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
-## <a name="step-1-clean-and-preprocess-text-dataset"></a>Krok 1: Czyszczenie i wstępne przetwarzanie tekstu zestawu danych
+## <a name="step-1-clean-and-preprocess-text-dataset"></a>Krok 1. Czyszczenie i wstępne przetwarzanie tekstu zestawu danych
 Zaczniemy eksperymentu, dzieląc wyniki przeglądu na kategorii niski i wysoki zasobników, aby sformułować problem dwuklasowych klasyfikacji. Używamy [edytować metadane](https://msdn.microsoft.com/library/azure/dn905986.aspx) i [wartości podzielonych na kategorie grupy](https://msdn.microsoft.com/library/azure/dn906014.aspx) modułów.
 
 ![Utwórz etykietę](./media/text-analytics-module-tutorial/create-label.png)
@@ -55,7 +54,7 @@ Co zrobić, jeśli chcesz użyć niestandardowej listy Stop-słowa? Możesz prze
 
 Po zakończeniu przetwarzania wstępnego, możemy podzielić dane na szkolenie i zestawów testów.
 
-## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Krok 2: Wyodrębniania tekstu wstępnie przetworzonego wektorów funkcji numerycznych
+## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Krok 2. Prowadzenie wektorów funkcji numerycznych wstępnie przetworzonego tekstu
 Aby utworzyć model danych tekstowych, zwykle trzeba przekonwertować tekst w dowolnej postaci wektorów funkcji liczbowych. W tym przykładzie używamy [wyodrębnić N-Gram funkcji z pliku tekstowego](https://msdn.microsoft.com/library/azure/mt762916.aspx) modułu do przekształcania danych tekstowych na taki format. Ten moduł przyjmuje kolumny rozdzielonych odstępu słów i oblicza słownika wyrazy lub N-gramy, słów, które pojawiają się w zestawie danych. Następnie zlicza zlicza liczbę razy każdy wyraz lub N-gram, pojawia się w każdym rekordzie, a następnie tworzy funkcję wektorów od tych. W tym samouczku ustawimy N-gram rozmiar 2, dzięki naszym wektorów funkcji obejmują pojedynczego słowa i kombinacji dwa kolejne wyrazy.
 
 ![Wyodrębnij N-gramy](./media/text-analytics-module-tutorial/extract-ngrams.png)
@@ -68,7 +67,7 @@ Ponadto możesz użyć funkcji wyboru można wybrać tylko te funkcje, które s�
 
 Jako alternatywne podejście do korzystania z funkcji wyodrębnić N-Gram umożliwia tworzenie skrótu funkcji modułu. Pamiętaj jednak, że [Tworzenie skrótu funkcji](https://msdn.microsoft.com/library/azure/dn906018.aspx) nie ma możliwości wyboru funkcji kompilacji lub TF * IDF o wadze.
 
-## <a name="step-3-train-classification-or-regression-model"></a>Krok 3: Train model klasyfikacji lub regresji
+## <a name="step-3-train-classification-or-regression-model"></a>Krok 3. Train model klasyfikacji lub regresji
 Teraz tekst została przekształcona z kolumnami funkcji liczbowych. Zestaw danych nadal zawiera kolumny parametry z poprzednich etapów, dlatego używamy Wybieranie kolumn w zestawie danych, aby je wykluczyć.
 
 Następnie używamy [regresji logistycznej Two-Class](https://msdn.microsoft.com/library/azure/dn905994.aspx) do prognozowania naszym celem: wysokiej lub niskiej przeglądu oceny. W tym momencie problem regularne klasyfikacji została przekształcona problem analizy tekstu. Narzędzia dostępne w usłudze Azure Machine Learning można użyć w celu ulepszenia modelu. Na przykład możesz eksperymentować z różnych klasyfikatorów, aby dowiedzieć się, jak dokładne wyniki, które zapewniają lub użyć hiperparametrycznego strojenia w celu zwiększenia dokładności.

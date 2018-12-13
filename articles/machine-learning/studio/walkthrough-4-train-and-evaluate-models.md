@@ -1,12 +1,11 @@
 ---
 title: 'Krok 4: Szkolenie modeli do analizy predykcyjnej — Azure Machine Learning Studio | Dokumentacja firmy Microsoft'
-description: 'Krok 4 programowanie przewodnik rozwiązania do analizy predykcyjnej: pociągu, ocena i ocena wielu modeli w usłudze Azure Machine Learning Studio.'
+description: 'Krok 4 programowanie przewodnik rozwiązania do analizy predykcyjnej: Szkolenie, ocena i ocenianie wielu modeli w usłudze Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: d905f6b3-9201-4117-b769-5f9ed5ee1cac
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 4b4ffcf8e6c886a2f182c844f940e53c24d1efa0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2464ef0ba89f138834bedfdc9f29347092e5fe99
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313473"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254517"
 ---
-# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>Przewodnik, krok 4: Nauczanie i ocena modeli do analizy predykcyjnej w usłudze Machine Learning Studio
+# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>Przewodnik, krok 4 Nauczanie i ocena modeli do analizy predykcyjnej w usłudze Machine Learning Studio
 Ten temat zawiera czwartym kroku tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Tworzenie obszaru roboczego usługi Machine Learning Studio](walkthrough-1-create-ml-workspace.md)
@@ -190,7 +189,7 @@ Nauki i sztukę interpretowanie tych wynikach i dostrajanie wydajności modelu z
 > 
 
 - - -
-**Następnie: [wdrażanie usługi sieci web](walkthrough-5-publish-web-service.md)**
+**Dalej: [Wdrażanie usługi sieci web](walkthrough-5-publish-web-service.md)**
 
 [0]: ./media/walkthrough-4-train-and-evaluate-models/train-model-select-column.png
 [1]: ./media/walkthrough-4-train-and-evaluate-models/experiment-with-train-model.png

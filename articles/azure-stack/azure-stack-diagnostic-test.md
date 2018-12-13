@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 7f4e956601ee25549d0a0828c4c3dd0e8d6ff85b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f754242d0cf7ee30572b21a3f4daf6fd2c0f63ff
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840133"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275911"
 ---
 # <a name="validate-azure-stack-system-state"></a>Sprawdzanie poprawności stanu systemu w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Jako operatorów usługi Azure Stack niezbędne jest posiadanie możliwości poinformowania, kondycję i stan systemu na żądanie. Narzędzie sprawdzania poprawności w usłudze Azure Stack (**AzureStack testu**) jest polecenia cmdlet programu PowerShell, która umożliwia uruchamianie szereg testów w systemie, aby zidentyfikować błędy, jeśli jest obecny. Zazwyczaj uzyskasz do uruchomienia tego narzędzia, za pośrednictwem [uprzywilejowanych punktu końcowego (program ten)](azure-stack-privileged-endpoint.md) po możesz skontaktuj się z działem pomocy technicznej usługi firmy Microsoft (CSS) problemu. Kondycji całego systemu i stan odpowiednie informacje CSS można zbierać i analizować szczegółowe dzienniki, skupić się na obszar, w którym wystąpił błąd i współpraca z Tobą w celu rozwiązania problemu.
 
@@ -45,7 +45,7 @@ Jak wspomniano wcześniej, za pośrednictwem program ten uruchomienie narzędzia
    Test-AzureStack
    ```
 
-   Zapoznaj się [zagadnienia dotyczące parametru](azure-stack-diagnostic-test.md#parameter-considerations) i [przykładowych przypadków używać](azure-stack-diagnostic-test.md#use-cases) sekcje, aby uzyskać więcej informacji.
+   Zapoznaj się [zagadnienia dotyczące parametru](azure-stack-diagnostic-test.md#parameter-considerations) i [przykładowych przypadków używać](azure-stack-diagnostic-test.md#use-case-examples) sekcje, aby uzyskać więcej informacji.
 
 3. Jeśli dowolne testy raportu **się nie POWIEŚĆ**Uruchom:
 
@@ -121,13 +121,13 @@ W poniższych scenariuszach chmury są testowane przez narzędzie sprawdzania po
 
 - Dzierżawy, w których maszyna wirtualna jest wdrażana stanowiącego część jednej testuje scenariusz chmury. Możesz użyć **DoNotDeployTenantVm** Aby wyłączyć tę opcję. 
 
-- Należy podać **ServiceAdminCredential** parametru, aby uruchomić testy scenariusza w chmurze, zgodnie z opisem w [przykładowych przypadków używać](azure-stack-diagnostic-test.md#use-cases) sekcji.
+- Należy podać **ServiceAdminCredential** parametru, aby uruchomić testy scenariusza w chmurze, zgodnie z opisem w [przykładowych przypadków używać](azure-stack-diagnostic-test.md#use-case-examples) sekcji.
 
-- **BackupSharePath** i **BackupShareCredential** są używane podczas testowania kopii zapasowej ustawień infrastruktury, jak pokazano na [przykładowych przypadków używać](azure-stack-diagnostic-test.md#use-cases) sekcji.
+- **BackupSharePath** i **BackupShareCredential** są używane podczas testowania kopii zapasowej ustawień infrastruktury, jak pokazano na [przykładowych przypadków używać](azure-stack-diagnostic-test.md#use-case-examples) sekcji.
 
-- Narzędzie sprawdzania poprawności obsługuje również typowe parametry programu PowerShell: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable i OutVariable. Aby uzyskać więcej informacji, zobacz [o typowych parametrach](http://go.microsoft.com/fwlink/?LinkID=113216).  
+- Narzędzie sprawdzania poprawności obsługuje również typowe parametry programu PowerShell: Verbose, Debug ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable i OutVariable. Aby uzyskać więcej informacji, zobacz [o typowych parametrach](http://go.microsoft.com/fwlink/?LinkID=113216).  
 
-## <a name="use-case-examples"></a>Skorzystaj z przykładów wielkości liter 
+## <a name="use-case-examples"></a>Skorzystaj z przykładów wielkości liter
 
 ### <a name="run-validation-without-cloud-scenarios"></a>Uruchom weryfikację bez scenariuszy w chmurze
 

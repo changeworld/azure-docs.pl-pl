@@ -1,5 +1,5 @@
 ---
-title: Tworzenie dynamicznych schematy za pomocą parametrów w plany usługi Azure
+title: Korzystanie z parametrów do tworzenia dynamicznych plany
 description: Więcej informacji na temat parametrów statyczne i dynamiczne i jak za ich pomocą tworzy schematy dynamiczne.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f6485b01c391ba336799ceb35ee67402b3603585
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 0eef85fe92682eb3a6fd1dbc036cf547b163db97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093755"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310321"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych schematy za pomocą parametrów
 
@@ -51,13 +52,13 @@ Wartość parametru określone w definicji planu jest nazywany **parametru staty
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Parametry statyczne ustawienia w portalu
 
-1. Kliknij pozycję **wszystkich usług** wyszukiwanie i wybieranie **zasad** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
 1. Kliknij istniejący plan, a następnie kliknij przycisk **edytować planu** lub kliknij przycisk **+ Utwórz plan** i Wypełnij informacje w **podstawy** kartę.
 
-1. Kliknij przycisk **Następny: artefakty** lub kliknąć **artefaktów** kartę.
+1. Kliknij przycisk **dalej: Artefakty** lub kliknąć **artefaktów** kartę.
 
 1. Artefakty dodane do planu, które mają parametr opcje wyświetlania **parametry X z Y wypełnione** w **parametry** kolumny. Kliknij wiersz artefaktu, aby edytować parametry artefaktu.
 
@@ -168,7 +169,7 @@ Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten paramet
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Ustawianie parametrów dynamicznych w portalu
 
-1. Kliknij pozycję **wszystkich usług** wyszukiwanie i wybieranie **zasad** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 

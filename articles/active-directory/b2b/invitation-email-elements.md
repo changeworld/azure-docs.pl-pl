@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: cbb81f62bcea43c3c30abff6b5f76e3a89347813
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8b6edcb70bca480ebe0d53c061c6461745f189e8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985400"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321293"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy e-mail z zaproszeniem współpracy B2B — usługi Azure Active Directory
 
@@ -26,11 +26,11 @@ Wiadomości e-mail z zaproszeniem są kluczowym aspektem doprowadzić partnerów
 ## <a name="explaining-the-email"></a>Wyjaśniające, wiadomości e-mail
 Spójrzmy na kilka elementów w wiadomości e-mail, aby było wiadomo, jak najlepiej wykorzystać jego możliwości.
 
-### <a name="subject"></a>Temat
-Temat wiadomości e-mail jest zgodny ze wzorcem następujące: zaproszono Cię do &lt;tenantname&gt; organizacji
+### <a name="subject"></a>Podmiot
+Temat wiadomości e-mail jest zgodny ze wzorcem następujące: Zaproszono Cię do &lt;tenantname&gt; organizacji
 
 ### <a name="from-address"></a>Adres nadawcy
-Firma Microsoft na użytek wzorzec LinkedIn przypominającej adres nadawcy.  Powinien być niejasne, zapraszającej będącego i adres e-mail od firmy oraz wyjaśnienie, że wiadomość e-mail pochodzi od firmy Microsoft. Format to: &lt;Nazwa wyświetlana osoby zapraszającej&gt; z &lt;tenantname&gt; (za pośrednictwem firmy Microsoft) <invites@microsoft.com>
+Firma Microsoft na użytek wzorzec LinkedIn przypominającej adres nadawcy.  Powinien być niejasne, zapraszającej będącego i adres e-mail od firmy oraz wyjaśnienie, że wiadomość e-mail pochodzi od firmy Microsoft. Format jest następujący: &lt;Nazwa wyświetlana osoby zapraszającej&gt; z &lt;tenantname&gt; (za pośrednictwem firmy Microsoft) <invites@microsoft.com>
 
 ### <a name="reply-to"></a>Odpowiedz
 Odpowiedz do wiadomości e-mail jest równa zapraszającej poczty e-mail, jeśli są dostępne, tak, aby odpowiadanie na wiadomości e-mail wysyła wiadomość e-mail do osoby zapraszającej.
@@ -40,7 +40,7 @@ Wiadomości e-mail z zaproszeniem, w wyniku używania dzierżawy firmowe, można
 
 ### <a name="call-to-action"></a>Wywołanie akcji
 Wezwanie do działania składa się z dwóch części: wyjaśniający, Dlaczego adresat otrzyma wiadomość e-mail, a co adresat jest pytany, rozwiązanie.
-- W sekcji "Dlaczego" może zostać zlikwidowane przy użyciu następującego wzorca: zaproszono Cię do uzyskania dostępu do aplikacji w &lt;tenantname&gt; organizacji
+- W sekcji "Dlaczego" może zostać zlikwidowane przy użyciu następującego wzorca: Zaproszono Cię do uzyskania dostępu do aplikacji w &lt;tenantname&gt; organizacji
 
 - I "co to jest monicie o czy" sekcji jest oznaczany przez obecność **wprowadzenie** przycisku. Gdy adresat została dodana bez konieczności zaproszenia, ten przycisk nie jest wyświetlane.
 
@@ -52,7 +52,7 @@ W przypadku swoje zdjęcie profilowe nie został jeszcze skonfigurowany, jest wy
   ![Wyświetlanie inicjały zapraszającej](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Treść
-Treść zawiera komunikat, który zapraszającej komponuje się lub jest przekazywana zaproszenie interfejsu API. Jest obszar tekstu, więc nie przetwarza tagów HTML ze względów bezpieczeństwa.
+Treść zawiera komunikat zapraszającej Redaguj, kiedy [zaproszeniem użytkownika gościa do katalogu, grupa lub aplikacja](add-users-administrator.md) lub [przy użyciu interfejsu API zaproszenia](customize-invitation-api.md). Jest obszar tekstu, więc nie przetwarza tagów HTML ze względów bezpieczeństwa.
 
 ### <a name="footer-section"></a>Sekcji stopki
 Stopka zawiera marki firmy Microsoft i umożliwia odbiorcy znać, jeśli wiadomość e-mail została wysłana z niemonitorowanego aliasu. Specjalne przypadki:

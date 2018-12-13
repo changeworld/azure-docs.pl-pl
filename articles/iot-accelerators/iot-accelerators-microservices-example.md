@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b206d7b56fc8a65c422a4ce22b2f5585e71c8da
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219429"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315761"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Dostosowywanie i ponowne wdrażanie mikrousługi
 
-Ten samouczek pokazuje, jak edytować jeden z mikrousług w rozwiązaniu monitorowania zdalnego, utworzyć obraz z mikrousług, wdrażania obrazu usługi docker hub i następnie użyć go w rozwiązaniu do zdalnego monitorowania. Aby wprowadzić tę koncepcję, w tym samouczku użyto podstawowy scenariusz, w którym wywołanie interfejsu API mikrousługi i zmienić komunikat o stanie z "Aktywności i dobrze" do "New edytuje Made tutaj!"
+W tym samouczku pokazano, jak edytować jeden z [mikrousług](http://azure.com/microservices) w rozwiązaniu monitorowania zdalnego tworzenia obrazu z mikrousług, wdrażania obrazu usługi docker hub, a następnie użyj go w rozwiązaniu do zdalnego monitorowania. Aby wprowadzić tę koncepcję, w tym samouczku użyto podstawowy scenariusz, w którym wywołanie interfejsu API mikrousługi i zmienić komunikat o stanie z "Aktywności i dobrze" do "New edytuje Made tutaj!"
 
 Rozwiązania do zdalnego monitorowania korzysta z mikrousług, które zostały utworzone przy użyciu obrazów platformy docker, które są pobierane z usługi docker hub. 
 
@@ -54,25 +54,31 @@ W tej części jest wywoływana w mikrousługach Menedżera Centrum IoT domyśln
 Teraz zmienić komunikat o stanie z mikrousług Menedżera Centrum Iot "Nowe zmiany wprowadzone w tym miejscu!" a następnie ponownie utworzyć obraz platformy docker za pomocą tego nowego stanu. Jeśli napotkasz problemy, w tym miejscu można znaleźć na naszej [Rozwiązywanie problemów](#Troubleshoot) sekcji.
 
 1. Upewnij się, że rozwarcia terminal i przejdź do katalogu, w którym zostały sklonowane rozwiązania do zdalnego monitorowania. 
-2. Zmień katalog na "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/WebService/v1/Controllers".
-3. Otwórz StatusController.cs w dowolnym edytorze tekstu lub IDE, które chcesz. 
-4. Znajdź następujący kod:
+1. Zmień katalog na "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services".
+1. Otwórz StatusService.cs w dowolnym edytorze tekstu lub IDE, które chcesz. 
+1. Znajdź następujący kod:
 
     ```csharp
-    return new StatusApiModel(true, "Alive and well");
+    var result = new StatusServiceModel(true, "Alive and well!");
     ```
 
     Zmień go na poniższy kod i zapisz go.
 
     ```csharp
-    return new StatusApiModel(true, "New Edits Made Here!");
+    var result = new StatusServiceModel(true, "New Edits Made Here!");
     ```
 
 5. Wróć do terminala, ale teraz zmienić do następującego katalogu: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
 6. Aby utworzyć nowy obraz platformy docker, wpisz:
 
-    ```cmd/sh
+    ```sh
     sh build
+    ```
+    
+    lub Windows:
+    
+    ```
+    ./build.cmd
     ```
 
 7. Aby sprawdzić, czy nowy obraz został pomyślnie utworzony, wpisz
@@ -138,7 +144,7 @@ Aby zakończyć, wyświetlanie nowej odpowiedzi stanu w narzędziu Postman i pon
     ```
 
 3. Znajdź, której pobrano narzędzie Postman i otwórz go.
-4. W narzędziu Postman, wprowadź następujące żądanie w GET: http://localhost:8080/iothubmanager/v1/status. Powinien zostać wyświetlony, "Status": "OK: nowe zmiany wprowadzone w tym miejscu!".
+4. W narzędziu Postman, wprowadź następujące żądanie w GET: http://localhost:8080/iothubmanager/v1/status. Powinien zostać wyświetlony, "Status": "OK: Nowe zmiany wprowadzone w tym miejscu! ".
 
 ![Nowa modyfikacje wprowadzone w tym miejscu postman wiadomość](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

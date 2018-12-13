@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i uruchamianie potoków uczenia Maszynowego
+title: Tworzenie, uruchamianie i śledzić potokach uczenia Maszynowego
 titleSuffix: Azure Machine Learning service
 description: Tworzenie i uruchamianie usługi machine learning potoku z zestawem Azure Machine Learning SDK dla języka Python.  Potoki są używane do tworzenia i zarządzania nimi przepływy pracy tej fazy uczenia maszynowego razem Połącz (ML), takich jak przygotowywanie danych, szkolenie modelu, wdrożenie modelu i wnioskowania.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3038d8978ed3705e9e18be58080afd532b9d72d6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8478b6760921f4641cd214b1ff19cae9757b6d7e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100559"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269047"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego, przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -26,10 +26,10 @@ Potoki tworzenia są widoczne dla członków usługi Azure Machine Learning [obs
 
 Potoki Użyj zdalnego obliczeniowych elementów docelowych dla obliczeń i magazynu pośredniego i końcowego dane skojarzone z tego potoku.  Potoki można odczytu i zapisu danych do i z obsługiwanych [usługi Azure storage](https://docs.microsoft.com/azure/storage/) lokalizacji.
 
+>[!Note]
+>Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem należy utworzyć bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
 
 * [Konfigurowanie środowiska projektowego](how-to-configure-environment.md) instalacji zestawu SDK usługi Azure Machine Learning.
 

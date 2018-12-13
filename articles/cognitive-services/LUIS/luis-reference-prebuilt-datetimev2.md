@@ -11,19 +11,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: f59c429906d6cee2b9f4aff6e16ba23e8d28c97b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0e2353107d6554a8ecbbd2e4d9850f8d8b5fda5c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105856"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165184"
 ---
-# <a name="datetimev2-entity"></a>DatetimeV2, jednostka
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 wstępnie utworzone jednostki dla aplikacji usługi LUIS
 
 **DatetimeV2** wstępnie utworzone jednostki wyodrębnia wartości daty i godziny. Rozwiąż te wartości w standardowym formacie dotyczących programów klienckich do korzystania. Gdy wypowiedź znajdują się daty lub godziny, która nie została ukończona, LUIS obejmuje _zarówno w przeszłości, jak i w przyszłości wartości_ w odpowiedzi punktu końcowego. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający datetimeV2 do intencji aplikacji. 
 
 ## <a name="types-of-datetimev2"></a>Typy datetimeV2
-DatetimeV2 jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) repozytorium Github
+DatetimeV2 jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) repozytorium GitHub
 
 ## <a name="example-json"></a>Przykładowy plik JSON 
 Poniższy przykład odpowiedź w formacie JSON zawiera `datetimeV2` jednostki o podtypem `datetime`. Przykłady innych typów jednostek datetimeV2, zobacz [podtypy datetimeV2](#subtypes-of-datetimev2)</a>.

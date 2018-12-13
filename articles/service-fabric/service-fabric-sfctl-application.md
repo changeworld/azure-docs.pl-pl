@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 40ec204f105b32c8b7d9e2dda6f6f3c3023b2d44
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 0f608dc89d3a9bc8914fc9be142c442246ce13b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495462"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278546"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Tworzenie, usuwanie i zarządzanie aplikacjami i typami aplikacji.
@@ -33,9 +33,9 @@ Tworzenie, usuwanie i zarządzanie aplikacjami i typami aplikacji.
 | wdrożony | Pobiera informacje o aplikacji wdrożonej w węźle usługi Service Fabric. |
 | wdrożone kondycji | Pobiera informacje o kondycji aplikacji wdrożonej w węźle usługi Service Fabric. |
 | wdrożone listy | Pobiera listę aplikacji wdrożonych w węźle usługi Service Fabric. |
-| kondycja | Pobiera kondycji aplikacji usługi Service fabric. |
+| zdrowie | Pobiera kondycji aplikacji usługi Service fabric. |
 | informacje | Pobiera informacje o aplikacji usługi Service Fabric. |
-| lista | Pobiera listę aplikacji utworzonych w klastrze usługi Service Fabric, spełniające warunki określonych filtrów. |
+| list | Pobiera listę aplikacji utworzonych w klastrze usługi Service Fabric, spełniające warunki określonych filtrów. |
 | ładowanie | Pobiera załadować informacji o aplikacji usługi Service Fabric. |
 | Manifest | Pobiera manifest opisujące typu aplikacji. |
 | aprowizacja | Przepisy lub rejestrów aplikacji usługi Service Fabric to typ klastra przy użyciu pakietu sfpkg z magazynu zewnętrznego lub przy użyciu pakietu aplikacji w magazynie obrazów. |
@@ -332,9 +332,9 @@ Raporty stan kondycji określonej aplikacji usługi Service Fabric. Raport musi 
 | — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. <br><br> Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" 6.0 + i "myapp app1" w poprzednich wersjach. |
 | --kondycji — właściwość [wymagane] | Właściwość o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągu i stałych wyliczenia aby zezwalał na elastyczność reportera do kategoryzowania warunek stanu, która powoduje uruchomienie raportu. Na przykład reportera o ID "LocalWatchdog" można monitorować stan wolnego w węźle, aby go zgłosić właściwości "AvailableDisk" w tym węźle. Ten sam reportera monitorować łączność węzeł tak go zgłosić właściwości "Łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia dotyczące kondycji oddzielnych dla określonego węzła. Wraz z SourceId właściwość jednoznacznie identyfikuje informacje o kondycji. |
 | — stan kondycji [wymagane] | Możliwe wartości to\: "Nieprawidłowy", "Ok", "Ostrzeżenie", "Error", "Nieznany". |
-| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która określa składnik systemu klienta/strażnika, który wygenerował informacji o kondycji. |
+| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która identyfikuje składnik klienta/strażnika/systemu, który wygenerował informacji o kondycji. |
 | — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst, które umożliwiają dodawanie ludzi do odczytu informacji na temat raportu. Maksymalna długość ciągu opisu wynosi 4096 znaków. Jeśli podany ciąg jest dłuższy, zostaną automatycznie obcięte. W przypadku obcięty, ostatnie znaki opis zawiera znacznik "[obcięte]", a ciąg łączny rozmiar wynosi 4096 znaków. Obecność znacznika wskazuje, aby użytkownicy tej obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
-| --bezpośrednim | Flaga oznaczająca, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
+| --bezpośrednim | Flaga, która wskazuje, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
 | --remove gdy wygasł | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ustawiono wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po upływie. Wartość tej właściwości to false domyślnie. Gdy klienci okresowo raportu ustala RemoveWhenExpired false (domyślnie). W ten sposób jest zgłaszającą ma problemy (np. zakleszczenia) i nie można zgłosić jednostki jest oceniany na błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
 | --numer sekwencyjny | Numer sekwencji dla tego raportu o kondycji jako ciągu numerycznego. <br><br> Numer sekwencyjny raportu służy magazynu kondycji do wykrywania stare raportów. Jeśli nie zostanie określony, numer sekwencyjny został wygenerowany automatycznie przez klienta usługi kondycji po dodaniu raportu. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
@@ -434,23 +434,23 @@ Weryfikuje parametry uaktualniania aplikacji podany i rozpoczyna uaktualnianie a
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. <br><br> Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" 6.0 + i "myapp app1" w poprzednich wersjach. |
-| — Wersja aplikacji [wymagane] | Wersja aplikacji docelowej. |
+| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. <br><br> Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
+| — Wersja aplikacji [wymagane] | Docelowy wersję typu aplikacji (znaleziony w manifeście aplikacji) dla uaktualnienie aplikacji. |
 | --Parametry [wymagane] | Zastępuje kodowany w formacie JSON listę parametrów aplikacji mają być stosowane podczas uaktualniania aplikacji. |
 | ---service kondycji — zasady domyślne | Określanie zasad dotyczących kondycji używany domyślnie do oceny kondycji typ usługi zakodowane JSON. |
 | — Akcja błędu | Akcja do wykonania podczas uaktualniania monitorowanej napotka monitorowania zasad lub kondycji naruszenia zasad. |
 | --force-restart | Wymuszone ponownie procesów podczas uaktualniania, nawet gdy wersja kodu nie została zmieniona. |
-| --health-check-retry-timeout | Ilość czasu, aby ponowić próbę wykonania oceny kondycji aplikacji lub klaster jest w złej kondycji przed akcją awarii jest wykonywany. Mierzony w milisekundach.  Domyślne\: PT0H10M0S. |
-| --health-check-stable-duration | Ilość czasu, aplikacji lub klastra musi pozostać dobrej kondycji przed uaktualnienia przechodzi do następnej domeny uaktualnienia. Mierzony w milisekundach.  Domyślne\: PT0H2M0S. |
-| --health-check-wait-duration | Ilość czasu oczekiwania po wykonaniu uaktualnienia domeny przed zastosowaniem zasady dotyczące kondycji. Mierzony w milisekundach.  Domyślne\: 0. |
+| --health-check-retry-timeout | Odstęp czasu między próbami sprawdzać kondycję, jeśli aplikacja lub klastra nie jest w dobrej kondycji.  Domyślne\: PT0H10M0S. |
+| --health-check-stable-duration | Ilość czasu, aplikacji lub klastra musi pozostać dobrej kondycji przed uaktualnienia przechodzi do następnej domeny uaktualnienia.  Domyślne\: PT0H2M0S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
+| --health-check-wait-duration | Czas oczekiwania po wykonaniu uaktualnienia domeny przed rozpoczęciem kondycji sprawdza, czy proces.  Domyślne\: 0. |
 | --max-unhealthy-apps | Maksymalna dozwolona wartość procentowa wdrożone aplikacje w złej kondycji. Przedstawiona jako liczba od 0 do 100. |
 | --Tryb | Tryb służy do monitorowania kondycji podczas uaktualnień stopniowych.  Domyślne\: UnmonitoredAuto. |
 | --replica-set-check-timeout | Maksymalna ilość czasu blokowania przetwarzania domeny uaktualnienia, a przed utratą dostępności w przypadku nieoczekiwanych problemów. Mierzony w sekundach. |
 | --service-health-policy | Mapy za pomocą zasad kondycji typ usługi dla usługi, nazwa typu zakodowane JSON. Mapa jest pusta domyślnie. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-| — limit czasu domeny uaktualnienia | Czas każdej z domen musi wykonać, zanim zostanie wykonany FailureAction. Mierzony w milisekundach.  Domyślne\: P10675199DT02H48M05.4775807S. |
-| — limit czasu uaktualniania | Czas ogólną uaktualnienia musi wykonać, zanim zostanie wykonany FailureAction. Mierzony w milisekundach.  Domyślne\: P10675199DT02H48M05.4775807S. |
-| --warning-as-error | Traktuj ostrzeżenia dotyczące oceny kondycji za pomocą tego samego ważność jako błędy. |
+| — limit czasu domeny uaktualnienia | Czas każdej z domen musi wykonać, zanim zostanie wykonany FailureAction.  Domyślne\: P10675199DT02H48M05.4775807S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
+| — limit czasu uaktualniania | Czas ogólną uaktualnienia musi wykonać, zanim zostanie wykonany FailureAction.  Domyślne\: P10675199DT02H48M05.4775807S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
+| --warning-as-error | Wskazuje, czy ostrzeżenia są traktowane z tego samego ważność jako błędy. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 

@@ -4,10 +4,9 @@ description: Jak utworzyć model regresji prosty, aby przewidzieć cenę w zakre
 keywords: Tworzenie modelu, prosty model, prognozowanie cen, uczenia modelu regresji prosty
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cjgronlund
 ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 155b853ef46c54fbb6e230573b860189bacc0d64
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e2c49b9da215c038cfa47689f11da22b2dffc2dc
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092937"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253597"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Prognozowanie odpowiedzi za pomocą prostego modelu
 ## <a name="video-4-data-science-for-beginners-series"></a>Wideo 4: Analiza danych dla początkujących serii
@@ -39,10 +38,10 @@ Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejd�
 *Przetwarzanie danych dla początkujących* jest szybkie wprowadzenie do nauki o danych w pięciu krótkich filmach wideo.
 
 * Wideo 1: [5 pytań, analiza danych daje odpowiedzi](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
-* Wideo 2: [czy Twoje dane są gotowe na analizę danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
+* Wideo 2: [Czy dane są gotowe do analizy danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
 * Wideo 3: [Zadaj pytanie, można odpowiedzieć za pomocą danych](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek.)*
 * Wideo 4: Prognozowanie odpowiedzi za pomocą prostego modelu
-* Wideo 5: [kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
+* Wideo 5: [Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
 
 ## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Zapis: Prognozowanie odpowiedzi za pomocą prostego modelu
 Witamy w czwartym wideo w "Data Science for Beginners" serii. W tym, co możemy zbudowania prostego modelu i prognozowania.
@@ -66,7 +65,7 @@ Faktycznie utworzyliśmy małego zestawu danych w tym miejscu — tabeli. Zwró�
 * I, zobaczymy, ma ona **wystarczająco dużo** odpowiedź na pytanie naszej
 
 ## <a name="ask-a-sharp-question"></a>Zadaj pytanie sharp
-Teraz firma Microsoft będzie stanowić naszego zapytania w sposób sharp: "ile będzie kosztować kupić romb 1.35 daszka?"
+Firma Microsoft będzie teraz stanowić naszych pytanie, w sposób sharp: "Ile będzie kosztować kupić romb 1.35 daszka?"
 
 Listy nie ma romb 1.35 daszka, dlatego odpowiemy na potrzeby uzyskania odpowiedzi na pytanie na pozostałe dane.
 
@@ -97,18 +96,18 @@ Fakt, że wszystkie kropki nie są kierowane dokładnie za pośrednictwem wiersz
 Ponieważ chcemy znaleźć odpowiedź na pytanie *ile?* jest to nazywane *regresji*. A ponieważ używamy linię prostą jest *regresji liniowej*.
 
 ## <a name="use-the-model-to-find-the-answer"></a>Użyj modelu, aby znaleźć odpowiedzi
-Teraz mamy modelu i firma Microsoft Zadaj pytanie naszej: ile romb 1.35 daszka będzie kosztować?
+Teraz mamy modelu, a firma Microsoft Zadaj pytanie naszej: Ile będzie kosztować romb 1.35 daszka
 
-Odpowiedź z naszej pytanie, firma Microsoft oka 1.35 carats i rysowania pionowych linii. Gdzie go przecięcie wiersza modelu, firma Microsoft eyeball linii poziomej do osi dolara. Trafienia w zasięgu 10 000. Nagle! To odpowiedź na pytanie: romb 1.35 daszka koszt wynosi około 10 000 USD.
+Odpowiedź z naszej pytanie, firma Microsoft oka 1.35 carats i rysowania pionowych linii. Gdzie go przecięcie wiersza modelu, firma Microsoft eyeball linii poziomej do osi dolara. Trafienia w zasięgu 10 000. Nagle! To znaczy odpowiedzi: Koszty romb 1.35 daszka o 10 000 USD.
 
 ![Znajdź odpowiedzi na podstawie modelu](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Utwórz przedział ufności
-To fizyczne, aby dowiedzieć się, jak dokładne jest to prognozy. Jest grupowaniu można sprawdzić, czy romb 1.35 daszka będzie bardzo blisko 10 000 USD, lub o wiele wyższą lub niższą. Aby znaleźć tę możliwość, Narysujmy koperty wokół regresji, który zawiera większość punktów. Nazywa się to koperty naszych *interwał ufności*: jesteśmy dość pewność, że ceny mieszczą się w tym kopercie, ponieważ w ciągu ostatnich większość z nich. Firma Microsoft można narysować dwa więcej poziome linie z miejsca przecięcia wiersza 1.35 daszka, u góry i u dołu tego schematu envelope.
+To fizyczne, aby dowiedzieć się, jak dokładne jest to prognozy. Jest grupowaniu można sprawdzić, czy romb 1.35 daszka będzie bardzo blisko 10 000 USD, lub o wiele wyższą lub niższą. Aby znaleźć tę możliwość, Narysujmy koperty wokół regresji, który zawiera większość punktów. Nazywa się to koperty naszych *interwał ufności*: Jesteśmy dość pewność, że ceny mieszczą się w tym kopercie, ponieważ w ciągu ostatnich większość z nich. Firma Microsoft można narysować dwa więcej poziome linie z miejsca przecięcia wiersza 1.35 daszka, u góry i u dołu tego schematu envelope.
 
 ![Interwał ufności](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
-Teraz możemy coś powiedzieć o naszych interwał ufności: będzie można powiedzieć bez obaw, cena romb 1.35 daszka jest około $ 10 000 -, ale może być możliwie jak $8000 i może być możliwie jak 12 000.
+Teraz możemy coś, co mówią o naszych interwał ufności:  Będzie można powiedzieć bez obaw, cena romb 1.35 daszka jest około $ 10 000 -, ale może być możliwie jak $8000 i może być możliwie jak 12 000.
 
 ## <a name="were-done-with-no-math-or-computers"></a>Firma Microsoft będzie gotowe, bez matematyczne lub komputerów
 Przeprowadziliśmy Zarabiaj, jakie analitykom danych wykonaj, a następnie Robiliśmy to po prostu za pomocą rysowania:

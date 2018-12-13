@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/12/2018
 ms.author: raynew
-ms.openlocfilehash: 2906f6dff84cdd6a09c05734988ee005a3d65aac
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 67a236f592392744978b7d1d7f7e7d129515a9a0
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994634"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321805"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -42,7 +42,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 
 ## <a name="region-support"></a>Obsługa regionu
 
-Można replikować i odzyskiwanie maszyn wirtualnych między wszystkie dwóch regionach w obrębie tego samego klastra geograficznego.
+Można replikować i odzyskiwanie maszyn wirtualnych między wszystkie dwóch regionach w obrębie tego samego klastra geograficznego. Klastry geograficzne są zdefiniowane, pamiętając o opóźnieniu przesyłania danych i niezależność danych.
 
 **Geograficzne klastra** | **Regiony platformy Azure**
 -- | --
@@ -52,11 +52,12 @@ Azja | Indie Południowe, Indie środkowe, Azja południowo-wschodnia, Azja Wsch
 Australia   | Australia Wschodnia, Australia Południowo-Wschodnia, Australia Środkowa, Australia Środkowa 2
 Azure Government    | Administracja USA — Wirginia, administracja USA — Iowa, administracja USA — Arizona, administracja USA — Teksas, US DOD wschodnie stany, US dod — środkowe
 Niemcy | Niemcy środkowe, Niemcy północno-wschodnie
-Chiny | Chiny wschodnie, Chiny Północne
+Chiny | Chiny wschodnie, Chiny Północne, Chiny North2, 2 (Chiny)
 
 >[!NOTE]
 >
-> Dla regionu Brazylia Południowa, możesz zreplikować i trybie Failover do jednej z następujących czynności: południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA.
+> Dla regionu Brazylia Południowa można replikować i trybie Failover do jednej z następujących czynności: Południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA.</br>
+> Należy zauważyć, Usługa Site Recovery włączył tylko regionu Brazylia Południowa, ma być używany jako region źródła, z których mogą być chronione maszyny wirtualne. Go nie może służyć jako region docelowy odzyskiwania po awarii dla każdej z regionów platformy Azure, takich jak południowo-środkowe stany USA. Przyczyną tego jest opóźnienie obserwuje z powodu położenia geograficznego, zalecana jest wybierz region żadnych innych Ameryka niż Brazylia Południowa.  
 
 ## <a name="cache-storage"></a>Magazyn pamięci podręcznej
 
@@ -126,7 +127,7 @@ Debian 8 | 9.17, 9.18 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9,20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.69-default |
+SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9,20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default |
 SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.19 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.88-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.126-94.22-default |
@@ -135,7 +136,7 @@ SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem 
 
 * Systemy plików: ext3, ext4, ReiserFS (Suse Linux Enterprise Server tylko), XFS
 * Menedżer woluminów: LVM2
-* Oprogramowania wielościeżkowego: mapowania urządzenia
+* Oprogramowanie wielościeżkowe: Mapowanie urządzeń
 
 
 ## <a name="replicated-machines---compute-settings"></a>Replikowane maszyny — ustawienia obliczeń
@@ -178,6 +179,7 @@ Dysk danych — konto magazynu w warstwie standardowa | Obsługiwane |
 Dysk danych — konto magazynu premium storage | Obsługiwane | Maszyna wirtualna ma dyski rozkładają się na konta magazynu w warstwie standardowa i premium, po wybraniu innego docelowego konta magazynu dla każdego dysku, aby upewnić się, że mają taką samą konfigurację magazynu w regionie docelowym.
 Dysk zarządzany — standardowa | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |  
 Dysk zarządzany — premium | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
+Standardowa, SSD | Nieobsługiwane |
 Nadmiarowość | Usługi LRS i GRS są obsługiwane.<br/><br/> Magazyn ZRS nie jest obsługiwane.
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny Wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
 Miejsca do magazynowania | Obsługiwane |         
@@ -199,6 +201,18 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorąca i chłodna w
 >[!IMPORTANT]
 > Upewnij się, że przestrzegasz maszyn wirtualnych dysku cele skalowalności i wydajności dla [Linux](../virtual-machines/linux/disk-scalability-targets.md) lub [Windows](../virtual-machines/windows/disk-scalability-targets.md) maszyn wirtualnych, aby uniknąć problemów z wydajnością. Jeśli stosujesz ustawienia domyślne, Usługa Site Recovery utworzy wymagane dyski i kont magazynu, w oparciu o konfigurację źródła. Dostosowywanie i wybrać własne ustawienia, upewnij się, wykonaj cele dotyczące skalowalności i wydajności dysku dla źródła maszyn wirtualnych.
 
+## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>Częstotliwość zmiany limity platformy Azure Site Recovery do replikacji danych
+W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. Limity te są oparte na naszych testach, ale nie obejmują wszystkich możliwych kombinacji operacji we/wy aplikacji. Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji. Firma Microsoft należy należy również zauważyć, że istnieją dwa ograniczenia należy wziąć pod uwagę na dysk danych na dane maszyny wirtualnej postępów i współczynnika zmian.
+Na przykład, jeśli spojrzymy na dysk Premium P20 w poniższej tabeli, Usługa Site Recovery może obsługiwać 5 MB/s współczynniku dysku na maksymalnie pięciu tych dysków na maszynę Wirtualną z powodu limitu 25 MB/s łącznym dziennym współczynniku maszyny Wirtualnej.
+
+**Cel magazynu replikacji** | **Średni rozmiar źródłowych operacji we/wy na dysku** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
+---|---|---|---
+Standard Storage | 8 KB | 2 MB/s | 168 GB na dysk
+Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk
+Dysk w warstwie Premium P10 lub P15 | 16 KB | 4 MB/s |  336 GB na dysk
+Dysk w warstwie Premium P10 lub P15 | 32 KB lub większy | 8 MB/s | 672 GB na dysk
+Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dysk
+Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |10 MB/s | 842 GB na dysk
 ## <a name="replicated-machines---networking"></a>Replikowane maszyny — sieci
 **Konfiguracja** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---

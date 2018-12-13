@@ -1,5 +1,5 @@
 ---
-title: Wyświetl rezerwacje platformy Azure | Dokumentacja firmy Microsoft
+title: Wyświetl rezerwacji dla zasobów platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wyświetlić rezerwacje platformy Azure w witrynie Azure portal.
 services: billing
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: cwatson
-ms.openlocfilehash: 4506d65d173ea483558a772d89fe7cbc8cd84944
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c7522076987aacacc6fde6a0c9d2fa867a3f14aa
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584591"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314044"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Wyświetlanie rezerwacji platformy Azure w witrynie Azure portal
+# <a name="view-reservations-for-azure-in-the-azure-portal"></a>Wyświetlanie rezerwacji dla platformy Azure w witrynie Azure portal
 
-W zależności od typu subskrypcji i uprawnienia istnieje kilka sposobów, aby wyświetlić rezerwacje platformy Azure.
+W zależności od typu subskrypcji i uprawnienia istnieje kilka sposobów wyświetlania rezerwacji dla zasobów platformy Azure.
 
 ## <a name="view-reservations-as-owner-or-reader"></a>Wyświetlanie rezerwacji jako właściciela lub czytelnika
 
@@ -30,7 +30,7 @@ Domyślnie w przypadku dokonywania zakupu rezerwacji, użytkownika i administrat
  
 Aby wyświetlić rezerwacji jako właściciel lub czytnika,
 
-1. Zaloguj się w witrynie [Azure Portal]( http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukiwanie **rezerwacje**.
 
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ Jeśli musisz zmienić zakres rezerwacji podziału rezerwacji lub zmiany, kto mo
 
 Aby wyświetlić transakcje rezerwacji w witrynie Azure portal
 
-1. Zaloguj się w witrynie [Azure Portal]( http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukiwanie **Cost Management + rozliczenia**.
 
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -54,19 +54,19 @@ Aby wyświetlić transakcje rezerwacji w witrynie Azure portal
 1. Aby filtrować wyniki, wybierz **Timespan**, **typu**, lub **opis**.
 1. Wybierz przycisk **Zastosuj**.
 
-    ![Zrzut ekranu przedstawiający wyniki transakcji rezerwacji](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
+    ![Zrzut ekranu pokazujący rezerwacji wyniki transakcji](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
 
 Aby uzyskać dane przy użyciu interfejsu API, zobacz [opłaty za transakcje Pobieranie wystąpień zarezerwowanych dla klientów korporacyjnych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
-- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
+- [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
 - [Zapłać z góry za pojemność usługi Cosmos DB zastrzeżone](../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
+- [Zarządzanie rezerwacjami platformy Azure](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)

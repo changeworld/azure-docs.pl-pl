@@ -1,6 +1,6 @@
 ---
-title: Importowanie danych w usłudze Azure Search | Microsoft Docs
-description: Dowiedz się, jak przekazywać dane do indeksu w usłudze Azure Search.
+title: Importowanie danych w celu pozyskiwania danych do indeksu wyszukiwania — usługa Azure Search
+description: Wypełnij i przekazywać dane do indeksu w usłudze Azure Search z zewnętrznych źródeł danych.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249782"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314860"
 ---
-# <a name="indexing-in-azure-search"></a>Indeksowanie w usłudze Azure Search
+# <a name="indexing-external-data-for-queries-in-azure-search"></a>Indeksowanie danych zewnętrznych dla zapytań w usłudze Azure Search
 > [!div class="op_single_selector"]
 > * [Omówienie](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -23,7 +24,7 @@ ms.locfileid: "51249782"
 > 
 > 
 
-W usłudze Azure Search zapytania są wykonywane na zawartości załadowanej do [indeksu wyszukiwania](search-what-is-an-index.md). W tym artykule omówiono dwa podstawowe podejścia do ładowania zawartości do indeksu: *wypychanie* danych do indeksu programistycznie lub ustawienie [indeksatora usługi Azure Search](search-indexer-overview.md) tak, aby wskazywał obsługiwane źródło danych, i *ściąganie* danych.
+W usłudze Azure Search zapytania są wykonywane na zawartości ładowane i zapisywane w [indeksu wyszukiwania](search-what-is-an-index.md). W tym artykule sprawdza, czy dwa podstawowe podejścia do wypełniania indeksu: *wypychania* dane do indeksu programistycznie, lub punktów [indeksator usługi Azure Search](search-indexer-overview.md) na obsługiwanego źródła danych do  *ściągnięcia* w danych.
 
 ## <a name="pushing-data-to-an-index"></a>Wypychanie danych do indeksu
 Model wypychania, używany w celu programistycznego przesyłania danych do usługi Azure Search, jest najbardziej elastycznym podejściem. Po pierwsze nie ma żadnych ograniczeń dotyczących typu źródła danych. Do usługi Azure Search można wypchnąć dowolny zestaw danych złożony z dokumentów JSON, zakładając, że każdy dokument w zestawie danych ma pola zamapowane na pola zdefiniowane w schemacie indeksu. Po drugie nie ma żadnych ograniczeń dotyczących częstotliwości wykonywania. Możesz wypychać zmiany do indeksu tak często, jak tylko chcesz. W przypadku aplikacji wymagających bardzo niskich opóźnień (na przykład w razie konieczności synchronizowania operacji wyszukiwania z dynamicznymi bazami danych zapasów) model wypychania jest jedynym rozwiązaniem.

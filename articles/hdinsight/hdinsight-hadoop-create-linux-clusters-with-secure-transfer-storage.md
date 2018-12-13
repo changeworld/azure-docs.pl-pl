@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 07d6b07a583b8a8ce8b490333a87ff659f495e45
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: be379061f738ccee298c9a5aac88d3a95613f214
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866994"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193233"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Tworzenie klastra Apache Hadoop z bezpiecznym transferem kont magazynu w usłudze Azure HDInsight
 
@@ -23,7 +23,7 @@ Funkcja [Wymagany bezpieczny transfer](../storage/common/storage-require-secure-
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem tego samouczka potrzebna będzie:
 
-* **Subskrypcja platformy Azure**: aby utworzyć bezpłatne konto próbne na jeden miesiąc, przejdź do [azure.microsoft.com/free](https://azure.microsoft.com/free).
+* **Subskrypcja platformy Azure**: Aby utworzyć bezpłatne konto próbne jednego miesiąca, przejdź do [azure.microsoft.com/free](https://azure.microsoft.com/free).
 * **Konto usługi Azure Storage z włączonym bezpiecznym transferem**. Aby uzyskać instrukcje, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md) oraz [Wymaganie bezpiecznego transferu](../storage/common/storage-require-secure-transfer.md).
 * **Kontener obiektów blob na koncie magazynu**. 
 
@@ -45,7 +45,7 @@ W tej sekcji tworzysz klaster Hadoop w usłudze HDInsight przy użyciu [szablonu
     - Użyj krótkiej nazwy konta magazynu.
     - Konto magazynu i kontener obiektów blob należy utworzyć wcześniej. 
 
-    Aby uzyskać instrukcje, zobacz [Tworzenie klastra](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). 
+      Aby uzyskać instrukcje, zobacz [Tworzenie klastra](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). 
 
 Jeśli użyjesz akcji skryptu do udostępnienia własnych plików konfiguracyjnych, musisz użyć rozwiązania wasbs w następujących ustawieniach:
 

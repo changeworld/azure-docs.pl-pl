@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 93824c8f0e7667fcb58fd6b8292cddfa2b4a482a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441464"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194202"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Wdrażanie oprogramowania SAP IDES EHP7 SP3 dla oprogramowania SAP ERP 6.0 na platformie Azure
 W tym artykule opisano, jak wdrożyć system SAP IDES z programem SQL Server i systemu operacyjnego Windows na platformie Azure przy użyciu biblioteki SAP Cloud Appliance Library (SAP CAL) 3.0. Zrzuty ekranu pokazują krok po kroku procesu. Aby wdrożyć inne rozwiązanie, wykonaj te same czynności.
@@ -29,7 +29,7 @@ W tym artykule opisano, jak wdrożyć system SAP IDES z programem SQL Server i s
 Aby rozpocząć SAP CAL, przejdź do [SAP Cloud Appliance Library](https://cal.sap.com/) witryny sieci Web. Firma SAP ma również blog o nowym [SAP Cloud Appliance biblioteki 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
-Od 29 maja 2017 r. modelu wdrażania usługi Azure Resource Manager, oprócz preferowane mniej klasycznego modelu wdrażania można użyć do wdrożenia SAP CAL. Firma Microsoft zaleca użycie nowego modelu wdrażania usługi Resource Manager, a następnie pominąć klasycznego modelu wdrażania.
+> Od 29 maja 2017 r. modelu wdrażania usługi Azure Resource Manager, oprócz preferowane mniej klasycznego modelu wdrażania można użyć do wdrożenia SAP CAL. Firma Microsoft zaleca użycie nowego modelu wdrażania usługi Resource Manager, a następnie pominąć klasycznego modelu wdrażania.
 
 Jeśli nie zostało utworzone konto SAP CAL, która korzysta z modelu klasycznego, *musisz utworzyć nowe konto SAP CAL*. To konto musi wyłącznie wdrażanie na platformie Azure przy użyciu modelu usługi Resource Manager.
 
@@ -96,7 +96,7 @@ Przed wdrożeniem rozwiązania SAP IDES na podstawie Windows i programu SQL Serv
 ### <a name="deploy-a-solution"></a>Wdrażanie rozwiązania
 1. Po skonfigurowaniu konta SAP CAL, wybierz **rozwiązanie SAP IDES na Windows i program SQL Server** rozwiązania. Kliknij przycisk **Utwórz wystąpienie**i upewnij się, warunki użytkowania i warunki. 
 
-1. Na **trybie podstawowym: Utwórz wystąpienie** strony, należy:
+1. Na **trybie podstawowym: Tworzenie wystąpienia** strony, należy:
 
     a. Wprowadź wystąpienie **nazwa**.
 

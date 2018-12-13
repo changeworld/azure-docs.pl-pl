@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: da6cc943c310b627626b3d2081ffa88ef3185013
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bcfb3a52793ba0daca980564d5d2248629b5caf4
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727838"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323016"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Liczniki wydajności systemu w usłudze Application Insights
 Windows oferuje szeroką gamę [liczniki wydajności](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) takich jak zajętość procesora CPU, pamięci, dysku i użycia sieci. Można również definiować własne. [Usługa Application Insights](app-insights-overview.md) można wyświetlić te liczniki wydajności, jeśli aplikacja jest uruchomiona w środowisku usług IIS na hosta w środowisku lokalnym lub maszynie wirtualnej, do których masz dostęp administracyjny. Wykresy określają zasoby dostępne dla działającej aplikacji, a może pomóc ustalić niezrównoważonego obciążenia między wystąpieniami serwera.
@@ -26,7 +26,7 @@ Liczniki wydajności są wyświetlane w bloku serwerów, który zawiera tabelę 
 
 ![Liczniki wydajności zgłoszonych w usłudze Application Insights](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(Liczniki wydajności nie są dostępne dla aplikacji sieci Web platformy Azure. Ale możesz [wysyłanie diagnostyki Azure do usługi Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).)
+(Liczniki wydajności nie są dostępne dla aplikacji sieci Web platformy Azure. Ale możesz [wysyłanie diagnostyki Azure do usługi Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).)
 
 ## <a name="view-counters"></a>Wyświetlanie liczników
 Blok serwerów zawiera domyślny zestaw liczników wydajności. 

@@ -5,9 +5,8 @@ metakeywords: ''
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: d7ff9e157f776ebf683846652fe4788fc35e19af
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311062"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276683"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Używanie regresji liniowej w usłudze Azure Machine Learning Studio
 > *Kate Baroni* i *Ben Boatman* są architekci rozwiązań w firmy Microsoft Data Insights centrum doskonałości przedsiębiorstwa. W tym artykule opisano czynności migracja istniejącego zestawu analiz regresji do rozwiązania oparte na chmurze za pomocą usługi Azure Machine Learning. 
@@ -31,7 +30,7 @@ ms.locfileid: "52311062"
 
 &nbsp; 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="goal"></a>Cel
 Nasz projekt do dwóch celów pamiętać: 
@@ -73,8 +72,8 @@ Na początku modelu programu Excel pokonał wyraźnie usługę modelu usługi Ma
 Uruchomiliśmy nasz proces i wyniki przez deweloperów i analityków danych w zespole usługi Machine Learning, one szybko udostępniane niektóre przydatne porady. 
 
 * Kiedy używasz [regresji liniowej] [ linear-regression] modułu w usłudze Machine Learning Studio, znajdują się dwie metody:
-  * Online spadku gradientu: Może być bardziej odpowiednie dla problemów na dużą skalę
-  * Zwykłe najmniejszych kwadratów: Jest to metody, których większość osób postrzega podczas ich usłyszeć regresji liniowej. W przypadku małych zestawów danych zwykłych najmniejszych kwadratów może być bardziej optymalnym wyborem.
+  * Spadku gradientu online: Mogą być bardziej odpowiednie dla problemów na dużą skalę
+  * Zwykłe najmniejszych kwadratów: Jest to metoda, których większość osób postrzega podczas ich usłyszeć regresji liniowej. W przypadku małych zestawów danych zwykłych najmniejszych kwadratów może być bardziej optymalnym wyborem.
 * Należy wziąć pod uwagę, dostosowywanie parametr L2 uregulowania wagę do zwiększenia wydajności. Ustawiana jest na 0,001 domyślnie, ale dla naszej małej zestawu danych możemy ustawić ją na 0,005 w celu zwiększenia wydajności. 
 
 ### <a name="mystery-solved"></a>Taki rozwiązanie!
@@ -86,8 +85,8 @@ Stosowania zaleceń, możemy osiągnąć ten sam punkt odniesienia wydajności w
 | Uczeń |Excel -> Data Analysis -> regresji |Regresji liniowej. |Regresja liniowa |
 | Opcje learner |ND |Domyślne |zwykłe najmniejszych kwadratów<br />L2 = 0,005 |
 | Zestaw danych |26 ostatnich wierszy, funkcje 3, 1 etykiety. Wszystkie numeryczne. |Ten sam |Ten sam |
-| Podziel: szkolenie |Excel uczony w wierszach najpierw 18, przetestowana na ostatnie 8 wierszy. |Ten sam |Ten sam |
-| Podziel: Test |Formuła regresji, które dotyczą ostatnie 8 wierszy w programie Excel |Ten sam |Ten sam |
+| Podziel: Szkolenie |Excel uczony w wierszach najpierw 18, przetestowana na ostatnie 8 wierszy. |Ten sam |Ten sam |
+| Podziel: Testowanie |Formuła regresji, które dotyczą ostatnie 8 wierszy w programie Excel |Ten sam |Ten sam |
 | **Wydajność** | | | |
 | Skorygowane R-kwadrat |0.96 |ND | |
 | Determinacji |ND |0.78 |0.952049 |
@@ -145,7 +144,7 @@ Poniżej przedstawiono niektóre zasoby pomagające w pracy z regresji:
 
 * Regresja w programie Excel. Jeśli nigdy nie sprawdzone regresji w programie Excel, ten samouczek ułatwia: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
 * Prognozowanie vs regresji. Tyler Chessman napisał artykuł z bloga wyjaśniające, jak czas serii prognozowania w programie Excel zawiera opis dobre dla początkujących regresji liniowej. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Regresja liniowa zwykłych najmniejszych kwadratów: Błędów, problemów i pułapek. Wprowadzenie i dyskusji regresji: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Zwykłe najmniej Squares regresji liniowej: Wady, problemów i pułapek. Wprowadzenie i dyskusji regresji: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

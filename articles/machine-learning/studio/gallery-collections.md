@@ -4,9 +4,8 @@ description: Kolekcja w galerii Azure AI umożliwia grupie eksperymentów, inter
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: cc70405655cd07d87ca5b1004b7666d3b45bc649
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b88489f826bbeab636903c7c9918f34d16b2f122
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308685"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271372"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Odnajdywanie i udostępnianie kolekcji w galerii Azure AI
 
@@ -99,4 +98,4 @@ Aby usunąć element z kolekcji, wybierz pozycję **Usuń**.
 
 **[Przejdź do galerii](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+

@@ -13,17 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 9918c4b022fc2aca4bfc1ddba5649d7f0efe1256
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0b6fae59fbe0fa86cb16b176eb1df47e031d04f1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138793"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317196"
 ---
-<a id="preparemachines"></a>
-
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planowanie i przygotowanie wdrożenia klastra usługi Service Fabric autonomiczny
-Przed przystąpieniem do tworzenia klastra, wykonaj następujące kroki.
+
+<a id="preparemachines"></a>Przed przystąpieniem do tworzenia klastra, wykonaj następujące kroki.
 
 ## <a name="plan-your-cluster-infrastructure"></a>Planowanie infrastruktury klastra
 Masz zamiar utworzyć klaster usługi Service Fabric na maszynach, gdy jesteś "właścicielem", można zdecydować, jakiego rodzaju błędów ma klaster umożliwiającą przetrwanie. Na przykład czy potrzebujesz oddzielnych, linie zasilania lub połączenia przez Internet do tych maszyn? Ponadto należy wziąć pod uwagę zabezpieczenia fizyczne maszyn. Maszyny lokalizację i który musi mieć dostęp do nich? Po wprowadzeniu tych decyzji, komputery można mapować logicznie do różnych domen błędów (patrz następny krok). W przypadku klastrów produkcyjnych z planowaniem infrastruktury jest bardziej skomplikowane niż w przypadku klastrów testowych.
@@ -104,13 +103,13 @@ Gdy administrator klastra umożliwia skonfigurowanie klastra autonomicznego usł
    * Czy włączono usługę Rejestr zdalny (Rejestr zdalny)
    * Plik włączenia udostępniania serwera (SMB)
    * Masz wymagane porty otwarte, oparta na portach konfiguracji klastra
-   * Masz wymagane porty otworzyć dla usługi Windows SMB i Rejestr zdalny: 135, 137, 138, 139 i 445
+   * Mają wymagane porty otworzyć dla usługi Windows SMB i Rejestr zdalny: 135, 137, 138, 139 i 445
    * Mieć łączność sieciową ze sobą
 3. Żadna z maszyn węzeł klastra powinien być kontrolerem domeny.
 4. Jeśli można wdrożyć klaster jest zabezpieczony klaster, sprawdź poprawność niezbędne wymagania wstępne znajdują się w miejscu i są poprawnie skonfigurowane dla konfiguracji zabezpieczeń.
 5. Jeśli na komputerach klastra nie są dostępne za pośrednictwem Internetu, należy ustawić następującą w konfiguracji klastra:
-   * Wyłączanie telemetrii: w obszarze *właściwości* ustaw *"enableTelemetry": false*
-   * Wyłącz automatyczne pobieranie wersja sieci szkieletowej & powiadomienia, że bieżąca wersja klastra zbliża się koniec obsługi: w obszarze *właściwości* ustaw *"fabricClusterAutoupgradeEnabled": false*
+   * Wyłączanie telemetrii: W obszarze *właściwości* ustaw *"enableTelemetry": false*
+   * Wyłącz automatyczne pobieranie wersja sieci szkieletowej i powiadomienia, że bieżąca wersja klastra zbliża się koniec obsługi: W obszarze *właściwości* ustaw *"fabricClusterAutoupgradeEnabled": false*
    * Alternatywnie dostęp do sieci internet jest ograniczona do biały na liście domen, domen poniżej są wymagane dla automatyczne uaktualnianie: witrynie download.microsoft.com go.microsoft.com
 
 6. Ustaw odpowiednie wyjątki programu antywirusowego usługi Service Fabric:

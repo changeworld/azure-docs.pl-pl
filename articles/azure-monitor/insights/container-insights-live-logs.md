@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 3b20197fc27c5c8833d8358943c494266da83fb7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: da11bb0669bf6bde2c65b2a7a0badaa1ae35abda
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109945"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189131"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Jak wyświetlić kontenera dzienników czasu rzeczywistego z usługą Azure Monitor dla kontenerów (wersja zapoznawcza)
 Ta funkcja, która jest obecnie dostępna w wersji zapoznawczej, zapewnia wgląd w czasie rzeczywistym w dzienników kontenera usługi Azure Kubernetes Service (AKS) (stdout/stderr) bez konieczności uruchamiania poleceń kubectl. Po wybraniu tej opcji, zostanie wyświetlone nowe okienko pod tabelą danych wydajności kontenerów na **kontenery** widoku który pokazuje na żywo rejestrowania generowane przez aparat container ułatwiających dalsze rozwiązywanie problemów w czasie rzeczywistym.  

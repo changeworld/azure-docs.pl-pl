@@ -1,5 +1,5 @@
 ---
-title: Kupowanie niestandardowej nazwy domeny dla usługi Azure Web Apps
+title: Kupowanie niestandardowej nazwy domeny na platformie Azure — App Service
 description: Dowiedz się, jak kupić domenę niestandardową nazwą aplikacji sieci web w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 48e0e68794e83739835d97aa8a2b26516c660357
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.custom: seodec18
+ms.openlocfilehash: 3f587b7e1b051b28d11ad84fcb2d02bd01315de5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345195"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256438"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure Web Apps
 
@@ -153,8 +154,8 @@ Jeśli zrezygnujesz z Przypisz co najmniej jeden domyślne nazwy hostów do apli
 
 Można także przypisać nazwy hostów w domeny usługi App Service do dowolnej aplikacji sieci web. Kroki zależą od tego, czy domeny usługi App Service i aplikację sieci web należą do tej samej subskrypcji.
 
-- Inną subskrypcję: Mapowanie niestandardowych rekordów DNS z domeny usługi App Service do aplikacji sieci web, takich jak zakupionego zewnętrznie domeny. Aby uzyskać informacje na temat dodawania niestandardowych nazw DNS do domeny usługi App Service, zobacz [Zarządzanie rekordami systemu DNS niestandardowej](#custom). Aby zamapować domeny zewnętrznej zakupionych aplikacji sieci web, zobacz [mapowanie istniejącej niestandardowej nazwy DNS w usłudze Azure Web Apps](app-service-web-tutorial-custom-domain.md). 
-- Tej samej subskrypcji: wykonaj następujące kroki.
+- Inną subskrypcję: Mapy niestandardowe rekordy DNS z domeny usługi App Service do aplikacji sieci web, takich jak zakupionego zewnętrznie domeny. Aby uzyskać informacje na temat dodawania niestandardowych nazw DNS do domeny usługi App Service, zobacz [Zarządzanie rekordami systemu DNS niestandardowej](#custom). Aby zamapować domeny zewnętrznej zakupionych aplikacji sieci web, zobacz [mapowanie istniejącej niestandardowej nazwy DNS w usłudze Azure Web Apps](app-service-web-tutorial-custom-domain.md). 
+- Tej samej subskrypcji: Wykonaj następujące kroki.
 
 ### <a name="launch-add-hostname"></a>Uruchamianie Dodaj nazwę hosta
 W **App Services** stronie, wybierz nazwę aplikacji sieci web, którą chcesz przypisać nazwy hostów, aby wybrać **ustawienia**, a następnie wybierz pozycję **domen niestandardowych**.
@@ -280,4 +281,4 @@ Domyślnie usługa App Service kieruje żądania internetowe do katalogu główn
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-[— Często zadawane pytania: Domeny usługi App Service (wersja zapoznawcza) i domeny niestandardowe](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)
+[FAQ: Domeny usługi App Service (wersja zapoznawcza) i domen niestandardowych](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

@@ -1,7 +1,7 @@
 ---
 title: Punkt końcowy regionu, środowiska Node.js
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Programowe wyszukiwanie publikowania w regionie za pomocą klucza punktu końcowego i aplikacji identyfikator usługi LUIS.
+description: Przy użyciu środowiska Node.js, Znajdź publikowania w regionie za pomocą klucza punktu końcowego i aplikacji identyfikator usługi LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3785608da690da4cd1c10fb9305df7f7a79dd4dd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6bcea43fb21cae6f000f3522b498dfc6c0f6d9a7
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017495"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166221"
 ---
 # <a name="find-endpoint-region-with-nodejs"></a>Znajdź region punktu końcowego przy użyciu środowiska Node.js
 W przypadku usługi LUIS Identyfikatora aplikacji i identyfikator subskrypcji usługi LUIS można znaleźć który region należy używać dla punktu końcowego zapytań.
 
 > [!NOTE] 
-> Kompletne rozwiązanie Node.js jest dostępne w [repozytorium GitHub **LUIS-Samples**](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/).
+> Kompletne rozwiązanie Node.js jest dostępne z [ **przykłady LUIS** repozytorium GitHub](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/).
 
 ## <a name="luis-endpoint-query-strategy"></a>Strategia kwerendy punktu końcowego usługi LUIS
 Każda kwerenda punktu końcowego usługi LUIS wymaga:

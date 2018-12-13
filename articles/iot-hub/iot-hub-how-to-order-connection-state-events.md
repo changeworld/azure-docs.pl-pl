@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 77615705ade42a2afcc8e3a9f662b0551a2411fd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582457"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184053"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Zamówienie urządzenia zdarzenia połączeń z usługi Azure IoT Hub przy użyciu usługi Azure Cosmos DB
 
@@ -200,11 +200,11 @@ W przepływie pracy aplikacji logiki warunki pomoc, uruchom określonych akcji p
 
 2. Wprowadź warunek, jak pokazano poniżej, można wykonać to tylko zdarzenia podłączone urządzenia i odłączone urządzenia:
 
-  * Wybierz wartość: **typ zdarzenia**
-  * Zmień "jest równa" **kończy się ciągiem**
-  * Wybierz wartość: **nected**
+   * Wybierz wartość: **typ zdarzenia**
+   * Zmień "jest równa" **kończy się ciągiem**
+   * Wybierz wartość: **nected**
 
-   ![Wprowadź warunek](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![Wprowadź warunek](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
 3. Jeśli warunek jest spełniony, polecenie **Dodaj akcję**.
   
@@ -248,13 +248,13 @@ W tej sekcji skonfigurujesz usługę IoT Hub pod kątem publikowania zdarzeń na
 
 4. Utwórz subskrypcję zdarzeń, korzystając z następujących wartości: 
 
-   * **Typ zdarzenia**: Usuń zaznaczenie pola wyboru Subskrybuj wszystkie typy zdarzeń i wybierz **urządzenie połączone** i **Urządzenie odłączone** z menu.
+   * **Typ zdarzenia**: Usuń zaznaczenie pola wyboru subskrypcji do wszystkich typów zdarzeń, a następnie wybierz pozycję **urządzenie połączone** i **Urządzenie odłączone** z menu.
 
-   * **Szczegóły punktu końcowego**: wybierz typ punktu końcowego **Webhook**, a następnie kliknij wybrany punkt końcowy, wklej adres URL skopiowany z aplikacji logiki i potwierdź wybór.
+   * **Szczegóły punktu końcowego**: Wybierz typ punktu końcowego jako **Webhook** kliknij pozycję Wybierz punkt końcowy i wklej adres URL, który został skopiowany z aplikacją logiki i Potwierdź wybór.
 
        ![wybieranie adresu url punktu końcowego](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
 
-   * **Szczegóły subskrypcji zdarzeń**: wprowadź opisową nazwę, a następnie wybierz pozycję **schemat siatki zdarzeń**.
+   * **Szczegóły subskrypcji zdarzeń**: Wprowadź opisową nazwę, a następnie wybierz pozycję **schemat siatki zdarzeń**.
    Formularz wygląda podobnie do poniższego przykładu: 
 
        ![Przykładowy formularz subskrypcji zdarzeń](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)

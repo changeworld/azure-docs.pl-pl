@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 6acc9a8b9cd7b6ef1218b1e8cae2e6a9af92f9d8
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9eb8b6e6af6fb2912789b66ed622fd47d2cb8b8b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393698"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311885"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Jak usunąć dostęp użytkownika do aplikacji
 
@@ -70,5 +70,6 @@ Aby **Wyłącz wszystkie operacje zgody użytkownika przyszłych całego katalog
 6.  Ustaw **użytkownicy mogą zezwalać aplikacjom na dostęp do danych firmy w ich imieniu na** Przełącz, aby **nie** i kliknij przycisk Zapisz.
 
 
-# <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
+
 [Zarządzanie dostępem do aplikacji](what-is-access-management.md)

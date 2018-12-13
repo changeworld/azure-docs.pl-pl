@@ -1,5 +1,5 @@
 ---
-title: Przestarzałe umiejętności poznawcze (Azure Search) | Dokumentacja firmy Microsoft
+title: Przestarzałe umiejętności poznawcze — usługa Azure Search
 description: Ta strona zawiera listę wyszukiwania kognitywnego umiejętności, które są traktowane jako przestarzałe i nie będą obsługiwane w najbliższej przyszłości.
 services: search
 manager: pablocas
@@ -10,21 +10,22 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 6bd364ea9923b1c8cdd7c96fc29cb91dff88ec95
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: 85f02acf05e89db3e22dd24ecd0e100a9ec4af6f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52449987"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311732"
 ---
-#    <a name="deprecated-cognitive-seach-skills"></a>Przestarzałe wyszukiwanie Cognitive umiejętności
+#    <a name="deprecated-cognitive-search-skills"></a>Umiejętności przestarzałe wyszukiwania kognitywnego
 
 W tym dokumencie opisano umiejętności poznawcze, które są uznawane za przestarzałe. Użyj następującymi wskazówkami dla zawartości:
 
 * Nazwa umiejętności: Nazwa umiejętności, które zostaną wycofane, jest on mapowany @odata.type atrybutu.
-* Ostatnie dostępna wersja interfejsu api: najnowszej wersji usługi Azure search publicznego interfejsu API za pomocą których dokładniejsze zawierającego odpowiednie przestarzałe umiejętności mogą być utworzone/zaktualizowane.
-* Wsparcie: ostatni dzień po upływie którego jest uznawany za odpowiednie umiejętności, nieobsługiwany. Utworzone wcześniej dokładniejsze powinny nadal działać, ale zaleca się użytkownicy, aby uniknąć przestarzałe umiejętności.
-* Zalecenia: Ścieżki migracji do przodu do użycia w obsługiwanych umiejętności. Aby postępować zgodnie z zaleceniami, aby kontynuować do otrzymania pomocy technicznej doradza się użytkownicy.
+* Ostatnie dostępna wersja interfejsu api: Najnowszej wersji platformy Azure, wyszukaj publicznego interfejsu API za pomocą których dokładniejsze zawierającego odpowiednie umiejętności przestarzałe można utworzone/zaktualizowane.
+* Zakończenie pomocy technicznej: Ostatni dzień po upływie którego jest uznawany za odpowiednie umiejętności nieobsługiwany. Utworzone wcześniej dokładniejsze powinny nadal działać, ale zaleca się użytkownicy, aby uniknąć przestarzałe umiejętności.
+* Rekomendacje: Ścieżki migracji do przodu do użycia w obsługiwanych umiejętności. Aby postępować zgodnie z zaleceniami, aby kontynuować do otrzymania pomocy technicznej doradza się użytkownicy.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
@@ -42,7 +43,7 @@ Użyj [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-enti
 
 Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), trzeba będzie wykonać co najmniej jedną z następujących zmian do definicji umiejętności. Można zaktualizować przy użyciu definicji umiejętności [aktualizacji interfejsu API zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
-_Uwaga_: obecnie współczynnik ufności jako koncepcja nie jest obsługiwana. Jego będą obsługiwane w najbliższej przyszłości. `minimumPrecision` Parametr istnieje w `EntityRecognitionSkill` do użytku w przyszłości, jak i dla zapewnienia zgodności.
+_Uwaga_: Obecnie współczynnik ufności jako koncepcja jest nieobsługiwana. Jego będą obsługiwane w najbliższej przyszłości. `minimumPrecision` Parametr istnieje w `EntityRecognitionSkill` do użytku w przyszłości, jak i dla zapewnienia zgodności.
 
 1. *(Wymagane)*  Zmiany `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` do `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 

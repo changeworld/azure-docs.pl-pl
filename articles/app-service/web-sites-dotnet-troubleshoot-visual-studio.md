@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z aplikacją sieci web w usłudze Azure App Service przy użyciu programu Visual Studio
+title: Rozwiązywanie problemów z aplikacją sieci web, za pomocą programu Visual Studio — usłudze Azure App Service
 description: Dowiedz się, jak rozwiązywanie problemów z aplikacją sieci web platformy Azure przy użyciu zdalne debugowanie, śledzenie i narzędzia rejestrowania, które są wbudowane w programie Visual Studio 2013.
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: eafb4e82a319a0fdbe954757158a09aba83e9be0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 689ff528f18a810c35031dd60a65470d4351b9a7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972290"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278529"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją sieci web w usłudze Azure App Service przy użyciu programu Visual Studio
 ## <a name="overview"></a>Przegląd
@@ -71,7 +72,7 @@ Program Visual Studio zapewnia dostęp do podzbioru funkcji zarządzania aplikac
 
     W tym samouczku użyjesz, rejestrowanie i śledzenie list rozwijanych. Skorzystasz także, zdalne debugowanie, ale będzie użyć innej metody, aby go włączyć.
 
-    Aby uzyskać informacji na temat ustawień aplikacji i parametry połączenia polami w tym oknie, zobacz [Azure Web Apps: How Application Strings and Connection Strings Work](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
+    Aby uzyskać informacji na temat ustawień aplikacji i parametry połączenia polami w tym oknie, zobacz [Azure Web Apps: Sposób działania ciągów Application Strings and połączenia](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
 
     Aby wykonać zadania zarządzania aplikacji sieci web, która nie może odbywać się w tym oknie, kliknij przycisk **Otwórz w portalu zarządzania** można otworzyć okna przeglądarki w witrynie Azure Portal.
 
@@ -613,7 +614,7 @@ Dzienniki śledzenia niepomyślnych żądań można wyświetlić w przeglądarce
 Wiesz, jak Visual Studio można łatwo wyświetlić dzienniki utworzone przez aplikację internetową platformy Azure. Poniższe sekcje zawierają linki do większej ilości zasobów na tematy pokrewne:
 
 * Rozwiązywanie problemów z aplikacji sieci web platformy Azure
-* Debugowanie w programie Visual Studio
+* Debugowanie w Visual Studio
 * Zdalne debugowanie na platformie Azure
 * Śledzenie w aplikacjach ASP.NET
 * Analizowanie dzienników serwera internetowego
@@ -633,7 +634,7 @@ Aby uzyskać pomoc dotyczącą określonego zapytania dotyczące rozwiązywania 
 * [Forum platformy Azure w witrynie MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
 * [StackOverflow.com](https://www.stackoverflow.com).
 
-### <a name="debugging-in-visual-studio"></a>Debugowanie w programie Visual Studio
+### <a name="debugging-in-visual-studio"></a>Debugowanie w Visual Studio
 Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) i [debugowania porady dotyczące programu Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Zdalne debugowanie na platformie Azure
@@ -655,7 +656,7 @@ Brak dostępnych nie dokładne i aktualne wprowadzenia do śledzenia ASP.NET w I
   Stary, ale nadal dobry zasobem dla wstęp do tematu.
 * [Obiekty nasłuchujące śledzenia](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
   Informacje o detektorów śledzenia, ale nie wspomina o identyfikatorach [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
-* [Wskazówki: Integrowanie śledzenie na platformie ASP.NET z włączonym śledzeniem System.Diagnostics](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Wskazówki: Integracja śledzenia ASP.NET z włączonym śledzeniem System.Diagnostics](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
   W tym artykule jest także stare, ale zawiera pewne dodatkowe informacje, które wprowadzające artykuł nie obejmuje.
 * [Śledzenie widoki ASP.NET MVC Razor](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Oprócz śledzenia w widokami Razor, wpis wyjaśniono również, jak utworzyć filtr błędu w celu rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji MVC. Aby uzyskać informacje o sposobie rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji formularzy sieci Web, zobacz przykład plik Global.asax w [kompletny przykład obsługi błędu](https://msdn.microsoft.com/library/bb397417.aspx) w witrynie MSDN. W MVC lub Web Forms Aby rejestrować pewne wyjątki, ale pozwól domyślna struktura obsługi zaczęły obowiązywać dla nich można było wyłapać i zgłoś ponownie jak w poniższym przykładzie:

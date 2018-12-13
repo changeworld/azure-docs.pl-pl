@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -16,18 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 5cddc767b4652df6753cc57eb7305b46ec45e19d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2bdc8b7b28bee37ae88e466874d2b3d22dcd7556
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098644"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277934"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definiowanie niestandardowych modułów R dla usługi Azure Machine Learning Studio
 
 W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning Studio. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich. Przedstawia on sposób tworzenia plików, które definiują modułu i jak można zarejestrować modułu dla wdrożenia w obszarze roboczym usługi Machine Learning. Elementy i atrybuty używane w definicji niestandardowego modułu następnie są opisane bardziej szczegółowo. Również omówiono sposób użycia funkcji pomocniczych, plików i wiele wyjść. 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="what-is-a-custom-r-module"></a>Co to jest niestandardowego modułu R?
 A **niestandardowego modułu** jest modułem zdefiniowanych przez użytkownika, które mogą być przekazane do obszaru roboczego i wykonywane w ramach eksperymentu usługi Azure Machine Learning. A **niestandardowego modułu R** jest niestandardowy moduł, który wykonuje funkcję R zdefiniowanych przez użytkownika. **R** to język programowania do przeprowadzania obliczeń statystycznych i grafiki, która jest powszechnie używana przez Statystyków i analityków danych wykonywania algorytmów. Obecnie języka R jest jedynym obsługiwanym w moduły niestandardowe, ale pomocy technicznej dla dodatkowych języków jest zaplanowana do przyszłych wersji językiem.
@@ -96,7 +95,7 @@ Aby udostępnić to `CustomAddRows` funkcji jako moduł usługi Azure Machine Le
     </Module>
 
 
-Koniecznie należy pamiętać, że wartość **identyfikator** atrybuty **dane wejściowe** i **Arg** elementy w pliku XML muszą być zgodne nazwy parametrów funkcji kodu języka R CustomAddRows.R pliku dokładnie: (*dataset1*, *dataset2*, i *wymiany* w przykładzie). Podobnie, wartość **punktu wejścia** atrybutu **języka** element musi dokładnie pasować nazwą funkcji w skrypcie języka R: (*CustomAddRows* w przykładzie) . 
+Koniecznie należy pamiętać, że wartość **identyfikator** atrybuty **dane wejściowe** i **Arg** elementy w pliku XML muszą być zgodne nazwy parametrów funkcji kodu języka R CustomAddRows.R pliku dokładnie: (*dataset1*, *dataset2*, i *wymiany* w przykładzie). Podobnie, wartość **punktu wejścia** atrybutu **języka** element musi dokładnie pasować nazwą funkcji w skrypcie języka R: (*CustomAddRows* w przykładzie). 
 
 Z kolei **identyfikator** atrybutu dla **dane wyjściowe** elementu nie odpowiada żadnych zmiennych w skrypcie języka R. Gdy wymagana jest więcej niż jedno wyjście, po prostu zwraca listę z funkcji języka R z wynikami umieszczone *w tej samej kolejności* jako **dane wyjściowe** elementy są deklarowane w pliku XML.
 
@@ -150,7 +149,7 @@ Każdy wejściowe i port wyjściowy może mieć opcjonalną **opis** elementu po
 ### <a name="input-elements"></a>Elementów wejściowych
 Porty wejściowe umożliwiają przekazywanie danych do funkcji języka R i obszaru roboczego. **Typy danych** obsługiwanych dla porty wejściowe są następujące: 
 
-**DataTable:** tego typu jest przekazywany do funkcji języka R jako data.frame. W rzeczywistości żadnych typów (na przykład, pliki CSV lub pliki ARFF), które są obsługiwane przez uczenie maszynowe i które są zgodne z **DataTable** są konwertowane na data.frame automatycznie. 
+**DataTable:** Ten typ jest przekazywany do funkcji języka R jako data.frame. W rzeczywistości żadnych typów (na przykład, pliki CSV lub pliki ARFF), które są obsługiwane przez uczenie maszynowe i które są zgodne z **DataTable** są konwertowane na data.frame automatycznie. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
@@ -159,7 +158,7 @@ Porty wejściowe umożliwiają przekazywanie danych do funkcji języka R i obsza
 **Identyfikator** atrybut skojarzony z każdą **DataTable** port wejściowy musi mieć unikatową wartość, a ta wartość musi być zgodny odpowiadającymi mu dostawcami nazwanych parametrów w funkcji języka R.
 Opcjonalnie **DataTable** porty, które nie są przekazywane jako dane wejściowe w eksperymencie mają wartość **NULL** przekazany do funkcji języka R i opcjonalnie zip, porty są ignorowane, jeśli dane wejściowe nie jest połączony. **IsOptional** atrybut jest opcjonalny dla obu **DataTable** i **Zip** typów i jest *false* domyślnie.
 
-**ZIP:** niestandardowe moduły można zaakceptować pliku zip jako dane wejściowe. Te dane wejściowe to dopiero do katalogu roboczego R funkcji
+**Kod pocztowy:** Niestandardowe moduły można zaakceptować pliku zip jako dane wejściowe. Te dane wejściowe to dopiero do katalogu roboczego R funkcji
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
@@ -177,7 +176,7 @@ Dla niestandardowych modułów R identyfikator portu Zip musi odpowiadać wszelk
 * Wartość **isOptional** atrybutu **dane wejściowe** element nie jest wymagana (i *false* domyślnie, gdy nie określono); ale jeśli jest określona, musi to być *true* lub *false*.
 
 ### <a name="output-elements"></a>Elementy danych wyjściowych
-**Standardowe wyjście porty:** porty dane wyjściowe są mapowane na wartości zwracane z funkcji języka R, które następnie mogą być używane przez kolejne moduły. *DataTable* jest typ portu tylko standardowe dane wyjściowe, które są obecnie obsługiwane. (Obsługa *Learners* i *przekształca* nadchodzi.) A *DataTable* dane wyjściowe jest zdefiniowana jako:
+**Wyjście standardowe porty:** Dane wyjściowe porty są mapowane na wartości zwracane w funkcji języka R, które następnie mogą być używane przez kolejne moduły. *DataTable* jest typ portu tylko standardowe dane wyjściowe, które są obecnie obsługiwane. (Obsługa *Learners* i *przekształca* nadchodzi.) A *DataTable* dane wyjściowe jest zdefiniowana jako:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -215,7 +214,7 @@ I zwracają listę obiektów na liście w odpowiedniej kolejności w "CustomAddR
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Wizualizację danych wyjściowych:** można także określić port wyjściowy danego typu *wizualizacji*, która wyświetla dane wyjściowe z języka R grafiki urządzenia i konsoli danych wyjściowych. Ten port nie jest częścią dane wyjściowe funkcji języka R i nie kolidują z zamówieniem inne typy danych wyjściowych portów. Aby dodać port wizualizacji niestandardowych modułów **dane wyjściowe** element z wartością *wizualizacji* dla jego **typu** atrybutu:
+**Wizualizacja danych wyjściowych:** Można także określić port wyjściowy danego typu *wizualizacji*, która wyświetla dane wyjściowe z języka R grafiki urządzenia i konsoli danych wyjściowych. Ten port nie jest częścią dane wyjściowe funkcji języka R i nie kolidują z zamówieniem inne typy danych wyjściowych portów. Aby dodać port wizualizacji niestandardowych modułów **dane wyjściowe** element z wartością *wizualizacji* dla jego **typu** atrybutu:
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -372,6 +371,6 @@ Następnie przekaż plik zip zawierający "CustomAddRows.R", "CustomAddRows.xml"
 
 **Ograniczenia środowiska wykonawczego** obejmują:
 
-* System plików-trwałe: pliki zapisane po uruchomieniu niestandardowego modułu nie są utrwalane w wielu uruchomień tego samego modułu.
+* System plików-trwałe: Pliki zapisane po uruchomieniu niestandardowego modułu nie są utrwalane w wielu uruchomień tego samego modułu.
 * Brak dostępu do sieci
 

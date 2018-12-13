@@ -1,5 +1,5 @@
 ---
-title: 'Aplikacja Saas: monitorowanie wydajności wielu baz danych Azure SQL | Dokumentacja firmy Microsoft'
+title: 'Aplikacja Saas: Monitorowanie wydajności wielu baz danych Azure SQL | Dokumentacja firmy Microsoft'
 description: Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353904"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259141"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 
@@ -75,7 +75,7 @@ Jeśli w pracy z poprzednim samouczkiem aprowizowano już partię dzierżaw, prz
 
 Ten skrypt wdroży 17 dzierżaw w czasie krótszym niż pięć minut.
 
-*New-TenantBatch* skrypt używa zestawu połączonych lub zagnieżdżonych [usługi Resource Manager](../azure-resource-manager/index.md) szablonów, Utwórz partię dzierżaw, domyślnie kopiujących bazę danych, które **basetenantdb**na serwerze wykazu, aby utworzyć nową dzierżawę bazy danych, a następnie rejestruje je w katalogu, a na koniec inicjuje je przy użyciu dzierżawy nazwy i typu miejsca. Jest to zgodne ze sposobem jej aprowizacji nowej dzierżawy. Wszelkie zmiany wprowadzone do *basetenantdb* są stosowane do nowych dzierżawach aprowizowane po tej dacie. Zobacz [Samouczek zarządzania schematami](saas-tenancy-schema-management.md) można zobaczyć, jak wykonywać zmiany w schematach *istniejących* baz danych dzierżaw (w tym *basetenantdb* bazy danych).
+*New-TenantBatch* skrypt używa zestawu połączonych lub zagnieżdżonych [usługi Resource Manager](../azure-resource-manager/index.yml) szablonów, Utwórz partię dzierżaw, domyślnie kopiujących bazę danych, które **basetenantdb**na serwerze wykazu, aby utworzyć nową dzierżawę bazy danych, a następnie rejestruje je w katalogu, a na koniec inicjuje je przy użyciu dzierżawy nazwy i typu miejsca. Jest to zgodne ze sposobem jej aprowizacji nowej dzierżawy. Wszelkie zmiany wprowadzone do *basetenantdb* są stosowane do nowych dzierżawach aprowizowane po tej dacie. Zobacz [Samouczek zarządzania schematami](saas-tenancy-schema-management.md) można zobaczyć, jak wykonywać zmiany w schematach *istniejących* baz danych dzierżaw (w tym *basetenantdb* bazy danych).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Symulowanie użycia we wszystkich baz danych dzierżaw
 

@@ -1,5 +1,6 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Machine Learning dla programu Visual Studio Code
+title: Użyj programu Visual Studio Code za pomocą
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak zainstalować usługi Azure Machine Learning dla programu Visual Studio Code i tworzenie prostego eksperymentu w usłudze Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c5d7d3c10b9c8c191144e1e396d28fc53f813623
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012678"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269597"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Rozpoczynanie pracy z usługą Azure Machine Learning dla programu Visual Studio Code
 
@@ -24,11 +25,13 @@ Użyj rozszerzenia usługi Azure Machine Learning w programie Visual Studio code
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
+
++ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem należy utworzyć bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+
 + Musi być zainstalowany program Visual Studio Code. Program VS Code jest źródło lekki, ale Zaawansowany edytor kodu, działającą na pulpicie. Pochodzi z wbudowaną obsługą języka Python i innych.  [Dowiedz się, jak zainstalować program VS Code](https://code.visualstudio.com/docs/setup/setup-overview).
 
 + [Zainstaluj język Python 3.5 lub nowszej](https://www.anaconda.com/download/).
 
-+ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
 
 ## <a name="install-the-azure-machine-learning-for-vs-code-extension"></a>Instalowanie usługi Azure Machine Learning dla rozszerzenia programu VS Code
 
@@ -40,7 +43,7 @@ Aby pracować z usługą Azure Machine Learning, musimy włączyć program VS Co
 
 1. Uruchom program VS Code.
 
-1. W przeglądarce, odwiedź stronę: [usługi Azure Machine Learning dla programu Visual Studio Code (wersja zapoznawcza)](https://aka.ms/vscodetoolsforai) rozszerzenia
+1. W przeglądarce odwiedź stronę: [Usługa Azure Machine Learning dla programu Visual Studio Code (wersja zapoznawcza)](https://aka.ms/vscodetoolsforai) rozszerzenia
 
 1. Na tej stronie internetowej kliknij **zainstalować**. 
 

@@ -1,5 +1,5 @@
 ---
-title: Szkolenie modelu uczenia Maszynowego przy użyciu klasy narzędzie do szacowania
+title: Szkolenie modelu uczenia Maszynowego dzięki aplikacjom
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak przeprowadzić jednym węzłem i rozproszonego szkolenia tradycyjnych uczenia maszynowego i głębokiego uczenia modeli za pomocą usługi Azure Machine Learning services narzędzie do szacowania klasy
 ms.author: minxia
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e7157b9546d1f9ca40bab35d9e643c38051db04e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0ebb12df835cf1c32e02419989b21684e9884c18
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100756"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184359"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Szkolenie modeli za pomocą usługi Azure Machine Learning
 
 Szkolenia usługi machine learning modeli, szczególnie głębokich sieciach neuronowych, jest często zadania wymagające obliczeń i czasu. Po zakończeniu pisania skryptu szkolenia i systemem mały podzbiór danych na komputerze lokalnym, prawdopodobnie można skalować obciążenie.
 
-Aby ułatwić szkolenia, zestawu SDK języka Python usługi Azure Machine Learning zapewnia Abstrakcja wysokiego poziomu klasy narzędzie do szacowania, która umożliwia użytkownikom łatwe szkolenie modeli, ich w ekosystemie platformy Azure. Można tworzyć i używać `Estimator` obiektu w celu przesłania jakiegokolwiek kodu szkolenia, należy uruchomić na zdalnym mocy obliczeniowej, czy jest ono szkolenia jednowęzłowej rozproszonej lub wykonywania w klastrze procesorów GPU. Zadania PyTorch i TensorFlow, Azure Machine Learning zawiera także niestandardowe odpowiednich `PyTorch` i `TensorFlow` aplikacjom w celu uproszczenia korzystania z tych platform.
+Aby ułatwić szkolenia, zestawu SDK języka Python usługi Azure Machine Learning zapewnia Abstrakcja wysokiego poziomu klasy narzędzie do szacowania, która umożliwia użytkownikom łatwe szkolenie modeli, ich w ekosystemie platformy Azure. Można tworzyć i używać [ `Estimator` obiektu](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) do przedstawienia jakiegokolwiek kodu szkolenia, należy uruchomić na zdalnym obliczeń, czy jest to szkolenie jednowęzłowej rozproszonej lub wykonywania w klastrze procesorów GPU. Zadania PyTorch i TensorFlow, Azure Machine Learning zawiera także niestandardowe odpowiednich `PyTorch` i `TensorFlow` aplikacjom w celu uproszczenia korzystania z tych platform.
 
 ## <a name="train-with-an-estimator"></a>Szkolenie przy użyciu narzędzie do szacowania
 

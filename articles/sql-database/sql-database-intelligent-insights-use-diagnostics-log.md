@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: 2809dd45042e41c8337ecddccc76ec4e16d7cb8b
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: a0eac4344f1294ad2eddd4e05520c1f030a0c4d7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887699"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278223"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Intelligent Insights usługi Azure SQL Database
 
@@ -100,7 +100,7 @@ Wpływ (wpływ na), że właściwość określa, ile wykryte zachowanie przyczyn
 
 ### <a name="impacted-queries"></a>Zapytania, na które ma to wpływ
 
-Następna sekcja dziennik Intelligent Insights zawiera informacje dotyczące określonego zapytania, które miały wpływ problemy z wydajnością wykryte. Jako tablica obiektów osadzonych we właściwości impact_s ujawnienia informacji. Właściwość wpływ składa się z jednostek i metryki. Jednostki dotyczą określone zapytanie (typ: zapytanie). Skrót unikatowy zapytania są ujawniane w obszarze właściwości value (wartość). Ponadto każda kwerenda ujawnione następuje metrykę i wartości, które wskazują problem z wydajnością wykryte.
+Następna sekcja dziennik Intelligent Insights zawiera informacje dotyczące określonego zapytania, które miały wpływ problemy z wydajnością wykryte. Jako tablica obiektów osadzonych we właściwości impact_s ujawnienia informacji. Właściwość wpływ składa się z jednostek i metryki. Jednostki dotyczą określone zapytanie (typ: Zapytanie). Skrót unikatowy zapytania są ujawniane w obszarze właściwości value (wartość). Ponadto każda kwerenda ujawnione następuje metrykę i wartości, które wskazują problem z wydajnością wykryte.
 
 W poniższym przykładzie dziennika wykryto mają większą czas trwania wykonywania zapytania przez łączenie 0x9102EXZ4 wyznaczania wartości skrótu (metryki: DurationIncreaseSeconds). Wartość sekund 110 wskazuje, że to zapytanie określonego zajęło wykonanie już 110 sekund. Ponieważ wykrycia wielu zapytań w tej sekcji określonego dziennika może zawierać wiele wpisów zapytania.
 

@@ -1,5 +1,5 @@
 ---
-title: Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Zaawansowane zastosowania uwierzytelniania i autoryzacji — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Pokazuje, jak dostosować uwierzytelnianie i autoryzacja w usłudze App Service i uzyskać różne tokeny i oświadczenia użytkownika.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 67d08379d98873fa88ef20b5cc8c87163c067e3a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685331"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310457"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service
 
@@ -26,8 +27,8 @@ W tym artykule przedstawiono sposób dostosowania wbudowanego [uwierzytelnianie 
 
 Aby szybko rozpocząć pracę, zobacz jeden z następujących samouczków:
 
-* [Samouczek: Uwierzytelnianie i autoryzacja użytkowników end-to-end w usłudze Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
-* [Samouczek: Uwierzytelnianie i autoryzacja użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)
+* [Samouczek: Uwierzytelnianie i autoryzowanie użytkowników end-to-end w usłudze Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
+* [Samouczek: Uwierzytelnianie i autoryzowanie użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)
 * [Jak skonfigurować aplikację do używania logowania w usłudze Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Google](app-service-mobile-how-to-configure-google-authentication.md)
@@ -180,9 +181,9 @@ Z poziomu kodu klienta (np. aplikacji mobilnej lub JavaScript w przeglądarce) w
 Po wygaśnięciu token dostępu z dostawcą, musisz ponownego uwierzytelnienia użytkownika. Możesz uniknąć wygaśnięcia tokenu, wprowadzając `GET` wywołanie `/.auth/refresh` punktu końcowego aplikacji. Po wywołaniu usługi App Service automatycznie odświeża tokenów dostępu w magazynie tokenów dla tego uwierzytelnionego użytkownika. Kolejnych żądań tokenów przez kod aplikacji uzyskiwać tokeny odświeżony. Jednak w wyniku odświeżenia tokenu do pracy, token magazynu musi zawierać [tokenów odświeżania](https://auth0.com/learn/refresh-tokens/) dla dostawcy. Opisano sposób uzyskania tokenów odświeżania przez każdego dostawcy, ale poniżej przedstawiono krótkie podsumowanie:
 
 - **Google**: Dołącz `access_type=offline` parametr ciągu zapytania usługi `/.auth/login/google` wywołania interfejsu API. Jeśli używasz zestawu SDK aplikacji mobilnych, można dodać parametr do jednego z `LogicAsync` przeciążenia (zobacz [tokenów odświeżania Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
-- **Facebook**: nie zapewnia tokenów odświeżania. Długotrwałe tokenów wygaśnie po upływie 60 dni (zobacz [wygaśnięcia Facebook i rozszerzenie tokenów dostępu](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **W usłudze Twitter**: tokeny dostępu nie wygasa (zobacz [często zadawane pytania dotyczące protokołu OAuth w usłudze Twitter](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)).
-- **Account Microsoft**: gdy [ustawienia uwierzytelniania konta Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), wybierz opcję `wl.offline_access` zakresu.
+- **Facebook**: Nie zapewnia tokenów odświeżania. Długotrwałe tokenów wygaśnie po upływie 60 dni (zobacz [wygaśnięcia Facebook i rozszerzenie tokenów dostępu](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
+- **W usłudze Twitter**: Tokeny dostępu nie wygasa (zobacz [często zadawane pytania dotyczące protokołu OAuth w usłudze Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
+- **Konto Microsoft**: Gdy [ustawienia uwierzytelniania konta Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), wybierz opcję `wl.offline_access` zakresu.
 - **Usługa Azure Active Directory**: W [ https://resources.azure.com ](https://resources.azure.com), wykonaj następujące czynności:
     1. W górnej części strony wybierz **odczytu/zapisu**.
     1. W przeglądarce po lewej stronie przejdź do **subskrypcje** > **_\<subskrypcji\_nazwa_**   >  **resourceGroups** > _**\<zasobów\_grupy\_name >**_   >  **dostawców** > **Microsoft.Web** > **witryn** > _**\<aplikacji \_name >**_ > **config** > **authsettings**. 
@@ -242,5 +243,5 @@ Kliknij przycisk **Edytuj**, zmodyfikować następujące właściwości, a nast�
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Uwierzytelnianie i autoryzacja użytkowników end-to-end (Windows)](app-service-web-tutorial-auth-aad.md)
-> [samouczek: uwierzytelnianie i autoryzowanie użytkowników end-to-end (Linux)](containers/tutorial-auth-aad.md)
+> [Samouczek: Uwierzytelnianie i autoryzowanie użytkowników end-to-end (Windows)](app-service-web-tutorial-auth-aad.md)
+> [samouczka: Uwierzytelnianie i autoryzowanie użytkowników end-to-end (Linux)](containers/tutorial-auth-aad.md)

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: a2fed45e4ec51fac7d4d04e50616a7e3748d71c4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e5d415593a510acb81eac65242010d1841044857
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834404"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162651"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Rozwiązania Virtual Kubelet za pomocą usługi Azure Kubernetes Service (AKS)
 
@@ -90,7 +90,7 @@ Te argumenty są dostępne dla `aks install-connector` polecenia.
 | `--connector-name` | Nazwa łącznika usługi ACI.| Yes |
 | `--name` `-n` | Nazwa zarządzanego klastra. | Yes |
 | `--resource-group` `-g` | Nazwa grupy zasobów. | Yes |
-| `--os-type` | Typ systemu operacyjnego wystąpienia kontenera. Dozwolone wartości: oba, Linux oraz Windows. Domyślne: Linux. | Nie |
+| `--os-type` | Typ systemu operacyjnego wystąpienia kontenera. Dozwolone wartości: Oba, Linux oraz Windows. Domyślne: Linux. | Nie |
 | `--aci-resource-group` | Grupa zasobów, w której chcesz utworzyć grup kontenerów usługi ACI. | Nie |
 | `--location` `-l` | Lokalizacja do tworzenia grup kontenerów usługi ACI. | Nie |
 | `--service-principal` | Jednostki usługi używany do uwierzytelniania do interfejsów API platformy Azure. | Nie |
@@ -228,7 +228,7 @@ az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --conn
 
 W przypadku możliwych problemów za pomocą rozwiązania Virtual Kubelet, zobacz [znane Osobliwości wraz z ich obejściami][vk-troubleshooting]. Na zgłaszanie problemów za pomocą rozwiązania Virtual Kubelet [Otwórz problem w usłudze GitHub][vk-issues].
 
-Przeczytaj więcej na temat rozwiązania Virtual Kubelet w [projektu wirtualnego Github agenta Kubelet][vk-github].
+Przeczytaj więcej na temat rozwiązania Virtual Kubelet w [projektu wirtualnego GitHub agenta Kubelet][vk-github].
 
 <!-- LINKS - internal -->
 [aks-quick-start]: ./kubernetes-walkthrough.md

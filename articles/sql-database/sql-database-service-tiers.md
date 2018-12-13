@@ -11,19 +11,22 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 102a00ac79c91ac4d571c0254570f14e8f2af46f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: d801ed309b0d79dd6655c7dd59ebd17bd37de222
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239087"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164402"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
 Usługa Azure SQL Database umożliwia łatwy zakup w pełni zarządzany aparat bazy danych PaaS, który spełnia Twoje potrzeby wydajności i kosztów. W zależności od modelu wdrażania usługi Azure SQL Database można wybrać model zakupu, która spełnia Twoje potrzeby:
+- [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) (zalecane), pozwala wybrać dokładne zalecenia dotyczące ilości pojemność magazynu i obliczeń potrzebne dla danego obciążenia.
+- [Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) , aby wybrać powiązany obliczeniowych i magazynu pakiety ze zrównoważonym dla typowych obciążeń.
 
-- [Serwerami logicznymi](sql-database-logical-servers.md) w [usługi Azure SQL Database](sql-database-technical-overview.md) oferuje dwa modele zakupu zasobów obliczeniowych, magazynu i zasoby we/wy: [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [oparty na rdzeniach wirtualnych model zakupu](sql-database-service-tiers-vcore.md). Ten model zakupu, można wybrać [pojedyncze bazy danych](sql-database-single-databases-manage.md) lub [pul elastycznych](sql-database-elastic-pool.md).
+Różne modele zakupu są dostępne w modelach wdrażania usługi Azure SQL Database:
+- [Serwerami logicznymi](sql-database-logical-servers.md) w [usługi Azure SQL Database](sql-database-technical-overview.md) oferują zarówno [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Ten model zakupu, można wybrać [pojedyncze bazy danych](sql-database-single-databases-manage.md) lub [pul elastycznych](sql-database-elastic-pool.md).
 - [Wystąpienia zarządzane](sql-database-managed-instance.md) w usłudze Azure SQL Database tylko w ramach oferty [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
@@ -51,7 +54,7 @@ Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać z
 
 > [!IMPORTANT]
 > Moc obliczeniowa, IOs, dane i Magazyn dzienników są naliczane zgodnie z bazy danych lub elastycznej puli. Magazyn kopii zapasowych jest rozliczane na każdej bazy danych. Aby uzyskać szczegółowe informacje o opłaty za wystąpienia zarządzanego, zapoznaj się [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).
-> **Ograniczenia dotyczące regionów:** modelu zakupu opartego na rdzeniach wirtualnych nie jest jeszcze dostępna w następujących regionach: Europa Zachodnia, Francja środkowa, południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo i Australia południowo-wschodnia.
+> **Ograniczenia regionu:** Model zakupu opartego na rdzeniach wirtualnych nie jest jeszcze dostępna w następujących regionach: Europa Zachodnia, Francja środkowa, południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo i Australia południowo-wschodnia.
 
 Jeśli bazy danych lub elastycznej puli zajmuje ponad 300 Konwersja jednostek DTU na rdzeniach wirtualnych może zmniejszyć koszt. Możesz również przekonwertować przy użyciu wybranego interfejsu API lub portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model zakupu jednostek DTU spełnia swoje wymagania biznesowe i wydajności, można nadal jej używać. Jeśli zdecydujesz się przekonwertować modelu rdzenia wirtualnego z modelu jednostek DTU, należy wybrać rozmiar obliczeń przy użyciu następujące reguły akceptacji: każdy 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie przeznaczenie ogólne; Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie krytyczne dla działania firmy.
 

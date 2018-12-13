@@ -1,5 +1,5 @@
 ---
-title: Przydziel partycje i repliki dla zapytań i indeksowania w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Przydzielić partycje i repliki na potrzeby zapytań i indeksowania — usługa Azure Search
 description: Dopasowywanie partycji i replik zasobów komputera w usłudze Azure Search, gdzie każdy zasób jest rozliczana w jednostkach płatnych wyszukiwania.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fa1a13c5c786867f6e92a678c40a491e0a226076
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: e2eff6c854dae48961700341a6db19dc7113901c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238743"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316118"
 ---
 # <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Przydziel partycje i repliki dla zapytań i indeksowania obciążeń w usłudze Azure Search
 Po zakończeniu [wybierz warstwę cenową](search-sku-tier.md) i [aprowizować usługę wyszukiwania](search-create-service-portal.md), następnym krokiem jest opcjonalnie zwiększyć liczbę repliki lub partycje używane przez usługę. Każda warstwa oferuje stałą liczbę jednostek rozliczeniowych. W tym artykule wyjaśniono, jak można przydzielić tych jednostek, aby osiągnąć optymalną konfigurację, która równoważy wymagań dotyczących wykonywania zapytania, indeksowania i magazynu.
@@ -92,12 +93,12 @@ Aplikacji wyszukiwania, które wymagają niemal odświeżanie danych w czasie rz
 
 Indeksy większe dłużej do wykonywania zapytań. Jako takie może się okazać, że każdy przyrostowych wzrostu partycje wymaga mniejszy, ale proporcjonalna wzrost replik. Złożoności zapytania i wolumin zapytań będzie wziąć pod uwagę na szybkość wykonywania zapytania włączono.
 
-## <a name="basic-tier-partition-and-replica-combinations"></a>Warstwa podstawowa: kombinacji partycji i replik
+## <a name="basic-tier-partition-and-replica-combinations"></a>Warstwa podstawowa: Kombinacji partycji i replik
 Podstawowa usługa mogą mieć dokładnie jedną partycję i maksymalnie trzech replik dla maksymalnie ograniczyć trzech serwerów SUS. Tylko zmienianych zasób jest replik. Należy co najmniej dwóch replik wysokiej dostępności dla zapytań.
 
 <a id="chart"></a>
 
-## <a name="standard-tiers-partition-and-replica-combinations"></a>Warstwy standardowa: kombinacji partycji i replik
+## <a name="standard-tiers-partition-and-replica-combinations"></a>Warstwy standardowa: Kombinacji partycji i replik
 W poniższej tabeli przedstawiono SUs wymagane do obsługi kombinacje replik i partycji, z zastrzeżeniem limit 36 SU dla wszystkich warstw standardowa.
 
 |   | **1 partycji** | **2 partycjach** | **3 partycji** | **4 partycje** | **partycje 6** | **12 partycjami** |

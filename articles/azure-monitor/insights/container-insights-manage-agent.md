@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 03e67508aab57a825c851f2cb3d361c0aea63f72
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 566ab8d14ebce04a2cba208dd72efc3782d5ad41
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110028"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256302"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Jak zarządzać usługi Azure Monitor dla agenta kontenerów
 Usługa Azure Monitor dla kontenerów używa konteneryzowanych wersję agenta usługi Log Analytics dla systemu Linux. Po początkowym wdrożeniu istnieją procedury lub opcjonalnych zadań, który może być konieczne do wykonania podczas jej cyklu projektowania. Ten artykuł zawiera o tym, jak ręcznie uaktualnić agenta i wyłączyć kolekcji zmiennych środowiskowych w określonym kontenerze. 
@@ -64,7 +64,7 @@ Stan powinny być podobne do następującego przykładu, gdzie wartość *omi* i
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Jak wyłączyć kolekcji zmiennych środowiskowych w kontenerze
 Usługa Azure Monitor dla kontenerów umożliwia zbieranie informacji o zmiennych środowiskowych z kontenery działające w zasobniku i przedstawia je w okienku właściwości wybranego kontenera w **kontenery** widoku. To zachowanie można kontrolować, wyłączając zbieranie dla określonego kontenera albo podczas wdrażania klastra AKS, lub po przez ustawienie zmiennej środowiskowej *AZMON_COLLECT_ENV*. Ta funkcja jest dostępna w wersji agenta — ciprod11292018 lub nowszy.  
 
-Aby wyłączyć zbieranie zmienne środowiskowe do nowego lub istniejącego kontenera, ustaw zmienną *AZMON_COLLECT_ENV* o wartości *False* do pliku konfiguracyjnego yaml wdrożenia rozwiązania Kubernetes.   
+Aby wyłączyć zbieranie zmienne środowiskowe do nowego lub istniejącego kontenera, ustaw zmienną **AZMON_COLLECT_ENV** o wartości **False** w pliku konfiguracyjnym yaml wdrożenia rozwiązania Kubernetes.   
 
 ```  
 - name: AZMON_COLLECT_ENV  
@@ -73,9 +73,9 @@ Aby wyłączyć zbieranie zmienne środowiskowe do nowego lub istniejącego kont
 
 Uruchom następujące polecenie, aby zastosować zmianę na kontenerze usługi AKS: `kubectl apply -f  <path to yaml file>`.
 
-Aby sprawdzić, czy zmiana konfiguracji miała wpływ, wybierz kontener w **kontenery** Wyświetl w usłudze Azure Monitor dla kontenerów i na panelu Właściwości, rozwiń **zmienne środowiskowe**.  Sekcja powinny być widoczne tylko zmiennej utworzonej wcześniej — **AZMON_COLLECT_ENV = FALSE**. Dla innych kontenerów w sekcji zmiennych środowiskowych powinien zawierać wszystkie zmienne środowiskowe odnalezione.   
+Aby sprawdzić, czy zmiana konfiguracji weszło w życie, wybierz kontener w **kontenery** Wyświetl w usłudze Azure Monitor dla kontenerów i na panelu Właściwości, rozwiń **zmienne środowiskowe**.  Sekcja powinny być widoczne tylko zmiennej utworzonej wcześniej — **AZMON_COLLECT_ENV = FALSE**. Dla innych kontenerów w sekcji zmiennych środowiskowych powinien zawierać wszystkie zmienne środowiskowe odnalezione.   
 
-Aby ponownie włączyć odnajdywanie zmiennych środowiskowych, zastosuj ten sam proces wcześniej, a następnie zmień wartość z **False** do **True**, a następnie uruchom ponownie `kubectl` polecenia do aktualizacji kontenera.  
+Aby ponownie włączyć odnajdywanie zmiennych środowiskowych, zastosuj ten sam proces wcześniej, a następnie zmień wartość z **False** do **True**, a następnie ponownie uruchom `kubectl` polecenia do aktualizacji kontenera.  
 
 ```  
 - name: AZMON_COLLECT_ENV  

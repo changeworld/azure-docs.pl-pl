@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 230318dc8e352a3adc970b13f20fa992954e3b15
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 4817efcb5cfa5f8692f2b7e5c65d411bc0d21942
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091098"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317393"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Tworzenie rozwiązania IoT przy użyciu usługi Stream Analytics
 
@@ -113,8 +113,8 @@ Aby wykonać to rozwiązanie, należy do subskrypcji Microsoft Azure. Jeśli nie
 
 Należy koniecznie wykonaj kroki opisane w sekcji "Wyczyść konta platformy Azure" na końcu tego artykułu, aby można było optymalnie wykorzystać możliwości platformy Azure w wysokości.
 
-## <a name="deploy-the-sample"></a>Wdrażanie przykładu 
-Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz z kilkoma kliknięciami. Określenie rozwiązania znajduje się w repozytorium github na [ https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp).
+## <a name="deploy-the-sample"></a>Wdrażanie przykładu
+Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz z kilkoma kliknięciami. Określenie rozwiązania znajduje się w repozytorium GitHub na [ https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp).
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Wdrażanie szablonu TollApp w witrynie Azure portal
 1. Przeprowadzić wdrożenie w środowisku TollApp na platformie Azure, użyj tego linku, aby [wdrażania szablonu usługi Azure TollApp](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
@@ -123,11 +123,11 @@ Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz 
 
 3. Wybierz subskrypcję, w którym różne zasoby są rozliczane.
 
-4. Na przykład określ nową grupę zasobów o unikatowej nazwie `MyTollBooth`. 
+4. Na przykład określ nową grupę zasobów o unikatowej nazwie `MyTollBooth`.
 
 5. Wybierz lokalizację platformy Azure.
 
-6. Określ **interwał** jako liczbę sekund. Ta wartość jest używana przykładowa aplikacja sieci web, jak często wysyłać dane do Centrum zdarzeń. 
+6. Określ **interwał** jako liczbę sekund. Ta wartość jest używana przykładowa aplikacja sieci web, jak często wysyłać dane do Centrum zdarzeń.
 
 7. **Sprawdź** musieli się zgodzić na warunki i postanowienia.
 
@@ -149,7 +149,7 @@ Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz 
    - Jedno Centrum zdarzeń platformy Azure
    - Dwie aplikacje sieci Web
 
-## <a name="examine-the-sample-tollapp-job"></a>Sprawdź przykładowe zadania TollApp 
+## <a name="examine-the-sample-tollapp-job"></a>Sprawdź przykładowe zadania TollApp
 1. Począwszy od grupy zasobów w poprzedniej sekcji, wybierz zadanie przesyłania strumieniowego usługi Stream Analytics, rozpoczynając od nazwy **tollapp** (nazwa zawiera losowo wybranych znaków, aby zapewnić unikatowość).
 
 2. Na **Przegląd** strony zadania, zwróć uwagę **zapytania** pole, aby wyświetlić składnię zapytań.
@@ -195,7 +195,7 @@ Wykonaj następujące kroki, aby uruchomić zadanie przesyłania strumieniowego:
 
 6. Zaznacz każdy identyfikator, aby zapoznać się z dokumentu JSON. Zwróć uwagę, każdy tollid windowend czas i liczba samochodów z tego okna.
 
-7. Po trzy minuty dodatkowe inny zbiór cztery dokumenty, które jest dostępny, jeden dokument na tollid. 
+7. Po trzy minuty dodatkowe inny zbiór cztery dokumenty, które jest dostępny, jeden dokument na tollid.
 
 
 ## <a name="report-total-time-for-each-car"></a>Łączny czas raportu dla każdego samochodu
@@ -229,9 +229,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 7. Na **zadanie rozpoczęcia** okienku wybierz **teraz**.
 
 ### <a name="review-the-total-time-in-the-output"></a>Przejrzyj całkowity czas w danych wyjściowych
-Powtórz kroki opisane w poprzedniej sekcji, aby zapoznać się z danych wyjściowych cosmos DB z zadania przesyłania strumieniowego. Przejrzyj najnowsze dokumentów JSON. 
+Powtórz kroki opisane w poprzedniej sekcji, aby zapoznać się z danych wyjściowych cosmos DB z zadania przesyłania strumieniowego. Przejrzyj najnowsze dokumentów JSON.
 
-Na przykład w tym dokumencie przedstawiono samochodu przykład z talerza licencji, czas entrytime i wyjścia i pola obliczeniowego durationinminutes DATEDIFF, wyświetlanie czasu trwania stoisku płatny co dwie minuty: 
+Na przykład w tym dokumencie przedstawiono samochodu przykład z talerza licencji, czas entrytime i wyjścia i pola obliczeniowego durationinminutes DATEDIFF, wyświetlanie czasu trwania stoisku płatny co dwie minuty:
 ```JSON
 {
     "tollid": 4,
@@ -249,7 +249,7 @@ Na przykład w tym dokumencie przedstawiono samochodu przykład z talerza licenc
 ```
 
 ## <a name="report-vehicles-with-expired-registration"></a>Pojazdów raportu z wygaśnięcie rejestracji
-Usługa Azure Stream Analytics można użyć migawki statyczne dane referencyjne na potrzeby połączenia ze strumieni danych czasowych. Aby zademonstrować tę możliwość, należy użyć następujących pytania próbki. Dane wejściowe rejestracji jest plik json statycznych obiektów blob, który wyświetla wygaśnięcia licencji tagów. Dołączając na płycie licencji danych referencyjnych jest porównywany z każdego pojazdu przechodzi przez płatny obu. 
+Usługa Azure Stream Analytics można użyć migawki statyczne dane referencyjne na potrzeby połączenia ze strumieni danych czasowych. Aby zademonstrować tę możliwość, należy użyć następujących pytania próbki. Dane wejściowe rejestracji jest plik json statycznych obiektów blob, który wyświetla wygaśnięcia licencji tagów. Dołączając na płycie licencji danych referencyjnych jest porównywany z każdego pojazdu przechodzi przez płatny obu.
 
 Jeśli w firmie płatny nie zarejestrowano pojazdów użytkowych, można przekazać za pośrednictwem punktu płatny bez zatrzymania w celu przeprowadzenia inspekcji. Użyj tabeli odnośników rejestracji, aby zidentyfikować wszystkie pojazdów użytkowych, które wygasły rejestracji.
 
@@ -264,7 +264,7 @@ WHERE Registration.Expired = '1'
 
 1. Powtórz kroki opisane w poprzedniej sekcji, aby zaktualizować TollApp przesyłania strumieniowego składni zapytania zadania.
 
-2. Powtórz kroki opisane w poprzedniej sekcji, aby zapoznać się z danych wyjściowych cosmos DB z zadania przesyłania strumieniowego. 
+2. Powtórz kroki opisane w poprzedniej sekcji, aby zapoznać się z danych wyjściowych cosmos DB z zadania przesyłania strumieniowego.
 
 Przykładowe dane wyjściowe:
 ```json
@@ -289,26 +289,26 @@ Aby skalować zapytanie do partycji, Edytuj składnia zapytania z następującym
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
-FROM EntryStream 
-TIMESTAMP BY EntryTime 
+FROM EntryStream
+TIMESTAMP BY EntryTime
 PARTITION BY PartitionId
 GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 ```
 
 Skalowanie w górę zadania przesyłania strumieniowego do większej liczby jednostek przesyłania strumieniowego:
 
-1. **Zatrzymaj** bieżącego zadania. 
+1. **Zatrzymaj** bieżącego zadania.
 
 2. Uaktualnij składnię zapytań w **< > zapytania** strony, a następnie zapisz zmiany.
 
 3. W pozycji Konfiguruj w zadaniu przesyłania strumieniowego, wybierz **skalowania**.
-   
+
 4. Przesuń **jednostek przesyłania strumieniowego** suwak z zakresu od 1 do 6. Jednostki przesyłania strumieniowego zdefiniowanie ilości mocy obliczeniowej, która może odbierać zadania. Wybierz pozycję **Zapisz**.
 
-5. **Rozpocznij** zadania przesyłania strumieniowego, aby zademonstrować dodatkowe skali. Usługa Azure Stream Analytics rozdziela pracę w większej ilości zasobów obliczeniowych i osiągnąć lepszą przepustowość partycjonowanie pracy między zasobami przy użyciu kolumny określone w klauzuli PARTITION BY. 
+5. **Rozpocznij** zadania przesyłania strumieniowego, aby zademonstrować dodatkowe skali. Usługa Azure Stream Analytics rozdziela pracę w większej ilości zasobów obliczeniowych i osiągnąć lepszą przepustowość partycjonowanie pracy między zasobami przy użyciu kolumny określone w klauzuli PARTITION BY.
 
 ## <a name="monitor-the-job"></a>Monitorowanie zadania
-**MONITOR** obszar zawiera dane statystyczne o uruchomionego zadania. Konfiguracja po raz pierwszy jest potrzebna do używania konta magazynu, w tym samym regionie (nazwa numer płatny takich jak pozostałej części tego dokumentu).   
+**MONITOR** obszar zawiera dane statystyczne o uruchomionego zadania. Konfiguracja po raz pierwszy jest potrzebna do używania konta magazynu, w tym samym regionie (nazwa numer płatny takich jak pozostałej części tego dokumentu).
 
 ![Usługa Azure Stream Analytics zadania monitorowania](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 

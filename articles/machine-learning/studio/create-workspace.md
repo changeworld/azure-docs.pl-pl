@@ -5,7 +5,6 @@ services: machine-learning
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
@@ -13,18 +12,18 @@ ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: fc201b91ba3e2e7ba0f880445542333e58ed4a8c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e6835afd66d054a79c422a35839d64ae89031de5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079827"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268261"
 ---
-# <a name="create-and-share-an-azure-machine-learning-workspace"></a>Tworzenie obszaru roboczego usługi Azure Machine Learning i zarządzanie nim
+# <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Utwórz i Udostępnij obszar roboczy usługi Azure Machine Learning Studio
 
 Aby korzystać z usługi Azure Machine Learning Studio, musisz mieć obszar roboczy usługi Machine Learning Studio. Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="to-create-a-workspace"></a>Aby utworzyć obszar roboczy
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
@@ -60,7 +59,7 @@ Po wdrożeniu obszaru roboczego, możesz go otworzyć w usłudze Machine Learnin
     ![Otwórz eksperymentów](./media/create-workspace/my-experiments.png)
 
 Aby dowiedzieć się, jak zarządzanie obszarem roboczym, zobacz [Zarządzanie obszarem roboczym usługi Azure Machine Learning](manage-workspace.md).
-Jeśli wystąpi problem podczas tworzenia obszaru roboczego, zobacz [przewodnik rozwiązywania problemów: tworzenie i łączenie z obszaru roboczego usługi Machine Learning](troubleshooting-creating-ml-workspace.md).
+Jeśli wystąpi problem podczas tworzenia obszaru roboczego, zobacz [przewodnik rozwiązywania problemów: Tworzenie i łączenie z obszaru roboczego usługi Machine Learning](troubleshooting-creating-ml-workspace.md).
 
 
 ## <a name="sharing-an-azure-machine-learning-workspace"></a>Udostępnianie obszaru roboczego usługi Azure Machine Learning

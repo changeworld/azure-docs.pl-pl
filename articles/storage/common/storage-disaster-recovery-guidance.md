@@ -6,15 +6,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 20db515e99f3e7535ba7b60bbd84f050e33b7acb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 39a938d45c8f15c21b44bb5b04b1429fb4733b5a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033927"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323272"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co zrobić po wystąpieniu awarii usługi Azure Storage
 W firmie Microsoft pracujemy nad upewnij się, że nasze usługi są zawsze dostępne. Czasami wymusza poza naszym wpływ kontroli nam w sposób, aby spowodować przerwy w działaniu usługi nieplanowane w jednym lub kilku regionach. Aby obsługiwać te rzadko, firma Microsoft zapewnia następujące wskazówki wysokiego poziomu usługi Azure Storage.
@@ -43,7 +43,7 @@ Jeśli została wybrana opcja [dostęp do odczytu magazynu geograficznie nadmiar
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Czego można oczekiwać, jeśli do przechowywania pracy awaryjnej
 Jeśli została wybrana opcja [magazyn geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md) lub [dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (zalecane), usługi Azure Storage będą przechowywane dane trwałe w dwóch regionach (podstawowych i pomocniczych). W obu regionach usługi Azure Storage obsługuje stale wiele replik danych.
 
-W przypadku regionalnej awarii wpływa Twojego regionu podstawowego, firma Microsoft najpierw podejmie próbę przywrócenia usługi w danym regionie, aby zapewnić Najlepsza kombinacja tych RTO i RPO. W zależności od charakteru po awarii i jej wpływ na środowisko, w niektórych sytuacjach rzadko firma Microsoft może nie można przywrócić regionu podstawowego. W tym momencie kolejności wykonamy geograficznie trybu failover. Replikacja danych między regionami jest proces asynchroniczny, która obejmuje opóźnienie, więc istnieje możliwość, że zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone.
+W przypadku regionalnej awarii wpływa Twojego regionu podstawowego, spróbujemy najpierw przywrócić usługę, w tym regionie w celu zapewnienia Najlepsza kombinacja tych RTO i RPO. W zależności od charakteru po awarii i jej wpływ na środowisko, w niektórych sytuacjach rzadko firma Microsoft może nie można przywrócić regionu podstawowego. W tym momencie kolejności wykonamy geograficznie trybu failover. Replikacja danych między regionami jest proces asynchroniczny, która obejmuje opóźnienie, więc istnieje możliwość, że zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone.
 
 Kilku kwestiach dotyczących środowiska pracy awaryjnej geo magazynu:
 

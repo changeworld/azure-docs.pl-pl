@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: cb3584101dea4dc8d8d888632175415480a6a1b3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b37626fe899bf7ee49bd71021631e21dc36b3963
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581532"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315625"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Sprawdź użycie usług bezpłatnych, dołączone do bezpłatnego konta platformy Azure 
 
-Nie są naliczane dla usług bezpłatnych bezpłatnego konta platformy Azure, o ile nie zostaną przekroczone tych usług. Aby utrzymać z ograniczeniami, możesz użyć witryny Azure portal lub plik użycia do monitorowania i śledzenie użycia w przypadku usług bezpłatnych. 
+Opłaty nie są naliczane dla usług bezpłatnych bezpłatnego konta platformy Azure, o ile nie zostaną przekroczone tych usług. Aby utrzymać z ograniczeniami, możesz użyć witryny Azure portal lub plik użycia do monitorowania i śledzenie użycia w przypadku usług bezpłatnych. 
 
 ## <a name="check-usage-on-the-azure-portal"></a>Sprawdź użycie w witrynie Azure portal
 
-1.  Zaloguj się do witryny [Azure Portal]( http://portal.azure.com).
+1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2.  W obszarze nawigacji po lewej stronie wybierz **wszystkich usług**.
 
@@ -51,20 +51,19 @@ Nie są naliczane dla usług bezpłatnych bezpłatnego konta platformy Azure, o 
 
     Tabela zawiera następujące kolumny:
 
-* **Nazwa licznika:** Określa jednostkę miary dla mierników, są używane. Aby dowiedzieć się więcej o usłudze do mapowania liczników, zobacz [omówienie mapowania miernika bezpłatnej usługi](billing-understand-free-service-meter-mapping.md). 
-* **Użycie/Limit:** użycia i limit dla licznika bieżącego miesiąca. Te informacje można również znaleźć na pasku stanu.
-* **Stan:** stan zużycia licznika. Na podstawie Twojego użycia wzorca, użytkownik może mieć jedną z Statutu.
-  * **Nieużywany:** licznik nie były używane lub użycie licznika nie dotarła do systemów rozliczeniowych.
+* **Nazwa licznika:** Określa jednostkę miary dla mierników, są używane. Aby dowiedzieć się więcej o usłudze do mapowania liczników, zobacz [omówienie mapowania miernika bezpłatnej usługi](billing-understand-free-service-meter-mapping.md).
+* **Użycie/Limit:** Bieżący miesiąc użycia i limit dla licznika. Te informacje można również znaleźć na pasku stanu.
+* **Stan:** Stan użycia licznika. Na podstawie Twojego użycia wzorca, użytkownik może mieć jedną z Statutu.
+  * **Nieużywany:** Licznik nie były używane lub użycie licznika nie osiągnięto systemów rozliczeniowych.
   * **Przekroczono \<daty >:** Przekroczono limit dla licznika \<daty >.
-  * **Prawdopodobnie nie będzie Exceed:** użytkownik prawdopodobnie nie przekracza maksymalną wartość licznika.
-  * **Przekracza \<daty >:** prawdopodobnie przekracza limit dla licznika na \<daty >.
-
+  * **Małe prawdopodobieństwo przekroczenia:** Możesz teraz małe prawdopodobieństwo przekroczenia limitu dla licznika.
+  * **Przekracza \<daty >:** Prawdopodobnie przekracza limit dla licznika na \<daty >.
 
 ## <a name="check-usage-through-the-usage-file"></a>Sprawdź użycie za pomocą pliku użycia
 
-Użycie pliku zawiera szczegółowe informacje dotyczące subskrypcji platformy Azure. Swoje miesięczne i codziennie pliku użycia można pobrać z Centrum konta platformy Azure. Aby dowiedzieć się, jak pobrać plik użycia i zrozumienie dostęp wymagany, zobacz [pobieranie faktur i danych użycia](billing-download-azure-invoice-daily-usage-date.md). Aby dowiedzieć się więcej na temat kolumny w pliku użycia, zobacz [zrozumieć warunki na wykorzystanie](billing-understand-your-usage.md). 
+Użycie pliku zawiera szczegółowe informacje dotyczące subskrypcji platformy Azure. Swoje miesięczne i codziennie pliku użycia można pobrać z Centrum konta platformy Azure. Aby dowiedzieć się, jak pobrać plik użycia i zrozumienie dostęp wymagany, zobacz [pobieranie faktur i danych użycia](billing-download-azure-invoice-daily-usage-date.md). Aby dowiedzieć się więcej na temat kolumny w pliku użycia, zobacz [zrozumieć warunki na wykorzystanie](billing-understand-your-usage.md).
 
-Użycie pliku zawiera informacje dotyczące użycia dla usług bezpłatnych i płatnych. Liczniki bezpłatnej usługi, musi **bezpłatna** dołączany na końcu nazwy miernika. Można znaleźć bezpłatne liczniki, otwórz plik programu excel i filtr **kolumny Kategoria licznika** komórek, które zawierają tekst **— bezpłatne** (Użyj filtrów tekstu &rarr; filtr zawierania) &nbsp;
+Plik użycia zawiera informacje o użyciu dla usług bezpłatnych i płatnych. Liczniki bezpłatnej usługi, musi **bezpłatna** dołączany na końcu nazwy miernika. Można znaleźć bezpłatne liczniki, otwórz plik programu excel i filtr **kolumny Kategoria licznika** komórek, które mają tekst **— bezpłatne** (Użyj filtrów tekstu &rarr; filtr zawierania) &nbsp;
 
 ![Zrzut ekranu pokazujący korzystanie z bezpłatnych usług](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 

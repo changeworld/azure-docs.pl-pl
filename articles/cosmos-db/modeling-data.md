@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: 22a22789f7eed6402d7bf3abd3b356dbcb4caa37
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134890"
+ms.locfileid: "53166646"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>Modelowanie danych dokumentu dla baz danych NoSQL
 
@@ -38,7 +38,7 @@ Zanim przejdziemy zbyt dużo więcej, Daj nam ponownie wykonać kilka czynności
 
 Podczas pracy z relacyjnych baz danych, firma Microsoft już zostały prowadzone przez wiele lat do normalizacji, normalizacji, normalizacji operacji WE /.
 
-Normalizowanie danych zwykle obejmuje pobranie jednostki, takie jak osoby i rozbijając go dyskretne fragmentów danych. W powyższym przykładzie osoba może mieć wiele rekordów szczegółowe dane kontaktowe, a także wiele rekordów adresów. Firma Microsoft nawet wykonaj krok dalej demonstrować i analizować szczegółowe dane kontaktowe, wyodrębniając dalsze typowe pola, takie jak typ. Tego samego adresu, każdy rekord w tym miejscu ma typ, takich jak *Home* lub *biznesowych* 
+Normalizowanie danych zwykle obejmuje pobranie jednostki, takie jak osoba i podzielenie go na osobne fragmentów danych. W powyższym przykładzie osoba może mieć wiele rekordów szczegółów kontaktu, a także wiele rekordów adresów. Firma Microsoft nawet wykonaj krok dalej demonstrować i analizować szczegółowe dane kontaktowe, wyodrębniając dalsze typowe pola, takie jak typ. Tego samego adresu, każdy rekord w tym miejscu ma typ, takich jak *Home* lub *biznesowych* 
 
 Przeprowadzi lokalnego po normalizowanie danych do **uniknąć przechowywania nadmiarowych danych** na każdym rejestrowania i raczej odnosi się do danych. W tym przykładzie można odczytać osoby, wraz z ich szczegółowe dane kontaktowe i adresami, należy użyć sprzężenia do efektywnego agregowanie danych w czasie wykonywania.
 

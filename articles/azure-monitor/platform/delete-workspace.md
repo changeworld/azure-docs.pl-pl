@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: e071c24b27a7f2240d10719ba61684146da81074
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5a43e14401861ee33789054a8dcd48289dbbcc88
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002655"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187181"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Usuń obszar roboczy usługi Azure Log Analytics w witrynie Azure portal
 W tym artykule przedstawiono sposób użyj witryny Azure portal, aby usunąć obszar roboczy usługi Log Analytics może nie są już potrzebne. 

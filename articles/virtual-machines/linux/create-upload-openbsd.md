@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 33d7322bfa3c6e6143dd2d945c5ed86c15da2fb8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: de5d3fcd7eff0042e912e164050f917a0070b2c3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249969"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164676"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Tworzenie i przekazywanie obrazu dysku OpenBSD na platformie Azure
 Ten artykuł pokazuje, jak tworzenie i przekazywanie wirtualnego dysku twardego (VHD) z systemem operacyjnym OpenBSD. Po przekazaniu go można użyć go jako swój własny obraz, aby utworzyć maszynę wirtualną (VM) na platformie Azure przy użyciu wiersza polecenia platformy Azure.
@@ -68,7 +68,7 @@ Na maszynie Wirtualnej, w którym zainstalowano system operacyjny OpenBSD 6.1, k
     ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
-6. Najnowsza wersja agenta programu Azure zawsze można znaleźć na [Github](https://github.com/Azure/WALinuxAgent/releases). Zainstaluj agenta w następujący sposób:
+6. Najnowsza wersja agenta programu Azure zawsze można znaleźć na [GitHub](https://github.com/Azure/WALinuxAgent/releases). Zainstaluj agenta w następujący sposób:
 
     ```sh
     git clone https://github.com/Azure/WALinuxAgent 

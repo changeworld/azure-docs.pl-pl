@@ -6,21 +6,20 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: monitoring
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: caab6083bc12ffafe669c86bea4824ea0b31339a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c9929149c029d15d496eac0eb530371418e1e1f2
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079674"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323511"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
-[Usługa Azure Monitor](../../azure-monitor/overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
+[Usługa Azure Monitor](../overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
 
 Wszystkie dane zebrane przez usługi Azure Monitor pasuje do jednej z dwóch typów podstawowych, [metryki](#metrics) i [dzienniki](#logs). Metryki są wartości liczbowe, które opisują niektóre aspekty systemu w określonym punkcie w czasie. Są one uproszczone i zdolność do obsługi scenariuszy w czasie rzeczywistym w pobliżu. Dzienniki zawierają różne rodzaje danych zorganizowanych w rekordy z różnymi zestawami właściwości dla każdego typu. Dane telemetryczne, np. zdarzeniami i śladami są przechowywane jako dzienniki dodatkowo na dane wydajności, aby wszystkie można zbudować do analizy.
 
@@ -88,7 +87,7 @@ Istnieją trzy podstawowe źródła metryki zebrane przez usługi Azure Monitor.
 
 **Metryki niestandardowe** metryki definiujące oprócz standardowych metryk, które są automatycznie dostępne. Metryki niestandardowe, należy utworzyć dla pojedynczego zasobu w tym samym regionie, co tego zasobu. Można utworzyć metryki niestandardowe przy użyciu następujących metod:
     - [Zdefiniuj metryki niestandardowe w aplikacji](../../application-insights/app-insights-api-custom-events-metrics.md) który jest monitorowany przez usługę Application Insights. Te właściwości są oprócz standardowych ustawiane metryki aplikacji.
-    - Publikowanie metryki niestandardowe z maszyn wirtualnych Windows przy użyciu [Windows rozszerzenia diagnostyki (WAD)](../../monitoring-and-diagnostics/azure-diagnostics.md).
+    - Publikowanie metryki niestandardowe z maszyn wirtualnych Windows przy użyciu [Windows rozszerzenia diagnostyki (WAD)](../../azure-monitor/platform/diagnostics-extension-overview.md).
     - Publikowanie metryki niestandardowe z maszyn wirtualnych systemu Linux przy użyciu [agenta Telegraf InfluxData](https://www.influxdata.com/time-series-platform/telegraf/).
     - Zapis metryki niestandardowe z usługą platformy Azure za pomocą metryk niestandardowych interfejsów API.
     
@@ -98,7 +97,7 @@ Istnieją trzy podstawowe źródła metryki zebrane przez usługi Azure Monitor.
 Następujące zadania, które można wykonywać za pomocą metryk:
 
 - Użyj [Eksploratora metryk](../../monitoring-and-diagnostics/monitoring-metric-charts.md) do analizowania zebranych metryk i vykreslit v je. Śledzić wydajność zasobu (np. maszyn wirtualnych, witryny sieci Web lub logiki aplikacji), przypinając wykresy, aby [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).
-- Konfigurowanie [regułę alertu metryki](../../monitoring-and-diagnostics/alert-metric.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](../../monitoring-and-diagnostics/monitoring-action-groups.md) gdy Metryka przekracza próg.
+- Konfigurowanie [regułę alertu metryki](alerts-metric.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) gdy Metryka przekracza próg.
 - Użyj [skalowania automatycznego](../../monitoring-and-diagnostics/monitoring-overview-autoscale.md) lub zwiększ zasoby na podstawie metryki przekroczenia wartości progowej.
 - Metryki tras do usługi Log Analytics do analizowania danych metryk wraz z danymi dziennika oraz do przechowywania wartości metryk przez okres dłuższy niż 93 dni. 
 - Stream metryki, aby [Centrum zdarzeń](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) do kierowania ich do [usługi Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) lub systemów zewnętrznych.
@@ -131,20 +130,20 @@ Dzienniki są szczególnie przydatne dla łączenie danych z różnych źródeł
 Zebrane przez usługi Azure Monitor dzienniki są przechowywane w usłudze Log Analytics, która zbiera dane telemetryczne i inne dane z różnych źródeł. Udostępnia zaawansowany język zapytań i aparat analityczny, który zapewnia wgląd w działania aplikacji i zasobów. Usługi inne platformy Azure, takich jak [usługi Azure Security Center](../../security-center/security-center-intro.md) przechowują swoje dane w usłudze Log Analytics w celu zapewnienia wspólną platformę danych zarządzania systemu Azure.
 
 > [!IMPORTANT]
-> Dane z usługi Application Insights są przechowywane w usłudze Log Analytics w podobnie jak inne dane dziennika, z tą różnicą, że jest on przechowywany w oddzielnej partycji. W ten sposób realizowany taką samą funkcjonalność jak inne dane usługi Log Analytics, ale muszą używać [konsoli Application Insights](../../application-insights/app-insights-analytics.md) lub [interfejsu API usługi Application Insights](https://dev.applicationinsights.io/) na dostęp do tych danych. Możesz użyć [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) do analizowania danych aplikacji wraz z innymi danymi dziennika.
+> Dane z usługi Application Insights są przechowywane w usłudze Log Analytics w podobnie jak inne dane dziennika, z tą różnicą, że jest on przechowywany w oddzielnej partycji. W ten sposób realizowany taką samą funkcjonalność jak inne dane usługi Log Analytics, ale muszą używać [konsoli Application Insights](../../application-insights/app-insights-analytics.md) lub [interfejsu API usługi Application Insights](https://dev.applicationinsights.io/) na dostęp do tych danych. Możesz użyć [zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) do analizowania danych aplikacji wraz z innymi danymi dziennika.
 
 
 ### <a name="sources-of-log-data"></a>Źródła danych dziennika
 Usługa log Analytics może zbierać dane z różnych źródeł, zarówno w obrębie platformy Azure i z zasobami lokalnymi. Następujące źródła danych zapisanych w usłudze Log Analytics:
 
-- [Dzienniki aktywności](../../azure-monitor/platform/collect-activity-logs.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) zapewniające wgląd w ich działania.
-- Agenci na [Windows](../../log-analytics/log-analytics-windows-agent.md) i [Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Log Analytics zgodnie z opisem w [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) , należy skonfigurować.
+- [Dzienniki aktywności](collect-activity-logs.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) zapewniające wgląd w ich działania.
+- Agenci na [Windows](../../log-analytics/log-analytics-windows-agent.md) i [Linux](../learn/quick-collect-linux-computer.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Log Analytics zgodnie z opisem w [źródeł danych](agent-data-sources.md) , należy skonfigurować.
 - Dane aplikacji są zbierane przez [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Danych zapewniające wgląd w określonej aplikacji lub usługi [rozwiązania do monitorowania](../insights/solutions.md) lub funkcje, takie jak szczegółowe informacje o kontenerze, szczegółowych informacji z maszyny Wirtualnej lub grupy zasobów w szczegółowe informacje.
 - Dane zabezpieczeń gromadzone przez [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/).
 - [Metryki](#metrics) z zasobów platformy Azure. Dzięki temu można przechowywać metryki, przez czas dłuższy niż 93 dni i Analizuj je z innymi danymi dziennika.
-- Zapisane dane telemetryczne [usługi Azure Storage](../../azure-monitor/platform/azure-storage-iis-table.md).
-- Niestandardowe dane za pomocą dowolnego klienta interfejsu API REST przy użyciu [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md) klienta lub z [aplikacji logiki platformy Azure](https://docs.microsoft.com/azure/logic-apps/) przepływu pracy.
+- Zapisane dane telemetryczne [usługi Azure Storage](azure-storage-iis-table.md).
+- Niestandardowe dane za pomocą dowolnego klienta interfejsu API REST przy użyciu [interfejsu API modułu zbierającego dane HTTP](data-collector-api.md) klienta lub z [aplikacji logiki platformy Azure](https://docs.microsoft.com/azure/logic-apps/) przepływu pracy.
 
 ![Składniki usługi Log Analytics](media/data-collection/logs-overview.png)
 
@@ -154,14 +153,14 @@ Usługa log Analytics może zbierać dane z różnych źródeł, zarówno w obr�
 ### <a name="what-can-you-do-with-logs"></a>Co można zrobić za pomocą dzienników?
 Następujące zadania, które można wykonywać za pomocą dzienników:
 
-- Użyj [strony Log Analytics](../../azure-monitor/log-query/get-started-portal.md) w witrynie Azure portal do pisania zapytań, analizowanie danych dzienników.  Wyniki renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).
-- Konfigurowanie [reguł alertów dzienników](../../monitoring-and-diagnostics/alert-log.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](../../monitoring-and-diagnostics/monitoring-action-groups.md) po wyniki zapytania pasują do konkretnego wyniku.
+- Użyj [strony Log Analytics](../log-query/get-started-portal.md) w witrynie Azure portal do pisania zapytań, analizowanie danych dzienników.  Wyniki renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).
+- Konfigurowanie [reguł alertów dzienników](alerts-log.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) po wyniki zapytania pasują do konkretnego wyniku.
 - Tworzenie przepływu pracy na podstawie danych w usłudze Log Analytics przy użyciu [Logic Apps](~/articles/logic-apps/index.yml).
-- Eksportowanie wyników kwerendy, aby [usługi Power BI](../../azure-monitor/platform/powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.
+- Eksportowanie wyników kwerendy, aby [usługi Power BI](powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.
 - Dostęp do wartości metryk z wiersza polecenia lub niestandardowych aplikacji przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) lub [interfejsu API REST](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Wyświetlanie danych dzienników
-Wszystkie dane z usługi Log Analytics są pobierane przy użyciu [zapytanie dziennika](../../azure-monitor/log-query/log-query-overview.md) określający określonego zestawu danych. Zapytania są zapisywane z użyciem [języka zapytań usługi Log Analytics](../../azure-monitor/log-query/get-started-queries.md) czyli zaawansowany język zapytań do szybkiego pobierania, konsolidacji i analizowania zebranych danych. Użyj [strony Log Analytics](../../azure-monitor/log-query/portals.md) w witrynie Azure portal, aby bezpośrednio analizować dane w swoje metryki przechowywania i wykres wartości wielu metryk wraz z upływem czasu. Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać za pomocą metryk [platformy Azure, interfejsu API REST monitorowania](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
+Wszystkie dane z usługi Log Analytics są pobierane przy użyciu [zapytanie dziennika](../log-query/log-query-overview.md) określający określonego zestawu danych. Zapytania są zapisywane z użyciem [języka zapytań usługi Log Analytics](../log-query/get-started-queries.md) czyli zaawansowany język zapytań do szybkiego pobierania, konsolidacji i analizowania zebranych danych. Użyj [strony Log Analytics](../log-query/portals.md) w witrynie Azure portal, aby bezpośrednio analizować dane w swoje metryki przechowywania i wykres wartości wielu metryk wraz z upływem czasu. Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać za pomocą metryk [platformy Azure, interfejsu API REST monitorowania](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 ![Dzienniki](media/data-collection/logs.png)
 
@@ -170,7 +169,7 @@ Wszystkie dane z usługi Log Analytics są pobierane przy użyciu [zapytanie dzi
 ### <a name="metrics-to-logs"></a>Metryki do dzienników
 Metryki można kopiować do usługi Log Analytics, aby wykonać złożone analizy z innymi typami danych przy użyciu jego zaawansowany język zapytań. Ponadto można przechowywać dane dziennika przez dłuższy czas niż metryk, które umożliwia przeprowadzanie analizy trendów wraz z upływem czasu. Gdy metryk lub inne dane dotyczące wydajności są przechowywane w usłudze Log Analytics, która danych działa jako dziennik. Metryki do obsługi niemal w czasie rzeczywistym analiz i alertów podczas korzystania z dzienników do wyznaczania trendów i analiz z innymi danymi.
 
-Możesz uzyskać wskazówki dotyczące zbieranie metryk z zasobów platformy Azure w [zbieranie dzienników platformy Azure usługi i metryk do użycia w usłudze Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md). Uzyskaj wskazówki dotyczące zbieranie metryk zasobów z zasobów PaaS platformy Azure w [skonfigurować zbieranie metryk zasobów PaaS platformy Azure z usługą Log Analytics](../../azure-monitor/platform/collect-azurepass-posh.md).
+Możesz uzyskać wskazówki dotyczące zbieranie metryk z zasobów platformy Azure w [zbieranie dzienników platformy Azure usługi i metryk do użycia w usłudze Log Analytics](collect-azure-metrics-logs.md). Uzyskaj wskazówki dotyczące zbieranie metryk zasobów z zasobów PaaS platformy Azure w [skonfigurować zbieranie metryk zasobów PaaS platformy Azure z usługą Log Analytics](collect-azurepass-posh.md).
 
 ### <a name="logs-to-metrics"></a>Dzienniki, metryki
 Zgodnie z powyższym opisem metryki są bardziej elastyczny niż dzienniki, aby można było utworzyć alerty z mniejszymi opóźnieniami i przy niskich kosztach. Usługa log Analytics zbiera znacznej ilości danych liczbowych, który będzie odpowiedni dla metryk, ale nie są przechowywane w bazie danych metryki platformy Azure.  Typowym przykładem są dane dotyczące wydajności zbierane z agentów i rozwiązań do zarządzania. Niektóre z tych wartości mogły zostać skopiowane do bazy danych metryk, jeśli są one dostępne dla alertów i analizy przy użyciu Eksploratora metryk.

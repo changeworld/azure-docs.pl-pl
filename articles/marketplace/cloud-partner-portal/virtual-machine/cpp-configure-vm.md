@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c1db8c99b1bd3f9bbb768572ca1f5f7a4e1e0de4
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639963"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183475"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurowanie maszyny Wirtualnej hostowanej na platformie Azure
 
@@ -28,14 +28,14 @@ W tym artykule wyjaśniono, jak rozmiar, aktualizowanie i uogólnianie maszyny w
 
 ## <a name="sizing-the-vhds"></a>Zmiany rozmiaru wirtualnych dysków twardych
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Jeśli wybrano maszyn wirtualnych, wstępnie skonfigurowane przy użyciu systemu operacyjnego (i opcjonalnie dodatkowych usług), a następnie zostały już pobrane standardowy rozmiar maszyny Wirtualnej platformy Azure, zgodnie z opisem w [jednostki SKU maszyny wirtualnej karcie](./cpp-skus-tab.md).  Jest to zalecane podejście.  Jednak w przypadku ręcznego instalowania systemu operacyjnego następnie musi rozmiaru głównej wirtualnego dysku twardego w obrazie maszyny Wirtualnej:
+<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Jeśli wybrano maszyn wirtualnych, wstępnie skonfigurowane przy użyciu systemu operacyjnego (i opcjonalnie dodatkowych usług), a następnie zostały już pobrane standardowy rozmiar maszyny Wirtualnej platformy Azure, zgodnie z opisem w [jednostki SKU maszyny wirtualnej karcie](./cpp-skus-tab.md).  Uruchamianie rozwiązania z wstępnie skonfigurowanym systemem operacyjnym jest zalecanym podejściem.  Jednak w przypadku ręcznego instalowania systemu operacyjnego następnie musi rozmiaru głównej wirtualnego dysku twardego w obrazie maszyny Wirtualnej:
 
 - Dla Windows, system operacyjny dysku VHD powinien zostać utworzony jako dysk o rozmiarze 127 128 GB wirtualnego dysku twardego w stałym formacie. 
 - W przypadku systemu Linux ten wirtualny dysk twardy powinien zostać utworzony jako dysk o rozmiarze 30 – 50 GB wirtualnego dysku twardego w stałym formacie.
 
 Jeśli rozmiar fizyczny jest mniejszy niż 127 128 GB, wirtualny dysk twardy powinien być rozrzedzony. Podstawowe obrazy Windows i program SQL Server, podano już spełniają te wymagania, więc nie zmieniaj format lub rozmiar wirtualnego dysku twardego. 
 
-Dyski danych może być większy niż 1 TB. Podczas ustawiania rozmiaru dysku, należy pamiętać, że klienci nie mogą zmieniać rozmiarów wirtualnych dysków twardych w ramach obrazu po ich wdrożeniu. Twarde z danymi powinny zostać utworzone jako dyski VHD w stałym formacie. Również powinien być rozrzedzony. Dyski z danymi początkowo może być pusty ani zawierać dane.
+Dyski danych może być większy niż 1 TB. Podczas ustawiania ich rozmiar, należy pamiętać, że klienci nie mogą zmieniać rozmiarów wirtualnych dysków twardych w ramach obrazu po ich wdrożeniu. Twarde z danymi powinny zostać utworzone jako dyski VHD w stałym formacie. Również powinien być rozrzedzony. Dyski z danymi początkowo może być pusty ani zawierać dane.
 
 
 ## <a name="install-the-most-current-updates"></a>Zainstaluj najnowsze aktualizacje
@@ -49,7 +49,7 @@ Dystrybucje systemu Linux aktualizacje są często pobierane i instalowane za po
 
 ## <a name="perform-additional-security-checks"></a>Wykonaj dodatkowe kontrole zabezpieczeń
 
-Powinno to Ty masz wysoki poziom zabezpieczeń dla obrazów rozwiązania w portalu Azure Marketplace.  Następujący artykuł zawiera listę kontrolną konfiguracji zabezpieczeń i procedur, aby pomóc w przypadku tego celu: [zalecenia dotyczące zabezpieczeń dla obrazów z witryny Marketplace Azure](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Niektóre z tych zaleceń są specyficzne dla obrazów opartych na systemie Linux, ale najbardziej zastosować do dowolnego obrazu maszyny Wirtualnej. 
+Powinno to Ty masz wysoki poziom zabezpieczeń dla obrazów rozwiązania w portalu Azure Marketplace.  Następujący artykuł zawiera listę kontrolną konfiguracji zabezpieczeń i procedur, aby pomóc w przypadku tego celu: [Zalecenia dotyczące zabezpieczeń dla obrazów z witryny Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Niektóre z tych zaleceń są specyficzne dla obrazów opartych na systemie Linux, ale najbardziej zastosować do dowolnego obrazu maszyny Wirtualnej. 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Wykonywanie niestandardowej konfiguracji i zaplanowanych zadań
@@ -95,8 +95,8 @@ Następujący dwuetapowy proces uogólniania maszyny Wirtualnej z systemem Linux
 
 Tworzenie kopii maszyny Wirtualnej jest często przydatne w przypadku tworzenia kopii zapasowej, testowania, dostosowane pracy awaryjnej lub równoważenia obciążenia, oferują różne konfiguracje rozwiązania i tak dalej. Aby uzyskać informacji na temat zduplikowane i Pobierz podstawowy dysk VHD zapewnienie niezarządzanym klonowania zobacz:
 
-- Maszyny Wirtualnej systemu Linux: [pobieranie wirtualnego dysku twardego systemu Linux na platformie Azure](../../../virtual-machines/linux/download-vhd.md)
-- Windows VM: [Pobierz Windows wirtualnego dysku twardego z platformy Azure](../../../virtual-machines/windows/download-vhd.md)
+- Maszyny Wirtualnej systemu Linux: [Pobieranie wirtualnego dysku twardego systemu Linux na platformie Azure](../../../virtual-machines/linux/download-vhd.md)
+- Windows maszyny Wirtualnej: [Pobierz Windows wirtualnego dysku twardego z platformy Azure](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/04/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 504bb56a7cb3b9582d5c8d2ab1e770d55b8ca9e5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ccccad1cb510c4988092467c723e117a47456aaf
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961624"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277509"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -145,7 +145,7 @@ Heartbeat
 
 Na komputerze Windows możesz przejrzeć następujące informacje, aby sprawdzić połączenie agenta z usługą Log Analytics:
 
-1. W Panelu sterowania otwórz **Microsoft Monitoring Agent**. Na **usługi Azure Log Analytics** karcie agent wyświetla następujący komunikat: **program Microsoft Monitoring Agent pomyślnie połączył się z usługą Log Analytics**.
+1. W Panelu sterowania otwórz **Microsoft Monitoring Agent**. Na **usługi Azure Log Analytics** karcie agent wyświetla następujący komunikat: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Log Analytics**.
 2. Otwórz dziennik zdarzeń Windows. Przejdź do **Application and Services log\operations Manager** i wyszukaj Identyfikatory zdarzeń 3000 i 5002 identyfikator zdarzenia ze źródła **łącznika usługi**. Te zdarzenia wskazują, że komputer został zarejestrowany za pomocą obszaru roboczego usługi Log Analytics i odbiera konfigurację.
 
 Jeśli agent jest skonfigurowany do komunikowania się z Internetem przez zaporę lub serwer proxy agenta nie może komunikować się z usługą Log Analytics, upewnij się, że serwer zapory lub serwera proxy jest prawidłowo skonfigurowany. Aby dowiedzieć się, jak sprawdzić, czy zapora lub serwer proxy jest prawidłowo skonfigurowane, zobacz [konfiguracji sieci dla agenta Windows](../azure-monitor/platform/agent-windows.md) lub [konfigurację sieci dla agenta systemu Linux](../log-analytics/log-analytics-agent-linux.md).
@@ -219,6 +219,21 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 | Ponowne uruchomienie kontroli| Określa sposób obsługi jest uruchamiany ponownie. Dostępne opcje:</br>Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze uruchamiaj ponownie</br>Nigdy nie uruchamiaj ponownie</br>Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane|
 
 Można także programowo tworzyć wdrożenia aktualizacji. Aby dowiedzieć się, jak utworzyć wdrożenie aktualizacji za pomocą interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania — tworzenie](/rest/api/automation/softwareupdateconfigurations/create). Istnieje również przykładowy element runbook, który może służyć do tworzenia tygodniowy wdrożenia aktualizacji. Aby dowiedzieć się więcej na temat tego elementu runbook, zobacz [utworzyć tygodniowy wdrożenie aktualizacji dla jednego lub więcej maszyn wirtualnych w grupie zasobów](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+
+### <a name="multi-tenant"></a>Wdrożenia aktualizacji międzydzierżawowe
+
+Jeśli masz maszyny w innej dzierżawie platformy Azure, raportowanie do zarządzania aktualizacjami, który chcesz zastosować poprawki należy użyć następującego obejścia można pobrać je według harmonogramu. Możesz użyć [polecenia New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) polecenia cmdlet z przełącznikiem `-ForUpdate` Tworzenie harmonogramu i używanie [New AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) polecenia cmdlet i przekaż maszyny w innej dzierżawie do `-NonAzureComputer` parametru. Poniższy przykład przedstawia przykład, jak to zrobić:
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
 
 ## <a name="view-missing-updates"></a>Wyświetl brakujące aktualizacje
 
@@ -310,7 +325,7 @@ Zaleca się używania adresów wymienionych podczas definiowania wyjątków. Adr
 
 Oprócz szczegółów, które znajdują się w witrynie Azure portal można wykonać wyszukiwania w dziennikach. Na stronach rozwiązania wybierz **usługi Log Analytics**. **Wyszukiwanie w dzienniku** zostanie otwarte okienko.
 
-Można także dowiesz się, jak dostosować zapytania lub używać ich z różnych klientów i więcej, odwiedzając: [dokumentacji wyszukiwanie interfejsu API usługi Log Analytics](
+Możesz także dowiedzieć się, jak dostosować zapytania lub używać ich z różnych klientów i więcej, odwiedzając:  [Dokumentacja usługi log Analytics wyszukiwanie interfejsu API](
 https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>Przykładowe zapytania

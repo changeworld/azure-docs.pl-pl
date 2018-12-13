@@ -4,14 +4,14 @@ description: Zawiera omówienie znanych problemów dotyczących usługi Azure Mi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9303f20d84547dee62e7012e0dca50f47ad54083
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4ebd6eb860a6b102d1a3b12642510c429c18baa7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839589"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259158"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -23,11 +23,11 @@ ms.locfileid: "52839589"
 
 Urządzenie ciągłe odnajdywania tylko zbiera dane dotyczące wydajności stale, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
 
-- Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
+- Dodawanie elementów (maszyn wirtualnych, dysków, rdzenie itp.): Aby uwzględnić te zmiany w witrynie Azure portal, można zatrzymać odnajdywania przez urządzenie i uruchom go ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
 
    ![Zatrzymaj odnajdywanie](./media/troubleshooting-general/stop-discovery.png)
 
-- Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
+- Usunięcie maszyn wirtualnych: Ze względu na sposób, w jaki zaprojektowano urządzenia usunięcie maszyn wirtualnych nie jest widoczna, nawet jeśli należy zatrzymać i uruchomić odnajdywanie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Tworzenie projektu migracji nie powiodła się z powodu błędu *żądania muszą zawierać nagłówki tożsamości użytkownika*
 
@@ -41,23 +41,31 @@ Jeśli nie można wyeksportować raport z oceny z portalu, spróbuj użyć poni�
 
 1. Zainstaluj *armclient* na komputerze (Jeśli nie jest już zainstalowana):
 
-a. W oknie wiersza polecenia administratora, uruchom następujące polecenie:  *@powershell NoProfile — obejście - ExecutionPolicy — polecenie "iex ((modułu System.Net.WebClient New-Object). DownloadString('https://chocolatey.org/install.ps1')) "& & SET"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"*
+  a. W oknie wiersza polecenia administratora uruchom następujące polecenie: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
-b.In okno poziomem uprawnień administratora programu Windows PowerShell, uruchom następujące polecenie: *choco zainstalować armclient*
+  b. W oknie administrator programu Windows PowerShell uruchom następujące polecenie: ```choco install armclient```
 
 2.  Pobierz adres URL pobierania dla raport z oceny za pomocą interfejsu API REST migracji platformy Azure
 
-a.  W oknie administrator programu Windows PowerShell, uruchom następujące polecenie: *logowania armclient* spowoduje to otwarcie wyskakującego logowania platformy Azure których trzeba zalogować się do platformy Azure.
+  a.    W oknie administrator programu Windows PowerShell uruchom następujące polecenie: ```armclient login```
 
-b.  W tym samym oknie programu PowerShell uruchom następujące polecenie, aby uzyskać adres URL pobierania raport z oceny (Zastąp parametry identyfikatora URI z odpowiednimi wartościami przykładowego interfejsu API żądanie poniżej)
+  Spowoduje to otwarcie wyskakującego logowania platformy Azure których trzeba zalogować się do platformy Azure.
 
-       *armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02*
+  b.    W tym samym oknie programu PowerShell uruchom następujące polecenie, aby uzyskać adres URL pobierania raport z oceny (Zastąp parametry identyfikatora URI z odpowiednimi wartościami przykładowego interfejsu API żądanie poniżej)
 
-Przykładowe żądanie i dane wyjściowe:
+       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
-PS C:\WINDOWS\system32 > armclient WPIS https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r 018_12_16_21 esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2 adres URL pobierania? api-version = 2018-02-02 {" assessmentReportUrl":"https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r","czas wygaśnięcia":" 2018-11-20T22:09:30.5681954 + 05:30 "
+       Przykładowe żądanie i dane wyjściowe:
+
+       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+018_12_16_21/downloadUrl?api-version=2018-02-02
+{
+  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
 3. Skopiuj adres URL z odpowiedzi i otwórz go w przeglądarce, aby pobrać raport z oceny.
+
 4. Po pobraniu raportu, należy użyć programu Excel, przejdź do folderu pobrane i Otwórz plik w programie Excel, aby go wyświetlić.
 
 ### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Dane wydajności dla dysków i sieci kart sieciowych jest wyświetlany jako zera
@@ -74,7 +82,7 @@ Możesz przejść do **Essentials** sekcji **Przegląd** strony projektu, aby zi
 
 ## <a name="collector-errors"></a>Błędy modułu zbierającego dzienniki
 
-### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Wdrażanie usługi Azure Migrate Collector nie powiodło się z powodu błędu: podany plik manifestu jest nieprawidłowy: nieprawidłowa OVF wejścia manifestu.
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Wdrażanie usługi Azure Migrate Collector nie powiodło się z powodu błędu: Podany plik manifestu jest nieprawidłowy: Nieprawidłowy wpis manifestu pakietu OVF.
 
 1. Upewnij się, jeśli plik OVA modułu zbierającego migracji platformy Azure jest ona pobierana poprawnie przez sprawdzenie wartości mieszania. Aby zweryfikować wartość skrótu, zapoznaj się z [artykułem](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Jeśli wartość skrótu nie jest zgodny, należy ponownie pobrać plik OVA i ponowieniem próby wdrożenia.
 2. Jeśli problemy nadal występują, a plik OVF jest wdrażany przy użyciu klienta oprogramowania VMware vSphere, spróbuj wdrożyć go za pomocą internetowego klienta programu vSphere. Jeśli nadal nie, spróbuj użyć innej przeglądarki sieci web.
@@ -112,7 +120,7 @@ Upewnij się, że zostały skopiowane i wklejone odpowiednie informacje. Aby roz
 7. Sprawdź, czy agent może połączyć się projekt. Jeśli nie jest, sprawdź ustawienia. Jeśli agent można połączyć z modułu zbierającego nie może jednak się z pomocą techniczną.
 
 
-### <a name="error-802-date-and-time-synchronization-error"></a>Błąd 802: Data i godzina błąd synchronizacji
+### <a name="error-802-date-and-time-synchronization-error"></a>Błąd 802: Błąd synchronizacji daty i godziny
 
 Zegar serwera musi być typu "out synchronizacji" z bieżącym czasem przez więcej niż pięć minut. Zmiana czasu zegara w module zbierającym maszyny Wirtualnej, aby dopasować bieżący czas, w następujący sposób:
 
@@ -138,7 +146,7 @@ Ten problem może wystąpić z powodu problemu z instalacją programu VMware Pow
 
 ### <a name="error-unabletoconnecttoserver"></a>Błąd UnableToConnectToServer
 
-Nie można nawiązać połączenia z programem vCenter Server „Servername.com:9443” z powodu następującego błędu: brak punktów końcowych nasłuchujących w lokalizacji https://Servername.com:9443/sdk, które mogłyby zaakceptować komunikat.
+Nie można nawiązać połączenia z programem vCenter Server "Servername.com:9443" z powodu błędu: Brak punktów końcowych nasłuchujących w https://Servername.com:9443/sdk który mógłby odebrać komunikat.
 
 Sprawdź, jeśli możesz korzystają z najnowszej wersji urządzenia modułu zbierającego, jeśli nie, uaktualnić urządzenie [najnowszej wersji](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
 
@@ -150,6 +158,10 @@ Jeśli problem nadal występuje w najnowszej wersji, może to być, ponieważ ma
 4. Na koniec sprawdź, czy program vCenter Server działa.
 
 ## <a name="dependency-visualization-issues"></a>Problemy z wizualizacji zależności
+
+### <a name="i-am-unable-to-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>Nie można odnaleźć funkcji wizualizacji zależności dla projektów platformy Azure Government.
+
+Usługa Azure Migrate zależy od rozwiązania Service Map dla funkcji wizualizacji zależności, a ponieważ mapa usługi jest obecnie niedostępna na platformie Azure Government, ta funkcja nie jest dostępne na platformie Azure Government.
 
 ### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>Po zainstalowaniu programu Microsoft Monitoring Agent (MMA) i agenta zależności maszyn wirtualnych w środowisku lokalnym, ale zależności są teraz wyświetlane w portalu usługi Azure Migrate.
 

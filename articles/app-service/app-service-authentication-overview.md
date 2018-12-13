@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie i autoryzacja w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Uwierzytelnianie i autoryzacja — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Przewodnik koncepcyjny oraz omówienie uwierzytelniania / autoryzacji funkcji Azure App Service
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 27726f261b2d9c88f1544a6e66ea352fbb98d253
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: add470aec1b19a8862a17d4a5a84bc221b8582b4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685671"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250879"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -91,8 +92,8 @@ Po włączeniu uwierzytelniania i autoryzacji przy użyciu jednego z tych dostaw
 
 Przepływ uwierzytelniania jest taka sama dla wszystkich dostawców, ale różnią się zależnie od tego, czy chcesz zalogować się przy użyciu dostawcy SDK:
 
-- Bez dostawcy SDK: aplikacja deleguje logowania federacyjnego do usługi App Service. Zazwyczaj jest to w przypadku aplikacji przeglądarki, które może powodować dostawcy strony logowania do użytkownika. Kod serwera zarządza procesem logowania, dzięki czemu jest również nazywany _skierowane do serwera usługi flow_ lub _przepływ serwera_. Ten przypadek ma zastosowanie do aplikacji sieci web. Ma również zastosowanie do aplikacji natywnych, które logują użytkowników przy użyciu zestawu SDK klienta funkcji Mobile Apps, ponieważ zestaw SDK spowoduje otwarcie widoku sieci web do logują użytkowników przy użyciu uwierzytelniania usługi App Service. 
-- Za pomocą dostawcy SDK: ręcznie logowania użytkowników w dostawcy aplikacji, a następnie przesyła je token uwierzytelniania w usłudze App Service do sprawdzania poprawności. Zazwyczaj jest to w przypadku aplikacji bez przeglądarki, które użytkownik nie widzi strony logowania dla dostawcy. Kod aplikacji zarządza procesem logowania, dzięki czemu jest również nazywany _skierowane do klientów usługi flow_ lub _przepływ klienta_. Ten przypadek ma zastosowanie do interfejsów API REST, [usługi Azure Functions](../azure-functions/functions-overview.md)oraz klientów języka JavaScript w przeglądarkach, jak również aplikacje sieci web, które muszą większą elastyczność w procesie logowania. Ma również zastosowanie do natywnych aplikacji mobilnych, które logują użytkowników przy użyciu zestawu SDK w dostawcy.
+- Bez dostawca zestawu SDK: Aplikacja deleguje logowania federacyjnego do usługi App Service. Zazwyczaj jest to w przypadku aplikacji przeglądarki, które może powodować dostawcy strony logowania do użytkownika. Kod serwera zarządza procesem logowania, dzięki czemu jest również nazywany _skierowane do serwera usługi flow_ lub _przepływ serwera_. Ten przypadek ma zastosowanie do aplikacji sieci web. Ma również zastosowanie do aplikacji natywnych, które logują użytkowników przy użyciu zestawu SDK klienta funkcji Mobile Apps, ponieważ zestaw SDK spowoduje otwarcie widoku sieci web do logują użytkowników przy użyciu uwierzytelniania usługi App Service. 
+- Za pomocą dostawcy SDK: Aplikacja logowania użytkowników w dostawcy ręcznie, a następnie przesyła je token uwierzytelniania w usłudze App Service do sprawdzania poprawności. Zazwyczaj jest to w przypadku aplikacji bez przeglądarki, które użytkownik nie widzi strony logowania dla dostawcy. Kod aplikacji zarządza procesem logowania, dzięki czemu jest również nazywany _skierowane do klientów usługi flow_ lub _przepływ klienta_. Ten przypadek ma zastosowanie do interfejsów API REST, [usługi Azure Functions](../azure-functions/functions-overview.md)oraz klientów języka JavaScript w przeglądarkach, jak również aplikacje sieci web, które muszą większą elastyczność w procesie logowania. Ma również zastosowanie do natywnych aplikacji mobilnych, które logują użytkowników przy użyciu zestawu SDK w dostawcy.
 
 > [!NOTE]
 > Wywołania z aplikacji przeglądarki zaufane w usłudze App Service wywołuje innego interfejsu API REST w usłudze App Service lub [usługi Azure Functions](../azure-functions/functions-overview.md) mogą być uwierzytelniane przy użyciu usługi flow skierowane do serwera. Aby uzyskać więcej informacji, zobacz [dostosowywać uwierzytelnianie i autoryzacja w usłudze App Service](app-service-authentication-how-to.md).
@@ -139,8 +140,8 @@ Ta opcja zapewnia większą elastyczność obsługi żądań anonimowych. Na prz
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-[Samouczek: Uwierzytelnianie i autoryzacja użytkowników end-to-end w usłudze Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
-[Samouczek: Uwierzytelnianie i autoryzacja użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)  
+[Samouczek: Uwierzytelnianie i autoryzowanie użytkowników end-to-end w usłudze Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
+[Samouczek: Uwierzytelnianie i autoryzowanie użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)  
 [Dostosowywanie uwierzytelniania i autoryzacji w usłudze App Service](app-service-authentication-how-to.md)
 
 Przewodniki z instrukcjami właściwe dla dostawcy:
@@ -150,7 +151,7 @@ Przewodniki z instrukcjami właściwe dla dostawcy:
 * [Jak skonfigurować aplikację do używania logowania usługi Google][Google]
 * [Jak skonfigurować aplikację do używania Microsoft Account login][MSA]
 * [Jak skonfigurować aplikację do używania logowania usługi Twitter][Twitter]
-* [Porady: użycie niestandardowego uwierzytelniania dla aplikacji][custom-auth]
+* [Jak: Użyj uwierzytelniania niestandardowego dla aplikacji][custom-auth]
 
 [AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md

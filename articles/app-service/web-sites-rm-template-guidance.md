@@ -1,5 +1,5 @@
 ---
-title: Wskazówki dotyczące wdrażania aplikacji sieci web platformy Azure za pomocą szablonów | Dokumentacja firmy Microsoft
+title: Wskazówki dotyczące wdrażania aplikacji za pomocą szablonów — w usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Zalecenia dotyczące tworzenia szablonów usługi Azure Resource Manager do wdrażania aplikacji sieci web.
 services: app-service
 documentationcenter: app-service
@@ -11,12 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: c2f600d86965e1115d4be1370da8f7c8e1b67f05
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.custom: seodec18
+ms.openlocfilehash: 523574f49673ee961665136d90f04183e7c1a679
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927676"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277764"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Wskazówki dotyczące wdrażania aplikacji sieci web przy użyciu szablonów usługi Azure Resource Manager
 
@@ -128,7 +129,7 @@ Na platformie Azure Government, jednostka usługi App Service ma identyfikator *
 
 W usłudze Key Vault wybierz **certyfikaty** i **Generuj/Import** można przekazać certyfikatu.
 
-![Importowanie certyfikatu](media/web-sites-rm-template-guidance/import-certificate.png)
+![Importuj certyfikat](media/web-sites-rm-template-guidance/import-certificate.png)
 
 W szablonie, podaj nazwę certyfikatu na potrzeby `keyVaultSecretName`.
 

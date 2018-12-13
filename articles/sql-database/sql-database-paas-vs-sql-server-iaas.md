@@ -1,6 +1,6 @@
 ---
 title: Usługa SQL Database (PaaS) a program SQL Server w chmurze na maszynach wirtualnych (IaaS) | Microsoft Docs
-description: 'Dowiedz się, która opcja programu SQL Server w chmurze jest odpowiednia do używanej aplikacji: usługa Azure SQL Database (PaaS) czy program SQL Server w chmurze na maszynach wirtualnych platformy Azure.'
+description: 'Dowiedz się, która opcja programu SQL Server w chmurze dostosowane do potrzeb Twojej aplikacji: Usługa Azure SQL Database (PaaS) lub programu SQL Server w chmurze na maszynach wirtualnych platformy Azure.'
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -13,18 +13,18 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: 06c56f92e26fba61120933eca32bd98e310b4474
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: fccb570be772f9a06fe5bae9c3cb43993d670f48
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335235"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278478"
 ---
-# <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Wybieranie opcji programu SQL Server w chmurze: usługa Azure SQL Database (PaaS) lub program SQL Server na maszynach wirtualnych Azure (IaaS)
+# <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Wybieranie opcji programu SQL Server w chmurze: Usługa Azure SQL Database (PaaS) lub SQL Server na maszynach wirtualnych platformy Azure (IaaS)
 
 Na platformie Azure może mieć obciążeń programu SQL Server, działające w infrastrukturze hostowanej (IaaS) lub są uruchamiane jako usługa hostowana ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)):
 
-- [Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/): aparatu bazy danych SQL, w oparciu o Enterprise programu SQL Server, który jest zoptymalizowany pod kątem tworzenia nowoczesnych aplikacji. Usługa Azure SQL Database oferuje kilka opcji wdrażania:
+- [Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/): Aparatu bazy danych SQL, oparte na Enterprise programu SQL Server, który jest zoptymalizowany pod kątem tworzenia nowoczesnych aplikacji. Usługa Azure SQL Database oferuje kilka opcji wdrażania:
 
   - Możesz wdrożyć pojedynczą bazę danych do [serwer logiczny](sql-database-logical-servers.md).
   - Można wdrożyć w [puli elastycznej](sql-database-elastic-pool.md) na [serwer logiczny](sql-database-logical-servers.md) udostępnianie zasobów i obniżyć koszty.
@@ -37,7 +37,7 @@ Na platformie Azure może mieć obciążeń programu SQL Server, działające w 
      > [!NOTE]
      > Za pomocą wszystkich trzech wersjach bazy danych SQL Azure dodaje dodatkowe funkcje, które nie są dostępne w programie SQL Server, takie jak wbudowana funkcja analizy i zarządzania. Serwer logiczny, zawierający pojedynczy i puli baz danych oferuje większość funkcji o zakresie bazy danych programu SQL Server. W usłudze Azure SQL Database Managed Instance Azure SQL Database oferuje zasoby udostępnione dla baz danych i dodatkowych funkcji należących do zakresu wystąpienia. Wystąpienie usługi Azure SQL Database Managed obsługuje migrację bazy danych, korzystając z minimalnym bez zmian w bazie danych.
 
-- [Program SQL Server na maszynach wirtualnych Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/): SQL Server zainstalowany i hostowany w chmurze w systemie Windows Server lub Linux maszyn wirtualnych (VM) na platformie Azure, znany również jako infrastruktura jako usługa (IaaS). Program SQL Server na maszynach wirtualnych platformy Azure to dobra opcja w przypadku migracji lokalnych baz danych programu SQL Server i aplikacje bez zmiany bazy danych. Wszystkie najnowsze wersje i wydania programu SQL Server są dostępne do zainstalowania na maszynie wirtualnej IaaS. Najbardziej znaczący różnica z bazy danych SQL polega na tym, że maszyny wirtualne SQL Server umożliwia pełną kontrolę nad aparatem bazy danych. Można wybrać podczas konserwacji/poprawianie rozpocznie się, aby zmienić model odzyskiwania prostego lub niepełnym dziennikiem umożliwia szybsze ładowanie mniej dziennika, aby wstrzymać lub uruchomić aparatu w razie potrzeby, i można w pełni dostosować aparatu bazy danych programu SQL Server. Dołączono dodano odpowiedzialność za zarządzanie maszynami wirtualnymi za pomocą tej kontrolki dodatkowe.
+- [Program SQL Server na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/): Program SQL Server zainstalowany i hostowany w chmurze w systemie Windows Server lub Linux maszyn wirtualnych (VM) na platformie Azure, znany również jako infrastruktura jako usługa (IaaS). Program SQL Server na maszynach wirtualnych platformy Azure to dobra opcja w przypadku migracji lokalnych baz danych programu SQL Server i aplikacje bez zmiany bazy danych. Wszystkie najnowsze wersje i wydania programu SQL Server są dostępne do zainstalowania na maszynie wirtualnej IaaS. Najbardziej znaczący różnica z bazy danych SQL polega na tym, że maszyny wirtualne SQL Server umożliwia pełną kontrolę nad aparatem bazy danych. Można wybrać podczas konserwacji/poprawianie rozpocznie się, aby zmienić model odzyskiwania prostego lub niepełnym dziennikiem umożliwia szybsze ładowanie mniej dziennika, aby wstrzymać lub uruchomić aparatu w razie potrzeby, i można w pełni dostosować aparatu bazy danych programu SQL Server. Dołączono dodano odpowiedzialność za zarządzanie maszynami wirtualnymi za pomocą tej kontrolki dodatkowe.
 
 Dowiedz się, jak każdej opcji wdrażania dopasowuje się do platformy danych firmy Microsoft i Uzyskaj pomoc przy dopasowaniu odpowiedniej opcji do wymagań biznesowych. Niezależnie od tego, czy priorytetem jest oszczędność, czy ograniczenie administracji do minimum, artykuł ten może pomóc zdecydować, które rozwiązanie pozwoli spełnić wymagania związane z działalnością biznesową, na których zależy Ci najbardziej.
 
@@ -45,7 +45,7 @@ Dowiedz się, jak każdej opcji wdrażania dopasowuje się do platformy danych f
 
 Podczas każdej dyskusji dotyczącej baz danych Azure w zestawieniu z lokalnymi bazami danych programu SQL Server należy przede wszystkim pamiętać o tym, że można używać ich wszystkich. Platforma danych firmy Microsoft korzysta z technologii programu SQL Server i udostępnia ją na fizycznych komputerach lokalnych, w prywatnych środowiskach chmury, prywatnych środowiskach chmury udostępnianych przez inne firmy i w chmurze publicznej. Program SQL Server w usłudze Azure Virtual Machines umożliwia spełnienie unikatowych i zróżnicowanych potrzeb związanych z prowadzeniem działalności biznesowej poprzez kombinację wdrożeń lokalnych i hostowanych w chmurze, z równoczesnym użyciem w tych środowiskach tego samego zestawu produktów serwerowych, narzędzi projektowych i zakresu wiedzy.
 
-   ![Opcje programu SQL Server w chmurze: program SQL Server w usłudze IaaS lub baza danych SQL w usłudze SaaS w chmurze.](./media/sql-database-paas-vs-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png)
+   ![Opcje programu SQL Server w chmurze: Program SQL server w usłudze IaaS lub SQL w usłudze SaaS bazy danych w chmurze.](./media/sql-database-paas-vs-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png)
 
 Jak widać to na diagramie, każde rozwiązanie można scharakteryzować według posiadanego poziomu administracji względem infrastruktury (na osi X) oraz według stopnia opłacalności wynikającej z konsolidacji poziomu bazy danych i automatyzacji (na osi Y).
 
@@ -56,7 +56,7 @@ Podczas projektowania aplikacji są dostępne cztery podstawowe opcje obsługi c
 - program SQL Server na maszynie wirtualnej platformy Azure (w chmurze publicznej firmy Microsoft),
 - usługa Azure SQL Database (w chmurze publicznej firmy Microsoft).
 
-Poniższe sekcje zawierają informacje na temat programu SQL Server w chmurze publicznej firmy Microsoft: usługi Azure SQL Database i programu SQL Server na maszynach wirtualnych platformy Azure. Ponadto przeanalizujemy typowe czynniki motywujące związane z działalnością biznesową, aby ustalić, która opcja jest najlepsza dla aplikacji.
+W poniższych sekcjach dowiesz się o programie SQL Server w chmurze publicznej firmy Microsoft: Usługa Azure SQL Database i programu SQL Server na maszynach wirtualnych platformy Azure. Ponadto przeanalizujemy typowe czynniki motywujące związane z działalnością biznesową, aby ustalić, która opcja jest najlepsza dla aplikacji.
 
 ## <a name="a-closer-look-at-azure-sql-database-and-sql-server-on-azure-vms"></a>Bliższe spojrzenie na usługę Azure SQL Database i program SQL Server na maszynach wirtualnych platformy Azure
 
@@ -89,7 +89,8 @@ Poniższa tabela zawiera podsumowanie głównych cech usługi SQL Database i pro
 | **Zgodność** | Obsługuje większość funkcji poziomu bazy danych w środowisku lokalnym. | Obsługuje prawie wszystkie lokalne funkcje na poziomie wystąpienia i poziomu bazy danych. | Obsługuje wszystkie funkcje w środowisku lokalnym. |
 | **Zasoby:** | Czy chcesz używać zasobów IT do konfiguracji i zarządzania podstawową infrastrukturą, ale chcesz skupić się na warstwie aplikacji. | Taka sama jak baz danych na serwerze logicznym Azure SQL Database. | Masz niektóre zasoby informatyczne do konfiguracji i zarządzania. Niektóre dostępne funkcje automatyczne znacznie to upraszczają. |
 | **Całkowity koszt posiadania:** | Eliminuje koszty sprzętu i ogranicza koszty administracyjne. | Taka sama jak baz danych na serwerze logicznym Azure SQL Database. | Eliminuje koszty sprzętu. |
-| **Ciągłość działalności biznesowej:** |Oprócz [wbudowaną odporność na uszkodzenia infrastruktury możliwości](sql-database-high-availability.md), Azure SQL Database oferuje funkcje, takie jak [automatyczne kopie zapasowe](sql-database-automated-backups.md), [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore), [geoprzywracanie](sql-database-recovery-using-backups.md#geo-restore), i [trybu failover grupy i aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md) Aby zwiększyć ciągłość prowadzenia działalności biznesowej. Więcej informacji znajduje się w temacie [Omówienie ciągłości działalności biznesowej usługi SQL Database](sql-database-business-continuity.md). | Taki sam jak baz danych w usłudze Azure SQL Database serwer logiczny, a także inicjowane przez użytkownika, tylko do kopiowania kopie zapasowe są dostępne. | Program SQL Server na maszynach wirtualnych platformy Azure umożliwia skonfigurowanie rozwiązania wysokiej dostępności i odzyskiwania po awarii w zależności od określonych potrzeb bazy danych. Można mieć zatem system w znacznym stopniu zoptymalizowany dla aplikacji. Jeśli wystąpi taka potrzeba, tryb failover można przetestować i uruchomić samodzielnie. Więcej informacji znajduje się w temacie [Wysoka dostępność i odzyskiwanie po awarii dla programu SQL Server w usłudze Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md). |
+| **Ciągłość działalności biznesowej:** |Oprócz [wbudowaną odporność na uszkodzenia infrastruktury możliwości](sql-database-high-availability.md), Azure SQL Database oferuje funkcje, takie jak [automatyczne kopie zapasowe](sql-database-automated-backups.md), [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore), [geoprzywracanie](sql-database-recovery-using-backups.md#geo-restore), [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md), i [grup automatyczny tryb failover](sql-database-auto-failover-group.md)
+ Aby zwiększyć ciągłość prowadzenia działalności biznesowej. Więcej informacji znajduje się w temacie [Omówienie ciągłości działalności biznesowej usługi SQL Database](sql-database-business-continuity.md). | Taki sam jak baz danych w usłudze Azure SQL Database serwer logiczny, a także inicjowane przez użytkownika, tylko do kopiowania kopie zapasowe są dostępne. | Program SQL Server na maszynach wirtualnych platformy Azure umożliwia skonfigurowanie rozwiązania wysokiej dostępności i odzyskiwania po awarii w zależności od określonych potrzeb bazy danych. Można mieć zatem system w znacznym stopniu zoptymalizowany dla aplikacji. Jeśli wystąpi taka potrzeba, tryb failover można przetestować i uruchomić samodzielnie. Więcej informacji znajduje się w temacie [Wysoka dostępność i odzyskiwanie po awarii dla programu SQL Server w usłudze Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md). |
 | **Chmura hybrydowa:** |Aplikacja lokalna może uzyskiwać dostęp do danych w usłudze Azure SQL Database. | [Implementacja natywnych sieci wirtualnej](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration) i łączności do środowiska lokalnego przy użyciu usługi Azure Expressroute lub bram sieci VPN. | Program SQL Server na maszynach wirtualnych platformy Azure może obejmować aplikacje, które działają częściowo w chmurze i częściowo lokalnie. Można na przykład rozszerzyć sieć lokalną i domenę usługi Active Directory do chmury za pośrednictwem usługi [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Ponadto można przechowywać lokalne pliki danych w usłudze Azure Storage przy użyciu [plików danych programu SQL Server na platformie Azure](https://msdn.microsoft.com/library/dn385720.aspx). Więcej informacji znajduje się w temacie [Wprowadzenie do chmury hybrydowej programu SQL Server 2014](https://msdn.microsoft.com/library/dn606154.aspx). |
 |  | Obsługuje [replikację transakcyjną programu SQL Server](https://msdn.microsoft.com/library/mt589530.aspx) jako subskrybent replikowanych danych. | Replikacja nie jest obsługiwana dla wystąpienia zarządzanego Azure SQL Database. | W pełni obsługuje [replikację transakcyjną programu SQL Server](https://msdn.microsoft.com/library/mt589530.aspx), [zawsze włączonych grup dostępności](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md), usługi integracji i wysyłanie dzienników do replikacji danych. Ponadto w pełni obsługiwane są tradycyjne kopie zapasowe programu SQL Server. | |
 |  | | |
@@ -98,7 +99,7 @@ Poniższa tabela zawiera podsumowanie głównych cech usługi SQL Database i pro
 
 ### <a name="cost"></a>Koszty
 
-Ograniczone fundusze są często podstawowym czynnikiem decydującym o wyborze sposobu hostowania baz danych — niezależnie od tego, czy Twoja firma to start-up o ograniczonych środkach finansowych, czy należysz do zespołu firmowego, który musi zmieścić się w zaplanowanym budżecie. W tej sekcji poznasz informacje dotyczące rozliczeń i licencjonowania platformy Azure w odniesieniu do dwóch opcji obsługi relacyjnych baz danych: usługi SQL Database i programu SQL Server na maszynach wirtualnych platformy Azure. Poznasz również sposób obliczania całkowitego kosztu aplikacji.
+Ograniczone fundusze są często podstawowym czynnikiem decydującym o wyborze sposobu hostowania baz danych — niezależnie od tego, czy Twoja firma to start-up o ograniczonych środkach finansowych, czy należysz do zespołu firmowego, który musi zmieścić się w zaplanowanym budżecie. W tej sekcji poznasz informacje dotyczące rozliczeń i licencjonowania platformy Azure w odniesieniu do tych dwóch opcji relacyjnej bazy danych: SQL Database i programu SQL Server na maszynach wirtualnych platformy Azure. Poznasz również sposób obliczania całkowitego kosztu aplikacji.
 
 #### <a name="billing-and-licensing-basics"></a>Podstawowe informacje dotyczące rozliczeń i licencjonowania
 

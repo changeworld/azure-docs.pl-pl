@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 815b792f8584e984ff77c32265de65f9b633adb1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291049"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322793"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analiza zdarzeń i wizualizacji przy użyciu usługi Application Insights
 
@@ -54,7 +54,7 @@ Aby dokładniej zbadać możliwości portalu usługi Application Insights, przej
 >[!NOTE]
 >To ma zastosowanie tylko do klastrów Windows w tej chwili.
 
-Istnieją dwa podstawowe sposoby wysyłania danych z WAD do usługi Azure Application Insights, który jest osiągane poprzez dodanie ujścia usługi Application Insights do konfiguracji WAD, zgodnie z opisem w [w tym artykule](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+Istnieją dwa podstawowe sposoby wysyłania danych z WAD do usługi Azure Application Insights, który jest osiągane poprzez dodanie ujścia usługi Application Insights do konfiguracji WAD, zgodnie z opisem w [w tym artykule](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 #### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Dodaj klucz Instrumentacji usługi Application Insights, podczas tworzenia klastra w witrynie Azure portal
 
@@ -88,7 +88,7 @@ W "WadCfg" szablonu usługi Resource Manager należy dodać "Sink", umieszczają
 
 W obu poprzedzających fragmentów kodu nazwa "applicationInsights" był używany do opisania ujścia. Nie jest to wymagane, i tak długo, jak nazwa ujścia jest uwzględniony w "sink", można ustawić nazwę do dowolnego ciągu.
 
-Obecnie dzienników z klastra są wyświetlane jako **ślady** w przeglądarce dzienników usługi Application Insights. Ponieważ większość ślady przychodzące od platformy z poziomu "Informacyjne", możesz też rozważyć zmiana konfiguracji ujścia tylko do wysyłania dzienników typu "Critical" lub "Błąd". Można to zrobić, dodając "Kanały" do obiektu sink, jak pokazano w [w tym artykule](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+Obecnie dzienników z klastra są wyświetlane jako **ślady** w przeglądarce dzienników usługi Application Insights. Ponieważ większość ślady przychodzące od platformy z poziomu "Informacyjne", możesz też rozważyć zmiana konfiguracji ujścia tylko do wysyłania dzienników typu "Critical" lub "Błąd". Można to zrobić, dodając "Kanały" do obiektu sink, jak pokazano w [w tym artykule](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 >[!NOTE]
 >Jeśli używasz nieprawidłowy klucz usługi Application Insights w witrynie portal lub w szablonie usługi Resource Manager, należy ręcznie zmienić wartość klucza i zaktualizować klaster / wdrażając go ponownie.

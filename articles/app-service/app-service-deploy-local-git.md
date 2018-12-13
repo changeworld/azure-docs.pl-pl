@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie lokalnej usługi Git w usłudze Azure App Service
+title: Wdrażanie z lokalnego repozytorium Git — usłudze Azure App Service
 description: Dowiedz się, jak włączyć lokalne wdrożenie narzędzia Git w usłudze Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: a4c96ea75bae69fa5a1af13e4e8b908759817e95
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 242eb906c95b373b2edd538be5f06756cac1e8c9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959329"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256517"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Wdrażanie lokalnej usługi Git w usłudze Azure App Service
 
@@ -157,21 +158,21 @@ Poniżej przedstawiono typowe błędy lub problemy, gdy za pomocą narzędzia Gi
 ---
 **Objaw**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
 
-**Przyczyna**: ten błąd może wystąpić, jeśli aplikacja nie będzie działać.
+**Przyczyna**: Ten błąd może wystąpić, jeśli aplikacja nie będzie działać.
 
 **Rozpoznawanie**: Uruchom aplikację w witrynie Azure portal. Wdrażanie usługi Git jest niedostępna, jeśli aplikacja sieci Web została zatrzymana.
 
 ---
 **Objaw**: `Couldn't resolve host 'hostname'`
 
-**Przyczyna**: ten błąd może wystąpić, jeśli adres wartości wprowadzonej podczas tworzenia zdalnego "azure" była nieprawidłowa.
+**Przyczyna**: Ten błąd może wystąpić, jeśli adres wartości wprowadzonej podczas tworzenia zdalnego "azure" była nieprawidłowa.
 
 **Rozpoznawanie**: Użyj `git remote -v` polecenie, aby wyświetlić listę wszystkich dostępów zdalnych, wraz z powiązanego adresu URL. Sprawdź, czy adres URL "Azure" zdalny jest poprawna. W razie potrzeby usuń i ponownie utwórz ten zdalnego przy użyciu prawidłowego adresu URL.
 
 ---
 **Objaw**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
-**Przyczyna**: ten błąd może wystąpić, jeśli nie określisz gałęzi podczas `git push`, lub jeśli nie został ustawiony `push.default` wartość w `.gitconfig`.
+**Przyczyna**: Ten błąd może wystąpić, jeśli nie określisz gałęzi podczas `git push`, lub jeśli nie został ustawiony `push.default` wartość w `.gitconfig`.
 
 **Rozpoznawanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
 
@@ -182,7 +183,7 @@ git push azure master
 ---
 **Objaw**: `src refspec [branchname] does not match any.`
 
-**Przyczyna**: ten błąd może wystąpić, Jeśli spróbujesz wypchnąć do rozgałęzienia innego niż główny "Azure" zdalnego.
+**Przyczyna**: Ten błąd może wystąpić, Jeśli spróbujesz wypchnąć do rozgałęzienia innego niż główny "Azure" zdalnego.
 
 **Rozpoznawanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
 
@@ -193,9 +194,9 @@ git push azure master
 ---
 **Objaw**: `RPC failed; result=22, HTTP code = 5xx.`
 
-**Przyczyna**: ten błąd może wystąpić, Jeśli spróbujesz wypchnąć repozytorium git w dużej za pośrednictwem protokołu HTTPS.
+**Przyczyna**: Ten błąd może wystąpić, Jeśli spróbujesz wypchnąć repozytorium git w dużej za pośrednictwem protokołu HTTPS.
 
-**Rozpoznawanie**: zmiana konfiguracji narzędzia git na komputerze lokalnym, aby powiększyć postBuffer
+**Rozpoznawanie**: Zmienianie konfiguracji usługi git na komputerze lokalnym, aby powiększyć postBuffer
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -204,9 +205,9 @@ git config --global http.postBuffer 524288000
 ---
 **Objaw**: `Error - Changes committed to remote repository but your web app not updated.`
 
-**Przyczyna**: ten błąd może wystąpić, jeśli wdrożysz aplikację Node.js przy użyciu _package.json_ pliku, który określa dodatkowe wymagane moduły.
+**Przyczyna**: Ten błąd może wystąpić, jeśli wdrożysz aplikację Node.js przy użyciu _package.json_ pliku, który określa dodatkowe wymagane moduły.
 
-**Rozpoznawanie**: dodatkowych komunikatów za pomocą "npm błąd!" powinny być rejestrowane, zanim ten błąd i może zapewnić dodatkowy kontekst błędu. Znane są następujące przyczyny tego błędu, a odpowiedni "npm błąd!" Komunikat:
+**Rozpoznawanie**: Dodatkowe wiadomości przy użyciu funkcji "npm błąd!" powinny być rejestrowane, zanim ten błąd i może zapewnić dodatkowy kontekst błędu. Znane są następujące przyczyny tego błędu, a odpowiedni "npm błąd!" Komunikat:
 
 * **Plik package.json źle sformułowane**: npm błąd! Nie można odczytać zależności.
 * **Moduł macierzysty, który nie ma binarne dystrybucji dla Windows**:

@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 8da42ee6db4b9ec76fa97e94a77076ed347e2952
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1f772e1a3e5b3e121b968d358166e9018c80d573
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080678"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192699"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Jak rozwiązywać problemy związane z agenta usługi Log Analytics dla systemu Linux 
 
@@ -187,10 +185,10 @@ Poniższe dane wyjściowe wtyczki, Usuń komentarz poniższej sekcji, usuwając 
 2. Sprawdź, czy zainstalowano najnowszą wersję agenta usługi Log Analytics dla systemu Linux.  Najnowszą wersję teraz powiadamia, że możesz Jeśli czasowego powoduje błąd dołączania.
 3. Reonboard przy użyciu poprawny identyfikator obszaru roboczego i klucz obszaru roboczego, postępując zgodnie z instrukcjami instalacji we wcześniejszej części tego artykułu.
 
-## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problem: Zostanie wyświetlony 500 i 404 błąd w pliku dziennika bezpośrednio po dołączeniu
+## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problem: Zostanie wyświetlony bezpośrednio po dołączeniu 500 i 404 błąd w pliku dziennika
 Jest to znany problem występujący w pierwszym przekazywania danych z systemem Linux do obszaru roboczego usługi Log Analytics. Nie dotyczy to danych wysłanego lub usługi.
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problem: Nie widać żadnych danych w witrynie Azure portal
+## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problem: Nie widzisz żadnych danych w witrynie Azure portal
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 
@@ -208,7 +206,7 @@ Jest to znany problem występujący w pierwszym przekazywania danych z systemem 
     >Ten problem jest rozwiązany w 1.1.0-28 wersji agenta i nowszych wersjach.
 
 
-## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problem: Nie widać przekazywanych dalej komunikatów usługi Syslog 
+## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problem: Nie widzisz przekazywanych dalej komunikatów usługi Syslog 
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 * Konfiguracja stosowany na serwerze z systemem Linux nie zezwala na zbiór wysłane urządzeń i/lub poziomy dziennika
@@ -243,7 +241,7 @@ Ten błąd wskazuje, że rozszerzenie diagnostyczne systemu Linux (LAD) jest ins
 3. Uruchom ponownie omsagent `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 4. Uruchom ponownie usługę syslog.
 
-## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Problem: Nie jest możliwe do odinstalowania omsagent przy użyciu opcji przeczyszczania
+## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Problem: Nie można odinstalować za pomocą opcji przeczyszczania omsagent
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 
@@ -254,7 +252,7 @@ Ten błąd wskazuje, że rozszerzenie diagnostyczne systemu Linux (LAD) jest ins
 1. Odinstaluj rozszerzenie diagnostyczne systemu Linux (LAD).
 2. Usuń pliki rozszerzenia diagnostycznego systemu Linux na tej maszynie, jeśli są obecne w następującej lokalizacji: `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` i `/var/opt/microsoft/omsagent/LAD/`.
 
-## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Problem: Nie widzisz danych żadnych danych Nagios 
+## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Problem: Dane nie zobaczą żadnych danych Nagios 
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 * Omsagent użytkownik nie ma uprawnień do odczytu z pliku dziennika Nagios
@@ -277,7 +275,7 @@ Ten błąd wskazuje, że rozszerzenie diagnostyczne systemu Linux (LAD) jest ins
     </filter>
     ```
 
-## <a name="issue-you-are-not-seeing-any-linux-data"></a>Problem: Nie widać żadnych danych z systemem Linux 
+## <a name="issue-you-are-not-seeing-any-linux-data"></a>Problem: Nie widzisz żadnych danych z systemem Linux 
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 * Dołączanie do usługi Log Analytics nie powiodło się.
@@ -295,7 +293,7 @@ Ten błąd wskazuje, że rozszerzenie diagnostyczne systemu Linux (LAD) jest ins
 5. W niektórych systemach dystrybucji platformy Azure demon serwer OMI omid nie uruchamia się po uruchomieniu maszyny wirtualnej. W rezultacie zostanie nie widzisz danych inspekcji, śledzenia zmian lub UpdateManagement związane z rozwiązania. Należy ręcznie uruchomić serwer omi, uruchamiając `sudo /opt/omi/bin/service_control restart`.
 6. Pakiet OMI jest ręcznie uaktualnione do nowszej wersji, musi on, należy ręcznie uruchomić ponownie agenta usługi Log Analytics kontynuować działanie. Ten krok jest wymagany dla niektórych dystrybucjach, w którym serwer OMI nie zostanie uruchomiona automatycznie po uaktualnieniu. Uruchom `sudo /opt/omi/bin/service_control restart` ponownego uruchomienia OMI.
 7. Jeśli widzisz zasobów DSC *nie znaleziono klasy* błąd omsconfig.log, uruchom `sudo /opt/omi/bin/service_control restart`.
-8. W niektórych przypadkach, gdy agenta usługi Log Analytics dla systemu Linux nie może porozumieć się z usługą Log Analytics, dane na agencie kopia zapasowa jest tworzona z rozmiarem buforu pełnej: 50 MB. Agent należy ponownie uruchomić, uruchamiając następujące polecenie `/opt/microsoft/omsagent/bin/service_control restart`.
+8. W niektórych przypadkach gdy agenta usługi Log Analytics dla systemu Linux nie może porozumieć się z usługą Log Analytics, dane na agencie kopia zapasowa jest tworzona z rozmiarem buforu pełnej: 50 MB. Agent należy ponownie uruchomić, uruchamiając następujące polecenie `/opt/microsoft/omsagent/bin/service_control restart`.
 
     >[!NOTE]
     >Ten problem został rozwiązany w 1.1.0-28 wersji agenta lub nowszym
@@ -347,7 +345,7 @@ Ten błąd wskazuje, że rozszerzenie diagnostyczne systemu Linux (LAD) jest ins
     sudo service crond start
     ```
 
-## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Problem: Podczas konfigurowania kolekcji z poziomu portalu, liczniki wydajności protokołu Syslog lub Linux, ustawienia nie są stosowane
+## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Problem: Podczas konfigurowania kolekcji z poziomu portalu, liczniki wydajności protokołu Syslog lub Linux, nie są stosowane ustawienia
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 * Agenta usługi Log Analytics dla systemu Linux nie pobierane najnowszą konfiguracją
@@ -361,7 +359,7 @@ Ten błąd wskazuje, że rozszerzenie diagnostyczne systemu Linux (LAD) jest ins
 
   2. Sprawdź, czy `omsconfig` agenta może komunikować się z usługą Log Analytics, uruchamiając następujące polecenie `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`. To polecenie zwraca konfigurację agenta otrzymuje z usługi, w tym ustawień usługi Syslog, liczniki wydajności systemu Linux i dzienników niestandardowych. Jeśli to polecenie nie powiedzie się, uruchom następujące polecenie `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. To polecenie wymusza agenta omsconfig porozumieć się z usługą Log Analytics i pobrania najnowszej konfiguracji.
 
-## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Problem: Nie widać żadnych danych dzienników niestandardowych 
+## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Problem: Nie widzisz żadnych niestandardowych danych dziennika 
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 * Dołączanie do usługi Log Analytics nie powiodło się.
@@ -380,7 +378,7 @@ Ten błąd wskazuje, że rozszerzenie diagnostyczne systemu Linux (LAD) jest ins
 
 2. Sprawdź, czy `omsconfig` agenta może komunikować się z usługą Log Analytics, uruchamiając następujące polecenie `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`.  To polecenie zwraca konfigurację agenta otrzymuje z usługi, w tym ustawień usługi Syslog, liczniki wydajności systemu Linux i dzienników niestandardowych. Jeśli to polecenie nie powiedzie się, uruchom następujące polecenie `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. To polecenie wymusza agenta omsconfig porozumieć się z usługą Log Analytics i pobrania najnowszej konfiguracji.
 
-**Tło:** zamiast agenta usługi Log Analytics dla systemu Linux uruchomiony jako uprawnionego użytkownika - `root`, agent działa jako `omsagent` użytkownika. W większości przypadków można udzielić jawne uprawnienia tego użytkownika w kolejności, w przypadku niektórych plików do odczytu. Aby udzielić uprawnień do `omsagent` użytkownika, uruchom następujące polecenia:
+**Tło:** Zamiast agenta usługi Log Analytics dla systemu Linux uruchomiony jako uprawnionego użytkownika - `root`, agent działa jako `omsagent` użytkownika. W większości przypadków można udzielić jawne uprawnienia tego użytkownika w kolejności, w przypadku niektórych plików do odczytu. Aby udzielić uprawnień do `omsagent` użytkownika, uruchom następujące polecenia:
 
 1. Dodaj `omsagent` użytkownika do określonej grupy `sudo usermod -a -G <GROUPNAME> <USERNAME>`
 2. Uniwersalny dostęp do wymaganego pliku `sudo chmod -R ugo+rx <FILE DIRECTORY>`
@@ -401,7 +399,7 @@ sudo sh ./onboard_agent.sh --purge
 
 Możesz kontynuować reonboard po użyciu `--purge` opcji
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Rozszerzenia log Analytics agent extension w witrynie Azure portal jest oznaczona stanem nie powiodło się: Inicjowanie obsługi administracyjnej nie powiodło się
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Rozszerzenia log Analytics agent extension w witrynie Azure portal jest oznaczona stanem nie powiodło się: Inicjowanie obsługi nie powiodło się
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 * Log Analytics agent został usunięty z systemu operacyjnego
@@ -415,7 +413,7 @@ Wykonaj poniższe kroki, aby rozwiązać ten problem.
 * Poczekaj kilka minut i aprowizowania stan zmieni się na **Aprowizowanie zakończyło się pomyślnie**.
 
 
-## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Problem: Uaktualnienie agenta usługi Log Analytics na żądanie
+## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Problem: Usługa Log Analytics agent uaktualniania na żądanie
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 

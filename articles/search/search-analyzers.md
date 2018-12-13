@@ -1,5 +1,5 @@
 ---
-title: Analizatory w usłudze Azure Search | Dokumentacja firmy Microsoft
+title: Analizatory do równoległego językowej i przetwarzanie tekstu — usługi Azure Search
 description: Analizatory przypisywanie do pól tekstowych można wyszukiwać w indeksie, aby zastąpić domyślne standardowa Lucene z alternatywami niestandardowych, wstępnie zdefiniowanych lub specyficzne dla języka.
 services: search
 ms.service: search
@@ -8,14 +8,15 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: seodec2018
+ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116374"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310542"
 ---
-# <a name="analyzers-in-azure-search"></a>Analizatory w usłudze Azure Search
+# <a name="analyzers-for-text-processing-in-azure-search"></a>Analizatory do przetwarzania w usłudze Azure Search tekstu
 
 *Analizatora* jest składnikiem [wyszukiwanie pełnotekstowe](search-lucene-query-architecture.md) odpowiedzialna za przetwarzanie tekstu w ciągów zapytania i indeksowane dokumenty. Następujące przekształcenia są typowe podczas analizy:
 
@@ -82,7 +83,7 @@ Jeśli wyszukiwanie nie zwraca oczekiwanych rezultatów, najbardziej prawdopodob
 Poniższe przykłady pokazują analizatora definicje kilku kluczowych scenariuszy.
 
 <a name="Example1"></a>
-### <a name="example-1-custom-options"></a>Przykład 1: Opcje niestandardowe
+### <a name="example-1-custom-options"></a>Przykład 1: Niestandardowe opcje
 
 W tym przykładzie przedstawiono definicję analyzer przy użyciu opcji niestandardowych. Niestandardowe opcje filtrów char, tokenizatory i tokenu filtry są określane oddzielnie jako nazwany konstrukcje, a następnie wspomniane w definicji analizatora. Wstępnie zdefiniowane elementy są używane jako — jest i po prostu odwołuje się nazwa.
 
@@ -149,7 +150,7 @@ Instruktaż następująco:
 ~~~~
 
 <a name="Example2"></a>
-### <a name="example-2-override-the-default-analyzer"></a>Przykład 2: Przesłoń analizatora domyślne
+### <a name="example-2-override-the-default-analyzer"></a>Przykład 2: Zastąp analizatora domyślne
 
 Standardowy Analizator jest ustawieniem domyślnym. Załóżmy, że chcesz zastąpić domyślny za pomocą różnych wstępnie zdefiniowanych analizatora, takich jak analizator wzorca. Jeśli nie jesteś ustawienie opcji niestandardowych, wystarczy określić je według nazwy w definicji pola.
 
@@ -181,7 +182,7 @@ Element "analizatora" zastępuje standardowy analizator na podstawie pól pola. 
 ~~~~
 
 <a name="Example3"></a>
-### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>Przykład 3: Analizatory różnych dla operacji indeksowania i wyszukiwania
+### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>Przykład 3: Różne analizatory dla operacji indeksowania i wyszukiwania
 
 Interfejsy API zawiera atrybuty indeksu do określania różnych analizatory do indeksowania i wyszukiwania. `searchAnalyzer` i `indexAnalyzer` atrybuty muszą być określone jako pary, zastępując pojedynczy `analyzer` atrybutu.
 

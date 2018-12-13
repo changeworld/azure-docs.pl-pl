@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 905970c3ab449f139710cf974111618f16da141a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 39a6ead041b1783a3effcb9659c59ea788cd2bf6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086644"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139507"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
 
@@ -38,11 +38,11 @@ Lista fraz dodaje do słownictwa używanego w domenie aplikacji jako drugi sygna
 
 4. Usługa LUIS może zaproponować powiązanych wartości do dodania do listy fraz. Kliknij przycisk **zaleca się** można pobrać grupy proponowane wartości, które są semantycznie związane added value(s). Kliknij dowolną z wartości proponowane, lub kliknij przycisk **Dodaj wszystkie** Aby dodać je wszystkie.
 
-    ![Lista fraz proponowane wartości](./media/luis-add-features/related-values.png)
+    ![Frazę wartości proponowane listy — Dodaj wszystko](./media/luis-add-features/related-values.png)
 
 5. Kliknij przycisk **te wartości są wymienne** Jeśli frazy dodano wartości listy są dostępne opcje alternatywne, które mogą być używane zamiennie.
 
-    ![Lista fraz proponowane wartości](./media/luis-add-features/interchangeable.png)
+    ![Lista wartości proponowane frazę — zaznacz pole wymienne ](./media/luis-add-features/interchangeable.png)
 
 6. Kliknij pozycję **Zapisz**. Na liście frazę "Miast" zostanie dodany do **frazę list** strony.
 

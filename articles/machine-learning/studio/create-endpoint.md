@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 4657fc1b-5228-4950-a29e-bc709259f728
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: ac4eb79d3b1505472113189a9e2b234212755244
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 58418357d6e96204485887cca5d7724c42183db7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077107"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275894"
 ---
-# <a name="creating-endpoints-for-deployed-web-services"></a>Tworzenie punktów końcowych dla wdrożonymi usługami sieci web
+# <a name="creating-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Tworzenie punktów końcowych dla wdrożonej usługi sieci web Azure Machine Learning Studio
 > [!NOTE]
 >  W tym temacie opisano technikach do zastosowania **klasycznego** usługi Machine Learning w sieci Web.
 > 
@@ -33,7 +32,7 @@ Podczas tworzenia usługi sieci Web, które sprzedawać do przodu dla klientów,
 
 Aby to osiągnąć, Azure Machine Learning Studio umożliwia tworzenie wielu punktów końcowych dla wdrożonej usługi sieci Web. Każdy punkt końcowy usługi sieci Web niezależnie rozwiązane, ograniczenia i zarządzane. Każdy punkt końcowy jest unikatowy adres URL i klucza autoryzacji, którą można dystrybuować swoim klientom.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="adding-endpoints-to-a-web-service"></a>Dodawanie punktów końcowych usługi sieci Web
 Istnieją dwa sposoby dodawania punktu końcowego usługi sieci Web.

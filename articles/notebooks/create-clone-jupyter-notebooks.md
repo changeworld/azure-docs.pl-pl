@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c4325f0c9de0d945d1612a3ab4171a2bfe1be25b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106519"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164419"
 ---
 # <a name="create-and-clone-projects"></a>Tworzenie i klonowanie projektów
 
@@ -42,7 +42,7 @@ Co można zrobić na pulpicie nawigacyjnym, zależy od tego, czy po zarejestrowa
 | **Usuwanie** | Właściciel | Usuwa wybranego projektu. Tej operacji nie można cofnąć. |
 | **Terminal** | Właściciel | Rozpoczyna się na serwerze project server, a następnie zostanie otwarte nowe okno przeglądarki, przy użyciu programu bash terminalu dla tego serwera. |
 | **+ Nowy projekt** | Właściciel | Tworzy nowy projekt. Zobacz [Utwórz nowy projekt](#create-a-new-project). |
-| **Przekaż repozytorium Github** | Właściciel | Importuje projektu z usługi GitHub. [Importowanie projektu z repozytorium GitHub](#import-a-project-from-github). |
+| **Przekaż repozytorium GitHub** | Właściciel | Importuje projektu z usługi GitHub. [Importowanie projektu z repozytorium GitHub](#import-a-project-from-github). |
 | **Klon** | Każda osoba | Kopiuje wybrany projekt do własnego konta. Monituje o Zaloguj się w przypadku jeszcze nie jest zalogowany. Zobacz [klonowanie projektu](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Uzyskaj wskaźnik uruchamiania
@@ -104,10 +104,10 @@ Klonowanie projektu:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Eksploruj przykładowe notesów](azure-notebooks-samples.md)
-- [Porady: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
-- [Porady: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
-- [Porady: obecne pokaz slajdów](present-jupyter-notebooks-slideshow.md)
-- [Porady: Praca z plikami danych](work-with-project-data-files.md)
-- [Porady: dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
-- [Porady: Użyj aplikacji Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Explore sample notebooks (Eksplorowanie przykładowych notesów)](azure-notebooks-samples.md)
+- [Jak: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
+- [Jak: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
+- [Jak: Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+- [Jak: Praca z plikami danych](work-with-project-data-files.md)
+- [Jak: Uzyskaj dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Jak: Użyj usługi Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

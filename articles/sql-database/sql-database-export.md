@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: fecc694e5520444be06dab82191b6454fb4ee8f5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 2d881b9dbc20dbbf95491d023b859a20815091d3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354040"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311205"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Eksportuj bazę danych Azure SQL database do pliku BACPAC
 
@@ -25,7 +25,7 @@ Gdy trzeba wyeksportować bazę danych do archiwizacji lub przenoszenia do innej
 
 > [!IMPORTANT]
 > Usługa Azure SQL Database zautomatyzowanego eksportu zostało wycofane z dniem 1 marca 2017 r. Możesz użyć [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md
-) lub [usługi Azure Automation](https://github.com/Microsoft/azure-docs/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) okresowo zarchiwizować SQL bazy danych przy użyciu programu PowerShell, zgodnie z harmonogramem wybranym. Przykład można pobrać [przykładowy skrypt programu PowerShell](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) z usługi Github.
+) lub [usługi Azure Automation](https://github.com/Microsoft/azure-docs/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) okresowo zarchiwizować SQL bazy danych przy użyciu programu PowerShell, zgodnie z harmonogramem wybranym. Przykład można pobrać [przykładowy skrypt programu PowerShell](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) z usługi GitHub.
 >
 
 ## <a name="considerations-when-exporting-an-azure-sql-database"></a>Uwagi dotyczące eksportowania bazy danych Azure SQL
@@ -39,11 +39,11 @@ Gdy trzeba wyeksportować bazę danych do archiwizacji lub przenoszenia do innej
   - Użyj [indeksu klastrowanego](https://msdn.microsoft.com/library/ms190457.aspx) przy użyciu wartości innych niż null na wszystkich dużych tabel. Bez klastrowanych indeksów eksportu może się niepowodzeniem, jeśli zajmuje więcej czasu niż 6-i 12 godzin. Jest to spowodowane usługa export musi wykonać skanowanie tabeli próbował wyeksportować całą tabelę. Dobrym sposobem, aby określić, jeśli tabele są zoptymalizowane pod kątem eksportu jest uruchomienie **DBCC SHOW_STATISTICS** i upewnij się, że *RANGE_HI_KEY* nie ma wartości null, a jego wartość ma dobrą dystrybucji. Aby uzyskać więcej informacji, zobacz [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 > [!NOTE]
-> Pliki Bacpac nie są przeznaczone do służyć do tworzenia kopii zapasowych i przywracanie operacji. Usługa Azure SQL Database automatycznie tworzy kopie zapasowe dla każdej bazy danych użytkownika. Aby uzyskać więcej informacji, zobacz [omówienie ciągłości działania](sql-database-business-continuity.md) i [kopie zapasowe bazy danych SQL](sql-database-automated-backups.md).  
+> Pliki Bacpac nie są przeznaczone do służyć do tworzenia kopii zapasowych i przywracanie operacji. Usługa Azure SQL Database automatycznie tworzy kopie zapasowe dla każdej bazy danych użytkownika. Aby uzyskać więcej informacji, zobacz [omówienie ciągłości działania](sql-database-business-continuity.md) i [kopie zapasowe bazy danych SQL](sql-database-automated-backups.md).
 
 ## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Eksportuj do pliku BACPAC przy użyciu witryny Azure portal
 
-Aby wyeksportować bazę danych za pomocą [witryny Azure portal](https://portal.azure.com), otwórz stronę bazy danych i kliknij przycisk **wyeksportować** na pasku narzędzi. Określ nazwę pliku BACPAC, podaj konto magazynu platformy Azure i kontener eksportu i podaj poświadczenia do połączenia z bazą danych źródłowych.  
+Aby wyeksportować bazę danych za pomocą [witryny Azure portal](https://portal.azure.com), otwórz stronę bazy danych i kliknij przycisk **wyeksportować** na pasku narzędzi. Określ nazwę pliku BACPAC, podaj konto magazynu platformy Azure i kontener eksportu i podaj poświadczenia do połączenia z bazą danych źródłowych.
 
 ![Eksportowanie bazy danych](./media/sql-database-export/database-export.png)
 
@@ -72,13 +72,13 @@ Najnowsza wersja programu SQL Server Management Studio oferują również kreato
 
 Użyj [New AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport) polecenia cmdlet, aby przesłać żądanie eksportu bazy danych do usługi Azure SQL Database. W zależności od rozmiaru bazy danych operacji eksportowania może potrwać trochę czasu.
 
- ```powershell
- $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
-   -DatabaseName $DatabaseName -StorageKeytype $StorageKeytype -StorageKey $StorageKey -StorageUri $BacpacUri `
-   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
- ```
+```powershell
+$exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
+  -DatabaseName $DatabaseName -StorageKeytype $StorageKeytype -StorageKey $StorageKey -StorageUri $BacpacUri `
+  -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
+```
 
-Aby sprawdzić stan żądania eksportu, należy użyć [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) polecenia cmdlet. Uruchomiony natychmiast po wykonaniu żądania zwykle zwraca **stan: w toku**. Po wyświetleniu **stan: powodzenie** Eksportowanie zostało ukończone.
+Aby sprawdzić stan żądania eksportu, należy użyć [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) polecenia cmdlet. Uruchomiony natychmiast po wykonaniu żądania zwykle zwraca **stanu: W toku**. Po wyświetleniu **stanu: Pomyślnie** Eksportowanie zostało ukończone.
 
 ```powershell
 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

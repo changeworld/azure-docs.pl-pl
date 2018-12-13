@@ -1,5 +1,5 @@
 ---
-title: Pisanie i przygotowuj dane za pomocą zestawu SDK języka Python w środowisku przedprodukcyjnym danych
+title: 'Zapis: przeznaczonego do przygotowania danych zestawu SDK języka Python'
 titleSuffix: Azure Machine Learning service
 description: Więcej informacji na temat zapisywania danych przy użyciu zestawu SDK usługi Azure Machine Learning danych przedprodukcyjnym. Możesz zapisać dane w dowolnym momencie, w ramach przepływu danych i pliki we wszystkich naszych obsługiwanych lokalizacji (lokalnego systemu plików usługi Azure Blob Storage i usługi Azure Data Lake Storage).
 services: machine-learning
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1278d0c448b041849f477b55d8311f516c3bccf3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18c74a701da77ca06d3084a6f4af64dd4cc32628
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104445"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186025"
 ---
 # <a name="write-data-using-the-azure-machine-learning-data-prep-sdk"></a>Zapisywanie danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data
 

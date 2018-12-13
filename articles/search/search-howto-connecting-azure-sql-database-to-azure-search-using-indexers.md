@@ -1,6 +1,6 @@
 ---
-title: Łączenie usługi Azure SQL Database z usługi Azure Search przy użyciu indeksatorów | Dokumentacja firmy Microsoft
-description: Informacje o sposobie pobierania danych z usługi Azure SQL Database do indeksu usługi Azure Search przy użyciu indeksatorów.
+title: Łączenie i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów — usługa Azure Search
+description: Dowiedz się, jak przeszukiwać dane w usłudze Azure SQL Database przy użyciu indeksatorów w celu wyszukiwania pełnotekstowego w usłudze Azure Search. Ten artykuł dotyczy połączeń, konfiguracji indeksatora i wprowadzanie danych.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,14 +9,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 28b72f63360b4ce323c1cd82b11c2798b1fbc2ff
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245651"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313398"
 ---
-# <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Łączenie usługi Azure SQL Database do usługi Azure Search przy użyciu indeksatorów
+# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Nawiązywanie połączenia i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów usługi Azure Search
 
 Zanim można tworzyć zapytania [indeksu usługi Azure Search](search-what-is-an-index.md), należy go wypełnić ze swoimi danymi. Jeśli dane są przechowywane w bazie danych Azure SQL **indeksator usługi Azure Search dla usługi Azure SQL Database** (lub **indeksator usługi Azure SQL** w skrócie) można zautomatyzować proces indeksowania, co oznacza mniej kod, aby zapisywać i mniej Infrastruktura zajmować się.
 
@@ -34,7 +35,7 @@ A **źródła danych** określa danych do indeksu, poświadczenia na potrzeby do
 * Aktualizowanie indeksu ze zmianami w źródle danych, zgodnie z harmonogramem.
 * Uruchamianie na żądanie do aktualizacji indeksu, zgodnie z potrzebami.
 
-Pojedynczy indeksator może używać tylko jedną tabelę lub widok, ale można utworzyć wiele indeksatorów, jeśli chcesz wypełnić wiele indeksów wyszukiwania. Aby uzyskać więcej informacji na temat pojęć, zobacz [Operacje indeksatora: typowy przepływ pracy](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
+Pojedynczy indeksator może używać tylko jedną tabelę lub widok, ale można utworzyć wiele indeksatorów, jeśli chcesz wypełnić wiele indeksów wyszukiwania. Aby uzyskać więcej informacji na temat pojęć, zobacz [Operacje indeksatora: Typowy przepływ pracy](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
 
 Można skonfigurować i skonfigurować indeksator usługi Azure SQL przy użyciu:
 
@@ -314,31 +315,31 @@ Te ustawienia są używane w `parameters.configuration` obiektu w definicja inde
 
 ## <a name="faq"></a>Często zadawane pytania
 
-**P: czy mogę używać indeksator usługi Azure SQL z bazy danych SQL, uruchomione na maszynach wirtualnych IaaS na platformie Azure?**
+**PYT.: Czy można używać indeksator usługi Azure SQL z bazy danych SQL, uruchomione na maszynach wirtualnych IaaS na platformie Azure?**
 
 Tak. Jednakże należy zezwolić na usługi wyszukiwania w celu połączenia z bazą danych. Aby uzyskać więcej informacji, zobacz [skonfigurować połączenie z indeksator usługi Azure Search do programu SQL Server na Maszynie wirtualnej platformy Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**P: czy mogę używać indeksator usługi Azure SQL z bazy danych SQL, uruchamiane lokalnie?**
+**PYT.: Czy można używać indeksator usługi Azure SQL, z bazami danych SQL, uruchamiane lokalnie?**
 
 Nie bezpośrednio. Firma Microsoft nie zaleca się i nie obsługuje bezpośredniego połączenia, ponieważ spowoduje to więc wymagałoby otwarcie bazy danych w celu ruch internetowy. Klientów zakończyły się powodzeniem, w tym scenariuszu przy użyciu technologii most, takich jak usługi Azure Data Factory. Aby uzyskać więcej informacji, zobacz [wypychanie danych do indeksu usługi Azure Search przy użyciu usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**P: czy mogę używać indeksator usługi Azure SQL z bazami danych niż program SQL Server działający w modelu IaaS na platformie Azure?**
+**PYT.: Czy można używać indeksator usługi Azure SQL z bazy danych innych niż SQL Server działających w modelu IaaS na platformie Azure?**
 
 Nie. Nie obsługujemy tego scenariusza, ponieważ nigdy nie próbowaliśmy indeksator o żadnych baz danych innych niż SQL Server.  
 
-**P: czy można utworzyć wiele indeksatorów uruchomione zgodnie z harmonogramem?**
+**PYT.: Można tworzyć wiele indeksatorów uruchomione zgodnie z harmonogramem?**
 
 Tak. Jednak tylko jeden indeksator może działać na jednym węźle w tym samym czasie. Wiele indeksatorów uruchomionych jednocześnie, należy rozważyć skalowanie w górę usługi wyszukiwania do więcej niż jednej jednostki wyszukiwania.
 
-**Pytanie: czy obciążenie wpływ indeksatora mojego zapytania?**
+**PYT.: Uruchamianie indeksatora wpływa na obciążenia zapytania?**
 
 Tak. Indeksator jest uruchamiane na jednym z węzłów w usłudze wyszukiwania, a ten węzeł zasoby są współdzielone między indeksowania i obsługująca ruch zapytania i inne żądania interfejsu API. Jeśli uruchamianie obciążeń z intensywnym wykorzystaniem indeksowania i zapytania i wystąpi wysoki stopień 503 błędy lub rosnącej czasy odpowiedzi, należy wziąć pod uwagę [skalowanie w górę usługi wyszukiwania](search-capacity-planning.md).
 
-**P: czy mogę używać repliki pomocniczej w [klastra trybu failover](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako źródło danych?**
+**PYT.: Czy mogę używać repliki pomocniczej w [klastra trybu failover](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako źródło danych?**
 
 To zależy. Pełne indeksowaniu tabelę lub widok, można użyć jako repliki pomocniczej. 
 
-Przyrostowe indeksowania zasady wykrywania zmian obsługuje usługi Azure Search, dwa: SQL zintegrowane Zmień śledzenie i wysoka znacznik limitu górnego.
+Przyrostowe indeksowania usługi Azure Search obsługuje dwie zasady wykrywania zmian: Zintegrowane ze środowiskiem SQL rozwiązania change tracking and znacznik limitu górnego.
 
 W trybie tylko do odczytu replikach bazy danych SQL database nie obsługuje śledzenie zmian zintegrowane. W związku z tym należy użyć zasad znacznik limitu górnego. 
 
@@ -348,7 +349,7 @@ Jeśli spróbujesz użyć rowversion repliki tylko do odczytu, zostanie wyświet
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**P: czy mogę używać alternatywnego, kolumny bez rowversion śledzenie zmian znacznik limitu górnego?**
+**PYT.: Śledzenie zmian znacznik limitu górnego można używać alternatywnego, kolumny bez rowversion?**
 
 Nie jest zalecane. Tylko **rowversion** umożliwia synchronizację danych niezawodne. Jednak w zależności od logika aplikacji może być bezpieczne jeśli:
 

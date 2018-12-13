@@ -1,5 +1,5 @@
 ---
-title: Bezpiecznego nawiązywania połączeń z zasobami zaplecza ze środowiska usługi App Service
+title: Bezpieczne łączenie kopii zakończenia zasoby ze środowiska usługi App Service — platformy Azure
 description: Dowiedz się więcej o tym, jak bezpiecznie łączyć się z zasobami zaplecza ze środowiska usługi App Service.
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
-ms.openlocfilehash: 4fccfbb4cbc1b0db0c032d95ad66b497520aa619
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: aea51234d26e5dbaef836419c2a13a12f8083e6f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960944"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315863"
 ---
-# <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Bezpiecznego nawiązywania połączeń z zasobami zaplecza ze środowiska usługi App Service
+# <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Bezpieczne łączenie kopii zakończenia zasoby ze środowiska usługi App Service
 ## <a name="overview"></a>Przegląd
 Ponieważ środowisko App Service zawsze jest tworzony w **albo** z siecią wirtualną usługi Azure Resource Manager **lub** klasycznego modelu wdrażania [sieci wirtualnej] [ virtualnetwork], połączenia wychodzące z środowiska usługi App Service do innych zasobów wewnętrznej bazy danych może przepływać wyłącznie za pośrednictwem sieci wirtualnej.  Z ostatnich zmian wprowadzonych w czerwca 2016 roku za pomocą środowisk ASE można także wdrożyć w sieciach wirtualnych, które używają zakresów adresów publicznych lub przestrzeni adresowych RFC1918 (czyli prywatnych adresów).  
 

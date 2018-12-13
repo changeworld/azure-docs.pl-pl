@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 12/11/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: faf8852df8b50c43affe32ede0f1e96d0bb80d3d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 25ea4f41ac1fa36c7f9b6f64bc7c4eede4702f38
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821246"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315183"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
 Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Azure Import/Export bezpiecznie eksportowania dużych ilości danych z usługi Azure Blob storage. Usługa wymaga dostarczaj puste dyski w centrach danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski i następnie jest dostarczany z stacje ponownie.
@@ -33,7 +33,7 @@ Przed przystąpieniem do tworzenia zadania eksportu transferować dane z usługi
         - [Utwórz konto FedEX](https://www.fedex.com/en-us/create-account.html), lub 
         - [Tworzenie konta przez firmę DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-create-an-export-job"></a>Krok 1: Tworzenie zadania eksportu
+## <a name="step-1-create-an-export-job"></a>Krok 1. Tworzenie zadania eksportu
 
 Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
 
@@ -99,13 +99,13 @@ Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
 
     - Kliknij przycisk **OK** aby zakończyć tworzenie zadania eksportu.
 
-## <a name="step-2-ship-the-drives"></a>Krok 2: Dostarczaj dyski
+## <a name="step-2-ship-the-drives"></a>Krok 2. Dostarczaj dyski
 
 Jeśli nie znasz liczbę stacji, należy przejść do [Sprawdź liczbę dysków](#check-the-number-of-drives). Jeśli wiesz, liczba dysków, przejdź do wysłania dysków.
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-3-update-the-job-with-tracking-information"></a>Krok 3: Aktualizacja zadania przy użyciu informacji o śledzeniu
+## <a name="step-3-update-the-job-with-tracking-information"></a>Krok 3. Aktualizacja zadania przy użyciu informacji o śledzeniu
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
@@ -127,7 +127,7 @@ Eksportowanie zostało ukończone. W tej chwili można usunąć zadania lub auto
 
 To *opcjonalne* krok ułatwia określa liczbę dysków wymaganych do zadania eksportu. Wykonaj tę czynność na działanie systemu Windows [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems).
 
-1. [Pobierz WAImportExport wersji 1](https://www.microsoft.com/en-us/download/details.aspx?id=42659) w systemie Windows. 
+1. [Pobierz WAImportExport wersji 1](https://aka.ms/waiev1) w systemie Windows. 
 2. Rozpakuj go do domyślnego folderu `waimportexportv1`. Na przykład `C:\WaImportExportV1`.
 3. Otwórz okno programu PowerShell lub wierszu polecenia z uprawnieniami administracyjnymi. Zmień katalog na folder rozpakowany, uruchom następujące polecenie:
     

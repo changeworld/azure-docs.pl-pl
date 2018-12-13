@@ -10,25 +10,23 @@ ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 53837573daef56bad12f627400f7db1ccd1c26cf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 034c82c2f52f0a4dbc19b49308d1ba4308716d45
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836971"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186807"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
 
 Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
-* [Wyświetl projektanta](view-designer.md): zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
-* [Dokumentacja części wizualizacji](view-designer-parts.md): Przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
+* [Wyświetl projektanta](view-designer.md): Omówienie projektanta widoków i procedur tworzenia i edytowania widoków niestandardowych.
+* [Dokumentacja części wizualizacji](view-designer-parts.md): Przewodnik po odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
 
 
 W poniższej tabeli opisano dostępnych kafelków Projektant widoków:  
@@ -96,7 +94,7 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 | Zapytanie |Zapytanie, które jest uruchamiane na wykres pierścieniowy. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. |
 | **Wykres pierścieniowy** |**> Center** |
 | Tekst |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
-| Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaj wartości wszystkie rekordy z wartością właściwości.</li><li>Wartość procentowa: Procent wartości sumowany rekordy z wartością właściwości, w porównaniu do sumowany wartości wszystkich rekordów.</li></ul> |
+| Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaj wartości wszystkie rekordy z wartością właściwości.</li><li>Procent: Procent wartości sumowany rekordy z wartością właściwości, w porównaniu do sumowany wartości wszystkich rekordów.</li></ul> |
 | Wartości wynikowe używane w środku |Opcjonalnie wybierz znak plus (+), aby dodać co najmniej jedną wartość. Wyniki zapytania są ograniczone do rekordów za pomocą wartości właściwości, które określisz. Jeśli żadne wartości nie zostaną dodane, wszystkie rekordy zostaną uwzględnione w zapytaniu. |
 | **Wykres pierścieniowy** |**> Dodatkowe opcje** |
 | Kolory |Kolor, który jest wyświetlany dla każdego z trzech najważniejszych właściwości. Aby określić alternatywne kolory dla konkretnych wartości właściwości, należy użyć *zaawansowane mapowanie kolorów*. |
@@ -142,7 +140,7 @@ Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dzienn
 | **Wykres liniowy** |**> Objaśnienie** |
 | Tytuł objaśnienia | Tekst, który jest wyświetlany powyżej wartości objaśnienia. |
 | Nazwa serii |Wartość właściwości serii, która ma być używany jako wartość objaśnienia. Jeśli seria nie zostanie podany, używane są wszystkie rekordy z zapytania. |
-| Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średniej wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkie rekordy, które są zwracane przez zapytanie.</li><li>Ostatnie przykładowy: wartość ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalna wartość interwałów, które znajdują się na wykresie.</li><li>Minimalna: Minimalna wartość interwałów, które znajdują się na wykresie.</li><li>Suma: Suma wartości wszystkich rekordów.</li></ul> |
+| Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średnią wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkich rekordów, które są zwracane przez zapytanie.</li><li>Ostatnia próbka: Wartość ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalna wartość interwałów, które znajdują się na wykresie.</li><li>Minimalna: Minimalna wartość interwałów, które znajdują się na wykresie.</li><li>Suma: Suma wartości wszystkich rekordów.</li></ul> |
 | **Wykres liniowy** |**> Oś y** |
 | Użyj skali logarytmicznej |Wybierz ten link, aby użyć skali logarytmicznej dla osi y. |
 | Jednostki |Określ jednostki dla wartości, które mają zostać zwrócone przez zapytanie. Te informacje są używane do wyświetlania etykiet wykresu, wskazujące typy wartości i, opcjonalnie, aby konwertować wartości. *Jednostki* typ Określa kategorię jednostki i definiuje dostępnych *bieżącej jednostki* wpisz wartości. Jeśli zostanie wybrana wartość w *przekonwertować*, wartości numeryczne są konwertowane z *bieżącej jednostki* typ *przekonwertować* typu. |
@@ -166,12 +164,12 @@ Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dzienn
 | Legenda |Tekst, który jest wyświetlany w polu objaśnienia dla pierwszej serii. |
 | Kolor |Kolor, który jest używany dla kolumn w pierwszej serii. |
 | Zapytanie wykresu |Zapytanie, które jest uruchamiane dla pierwszej serii. Liczba rekordów w poszczególnych przedziałach czasu jest reprezentowany przez kolumn wykresu. |
-| Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średniej wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkie rekordy, które są zwracane przez zapytanie.</li><li>Ostatnie przykładowy: wartość ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalna wartość interwałów, które znajdują się na wykresie.</li></ul> |
+| Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średnią wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkich rekordów, które są zwracane przez zapytanie.</li><li>Ostatnia próbka: Wartość ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalna wartość interwałów, które znajdują się na wykresie.</li></ul> |
 | **Drugi wykres** | |
 | Legenda |Tekst, który jest wyświetlany w polu objaśnienia dla drugiej serii. |
 | Kolor |Kolor, który jest używany dla kolumn w drugiej serii. |
 | Zapytanie wykresu |Zapytanie, które jest uruchamiane dla drugiej serii. Liczba rekordów w poszczególnych przedziałach czasu jest reprezentowany przez kolumn wykresu. |
-| Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średniej wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkie rekordy, które są zwracane przez zapytanie.</li><li>Ostatnie przykładowy: wartość ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalna wartość interwałów, które znajdują się na wykresie. |
+| Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średnią wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkich rekordów, które są zwracane przez zapytanie.</li><li>Ostatnia próbka: Wartość ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalna wartość interwałów, które znajdują się na wykresie. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Jeśli weryfikacja przepływu danych powinno być włączone dla kafelka, wybierz ten link. To podejście oferuje komunikat alternatywnego, jeśli dane są niedostępne. Zazwyczaj można użyć metody, aby podać komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu ustalenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zostanie wyświetlony komunikat zamiast wartość główne zapytanie. |

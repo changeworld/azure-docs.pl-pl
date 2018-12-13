@@ -1,6 +1,6 @@
 ---
-title: Przegląd kondycji usługi | Dokumentacja firmy Microsoft
-description: Spersonalizowane informacje o aplikacji Azure wpływu problemów aktualnych i przyszłych usługi Azure i konserwacji.
+title: Omówienie usługi Service Health | Dokumentacja firmy Microsoft
+description: Spersonalizowane informacje na temat aplikacji Azure wpływu problemów z obecnym i przyszłym usługi platformy Azure i konserwacji.
 services: Resource health
 documentationcenter: ''
 author: rboucher
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/27/2018
 ms.author: robb
-ms.openlocfilehash: f7fd27dc9be161059dc62071fee33374106e18ef
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: aa7a925255b0c30b84c3b32bb53ba3f31c11fa6b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061285"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162294"
 ---
 # <a name="service-health"></a>Service Health
-Kondycja usługi umożliwia można dostosować pulpit nawigacyjny, który śledzi kondycji usług platformy Azure w regionach, gdzie ich używać. Na tym pulpicie nawigacyjnym można śledzić active zdarzeń, takich jak bieżących problemach, nadchodzących zaplanowanej konserwacji lub klasyfikatory odpowiednich kondycji. Zdarzenia stają się nieaktywne, one umieszczone w historii kondycji przez 90 dni. Ponadto można użyć pulpit nawigacyjny kondycji usługi do tworzenia i zarządzania usługi kondycji alerty, które aktywnie powiadomienie, gdy usługa problemy mają wpływ na należy.
+Service Health zapewnia można dostosować pulpit nawigacyjny, który śledzi kondycji usług platformy Azure w regionach, gdzie można ich użyć. Na tym pulpicie nawigacyjnym możesz śledzić aktywne wydarzenia, takich jak problemy z usługą bieżące, zbliżającej się planowanej konserwacji lub porady dotyczące kondycji odpowiednimi. Zdarzenia stają się nieaktywne, są umieszczone w historii kondycji przez 90 dni. Na koniec można użyć pulpitu nawigacyjnego kondycji usługi do tworzenia i obsługi alertów dotyczących kondycji usługi, których aktywnie informujące o problemach z usługą mają wpływ na możesz.
 
-## <a name="service-health-events"></a>Zdarzenia kondycji usługi
-Kondycja usługi śledzi trzy typy zdarzeń kondycji, które mogą mieć wpływ na zasoby:
-1. **Usługa problemów** -problemy z usług Azure wpływających od razu. 
-2. **Zaplanowanej konserwacji** -najbliższej konserwacji, które mogą mieć wpływ na dostępność usług w przyszłości.  
-3. **Klasyfikatory kondycji** -zmiany w usługach Azure, które wymagają Twojej uwagi. Przykłady obejmują funkcje platformy Azure są przestarzałe lub przekracza przydział użycia.
+## <a name="service-health-events"></a>Zdarzenia usługi Service Health
+Kondycja usługi śledzi trzy rodzaje zdarzenia dotyczące kondycji, które mogą mieć wpływ na Twoje zasoby:
+1. **Usługa problemów** — problemy z usługami platformy Azure, wpływających teraz. 
+2. **Planowana konserwacja** -nadchodzącej konserwacji, które mogą mieć wpływ na dostępność usług w przyszłości.  
+3. **Porady dotyczące kondycji** -zmiany w usługach platformy Azure, które wymagają Twojej uwagi. Przykładami są przestarzałe funkcje systemu Azure lub przekraczają limit przydziału użycia.
 
-## <a name="get-started-with-service-health"></a>Wprowadzenie do usługi kondycji
-Aby uruchomić Pulpit nawigacyjny kondycji usługi, wybierz Kafelek kondycja usługi na pulpicie nawigacyjnym portalu. Jeśli Kafelek wcześniej zostały usunięte lub jest używany niestandardowy pulpit nawigacyjny, wyszukaj usługi usługi kondycji w "Więcej usługi" (dołu w lewo na pulpicie nawigacyjnym).
+## <a name="get-started-with-service-health"></a>Rozpoczynanie pracy z usługą Service Health
+Aby uruchomić Pulpit nawigacyjny kondycji usługi, wybierz Kafelek kondycja usługi na pulpicie nawigacyjnym portalu. Jeśli została wcześniej usunięta Kafelek lub korzystania z niestandardowego pulpitu nawigacyjnego, wyszukiwania dla usługi Service Health w "Więcej usług" (dołu z lewej na pulpicie nawigacyjnym).
 
-![Wprowadzenie do usługi kondycji](./media/service-health-overview/azure-service-health-overview-1.png)
+![Rozpoczynanie pracy z usługą Service Health](./media/service-health-overview/azure-service-health-overview-1.png)
 
-## <a name="see-current-issues-which-impact-your-services"></a>Zobacz bieżących problemach mogących mieć wpływ na usługi
-**Usługi problemów** widok zawiera wszystkie bieżące problemy w usług Azure, które wpływają na Twoich zasobów. Można zrozumieć, kiedy rozpoczął się problem i jakie usługi i regiony są w pełni funkcjonalne. Można również odczytać najnowszą aktualizację, aby zrozumieć Azure czynności aby rozwiązać ten problem. 
+## <a name="see-current-issues-which-impact-your-services"></a>Zobacz bieżące problemy, które mają wpływ usługi
+**Usługi problemów** widok pokazuje wszystkie bieżące problemy z usługami platformy Azure, które wpływają na Twoje zasoby. Można zrozumieć, kiedy problem zaczął występować i wpływ na usługach i regionach. Można również przeczytać najnowszej aktualizacji, aby dowiedzieć się, aby rozwiązać ten problem jest działania usługi Azure. 
 
-![Problem dotyczący usługi zarządzania](./media/service-health-overview/azure-service-health-overview-2.png)
+![Problem z usługą zarządzania](./media/service-health-overview/azure-service-health-overview-2.png)
 
-Wybierz **potencjalny wpływ** kartę, aby zapoznać się z listą określonych zasobów własnej, które może występować problem. Możesz pobrać listę CSV tych zasobów w celu udostępnienia zespołowi.
+Wybierz **potencjalny wpływ** kartę, aby zapoznać się z listą określonych zasobów jesteś właścicielem, które mogą mieć wpływ na ten problem. Możesz pobrać listę tych zasobów do udostępnienia swojemu zespołowi w pliku CSV.
 
-![Zarządzanie problem dotyczący usługi — wpływ](./media/service-health-overview/azure-service-health-overview-4.png)
+![Problem z usługą - wpływ na zarządzanie](./media/service-health-overview/azure-service-health-overview-4.png)
 
-## <a name="get-links-and-downloadable-explanations"></a>Korzystać z linków i wyjaśnienia do pobrania 
-Możesz uzyskać łącze problemu do użycia w systemie zarządzania problem. Możesz pobrać plików PDF i czasami pliki CSV można udostępniać osobom, które nie mają dostępu do portalu Azure.   
+## <a name="get-links-and-downloadable-explanations"></a>Łącza i wyjaśnienia do pobrania 
+Możesz uzyskać link do problemu w celu użycia w systemie zarządzania problemami. Możesz pobrać pliki PDF i czasami plików CSV na udostępnianie osobom, które nie mają dostępu do witryny Azure portal.   
 
-![Zarządzanie problem dotyczący usługi — Zarządzanie problemami](./media/service-health-overview/azure-service-health-overview-3.png)
+![Zarządzanie problem z usługą — Zarządzanie problemami](./media/service-health-overview/azure-service-health-overview-3.png)
 
-## <a name="get-support-from-microsoft"></a>Uzyskiwanie pomocy technicznej firmy Microsoft
-Jeśli zasób jest w złym stanie nawet po problem został rozwiązany, skontaktuj się z pomocą techniczną.  Użyj łącza pomocy technicznej po prawej stronie.  
+## <a name="get-support-from-microsoft"></a>Uzyskaj pomoc techniczną od firmy Microsoft
+Jeśli zasób jest w złym stanie nawet po usunięciu problemu, skontaktuj się z pomocą techniczną.  Użyj łącza pomocy technicznej w prawej części strony.  
 
 ## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>Przypnij mapę spersonalizowane kondycji do pulpitu nawigacyjnego
-Filtr o krytycznym znaczeniu subskrypcji, regiony i typów zasobów kondycji usługi. Zapisz filtr i Przypnij mapę world spersonalizowane kondycji do pulpitu nawigacyjnego portalu. 
+Filtruj Service Health, aby wyświetlić swoje subskrypcje krytyczne dla prowadzonej działalności, regionów i typów zasobów. Zapisz filtr i Przypnij mapę świata spersonalizowane kondycji do pulpitu nawigacyjnego portalu. 
 
 ![Mapa spersonalizowane kondycji filtru](./media/service-health-overview/azure-service-health-overview-6a.png)
 
-![Numer PIN mapy spersonalizowane kondycji](./media/service-health-overview/azure-service-health-overview-6b.png)
+![Przypnij mapę spersonalizowane kondycji](./media/service-health-overview/azure-service-health-overview-6b.png)
 
-## <a name="configure-service-health-alerts"></a>Skonfiguruj alerty dotyczące kondycji usługi
-Kondycja usługi integruje się z monitorem Azure za pośrednictwem wiadomości e-mail, wiadomości SMS i powiadomień elementu webhook otrzymywanie powiadomień wpływ na zasoby krytycznym znaczeniu. Konfigurowanie alertu dziennika aktywności odpowiednią usługę kondycji zdarzenie. Trasy alertu do odpowiednich osób w organizacji za pomocą grup akcji. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dotyczące kondycji usługi](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)
+## <a name="configure-service-health-alerts"></a>Konfigurowanie alertów dotyczących kondycji usługi
+Kondycja usługi integruje się z usługą Azure Monitor w celu powiadamiania o za pośrednictwem wiadomości e-mail, wiadomości SMS i powiadomień webhook o krytyczne dla prowadzonej działalności zasobów ma wpływ. Konfigurowanie alertu dziennika aktywności dla zdarzeń kondycji odpowiednią usługę. Alert ten należy kierować do odpowiednich osób w organizacji za pomocą grup akcji. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dotyczące kondycji usługi](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 
 # <a name="next-steps"></a>Następne kroki
-Konfigurowanie alertów, więc użytkownik jest powiadamiany o kondycji problemy. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dotyczące kondycji usługi](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+Konfigurowanie alertów, dzięki czemu użytkownik jest powiadamiany o problemów z kondycją. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dotyczące kondycji usługi](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 

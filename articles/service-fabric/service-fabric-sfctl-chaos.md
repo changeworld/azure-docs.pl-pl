@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e77dfdec902b64f2524c790bda6742eaa1105fc
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 697815aeca9b8a07e3cece877d610436b2b8ac83
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669178"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278291"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Uruchamianie, zatrzymywanie i sporządzić raport na temat usługi testu chaos.
@@ -47,9 +47,9 @@ Aby pobrać następny segment zdarzenia chaosu, można określić token kontynua
 |Argument|Opis|
 | --- | --- |
 | --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| — Godzina zakończenia — utc | Windows pliku reprezentuje czas zakończenia przedziału czasu, dla którego ma być generowany raport Chaos. Zapoznaj się z [metoda DateTime.ToFileTimeUtc](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc) Aby uzyskać szczegółowe informacje. |
+| — Godzina zakończenia — utc | Windows pliku reprezentuje czas zakończenia przedziału czasu, dla którego ma być generowany raport Chaos. Zapoznaj się z [metoda DateTime.ToFileTimeUtc](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) Aby uzyskać szczegółowe informacje. |
 | — Maksymalna liczba wyników | Maksymalna liczba wyników do zwrócenia w ramach kwerend stronicowanych. Ten parametr określa górną granicę na liczbie zwrócone wyniki. Wyniki zwracane, może być mniejsza niż określona maksymalna liczba wyników, jeśli nie mieszczą się w komunikacie zgodnie z ograniczeniami rozmiar maksymalny komunikatu zdefiniowane w konfiguracji. Jeśli ten parametr ma wartość zero lub nie określono, stronicowane zapytanie zawiera dowolną liczbę wyników jak to możliwe, który mieści się w komunikacie zwrotu. |
-| — utc-start-time | Windows pliku reprezentuje czas rozpoczęcia zakresu czasu, dla którego ma być generowany raport Chaos. Zapoznaj się z [metoda DateTime.ToFileTimeUtc](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc) Aby uzyskać szczegółowe informacje. |
+| — utc-start-time | Windows pliku reprezentuje czas rozpoczęcia zakresu czasu, dla którego ma być generowany raport Chaos. Zapoznaj się z [metoda DateTime.ToFileTimeUtc](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) Aby uzyskać szczegółowe informacje. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
@@ -104,7 +104,7 @@ Jeśli Chaos nie jest już uruchomiona w klastrze, zaczyna Chaos przekazanych w 
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 | --oczekiwania czas między błędów | Poczekaj czas (w sekundach) między kolejnych błędów w ramach jednej iteracji.  Domyślne\: 20. <br><br> Im większa wartość, dolna nakładających się między błędów i prostszej sekwencji stanu przechodzi prowadzącego klastra za pośrednictwem. Zaleca się zaczynać się wartością z zakresu od 1 i 5 oraz wykonywania ostrożność podczas przenoszenia w. |
 | --oczekiwania czas między iteracjami | Czas — separacji (w sekundach) między dwa kolejne iteracje elementu Chaos. Im większa wartość, tym niższy współczynnik iniekcji błędów.  Domyślne\: 30. |
-| --warning-as-error | Ustawia zasady kondycji Traktuj ostrzeżenia jako błędy. |
+| --warning-as-error | Wskazuje, czy ostrzeżenia są traktowane z tego samego ważność jako błędy. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
@@ -136,6 +136,7 @@ Zatrzymuje Chaos wykonywanie nowych błędów. Aktywne błędy będą nadal wyko
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Instalator](service-fabric-cli.md) usługi Service Fabric CLI.

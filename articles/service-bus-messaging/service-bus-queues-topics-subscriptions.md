@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: spelluru
-ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c4899db41f9c60bf6efb40c4d53aaa35f22ad275
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409765"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312888"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Kolejki, tematy i subskrypcje usługi Service Bus
 
@@ -32,9 +32,9 @@ Za pomocą kolejek w celu pośrednich między a konsumentami komunikatów zapewn
 
 ### <a name="create-queues"></a>Tworzenie kolejki
 
-Tworzenie kolejki za pomocą [witryny Azure portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [interfejsu wiersza polecenia](service-bus-quickstart-cli.md), lub [szablonów usługi Resource Manager](service-bus-resource-manager-namespace-queue.md). Następnie wysyłanie i odbieranie wiadomości przy użyciu [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) obiektu. 
+Tworzenie kolejki za pomocą [witryny Azure portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [interfejsu wiersza polecenia](service-bus-quickstart-cli.md), lub [szablonów usługi Resource Manager](service-bus-resource-manager-namespace-queue.md). Następnie wysyłanie i odbieranie wiadomości przy użyciu [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) obiektu.
 
-Aby szybko dowiedzieć się, jak utworzyć kolejkę, a następnie wysyłać i odbierać komunikaty z kolejki, zobacz [przewodników Szybki Start](service-bus-quickstart-portal.md) dla każdej metody. Więcej informacji na temat samouczek dotyczący sposobu użycia kolejek, zobacz [Rozpoczynanie pracy z kolejkami usługi Service Bus](service-bus-dotnet-get-started-with-queues.md). 
+Aby szybko dowiedzieć się, jak utworzyć kolejkę, a następnie wysyłać i odbierać komunikaty z kolejki, zobacz [przewodników Szybki Start](service-bus-quickstart-portal.md) dla każdej metody. Więcej informacji na temat samouczek dotyczący sposobu użycia kolejek, zobacz [Rozpoczynanie pracy z kolejkami usługi Service Bus](service-bus-dotnet-get-started-with-queues.md).
 
 Przykładowy pracy [przykładowe BasicSendReceiveUsingQueueClient](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient) w witrynie GitHub.
 
@@ -56,9 +56,9 @@ Dla porównania funkcji wysyłania komunikatu kolejki mapuje bezpośrednio na te
 
 ### <a name="create-topics-and-subscriptions"></a>Tworzyć tematy i subskrypcje
 
-Tworzenie tematu przypomina Tworzenie kolejki, zgodnie z opisem w poprzedniej sekcji. Następnie wysyłania komunikatów przy użyciu [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) klasy. Aby odbierać komunikaty, należy utworzyć co najmniej jedną subskrypcję tematu. Podobnie jak w kolejkach, komunikaty są odbierane z subskrypcji przy użyciu [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) zamiast obiektu [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) obiektu. Tworzenie subskrypcji klienta, przekazując nazwę tematu, Nazwa subskrypcji i (opcjonalnie) tryb odbierania jako parametry. 
+Tworzenie tematu przypomina Tworzenie kolejki, zgodnie z opisem w poprzedniej sekcji. Następnie wysyłania komunikatów przy użyciu [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) klasy. Aby odbierać komunikaty, należy utworzyć co najmniej jedną subskrypcję tematu. Podobnie jak w kolejkach, komunikaty są odbierane z subskrypcji przy użyciu [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) zamiast obiektu [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) obiektu. Tworzenie subskrypcji klienta, przekazując nazwę tematu, Nazwa subskrypcji i (opcjonalnie) tryb odbierania jako parametry.
 
-Aby uzyskać pełną Praca przykładu, zobacz [przykładowe BasicSendReceiveUsingTopicSubscriptionClient](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient) w witrynie Github.
+Aby uzyskać pełną Praca przykładu, zobacz [przykładowe BasicSendReceiveUsingTopicSubscriptionClient](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient) w witrynie GitHub.
 
 ### <a name="rules-and-actions"></a>Reguły i akcje
 
@@ -66,7 +66,7 @@ W wielu scenariuszach wiadomości, które mają szczególne cechy muszą zostać
 
 Aby uzyskać pełną Praca przykładu, zobacz [przykładowe TopicSubscriptionWithRuleOperationsSample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample) w witrynie GitHub.
 
-Aby uzyskać więcej informacji na temat wartości filtru możliwe dokumentacji dla [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) i [elementu SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) klasy. 
+Aby uzyskać więcej informacji na temat wartości filtru możliwe dokumentacji dla [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) i [elementu SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) klasy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

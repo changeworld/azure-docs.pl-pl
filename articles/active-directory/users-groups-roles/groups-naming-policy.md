@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 12/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 3368133dec82d946318a755dc98b068a048b9e83
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243133"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275112"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -58,6 +58,7 @@ Firma Microsoft zaleca używanie atrybutów, które mają wartości wypełnione 
 Listę zablokowanych wyrazów jest przecinkami lista wyrażeń do zablokowania w grupie nazwy i aliasy. Nie wyszukiwania ciągów podrzędne są wykonywane. Dokładne dopasowanie między nazwę grupy i co najmniej jeden niestandardowy słów zablokowanych jest wymagana do wyzwolenia błąd. Wyszukiwanie zamienionego nie jest wykonywane, dzięki czemu użytkownicy mogą używać popularne wyrazy, takie jak "Class", nawet jeśli "klasy" jest blokowane słowo.
 
 Blokowane słowo reguł listy:
+
 - Zablokowane słowa nie są z uwzględnieniem wielkości liter.
 - Gdy użytkownik wprowadzi zablokowanego wyrazu, jako część nazwy grupy, zobaczą komunikat o błędzie z zablokowanego wyrazu.
 - Istnieją ograniczenia znak słowa zablokowane.
@@ -120,7 +121,7 @@ Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytor
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Ustaw zasady nazewnictwa i podasz niestandardowe wyrazy zablokowane
 
-1. Ustaw prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell.
+1. Ustaw prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell. Aby funkcja działała poprawnie [GroupName] muszą być zawarte w ustawieniu.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -166,6 +167,27 @@ $Settings["CustomBlockedWordsList"] = $BadWords
 $Settings["EnableMSStandardBlockedWords"] = $True
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
 ````
+
+## <a name="remove-the-naming-policy"></a>Usuń zasady nazewnictwa
+
+1. Pusta grupa prefiksów i sufiksów nazw w programie Azure AD PowerShell.
+  
+  ````
+  $Setting["PrefixSuffixNamingRequirement"] =""
+  ````
+  
+2. Pusty niestandardowe wyrazy zablokowane. 
+  
+  ````
+  $Setting["CustomBlockedWordsList"]=""
+  ````
+  
+3. Zapisz ustawienia.
+  
+  ````
+  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+  ````
+
 
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>Zasady nazewnictwa napotka w aplikacjach usługi Office 365
 

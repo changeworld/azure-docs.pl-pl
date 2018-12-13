@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: ede96607e14a43e85c3605e2d710c15ef0495c1f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 5e3c282c198b6a1290e724549a4af30119f9cb04
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868184"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251219"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych, przy minimalnych przestojach
 
@@ -35,8 +35,8 @@ Nie musisz przejmować się zakupu sprzętu i zmieniając podstawowej infrastruk
 
 Usługa Azure SQL Database oferuje [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
-- [Modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) oferuje połączenie wystąpień obliczeniowych, pamięci i zasobów we/wy w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych: podstawowa, standardowa i Premium. Poziomy wydajności w każdej warstwie udostępniają różne kombinacje tych zasobów i można do nich dodawać kolejne zasoby magazynu.
-- [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu. Ten model zakupu oferuje trzy warstwy usługi: ogólnego przeznaczenia, krytyczne dla działania firmy i na dużą skalę (wersja zapoznawcza).
+- [Modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) oferuje połączenie wystąpień obliczeniowych, pamięci i zasobów we/wy w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych: Basic, Standard i Premium. Poziomy wydajności w każdej warstwie udostępniają różne kombinacje tych zasobów i można do nich dodawać kolejne zasoby magazynu.
+- [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu. Ten model zakupu oferuje trzy warstwy usługi: Ogólnego przeznaczenia, krytyczne dla działania firmy i na dużą skalę (wersja zapoznawcza).
 
 Możesz utworzyć pierwszą aplikację na małej, pojedynczej bazy danych na niskim poziomie kosztów miesięcznie w warstwie podstawowa, standardowa lub ogólnego przeznaczenia i następnie zmienić warstwę usługi ręcznie lub programowo w dowolnym momencie do warstwy usług Premium lub krytyczne dla działania firmy, aby spełnić ne zewnętrznego źródła danych rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
@@ -50,7 +50,7 @@ Istnieją jednak skrypty, które mogą pomóc zautomatyzować skalowalność dla
 
 Możesz zmienić [warstwy usługi jednostki DTU](sql-database-service-tiers-dtu.md) lub [charakterystyki — rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) w dowolnym momencie przy minimalnych przestojach do Twojej aplikacji (zwykle poniżej czterech sekund). W przypadku wielu firm i aplikacji możliwość tworzenia baz danych i dostosowywania wydajności na żądanie jest wystarczająca, zwłaszcza jeśli wzorce użycia są względnie przewidywalne. Jednak w przypadku nieprzewidywalnych wzorców zarządzanie kosztami i modelem biznesowym może być trudne. W tym scenariuszu należy użyć puli elastycznej z określoną liczbą jednostek Edtu, które są współużytkowane przez wiele baz danych w puli.
 
-![Wprowadzenie do usługi SQL Database: jednostki DTU z jedną bazą danych według warstwy i poziomu.](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+![Wprowadzenie do usługi SQL Database: Pojedynczą bazę danych jednostek Dtu według warstwy i poziomu](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 Wszystkich trzech wersjach usługi Azure SQL Database oferuje możliwość ich dynamicznie skalować bazy danych:
 
@@ -62,7 +62,7 @@ Wszystkich trzech wersjach usługi Azure SQL Database oferuje możliwość ich d
 
 Skalowanie zasobów jest najłatwiejszym i najbardziej skutecznym sposobem, aby zwiększyć wydajność bazy danych bez konieczności zmieniania kodu bazy danych lub aplikacji. W niektórych przypadkach nawet najwyższej warstwy usług, rozmiarów wystąpień obliczeniowych i optymalizacji wydajności może nie obsługiwać obciążenia o pomyślnym i ekonomiczna metoda. W tym przypadku masz te dodatkowe funkcje umożliwiające skalowanie bazy danych:
 
-- [Odczyt skalowalnego w poziomie](sql-database-read-scale-out.md) to funkcja dostępna w którym otrzymujesz jedna replika przeznaczona tylko do odczytu danych gdzie wykonania wymagających zapytań tylko do odczytu, takich jak raporty. Repliki tylko do czerwonego będzie obsługiwać obciążenia tylko do odczytu bez wpływu na obciążenie zasobów w głównej bazie danych.
+- [Odczyt skalowalnego w poziomie](sql-database-read-scale-out.md) to funkcja dostępna w którym otrzymujesz jedna replika przeznaczona tylko do odczytu danych gdzie wykonania wymagających zapytań tylko do odczytu, takich jak raporty. Repliki tylko do odczytu będzie obsługiwać obciążenia tylko do odczytu bez wpływu na obciążenie zasobów w głównej bazie danych.
 - [Fragmentowanie bazy danych](sql-database-elastic-scale-introduction.md) to zbiór technik umożliwia podzielić dane na kilka baz danych i ich niezależne skalowanie.
 
 ## <a name="next-steps"></a>Kolejne kroki

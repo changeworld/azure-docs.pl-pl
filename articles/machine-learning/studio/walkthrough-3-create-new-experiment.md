@@ -1,12 +1,11 @@
 ---
-title: 'Krok 3: Tworzenie nowego eksperymentu usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft'
-description: 'Krok 3 programowanie przewodnik rozwiązania do analizy predykcyjnej: Tworzenie nowego eksperymentu szkolenia w usłudze Azure Machine Learning Studio.'
+title: Krok 3. Tworzenie nowego eksperymentu usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
+description: 'Krok 3 programowanie przewodnik rozwiązania do analizy predykcyjnej: Utwórz nowy eksperyment w usłudze Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317532"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260790"
 ---
-# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Przewodnik, krok 3: Tworzenie nowego eksperymentu usługi Azure Machine Learning Studio
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Przewodnik, krok 3 Tworzenie nowego eksperymentu usługi Azure Machine Learning Studio
 Jest to trzeci krok tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md)
@@ -56,7 +55,7 @@ Następnym krokiem w tym instruktażu jest tworzenie eksperymentu w usłudze Mac
     ![Dodaj zestaw danych do eksperymentu][7]
 
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
-Możesz wyświetlić pierwszych 100 wierszy danych i niektóre informacje statystyczne dla całego zestawu danych: kliknij port wyjściowy zestawu danych (mały okrąg w dolnej części), a następnie wybierz pozycję **Visualize**.  
+Możesz wyświetlić pierwszych 100 wierszy danych i niektóre informacje statystyczne dla całego zestawu danych: Kliknij port wyjściowy zestawu danych (mały okrąg w dolnej części), a następnie wybierz pozycję **Visualize**.  
 
 Ponieważ plik danych nie został dostarczony z nagłówkami kolumn, Studio udostępnił nagłówki ogólnego (Col1, Col2, *itp.*). Dobre nagłówki nie są niezbędne do tworzenia modelu, ale mogą ułatwić pracę z danymi w eksperymencie. Ponadto po opublikowaniu tego modelu po pewnym czasie w usłudze sieci web, nagłówki pomagać w identyfikacji kolumn tak, aby użytkownik usługi.  
 
@@ -164,7 +163,7 @@ Nasz eksperyment teraz wygląda następująco:
 
 Aby uzyskać więcej informacji na temat używania skryptów języka R w eksperymenty zobacz [rozszerzanie eksperymentu przy użyciu języka R](extend-your-experiment-with-r.md).
 
-**Następnie: [szkolenie i Ewaluacja modeli](walkthrough-4-train-and-evaluate-models.md)**
+**Dalej: [Nauczanie i Ewaluacja modeli](walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/walkthrough-3-create-new-experiment/rename-experiment.png

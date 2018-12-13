@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 12/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: d16f05c208e737f7c0095fc95c4272fe216f7a34
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 36cdb8a84c7ec7e05917be1144ae008f90cad03a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094937"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321139"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -35,7 +35,7 @@ Nie można zmienić lokalizacji zasobu. Przenoszenie zasobu tylko przenosi je do
 
 ## <a name="checklist-before-moving-resources"></a>Listę kontrolną przed przenoszeniem zasobów
 
-Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki sprawdzeniu tych warunków można uniknąć błędów.
+Istnieje kilka ważnych kroków, aby zrobić przed przeniesieniem zasobu. Dzięki sprawdzeniu tych warunków można uniknąć błędów.
 
 1. Subskrypcje źródłowe i docelowe muszą istnieć w tej samej [dzierżawy usługi Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md). Aby sprawdzić, czy obie subskrypcje mają ten sam identyfikator dzierżawy, należy użyć programu Azure PowerShell lub wiersza polecenia platformy Azure.
 
@@ -58,7 +58,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
   * [Transfer ownership of an Azure subscription to another account](../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto)
   * [Jak skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. Subskrypcja docelowa musi być zarejestrowana dla dostawcy przenoszonego zasobu. Jeśli nie, pojawi się komunikat o błędzie informujący, że **subskrypcja nie jest zarejestrowana dla typu zasobu**. Ten problem może wystąpić podczas przenoszenia zasobu do nowej subskrypcji, która nigdy nie była używana z tym typem zasobu.
+1. Subskrypcja docelowa musi być zarejestrowana dla dostawcy przenoszonego zasobu. Jeśli nie, pojawi się komunikat o błędzie informujący, że **subskrypcja nie jest zarejestrowana dla typu zasobu**. Możesz zobaczyć ten błąd podczas przenoszenia zasobu do nowej subskrypcji, ale ta subskrypcja nie była nigdy używana z tym typem zasobu.
 
   W przypadku programu PowerShell Użyj następujących poleceń, można pobrać stanu rejestracji:
 
@@ -93,7 +93,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
 
 1. Przed przeniesieniem zasoby, sprawdź limity przydziału subskrypcji dla subskrypcji, którą przenosisz zasoby. Jeśli przenoszenia zasobów oznacza, że subskrypcja przekroczy limit, należy przejrzeć, czy możesz poprosić o zwiększenie limitu przydziału. Aby uzyskać listę limitów i sposób poprosić o zwiększenie zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
 
-1. Jeśli to możliwe, podział dużych przenosi do operacji przenoszenia oddzielne. Menedżer zasobów natychmiast kończy prób przenosić ponad 800 zasoby w ramach jednej operacji. Jednak przenoszenia zasobów mniej niż 800 może również zakończyć się niepowodzeniem, przekroczeniem limitu czasu.
+1. Jeśli to możliwe, podział dużych przenosi do operacji przenoszenia oddzielne. Menedżer zasobów natychmiast zwraca błąd, jeśli istnieje więcej niż 800 zasobów w ramach jednej operacji. Jednak przenoszenia zasobów mniej niż 800 może również zakończyć się niepowodzeniem, przekroczeniem limitu czasu.
 
 1. Usługa musi mieć możliwość przenoszenia zasobów. Aby ustalić, czy przeniesienie kończy się pomyślnie, [zweryfikować Twoje żądanie przeniesienia](#validate-move). Zobacz sekcje poniżej, w tym artykule [usługi umożliwiają przenoszenie zasobów](#services-that-can-be-moved) oraz tych, które [usługi nie umożliwiają przenoszenie zasobów](#services-that-cannot-be-moved).
 
@@ -130,7 +130,7 @@ Z treści żądania:
 
 ```json
 {
- "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "resources": ["<resource-id-1>", "<resource-id-2>"],
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
@@ -169,7 +169,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Analysis Services
 * API Management
 * Aplikacje usługi App Service (aplikacje sieci web) — zobacz [ograniczenia usługi App Service](#app-service-limitations)
-* Certyfikaty usługi App Service
+* Certyfikaty usługi App Service — zobacz [ograniczenia certyfikatu usługi App Service](#app-service-certificate-limitations)
 * Application Insights
 * Automatyzacja
 * Azure Active Directory B2C
@@ -226,7 +226,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Nie można przenieść magazyn — konta magazynu w różnych regionach, w tej samej operacji. Zamiast tego należy użyć oddzielnych operacji dla każdego regionu.
 * Magazyn (klasyczny) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Stream Analytics — Stream Analytics, zadania nie można przenieść uruchamianego w stanie.
-* Bazy danych programu SQL server — bazy danych i serwera musi znajdować się w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
+* Bazy danych programu SQL server — bazy danych i serwera musi być w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
 * Time Series Insights
 * Traffic Manager
 * Virtual Machines — w przypadku maszyn wirtualnych przy użyciu dysków zarządzanych, zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
@@ -312,15 +312,7 @@ Ta obsługa oznacza, że można również przenosić:
 Ograniczenia, które nie są jeszcze obsługiwane są następujące:
 
 * Maszyn wirtualnych przy użyciu certyfikatu przechowywanego w usłudze Key Vault można przenieść do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
-* Maszyny wirtualne skonfigurowane przy użyciu usługi Azure Backup. Użyj poniższych obejście, aby przenieść te maszyny wirtualne
-  * Znajdź lokalizację maszyny wirtualnej.
-  * Znajdź grupę zasobów, z następującym wzorcem nazewnictwa: `AzureBackupRG_<location of your VM>_1` na przykład AzureBackupRG_westus2_1
-  * Jeśli komputer znajduje się w witrynie Azure portal, a następnie sprawdź "Pokaż ukryte typy"
-  * Jeśli w programie PowerShell użyj `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` polecenia cmdlet
-  * Jeśli w interfejsu wiersza polecenia, użyj `az resource list -g AzureBackupRG_<location of your VM>_1`
-  * Teraz zlokalizować zasobu o typie `Microsoft.Compute/restorePointCollections` zawierający wzorzec nazewnictwa `AzureBackup_<name of your VM that you're trying to move>_###########`
-  * Usunąć ten zasób
-  * Po zakończeniu usuwania będzie można przenieść maszynę wirtualną
+* Jeśli maszyna wirtualna jest skonfigurowany do tworzenia kopii zapasowych, zobacz [ograniczenia usług Recovery Services](#recovery-services-limitations).
 * Nie można przenieść Virtual Machine Scale Sets przy użyciu standardowych jednostek SKU modułu równoważenia obciążenia lub standardowego publicznego adresu IP jednostki SKU
 * Utworzona na podstawie zasobów w portalu Marketplace z planami dołączone maszyny wirtualne nie można przenosić między grupami zasobów lub subskrypcji. Anulowanie aprowizacji maszyny wirtualnej w bieżącej subskrypcji i Wdróż ponownie w nowej subskrypcji.
 
@@ -334,19 +326,17 @@ Nie można przenieść sieci wirtualnej do innej subskrypcji, jeśli sieć wirtu
 
 ## <a name="app-service-limitations"></a>Ograniczenia usługi App Service
 
-Ograniczenia dotyczące przenoszenia zasobów usługi App Service zależą od tego, czy przenosisz zasoby w ramach subskrypcji lub do nowej subskrypcji.
-
-Ograniczenia opisane w tych sekcjach dotyczą przekazane certyfikaty, a nie certyfikatów usługi App Service. Certyfikaty usługi App Service można przenieść do nowej grupy zasobów lub subskrypcji bez ograniczeń. Jeśli masz wiele aplikacji sieci web, które używają tego samego certyfikatu usługi App Service, najpierw przenieść wszystkie aplikacje sieci web, następnie przenieść certyfikat.
+Ograniczenia dotyczące przenoszenia zasobów usługi App Service zależą od tego, czy przenosisz zasoby w ramach subskrypcji lub do nowej subskrypcji. Jeśli Twoja aplikacja sieci web używa certyfikatu usługi App Service, zobacz [ograniczenia certyfikatu usługi App Service](#app-service-certificate-limitations)
 
 ### <a name="moving-within-the-same-subscription"></a>Przenoszenie w ramach tej samej subskrypcji
 
-Podczas przenoszenia aplikacji sieci Web _w ramach tej samej subskrypcji_, nie można przenieść przekazane certyfikaty SSL. Jednak aplikacja sieci Web można przenieść do nowej grupy zasobów, bez konieczności przenoszenia jego przekazanego certyfikatu SSL i funkcje protokołu SSL aplikacji nadal działa.
+Podczas przenoszenia aplikacji sieci Web _w ramach tej samej subskrypcji_, nie można przenieść certyfikaty SSL innej firmy. Aplikacja sieci Web można przenieść do nowej grupy zasobów, bez konieczności przenoszenia jego certyfikatów innych firm i funkcje protokołu SSL aplikacji nadal działa.
 
 Jeśli chcesz przenieść certyfikatu SSL z aplikacją sieci Web, wykonaj następujące czynności:
 
-1. Usuń przekazany certyfikat z aplikacji sieci Web.
+1. Usuwanie certyfikatu innej firmy z aplikacji sieci Web, ale zachować kopię certyfikatu
 2. Przenoszenie aplikacji sieci Web.
-3. Przekaż certyfikat do przeniesionych aplikacji sieci Web.
+3. Przekaż certyfikat innej firmy do przeniesionych aplikacji sieci Web.
 
 ### <a name="moving-across-subscriptions"></a>Przenoszenie między subskrypcjami
 
@@ -359,6 +349,10 @@ Podczas przenoszenia aplikacji sieci Web _w subskrypcjach_, obowiązują następ
     - Środowiska usługi App Service
 - Wszystkie zasoby usługi App Service w grupie zasobów, muszą zostać przeniesione razem.
 - Zasoby usługi App Service mogą być przenoszone z grupy zasobów, w której zostały pierwotnie utworzone. Jeśli zasób usługi App Service nie jest już w jego oryginalnej grupie zasobów, należy je przenieść wróć do tej grupy oryginalnego najpierw, a następnie mogą być przenoszone między subskrypcjami.
+
+## <a name="app-service-certificate-limitations"></a>Ograniczenia dotyczące certyfikatu usługi aplikacji
+
+Certyfikatu usługi App Service można przenieść do nowej grupy zasobów lub subskrypcji. Jeśli certyfikatu usługi App Service jest powiązana z aplikacją internetową, należy wykonać pewne kroki przed przeniesieniem zasobów do nowej subskrypcji. Usuwanie powiązania SSL i certyfikatu prywatnego aplikacji sieci web przed przejściem do zasobów. Certyfikat usługi App Service nie ma konieczności zostać usunięte, po prostu certyfikatu prywatnego aplikacji sieci web.
 
 ## <a name="classic-deployment-limitations"></a>Ograniczenia wdrożenia klasycznego
 
@@ -382,7 +376,7 @@ Aby przenieść zasobów klasycznych do nowej grupy zasobów w ramach tej samej 
 Podczas przenoszenia zasobów do nowej subskrypcji, obowiązują następujące ograniczenia:
 
 * Wszystkie zasoby klasyczne w subskrypcji należy przenieść w tej samej operacji.
-* Subskrypcja docelowa nie może zawierać inne zasoby klasyczne.
+* Subskrypcja docelowa nie może mieć inne zasoby klasyczne.
 * Przeniesienie można jedynie żądać użycie oddzielnych interfejsu API REST, aby poruszać się klasycznego. Standardowe polecenia move Menedżera zasobów nie działają podczas przenoszenia zasobów klasycznych do nowej subskrypcji.
 
 Aby przenieść zasobów klasycznych do nowej subskrypcji, użyj operacji REST, które są specyficzne dla zasobów klasycznych. Aby korzystanie z interfejsu REST, wykonaj następujące czynności:
@@ -448,18 +442,21 @@ Operacja może trwać kilka minut.
 
 Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się w prywatnej wersji zapoznawczej. Aby wypróbować tę funkcję, zapisać AskAzureBackupTeam@microsoft.com.
 
-Przeniesienie nie jest włączone dla zasobów magazynu, sieci lub obliczeń umożliwia konfigurowanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
+Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie. Nie można przenieść magazynów, które wykonują kopie zapasowe usługi Azure Files, usługi Azure File Sync lub SQL w przypadku maszyn wirtualnych IaaS. 
 
-Na przykład załóżmy, że zostały skonfigurowane do replikacji maszyn lokalnych na koncie magazynu (Storage1) i chcesz chronionej maszyny, co pozwoli uzyskać po włączeniu trybu failover na platformie Azure jako maszyna wirtualna (MW1) dołączone do sieci wirtualnej (Network1). Nie można przenieść jedną z następujących zasobów platformy Azure — Storage1, VM1 i Network1 — między grupami zasobów w ramach tej samej subskrypcji lub w różnych subskrypcjach.
+Jeśli maszyna wirtualna nie jest przenoszony z magazynem, bieżących punktów odzyskiwania maszyn wirtualnych pozostają w magazynie, dopóki nie wygasną. Czy maszyna wirtualna została przeniesiona z magazynem, czy nie, możesz przywrócić maszynę wirtualną z historii kopii zapasowych w magazynie.
 
-Aby przenieść Maszynę wirtualną zarejestrowane w **usługa Azure backup** między grupami zasobów:
- 1. Tymczasowo Zatrzymaj kopię zapasową i Zachowaj dane kopii zapasowej
- 2. Przenieś maszynę Wirtualną do docelowej grupy zasobów
- 3. Ponowne włączanie ochrony w ramach tego samego/nowy magazyn
+Magazyn usługi Recovery Services nie obsługuje tworzenia kopii zapasowych między subskrypcjami. Po przeniesieniu magazyn kopii zapasowych danych maszyny wirtualnej między subskrypcjami możesz przenosić maszyny wirtualne z tą samą subskrypcją i Użyj tej samej grupie zasobów docelowych, aby kontynuować tworzenie kopii zapasowych.
 
-Użytkownicy mogą przywracać z dostępnych punktów przywracania utworzonych przed operacji przenoszenia.
+Zasady tworzenia kopii zapasowych, definicja magazynu są przechowywane, gdy magazyn zostanie przeniesiona. Monitorowanie i raportowanie musi zostać ponownie skonfigurować magazynu po przeniesieniu.
 
-Jeśli użytkownik przenosi kopii zapasowej maszyny Wirtualnej między subskrypcjami, krok 1 i 2 pozostają takie same. W kroku 3 użytkownik musi ochronę maszyny Wirtualnej w nowym magazynie obecne / utworzonych w subskrypcji docelowej. Magazyn usługi Recovery Services nie obsługuje tworzenia kopii zapasowych między subskrypcjami.
+Aby przenieść maszynę wirtualną do nowej subskrypcji, bez konieczności przenoszenia magazynu usługi Recovery Services:
+
+ 1. Tymczasowo Zatrzymaj kopię zapasową
+ 2. Przenieś maszyny wirtualne na nową subskrypcję
+ 3. Ponowne włączanie ochrony w obszarze nowego magazynu w tej subskrypcji
+
+Przeniesienie nie jest włączone dla zasobów magazynu, sieci lub obliczeń umożliwia konfigurowanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery. Na przykład załóżmy, że zostały skonfigurowane do replikacji maszyn lokalnych na koncie magazynu (Storage1) i chcesz chronionej maszyny, co pozwoli uzyskać po włączeniu trybu failover na platformie Azure jako maszyna wirtualna (MW1) dołączone do sieci wirtualnej (Network1). Nie można przenieść jedną z następujących zasobów platformy Azure — Storage1, VM1 i Network1 — między grupami zasobów w ramach tej samej subskrypcji lub w różnych subskrypcjach.
 
 ## <a name="hdinsight-limitations"></a>Ograniczenia HDInsight
 
@@ -469,7 +466,7 @@ Podczas przenoszenia klastra usługi HDInsight do nowej subskrypcji, należy naj
 
 ## <a name="search-limitations"></a>Ograniczenia dotyczące wyszukiwania
 
-Nie można przenieść wiele zasobów wyszukiwania w całości umieszczony w różnych regionach.
+Nie można przenieść wszystkiego naraz kilka wyszukiwania zasobów w różnych regionach.
 W takim przypadku należy przenieść je oddzielnie.
 
 ## <a name="lb-limitations"></a> Ograniczenia dotyczące modułu równoważenia obciążenia
@@ -484,7 +481,7 @@ Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
 
 ## <a name="use-portal"></a>Korzystanie z portalu
 
-Instrukcję przenoszenia zasobów, wybierz grupę zasobów zawierającą te zasoby, a następnie wybierz **przenieść** przycisku.
+Instrukcję przenoszenia zasobów, wybierz grupę zasobów za pomocą tych zasobów, a następnie wybierz **przenieść** przycisku.
 
 ![Przenoszenie zasobów](./media/resource-group-move-resources/select-move.png)
 
@@ -504,7 +501,7 @@ Po ukończeniu, otrzymasz powiadomienie o wyniku.
 
 ## <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) polecenia. Poniższy przykład pokazuje, jak przenieść wiele zasobów do nowej grupy zasobów.
+Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) polecenia. Poniższy przykład pokazuje, jak przenieść kilka zasobów do nowej grupy zasobów.
 
 ```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
@@ -516,7 +513,7 @@ Aby przejść do nowej subskrypcji, należy dołączyć wartość dla `Destinati
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj [przenoszenia zasobów az](/cli/azure/resource?view=azure-cli-latest#az-resource-move) polecenia. Podaj identyfikatory zasobów można przenieść zasobu. Poniższy przykład pokazuje, jak przenieść wiele zasobów do nowej grupy zasobów. W `--ids` parametru, podaj listę rozdzielonych spacjami identyfikatorów można przenieść zasobów.
+Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj [przenoszenia zasobów az](/cli/azure/resource?view=azure-cli-latest#az-resource-move) polecenia. Podaj identyfikatory zasobów można przenieść zasobu. Poniższy przykład pokazuje, jak przenieść kilka zasobów do nowej grupy zasobów. W `--ids` parametru, podaj listę rozdzielonych spacjami identyfikatorów można przenieść zasobów.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)

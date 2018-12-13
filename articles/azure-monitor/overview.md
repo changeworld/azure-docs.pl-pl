@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: ccdee1963d3d37966f6784e7a7421c500d6a8a51
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2d1f96359512a3c2135909ebf69ec9ec3b801d61
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994216"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190564"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -48,11 +48,11 @@ Język zapytań usługi Log Analytics jest odpowiedni dla prostego dziennika zap
 ## <a name="what-data-does-azure-monitor-collect"></a>Jakie dane są zbierane w usłudze Azure Monitor
 Usługa Azure Monitor umożliwia zbieranie danych z różnych źródeł. Można traktować danych monitorowania dla aplikacji w warstwach — od aplikacji, dowolnego systemu operacyjnego i usług, który opiera się na dół samą platformę. Usługa Azure Monitor zbiera dane z każdej z następujących warstwach:
 
-- **Monitorowanie danych aplikacji**: dane dotyczące wydajności i funkcji kodu zostały napisane, niezależnie od platformy.
-- **Dane monitorowania systemu operacyjnego gościa**: dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Może to być uruchomiony w platformie Azure, innej chmurze lub lokalnie. 
-- **Dane monitorowania zasobów platformy Azure**: dane dotyczące operacji zasobu platformy Azure.
-- **Subskrypcja platformy Azure, danych monitorowania**: dane dotyczące operacji i zarządzania subskrypcją platformy Azure, a także dane dotyczące kondycji i działanie systemu Azure sam. 
-- **Dzierżawa usługi Azure monitoring danych**: dane o poziomie dzierżawy usług platformy Azure, takich jak Azure Active Directory.
+- **Monitorowanie danych aplikacji**: Dane dotyczące wydajności i funkcjonalności, kodu, które zostały napisane, niezależnie od platformy.
+- **Dane monitorowania systemu operacyjnego gościa**: Dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Może to być uruchomiony w platformie Azure, innej chmurze lub lokalnie. 
+- **Dane monitorowania zasobów platformy Azure**: Dane dotyczące operacji zasobu platformy Azure.
+- **Subskrypcja platformy Azure, danych monitorowania**: Dane dotyczące operacji i zarządzania subskrypcją platformy Azure, a także dane dotyczące kondycji i działanie systemu Azure sam. 
+- **Dzierżawa usługi Azure monitoring danych**: Dane o poziomie dzierżawy usług platformy Azure, takich jak Azure Active Directory.
 
 Zaraz po utworzeniu subskrypcji platformy Azure i zacznij dodawać zasoby, takie jak maszyny wirtualne i aplikacje sieci web usługi Azure Monitor rozpoczyna zbieranie danych.  [Dzienniki aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) rejestrowania po utworzeniu lub zmodyfikowaniu zasobów. [Metryki](../monitoring-and-diagnostics/monitoring-overview-metrics.md) informujące, jaka jest wydajność zasobów i zasoby, które go używa. 
 
@@ -96,7 +96,7 @@ Oprócz umożliwienia interakcyjne analizowanie danych monitorowania, to efektyw
 ### <a name="alerts"></a>Alerty
 [Alerty w usłudze Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktywnego powiadamiania o krytycznych warunków i potencjalnie próba akcje naprawcze. Podaj reguły alertów na podstawie metryk niemal w czasie rzeczywistym alerty oparte na wartości liczbowe, podczas gdy zasady oparte na dziennikach przesłanie do złożonej logiki przez dane z wielu źródeł.
 
-Reguły usługi Azure Monitor używany alertów [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md), które zawierają unikatowych zestawów odbiorców i akcje, które mogą być współużytkowane przez wiele reguł. Zgodnie z wymaganiami, grupy akcji można wykonywać takie zadania jak przy użyciu elementów webhook, mają alerty start działań zewnętrznych lub integracji z narzędziami ITSM.
+Reguły usługi Azure Monitor używany alertów [grup akcji](../azure-monitor/platform/action-groups.md), które zawierają unikatowych zestawów odbiorców i akcje, które mogą być współużytkowane przez wiele reguł. Zgodnie z wymaganiami, grupy akcji można wykonywać takie zadania jak przy użyciu elementów webhook, mają alerty start działań zewnętrznych lub integracji z narzędziami ITSM.
 
 ![Alerty](media/overview/alerts.png)
 

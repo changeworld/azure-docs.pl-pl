@@ -1,6 +1,6 @@
 ---
-title: Uaktualnianie do najnowszej wersji interfejsu API REST usługi Azure Search | Dokumentacja firmy Microsoft
-description: Uaktualnianie do najnowszej wersji interfejsu API REST usługi Azure Search
+title: Uaktualnij do najnowszej wersji interfejsu API REST usługi Azure Search — usługa Azure Search
+description: Różnice w wersjach interfejsu API i naukę akcje, które są wymagane, aby przeprowadzić migrację istniejącego kodu do najnowszej wersji interfejsu API REST usługi Azure Search.
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,14 +9,15 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 2efe7769f68988f3c0d52c8806b78c1b96d8c639
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.custom: seodec2018
+ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620233"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312191"
 ---
-# <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>Uaktualnianie do najnowszej wersji interfejsu API REST usługi Azure Search
+# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Uaktualnij do najnowszej wersji interfejsu API REST usługi Azure Search
 Jeśli używasz poprzedniej wersji [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/), ten artykuł pomoże Ci uaktualnienia aplikacji w taki sposób, aby użyć najnowszej wersji ogólnie dostępnej wersji interfejsu API, 2017-11-11.
 
 Wersja 2017-11-11 interfejsu API REST zawiera pewne zmiany z wcześniejszych wersji. Są to przede wszystkim zgodne z poprzednimi wersjami, więc zmiana kodu należy wymagać tylko minimalnym nakładzie pracy, w zależności od instalowanej wersji używanego wcześniej. Zobacz [kroki niezbędne do uaktualnienia](#UpgradeSteps) zawiera instrukcje dotyczące sposobu zmiany kodu do nowej wersji interfejsu API.

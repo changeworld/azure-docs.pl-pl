@@ -1,5 +1,5 @@
 ---
-title: Zrozumienie cyklu życia planu platformy Azure
+title: Informacje o cyklu życia planu
 description: Informacje o cyklu życia, które przechodzi planu i szczegółowe informacje o każdym etapie.
 services: blueprints
 author: DCtheGeek
@@ -8,19 +8,20 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 882279019a5f321c6af9beab1f4d0f220781bc5c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094163"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309810"
 ---
-# <a name="understand-the-life-cycle-of-an-azure-blueprint"></a>Zrozumienie cyklu życia planu platformy Azure
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Informacje o cyklu życia planu platformy Azure
 
-Podobnie jak wiele zasobów na platformie Azure planu w plany usługi Azure ma typowe i fizyczne cyklu życia. Ich tworzenia, wdrożona i na końcu usuwane po nie są już potrzebne lub istotne.
+Podobnie jak wiele zasobów na platformie Azure planu w plany usługi Azure ma typowe i fizyczne cykl życia. Ich tworzenia, wdrożona i na końcu usuwane po nie są już potrzebne lub istotne.
 Schematy obsługuje operacje standardowego cyklu życia. Następnie kompiluje na nich, aby zapewnić dodatkowe poziomy stanu, obsługujące typowe ciągłej integracji i ciągłego wdrażania potoków dla organizacji, które zarządzają infrastruktury jako kodu — kluczowy element w metodyce DevOps.
 
-Aby w pełni zrozumieć planu i etapów, omówimy standardowego cyklu:
+Aby w pełni zrozumieć planu i etapów, omówimy standardowego cyklu życia:
 
 > [!div class="checklist"]
 > - Tworzenie i edytowanie planu
@@ -68,7 +69,7 @@ Każda wersja planu jest obiektem unikatowy i może być indywidualnie **opublik
 > [!NOTE]
 > Nie jest możliwe usuwanie planu, który ma aktywne przypisania. Najpierw usuń przypisania, a następnie usuń wersję, którą chcesz usunąć.
 
-1. Kliknij pozycję **wszystkich usług** wyszukiwanie i wybieranie **zasad** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
 
 1. Wybierz **definicje planów** ze strony po lewej i użyj opcji filtru, można zlokalizować planu, aby usunąć wersję. Kliknij go, aby otworzyć stronę edycji.
 
@@ -87,7 +88,7 @@ Usuń plan za pomocą [witryny Azure portal](../create-blueprint-portal.md#delet
 
 ## <a name="assignments"></a>Przypisania
 
-Istnieje kilka punktów podczas cyklu życia, które można przypisać planu do subskrypcji. Po trybie wersji planu **opublikowano**, a następnie w tej wersji można przypisać do subskrypcji. Cykl życia temu wersji planu używanych i aktywnie przypisany podczas jest obecnie sporządzana nowszej wersji.
+Istnieje kilka punktów podczas cyklu życia, który umożliwi można przypisać do subskrypcji. Po trybie wersji planu **opublikowano**, a następnie w tej wersji można przypisać do subskrypcji. Ten cykl życia temu wersji planu używanych i aktywnie przypisany podczas jest obecnie sporządzana nowszej wersji.
 
 Ponieważ wersje schematy są przypisywane, jest ważne dowiedzieć się, gdy są przydzielone i parametrami, które zostały przypisane przy użyciu. Parametry mogą być statyczne lub dynamiczne. Aby dowiedzieć się więcej, zobacz [statycznych i dynamicznych parametrów](parameters.md).
 
