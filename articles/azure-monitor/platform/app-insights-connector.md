@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5183e626ac990e265e9f4794220f24d43d865ed7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 38f2fb4fd2056758997471a4d7a5008d7db9dfa1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999988"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087494"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (wersja zapoznawcza)
 
@@ -45,7 +45,7 @@ W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
 | [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
-| [Agenci dla systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
+| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
 | [Grupy zarządzania SCOM](../../azure-monitor/platform/om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
 | [Konto usługi Azure Storage](collect-azure-metrics-logs.md) | Nie | Działa to rozwiązanie nie zbierania informacji z usługi Azure storage. |
 

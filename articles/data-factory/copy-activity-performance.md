@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7602524675edbf0e3ca96c74a2aba2eac48c417b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416940"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084077"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -195,6 +195,9 @@ Konfigurowanie **enableStaging** ustawienie w działaniu kopiowania, aby określ
 | **linkedServiceName** |Określ nazwę [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) połączone usługi, która odnosi się do wystąpienia magazynu, którego używasz jako tymczasowy magazyn przejściowy. <br/><br/> Nie można używać magazynu przy użyciu sygnatury dostępu współdzielonego, aby załadować dane do usługi SQL Data Warehouse za pomocą programu PolyBase. Można go użyć w innych scenariuszach. |ND |Tak, gdy **enableStaging** jest ustawiona na wartość TRUE |
 | **Ścieżka** |Określ ścieżkę magazynu obiektów Blob, która ma zawierać użycia przemieszczonych danych. Jeśli ścieżka nie zostanie określona, usługa tworzy kontener do przechowywania danych tymczasowych. <br/><br/> Określ ścieżkę, tylko wtedy, gdy używasz magazynu przy użyciu sygnatury dostępu współdzielonego lub wymagają danych tymczasowych w określonej lokalizacji. |ND |Nie |
 | **enableCompression** |Określa, czy dane powinny zostać skompresowane przed skopiowaniem ich do miejsca docelowego. To ustawienie powoduje zmniejszenie ilości przesyłanych danych. |False |Nie |
+
+>[!NOTE]
+> Jeśli używasz kopiowania przejściowego z włączoną kompresją, jednostkę usługi lub uwierzytelniania tożsamości usługi Zarządzanej dla przejściowego obiektu blob połączona usługa nie jest obsługiwana.
 
 Oto przykładowa definicja działania kopiowania przy użyciu właściwości, które są opisane w powyższej tabeli:
 

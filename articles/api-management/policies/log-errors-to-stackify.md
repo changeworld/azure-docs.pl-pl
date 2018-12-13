@@ -1,6 +1,6 @@
 ---
-title: Azure próbce interfejsu API zarządzania zasad — błędy wysyłania do Stackify rejestrowania | Dokumentacja firmy Microsoft
-description: Przykładowe zasady zarządzania Azure API - przedstawiono sposób dodawania zasady rejestrowania błędów wysłać błędy do Stackify do rejestrowania.
+title: Interfejs API zarządzania zasad przykładowy Azure — błędy wysyłania do rozwiązania Stackify rejestrowania | Dokumentacja firmy Microsoft
+description: Przykład zasad zarządzania Azure interfejsu API — przedstawiono sposób dodawania zasad rejestrowania błędów wysyłanie błędów do rozwiązania Stackify rejestrowania...
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 5daf21cb55289c874d56910b1240e1433f3d55d0
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 07cc83830fe2d467c611622bb66dfbb8c9429c2d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945959"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864880"
 ---
-# <a name="send-errors-to-stackify-for-logging"></a>Wysyłanie błędów do Stackify logowania
+# <a name="send-errors-to-stackify-for-logging"></a>Wysyłanie błędów do rozwiązania Stackify rejestrowania
 
-W tym artykule przedstawiono przykładowe zasady zarządzania interfejsu API platformy Azure, który demonstruje sposób dodania zasad rejestrowania błędów wysłać błędy do Stackify do rejestrowania. Aby ustawić lub zmodyfikować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
+W tym artykule przedstawiono przykład zasady zarządzania interfejsem API usługi Azure, przedstawia sposób dodawania zasad rejestrowania błędów wysłać błędy do rozwiązania Stackify do rejestrowania. Można ustawiać lub edytować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
 
 ## <a name="policy"></a>Zasady
 
@@ -32,7 +32,7 @@ Wklej kod do **na błąd** bloku.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o zasadach APIM:
+Dowiedz się więcej na temat usługi APIM zasad:
 
 + [Zasady transformacji](../api-management-transformation-policies.md)
 + [Przykłady zasad](../policy-samples.md)

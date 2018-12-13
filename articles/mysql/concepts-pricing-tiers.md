@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: e3d0e54c32a08c613407f1a90c78cc63be929078
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: MT
+ms.openlocfilehash: 0e316bf06cc6e2915adca5e7961083e6668bbfc1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091797"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889127"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Usługa Azure Database for MySQL warstw cenowych
 
@@ -23,7 +23,7 @@ Serwer Azure Database for MySQL można utworzyć w jednym z trzech różnych war
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
 | Generacja obliczeń | Gen 4, 5. generacji | Gen 4, 5. generacji | 5. generacja |
-| Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Ilość pamięci na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Typ magazynu | Usługa Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |

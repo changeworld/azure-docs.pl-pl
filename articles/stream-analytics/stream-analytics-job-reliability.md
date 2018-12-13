@@ -1,31 +1,39 @@
 ---
-title: Uniknąć przerw w działaniu usługi w zadania usługi analiza strumienia Azure
-description: W tym artykule opisano wskazówki dotyczące wprowadzania odporność sieci zadania usługi analiza strumienia uaktualnienia.
+title: Unikaj przerw w działaniu usług w zadaniach usługi Azure Stream Analytics
+description: W tym artykule opisano wskazówki na tworzenie zadań usługi Stream Analytics uaktualnienia odporne na błędy.
 services: stream-analytics
 author: jseb225
-manager: kfile
 ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 47ccfe99d2ee6576dbb70324eb383f52d2a1b2e7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7375fb2763ad83e049b1ef30a623f164e059a792
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30902724"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090809"
 ---
-# <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Zagwarantować niezawodność zadania usługi analiza strumienia podczas aktualizacji usługi
+# <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Zagwarantowania niezawodności zadania usługi Stream Analytics podczas aktualizacji usługi
 
-Część jest w pełni zarządzana usługa jest możliwość wprowadzenia nowych funkcji usługi i ulepszenia w tempie szybkie. W związku z tym usługi analiza strumienia może mieć aktualizacji usługi wdrażanie na podstawie co tydzień (lub częstsze). Niezależnie od tego, ile testów jest wykonywane jest nadal ryzyko, że istniejący, uruchomione zadanie może zostać przerwane z powodu wprowadzenia usterki. Dla klientów, którzy uruchomić krytycznego zadania przesyłania strumieniowego przetwarzania te zagrożenia, należy unikać. Mechanizm klienci mogą użyć, aby zmniejszyć to ryzyko jest Azure **[sparowanego region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** modelu. 
+Część jest w pełni zarządzana usługa jest możliwość wprowadzenia nowych funkcji usługi i ulepszenia w szybkim tempie. W rezultacie usługi Stream Analytics może mieć aktualizacji usługi, wdrażanie na podstawie co tydzień (lub częściej). Niezależnie od tego, jaką część testów odbywa się nadal istnieje ryzyko, że istniejący, uruchomione zadania mogą przestać działać z powodu wprowadzenia usterkę. Dla klientów, którzy uruchamiają krytyczne zadania przetwarzania strumieniowego te zagrożenia należy unikać. Klienci mogą używać, aby ograniczyć to ryzyko mechanizm jest platformy Azure **[sparowanym regionie](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** modelu. 
 
-## <a name="how-do-azure-paired-regions-address-this-concern"></a>Jak regiony platformy Azure sparowanym rozwiązania tego problemu?
+## <a name="how-do-azure-paired-regions-address-this-concern"></a>Jak regiony sparowane platformy Azure rozwiązania tego problemu?
 
-Analiza strumienia gwarantuje, że zadania w parach regiony są aktualizowane w oddzielnych partiach. W związku z tym jest wystarczające odstęp czasu między aktualizacjami, aby zidentyfikować potencjalne błędy podziału i usuwać z nich.
+Stream Analytics gwarancję, że zadania w sparowanych regionach są aktualizowane w oddzielnych plikach wsadowych. W wyniku jest wystarczające odstęp czasu między aktualizacjami, aby zidentyfikować potencjalne błędy podziału i je skorygować.
 
-_Z wyjątkiem Indie środkowe_ (których sparowanego regionu, Indie Południowe nie ma obecności Stream Analytics), wdrożenie aktualizacji do usługi Stream Analytics nie może mieć miejsce, w tym samym czasie w zestawie regionów pary. Wdrożenia w wielu regionach **w tej samej grupie** może wystąpić **w tym samym czasie**.
+_Z wyjątkiem Indie środkowe_ (których sparowanym regionie Indie Południowe, nie ma obecności usługi Stream Analytics), wdrożenie aktualizacji do usługi Stream Analytics nie może mieć miejsce, w tym samym czasie w zestawie połączonych w parę regionów. Wdrożenia w wielu regionach **w tej samej grupie** może wystąpić **w tym samym czasie**.
 
-Artykuł na temat **[dostępności i regiony sparowanego](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** zawiera najbardziej aktualne informacje, na którym są skojarzone regionów.
+Artykuł dotyczący **[dostępności i sparowane regiony](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** zawiera najbardziej aktualne informacje, na którym są sparowane regiony.
 
-Klienci są zalecane jest wdrażanie identyczne zadania dla obu sparowanego regionów. Oprócz Stream Analytics wewnętrzny możliwości monitorowania, klienci także zalecana do monitorowania zadań tak, jakby **zarówno** zadań produkcji. Jeśli podział została zidentyfikowana jako wynik aktualizacji usługi Stream Analytics, eskalować odpowiednio i pracy awaryjnej żadnych użytkowników podrzędne w danych wyjściowych zadania w dobrej kondycji. Eskalacji do obsługi będzie zapobiec wpływowi nowe wdrożenie sparowanego regionu i zachowanie spójności sparowanego zadań.
+Klienci są zaleca się wdrażanie identyczne zadania na obu połączonych w parę regionów. Oprócz Stream Analytics wewnętrznego możliwości monitorowania, klienci także doradza się do monitorowania zadań tak, jakby **zarówno** zadań w środowisku produkcyjnym. Jeśli podział jest identyfikowany jako wynik aktualizacji usługi Stream Analytics, eskalować odpowiednio i wszystkie podrzędne w konsumentach napisanych dane wyjściowe zadania działa prawidłowo w trybie Failover. Podwyższenie poziomu do obsługi będzie zapobiec wpływowi nowe wdrożenie w sparowanym regionie i utrzymania spójności sparowane zadań.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* [Wprowadzenie do usługi Stream Analytics](stream-analytics-introduction.md)
+* [Rozpoczynanie pracy z usługą Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [Skalowanie zadań usługi Stream Analytics](stream-analytics-scale-jobs.md)
+* [Dokumentacja języka zapytań usługi Analytics Stream](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics management dokumentacja interfejsu API REST](https://msdn.microsoft.com/library/azure/dn835031.aspx)

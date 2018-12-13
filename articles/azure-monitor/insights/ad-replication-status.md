@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: be519dd2a6e6948bedeedd4166c7adf466dbb365
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 7a8f2fc0d8b9f023e20cf8c4d4939aa3094a13e8
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836376"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890181"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitoruje stan replikacji usługi Active Directory z usługą Log Analytics
 
@@ -33,7 +33,7 @@ Pakiet rozwiązań stan replikacji usługi AD regularnie monitoruje środowiska 
 ## <a name="installing-and-configuring-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
-* Konieczne jest zainstalowanie agentów na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone. Alternatywnie należy zainstalować agentów na serwerach członkowskich i konfigurować agentów do przesyłania danych replikacji usługi AD do usługi Log Analytics. Aby dowiedzieć się, jak połączyć komputery Windows do usługi Log Analytics, zobacz [Windows łączenie komputerów do usługi Log Analytics](../../azure-monitor/platform/agent-windows.md). Jeśli kontroler domeny jest już częścią istniejącego środowiska programu System Center Operations Manager, który chcesz połączyć z usługą Log Analytics, zobacz [łączenie programu Operations Manager do usługi Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+* Konieczne jest zainstalowanie agentów na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone. Alternatywnie należy zainstalować agentów na serwerach członkowskich i konfigurować agentów do przesyłania danych replikacji usługi AD do usługi Log Analytics. Aby dowiedzieć się, jak połączyć komputery Windows do usługi Log Analytics, zobacz [Windows łączenie komputerów do usługi Log Analytics](../../azure-monitor/platform/agent-windows.md). Jeśli kontroler domeny jest już częścią istniejącego środowiska programu System Center Operations Manager, który chcesz połączyć z usługą Log Analytics, zobacz [łączenie programu Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md).
 * Dodaj rozwiązanie stan replikacji usługi Active Directory do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../../azure-monitor/insights/solutions.md).  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Szczegóły kolekcji danych stanu replikacji usługi AD
@@ -48,7 +48,7 @@ Nie chcesz połączyć dowolny z kontrolerami domeny bezpośrednio do usługi Lo
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Aby włączyć niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics
 1. Sprawdź, czy komputer jest członkiem domeny, który chcesz monitorować za pomocą rozwiązania stan replikacji usługi AD.
-2. [Podłącz komputer Windows do usługi Log Analytics](../../log-analytics/log-analytics-om-agents.md) lub [połączyć za pomocą istniejącego środowiska programu Operations Manager do usługi Log Analytics](../../log-analytics/log-analytics-om-agents.md), jeśli nie jest już połączony.
+2. [Podłącz komputer Windows do usługi Log Analytics](../../azure-monitor/platform/om-agents.md) lub [połączyć za pomocą istniejącego środowiska programu Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md), jeśli nie jest już połączony.
 3. Na tym komputerze należy ustawić następujący klucz rejestru:
 
    * Klucz: **grup HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management\<ManagementGroupName > \Solutions\ADReplication**
@@ -149,7 +149,7 @@ Odp.: normalnymi uprawnieniami użytkownika do usługi Active Directory są wyst
 ## <a name="troubleshoot-data-collection-problems"></a>Rozwiązywanie problemów kolekcji danych
 Aby zbierać dane, pakiet rozwiązań stan replikacji usługi AD wymaga co najmniej jeden kontroler domeny do podłączenia do obszaru roboczego usługi Log Analytics. Dopiero po nawiązaniu połączenia z kontrolerem domeny, zostanie wyświetlony komunikat, który **jest wciąż są zbierane dane**.
 
-Jeśli potrzebujesz pomocy przy podłączaniu jeden z kontrolerów domeny, można wyświetlić dokumentację w [Windows łączenie komputerów do usługi Log Analytics](../../log-analytics/log-analytics-om-agents.md). Alternatywnie, jeśli kontroler domeny jest podłączony do istniejącego środowiska programu System Center Operations Manager, można wyświetlić dokumentację na [połączyć System Center Operations Manager do usługi Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+Jeśli potrzebujesz pomocy przy podłączaniu jeden z kontrolerów domeny, można wyświetlić dokumentację w [Windows łączenie komputerów do usługi Log Analytics](../../azure-monitor/platform/om-agents.md). Alternatywnie, jeśli kontroler domeny jest podłączony do istniejącego środowiska programu System Center Operations Manager, można wyświetlić dokumentację na [połączyć System Center Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 Jeśli nie chcesz połączyć wszystkich kontrolerów domeny, bezpośrednio do usługi Log Analytics lub System Center Operations Manager, zobacz [umożliwiające niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/30/2018
-ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.date: 12/6/2018
+ms.openlocfilehash: 89451122ff8cae33f1710fc1458fcd4277964e1f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982882"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090996"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące usługi Azure Database for MySQL
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
@@ -31,10 +31,12 @@ Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następ
 |Ogólne zastosowanie| 8| 1250|
 |Ogólne zastosowanie| 16| 2500|
 |Ogólne zastosowanie| 32| 5000|
+|Ogólne zastosowanie| 64| 10 000|
 |Pamięć| 2| 600|
 |Pamięć| 4| 1250|
 |Pamięć| 8| 2500|
 |Pamięć| 16| 5000|
+|Pamięć| 32| 10 000|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
 > Błąd 1040 (08004): Zbyt wiele połączeń

@@ -126,13 +126,13 @@
 ### [Obsługa operacji długotrwałych](media-services-dotnet-long-operations.md)
 ### [Specyfikacja odbierania podzielonej zawartości na żywo w formacie MP4](media-services-fmp4-live-ingest-overview.md)
 
-## [Przycinanie zawartości](media-services-azure-media-clipper-overview.md)
-### [Rozpoczęcie pracy](media-services-azure-media-clipper-getting-started.md)
-### [Ładowanie wideo](media-services-azure-media-clipper-load-assets.md)
-### [Konfigurowanie skrótów klawiaturowych](media-services-azure-media-clipper-keyboard-shortcuts.md)
-### [Konfigurowanie lokalizacji](media-services-azure-media-clipper-localization.md)
-### [Przesyłanie zadań przycinania](media-services-azure-media-clipper-submit-job.md)
-### [Azure Portal](media-services-azure-media-clipper-portal.md)
+<!-- ## [Clip content](media-services-azure-media-clipper-overview.md)
+### [Getting started](media-services-azure-media-clipper-getting-started.md)
+### [Load videos](media-services-azure-media-clipper-load-assets.md)
+### [Configure keyboard shortcuts](media-services-azure-media-clipper-keyboard-shortcuts.md)
+### [Configure localization](media-services-azure-media-clipper-localization.md)
+### [Submit clipping jobs](media-services-azure-media-clipper-submit-job.md)
+### [Azure portal](media-services-azure-media-clipper-portal.md) -->
 
 ## [Ochrona zawartości](media-services-content-protection-overview.md)
 ### [Szyfrowanie magazynu](media-services-rest-storage-encryption.md)

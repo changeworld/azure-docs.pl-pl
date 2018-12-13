@@ -1,20 +1,21 @@
 ---
-title: Włączanie usługi Azure Disk Encryption przy użyciu usługi Azure AD aplikacji dla Windows IaaS VMs (poprzedniej wersji) | Dokumentacja firmy Microsoft
+title: Usługa Azure Disk Encryption przy użyciu usługi Azure AD aplikacji Windows IaaS VMs (poprzedniej wersji)
 description: Ten artykuł zawiera instrukcje dotyczące włączania Microsoft dysku szyfrowanie dla Windows IaaS maszyn wirtualnych platformy Azure.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/04/2018
-ms.openlocfilehash: 407ea9adaaae4df15054dc4da3391b870dd8dcc7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 347fe1de15661d63ac96444f704e2da919fc54bd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622146"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083958"
 ---
-#  <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>Włącz dysku szyfrowanie dla Windows IaaS maszyn wirtualnych platformy Azure (poprzedniej wersji)
+# <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>Włącz dysku szyfrowanie dla Windows IaaS maszyn wirtualnych platformy Azure (poprzedniej wersji)
 
 **Nowa wersja usługi Azure Disk Encryption eliminuje wymaganie zapewniające parametrem aplikacji usługi Azure AD, aby włączyć szyfrowanie dysku maszyny Wirtualnej. Za pomocą nowej wersji już nie są wymagane poświadczenia usługi Azure AD podczas wykonywania kroku Włączanie szyfrowania. Wszystkie nowe maszyny wirtualne muszą być szyfrowane bez parametrów aplikacji usługi Azure AD przy użyciu nowej wersji. Aby wyświetlić instrukcje, aby włączyć szyfrowanie dysku maszyny Wirtualnej przy użyciu nowej wersji, zobacz [dysku Encryption for Windows maszyn wirtualnych platformy Azure](azure-security-disk-encryption-windows.md). Maszyny wirtualne, które już zostały zaszyfrowane za pomocą aplikacji usługi Azure AD, parametry są nadal obsługiwane i powinno być kontynuowane przy użyciu składni usługi AAD.**
 

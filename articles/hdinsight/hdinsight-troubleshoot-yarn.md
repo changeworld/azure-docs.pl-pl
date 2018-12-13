@@ -6,20 +6,19 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: c3904286fc998769b9a72522bd31d3a9797c55c2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 12/06/2018
+ms.openlocfilehash: 34db8900d285baa7e9c4f97874023bbb52d5e864
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008049"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087902"
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z usługi YARN przy użyciu usługi Azure HDInsight
 
 Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pracy z usługą Apache Hadoop YARN ładunków w Apache Ambari.
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Jak utworzyć nową kolejkę usługi YARN w klastrze?
-
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
@@ -138,10 +137,3 @@ Te zmiany są widoczne od razu po Interfejsie użytkownika YARN harmonogramu.
 
 ### <a name="see-also"></a>Zobacz też
 [Rozwiązywanie problemów przy użyciu usługi Azure HDInsight](hdinsight-troubleshoot-guide.md)
-
-
-
-
-
-
-

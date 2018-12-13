@@ -1,21 +1,22 @@
 ---
-title: Jak zainstalować i uruchamiać kontenery
-titlesuffix: Face - Cognitive Services - Azure
+title: Instalowanie i uruchamianie kontenerów
+titlesuffix: Face - Azure Cognitive Services
 description: Jak pobrać, zainstalować i uruchamiaj kontenery twarzy, w tym samouczku wskazówki.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 1d13e2ccbbc1d5c1bc80dffc260a3759fe378d7d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 556cf755890f49e540afe64de6e485d9ebde2147
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634544"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086440"
 ---
 # <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
 
@@ -37,7 +38,7 @@ Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby n
 
 Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).
 
-### <a name="server-requirements-and-recommendations"></a>Wymagania dotyczące serwera i zalecenia
+### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
 
 Kontener twarzy wymaga co najmniej 1 rdzenia Procesora, co najmniej 2,6 gigaherc (GHz) lub szybszy i 4 gigabajty (GB) pamięci przydzielone, ale firma Microsoft zaleca się co najmniej 2 rdzeni procesora CPU i 6 GB ilość przydzielonej pamięci.
 
@@ -167,7 +168,9 @@ W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, 
 * Obrazy kontenera Uruchom na platformie Docker.
 * Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach rozpoznawania twarzy, określając host identyfikatora URI kontenera.
 * Należy określić informacje rozliczeniowe, podczas tworzenia wystąpienia kontenera.
-* ** Cognitive Services kontenery nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. obraz lub tekst, który jest analizowana) do firmy Microsoft.  
+
+> [!IMPORTANT]
+> Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. obraz lub tekst, który jest analizowana) do firmy Microsoft.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

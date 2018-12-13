@@ -2,19 +2,19 @@
 title: Integracja usługi Azure Stream Analytics z usługą Azure Machine Learning
 description: W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi Azure Stream Analytics, która integruje usługi Azure Machine Learning, za pomocą funkcji zdefiniowanej przez użytkownika.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/16/2018
-ms.openlocfilehash: 2169c3a41991b0b49a4324c16ea079f5943fad0b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d90439e498e8812551d9e2994165f1714d3bdaab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685756"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093339"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Przeprowadzanie analizy tonacji przy użyciu usługi Azure Stream Analytics i Azure Machine Learning
 W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi Azure Stream Analytics, która integruje usługi Azure Machine Learning. Używasz modelem analizy tonacji usługi Machine Learning w galerii Cortana Intelligence do analizowania danych przesyłanych strumieniowo tekstu i ustalić wyniku tonacji w czasie rzeczywistym. Przy użyciu pakietu Cortana Intelligence pozwala wykonać to zadanie, nie martwiąc się o niewymagającego tworzenia modelu analizy tonacji.
@@ -28,7 +28,7 @@ Możesz poprosić zdobytą wiedzę w tym artykule scenariuszy, takich jak te:
 
 W rzeczywistych scenariuszy może uzyskać danych bezpośrednio z serwisu Twitter strumienia danych. Aby uprościć samouczka, jest napisany tak, aby zadanie usługi Stream Analytics pobiera tweety z pliku CSV w usłudze Azure Blob storage. Można utworzyć pliku CSV lub przykładowy plik CSV, można użyć, jak pokazano na poniższej ilustracji:
 
-![Przykładowe tweetów w pliku CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+![Tweety przykładowych pokazano w pliku CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
 Zadanie usługi Stream Analytics, które możesz utworzyć dotyczy modelu analizy tonacji w funkcji zdefiniowanej przez użytkownika (UDF) dotyczące przykładowych danych tekst z magazynu obiektów blob. Dane wyjściowe (wynik analizy tonacji) są zapisywane do tego samego magazynu obiektów blob w innym pliku CSV. 
 
@@ -58,15 +58,15 @@ W tym kroku można użyć dowolnego pliku CSV, takiego jak dostępnego w witryni
 
 3. Określ istniejącą grupę zasobów, a następnie określ lokalizację. Dla lokalizacji zaleca się, że wszystkie zasoby utworzone w ramach tego samouczka użyj tej samej lokalizacji.
 
-    ![Podaj szczegóły konta magazynu](./media/stream-analytics-machine-learning-integration-tutorial/create-sa1.png)
+    ![Podaj szczegóły konta magazynu](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
 4. W witrynie Azure portal wybierz konto magazynu. W bloku kont magazynu kliknij **kontenery** a następnie kliknij przycisk  **+ &nbsp;kontenera** do utworzenia magazynu obiektów blob.
 
-    ![Tworzenie kontenera obiektów blob](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
+    ![Tworzenie kontenera magazynu obiektów blob na dane wejściowe](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
 5. Podaj nazwę dla kontenera (`azuresamldemoblob` w przykładzie) i sprawdź, czy **dostęp typu** ustawiono **Blob**. Gdy skończysz, kliknij przycisk **OK**.
 
-    ![Określ szczegóły kontenera obiektów blob](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
+    ![Określ szczegóły kontenera obiektów blob](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
 6. W **kontenery** bloku wybierz nowy kontener, który zostanie otwarty blok dla tego kontenera.
 
@@ -123,7 +123,7 @@ Można teraz utworzyć zadanie usługi Stream Analytics, które odczytuje tweet�
 
 3. Nadaj nazwę zadaniu `azure-sa-ml-demo`, określ subskrypcję, określ istniejącą grupę zasobów lub Utwórz nową i wybierz lokalizację dla zadania.
 
-   ![Określ ustawienia dla nowego zadania usługi Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
+   ![Określ ustawienia dla nowego zadania usługi Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
 
 ### <a name="configure-the-job-input"></a>Konfigurowanie danych wejściowych zadania
@@ -143,7 +143,7 @@ To zadanie pobiera dane wejściowe z pliku CSV, który został wcześniej przeka
    |**Kontener**  | Wybierz wcześniej utworzonego kontenera (`azuresamldemoblob`)        |
    |**Format serializacji zdarzeń**  |  Wybierz **CSV**       |
 
-   ![Ustawienia dla nowych danych wejściowych zadania](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
+   ![Ustawienia dla nowe dane wejściowe zadania usługi Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
 4. Kliknij pozycję **Zapisz**.
 
@@ -163,7 +163,7 @@ Zadanie wysyła wyniki do tego samego magazynu obiektów blob, których pobiera 
    |**Kontener**  | Wybierz wcześniej utworzonego kontenera (`azuresamldemoblob`)        |
    |**Format serializacji zdarzeń**  |  Wybierz **CSV**       |
 
-   ![Ustawienia dla nowego dane wyjściowe zadania](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
+   ![Ustawienia dla nowe dane wyjściowe zadania usługi Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
 4. Kliknij pozycję **Zapisz**.   
 
@@ -185,7 +185,7 @@ W tej części samouczka należy zdefiniować funkcję w zadaniu Stream analizy.
    | **Adres URL**| Wklej adres URL usługi sieci web.|
    |**Klucz** | Wklej klucz interfejsu API. |
   
-   ![Ustawienia dotyczące dodawania funkcji usługi Machine Learning do zadania usługi Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+   ![Ustawienia, aby dodać funkcji usługi Machine Learning do zadania usługi Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
 4. Kliknij pozycję **Zapisz**.
 

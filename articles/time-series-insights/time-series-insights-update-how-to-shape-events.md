@@ -1,6 +1,6 @@
 ---
-title: Jak kształt zdarzeń za pomocą usługi Azure Time Series Insights (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Zrozumienie sposobu kształt zdarzeń za pomocą usługi Azure Time Series Insights (wersja zapoznawcza)
+title: Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przekształcać zdarzeń Azure czas Series Insights w wersji zapoznawczej
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,39 +9,39 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 17528b148c04f48fa8222f64900bdf5c3b95ee25
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: dcab5fba62d1a17ba16b541ccbaa6a4a2b2bf2bd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873652"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078501"
 ---
-# <a name="shaping-events-with-azure-time-series-insights-preview"></a>Kształtowanie zdarzeń za pomocą usługi Azure Time Series Insights (wersja zapoznawcza)
+# <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 
-Ten artykuł zawiera wskazówki dotyczące kształtowania JSON, aby zmaksymalizować wydajność kwerend w wersji zapoznawczej usługi Azure Time Series Insights (TSI).
+Ten artykuł pomoże Ci kształt pliku JSON, aby zmaksymalizować wydajność kwerend Azure czas Series Insights w wersji zapoznawczej.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Należy wziąć pod uwagę sposób wysyłania zdarzeń do usługi Azure TSI. To znaczy należy zawsze:
+Należy wziąć pod uwagę sposób wysyłania zdarzeń do czasu Series Insights w wersji zapoznawczej. To znaczy należy zawsze:
 
-1. jak najbardziej wydajny wysyłanie danych przez sieć.
-1. Upewnij się, że dane są przechowywane w sposób, który służy do wykonywania agregacje odpowiednie dla danego scenariusza.
+* jak najbardziej wydajny wysyłanie danych przez sieć.
+* Store dane w sposób, który pomoże Ci agregować je bardziej odpowiednio do danego scenariusza.
 
-Poniższe wskazówki zapewnia najlepszą wydajność zapytań możliwe:
+Aby uzyskać najlepszą wydajność zapytań możliwe wykonaj następujące czynności:
 
-1. Nie wysyłaj niepotrzebnych właściwości. Usługa TSI Przesyła (wersja zapoznawcza) zostanie są naliczane na użycie i jest to najlepsze rozwiązanie do przechowywania i przetwarzania danych, który zostanie kwerenda.
-1. Użyj pola wystąpienia w przypadku danych statycznych unikać wysyłania danych statycznych za pośrednictwem sieci. Pola wystąpienia, składnik modelu szeregów czasowych działają podobnie jak odwoływać się do danych w usłudze TSI jest ogólnie dostępna. Aby dowiedzieć się, jak pole wystąpienia, przeczytaj [modeli szeregów czasowych](./time-series-insights-update-tsm.md).
-1. Udostępnianie właściwości wymiaru wśród wielu zdarzeń, aby bardziej efektywnie wysyłanie danych przez sieć.
-1. Nie używaj tablicy głębokiego zagnieżdżenia. Usługa TSI Przesyła obsługuje maksymalnie dwóch poziomów zagnieżdżonych tablic, które zawierają obiekty. Usługa TSI Przesyła spłaszcza tablic w wiadomości, w wielu zdarzeń przy użyciu pary wartości właściwości.
-1. Jeśli tylko kilka istnieją środki dla wszystkich lub większości zdarzeń, zaleca się wysłać te miary jako osobne właściwości w ramach tego samego obiektu. Wysyłając oddzielnie zmniejsza liczbę zdarzeń i mogą wprowadzać zapytania wydajniej zgodnie z mniejszą liczbą zdarzeń wymagających przetworzenia.
+* Nie wysyłaj niepotrzebnych właściwości. Czas Series Insights w wersji zapoznawczej opłaty naliczane są na wykorzystanie. Najlepiej do przechowywania i przetwarzania danych, który zostanie kwerenda.
+* Użyj pól wystąpień dla danych statycznych. Praktyka ta pomaga unikać wysyłania danych statycznych za pośrednictwem sieci. Pola wystąpienia, składnik modelu szeregów czasowych działają podobnie jak odwoływać się do danych w usłudze GA Insights serii czasu. Aby dowiedzieć się więcej na temat wystąpienia pól, zobacz [modeli szeregów czasowych](./time-series-insights-update-tsm.md).
+* Udostępnianie właściwości wymiaru spośród dwóch lub większej liczby zdarzeń. Pomaga to bardziej wydajne wysyłanie danych przez sieć.
+* Nie używaj tablicy głębokiego zagnieżdżenia. Czas Series Insights w wersji zapoznawczej obsługuje maksymalnie dwóch poziomów zagnieżdżonych tablic zawierających obiekty. Czas Series Insights w wersji zapoznawczej spłaszcza tablic w wiadomości do wielu zdarzeń przy użyciu pary wartości właściwości.
+* Jeśli tylko kilka istnieją środki dla wszystkich lub większości zdarzeń, zaleca się wysłać te miary jako osobne właściwości w ramach tego samego obiektu. Wysyłając oddzielnie zmniejsza liczbę zdarzeń i ponieważ mniej zdarzeń wymagających przetworzenia, praktyka wprowadzać zapytania wydajniej.
 
 ## <a name="example"></a>Przykład
 
-Przykład jest oparty na scenariusz, w której wiele urządzeń wysyłać pomiary i sygnały. Pomiary i sygnały może być **przepływ współczynnika**, **wykorzystanie ropa naftowa aparatu**, **temperatury**, i **wilgotności**.
+Poniższy przykład opiera się na scenariuszu, gdy dwie lub większą liczbę urządzeń wysyłać pomiary i sygnały. Pomiary i sygnały może być *przepływ współczynnika*, *wykorzystanie ropa naftowa aparatu*, *temperatury*, i *wilgotności*.
 
-W poniższym przykładzie istnieje pojedynczy komunikat usługi IoT Hub, gdzie zewnętrzne tablica zawiera sekcji udostępnianej typowe wartości wymiarów. Zewnętrzne tablicy używa wystąpienia serii czasu danych w celu zwiększenia efektywności wiadomości. Wystąpienia serii czasu zawiera metadane urządzenia, która nie zmienia się przy użyciu każdego zdarzenia, ale udostępnia właściwości przydatne do analizy danych. Przetwarzanie wsadowe typowe wartości wymiarów i wykorzystujących metadane wystąpienia serii czasu, zapisywane są przesyłane przez sieć, tworząc bardziej wydajne wiadomości w bajtach.
+W poniższym przykładzie istnieje pojedynczy komunikat usługi IoT Hub, gdzie zewnętrzne tablica zawiera sekcji udostępnianej typowe wartości wymiarów. Zewnętrzne tablicy używa wystąpienia serii czasu danych w celu zwiększenia efektywności wiadomości. Wystąpienia serii czasu zawiera metadanych urządzeń, która nie zmienia się przy użyciu każdego zdarzenia, ale zapewnia użytecznych właściwości do analizy danych. Aby zapisać na bajty przesyłane przez sieć, a komunikat był bardziej wydajne, należy wziąć pod uwagę dzielenia na partie typowe wartości wymiarów i wykorzystujących metadanych wystąpienia serii czasu.
 
-Przykładowy ładunek JSON:
+### <a name="example-json-payload"></a>Przykładowy ładunek JSON
 
 ```JSON
 [
@@ -72,7 +72,9 @@ Przykładowy ładunek JSON:
 ]
 ```
 
-Czas wystąpienia serii (Uwaga: **identyfikator serii czasu** jest *deviceId*):
+### <a name="time-series-instance"></a>Wystąpienia serii czasu 
+> [!NOTE]
+> Identyfikator serii czasu jest *deviceId*.
 
 ```JSON
 {
@@ -105,7 +107,7 @@ Czas wystąpienia serii (Uwaga: **identyfikator serii czasu** jest *deviceId*):
   },
 ```
 
-Usługa TSI Przesyła połączony tabeli (po spłaszczanie) podczas przeszukiwania. Tabela będzie zawierać dodatkowe kolumny, takie jak typ. W tym przykładzie przedstawiono, jak można [kształt](./time-series-insights-send-events.md#json) dane telemetryczne:
+Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) podczas przeszukiwania. W tabeli przedstawiono dodatkowe kolumny **typu**. W poniższym przykładzie pokazano, jak można [kształt](./time-series-insights-send-events.md#json) dane telemetryczne:
 
 | deviceId  | Typ | L1 | PAMIĘCI PODRĘCZNEJ L2 | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -113,19 +115,19 @@ Usługa TSI Przesyła połączony tabeli (po spłaszczanie) podczas przeszukiwan
 | `FXXX` | LINE_DATA REVOLT | SYMULATOR |    System baterii |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
 | `FYYY` | LINE_DATA WSPÓLNE | SYMULATOR |    System baterii |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22.2 |
 
-Należy pamiętać, że w poprzednim przykładzie:
+W poprzednim przykładzie Pamiętaj o następujących kwestiach:
 
-* Właściwości statyczne są przechowywane jako usługa TSI Przesyła do optymalizacji danych przesyłanych przez sieć.
-* Usługa TSI Przesyła dane sprzężony w czasie wykonywania zapytań przy użyciu *timeSeriesId* zdefiniowany w wystąpieniu.
-* Używane są dwie warstwy zagnieżdżenia, czyli maksymalną ilość zagnieżdżanie obsługiwane przez usługi TSI. Koniecznie można uniknąć głęboko zagnieżdżonych tablic.
-* Miary są wysyłane jako osobne właściwości w ramach tego samego obiektu, ponieważ istnieje kilka miar. W tym miejscu **serii. Przepływ współczynnika psi**, serii **wykorzystanie ropa naftowa aparatu**, i **ft3/s** są unikatowe kolumny.
+* Właściwości statyczne są przechowywane w czasu Series Insights w wersji zapoznawczej do optymalizacji danych przesyłanych przez sieć.
+* Dane o czasie Series Insights w wersji zapoznawczej jest dołączony w czasie wykonywania zapytań przy użyciu *timeSeriesId* zdefiniowanego w wystąpieniu.
+* Używane są dwie warstwy zagnieżdżenia, który jest najbardziej obsługiwaną przez czas Series Insights w wersji zapoznawczej. Koniecznie można uniknąć głęboko zagnieżdżonych tablic.
+* Ponieważ istnieje kilka miar, są one wysyłane jako osobne właściwości w ramach tego samego obiektu. W tym przykładzie **serii. Przepływ współczynnika psi**, **serii. Psi wykorzystanie ropa naftowa aparatu**, i **serii. Przepływ współczynnika ft3/s** są unikatowe kolumny.
 
 >[!IMPORTANT]
-> Pola wystąpienia nie są przechowywane przy użyciu telemetrii, że są one przechowywane przy użyciu metadanych w **modelu szeregów czasowych**.
-> Powyższej tabeli reprezentuje widok zapytania.
+> Pola wystąpienia nie są przechowywane przy użyciu telemetrii. Są one przechowywane przy użyciu metadanych w **modelu szeregów czasowych**.
+> Zgodnie z poprzednią tabelą reprezentuje widok zapytania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby umieścić te wytyczne w praktyce, zobacz [składni zapytań usługi Azure TSI](./time-series-insights-query-data-csharp.md) dowiedzieć się więcej o składni zapytań dla interfejsu API REST dostępu do danych usługi TSI.
+Aby umieścić te wytyczne w praktyce, zobacz [składni zapytań Azure czas Series Insights w wersji zapoznawczej](./time-series-insights-query-data-csharp.md). Dowiesz się więcej o składni zapytań dla danych czasu Series Insights w wersji zapoznawczej dostęp do interfejsu API REST.
 
-Dowiedz się więcej o obsługiwane kształty JSON, czytając [obsługiwane kształty JSON](./time-series-insights-send-events.md#json).
+Aby dowiedzieć się więcej na temat obsługiwane kształty JSON, zobacz [kształty JSON obsługiwany](./time-series-insights-send-events.md#json).

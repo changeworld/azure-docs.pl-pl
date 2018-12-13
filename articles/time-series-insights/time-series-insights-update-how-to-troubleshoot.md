@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: a9078d2f8a738700a30d265d9cfa3cd77ad72f08
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 4fdb7cf0007af5f92794ebe5f616c1c8a28af0e4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015453"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099667"
 ---
 # <a name="how-to-diagnose-and-troubleshoot"></a>Sposób diagnozowania i rozwiązywania problemów
 
@@ -91,13 +91,13 @@ Jeśli **sygnatura czasowa** właściwość nie jest jawnie określona, firma Mi
 
 1. Możesz być może czas serii Insights S1 lub S2 środowiska
 
-   Modeli szeregów czasowych są obsługiwane tylko w **PAYG** środowisk. Zobacz ten artykuł, aby uzyskać więcej informacji na uzyskiwanie dostępu do środowiska S1/S2 Eksploratora aktualizacja Insights serii czasu.
+   Modeli szeregów czasowych są obsługiwane tylko w **PAYG** środowisk. Aby uzyskać więcej informacji na temat sposobu dostęp do środowiska S1/S2 Eksploratora czasu Series Insights w wersji zapoznawczej, zobacz [wizualizowanie danych w Eksploratorze](./time-series-insights-update-explorer.md).
 
    ![access][5]
 
 1. Nie masz uprawnień do wyświetlania i edytowania modelu
 
-   Użytkownicy potrzebują dostępu na poziomie "Współautor" Aby edytować i wyświetlać ich modelu szeregów czasowych. Możesz sprawdzić bieżące poziomy dostępu i udostępnienia dodatkowych, odwiedzając sekcję zasady dostępu do danych zasobu usługi Time Series Insights w witrynie Azure Portal.
+   Użytkownicy potrzebują dostępu na poziomie "Współautor" do edytowania i wyświetlania ich modelu szeregów czasowych. Możesz sprawdzić bieżące poziomy dostępu i udostępnienia dodatkowych, odwiedzając sekcję zasady dostępu do danych zasobu usługi Time Series Insights w witrynie Azure Portal.
 
 ## <a name="problem-all-my-instances-in-time-series-insights-preview-explorer-dont-have-a-parent"></a>Problem: Moje wystąpienia w Eksploratorze usługi Time Series Insights (wersja zapoznawcza) nie ma elementu nadrzędnego
 

@@ -1,6 +1,6 @@
 ---
-title: Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą programu .NET Framework | Microsoft Docs
-description: Rozpocznij wysyłanie zdarzeń do usługi Event Hubs przy użyciu programu .NET Framework
+title: Wysyłanie zdarzeń za pomocą programu .NET Framework — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji .NET Fraemwork, która wysyła zdarzenia do usługi Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fac720940c2f8d3eb38e2231ce89284147d56b6a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 062dc707dea99ed6e5e04905a13572c234f0c172
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011229"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091167"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą programu .NET Framework
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).

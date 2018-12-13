@@ -1,25 +1,26 @@
 ---
-title: Bot usługi LUIS za pomocą środowiska Node.js — Bot aplikacji sieci Web — Bot Framework SDK 3.0
+title: Bot usługi LUIS przy użyciu środowiska Node.js
 titleSuffix: Azure Cognitive Services
 description: Twórz Boty zintegrowane z aplikacją usługi LUIS przy użyciu platformy Bot Framework.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: 7229155b9fbfb93babd45c746d0f36fbab812013
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042333"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093407"
 ---
-# <a name="luis-bot-in-nodejs"></a>Bot usługi LUIS w środowisku Node.js
+# <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot usługi LUIS w środowisku Node.js przy użyciu platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x
 
-Przy użyciu środowiska Node.js, tworzenie czatbot zintegrowana z usługą language understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
+Przy użyciu platformy Node.js utwórz czatbot zintegrowany z usługą Language Understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -27,7 +28,7 @@ Przed przystąpieniem do tworzenia bota należy wykonać czynności opisane w [t
 
 Bot reaguje na intencje z domeny HomeAutomation, które znajdują się w aplikacji usługi LUIS. Dla każdego z tych opcji aplikacja usługi LUIS zapewnia cel, który mapuje do niego. Bot zapewnia okno dialogowe, które obsługuje cel, który wykrywa usługi LUIS.
 
-| Intencja | Przykład wypowiedź | Bot funkcji |
+| Intencja | Przykładowa wypowiedź | Bot funkcji |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Włączenie świateł. | Wywołuje bot `TurnOnDialog` podczas `HomeAutomation.TurnOn` jest wykryty. To okno dialogowe jest, gdzie możesz powodowałoby wywołanie pliku wykonywalnego usługi IoT w celu włączenia na urządzeniu, a następnie poinformuj użytkowników, że urządzenie zostało włączone. |
 | HomeAutomation.TurnOff | Wyłącz światła sypialni. | Wywołuje bot `TurnOffDialog` podczas `HomeAutomation.TurnOff` jest wykryty. To okno dialogowe, gdzie możesz powodowałoby wywołanie pliku wykonywalnego usługi IoT, aby wyłączyć urządzenie i Powiadom użytkownika, że urządzenie zostało wyłączone. |
@@ -78,7 +79,7 @@ Zainstaluj pakiety NPM w wykonaj następujące czynności:
 
 5. Zostanie otwarte nowe okno przeglądarki. W konsoli wprowadź następujące polecenie:
 
-    ```
+    ```console
     cd site\wwwroot && npm install
     ```
 
@@ -115,7 +116,7 @@ Przejdź do drugiej okna przeglądarki, jeśli jest nadal otworzyć lub w pierws
 
 Otwórz w edytorze kodu `app.js`. Zawiera następujący kod:
 
-```javascript
+```nodejs
 /*-----------------------------------------------------------------------------
 A simple Language Understanding (LUIS) bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
@@ -206,7 +207,7 @@ Istniejące intencje w app.js są ignorowane. Możesz pozostawić je.
 
 Skopiuj poniższy kod i dodać go do `app.js`.
 
-```javascript
+```nodejs
 bot.dialog('TurnOn',
     (session) => {
         session.send('You reached the TurnOn intent. You said \'%s\'.', session.message.text);
@@ -223,7 +224,7 @@ bot.dialog('TurnOn',
 
 Skopiuj poniższy kod i dodać go do `app.js`.
 
-```javascript
+```nodejs
 bot.dialog('TurnOff',
     (session) => {
         session.send('You reached the TurnOff intent. You said \'%s\'.', session.message.text);
@@ -241,7 +242,7 @@ W witrynie Azure Portal wybierz **testowania w czatów internetowych** do testow
 > [!TIP]
 > Jeśli okaże się, Twój bot zawsze nie rozpoznaje poprawne przeznaczenie lub jednostek, poprawić wydajność aplikacją usługi LUIS, dając więcej wypowiedzi przykład do nauczenia go. Mogą przechowywać aplikacją usługi LUIS bez żadnych modyfikacji kodu Twój bot. Zobacz [Dodawanie wypowiedzi przykład](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) i [nauczenia i przetestowania aplikacją usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test).
 
-## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat platformy Bot Framework
+## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat struktury Bot Framework
 Dowiedz się więcej o [platformy Bot Framework](https://dev.botframework.com/) i [3.x](https://github.com/Microsoft/BotBuilder) i [4.x](https://github.com/Microsoft/botbuilder-js) zestawów SDK.
 
 ## <a name="next-steps"></a>Kolejne kroki

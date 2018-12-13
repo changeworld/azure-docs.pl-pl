@@ -1,6 +1,6 @@
 ---
-title: Jak wdrożyć usługę sieci Web do wielu regionów — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Kroki umożliwiające wdrożenie (kopiowanie) nową usługę sieci Web do innych regionów.
+title: Wdrażanie usługi sieci Web do wielu regionów — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+description: Kroki umożliwiające wdrożenie (kopiowanie) nową usługę sieci Web do innych regionów. Łatwe wdrażanie usługi sieci web do wielu regionów, bez konieczności używania wielu subskrypcje i obszary robocze.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.custom: (previous ms.author=aashishb, author=aashishb)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-ms.openlocfilehash: ab28cce0f973c4798bfd6995cc275c4724b7bcc9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 21c930a4e9c28f3d3f612a89ce88accd2de2925e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308023"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092948"
 ---
 # <a name="azure-machine-learning-studio-deploy-a-web-service-to-multiple-regions"></a>Usługa Azure Machine Learning Studio: Wdrażanie usługi sieci web do wielu regionów
 W nowych usługach sieci Web Azure umożliwiają łatwe wdrażanie usługi sieci web do wielu regionów, bez konieczności używania wielu subskrypcje i obszary robocze. 

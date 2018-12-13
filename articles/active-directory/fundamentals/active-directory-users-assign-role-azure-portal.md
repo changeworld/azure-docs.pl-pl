@@ -1,6 +1,6 @@
 ---
-title: Jak przypisać role w katalogach użytkowników za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przypisać role w katalogach użytkowników za pomocą usługi Azure Active Directory.
+title: Przypisywanie ról katalogu użytkownikom — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące sposobu przypisywania ról administratora i użytkowników niebędących administratorami dla użytkowników w usłudze Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,15 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: b73df5ec0381e83c54c8cd9f8c0335448def0c6d
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: e8646893d6dd57fd3f743f450f438cd962f02b36
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733046"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095124"
 ---
-# <a name="how-to-assign-roles-and-administrators-to-users-with-azure-active-directory"></a>Porady: przypisuj role i Administratorzy użytkowników w usłudze Azure Active Directory
+# <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Przypisywanie ról administratora i użytkowników niebędących administratorami do użytkowników z usługą Azure Active Directory
 Jeśli użytkownik w organizacji wymaga uprawnień do zarządzania zasobami usługi Azure Active Directory (Azure AD), należy przypisać użytkownika odpowiednią rolę w usłudze Azure AD oparty na czynności użytkownika wymaga uprawnień do wykonania.
 
 Aby uzyskać więcej informacji na temat dostępnych ról, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Aby uzyskać więcej informacji na temat dodawania użytkowników, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](add-users-azure-active-directory.md).
@@ -29,7 +30,7 @@ Typowym sposobem przypisać role usługi Azure AD do użytkownika znajduje się 
 Można także przypisać ról za pomocą Privileged Identity Management (PIM). Aby uzyskać szczegółowe informacje o sposobie używania usługi PIM, zobacz [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
 ### <a name="to-assign-a-role-to-a-user"></a>Aby przypisać rolę użytkownikowi
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wyszukaj i wybierz użytkownika pobierania przypisania roli. Na przykład _Alain Charon_.
 

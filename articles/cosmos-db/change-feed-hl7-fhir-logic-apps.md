@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 591b79d4d9d44c55c2438d872b61a90abbe6ecad
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5cc6bdfa9c16a6dfbdd0f6c87873a90b2a203169
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841119"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089228"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Powiadamianie pacjentów zmiany opieki zdrowotnej rekordu HL7 FHIR przy użyciu aplikacji logiki i Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Ten artykuł przeprowadzi Zmień źródło danych powiadomienia rozwiązania utw
 
 ## <a name="project-requirements"></a>Wymagania dotyczące projektu
 - Dostawców wysyłanie HL7 Clinical skonsolidowanych architektury dokumentu (witryny CDA C) dokumenty w formacie XML. Dokumenty witryny CDA C obejmują niemal każdego typu clinical dokumentu, w tym clinical dokumenty, takie jak historie rodziny i uodparniania rekordów, jak również jako administracyjne, przepływu pracy i dokumentów finansowych. 
-- Dokumenty witryny CDA C są konwertowane na [HL7 FHIR zasobów](http://hl7.org/fhir/2017Jan/resourcelist.html) w formacie JSON.
+- Dokumenty witryny CDA C są konwertowane na [HL7 FHIR zasobów](https://hl7.org/fhir/2017Jan/resourcelist.html) w formacie JSON.
 - Zmodyfikowane dokumenty zasobów FHIR są wysyłane za pośrednictwem poczty e-mail w formacie JSON.
 
 ## <a name="solution-workflow"></a>Przepływ pracy w rozwiązaniu 

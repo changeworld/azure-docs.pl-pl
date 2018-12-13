@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: ''
-ms.openlocfilehash: 7ffcf656762c82d81c86eb394b028722566dafdb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 04e4337581337a467fc49927f0f353d42c7b801a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864421"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089671"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Usługa Azure Cosmos DB interfejsu API tabel dla środowiska Node.js: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "52864421"
 |   |   |
 |---|---|
 |**Zestaw SDK do pobrania**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API środowiska node.js](http://azure.github.io/azure-storage-node/)|
+|**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API środowiska node.js](https://azure.github.io/azure-storage-node/)|
 |**Przyczynia się do zestawu SDK**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]

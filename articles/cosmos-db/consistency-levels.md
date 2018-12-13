@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 075f79707dda4683c288163ec7bfdbf9807e153f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b509c7eceb3c2e2fb2e53f20791976b0322ad744
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834880"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089738"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności w usłudze Azure Cosmos DB
 
-Rozproszonych baz danych, które opierają się na replikację, wysoką dostępność, małe opóźnienia lub obu, należy podstawowych zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej.  [Atomowych](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) lub standardy programowania danych modelu silnej spójności. Ale dodaje wymaga początkowo dużej ilości cena czas oczekiwania (w stanie stabilnym) i ograniczoną dostępnością (podczas awarii). Z drugiej strony spójność ostateczną zapewnia większą dostępność i lepszą wydajność, ale jest trudny do aplikacji. 
+Rozproszonych baz danych, które opierają się na replikację, wysoką dostępność, małe opóźnienia lub obu, należy podstawowych zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej.  [Atomowych](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) lub standardy programowania danych modelu silnej spójności. Ale dodaje wymaga początkowo dużej ilości cena czas oczekiwania (w stanie stabilnym) i ograniczoną dostępnością (podczas awarii). Z drugiej strony spójność ostateczną zapewnia większą dostępność i lepszą wydajność, ale jest trudny do aplikacji. 
 
 Wyjaśnienie pojęcia spójności danych jako liczne opcje zamiast dwoma skrajnymi poziomami zbliża się do usługi Azure Cosmos DB. Wysoki poziom spójności i spójności ostatecznej znajdują się na końcach, ale istnieje wiele opcji spójności wzdłuż spektrum. Deweloperzy mogą używać tych opcji, opcji dokładne i szczegółową skutków ubocznych dotyczących wysokiej dostępności lub wydajności. 
 
@@ -38,7 +38,7 @@ W dowolnym momencie można skonfigurować domyślny poziom spójności na Twoim 
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Gwarancje skojarzone z poziomów spójności
 
-Kompleksowe umowy SLA, udostępniane przez usługi Azure Cosmos DB gwarancji, że 100 procent żądań odczytu spełnia gwarancję spójności dla dowolnego poziomu spójności, że wybrano. Żądania odczytu spełnia spójności umowy SLA, jeśli spełnione są wszystkie gwarancje spójności skojarzone z poziomu spójności. Dokładne definicje poziomów spójności pięć w usłudze Azure Cosmos DB przy użyciu [języka TLA + specyfikacji](http://lamport.azurewebsites.net/tla/tla.html) znajdują się w [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) repozytorium GitHub. 
+Kompleksowe umowy SLA, udostępniane przez usługi Azure Cosmos DB gwarancji, że 100 procent żądań odczytu spełnia gwarancję spójności dla dowolnego poziomu spójności, że wybrano. Żądania odczytu spełnia spójności umowy SLA, jeśli spełnione są wszystkie gwarancje spójności skojarzone z poziomu spójności. Dokładne definicje poziomów spójności pięć w usłudze Azure Cosmos DB przy użyciu [języka TLA + specyfikacji](https://lamport.azurewebsites.net/tla/tla.html) znajdują się w [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) repozytorium GitHub. 
 
 Semantyka poziomów spójności pięć są opisane poniżej:
 
@@ -85,7 +85,7 @@ Aby dowiedzieć się więcej na temat pojęć spójności, przeczytaj następuj�
 - [Replikowane dane spójności wyjaśniono za pośrednictwem mecz (dokument oficjalny) przez Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Sesja gwarancje słabo spójności replikowanych danych](https://dl.acm.org/citation.cfm?id=383631)
 - [Wady i zalety spójności w nowoczesny wygląd systemy bazy danych dystrybucji: limit to tylko część wątku](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
-- [Powiązana nieaktualność probabilistyczny (PBS) dla praktyczne kworum częściowe](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+- [Powiązana nieaktualność probabilistyczny (PBS) dla praktyczne kworum częściowe](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Ostatecznie spójny — poprawiony](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
 ## <a name="next-steps"></a>Kolejne kroki

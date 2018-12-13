@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 80ba42d7eab1726c7add6c4c9426b7dde3b55480
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1486e303e4e94ee6140bcd6ed4f52bc433b9aae6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445945"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100059"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Łączenie subskrypcji platformy Azure z dzierżawy usługi Azure AD B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "37445945"
 Opłaty za użycie w usłudze Azure AD B2C są rozliczane z subskrypcją platformy Azure. Po utworzeniu dzierżawy usługi Azure AD B2C, administrator dzierżawy musi jawnie utworzyć łącze dzierżawy usługi Azure AD B2C z subskrypcją platformy Azure. W tym artykule przedstawiono, jak.
 
 > [!NOTE]
-> Subskrypcji połączonej z dzierżawą usługi Azure AD B2C należy używać tylko na Naliczanie opłat za użycie usługi Azure AD B2C. Subskrypcja nie może służyć do dodawania innych usług platformy Azure lub licencji usługi Office 365 *w ramach dzierżawy usługi Azure AD B2C*.
+> Naliczanie opłat za użycie usługi Azure AD B2C lub innych zasobów platformy Azure, łącznie z dodatkowymi zasobami usługi Azure AD B2C umożliwia subskrypcji połączonej z dzierżawą usługi Azure AD B2C.  Nie można dodać innych usług platformy Azure na podstawie licencji lub licencji usługi Office 365 w ramach dzierżawy usługi Azure AD B2C.
 
  Link do subskrypcji można uzyskać, tworząc usługi Azure AD B2C "Zasób" w ramach docelowa subskrypcja platformy Azure. Wiele usługi Azure AD B2C "zasoby" mogą być tworzone w ramach pojedynczej subskrypcji platformy Azure wraz z innymi zasobami platformy Azure (na przykład maszyny wirtualne, Magazyn danych, LogicApps). Widać wszystkie zasoby w ramach subskrypcji, przechodząc do dzierżawy usługi Azure AD, która jest skojarzona subskrypcja.
 

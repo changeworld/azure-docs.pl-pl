@@ -1,21 +1,22 @@
 ---
-title: Dokumentacja interfejsu API zestawu SDK rozpoznawania mowy
+title: Dokumentacja interfejsu API SDK mowy — usługi mowy
 titleSuffix: Azure Cognitive Services
-description: Odwołania do zestawu SDK funkcji rozpoznawania mowy.
+description: Mowy Software Development Kit (SDK) daje dostęp aplikacji do funkcji usługi rozpoznawania mowy, co ułatwia tworzenie oprogramowania dla komputerów z obsługą mowy. Obecnie zestawy SDK zapewniają dostęp do zamiany mowy na tekst, tłumaczenie mowy i rozpoznawania intencji.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 0eae4cd9919e555453bfc6d44e2ddee51f30e809
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: c962fce8b8b05a977ac7d666a53b93aeda8c5357
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257370"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099857"
 ---
 # <a name="speech-sdk-api-reference"></a>Dokumentacja interfejsu API zestawu SDK rozpoznawania mowy
 

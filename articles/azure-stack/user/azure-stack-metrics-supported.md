@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 12/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: f8ef54393f3de00ae231c45c117e3a16a8d1aad1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7ebb9d683803a6c5a5a0fa25308b348eeea586c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725611"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097900"
 ---
 # <a name="supported-metrics-with-azure-monitor-on-azure-stack"></a>Obsługiwane metryki z usługą Azure Monitor w usłudze Azure Stack
 
@@ -26,7 +26,7 @@ ms.locfileid: "52725611"
 
 Możesz pobrać metryki z usługi Azure monitor w usłudze Azure Stack w taki sam jak globalnej platformy Azure. Można utworzyć miary w portalu, je uzyskać z interfejsu API REST lub wyszukiwać w nich za pomocą programu PowerShell lub interfejsu wiersza polecenia.
 
-W poniższej tabeli wymieniono dostępne przy użyciu usługi Azure Monitor potoku metryk w usłudze Azure Stack metryki. Aby zbadać i dostęp do tych metryk, konieczne będzie **2018-01-01** wersji api-version profilu interfejsu API. Aby uzyskać więcej informacji o profilach interfejsu API i usługi Azure Stack, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](azure-stack-version-profiles.md).
+W poniższej tabeli wymieniono dostępne przy użyciu usługi Azure Monitor potoku metryk w usłudze Azure Stack metryki. Aby zbadać i dostęp do tych metryk, musisz użyć **2018-01-01** wersji api-version profilu interfejsu API. Aby uzyskać więcej informacji o profilach interfejsu API i usługi Azure Stack, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](azure-stack-version-profiles.md).
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -42,50 +42,50 @@ W poniższej tabeli wymieniono dostępne przy użyciu usługi Azure Monitor poto
 | Transakcje | Transakcje | Licznik | Łącznie | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi. | ResponseType, GeoType, ApiName |
 | Ruch przychodzący | Ruch przychodzący | Bajty | Łącznie | Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. | GeoType, ApiName |
 | Ruch wychodzący | Ruch wychodzący | Bajty | Łącznie | Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. | GeoType, ApiName |
-| SuccessServerLatency | Opóźnienie serwera dla opóźnienia | Milisekundy | Średnia | Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency. | GeoType, ApiName |
-| SuccessE2ELatency | Opóźnienie E2E dla powodzenia | Milisekundy | Średnia | Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. | GeoType, ApiName |
+| SuccessServerLatency | Opóźnienie serwera dla powodzenia | MS | Średnia | Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency. | GeoType, ApiName |
+| SuccessE2ELatency | Opóźnienie e2e dla powodzenia | MS | Średnia | Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. | GeoType, ApiName |
 | Dostępność | Dostępność | Procent | Średnia | Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API. | GeoType, ApiName |
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
 | Metryka | Nazwa wyświetlana metryki | Jednostka | Typ agregacji | Opis | Wymiary |
 |----------------------|------------------------|--------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
-| BlobCapacity | Pojemność obiektu blob | Bajty | Łącznie | Ilość miejsca w magazynie (w bajtach) używana przez usługę obiektów blob konta magazynu. | BlobType |
-| BlobCount | Liczba obiektów blob | Licznik | Łącznie | Liczba obiektów blob w usłudze obiektów blob konta magazynu. | BlobType |
-| ContainerCount | Liczba kontenerów obiektów blob | Licznik | Średnia | Liczba kontenerów w usłudze obiektów blob konta magazynu. | Nie wymiarów |
+| BlobCapacity | Pojemność obiektu blob | Bajty | Łącznie | Ilość miejsca używanego przez usługę obiektów Blob konta magazynu, w bajtach. | BlobType |
+| BlobCount | Liczba obiektów blob | Licznik | Łącznie | Liczba obiektów Blob w usłudze obiektów Blob konta magazynu. | BlobType |
+| ContainerCount | Liczba kontenerów obiektów blob | Licznik | Średnia | Liczba kontenerów w usłudze obiektów Blob konta magazynu. | Nie wymiarów |
 | Transakcje | Transakcje | Licznik | Łącznie | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi. | ResponseType, GeoType, ApiName |
 | Ruch przychodzący | Ruch przychodzący | Bajty | Łącznie | Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. | GeoType, ApiName |
 | Ruch wychodzący | Ruch wychodzący | Bajty | Łącznie | Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. | GeoType, ApiName |
-| SuccessServerLatency | Opóźnienie serwera dla opóźnienia | Milisekundy | Średnia | Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency. | GeoType, ApiName |
-| SuccessE2ELatency | Opóźnienie E2E dla powodzenia | Milisekundy | Średnia | Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. | GeoType, ApiName |
+| SuccessServerLatency | Opóźnienie serwera dla powodzenia | MS | Średnia | Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency. | GeoType, ApiName |
+| SuccessE2ELatency | Opóźnienie e2e dla powodzenia | MS | Średnia | Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. | GeoType, ApiName |
 | Dostępność | Dostępność | Procent | Średnia | Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API. | GeoType, ApiName |
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
 | Metryka | Nazwa wyświetlana metryki | Jednostka | Typ agregacji | Opis | Wymiary |
 |----------------------|------------------------|--------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
-| TableCapacity | Pojemność tabeli | Bajty | Średnia | Ilość miejsca w magazynie (w bajtach) używanego przez usługę tabeli konta magazynu. | Nie wymiarów |
+| TableCapacity | Pojemność tabeli | Bajty | Średnia | Ilość miejsca używanego przez usługę tabeli konta magazynu, w bajtach. | Nie wymiarów |
 | TableCount | Liczba tabel | Licznik | Średnia | Liczba tabel w usłudze tabeli konta magazynu. | Nie wymiarów |
 | TableEntityCount | Liczba jednostek tabel | Licznik | Średnia | Liczba jednostek tabel w usłudze tabeli konta magazynu. | Nie wymiarów |
 | Transakcje | Transakcje | Licznik | Łącznie | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi. | ResponseType, GeoType, ApiName |
 | Ruch przychodzący | Ruch przychodzący | Bajty | Łącznie | Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. | GeoType, ApiName |
 | Ruch wychodzący | Ruch wychodzący | Bajty | Łącznie | Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. | GeoType, ApiName |
-| SuccessServerLatency | Opóźnienie serwera dla opóźnienia | Milisekundy | Średnia | Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency. | GeoType, ApiName |
-| SuccessE2ELatency | Opóźnienie E2E dla powodzenia | Milisekundy | Średnia | Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. | GeoType, ApiName |
+| SuccessServerLatency | Opóźnienie serwera dla powodzenia | MS | Średnia | Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency. | GeoType, ApiName |
+| SuccessE2ELatency | Opóźnienie e2e dla powodzenia | MS | Średnia | Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. | GeoType, ApiName |
 | Dostępność | Dostępność | Procent | Średnia | Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API. | GeoType, ApiName |
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
 | Metryka | Nazwa wyświetlana metryki | Jednostka | Typ agregacji | Opis | Wymiary |
 |----------------------|------------------------|--------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
-| QueueCapacity | Pojemność kolejki | Bajty | Średnia | Ilość miejsca w magazynie (w bajtach) używanego przez usługę kolejki konta magazynu. | Nie wymiarów |
+| QueueCapacity | Pojemność kolejki | Bajty | Średnia | Ilość miejsca używanego przez usługę kolejki konta magazynu, w bajtach. | Nie wymiarów |
 | QueueCount | Liczba kolejek | Licznik | Średnia | Liczba kolejek w usłudze kolejki konta magazynu. | Nie wymiarów |
 | QueueMessageCount | Liczba komunikatów w kolejce | Licznik | Średnia | Przybliżona liczba komunikatów w kolejce w usłudze kolejki konta magazynu. | Nie wymiarów |
 | Transakcje | Transakcje | Licznik | Łącznie | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi. | ResponseType, GeoType, ApiName |
 | Ruch przychodzący | Ruch przychodzący | Bajty | Łącznie | Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. | GeoType, ApiName |
 | Ruch wychodzący | Ruch wychodzący | Bajty | Łącznie | Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. | GeoType, ApiName |
-| SuccessServerLatency | Opóźnienie serwera dla opóźnienia | Milisekundy | Średnia | Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency. | GeoType, ApiName |
-| SuccessE2ELatency | Opóźnienie E2E dla powodzenia | Milisekundy | Średnia | Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. | GeoType, ApiName |
+| SuccessServerLatency | Opóźnienie serwera dla powodzenia | MS | Średnia | Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency. | GeoType, ApiName |
+| SuccessE2ELatency | Opóźnienie e2e dla powodzenia | MS | Średnia | Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. | GeoType, ApiName |
 | Dostępność | Dostępność | Procent | Średnia | Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API. | GeoType, ApiName |
 
 ## <a name="next-steps"></a>Kolejne kroki

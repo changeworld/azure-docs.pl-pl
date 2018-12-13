@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e0bbfafcda77ca48fb22ad919c5848a7670a102
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 67658d75f7ad4a6db1af5db97a525774b0ab6e61
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309678"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095282"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow przy użyciu usługi Azure Data Factory
 
@@ -77,7 +77,12 @@ Następujące właściwości są obsługiwane dla usługi ServiceNow, połączon
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi ServiceNow.
 
-Aby skopiować dane z usługi ServiceNow, należy ustawić właściwość typu zestawu danych na **ServiceNowObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
+Aby skopiować dane z usługi ServiceNow, należy ustawić właściwość typu zestawu danych na **ServiceNowObject**. Obsługiwane są następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość typu elementu dataset musi być równa: **ServiceNowObject** | Yes |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -89,7 +94,8 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić właściwość typu z
         "linkedServiceName": {
             "referenceName": "<ServiceNow linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -105,7 +111,7 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić typ źródła w dzia�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **ServiceNowSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Actual.alm_asset"`. | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Actual.alm_asset"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 Należy pamiętać, że podczas określania schematu i kolumn dla usługi ServiceNow w zapytaniu i **dotyczą [porady dotyczące wydajności](#performance-tips) na domniemanie wydajności kopiowania**.
 

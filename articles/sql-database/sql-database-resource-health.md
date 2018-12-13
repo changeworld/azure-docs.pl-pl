@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 8b982dbddf22393e276437c77007e18bc4d40042
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.openlocfilehash: dc20ffb0ce8add08a396a4c0ba5b496e80d04aa1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867193"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083890"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Umożliwia Rozwiązywanie problemów z łącznością dla usługi Azure SQL Database Resource Health
 
@@ -67,11 +67,11 @@ W przypadku bazy danych SQL napotyka Przestój, aby zidentyfikować przyczynę j
 
 #### <a name="planned-maintenance"></a>Planowana konserwacja
 
-Infrastruktura platformy Azure okresowo przeprowadza planowaną konserwację — Uaktualnij składniki sprzętowe lub programowe w centrum danych. Gdy baza danych jest poddawany konserwacji, SQL może zakończyć niektóre istniejące połączenia i odmówić nowe. Błędy podczas planowanej konserwacji mają zwykle charakter przejściowy i Logika ponawiania próby logowania zmniejsza wpływ. Jeśli nadal występują błędy podczas logowania, skontaktuj się z pomocą techniczną.
+Infrastruktura platformy Azure okresowo przeprowadza planowaną konserwację — Uaktualnij składniki sprzętowe lub programowe w centrum danych. Gdy baza danych jest poddawany konserwacji, SQL może zakończyć niektóre istniejące połączenia i odmówić nowe. Niepowodzenia logowania podczas planowanej konserwacji mają zwykle charakter przejściowy i [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) pomaga zredukować wpływ. Jeśli nadal występują błędy podczas logowania, skontaktuj się z pomocą techniczną.
 
 #### <a name="reconfiguration"></a>Ponowne konfigurowanie
 
-Reconfigurations są traktowane jako przejściowe warunki, a oczekuje się od czasu do czasu. Te zdarzenia mogą być wywoływane przez błędy ładowania równoważenia lub oprogramowanie i sprzęt. Każda aplikacja kliencka produkcji, który nawiązuje połączenie z usługą bazy danych w chmurze powinny implementować logikę ponawiania niezawodne połączenia, z logiki wycofywania, może pomóc rozwiązać tych sytuacji, a powinien ogólnie przezroczystego błędy użytkownikowi końcowemu.
+Reconfigurations są traktowane jako przejściowe warunki, a oczekuje się od czasu do czasu. Te zdarzenia mogą być wywoływane przez błędy ładowania równoważenia lub oprogramowanie i sprzęt. Każda aplikacja kliencka produkcji, który nawiązuje połączenie z bazą danych w chmurze powinny implementować niezawodne połączenia [Logika ponawiania próby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), ponieważ może ułatwić uniknięcie sytuacji i powinien ogólnie przezroczystego błędy użytkownikowi końcowemu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

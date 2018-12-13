@@ -1,5 +1,5 @@
 ---
-title: Dostępność i spójność w usłudze Azure Event Hubs | Dokumentacja firmy Microsoft
+title: Dostępność i spójność — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
 description: Jak zapewnić maksymalną ilość dostępność i spójność z usługą Azure Event Hubs za pomocą partycji.
 services: event-hubs
 documentationcenter: na
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9b4d992d690bb3237f8c92e44020c0ac83978d7e
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e5cad797b633d43bcc9ead657a60fca8aa6679bb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054192"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090724"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostępność i spójność w usłudze Event Hubs
 

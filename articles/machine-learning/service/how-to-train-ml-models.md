@@ -1,5 +1,6 @@
 ---
-title: Szkolenie modelu uczenia Maszynowego przy użyciu klasy narzędzie do szacowania za pomocą usługi Azure Machine Learning
+title: Szkolenie modelu uczenia Maszynowego przy użyciu klasy narzędzie do szacowania
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak przeprowadzić jednym węzłem i rozproszonego szkolenia tradycyjnych uczenia maszynowego i głębokiego uczenia modeli za pomocą usługi Azure Machine Learning services narzędzie do szacowania klasy
 ms.author: minxia
 author: mx-iao
@@ -9,13 +10,13 @@ ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 53462fc0aecbb8f5aeef0bb9208264c714ce8394
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: e7157b9546d1f9ca40bab35d9e643c38051db04e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011424"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100756"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Szkolenie modeli za pomocą usługi Azure Machine Learning
 

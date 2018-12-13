@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 217af96f23ad048ff4bb8a0bbb4902b3af16f21a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: b3498deb85b84c9c47544be1d8c3709c9fc78ae1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868331"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100261"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
@@ -44,7 +44,7 @@ Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ust
 | nullValue |Co najmniej jeden znak służący do reprezentowania wartości null. |Co najmniej jeden znak. Wartości **domyślne** to **„\N” i „NULL”** przy odczycie oraz **„\N”** przy zapisie. |Nie |
 | encodingName |Określa nazwę kodowania. |Prawidłowa nazwa kodowania. Zobacz [właściwość Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Przykład: windows-1250 lub shift_jis. Wartość **domyślna** to **UTF-8**. |Nie |
 | firstRowAsHeader |Określa, czy pierwszy wiersz ma być traktowany jako nagłówek. W przypadku zestawu danych wejściowych usługa Data Factory odczytuje pierwszy wiersz jako nagłówek. W przypadku zestawu danych wyjściowych usługa Data Factory zapisuje pierwszy wiersz jako nagłówek. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (domyślnie)</b> |Nie |
-| skipLineCount |Wskazuje liczbę wierszy do pominięcia podczas odczytywania danych z plików wejściowych. Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Liczba całkowita |Nie |
+| skipLineCount |Wskazuje liczbę **niepuste** wierszy do pominięcia podczas odczytywania danych z plików wejściowych. Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Liczba całkowita |Nie |
 | treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**True (domyślnie)**<br/>False |Nie |
 
 ### <a name="textformat-example"></a>Przykład formatu TextFormat
@@ -447,15 +447,15 @@ Pamiętaj o następujących kwestiach:
 | Typ danych tymczasowych fabryki danych | Typy ORC |
 |:--- |:--- |
 | Wartość logiczna | Wartość logiczna |
-| Sbyte — | Bajt |
-| Bajt | Krótkie |
+| Sbyte — | Bajtów |
+| Bajtów | Krótkie |
 | Int16 | Krótkie |
 | UInt16 | Int |
 | Int32 | Int |
 | UInt32 | Długie |
 | Int64 | Długie |
 | UInt64 | Ciąg |
-| Pojedyncze | Liczba zmiennoprzecinkowa |
+| Pojedyncze | float |
 | Podwójne | Podwójne |
 | Dziesiętna | Dziesiętna |
 | Ciąg | Ciąg |
@@ -492,14 +492,14 @@ Pamiętaj o następujących kwestiach:
 |:--- |:--- |:--- |:--- |
 | Wartość logiczna | Wartość logiczna | ND | ND |
 | Sbyte — | Int32 | Int8 | Int8 |
-| Bajt | Int32 | UInt8 | Int16 |
+| Bajtów | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
 | UInt16 | Int32 | UInt16 | Int32 |
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/dane binarne | UInt64 | Dziesiętna |
-| Pojedyncze | Liczba zmiennoprzecinkowa | ND | ND |
+| Pojedyncze | float | ND | ND |
 | Podwójne | Podwójne | ND | ND |
 | Dziesiętna | Binarny | Dziesiętna | Dziesiętna |
 | Ciąg | Binarny | Utf8 | Utf8 |

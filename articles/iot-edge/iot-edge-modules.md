@@ -1,6 +1,6 @@
 ---
-title: Omówienie modułów usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o moduły usługi Azure IoT Edge i sposobu ich konfiguracji
+title: Dowiedz się, jak moduły uruchamiają logikę na urządzeniach z systemem — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Moduły platformy Azure IoT Edge to jednostki konteneryzowanych logiki, która może być wdrożone i zdalne zarządzanie, dzięki czemu możesz uruchomić logiki biznesowej na urządzeniach brzegowych IoT urządzenia
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3d76f5931e3636f19c2030c4090116a0791db819
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567336"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094189"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Omówienie modułów usługi Azure IoT Edge
 
@@ -31,7 +32,7 @@ Obrazy istnieją w chmurze i mogą być aktualizowane, zmienić i wdrożone w r�
 
 Każdorazowo obraz modułu jest wdrażana na urządzeniu i uruchomiona przez środowisko uruchomieniowe usługi IoT Edge, tworzone jest nowe wystąpienie tego modułu. Dwa urządzenia w różnych częściach świata, można użyć tego samego obrazu modułu. Jednak każdy musi własne wystąpienie modułu podczas uruchamiania modułu na urządzeniu. 
 
-![Obrazy modułu w chmurze — wystąpienia modułu na urządzeniach](./media/iot-edge-modules/image_instance.png)
+![Diagram — obrazy modułu w chmurze, wystąpień modułu na urządzeniach](./media/iot-edge-modules/image_instance.png)
 
 W implementacji obrazów modułów istnieje jako obrazów kontenerów w repozytorium, a wystąpienia modułu to kontenery, które na urządzeniach. 
 
@@ -46,7 +47,7 @@ Tożsamość skojarzoną z wystąpieniem modułu zależy od tożsamości urządz
 
 Wyraźnie widać w scenariuszach, gdy należy wdrożyć jeden obraz modułu wiele razy w tym samym urządzeniu, można wdrożyć ten sam obraz wielokrotnie pod różnymi nazwami.
 
-![Moduł tożsamości są unikatowe](./media/iot-edge-modules/identity.png)
+![Diagram — moduł tożsamości są unikatowe w obrębie urządzeń i na urządzeniach](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>Bliźniaczych reprezentacjach modułów
 

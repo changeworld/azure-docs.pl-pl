@@ -1,21 +1,22 @@
 ---
-title: Dodawanie interfejsu API sprawdzania pisowni Bing w wersji 7 do zapytań usługi LUIS | Dokumentacja firmy Microsoft
+title: Poprawne błędnie napisanych wyrazów
 titleSuffix: Azure
 description: Poprawne błędnie napisanych wyrazów w wypowiedzi przez dodanie 7 interfejsu API sprawdzanie pisowni Bing do kwerendy punktu końcowego usługi LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6d197b014d6936b12b34a6d8783d1ebd29dfa28a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 478970c6b5f4035949c8b6579f1021dfa161fd39
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443333"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096795"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Poprawne błędnie napisanych wyrazów za pomocą sprawdzania pisowni Bing
 
@@ -75,7 +76,7 @@ Punkt końcowy adres URL ma kilka wartości, które muszą zostać prawidłowo p
 
 4. Usługa LUIS odpowiada za pomocą wyniku JSON `How far is the mountain?`. Jeśli interfejs API sprawdzania pisowni Bing w wersji 7 wykryje błąd, `query` pole odpowiedź aplikacji LUIS w formacie JSON zawiera oryginalnego zapytania i `alteredQuery` pole zawiera poprawiony zapytanie wysyłane do usługi LUIS.
 
-```
+```json
 {
   "query": "How far is the mountainn?",
   "alteredQuery": "How far is the mountain?",

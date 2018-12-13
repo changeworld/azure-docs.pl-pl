@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 1a6ccb42e00431c16ce7767f19d6cdc9cbb3cffe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 25dc4715e4cfd028b6d0f83a32edd3f8ef93d560
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841697"
+ms.locfileid: "52874893"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Zbieranie danych z zebrane na agentach systemu Linux w usłudze Log Analytics
 [Zebrane](https://collectd.org/) jest demonów systemu Linux typu open source, który okresowo zbiera metryki wydajności z aplikacji i informacje o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z zebrane w usłudze Log Analytics.
@@ -125,5 +125,5 @@ Aby zachować znanego modelu między metryk infrastruktury już zebrane przez ag
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
-* Użyj [pól niestandardowych](../../log-analytics/log-analytics-custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
+* Użyj [pól niestandardowych](../../azure-monitor/platform/custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
 

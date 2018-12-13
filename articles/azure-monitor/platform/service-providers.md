@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: ''
-ms.openlocfilehash: c43b2e265903b119812d16ef4ef329393c725e71
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 0c75926943ceb2e77335732445f56099961f7667
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992991"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099039"
 ---
 # <a name="log-analytics-for-service-providers"></a>Usługa log Analytics dla dostawców usług
 Usługa log Analytics może pomóc dostawcom usług zarządzanych (msp), dla dużych przedsiębiorstw, niezależnych dostawców oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w klienta w środowisku lokalnym lub w infrastrukturze chmury. 
@@ -80,7 +80,7 @@ Dostępne są dwie opcje do zaimplementowania centralnej lokalizacji w usłudze 
 
 ## <a name="next-steps"></a>Następne kroki
 * Automatyzować tworzenie i konfigurowanie obszarami roboczymi przy użyciu [szablonów usługi Resource Manager](template-workspace-configuration.md)
-* Automatyzacja tworzenia obszarów roboczych przy użyciu [programu PowerShell](../../log-analytics/log-analytics-powershell-workspace-configuration.md) 
+* Automatyzacja tworzenia obszarów roboczych przy użyciu [programu PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) 
 * Użyj [alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) do integracji z istniejącymi systemami
 * Generowanie raportu podsumowania przy użyciu [usługi Power BI](../../azure-monitor/platform/powerbi.md)
 * Przegląd procesu [konfigurowania usługi Log Analytics i usługą Power BI do monitorowania wielu klientów programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

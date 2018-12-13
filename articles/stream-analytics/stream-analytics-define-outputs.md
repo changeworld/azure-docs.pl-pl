@@ -7,13 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 555a2bdfe3997114c1aaa202a89d650287f27c0e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310047"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091632"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych. 
@@ -34,13 +35,13 @@ Wyjście usługi Azure Data Lake Store z usługi Stream Analytics nie jest obecn
 
 1. Po wybraniu usługi Data Lake Storage jako dane wyjściowe w witrynie Azure portal monit autoryzować połączenie istniejących w Data Lake Store.  
 
-   ![Autoryzuj Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+   ![Autoryzuj połączenie, aby Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
 2. Jeśli masz już dostęp do programu Data Lake Store, wybierz opcję **autoryzować teraz** i strony pojawi się wskazujący **przekierowywanie do autoryzacji**. Po autoryzacji zakończy się powodzeniem, zostanie wyświetlona strona, która pozwala na konfigurowanie danych wyjściowych Data Lake Store.
 
 3. Po utworzeniu konta Data Lake Store uwierzytelnionego, można skonfigurować właściwości dla danych wyjściowych usługi Data Lake Store. W poniższej tabeli jest listę nazw właściwości i ich opisy, aby skonfigurować dane wyjściowe usługi Data Lake Store.
 
-   ![Autoryzuj Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+   ![Data Lake Store jest definiowana jako dane wyjściowe usługi Stream Analytics](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 | Nazwa właściwości | Opis | 
 | --- | --- |
@@ -59,7 +60,7 @@ Musisz ponownie uwierzytelniać konta Data Lake Store, jeśli jego hasło zmieni
 
 Aby odnowić autoryzację, **zatrzymać** zadania > Przejdź do usługi Data Lake Store dane wyjściowe > kliknij **Odnów autoryzację** połączyć, a przez krótki czas strony wyświetli wskazujący **przekierowywanie do Autoryzacja...** . Na stronie automatycznie zamyka i wskazuje, w przypadku powodzenia **autoryzacja została pomyślnie odnowiona**. Następnie należy kliknąć przycisk **Zapisz** w dolnej części strony i przejść przez ponowne uruchomienie zadania z **ostatniego zatrzymana** na uniknięcie utraty danych.
 
-![Autoryzuj Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
+![Odnów autoryzację Data Lake Store w danych wyjściowych](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
 [Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/) mogą być używane jako dane wyjściowe dla danych relacyjnych z natury lub aplikacje, które są zależne od zawartości jest hostowana w relacyjnej bazie danych. Zadania usługi Stream Analytics zapisu do istniejącej tabeli w bazie danych SQL Azure.  Schemat tabeli musi dokładnie odpowiadać, pola i ich typy, które są dane wyjściowe zadania. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) można również określić jako dane wyjściowe za pośrednictwem także opcji output bazy danych SQL. Aby uzyskać informacje dotyczące sposobów na ulepszenie przepływność zapisu, zapoznaj się [usługi Stream Analytics z bazą danych SQL Azure jako dane wyjściowe](stream-analytics-sql-output-perf.md) artykułu. Poniższa tabela zawiera listę nazw właściwości i ich opisy tworzenia wyjście bazy danych SQL.
@@ -133,11 +134,11 @@ Wyjście usługi Power BI z usługą Stream Analytics nie jest obecnie dostępna
 ### <a name="authorize-a-power-bi-account"></a>Autoryzacja konta usługi Power BI
 1. Po wybraniu usługi Power BI jako dane wyjściowe w witrynie Azure portal, zostanie wyświetlony monit, aby zezwolić istniejącym użytkownikiem usługi Power BI lub Utwórz nowe konto usługi Power BI.  
    
-   ![Zezwolić usłudze Power BI użytkownika](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
+   ![Autoryzacja użytkownika usługi Power BI, aby skonfigurować dane wyjściowe](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 
 2. Utwórz nowe konto, jeśli nie jeszcze masz, kliknij przycisk Autoryzuj teraz.  Jest wyświetlana następująca strona:
    
-   ![Azure Account Power BI](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
+   ![Uwierzytelnianiu w usłudze Power BI z konta platformy Azure](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
 
 3. W tym kroku należy podać konto służbowe lub szkolne autoryzowanie danych wyjściowych usługi Power BI. Jeśli nie już wcześniej zalogowano w usłudze Power BI, wybierz opcję Zarejestruj teraz. Konto służbowe lub szkolne, którego używasz dla usługi Power BI może różnić się od konta subskrypcji platformy Azure, które jest aktualnie zalogowany przy użyciu.
 
@@ -190,11 +191,11 @@ Data/godzina | Ciąg | Ciąg |  Data/godzina | Ciąg
 ### <a name="renew-power-bi-authorization"></a>Odnów autoryzację BI zasilania
 Jeśli hasło konta usługi Power BI zmieni się po utworzenia lub ostatniego uwierzytelnienia zadania usługi Stream Analytics, musisz ponownie uwierzytelniać usługi Stream Analytics. Jeśli uwierzytelnianie wieloskładnikowe (MFA) jest skonfigurowany w dzierżawie usługi Azure Active Directory (AAD), należy odnowić autoryzację usługi Power BI, co dwa tygodnie. Objawem tego problemu jest nie danych wyjściowych zadań i "Uwierzytelnianie użytkownika error" w dziennikach operacji:
 
-  ![Błąd tokenu odświeżania usługa Power BI](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
+  ![Usługa Power BI uwierzytelniania błąd użytkownika](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
 
 Aby rozwiązać ten problem, Zatrzymaj uruchomione zadania, a następnie przejdź do usługi Power BI danych wyjściowych.  Wybierz **Odnów autoryzację** połączyć, a następnie uruchom ponownie zadanie z **ostatniego zatrzymana** na uniknięcie utraty danych.
 
-  ![Usługa Power BI odnawia autoryzacji](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
+  ![Odnów autoryzację usługi Power BI dla danych wyjściowych](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>Table Storage
 [Usługa Azure Table storage](../storage/common/storage-introduction.md) oferuje magazyn o wysokiej dostępności, skalowalności, dzięki czemu aplikacja może automatycznie skalować w celu spełnienia określonych wymagań użytkownika. Magazyn tabel to magazyn klucz atrybut NoSQL firmy Microsoft, który z nich mogą korzystać z danych strukturalnych z mniejszą liczbą ograniczeniami w schemacie. Usługa Azure Table storage może służyć do przechowywania danych dla stanu trwałego i efektywne pobieranie.

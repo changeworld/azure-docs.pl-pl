@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 9908dae627ae11a42e8e01a9a4f4d11f35ce0f8d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1fe0db2f0c7fea4b24cc23aaa52deb16376012b2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422964"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Samouczek: Integracja usługi Azure Active Directory z sieci szkieletowej zabezpieczeń chmury
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD przy użyciu sieci szkieletowej zabezpieczeń chmury, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Sieci szkieletowej zabezpieczeń chmury logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację z sieci szkieletowej zabezpieczeń chmury w usłu
 
 **Aby dodać sieci szkieletowej zabezpieczeń chmury z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -108,12 +108,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Cloud Security Service Fabric domena i adresy URL pojedynczego logowania jednokrotnego informacje](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL:
+
     | |
     |--|
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+    
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
@@ -166,7 +168,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="create-a-the-cloud-security-fabric-test-user"></a>Tworzenie użytkownika testowego sieci szkieletowej zabezpieczeń chmury
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w sieci szkieletowej zabezpieczeń chmury. Praca z [zespołem pomocy technicznej w sieci szkieletowej zabezpieczeń chmury](mailto:support@cloudlock.com) Aby dodać użytkowników w sieci szkieletowej zabezpieczeń chmury platformy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w sieci szkieletowej zabezpieczeń chmury. Praca z [zespołem pomocy technicznej w sieci szkieletowej zabezpieczeń chmury](mailto:support@cloudlock.com) Aby dodać użytkowników w sieci szkieletowej zabezpieczeń chmury platformy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

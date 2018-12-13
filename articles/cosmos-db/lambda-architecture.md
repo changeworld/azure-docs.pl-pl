@@ -8,12 +8,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: aacd41eef250577681a9910c9b7c68f3b7000f5c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: b6831e9c6b679d2fd4fa585331213290d67068c2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870796"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084025"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Implementowanie architektury lambda na platformie Azure 
 
@@ -34,7 +34,7 @@ Architektura lambda jest ogólny, skalowalne, i odpornej na uszkodzenia danych, 
 
 Źródło: http://lambda-architecture.net/
 
-Podstawowe zasady architektury lambda są opisane na powyższym diagramie zgodnie [ https://lambda-architecture.net ](http://lambda-architecture.net/).
+Podstawowe zasady architektury lambda są opisane na powyższym diagramie zgodnie [ http://lambda-architecture.net ](http://lambda-architecture.net/).
 
  1. Wszystkie **danych** są przesyłane do *zarówno* *warstwie wsadowej* i *warstwa szybka*.
  2. **Warstwie wsadowej** ma główny zestaw danych (niezmienne, tylko do dołączania zestawu danych pierwotnych) i wstępnie oblicza widoków usługi batch.
@@ -278,4 +278,4 @@ Jeśli jeszcze nie, Pobierz platformy Spark do łącznika usługi Azure Cosmos D
 * [Pokazy kanału informacyjnego zmian](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Stream przetwarzania zmian za pomocą usługi Azure Cosmos DB kanału informacyjnego zmian i Apache Spark](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
 
-Możesz również przejrzeć [Apache Spark SQL, przewodnik zestawy danych i elementy Dataframe](http://spark.apache.org/docs/latest/sql-programming-guide.html) i [platformy Apache Spark w usłudze Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) artykułu.
+Możesz również przejrzeć [Apache Spark SQL, przewodnik zestawy danych i elementy Dataframe](https://spark.apache.org/docs/latest/sql-programming-guide.html) i [platformy Apache Spark w usłudze Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) artykułu.

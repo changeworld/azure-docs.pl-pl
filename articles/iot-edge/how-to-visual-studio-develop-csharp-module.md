@@ -1,20 +1,20 @@
 ---
-title: Programowanie i debugowanie modułów języka C# dla usługi Azure IoT Edge w programie Visual Studio 2017 | Dokumentacja firmy Microsoft
+title: Programowanie i debugowanie C# modułów w programie Visual Studio — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Używanie programu Visual Studio 2017 do tworzenia i debugowania modułu w języku C# dla usługi Azure IoT Edge
 services: iot-edge
-keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 091eb6af871cc53dff3459c55c668e8ffb227984
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 547989152320678ec195c4e8a93965cfbbd0f341
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567472"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097849"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Używanie programu Visual Studio 2017 do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge (wersja zapoznawcza)
 
@@ -53,7 +53,7 @@ Gdy usługi Visual Studio 2017 jest gotowy, wymagane są również:
 
 1. Z **narzędzia** menu, wybierz **rozszerzenia i aktualizacje**. Rozwiń **zainstalowane > narzędzia** możesz znaleźć **usługi Azure IoT Edge** i **programu Cloud Explorer**.
 
-2. Zwróć uwagę na wersję zainstalowanego. Możesz porównać tej wersji do najnowszej wersji w Visual Studio Marketplace ([programu Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS), [usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.azureiotedgetools))
+2. Zwróć uwagę na wersję zainstalowanego. Możesz porównać tej wersji do najnowszej wersji w Visual Studio Marketplace ([programu Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS), [usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge))
 
 3. W przypadku starszych wersji aktualizacji z narzędzi w programie Visual Studio, jak pokazano w poniższej sekcji.
 

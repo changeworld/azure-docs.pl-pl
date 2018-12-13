@@ -3,7 +3,7 @@ title: Tworzenie i zarządzanie nimi w usłudze Azure SQL zadania Elastic Databa
 description: Uruchom skrypty w wielu bazach danych przy użyciu agenta elastycznych zadań bazy danych przy użyciu języka Transact-SQL (T-SQL).
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 49fe1fc79ac94b798cb257b961c36a6258fb00d9
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
-ms.translationtype: MT
+ms.openlocfilehash: ead7b92640262a1c386fc9b8c3def803d2525843
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056791"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868960"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -1216,14 +1216,14 @@ Pokazano zadań historii wykonywania.
 |**job_execution_id**   |uniqueidentifier|  Unikatowy identyfikator wystąpienia wykonywania zadania.
 |**Parametr job_name**   |nvarchar(128)  |Nazwa zadania.
 |**wartość job_id** |uniqueidentifier|  Unikatowy identyfikator zadania.
-|**job_version**    |Int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).
-|**step_id**    |Int|   Identyfikator unikatowy (dla tego zadania) dla etapu. Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
+|**job_version**    |int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).
+|**step_id**    |int|   Identyfikator unikatowy (dla tego zadania) dla etapu. Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**is_active**| Bitowe |Wskazuje, czy informacje są aktywne lub nieaktywne. wartość 1 oznacza aktywne zadania, a wartość 0 wskazuje nieaktywne.
 |**cykl życia**| nvarchar(50)|Wartość wskazująca, stan zadania: "Utworzony", "W toku", "Nie powiodło się", "Powodzenie", "Pominięto", "SucceededWithSkipped"|
 |**create_time**|   datetime2(7)|   Data i godzina utworzenia zadania.
 |**godzina_rozpoczęcia** |datetime2(7)|  Data i godzina zadania rozpoczął wykonywanie sekwencji. Wartość NULL, jeśli zadanie nie zostało jeszcze wykonane.
 |**end_time**|  datetime2(7)    |Data i godzina zadanie zostało zakończone, wykonanie. Wartość NULL, jeśli zadanie nie zostało jeszcze wykonane lub nie zostało jeszcze ukończone.
-|**current_attempts**   |Int    |Liczba prób ponownego wykonania kroku. Zadanie nadrzędne będzie mieć wartość 0, liczba wykonań zadań podrzędnych będzie mieć wartość 1 lub większa oparte na zasad wykonywania programu.
+|**current_attempts**   |int    |Liczba prób ponownego wykonania kroku. Zadanie nadrzędne będzie mieć wartość 0, liczba wykonań zadań podrzędnych będzie mieć wartość 1 lub większa oparte na zasad wykonywania programu.
 |**current_attempt_start_time** |datetime2(7)|  Data i godzina zadania rozpoczął wykonywanie sekwencji. Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**last_message**   |nvarchar(max)| Komunikat historii zadania lub krok. 
 |**target_type**|   nvarchar(128)   |Typ docelowej bazy danych lub kolekcji baz danych, uwzględniający wszystkie bazy danych w serwera i wszystkich baz danych w puli elastycznej bazy danych. Prawidłowe wartości dla target_type — to 'SqlServer', "SqlElasticPool" lub "Baza danych SQL". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
@@ -1243,10 +1243,10 @@ Pokazuje wszystkie zadania.
 |------|------|-------|
 |**Parametr job_name**|  nvarchar(128)   |Nazwa zadania.|
 |**wartość job_id**|    uniqueidentifier    |Unikatowy identyfikator zadania.|
-|**job_version**    |Int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
+|**job_version**    |int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
 |**Opis elementu**    |nvarchar(512)| Opis zadania. bit włączone wskazuje, czy zadanie jest włączone. wartość 1 oznacza włączone zadania, a wartość 0 wskazuje wyłączone zadania.|
 |**schedule_interval_type** |nvarchar(50)   |Wartość wskazująca, kiedy zadanie jest wykonywana: "Raz", "Min", "Godziny", "dni", "Tygodni", "Miesiące"
-|**schedule_interval_count**|   Int|    Liczba okresów schedule_interval_type się komunikować między każdego wykonania zadania.|
+|**schedule_interval_count**|   int|    Liczba okresów schedule_interval_type się komunikować między każdego wykonania zadania.|
 |**schedule_start_time**    |datetime2(7)|  Data i godzina, których ostatni Rozpoczęto wykonywanie zadania.|
 |**schedule_end_time**| datetime2(7)|   Data i godzina, których ostatniego wykonania ukończone zadania.|
 
@@ -1261,7 +1261,7 @@ Przedstawia wszystkie wersje zadania.
 |------|------|-------|
 |**Parametr job_name**|  nvarchar(128)   |Nazwa zadania.|
 |**wartość job_id**|    uniqueidentifier    |Unikatowy identyfikator zadania.|
-|**job_version**    |Int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
+|**job_version**    |int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
 
 
 ### <a name="jobsteps-view"></a>Widok etapów zadania
@@ -1274,8 +1274,8 @@ Przedstawia wszystkie kroki opisane w bieżącej wersji każdego zadania.
 |------|------|-------|
 |**Parametr job_name**   |nvarchar(128)| Nazwa zadania.|
 |**wartość job_id** |uniqueidentifier   |Unikatowy identyfikator zadania.|
-|**job_version**|   Int|    Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
-|**step_id**    |Int    |Identyfikator unikatowy (dla tego zadania) dla etapu.|
+|**job_version**|   int|    Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
+|**step_id**    |int    |Identyfikator unikatowy (dla tego zadania) dla etapu.|
 |**step_name**  |nvarchar(128)  |(Dla tego zadania) unikatowa wartość kroku.|
 |**command_type**   |nvarchar(50)   |Typ polecenia do wykonania w kroku zadania. Dla wersji 1, wartość musi być równa się i wartość domyślna to "TSql".|
 |**command_source** |nvarchar(50)|  Lokalizacja polecenia. Dla wersji 1 "Inline" jest ustawieniem domyślnym i akceptowany tylko wartości.|
@@ -1283,11 +1283,11 @@ Przedstawia wszystkie kroki opisane w bieżącej wersji każdego zadania.
 |**credential_name**|   nvarchar(128)   |Nazwa poświadczeń o zakresie bazy danych używane do wykonywania zadania.|
 |**target_group_name**| nvarchar(128)   |Nazwa grupy docelowej.|
 |**target_group_id**|   uniqueidentifier|   Unikatowy identyfikator grupy docelowej.|
-|**initial_retry_interval_seconds**|    Int |Opóźnienie przed pierwszym ponowieniem próby. Wartość domyślna to 1.|
-|**maximum_retry_interval_seconds** |Int|   Maksymalne opóźnienie między ponownymi próbami. Jeśli opóźnienie między kolejnymi próbami będzie powiększać większa niż ta wartość, jej wynosi tej wartości zamiast tego. Wartość domyślna to 120.|
+|**initial_retry_interval_seconds**|    int |Opóźnienie przed pierwszym ponowieniem próby. Wartość domyślna to 1.|
+|**maximum_retry_interval_seconds** |int|   Maksymalne opóźnienie między ponownymi próbami. Jeśli opóźnienie między kolejnymi próbami będzie powiększać większa niż ta wartość, jej wynosi tej wartości zamiast tego. Wartość domyślna to 120.|
 |**retry_interval_backoff_multiplier**  |rzeczywiste|  Mnożnik do zastosowania do opóźnienia ponawiania, jeśli wiele zadań krok wykonywania próbuje zakończyć się niepowodzeniem. Wartością domyślną jest w wersji 2.0.|
-|**retry_attempts** |Int|   Liczba ponownych prób do użycia, jeśli ta czynność zakończy się niepowodzeniem. Domyślna wartość wynosząca 10, co oznacza nie ponownych prób.|
-|**step_timeout_seconds**   |Int|   Ilość czasu w minutach między ponownymi próbami. Wartość domyślna to 0, co oznacza, 0-minutowych interwałach.|
+|**retry_attempts** |int|   Liczba ponownych prób do użycia, jeśli ta czynność zakończy się niepowodzeniem. Domyślna wartość wynosząca 10, co oznacza nie ponownych prób.|
+|**step_timeout_seconds**   |int|   Ilość czasu w minutach między ponownymi próbami. Wartość domyślna to 0, co oznacza, 0-minutowych interwałach.|
 |**output_type**    |nvarchar(11)|  Lokalizacja polecenia. W bieżącej wersji zapoznawczej "Inline" jest ustawieniem domyślnym i akceptowany tylko wartości.|
 |**output_credential_name**|    nvarchar(128)   |Nazwa poświadczenia ma być używany do łączenia się z serwerem docelowym do przechowywania wyników zestawu.|
 |**output_subscription_id**|    uniqueidentifier|   Unikatowy identyfikator subskrypcji server\database docelowego dla wyników z wykonywania zapytania.|
@@ -1296,7 +1296,7 @@ Przedstawia wszystkie kroki opisane w bieżącej wersji każdego zadania.
 |**output_database_name**   |nvarchar(128)| Nazwa docelowej bazy danych dla zestawu wyników.|
 |**output_schema_name** |nvarchar(max)| Nazwa schematu docelowego. Wartość domyślna to dbo, jeśli nie zostanie określony.|
 |**output_table_name**| nvarchar(max)|  Nazwa tabeli do przechowywania wyników z wyników zapytania. Tabela zostanie utworzona automatycznie w oparciu o schemacie wyniki, jeśli jeszcze nie istnieje. Schemat musi być zgodna ze schematem zestawu wyników.|
-|**max_parallelism**|   Int|    Maksymalna liczba baz danych w jednej puli elastycznej, który krok zadania jest uruchamiane w danym momencie. Wartość domyślna to NULL, co oznacza brak limitu. |
+|**max_parallelism**|   int|    Maksymalna liczba baz danych w jednej puli elastycznej, który krok zadania jest uruchamiane w danym momencie. Wartość domyślna to NULL, co oznacza brak limitu. |
 
 
 ### <a name="jobstepversions-view"></a>Widok jobstep_versions
@@ -1326,7 +1326,7 @@ Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|Nazwa grupy docelowej kolekcji baz danych. |
 |**target_group_id**    |uniqueidentifier   |Unikatowy identyfikator grupy docelowej.|
-|**membership_type**    |Int|   Określa członka grupy docelowej jest włączone czy wyłączone w docelowej grupie. Prawidłowe wartości dla target_group_name to "Include" lub "Exclude".|
+|**membership_type**    |int|   Określa członka grupy docelowej jest włączone czy wyłączone w docelowej grupie. Prawidłowe wartości dla target_group_name to "Include" lub "Exclude".|
 |**target_type**    |nvarchar(128)| Typ docelowej bazy danych lub kolekcji baz danych, uwzględniający wszystkie bazy danych w serwera i wszystkich baz danych w puli elastycznej bazy danych. Prawidłowe wartości dla target_type — są 'SqlServer', "SqlElasticPool", "Baza danych SQL" lub "SqlShardMap".|
 |**target_id**  |uniqueidentifier|  Unikatowy identyfikator elementu członkowskiego grupy docelowej.|
 |**refresh_credential_name**    |nvarchar(128)  |Nazwa bazy danych o określonym zakresie poświadczenia używane do łączenia z członka grupy docelowej.|

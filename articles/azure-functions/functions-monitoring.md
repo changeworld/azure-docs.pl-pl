@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 9fb25f21e9ff54baf0e297fad1601018af45e476
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497242"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876523"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -330,6 +330,21 @@ Jak wspomniano w poprzedniej sekcji, środowisko uruchomieniowe agreguje dane do
 ## <a name="configure-sampling"></a>Konfigurowanie próbkowania
 
 Usługa Application Insights ma [próbkowania](../application-insights/app-insights-sampling.md) funkcji, które można chronić klientów przed tworzenie zbyt dużej ilości danych telemetrycznych dane w czasie szczytowego obciążenia. Liczba przychodzących danych telemetrycznych przekracza określoną wartość progową, Application Insights uruchamia losowo ignorowanie niektórych elementów przychodzących. Domyślne ustawienie maksymalnej liczby elementów na sekundę wynosi 5. Można skonfigurować pobieranie próbek w [host.json](functions-host-json.md).  Oto przykład:
+
+### <a name="version-2x"></a>W wersji 2.x 
+
+```json
+{
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "maxTelemetryItemsPerSecond" : 5
+      }
+    }
+  }
+}
+```
 
 ### <a name="version-1x"></a>W wersji 1.x 
 

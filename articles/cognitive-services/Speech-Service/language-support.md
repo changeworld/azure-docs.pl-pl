@@ -1,21 +1,22 @@
 ---
 title: Obsługa języków — interfejs API mowy usługi
 titleSuffix: Azure Cognitive Services
-description: Lista języków naturalnych obsługiwane przez usługę rozpoznawania mowy.
+description: Usługi mowy platformy Azure obsługuje wiele języków dla konwersji mowy na tekst i zamiany tekstu na mowę, oraz tłumaczenia mowy. Ten artykuł zawiera pełną listę Obsługa języków przez usługę.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec18
+ms.openlocfilehash: 8cdcdd6c5e0201f8f6af39faab0a67a68920e568
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284765"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094580"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
@@ -36,8 +37,8 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
  en-GB | Angielski (Zjednoczone Królestwo) | Nie | Yes | Yes
  EN-IN | English (India) | Yes | Yes | Yes
  EN NZ | Angielski (Nowa Zelandia) | Nie | Yes | Yes  
- pl-PL | Angielski (Stany Zjednoczone) | Yes | Yes | Yes
- es-ES | Hiszpański (Hiszpania) | Nie | Yes | Nie
+ en-US | Angielski (Stany Zjednoczone) | Yes | Yes | Yes
+ es-ES | Hiszpański (Hiszpania) | Yes | Yes | Nie
  es-MX | Hiszpański (Meksyk) | Nie | Yes | Nie
  fi-FI | Fiński (Finlandia) | Nie | Nie | Nie
  fr-CA | Francuski (Kanada) | Nie | Yes | Nie
@@ -49,7 +50,7 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
  nb-NO | Norweski (Bokmal) (Norwegia) | Nie | Nie | Nie
  NL-NL | Holenderski (Holandia) | Nie | Yes | Nie
  pl-PL | Polski (Polska) | Nie | Nie | Nie
- pt-BR | Portugalski (Brazylia) | Nie | Yes | Nie
+ pt-BR | Portugalski (Brazylia) | Yes | Yes | Nie
  pt-PT | Portugalski (Portugalia) | Nie | Yes | Nie
  ru-RU | Rosyjski (Rosja) | Yes | Yes | Nie
  sv-SE | Szwedzki (Szwecja) | Nie | Nie | Nie
@@ -140,7 +141,7 @@ vi-VN | Wietnamski|Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę 
 zh-CN | Chiński (kontynent)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, HuihuiRUS)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, Yaoyao, Apollo)"
 | | |Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-CN, Kangkang, Apollo)"
-zh-HK | Chiński (SRA Hongkong)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK Tracy, Apollo)"
+zh-HK | Chiński (Hongkong)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK Tracy, Apollo)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK TracyRUS)"
 | || Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-HK Danny, Apollo)"
 zh-TW | Chiński (Tajwan)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-TW, Yating, Apollo)"
@@ -158,7 +159,7 @@ Dostosowanie głos jest dostępny język angielski (en US), kontynent, chiński 
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
-**Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z poniższej tabeli języka mowy. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu. Może być tłumaczenie mowy przychodzących do więcej niż [60 języków](https://www.microsoft.com/translator/business/languages/). Podzbiór tych języków są dostępne dla [synteza mowy](language-support.md#text-languages). 
+**Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z poniższej tabeli języka mowy. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu. Może być tłumaczenie mowy przychodzących do więcej niż [60 języków](https://www.microsoft.com/translator/business/languages/). Podzbiór tych języków są dostępne dla [synteza mowy](language-support.md#text-languages).
 
 ### <a name="speech-languages"></a>Języki mowy
 
@@ -225,7 +226,7 @@ Dostosowanie głos jest dostępny język angielski (en US), kontynent, chiński 
 | Rumuński      | `ro`          |
 | Rosyjski      | `ru`          |
 | (Samoa Zachodnie)      | `sm`          |
-| Serbski (cyrylica)      | `sr-Cyrl`          |
+| Serbski (Cyrylica)      | `sr-Cyrl`          |
 | Serbski (łaciński)      | `sr-Latn`          |
 | Słowacki     | `sk`          |
 | Słoweński      | `sl`          |

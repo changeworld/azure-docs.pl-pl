@@ -1,21 +1,21 @@
 ---
 title: Często zadawane pytania dotyczące platformy Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące platformy Cloudyn.
+description: Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące platformy Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: e387ba0a4e20d9b584d88f7d6388ab6472ccc04c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997299"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098094"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
 

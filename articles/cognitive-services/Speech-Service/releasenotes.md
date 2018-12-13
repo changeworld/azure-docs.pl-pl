@@ -1,21 +1,22 @@
 ---
-title: Dokumentacja zestawu SDK usługi Speech Service
+title: Informacje o wersji — usługi mowy
 titlesuffix: Azure Cognitive Services
-description: Informacje o wersji — co zmieniło się w najnowszych wersjach
+description: Zobacz uruchomionej dziennik wydania funkcji, ulepszeń, poprawek błędów i znane problemy dla usług mowy platformy Azure.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: ff09926d61d64294a4f12ccf959f6685910539f1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: c99f1691618765e8997ef442a506c83b9a7bd4fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317895"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088310"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 

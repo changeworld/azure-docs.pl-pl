@@ -1,6 +1,6 @@
 ---
-title: Zarządzane tożsamości dla zasobów platformy Azure w wersji zapoznawczej usługi Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Użyj tożsamości zarządzanych zasobów platformy Azure z usługą Azure Event Hubs
+title: Zarządzane tożsamości dla zasobów platformy Azure — usługi Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje na temat korzystania z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d7ed4f0276e6220e6df528075e83cb9fabc6cc84
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011474"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087732"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Zarządzanych tożsamości dla zasobów platformy Azure z usługą Event Hubs
 

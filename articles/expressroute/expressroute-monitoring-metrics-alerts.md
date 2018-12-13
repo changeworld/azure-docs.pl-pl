@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie usługi Azure ExpressRoute, metryki i alerty | Dokumentacja firmy Microsoft
+title: Monitorowanie, alerty i metryki — usługa Azure ExpressRoute | Dokumentacja firmy Microsoft
 description: Ta strona zawiera informacje dotyczące monitorowania usługi ExpressRoute
 services: expressroute
 author: cherylmc
@@ -7,19 +7,20 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: 90735ac04c95ee3d270853c18eddebd3f11dd8c1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725966"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091768"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorowanie, metryki i alerty usługi ExpressRoute
 
-Ten artykuł zawiera informacje o monitorowaniu usługi ExpressRoute, metryki i alerty. Usługa Azure Monitor jest jedno centralne miejsce dla wszystkich metryk, alerty i dzienniki diagnostyczne na platformie Azure.
+Ten artykuł zawiera omówienie usługi ExpressRoute, monitorowanie, alerty i metryki za pomocą usługi Azure Monitor. Usługa Azure Monitor jest jedno centralne miejsce dla wszystkich metryk, alerty i dzienniki diagnostyczne na platformie Azure.
  
 >[!NOTE]
->Za pomocą **klasycznego metryki** nie jest zalecane. 
+>Za pomocą **klasycznego metryki** nie jest zalecane.
 >
 
 ## <a name="circuit-metrics"></a>Metryki obwodu
@@ -46,7 +47,7 @@ Możesz wyświetlić metryki dla usługi prywatnej, publicznej i firmy Microsoft
 
 2. Kliknij przycisk **+ wybierz element docelowy** i wybierz zasób połączenia bramy usługi ExpressRoute.
 
-  ![cel]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+  ![Docelowy]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Zdefiniuj szczegóły alertu.
 
   ![grupy akcji](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
