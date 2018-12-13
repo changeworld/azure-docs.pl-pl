@@ -1,5 +1,5 @@
 ---
-title: Ciągłe wdrażanie w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Ciągłe wdrażanie — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak włączyć ciągłe wdrażanie w usłudze Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 9fd25e8730bf98c8fccf1e77436b8f2f480c7cca
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 79f544a9cec24ef84ad9e64e80cabe45dbb6d1d6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966555"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257300"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Ciągłe wdrażanie w usłudze Azure App Service
 W tym artykule dowiesz się, jak skonfigurować ciągłe wdrażanie dla [usługi Azure App Service](app-service-web-overview.md). Usługa App Service umożliwia ciągłe wdrażanie z usług BitBucket, GitHub i [usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/) przez pobieranie najnowszych aktualizacji z istniejącym repozytorium w jednej z tych usług.

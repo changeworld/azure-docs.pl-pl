@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
+title: Konfigurowanie aplikacji sieci web — usłudze Azure App Service
 description: Jak skonfigurować aplikację sieci web w usłudze Azure App Services
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 60675d7d40dbab863677ea120c25986cff61a308
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960145"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269434"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
 
@@ -164,7 +165,7 @@ Aby wyświetlić swoje miejsc wdrożenia, kliknij **wszystkie ustawienia** > **m
 ### <a name="monitoring"></a>Monitorowanie
 W trybie Basic lub Standard można sprawdzić dostępności punktów końcowych HTTP lub HTTPS, z maksymalnie trzy rozproszone geograficznie lokalizacje. Test monitorowania kończy się niepowodzeniem, jeśli kod odpowiedzi HTTP jest błąd (4xx lub 5xx) lub odpowiedzi trwa dłużej niż 30 sekund. Punkt końcowy jest uważana za dostępną, jeśli testów monitorowania z określonych lokalizacji. 
 
-Aby uzyskać więcej informacji, zobacz [Porady: monitorowanie stanu punktu końcowego sieci web].
+Aby uzyskać więcej informacji, zobacz [jak: Monitorowanie stanu punktu końcowego sieci web].
 
 > [!NOTE]
 > Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Wypróbuj usługę App Service] (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.
@@ -184,7 +185,7 @@ Aby uzyskać więcej informacji, zobacz [Porady: monitorowanie stanu punktu koń
 [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Wdróż do środowisk przejściowych dla aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-staged-publishing.md
 [Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
-[Porady: monitorowanie stanu punktu końcowego sieci web]: https://go.microsoft.com/fwLink/?LinkID=279906
+[Jak: Monitorowanie stanu punktu końcowego sieci web]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Podstawy monitorowania dla aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-monitor.md
 [Tryb potokowy]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Skalowanie aplikacji sieci web w usłudze Azure App Service]: ./web-sites-scale.md

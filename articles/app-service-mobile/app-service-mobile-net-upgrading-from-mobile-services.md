@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 4fd896e3b26ae66621ba49d1bb8a5d86c0dd63ee
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f5ffc795e6469971d1eaf335d6683f94d05f0807
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963270"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278620"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Uaktualnianie istniejącej usługi mobilnej Azure .NET w usłudze App Service
 Mobile App Service jest nowy sposób na tworzenie aplikacji mobilnych przy użyciu Microsoft Azure. Aby dowiedzieć się więcej, zobacz [co to jest usługa Mobile Apps?].
@@ -68,7 +68,7 @@ Pierwszym krokiem podczas uaktualniania jest Utwórz zasób aplikacji mobilnej, 
 
 Następnie Utwórz drugie wystąpienie aplikacji, postępując zgodnie z [instrukcje dotyczące tworzenia zaplecza .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app). Po wyświetleniu monitu można wybrać Plan usługi App Service lub "planu hostingu" Wybierz plan migrowanych aplikacji.
 
-Prawdopodobnie można korzystać z tej samej bazy danych i Centrum powiadomień, tak jak w usłudze Mobile Services. Możesz skopiować te wartości, otwierając [Azure Portal] a następnie przechodząc do oryginalnej aplikacji, kliknij przycisk **ustawienia** > **ustawienia aplikacji**. W obszarze **parametry połączenia**, kopia `MS_NotificationHubConnectionString` i `MS_TableConnectionString`. Przejdź do nowej witryny uaktualniania, a następnie wklej je w programie, zastępując wszystkie istniejące wartości. Powtórz ten proces dla innych ustawień aplikacji potrzebom aplikacji. Jeśli nie używa zmigrowaną usługę, możesz przeczytać parametry połączenia i ustawień aplikacji z **Konfiguruj** kartę usług Mobile Services części [Klasyczna witryna Azure Portal].
+Prawdopodobnie można korzystać z tej samej bazy danych i Centrum powiadomień, tak jak w usłudze Mobile Services. Możesz skopiować te wartości, otwierając [Azure Portal] a następnie przechodząc do oryginalnej aplikacji, kliknij przycisk **ustawienia** > **ustawienia aplikacji**. W obszarze **parametry połączenia**, kopia `MS_NotificationHubConnectionString` i `MS_TableConnectionString`. Przejdź do nowej witryny uaktualniania, a następnie wklej je w programie, zastępując wszystkie istniejące wartości. Powtórz ten proces dla innych ustawień aplikacji potrzebom aplikacji.
 
 Utwórz kopię projekt platformy ASP.NET dla aplikacji i opublikować ją do nowej witryny. Przy użyciu kopii aplikacji klienckiej aktualizowane przy użyciu nowego adresu URL, zweryfikuj, że wszystko działa zgodnie z oczekiwaniami.
 
@@ -280,7 +280,6 @@ Jeśli masz nową wersję klienta gotowy, wypróbuj działanie rozwiązania na u
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com/
-[Klasyczna witryna Azure Portal]: https://manage.windowsazure.com/
 [Co to jest usługa Mobile Apps?]: app-service-mobile-value-prop.md
 [Zestaw SDK serwera aplikacji mobilnej]: https://www.nuget.org/packages/microsoft.azure.mobile.server
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md

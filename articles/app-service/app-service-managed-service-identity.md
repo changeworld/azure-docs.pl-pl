@@ -1,5 +1,5 @@
 ---
-title: Zarządzanych tożsamości w usłudze App Service i Azure Functions | Dokumentacja firmy Microsoft
+title: Zarządzane Przegląd tożsamości — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Koncepcyjny Przewodnik instalacji i odwołania dla zarządzanych tożsamości w usłudze Azure App Service i Azure Functions
 services: app-service
 author: mattchenderson
@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 033667500f627a090c6ba6d686224126d217b833
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 40ae45eb401aeb302b2474cd181d29c0ee26c611
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971406"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254364"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać zarządzanych tożsamości dla usługi App Service i Azure Functions
 
@@ -158,7 +158,7 @@ Gdzie `<TENANTID>` i `<PRINCIPALID>` są zastępowane identyfikatorów GUID. Wł
 ## <a name="adding-a-user-assigned-identity-preview"></a>Dodawanie tożsamości przypisanych przez użytkownika (wersja zapoznawcza)
 
 > [!NOTE] 
-> Tożsamości przypisanych przez użytkownika są obecnie dostępne w wersji zapoznawczej. Sovreign chmury nie są jeszcze obsługiwane.
+> Tożsamości przypisanych przez użytkownika są obecnie dostępne w wersji zapoznawczej. Suwerenne chmury nie są jeszcze obsługiwane.
 
 Tworzenie aplikacji przy użyciu tożsamości przypisanych przez użytkownika wymaga tworzenia tożsamości, a następnie dodaj swój identyfikator zasobu do pliku config aplikacji.
 
@@ -299,7 +299,7 @@ Pomyślne odpowiedź 200 OK zawiera treść JSON z następującymi właściwośc
 > |access_token|Token żądanego dostępu. Wywoływania usługi sieci web można użyć tego tokenu do uwierzytelnienia w usłudze sieci web odbierania.|
 > |expires_on|Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych.|
 > |zasób|Identyfikator URI Identyfikatora aplikacji odbierającej usługi sieci web.|
-> |token_type|Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
+> |token_type|Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 
 Ta odpowiedź jest taka sama jak [odpowiedzi dla żądania tokenu dostępu do usługi AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).

@@ -4,9 +4,8 @@ description: Jak konwertowanie eksperymentu szkolenia na eksperyment predykcyjny
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: d96755f00aa5023d57c9c4c2b2457902c337e29d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 71315b6c36a9e41e5805d5a15bde5b1d1d84f2b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314272"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269927"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Wdrażanie usługi sieci web Azure Machine Learning Studio
 Usługa Azure Machine Learning umożliwia tworzenie, testowanie i wdrażanie rozwiązań z zakresu analiz predykcyjnych.
@@ -32,7 +31,7 @@ Z wysokiego poziomu punktu widzenia można to zrobić w trzech krokach:
 * **[Przekonwertuj go na eksperyment predykcyjny]**  — gdy modelu po zapoznaniu z istniejącymi danymi i możesz z niej korzystać, aby oceniać nowe dane, Przygotuj i usprawnić eksperymentu zapewniających prognozy.
 * **[Go wdrożyć jako usługę sieci web]**  — można wdrożyć eksperyment predykcyjny jako [Nowy] lub [Model Klasyczny] usługi sieci web platformy Azure. Użytkownicy mogą wysyłać dane do modelu i otrzymują modelu prognozy.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="create-a-training-experiment"></a>Tworzenie eksperymentu szkolenia
 Do nauczenia modelu analizy predykcyjnej, używasz usługi Azure Machine Learning Studio do tworzenia eksperymentu szkolenia gdzie obejmują różnych modułów do załadowania danych szkoleniowych, przygotowywania danych zgodnie z potrzebami, zastosuj algorytmów uczenia maszynowego i ocena wyników. Można wykonania iteracji eksperymentu, a następnie spróbuj algorytmów uczenia maszynowego różnych do porównywania i ocena wyników.

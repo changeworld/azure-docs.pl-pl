@@ -10,39 +10,39 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/22/2017
+ms.date: 02/22/2017
 ms.author: cwatson
-ms.openlocfilehash: be74714667c2fed57a797a972ddcd7949cae5933
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 434f717d9590eff39df161a74931477bdf71bb67
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274674"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309570"
 ---
-# <a name="troubleshoot-enterprise-cost-views"></a>Rozwiązywanie problemów z widoki kosztów przedsiębiorstwa 
+# <a name="troubleshoot-enterprise-cost-views"></a>Rozwiązywanie problemów z widoki kosztów przedsiębiorstwa
 
-Rejestracje enterprise są wiele ustawień, które może spowodować, że użytkownicy nie będą mogli wyświetlić koszty w ramach rejestracji.  Te ustawienia są zarządzane przez administratora rejestracji lub przez partnera, jeśli rejestracja nie została zakupiona bezpośrednio od firmy Microsoft.  Ten artykuł pomaga zrozumieć, co to są ustawienia oraz ich wpływ na rejestracji. Te ustawienia są niezależne od [ról RBAC platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
-
+W ramach rejestracji enterprise istnieje kilka ustawień, które może spowodować, że użytkownicy nie zobaczyć koszty w ramach rejestracji.  Te ustawienia są zarządzane przez administratora rejestracji. Lub, jeśli rejestracja nie jest bezpośrednio przez firmę Microsoft, ustawienia będą zarządzane przez partnera.  Ten artykuł pomaga zrozumieć, co to są ustawienia oraz ich wpływ na rejestracji. Te ustawienia są niezależne od ról kontroli dostępu opartej na rolach platformy Azure.
 
 ## <a name="enabling-access-to-costs"></a>Umożliwianie dostępu do kosztów
 
-Widzisz komunikat bez autoryzacji, lub *"widoki kosztów są wyłączone w Twojej rejestracji".* Jeśli szukasz informacji o koszcie? ![nieautoryzowanych](media/billing-enterprise-mgmt-groups/unauthorized.png)
+Widzisz komunikat bez autoryzacji, lub *"widoki kosztów są wyłączone w Twojej rejestracji".* Jeśli szukasz informacji o koszcie?
+![Zrzut ekranu pokazujący "Brak autoryzacji" w polu Koszt dla bieżącego dla subskrypcji.](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
-Może to być spowodowane jedną z następujących powodów:
+Może to być jeden z następujących powodów:
 
-1. Azure zakupione za pośrednictwem partnera przedsiębiorstwa i partnera nie zostało wydane jeszcze cen. Aby zwolnić, cennik, skontaktuj się z partnerem, aby zaktualizować ustawienia w ramach [witryny Enterprise portal](https://ea.azure.com).
-2. Alternatywnie Jeśli jesteś klientem z bezpośrednimi umowami EA, istnieje kilka możliwości:
-    * Jesteś właścicielem konta i Administrator rejestracji została wyłączona "opłaty widoku AO" ustawienie.  
-    * Jesteś administratorem działu i administratorem rejestracji została wyłączona "opłaty widoku DA" ustawienie.
-    * Skontaktuj się z administratorem rejestracji, aby uzyskać dostęp. Administrator rejestracji może odwiedzić [witryny Enterprise portal](https://ea.azure.com/manage/enrollment) i zaktualizować ustawienia, jak pokazano tutaj:
+1. Azure zostały zakupione w ramach partnera usługi enterprise, a partnera nie release jeszcze cen. Skontaktuj się z partnerem, aby zaktualizować ceny ustawienie w [witryny Enterprise portal](https://ea.azure.com).
+2. Jeśli jesteś klientem z bezpośrednimi umowami EA, istnieje kilka możliwości:
+    * Jesteś właścicielem konta i Administrator rejestracji wyłączone **AO Wyświetl opłaty** ustawienie.  
+    * Jesteś administratorem działu i administratorem rejestracji wyłączone **DA Wyświetl opłaty** ustawienie.
+    * Skontaktuj się z administratorem rejestracji, aby uzyskać dostęp. Administrator rejestracji może też zaktualizować ustawienia w [witryny Enterprise portal](https://ea.azure.com/manage/enrollment).
 
-![Ustawienia portalu Enterprise](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
+      ![Zrzut ekranu pokazujący ustawienia portalu Enterprise opłaty widoku.](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
 
+## <a name="asset-is-unavailable"></a>Zasób jest niedostępny
 
-## <a name="asset-is-unavailable"></a>Zasób jest niedostępny? 
-Jeśli wyświetlany jest komunikat o błędzie "ten zasób jest niedostępny" podczas próby uzyskania dostępu do subskrypcji lub grupę zarządzania, a następnie możesz ma odpowiednią rolę, aby wyświetlić ten element.  
+Jeśli pojawi się komunikat o błędzie "ten zasób jest niedostępny" podczas próby uzyskania dostępu do subskrypcji lub grupę zarządzania, możesz nie ma odpowiednią rolę, aby wyświetlić ten element.  
 
-![zasób nie można odnaleźć](media/billing-enterprise-mgmt-groups/asset-not-found.png)
+![Zrzut ekranu pokazujący wiadomość "zasobu jest niedostępna".](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
-Skontaktuj się z administrowanie grup subskrypcji i zarządzania dostępem.  
-* W przypadku subskrypcji, należy odwołać [based kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) dokumentu, aby uzyskać pomoc, na którym rola jest wymagana.
+Poproś Azure subskrypcji lub zarządzania grupy administratora dostępu. Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md).

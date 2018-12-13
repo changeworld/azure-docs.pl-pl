@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: ae2697c96435ec18ae7645520d438c41837f036f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9370cdfc75995f36101804d2a9f7dc9cf275243c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016865"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186314"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z poprzednich wersji i znane problemy.
@@ -86,7 +86,7 @@ Od 12 maja 2018 r. Usługa kanały na żywo będzie już obsługę strumienia tr
     * Ulepszenia do dekodera H.264 używane w koder w warstwie standardowa wyeliminowanie niektórych rzadkich artefaktów. 
 
 #### <a name="media-analytics"></a>Media Analytics
-Ogólna dostępność usługi Azure Media Redactor: wykonuje anonimowości za rozmywając twarze wybranych osób to procesor multimediów co stanowi idealne rozwiązanie w scenariuszach publicznych, bezpieczeństwa i mediów informacyjnych. 
+Ogólna dostępność usługi Azure Media Redactor: To procesor multimediów wykonuje anonimowości za rozmywając twarze wybranych osób co stanowi idealne rozwiązanie w scenariuszach publicznych, bezpieczeństwa i mediów informacyjnych. 
 
 Aby uzyskać omówienie tego nowego procesora, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/azure-media-redactor/). Aby uzyskać informacje na temat dokumentacji i ustawień, zobacz [redagowanie twarze za pomocą usługi Azure Media Analytics](media-services-face-redaction.md).
 
@@ -158,7 +158,7 @@ Niektórzy klienci mogą pochodzić między problemem powtórzeń tag w manifeś
 Możesz teraz używać usługi Media Services do dynamicznego szyfrowania usługi HTTP Live Streaming (HLS) zawartości z użyciem technologii FairPlay firmy Apple. Możesz również użyć usługi dostarczania licencji Media Services dostarczać licencje usługi fairplay: dla klientów. Aby uzyskać więcej informacji zobacz sekcję "Używanie usługi Azure Media Services przesyłać strumieniowo zawartość chronioną przy użyciu technologii FairPlay firmy Apple HLS."
 
 ## <a id="feb_changes16"></a>Wersja lutego 2016 r.
-Najnowszą wersję zestawu SDK usługi multimediów dla platformy .NET (3.5.3) zawiera poprawkę usterki związane z Google Widevine. Nie było możliwe ponowne użycie AssetDeliveryPolicy dla wielu zasobów szyfrowane przy użyciu metody Widevine. W ramach tej poprawki, następująca właściwość została dodana do zestawu SDK: WidevineBaseLicenseAcquisitionUrl.
+Najnowszą wersję zestawu SDK usługi multimediów dla platformy .NET (3.5.3) zawiera poprawkę usterki związane z Google Widevine. Nie było możliwe ponowne użycie AssetDeliveryPolicy dla wielu zasobów szyfrowane przy użyciu metody Widevine. W ramach tej poprawki następujące właściwość została dodana do zestawu SDK: WidevineBaseLicenseAcquisitionUrl.
 
     Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
         new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
@@ -184,9 +184,9 @@ Zespół zestawu Azure SDK opublikowane nowej wersji zestawu [zestawu Azure SDK 
 Aby uzyskać więcej informacji, zobacz:
 
 * Następujące [przykłady kodu](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) pomóc Ci szybko rozpocząć pracę:
-  * **vodworkflow_aes.php**: PHP ten plik pokazuje, jak użyć dynamicznego szyfrowania AES-128 i usługę dostarczania kluczy. Jest on oparty na przykład .NET, szczegółowo [szyfrowania dynamicznego użycie algorytmu AES-128 i usługę dostarczania kluczy](media-services-protect-with-aes128.md).
-  * **vodworkflow_aes.php**: PHP ten plik pokazuje, jak i dynamiczne szyfrowanie PlayReady i usługi dostarczania licencji. Jest on oparty na przykład .NET, szczegółowo [Użyj PlayReady i Widevine dynamicznego szyfrowania common encryption](media-services-protect-with-playready-widevine.md).
-  * **scale_encoding_units.php**: plik PHP ten pokazuje, jak skalować jednostki zarezerwowane kodowania.
+  * **vodworkflow_aes.php**: Ten plik PHP pokazuje, jak korzystać z dynamicznego szyfrowania AES-128 i usługę dostarczania kluczy. Jest on oparty na przykład .NET, szczegółowo [szyfrowania dynamicznego użycie algorytmu AES-128 i usługę dostarczania kluczy](media-services-protect-with-aes128.md).
+  * **vodworkflow_aes.php**: Ten plik PHP pokazuje, jak używać dynamiczne szyfrowanie PlayReady i usługi dostarczania licencji. Jest on oparty na przykład .NET, szczegółowo [Użyj PlayReady i Widevine dynamicznego szyfrowania common encryption](media-services-protect-with-playready-widevine.md).
+  * **scale_encoding_units.php**: Ten plik PHP pokazuje, jak skalować jednostki zarezerwowane kodowania.
 
 ## <a id="nov_changes_15"></a>Listopad 2015 r.
  Usługa Media Services oferuje teraz usługę dostarczania licencji Widevine w chmurze. Aby uzyskać więcej informacji, zobacz [ten blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Zobacz też [w tym samouczku](media-services-protect-with-playready-widevine.md) i [repozytorium GitHub](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
@@ -196,8 +196,8 @@ Usługach dostarczania licencji Widevine udostępnianego przez usługi multimedi
 ## <a id="oct_changes_15"></a>Wersja z października 2015 r.
 Usługa Media Services jest teraz na żywo w następujących centrach danych: Brazylia Południowa, Indie Zachodnie, Indie Południowe i Indie środkowe. Można teraz używać portalu Azure w celu [tworzenia kont usługi multimediów](media-services-portal-create-account.md) i wykonywania różnych zadań opisanych w [stronę dokumentacji usługi Media Services](https://azure.microsoft.com/documentation/services/media-services/). Usługa Live Encoding nie jest włączone w tych centrach danych. Ponadto nie wszystkie typy zastrzeżonych jednostek kodowania są dostępne w tych centrach danych.
 
-* Brazylia Południowa: Dostępne są wyłącznie standardowa i podstawowa zastrzeżonych jednostek kodowania.
-* Indie Zachodnie, Indie Południowe i Indie środkowe: tylko podstawowe zastrzeżonych jednostek kodowania są dostępne.
+* Brazylia Południowa:                                          Dostępne są tylko standardowe i Basic zastrzeżonych jednostek kodowania.
+* Indie Zachodnie, Indie Południowe i Indie środkowe:             Dostępne są wyłącznie podstawowe jednostki zarezerwowane kodowania.
 
 ## <a id="september_changes_15"></a>Wydanie z września 2015 r.
 Usługa Media Services oferuje teraz możliwość ochrony zarówno wideo na żądanie, jak i strumieni na żywo przy użyciu modułowej technologii DRM Widevine. Aby łatwiej dostarczać licencje Widevine, można użyć następujących partnerów usługi dostarczania:
@@ -374,8 +374,8 @@ Podczas kodowania zasobów trwałego danych wyjściowych jest generowany po zako
 ## <a id="july_changes_14"></a>Wersja z lipca 2014
 Następujące poprawki zostały wprowadzone do usługi Azure Media Services Pakowarki a modułu szyfrującego:
 
-* Gdy trwałego archiwum na żywo są przesyłane do HLS, tylko dźwięk odtwarza: ten problem został rozwiązany, a teraz można odtworzyć audio i wideo.
-* Gdy element zawartości jest dostarczana do szyfrowania koperty HLS i AES 128-bitowy, spakowanych strumieni nie odtwarzanie na urządzeniach z systemem Android: ten błąd został naprawiony, a strumień spakowanych odtwarza na urządzeniach z systemem Android, które obsługują HLS.
+* Gdy trwałego archiwum na żywo są przesyłane do HLS, tylko dźwięk odtwarza: Ten problem został rozwiązany, a teraz można odtworzyć audio i wideo.
+* Gdy element zawartości jest dostarczana do szyfrowania koperty HLS i AES 128-bitowy, spakowanych strumieni nie odtwarzanie na urządzeniach z systemem Android: Ten błąd został naprawiony, a strumień spakowanych odtwarza na urządzeniach z systemem Android, które obsługują HLS.
 
 ## <a id="may_changes_14"></a>Wersja maj 2014
 ### <a id="may_14_changes"></a>Aktualizuje ogólne usługi Media Services
@@ -476,7 +476,7 @@ Następujące zmiany zostały uwzględnione w czerwcu 2013 wersje zestawu SDK us
     * Właściwość StorageAccount
     * Właściwość StorageAccountName
   
-    Aby uzyskać więcej informacji, zobacz [zasoby zarządzania usługi Media Services na wielu kontach magazynu](https://msdn.microsoft.com/library/azure/dn271889.aspx).
+      Aby uzyskać więcej informacji, zobacz [zasoby zarządzania usługi Media Services na wielu kontach magazynu](https://msdn.microsoft.com/library/azure/dn271889.aspx).
 * Interfejsy API związane z powiadomień. Począwszy od wersji 2.2.0.0 można słuchać Azure Queue storage powiadomienia. Aby uzyskać więcej informacji, zobacz [obsługi usługi Media Services zadania powiadomienia](https://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions property
@@ -490,20 +490,20 @@ Następujące zmiany zostały uwzględnione w czerwcu 2013 wersje zestawu SDK us
 ## <a id="december_changes_12"></a>Wersja grudnia 2012
 ### <a name="dec_12_dotnet_changes"></a>Zmiany zestawu SDK .NET usługi Media Services
 * IntelliSense: Brak dokumentacji IntelliSense została dodana dla wielu typów.
-* Microsoft.Practices.TransientFaultHandling.Core: Rozwiązano dany problem gdzie zestaw SDK nadal ma zależności do starszej wersji tego zestawu. Zestaw SDK obecnie odwołuje się do wersji 5.1.1209.1 tego zestawu.
+* Microsoft.Practices.TransientFaultHandling.Core: Problem został rozwiązany, gdy zestaw SDK nadal miały zależności do starszej wersji tego zestawu. Zestaw SDK obecnie odwołuje się do wersji 5.1.1209.1 tego zestawu.
 
 Poprawki dotyczące problemów znalezionych w listopad 2012 SDK:
 
-* IAsset.Locators.Count: Ten licznik jest teraz prawidłowo raportowane w nowych interfejsach IAsset po usunięciu wszystkich lokalizatorów.
+* IAsset.Locators.Count: Ten licznik teraz jest prawidłowo raportowane w nowych interfejsach IAsset po usunięciu wszystkich lokalizatorów.
 * IAssetFile.ContentFileSize: Ta wartość jest teraz prawidłowo ustawiona po przesłaniu przez IAssetFile.Upload(filepath).
-* IAssetFile.ContentFileSize: Ta właściwość teraz można ustawić podczas tworzenia pliku elementu zawartości. Wcześniej był tylko odczytać.
-* IAssetFile.Upload(filepath): Rozwiązano dany problem gdzie tej metody synchronicznej przekazywanie zostało zgłaszanie następujący błąd wiele plików zostały przekazane do elementu zawartości. Wystąpił błąd "serwer nie powiodło się uwierzytelnienie żądania. Upewnij się, że wartość nagłówka autoryzacji, został utworzony prawidłowo tym podpis. "
-* IAssetFile.UploadAsync: Wystąpił problem został naprawiony, co ogranicza jednoczesnych przekazywanie plików do pięciu plików.
+* IAssetFile.ContentFileSize: Teraz można ustawić tę właściwość, podczas tworzenia pliku elementu zawartości. Wcześniej był tylko odczytać.
+* IAssetFile.Upload(filepath): Problem został rozwiązany, gdy ta metoda synchroniczna przekazywania została zgłaszanie następujący błąd wiele plików zostały przekazane do elementu zawartości. Wystąpił błąd "serwer nie powiodło się uwierzytelnienie żądania. Upewnij się, że wartość nagłówka autoryzacji, został utworzony prawidłowo tym podpis. "
+* IAssetFile.UploadAsync: Problem został rozwiązany, co ogranicza jednoczesnych przekazywanie plików do pięciu plików.
 * IAssetFile.UploadProgressChanged: To zdarzenie jest teraz udostępniany przez zestaw SDK.
-* IAssetFile.DownloadAsync (ciąg, BlobTransferClient, ILocator, CancellationToken): tego przeciążenia metody jest teraz udostępniany.
-* IAssetFile.DownloadAsync: Wystąpił problem został naprawiony, co ogranicza jednoczesnych pobierania plików do pięciu plików.
-* IAssetFile.Delete(): Rozwiązano dany problem gdzie wywoływania usuwania może zgłosić wyjątek, jeśli plik nie został przekazany do IAssetFile.
-* Zadania: Rozwiązano dany problem gdzie łańcucha "MP4 do sprawnego strumienie zadania" z "PlayReady ochrony Task" przy użyciu szablonu zadania nie utworzono żadnych zadań w ogóle.
+* IAssetFile.DownloadAsync (ciąg, BlobTransferClient, ILocator, CancellationToken): Tego przeciążenia metody jest teraz udostępniany.
+* IAssetFile.DownloadAsync: Problem został rozwiązany, co ogranicza jednoczesnych pobierania plików do pięciu plików.
+* IAssetFile.Delete(): Problem został rozwiązany, gdzie wywoływania usuwania może zgłosić wyjątek, jeśli plik nie został przekazany do IAssetFile.
+* Zadania: Problem został rozwiązany, gdzie łańcucha "MP4 do sprawnego strumienie zadania" z "PlayReady ochrony Task" przy użyciu szablonu zadania nie utworzono żadnych zadań w ogóle.
 * EncryptionUtils.GetCertificateFromStore(): Ta metoda nie jest już zgłasza wyjątek pustej referencji, z powodu błędu podczas wyszukiwania certyfikatu oparte na problemy z konfiguracją certyfikatu.
 
 ## <a id="november_changes_12"></a>Listopad 2012 release

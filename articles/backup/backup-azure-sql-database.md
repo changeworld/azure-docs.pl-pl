@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: f6271e8de6be0bcfab7ade4c9e90a69482e7905e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d38fc727ed7e9e3c47d2fcb9af7894f8a2a7c7a7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878214"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262337"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -117,8 +117,8 @@ Jeśli te warunki w danym środowisku, w dalszym ciągu [konfigurowania kopii za
 
 Dla wszystkich operacji maszyny wirtualnej SQL musi mieć łączność platformy Azure z publicznymi adresami IP. Operacje maszyny wirtualnej SQL (takich jak bazy danych, odnajdowanie, konfigurowanie kopii zapasowych, Planowanie tworzenia kopii zapasowych, przywracania punktów odzyskiwania i tak dalej) bez łączności z publicznych adresów IP. Umożliwia jedną z następujących opcji zapewni przejrzystą ścieżkę ruchu kopii zapasowej:
 
-- Lista dozwolonych adresów IP centrum danych platformy Azure zakresów: do listy dozwolonych zakresów adresów IP centrum danych platformy Azure, użyj [strony Centrum pobierania, aby uzyskać szczegółowe informacje na temat zakresów adresów IP i instrukcje](https://www.microsoft.com/download/details.aspx?id=41653).
-- Wdrażanie serwera proxy HTTP na potrzeby kierowania ruchu: podczas wykonywania kopii zapasowej bazy danych SQL na maszynie wirtualnej, rozszerzenie kopii zapasowej na maszynie Wirtualnej używa interfejsów API protokołu HTTPS do wysyłania poleceń zarządzania do usługi Azure Backup i danych do usługi Azure Storage. Zapasowy numer wewnętrzny również używa usługi Azure Active Directory (Azure AD) do uwierzytelniania. Kierować ruchem zapasowy numer wewnętrzny dla tych trzech usług za pośrednictwem serwera proxy HTTP. Rozszerzenie firmy jedyny składnik, który jest skonfigurowany do uzyskiwania dostępu do publicznej sieci internet.
+- Centrum danych platformy Azure z listy dozwolonych zakresów adresów IP: Do listy dozwolonych zakresów adresów IP centrum danych platformy Azure, użyj [strony Centrum pobierania, aby uzyskać szczegółowe informacje na temat zakresów adresów IP i instrukcje](https://www.microsoft.com/download/details.aspx?id=41653).
+- Wdrażanie serwera proxy HTTP na potrzeby kierowania ruchu: Gdy tworzysz kopię zapasową bazy danych SQL na maszynie wirtualnej, rozszerzenie kopii zapasowej na maszynie Wirtualnej używa interfejsów API protokołu HTTPS wysyłać polecenia zarządzania usługi Azure Backup i danych do usługi Azure Storage. Zapasowy numer wewnętrzny również używa usługi Azure Active Directory (Azure AD) do uwierzytelniania. Kierować ruchem zapasowy numer wewnętrzny dla tych trzech usług za pośrednictwem serwera proxy HTTP. Rozszerzenie firmy jedyny składnik, który jest skonfigurowany do uzyskiwania dostępu do publicznej sieci internet.
 
 Kompromis między opcje są możliwości zarządzania, kontrolę i kosztów.
 
@@ -149,7 +149,7 @@ Aby skonfigurować uprawnienia:
 
     ![Wybierz program SQL Server w maszynie Wirtualnej platformy Azure dla kopii zapasowej](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **Cel kopii zapasowej** menu zostaną wyświetlone dwa kroki: **odnajdowanie baz danych na maszynach wirtualnych** i **konfigurowania kopii zapasowej**. **Odnajdowanie baz danych na maszynach wirtualnych** kroku rozpocząć wyszukiwania dla maszyn wirtualnych platformy Azure.
+    **Cel kopii zapasowej** menu zostaną wyświetlone dwa kroki: **Znajdź bazy danych na maszynach wirtualnych** i **skonfiguruj kopię zapasową**. **Odnajdowanie baz danych na maszynach wirtualnych** kroku rozpocząć wyszukiwania dla maszyn wirtualnych platformy Azure.
 
     ![Przejrzyj dwa kroki cel kopii zapasowej](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -231,7 +231,7 @@ Usługa Azure Backup umożliwia odnalezienie wszystkich baz danych w wystąpieni
 
     ![Wybierz program SQL Server w maszynie Wirtualnej platformy Azure dla kopii zapasowej](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **Cel kopii zapasowej** menu zostaną wyświetlone dwa kroki: **odnajdowanie baz danych na maszynach wirtualnych** i **konfigurowania kopii zapasowej**.
+    **Cel kopii zapasowej** menu zostaną wyświetlone dwa kroki: **Znajdź bazy danych na maszynach wirtualnych** i **skonfiguruj kopię zapasową**.
 
     ![Przejrzyj dwa kroki cel kopii zapasowej](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -279,7 +279,7 @@ Aby skonfigurować ochronę dla bazy danych SQL:
 
     ![Wybierz program SQL Server w maszynie Wirtualnej platformy Azure dla kopii zapasowej](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **Cel kopii zapasowej** menu zostaną wyświetlone dwa kroki: **odnajdowanie baz danych na maszynach wirtualnych** i **konfigurowania kopii zapasowej**.
+    **Cel kopii zapasowej** menu zostaną wyświetlone dwa kroki: **Znajdź bazy danych na maszynach wirtualnych** i **skonfiguruj kopię zapasową**.
 
     Jeśli zostanie wykonane czynności opisane w tym artykule w kolejności, znasz niechronionych maszyn wirtualnych i tego magazynu jest zarejestrowana z maszyną wirtualną. Teraz możesz przystąpić do konfigurowania ochrony dla baz danych SQL.
 
@@ -345,9 +345,9 @@ Aby skonfigurować ochronę dla bazy danych SQL:
 
 Zasady tworzenia kopii zapasowych określają macierz z informacjami podczas tworzenia kopii zapasowych są pobierane i jak długo są przechowywane. Użyj usługi Azure Backup można zaplanować trzy typy kopii zapasowych baz danych SQL:
 
-* Pełna kopia zapasowa: pełną kopię zapasową bazy tworzy kopię zapasową całej bazy danych. Pełna kopia zapasowa zawiera wszystkie dane w konkretnej bazy danych lub zestaw grup plików lub plików oraz wystarczającą ilość dzienniki, aby odzyskać usuniętych danych. Co najwyżej użytkownik zainicjuje jedną pełną kopię zapasową dziennie. Istnieje możliwość wykonania pełnej kopii zapasowej na interwał codziennie lub co tydzień.
-* Różnicowa kopia zapasowa: różnicowej kopii zapasowej jest oparta na najnowszych, poprzedniego pełnych danych kopii zapasowej. Różnicowa kopia zapasowa przechwytuje dane, które uległy zmianie od czasu pełnej kopii zapasowej. Co najwyżej możesz wyzwolić jednym różnicowa kopia zapasowa każdego dnia. Nie można skonfigurować pełnej kopii zapasowej i różnicowej kopii zapasowej tego samego dnia.
-* Kopia zapasowa dziennika transakcji: kopii zapasowej dziennika umożliwia w momencie przywracania do określonego sekundy. Maksymalnie można skonfigurować, kopii zapasowych dziennika transakcji co 15 minut.
+* Pełna kopia zapasowa: Pełną kopię zapasową bazy tworzy kopię zapasową całej bazy danych. Pełna kopia zapasowa zawiera wszystkie dane w konkretnej bazy danych lub zestaw grup plików lub plików oraz wystarczającą ilość dzienniki, aby odzyskać usuniętych danych. Co najwyżej użytkownik zainicjuje jedną pełną kopię zapasową dziennie. Istnieje możliwość wykonania pełnej kopii zapasowej na interwał codziennie lub co tydzień.
+* Różnicowa kopia zapasowa: Różnicowa kopia zapasowa jest oparty na najnowszych, poprzedniego pełnych danych kopii zapasowej. Różnicowa kopia zapasowa przechwytuje dane, które uległy zmianie od czasu pełnej kopii zapasowej. Co najwyżej możesz wyzwolić jednym różnicowa kopia zapasowa każdego dnia. Nie można skonfigurować pełnej kopii zapasowej i różnicowej kopii zapasowej tego samego dnia.
+* Tworzenie kopii zapasowej dziennika transakcji: Kopię zapasową dziennika umożliwia w momencie przywracania do określonego sekundy. Maksymalnie można skonfigurować, kopii zapasowych dziennika transakcji co 15 minut.
 
 Zasady tworzone w magazynie usługi Recovery Services poziomu. Wiele magazynów można używać tych samych zasad tworzenia kopii zapasowej, ale należy zastosować zasady kopii zapasowych do każdego magazynu. Po utworzeniu zasad tworzenia kopii zapasowej dzienny pełnej kopii zapasowej jest ustawieniem domyślnym. Można dodać różnicowej kopii zapasowej, ale tylko wtedy, jeśli skonfigurujesz pełnych kopie zapasowych co tydzień. Poniższa procedura wyjaśnia sposób tworzenia zasad kopii zapasowych dla wystąpienia programu SQL Server w maszynie wirtualnej platformy Azure.
 
@@ -456,7 +456,7 @@ Możesz również wybrać określonej pełna lub różnicowa kopii zapasowej do 
 
     Gdy **przywrócić** zostanie otwarte menu **przywracania konfiguracji** również zostanie otwarte menu. **Przywracania konfiguracji** menu jest pierwszym krokiem do skonfigurowania przywracania. Użyj tego menu, aby wybrać miejsce do przywracania danych. Dostępne opcje to:
     - **Lokalizacja alternatywna**: Przywróć bazę danych do lokalizacji alternatywnej i zachować oryginalne źródłowej bazy danych.
-    - **Zastąp bazę danych**: przywraca dane do tego samego wystąpienia programu SQL Server jako oryginalnego źródła. Ta opcja powoduje zastąpienie oryginalnej bazy danych.
+    - **Zastąp bazę danych**: Przywróć dane do tego samego wystąpienia programu SQL Server jako oryginalnego źródła. Ta opcja powoduje zastąpienie oryginalnej bazy danych.
 
     > [!Important]
     > Jeśli wybrana baza danych, należy do grupy dostępności Always On programu SQL Server nie zezwala na bazy danych zostaną zastąpione. W tym przypadku tylko **lokalizacji alternatywnej** opcja jest włączona.
@@ -798,19 +798,15 @@ W poniższej sekcji przedstawiono dodatkowe informacje na temat kopii zapasowej 
 ### <a name="can-i-throttle-the-speed-of-the-sql-server-backup-policy"></a>Czy mogę ograniczyć szybkość zasad kopii zapasowych programu SQL Server
 
 Tak. Możesz ograniczyć szybkość jaką wykonuje zasad tworzenia kopii zapasowej, aby zminimalizować wpływ na wystąpieniu programu SQL Server.
-
 Aby zmienić ustawienia:
-
-1. W wystąpieniu programu SQL Server, w folderze C:\Program Files\Azure obciążenia Backup\bin Otwórz **TaskThrottlerSettings.json** pliku.
-
-2. W pliku TaskThrottlerSettings.json zmienić **DefaultBackupTasksThreshold** ustawienie niższej wartości (na przykład 5).
+1. W wystąpieniu programu SQL Server w *folderu C:\Program Files\Azure obciążenia Backup\bin*, Utwórz **ExtensionSettingsOverrides.json** pliku.
+2. W **ExtensionSettingsOverrides.json** pliku, zmień **DefaultBackupTasksThreshold** ustawienie niższej wartości (na przykład 5) <br>
+  ` {"DefaultBackupTasksThreshold": 5}`
 
 3. Zapisz zmiany. Zamknij plik.
-
-4. W wystąpieniu programu SQL Server otwórz **Menedżera zadań**. Uruchom ponownie **obciążenie kopii zapasowej platformy Azure, usługa koordynatora**.
+4. W wystąpieniu programu SQL Server otwórz **Menedżera zadań**. Uruchom ponownie **AzureWLBackupCoordinatorSvc** usługi.
 
 ### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Czy można uruchamiać pełnej kopii zapasowej z repliki pomocniczej
-
 Nie. Ta funkcja nie jest obsługiwana.
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Zadania tworzenia kopii zapasowej zakończone pomyślnie, należy tworzyć alerty?

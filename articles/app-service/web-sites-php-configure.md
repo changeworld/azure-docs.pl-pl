@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie obsługi języka PHP w usłudze Azure App Service Web Apps
+title: Konfigurowanie środowiska uruchomieniowego języka PHP — usłudze Azure App Service
 description: Dowiedz się, jak skonfigurować domyślnej instalacji PHP lub dodać do instalacji niestandardowej PHP dla usługi Web Apps w usłudze Azure App Service.
 services: app-service
 documentationcenter: php
@@ -13,12 +13,13 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: f9e863146b78fa510ea6f5b6eb9b3aa0fc4ce926
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: d5ad7b392029ae33ee7666b80edfe5b4b7555b41
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965790"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273202"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurowanie obsługi języka PHP w usłudze Azure App Service Web Apps
 
@@ -28,7 +29,7 @@ Ten przewodnik pokazuje, jak skonfigurować wbudowanych środowiska uruchomienio
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to-change-the-built-in-php-version"></a>Porady: Zmienianie wbudowanych wersji języka PHP
+## <a name="how-to-change-the-built-in-php-version"></a>Instrukcje: Zmienianie wbudowanych wersji języka PHP
 
 PHP 5.6 jest domyślnie, jest zainstalowana i natychmiast dostępny do użycia podczas tworzenia aplikacji sieci web usługi App Service. Najlepszym sposobem, aby wyświetlić poprawkę dostępną wersją konfiguracji domyślnej i włączono rozszerzenia jest wdrożenie skryptu, który wywołuje [phpinfo()] funkcji.
 
@@ -39,10 +40,10 @@ PHP 5.6 jest domyślnie, jest zainstalowana i natychmiast dostępny do użycia p
 1. Przejdź do aplikacji sieci web w [witryny Azure portal](https://portal.azure.com) i kliknij pozycję **ustawienia** przycisku.
 
     ![Ustawienia aplikacji sieci Web][settings-button]
-1. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i wybierz nową wersję PHP.
+2. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i wybierz nową wersję PHP.
 
     ![Ustawienia aplikacji][application-settings]
-1. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji sieci Web** bloku.
+3. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji sieci Web** bloku.
 
     ![Zapisanie ustawień konfiguracji][save-button]
 
@@ -78,7 +79,7 @@ Aby użyć interfejsu wiersza polecenia platformy Azure, musisz mieć [zainstalo
 
         az webapp show --name {app-name} --resource-group {resource-group-name}
 
-## <a name="how-to-change-the-built-in-php-configurations"></a>Porady: Zmienianie wbudowanych konfiguracji PHP
+## <a name="how-to-change-the-built-in-php-configurations"></a>Instrukcje: Zmienianie wbudowanych konfiguracji PHP
 
 Do wszelkich wbudowanych środowiska uruchomieniowego języka PHP możesz zmienić opcje konfiguracji wykonaj następujące czynności. (Aby uzyskać informacji dotyczących dyrektyw w pliku php.ini, zobacz [Lista dyrektywy w pliku php.ini].)
 
@@ -109,7 +110,7 @@ Jako alternatywa dla użycia `.user.ini` pliku, można użyć [ini_set()] funkcj
         wincache.maxfilesize=512
 1. Aby załadować ponownie zmiany, uruchom ponownie swoją aplikację sieci Web.
 
-## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Porady: Włączanie rozszerzeń w domyślnego środowiska uruchomieniowego PHP
+## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Instrukcje: Włącz rozszerzenia w domyślnego środowiska uruchomieniowego PHP
 
 Jak wspomniano w poprzedniej sekcji, najlepszym sposobem, aby wyświetlić domyślną wersję języka PHP, domyślnej konfiguracji i włączono rozszerzenia jest wdrożenie skryptu, który wywołuje [phpinfo()]. Aby włączyć dodatkowe rozszerzenia, wykonując następujące czynności:
 
@@ -144,7 +145,7 @@ Jak wspomniano w poprzedniej sekcji, najlepszym sposobem, aby wyświetlić domy�
 
 Rozwiązanie Zend rozszerzenia również są obsługiwane przy użyciu **PHP_ZENDEXTENSIONS** klucza. Aby włączyć wiele rozszerzeń, należy dołączyć rozdzielaną przecinkami listę `.dll` pliki wartość ustawienia aplikacji.
 
-## <a name="how-to-use-a-custom-php-runtime"></a>Porady: Użyj niestandardowego środowiska uruchomieniowego języka PHP
+## <a name="how-to-use-a-custom-php-runtime"></a>Instrukcje: Użyj niestandardowego środowiska uruchomieniowego języka PHP
 
 Zamiast domyślnego środowiska uruchomieniowego PHP App Service Web Apps można użyć środowiska uruchomieniowego języka PHP, który udostępnić wykonywanie skryptów w języku PHP. Środowisko uruchomieniowe, które należy podać mogą być konfigurowane przez `php.ini` plików, które zapewniają również. Aby użyć niestandardowego środowiska uruchomieniowego języka PHP z usługą Web Apps, wykonaj następujące kroki.
 
@@ -165,7 +166,7 @@ Zamiast domyślnego środowiska uruchomieniowego PHP App Service Web Apps można
 
 <a name="composer" />
 
-## <a name="how-to-enable-composer-automation-in-azure"></a>Porady: Włączanie automatyzacji narzędzia Composer na platformie Azure
+## <a name="how-to-enable-composer-automation-in-azure"></a>Instrukcje: Włączanie automatyzacji narzędzia Composer na platformie Azure
 
 Domyślnie usługa App Service nie wprowadza żadnych zmian przy użyciu pliku composer.json, jeśli nie masz w swoim projekcie w języku PHP. Jeśli używasz [wdrożenie Git](app-service-deploy-local-git.md), można włączyć composer.json przetwarzania podczas `git push` , należy włączyć rozszerzenie Composer (kompozytor).
 
