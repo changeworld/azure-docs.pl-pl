@@ -1,5 +1,5 @@
 ---
-title: Kontrolowanie ruchu w usłudze Azure App Service z usługą Azure Traffic Manager
+title: Sterowanie ruchem za pomocą usługi Traffic Manager — usługi Azure App Service
 description: Ten artykuł zawiera podsumowanie informacji o usłudze Azure Traffic Manager, w odniesieniu do usługi Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: 5e4dfec4bdc9deaf1a57413c1cba4ceefa5195d6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 85405a96d141188203ddc88410c96654667fa83a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246348"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270114"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Kontrolowanie ruchu w usłudze Azure App Service z usługą Azure Traffic Manager
 > [!NOTE]

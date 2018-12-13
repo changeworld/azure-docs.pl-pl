@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 2c1949fe991b599e9b002caf4c98c305a3791977
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 26030764544189ae7b075711f0405bf5c0b4ab8f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000862"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193828"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 
@@ -31,7 +30,7 @@ Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w obsz
 
 ## <a name="log-queries"></a>Dziennik zapytań
 
-Wymagane jest zapytanie dziennika, aby pobrać wszystkie dane z usługi Log Analytics.  Czy jesteś [analizowanie danych w portalu](../../azure-monitor/log-query/portals.md), [konfigurowania reguły alertu](../../monitoring-and-diagnostics/alert-metric.md) Aby otrzymywać powiadomienia o określony warunek, lub podczas pobierania danych przy użyciu [interfejsu API usługi Log Analytics](https://dev.loganalytics.io/), możesz użyje kwerendy do określenia danych, które chcesz.  Ten artykuł zawiera opis używania kwerend dzienników w usłudze Log Analytics i zapewnia pojęcia, które należy zrozumieć przed utworzeniem jeden.
+Wymagane jest zapytanie dziennika, aby pobrać wszystkie dane z usługi Log Analytics.  Czy jesteś [analizowanie danych w portalu](../../azure-monitor/log-query/portals.md), [konfigurowania reguły alertu](../../azure-monitor/platform/alerts-metric.md) Aby otrzymywać powiadomienia o określony warunek, lub podczas pobierania danych przy użyciu [interfejsu API usługi Log Analytics](https://dev.loganalytics.io/), możesz użyje kwerendy do określenia danych, które chcesz.  Ten artykuł zawiera opis używania kwerend dzienników w usłudze Log Analytics i zapewnia pojęcia, które należy zrozumieć przed utworzeniem jeden.
 
 
 

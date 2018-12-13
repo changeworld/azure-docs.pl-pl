@@ -1,11 +1,10 @@
 ---
-title: Wybieranie algorytmów uczenia maszynowego — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+title: Jak wybierać algorytmy w usłudze Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Jak wybrać algorytmy Azure Machine Learning Studio uczenie nadzorowane i nienadzorowane w eksperymentach klastrowania, klasyfikacji lub regresji.
 services: machine-learning
 author: ericlicoding
-ms.custom: (previous ms.author=pakalra, author=pakalra)
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.author: amlstudiodocs
-manager: cgronlun
 editor: cgronlun
 tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
@@ -13,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 7ddfb98a884779385cde643e213bebb98b050436
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9e601464f97a7717a2ccef0e60172357d3169697
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312422"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256931"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
 
@@ -44,7 +43,7 @@ Przeczytaj ścieżkę i algorytmu etykiet na wykresie jako "dla  *&lt;etykieta �
 Czasami żadna z nich są idealnym rozwiązaniem. Są one przeznaczone do reguły z thumb zaleceń, więc nie martw się o nim są dokładne.
 Wielu analityków danych, które I Rozmawialiśmy o wspomniane, które jedynym pewnym sposobem znalezienia bardzo najlepszy algorytm jest do wypróbowania wszystkich z nich.
 
-Oto przykład z [Galeria sztucznej Inteligencji platformy](http://gallery.cortanaintelligence.com/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [porównania klasyfikatorów wieloklasowej: litera rozpoznawania](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+Oto przykład z [galerii Azure AI](http://gallery.cortanaintelligence.com/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [Porównaj klasyfikatorów wieloklasowej: Litera rozpoznawania](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Aby pobrać i wydrukować diagram, który zawiera przegląd możliwości usługi Machine Learning Studio, zobacz [Diagram przeglądowy możliwości usługi Azure Machine Learning Studio](studio-overview-diagram.md).
@@ -245,7 +244,7 @@ Pracę i prowadzone przez Microsoft Research własnych John Langford, VW jest fo
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać informacyjna do pobrania, opisujący algorytmów i przykłady, zobacz [grafika informacyjna do pobrania: podstawy uczenia maszynowego z algorytmami](basics-infographic-with-algorithm-examples.md).
+* Aby uzyskać informacyjna do pobrania, opisujący algorytmów i przykłady, zobacz [grafika informacyjna do pobrania: Podstawy uczenia maszynowego z algorytmami](basics-infographic-with-algorithm-examples.md).
 
 * Aby uzyskać listę według kategorii wszystkich algorytmów uczenia maszynowego dostępnych w usłudze Machine Learning Studio, zobacz [zainicjować modelu](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model) algorytmu Studio uczenia maszynowego i pomóc w Module.
 

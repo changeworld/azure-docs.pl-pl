@@ -11,13 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 63f9417a65fbe3141907dc7d7d64da06eec7e93f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 441064d6cbb5b3b2fae77caef3125c8db3467553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882847"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187453"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacja procesów usługi Log Analytics przy użyciu łącznika dla Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) pozwala tworzyć zautomatyzowane przepływy pracy przy użyciu setek akcji dla wielu usług. Dane wyjściowe z akcji może służyć jako dane wejściowe do innego, co pozwala na tworzenie integracja między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow, umożliwiają tworzenie przepływów pracy, które zawierają dane pobierane przez wyszukiwań w dziennikach w usłudze Log Analytics.
@@ -27,18 +26,18 @@ Na przykład można użyć Microsoft Flow do korzystania z danych usługi Log An
 Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatycznie wysyła wyniki przeszukiwania dzienników usługi Log Analytics za pośrednictwem poczty e-mail, tylko jeden przykład wykorzystania usługi Log Analytics w Microsoft Flow. 
 
 
-## <a name="step-1-create-a-flow"></a>Krok 1: Tworzenie przepływu
+## <a name="step-1-create-a-flow"></a>Krok 1. Tworzenie przepływu
 1. Zaloguj się do [Microsoft Flow](https://flow.microsoft.com)i wybierz **moje przepływy**.
 2. Kliknij przycisk **+ Utwórz z pustego**.
 
-## <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Tworzenie wyzwalacza przepływu
+## <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2. Tworzenie wyzwalacza przepływu
 1. Kliknij przycisk **Przeszukaj setki łączników i wyzwalaczy**.
 2. Typ **harmonogram** w polu wyszukiwania.
 3. Wybierz **harmonogram**, a następnie wybierz pozycję **harmonogram — cyklicznie**.
 4. W **częstotliwość** polu Wybierz **dzień** i **interwał** wprowadź **1**.<br><br>![Okno dialogowe wyzwalacz Microsoft Flow](media/flow-tutorial/flow01.png)
 
 
-## <a name="step-3-add-a-log-analytics-action"></a>Krok 3: Dodaj akcję usługi Log Analytics
+## <a name="step-3-add-a-log-analytics-action"></a>Krok 3. Dodaj akcję usługi Log Analytics
 1. Kliknij przycisk **+ nowy krok**, a następnie kliknij przycisk **Dodaj akcję**.
 2. Wyszukaj **Log Analytics**.
 3. Kliknij przycisk **usługi Azure Log Analytics — uruchom zapytanie, a wizualizacja wyników**.<br><br>![Uruchom okno zapytania w usłudze log Analytics](media/flow-tutorial/flow02.png)
@@ -57,7 +56,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 
 2. Wybierz **tabeli HTML** dla **typ wykresu**.<br><br>![Akcja analizy dzienników](media/flow-tutorial/flow03.png)
 
-## <a name="step-5-configure-the-flow-to-send-email"></a>Krok 5: Konfiguracja usługi flow, aby wysłać wiadomość e-mail
+## <a name="step-5-configure-the-flow-to-send-email"></a>Krok 5: Konfiguruj przepływ do wysyłania wiadomości e-mail
 
 1. Kliknij przycisk **nowy krok**, a następnie kliknij przycisk **+ Dodaj akcję**.
 2. Wyszukaj **usługi Office 365 Outlook**.
@@ -69,7 +68,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 6. Kliknij przycisk **Pokaż opcje zaawansowane**.
 7. W **HTML jest** wybierz opcję **tak**.<br><br>![Okna konfiguracji poczty e-mail usługi Office 365](media/flow-tutorial/flow05.png)
 
-## <a name="step-6-save-and-test-your-flow"></a>Krok 6: Zapisywanie i przetestowanie przepływu
+## <a name="step-6-save-and-test-your-flow"></a>Krok 6: Zapisz i przetestowanie przepływu
 1. W **Nazwa przepływu** , Dodaj nazwę przepływowi, a następnie kliknij przycisk **Utwórz przepływ**.<br><br>![Zapisz przepływ](media/flow-tutorial/flow06.png)
 2. Przepływ został utworzony i będzie działać po dniu, czyli harmonogram, który określono. 
 3. Aby natychmiast przetestować przepływ, kliknij przycisk **Uruchom teraz** i następnie **uruchomić przepływ**.<br><br>![Uruchamianie przepływu](media/flow-tutorial/flow07.png)

@@ -10,12 +10,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: cf447ddef0639c35efeb0f396a61ae7bc5fe9781
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 901c8f0c903a7e26e82d89209ea4b0ec69057d23
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890589"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165416"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Rozwiązywać problemy z połączeniem do usługi Azure Database for MySQL
 
@@ -49,9 +49,9 @@ Błędy przejściowe występują, gdy jest wykonywana konserwacja, system napotk
 
 Jeśli aplikacja nie trwałe połączenia z usługą Azure Database for MySQL, zwykle oznacza problem związany z jedną z następujących czynności:
 
-* Konfiguracja zapory: — Azure Database for MySQL serwera lub klienta zapory blokuje połączenia.
-* Ponownej konfiguracji po stronie klienta sieci: Dodano nowy adres IP lub serwer proxy.
-* Błąd użytkownika: na przykład mogło być błędnie wpisane parametry połączenia, takie jak nazwa serwera w parametrach połączenia lub braku *@servername* sufiksu w nazwie użytkownika.
+* Konfiguracja zapory serwera: Upewnij się, że usługi Azure Database for MySQL zapory serwera jest skonfigurowany do połączeń z klienta, w tym serwery proxy i bram.
+* Konfiguracja zapory klienta: Zapora na komputerze klienckim muszą zezwalać na połączenia z serwerem bazy danych. Adresy IP i porty serwera, na którym można połączyć się muszą być dozwolone, a także nazwy aplikacji, takich jak MySQL w niektóre zapory.
+* Błąd użytkownika: Może być błędnie wpisano parametry połączenia, takie jak nazwa serwera w parametrach połączenia lub braku *@servername* sufiksu w nazwie użytkownika.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroki, aby rozwiązać problemy z łącznością trwałego
 

@@ -12,12 +12,12 @@ author: tedway
 ms.date: 05/07/2018
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87826ad00d52f4d5a2167d4beaec882af096c3ac
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 44c0818d7ddb418e34e6e124ddc0b27460bb24a0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103364"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262082"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Pakiet Azure Machine Learning sprzętowego przyspieszania
 
@@ -34,7 +34,8 @@ Pakiet Azure Machine Learning sprzętowego przyspieszania jest rozszerzeniem do 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
+>[!Note]
+>Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem należy utworzyć bezpłatne konto. Spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
 
 1. Konto Zarządzanie modelami w usłudze Azure Machine Learning. Aby uzyskać więcej informacji na temat tworzenia konta, zobacz [instalacji usługi Azure Machine Learning Przewodnik Szybki Start i aplikacja Workbench](../desktop-workbench/quickstart-installation.md) dokumentu. 
 

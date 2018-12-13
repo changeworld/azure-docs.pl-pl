@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 9fb28d618a9375dec19e75d04ef0a6bc5de334b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4e4d01371733a2292c69174e4cb135e995e5e935
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242640"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189102"
 ---
 # <a name="create-content-keys-with-rest"></a>Tworzenie kluczy zawartości z użyciem usług REST
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Usługa Media Services umożliwia dostarczanie zaszyfrowanych zasoby. A **Conten
 
 Po utworzeniu nowego elementu zawartości (na przykład, zanim [przekazywanie plików](media-services-rest-upload-files.md)), można określić następujące opcje szyfrowania: **StorageEncrypted**, **CommonEncryptionProtected**, lub **EnvelopeEncryptionProtected**. 
 
-Gdy zasoby można dostarczać klientom, możesz ją [konfigurowanie dla zasobów, aby był dynamicznie szyfrowany](media-services-rest-configure-asset-delivery-policy.md) przy użyciu jednego z następujących dwóch metody szyfrowania: **DynamicEnvelopeEncryption** lub  **DynamicCommonEncryption**.
+Gdy zasoby można dostarczać klientom, możesz ją [konfigurowanie dla zasobów, aby był dynamicznie szyfrowany](media-services-rest-configure-asset-delivery-policy.md) przy użyciu jednego z następujących dwóch metody szyfrowania: **DynamicEnvelopeEncryption** lub **DynamicCommonEncryption**.
 
 Zaszyfrowane obiekty muszą być skojarzone z **ContentKey**s. W tym artykule opisano sposób tworzenia klucza zawartości.
 
@@ -71,9 +71,9 @@ Poniżej przedstawiono ogólne kroki do generowania kluczy zawartości, które s
 
 Ten artykuł pokazuje, jak generowanie klucza AES, szyfrowania klucza, a następnie Oblicz sumę kontrolną. 
 
->[!NOTE]
-
->Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
+> [!NOTE]
+> 
+> Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
 
 ## <a name="connect-to-media-services"></a>Łączenie się z usługą Media Services
 

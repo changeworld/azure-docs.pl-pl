@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: d8deb3d9d2d425567094d44e638f1989a5e2d881
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0dc41b001ecca26239c0a9e8f69e2709d6927fcd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096999"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250582"
 ---
-# <a name="retrain-a-new-resource-manager-based-web-service-using-powershell"></a>Ponowne szkolenie nowej usługi sieci web opartych na programie Resource Manager przy użyciu programu Powershell
+# <a name="retrain-a-new-resource-manager-based-studio-web-service-using-powershell"></a>Ponowne szkolenie nowej usługi sieci web opartych na usłudze Resource Manager Studio przy użyciu programu Powershell
 Gdy retrain się nowej usługi sieci web, należy zaktualizować definicji usługi predykcyjne sieci web, aby odwoływać się do nowego modelu uczonego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne

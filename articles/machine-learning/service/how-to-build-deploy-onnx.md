@@ -11,14 +11,14 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5fc0e00d9c4404a1c6a757c354a9c7116dfeffa7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8da2309a16c07440158c1de324eea1fa05b1c98b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094019"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189075"
 ---
-# <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX i Azure Machine Learning: tworzenie i wdrażanie interoperacyjne modeli sztucznej Inteligencji
+# <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX i usługi Azure Machine Learning: Tworzenie i wdrażanie interoperacyjne modeli sztucznej Inteligencji
 
 [Otwórz Exchange sieci neuronowych](https://onnx.ai) formatu (ONNX) jest standardem otwartym do reprezentowania modeli uczenia maszynowego. ONNX jest obsługiwana przez [społeczności partnerów](https://onnx.ai/supported-tools), łącznie z firmy Microsoft, który utworzyć zgodne strukturami i narzędziami. Firma Microsoft poświęca otwarte i interoperacyjne sztucznej Inteligencji, aby analitycy danych i deweloperzy mogą:
 

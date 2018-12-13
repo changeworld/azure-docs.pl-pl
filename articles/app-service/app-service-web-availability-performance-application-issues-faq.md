@@ -1,5 +1,5 @@
 ---
-title: Wydajność aplikacji często zadawane pytania dotyczące aplikacji internetowych platformy Azure | Dokumentacja firmy Microsoft
+title: Wydajność aplikacji — często zadawane pytania — usługa Azure App Service | Dokumentacja firmy Microsoft
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące dostępności, wydajności i problemów z aplikacjami w funkcji Web Apps w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 00563b93a3601ba6299c479c49375fd252841f79
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec18
+ms.openlocfilehash: 62039d379861e9981eb1bf556a78e85fc64e2478
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748123"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255197"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Wydajność aplikacji — często zadawane pytania dla aplikacji sieci Web na platformie Azure
 
@@ -166,7 +167,7 @@ Zadania Webjob jest przeznaczony do przetwarzania w tle. Możesz tworzyć, jak n
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>Aplikacje platformy ASP.NET Core, które są hostowane w usłudze App Service, czasami przestać odpowiadać. Jak rozwiązać ten problem?
 
-Znany problem z wcześniejszej [wersji Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) może spowodować aplikację ASP.NET Core 1.0, która jest hostowana w usłudze App Service sporadycznie przestanie odpowiadać. Można także napotkać ten komunikat: "określona aplikacja CGI napotkał błąd i serwer przerwał działanie procesu".
+Znany problem z wcześniejszej [wersji Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) może spowodować aplikację ASP.NET Core 1.0, która jest hostowana w usłudze App Service sporadycznie przestanie odpowiadać. Również może zostać wyświetlony ten komunikat: "Określona aplikacja CGI napotkał błąd i serwer przerwał działanie procesu".
 
 Ten problem został rozwiązany w wersji 1.0.2 Kestrel. Ta wersja jest uwzględniony w aktualizacji platformy ASP.NET Core 1.0.3. Aby rozwiązać ten problem, upewnij się, że aktualizacja zależności aplikacji do użycia Kestrel 1.0.2. Alternatywnie można użyć dwóch obejścia, które są opisane w wpis w blogu [powolne wydajności programu ASP.NET Core 1.0 problemy w usłudze App Service web apps](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites).
 

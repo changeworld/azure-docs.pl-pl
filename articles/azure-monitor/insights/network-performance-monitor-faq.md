@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 208e021dd9025ffff92ed46749346cfb53d0b080
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002601"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166612"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -147,7 +147,7 @@ Przeskok nie mogą odpowiadać na traceroute w co najmniej jeden z poniższych s
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>To rozwiązanie przedstawia utraty 100%, ale istnieje łączność między miejscem źródłowym i docelowym
 Może się to zdarzyć, jeśli Zapora hosta lub pośredniego zapory (Zapora sieciowa lub sieciowej grupy zabezpieczeń platformy Azure) blokuje komunikację między agentem źródło i miejsce docelowe za pośrednictwem portów używanych do monitorowania przez narzędzie NPM (domyślnie port jest port 8084, chyba że Klient został zmieniony to).
 
-* Aby sprawdzić, czy Zapora hosta nie blokuje komunikację na porcie wymagane, wyświetlanie stanu kondycji węzły źródłowe i docelowe z następującego widoku: rozwiązania Network Performance Monitor -> Konfiguracja -> węzłów. 
+* Aby sprawdzić, czy Zapora hosta nie blokuje komunikację na porcie wymagane, Wyświetl stan kondycji węzłów źródłowych i docelowych z następującego widoku: Rozwiązanie Network Performance Monitor -> Konfiguracja -> węzłów. 
   Jeśli są w złej kondycji, Wyświetl instrukcje i podejmij działania naprawcze. Jeśli węzły są w dobrej kondycji, przejdź do kroku b. poniżej.
 * Aby sprawdzić, czy Zapora sieciowa pośrednie lub sieciowej grupy zabezpieczeń platformy Azure nie blokuje komunikację na porcie wymagane, użyj do innych firm PsPing narzędzie przy użyciu poniższych instrukcji:
   * Narzędzie psping jest dostępna do pobrania [tutaj](https://technet.microsoft.com/sysinternals/psping.aspx) 
@@ -161,17 +161,8 @@ Może się to zdarzyć, jeśli Zapora hosta lub pośredniego zapory (Zapora siec
 Jak ścieżek sieciowych, od A do B może różnić się od ścieżek sieciowych między B do A, można zaobserwować różne wartości dla strat i opóźnień.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Dlaczego są wszystkie obwody usługi ExpressRoute i połączeń komunikacji równorzędnej nie odnaleziono?
-Może to nastąpić, jeśli połączenia komunikacji równorzędnej i obwodu, na których są rozproszone na wielu subskrypcji. NPM odnajduje tylko te usługi ExpressRoute połączenia prywatnej komunikacji równorzędnej w których sieci wirtualne połączone z usługą ExpressRoute są w tej samej subskrypcji co połączone z obszarem roboczym NPM. Ponadto NPM wykrywa te połączenia komunikacji równorzędnej firmy Microsoft, w której połączonych obwód usługi ExpressRoute znajduje się w tej samej subskrypcji co połączone z obszarem roboczym NPM. To może wyjaśnić, w poniższym przykładzie:
+NPM wykrywa teraz obwody usługi ExpressRoute i połączeń komunikacji równorzędnej w przypadku wszystkich subskrypcji, do których użytkownik ma dostęp. Wybierz wszystkie subskrypcje, w którym zasoby usługi Express Route są połączone i Włącz monitorowanie dla każdego odnalezionego zasobu. NPM szuka obiekty połączenia podczas rozpoznawania prywatnej komunikacji równorzędnej, dlatego Sprawdź, czy sieć wirtualna jest skojarzona z usługi komunikacji równorzędnej.
 
- Jeśli masz 2 A sieciami WIRTUALNYMI sieciami VNET w subskrypcji A i B sieci Wirtualnej w ramach subskrypcji B odpowiednio połączona z usługą ExpressRoute w C. Ponadto subskrypcji w ramach subskrypcji C. jest inną sieć wirtualna - sieć wirtualna C ER ma również MS komunikacji równorzędnej w subskrypcji C. 
-
-Następnie
-
-* Jeśli NPM obszar roboczy jest połączony z subskrypcją A, będą mieć możliwość monitorowania połączeń za pośrednictwem ER do sieci Wirtualnej, A tylko.
-* Jeśli obszar roboczy NPM jest połączony z subskrypcją B, będzie mieć możliwość monitorowania połączeń za pośrednictwem ER b sieci Wirtualnej tylko.
-* Jeśli NPM obszar roboczy jest połączony z subskrypcją C, będą mieć możliwość monitorowania połączeń za pośrednictwem ER C sieci Wirtualnej, a także MS komunikacji równorzędnej.
-
-Obsługa wielu subskrypcji będzie wkrótce dostępne. Później można monitorować usługi ExpressRoute prywatnych i połączenia komunikacji równorzędnej firmy Microsoft w różnych subskrypcjach, z jednego obszaru roboczego.
 ### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Funkcja ER Monitor ma komunikat diagnostyczny "Ruch nie przechodzi przez wszystkie obwód". Co to oznacza?
 
 Może wystąpić scenariusz, w którym ma dobrej kondycji połączenie między usługą lokalną i węzły na platformie Azure, ale ruch nie przechodzi w obwodzie usługi ExpressRoute skonfigurowana do monitorowania przez narzędzie NPM. 
@@ -214,7 +205,7 @@ Proces NPM jest skonfigurowany tak, aby zatrzymać, jeśli jego korzysta z więc
 NPM tworzy tylko lokalne reguły zapory Windows w węzłach, na których uruchomiono skrypt EnableRules.ps1 programu Powershell umożliwia agentów do utworzenia połączenia TCP ze sobą na określonym porcie. Rozwiązanie nie powoduje modyfikacji, wszelkie zapory sieciowej lub reguł sieciowej grupy zabezpieczeń (NSG).
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Jak można sprawdzić kondycji węzłów używanych do monitorowania
-Można wyświetlić stan kondycji węzłów używanych do monitorowania z następującego widoku: rozwiązania Network Performance Monitor -> Konfiguracja -> węzłów. Jeśli węzeł jest w złej kondycji, można wyświetlić szczegóły błędów i sugerowane akcje.
+Można wyświetlić stan kondycji węzłów używanych do monitorowania z następującego widoku: Rozwiązanie Network Performance Monitor -> Konfiguracja -> węzłów. Jeśli węzeł jest w złej kondycji, można wyświetlić szczegóły błędów i sugerowane akcje.
 
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Można NPM raport wartościami opóźnień w mikrosekundach
 NPM zaokrągla liczby opóźnienia w Interfejsie i w milisekundach. Te same dane są przechowywane na większą szczegółowość (czasami do czterech miejsc po przecinku).

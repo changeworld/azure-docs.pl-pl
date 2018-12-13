@@ -1,5 +1,5 @@
 ---
-title: Integrację środowiska App Service wewnętrznego modułu równoważenia obciążenia za pomocą usługi Azure Application Gateway
+title: Integracja środowiska App Service wewnętrznego modułu równoważenia obciążenia z usługą Application Gateway — Azure
 description: Przewodnik dotyczący sposobu integrowania aplikacji w środowiska App Service wewnętrznego modułu równoważenia obciążenia przy użyciu bramy aplikacji
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: f1e527918086fb003696c09828969e371ff9ca96
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968821"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273820"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrację środowiska App Service wewnętrznego modułu równoważenia obciążenia za pomocą usługi Azure Application Gateway #
 
@@ -64,7 +65,7 @@ Ponadto nie można umieścić bramę w podsieci, która używa środowiska App S
 
 1. W witrynie Azure portal przejdź do **New** > **sieci** > **Application Gateway**.
 
-1. W **podstawy** obszaru:
+2. W **podstawy** obszaru:
 
    a. Aby uzyskać **nazwa**, wprowadź nazwę usługi Application Gateway.
 
@@ -78,7 +79,7 @@ Ponadto nie można umieścić bramę w podsieci, która używa środowiska App S
 
    ![Nowej podstawy tworzenia bramy aplikacji][2]
 
-1. W **ustawienia** obszaru:
+3. W **ustawienia** obszaru:
 
    a. Aby uzyskać **sieć wirtualna**, wybierz sieć wirtualną w środowisku usługi App Service.
 
@@ -94,25 +95,25 @@ Ponadto nie można umieścić bramę w podsieci, która używa środowiska App S
 
    ![Nowe ustawienia tworzenia bramy aplikacji][3]
     
-1. W **Podsumowanie** , przejrzyj ustawienia i wybierz pozycję **OK**. Twoja brama Application Gateway może potrwać trochę więcej niż 30 minut, aby zakończyć instalację.  
+4. W **Podsumowanie** , przejrzyj ustawienia i wybierz pozycję **OK**. Twoja brama Application Gateway może potrwać trochę więcej niż 30 minut, aby zakończyć instalację.  
 
-1. Po ukończeniu instalacji bramy Application Gateway, przejdź do portalu usługi Application Gateway. Wybierz **puli zaplecza**. Dodaj adres wewnętrznego modułu równoważenia obciążenia dla środowiska App Service wewnętrznego modułu równoważenia obciążenia.
+5. Po ukończeniu instalacji bramy Application Gateway, przejdź do portalu usługi Application Gateway. Wybierz **puli zaplecza**. Dodaj adres wewnętrznego modułu równoważenia obciążenia dla środowiska App Service wewnętrznego modułu równoważenia obciążenia.
 
    ![Konfigurowanie puli zaplecza][4]
 
-1. Po zakończeniu procesu konfiguracji puli zaplecza, wybierz **sondy kondycji**. Utwórz sondę kondycji dla nazwy domeny, którego chcesz użyć dla aplikacji. 
+6. Po zakończeniu procesu konfiguracji puli zaplecza, wybierz **sondy kondycji**. Utwórz sondę kondycji dla nazwy domeny, którego chcesz użyć dla aplikacji. 
 
    ![Konfigurowanie sond kondycji][5]
     
-1. Po zakończeniu procesu konfiguracji usługi sond kondycji wybierz **ustawienia HTTP**. Edytuj istniejące ustawienia, wybierz **Użyj niestandardowe sondy**, a następnie wybierz sondowania, który został skonfigurowany.
+7. Po zakończeniu procesu konfiguracji usługi sond kondycji wybierz **ustawienia HTTP**. Edytuj istniejące ustawienia, wybierz **Użyj niestandardowe sondy**, a następnie wybierz sondowania, który został skonfigurowany.
 
    ![Skonfiguruj ustawienia protokołu HTTP][6]
     
-1. Przejdź do usługi Application Gateway **Przegląd** sekcji, a następnie skopiuj publiczny adres IP, który używa bramy Application Gateway. Ustaw ten adres IP jako rekord A dla nazwy domeny aplikacji lub użyj nazwy DNS dla tego adresu do rekordu CNAME. Ułatwia to wybierz publiczny adres IP i skopiuj go z poziomu interfejsu użytkownika publicznego adresu IP zamiast skopiuj go przy użyciu linku w usłudze Application Gateway **Przegląd** sekcji. 
+8. Przejdź do usługi Application Gateway **Przegląd** sekcji, a następnie skopiuj publiczny adres IP, który używa bramy Application Gateway. Ustaw ten adres IP jako rekord A dla nazwy domeny aplikacji lub użyj nazwy DNS dla tego adresu do rekordu CNAME. Ułatwia to wybierz publiczny adres IP i skopiuj go z poziomu interfejsu użytkownika publicznego adresu IP zamiast skopiuj go przy użyciu linku w usłudze Application Gateway **Przegląd** sekcji. 
 
    ![Portal usługi Application Gateway][7]
 
-1. Ustaw niestandardową nazwę domeny dla swojej aplikacji w środowiska App Service wewnętrznego modułu równoważenia obciążenia. Przejdź do aplikacji w portalu i w obszarze **ustawienia**, wybierz opcję **domen niestandardowych**.
+9. Ustaw niestandardową nazwę domeny dla swojej aplikacji w środowiska App Service wewnętrznego modułu równoważenia obciążenia. Przejdź do aplikacji w portalu i w obszarze **ustawienia**, wybierz opcję **domen niestandardowych**.
 
    ![Ustaw nazwę domeny niestandardowej na aplikację][8]
 

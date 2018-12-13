@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/15/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 87ba13334b037f7eb47264a120bb91b2be5f8a79
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ab55ed73c7364b48f3159672ebee5d934365c92c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963917"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191533"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrona maszyn wirtualnych wdrożonych w usłudze Azure Stack
 
@@ -55,8 +55,8 @@ Zaplanuj strategię odzyskiwania kopii zapasowych i odzyskiwania po awarii dla k
 
 |  | Global Azure | Usługa Azure Stack wdrożone w centrum danych dostawcy usług Kryptograficznych i eksploatowane przy pomocy dostawcy CSP | Usługa Azure Stack wdrożone w centrum danych klienta i obsługiwane przez klienta |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Usługa Azure Stack wdrożone w centrum danych dostawcy usług Kryptograficznych i eksploatowane przy pomocy dostawcy CSP** | Użytkownik maszyny wirtualne są wdrażane do dostawcy usług Kryptograficznych obsługiwane usługi Azure Stack. Maszyny wirtualne użytkowników przywróconej z kopii zapasowej lub Failover bezpośrednio na platformie Azure. | Dostawcy usług Kryptograficznych działa głównych i dodatkowych wystąpień usługi Azure Stack w ich własnych centrach danych. Maszyny wirtualne użytkowników są przywracane lub przełączone w tryb failover między dwoma wystąpieniami usługi Azure Stack. | Dostawcy usług Kryptograficznych działa w usłudze Azure Stack w lokacji głównej. Centrum danych klienta jest celem przywracania lub pracy awaryjnej. |
-| **Usługa Azure Stack wdrożone w centrum danych klienta i obsługiwane przez klienta** | Użytkownik maszyny wirtualne są wdrażane na klienta obsługiwane w usłudze Azure Stack. Maszyny wirtualne użytkowników przywróconej z kopii zapasowej lub Failover bezpośrednio na platformie Azure. | Klient działa głównych i dodatkowych wystąpień usługi Azure Stack w ich własnych centrach danych. Maszyny wirtualne użytkowników są przywracane lub przełączone w tryb failover między dwoma wystąpieniami usługi Azure Stack. | Klient działa w usłudze Azure Stack w lokacji głównej. Centrum danych dostawcy rozwiązań w Chmurze jest celem przywracania lub pracy awaryjnej. |
+| **Usługa Azure Stack wdrożone w centrum danych dostawcy usług Kryptograficznych i eksploatowane przy pomocy dostawcy CSP** | Użytkownik maszyny wirtualne są wdrażane do dostawcy usług Kryptograficznych obsługiwane usługi Azure Stack.<br><br>Maszyny wirtualne użytkowników przywróconej z kopii zapasowej lub Failover bezpośrednio na platformie Azure. | Dostawcy usług Kryptograficznych działa głównych i dodatkowych wystąpień usługi Azure Stack w ich własnych centrach danych.<br><br>Maszyny wirtualne użytkowników są przywracane lub przełączone w tryb failover między dwoma wystąpieniami usługi Azure Stack. | Dostawcy usług Kryptograficznych działa w usłudze Azure Stack w lokacji głównej.<br><br>Centrum danych klienta jest celem przywracania lub pracy awaryjnej. |
+| **Usługa Azure Stack wdrożone w centrum danych klienta i obsługiwane przez klienta** | Użytkownik maszyny wirtualne są wdrażane na klienta obsługiwane w usłudze Azure Stack.<br><br>Maszyny wirtualne użytkowników przywróconej z kopii zapasowej lub Failover bezpośrednio na platformie Azure. | Klient działa w usłudze Azure Stack w lokacji głównej.<br><br>Centrum danych dostawcy rozwiązań w Chmurze jest celem przywracania lub pracy awaryjnej. | Klient działa głównych i dodatkowych wystąpień usługi Azure Stack w ich własnych centrach danych.<br><br>Maszyny wirtualne użytkowników są przywracane lub przełączone w tryb failover między dwoma wystąpieniami usługi Azure Stack. |
 
 ![Kombinacje źródło cel](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
@@ -81,9 +81,9 @@ Najbardziej typowe schemat ochrony dla aplikacji opartych na maszynie Wirtualnej
 
 Odzyskiwanie aplikacji wymaga, aby przywracanie przynajmniej jednej maszyny wirtualnej do tej samej chmurze lub do nowej chmury. Można wskazać chmurę w centrum danych lub chmury publicznej. Chmury, któremu możesz wybrać, jest w całości w ramach kontroli nad i opiera się na wymagania dotyczące ochrony prywatności i niezależność danych.
  
- - Cel czasu odzyskiwania: Przestój mierzonego w godzinach
- - Cel punktu odzyskiwania: Utraty danych zmiennej (w zależności od częstotliwości wykonywania kopii zapasowych)
- - Topologia wdrażania: aktywny/pasywny
+ - CEL CZASU ODZYSKIWANIA: Czas przestoju, mierzone w godzinach
+ - CEL PUNKTU ODZYSKIWANIA: Utrata danych zmiennej (w zależności od częstotliwości wykonywania kopii zapasowych)
+ - Topologia wdrożenia: Aktywny/pasywny
 
 #### <a name="planning-your-backup-strategy"></a>Planowanie strategii tworzenia kopii zapasowych
 
@@ -109,9 +109,9 @@ Dzięki tej metodzie aplikacja jest wdrażana w chmurze jeden i jego maszyny Wir
 
 ![Replikacja ręcznej pracy awaryjnej](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
- - Cel czasu odzyskiwania: Przestojów w minutach
- - Cel punktu odzyskiwania: Utraty danych zmiennej (w zależności od częstotliwości replikacji)
- - Topologia wdrożenia: autonomiczną przez aktywny/pasywny
+ - CEL CZASU ODZYSKIWANIA: Czas przestoju w ciągu kilku minut
+ - CEL PUNKTU ODZYSKIWANIA: Utrata danych zmiennej (w zależności od częstotliwości replikacji)
+ - Topologia wdrożenia: Zapasowego aktywny/pasywny
  
 ### <a name="high-availabilityautomatic-failover"></a>Wysoka dostępność/automatyczny tryb failover
 
@@ -121,9 +121,9 @@ W połączeniu z zestawami skalowania aplikacji należy zapewnić wysoką dostę
 
 W ten sposób aplikacja jest aktywny tylko w jednej chmury, ale oprogramowanie zostanie wdrożone do wielu chmur. Inne chmury są w trybie gotowości gotowe do uruchomienia aplikacji, gdy zostanie wyzwolony przełączenie w tryb failover.
 
- - Cel czasu odzyskiwania: Przestój mierzony w sekundach
- - Cel punktu odzyskiwania: Minimalną utratą danych
- - Topologia wdrożenia: autonomiczną przez aktywny/aktywny
+ - CEL CZASU ODZYSKIWANIA: Czas przestoju, mierzony w sekundach
+ - CEL PUNKTU ODZYSKIWANIA: Minimalną utratą danych
+ - Topologia wdrożenia: Zapasowego aktywny/aktywny
 
 ### <a name="fault-tolerance"></a>Odporność na uszkodzenia
 
@@ -133,16 +133,16 @@ Najpierw należy upewnić się, że ustawia zapewnić ochronę przed awariami w�
 
 Należy pamiętać, że każda chmura usługi Azure Stack znajduje niezależne od siebie nawzajem, dlatego chmury są zawsze traktowane jako aktywne z perspektywy infrastruktury. W tym przypadku wiele aktywnych wystąpień aplikacji są wdrażane do co najmniej jedna chmura active.
 
- - Cel czasu odzyskiwania: Bez przestojów.
- - Cel punktu odzyskiwania: Bez utraty danych
- - Topologia wdrażania: aktywny/aktywny
+ - CEL CZASU ODZYSKIWANIA: Bez przerwy w działaniu
+ - CEL PUNKTU ODZYSKIWANIA: Bez utraty danych
+ - Topologia wdrożenia: Aktywny/aktywny
 
 ### <a name="no-recovery"></a>Brak odzyskiwania
 
 Niektóre aplikacje w danym środowisku nie może być konieczne ochrony przed nieplanowane przestoje lub utraty danych. Na przykład maszyny wirtualne używane do tworzenia i testowania zazwyczaj nie trzeba go odzyskać. Należy zdecydować, czy bez ochrony dla aplikacji lub określonej maszyny Wirtualnej. Usługa Azure Stack nie oferuje tworzenia kopii zapasowej lub replikacji maszyn wirtualnych z podstawową infrastrukturą. Podobnie jak na platformie Azure, musisz wyrazić zgodę na ochronę dla każdej maszyny Wirtualnej w każdej subskrypcji.
 
- - Cel czasu odzyskiwania: nieodwracalny
- - Celu punktu odzyskiwania: Całkowita utrata danych
+ - CEL CZASU ODZYSKIWANIA: Nieodwracalny
+ - CEL PUNKTU ODZYSKIWANIA: Całkowita utrata danych
 
 ## <a name="recommended-topologies"></a>Zalecane topologie
 

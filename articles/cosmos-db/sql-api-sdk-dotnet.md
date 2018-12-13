@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Interfejs API SQL platformy .NET, zestawu SDK i zasoby'
+title: Usługa Azure Cosmos DB Interfejs API SQL platformy .NET, zestaw SDK i zasoby
 description: Poznaj interfejs API SQL platformy .NET i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zestawu SDK .NET usługi Azure Cosmos DB.
 author: rnagpal
 ms.service: cosmos-db
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5af80a387a8b07992a82dac39c23082069419b60
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: c7f3b2fc0e5cc75bccbaf075dc2e2a2be8c7801d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865917"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255962"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Usługa Azure Cosmos DB .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB zestawu .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -54,6 +54,16 @@ ms.locfileid: "52865917"
 * Nowy model obiektów za pomocą metod CosmosClient najwyższego poziomu i Podziel na odpowiednich klas CosmosDatabases, CosmosContainers i CosmosItems. 
 * Obsługa strumieni. 
 * Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany. 
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* Diagnostykę transportu bezpośrednio/TCP należy dodać TransportException, typ wyjątku wewnętrznego zestawu SDK. Jeśli jest obecny w komunikaty o wyjątkach, ten typ Wyświetla dodatkowe informacje dotyczące rozwiązywania problemów z łącznością klienta.
+
+* Dodano nowy konstruktor przeciążenia przyjmująca klasa HttpMessageHandler, stos programu obsługi HTTP, używany do wysyłania żądań HttpClient (np. HttpClientHandler).
+
+* Naprawiono błąd, w której nagłówek o wartości null zostały nie jest obsługiwany poprawnie.
+
+* Ulepszone sprawdzanie poprawności pamięci podręcznej kolekcji.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -106,7 +116,7 @@ ms.locfileid: "52865917"
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* Naprawiono usterkę, która tych limitów zostanie osiągnięty w niektórych sytuacjach wyścigu, dającą wynik sporadyczne "Microsoft.Azure.Documents.NotFoundException: odczytu sesji nie jest dostępna dla tokenu sesji wejściowego" błędy w przypadku korzystania z poziomu spójności sesji.
+* Naprawiono usterkę, która tych limitów zostanie osiągnięty w niektórych sytuacjach wyścigu, dającą wynik sporadyczne "Microsoft.Azure.Documents.NotFoundException: Błędy odczytu sesji nie jest dostępna dla tokenu sesji wejściowego"korzystając z poziomu spójności sesji.
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
@@ -177,7 +187,7 @@ ms.locfileid: "52865917"
 * Rozwiązuje się zestaw SDK bardziej odporne na automatyczną pracę awaryjną pod pewnymi warunkami.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Naprawiono problem powodujący od czasu do czasu to klasa WebException: nie można rozpoznać nazwy zdalnej.
+* Poprawkę dla problemu, która czasami powoduje to klasa WebException: Nie można rozpoznać nazwy zdalnej.
 * Dodano obsługę bezpośrednio odczytu dokumentu wpisane, dodając nowe przeciążenia do interfejsu API ReadDocumentAsync.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -222,7 +232,7 @@ ms.locfileid: "52865917"
 * Różne poprawki błędów zestawu SDK.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Rozwiązano problem, który spowodował następujący NotFoundException: odczytu sesji nie jest dostępna dla tokenu sesji danych wejściowych. W niektórych przypadkach wystąpił ten wyjątek, podczas wykonywania zapytania w regionie odczytu, geograficznie rozproszona konta.
+* Rozwiązano problem powodujący NotFoundException następujące: Przeczytaj sesji nie jest dostępna dla tokenu sesji danych wejściowych. W niektórych przypadkach wystąpił ten wyjątek, podczas wykonywania zapytania w regionie odczytu, geograficznie rozproszona konta.
 * Widoczne właściwości ResponseStream w klasie ResourceResponse umożliwia bezpośredni dostęp do źródłowego strumienia z odpowiedzi.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
@@ -230,7 +240,7 @@ ms.locfileid: "52865917"
 * Rozwiązano problem powodujący nagłówek klucza partycji źle sformułowane, korzystając z niestandardowych obiektów JsonSerializerSettings dla serializacji danych.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Rozwiązano problem powodujący długotrwałe zapytania nie powiedzie się z powodu błędu: token autoryzacji jest nieprawidłowy w bieżącym momencie.
+* Rozwiązano problem powodujący długotrwałe zapytania nie powiedzie się z powodu błędu: Token autoryzacji jest nieprawidłowy w bieżącym momencie.
 * Rozwiązano problem, który usunąć oryginalny SqlParameterCollection z wielu partycji top/według zapytania.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
@@ -265,7 +275,7 @@ ms.locfileid: "52865917"
 * Zaimplementowane [podzielona na partycje kolekcje](partition-data.md) i [poziomów wydajności zdefiniowanych przez użytkownika](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Naprawiono]**  Zgłasza punktu końcowego zapytań usługi Azure Cosmos DB: "System.Net.Http.HttpRequestException: Wystąpił błąd podczas kopiowania zawartości do strumienia".
+* **[Naprawiono]**  Zgłasza punktu końcowego zapytań usługi Azure Cosmos DB: "System.Net.Http.HttpRequestException: Wystąpił błąd podczas kopiowania zawartości do strumienia ".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * LINQ rozszerzonej obsługi, w tym nowe operatory dla wyrażeń stronicowania, warunkowe i zakresu porównania.
@@ -340,6 +350,7 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |07 grudnia 2018 r. |--- |
 | [2.1.3](#2.1.3) |15 października 2018 r. |--- |
 | [2.1.2](#2.1.2) |04 października 2018 r. |--- |
 | [2.1.1](#2.1.1) |27 września 2018 r. |--- |

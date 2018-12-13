@@ -12,15 +12,15 @@ ms.author: genemi
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: e7aeb273d4ae276d3460c3de1f404230276cffb7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 14183475fcca0e12c56f009f105e77aaf11b0c98
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056645"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315218"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Zarządzanie schematami w aplikacji SaaS, która używa podzielonej na fragmenty wielodostępnych baz danych SQL
- 
+
 Ten samouczek analizuje trudności w utrzymaniu floty bazy danych w aplikacja oprogramowania jako usługi (SaaS). Rozwiązania zostały przedstawione dla wentylujące wprowadzonych zmian schematu w całej flocie baz danych.
 
 Podobnie jak każda aplikacja aplikacji SaaS o nazwie Wingtip Tickets ewoluuje wraz z upływem czasu i będzie wymagać zmiany w bazie danych. Zmiany mogą mieć wpływ na schemat lub odwołanie do danych lub w zadania konserwacji bazy danych. Za pomocą aplikacji SaaS przy użyciu bazy danych na wzorzec dzierżawy zmiany muszą być koordynowane między potencjalnie w bardzo wielu bazach danych dzierżaw. Ponadto musi ona zawierać tych zmian do procesu, aby upewnić się, że są one uwzględnione w nowych baz danych, ponieważ są one tworzone udostępniania bazy danych.
@@ -64,12 +64,12 @@ Model podzielonej na fragmenty wielodostępną bazą danych, używane w tym przy
 ## <a name="elastic-jobs-limited-preview"></a>Ograniczona wersja zapoznawcza Zadań elastycznych
 
 Istnieje nowa wersja zadań elastycznych, która jest teraz zintegrowaną funkcją usługi Azure SQL Database. Nowa wersja Zadań elastycznych jest obecnie dostępna w ograniczonej wersji zapoznawczej. Ograniczony Podgląd aktualnie obsługuje tworzenie agenta zadań i T-SQL do tworzenia zadań i zarządzanie nimi przy użyciu programu PowerShell.
-> [!NOTE] 
+> [!NOTE]
 > W tym samouczku korzysta z funkcji usługi SQL Database, które znajdują się w ograniczonej wersji zapoznawczej (zadania Elastic Database). Jeśli użytkownik chce skorzystać z tego samouczka, Prześlij identyfikator swojej subskrypcji w taki sposób, aby SaaSFeedback@microsoft.com podmiotu = Elastic Job Preview. Po otrzymaniu potwierdzenia, że Twojej subskrypcji zostało włączone, Pobierz i zainstaluj polecenia cmdlet zadań w najnowszej wersji wstępnej. Tej wersji zapoznawczej jest ograniczona, dlatego skontaktuj się z SaaSFeedback@microsoft.com pytań lub pomocy technicznej.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobierz kod źródłowy aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych i skryptów
 
-Skryptów aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych i kod źródłowy aplikacji są dostępne w [WingtipTicketsSaaS MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) repozytorium w witrynie Github. Zobacz [ogólne wskazówki dotyczące](saas-tenancy-wingtip-app-guidance-tips.md) kroków pobrać i odblokować skrypty SaaS o nazwie Wingtip Tickets. 
+Skryptów aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych i kod źródłowy aplikacji są dostępne w [WingtipTicketsSaaS MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) repozytorium w witrynie GitHub. Zobacz [ogólne wskazówki dotyczące](saas-tenancy-wingtip-app-guidance-tips.md) kroków pobrać i odblokować skrypty SaaS o nazwie Wingtip Tickets.
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>Utwórz agenta zadania bazy danych i nowy agent zadania
 
@@ -84,9 +84,9 @@ Ten samouczek wymaga użycia programu PowerShell do utworzenia baza danych agent
 
 #### <a name="prepare"></a>Przygotowanie
 
-Bazy danych z każdej dzierżawy obejmuje zestaw typów miejsc w **VenueTypes** tabeli. Każdy typ właściwości określa rodzaj zdarzeń, które mogą być hostowane w danym miejscu. Te typy miejsc odpowiadają obrazy tła, które są widoczne w aplikacji zdarzeń dzierżawy.  W tym ćwiczeniu wdrożenia aktualizacji do wszystkich baz danych w celu dodania dwóch dodatkowych typów miejsc: *Motorcycle Racing* i *Swimming Club*. 
+Bazy danych z każdej dzierżawy obejmuje zestaw typów miejsc w **VenueTypes** tabeli. Każdy typ właściwości określa rodzaj zdarzeń, które mogą być hostowane w danym miejscu. Te typy miejsc odpowiadają obrazy tła, które są widoczne w aplikacji zdarzeń dzierżawy.  W tym ćwiczeniu wdrożenia aktualizacji do wszystkich baz danych w celu dodania dwóch dodatkowych typów miejsc: *Motorcycle Racing* i *Swimming Club*.
 
-Po pierwsze Przejrzyj typów miejsc zawarte w każdej bazie danych dzierżawy. Połącz się z jednym baz danych dzierżaw w SQL Server Management Studio (SSMS) i sprawdź w tabeli VenueTypes.  Możesz także zbadać tej tabeli w edytorze zapytań w witrynie Azure portal, dostępny na stronie bazy danych. 
+Po pierwsze Przejrzyj typów miejsc zawarte w każdej bazie danych dzierżawy. Połącz się z jednym baz danych dzierżaw w SQL Server Management Studio (SSMS) i sprawdź w tabeli VenueTypes.  Możesz także zbadać tej tabeli w edytorze zapytań w witrynie Azure portal, dostępny na stronie bazy danych.
 
 1. Otwórz aplikację SSMS i nawiązać połączenie z serwerem dzierżaw: *tenants1-dpt -&lt;użytkownika&gt;. database.windows.net*
 1. Aby potwierdzić, że *Motorcycle Racing* i *Swimming Club* **nie** aktualnie włączone, przejdź do *contosoconcerthall* Baza danych *tenants1-dpt -&lt;użytkownika&gt;*  serwera i zapytania *VenueTypes* tabeli.

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: a1189f621b3d4c8846b374cd8369c69daef2fa31
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 6e85d19460d0b1c02ddd6666cf1e441e44e7a03d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002665"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276778"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -80,7 +79,7 @@ Są już nie można utworzyć nowych obszarów roboczych przy użyciu portalu pa
 > [!NOTE]
 > Alerty mają została w pełni rozszerzona do witryny Azure portal w przypadku chmury publicznej. Istniejących reguł alertów mogą być wyświetlane w portalu pakietu OMS, ale mogą być zarządzane tylko w witrynie Azure portal. Rozszerzenie alertów do witryny Azure portal rozpocznie się w chmurze Azure dla instytucji rządowych w października 2018 r.
 
-Alerty zostały [rozszerzone do postaci witryny Azure portal](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Po zakończeniu tej operacji akcje z zakresu zarządzania alerty tylko będą dostępne w witrynie Azure portal. Istniejące alerty będą nadal wyświetlane w portalu pakietu OMS. Jeśli uzyskujesz dostęp do alertów programowo przy użyciu interfejsu API REST alertów Log Analytics lub szablon Log Analytics alertu zasobu, należy korzystanie z grup akcji zamiast akcji w wywołania interfejsu API, szablony usługi Azure Resource Manager i poleceń programu PowerShell.
+Alerty zostały [rozszerzone do postaci witryny Azure portal](../../azure-monitor/platform/alerts-extend.md). Po zakończeniu tej operacji akcje z zakresu zarządzania alerty tylko będą dostępne w witrynie Azure portal. Istniejące alerty będą nadal wyświetlane w portalu pakietu OMS. Jeśli uzyskujesz dostęp do alertów programowo przy użyciu interfejsu API REST alertów Log Analytics lub szablon Log Analytics alertu zasobu, należy korzystanie z grup akcji zamiast akcji w wywołania interfejsu API, szablony usługi Azure Resource Manager i poleceń programu PowerShell.
 
 ### <a name="alert-management-solution"></a>Rozwiązanie do zarządzania alertami
 Zamiast [rozwiązanie usługi alert management](../../azure-monitor/platform/alert-management-solution.md), możesz użyć [usługi Azure Monitor ujednoliconego interfejsu alertów](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) wizualizacji i zarządzać alertami. Nowe środowisko agreguje alertów z wielu źródeł w ramach alertów platformy Azure łącznie dziennika z usługą Log Analytics. Możesz Zobacz dystrybucje alertów, skorzystaj z zalet automatyczne grupowanie powiązanych alertów za pośrednictwem inteligentnego grup i wyświetlić alerty w ramach wielu subskrypcji podczas stosowania filtrów zaawansowanych. Wszystkie te funkcje są dostępne w wersji zapoznawczej, począwszy od 4 czerwca 2018 r. Rozwiązanie do zarządzania alertów nie będą dostępne w witrynie Azure portal. 
@@ -88,7 +87,7 @@ Zamiast [rozwiązanie usługi alert management](../../azure-monitor/platform/ale
 Dane zebrane przez rozwiązanie do zarządzania alertami (rekordy z typem alertu) w dalszym ciągu można w usłudze Log Analytics, tak długo, jak rozwiązanie jest zainstalowane dla obszaru roboczego. Od sierpnia 2018 r. przesyłania strumieniowego alertów z ujednoliconego generowania alertów w obszary robocze zostaną włączone, zastępując tę możliwość. Niektóre zmiany schematu są oczekiwane i zostanie ogłoszona w późniejszym terminie.
 
 ## <a name="oms-mobile-app"></a>Aplikację OMS Mobile
-Aplikację OMS mobile będzie sunsetted wraz z portalu pakietu OMS. Zamiast aplikację OMS mobile dostęp do informacji o infrastrukturę IT, pulpity nawigacyjne i zapisane zapytania dostępne witryny Azure portal bezpośrednio z przeglądarki w urządzeniu przenośnym. Aby otrzymywać alerty, należy skonfigurować [grup akcji platformy Azure](../../monitoring-and-diagnostics/monitoring-action-groups.md) do odbierania powiadomień w postaci wiadomości SMS lub połączenie głosowe
+Aplikację OMS mobile będzie sunsetted wraz z portalu pakietu OMS. Zamiast aplikację OMS mobile dostęp do informacji o infrastrukturę IT, pulpity nawigacyjne i zapisane zapytania dostępne witryny Azure portal bezpośrednio z przeglądarki w urządzeniu przenośnym. Aby otrzymywać alerty, należy skonfigurować [grup akcji platformy Azure](../../azure-monitor/platform/action-groups.md) do odbierania powiadomień w postaci wiadomości SMS lub połączenie głosowe
 
 ## <a name="application-insights-connector-and-solution"></a>Łącznik usługi Application Insights i rozwiązania
 [Łącznik usługi Application Insights](../../azure-monitor/platform/app-insights-connector.md) umożliwia przenoszenie danych usługi Application Insights do obszaru roboczego usługi Log Analytics. Ta duplikacja danych był wymagany do włączenia widoczności danych infrastruktury i aplikacji.

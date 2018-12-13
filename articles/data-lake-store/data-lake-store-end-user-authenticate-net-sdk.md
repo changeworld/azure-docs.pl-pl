@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 206dddd70ae9063782b7dc8dfaf1214f53d5fac8
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 62b7e293468a8b92f22ee1a5fd5b38cd15cfafbf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955712"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261538"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -104,7 +104,7 @@ W celu ułatwienia poniższy fragment kodu używa wartości domyślnych Identyfi
 
 Kilka rzeczy, aby dowiedzieć się o poprzednim fragmencie kodu:
 
-* Poprzedni fragment kodu używa funkcji pomocnika `GetTokenCache` i `GetCreds_User_Popup`. Kod dla tych funkcji pomocnika jest dostępny [tutaj w serwisie Github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
+* Poprzedni fragment kodu używa funkcji pomocnika `GetTokenCache` i `GetCreds_User_Popup`. Kod dla tych funkcji pomocnika jest dostępny [tutaj w serwisie GitHub](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
 * Aby ułatwić szybsze ukończenie tego samouczka, fragment kodu używa Identyfikatora klienta aplikacji natywnej, która jest domyślnie dostępny dla wszystkich subskrypcji platformy Azure. Dzięki temu można **użyć tego fragmentu w aplikacji w niezmienionej formie**.
 * Jeśli jednak chcesz użyć własnej domeny usługi Azure AD i własnego identyfikatora klienta aplikacji, musisz utworzyć natywną aplikację usługi Azure AD, a następnie użyć identyfikatora dzierżawy usługi Azure AD, identyfikatora klienta i identyfikatora URI przekierowania utworzonej aplikacji. Zobacz [tworzenie aplikacji usługi Active Directory uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md) instrukcje.
 

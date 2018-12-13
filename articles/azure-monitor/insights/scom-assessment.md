@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: ddf749dd033771ae9bad09f4548c277c279c2bb5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839369"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186127"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska za pomocą rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
@@ -99,7 +97,7 @@ Teraz, gdy konto Uruchom jako jest tworzone, musi na docelowych serwerach zarzą
 2. Na **dystrybucji** kliknij pozycję **Dodaj** dla **wybrane komputery** pole, a następnie dodać serwer zarządzania do konta w celu dystrybucji.  Kliknij przycisk **OK** dwa razy, aby zapisać zmiany.
 3. W obszarze **Konfiguracja Uruchom jako**, kliknij przycisk **profile**.
 4. Wyszukaj *profilu Ocena oprogramowania SCOM*.
-5. Powinna być nazwa profilu: *programu Microsoft System Center Advisor SCOM oceny profilu Uruchom jako*.
+5. Nazwa profilu, powinny być: *Ocena oprogramowania SCOM programu Microsoft System Center Advisor profil Uruchom jako*.
 6. Kliknij prawym przyciskiem myszy i zaktualizuj jego właściwości i dodać ostatnio utworzone konto Uruchom jako utworzone wcześniej.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skrypt SQL w celu przyznania szczegółowych uprawnień do konta Uruchom jako
@@ -161,8 +159,8 @@ Domyślnie program Microsoft System Center Advisor SCOM oceny Uruchom oceny regu
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Włącz regułę dla określonego serwera zarządzania
 
 1. W **tworzenie** obszar roboczy w konsoli operacje programu Operations Manager, wyszukaj regułę *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły* w **reguły** okienka.
-2. W wynikach wyszukiwania, wybierz jedną, która zawiera tekst *typu: serwer zarządzania*.
-3. Kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **zastępuje** > **dla konkretnego obiektu klasy: serwer zarządzania**.
+2. W wynikach wyszukiwania, wybierz jedną, która zawiera tekst *typu: Serwer zarządzania*.
+3. Kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **zastępuje** > **dla konkretnego obiektu klasy: Serwer zarządzania**.
 4.  Na liście serwerów dostępnych zarządzania wybierz serwer zarządzania, w którym reguła ma zostać uruchomiona.  Powinna to być ten sam serwer zarządzania, przypisując mu skonfigurowane wcześniej skojarzyć konto Uruchom jako z.
 5.  Upewnij się, że możesz zmienić wartość zastąpienia na **True** dla **włączone** wartość parametru.<br><br> ![Zastąp parametr](./media/scom-assessment/rule.png)
 
@@ -173,8 +171,8 @@ Domyślnie program Microsoft System Center Advisor SCOM oceny Uruchom oceny regu
 Ocena jest domyślnie skonfigurowana do uruchamiania co 10 080 minut (lub siedmiu dni). Możesz zastąpić wartość minimalna wartość 1440 minut (lub jeden dzień). Wartość reprezentuje przerwy minimalny czas między oceny kolejnych przebiegów. Aby zastąpić interwału, użyj kroków poniżej.
 
 1. W **tworzenie** obszar roboczy w konsoli programu Operations Manager, wyszukaj regułę *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły* w **reguły** sekcja.
-2. W wynikach wyszukiwania, wybierz jedną, która zawiera tekst *typu: serwer zarządzania*.
-3. Kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **Zastąp zasadę** > **dla wszystkich obiektów klasy: serwer zarządzania**.
+2. W wynikach wyszukiwania, wybierz jedną, która zawiera tekst *typu: Serwer zarządzania*.
+3. Kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **Zastąp zasadę** > **dla wszystkich obiektów klasy: Serwer zarządzania**.
 4. Zmiana **interwał** wartość parametru na wartość żądany przedział. W poniższym przykładzie wartość jest równa 1440 minut (jeden dzień).<br><br> ![Parametr interwału](./media/scom-assessment/interval.png)<br>  
 
     Jeśli wartość jest ustawiona na mniej niż 1440 minut, gdy zasada jest wykonywana w odstępach czasu w ciągu jednego dnia. W tym przykładzie reguła ignoruje wartość interwału i jest uruchamiany z częstotliwością jeden dzień.

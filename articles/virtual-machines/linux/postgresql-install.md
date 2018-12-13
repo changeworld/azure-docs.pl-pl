@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: zarhoads
-ms.openlocfilehash: dc7bb0eab9004b9c818a4a7cbbf6102f01b24f45
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e794c191737f14fb06351e345f70edb9f7cddb7c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465235"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322060"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalowanie i konfigurowanie rozwiązania PostgreSQL na platformie Azure
 PostgreSQL jest zaawansowane typu open-source bazy danych podobny do bazy danych Oracle i DB2. Obejmuje funkcje gotowa do użycia w przedsiębiorstwie, takie jak pełne ACID zgodność, niezawodne przetwarzanie transakcyjne i kontroli współbieżności wielu wersji. Obsługuje ona standardów, takich jak ANSI SQL i programu SQL/MED (w tym otoki obcego danych Oracle, MySQL, MongoDB i wielu innych). Jest wysoce rozszerzalny obsługę ponad 12 języków proceduralne, GIN i GiST indeksów, obsługę danych przestrzennych i wiele funkcji NoSQL dla formatu JSON czy aplikacji na podstawie wartości klucza.
@@ -76,7 +76,7 @@ W takim przypadku należy użyć portu 1999 jako PostgreSQL port.
 ## <a name="configure-postgresql"></a>Konfigurowanie rozwiązania PostgreSQL
 1. (Opcjonalnie) Utwórz link symboliczny skrócenie czasu odwołania PostgreSQL wykluczającą numer wersji:
    
-        # ln -s /opt/pgsql9.3.5 /opt/pgsql
+        # ln -s /opt/postgresql-9.3.5 /opt/pgsql
 2. Utwórz katalog dla bazy danych:
    
         # mkdir -p /opt/pgsql_data
@@ -119,6 +119,7 @@ W takim przypadku należy użyć portu 1999 jako PostgreSQL port.
 7. Możesz również sprawdzić wersja PostgreSQL:
    
         $ psql -V
+
 8. Inicjowanie bazy danych:
    
         $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W

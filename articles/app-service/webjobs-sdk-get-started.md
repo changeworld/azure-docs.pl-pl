@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do zestawu Azure WebJobs SDK
+title: Rozpoczynanie pracy z zestawem SDK usługi WebJobs - Azure
 description: Wprowadzenie do zestawu SDK zadań Webjob dla przetwarzania w tle oparte na zdarzeniach. Dowiedz się, jak uzyskać dostęp do danych w usługach platformy Azure i usługi innych firm.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 95fd44d5865eb804cb91d7adc2cc17bb5f957b5c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140353"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275214"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach
 
@@ -63,9 +63,9 @@ W tym artykule założono, masz [konta platformy Azure](https://azure.microsoft.
 
 1. W programie Visual Studio, wybierz **Plik > Nowy projekt**.
 
-1. Wybierz **Windows Classic Desktop > Aplikacja konsoli (.NET Framework)**.
+2. Wybierz **Windows Classic Desktop > Aplikacja konsoli (.NET Framework)**.
 
-1. Nadaj projektowi nazwę *WebJobsSDKSample*, a następnie wybierz pozycję **OK**.
+3. Nadaj projektowi nazwę *WebJobsSDKSample*, a następnie wybierz pozycję **OK**.
 
    ![Okno dialogowe Nowy projekt](./media/webjobs-sdk-get-started/new-project.png)
 

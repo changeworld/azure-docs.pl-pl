@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: d75df381f1afc17d291fe0a477078acb3435019c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 46b00e102cbf5e981ac7036de65232e869dc9651
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958138"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272708"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -33,14 +33,14 @@ Dziennik aktywności różni się od [dzienniki diagnostyczne](monitoring-overvi
 Możesz pobrać zdarzenia z dziennika aktywności przy użyciu witryny Azure portal, interfejsu wiersza polecenia, w przypadku poleceń cmdlet programu PowerShell i interfejsu API REST usługi Azure Monitor.
 
 > [!NOTE]
-> [Nowszych alertów](monitoring-overview-alerts.md) oferują udoskonalone środowisko tworzenia i zarządzania działaniami po zalogowaniu się reguły alertów.  [Dowiedz się więcej](alert-activity-log.md).
+> [Nowszych alertów](monitoring-overview-alerts.md) oferują udoskonalone środowisko tworzenia i zarządzania działaniami po zalogowaniu się reguły alertów.  [Dowiedz się więcej](../azure-monitor/platform/alerts-activity-log.md).
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie w dzienniku aktywności
 Dziennik aktywności zawiera kilka kategorii danych. Aby uzyskać szczegółowe informacje o wypełniana z tych kategorii [znajduje się w artykule](monitoring-activity-log-schema.md). Należą do nich:
 * **Administracyjne** — ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akcji operacje wykonywane przy użyciu usługi Resource Manager. Typy zdarzeń, które powinny zostać wyświetlone tej kategorii należą "Tworzenie maszyny wirtualnej" i "Usuń sieciową grupę zabezpieczeń" każdej akcji podjętej przez użytkownika lub aplikacji przy użyciu usługi Resource Manager ma formę operacji na określonego typu zasobu. W przypadku typu operacji zapisu, usuń lub akcję, rekordy początkowego i powodzenie lub niepowodzenie tej operacji są rejestrowane w kategorii administracyjnej. Kategoria administracyjna także wszelkie zmiany do kontroli dostępu opartej na rolach w ramach subskrypcji.
-* **Kondycja usługi** — ta kategoria zawiera rekord wszelkie zdarzenia kondycji usługi, które miały miejsce w systemie Azure. Jest przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii, "SQL Azure w regionie wschodnie stany USA występuje Przestój." Zdarzenia usługi Service health są dostępne w pięciu odmian: wymagana akcja, wspomagana odzyskiwania, zdarzenia, konserwacji, informacje lub zabezpieczeń i są wyświetlane tylko w przypadku zasobów w subskrypcji, która będzie mieć wpływ na zdarzenie.
-* **Usługa Resource Health** — ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, które wystąpiły z zasobami platformy Azure. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii jest "Zmieniono na niedostępny stan kondycji maszyny wirtualnej." Zdarzenia dotyczące kondycji zasobów może reprezentować jedną z czterech stanów kondycji: dostępna, jest niedostępny, obniżony i nieznany. Ponadto zdarzenia dotyczące kondycji zasobów można sklasyfikować jako są inicjowane platformy lub Zainicjowanie przez użytkownika.
+* **Kondycja usługi** — ta kategoria zawiera rekord wszelkie zdarzenia kondycji usługi, które miały miejsce w systemie Azure. Jest przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii, "SQL Azure w regionie wschodnie stany USA występuje Przestój." Zdarzenia usługi Service health są dostępne w pięciu odmian: Czynności, wspomagana odzyskiwania, zdarzenia, konserwacji, informacje lub zabezpieczeń i są wyświetlane tylko w przypadku zasobów w subskrypcji, która będzie mieć wpływ na zdarzenie.
+* **Usługa Resource Health** — ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, które wystąpiły z zasobami platformy Azure. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii jest "Zmieniono na niedostępny stan kondycji maszyny wirtualnej." Zdarzenia dotyczące kondycji zasobów może reprezentować jedną z czterech stanów kondycji: Dostępne, niedostępne, obniżonej wydajności i nieznany. Ponadto zdarzenia dotyczące kondycji zasobów można sklasyfikować jako są inicjowane platformy lub Zainicjowanie przez użytkownika.
 * **Alert** — ta kategoria zawiera rekord wszystkich aktywacje alertów platformy Azure. Jest przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii, "procent użycia procesora CPU na myVM została ponad 80 dla ostatnich 5 minut." Z różnych systemów Azure ma koncepcji alertów — możesz zdefiniować regułę jakieś i Otrzymuj powiadomienie, gdy warunki zgodne z tą regułą. Każdym obsługiwanym typem alertów platformy Azure "aktywuje," lub warunki są spełnione, aby wygenerować powiadomienie, rekord aktywacji są również wypychane do tej kategorii dziennika aktywności.
 * **Automatyczne skalowanie** — ta kategoria zawiera rekord wszystkie zdarzenia związane z działaniem aparat skalowania automatycznego na podstawie ustawień automatycznego skalowania, wszelkie zdefiniowane w ramach subskrypcji. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii jest "Skalowania automatycznego skalowania w górę akcja nie powiodła się". Przy użyciu skalowania automatycznego, możesz automatycznie skalować w poziomie lub skalowanie liczby wystąpień w obsługiwany typ zasobu na podstawie czasu dzień danych i/lub obciążenia (metryk) przy użyciu ustawienia automatycznego skalowania. Po spełnieniu warunków do skalowania w górę lub w dół, start i zakończyło się powodzeniem lub niepowodzeniem zdarzenia są rejestrowane w tej kategorii.
 * **Zalecenie** — ta kategoria zawiera zdarzenia zalecenia z usługi Azure Advisor.
@@ -57,7 +57,7 @@ Oto kilka rzeczy, które można zrobić z dziennika aktywności:
 
 
 * Zapytania i wyświetlić ją w **witryny Azure portal**.
-* [Tworzenie alertów dotyczących zdarzenia dziennika aktywności.](monitoring-activity-log-alerts.md)
+* [Tworzenie alertów dotyczących zdarzenia dziennika aktywności.](../azure-monitor/platform/activity-log-alerts.md)
 * [Stream jego **Centrum zdarzeń** ](monitoring-stream-activity-logs-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
 * Analizowanie ich w usłudze Power BI przy użyciu [ **pakietu zawartości usługi Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 * [Zapisać go w celu **konta magazynu** inspekcji archiwizacji lub ręcznie](monitoring-archive-activity-log.md). Można określić przy użyciu czasu (w dniach) przechowywania **profilu dziennika**.
@@ -142,7 +142,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | Właściwość | Wymagane | Opis |
 | --- | --- | --- |
-| Name (Nazwa) |Yes |Nazwa profilu dziennika. |
+| Nazwa |Yes |Nazwa profilu dziennika. |
 | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, w którym można zapisać w dzienniku aktywności. |
 | serviceBusRuleId |Nie |Identyfikator reguły usługi Service Bus dla przestrzeni nazw usługi Service Bus chcesz mieć centra zdarzeń utworzonych w. Jest to ciąg w formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Lokalizacja |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |

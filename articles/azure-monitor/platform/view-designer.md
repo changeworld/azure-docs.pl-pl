@@ -10,25 +10,23 @@ ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 2aa2f4e55d375f6ed7960af8bbe327d45b5ea025
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: ec56e21a989fb0e8db7b8bafb1357c6ed64eae75
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871765"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192264"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Log Analytics
 Przy użyciu projektanta widoku w [usługi Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
 
 Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
-* [Kafelek odwołanie](view-designer-tiles.md): Przewodnik odwołanie do ustawienia dla wszystkich dostępnych kafelków w widoki niestandardowe.
-* [Dokumentacja części wizualizacji](view-designer-parts.md): Przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
+* [Kafelek odwołanie](view-designer-tiles.md): Przewodnik po odwołanie do ustawienia dla wszystkich dostępnych kafelków w widoki niestandardowe.
+* [Dokumentacja części wizualizacji](view-designer-parts.md): Przewodnik po odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
 
 
 ## <a name="concepts"></a>Pojęcia
@@ -72,8 +70,8 @@ Można utworzyć nowy widok w Projektancie widoku, wybierając **Projektant wido
 Projektant widoków umożliwia tworzenie nowych widoków lub edytować istniejące. 
 
 Projektant widoków ma trzy okienka: 
-* **Projekt**: zawiera widok niestandardowy, który podczas tworzenia lub edycji. 
-* **Formanty**: zawiera Kafelki i części, które dodajesz do **projektowania** okienka. 
+* **Projekt**: Zawiera widok niestandardowy, który podczas tworzenia lub edycji. 
+* **Formanty**: Zawiera Kafelki i części, które dodajesz do **projektowania** okienka. 
 * **Właściwości**: Wyświetla właściwości kafelków lub zaznaczonych części.
 
 ![Projektant widoków](media/view-designer/view-designer-screenshot.png)

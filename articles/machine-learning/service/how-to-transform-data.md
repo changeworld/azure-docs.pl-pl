@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie i przygotowuj dane za pomocą zestawu SDK języka Python w środowisku przedprodukcyjnym danych
+title: 'Przekształcenia: przeznaczonego do przygotowania danych zestawu SDK języka Python'
 titleSuffix: Azure Machine Learning service
 description: Więcej informacji na temat przekształcania i czyszczenie danych przy użyciu zestawu SDK usługi Azure Machine Learning danych przedprodukcyjnym. Dodawanie kolumn odfiltrować zbędne wiersze lub kolumny i przypisują brakujące wartości, należy użyć metod transformacji.
 services: machine-learning
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c734605cd67fcd2490aef0ddc6732dad112424b7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d32244cd49ebd42192b2388215f79a64cacb3caa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101793"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186144"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
@@ -352,10 +352,10 @@ dataflow.head(5)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
-|1|2013-08-01-08:14:37|2013-08-01-09:09:06|Nie|1|0|0|0|0|1|.00|0|0|21,25|
-|2|2013-08-01-09:13:00|2013-08-01 11:38:00|Nie|1|0|0|0|0|2|.00|0|0|75|
-|3|2013-08-01-09:48:00|2013-08-01-09:49:00|Nie|5|0|0|0|0|1|.00|0|1|2.1|
-|4|2013-08-01-10:38:35|2013-08-01-10:38:51|Nie|1|0|0|0|0|1|.00|0|0|3.25|
+|1|2013-08-01-08:14:37|2013-08-01 09:09:06|Nie|1|0|0|0|0|1|.00|0|0|21,25|
+|2|2013-08-01 09:13:00|2013-08-01 11:38:00|Nie|1|0|0|0|0|2|.00|0|0|75|
+|3|2013-08-01-09:48:00|2013-08-01 09:49:00|Nie|5|0|0|0|0|1|.00|0|1|2.1|
+|4|2013-08-01-10:38:35|2013-08-01 10:38:51|Nie|1|0|0|0|0|1|.00|0|0|3.25|
 
 ### <a name="filtering-columns"></a>Filtrowanie kolumn
 
@@ -374,7 +374,7 @@ dataflow.head(5)
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
 |1|2013-08-01-08:14:37|2013-08-01-09:09:06|0|0|0|0|1|.00|0|0|21,25|
-|2|2013-08-01-09:13:00|2013-08-01 11:38:00|0|0|0|0|2|.00|0|0|75|
+|2|2013-08-01 09:13:00|2013-08-01 11:38:00|0|0|0|0|2|.00|0|0|75|
 |3|2013-08-01-09:48:00|2013-08-01-09:49:00|0|0|0|0|1|.00|0|1|2.1|
 |4|2013-08-01-10:38:35|2013-08-01-10:38:51|0|0|0|0|1|.00|0|0|3.25|
 
@@ -391,7 +391,7 @@ dataflow.head(5)
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
 |1|2013-08-01-08:14:37|2013-08-01-09:09:06|1|.00|0|0|21,25|
-|2|2013-08-01-09:13:00|2013-08-01 11:38:00|2|.00|0|0|75|
+|2|2013-08-01 09:13:00|2013-08-01 11:38:00|2|.00|0|0|75|
 |3|2013-08-01-09:48:00|2013-08-01-09:49:00|1|.00|0|1|2.1|
 |4|2013-08-01-10:38:35|2013-08-01-10:38:51|1|.00|0|0|3.25|
 

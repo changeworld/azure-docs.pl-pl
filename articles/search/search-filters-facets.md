@@ -1,6 +1,6 @@
 ---
-title: Aspekt filtrów w usłudze Azure Search | Dokumentacja firmy Microsoft
-description: Filtrowanie kryteria tożsamości zabezpieczeń użytkownika, języka, lokalizacji geograficznej lub wartości liczbowe, aby ograniczyć wyniki wyszukiwania na zapytania w usłudze Azure Search, Usługa wyszukiwania w chmurze hostowanej w systemie Microsoft Azure.
+title: Filtry aspektów nawigacji wyszukiwania w aplikacjach — usługa Azure Search
+description: Filtruj kryteria, według tożsamości zabezpieczeń użytkownika, lokalizacji geograficznej lub wartości liczbowych, aby ograniczyć wyniki wyszukiwania dla zapytań w usłudze Azure Search, Usługa wyszukiwania w hostowanej chmurze Microsoft Azure.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,54 +8,55 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 3f2cfea52d3c3f4bfc75364d0662a4218219152d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 94a0d3f19e595ac040d908ea47d6332ceae0943c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792413"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314809"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak utworzyć filtr aspektu w usłudze Azure Search 
+# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak utworzyć filtr zestawu reguł w usłudze Azure Search 
 
-Nawigacji aspektowej służy do samodzielnego filtrowania wyników kwerendy w aplikacji wyszukiwania, gdzie aplikacja udostępnia kontrolek interfejsu użytkownika dla zakresu wyszukiwania do grup dokumentów (na przykład, kategorii lub marek) i usługi Azure Search udostępnia struktury danych, aby utworzyć kopię środowisko. W tym artykule szybko przejrzeć podstawowe kroki tworzenia kopii środowiska wyszukiwania, które chcesz zapewnić strukturze nawigacji aspektowej. 
+Nawigacja aspektowa jest używany podczas samodzielnego filtrowania na wyniki zapytania w aplikacji wyszukiwania, gdzie aplikacja udostępnia kontrolki interfejsu użytkownika dla zakresu wyszukiwania do grup dokumentów (na przykład, kategorii lub marki) i usługi Azure Search udostępnia struktury danych, aby utworzyć kopię środowisko. W tym artykule szybko przejrzeć podstawowe kroki tworzenia struktury nawigacji aspektowej, tworzenie kopii środowiska wyszukiwania, które chcesz udostępnić. 
 
 > [!div class="checklist"]
-> * Wybierz pola do filtrowania i tworzenie aspektów
-> * Ustaw atrybuty w polu
+> * Wybierz pola do filtrowania i tworzenia kategorii wyszukanych informacji
+> * Ustaw atrybuty pola
 > * Tworzenie indeksu i ładowanie danych
-> * Dodaj filtry aspektu do zapytania
+> * Dodaj filtry aspektów do kwerendy
 > * Obsługa wyników
 
-Aspekty są dynamiczne i zwracane w zapytaniu. Wyszukiwanie Przełącz z nimi kategorie aspektów służące do nawigacji wyniki. Jeśli nie znasz z aspektami, poniższy przykład jest ilustrację strukturze nawigacji zestawu reguł.
+Zestawy reguł są dynamiczne i zwracane w zapytaniu. Odpowiedzi wyszukiwania w Przenieś im kategorie aspektów służące do nawigacji wyniki. Jeśli nie jesteś zaznajomiony z aspektami, poniższy przykład jest ilustrację aspektów struktury nawigacji.
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-Jesteś nowym użytkownikiem aspektowej nawigacji i chcesz bardziej szczegółowo? Zobacz [implementowania nawigacji aspektowej w usłudze Azure Search](search-faceted-navigation.md).
+Jesteś nowym użytkownikiem aspektowa nawigacji i chcesz więcej szczegółów? Zobacz [jak wdrożyć nawigację aspektową w usłudze Azure Search](search-faceted-navigation.md).
 
 ## <a name="choose-fields"></a>Wybierz pola
 
-Aspekty może być obliczany przez pojedynczą wartość pola, a także kolekcje. Pola, które najlepiej w nawigacji aspektowej ma Kardynalność niski: niewielką liczbę unikatowych wartości, które Powtórz w całym dokumentów w Boże Twojego wyszukiwania (na przykład lista kolorów, krajach lub firmowe). 
+Aspektami może zostać obliczona za pośrednictwem pojedynczej wartości pola, jak również kolekcje. Pola, które najlepiej działać w nawigacji aspektowej ma niski kardynalności: niewielkiej liczby różne wartości, które powtarzają się w całym dokumentów w głównej części usługi wyszukiwania (na przykład lista kolorów, krajów lub firmowe). 
 
-Tworzenie aspektów jest włączona na podstawie pola — podczas tworzenia indeksu, ustawiając następujące atrybuty true: `filterable`, `facetable`. Aspekty mogą być tworzone tylko na podstawie pól z możliwością filtrowania.
+Wielopoziomowe jest włączona na podstawie pól pola podczas tworzenia indeksu, ustawiając następujące atrybuty na wartość TRUE: `filterable`, `facetable`. Aspekty mogą być tworzone tylko na podstawie pól z możliwością filtrowania.
 
-Wszelkie [typ pola](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) które prawdopodobnie mogą być używane w nawigacji aspektowej jest oznaczony jako "aspektów":
+Wszelkie [typ pola](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , prawdopodobnie można używać w nawigacji aspektowej jest oznaczony jako "Tworzenie aspektów":
 
 + Edm.String
 + Edm.DateTimeOffset
 + Edm.Boolean
 + Edm.Collections
-+ Typy pól liczbowych: Edm.Double typem Edm.Int32, Edm.Int64,
++ Typy pól liczbowych: Typem Edm.Int32, Edm.Int64, Edm.Double
 
-Nie można użyć Edm.GeographyPoint w nawigacji aspektowej. Aspekty są tworzone na podstawie tekst czytelny dla człowieka lub liczby. Tak aspektów nie są obsługiwane dla współrzędnych geo. Będzie potrzebny miasta lub regionu pola do aspektu według lokalizacji.
+Nie można używać Edm.GeographyPoint nawigacji aspektowej. Zestawy reguł są konstruowane na podstawie ludzi można odczytać tekstu lub liczb. Jako takie aspekty, nie są obsługiwane dla współrzędnych geograficznych. Będziesz potrzebować miasta lub regionu pola do reguł według lokalizacji.
 
 ## <a name="set-attributes"></a>Ustaw atrybuty
 
-Atrybuty indeksu, które kontrolować sposób używania pola są dodawane do definicje poszczególnych pól w indeksie. W poniższym przykładzie pola z niskim Kardynalność, ułatwia tworzenie aspektów, składają się z: kategorii (hoteli, motel, hostel), infrastruktury i klasyfikacji. 
+Atrybuty indeksu, które kontrolować sposób używania pola zostaną dodane do definicji poszczególnych pól w indeksie. W poniższym przykładzie pola z niskim Kardynalność, przydatne w przypadku tworzenia kategorii wyszukanych informacji, składają się z: kategorii (hotelu, motel hostel), pozwalającego i oceny. 
 
-Interfejsu API programu .NET filtrowania atrybutów musi być ustawiony w sposób jawny. W interfejsie API REST tworzenie aspektów i filtrowania są domyślnie włączone, co oznacza, że należy jawnie ustawić atrybutów, aby je wyłączyć. Chociaż nie jest to technicznie wymagane, pierwsza zostanie przedstawiony w następującym przykładzie REST do celów instrukcji. 
+W interfejsie API .NET filtrowania atrybutów muszą być jawnie ustawione. W interfejsie API REST tworzenia kategorii wyszukanych informacji i filtrowania są domyślnie włączone, co oznacza, że musisz jawnie ustawić atrybuty, jeśli chcesz je wyłączyć. Chociaż nie jest wymagana z technicznego punktu widzenia, pokazujemy pierwsza w poniższym przykładzie REST do celów szkoleniowych. 
 
 > [!Tip]
-> Najlepszym rozwiązaniem dla pakietu performance and optymalizacji magazynowania wyłączyć tworzenie aspektów, dla pola, które nie mogą być używane jako zestaw reguł. W szczególności pól ciągów dla pojedynczych wartości, takich jak identyfikator lub nazwa produktu, należy wybrać opcję "Aspektów": wartość FAŁSZ, aby uniemożliwić ich przypadkowe (i nieskuteczne) używanych w nawigacji aspektowej.
+> Najlepszym rozwiązaniem jest wydajność i Optymalizacja magazynu tworzenia kategorii wyszukanych informacji wyłączymy funkcję dla pola, które nigdy nie powinny być używane jako zestaw reguł. W szczególności pól ciągów dla wartości pojedynczego wystąpienia, takich jak identyfikator lub nazwa produktu, powinna być równa "Tworzenie aspektów": wartość false, aby zapobiec ich przypadkowym (i nieskuteczne) używanych w nawigacji aspektowej.
 
 
 ```http
@@ -79,15 +80,15 @@ Interfejsu API programu .NET filtrowania atrybutów musi być ustawiony w sposó
 ```
 
 > [!Note]
-> Ta definicja indeksu jest kopiowana z [utworzyć indeks usługi Azure Search przy użyciu interfejsu API REST](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Jest on identyczny z wyjątkiem powierzchni różnice w definicji pola. Atrybuty można filtrować i tworzenia aspektów jawnie zostaną dodane do kategorii, tagi parkingIncluded, smokingAllowed i pól. W praktyce możesz uzyskać filtrowanie oraz o wolnym aspektów dla na typy pól typem Edm.String, typem Edm.Boolean i typem Edm.Int32. 
+> Ta definicja indeksu jest kopiowana z [Tworzenie indeksu usługi Azure Search przy użyciu interfejsu API REST](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Jest on identyczny, z wyjątkiem różnic będzie pozornie w definicjach pól. Możliwość filtrowania i tworzenia aspektów atrybuty są jawnie dodawane w kategorii, tagi, parkingIncluded, smokingAllowed i pól. W praktyce otrzymasz można filtrować i tworzenia aspektów, aby uzyskać bezpłatne na typy pól Edm.String, typem Edm.Boolean i typem Edm.Int32. 
 
-## <a name="build-and-load-an-index"></a>Tworzenie i załadować indeks
+## <a name="build-and-load-an-index"></a>Tworzenie i ładowanie indeksu
 
-Etap pośredni (i prawdopodobnie oczywiste) to, czy masz do [kompilacji i wypełnić indeks](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) przed formułowanie zapytania. Firma Microsoft wspomina ten krok tutaj aby informacje były kompletne. Jednym ze sposobów ustalenia, czy dostępne jest indeks jest sprawdzanie listy indeksów w [portal](https://portal.azure.com).
+Etap pośredni (i prawdopodobnie oczywisty) jest, że trzeba [kompilacji i wypełnić indeks](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) przed formułowanie zapytania. Firma Microsoft wspominać o tym kroku, w tym miejscu aby informacje były kompletne. Jednym ze sposobów, aby ustalić, czy indeks jest dostępna jest sprawdzanie listy indeksów w [portal](https://portal.azure.com).
 
-## <a name="add-facet-filters-to-a-query"></a>Dodaj filtry aspektu do zapytania
+## <a name="add-facet-filters-to-a-query"></a>Dodaj filtry aspektów do kwerendy
 
-W kodzie aplikacji należy utworzyć kwerendę, która określa wszystkie części prawidłowe zapytanie, takich jak wyrażenia wyszukiwania, aspekty, filtry oceniania profile — wszystko można sformułować żądanie. Poniższy przykład tworzy żądanie, które tworzy aspektu nawigacji na podstawie typu zakwaterowania, klasyfikacji i innych obiektów.
+W kodzie aplikacji należy utworzyć kwerendę, która określa wszystkie części prawidłowe zapytanie, w tym wyrażeniach wyszukiwania, aspektami, filtry i oceniania profile — wszystko umożliwia Sformułuj żądanie. Poniższy przykład tworzy żądanie, które powoduje nawigacji reguł na podstawie typu, zakwaterowanie, ocena i innych obiektów.
 
 ```csharp
 SearchParameters sp = new SearchParameters()
@@ -98,33 +99,33 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-### <a name="return-filtered-results-on-click-events"></a>Zwracany filtrowane wyniki na zdarzenia kliknięcia
+### <a name="return-filtered-results-on-click-events"></a>Zwracany wyfiltrowanych wyników na zdarzenia kliknięcia
 
-Wyrażenie filtru obsługuje zdarzenie click na wartość zestawu reguł. Biorąc pod uwagę aspektu kategorii, klikając pozycję kategorii "motel" jest implementowane za pośrednictwem `$filter` wyrażenie wybierające dostosowania danego typu. Gdy użytkownik kliknie "motele", aby wskazać, że mają być wyświetlane tylko motele, zapytanie dalej wysyła aplikacji obejmuje $filter = kategorii eq 'motele".
+Wyrażenie filtru obsługuje zdarzenie kliknięcia na wartość zestawu reguł. Biorąc pod uwagę zestaw reguł kategorii, klikając kategorii "motel" jest implementowane za pomocą `$filter` wyrażenia, który wybiera zakwaterowaniem tego typu. Gdy użytkownik kliknie "motele", aby wskazać, że mają być wyświetlane tylko motele, następne zapytanie, aplikacja wysyła obejmuje $filter = kategorii eq 'motele".
 
-Poniższy fragment kodu dodaje do filtr kategorii, jeśli użytkownik wybierze wartość z aspekt kategorii.
+Poniższy fragment kodu dodaje kategorię do filtru, jeśli użytkownik wybierze wartości z zestawu reguł kategorii.
 
 ```csharp
 if (categoryFacet != "")
   filter = "category eq '" + categoryFacet + "'";
 ```
-Przy użyciu interfejsu API REST, żądanie będzie przegubowe jako `$filter=category eq 'c1'`. Aby określić kategorię pola wielowartościowe, należy użyć następującej składni: `$filter=category/any(c: c eq 'c1')`
+Za pomocą interfejsu API REST, żądanie będzie przegubowe jako `$filter=category eq 'c1'`. Aby określić kategorię pól wielowartościowych, należy użyć następującej składni: `$filter=category/any(c: c eq 'c1')`
 
-## <a name="tips-and-workarounds"></a>Porady i rozwiązania
+## <a name="tips-and-workarounds"></a>Porady i obejścia
 
 ### <a name="initialize-a-page-with-facets-in-place"></a>Inicjowanie strony z aspektami w miejscu
 
-Jeśli chcesz zainicjować strony z aspektami w miejscu, można wysyłać zapytania jako część inicjowania strony do inicjatora strony o strukturze początkowego zestawu reguł.
+Jeśli chcesz zainicjować strony z aspektami w miejscu, możesz wysłać zapytanie jako część inicjowania strony w celu umieszczenia na stronie o strukturze początkowego zestawu reguł.
 
-### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Zachowaj aspektu struktury nawigacji asynchronicznie filtrowane wyniki
+### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Zachowaj aspektów struktury nawigacji asynchronicznie filtrowane wyniki
 
-Jest jednym z wyzwań związanych z nawigacją aspektu w usłudze Azure Search, czy aspekty istnieją dla bieżącego wyniki tylko. W praktyce jest często zachowania statyczny zestaw aspekty tak, aby użytkownik można przejść wstecz, odtworzyć kroki, aby eksplorować alternatywnej ścieżki wyszukiwania zawartości. 
+Jest jednym z wyzwań przy użyciu reguł nawigacji w usłudze Azure Search, że aspektami istnieje dla tylko aktualne wyniki. W praktyce jest często zachować statyczne zbiór zestawu reguł, dzięki czemu użytkownik może przejść w odwrotnej kolejności, odtwarzanie kroki, aby zapoznać się z alternatywnych ścieżek przy użyciu wyszukiwania zawartości. 
 
-Jest to typowe przypadek użycia, nie jest element strukturze nawigacji aspektu zawiera obecnie poza pole. Deweloperów, którzy mają zwykle statycznych aspekty obejść ograniczenie dotyczące wysyłając dwa zapytania filtrowane: jeden zakres na wynikach, innych pozwala utworzyć statyczną listę zestawów reguł do celów nawigacji.
+Chociaż jest to typowy przypadek użycia, nie jest coś, co aspektów struktury nawigacji udostępnia obecnie poza pole. Deweloperów, którzy chcą statyczne aspektami zazwyczaj obejść ograniczenie dotyczące przez wysłanie dwóch zapytań filtrowane: jeden zakres wyniki, inne użyte do utworzenia statyczną listę zestawów reguł na potrzeby nawigacji.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Filtry w usłudze Azure Search](search-filters.md)
-+ [Tworzenie indeksu interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [Tworzenie interfejsu API REST indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Wyszukiwanie w dokumentach interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

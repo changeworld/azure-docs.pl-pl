@@ -1,5 +1,5 @@
 ---
-title: Omówienie diagnostyki w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Omówienie diagnostyki — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak sposoby rozwiązywania problemów z aplikacją sieci web za pomocą diagnostyki usługi App Service.
 keywords: Usługa App service, usłudze azure app service, Diagnostyka, pomocy technicznej, aplikacji sieci web, rozwiązywania problemów, samodzielne uzyskiwanie pomocy
 services: app-service
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 7ad205c75a02b496abe2cb910c7eb459cdb16c97
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.custom: seodec18
+ms.openlocfilehash: a8b256f43d8e4103404ab4276431ceb06d9ed36a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969242"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255146"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Omówienie diagnostyki w usłudze Azure App Service 
 
@@ -66,5 +67,5 @@ Ponieważ wiele problemów z aplikacjami są powiązane z nim problemów w kodzi
 
 Zaznacz, aby wyświetlić wyjątków usługi Application Insights i zależności **niedziałającej aplikacji internetowej** lub **powolne aplikacji sieci Web** Kafelek skróty. 
 
-![Application Insights](./media/app-service-diagnostics/AppInsights6.png)
+![Usługa Application insights](./media/app-service-diagnostics/AppInsights6.png)
 

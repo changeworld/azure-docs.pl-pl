@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/6/2017
+ms.date: 12/06/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 84068376f35bc4df6672cffcc0ac3438b12edbb5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2d912f559af98045aaef8fe6fcaa1d83ab5f96bd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979679"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269366"
 ---
 # <a name="model-management-setup"></a>Model konfiguracji zarządzania
 
@@ -68,7 +68,7 @@ pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
 ```
 
 ### <a name="configuring-docker-on-linux"></a>Konfigurowanie platformy Docker w systemie Linux
-Aby skonfigurować platformy Docker w systemie Linux do użycia przez użytkowników innych niż root, postępuj zgodnie z instrukcjami w tym miejscu: [poinstalacyjne kroki dla systemu Linux](https://docs.docker.com/engine/installation/linux/linux-postinstall/)
+Aby skonfigurować platformy Docker w systemie Linux do użycia przez użytkowników innych niż root, postępuj zgodnie z instrukcjami w tym miejscu: [Kroki po instalacji dla systemu Linux](https://docs.docker.com/engine/installation/linux/linux-postinstall/)
 
 >[!NOTE]
 > W systemie Linux maszyny wirtualnej DSVM uruchomieniem poniższego skryptu, aby poprawnie skonfigurować platformy Docker. **Pamiętaj, aby wylogować się i zaloguj się ponownie po uruchomieniu skryptu.**

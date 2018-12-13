@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/4/2018
 ms.author: shtabriz
-ms.openlocfilehash: ac1b9dbbb5739dd015c0bda5f1ea82fe26bb0c70
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625950"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184104"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurowanie alertów dotyczących kondycji zasobów przy użyciu szablonów usługi Resource Manager
 
@@ -32,7 +32,7 @@ Usługa Azure Resource Health przechowuje, poinformowani o bieżące i historycz
 Postępuj zgodnie z instrukcjami na tej stronie, należy wcześniej skonfigurować kilka ustawień:
 
 1. Musisz zainstalować [modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`)
-2. Musisz [tworzenia lub ponownego użycia grupy akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) skonfigurowane powiadomienia użytkownika
+2. Musisz [tworzenia lub ponownego użycia grupy akcji](../azure-monitor/platform/action-groups.md) skonfigurowane powiadomienia użytkownika
 
 ## <a name="instructions"></a>Instrukcje
 1. Przy użyciu programu PowerShell, zaloguj się do platformy Azure przy użyciu swojego konta i wybierz subskrypcję, której ma nastąpić interakcja
@@ -233,7 +233,7 @@ Jeśli chcesz otrzymać powiadomienie o wszystkich czterech etapów zdarzenia do
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Dostosowywanie alertów dotyczących kondycji zasobów, aby uniknąć zdarzenia "Nieznany"
 
-Funkcja kondycji zasobów platformy Azure może raportować do możesz najnowsze kondycji zasobów, nieustannie monitorując je przy użyciu test Runner. Stany odpowiednie kondycji zgłaszane są: "Dostępne", "Niedostępne" i "Obniżony". Jednak w sytuacjach, w których moduł uruchamiający testy i zasobów platformy Azure, mają nie może komunikować się zgłaszane stan kondycji "Nieznany" dla zasobu, i która jest traktowana jako zdarzenie kondycji "Aktywny".
+Funkcja kondycji zasobów platformy Azure może raportować do możesz najnowsze kondycji zasobów, nieustannie monitorując je przy użyciu test Runner. Stany odpowiednie kondycji zgłaszane są: "Dostępne", "Niedostępne" i "Negatywny wpływ na dostępność". Jednak w sytuacjach, w których moduł uruchamiający testy i zasobów platformy Azure, mają nie może komunikować się zgłaszane stan kondycji "Nieznany" dla zasobu, i która jest traktowana jako zdarzenie kondycji "Aktywny".
 
 Jednak gdy zasób zgłosi "Nieznana", jest prawdopodobne, że jej stan kondycji nie zmienił się od ostatniego raportu dokładne. Jeśli chcesz wyeliminować alertów dotyczących zdarzeń "Nieznany", można określić tej logiki w szablonie:
 
@@ -435,4 +435,4 @@ Dowiedz się więcej na temat kondycji zasobu:
 -  [Typy zasobów i kontrole kondycji dostępne w usłudze Azure Resource Health](resource-health-checks-resource-types.md)
 
 Utwórz alerty dotyczące kondycji usługi:
--  [Konfigurowanie alertów w programie Service Health](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) 
+-  [Konfigurowanie alertów w programie Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 

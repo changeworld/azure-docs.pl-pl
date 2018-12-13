@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 61e1a02c3f1c194432750dce8ddf8162a981771d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 108b6cafa185788a66689a4d16bbfba7f30da6c3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002637"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271474"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -109,7 +108,7 @@ Zarządzanie rozwiązaniami w **rozwiązania** menu dla obszaru roboczego.
 W portalu pakietu OMS zainstalowaniu rozwiązania do zarządzania z galerii rozwiązań i usunąć je z **ustawienia**. W witrynie Azure portal [instalacji rozwiązania do zarządzania](../insights/solutions.md#install-a-management-solution) w portalu Azure Marketplace. [Usuwanie rozwiązania](../insights/solutions.md#remove-a-management-solution) na liście zainstalowane rozwiązania.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Jak tworzyć i zarządzać alertami
-Reguły alertów na podstawie zapytań usługi Log Analytics zarządza się teraz w [ujednolicone środowisko alertów](../../monitoring-and-diagnostics/alert-metric.md). Zobacz [sposób rozszerzyć alerty z usługą Log Analytics do usługi Azure Alerts](../../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) Aby uzyskać szczegółowe informacje dotyczące konfigurowania i używania alertów w witrynie Azure portal.
+Reguły alertów na podstawie zapytań usługi Log Analytics zarządza się teraz w [ujednolicone środowisko alertów](../../azure-monitor/platform/alerts-metric.md). Zobacz [sposób rozszerzyć alerty z usługą Log Analytics do usługi Azure Alerts](../../azure-monitor/platform/alerts-extend-tool.md) Aby uzyskać szczegółowe informacje dotyczące konfigurowania i używania alertów w witrynie Azure portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak uzyskać dostęp do moich pulpitów nawigacyjnych?
 [Mój pulpit nawigacyjny](dashboards.md) funkcji w usłudze Log Analytics jest przestarzała. Ta funkcja pozwala na zapewnienie prywatnej kolekcji części projektanta widoków i zostało zastąpione przez wbudowane funkcje pulpitu nawigacyjnego platformy Azure. Wizualizuj dane przy użyciu usługi Log Analytics można kontynuować [Projektant widoków](view-designer.md) udostępnionego widoków. Możesz również przypiąć wizualizacje z tych widoków lub [pojedynczych zapytań](../learn/tutorial-logs-dashboards.md) do pulpitów nawigacyjnych platformy Azure.

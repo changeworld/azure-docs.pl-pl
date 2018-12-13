@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: bc82f0b71c6963c4f5a356180a1eabbca1b166c4
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cf66a257ef176ab6f8d58ab558d2582a811609a4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156956"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166561"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi GitHub dla automatycznej aprowizacji użytkowników
 
@@ -36,7 +36,7 @@ Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące
 *   Konto użytkownika w usłudze GitHub z uprawnieniami administratora 
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API usługi GitHub Standard SCIM](https://developer.github.com/v3/scim/), co jest dostępne dla zespołów usługi Github w planie Business lub większą.
+> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API usługi GitHub Standard SCIM](https://developer.github.com/v3/scim/), co jest dostępne dla zespołów usługi GitHub w planie Business lub większą.
 
 ## <a name="assigning-users-to-github"></a>Przypisywanie użytkowników do usługi GitHub
 
@@ -80,7 +80,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
     ![Okno dialogowe autoryzacji](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. W witrynie Azure portal wprowadź **adres URL dzierżawy** i kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można do swojej aplikacji w usłudze GitHub. Jeśli połączenie nie powiedzie się, upewnij się, Twoje konto usługi GitHub ma uprawnienia administratora i **adres URl dzierżawy** jest wprowadzona poprawnie, a następnie spróbuj ponownie w kroku "Autoryzuj" (może stanowić **adres URL dzierżawy** przez regułę: `https://api.github.com/scim/v2/organizations/<Organization_name>` Możesz znaleźć swojej organizacji w ramach konta usługi GitHub: **ustawienia** > **organizacje**).
+7. W witrynie Azure portal wprowadź **adres URL dzierżawy** i kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można do swojej aplikacji w usłudze GitHub. Jeśli połączenie nie powiedzie się, upewnij się, Twoje konto usługi GitHub ma uprawnienia administratora i **adres URl dzierżawy** jest wprowadzona poprawnie, a następnie spróbuj ponownie w kroku "Autoryzuj" (może stanowić **adres URL dzierżawy** przez regułę: `https://api.github.com/scim/v2/organizations/<Organization_name>` , możesz znaleźć swojej organizacji w ramach konta usługi GitHub: **Ustawienia** > **organizacje**).
 
     ![Okno dialogowe autoryzacji](./media/github-provisioning-tutorial/GitHub3.png)
 

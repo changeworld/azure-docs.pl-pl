@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 3f3cdd2f-1816-487e-ab78-530e01e9788f
 ms.service: machine-learning
@@ -15,20 +14,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/1/2018
-ms.openlocfilehash: 1425cb0f0b327e0f39733b99a4c10c03a0ec3089
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 02/01/2018
+ms.openlocfilehash: ad7eae16c2933790aefba3cee1551be29ee457be
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092353"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276931"
 ---
-# <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>Korzystanie z usługi sieci Web Azure Machine Learning z poziomu programu Excel
+# <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Korzystanie z usługi sieci Web Azure Machine Learning Studio z poziomu programu Excel
+
  Usługa Azure Machine Learning Studio ułatwia wywołują usługi sieci web bezpośrednio z programu Excel, bez konieczności pisania kodu.
 
 Jeśli używasz programu Excel 2013 (lub nowszego) lub usłudze Excel Online, a następnie zaleca się, że używasz programu Excel [dodatek programu Excel](excel-add-in-for-web-services.md).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="steps"></a>Kroki
 Publikowanie usługi sieci web. [Ta strona](walkthrough-5-publish-web-service.md) wyjaśnia, jak to zrobić. Obecnie funkcja skoroszytu programu Excel jest obsługiwana tylko dla usług żądań/odpowiedzi, które mają jeden z (czyli pojedynczej oceniania etykiety). 

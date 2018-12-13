@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 393b90395698c18fdbd4fc8ba4d8bc79bd6287be
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 15a528bfdc1f23c932d1206dbca4b05af8bd58ba
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495179"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186705"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak uzyskać usługę Azure Multi-Factor Authentication
 
@@ -87,17 +87,17 @@ Korzystając z dostawcę usługi Azure Multi-Factor Authentication, istnieją dw
 
 1. **Za każdego włączonego użytkownika** — dla przedsiębiorstw, które chcesz włączyć weryfikację dwuetapową dla stałej liczby pracowników, którzy będą regularnie uwierzytelniania. Rozliczanie za użytkownika opiera się na liczbie użytkowników korzystających usługi MFA w dzierżawie usługi Azure AD i usługi Serwer Azure MFA. Jeśli użytkownicy są włączone dla usługi MFA w usługi Azure AD i serwer Azure MFA, domen, synchronizacja (Azure AD Connect) jest włączona, a następnie zliczamy większy zbiór użytkowników. Jeśli synchronizacja domeny nie jest włączona, a następnie zliczamy sumę wszystkich użytkowników włączone dla usługi MFA w usłudze Azure AD i serwer Azure MFA. Opłata jest naliczana proporcjonalnie do liczby i zgłoszone w systemie handlu codziennie.
 
-  > [!NOTE]
-  > Rozliczenia przykład 1: 5000 użytkowników włączone dla usługi MFA już dziś. MFA system dzieli tę liczbę przez 31 i raporty 161.29 użytkowników w danym dniu. Jutro włączysz 15 większej liczby użytkowników, dzięki czemu MFA system zgłasza 161.77 użytkowników w danym dniu. Do końca cyklu rozliczeniowego całkowita liczba użytkowników rozliczane przy użyciu subskrypcji platformy Azure do dodaje wokół 5000.
-  >
-  > Rozliczenia przykład 2: ma kombinację użytkowników z licencjami użytkowników nie pozwala uzyskać dostawcę usługi MFA Azure na użytkownika, aby stracone. Istnieją 4500 pakietu Enterprise Mobility + Security licencji w dzierżawie usługi, ale 5000 użytkowników włączone dla usługi MFA. Twoja subskrypcja platformy Azure jest opłata 500 użytkowników, proporcjonalnie do liczby i codziennie zgłaszane 16.13 użytkowników.
-  >
+   > [!NOTE]
+   > Przykład rozliczeń 1: Masz 5000 użytkowników usługi MFA już dziś. MFA system dzieli tę liczbę przez 31 i raporty 161.29 użytkowników w danym dniu. Jutro włączysz 15 większej liczby użytkowników, dzięki czemu MFA system zgłasza 161.77 użytkowników w danym dniu. Do końca cyklu rozliczeniowego całkowita liczba użytkowników rozliczane przy użyciu subskrypcji platformy Azure do dodaje wokół 5000.
+   >
+   > Rozliczenia przykład 2: Masz kombinację użytkowników z licencjami użytkowników nie pozwala uzyskać dostawcę usługi MFA Azure na użytkownika, aby stracone. Istnieją 4500 pakietu Enterprise Mobility + Security licencji w dzierżawie usługi, ale 5000 użytkowników włączone dla usługi MFA. Twoja subskrypcja platformy Azure jest opłata 500 użytkowników, proporcjonalnie do liczby i codziennie zgłaszane 16.13 użytkowników.
+   >
 
 1. **Na uwierzytelnienie** — dla przedsiębiorstw, które chcesz włączyć weryfikację dwuetapową dla dużej grupy użytkowników, którzy rzadko potrzebują uwierzytelniania. Rozliczenia opiera się na liczbie żądania weryfikacji dwuetapowej, niezależnie od tego, czy te weryfikacji powiedzie się lub odmówiono. Ten sposób rozliczania pojawia się na swoim wyciągu użycia platformy Azure w pakietach 10 uwierzytelnień i jest zgłaszana codziennie.
 
-  > [!NOTE]
-  > Przykład rozliczeń 3: dzisiaj usługi Azure MFA Odebrano 3,105 żądania weryfikacji dwuetapowej. Twoja subskrypcja platformy Azure jest naliczana za 310.5 pakiety uwierzytelniania.
-  >
+   > [!NOTE]
+   > Przykład rozliczeń 3: Obecnie usługa Azure MFA otrzymała 3,105 żądania weryfikacji dwuetapowej. Twoja subskrypcja platformy Azure jest naliczana za 310.5 pakiety uwierzytelniania.
+   >
 
 Należy pamiętać może mieć licencje, ale nadal jest naliczana na podstawie użycia konfiguracji. Po skonfigurowaniu dostawcy usługi MFA Azure na uwierzytelnienie są rozliczenie dla każdego żądania weryfikacji dwuetapowej, nawet te, które wykonywane przez użytkowników, którzy mają licencje. Konfigurowanie dostawcy usługi MFA Azure na użytkownika w domenie, która nie jest połączony z dzierżawą usługi Azure AD możesz są naliczane opłaty za włączonego użytkownika, nawet jeśli użytkownicy będą mieli licencje na usługę Azure AD.
 

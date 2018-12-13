@@ -1,6 +1,7 @@
 ---
-title: Zmień rozmiar i przycinać miniatury Bing — interfejs API wyszukiwania obrazów Bing
-description: Dowiedz się, jak zmienić rozmiar i przycinać miniaturach dołączany do odpowiedzi z interfejsu API wyszukiwania obrazów Bing.
+title: Zmienianie rozmiaru i przycinanie obrazów miniatur — interfejs API wyszukiwania obrazów Bing
+titleSuffix: Azure Cognitive Services
+description: Zmień rozmiar i przycinanie obrazów miniatur dołączony do odpowiedzi z interfejsu API wyszukiwania obrazów Bing.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: de82cc5554af91294dda3826dfb394cc94dbf3d0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 3bb360cd95dcbfb95464b2b259dcebfce7065256
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296231"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256394"
 ---
-# <a name="resizing-and-cropping-thumbnail-images"></a>Zmiana rozmiaru i przycinanie obrazów miniatur
+# <a name="resize-and-crop-thumbnail-images"></a>Zmienianie rozmiaru i przycinanie obrazów miniatur
 
 Podczas przetwarzania zapytania wyszukiwania Bing wygeneruje miniatury informacje o wszystkich obrazów w jego [odpowiedzi](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format). Te informacje mogą służyć do wyświetlania wszystkich lub być podzbiorem wartości zwracane miniatury. Jeśli wyświetlane są podzbiorem, podaj opcję, aby wyświetlić pozostałe obrazy.
 

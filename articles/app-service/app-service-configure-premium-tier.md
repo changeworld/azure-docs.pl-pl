@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie warstwy PremiumV2 dla usługi Azure App Service | Dokumentacja firmy Microsoft
+title: Konfigurowanie warstwy PremiumV2 — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak lepsza wydajność sieci web, mobilnych i aplikacji interfejsu API w usłudze Azure App Service dzięki skalowaniu do nowej warstwy cenowej PremiumV2.
 keywords: app service, azure app service, scale, scalable, app service plan, app service cost
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 59e5825554843ef7265cbccdd9a63db0426891fa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: ac0a3500956cc81e264c8743d44aa06f018b1a45
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226313"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258903"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurowanie warstwy PremiumV2 dla usługi Azure App Service
 

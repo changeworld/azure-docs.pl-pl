@@ -4,9 +4,8 @@ description: Opisy zestawów danych użytych w Przykładowe modele uwzględnione
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 57d9e1c7b501b67a441dc3490356261fa29ebb7d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2fde43417ffc907a93b4e568b90ebbda228c4cfe
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308838"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270488"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Korzystanie z przykładowych arkuszy danych w usłudze Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -34,7 +33,7 @@ Pozostała część tych przykładowych zestawów danych dostępnych w Twoim obs
 Można użyć dowolnego z tych zestawów danych w eksperymencie własnych, przeciągając go do Twojego obszaru roboczego eksperymentu.
 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <table>
 
@@ -48,9 +47,9 @@ Można użyć dowolnego z tych zestawów danych w eksperymencie własnych, przec
   <td>
 Podzbiór 1994 r. spisu bazy danych, przy użyciu pracy osoby dorosłe w wieku powyżej 16 z indeksem skorygowany dochodu > 100.
 <p></p>
-<b>Sposób użycia:</b> klasyfikowania osób używających dane demograficzne w celu przewidywania, czy osoba zarabiają ponad 50 K rok.
+<b>Sposób użycia:</b> Klasyfikowanie osób używających dane demograficzne w celu przewidywania, czy osoba zarabiają ponad 50K rok.
 <p></p>
-<b>Powiązane Research:</b> Kohavi, R., Becker B., (1996). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
+<b>Odpowiednie badania:</b> Kohavi, R., Becker, B., (1996). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
@@ -69,9 +68,9 @@ Informacji na temat samochodów, producent i model, w tym ceny, funkcje, takie j
 <p></p>
 Ocena ryzyka to początkowo skojarzone z ceną automatycznie. Następnie jest on uwzględniany rzeczywistego zagrożenia w procesie nazywanym do aktuariuszy jako symboling. Wartość + 3 wskazuje, że automatycznego jest ryzykowne i wartością -3 aby znajdował się prawdopodobnie można bezpiecznie.
 <p></p>
-<b>Sposób użycia:</b> prognozowania oceny ryzyka na podstawie funkcji, za pomocą regresji lub send_time klasyfikacji. 
+<b>Sposób użycia:</b> Przewidywanie ryzyka przy użyciu funkcji, za pomocą regresji lub wielu zmiennych klasyfikacji. 
 <p></p>
-<b>Powiązane Research:</b> Schlimmer, J.C. (1987). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
+<b>Odpowiednie badania:</b> Schlimmer, J.C. (1987). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
@@ -100,9 +99,9 @@ Podzbiór danych z bazy danych dawcy krwi transfuzji krwi Service Center Hsin Ch
 <p></p>
 Dane dawcy obejmują miesięcy od czasu ostatniego darowizn) i często i całkowita liczba pobrań, czas od ostatniego darowizn i ilości krwi wymagania.
 <p></p>
-<b>Sposób użycia:</b> celem jest przewidzieć przy użyciu klasyfikacji, czy dawcy wymagania krwi w 2007 marca, gdzie 1 oznacza dawcy podczas okresu docelowego i 0 nie dawcy. 
+<b>Sposób użycia:</b> Celem jest przewidzieć przy użyciu klasyfikacji, czy dawcy wymagania krwi w 2007 marca, gdzie 1 oznacza dawcy podczas okresu docelowego i 0 nie dawcy. 
 <p></p>
-<b>Powiązane Research:</b> Yeh, I.C., (2008). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
+<b>Odpowiednie badania:</b> Yeh, I.C., (2008). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
 <p></p>
 Yeh, -Cheng, Yang King Jang, a klasyfikacja, Ming tag, "Knowledge discovery w tryb RFM modelu przy użyciu sekwencji Bernoulli'ego,"systemy eksperta z aplikacjami, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -115,7 +114,7 @@ Jeden z trzech zestawów powiązanych raka danych, dostarczonych przez Instytut 
 <p></p>
 <b>Sposób użycia:</b> Sklasyfikuj typ raka, na podstawie 9 atrybutów, z których niektóre są liniowe, a niektóre są podzielone na kategorie. 
 <p></p>
-<b>Powiązane Research:</b> O.L. Wohlberg, W.H., ulicy, W.N. & Mangasarian, (1995). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
+<b>Odpowiednie badania:</b> O.L. Wohlberg, W.H., ulicy, W.N. & Mangasarian, (1995). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
@@ -166,9 +165,9 @@ Etykiety z zawodów KDD Cup 2009 klienta relacji prognozowania wyzwanie (<a href
   <td>
 Zbiór profilów symulowane energii, na podstawie 12 tworzenie różnych kształtów. Budynki są zróżnicowane według osiem funkcji. W tym szyby obszaru, szyby obszaru dystrybucji i orientacji.
 <p></p>
-<b>Sposób użycia:</b> umożliwia przewidzieć energię klasyfikacja na podstawie jako jedną z dwóch odpowiedzi rzeczywiste wartości klasyfikacji lub regresji. W przypadku klasyfikacji wieloklasowej jest round zmiennej odpowiedzi do najbliższej liczby całkowitej. 
+<b>Sposób użycia:</b> Przewidywanie ocenę wydajności energetycznej jako jedną z dwóch rzeczywiste cenionym odpowiedzi, należy użyć klasyfikacji lub regresji. W przypadku klasyfikacji wieloklasowej jest round zmiennej odpowiedzi do najbliższej liczby całkowitej. 
 <p></p>
-<b>Powiązane Research:</b> Xifara, A. & Tsanas, A. (2012). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
+<b>Odpowiednie badania:</b> Xifara, A. & Tsanas, A. (2012). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
@@ -181,7 +180,7 @@ Zestaw danych obejmuje okres kwietnia — październik 2013. Przed przekazaniem 
   <li>Zestaw danych zostały przefiltrowane na pokrycie tylko 70 najczęściej odwiedzane lotniskach w kontynentalnych Stanach Zjednoczonych</li>
   <li>Anulowano lotów zostały oznaczone jako opóźniony o ponad 15 minut.</li>
   <li>Kierunku lotów zostały odfiltrowane.</li>
-  <li>Wybrano następujące kolumny: rok, miesiąc, DayofMonth, DayOfWeek, operatora, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15 i anulowane</li>
+  <li>Wybrano następujące kolumny: Rok, miesiąc, DayofMonth, DayOfWeek, operatora, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay ArrDel15, zostało anulowane</li>
 </ul>
 </td>
 </tr>
@@ -191,9 +190,9 @@ Zestaw danych obejmuje okres kwietnia — październik 2013. Przed przekazaniem 
   <td>
 Rekordy przybyć lotu samolot i odejść na terenie Stanów Zjednoczonych z października 2011.
 <p></p>
-<b>Sposób użycia:</b> prognozowania opóźnień lotów. 
+<b>Sposób użycia:</b> Prognozowanie opóźnień lotów. 
 <p></p>
-<b>Powiązane Research:</b> z działu transportu USA <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
+<b>Odpowiednie badania:</b> Od działu transportu USA <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
   </td>
 </tr>
 
@@ -202,9 +201,9 @@ Rekordy przybyć lotu samolot i odejść na terenie Stanów Zjednoczonych z paź
   <td>
 Zawiera dane o pogodzie, takich jak indeksy temperatury i wilgotności i prędkość wiatru. Dane treningowe pochodzą z obszaru północno-wschodniej Portugalii, w połączeniu z rekordami pożarów lasów.
 <p></p>
-<b>Sposób użycia:</b> jest zadaniem trudne regresji, których celem jest przewidzieć obszaru nagrany pożarów lasów. 
+<b>Sposób użycia:</b> Jest zadaniem trudnym regresji, której celem jest przewidzieć obszaru nagrany pożarów lasów. 
 <p></p>
-<b>Powiązane Research:</b> Cortez, P. & Morais, A. (2008). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
+<b>Odpowiednie badania:</b> Cortez, P. & Morais, A. (2008). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
 <p></p>
 [Cortez i Morais, 2007] P. Cortez i A. Morais. Dane wyszukiwania podejście do przewidywania pożarów lasów przy użyciu Meteorological danych. W J. Neves, M. F. Santos i J. Machado Eds., nowe trendy w sztuczną inteligencję postępowania 13 2007 EPIA — portugalski konferencji na sztucznej inteligencji grudnia Guimarães, Portugalia, str. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Dostępne pod adresem: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
   </td>
@@ -231,9 +230,9 @@ Zestaw danych zawiera informacje na temat filmów, które zostały ocenione w tw
   <td>
 Być może jest znaną bazy danych ma zostać odnaleziona w literaturze rozpoznawania wzorca. Zestaw danych jest stosunkowo mały, zawierający 50 przykłady pomiarów płatka z trzech odmian iris.
 <p></p>
-<b>Sposób użycia:</b> prognozowania typu irysa z pomiarów.  
+<b>Sposób użycia:</b> Prognozowania typu irysa z pomiarów.  
 <p></p>
-<b>Powiązane Research:</b> Fishera, R.A. (1988). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
+<b>Odpowiednie badania:</b> Fishera, R.A. (1988). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
@@ -250,9 +249,9 @@ Ten zestaw danych jest nieco zmodyfikowaną wersję zestawu danych, dostarczone 
 <p></p>
 Zużycie paliwa dotyczące różnych samochodów w przebiegu w milach na galon wykazy danych. Zawiera także informacje, takie jak liczba cylindrów, aparat przemieszczenia, napędową, łączna waga oraz zwiększanie ich szybkości.
 <p></p>
-<b>Sposób użycia:</b> przewidywanie zużycia paliwa w oparciu o trzy wielowartościowych atrybutów dyskretnych i pięciu atrybutów ciągłych. 
+<b>Sposób użycia:</b> Przewidywanie zużycia paliwa w oparciu o trzy wielowartościowych atrybutów dyskretnych i pięciu atrybutów ciągłych. 
 <p></p>
-<b>Powiązane Research:</b> StatLib Carnegie Mellon University (1993). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
+<b>Odpowiednie badania:</b> StatLib, Carnegie Mellon University (1993). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
@@ -260,9 +259,9 @@ Zużycie paliwa dotyczące różnych samochodów w przebiegu w milach na galon w
   <td>
 Podzbiór danych pochodzących z National Institute of choroby i przewodu i chorób nerki bazy danych. Zestaw danych został przefiltrowany skoncentrować się na żeńskiego pacjentów dziedzictwa Rupia Pima. Dane obejmują danych medycznych, takich jak glukozy i poziomy inulinowego, a także lifestyle czynników.
 <p></p>
-<b>Sposób użycia:</b> przewidywania, czy temat ma choroby (Klasyfikacja binarna). 
+<b>Sposób użycia:</b> Przewidywania, czy temat ma choroby (Klasyfikacja binarna). 
 <p></p>
-<b>Powiązane Research:</b> Sigillito, V. (1990). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
+<b>Odpowiednie badania:</b> Sigillito-V. (1990). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
@@ -270,9 +269,9 @@ Podzbiór danych pochodzących z National Institute of choroby i przewodu i chor
   <td>
 Zestaw metadanych dotyczących klientów, w tym dane demograficzne i preferencje klientów.
 <p></p>
-<b>Sposób użycia:</b> używają tego zestawu danych, w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
+<b>Sposób użycia:</b> Użyj tego zestawu danych w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
 <p></p>
-<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki.
+<b>Odpowiednie badania:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski School informacji i informatyki.
   </td>
 </tr>
 
@@ -281,9 +280,9 @@ Zestaw metadanych dotyczących klientów, w tym dane demograficzne i preferencje
   <td>
 Zestaw metadanych o restauracjach i ich funkcje, takie jak typ żywności, filozofów stylu i lokalizacji.
 <p></p>
-<b>Sposób użycia:</b> używają tego zestawu danych, w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
+<b>Sposób użycia:</b> Użyj tego zestawu danych w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
 <p></p>
-<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki.
+<b>Odpowiednie badania:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski School informacji i informatyki.
   </td>
 </tr>
 
@@ -292,9 +291,9 @@ Zestaw metadanych o restauracjach i ich funkcje, takie jak typ żywności, filoz
   <td>
 Zawiera klasyfikacji podanej przez użytkowników do restauracji w skali od 0 do 2.
 <p></p>
-<b>Sposób użycia:</b> używają tego zestawu danych, w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
+<b>Sposób użycia:</b> Użyj tego zestawu danych w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
 <p></p>
-<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki.
+<b>Odpowiednie badania:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski School informacji i informatyki.
   </td>
 </tr>
 
@@ -303,11 +302,11 @@ Zawiera klasyfikacji podanej przez użytkowników do restauracji w skali od 0 do
   <td>
 Ten zestaw danych zawiera szereg rekordy z stali annealing wersji próbnych. Zawiera fizyczne atrybuty (szerokość, grubość, typu (cewka, Arkusz itp.) powstałe stali typów.
 <p></p>
-<b>Sposób użycia:</b> dwa atrybuty klasy liczbowych; twardości ani siły przewidzieć. Może również analizować korelacji między atrybutami.
+<b>Sposób użycia:</b> Przewidywanie dowolne dwa atrybuty klasy liczbowych; twardości lub sile. Może również analizować korelacji między atrybutami.
 <p></p>
 Stali standardowy zestaw, postępuj zgodnie z definicją SAE i innych organizacji. Szukasz konkretnego "klasy" (zmienna klasy) i aby zrozumieć wartości wymagane. 
 <p></p>
-<b>Powiązane Research:</b> szterling, D. & Buntine, W. (NA). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
+<b>Odpowiednie badania:</b> Szterling, D. & Buntine, W. (NA). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
 <p></p>
 Gatunki stali przydatny przewodnik można znaleźć tutaj: <a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -322,13 +321,13 @@ Celem symulacji było, aby poprawić dokładność teleskopy gamma Cherenkov atm
 <p></p>
 Dane zostały wstępnie przetworzony do utworzenia klastra wydłużonym z długiego osi jest zorientowany center aparatu. Cechy tego wielokropka (często nazywane parametrami Hillas) znajdują się wśród parametrów obrazu, które mogą służyć do dyskryminacji.
 <p></p>
-<b>Sposób użycia:</b> przewidywania, czy obraz przyjęcie reprezentuje hałas w tle lub sygnału.
+<b>Sposób użycia:</b> Przewidywania, czy obraz przyjęcie reprezentuje hałas w tle lub sygnału.
 <p></p>
-<b>Uwagi:</b> dokładność klasyfikacji prostego nie jest zrozumiały dla tych danych, ponieważ klasyfikacji zdarzeń tła, sygnał jest niższa niż klasyfikowania zdarzenie sygnału jako tło. Porównanie różnych klasyfikatorów wykres ROC powinno być używane. Prawdopodobieństwo akceptowania zdarzenia tła sygnału musi być jeden z progów: 0,01, 0,02, 0,05, 0,1 lub 0,2.
+<b>Uwagi:</b> Dokładność klasyfikacji prostego nie jest zrozumiały dla tych danych od klasyfikacji zdarzeń tła, sygnał jest niższa niż klasyfikowania zdarzenie sygnału jako tło. Porównanie różnych klasyfikatorów wykres ROC powinno być używane. Prawdopodobieństwo, że akceptowania zdarzenia tła sygnału musi być jeden z progów: 0,01, 0,02, 0,05, 0,1 lub 0,2.
 <p></p>
 Należy również zauważyć, że liczba zdarzeń tła (h, hadronic prysznicem) jest niedoceniane. W pomiarów rzeczywistego klasy h lub szumu reprezentuje większość zdarzeń. 
 <p></p>
-<b>Powiązane Research:</b> Bock, R.K. (1995). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji </td>
+<b>Odpowiednie badania:</b> Bock, R.K. (1995). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski-o informacje o szkole </td>
 </tr>
 
 <tr>
@@ -341,7 +340,7 @@ Dane o pogodzie obejmuje uwagi z stacje pogody port lotniczy, obejmujące okres 
   <li>Identyfikatory pogodowa byli zamapowani na lotnisku odpowiednich identyfikatorów</li>
   <li>Pogoda stacji nie jest skojarzona z 70 lotniskach najczęściej odwiedzane zostały odfiltrowane.</li>
   <li>Kolumna dat podzielono na osobne kolumny, rok, miesiąc i dzień</li>
-  <li>Wybrano następujące kolumny: AirportID, rok, miesiąc, dzień, godzina, strefa czasowa, SkyCondition, widoczność, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius i RelativeHumidity, Prędkość wiatru WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, są parametry RecordType, HourlyPrecip, wysokościomierza</li>
+  <li>Wybrano następujące kolumny: AirportID, roku, miesiąca, dnia, godziny, strefa czasowa, SkyCondition, widoczność, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, prędkość wiatru, WindDirection, ValueForWindCharacter StationPressure, PressureTendency, PressureChange, SeaLevelPressure, są parametry RecordType, HourlyPrecip, wysokościomierza</li>
 </ul>
   </td>
 </tr>

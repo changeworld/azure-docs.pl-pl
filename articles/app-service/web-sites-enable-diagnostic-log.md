@@ -1,5 +1,5 @@
 ---
-title: Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
+title: Włączanie rejestrowania diagnostycznego dla aplikacji sieci web — usłudze Azure App Service
 description: Dowiedz się, jak włączyć rejestrowanie diagnostyczne i dodać Instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez system Azure.
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 90f82dcdf60a3a7182f77b3fe028366e079bc2ec
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636972"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273803"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -63,6 +64,11 @@ Po włączeniu **programu application diagnostics**, możesz również wybrać *
 
 Aby uzyskać **rejestrowanie aplikacji**, można włączyć opcję systemu pliku tymczasowego na potrzeby debugowania. Ta opcja powoduje wyłączenie automatycznie w ciągu 12 godzin. Można również włączyć opcję magazynu obiektów blob umożliwia wybór kontenera obiektów blob, będą zapisywane dzienniki.
 
+> [!NOTE]
+> Obecnie tylko Dzienniki aplikacji .NET można zapisać w magazynie obiektów blob. Java, PHP, Node.js, Python, dzienniki aplikacji mogą być przechowywane tylko w systemie plików (bez modyfikacji kodu do zapisywania dzienników magazynu zewnętrznego).
+>
+>
+
 Aby uzyskać **rejestrowanie serwera sieci Web**, możesz wybrać **magazynu** lub **system plików**. Wybieranie **magazynu** służy do wybierania konta magazynu i kontener obiektów blob, które dzienniki są zapisywane. 
 
 Jeśli dzienniki są przechowywane w systemie plików, pliki mogą być dostęp do FTP, lub pobrane jako archiwum Zip przy użyciu wiersza polecenia platformy Azure.
@@ -85,7 +91,7 @@ Gdy zarówno w lokalizacji magazynu zapewnia te same informacje podstawowe dla z
 > Informacje przechowywane w **magazynu obiektów blob** może zostać oceniony jedynie przy użyciu klienta usługi storage lub aplikacji, która bezpośrednio może współpracować z tych systemów magazynowania. Na przykład programu Visual Studio 2013 zawiera Eksploratora magazynu, który może służyć do eksplorowania usługi blob storage i HDInsight dostęp do danych przechowywanych w magazynie obiektów blob. Możesz również zapisywać dane aplikacji, która uzyskuje dostęp do usługi Azure Storage przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/downloads/).
 >
 
-## <a name="download"></a> Porady: pobieranie dzienników
+## <a name="download"></a> Jak: Dzienniki pobierania
 Informacje diagnostyczne są przechowywane w systemie plików aplikacji sieci web są dostępne bezpośrednio za pomocą protokołu FTP. Można go również pobrać jako archiwum Zip, przy użyciu wiersza polecenia platformy Azure.
 
 Struktury katalogów, które dzienniki są przechowywane w jest następująca:
@@ -114,7 +120,7 @@ To polecenie zapisuje w dziennikach aplikacji sieci web o nazwie "webappname" w 
 >
 >
 
-## <a name="how-to-view-logs-in-application-insights"></a>Porady: wyświetlanie dzienników w usłudze Application Insights
+## <a name="how-to-view-logs-in-application-insights"></a>Instrukcje: Wyświetlanie dzienników w usłudze Application Insights
 Visual Studio Application Insights udostępnia narzędzia, filtrowanie i przeszukiwanie dzienników oraz korelacji dzienniki z żądaniami oraz innymi zdarzeniami.
 
 1. Dodaj zestaw Application Insights SDK do projektu w programie Visual Studio.
@@ -126,7 +132,7 @@ Visual Studio Application Insights udostępnia narzędzia, filtrowanie i przeszu
 
 [Więcej informacji na temat wydajności śledzenia za pomocą usługi Application Insights](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="streamlogs"></a> Porady: Stream dzienników
+## <a name="streamlogs"></a> Jak: Strumieniowe przesyłanie dzienników
 Podczas tworzenia aplikacji, jest często warto wyświetlać informacje rejestrowania w czasie niemal rzeczywistym. Informacje o rejestrowaniu można przesyłać strumieniowo do środowiska deweloperskiego przy użyciu wiersza polecenia platformy Azure.
 
 > [!NOTE]
@@ -157,7 +163,7 @@ Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— śc
 >
 >
 
-## <a name="understandlogs"></a> Porady: zrozumienie dzienniki diagnostyczne
+## <a name="understandlogs"></a> Jak: Zrozumienie dzienniki diagnostyczne
 ### <a name="application-diagnostics-logs"></a>Dzienniki diagnostyki aplikacji
 Usługa Application diagnostics przechowuje informacje w określonym formacie dla aplikacji .NET, w zależności od tego, czy są przechowywane dzienniki do pliku systemu lub blob storage. 
 

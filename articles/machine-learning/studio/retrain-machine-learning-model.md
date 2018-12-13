@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 57e3a444c9de951fdd974d98679908eb5a744ad1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 614a342dd28b711e3030c19f347fa432e3994a86
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099821"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257594"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Ponowne szkolenie modelu usługi Azure Machine Learning Studio
 W ramach procesu operacjonalizacji modeli uczenia maszynowego w usłudze Azure Machine Learning model jest uczony i zapisany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne. 
@@ -43,7 +42,7 @@ W tych scenariuszach programowego interfejsu API zapewnia wygodny sposób lub ko
 > 
 
 ## <a name="end-to-end-workflow"></a>Kompletny przepływ pracy
-Proces obejmuje następujące składniki: eksperymentu szkolenia i eksperyment predykcyjny publikowane jako usługi sieci Web. Aby włączyć ponownym szkoleniem trenowanego modelu, eksperymentu szkolenia muszą być publikowane jako usługi sieci Web z danymi wyjściowymi uczonego modelu. Dzięki temu dostęp do interfejsu API do modelu do ponownego trenowania. 
+Proces obejmuje następujące składniki: Opublikowane eksperymentu szkolenia i eksperyment predykcyjny jako usługę sieci Web. Aby włączyć ponownym szkoleniem trenowanego modelu, eksperymentu szkolenia muszą być publikowane jako usługi sieci Web z danymi wyjściowymi uczonego modelu. Dzięki temu dostęp do interfejsu API do modelu do ponownego trenowania. 
 
 Poniższe kroki dotyczą zarówno nowe oraz klasyczne usługi sieci Web:
 

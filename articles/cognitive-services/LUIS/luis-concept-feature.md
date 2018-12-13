@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 57ad7d680d83e13d9aff1d55a52ab982c585df76
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080201"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271389"
 ---
-# <a name="phrase-list-features-in-luis"></a>Wyrażenie funkcji listy usługi LUIS
+# <a name="phrase-list-features-in-your-luis-app"></a>Wyrażenie funkcji listy aplikacją usługi LUIS
 
 W usłudze machine learning *funkcji* wyróżniający cechy lub atrybutu danych, która przestrzega systemu. 
 
@@ -32,9 +32,17 @@ Lista fraz dodaje do słownictwa używanego w domenie aplikacji jako drugi sygna
 ## <a name="how-to-use-phrase-lists"></a>Jak używać listy fraz
 W aplikacji zasobów ludzkich [podmiotu prostego samouczka](luis-quickstart-primary-and-secondary-data.md), ta aplikacja używa **zadania** frazy listę typów zadań, takich jak programista, roofer i Sekretarz. Jeśli etykieta jedną z następujących wartości jako jednostki przedstawiono maszyny usługi LUIS jest uczy się rozpoznawać, pozostałe. 
 
-Lista wyrażenie może być zamienne lub -wymienne. *Wymienne* lista frazy to wartości, które są synonimy, i *-wymienne* lista frazy jest przeznaczona dla wartości, które nie są synonimy, ale nadal potrzebujesz dodatkowych sygnału w aplikacji. 
+Lista wyrażenie może być zamienne lub -wymienne. *Wymienne* lista frazy to wartości, które są synonimy, i *-wymienne* frazy listy ma służyć jako lista słownictwa określonych aplikacji. Proporcjonalna do rozwoju środowiska listy fraz słownictwa aplikacji może się okazać, niektóre terminy ma wiele form (synonimy). Podziel te, na inną listę frazę, która jest wymienne. 
+
+|Typ listy|Przeznaczenie|
+|--|--|
+|Wymienne|Synonimy lub słowa, po zmianie na innym słowie na liście, mają tego samego intencji i działania funkcji wydobywania podmiotów.|
+|-Wymienne|Słownictwa aplikacji specyficzne dla aplikacji, więcej, niż zazwyczaj innych wyrazów, w tym języku.|
+
+Wyrażenie zawiera nie tylko pomoc dotycząca wykrywania jednostki, ale również intencji klasyfikacji w przypadku, gdy nie są wymienne sens takich jak dodawanie poza słownictwa wyrazy, które nie są znane w języku angielskim.
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
+
 ## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Wyrażenie zawiera pomoc zidentyfikować proste jednostki wymienne
 Wymienne frazy listy są dobrym sposobem dostrajaniu aplikacją usługi LUIS. Jeśli aplikacja ma problemy z wypowiedzi na intencje prawidłowe przewidywanie lub rozpoznawania jednostek, zastanów się, czy wypowiedzi zawierać słów nietypowe lub słowa, które mogą być niejednoznaczne w znaczenie. Te wyrazy są dobrymi kandydatami do uwzględnienia na liście frazę.
 
@@ -44,7 +52,7 @@ Lista frazy jest instrukcję do usługi LUIS, aby wykonać dopasowywanie strict 
 Dodawanie listy fraz jest zamiast dodawać więcej wypowiedzi przykład do intencji. 
 
 ## <a name="an-interchangeable-phrase-list"></a>Lista wymienne fraz
-Użyj listy wymienne frazy, tworząc listę słów lub fazy, klasę lub grupę. Przykład znajduje się lista miesięcy, takich jak "Stycznia", "Czerwiec", "Marca"; lub nazwy, takie jak "John", "Jan", "Piotr".  Te listy są wymienne, w tym wypowiedź będzie oznaczone przy użyciu tego samego przeznaczenie lub jednostki jeśli były używane różne wyraz na liście frazę. Na przykład jeśli "Pokaż kalendarz styczeń" ma taką samą intencji "Pokaż kalendarz lutego", a następnie wyrazy, które powinny być na liście wymienne. 
+Użyj listy fraz wymienne, gdy tworzy listę słów lub fazy, klasę lub grupę. Przykład znajduje się lista miesięcy, takich jak "Stycznia", "Czerwiec", "Marca"; lub nazwy, takie jak "John", "Jan", "Piotr".  Te listy są wymienne, w tym wypowiedź będzie oznaczone przy użyciu tego samego przeznaczenie lub jednostki jeśli były używane różne wyraz na liście frazę. Na przykład jeśli "Pokaż kalendarz styczeń" ma taką samą intencji "Pokaż kalendarz lutego", a następnie wyrazy, które powinny być na liście wymienne. 
 
 ## <a name="a-non-interchangeable-phrase-list"></a>Lista frazy-wymienne
 Użyj listy-wymienne frazy-równoznaczny słów i fraz, które mogą być grupowane w domenie. 

@@ -1,10 +1,9 @@
 ---
-title: Wdrażanie usługi sieci Web do wielu regionów — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+title: Wdrażanie usługi sieci web Studio do wielu regionów — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Kroki umożliwiające wdrożenie (kopiowanie) nową usługę sieci Web do innych regionów. Łatwe wdrażanie usługi sieci web do wielu regionów, bez konieczności używania wielu subskrypcje i obszary robocze.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-manager: hjerez
 editor: cgronlun
 ms.assetid: 36c60411-f2db-4ee2-9b66-b1f1d77a8f44
 ms.service: machine-learning
@@ -16,15 +15,16 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.custom: seodec18
 ms.author: amlstudiodocs
-ms.openlocfilehash: 21c930a4e9c28f3d3f612a89ce88accd2de2925e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 742f462ebc3bd191a045be2a0213b1d8bc52adc5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092948"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252681"
 ---
-# <a name="azure-machine-learning-studio-deploy-a-web-service-to-multiple-regions"></a>Usługa Azure Machine Learning Studio: Wdrażanie usługi sieci web do wielu regionów
-W nowych usługach sieci Web Azure umożliwiają łatwe wdrażanie usługi sieci web do wielu regionów, bez konieczności używania wielu subskrypcje i obszary robocze. 
+# <a name="deploy-an-azure-machine-learning-studio-web-service-to-multiple-regions"></a>Wdrażanie usługi sieci web Azure Machine Learning Studio w wielu regionach
+
+W nowych usługach sieci Web Azure umożliwiają łatwe wdrażanie usługi sieci web Azure Machine Learning Studio do wielu regionów, bez konieczności używania wielu subskrypcje i obszary robocze. 
 
 Cennik jest w związku z tym należy zdefiniować planu rozliczeniowego dla każdego regionu, w której zostanie wdrożona usługa sieci web od regionu.
 

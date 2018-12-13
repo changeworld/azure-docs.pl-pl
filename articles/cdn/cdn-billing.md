@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
-ms.openlocfilehash: 0bb52943eac3e35b5012e3f54bfb841cf491ed18
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091815"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309287"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Omówienie rozliczania za usługę Azure CDN
 
@@ -40,7 +40,7 @@ Region płatności jest obszar geograficzny używany do określenia, w jakiej st
 
 Aby uzyskać informacji na temat regionów punkt o obecności (POP), zobacz [lokalizacje POP usługi Azure CDN według regionu](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Na przykład punkt obecności znajdujący się w Meksyku znajduje się w regionie Ameryki Północnej i w związku z tym znajduje się w strefie 1. 
 
-Aby uzyskać informacje o cenach usługi Azure CDN, zobacz [cennik usługi Content Delivery Network](https://azure.microsoft.com/is-is/pricing/details/cdn/).
+Aby uzyskać informacje o cenach usługi Azure CDN, zobacz [cennik usługi Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
 
 ## <a name="how-are-delivery-charges-calculated-by-region"></a>Jak są obliczane opłaty dostarczania według regionu?
 Region płatności wysokiej dostępności treści Azure opiera się na lokalizację na serwerze źródłowym, dostarczanie zawartości do użytkownika końcowego. Miejsce docelowe (fizyczną lokalizację) klienta nie jest uważany za region płatności.
@@ -55,19 +55,19 @@ Za pomocą usługi Azure CDN wiąże się też niektóre opłaty za użycie usł
 
 Jeśli używasz usługi Azure Blob storage jako punkt początkowy dla zawartości, również naliczone następujące opłaty za magazyn do wypełnienia pamięci podręcznej:
 
-- Rzeczywiste GB używane: rzeczywisty magazyn obiektów źródłowych.
+- Używane rzeczywiste GB: Rzeczywisty magazyn obiektów źródłowych.
 
-- Transfery w GB: ilość danych przesyłanych do wypełnienia podręcznych sieci CDN.
+- Transfery w GB: Ilość danych przesyłanych do wypełnienia podręcznych sieci CDN.
 
-- Transakcje: zgodnie z potrzebami w celu wypełnienia pamięci podręcznej.
+- Transakcje: Zgodnie z potrzebami, aby zapełnić pamięć podręczną.
 
 Aby uzyskać więcej informacji o rozliczeniach usługi Azure Storage, zobacz [opis rozliczeń platformy Azure Storage — przepustowość, transakcje i pojemność](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
 Jeśli używasz *świadczenia usług hostowanych*, zostaną naliczone opłaty w następujący sposób:
 
-- Godziny obliczeniowe platformy Azure: wystąpień obliczeniowych, które działają jako punkt początkowy.
+- Godziny obliczeniowe platformy Azure: Wystąpienia obliczeniowe, które działają jako punkt początkowy.
 
-- Transfer obliczeniowych platformy Azure: transfer danych z wystąpieniami obliczeniowymi w celu wypełnienia pamięci podręcznej usługi Azure CDN.
+- Transfer obliczeniowych platformy Azure: Przesyła dane z wystąpieniami obliczeniowymi w celu wypełnienia pamięci podręcznej usługi Azure CDN.
 
 Jeśli Twój klient używa żądania zakresu bajtów (niezależnie od źródła usługi), obowiązują następujące zastrzeżenia:
 
@@ -78,11 +78,11 @@ Jeśli Twój klient używa żądania zakresu bajtów (niezależnie od źródła 
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Jak dużo działań transferu występuje do obsługi pamięci podręcznej?
 Każdorazowo POP sieci CDN konieczne wypełnienie pamięci podręcznej, kieruje żądanie do początkowego obiektu pamięci podręcznej. W rezultacie pochodzenia wiąże się z płatnych transakcji na każdym Chybienie pamięci podręcznej. Liczba chybień pamięci podręcznej zależy od kilku czynników:
 
-- Jak podlega buforowaniu, zawartość jest: Jeśli zawartość ma wysoki czas wygaśnięcia (time-to-live) / wygaśnięcia wartości i jest często używane, więc pozostaje on popularne w pamięci podręcznej, a następnie większość obciążenia jest obsługiwane przez usługę CDN. Typowe dobre Współczynnik trafień pamięci podręcznej jest dobrze, ponad 90%, co oznacza, że mniej niż 10% żądań klientów musi powrócić do źródła, albo Chybienie pamięci podręcznej lub w obiekcie odświeżania.
+- Podlega buforowaniu, jak jest zawartość: Jeśli zawartość ma wysoki czas wygaśnięcia (time-to-live) / wygaśnięcia wartości i jest często używane, więc pozostaje on popularne w pamięci podręcznej, a następnie większość obciążenia jest obsługiwane przez usługę CDN. Typowe dobre Współczynnik trafień pamięci podręcznej jest dobrze, ponad 90%, co oznacza, że mniej niż 10% żądań klientów musi powrócić do źródła, albo Chybienie pamięci podręcznej lub w obiekcie odświeżania.
 
-- Ilu węzłów należy załadować obiektu: każdym węzłem ładuje obiekt ze źródła, ponosi płatnych transakcji. W rezultacie zawartość globalnych (dostępny od więcej węzłów) powoduje transakcji do rozliczenia więcej.
+- Ilu węzłów należy załadować obiektu: Każdym węzłem ładuje obiekt ze źródła, ponosi płatnych transakcji. W rezultacie zawartość globalnych (dostępny od więcej węzłów) powoduje transakcji do rozliczenia więcej.
 
-- Wpływ na czas wygaśnięcia: wyższe czasu wygaśnięcia dla obiektu oznacza, że musi zostać pobrane ze źródła rzadziej. Ponadto oznacza to, że klientów, takich jak przeglądarki, można w pamięci podręcznej dłużej, obiektu, który może zmniejszyć transakcji usługi CDN.
+- Wpływ na czas wygaśnięcia: Wyższa wartość TTL dla obiektu oznacza, że ma zostać pobrane ze źródła rzadziej. Ponadto oznacza to, że klientów, takich jak przeglądarki, można w pamięci podręcznej dłużej, obiektu, który może zmniejszyć transakcji usługi CDN.
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Jak najbardziej efektywnie zarządzać koszty?
 Ustaw najdłuższy czas wygaśnięcia jest możliwe dla zawartości. 

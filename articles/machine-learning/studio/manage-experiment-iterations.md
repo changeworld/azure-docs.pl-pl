@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6a53530f-20d5-40ae-9b49-7b499ccb44b7
 ms.service: machine-learning
@@ -16,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: a95004a24a9b136708f948f6a2697563216506fb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ebcae3e8e8f13904936dbe122f285a01a2a71459
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086036"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270454"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Zarządzanie iteracjami eksperymentów w usłudze Azure Machine Learning Studio
 Tworzenie modelu analizy predykcyjnej jest procesem iteracyjnym - miarę modyfikowania różnych funkcji i parametrów eksperymentu, wyniki zbiegają się do momentu, aż czy masz wyuczonego, skutecznego modelu. Klucz do tego procesu służy do śledzenia różne iteracje eksperymentu, parametry i konfiguracji.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Możesz przejrzeć poprzednich przebiegów eksperymenty, w dowolnym momencie, aby wyzwanie, ponownie oraz ostatecznie upewnij się lub Popraw poprzednie założeń. Po uruchomieniu eksperymentu usługi Machine Learning Studio przechowuje historię wykonywania, łącznie z zestawu danych, moduł i port połączenia i parametry. Ta historia przechwytuje także wyniki, środowisko uruchomieniowe informacje, takie jak uruchamianie i zatrzymywanie razy, komunikaty dziennika i stan wykonania. Można spojrzeć Wstecz w dowolnym z tych przebiegów w dowolnym momencie, aby zapoznać się z chronologii eksperyment i wyników pośrednich. Nawet służy poprzedniego uruchomienia eksperymencie można uruchomić w nowej fazy zapytania i odnajdywania na ścieżce do utworzenia prostej, złożonych lub nawet zespołu modelowania rozwiązania.
 

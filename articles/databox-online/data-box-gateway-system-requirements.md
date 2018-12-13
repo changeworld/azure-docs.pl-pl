@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157364"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256676"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Wymagania systemowe bramy pola danych platformy Azure (wersja zapoznawcza)
 
@@ -26,6 +26,19 @@ Wymagania systemowe dla urządzenia wirtualnego bramy pola danych obejmują:
 
 > [!IMPORTANT]
 > Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Zapoznaj się z [warunkami użytkowania wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) przed wdrożeniem tego rozwiązania. 
+
+## <a name="specifications-for-the-virtual-device"></a>Specyfikacje dotyczące urządzeń wirtualnych
+
+Bazowego systemu hosta dla bramy pole danych jest w stanie dedykować następujących zasobów, aby aprowizować urządzenie wirtualne:
+
+| Specyfikacje                                          | Opis              |
+|---------------------------------------------------------|--------------------------|
+| Procesory wirtualne (rdzenie)   | Minimum 4 |            
+| Memory (Pamięć)  | Minimum 8 GB|
+| Dostępność|Jeden węzeł|
+| Dyski| Dysk systemu operacyjnego: 250 GB <br> Dysk z danymi: Co najmniej 2 TB, cienka obsługiwana i musi być objęta dysków SSD|
+| Interfejsy sieciowe|Co najmniej 1 wirtualny interfejs sieciowy|
+
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Obsługiwane systemy operacyjne dla klientów podłączonych do urządzenia
 

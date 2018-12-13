@@ -1,6 +1,6 @@
 ---
-title: Modelowanie danych w usłudze Azure Time Series Insights | Dokumentacja firmy Microsoft
-description: Omówienie modelowania danych w usłudze Azure Time Series Insights
+title: Modelowanie danych usługi Time Series Insights platformy Azure — modelowanie danych w wersji zapoznawczej Azure czas serii szczegółowych informacji | Dokumentacja firmy Microsoft
+description: Dowiedz się, modelowania danych w wersji zapoznawczej Azure czas serii szczegółowych informacji.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -8,133 +8,132 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: dc6244b6e263d3fb963d40b2f0c626cdfa9ecff8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.custom: seodec18
+ms.openlocfilehash: e68bc01d2c0781333454fa753992d0136fac0c06
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873465"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269094"
 ---
-# <a name="data-modeling-in-azure-time-series-insights"></a>Modelowanie danych w usłudze Azure Time Series Insights
+# <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelowanie danych w wersji zapoznawczej Azure czas serii szczegółowych informacji
 
-W tym dokumencie opisano sposób pracy z **modeli szeregów czasowych** zgodnie z usługi Azure Time Series Insights (wersja zapoznawcza). Szczegółowe informacje dotyczące kilka typowych scenariuszy danych.
+W tym dokumencie opisano sposób pracy z modeli szeregów czasowych, zgodnie z wersji zapoznawczej Azure czas serii szczegółowych informacji. Szczegółowe informacje dotyczące kilka typowych scenariuszy danych.
 
-Odczyt [Eksplorator usługi Azure TSI (wersja zapoznawcza)](./time-series-insights-update-explorer.md) artykułu, aby dowiedzieć się więcej o przechodząc aktualizacji.
+Aby dowiedzieć się więcej o sposobie używania aktualizacji, przeczytaj [Azure czas Series Insights w wersji zapoznawczej Eksplorator](./time-series-insights-update-explorer.md).
 
 ## <a name="types"></a>Typy
 
-### <a name="how-to-create-a-single-type"></a>Jak utworzyć jeden typ
+### <a name="create-a-single-type"></a>Tworzenie jednego typu
 
-1. Początek nagłówka do panelu selektor TSM modelu, a następnie wybierz typy z menu. Następnie zwijanie panelu, aby skoncentrować się na typach TSM:
+1. Przejdź do panelu selektor modeli szeregów czasowych, a następnie wybierz pozycję **typy** z menu. Zwiń panel skoncentrować się na typy modeli szeregów czasowych.
 
-    ![portal_one][1]
+    ![Portal_one][1]
 
-1. Kliknij pozycję **Dodaj**.
-1. Wszystkie szczegółowe informacje dotyczące typów wejściowych, a następnie kliknij przycisk **Utwórz**. Ten sposób należy utworzyć typy w środowisku:
+1. Wybierz pozycję **Dodaj**.
+1. Wprowadź wszystkie szczegółowe informacje, które odnoszą się do typów, a następnie wybierz **Utwórz**. Ta akcja tworzy typy w środowisku.
 
-    ![portal_two][2]
+    ![Portal_two][2]
 
-### <a name="how-to-bulk-upload-one-or-more-types"></a>Jak przeprowadzić zbiorczą przekazać jeden lub więcej typów
+### <a name="bulk-upload-one-or-more-types"></a>Masowe przekazywanie jeden lub więcej typów
 
-1. Kliknij pozycję **przekazywanie JSON**.
-1. Wybierz ten plik, który zawiera ładunek typu.
-1. Kliknij pozycję **przekazywania**
+1. Wybierz **przekazywanie JSON**.
+1. Wybierz plik, który zawiera ładunek typu.
+1. Wybierz pozycję **Przekaż**.
 
-    ![portal_three][3]
+    ![Portal_three][3]
 
-### <a name="how-to-edit-a-single-type"></a>Jak edytować pojedynczego typu
+### <a name="edit-a-single-type"></a>Edytowanie pojedynczego typu
 
-* Wybierz typ, a następnie kliknij pozycję **Edytuj** przycisku. Wprowadź wymagane zmiany, a następnie kliknij przycisk **Zapisz**:
+Wybierz typ, a następnie wybierz pozycję **Edytuj**. Wprowadź wymagane zmiany, a następnie wybierz pozycję **Zapisz**.
 
-    ![portal_four][4]
+![Portal_four][4]
 
-### <a name="how-to-delete-a-type"></a>Jak usunąć typ
+### <a name="delete-a-type"></a>Usuwanie typu
 
-* Wybierz typ, a następnie kliknij pozycję **Usuń** przycisku. Jeśli żadne wystąpienia są skojarzone z typami, zostaną usunięte:
+Wybierz typ, a następnie wybierz pozycję **Usuń**. Jeśli żadne wystąpienia są skojarzone z typami, jest usuwany.
 
-    ![portal_five][5]
+![Portal_five][5]
 
 ## <a name="hierarchies"></a>Hierarchie
 
-### <a name="how-to-create-a-single-hierarchy"></a>Jak utworzyć pojedynczą hierarchię
+### <a name="create-a-single-hierarchy"></a>Utwórz pojedynczą hierarchię
 
-1. Rozpocznij od pozycji do panelu selektor TSM modelu, a następnie wybierz hierarchie z menu. Następnie zwijanie panelu, aby skoncentrować się na typach TSM:
+1. Przejdź do panelu selektor modeli szeregów czasowych, a następnie wybierz pozycję **hierarchie** z menu. Zwiń panel skoncentrować się na hierarchie modeli szeregów czasowych.
 
-    ![portal_six][6]
+    ![Portal_six][6]
 
-1. Kliknij pozycję **Dodaj**
+1. Wybierz pozycję **Dodaj**.
 
-    ![portal_seven][7]
+    ![Portal_seven][7]
 
-1. Kliknij pozycję **Dodaj poziom** w okienku po prawej stronie:
+1. Wybierz **Dodaj poziom** w okienku po prawej stronie.
 
-    ![portal_eight][8]
+    ![Portal_eight][8]
 
-1. Wprowadź szczegóły hierarchii, a następnie kliknij przycisk **Utwórz**:
+1. Wprowadź szczegóły hierarchii, a następnie wybierz pozycję **Utwórz**.
 
-    ![portal_nine][9]
+    ![Portal_nine][9]
 
-### <a name="how-to-bulk-upload-one-or-more-hierarchies"></a>Jak przeprowadzić zbiorczą przekazania jednej lub wielu hierarchii
+### <a name="bulk-upload-one-or-more-hierarchies"></a>Masowe przekazywanie jednej lub wielu hierarchii
 
-1. Kliknij pozycję **przekazywanie JSON**.
+1. Wybierz **przekazywanie JSON**.
 1. Wybierz plik, który zawiera ładunek hierarchii.
-1. Kliknij pozycję **przekazywanie**:
+1. Wybierz pozycję **Przekaż**.
 
-    ![portal_ten][10]
+    ![Portal_ten][10]
 
-### <a name="how-to-edit-a-single-hierarchy"></a>Jak edytować jednej hierarchii
+### <a name="edit-a-single-hierarchy"></a>Edytuj jednej hierarchii
 
-* Wybierz hierarchię i kliknij pozycję **Edytuj** przycisku. Wprowadź wymagane zmiany, a następnie kliknij przycisk **Zapisz**:
+Wybierz hierarchię, a następnie wybierz pozycję **Edytuj**. Wprowadź wymagane zmiany, a następnie wybierz pozycję **Zapisz**.
 
-    ![portal_eleven][11]
+![Portal_eleven][11]
 
-### <a name="how-to-delete-a-hierarchy"></a>Usuwanie hierarchii
+### <a name="delete-a-hierarchy"></a>Usuwanie hierarchii
 
-* Wybierz hierarchię i kliknij pozycję **Usuń** przycisku. Brak wystąpień są skojarzone z hierarchii, zostaną usunięte.
+Wybierz hierarchię, a następnie wybierz pozycję **Usuń**. Jeśli żadne wystąpienia są skojarzone z hierarchii, zostanie usunięta.
 
-    ![portal_twelve][12]
+![Portal_twelve][12]
 
 ## <a name="instances"></a>Wystąpienia
 
-### <a name="how-to-create-a-single-instance"></a>Jak utworzyć pojedyncze wystąpienie
+### <a name="create-a-single-instance"></a>Tworzenie pojedynczego wystąpienia
 
-1. Rozpocznij od pozycji do panelu selektor TSM modelu, a następnie wybierz wystąpienia z menu. Następnie zwijanie panelu, aby skoncentrować się na typach TSM:
+1. Przejdź do panelu selektor modeli szeregów czasowych, a następnie wybierz pozycję **wystąpień** z menu. Zwiń panel, aby skoncentrować się na wystąpieniach modeli szeregów czasowych.
 
-    ![portal_thirteen][13]
+    ![Portal_thirteen][13]
 
-1. Kliknij pozycję **Dodaj**:
+1. Wybierz pozycję **Dodaj**.
 
-    ![portal_fourteen][14]
+    ![Portal_fourteen][14]
 
-1. Wprowadź szczegóły wystąpienia, wybierz typ i hierarchii i kliknij **Utwórz**.
+1. Wprowadź szczegóły wystąpienia, wybierz skojarzenia typu i hierarchii i wybierz **Utwórz**.
 
-### <a name="how-to-bulk-upload-one-or-more-instances"></a>Jak przeprowadzić zbiorczą przekazać co najmniej jedno wystąpienie
+### <a name="bulk-upload-one-or-more-instances"></a>Masowe przekazywanie co najmniej jedno wystąpienie
 
-1. Kliknij pozycję **przekazywanie JSON**.
-1. Wybierz plik, który zawiera ładunek wystąpień:
+1. Wybierz **przekazywanie JSON**.
+1. Wybierz plik, który zawiera ładunek wystąpień.
 
-    ![portal_fifteen][15]
+    ![Portal_fifteen][15]
 
-1. Kliknij pozycję **przekazywanie**.
+1. Wybierz pozycję **Przekaż**.
 
-### <a name="how-to-edit-a-single-instance"></a>Jak edytować pojedynczego wystąpienia
+### <a name="edit-a-single-instance"></a>Edytowanie pojedynczego wystąpienia
 
-* Wybierz wystąpienie, a następnie kliknij pozycję **Edytuj** przycisku. Wprowadź wymagane zmiany, a następnie kliknij przycisk **Zapisz**:
+Wybierz wystąpienie, a następnie wybierz pozycję **Edytuj**. Wprowadź wymagane zmiany, a następnie wybierz pozycję **Zapisz**.
 
-    ![portal_sixteen][16]
+![Portal_sixteen][16]
 
-### <a name="how-to-delete-an-instance"></a>Jak usunąć wystąpienia
+### <a name="delete-an-instance"></a>Usunięcia wystąpienia
 
-* Wybierz wystąpienie, a następnie kliknij pozycję **Usuń** przycisku. Jeśli żadne zdarzenia nie są skojarzone z wystąpienia, zostaną usunięte.
+Wybierz wystąpienie, a następnie wybierz pozycję **Usuń**. Jeśli żadne zdarzenia nie są skojarzone z wystąpieniami, zostanie usunięta.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przeczytaj o [modelowania danych](./time-series-insights-update-tsm.md) Aby uzyskać więcej informacji na temat **modeli szeregów czasowych**.
-
-Wyświetl w Eksploratorze TSI Azure (wersja zapoznawcza) [artykułu](./time-series-insights-update-explorer.md) Aby dowiedzieć się więcej na temat korzystania z wersji zapoznawczej.
-
-Dowiedz się więcej o obsługiwane kształty JSON, czytając [obsługiwane kształty JSON](./time-series-insights-send-events.md#json).
+- Aby uzyskać więcej informacji na temat modeli szeregów czasowych, przeczytaj [modelowania danych](./time-series-insights-update-tsm.md).
+- Aby dowiedzieć się więcej na temat korzystania z wersji zapoznawczej, przeczytaj [wizualizować dane w Eksploratorze usługi Azure czas Series Insights w wersji zapoznawczej](./time-series-insights-update-explorer.md).
+- Aby dowiedzieć się o obsługiwane kształty JSON, przeczytaj [obsługiwane kształty JSON](./time-series-insights-send-events.md#json).
 
 <!-- Images -->
 [1]: media/v2-update-how-to-tsm/portal_one.png

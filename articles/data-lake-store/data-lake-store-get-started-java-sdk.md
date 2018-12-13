@@ -1,5 +1,5 @@
 ---
-title: 'Java SDK: operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
+title: 'Java SDK: Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
 description: Użyj usługi Azure Storage Gen1 Java zestawu SDK Data Lake można wykonywać operacje systemu plików w Data Lake Storage Gen1, takie jak tworzenie folderów itp.
 services: data-lake-store
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a91593c1bae3002be8b7e423b627f1baf19e86e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: edbaa8fe42c0e6bfda8558e7d9e5cd0ce42bfcc4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129199"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260705"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu SDK języka Java
 > [!div class="op_single_selector"]
@@ -206,7 +206,7 @@ Poniższy fragment kodu usuwa określone pliki i foldery, w ramach konta Data La
 
 ## <a name="build-and-run-the-application"></a>Kompilowanie i uruchamianie aplikacji
 1. Aby przeprowadzić uruchomienie z poziomu środowiska IDE, znajdź i naciśnij przycisk **Run** (Uruchom). Aby przeprowadzić uruchomienie z poziomu programu Maven, użyj polecenia [exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
-2. Aby wygenerować autonomiczny plik JAR, który można uruchomić z poziomu wiersza polecenia, skompiluj plik JAR zawierający wszystkie zależności, używając [wtyczki zestawu Maven](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Przykład znajduje się w pliku pom.xml w [przykładowym kodzie źródłowym w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml).
+2. Aby wygenerować autonomiczny plik JAR, który można uruchomić z poziomu wiersza polecenia, skompiluj plik JAR zawierający wszystkie zależności, używając [wtyczki zestawu Maven](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Pom.xml w [przykładowym kodzie źródłowym w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) zawiera przykład.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zapoznawanie się z dokumentacją JavaDoc dotyczącą zestawu SDK Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)

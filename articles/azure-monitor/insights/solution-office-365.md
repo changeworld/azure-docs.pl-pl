@@ -9,16 +9,15 @@ editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 1e819f819561c5fac722ca6954a10d80a482b5cd
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: cc2fe3c71a3da58a00a3b3c65e709f2e371872e8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889365"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185209"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -51,16 +50,16 @@ Przed rozpoczęciem tej procedury, Zbierz następujące informacje.
 
 W obszarze roboczym usługi Log Analytics:
 
-- Nazwa obszaru roboczego: obszar roboczy, gdzie będą zbierane dane usługi Office 365.
-- Nazwa grupy zasobów: grupę zasobów, która zawiera obszar roboczy.
-- Identyfikator subskrypcji platformy Azure: subskrypcję, która zawiera obszar roboczy.
+- Nazwa obszaru roboczego: Obszar roboczy, gdzie będą zbierane dane usługi Office 365.
+- Nazwa grupy zasobów: Grupa zasobów, która zawiera obszar roboczy.
+- Identyfikator subskrypcji platformy Azure: Subskrypcja, która zawiera obszar roboczy.
 
 Z subskrypcji usługi Office 365:
 
-- Nazwa użytkownika: Adres E-mail konta administracyjnego.
+- Nazwa użytkownika: Adres e-mail konta administracyjnego.
 - Identyfikator dzierżawy: Unikatowy identyfikator dla subskrypcji usługi Office 365.
-- Identyfikator klienta: 16-znakowy ciąg, który reprezentuje klienta usługi Office 365.
-- Klucz tajny klienta: Zaszyfrowanego ciągu niezbędne do uwierzytelniania.
+- Identyfikator klienta: 16-znakowy ciągu, który reprezentuje klienta usługi Office 365.
+- Klucz tajny klienta: Zaszyfrowanego ciągu jest niezbędne do uwierzytelniania.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Tworzenie aplikacji usługi Office 365 w usłudze Azure Active Directory
 Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory, który rozwiązania do zarządzania będzie używany do dostępu do rozwiązania do usługi Office 365.

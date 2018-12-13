@@ -1,5 +1,5 @@
 ---
-title: Tworzenie indeksu usługi Azure Search w portalu | Dokumentacja firmy Microsoft
+title: Tworzenie indeksu usługi Azure Search w witrynie Azure portal — usługa Azure Search
 description: Dowiedz się, jak utworzyć indeks usługi Azure Search przy użyciu wbudowanych indeks portalu projektantów.
 manager: cgronlun
 author: heidisteen
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: 4bba8b41418dadad1b241d60ab0b7aeee4c046d7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990850"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316713"
 ---
 # <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure portal
 
@@ -95,7 +96,7 @@ Dokumentacja interfejsu API usługi Azure Search zawiera przykłady kodu korzyst
 
 Po utworzeniu indeksu usługi Azure Search można przejść do następnego kroku: [przekazywanie danych z możliwością wyszukiwania do indeksu](search-what-is-data-import.md).
 
-Można również dowiedzieć się więcej na temat indeksów. Oprócz kolekcji pól indeks określa również analizatory, sugestory, profile oceniania i ustawienia specyfikacji CORS. Portal zawiera strony z kartami umożliwiające definiowanie najczęściej występujących elementów: pól, analizatorów i sugestorów. Aby utworzyć lub zmodyfikować inne elementy, można użyć interfejsu API REST lub zestawu .NET SDK.
+Można również dowiedzieć się więcej na temat indeksów. Oprócz kolekcji pól indeks określa również analizatory, sugestory, profile oceniania i ustawienia specyfikacji CORS. Portal zawiera strony z kartami Definiowanie najczęściej występujących elementów: Pól, analizatorów i sugestorów. Aby utworzyć lub zmodyfikować inne elementy, można użyć interfejsu API REST lub zestawu .NET SDK.
 
 ## <a name="see-also"></a>Zobacz także
 

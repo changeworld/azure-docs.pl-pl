@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 6e9d44c4b64e41b04c40d0c511a638e539752da4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 213bf0cc063fa1f756a6baeacc47aadec0857a7c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435030"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270522"
 ---
 # <a name="configure-service-health-alerts-with-opsgenie"></a>Konfigurowanie alertów dotyczących kondycji usługi przy użyciu OpsGenie
 
@@ -48,15 +48,15 @@ W tym artykule pokazano, jak skonfigurować alerty dotyczące kondycji usługi p
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Utwórz alert przy użyciu OpsGenie w witrynie Azure portal
 ### <a name="for-a-new-action-group"></a>Dla nowej grupy akcji:
-1. Wykonaj kroki od 1 do 8 w [Tworzenie alertu na powiadomienie usługi kondycji dla nowej grupy akcji przy użyciu witryny Azure portal](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
+1. Wykonaj kroki od 1 do 8 w [Tworzenie alertu na powiadomienie usługi kondycji dla nowej grupy akcji przy użyciu witryny Azure portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 1. Zdefiniuj na liście **akcje**:
 
-    a. **Typ akcji:** *elementu Webhook*
+    a. **Typ akcji:** *Element Webhook*
 
     b. **Szczegóły:** OpsGenie **adresów URL integracji** zostanie zapisany wcześniej.
 
-    c. **Nazwa:** przez element Webhook nazwy, aliasu lub identyfikator.
+    c. **Nazwa:** Nazwy, aliasu lub identyfikator dla elementu Webhook.
 
 1. Wybierz **Zapisz** po zakończeniu tworzenia alertu.
 
@@ -69,16 +69,16 @@ W tym artykule pokazano, jak skonfigurować alerty dotyczące kondycji usługi p
 
 1. Dodaj do listy **akcje**:
 
-    a. **Typ akcji:** *elementu Webhook*
+    a. **Typ akcji:** *Element Webhook*
 
     b. **Szczegóły:** OpsGenie **adresów URL integracji** zostanie zapisany wcześniej.
 
-    c. **Nazwa:** przez element Webhook nazwy, aliasu lub identyfikator.
+    c. **Nazwa:** Nazwy, aliasu lub identyfikator dla elementu Webhook.
 
 1. Wybierz **Zapisz** po zakończeniu można zaktualizować grupy akcji.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testowanie integracji usługi elementu webhook, za pomocą żądania HTTP POST
-1. Utwórz ładunek kondycji usługi, które mają zostać wysłane. Można znaleźć, ładunek elementu webhook przykład usługi kondycji w [alerty dzienników elementy Webhook dla aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+1. Utwórz ładunek kondycji usługi, które mają zostać wysłane. Można znaleźć, ładunek elementu webhook przykład usługi kondycji w [alerty dzienników elementy Webhook dla aktywności platformy Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 1. Utwórz żądanie HTTP POST w następujący sposób:
 
@@ -95,6 +95,6 @@ W tym artykule pokazano, jak skonfigurować alerty dotyczące kondycji usługi p
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejących systemów zarządzania problem](service-health-alert-webhook-guide.md).
-- Przegląd [schemat elementów webhook alertu dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
+- Przegląd [schemat elementów webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md). 
 - Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../monitoring-and-diagnostics/monitoring-service-notifications.md).
-- Dowiedz się więcej o [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).
+- Dowiedz się więcej o [grup akcji](../azure-monitor/platform/action-groups.md).

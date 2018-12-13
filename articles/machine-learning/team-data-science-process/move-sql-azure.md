@@ -8,15 +8,15 @@ editor: cgronlun
 ms.service: machine-learning
 ms.component: team-data-science-process
 ms.topic: article
-ms.date: 5/04/2018
+ms.date: 05/04/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2ae03dc41d4e5611b75b683975f26874187de1d0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 680a47dae057b68957c58bbaab1ec35407d67952
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136301"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268639"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Przenoszenie danych do usługi Azure SQL Database dla usługi Azure Machine Learning
 
@@ -26,7 +26,7 @@ Temat, który przedstawia opcje przenoszenia danych do lokalnego programu SQL Se
 
 Poniższa tabela podsumowuje Opcje przenoszenia danych do usługi Azure SQL Database.
 
-| <b>ŹRÓDŁO</b> | <b>Miejsce docelowe: Usługi Azure SQL Database</b> |
+| <b>ŹRÓDŁO</b> | <b>MIEJSCE DOCELOWE: Usługa Azure SQL Database</b> |
 | --- | --- |
 | <b>Plik prosty (pliku CSV lub TSV sformatowane)</b> |[Zapytanie SQL wstawiania zbiorczego](#bulk-insert-sql-query) |
 | <b>Na lokalnym serwerze SQL Server</b> |1.[wyeksportować do pliku prostego](#export-flat-file)<br> 2. [Kreator migracji bazy danych SQL](#insert-tables-bcp)<br> 3. [Baza danych kopii zapasowej i przywracanie](#db-migration)<br> 4. [Azure Data Factory](#adf) |
@@ -39,7 +39,7 @@ Procedury opisane w tym miejscu wymagają, że masz:
 * Dostęp do **usługi Azure SQL Database**. Jeśli musisz skonfigurować usługi Azure SQL Database [wprowadzenie do programu Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) zawiera informacje o udostępnienie nowego wystąpienia usługi Azure SQL Database.
 * Zainstalowany i skonfigurowany **programu Azure PowerShell** lokalnie. Aby uzyskać instrukcje, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
-**Dane**: procesy migracji zostały przedstawione przy użyciu [zestawu danych taksówek NYC](http://chriswhong.com/open-data/foil_nyc_taxi/). Zestaw danych taksówek NYC zawiera informacje na temat danych podróży i targi i jest dostępna w usłudze Azure blob storage: [dane taksówek NYC](http://www.andresmh.com/nyctaxitrips/). Próbki i opisy te pliki znajdują się w [opis zestawu danych podróży taksówek NYC](sql-walkthrough.md#dataset).
+**Dane**: Procesy migracji zostały przedstawione przy użyciu [zestawu danych taksówek NYC](http://chriswhong.com/open-data/foil_nyc_taxi/). Zestaw danych taksówek NYC zawiera informacje na temat danych podróży i targi i jest dostępna w usłudze Azure blob storage: [Dane taksówek NYC](http://www.andresmh.com/nyctaxitrips/). Próbki i opisy te pliki znajdują się w [opis zestawu danych podróży taksówek NYC](sql-walkthrough.md#dataset).
 
 Możesz dostosować procedury opisane w tym miejscu do zestawu danych użytkownika lub zgodnie z opisem przy użyciu zestawu danych taksówek NYC postępuj zgodnie z instrukcjami. Aby przekazać zestaw danych taksówek NYC do lokalnej bazy danych programu SQL Server, wykonaj procedury opisane w [zbiorcze importowanie danych do bazy danych serwera SQL](sql-walkthrough.md#dbload). Te instrukcje są przeznaczone dla programu SQL Server na maszynie wirtualnej platformy Azure, ale procedura przekazywania do lokalnego programu SQL Server jest taka sama.
 

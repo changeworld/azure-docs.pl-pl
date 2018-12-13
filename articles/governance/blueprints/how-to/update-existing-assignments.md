@@ -1,5 +1,5 @@
 ---
-title: Jak zaktualizować istniejącego przypisania planu platformy Azure
+title: Jak zaktualizować istniejącego przypisania
 description: Więcej informacji na temat aktualizowania istniejącego przypisania w plany usługi Azure przy użyciu mechanizmu.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 2c9f660e54da50e32ce1d0dc43b0efeacd643c57
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 2ada0ccc1286677300c005da4fa0e92be94a3ca8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093789"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314834"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie planu
 
@@ -25,7 +26,7 @@ Po przypisaniu planu można zaktualizować przypisania. Istnieje kilka powodów,
 
 ## <a name="updating-assignments"></a>Aktualizowanie przypisań
 
-1. Kliknij pozycję **wszystkich usług** wyszukiwanie i wybieranie **zasad** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
 
 1. Wybierz pozycję **Przypisane strategie** w lewej części strony.
 

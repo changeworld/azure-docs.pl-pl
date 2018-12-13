@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 2d7b50eadc130900cbd69d579f5ebb2997ad46a0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 4d77f8aad07d2fd4b3e2c4ec42b5b0ec328f779d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872951"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269519"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 
@@ -64,10 +64,10 @@ W przypadku pojedynczej subskrypcji istnieją pewne ograniczenia na liczbę żą
 |Puli elastycznej (na pulę)|4|200|
 ||||
 
-Nie ma żadnych funkcji wbudowanych zbiorczo przywracania. [Usługi Azure SQL Database: pełne odzyskiwanie serwera](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) skrypt jest przykładem jednym ze sposobów wykonywania tego zadania.
+Nie ma żadnych funkcji wbudowanych zbiorczo przywracania. [Usługi Azure SQL Database: Pełne odzyskiwanie serwera](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) skrypt jest przykładem jednym ze sposobów wykonywania tego zadania.
 
 > [!IMPORTANT]
-> Aby odzyskać za pomocą automatycznych kopii zapasowych, musi być członkiem roli Współautor serwera SQL Server w ramach subskrypcji lub być właścicielem subskrypcji — zobacz [RBAC: wbudowane role](../role-based-access-control/built-in-roles.md). Odzyskiwanie można przeprowadzić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu API REST. Nie można używać języka Transact-SQL.
+> Aby odzyskać za pomocą automatycznych kopii zapasowych, musi być członkiem roli Współautor serwera SQL Server w ramach subskrypcji lub być właścicielem subskrypcji — zobacz [RBAC: Wbudowane role](../role-based-access-control/built-in-roles.md). Odzyskiwanie można przeprowadzić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu API REST. Nie można używać języka Transact-SQL.
 
 ## <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
@@ -129,7 +129,7 @@ Funkcja przywracania geograficznego jest domyślną opcję odzyskiwania, gdy baz
 W momencie przywracania na pomocnicza geograficzna nie jest obecnie obsługiwane. Przywracanie do punktu w czasie jest możliwe tylko w głównej bazie danych. Aby uzyskać szczegółowe informacje na temat przy użyciu przywracania geograficznego odzyskiwania sprawności po awarii, zobacz [odzyskiwanie sprawności po awarii](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Odzyskiwanie z kopii zapasowych jest najbardziej podstawowym dostępne w bazie danych SQL z najdłuższym cel punktu odzyskiwania (RPO) i szacowany czas odzyskiwania (ERT) rozwiązania odzyskiwania po awarii. W przypadku rozwiązań przy użyciu mały rozmiar baz danych, (np. podstawowej usługi do warstwy lub mały rozmiar baz danych w elastycznej puli dzierżaw) funkcja przywracania geograficznego jest często rozsądne rozwiązanie odzyskiwania po awarii przy użyciu ERT do 12 godzin (zwykle znacznie mniej). W przypadku rozwiązań przy użyciu dużych baz danych i wymagają krótszy odzyskiwania razy, należy rozważyć użycie [trybu Failover grupy i aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md). Aktywna replikacja geograficzna oferuje znacznie niższe. cel punktu odzyskiwania i ERT, jak wymaga jedynie można zainicjować trybu failover do pomocniczej stale replikowane. Aby uzyskać więcej informacji na temat opcji ciągłości biznesowej, zobacz [Przegląd ciągłości](sql-database-business-continuity.md).
+> Odzyskiwanie z kopii zapasowych jest najbardziej podstawowym dostępne w bazie danych SQL z najdłuższym cel punktu odzyskiwania (RPO) i szacowany czas odzyskiwania (ERT) rozwiązania odzyskiwania po awarii. W przypadku rozwiązań przy użyciu mały rozmiar baz danych, (np. podstawowej usługi do warstwy lub mały rozmiar baz danych w elastycznej puli dzierżaw) funkcja przywracania geograficznego jest często rozsądne rozwiązanie odzyskiwania po awarii przy użyciu ERT do 12 godzin (zwykle znacznie mniej). W przypadku rozwiązań przy użyciu dużych baz danych i wymagają krótszy odzyskiwania razy, należy rozważyć użycie [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) lub [automatyczny tryb failover grupy](sql-database-auto-failover-group.md). Aktywna replikacja geograficzna oferuje znacznie niższe. cel punktu odzyskiwania i ERT, jak wymaga jedynie można zainicjować trybu failover do pomocniczej stale replikowane. Automatyczny tryb failover grupy włączyć automatyczny tryb failover dla grupy baz danych. Aby uzyskać więcej informacji na temat opcji ciągłości biznesowej, zobacz [Przegląd ciągłości](sql-database-business-continuity.md).
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Funkcja przywracania geograficznego w witrynie Azure portal
 
@@ -177,4 +177,4 @@ Automatyczne kopie zapasowe chronić baz danych użytkownika i błędy aplikacji
 - Omówienie ciągłości działania i scenariuszach można znaleźć [omówienie ciągłości działania](sql-database-business-continuity.md).
 - Aby dowiedzieć się więcej na temat usługi Azure SQL Database automatyczne kopie zapasowe, zobacz [bazy danych SQL, automatyczne kopie zapasowe](sql-database-automated-backups.md).
 - Aby dowiedzieć się więcej o długoterminowym przechowywaniu, zobacz [długoterminowego przechowywania](sql-database-long-term-retention.md).
-- Aby dowiedzieć się o szybsze opcje odzyskiwania, zobacz [trybu Failover grupy i aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md).
+- Aby dowiedzieć się o szybsze opcje odzyskiwania, zobacz [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) lub [automatyczny tryb failover grupy](sql-database-auto-failover-group.md).

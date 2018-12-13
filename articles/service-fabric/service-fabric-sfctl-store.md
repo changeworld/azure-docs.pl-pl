@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 2f2da5b38ab39e3636ff0ac09ac2c5515e02b0c1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 034ae29b5fabae15aa2b6b96e7fefaef23c1c5a1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492339"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275231"
 ---
 # <a name="sfctl-store"></a>sfctl store
 Wykonaj podstawowy plik operacji na poziomie magazynu obrazów klastra.
@@ -35,7 +35,7 @@ Wykonaj podstawowy plik operacji na poziomie magazynu obrazów klastra.
 ## <a name="sfctl-store-delete"></a>Usuwanie magazynu sfctl
 Usuwa istniejące obraz przechowywanie zawartości.
 
-Usuwa istniejące zawartość magazynu obrazu znalezionych w ramach danego obrazu przechowywać ścieżkę względną. To może służyć do usuwania pakietów aplikacji przekazany, po ich zainicjowaniu obsługi administracyjnej.
+Usuwa istniejące zawartość magazynu obrazu znalezionych w ramach danego obrazu przechowywać ścieżkę względną. To polecenie może służyć do usuwania pakietów aplikacji przekazany, po ich zainicjowaniu obsługi administracyjnej.
 
 ### <a name="arguments"></a>Argumenty
 

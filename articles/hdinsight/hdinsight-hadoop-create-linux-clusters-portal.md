@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 013c425e911340a1b85c21ff6fc89819087e90a1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 7ff69d3b79662cff1fc28b0b59777225d0cc439f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869164"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189034"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu witryny Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -42,7 +42,7 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
 
     ![Tworzenie nowego klastra w witrynie Azure portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-basics.png "tworzenia nowego klastra w witrynie Azure portal")
 
-    * Wprowadź wartość w polu **Nazwa klastra**: ta nazwa musi być globalnie unikatowa.
+    * Wprowadź **nazwa klastra**: Ta nazwa musi być unikatowa w skali globalnej.
 
     * Z **subskrypcji** listę rozwijaną, wybierz subskrypcję platformy Azure, która jest używana dla klastra.
 
@@ -57,7 +57,7 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
 
     * Wprowadź **nazwa użytkownika SSH** i chcesz mieć hasło SSH w taki sam jak hasło administratora określone wcześniej, wybierz opcję **Użyj tego samego hasła podczas logowania do klastra** pole wyboru. Jeśli nie, wprowadź wartość **hasło** lub **klucza publicznego**, który będzie używany do uwierzytelniania użytkownika SSH. Zaleca się użycie klucza publicznego. Kliknij pozycję **Wybierz** u dołu, aby zapisać konfigurację poświadczeń.
    
-    Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+        Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
     * W obszarze **Grupa zasobów** określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej.
 
@@ -69,18 +69,18 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
 
 5. Aby uzyskać **magazynu**, określ, czy usługi Azure Storage (WASB) lub usługi Data Lake Storage jako magazynu domyślnego. Przyjrzyj się poniższej tabeli, aby uzyskać więcej informacji.
 
-    ![Tworzenie nowego klastra w witrynie Azure portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "tworzenia nowego klastra w witrynie Azure portal")
+     ![Tworzenie nowego klastra w witrynie Azure portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "tworzenia nowego klastra w witrynie Azure portal")
 
-    | Magazyn                                      | Opis |
-    |----------------------------------------------|-------------|
-    | **Obiekty BLOB platformy Azure Storage jako magazynu domyślnego**   | <ul><li>Aby uzyskać **podstawowy typ magazynu**, wybierz opcję **usługi Azure Storage**. Po tym Aby uzyskać **metodę wyboru**, możesz wybrać **Moje subskrypcje** Jeśli chcesz określić konto magazynu, który jest częścią subskrypcji platformy Azure, a następnie wybierz konto magazynu. W przeciwnym razie kliknij przycisk **klucz dostępu** i podaj informacje dotyczące konta magazynu, który chcesz dokonać wyboru spoza Twojej subskrypcji platformy Azure.</li><li>Aby uzyskać **domyślny kontener**, użytkownik może zawsze pod ręką nazwę kontenera domyślnej, zaproponowana przez portal lub określ własne.</li><li>Jeśli używasz WASB jako magazynem domyślnym, możesz (opcjonalnie) kliknąć **dodatkowych kont magazynu** do określenia dodatkowych kont magazynu do skojarzenia z klastrem. Aby uzyskać **klucze magazynu Azure**, kliknij przycisk **Dodaj klucz magazynu**, i można podać konto magazynu z subskrypcji platformy Azure lub z innych subskrypcji (nie dostarczając klucz dostępu konta magazynu).</li><li>Jeśli używasz WASB jako magazynem domyślnym, możesz (opcjonalnie) kliknąć **dostępu Data Lake Store** do określenia usługi Azure Data Lake Storage jako magazynu dodatkowego. Aby uzyskać więcej informacji, zobacz [Szybki Start: konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
-    | **Magazyn usługi Azure Data Lake jako magazynem domyślnym** | Dla **podstawowy typ magazynu**, wybierz opcję **usługi Azure Data Lake Storage Gen1** lub **usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)** a następnie zapoznaj się z artykułem [Szybki Start : Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) instrukcje. |
-    | **Zewnętrzne magazyny metadanych**                      | Opcjonalnie można określić bazę danych SQL można zapisać metadanych Hive i Oozie skojarzonego z klastrem. Aby uzyskać **wybierz bazę danych SQL dla usługi Hive** wybierz bazę danych SQL, a następnie podaj nazwę użytkownika/hasło dla bazy danych. Powtórz te czynności dla metadanych programu Oozie.<br><br>Niektóre zagadnienia podczas korzystania z bazy danych Azure SQL dla magazyny metadanych. <ul><li>Bazy danych Azure SQL, używanej do magazynu metadanych muszą zezwalać na łączność z innymi usługami platformy Azure, w tym usługi Azure HDInsight. Na pulpicie nawigacyjnym bazy danych Azure SQL po prawej stronie kliknij nazwę serwera. Jest to serwer, na którym uruchomiono wystąpienie usługi SQL database. Po użytkownik pracuje na widoku serwerów, kliknij przycisk **Konfiguruj**, a następnie dla **usług platformy Azure**, kliknij przycisk **tak**, a następnie kliknij przycisk **Zapisz**.</li><li>Podczas tworzenia metadanych, nie należy używać nazwy bazy danych, która zawiera łączników i łączniki, ponieważ może to spowodować niepowodzenie procesu tworzenia klastra.</li></ul> |
+     | Magazyn                                      | Opis |
+     |----------------------------------------------|-------------|
+     | **Obiekty BLOB platformy Azure Storage jako magazynu domyślnego**   | <ul><li>Aby uzyskać **podstawowy typ magazynu**, wybierz opcję **usługi Azure Storage**. Po tym Aby uzyskać **metodę wyboru**, możesz wybrać **Moje subskrypcje** Jeśli chcesz określić konto magazynu, który jest częścią subskrypcji platformy Azure, a następnie wybierz konto magazynu. W przeciwnym razie kliknij przycisk **klucz dostępu** i podaj informacje dotyczące konta magazynu, który chcesz dokonać wyboru spoza Twojej subskrypcji platformy Azure.</li><li>Aby uzyskać **domyślny kontener**, użytkownik może zawsze pod ręką nazwę kontenera domyślnej, zaproponowana przez portal lub określ własne.</li><li>Jeśli używasz WASB jako magazynem domyślnym, możesz (opcjonalnie) kliknąć **dodatkowych kont magazynu** do określenia dodatkowych kont magazynu do skojarzenia z klastrem. Aby uzyskać **klucze magazynu Azure**, kliknij przycisk **Dodaj klucz magazynu**, i można podać konto magazynu z subskrypcji platformy Azure lub z innych subskrypcji (nie dostarczając klucz dostępu konta magazynu).</li><li>Jeśli używasz WASB jako magazynem domyślnym, możesz (opcjonalnie) kliknąć **dostępu Data Lake Store** do określenia usługi Azure Data Lake Storage jako magazynu dodatkowego. Aby uzyskać więcej informacji, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
+     | **Magazyn usługi Azure Data Lake jako magazynem domyślnym** | Dla **podstawowy typ magazynu**, wybierz opcję **usługi Azure Data Lake Storage Gen1** lub **usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)** a następnie zapoznaj się z artykułem [Szybki Start : Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) instrukcje. |
+     | **Zewnętrzne magazyny metadanych**                      | Opcjonalnie można określić bazę danych SQL można zapisać metadanych Hive i Oozie skojarzonego z klastrem. Aby uzyskać **wybierz bazę danych SQL dla usługi Hive** wybierz bazę danych SQL, a następnie podaj nazwę użytkownika/hasło dla bazy danych. Powtórz te czynności dla metadanych programu Oozie.<br><br>Niektóre zagadnienia podczas korzystania z bazy danych Azure SQL dla magazyny metadanych. <ul><li>Bazy danych Azure SQL, używanej do magazynu metadanych muszą zezwalać na łączność z innymi usługami platformy Azure, w tym usługi Azure HDInsight. Na pulpicie nawigacyjnym bazy danych Azure SQL po prawej stronie kliknij nazwę serwera. Jest to serwer, na którym uruchomiono wystąpienie usługi SQL database. Po użytkownik pracuje na widoku serwerów, kliknij przycisk **Konfiguruj**, a następnie dla **usług platformy Azure**, kliknij przycisk **tak**, a następnie kliknij przycisk **Zapisz**.</li><li>Podczas tworzenia metadanych, nie należy używać nazwy bazy danych, która zawiera łączników i łączniki, ponieważ może to spowodować niepowodzenie procesu tworzenia klastra.</li></ul> |
 
-    Kliknij przycisk **Dalej**. 
+     Kliknij przycisk **Dalej**. 
 
-    > [!WARNING]
-    > Korzystanie z dodatkowego konta magazynu w innej lokalizacji niż klaster usługi HDInsight nie jest obsługiwane.
+     > [!WARNING]
+     > Korzystanie z dodatkowego konta magazynu w innej lokalizacji niż klaster usługi HDInsight nie jest obsługiwane.
 
 6. Opcjonalnie kliknij **aplikacje** instalować aplikacje, które działają z klastrami HDInsight. Te aplikacje mogą być opracowane przez firmę Microsoft, niezależnych dostawców oprogramowania (ISV) lub samodzielnie. Aby uzyskać więcej informacji, zobacz [aplikacji HDInsight zainstalować](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
@@ -103,7 +103,7 @@ Kliknij przycisk **Dalej**.
 
 9. Aby uzyskać **Podsumowanie**, sprawdź informacje, wprowadzony wcześniej, a następnie kliknij przycisk **Utwórz**.
 
-    ![Warstwami cenowymi węzłów](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "Określ liczbę węzłów klastra")
+     ![Warstwami cenowymi węzłów](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "Określ liczbę węzłów klastra")
     
     > [!NOTE]
     > Dopiero po pewnym czasie dla klastra, który ma zostać utworzony, zwykle około 15 minut. Użyj kafelka na tablicy startowej, lub **powiadomienia** wpis w lewej części strony Aby sprawdzić w procesie aprowizacji.
@@ -117,9 +117,9 @@ Kliknij przycisk **Dalej**.
     
     * **Omówienie** karta zawiera wszystkie niezbędne informacje dotyczące klastra, takie jak nazwa, należy do grupy zasobów, lokalizacji, systemu operacyjnego, adres URL dla pulpit nawigacyjny klastra itp.
     * **Pulpit nawigacyjny** kieruje użytkownika do portalu Ambari skojarzonego z klastrem.
-    * **Bezpieczna powłoka**: informacje niezbędne do uzyskania dostępu do klastra przy użyciu protokołu SSH.
+    * **Bezpieczna powłoka**: Informacje potrzebne, aby uzyskać dostęp do klastra przy użyciu protokołu SSH.
     * **Skaluj klaster** pozwala zwiększyć liczbę węzłów procesu roboczego skojarzonego z klastrem.
-    * **Usuń**: usuwa klaster HDInsight.
+      * **Usuń**: Usuwa klaster HDInsight.
     
 
 ## <a name="customize-clusters"></a>Dostosowywanie klastrów
@@ -153,6 +153,6 @@ Teraz, że udało Ci się utworzyć klaster usługi HDInsight, należy użyć na
 ### <a name="apache-spark-clusters"></a>Klastry platformy Apache Spark
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](spark/apache-spark-create-standalone-application.md)
 * [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](spark/apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](spark/apache-spark-use-bi-tools.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
 

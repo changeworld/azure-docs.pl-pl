@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d7f33bf0657ca2a6888387b7651706f9de537bb4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: ce10e2c24e89140357df3fa6b724a1f89f389a50
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494360"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275486"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Zarządzaj autonomicznych klastrów usługi Service Fabric.
@@ -63,18 +63,18 @@ Zweryfikuj parametry uaktualniania wprowadzonej konfiguracji i rozpocząć uaktu
 
 |Argument|Opis|
 | --- | --- |
-| — klaster config [wymagane] | Konfiguracja klastra, która zostanie zastosowana do klastra. |
+| — klaster config [wymagane] | Konfiguracja klastra. |
 | — zasady w przypadku kondycji aplikacji | Zakodowane w formacie JSON. Słownik par nazwa typu aplikacji i maksymalnej wartości procentowej złej kondycji przed zgłoszeniem błędu. |
 | --delta--węzłów w złej kondycji | Maksymalna dozwolona wartość procentowa zmian kondycji degradacji podczas uaktualniania. Dozwolone wartości to liczby całkowite od 0 do 100. |
-| --ponownej próby sprawdzenia kondycji | Czas między próbami wykonania kondycji umożliwia sprawdzenie, czy aplikacja lub klastra nie działa prawidłowo.  Domyślne\: PT0H0M0S. |
-| --health-check-stable | Czas, że aplikacja lub klastra musi pozostać dobrej kondycji.  Domyślne\: PT0H0M0S. |
+| --ponownej próby sprawdzenia kondycji | Odstęp czasu między próbami sprawdzać kondycję, jeśli aplikacja lub klastra nie jest w dobrej kondycji.  Domyślne\: PT0H0M0S. |
+| --health-check-stable | Ilość czasu, aplikacji lub klastra musi pozostać dobrej kondycji przed uaktualnienia przechodzi do następnej domeny uaktualnienia.  Domyślne\: PT0H0M0S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
 | --health-check-wait | Czas oczekiwania po wykonaniu uaktualnienia domeny przed rozpoczęciem kondycji sprawdza, czy proces.  Domyślne\: PT0H0M0S. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 | --unhealthy-applications | Maksymalna dozwolona wartość procentowa aplikacje w złej kondycji, podczas uaktualniania. Dozwolone wartości to liczby całkowite od 0 do 100. |
 | --węzłów w złej kondycji — | Maksymalna dozwolona wartość procentowa węzłów w złej kondycji, podczas uaktualniania. Dozwolone wartości to liczby całkowite od 0 do 100. |
 | --upgrade-domain-delta-unhealthy-nodes | Maksymalna dozwolona wartość procentowa obniżenie wydajności kondycji różnicowych domeny uaktualnień podczas uaktualniania. Dozwolone wartości to liczby całkowite od 0 do 100. |
-| — limit czasu domeny uaktualnienia | Limit czasu domeny uaktualnień.  Domyślne\: PT0H0M0S. |
-| — limit czasu uaktualniania | Limit czasu uaktualniania.  Domyślne\: PT0H0M0S. |
+| — limit czasu domeny uaktualnienia | Czas każdej z domen musi wykonać, zanim zostanie wykonany FailureAction.  Domyślne\: PT0H0M0S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
+| — limit czasu uaktualniania | Czas ogólną uaktualnienia musi wykonać, zanim zostanie wykonany FailureAction.  Domyślne\: PT0H0M0S. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
@@ -88,7 +88,12 @@ Zweryfikuj parametry uaktualniania wprowadzonej konfiguracji i rozpocząć uaktu
 
 ### <a name="examples"></a>Przykłady
 
-Rozpocznij klastra konfiguracji aktualizacji sfctl sa-config uaktualniania klastra — konfiguracji klastra <YOUR CLUSTER CONFIG> — zasady w przypadku kondycji aplikacji "{" Service fabric: / System ": {"ConsiderWarningAsError": true}}"
+Rozpocznij aktualizację konfiguracji klastra
+
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>Interfejs sfctl sa-cluster uaktualnienia status
 Pobierz stan uaktualnienia konfiguracji klastra autonomicznego klastra usługi Service Fabric.

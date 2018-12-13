@@ -1,7 +1,7 @@
 ---
-title: Wyszukiwanie w sieci web dla popularnych obrazów — interfejs API wyszukiwania obrazów Bing
+title: Pobierz popularne obrazów za pomocą interfejsu API wyszukiwania obrazów Bing
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak za pomocą interfejsu API wyszukiwania obrazów Bing, wyszukiwanie popularnych obrazów w sieci web.
+description: Wyszukiwania obecnie popularnych obrazów z sieci web za pomocą interfejsu API wyszukiwania obrazów Bing.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 8d58c188275dc6b546d418b51835514c99f25d28
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296315"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258972"
 ---
-# <a name="get-trending-images-from-the-bing-image-search-api"></a>Pobierz popularne obrazy z interfejsu API wyszukiwania obrazów Bing
+# <a name="get-trending-images-from-the-web"></a>Pobierz popularnych obrazów z sieci web
 
 Aby uzyskać bieżącą popularnych obrazów, Wyślij następujące żądanie GET:  
 

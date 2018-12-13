@@ -1,22 +1,24 @@
 ---
-title: Wiele frontonów dla usługi Azure Load Balancer | Dokumentacja firmy Microsoft
+title: Wiele frontonów dla modułu równoważenia obciążenia platformy Azure
+titlesuffix: Azure Load Balancer
 description: Omówienie wielu frontonów w module równoważenia obciążenia platformy Azure
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
-ms.openlocfilehash: d435d2c491cf17356e96f7bbb05b1e22c8e04aca
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219362"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163433"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Wiele frontonów dla modułu równoważenia obciążenia platformy Azure
 
@@ -46,7 +48,7 @@ Usługa Azure Load Balancer można mieszać oba typy reguł w tej samej konfigur
 
 Te scenariusze dalsze — omówimy, zaczynając od zachowanie domyślne.
 
-## <a name="rule-type-1-no-backend-port-reuse"></a>Typ #1 reguły: nie ponowne użycie portu wewnętrznej bazy danych
+## <a name="rule-type-1-no-backend-port-reuse"></a>Typ reguły #1: Nie ponownego użycia portu wewnętrznej bazy danych
 
 ![Wiele ilustrację frontonu zielony oraz purpurowej frontonu](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 

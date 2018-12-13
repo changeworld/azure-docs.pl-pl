@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 68c838481120dea7635ac5ea76859a8088d732fb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957354"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186501"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
@@ -44,7 +43,7 @@ Podczas weryfikowania informacji i rozwiązanie jest wdrożone, możesz śledzi�
 
 Dostęp do rozwiązania Service Map w witrynie Azure portal w obszarze roboczym usługi Log Analytics i wybierz opcję **rozwiązania** z okienka po lewej stronie.<br><br> ![Wybierz opcję rozwiązania w obszarze roboczym](./media/service-map/select-solution-from-workspace.png).<br> Wybierz z listy rozwiązań **ServiceMap(workspaceName)** w rozwiązania Service Map rozwiązania Przegląd kliknij Kafelek podsumowanie mapy usługi.<br><br> ![Kafelek podsumowania rozwiązania Service Map](./media/service-map/service-map-summary-tile.png).
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Zastosowań: Wprowadź dział IT przetwarza pamiętać zależności
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Przypadki użycia: Wprowadź dział IT przetwarza pamiętać zależności
 
 ### <a name="discovery"></a>Odnajdowanie
 Usługa Service Map automatycznie tworzy mapę typowych odwołanie zależności między serwerami, procesami i usługami innych firm. Go umożliwia odnalezienie i mapuje wszystkie zależności TCP w celu identyfikowania połączeń Zaskoczenie, zdalne systemów innych firm, których zależysz i zależności do tradycyjnych ciemny obszarów sieci, takich jak usługi Active Directory. Usługa Service Map odnajduje połączenia sieciowe nie powiodło się, które próbujesz zarządzanych systemach, aby ułatwia identyfikowanie potencjalnych błędnej konfiguracji serwera, przerwa w działaniu usługi i problemy z siecią.
@@ -286,8 +285,8 @@ Za godzinę dla każdego komputera unikatowy i procesów, oprócz rekordów, kt�
 
 Istnieją wewnętrznie generowane właściwości, które służy do identyfikacji procesów unikatowy i komputerów:
 
-- Komputera: Użyj *ResourceId* lub *ResourceName_s* do unikatowej identyfikacji komputera w obszarze roboczym usługi Log Analytics.
-- Procesu: Użyj *ResourceId* do unikatowej identyfikacji procesów w obrębie obszaru roboczego usługi Log Analytics. *ResourceName_s* jest unikatowa w obrębie kontekstu komputera, na którym proces działa (MachineResourceName_s) 
+- Komputer: Użyj *ResourceId* lub *ResourceName_s* do unikatowej identyfikacji komputera w obszarze roboczym usługi Log Analytics.
+- Proces: Użyj *ResourceId* do unikatowej identyfikacji procesów w obrębie obszaru roboczego usługi Log Analytics. *ResourceName_s* jest unikatowa w obrębie kontekstu komputera, na którym proces działa (MachineResourceName_s) 
 
 Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym okresie, zapytania może zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby dołączyć tylko najnowsze rekord, należy dodać "| Funkcja deduplikacji ResourceId"zapytania.
 

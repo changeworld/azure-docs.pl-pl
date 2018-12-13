@@ -1,12 +1,11 @@
 ---
-title: Ponowne szkolenie istniejącej usługi internetowej predykcyjnej — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+title: Ponowne szkolenie istniejącej predykcyjne Studio usługi internetowej — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
 ms.service: machine-learning
@@ -16,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d24cfd8dce42ee920c87fa2c3593a860468a6160
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311300"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250556"
 ---
-# <a name="retrain-an-existing-predictive-web-service"></a>Ponowne szkolenie istniejącej usługi internetowej predykcyjne
+# <a name="retrain-an-existing-predictive-azure-machine-learning-studio-web-service"></a>Ponowne szkolenie istniejącej predykcyjne usługi sieci web Azure Machine Learning Studio
+
 W tym dokumencie opisano proces ponownego trenowania w następującym scenariuszu:
 
 * Masz eksperymentu szkolenia i eksperyment predykcyjny, który ma być wdrożony jako zoperacjonalizowanej usługi sieci web.
@@ -66,7 +66,7 @@ W tym przykładzie używamy C# do tworzenia aplikacji ponownego trenowania. Umo�
 
 Do wywoływania interfejsów API do ponownego trenowania:
 
-1. Tworzenie aplikacji konsolowej C# w programie Visual Studio: **New** > **projektu** > **Visual C#** > **Windows Klasyczny pulpit** > **Aplikacja konsoli (.NET Framework)**.
+1. Tworzenie C# konsoli aplikacji w programie Visual Studio: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)**.
 2. Zaloguj się do portalu usług sieci Web Machine Learning.
 3. Kliknij usługę sieci web, którą pracujesz z.
 4. Kliknij przycisk **używanie**.

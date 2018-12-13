@@ -4,15 +4,15 @@ description: Skorzystaj z tego artykułu. Planowanie wydajności i skalowania, p
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: nisoneji
-ms.openlocfilehash: 2d418282120ee24a5b5492c18593165fba2c6c12
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: f724837e8cce733680b98a5df5690e6a8dfbf6ee
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839419"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258852"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie wydajności i skalowanie na potrzeby odzyskiwania po awarii programu VMware na platformę Azure
 
@@ -26,7 +26,7 @@ Zbieranie informacji o środowisku replikacji, uruchamiając [planista wdrażani
 
 **Składnik** | **Szczegóły** |
 --- | --- | ---
-**Replikacja** | **Maksymalna dziennych zmian:** chronionej maszyny można używać tylko jednego serwera przetwarzania i serwer pojedynczego procesu może obsługiwać dzienny zmiany szybkości do 2 TB. Ten sposób 2 TB jest maksymalny Dzienny współczynnik zmian danych, która jest obsługiwana dla chronionej maszyny.<br/><br/> **Maksymalna przepływność:** replikowanej maszyny mogą należeć do jednego konta magazynu na platformie Azure. Standardowe konto magazynu może obsługiwać maksymalnie 20 000 żądań na sekundę, a firma Microsoft zaleca, Zmniejsz liczbę operacji wejścia/wyjścia na sekundę (IOPS) na maszynie źródłowej do 20 000. Na przykład jeśli masz maszyny źródłowej, z dyskami 5, a każdy dysk generuje 120 na SEKUNDĘ (8K rozmiar) na maszynie źródłowej, następnie będzie w obrębie platformy Azure limit operacji We/Wy dysku 500. (Liczba kont magazynu wymagana jest taki sam na maszynie źródłowej łączna liczba operacji We/Wy, podzielona przez 20 000).
+**Replikacja** | **Maksymalna dziennych zmian:** Chronione maszyny można używać tylko jednego serwera przetwarzania i serwer pojedynczego procesu może obsługiwać dzienny zmiany szybkości do 2 TB. Ten sposób 2 TB jest maksymalny Dzienny współczynnik zmian danych, która jest obsługiwana dla chronionej maszyny.<br/><br/> **Maksymalna przepływność:** Replikowanej maszyny mogą należeć do jednego konta magazynu na platformie Azure. Standardowe konto magazynu może obsługiwać maksymalnie 20 000 żądań na sekundę, a firma Microsoft zaleca, Zmniejsz liczbę operacji wejścia/wyjścia na sekundę (IOPS) na maszynie źródłowej do 20 000. Na przykład jeśli masz maszyny źródłowej, z dyskami 5, a każdy dysk generuje 120 na SEKUNDĘ (8K rozmiar) na maszynie źródłowej, następnie będzie w obrębie platformy Azure limit operacji We/Wy dysku 500. (Liczba kont magazynu wymagana jest taki sam na maszynie źródłowej łączna liczba operacji We/Wy, podzielona przez 20 000).
 **Serwer konfiguracji** | Serwer konfiguracji powinien być w stanie obsłużyć dzienną wydajność współczynnika zmian we wszystkich obciążeń uruchomionych na chronionych maszynach i wymaga wystarczającą przepustowość, aby stale replikować dane do usługi Azure Storage.<br/><br/> Najlepszym rozwiązaniem jest zlokalizować serwer konfiguracji na tej samej sieci oraz na segment sieci LAN jako maszyn, które mają być chronione. Mogą znajdować się w innej sieci, ale maszyn, które mają być chronione, powinny mieć widoczność sieci 3 warstwy do niego.<br/><br/> Zalecenia dotyczące rozmiaru serwera konfiguracji są podsumowane w tabeli w poniższej sekcji.
 **Serwer przetwarzania** | Pierwszy serwer przetwarzania jest instalowany domyślnie na serwerze konfiguracji. Można wdrażać dodatkowych serwerów przetwarzania do skalowania środowiska. <br/><br/> Serwer przetwarzania odbiera dane replikacji z chronionych maszyn i optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania. Następnie wysyła dane do platformy Azure. Maszyna serwera przetwarzania powinna mieć wystarczające zasoby do wykonywania tych zadań.<br/><br/> Serwer przetwarzania korzysta z pamięci podręcznej opartej na dyskach. Do obsługi zmian danych przechowywanych w przypadku awarii lub wąskich gardeł, należy użyć dysku oddzielne pamięci podręcznej 600 GB lub więcej.
 
@@ -74,14 +74,14 @@ Sposób, w którym możesz skalować serwery w zależy od preferencjami dla mode
 
 Po wykorzystano [narzędzia planista wdrażania](site-recovery-deployment-planner.md) do obliczania przepustowości, należy dla replikacji (Replikacja początkowa i następnie delta), można kontrolować przepustowość używaną podczas replikacji przy użyciu kilku opcji:
 
-* **Ograniczanie przepustowości**: ruch VMware są replikowane do platformy Azure przechodzi przez serwer określonego procesu. Możesz ograniczyć przepustowość na maszynach, uruchomione jako serwerów przetwarzania.
-* **Mają wpływ na przepustowość**: może mieć wpływ na przepustowość wykorzystywaną podczas replikacji przy użyciu kilku kluczy rejestru:
+* **Ograniczanie przepustowości**: Ruch VMware są replikowane do platformy Azure przechodzi przez serwer określonego procesu. Możesz ograniczyć przepustowość na maszynach, uruchomione jako serwerów przetwarzania.
+* **Mają wpływ na przepustowość**: Może mieć wpływ na przepustowość wykorzystywaną podczas replikacji przy użyciu kilku kluczy rejestru:
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** wartość rejestru określa liczbę wątków, które są używane do transferu danych (Replikacja początkowa lub przyrostowa) dysku. Wyższa wartość zwiększa przepustowość sieciową używaną podczas replikacji.
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** określa liczbę wątków używanych do transferu danych podczas powrotu po awarii.
 
 ### <a name="throttle-bandwidth"></a>Ograniczanie przepustowości
 
-1. Otwórz przystawkę MMC usługi Azure Backup na komputerze działającym jako serwer przetwarzania. Domyślnie skrót do usługi Backup jest dostępny na pulpicie lub w następującym folderze: C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
+1. Otwórz przystawkę MMC usługi Azure Backup na komputerze działającym jako serwer przetwarzania. Domyślnie skrót do usługi Backup jest dostępny na pulpicie lub w następującym folderze: Agent\bin C:\Program Files\Microsoft Azure Recovery Services.
 2. W przystawce kliknij pozycję **Zmień właściwości**.
 
     ![Zrzut ekranu z usługi Azure Backup programu MMC przystawki opcję, aby zmienić właściwości](./media/site-recovery-vmware-to-azure/throttle1.png)

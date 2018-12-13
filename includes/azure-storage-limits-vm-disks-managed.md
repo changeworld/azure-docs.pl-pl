@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4441ad1e2940892c1627cbc2d4ee0186e4cfda17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bbb338d2b1d359d8e141b18a2beacd8b7faafe9c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264026"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53326664"
 ---
 **Standardowa zarządzana maszyn wirtualnych dysków twardych**
 
@@ -33,7 +33,7 @@ ms.locfileid: "51264026"
 
 **Zarządzane dyski maszyny wirtualnej w warstwie Premium: limity poszczególnych dysków**
 
-| Typ dysku w warstwie Premium  | P4               | P6               | P10             | P15 | P20              | S30              | P40              | P50              | P60 *             | P70 *             | P80 *             |
+| Typ dysku w warstwie Premium  | P4               | P6               | P10             | P15 | P20              | P30              | P40              | P50              | P60 *             | P70 *             | P80 *             |
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | Rozmiar dysku w GiB           | 32             | 64             | 128            | 256  | 512            | 1,024    | 2048     | 4095    | 8192     | 16 384     | 32,767     |
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | Do 120 | Maksymalnie 240              | Maks. 500              | Maksymalnie 1100 | Maksymalnie 2300              | Maksymalnie 5000              | Maksymalnie 7500             | Maksymalnie 7500              | Maksymalnie 12 500              | Maksymalnie 15 000              | Maksymalnie 20 000              |

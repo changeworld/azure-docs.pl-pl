@@ -1,6 +1,6 @@
 ---
-title: Indeksowanie usługi Azure Blob Storage z usługą Azure Search
-description: Dowiedz się, jak indeksu usługi Azure Blob Storage i wyodrębnianie tekstu z dokumentów za pomocą usługi Azure Search
+title: Indeksowanie zawartości magazynu obiektów Blob platformy Azure w celu wyszukiwania pełnotekstowego — usługa Azure Search
+description: Dowiedz się, jak indeksu usługi Azure Blob Storage i wyodrębnianie tekstu z dokumentów za pomocą usługi Azure Search.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: d2706d4b10303cb62066f0381f9a69b553c05cb4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: c73a802cd67c9ecb94482cfcd6aac51fc8bbc19e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406976"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317478"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów w usłudze Azure Blob Storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania dokumentów (takich jak pliki PDF, dokumentów programu Microsoft Office i kilka innych typowych formatów) przechowywanych w usłudze Azure Blob storage. Po pierwsze wyjaśnia podstawowe informacje dotyczące instalowania i konfigurowania indeksatora obiektów blob. Następnie oferuje bardziej zaawansowanej eksploracji zachowań, scenariuszy może wystąpić.
@@ -69,8 +70,8 @@ Aby uzyskać więcej informacji na temat interfejsu API tworzenia źródła dany
 Można podać poświadczenia dla kontenera obiektów blob w jednym z następujących sposobów:
 
 - **Parametry połączenia konta magazynu pełny dostęp**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Parametry połączenia można uzyskać w witrynie Azure portal, przechodząc do bloku konto magazynu > Ustawienia > klucze (dla kont magazynu Classic) lub Ustawienia > klucze (dla kont magazynu usługi Azure Resource Manager) dostępu.
-- **Sygnatura dostępu współdzielonego konta magazynu** parametry połączenia (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` sygnatury dostępu Współdzielonego powinny mieć listy i uprawnienia do odczytu z kontenerów i obiektów (obiekty BLOB w tym przypadku).
--  **Sygnatury dostępu współdzielonego kontenera**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` sygnatury dostępu Współdzielonego powinny mieć listy i uprawnienia do odczytu w kontenerze.
+- **Sygnatura dostępu współdzielonego konta magazynu** parametry połączenia (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Sygnatury dostępu Współdzielonego powinny mieć listy i uprawnienia do odczytu z kontenerów i obiektów (obiekty BLOB w tym przypadku).
+-  **Sygnatury dostępu współdzielonego kontenera**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Sygnatury dostępu Współdzielonego powinny mieć listy i uprawnienia do odczytu w kontenerze.
 
 Aby uzyskać więcej informacji na magazyn udostępniony sygnatury dostępu, zobacz [za pomocą udostępnionej sygnatury dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
@@ -333,7 +334,7 @@ Indeksowanie obiektów blob może być czasochłonne. W przypadkach, w którym m
 
 Możesz chcieć "złożyć" dokumenty z wielu źródeł w indeksie. Na przykład można scalić tekstu z obiektów blob z inne metadane przechowywane w usłudze Cosmos DB. Nawet służy wypychania indeksowania interfejsu API wraz z różnych indeksatorów do tworzenia dokumentów wyszukiwania z wielu części. 
 
-Aby to działało wszystkie indeksatory i inne składniki muszą uzgodnić klucz dokumentu. Szczegółowy przewodnik znajduje się w artykule zewnętrznych: [połączyć dokumenty z innymi danymi w usłudze Azure Search ](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+Aby to działało wszystkie indeksatory i inne składniki muszą uzgodnić klucz dokumentu. Szczegółowy przewodnik znajduje się w artykule zewnętrznych: [Łączenie dokumentów z innymi danymi w usłudze Azure Search ](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indeksowanie Zwykły tekst 
@@ -374,7 +375,7 @@ Poniższa tabela zawiera podsumowanie przetwarzania wykonywane dla każdego doku
 | MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Wyodrębnienie tekstu, w tym z załączników |
 | ZIP (aplikacja/zip) |`metadata_content_type` |Wyodrębnianie tekstu z wszystkich dokumentów w archiwum |
 | XML (aplikacja/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |Usuń znacznik XML i wyodrębnianie tekstu |
-| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Wyodrębnij tekst<br/>Uwaga: Jeśli potrzebujesz do wyodrębnienia wielu pól dokumentu z obiektu blob JSON, zobacz [JSON indeksowanie obiektów blob](search-howto-index-json-blobs.md) Aby uzyskać szczegółowe informacje |
+| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Wyodrębnij tekst<br/>UWAGA: Jeśli zachodzi potrzeba wyodrębnić wielu pól dokumentu z obiektu blob JSON, zobacz [JSON indeksowanie obiektów blob](search-howto-index-json-blobs.md) Aby uzyskać szczegółowe informacje |
 | EML (komunikat/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Wyodrębnienie tekstu, w tym z załączników |
 | RTF (aplikacja/rtf) |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | Wyodrębnij tekst|
 | Zwykłego tekstu (zwykły tekst) |`metadata_content_type`</br>`metadata_content_encoding`</br> | Wyodrębnij tekst|

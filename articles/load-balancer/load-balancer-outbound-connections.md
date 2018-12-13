@@ -1,22 +1,24 @@
 ---
-title: Połączenia wychodzące na platformie Azure | Dokumentacja firmy Microsoft
+title: Połączenia wychodzące na platformie Azure
+titlesuffix: Azure Load Balancer
 description: W tym artykule wyjaśniono, jak platforma Azure zapewnia maszyny wirtualne do komunikowania się z publicznych usług internetowych.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: fdcc039eb71eaeea03aaae856a6d031d4c528669
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 09de0a3aa0303e169d0b90690016909b29dc4a9b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687575"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190972"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -46,7 +48,7 @@ Usługa Azure Load Balancer i powiązane zasoby są jawnie zdefiniowane podczas 
 
 Jeśli nie chcesz, aby maszyny Wirtualnej w celu komunikowania się z punktami końcowymi spoza platformy Azure w publicznej przestrzeni adresów IP, można użyć grup zabezpieczeń sieci (NSG) w celu zablokowania dostępu, zgodnie z potrzebami. Sekcja [zapobieganie łączności wychodzącej](#preventoutbound) omówienie sieciowych grup zabezpieczeń w bardziej szczegółowo. Wskazówki dotyczące projektowania, wdrażania i zarządzania bez żadnych wychodzącego dostępu do sieci wirtualnej znajduje się poza zakres tego artykułu.
 
-### <a name="ilpip"></a>Scenariusz 1: Maszyny Wirtualnej, przy użyciu adresu publicznego adresu IP poziomu wystąpienia
+### <a name="ilpip"></a>Scenariusz 1: Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia
 
 W tym scenariuszu maszyna wirtualna ma wystąpienia poziom publicznego adresu IP (ILPIP) do niej przypisany. Jeśli chodzi o połączeniach wychodzących, nie ma znaczenia, czy maszyna wirtualna jest równoważone, czy nie. Ten scenariusz ma pierwszeństwo przed innymi. Gdy używany jest ILPIP, maszyna wirtualna używa ILPIP wszystkie przepływy ruchu wychodzącego.  
 
@@ -54,7 +56,7 @@ Publiczny adres IP przypisany do maszyny Wirtualnej jest to relacja 1:1 (zamiast
 
 Jeśli wystąpią wyczerpanie portów SNAT aplikacji inicjuje wiele przepływów ruchu wychodzącego, należy wziąć pod uwagę przypisywanie [ILPIP złagodzić ograniczenia SNAT](#assignilpip). Przegląd [wyczerpania Zarządzanie SNAT](#snatexhaust) w całości.
 
-### <a name="lb"></a>Scenariusz 2: Maszyn wirtualnych ze zrównoważonym obciążeniem bez adresu publicznym adresem IP na poziomie wystąpienia
+### <a name="lb"></a>Scenariusz 2: Równoważenia obciążenia maszyn wirtualnych bez adresu publicznym adresem IP na poziomie wystąpienia
 
 W tym scenariuszu maszyna wirtualna jest częścią publicznej puli zaplecza modułu równoważenia obciążenia. Maszyna wirtualna nie ma do niej przypisany publiczny adres IP. Zasób modułu równoważenia obciążenia musi być skonfigurowany przy użyciu reguły modułu równoważenia obciążenia, aby utworzyć łącze między publicznego adresu IP frontonu z pulą zaplecza.
 
@@ -70,7 +72,7 @@ Gdy [wiele publicznych adresów IP skojarzonych z podstawowego modułu równowa�
 
 Aby monitorować kondycję połączenia wychodzące z podstawowego modułu równoważenia obciążenia, możesz użyć [usługi Log Analytics dla usługi Load Balancer](load-balancer-monitor-log.md) i [alertów dzienników zdarzeń](load-balancer-monitor-log.md#alert-event-log) do monitorowania komunikatów wyczerpanie portów SNAT.
 
-### <a name="defaultsnat"></a>Scenariusz 3: Autonomiczny z maszyny Wirtualnej bez adresu publicznym adresem IP na poziomie wystąpienia
+### <a name="defaultsnat"></a>Scenariusz 3: Autonomiczny maszyn wirtualnych, bez adresu publicznym adresem IP na poziomie wystąpienia
 
 W tym scenariuszu maszyna wirtualna nie jest częścią puli publicznego modułu równoważenia obciążenia (i nie jest częścią puli wewnętrznej Balancer w warstwie standardowa) i nie ma przypisanego adresu ILPIP. Podczas tworzenia maszyny Wirtualnej przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego do publicznych źródłowego adresu IP. Publiczny adres IP używany dla tego przepływu ruchu wychodzącego nie konfiguruje się i nie wliczają subskrypcji publicznego adresu IP limit zasobów. Ten publiczny adres IP nie należy do Ciebie i nie może być zastrzeżone. Jeśli ponowne wdrażanie zestawu skalowania maszyn wirtualnych lub zestawu dostępności lub maszyny wirtualnej, ten publiczny adres IP zostaną zwolnione i zażądano nowego publicznego adresu IP. Nie należy używać w tym scenariuszu do listy dozwolonych adresów IP. Zamiast tego należy użyć jednego z dwóch scenariuszy gdzie można jawnie deklarować wychodzącego scenariusza i publiczny adres IP, który ma być używany dla łączności wychodzącej.
 

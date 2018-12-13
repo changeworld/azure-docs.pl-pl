@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 7f610e7697d0d1317b9fe276cf1c251ca8f749b4
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5f6908a80a467e1a8a12d61be2f67cbe70cce8a0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133846"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275643"
 ---
 # <a name="azure-importexport-system-requirements"></a>Wymagania dotyczące systemu Azure Import/Export
 
@@ -41,8 +41,9 @@ Aby przygotować dyski twarde, za pomocą narzędzia WAImportExport, następują
 
 Usługa Azure Import/Export obsługuje następujące typy kont magazynu:
 
-- Konta ogólnego przeznaczenia w wersji 1 magazynu (zarówno klasyczny, jak i usługi Azure Resource Manager w przypadku wdrożeń), kont magazynu ogólnego przeznaczenia v2
+- Kont przeznaczenia ogólnego v2 magazynu (zalecane w przypadku większości scenariuszy)
 - Konta usługi Blob Storage
+- V1 magazynu konta (wdrożenia zarówno klasyczny, jak i usługi Azure Resource Manager), ogólnego przeznaczenia 
 
 Aby uzyskać więcej informacji na temat kont magazynu, zobacz [omówienie kont magazynu platformy Azure](storage-account-overview.md).
 

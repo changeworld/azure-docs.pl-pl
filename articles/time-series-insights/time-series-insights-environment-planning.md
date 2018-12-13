@@ -1,5 +1,5 @@
 ---
-title: Planowanie skali środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Plan usługi Azure Time Series Insights — Plan skalowania środowiska Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak wykonać najważniejsze wskazówki podczas planowania środowisku usługi Azure Time Series Insights, w tym pojemność magazynu, przechowywanie danych, pojemność zdarzeń przychodzących, monitorowania i firm odzyskiwania po awarii (BCDR).
 services: time-series-insights
 ms.service: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: fa178efadf001b70501b132ede67686ae5c06363
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.custom: seodec18
+ms.openlocfilehash: 6541363eb2ac19cfa4359fe85bde5fa39157055e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422562"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273769"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planowanie środowiska usługi Azure Time Series Insights
 

@@ -1,12 +1,11 @@
 ---
-title: Dedykowaną pojemność dla zadań usługi wykonywania wsadowego - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+title: Usługa Azure Batch dla zadań usługi Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Omówienie usługi Azure Batch dla zadania uczenia maszynowego. Przetwarzanie puli usługi Batch pozwala na tworzenie pul, na których można przesłać zadania usługi batch.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: seodec18
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
 ms.component: studio
@@ -15,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 3a7adba53f271cd2f6bb2985d034821136d521b4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 44b63a51049e663e55cc59a623837cf65cab9ccc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075418"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275197"
 ---
-# <a name="azure-batch-service-for-machine-learning-jobs"></a>Usługa Azure Batch dla zadań usługi Machine Learning
+# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Usługa Azure Batch dla zadań usługi Azure Machine Learning Studio
 
 Machine Learning Batch Pool przetwarzania zapewnia skalowanie zarządzanych przez klienta usługa wykonywania wsadowego usługi Azure Machine Learning. Przetwarzanie wsadowe klasycznego uczenia maszynowego odbywa się w środowisku z wieloma dzierżawami, która ogranicza liczbę równoczesnych zadań możesz przesłać, a zadania są umieszczane w kolejce na podstawie pierwszego wejściu — pierwszy na wyjściu. Niepewności oznacza, że nie można dokładnie przewidzieć, kiedy zadanie zostanie wykonane.
 

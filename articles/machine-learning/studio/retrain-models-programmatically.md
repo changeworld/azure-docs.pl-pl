@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: da3edf7bc17240dabcb5519317f38bdb468be9f2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099991"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257397"
 ---
-# <a name="retrain-machine-learning-studio-models-programmatically"></a>Programowe ponowne trenowanie modeli usługi Machine Learning Studio
+# <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Programowe ponowne trenowanie modeli usługi Azure Machine Learning Studio
 W tym instruktażu będą nauczysz się programowe ponowne trenowanie korzystając usługi sieci web Azure Machine Learning Studio C# i usługa Machine Learning Batch Execution.
 
 Po mają retrained modelu, poniższe przewodniki pokazują, jak zaktualizować model w swojej predykcyjną usługę sieci web:
@@ -36,14 +35,14 @@ Omówienie ponownego trenowania procesu, zobacz [Ponowne szkolenie modelu uczeni
 Jeśli chcesz uruchomić przy użyciu usługi sieci web nowej usługi Azure Resource Manager na podstawie istniejących, zobacz [Ponowne szkolenie istniejącej usługi internetowej predykcyjne](retrain-existing-resource-manager-based-web-service.md).
 
 ## <a name="create-a-training-experiment"></a>Tworzenie eksperymentu szkolenia
-Na przykład użyjesz "przykład 5: oceń szkolenia i testowania dla klasyfikacji binarnej: treści dla dorosłych zestawu danych" z przykładów usługi Microsoft Azure Machine Learning. 
+Na przykład użyjesz "przykład 5: Szkolenie, testowanie, oceny Klasyfikacja binarna: Treści dla dorosłych zestawu danych"z przykładów usługi Microsoft Azure Machine Learning. 
 
 Aby utworzyć eksperyment:
 
 1. Zaloguj się do platformy Microsoft Azure Machine Learning Studio. 
 2. W prawym dolnym rogu pulpitu nawigacyjnego, kliknij polecenie **New**.
 3. Wybierz przykład 5 z Samples firmy Microsoft.
-4. Można zmienić nazwy eksperymentu w górnej części obszaru roboczego eksperymentu, wybierz nazwę eksperymentu "przykład 5: oceń szkolenia i testowania dla Klasyfikacja binarna: treści dla dorosłych zestawu danych".
+4. Aby zmienić nazwę eksperymentu w górnej części obszaru roboczego eksperymentu, wybierz nazwę eksperymentu "przykład 5: Szkolenie, testowanie, oceny Klasyfikacja binarna: Treści dla dorosłych zestaw danych".
 5. Typ modelu spisu.
 6. W dolnej części obszaru roboczego eksperymentu, kliknij przycisk **Uruchom**.
 7. Kliknij przycisk **Konfiguruj usługę sieci web** i wybierz **ponownego trenowania usługi sieci web**. 
@@ -93,7 +92,7 @@ Na przykład używasz C# do tworzenia aplikacji ponownego trenowania. Umożliwia
 
 Do wywoływania interfejsów API do ponownego trenowania:
 
-1. Tworzenie aplikacji konsolowej C# w programie Visual Studio: **New** > **projektu** > **Visual C#** > **Windows Klasyczny pulpit** > **Aplikacja konsoli (.NET Framework)**.
+1. Tworzenie C# konsoli aplikacji w programie Visual Studio: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)**.
 2. Zaloguj się do portalu usługi internetowej Machine Learning.
 3. Jeśli pracujesz z klasycznej usługi sieci web, kliknij przycisk **klasycznych usług sieci Web**.
    1. Kliknij usługę internetową, którą pracujesz.
@@ -159,7 +158,7 @@ Zobacz poniższy przykład:
 
 ![Ponowne szkolenie danych wyjściowych][6]
 
-Diagram 4: Ponowne Trenowanie danych wyjściowych.
+Diagram 4: Dane wyjściowe ponownego trenowania.
 
 ## <a name="evaluate-the-retraining-results"></a>Ocena ponownego trenowania wyników
 Po uruchomieniu aplikacji, dane wyjściowe obejmują adres URL sygnatury dostępu Współdzielonego tokenu i niezbędnych do uzyskania dostępu wyniki oceny.

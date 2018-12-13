@@ -1,5 +1,5 @@
 ---
-title: Zarządzane usługi Azure Search za pomocą skryptów programu Powershell | Dokumentacja firmy Microsoft
+title: Zarządzanie usługą Azure Search za pomocą skryptów programu Powershell — usługa Azure Search
 description: Zarządzanie usługą Azure Search za pomocą skryptów programu PowerShell. Tworzenie lub aktualizowanie usługi Azure Search i zarządzanie nimi klucze administratora usługi Azure Search
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: bae9e2dcb4320c1da4f1d8e3c6ad50ce90195544
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec2018
+ms.openlocfilehash: c05a2ceb7cc515691af91652c968b73c72029db4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958571"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313466"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Zarządzanie usługą Azure Search przy użyciu programu PowerShell
 > [!div class="op_single_selector"]

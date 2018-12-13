@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 7578950af2dafdade3c97650dfd212240053dd3b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4c54fe7c9ae5555ad1b8ba6919c70c8f7fa49125
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625457"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252113"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpiecznie zapisać ustawienia klucza tajnego aplikacji dla aplikacji sieci web
 
 ## <a name="overview"></a>Przegląd
 W tym artykule opisano, jak bezpiecznie zapisać ustawienia konfiguracji wpisu tajnego aplikacji dla aplikacji platformy Azure.
 
-Tradycyjnie wszystkie sieci web konfiguracji aplikacji, które ustawienia są zapisywane w plikach konfiguracji, takich jak plik Web.config. Praktyka ta prowadzi do zaewidencjonowania ustawień tajnych, takich jak poświadczenia w chmurze dla systemów kontroli źródła publicznych, takich jak Github. W tym samym czasie może być trudno postępuj zgodnie z zaleceniami dotyczącymi zabezpieczeń ze względu na obciążenie, trzeba zmienić kod źródłowy i ponownie skonfigurować ustawienia środowiska deweloperskiego.
+Tradycyjnie wszystkie sieci web konfiguracji aplikacji, które ustawienia są zapisywane w plikach konfiguracji, takich jak plik Web.config. Praktyka ta prowadzi do zaewidencjonowania ustawień tajnych, takich jak poświadczenia w chmurze dla systemów kontroli źródła publicznych, takich jak GitHub. W tym samym czasie może być trudno postępuj zgodnie z zaleceniami dotyczącymi zabezpieczeń ze względu na obciążenie, trzeba zmienić kod źródłowy i ponownie skonfigurować ustawienia środowiska deweloperskiego.
 
 Aby upewnić się, że proces tworzenia aplikacji jest bezpieczna, narzędzia i struktury bibliotek są tworzone można zapisać ustawień klucza tajnego aplikacji bezpiecznego przy minimalnym i żadne zmiany kodu źródłowego.
 

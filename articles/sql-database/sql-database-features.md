@@ -12,14 +12,14 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: b559607f741c25f668100a33b9ba8e65f0acd40a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 328dd39c3ff82666c327bc5d1d106a019fb2247b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841300"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275826"
 ---
-# <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database a baza danych programu SQL Server
+# <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Usługa Azure SQL Database i programu SQL Server
 
 Usługa Azure SQL Database udostępnia wspólnej bazy kodu z programem SQL Server. Funkcje programu SQL Server obsługiwana przez usługę Azure SQL Database zależą od rodzaju bazy danych Azure SQL, którą tworzysz. Usługa Azure SQL Database, możesz utworzyć bazę danych jako część [wystąpienia zarządzanego](sql-database-managed-instance.md) lub można utworzyć bazy danych, która jest częścią serwera logicznego i opcjonalnie umieszczone w puli elastycznej.
 
@@ -34,6 +34,8 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 
 | **Funkcja SQL** | **Obsługiwane na serwerze bazy danych/logicznym usługi Azure SQL** | **Obsługiwane w wystąpieniu bazy danych lub zarządzane usługi Azure SQL** |
 | --- | --- | --- |
+| [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) | Tak — tylko warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy| Nie |
+| [Automatyczny tryb failover grupy](sql-database-auto-failover-group.md) | Tak — tylko warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy| Tak (wersja zapoznawcza)|
 | [Zawsze szyfrowane](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Tak — zobacz [magazyn certyfikatów](sql-database-always-encrypted.md) i [usługi Key vault](sql-database-always-encrypted-azure-key-vault.md) | Tak — zobacz [magazyn certyfikatów](sql-database-always-encrypted.md) i [usługi Key vault](sql-database-always-encrypted-azure-key-vault.md) |
 | [Zawsze włączone grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Wysoka dostępność](sql-database-high-availability.md) jest dołączony do każdej bazy danych. Odzyskiwanie po awarii została omówiona w [omówienie ciągłości działania za pomocą usługi Azure SQL Database](sql-database-business-continuity.md) | [Wysoka dostępność](sql-database-high-availability.md) jest dołączony do każdej bazy danych. Odzyskiwanie po awarii została omówiona w [omówienie ciągłości działania za pomocą usługi Azure SQL Database](sql-database-business-continuity.md) |
 | [Dołączanie bazy danych](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nie | Nie |
@@ -86,7 +88,6 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 | [Wyszukiwanie pełnotekstowe](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Moduły dzielenia wyrazów innych firm nie są obsługiwane. |Moduły dzielenia wyrazów innych firm nie są obsługiwane. |
 | [Funkcje](https://docs.microsoft.com/sql/t-sql/functions/functions) | Większość — Zobacz poszczególnych funkcji | Tak — zobacz [składowane, funkcje, wyzwala różnice](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Funkcja przywracania geograficznego](sql-database-recovery-using-backups.md#geo-restore) | Tak — tylko warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy | Nie można przywrócić COPY_ONLY Zobacz pełne kopie zapasowe, okresowo - przyjmujące [kopii zapasowej różnice](sql-database-managed-instance-transact-sql-information.md#backup) i [przywrócić różnice](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
-| [Geo-replication](sql-database-geo-replication-overview.md) (Replikacja geograficzna) | Tak — tylko warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy| Yes |
 | [Przetwarzanie wykresów](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Yes | Yes |
 | [Optymalizacja w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Tak — [tylko w warstwach Premium i krytyczne dla działania firmy](sql-database-in-memory.md) | Tak — [firm tylko warstwie krytyczne dla działania](sql-database-managed-instance.md) |
 | [Obsługa danych JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Tak](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [Tak](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |

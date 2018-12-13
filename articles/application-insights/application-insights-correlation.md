@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: da9ec327edc27e2f37f76704d6b5481869621049
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09db1c7a7d348d866cd131e66102044a37c010a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997474"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310338"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -31,7 +31,7 @@ Definiuje usługę Application Insights [modelu danych](application-insights-dat
 
 Rozproszone operacji logicznej zwykle składa się z szeregu mniejszych operacji — żądań przetworzonych przez jeden ze składników. Te operacje są definiowane przez [dane telemetryczne dotyczące żądań](application-insights-data-model-request-telemetry.md). Dane telemetryczne co żądania ma swój własny `id` określający sposób unikatowy globalnie. Należy określić wszystkie dane telemetryczne - śladów, wyjątków, itp., skojarzony z tym żądaniem `operation_parentId` wartości żądania `id`.
 
-Każda operacja wychodzących takich jak wywołania http do innego składnika, reprezentowane przez [telemetrii zależności](application-insights-data-model-dependency-telemetry.md). Telemetria zależności usługi definiuje również swój własny `id` jest unikatowa w skali globalnej. Telemetria żądań, inicjowany przez wywołanie zależności, używa go w formie `operation_parentId`.
+Każda operacja wychodzące (takie jak wywołania http do innego składnika) jest reprezentowany przez [telemetrii zależności](application-insights-data-model-dependency-telemetry.md). Telemetria zależności usługi definiuje również swój własny `id` jest unikatowa w skali globalnej. Telemetria żądań, inicjowany przez wywołanie zależności, używa go w formie `operation_parentId`.
 
 Można tworzyć w widoku rozproszonym operacji logicznej przy użyciu `operation_Id`, `operation_parentId`, i `request.id` z `dependency.id`. Te pola również zdefiniować kolejność przyczynowości wywołań telemetrii.
 

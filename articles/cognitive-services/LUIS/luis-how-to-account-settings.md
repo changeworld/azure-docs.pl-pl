@@ -1,7 +1,7 @@
 ---
 title: Zarządzanie ustawieniami
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Aby zarządzać ustawieniami konta, należy użyć witryny sieci Web usługi LUIS.
+description: Używanie usługi LUIS witryny sieci Web do zarządzania ustawień konta użytkownika i tworzenia pakietów administracyjnych klucz używany we wszystkich aplikacjach.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: a6a92fa32d7877baa5132134bdce66ce04017a77
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: bd6ae88834b45e9e154eb1e5e3ba921f403c7eaa
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092075"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138759"
 ---
 # <a name="manage-account-and-authoring-key"></a>Zarządzanie kontem i tworzenia klucza
 Dwa kluczowych informacji dla konta usługi LUIS są konta użytkowników i tworzenia klucza. Informacje o logowaniu odbywa się na [witryny account.microsoft.com](https://account.microsoft.com). Tworzenia klucza jest zarządzany z [LUIS](luis-reference-regions.md) witryny sieci Web **ustawienia** strony. 

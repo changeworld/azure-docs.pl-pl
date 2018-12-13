@@ -1,5 +1,5 @@
 ---
-title: Jak przygotować się na wychodzące zmiana adresu IP - Azure
+title: Przygotowanie do zmiany adresu IP ruchu wychodzącego — usłudze Azure App Service
 description: Jeśli adres IP ruchu wychodzącego, będzie można zmienić, Dowiedz się, co należy zrobić, dzięki czemu aplikacja będzie nadal działać po zmianie.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: 2355fa5e3e7fd83b5d9f22d87c19f8152659fc97
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.custom: seodec18
+ms.openlocfilehash: f611733400b8bfd18a135fe07f84606f13e59704
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309359"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275724"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Jak przygotować się na wychodzące zmiana adresu IP
 
@@ -23,9 +24,9 @@ Jeśli otrzymasz powiadomienie, które zmieniają się wychodzące adresy IP w T
 
 ## <a name="determine-if-you-have-to-do-anything"></a>Określić, czy istnieją podejmować żadnych działań
 
-* Opcja 1: Użycie aplikacji usługi app Service nie filtrowania adresów IP, lista dołączania jawne lub specjalnej obsługi ruchu wychodzącego, takiego jak Zapora lub routingu, jest wymagana żadna akcja.
+* Opcja 1: Jeśli aplikację usługi App Service nie korzysta z filtrowania adresów IP, lista dołączania jawne lub specjalnej obsługi ruchu wychodzącego, takiego jak Zapora lub routingu, jest wymagana żadna akcja.
 
-* Opcja 2: Jeśli aplikacja ma specjalna obsługa wychodzące adresy IP (Zobacz przykłady poniżej), Dodaj nowe adresy IP ruchu wychodzącego wszędzie tam, gdzie są wyświetlane już istniejące. Nie zastępuje istniejące adresy IP. Możesz znaleźć nowe adresy IP ruchu wychodzącego zgodnie z instrukcjami w następnej sekcji.
+* Opcja 2: Jeśli aplikacja ma specjalna obsługa wychodzące adresy IP (Zobacz przykłady poniżej), Dodaj nowe adresy IP ruchu wychodzącego, wszędzie tam, gdzie są wyświetlane już istniejące. Nie zastępuje istniejące adresy IP. Możesz znaleźć nowe adresy IP ruchu wychodzącego zgodnie z instrukcjami w następnej sekcji.
 
   Na przykład wychodzący adres IP może być jawnie uwzględnione w zaporze spoza aplikacji lub usługi zewnętrznej płatności może mieć listy dozwolonych, który zawiera adres IP ruchu wychodzącego dla aplikacji. Jeśli Twój adres ruchu wychodzącego jest skonfigurowany na liście w dowolnym miejscu poza aplikację, która wymaga wprowadzenia zmian.
 
@@ -39,7 +40,7 @@ Nowe wychodzące adresy IP są wyświetlane w portalu, zaczęły obowiązywać. 
 
 3.  Wybierz aplikację usługi App Service z listy.
 
-4.  Jeśli aplikacja jest aplikacja funkcji, zobacz [funkcji aplikacji wychodzące adresy IP](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
+1.  Jeśli aplikacja jest aplikacja funkcji, zobacz [funkcji aplikacji wychodzące adresy IP](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
 
 4.  W obszarze **ustawienia** nagłówka, kliknij przycisk **właściwości** w nawigacji po lewej stronie, a następnie znajdź sekcja o nazwie **adresy IP ruchu wychodzącego**.
 

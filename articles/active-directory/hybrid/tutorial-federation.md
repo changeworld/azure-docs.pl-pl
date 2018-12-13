@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Federację jednego środowiska lasu usługi AD na platformie Azure | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Sfederuj jednego środowiska lasu usługi AD na platformie Azure | Dokumentacja firmy Microsoft'
 description: Pokazuje, jak skonfigurować środowisko tożsamości hybrydowej, przy użyciu federacji.
 services: active-directory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50868d32b35e77495965b9ee9d0023d23b43fd5a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b813a276c2047a41038408744637b3dd50aff863
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426387"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163518"
 ---
-# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Samouczek: Federację jednego środowiska lasu usługi AD w chmurze
+# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Samouczek: Federowanie pojedynczego środowiska lasu usługi AD z chmurą
 
 ![Przycisk Utwórz](media/tutorial-federation/diagram.png)
 
@@ -39,7 +39,7 @@ Poniżej przedstawiono wymagania wstępne dotyczące wykonanie kroków tego samo
 >
 >Skrypty używane utworzyć ogólne środowisko usługi Active Directory przed zainstalowaniem programu Azure AD Connect.  Są one odpowiednie dla wszystkich samouczków.
 >
-> Kopiuje skryptów programu PowerShell, które są używane w tym samouczku są dostępne w serwisie Github [tutaj](https://github.com/billmath/tutorial-phs).
+> Kopiuje skryptów programu PowerShell, które są używane w tym samouczku są dostępne w serwisie GitHub [tutaj](https://github.com/billmath/tutorial-phs).
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Pierwszą rzeczą, potrzebujemy, aby zrobić, aby można było rozpocząć naszego środowiska tożsamości hybrydowej i działa, utwórz maszynę wirtualną, która będzie służyć jako serwer usługi Active Directory naszego środowiska lokalnego.  
@@ -87,7 +87,7 @@ Aby zakończyć tworzenie maszyny wirtualnej, należy na zakończenie instalacji
 5. Kliknij przycisk **Zainstaluj teraz**.
 6. Wprowadź klucz licencji i kliknij przycisk **dalej**.
 7. Sprawdź ** I zaakceptuj postanowienia licencyjne i kliknij przycisk **dalej**.
-8. Wybierz **niestandardowa: tylko Zainstaluj Windows (zaawansowane)**
+8. Wybierz **niestandardowe:  Zainstaluj tylko Windows (zaawansowane)**
 9. Kliknij przycisk **Dalej**
 10. Po zakończeniu instalacji uruchom ponownie maszynę wirtualną, rejestrowania i wykonywania aktualizacji Windows i upewnij się, że maszyna wirtualna jest najbardziej aktualne.  Zainstaluj najnowsze aktualizacje.
 

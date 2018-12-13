@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 228f5135165cbf8806516e5e932f210586013402
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 12/04/2018
+ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056747"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274432"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Przywracanie pojedynczej dzierżawy w przypadku aplikacji SaaS database dla dzierżawcy
 
@@ -26,10 +26,8 @@ Model bazy danych dla dzierżawcy ułatwia przywracanie pojedynczej dzierżawy d
 W tym samouczku dowiesz się dwa wzorce odzyskiwania danych:
 
 > [!div class="checklist"]
-
 > * Przywracanie bazy danych do równoległego bazy danych (obok siebie).
 > * Przywracanie bazy danych w miejscu, zastępując istniejącą bazę danych.
-
 
 |||
 |:--|:--|
@@ -44,13 +42,13 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 
 ## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>Wprowadzenie do wzorców przywracania dzierżawy SaaS
 
-Istnieją dwa wzorce proste do przywrócenia danych dzierżawy usługi. Ponieważ baz danych dzierżawy są od siebie odizolowane, przywracanie jednej dzierżawy nie ma wpływu na dane w dowolnej innej dzierżawie. Funkcja (Odzyskiwanie) punkt w czasie przywracania bazy danych SQL Azure jest używana w obu wzorców. Odzyskiwanie zawsze tworzy nową bazę danych.   
+Istnieją dwa wzorce proste do przywrócenia danych dzierżawy usługi. Ponieważ baz danych dzierżawy są od siebie odizolowane, przywracanie jednej dzierżawy nie ma wpływu na dane w dowolnej innej dzierżawie. Funkcja (Odzyskiwanie) punkt w czasie przywracania bazy danych SQL Azure jest używana w obu wzorców. Odzyskiwanie zawsze tworzy nową bazę danych.
 
-* **Przywracanie w sposób równoległy**: we wzorcu pierwszy równoległe nowej bazy danych jest tworzony wraz z bieżącej bazy danych dzierżawy. Dzierżawa następnie otrzymuje dostęp tylko do odczytu do przywróconej bazy danych. Przywróconych danych do przejrzenia i potencjalnie umożliwia zastąpienie bieżących wartości danych. To Ty projektanta aplikacji, aby określić, jak dzierżawcy uzyskuje dostęp do przywróconej bazy danych i jakie opcje odzyskiwania są dostępne. Po prostu umożliwieniu dzierżawcom przejrzeć swoje dane na wcześniejszą musi być wszystko, co jest wymagane w niektórych scenariuszach. 
+* **Przywracanie w sposób równoległy**: Na pierwszy wzorzec równoległe nowej bazy danych jest tworzona wraz z bieżącej bazy danych dzierżawy. Dzierżawa następnie otrzymuje dostęp tylko do odczytu do przywróconej bazy danych. Przywróconych danych do przejrzenia i potencjalnie umożliwia zastąpienie bieżących wartości danych. To Ty projektanta aplikacji, aby określić, jak dzierżawcy uzyskuje dostęp do przywróconej bazy danych i jakie opcje odzyskiwania są dostępne. Po prostu umożliwieniu dzierżawcom przejrzeć swoje dane na wcześniejszą musi być wszystko, co jest wymagane w niektórych scenariuszach.
 
-* **Przywracanie w miejscu**: drugi wzorzec jest przydatny w przypadku, jeśli dane zostały utracone lub uszkodzone i dzierżawy chce powrócić do wcześniejszego punktu. Dzierżawy jest przełączany do trybu offline podczas przywróceniu bazy danych. Oryginalna baza danych zostanie usunięty, a następnie przywrócona baza danych została zmieniona. Łańcuch kopii zapasowych oryginalnej bazy danych pozostają dostępne po usunięciu, dzięki czemu można przywrócić bazy danych do wcześniejszego punktu w czasie, jeśli to konieczne.
+* **Przywracanie w miejscu**: Drugi wzorzec jest przydatny w przypadku, jeśli dane zostały utracone lub uszkodzone i dzierżawy chce powrócić do wcześniejszego punktu. Dzierżawy jest przełączany do trybu offline podczas przywróceniu bazy danych. Oryginalna baza danych zostanie usunięty, a następnie przywrócona baza danych została zmieniona. Łańcuch kopii zapasowych oryginalnej bazy danych pozostają dostępne po usunięciu, dzięki czemu można przywrócić bazy danych do wcześniejszego punktu w czasie, jeśli to konieczne.
 
-Jeśli baza danych używa [geografickou replikaci](sql-database-geo-replication-overview.md) i przywracanie w sposób równoległy, firma Microsoft zaleca, skopiuj wszystkie wymagane dane z przywróconej kopii do oryginalnej bazy danych. Jeśli zastąpić oryginalną bazę danych przywróconą bazą danych, należy ponownie skonfigurować i zsynchronizować replikację geograficzną.
+Jeśli baza danych używa [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) i przywracanie w sposób równoległy, firma Microsoft zaleca, skopiuj wszystkie wymagane dane z przywróconej kopii do oryginalnej bazy danych. Jeśli zastąpić oryginalną bazę danych przywróconą bazą danych, należy ponownie skonfigurować i zsynchronizować replikację geograficzną.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Pobierz skrypty bazy danych dla dzierżawcy aplikacji SaaS o nazwie Wingtip Tickets
 
@@ -74,7 +72,6 @@ Aby zademonstrować tych scenariuszy odzyskiwania, najpierw "przypadkowo" Usuń 
 
    ![Zostanie wyświetlone ostatnie zdarzenie](media/saas-dbpertenant-restore-single-tenant/last-event.png)
 
-
 ### <a name="accidentally-delete-the-last-event"></a>"Przypadkowo" Usuwanie ostatniego zdarzenia
 
 1. W środowisku PowerShell ISE Otwórz... \\Learning Modules\\ciągłość biznesową i odzyskiwanie po awarii\\RestoreTenant\\*RestoreTenant.ps1 pokaz*i Ustaw następującą wartość:
@@ -88,15 +85,13 @@ Aby zademonstrować tych scenariuszy odzyskiwania, najpierw "przypadkowo" Usuń 
    ```
 
 3. Zostanie otwarta strona zdarzenia firmy Contoso. Przewiń w dół, a następnie sprawdź, czy zdarzenie jest usunięty. Jeśli zdarzenie jest nadal na liście, wybierz **Odśwież** i sprawdź, czy przeszedł.
-
    ![Ostatnie zdarzenie usunięte](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
-
 
 ## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>Przywracanie bazy danych dzierżawy równolegle z produkcyjnej bazy danych
 
 To ćwiczenie przywraca bazy danych firmy Contoso Concert Hall do punktu w czasie, zanim zdarzenie zostało usunięte. W tym scenariuszu założono, że usunięto dane w bazie danych równoległych.
 
- *TenantInParallel.ps1 przywracania* skrypt tworzy równoległy bazy danych o nazwie *ContosoConcertHall\_stare*, za pomocą wpisu katalogu równoległych. Ten wzorzec przywracania najlepiej nadaje się do odzyskiwania przed utratą danych pomocniczych. Ten wzorzec może również użyć w Jeśli chcesz przeglądać dane dla celów inspekcji lub zgodności. Przedstawia zalecane podejście, gdy używasz [geografickou replikaci](sql-database-geo-replication-overview.md).
+ *TenantInParallel.ps1 przywracania* skrypt tworzy równoległy bazy danych o nazwie *ContosoConcertHall\_stare*, za pomocą wpisu katalogu równoległych. Ten wzorzec przywracania najlepiej nadaje się do odzyskiwania przed utratą danych pomocniczych. Ten wzorzec może również użyć w Jeśli chcesz przeglądać dane dla celów inspekcji lub zgodności. Przedstawia zalecane podejście, gdy używasz [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md).
 
 1. Wykonaj [symulować dzierżawy przypadkowemu usunięciu danych](#simulate-a-tenant-accidentally-deleting-data) sekcji.
 2. W środowisku PowerShell ISE Otwórz... \\Learning Modules\\ciągłość biznesową i odzyskiwanie po awarii\\RestoreTenant\\_RestoreTenant.ps1 pokaz_.
@@ -115,7 +110,6 @@ Udostępnianie przywróconej dzierżawy jako dodatkowe dzierżawy z własną apl
 2. Aby uruchomić skrypt, naciśnij klawisz F5.
 3. *ContosoConcertHall\_stare* zapisu teraz jest usuwany z katalogu. Zamknij stronę zdarzenia dla tej dzierżawy w przeglądarce.
 
-
 ## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>Przywracanie dzierżawy w miejscu, zastępując istniejącą bazę danych dzierżawy
 
 To ćwiczenie przywraca dzierżawy firmy Contoso Concert Hall do punktu przed usunięciem zdarzenia. *TenantInPlace przywracania* skrypt spowoduje przywrócenie bazy danych do nowej bazy danych i usuwa oryginalny. Ten wzorzec przywracania najlepiej nadaje się do odzyskiwania danych poważne uszkodzenie i dzierżawcy może być konieczne pomieścić utracie dużej ilości danych.
@@ -128,14 +122,13 @@ Skrypt przywrócenie bazy danych dzierżaw do punktu przed usunięciem zdarzenia
 
 Pomyślnie przywrócono bazy danych do punktu w czasie, zanim zdarzenie zostało usunięte. Gdy **zdarzenia** zostanie otwarta strona, upewnij się, że ostatnie zdarzenie zostało przywrócone.
 
-Po przywróceniu bazy danych trwa inny 10 do 15 minut, zanim pierwsza pełna kopia zapasowa będzie można przywrócić z ponownie. 
+Po przywróceniu bazy danych trwa inny 10 do 15 minut, zanim pierwsza pełna kopia zapasowa będzie można przywrócić z ponownie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
 > * Przywracanie bazy danych do równoległego bazy danych (obok siebie).
 > * Przywracanie bazy danych w miejscu.
 

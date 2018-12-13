@@ -1,5 +1,5 @@
 ---
-title: Używanie usługi sieci web za pomocą szablonu aplikacji sieci web - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+title: Używanie usługi internetowej Studio za pomocą szablonu aplikacji sieci web - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Użyj szablonu aplikacji sieci web w witrynie Azure Marketplace z predykcyjna usługa internetowa Azure Machine Learning.
 keywords: Usługa sieci Web, operacjonalizacja, interfejs API REST usługi machine learning
 services: machine-learning
@@ -7,7 +7,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 3eaf881ea1b8831891588310bfcec5e8fb146978
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078586"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273888"
 ---
-# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Korzystanie z usługi sieci web Azure Machine Learning za pomocą szablonu aplikacji sieci web
+# <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Korzystanie z usługi sieci web Azure Machine Learning Studio za pomocą szablonu aplikacji sieci web
 
 Mogą tworzyć model predykcyjny i wdrożyć go jako usługę sieci web platformy Azure przy użyciu:
 - Azure Machine Learning Studio.
@@ -36,7 +35,7 @@ Istnieje szereg sposobów korzystania z interfejsu API REST i uzyskać dostęp d
 
 Ale to najszybszy i najłatwiejszy sposób dostęp do usługi sieci web za pomocą szablonów aplikacji sieci web dostępnych w [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="azure-machine-learning-web-app-templates"></a>Szablony aplikacji sieci web w usłudze Azure Machine Learning
 Szablony aplikacji sieci web dostępnych w witrynie Azure Marketplace można utworzyć niestandardową aplikację internetową znający usługę sieci web dane wejściowe i oczekiwanych wyników. To wszystko, co należy zrobić, uzyskania dostępu do aplikacji sieci web do usługi sieci web i danych, a szablon zajmie się resztą.

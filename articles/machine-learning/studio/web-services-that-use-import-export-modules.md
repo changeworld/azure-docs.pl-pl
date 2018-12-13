@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 84bc151e8d7acf8d320b5883e8637c321762fb32
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090350"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251389"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Wdrażaj usługi sieci web Azure Machine Learning Studio, korzystające z modułów importu i eksportu danych
 
@@ -29,10 +28,10 @@ Podczas tworzenia eksperyment predykcyjny zazwyczaj dodajesz usługi sieci web w
 
 Importowanie danych i moduły danych eksportu, może odczytywać i zapisywać różne dane podane przez lokalizacje, takie jak adres URL sieci Web za pośrednictwem protokołu HTTP, zapytanie Hive, bazy danych Azure SQL, Azure Table storage, usługi Azure Blob storage, strumieniowego źródła danych lub bazą danych SQL database w środowisku lokalnym.
 
-W tym temacie używany "przykład 5: oceń szkolenia i testowania dla klasyfikacji binarnej: treści dla dorosłych zestawu danych" przykładowy i zakłada się, zestaw danych został już załadowany do tabeli Azure SQL o nazwie censusdata.
+W tym temacie używany "przykład 5: Szkolenie, testowanie, oceny Klasyfikacja binarna: Przykładowy zestaw danych treści dla dorosłych"i zakłada się, zestaw danych został już załadowany do tabeli Azure SQL o nazwie censusdata.
 
 ## <a name="create-the-training-experiment"></a>Tworzenie eksperymentu szkolenia
-Po otwarciu "przykład 5: oceń szkolenia i testowania dla klasyfikacji binarnej: treści dla dorosłych zestawu danych" przykład używa przykładowego zestawu danych treści dla dorosłych klasyfikacji binarnej dochodu spisu. I doświadczenia w obszarze roboczym będzie wyglądać podobnie do poniższej ilustracji:
+Po otwarciu "przykład 5: Szkolenie, testowanie, oceny Klasyfikacja binarna: Przykład treści dla dorosłych zestaw danych"używa przykładowego zestawu danych treści dla dorosłych klasyfikacji binarnej dochodu spisu. I doświadczenia w obszarze roboczym będzie wyglądać podobnie do poniższej ilustracji:
 
 ![Wstępna konfiguracja eksperymentu.](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
@@ -104,7 +103,7 @@ Aby wdrożyć jako klasycznej usługi sieci Web i tworzenie aplikacji z jego:
 2. Gdy działanie zostało zakończone, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [klasyczny]**.
 3. Zlokalizuj swój klucz interfejsu API na pulpicie nawigacyjnym usługi sieci web. Skopiuj i zapisz go do późniejszego użycia.
 4. W **domyślny punkt końcowy** tabelę, kliknij przycisk **wykonywanie wsadowe** link, aby otworzyć stronę pomocy interfejsu API.
-5. W programie Visual Studio, należy utworzyć C# konsoli aplikacji: **New** > **projektu** > **Visual C#**   >   **Windows Classic Desktop** > **Aplikacja konsoli (.NET Framework)**.
+5. W programie Visual Studio, należy utworzyć C# konsoli aplikacji: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)**.
 6. Na stronie pomocy interfejsu API, należy znaleźć **przykładowy kod** sekcji w dolnej części strony.
 7. Skopiuj i Wklej C# przykładowego kodu do pliku Program.cs i usunąć wszystkie odwołania do usługi blob storage.
 8. Zaktualizuj wartość *apiKey* zmiennej za pomocą klucza interfejsu API, zapisany wcześniej.
@@ -133,7 +132,7 @@ Aby wdrożyć jako nową usługę sieci Web i tworzenie aplikacji z jego:
 3. Na stronie wdrażanie eksperymentu, wprowadź nazwę usługi sieci web i wybrać planu cenowego, a następnie kliknij przycisk **Wdróż**.
 4. Na **Szybki Start** kliknij **zużywania**.
 5. W **przykładowy kod** kliknij **partii**.
-6. W programie Visual Studio, należy utworzyć C# konsoli aplikacji: **New** > **projektu** > **Visual C#**   >   **Windows Classic Desktop** > **Aplikacja konsoli (.NET Framework)**.
+6. W programie Visual Studio, należy utworzyć C# konsoli aplikacji: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)**.
 7. Skopiuj i Wklej C# przykładowego kodu do pliku Program.cs.
 8. Zaktualizuj wartość *apiKey* zmiennej za pomocą **klucza podstawowego** znajduje się w **informacje podstawowe użycie** sekcji.
 9. Znajdź *scoreRequest* deklaracji i zaktualizuj wartości parametrów usługi sieci Web, które są przekazywane do *importu danych* i *Eksport danych* modułów. W tym przypadku użyj oryginalne zapytanie, ale zdefiniowanie nowej nazwy tabeli.

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 37d57b0dc381f0ed2edf1f3debb76e5b54eae157
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b0e0f26abbf8eb5cbf1cf9ba2014204d773ae15d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093832"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187317"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
  
@@ -38,34 +38,34 @@ Następujące istotne zmiany są wprowadzane przy poziomie zgodności 1.1:
 
 * **Format XML magistrali usług**  
 
-  * **poprzednie wersje:** usługi Azure Stream Analytics używane DataContractSerializer, dlatego zawartość komunikatu tagów XML. Na przykład:
+  * **Poprzednie wersje:** Usługa Azure Stream Analytics używane DataContractSerializer, dlatego zawartość komunikatu tagów XML. Na przykład:
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId": "1", "Temperatura": 64\}\u0001 
+    @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId": "1", "Temperatura": 64\}\u0001 
 
-  * **Bieżąca wersja:** treść wiadomości zawiera strumienia bezpośrednio z nie dodatkowe tagi. Na przykład:
+  * **Bieżąca wersja:** Treść wiadomości zawiera strumienia bezpośrednio z nie dodatkowe tagi. Na przykład:
   
-   {"SensorId": "1", "Temperatura": 64} 
+    {"SensorId": "1", "Temperatura": 64} 
  
 * **Utrwalanie uwzględnianie wielkości liter dla nazw pól**  
 
-  * **poprzednie wersje:** nazwy pola zostały zmienione na małe litery, gdy jest przetwarzane przez aparat usługi Azure Stream Analytics. 
+  * **Poprzednie wersje:** Nazwy pól zostały zamienione na małe litery, gdy jest przetwarzane przez aparat usługi Azure Stream Analytics. 
 
   * **Bieżąca wersja:** uwzględnianie wielkości liter są utrwalane dotyczące nazw pól, gdy są przetwarzane przez aparat usługi Azure Stream Analytics. 
 
-  > [!NOTE] 
-  > Utrwalanie uwzględnianie wielkości liter nie jest jeszcze dostępna dla zadania Stream Analytics hostowany przy użyciu środowiska krawędzi. W rezultacie wszystkie nazwy pól są konwertowane na małe litery, gdy zadanie jest obsługiwana na urządzeniach brzegowych. 
+    > [!NOTE] 
+    > Utrwalanie uwzględnianie wielkości liter nie jest jeszcze dostępna dla zadania Stream Analytics hostowany przy użyciu środowiska krawędzi. W rezultacie wszystkie nazwy pól są konwertowane na małe litery, gdy zadanie jest obsługiwana na urządzeniach brzegowych. 
 
 * **FloatNaNDeserializationDisabled**  
 
-  * **poprzednie wersje:** polecenia CREATE TABLE nie filtrowanie zdarzeń z NaN (Not a Number. Na przykład w nieskończoność, - nieskończoność) w kolumnie FLOAT typu, ponieważ są one poza zakresem udokumentowane w przypadku tych liczb.
+  * **Poprzednie wersje:** Polecenia CREATE TABLE nie filtrowanie zdarzeń z NaN (Not a Number. Na przykład w nieskończoność, - nieskończoność) w kolumnie FLOAT typu, ponieważ są one poza zakresem udokumentowane w przypadku tych liczb.
 
-  * **Bieżąca wersja:** CREATE TABLE pozwala określić silne schematu. Aparat usługi Stream Analytics weryfikuje, że danych odpowiada tym schemacie. W tym modelu polecenia można filtrować zdarzenia przy użyciu wartości NaN. 
+  * **Bieżąca wersja:** CREATE TABLE umożliwia określenie silne schematu. Aparat usługi Stream Analytics weryfikuje, że danych odpowiada tym schemacie. W tym modelu polecenia można filtrować zdarzenia przy użyciu wartości NaN. 
 
 * **Wyłącz automatyczne rozszerzające dla ciągów daty i godziny w formacie JSON.**  
 
-  * **poprzednie wersje:** analizatora składni notacji JSON będzie automatycznie upcast — ciąg, wpisz wartości daty/godziny/strefy informacji do daty/godziny, a następnie przekonwertować go na UTC. Pozwoliło to odnotować utraty informacji o strefie czasowej.
+  * **Poprzednie wersje:** Analizator składni JSON będzie automatycznie upcast — ciągi informacjami Data/Godzina/strefa na typ DateTime, a następnie przekonwertować go na czas UTC. Pozwoliło to odnotować utraty informacji o strefie czasowej.
 
-  * **Bieżąca wersja:** ma nie więcej automatycznie upcast — wartości ciągu daty/godziny/strefy informacje umożliwiające typu DateTime. W rezultacie są przechowywane informacje dotyczące strefy czasowej. 
+  * **Bieżąca wersja:** Nie ma już automatycznie upcast — wartości ciągu daty/godziny/strefy informacje umożliwiające typu DateTime. W rezultacie są przechowywane informacje dotyczące strefy czasowej. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Rozwiązywanie problemów z danych wejściowych usługi Azure Stream Analytics](stream-analytics-troubleshoot-input.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31ca79976ec2ecf2755b975749e9c9150c4a49e8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ea884f6fecc1e8a0de1f6a0f8a4daafcdf612e9f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441077"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272711"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Informacje o wersji dla publicznej wersji zapoznawczej usługi Azure Active Directory B2C zasad niestandardowych
 Zestaw funkcji niestandardowych zasad jest teraz dostępna w wersji ewaluacyjnej w publicznej wersji zapoznawczej dla wszystkich usługi Azure Active Directory B2C (Azure AD B2C) klientów. Ten zestaw funkcji jest przeznaczona dla deweloperów tożsamości zaawansowanego tworzenia najbardziej złożonych rozwiązań tożsamości.  
@@ -25,10 +25,9 @@ Obecnie ten zestaw funkcji wymaga deweloperom konfigurowanie w struktura środow
 ## <a name="features-included-in-this-public-preview"></a>Funkcje zawarte w tej publicznej wersji zapoznawczej
 Za pomocą nowych funkcji wprowadzonych w publicznej wersji zapoznawczej deweloperzy mogą wykonywać następujące zadania:<br>
 
-* Tworzenie i przekazywanie niestandardowe uwierzytelnianie użytkownika podróży za pomocą zasad niestandardowych. 
+*, Autor, a następnie przekaż podróży użytkownika uwierzytelniania niestandardowego za pomocą zasad niestandardowych. 
    * Opisz podróży użytkownika krok po kroku, jak wymiany między dostawców oświadczeń. 
-   * Zdefiniuj rozgałęzienia warunkowe w podróży użytkownika. 
-* Integracja usług korzystających z interfejsu API REST w swojej podróży użytkownika uwierzytelniania niestandardowego.  
+   * Zdefiniuj rozgałęzienia warunkowe w podróży użytkownika. * Integracja usług korzystających z interfejsu API REST w swojej podróży użytkownika uwierzytelniania niestandardowego.  
 * Dodaj Federację z dostawcami tożsamości, które są zgodne ze standardowych OpenIDConnect. <br>
 * Dodaj Federację z dostawcami tożsamości, zgodne z protokołu SAML 2.0. 
 
@@ -38,11 +37,11 @@ Za pomocą nowych funkcji wprowadzonych w publicznej wersji zapoznawczej dewelop
 * Nowe funkcje nie są przeznaczone do użytku w środowisku produkcyjnym.<br>
 * Umowy dotyczące poziomu usług (SLA) nie są stosowane do nowych funkcji. <br>
 * Żądania pomocy technicznej można zgłosić za pośrednictwem kanałów pomocy technicznej regularne. <br>
-* Brak bez daty uzgodnionego za usługi ogólnie dostępne.<br>
-* Uznania z dowolnej przyczyny Microsoft może Flaga i odrzucić lub ograniczyć scenariuszy i podróży użytkownika, które wykraczają poza zakres karty produktu usługi Azure AD B2C ma pełnić rolę klienta tożsamościami i dostępem (CIAM) platforma do zarządzania.
+* Jest Brak daty uzgodnionego za usługi ogólnie dostępne.<br>
+* Uznania i z jakiegokolwiek powodu Microsoft może Flaga i odrzucić lub ograniczyć scenariuszy i podróży użytkownika, które wykraczają poza zakres karty produktu usługi Azure AD B2C ma pełnić rolę klienta tożsamościami i dostępem (CIAM) platforma do zarządzania.
 
 ## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Obowiązki deweloperom zestaw funkcji zasad niestandardowych
-Konfiguracja zasad ręczne udziela niższego poziomu dostępu dla podstawowej platformy usługi Azure AD B2C i spowoduje powstanie framework unikatowy zaufania można swobodnie dostosowywać. Możliwych kombinacji niestandardowych dostawców tożsamości, relacje zaufania, integracji z usługami zewnętrznymi i instrukcje krok po kroku przepływami pracy umieścić większe zapotrzebowanie na zaawansowanych deweloperów korzystanie z nich.
+Konfiguracja zasad ręczne udziela niższego poziomu dostępu dla podstawowej platformy usługi Azure AD B2C i spowoduje powstanie framework unikatowy zaufania można swobodnie dostosowywać. Możliwych kombinacji niestandardowych dostawców tożsamości, relacje zaufania, integracji z usługami zewnętrznymi i instrukcje krok po kroku przepływami pracy umieścić większe zapotrzebowanie na zaawansowanych deweloperów korzystanie z nich.
 
 Aby w pełni korzystać z publicznej wersji zapoznawczej, zaleca się, czy deweloperom korzystanie z zestawu funkcji niestandardowych zasad przestrzegać następujących wytycznych:
 * Zapoznanie się z języka konfiguracji platformy środowiska tożsamości i zarządzania klucza lub kluczy tajnych.
@@ -52,7 +51,7 @@ Aby w pełni korzystać z publicznej wersji zapoznawczej, zaleca się, czy dewel
 * Aktualne informacje na temat nowych rozwiązań od dostawcy tożsamości i usług, z których możesz zintegrować z usługą. Na przykład śledzenie pracy w wpisów tajnych i planowanych i nieplanowanych zmian wprowadzonych w usłudze.
 * Konfigurowanie aktywnego monitorowania i monitorować czas reakcji w środowisku produkcyjnym.
 * Aktualizuj adresy e-mail kontaktu w subskrypcji platformy Azure i przygotuj reagują na wiadomości e-mail z działającej witryny zespołu firmy Microsoft.
-* Podejmij działanie aktualnych przypadku zaleca się, aby to zrobić przez zespół aktywnej witryny firmy Microsoft. 
+* Podejmij działanie aktualnych przypadku zaleca się, aby to zrobić przez zespół aktywnej witryny firmy Microsoft. 
 
 ## <a name="features-by-stage-and-known-issues"></a>Funkcje według etapów i znane problemy
 Niestandardowe funkcje platformy środowiska tożsamości/zasady opracowywane są szybkie i stałych.  Ta tabela to indeks dostępności funkcji/składników.
@@ -100,7 +99,7 @@ Interfejsy z zewnętrznych składników i aplikacji
 |   Lokalne konto logowania, api.localaccountsignin |  | x |  |  |
 |   Zarejestruj się, api.localaccountsignup konta lokalnego |  | x |  |  |
 |   Strona uwierzytelniania Wieloskładnikowego, api.phonefactor |  | x |  |  |
-|   Samodzielnie określonych — na przykład api.selfasserted sig telefoniczny konta społecznościowego |  | x |  |  |
+|   Samodzielnie określonych — na przykład api.selfasserted rejestrowania, konta społecznościowego |  | x |  |  |
 |   Samodzielnie określonych aktualizacji profilu api.selfasserted.profileupdate |  | x |  |  |
 |   Ujednolicone rejestracji lub strony logowania, api.signuporsignin |  | x |  |  |
 

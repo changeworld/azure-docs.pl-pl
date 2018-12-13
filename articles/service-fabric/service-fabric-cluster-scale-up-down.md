@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 85a1e874ad80d0a3251c93c9c1199f56ab045527
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 91516e3284ebf3588c2dba31b67cc583e4d395db
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140574"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309426"
 ---
 # <a name="read-before-you-scale"></a>Przeczytaj przed przystąpieniem do skalowania
 Skalowanie zasobów obliczeniowych do źródła obciążenia robocze aplikacji wymaga planowania zamierzone, prawie zawsze będzie trwać dłużej niż godzinę w środowisku produkcyjnym i wymagają zrozumieć swoje obciążenia i kontekst biznesowy; w rzeczywistości Jeśli to działanie przed nigdy nie zostały wykonane, zaleca się uruchamiania, odczytując i interpretując kolejne [zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity), przed kontynuowaniem pozostałej części tego dokumentu. To zalecenie jest uniknięcie niezamierzone problemy LiveSite i zalecane jest również, że testujesz operacje, które użytkownik chce wykonać w środowisku nieprodukcyjnym. W dowolnym momencie możesz [zgłosić problemy w środowisku produkcyjnym lub poprosić płatnej pomocy technicznej dla platformy Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Dla inżynierów przydzielone do wykonywania tych operacji, które posiadają odpowiedniego kontekstu w tym artykule opisano operacje skalowania, ale należy zdecydować i zrozumieć, jakie operacje są odpowiednie dla danego przypadku użycia; jakie zasoby do skali (procesor CPU, Magazyn, pamięć), np. jakie kierunek skalowania (w pionie lub poziomie) i jakie operacje do wykonania (wdrożenie szablonu zasobów, Portal, programu PowerShell/interfejsu wiersza polecenia).
 
-# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Skalowanie klastra usługi Service Fabric wewnątrz lub na zewnątrz przy użyciu reguł skalowania automatycznego lub ręcznego
+## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Skalowanie klastra usługi Service Fabric wewnątrz lub na zewnątrz przy użyciu reguł skalowania automatycznego lub ręcznego
 Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze usługi Service Fabric zostanie określony jako oddzielne maszyny wirtualnej zestawu skalowania. Każdy typ węzła może następnie być skalowana w lub się niezależnie od siebie, mają różne zestawy otwartych portów i może mieć różne metryki pojemności. Dowiedz się więcej o go w [elementy NodeType usługi Service Fabric](service-fabric-cluster-nodetypes.md) dokumentu. Ponieważ typy węzłów usługi Service Fabric w klastrze składają się z zestawami skalowania maszyn wirtualnych na zapleczu, należy skonfigurować reguły automatycznego skalowania dla zestawu skalowania maszyn typu/wirtualnej każdego węzła.
 
 > [!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: Azure filtry połączenia usługi Service Bus IP | Dokumentacja firmy Microsoft
-description: Jak używać filtrowania z określonych adresów IP do usługi Azure Service Bus w celu połączenia bloków adresów IP.
+title: Reguły zapory na magistrali usług platformy Azure | Dokumentacja firmy Microsoft
+description: Jak używać reguł zapory zezwala na połączenia z określonych adresów IP usługi Azure Service Bus.
 services: service-bus
 documentationcenter: ''
 author: clemensv
@@ -10,29 +10,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: f8771be9a96ae188a9610a1b19dfd6cbd49ba277
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884807"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270437"
 ---
-# <a name="use-ip-filters"></a>Użyj filtrów IP
+# <a name="use-firewall-rules"></a>Użyj reguł zapory
 
-W scenariuszach, w których usługi Azure Service Bus jest dostępna tylko w pewnych dobrze znanych witryn *filtru IP* funkcja umożliwia skonfigurowanie reguł dla odrzuca lub akceptowanie ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
+W przypadku scenariuszy, w których usługi Azure Service Bus jest dostępna tylko w niektórych witrynach dobrze znanych reguł zapory umożliwiają skonfigurowanie reguły do akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
 
 ## <a name="when-to-use"></a>Kiedy stosować
 
-Istnieją dwa przypadki użycia określonych, w których jest przydatne blokowanie punktów końcowych usługi Service Bus na potrzeby niektórych adresów IP:
-
-- Service Bus powinny odbierać ruch tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład używasz usługi Service Bus za pomocą [Azure Express Route] [ express-route] na tworzenie prywatnych połączeń w infrastrukturze lokalnej.
-- Należy odrzucić ruch z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora usługi Service Bus.
+Jeśli szukasz do Instalatora usługi Service Bus, w której powinna odbierać ruch tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy, a następnie można wykorzystać *zapory* blokowanie punktów końcowych usługi Service Bus, z innych adresów IP. Na przykład używasz usługi Service Bus za pomocą [Azure Express Route] [ express-route] na tworzenie prywatnych połączeń w infrastrukturze lokalnej. 
 
 ## <a name="how-filter-rules-are-applied"></a>Sposób stosowania reguły filtrowania
 
 Reguły filtrowania adresów IP są stosowane na poziomie przestrzeni nazw usługi Service Bus. W związku z tym zasady stosowane do wszystkich połączeń z klientami przy użyciu dowolnego obsługiwanego protokołu.
 
-Każda próba połączenia z adresu IP, który nieautoryzowane dopasowania, odrzucenia jako regułę wydzielenia adresów IP w przestrzeni nazw usługi Service Bus. Odpowiedź nie mogą zawierać reguły adresów IP.
+Każda próba połączenia z adresu IP, który nie jest zgodny regułę dozwolonych adresów IP w usłudze Service Bus, przestrzeń nazw zostanie odrzucone jako nieautoryzowany. Odpowiedź nie mogą zawierać reguły adresów IP.
 
 ## <a name="default-setting"></a>Ustawienie domyślne
 
@@ -42,67 +39,107 @@ Domyślnie **filtru IP** siatki w portalu usługi Service Bus jest pusty. To ust
 
 Reguły filtrowania adresów IP są stosowane w kolejności i pierwszej reguły, który jest zgodny z adresem IP określa akcję Zaakceptuj lub Odrzuć.
 
-Na przykład jeśli chcesz zaakceptować adresów w 70.37.104.0/24 zakresu i odrzucić wszystkie inne elementy, pierwszą regułę w siatce powinna obsługiwać 70.37.104.0/24 zakresu adresów. Następną regułę należy odrzucić wszystkie adresy, używając 0.0.0.0/0 zakresu.
+>[!WARNING]
+> Implementowanie reguł zapory można zapobiec interakcji z usługą Service Bus innych usług platformy Azure.
+>
+> Zaufane usługi firmy Microsoft nie są obsługiwane podczas filtrowania adresów IP (reguły zapory) są wykonywane i zostanie udostępniona wkrótce.
+>
+> Typowe scenariusze platformy Azure, które nie działają z filtrowania adresów IP (należy pamiętać, że lista jest **nie** wyczerpująca) —
+> - Azure Monitor
+> - Usługa Azure Stream Analytics
+> - Integracja z usługą Azure Event Grid
+> - Usługa Azure IoT Hub tras
+> - Usługa Azure IoT Device Explorer
+> - Azure Data Explorer
+>
+> Poniżej Microsoft usług są wymagane w sieci wirtualnej
+> - Azure Web Apps
+> - Azure Functions
 
-> [!NOTE]
-> Odrzuca adresy IP można zapobiec interakcji z usługą Service Bus innych usług platformy Azure (np. usługi Azure Stream Analytics, Azure Virtual Machines lub Device Explorer w portalu).
+### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie wirtualnej sieci i reguła zapory przy użyciu szablonów usługi Azure Resource Manager
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły sieci wirtualnej przy użyciu szablonów usługi Azure Resource Manager
-
-> ! [WAŻNE] Sieci wirtualne są obsługiwane tylko w **premium** warstwy usługi Service Bus.
+> [!IMPORTANT]
+> Sieci wirtualne są obsługiwane tylko w **premium** warstwy usługi Service Bus.
 
 Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci wirtualnej do istniejącej przestrzeni nazw usługi Service Bus.
 
 Parametry szablonu:
 
-- **ipFilterRuleName** musi być unikatowy, bez uwzględniania wielkości liter, alfanumerycznego ciągu maksymalnie 128 znaków.
-- **ipFilterAction** jest **Odrzuć** lub **Akceptuj** jako akcję do zastosowania dla tej reguły filtru adresu IP.
 - **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
 
+> [!NOTE]
+> Choć Brak reguł odmowy, możliwe, szablon usługi Azure Resource Manager jest domyślna akcja równa **"Zezwalaj"** która nie stanowi ograniczenia połączeń.
+> Podczas tworzenia reguł sieci wirtualnej lub zapory, możemy zmienić ***"defaultAction"***
+> 
+> z
+> ```json
+> "defaultAction": "Allow"
+> ```
+> na
+> ```json
+> "defaultAction": "Deny"
+> ```
+>
+
 ```json
-{  
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{     
-          "namespaceName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the namespace"
-             }
-          },
-          "ipFilterRuleName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the Authorization rule"
-             }
-          },
-          "ipFilterAction":{  
-             "type":"string",
-             "allowedValues": ["Reject", "Accept"],
-             "metadata":{  
-                "description":"IP Filter Action"
-             }
-          },
-          "IpMask":{  
-             "type":"string",
-             "metadata":{  
-                "description":"IP Mask"
-             }
-          }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "servicebusNamespaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Service Bus namespace"
+        }
       },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "Location for Namespace"
+        }
+      }
+    },
+    "variables": {
+      "namespaceNetworkRuleSetName": "[concat(parameters('servicebusNamespaceName'), concat('/', 'default'))]",
+    },
     "resources": [
-        {
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(parameters('namespaceName'), '/', parameters('ipFilterRuleName'))]",
-            "type": "Microsoft.ServiceBus/Namespaces/IPFilterRules",
-            "properties": {
-                "FilterName":"[parameters('ipFilterRuleName')]",
-                "Action":"[parameters('ipFilterAction')]",              
-                "IpMask": "[parameters('IpMask')]"
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[parameters('servicebusNamespaceName')]",
+        "type": "Microsoft.ServiceBus/namespaces",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "properties": { }
+      },
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[variables('namespaceNetworkRuleSetName')]",
+        "type": "Microsoft.ServiceBus/namespaces/networkruleset",
+        "dependsOn": [
+          "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespaceName'))]"
+        ],
+        "properties": {
+          "virtualNetworkRules": [<YOUR EXISTING VIRTUAL NETWORK RULES>],
+          "ipRules": 
+          [
+            {
+                "ipMask":"10.1.1.1",
+                "action":"Allow"
+            },
+            {
+                "ipMask":"11.0.0.0/24",
+                "action":"Allow"
             }
-        } 
-    ]
-}
+          ],
+          "defaultAction": "Deny"
+        }
+      }
+    ],
+    "outputs": { }
+  }
 ```
 
 Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [usługi Azure Resource Manager][lnk-deploy].

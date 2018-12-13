@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 454f45b692a87dbd47ca1ca70880323912693839
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a1594d3dfe449049258e5ee12bc173c413459f8a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082700"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132878"
 ---
 # <a name="manage-versions"></a>Zarządzanie wersjami
 
@@ -45,7 +45,7 @@ Listę wersji pokazują, które wersje są publikowane, gdzie są publikowane i 
 
 Wybierz wersję z listy, a następnie wybierz **wprowadzić Active** na pasku narzędzi. 
 
-[![Sekcji Zarządzanie, strona wersji](./media/luis-how-to-manage-versions/versions-other.png "sekcji Zarządzanie, strona wersji")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![Sekcji Zarządzanie, strona wersji upewnij akcji wersji](./media/luis-how-to-manage-versions/versions-other.png "sekcji Zarządzanie, strona wersji upewnij akcji wersji")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Wersja importu
 
@@ -53,7 +53,7 @@ Wybierz wersję z listy, a następnie wybierz **wprowadzić Active** na pasku na
 
 2. W **importowania nowej wersji** oknie podręcznym, wprowadź nową nazwę w wersji 10 znaków. Należy ustawić identyfikator wersji, jeśli w pliku JSON w wersji już istnieje w aplikacji.
 
-    ![Zarządzanie sekcję strony z wersjami](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+    ![Zarządzanie sekcji stronę wersje, zaimportowaniu nowej wersji](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     Po zaimportowaniu wersji nowej wersji staje się aktywny wersji.
 

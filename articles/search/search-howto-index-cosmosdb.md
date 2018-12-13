@@ -1,6 +1,6 @@
 ---
-title: Indeksowanie źródła danych usługi Azure Cosmos DB dla usługi Azure Search | Dokumentacja firmy Microsoft
-description: W tym artykule pokazano, jak utworzyć indeksator usługi Azure Search przy użyciu źródła danych usługi Azure Cosmos DB.
+title: Indeks źródła danych usługi Azure Cosmos DB — usługa Azure Search
+description: Przeszukaj źródła danych usługi Azure Cosmos DB i pozyskiwania danych w indeksie wyszukiwania pełnotekstowego w usłudze Azure Search. Indeksatory zautomatyzować pozyskiwanie danych dla wybranych źródeł danych takich jak Azure Cosmos DB.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec2018
+ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747545"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311817"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Łączenie usługi Cosmos DB przy użyciu usługi Azure Search przy użyciu indeksatorów
 
@@ -96,17 +97,17 @@ Aby utworzyć źródło danych, czy WPIS:
 Treść żądania zawiera definicję źródła danych, który powinien zawierać następujące pola:
 
 * **Nazwa**: Wybierz dowolną nazwę do reprezentowania bazy danych.
-* **Typ**: musi być `documentdb`.
+* **Typ**: Musi być `documentdb`.
 * **poświadczenia**:
   
-  * **element connectionString**: wymagane. Określ informacje o połączeniu z bazą danych Azure Cosmos DB w następującym formacie: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` MongoDB dla kolekcji, Dodaj **rodzaju interfejsu API = MongoDb** parametry połączenia: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  * **element connectionString**: Wymagany. Określ informacje o połączeniu z bazą danych Azure Cosmos DB w następującym formacie: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` Kolekcje bazy danych MongoDB, można dodać **rodzaju interfejsu API = MongoDb** parametry połączenia: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
   Należy unikać numerów portów w programie adres url punktu końcowego. Jeśli uwzględniony numer portu usługi Azure Search można indeksować bazy danych Azure Cosmos DB.
 * **kontener**:
   
-  * **Nazwa**: wymagane. Określ identyfikator kolekcji bazy danych, które mają być indeksowane.
-  * **Zapytanie**: opcjonalne. Można określić zapytanie w celu spłaszczenia dowolny dokument JSON do płaski schemat, który usługa Azure Search umożliwia indeksowanie. Dla kolekcji usługi MongoDB zapytania nie są obsługiwane. 
-* **dataChangeDetectionPolicy**: zalecane. Zobacz [indeksowania zmienione dokumenty](#DataChangeDetectionPolicy) sekcji.
-* **dataDeletionDetectionPolicy**: Optional. Zobacz [indeksowanie dokumentów usunięte](#DataDeletionDetectionPolicy) sekcji.
+  * **Nazwa**: Wymagany. Określ identyfikator kolekcji bazy danych, które mają być indeksowane.
+  * **Zapytanie**: Opcjonalny. Można określić zapytanie w celu spłaszczenia dowolny dokument JSON do płaski schemat, który usługa Azure Search umożliwia indeksowanie. Dla kolekcji usługi MongoDB zapytania nie są obsługiwane. 
+* **dataChangeDetectionPolicy**: Zalecane. Zobacz [indeksowania zmienione dokumenty](#DataChangeDetectionPolicy) sekcji.
+* **dataDeletionDetectionPolicy**: Opcjonalny. Zobacz [indeksowanie dokumentów usunięte](#DataDeletionDetectionPolicy) sekcji.
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Za pomocą zapytań do kształtu indeksowane dane
 Określanie zapytania SQL do spłaszczenia zagnieżdżonych właściwości lub tablic, właściwości JSON projektu i filtrować dane, które mają być indeksowane. 

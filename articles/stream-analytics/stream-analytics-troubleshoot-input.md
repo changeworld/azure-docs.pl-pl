@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 0098d532f09ca2fa7ef4434add90729a15809ac5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087460"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164385"
 ---
 # <a name="troubleshoot-input-connections"></a>Rozwiązywanie problemów z połączeniami danych wejściowych
 
@@ -47,7 +48,7 @@ Można wykonać poniższe kroki, aby analizować zdarzenia wejściowe szczegół
 
 2. Na kafelku dane wejściowe Wyświetla listę ostrzeżeń ze szczegółowymi informacjami o poszczególnych problemów. Przykładowy komunikat ostrzegawczy poniżej zawiera partycję, przesunięcie i numery sekwencyjne w przypadku, gdy są źle sformułowane dane JSON. 
 
-   ![Komunikat ostrzegawczy z przesunięciem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   ![Stream Analytics komunikat ostrzegawczy z przesunięciem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
 3. Aby znaleźć dane JSON z niepoprawny format, uruchom dostępne w kodzie CheckMalformedEvents.cs [repozytorium przykładów usługi GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Ten kod odczytuje identyfikator partycji: przesunięcie i drukuje dane, które znajdują się w tym przesunięciu. 
 
@@ -89,8 +90,8 @@ Jeśli przesyłania strumieniowego składnia zapytania odwołuje się do tego sa
 
 Następujące scenariusze, w których liczbę czytników w jednej partycji przekracza limit usługi Event Hubs do 5:
 
-* Wiele instrukcji "SELECT": Jeśli używasz wielu instrukcji SELECT, które odwołują się do **tego samego** Centrum zdarzeń do wprowadzania, każda instrukcja SELECT powoduje, że nowy odbiornik ma zostać utworzony.
-* UNION: Gdy używasz Unii, istnieje możliwość mają wielu danych wejściowych, które odwołują się do **tego samego** grupy Centrum i odbiorcę zdarzeń.
+* Wiele instrukcji SELECT: Jeśli użyjesz wielu instrukcji SELECT, które odwołują się do **tego samego** Centrum zdarzeń do wprowadzania, każda instrukcja SELECT powoduje, że nowy odbiornik ma zostać utworzony.
+* UNII: Gdy używasz Unii, istnieje możliwość mają wielu danych wejściowych, które odwołują się do **tego samego** grupy Centrum i odbiorcę zdarzeń.
 * SAMOSPRZĘŻENIE: Korzystając z operacją DOŁĄCZYĆ SAMODZIELNIE, jest możliwe do odwoływania się do **tego samego** Centrum zdarzeń wiele razy.
 
 Poniższe najlepsze rozwiązania może pomóc zmniejszyć scenariusze, w których liczbę czytników w jednej partycji przekracza limit usługi Event Hubs do 5.
@@ -101,7 +102,7 @@ Klauzula WITH Określa tymczasowy nazwany zestaw wyników, które mogą być prz
 
 Na przykład, zamiast tego zapytania:
 
-```
+```SQL
 SELECT foo 
 INTO output1
 FROM inputEventHub
@@ -114,7 +115,7 @@ FROM inputEventHub
 
 Skorzystaj z tej kwerendy:
 
-```
+```SQL
 WITH data AS (
    SELECT * FROM inputEventHub
 )

@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure web apps | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z domeny i certyfikaty SSL — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure web apps
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 5c5bdb8fad60a2e4196c2c9f74764e27cec5ba62
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 726bc78532cfe621eb3f3787aa05a7a54571a8c3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970777"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251610"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure web apps
 
@@ -86,8 +87,8 @@ Ten problem może wystąpić z następujących powodów:
 
 - Subskrypcja osiągnęła limit zakupów, które są dozwolone w ramach subskrypcji.
 
-    **Rozwiązanie**: certyfikaty usługi App Service istnieje limit 10 zakupów certyfikatu dla typów subskrypcji rozliczana według bieżącego użycia i umowy EA. Dla innych typów subskrypcji limit wynosi 3. Aby zwiększyć limit, skontaktuj się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Certyfikat usługi App Service zostało oznaczone jako oszustwa. Odebrano następujący komunikat o błędzie: "certyfikat został oflagowany jako ewentualnym oszustwem. Żądanie jest obecnie w trakcie przeglądu. Jeśli certyfikat nie zostanie można używać w ciągu 24 godzin, skontaktuj się z pomocą techniczną platformy Azure."
+    **Rozwiązanie**: Certyfikaty usługi App Service mają limit 10 zakupów certyfikatu dla typów subskrypcji rozliczana według bieżącego użycia i umowy EA. Dla innych typów subskrypcji limit wynosi 3. Aby zwiększyć limit, skontaktuj się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Certyfikat usługi App Service zostało oznaczone jako oszustwa. Otrzymasz następujący komunikat o błędzie: "Twój certyfikat oznaczono jako ewentualnym oszustwem. Żądanie jest obecnie w trakcie przeglądu. Jeśli certyfikat nie zostanie można używać w ciągu 24 godzin, skontaktuj się z pomocą techniczną platformy Azure."
 
     **Rozwiązanie**: Jeśli certyfikat jest oznaczone jako oszustwa i nie zostanie rozwiązany po 24 godzinach, wykonaj następujące kroki:
 
@@ -124,7 +125,7 @@ Można wymusić synchronizację certyfikatu:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **certyfikaty usługi App Service**, a następnie wybierz certyfikat.
 2. Wybierz **Wymiana klucza i synchronizacja**, a następnie wybierz pozycję **synchronizacji**. Synchronizacja zajmuje trochę czasu, aby zakończyć. 
-3. Po ukończeniu synchronizacji, zobacz następujące powiadomienie: "Pomyślnie zaktualizowano wszystkie zasoby za pomocą najnowszego certyfikatu."
+3. Po ukończeniu synchronizacji, zostanie wyświetlone następujące powiadomienie: "Pomyślnie zaktualizowano wszystkie zasoby za pomocą najnowszego certyfikatu."
 
 ### <a name="domain-verification-is-not-working"></a>Weryfikacja domeny nie działa. 
 
@@ -167,13 +168,13 @@ Ten problem występuje jeden z następujących powodów:
 
 - Nie jesteś właścicielem subskrypcji, dlatego nie masz uprawnień, aby kupić domenę.
 
-    **Rozwiązanie**: [przypisanie roli właściciela](../role-based-access-control/role-assignments-portal.md) do Twojego konta. Lub skontaktuj się z administratorem subskrypcji, aby uzyskać uprawnienia w celu zakupienia domeny.
+    **Rozwiązanie**: [Przypisanie roli właściciela](../role-based-access-control/role-assignments-portal.md) do Twojego konta. Lub skontaktuj się z administratorem subskrypcji, aby uzyskać uprawnienia w celu zakupienia domeny.
 - Osiągnięto limit zakupu domen w ramach Twojej subskrypcji. Aktualne ograniczenie wynosi 20.
 
-    **Rozwiązanie**: Aby zażądać zwiększenia limitu, skontaktuj się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+    **Rozwiązanie**: Aby poprosić o zwiększenie limitu, skontaktuj się z pomocą [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Do typu Twojej subskrypcji platformy Azure nie obsługuje zakupu domen usługi App Service.
 
-    **Rozwiązanie**: Uaktualnij swoją subskrypcję platformy Azure na inny typ subskrypcji, takie jak subskrypcja płatność za rzeczywiste użycie.
+    **Rozwiązanie**: Uaktualnij swoją subskrypcję platformy Azure do innego typu subskrypcji, takie jak subskrypcja płatność za rzeczywiste użycie.
 
 ### <a name="you-cant-add-a-host-name-to-a-web-app"></a>Nie można dodać nazwę hosta aplikacji sieci web 
 
@@ -187,7 +188,7 @@ Ten problem występuje jeden z następujących powodów:
 
 - Nie masz uprawnień, aby dodać nazwę hosta.
 
-    **Rozwiązanie**: Poproś administratora subskrypcji, aby zezwolić na dodawanie nazwy hosta.
+    **Rozwiązanie**: Poproś administratora subskrypcji udzieliła Ci zgody, aby dodać nazwę hosta.
 - Nie można zweryfikować własność domeny.
 
     **Rozwiązanie**: Sprawdź, czy Twoje CNAME lub rekord jest poprawnie skonfigurowana. Aby zamapować domenę niestandardową do aplikacji sieci web, należy utworzyć rekord CNAME lub rekord. Jeśli chcesz użyć domeny katalogu głównego, należy użyć rekordy A i TXT:

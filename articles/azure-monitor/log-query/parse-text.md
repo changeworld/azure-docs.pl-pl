@@ -6,19 +6,17 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 91088e5279702f92f240e3620d3a544cb946d911
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 03268981bcfe90f14f35c74effe5799dd31e4ac0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974955"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185787"
 ---
 # <a name="parse-text-data-in-log-analytics"></a>Analizowanie danych tekstowych w usłudze Log Analytics
 Niektóre dane zebrane przez usługę Log Analytics będzie zawierać kilka rodzajów informacji w pojedynczej właściwości. Analizowanie tych danych na wiele właściwości atrybutu ułatwić używane w kwerendach. Typowym przykładem jest [dziennik niestandardowy](../../log-analytics/log-analytics-data-sources-custom-logs.md) , umożliwia zbieranie informacji o wpisu dziennika całego z wieloma wartościami w jednej właściwości. Tworząc osobne właściwości dla różnych wartości, można wyszukiwać i agregacji w każdego.

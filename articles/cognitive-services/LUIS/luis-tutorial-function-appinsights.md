@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 4461ac71ba5f9ab5901c5d7b72c15c0c165621e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103969"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255605"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights i Azure functions
 W tym samouczku dodaje informacje do żądania i odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
@@ -37,7 +37,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!Tip]
 > Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Cały kod w tym samouczku jest dostępny na [przykłady usługi LUIS, repozytorium github](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//APPINSIGHT:`. 
+Cały kod w tym samouczku jest dostępny na [repozytorium GitHub usługi LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) i każdy wiersz skojarzony z tym samouczkiem jest ujęty w za pomocą `//APPINSIGHT:`. 
 
 ## <a name="web-app-bot-with-luis"></a>Bot aplikacji sieci Web z użyciem usługi LUIS
 W tym samouczku założono, masz kod, który wygląda podobnie do następujących, lub że zostały wykonane [innym samouczku](luis-nodejs-tutorial-build-bot-framework-sample.md): 

@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 74e963abe5d2798f72bce8212c9f761f8f3297d1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256939"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270012"
 ---
 # <a name="the-azure-sql-database-service"></a>Usługa Azure SQL Database
 
@@ -60,7 +60,7 @@ Usługa SQL Database każda baza danych jest odizolowana od innych i przenośna,
 
 Usługa SQL Database oferuje [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) lub [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
-- Model zakupu w oparciu o jednostki DTU oferuje połączenie zasobów obliczeniowych, pamięci i we/wy w trzech następujących warstwach usług, co pozwala na obsługę niewielkich i dużych obciążeń bazy danych: Podstawowa, Standardowa i Premium. Obliczenia rozmiarów w każdej warstwie udostępniają różne kombinacje tych zasobów, do których można dodawać kolejne zasoby magazynu.
+- Model zakupu opartego na jednostkach DTU oferuje połączenie wystąpień obliczeniowych, pamięci i zasobów we/wy w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych: Basic, Standard i Premium. Obliczenia rozmiarów w każdej warstwie udostępniają różne kombinacje tych zasobów, do których można dodawać kolejne zasoby magazynu.
 - Model zakupu w oparciu o rdzeń wirtualny pozwala wybrać liczbę rdzeni wirtualnych, ilość pamięci oraz wielkość i szybkość magazynu.
 
 Możesz utworzyć pierwszą aplikację na małej, pojedynczej bazy danych na niskim poziomie kosztów miesięcznie w warstwie ogólnego przeznaczenia i następnie zmienić warstwę usługi ręcznie lub programowo w dowolnym momencie do warstwy usług krytycznych biznesowych do potrzeb rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
@@ -93,9 +93,9 @@ Jednak jak porównać względną wydajność pojedynczych baz danych i pul elast
 
 Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](sql-database-metrics-diag-logging.md), które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
-- **Usługa Azure Storage**: w celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę
-- **Centrum zdarzeń Azure**: w celu integracji danych telemetrycznych usługi SQL Database z niestandardowym rozwiązaniem monitorowania lub potokami danych
-- **Usługa Azure Log Analytics**: w celu użycia wbudowanego rozwiązania monitorowania obejmującego funkcje raportowania, zgłaszania alertów i zmniejszania ryzyka.
+- **Usługa Azure Storage**: W celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę
+- **Centrum zdarzeń platformy Azure**: Do integracji danych telemetrycznych usługi SQL Database z niestandardowym rozwiązaniem monitorowania lub potokami
+- **Usługi Azure Log Analytics**: Aby uzyskać wbudowanego rozwiązania monitorowania obejmującego raportowania, zgłaszania alertów i łagodzenia możliwości.
 
     ![architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -109,10 +109,10 @@ Umowa dotycząca poziomu usług [(SLA)](https://azure.microsoft.com/support/lega
 - **[W momencie przywracania](sql-database-recovery-using-backups.md)**:
 
   Usługa SQL Database obsługuje odzyskiwanie do dowolnego punktu w czasie w okresie przechowywania automatycznych kopii zapasowych.
-- **[Aktywna replikacja geograficzna](sql-database-geo-replication-overview.md)**:
+- **[Aktywna replikacja geograficzna](sql-database-active-geo-replication.md)**:
 
   Bazy danych SQL pozwala na skonfigurowanie maksymalnie czterech odczytu pomocniczych baz danych w jednym centrów danych platformy Azure w tej samej lub w globalnie rozproszonych.  Na przykład, jeśli masz aplikację SaaS z bazą danych katalogu charakteryzującą się dużą liczbą równoczesnych transakcji tylko do odczytu, włącz aktywną replikację geograficzną, aby umożliwić globalne skalowanie odczytu i pozbyć się wąskich gardeł w podstawowej bazie danych, spowodowanych obciążeniami odczytu.
-- **[Grupy trybu failover](sql-database-geo-replication-overview.md)**:
+- **[Automatyczny tryb failover grupy](sql-database-auto-failover-group.md)**:
 
   SQL Database pozwala włączyć wysoką dostępność i równoważenie obciążeń w skali globalnej, w tym przezroczystą replikację geograficzną i tryb failover dla dużych zestawów baz danych i pul elastycznych. Grupy trybu failover i aktywna replikacja geograficzna umożliwiają tworzenie globalnie rozproszonych aplikacji SaaS przy minimalnym narzucie prac administracyjnych, pozostawiając po stronie usługi SQL Database całość złożonego monitorowania, routing i organizację trybu failover.
 - **[Strefowo nadmiarowe bazy danych](sql-database-high-availability.md)**:
@@ -135,8 +135,8 @@ Dzisiaj wielu naszych partnerów uruchamiających [wielodostępne aplikacje SaaS
 
 W usłudze [SQL Database dostępne są](sql-database-automatic-tuning.md) dwa aspekty automatycznego dostrajania:
 
-- **Automatyczne zarządzanie indeksami**: identyfikuje indeksy, które powinny zostać dodane w bazie danych, i indeksy, które powinny zostać z niej usunięte.
-- **Automatyczna korekta planu**: identyfikuje plany, które mogą sprawiać problemy, i rozwiązuje problemy z wydajnością planów SQL (dostępne już wkrótce w programie SQL Server 2017).
+- **Automatyczne Zarządzanie indeksami**: Identyfikuje indeksy, które powinny zostać dodane w bazie danych i indeksów, które powinny zostać usunięte.
+- **Automatyczna korekta planu**: Identyfikuje plany, problemy i rozwiązuje problemy z wydajnością planów SQL (dostępne wkrótce, dostępnych w programie SQL Server 2017).
 
 ### <a name="adaptive-query-processing"></a>Adaptacyjne przetwarzanie zapytań
 
@@ -197,11 +197,11 @@ Usługa SQL Database obsługuje tworzenie aplikacji za pomocą narzędzi Python,
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kontakt z zespołem inżynierów programu SQL Server
 
-- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): zadawaj pytania dotyczące administrowania bazami danych
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): zadawaj pytania dotyczące opracowywania zawartości
-- [Fora MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): zadawaj pytania techniczne
-- [Opinie](https://aka.ms/sqlfeedback): zgłaszaj usterki i wysyłaj prośby dotyczące funkcji
-- [Reddit](https://www.reddit.com/r/SQLServer/): omówienie programu SQL Server
+- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Zadawaj pytania dotyczące administrowania bazy danych
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Zadawaj pytania dotyczące programowania
+- [Fora MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Zadawaj pytania techniczne
+- [Opinie](https://aka.ms/sqlfeedback): Tworzenie raportów usterek i poprosić o dodanie funkcji
+- [Reddit](https://www.reddit.com/r/SQLServer/): Omówienie programu SQL Server
 
 ## <a name="next-steps"></a>Kolejne kroki
 

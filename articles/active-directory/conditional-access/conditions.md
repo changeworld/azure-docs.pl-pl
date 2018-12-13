@@ -17,16 +17,16 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: eb7d5dc2d38d814625e904d1270446f5f1671624
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056383"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321105"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory? 
 
-Można kontrolować sposób autoryzowanym użytkownikom aplikacje w chmurze przy użyciu [dostępu warunkowego usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). W zasadach dostępu warunkowego, zdefiniuj odpowiedź ("następnie to zrobić") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku"). 
+Można kontrolować sposób dostępu użytkowników do aplikacji w chmurze przy użyciu [dostępu warunkowego usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). W zasadach dostępu warunkowego, zdefiniuj odpowiedź ("następnie to zrobić") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku"). 
 
 ![Przyczyna i odpowiedzi](./media/conditions/10.png)
 
@@ -50,7 +50,7 @@ Po wybraniu **wszyscy użytkownicy**, Twoje zasady są stosowane do wszystkich u
 
 Gdy użytkownik **Wybieranie użytkowników i grup**, można ustawić następujące opcje:
 
-* **Wszyscy użytkownicy-goście** jest przeznaczony dla zasad użytkowników-gości B2B. Ten warunek pasuje do dowolnego konta użytkownika, który ma **userType** ustawioną wartość atrybutu **gościa**. To ustawienie można użyć, gdy zasady muszą być stosowane zaraz po utworzeniu konta w usłudze flow zaproszenie w usłudze Azure AD.
+* **Wszyscy użytkownicy-goście** jest przeznaczony dla zasad użytkowników-gości B2B. Ten warunek pasuje do dowolnego konta użytkownika, który ma **userType** ustawioną wartość atrybutu **gościa**. Użyj tego ustawienia, gdy zasady muszą być stosowane zaraz po utworzeniu konta w usłudze flow zaproszenie w usłudze Azure AD.
 
 * **Role w katalogach** jest przeznaczony dla zasad na podstawie przypisania roli użytkownika. Ten warunek obsługuje role katalogu, takie jak **administratora globalnego** lub **administrator haseł**.
 
@@ -82,7 +82,7 @@ Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal po
 
 ## <a name="sign-in-risk"></a>Ryzyko logowania
 
-Ryzyko logowania jest wskaźnikiem prawdopodobieństwa (wysoki, średni lub niski), że próba logowania nie zostało wprowadzone przez prawowitym właścicielem konta użytkownika. Usługa Azure AD oblicza poziom ryzyka logowania przez użytkownika użytkownika logowania. Można użyć poziomu obliczeniowego ryzyka logowania jako warunku w zasadach dostępu warunkowego.
+Ryzyko logowania jest wskaźnikiem prawdopodobieństwa (wysoki, średni lub niski), że logowanie nie zostało wprowadzonych przez prawowitym właścicielem konta użytkownika. Usługa Azure AD oblicza poziom ryzyka logowania przez użytkownika użytkownika logowania. Można użyć poziomu obliczeniowego ryzyka logowania jako warunku w zasadach dostępu warunkowego.
 
 ![Poziomy ryzyka logowania](./media/conditions/22.png)
 
@@ -93,7 +93,7 @@ Typowe przypadki użycia dla tego warunku są zasady, które mają następujące
 - Blokuj użytkownikom wysoki ryzyka logowania. Ta ochrona uniemożliwia potencjalnie innych wiarygodnych użytkownikom uzyskiwanie dostępu do aplikacji w chmurze. 
 - Wymagaj uwierzytelniania wieloskładnikowego dla użytkowników z średniego ryzyka logowania. Wymuszając uwierzytelnianie wieloskładnikowe, możesz podać dodatkowe pewność, że logowanie jest realizowane przez prawowitym właścicielem konta.
 
-Aby uzyskać więcej informacji, zobacz [Ryzykowne logowania](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins).  
+Aby uzyskać więcej informacji, zobacz [zablokować dostęp po wykryciu zagrożenia sesji](app-sign-in-risk.md).  
 
 ## <a name="device-platforms"></a>Platformy urządzeń
 
@@ -111,13 +111,12 @@ Typowy przypadek użycia dla tego warunku jest zasadę, która ogranicza dostęp
 
 ## <a name="device-state"></a>Stan urządzenia
 
-Warunek stanu urządzenia wyklucza hybrydowe przyłączone do usługi Azure AD, urządzenia i oznaczone jako zgodne z zasadami dostępu warunkowego. Ten warunek jest przydatne, gdy zasady dotyczą tylko niezarządzanego urządzenia do zapewnienia bezpieczeństwa sesji. Na przykład tylko wymuszania kontroli sesji Microsoft Cloud App Security po niezarządzanego urządzenia. 
+Warunek stanu urządzenia wyklucza hybrydowe przyłączone do usługi Azure AD, urządzenia i oznaczone jako zgodne z zasadami dostępu warunkowego. 
 
 
 ![Skonfiguruj Stany urządzeń](./media/conditions/112.png)
 
-Jeśli chcesz zablokować dostęp dla urządzeń niezarządzanych, zaimplementować [dostępu warunkowego opartego na urządzeniu](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
-
+Ten warunek jest przydatne, gdy zasady dotyczą tylko niezarządzanego urządzenia do zapewnienia bezpieczeństwa sesji. Na przykład tylko wymuszania kontroli sesji Microsoft Cloud App Security po niezarządzanego urządzenia. 
 
 ## <a name="locations"></a>Lokalizacje
 
@@ -136,98 +135,67 @@ Aby uzyskać więcej informacji, zobacz [co to jest warunek lokalizacji w funkcj
 
 ## <a name="client-apps"></a>Aplikacje klienckie
 
-Korzystając z warunku aplikacji klienta, można zastosować zasady do różnych typów aplikacji. Przykładami są witryn sieci Web, usług, aplikacji mobilnych i klasycznych. 
+Domyślnie zasady dostępu warunkowego mają zastosowanie do następujących aplikacji:
+
+- [Aplikacje przeglądarki](technical-reference.md#supported-browsers) — aplikacje przeglądarki obejmują witryn sieci Web za pośrednictwem protokołu SAML, WS-Federation i OpenID Connect protokołów Usługa rejestracji Jednokrotnej w sieci web. Dotyczy to również witryny sieci Web lub sieci web usługi, która została zarejestrowana jako poufne klienta OAuth. Na przykład Office 365 SharePoint witryny sieci Web. 
+
+- [Aplikacje mobilne i klasyczne korzystających z nowoczesnego uwierzytelniania](technical-reference.md#supported-mobile-applications-and-desktop-clients) — są to aplikacje klasyczne pakietu Office i aplikacji na telefony. 
 
 
+Ponadto możesz wybrać docelową zasady do aplikacji klienta właściwy, które nie korzystają z nowoczesnego uwierzytelniania, na przykład:
 
-Aplikacja jest klasyfikowany w następujący sposób:
+- Aplikacje klienckie za pośrednictwem protokołu Microsoft Exchange ActiveSync. Gdy bloki zasad, przy użyciu protokołu Exchange ActiveSync, narażeni użytkownicy Uzyskaj wiadomość e-mail z kwarantanny jednego z informacji na temat przyczyny zablokowania. Jeśli to konieczne, wiadomość e-mail zawiera instrukcje dotyczące rejestrowania urządzenia w usłudze Intune.
 
-- Witryny sieci Web lub usługi za pomocą protokołów Usługa rejestracji Jednokrotnej w sieci web, SAML, WS-Fed lub OpenID Connect dla poufnych klienta.
+- Innych klientów. Te aplikacje zawierają klientów korzystających z uwierzytelniania podstawowego przy użyciu protokołów poczty, takich jak IMAP, MAPI, POP, SMTP i starsze aplikacje pakietu Office, które nie korzystają z nowoczesnego uwierzytelniania. Aby uzyskać więcej informacji, zobacz [sposobu działania nowoczesnego uwierzytelniania dla aplikacji klienckich pakietu Office 2013 i Office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
 
-- Aplikacji mobilnej lub aplikacji pulpitu, jeśli klient natywny używa aplikacji mobilnej, OpenID Connect.
+![Aplikacje klienckie](./media/conditions/41.png)
 
-Aby uzyskać listę aplikacji klienckich, w których można używać w zasadach dostępu warunkowego, zobacz [warunek aplikacje klienckie](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#client-apps-condition) w techniczne dotyczące usługi Azure Active Directory dostępu warunkowego.
+Typowe przypadki użycia dla tego warunku są zasady z następującymi wymaganiami:
 
-Typowe przypadki użycia dla tego warunku są zasady za pomocą następujących ochrony: 
+- **[Wymagaj urządzenia zarządzanego](require-managed-devices.md)**  dla aplikacji mobilnych i klasycznych, które pobierania danych na urządzeniu. W tym samym czasie Zezwalaj na dostęp z dowolnego urządzenia za pomocą przeglądarki. Ten scenariusz zapobiega zapisywanie i synchronizowanie dokumentów do niezarządzanego urządzenia. Przy użyciu tej metody można zmniejszyć prawdopodobieństwo utraty danych, w przypadku utraty lub kradzieży urządzenia.
 
-- Wymagaj [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dla aplikacji mobilnych i klasycznych, które pobieranie dużych ilości danych na urządzeniu. W tym samym czasie Zezwalaj na dostęp z dowolnego urządzenia za pomocą przeglądarki.
+- **[Wymagaj urządzenia zarządzanego](require-managed-devices.md)**  aplikacji dostęp do usługi Exchange Online przy użyciu protokołu ActiveSync.
+
+- **[Blokuj starsze uwierzytelnianie](block-legacy-authentication.md)**  do usługi Azure AD (inni klienci)
 
 - Blokuj dostęp z aplikacji sieci web, ale zezwalaj na dostęp z aplikacji mobilnych i komputerowych.
 
-Można zastosować ten stan do protokołów nowoczesnego uwierzytelniania i logowania jednokrotnego w sieci web. Można również zastosować do aplikacji Poczta, które używają programu Microsoft Exchange ActiveSync. Przykładami są aplikacji natywnego programu pocztowego w większości smartfony. 
 
-Warunek aplikacje klienta można wybrać tylko, jeśli program Microsoft Office 365 Exchange Online jest jedyną aplikacją w chmurze wybrane.
 
-![Aplikacje w chmurze](./media/conditions/32.png)
+### <a name="exchange-activesync-clients"></a>Klienci programu Exchange ActiveSync
 
-Wybieranie **programu Exchange ActiveSync** jako klient stan aplikacji jest obsługiwany tylko wtedy, gdy nie masz inne warunki skonfigurowane w zasadach. Jednak można zawęzić zakres ten warunek, aby zastosować tylko do obsługiwanych platform.
+Można wybrać tylko **klienci programu Exchange ActiveSync** jeśli:
 
+
+- Microsoft Office 365 Exchange Online jest jedyną aplikacją w chmurze wybrane.
+
+    ![Aplikacje w chmurze](./media/conditions/32.png)
+
+- Nie masz inne warunki skonfigurowane w zasadach. Jednak można zawęzić zakres ten warunek, zastosowanie tylko do [obsługiwanych platform](technical-reference.md#device-platform-condition).
  
-![Zastosuj zasady tylko do obsługiwanych platform](./media/conditions/33.png)
-
-Zastosowanie tego warunku tylko do obsługiwanych platform jest taki sam dla wszystkich platform urządzeń w [warunek platformy urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
-
-![Konfiguruj platformy urządzeń](./media/conditions/34.png)
+    ![Zastosuj zasady tylko do obsługiwanych platform](./media/conditions/33.png)
 
 
- Więcej informacji można znaleźć w tych artykułach:
+Gdy dostęp jest zablokowany, ponieważ [urządzenia zarządzanego](require-managed-devices.md) jest wymagane, narażeni użytkownicy pobieranie pojedynczego mail, która zawiera informacje na temat ich przy użyciu usługi Intune. 
+
+Jeśli zatwierdzonej aplikacji wymagane jest, narażeni użytkownicy Uzyskaj wskazówki dotyczące instalacji i używania klienta mobilnego programu Outlook.
+
+W innych przypadkach na przykład, jeśli usługa MFA jest wymagana, narażeni użytkownicy są zablokowane, ponieważ klienci korzystający z uwierzytelniania podstawowego nie obsługują usługi MFA.
+
+Można jedynie docelowy to ustawienie, aby użytkownicy i grupy. Nie obsługuje on gości lub ról. Jeśli warunek maszyna gościa lub roli jest skonfigurowany, wszyscy użytkownicy są zablokowane, ponieważ dostęp warunkowy nie może określić, jeśli mają dotyczyć zasady użytkownika lub nie.
+
+
+ Aby uzyskać więcej informacji, zobacz:
 
 - [Konfigurowanie usługi SharePoint Online i usługi Exchange Online dla dostępu warunkowego usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
  
 - [Usługa Azure Active Directory na podstawie aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
 
 
-### <a name="legacy-authentication"></a>Starsze uwierzytelnianie  
-
-Dostęp warunkowy dotyczy teraz starszych klientów programu Microsoft Office, które nie obsługują nowoczesnego uwierzytelniania. Ma również zastosowanie do klientów, którzy używają protokoły poczty e-mail, np. SMTP, POP i IMAP. Przy użyciu starszej wersji uwierzytelniania, można skonfigurować zasady, takie jak **zablokować dostęp z innych klientów**.
-
-
-![Konfigurowanie aplikacji klienta](./media/conditions/160.png)  
-
-
-#### <a name="known-issues"></a>Znane problemy
-
-- Konfigurowanie zasad dla **inni klienci** blokuje całą organizację, z niektórych klientów, takich jak SPConnect. Ten blok wynika z faktu, starsi klienci uwierzytelnić się w nieoczekiwany sposób. Ten problem nie ma zastosowania do głównej aplikacji pakietu Office, takich jak starsi klienci pakietu Office. 
-
-- Może upłynąć do 24 godzin, aż zasady zaczną obowiązywać. 
-
-
-#### <a name="frequently-asked-questions"></a>Często zadawane pytania
-
-**P: czy** tego uwierzytelnienia zablokuje usług sieci Web programu Microsoft Exchange?
-
-Zależy to protokół uwierzytelniania, który korzysta z usług sieci Web programu Exchange. Jeśli aplikacja usługi sieci Web programu Exchange korzysta z nowoczesnego uwierzytelniania, jest ona objęta **aplikacje mobilne i klienci stacjonarni** aplikacji klienckiej. Uwierzytelnianie podstawowe jest objęta **inni klienci** aplikacji klienckiej.
-
-
-**P: czy** kontrolki można użyć dla **inni klienci**?
-
-Można skonfigurować dla dowolnej kontrolki **inni klienci**. Jednak środowisko użytkownika końcowego będzie zablokowany dostęp do wszystkich przypadkach. **Inni klienci** nie obsługują formanty, takie jak uwierzytelnianie wieloskładnikowe, zgodne urządzenie i przyłączanie do domeny. 
- 
-**P:** jakimi warunkami można użyć dla **inni klienci**?
-
-Dowolny warunek można skonfigurować dla **inni klienci**.
-
-**P: czy** jest program Exchange ActiveSync obsługuje wszystkie warunki i kontrolki?
-
-Nie. Na poniższej liście podsumowano obsługę programu Exchange ActiveSync: 
-
-- Program Exchange ActiveSync obsługuje tylko użytkownika i przeznaczone dla grupy. Nie obsługuje on gości lub ról. Jeśli warunek maszyna gościa lub roli jest skonfigurowany, wszyscy użytkownicy są blokowane. Program Exchange ActiveSync blokuje wszystkich użytkowników, ponieważ nie może określić, jeśli mają dotyczyć zasady użytkownika lub nie.
-
-- Program Exchange ActiveSync działa tylko z usługą Microsoft Exchange Online jako aplikacji w chmurze. 
-
-- Program Exchange ActiveSync nie obsługuje dowolny warunek z wyjątkiem samej aplikacji klienta. 
-
-- Program Exchange ActiveSync można skonfigurować przy użyciu dowolnej kontrolki. Wszystkie kontrolki z wyjątkiem zgodność urządzenia prowadzić do bloku.
-
-**P: czy** czy zasady mają zastosowanie do wszystkich aplikacji klienckich domyślnie przyszłości?
-
-Nie. Nie ma zmian w zachowaniu zasady domyślne. Zasady w dalszym ciągu są domyślnie stosowane do przeglądarki i aplikacje mobilne i klienci stacjonarni.
-
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Szybki Start: Wymagaj uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+- Aby dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Szybki Start: Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
 
 - Aby skonfigurować zasady dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
 

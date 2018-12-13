@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: d9a0342332c2483b859e916b50fd05c9cb1e3395
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 521a9dd49abee8fdeaa42b1ea8c13b9a648f1875
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986769"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187371"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu dla wielu wartości w usłudze Traffic Manager
 
@@ -39,14 +39,15 @@ Tworzenie profilu usługi Traffic Manager, który kieruje ruch użytkowników ta
 
 1. W lewej górnej części ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Profil usługi Traffic Manager** > **Utwórz**.
 2. W **profilu usługi Traffic Manager utworzyć**wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz **Utwórz**:
+    
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | Name (Nazwa)                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net. Na jej podstawie zostanie utworzona nazwa DNS trafficmanager.net służąca do uzyskiwania dostępu do profilu usługi Traffic Manager.                                   |
     | Metoda routingu          | Wybierz **atrybut wielowartościowy elementu** metody routingu.                                       |
     | Subskrypcja            | Wybierz subskrypcję.                          |
-    | Grupa zasobów          | Wybierz *myResourceGroupTM1*. |
+    | Grupa zasobów          | Wybierz pozycję *myResourceGroupTM1*. |
     | Lokalizacja                | To ustawienie dotyczy lokalizacji grupy zasobów i nie ma wpływu na profil usługi Traffic Manager, który będzie wdrażany globalnie.                              |
-    |
+    
   
     ![Tworzenie profilu usługi Traffic Manager](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
 

@@ -1,13 +1,11 @@
 ---
-title: Obciążenia równoważenia TCP resetowany bezczynności | Dokumentacja firmy Microsoft
+title: Resetowanie TCP modułu równoważenia obciążenia na bezczynności (%) na platformie Azure
+titlesuffix: Azure Load Balancer
 description: Moduł równoważenia obciążenia za pomocą dwukierunkowych TCP RST pakietów na limit czasu bezczynności
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: kumud
-ms.openlocfilehash: 3cc4db387c33388d5692fa25ac26f2b6399cd185
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879846"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257303"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Moduł równoważenia obciążenia za pomocą funkcji resetowania TCP w stanie bezczynności (publiczna wersja zapoznawcza)
 

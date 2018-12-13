@@ -1,5 +1,5 @@
 ---
-title: Zagadnienia dotyczące sieci, za pomocą usługi Azure App Service Environment
+title: Zagadnienia dotyczące sieci, za pomocą środowiska usługi App Service — platformy Azure
 description: Wyjaśnia, ruch sieciowy środowiska ASE i jak ustawić sieciowe grupy zabezpieczeń i tras zdefiniowanych przez użytkownika za pomocą środowiska ASE
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: b39ff01fec9fa51f6e208728b5c8f78c68654484
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964887"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271015"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Informacje dotyczące sieci środowiska App Service Environment #
 
@@ -26,10 +27,10 @@ ms.locfileid: "52964887"
 
  Azure [środowiska App Service Environment] [ Intro] to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure (VNet). Istnieją dwa typy wdrożenia dla środowiska usługi App Service (ASE):
 
-- **Zewnętrzne środowisko ASE**: udostępnia aplikacje hostowane środowisko ASE na adres IP dostępne za pośrednictwem Internetu. Aby uzyskać więcej informacji, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
-- **Środowisko ASE z wewnętrznym modułem równoważenia obciążenia**: udostępnia aplikacje hostowane środowisko ASE na adres IP wewnątrz sieci wirtualnej. Wewnętrzny punkt końcowy jest wewnętrzny moduł równoważenia obciążenia (ILB), dlatego jest określana mianem środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE].
+- **Zewnętrzne środowisko ASE**: Przedstawia aplikacje hostowane środowisko ASE na adres IP dostępne za pośrednictwem Internetu. Aby uzyskać więcej informacji, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
+- **ŚRODOWISKO ASE Z WEWNĘTRZNYM MODUŁEM RÓWNOWAŻENIA OBCIĄŻENIA**: Przedstawia aplikacje hostowane środowisko ASE na adres IP wewnątrz sieci wirtualnej. Wewnętrzny punkt końcowy jest wewnętrzny moduł równoważenia obciążenia (ILB), dlatego jest określana mianem środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE].
 
-Istnieją dwie wersje środowiska App Service Environment: ASEv1 i ASEv2. Aby uzyskać informacji na temat środowiska ASEv1, zobacz [wprowadzenie do środowiska App Service Environment v1][ASEv1Intro]. Środowiska ASEv1 można wdrożyć w klasycznej lub sieci wirtualnej usługi Resource Manager. ASEv2 można wdrożyć tylko w sieci wirtualnej usługi Resource Manager.
+Istnieją dwie wersje środowiska App Service Environment: Środowiska ASEv1 i ASEv2. Aby uzyskać informacji na temat środowiska ASEv1, zobacz [wprowadzenie do środowiska App Service Environment v1][ASEv1Intro]. Środowiska ASEv1 można wdrożyć w klasycznej lub sieci wirtualnej usługi Resource Manager. ASEv2 można wdrożyć tylko w sieci wirtualnej usługi Resource Manager.
 
 Wywołania z ASE, które bardziej szczegółowo w Internecie należy pozostawić sieci wirtualnej przy użyciu adresu VIP przypisanych do środowiska ASE. Publiczny adres IP to adres VIP jest źródłowy adres IP dla wszystkich wywołań ze środowiska ASE, które bardziej szczegółowo w Internecie. Jeśli aplikacje w środowisku ASE wywołań do zasobów w sieci wirtualnej lub sieci VPN, źródłowy adres IP jest jeden z adresów IP w podsieci używana przez środowisko ASE. Ponieważ środowisko ASE znajduje się w sieci wirtualnej, można także przejść zasobów w ramach sieci wirtualnej bez przeprowadzania dodatkowej konfiguracji. Jeśli sieć wirtualna jest połączona z siecią lokalną, aplikacje w środowisku ASE również mieć dostęp do zasobów istnieje bez dodatkowej konfiguracji.
 
@@ -74,9 +75,9 @@ Skalowanie w górę lub w dół, są dodawane nowe role odpowiedni rozmiar, a na
 | Użycie | Z | Do |
 |-----|------|----|
 | Zarządzanie | Adresy zarządzania usługi aplikacji | Podsieci środowiska ASE: 454, 455 |
-|  Środowisko ASE wewnętrznej komunikacji | Podsieci środowiska ASE: wszystkie porty | Podsieci środowiska ASE: wszystkie porty
-|  Zezwalaj na moduł równoważenia obciążenia platformy Azure dla ruchu przychodzącego | Moduł równoważenia obciążenia platformy Azure | Podsieci środowiska ASE: wszystkie porty
-|  Przypisane adresy IP aplikacji | Przypisane adresy aplikacji | Podsieci środowiska ASE: wszystkie porty
+|  Środowisko ASE wewnętrznej komunikacji | Podsieci środowiska ASE: Wszystkie porty | Podsieci środowiska ASE: Wszystkie porty
+|  Zezwalaj na moduł równoważenia obciążenia platformy Azure dla ruchu przychodzącego | Moduł równoważenia obciążenia platformy Azure | Podsieci środowiska ASE: Wszystkie porty
+|  Przypisane adresy IP aplikacji | Przypisane adresy aplikacji | Podsieci środowiska ASE: Wszystkie porty
 
 Ruch przychodzący zarządzania zapewnia poleceń i kontroli środowiska ASE, oprócz systemu monitorowania. Adresy źródła dla tego ruchu są wymienione w [adresy zarządzania środowiska ASE] [ ASEManagement] dokumentu. Konfiguracja zabezpieczeń sieci musi zezwolić na dostęp ze wszystkich adresów IP na portach 454 i 455. Jeśli zablokujesz dostęp z tych adresów, Twoje środowisko ASE przestanie złej kondycji i następnie wstrzymane.
 
@@ -136,10 +137,10 @@ Zarówno funkcje, jak i sieci Web zadań są zależne od witryny SCM, ale są ob
 
 Środowisko ASE ma kilka adresów IP, pod uwagę. Oto one:
 
-- **Publiczny adres IP dla ruchu przychodzącego**: używany do ruchu aplikacji w zewnętrznym środowiskiem ASE i ruch związany z zarządzaniem w zewnętrznym środowiskiem ASE i środowisko ASE z wewnętrznym modułem równoważenia obciążenia.
-- **Wychodzące publiczny adres IP**: używany jako "od" adres IP dla połączeń wychodzących ze środowiska ASE, które należy pozostawić sieci wirtualnej, które nie są kierowane szczegółów sieci VPN.
+- **Publiczny adres IP dla ruchu przychodzącego**: Używany do ruchu aplikacji w zewnętrznym środowiskiem ASE i ruch związany z zarządzaniem w zewnętrznym środowiskiem ASE i środowisko ASE z wewnętrznym modułem równoważenia obciążenia.
+- **Wychodzące publiczny adres IP**: Używane jako "od" adres IP dla połączeń wychodzących ze środowiska ASE, które należy pozostawić sieci wirtualnej, które nie są kierowane szczegółów sieci VPN.
 - **Adres IP wewnętrznego modułu równoważenia obciążenia**: Jeśli używasz środowiska ASE z wewnętrznym modułem równoważenia obciążenia.
-- **Aplikacja przypisana SSL opartego na protokole IP adresów**: tylko jest to możliwe za pomocą zewnętrznego środowiska ASE i w przypadku skonfigurowania SSL opartego na protokole IP.
+- **Aplikacja przypisana SSL opartego na protokole IP adresów**: Możliwe tylko za pomocą zewnętrznego środowiska ASE i po skonfigurowaniu SSL opartego na protokole IP.
 
 Te adresy IP są łatwo widoczna w ASEv2 w witrynie Azure portal z poziomu interfejsu użytkownika środowiska ASE. Jeśli masz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, znajduje się adres IP dla wewnętrznego modułu równoważenia obciążenia.
 

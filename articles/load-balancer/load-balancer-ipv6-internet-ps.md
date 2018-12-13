@@ -1,23 +1,25 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu na platformie Azure przy użyciu protokołu IPv6 — PowerShell | Dokumentacja firmy Microsoft
+title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu przy użyciu protokołu IPv6 — PowerShell
+titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć moduł równoważenia obciążenia przy użyciu protokołu IPv6 przy użyciu programu PowerShell dla usługi Resource Manager nakierowanego na Internet
 services: load-balancer
 documentationcenter: na
 author: KumudD
 keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, aplikację mobilną, iot
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 71164899de9e4351e2da5ce469f0d7ae0373829f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: c62ef62a4a16f78003087347548c12793d61b10f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741338"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162413"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Wprowadzenie do tworzenia modułu równoważenia obciążenia przy użyciu protokołu IPv6 przy użyciu programu PowerShell dla usługi Resource Manager Internetem
 

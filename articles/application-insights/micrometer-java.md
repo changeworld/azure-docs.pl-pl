@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: d579a9b628ac515877c1977f700940547e96f0c0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 378516066e3b4a3436a2952616ea877d9a49d5d4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726614"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255316"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak używać mikrometryczne z zestawu SDK usługi Azure Application Insights Java
 Mikrometryczne aplikacji środki metryki monitorowania dla aplikacji w oparciu o JVM kodu i pozwala wyeksportować dane do systemów monitorowania Ulubione. Ten artykuł nauczy Cię sposób użycia mikrometryczne za pomocą usługi Application Insights dla aplikacji Spring Boot i aplikacje inne niż platformy Spring Boot.
@@ -228,7 +228,7 @@ Kroki:
 
 Aby dowiedzieć się więcej o wskaźnikach, zobacz [dokumentacji mikrometryczne](https://micrometer.io/docs/).
 
-Inne przykładowy kod na temat tworzenia różnego rodzaju metryki można znaleźć w[oficjalne repozytorium Github mikrometryczne](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
+Inne przykładowy kod na temat tworzenia różnego rodzaju metryki można znaleźć w[oficjalne repozytorium GitHub mikrometryczne](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
 
 ## <a name="how-to-bind-additional-metrics-collection"></a>Jak powiązać dodatkowe metryki kolekcji
 
@@ -242,7 +242,7 @@ Utwórz bean odpowiedniej kategorii metryki. Załóżmy na przykład, potrzebuje
         Return new GuavaCacheMetrics();
     }
 ```
-Istnieje kilka metryk, które nie są domyślnie włączone, ale może być powiązana w sposób powyżej. Aby uzyskać pełną listę, zobacz [oficjalne repozytorium Github mikrometryczne](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
+Istnieje kilka metryk, które nie są domyślnie włączone, ale może być powiązana w sposób powyżej. Aby uzyskać pełną listę, zobacz [oficjalne repozytorium GitHub mikrometryczne](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
 
 ### <a name="non-spring-apps"></a>Aplikacje inne niż Spring
 Dodaj następujący kod powiązania do pliku konfiguracji:

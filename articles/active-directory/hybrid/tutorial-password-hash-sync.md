@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja z pojedynczym lasem usługi AD na platformie Azure przy użyciu synchronizacji skrótów haseł (wersji) | Dokumentacja firmy Microsoft'
+title: 'Samouczek:  Integracja z pojedynczym lasem usługi AD na platformie Azure przy użyciu synchronizacji skrótów haseł (wersji) | Dokumentacja firmy Microsoft'
 description: Pokazuje, jak skonfigurować środowisko hybrydowe tożsamości za pomocą synchronizacji skrótów haseł.
 services: active-directory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426914"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164712"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Samouczek: Integracja z pojedynczym lasem usługi AD za pomocą synchronizacji skrótów haseł (wersji)
+# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Samouczek:  Integrowanie pojedynczego lasu usługi AD za pomocą synchronizacji skrótów haseł
 
 ![Przycisk Utwórz](media/tutorial-password-hash-sync/diagram.png)
 
@@ -38,7 +38,7 @@ Poniżej przedstawiono wymagania wstępne dotyczące wykonanie kroków tego samo
 >
 >Skrypty używane utworzyć ogólne środowisko usługi Active Directory przed zainstalowaniem programu Azure AD Connect.  Są one odpowiednie dla wszystkich samouczków.
 >
-> Kopiuje skryptów programu PowerShell, które są używane w tym samouczku są dostępne w serwisie Github [tutaj](https://github.com/billmath/tutorial-phs).
+> Kopiuje skryptów programu PowerShell, które są używane w tym samouczku są dostępne w serwisie GitHub [tutaj](https://github.com/billmath/tutorial-phs).
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Pierwszą rzeczą, potrzebujemy, aby zrobić, aby można było rozpocząć naszego środowiska tożsamości hybrydowej i działa, utwórz maszynę wirtualną, która będzie służyć jako serwer usługi Active Directory naszego środowiska lokalnego.  Wykonaj następujące czynności:
@@ -81,7 +81,7 @@ Aby zakończyć tworzenie maszyny wirtualnej, należy na zakończenie instalacji
 5. Kliknij przycisk **Zainstaluj teraz**.
 6. Wprowadź klucz licencji i kliknij przycisk **dalej**.
 7. Sprawdź ** I zaakceptuj postanowienia licencyjne i kliknij przycisk **dalej**.
-8. Wybierz **niestandardowa: tylko Zainstaluj Windows (zaawansowane)**
+8. Wybierz **niestandardowe:  Zainstaluj tylko Windows (zaawansowane)**
 9. Kliknij przycisk **Dalej**
 10. Po zakończeniu instalacji uruchom ponownie maszynę wirtualną, rejestrowania i wykonywania aktualizacji Windows i upewnij się, że maszyna wirtualna jest najbardziej aktualne.  Zainstaluj najnowsze aktualizacje.
 

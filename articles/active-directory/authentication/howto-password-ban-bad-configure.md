@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 34011144d4f960413e78f13c999dfddf6d2660bf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: c4a289d1aeefc35f07e7598adf3780620b11f0da
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743289"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252205"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurowanie listy niestandardowej zakazanych haseł
 
@@ -36,7 +36,7 @@ Konfigurowanie listy niestandardowej zakazanych haseł wymaga licencji usługi A
    * Lista niestandardowych zakazanych haseł może zawierać maksymalnie 1000 słów.
    * Listy niestandardowe zakazanych haseł jest rozróżniana wielkość liter.
    * Listy niestandardowe zakazanych haseł uwzględnia wspólnej podstawianie znaków.
-      * Przykład: "o" i "0" lub "a" i "@"
+      * Przykład: "o" i "0" lub "a" i "\@"
    * Minimalna długość ciągu jest czterech znaków, a maksymalna to 16 znaków.
 1. Po dodaniu wszystkich ciągów, kliknij przycisk **Zapisz**.
 

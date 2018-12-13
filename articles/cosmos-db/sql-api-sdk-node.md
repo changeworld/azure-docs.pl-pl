@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Interfejs API SQL platformy Node.js, zestawu SDK i zasoby'
+title: Usługa Azure Cosmos DB Interfejs API SQL platformy Node.js, zestaw SDK i zasoby
 description: Poznaj interfejs API SQL platformy Node.js i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zestawu SDK środowiska Node.js usługi Azure Cosmos DB.
 services: cosmos-db
 author: deborahc
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5616ee6f6b855cb366f24c79c73d12a03b69b2ac
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 9a859c2a8feeaf60be56404367f126bbd252771b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865662"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164861"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB zestawu SDK środowiska Node.js dla interfejsu API SQL: informacje o wersji i zasoby
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw SDK środowiska Node.js usługi Azure Cosmos DB dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -106,8 +106,8 @@ ms.locfileid: "52865662"
 ### <a name="1.12.1"/>1.12.1</a>
 * Usunięto usterkę executeStoredProcedure, w którym dokumenty ma specjalne znaków Unicode (LS, PS).
 * Usunięto usterkę podczas obsługi dokumentów ze znakami Unicode w kluczu partycji.
-* Naprawiono obsługę tworzenia kolekcji za pomocą nośnika nazwy. Problem w usłudze Github #114.
-* Naprawiono obsługę token autoryzacji uprawnień. Problem w usłudze Github #178.
+* Naprawiono obsługę tworzenia kolekcji za pomocą nośnika nazwy. Problem w usłudze GitHub #114.
+* Naprawiono obsługę token autoryzacji uprawnień. Problem w usłudze GitHub #178.
 
 ### <a name="1.12.0"/>1.12.0</a>
 * Dodano obsługę nowego [poziomu spójności](consistency-levels.md) o nazwie ConsistentPrefix.
@@ -119,8 +119,8 @@ ms.locfileid: "52865662"
 * Dodano opcję do kontrolowania stopień równoległości dla wielu partycji zapytań.
 * Dodano opcję wyłączenia protokołu SSL weryfikacji przy uruchamianiu emulatora usługi Azure Cosmos DB.
 * Obniżona minimalna przepływność na kolekcji podzielonych na partycje z 10,100 jednostek RU/s 2500 jednostek RU/s.
-* Naprawiono usterkę tokenu kontynuacji dla kolekcji z jedną partycją. Problem w usłudze Github #107.
-* Naprawiono usterkę executeStoredProcedure obsługi 0 jako pojedynczy parametr. Problem w usłudze Github #155.
+* Naprawiono usterkę tokenu kontynuacji dla kolekcji z jedną partycją. Problem w usłudze GitHub #107.
+* Naprawiono usterkę executeStoredProcedure obsługi 0 jako pojedynczy parametr. Problem w usłudze GitHub #155.
 
 ### <a name="1.10.2"/>1.10.2</a>
 * Naprawiono agenta użytkownika nagłówek do uwzględnienia wersji zestawu SDK.
@@ -152,10 +152,10 @@ ms.locfileid: "52865662"
 * Usunięto usterkę RangePartitionResolver.resolveForRead, w którym nie została zwraca łącza z powodu nieprawidłowych concat wyników.
 
 ### <a name="1.5.5"/>1.5.5</a>
-* Naprawiono hashPartitionResolver resolveForRead(): podczas klucza partycji, nie podano został zgłaszania wyjątku, zamiast zwracać listę wszystkich zarejestrowanych łączy.
+* Naprawiono hashPartitionResolver resolveForRead(): Po klucza partycji, nie podano został zgłaszania wyjątku, zamiast zwracać listę wszystkich zarejestrowanych łączy.
 
 ### <a name="1.5.4"/>1.5.4</a>
-* Rozwiązano problem [#100](https://github.com/Azure/azure-documentdb-node/issues/100) — Agent protokołu HTTPS w wersji dedykowanej: należy unikać modyfikowania globalne właściwości agenta dla celów usługi Azure Cosmos DB. Użyj dedykowanych agenta dla wszystkich żądań lib.
+* Rozwiązano problem [#100](https://github.com/Azure/azure-documentdb-node/issues/100) -Agent protokołu HTTPS w wersji dedykowanej: Należy unikać modyfikowania globalne właściwości agenta dla celów usługi Azure Cosmos DB. Użyj dedykowanych agenta dla wszystkich żądań lib.
 
 ### <a name="1.5.3"/>1.5.3</a>
 * Rozwiązano problem [#81](https://github.com/Azure/azure-documentdb-node/issues/81) — poprawnie obsługiwać myślniki identyfikatory nośników.

@@ -10,17 +10,15 @@ ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 7a8f2fc0d8b9f023e20cf8c4d4939aa3094a13e8
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: c8cc6ccae59b8ee530ad679c492419a348423553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890181"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184122"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitoruje stan replikacji usługi Active Directory z usługą Log Analytics
 
@@ -51,7 +49,7 @@ Nie chcesz połączyć dowolny z kontrolerami domeny bezpośrednio do usługi Lo
 2. [Podłącz komputer Windows do usługi Log Analytics](../../azure-monitor/platform/om-agents.md) lub [połączyć za pomocą istniejącego środowiska programu Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md), jeśli nie jest już połączony.
 3. Na tym komputerze należy ustawić następujący klucz rejestru:
 
-   * Klucz: **grup HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management\<ManagementGroupName > \Solutions\ADReplication**
+   * Klucz: **Grupy HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management\<ManagementGroupName > \Solutions\ADReplication**
    * Wartość: **IsTarget**
    * Dane wartości: **true**
 
@@ -119,32 +117,32 @@ Możesz również kliknąć **wyeksportować** wyeksportować wyniki do programu
 ![wyeksportowane błędy stanu replikacji usługi AD w programie Excel](./media/ad-replication-status/oms-ad-replication-export.png)
 
 ## <a name="ad-replication-status-faq"></a>Stan replikacji usługi AD — często zadawane pytania
-**P: jak często jest aktualizacja danych stanu replikacji usługi AD?**
-Odp.: informacje są aktualizowane co pięć dni.
+**PYT.: Jak często jest aktualizacja danych stanu replikacji usługi AD?**
+ODP.: Informacje są aktualizowane co pięć dni.
 
-**P: czy istnieje sposób, aby skonfigurować, jak często dane są aktualizowane?**
-Odp.: w tej chwili nie.
+**PYT.: Czy istnieje sposób, aby skonfigurować, jak często dane są aktualizowane?**
+ODP.: Nie w tej chwili.
 
-**P: czy należy dodać wszystkie moje kontrolerów domeny do mojego obszaru roboczego usługi Log Analytics, aby można było wyświetlić stan replikacji?**
-Odp.: nie można dodać tylko jednego kontrolera domeny. Jeśli masz wiele kontrolerów domeny w obszarze roboczym usługi Log Analytics, dane ze wszystkich z nich są wysyłane do usługi Log Analytics.
+**PYT.: Należy dodać wszystkie moje kontrolerów domeny do mojego obszaru roboczego usługi Log Analytics, aby można było wyświetlić stan replikacji?**
+ODP.: Nie można dodać tylko jednego kontrolera domeny. Jeśli masz wiele kontrolerów domeny w obszarze roboczym usługi Log Analytics, dane ze wszystkich z nich są wysyłane do usługi Log Analytics.
 
-**P: Chcę dodać kontrolerów domeny do mojego obszaru roboczego usługi Log Analytics. Można nadal korzystać z rozwiązania stan replikacji usługi AD?**
-Odp. Tak. Można ustawić wartość klucza rejestru, aby go włączyć. Zobacz [umożliwiające niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+**PYT.: Nie chcę dodać kontrolerów domeny do mojego obszaru roboczego usługi Log Analytics. Można nadal korzystać z rozwiązania stan replikacji usługi AD?**
+ODP.: Tak. Można ustawić wartość klucza rejestru, aby go włączyć. Zobacz [umożliwiające niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
-**P: jaka jest nazwa procesu, który wykonuje zbierania danych?**
-Odp.: AdvisorAssessment.exe
+**PYT.: Co to jest nazwa procesu, który wykonuje zbierania danych?**
+ODP.: AdvisorAssessment.exe
 
-**Pytanie: jak długo trwa dla danych, które mają być zbierane?**
-A: czas zbierania danych zależy od wielkości środowiska usługi Active Directory, ale zazwyczaj zajmuje mniej niż 15 minut.
+**PYT.: Jak długo trwa dla danych, które mają być zbierane?**
+ODP.: Czas zbierania danych zależy od wielkości środowiska usługi Active Directory, ale zazwyczaj zajmuje mniej niż 15 minut.
 
-**Pyt.: typ danych, są zbierane?**
-Odp.: replikacja informacje są zbierane za pośrednictwem protokołu LDAP.
+**PYT.: Jakiego typu dane są zbierane?**
+ODP.: Informacje o replikacji są zbierane za pośrednictwem protokołu LDAP.
 
-**P: czy istnieje sposób, aby skonfigurować po zebraniu danych?**
-Odp.: w tej chwili nie.
+**PYT.: Czy istnieje sposób, aby skonfigurować po zebraniu danych?**
+ODP.: Nie w tej chwili.
 
-**P: jakie uprawnienia należy zbierać dane?**
-Odp.: normalnymi uprawnieniami użytkownika do usługi Active Directory są wystarczające.
+**PYT.: Jakie uprawnienia należy zbierać dane?**
+ODP.: Uprawnieniami zwykłego użytkownika w usłudze Active Directory są wystarczające.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Rozwiązywanie problemów kolekcji danych
 Aby zbierać dane, pakiet rozwiązań stan replikacji usługi AD wymaga co najmniej jeden kontroler domeny do podłączenia do obszaru roboczego usługi Log Analytics. Dopiero po nawiązaniu połączenia z kontrolerem domeny, zostanie wyświetlony komunikat, który **jest wciąż są zbierane dane**.

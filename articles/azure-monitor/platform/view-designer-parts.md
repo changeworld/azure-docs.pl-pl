@@ -10,25 +10,23 @@ ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 8f2bf9707d28744707c39a507108120e948dde7f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866682"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193879"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych ze swojego obszaru roboczego usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
 
 Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
-* [Wyświetl projektanta](view-designer.md): zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
-* [Kafelek odwołanie](view-designer-tiles.md): zawiera odwołanie do ustawienia dla każdego kafelka dostępne widoki niestandardowe.
+* [Wyświetl projektanta](view-designer.md): Omówienie projektanta widoków i procedur tworzenia i edytowania widoków niestandardowych.
+* [Kafelek odwołanie](view-designer-tiles.md): Zawiera odwołanie do ustawienia dla każdego kafelka dostępne widoki niestandardowe.
 
 
 W poniższej tabeli opisano dostępne typy kafelka projektanta widoków:
@@ -143,7 +141,7 @@ Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapy
 | Nawigacja za pomocą kliknięć | Działania wykonywane po kliknięciu nagłówka.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Wykres pierścieniowy** |**> Center** |
 | Tekst |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
-| Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaje wartości wszystkich rekordów.</li><li>Wartość procentowa: Stosunek rekordów zwróconych przez wartości w **wyniku wartości używane w środku** łączna liczba rekordów w zapytaniu.</li></ul> |
+| Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaje wartości wszystkich rekordów.</li><li>Procent: Współczynnik rekordów zwróconych przez wartości w **wyniku wartości używane w środku** łączna liczba rekordów w zapytaniu.</li></ul> |
 | Wartości wynikowe używane w środku |Opcjonalnie wybierz znak plus (+), aby dodać co najmniej jedną wartość. Wyniki zapytania są ograniczone do rekordów za pomocą wartości właściwości, które określisz. Jeśli żadne wartości nie zostaną dodane, wszystkie rekordy zostaną uwzględnione w zapytaniu. |
 | **Dodatkowe opcje** |**> Kolory** |
 | Kolor 1<br>Kolor 2<br>Kolor 3 |Wybierz kolor dla każdej wartości, które są wyświetlane w wykres pierścieniowy. |
@@ -182,7 +180,7 @@ Nagłówek przedstawia wyniki dwóch zapytań log wraz z upływem czasu jako wyk
 | Legenda |Tekst, który jest wyświetlany w polu objaśnienia dla pierwszej serii. |
 | Kolor |Kolor do używania dla kolumn w tej serii. |
 | Zapytanie |Zapytanie do uruchamiania dla pierwszej serii. Liczba rekordów w poszczególnych przedziałach czasu jest reprezentowany przez kolumn wykresu. |
-| Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Suma: Suma wartości wszystkich rekordów.</li><li>Średnia: Średniej wartości wszystkich rekordów.</li><li>Ostatnie przykładowy: wartość od ostatniego interwału, który znajduje się na wykresie.</li><li>Najpierw przykładowy: wartość od pierwszego interwału, który znajduje się na wykresie.</li><li>Liczba: Liczba wszystkie rekordy, które są zwracane przez zapytanie.</li></ul> |
+| Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Suma: Suma wartości wszystkich rekordów.</li><li>Średnia: Średnią wartości wszystkich rekordów.</li><li>Ostatnia próbka: Wartość od ostatniego interwału, który znajduje się na wykresie.</li><li>Pierwszy przykład: Wartość od pierwszego interwału, który znajduje się na wykresie.</li><li>Liczba: Liczba wszystkich rekordów, które są zwracane przez zapytanie.</li></ul> |
 | **Lista** | |
 | Zapytanie |Zapytanie do uruchamiania na liście. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
 | Ukryj graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
@@ -238,7 +236,7 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 | **Wykres liniowy** |**> Objaśnienie** |
 | Tytuł objaśnienia |Tekst, który jest wyświetlany powyżej wartości objaśnienia. |
 | Nazwa serii. |Wartość właściwości serii, aby użyć wartości objaśnienia. Jeśli seria nie zostanie podany, używane są wszystkie rekordy z zapytania. |
-| Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średniej wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkie rekordy, które są zwracane przez zapytanie.</li><li>Ostatnie przykładowy: wartość od ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalną wartość z interwałów, które znajdują się na wykresie.</li><li>Minimalna: Wartość minimalna z interwałów, które znajdują się na wykresie.</li><li>Suma: Suma wartości wszystkich rekordów.</li></ul> |
+| Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średnią wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkich rekordów, które są zwracane przez zapytanie.</li><li>Ostatnia próbka: Wartość od ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalna wartość z interwałów, które znajdują się na wykresie.</li><li>Minimalna: Minimalna wartość z interwałów, które znajdują się na wykresie.</li><li>Suma: Suma wartości wszystkich rekordów.</li></ul> |
 | **Wykres liniowy** |**> Oś y** |
 | Użyj skali logarytmicznej |Wybierz ten link, aby użyć skali logarytmicznej dla osi y. |
 | Jednostki |Określ jednostki dla wartości, które mają zostać zwrócone przez zapytanie. Te informacje są używane do wyświetlania etykiet wykresu, wskazujące typy wartości i, opcjonalnie, aby konwertować wartości. *Jednostki* typ Określa kategorię jednostki i definiuje dostępnych *bieżącej jednostki* wpisz wartości. Jeśli zostanie wybrana wartość w *przekonwertować*, wartości numeryczne są konwertowane z *bieżącej jednostki* typ *przekonwertować* typu. |
@@ -344,7 +342,7 @@ W poniższej tabeli opisano ustawienia wykresy przebiegu w czasie:
 | Ustawienie | Opis |
 |:--- |:--- |
 | Włącz wykresy przebiegu w czasie |Wybierz ten link, aby wyświetlić wykres przebiegu w czasie zamiast poziomy pasek. |
-| Operacja |Wykresy są włączone, to operację do wykonania na każdej właściwości w listy w celu obliczenia wartości dla wykresu przebiegu w czasie.<ul><li>Ostatnie przykładowy: ostatnią wartość serii przedziałach czasu.</li><li>Maks.: Maksymalna wartość dla tej serii przedziałach czasu.</li><li>Minimalna: Wartość minimalna dla serii przedziałach czasu.</li><li>Suma: Suma wartości serii przedziałach czasu.</li><li>Podsumowanie: Używa tych samych `measure` polecenia zapytania w nagłówku.</li></ul> |
+| Operacja |Wykresy są włączone, to operację do wykonania na każdej właściwości w listy w celu obliczenia wartości dla wykresu przebiegu w czasie.<ul><li>Ostatnia próbka: Ostatnia wartość serii przedziałach czasu.</li><li>Maks.: Maksymalna wartość dla serii przedziałach czasu.</li><li>Minimalna: Minimalna wartość dla serii przedziałach czasu.</li><li>Suma: Suma wartości serii przedziałach czasu.</li><li>Podsumowanie: Używa tych samych `measure` polecenia zapytania w nagłówku.</li></ul> |
 
 ### <a name="thresholds"></a>Progi
 Za pomocą progów, możesz wyświetlić kolorowe ikony obok każdego elementu na liście. Progi umożliwiają szybkie wizualny wskaźnik informujący elementów, które przekracza określoną wartość lub mieszczą się w określonym zakresie. Na przykład możesz wyświetlić zieloną ikonę dla elementów z dozwolonej wartości, żółty, jeśli wartość znajduje się w zakresie, który wyświetla ostrzeżenie i czerwony, w przypadku przekroczenia wartości błędu.

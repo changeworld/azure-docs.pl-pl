@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03d51cfb03de071f63578717a65eeda4b119bf0d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f82ac972e54dac6df5a913a8059417b701e2f7e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497858"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191584"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Tworzenie klastrów HDInsight za pomocą klasycznego wiersza polecenia platformy Azure
 
@@ -80,7 +80,7 @@ Poniższe kroki należy wykonać z poziomu wiersza polecenia, takiego jak progra
     * Zastąp `groupname` nazwą grupy zasobów.
     * Zastąp `storagename` nazwą konta magazynu.
 
-     W danych, który jest zwracany, Zapisz `key` wartość `key1`.
+      W danych, który jest zwracany, Zapisz `key` wartość `key1`.
 
 6. Tworzenie klastra usługi HDInsight.
 
@@ -90,8 +90,8 @@ Poniższe kroki należy wykonać z poziomu wiersza polecenia, takiego jak progra
 
     * Zastąp `Hadoop` z typem klastra, który chcesz utworzyć. Na przykład `Hadoop`, `HBase`, `Kafka`, `Spark`, lub `Storm`.
 
-     > [!IMPORTANT]
-     > HDInsight mogą mieć różne typy, które odnoszą się do obciążenia lub technologii, że klaster jest ona dostrojona dla klastrów. Nie istnieje obsługiwana metoda do tworzenia klastra, który łączy wiele typów, takich jak Storm i bazy danych HBase w jednym klastrze.
+      > [!IMPORTANT]
+      > HDInsight mogą mieć różne typy, które odnoszą się do obciążenia lub technologii, że klaster jest ona dostrojona dla klastrów. Nie istnieje obsługiwana metoda do tworzenia klastra, który łączy wiele typów, takich jak Storm i bazy danych HBase w jednym klastrze.
 
     * Zastąp `location` przy użyciu tej samej lokalizacji, które są używane w poprzednich krokach.
 
@@ -105,12 +105,12 @@ Poniższe kroki należy wykonać z poziomu wiersza polecenia, takiego jak progra
 
     * Zastąp `sshuser` i `sshuserpassword` przy użyciu nazwy użytkownika i hasło, które mają być używane podczas uzyskiwania dostępu do klastra przy użyciu protokołu SSH
 
-    > [!IMPORTANT]
-    > W tym przykładzie tworzy klaster z dwoma węzłami procesu roboczego. Po utworzeniu klastra można również zmienić liczbę węzłów procesu roboczego przez wykonanie operacji skalowania. Jeśli planujesz użycie więcej niż 32 węzły procesu roboczego, musisz wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM. Należy określić rozmiar węzła głównego przy użyciu `--headNodeSize` parametru podczas tworzenia klastra.
-    >
-    > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
-
-    Może upłynąć kilka minut na zakończenie procesu tworzenia klastra. Zwykle około 15.
+      > [!IMPORTANT]
+      > W tym przykładzie tworzy klaster z dwoma węzłami procesu roboczego. Po utworzeniu klastra można również zmienić liczbę węzłów procesu roboczego przez wykonanie operacji skalowania. Jeśli planujesz użycie więcej niż 32 węzły procesu roboczego, musisz wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM. Należy określić rozmiar węzła głównego przy użyciu `--headNodeSize` parametru podczas tworzenia klastra.
+      >
+      > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+      
+      Może upłynąć kilka minut na zakończenie procesu tworzenia klastra. Zwykle około 15.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 938472edf0c82da6f3e1fdaf4e6b052ac178bd8a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722977"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258206"
 ---
 <a name="logic-app-test-drive"></a>Wersja testowa aplikacji logiki
 ====================
@@ -29,7 +29,7 @@ Ten artykuł jest dla wydawców, którzy z opisem oferty w usłudze AppSource i 
 <a name="how-to-build-a-logic-app-test-drive"></a>Jak utworzyć wersję testową aplikacji logiki
 -----------------------------------
 
-Testowanie dokumentacji dysku dla wersji testowych aplikację logiki obecnie jest nadal w witrynie github [operacji](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) i [zaangażowania użytkowników](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)Przejdź miejsca, aby dowiedzieć się więcej.
+Testowanie dokumentacji dysku dla wersji testowych aplikację logiki obecnie jest nadal w witrynie GitHub [operacji](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) i [zaangażowania użytkowników](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)Przejdź miejsca, aby dowiedzieć się więcej.
 
 <a name="how-to-publish-a-test-drive"></a>Jak opublikować wersję testową
 ---------------------------
@@ -40,7 +40,7 @@ Teraz, gdy masz utworzone wersji testowej, w tej sekcji przedstawiono wszystkie 
 
 Pole pierwszy i najważniejszy jest do wyświetlania i ukrywania ma testu formularza, wszystkie wymagane pola są prezentowane służących do wypełniania. Po wybraniu **nie** formularza zostanie wyłączona, a Jeśli publikujesz za pomocą wersji testowej wyłączone wersji testowej zostanie usunięta ze środowiska produkcyjnego.
 
-*Uwaga*: w przypadku dowolnego wersje testowe są aktywnie używane przez użytkowników, tych wersji testowych będzie nadal działać do momentu wygaśnięcia ich sesji.
+*Uwaga*: Jeśli ma żadnych testów dyski są aktywnie używane przez użytkowników, tych wersji testowych będzie nadal działać do momentu wygaśnięcia ich sesji.
 
 ### <a name="details"></a>Szczegóły
 
@@ -70,7 +70,7 @@ Jest następnej sekcji, aby wypełnić, którym można skonfigurować aplikację
 
 - **Region** - *[wymagane pole]* regionu, możesz wybrać to, gdzie wybierz wdrożonym zasobów aplikacji logiki dysku testu w.
 
-    *Uwaga:* Jeśli Twoja aplikacja logiki ma zasoby niestandardowe, które są przechowywane w regionie, upewnij się, w tym miejscu wybrano obsługiwany w tym regionie. Najlepszym sposobem, w tym celu jest **pełni wdrażanie aplikacji logiki lokalnie w Twojej subskrypcji platformy Azure w portalu i sprawdź, czy działa** przed napisaniem go tutaj.
+    *Uwaga:* Jeśli Twoja aplikacja logiki ma zasoby niestandardowe, które są przechowywane w regionie, upewnij się, że ten region wybrany w tym miejscu. Najlepszym sposobem, w tym celu jest **pełni wdrażanie aplikacji logiki lokalnie w Twojej subskrypcji platformy Azure w portalu i sprawdź, czy działa** przed napisaniem go tutaj.
 
 - **Maksymalna współbieżnych wersji testowych** - *[wymagane pole]* wystąpień z numer dysku testów, które są już wdrożone i Oczekiwanie na dostęp do wybranego regionu. Klienci mogą uzyskać dostęp natychmiast wersji testowych, a nie musisz czekać, aż do wdrożenia.
 

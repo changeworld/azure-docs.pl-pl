@@ -1,5 +1,5 @@
 ---
-title: Synchronizuj zawartość z folderu w chmurze w usłudze Azure App Service
+title: Synchronizuj zawartość z folderu w chmurze — usługa Azure App Service
 description: Dowiedz się, jak wdrożyć aplikację w usłudze Azure App Service za pośrednictwem synchronizacja zawartości z folderu w chmurze.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 10a33163b2bfe6a1c9c24b9de58f83813e7534a6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: a818cf440fea939eb86271482e95aa813d678e06
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863928"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258631"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizuj zawartość z folderu w chmurze w usłudze Azure App Service
 W tym artykule dowiesz się, jak zsynchronizować zawartość do [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) z usługą Dropbox i OneDrive. 

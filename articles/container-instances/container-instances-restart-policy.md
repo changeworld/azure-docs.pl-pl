@@ -1,18 +1,18 @@
 ---
-title: Uruchamianie zadań konteneryzowanych w usłudze Azure Container Instances za pomocą zasady ponownego uruchamiania
+title: Użyj ponownie zasad przy użyciu zadań konteneryzowanych w usłudze Azure Container Instances
 description: Dowiedz się, jak używać usługi Azure Container Instances do wykonania zadania, które zostało ukończone, takie jak w kompilacji, testów lub zadań renderowania obrazu.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 12/10/2018
 ms.author: danlep
-ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853896"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321037"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Uruchamianie zadań konteneryzowanych za pomocą zasady ponownego uruchamiania
 
@@ -24,7 +24,7 @@ Przykłady przedstawione w tym artykule wiersza polecenia platformy Azure. Konie
 
 ## <a name="container-restart-policy"></a>Zasady ponownego uruchamiania kontenera
 
-Po utworzeniu kontenera w usłudze Azure Container Instances, można określić jedną z trzech ustawień zasady ponownego uruchamiania.
+Po utworzeniu [grupy kontenerów](container-instances-container-groups.md) w usłudze Azure Container Instances, możesz określić jedną z trzech ustawień zasady ponownego uruchamiania.
 
 | Zasady ponownego uruchamiania   | Opis |
 | ---------------- | :---------- |
@@ -93,6 +93,24 @@ Dane wyjściowe:
 
 Ten przykład przedstawia dane wyjściowe skryptu wysyłane do strumienia wyjściowego STDOUT. Konteneryzowane zadania podrzędne, jednak może być zamiast tego zapisują swoje dane wyjściowe do trwałego magazynu na potrzeby pobierania nowsze. Na przykład, aby [udziału plików platformy Azure](container-instances-mounting-azure-files-volume.md).
 
+## <a name="manually-stop-and-start-a-container-group"></a>Ręcznie uruchamiać i zatrzymywać grupy kontenerów
+
+Niezależnie od zasady ponownego uruchamiania skonfigurowane dla [grupy kontenerów](container-instances-container-groups.md), możesz chcieć ręcznie zatrzymywać ani uruchamiać grupy kontenerów.
+
+* **Zatrzymaj** - uruchomionej grupy kontenerów można ręcznie zatrzymać w dowolnym momencie — na przykład za pomocą [az container stop] [ az-container-stop] polecenia. W przypadku niektórych obciążeń kontenerów może chcesz zatrzymać grupy kontenerów po określonym przedziale czasu, aby zaoszczędzić na kosztach. 
+
+  Zatrzymywanie grupy kontenerów kończy działanie i jest odtwarzana kontenerów w grupie; nie pozwala zachować stan kontenera. 
+
+* **Rozpocznij** — w przypadku grupy kontenerów jest zatrzymana,-albo ponieważ kontenery został przerwany w ich własnych lub ręcznie zatrzymana grupy — możesz użyć [kontenera start interfejsu API](/rest/api/container-instances/containergroups/start) lub ręcznie uruchom kontenery witrynie Azure portal Grupa. Jeśli zostanie zaktualizowany obraz kontenera dla dowolnego kontenera, zostanie ściągnięty nowego obrazu. 
+
+  Uruchamianie grupy kontenerów rozpoczyna nowe wdrożenie z taką samą konfiguracją kontenera. Ta akcja ułatwia szybkie ponowne zastosowanie konfiguracji grupy znanych kontenera, który działa zgodnie z oczekiwaniami. Nie trzeba utworzyć nową grupę kontenerów do uruchomienia tego samego obciążenia.
+
+* **Uruchom ponownie** — możesz ponownie uruchomić grupy kontenerów jest uruchomiona — na przykład za pomocą [ponownego uruchomienia kontenera az] [ az-container-restart] polecenia. Ta akcja powoduje ponowne uruchomienie wszystkich kontenerów w grupie kontenerów. Jeśli zostanie zaktualizowany obraz kontenera dla dowolnego kontenera, zostanie ściągnięty nowego obrazu. 
+
+  Ponowne uruchamianie grupy kontenerów jest przydatne w przypadku, gdy chcesz rozwiązać problem z wdrożenia. Na przykład jeśli to ograniczenie zasobów zapobiega pomyślnemu kontenerów, ponowne uruchamianie grupy może rozwiązać problem.
+
+Po ręcznie uruchom lub uruchom ponownie grupę kontenerów, przebiegów grupy kontenera zgodnie ze skonfigurowanym ponownie uruchomić zasad.
+
 ## <a name="configure-containers-at-runtime"></a>Konfigurowanie kontenerów w czasie wykonywania
 
 Podczas tworzenia wystąpienia kontenera można ustawić jego **zmienne środowiskowe**, jak również określić niestandardowy **wiersza polecenia** do wykonania, gdy kontener jest uruchomiona. Te ustawienia w zadaniach wsadowych służy do przygotowania każdego kontenera za pomocą konfiguracji specyficznej dla zadania.
@@ -103,9 +121,9 @@ Ustawianie zmiennych środowiskowych w kontenerze zapewnienie dynamiczną konfig
 
 Na przykład można zmodyfikować zachowanie skryptów w kontenerze przykład podczas tworzenia wystąpienia kontenera, określając następujące zmienne środowiskowe:
 
-*NumWords*: liczba słów wysyłane do strumienia wyjściowego STDOUT.
+*NumWords*: Liczba słów wysyłane do strumienia wyjściowego STDOUT.
 
-*Element MinLength*: minimalną liczbę znaków w słowie na jej do zliczenia. Większa liczba zostanie podana ignoruje popularne wyrazy, takie jak "z" i "".
+*Element MinLength*: Minimalna liczba znaków w słowie na jej do zliczenia. Większa liczba zostanie podana ignoruje popularne wyrazy, takie jak "z" i "".
 
 ```azurecli-interactive
 az container create \
@@ -131,6 +149,8 @@ Dane wyjściowe:
  ('ROSENCRANTZ', 69),
  ('GUILDENSTERN', 54)]
 ```
+
+
 
 ## <a name="command-line-override"></a>Zastąpienie wiersza polecenia
 
@@ -174,5 +194,7 @@ Aby uzyskać więcej informacji na temat sposobu utrwalanie danych wyjściowych 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
+[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

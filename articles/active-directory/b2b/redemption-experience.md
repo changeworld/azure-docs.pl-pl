@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 12/10/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7819ed3e18092e8b7bdf52225e7025b4b6d8146a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: c0f384dafc4ba30eb3e735ee17ae051245378135
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981886"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254993"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Realizacja zaproszenia współpracy w usłudze Azure Active Directory B2B
 
@@ -26,7 +26,7 @@ Do współpracy z użytkowników z organizacji partnerskich do współpracy B2B 
 
 ## <a name="redemption-through-a-direct-link"></a>Realizacji za pomocą linku bezpośredniego
 
-Osoba zapraszająca gościa można zaprosić użytkownika-gościa wysłać bezpośredni link do udostępnionej aplikacji. Dla użytkownika-gościa środowisko realizacji jest równie proste jak logowanie do aplikacji, która została udostępniona z nimi. One kliknij link do aplikacji, przejrzyj i zaakceptuj postanowienia dotyczące prywatności i następnie bezproblemowo uzyskiwać dostęp do aplikacji. W większości przypadków użytkownicy-goście nie muszą już kliknij adres URL realizacji w wiadomości e-mail z zaproszeniem.
+Osoba zapraszająca gości mogą zapraszać użytkownikiem-gościem, wysyłając [bezpośredni link do aplikacji udostępnionej](../manage-apps/end-user-experiences.md#direct-sign-on-links). Dla użytkownika-gościa środowisko realizacji jest równie proste jak logowanie do aplikacji, która została udostępniona z nimi. One kliknij link do aplikacji, przejrzyj i zaakceptuj postanowienia dotyczące prywatności i następnie bezproblemowo uzyskiwać dostęp do aplikacji. W większości przypadków użytkownicy-goście nie muszą już kliknij adres URL realizacji w wiadomości e-mail z zaproszeniem.
 
 Jeśli użytkownicy-goście, za pomocą interfejsu użytkownika lub wybranej do wysyłania wiadomości e-mail z zaproszeniem jako część środowisko programu PowerShell zaproszenie zaproszonego użytkownika wciąż otrzymuje wiadomość e-mail z zaproszeniem. Ta wiadomość e-mail jest przydatne w przypadku następujących przypadków:
 

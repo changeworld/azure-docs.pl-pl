@@ -1,73 +1,67 @@
 ---
-title: Rozwiązywanie problemów z wydajnością sieci wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+title: 'Rozwiązywanie problemów z siecią wirtualną: Azure | Dokumentacja firmy Microsoft'
 description: Ta strona zawiera standardowej metody testowania wydajności łącze sieci platformy Azure.
 services: expressroute
-documentationcenter: na
 author: tracsman
-manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 12/20/2017
 ms.author: jonor
-ms.openlocfilehash: 56f011632a2aa3ef0632efd5ace472c0fc79a329
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: seodec18
+ms.openlocfilehash: 2572ff3711fb86cda88a86744192980a5b2d5361
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27319148"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277628"
 ---
 # <a name="troubleshooting-network-performance"></a>Rozwiązywanie problemów z wydajnością sieci
 ## <a name="overview"></a>Przegląd
-Platforma Azure udostępnia stabilny i szybkie sposobów łączenia się z sieci lokalnej na platformie Azure. Metod, takich jak sieci VPN typu lokacja-lokacja i ExpressRoute pomyślnie są używane przez klientów, duże i małe do uruchamiania ich firm na platformie Azure. Ale co się dzieje, gdy wydajność nie spełnia Twoje oczekiwania lub doświadczenia? Ten dokument może pomóc normalizacji sposób testowania i linii bazowych określonego środowiska.
+System Azure oferuje stabilne i szybkie sposoby nawiązywania połączenia z sieci lokalnej na platformie Azure. Metody, takie jak sieci VPN typu lokacja-lokacja i ExpressRoute pomyślnie są używane przez klientów, dużych i małych do prowadzenia działalności na platformie Azure. Ale co się stanie, gdy wydajność nie spełnia Twoje oczekiwania lub poprzednie środowisko? Ten dokument może pomóc standaryzacji sposób testowania i linii bazowych określonego środowiska.
 
-Ten dokument przedstawia, jak można łatwo i spójnej przetestować opóźnienia sieci i przepustowość między dwoma hostami. Ten dokument zawiera również pewne wskazówki dotyczące sposobów Spójrz na sieć platformy Azure i pomoc, aby odizolować punktów problem. Skrypt programu PowerShell i narzędzia omówione wymagają dwa hosty w sieci (na końcu łącza testowane). Jednego hosta musi być systemu Windows Server lub pulpit, innych systemu Windows lub Linux. 
+W tym dokumencie przedstawiono, jak można łatwo i spójne przetestować opóźnienie sieci i przepustowość między dwoma hostami. Ten dokument zawiera także kilka porad dotyczących sposobów Przyjrzyj się sieci platformy Azure i pomóc wyizolować problem punktów. Skrypt programu PowerShell i narzędzia omówione wymagają dwa hosty w sieci (na końcu łącza testowana). Jeden host musi być system Windows Server lub pulpit, drugi może być Windows lub Linux. 
 
 >[!NOTE]
->Podejście do rozwiązywania problemów, narzędzia i metody używane są indywidualnych preferencji. Ten dokument zawiera opis podejście i narzędzia, które często wykonać. Swoje podejście, prawdopodobnie będą się różnić, nie ma problem z różne podejścia do rozwiązywania problemów. Jednak jeśli nie masz nawiązane podejście, ten dokument może ułatwiające rozpoczęcie pracy w ścieżce do tworzenia własnych metod, narzędzi i preferencje dotyczące rozwiązywania problemów z siecią.
+>Podejście do rozwiązywania problemów, narzędzi i metod są osobistych preferencji. W tym dokumencie opisano podejście i narzędzia, które często prowadzą. Prawdopodobnie różnią się w danej metody, nie ma problem z różnych podejść do rozwiązywania problemów. Jednak jeśli nie masz podejście ustanowionych w tym dokumencie można ułatwią rozpoczęcie pracy w ścieżce do tworzenia własnych metod, narzędzi i preferencji do rozwiązywania problemów z siecią.
 >
 >
 
 ## <a name="network-components"></a>Składniki sieciowe
-Przed tu przeszukuje do rozwiązywania problemów, omówimy niektóre typowe warunki i składniki. Rozważania gwarantuje, że firma Microsoft nam o każdym składniku w łańcuchu end-to-end umożliwiającą łączność na platformie Azure.
+Przed zagłębieniem do rozwiązywania problemów, Omówmy niektóre typowe terminy i składników. Tej dyskusji gwarantuje, że firma Microsoft rozważasz dalsze prace nad każdego składnika w łańcuchu end-to-end, umożliwiającym łączność na platformie Azure.
 [![1]][1]
 
-Na najwyższym poziomie I opisano trzy główne sieci domeny routingu;
+Na najwyższym poziomie I opisano trzy domeny routingu sieci głównych;
 
 - sieć platformy Azure (blue chmura po prawej stronie)
-- Internet lub sieć WAN (zielony chmury w Centrum)
-- Sieci firmy (chmura brzoskwini po lewej stronie)
+- Internetu lub sieci WAN (zielony w chmurze w Centrum)
+- (w chmurze brzoskwini po lewej stronie) w sieci firmowej
 
-Spojrzenie na diagramie od prawej do lewej, omówimy krótko poszczególnych składników:
- - **Maszyna wirtualna** — serwer może mieć wiele kart sieciowych, upewnij się, wszelkie trasy statyczne, trasy domyślne oraz ustawień systemu operacyjnego są wysyłanie i odbieranie ruchu sposób podejrzewasz, że jest. Jednostka SKU każda maszyna wirtualna ma ograniczenie przepustowości. Jeśli używasz mniejszych SKU wirtualna ruchu jest ograniczona przepustowość dostępną dla karty sieciowej. Zwykle używać DS5v2 testowanie (i następnie usunięcie wykonywane raz z testowaniem zaoszczędzić) w celu zapewnienia odpowiedniej przepustowości w Maszynie wirtualnej.
- - **Karta sieciowa** — upewnij się, wiadomo, prywatnego adresu IP, do którego przypisano z kartą sieciową.
- - **Karta sieciowa NSG** — może być określonych grup NSG stosowana na poziomie karty Sieciowej, upewnij się, zestaw reguł NSG jest odpowiednia dla ruchu próbujesz przekazać. Na przykład Sprawdź porty 5201 dotyczące programu Iperf; 3389 protokołu RDP lub 22 dla protokołu SSH są otwarte, aby zezwolić na ruch testu do przekazania.
- - **Podsieć sieci wirtualnej** — karta sieciowa jest przypisany do określonej podsieci, upewnij się, wiesz, jakiego jedno i zasady skojarzone z tej podsieci.
- - **NSG podsieci** — podobnie jak karta sieciowa, grupy NSG można zastosować w tej podsieci, jak również. Upewnij się, zestaw reguł NSG jest odpowiednia dla ruchu, który próbujesz przekazać. (dla ruchu przychodzącego z kartą sieciową podsieci, w której grupa NSG stosowana najpierw, a następnie NSG karty Sieciowej, i odwrotnie dla ruchu wychodzącego z maszyny Wirtualnej karty Sieciowej NSG stosuje najpierw, a następnie NSG podsieci wejścia play).
- - **Podsieci przez** -trasy zdefiniowane przez użytkownika może kierować ruch do przeskoków pośrednich (na przykład zapory albo funkcji równoważenia obciążenia). Upewnij się, że wiesz, jeśli jest przez w ruchu na, jeśli więc gdzie ona trafia oraz do ruchu będzie czego ten następnego przeskoku. (na przykład zapora może przekazać część ruchu i odmowy ruch między tym samym dwa hosty).
- - **Podsieć bramy / NSG / przez** — podobnie jak podsieci maszyny Wirtualnej podsieć bramy może mieć grup NSG i Udr. Upewnij się, że wiesz, jeśli są dostępne i jaki wpływ mają one na ruchu.
- - **Brama sieci wirtualnej (ExpressRoute)** — po włączeniu komunikacji równorzędnej (ExpressRoute) lub sieci VPN nie ma wiele ustawień, które mogą wpłynąć na sposób lub, jeśli ruch trasy. Jeśli masz wiele obwody usługi ExpressRoute lub tuneli VPN podłączone do tej samej bramy sieci wirtualnej, należy zwrócić uwagę ustawień wagi połączenia jako to ustawienie ma wpływ na stronie połączeń i ma wpływ na ścieżkę, którą ma ruchu.
- - **Trasy filtru** (nie) - filtr tras tylko dotyczy Peering firmy Microsoft na ExpressRoute, ale jest szczególnie ważne, aby sprawdzić, jeśli nie jest wyświetlane trasy spodziewasz się na Peering firmy Microsoft. 
+Patrząc na diagramie, od prawej do lewej, omówimy pokrótce poszczególnych składników:
+ - **Maszyna wirtualna** — serwer może mieć wiele kart sieciowych, upewnij się, wszystkie trasy statyczne, trasy domyślne i ustawienia systemu operacyjnego są wysyłania i odbierania ruchu związanego z sposób podejrzewasz, że jest. Każda jednostka SKU maszyny Wirtualnej ma ograniczenie przepustowości. Jeśli używasz mniejsze jednostki SKU maszyny Wirtualnej, ruch sieciowy jest ograniczona przepustowość dostępną dla karty sieciowej. Zazwyczaj korzystam DS5v2 testowania (i następnie usuwaj po zakończeniu testowania, aby zaoszczędzić pieniądze) w celu zapewnienia odpowiedniej przepustowości na maszynie Wirtualnej.
+ - **Karta sieciowa** — upewnij się, wiesz, prywatny adres IP, która jest przypisana do karty Sieciowej w danym.
+ - **Sieciowa grupa zabezpieczeń z karty Sieciowej** — może być określone sieciowych grup zabezpieczeń, które są stosowane na poziomie karty Sieciowej, upewnij się, zestaw reguł sieciowej grupy zabezpieczeń jest odpowiednia dla ruchu próbujesz przekazać. Na przykład, upewnij się, porty 5201 dotyczące programu Iperf; port 3389 dla protokołu RDP lub 22 dla protokołu SSH jest otwarty, aby zezwolić na ruch testu do przekazania.
+ - **Podsieci sieci wirtualnej** -karta sieciowa jest przypisany do określonej podsieci, upewnij się, gdy wiesz, które jednego i reguły skojarzone z tą podsiecią.
+ - **Sieciowa grupa zabezpieczeń podsieci** — tak samo, jak można zastosować karty Sieciowej, sieciowe grupy zabezpieczeń w podsieci, jak również. Upewnij się, zestaw reguł sieciowej grupy zabezpieczeń jest odpowiednia dla ruchu, który próbujesz przekazać. (dla ruchu przychodzącego do karty Sieciowej podsieci, w której sieciowej grupy zabezpieczeń stosuje się najpierw, a następnie karty Sieciowej grupy zabezpieczeń sieci, z drugiej strony dla ruchu wychodzącego z maszyny Wirtualnej karty Sieciowej grupy zabezpieczeń sieci stosuje się najpierw, a następnie właśnie sieciowa grupa zabezpieczeń podsieci).
+ - **Podsieci trasy zdefiniowanej przez użytkownika** -tras zdefiniowanych przez użytkownika może kierować ruch do przeskoków pośrednich (na przykład zapora lub moduł równoważenia obciążenia). Upewnij się, że wiesz, czy trasa zdefiniowana przez użytkownika w miejscu, aby ruch sieciowy i jeśli więc gdzie ona trafia i do czego tego następny przeskok będzie do ruchu. (na przykład zapora może przekazać część ruchu i zezwalają na inne ruch między dwoma hostami w tej samej).
+ - **Podsieci bramy / sieciowej grupy zabezpieczeń / trasy zdefiniowanej przez użytkownika** — podobnie jak podsieci maszyny Wirtualnej, podsieć bramy może mieć sieciowe grupy zabezpieczeń i tras zdefiniowanych przez użytkownika. Upewnij się, że wiesz, jeśli są one dostępne, i jakie skutki mają one na ruch sieciowy.
+ - **Bramy sieci wirtualnej (ExpressRoute)** — po włączeniu komunikacji równorzędnej (ExpressRoute) lub sieci VPN nie ma wiele ustawień, które mogą wpłynąć na sposób lub, jeśli ruch trasy. Jeśli masz wiele obwodów usługi ExpressRoute lub tuneli sieci VPN połączony z tą samą bramą sieci wirtualnej, pamiętaj o ustawienia wagi połączenia jako to ustawienie wpływa na stronie połączenia i ma wpływ na ścieżkę potrzebnego ruchu.
+ - **Filtr trasy** (niewyświetlany) — filtr tras tylko dotyczy Peering firmy Microsoft w ramach usługi ExpressRoute, ale ma kluczowe znaczenie w celu sprawdzenia, jeśli nie widzisz trasy, o których oczekujesz, że na Peering firmy Microsoft. 
 
-W tym momencie możesz teraz część łącza sieci WAN. Tej domeny routingu może być dostawcą usług, sieci WAN firmowej lub Internetu. Wiele przeskoków, technologii i przedsiębiorstw z tych łączy może utrudnić nieco rozwiązywać problemy. Często pracy do reguły zarówno Azure, jak i sieci firmowej najpierw przed przeskakiwanie do tej kolekcji firm i przeskoków.
+W tym momencie możesz teraz część sieci WAN łącze. Ta domena routingu może być dostawcą usług, sieci WAN firmowej lub Internetu. Wiele przeskoków, technologie i przedsiębiorstw z poniższych linków, może utrudnić nieco rozwiązywać problemy. Często pomocne w procesie wykluczenia platformy Azure i sieci firmowych najpierw zanim przejdziemy do tej kolekcji firm i przeskoków.
 
-Na powyższym diagramie na lewym jest sieci firmowej. W zależności od wielkości firmy tej domeny routingu może być kilka urządzeń sieciowych między możesz i WAN lub wielu warstw urządzeń w sieci firmy/enterprise.
+Na powyższym diagramie na końcu z lewej strony jest siecią firmową. W zależności od wielkości firmy tej domeny routingu może być kilka urządzeń sieciowych między możesz i sieci WAN lub wielu warstw urządzeń w sieci kampusowej/enterprise.
 
-Podana złożoności tych trzech różnych wysokiego poziomu środowisk sieci, często jest optymalna można uruchomić na krawędziach i spróbuj Pokaż wydajności w przypadku dobrej i gdzie powoduje spadek. Takie podejście może pomóc zidentyfikować problem domenę routingu trzy, a następnie skoncentrować się Rozwiązywanie problemów w tym w danym środowisku.
+Biorąc pod uwagę złożoność tych trzech różnych wysokiego poziomu środowiskach sieciowych, często jest optymalna do uruchomienia na krawędziach i spróbuj pokazać, gdzie wydajność jest dobra, a gdy spadku. Takie podejście może pomóc zidentyfikować problem domenę routingu trzy, a następnie skoncentrować się rozwiązywania problemów w tym konkretnym środowisku.
 
 ## <a name="tools"></a>Narzędzia
-Większości problemów z siecią można analizować i samodzielnie przy użyciu podstawowe narzędzia, takie jak ping i traceroute. Jest rzadko, trzeba go jako analiza pakietów, takie jak Wireshark głębokość. Aby pomóc w rozwiązywaniu problemów, Toolkit łączności Azure (AzureCT) został opracowany, aby umieścić niektóre z tych narzędzi w pakiecie łatwe. Do testowania wydajności, I ma być używana dotyczące programu Iperf; i narzędzia PSPing. dotyczące programu Iperf; to powszechnie używane narzędzie i uruchamia na większości systemów operacyjnych. dotyczące programu Iperf; jest dobry dla testów wydajności podstawowe i jest dość łatwe w użyciu. Narzędzia PSPing to narzędzie ping opracowane przez SysInternals. Narzędzia PSPing to prosty sposób w celu wykonania polecenia ping protokołu ICMP i TCP w jedno polecenie także łatwy w użyciu. Oba te narzędzia są lekkie i "zainstalowano" po prostu przez kopiowanie plików do katalogu na hoście.
+Większości problemów z siecią mogą być analizowane i samodzielnie przy użyciu podstawowych narzędzi, takich jak ping i traceroute. Jest to rzadkie, trzeba go jako analiza pakietów, takich jak program Wireshark szczegółowego. Aby pomóc w rozwiązywaniu problemów, Azure Connectivity Toolkit (AzureCT) został opracowany, aby umieścić niektóre z tych narzędzi w pakiecie łatwe. W przypadku testowania wydajności podoba mi się używać dotyczące programu Iperf; i PSPing. dotyczące programu Iperf; jest powszechnie używane narzędzie i działa na większości systemów operacyjnych. dotyczące programu Iperf; to rozwiązanie dobre dla testów wydajności podstawowych i jest dość łatwy w użyciu. Narzędzie PSPing to narzędzie ping opracowany przez SysInternals. Narzędzie PSPing jest łatwym sposobem wykonania polecenia ping protokołu ICMP i TCP w pojedynczym poleceniu również łatwe w użyciu. Oba te narzędzia są lekkie i "zainstalowano" po prostu przez kopiowanie plików do katalogu na hoście.
 
-I została opakowana wszystkich tych narzędzi i metod do modułu środowiska PowerShell (AzureCT), który można zainstalować i używać.
+Czy mogę został opakowany wszystkich tych narzędzi i metod moduł programu PowerShell (AzureCT), który można zainstalować i używać.
 
-### <a name="azurect---the-azure-connectivity-toolkit"></a>AzureCT - Toolkit Azure łączności
-Moduł AzureCT PowerShell ma dwa składniki [testowania dostępności] [ Availability Doc] i [testowania wydajności][Performance Doc]. Ten dokument jest tylko dane testowania wydajności, dlatego pozwala skupić się na dwóch poleceń Link wydajności ten moduł programu PowerShell.
+### <a name="azurect---the-azure-connectivity-toolkit"></a>AzureCT - Azure Connectivity Toolkit
+Moduł AzureCT PowerShell ma dwa składniki [testowania dostępności] [ Availability Doc] i [testowania Wydajnościowego][Performance Doc]. Ten dokument jest tylko zaniepokojona testowanie wydajności, więc pozwala skupić się na dwa polecenia wydajności łącza w tym module programu PowerShell.
 
-Istnieją trzy podstawowe kroki, aby użyć tego zestawu narzędzi do testowania wydajności. 1) Zainstaluj moduł programu PowerShell, 2) zainstaluj obsługi aplikacji dotyczące programu Iperf; i narzędzia PSPing 3) Uruchamianie testu wydajności.
+Istnieją trzy podstawowe kroki, aby użyć ten zestaw narzędzi do testowania Wydajnościowego. (1) Zainstaluj moduł programu PowerShell, (2) zainstaluj pomocnicze dotyczące programu Iperf aplikacji; i PSPing 3) uruchom test wydajności.
 
 1. Instalowanie modułu programu PowerShell
 
@@ -82,110 +76,110 @@ Istnieją trzy podstawowe kroki, aby użyć tego zestawu narzędzi do testowania
     ```powershell
     Install-LinkPerformance
     ```
-    To polecenie AzureCT instaluje dotyczące programu Iperf; oraz narzędzia PSPing w nowym katalogu "C:\ACTTools", zostanie otwarte także porty zapory systemu Windows, aby umożliwić ICMP i portu 5201 ruchu (dotyczące programu Iperf;).
+    To polecenie AzureCT instaluje dotyczące programu Iperf; i PSPing w nowym katalogu "C:\ACTTools", a także otwiera porty zapory Windows, aby umożliwić ICMP i portu 5201 ruchu (dotyczące programu Iperf;).
 
-3. Uruchamianie testu wydajności
+3. Uruchom test wydajności
 
-    Najpierw na zdalnym hoście musisz zainstalować i uruchomić dotyczące programu Iperf; w trybie serwera. Upewnij się również hosta zdalnego nasłuchuje albo 3389 (RDP dla systemu Windows) lub 22 (SSH w systemie Linux), dzięki czemu ruch na porcie 5201 dla dotyczące programu Iperf;. Jeśli host zdalny systemu windows, zainstaluj AzureCT i uruchom polecenie LinkPerformance instalacji, aby skonfigurować dotyczące programu Iperf; i reguły zapory wymaganej do rozpoczęcia dotyczące programu Iperf; pomyślnie w trybie serwera. 
+    Po pierwsze na zdalnym hoście należy zainstalować i uruchomić dotyczące programu Iperf; w trybie serwera. Upewnij się również hostem zdalnym nasłuchuje na obu 3389 (RDP dla Windows) lub 22 (protokołu SSH Linux) i zezwala na ruch na porcie 5201 dla dotyczące programu Iperf;. Jeśli host zdalny systemu windows, zainstaluj AzureCT i uruchom polecenie LinkPerformance instalacji, aby skonfigurować dotyczące programu Iperf; i reguły zapory wymaganej do rozpoczęcia dotyczące programu Iperf; w trybie serwera pomyślnie. 
     
-    Gdy komputer zdalny jest gotowy, Otwórz program PowerShell na komputerze lokalnym i uruchomienia testu:
+    Gdy komputer zdalny jest gotowy, Otwórz program PowerShell na komputerze lokalnym, a następnie uruchom test:
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 10
     ```
 
-    To polecenie uruchamia serię równoczesnych obciążenia i testy opóźnienia, aby oszacować przepustowość i opóźnienia łącze sieci.
+    To polecenie uruchamia serię współbieżnych obciążenia i testy opóźnienie ułatwia oszacowanie pojemność przepustowości i opóźnienia Link sieci.
 
 4. Przejrzyj dane wyjściowe testów
 
-    Format danych wyjściowych programu PowerShell jest podobny do:
+    Format danych wyjściowych programu PowerShell wygląda podobnie do:
 
     [![4]][4]
 
-    Szczegółowe wyniki dotyczące programu Iperf; i testy narzędzia PSPing znajdują się w tekst poszczególnych plików w katalogu narzędzia AzureCT na "C:\ACTTools."
+    Szczegółowe wyniki dotyczące programu Iperf; i PSPing testy są w plikach tekstowych poszczególnych w katalogu narzędzi programu AzureCT na "C:\ACTTools."
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Jeśli test wydajności nie jest nadanie oczekiwanych rezultatów, ustaleniem, dlatego należy progresywnego krok po kroku proces. W ścieżce, biorąc pod uwagę liczbę składników, systematyczne podejście zwykle zapewnia szybsze ścieżkę do rozpoznawania niż przeskakiwanie wokół i potencjalnie niepotrzebnie ten sam testowania wiele razy.
+Jeśli test wydajności nie udostępnia oczekiwanych wyników, ustalenie, dlaczego należy progresywnego krok po kroku proces. Podana liczba składników w ścieżce, to systematyczne podejście ogólnie zapewnia szybsza ścieżka rozwiązania niż skok wokół i potencjalnie niepotrzebnie testowali tego samego wiele razy.
 
 >[!NOTE]
->Scenariusz, w tym miejscu jest problemu z wydajnością, nie problemem z łącznością. Kroki będą różne, jeśli ruch nie został w ogóle przekazywanie.
+>Scenariusz, w tym miejscu jest problem z wydajnością, nie problem z łącznością. Kroki będzie inny, jeśli ruch nie przechodzi w ogóle.
 >
 >
 
-Po pierwsze żądanie założeń. Twoje oczekiwania jest uzasadnione? Na przykład jeśli masz obwodu ExpressRoute 1 GB i 100 ms opóźnienia jest nie można się spodziewać pełnej 1 GB/s ruchu podane charakterystyki wydajności protokołu TCP za pośrednictwem łącza duże opóźnienie. Zobacz [odwołuje się do sekcji](#references) dla więcej założenia na wydajność.
+Po pierwsze wyzwanie założeń. Twoje oczekiwania jest uzasadnione? Na przykład jeśli obwód usługi ExpressRoute 1 GB/s i 100 ms czas oczekiwania jest nie można się spodziewać pełnej 1 GB/s ruchu, biorąc pod uwagę charakterystyki wydajności protokołu TCP za pośrednictwem łącza duże opóźnienie. Zobacz [odwołuje się do sekcji](#references) dla więcej założeń wydajności są włączone.
 
-Następnie zaleca się uruchomienie na krawędziach między domenami routingu i spróbuj określić problem do pojedynczej domeny routingu głównych; Sieci firmowej, sieci WAN lub sieć platformy Azure. Użytkownicy często winy "czarne pole" w ścieżce podczas blaming czarne pole to łatwo zrobić, może być znacznie opóźniona rozpoznawania zwłaszcza, jeśli ten problem jest rzeczywiście w obszarze możliwości wprowadzania zmian. Upewnij się, czy z powodu starannością przed przekazaniem do dostawcy usług lub usługodawcy internetowego.
+Następnie zaleca się, zaczynając od krawędzi między domen routingu i spróbuj ustalić przyczynę problemu do pojedynczej domeny routingu głównych; w sieci firmowej, sieć WAN lub sieci platformy Azure. Użytkownicy często "czarnej" w ścieżce polecenia blame podczas blaming czarne pole jest proste, może być znacznie opóźniona rozpoznawania zwłaszcza, jeśli ten problem jest faktycznie w obszarze zapewnienie możliwości wprowadzania zmian. Upewnij się, że możesz zrobić z należytą starannością przed przekazaniem do dostawcy usług lub usługodawcy internetowego.
 
-Po wyłaniają głównych domeny routingu, który wygląda jak zawiera problem, należy utworzyć diagram obszaru zagrożona. W tablicy, Notatnika lub programu Visio jako diagram zawiera konkretny "bitwy mapy" umożliwia metodyczny podejście do dalszego isolate problem. Planowanie punktów testowych i zaktualizuj mapy, zgodnie z wyczyść obszary lub lepszy Testowanie trakcie dig.
+Po zidentyfikowaniu głównych domeny routingu, która prawdopodobnie zawiera ten problem, należy utworzyć diagram warstwowy w danym. Na tablicy, Notatnika lub programu Visio jako diagram zawiera konkretny "map bitwy" umożliwia metodyczny podejście do dalszych odizolować problem. Planowanie punktów testowych i zaktualizować mapę, jak wyczyść obszary lub Postaraj się bardziej w miarę postępów testowania.
 
-Teraz, gdy masz diagram Uruchom, aby podzielić sieć na segmenty i zawęzić problem. Dowiedz się, gdy działa i których nie. Zachowaj przenoszenie punkty testowych do izolowania do składnika ataku.
+Teraz, gdy masz diagram, uruchom, aby podzielić sieć na segmenty i zawęzić problem. Dowiedz się, gdzie działa i których nie. Zachowaj przenoszenie punktów testowych do izolowania do problematycznych składnika.
 
-Ponadto nie zapomnij przyjrzeć się inne warstwy modelu OSI. Łatwo skoncentrować się na sieć i warstwy 1 – 3 (warstwy fizycznej, danych i sieci), ale problemy mogą również być aktywne w warstwy 7 w warstwie aplikacji. Zachowaj Otwórz zdanie i sprawdź założeń.
+Ponadto nie zapomnij Spójrz na inne warstwy modelu OSI. Ułatwia skoncentrowanie się na sieć i warstwy 1 – 3 (warstwy fizycznej, danych i sieci), ale problemy można też się na warstwie 7 w warstwie aplikacji. Zachowaj otwarty należy pamiętać i sprawdź założeń.
 
-## <a name="advanced-expressroute-troubleshooting"></a>Zaawansowane rozwiązywanie problemów ExpressRoute
-Jeśli nie masz pewności, gdzie jest rzeczywiście krawędzi chmury, izolowanie składniki platformy Azure może być wyzwaniem. Jeśli używane są połączenia ExpressRoute, krawędzi jest składnik sieci o nazwie krawędzi przedsiębiorstwa firmy Microsoft (MSEE). **Korzystając z usługi ExpressRoute**, MSEE jest pierwszy punkt kontaktu w sieci firmy Microsoft, a ostatniego przeskoku, pozostawiając sieci firmy Microsoft. Podczas tworzenia obiektu połączenia między bramą sieci wirtualnej i obwodem usługi ExpressRoute, faktycznie nawiązywania połączenia do MSEE. Rozpoznawanie MSEE jako pierwszego lub ostatniego przeskoków (w zależności od kierunku ma) odgrywa kluczową rolę do izolowania problemów z siecią Azure albo udowodnić, że problem polega na platformie Azure lub bardziej szczegółowo w dół w sieci WAN lub sieci firmowej. 
+## <a name="advanced-expressroute-troubleshooting"></a>Zaawansowanego rozwiązywania problemów usługi ExpressRoute
+Jeśli nie masz pewności, gdzie jest faktycznie granicy chmury, izolowania składników platformy Azure może być trudne. W przypadku usługi ExpressRoute krawędzi jest składnik sieci o nazwie krawędzi Enterprise firmy Microsoft (MSEE). **Korzystając z usługi ExpressRoute**, MSEE jest pierwszy punkt kontaktu do sieci firmy Microsoft i ostatniego przeskoku, pozostawiając sieci firmy Microsoft. Podczas tworzenia obiektu połączenia między bramą sieci wirtualnej i obwód usługi ExpressRoute, możesz sprawiamy, że połączenie do rozwiązania MSEE. Rozpoznawanie MSEE jako pierwszego lub ostatniego przeskok (w zależności od kierunku zamierzasz) ma kluczowe znaczenie dla izolowania problemów z siecią platformy Azure do jednej dowieść, że problem polega na platformie Azure lub dalsze podrzędne w sieci WAN lub w sieci firmowej. 
 
 [![2]][2]
 
 >[!NOTE]
-> Należy zauważyć, że MSEE nie jest w chmurze Azure. ExpressRoute rzeczywiście znajduje się na granicy sieci firmy Microsoft w rzeczywistości w systemie Azure. Po nawiązaniu połączenia z usługi ExpressRoute, aby MSEE, jest podłączony do sieci firmy Microsoft, z tego miejsca można następnie przejść do żadnej z usług w chmurze, takie jak usługi Office 365 (ze Peering firmy Microsoft) lub Azure (za pomocą prywatnego i/lub Peering firmy Microsoft).
+> Należy zauważyć, że rozwiązania MSEE nie znajduje się w chmurze platformy Azure. Usługa ExpressRoute jest faktycznie na granicy sieci firmy Microsoft bez faktycznego na platformie Azure. Po nawiązaniu połączenia z usługą ExpressRoute do MSEE, jesteś podłączony do sieci firmy Microsoft, w tym miejscu możesz wtedy przejść do dowolnych usług w chmurze, takich jak usługi Office 365 (z Peering firmy Microsoft) lub Azure (przy użyciu prywatnych i/lub Peering firmy Microsoft).
 >
 >
 
-Jeśli dwie sieci wirtualnych (sieciami wirtualnymi A i B na diagramie) są połączone z **tego samego** obwodu ExpressRoute, można wykonywać serii testów, aby ustalić przyczynę problemu na platformie Azure (lub potwierdzenia nie znajduje się w usłudze Azure)
+Jeśli połączenie dwóch sieci wirtualnych (sieciami wirtualnymi A i B na diagramie) **tego samego** obwód usługi ExpressRoute, można wykonać szereg testów, aby ustalić przyczynę problemu na platformie Azure (lub udowodnić, że nie jest na platformie Azure)
  
 ### <a name="test-plan"></a>Plan testu
-1. Uruchom test Get-LinkPerformance między VM1 i maszyny VM2. Ten test zapewnia wgląd w, jeśli ten problem jest lokalny, czy nie. Jeśli ten test tworzy akceptowalnego czasu oczekiwania i wyniki przepustowości, można oznaczyć sieci lokalnej sieci wirtualnej jako dobra.
-2. Zakładając, że lokalnej sieci wirtualnej ruch jest dobra, uruchom test Get-LinkPerformance między VM1 i VM3. Ten test sprawdza połączenie za pośrednictwem sieci firmy Microsoft do MSEE z powrotem do usługi Azure. Jeśli ten test tworzy akceptowalnego czasu oczekiwania i wyniki przepustowości, można oznaczyć sieć platformy Azure jako dobra.
-3. Jeśli wykluczenia platformy Azure, można wykonać podobne sekwencji testów w sieci firmowej. Jeśli który również sprawdza również, to czas na współpracę z dostawcy usług lub usługodawcy internetowego, aby zdiagnozować połączenie WAN. Przykład: Uruchomić ten test między dwoma oddziałami firmy lub między biurku i serwer centrum danych. W zależności od tego, co w przypadku testowania, Znajdź punkty końcowe (serwery, komputery, itp.) który wykonywania tej ścieżki.
+1. Uruchom test Get LinkPerformance między maszyny VM1 i VM2. Ten test zapewnia wgląd, jeśli ten problem jest lokalny, czy nie. Jeśli ten test generuje dopuszczalnego czasu oczekiwania i wyniki przepustowości, można oznaczyć sieci lokalnej sieci wirtualnej jako dobre.
+2. Zakładając, że lokalnej sieci wirtualnej ruch jest dobra, uruchom test Get LinkPerformance między maszyny VM1 i VM3. Ten test sprawdza poprawność połączenia za pośrednictwem sieci firmy Microsoft do rozwiązania MSEE i wróć do platformy Azure. Jeśli ten test generuje dopuszczalnego czasu oczekiwania i wyniki przepustowości, można oznaczyć sieci platformy Azure jako dobre.
+3. Jeśli jest wykluczona platformy Azure, można wykonać podobne sekwencji testów w sieci firmowej. Jeśli, również testy również jest czas na współpracę z dostawcy usług lub z poziomu usługodawcy internetowego, aby zdiagnozować połączenie WAN. Przykład: Między dwoma oddziałami firmy lub między działu a serwerem centrum danych, należy uruchomić ten test. W zależności od tego, co w przypadku testowania, Znajdź punkty końcowe (serwery, komputery, itp.), można korzystać z tej ścieżki.
 
 >[!IMPORTANT]
-> Jest krytyczny, że dla każdego z testów oznaczyć godzinę uruchomienia testu i zapisać wyniki w jednej lokalizacji (podoba OneNote lub Excel). Każdy test powinien mieć identyczne dane wyjściowe można dane wynikowe umożliwia porównanie różnych uruchomień testów, a nie są "dziury" w danych. Zachowania spójności w wielu testów jest podstawowym powodem AzureCT można używać do rozwiązywania problemów. Magiczna nie jest w scenariuszach dokładne obciążenia uruchomić, ale zamiast tego *magic* jest fakt, że otrzymuję *spójne testu i danych wyjściowych* każdego testu. Podczas rejestrowania i o spójności danych co jeden raz jest szczególnie przydatne, jeśli później okaże się, że problem dotyczy sporadyczne. Być większego z góry kolekcji danych i będzie uniknąć godzin ponowne tych samych operacji (I przedstawiono w ten sposób twardych wielu lat).
+> Należy koniecznie dla każdego testu, możesz oznaczyć porze dnia, gdy uruchamiasz test i zapisać wyniki w jednej lokalizacji (podoba mi się OneNote lub Excel). Każdego przebiegu testu powinien mieć identyczne dane wyjściowe, aby można było porównać dane wynikowe we wszystkich przebiegach testów i ma "otwory" w danych. Spójność między wiele testów jest głównym powodem I Użyj AzureCT do rozwiązywania problemów. Magic nie znajduje się w scenariuszach dokładnie obciążenia, czy mogę uruchomić, ale zamiast tego *magic* jest fakt, że otrzymuję *spójne dane wyjściowe testu i danych* z każdego testu. Rejestrowanie czasu i równoważy spójności danych co jeden raz jest szczególnie przydatne, jeśli później okaże się, że problem dotyczy sporadyczne. Być skrupulatne poprawianie listy z początku kolekcji danych i będzie można uniknąć godzin przetestowanie tych samych scenariuszy (I przedstawiono w ten sposób twardych wielu lat).
 >
 >
 
 ## <a name="the-problem-is-isolated-now-what"></a>Problem jest izolowanym, co teraz?
-Im bardziej można odizolować problem łatwiej jest ustalenie, jednak często osiągnięciu punktu, której nie można przejść głębiej i dodatkowych z rozwiązywania problemów. Przykład: Zobacz łącze między dostawcą usług biorąc przeskoków za pośrednictwem Europy, ale oczekiwano ścieżki są rejestrowane w Azji. Ten punkt jest, gdy powinna osiągnąć, aby uzyskać pomoc. Kto zadajesz jest zależny od domeny routingu, które izolowane problem do lub lepszą nawet jeśli jesteś w stanie zawęzić jej do określonego składnika.
+Im więcej może przyczyną problemu jest ustalenie, jednak często dotrzeć do punktu, w których nie można przejść głębiej i dodatkowych z rozwiązywania problemów. Przykład: Zobacz łącze między dostawcą usług, biorąc przeskoki w Europie, ale oczekiwano ścieżki znajduje się w Azji. Ten punkt jest, gdy powinni skontaktować się, aby uzyskać pomoc. Kto możesz zadawać pytania jest zależny od domeny routingu, które samodzielnie ten problem, aby lub jeszcze lepiej, jeśli jest to możliwe zawęzić jej do określonego składnika.
 
-Występują problemy z siecią firmową wewnętrzny w dziale IT lub dostawcy usług obsługującego sieci (które mogą być producenta sprzętu) można ułatwić konfigurację urządzenia lub naprawiania sprzętu.
+W przypadku problemów z siecią firmową z wewnętrznych działów IT lub dostawcą usług, obsługi sieci, (które mogą być producenta sprzętu) może mieć pomagające w konfiguracji urządzenia lub sprzętu naprawy.
 
-Dla sieci WAN Udostępnianie wyników badania u dostawcy usług lub usługodawca Internetowy może pomóc powinien zostać uruchomiony i uniknąć obejmujące niektóre z tej samej ziemi, które już przetestowaniu. Jednak nie można offended Jeśli chcą zweryfikować wyniki samodzielnie. "Zaufania, ale Sprawdź" jest dobrym motto podczas rozwiązywania problemów w oparciu o wyniki zgłoszone innych osób.
+Dla sieci WAN Udostępnianie wyników testów z dostawcy usług lub usługodawca Internetowy może pomóc w ich pracę i uniknąć obejmujące niektóre z tych samych podstaw, które zostały już przetestowane. Jednak nie zostać offended Jeśli chcą zweryfikować wyniki samodzielnie. "Zaufania, ale Sprawdź" jest dobrym motto podczas rozwiązywania problemów w oparciu o wyniki zgłoszonych inne osoby.
 
-Przy użyciu platformy Azure, po wyizolować problem dotyczący tyle szczegółów możesz, nadszedł czas na Przejrzyj [dokumentacji sieci Azure] [ Network Docs] , a następnie Jeśli nadal potrzebna [Otwórz bilet pomocy technicznej][Ticket Link].
+Dzięki platformie Azure po wyizolować problem w możliwie szczegółowo jesteś w stanie, nadszedł czas, aby zapoznać się z [dokumentacja usługi Azure Network] [ Network Docs] i następnie nadal w razie [Otwórz bilet pomocy technicznej][Ticket Link].
 
 ## <a name="references"></a>Dokumentacja
-### <a name="latencybandwidth-expectations"></a>Czas oczekiwania/przepustowość oczekiwania
+### <a name="latencybandwidth-expectations"></a>Oczekiwania dotyczące opóźnienia/przepustowości
 >[!TIP]
-> Geograficzne opóźnienia (milach lub kilometrach) od punktów końcowych, które w przypadku testowania jest składnik największy opóźnienia. Podczas zaangażowanych jest opóźnienia sprzętu (składniki fizyczne i wirtualne, liczba przeskoków, itp.), geography okazał się największym składnikiem ogólną opóźnienia podczas pracy nad połączeń z siecią WAN. Jest również pamiętać, że odległość odległość fiber Uruchom nie liniową lub odległości mapy drogowej. Jest to bardzo trudne do uzyskać z dowolnego dokładności. W związku z tym zazwyczaj w Internecie przy użyciu kalkulatora odległość mieście i wiedzieć, ta metoda jest rażąco niedokładne miary, ale jest wystarczająca do ustawienia oczekiwania ogólne.
+> Opóźnienie geograficznych (milach lub kilometrach) od punktów końcowych, którą testujesz jest największym składnikiem opóźnienia. Gdy zaangażowanych jest opóźnienie sprzętu (składniki fizyczne i wirtualne, liczba przeskoków, itp.), lokalizacji geograficznej okazał się największym składnikiem ogólny czas oczekiwania podczas pracy z połączeń z siecią WAN. Jest również należy pamiętać, że jest odległość fiber Uruchom nie liniową lub odległości mapy drogowej. Jest to bardzo trudne do skorzystaj z dowolnego dokładności. W rezultacie I zazwyczaj w Internecie przy użyciu kalkulatora odległość miasta i wiedzieć, ta metoda jest rażąco niedokładne miary, ale jest wystarczający, aby ustawić ogólne oczekiwania.
 >
 >
 
-Teraz już wiem konfiguracji usługi ExpressRoute w Seattle, Washington w USA. W poniższej tabeli przedstawiono opóźnienia i przepustowości I był wyświetlany testowanie do różnych lokalizacji platformy Azure. I zostały szacowany geograficzne odległość między każdego końca testu.
+Mam konfiguracji usługi ExpressRoute w Seattle, Waszyngton w Stanach Zjednoczonych. W poniższej tabeli przedstawiono opóźnienia i przepustowości widziałem testowania różnych lokalizacjach platformy Azure. Czy mogę zostały szacowany geograficznej odległości między każdy koniec testu.
 
-Testuj ustawienia:
- - Fizycznego serwera z systemem Windows Server 2016 z 10 GB/s karty Sieciowej, połączony z obwodem usługi ExpressRoute.
- - Obwód Premium ExpressRoute 10 GB/s w lokalizacji o prywatnej komunikacji równorzędnej włączone.
- - Sieć wirtualną platformy Azure z bramą UltraPerformance w wybranym regionie.
- - Maszyna wirtualna DS5v2, systemem Windows Server 2016 sieci wirtualnej. Maszyny Wirtualnej został domeny z systemem innym niż sprzężone, skompilowanych z domyślnego obrazu platformy Azure (nie optymalizacji lub dostosowania) za pomocą AzureCT zainstalowane.
- - Wszystkich testów został za pomocą polecenia AzureCT Get-LinkPerformance z testu obciążenia 5-minutowy dla każdej z sześciu uruchomień testów. Na przykład:
+Konfiguracja testu:
+ - Serwer fizyczny, system Windows Server 2016 z 10 GB/s karty Sieciowej, połączone z obwodem usługi ExpressRoute.
+ - Obwód usługi ExpressRoute Premium 10Gbps w lokalizacji identyfikowany za pomocą prywatnej komunikacji równorzędnej włączone.
+ - Siecią wirtualną platformy Azure przy użyciu bramy UltraPerformance w wybranym regionie.
+ - DS5v2 maszyny Wirtualnej z systemem Windows Server 2016 w sieci wirtualnej. Maszyna wirtualna była nienależących do domeny przyłączony, kompilowany z domyślnego obrazu platformy Azure (nie optymalizacji lub dostosowywania) AzureCT zainstalowane.
+ - Wszystkich testów zostało za pomocą polecenia AzureCT Get-LinkPerformance testu obciążenia 5-minutowych dla każdego z sześciu przebiegów testów. Na przykład:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
     ```
- - Przepływ danych dla każdego z testów ma obciążenia wynikających z lokalnego serwera fizycznego (dotyczące programu Iperf; klienta w Seattle) do maszyny Wirtualnej platformy Azure (server dotyczące programu Iperf; w wymienionych region platformy Azure).
- - Danych kolumny "Opóźnienie" pochodzi z testu obciążenia nie (TCP testu opóźnienia bez dotyczące programu Iperf; uruchomiona).
- - "Maksymalna przepustowość" danych kolumny pochodzi z 16 testu obciążenia przepływu TCP o rozmiarze okna 1 Mb.
+ - Przepływ danych dla każdego testu, ma obciążenia przepływać z lokalnego serwera fizycznego (dotyczące programu Iperf; klienta w Seattle) do maszyny Wirtualnej platformy Azure (server dotyczące programu Iperf; w liście regionie platformy Azure).
+ - Danych kolumny "Opóźnienie" pochodzi z testu obciążeniowego nie (TCP testu opóźnienie bez dotyczące programu Iperf; uruchomione).
+ - Danych kolumny "Maksymalna przepustowość" pochodzi z 16 testu obciążeniowego przepływu TCP z rozmiarem okna 1 Mb.
 
 [![3]][3]
 
-### <a name="latencybandwidth-results"></a>Wyniki opóźnienia/przepustowość
+### <a name="latencybandwidth-results"></a>Wyniki opóźnienia/przepustowości
 >[!IMPORTANT]
-> Numery te są tylko ogólne odwołania. Czas oczekiwania ma wpływ wiele czynników, a te wartości są zazwyczaj spójne w czasie, warunków w ramach platformy Azure lub w sieci dostawcy usług mogą przesyłać dane za pośrednictwem innej ścieżki w dowolnym momencie, w związku z tym opóźnienia i przepustowości mogą mieć wpływ. Ogólnie rzecz biorąc wpływu tych zmian nie powodują istotne różnice.
+> Te liczby są ogólne tylko dla celów informacyjnych. Opóźnienie ma wpływ wiele czynników, a te wartości są zazwyczaj spójne wraz z upływem czasu, warunków w ramach platformy Azure lub w sieci dostawcy usług mogą przesyłać dane za pośrednictwem różnych ścieżek w dowolnym momencie, w związku z tym opóźnienia i przepustowości może mieć wpływ na. Ogólnie rzecz biorąc wpływ tych zmian nie powodują między nimi istotne różnice.
 >
 >
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Lokalizacja|Azure<br/>Region|Szacowane<br/>Odległość (km)|Opóźnienie|1 sesji<br/>Przepustowość|Maksimum<br/>Przepustowość|
+|ExpressRoute<br/>Lokalizacja|Azure<br/>Region|Szacowane<br/>Distance (km)|Opóźnienie|1 sesji<br/>Przepustowość|Maksimum<br/>Przepustowość|
 | Seattle | Zachodnie stany USA 2        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits na sekundę | 21
 | Seattle | Zachodnie stany USA          |  1,094 km |  18 ms |  82.3 MB/s |  3.70 Gbits na sekundę | 20
 | Seattle | Środkowe stany USA       |  2,357 km |  40 ms |  38.8 MB/s |  Do 2,55 Gbits/s | 17
@@ -201,15 +195,15 @@ Testuj ustawienia:
 | Seattle | Brazylia Południowa *   | 10,930 km | 189 ms |   8.2 MB/s |   699 MB/s | 22
 | Seattle | Indie Południowe      | 12,918 km | 202 ms |   7.7 MB/s |   634 MB/s | 27
 
-\*Opóźnienie Brazylia jest dobrym przykładem, gdy odległość liniową znacznie różni się od fiber Uruchom odległości. Można oczekiwać byłoby w okolicy 160 ms opóźnienie, ale jest rzeczywiście 189 ms. Ta różnica względem Moje oczekiwania może wskazywać na problem z siecią gdzieś, ale najprawdopodobniej czy uruchomić fiber nie przechodzi Brazylia prostym i ma dodatkowe km 1000 lub celu podróży, aby uzyskać Brazylia z Seattle.
+\* Czas oczekiwania na Brazylii jest dobrym przykładem, gdy liniową odległość znacznie różni się od fiber Uruchom odległości. Czy mogę oczekiwać byłoby w klubie 160 ms opóźnienie, ale jest faktycznie 189 ms. Ta różnica względem Moje oczekiwania może wskazywać na problem z siecią gdzieś, ale najprawdopodobniej czy fiber uruchamianych nie przechodzi do Brazylii prostym i dodatkowe km 1000 lub to podróż do Seattle uzyskiwanie Brazylii.
 
 ## <a name="next-steps"></a>Kolejne kroki
-1. Pobierz zestaw narzędzi platformy Azure łączności z serwisu GitHub w [http://aka.ms/AzCT][ACT]
-2. Postępuj zgodnie z instrukcjami dotyczącymi [link testowania wydajności][Performance Doc]
+1. Pobierz zestaw narzędzi łączność platformy Azure z repozytorium GitHub w [http://aka.ms/AzCT][ACT]
+2. Postępuj zgodnie z instrukcjami dotyczącymi [link testowania wydajnościowego][Performance Doc]
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "składniki sieci platformy azure"
-[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "ExpressRoute Rozwiązywanie problemów"
+[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "Rozwiązywanie problemów z usługi ExpressRoute"
 [3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "środowiska testowego wydajności"
 [4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "dane wyjściowe programu PowerShell"
 

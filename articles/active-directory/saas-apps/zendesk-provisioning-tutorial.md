@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 2dc965547511d27ed43a88c1f45b50593b30a937
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d8d6df221a8c520cea5e6e938447ffd881e7374c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347940"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322776"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie systemu Zendesk dla automatycznej aprowizacji użytkowników
 
@@ -47,7 +47,7 @@ Przed skonfigurowaniem systemu Zendesk dla użytkownika automatyczne Inicjowanie
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
@@ -55,7 +55,7 @@ Przed skonfigurowaniem systemu Zendesk dla użytkownika automatyczne Inicjowanie
     
 3. Aby dodać systemu Zendesk, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Zendesk**.
 
@@ -77,6 +77,10 @@ Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy z
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>Ważne wskazówki dotyczące przypisywania użytkowników do systemu Zendesk
 
+*    Role systemu Zendesk są dynamiczne i automatycznie uzupełniane w witrynie Azure portal, interfejsu użytkownika już dziś. Przed przypisaniem Zendesk ról do użytkowników, upewnij się, że synchronizacja początkowa jest finalizowane przy użyciu systemu Zendesk, aby pobrać najnowsze ról w dzierżawie usługi Zendesk.
+
+*    Zalecane jest, że jeden użytkownik usługi Azure AD jest przypisane do systemu Zendesk do przetestowania Twojej początkowej automatyczne aprowizowanie użytkowników konfiguracji. Dodatkowych użytkowników i/lub grup można przypisać później po pomyślnych testów.
+  
 *   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do systemu Zendesk do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
 
 *   Podczas przypisywania użytkowników do systemu Zendesk, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
@@ -111,7 +115,7 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
     *   W **klucz tajny tokenu** pola, wypełnij token wpisu tajnego, zgodnie z opisem w kroku 6.
 
     *   W **domeny** pola, wypełnij poddomeny dzierżawy systemu Zendesk.
-    Przykład: dla konta z adresem URL dzierżawy https://my-tenant.zendesk.com, Twojej domeny podrzędnej byłaby **Moje dzierżawy**.
+    Przykład: Dla konta, którego adres URL dzierżawy https://my-tenant.zendesk.com, Twojej domeny podrzędnej byłaby **Moje dzierżawy**.
 
 6. **Klucz tajny tokenu** dla Twojego systemu Zendesk konto znajduje się w **Administrator > Interfejs API > Ustawienia**. 
 

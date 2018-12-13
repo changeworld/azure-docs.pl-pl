@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: 6a9bc347af471a2ab84cefc25bcd7f48f1d5908d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9f881071559eaba0f6b1c86e8827993d52470baf
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846049"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186212"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -97,11 +95,11 @@ W **węzły testów** widok, można zaobserwować, łączność sieciową z każ
 
 Określić, czy niską wydajność aplikacji, jest z powodu sieci lub problem po stronie dostawcy aplikacji, obserwując korelację między czas reakcji aplikacji i opóźnienie sieci. 
 
-* **Problemu z aplikacją:** wzrost czas odpowiedzi, ale spójność na opóźnienie sieci sugeruje, że sieć działa prawidłowo i może to oznaczać ze względu na problem po stronie aplikacji. 
+* **Problem aplikacji:** Wzrost czas odpowiedzi, ale spójność na opóźnienie sieci sugeruje, że sieć działa prawidłowo, i może to oznaczać ze względu na problem po stronie aplikacji. 
 
     ![Monitor łączności usługi problemu z aplikacją](media/network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
-* **Sieci problem:** wzrost czas odpowiedzi wyposażony w odpowiedniej kolekcji w opóźnienia sieci sugeruje, że wzrost czas odpowiedzi może być ze względu na zwiększenie opóźnienia sieci. 
+* **Problem z siecią:** Wzrost czas odpowiedzi wyposażony w odpowiedniej kolekcji w opóźnienia sieci sugeruje, że wzrost czas odpowiedzi może być ze względu na zwiększenie opóźnienia sieci. 
 
     ![Problem z siecią Monitor łączności usługi](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 

@@ -9,19 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.component: ''
-ms.openlocfilehash: 9e9fdfce9dbb165227f88e9f72bc219dce8f3307
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a4e5440a9b8b6ce36d8472463b35201f39d3ac5a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428690"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192791"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cennika dla usługi Azure Network Performance Monitor
 
@@ -39,8 +37,8 @@ W poniższych sekcjach opisano zmiany cen dla składników programu NPM.
 **Jak oceniasz użycie monitora wydajności rozliczane starego modelu?**
 
 Okres rozliczeniowy NPM zależała od użycia i zużycia dwa składniki:
-* **Węzły**: wszystkie transakcje syntetyczne pochodzą i zakończyć w węzłach. Węzły są również określane jako agentów lub agentów zarządzania firmy Microsoft.
-* **Dane**: wyniki badań różnych sieci są przechowywane w repozytorium Azure Log Analytics.
+* **Węzły**: Wszystkie transakcje syntetyczne pochodzą i zakończyć w węzłach. Węzły są również określane jako agentów lub agentów zarządzania firmy Microsoft.
+* **Dane**: Wyniki badań różnych sieci są przechowywane w repozytorium Azure Log Analytics.
 
 W obszarze starego modelu rozliczenia została obliczona na podstawie liczby węzłów i ilość wygenerowanych danych. 
 
@@ -121,5 +119,5 @@ Zapoznaj się [monitorowanie połączeń](https://azure.microsoft.com/pricing/de
 
 ## <a name="references"></a>Dokumentacja
 
-[Często zadawane pytania dotyczące cen analizy dziennika](https://azure.microsoft.com/pricing/details/log-analytics/): często zadawane pytania dotyczące sekcja zawiera informacje na temat warstwy bezpłatna, za węzeł i inne informacje o cenach.
+[Log Analytics, często zadawane pytania dotyczące cennika](https://azure.microsoft.com/pricing/details/log-analytics/): W sekcji często zadawane pytania dotyczące zawiera informacje o warstwie bezpłatnej, za węzeł, a także inne informacje o cenach.
 

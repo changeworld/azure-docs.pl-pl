@@ -1,5 +1,5 @@
 ---
-title: Jak przygotować się do zmiany adresu SSL IP — Azure
+title: Przygotowanie do zmiany adresu SSL IP — usłudze Azure App Service
 description: Jeśli Twój adres SSL IP będzie można zmienić, Dowiedz się, co należy zrobić, dzięki czemu aplikacja będzie nadal działać po zmianie.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: e8558b4c3c7dafca8d4fff7e2aae0597a66c031d
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18
+ms.openlocfilehash: 4de20ba46d3c16d6cd7bde8e17efb0a6212bc771
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576546"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270794"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Jak przygotować się do zmiany adresu SSL IP
 
@@ -31,7 +32,7 @@ Jeśli otrzymasz powiadomienie, że zmiana jest adres SSL IP aplikacji usługi A
 
 4.  W obszarze **ustawienia** nagłówka, kliknij przycisk **ustawienia protokołu SSL** w nawigacji po lewej stronie.
 
-5. W sekcji wiązania SSL zaznacz rekord nazwy hosta. W wyświetlonym edytorze wybierz **SNI SSL** na **typ SSL** menu listy rozwijanej i kliknij przycisk **Dodawanie powiązania**. Gdy pojawi się komunikat o powodzeniu operacji, został wydany istniejącego adresu IP.
+1. W sekcji wiązania SSL zaznacz rekord nazwy hosta. W wyświetlonym edytorze wybierz **SNI SSL** na **typ SSL** menu listy rozwijanej i kliknij przycisk **Dodawanie powiązania**. Gdy pojawi się komunikat o powodzeniu operacji, został wydany istniejącego adresu IP.
 
 6.  W **powiązania SSL** ponownie wybierz ten sam rekord nazwy hosta, za pomocą certyfikatu. W edytorze, która zostanie otwarta, tym razem wybierz **SSL opartych na protokole IP** na **typ SSL** menu listy rozwijanej i kliknij przycisk **Dodawanie powiązania**. Gdy pojawi się komunikat o powodzeniu operacji, nabyciu nowego adresu IP.
 

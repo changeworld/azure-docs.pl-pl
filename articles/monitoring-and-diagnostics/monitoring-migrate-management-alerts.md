@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: fe854c6a33a950f9f937118b6048d547f1a2fe37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 63eb5f39d5ac8ba6c92a2b500766bc538959595c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245770"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274194"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migracja platformy Azure alertów dotyczących zdarzeń zarządzania do alertów dziennika aktywności
 
@@ -92,18 +92,18 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 
 Każdy alert jest oddzielona linię przerywaną, co i identyfikator zasobu alert i określonej reguły monitorowanych znajdują się szczegółowe informacje.
 
-Ta funkcja została zastąpiona [alertów dziennika aktywności platformy Azure w monitorze](monitoring-activity-log-alerts.md). Te nowe alerty umożliwiają nastavit warunek zdarzenia dziennika aktywności i Otrzymuj powiadomienie, gdy warunek jest zgodna z nowego zdarzenia. Oferują one także kilka następujących ulepszeń z alertów dotyczących zdarzeń zarządzania:
-* Ponowne użycie grupy odbiorców powiadomień ("Akcje") w wielu alertów za pomocą [grup akcji](monitoring-action-groups.md), co zmniejsza złożoność zmiana, który powinien zostać wyświetlony alert.
+Ta funkcja została zastąpiona [alertów dziennika aktywności platformy Azure w monitorze](../azure-monitor/platform/activity-log-alerts.md). Te nowe alerty umożliwiają nastavit warunek zdarzenia dziennika aktywności i Otrzymuj powiadomienie, gdy warunek jest zgodna z nowego zdarzenia. Oferują one także kilka następujących ulepszeń z alertów dotyczących zdarzeń zarządzania:
+* Ponowne użycie grupy odbiorców powiadomień ("Akcje") w wielu alertów za pomocą [grup akcji](../azure-monitor/platform/action-groups.md), co zmniejsza złożoność zmiana, który powinien zostać wyświetlony alert.
 * Otrzymasz powiadomienie bezpośrednio na Twój telefon, za pomocą wiadomości SMS za pomocą grup akcji.
-* Możesz [Tworzenie alertów dziennika aktywności przy użyciu szablonów usługi Resource Manager](alert-activity-log.md).
+* Możesz [Tworzenie alertów dziennika aktywności przy użyciu szablonów usługi Resource Manager](../azure-monitor/platform/alerts-activity-log.md).
 * Warunki można tworzyć z większą elastycznością i złożoność do konkretnych potrzeb.
 * Powiadomienia są dostarczane szybciej.
  
 ## <a name="how-to-migrate"></a>Jak przeprowadzić migrację
  
 Aby utworzyć nowe działanie alertów dzienników, można:
-* Postępuj zgodnie z [nasz Przewodnik na temat tworzenia alertu w witrynie Azure portal](monitoring-activity-log-alerts.md)
-* Dowiedz się, jak [Utwórz alert przy użyciu szablonu usługi Resource Manager](alert-activity-log.md)
+* Postępuj zgodnie z [nasz Przewodnik na temat tworzenia alertu w witrynie Azure portal](../azure-monitor/platform/activity-log-alerts.md)
+* Dowiedz się, jak [Utwórz alert przy użyciu szablonu usługi Resource Manager](../azure-monitor/platform/alerts-activity-log.md)
  
 Alerty dotyczące zdarzeń zarządzania, które zostały wcześniej utworzone nie będzie są automatycznie migrowane do alertów dziennika aktywności. Należy użyć powyższy skrypt programu PowerShell, aby wyświetlić listę alertów dotyczących zdarzeń zarządzania obecnie zostały skonfigurowane, a następnie ponownie ręcznie utworzyć je jako alertów dziennika aktywności. Należy to zrobić przed 1 października, po upływie którego alertów dotyczących zdarzeń zarządzania nie będzie już widoczna w Twojej subskrypcji platformy Azure. Ta zmiana nie ma wpływu są inne typy alertów platformy Azure, w tym alertów dotyczących metryk usługi Azure Monitor, alerty usługi Application Insights i alertów usługi Log Analytics. Jeśli masz jakieś pytania, Opublikuj w komentarzach poniżej.
 
@@ -111,8 +111,8 @@ Alerty dotyczące zdarzeń zarządzania, które zostały wcześniej utworzone ni
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [dziennika aktywności](monitoring-overview-activity-logs.md)
-* Konfigurowanie [alertów dziennika aktywności w witrynie Azure portal](monitoring-activity-log-alerts.md)
-* Konfigurowanie [alertów dziennika aktywności przy użyciu usługi Resource Manager](alert-activity-log.md)
-* Przegląd [schemat elementów webhook alertu dziennika aktywności](monitoring-activity-log-alerts-webhook.md)
+* Konfigurowanie [alertów dziennika aktywności w witrynie Azure portal](../azure-monitor/platform/activity-log-alerts.md)
+* Konfigurowanie [alertów dziennika aktywności przy użyciu usługi Resource Manager](../azure-monitor/platform/alerts-activity-log.md)
+* Przegląd [schemat elementów webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md)
 * Dowiedz się więcej o [powiadomień dotyczących usług](monitoring-service-notifications.md)
-* Dowiedz się więcej o [grupy akcji](monitoring-action-groups.md)
+* Dowiedz się więcej o [grupy akcji](../azure-monitor/platform/action-groups.md)

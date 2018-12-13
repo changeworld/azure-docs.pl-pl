@@ -1,6 +1,6 @@
 ---
-title: Danych i wykonywania zapytań usługi Azure Time Series Insights (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Podczas badania danych platformy Azure Time Series Insights (wersja zapoznawcza)
+title: Azure zapytań czasu Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Podczas badania danych czasu Series Insights w wersji zapoznawczej platformy Azure.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,76 +9,77 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 00ef6eed23d1645320c28123d6670230cdd725c9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 48a9a1d0f79a7a36b90fa87651a5283cba87de20
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964921"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275809"
 ---
 # <a name="data-querying"></a>Wykonywanie zapytań dotyczących danych
 
-Usługa Azure Time Series Insights (TSI) umożliwia danych zapytań o zdarzeń i metadane przechowywane w środowisku przy użyciu publicznych interfejsów API urządzenia surface. Te interfejsy API są również używane w [Eksplorator usługi TSI](./time-series-insights-update-explorer.md).
+Usługi Azure Insights serii czasu (wersja zapoznawcza) umożliwia danych zapytań o zdarzeń i metadane przechowywane w środowisku przy użyciu publicznych interfejsów API urządzenia surface. Te interfejsy API są również używane w [czasu Series Insights w wersji zapoznawczej Eksplorator](./time-series-insights-update-explorer.md).
 
-Istnieją trzy podstawowe kategorie interfejsu API, które są dostępne w usłudze Azure TSI:
+Trzy podstawowe kategorie interfejsu API są dostępne w usłudze Time Series Insights:
 
-* Środowisko interfejsom API samym środowisku usługa TSI Przesyła zapytania, takie jak listy środowisk obiekt wywołujący ma dostęp do metadanych środowiska itp.
+* **Interfejsy API w środowisku**: Umożliwia zapytaniom samego środowiska usługi Time Series Insights. Przykłady zapytań listy środowisk, którymi obiekt wywołujący ma dostęp do i metadane środowiska.
 
-* Włącz interfejsy API (TSM-Q) model zapytania serii czasu służy do tworzenia, odczytu, aktualizacji i usuwania operacji na metadanych w środowisku części modelu szeregów czasowych. Podobnie jak wystąpień typów, hierarchii, itp.
+* **Interfejsy API (TSM-Q) dla zapytania w modelu serii czasu**: Umożliwia służy do tworzenia, odczytu, aktualizacji i usuwania operacji na metadanych w środowisku części modelu szeregów czasowych. Przykładami są wystąpienia, typy i hierarchii.
 
-* Czas serii zapytania (TSQ) interfejsy API pozwalają pobierania danych zdarzenia są rejestrowane od dostawcy źródła lub można wykonać operacji przekształcania, łączenie i wykonywania obliczeń na danych szeregów czasowych.
+* **Szeregi czasowe zapytania interfejsy API (TSQ)**: Umożliwia pobieranie danych zdarzenia, jak jest rejestrowana od dostawcy źródła. Te interfejsy API mogą wykonywać operacje, przekształcania, łączenie i wykonywania obliczeń na danych szeregów czasowych.
 
-[Język wyrażeń serii czasu](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) (TSX) jest skuteczna, czwarty, kategorii. Używa on modeli serii czasu (TSM), aby umożliwić skład zaawansowanych obliczeń.
+[Języka wyrażeń serii czasu (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) jest kategorią czwarty zaawansowane. Aby włączyć skład zaawansowanych obliczeń używa modeli szeregów czasowych.
 
-## <a name="azure-time-series-insights-core-apis"></a>Usługa Azure Time Series Insights podstawowe interfejsy API
+## <a name="azure-time-series-insights-preview-core-apis"></a>Usługa Azure czas Series Insights w wersji zapoznawczej podstawowe interfejsy API
 
-Poniżej przedstawiono podstawowe interfejsy API, firma Microsoft obsługuje.
+Następujące podstawowe interfejsy API są obsługiwane.
 
 ![tsq][1]
 
-### <a name="the-environment-apis"></a>Interfejsy API środowiska
+### <a name="environment-apis"></a>Interfejsy API w środowisku
 
-Poniżej przedstawiono dostępne interfejsy API w środowisku:
+Dostępne są następujące funkcje interfejsu API środowiska:
 
-* [Pobieranie interfejsu API środowiska](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api): zwraca listę wszystkich środowisk, czy obiekt wywołujący jest autoryzowany do uzyskania dostępu.
-* [Pobieranie interfejsu API dostępność środowiska](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): zwraca rozkład liczby zdarzeń za pośrednictwem sygnatura czasowa zdarzenia `$ts`. Ten interfejs API pomaga ustalić, czy istnieją zdarzeń sygnaturę czasową, zwracając liczbę zdarzeń, jeśli istnieje.
-* [Pobierz interfejs API schematu zdarzeń](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): zwraca metadane schematu zdarzeń dla podanego zakresu. Ten interfejs API pomaga pobrać wszystkich metadanych/właściwości dostępne w schemacie dla podanego zakresu.
+* [Środowisko API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api): Zwraca listę środowisk, czy obiekt wywołujący jest autoryzowany do uzyskania dostępu.
+* [Uzyskaj dostępność środowiska interfejsu API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): Zwraca rozkład liczby zdarzeń za pośrednictwem sygnatura czasowa zdarzenia `$ts`. Ten interfejs API pomaga ustalić, czy istnieją jakiekolwiek zdarzenia w sygnaturę czasową, zwracając liczbę zdarzeń, jeśli takie istnieją.
+* [Pobieranie schematu zdarzeń API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): Zwraca metadane schematu zdarzeń dla podanego zakresu. Ten interfejs API pomaga pobrać wszystkie metadane i właściwości dostępne w schemacie dla podanego zakresu.
 
 ### <a name="time-series-model-query-tsm-q-apis"></a>Interfejsy API (TSM-Q) dla zapytania w modelu serii czasu
 
-Czas serii Model zapytania interfejsami API dostępnymi są następujące:
+Dostępne są następujące interfejsy API modelu zapytania serii czasu:
 
-* [Ustawienia interfejsu API modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): umożliwia pobieranie i stosowanie poprawek na domyślny typ i nazwa modelu środowiska.
-* [Typy interfejsu API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api): włącza CRUD na typy serii czasu oraz ich zmienne skojarzone.
-* [Interfejs API hierarchie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): włącza CRUD na hierarchie serii czasu i ich skojarzone pole ścieżki.
-* [Wystąpienia interfejsu API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): włącza CRUD na wystąpienia serii czasu i ich pól skojarzonego wystąpienia.
+* [Ustawienia interfejsu API modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): Umożliwia pobieranie i stosowanie poprawek na domyślny typ i nazwa modelu środowiska.
+* [Typy interfejsu API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api): Włącza CRUD na typy szeregów czasowych i ich skojarzone zmienne.
+* [Interfejs API hierarchie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): Włącza CRUD na hierarchii szeregów czasowych i ich skojarzone pole ścieżki.
+* [Wystąpienia interfejsu API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): Włącza CRUD na wystąpieniach szeregów czasowych i ich pól skojarzonego wystąpienia.
 
-### <a name="the-time-series-query-tsq-apis"></a>Interfejsy API zapytań (TSQ) serii czasu
+### <a name="time-series-query-tsq-apis"></a>Interfejsów API zapytań (TSQ) serii czasu
 
-Czas serii zapytania interfejsami API dostępnymi są następujące:
+Dostępne są następujące interfejsy API zapytań serii czasu:
 
-* [Pobieranie interfejsu API zdarzeń](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): rozpoczynanie zdarzenia interfejsu API umożliwia wysyłanie kwerend i pobieranie danych usługa TSI Przesyła zdarzeń są rejestrowane w usłudze Azure TSI od dostawcy źródła.
+* [Pobierz zdarzenia interfejsu API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): Umożliwia wysyłanie kwerend i pobieranie danych usługi Time Series Insights z zdarzenia są rejestrowane w usłudze Time Series Insights od dostawcy źródła.
 
-* [Rozpoczynanie serii API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): umożliwia wysyłanie kwerend i pobieranie danych usługi Azure TSI z przechwytywanych zdarzeń przy użyciu danych zarejestrowanych na potrzeby przesyłu przy użyciu zmiennych definiowanie w tekście modelu lub podana.
+* [Rozpoczynanie serii API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): Umożliwia wysyłanie kwerend i pobieranie danych usługi Time Series Insights z przechwytywanych zdarzeń przy użyciu danych zarejestrowanych w sieci. Wartości, które są zwracane są oparte na zmienne, które zostały zdefiniowane w modelu lub podać wbudowane.
 
     >[!NOTE]
-    > Klauzula agregacji jest ignorowane, nawet jeśli określona w modelu lub podano wbudowanego.
+    > Klauzula agregacji jest ignorowany, nawet jeśli jest określone w modelu, lub podać wbudowane.
 
-  Serii uzyskać interfejs API zwraca TSV (wartości serii godziny, format, w usłudze TSI korzysta z danych wyjściowych JSON z zapytania) dla każdej zmiennej dla każdego przedziału na podstawie udostępnionych **identyfikator serii czasu** i zestawem używanych zmiennych podana.
+  Rozpoczynanie serii interfejs API zwraca wartość szeregów czasowych dla każdej zmiennej dla każdego interwału. Wartość typu Time Series jest w formacie, który korzysta z danych wyjściowych JSON z kwerendy usługi Time Series Insights. Wartości, które są zwracane są oparte na identyfikator serii czasu i zbiór zmiennych, które zostały udostępnione.
 
-* [Agreguj API serii](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): umożliwia wysyłanie kwerend i pobieranie usługa TSI Przesyła dane z przechwytywanych zdarzeń przez pobieranie próbek i agregowanie zarejestrowanych danych.
+* [Agreguj serii API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): Umożliwia wysyłanie kwerend i pobieranie danych usługi Time Series Insights z przechwytywanych zdarzeń przez pobieranie próbek i agregowanie zarejestrowanych danych.
 
-  Łączny API serii zwraca TSV dla każdej zmiennej dla każdego przedziału na podstawie udostępnionych **identyfikator serii czasu** i zestawem używanych zmiennych podana. Łączny API serii osiąga redukcji dzięki wykorzystaniu zmiennych przechowywanych w TSM lub podano wbudowaną, aby agregacji lub przykładowe dane.
+  Łączny serii interfejsu API zwraca wartość szeregów czasowych dla każdej zmiennej dla każdego interwału. Wartości są oparte na identyfikator serii czasu i zbiór zmiennych, które zostały udostępnione. Łączny API serii osiąga redukcji przy użyciu zmiennych przechowywanych w modelu szeregów czasowych lub podano wbudowaną, aby agregacji lub przykładowe dane.
 
   Obsługiwane typy agregacji: `Min`, `Max`, `Sum`, `Count`, `Average`
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odczyt [magazynu Azure TSI (wersja zapoznawcza) i ruch przychodzący](./time-series-insights-update-storage-ingress.md).
+Przeczytaj:
 
-Przeczytaj o [modelowania danych](./time-series-insights-update-tsm.md).
-
-Przeczytaj o [najlepszych rozwiązań, wybierając Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md).
+- [Usługi Azure storage czasu Series Insights w wersji zapoznawczej i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md)
+- [Modelowanie danych](./time-series-insights-update-tsm.md)
+- [Najważniejsze wskazówki podczas wybierania Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md)
 
 <!-- Images -->
 [1]: media/v2-update-tsq/tsq.png

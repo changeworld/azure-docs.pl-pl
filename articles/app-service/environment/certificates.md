@@ -1,5 +1,5 @@
 ---
-title: Certyfikaty i środowiska usługi Azure App Service
+title: Certyfikaty i środowisko usługi App Service — platformy Azure
 description: Wyjaśniają wiele tematów związanych z certyfikatami na środowisko ASE
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 3d417d560d8a88100f31def27c7db5f9b2493062
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167982"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271899"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certyfikaty i środowiska usługi App Service 
 
@@ -32,8 +33,8 @@ Jeśli używasz zewnętrznego środowiska ASE, Twoje aplikacje są osiągane po 
 
 Istnieją dwa sposoby konfigurowania certyfikatów przy użyciu środowiska ASE wewnętrznego modułu równoważenia obciążenia.  Można ustawić domyślny certyfikat wieloznaczny dla środowiska ASE wewnętrznego modułu równoważenia obciążenia lub ustaw opcję certyfikaty poszczególnych aplikacji sieci web w środowisku ASE.  Niezależnie od wybranego typu musi być prawidłowo skonfigurowane następujące atrybuty certyfikatu:
 
-- **Temat:** ten atrybut musi być równa *. [ Your głównego domeny — tutaj] Aby certyfikat wieloznaczny środowiska ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku tworzenia certyfikatu dla aplikacji, następnie należy go [nazwa_aplikacji]. [your głównego domeny — tutaj]
-- **Nazwa alternatywna podmiotu:** ten atrybut musi zawierać zarówno *. [ usługi głównego domeny — tutaj] i *.scm. [your głównego domeny — tutaj] Aby certyfikat wieloznaczny w środowisku ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku tworzenia certyfikatu dla aplikacji, następnie należy go [nazwa_aplikacji]. [your głównego domeny — tutaj] i [nazwa_aplikacji] .scm. [your głównego domeny — tutaj].
+- **Temat:** Ten atrybut musi być równa *. [your głównego domeny — tutaj] Aby certyfikat wieloznaczny środowiska ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku tworzenia certyfikatu dla aplikacji, następnie należy go [nazwa_aplikacji]. [your głównego domeny — tutaj]
+- **Nazwa alternatywna podmiotu:** Ten atrybut musi zawierać zarówno *. [your głównego domeny — tutaj] i *.scm. [your głównego domeny — tutaj] Aby certyfikat wieloznaczny w środowisku ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku tworzenia certyfikatu dla aplikacji, następnie należy go [nazwa_aplikacji]. [your głównego domeny — tutaj] i [nazwa_aplikacji] .scm. [your głównego domeny — tutaj].
 
 Jako wariant trzeci można utworzyć certyfikat środowiska ASE z wewnętrznym modułem równoważenia obciążenia, który zawiera wszystkie nazwy poszczególnych aplikacji w sieci SAN certyfikatu zamiast odwołania symboli wieloznacznych. Ten problem przy użyciu tej metody polega na musisz wiedzieć na początku nazwy aplikacji, które są zaangażowane w środowisku ASE lub należy zachować aktualizacji certyfikatu środowiska ASE z wewnętrznym modułem równoważenia obciążenia.
 

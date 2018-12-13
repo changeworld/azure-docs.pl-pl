@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy związane z zarządzaniem 
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7339592833db148acb38ce378fe4cf261977dd72
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092631"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275656"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
@@ -23,7 +23,7 @@ Brak agenta narzędzia do rozwiązywania problemów dla agenta hybrydowego proce
 
 ## <a name="general"></a>Ogólne
 
-### <a name="components-enabled-not-working"></a>Scenariusz: Składniki rozwiązania "Update Management" zostały włączone i teraz skonfigurowane tej maszyny wirtualnej
+### <a name="components-enabled-not-working"></a>Scenariusz: Składniki rozwiązania "Update Management" zostały włączone i teraz jest konfigurowany tej maszyny wirtualnej
 
 #### <a name="issue"></a>Problem
 
@@ -44,6 +44,35 @@ Ten błąd może być spowodowany przez następujących przyczyn:
 
 1. Odwiedź stronę, [Planowanie sieci](../automation-hybrid-runbook-worker.md#network-planning) Aby dowiedzieć się więcej o tym, jakie adresy i porty muszą być dozwolone do zarządzania aktualizacjami do pracy.
 2. Jeśli przy użyciu klonowanego obrazu, program sysprep obrazu najpierw, a następnie zainstaluj agenta MMA po fakcie.
+
+### <a name="multi-tenant"></a>Scenariusz: Otrzymujesz błąd połączonej subskrypcji podczas tworzenia wdrożenia aktualizacji dla maszyn w innej dzierżawie platformy Azure.
+
+#### <a name="issue"></a>Problem
+
+Pojawi się następujący błąd podczas próby utworzenia wdrożenia aktualizacji dla maszyn w innej dzierżawie platformy Azure:
+
+```
+The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd występuje podczas tworzenia wdrożenia aktualizacji, który ma maszyn wirtualnych platformy Azure w innej dzierżawie uwzględnione we wdrożeniu aktualizacji.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Należy użyć następującego obejścia można pobrać je według harmonogramu. Możesz użyć [polecenia New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) polecenia cmdlet z przełącznikiem `-ForUpdate` Tworzenie harmonogramu i używanie [New AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) polecenia cmdlet i przekaż maszyny w innej dzierżawie do `-NonAzureComputer` parametru. Poniższy przykład przedstawia przykład, jak to zrobić:
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
 
 ## <a name="windows"></a>Windows
 
@@ -69,7 +98,7 @@ Komputer jest już dołączona do innego obszaru roboczego na potrzeby zarządza
 
 Przeprowadź czyszczenie starych artefaktów na komputerze przez [usuwanie grupę hybrydowych elementów runbook](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group) , a następnie spróbuj ponownie.
 
-### <a name="machine-unable-to-communicate"></a>Scenariusz: Maszyny nie może nawiązać połączenia z usługą
+### <a name="machine-unable-to-communicate"></a>Scenariusz: Maszyna nie jest w stanie nawiązać połączenia z usługą
 
 #### <a name="issue"></a>Problem
 
@@ -113,7 +142,7 @@ Hybrydowy proces roboczy elementu Runbook nie był w stanie wygenerować certyfi
 
 Sprawdź konto systemowe ma dostęp do odczytu do folderu **C:\ProgramData\Microsoft\Crypto\RSA** , a następnie spróbuj ponownie.
 
-### <a name="nologs"></a>Scenariusz: Zarządzanie aktualizacjami dane nie są wyświetlane w usłudze Log Analytics dla maszyny
+### <a name="nologs"></a>Scenariusz: Aktualizowanie danych zarządzania, które nie są wyświetlane w usłudze Log Analytics dla maszyny
 
 #### <a name="issue"></a>Problem
 
@@ -151,7 +180,7 @@ Kliknij dwukrotnie wyjątek wyświetlane na czerwono, aby wyświetlić komunikat
 
 ## <a name="linux"></a>Linux
 
-### <a name="scenario-update-run-fails-to-start"></a>Scenariusz: Przebieg aktualizacji nie powiedzie się
+### <a name="scenario-update-run-fails-to-start"></a>Scenariusz: Przebieg aktualizacji zakończy się niepowodzeniem rozpocząć
 
 #### <a name="issue"></a>Problem
 
@@ -169,7 +198,7 @@ Utwórz kopię w następującym pliku dziennika i ją zachować na potrzeby rozw
 /var/opt/microsoft/omsagent/run/automationworker/worker.log
 ```
 
-### <a name="scenario-update-run-starts-but-encounters-errors"></a>Scenariusz: Uruchamia przebieg aktualizacji, ale napotka błędy
+### <a name="scenario-update-run-starts-but-encounters-errors"></a>Scenariusz: Przebieg aktualizacji uruchamiany, jednak wystąpią błędy
 
 #### <a name="issue"></a>Problem
 

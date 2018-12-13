@@ -1,5 +1,5 @@
 ---
-title: Funkcjonalność systemu operacyjnego w usłudze Azure App Service
+title: Funkcjonalność systemu operacyjnego w usłudze App Service — platformy Azure
 description: Dowiedz się więcej o funkcji systemu operacyjnego, dostępnych dla aplikacji internetowych, zapleczy aplikacji mobilnych i aplikacji API apps w usłudze Azure App Service
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: ebb95093d96a3c1fd36565831215355b18ac5d1a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: bb17748968d0875cae132730a02f490eab966690
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968429"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269492"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkcjonalność systemu operacyjnego w usłudze Azure App Service
 W tym artykule opisano typowych funkcji systemu operacyjnego linii bazowej, która jest dostępna dla wszystkich aplikacji Windows działających na [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ta funkcja obejmuje plików, sieci i dostępu do rejestru i dzienniki diagnostyczne i zdarzenia. 

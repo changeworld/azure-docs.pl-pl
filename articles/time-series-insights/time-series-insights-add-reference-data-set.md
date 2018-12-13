@@ -1,5 +1,5 @@
 ---
-title: Jak dodać zestawu danych referencyjnych do środowiska usługi Azure Time Series Insights
+title: Usługa Azure Time Series Insights odwołują się do danych — jak dodawanie zestawu danych referencyjnych do środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób dodawania zestawu danych referencyjnych, aby rozszerzyć dane w danym środowisku usługi Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: 45520a556d109158987dd47e33a1efb52a1cd356
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: de5f4735e7dde7a3e631d14c83d42ccb9fd5c9db
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364741"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273839"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Tworzenie zestawu danych referencyjnych dla środowiska usługi Time Series Insights przy użyciu witryny Azure portal
 
@@ -59,9 +60,9 @@ Dane referencyjne nie jest przyłączona wstecznie. Oznacza to, że tylko danych
    - Wklej je do edytora tekstu. Następnie wybierz **analizy danych referencyjnych** przycisku.
    - Wybierz **wybierz plik** przycisk, aby dodać dane z pliku tekstowego lokalnego. 
 
-   Na przykład, wkleić dane w formacie CSV: ![danych wklejone CSV](media/add-reference-data-set/csv_data_pasted.png)
+   Na przykład Wklej dane w formacie CSV: ![Wklejonych danych CSV](media/add-reference-data-set/csv_data_pasted.png)
 
-   Na przykład, wkleić dane tablicy JSON: ![dane JSON Wklej](media/add-reference-data-set/json_data_pasted.png)
+   Na przykład Wklej dane tablicy JSON: ![Wklej dane JSON](media/add-reference-data-set/json_data_pasted.png)
 
    Jeśli występuje błąd podczas analizowania wartości danych, ten błąd jest wyświetlana na czerwono w dolnej części strony, takich jak `CSV parsing error, no rows extracted`.
 

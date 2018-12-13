@@ -1,5 +1,5 @@
 ---
-title: Połączenia hybrydowe usługi Azure App Service | Dokumentacja firmy Microsoft
+title: Połączenia hybrydowe — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Jak utworzyć i dostęp do zasobów w różnych sieciach za pomocą połączeń hybrydowych
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: cdfe1a35dbbf8fa048e0b0ca24f06bb0e73bde61
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 084d5e9453ea5a55bdeeff839e4c70890575c83d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968322"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258019"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Połączenia hybrydowe usługi Azure App Service #
 
@@ -136,7 +137,7 @@ Po uruchomieniu interfejsu użytkownika HCM, pierwszą rzeczą, jaką widzisz to
 Aby dodać co najmniej jednego połączenia hybrydowe do Twojej HCM:
 
 1. Rozpocznij HCM interfejsu użytkownika.
-1. Wybierz **skonfigurować inne połączenie hybrydowe**.
+2. Wybierz **skonfigurować inne połączenie hybrydowe**.
 ![Zrzut ekranu przedstawiający Konfigurowanie nowego połączenia hybrydowe][8]
 
 1. Zaloguj się przy użyciu konta platformy Azure.
@@ -197,7 +198,7 @@ Obiekt JSON skojarzony z połączenia hybrydowego wygląda następująco:
       }
     }
 
-Jest jednym ze sposobów dzięki tym informacjom armclient, którą można pobrać z [ARMClient] [ armclient] projektu github. Poniżej przedstawiono przykład dołączenie istniejącego połączenia hybrydowego w aplikacji sieci web. Utwórz plik JSON na powyższym schematu, takich jak:
+Jest jednym ze sposobów dzięki tym informacjom armclient, którą można pobrać z [ARMClient] [ armclient] projektu GitHub. Poniżej przedstawiono przykład dołączenie istniejącego połączenia hybrydowego w aplikacji sieci web. Utwórz plik JSON na powyższym schematu, takich jak:
 
     {
       "name": "relay-demo-hc",

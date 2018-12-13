@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d24b2773aa056b33a4067d5d84677d186d25b195
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422800"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255078"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure
 
@@ -39,7 +39,7 @@ Jeśli te warunki są już istnieją w Twoim środowisku, przejdź do [tworzenie
     > [!NOTE]
     > Inne dystrybucje bring-your-own Linux może działać, dopóki agent maszyny Wirtualnej jest dostępne na maszynie wirtualnej i obsługiwany język Python. Jednak te dystrybucji nie są obsługiwane.
     >
- * **Windows Server**, **klienta Windows**: wersje starsze niż Windows Server 2008 R2 lub Windows 7, nie są obsługiwane.
+ * **Windows Server**, **klienta Windows**:  Wersje starsze niż Windows Server 2008 R2 lub Windows 7, nie są obsługiwane.
 
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Ograniczenia w przypadku tworzenia kopii zapasowych i przywracania maszyny Wirtualnej
@@ -177,14 +177,14 @@ Dla rozszerzenia kopii zapasowej do pracy, Azure [agenta maszyny Wirtualnej](../
 
 Poniżej znajduje się w sytuacjach, w którym są *nie* używania maszyny Wirtualnej utworzone w portalu Azure Marketplace. **Na przykład po migracji maszyny Wirtualnej z lokalnego centrum danych. W takim przypadku agenta maszyny Wirtualnej musi być zainstalowany w celu włączenia ochrony maszyny wirtualnej.**
 
-**Uwaga**: po zainstalowaniu agenta maszyny Wirtualnej, należy użyć programu Azure PowerShell można zaktualizować właściwości ProvisionGuestAgent, więc Azure wie, maszyny Wirtualnej został zainstalowany agent.
+**Uwaga**: Po zainstalowaniu agenta maszyny Wirtualnej, należy również użyć programu Azure PowerShell, aby zaktualizować właściwości ProvisionGuestAgent i umożliwić Azure wie, że maszyna wirtualna jest zainstalowany agent.
 
 Jeśli masz problemy z tworzeniem kopii zapasowej maszyny Wirtualnej platformy Azure, skorzystaj z poniższej tabeli, aby sprawdzić, czy agent maszyny Wirtualnej platformy Azure został poprawnie zainstalowany na maszynie wirtualnej. W tabeli przedstawiono dodatkowe informacje na temat agenta maszyny Wirtualnej dla Windows i maszyn wirtualnych systemu Linux.
 
 | **Operacja** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Instalowanie agenta maszyny wirtualnej |Pobierz i zainstaluj [plik MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. |<li> Zainstaluj najnowszą wersję [agenta systemu Linux](../virtual-machines/extensions/agent-linux.md). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. Zaleca się zainstalowanie agenta ze swojego repozytorium dystrybucji. Firma Microsoft **nie zaleca się** Instalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu github.  |
-| Aktualizowanie agenta maszyny wirtualnej |Aktualizowanie agenta maszyny wirtualnej jest równie proste, jak ponowne zainstalowanie [plików binarnych agenta maszyny wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Upewnij się, że żadna operacja tworzenia kopii zapasowej nie jest uruchomiona podczas aktualizowania agenta maszyny wirtualnej. |Postępuj zgodnie z instrukcjami dotyczącymi [aktualizowania agenta maszyny wirtualnej systemu Linux ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Zalecamy aktualizowanie agenta ze swojego repozytorium dystrybucji. Firma Microsoft **nie zaleca się** aktualizowania agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu github.<br>Upewnij się, że podczas aktualizowania agenta maszyny wirtualnej żadna operacja tworzenia kopii zapasowej nie jest uruchomiona. |
+| Instalowanie agenta maszyny wirtualnej |Pobierz i zainstaluj [plik MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. |<li> Zainstaluj najnowszą wersję [agenta systemu Linux](../virtual-machines/extensions/agent-linux.md). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. Zaleca się zainstalowanie agenta ze swojego repozytorium dystrybucji. Firma Microsoft **nie zaleca się** Instalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu GitHub.  |
+| Aktualizowanie agenta maszyny wirtualnej |Aktualizowanie agenta maszyny wirtualnej jest równie proste, jak ponowne zainstalowanie [plików binarnych agenta maszyny wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Upewnij się, że żadna operacja tworzenia kopii zapasowej nie jest uruchomiona podczas aktualizowania agenta maszyny wirtualnej. |Postępuj zgodnie z instrukcjami dotyczącymi [aktualizowania agenta maszyny wirtualnej systemu Linux ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Zalecamy aktualizowanie agenta ze swojego repozytorium dystrybucji. Firma Microsoft **nie zaleca się** aktualizowania agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu GitHub.<br>Upewnij się, że podczas aktualizowania agenta maszyny wirtualnej żadna operacja tworzenia kopii zapasowej nie jest uruchomiona. |
 | Sprawdzanie poprawności instalacji agenta maszyny wirtualnej |<li>Przejdź do folderu *C:\WindowsAzure\Packages* w maszynie wirtualnej Azure. <li>Powinien znajdować się w nim plik WaAppAgent.exe.<li> Kliknij plik prawym przyciskiem myszy, przejdź do opcji **Właściwości**, a następnie wybierz kartę **Szczegóły**. W polu Wersja produktu powinna znajdować się wartość 2.6.1198.718 lub wyższa. |ND |
 
 ### <a name="backup-extension"></a>Rozszerzenie kopii zapasowej
@@ -238,7 +238,7 @@ Aby użyć serwera proxy HTTP do komunikowania się z publicznej sieci internet,
 > [!NOTE]
 > Te kroki odnoszą się określonej nazwy i wartości w tym przykładzie. Teraz podczas wprowadzania (lub wklejanie) szczegółów do Twojego kodu, użyj nazwy i wartości dla danego wdrożenia.
 
-#### <a name="step-1-configure-outgoing-network-connections"></a>Krok 1: Konfigurowanie wychodzących połączeń sieciowych
+#### <a name="step-1-configure-outgoing-network-connections"></a>Krok 1. Konfigurowanie wychodzących połączeń sieciowych
 ###### <a name="for-windows-machines"></a>W przypadku komputerów Windows
 Procedura ta konfiguruje konfigurację serwera proxy dla konta system lokalny.
 
@@ -283,7 +283,7 @@ HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
 ```
 
-#### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>Krok 2: Zezwalaj na połączenia przychodzące na serwerze proxy
+#### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>Krok 2. Zezwalaj na połączenia przychodzące na serwerze proxy
 1. Na serwerze proxy Otwórz zaporę Windows. Najprostszym sposobem na dostęp do zapory jest wyszukiwanie **Zapora Windows z zabezpieczeniami zaawansowanymi**.
 1. W **Zapora Windows z zabezpieczeniami zaawansowanymi** okno dialogowe, kliknij prawym przyciskiem myszy **reguły ruchu przychodzącego** i wybierz **nową regułę**.
 1. W Kreatora nowej reguły przychodzącej na **typ reguły** wybierz opcję **niestandardowe** opcji, a następnie wybierz pozycję **dalej**.
@@ -295,7 +295,7 @@ HttpProxy.Port=<proxy port>
 
 Pozostałe kreatora Zaakceptuj ustawienia domyślne, aż dojdziesz do końca. Następnie Nazwij tę regułę.
 
-#### <a name="step-3-add-an-exception-rule-to-the-nsg"></a>Krok 3: Dodaj regułę wyjątku do sieciowej grupy zabezpieczeń
+#### <a name="step-3-add-an-exception-rule-to-the-nsg"></a>Krok 3. Dodaj regułę wyjątku do sieciowej grupy zabezpieczeń
 Następujące polecenie dodaje wyjątek do sieciowej grupy zabezpieczeń. Ten wyjątek zezwala na ruch TCP z dowolnego portu na 10.0.0.5 do dowolnego adresu internetowego na porcie 80 (HTTP) lub 443 (HTTPS). Jeśli potrzebujesz określonego portu w publicznej sieci internet, pamiętaj dodać ten port do ```-DestinationPortRange```.
 
 W wierszu polecenia programu Azure PowerShell wpisz następujące polecenie:

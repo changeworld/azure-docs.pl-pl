@@ -4,21 +4,20 @@ description: Ściągawka dotycząca algorytmów uczenia maszynowego, drukowalnyc
 keywords: ściągawka dotycząca algorytmów, cheat-sheet, algorytmu uczenia maszynowego
 services: machine-learning
 author: ericlicoding
-ms.custom: (previous ms.author=pakalra, author=pakalra)
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.author: amlstudiodocs
-manager: cgronlun
 editor: cgronlun
 ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 307a2d442fc8cf82630b111b6ea73e180c740c64
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7ddc3a9829dc05ac1c1df450091789e4cad2b2f5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307419"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274517"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning ściągawka dotycząca algorytmów dla usługi Azure Machine Learning Studio
 
@@ -26,11 +25,11 @@ ms.locfileid: "52307419"
 
 [Usługa Azure Machine Learning Studio](https://studio.azureml.net/) ma dużej biblioteki algorytmów z ***regresji***, ***klasyfikacji***, ***klastrowania***, i  ***wykrywanie anomalii*** rodziny. Każdy jest przeznaczony do adresu innego typu maszyny nauczanym problemem.
 
-## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Pobieranie: Usługi Machine learning ściągawka dotycząca algorytmów
+## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Pobieranie: Ściągawka dotycząca algorytmów uczenia maszynowego
 
-**Pobierz ściągawkę tutaj: [Machine Learning algorytm da się oszukać arkusz (11 x 17 cali)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
+**Pobierz ściągawka tutaj: [W usłudze Machine Learning Algorithm Cheat-Sheet (11 x 17 cali)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![Ściągawka dotycząca algorytmów uczenia maszynowego: Dowiedz się, jak wybrać algorytm usługi Machine Learning.][cheat-sheet]
+![Usługi Machine learning algorithm cheat-sheet: Dowiedz się, jak wybrać algorytm uczenia maszynowego.][cheat-sheet]
 
 [cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
@@ -43,7 +42,7 @@ Pobrać i wydrukować Machine Learning Studio algorytm da się oszukać arkusza 
 
 * Sugestie, oferowana w tym ściągawka dotycząca algorytmów są przybliżone reguły z thumb. Niektóre mogą być wygięte, a niektóre mogą flagrantly naruszone. Ta wartość jest przeznaczona do zasugerować punkt początkowy. Nie jest niejasne, należy uruchomić head-to-head konkurencji między kilka algorytmów na podstawie posiadanych danych. Występuje po prostu nie zastąpi zrozumienie zasad poszczególnych algorytmów i opis systemu, które wygenerowało dane.
 
-* Algorytmu uczenia maszynowego, co ma swój własny styl lub *indukcyjna odchylenie*. Dla konkretnego problemu odpowiednie może być kilku algorytmów i jeden algorytm może być lepszym rozwiązaniem niż inne. Ale nie zawsze jest możliwe, należy wcześniej wiedzieć, co jest najlepszym rozwiązaniem. W takich przypadkach kilka algorytmy są wyświetlane razem w cheat-sheet. Odpowiednią strategię byłoby jeden algorytm, a jeśli wyniki nie są jeszcze zadowalające, ponów innych. Oto przykład z [Galeria sztucznej Inteligencji platformy](http://gallery.azure.ai/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [porównania klasyfikatorów wieloklasowej: litera rozpoznawania](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
+* Algorytmu uczenia maszynowego, co ma swój własny styl lub *indukcyjna odchylenie*. Dla konkretnego problemu odpowiednie może być kilku algorytmów i jeden algorytm może być lepszym rozwiązaniem niż inne. Ale nie zawsze jest możliwe, należy wcześniej wiedzieć, co jest najlepszym rozwiązaniem. W takich przypadkach kilka algorytmy są wyświetlane razem w cheat-sheet. Odpowiednią strategię byłoby jeden algorytm, a jeśli wyniki nie są jeszcze zadowalające, ponów innych. Oto przykład z [galerii Azure AI](http://gallery.azure.ai/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [Porównaj klasyfikatorów wieloklasowej: Litera rozpoznawania](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
 * Istnieją trzy główne kategorie usługi machine learning: **uczenia nadzorowanego**, **uczenie nienadzorowane**, i **uczenia przez wzmacnianie**.
 
@@ -65,7 +64,7 @@ Pobrać i wydrukować Machine Learning Studio algorytm da się oszukać arkusza 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać informacyjna do pobrania, opisujący algorytmów i przykłady, zobacz [grafika informacyjna do pobrania: podstawy uczenia maszynowego z algorytmami](basics-infographic-with-algorithm-examples.md).
+* Aby uzyskać informacyjna do pobrania, opisujący algorytmów i przykłady, zobacz [grafika informacyjna do pobrania: Podstawy uczenia maszynowego z algorytmami](basics-infographic-with-algorithm-examples.md).
 
 * Aby uzyskać listę według kategorii wszystkich algorytmów uczenia maszynowego dostępnych w usłudze Machine Learning Studio, zobacz [zainicjować modelu] [ initialize-model] algorytmu Studio uczenia maszynowego i pomóc w Module.
 
@@ -73,7 +72,7 @@ Pobrać i wydrukować Machine Learning Studio algorytm da się oszukać arkusza 
 
 * Aby pobrać i wydrukować diagram, który zawiera przegląd możliwości usługi Machine Learning Studio, zobacz [Diagram przeglądowy możliwości usługi Azure Machine Learning Studio](studio-overview-diagram.md).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <!-- Module References -->
 [a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list

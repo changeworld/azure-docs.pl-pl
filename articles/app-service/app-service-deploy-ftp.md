@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S | Dokumentacja firmy Microsoft
+title: Wdrażanie zawartości przy użyciu protokołu FTP/S — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wdrożyć aplikację w usłudze Azure App Service przy użyciu protokołu FTP i FTPS.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 1e3dbe04652be479a327ed9494299f89ef13492a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18
+ms.openlocfilehash: f48dc4d91fd5fafda88f518c27c79e151e5b1ebe
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679396"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260076"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -46,8 +47,8 @@ Zaleca się, że używasz **poświadczenia aplikacji** można wdrożyć do swoje
 ## <a name="deploy-files-to-azure"></a>Wdrażanie plików na platformie Azure
 
 1. Z poziomu klienta FTP (na przykład [programu Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), lub [WinSCP](https://winscp.net/index.php)), informacji o połączeniu zebrane nawiązać połączenia z aplikacją.
-3. Skopiuj pliki i odpowiednią strukturę katalogów do [ **/site/wwwroot** katalogu](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) na platformie Azure (lub **/site/wwwroot/App_Data/zadania/** katalog dla zadań Webjob).
-4. Przejdź do adresu URL aplikacji, aby sprawdzić, czy aplikacja działa prawidłowo. 
+2. Skopiuj pliki i odpowiednią strukturę katalogów do [ **/site/wwwroot** katalogu](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) na platformie Azure (lub **/site/wwwroot/App_Data/zadania/** katalog dla zadań Webjob).
+3. Przejdź do adresu URL aplikacji, aby sprawdzić, czy aplikacja działa prawidłowo. 
 
 > [!NOTE] 
 > W odróżnieniu od [wdrożenia oparte na usłudze Git](app-service-deploy-local-git.md), wdrożenia protokołu FTP nie obsługuje następujących automatyzacji wdrażania: 

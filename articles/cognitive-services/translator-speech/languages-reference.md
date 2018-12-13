@@ -10,20 +10,20 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: b7005811898df9132be6bc199e26f6c6dc358618
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: aa0af6f0c075dc555757a9c716a1d0569197287d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345207"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256404"
 ---
-# <a name="translator-speech-api-languages"></a>Interfejs API mowy usługi Translator: języków
+# <a name="translator-speech-api-languages"></a>Interfejs API mowy usługi Translator Języki
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 Mowy usługi Translator nieustannie rozszerza listę języków obsługiwanych przez jego usług. Aby odnaleźć zbiór języków dostępnych do użycia z usługą mowy usługi Translator, należy użyć tego interfejsu API.
 
-Przykłady kodu, demonstrując korzystanie z interfejsu API, aby uzyskać dostępne języki są dostępne z [witryny Github w usłudze Translator firmy Microsoft](https://github.com/MicrosoftTranslator).
+Przykłady kodu, demonstrując korzystanie z interfejsu API, aby uzyskać dostępne języki są dostępne z [witryny GitHub w usłudze Translator firmy Microsoft](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Uwagi dotyczące implementacji
 
@@ -33,9 +33,9 @@ Szerokiego zestawu języków jest dostępna dla transkrypcja mowy, tłumaczenie 
 
 Klient używa `scope` parametr do definiowania, który konfiguruje języków jest zainteresowany zapytania.
 
-* **Mowy na tekst:** należy użyć parametru zapytania `scope=speech` można pobrać zestaw dostępnych języków do transkrypcja mowy na tekst.
-* **Tłumaczenie tekstu:** należy użyć parametru zapytania `scope=text` można pobrać zestawu języków dostępnych do translacji uzyskanego tekstu.
-* **Zamiana tekstu na mowę:** należy użyć parametru zapytania `scope=tts` można pobrać zestawu języków i głosy dostępne do syntetyzowania przetłumaczonego tekstu na mowę.
+* **Mowy na tekst:** Użyj parametru zapytania `scope=speech` można pobrać zestaw dostępnych języków do transkrypcja mowy na tekst.
+* **Tłumaczenie tekstu:** Użyj parametru zapytania `scope=text` można pobrać zestawu języków dostępnych do translacji uzyskanego tekstu.
+* **Zamiana tekstu na mowę:**  Użyj parametru zapytania `scope=tts` można pobrać zestawu języków i głosy dostępne do syntetyzowania przetłumaczonego tekstu na mowę.
 
 Klient może pobrać wiele zestawów jednocześnie, określając rozdzielaną przecinkami listę wyboru. Na przykład `scope=speech,text,tts`.
 
@@ -63,7 +63,7 @@ Podana wartość każdej właściwości jest w następujący sposób.
 
 Wartość skojarzona z właściwością mowy na tekst, `speech`, jest słownikiem (klucz, wartość) pary. Każdy klucz identyfikuje język obsługiwane w przypadku mowy na tekst. Klucz jest identyfikatorem tego Klient przechodzi do interfejsu API. Wartość skojarzoną z kluczem jest obiektem z następującymi właściwościami:
 
-* `name`: Służy do wyświetlania nazwę języka.
+* `name`: Nazwa wyświetlana języka.
 * `language`: Tag języka skojarzonego napisane w języku. Zobacz "Transakcja tekst" poniżej.
 Przykładem jest:
 
@@ -79,8 +79,8 @@ Przykładem jest:
 
 Wartość skojarzona z `text` właściwość jest również słownika, gdzie każdy klucz identyfikuje język obsługiwane w przypadku tłumaczenie tekstu. Wartość skojarzoną z kluczem opisuje język:
 
-* `name`: Służy do wyświetlania nazwę języka.
-* `dir`: Kierunkowość, czyli `rtl` w językach od prawej do lewej lub `ltr` w językach od lewej do prawej.
+* `name`: Nazwa wyświetlana języka.
+* `dir`: Kierunek tekstu, który jest `rtl` w językach od prawej do lewej lub `ltr` w językach od lewej do prawej.
 
 Przykładem jest:
 
@@ -96,12 +96,12 @@ Przykładem jest:
 
 Wartość skojarzona z właściwością zamiany tekstu na mowę, tts, jest również słownika, gdzie każdy klucz identyfikuje obsługiwane głosu. Dostępne są następujące atrybuty obiektu głosu:
 
-* `displayName`: Nazwa wyświetlana głosu.
-* `gender`: Płeć głosowych (męskiego i żeńskiego).
+* `displayName`: Nazwa wyświetlana dla głosu.
+* `gender`: Płeć (męskiego i żeńskiego) głosu.
 * `locale`: Tag języka głosu przy użyciu atrybutu podstawowego języka i regionu atrybutu.
 * `language`: Tag języka skojarzonego napisane w języku.
-* `languageName`: Służy do wyświetlania nazwę języka.
-* `regionName`: Służy do wyświetlania nazwy obszaru dla tego języka.
+* `languageName`: Nazwa wyświetlana języka.
+* `regionName`: Nazwa wyświetlana region dla tego języka.
 
 Przykładem jest:
 
@@ -140,7 +140,7 @@ Identyfikator żądania X|Wartość wygenerowany przez serwer w celu zidentyfiko
 |Parametr|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|
 |wersja interfejsu API    |Wersja interfejsu API zażądane przez klienta. Dozwolone wartości to: `1.0`.|query|ciąg|
-|scope  |Zestawy obsługiwane języki lub głosy do zwrócenia do klienta. Ten parametr jest określony jako rozdzielana przecinkami lista słów kluczowych. Dostępne są następujące słowa kluczowe:<ul><li>`speech`: Zawiera zbiór języków obsługiwanych na transkrypcja mowy.</li><li>`tts`: Zawiera zbiór głosy są obsługiwane dla konwersji tekstu na mowę.</li><li>`text`: Zawiera zbiór języków obsługiwanych w przypadku tłumaczenia tekstu.</li></ul>Jeśli wartość nie jest określony, wartość `scope` wartość domyślna to `text`.|query|ciąg|
+|scope  |Zestawy obsługiwane języki lub głosy do zwrócenia do klienta. Ten parametr jest określony jako rozdzielana przecinkami lista słów kluczowych. Dostępne są następujące słowa kluczowe:<ul><li>`speech`: Udostępnia zestaw języków obsługiwanych na transkrypcja mowy.</li><li>`tts`: Udostępnia zestaw głosy są obsługiwane dla konwersji tekstu na mowę.</li><li>`text`: Udostępnia zestaw języki obsługiwane w przypadku tłumaczenie tekstu.</li></ul>Jeśli wartość nie jest określony, wartość `scope` wartość domyślna to `text`.|query|ciąg|
 |X ClientTraceId    |Identyfikator GUID generowany przez klienta umożliwia śledzenie żądań. W celu ułatwienia rozwiązywania problemów, klientów należy podać nową wartość z każdym żądaniem i ją.|nagłówek|ciąg|
 |Zaakceptuj języka    |Niektóre pola w odpowiedzi są nazwami językach i regionach. Użyj tego parametru, aby określić język, w której zwracane są nazwy. Język jest określony, podając tag języka sformułowany BCP 47. Wybierz tag z listy identyfikatorów języka zwrócono `text` zakresu. Dla języków nieobsługiwanych nazw znajdują się w języku angielskim.<br/>Na przykład użyj wartości `fr` do żądania nazw w języku francuskim, lub użyj wartości `zh-Hant` do żądania nazw w chińskim tradycyjnym.|nagłówek|ciąg|
     

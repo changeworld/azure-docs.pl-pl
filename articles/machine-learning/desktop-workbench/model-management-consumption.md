@@ -2,8 +2,8 @@
 title: Użycie usługi sieci web w usłudze Azure Zarządzanie modelami usługi Machine Learning | Dokumentacja firmy Microsoft
 description: W tym dokumencie opisano kroki i pojęcia zaangażowane w korzystanie z usług sieci web wdrażane za pomocą zarządzania modelami w usłudze Azure Machine Learning.
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c01198a78a32c460bd147e1e160358271b80eef5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbd36e5389208b21704f1749beee016e30cc4ec5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950635"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253854"
 ---
 # <a name="consuming-web-services"></a>Korzystanie z usług internetowych
 
@@ -60,7 +60,7 @@ Aby uzyskać klucz usługi sieci web, użyj następującego polecenia:
 ```
 az ml service keys realtime -i <web service id>
 ```
-Podczas tworzenia żądania HTTP, Użyj klucza w nagłówku autoryzacji: "Autoryzacja": "Bearer <key>"
+Podczas tworzenia żądania HTTP, należy użyć klucza w nagłówku autoryzacji: "Autoryzacja": "Bearer <key>"
 
 ## <a name="get-the-service-swagger-description"></a>Pobierz opis struktury Swagger usługi
 Jeśli podano schematu interfejsu API usługi, punkt końcowy usługi może narazić dokumentu Swagger ```http://<ip>/api/v1/service/<service name>/swagger.json```. Dokument struktury Swagger może służyć do automatycznego generowania klienta usługi i zapoznaj się z oczekiwanych danych wejściowych i inne szczegóły dotyczące usługi.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: e30057f773afe6ec625b811c6ca1447c519ceda7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c13650d53098c891b168cb88516dbee53f3da5cc
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106332"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260263"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Szybki Start: Klonowanie notesu
 
@@ -34,19 +34,19 @@ Klonowanie tworzy kopię notesu usługi GitHub w ramach Twojego konta platformy 
 
     ![Moje łącza projektów u góry okna przeglądarki](media/quickstarts/my-projects-link.png)
 
-1. Na **Moje projekty** wybierz przycisk strzałki w górę (skrót klawiaturowy: U; przycisku, który jest wyświetlany jako **repozytorium Github, aby przekazać** gdy okno przeglądarki jest dostatecznie szeroka):
+1. Na **Moje projekty** wybierz przycisk strzałki w górę (skrót klawiaturowy: U; Ten przycisk, który jest wyświetlany jako **repozytorium GitHub, aby przekazać** gdy okno przeglądarki jest dostatecznie szeroka):
 
-    ![Przekaż polecenia repozytorium Github na stronie Moje projekty](media/quickstarts/upload-github-repo-command.png)
+    ![Przekaż polecenia repozytorium GitHub na stronie Moje projekty](media/quickstarts/upload-github-repo-command.png)
 
-1. W **przekazywanie repozytorium Github** wyświetlany, wprowadź lub ustaw następujące szczegóły, a następnie wybierz **importu**:
+1. W **przekazywanie repozytorium GitHub** wyświetlany, wprowadź lub ustaw następujące szczegóły, a następnie wybierz **importu**:
 
     - **Repozytorium Github**: Microsoft/cognitive-services notesów (Ta nazwa klony notesów programu Jupyter dla usług Azure Cognitive Services na [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
     - **Rekursywnie Klonuj**: (usunięty)
-    - **Nazwa projektu**: klonowania usługi Cognitive Services
+    - **Nazwa projektu**: Klonuj usług cognitive Services
     - **Identyfikator projektu**: klonowania cognitive services
     - **Publiczne**: (usunięty)
 
-    ![Przekaż popup repozytorium Github, aby zebrać informacje o repozytorium](media/quickstarts/upload-github-repo-popup.png)
+    ![Przekaż popup repozytorium GitHub, aby zebrać informacje o repozytorium](media/quickstarts/upload-github-repo-popup.png)
 
 1. Cierpliwość, podczas gdy proces zostanie zakończony; klonowanie repozytorium może potrwać kilka minut.
 

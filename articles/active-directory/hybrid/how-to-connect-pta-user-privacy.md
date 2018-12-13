@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bcb448296313eedebb8f8389b320c5da5f1a80dd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ef86c9ee00fdd4673774640d33eec93e2ead876d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311787"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193098"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Uwierzytelnianie przekazywane usługi Active Directory rozwiązania prywatność użytkownika i na platformie Azure
 
@@ -72,7 +72,7 @@ Aby wyświetlić dzienniki powiązanych z agentem uwierzytelniania przekazywaneg
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>Usuń pliki dziennika śledzenia Agent uwierzytelniania
 
-Należy regularnie Sprawdź zawartość **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace uwierzytelniania\**  i usuń zawartość tego folderu, co 48 godzin. 
+Należy regularnie Sprawdź zawartość <strong>%ProgramData%\Microsoft\Azure AD Connect Agent\Trace uwierzytelniania\</ strong > i usuń zawartość tego folderu, co 48 godzin. 
 
 >[!IMPORTANT]
 >Jeśli jest uruchomiona usługa agenta uwierzytelniania, nie będzie można usunąć bieżącego pliku dziennika w folderze. Zatrzymaj usługę przed podjęciem ponownej próby. Aby uniknąć błędów logowania użytkownika, użytkownik powinien zostać skonfigurowany uwierzytelniania przekazywanego, aby uzyskać [wysokiej dostępności](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).

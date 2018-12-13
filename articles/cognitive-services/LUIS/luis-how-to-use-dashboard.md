@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: fa5560c008270635d0d93b8004e017c810c9c27a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 6f6de278e802b83623413b0bf70e556d083818c8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074422"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140612"
 ---
-# <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
+# <a name="model-and-usage-statistics-in-the-dashboard"></a>Statystyki modelu i użycia na pulpicie nawigacyjnym
 Pulpit nawigacyjny aplikacji umożliwia monitorowanie aplikacji w jednym skrócie. **Pulpit nawigacyjny** są wyświetlane po otwarciu aplikacji, klikając nazwę aplikacji **Moje aplikacje** stronie wybierz **pulpit nawigacyjny** z górnym panelu. 
 
 > [!CAUTION]
@@ -71,7 +71,7 @@ Liczba trafień używane z klucza punktu końcowego aplikacji. Aby uzyskać wię
 
 Aby kontrolować, czy podział jest oparta na wypowiedzi etykietą lub trafienia punktu końcowego:
 
-1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk dodatkowych ustawień](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy, jak na poniższej ilustracji:
+1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk Określ dodatkowe ustawienia do listy dostępu](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy, jak na poniższej ilustracji:
 
     ![Lista opcji podziału](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
 2. Wybierz wartość z listy, a następnie kliknij przycisk strzałki wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić wykres.
@@ -83,7 +83,7 @@ Pulpit nawigacyjny przedstawia podział jednostki na podstawie wypowiedzi etykie
 
 Aby kontrolować, czy podział jest oparta na wypowiedzi etykietą lub trafienia punktu końcowego:
 
-1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk dodatkowych ustawień](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy, jak na poniższej ilustracji:
+1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk Określ dodatkowe ustawienia, aby uzyskać listę](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy, jak na poniższej ilustracji:
 
     ![Lista podział jednostek](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
 2. Wybierz wartość z listy, a następnie kliknij przycisk strzałki wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić wykres odpowiednio.

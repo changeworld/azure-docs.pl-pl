@@ -2,8 +2,8 @@
 title: Usługi Azure Machine Learning Model zarządzania instalacja i Konfiguracja | Dokumentacja firmy Microsoft
 description: W tym dokumencie opisano kroki i pojęcia zaangażowane w instalowaniu i konfigurowaniu Zarządzanie modelami w usłudze Azure Machine Learning.
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6660657141cc5aac532d121b61c7c8db6a24ccda
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d10f61e6276b1ce0a0237e3cf2e35a68edf4a0cf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968717"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257584"
 ---
 # <a name="model-management-setup"></a>Model konfiguracji zarządzania
 
@@ -91,7 +91,7 @@ Aby rozpocząć, musisz skonfigurować swoje środowisko wdrażania. Konfiguracj
 
 Po zakończeniu instalacji środowiska:
 - Monit o logowanie do platformy Azure. Aby się zarejestrować, należy użyć przeglądarki sieci web o otwarcie strony https://aka.ms/devicelogin i wprowadzenie udostępnionego kodu do uwierzytelniania.
-- Podczas procesu uwierzytelniania zostanie wyświetlony monit o konta do uwierzytelniania za pomocą. Ważne: Wybierz prawidłową subskrypcję platformy Azure i wystarczające uprawnienia do tworzenia zasobów na koncie. konto — gdy logowanie zostanie zakończone, zobaczy informacji o subskrypcji i zostanie wyświetlony monit, czy chcesz kontynuować wybrane konto.
+- Podczas procesu uwierzytelniania zostanie wyświetlony monit o konta do uwierzytelniania za pomocą. Ważne: Wybierz prawidłową subskrypcję platformy Azure i wystarczające uprawnienia do tworzenia zasobów na koncie. konto — gdy logowanie zostanie zakończone, zobaczy informacji o subskrypcji i zostanie wyświetlony monit, czy chcesz kontynuować z wybranego konta .
 
 ### <a name="environment-setup"></a>Konfigurowanie środowiska
 Aby rozpocząć proces instalacji, należy zarejestrować dostawcę środowiska, wprowadzając następujące polecenie:
@@ -114,7 +114,7 @@ Polecenie Ustawienia lokalnego środowiska umożliwia utworzenie następujących
 - Grupa zasobów (Jeśli nie zostanie podana)
 - Konto magazynu
 - Rejestr Azure Container Registry (ACR)
-- Application Insights
+- Usługa Application insights
 
 Gdy Instalator zakończy się pomyślnie, należy ustawić środowisko ma być używany, używając następującego polecenia:
 
@@ -136,7 +136,7 @@ Polecenie instalacji środowiska klastra umożliwia utworzenie następujących z
 - Konto magazynu
 - Rejestr Azure Container Registry (ACR)
 - Wdrożenie rozwiązania Kubernetes w klastrze usługi Azure Container Service (ACS)
-- Application Insights
+- Usługa Application insights
 
 Szybko są tworzone grupy zasobów, konto magazynu oraz usługi ACR. Wdrażanie usług ACS może potrwać do 20 minut. 
 
