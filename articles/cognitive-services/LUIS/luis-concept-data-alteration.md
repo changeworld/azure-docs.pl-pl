@@ -1,23 +1,24 @@
 ---
-title: Pojęcia dotyczące zmian danych usługi LUIS — Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Zmiany danych
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Dowiedz się, jak można zmienić danych przed prognozy w Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6db7fd2474688608eb029fce1529ba1d3f00c5d3
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6f3f1ba47ec4dbdd09f6c9e3962b2102fc366136
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637174"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099124"
 ---
-# <a name="data-alterations"></a>Zmiany danych
+# <a name="alter-utterance-data-before-or-during-prediction"></a>Instrukcja ALTER wypowiedź danych przed lub w trakcie prognoz
 Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. Należą do ustalania Pisownia i rozwiązywanie problemów w strefie czasowej dla datetimeV2 wydarzenia. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>W poprawianiu błędów pisowni w polu wypowiedź
@@ -31,7 +32,7 @@ Punkt końcowy wymaga dwóch parametrów dla korekty pisowni pracę:
 
 |Param|Wartość|
 |--|--|
-|`spellCheck`|boolean|
+|`spellCheck`|wartość logiczna|
 |`bing-spell-check-subscription-key`|[7 interfejsu API sprawdzanie pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) klucza punktu końcowego|
 
 Gdy [Bing pisowni Sprawdź interfejsu API w wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) wykrywa błąd, oryginalnym wypowiedź i poprawione wypowiedź są zwracane z punktu końcowego oraz prognozy.

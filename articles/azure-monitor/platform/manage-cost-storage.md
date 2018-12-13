@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: be64d299ac61a47dd3c44ee2e422abd09785189e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 744a0f683f58aed98cea7bdef0b2a36af68ad2f1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002643"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097577"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics
 
@@ -67,7 +67,7 @@ Podczas tworzenia obszaru roboczego usługi Log Analytics z witryny Azure portal
 Po osiągnięciu dziennego limitu kolekcję typów danych płatnych zatrzymuje się do końca dnia. Transparent ostrzeżenie pojawia się w górnej części strony dla wybranego obszaru roboczego usługi Log Analytics i zdarzenie operacji są wysyłane do *operacji* tabeli w ramach **LogManagement** kategorii. Zbieranie danych wznawia działanie po podczas resetowania zdefiniowane w obszarze *dzienny limit jest ustawiony na*. Firma Microsoft zaleca, definiując reguły alertu na podstawie zdarzeń tej operacji, skonfigurowana do wysyłania powiadomień, gdy został osiągnięty dzienny limit danych. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Zidentyfikować jakie dzienny limit danych, aby zdefiniować 
-Przegląd [użycie usługi Log Analytics i szacowane koszty](../../log-analytics/log-analytics-usage.md) , aby zrozumieć trend pozyskiwania danych i co to jest dziennego limitu woluminu w celu zdefiniowania. Należy rozważyć ostrożnie, ponieważ nie będzie można monitorować swoje zasoby, po osiągnięciu limitu. 
+Przegląd [użycie usługi Log Analytics i szacowane koszty](../../azure-monitor/platform/data-usage.md) , aby zrozumieć trend pozyskiwania danych i co to jest dziennego limitu woluminu w celu zdefiniowania. Należy rozważyć ostrożnie, ponieważ nie będzie można monitorować swoje zasoby, po osiągnięciu limitu. 
 
 ### <a name="manage-the-maximum-daily-data-volume"></a>Zarządzanie Maksymalna dzienna ilość danych 
 Poniżej opisano sposób konfigurowania limit zarządzanie ilością danych, która będzie obsługiwać usługi Log Analytics, dziennie.  
@@ -125,4 +125,4 @@ Usługa log Analytics korzysta z czasu UTC. Podczas resetowania waha się międz
 
 ## <a name="next-steps"></a>Kolejne kroki  
 
-Aby określić, ile dane są zbierane, jakie źródła są wysyłania, a także różne rodzaje danych wysyłanych ułatwiające zarządzanie użycia i kosztów, zobacz [Analizowanie użycia danych w usłudze Log Analytics](../../log-analytics/log-analytics-usage.md).
+Aby określić, ile dane są zbierane, jakie źródła są wysyłania, a także różne rodzaje danych wysyłanych ułatwiające zarządzanie użycia i kosztów, zobacz [Analizowanie użycia danych w usłudze Log Analytics](../../azure-monitor/platform/data-usage.md).

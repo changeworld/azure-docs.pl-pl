@@ -4,7 +4,7 @@ description: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizo
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 59d12ae91f8c75ab0fdd2058057cc8de158897e7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: d8deb3d9d2d425567094d44e638f1989a5e2d881
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314188"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096999"
 ---
-# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-studio-management-powershell-cmdlets"></a>Ponowne szkolenie nowej usługi sieci web opartych na programie Resource Manager przy użyciu poleceń cmdlet programu PowerShell usługi Machine Learning Studio zarządzania
+# <a name="retrain-a-new-resource-manager-based-web-service-using-powershell"></a>Ponowne szkolenie nowej usługi sieci web opartych na programie Resource Manager przy użyciu programu Powershell
 Gdy retrain się nowej usługi sieci web, należy zaktualizować definicji usługi predykcyjne sieci web, aby odwoływać się do nowego modelu uczonego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne

@@ -1,21 +1,21 @@
 ---
-title: Przy użyciu narzędzia MirrorMaker programu Apache Kafka z usługą Azure Event Hubs dla ekosystemu platformy Kafka | Dokumentacja firmy Microsoft
-description: Przy użyciu narzędzia MirrorMaker Kafka dublowanego klastra platformy Kafka w usłudze Event Hubs.
+title: Przy użyciu narzędzia MirrorMaker programu Apache Kafka — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje na temat sposobu utworzenia duplikatów klastra platformy Kafka w usłudze AzureEvent Hubs przy użyciu narzędzia MirrorMaker platformy Kafka.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: mirror-maker
-ms.custom: mvc
-ms.date: 08/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: b79d62175c29dfc1671f0cb59c36f4bd2a8857e1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 83f51d2980e5cb5bc2e2a415bb3ee96778667ed7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282828"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095039"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Przy użyciu narzędzia MirrorMaker platformy Kafka z usługą Event Hubs dla platformy Apache Kafka
 
@@ -30,7 +30,7 @@ W tym samouczku pokazano, jak duplikatów brokerem platformy Kafka w Centrum zda
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie przestrzeni nazw usługi Event Hubs
-> * Sklonuj projekt przykładowy
+> * Klonowanie projektu przykładowego
 > * Konfigurowanie klastra Kafka
 > * Konfigurowanie narzędzia MirrorMaker platformy Kafka
 > * Uruchom narzędzia MirrorMaker platformy Kafka
@@ -56,9 +56,9 @@ Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następujący
 
 ## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-Przestrzeń nazw usługi Event Hubs jest wymagana do wysyłania i odbierania z dowolnej usługi Event Hubs. Zobacz [Centrum zdarzeń tworzenia platformy Kafka z funkcją](event-hubs-create.md) instrukcje dotyczące pobierania punktu końcowego usługi Event Hubs Kafka. Upewnij się skopiować parametry połączenia usługi Event Hubs w celu późniejszego użycia.
+Przestrzeń nazw usługi Event Hubs jest wymagana do wysyłania i odbierania zdarzeń z dowolnej usługi Event Hubs. Aby uzyskać instrukcje uzyskiwania punktu końcowego platformy Kafka w usłudze Event Hubs, zobacz [Creating a Kafka enabled Event Hub](event-hubs-create.md) (Tworzenie centrum zdarzeń z obsługą platformy Kafka). Upewnij się skopiować parametry połączenia usługi Event Hubs w celu późniejszego użycia.
 
-## <a name="clone-the-example-project"></a>Sklonuj projekt przykładowy
+## <a name="clone-the-example-project"></a>Klonowanie projektu przykładowego
 
 Teraz, gdy masz platformy Kafka włączone parametry połączenia usługi Event Hubs, Azure Event Hubs dla platformy Kafka repozytorium klonowanie i przejdź do `mirror-maker` podfolder:
 
@@ -125,7 +125,7 @@ Przy użyciu narzędzia MirrorMaker, uruchamianie wszelkie zdarzenia wysyłane d
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie przestrzeni nazw usługi Event Hubs
-> * Sklonuj projekt przykładowy
+> * Klonowanie projektu przykładowego
 > * Konfigurowanie klastra Kafka
 > * Konfigurowanie narzędzia MirrorMaker platformy Kafka
 > * Uruchom narzędzia MirrorMaker platformy Kafka
@@ -134,10 +134,10 @@ Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dl
 
 - [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Usługa Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak utworzyć Kafka włączone usługi Event Hubs](event-hubs-create-kafka-enabled.md)
-- [Stream do usługi Event Hubs z poziomu aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Platforma Apache Spark nawiązać połączenie z Centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-spark-tutorial.md)
-- [Apache Flink nawiązać połączenie z Centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-flink-tutorial.md)
-- [Integrowanie platformy Kafka łączenie z Centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-connect-tutorial.md)
-- [Łączenie strumieni Akka Centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-akka-streams-tutorial.md)
-- [Eksplorowanie przykładów w usłudze GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Jak utworzyć centra Event Hubs z obsługą platformy Kafka](event-hubs-create-kafka-enabled.md)
+- [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+- [Łączenie platformy Apache Spark z centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-spark-tutorial.md)
+- [Łączenie platformy Apache Flink z centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-flink-tutorial.md)
+- [Integrowanie narzędzia Kafka Connect z centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-connect-tutorial.md)
+- [Łączenie biblioteki Akka Streams z centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-akka-streams-tutorial.md)
+- [Eksplorowanie przykładów w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)

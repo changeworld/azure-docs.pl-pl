@@ -1,21 +1,22 @@
 ---
-title: Wstępnie utworzonych jednostek — usługi LUIS
+title: Wszystkie wstępnie utworzonych jednostek
 titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera listę wstępnie utworzonych jednostek, które są zawarte w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: ff529e7b828c195be89c9d11fc5f50e04104642e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: MT
+ms.openlocfilehash: 7f8ee1f145495cf5f1fb3c8252c7ce40ab722abe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567353"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098138"
 ---
 # <a name="entities-per-culture"></a>Jednostki na kulturę
 
@@ -47,7 +48,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -68,7 +69,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -89,7 +90,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
@@ -110,7 +111,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
@@ -131,7 +132,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -152,7 +153,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -173,7 +174,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -194,7 +195,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -215,7 +216,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    -   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    -   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    -   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    -   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -236,7 +237,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -257,7 +258,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
@@ -278,7 +279,7 @@ Są obsługiwane w następujących elementach:
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Numer](luis-reference-prebuilt-number.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    -   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    -   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 

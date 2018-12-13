@@ -1,6 +1,6 @@
 ---
-title: Gdzie usługa Azure AD przechowuje dane tożsamości klientów z Europy | Microsoft Docs
-description: Dowiedz się, gdzie usługa Microsoft Azure Active Directory przechowuje dane dotyczące tożsamości swoich klientów z Europy.
+title: Przechowywanie danych tożsamości na potrzeby klientów w Europie — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, o której przechowuje dane dotyczące tożsamości usługi Azure Active Directory dla swoich klientów w Europie.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,22 +10,22 @@ ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.custom: it-pro
-ms.openlocfilehash: d0015f40714b639d15245827ae0da3ca0f132df4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 371c7b2eb2f2e0e34dc80cf8fe6771620fa76765
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733401"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099941"
 ---
-# <a name="where-does-microsoft-azure-active-directory-azure-ad-store-identity-data-for-european-customers"></a>Gdzie usługa Microsoft Azure Active Directory (Azure AD) przechowuje dane tożsamości klientów z Europy
-Usługa Azure AD pomaga w zarządzaniu tożsamościami użytkowników i tworzeniu zasad dostępu opartych na analizie w celu zabezpieczenia Twoich zasobów firmowych. Dane tożsamości są przechowywane w lokalizacji opartej na adresie podanym przez Twoją organizację podczas dokonywania subskrypcji usługi. Na przykład subskrybowania usługi Office 365 lub platformy Azure. Aby uzyskać szczegółowe informacje na temat przechowywania danych tożsamości, zobacz sekcję [Gdzie przechowywane są Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) w Centrum zaufania Microsoft.
+# <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Przechowywanie danych tożsamości na potrzeby klientów w Europie w usłudze Azure Active Directory
+Azure Active Directory (Azure AD) pomaga zarządzać tożsamościami użytkowników i tworzenia zasad dostępu opartych na analizie, których zabezpieczania zasobów organizacji. Dane tożsamości są przechowywane w lokalizacji opartej na adresie podanym przez Twoją organizację podczas dokonywania subskrypcji usługi. Na przykład subskrybowania usługi Office 365 lub platformy Azure. Aby uzyskać szczegółowe informacje na temat przechowywania danych tożsamości, zobacz sekcję [Gdzie przechowywane są Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) w Centrum zaufania Microsoft.
 
 Chociaż większość danych tożsamości usługi Azure AD pochodzących od klientów z Europy jest przechowywana w europejskich centrach danych, to istnieje pięć atrybutów związanych z użytkownikiem, które są zazwyczaj przechowywane w centrach danych zlokalizowanych w Stanach Zjednoczonych. Te atrybuty to: GivenName, Surname, userPrincipalName, Domain i PasswordHash. Wyjątkiem jest atrybut PasswordHash, który może być przechowywany poza Stanami Zjednoczonymi. Dzieje się tak, gdy użytkownik korzysta z lokalnej metody uwierzytelniania federacyjnego, która nie pozwala na synchronizowanie wartości PasswordHash z usługą Azure AD. Ponadto istnieją pewne specyficzne dla usługi dane operacyjne niezbędne do prawidłowego działania usługi Azure AD, które są przechowywane w Stanach Zjednoczonych i nie zawierają żadnych danych osobowych.
 
 ## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>Dane należące do klientów z Europy przechowywane poza europejskimi centrami danych
 
-W przypadku organizacji korzystających z europejskich adresów większość danych tożsamości dotyczących usługi Azure AD pozostaje w europejskich centrach danych. Dane usługi Azure AD, które nie są przechowywane w europejskich centrach danych, obejmują:
+W przypadku organizacji korzystających z europejskich adresów większość danych tożsamości dotyczących usługi Azure AD pozostaje w europejskich centrach danych. Azure AD danych przechowywane w europejskich centrach danych, również replikowane do centrów danych w Stanach Zjednoczonych, obejmuje:
 
 - **Atrybuty dotyczące tożsamości**
 

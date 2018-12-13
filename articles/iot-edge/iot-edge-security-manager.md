@@ -1,5 +1,5 @@
 ---
-title: Menedżer zabezpieczeń w usłudze Azure IoT Edge | Dokumentacja firmy Microsoft
+title: Dowiedz się, jak Menedżer zabezpieczeń chroni urządzenia, oprogramowanie — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Zarządza wystąpienie zabezpieczeń urządzenia usługi IoT Edge i integralności usługi zabezpieczeń.
 services: iot-edge
 keywords: bezpieczeństwo, element bezpieczny, enklawy, TEE, IoT Edge
@@ -9,12 +9,13 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6231f50134f7dcfd29e8754841847beb69570204
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: eda572c0f4abedd59c912dcf1de2cf3c6e226b5c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567693"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091928"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Menedżer zabezpieczeń w usłudze Azure IoT Edge
 
@@ -33,7 +34,7 @@ Obowiązki usługi IoT Edge Menedżera zabezpieczeń obejmują (między innymi):
 * Programu Gatekeeper do urządzeń sprzętowych elementu głównego zaufania za pośrednictwem usług notariusz.
 * Monitoruje integralność operacji usługi IoT Edge w czasie wykonywania.
 
-Menedżer zabezpieczeń usługi IoT Edge obejmuje trzy główne składniki:
+Menedżer zabezpieczeń usługi IoT Edge obejmuje trzy składniki:
 
 * Demon zabezpieczeń usługi IoT Edge.
 * Zabezpieczenia moduł platformy abstrakcją sprzętu warstwy (PAL przez sprzętowy moduł zabezpieczeń).

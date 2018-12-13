@@ -1,7 +1,7 @@
 ---
-title: Zamiana mowy na tekst — informacje
+title: Zamiana mowy na tekst — usługi mowy — informacje
 titleSuffix: Azure Cognitive Services
-description: Omówienie funkcji zamiany mowy na tekst interfejsu API.
+description: Interfejs API zamiany mowy na tekst transcribes strumieni audio na tekst, który aplikacji można wyświetlić lub reagowanie na nie, jako dane wejściowe. Usługa jest dostępna za pośrednictwem zestawu SDK oraz punkt końcowy usługi RESTful.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: erhopf
-ms.openlocfilehash: 041ec1c095ec604fed7906368ff266c1586df570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 050d395614fa4a08e6d0d0967200029e8fc36010
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471343"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094716"
 ---
 # <a name="about-the-speech-to-text-api"></a>Zamiana mowy na tekst interfejsu API — informacje
 
