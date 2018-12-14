@@ -1,14 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: aa53bfd0028813479b99e84638eaf6f39dac5008
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c6b8df95149824f78d9809d14b4b9ebf67728fcb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456290"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255401"
 documentType: LandingData
-title: Dokumentacja funkcji wyszukiwania wiadomości Bing
+title: Dokumentacja interfejsu API wyszukiwania wiadomości Bing
+titleSuffix: Azure Cognitive Services
 metadata:
-  title: Dokumentacja funkcji wyszukiwania wiadomości Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
+  title: Dokumentacja interfejsu API wyszukiwania wiadomości Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
   description: Dowiedz się, jak uzyskać wiadomości z Internetu dotyczące zapytań użytkowników za pomocą interfejsu API wyszukiwania wiadomości Bing. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z usługi.
   services: cognitive-services
   author: mikedodaro

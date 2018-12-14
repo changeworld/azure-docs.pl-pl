@@ -1668,7 +1668,7 @@ W tabeli poniżej SAP typowe porty komunikacyjne są wyświetlane. Zasadniczo je
 
 *) nn = numer wystąpienia SAP
 
-*) identyfikator sid = Identyfikatorem systemu SAP
+**) identyfikator sid = Identyfikatorem systemu SAP
 
 Bardziej szczegółowe informacje dotyczące portów wymaganych dla różnych produktów SAP lub usług według produktów SAP można znaleźć tutaj <http://scn.sap.com/docs/DOC-17124>.
 Z tym dokumentem można otworzyć porty dedykowanych w niezbędne dla określonych produkty i scenariusze SAP urządzenia sieci VPN.

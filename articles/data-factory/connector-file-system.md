@@ -63,8 +63,8 @@ Następujące właściwości są obsługiwane przez usługę połączoną system
 
 | Scenariusz | "host" w definicji połączonej usługi | "folderPath" w definicji zestawu danych |
 |:--- |:--- |:--- |
-| Folder lokalny na komputerze środowisko Integration Runtime: <br/><br/>Przykłady: D:\\ \* lub D:\folder\subfolder\\* |W formacie JSON: `D:\\`<br/>W interfejsie użytkownika: `D:\` |W formacie JSON: `.\\` lub `folder\\subfolder`<br>W interfejsie użytkownika: `.\` lub `folder\subfolder` |
-| Zdalny folder udostępniony: <br/><br/>Przykłady: \\ \\myserver\\udostępnianie\\ \* lub \\ \\myserver\\udostępnianie\\folderu\\podfolderów\\* |W formacie JSON: `\\\\myserver\\share`<br/>W interfejsie użytkownika: `\\myserver\share` |W formacie JSON: `.\\` lub `folder\\subfolder`<br/>W interfejsie użytkownika: `.\` lub `folder\subfolder` |
+| Folder lokalny na komputerze środowisko Integration Runtime: <br/><br/>Przykłady: D:\\ \* lub D:\folder\subfolder\\ * |W formacie JSON: `D:\\`<br/>W interfejsie użytkownika: `D:\` |W formacie JSON: `.\\` lub `folder\\subfolder`<br>W interfejsie użytkownika: `.\` lub `folder\subfolder` |
+| Zdalny folder udostępniony: <br/><br/>Przykłady: \\ \\myserver\\udostępnianie\\ \* lub \\ \\myserver\\udostępnianie\\folderu\\podfolderów\\ * |W formacie JSON: `\\\\myserver\\share`<br/>W interfejsie użytkownika: `\\myserver\share` |W formacie JSON: `.\\` lub `folder\\subfolder`<br/>W interfejsie użytkownika: `.\` lub `folder\subfolder` |
 
 >[!NOTE]
 >Podczas tworzenia, za pośrednictwem interfejsu użytkownika, nie jest potrzebny do wprowadzenia podwójny ukośnik odwrotny (`\\`) aby wyjść, jak za pomocą formatu JSON, należy określić pojedynczy ukośnik odwrotny.

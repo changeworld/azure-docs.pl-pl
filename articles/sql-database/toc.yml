@@ -63,19 +63,23 @@ items:
   expanded: true
 - name: Samouczki
   items:
-  - name: 1 — Projektowanie bazy danych przy użyciu programu SSMS
-    href: sql-database-design-first-database.md
-  - name: 2 — Projektowanie bazy danych przy użyciu platformy .NET
-    href: sql-database-design-first-database-csharp.md
-  - name: 3 — Migracja do pojedynczej usługi Azure SQL Database przy użyciu usługi DMS
-    href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-  - name: 4 — Zabezpieczanie bazy danych SQL
+  - name: Projektowanie w usłudze Azure SQL Database
+    items:
+    - name: Projektowanie bazy danych przy użyciu programu SSMS
+      href: sql-database-design-first-database.md
+    - name: Projektowanie bazy danych przy użyciu platformy .NET
+      href: sql-database-design-first-database-csharp.md
+  - name: Migrowanie do usługi Azure SQL Database
+    items:
+    - name: Migrowanie do pojedynczej bazy danych przy użyciu usługi DMS
+      href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+    - name: Migrowanie do wystąpienia zarządzanego przy użyciu usługi DMS
+      href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+  - name: Zabezpieczanie bazy danych
     href: sql-database-security-tutorial.md
-  - name: 5 — Implementowanie rozproszonej geograficznie bazy danych
+  - name: Implementowanie rozproszonej geograficznie bazy danych
     href: sql-database-implement-geo-distributed-database.md
-  - name: 6 — Migracja do wystąpienia zarządzanego przy użyciu usługi DMS
-    href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-  - name: 7 — Konfigurowanie usługi Azure SQL Data Sync
+  - name: Konfigurowanie usługi Azure SQL Data Sync
     href: sql-database-get-started-sql-data-sync.md
 - name: Przykłady
   items:
@@ -149,24 +153,18 @@ items:
       href: sql-database-managed-instance-index.yml
     - name: Omówienie wystąpień zarządzanych
       href: sql-database-managed-instance.md
-    - name: Tworzenie i zarządzanie
+    - name: Dokumentacja interfejsu API zarządzania
       href: sql-database-managed-instance-create-manage.md
     - name: Limity zasobów
       href: sql-database-managed-instance-resource-limits.md
-    - name: Integracja z siecią wirtualną
+    - name: Konfiguracja sieci wirtualnej
       items:
       - name: Konfiguracja sieci wirtualnej
         href: sql-database-managed-instance-vnet-configuration.md
-      - name: Niestandardowe DNS
-        href: sql-database-managed-instance-custom-dns.md
-      - name: Synchronizacja konfiguracji sieci
-        href: sql-database-managed-instance-sync-network-configuration.md
       - name: Architektura łączności
         href: sql-database-managed-instance-connectivity-architecture.md
       - name: Punkt końcowy zarządzania
         href: sql-database-managed-instance-management-endpoint.md
-      - name: Łączenie aplikacji
-        href: sql-database-managed-instance-connect-app.md
     - name: Różnice w języku T-SQL
       href: sql-database-managed-instance-transact-sql-information.md
   - name: Platforma jako usługa
@@ -180,19 +178,15 @@ items:
     - name: Automatyczne kopie zapasowe
       href: sql-database-automated-backups.md
     - name: Długoterminowe przechowywanie kopii zapasowych
-      items:
-      - name: Długoterminowe przechowywanie kopii zapasowych
-        href: sql-database-long-term-retention.md
-      - name: Konfigurowanie przy użyciu magazynu obiektów blob platformy Azure
-        href: sql-database-long-term-backup-retention-configure.md
-      - name: Konfigurowanie przy użyciu magazynu platformy Azure (przestarzałe)
-        href: sql-database-long-term-backup-retention-configure-vault.md
+      href: sql-database-long-term-retention.md
     - name: Grupy trybu failover i replikacja geograficzna
       items:
-      - name: Grupy trybu failover i replikacja geograficzna
-        href: sql-database-geo-replication-overview.md
-      - name: Konfigurowanie replikacji geograficznej — portal
-        href: sql-database-geo-replication-portal.md
+      - name: Aktywna replikacja geograficzna
+        href: sql-database-active-geo-replication.md
+      - name: Grupy automatycznego trybu failover
+        href: sql-database-auto-failover-group.md
+      - name: Konfigurowanie aktywnej replikacji geograficznej — Portal
+        href: sql-database-active-geo-replication-portal.md
       - name: Konfigurowanie zabezpieczeń dla replik
         href: sql-database-geo-replication-security-config.md
     - name: Opcje odzyskiwania bazy danych
@@ -205,14 +199,6 @@ items:
         href: sql-database-disaster-recovery.md
       - name: Próbne operacje odzyskiwania
         href: sql-database-disaster-recovery-drills.md
-    - name: Projekt aplikacji
-      items:
-      - name: Projektowanie po kątem odzyskiwania po awarii
-        href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
-      - name: Projektowanie pod kątem elastycznych pul
-        href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
-      - name: Projektowanie pod kątem uaktualnień aplikacji
-        href: sql-database-manage-application-rolling-upgrade.md
   - name: Bezpieczeństwo
     items:
     - name: Bezpieczeństwo
@@ -244,17 +230,7 @@ items:
       - name: Nazwy logowania i użytkownicy
         href: sql-database-manage-logins.md
     - name: Uwierzytelnianie w usłudze Azure AD
-      items:
-      - name: Uwierzytelnianie w usłudze Azure AD
-        href: sql-database-aad-authentication.md
-      - name: Konfigurowanie uwierzytelniania usługi Azure AD
-        href: sql-database-aad-authentication-configure.md
-      - name: Dostęp warunkowy
-        href: sql-database-conditional-access.md
-      - name: Uwierzytelnianie wieloskładnikowe
-        href: sql-database-ssms-mfa-authentication.md
-      - name: Konfigurowanie uwierzytelniania wieloskładnikowego
-        href: sql-database-ssms-mfa-authentication-configure.md
+      href: sql-database-aad-authentication.md
     - name: Inspekcja
       items:
       - name: Inspekcja — serwery, pule adresów i bazy danych
@@ -264,11 +240,7 @@ items:
       - name: Inspekcja tabel (przestarzałe)
         href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
     - name: Dynamiczne maskowanie danych
-      items:
-      - name: Dynamiczne maskowanie danych
-        href: sql-database-dynamic-data-masking-get-started.md
-      - name: Konfigurowanie maskowania
-        href: sql-database-dynamic-data-masking-get-started-portal.md
+      href: sql-database-dynamic-data-masking-get-started.md
     - name: Zawsze szyfrowane
       items:
       - name: Korzystanie z magazynu certyfikatów
@@ -281,15 +253,11 @@ items:
         href: transparent-data-encryption-azure-sql.md
       - name: Szyfrowanie TDE z użyciem usługi Bring Your Own Key
         href: transparent-data-encryption-byok-azure-sql.md
-      - name: Konfigurowanie szyfrowania TDE przy usługi BYOK
-        href: transparent-data-encryption-byok-azure-sql-configure.md
-      - name: Obracanie kluczy BYOK szyfrowania TDE
-        href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-      - name: Usuwanie ochrony szyfrowania TDE
-        href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
-  - name: Elastyczna skalowalność
+  - name: Skalowalność
     items:
-    - name: Skalowalność zasobów
+    - name: Skalowalność
+      href: sql-database-scalability-index.yml
+    - name: Skalowanie w górę/w dół
       href: sql-database-scale-resources.md
     - name: Skalowanie odczytu w poziomie
       href: sql-database-read-scale-out.md
@@ -297,30 +265,112 @@ items:
       items:
       - name: Dzielenie bazy danych na fragmenty
         href: sql-database-elastic-scale-introduction.md
+      - name: Słownik
+        href: sql-database-elastic-scale-glossary.md
       - name: Elastyczna biblioteka kliencka — konsolidowanie
         href: sql-database-elastic-database-client-library.md
-      - name: Uaktualnianie biblioteki klienckiej Elastic Database
-        href: sql-database-elastic-scale-upgrade-client-library.md
       - name: Dzielenie map na fragmenty
         href: sql-database-elastic-scale-shard-map-management.md
       - name: Routing zapytań
         href: sql-database-elastic-scale-data-dependent-routing.md
       - name: Zarządzanie poświadczeniami
         href: sql-database-elastic-scale-manage-credentials.md
-      - name: Zapytania dotyczące fragmentów
-        href: sql-database-elastic-scale-multishard-querying.md
-      - name: Narzędzia elastyczne
-        href: sql-database-elastic-scale-glossary.md
       - name: Przenoszenie danych podzielonych na fragmenty
         href: sql-database-elastic-scale-overview-split-and-merge.md
-      - name: Elastyczna biblioteka kliencka — Dapper
-        href: sql-database-elastic-scale-working-with-dapper.md
       - name: Narzędzia elastyczne — często zadawane pytania
         href: sql-database-elastic-scale-faq.md
+    - name: Zapytania elastyczne
+      href: sql-database-elastic-query-overview.md
+    - name: Transakcje elastyczne
+      href: sql-database-elastic-transactions-overview.md
+    - name: Zadania Elastic Database
+      href: elastic-jobs-overview.md
+  - name: Porównanie funkcji SQL
+    href: sql-database-features.md
+  - name: Monitorowanie i dostrajanie wydajności
+    items:
+    - name: Omówienie monitorowania i dostrajania
+      href: sql-database-monitor-tune-overview.md
+    - name: Inteligentna wydajność
+      items:
+      - name: Akcje dostrajania i zalecenia
+        href: sql-database-performance.md
+      - name: Szczegółowe informacje o wydajności zapytań
+        href: sql-database-query-performance.md
+      - name: Zalecenia dotyczące wydajności funkcji Database Advisor
+        href: sql-database-advisor.md
+    - name: Zaawansowane monitorowanie
+      items:
+      - name: Monitorowanie usługi Azure SQL Analytics
+        href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
+      - name: Rejestrowanie telemetrii diagnostyki
+        href: sql-database-metrics-diag-logging.md
+    - name: Inteligentne uzyskiwanie szczegółowych informacji o wydajności
+      href: sql-database-intelligent-insights.md
+    - name: Automatyczne dostrajanie
+      href: sql-database-automatic-tuning.md
+    - name: Przetwarzanie zapytań inteligentnych
+      items:
+      - name: Przetwarzanie zapytań inteligentnych
+        href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
+      - name: Adaptacyjne przetwarzanie zapytań
+        href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
+  - name: Funkcje bazy danych
+    items:
+    - name: Funkcje bazy danych
+      href: sql-database-develop-overview.md
+    - name: Dane JSON
+      href: sql-database-json-features.md
+    - name: W pamięci
+      href: sql-database-in-memory.md
+    - name: Tabele danych czasowych
+      href: sql-database-temporal-tables.md
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Pojedyncza baza danych
+    items:
+    - name: Migracja do bazy danych SQL
+      href: sql-database-cloud-migrate.md
+    - name: Zarządzanie bazą danych SQL po migracji
+      href: sql-database-manage-after-migration.md
+    - name: Konfigurowanie replikacji transakcyjnej
+      href: replication-to-sql-database.md
+    - name: Konfigurowanie wykrywania zagrożeń
+      href: sql-database-threat-detection.md
+    - name: Konfigurowanie przechowywania kopii zapasowych przy użyciu usługi Azure Blob Storage
+      href: sql-database-long-term-backup-retention-configure.md
+    - name: Konfigurowanie dynamicznego maskowania danych
+      href: sql-database-dynamic-data-masking-get-started-portal.md
+    - name: Konfigurowanie replikacji geograficznej — portal
+      href: sql-database-geo-replication-portal.md
+    - name: Konfigurowanie zabezpieczeń dla replik geograficznych
+      href: sql-database-geo-replication-security-config.md
+    - name: Włączanie automatycznego dostrajania
+      href: sql-database-automatic-tuning-enable.md
+    - name: Włączanie powiadomień e-mail dla dostrajania automatycznego
+      href: sql-database-automatic-tuning-email-notifications.md
+    - name: Stosowanie zaleceń dotyczących wydajności
+      href: sql-database-advisor-portal.md
+    - name: Tworzenie alertów
+      href: sql-database-insights-alerts-portal.md
+    - name: Rozwiązywanie problemów z łącznością
+      href: sql-database-troubleshoot-common-connection-issues.md
+    - name: Konfigurowanie przechowywania kopii zapasowych przy użyciu magazynu platformy Azure (przestarzałe)
+      href: sql-database-long-term-backup-retention-configure-vault.md
+    - name: Zarządzanie miejscem na pliki
+      href: sql-database-file-space-management.md
+    - name: Używanie funkcji Resource Health w przypadku problemów z połączeniem
+      href: sql-database-resource-health.md
+    - name: Dzielenie bazy danych na fragmenty
+      items:
+      - name: Uaktualnianie biblioteki klienckiej Elastic Database
+        href: sql-database-elastic-scale-upgrade-client-library.md
       - name: Tworzenie aplikacji podzielonej na fragmenty
         href: sql-database-elastic-scale-get-started.md
       - name: Wykonywanie zapytań względem danych podzielonych na fragmenty w poziomie
         href: sql-database-elastic-query-getting-started.md
+      - name: Zapytania z wieloma fragmentami
+        href: sql-database-elastic-scale-multishard-querying.md
       - name: Przenoszenie danych podzielonych na fragmenty
         href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
       - name: Konfiguracja zabezpieczeń
@@ -335,162 +385,40 @@ items:
         href: sql-database-elastic-database-perf-counters.md
       - name: Korzystanie z programu Entity Framework
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
-  - name: Porównanie funkcji SQL
-    href: sql-database-features.md
-  - name: Monitorowanie i dostrajanie wydajności
-    items:
-    - name: Omówienie monitorowania i dostrajania
-      href: sql-database-monitor-tune-overview.md
-    - name: Inteligentna wydajność
+      - name: Korzystanie ze struktury Dapper
+        href: sql-database-elastic-scale-working-with-dapper.md
+    - name: Wykonywanie zapytań względem danych rozproszonych
       items:
-      - name: Doradcy ds. strojenia
-        items:
-        - name: Akcje dostrajania i zalecenia
-          href: sql-database-performance.md
-        - name: Szczegółowe informacje o wydajności zapytań
-          href: sql-database-query-performance.md
-        - name: Zalecenia dotyczące wydajności funkcji Database Advisor
-          href: sql-database-advisor.md
-        - name: Stosowanie zaleceń dotyczących wydajności
-          href: sql-database-advisor-portal.md
-      - name: Zaawansowane monitorowanie
-        items:
-        - name: Monitorowanie usługi Azure SQL Analytics
-          href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
-        - name: Rejestrowanie telemetrii diagnostyki
-          href: sql-database-metrics-diag-logging.md
-      - name: Automatyczne rozwiązywanie problemów
-        items:
-        - name: Inteligentne uzyskiwanie szczegółowych informacji o wydajności
-          href: sql-database-intelligent-insights.md
-        - name: Rozwiązywanie problemów z wydajnością przy użyciu funkcji Intelligent Insights
-          href: sql-database-intelligent-insights-troubleshoot-performance.md
-        - name: Korzystanie z dziennika diagnostycznego funkcji Intelligent Insights
-          href: sql-database-intelligent-insights-use-diagnostics-log.md
-      - name: Automatyczne dostrajanie
-        items:
-        - name: Omówienie dostrajania automatycznego
-          href: sql-database-automatic-tuning.md
-        - name: Włączanie automatycznego dostrajania
-          href: sql-database-automatic-tuning-enable.md
-        - name: Włączanie powiadomień e-mail
-          href: sql-database-automatic-tuning-email-notifications.md
-      - name: Przetwarzanie zapytań inteligentnych
-        items:
-        - name: Przetwarzanie zapytań inteligentnych
-          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-        - name: Adaptacyjne przetwarzanie zapytań
-          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-    - name: Ręczne dostrajanie
-      items:
-      - name: Ręczne dostrajanie
-        href: sql-database-performance-guidance.md
-      - name: Korzystanie z widoków DMV do monitorowania wydajności
-        href: sql-database-monitoring-with-dmvs.md
-      - name: Korzystanie z magazynu zapytań
-        href: sql-database-operate-query-store.md
-      - name: W pamięci
-        href: sql-database-in-memory-oltp-monitoring.md
-      - name: Zdarzenia rozszerzone
-        items:
-        - name: Zdarzenia rozszerzone
-          href: sql-database-xevent-db-diff-from-svr.md
-        - name: Rozszerzone zdarzenia — plik zdarzeń
-          href: sql-database-xevent-code-event-file.md
-        - name: Rozszerzone zdarzenia — bufor cykliczny
-          href: sql-database-xevent-code-ring-buffer.md
-    - name: Tworzenie alertów
-      href: sql-database-insights-alerts-portal.md
-    - name: Rozwiązywanie problemów z łącznością
-      href: sql-database-troubleshoot-common-connection-issues.md
-    - name: Azure Automation
-      href: sql-database-manage-automation.md
-  - name: Operacje między bazami danych
-    items:
-    - name: Zadania Elastic Database
-      items:
-      - name: Zadania Elastic Database
-        href: elastic-jobs-overview.md
-      - name: Tworzenie i zarządzanie (PowerShell)
-        href: elastic-jobs-powershell.md
-      - name: Tworzenie i zarządzanie (T-SQL)
-        href: elastic-jobs-tsql.md
-      - name: Migracja (ze starego zadania elastycznego)
-        href: elastic-jobs-migrate.md
-      - name: Zadania elastyczne (przestarzałe)
-        items:
-        - name: Zadania elastyczne (przestarzałe)
-          href: sql-database-elastic-jobs-overview.md
-        - name: Instalowanie zadania elastycznego (przestarzałe)
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: Tworzenie zadania — portal (przestarzałe)
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: Tworzenie zadania — Azure PowerShell (przestarzałe)
-          href: sql-database-elastic-jobs-powershell.md
-        - name: Tworzenie zadania — przykładowa aplikacja (przestarzałe)
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: Odinstalowywanie zadania elastycznego (przestarzałe)
-          href: sql-database-elastic-jobs-uninstall.md
-    - name: Zapytania elastyczne
-      items:
-      - name: Zapytania elastyczne
-        href: sql-database-elastic-query-overview.md
       - name: Wykonywanie zapytań względem danych partycjonowanych w pionie
         href: sql-database-elastic-query-getting-started-vertical.md
       - name: Raportowanie w warstwie danych skalowanych w poziomie
         href: sql-database-elastic-query-horizontal-partitioning.md
       - name: Wykonywanie zapytań względem tabel z różnymi schematami
         href: sql-database-elastic-query-vertical-partitioning.md
-    - name: Transakcje elastyczne
-      href: sql-database-elastic-transactions-overview.md
-  - name: Wielodostępne oprogramowanie SaaS
-    items:
-    - name: Wzorce projektowe SaaS
-      href: saas-tenancy-app-design-patterns.md
-    - name: Indeksator wideo SaaS
-      href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
-    - name: Zabezpieczenia aplikacji SaaS
-      href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
-  - name: Opracowywanie baz danych
-    items:
-    - name: Opracowywanie baz danych
-      href: sql-database-develop-overview.md
-    - name: Dane JSON
-      href: sql-database-json-features.md
-    - name: W pamięci
-      href: sql-database-in-memory.md
-    - name: Tabele danych czasowych
-      href: sql-database-temporal-tables.md
-    - name: Zasady przechowywania
-      href: sql-database-temporal-tables-retention-policy.md
-    - name: Konfigurowanie przetwarzania w pamięci
-      href: sql-database-in-memory-oltp-migration.md
-- name: Przewodniki z instrukcjami
-  items:
-  - name: Pojedyncza baza danych
-    items:
-    - name: Migracja do bazy danych SQL
-      href: sql-database-cloud-migrate.md
-    - name: Zarządzanie usługą SQL Database po migracji
-      href: sql-database-manage-after-migration.md
-    - name: Konfigurowanie replikacji transakcyjnej
-      href: replication-to-sql-database.md
-    - name: Konfigurowanie wykrywania zagrożeń
-      href: sql-database-threat-detection.md
-    - name: Zarządzanie miejscem na pliki
-      href: sql-database-file-space-management.md
-    - name: Używanie funkcji Resource Health w przypadku problemów z połączeniem
-      href: sql-database-resource-health.md
+    - name: Zadania Elastic Database
+      items:
+      - name: Tworzenie i zarządzanie (PowerShell)
+        href: elastic-jobs-powershell.md
+      - name: Tworzenie i zarządzanie (T-SQL)
+        href: elastic-jobs-tsql.md
+      - name: Migracja (ze starego zadania elastycznego)
+        href: elastic-jobs-migrate.md
   - name: Wystąpienie zarządzane
     items:
     - name: Migrowanie do wystąpienia zarządzanego
       href: sql-database-managed-instance-migrate.md
     - name: Migrowanie certyfikatu TDE do wystąpienia zarządzanego
       href: sql-database-managed-instance-migrate-tde-certificate.md
+    - name: Konfigurowanie niestandardowego systemu DNS
+      href: sql-database-managed-instance-custom-dns.md
+    - name: Synchronizacja konfiguracji sieci
+      href: sql-database-managed-instance-sync-network-configuration.md
     - name: Replikacja transakcyjna
       href: replication-with-sql-database-managed-instance.md
     - name: Konfigurowanie wykrywania zagrożeń
       href: sql-database-managed-instance-threat-detection.md
+    - name: Łączenie aplikacji
+      href: sql-database-managed-instance-connect-app.md
   - name: Ładowanie i przenoszenie danych
     items:
     - name: Kopiowanie bazy danych na platformie Azure
@@ -517,6 +445,50 @@ items:
       href: sql-database-load-from-csv-with-bcp.md
     - name: Ładowanie danych za pomocą usługi ADF
       href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
+  - name: Monitorowanie i dostrajanie bazy danych
+    items:
+    - name: Ręczne dostrajanie
+      href: sql-database-performance-guidance.md
+    - name: Korzystanie z widoków DMV do monitorowania wydajności
+      href: sql-database-monitoring-with-dmvs.md
+    - name: Korzystanie z magazynu zapytań do monitorowania wydajności
+      href: sql-database-operate-query-store.md
+    - name: Rozwiązywanie problemów z wydajnością przy użyciu funkcji Intelligent Insights
+      href: sql-database-intelligent-insights-troubleshoot-performance.md
+    - name: Korzystanie z dziennika diagnostycznego funkcji Intelligent Insights
+      href: sql-database-intelligent-insights-use-diagnostics-log.md
+    - name: Monitorowanie miejsca OLTP w pamięci
+      href: sql-database-in-memory-oltp-monitoring.md
+    - name: Zdarzenia rozszerzone
+      items:
+      - name: Zdarzenia rozszerzone
+        href: sql-database-xevent-db-diff-from-svr.md
+      - name: Rozszerzone zdarzenia — plik zdarzeń
+        href: sql-database-xevent-code-event-file.md
+      - name: Rozszerzone zdarzenia — bufor cykliczny
+        href: sql-database-xevent-code-ring-buffer.md
+  - name: Konfigurowanie funkcji
+    items:
+    - name: Konfigurowanie uwierzytelniania usługi Azure AD
+      href: sql-database-aad-authentication-configure.md
+    - name: Dostęp warunkowy
+      href: sql-database-conditional-access.md
+    - name: Uwierzytelnianie wieloskładnikowe usługi AAD
+      href: sql-database-ssms-mfa-authentication.md
+    - name: Konfigurowanie uwierzytelniania wieloskładnikowego
+      href: sql-database-ssms-mfa-authentication-configure.md
+    - name: Konfigurowanie zasad przechowywania danych czasowych
+      href: sql-database-temporal-tables-retention-policy.md
+    - name: Konfigurowanie szyfrowania TDE przy usługi BYOK
+      href: transparent-data-encryption-byok-azure-sql-configure.md
+    - name: Obracanie kluczy BYOK szyfrowania TDE
+      href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+    - name: Usuwanie ochrony szyfrowania TDE
+      href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
+    - name: Konfigurowanie przetwarzania OLTP w pamięci
+      href: sql-database-in-memory-oltp-migration.md
+    - name: Azure Automation
+      href: sql-database-manage-automation.md
   - name: Tworzenie aplikacji
     items:
     - name: Łączność
@@ -541,60 +513,76 @@ items:
       href: sql-database-develop-cplusplus-simple.md
     - name: Excel
       href: sql-database-connect-excel.md
-  - name: Przykładowa aplikacja wielodostępnego oprogramowania SaaS
+  - name: Projektowanie aplikacji
     items:
-    - name: Przykład aplikacji Wingtip Tickets
-      href: saas-tenancy-welcome-wingtip-tickets-app.md
-    - name: Wskazówki ogólne
-      href: saas-tenancy-wingtip-app-guidance-tips.md
-    - name: Aplikacja autonomiczna
+    - name: Projektowanie po kątem odzyskiwania po awarii
+      href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
+    - name: Projektowanie pod kątem elastycznych pul
+      href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+    - name: Projektowanie pod kątem uaktualnień aplikacji
+      href: sql-database-manage-application-rolling-upgrade.md
+    - name: Wielodostępne oprogramowanie SaaS
       items:
-      - name: Wdrażanie aplikacji przykładowej
-        href: saas-standaloneapp-get-started-deploy.md
-      - name: Aprowizowanie dzierżaw
-        href: saas-standaloneapp-provision-and-catalog.md
-    - name: Baza danych dla każdego dzierżawcy
-      items:
-      - name: Samouczek wprowadzający
-        href: saas-dbpertenant-wingtip-app-overview.md
-      - name: Wdrażanie aplikacji przykładowej
-        href: saas-dbpertenant-get-started-deploy.md
-      - name: Aprowizowanie dzierżaw
-        href: saas-dbpertenant-provision-and-catalog.md
-      - name: Monitorowanie wydajności bazy danych
-        href: saas-dbpertenant-performance-monitoring.md
-      - name: Monitorowanie za pomocą usługi Log Analytics
-        href: saas-dbpertenant-log-analytics.md
-      - name: Przywracanie jednego dzierżawcy
-        href: saas-dbpertenant-restore-single-tenant.md
-      - name: Zarządzanie schematem dzierżaw
-        href: saas-tenancy-schema-management.md
-      - name: Raportowanie międzydzierżawowe
-        href: saas-tenancy-cross-tenant-reporting.md
-      - name: Analiza dzierżawy
+      - name: Wzorce projektowe SaaS
+        href: saas-tenancy-app-design-patterns.md
+      - name: Indeksator wideo SaaS
+        href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
+      - name: Zabezpieczenia aplikacji SaaS
+        href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
+      - name: Przykładowa aplikacja wielodostępnego oprogramowania SaaS
         items:
-        - name: Przy użyciu bazy danych SQL
-          href: saas-tenancy-tenant-analytics.md
-        - name: Przy użyciu magazynu danych SQL
-          href: saas-tenancy-tenant-analytics-adf.md
-      - name: Odzyskiwanie po awarii przy użyciu przywracania geograficznego
-        href: saas-dbpertenant-dr-geo-restore.md
-      - name: Odzyskiwanie po awarii przy użyciu replikacji geograficznej bazy danych
-        href: saas-dbpertenant-dr-geo-replication.md
-    - name: Baza danych z wieloma dzierżawcami
-      items:
-      - name: Wdrażanie aplikacji przykładowej
-        href: saas-multitenantdb-get-started-deploy.md
-      - name: Aprowizowanie dzierżaw
-        href: saas-multitenantdb-provision-and-catalog.md
-      - name: Monitorowanie wydajności bazy danych
-        href: saas-multitenantdb-performance-monitoring.md
-      - name: Uruchamianie zapytań ad hoc
-        href: saas-multitenantdb-adhoc-reporting.md
-      - name: Zarządzanie schematem dzierżaw
-        href: saas-multitenantdb-schema-management.md
-      - name: Proces ETL na potrzeby analizy
-        href: saas-multitenantdb-tenant-analytics.md
+        - name: Przykład aplikacji Wingtip Tickets
+          href: saas-tenancy-welcome-wingtip-tickets-app.md
+        - name: Wskazówki ogólne
+          href: saas-tenancy-wingtip-app-guidance-tips.md
+        - name: Aplikacja autonomiczna
+          items:
+          - name: Wdrażanie aplikacji przykładowej
+            href: saas-standaloneapp-get-started-deploy.md
+          - name: Aprowizowanie dzierżaw
+            href: saas-standaloneapp-provision-and-catalog.md
+        - name: Baza danych dla każdego dzierżawcy
+          items:
+          - name: Samouczek wprowadzający
+            href: saas-dbpertenant-wingtip-app-overview.md
+          - name: Wdrażanie aplikacji przykładowej
+            href: saas-dbpertenant-get-started-deploy.md
+          - name: Aprowizowanie dzierżaw
+            href: saas-dbpertenant-provision-and-catalog.md
+          - name: Monitorowanie wydajności bazy danych
+            href: saas-dbpertenant-performance-monitoring.md
+          - name: Monitorowanie za pomocą usługi Log Analytics
+            href: saas-dbpertenant-log-analytics.md
+          - name: Przywracanie jednego dzierżawcy
+            href: saas-dbpertenant-restore-single-tenant.md
+          - name: Zarządzanie schematem dzierżaw
+            href: saas-tenancy-schema-management.md
+          - name: Raportowanie międzydzierżawowe
+            href: saas-tenancy-cross-tenant-reporting.md
+          - name: Analiza dzierżawy
+            items:
+            - name: Przy użyciu bazy danych SQL
+              href: saas-tenancy-tenant-analytics.md
+            - name: Przy użyciu magazynu danych SQL
+              href: saas-tenancy-tenant-analytics-adf.md
+        - name: Odzyskiwanie po awarii przy użyciu przywracania geograficznego
+          href: saas-dbpertenant-dr-geo-restore.md
+        - name: Odzyskiwanie po awarii przy użyciu replikacji geograficznej bazy danych
+          href: saas-dbpertenant-dr-geo-replication.md
+      - name: Baza danych z wieloma dzierżawcami
+        items:
+        - name: Wdrażanie aplikacji przykładowej
+          href: saas-multitenantdb-get-started-deploy.md
+        - name: Aprowizowanie dzierżaw
+          href: saas-multitenantdb-provision-and-catalog.md
+        - name: Monitorowanie wydajności bazy danych
+          href: saas-multitenantdb-performance-monitoring.md
+        - name: Uruchamianie zapytań ad hoc
+          href: saas-multitenantdb-adhoc-reporting.md
+        - name: Zarządzanie schematem dzierżaw
+          href: saas-multitenantdb-schema-management.md
+        - name: Proces ETL na potrzeby analizy
+          href: saas-multitenantdb-tenant-analytics.md
 - name: Dokumentacja
   items:
   - name: Azure PowerShell
@@ -666,9 +654,23 @@ items:
     href: /azure/architecture/
   - name: Historie klientów
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 6ae879edcd2b835cb52e20f070d6d8c0998ba610
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+  - name: Zadania elastyczne (przestarzałe)
+    items:
+    - name: Zadania elastyczne (przestarzałe)
+      href: sql-database-elastic-jobs-overview.md
+    - name: Instalowanie zadania elastycznego (przestarzałe)
+      href: sql-database-elastic-jobs-service-installation.md
+    - name: Tworzenie zadania — portal (przestarzałe)
+      href: sql-database-elastic-jobs-create-and-manage.md
+    - name: Tworzenie zadania — Azure PowerShell (przestarzałe)
+      href: sql-database-elastic-jobs-powershell.md
+    - name: Tworzenie zadania — przykładowa aplikacja (przestarzałe)
+      href: sql-database-elastic-jobs-getting-started.md
+    - name: Odinstalowywanie zadania elastycznego (przestarzałe)
+      href: sql-database-elastic-jobs-uninstall.md
+ms.openlocfilehash: bb051db62acda98e40be09c174216208578afccc
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994570"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320969"

@@ -93,7 +93,7 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
 - **Piastą**. Brak sieci wirtualnej koncentratora **źródła piastą**: 10.10.10.0/24.
     - Tej sieci wirtualnej koncentratora pełnić rolę strażnika.
     - Cała komunikacja między podsieciami przechodzą przez tego koncentratora.
- - ****Centrum sieci wirtualnej podsieci**. Sieć wirtualna Centrum ma dwie podsieci:
+ - ** Centrum sieci wirtualnej podsieci**. Sieć wirtualna Centrum ma dwie podsieci:
      - **Urządzenie WUS podsieci**: 10.10.10.0/25. Ta podsieć zawiera NVA (. 10.10.10.10).
      - **Podsieć bramy**: 10.10.10.128/25. Ta podsieć zawiera bramę usługi ExpressRoute, nawiązanie połączenia usługi ExpressRoute, która kieruje do lokacji lokalnej za pośrednictwem prywatnej komunikacji równorzędnej domeny routingu.
 - W lokalnym centrum danych ma połączenie obwodu usługi ExpressRoute za pośrednictwem przewagę partnera w Hongkongu.

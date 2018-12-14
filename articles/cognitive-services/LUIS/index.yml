@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 987eea72ff991eb90eb4e6f9acba6ccb4b8a750f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 801fa50ea34da8ac40c559e77fb6c51c6422172e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406555"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166340"
 documentType: LandingData
 title: Dokumentacja usługi Language Understanding (LUIS)
 metadata:
@@ -96,7 +96,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://aka.ms/luis-code-samples">Przykłady w serwisie Github</a><br/>
+    - html: <a href="https://aka.ms/luis-code-samples">Przykłady w serwisie GitHub</a><br/>
 - title: Filmy wideo
   items:
   - type: list

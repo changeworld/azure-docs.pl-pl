@@ -115,7 +115,7 @@ items:
     - name: Praca z bazami danych, kontenerami i elementami
       href: databases-containers-items.md
     - name: Dokumentacja języka SQL
-      href: sql-api-sql-query-reference.md
+      href: sql-api-query-reference.md
     - name: Przykłady zapytań w języku SQL
       href: how-to-sql-query.md
     - name: Indeksowanie
@@ -144,6 +144,28 @@ items:
       href: unique-keys.md
     - name: Transakcje i optymistyczna współbieżność
       href: database-transactions-optimistic-concurrency.md
+  - name: Optymalizacja kosztów usługi Azure Cosmos DB
+    items:
+    - name: Model cen
+      href: how-pricing-works.md
+    - name: Całkowity koszt posiadania
+      href: total-cost-ownership.md
+    - name: Opis zawartości rachunku
+      href: understand-your-bill.md
+    - name: Optymalizacja kosztów aprowizowanej przepływności
+      href: optimize-cost-throughput.md
+    - name: Optymalizacja kosztów zapytań
+      href: optimize-cost-queries.md
+    - name: Optymalizacja kosztów magazynu
+      href: optimize-cost-storage.md
+    - name: Optymalizacja kosztów operacji odczytu i zapisu
+      href: optimize-cost-reads-writes.md
+    - name: Optymalizacja kosztów korzystania z wielu regionów
+      href: optimize-cost-regions.md
+    - name: Optymalizacja obciążeń tworzenia i testowania
+      href: optimize-dev-test.md
+    - name: Opłacanie wydajności rezerwowej z góry
+      href: cosmos-db-reserved-capacity.md
   - name: Bezpieczeństwo
     items:
     - name: Omówienie
@@ -164,8 +186,6 @@ items:
       href: online-backup-and-restore.md
     - name: Zgodność
       href: compliance.md
-  - name: Opłacanie wydajności rezerwowej z góry
-    href: cosmos-db-reserved-capacity.md
 - name: Interfejsy API wielomodelowe
   items:
   - name: Dokumentacja interfejsu API środowiska SQL
@@ -229,7 +249,7 @@ items:
     - name: Przewodniki z instrukcjami
       items:
       - name: Dostosowywanie wydajności zapytań
-        href: sql-api-sql-query-metrics.md
+        href: sql-api-query-metrics.md
       - name: Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)
         href: programming.md
       - name: Typy danych
@@ -288,7 +308,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: Część 4 — Tworzenie konta
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: Część 5 — łączenie się z bazą danych Cosmos DB
+          - name: Część 5 — Łączenie się z usługą Azure Cosmos DB
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: Część 6 — Wykonywanie operacji CRUD
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -509,7 +529,7 @@ items:
         href: performance-testing.md
     - name: Ekonomiczne odczyty i zapisy
       href: key-value-store-cost.md
-  - name: Wizualizacja danych usługi Cosmos DB
+  - name: Wizualizacja danych usługi Azure Cosmos DB
     items:
     - name: Korzystanie z usługi Power BI
       href: powerbi-visualize.md
@@ -583,9 +603,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: 413ec7cc09f748948cab92dd10495b667be06f40
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b172650cc0a69169bcbebf58e0a11d0bb9cd6450
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961233"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254704"

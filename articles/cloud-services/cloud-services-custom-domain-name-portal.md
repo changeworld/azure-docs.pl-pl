@@ -115,7 +115,7 @@ Aby utworzyć rekord A, możesz znaleźć wirtualnego adresu IP usługi w chmurz
      Zapisz adres IP, ponieważ będzie on potrzebny podczas tworzenia rekordu.
 2. Zaloguj się do rejestratora DNS witryny sieci Web i przejdź do strony zarządzania DNS. Znajdź łącza lub obszarów witryny oznaczone jako **nazwy domeny**, **DNS**, lub **Zarządzanie serwerem nazw**.
 3. Teraz można znaleźć, którym można wybrać lub wprowadzić rekord. Może być konieczne wybierz typ rekordu, z listy rozwijanej lub przejdź do strony ustawień zaawansowanych.
-4. Wybierz lub wprowadź domeny lub poddomeny, który będzie używał tego rekordu A. Na przykład wybierz **www** Jeśli chcesz utworzyć alias **www.customdomain.com**. Jeśli chcesz utworzyć wpis symboli wieloznacznych dla wszystkich domen podrzędnych, wprowadź "***". Wszystkimi domenami podrzędnymi będzie on zawierał takie jak **mail.customdomain.com**, **login.customdomain.com**, i **www.customdomain.com**.
+4. Wybierz lub wprowadź domeny lub poddomeny, który będzie używał tego rekordu A. Na przykład wybierz **www** Jeśli chcesz utworzyć alias **www.customdomain.com**. Jeśli chcesz utworzyć wpis symboli wieloznacznych dla wszystkich domen podrzędnych, wprowadź "*****". Wszystkimi domenami podrzędnymi będzie on zawierał takie jak **mail.customdomain.com**, **login.customdomain.com**, i **www.customdomain.com**.
    
     Jeśli chcesz utworzyć rekord A dla domeny katalogu głównego, może być wyświetlany jako "**@**" symbol w narzędziach DNS u rejestratora swojej firmy.
 5. Wprowadź adres IP, usługi w chmurze, w polu podana. Skojarzenie wpis domeny używane w rekordzie o adresie IP wdrażania usługi w chmurze.
@@ -126,7 +126,7 @@ Na przykład następujący rekord przekazuje cały ruch z **contoso.com** do **1
 | --- | --- |
 | \@ |137.135.70.239 |
 
-W przykładzie pokazano tworzenie rekordu A dla domeny katalogu głównego. Jeśli chcesz utworzyć wpis symboli wieloznacznych, aby pokrywał wszystkimi domenami podrzędnymi, wpisz "***" jako domenę podrzędną.
+W przykładzie pokazano tworzenie rekordu A dla domeny katalogu głównego. Jeśli chcesz utworzyć wpis symboli wieloznacznych, aby pokrywał wszystkimi domenami podrzędnymi, wpisz "*****" jako domenę podrzędną.
 
 > [!WARNING]
 > Adresy IP na platformie Azure są dynamiczne domyślnie. Będzie prawdopodobnie chcesz użyć [zarezerwowany adres IP](../virtual-network/virtual-networks-reserved-public-ip.md) aby upewnić się, że adres IP nie zmienia się.

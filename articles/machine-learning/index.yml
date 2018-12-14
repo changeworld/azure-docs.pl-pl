@@ -1,77 +1,71 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ef0ecc7a9e89168ed57c75ab24c3233692d77151
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 865f7421172c3302333b1cbf465f66806b296759
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863571"
-documentType: LandingData
-title: Dokumentacja usługi Azure Machine Learning
-metadata:
-  title: Dokumentacja usługi Azure Machine Learning — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.
-  services: machine-learning
-  author: j-martens
-  ms.service: machine-learning
-  ms.component: core
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 12/04/2018
-  ms.author: jmartens
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314384"
 abstract:
   description: Dowiedz się, jak wbudowywać inteligentne algorytmy w aplikacjach i witrynach internetowych przy użyciu produktów usługi Azure Machine Learning.  Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.
+documentType: LandingData
+metadata:
+  author: j-martens
+  description: Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.
+  ms.author: jmartens
+  ms.component: core
+  ms.date: 12/04/2018
+  ms.devlang: na
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  services: machine-learning
+  title: Dokumentacja usługi Azure Machine Learning — samouczki i dokumentacja interfejsu API | Microsoft Docs
 sections:
 - items:
-  - type: list
-    style: cards
-    className: cardsM
+  - className: cardsM
     columns: 2
     items:
     - href: /azure/machine-learning/service/overview-what-is-azure-ml
-      html: <p>Dowiedz się, jak ta usługa zwiększa możliwości analityków danych podczas tworzenia rozwiązań sztucznej inteligencji i zarządzania nimi<br/> za pomocą narzędzi i bibliotek interfejsu wiersza polecenia oraz języka Python dzięki wielu różnym usługom obsługującym dane i obliczenia na platformie Azure. Dowiedz się więcej...</p>
+      html: <p>Dowiedz się, jak ta usługa zwiększa możliwości analityków danych podczas tworzenia rozwiązań sztucznej inteligencji i zarządzania nimi<br/> za pomocą narzędzi i bibliotek interfejsu wiersza polecenia platformy Azure oraz języka Python dzięki wielu różnym usługom obsługującym dane i obliczenia na platformie Azure. Dowiedz się więcej...</p>
       image:
         src: /azure/machine-learning/media/index/i_machine-learning.svg
       title: Usługa Azure Machine Learning
-- title: Przewodniki Szybki start i samouczki
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak szybko skonfigurować usługę Azure Machine Learning oraz jak z niej korzystać:'
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/i_machine-learning.svg
-    rows:
-    - title: Wprowadzenie do usługi w witrynie Azure Portal
-      values:
-      - href: /azure/machine-learning/service/quickstart-get-started
-    - title: Wprowadzenie do usługi w środowisku Python
-      values:
-      - href: /azure/machine-learning/service/quickstart-create-workspace-with-python
-    - title: Przygotowywanie danych do modelowania
-      values:
-      - href: /azure/machine-learning/service/tutorial-data-prep
-    - title: Kompilowanie własnego modelu uczenia maszynowego
-      values:
-      - href: /azure/machine-learning/service/tutorial-train-models-with-aml
-    - title: Automatyczne generowanie i dostrajanie algorytmów
-      values:
-      - href: /azure/machine-learning/service/tutorial-auto-train-models
-    - title: Wdrażanie modelu jako usługi internetowej
-      values:
-      - href: /azure/machine-learning/service/tutorial-deploy-models-with-aml
-    - title: Korzystanie z modeli uczenia maszynowego
-      values:
-      - href: /azure/machine-learning/service/how-to-consume-web-service
-    - title: Tworzenie potoków uczenia maszynowego i zarządzanie nimi
-      values:
-      - href: /azure/machine-learning/service/how-to-create-your-first-pipeline
-- title: Inne technologie uczenia maszynowego firmy Microsoft
-  items:
-  - type: list
     style: cards
-    className: cardsM
+    type: list
+- items:
+  - text: 'Przygotuj się i zacznij korzystać z usługi Azure Machine Learning Service:'
+    type: paragraph
+  - text: <b>Przewodniki Szybki start:</b>
+    type: paragraph
+  - items:
+    - html: <a href="service/quickstart-create-workspace-with-python">Rozpoczynanie pracy przy użyciu języka Python</a>
+    - html: <a href="service/quickstart-get-started">Rozpoczynanie pracy przy użyciu witryny Azure Portal</a>
+    style: unordered
+    type: list
+  - text: <b>Samouczek dotyczący klasyfikacji obrazów, korzystający z danych MNIST:</b>
+    type: paragraph
+  - items:
+    - html: 'Część 1: <a href="service/tutorial-train-models-with-aml">Trenowanie własnego modelu</a>'
+    - html: 'Część 2: <a href="service/tutorial-deploy-models-with-aml">Wdrażanie tego modelu</a>'
+    style: unordered
+    type: list
+  - text: <b>Samouczek modelowania regresji z danymi nowojorskich taksówek:</b>
+    type: paragraph
+  - items:
+    - html: 'Część 1: <a href="service/tutorial-data-prep">Przygotowywanie danych do modelowania</a>'
+    - html: 'Część 2: <a href="service/tutorial-auto-train-models">Trenowanie modeli przy użyciu zautomatyzowanego uczenia maszynowego</a>'
+    style: unordered
+    type: list
+  - text: <b>Używanie modeli:</b>
+    type: paragraph
+  - items:
+    - html: <a href="service/how-to-consume-web-service">Używanie modelu żądanie-odpowiedź</a>
+    - html: <a href="service/how-to-run-batch-predictions">Prognozy usługi Batch z potokami uczenia maszynowego</a>
+    style: unordered
+    type: list
+  title: Przewodniki Szybki start i samouczki
+- items:
+  - className: cardsM
     columns: 2
     items:
     - href: /azure/cognitive-services/
@@ -80,7 +74,7 @@ sections:
         src: /azure/machine-learning/media/index/cognitive-services.png
       title: Cognitive Services
     - href: /azure/machine-learning/studio/
-      html: <p>Dowiedz się, jak używać tego narzędzia do współpracy, obsługiwanego metodą „przeciągnij i upuść”, w celu kompilowania, testowania i wdrażania rozwiązań z zakresu analizy predykcyjnej na podstawie danych. Dowiedz się więcej... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      html: <p>Narzędzie do współpracy obsługiwane metodą „przeciągnij i upuść” do tworzenia, testowania i wdrażania rozwiązań z zakresu analizy predykcyjnej na podstawie posiadanych danych za pomocą języka R lub Python. </p>
       image:
         src: /azure/machine-learning/media/index/machine-learning-studio.svg
       title: Azure Machine Learning Studio
@@ -104,3 +98,7 @@ sections:
       image:
         src: /azure/machine-learning/media/index/virtualmachine.svg
       title: Maszyna wirtualna do analizy danych
+    style: cards
+    type: list
+  title: Inne technologie uczenia maszynowego firmy Microsoft
+title: Dokumentacja usługi Azure Machine Learning

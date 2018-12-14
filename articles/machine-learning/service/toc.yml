@@ -4,30 +4,32 @@ items:
 - name: Omówienie
   items:
   - name: Co to jest usługa Azure Machine Learning?
-    displayName: AML, services, overview
+    displayName: AML services overview
     href: overview-what-is-azure-ml.md
   - name: Jak działa usługa
-    displayName: architecture
+    displayName: architecture concepts definitions
     href: concept-azure-machine-learning-architecture.md
   - name: Co się dzieje z aplikacją Workbench?
-    displayName: desktop
+    displayName: desktop ui
     href: overview-what-happened-to-workbench.md
   - name: Informacje o wersji
-    displayName: what's new
+    displayName: what's new issues bugs
     href: azure-machine-learning-release-notes.md
   expanded: true
 - name: Przewodniki Szybki start
   items:
   - name: Wprowadzenie — portal
+    displayName: install sdk workspace
     href: quickstart-get-started.md
   - name: Wprowadzenie — Python
-    displayName: create workspace
+    displayName: create workspace install sdk
     href: quickstart-create-workspace-with-python.md
 - name: Samouczki
   items:
   - name: Klasyfikacja obrazów (dane MNIST)
     items:
     - name: 1. Szkolenie modelu
+      displayName: build modeling
       href: tutorial-train-models-with-aml.md
     - name: 2. Wdrażanie modelu
       href: tutorial-deploy-models-with-aml.md
@@ -43,6 +45,9 @@ items:
   href: samples-notebooks.md
 - name: Pojęcia
   items:
+  - name: Zautomatyzowane uczenie maszynowe
+    displayName: automl, auto ml
+    href: concept-automated-ml.md
   - name: Zarządzanie modelami
     displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
@@ -68,7 +73,6 @@ items:
         href: how-to-vscode-train-deploy.md
   - name: Przygotowywanie danych
     displayName: data prep, etl, elt, data preparation
-    href: how-to-data-prep.md
     items:
     - name: Ładowanie danych
       href: how-to-load-data.md
@@ -79,7 +83,7 @@ items:
   - name: Szkolenie modeli
     items:
     - name: Konfigurowanie środowisk szkoleniowych
-      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
+      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, Databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: Uzyskiwanie dostępu do danych w ramach szkolenia
       href: how-to-access-data.md
@@ -96,11 +100,11 @@ items:
       href: how-to-track-experiments.md
   - name: Automatyzacja uczenia maszynowego
     displayName: automl, auto ml
-    href: how-to-automated-ml.md
     items:
     - name: Konfigurowanie uczenia automatycznego
       href: how-to-configure-auto-train.md
     - name: Używanie miejsc docelowych obliczania zdalnego
+      displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
   - name: Modele ONNX
     items:
@@ -109,9 +113,9 @@ items:
   - name: Wdrażanie modeli
     items:
     - name: Gdzie należy wdrażać modele
-      displayName: publish, azure kubernetes, azure container instances
+      displayName: publish azure kubernetes azure container instances
       href: how-to-deploy-and-where.md
-    - name: Wdrażanie w układach FPGA
+    - name: Układy FPGA
       href: how-to-deploy-fpga-web-service.md
     - name: Rozwiązywanie problemów
       href: how-to-troubleshoot-deployment.md
@@ -120,7 +124,7 @@ items:
   - name: Korzystaj z usług sieci Web
     items:
     - name: Korzystanie w czasie rzeczywistym
-      displayName: create client, client, consume
+      displayName: create client consume
       href: how-to-consume-web-service.md
     - name: Uruchamianie prognoz partii
       href: how-to-run-batch-predictions.md
@@ -136,18 +140,18 @@ items:
     displayName: limits
     href: how-to-manage-quotas.md
   - name: Używanie interfejsu wiersza polecenia uczenia maszynowego
-    displayName: cli, command line, command-line, az,
+    displayName: cli command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
 - name: Dokumentacja
   items:
   - name: Zestaw SDK uczenia maszynowego
-    displayName: api, core, package
+    displayName: api core package python
     href: https://aka.ms/aml-sdk
   - name: Zestaw SDK do przygotowywania danych
-    displayName: api, preparation, package
+    displayName: api preparation package python
     href: https://aka.ms/data-prep-sdk
   - name: Zestaw SDK do monitorowania
-    displayName: api, package
+    displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
 - name: Zasoby
   items:
@@ -158,6 +162,7 @@ items:
   - name: Dostępność regionalna
     href: https://azure.microsoft.com/regions/services/
   - name: Znane problemy
+    displayName: bugs errors troubleshoot
     href: resource-known-issues.md
   - name: Uzyskiwanie pomocy technicznej
     href: support-for-aml-services.md
@@ -167,19 +172,19 @@ items:
   - name: Przestarzała dokumentacja
     items:
     - name: Migrowanie z aplikacji Workbench
-      displayName: Workbench, upgrade, update, transfer
+      displayName: Workbench upgrade update transfer
       href: how-to-migrate.md
     - name: Eksportowanie lub usuwanie danych konta (przestarzałe)
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
     - name: Przewodnik Szybki start aplikacji Workbench (przestarzałe)
       href: ../desktop-workbench/quickstart-installation.md
-    - name: 'Samouczek 1: przygotowywanie danych'
+    - name: Samouczek 1. Przygotowywanie danych
       href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
-    - name: 'Samouczek 2: tworzenie modeli'
+    - name: Samouczek 2. Tworzenie modeli
       href: ../desktop-workbench/tutorial-classifying-iris-part-2.md
-    - name: 'Samouczek 3: wdrażanie modeli'
+    - name: Samouczek 3. Wdrażanie modeli
       href: ../desktop-workbench/tutorial-classifying-iris-part-3.md
-    - name: 'Samouczek 4: zaawansowane przygotowywanie danych'
+    - name: Samouczek 4. Zaawansowane przygotowywanie danych
       href: ../desktop-workbench/tutorial-bikeshare-dataprep.md
     - name: Omówienie zarządzania modelami
       href: ../desktop-workbench/model-management-overview.md
@@ -365,9 +370,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Stare problemy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: a5c26bd2ef020ca737907c8a66776a3769bfeefd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cf7216271dea4bcdda7bea91c1b386a4ba612f8f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101249"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310515"

@@ -17,8 +17,16 @@ items:
 - name: Pojęcia
   href: video-indexer-concepts.md
   items:
-  - name: Porównanie usługi VI i ustawień wstępnych usługi AMS
+  - name: Porównanie ustawień wstępnych usług Video Indexer i Media Services
     href: compare-video-indexer-with-media-services-presets.md
+  - name: Dostosowywanie modeli zawartości
+    items:
+    - name: Marki
+      href: customize-brands-model-overview.md
+    - name: Język
+      href: customize-language-model-overview.md
+    - name: Person (Osoba)
+      href: customize-person-model-overview.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Migrowanie z wersji 1 do wersji 2
@@ -39,6 +47,26 @@ items:
     href: video-indexer-create-new.md
   - name: Osadzanie widżetów w aplikacji
     href: video-indexer-embed-widgets.md
+  - name: Dostosowywanie modeli zawartości
+    items:
+    - name: Person (Osoba)
+      items:
+      - name: przy użyciu witryny usługi Video Indexer
+        href: customize-person-model-with-website.md
+      - name: przy użyciu interfejsu API usługi Video Indexer
+        href: customize-person-model-with-api.md
+    - name: Marki
+      items:
+      - name: przy użyciu witryny usługi Video Indexer
+        href: customize-brands-model-with-website.md
+      - name: przy użyciu interfejsu API usługi Video Indexer
+        href: customize-brands-model-with-api.md
+    - name: Język
+      items:
+      - name: przy użyciu witryny usługi Video Indexer
+        href: customize-language-model-with-website.md
+      - name: przy użyciu interfejsu API usługi Video Indexer
+        href: customize-language-model-with-api.md
 - name: Dokumentacja
   items:
   - name: Interfejs API usługi Video Indexer
@@ -51,9 +79,11 @@ items:
     href: https://azure.microsoft.com/pricing/details/media-services/
   - name: Dostępność regionalna
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 0936678c29ac4ab4e89bcacd746bbcbb88e22c21
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+  - name: Regiony
+    href: regions.md
+ms.openlocfilehash: 0ede3667a745959b2d58d1ad1f37e36728fcd503
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290811"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270088"
