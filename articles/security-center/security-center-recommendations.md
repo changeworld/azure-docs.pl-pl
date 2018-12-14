@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3e8333b521832579a942d3fffb06103ad0431acc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d0c61f6e905ca109f3f178996a08f353c36e7880
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316621"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337210"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center
 W tym dokumencie przedstawiono sposób korzystania z zaleceń Centrum zabezpieczeń Azure, aby pomóc w ochronie Twoich zasobów platformy Azure.
@@ -34,13 +34,13 @@ Usługa Security Center okresowo analizuje stan zabezpieczeń zasobów platformy
 
 ## <a name="implementing-security-recommendations"></a>Wdrażanie zaleceń dotyczących zabezpieczeń
 ### <a name="set-recommendations"></a>Zestaw zaleceń
-W [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md), Dowiedz się, jak:
+W [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md), Dowiedz się, jak:
 
 * Podczas konfigurowania zasad zabezpieczeń.
 * Włącz zbieranie danych.
 * Wybierz, które zalecenia, aby zobaczyć jako część zasad zabezpieczeń.
 
-Bieżący Centrum zalecenia dotyczące zasad wokół aktualizacji systemu, reguły linii bazowej, programy chroniące przed złośliwym kodem [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) podsieci i interfejsów sieciowych, inspekcji usługi SQL database, SQL database technologii transparent data encryption, i zapory aplikacji sieci web.  [Ustawianie zasad zabezpieczeń](security-center-azure-policy.md) zawiera opis każdej opcji zalecenia.
+Bieżący Centrum zalecenia dotyczące zasad wokół aktualizacji systemu, reguły linii bazowej, programy chroniące przed złośliwym kodem [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) podsieci i interfejsów sieciowych, inspekcji usługi SQL database, SQL database technologii transparent data encryption, i zapory aplikacji sieci web.  [Ustawianie zasad zabezpieczeń](tutorial-security-policy.md) zawiera opis każdej opcji zalecenia.
 
 ### <a name="monitor-recommendations"></a>Zalecenia dotyczące monitorowania
 Po skonfigurowaniu zasad zabezpieczeń usługa Security Center analizuje stan zabezpieczeń zasobów w celu identyfikowania potencjalnych luk w zabezpieczeniach. **Zalecenia** kafelka w obszarze **Przegląd** informuje Cię łączną liczbę zaleceniami zostały zidentyfikowane przez usługę Security Center.
@@ -55,16 +55,16 @@ Można filtrować zalecenia. Aby filtrować zalecenia, wybierz **filtru** na **z
 
 Zalecenia są wyświetlane w postaci tabeli, gdzie każdy wiersz reprezentuje jedno zalecenie. Dostępne są następujące kolumny w tej tabeli:
 
-* **Opis**: wyjaśniono zalecenia i co trzeba zrobić, aby rozwiązać problem.
+* **OPIS**: Wyjaśnia, zalecenia i co trzeba zrobić, aby rozwiązać problem.
 * **ZASÓB**: Wyświetla listę zasobów, do których zostanie zastosowana tego zalecenia.
-* **Stan**: Opisuje bieżący stan zalecenia:
-  * **Otwórz**: zalecenie nie zostały jeszcze zarejestrowane.
-  * **Trwającą**: zalecenie jest aktualnie stosowane do zasobów i jest wymagana żadna akcja.
-  * **Rozwiązane**: zalecenie zostało już ukończone (w tym przypadku wiersza jest wyszarzony).
-* **WAŻNOŚĆ**: opisuje ważność określonego zalecenia:
-  * **Wysoka**: luki w zabezpieczeniach istnieje, która dotyczy istotnego zasobu (np. aplikacji, maszyny Wirtualnej lub sieciowej grupy zabezpieczeń) i wymaga uwagi.
-  * **Średnia**: istnieje luka w zabezpieczeniach i niekrytyczne lub dodatkowe kroki są wymagane, aby wyeliminować go lub do ukończenia procesu.
-  * **Niska**: istnieje luka w zabezpieczeniach, które powinny być kierowane, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale można filtrować według zalecenia o niskiej ważności, jeśli chcesz je zobaczyć).
+* **STAN**: W tym artykule opisano bieżący stan zalecenia:
+  * **Otwórz**: Zalecenie nie zostały jeszcze zarejestrowane.
+  * **Trwającą**: Zalecenie jest aktualnie stosowane do zasobów i jest wymagana żadna akcja.
+  * **Rozwiązane**: Zalecenie zostało już ukończone (w tym przypadku wiersza jest wyszarzony).
+* **WAŻNOŚĆ**: Opisuje ważność określonego zalecenia:
+  * **Wysoka**: Luki w zabezpieczeniach istnieje, która dotyczy istotnego zasobu (np. aplikacji, maszyny Wirtualnej lub sieciowej grupy zabezpieczeń) i wymaga uwagi.
+  * **Średnia**: Istnieje luka w zabezpieczeniach i niekrytyczne lub dodatkowe kroki są wymagane, aby wyeliminować go lub do ukończenia procesu.
+  * **Niska**: Istnieje luka w zabezpieczeniach, które powinny być kierowane, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale można filtrować według zalecenia o niskiej ważności, jeśli chcesz je zobaczyć).
 
 Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych zaleceń i każdy z nich działanie w przypadku zastosowania.
 
@@ -135,7 +135,7 @@ W tabeli powyższe zalecenia wybierz zalecenie i przeprowadzenie jej jako przyk�
 ## <a name="next-steps"></a>Kolejne kroki
 W tym dokumencie Przedstawiliśmy zalecenia dotyczące zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md) — Dowiedz się, jak zarządzać i reagować na alerty zabezpieczeń.
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.

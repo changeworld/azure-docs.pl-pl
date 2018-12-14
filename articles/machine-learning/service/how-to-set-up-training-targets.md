@@ -12,12 +12,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c91cc8dabc1fcf4918e64c18e5d5975dc7720c30
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 664d56daf3e70e2e5699d0c07331c466c60e06c5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315999"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338866"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -269,8 +269,9 @@ Poniższe kroki konfigurowania maszyn wirtualnych do nauki o danych (DSVM) jako 
     compute = ComputeTarget.attach(ws, "attach-dsvm", attach_config)
 
     compute.wait_for_completion(show_output=True)
+    ```
 
-1. Create a configuration for the DSVM compute target. Docker and conda are used to create and configure the training environment on DSVM:
+1. Utwórz konfigurację dla elementu docelowego obliczeniowe DSVM. Docker i narzędzia conda są używane do tworzenia i konfigurowania środowiska szkolenia na nauki:
 
     ```python
     from azureml.core.runconfig import RunConfiguration

@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ccccad1cb510c4988092467c723e117a47456aaf
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277509"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342395"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
 Rozwiązanie do zarządzania aktualizacjami w usłudze Azure Automation służy do zarządzania aktualizacjami systemu operacyjnego, komputerów Windows i Linux, które zostały wdrożone na platformie Azure, w środowiskach lokalnych lub w chmurze innych dostawców. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
 
-Zarządzanie aktualizacjami dla maszyn wirtualnych można włączyć bezpośrednio z konta usługi Azure Automation. Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych na koncie usługi Automation, zobacz [zarządzanie aktualizacjami dla wielu maszyn wirtualnych](manage-update-multi.md). Można również włączyć rozwiązanie Update Management dla pojedynczej maszyny wirtualnej z poziomu okienka maszyny wirtualnej w witrynie Azure portal. Ten scenariusz jest dostępny dla [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) i [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) maszyn wirtualnych.
+Zarządzanie aktualizacjami dla maszyn wirtualnych można włączyć bezpośrednio z konta usługi Azure Automation. Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych na koncie usługi Automation, zobacz [zarządzanie aktualizacjami dla wielu maszyn wirtualnych](manage-update-multi.md). Można również włączyć rozwiązanie Update Management dla maszyny wirtualnej na stronie maszyny wirtualnej w witrynie Azure portal. Ten scenariusz jest dostępny dla [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) i [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) maszyn wirtualnych.
 
 ## <a name="solution-overview"></a>Omówienie rozwiązania
 
@@ -41,7 +41,7 @@ CVE po wersji może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z s
 
 Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agenta przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie uruchamiane co 12 godzin.
 
-Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut po uruchomieniu programu MMA, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
+Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut MMA uruchamiany ponownie, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
 
 Komputera z systemem Linux skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 3 godziny. Jeśli ponownego uruchomienia agenta MMA skanowania pod kątem zgodności jest inicjowane w ciągu 15 minut.
 
@@ -148,7 +148,7 @@ Na komputerze Windows możesz przejrzeć następujące informacje, aby sprawdzi�
 1. W Panelu sterowania otwórz **Microsoft Monitoring Agent**. Na **usługi Azure Log Analytics** karcie agent wyświetla następujący komunikat: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Log Analytics**.
 2. Otwórz dziennik zdarzeń Windows. Przejdź do **Application and Services log\operations Manager** i wyszukaj Identyfikatory zdarzeń 3000 i 5002 identyfikator zdarzenia ze źródła **łącznika usługi**. Te zdarzenia wskazują, że komputer został zarejestrowany za pomocą obszaru roboczego usługi Log Analytics i odbiera konfigurację.
 
-Jeśli agent jest skonfigurowany do komunikowania się z Internetem przez zaporę lub serwer proxy agenta nie może komunikować się z usługą Log Analytics, upewnij się, że serwer zapory lub serwera proxy jest prawidłowo skonfigurowany. Aby dowiedzieć się, jak sprawdzić, czy zapora lub serwer proxy jest prawidłowo skonfigurowane, zobacz [konfiguracji sieci dla agenta Windows](../azure-monitor/platform/agent-windows.md) lub [konfigurację sieci dla agenta systemu Linux](../log-analytics/log-analytics-agent-linux.md).
+Jeśli agent nie może komunikować się z usługą Log Analytics, a agent jest skonfigurowany do komunikowania się z Internetem przez zaporę lub serwer proxy, upewnij się, że zapora lub serwer proxy jest prawidłowo skonfigurowany. Aby dowiedzieć się, jak sprawdzić, serwer zapory lub serwera proxy jest prawidłowo skonfigurowany, zobacz [konfiguracji sieci dla agenta Windows](../azure-monitor/platform/agent-windows.md) lub [konfigurację sieci dla agenta systemu Linux](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
 > Jeśli Twoje systemy Linux są skonfigurowane do komunikowania się z serwerem proxy lub brama usługi Log Analytics i dodajesz tego rozwiązania, aktualizacja *proxy.conf* uprawnień, aby przyznać grupie omiuser uprawnienie do odczytu w pliku przy użyciu następujące polecenia:
@@ -297,7 +297,7 @@ $WUSettings.Save()
 
 ### <a name="enable-updates-for-other-microsoft-products"></a>Włącz aktualizacje dla innych produktów firmy Microsoft
 
-Domyślnie Windows Update udostępnia aktualizacje tylko dla Windows. Po włączeniu **nadać mi aktualizacje dla innych produktów firmy Microsoft, gdy aktualizuję Windows**, pod warunkiem za pomocą aktualizacji dla innych produktów, w tym takich rzeczy poprawek zabezpieczeń dla programu SQL Server lub inne pierwszy oprogramowanie innych firm. Tej opcji nie można skonfigurować przy użyciu zasad grupy. Uruchom następujące polecenie programu PowerShell w systemach, które chcesz włączyć innych pierwszy poprawek innych firm na i zarządzania aktualizacjami będą stosować tego ustawienia.
+Domyślnie Windows Update udostępnia aktualizacje tylko dla Windows. Po włączeniu **nadać mi aktualizacje dla innych produktów firmy Microsoft, gdy aktualizuję Windows**, otrzymasz aktualizacje dla innych produktów, w tym takich rzeczy poprawek zabezpieczeń dla programu SQL Server lub inne pierwszy oprogramowanie innych firm. Tej opcji nie można skonfigurować przy użyciu zasad grupy. Uruchom następujące polecenie programu PowerShell w systemach, które chcesz włączyć innych pierwszy poprawek innych firm na i zarządzania aktualizacjami będą stosować tego ustawienia.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -305,6 +305,11 @@ $ServiceManager.Services
 $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
+
+## <a name="third-party"></a> Poprawkami innych firm dla Windows
+
+Rozwiązanie Update Management zależy od usług WSUS lub Windows Update, aby poprawki obsługiwane systemy Windows. Narzędzia takie jak [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) pozwalają na publikowanie niestandardowych aktualizacji do programu WSUS. Ten scenariusz umożliwia zarządzania aktualizacjami maszyn poprawki, które używają usług WSUS jako repozytorium aktualizacji, ich za pomocą oprogramowania innych firm. Aby dowiedzieć się, jak skonfigurować program Updates Publisher, zobacz [zainstalować Updates Publisher](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Planowanie sieci
 
@@ -325,7 +330,7 @@ Zaleca się używania adresów wymienionych podczas definiowania wyjątków. Adr
 
 Oprócz szczegółów, które znajdują się w witrynie Azure portal można wykonać wyszukiwania w dziennikach. Na stronach rozwiązania wybierz **usługi Log Analytics**. **Wyszukiwanie w dzienniku** zostanie otwarte okienko.
 
-Możesz także dowiedzieć się, jak dostosować zapytania lub używać ich z różnych klientów i więcej, odwiedzając:  [Dokumentacja usługi log Analytics wyszukiwanie interfejsu API](
+Możesz także dowiedzieć się, jak dostosować zapytania lub używać ich z różnych klientów i więcej, odwiedzając:  [Dokumentacja interfejsu API wyszukiwania usługi log Analytics](
 https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>Przykładowe zapytania
@@ -334,7 +339,7 @@ Poniższe sekcje zawierają przykładowe dziennika zapytania dotyczące rekordó
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>Pojedynczego zapytania oceny maszyn wirtualnych platformy Azure (Windows)
 
-Zastąp wartość symbolu VMUUID o identyfikatorze GUID maszyny Wirtualnej maszyny wirtualnej, która jest wykonywane zapytanie. Można znaleźć VMUUID, które mają być używane, uruchamiając następujące zapytanie w usłudze Log Analytics: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Zastąp wartość symbolu VMUUID o identyfikatorze GUID maszyny Wirtualnej z maszyny wirtualnej, której dotyczy kwerenda. Można znaleźć VMUUID, które mają być używane, uruchamiając następujące zapytanie w usłudze Log Analytics: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Brakujące aktualizacje podsumowania
 
@@ -584,7 +589,7 @@ Bo zarządzania aktualizacjami wzbogacania aktualizacji w chmurze, niektóre akt
 
 Jednak zarządzania aktualizacjami, nadal może raportować tej maszyny, co jest niezgodne, ponieważ ma ona dodatkowe informacje o odpowiednich aktualizacji.
 
-Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa w przypadku CentOS gotowe. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To ograniczenie zypper. W niektórych przypadkach może być wymagane ponowne uruchomienie wdrożenia aktualizacji, aby sprawdzić, sprawdź w dzienniku aktualizacji.
+Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa w przypadku CentOS gotowe. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To zachowanie jest ograniczenie zypper. W niektórych przypadkach może wymagać ponownego uruchomienia wdrożenia aktualizacji. Aby sprawdzić, przejrzyj dziennik aktualizacji.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

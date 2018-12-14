@@ -7,14 +7,14 @@ manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994806"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387050"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Użyj rozszerzenia diagnostycznego systemu Linux do monitorowania metryk i dzienników
 
@@ -38,9 +38,7 @@ To rozszerzenie współpracuje z obu modeli wdrażania platformy Azure.
 
 ## <a name="installing-the-extension-in-your-vm"></a>Instalowanie rozszerzenia maszyny Wirtualnej
 
-To rozszerzenie można włączyć za pomocą poleceń cmdlet programu Azure PowerShell, skryptów wiersza polecenia platformy Azure lub szablonów wdrażania na platformie Azure. Aby uzyskać więcej informacji, zobacz [funkcji rozszerzenia](features-linux.md).
-
-Witryna Azure portal nie można włączyć lub skonfigurować LAD 3.0. Zamiast tego instaluje i konfiguruje wersja 2.3. Azure portal wykresów i alertów pracować z danymi obie wersje rozszerzenia.
+To rozszerzenie można włączyć za pomocą poleceń cmdlet programu Azure PowerShell, skryptów wiersza polecenia platformy Azure, szablonów ARM lub witryny Azure portal. Aby uzyskać więcej informacji, zobacz [funkcji rozszerzenia](features-linux.md).
 
 Te instrukcje dotyczące instalacji i [do pobrania Przykładowa konfiguracja](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) LAD 3.0 można skonfigurować:
 
@@ -55,7 +53,7 @@ Konfiguracja do pobrania jest tylko przykładowe; Zmodyfikuj go do swoich potrze
 
 * **Agent systemu Linux platformy Azure w wersji 2.2.0 lub nowszej**. Większość obrazów w galerii Azure VM Linux zawierają wersję 2.2.7 lub nowszej. Uruchom `/usr/sbin/waagent -version` aby upewnić się, wersja zainstalowana na maszynie Wirtualnej. Jeśli maszyna wirtualna jest uruchomiona starsza wersja agenta gościa, postępuj zgodnie z [w instrukcjach](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) ją zaktualizować.
 * **Interfejs wiersza polecenia platformy Azure**. [Konfigurowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) środowiska na swojej maszynie.
-* Polecenia wget, jeśli nie jeszcze: Uruchom `sudo apt-get install wget`.
+* Polecenia wget, jeśli nie jeszcze: Uruchom polecenie `sudo apt-get install wget`.
 * Istniejącej subskrypcji platformy Azure i istniejące konto magazynu w niej do przechowywania danych.
 * Znajduje się na liście obsługiwanych dystrybucjach systemu Linux https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
 
@@ -106,7 +104,7 @@ Najnowsza wersja rozszerzenia jest **3.0**. **Wszystkie starsze wersje (2.x) są
 >
 > Aby przeprowadzić migrację 2.x, aby nowa wersja rozszerzenia, należy odinstalować stare rozszerzenia (w obszarze starej nazwy wydawcy), a następnie zainstalować rozszerzenia w wersji 3.
 
-Zalecenia:
+Rekomendacje:
 
 * Uaktualnianie automatyczne podverze włączone, należy zainstalować rozszerzenie.
   * W klasycznym modelu wdrażania maszyn wirtualnych należy określić "3.*" jako wersję w przypadku instalowania rozszerzeń przy użyciu wiersza polecenia XPLAT platformy Azure lub programu Powershell.
@@ -316,11 +314,11 @@ Element | Wartość
 Wychwytywanie | (opcjonalnie) Rozdzielana przecinkami lista nazw ujścia, które LAD wysyła zagregowaną metryki wyników. Wszystkie zagregowane metryki są publikowane w każdej z wymienionych ujścia. Zobacz [sinksConfig](#sinksconfig). Przykład: `"EHsink1, myjsonsink"`.
 type | Określa dostawcę rzeczywiste metryki.
 klasa | Wraz z "counter" identyfikuje określone metryki w przestrzeni nazw dostawcy.
-Licznik | Wraz z "class" identyfikuje określone metryki w przestrzeni nazw dostawcy.
+counter | Wraz z "class" identyfikuje określone metryki w przestrzeni nazw dostawcy.
 counterSpecifier | Identyfikuje określone metryki w obszarze nazw metryk usługi Azure.
 warunek | (opcjonalnie) Wybiera konkretne wystąpienie obiektu do którego stosuje metrykę, lub wybiera agregacji ze wszystkich wystąpień tego obiektu. Aby uzyskać więcej informacji, zobacz [ `builtin` definicje metryk](#metrics-supported-by-builtin).
 sampleRate | JEST interwałem 8601, który ustawia szybkość jaką pierwotne próbki dla tej metryki są pobierane. Jeśli nie został ustawiony, interwał zbierania jest ustawiony przez wartość [sampleRateInSeconds](#ladcfg). Najkrótszy częstotliwość próbkowania obsługiwanych wynosi 15 sekund (PT15S).
-jednostka | Musi mieć jedną z tych ciągów: "Count", "B", "S", "Procent", "CountPerSecond", "BytesPerSecond", "Milisekund". Definiuje jednostkę metryki. Osoby korzystające z danych zebranych oczekiwać, że wartości zebranych danych do potrzeb tej jednostki. LAD ignoruje tego pola.
+jednostka | Powinna być jedną z tych ciągów: "Liczba", "B", "S", "Procent", "CountPerSecond", "BytesPerSecond", "Milisekund". Definiuje jednostkę metryki. Osoby korzystające z danych zebranych oczekiwać, że wartości zebranych danych do potrzeb tej jednostki. LAD ignoruje tego pola.
 displayName | Etykieta (w języku określonym przez ustawienie regionalne skojarzone) do podłączenia do tych danych w metryk usługi Azure. LAD ignoruje tego pola.
 
 CounterSpecifier jest umownym identyfikatorem. Konsumentów metryk, takich jak Azure portal wykresów i alertów funkcji, użyj counterSpecifier jako "key" identyfikująca metrykę lub wystąpienie metryki. Aby uzyskać `builtin` metryki, zalecane jest użycie counterSpecifier wartości, które zaczynają się od `/builtin/`. Jeśli zbierasz konkretnego wystąpienia metrykę, zalecamy Dołącz identyfikator wystąpienia wartości counterSpecifier. Oto niektóre przykłady:
@@ -432,7 +430,7 @@ Dostawca metryki builtin jest źródło metryki najbardziej interesujących do s
 
 Klasa procesora, metryk udostępnia informacje na temat użycia procesora na maszynie wirtualnej. Podczas agregowania wartości procentowych, wynik jest średnią dla wszystkich procesorów CPU. W procesorów vCPU dwóch maszyn wirtualnych Jeśli jeden procesor wirtualny był zajęty w 100%, a drugie wartość 100% bezczynny, PercentIdleTime zgłaszane jest 50. Jeśli każdy procesor wirtualny był zajęty, w tym samym okresie w 50%, zgłoszony wynik będą również 50. Na maszynie wirtualnej 4 vCPU, jeden procesor wirtualny 100% zajęty i innym osobom bezczynny zgłaszane PercentIdleTime byłoby 75.
 
-Licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 PercentIdleTime | Wartość procentowa czasu przedziale agregacji, że procesorów zostały wykonywania pętli bezczynności jądra
 percentProcessorTime | Wartość procentowa czasu wykonania wątku czynnego
@@ -450,7 +448,7 @@ Aby uzyskać jedną metrykę agregowane dla wszystkich procesorów, należy usta
 
 Klasa pamięci metryk zawiera informacje dotyczące wykorzystanie pamięci, stronicowanie i zamianę.
 
-Licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 AvailableMemory | Dostępnej pamięci fizycznej w MiB
 PercentAvailableMemory | Dostępna pamięć fizyczna jako procent całkowitej ilości pamięci
@@ -470,7 +468,7 @@ Ta klasa metryki ma tylko jedno wystąpienie. Atrybut "warunek" nie zawiera żad
 
 Klasa sieci metryk informacje dotyczące aktywności sieciowej w interfejsach sieciowych poszczególnych od rozruchu. LAD nie ujawnia metryk przepustowości, które mogą być pobierane z metryki hosta.
 
-Licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 BytesTransmitted | Całkowita liczba bajtów wysłanych od momentu rozruchu
 BytesReceived | Suma bajtów odebranych od rozruchu
@@ -487,7 +485,7 @@ TotalCollisions | Liczby kolizji zgłoszone przez porty sieciowe od rozruchu
 
 Klasa systemu plików, metryk udostępnia informacje na temat użycia systemu plików. Bezwzględna i procentowa wartości ma być zgłaszane będzie można wyświetlić do zwykłego użytkownika (nie root).
 
-Licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 FreeSpace | Dostępnego miejsca na dysku w bajtach
 UsedSpace | Używane miejsce na dysku w bajtach
@@ -508,7 +506,7 @@ Zagregowane wartości we wszystkich systemach plików można uzyskać przez usta
 
 Klasa dysku metryk udostępnia informacje na temat użycia urządzenia dysku. Te statystyki mają zastosowanie do całego dysku. W przypadku wielu systemów plików na urządzeniu, liczniki dla tego urządzenia to w rzeczywistości agregowane w obrębie wszystkich z nich.
 
-Licznik | Znaczenie
+counter | Znaczenie
 ------- | -------
 ReadsPerSecond | Operacje odczytu na sekundę
 WritesPerSecond | Zapisu na sekundę

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a5e3bd655e0780861f4bf70c247df72e6acedd09
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 577147ad91c6a35a45fd40ca9e6424863ea196d6
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642361"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340785"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -24,7 +24,6 @@ Rozszerzenie zadań trwałe ujawnia zestaw interfejsów API protokołu HTTP, kt�
 * Pobierz stan wystąpienia aranżacji.
 * Wysyła zdarzenie do wystąpienia aranżacji oczekiwania.
 * Zakończ uruchomione wystąpienie aranżacji.
-
 
 Każdy z tych interfejsów API protokołu HTTP jest operacja elementu webhook stosowana, który jest obsługiwany bezpośrednio przez rozszerzenie trwałe zadań. Nie są specyficzne dla dowolnej funkcji w aplikacji funkcji.
 
@@ -35,9 +34,15 @@ Każdy z tych interfejsów API protokołu HTTP jest operacja elementu webhook st
 
 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) klasy ujawnia [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) interfejsu API, który może służyć do generowania ładunków odpowiedzi HTTP zawierająca łącza do wszystkich obsługiwanych operacji. Oto przykład funkcji wyzwalacza HTTP, który pokazuje, jak używać tego interfejsu API:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 
-Ta funkcja przykład generuje następujące dane JSON w odpowiedzi. Typ danych wszystkich pól jest `string`.
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
+
+Te funkcje przykład generuje następujące dane JSON w odpowiedzi. Typ danych wszystkich pól jest `string`.
 
 | Pole             |Opis                           |
 |-------------------|--------------------------------------|
@@ -63,8 +68,9 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
     "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
+
 > [!NOTE]
-> Format adresu URL elementu webhook mogą się różnić w zależności od posiadanej wersji programu host usługi Azure Functions. Powyższy przykład dotyczy hostów Azure Functions w wersji 2.0.
+> Format adresu URL elementu webhook mogą się różnić w zależności od posiadanej wersji programu host usługi Azure Functions. Powyższy przykład dotyczy hosta 2.x usługi Azure Functions.
 
 ## <a name="async-operation-tracking"></a>Operacji asynchronicznej śledzenia
 
@@ -91,8 +97,8 @@ Wszystkie interfejsy API protokołu HTTP implementowany przez rozszerzenie wype�
 | połączenie | Ciąg zapytania    | **Nazwa** parametrów połączenia dla konta magazynu. Jeśli nie zostanie określony, przyjmowana jest domyślne parametry połączenia dla aplikacji funkcji. |
 | systemKey  | Ciąg zapytania    | Klucz autoryzacji wymaganych do wywołania interfejsu API. |
 | showInput  | Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `false`, wykonywania dane wejściowe nie zostaną uwzględnione w ładunku odpowiedzi.|
-| showHistory| Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, historię wykonywania aranżacji zostaną uwzględnione w ładunku odpowiedzi.| 
-| showHistoryOutput| Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, wyjściem działania zostaną uwzględnione w historii wykonywania aranżacji.| 
+| showHistory| Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, historię wykonywania aranżacji zostaną uwzględnione w ładunku odpowiedzi.|
+| showHistoryOutput| Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, wyjściem działania zostaną uwzględnione w historii wykonywania aranżacji.|
 | createdTimeFrom  | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtruje listę zwracane wystąpienia, które zostały utworzone na lub po podanej sygnaturze czasowej ISO8601.|
 | createdTimeTo    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtruje listę zwracane wystąpienia, które zostały utworzone w lub przed podaną sygnaturą czasową ISO8601.|
 | runtimeStatus    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtry listę wystąpień zwrócona na podstawie ich stanu środowiska uruchomieniowego. Aby wyświetlić listę wartości stanu środowiska uruchomieniowego możliwe, zobacz [zapytań wystąpień](durable-functions-instance-management.md) tematu. |
@@ -124,11 +130,11 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
-* **HTTP 200 (OK)**: określone wystąpienie jest w stanie ukończone.
-* **HTTP 202 (zaakceptowano)**: określone wystąpienie jest w toku.
-* **HTTP 400 (nieprawidłowe żądanie)**: określone wystąpienie nie powiodło się lub został zakończony.
-* **HTTP 404 (nie znaleziono)**: określone wystąpienie nie istnieje lub nie rozpoczęło działanie.
-* **HTTP 500 (wewnętrzny błąd serwera)**: określone wystąpienie nie powiodło się z powodu nieobsługiwanego wyjątku.
+* **HTTP 200 (OK)**: Określone wystąpienie jest w stanie ukończone.
+* **HTTP 202 (zaakceptowano)**: Określone wystąpienie jest w toku.
+* **HTTP 400 (złe żądanie)**: Podane wystąpienie nie powiodło się lub zostało przerwane.
+* **HTTP 404 (nie znaleziono)**: Podane wystąpienie nie istnieje lub nie rozpoczęło działanie.
+* **HTTP 500 (wewnętrzny błąd serwera)**: Podane wystąpienie nie powiodło się z powodu nieobsługiwanego wyjątku.
 
 Ładunek odpowiedzi dla **HTTP 200** i **HTTP 202** przypadkach jest obiektem JSON przy użyciu następujących pól:
 
@@ -140,7 +146,7 @@ Mogą być zwracane kilka wartości Kod stanu to możliwe.
 | output          | JSON      | Dane wyjściowe JSON wystąpienia. To pole jest `null` Jeśli wystąpienie nie jest w stanie ukończone. |
 | wartością createdTime     | ciąg    | Podczas tworzenia tego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
 | lastUpdatedTime | ciąg    | Czas, jaką utrwalone ostatniego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
-| historyEvents   | JSON      | Tablica JSON, zawierającą historię wykonywania aranżacji. To pole jest `null` chyba że `showHistory` parametr ciągu zapytania jest równa `true`.  | 
+| historyEvents   | JSON      | Tablica JSON, zawierającą historię wykonywania aranżacji. To pole jest `null` chyba że `showHistory` parametr ciągu zapytania jest równa `true`.  |
 
 Oto przykład ładunek odpowiedzi, tym aranżacji wykonywania historii i działania dane wyjściowe (sformatowane, aby zwiększyć czytelność):
 
@@ -199,10 +205,9 @@ Oto przykład ładunek odpowiedzi, tym aranżacji wykonywania historii i działa
 
 **HTTP 202** Odpowiedz zawiera też **lokalizacji** nagłówek odpowiedzi, który odwołuje się do tego samego adresu URL jako `statusQueryGetUri` pola wymienionych wcześniej.
 
-
 ### <a name="get-all-instances-status"></a>Pobierz stan dla wszystkich wystąpień
 
-Możesz także zbadać stan dla wszystkich wystąpień. Usuń `instanceId` w żądaniu "Pobierz stan wystąpienia". Parametry są takie same jak "Pobierz stan wystąpienia". 
+Możesz także zbadać stan dla wszystkich wystąpień. Usuń `instanceId` w żądaniu "Pobierz stan wystąpienia". Parametry są takie same jak "Pobierz stan wystąpienia".
 
 Jest to jedno należy pamiętać, że `connection` i `code` są opcjonalne. Jeśli uwierzytelnianie anonimowe dla funkcji, a następnie kod nie jest wymagane.
 Jeśli nie chcesz używać różnych obiektów blob parametry połączenia magazynu innego niż zdefiniowane w ustawieniach aplikacji AzureWebJobsStorage, można bezpiecznie zignorować parametr ciągu zapytania połączenia.
@@ -215,7 +220,7 @@ Funkcje wersji 1.0 format żądania jest następująca:
 GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
-Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL: 
+Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
@@ -231,7 +236,7 @@ Funkcje wersji 1.0 format żądania jest następująca:
 GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}&showInput={showInput}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
-Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL: 
+Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL:
 
 ```http
 GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}&showInput={showInput}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
@@ -291,8 +296,8 @@ Oto przykład ładunków odpowiedzi, takich jak stan aranżacji (sformatowane, a
 ```
 
 > [!NOTE]
-> Ta operacja może być bardzo kosztowna pod względem operacji We/Wy do usługi Azure Storage, jeśli jest dostępnych wiele wierszy w tabeli wystąpień. Szczegółowe informacje na temat wystąpienia tabeli znajdują się w [wydajności i skali w funkcje trwałe (usługi Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table) dokumentacji.
-> 
+> Ta operacja może być bardzo kosztowna pod względem operacji We/Wy do usługi Azure Storage, jeśli jest dostępnych wiele wierszy w tabeli wystąpień. Szczegółowe informacje na temat wystąpienia tabeli znajdują się w [wydajności i skali w funkcje trwałe (usługi Azure Functions)](durable-functions-perf-and-scale.md#instances-table) dokumentacji.
+>
 
 #### <a name="request-with-paging"></a>Żądania z stronicowania
 
@@ -304,7 +309,7 @@ Funkcje wersji 1.0 format żądania jest następująca:
 GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
 ```
 
-Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL: 
+Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL:
 
 ```http
 GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
@@ -313,7 +318,6 @@ GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={conne
 Jeśli istnieje następnej strony, token kontynuacji jest zwracany w nagłówku odpowiedzi.  Nazwa nagłówka jest `x-ms-continuation-token`.
 
 Jeśli ustawisz wartość tokenu kontynuacji w nagłówku żądania dalej, można uzyskać następnej strony.  Ten klucz w nagłówku żądania jest `x-ms-continuation-token`.
-
 
 ### <a name="raise-event"></a>Wywołaj zdarzenie
 
@@ -344,10 +348,10 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
-* **HTTP 202 (zaakceptowano)**: zostaje zgłoszone zdarzenie zostało zaakceptowane do przetwarzania.
-* **HTTP 400 (złe żądanie)**: zawartość żądania nie jest typu `application/json` lub nie jest prawidłowym plikiem JSON.
-* **HTTP 404 (nie znaleziono)**: nie można odnaleźć określonego wystąpienia.
-* **HTTP 410 (Gone)**: określone wystąpienie zostało ukończone lub nie powiodło się i nie można przetworzyć zdarzeń zostaje zgłoszone.
+* **HTTP 202 (zaakceptowano)**: Zostaje zgłoszone zdarzenie zostało zaakceptowane do przetworzenia.
+* **HTTP 400 (złe żądanie)**: Zawartość żądania nie jest typu `application/json` lub nie jest prawidłowym plikiem JSON.
+* **HTTP 404 (nie znaleziono)**: Nie można odnaleźć określonego wystąpienia.
+* **HTTP 410 (przeniesiono)**: Określone wystąpienie zostało ukończone lub nie powiodło się i nie można przetworzyć zdarzeń zostaje zgłoszone.
 
 Oto przykładowe żądanie, która wysyła ciągu JSON `"incr"` do wystąpienia oczekiwania na zdarzenie o nazwie **operacji**:
 
@@ -389,9 +393,9 @@ Parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a t
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
-* **HTTP 202 (zaakceptowano)**: otrzymała żądanie zostało zaakceptowane do przetwarzania.
-* **HTTP 404 (nie znaleziono)**: nie można odnaleźć określonego wystąpienia.
-* **HTTP 410 (Gone)**: określone wystąpienie zostało ukończone lub nie powiodło się.
+* **HTTP 202 (zaakceptowano)**: Otrzymała żądanie zostało zaakceptowane do przetworzenia.
+* **HTTP 404 (nie znaleziono)**: Nie można odnaleźć określonego wystąpienia.
+* **HTTP 410 (przeniesiono)**: Określone wystąpienie zostało ukończone lub nie powiodło się.
 
 Oto przykładowe żądanie, kończy uruchomionego wystąpienia, która określa przyczynę **buggy**:
 
@@ -405,7 +409,7 @@ Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
 Przywraca wystąpienia orchestration nie powiodło się, do stanu uruchomienia przez odtworzenie najnowszych operacje zakończone niepowodzeniem.
 
-#### <a name="request"></a>Żądanie
+### <a name="request"></a>Żądanie
 
 Funkcje wersji 1.0 format żądania jest następująca:
 
@@ -425,13 +429,13 @@ Parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a t
 |-------------|-----------------|-----------|-------------|
 | reason      | Ciąg zapytania    | ciąg    | Opcjonalny. Przyczyna przewijanie wystąpienia aranżacji. |
 
-#### <a name="response"></a>Odpowiedź
+### <a name="response"></a>Odpowiedź
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
-* **HTTP 202 (zaakceptowano)**: przewijanie żądanie zostało zaakceptowane do przetwarzania.
-* **HTTP 404 (nie znaleziono)**: nie można odnaleźć określonego wystąpienia.
-* **HTTP 410 (Gone)**: określone wystąpienie zostało ukończone lub został zakończony.
+* **HTTP 202 (zaakceptowano)**: Żądanie do tyłu zostało zaakceptowane do przetworzenia.
+* **HTTP 404 (nie znaleziono)**: Nie można odnaleźć określonego wystąpienia.
+* **HTTP 410 (przeniesiono)**: Określone wystąpienie zostało ukończone lub został zakończony.
 
 Oto przykładowe żądanie, przechodzi zakończone niepowodzeniem wystąpienie, która określa przyczynę **stałej**:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 46b00e102cbf5e981ac7036de65232e869dc9651
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9b2566458bc32f9b1d7a36790fbdd5fbb2419ec1
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272708"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384300"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -33,11 +33,11 @@ Dziennik aktywności różni się od [dzienniki diagnostyczne](monitoring-overvi
 Możesz pobrać zdarzenia z dziennika aktywności przy użyciu witryny Azure portal, interfejsu wiersza polecenia, w przypadku poleceń cmdlet programu PowerShell i interfejsu API REST usługi Azure Monitor.
 
 > [!NOTE]
-> [Nowszych alertów](monitoring-overview-alerts.md) oferują udoskonalone środowisko tworzenia i zarządzania działaniami po zalogowaniu się reguły alertów.  [Dowiedz się więcej](../azure-monitor/platform/alerts-activity-log.md).
+> [Nowszych alertów](../azure-monitor/platform/alerts-overview.md) oferują udoskonalone środowisko tworzenia i zarządzania działaniami po zalogowaniu się reguły alertów.  [Dowiedz się więcej](../azure-monitor/platform/alerts-activity-log.md).
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie w dzienniku aktywności
-Dziennik aktywności zawiera kilka kategorii danych. Aby uzyskać szczegółowe informacje o wypełniana z tych kategorii [znajduje się w artykule](monitoring-activity-log-schema.md). Należą do nich:
+Dziennik aktywności zawiera kilka kategorii danych. Aby uzyskać szczegółowe informacje o wypełniana z tych kategorii [znajduje się w artykule](../azure-monitor/platform/activity-log-schema.md). Należą do nich:
 * **Administracyjne** — ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akcji operacje wykonywane przy użyciu usługi Resource Manager. Typy zdarzeń, które powinny zostać wyświetlone tej kategorii należą "Tworzenie maszyny wirtualnej" i "Usuń sieciową grupę zabezpieczeń" każdej akcji podjętej przez użytkownika lub aplikacji przy użyciu usługi Resource Manager ma formę operacji na określonego typu zasobu. W przypadku typu operacji zapisu, usuń lub akcję, rekordy początkowego i powodzenie lub niepowodzenie tej operacji są rejestrowane w kategorii administracyjnej. Kategoria administracyjna także wszelkie zmiany do kontroli dostępu opartej na rolach w ramach subskrypcji.
 * **Kondycja usługi** — ta kategoria zawiera rekord wszelkie zdarzenia kondycji usługi, które miały miejsce w systemie Azure. Jest przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii, "SQL Azure w regionie wschodnie stany USA występuje Przestój." Zdarzenia usługi Service health są dostępne w pięciu odmian: Czynności, wspomagana odzyskiwania, zdarzenia, konserwacji, informacje lub zabezpieczeń i są wyświetlane tylko w przypadku zasobów w subskrypcji, która będzie mieć wpływ na zdarzenie.
 * **Usługa Resource Health** — ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, które wystąpiły z zasobami platformy Azure. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii jest "Zmieniono na niedostępny stan kondycji maszyny wirtualnej." Zdarzenia dotyczące kondycji zasobów może reprezentować jedną z czterech stanów kondycji: Dostępne, niedostępne, obniżonej wydajności i nieznany. Ponadto zdarzenia dotyczące kondycji zasobów można sklasyfikować jako są inicjowane platformy lub Zainicjowanie przez użytkownika.
@@ -48,7 +48,7 @@ Dziennik aktywności zawiera kilka kategorii danych. Aby uzyskać szczegółowe 
 * **Zasady** — ta kategoria zawiera wszystkie zdarzenia; jest zarezerwowany do użytku w przyszłości. 
 
 ## <a name="event-schema-per-category"></a>Schemat zdarzeń według kategorii
-[Zobacz ten artykuł, aby zrozumieć schemat zdarzeń dziennika aktywności dla każdej kategorii.](monitoring-activity-log-schema.md)
+[Zobacz ten artykuł, aby zrozumieć schemat zdarzeń dziennika aktywności dla każdej kategorii.](../azure-monitor/platform/activity-log-schema.md)
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>Co można zrobić z dziennika aktywności
 Oto kilka rzeczy, które można zrobić z dziennika aktywności:
@@ -60,7 +60,7 @@ Oto kilka rzeczy, które można zrobić z dziennika aktywności:
 * [Tworzenie alertów dotyczących zdarzenia dziennika aktywności.](../azure-monitor/platform/activity-log-alerts.md)
 * [Stream jego **Centrum zdarzeń** ](monitoring-stream-activity-logs-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
 * Analizowanie ich w usłudze Power BI przy użyciu [ **pakietu zawartości usługi Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
-* [Zapisać go w celu **konta magazynu** inspekcji archiwizacji lub ręcznie](monitoring-archive-activity-log.md). Można określić przy użyciu czasu (w dniach) przechowywania **profilu dziennika**.
+* [Zapisać go w celu **konta magazynu** inspekcji archiwizacji lub ręcznie](../azure-monitor/platform/archive-activity-log.md). Można określić przy użyciu czasu (w dniach) przechowywania **profilu dziennika**.
 * Wykonuje zapytania za pomocą polecenia Cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST.
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Zapytanie dziennika aktywności w witrynie Azure portal

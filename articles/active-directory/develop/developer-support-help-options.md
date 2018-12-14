@@ -17,14 +17,14 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422443"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337142"
 ---
-# <a name="support-and-help-options-for-developers"></a>Opcje pomocy technicznej i pomocy dla deweloperów 
+# <a name="support-and-help-options-for-developers"></a>Opcje pomocy technicznej i pomocy dla deweloperów
 
 Niezależnie od tego, czy właśnie zaczynają Integracja z usługą Azure Active Directory, Microsoft tożsamości lub interfejsu API programu Microsoft Graph, implementując nowej funkcji do aplikacji, to, ile razy należy uzyskać pomoc od społeczności, lub poznać Opcje pomocy technicznej, które mają dla deweloperów. Ten artykuł zawiera informacje o tych opcjach, poniżej podsumowania:
 
@@ -38,7 +38,7 @@ Niezależnie od tego, czy właśnie zaczynają Integracja z usługą Azure Activ
 
 ## <a name="search"></a>Wyszukiwanie
 
-Jeśli masz pytania dotyczące programowania, można znaleźć odpowiedzi, należy na naszej dokumentacji naszych [przykłady dla usługi github](https://github.com/azure-samples), lub odpowiedzi na [Stack Overflow](https://www.stackoverflow.com) pytania.
+Jeśli masz pytania dotyczące programowania, można znaleźć odpowiedzi, należy na naszej dokumentacji naszych [przykłady dla usługi GitHub](https://github.com/azure-samples), lub odpowiedzi na [Stack Overflow](https://www.stackoverflow.com) pytania.
 
 ### <a name="scoped-search"></a>Wyszukiwania zakresowego
 Aby szybciej uzyskać wyniki, należy ograniczyć wyszukiwanie do Stack Overflow, dokumentację i nasze przykłady kodu za pomocą następujących na Twoje [ulubiona Wyszukiwarka](https://bing.com):
@@ -76,7 +76,7 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 |Wszelkich innych aspektów do tematów, uwierzytelniania i autoryzacji |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
-> Następujące wpisy w witrynie Stack Overflow zawiera wskazówki dotyczące sposobu wprowadzania pytania i porady na temat dodawania kodu źródłowego - poniższych wskazówek może pomóc zwiększyć prawdopodobieństwo, że członków społeczności, aby ocenić i szybko reagować na Twoje pytanie:  
+> Następujące wpisy w witrynie Stack Overflow zawiera wskazówki dotyczące sposobu wprowadzania pytania i porady na temat dodawania kodu źródłowego - poniższych wskazówek może pomóc zwiększyć prawdopodobieństwo, że członków społeczności, aby ocenić i szybko reagować na Twoje pytanie:
 > - [Jak zadać pytanie dobre](https://stackoverflow.com/help/how-to-ask)
 > - [Jak utworzyć minimalny, Zakończ i możliwe do zweryfikowania przykładowego](https://stackoverflow.com/help/mcve)
 

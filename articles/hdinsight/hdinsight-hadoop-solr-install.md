@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6a3f9928fa685c36a0495ba5d423c3be7bff2bea
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3f382aab5a00030b922fb890e82110454e7f3839
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009171"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384500"
 ---
-# <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Instalowanie i korzystanie z platformy Solr w klastrach HDInsight z systemem Windows
+# <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie Apache Solr w klastrach HDInsight z systemem Windows
 
-Dowiedz się Dostosowywanie klastra HDInsight z systemem Windows z platformy Solr za pomocą akcji skryptu oraz korzystanie z platformy Solr wyszukiwanie danych.
+Dowiedz się jak dostosować klastra HDInsight z systemem Windows przy użyciu Apache Solr za pomocą akcji skryptu oraz korzystanie z platformy Solr wyszukiwanie danych.
 
-> [!IMPORTANT]
-> Kroki opisane w tym dokumencie działają tylko z klastrami HDInsight z systemem Windows. HDInsight jest dostępna tylko na Windows dla wersji starszej niż HDInsight 3.4. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Aby uzyskać informacje dotyczące użycia platformy Solr w klastrze opartych na systemie Linux, zobacz [instalacji i użyj Solr w klastrach usługi Hadoop w usłudze HDinsight (Linux)](hdinsight-hadoop-solr-install-linux.md).
+> [!IMPORTANT]  
+> Kroki opisane w tym dokumencie działają tylko z klastrami HDInsight z systemem Windows. HDInsight jest dostępna tylko na Windows dla wersji starszej niż HDInsight 3.4. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Aby uzyskać informacje dotyczące użycia platformy Solr w klastrze opartych na systemie Linux, zobacz [instalacji i używania Apache Solr w klastrach usługi Hadoop w usłudze HDinsight (Linux)](hdinsight-hadoop-solr-install-linux.md).
 
 
 Możesz zainstalować platformę Solr w dowolny typ klastra (Hadoop, Storm, HBase, Spark) w usłudze Azure HDInsight, za pomocą *akcji skryptu*. Przykładowy skrypt, aby zainstalować platformę Solr w klastrze usługi HDInsight jest dostępna tylko do odczytu z usługi Azure storage blob pod [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
@@ -32,7 +32,7 @@ Przykładowy skrypt używaną w tym temacie tworzy klaster z systemem Windows z 
 
 **Powiązane artykuły**
 
-* [Instalowanie i korzystanie z platformy Solr w klastrach usługi Hadoop w usłudze HDinsight (Linux)](hdinsight-hadoop-solr-install-linux.md)
+* [Instalowanie i używanie Apache Solr w klastrach usługi Hadoop w usłudze HDinsight (Linux)](hdinsight-hadoop-solr-install-linux.md)
 * [Tworzenie klastrów Hadoop w HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów HDInsight.
 * [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu][hdinsight-cluster-customize]: ogólne informacje na temat dostosowywania klastrów HDInsight za pomocą akcji skryptu.
 * [Tworzenie akcji skryptu skryptów dla HDInsight](hdinsight-hadoop-script-actions.md).
@@ -41,7 +41,7 @@ Przykładowy skrypt używaną w tym temacie tworzy klaster z systemem Windows z 
 <a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> to platforma wyszukiwania dla przedsiębiorstw, która umożliwia zaawansowane wyszukiwanie pełnotekstowe danych. Gdy Hadoop umożliwia przechowywanie i zarządzanie nimi ogromnych ilości danych, Apache Solr udostępnia możliwości wyszukiwania, aby szybko odzyskać dane.
 
 ## <a name="install-solr-using-portal"></a>Zainstalować platformę Solr przy użyciu portalu
-1. Rozpocznij tworzenie klastra przy użyciu **tworzenie niestandardowe** opcji, zgodnie z opisem w [Tworzenie klastrów usługi Hadoop w HDInsight](hdinsight-provision-clusters.md).
+1. Rozpocznij tworzenie klastra przy użyciu **tworzenie niestandardowe** opcji, zgodnie z opisem w [klastrów utworzyć Apache Hadoop w HDInsight](hdinsight-provision-clusters.md).
 2. Na **akcji skryptu** strony kreatora, kliknij przycisk **Dodaj akcję skryptu** dostarczanie szczegółowych informacji o akcji skryptu, jak pokazano poniżej:
 
     ![Użyć akcji skryptu, aby dostosować klaster](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "użyj akcji skryptu, aby dostosować klastra")
@@ -137,7 +137,7 @@ Należy rozpocząć od indeksowanie Solr z niektórych plików danych. Korzystan
                  }
                ]
              }
-4. **Zalecane: Utworzyć kopii indeksowane dane z platformy Solr Azure Blob storage skojarzonego z klastrem HDInsight**. Dobrym rozwiązaniem należy wykonać kopię zapasową indeksowane dane z platformy Solr węzłów klastra do usługi Azure Blob storage. Wykonaj poniższe kroki, aby to zrobić:
+4. **Zalecane: Kopie zapasowe danych indeksowanych z platformy Solr w usłudze Azure Blob storage skojarzonego z klastrem HDInsight**. Dobrym rozwiązaniem należy wykonać kopię zapasową indeksowane dane z platformy Solr węzłów klastra do usługi Azure Blob storage. Wykonaj poniższe kroki, aby to zrobić:
 
    1. W sesji protokołu RDP Otwórz program Internet Explorer i wskaż następujący adres URL:
 
@@ -167,18 +167,18 @@ Należy rozpocząć od indeksowanie Solr z niektórych plików danych. Korzystan
    To polecenie kopiuje migawkę do /example/data/znajdującego się w kontenerze w ramach domyślnego konta magazynu skojarzonego z klastrem.
 
 ## <a name="install-solr-using-aure-powershell"></a>Zainstalować platformę Solr przy użyciu programu Azure PowerShell
-Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  W przykładzie pokazano sposób instalowania Spark za pomocą programu Azure PowerShell. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  W przykładzie pokazano, jak zainstalować platformę Apache Spark przy użyciu programu Azure PowerShell. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 ## <a name="install-solr-using-net-sdk"></a>Zainstalować platformę Solr przy użyciu zestawu .NET SDK
-Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). W przykładzie pokazano sposób instalowania Spark za pomocą zestawu .NET SDK. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). W przykładzie pokazano, jak zainstalować platformę Apache Spark przy użyciu zestawu .NET SDK. Należy dostosować skrypt, który chcesz użyć [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 ## <a name="see-also"></a>Zobacz także
-* [Instalowanie i korzystanie z platformy Solr w klastrach usługi Hadoop w usłudze HDinsight (Linux)](hdinsight-hadoop-solr-install-linux.md)
-* [Tworzenie klastrów Hadoop w HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów HDInsight.
+* [Instalowanie i używanie Apache Solr w klastrach usługi Hadoop w usłudze HDinsight (Linux)](hdinsight-hadoop-solr-install-linux.md)
+* [Tworzenie klastrów usługi Apache Hadoop w HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów HDInsight.
 * [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu][hdinsight-cluster-customize]: ogólne informacje na temat dostosowywania klastrów HDInsight za pomocą akcji skryptu.
 * [Tworzenie akcji skryptu skryptów dla HDInsight](hdinsight-hadoop-script-actions.md).
-* [Instalowanie i używanie języka Spark w klastrach HDInsight][hdinsight-install-spark]: Akcja skryptu próbki o instalowaniu platformy Spark.
-* [Zainstalować system Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md): Akcja skryptu próbki o instalowaniu systemu Giraph.
+* [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]: Przykład akcji skryptu o instalowaniu platformy Spark.
+* [Instalowanie systemu Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md): Przykład akcji skryptu o instalowaniu systemu Giraph.
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md

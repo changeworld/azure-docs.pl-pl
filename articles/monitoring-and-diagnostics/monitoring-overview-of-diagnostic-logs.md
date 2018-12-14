@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 5e18a4690eacaaeaa4422379fc8a4e3d2a02e717
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 89e9b7190a3c419c256513e477f85313e4f9f3bd
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134169"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384891"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -31,14 +31,14 @@ Dzienniki te różnią się od [dziennika aktywności](monitoring-overview-activ
 
 Dzienniki te różnią się także z poziomu systemu operacyjnego gościa, dzienniki diagnostyczne. System operacyjny gościa, dzienniki diagnostyczne są te zebranych przez agenta uruchomionego na maszynie wirtualnej lub innych obsługiwany typ zasobu. Dzienniki diagnostyczne na poziomie zasobów wymagają nie agenta i przechwytywania danych specyficznych dla zasobów z platformą Azure, natomiast dzienniki diagnostyczne na poziomie systemu operacyjnego gościa przechwytywanie danych z systemu operacyjnego i aplikacji uruchomionych na maszynie wirtualnej.
 
-Nie wszystkie usługi pomocy technicznej opisane w tym miejscu dzienniki diagnostyczne. [Ten artykuł zawiera listę sekcji usług, które obsługują dzienniki diagnostyczne](./monitoring-diagnostic-logs-schema.md).
+Nie wszystkie usługi pomocy technicznej opisane w tym miejscu dzienniki diagnostyczne. [Ten artykuł zawiera listę sekcji usług, które obsługują dzienniki diagnostyczne](./../azure-monitor/platform/tutorial-dashboards.md).
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>Co można zrobić za pomocą dzienników diagnostycznych
 Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych:
 
 ![Logiczne umieszczania dzienników diagnostycznych](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
-* Zapisywanie ich [ **konta magazynu** ](monitoring-archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić przy użyciu czasu (w dniach) przechowywania **ustawień diagnostycznych zasobu**.
+* Zapisywanie ich [ **konta magazynu** ](../azure-monitor/platform/archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić przy użyciu czasu (w dniach) przechowywania **ustawień diagnostycznych zasobu**.
 * [Stream im **usługi Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
 * Analizuj je za pomocą [usługi Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md), gdzie dane są zapisywane bezpośrednio do usługi Log Analytics bez konieczności najpierw zapisać dane do magazynu.  
 
@@ -68,13 +68,13 @@ Te ustawienia są łatwo konfigurować na podstawie ustawień diagnostycznych w 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
-> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
+> *Na przykład*: Metrykę "Komunikaty przychodzące" w Centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
 >
 
 ## <a name="how-to-enable-collection-of-diagnostic-logs"></a>Jak włączyć zbieranie dzienników diagnostycznych
 
-Można włączyć zbierania dzienników diagnostycznych [jako część tworzenia zasobu w szablonie usługi Resource Manager](./monitoring-enable-diagnostic-logs-using-template.md) lub po utworzeniu zasobu ze strony tego zasobu w portalu. Można również włączyć kolekcję w dowolnym momencie za pomocą poleceń programu Azure PowerShell lub interfejsu wiersza polecenia lub przy użyciu interfejsu API REST usługi Azure Monitor.
+Można włączyć zbierania dzienników diagnostycznych [jako część tworzenia zasobu w szablonie usługi Resource Manager](./../azure-monitor/platform/diagnostic-logs-stream-template.md) lub po utworzeniu zasobu ze strony tego zasobu w portalu. Można również włączyć kolekcję w dowolnym momencie za pomocą poleceń programu Azure PowerShell lub interfejsu wiersza polecenia lub przy użyciu interfejsu API REST usługi Azure Monitor.
 
 > [!TIP]
 > Instrukcje te mogą nie mieć zastosowania bezpośrednio do każdego zasobu. Zobacz linki schematu u dołu tej strony, aby zrozumieć specjalne kroki, które mogą mieć zastosowanie do niektórych typów zasobów.
@@ -229,7 +229,7 @@ Dodawanie ustawienia diagnostyczne powoduje wyświetlenie widoku ustawień diagn
 
 ## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>Obsługiwane usługi, kategorie i schematy dla dzienników diagnostycznych
 
-[Ten artykuł](monitoring-diagnostic-logs-schema.md) pełną listę obsługiwanych usług i Rejestruj kategorie i schematy używane przez te usługi.
+[Ten artykuł](../azure-monitor/platform/tutorial-dashboards.md) pełną listę obsługiwanych usług i Rejestruj kategorie i schematy używane przez te usługi.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

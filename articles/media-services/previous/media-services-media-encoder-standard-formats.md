@@ -1,27 +1,31 @@
 ---
-title: Usługi Media Encoder Standard formaty i kodery-dekodery
+title: Usługi Media Encoder Standard formaty i kodery-dekodery - Azure
 description: Ten temat zawiera omówienie usługi Media Encoder Standard formaty i kodeki usługi.
 services: media-services
 documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
-ms.assetid: f334b1ce-2f56-4968-a019-f0a2b0016d9f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/12/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 9c6e26b082fb52f7d23bb1a827af30483f7fbd4f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe1d681fa5f9ab49fec9112398ed03c87c975176
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255714"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384738"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Formaty i kodeki narzędzia Media Encoder Standard
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Wersja 2](media-services-media-encoder-standard-formats.md)
+> * [Wersja 3](../latest/media-encoder-standard-formats.md)
+
 Ten dokument zawiera listę najbardziej typowych importu i eksportu formatów plików, które za pomocą usługi Media Encoder Standard.
 
 ## <a name="input-containerfile-formats"></a>Dane wejściowe formaty kontenerów/plików
@@ -53,8 +57,6 @@ lub
 
 * Pliki MXF, GXF i QuickTime, w których dane audio są przenoszone jako osobne ścieżki PCM, ale mapowanie kanałów (na stereo lub 5.1) można określić na podstawie metadanych pliku
 
-Obsługa mapowanie kanałów jawne/dostarczone przez użytkownika zapewnia się w najbliższej przyszłości.
-
 ## <a name="input-video-codecs"></a>Dane wejściowe koderów-dekoderów wideo
 | Dane wejściowe koderów-dekoderów wideo | Obsługiwane |
 | --- | --- | --- | --- |
@@ -78,7 +80,7 @@ Obsługa mapowanie kanałów jawne/dostarczone przez użytkownika zapewnia się 
 | XQ 4444 ProRes firmy Apple |Yes |
 | HEVC/H.265| Główny profil|
 
-## <a name="input-audio-codecs"></a>Dane wejściowe Audio kodery-dekodery
+## <a name="input-audio-codecs"></a>Dane wejściowe audio kodery-dekodery
 | Dane wejściowe Audio kodery-dekodery | Obsługiwane |
 | --- | --- | --- | --- |
 | AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Yes |

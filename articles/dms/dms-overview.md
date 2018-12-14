@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: d255894b7b9673f3a7d27414b4fb0c114d821747
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/12/2018
+ms.openlocfilehash: b3509917f0473795ec204c6672a630b2857ff37c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962151"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343925"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Co to jest Azure Database Migration Service?
 Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemową migrację z wielu źródłowych baz danych na danych na platformie Azure przy minimalnych przestojach (migracja online).
@@ -24,7 +24,7 @@ Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana 
 Azure Database Migration Service integruje niektóre funkcje oferowane przez naszych istniejących narzędzi i usług. Jego zapewnia klientom kompleksowe rozwiązanie o wysokiej dostępności. Używa usługi [Data Migration Assistant](https://aka.ms/dma) można wygenerować raporty z oceny zawierające przedstawić zalecenia w zakresie przeprowadzenie Cię przez proces zmiany wymagane przed migracją. To Ty możesz aby skorygować wszystkie wymagane. Gdy wszystko będzie gotowe do rozpoczęcia procesu migracji, usługa Azure Database Migration Service wykona wszystkie wymagane kroki. Można wyzwalać i zapomnij migrację projektów z poczucie spokoju, wiedząc, że proces korzysta z najlepszych rozwiązań, zgodnie z ustaleniami firmy Microsoft.
 
 > [!NOTE]
-> Przy użyciu usługi Azure Database Migration Service, aby dokonać migracji online wymaga tworzenia wystąpienia w oparciu o warstwy cenowej Premium (wersja zapoznawcza).
+> Przeprowadzenie migracji online przy użyciu usługi Azure Database Migration Service wymaga utworzenia wystąpienia opartego na warstwie cenowej Premium (wersja zapoznawcza).
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 Aby uzyskać aktualne informacje o dostępności regionalnej usługi Azure Database Migration Service, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration).
@@ -33,7 +33,9 @@ Aby uzyskać aktualne informacje o dostępności regionalnej usługi Azure Datab
 Aby uzyskać aktualne informacje o cenach usługi Azure Database Migration Service, zobacz [cennika usługi Azure Database Migration Service](https://azure.microsoft.com/pricing/details/database-migration/).
 
 ## <a name="next-steps"></a>Kolejne kroki
+- [Stan scenariuszy migracji obsługiwanych przez usługi Azure Database Migration Service](resource-scenario-status.md).
 - [Tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure portal](quickstart-create-data-migration-service-portal.md).
 - [Migrowanie programu SQL Server do usługi Azure SQL Database](tutorial-sql-server-to-azure-sql.md).
 - [Przegląd wymagań wstępnych dotyczących używania usługi Azure Database Migration Service](pre-reqs.md).
 - [Często zadawane pytania dotyczące korzystania z usługi Azure Database Migration Service](faq.md).
+- [Usługi i narzędzia dostępne dla scenariuszy migracji danych](dms-tools-matrix.md).

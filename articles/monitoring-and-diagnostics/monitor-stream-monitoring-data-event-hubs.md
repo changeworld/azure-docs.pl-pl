@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 3bf2135e7d4cb0e34d6e38e8673d5d69f262979c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a65611c1e84bdd01bac525012553e6cd7c7fc4e4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322401"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386863"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -58,7 +58,7 @@ Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni naz
 
 ## <a name="azure-subscription-monitoring-data"></a>Dane monitorowania subskrypcji platformy Azure
 
-Dane monitorowania subskrypcji platformy Azure jest dostępna w [dziennika aktywności platformy Azure](./monitoring-overview-activity-logs.md). Zawiera tworzenia, aktualizowanie i usuwanie operacji z usługi Resource Manager, zmiany w [usługę Azure service health](../service-health/service-health-overview.md) , może mieć wpływ na zasoby w ramach subskrypcji, [kondycja zasobu](../service-health/resource-health-overview.md) stanu przejścia i kilku innych typów zdarzeń na poziomie subskrypcji. [Ten artykuł szczegółowo opisuje wszystkie kategorie zdarzeń, które pojawiają się w dzienniku aktywności platformy Azure](./monitoring-activity-log-schema.md).
+Dane monitorowania subskrypcji platformy Azure jest dostępna w [dziennika aktywności platformy Azure](./monitoring-overview-activity-logs.md). Zawiera tworzenia, aktualizowanie i usuwanie operacji z usługi Resource Manager, zmiany w [usługę Azure service health](../service-health/service-health-overview.md) , może mieć wpływ na zasoby w ramach subskrypcji, [kondycja zasobu](../service-health/resource-health-overview.md) stanu przejścia i kilku innych typów zdarzeń na poziomie subskrypcji. [Ten artykuł szczegółowo opisuje wszystkie kategorie zdarzeń, które pojawiają się w dzienniku aktywności platformy Azure](./../azure-monitor/platform/activity-log-schema.md).
 
 ### <a name="activity-log-data"></a>Dane dzienników aktywności
 
@@ -117,7 +117,7 @@ Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monito
 * **Serwer SYSLOG** — Jeśli chcesz strumień danych usługi Azure Monitor bezpośrednio do serwera syslog, możesz sprawdzić [tego repozytorium GitHub](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>Następne kroki
-* [Archiwizowanie dziennika aktywności na koncie magazynu](monitoring-archive-activity-log.md)
+* [Archiwizowanie dziennika aktywności na koncie magazynu](../azure-monitor/platform/archive-activity-log.md)
 * [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md)
 * [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](../azure-monitor/platform/alerts-log-webhook.md)
 

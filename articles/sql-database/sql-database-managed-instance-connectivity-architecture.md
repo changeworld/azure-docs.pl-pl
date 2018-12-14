@@ -12,16 +12,22 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: bf8b3ab62697857a636b7550376cfa0b6d4ebecd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 964f91f412645e141ca003d511480f6f6eb438a3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269536"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343308"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Usługa Azure SQL Database Managed architektura łączności wystąpienia
 
 Ten artykuł zawiera omówienie komunikacji wystąpienia zarządzanego Azure SQL Database i architektura łączności także wyjaśnia, jak różnych składników funkcji do kierowania ruchu do wystąpienia zarządzanego.  
+
+Azure SQL Database Managed Instance umieszcza się wewnątrz sieci wirtualnej platformy Azure i podsieć dedykowanego wystąpienia zarządzane przez usługę. To wdrożenie umożliwia następujące scenariusze: 
+- Zabezpiecz prywatny adres IP.
+- Połączenie do wystąpienia zarządzanego, bezpośrednio z siecią lokalną.
+- Nawiązywanie połączenia z wystąpienia zarządzanego połączonego serwera lub innego lokalnego magazynu danych.
+- Wystąpienie zarządzane nawiązywania połączenia z zasobami platformy Azure.
 
 ## <a name="communication-overview"></a>Omówienie komunikacji
 
@@ -66,12 +72,53 @@ Klienci łączą się z wystąpieniem zarządzanym przy użyciu nazwy hosta, kt�
 
 Ten prywatny adres IP należy do zarządzanego wystąpienia wewnętrznego obciążenia równoważenia (ILB) która kieruje ruch do bramy zarządzane wystąpienia (GW). Zgodnie z wewnątrz tego samego klastra, potencjalnie może uruchomić wiele wystąpień zarządzanych, GW używa nazwy hosta wystąpienia zarządzanego przekierowywanie ruchu na prawidłowe usługi aparatu programu SQL.
 
-Połączenie usług zarządzania i wdrażania do wystąpienia zarządzanego przy użyciu [punkt końcowy zarządzania](sql-database-managed-instance-management-endpoint.md) mapuje zewnętrzny moduł równoważenia obciążenia. Ruch jest kierowany do węzłów, tylko wtedy, gdy odbierane na zestaw wstępnie zdefiniowanych portów, które są używane wyłącznie przez składniki zarządzania wystąpienia zarządzanego. Wbudowane zapory w węzłach jest skonfigurowana do zezwolenia na ruch tylko z określonych zakresów adresów IP firmy Microsoft. Cała komunikacja między składniki zarządzania i płaszczyzna zarządzania jest wzajemnie uwierzytelnienia certyfikatu.
+Połączenie usług zarządzania i wdrażania do wystąpienia zarządzanego przy użyciu [punkt końcowy zarządzania](#management-endpoint) mapuje zewnętrzny moduł równoważenia obciążenia. Ruch jest kierowany do węzłów, tylko wtedy, gdy odbierane na zestaw wstępnie zdefiniowanych portów, które są używane wyłącznie przez składniki zarządzania wystąpienia zarządzanego. Wbudowane zapory w węzłach jest skonfigurowana do zezwolenia na ruch tylko z określonych zakresów adresów IP firmy Microsoft. Cała komunikacja między składniki zarządzania i płaszczyzna zarządzania jest wzajemnie uwierzytelnienia certyfikatu.
+
+## <a name="management-endpoint"></a>Punkt końcowy zarządzania
+
+Klaster wirtualny wystąpienia zarządzanego Azure SQL Database zawiera punkt końcowy zarządzania, używane przez firmę Microsoft do zarządzania wystąpienia zarządzanego. Punkt końcowy zarządzania jest chroniony za pomocą wbudowanej zapory sieciowej poziomu i wzajemne certyfikat weryfikacji na poziomie aplikacji. Możesz [znaleźć adres ip punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
+
+Gdy połączenia były inicjowane z wewnątrz wystąpienia zarządzanego (kopia zapasowa, dziennik inspekcji) wygląda na to, że ruch pochodzący z punktu końcowego zarządzania publicznego adresu IP. Można ograniczyć dostęp usług publicznych z wystąpieniem zarządzanym przez ustawienie reguły zapory zezwalające na tylko za pomocą adresu IP wystąpienia zarządzanego. Znajdź więcej einformation o metodzie, która może być [Sprawdź wbudowanej zapory wystąpienia zarządzanego](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+
+> [!NOTE]
+> To nie ma zastosowania do ustawiania reguły zapory dla usług platformy Azure, które znajdują się w tym samym regionie, co wystąpienie zarządzane usługi platformy Azure ma optymalizacji dla ruchu, który przechodzi między usługami, które są zlokalizowana.
+
+## <a name="network-requirements"></a>Wymagania dotyczące sieci
+
+Wystąpienie zarządzane usługi można wdrażać w dedykowanej podsieci (podsieci wystąpienia zarządzanego) wewnątrz sieci wirtualnej, która spełnia następujące wymagania:
+- **W wersji dedykowanej podsieci**: Podsieci wystąpienia zarządzanego nie może zawierać wszystkie inne usługi w chmurze skojarzone z nim, a nie może być podsieć bramy. Nie można utworzyć wystąpienie zarządzane w podsieci, która zawiera zasoby innych niż wystąpienia zarządzanego, a nie można później dodać innych zasobów w podsieci.
+- **Sieciowa grupa zabezpieczeń (NSG) zgodnych**: Sieciowa grupa zabezpieczeń skojarzona z podsiecią wystąpienia zarządzanego musi zawierać reguły pokazano w poniższych tabelach (reguł zabezpieczeń ruchu przychodzącego obowiązkowe i reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe) przed jakiekolwiek inne reguły. Sieciowa grupa zabezpieczeń można użyć w pełni kontrolować dostęp do endpoint danych wystąpienia zarządzanego, filtrując ruch na porcie 1433. 
+- **Tabeli zgodnych tras zdefiniowanych przez użytkownika (UDR)**: Podsieci wystąpienia zarządzanego musi mieć tabelę tras użytkownika za pomocą **internetowej następnego przeskoku 0.0.0.0/0** jako obowiązkowe trasy zdefiniowanej przez użytkownika do niej przypisany. Ponadto możesz dodać trasy zdefiniowanej przez użytkownika tego kieruje ruch z zakresów IP prywatnych w środowisku lokalnym jako miejsce docelowe za pośrednictwem bramy sieci wirtualnej lub sieci wirtualne urządzenie sieciowe. 
+- **Opcjonalne niestandardowe DNS**: Jeśli niestandardowe DNS jest określona w sieci wirtualnej, należy dodać adres IP platformy Azure cyklicznego programu rozpoznawania nazw (na przykład 168.63.129.16) do listy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowych serwerów DNS](sql-database-managed-instance-custom-dns.md). Niestandardowego serwera DNS musi być w stanie rozpoznać nazwy hostów w następujących domen i poddomen ich: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, i *microsoftonline-p.com*. 
+- **Brak punktów końcowych usługi**: Podsieci wystąpienia zarządzanego nie może mieć powiązany punktu końcowego usługi. Upewnij się, że opcji punktów końcowych usługi jest wyłączona podczas tworzenia sieci wirtualnej.
+- **Wystarczającą liczbą adresów IP**: Podsieci wystąpienia zarządzanego jest posiadanie absolutnego minimum 16 adresów IP (zalecane są co najmniej 32 adresów IP). Aby uzyskać więcej informacji, zobacz [określi rozmiar podsieci wystąpienia zarządzanego](sql-database-managed-instance-determine-size-vnet-subnet.md). Można wdrożyć wystąpienia zarządzane przez usługę w [istniejąca sieć](sql-database-managed-instance-configure-vnet-subnet.md) po skonfigurowaniu go do zaspokojenia [wystąpienia zarządzanego, wymagania sieciowe](#network-requirements), lub Utwórz [nowej sieci i podsieci](sql-database-managed-instance-create-vnet-subnet.md).
+
+> [!IMPORTANT]
+> Nie można wdrożyć nowe wystąpienie zarządzane, jeśli podsieci docelowej nie jest zgodny ze wszystkimi te wymagania. Podczas tworzenia wystąpienia zarządzanego *sieciowe przeznaczenie zasady* została zastosowana w tej podsieci, aby uniemożliwić niezgodnych zmian do konfiguracji sieci. Po usunięciu ostatniego wystąpienia z podsieci, *sieciowe przeznaczenie zasady* zostanie także usunięta
+
+### <a name="mandatory-inbound-security-rules"></a>Reguły zabezpieczeń ruchu przychodzącego obowiązkowe 
+
+| Name (Nazwa)       |Port                        |Protokół|Obiekt źródłowy           |Element docelowy|Akcja|
+|------------|----------------------------|--------|-----------------|-----------|------|
+|zarządzanie  |9000, 9003, 1438 1440, 1452|TCP     |Dowolne              |Dowolne        |Zezwalaj |
+|mi_subnet   |Dowolne                         |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |Dowolne        |Zezwalaj |
+|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|Dowolne        |Zezwalaj |
+
+### <a name="mandatory-outbound-security-rules"></a>Reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe 
+
+| Name (Nazwa)       |Port          |Protokół|Obiekt źródłowy           |Element docelowy|Akcja|
+|------------|--------------|--------|-----------------|-----------|------|
+|zarządzanie  |80, 443, 12000|TCP     |Dowolne              |Dowolne        |Zezwalaj |
+|mi_subnet   |Dowolne           |Dowolne     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
+
+  > [!Note]
+  > Chociaż zasady obowiązkowych zabezpieczeń dla ruchu przychodzącego zezwalającą na ruch z _wszelkie_ źródła na portach 9000, 9003, 1438, 1440, 1452 te porty są chronione przez zaporę wbudowanych. To [artykułu](sql-database-managed-instance-find-management-endpoint-ip-address.md) pokazuje, jak odnaleźć adres IP punktu końcowego zarządzania i sprawdź reguły zapory. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać przegląd, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md)
-- Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md).
+- Dowiedz się, jak [skonfigurować nową sieć wirtualną](sql-database-managed-instance-create-vnet-subnet.md) lub [Konfigurowanie istniejącej sieci wirtualnej](sql-database-managed-instance-configure-vnet-subnet.md) którym można wdrożyć wystąpienia zarządzane przez usługę.
+- [Oblicz się rozmiar podsieci](sql-database-managed-instance-determine-size-vnet-subnet.md) którym będą wdrażane wystąpienia zarządzane przez usługę. 
 - Aby uzyskać szybki Start zobacz sposób tworzenia wystąpienia zarządzanego:
   - Z [witryny Azure portal](sql-database-managed-instance-get-started.md)
   - za pomocą [programu PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/)

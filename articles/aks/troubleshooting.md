@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: c20f2cc03565ce861dfc6317be8459fdafeef0bf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025351"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384109"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
 Podczas tworzenia lub Menedżer usłudze AKS klastrów, czasami mogą wystąpić problemy. Ten artykuł szczegółowo opisuje niektóre typowe problemy i kroki rozwiązywania problemów.
@@ -63,4 +63,27 @@ Upewnij się, że domyślna sieciowa grupa zabezpieczeń nie jest modyfikowany i
 
 Istnieje możliwość, otrzymujesz ten błąd, ponieważ zmodyfikowano tagów w węzły agenta w ramach klastra usługi AKS. Modyfikowanie i usuwanie tagów i innych właściwości zasobów w grupie zasobów MC_ * może prowadzić do nieoczekiwanych wyników. Modyfikowanie zasobów w ramach MC_ * w klastrze AKS przerywa poziomu usługi.
 
+### <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>Jak odnowić klucz tajny jednostki usługi na mój klaster AKS?
 
+Domyślnie klastry usługi AKS są tworzone za pomocą usługi jednostki, która ma czas wygaśnięcia jeden rok. Jak prawie rok datę wygaśnięcia można zresetować poświadczenia, które mają rozszerzenie nazwy głównej usługi dla dodatkowy okres czasu.
+
+Poniższy przykład wykonuje następujące czynności:
+
+1. Pobiera identyfikator jednostki usługi przy użyciu klastra [az aks show](/cli/azure/aks#az-aks-show) polecenia.
+1. Wyświetla listę usługi klienta nazwy głównej wpisu tajnego za pomocą [az ad sp credential list](/cli/azure/ad/sp/credential#az-ad-sp-credential-list)
+1. Jednostka usługi dla innego przy użyciu jednego roku rozszerza [az ad sp reset poświadczeń](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) polecenia. Klucz tajny klienta jednostki usługi musi pozostać taka sama dla klastra AKS, by działała poprawnie.
+
+```azurecli
+# Get the service principal ID of your AKS cluster
+sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+
+# Get the existing service principal client secret
+key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
+
+# Reset the credentials for your AKS service principal and extend for 1 year
+az ad sp credential reset \
+    --name $sp_id \
+    --password $key_secret \
+    --years 1
+```

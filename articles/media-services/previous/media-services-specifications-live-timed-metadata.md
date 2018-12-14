@@ -3,7 +3,7 @@ title: Usługi Azure Media Services — sygnalizowanie metadanych upłynął lim
 description: Ta specyfikacja opisano dwa tryby, które są obsługiwane przez usługę Media Services sygnalizowanie metadanych czasu w ramach transmisji strumieniowej na żywo. Obejmuje to obsługę sygnały ogólnego metadanych Przekroczono limit czasu, a także SCTE 35 sygnalizowanie do wstawienia splice — usługi ad.
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: cfowler
 editor: johndeu
 ms.assetid: 265b94b1-0fb8-493a-90ec-a4244f51ce85
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2018
+ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: 827153300b9cab4ea805689b1e103bea1b334ec9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249578"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384687"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo
 
@@ -81,7 +81,7 @@ Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji 
 | Nazwa pola | Typ pola | Wymagana? | Opisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | Podpowiedź        | Ciąg     | Wymagane | Komunikat zdarzenia.  Komunikaty [SCTE 35], musi to być base64 pliku binarnego (4648 RFC organizacji IETF) zakodowane splice_info_section() w kolejności wiadomości można wysyłać do klientów HLS i Smooth, Dash zgodne z [SCTE 67].                                              |
-| type       | Ciąg     | Wymagane | Nazwa URN lub adres URL identyfikujący system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0".  Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67].  |
+| type       | Ciąg     | Wymagane | Nazwa URN lub adres URL identyfikujący schemat wiadomości. Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67].  |
 | id         | Ciąg     | Wymagane | Unikatowy identyfikator, który opisujący splice lub segmentu. Określa wystąpienie tej wiadomości.  Komunikaty z semantyką równoważne mają taką samą wartość.|
 | czas trwania   | Liczba     | Wymagane | Czas trwania zdarzenia lub ad splice — segmentu, jeśli jest znany. Jeśli jest nieznana, wartość powinna być 0.                                                                 |
 | elapsed    | Liczba     | Optional (Opcjonalność) | Gdy w celu Obejrzyj powtarza się sygnale reklamowym [SCTE 35] i to pole będzie prezentacji czas, jaki upłynął od chwili rozpoczęcia splice. Jednostki są ułamków sekund. W trybie [SCTE 35] Ta wartość może przekroczyć oryginalnego określonego czasu trwania splice lub segmentu.                                                  |
@@ -105,7 +105,7 @@ Rozrzedzony śledzenie musi być zadeklarowana w polu manifestu serwera na żywo
 | parentTrackName    | Ciąg         | Wymagane      | MUSI być nazwą ścieżki nadrzędnej, kody czasowe rozrzedzone śledzenia są wyrównane do skali czasu. Śledź nadrzędny nie może być rozrzedzone śledzenia.                                                                                                                    |
 | manifestOutput     | Wartość logiczna        | Wymagane      | MUSI być "prawda", aby wskazać, czy śledzenie rozrzedzone zostanie osadzony w manifest Smooth klienta.                                                                                                                                                               |
 | Podtyp            | Ciąg         | Wymagane      | MUSI być czterech znaków kodu "Dane".                                                                                                                                                                                                                         |
-| Schemat             | Ciąg         | Wymagane      | MUSI być adres URL lub URN identyfikuje system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0". Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67]. |
+| Schemat             | Ciąg         | Wymagane      | MUSI być adres URL lub URN identyfikowanie schemat wiadomości. Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67]. |
 | TrackName          | Ciąg         | Wymagane      | MUSI być nazwą ścieżki rozrzedzone. TrackName może służyć do odróżniania wiele strumieni zdarzeń z tego samego schematu. Każdego strumienia zdarzeń unikatowy musi mieć nazwę unikatową ścieżkę.                                                                           |
 | Skala czasu          | Liczba         | Optional (Opcjonalność)      | MUSI być skali czasu ścieżki nadrzędnej.                                                                                                                                                                                                                      |
 
@@ -226,7 +226,7 @@ Przekroczono limit czasu metadanych dla firmy Apple HTTP Live Streaming (HLS) mo
 | **Nazwa atrybutu** | **Typ**                      | **Wymagane?**                             | **Opis**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PODPOWIEDŹ                | ciąg w cudzysłowach                 | Wymagane                                  | Komunikat zakodowany jako ciąg w formacie base64, zgodnie z opisem w [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). Komunikaty [SCTE 35] to splice_info_section() zakodowane w formacie base64.                                                                                                |
-| TYP               | ciąg w cudzysłowach                 | Wymagane                                  | Nazwa URN lub adres URL identyfikujący system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0". Komunikaty [SCTE 35] typu przyjmuje specjalna wartość "scte35".                                                                                                                                |
+| TYP               | ciąg w cudzysłowach                 | Wymagane                                  | Nazwa URN lub adres URL identyfikujący schemat wiadomości. Komunikaty [SCTE 35] typu przyjmuje specjalna wartość "scte35".                                                                                                                                |
 | ID                 | ciąg w cudzysłowach                 | Wymagane                                  | Unikatowy identyfikator zdarzenia. Jeśli nie określono Identyfikatora, gdy wiadomości są pozyskiwane, usługi Azure Media Services generuje unikatowy identyfikator.                                                                                                                                          |
 | CZAS TRWANIA           | dziesiętna liczba zmiennoprzecinkowa | Wymagane                                  | Czas trwania zdarzenia. Jeśli jest nieznana, wartość powinna być 0. Jednostki są factional sekund.                                                                                                                                                                                           |
 | ELAPSED            | dziesiętna liczba zmiennoprzecinkowa | Opcjonalne, ale wymagane dla oknem kroczącym | Jeśli do obsługi przesuwającego się okna prezentacji powtarza się sygnał i to pole musi być prezentacji czas, jaki upłynął od chwili rozpoczęcia zdarzenia. Jednostki są ułamków sekund. Ta wartość może przekroczyć oryginalnego określonego czasu trwania splice lub segmentu. |
@@ -240,30 +240,17 @@ Warstwa aplikacji odtwarzacza HLS zostanie użyty typ do identyfikowania format 
 #EXTM3U
 #EXT-X-VERSION:4
 #EXT-X-ALLOW-CACHE:NO
-#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-MEDIA-SEQUENCE:346
 #EXT-X-TARGETDURATION:6
-#EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
+#EXT-X-I-FRAMES-ONLY
+#EXT-X-PROGRAM-DATE-TIME:2018-12-13T15:54:19.462Z
+#EXTINF:4.000000,no-desc
+KeyFrames(video_track=15447164594627600,format=m3u8-aapl)
 #EXTINF:6.000000,no-desc
-Fragments(video=0,format=m3u8-aapl)
+KeyFrames(video_track=15447164634627600,format=m3u8-aapl)
+#EXT-X-CUE:ID="1026",TYPE="scte35",DURATION=30.000000,TIME=1544716520.022760,CUE="/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w=="
 #EXTINF:6.000000,no-desc
-Fragments(video=60000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-#EXT-X-CUE: ID=”metadata-12.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”12.000000”, DURATION=”18.000000”,CUE=”HrwOi8vYmWVkaWEvhhaWFRlRDa=”
-Fragments(video=120000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=180000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=240000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=300000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=360000000,format=m3u8-aapl)
-#EXT-X-CUE: ID=”metadata-42.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”42.000000”, DURATION=”60.000000”,CUE=”PD94bWwgdm0iMS4wIiBlbmNvpD4=”
-#EXTINF:6.000000,no-desc
-Fragments(video=420000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=480000000,format=m3u8-aapl)
-…
+KeyFrames(video_track=15447165474627600,format=m3u8-aapl)
 ~~~
 
 #### <a name="hls-message-handling"></a>HLS komunikatu obsługi
@@ -293,7 +280,7 @@ Element elementu EventStream ma następujące atrybuty:
 
 | **Nazwa atrybutu** | **Typ**                | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | ciąg                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0".                                                                |
+| scheme_id_uri      | ciąg                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący system wiadomości; na przykład, "urn: scte:scte35:2013a:bin".                                                                |
 | wartość              | ciąg                  | Optional (Opcjonalność)      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość musi być równa nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania). |
 | Skala czasu          | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Skala czasu, w dziesięciomilionowych częściach sekundy na sekundę, czas i czas trwania pól w polu "emsg".                                                                                                                                                                                                       |
 
@@ -335,11 +322,14 @@ Zero lub więcej elementów zdarzeń są zawarte w elemencie elementu EventStrea
 
 
 <!-- Example Section in MPD -->
-
-<EventStream schemeIdUri=”urn:example:signaling:1.0” timescale=”1000” value=”player-statistics”>
-  <Event presentationTime=”0” duration=”10000” id=”0”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-  <Event presentationTime=”20000” duration=”10000” id=”1”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-</EventStream>
+  <EventStream schemeIdUri="urn:scte:scte35:2013a:bin" value="scte35_track_001_000" timescale="10000000">
+        <Event presentationTime="15447165200227600" duration="300000000" id="1026">/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w==</Event>
+        <Event presentationTime="15447166250227600" duration="300000000" id="1027">/DAlAAAAAAAAAP/wFAUAAAQDf+//KaeGwP4AKTLgAAAAAAAAn75a3g==</Event>
+        <Event presentationTime="15447167300227600" duration="600000000" id="1028">/DAlAAAAAAAAAP/wFAUAAAQEf+//KjkknP4AUmXAAAAAAAAAWcEldA==</Event>
+        <Event presentationTime="15447168350227600" duration="600000000" id="1029">/DAlAAAAAAAAAP/wFAUAAAQFf+//KslyqP4AUmXAAAAAAAAAvKNt0w==</Event>
+        <Event presentationTime="15447169400227600" duration="300000000" id="1030">/DAlAAAAAAAAAP/wFAUAAAQGf+//K1mIvP4AKTLgAAAAAAAAt2zEbw==</Event>
+        <Event presentationTime="15447170450227600" duration="600000000" id="1031">/DAlAAAAAAAAAP/wFAUAAAQHf+//K+hc/v4AUmXAAAAAAAAANNRzVw==</Event>
+    </EventStream>
 ~~~
 
 >[!NOTE]
@@ -375,7 +365,7 @@ Pola DASHEventMessageBox są zdefiniowane poniżej:
 
 | **Nazwa pola**          | **Typ pola**          | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | ciąg                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0". Komunikaty [SCTE 35] trwa to specjalna wartość "urn: scte:scte35:2013a:bin", mimo że [SCTE 67] zaleca się coś innego. |
+| scheme_id_uri           | ciąg                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący schemat wiadomości. Komunikaty [SCTE 35] trwa to specjalna wartość "urn: scte:scte35:2013a:bin", mimo że [SCTE 67] zaleca się coś innego. |
 | Wartość                   | ciąg                  | Wymagane      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość będzie ustawiana na nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania).                                                                  |
 | Skala czasu               | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Skala czasu, w dziesięciomilionowych częściach sekundy na sekundę, czas i czas trwania pól w polu "emsg".                                                                                                                                                                                                                                                                        |
 | Presentation_time_delta | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Różnica czasu prezentacji nośnika podczas prezentacji wydarzenia i Najwcześniejsza godzina prezentacji, w tym segmencie. Czas prezentacji i czas trwania należy wyrównać za pomocą punktów dostępu Stream (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika.                                                                                            |
@@ -398,9 +388,9 @@ Pozyskiwanie Smooth Streaming wymaga, które musi zawierać pola danych (mdat) *
 
 **[SCTE 35]**  ANSI/SCTE 35 2013a — Program cyfrowego wstawiania kolejka komunikat dla kabel, 2013a
 
-**[SCTE 67]**  ANSI/SCTE 67 2014 — zalecana praktyka dla SCTE 35: programie cyfrowego wstawiania kolejka komunikatów kabla
+**[SCTE 67]**  ANSI/SCTE 67 2014 — zalecana praktyka dla SCTE 35: Cyfrowy Program wstawiania kolejka komunikatów kabla
 
-**[KRESKA]**  ISO/IEC 23009 1 2014 — informacje o technologii — dynamiczne adaptacyjnego przesyłania strumieniowego za pośrednictwem protokołu HTTP (DASH) — część 1: Media prezentacji formaty opis i segmentu, wydanie 2
+**[KRESKA]**  ISO/IEC 23009 1 2014 — informacje o technologii — dynamiczne adaptacyjnego przesyłania strumieniowego za pośrednictwem protokołu HTTP (DASH) — część 1: Prezentacja Media opis segmentu formatów i wydanie 2
 
 **[HLS]**  ["HTTP transmisja strumieniowa na żywo", draft-pantos-http-live-streaming-14, 14 października 2014 roku](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
@@ -410,7 +400,7 @@ Pozyskiwanie Smooth Streaming wymaga, które musi zawierać pola danych (mdat) *
 
 **[NA ŻYWO — FMP4]**  [Specyfikacja odbierania podzielonej zawartości w formacie MP4 na żywo w usłudze azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
-**[ISO-14496-12]**  ISO/IEC 14496-12: część 12 ISO podstawowy media format plików, czwarty wersji 2012-07-15.
+**[ISO-14496-12]**  ISO/IEC 14496-12: Część 12 ISO podstawowy media format plików, czwarty wersji 2012-07-15.
 
 **[RTMP]**  ["Firmy adobe w czasie rzeczywistym komunikatów protokołu", 21 grudnia 2012](https://www.adobe.com/devnet/rtmp.html) 
 

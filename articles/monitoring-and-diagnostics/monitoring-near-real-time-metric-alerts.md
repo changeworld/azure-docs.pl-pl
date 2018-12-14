@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b552918f6b415bcd55c7c27c80ff721df77ca99f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4a9f9c2592c7bf27e1caeb09dd492e4700768117
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276081"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383480"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Obsługiwane zasobów dla alertów dotyczących metryk w usłudze Azure Monitor
 
-Platforma Azure obsługuje teraz Monitor [nowego typu alertu Metryka](monitoring-overview-alerts.md) mającego znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](../azure-monitor/platform/alerts-classic.overview.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru.
+Platforma Azure obsługuje teraz Monitor [nowego typu alertu Metryka](../azure-monitor/platform/alerts-overview.md) mającego znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](../azure-monitor/platform/alerts-classic.overview.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru.
 
 
-Umożliwia także nowszych alertów metryk dotyczących popularnych dzienników usługi Log Analytics, wyodrębnić jako metryki. Aby uzyskać więcej informacji, Wyświetl [alerty metryki dla dzienników](monitoring-metric-alerts-logs.md).
+Umożliwia także nowszych alertów metryk dotyczących popularnych dzienników usługi Log Analytics, wyodrębnić jako metryki. Aby uzyskać więcej informacji, Wyświetl [alerty metryki dla dzienników](../azure-monitor/platform/alerts-metric-logs.md).
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portal, programu PowerShell, interfejsu wiersza polecenia, REST pomocy technicznej
-Obecnie można tworzyć nowszych alertów metryk, tylko w witrynie Azure portal, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metricalerts/), lub [szablonów usługi Resource Manager](monitoring-create-metric-alerts-with-templates.md). Wkrótce zostanie udostępniona Obsługa konfigurowania nowszych alertów przy użyciu programu PowerShell i wiersza polecenia platformy Azure w wersji 2.0 lub nowszej.
+Obecnie można tworzyć nowszych alertów metryk, tylko w witrynie Azure portal, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metricalerts/), lub [szablonów usługi Resource Manager](../azure-monitor/platform/alerts-metric-create-templates.md). Wkrótce zostanie udostępniona Obsługa konfigurowania nowszych alertów przy użyciu programu PowerShell i wiersza polecenia platformy Azure w wersji 2.0 lub nowszej.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metryki i wymiary obsługiwane
-Nowszych alertów metryk obsługuje alerty dotyczące metryk, używanego przez wymiary. Wymiarów można użyć do filtrowania swoje metryki na odpowiedni poziom. Wszystkie obsługiwane metryki wraz z odpowiednich wymiarów można przeglądać i wizualizować z [usługi Azure Monitor — Eksplorator metryk](monitoring-metric-charts.md).
+Nowszych alertów metryk obsługuje alerty dotyczące metryk, używanego przez wymiary. Wymiarów można użyć do filtrowania swoje metryki na odpowiedni poziom. Wszystkie obsługiwane metryki wraz z odpowiednich wymiarów można przeglądać i wizualizować z [usługi Azure Monitor — Eksplorator metryk](../azure-monitor/platform/metrics-charts.md).
 
 Poniżej przedstawiono pełną listę źródeł metryk usługi Azure monitor, obsługiwanych przez nowszych alertów:
 
@@ -121,6 +121,6 @@ Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wsz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o nowym [alerty środowisko](monitoring-overview-alerts.md).
+* Dowiedz się więcej o nowym [alerty środowisko](../azure-monitor/platform/alerts-overview.md).
 * Dowiedz się więcej o [alerty dzienników w usłudze Azure](../azure-monitor/platform/alerts-unified-log.md).
-* Dowiedz się więcej o [alertów na platformie Azure](monitoring-overview-alerts.md).
+* Dowiedz się więcej o [alertów na platformie Azure](../azure-monitor/platform/alerts-overview.md).

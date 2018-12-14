@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: cb14a23fbffb5ca9b7d3240a42e14aa17060f935
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 30d0818b57057785784c1fbda1c67ca0be10d769
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820311"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384772"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Files
 
@@ -29,7 +29,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
 - Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md).
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
 - System Windows z systemem [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems).
-- [Pobierz WAImportExport w wersji 2](https://www.microsoft.com/download/details.aspx?id=55280) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexport`. Na przykład `C:\WaImportExport`.
+- [Pobierz WAImportExport w wersji 2](https://aka.ms/waiev2) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexport`. Na przykład `C:\WaImportExport`.
 - Mieć konto FedEx/DHL w sprawie. 
     - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
     - Generowanie numer śledzenia, zadanie eksportu.
@@ -40,7 +40,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
  
 
 
-## <a name="step-1-prepare-the-drives"></a>Krok 1: Przygotowanie dysków
+## <a name="step-1-prepare-the-drives"></a>Krok 1. Przygotowywanie dysków
 
 W tym kroku generuje plik dziennika. Plik dziennika zawiera podstawowe informacje, takie jak numer seryjny dysku, klucz szyfrowania i szczegółów konta magazynu.
 
@@ -57,7 +57,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
         ```
-    - **Aby zaimportować folder**: wszystkie pliki i foldery w obszarze *MyFolder2* są rekursywnie skopiowane do udziału plików. Struktura folderów jest zachowywana.
+    - **Aby zaimportować folder**: Wszystkie pliki i foldery w obszarze *MyFolder2* są rekursywnie skopiowane do udziału plików. Struktura folderów jest zachowywana.
 
         ```
             "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
@@ -112,7 +112,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
 
 Aby uzyskać więcej przykładów, przejdź do [przykłady dla plików dziennika](#samples-for-journal-files).
 
-## <a name="step-2-create-an-import-job"></a>Krok 2: Tworzenie zadania importu 
+## <a name="step-2-create-an-import-job"></a>Krok 2. Tworzenie zadania importu 
 
 Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 1. Zaloguj się do https://portal.azure.com/.
@@ -137,7 +137,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 3. W **szczegóły zadania**:
     
-    - Przekazywanie plików dziennika, utworzone w ciągu poprzednich [krok 1: przygotowanie dysków](#step-1-prepare-the-drives). 
+    - Przekazywanie plików dziennika, utworzone w ciągu poprzednich [krok 1: Przygotowywanie dysków](#step-1-prepare-the-drives). 
     - Wybierz konto magazynu, które mają zostać zaimportowane dane. 
     - Lokalizacja dropoff jest automatycznie wypełniane na podstawie w regionie wybranym koncie magazynu.
    
@@ -162,7 +162,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
         ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Krok 3: Dostarczaj dyski, centrach danych platformy Azure 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Krok 3. Dostarczaj dyski w centrach danych platformy Azure 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
@@ -170,7 +170,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Sprawdzenie przekazywania danych na platformie Azure
+## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Weryfikowanie przekazania danych na platformę Azure
 
 Śledź zadania do zakończenia. Po zakończeniu zadania Sprawdź, czy danych został przekazany na platformę Azure. Usuń lokalne dane tylko w przypadku, gdy będziesz mieć pewność, że przekazywanie powiodło się.
 

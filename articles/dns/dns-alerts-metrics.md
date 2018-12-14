@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: bbdacd6947c897d3b137b427c3e4c316869fa401
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 707a23cbd04db9a0420c7776a24eb568a3483b0b
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193199"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385860"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Alerty i metryki DNS platformy Azure
 System DNS Azure jest usługą hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. W tym artykule opisano, metryk i alertów w usłudze DNS platformy Azure.
@@ -40,14 +40,14 @@ Precyzyjne wymiaru dla tych metryk jest strefy DNS.
 
 ### <a name="query-volume"></a>Wolumin zapytań
 
-*Wolumin zapytań* metryki w usłudze Azure DNS przedstawia wolumin zapytań DNS (zapytanie ruch), odebrane przez usługę Azure DNS dla strefy DNS. Jednostka miary jest licznik i agregacji to suma wszystkich zapytań odebranych za pośrednictwem przez pewien czas. Aby wyświetlić tę metrykę, wybierać interfejs Eksploratora metryk (wersja zapoznawcza) na karcie monitorowanie w witrynie Azure portal. Wybierz strefę DNS z listy rozwijanej zasobów, wybierz metrykę wolumin zapytań i wybierz sumy jako agregacja. Poniższy zrzut ekranu przedstawia przykład.  Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-charts.md).
+*Wolumin zapytań* metryki w usłudze Azure DNS przedstawia wolumin zapytań DNS (zapytanie ruch), odebrane przez usługę Azure DNS dla strefy DNS. Jednostka miary jest licznik i agregacji to suma wszystkich zapytań odebranych za pośrednictwem przez pewien czas. Aby wyświetlić tę metrykę, wybierać interfejs Eksploratora metryk (wersja zapoznawcza) na karcie monitorowanie w witrynie Azure portal. Wybierz strefę DNS z listy rozwijanej zasobów, wybierz metrykę wolumin zapytań i wybierz sumy jako agregacja. Poniższy zrzut ekranu przedstawia przykład.  Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md).
 
 ![Wolumin zapytań](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 
 *Rysunek: Metryki platformy Azure wolumin zapytań DNS*
 
 ### <a name="record-set-count"></a>Liczba zestawu rekordów
-*Liczba zestawu rekordów* Metryka przedstawia liczbę zestawów rekordów w usłudze Azure DNS dla strefy DNS. Zliczane są wszystkie zdefiniowanych zestawów rekordów w strefie. Jednostka miary jest licznik i agregacji jest maksymalną liczbę wszystkich zestawów rekordów. Zaznacz, aby wyświetlić tę metrykę **metryki (wersja zapoznawcza)** środowisko Eksploratora z **Monitor** kartę w witrynie Azure portal. Wybierz strefę DNS z **zasobów** listę rozwijaną, wybierz opcję **liczba zestawu rekordów** metryki, a następnie wybierz **Max** jako **agregacji** . Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-charts.md). 
+*Liczba zestawu rekordów* Metryka przedstawia liczbę zestawów rekordów w usłudze Azure DNS dla strefy DNS. Zliczane są wszystkie zdefiniowanych zestawów rekordów w strefie. Jednostka miary jest licznik i agregacji jest maksymalną liczbę wszystkich zestawów rekordów. Zaznacz, aby wyświetlić tę metrykę **metryki (wersja zapoznawcza)** środowisko Eksploratora z **Monitor** kartę w witrynie Azure portal. Wybierz strefę DNS z **zasobów** listę rozwijaną, wybierz opcję **liczba zestawu rekordów** metryki, a następnie wybierz **Max** jako **agregacji** . Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md). 
 
 ![Liczba zestawu rekordów](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
@@ -55,7 +55,7 @@ Precyzyjne wymiaru dla tych metryk jest strefy DNS.
 
 
 ### <a name="record-set-capacity-utilization"></a>Wykorzystanie pojemności zestawu rekordów
-*Wykorzystanie pojemności zestawu rekordów* metryki w usłudze Azure DNS przedstawia wartość procentową wykorzystania pojemności zestawu rekordów dla strefy DNS. Każdej strefy DNS w usłudze Azure DNS podlega limitu zestawu rekordów, który określa maksymalną liczbę zestawów rekordów, które są dozwolone dla tej strefy (zobacz [limity DNS](dns-zones-records.md#limits)). Dzięki temu ta metryka dowiesz się, jak blisko są w celu osiągnięcia limitu zestawu rekordów. Na przykład jeśli masz 500 zestawy rekordów skonfigurowany dla strefy DNS i strefy ma domyślny limit 5000 rekordów, metryki RecordSetCapacityUtilization wyświetli wartość 10%, (które są uzyskiwane przez 500 podziału, 5000). Jest to jednostka miary **procent** i **agregacji** typ jest **maksymalna**. Aby wyświetlić tę metrykę, wybierać interfejs Eksploratora metryk (wersja zapoznawcza) na karcie monitorowanie w witrynie Azure portal. Wybierz strefę DNS z listy rozwijanej zasobów, wybierz metryki użycia pojemności zestawu rekordów i wybierz maksymalny jako agregacja. Poniższy zrzut ekranu przedstawia przykład. Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-charts.md). 
+*Wykorzystanie pojemności zestawu rekordów* metryki w usłudze Azure DNS przedstawia wartość procentową wykorzystania pojemności zestawu rekordów dla strefy DNS. Każdej strefy DNS w usłudze Azure DNS podlega limitu zestawu rekordów, który określa maksymalną liczbę zestawów rekordów, które są dozwolone dla tej strefy (zobacz [limity DNS](dns-zones-records.md#limits)). Dzięki temu ta metryka dowiesz się, jak blisko są w celu osiągnięcia limitu zestawu rekordów. Na przykład jeśli masz 500 zestawy rekordów skonfigurowany dla strefy DNS i strefy ma domyślny limit 5000 rekordów, metryki RecordSetCapacityUtilization wyświetli wartość 10%, (które są uzyskiwane przez 500 podziału, 5000). Jest to jednostka miary **procent** i **agregacji** typ jest **maksymalna**. Aby wyświetlić tę metrykę, wybierać interfejs Eksploratora metryk (wersja zapoznawcza) na karcie monitorowanie w witrynie Azure portal. Wybierz strefę DNS z listy rozwijanej zasobów, wybierz metryki użycia pojemności zestawu rekordów i wybierz maksymalny jako agregacja. Poniższy zrzut ekranu przedstawia przykład. Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md). 
 
 ![Liczba zestawu rekordów](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 

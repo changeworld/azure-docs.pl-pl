@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b05fd9571494dfc3680e2d56fabb02de17920378
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3a106b0fe570fe44f96529d830271dfe4912437f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197066"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336497"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dotyczących metryk
 
-Alerty metryk w usłudze Azure Monitor zapewnia sposób otrzymywania powiadomień, gdy jeden metryki przekroczą próg. Alerty metryki pracy na szeroką gamę metryk wielowymiarowych platformy, metryki niestandardowe, standard usługi Application Insights i metryki niestandardowe. W tym artykule opisujemy sposób tworzyć, wyświetlać i zarządzać reguł alertów dotyczących metryk za pośrednictwem witryny Azure portal i interfejs wiersza polecenia platformy Azure. Można również utworzyć reguł alertów dotyczących metryk za pomocą szablonów usługi Azure Resource Manager, które jest opisane w [oddzielny artykuł](../../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md).
+Alerty metryk w usłudze Azure Monitor zapewnia sposób otrzymywania powiadomień, gdy jeden metryki przekroczą próg. Alerty metryki pracy na szeroką gamę metryk wielowymiarowych platformy, metryki niestandardowe, standard usługi Application Insights i metryki niestandardowe. W tym artykule opisujemy sposób tworzyć, wyświetlać i zarządzać reguł alertów dotyczących metryk za pośrednictwem witryny Azure portal i interfejs wiersza polecenia platformy Azure. Można również utworzyć reguł alertów dotyczących metryk za pomocą szablonów usługi Azure Resource Manager, które jest opisane w [oddzielny artykuł](../../azure-monitor/platform/alerts-enable-template.md).
 
 Dowiedz się więcej o jak metryki alerty działają z [Przegląd alertów metryk](alerts-metric-overview.md).
 
@@ -128,6 +128,6 @@ Przedstawione w poprzednich sekcjach opisano, jak tworzyć, wyświetlać i zarz�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Tworzenie alertów metryk, przy użyciu szablonów usługi Azure Resource Manager](../../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md).
+- [Tworzenie alertów metryk, przy użyciu szablonów usługi Azure Resource Manager](../../azure-monitor/platform/alerts-enable-template.md).
 - [Zrozumienie, jak metryki, alerty pracy](alerts-metric-overview.md).
 - [Zrozumienie schematu punktu zaczepienia sieci web dla alertów dotyczących metryk](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#payload-schema)

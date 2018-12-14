@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Interfejs API .NET przetwarzania zbiorczego zestawu SDK i zasoby'
+title: Usługa Azure Cosmos DB Zbiorcze interfejsu API platformy .NET wykonawcy, zestaw SDK i zasoby
 description: Poznaj interfejs API .NET wykonawca zbiorcze i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami usługi Azure Cosmos DB zbiorcze wykonawca .NET SDK.
 author: tknandu
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: a0d2ab305f0ca819b8dba573a9570ff03682a947
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c239464a37637b21504227951d917977cfea6726
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875012"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343961"
 ---
-# <a name="net-bulk-executor-library-download-information"></a>Biblioteka przetwarzania zbiorczego .NET: pobieranie informacji 
+# <a name="net-bulk-executor-library-download-information"></a>Biblioteka przetwarzania zbiorczego .NET: Pobieranie informacji 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -27,7 +27,7 @@ ms.locfileid: "52875012"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [Zbiorcze wykonawcy — .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Zbiorcze wykonawcy — Java](sql-api-sdk-bulk-executor-java.md)
 

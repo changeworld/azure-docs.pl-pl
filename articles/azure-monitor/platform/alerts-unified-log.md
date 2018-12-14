@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: d638c9d2805d903247c5dbe615602ee8474096a7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6a1b9c110c79e428ab0cc182d0da370e59bc4f30
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285389"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386217"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
-Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
+Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
 
 Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla [usługi Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). Aby dowiedzieć się więcej na temat jej użycia, zobacz [Tworzenie alertów dziennika na platformie Azure](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
-> Dane dzienników popularnych z [usługi Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](../../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md)
+> Dane dzienników popularnych z [usługi Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Wyszukiwania reguł alertów dzienników — definicja i typów
@@ -32,7 +32,7 @@ Dziennik wyszukiwania reguł są definiowane przez następujące informacje:
 - **Zaloguj się zapytania**.  Zapytanie, które jest uruchamiane za każdym razem, gdy reguła alertu jest uruchamiana.  Rekordów zwróconych przez tę kwerendę są używane do określenia, czy alert jest tworzony. Zapytania usługi Analytics może również obejmować [wywołań między platformami](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), [wielu wywołań obszaru roboczego i [wywołań między zasobami](../../azure-monitor/log-query/cross-workspace-query.md) podany użytkownik ma wystarczające uprawnienia dostępu do aplikacji zewnętrznych. 
 
     > [!IMPORTANT]
-    > Użytkownik musi mieć [Współautor monitorowania Azure](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md) roli do tworzenia, modyfikowania i aktualizowanie alerty dzienników w usłudze Azure Monitor; uzyskasz także dostęp & zapytanie praw wykonywania dla analizy elementy docelowe w reguły alertu lub zapytanie alertu. Jeśli tworzenie użytkownika nie ma dostępu do wszystkich cele analytics reguły alertu lub zapytanie alertu — tworzenie reguł może zakończyć się niepowodzeniem lub reguł alertów dzienników będą wykonywane przy użyciu wyniki częściowe.
+    > Użytkownik musi mieć [Współautor monitorowania Azure](../../azure-monitor/platform/roles-permissions-security.md) roli do tworzenia, modyfikowania i aktualizowanie alerty dzienników w usłudze Azure Monitor; uzyskasz także dostęp & zapytanie praw wykonywania dla analizy elementy docelowe w reguły alertu lub zapytanie alertu. Jeśli tworzenie użytkownika nie ma dostępu do wszystkich cele analytics reguły alertu lub zapytanie alertu — tworzenie reguł może zakończyć się niepowodzeniem lub reguł alertów dzienników będą wykonywane przy użyciu wyniki częściowe.
 
 - **Przedział czasu**.  Określa zakres czasu dla zapytania. Zapytanie zwraca tylko rekordy utworzone w tym zakresie czasu bieżącego. Okres ogranicza dane pobrana dla zapytania dotyczącego dziennika zapobiec nadużyciu i zmierzone dowolnego polecenia na czas (np. temu) używanych w zapytaniu dziennika. <br>*Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu jest zwracana do wykonania zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia, takie jak temu teraz (7 dni), zapytania dotyczącego dziennika zostanie uruchomione tylko dla danych zakresu od 12:15:00 do 13:15:00 - tak, jakby istnieją dane dla ostatnich 60 minut. A nie przez siedem dni, danych, jak to określono w dzienniku zapytań.*
 - **Częstotliwość**.  Określa, jak często należy uruchamiać zapytanie. Może to być wartość z zakresu od 5 minut do 24 godzin. Powinna być równa lub mniejsza niż okres czasu.  Jeśli wartość jest większa niż okres czasu, istnieje ryzyko rekordów jest pominięte.<br>*Na przykład należy wziąć pod uwagę okres 30 minut i częstotliwość 60 minut.  Jeśli zapytanie jest uruchomione 1:00, zwraca rekordy od 12:30 do 1:00 PM.  Przy następnym uruchomić zapytanie jest 2:00, jeśli zwróci rekordów między 1:30 – 2:00.  Nigdy nie oceniono rekordy między 1:00 i 1:30.*
@@ -120,6 +120,6 @@ Ceny dla dziennika alertów jest podany w [cennik usługi Azure Monitor](https:/
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [Tworzenie alertów dziennika na platformie Azure](../../azure-monitor/platform/alerts-log.md).
 * Zrozumienie [elementami webhook w dzienniku alertów na platformie Azure](alerts-log-webhook.md).
-* Dowiedz się więcej o [alertów platformy Azure](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+* Dowiedz się więcej o [alertów platformy Azure](../../azure-monitor/platform/alerts-overview.md).
 * Dowiedz się więcej o [usługi Application Insights](../../application-insights/app-insights-analytics.md).
 * Dowiedz się więcej o [usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md).    

@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5a3c160fcb550fc4f0c92145733aa993b95bd112
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089348"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338894"
 ---
 # <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
@@ -34,7 +34,7 @@ Każde żądanie albo mowy na tekst i zamiany tekstu na mowę interfejsu API RES
 | Nagłówki obsługiwane autoryzacji | Zamiany mowy na tekst | Zamiana tekstu na mowę |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Yes | Nie |
-| Autoryzacja: elementu nośnego | Yes | Yes |
+| Autoryzacja: Elementu nośnego | Yes | Yes |
 
 Korzystając z `Ocp-Apim-Subscription-Key` nagłówka, tylko, musisz podać klucz subskrypcji. Na przykład:
 
@@ -322,9 +322,20 @@ Transferu pakietowego (`Transfer-Encoding: chunked`) może pomóc zmniejszyć op
 Ten przykładowy kod przedstawia sposób wysłania audio we fragmentach. Tylko pierwszy fragment może zawierać nagłówek pliku audio. `request` Obiekt HTTPWebRequest podłączonego do odpowiedniego punktu końcowego REST. `audioFile` jest to ścieżka do pliku audio na dysku.
 
 ```csharp
+
+    HttpWebRequest request = null;
+    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+    request.SendChunked = true;
+    request.Accept = @"application/json;text/xml";
+    request.Method = "POST";
+    request.ProtocolVersion = HttpVersion.Version11;
+    request.Host = host;
+    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
+    request.AllowWriteStreamBuffering = false;
+
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-
     /*
     * Open a request stream and write 1024 byte chunks in the stream one at a time.
     */
@@ -424,20 +435,10 @@ Jest to typowa odpowiedź dla `detailed` rozpoznawania.
 
 ## <a name="text-to-speech-api"></a>Interfejs API zamiany tekstu na mowę
 
-Te regiony są obsługiwane w przypadku zamiany tekstu na mowę przy użyciu interfejsu API REST. Upewnij się, wybierz pozycję punkt końcowy, który odpowiada Twoim regionie subskrypcji.
+Zamiany tekstu na mowę interfejsu API REST obsługuje neuronowych i standard głosów zamiany tekstu na mowę, z których każdy obsługuje określonego języka i dialektu, identyfikowane za pomocą ustawień regionalnych.
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
-
-Usługa rozpoznawania mowy obsługuje wyjściowego audio 24 KHz, wraz z danych wyjściowych 16 Khz, obsługiwanych przez rozpoznawania mowy Bing. Cztery formaty danych wyjściowych 24 KHz i dwa 24 KHz głosy są obsługiwane.
-
-### <a name="voices"></a>Głosów
-
-| Ustawienia regionalne | Język   | Płeć | Mapowanie |
-|--------|------------|--------|---------|
-| en-US  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)" |
-| en-US  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy (en US, Guy24kRUS)" |
-
-Zobacz pełną listę dostępnych głosów [obsługiwane języki](language-support.md#text-to-speech).
+* Aby uzyskać pełną listę głosów, zobacz [języki](language-support.md#text-to-speech).
+* Aby uzyskać informacje o dostępności regionalnej, zobacz [regionów](regions.md#text-to-speech).
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -452,7 +453,7 @@ Ta tabela zawiera wymagane i opcjonalne nagłówki dla żądania zamiany mowy na
 
 ### <a name="audio-outputs"></a>Dane wyjściowe audio
 
-Jest to lista obsługiwanych formatów audio, które są wysyłane do wszystkich żądań jako `X-Microsoft-OutputFormat` nagłówka. Każdy łączy w sobie szybkość transmisji bitów i typ kodowania.
+Jest to lista obsługiwanych formatów audio, które są wysyłane do wszystkich żądań jako `X-Microsoft-OutputFormat` nagłówka. Każdy łączy w sobie szybkość transmisji bitów i typ kodowania. Usługa rozpoznawania mowy obsługuje 24 KHz i 16 KHz audio danych wyjściowych.
 
 |||
 |-|-|

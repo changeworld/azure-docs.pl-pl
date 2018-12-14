@@ -15,21 +15,21 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 379e5503900621381bbc27c6604cc8208cfdb80e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9e99e5f999c927ed0376a89b9f6d9f73fa8b2b2b
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076461"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384177"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
  
-W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-collection.md#metrics) i [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../monitoring-and-diagnostics/monitoring-overview-alerts.md) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
+W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-collection.md#metrics) i [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../azure-monitor/platform/alerts-overview.md) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
 
 ## <a name="batch-metrics"></a>Metryki usługi Batch
 
-Metryki są danych telemetrycznych platformy Azure (nazywanych również liczników wydajności) wyemitowane przez Twoich zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykładowe metryki na koncie usługi Batch obejmują: zdarzenia tworzenia puli, liczba węzłów o niskim priorytecie i zdarzenia ukończone zadania. 
+Metryki są danych telemetrycznych platformy Azure (nazywanych również liczników wydajności) wyemitowane przez Twoich zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykładowe metryki na koncie usługi Batch obejmują: Pool Create zdarzeń, liczba węzłów o niskim priorytecie i zadanie ukończenia zdarzenia. 
 
 Zobacz [Lista obsługiwanych metryk usługi Batch](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts).
 
@@ -71,7 +71,7 @@ Aby skonfigurować alert metryki w portalu:
 2. W obszarze **monitorowanie**, kliknij przycisk **reguły alertów** > **Dodaj alert dotyczący metryki**.
 3. Wybierz metrykę, warunek alertu (na przykład gdy Metryka przekracza określoną wartość w okresie) i co najmniej jedno powiadomienie.
 
-Możesz również skonfigurować, niemal w czasie rzeczywistym alertu przy użyciu [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/). Aby uzyskać więcej informacji, zobacz [Przegląd alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+Możesz również skonfigurować, niemal w czasie rzeczywistym alertu przy użyciu [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/). Aby uzyskać więcej informacji, zobacz [Przegląd alertów](../azure-monitor/platform/alerts-overview.md)
 
 ## <a name="batch-diagnostics"></a>Diagnostyka usługi Batch
 
@@ -109,7 +109,7 @@ Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
     ![Diagnostyka usługi Batch](media/batch-diagnostics/diagnostics-portal.png)
 
-Inne opcje, aby włączyć zbieranie danych dziennika obejmują: użycia usługi Azure Monitor w portalu w ustawień diagnostycznych, należy użyć [szablonu usługi Resource Manager](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md), lub za pomocą programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
+Inne opcje, aby włączyć zbieranie danych dziennika obejmują: użycia usługi Azure Monitor w portalu w ustawień diagnostycznych, należy użyć [szablonu usługi Resource Manager](../azure-monitor/platform/diagnostic-logs-stream-template.md), lub za pomocą programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Dzienniki diagnostyczne dostępu w magazynie
@@ -133,7 +133,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 Każdy plik blob PT1H.json zawiera zdarzenia w formacie JSON, które wystąpiły w ciągu godziny określonej w adresie URL obiektu blob (na przykład h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartość minut (m = 00) jest zawsze 00, ponieważ dziennik diagnostyczny zdarzenia są dzielone na poszczególne obiekty BLOB na godzinę. (Wszystkie godziny są w formacie UTC).
 
 
-Aby uzyskać więcej informacji o schemacie dzienniki diagnostyczne na koncie magazynu, zobacz [archiwizowanie dzienników diagnostycznych usługi Azure](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+Aby uzyskać więcej informacji o schemacie dzienniki diagnostyczne na koncie magazynu, zobacz [archiwizowanie dzienników diagnostycznych usługi Azure](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
 
 Aby programowo uzyskać dostęp dzienniki na koncie magazynu, przy użyciu interfejsów API magazynu. 
 

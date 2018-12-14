@@ -9,31 +9,28 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 21c7b94f694e8a2cfe6abfd74bbc616ade5dad82
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f0d6c22d54de0486ad679f93343f0e7b208f21f4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008355"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384063"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Tworzenie akcji skryptu skryptów dla klastrów HDInsight Windows
 Dowiedz się, jak można tworzyć skrypty Akcja skryptu dla HDInsight. Aby uzyskać informacji na temat za pomocą skryptów akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md). Aby uzyskać ten sam artykuł, przeznaczony dla klastrów HDInsight opartych na systemie Linux, zobacz [skrypty opracowywanie akcji skryptu do HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
 
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tym dokumencie działają tylko w przypadku klastrów HDInsight z systemem Windows. HDInsight jest dostępna tylko na Windows dla wersji starszej niż HDInsight 3.4. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Aby uzyskać informacji na temat klastrów opartych na systemie Linux za pomocą akcji skryptu, zobacz [opracowywanie akcji z HDInsight (Linux) skryptu](hdinsight-hadoop-script-actions-linux.md).
->
->
 
 
+Akcja skryptu może służyć do instalowania dodatkowego oprogramowania, uruchomiony w klastrze usługi Apache Hadoop lub zmienić konfigurację aplikacji instalowanych w klastrze. Akcje skryptu to skrypty, działających w węzłach klastra, gdy klastry HDInsight są wdrażane i są one wykonywane, gdy węzły w klastrze Zakończ konfigurację HDInsight. Akcja skryptu jest wykonywane w ramach uprawnień konta administratora systemu i zapewnia pełne prawa dostępu do węzłów klastra. Każdy klaster można podać listę akcji skryptu do wykonania w kolejności, w którym są określone.
 
-Akcja skryptu może służyć do instalowania dodatkowego oprogramowania w klastrze usługi Hadoop lub zmienić konfigurację aplikacji instalowanych w klastrze. Akcje skryptu to skrypty, działających w węzłach klastra, gdy klastry HDInsight są wdrażane i są one wykonywane, gdy węzły w klastrze Zakończ konfigurację HDInsight. Akcja skryptu jest wykonywane w ramach uprawnień konta administratora systemu i zapewnia pełne prawa dostępu do węzłów klastra. Każdy klaster można podać listę akcji skryptu do wykonania w kolejności, w którym są określone.
-
-> [!NOTE]
+> [!NOTE]  
 > Jeśli wystąpi następujący komunikat o błędzie:
 >
 > System.Management.Automation.CommandNotFoundException; ExceptionMessage: Termin "Save-HDIFile" nie został rozpoznany jako nazwa polecenia cmdlet, funkcji, pliku skryptu lub program wykonywalny. Sprawdź pisownię nazwy lub jeśli ścieżka został uwzględniony, sprawdź, czy ścieżka jest poprawna i spróbuj ponownie.
+> 
 > Jest on, ponieważ nie włączono metody pomocnika.  Zobacz [metody pomocnika do niestandardowych skryptów](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
 >
 >
@@ -98,16 +95,16 @@ HDInsight udostępnia szereg skryptów do instalowania dodatkowych składników 
 
 | Name (Nazwa) | Skrypt |
 | --- | --- |
-| **Instalowanie platformy Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Zobacz [instalacji i używania klastrów Spark on HDInsight][hdinsight-install-spark]. |
+| **Instalowanie platformy Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Zobacz [instalacji i używania klastrów platformy Apache Spark w HDInsight][hdinsight-install-spark]. |
 | **Instalowanie języka R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Zobacz [instalacji i używania języka R w klastrach HDInsight](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
-| **Zainstalować platformę Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Zobacz [instalacji i używania platformy Solr w HDInsight clusters](hdinsight-hadoop-solr-install.md). |
-| **Zainstalować system Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Zobacz [instalacji i używania system Giraph w HDInsight clusters](hdinsight-hadoop-giraph-install.md). |
-| **Wstępne ładowanie bibliotek technologii Hive** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Zobacz [Dodaj Hive bibliotek w klastrach HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
+| **Zainstalować platformę Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Zobacz [instalacji i używania klastrów Apache Solr w HDInsight](hdinsight-hadoop-solr-install.md). |
+| **Zainstalować system Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Zobacz [instalacji i używania Giraph Apache na HDInsight clusters](hdinsight-hadoop-giraph-install.md). |
+| **Wstępne ładowanie bibliotek technologii Hive** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Zobacz [Dodaj Apache Hive bibliotek w klastrach HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
 
 Akcja skryptu można wdrożyć w witrynie Azure portal, programu Azure PowerShell lub przy użyciu zestawu .NET SDK HDInsight.  Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu][hdinsight-cluster-customize].
 
-> [!NOTE]
+> [!NOTE]  
 > Przykładowe skrypty działają tylko w przypadku klastra HDInsight w wersji 3.1 lub nowszej. Aby uzyskać więcej informacji na temat wersji klastra HDInsight, zobacz [wersji klastra HDInsight](hdinsight-component-versioning.md).
 >
 >
@@ -157,25 +154,25 @@ Poniżej przedstawiono metody pomocnika, które są udostępniane przez ten skry
 ## <a name="best-practices-for-script-development"></a>Najlepsze rozwiązania dotyczące tworzenia skryptów
 Podczas tworzenia niestandardowego skryptu dla klastra usługi HDInsight istnieje kilka najlepszych rozwiązań, które należy uwzględnić:
 
-* Sprawdzanie wersji usługi Hadoop
+* Sprawdź, czy wersja usługi Hadoop.
 
     HDInsight w wersji 3.1 (Hadoop 2.4) i nowszych pomocy technicznej za pomocą akcji skryptu, aby zainstalować składniki niestandardowe w klastrze. W skrypcie niestandardowe, należy użyć **Get HDIHadoopVersion** metody pomocnika, aby sprawdzić wersję platformy Hadoop, przed kontynuowaniem wykonywania innych zadań w skrypcie.
-* Podaj stałe linki do zasobów skryptu
+* Podaj stałe linki do zasobów skryptu.
 
     Użytkowników powinien sprawdzać, czy wszystkie skrypty i inne artefakty, używany w dostosowaniu klastra pozostają dostępne przez cały czas życia klastra i że wersje tych plików nie zmieniają się przez czas trwania. Te zasoby są wymagane, jeśli wymagana jest odtwarzanie z obrazu z węzłów w klastrze. Najlepszym rozwiązaniem jest do pobrania i Archiwizuj wszystko na koncie magazynu, który kontroluje użytkownika. To konto może zawierać domyślne konto magazynu i dodatkowych kont magazynu określone w czasie wdrażania klastra dostosowane.
     Platforma Spark i R dostosowane przykłady klastra, w dokumentacji, na przykład znajduje się lokalną kopię zasoby na tym koncie magazynu: https://hdiconfigactions.blob.core.windows.net/.
-* Upewnij się, że skrypt dostosowania klastra idempotentne
+* Upewnij się, że skrypt dostosowania klastra jest idempotentna.
 
     Należy oczekiwać, że węzły klastra usługi HDInsight są odtwarzany z obrazu w okresie istnienia klastra. Skrypt dostosowania klastra jest uruchamiane zawsze, gdy klaster jest odtwarzany z obrazu. Ten skrypt muszą być zaprojektowane jako idempotentne, w tym sensie, że na odtwarzanie z obrazu, skrypt należy upewnić się, że klaster jest zwracany do tej samej dostosowane stan, który był po skrypt został uruchomiony po raz pierwszy, gdy został utworzony klaster. Na przykład, jeśli niestandardowego skryptu zainstalowanym jej pierwszym uruchomieniu aplikacji na D:\AppLocation, przy każdym uruchomieniu kolejnych, od odtwarzanie z obrazu, skrypt powinien Sprawdź, czy aplikacja istnieje w lokalizacji D:\AppLocation przed wykonaniem innych kroków w skrypt.
-* Zainstaluj składniki niestandardowe w optymalny lokalizacji
+* Zainstaluj składniki niestandardowe w lokalizacji optymalne.
 
     Gdy węzły klastra są odtworzone z obrazu, C:\ zasobów dysku i dysk systemowy D:\ mogą być ponownie sformatowany, co spowoduje utratę danych i aplikacji, które były zainstalowane na tych dyskach. Taka utrata również może się zdarzyć, jeśli węzeł maszyn wirtualnych (VM), który jest częścią klastra ulegnie awarii i został zastąpiony nowym węźle. Składniki można zainstalować na dysku D:\, lub w lokalizacji C:\apps w klastrze. Wszystkie inne lokalizacje na dysku C:\ są zastrzeżone. Określ lokalizację, w której są aplikacje lub biblioteki ma być zainstalowany w klastrze dostosowywania skryptu.
-* Zapewni to wysoką dostępność architektury klastra
+* Zapewnij wysoką dostępność architektury klastra.
 
     HDInsight ma aktywny / pasywny architekturę wysokiej dostępności, jednego z węzłem głównym w trybie aktywnym (w którym są uruchomione usługi HDInsight) i innych węzła głównego jest w trybie rezerwy (w których HDInsight nie uruchomiono usługi). Jeśli usługi HDInsight są przerywane, węzły przełączyć tryby aktywnym i pasywnym. Jeśli akcja skryptu jest używany do instalowania usług na obu węzłów głównych w celu zapewnienia wysokiej dostępności, należy pamiętać, że mechanizm pracy awaryjnej HDInsight nie będzie mógł automatycznie w trybie Failover te zainstalowane przez użytkowników usługi. Dlatego zainstalowane przez użytkowników usług HDInsight węzły główne, które powinny być o wysokiej dostępności, musisz mieć ich własny mechanizm pracy awaryjnej, jeśli w trybie aktywny / pasywny lub działać w trybie aktywny aktywny.
 
     Polecenie Akcja skryptu HDInsight działa na zarówno węzły główne, gdy rola węzeł główny jest określony jako wartość *ClusterRoleCollection* parametru. Dlatego podczas projektowania niestandardowego skryptu, upewnij się, że skrypt ma informacje o tej konfiguracji. Nie należy uruchamiać w problemy, w którym te same usługi jest zainstalowana i uruchomiona na oba węzły główne i ich znajdą się konkurującymi ze sobą. Ponadto należy pamiętać, że dane zostaną utracone podczas odtwarzanie z obrazu, więc oprogramowania zainstalowanych za pomocą akcji skryptu musi być odporny na takie zdarzenia. Aplikacje powinny być zaprojektowane do pracy z danymi o wysokiej dostępności, która jest rozłożona na wiele węzłów. W tym samym czasie można odtworzyć z obrazu maksymalnie 1/5 węzłów w klastrze.
-* Konfigurowanie niestandardowych składników, aby korzystać z magazynu obiektów Blob platformy Azure
+* Konfigurowanie składników niestandardowych, aby korzystać z magazynu obiektów Blob platformy Azure.
 
     Składniki niestandardowe, które są instalowane w węzłach klastra może być domyślną konfigurację, aby używać magazynu plików System (HDFS, Hadoop Distributed). Należy zmienić konfigurację, aby zamiast tego użyj usługi Azure Blob storage. Na klastrze odtworzenia z obrazu systemu plików HDFS pobiera sformatowany i utracisz wszelkie dane, które są przechowywane. Zamiast tego za pomocą usługi Azure Blob storage zapewnia przechowywania danych.
 
@@ -297,9 +294,9 @@ W przypadku, gdy wystąpi błąd wykonania, opisujące jego dane wyjściowe rów
 
 ## <a name="see-also"></a>Zobacz także
 * [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu][hdinsight-cluster-customize]
-* [Instalowanie i używanie języka Spark w klastrach HDInsight][hdinsight-install-spark]
-* [Instalowanie i korzystanie z platformy Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
-* [Instalowanie i używanie systemu Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]
+* [Instalowanie i używanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
+* [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

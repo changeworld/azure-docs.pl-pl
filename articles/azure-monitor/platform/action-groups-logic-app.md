@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 4b8547435293f26c7f22ed6d5181c64fbabcd574
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0ab496b884506b013c6a4abb2dff1e1feff4fc72
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285039"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342990"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor
 
@@ -295,6 +295,6 @@ Proces tworzenia alertu dotyczącego metryki jest podobny do [Tworzenie alertu d
 Usługa Logic Apps zawiera szereg różnych łączników, które pozwalają do wyzwalania akcji w szerokim zakresie aplikacji i baz danych. Slack, SQL Server, Oracle, Salesforce, przedstawiono kilka sposobów. Aby uzyskać więcej informacji na temat łączników, zobacz [łączników aplikacji logiki](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Pobierz [Przegląd alertów dziennika aktywności platformy Azure](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) i Dowiedz się, jak otrzymywać alerty.  
+* Pobierz [Przegląd alertów dziennika aktywności platformy Azure](../../azure-monitor/platform/alerts-overview.md) i Dowiedz się, jak otrzymywać alerty.  
 * Dowiedz się, jak [skonfigurować alerty, gdy zostaje opublikowany powiadomienie usługi Azure Service Health](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 * Dowiedz się więcej o [grup akcji](../../azure-monitor/platform/action-groups.md).

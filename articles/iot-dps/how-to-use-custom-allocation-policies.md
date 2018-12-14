@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9d75195656581021253b5787a8bfd46639cc1754
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323136"
+ms.locfileid: "53340060"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Jak używać zasad niestandardowych alokacji
 
@@ -449,20 +449,24 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
 6. Kliknij prawym przyciskiem myszy projekt **prov\_dev\_client\_sample**, a następnie wybierz pozycję **Ustaw jako projekt startowy**. 
 
+
 #### <a name="simulate-the-contoso-toaster-device"></a>Symulowanie urządzenia tostera firmy Contoso
 
-1. W oknie *Eksplorator rozwiązań* programu Visual Studio przejdź do folderu projektu **hsm\_security\_client** i rozwiń go. Rozwiń węzeł **Pliki źródłowe**, a następnie otwórz plik **hsm\_client\_key.c**. 
-
-    Znajdź deklaracje stałych `REGISTRATION_NAME` i `SYMMETRIC_KEY_VALUE`. Wprowadź następujące zmiany w pliku, a następnie zapisz plik.
-
-    Zaktualizuj wartość `REGISTRATION_NAME` stałej identyfikatorem rejestracji dla urządzenia tostera **breakroom499-contoso-tstrsd-007**.
-    
-    Zaktualizuj wartość `SYMMETRIC_KEY_VALUE` stałej kluczem urządzenia generowany przez niego urządzenia tostera. Wartość **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** tylko jest podawana jako przykład.
+1. Aby zasymulować urządzenie tostera, Znajdź wywołanie `prov_dev_set_symmetric_key_info()` w **prov\_dev\_klienta\_sample.c** który jest ujęty w komentarz.
 
     ```c
-    static const char* const REGISTRATION_NAME = "breakroom499-contoso-tstrsd-007";
-    static const char* const SYMMETRIC_KEY_VALUE = "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
+
+    Usuń znaczniki komentarza wywołania funkcji i Zastąp wartości symboli zastępczych (włącznie z nawiasami) z Identyfikatorem rejestracji tostera i klucz urządzenia pochodnej, wcześniej wygenerowania. Wartość klucza **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** pokazane poniżej tylko jest podawana jako przykład.
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
+    ```
+   
+    Zapisz plik.
 
 2. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania**, aby uruchomić rozwiązanie. W monicie o ponowne skompilowanie projektu kliknij przycisk **Tak**, aby ponownie skompilować projekt przed uruchomieniem.
 
@@ -485,20 +489,16 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
 #### <a name="simulate-the-contoso-heat-pump-device"></a>Symulowanie urządzenia pompy ciepła firmy Contoso
 
-1. W programie Visual Studio *Eksploratora rozwiązań* okna, przejdź do **hsm\_zabezpieczeń\_klienta** projektu i rozwiń go. Rozwiń węzeł **Pliki źródłowe**, a następnie otwórz plik **hsm\_client\_key.c**. 
-
-    Znajdź deklaracje stałych `REGISTRATION_NAME` i `SYMMETRIC_KEY_VALUE`. Wprowadź następujące zmiany w pliku, a następnie zapisz plik.
-
-    Zaktualizuj wartość `REGISTRATION_NAME` stałej identyfikatorem rejestracji dla urządzenia pompy ciepła **mainbuilding167-contoso-hpsd-088**.
-    
-    Zaktualizuj wartość `SYMMETRIC_KEY_VALUE` stałej kluczem urządzenia generowany przez niego urządzenia tostera. Wartość **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** tylko jest podawana jako przykład.
+1. Zasymulować urządzenie pompy ciepła, należy zaktualizować wywołanie `prov_dev_set_symmetric_key_info()` w **prov\_dev\_klienta\_sample.c** ponownie z Identyfikatorem rejestracji pompy częstości dostępu i klucz urządzenia pochodnej wygenerowanego wcześniej . Wartość klucza **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** pokazane poniżej tylko jest podawana jako przykład.
 
     ```c
-    static const char* const REGISTRATION_NAME = "mainbuilding167-contoso-hpsd-088";
-    static const char* const SYMMETRIC_KEY_VALUE = "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
+   
+    Zapisz plik.
 
-7. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania**, aby uruchomić rozwiązanie. W monicie o ponowne skompilowanie projektu kliknij przycisk **Tak**, aby ponownie skompilować projekt przed uruchomieniem.
+2. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania**, aby uruchomić rozwiązanie. W monicie o ponowne skompilowanie projektu kliknij przycisk **Tak**, aby ponownie skompilować projekt przed uruchomieniem.
 
     Następujące dane wyjściowe jest przykładem urządzenia symulowanego pompy ciepła pomyślnie uruchamiania systemu oraz podłączania do aprowizacji wystąpienia usługi ma być przypisane do Centrum IoT pompy cieplne Contoso przez zasadę alokacji niestandardowe:
 
@@ -515,8 +515,6 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
     Press enter key to exit:
     ```
-
-
 
 
 ## <a name="troubleshooting-custom-allocation-policies"></a>Rozwiązywanie problemów z zasad alokacji niestandardowe

@@ -4,45 +4,43 @@ description: Skonfiguruj ciągłą integrację i ciągłe wdrażanie — usługi
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4db5fce89df0b5974261788608b785cf16917f1a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074802"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386829"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
 
-Można łatwo adaptacji metodyki DevOps za pomocą aplikacji usługi Azure IoT Edge za pomocą wbudowanych zadań usługi Azure IoT Edge w potokach platformy Azure lub [wtyczki usługi Azure IoT Edge dla serwera Jenkins](https://plugins.jenkins.io/azure-iot-edge) na serwerze Jenkins. W tym artykule przedstawiono, jak używasz ciągłej integracji i ciągłego wdrażania funkcji Azure potoki i serwera usługi Azure DevOps, aby skompilować, przetestować i szybko i skutecznie wdrażać aplikacje do usługi Azure IoT Edge. 
+Można łatwo adaptacji metodyki DevOps za pomocą aplikacji usługi Azure IoT Edge za pomocą wbudowanych zadań usługi Azure IoT Edge w potokach platformy Azure lub [wtyczki usługi Azure IoT Edge dla serwera Jenkins](https://plugins.jenkins.io/azure-iot-edge) na serwerze Jenkins. W tym artykule przedstawiono, jak można użyć ciągłej integracji i ciągłego wdrażania funkcji Azure potoków do tworzenia, testowania i wdrażania aplikacji, szybko i skutecznie do usługi Azure IoT Edge. 
 
 W tym artykule dowiesz się jak:
 * Tworzenie i sprawdź w przykładowym rozwiązaniu IoT Edge.
 * Skonfiguruj ciągłą integrację (CI), aby skompilować rozwiązanie.
 * Skonfiguruj ciągłe wdrażanie (CD) na wdrożeniu rozwiązania i przeglądania odpowiedzi.
 
-Potrwa 20 minut na wykonanie czynności opisanych w tym artykule.
-
 ![Diagram — ciągła Integracja i ciągłe dostarczanie gałęzie rozwoju i produkcji](./media/how-to-ci-cd/cd.png)
 
 
 ## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Utwórz przykładowe rozwiązanie Azure IoT Edge, przy użyciu programu Visual Studio Code
 
-W tej sekcji utworzysz przykładowe usługi IoT Edge rozwiązania zawierającego testy jednostkowe, które można wykonać w ramach procesu kompilacji. Przed zgodnie ze wskazówkami w tej sekcji, wykonaj kroki opisane w [tworzenia rozwiązań usługi IoT Edge z wieloma modułami w programie Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
+W tej sekcji utworzysz przykładowe usługi IoT Edge rozwiązania zawierającego testy jednostkowe, które można wykonać w ramach procesu kompilacji. Przed zgodnie ze wskazówkami w tej sekcji, wykonaj kroki opisane w [tworzenia rozwiązań usługi IoT Edge z wieloma modułami w programie Visual Studio Code](how-to-develop-multiple-modules-vscode.md).
 
-1. W palecie poleceń programu VS Code, typ, a następnie uruchom polecenie **usługi Azure IoT Edge: rozwiązanie nowej usługi IoT Edge**. Następnie wybierz folder obszaru roboczego, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Tworzenie modułu C# (**FilterModule**) jako pierwszego modułu, w tym rozwiązaniu. Należy również określić repozytorium obrazów platformy Docker dla pierwszego modułu. Repozytorium obrazów domyślne opiera się na lokalnych rejestru platformy Docker (`localhost:5000/filtermodule`). Zmień go na usługę Azure Container Registry (`<your container registry address>/filtermodule`) lub usługi Docker Hub dalsze ciągłej integracji.
+1. W palecie poleceń programu VS Code, typ, a następnie uruchom polecenie **usługi Azure IoT Edge: Nowe rozwiązanie IoT Edge**. Następnie wybierz folder obszaru roboczego, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Tworzenie modułu C# (**FilterModule**) jako pierwszego modułu, w tym rozwiązaniu. Należy również określić repozytorium obrazów platformy Docker dla pierwszego modułu. Repozytorium obrazów domyślne opiera się na lokalnych rejestru platformy Docker (`localhost:5000/filtermodule`). Zmień go na usługę Azure Container Registry (`<your container registry address>/filtermodule`) lub usługi Docker Hub dalsze ciągłej integracji.
 
     ![Konfigurowanie usługi Azure Container Registry](./media/how-to-ci-cd/acr.png)
 
-2. Okna programu VS Code zostanie załadowany obszar roboczy rozwiązania usługi IoT Edge. Możesz opcjonalnie wpisać i uruchomić **usługi Azure IoT Edge: Dodaj moduł IoT Edge** można dodać więcej modułów. Brak `modules` folderze `.vscode` folder i plik manifestu szablonu wdrożenia w folderze głównym. Wszystkie kody modułu użytkownika będzie podfolderów w folderze `modules`. `deployment.template.json` Jest szablon manifestu wdrożenia. Niektóre parametry w tym pliku, zostanie przetworzona z `module.json`, który istnieje w folderze każdego modułu.
+2. Okna programu VS Code zostanie załadowany obszar roboczy rozwiązania usługi IoT Edge. Możesz opcjonalnie wpisać i uruchomić **usługi Azure IoT Edge: Dodaj moduł usługi IoT Edge** można dodać więcej modułów. Brak `modules` folderze `.vscode` folder i plik manifestu szablonu wdrożenia w folderze głównym. Wszystkie kody modułu użytkownika będzie podfolderów w folderze `modules`. `deployment.template.json` Jest szablon manifestu wdrożenia. Niektóre parametry w tym pliku, zostanie przetworzona z `module.json`, który istnieje w folderze każdego modułu.
 
 3. Przykład rozwiązania usługi IoT Edge jest teraz gotowy. Domyślnego języka C# modułu działa jako moduł potok komunikatów. W `deployment.template.json`, zostanie wyświetlony, to rozwiązanie zawiera dwa moduły. Komunikat zostanie wygenerowane z `tempSensor` moduł i zostanie bezpośrednio przekazać w potoku za pomocą `FilterModule`, następnie wysyłane do usługi IoT hub.
 
-4. Zapisz te projekty, a następnie zaewidencjonować je w repozytorium Azure repozytoriów lub serwer usługi Azure DevOps.
+4. Zapisz te projekty, a następnie zatwierdzić do repozytoriów platformy Azure.
     
 > [!NOTE]
 > Aby uzyskać więcej informacji o korzystaniu z repozytoriów platformy Azure, zobacz [udostępnić swój kod za pomocą programu Visual Studio i repozytoria, Azure](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
@@ -59,7 +57,7 @@ W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do 
 
     ![Tworzenie nowego potoku kompilacji](./media/how-to-ci-cd/add-new-build.png)
 
-1. Po wyświetleniu monitu wybierz **DevOps Git platformy Azure** typ źródła. Następnie wybierz projekt, repozytorium i gałąź, na którym znajduje się kod. Wybierz **nadal**.
+1. Po wyświetleniu monitu wybierz repozytoriów platformy Azure dla źródła. Następnie wybierz projekt, repozytorium i gałąź, na którym znajduje się kod. Wybierz **nadal**.
 
     ![Wybierz pozycję Azure repozytoriów Git](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -101,7 +99,7 @@ W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do 
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Konfigurowanie Azure potoków ciągłego wdrażania
 W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatycznego uruchamiania podczas potok kompilacji umieszcza artefaktów i ukazują dzienników wdrażania w potokach platformy Azure.
 
-1. W **wersji** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki wydań, wybierz opcję **+ nowy** przycisku.  
+1. W **wersji** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki wydań, wybierz opcję **+ nowy** przycisk, a następnie kliknij przycisk **+ nowy potoku wydania**.  
 
     ![Dodaj potoku tworzenia wersji](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -109,7 +107,7 @@ W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatyczneg
 
     ![Uruchom zadanie puste](./media/how-to-ci-cd/start-with-empty-job.png)
 
-2. Następnie potok wydania może zainicjować za pomocą jednego etapu: **etap 1**. Zmień nazwę **etap 1** do **QA** i jej traktowała jako środowisku testowym. W typowym ciągłego wdrażania potoku zwykle istnieje wiele etapów, można utworzyć więcej oparte na Twoje praktyki DevOps.
+2. Następnie potok wydania może ustawić za pomocą jednego etapu: **Etap 1**. Zmień nazwę **etap 1** do **QA** i jej traktowała jako środowisku testowym. W typowym ciągłego wdrażania potoku zwykle istnieje wiele etapów, można utworzyć więcej oparte na Twoje praktyki DevOps.
 
     ![Tworzenie etapów środowiska testowego](./media/how-to-ci-cd/QA-env.png)
 

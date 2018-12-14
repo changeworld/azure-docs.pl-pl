@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 2d1f96359512a3c2135909ebf69ec9ec3b801d61
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8b5b96f7a67dfbb33f470825b8ba4cabd3469dfc
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190564"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385197"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -35,11 +35,11 @@ Poniższy diagram zawiera widok wysokiego poziomu usługi Azure Monitor. W środ
 ## <a name="monitoring-data-platform"></a>Platforma danych monitorowania
 Wszystkie dane zebrane przez usługi Azure Monitor pasuje do jednej z dwóch typów podstawowych, [metryk i dzienników](../azure-monitor/platform/data-collection.md). [Metryki](../azure-monitor/platform/data-collection.md#metrics) są wartości liczbowe, które opisują niektóre aspekty systemu w określonym punkcie w czasie. Są one uproszczone i zdolność do obsługi scenariuszy w czasie rzeczywistym w pobliżu. [Dzienniki](../azure-monitor/platform/data-collection.md#logs) zawierają różne rodzaje danych zorganizowanych w rekordy z różnymi zestawami właściwości dla każdego typu. Dane telemetryczne, np. zdarzeniami i śladami są przechowywane jako dzienniki dodatkowo na dane wydajności, aby wszystkie można zbudować do analizy.
 
-Dla wielu zasobów platformy Azure zostaną wyświetlone dane zebrane przez usługi Azure Monitor po prawej stronie na ich stronie Przegląd w witrynie Azure portal. Mają się z dowolną maszyną wirtualną, na przykład, a zobaczysz kilka wykresów, wyświetlanie metryk wydajności. Kliknij dowolne wykresy, aby otworzyć je w [Eksplorator metryk](../monitoring-and-diagnostics/monitoring-metric-charts.md) w witrynie Azure portal, co pozwala na wykresie wartości wielu metryk wraz z upływem czasu.  Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami.
+Dla wielu zasobów platformy Azure zostaną wyświetlone dane zebrane przez usługi Azure Monitor po prawej stronie na ich stronie Przegląd w witrynie Azure portal. Mają się z dowolną maszyną wirtualną, na przykład, a zobaczysz kilka wykresów, wyświetlanie metryk wydajności. Kliknij dowolne wykresy, aby otworzyć je w [Eksplorator metryk](../azure-monitor/platform/metrics-charts.md) w witrynie Azure portal, co pozwala na wykresie wartości wielu metryk wraz z upływem czasu.  Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami.
 
 ![Metryki](media/overview/metrics.png)
 
-Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w usłudze Log Analytics, która zawiera [zaawansowany język zapytań](../azure-monitor/log-query/log-query-overview.md) do szybkiego pobierania, konsolidacji i analizowania zebranych danych.  Można tworzyć i testować przy użyciu [strony Log Analytics](../azure-monitor/log-query/portals.md) w witrynie Azure portal, a następnie bezpośrednio analizować dane za pomocą tych narzędzi lub zapisać zapytania do użycia z [wizualizacje](visualizations.md) lub [ reguły alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w usłudze Log Analytics, która zawiera [zaawansowany język zapytań](../azure-monitor/log-query/log-query-overview.md) do szybkiego pobierania, konsolidacji i analizowania zebranych danych.  Można tworzyć i testować przy użyciu [strony Log Analytics](../azure-monitor/log-query/portals.md) w witrynie Azure portal, a następnie bezpośrednio analizować dane za pomocą tych narzędzi lub zapisać zapytania do użycia z [wizualizacje](visualizations.md) lub [ reguły alertów](../azure-monitor/platform/alerts-overview.md).
 
 Język zapytań usługi Log Analytics jest odpowiedni dla prostego dziennika zapytań, ale oferuje także zaawansowane funkcje, takie jak agregacje, sprzężenia i analiza inteligentna. Możesz szybko dowiedzieć się przy użyciu języka zapytań [wielu lekcje](../azure-monitor/log-query/get-started-queries.md) , które są dostępne.  Specjalne instrukcje udostępniono dla użytkowników, którzy znają już [SQL](../azure-monitor/log-query/sql-cheatsheet.md) i [Splunk](../azure-monitor/log-query/splunk-cheatsheet.md).
 
@@ -94,7 +94,7 @@ Oprócz umożliwienia interakcyjne analizowanie danych monitorowania, to efektyw
 
 
 ### <a name="alerts"></a>Alerty
-[Alerty w usłudze Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktywnego powiadamiania o krytycznych warunków i potencjalnie próba akcje naprawcze. Podaj reguły alertów na podstawie metryk niemal w czasie rzeczywistym alerty oparte na wartości liczbowe, podczas gdy zasady oparte na dziennikach przesłanie do złożonej logiki przez dane z wielu źródeł.
+[Alerty w usłudze Azure Monitor](../azure-monitor/platform/alerts-overview.md) proaktywnego powiadamiania o krytycznych warunków i potencjalnie próba akcje naprawcze. Podaj reguły alertów na podstawie metryk niemal w czasie rzeczywistym alerty oparte na wartości liczbowe, podczas gdy zasady oparte na dziennikach przesłanie do złożonej logiki przez dane z wielu źródeł.
 
 Reguły usługi Azure Monitor używany alertów [grup akcji](../azure-monitor/platform/action-groups.md), które zawierają unikatowych zestawów odbiorców i akcje, które mogą być współużytkowane przez wiele reguł. Zgodnie z wymaganiami, grupy akcji można wykonywać takie zadania jak przy użyciu elementów webhook, mają alerty start działań zewnętrznych lub integracji z narzędziami ITSM.
 

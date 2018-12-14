@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 770f8261b3036e847111d2181a4c843374da7d60
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6f1869b83f46f97d0c54eb874a8879521a43b1e2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969740"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387067"
 ---
 # <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
 
@@ -89,14 +89,6 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | batchaccounts | Yes | Yes |
-
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-| Typ zasobu | Grupa zasobów | Subskrypcja |
-| ------------- | -------------- | ------------ |
-| Klastry | Nie | Nie |
-| fileservers | Nie | Nie |
-| zadania | Nie | Nie |
-| obszary robocze | Nie | Nie |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | Typ zasobu | Grupa zasobów | Subskrypcja |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
-ms.openlocfilehash: 6e85d19460d0b1c02ddd6666cf1e441e44e7a03d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 08f26742d5c0af7f873d8f55204fd9ceeb141f1e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276778"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340083"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -82,7 +82,7 @@ Są już nie można utworzyć nowych obszarów roboczych przy użyciu portalu pa
 Alerty zostały [rozszerzone do postaci witryny Azure portal](../../azure-monitor/platform/alerts-extend.md). Po zakończeniu tej operacji akcje z zakresu zarządzania alerty tylko będą dostępne w witrynie Azure portal. Istniejące alerty będą nadal wyświetlane w portalu pakietu OMS. Jeśli uzyskujesz dostęp do alertów programowo przy użyciu interfejsu API REST alertów Log Analytics lub szablon Log Analytics alertu zasobu, należy korzystanie z grup akcji zamiast akcji w wywołania interfejsu API, szablony usługi Azure Resource Manager i poleceń programu PowerShell.
 
 ### <a name="alert-management-solution"></a>Rozwiązanie do zarządzania alertami
-Zamiast [rozwiązanie usługi alert management](../../azure-monitor/platform/alert-management-solution.md), możesz użyć [usługi Azure Monitor ujednoliconego interfejsu alertów](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) wizualizacji i zarządzać alertami. Nowe środowisko agreguje alertów z wielu źródeł w ramach alertów platformy Azure łącznie dziennika z usługą Log Analytics. Możesz Zobacz dystrybucje alertów, skorzystaj z zalet automatyczne grupowanie powiązanych alertów za pośrednictwem inteligentnego grup i wyświetlić alerty w ramach wielu subskrypcji podczas stosowania filtrów zaawansowanych. Wszystkie te funkcje są dostępne w wersji zapoznawczej, począwszy od 4 czerwca 2018 r. Rozwiązanie do zarządzania alertów nie będą dostępne w witrynie Azure portal. 
+Zamiast [rozwiązanie usługi alert management](../../azure-monitor/platform/alert-management-solution.md), możesz użyć [usługi Azure Monitor ujednoliconego interfejsu alertów](../../azure-monitor/platform/alerts-overview.md) wizualizacji i zarządzać alertami. Nowe środowisko agreguje alertów z wielu źródeł w ramach alertów platformy Azure łącznie dziennika z usługą Log Analytics. Możesz Zobacz dystrybucje alertów, skorzystaj z zalet automatyczne grupowanie powiązanych alertów za pośrednictwem inteligentnego grup i wyświetlić alerty w ramach wielu subskrypcji podczas stosowania filtrów zaawansowanych. Wszystkie te funkcje są dostępne w wersji zapoznawczej, począwszy od 4 czerwca 2018 r. Rozwiązanie do zarządzania alertów nie będą dostępne w witrynie Azure portal. 
 
 Dane zebrane przez rozwiązanie do zarządzania alertami (rekordy z typem alertu) w dalszym ciągu można w usłudze Log Analytics, tak długo, jak rozwiązanie jest zainstalowane dla obszaru roboczego. Od sierpnia 2018 r. przesyłania strumieniowego alertów z ujednoliconego generowania alertów w obszary robocze zostaną włączone, zastępując tę możliwość. Niektóre zmiany schematu są oczekiwane i zostanie ogłoszona w późniejszym terminie.
 

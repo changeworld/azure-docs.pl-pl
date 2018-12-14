@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 95fd44d5865eb804cb91d7adc2cc17bb5f957b5c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275214"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339811"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach
 
@@ -396,7 +396,7 @@ W tej sekcji należy wykonać następujące zadania, aby skonfigurować rejestro
 
 W tej sekcji uruchamiasz lokalnie ponownie, aby sprawdzić, czy dane rejestrowania posłuży do Application Insights do konsoli.
 
-1. Użyj **Eksploratora serwera** w programie Visual Studio do utworzenia komunikatu w kolejce, tak samo jak [wcześniej](#trigger-the-function), z wyjątkiem wprowadź *Hello usługi App Insights!* jako tekst komunikatu.
+1. Użyj **Eksploratora serwera** w programie Visual Studio do utworzenia komunikatu w kolejce, tak samo jak [wcześniej](#trigger-the-function-in-azure), z wyjątkiem wprowadź *Hello usługi App Insights!* jako tekst komunikatu.
 
 1. Uruchom projekt.
 

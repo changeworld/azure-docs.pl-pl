@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 49f515c4321b13652d64c2e6f5b8e44ed6a29bca
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4ea00d1e23ce26855fe4bf01dc473c6b8672db47
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188099"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384551"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
 
@@ -76,7 +76,7 @@ Zasoby platformy Azure, które obsługują [usługa Azure monitor](../../azure-m
 >
 
 * Szczegóły dostępne metryki, można znaleźć [metryki obsługiwane z usługą Azure Monitor](../../monitoring-and-diagnostics/monitoring-supported-metrics.md).
-* Szczegóły dostępne dzienniki, można znaleźć [obsługiwane usługi i schematu dla dzienników diagnostycznych](../../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+* Szczegóły dostępne dzienniki, można znaleźć [obsługiwane usługi i schematu dla dzienników diagnostycznych](../../azure-monitor/platform/tutorial-dashboards.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Włączanie diagnostyki przy użyciu programu PowerShell
 Potrzebujesz listopada 2016 r. (v2.3.0) lub nowszej wersji [programu Azure PowerShell](/powershell/azure/overview).

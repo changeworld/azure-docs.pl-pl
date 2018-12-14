@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 88a4c6dbe9311a054c6ed93df0005d32e6d21672
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fa5c3d65daa86a678ec278bc49759e1de7da7f0c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271797"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386540"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Monitorowanie ciągłe za pomocą usługi Azure Monitor
 
@@ -64,13 +64,13 @@ Ciągła integracja / ciągłe wdrażanie pozwala na integrowanie i wdrażanie z
 
 - Użyj [potoki Azure](/azure/devops/pipelines) Implementowanie ciągłego wdrażania i automatyzowanie całego procesu od zatwierdzania kodu do środowiska produkcyjnego, oparte na testach ciągłej integracji/ciągłego wdrażania.
 - Użyj [bramki jakości](/devops/pipelines/release/approvals/gates) można zintegrować monitorowanie w przed wdrożeniem lub po wdrożeniu. Dzięki temu są spełniane metryki klucza kondycji i wydajności (KPI) jako aplikacji przenieść z deweloperów do produkcji i różnice w środowisku infrastruktury lub skalowania jest do niekorzystnego wpływu na kluczowych wskaźników wydajności.
-- [Obsługa osobne monitorowania instancje](../application-insights/app-insights-separate-resources.md) między środowiska innego wdrożenia, takie jak deweloperów, testerów, Canary i produkcyjne. Dzięki temu zebranych danych odpowiednich dla skojarzonych aplikacji i infrastruktury. Jeśli zachodzi potrzeba skorelowania danych między środowiskami, możesz użyć [wykresy wielu zasobów w Eksploratorze metryk](../monitoring-and-diagnostics/monitoring-metric-charts.md) lub Utwórz [zapytania obejmujące wiele zasobów w usłudze Log Analytics](log-query/cross-workspace-query.md).
+- [Obsługa osobne monitorowania instancje](../application-insights/app-insights-separate-resources.md) między środowiska innego wdrożenia, takie jak deweloperów, testerów, Canary i produkcyjne. Dzięki temu zebranych danych odpowiednich dla skojarzonych aplikacji i infrastruktury. Jeśli zachodzi potrzeba skorelowania danych między środowiskami, możesz użyć [wykresy wielu zasobów w Eksploratorze metryk](../azure-monitor/platform/metrics-charts.md) lub Utwórz [zapytania obejmujące wiele zasobów w usłudze Log Analytics](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Tworzenie alertów informacje z możliwością działania za pomocą akcji
 Krytyczne aspekty monitorowania jest aktywnie powiadamiającą administratorów o wszystkie bieżące oraz dostęp do przewidywanych problemy. 
 
-- Tworzenie [alertów w usłudze Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) na podstawie dzienników i metryk do identyfikowania stanów niepowodzenia przewidywalne. Powinny być celem wprowadzania wszystkie alerty są wiarygodne, czyli reprezentują rzeczywistych warunków krytycznych i starać się redukować liczbę fałszywych alarmów. Użyj [dynamicznymi progami](platform/alerts-dynamic-thresholds.md) można automatycznie obliczyć odniesienia na dane metryk niż definiowanie własnych progi statyczne. 
+- Tworzenie [alertów w usłudze Azure Monitor](../azure-monitor/platform/alerts-overview.md) na podstawie dzienników i metryk do identyfikowania stanów niepowodzenia przewidywalne. Powinny być celem wprowadzania wszystkie alerty są wiarygodne, czyli reprezentują rzeczywistych warunków krytycznych i starać się redukować liczbę fałszywych alarmów. Użyj [dynamicznymi progami](platform/alerts-dynamic-thresholds.md) można automatycznie obliczyć odniesienia na dane metryk niż definiowanie własnych progi statyczne. 
 - Definiuj akcje dotyczące alertów, aby użyć jest najbardziej skutecznym sposobem powiadamiania administratorów. Dostępne [akcje w przypadku powiadomień](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) są wiadomości SMS, wiadomości e-mail, powiadomienia wypychane lub połączeń głosowych.
 - Bardziej zaawansowane akcje [nawiązać połączenie z narzędziem ITSM](platform/itsmc-overview.md) lub inne systemy zarządzania alertami, za pośrednictwem [elementów webhook](platform/activity-log-alerts-webhook.md).
 - Korygowanie sytuacjach identyfikowane w alertach, jak również za pomocą [elementów runbook usługi Azure Automation](../automation/automation-webhooks.md) lub [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , można uruchamiać z poziomu alertu przy użyciu elementów webhook. 

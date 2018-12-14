@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 61496d91c9ec2cd1dcf498df04d2dab6629e009c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7a55e28f34f36cd02b67e56c6262b9e1f06dde8f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642662"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338196"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Obsługa błędów w funkcje trwałe (usługi Azure Functions)
 
@@ -27,7 +27,7 @@ Każdy wyjątek, który jest generowany w funkcji działania jest skierowany do 
 
 Na przykład rozważmy następującą funkcję programu orchestrator, który przenosi środków z jednego konta:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -38,16 +38,16 @@ public static async Task Run(DurableOrchestrationContext context)
 
     await context.CallActivityAsync("DebitAccount",
         new
-        { 
+        {
             Account = transferDetails.SourceAccount,
             Amount = transferDetails.Amount
         });
 
     try
     {
-        await context.CallActivityAsync("CreditAccount",         
+        await context.CallActivityAsync("CreditAccount",
             new
-            { 
+            {
                 Account = transferDetails.DestinationAccount,
                 Amount = transferDetails.Amount
             });
@@ -56,9 +56,9 @@ public static async Task Run(DurableOrchestrationContext context)
     {
         // Refund the source account.
         // Another try/catch could be used here based on the needs of the application.
-        await context.CallActivityAsync("CreditAccount",         
+        await context.CallActivityAsync("CreditAccount",
             new
-            { 
+            {
                 Account = transferDetails.SourceAccount,
                 Amount = transferDetails.Amount
             });
@@ -66,7 +66,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -108,7 +108,7 @@ Jeśli wywołanie **CreditAccount** funkcja kończy się niepowodzeniem dla kont
 
 Po wywołaniu aranżacji podrzędne lub działanie funkcji, można określić zasady automatycznego ponawiania. Poniższy przykład próbuje wywołać funkcję maksymalnie trzy razy i czeka na 5 sekund między kolejnymi próbami:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -118,41 +118,41 @@ public static async Task Run(DurableOrchestrationContext context)
         maxNumberOfAttempts: 3);
 
     await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
-    
+
     // ...
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const retryOptions = new df.RetryOptions(5000, 3);
-    
+
     yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
 
     // ...
 });
 ```
 
-`CallActivityWithRetryAsync` (C#) Lub `callActivityWithRetry` przyjmuje interfejsu API (JS) `RetryOptions` parametru. Suborchestration wywołań przy użyciu `CallSubOrchestratorWithRetryAsync` (C#) lub `callSubOrchestratorWithRetry` (JS) interfejsu API można używać tych tych samych zasad ponawiania prób.
+`CallActivityWithRetryAsync` (.NET) lub `callActivityWithRetry` przyjmuje (JavaScript) interfejsu API `RetryOptions` parametru. Suborchestration wywołań przy użyciu `CallSubOrchestratorWithRetryAsync` (.NET) lub `callSubOrchestratorWithRetry` (JavaScript) interfejsu API można używać tych tych samych zasad ponawiania prób.
 
 Dostępnych jest kilka opcji dostosowywania zasady automatycznego ponawiania. Te kraje to:
 
-* **Maksymalna liczba prób**: maksymalną liczbę ponownych prób.
-* **Pierwszy interwał ponawiania próby**: ilość czasu oczekiwania przed pierwszym ponowieniem próby.
-* **Współczynnik wycofywania**: współczynnik używany do określenia tempo wzrostu wycofywania. Wartość domyślna to 1.
-* **Maksymalny interwał ponawiania**: maksymalną ilość czasu oczekiwania między ponownymi próbami.
-* **Limitu czasu ponawiania próby**: maksymalną ilość czasu, które możesz wydać to ponawia próbę. Domyślnym zachowaniem jest aby ponowić próbę przez czas nieokreślony.
-* **Obsługa**: można określić wywołanie zwrotne użytkownika określa, czy należy wykonać ponownie wywołania funkcji.
+* **Maksymalna liczba prób**: Maksymalna liczba ponownych prób.
+* **Pierwszy interwał ponawiania próby**: Ilość czasu oczekiwania przed pierwszym ponowieniem próby.
+* **Współczynnik wycofywania**: Współczynnik używany do określenia tempo wzrostu wycofywania. Wartość domyślna to 1.
+* **Maksymalny interwał ponawiania**: Maksymalna ilość czasu oczekiwania między ponownymi próbami.
+* **Limitu czasu ponawiania próby**: Maksymalna ilość czasu na wykonanie tej ponawia próbę. Domyślnym zachowaniem jest aby ponowić próbę przez czas nieokreślony.
+* **Obsługa**: Określa, czy należy wykonać ponownie wywołania funkcji można określić wywołania zwrotnego użytkownika.
 
 ## <a name="function-timeouts"></a>Limity czasu — funkcja
 
-Możesz chcieć abandon wywołania funkcji w ramach funkcji orkiestratora, jeśli trwa zbyt długo. Właściwy sposób, w tym celu już dziś jest utworzenie [trwałe czasomierza](durable-functions-timers.md) przy użyciu `context.CreateTimer` w połączeniu z `Task.WhenAny`, jak w poniższym przykładzie:
+Możesz chcieć abandon wywołania funkcji w ramach funkcji orkiestratora, jeśli trwa zbyt długo. Właściwy sposób, w tym celu już dziś jest utworzenie [trwałe czasomierza](durable-functions-timers.md) przy użyciu `context.CreateTimer` (.NET) lub `context.df.createTimer` (JavaScript) w połączeniu z `Task.WhenAny` (.NET) lub `context.df.Task.any` (JavaScript), jak w poniższym przykładzie:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)
@@ -181,7 +181,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 ```javascript
 const df = require("durable-functions");

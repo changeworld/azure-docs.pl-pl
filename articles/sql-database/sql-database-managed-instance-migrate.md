@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 5e2599c2089cbd9961b54966df5f0f98d6badcce
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3808511e588ba4284dee16cf7ca88bfd5a382c3a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274670"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337482"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 
@@ -60,7 +60,7 @@ Można wybrać obliczeniowych i zasobów magazynowania we wdrożeniu czasu, a na
 Aby dowiedzieć się, jak utworzyć infrastrukturę sieci wirtualnej i wystąpienie zarządzane, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
 
 > [!IMPORTANT]
-> Ważne jest, aby zachować swoje docelowej sieci wirtualnej i podsieci zawsze zgodnie z [wymagania dotyczące zarządzanych sieci wirtualnej wystąpienia](sql-database-managed-instance-vnet-configuration.md#requirements). Wszelkie niezgodności mogą uniemożliwić tworzenie nowych wystąpień lub używanie tych systemów, które zostały już utworzone.
+> Ważne jest, aby zachować swoje docelowej sieci wirtualnej i podsieci zawsze zgodnie z [wymagania dotyczące zarządzanych sieci wirtualnej wystąpienia](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Wszelkie niezgodności mogą uniemożliwić tworzenie nowych wystąpień lub używanie tych systemów, które zostały już utworzone. Dowiedz się więcej o [tworzenie nowych](sql-database-managed-instance-create-vnet-subnet.md) i [konfigurowania istniejących](sql-database-managed-instance-configure-vnet-subnet.md) sieci.
 
 ## <a name="select-migration-method-and-migrate"></a>Wybierz metodę migracji, a następnie przeprowadzić migrację
 

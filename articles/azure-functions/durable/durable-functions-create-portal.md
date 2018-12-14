@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 3381939e296009b0fd58366f7fff410ea01d1206
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a79faa1dc5a28e5e2ac37ea164c341b855b3bb80
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864030"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339726"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Utwórz trwałe funkcje przy użyciu witryny Azure portal
 
@@ -24,17 +24,43 @@ ms.locfileid: "52864030"
 >[!NOTE]
 >
 >* Jeśli tworzysz funkcje trwałe w C#, zamiast tego należy rozważyć [rozwoju Visual Studio 2017](durable-functions-create-first-csharp.md).
-* Jeśli tworzysz trwałe funkcje w języku JavaScript, zamiast tego należy rozważyć **rozwoju Visual Studio Code**.
->
->Tworzenie funkcje trwałe przy użyciu języka JavaScript nie jest jeszcze obsługiwane w portalu. Zamiast tego użyj programu Visual Studio Code.
+* Jeśli tworzysz trwałe funkcje w języku JavaScript, zamiast tego należy rozważyć [rozwoju Visual Studio Code](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-Musi mieć aplikację funkcji do obsługi wykonywania żadnej funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, ułatwić zarządzanie, wdrażanie i udostępnianie zasobów. Należy utworzyć C# aplikacji funkcji, ponieważ szablony języka JavaScript nie są jeszcze obsługiwane dla funkcje trwałe.  
+Musi mieć aplikację funkcji do obsługi wykonywania żadnej funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, ułatwić zarządzanie, wdrażanie i udostępnianie zasobów. Można utworzyć aplikację platformy .NET lub JavaScript.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Domyślnie aplikacja funkcji utworzona korzysta z wersji 2.x środowisko uruchomieniowe usługi Azure Functions. Rozszerzenia funkcji trwałych działa na obu wersji 1.x i 2.x środowisko uruchomieniowe usługi Azure Functions. Jednak szablony są dostępne tylko podczas określania wartości docelowej wersji 2.x środowiska uruchomieniowego.
+Domyślnie aplikacja funkcji utworzona korzysta z wersji 2.x środowisko uruchomieniowe usługi Azure Functions. Rozszerzenia funkcji trwałych działa na obu wersji 1.x i 2.x środowisko uruchomieniowe usługi Azure Functions w C#i w wersji 2.x w języku JavaScript. Jednak szablony są dostępne tylko podczas określania wartości docelowej wersji 2.x środowiska uruchomieniowego, niezależnie od tego, w wybranym języku.
+
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Zainstaluj pakiet npm durable functions (tylko kod JavaScript)
+
+Jeśli tworzysz niezawodne funkcje języka JavaScript, będą musieli zainstalować [ `durable-functions` pakietu npm](https://www.npmjs.com/package/durable-functions).
+
+1. Wybierz nazwę aplikacji funkcji, a następnie **funkcje platformy**, następnie **Zaawansowane (Kudu) narzędzia**.
+
+   ![Funkcje platformy funkcji wybierz Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+
+2. W konsoli Kudu, wybierz **konsoli debugowania** następnie **CMD**.
+
+   ![Konsoli debugowania aparatu kudu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+3. Struktury katalogów plików aplikację funkcji powinna być wyświetlana. Przejdź do folderu `site/wwwroot`. Z tego miejsca możesz przekazać `package.json` pliku, przeciągając i upuszczając go w oknie katalogu plików. Przykład `package.json` znajduje się poniżej:
+
+    ```json
+    {
+      "dependencies": {
+        "durable-functions": "^1.1.2"
+      }
+    }
+    ```
+
+   ![Aparat kudu przekazywanie pliku package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+4. Raz swoje `package.json` zostanie przekazany, uruchom `npm install` polecenie z poziomu konsoli Kudu zdalnego wykonywania.
+
+   ![Uruchom instalację npm kudu](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Tworzenie funkcji programu orchestrator
 
@@ -92,7 +118,7 @@ Domyślnie aplikacja funkcji utworzona korzysta z wersji 2.x środowisko uruchom
         }
     ```
 
-1. Nadal wywoływania `statusQueryGetUri` punktu końcowego, aż stan zmieni się na **Ukończono**, i pojawić się odpowiedź podobna następująco: 
+1. Nadal wywoływania `statusQueryGetUri` punktu końcowego, aż stan zmieni się na **Ukończono**, i pojawić się odpowiedź podobna następująco:
 
     ```json
     {
@@ -113,4 +139,4 @@ Pierwszą funkcję trwałe jest uruchomiona i działa na platformie Azure.
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Więcej informacji na temat typowych wzorców trwałe — funkcja](durable-functions-overview.md)
+> [Dowiedz się więcej na temat typowych wzorców funkcji trwałej](durable-functions-overview.md)

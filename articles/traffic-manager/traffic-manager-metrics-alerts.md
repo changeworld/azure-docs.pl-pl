@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: a85ec0bf126aa7a25edffdaaf7c7f8a16a370c40
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d0b2ac54f70fedc409c386243e1755704c1c332c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014348"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386370"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Alerty i metryki usługi Traffic Manager
 
@@ -34,13 +34,13 @@ W poniższym przykładzie rysunek 1 przedstawia wszystkie odpowiedzi zapytania, 
   
 ![Metryki usługi Traffic Manager — zagregowany widok wszystkich zapytań](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
-*Rysunek 1: Agregacji widoku zawierającego wszystkie zapytania*
+*Rysunek 1: Zagregowany widok wszystkich zapytań*
   
 Rysunek 2 przedstawia te same informacje, jednak zostanie ona podzielona przez punkty końcowe. W rezultacie możesz zobaczyć wolumin odpowiedzi zapytania, w których został zwrócony określonego punktu końcowego.
 
 ![Metryki usługi Traffic Manager — złożenie wolumin zapytań na punkt końcowy](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
 
-*Rysunek 2: Widoku złożonego z woluminem zapytania pokazano za punkt końcowy zwracany*
+*Rysunek 2: Widok podzielony woluminu zapytania wyświetlanych dla punktu końcowego zwracane*
 
 ## <a name="endpoint-status-by-endpoint"></a>Stan punktu końcowego na punkt końcowy
 Użyj [ta metryka](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworktrafficmanagerprofiles) zrozumienie stanu kondycji punktów końcowych w profilu. Zajmuje się dwie wartości:
@@ -57,7 +57,7 @@ Ta metryka może zostać podany w postaci wartości zagregowanej reprezentuje st
 
 ![Metryki usługi Traffic Manager — widok stanu punktu końcowego podzielony](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
 
-*Rysunek 4: Dzielenie wgląd w metryki stan punktu końcowego*
+*Rysunek 4: Podziel wgląd w metryki stan punktu końcowego*
 
 Będzie można korzystać z tych metryk za pośrednictwem [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md)w portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor), i [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights), lub za pomocą sekcji metryki środowisko portalu usługi Traffic Manager.
 
@@ -66,4 +66,4 @@ Oprócz przetwarzania i wyświetlanie metryk z usługi Traffic Manager, usługi 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-- Dowiedz się, jak [Utwórz nowy wykres przy użyciu usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-charts.md#create-a-new-chart)
+- Dowiedz się, jak [Utwórz nowy wykres przy użyciu usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)

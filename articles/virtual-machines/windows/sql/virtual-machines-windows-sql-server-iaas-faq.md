@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edfd2e9e03aefa4833c8472a43d4857f08b95780
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495475"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339403"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -80,7 +80,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Czy mogę zmienić Maszynę wirtualną do używania licencję programu SQL Server, jeśli został utworzony z jednego z obrazów w galerii zgodnie z rzeczywistym użyciem**
 
-   Tak. Można łatwo przenosić przechodzenie między dwa modele licencjonowania, niezależnie od tego obrazu, który pierwotnie został wdrożony. Aby uzyskać więcej informacji, zobacz [jak zmienić modelu licencjonowania dla maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md).
+   Tak. Można łatwo przenosić przechodzenie między dwa modele licencjonowania, niezależnie od tego obrazu, który pierwotnie został wdrożony. Aby uzyskać więcej informacji, zobacz [Jak zmienić model licencjonowania dla maszyny wirtualnej SQL](virtual-machines-windows-sql-ahb.md).
 
 1. **Do utworzenia nowej maszyny Wirtualnej SQL należy używać obrazów BYOL lub punktu odzyskiwania maszyny Wirtualnej SQL?**
 
@@ -112,7 +112,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Czy jest możliwość zarejestrowania własnym wdrożone maszyny wirtualne programu SQL Server za pomocą dostawcy zasobów maszyny Wirtualnej SQL**
 
-   Tak. Jeśli wdrożono programu SQL Server z własnych nośnika, można zarejestrować maszyny Wirtualnej SQL z dostawcą zasobów, aby uzyskać korzyści możliwości udostępniane przez rozszerzenie SQL IaaS. Jesteś nie można przekonwertować własnym wdrożonej maszyny Wirtualnej SQL zgodnie z rzeczywistym użyciem. 
+   Tak. Jeśli wdrożono programu SQL Server z własnych nośnika oraz zainstalowane rozszerzenie SQL IaaS można zarejestrować maszyny Wirtualnej programu SQL Server za pomocą dostawcy zasobów, aby uzyskać korzyści możliwości udostępniane przez rozszerzenie SQL IaaS. Jesteś nie można przekonwertować własnym wdrożonej maszyny Wirtualnej SQL płatność za rzeczywiste użycie.  
 
 ## <a name="administration"></a>Administracja
 
@@ -122,7 +122,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Można odinstalować domyślnego wystąpienia programu SQL Server?**
 
-   Tak, ale są pewne zagadnienia. Jak wspomniano w poprzedniej odpowiedzi na pytanie, funkcje, które polegają na [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md) działać tylko w domyślnym wystąpieniu. Po odinstalowaniu wystąpienie domyślne rozszerzenie jej szukać w dalszym ciągu i może generować błędy dziennika zdarzeń. Te błędy są z dwóch następujących źródeł: **poświadczeń programu Microsoft SQL Server Management** i **agenta IaaS programu Microsoft SQL Server**. Błędy mogą być podobne do następujących:
+   Tak, ale są pewne zagadnienia. Jak wspomniano w poprzedniej odpowiedzi na pytanie, funkcje, które polegają na [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md) działać tylko w domyślnym wystąpieniu. Po odinstalowaniu wystąpienie domyślne rozszerzenie jej szukać w dalszym ciągu i może generować błędy dziennika zdarzeń. Te błędy są z dwóch następujących źródeł: **Zarządzanie poświadczeniami serwera Microsoft SQL** i **agenta IaaS programu Microsoft SQL Server**. Błędy mogą być podobne do następujących:
 
       Wystąpił błąd związany z siecią lub wystąpieniem podczas nawiązywania połączenia z programem SQL Server. Serwer nie został znaleziony lub jest on niedostępny.
 
@@ -153,7 +153,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Jaka jest różnica między maszynami wirtualnymi SQL i usługi SQL Database?**
 
-   Koncepcyjnie programem SQL Server na maszynie wirtualnej platformy Azure jest to, że nie różni się od uruchamiania programu SQL Server w zdalnym centrum danych. Z kolei [bazy danych SQL](../../../sql-database/sql-database-technical-overview.md) oferuje bazy danych jako usługę. Usługa SQL Database nie masz dostępu do maszyn, na których są hostowane bazy danych. Dla pełnego porównania, zobacz [Wybieranie opcji programu SQL Server w chmurze: Azure SQL Database (PaaS) lub SQL Server na maszynach wirtualnych Azure (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
+   Koncepcyjnie programem SQL Server na maszynie wirtualnej platformy Azure jest to, że nie różni się od uruchamiania programu SQL Server w zdalnym centrum danych. Z kolei [bazy danych SQL](../../../sql-database/sql-database-technical-overview.md) oferuje bazy danych jako usługę. Usługa SQL Database nie masz dostępu do maszyn, na których są hostowane bazy danych. Dla pełnego porównania, zobacz [Wybieranie opcji programu SQL Server w chmurze: Usługa Azure SQL Database (PaaS) lub SQL Server na maszynach wirtualnych platformy Azure (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
 
 1. **Jak zainstalować narzędzia danych serwera SQL na maszynie Wirtualnej platformy Azure?**
 

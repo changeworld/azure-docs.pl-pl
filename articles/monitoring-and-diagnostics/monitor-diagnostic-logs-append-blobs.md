@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 48295a48700ee8b7331ae9811b7dd43a0ec8fa69
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1d580e6468044f14b6a206911c4da237f774af3b
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959890"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386523"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Przygotowanie do zmiany formatu do dzienników diagnostycznych usługi Azure Monitor zarchiwizować na koncie magazynu
 
 > [!WARNING]
-> W przypadku wysyłania [dzienników diagnostycznych zasobów platformy Azure lub metryk z kontem magazynu za pomocą ustawień diagnostycznych zasobu](./monitoring-archive-diagnostic-logs.md) lub [profile dzienników dzienników aktywności do konta magazynu przy użyciu](./monitoring-archive-activity-log.md), formatu danych w Konto magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. W poniższych instrukcjach opisano wpływ i aktualizacji narzędzi do obsługi nowego formatu. 
+> W przypadku wysyłania [dzienników diagnostycznych zasobów platformy Azure lub metryk z kontem magazynu za pomocą ustawień diagnostycznych zasobu](./../azure-monitor/platform/archive-diagnostic-logs.md) lub [profile dzienników dzienników aktywności do konta magazynu przy użyciu](./../azure-monitor/platform/archive-activity-log.md), formatu danych w Konto magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. W poniższych instrukcjach opisano wpływ i aktualizacji narzędzi do obsługi nowego formatu. 
 >
 > 
 
@@ -31,9 +31,9 @@ Usługa Azure Monitor udostępnia możliwości, które pozwala wysyłać dane di
 * Ustawienie diagnostyczne od chwili 1 listopada w dalszym ciągu Emituj danych w bieżącym formacie, aż do 1 listopada.
 * Ta zmiana zostanie przeprowadzona tylko raz we wszystkich regionach chmury publicznej. Zmiana zostanie przeprowadzona w chińskiej wersji platformy Azure, Azure (Niemcy) lub Azure dla instytucji rządowych chmurach jeszcze.
 * Ta zmiana ma wpływ na następujące typy danych:
-  * [Dzienniki diagnostyczne usługi Azure resource](./monitoring-archive-diagnostic-logs.md) ([zobacz listę zasobów w tym miejscu](./monitoring-diagnostic-logs-schema.md))
+  * [Dzienniki diagnostyczne usługi Azure resource](./../azure-monitor/platform/archive-diagnostic-logs.md) ([zobacz listę zasobów w tym miejscu](./../azure-monitor/platform/tutorial-dashboards.md))
   * [Metryki zasobów platformy Azure są eksportowane przez ustawienia diagnostyczne](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)
-  * [Dane dzienników aktywności platformy Azure są eksportowane przez profile dziennika](./monitoring-archive-activity-log.md)
+  * [Dane dzienników aktywności platformy Azure są eksportowane przez profile dziennika](./../azure-monitor/platform/archive-activity-log.md)
 * Ta zmiana nie ma wpływu na:
   * Dzienniki sieciowe w usłudze flow
   * Dzienniki usługi platformy Azure nie udostępniane za pośrednictwem usługi Azure Monitor jeszcze (na przykład dzienników diagnostycznych usługi Azure App Service, dzienniki analiz magazynu)
@@ -135,5 +135,5 @@ Narzędzia niestandardowe powinien zostać zaktualizowany do obsługi bieżąceg
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [archiwizowanie dzienników diagnostycznych zasobów do konta magazynu](./monitoring-archive-diagnostic-logs.md)
-* Dowiedz się więcej o [archiwizowania danych dziennika aktywności na koncie magazynu](./monitoring-archive-activity-log.md)
+* Dowiedz się więcej o [archiwizowanie dzienników diagnostycznych zasobów do konta magazynu](./../azure-monitor/platform/archive-diagnostic-logs.md)
+* Dowiedz się więcej o [archiwizowania danych dziennika aktywności na koncie magazynu](./../azure-monitor/platform/archive-activity-log.md)

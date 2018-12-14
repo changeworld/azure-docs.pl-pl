@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ca6eefa6ccba3fabebd125d88010817c66db52ab
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642676"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339590"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkcja łańcucha w funkcje trwałe — przykładowy sekwencja Hello
 
@@ -28,14 +28,15 @@ Funkcja łańcucha odnosi się do wzorca wykonywanie sekwencji funkcji w określ
 W tym artykule opisano następujące funkcje w przykładowej aplikacji:
 
 * `E1_HelloSequence`: Funkcja orkiestratora, która wywołuje `E1_SayHello` wiele razy w sekwencji. Przechowuje dane wyjściowe z `E1_SayHello` wywołuje i rejestruje wyniki.
-* `E1_SayHello`: Działanie funkcji, która dołącza ciąg "Hello".
+* `E1_SayHello`: Funkcja działanie, która dołącza ciąg "Hello".
 
 W poniższych sekcjach opisano konfigurację i kod, które są używane dla skryptów języka C# i JavaScript. Kod dla rozwoju programu Visual Studio jest wyświetlany na końcu tego artykułu.
 
 > [!NOTE]
-> Funkcje trwałe to dostępna w języku JavaScript w wersji 2 środowisko uruchomieniowe usługi Functions tylko.
+> Trwałe funkcje języka JavaScript są dostępne dla funkcji Środowisko uruchomieniowe 2.x tylko.
 
 ## <a name="e1hellosequence"></a>E1_HelloSequence
+
 ### <a name="functionjson-file"></a>Plik Function.JSON
 
 Jeśli używasz programu Visual Studio Code lub w portalu Azure do tworzenia aplikacji, w tym miejscu znajduje się odpowiednia zawartość z *function.json* plików dla funkcji programu orchestrator. Większość orchestrator *function.json* pliki wyglądał prawie dokładnie tak jak poniżej.
@@ -47,7 +48,7 @@ Ważne jest `orchestrationTrigger` typ powiązania. Wszystkie funkcje programu o
 > [!WARNING]
 > Przestrzeganie zasad "nie we/wy" funkcje programu orchestrator, nie wszystkie dane wejściowe używane lub powiązania danych wyjściowych, korzystając z `orchestrationTrigger` wyzwolić powiązania.  Jeśli inne dane wejściowe lub powiązania danych wyjściowych są potrzebne, zamiast tego powinny być używane w kontekście `activityTrigger` funkcji, które są wywoływane przez koordynatora.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>Skrypt języka C# (kod przykładowy portal programu Visual Studio Code i platformy Azure) 
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>Skrypt języka C# (kod przykładowy portal programu Visual Studio Code i platformy Azure)
 
 Poniżej przedstawiono kod źródłowy:
 
@@ -63,15 +64,16 @@ Poniżej przedstawiono kod źródłowy:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-Musi zawierać wszystkie funkcje aranżacji JavaScript `durable-functions` modułu. Jest to biblioteka JavaScript, który tłumaczy akcje funkcji aranżacji w w niezawodny protokół wykonywania dla języków procesem. Istnieją trzy znaczne różnice między funkcją aranżacji i inne funkcje języka JavaScript:
+Musi zawierać wszystkie funkcje aranżacji JavaScript [ `durable-functions` modułu](https://www.npmjs.com/package/durable-functions). Jest to biblioteka, która umożliwia zapisanie trwałe funkcje w języku JavaScript. Istnieją trzy znaczne różnice między funkcją aranżacji i inne funkcje języka JavaScript:
 
 1. Funkcja jest [funkcja generatora.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
-2. Funkcja jest opakowywany w wywołaniu `durable-functions` modułu (w tym miejscu `df`).
-3. Funkcja kończy działanie, wywołując `return`, a nie `context.done`.
+2. Funkcja jest opakowywany w wywołaniu `durable-functions` modułu `orchestrator` — metoda (w tym miejscu `df`).
+3. Funkcja musi być synchroniczne. Ponieważ metoda "orchestrator" obsługuje wywoływania context.done, funkcja należy po prostu "return".
 
-`context` Obiekt zawiera `df` obiekt umożliwia wywoływanie innych *działania* funkcje i przekaż parametry wejściowe za pomocą jego `callActivityAsync` metody. Kod wywołuje `E1_SayHello` trzy razy w sekwencji z wartościami różnych parametrów, za pomocą `yield` do wskazania wykonywania powinien zaczekać na wywołania funkcji działań asynchronicznych do zwrócenia. Wartość zwracana przez każde wywołanie jest dodawany do `outputs` listę, która jest zwracana na końcu funkcji.
+`context` Obiekt zawiera `df` obiekt umożliwia wywoływanie innych *działania* funkcje i przekaż parametry wejściowe za pomocą jego `callActivity` metody. Kod wywołuje `E1_SayHello` trzy razy w sekwencji z wartościami różnych parametrów, za pomocą `yield` do wskazania wykonywania powinien zaczekać na wywołania funkcji działań asynchronicznych do zwrócenia. Wartość zwracana przez każde wywołanie jest dodawany do `outputs` listę, która jest zwracana na końcu funkcji.
 
 ## <a name="e1sayhello"></a>E1_SayHello
+
 ### <a name="functionjson-file"></a>Plik Function.JSON
 
 *Function.json* plików dla funkcji działań `E1_SayHello` jest podobny do `E1_HelloSequence` z tą różnicą, że używa `activityTrigger` powiązania zamiast `orchestrationTrigger` typ powiązania.
@@ -93,7 +95,7 @@ Funkcja ta ma parametr typu [DurableActivityContext](https://azure.github.io/azu
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-W przeciwieństwie do funkcji aranżacji JavaScript działanie funkcji języka JavaScript musi nie specjalnej konfiguracji. Dane wejściowe przekazane do niej przy użyciu funkcji programu orchestrator znajduje się na `context.bindings` obiektu pod nazwą `activitytrigger` powiązania — w tym przypadku `context.bindings.name`. Nazwa powiązania można ustawić jako parametr wyeksportowanej funkcji i uzyskać dostęp bezpośredni, czyli co to jest przykładowy kod.
+W przeciwieństwie do funkcji aranżacji JavaScript funkcja działania wymaga nie specjalnej konfiguracji. Dane wejściowe przekazane do niej przy użyciu funkcji programu orchestrator znajduje się na `context.bindings` obiektu pod nazwą `activityTrigger` powiązania — w tym przypadku `context.bindings.name`. Nazwa powiązania można ustawić jako parametr wyeksportowanej funkcji i uzyskać dostęp bezpośredni, czyli co to jest przykładowy kod.
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
@@ -150,7 +152,7 @@ Oto aranżacji jako pojedynczy plik języka C# w projekcie programu Visual Studi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przykładzie wykazała prostego organizowania łańcucha funkcji. Następny przykład pokazuje, jak zaimplementować wzorzec fan-wyjściowego/fan-w. 
+W tym przykładzie wykazała prostego organizowania łańcucha funkcji. Następny przykład pokazuje, jak zaimplementować wzorzec fan-wyjściowego/fan-w.
 
 > [!div class="nextstepaction"]
 > [Uruchamianie aplikacji przykładowej Fan-wyjściowego/fan-w](durable-functions-cloud-backup.md)

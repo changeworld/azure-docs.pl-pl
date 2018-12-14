@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: f48dc4d91fd5fafda88f518c27c79e151e5b1ebe
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3b8c97fa772467d1e0aff830eec51d212045be39
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260076"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339709"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -96,7 +96,7 @@ Problem dotyczy środowiska uruchomieniowego aplikacji zwykle powoduje właściw
 Aby ustalić problem wdrożenia lub w czasie wykonywania, zobacz [wdrożenia, a problemy w czasie wykonywania](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
 
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Nie jestem w stanie FTP i Publikuj mój kod. Jak można rozwiązać ten problem?
-Sprawdź, czy wprowadzono poprawną nazwę hosta i [poświadczenia](#step-1--set-deployment-credentials). Należy także sprawdzić, czy następujące porty FTP na tym komputerze nie są blokowane przez zaporę:
+Sprawdź, czy wprowadzono poprawną nazwę hosta i [poświadczenia](#open-ftp-dashboard). Należy także sprawdzić, czy następujące porty FTP na tym komputerze nie są blokowane przez zaporę:
 
 - Port połączenia sterowania FTP: 21
 - Port połączenia danych FTP: 989, 10001 – 10300

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 0338ffa13d1b141bb40deaf43fd04fe37bfaf5d2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252116"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338587"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -291,7 +291,7 @@ Niektóre szczegółowe informacje, które możesz chcieć uzyskać po w pełni 
     ![Pulpit nawigacyjny, w którym przedstawiane są dystrybucja sieci wirtualnej](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Topologię sieci wirtualnej przedstawiono najważniejsze wstążce wybór parametrów, takich jak sieci wirtualnej (Vnet sieci wirtualnej połączeń/Active/Inactive), połączenia zewnętrzne, aktywne przepływy i złośliwe przepływy sieci wirtualnej.
-- Można filtrować wirtualnego topologią i konfiguracją sieci na podstawie subskrypcji, obszarów roboczych, resouece grup i interwał czasu. Dodatkowe filtry, które pomagają zrozumieć, czy przepływ: Przepływ typ (między sieciami wirtualnymi, IntraVNET itp.), kierunek przepływu (przychodzące, wychodzące), stan przepływu (dozwolone, zablokowane) w sieci (docelowych i połączone), typ połączenia (komunikacji równorzędnej lub bramy — P2S i S2S) i sieciowej grupy zabezpieczeń. Te filtry umożliwiają skupić się na sieci wirtualnych, które chcesz zbadać szczegółowo.
+- Można filtrować wirtualnego topologią i konfiguracją sieci na podstawie subskrypcji, obszarów roboczych, grupy zasobów i interwał czasu. Dodatkowe filtry, które pomagają zrozumieć, czy przepływ: Przepływ typ (między sieciami wirtualnymi, IntraVNET itp.), kierunek przepływu (przychodzące, wychodzące), stan przepływu (dozwolone, zablokowane) w sieci (docelowych i połączone), typ połączenia (komunikacji równorzędnej lub bramy — P2S i S2S) i sieciowej grupy zabezpieczeń. Te filtry umożliwiają skupić się na sieci wirtualnych, które chcesz zbadać szczegółowo.
 - Topologię sieci wirtualnej przedstawia Dystrybucja ruchu w sieci wirtualnej w odniesieniu do przepływów (dozwolone/zablokowane/ruchu przychodzącego/ruchu wychodzącego/Benign/złośliwym kodem), protokół aplikacji i sieciowych grup zabezpieczeń, na przykład:
 
     ![Topologii sieci wirtualnej, na którym przedstawiane są szczegóły dystrybucji i przepływ ruchu](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)

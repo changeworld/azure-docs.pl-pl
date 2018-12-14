@@ -3,17 +3,17 @@ title: Jak zarządzać swoim kontem usługi Azure Maps i klucze | Dokumentacja f
 description: Za pomocą witryny Azure portal do zarządzania kontem usługi Azure Maps oraz Zarządzaj kluczami dostępu.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/02/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2678b9d9adeddd7599680b6fc3f6e54cecd61a26
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 351bc26d6c5b3dcfa9479138f2bd523f64a2912a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848106"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335816"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Jak zarządzać swoim kontem usługi Azure Maps i klucze
 

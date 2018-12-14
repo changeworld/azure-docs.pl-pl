@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 214598291e69acfec2064738f798a48180ad05a6
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: bb23dd98768c4aaa343082bbc2caae43071a5e1f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322999"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385673"
 ---
 # <a name="azure-security-white-papers"></a>Usługa Azure Security oficjalne dokumenty
 | | |
@@ -41,3 +41,5 @@ ms.locfileid: "53322999"
 |[Izolacja w chmurze publicznej platformy Azure](azure-isolation.md)|Opisano, jak platforma Azure zapewnia izolację niezłośliwych i złośliwych użytkowników. Służy jako przewodnik dla tworzenia rozwiązań w chmurze, udostępniając różne opcje izolacji na architektów. Fokus znajduje się na kontroli zabezpieczeń przeznaczonych dla klientów i nie jest podejmowana próba adres umowy SLA, ceny, modele i zagadnienia dotyczące praktyki DevOps.|
 |[Przegląd zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|Ten dokument do pobrania w tym artykule omówiono oferty zgodności platformy Azure, w tym posiadanie certyfikaty, poświadczenia, sprawdzania poprawności, autoryzacji i ocen produkowane przez niezależnie od innych firm z branży inspekcji, a także umownych zmiany samooceny i dokumenty wskazówek dotyczących klienta generowany przez firmę Microsoft. <br/> Każda oferta opis stanów, którymi usługami platformy Azure przeznaczoną dla klienta znajdują się w zakresie do oceny i zawiera linki do zasobów do pobrania, by pomóc klientom ze zobowiązaniami zgodności.|
 |[Zarządzanie zabezpieczeniami na platformie Azure](azure-security-management.md)|W tym artykule omówiono zagadnienia w dostępie zdalnym zasobów platformy Azure. Najważniejszą kwestią jest charakter chmury żądania dostępu zdalnego administrowania i, w związku z tym, zabezpieczeń. Opisano ogólne wytyczne, konfiguracja klienta, najlepsze rozwiązania i operacyjne zasad i procedur. |
+|[Zagadnienia dotyczące zabezpieczeń usługi Azure Active Directory](https://aka.ms/aaddatawhitepaper) | Dokument do pobrania przedstawia różnych składników usługi Azure Active Directory i ich interakcji ze sobą. Przedstawia, jak różne składniki ochrony, zabezpieczanie, szyfrowanie lub wyznaczania wartości skrótu ich dane przesyłane (na przykład w Internecie) i sposób ochrony magazynowanych. Wyjaśniono różne lokalizacje usługi Azure AD w centrum danych i ich interakcji z katalogami lokalnymi, a także przepływy do i z usługi Azure AD. Ponadto opisano procedury operacyjne używane przez zespół inżynierów usługi Azure AD, zarządzanie i zabezpieczanie usługi.|
+

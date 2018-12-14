@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: acbb54da9cf52a73acf11b43d702675544bcc5fa
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873805"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339522"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
@@ -78,13 +78,13 @@ Poniższe tabele są uporządkowane według kodu błędu.
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Nie można przyjąć kopii zapasowej, ponieważ dziennik transakcji dla źródła danych jest pełny. | Przestrzeń dziennika transakcji bazy danych jest pełny. | Aby rozwiązać ten problem, zapoznaj się [dokumentacji programu SQL](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
-| Ta baza danych SQL nie obsługuje żądanego typu kopii zapasowej. | Repliki pomocnicze zawsze na grupy dostępności nie obsługują pełne i różnicowe kopie zapasowe. | <ul><li>Jeśli wyzwoleniu kopii zapasowej usługi ad-hoc wyzwalanie tworzenia kopii zapasowych w węźle podstawowym.</li><li>Jeśli kopia zapasowa została zaplanowana przez zasady, upewnij się, że węzeł podstawowy jest zarejestrowany. Aby zarejestrować węzeł, [postępuj zgodnie z instrukcjami, aby odnaleźć bazy danych programu SQL Server](backup-azure-sql-database.md#discover-sql-server-databases).</li></ul> | 
+| Ta baza danych SQL nie obsługuje żądanego typu kopii zapasowej. | Repliki pomocnicze zawsze na grupy dostępności nie obsługują pełne i różnicowe kopie zapasowe. | <ul><li>Jeśli wyzwoleniu kopii zapasowej usługi ad-hoc wyzwalanie tworzenia kopii zapasowych w węźle podstawowym.</li><li>Jeśli kopia zapasowa została zaplanowana przez zasady, upewnij się, że węzeł podstawowy jest zarejestrowany. Aby zarejestrować węzeł, [postępuj zgodnie z instrukcjami, aby odnaleźć bazy danych programu SQL Server](backup-azure-sql-database.md#discover-sql-server-databases).</li></ul> |
 
 ## <a name="restore-failures"></a>Błędy przywracania
 
 Następujące kody błędów są wyświetlane podczas przywracania zadanie zakończy się niepowodzeniem.
 
-### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite 
+### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
@@ -107,7 +107,7 @@ Następujące kody błędów są wyświetlane podczas przywracania zadanie zako�
 
 Następujące kody błędów związanych z błędami rejestracji.
 
-### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError 
+### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
@@ -124,6 +124,16 @@ Następujące kody błędów związanych z błędami rejestracji.
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Usługa Azure Backup używa agenta gościa maszyny Wirtualnej platformy Azure tworzy kopie zapasowe, ale agent gościa nie jest dostępne na serwerze docelowym. | Agent gościa nie jest włączona lub jest w złej kondycji | [Zainstaluj agenta gościa maszyny Wirtualnej](../virtual-machines/extensions/agent-windows.md) ręcznie. |
+
+## <a name="configure-backup-failures"></a>Konfigurowanie kopii zapasowej błędów
+
+Następujący błąd kody są skonfigurować błędy tworzenia kopii zapasowych.
+
+### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
+
+| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
+|---|---|---|
+| Automatycznej ochrony został usunięty lub jest już prawidłowy. | Po włączeniu automatycznej ochrony wystąpienia SQL **konfigurowania kopii zapasowej** zadania są uruchamiane dla wszystkich baz danych w tym wystąpieniu. Po wyłączeniu automatycznej ochrony podczas wykonywania zadań, a następnie **w toku** są anulowane zadania przy użyciu tego kodu błędu. | Włącz automatyczną ochronę ponownie chronić wszystkie pozostałe bazy danych. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 06/21/2018
+ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 7d3361b44d47fd97c14f677e5e4bbc6c1ee5ad3f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45608298"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385129"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gości za pomocą usługi Azure AD przeglądów dostępu
 
@@ -39,7 +39,7 @@ Możesz również można łatwo upewnij się, że użytkownicy-goście mają odp
 
 Przeglądy dostępu są oferowane wraz z usługą Azure AD w wersji Premium P2, która jest udostępniana z pakietem Microsoft Enterprise Mobility + Security E5. Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](../fundamentals/active-directory-whatis.md). Użytkownicy, którzy chcą korzystać z tej funkcji, w tym tworzyć lub wypełniać przeglądy albo potwierdzać swój dostęp, muszą mieć licencję. 
 
-Jeśli planujesz poprosić użytkowników-gości, aby dokonać przeglądu własnego dostępu, przeczytaj dotyczącymi licencjonowania użytkownika gościa. Aby uzyskać więcej informacji, zobacz [Licencjonowanie współpracy B2B usługi Azure AD](../b2b/licensing-guidance.md).
+Możesz również poprosić użytkowników-gości, aby dokonać przeglądu własnego dostępu. W przypadku każdej płatnej licencji usługi Azure AD Premium P2, przypisany do jednego z własnych użytkowników w organizacji można użyć B2B można zaprosić do pięciu użytkowników-gości w ramach dodatku użytkownika zewnętrznego. Tych użytkowników-gości można również użyć funkcji Azure AD Premium P2. Aby uzyskać więcej informacji, zobacz [Licencjonowanie współpracy B2B usługi Azure AD](../b2b/licensing-guidance.md).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Tworzenie i wykonywanie przeglądu dostępu dla gości
 

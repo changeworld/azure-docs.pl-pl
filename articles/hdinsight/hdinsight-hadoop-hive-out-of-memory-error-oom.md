@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bf59dd7733864c345bbbb59b6236ae7b9a9c36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b49959d167dbb735ebb9be9c75e91ef257c6a70
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248315"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383837"
 ---
-# <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Usuń gałąź błąd braku pamięci w usłudze Azure HDInsight
+# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Napraw, Apache Hive błąd braku pamięci w usłudze Azure HDInsight
 
-Dowiedz się, jak naprawić Hive błąd braku pamięci podczas przetwarzania dużych tabel, konfigurując ustawienia pamięci programu Hive.
+Dowiedz się, jak naprawić Apache Hive błąd braku pamięci (za mało pamięci), podczas przetwarzania dużych tabel, konfigurując ustawienia pamięci programu Hive.
 
 ## <a name="run-hive-query-against-large-tables"></a>Uruchom zapytanie programu Hive względem dużych tabel
 
@@ -52,7 +52,7 @@ Zapytanie Hive trwało 26 minut na węźle klastra HDInsight A3 24. Klient zauwa
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-Za pomocą aparat wykonywania platformy Tez. Tego samego zapytania został uruchomiony przez 15 minut, a następnie wygenerował następujący błąd:
+Za pomocą aparatu wykonywania Apache Tez. Tego samego zapytania został uruchomiony przez 15 minut, a następnie wygenerował następujący błąd:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -105,7 +105,7 @@ Prawdopodobnie sprzężenia mapy był przyczyną miejsca na stercie Java naszych
 
 Jak sugeruje wpis w blogu, następujące ustawienia dwóch pamięci definiują kontenera pamięć sterty: **hive.tez.container.size** i **hive.tez.java.opts**. Z naszych doświadczeń wynika wyjątku braku pamięci nie oznacza, że rozmiar kontenera jest za mały. Oznacza to, że rozmiar sterty środowiska Java (hive.tez.java.opts) jest za mały. Aby zawsze wtedy, gdy zostanie wyświetlony jest za mało pamięci, możesz spróbować zwiększyć **hive.tez.java.opts**. Jeśli to konieczne może być konieczne zwiększenie **hive.tez.container.size**. **Java.opts** ustawienie powinno być około 80% **container.size**.
 
-> [!NOTE]
+> [!NOTE]  
 > Ustawienie **hive.tez.java.opts** zawsze musi być mniejszy niż **hive.tez.container.size**.
 > 
 > 
@@ -119,4 +119,4 @@ Z nowymi ustawieniami zapytanie działa prawidłowo w mniej niż 10 minut.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Występuje błąd za mało pamięci nie musi oznaczać, że rozmiar kontenera jest za mały. Zamiast tego należy skonfigurować ustawienia pamięci, dzięki czemu rozmiar stosu zwiększa się i jest co najmniej 80% rozmiar pamięci kontenera. Do optymalizacji zapytań programu Hive, zobacz [zoptymalizować Hive zapytania dotyczące usługi Hadoop w HDInsight](hdinsight-hadoop-optimize-hive-query.md).
+Występuje błąd za mało pamięci nie musi oznaczać, że rozmiar kontenera jest za mały. Zamiast tego należy skonfigurować ustawienia pamięci, dzięki czemu rozmiar stosu zwiększa się i jest co najmniej 80% rozmiar pamięci kontenera. Do optymalizacji zapytań programu Hive, zobacz [zoptymalizować Apache Hive zapytania dla usługi Apache Hadoop w HDInsight](hdinsight-hadoop-optimize-hive-query.md).

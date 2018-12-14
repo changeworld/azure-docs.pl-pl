@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 7339592833db148acb38ce378fe4cf261977dd72
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87edc2911a48aea1ff0d7ac826439fe547c7cd86
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275656"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342889"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
@@ -73,6 +73,20 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="nologs"></a>Scenariusz: Aktualizowanie danych zarządzania, które nie są wyświetlane w usłudze Log Analytics dla maszyny
+
+#### <a name="issue"></a>Problem
+
+Masz maszyny, które pokazują, jak **nie oceniono** w obszarze **zgodności**, widzą danych pulsu w usłudze Log Analytics dla hybrydowego procesu roboczego Runbook, ale nie do zarządzania aktualizacjami.
+
+#### <a name="cause"></a>Przyczyna
+
+Hybrydowy proces roboczy elementu Runbook może być konieczne może być ponownie zarejestrowane i ponowna instalacja.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Wykonaj kroki opisane w temacie [wdrożenia Windows hybrydowego procesu roboczego Runbook](../automation-windows-hrw-install.md) ponowna instalacja hybrydowego procesu roboczego dla Windows lub [wdrożenia procesu roboczego elementu Runbook dla hybrydowych w systemie Linux](../automation-linux-hrw-install.md) dla systemu Linux.
 
 ## <a name="windows"></a>Windows
 
@@ -141,20 +155,6 @@ Hybrydowy proces roboczy elementu Runbook nie był w stanie wygenerować certyfi
 #### <a name="resolution"></a>Rozwiązanie
 
 Sprawdź konto systemowe ma dostęp do odczytu do folderu **C:\ProgramData\Microsoft\Crypto\RSA** , a następnie spróbuj ponownie.
-
-### <a name="nologs"></a>Scenariusz: Aktualizowanie danych zarządzania, które nie są wyświetlane w usłudze Log Analytics dla maszyny
-
-#### <a name="issue"></a>Problem
-
-Masz maszyny, które pokazują, jak **nie oceniono** w obszarze **zgodności**, widzą danych pulsu w usłudze Log Analytics dla hybrydowego procesu roboczego Runbook, ale nie do zarządzania aktualizacjami.
-
-#### <a name="cause"></a>Przyczyna
-
-Hybrydowy proces roboczy elementu Runbook może być konieczne może być ponownie zarejestrowane i ponowna instalacja.
-
-#### <a name="resolution"></a>Rozwiązanie
-
-Wykonaj kroki opisane w temacie [wdrożenia Windows hybrydowego procesu roboczego Runbook](../automation-windows-hrw-install.md) ponowna instalacja hybrydowego procesu roboczego.
 
 ### <a name="hresult"></a>Scenariusz: Maszyna jest wyświetlana jako nie oceniono i przedstawia wyjątek HResult
 

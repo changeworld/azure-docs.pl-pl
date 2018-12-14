@@ -10,34 +10,34 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 6c1acf0e0b93ca6d3a8eae9f291f37d7bb0aa763
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5df494904dd756ca7ef3a36a48da2224ab2bca81
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009287"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386013"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z rozwiązania Hue w klastrach usługi HDInsight Hadoop
 
 Dowiedz się, jak instalowanie aplikacji Hue w klastrach HDInsight i korzystanie z tunelowania do kierowania żądań do aplikacji Hue.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="what-is-hue"></a>Co to jest Hue?
-HUE to zbiór aplikacji sieci Web umożliwiający interakcję z klastrem usługi Hadoop. Możesz przeglądać magazynu skojarzonego z klastrem usługi Hadoop (w przypadku klastrów HDInsight WASB) za pomocą aplikacji Hue, uruchamiania zadań Hive i Pig skryptów i tak dalej. Następujące składniki są dostępne z instalacjami aplikacji Hue w klastrze usługi HDInsight Hadoop.
+HUE to zestaw aplikacji sieci Web umożliwiający interakcję z klastrem usługi Apache Hadoop. Możesz przeglądać magazynu skojarzonego z klastrem usługi Hadoop (w przypadku klastrów HDInsight WASB) za pomocą aplikacji Hue, uruchamiania zadań Hive i Pig skryptów i tak dalej. Następujące składniki są dostępne z instalacjami aplikacji Hue w klastrze usługi HDInsight Hadoop.
 
 * Edytor Hive beeswax
-* Pig
+* Apache Pig
 * Menedżer magazynu metadanych
-* Oozie
+* Apache Oozie
 * FileBrowser (który rozmawia z WASB domyślnego kontenera)
 * Przeglądarka zadań
 
-> [!WARNING]
+> [!WARNING]  
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane i Microsoft Support pomoże wyizolować i rozwiązać problemy związane z tych składników.
 >
-> Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład, istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
 >
 >
 
@@ -47,14 +47,14 @@ Skrypt instalowanie aplikacji Hue w klastrze HDInsight opartych na systemie Linu
 
 Ta sekcja zawiera instrukcje dotyczące używania skryptu podczas aprowizowania klastra przy użyciu witryny Azure portal.
 
-> [!NOTE]
+> [!NOTE]  
 > Program Azure PowerShell, wiersza polecenia platformy Azure Classic, zestawu .NET SDK HDInsight lub szablonów usługi Azure Resource Manager można również zastosować akcji skryptu. Można również zastosować akcji skryptu na już działające klastry. Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptów](hdinsight-hadoop-customize-cluster-linux.md).
 >
 >
 
 1. Uruchom aprowizację klastra wykonując kroki opisane w [Provision HDInsight clusters w systemie Linux](hdinsight-hadoop-provision-linux-clusters.md), ale inicjowania obsługi nie jest ukończona.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Instalowanie aplikacji Hue w klastrach HDInsight, rozmiar zalecany węzła głównego jest co najmniej A4 (8 rdzeni, 14 GB pamięci).
    >
    >
@@ -62,12 +62,12 @@ Ta sekcja zawiera instrukcje dotyczące używania skryptu podczas aprowizowania 
 
     ![Podanie skryptu parametry akcji Hue](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "dostarczają parametrów akcji skryptu aplikacji Hue")
 
-   * **Nazwa**: Wprowadź przyjazną nazwę dla akcji skryptu.
+   * **NAZWA**: Wprowadź przyjazną nazwę dla akcji skryptu.
    * **IDENTYFIKATOR URI SKRYPTU**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
-   * **HEAD**: Zaznacz tę opcję
-   * **Proces ROBOCZY**: to pole puste.
-   * **DOZORCY**: to pole puste.
-   * **Parametry**: to pole puste.
+   * **HEAD**: Zaznacz tę opcję.
+   * **PROCES ROBOCZY**: Pozostaw to pole puste.
+   * **DOZORCY**: Pozostaw to pole puste.
+   * **PARAMETRY**: Pozostaw to pole puste.
 3. W dolnej części **akcji skryptu**, użyj **wybierz** przycisk, aby zapisać konfigurację. Na koniec użyj **wybierz** znajdujący się u dołu **opcjonalna konfiguracja** bloku, aby zapisać informacje o konfiguracji opcjonalnej.
 4. Kontynuuj, inicjowania obsługi klastra zgodnie z opisem w [Provision HDInsight clusters w systemie Linux](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -75,12 +75,12 @@ Ta sekcja zawiera instrukcje dotyczące używania skryptu podczas aprowizowania 
 
 Tunelowanie SSH jest jedynym sposobem na dostęp do aplikacji Hue w klastrze, gdy aplikacja działa. Tunelowanie za pośrednictwem protokołu SSH zezwala na ruch przechodzić bezpośrednio do węzła głównego klastra, w którym jest uruchomiona Hue. Po zakończeniu klastra podczas inicjowania obsługi, wykonaj następujące kroki, aby korzystanie z rozwiązania Hue w klastrze usługi HDInsight w systemie Linux.
 
-> [!NOTE]
+> [!NOTE]  
 > Firma Microsoft zaleca, za pomocą przeglądarki Firefox, postępuj zgodnie z instrukcjami poniżej.
 >
 >
 
-1. Skorzystaj z informacji w [użycie tunelowania SSH w celu dostępu do interfejsu użytkownika sieci web Ambari, ResourceManager, JobHistory, NameNode, Oozie i innych web UI's](hdinsight-linux-ambari-ssh-tunnel.md) do tworzenia tunelu SSH w systemie klienta do klastra HDInsight, a następnie skonfiguruj witrynę sieci Web przeglądarkę, aby korzystał z tunelu SSH jako serwer proxy.
+1. Skorzystaj z informacji w [użycie tunelowania SSH w celu dostępu do systemu Apache Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie i innych web UI's](hdinsight-linux-ambari-ssh-tunnel.md) do tworzenia tunelu SSH w systemie klienta do klastra HDInsight, a następnie skonfiguruj przeglądarki sieci Web, aby korzystał z tunelu SSH jako serwer proxy.
 
 2. Po utworzeniu tunelu SSH i skonfigurowany przeglądarkę, aby przez nią ruchu serwera proxy, należy znaleźć nazwę hosta z podstawowym węzłem głównym. Można to zrobić, nawiązując połączenie z klastrem przy użyciu protokołu SSH na porcie 22. Na przykład `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` gdzie **USERNAME** to nazwa użytkownika SSH i **CLUSTERNAME** jest nazwą klastra.
 
@@ -97,7 +97,7 @@ Tunelowanie SSH jest jedynym sposobem na dostęp do aplikacji Hue w klastrze, gd
     Jest nazwą hosta z podstawowym węzłem głównym, gdzie znajduje się witryna sieci Web aplikacji Hue.
 4. Otwieranie portalu Hue w przy użyciu przeglądarki http://HOSTNAME:8888. Zastąp nazwy hosta o nazwie uzyskanego w poprzednim kroku.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Po zalogowaniu się po raz pierwszy, zostanie wyświetlony monit o utworzenie konta do logowania do portalu Hue. Poświadczenia określone w tym miejscu będzie ograniczona do portalu i nie są związane z administratora lub poświadczeń użytkownika SSH określone w podczas aprowizacji klastra.
    >
    >
@@ -121,7 +121,7 @@ Tunelowanie SSH jest jedynym sposobem na dostęp do aplikacji Hue w klastrze, gd
     ![Korzystanie z przeglądarki plików](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "korzystanie z przeglądarki plików")
 3. Kliknij prawym przyciskiem myszy plik lub folder, aby wyświetlić dostępne operacje. Użyj **przekazywanie** przycisk w prawym górnym rogu, aby przekazać pliki do bieżącego katalogu. Użyj **New** przycisk, aby utworzyć nowe pliki lub katalogi.
 
-> [!NOTE]
+> [!NOTE]  
 > Przeglądarka plików odcienia, który może tylko wyświetlać zawartość domyślnego kontenera skojarzonego z klastrem HDInsight. Dodatkowy magazyn kont/kontenerach, które mogą być skojarzone z klastrem, nie będzie dostępna przy użyciu przeglądarki plików. Jednak dodatkowe kontenery skojarzone z klastrem zawsze będzie dostępny dla zadań Hive. Na przykład, jeśli wprowadź polecenie `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` w edytorze Hive, można zobaczyć zawartość również dodatkowe kontenery. W tym poleceniu **newcontainer** nie jest domyślny kontener skojarzonego z klastrem.
 >
 >
@@ -130,7 +130,7 @@ Tunelowanie SSH jest jedynym sposobem na dostęp do aplikacji Hue w klastrze, gd
 1. Skrypt umożliwia instalowanie aplikacji Hue instaluje go tylko na podstawowym węzłem głównym klastra.
 
 2. Podczas instalacji wielu usług Hadoop (HDFS, YARN, MR2, Oozie) zostaną ponownie uruchomione, aktualizowania konfiguracji. Po zakończeniu działania skryptu instalowanie aplikacji Hue może potrwać trochę czasu, inne usługi Hadoop, aby uruchomić. To może mieć wpływ na wydajność aplikacji Hue w początkowym. Po wszystkich usług jest uruchomiona, odcienia, który będzie w pełni funkcjonalne.
-3. Odcienia, który nie rozpoznaje zadań tez przy, co jest ustawieniem domyślnym bieżącej gałęzi. Jeśli chcesz używać MapReduce jako aparat Hive wykonywania aktualizacji skryptu Użyj następującego polecenia w skrypcie:
+3. Odcienia, który nie rozpoznaje Apache Tez zadania, co jest ustawieniem domyślnym bieżącej gałęzi. Jeśli chcesz używać MapReduce jako aparat Hive wykonywania aktualizacji skryptu Użyj następującego polecenia w skrypcie:
 
         set hive.execution.engine=mr;
 
@@ -142,8 +142,8 @@ Tunelowanie SSH jest jedynym sposobem na dostęp do aplikacji Hue w klastrze, gd
 5. HUE rozumie WebHDFS, podczas gdy klastrów HDInsight za pomocą usługi Azure Storage `wasb://`. Dlatego niestandardowego skryptu, używany przy użyciu akcji skryptu instaluje WebWasb, czyli usłudze zgodnych z WebHDFS do rozmowy WASB. Tak, nawet jeśli portalu Hue mówi systemu plików HDFS w miejscach (np. gdy przesuwa wskaźnik myszy nad **przeglądarka plików**), powinno być interpretowane jako WASB.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zainstalować system Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach usługi HDInsight Hadoop. System Giraph umożliwia przetwarzanie wykresów za pomocą usługi Hadoop i mogą służyć za pomocą usługi Azure HDInsight.
-* [Zainstalować platformę Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md). Użyj dostosowywania klastra, aby zainstalować platformę Solr w klastrach usługi HDInsight Hadoop. Solr umożliwia wykonywanie operacji wyszukiwania zaawansowanego w przechowywanych danych.
+* [Instalowanie systemu Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach usługi HDInsight Hadoop. System Giraph umożliwia przetwarzanie wykresów za pomocą usługi Hadoop i mogą służyć za pomocą usługi Azure HDInsight.
+* [Instalowanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md). Użyj dostosowywania klastra, aby zainstalować platformę Solr w klastrach usługi HDInsight Hadoop. Solr umożliwia wykonywanie operacji wyszukiwania zaawansowanego w przechowywanych danych.
 * [Instalowanie języka R w klastrach HDInsight](hdinsight-hadoop-r-scripts-linux.md). Użyj dostosowywania klastra, aby zainstalować język R w klastrach usługi HDInsight Hadoop. R to język typu open source i środowisko do przeprowadzania obliczeń statystycznych. Zapewnia setek wbudowanych funkcji statystycznych i swój własny łączącą aspektów programowania funkcjonalności i zorientowane obiektowo języka programowania. Udostępnia również rozbudowane funkcje graficzne.
 
 [powershell-install-configure]: install-configure-powershell-linux.md

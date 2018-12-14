@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: cb9acb5434fad6cd7898be14404c5ed4125ab96a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e478475ea9b5a34315c9d46c2201263566398008
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141173"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336666"
 ---
 # <a name="expressroute-qos-requirements"></a>Wymagania dotyczące technologii QoS w usłudze ExpressRoute
 Program Skype dla firm obejmuje różne obciążenia, które wymagają zróżnicowanej obsługi w technologii QoS. Jeśli planujesz korzystać z usług głosowych za pośrednictwem usługi ExpressRoute, musisz spełnić opisane poniżej wymagania.
@@ -31,12 +31,12 @@ Poniższa tabela zawiera listę oznaczeń DSCP używanych przez program Skype dl
 | --- | --- | --- |
 | **Połączenia głosowe** |EF (46) |Połączenia głosowe Skype/Lync |
 | **Interaktywne** |AF41 (34) |Wideo, VBSS |
-| AF21 (18) |Współdzielenie aplikacji | |
+| |AF21 (18) |Współdzielenie aplikacji | 
 | **Domyślne** |AF11 (10) |Transfer plików |
-| CS0 (0) |Inne | |
+| |CS0 (0) |Inne |
 
-* Sklasyfikuj obciążenia i zaznacz odpowiednie wartości DSCP. Postępuj zgodnie ze wskazówkami podanymi [tutaj](https://technet.microsoft.com/library/gg405409.aspx) dotyczącymi ustawiania oznaczeń DSCP w sieci.
-* Skonfiguruj i obsługuj wiele kolejek w technologii QoS w sieci. Połączenia głosowe muszą być klasą autonomiczną i być obsługiwane w sposób określony w RFC 3246. 
+* Sklasyfikuj obciążenia i zaznacz odpowiednie wartości DSCP. Postępuj zgodnie ze wskazówkami podanymi [tutaj](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) dotyczącymi ustawiania oznaczeń DSCP w sieci.
+* Skonfiguruj i obsługuj wiele kolejek w technologii QoS w sieci. Głosu musi być klasą autonomiczną i odbieranie w sposób określony w [RFC 3246](https://www.ietf.org/rfc/rfc3246.txt). 
 * Możesz wybrać mechanizm kolejkowania, zasady wykrywania przeciążenia oraz alokację przepustowości na klasę ruchu. Oznaczanie DSCP dla obciążeń programu Skype dla firm musi jednak zostać zachowane. Jeśli używasz oznaczenia DSCP niewymienionego powyżej, np. AF31 (26), musisz zmodyfikować tę wartość DSCP do 0 przed wysłaniem pakietu do firmy Microsoft. Firma Microsoft wysyła tylko pakiety oznaczone wartościami DSCP pokazanymi w powyższej tabeli. 
 
 ## <a name="next-steps"></a>Kolejne kroki

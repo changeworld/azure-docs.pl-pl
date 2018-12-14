@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f76c1676e21e1abdc3f23e2e2c4a7f6f721fefdb
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955386"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386574"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
@@ -34,7 +34,7 @@ Teraz wewnątrz działania elementu pojedynczej kopii można jedynie **kopiowani
 >- Subskrypcja platformy Azure zawierająca fabryki danych i magazynu danych ujścia musi być objęty tą samą dzierżawą usługi Azure Active Directory (Azure AD) jako dzierżawy usługi Office 365.
 >- Region platformy Azure Integration Runtime, użyty dla aktywności kopiowania upewnij się, jak również miejsce docelowe jest w tym samym regionie, w którym znajduje się skrzynki pocztowej użytkownika dzierżawy usługi Office 365. Zapoznaj się [tutaj](concepts-integration-runtime.md#integration-runtime-location) Aby zrozumieć, jak lokalizacja IR platformy Azure jest określana. Zapoznaj się [tabeli w tym miejscu](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#data-regions) listę obsługiwanych regionów pakietu Office i odpowiednie regiony platformy Azure.
 >-  Ładowania danych usługi Office 365 do **usługi Azure Blob Storage** jako miejsce docelowe, upewnij się, którego używasz **[uwierzytelnianie jednostki usługi](connector-azure-blob-storage.md#service-principal-authentication)** podczas definiowania połączonej Usługi Azure Blob Storage, a nie przy użyciu [klucz konta](connector-azure-blob-storage.md#account-key-authentication), [sygnatury dostępu współdzielonego](connector-azure-blob-storage.md#shared-access-signature-authentication) lub [zarządzanych tożsamości dla zasobów platformy Azure](connector-azure-blob-storage.md#managed-identity) uwierzytelnienia.
->-  Ładowania danych usługi Office 365 do **usługi Azure Data Lake Storage Gen1** jako miejsce docelowe, upewnij się, którego używasz [ **uwierzytelnianie jednostki usługi** ](connector-azure-data-lake-store.md#using-service-principal-authentication) podczas definiowania Połączona usługa Azure Data Lake Storage Gen1 i nie używa [zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](connector-azure-data-lake-store.md#managed-identity).
+>-  Ładowania danych usługi Office 365 do **usługi Azure Data Lake Storage Gen1** jako miejsce docelowe, upewnij się, którego używasz [ **uwierzytelnianie jednostki usługi** ](connector-azure-data-lake-store.md#use-service-principal-authentication) podczas definiowania Połączona usługa Azure Data Lake Storage Gen1 i nie używa [zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](connector-azure-data-lake-store.md#managed-identity).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -79,7 +79,7 @@ Następujące właściwości są obsługiwane dla usługi Office 365, połączon
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **usługi Office 365** | Yes |
+| type | Właściwość type musi być równa: **Office365** | Yes |
 | office365TenantId | Identyfikator dzierżawy usługi Azure, do której należy konto usługi Office 365. | Yes |
 | servicePrincipalTenantId | Określ informacje o dzierżawy, pod którą znajduje się aplikacja sieci web usługi Azure AD. | Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Yes |

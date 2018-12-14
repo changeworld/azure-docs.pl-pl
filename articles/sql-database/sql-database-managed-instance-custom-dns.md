@@ -12,16 +12,19 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/23/2018
-ms.openlocfilehash: f26ea763d48d03fe7e981b7abbbe64e573ec0b3a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7ad3b81b792b37d2c3667dd554d41319a5727045
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224277"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336418"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurowanie niestandardowego DNS dla usługi Azure SQL Database wystąpienie zarządzane
 
-Wystąpienia usługi Azure SQL Database Managed musi zostać wdrożony w ramach platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md). Istnieje kilka scenariuszy (tj. połączone serwery do innych wystąpień programu SQL w Twoim środowisku w chmurze czy hybrydowa), które wymagają nazwy hosta prywatnego do być rozwiązane wyłącznie z wystąpienia zarządzanego. W takim przypadku należy skonfigurować niestandardowe DNS wewnątrz platformy Azure. Ponieważ wystąpienia zarządzanego używa tego samego DNS dla działanie jego wewnętrznych mechanizmów, konfiguracji DNS sieci wirtualnej musi być zgodny z wystąpieniem zarządzanym. 
+Wystąpienia usługi Azure SQL Database Managed musi zostać wdrożony w ramach platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md). Istnieje kilka scenariuszy (na przykład poczty bazy danych, połączonych serwerów do innych wystąpień programu SQL w Twoim środowisku w chmurze czy hybrydowa), które wymagają nazwy hosta prywatnego do być rozwiązane wyłącznie z wystąpienia zarządzanego. W takim przypadku należy skonfigurować niestandardowe DNS wewnątrz platformy Azure. Ponieważ wystąpienia zarządzanego używa tego samego DNS dla działanie jego wewnętrznych mechanizmów, konfiguracji DNS sieci wirtualnej musi być zgodny z wystąpieniem zarządzanym. 
+
+   > [!IMPORTANT]
+   > Zawsze należy używać w pełni kwalifikowanych nazw domen (FQDN) dla serwerów poczty, serwerami programu SQL Server i innych usług, nawet jeśli leżą one w sieci prywatnej strefy DNS. Na przykład użyć `smtp.contoso.com` serwera poczty ponieważ proste `smtp` nie będzie można poprawnie rozpoznać.
 
 Niestandardową konfiguracją DNS jest niezgodny z wystąpieniem zarządzanym, należy: 
 - Konfigurowanie niestandardowego serwera DNS, dlatego jest w stanie rozpoznawać nazwy w domenie publicznej 
@@ -38,10 +41,10 @@ Niestandardową konfiguracją DNS jest niezgodny z wystąpieniem zarządzanym, n
    ![Opcja niestandardowe dns](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
 
    > [!IMPORTANT]
-   > To ustawienie nie zostanie Azure cyklicznego programu rozpoznawania nazw na liście DNS może spowodować wystąpienie zarządzane do wprowadzania niestandardowych serwerów DNS jest niedostępny z jakiegoś powodu stanie awaryjnym. Odzyskanie stanu może być konieczna utworzyć nowego wystąpienia w sieci wirtualnej przy użyciu zgodnymi zasadami sieci, tworzenia danych na poziomie wystąpienia i przywracania baz danych. Ustawienia Azure cyklicznego programu rozpoznawania nazw, ponieważ zapewnia ostatni wpis na liście DNS, nawet wtedy, gdy nie wszystkie niestandardowe serwery DNS, nazwy publicznej nadal można rozpoznać. Zobacz [konfiguracja sieci wirtualnej](sql-database-managed-instance-vnet-configuration.md).
+   > To ustawienie nie zostanie Azure cyklicznego programu rozpoznawania nazw na liście DNS może spowodować wystąpienie zarządzane do wprowadzania niestandardowych serwerów DNS jest niedostępny z jakiegoś powodu stanie awaryjnym. Odzyskanie stanu może być konieczna utworzyć nowego wystąpienia w sieci wirtualnej przy użyciu zgodnymi zasadami sieci, tworzenia danych na poziomie wystąpienia i przywracania baz danych. Ustawienia Azure cyklicznego programu rozpoznawania nazw, ponieważ zapewnia ostatni wpis na liście DNS, nawet wtedy, gdy nie wszystkie niestandardowe serwery DNS, nazwy publicznej nadal można rozpoznać.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać przegląd, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md)
 - Aby uzyskać samouczek omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
-- Aby uzyskać informacje o konfigurowaniu sieci wirtualnej do wystąpienia zarządzanego, zobacz [konfiguracja sieci wirtualnej dla wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md)
+- Aby uzyskać informacje o konfigurowaniu sieci wirtualnej do wystąpienia zarządzanego, zobacz [konfiguracja sieci wirtualnej dla wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md)

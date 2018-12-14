@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005397"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384205"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Opracowywanie akcji skryptu za pomocą HDInsight
 
 Dowiedz się, jak dostosować klastra HDInsight przy użyciu skryptów powłoki Bash. Akcje skryptu to sposób dostosować HDInsight podczas lub po utworzeniu klastra.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="what-are-script-actions"></a>Co to są akcje skryptu
@@ -43,7 +43,7 @@ Aby uzyskać więcej informacji na temat korzystania z tych metod do zastosowani
 
 Podczas tworzenia niestandardowego skryptu dla klastra usługi HDInsight istnieje kilka najlepszych rozwiązań, które należy uwzględnić:
 
-* [Przeznaczone dla wersji usługi Hadoop](#bPS1)
+* [Docelowa wersja platformy Apache Hadoop](#bPS1)
 * [Docelowa wersja systemu operacyjnego](#bps10)
 * [Podaj stałe linki do zasobów skryptu](#bPS2)
 * [Użyj wstępnie skompilowanym zasobów](#bPS4)
@@ -54,10 +54,10 @@ Podczas tworzenia niestandardowego skryptu dla klastra usługi HDInsight istniej
 * [Zapisz pliki jako plik ASCII przy użyciu LF końce wierszy](#bps8)
 * [Aby odzyskać z błędami przejściowymi, użyj logikę ponawiania próby](#bps9)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Akcje skryptu musi zostać zakończone w ciągu 60 minut lub proces ten ulegnie awarii. Podczas inicjowania obsługi węzłów, skrypt jest uruchamiany równolegle innych procesów instalacji i konfiguracji. Konkurencję w odniesieniu do zasobów, takich jak czas lub sieci przepustowości Procesora może powodować skryptu, aby zająć dłużej niż w środowisku programistycznym.
 
-### <a name="bPS1"></a>Przeznaczone dla wersji usługi Hadoop
+### <a name="bPS1"></a>Docelowa wersja platformy Apache Hadoop
 
 Różne wersje HDInsight mają różne wersje usług Hadoop i zainstalowanych składników. Jeśli skrypt oczekuje określoną wersję usługi lub składnika, skrypt należy używać tylko z wersją HDInsight, który zawiera wymagane składniki. Można znaleźć informacje na temat wersji składnika dołączone HDInsight przy użyciu [przechowywanie wersji składnika HDInsight](hdinsight-component-versioning.md) dokumentu.
 
@@ -110,7 +110,7 @@ Skrypt i powiązane zasoby muszą pozostać dostępne przez cały czas życia kl
 
 Najlepszym rozwiązaniem jest do pobrania i Archiwizuj wszystko na koncie magazynu platformy Azure w ramach Twojej subskrypcji.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Konto magazynu używane na musi być domyślne konto magazynu dla klastra lub kontener publiczną, tylko do odczytu na inne konto magazynu.
 
 Na przykład, przykłady, obsługiwane przez firmę Microsoft są przechowywane w [ https://hdiconfigactions.blob.core.windows.net/ ](https://hdiconfigactions.blob.core.windows.net/) konta magazynu. Ta lokalizacja jest publiczny, tylko do odczytu kontenera, obsługiwane przez zespół usługi HDInsight.
@@ -129,12 +129,12 @@ Na przykład skrypt, który modyfikuje pliki konfiguracji nie dodać zduplikowan
 
 Klastry HDInsight opartych na systemie Linux zapewniają dwa węzły główne, które są aktywne w klastrze, a akcji skryptu, uruchom na obu węzłach. Jeśli składniki, które należy zainstalować oczekuje tylko jednego węzła głównego, nie należy instalować na obu węzłów głównych składników.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Usługi w ramach HDInsight są przeznaczone do trybu failover między dwa węzły główne, zgodnie z potrzebami. Ta funkcja nie jest rozszerzony do niestandardowe składniki zainstalowane za pomocą akcji skryptu. Jeśli potrzebujesz wysokiej dostępności dla składników niestandardowych, należy zaimplementować własny mechanizm pracy awaryjnej.
 
 ### <a name="bPS6"></a>Konfigurowanie niestandardowych składników, aby korzystać z magazynu obiektów Blob platformy Azure
 
-Składniki, które można zainstalować w klastrze może mieć konfigurację domyślną, która korzysta z magazynu plików System (HDFS, Hadoop Distributed). HDInsight korzysta z usługi Azure Storage lub Data Lake Store jako magazynem domyślnym. Podaj zarówno systemu zgodnego systemem plików HDFS, która utrwala dane, nawet jeśli klaster jest usuwany. Może być konieczne skonfigurowanie składników, które można zainstalować, aby użyć WASB lub ADL zamiast systemu plików HDFS.
+Składniki, które można zainstalować w klastrze może mieć konfigurację domyślną, która korzysta z magazynu Apache Hadoop Distributed pliku System (HDFS). HDInsight korzysta z usługi Azure Storage lub Data Lake Store jako magazynem domyślnym. Podaj zarówno systemu zgodnego systemem plików HDFS, która utrwala dane, nawet jeśli klaster jest usuwany. Może być konieczne skonfigurowanie składników, które można zainstalować, aby użyć WASB lub ADL zamiast systemu plików HDFS.
 
 W przypadku większości operacji jest konieczne określanie systemu plików. Na przykład następujące kopiuje plik giraph-examples.jar z lokalnego systemu plików do magazynu klastra:
 
@@ -148,8 +148,8 @@ W tym przykładzie `hdfs` polecenia w sposób niewidoczny dla użytkownika używ
 
 HDInsight rejestruje dane wyjściowe skryptu, który jest zapisywany do strumienia wyjściowego STDOUT i STDERR. Możesz wyświetlić te informacje przy użyciu interfejsu użytkownika sieci web Ambari.
 
-> [!NOTE]
-> Ambari jest dostępna tylko po pomyślnym utworzeniu klastra. Jeśli używasz podczas tworzenia klastra i kończy się niepowodzeniem tworzenia akcji skryptu, zobacz sekcję dotyczącą rozwiązywania problemów [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) dla innych sposobów uzyskiwania dostępu do zarejestrowanych informacji.
+> [!NOTE]  
+> Apache Ambari jest dostępna tylko po pomyślnym utworzeniu klastra. Jeśli używasz podczas tworzenia klastra i kończy się niepowodzeniem tworzenia akcji skryptu, zobacz sekcję dotyczącą rozwiązywania problemów [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) dla innych sposobów uzyskiwania dostępu do zarejestrowanych informacji.
 
 Większość narzędzi i pakiety instalacyjne już zapisywanie informacji o STDOUT i STDERR, jednak warto dodać dodatkowe rejestrowanie. Aby wysłać tekst stdout, należy użyć `echo`. Na przykład:
 
@@ -216,7 +216,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>Metody pomocnicze dla niestandardowych skryptów
 
-Metody pomocnicze akcji skryptu są narzędzia, których można używać podczas pisania skryptów niestandardowych. Te metody są zawarte w[ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skryptu. Aby pobrać i używać ich jako części skryptu, należy użyć następujących:
+Metody pomocnicze akcji skryptu są narzędzia, których można używać podczas pisania skryptów niestandardowych. Te metody są zawarte w [ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skryptu. Aby pobrać i używać ich jako części skryptu, należy użyć następujących:
 
 ```bash
 # Import the helper method module.
@@ -278,16 +278,16 @@ Skrypty służące do dostosowywania klastra musi być przechowywany w jednym z 
 
 * A __publicznie do odczytu URI__. Na przykład adres URL do danych przechowywanych w usłudze OneDrive, Dropbox lub inny plik innej usługi hostingu.
 
-* __Konta usługi Azure Data Lake Store__ skojarzonym z klastrem HDInsight. Aby uzyskać więcej informacji dotyczących korzystania z usługi Azure Data Lake Store z usługą HDInsight, zobacz [Szybki Start: konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Konta usługi Azure Data Lake Store__ skojarzonym z klastrem HDInsight. Aby uzyskać więcej informacji dotyczących korzystania z usługi Azure Data Lake Store z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Nazwa główna usługi, których HDInsight używa do dostępu Data Lake Store musi mieć dostęp do odczytu do skryptu.
 
 Zasoby używane przez skrypt również muszą być dostępne publicznie.
 
 Przechowywanie plików w konto usługi Azure Storage lub Azure Data Lake Store zapewnia szybki dostęp, oba w ramach sieci platformy Azure.
 
-> [!NOTE]
+> [!NOTE]  
 > Format identyfikatora URI używany w celu skrypt różni się w zależności od używanej usługi. W przypadku konta magazynu skojarzonego z klastrem HDInsight, użyj `wasb://` lub `wasbs://`. Identyfikatory URI publicznie do odczytu, użyj `http://` lub `https://`. Data Lake Store, użyj `adl://`.
 
 ### <a name="checking-the-operating-system-version"></a>Sprawdzanie wersji systemu operacyjnego
@@ -332,8 +332,8 @@ Aby uzyskać więcej informacji na temat korzystania z poszczególnych metod, zo
 Firma Microsoft oferuje przykładowe skrypty do instalowania składników w klastrze usługi HDInsight. Skorzystaj z następujących linków, aby uzyskać więcej akcji skryptu w przykładzie.
 
 * [Instalowanie i korzystanie z rozwiązania Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md)
-* [Instalowanie i korzystanie z platformy Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md)
-* [Instalowanie i używanie systemu Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md)
+* [Instalowanie i używanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md)
+* [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Zainstaluj lub Uaktualnij narzędzie Mono w klastrach HDInsight](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
@@ -342,13 +342,13 @@ Błędy, które mogą wystąpić, gdy za pomocą skryptów, które zostały opra
 
 **Błąd**: `$'\r': command not found`. Czasami następuje `syntax error: unexpected end of file`.
 
-*Przyczyna*: ten błąd występuje, gdy wierszy w skrypcie kończyć się znakiem CRLF. Systemy UNIX oczekiwać, że tylko LF jako koniec wiersza.
+*Przyczyna*: Gdy wierszy w skrypcie kończyć się znakiem CRLF, jest przyczyną tego błędu. Systemy UNIX oczekiwać, że tylko LF jako koniec wiersza.
 
 Ten problem najczęściej występuje, gdy skrypt został utworzony w środowisku Windows CRLF jest linii Kończenie dla wielu edytorów tekstu na Windows.
 
-*Rozpoznawanie*: Jeśli jest to opcja w edytorze tekstu, wybierz format systemu Unix lub LF na koniec wiersza. Aby zmienić CRLF LF można także użyć następujących poleceń w systemie Unix:
+*Rozpoznawanie*: Jest to opcja w edytorze tekstu, na koniec wiersza wybierz format systemu Unix lub LF. Aby zmienić CRLF LF można także użyć następujących poleceń w systemie Unix:
 
-> [!NOTE]
+> [!NOTE]  
 > Następujące polecenia są mniej więcej odpowiednikami, w tym, że ich należy zmienić CRLF końce wierszy na LF. Wybierz jedną, w oparciu o narzędzi dostępnych w systemie.
 
 | Polecenie | Uwagi |
@@ -360,9 +360,9 @@ Ten problem najczęściej występuje, gdy skrypt został utworzony w środowisku
 
 **Błąd**: `line 1: #!/usr/bin/env: No such file or directory`.
 
-*Przyczyna*: ten błąd występuje, gdy skrypt został zapisany w formacie UTF-8 za pomocą znacznika kolejności bajtów (BOM).
+*Przyczyna*: Ten błąd występuje, gdy skrypt został zapisany w formacie UTF-8 za pomocą znacznika kolejności bajtów (BOM).
 
-*Rozpoznawanie*: Zapisz plik jako plik ASCII lub jako UTF-8 bez BOM. Aby utworzyć plik bez BOM można także użyć następującego polecenia w systemie Linux lub Unix:
+*Rozpoznawanie*: Zapisz plik w formacie ASCII lub jako UTF-8 bez BOM. Aby utworzyć plik bez BOM można także użyć następującego polecenia w systemie Linux lub Unix:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

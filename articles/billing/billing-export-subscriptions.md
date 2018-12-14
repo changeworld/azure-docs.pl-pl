@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: 5c32b90c8a291ff744b4894af12f8d623cb95137
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 09231ab69276f3b4763f07c51230921d15333f63
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391408"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339437"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Eksportowanie i wyświetlić najwyższego poziomu informacji o subskrypcji
 Jeśli chcesz wyświetlić zestaw subskrypcji identyfikatorów skojarzonych z poświadczeń użytkownika [Pobierz plik JSON, informacje o subskrypcji z Centrum kont Azure](http://account.azure.com/subscriptions/download).
@@ -28,12 +28,13 @@ Jeśli chcesz wyświetlić zestaw subskrypcji identyfikatorów skojarzonych z po
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 Plik JSON pobranych zawiera następujące informacje:
-- Adres e-mail: Adres e-mail skojarzony z Twoim kontem.
+- Wiadomość e-mail: Adres e-mail skojarzony z Twoim kontem.
 - Identyfikator PUID: Unikatowy identyfikator skojarzony z kontem rozliczeniowym.
-- SubscriptionIds: Lista subskrypcji, które należą do swojego konta, wymienionych według identyfikatora subskrypcji.
+- SubscriptionIds: Lista subskrypcji należących do swojego konta, wymienionych według identyfikatora subskrypcji.
 
 ### <a name="subscriptionsjson-sample"></a>Przykładowe Subscriptions.JSON
-~~~~
+
+```json
 {
   "Email":"admin@contoso.com",
   "Puid":"00052xxxxxxxxxxx",
@@ -46,4 +47,4 @@ Plik JSON pobranych zawiera następujące informacje:
     "90757cdc-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   ]
 }
-~~~~
+```

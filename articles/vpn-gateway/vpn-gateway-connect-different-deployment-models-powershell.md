@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie klasycznych sieci wirtualnych do sieci wirtualnych Menedżera zasobów platformy Azure: PowerShell | Dokumentacja firmy Microsoft'
+title: 'Łączenie klasycznych sieci wirtualnych do sieci wirtualnych Menedżera zasobów platformy Azure: Program PowerShell | Dokumentacja firmy Microsoft'
 description: Utwórz połączenie sieci VPN między klasycznych sieci wirtualnych i sieci wirtualnych Menedżera zasobów przy użyciu programu PowerShell i bramy sieci VPN.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5f133af5ec077821607bf3e942c8a931808d34fc
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d515363e1413634d8222e043fff0b91aa464002c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953591"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337540"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Łączenie sieci wirtualnych z różnych modeli wdrażania za pomocą programu PowerShell
 
@@ -34,7 +34,7 @@ W poniższych krokach objaśniono za pomocą ustawień koniecznych do skonfiguro
 
 ### <a name="pre"></a>Wymagania wstępne
 
-* Obie sieci wirtualne zostały już utworzone. Jeśli potrzebujesz utworzyć sieć wirtualną Menedżera zasobów, zobacz [tworzenie sieci wirtualnej](../virtual-network/quick-create-powershell.md#create-a-virtual-network). Aby utworzyć klasyczną sieć wirtualną, zobacz [utworzyć klasyczną sieć wirtualną](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
+* Obie sieci wirtualne zostały już utworzone. Jeśli potrzebujesz utworzyć sieć wirtualną Menedżera zasobów, zobacz [Utwórz grupę zasobów i sieć wirtualna](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Aby utworzyć klasyczną sieć wirtualną, zobacz [utworzyć klasyczną sieć wirtualną](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
 * Zakresy adresów dla sieci wirtualnych nie pokrywają się ze sobą, ani nie pokrywa się z żadnym z zakresów dla innych połączeń, które bramy mogą być połączone z.
 * Zainstalowano najnowsze polecenia cmdlet programu PowerShell. Zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) Aby uzyskać więcej informacji. Upewnij się, że należy zainstalować zarówno Service Management (SM), jak i poleceń cmdlet Menedżera zasobów (RM). 
 
@@ -263,7 +263,7 @@ W tej sekcji możesz pracować z klasyczną siecią wirtualną. Można zastąpi�
 ## <a name="connect"></a>Sekcja 4 — Tworzenie połączenia między bramami
 Tworzenie połączenia między bramami wymaga programu PowerShell. Może być konieczne dodanie konta usługi Azure, aby użyć klasycznej wersji poleceń cmdlet programu PowerShell. Aby to zrobić, należy użyć **Add-AzureAccount**.
 
-1. W konsoli programu PowerShell należy ustawić klucz udostępnionych. Przed uruchomieniem polecenia cmdlet, zapoznaj się z pobranego pliku konfiguracji sieci dla dokładnej nazwy, które platforma Azure oczekuje. Podczas określania nazwy sieci wirtualnej, która zawiera spacje, należy użyć pojedynczego cudzysłowu wokół tej wartości.<br><br>W poniższym przykładzie **- VNetName** to nazwa klasycznej sieci wirtualnej i **- LocalNetworkSiteName** jest nazwa określona dla lokacji sieci lokalnej. **- SharedKey** jest wartością, która jest generowana i określana. W tym przykładzie użyliśmy wartości "abc123", ale może generować i użyć bardziej złożonej. Ważne jest, że wartość podana w tym miejscu musi być taka sama jak wartość można określić w następnym kroku podczas tworzenia połączenia. Zwracany powinien być wyświetlony **Status: pomyślne**.
+1. W konsoli programu PowerShell należy ustawić klucz udostępnionych. Przed uruchomieniem polecenia cmdlet, zapoznaj się z pobranego pliku konfiguracji sieci dla dokładnej nazwy, które platforma Azure oczekuje. Podczas określania nazwy sieci wirtualnej, która zawiera spacje, należy użyć pojedynczego cudzysłowu wokół tej wartości.<br><br>W poniższym przykładzie **- VNetName** to nazwa klasycznej sieci wirtualnej i **- LocalNetworkSiteName** jest nazwa określona dla lokacji sieci lokalnej. **- SharedKey** jest wartością, która jest generowana i określana. W tym przykładzie użyliśmy wartości "abc123", ale może generować i użyć bardziej złożonej. Ważne jest, że wartość podana w tym miejscu musi być taka sama jak wartość można określić w następnym kroku podczas tworzenia połączenia. Zwracany powinien być wyświetlony **stanu: Pomyślne**.
 
   ```azurepowershell
   Set-AzureVNetGatewayKey -VNetName ClassicVNet `

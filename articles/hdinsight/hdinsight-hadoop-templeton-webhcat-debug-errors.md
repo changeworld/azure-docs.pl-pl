@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2c4730b3ec84ca14bcc3e93ed82faf37b15970d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0d27b16690516becc586678f8cf3edea234feeea
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010375"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383403"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Omówienie i rozwiązywanie błędów odebranych z usługi WebHCat na HDInsight
 
@@ -22,18 +22,18 @@ Więcej informacji na temat błędów odebranych podczas przy użyciu usługi We
 
 ## <a name="what-is-webhcat"></a>Co to jest WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) to API typu REST do [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabeli i magazynu warstwę zarządzania dla usługi Hadoop. Usługi WebHCat jest włączona domyślnie w klastrach HDInsight i jest używany przez różne narzędzia do przesyłania zadań, Pobierz stan zadania, itp., bez potrzeby logowania do klastra.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) to API typu REST do [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabeli i magazynu warstwę zarządzania dla usługi Apache Hadoop. Usługi WebHCat jest włączona domyślnie w klastrach HDInsight i jest używany przez różne narzędzia do przesyłania zadań, Pobierz stan zadania, itp., bez potrzeby logowania do klastra.
 
 ## <a name="modifying-configuration"></a>Modyfikowanie konfiguracji
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wystąpić kilka błędów wymienione w niniejszym dokumencie, ponieważ przekroczono maksymalny skonfigurowany. Gdy krok rozpoznawania uwagi, można zmienić wartości, musi być jedną z następujących dokonać zmiany:
 
-* Aby uzyskać **Windows** klastrów: Użyj akcji skryptu, aby skonfigurować wartości podczas tworzenia klastra. Aby uzyskać więcej informacji, zobacz [opracowywanie akcji skryptu](hdinsight-hadoop-script-actions.md).
+* Aby uzyskać **Windows** klastrów: Aby skonfigurować wartość podczas tworzenia klastra, należy użyć akcji skryptu. Aby uzyskać więcej informacji, zobacz [opracowywanie akcji skryptu](hdinsight-hadoop-script-actions.md).
 
-* Aby uzyskać **Linux** klastrów: Ambari użycia (sieć web lub interfejsu API REST), aby zmodyfikować wartość. Aby uzyskać więcej informacji, zobacz [Zarządzanie HDInsight przy użyciu narzędzia Ambari](hdinsight-hadoop-manage-ambari.md)
+* Aby uzyskać **Linux** klastrów: Za pomocą systemu Apache Ambari (sieć web lub interfejsu API REST), aby zmodyfikować wartość. Aby uzyskać więcej informacji, zobacz [Zarządzanie HDInsight przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ### <a name="default-configuration"></a>Konfiguracja domyślna
@@ -62,7 +62,7 @@ Przekroczeniu następujące wartości domyślne go obniżyć wydajność usługi
 | --- | --- |
 | Ten kod stanu występuje przeważnie podczas trybu failover między podstawowego i pomocniczego węzła głównego klastra |Zaczekaj dwie minuty, a następnie spróbuj ponownie wykonać operację |
 
-## <a name="bad-request-content-could-not-find-job"></a>Nieprawidłowe żądanie zawartości: nie można odnaleźć zadania
+## <a name="bad-request-content-could-not-find-job"></a>Nieprawidłowe żądanie zawartości: Nie można odnaleźć zadania
 
 **Kod stanu HTTP**: 400
 

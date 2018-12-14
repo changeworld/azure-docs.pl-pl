@@ -9,14 +9,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: ab4831a4a84e1f96624c5de1e53f9b8688a5c2cd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1544d60d94a73326d2cd0430de8a1f61aaefe373
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871670"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343976"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Pobierz procesora źródło zmian .NET SDK: I informacje o wersji
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zmiana .NET kanału informacyjnego procesora zestawu SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -27,7 +27,7 @@ ms.locfileid: "52871670"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -41,6 +41,11 @@ ms.locfileid: "52871670"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
+
+### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+* Dodano obsługę obsługi podziału w kolekcjach, korzystających z udostępnionej bazy danych przepływności.
+  * W tej wersji rozwiązuje problem, które mogą wystąpić podczas podziału w kolekcji przy użyciu przepływności udostępnionej bazy danych, gdy Podziel wynik na zakres kluczy partycji tylko jeden element podrzędny utworzone zamiast dwóch ponownego równoważenia partycji. W takim przypadku procesora zestawienia zmian może zakończyć się zatrzymaniem usunięcie dzierżawy dla starego zakres kluczy partycji i bez tworzenia nowych dzierżaw. Problem został rozwiązany w tej wersji.
+  * Pomocnicza, zmiana powodująca niezgodność: dodaje nową metodę IChangeFeedDocumentClient.ReadOffersFeedAsync, który służy do sprawdzania, czy kolekcję ma przypisaną thoughput dedykowanych lub udostępni przepływności innych kolekcji w bazie danych. Realizacji niestandardową implementację IChangeFeedDocumentClient to zaawansowany scenariusz i może służyć do monitorowania wszystkie wywołania przez procesora zestawienia zmian do monitorowania i dzierżawy kolekcji. Dzięki tej zmianie IChangeFeedDocumentClient implementacja musi zostać zmieniony poprzez implementację nowej metody.
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * Dodano nową właściwość ChangeFeedProcessorOptions.StartContinuation do obsługi zmian począwszy od źródła danych z żądania token kontynuacji. To jest używana tylko podczas dzierżawy kolekcja jest pusta lub dzierżawa nie ma ContinuationToken zestawu. Dla dzierżaw w kolekcję dzierżaw, które mają ustawiony ContinuationToken token kontynuacji jest używany, i ChangeFeedProcessorOptions.StartContinuation jest ignorowana.

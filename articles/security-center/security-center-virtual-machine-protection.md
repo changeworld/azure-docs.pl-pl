@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 53a6ae828009db24b56a11b1fdcbea19842191f4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 454478fa02b8f4e71bc4efb61e1b8c194b927bc6
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106621"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340831"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
@@ -74,20 +74,20 @@ Każdy zalecenie obejmuje zestaw akcji, które można wykonać po jej wybraniu. 
 
 **Zastosuj aktualizacje systemu** zawiera podsumowanie krytycznych aktualizacji w postaci wykresu: jeden dla Windows i jeden dla systemu Linux. Druga część zawiera tabelę z następującymi informacjami:
 
-- **NAZWA**: nazwa brakującej aktualizacji.
-- **LICZBA MASZYN WIRTUALNYCH I KOMPUTERÓW**: łączna liczba maszyn wirtualnych i komputerów, które nie mają tej aktualizacji.
-- **WAŻNOŚĆ aktualizacji**: Opisuje ważność określonego zalecenia:
+- **NAZWA**: Nazwa brakującej aktualizacji.
+- **LICZBA Maszyn wirtualnych i komputerów**: Całkowita liczba maszyn wirtualnych i komputerów, które mają tej aktualizacji.
+- **WAŻNOŚĆ AKTUALIZACJI**: Opisuje ważność określonego zalecenia:
 
-    - **Krytyczne**: luki w zabezpieczeniach istnieje, która dotyczy istotnego zasobu (aplikacji, maszyny wirtualnej lub sieciowej grupy zabezpieczeń) i wymaga uwagi.
-    - **Ważne**: niekrytyczne lub dodatkowe kroki są wymagane do ukończenia procesu lub wyeliminowania luki w zabezpieczeniach.
-    - **Umiarkowany**: luki w zabezpieczeniach, powinny być kierowane, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale możesz ustawić filtr umożliwiający wyświetlanie zaleceń o niskiej ważności, jeśli chcesz je przeglądać).
+    - **Krytyczne**: Luki w zabezpieczeniach istnieje, która dotyczy istotnego zasobu (aplikacji, maszyny wirtualnej lub sieciowej grupy zabezpieczeń) i wymaga uwagi.
+    - **Ważne**: Niekrytyczne lub dodatkowe kroki są wymagane do ukończenia procesu lub wyeliminowania luki w zabezpieczeniach.
+    - **Umiarkowany**: Luki w zabezpieczeniach powinny być kierowane, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale możesz ustawić filtr umożliwiający wyświetlanie zaleceń o niskiej ważności, jeśli chcesz je przeglądać).
 
 
-- **STAN**: bieżący stan zalecenia:
+- **STAN**: Bieżący stan zalecenia:
 
-    - **Otwarte**: nie rozpoczęto jeszcze wykonywania zalecenia.
-    - **W toku**: zalecenie jest aktualnie stosowane do danych zasobów, żadna akcja użytkownika nie jest wymagana.
-    - **Rozwiązane**: zalecenie zostało już zakończone. (Gdy problem został rozwiązany, wpis jest wyszarzony).
+    - **Otwórz**: Zalecenie nie rozpoczęto jeszcze wykonywania.
+    - **Trwającą**: Zalecenie jest aktualnie stosowane do tych zasobów i jest wymagana żadna akcja.
+    - **Rozwiązane**: Zalecenie zostało już zakończone. (Gdy problem został rozwiązany, wpis jest wyszarzony).
 
 Aby wyświetlić szczegóły zalecenia, kliknij nazwę brakującej aktualizacji na liście.
 
@@ -249,7 +249,7 @@ Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do in
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 

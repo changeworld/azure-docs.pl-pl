@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9ee835978325968e1a61633ca868ed091b5b2484
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3313d7490ed9a2f51831c76148a54b7ecf19d3b3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192519"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338808"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -163,7 +163,7 @@ Zapisywanie zapytań wyszukiwania jest funkcją standard w usłudze Log Analytic
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Tworzenie alertów na podstawie zapytania
-Po utworzeniu zapytania, można użyć zapytań ostrzega w przypadku wystąpienia określonych zdarzeń. Zobacz [alertów w usłudze Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) informacji o tym, jak tworzyć alerty. Przykłady alertów zapytania i inne przykłady zapytań, zobacz [monitorowanie VMware przy użyciu usługi Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) wpis w blogu.
+Po utworzeniu zapytania, można użyć zapytań ostrzega w przypadku wystąpienia określonych zdarzeń. Zobacz [alertów w usłudze Log Analytics](../../azure-monitor/platform/alerts-overview.md) informacji o tym, jak tworzyć alerty. Przykłady alertów zapytania i inne przykłady zapytań, zobacz [monitorowanie VMware przy użyciu usługi Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) wpis w blogu.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co muszę na ESXi hosta ustawienie? Jaki wpływ będzie miał na Moje bieżącego środowiska?
@@ -206,4 +206,4 @@ Może istnieć kilka przyczyn:
 ## <a name="next-steps"></a>Kolejne kroki
 * Użyj [wyszukiwań w dziennikach](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.
 * [Tworzenie własnych pulpitów nawigacyjnych](../../azure-monitor/platform/dashboards.md) przedstawiający dane hosta VMware.
-* [Tworzenie alertów](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) po wystąpieniu określonych zdarzeń hostów VMware.
+* [Tworzenie alertów](../../azure-monitor/platform/alerts-overview.md) po wystąpieniu określonych zdarzeń hostów VMware.

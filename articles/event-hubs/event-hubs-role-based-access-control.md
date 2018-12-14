@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c7d38538b3876ae91c0ae3794e14ab11f08993c6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162889"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384262"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Kontrola dostępu w usłudze Active Directory Role-Based (wersja zapoznawcza)
 
@@ -68,6 +68,8 @@ Przed uruchomieniem próbki, Edytuj plik App.config i zależnie od scenariusza, 
 - Identyfikator URI przekierowania określone w aplikacji w poprzednich krokach.
  
 Po uruchomieniu aplikacji konsoli, monit o wybór scenariusza; Kliknij przycisk **interakcyjnego logowania użytkownika** , wpisując jego numer, a następnie naciskając klawisz ENTER. Aplikacja wyświetli okno logowania, poprosi o podanie Twojej zgody na dostęp do usługi Event Hubs i następnie używa usługi, aby uruchamiać funkcję wysyłania i odbierania scenariusza, przy użyciu tożsamości logowania.
+
+Ta aplikacja używa `ServiceAudience.EventHubsAudience` jako odbiorców tokenu. Gdy przy użyciu innych języków lub zestawów SDK, których nie jest dostępna jako stała odbiorców, jest wartość prawej strony, aby użyć `https://eventhubs.azure.net/`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

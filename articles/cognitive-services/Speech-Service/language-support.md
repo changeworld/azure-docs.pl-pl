@@ -8,19 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8cdcdd6c5e0201f8f6af39faab0a67a68920e568
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094580"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342102"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
-Różne języki są obsługiwane w przypadku różnych funkcji usługi mowy. W poniższej tabeli podsumowano obsługę języka.
+Różne języki są obsługiwane przez różne funkcje usług przetwarzania mowy. W poniższej tabeli podsumowano obsługę języka.
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
@@ -62,7 +62,24 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
-Interfejs API synteza mowy oferuje głosy następujące, z których każdy obsługuje określonego języka i dialektu, identyfikowane za pomocą ustawień regionalnych.
+Zamiany tekstu na mowę interfejsu API REST obsługuje tych głosów, z których każdy obsługuje określonego języka i dialektu, identyfikowane za pomocą ustawień regionalnych.
+
+### <a name="neural-voices-preview"></a>Głosy neuronowych (wersja zapoznawcza)
+
+Neuronowych zamiany tekstu na mowę to nowy rodzaj synteza mowy obsługiwane przez głębokich sieciach neuronowych. Podczas używania neuronowych głosowej, syntezatora mowy jest prawie nie do odróżnienia od ludzi nagrania.
+
+Neuronowych głosów można wprowadzić bardziej naturalne interakcje z czatbotów i asystentów wirtualnego i angażujące konwertować teksty cyfrowych, takich jak książki elektroniczne audiobooks i poprawić funkcjonalność z systemów nawigacji w samochodzie. Przypominającej ludzką prosody naturalnych i wyczyść ustaleniu słów głosy neuronowych znaczące zmęczenie nasłuchiwania podczas interakcji z systemami sztucznej Inteligencji.
+
+Aby uzyskać pełną listę neuronowych głosów i dostępności regionalnej zobacz [regionów](regions.md#neural-voices).
+
+| Ustawienia regionalne | Język | Płeć | Mapowanie nazwy usługi|
+|--------|----------|---------|--------------------|
+| en-US | English (US) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (en US, GuyNeural)" |
+| en-US | English (US) | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, JessaNeural)" |
+
+### <a name="standard-voices"></a>Standardowa głosów
+
+Ponad 75 głosów standardowa są dostępne w ponad 45 języków i ustawień regionalnych, które umożliwiają konwertowanie tekstu syntezatora mowy. Aby uzyskać więcej informacji o dostępności regionalnej, zobacz [regionów](regions.md#standard-voices).
 
 Ustawienia regionalne | Język | Płeć | Mapowanie nazwy usługi
 -------|----------|---------|--------------------

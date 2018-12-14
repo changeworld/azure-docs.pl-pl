@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 73e95f6259c916b06fe61cb47fd36beac4c7a427
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 212e45a7b593a9607aa19a10efdf2aaf61c78d17
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572519"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344598"
 ---
 System nazw domen (DNS) jest używana do lokalizowania rzeczy w Internecie. Na przykład podczas wprowadzania adresu w przeglądarce lub kliknij łącze na stronie sieci web używa DNS, tłumaczenie domenę na adres IP. Adres IP jest swoistego, takie jak adres ulicy, ale nie jest bardzo ludzi przyjazna. Na przykład jest znacznie łatwiejsze do zapamiętania nazwę DNS, takich jak **contoso.com** niż do zapamiętania adresu IP, takich jak 192.168.1.88 lub 2001:0:4137:1f67:24a2:3888:9cce:fea3.
 
@@ -32,7 +32,7 @@ Mapuje rekord CNAME *określonych* nazwy DNS, takich jak **mail.contoso.com** lu
 Po odebraniu na usługi Traffic Manager ruchu następnie kieruje ruch do witryny sieci Web przy użyciu metody, który jest skonfigurowany do równoważenia obciążenia. Jest to całkowicie niewidoczne odwiedzający witrynę sieci Web. Użytkownicy będą widzieć tylko niestandardowej nazwy domeny w swojej przeglądarce.
 
 > [!NOTE]
-> Mapowanie poddomeny przy użyciu rekordu CNAME, takich jak Zezwalaj tylko niektóre rejestratorów domeny **www.contoso.com**i nie główne nazwy, takie jak **contoso.com**. Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz temat w dokumentacji dostarczonej przez rejestrator, <a href="http://en.wikipedia.org/wiki/CNAME_record">Wikipedia wpis rekordu CNAME</a>, lub <a href="http://tools.ietf.org/html/rfc1035">nazw domen IETF — implementacja i specyfikacja</a> dokumentu.
+> Mapowanie poddomeny przy użyciu rekordu CNAME, takich jak Zezwalaj tylko niektóre rejestratorów domeny **www.contoso.com**i nie główne nazwy, takie jak **contoso.com**. Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz temat w dokumentacji dostarczonej przez rejestrator, <a href="https://en.wikipedia.org/wiki/CNAME_record">Wikipedia wpis rekordu CNAME</a>, lub <a href="https://tools.ietf.org/html/rfc1035">nazw domen IETF — implementacja i specyfikacja</a> dokumentu.
 > 
 > 
 

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2018
+ms.date: 12/9/2018
 ms.author: rkarlin
-ms.openlocfilehash: f46837751901015fd80d3ecc7a620878cadb3f12
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b38ba140a1e2b853c07e1ffe53405b58663653b5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317878"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343874"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Ochrona usługi App Service z usługą Azure Security Center
 Ten artykuł ułatwia monitorowanie oraz chronić Twoich aplikacji uruchomionych na podstawie usługi App Service przy użyciu usługi Azure Security Center.
 
-Usługa App Service umożliwia tworzenie i hostowanie wybrane aplikacje sieci web w języku programowania bez zarządzania infrastrukturą. Usługa App Service oferuje automatyczne skalowanie i wysoka dostępność, obsługuje zarówno Windows i Linux, a także używanie wdrożeń zautomatyzowanych z usługi GitHub, Visual Studio Team Services lub dowolnego repozytorium Git. 
+Usługa App Service umożliwia tworzenie i hostowanie wybrane aplikacje sieci web w języku programowania bez zarządzania infrastrukturą. Usługa App Service oferuje automatyczne skalowanie i wysoka dostępność, obsługuje zarówno Windows i Linux, a także używanie wdrożeń zautomatyzowanych z usługi GitHub, DevOps platformy Azure lub dowolnego repozytorium Git. 
 
 Luki w zabezpieczeniach w aplikacji sieci web są często wykorzystane przez osoby atakujące, ponieważ mają one typowe i dynamicznego interfejsu dla organizacji, prawie każdy w Internecie. Żądania do aplikacji działających na podstawie usługi App Service przechodzi przez kilka bram wdrożony w centrach danych platformy Azure na całym świecie, odpowiedzialny za routing każdego żądania do jego odpowiadającej jej aplikacji. 
 
@@ -34,7 +34,7 @@ Usługa Security Center wykorzystuje skalowalność chmury do identyfikowania at
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby monitorować i zabezpieczanie usługi App Service, musisz mieć plan usługi App Service, który jest skojarzony z dedykowanych maszynach. Te plany są: podstawowa, standardowa, Premium, izolowany lub Linux. Usługa Azure Security Center nie obsługuje plany bezpłatna, współdzielona ani użycie. Aby uzyskać więcej informacji, zobacz [planów usługi App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Aby monitorować i zabezpieczanie usługi App Service, musisz mieć plan usługi App Service, który jest skojarzony z dedykowanych maszynach. Te plany są: Basic, Standard, Premium i samodzielnie lub Linux. Usługa Azure Security Center nie obsługuje plany bezpłatna, współdzielona ani użycie. Aby uzyskać więcej informacji, zobacz [planów usługi App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 ## <a name="security-center-protection"></a>Ochrona usługi Security Center
 
@@ -63,8 +63,8 @@ Aby wyłączyć monitorowanie i zalecenia dotyczące usługi App Service, powtó
 ## <a name="see-also"></a>Zobacz także
 W tym artykule przedstawiono sposób korzystania z funkcji monitorowania w usłudze Azure Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje na temat konfigurowania ustawień zabezpieczeń w usłudze Azure Security Center.
-* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
-* [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md): Informacje o sposobie konfigurowania ustawień zabezpieczeń w usłudze Azure Security Center.
+* [Reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md): Informacje na temat sposobu zarządzania alertami zabezpieczeń i reagowania na nie.
+* [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md): Informacje na temat sposobu monitorowania stanu kondycji rozwiązań partnerskich.
+* [Usługa Azure Security Center — często zadawane pytania](security-center-faq.md): Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
+* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/): Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

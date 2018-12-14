@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d77e5265349db2fc433d2bb9a42140a6a4209ba1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5de0c975b21131b50155a6e86f5710f741a3c7f7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317499"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344146"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Skoryguj konfiguracje zabezpieczeń w usłudze Azure Security Center
 Usługa Azure Security Center analizuje codziennie systemu operacyjnego (OS) maszyn wirtualnych (VM) i konfigurację, która może spowodować, że maszyny wirtualne na komputerach i bardziej narażone na ataki. Usługa Security Center zaleca Rozwiąż luk w zabezpieczeniach w przypadku konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń zaleca się zmiany tych luk w konfiguracji.
@@ -44,21 +44,21 @@ W tym przykładzie opisano zalecenie "Skoryguj konfiguracje zabezpieczeń" w obs
 
   - **Niespełnione reguły według ważności**: Całkowita liczba reguł, że konfiguracja systemu operacyjnego nie powiodło się dla maszyn wirtualnych i komputerów, podzielone według ważności.
   - **Niespełnione reguły według typu**: Całkowita liczba reguł, że konfiguracja systemu operacyjnego nie powiodło się dla maszyn wirtualnych i komputerów, podzielone według typu.
-  - **Niespełnione reguły Windows**: łączna liczba reguł nie na podstawie konfiguracji systemu operacyjnego Windows.
-  - **Niespełnione reguły Linux**: łączna liczba reguł nie na podstawie konfiguracji systemu operacyjnego Linux.
+  - **Niespełnione reguły Windows**: Łączna liczba reguł, nie na podstawie konfiguracji systemu operacyjnego Windows.
+  - **Niespełnione reguły Linux**: Łączna liczba reguł, nie na podstawie konfiguracji systemu operacyjnego Linux.
 
   W dolnej części pulpitu nawigacyjnego Wyświetla listę wszystkich reguł nie powiodło się dla maszyn wirtualnych i komputerów oraz ważność brakujących aktualizacji. Lista zawiera następujące elementy:
 
   - **CCEID**: CCE Unikatowy identyfikator dla tej reguły. Usługa Security Center używa Common Configuration Enumeration (CCE) do przypisywania unikatowych identyfikatorów dla reguły konfiguracji.
   - **Nazwa**: Nazwa reguły nie powiodło się.
-  - **Typ reguły**: *klucza rejestru*, *zasady zabezpieczeń*, *zasady inspekcji*, lub *IIS* typ reguły.
+  - **Typ reguły**: *Klucza rejestru*, *zasady zabezpieczeń*, *zasady inspekcji*, lub *IIS* typ reguły.
   - **Nie. maszyn wirtualnych i komputerów**: Całkowita liczba maszyn wirtualnych i komputerów, których dotyczy reguła z błędem.
-  - **Ważność reguły**: wartość CCE *krytyczny*, *ważne*, lub *ostrzeżenie*.
-  - **Stan**: bieżący stan zalecenia:
+  - **Ważność reguły**: Wartość CCE *krytyczny*, *ważne*, lub *ostrzeżenie*.
+  - **Stan**: Bieżący stan zalecenia:
 
-    - **Otwarte**: nie rozpoczęto jeszcze wykonywania zalecenia.
-    - **Trwającą**: zalecenie jest aktualnie stosowane do zasobów i jest wymagana żadna akcja.
-    - **Rozwiązane**: zalecenia zostały zastosowane. Gdy problem zostanie rozwiązany, wpis jest wyszarzony.
+    - **Otwórz**: Zalecenie nie rozpoczęto jeszcze wykonywania.
+    - **Trwającą**: Zalecenie jest aktualnie stosowane do zasobów i jest wymagana żadna akcja.
+    - **Rozwiązane**: Zalecenia zostały zastosowane. Gdy problem zostanie rozwiązany, wpis jest wyszarzony.
 
 3. Aby wyświetlić szczegóły reguły nie powiodło się, wybierz go z listy.
 
@@ -68,15 +68,15 @@ W tym przykładzie opisano zalecenie "Skoryguj konfiguracje zabezpieczeń" w obs
 
    - **Nazwa**: Nazwa reguły.
    - **CCIED**: CCE Unikatowy identyfikator dla tej reguły.
-   - **Wersja systemu operacyjnego**: wersja systemu operacyjnego maszyny Wirtualnej lub komputera.
-   - **Ważność reguły**: wartość CCE *krytyczny*, *ważne*, lub *ostrzeżenie*.
-   - **Pełny opis**: opis reguły.
-   - **Luki w zabezpieczeniach**: wyjaśnienie luk w zabezpieczeniach lub ryzyko, gdy nie jest stosowana reguła.
-   - **Potencjalny wpływ**: wpływ na działalność, po zastosowaniu reguły.
-   - **Przeciwdziałanie**: kroki korygowania.
-   - **Oczekiwana wartość**: wartość, która oczekuje się, gdy usługa Security Center analizuje konfigurację systemu operacyjnego maszyny Wirtualnej względem reguły.
-   - **Wartość rzeczywista**: wartość, która jest zwracana po przeprowadzeniu analizy konfiguracji systemu operacyjnego maszyny Wirtualnej względem reguły.
-   - **Reguły operacji**: operacji regułę, która jest używana przez usługę Security Center podczas analizy konfiguracji systemu operacyjnego maszyny Wirtualnej względem reguły.
+   - **Wersja systemu operacyjnego**: Wersja systemu operacyjnego maszyny Wirtualnej lub komputera.
+   - **Ważność reguły**: Wartość CCE *krytyczny*, *ważne*, lub *ostrzeżenie*.
+   - **Pełny opis**: Opis reguły.
+   - **Luki w zabezpieczeniach**: Opis luki w zabezpieczeniach lub ryzyko, gdy nie jest stosowana reguła.
+   - **Potencjalny wpływ**: Znaczenie biznesowe, gdy reguła jest stosowana.
+   - **Przeciwdziałanie**: Kroki korygowania.
+   - **Oczekiwana wartość**: Wartość, która oczekuje się, gdy usługa Security Center analizuje konfigurację systemu operacyjnego maszyny Wirtualnej względem reguły.
+   - **Wartość rzeczywista**: Wartość zwracana po przeprowadzeniu analizy konfiguracji systemu operacyjnego maszyny Wirtualnej względem reguły.
+   - **Reguły operacji**: Operacja reguły, która jest używana przez usługę Security Center podczas analizy konfiguracji systemu operacyjnego maszyny Wirtualnej względem reguły.
 
 4. W górnej części okna w widoku szczegółowym wybierz **wyszukiwania**.  
   Wyszukiwanie Otwiera listę obszarów roboczych, które mają maszyny wirtualne i komputery z niezgodności konfiguracji zabezpieczeń wybrane. Wybór obszaru roboczego jest wyświetlany tylko jeśli wybrana reguła ma zastosowanie do wielu maszyn wirtualnych, które są podłączone do różnych obszarów roboczych.
@@ -101,7 +101,7 @@ Aby zapoznać się z określonych konfiguracji, które są monitorowane, zobacz 
 Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujące zasoby:
 
 * Aby uzyskać listę obsługiwanych maszyn wirtualnych systemu Linux i Windows, zobacz [obsługiwanych platform w usłudze Azure Security Center](security-center-os-coverage.md).
-* Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń dla subskrypcji platformy Azure i grup zasobów, zobacz [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md).
+* Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń dla subskrypcji platformy Azure i grup zasobów, zobacz [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md).
 * Aby dowiedzieć się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 * Informacje na temat monitorowania kondycji zasobów platformy Azure, zobacz [monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md).
 * Aby dowiedzieć się, jak zarządzać i reagować na alerty zabezpieczeń, zobacz [reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md).

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f7d13c946ce9d74d23ceef63c31e3858591ae42e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b297be16110e24342b224f7f89c2a3c0c44229a9
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642795"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341410"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostyka funkcje trwałe (usługa Azure Functions)
 
@@ -31,25 +31,27 @@ Trwałe rozszerzenie funkcji platformy Azure również emituje *zdarzenia śledz
 
 Każde zdarzenie cyklu życia wystąpienia aranżacji wygenerowanie zdarzenia śledzenia są zapisywane w **ślady** kolekcji w usłudze Application Insights. To zdarzenie zawiera **tabeli customDimensions** ładunek z kilku pól.  Nazwy pól są poprzedzonej ciągiem `prop__`.
 
-* **hubName**: Nazwa Centrum zadania, w którym są uruchomione usługi aranżacji.
-* **appName**: Nazwa aplikacji funkcji. Jest to przydatne, jeśli masz wiele aplikacji funkcyjnych, udostępnianie tego samego wystąpienia usługi Application Insights.
-* **slotName**: [miejsce wdrożenia](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) w bieżącej aplikacji funkcji, który działa. Jest to przydatne, gdy korzystanie z mechanizmów miejsc wdrożenia do wersji.
+* **hubName**: Nazwa koncentratora zadania, w którym są uruchomione usługi aranżacji.
+* **Nazwa aplikacji**: Nazwa aplikacji funkcji. Jest to przydatne, jeśli masz wiele aplikacji funkcyjnych, udostępnianie tego samego wystąpienia usługi Application Insights.
+* **slotName**: [Miejsce wdrożenia](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) w bieżącej aplikacji funkcji, który działa. Jest to przydatne, gdy korzystanie z mechanizmów miejsc wdrożenia do wersji.
 * **functionName**: Nazwa funkcji programu orchestrator lub działania.
-* **functiontype —**: typ funkcji, takich jak **Orchestrator** lub **działania**.
+* **functiontype —**: Typ funkcji, takich jak **Orchestrator** lub **działania**.
 * **Identyfikator instanceId**: Unikatowy identyfikator wystąpienia aranżacji.
-* **Stan**: stan wykonywania cyklu życia wystąpienia. Prawidłowe wartości to:
-    * **Zaplanowane**: funkcja została zaplanowana do wykonania, ale nie zostało rozpoczęte jeszcze uruchomiona.
-    * **Pracę**: funkcja rozpoczęło działanie, ale nie został jeszcze oczekiwane lub ukończone.
-    * **Oczekiwane**: koordynatora zaplanowano jakąś pracę i czeka na jego zakończenie.
-    * **Nasłuchiwanie**: koordynatora nasłuchuje powiadomień o zdarzeniach zewnętrznych.
-    * **Ukończono**: funkcja została ukończona pomyślnie.
-    * **Nie powiodło się**: funkcja nie powiodło się z powodu błędu.
-* **Przyczyna**: dodatkowe dane skojarzone ze zdarzeniem śledzenia. Na przykład jeśli wystąpienie jest oczekiwanie na powiadomienie o zdarzeniu zewnętrznych, to pole wskazuje nazwę zdarzenia, które oczekuje na. Jeśli funkcja zakończyło się niepowodzeniem, to będzie zawierać szczegóły błędu.
-* **isReplay**: wartość logiczną wskazującą, czy zdarzenie śledzenia jest odtwarzany wykonywania.
-* **extensionVersion**: wersja rozszerzenia zadań trwałe. Jest to szczególnie ważne dane, gdy raportowanie możliwych usterek w rozszerzeniu. Długo działających wystąpień mogą zgłaszać wiele wersji, jeśli nastąpi aktualizacja jest uruchomiona. 
-* **sequenceNumber**: numer sekwencyjny wykonania dla zdarzenia. W połączeniu z sygnatury czasowej ułatwia kolejności zdarzeń według czasu wykonywania. *Należy pamiętać, że ta liczba będzie Resetowanie na zero, jeśli host powoduje ponowne uruchomienie wystąpienia jest uruchomiona, dlatego ważne jest, aby zawsze najpierw sortowanie według sygnatur czasowych, a następnie sequenceNumber.*
+* **Stan**: Stan wykonywania cyklu życia wystąpienia. Prawidłowe wartości to:
+  * **Zaplanowane**: Funkcja została zaplanowana do wykonania, ale nie zostało rozpoczęte jeszcze uruchomiona.
+  * **Pracę**: Funkcja rozpoczęło działanie, ale nie został jeszcze oczekiwane lub ukończone.
+  * **Oczekiwane**: Koordynatora zaplanowano jakąś pracę i czeka na jego zakończenie.
+  * **Nasłuchiwanie**: Koordynatora nasłuchuje powiadomień o zdarzeniach zewnętrznych.
+  * **Ukończono**: Funkcja została pomyślnie ukończona.
+  * **Nie powiodło się**: Funkcja nie powiodło się z powodu błędu.
+* **Przyczyna**: Dodatkowe dane skojarzone ze zdarzeniem śledzenia. Na przykład jeśli wystąpienie jest oczekiwanie na powiadomienie o zdarzeniu zewnętrznych, to pole wskazuje nazwę zdarzenia, które oczekuje na. Jeśli funkcja zakończyło się niepowodzeniem, to będzie zawierać szczegóły błędu.
+* **isReplay**: Wartość logiczna wskazująca, czy zdarzenie śledzenia jest powtórzonym wykonywania.
+* **extensionVersion**: Wersja rozszerzenia zadań trwałe. Jest to szczególnie ważne dane, gdy raportowanie możliwych usterek w rozszerzeniu. Długo działających wystąpień mogą zgłaszać wiele wersji, jeśli nastąpi aktualizacja jest uruchomiona.
+* **sequenceNumber**: Numer sekwencyjny wykonania dla zdarzenia. W połączeniu z sygnatury czasowej ułatwia kolejności zdarzeń według czasu wykonywania. *Należy pamiętać, że ta liczba będzie Resetowanie na zero, jeśli host powoduje ponowne uruchomienie wystąpienia jest uruchomiona, dlatego ważne jest, aby zawsze najpierw sortowanie według sygnatur czasowych, a następnie sequenceNumber.*
 
-Poziom szczegółowości śledzenia emitowane do usługi Application Insights można skonfigurować w `logger` części `host.json` pliku.
+Poziom szczegółowości śledzenia emitowane do usługi Application Insights można skonfigurować w `logger` (funkcje 1.x) lub `logging` (funkcje 2.x) sekcji `host.json` pliku.
+
+#### <a name="functions-1x"></a>Functions w wersji 1.x
 
 ```json
 {
@@ -63,9 +65,23 @@ Poziom szczegółowości śledzenia emitowane do usługi Application Insights mo
 }
 ```
 
+#### <a name="functions-2x"></a>Functions w wersji 2.x
+
+```json
+{
+    "logging": {
+        "logLevel": {
+          "Host.Triggers.DurableTask": "Information",
+        },
+    }
+}
+```
+
 Domyślnie wszystkie inne niż powtarzania śledzenia zdarzeń jest emitowanych. Ilość danych można zmniejszyć, ustawiając `Host.Triggers.DurableTask` do `"Warning"` lub `"Error"` w którym to przypadku śledzenia zdarzeń będzie tylko obliczanie w sytuacjach wyjątkowych.
 
 Umożliwia emitowanie zdarzeń powtarzania pełne aranżacji, `LogReplayEvents` można ustawić `true` w `host.json` plik `durableTask` jak pokazano:
+
+#### <a name="functions-1x"></a>Functions w wersji 1.x
 
 ```json
 {
@@ -75,12 +91,24 @@ Umożliwia emitowanie zdarzeń powtarzania pełne aranżacji, `LogReplayEvents` 
 }
 ```
 
+#### <a name="functions-2x"></a>Functions w wersji 2.x
+
+```javascript
+{
+    "extensions": {
+        "durableTask": {
+            "logReplayEvents": true
+        }
+    }
+}
+```
+
 > [!NOTE]
 > Domyślnie telemetria usługi Application Insights są próbkowane tak, przez środowisko uruchomieniowe usługi Azure Functions, aby uniknąć emitowanie dane zbyt często. Może to spowodować, że informacje ze śledzenia zostanie utracone w przypadku wystąpienia wielu zdarzeń cyklu życia w krótkim czasie. [Monitorowania usługi Azure Functions artykułu](../functions-monitoring.md#configure-sampling) wyjaśnia, jak w celu skonfigurowania tego zachowania.
 
 ### <a name="single-instance-query"></a>Pojedyncze wystąpienie zapytania
 
-Następujące zapytanie wyświetla dane historyczne śledzenia dla pojedynczego wystąpienia [Hello sekwencji](durable-functions-sequence.md) funkcji aranżacji. Jest ona zapisywana przy użyciu [Application Insights zapytanie języka (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Filtruje się powtarzania wykonywania, aby tylko *logiczne* jest wyświetlana ścieżka wykonywania. Zdarzenia może zostać określona przez sortowanie według `timestamp` i `sequenceNumber` jak pokazano w poniższym zapytaniu: 
+Następujące zapytanie wyświetla dane historyczne śledzenia dla pojedynczego wystąpienia [Hello sekwencji](durable-functions-sequence.md) funkcji aranżacji. Jest ona zapisywana przy użyciu [Application Insights zapytanie języka (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Filtruje się powtarzania wykonywania, aby tylko *logiczne* jest wyświetlana ścieżka wykonywania. Zdarzenia może zostać określona przez sortowanie według `timestamp` i `sequenceNumber` jak pokazano w poniższym zapytaniu:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -92,7 +120,7 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
-| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"])
 | where isReplay != true
 | where instanceId == targetInstanceId
 | sort by timestamp asc, sequenceNumber asc
@@ -102,7 +130,6 @@ traces
 Wynik jest Lista śledzenia zdarzeń, która wyświetla ścieżki wykonywania aranżacji, w tym wszystkie funkcje działania uporządkowane według czasu wykonywania w kolejności rosnącej.
 
 ![Zapytanie usługi Application Insights](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
-
 
 ### <a name="instance-summary-query"></a>Podsumowanie zapytania wystąpienia
 
@@ -123,6 +150,7 @@ traces
 | project timestamp, instanceId, functionName, state, output, appName = cloud_RoleName
 | order by timestamp asc
 ```
+
 Wynikiem jest lista identyfikatorów wystąpień oraz ich bieżący stan środowiska uruchomieniowego.
 
 ![Zapytanie usługi Application Insights](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
@@ -131,24 +159,24 @@ Wynikiem jest lista identyfikatorów wystąpień oraz ich bieżący stan środow
 
 Należy pamiętać o koordynatora powtarzania zachowanie podczas zapisywania dzienników bezpośrednio z poziomu funkcji orkiestratora. Na przykład rozważmy następującą funkcję programu orchestrator:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(
-    DurableOrchestrationContext ctx,
+    DurableOrchestrationContext context,
     ILogger log)
 {
     log.LogInformation("Calling F1.");
-    await ctx.CallActivityAsync("F1");
+    await context.CallActivityAsync("F1");
     log.LogInformation("Calling F2.");
-    await ctx.CallActivityAsync("F2");
+    await context.CallActivityAsync("F2");
     log.LogInformation("Calling F3");
-    await ctx.CallActivityAsync("F3");
+    await context.CallActivityAsync("F3");
     log.LogInformation("Done!");
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -188,20 +216,20 @@ Jeśli chcesz zalogować się wyłącznie na wykonanie bez powtarzania wyrażeni
 
 ```cs
 public static async Task Run(
-    DurableOrchestrationContext ctx,
+    DurableOrchestrationContext context,
     ILogger log)
 {
-    if (!ctx.IsReplaying) log.LogInformation("Calling F1.");
-    await ctx.CallActivityAsync("F1");
-    if (!ctx.IsReplaying) log.LogInformation("Calling F2.");
-    await ctx.CallActivityAsync("F2");
-    if (!ctx.IsReplaying) log.LogInformation("Calling F3");
-    await ctx.CallActivityAsync("F3");
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
     log.LogInformation("Done!");
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -230,21 +258,36 @@ Done!
 
 Stan niestandardowej aranżacji pozwala ustawić wartość stanu niestandardowych dla funkcji programu orchestrator. Ten stan jest oferowana w ramach kwerendy stanu HTTP interfejsu API lub `DurableOrchestrationClient.GetStatusAsync` interfejsu API. Stan niestandardowej aranżacji umożliwia bogatszych monitorowania dla funkcji programu orchestrator. Na przykład, kod funkcji programu orchestrator mogą zawierać `DurableOrchestrationContext.SetCustomStatus` wywołania do zaktualizowania postępu dla operacji długotrwałej. Klienta, takich jak strony sieci web lub innych systemu zewnętrznego, następnie można będzie okresowo uruchamiać kwerendę kwerendy stanu HTTP interfejsów API bogatsze informacje o postępie. Na przykład za pośrednictwem `DurableOrchestrationContext.SetCustomStatus` znajduje się poniżej:
 
+### <a name="c"></a>C#
+
 ```csharp
-public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
+public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
 {
     // ...do work...
 
     // update the status of the orchestration with some arbitrary data
     var customStatus = new { completionPercentage = 90.0, status = "Updating database records" };
-    ctx.SetCustomStatus(customStatus);
+    context.SetCustomStatus(customStatus);
 
     // ...do more work...
 }
 ```
 
-> [!NOTE]
-> Stan niestandardowej aranżacji dla języka JavaScript, będą dostępne w kolejnej wersji.
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    // ...do work...
+
+    // update the status of the orchestration with some arbitrary data
+    const customStatus = { completionPercentage: 90.0, status: "Updating database records", };
+    context.df.setCustomStatus(customStatus);
+
+    // ...do more work...
+});
+```
 
 Po uruchomieniu aranżacji klientów zewnętrznych można pobrać ten stan niestandardowy:
 
@@ -253,7 +296,7 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Klienci otrzymają następującą odpowiedź: 
+Klienci otrzymają następującą odpowiedź:
 
 ```http
 {
@@ -267,15 +310,15 @@ Klienci otrzymają następującą odpowiedź:
 ```
 
 > [!WARNING]
->  Stan niestandardowy ładunek jest ograniczony do 16 KB tekstu JSON UTF-16, ponieważ wymagane jest, aby mieściły się w kolumnie Azure Table Storage. Można użyć magazynu zewnętrznego, jeśli potrzebujesz większej ładunku.
+> Stan niestandardowy ładunek jest ograniczony do 16 KB tekstu JSON UTF-16, ponieważ wymagane jest, aby mieściły się w kolumnie Azure Table Storage. Można użyć magazynu zewnętrznego, jeśli potrzebujesz większej ładunku.
 
 ## <a name="debugging"></a>Debugowanie
 
 Usługi Azure Functions obsługuje debugowanie kodu funkcji bezpośrednio i które obsługują ten sam niesie ze sobą do przodu do funkcje trwałe, czy działających na platformie Azure lub lokalnie. Istnieje jednak kilka zachowań pod uwagę podczas debugowania:
 
-* **Oparte na metodzie powtórzeń**: funkcje programu Orchestrator regularnie oparte na metodzie powtórzeń po odebraniu nowych danych wejściowych. Oznacza to, że jeden *logiczne* wykonania funkcji orkiestratora może spowodować osiągnięcia tego samego punktu przerwania wielokrotnie, zwłaszcza, jeśli jest ustawiona na wczesnym etapie kodu funkcji.
-* **Await**: zawsze, gdy `await` jest napotkane, przekazuje sterowanie do dyspozytora trwałe Framework zadania. Jeśli po raz pierwszy, w szczególności `await` został napotkany, jest skojarzone zadanie *nigdy nie* wznowione. Ponieważ nigdy nie powraca do zadania, wykonywanie krokowe *za pośrednictwem* await (F10 w programie Visual Studio) nie jest faktycznie możliwe. Pominięcie działa tylko, gdy zadanie jest jest odtwarzany.
-* **Komunikaty przekroczeń limitu czasu**: funkcje trwałe wewnętrznie używa komunikatów w kolejce do wykonania dysku działania funkcji i funkcji programu orchestrator. W środowisku z wieloma Maszynami wirtualnymi podzielenie na debugowanie przez dłuższy czas, może spowodować innej maszyny Wirtualnej wczytać komunikat, co powoduje wykonanie zduplikowane. To zachowanie istnieje również funkcji regularnych wyzwalacz kolejki, ale ważne jest, aby wspomnieć w tym kontekście, ponieważ kolejki są szczegółowo opisuje implementacja.
+* **Powtarzanie**: Funkcje programu orchestrator regularnie oparte na metodzie powtórzeń po odebraniu nowych danych wejściowych. Oznacza to, że jeden *logiczne* wykonania funkcji orkiestratora może spowodować osiągnięcia tego samego punktu przerwania wielokrotnie, zwłaszcza, jeśli jest ustawiona na wczesnym etapie kodu funkcji.
+* **Await**: Zawsze, gdy `await` jest napotkane, przekazuje sterowanie do dyspozytora trwałe Framework zadania. Jeśli po raz pierwszy, w szczególności `await` został napotkany, jest skojarzone zadanie *nigdy nie* wznowione. Ponieważ nigdy nie powraca do zadania, wykonywanie krokowe *za pośrednictwem* await (F10 w programie Visual Studio) nie jest faktycznie możliwe. Pominięcie działa tylko, gdy zadanie jest jest odtwarzany.
+* **Komunikaty przekroczeń limitu czasu**: Trwałe funkcje wewnętrznie używa komunikatów w kolejce do wykonania dysku działania funkcji i funkcji programu orchestrator. W środowisku z wieloma Maszynami wirtualnymi podzielenie na debugowanie przez dłuższy czas, może spowodować innej maszyny Wirtualnej wczytać komunikat, co powoduje wykonanie zduplikowane. To zachowanie istnieje również funkcji regularnych wyzwalacz kolejki, ale ważne jest, aby wspomnieć w tym kontekście, ponieważ kolejki są szczegółowo opisuje implementacja.
 
 > [!TIP]
 > Podczas ustawiania punktów przerwania, jeśli chcesz tylko przerywał działanie w przypadku wykonywania bez powtarzania, można ustawić warunkowego punktu przerwania tego podziału tylko wtedy, gdy `IsReplaying` jest `false`.

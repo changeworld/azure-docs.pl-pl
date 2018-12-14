@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 53643b185825d4cc03073144e1b3547452629c08
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9df2e8762d546e6115dc1205548e927cfee7bb60
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497613"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341884"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
 
@@ -81,9 +81,9 @@ Jeśli urządzenia nie można użyć zestawów SDK urządzeń, nadal można poł
 
   Aby uzyskać więcej informacji na temat generowania tokenów sygnatur dostępu Współdzielonego, zobacz sekcję urządzenia [tokenów zabezpieczających za pomocą usługi IoT Hub][lnk-sas-tokens].
 
-  Podczas testowania, możesz również użyć dla wielu platform [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) lub [Device Explorer] [ lnk-device-explorer] narzędzie, aby szybko wygenerować sygnaturę dostępu Współdzielonego token, który Możesz skopiować i wkleić do własnego kodu:
+  Podczas testowania, możesz również użyć dla wielu platform [rozszerzenie Azure IoT Hub Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dawniej: rozszerzenie Azure IoT Toolkit) lub [Device Explorer] [ lnk-device-explorer]narzędzie, aby szybko wygenerować token sygnatury dostępu Współdzielonego, który można skopiować i wkleić do własnego kodu:
 
-Aby uzyskać zestaw narzędzi platformy Azure IoT:
+Aby uzyskać zestaw narzędzi usługi Azure IoT Hub:
 
   1. Rozwiń **AZURE IOT HUB DEVICES** kartę w lewym dolnym rogu programu Visual Studio Code.
   2. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **generowania tokenu sygnatury dostępu Współdzielonego dla urządzenia**.

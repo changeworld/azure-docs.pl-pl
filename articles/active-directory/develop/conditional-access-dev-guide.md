@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 229f74367262e07128fa9ea6c895d448b854ae0a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9f0a4369d794eda047185844d5fafa49bc8a2e0d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958258"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337924"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Wskazówki dla deweloperów na potrzeby dostępu warunkowego usługi Azure Active Directory
 
@@ -29,7 +29,7 @@ Funkcja dostępu warunkowego w usłudze Azure Active Directory (Azure AD) oferuj
 * Zezwalanie tylko usług Intune zarejestrowanych urządzeń na dostęp do określonych usług
 * Ograniczenie lokalizacji użytkownika i adres IP zakresów
 
-Aby uzyskać więcej informacji na temat pełnego zestawu dostępu warunkowego, zobacz [dostępu warunkowego w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal.md). 
+Aby uzyskać więcej informacji na temat pełnego zestawu dostępu warunkowego, zobacz [dostępu warunkowego w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 
 Dla deweloperów, tworzenie aplikacji dla usługi Azure AD w tym artykule przedstawiono sposób korzystania z dostępu warunkowego i zdobędziesz także wiedzę na temat uzyskiwania dostępu do zasobów, które nie mają wpływu że kontrolę nad tym, który może być stosowane zasady dostępu warunkowego. Artykuł opisuje także wpływ dostępu warunkowego w przepływie w imieniu użytkownika z aplikacji sieci web, uzyskiwanie dostępu do programu Microsoft Graph i wywoływanie interfejsów API.
 
@@ -39,7 +39,7 @@ Znajomości [pojedynczego](quickstart-v1-integrate-apps-with-azure-ad.md) i [wie
 
 ### <a name="app-types-impacted"></a>Typy aplikacji wpływ
 
-W typowych przypadkach dostępu warunkowego nie powoduje zmiany zachowania aplikacji lub wymaga zmiany od dewelopera. W przypadku aplikacji, pośrednio lub w trybie cichym żąda tokenu dla usługi tylko w niektórych przypadkach aplikacja wymaga zmiany kodu do obsługi dostępu warunkowego "wyzwania". Może to być proste i polega na wykonywanie interaktywne żądanie logowania.
+W typowych przypadkach dostępu warunkowego nie powoduje zmiany zachowania aplikacji lub wymaga zmiany od dewelopera. W przypadku aplikacji, pośrednio lub w trybie cichym żąda tokenu dla usługi tylko w niektórych przypadkach aplikacja wymaga zmiany kodu do obsługi dostępu warunkowego "wyzwania". Może to być proste i polega na wykonywanie interaktywne żądanie logowania.
 
 W szczególności następujące scenariusze wymagają kod służący do obsługi dostępu warunkowego "wyzwania":
 
@@ -49,29 +49,29 @@ W szczególności następujące scenariusze wymagają kod służący do obsługi
 * Aplikacje jednej strony, przy użyciu ADAL.js
 * Usługa Web Apps wywołanie zasobu
 
-Dostęp warunkowy, zasady mogą być stosowane do aplikacji, ale także mogą być stosowane do interfejsu API sieci web uzyskuje dostęp do aplikacji. Aby dowiedzieć się więcej o sposobie konfigurowania zasad dostępu warunkowego, zobacz [Szybki Start: Wymagaj uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](../conditional-access/app-based-mfa.md).
+Dostęp warunkowy, zasady mogą być stosowane do aplikacji, ale także mogą być stosowane do interfejsu API sieci web uzyskuje dostęp do aplikacji. Aby dowiedzieć się więcej o sposobie konfigurowania zasad dostępu warunkowego, zobacz [Szybki Start: Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](../conditional-access/app-based-mfa.md).
 
-W zależności od scenariusza Klient firmowy zastosować i usuwania zasad dostępu warunkowego w dowolnym momencie. Dla twojej aplikacji kontynuować działanie po zastosowaniu nowych zasad, należy zaimplementować obchodzenia "żądania". Poniższe przykłady ilustrują żądania obsługi. 
+W zależności od scenariusza Klient firmowy zastosować i usuwania zasad dostępu warunkowego w dowolnym momencie. Dla twojej aplikacji kontynuować działanie po zastosowaniu nowych zasad, należy zaimplementować obchodzenia "żądania". Poniższe przykłady ilustrują żądania obsługi.
 
 ### <a name="conditional-access-examples"></a>Przykłady dostępu warunkowego
 
 Niektóre scenariusze wymagają zmiany kodu do obsługi dostępu warunkowego, natomiast inne działał. Poniżej przedstawiono kilka scenariuszy przy użyciu dostępu warunkowego w celu uwierzytelniania wieloskładnikowego, który umożliwia pewne wgląd w różnicy.
 
-* Tworzysz aplikację dla systemu iOS z jedną dzierżawą i Zastosuj zasady dostępu warunkowego. Aplikacja loguje się użytkownik i nie poprosić o dostęp do interfejsu API. Gdy użytkownik się zaloguje, zasady jest wywoływana automatycznie, a użytkownik musi wykonywać uwierzytelnianie wieloskładnikowe (MFA). 
-* Tworzysz aplikację sieci web z wieloma dzierżawami, która używa programu Microsoft Graph dostęp do programu Exchange, między innymi usługami. Klient firmowy, który przyjmuje ta aplikacja ustawia zasady programu Exchange. Gdy aplikacja sieci web żąda tokenu dla MS Graph, aplikacja nie wzywa zgodna z zasadami. Użytkownik jest zalogowany za pomocą prawidłowy tokenów. Gdy aplikacja próbuje użyć tego tokenu dla programu Microsoft Graph dostępu do danych programu Exchange, oświadczenia "żądanie" jest zwracana do aplikacji sieci web za pośrednictwem ```WWW-Authenticate``` nagłówka. Aplikacja może następnie używać ```claims``` w nowe żądanie, zostanie wyświetlony monit o użytkownika końcowego w celu zachowania zgodności z warunkami. 
+* Tworzysz aplikację dla systemu iOS z jedną dzierżawą i Zastosuj zasady dostępu warunkowego. Aplikacja loguje się użytkownik i nie poprosić o dostęp do interfejsu API. Gdy użytkownik się zaloguje, zasady jest wywoływana automatycznie, a użytkownik musi wykonywać uwierzytelnianie wieloskładnikowe (MFA).
+* Tworzysz aplikację sieci web z wieloma dzierżawami, która używa programu Microsoft Graph dostęp do programu Exchange, między innymi usługami. Klient firmowy, który przyjmuje ta aplikacja ustawia zasady programu Exchange. Gdy aplikacja sieci web żąda tokenu dla MS Graph, aplikacja nie wzywa zgodna z zasadami. Użytkownik jest zalogowany za pomocą prawidłowy tokenów. Gdy aplikacja próbuje użyć tego tokenu dla programu Microsoft Graph dostępu do danych programu Exchange, oświadczenia "żądanie" jest zwracana do aplikacji sieci web za pośrednictwem ```WWW-Authenticate``` nagłówka. Aplikacja może następnie używać ```claims``` w nowe żądanie, zostanie wyświetlony monit o użytkownika końcowego w celu zachowania zgodności z warunkami.
 * Tworzysz natywnych aplikacji, która korzysta z usługi warstwy środkowej dostępu do podrzędnego interfejsu API. Klient firmowy w firmie korzystania z tej aplikacji stosuje zasady podrzędne interfejsu API. Po zalogowaniu się użytkownika końcowego aplikacji natywnej żąda dostępu do warstwy środkowej i wysyła ten token. Warstwa środkowa wykonuje w imieniu z przepływu, aby zażądać dostępu do interfejsu API niższego rzędu. W tym momencie oświadczenia "żądanie" są prezentowane w warstwie środkowej. Warstwy środkowej wysyła żądania do natywnej aplikacji, która musi być zgodna z zasadami dostępu warunkowego.
 
 ### <a name="complying-with-a-conditional-access-policy"></a>Zgodne z zasadami dostępu warunkowego
 
 Dla kilku topologiach innej aplikacji zasady dostępu warunkowego jest oceniany po ustanowieniu sesji. Jak działa zasad dostępu warunkowego na poziom szczegółowości, aplikacji i usług, punkt, w którym jest wywoływana zależy od intensywnie scenariusza, który próbujesz osiągnąć.
 
-Gdy aplikacja próbuje uzyskać dostęp do usługi za pomocą zasad dostępu warunkowego, napotkać żądania dostępu warunkowego. Ten problem został zakodowany w `claims` parametr, który jest dostarczany w odpowiedzi z usługi Azure AD lub programu Microsoft Graph. Oto przykład tego parametru żądania: 
+Gdy aplikacja próbuje uzyskać dostęp do usługi za pomocą zasad dostępu warunkowego, napotkać żądania dostępu warunkowego. Ten problem został zakodowany w `claims` parametr, który jest dostarczany w odpowiedzi z usługi Azure AD lub programu Microsoft Graph. Oto przykład tego parametru żądania:
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 ```
 
-Deweloperzy mogą zająć temu wyzwaniu i dołącz go na nowe żądanie do usługi Azure AD. Przekazanie tego stanu monituje użytkownika końcowego do wykonywania dowolnych akcji, które są niezbędne do zapewnienia zgodności z zasadami dostępu warunkowego. W następujących scenariuszach opisano szczegóły błędu i sposób wyodrębniania parametru. 
+Deweloperzy mogą zająć temu wyzwaniu i dołącz go na nowe żądanie do usługi Azure AD. Przekazanie tego stanu monituje użytkownika końcowego do wykonywania dowolnych akcji, które są niezbędne do zapewnienia zgodności z zasadami dostępu warunkowego. W następujących scenariuszach opisano szczegóły błędu i sposób wyodrębniania parametru.
 
 ## <a name="scenarios"></a>Scenariusze
 
@@ -90,7 +90,7 @@ Poniższe informacje dotyczą tylko w tych scenariuszy dostępu warunkowego:
 
 W poniższych sekcjach omówiono typowe scenariusze, które są bardziej złożone. Podstawowa zasada działania jest dostęp warunkowy, których zasady są oceniane w czasie których żądany jest token dla usługi, która ma zasady dostępu warunkowego, chyba że jest uzyskiwany za pośrednictwem programu Microsoft Graph.
 
-## <a name="scenario-app-accessing-microsoft-graph"></a>Scenariusz: Aplikacja uzyskiwanie dostępu do programu Microsoft Graph
+## <a name="scenario-app-accessing-microsoft-graph"></a>Scenariusz: Uzyskiwanie dostępu do programu Microsoft Graph aplikacji
 
 W tym scenariuszu Dowiedz się, jak aplikacja sieci web żąda dostępu do programu Microsoft Graph. Zasady dostępu warunkowego można w takim przypadku można przypisać do programu SharePoint, Exchange lub innej usługi, która jest dostępna jako obciążenie za pomocą programu Microsoft Graph. W tym przykładzie załóżmy, że istnieje zasady dostępu warunkowego w usłudze Sharepoint Online.
 
@@ -100,10 +100,10 @@ Aplikację po raz pierwszy żąda autoryzacji w programie Microsoft Graph, któr
 
 Aplikacja jest już prawidłowy token dla programu Microsoft Graph, który może wykonywać nowe żądanie bez wystawienia nowego tokenu. To żądanie nie powiedzie się i wystawiono wyzwanie oświadczeń programu Microsoft Graph w formie HTTP 403 — Dostęp zabroniony z ```WWW-Authenticate``` wyzwanie.
 
-Poniżej przedstawiono przykład odpowiedzi: 
+Poniżej przedstawiono przykład odpowiedzi:
 
 ```
-HTTP 403; Forbidden 
+HTTP 403; Forbidden
 error=insufficient_claims
 www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/common/oauth2/authorize", client_id="<GUID>", error=insufficient_claims, claims={"access_token":{"polids":{"essential":true,"values":["<GUID>"]}}}"
 ```
@@ -114,10 +114,10 @@ www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/
 
 ```csharp
         /// <summary>
-        /// This method extracts the claims value from the 403 error response from MS Graph. 
+        /// This method extracts the claims value from the 403 error response from MS Graph.
         /// </summary>
         /// <param name="wwwAuthHeader"></param>
-        /// <returns>Value of the claims entry. This should be considered an opaque string. 
+        /// <returns>Value of the claims entry. This should be considered an opaque string.
         /// Returns null if the wwwAuthheader does not contain the claims value. </returns>
         private String extractClaims(String wwwAuthHeader)
         {
@@ -138,27 +138,27 @@ www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/
                 }
                 return ClaimsChallenge;
             }
-            return null; 
+            return null;
         }
 ```
 
 Aby uzyskać przykłady kodu, które pokazują, jak obsługiwać żądania oświadczeń, zobacz [przykładowy kod w imieniu z](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) dla platformy .NET biblioteki ADAL.
 
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scenariusz: Aplikacja wykonywania w imieniu użytkownika z usługi flow
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scenariusz: Wykonywanie przepływu w imieniu użytkownika z aplikacji
 
-W tym scenariuszu, w jaki sposób za pośrednictwem przypadek, w którym aplikacja natywna wywołania API/usługi sieci web. Z kolei ta usługa jest [he "w imieniu z" przepływ do wywołania usługi podrzędne. W naszym przypadku możemy zostały zastosowane nasze zasady dostępu warunkowego w usłudze podrzędnego (Web API 2) i korzysta z aplikacji natywnej, a nie aplikacji demona/na serwerze. 
+W tym scenariuszu, w jaki sposób za pośrednictwem przypadek, w którym aplikacja natywna wywołania API/usługi sieci web. Z kolei ta usługa jest [he "w imieniu z" przepływ do wywołania usługi podrzędne. W naszym przypadku możemy zostały zastosowane nasze zasady dostępu warunkowego w usłudze podrzędnego (Web API 2) i korzysta z aplikacji natywnej, a nie aplikacji demona/na serwerze.
 
 ![Diagram przepływu w imieniu z wykonywania aplikacji](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
 Żądania tokenu początkowego dla sieci Web API 1 nie monituje użytkownika końcowego do uwierzytelniania wieloskładnikowego, zgodnie z 1 interfejsu API sieci Web nie zawsze trafień podrzędnego interfejsu API. Po 1 interfejsu API sieci Web podejmie próbę wysłania żądania tokenu w imieniu z użytkownika w sieci Web API 2, żądanie kończy się niepowodzeniem, ponieważ użytkownik nie zalogował się przy użyciu usługi Multi-Factor authentication.
 
-Usługa Azure AD zwraca odpowiedź HTTP z niektórych interesujące dane: 
+Usługa Azure AD zwraca odpowiedź HTTP z niektórych interesujące dane:
 
 > [!NOTE]
-> W tym wystąpieniu jest opis błędu uwierzytelniania wieloskładnikowego, ale istnieje szereg `interaction_required` możliwe odnoszących się do dostępu warunkowego. 
+> W tym wystąpieniu jest opis błędu uwierzytelniania wieloskładnikowego, ale istnieje szereg `interaction_required` możliwe odnoszących się do dostępu warunkowego.
 
 ```
-HTTP 400; Bad Request 
+HTTP 400; Bad Request
 error=interaction_required
 error_description=AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '<Web API 2 App/Client ID>'.
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -166,9 +166,9 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 W sieci Web API 1, zostanie przechwycony błąd `error=interaction_required`i odsyłania `claims` żądania do aplikacji klasycznej. W tym momencie można wprowadzać nową aplikację klasyczną `acquireToken()` wywoływanie obiektów blob i uzupełnialnych `claims`wyzwaniem, jako parametr ciągu zapytania dodatkowych. To nowe żądanie wymaga od użytkownika czy uwierzytelnianie wieloskładnikowe, a następnie wysłanie tego nowego tokenu do 1 interfejsu API sieci Web i ukończenie przepływu w imieniu z.
 
-Aby wypróbować ten scenariusz, zobacz nasze [przykładowy kod .NET](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Pokazuje sposób przekazywać żądania oświadczeń powrót po awarii z 1 interfejsu API sieci Web do natywnej aplikacji i utworzyć nowe żądanie w aplikacji klienckiej. 
+Aby wypróbować ten scenariusz, zobacz nasze [przykładowy kod .NET](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Pokazuje sposób przekazywać żądania oświadczeń powrót po awarii z 1 interfejsu API sieci Web do natywnej aplikacji i utworzyć nowe żądanie w aplikacji klienckiej.
 
-## <a name="scenario-app-accessing-multiple-services"></a>Scenariusz: Aplikacja uzyskiwanie dostępu do wielu usług
+## <a name="scenario-app-accessing-multiple-services"></a>Scenariusz: Uzyskiwanie dostępu do wielu usług aplikacji
 
 W tym scenariuszu, w jaki sposób za pośrednictwem przypadek, w którym aplikacja sieci web uzyskuje dostęp do dwóch usług w jednym z nich ma przypisane zasady dostępu warunkowego. W zależności od logika aplikacji może istnieć ścieżka aplikacji nie wymaga dostępu do obu usług sieci web. W tym scenariuszu kolejność, w której żądania tokenu odgrywa ważną rolę w środowisku użytkownika końcowego.
 
@@ -176,27 +176,27 @@ Załóżmy, że mamy usługi sieci web, A i B, a usługi sieci web B ma nasze za
 
 ![Uzyskiwanie dostępu do wielu usług diagramu przepływu aplikacji](./media/conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-Alternatywnie, jeśli aplikacja żąda tokenu początkowo, a usługi sieci web, użytkownik końcowy nie jest wywoływany zasad dostępu warunkowego. Dzięki temu deweloper aplikacji do kontroli użytkownika końcowego środowisko i wymuszania zasad dostępu warunkowego do wywołania we wszystkich przypadkach. Trudne wielkość liter jest, jeśli aplikacja następnie żąda tokenu usługi sieci web B. W tym momencie użytkownik końcowy musi zachować zgodności z zasadami dostępu warunkowego. Gdy aplikacja próbuje `acquireToken`, to mogą pojawić się następujący błąd (zilustrowane na poniższym diagramie): 
+Alternatywnie, jeśli aplikacja żąda tokenu początkowo, a usługi sieci web, użytkownik końcowy nie jest wywoływany zasad dostępu warunkowego. Dzięki temu deweloper aplikacji do kontroli użytkownika końcowego środowisko i wymuszania zasad dostępu warunkowego do wywołania we wszystkich przypadkach. Trudne wielkość liter jest, jeśli aplikacja następnie żąda tokenu usługi sieci web B. W tym momencie użytkownik końcowy musi zachować zgodności z zasadami dostępu warunkowego. Gdy aplikacja próbuje `acquireToken`, to mogą pojawić się następujący błąd (zilustrowane na poniższym diagramie):
 
 ```
 HTTP 400; Bad Request
 error=interaction_required
 error_description=AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '<Web API App/Client ID>'.
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
-``` 
+```
 
 ![Uzyskiwanie dostępu do wielu usług, żądanie nowego tokenu aplikacji](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Jeśli aplikacja używa biblioteki ADAL, awarii w celu uzyskania tokenu zawsze zostanie ponowiony interaktywnie. W przypadku wystąpienia tego interaktywnego żądania użytkownika końcowego ma możliwość wykonania przy użyciu dostępu warunkowego. Dotyczy to żądanie jest `AcquireTokenSilentAsync` lub `PromptBehavior.Never` w takim przypadku aplikacja musi wykonać interaktywną ```AcquireToken``` żądania, aby umożliwić użytkowania końcowego jest zgodne z zasadami. 
+Jeśli aplikacja używa biblioteki ADAL, awarii w celu uzyskania tokenu zawsze zostanie ponowiony interaktywnie. W przypadku wystąpienia tego interaktywnego żądania użytkownika końcowego ma możliwość wykonania przy użyciu dostępu warunkowego. Dotyczy to żądanie jest `AcquireTokenSilentAsync` lub `PromptBehavior.Never` w takim przypadku aplikacja musi wykonać interaktywną ```AcquireToken``` żądania, aby umożliwić użytkowania końcowego jest zgodne z zasadami.
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scenariusz: Aplikacja jednostronicowa (SPA) przy użyciu ADAL.js
 
 W tym scenariuszu przeanalizujemy przypadku gdy otrzymamy aplikacji jednostronicowej (SPA) przy użyciu ADAL.js wywołać warunkowego dostępu do chronionego internetowego interfejsu API. To jest architektura proste, ale ma niektóre różnice, które należy wziąć pod uwagę, opracowując wokół dostępu warunkowego.
 
-W ADAL.js, istnieje kilka funkcji, które uzyskiwania tokenów: `login()`, `acquireToken(...)`, `acquireTokenPopup(…)`, i `acquireTokenRedirect(…)`. 
+W ADAL.js, istnieje kilka funkcji, które uzyskiwania tokenów: `login()`, `acquireToken(...)`, `acquireTokenPopup(…)`, i `acquireTokenRedirect(…)`.
 
-* `login()` uzyskuje identyfikator tokenu za pośrednictwem interakcyjnego żądanie logowania, ale nie uzyskiwanie tokenów dostępu usługi (łącznie z dostępu warunkowego chronionego internetowego interfejsu API). 
-* `acquireToken(…)` następnie można dyskretnie uzyskania tokenu dostępu, co oznacza, że nie uwzględnia interfejsu użytkownika w dowolnej sytuacji. 
+* `login()` uzyskuje identyfikator tokenu za pośrednictwem interakcyjnego żądanie logowania, ale nie uzyskiwanie tokenów dostępu usługi (łącznie z dostępu warunkowego chronionego internetowego interfejsu API).
+* `acquireToken(…)` następnie można dyskretnie uzyskania tokenu dostępu, co oznacza, że nie uwzględnia interfejsu użytkownika w dowolnej sytuacji.
 * `acquireTokenPopup(…)` i `acquireTokenRedirect(…)` są zarówno używany na potrzeby interakcyjnego żądania tokenu do zasobu oznacza zawsze pokazuj interfejs użytkownika logowania.
 
 Gdy aplikacja potrzebuje tokenu dostępu do wywoływania interfejsu API sieci Web, próbuje `acquireToken(…)`. Jeśli token sesja wygasła lub musimy jest zgodne z zasadami dostępu warunkowego, a następnie *acquireToken* funkcja kończy się niepowodzeniem, a ta aplikacja używa `acquireTokenPopup()` lub `acquireTokenRedirect()`.
@@ -205,10 +205,10 @@ Gdy aplikacja potrzebuje tokenu dostępu do wywoływania interfejsu API sieci We
 
 Przejdźmy teraz przez przykład z naszym scenariuszu dostępu warunkowego. Użytkownik końcowy po prostu otwarta w lokacji i nie ma sesji. Wykonamy `login()` wywołanie, Uzyskaj identyfikator tokenu z pominięciem usługi Multi-Factor authentication. Następnie użytkownik naciśnie przycisk, który wymaga aplikacji, aby dane żądania z internetowego interfejsu API. Aplikacja próbuje wykonać `acquireToken()` wywołanie ale nie powiedzie się, ponieważ użytkownik nie wykonał jeszcze uwierzytelnianie wieloskładnikowe i musi być zgodne z zasadami dostępu warunkowego.
 
-Usługa Azure AD wysyła z powrotem następującą odpowiedź HTTP: 
+Usługa Azure AD wysyła z powrotem następującą odpowiedź HTTP:
 
 ```
-HTTP 400; Bad Request 
+HTTP 400; Bad Request
 error=interaction_required
 error_description=AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '<Web API App/Client ID>'.
 ```
@@ -221,6 +221,6 @@ Aby wypróbować ten scenariusz, zobacz nasze [przykładowy kod w imieniu użytk
 ## <a name="see-also"></a>Zobacz także
 
 * Aby dowiedzieć się więcej o możliwościach, zobacz [dostępu warunkowego w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
-* Aby uzyskać przykłady kodu w usłudze Azure AD, zobacz [z przykładów kodu w repozytorium Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory). 
+* Aby uzyskać przykłady kodu w usłudze Azure AD, zobacz [z przykładów kodu w repozytorium GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory).
 * Aby uzyskać więcej informacji dotyczących dostępu dokumentację referencyjną i ADAL zestawu SDK, zobacz [instrukcją biblioteki](active-directory-authentication-libraries.md).
 * Aby dowiedzieć się więcej na temat scenariuszy z wieloma dzierżawami, zobacz [jak logować użytkowników za pomocą wzorca wielodostępnych](howto-convert-app-to-be-multi-tenant.md).

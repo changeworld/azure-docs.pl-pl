@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 79e4d15c79a7f905a33fe471bcfda3e7ca367b01
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0d2b7a5e3239cf46c41db0a086b804c34df5d6e2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996453"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386948"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, skonfigurować rejestrowanie diagnostyczne i Włącz alerty w usłudze Azure Logic Apps
 
@@ -155,7 +155,7 @@ Aby zawęzić zapytanie, dodając filtr, wybierz **+ Dodaj**.
 
 Wraz z usługi Azure Log Analytics można rozszerzyć, wykorzystania danych diagnostycznych z aplikacji logiki z innymi usługami platformy Azure, na przykład: 
 
-* [Archiwum, które dzienniki diagnostyczne platformy Azure w usłudze Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
+* [Archiwum, które dzienniki diagnostyczne platformy Azure w usłudze Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Dzienniki diagnostyczne platformy Azure Stream do usługi Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
 Następnie monitorowanie przy użyciu danych telemetrycznych i analitycznych z innych usług, takich jak get w czasie rzeczywistym [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) i [usługi Power BI](../azure-monitor/platform/powerbi.md). Na przykład:
@@ -174,7 +174,7 @@ Oparte na opcje, które chcesz skonfigurować, upewnij się, że możesz pierwsz
 
 ## <a name="set-up-alerts-for-your-logic-app"></a>Ustawianie alertów dla aplikacji logiki
 
-Do monitorowania określonych metryk lub przekroczono progi dla aplikacji logiki, skonfiguruj [alertów na platformie Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md). Dowiedz się więcej o [metryki na platformie Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
+Do monitorowania określonych metryk lub przekroczono progi dla aplikacji logiki, skonfiguruj [alertów na platformie Azure](../azure-monitor/platform/alerts-overview.md). Dowiedz się więcej o [metryki na platformie Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
 Aby skonfigurować alerty bez [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md), wykonaj następujące kroki. Dla bardziej zaawansowanych kryteria alertów i działań [Konfigurowanie usługi Log Analytics](#azure-diagnostics) zbyt.
 
@@ -247,7 +247,7 @@ Na przykład `ActionCompleted` zdarzenie ma `clientTrackingId` i `trackedPropert
 
 * `clientTrackingId`: Jeśli nie zostanie podana, Azure automatycznie generuje ten identyfikator i jest skorelowane zdarzenia w przebiegu aplikacji logiki, w tym wszelkie zagnieżdżone przepływy pracy, są nazywane z aplikacji logiki. Można ręcznie określić tego Identyfikatora przy użyciu wyzwalacza, przekazując `x-ms-client-tracking-id` nagłówek o wartość niestandardową identyfikator w żądaniu wyzwalacza. Można użyć wyzwalacza żądania, wyzwalacz protokołu HTTP lub wyzwalacza elementu webhook.
 
-* `trackedProperties`: Do śledzenia danych wejściowych lub wyjściowych danych diagnostycznych, można dodać śledzonych do akcji w definicji JSON aplikacji logiki. Śledzone właściwości można śledzić w tylko jednej akcji dane wejściowe i wyjściowe, ale można użyć `correlation` właściwości zdarzenia do skorelowania różnych akcji do uruchomienia.
+* `trackedProperties`: Aby śledzić dane wejściowe lub wyjściowe w danych diagnostycznych, można dodać śledzonych do akcji w definicji JSON aplikacji logiki. Śledzone właściwości można śledzić w tylko jednej akcji dane wejściowe i wyjściowe, ale można użyć `correlation` właściwości zdarzenia do skorelowania różnych akcji do uruchomienia.
 
   Aby śledzić jeden lub więcej właściwości, należy dodać `trackedProperties` sekcji i żądane właściwości w definicji działania. Na przykład załóżmy, że chcesz śledzić dane, takie jak "Identyfikator zamówienia" w danych telemetrycznych:
 

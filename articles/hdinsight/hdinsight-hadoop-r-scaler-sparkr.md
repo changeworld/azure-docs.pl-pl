@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: da486b25a9a35cb4f00d6e5a4689d5be3d270e36
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a8b0884486f86f66ae02c7e7a82fecee43d5ffed
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013279"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386904"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Łączenie programu ScaleR i SparkR w HDInsight
 
 Ten dokument przedstawia sposób przewidywania usterek opóźnienia przybyciu locie przy użyciu **ScaleR** modelu regresji logistycznej. W przykładzie użyto dane pogody i opóźnienia lotów, łączone za pomocą **SparkR**.
 
-Mimo że oba pakiety są uruchamiane na aparat wykonywania platformy Spark w usłudze Hadoop, jest zablokowany danych w pamięci do udostępniania, ponieważ wymagają one każdego własne odpowiednich sesji platformy Spark. Dopóki ten problem został rozwiązany w przyszłych wersjach ML Server, obejście polega obsługa nienakładający sesji platformy Spark i wymieniać dane za pomocą plików pośrednich. Podanych tutaj instrukcji pokazują, że te wymagania są proste do osiągnięcia.
+Mimo że oba pakiety są uruchamiane na aparat wykonywania platformy Spark dla usługi Apache Hadoop, jest zablokowany danych w pamięci do udostępniania, ponieważ wymagają one każdego własne odpowiednich sesji platformy Spark. Dopóki ten problem został rozwiązany w przyszłych wersjach ML Server, obejście polega obsługa nienakładający sesji platformy Spark i wymieniać dane za pomocą plików pośrednich. Podanych tutaj instrukcji pokazują, że te wymagania są proste do osiągnięcia.
 
 W tym przykładzie został początkowo udostępniony w dyskusji konferencji Strata 2016 Mario Inchiosa i Roni Burd. Można znaleźć tej dyskusji na [tworzenia skalowalnej platformy do analizy danych przy użyciu języka R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Ocenianie w innym miejscu
 
-Możemy również użyć modelu oceniania danych na innej platformie. Zapisanie go do pliku pulpitu zdalnego i przesyłania, a następnie zaimportowanie tego usług pulpitu zdalnego do miejsca docelowego ocenianie środowiska takiego jak SQL Server R Services. Jest to ważne upewnić się, czy poziomy współczynnik dane, które mają zostać ocenione odpowiadają na których został zbudowany modelu. Pasujący można osiągnąć, wyodrębnianie i zapisywanie informacji o kolumnie skojarzony z modelowania danych za pośrednictwem programu ScaleR w `rxCreateColInfo()` funkcji i następnie zastosowanie tej informacji o kolumnie do źródła danych wejściowych w celu prognozowania. W poniższym możemy zapisać kilka wierszy zestawu danych testowych i wyodrębnianie i informacji o kolumnie od tego przykładu w skrypcie prognozowania:
+Możemy również użyć modelu oceniania danych na innej platformie. Zapisanie go do pliku pulpitu zdalnego i przesyłania, a następnie zaimportowanie tego usług pulpitu zdalnego do miejsca docelowego ocenianie środowiska takiego jak MIcrosoft SQL Server R Services. Jest to ważne upewnić się, czy poziomy współczynnik dane, które mają zostać ocenione odpowiadają na których został zbudowany modelu. Pasujący można osiągnąć, wyodrębnianie i zapisywanie informacji o kolumnie skojarzony z modelowania danych za pośrednictwem programu ScaleR w `rxCreateColInfo()` funkcji i następnie zastosowanie tej informacji o kolumnie do źródła danych wejściowych w celu prognozowania. W poniższym możemy zapisać kilka wierszy zestawu danych testowych i wyodrębnianie i informacji o kolumnie od tego przykładu w skrypcie prognozowania:
 
 ```
 # save the model and a sample of the test dataset 
@@ -535,7 +535,7 @@ W tym artykule firma Microsoft została pokazuje, jak jest można połączyć u�
 
 ## <a name="next-steps-and-more-information"></a>Kolejne kroki i dodatkowe informacje
 
-- Aby uzyskać więcej informacji przy użyciu serwera usługi uczenie Maszynowe na platformie Spark, zobacz [Przewodnik z wprowadzeniem](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Aby uzyskać więcej informacji przy użyciu serwera usługi uczenie Maszynowe na platformie Apache Spark, zobacz [Przewodnik z wprowadzeniem](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
 - Aby uzyskać ogólne informacje na temat ML Server, zobacz [wprowadzenie do języka R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) artykułu.
 

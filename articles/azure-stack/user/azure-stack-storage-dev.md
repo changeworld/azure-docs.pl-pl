@@ -9,23 +9,23 @@ ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a914a95831176a51cc6b5e2c5bf69ef1ad60bcc0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a218cf9b3d89236128c83d8b879691940e432a55
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035933"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341562"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Wprowadzenie do narzędzia programistyczne dotyczące magazynu usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Microsoft Azure Stack zapewnia zestaw usług magazynu, który zawiera obiekt blob, tabela i queue storage.
 
 Umożliwia tego artykułu jako przewodnika rozpoczęcie korzystania z narzędzia programistyczne dotyczące magazynu usługi Azure Stack. W odpowiednich samouczki usługi Azure storage można znaleźć więcej szczegółowych informacji i przykładowy kod.
 
-> [!NOTE]  
-> Są to znane różnice między magazynu usługi Azure Stack i Azure storage, w tym szczególne wymagania dotyczące każdej platformy. Na przykład istnieje biblioteki określonego klienta i określonego punktu końcowego sufiks wymagania dotyczące usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [magazynu usługi Azure Stack: różnice i zagadnienia](azure-stack-acs-differences.md).
+> [!NOTE]
+> Są to znane różnice między magazynu usługi Azure Stack i Azure storage, w tym szczególne wymagania dotyczące każdej platformy. Na przykład istnieje biblioteki określonego klienta i określonego punktu końcowego sufiks wymagania dotyczące usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [magazynu usługi Azure Stack: Różnice i zagadnienia](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Biblioteki klienckie systemu Azure
 
@@ -37,7 +37,7 @@ Obsługiwane wersje interfejsu API REST dla magazynu usługi Azure Stack to 2017
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | .NET | 8.7.0 | Pakiet Nuget:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>Wersja usługi GitHub:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | pliku App.config |
 | Java | 6.1.0 | Pakiet maven:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>Wersja usługi GitHub:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | Ustawienia parametrów połączenia |
-| Node.js | 2.7.0 | NPM link:<br>https://www.npmjs.com/package/azure-storage<br>(Uruchom: `npm install azure-storage@2.7.0`)<br> <br>Wersja usługi Github:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | Deklaracja wystąpienia usługi |
+| Node.js | 2.7.0 | NPM link:<br>https://www.npmjs.com/package/azure-storage<br>(Uruchom: `npm install azure-storage@2.7.0`)<br> <br>Wersja usługi GitHub:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | Deklaracja wystąpienia usługi |
 | C++ | 3.1.0 | Pakiet Nuget:<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>Wersja usługi GitHub:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | Ustawienia parametrów połączenia |
 | PHP | 1.0.0 | Wersja usługi GitHub:<br>Wspólne: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Obiekt blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>Kolejka:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>Tabela: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Instalowanie za pomocą Composer (Aby uzyskać więcej informacji, [Zobacz szczegóły poniżej](#install-php-client-via-composer---current).) | Ustawienia parametrów połączenia |
 | Python | 1.0.0 | Wersja usługi GitHub:<br>Wspólne:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>Blob:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>Kolejka:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | Deklaracja wystąpienia usługi |
@@ -66,7 +66,7 @@ Aby zainstalować za pośrednictwem Composer (kompozytor): (Wypełnij obiektów 
 |---------|---------|---------|---------|
 |.NET     |6.2.0|Pakiet Nuget:<br>[https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0](https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0)<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1](https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1)|pliku App.config|
 |Java|4.1.0|Pakiet maven:<br>[http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0)<br><br>Wersja usługi GitHub:<br> [https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0](https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0)|Ustawienia parametrów połączenia|
-|Node.js     |1.1.0|NPM link:<br>[https://www.npmjs.com/package/azure-storage](https://www.npmjs.com/package/azure-storage)<br>(Uruchom: `npm install azure-storage@1.1.0)`<br><br>Wersja usługi Github:<br>[https://github.com/Azure/azure-storage-node/releases/tag/1.1.0](https://github.com/Azure/azure-storage-node/releases/tag/1.1.0)|Deklaracja wystąpienia usługi||C++|2.4.0|Pakiet Nuget:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Ustawienia parametrów połączenia|
+|Node.js     |1.1.0|NPM link:<br>[https://www.npmjs.com/package/azure-storage](https://www.npmjs.com/package/azure-storage)<br>(Uruchom: `npm install azure-storage@1.1.0)`<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-node/releases/tag/1.1.0](https://github.com/Azure/azure-storage-node/releases/tag/1.1.0)|Deklaracja wystąpienia usługi||C++|2.4.0|Pakiet Nuget:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Ustawienia parametrów połączenia|
 |C++|2.4.0|Pakiet Nuget:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Ustawienia parametrów połączenia|
 |PHP|0.15.0|Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0](https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0)<br><br>Instalowanie za pomocą Composer (Zobacz szczegóły poniżej)|Ustawienia parametrów połączenia|
 |Python     |0.30.0|Pakiet PIP:<br> [https://pypi.python.org/pypi/azure-storage/0.30.0](https://pypi.python.org/pypi/azure-storage/0.30.0)<br>(Uruchom: `pip install -v azure-storage==0.30.0)`<br><br>Wersja usługi GitHub:<br> [https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0](https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0)|Deklaracja wystąpienia usługi|

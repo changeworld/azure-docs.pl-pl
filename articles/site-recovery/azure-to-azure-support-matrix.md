@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: raynew
-ms.openlocfilehash: 67a236f592392744978b7d1d7f7e7d129515a9a0
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 50f9027301e4a04cd5624deee084429c803e04f4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321805"
+ms.locfileid: "53342718"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -134,7 +134,7 @@ SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem 
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikowane maszyny - magazyn systemu/gościa pliku systemu Linux
 
-* Systemy plików: ext3, ext4, ReiserFS (Suse Linux Enterprise Server tylko), XFS
+* Systemy plików: ext3, ext4, ReiserFS (tylko w systemie Suse Linux Enterprise Server), XFS, BTRFS
 * Menedżer woluminów: LVM2
 * Oprogramowanie wielościeżkowe: Mapowanie urządzeń
 

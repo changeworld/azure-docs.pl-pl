@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 56ad4fdf781d9ed94a082ab5eb352803c70e52ef
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a2fd26d110e7bf1ce7ac365b83659e5d33a037df
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996243"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383548"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji danych przechowywanych w usłudze Azure Monitor. Obejmuje to [metryki w magazynie Azure metryki](../azure-monitor/platform/data-collection.md#metrics) i [rejestrować dane w usłudze Log Analytics](../azure-monitor/platform/data-collection.md#logs). 
@@ -32,7 +32,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 ### <a name="advantages"></a>Zalety
 - Głęboka integracja na platformie Azure. Wizualizacje można przypiąć do pulpitów nawigacyjnych z wielu stronach platformy Azure, łącznie z Eksploratora metryk, usługi Log Analytics i usługi Application Insights.
 - Obsługuje zarówno metryk i dzienników.
-- Połącz dane z wielu źródeł, takich jak dane wyjściowe z [Eksploratora metryk](../monitoring-and-diagnostics/monitoring-metric-charts.md), [zapytań usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), i [mapuje](../application-insights/app-insights-app-map.md) i [dostępności]()w usłudze Application Insights.
+- Połącz dane z wielu źródeł, takich jak dane wyjściowe z [Eksploratora metryk](../azure-monitor/platform/metrics-charts.md), [zapytań usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), i [mapuje](../application-insights/app-insights-app-map.md) i [dostępności]()w usłudze Application Insights.
 - Opcja osobistym lub udostępnione pulpity nawigacyjne. Zintegrowana z platformą Azure [uwierzytelniania opartego na rolach (RBAC)](../role-based-access-control/overview.md).
 - Automatyczne odświeżanie. Odświeżanie metryk zależy od zakresu czasu z co najmniej pięć minut. Odśwież dzienniki na jedną minutę.
 - Metryki sparametryzowanego pulpity nawigacyjne z sygnatury czasowej i parametry niestandardowe.

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 5e671c4eb47b56adf62a23791c403257c2538973
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 87df2731d45ffa51bc2fd298aa1b678b10e38515
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018931"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344333"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -91,7 +91,7 @@ Protokół HTTPS implementuje uwierzytelniania, umieszczając prawidłowy token 
 
 Nazwa użytkownika (identyfikatorze urządzenia rozróżniana jest wielkość liter): `iothubname.azure-devices.net/DeviceId`
 
-Hasło (można wygenerować token sygnatury dostępu Współdzielonego za pomocą [Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) narzędzia polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub Generowanie token sygnatury dostępu współdzielonego —](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), lub [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)):
+Hasło (można wygenerować token sygnatury dostępu Współdzielonego za pomocą [Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) narzędzia polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub Generowanie token sygnatury dostępu współdzielonego —](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), lub [rozszerzenie Azure IoT Hub Toolkit dla programu Visual Studio Kod](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dawniej: rozszerzenie Azure IoT Toolkit)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -136,13 +136,13 @@ Oto oczekiwane wartości:
 
 | Wartość | Opis |
 | --- | --- |
-| {Sygnatura} |Ciąg sygnatury HMAC SHA256 w postaci: `{URL-encoded-resourceURI} + "\n" + expiry`. **Ważne**: klucz jest zdekodować z formatu base64 i użyć go jako klucza do wykonywania obliczeń HMAC SHA256. |
+| {Sygnatura} |Ciąg sygnatury HMAC SHA256 w postaci: `{URL-encoded-resourceURI} + "\n" + expiry`. **Ważne**: Klucz jest zdekodować z formatu base64 i użyć go jako klucza do wykonywania obliczeń HMAC SHA256. |
 | {resourceURI} |Prefiks identyfikatora URI (według segmentu) punktów końcowych, które mogą być udostępniane z tym tokenem, rozpoczynając od nazwy hosta usługi IoT hub (nie protocol). Na przykład: `myHub.azure-devices.net/devices/device1` |
 | {expiry} |Ciągi UTF8 liczba sekund od epoki 00:00:00 czasu UTC na 1 stycznia 1970. |
 | {Adres URL — zakodowane resourceURI} |Małe zamierzone, Zapisz kodowania adresu URL identyfikator URI zasobu małymi literami |
 | {policyName} |Nazwa zasad dostępu współdzielonego, do którego odwołuje się ten token. Nieobecny, jeśli token odnosi się do rejestru urządzeń poświadczenia. |
 
-**Uwaga dotycząca prefiks**: prefiks identyfikatora URI jest obliczany według segmentu i nie według znaków. Na przykład `/a/b` był prefiksem dla `/a/b/c` , ale nie dla `/a/bc`.
+**Uwaga dotycząca prefiks**: Prefiks identyfikatora URI jest obliczany według segmentu i nie według znaków. Na przykład `/a/b` był prefiksem dla `/a/b/c` , ale nie dla `/a/bc`.
 
 Poniższy fragment kodu Node.js zawiera funkcję o nazwie **generateSasToken** , oblicza token z danych wejściowych `resourceUri, signingKey, policyName, expiresInMins`. Kolejne sekcje zawierają szczegółowe instrukcje dotyczące inicjowanie różne dane wejściowe dla różnych zastosowań tokenu.
 
@@ -272,7 +272,7 @@ Wynik, który przyznaje dostęp do wszystkich funkcji dla urządzenia 1, będzie
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Istnieje możliwość wygenerowania tokenu sygnatury dostępu Współdzielonego, za pomocą [Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) narzędzia polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub Generowanie token sygnatury dostępu współdzielonego —](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), lub [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+> Istnieje możliwość wygenerowania tokenu sygnatury dostępu Współdzielonego, za pomocą [Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) narzędzia polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub Generowanie token sygnatury dostępu współdzielonego —](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), lub [rozszerzenie Azure IoT Hub Toolkit dla programu Visual Studio Kod](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Użyj zasad dostępu współdzielonego
 

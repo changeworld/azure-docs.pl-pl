@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a0fdab06606a88fafa803a9a112c05452578cfeb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3dcaba9c0512cbe2c4cf1cd14338a88209a80e85
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252868"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385316"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Systemu operacyjnego i środowiska uruchomieniowego poprawki w usłudze Azure App Service
 
@@ -81,7 +81,7 @@ Gdy starsza wersja jest przestarzały, Data usunięcia jest ogłaszany tak, aby 
 
 ## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak zbadać stan aktualizacji systemu operacyjnego i środowiska uruchomieniowego na Moje wystąpienia  
 
-Gdy krytyczne informacje systemu operacyjnego jest zablokowane w z programu access (zobacz [funkcjonalność systemu operacyjnego w usłudze Azure App Service](web-sites-available-operating-system-functionality.md)), [konsoli Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) oferuje możliwość zapytań wystąpienia usługi App Service dotyczące systemu operacyjnego Wersja i wersje środowiska uruchomieniowego. 
+Gdy krytyczne informacje systemu operacyjnego jest zablokowane w z programu access (zobacz [funkcjonalność systemu operacyjnego w usłudze Azure App Service](operating-system-functionality.md)), [konsoli Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) oferuje możliwość zapytań wystąpienia usługi App Service dotyczące systemu operacyjnego Wersja i wersje środowiska uruchomieniowego. 
 
 W poniższej tabeli przedstawiono sposób wersji systemu Windows i środowiska uruchomieniowego języka, które są uruchomione aplikacje:
 

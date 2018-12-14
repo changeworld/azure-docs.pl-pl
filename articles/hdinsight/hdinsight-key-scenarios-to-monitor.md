@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255306"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383939"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorowanie wydajności klastra
 
 Monitorowanie kondycji i wydajności klastra usługi HDInsight ma zasadnicze znaczenie dla utrzymania optymalną wydajność i wykorzystanie zasobów. Monitorowanie może również ułatwić wykrywanie i błędów konfiguracji klastra i problemów z kodem użytkownika.
 
-W poniższych sekcjach opisano sposób monitorowania i optymalizowania obciążenia w klastrach usługi YARN kolejki i wykrywa problemy związane z magazynowaniem ograniczania przepustowości.
+Poniżej opisano sposób monitorowania i zoptymalizować obciążenie klastry usługi Apache Hadoop YARN, kolejek i wykrywanie magazynu ograniczania problemów.
 
 ## <a name="monitor-cluster-load"></a>Monitorowanie klastra obciążenia
 
@@ -43,7 +43,7 @@ Wybierz dowolny z nazw hostów, aby uzyskać szczegółowy widok składników dz
 
 ![Szczegóły dotyczące hostów](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
 
-Zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu użytkownika sieci Web Ambari](hdinsight-hadoop-manage-ambari.md) Aby uzyskać szczegółowe informacje na temat alertów i wyświetlanie metryk.
+Zobacz [HDInsight Zarządzanie klastrami za pomocą Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md) Aby uzyskać szczegółowe informacje na temat alertów i wyświetlanie metryk.
 
 ## <a name="yarn-queue-configuration"></a>Konfiguracja kolejki usługi YARN
 
@@ -79,14 +79,14 @@ Jeśli używasz usługi Azure Storage, aby uzyskać informacje na temat monitoro
 
 Jeśli magazyn zapasowy Twojego klastra usługi Azure Data Lake Store (ADLS), Twoja ograniczanie przepływności jest najprawdopodobniej z powodu ograniczeń przepustowości. Ograniczanie w takiej sytuacji może być identyfikowany przez monitorowanie błędów ograniczania dostępności w dziennikach zadania. Azure Data Lake Store sekcja ograniczania przepustowości usługi odpowiednie w następujących artykułach:
 
-* [Wskazówki dotyczące dostrajania wydajności oprogramowania Hive w usługach HDInsight i Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Wskazówki dotyczące Apache Hive HDInsight i Azure Data Lake Store dostrajania wydajności](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Wskazówki dotyczące dostrajania wydajności oprogramowania MapReduce w usługach HDInsight i Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Wskazówki dotyczące dostrajania wydajności oprogramowania Storm w usługach HDInsight i Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Wskazówki dotyczące platformy Apache Storm w HDInsight i Azure Data Lake Store dostrajania wydajności](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Skorzystaj z następujących linków, aby uzyskać więcej informacji na temat monitorowania klastrów i rozwiązywania problemów:
 
 * [Analizowanie dzienników usługi HDInsight](hdinsight-debug-jobs.md)
-* [Debugowanie aplikacji przy użyciu dzienników YARN](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Włączanie zrzutów sterty dla usług Hadoop w HDInsight opartych na systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Debugowanie aplikacji przy użyciu dzienników usługi Apache Hadoop YARN](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Włączanie zrzutów sterty dla usługi Apache Hadoop w HDInsight opartych na systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

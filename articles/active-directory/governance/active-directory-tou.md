@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/10/2018
+ms.date: 12/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 448ef296af3ceaffffa1a4a69060916afd9abdc4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6ec3ca7c1323b342612293c5ea3ca1443370c9b4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185685"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386389"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
@@ -313,6 +313,8 @@ Zasady dostępu warunkowego zaczynają obowiązywać natychmiast. W takim przypa
 ## <a name="b2b-guests-preview"></a>Goście B2B (wersja zapoznawcza)
 
 Większość organizacji będzie miała procesu w miejscu dla swoich pracowników do wyrażenia zgody na warunki użycia i zasady zachowania poufności w organizacji. Jak można wymusić ten sam zgody dla usługi Azure AD business-to-business, ale goście (B2B), kiedy są dodawane przy użyciu programu SharePoint lub zespoły? Przy użyciu dostępu warunkowego i warunki użytkowania, możesz wymusić zasady bezpośrednio do użytkowników-gości B2B. Podczas realizacji przepływu zaproszenia użytkownik zobaczy warunki użytkowania. Ta funkcja jest obecnie w wersji zapoznawczej.
+
+Warunki użytkowania będzie wyświetlane tylko w przypadku, gdy użytkownik ma konto gościa w usłudze Azure AD. SharePoint Online ma obecnie [ad-hoc zewnętrznych obsługi odbiorcy udostępniania](/sharepoint/what-s-new-in-sharing-in-targeted-release) udostępniania dokumentu lub folderu, który nie wymaga od użytkownika posiadania konta gościa. W tym przypadku warunki użytkowania nie jest wyświetlana.
 
 ![Wszyscy użytkownicy-goście](./media/active-directory-tou/b2b-guests.png)
 

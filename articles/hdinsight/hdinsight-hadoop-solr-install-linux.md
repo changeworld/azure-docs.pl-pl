@@ -9,31 +9,31 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1c8c63e10e62af60e09af729b115cc675dae7205
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3500a29c1cdd8b1997f67a3cf1918090dc4ca812
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009406"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383599"
 ---
-# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z platformy Solr w klastrach usługi HDInsight Hadoop
+# <a name="install-and-use-apache-solr-on-hdinsight-hadoop-clusters"></a>Instalowanie i używanie Apache Solr w klastrach usługi HDInsight Hadoop
 
-Dowiedz się, jak zainstalować platformę Solr w usłudze Azure HDInsight przy użyciu akcji skryptu. Solr to platforma zaawansowanej funkcji przeszukiwania i oferuje możliwości wyszukiwania na poziomie przedsiębiorstwa w danych zarządzanych przez usługę Hadoop.
+Dowiedz się, jak zainstalować platformę Solr Apache w usłudze Azure HDInsight, za pomocą akcji skryptu. Solr to platforma zaawansowanej funkcji przeszukiwania i oferuje możliwości wyszukiwania na poziomie przedsiębiorstwa w danych zarządzanych przez usługę Hadoop.
 
-> [!IMPORTANT]
-    > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> [!IMPORTANT]  
+> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Przykładowy skrypt używany w tym dokumencie instaluje Solr 4.9 przy użyciu określonej konfiguracji. Jeśli chcesz skonfigurować klaster Solr przy użyciu różnych kolekcjach, fragmentów, schematów, replik, itp., należy zmodyfikować skrypt i pliki binarne Solr.
 
 ## <a name="whatis"></a>Co to jest Solr
 
 [Apache Solr](http://lucene.apache.org/solr/features.html) to platforma wyszukiwania dla przedsiębiorstw, która umożliwia zaawansowane wyszukiwanie pełnotekstowe danych. Gdy Hadoop umożliwia przechowywanie i zarządzanie nimi ogromnych ilości danych, Apache Solr udostępnia możliwości wyszukiwania, aby szybko odzyskać dane.
 
-> [!WARNING]
+> [!WARNING]   
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane przez firmę Microsoft.
 >
-> Składniki niestandardowe, takie jak Solr, otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Pomoc techniczna firmy Microsoft nie można rozwiązać problemy z niestandardowych składników. Może być konieczne prowadzenia społeczności "open source", aby uzyskać pomoc. Na przykład, istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Składniki niestandardowe, takie jak Solr, otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Pomoc techniczna firmy Microsoft nie można rozwiązać problemy z niestandardowych składników. Może być konieczne prowadzenia społeczności "open source", aby uzyskać pomoc. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>Działanie skryptu
 
@@ -54,12 +54,12 @@ Aby utworzyć klaster, który ma zainstalowany Solr, użyj kroków w [klastrów 
 
 1. Z __klastra Podsumowanie__ settings__ select__Advanced następnie, w sekcji __akcji skryptu__. Skorzystaj z poniższych informacji do wypełnienia formularza:
 
-   * **Nazwa**: Wprowadź przyjazną nazwę dla akcji skryptu.
+   * **NAZWA**: Wprowadź przyjazną nazwę dla akcji skryptu.
    * **IDENTYFIKATOR URI SKRYPTU**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **HEAD**: Zaznacz tę opcję
-   * **Proces ROBOCZY**: Zaznacz tę opcję
+   * **PROCES ROBOCZY**: Zaznacz tę opcję
    * **DOZORCY**: Zaznacz tę opcję, aby zainstalować w węźle dozorcy
-   * **Parametry**: pozostaw to pole puste
+   * **PARAMETRY**: Pozostaw to pole puste
 
 2. W dolnej części **akcji skryptu** sekcji **wybierz** przycisk, aby zapisać konfigurację. Na koniec użyj **dalej** przycisk, aby powrócić do __podsumowanie klastra__
 
@@ -67,7 +67,7 @@ Aby utworzyć klaster, który ma zainstalowany Solr, użyj kroków w [klastrów 
 
 ## <a name="usesolr"></a>Jak korzystanie z platformy Solr w HDInsight
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tej sekcji pokazują podstawową funkcjonalność Solr. Aby uzyskać więcej informacji na temat korzystania z platformy Solr, zobacz [witryny Apache Solr](http://lucene.apache.org/solr/).
 
 ### <a name="index-data"></a>Dane indeksu
@@ -76,7 +76,7 @@ Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie 
 
 1. Nawiąż połączenie z klastrem usługi HDInsight przy użyciu protokołu SSH:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Zastąp `sshuser` użytkownika SSH dla klastra. Zastąp `clustername` nazwą klastra.
 
     ```bash
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie 
 
     Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > Kroki opisane w dalszej części tego dokumentu za pomocą tunelu SSH, połączyć z platformy Solr w internetowym interfejsie użytkownika. Aby wykonać te kroki, możesz ustanowić tunel SSH, a następnie skonfiguruj przeglądarkę, aby go użyć.
      >
      > Aby uzyskać więcej informacji, zobacz [użycie tunelowania SSH z HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
@@ -316,11 +316,11 @@ Wykonaj następujące kroki, aby tworzył kopie zapasowe danych Solr domyślny m
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Aby uzyskać więcej informacji na temat pracy z platformy Solr w kopii zapasowej i przywracanie danych, zobacz [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+Aby uzyskać więcej informacji na temat pracy z Apache Solr kopii zapasowej i przywracanie danych, zobacz [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zainstalować system Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach usługi HDInsight Hadoop. System Giraph umożliwia przetwarzanie za pomocą usługi Hadoop wykresów i mogą być używane z usługi Azure HDInsight.
+* [Instalowanie systemu Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach usługi HDInsight Hadoop. System Giraph umożliwia przetwarzanie za pomocą usługi Hadoop wykresów i mogą być używane z usługi Azure HDInsight.
 
 * [Instalowanie aplikacji Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md). Dostosowywanie klastra umożliwia instalowanie aplikacji Hue w klastrach usługi HDInsight Hadoop. HUE to zbiór aplikacji sieci Web umożliwiający interakcję z klastrem usługi Hadoop.
 

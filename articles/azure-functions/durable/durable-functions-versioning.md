@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 9cd8e21ede794fcb46683ea7cedd2bf9ed833204
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a90a6811b1c59538db98b85d950906dba2969d57
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643033"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338247"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w funkcje trwałe (usługa Azure Functions)
 
@@ -121,25 +121,17 @@ Najbardziej Niepowodzenie weryfikacji sposób zapewnienia przełomowe zmiany wdr
 
 Centrum zadania można skonfigurować w *host.json* pliku w następujący sposób:
 
+#### <a name="functions-1x"></a>Functions w wersji 1.x
+
 ```json
 {
-    "extensions": {
-        "durableTask": {
-            "HubName": "MyTaskHubV2"
-        }
+    "durableTask": {
+        "HubName": "MyTaskHubV2"
     }
 }
 ```
 
-> [!NOTE]
-> W przypadku funkcji w wersji 1 *host.json* należy skonfigurować następująco zamiast tego
->```json
->{
->    "durableTask": {
->        "HubName": "MyTaskHubV2"
->    }
->}
->```
+#### <a name="functions-2x"></a>Functions w wersji 2.x
 
 Wartość domyślna to `DurableFunctionsHub`.
 

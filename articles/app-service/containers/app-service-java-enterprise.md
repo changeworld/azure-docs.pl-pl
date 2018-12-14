@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: e473326e9f337bfb2fd1202bc3b76e468dd6015e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 34506266ed4a2103f0d3bd7a8014b9a038b25491
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315081"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338043"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Przewodnik dotyczący Java Enterprise dla usługi App Service w systemie Linux
 
-Usługa Azure App Service w systemie Linux umożliwia deweloperom języka Java, tworzenie, wdrażanie i skalowanie aplikacji Java Enterprise (JEE) w pełni zarządzanej usługi opartej na systemie Linux.  Podstawowe środowisko uruchomieniowe Java Enterprise jest typu open-source [Wildfly](http://wildfly.org/) serwera aplikacji.
+Usługa Azure App Service w systemie Linux umożliwia deweloperom języka Java, tworzenie, wdrażanie i skalowanie aplikacji Java Enterprise (JEE) w pełni zarządzanej usługi opartej na systemie Linux.  Podstawowe środowisko uruchomieniowe Java Enterprise jest typu open-source [Wildfly](https://wildfly.org/) serwera aplikacji.
 
 Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów w przedsiębiorstwach Java przy użyciu w usłudze App Service dla systemu Linux. Jeśli nigdy nie udało Ci się wdrożyć aplikacji Java w usłudze Azure App Service dla systemu Linux, należy wykonać [Szybki Start Java](quickstart-java.md) pierwszy. W odpowiedzi na pytania dotyczące usługi App Service dla systemu Linux, które nie są specyficzne dla języka Java Enterprise [Java developer's guide](app-service-linux-java.md) i [App Service Linux — często zadawane pytania](app-service-linux-faq.md).
 
@@ -115,5 +115,5 @@ Domyślnie gniazda sieci web są włączane w usłudze App Service. Aby rozpocz�
 Usługa App Service udostępnia narzędzia do rozwiązywania problemów z aplikacją.
 
 -   Włącz rejestrowanie, klikając **dzienniki diagnostyczne** w okienku nawigacji po lewej stronie. Kliknij przycisk **System plików** Ustaw okres limitu przydziału i okres przechowywania magazynu i Zapisz zmiany. Możesz znaleźć te dzienniki w obszarze `/home/LogFiles/`.
--   [Za pomocą protokołu SSH Połącz się z wystąpieniem aplikacji](/app-service-linux-ssh-support) Aby wyświetlić dzienniki do uruchamiania aplikacji.
+-   [Za pomocą protokołu SSH Połącz się z wystąpieniem aplikacji](app-service-linux-ssh-support.md) Aby wyświetlić dzienniki do uruchamiania aplikacji.
 -   Dzienniki diagnostyczne wyboru **dzienniki diagnostyczne** panelu portalu lub przy użyciu polecenia interfejsu wiersza polecenia platformy Azure: ` az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group> `

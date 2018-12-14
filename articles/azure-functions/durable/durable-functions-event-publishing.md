@@ -8,26 +8,26 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 12/07/2018
 ms.author: glenga
-ms.openlocfilehash: 00735293d8fa8c6056f1ecf89fd312fe4b90bcac
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 78011e799fb4ddaf89fb1fd24c1f2a313ef49ba5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642704"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338111"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikowanie do usługi Azure Event Grid (wersja zapoznawcza)
 
-W tym artykule przedstawiono sposób konfigurowania usługi Azure Functions trwałe do publikowania zdarzeń cyklu życia aranżacji (takie jak utworzone, ukończone i zakończone niepowodzeniem) niestandardowego [tematu usługi Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview). 
+W tym artykule pokazano, jak skonfigurować funkcje trwałe do publikowania zdarzeń cyklu życia aranżacji (takie jak utworzone, ukończone i zakończone niepowodzeniem) niestandardowego [tematu usługi Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
 Poniżej przedstawiono kilka scenariuszy, w których ta funkcja jest przydatna:
 
-* **Scenariuszy DevOps, takich jak wdrażanie niebieskie/zielone**: warto wiedzieć, czy wszystkie zadania podrzędne są uruchomione przed wdrożeniem [strategii wdrażania side-by-side](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
+* **Scenariuszy DevOps, takich jak wdrażanie niebieskie/zielone**: Warto wiedzieć, czy wszystkie zadania podrzędne są uruchomione przed wdrożeniem [strategii wdrażania side-by-side](durable-functions-versioning.md#side-by-side-deployments).
 
-* **Zaawansowana obsługa monitorowania i diagnostyki**: można śledzenie bieżącego informacje o stanie aranżacji w magazynie zewnętrznych zoptymalizowanej pod kątem zapytań, takich jak bazy danych SQL lub bazy danych cosmos DB.
+* **Zaawansowana obsługa monitorowania i diagnostyki**: Użytkownik może zachować informacje o informacje o stanie aranżacji w magazynie zewnętrznych zoptymalizowanej pod kątem zapytań, takich jak bazy danych SQL lub bazy danych cosmos DB.
 
-* **Długotrwałe operacje w tle**: Jeśli używasz funkcje trwałe długotrwałe operacje w tle, ta funkcja pomoże Ci znać bieżący stan.
+* **Długotrwałe operacje w tle**: Jeśli używasz funkcje trwałe długotrwałe operacje w tle, ta funkcja pomaga znać bieżący stan.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,7 +44,7 @@ Utwórz temat usługi Event Grid związane z przesyłaniem zdarzeń przez funkcj
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia `az group create`. Obecnie usługa Event Grid nie obsługuje we wszystkich regionach. Aby uzyskać informacje o tym, jakie regiony są obsługiwane, zobacz [Przegląd usługi Event Grid](https://docs.microsoft.com/azure/event-grid/overview). 
+Utwórz grupę zasobów za pomocą polecenia `az group create`. Obecnie usługa Event Grid nie obsługuje we wszystkich regionach. Aby uzyskać informacje o tym, jakie regiony są obsługiwane, zobacz [Przegląd usługi Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -55,7 +55,7 @@ az group create --name eventResourceGroup --location westus2
 Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, gdy opublikujesz zdarzenie w celu. Zamień `<topic_name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ staje się wpis DNS.
 
 ```bash
-az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup 
+az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
 ## <a name="get-the-endpoint-and-key"></a>Pobierz klucz i punkt końcowy
@@ -119,7 +119,7 @@ Tworzenie aplikacji funkcji. Zaleca się go zlokalizować w tym samym regionie, 
 
 ### <a name="create-an-event-grid-trigger-function"></a>Tworzenie funkcji wyzwalacza usługi Event Grid
 
-Utwórz funkcję odbierania zdarzeń cyklu życia. Wybierz **funkcję niestandardową**. 
+Utwórz funkcję odbierania zdarzeń cyklu życia. Wybierz **funkcję niestandardową**.
 
 ![Wybierz opcję Utwórz funkcję niestandardową.](./media/durable-functions-event-publishing/functions-portal.png)
 
@@ -131,7 +131,7 @@ Wprowadź nazwę funkcji, a następnie wybierz pozycję `Create`.
 
 ![Tworzenie wyzwalacza usługi Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-Zostanie utworzona funkcja następującym kodem: 
+Zostanie utworzona funkcja następującym kodem:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -153,11 +153,11 @@ Wybierz `Event Grid Topics` dla **Typ tematu**. Wybierz grupę zasobów utworzon
 
 ![Tworzy subskrypcję usługi Event Grid.](./media/durable-functions-event-publishing/eventsubscription.png)
 
-Teraz możesz przystąpić do odbierania zdarzeń cyklu życia. 
+Teraz możesz przystąpić do odbierania zdarzeń cyklu życia.
 
-## <a name="create-durable-functions-to-send-the-events"></a>Utwórz trwałe funkcje, aby wysłać zdarzenia.
+## <a name="create-durable-functions-to-send-the-events"></a>Tworzyć niezawodne funkcje do wysyłania zdarzeń
 
-W projekcie funkcje trwałe Rozpocznij debugowanie na komputerze lokalnym.  Poniższy kod jest taki sam jak kod szablonu funkcji trwałe. Możesz już skonfigurowane `host.json` i `local.settings.json` na komputerze lokalnym. 
+W projekcie funkcje trwałe Rozpocznij debugowanie na komputerze lokalnym.  Poniższy kod jest taki sam jak kod szablonu funkcji trwałe. Możesz już skonfigurowane `host.json` i `local.settings.json` na komputerze lokalnym.
 
 ```csharp
 using System.Collections.Generic;
@@ -217,7 +217,7 @@ Zobacz dzienniki z funkcji, który został utworzony w witrynie Azure portal.
 ```
 2018-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
 2018-04-20T09:28:21.104 [Info] {
-    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",    
+    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",
     "subject": "durable/orchestrator/Running",
     "data": {
         "hubName": "DurableFunctionsHub",
@@ -259,18 +259,18 @@ Zobacz dzienniki z funkcji, który został utworzony w witrynie Azure portal.
 Poniżej opisano schemat zdarzenia cyklu życia:
 
 * **Identyfikator**: Unikatowy identyfikator dla zdarzeń usługi Event Grid.
-* **temat**: ścieżka do tematu zdarzenia. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` będzie `Running`, `Completed`, `Failed`, i `Terminated`.  
-* **dane**: niezawodne funkcje określonymi parametrami.
-    * **hubName**: [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs) nazwy.
-    * **functionName**: Nazwa funkcji programu Orchestrator.
-    * **Identyfikator instanceId**: instanceId funkcje trwałe.
-    * **Przyczyna**: dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [Diagnostyka funkcje trwałe (usługi Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)
-    * **runtimeStatus**: stan czasu wykonywania aranżacji. Uruchomione, zakończone, nie powiodło się, zostało anulowane. 
+* **Temat**: Ścieżka do tematu zdarzenia. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` będzie `Running`, `Completed`, `Failed`, i `Terminated`.  
+* **Dane**: Trwałe funkcje określonymi parametrami.
+  * **hubName**: [TaskHub](durable-functions-task-hubs.md) nazwy.
+  * **functionName**: Nazwa funkcji programu orchestrator.
+  * **Identyfikator instanceId**: Trwałe funkcje identyfikator wystąpienia.
+  * **Przyczyna**: Dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [Diagnostyka funkcje trwałe (usługi Azure Functions)](durable-functions-diagnostics.md)
+  * **RuntimeStatus**: Stan czasu wykonywania aranżacji. Uruchomione, zakończone, nie powiodło się, zostało anulowane.
 * **Typ zdarzenia**: "orchestratorEvent"
-* **eventTime**: czas trwania zdarzenia (UTC).
-* **dataVersion**: wersja schematu zdarzenia cyklu życia.
-* **metadataVersion**: wersja metadanych.
-* **temat**: temat EventGrid zasobów.
+* **eventTime**: Czas zdarzenia (UTC).
+* **dataVersion**: Wersja schematu zdarzeń cyklu życia.
+* **metadataVersion**:  Wersja metadanych.
+* **temat**: Zasób EventGrid tematu.
 
 ## <a name="how-to-test-locally"></a>Jak przetestować ją lokalnie
 

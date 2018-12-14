@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7b633b1787fc34658a84a2810de6673f9530cbf3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5e6d7dffb831e4e6541b5ef91cfc4ae4bbe88167
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310654"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343143"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Dodawanie zapory aplikacji sieci web w usłudze Azure Security Center
 Usługa Azure Security Center może zalecić sytuacja: dodajesz zapory aplikacji sieci web (WAF) od partnera firmy Microsoft w celu zabezpieczenia aplikacji sieci web. Ten dokument zawiera opis przykładu przekonamy się sposób zastosowania tego zalecenia.
@@ -46,7 +46,9 @@ Usługa Security Center zaleca obsługi administracyjnej zapory aplikacji sieci 
 
 6. **Nowa Zapora aplikacji sieci Web** zostanie otwarty, w którym można przeprowadzić **konfiguracji maszyny Wirtualnej** kroki i podaj **informacji zapory aplikacji sieci Web**. Wybierz **konfiguracji maszyny Wirtualnej**.
 7. W obszarze **konfiguracji maszyny Wirtualnej**, wprowadź informacje wymagane do uruchomienia maszyny wirtualnej, która uruchamia zapory aplikacji internetowych.
+
    ![Konfiguracja maszyny Wirtualnej][4]
+   
 8. Wróć do **Nowa Zapora aplikacji sieci Web** i wybierz **informacji zapory aplikacji sieci Web**. W obszarze **informacji zapory aplikacji sieci Web**, konfigurowanie zapory aplikacji sieci Web, sam. Krok 7 można skonfigurować maszyny wirtualnej, na którym jest uruchamiany zapory aplikacji internetowych, a krok 8 umożliwia aprowizowanie zapory aplikacji sieci Web, sam.
 
 ## <a name="finalize-application-protection"></a>Finalizowanie ochrony aplikacji
@@ -73,7 +75,7 @@ W tym dokumencie pokazano sposób implementacji zalecenia usługi Security Cente
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.

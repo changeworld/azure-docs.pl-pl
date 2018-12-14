@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 7a11cc42c3d7fa8cd48de9338d0269d41cbc63f9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a2f654043146536ecf543ae2a0aa49537c2223e1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190598"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344044"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Chociaż można monitorować różne warunki przy użyciu usługi Log Analytics lub Azure Monitor, nie zostało zaprojektowane do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
@@ -118,7 +118,7 @@ Na **kondycji** kartę, jesteś w stanie się następujące czynności:
 * Ile maszyn wirtualnych jest w złej kondycji ze względu na problem wykryty z procesora, dysku, pamięć lub karty sieciowej, pogrupowane według stanu kondycji?  
 * Ile maszyn wirtualnych jest w złej kondycji ze względu na problem wykryty core systemu operacyjnego usługi pogrupowane według stanu kondycji?
 
-W tym miejscu można szybko zidentyfikować najważniejsze problemy krytyczne, wykrytych przez kryteria kondycji Proaktywne monitorowanie maszyny Wirtualnej i przejrzyj szczegóły alertu kondycji maszyny Wirtualnej i skojarzone bazy wiedzy przeznaczona do pomagają w diagnostykę i korygowanie problemu.  Wybierz dowolne ważności, aby otworzyć [wszystkie alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) strona jest filtrowana według tego ważności.
+W tym miejscu można szybko zidentyfikować najważniejsze problemy krytyczne, wykrytych przez kryteria kondycji Proaktywne monitorowanie maszyny Wirtualnej i przejrzyj szczegóły alertu kondycji maszyny Wirtualnej i skojarzone bazy wiedzy przeznaczona do pomagają w diagnostykę i korygowanie problemu.  Wybierz dowolne ważności, aby otworzyć [wszystkie alerty](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) strona jest filtrowana według tego ważności.
 
 **Dystrybucji maszyny Wirtualnej przez system operacyjny** lista maszyn wirtualnych w rozbiciu na wersję Windows lub dystrybucja systemu Linux, wraz z ich wersji. W każdej kategorii systemu operacyjnego maszyny wirtualne są podzielone dalsze na podstawie kondycji maszyny Wirtualnej. 
 
@@ -246,7 +246,7 @@ W powyższym przykładzie po wybraniu jednej **katalogu/mnt (dysk logiczny)**, d
 Aby wyświetlić stan kondycji zaktualizowane, można odświeżyć stronę diagnostyki kondycji, klikając **Odśwież** łącza.  W przypadku aktualizacji do stanu kondycji kryterium kondycji na podstawie wstępnie zdefiniowanych interwału sondowania, to zadanie pozwala uniknąć oczekiwania i odzwierciedla najnowszy stan kondycji.  **Kryteria kondycji** filtr zezwala na do zakresu wyniki oparte na stanie kondycji wybranego - dobrej kondycji, ostrzeżenie, krytyczny, nieznane i wszystkie.  **Ostatniej aktualizacji** czasu w prawym górnym rogu reprezentuje czas ostatniego po stronie Diagnostyka kondycji została odświeżona.  
 
 ## <a name="alerting-and-alert-management"></a>Zarządzanie alertów i alert 
-Usługa Azure Monitor kondycji maszyn wirtualnych funkcji integruje się z [Azure Alerts](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) i zgłasza alert, gdy kryteria kondycji wstępnie zdefiniowanych zmienią się z dobrej kondycji stan złej kondycji, gdy zostanie wykryty warunek. Alerty są pogrupowane według ważności — od 0 do 4, ważność, za pomocą ważność 0 reprezentuje najwyższy poziom ważności.  
+Usługa Azure Monitor kondycji maszyn wirtualnych funkcji integruje się z [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) i zgłasza alert, gdy kryteria kondycji wstępnie zdefiniowanych zmienią się z dobrej kondycji stan złej kondycji, gdy zostanie wykryty warunek. Alerty są pogrupowane według ważności — od 0 do 4, ważność, za pomocą ważność 0 reprezentuje najwyższy poziom ważności.  
 
 Łączna liczba alertów dotyczących kondycji maszyny Wirtualnej, pogrupowane według ważności jest dostępna w **kondycji** pulpitu nawigacyjnego w sekcji **alerty**. Po wybraniu łączną liczbę alertów albo liczbę odpowiadającą jej poziom ważności **alerty** zostanie otwarta strona i wyświetla listę wszystkich alertów pasujących wybór.  Na przykład, jeśli został wybrany wiersz odpowiadający **poziom ważność 1**, a następnie zostanie wyświetlony następujący widok:
 
@@ -254,7 +254,7 @@ Usługa Azure Monitor kondycji maszyn wirtualnych funkcji integruje się z [Azur
 
 Na **alerty** strony, to nie tylko obejmuje Pokaż alerty spełniające wybraną, ale również są filtrowane według **typ zasobu** tylko w celu wyświetlenia alertów dotyczących kondycji wygenerowane przez zasób maszyny wirtualnej.  Znajduje to odzwierciedlenie na liście alertów, w kolumnie **zasób docelowy**, gdzie pokazuje maszyny Wirtualnej platformy Azure, gdy kryteria kondycji konkretnego złej kondycji warunek został spełniony dla został zgłoszony alert.  
 
-Alerty z innych typów zasobów lub usług nie są przeznaczone do uwzględnienia w tym widoku, takie jak alerty dziennika oparte na usłudze Log Analytics zapytania lub alertów metryk, który będzie zwykle wyświetlisz z domyślnej usługi Azure Monitor [wszystkie alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) strony. 
+Alerty z innych typów zasobów lub usług nie są przeznaczone do uwzględnienia w tym widoku, takie jak alerty dziennika oparte na usłudze Log Analytics zapytania lub alertów metryk, który będzie zwykle wyświetlisz z domyślnej usługi Azure Monitor [wszystkie alerty](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) strony. 
 
 Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej części strony.
 

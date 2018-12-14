@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 7896a205cd281f0d11724f6f549b9aa247180bac
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2028b9555ec20fc5e97511a2a908351b66aec216
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285018"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385503"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozszerzanie alertów usługi Log Analytics do usługi Azure Alerts
 
@@ -27,7 +27,7 @@ Istnieje kilka korzyści wynikające z tworzenia i zarządzania nimi alertów w 
 
 - W odróżnieniu od w portalu Operations Management Suite, w którym tylko 250 alertów można można tworzyć i wyświetlać, Azure Alerts ma takie ograniczenie nie.
 - Z alertów platformy Azure można zarządzać, wyliczyć i wyświetlić wszystkie typy alertów. Wcześniej można tylko tym alertów usługi Log Analytics.
-- Można ograniczyć dostęp do użytkowników tylko monitorowania i alertów za pomocą [roli usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+- Można ograniczyć dostęp do użytkowników tylko monitorowania i alertów za pomocą [roli usługi Azure Monitor](../../azure-monitor/platform/roles-permissions-security.md).
 - W alertach Azure można używać [grup akcji](../../azure-monitor/platform/action-groups.md). Dzięki temu można mieć więcej niż jedną akcję dla każdego alertu. Możesz wiadomość SMS, Wyślij połączenie głosowe, wywoływania elementu runbook usługi Azure Automation, wywołaj element webhook i skonfigurowanie łącznika zarządzania usługi IT (ITSM). 
 
 ## <a name="process-of-extending-your-alerts"></a>Proces rozszerzania alertów
@@ -52,7 +52,7 @@ Alerty zostały rozszerzone do alertów platformy Azure, nadal będą znajdować
 Przy próbie edycji istniejący alert lub tworzenia nowego alertu w portalu Operations Management Suite, automatycznie są przekierowywane do alertów platformy Azure.  
 
 > [!NOTE]
-> Upewnij się, że uprawnienia przypisane do osoby, które należy dodać lub edytować alerty są prawidłowo przypisany na platformie Azure. Aby dowiedzieć się, jakie uprawnienia należy udzielić, zobacz [uprawnienia dotyczące korzystania z usługi Azure Monitor i alerty](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).  
+> Upewnij się, że uprawnienia przypisane do osoby, które należy dodać lub edytować alerty są prawidłowo przypisany na platformie Azure. Aby dowiedzieć się, jakie uprawnienia należy udzielić, zobacz [uprawnienia dotyczące korzystania z usługi Azure Monitor i alerty](../../azure-monitor/platform/roles-permissions-security.md).  
 > 
 
 Możesz nadal tworzyć alerty z [interfejsu API usługi Log Analytics](../../azure-monitor/platform/api-alerts.md) i [szablonu usługi Log Analytics Resource](../../azure-monitor/insights/solutions-resources-searches-alerts.md). Jeśli tak zrobisz, musi zawierać grupy akcji.
@@ -60,5 +60,5 @@ Możesz nadal tworzyć alerty z [interfejsu API usługi Log Analytics](../../azu
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o narzędziach do [zainicjować rozszerzanie alertów z usługi Log Analytics na platformie Azure](alerts-extend-tool.md).
-* Dowiedz się więcej o [środowisko Azure Alerts](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+* Dowiedz się więcej o [środowisko Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Dowiedz się, jak utworzyć [alerty dzienników w alertach Azure](alerts-unified-log.md).

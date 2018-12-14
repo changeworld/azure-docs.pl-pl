@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 68771362c1b3904453eb7c32f58d28122e8660c3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869471"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336904"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Koncentratory zadań w funkcje trwałe (usługi Azure Functions)
 
@@ -27,7 +27,7 @@ Każda aplikacja funkcji ma Centrum osobne zadanie. Jeśli wiele aplikacji funkc
 
 ## <a name="azure-storage-resources"></a>Zasoby usługi Azure Storage
 
-Koncentrator zadanie składa się z następującymi zasobami magazynu: 
+Koncentrator zadanie składa się z następującymi zasobami magazynu:
 
 * Jedną lub więcej kolejek kontroli.
 * Jedna kolejka elementu roboczego.
@@ -41,7 +41,8 @@ Wszystkie te zasoby są tworzone automatycznie w domyślne konto usługi Azure S
 
 Koncentratory zadań są identyfikowane przez nazwę, która jest zadeklarowana w *host.json* pliku, jak pokazano w poniższym przykładzie:
 
-### <a name="hostjson-functions-v1"></a>Host.JSON (funkcje v1)
+### <a name="hostjson-functions-1x"></a>Host.JSON (funkcje 1.x)
+
 ```json
 {
   "durableTask": {
@@ -49,7 +50,9 @@ Koncentratory zadań są identyfikowane przez nazwę, która jest zadeklarowana 
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>Host.JSON (funkcje w wersji 2)
+
+### <a name="hostjson-functions-2x"></a>Host.JSON (funkcje 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -60,9 +63,11 @@ Koncentratory zadań są identyfikowane przez nazwę, która jest zadeklarowana 
   }
 }
 ```
+
 Koncentratory zadań można również skonfigurować przy użyciu ustawień aplikacji, jak pokazano w następującym *host.json* przykładowy plik:
 
-### <a name="hostjson-functions-v1"></a>Host.JSON (funkcje v1)
+### <a name="hostjson-functions-1x"></a>Host.JSON (funkcje 1.x)
+
 ```json
 {
   "durableTask": {
@@ -70,7 +75,9 @@ Koncentratory zadań można również skonfigurować przy użyciu ustawień apli
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>Host.JSON (funkcje w wersji 2)
+
+### <a name="hostjson-functions-2x"></a>Host.JSON (funkcje 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -81,13 +88,14 @@ Koncentratory zadań można również skonfigurować przy użyciu ustawień apli
   }
 }
 ```
+
 Nazwa koncentratora zadania zostanie ustawiona na wartość `MyTaskHub` ustawienia aplikacji. Następujące `local.settings.json` ilustruje sposób definiowania `MyTaskHub` jako `samplehubname`:
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
-    "MyTaskHub" :  "samplehubname" 
+    "MyTaskHub" : "samplehubname"
   }
 }
 ```
@@ -111,9 +119,10 @@ public static async Task<HttpResponseMessage> Run(
     return starter.CreateCheckStatusResponse(req, instanceId);
 }
 ```
+
 I poniżej wymaganej konfiguracji dla języka JavaScript. Właściwość Centrum zadania w `function.json` plik jest ustawiony za pomocą ustawienia aplikacji:
 
-```javascript
+```json
 {
     "name": "input",
     "taskHub": "%MyTaskHub%",

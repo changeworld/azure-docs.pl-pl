@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 54a88188a432a23476af6a1670635a23fb72eea7
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643145"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341172"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie do wewnątrz funkcje trwałe (usługi Azure Functions)
 
@@ -33,7 +33,7 @@ Gdy wystąpienie aranżacji musi zostać uruchomiony, odpowiednie wiersze w tabe
 
 **Wystąpień** tabela jest innej tabeli usługi Azure Storage, która zawiera stany wszystkich wystąpień aranżacji w ramach Centrum zadania. Podczas tworzenia wystąpienia nowe wiersze są dodawane do tej tabeli. Klucz partycji w tej tabeli jest identyfikator wystąpienia aranżacji i klucz wiersza to stała stały. Istnieje jeden wiersz dla każdego wystąpienia aranżacji.
 
-Ta tabela jest używana do spełnienia żądania zapytania wystąpienia z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) interfejsu API, jak również [zapytania stanie interfejsu API protokołu HTTP](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status). Skoroszyt jest przechowywany ostatecznie spójny z zawartości **historii** tabeli wymienionych wcześniej. Użycie osobnej tabeli usługi Azure Storage skutecznie spełniać operacje zapytań wystąpienia w ten sposób mają wpływ [wzorzec polecenia i podział odpowiedzialności zapytania (CQRS)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
+Ta tabela jest używana do spełnienia żądania zapytania wystąpienia z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) (.NET) i `getStatus` (JavaScript) interfejsów API, jak również [zapytania stanie interfejsu API protokołu HTTP](durable-functions-http-api.md#get-instance-status). Skoroszyt jest przechowywany ostatecznie spójny z zawartości **historii** tabeli wymienionych wcześniej. Użycie osobnej tabeli usługi Azure Storage skutecznie spełniać operacje zapytań wystąpienia w ten sposób mają wpływ [wzorzec polecenia i podział odpowiedzialności zapytania (CQRS)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
 ## <a name="internal-queue-triggers"></a>Wyzwalacze kolejki wewnętrznej
 
@@ -53,10 +53,24 @@ Kolejki kontroli zawierają różne typy komunikatów cyklu życia aranżacji. P
 
 Kolejek, tabel i obiektów blob używanych przez funkcje trwałe są tworzone przez skonfigurowanym koncie magazynu platformy Azure. Można określić konto do użycia przy użyciu `durableTask/azureStorageConnectionStringName` w **host.json** pliku.
 
+### <a name="functions-1x"></a>Functions w wersji 1.x
+
 ```json
 {
   "durableTask": {
     "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions w wersji 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+    }
   }
 }
 ```
@@ -67,6 +81,8 @@ Jeśli nie zostanie określony, domyślnie `AzureWebJobsStorage` używane jest k
 
 Działanie funkcji są bezstanowe i skalowanych w poziomie automatycznie, dodając maszyny wirtualne. Funkcje programu orchestrator, z drugiej strony są *partycjonowane* przez jedną lub więcej kolejek kontroli. Liczba kolejek kontroli jest zdefiniowany w **host.json** pliku. Poniższy przykład ustawia fragment host.json `durableTask/partitionCount` właściwość `3`.
 
+### <a name="functions-1x"></a>Functions w wersji 1.x
+
 ```json
 {
   "durableTask": {
@@ -74,6 +90,19 @@ Działanie funkcji są bezstanowe i skalowanych w poziomie automatycznie, dodaj�
   }
 }
 ```
+
+### <a name="functions-2x"></a>Functions w wersji 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "partitionCount": 3
+    }
+  }
+}
+```
+
 Koncentrator zadania można skonfigurować za pomocą od 1 do 16 partycji. Jeśli nie zostanie określony, domyślna liczba partycji jest **4**.
 
 Skalowania w poziomie do wielu wystąpień hosta — funkcja (zwykle na różnych maszynach wirtualnych), każde wystąpienie uzyskuje blokadę na jednym z kolejek kontroli. Blokadami tymi są implementowane wewnętrznie, zgodnie z usługi blob storage dzierżawy i upewnij się, że wystąpienie aranżacji działa tylko w wystąpienie jednego hosta w danym momencie. Jeśli koncentrator zadania jest skonfigurowany za pomocą trzech kolejek kontroli, aranżacji wystąpienia może być ze zrównoważonym obciążeniem dowolną liczbę trzech maszyn wirtualnych. Aby zwiększyć pojemność dla działań wykonywania funkcji można dodać dodatkowe maszyny wirtualne.
@@ -106,11 +135,26 @@ Usługa Azure Functions obsługuje wykonywanie wielu funkcji jednocześnie w ram
 
 Można skonfigurować zarówno działania funkcji i orchestrator funkcja limitów współbieżności w **host.json** pliku. Odpowiednie ustawienia są `durableTask/maxConcurrentActivityFunctions` i `durableTask/maxConcurrentOrchestratorFunctions` odpowiednio.
 
+### <a name="functions-1x"></a>Functions w wersji 1.x
+
 ```json
 {
   "durableTask": {
     "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10,
+    "maxConcurrentOrchestratorFunctions": 10
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions w wersji 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "maxConcurrentActivityFunctions": 10,
+      "maxConcurrentOrchestratorFunctions": 10
+    }
   }
 }
 ```
@@ -121,15 +165,31 @@ W poprzednim przykładzie maksymalnie 10 funkcje aktywności i 10 funkcje progra
 > Te ustawienia są przydatne w celu ułatwienia zarządzania pamięci i Procesora CPU na jednej maszynie Wirtualnej. Jednak skalowane do wewnątrz na wielu maszynach wirtualnych, każda maszyna wirtualna ma swój własny zestaw ograniczeń. Te ustawienia nie może służyć do sterowania współbieżnością na poziomie globalnym.
 
 ## <a name="orchestrator-function-replay"></a>Powtarzanie funkcji programu orchestrator
+
 Jak wspomniano wcześniej, funkcje programu orchestrator są odtwarzane przy użyciu zawartości **historii** tabeli. Domyślnie kod funkcji programu orchestrator jest odtwarzany za każdym razem, gdy partię komunikatów są usuwane z kolejki z kolejki kontroli.
 
 Po włączeniu można wyłączyć to zachowanie agresywne powtarzania **rozszerzony sesji**. Po włączeniu sesji rozszerzonej wystąpieniami funkcji programu orchestrator są przechowywane w pamięci, którą dłużej i nowe komunikaty mogą być przetwarzane bez pełnej powtarzania. Rozszerzone sesje są włączone, ustawiając `durableTask/extendedSessionsEnabled` do `true` w **host.json** pliku. `durableTask/extendedSessionIdleTimeoutInSeconds` Ustawienie jest używane do kontroli, ile czasu bezczynności sesji odbędzie się w pamięci:
+
+### <a name="functions-1x"></a>Functions w wersji 1.x
 
 ```json
 {
   "durableTask": {
     "extendedSessionsEnabled": true,
     "extendedSessionIdleTimeoutInSeconds": 30
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions w wersji 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "extendedSessionsEnabled": true,
+      "extendedSessionIdleTimeoutInSeconds": 30
+    }
   }
 }
 ```
@@ -150,10 +210,10 @@ Na przykład jeśli `durableTask/extendedSessionIdleTimeoutInSeconds` jest ustaw
 
 Podczas planowania użycia funkcje trwałe dla aplikacji produkcyjnych, należy wziąć pod uwagę wymagania dotyczące wydajności wcześnie w procesie planowania. Tej sekcji opisano niektóre scenariusze użycia podstawowego i numery oczekiwanego maksymalną przepustowość.
 
-* **Działanie sekwencyjne wykonywania**: w tym scenariuszu opisano funkcja orkiestratora, która wykonuje serię działania funkcji jeden po drugim. Najbardziej przypomina [łańcucha funkcja](durable-functions-sequence.md) próbki.
-* **Równoległe wykonywanie działania**: w tym scenariuszu opisano funkcja orkiestratora, która wykonuje wiele działań funkcji równolegle przy użyciu [wielokierunkowe, Fan-in](durable-functions-cloud-backup.md) wzorca.
+* **Działanie sekwencyjne wykonywania**: W tym scenariuszu opisano funkcja orkiestratora, która wykonuje serię działania funkcji jeden po drugim. Najbardziej przypomina [łańcucha funkcja](durable-functions-sequence.md) próbki.
+* **Równoległe wykonywanie działania**: W tym scenariuszu opisano funkcja orkiestratora, która wykonuje wiele działań funkcji równolegle przy użyciu [wielokierunkowe, Fan-in](durable-functions-cloud-backup.md) wzorca.
 * **Równoległe przetwarzanie odpowiedzi**: Ten scenariusz jest w drugiej połowie [wielokierunkowe, Fan-in](durable-functions-cloud-backup.md) wzorca. Koncentruje się ona na wydajność fan-in. Należy pamiętać, że w przeciwieństwie do wielokierunkowe, fan-in odbywa się przez wystąpienie funkcji pojedynczego programu orchestrator i w związku z tym można uruchomić tylko na jednej maszynie Wirtualnej.
-* **Przetwarzanie zdarzeń zewnętrznych**: Ten scenariusz przedstawia funkcji wystąpienia programu orchestrator z pojedynczego, które oczekuje na [zdarzenia zewnętrzne](durable-functions-external-events.md), pojedynczo.
+* **Przetwarzanie zdarzeń zewnętrznych**: W tym scenariuszu reprezentuje wystąpienie funkcji pojedynczego programu orchestrator, która czeka na [zdarzenia zewnętrzne](durable-functions-external-events.md), pojedynczo.
 
 > [!TIP]
 > W odróżnieniu od wielokierunkowe operacje fan-in są ograniczone do pojedynczej maszyny Wirtualnej. Jeśli aplikacja używa wielokierunkowe, wzorzec fan-in, a dane dotyczące wydajności fan-in, należy wziąć pod uwagę podrzędnych dzielenia wielokierunkowego funkcja działania w wielu [podrzędnych aranżacji](durable-functions-sub-orchestrations.md).

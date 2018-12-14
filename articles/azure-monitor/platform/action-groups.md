@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: d3183353cbadb821ac7f84c81f4da747be823e4f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 432f1a89979829bd43596d0d6a3ab7a2a3bfb996
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276727"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336486"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
@@ -29,7 +29,7 @@ Każda akcja składa się z następującymi właściwościami:
 * **Typ akcji**: Akcja do wykonania. Przykłady obejmują wysyłanie pocztą e-mail wywołanie, wiadomość SMS, głos; lub różnego rodzaju akcje automatyczne wyzwalanie. Zobacz typy w dalszej części tego artykułu. 
 * **Szczegóły**: Odpowiednimi szczegółami, które różnią się zależnie od *typ akcji*. 
 
-Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager grupy akcji](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager grupy akcji](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Tworzenie grupy akcji przy użyciu witryny Azure portal ##
 1. W [portal](https://portal.azure.com), wybierz opcję **Monitor**. **Monitor** bloku konsoliduje wszystkie ustawienia monitorowania i danych w jednym widoku.
@@ -73,7 +73,7 @@ Po utworzeniu grupy akcji, jest ona widoczna na **grup akcji** części **Monito
    - azureemail-noreply@microsoft.com
    - alerts-noreply@mail.windowsazure.com
 
-Może mieć maksymalnie 1000 akcji poczty e-mail do grupy akcji. Zobacz [ograniczania informacje o szybkości](./../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md) artykułu
+Może mieć maksymalnie 1000 akcji poczty e-mail do grupy akcji. Zobacz [ograniczania informacje o szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) artykułu
 
 **ITSM** — może mieć maksymalnie 10 akcje ITSM w akcji ITSM grupy akcji wymaga połączenia ITSM. Dowiedz się, jak utworzyć [połączenia narzędzia ITSM](../../azure-monitor/platform/itsmc-overview.md).
 
@@ -83,10 +83,10 @@ Może mieć maksymalnie 1000 akcji poczty e-mail do grupy akcji. Zobacz [ogranic
 
 **Element Runbook** — może mieć maksymalnie 10 elementów Runbook akcji, w akcji grupy dotyczą [limity usług subskrypcji platformy Azure](../../azure-subscription-service-limits.md) limity ładunków elementu Runbook
 
-**SMS** — może mieć maksymalnie 10 akcje programu SMS w akcji grupy, zobacz [ograniczania informacje o szybkości](./../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md) artykuł zobacz [SMS alert zachowanie](../../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md) artykułu
+**SMS** — może mieć maksymalnie 10 akcje programu SMS w akcji grupy, zobacz [ograniczania informacje o szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) artykuł zobacz [SMS alert zachowanie](../../azure-monitor/platform/alerts-sms-behavior.md) artykułu
 
 **Głos** — może mieć maksymalnie 10 akcje głosu w grupy akcji</dd>
-Zobacz [ograniczania informacje o szybkości](./../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md) artykułu</dd>
+Zobacz [ograniczania informacje o szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) artykułu</dd>
 
 **Element Webhook** — może mieć maksymalnie 10 Akcje elementu Webhook w grupy akcji. Logika ponawiania próby — limit czasu dla odpowiedzi to 10 sekund. Wywołanie elementu webhook zostanie ponowiona maksymalnie 2 godziny po następujące kody stanu HTTP są zwracane: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwszym ponowieniem próby odbywa się po 10 sekundach. Drugi i ostatniego ponownych prób odbywa się po 100 sekund.
 
@@ -102,9 +102,9 @@ Aby otrzymywać aktualizacje o zmianach na te adresy IP, zaleca się konfigurowa
 
 
 ## <a name="next-steps"></a>Kolejne kroki ##
-* Dowiedz się więcej o [SMS alert zachowanie](../../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md).  
+* Dowiedz się więcej o [SMS alert zachowanie](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Uzyskaj [zrozumieć schemat elementów webhook alertu dziennika aktywności](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * Dowiedz się więcej o [łącznik ITSM](../../azure-monitor/platform/itsmc-overview.md)
-* Dowiedz się więcej o [szybkości](../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md) alerty.
-* Pobierz [Przegląd alertów dziennika aktywności](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)i Dowiedz się, jak otrzymywać alerty.  
+* Dowiedz się więcej o [szybkości](../../azure-monitor/platform/alerts-rate-limiting.md) alerty.
+* Pobierz [Przegląd alertów dziennika aktywności](../../azure-monitor/platform/alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.  
 * Dowiedz się, jak [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

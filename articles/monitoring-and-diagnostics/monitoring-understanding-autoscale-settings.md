@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 36724c0934a68fa8b19b7fc69581275192f4ed36
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 2347d82b8c2f5a08b944577e5b06cde3b68617b3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321327"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385010"
 ---
 # <a name="understand-autoscale-settings"></a>Omówienie ustawień automatycznego skalowania
 Ustawienia automatycznego skalowania pomóc, upewnij się, że masz odpowiednią ilość zasobów do obsługi zmian obciążenia aplikacji. Można skonfigurować ustawienia automatycznego skalowania wyzwolenie oparciu metryki, które wskazują obciążenia lub wydajności lub wyzwalane w zaplanowanym czasie. Ten artykuł przedstawia szczegółowy widok anatomia ustawienia automatycznego skalowania. Artykuł zaczyna się od schematu i właściwości ustawienia, a następnie przeprowadzi typy innego profilu, które można skonfigurować. Na koniec, w tym artykule omówiono sposób funkcja automatycznego skalowania na platformie Azure ocenia profilu, który można wykonać w dowolnym momencie.
@@ -305,7 +305,7 @@ Na przykład załóżmy, że jest zestawu skalowania maszyn wirtualnych za pomoc
 ## <a name="next-steps"></a>Kolejne kroki
 Więcej informacji na temat automatycznego skalowania, odwołując się do następujących:
 
-* [Omówienie automatycznego skalowania](monitoring-overview-autoscale.md)
+* [Omówienie automatycznego skalowania](../azure-monitor/platform/autoscale-overview.md)
 * [Usługa Azure Monitor skalowania automatycznego często używane metryki](../azure-monitor/platform/autoscale-common-metrics.md)
 * [Najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](../azure-monitor/platform/autoscale-best-practices.md)
 * [Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach](../azure-monitor/platform/autoscale-webhook-email.md)

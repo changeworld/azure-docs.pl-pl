@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: aa1d5a4fc29b6fa5fc751edfd40e61d8762f6bd7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 300ccf5da3528be63ae618338b8953d05b0e799d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965346"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337465"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service
 
@@ -142,7 +142,7 @@ Po skonfigurowaniu aplikacji konsoli dla zadań Webjob, wdrażania, program Visu
           "runMode": "Continuous"
         }
 
-Ten plik można edytować bezpośrednio, a program Visual Studio oferuje funkcję IntelliSense. Schemat pliku jest przechowywany w [ http://schemastore.org ](http://schemastore.org/schemas/json/webjob-publish-settings.json) i można je tam.  
+Ten plik można edytować bezpośrednio, a program Visual Studio oferuje funkcję IntelliSense. Schemat pliku jest przechowywany w [ https://schemastore.org ](https://schemastore.org/schemas/json/webjob-publish-settings.json) i można je tam.  
 
 ## <a id="webjobslist"></a>webjobs-list.json
 Gdy łączysz projektu zadań Webjob, włączone do projektu sieci web programu Visual Studio zapisuje Nazwa projektu zadania Webjob w *webjobs list.json* pliku w projekcie sieci web *właściwości* folderu. Lista może zawierać wiele projektów zadań Webjob, jak pokazano w poniższym przykładzie:
@@ -159,7 +159,7 @@ Gdy łączysz projektu zadań Webjob, włączone do projektu sieci web programu 
           ]
         }
 
-Ten plik można edytować bezpośrednio, a program Visual Studio oferuje funkcję IntelliSense. Schemat pliku jest przechowywany w [ http://schemastore.org ](http://schemastore.org/schemas/json/webjobs-list.json) i można je tam.
+Ten plik można edytować bezpośrednio, a program Visual Studio oferuje funkcję IntelliSense. Schemat pliku jest przechowywany w [ https://schemastore.org ](https://schemastore.org/schemas/json/webjobs-list.json) i można je tam.
 
 ## <a id="deploy"></a>Wdrażanie projektu zadania Webjob
 Projektu zadania Webjob, powiązane z projektem sieci web automatycznie wdraża się z projektem sieci web. Uzyskać informacje dotyczące wdrażania projektu sieci web, zobacz **prowadzi instrukcje** > **wdrażanie aplikacji** w nawigacji po lewej stronie.

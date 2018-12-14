@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6855521475e24b7243a391abdc6e6cf707991159
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320696"
+ms.locfileid: "53344095"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak wykonać aprowizację dla wielodostępności 
 
@@ -139,7 +139,7 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
     ```azurecli-interactive
     az vm create \
     --resource-group contoso-us-resource-group \
-    --name ContosoSimDeviceEest \
+    --name ContosoSimDeviceEast \
     --location eastus \
     --image Canonical:UbuntuServer:18.04-LTS:18.04.201809110 \
     --admin-username contosoadmin \
@@ -327,28 +327,28 @@ Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysł
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-
-1. Otwórz **~/azure-iot-sdk-c/provisioning\_klienta/kart sieciowych/hsm\_klienta\_key.c** na obu maszynach wirtualnych. 
-
-    ```bash
-     vi ~/azure-iot-sdk-c/provisioning_client/adapters/hsm_client_key.c
-    ```
-
-1. Znajdź deklaracje stałych `REGISTRATION_NAME` i `SYMMETRIC_KEY_VALUE`. Wprowadź następujące zmiany do plików na maszynach wirtualnych z obu regionalnych i zapisać pliki.
-
-    Zaktualizuj wartość `REGISTRATION_NAME` stałej z **identyfikator unikatowy rejestracji dla urządzenia**.
-    
-    Zaktualizuj wartość `SYMMETRIC_KEY_VALUE` stałe za pomocą usługi **pochodne klucz urządzenia**.
+1. Na obu maszynach wirtualnych, Znajdź wywołanie `prov_dev_set_symmetric_key_info()` w **prov\_dev\_klienta\_sample.c** który jest ujęty w komentarz.
 
     ```c
-    static const char* const REGISTRATION_NAME = "contoso-simdevice-east";
-    static const char* const SYMMETRIC_KEY_VALUE = "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
+    Usuń znaczniki komentarza wywołania funkcji i Zastąp wartości symboli zastępczych (włącznie z nawiasami) rejestracji unikatowe identyfikatory i klucze urządzeń pochodnych dla każdego urządzenia. Klucze poniżej są na przykład tylko do celów. Użyj klawiszy wygenerowania wcześniej.
+
+    Wschodnie stany USA:
     ```c
-    static const char* const REGISTRATION_NAME = "contoso-simdevice-west";
-    static const char* const SYMMETRIC_KEY_VALUE = "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
+
+    Zachodnie stany USA:
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
+    ```
+
+    Zapisz pliki.
 
 1. Na obu maszynach wirtualnych przejdź do folderu przykładu poniżej, a następnie skompilować przykład.
 
@@ -358,6 +358,13 @@ Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysł
     ```
 
 1. Gdy kompilacja zakończy się powodzeniem, uruchom **prov\_dev\_klienta\_sample.exe** na obu maszynach wirtualnych, aby symulować urządzenie dzierżawcy w każdym regionie. Zwróć uwagę, każde urządzenie zaalokowano dzierżawy najbliżej regionów symulowane urządzenie usługi IoT hub.
+
+    Uruchamianie symulacji:
+    ```bash
+    ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
+    ```
+
+    Przykład danych wyjściowych z wschodnie stany USA maszyny Wirtualnej:
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -374,6 +381,7 @@ Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysł
 
     ```
 
+    Przykład danych wyjściowych z zachodnie stany USA maszyny Wirtualnej:
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9

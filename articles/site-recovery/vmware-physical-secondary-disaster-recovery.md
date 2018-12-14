@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 2829055c6bb9cc848b2e0a2e997e6a5541d4aba7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2198d7520d660904423eabbec8df71e55e3011dd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839657"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338638"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware w środowisku lokalnym lub serwerów fizycznych do lokacji dodatkowej
 
@@ -28,7 +28,7 @@ Scenariusz replikacji między lokalnych zasobów programu VMware lub fizycznych 
 
 Podczas 2018 r. i 2019 dwie aktualizacje zostaną zwolnione: 
 
--   Aktualizacja 7: Rozwiązuje problemy z konfiguracją i zgodnością siecią, a także zapewnia obsługę protokołu TLS 1.2.
+-   Aktualizacja 7: Rozwiązuje problemy z konfiguracją i zgodnością sieciowym i zapewnia obsługę protokołu TLS 1.2.
 -   Aktualizacja 8: Dodaje obsługę 7.3/7.4/7.5 RHEL/CentOS systemów operacyjnych Linux i SUSE 12
 
 Po aktualizacji 8 żadne dodatkowe aktualizacje zostaną wydane. Będzie obsługa ograniczona poprawek dla systemów operacyjnych, dodane w aktualizacji 8 i poprawki błędów w oparciu o najlepszy nakład pracy.
@@ -97,18 +97,18 @@ Pobierz [aktualizacji](https://aka.ms/asr-scout-update6) pliku zip. Plik zawiera
   - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
   - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-  - UA update4 bitów dla systemem RHEL5 OL5, OL6, SUSE 10, SUSE 11: UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+  - Usługa bits update4 UA systemem RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 1. Wyodrębnij pliki z rozszerzeniem .zip.
-2. **Serwer RX**: kopiowania **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** serwerowi RX i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
-3. **Serwer konfiguracji i serwerem przetwarzania**: kopiowania **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** do serwera konfiguracji i serwerem przetwarzania. Kliknij dwukrotnie, aby go uruchomić.<br>
+2. **Serwer RX**: Kopiuj **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** serwerowi RX i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
+3. **Serwer konfiguracji i serwerem przetwarzania**: Kopiuj **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** do serwera konfiguracji i serwerem przetwarzania. Kliknij dwukrotnie, aby go uruchomić.<br>
 4. **Windows główny serwer docelowy**: Aby zaktualizować program unified agent, skopiuj **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** do serwera. Go dwukrotnie, aby go uruchomić. Ta sama aktualizacja program unified agent jest również stosowana do serwera źródłowego. Źródło zostało zaktualizowane do wersji Update 4, należy zaktualizować program unified agent.
   Aktualizacja nie jest konieczne stosowanie we wzorcu docelowej przygotowanym za pomocą **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** , jak jest to nowy Instalator GA z najnowszymi zmianami.
-5. **Serwer vContinuum**: kopiowania **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** do serwera.  Upewnij się, że zostało zamknięte kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
+5. **Serwer vContinuum**:  Kopiuj **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** do serwera.  Upewnij się, że zostało zamknięte kreatora vContinuum. Kliknij dwukrotnie plik, aby go uruchomić.
     Aktualizacja nie trzeba stosować na główny element docelowy przygotowanym za pomocą **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** , jak jest to nowy Instalator GA z najnowszymi zmianami.
 6. **Linux główny serwer docelowy**: Aby zaktualizować program unified agent, skopiuj **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** do poziomu głównego serwer docelowy i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
 7. **Serwer źródłowy Windows**: Aby zaktualizować program unified agent, skopiuj **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** na serwerze źródłowym. Kliknij dwukrotnie plik, aby go uruchomić. 
     Nie trzeba zainstalować agenta z aktualizacją 5 na serwerze źródłowym, jeśli został już zaktualizowany do wersji Update 4 lub źródła agent jest instalowany z najnowszą wersję Instalatora podstawowy **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**.
-8. **Serwer źródłowy z systemem Linux**: Aby zaktualizować program unified agent, skopiuj odpowiedniej wersji pliku program unified agent na serwerze z systemem Linux i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.  Przykład: Dla RHEL 6.7 64-bitowego serwera, kopia **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** z serwerem i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
+8. **Serwer źródłowy z systemem Linux**: Aby zaktualizować program unified agent, skopiuj odpowiedniej wersji pliku program unified agent na serwerze z systemem Linux i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.  Przykład: Systemu RHEL 6.7 64-bitowego serwera, kopia **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** z serwerem i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
@@ -124,7 +124,7 @@ Pobierz [aktualizacji](https://aka.ms/asr-scout-update6) pliku zip. Plik zawiera
 ## <a name="updates"></a>Aktualizacje
 
 ### <a name="site-recovery-scout-801-update-6"></a>Aktualizacja usługi Site Recovery Scout 8.0.1 6 
-Zaktualizowano: 12 października 2017 r.
+Aktualizacja: 12 października 2017 r.
 
 Pobierz [Scout update 6](https://aka.ms/asr-scout-update6).
 
@@ -142,7 +142,7 @@ Aktualizacja programu Scout 6 jest aktualizacją zbiorczą. Zawiera ona wszystki
 > [!NOTE]
 > * Podstawowy Unified Agent(UA) Instalator Windows została odświeżona do działu pomocy technicznej systemu Windows Server 2016. Nowy Instalator **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** jest spakowana ze pakiet podstawowy Scout GA (**InMage_Scout_Standard_8.0.1 GA-Oct17.zip**). Ten sam Instalator będzie używany dla wszystkich obsługiwanych wersji Windows. 
 > * Podstawowy Windows vContinuum & główny element docelowy Instalatora została odświeżona do działu pomocy technicznej systemu Windows Server 2016. Nowy Instalator **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** jest spakowana ze pakiet podstawowy Scout GA (**InMage_Scout_Standard_8.0.1 GA-Oct17.zip**). Ten sam Instalator będzie służyć do wdrażania systemu Windows 2016 głównego serwera docelowego i systemu Windows 2012 R2 głównego serwera docelowego.
-> * Pobierz pakiet wersji ogólnie dostępnej z poziomu portalu, zgodnie z opisem w [Utwórz magazyn](#create-a-vault).
+> * Windows server 2016 na serwerze fizycznym, nie jest obsługiwana przez program ASR Scout. Obsługuje ona tylko systemu Windows Server 2016 maszyny Wirtualnej VMware. 
 >
 
 #### <a name="bug-fixes-and-enhancements"></a>Poprawki błędów i ulepszenia
@@ -168,7 +168,7 @@ Aktualizacja programu Scout 5 jest aktualizacją zbiorczą. Zawiera on wszystkie
     * Fixed-jednego węzła klastra ochrony kończy się niepowodzeniem z powodu problemu z niezgodności SCSI. 
     * Fixed-ponownej ochrony serwera klastra Windows P2V kończy się niepowodzeniem, jeśli dyski klastra docelowego. 
     
-* Poprawiono: Podczas ochrony podczas powrotu po awarii, jeśli wybrany główny serwer docelowy jest na tym samym serwerze ESXi komputera chronionego źródła (podczas ochrony do przodu) vContinuum przejmuje niewłaściwego głównego serwera docelowego podczas odzyskiwania podczas powrotu po awarii i odzyskiwania, a następnie Operacja nie powiedzie się.
+* Poprawiono: Podczas ochrony podczas powrotu po awarii jeśli wybrany główny serwer docelowy nie jest na tym samym serwerze ESXi komputera chronionego źródła (w ramach ochrony do przodu) vContinuum przejmuje niewłaściwego głównego serwera docelowego podczas odzyskiwania podczas powrotu po awarii i odzyskiwania, a następnie Operacja nie powiedzie się.
 
 > [!NOTE]
 > * Poprawki klastra P2V dotyczą tylko klastry fizyczne MSCS nowo chronionych za pomocą witryny odzyskiwania Scout aktualizacja Update 5. Aby zainstalować poprawki klastra klastrach P2V MSCS chronionych za pomocą aktualizacji w starszych, postępuj zgodnie z uaktualnienia kroki opisane w sekcji 12 [informacje o wersji programu Scout odzyskiwania lokacji](https://aka.ms/asr-scout-release-notes).
@@ -246,17 +246,17 @@ Aktualizacja 3 rozwiązuje następujące problemy:
   * CentOS 6, aktualizacja 7
 * Serwer konfiguracji i RX teraz konsole Pokaż powiadomienia dla pary, który przechodzi w tryb mapy bitowej.
 * Dodano następujące poprawki zabezpieczeń w RX:
-    * Autoryzacja obejścia za pośrednictwem modyfikowaniu parametru: ograniczony dostęp do innych odpowiednich użytkowników.
-    * Fałszerstwo żądania międzywitrynowego: pojęcia strony token został wdrożony, i generuje losowo dla każdej strony. Oznacza to, tylko jednego logowania wystąpienia dla tego samego użytkownika, a odświeżania strony nie działa. Zamiast tego zostanie przekierowany do pulpitu nawigacyjnego.
-    * Przekazywanie pliku złośliwych: pliki są ograniczone do określonych rozszerzeń: z, aiff, asf, avi, bmp, csv, doc, docx, flag, flv, gif, gz, gzip, jpeg, jpg, dziennika połowy mov, mp3, w formacie mp4, mpc, mpeg, mpg, ods, odt, pdf, png, ppt, pptx, pxd, qt, pamięci ram, rar, Menedżera zasobów, rmi, rmvb, rtf , sdc, sitd, swf, sxc, sxw, tar tgz, tymczasowych plików internetowych, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml i pliku zip.
-    * Trwałe skryptów między witrynami: dodano sprawdzanie poprawności danych wejściowych.
+    * Autoryzacja obejścia za pośrednictwem modyfikowaniu parametru: Ograniczony dostęp do innych odpowiednich użytkowników.
+    * Fałszerstwo żądania międzywitrynowego: Koncepcja token strony została zaimplementowana i generuje losowo dla każdej strony. Oznacza to, tylko jednego logowania wystąpienia dla tego samego użytkownika, a odświeżania strony nie działa. Zamiast tego zostanie przekierowany do pulpitu nawigacyjnego.
+    * Przekazywanie złośliwego pliku: Pliki są ograniczone do określonych rozszerzeń: z, aiff, asf, avi, bmp, csv, doc, docx, flag, flv, gif, gz, gzip, jpeg, jpg, dziennika połowy mov, mp3, w formacie mp4, mpc, mpeg, mpg, ods, odt, pdf, png, ppt, pptx, pxd, qt, pamięci ram, rar, Menedżera zasobów, rmi, rmvb, rtf, sdc, sitd, swf , sxc, sxw, tar tgz, tymczasowych plików internetowych, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml i pliku zip.
+    * Trwałe skryptów między witrynami: Dodano walidacji danych wejściowych.
 
 ### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Aktualizacja usługi Azure Site Recovery Scout 8.0.1 2 (aktualizacja, 03 będzie 15 grudnia)
 
 Poprawki w wersji Update 2 obejmują:
 
-* **Serwer konfiguracji**: problemy, które uniemożliwił 31 dni bezpłatnej pomiaru funkcji działać zgodnie z oczekiwaniami, gdy serwer konfiguracji został zarejestrowany w magazynie usługi Azure Site Recovery.
-* **Program Unified agent**: problemu w aktualizacji 1, które spowodowały aktualizacji nie są instalowane na głównym serwerze docelowym, podczas uaktualniania z wersji 8.0 lub 8.0.1.
+* **Serwer konfiguracji**: Problemy, które uniemożliwiały bezpłatną funkcją zliczania 31 dni roboczych zgodnie z oczekiwaniami, gdy serwer konfiguracji został zarejestrowany w magazynie usługi Azure Site Recovery.
+* **Program Unified agent**: Rozwiązywanie problemu z Update 1, które spowodowały aktualizacji nie są instalowane na głównym serwerze docelowym, podczas uaktualniania z wersji 8.0 lub 8.0.1.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 Aktualizacja Update 1 obejmuje następujące poprawki i nowe funkcje:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: e853ea6d05585fa764ad6e019a3a4390ed840263
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: de9186faa9c6228f1938a94016ef449ce8bb1899
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313443"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335935"
 ---
 # <a name="permissions-in-azure-security-center"></a>Uprawnienia w usłudze Azure Security Center
 
@@ -29,8 +29,8 @@ Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować probl
 
 Oprócz tych ról istnieją dwie określone role usługi Security Center:
 
-* **Czytelnik zabezpieczeń**: użytkownik, który należy do tej roli ma uprawnienia do usługi Security Center przeglądania. Użytkownika można wyświetlić, zalecenia, alerty, zasady zabezpieczeń i Stany zabezpieczeń, ale nie może wprowadzać zmian.
-* **Administrator zabezpieczeń**: użytkownik, który należy do tej roli ma te same prawa jako czytelnik zabezpieczeń i również możliwość aktualizowania zasad zabezpieczeń i zamknąć alerty i zalecenia.
+* **Czytelnik zabezpieczeń**: Użytkownik, który należy do tej roli ma uprawnienia do usługi Security Center przeglądania. Użytkownika można wyświetlić, zalecenia, alerty, zasady zabezpieczeń i Stany zabezpieczeń, ale nie może wprowadzać zmian.
+* **Administrator zabezpieczeń**: Użytkownik, który należy do tej roli ma te same prawa jako czytelnik zabezpieczeń i również zaktualizować zasady zabezpieczeń i zamknąć alerty i zalecenia.
 
 > [!NOTE]
 > Role zabezpieczeń: rola Czytelnik zabezpieczeń i Administrator zabezpieczeń może korzystać tylko w usłudze Security Center. Role zabezpieczeń nie mają dostępu do innych obszarów usług platformy Azure, takich jak magazyn, sieci Web i Mobile lub Internetu rzeczy.
@@ -59,7 +59,7 @@ Poniższa tabela przedstawia role i dozwolonych akcji w usłudze Security Center
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule wyjaśniono, jak usługa Security Center korzysta z funkcji RBAC można przypisywać uprawnienia do użytkowników i określone akcje dozwolone dla każdej roli. Teraz, kiedy znasz już przypisań ról potrzebnych do monitorowania stanu zabezpieczeń wszystkich subskrypcji, edytować zasady zabezpieczeń i stosowania zaleceń, Dowiedz się, jak:
 
-- [Ustawianie zasad zabezpieczeń w usłudze Security Center](security-center-azure-policy.md)
+- [Ustawianie zasad zabezpieczeń w usłudze Security Center](tutorial-security-policy.md)
 - [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Security Center](security-center-recommendations.md)
 - [Monitorowanie kondycji zabezpieczeń zasobów platformy Azure](security-center-monitoring.md)
 - [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Security Center](security-center-managing-and-responding-alerts.md)

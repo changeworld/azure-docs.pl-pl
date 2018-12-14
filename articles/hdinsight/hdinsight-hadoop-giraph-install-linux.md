@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011667"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383905"
 ---
-# <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Zainstalować system Giraph w klastrach usługi HDInsight Hadoop, a przetwarzanie dużych wykresów za pomocą systemu Giraph
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Zainstaluj Apache Giraph w klastrach usługi HDInsight Hadoop, a przetwarzanie dużych wykresów za pomocą systemu Giraph
 
 Dowiedz się, jak zainstalować system Apache Giraph w klastrze usługi HDInsight. Funkcja akcji skryptu HDInsight umożliwia dostosowanie klastra, uruchamiając skrypt powłoki bash. Skrypty można dostosowywać klastry, podczas i po utworzeniu klastra.
 
@@ -33,10 +33,10 @@ Dowiedz się, jak zainstalować system Apache Giraph w klastrze usługi HDInsigh
 
 * Obliczanie rangę strony stron sieci Web.
 
-> [!WARNING]
+> [!WARNING]  
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane — Microsoft Support pomaga wyizolować i rozwiązać problemy związane z tych składników.
 >
-> Składniki niestandardowe, takie jak system Giraph otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Microsoft Support może mieć do rozwiązania problemu. W przeciwnym razie należy zapoznać się z społeczności "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład, istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Składniki niestandardowe, takie jak system Giraph otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Microsoft Support może mieć do rozwiązania problemu. W przeciwnym razie należy zapoznać się z społeczności "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>Działanie skryptu
@@ -68,17 +68,17 @@ Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt po
 
 2. W **opcjonalna konfiguracja** zaznacz **akcji skryptu**i podaj następujące informacje:
 
-   * **Nazwa**: Wprowadź przyjazną nazwę dla akcji skryptu.
+   * **NAZWA**: Wprowadź przyjazną nazwę dla akcji skryptu.
 
    * **IDENTYFIKATOR URI SKRYPTU**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-   * **HEAD**: Sprawdź ten wpis
+   * **HEAD**: Sprawdź ten wpis.
 
-   * **Proces ROBOCZY**: ten wpis należy pozostawić nie zaznaczone
+   * **PROCES ROBOCZY**: Ten wpis należy pozostawić puste.
 
-   * **DOZORCY**: ten wpis należy pozostawić nie zaznaczone
+   * **DOZORCY**: Ten wpis należy pozostawić puste.
 
-   * **Parametry**: pozostaw to pole puste
+   * **PARAMETRY**: Pozostaw to pole puste.
 
 3. W dolnej części **akcji skryptu**, użyj **wybierz** przycisk, aby zapisać konfigurację. Na koniec użyj **wybierz** znajdujący się u dołu **opcjonalna konfiguracja** sekcji, aby zapisać informacje o konfiguracji opcjonalnej.
 
@@ -172,4 +172,4 @@ Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład Sim
 
 * [Instalowanie i korzystanie z rozwiązania Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md).
 
-* [Zainstalować platformę Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md).
+* [Instalowanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md).

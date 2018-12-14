@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e9e92254db37edbd978b5799b13e63652e227f86
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 57e23c55342ee397ecb8590dd6da639ba766f351
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014518"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385435"
 ---
-# <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
+# <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
 
 W usłudze Azure HDInsight istnieje kilka typów klastrów i technologie, które można uruchomić zapytania usługi Apache Hive. Podczas tworzenia klastra usługi HDInsight, należy wybrać typ klastra odpowiednie do optymalizowania wydajności na potrzeby związane z obciążeniem. 
 
@@ -38,7 +38,7 @@ Zwiększenie liczby węzłów procesu roboczego w klastrze usługi HDInsight umo
 
 Aby uzyskać więcej informacji na temat skalowania HDInsight, zobacz [klastrów HDInsight skalowania](hdinsight-scaling-best-practices.md)
 
-## <a name="use-tez-instead-of-map-reduce"></a>Użyj aplikacji Tez zamiast Map Reduce
+## <a name="use-apache-tez-instead-of-map-reduce"></a>Używanie Apache Tez zamiast Map Reduce
 
 [Apache Tez](https://hortonworks.com/hadoop/tez/) to aparat wykonywania alternatywne do aparatu MapReduce. Opartą na systemie Linux klastrów HDInsight mają domyślnie włączony w aplikacji Tez.
 
@@ -124,16 +124,16 @@ Aby uzyskać więcej informacji, zobacz [partycjonowane tabele](https://cwiki.ap
 ## <a name="use-the-orcfile-format"></a>Użycie formatu ORCFile
 Hive obsługuje różne formaty plików. Na przykład:
 
-* **Tekst**: domyślny format pliku i sprawdza się w przypadku większości scenariuszy
-* **Avro**: działa dobrze sprawdza się w scenariuszach współpracy
-* **ORC/Parquet**: najbardziej odpowiednie dla wydajności
+* **Tekst**: domyślny format pliku i sprawdza się w przypadku większości scenariuszy.
+* **Avro**: działa dobrze sprawdza się w scenariuszach współpracy.
+* **ORC/Parquet**: najbardziej odpowiednie dla wydajności.
 
 Format ORC (zoptymalizowane pod kątem wiersz kolumnowy) jest bardzo wydajny sposób przechowywania danych programu Hive. W porównaniu do innych formatów, ORC ma następujące zalety:
 
-* Obsługa złożonych typów, w tym daty/godziny i typów złożonych i o połowicznej strukturze
-* nawet o 70% kompresji
-* indeksuje co 10 000 wierszy, które pozwalają na pomijanie wierszy
-* znaczny spadek wykonania
+* Obsługa złożonych typów, w tym daty/godziny i typów złożonych i o połowicznej strukturze.
+* nawet o 70% kompresji.
+* indeksuje co 10 000 wierszy, które pozwalają na pomijanie wierszy.
+* znaczny spadek wykonania.
 
 Aby włączyć formacie ORC, należy najpierw utworzyć tabelę z klauzulą *przechowywane jako ORC*:
 
@@ -171,7 +171,7 @@ Następnie możesz wstawić dane do tabeli ORC z tabeli tymczasowej. Na przykła
     FROM lineitem;
    ```
    
-Możesz dowiedzieć się więcej na temat formatu ORC w [Podręcznik języka Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
+Możesz dowiedzieć się więcej na temat formatu ORC w [ręczne Apache Hive języka](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
 
 ## <a name="vectorization"></a>Wektoryzacja
 
@@ -196,10 +196,10 @@ Istnieją więcej metod optymalizacji, które należy rozważyć, na przykład:
 W tym artykule mają przedstawiono kilka typowych metod optymalizacji zapytań Hive. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Use Apache Hive w HDInsight](hadoop/hdinsight-use-hive.md)
-* [Analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight](hdinsight-analyze-flight-delay-data.md)
+* [Analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Hive w HDInsight](hdinsight-analyze-flight-delay-data.md)
 * [Analizowanie danych serwisu Twitter przy użyciu technologii Hive w HDInsight](hdinsight-analyze-twitter-data.md)
-* [Analizowanie danych z czujników w usłudze Hadoop w HDInsight przy użyciu konsoli zapytań Hive](hadoop/apache-hive-analyze-sensor-data.md)
-* [Używanie technologii Hive z HDInsight do analizy dzienników z witryn sieci Web](hadoop/apache-hive-analyze-website-log.md)
+* [Analizowanie danych czujników na technologii Apache Hadoop w HDInsight przy użyciu konsoli Apache Hive zapytań](hadoop/apache-hive-analyze-sensor-data.md)
+* [Używanie programu Apache Hive z HDInsight do analizy dzienników z witryn sieci Web](hadoop/apache-hive-analyze-website-log.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png

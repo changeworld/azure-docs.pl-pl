@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: be56fd80229010090216413a7c1833d94e8bac25
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739570"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339879"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Konwertowanie szablonu zestawu skalowania na szablon zestawu skalowania dysku zarządzanego
 
@@ -126,7 +126,7 @@ Nie ma jawnych właściwości w konfiguracji zestawu skalowania, czy należy uż
 
 ## <a name="data-disks"></a>Dyski z danymi
 
-Przy użyciu powyższych zmian scale set używa usługi managed disks dla systemu operacyjnego na dysku, ale co dyski z danymi? Aby dodać dyski z danymi, należy dodać właściwości "dataDisks" w obszarze "storageProfile" na tym samym poziomie jako "osDisk". Wartość właściwości jest JSON listę obiektów, z których każdy ma właściwości "" (numerem lun musi być unikatowa dla dysku danych na maszynie Wirtualnej), "createOption" ("puste" jest obecnie jedyną obsługiwaną opcją), a "diskSizeGB" (rozmiar dysku w gigabajtach; musi być większa niż 0 i mniejsza niż 1024) jak w poniższym przykładzie: 
+Przy użyciu powyższych zmian scale set używa usługi managed disks dla systemu operacyjnego na dysku, ale co dyski z danymi? Aby dodać dyski z danymi, należy dodać właściwości "dataDisks" w obszarze "storageProfile" na tym samym poziomie jako "osDisk". Wartość właściwości jest JSON listę obiektów, z których każdy ma właściwości "" (numerem lun musi być unikatowa dla dysku danych na maszynie Wirtualnej), "createOption" ("puste" jest obecnie jedyną obsługiwaną opcją), a "diskSizeGB" (rozmiar dysku w gigabajtach; musi być większa niż 0 i mniejsza niż 1024) jak w poniższym przykładzie:
 
 ```
 "dataDisks": [
@@ -144,7 +144,7 @@ Aby dowiedzieć się więcej o korzystaniu z dysków z danymi za pomocą zestaw�
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Na przykład szablony usługi Resource Manager przy użyciu zestawów skalowania, wyszukaj termin "zestawu skalowania maszyn wirtualnych" w [repozytorium github szablony szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates).
+Na przykład szablony usługi Resource Manager przy użyciu zestawów skalowania, wyszukaj termin "zestawu skalowania maszyn wirtualnych" w [repozytorium szablonów szybkiego startu platformy Azure w witrynie GitHub](https://github.com/Azure/azure-quickstart-templates).
 
 Aby uzyskać ogólne informacje, zapoznaj się z [główną stroną docelową dla zestawów skalowania](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 

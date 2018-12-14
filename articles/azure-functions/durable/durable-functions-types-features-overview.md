@@ -8,18 +8,18 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/04/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 265314ebf2568bd586934d371e1e6c1d74e0b9bb
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642312"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336531"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Omówienie typy funkcji i funkcji dla funkcje trwałe (usługi Azure Functions)
 
-Usługa Azure Functions trwałe zapewnia aranżacji stanowej wykonywania funkcji. Trwałe funkcji to rozwiązanie składa się z różnych funkcji platformy Azure. Każda z tych funkcji można odtworzyć różne role w ramach aranżacji. Ten dokument zawiera omówienie typy funkcji, które są zaangażowane w aranżacji funkcji trwałe. Zawiera również niektóre typowe wzorce w łączenie funkcji.  Aby teraz rozpocząć pracę, należy utworzyć pierwszą funkcję trwałego w [ C# ](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md).
+Trwałe funkcje zapewnia aranżacji stanowej wykonywania funkcji. Trwałe funkcji to rozwiązanie składa się z różnych funkcji platformy Azure. Każda z tych funkcji można odtworzyć różne role w ramach aranżacji. Ten dokument zawiera omówienie typy funkcji, które są zaangażowane w aranżacji funkcji trwałe. Zawiera również niektóre typowe wzorce w łączenie funkcji.  Aby teraz rozpocząć pracę, należy utworzyć pierwszą funkcję trwałego w [ C# ](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md).
 
 ![Typy trwałe funkcje][1]  
 
@@ -27,9 +27,11 @@ Usługa Azure Functions trwałe zapewnia aranżacji stanowej wykonywania funkcji
 
 ### <a name="activity-functions"></a>Działanie funkcji
 
-Działanie funkcji to podstawowa jednostka pracy w trwałych aranżacji.  Działanie funkcji są funkcje i zadania są zorganizowanych w procesie.  Może na przykład tworzenie trwałych funkcji do przetwarzania zamówienia — Sprawdź plik spisu, klienta i utworzyć wydanie.  Każdej z nich te zadania będą funkcję działania.  Działanie funkcji nie ma żadnych ograniczeń w typie praca wykonywana w nich.  Mogą być napisane w dowolnym języku, obsługiwane przez usługi Azure Functions.  Framework trwałe zadań gwarantuje, że każdej funkcji, działania o nazwie zostanie uruchomiony przynajmniej raz podczas aranżacji.
+Działanie funkcji to podstawowa jednostka pracy w trwałych aranżacji.  Działanie funkcji są funkcje i zadania są zorganizowanych w procesie.  Może na przykład tworzenie trwałych funkcji do przetwarzania zamówienia — Sprawdź plik spisu, klienta i utworzyć wydanie.  Każdej z nich te zadania będą funkcję działania.  Działanie funkcji nie ma żadnych ograniczeń w typie praca wykonywana w nich.  Mogą być napisane w dowolnym [języków obsługiwanych przez funkcje trwałe](durable-functions-overview.md#language-support). Trwałe Framework zadań gwarantuje, że każdej funkcji, działania o nazwie zostanie uruchomiony przynajmniej raz podczas aranżacji.
 
-Działanie funkcji musi zostać wyzwolone przez [działania wyzwalacza](durable-functions-bindings.md#activity-triggers).  Ta funkcja zostanie wyświetlony [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Możesz również powiązać wyzwalacza do innego obiektu, aby przekazać dane wejściowe do funkcji.  Działanie funkcji może również zwracać wartości, wróć do programu orchestrator.  Jeśli wysyłanie lub zwracanie wielu wartości z funkcją działań, możesz to zrobić [korzystaj z krotek lub tablic](durable-functions-bindings.md#passing-multiple-parameters).  Działanie funkcji mogą być wywoływane tylko z wystąpienia aranżacji.  Podczas gdy jakiś kod może być współużytkowane między funkcję działania i inną funkcję (np. funkcję wyzwalaną przez protokół HTTP), każda funkcja może mieć tylko jeden wyzwalacz.
+Działanie funkcji musi zostać wyzwolone przez [działania wyzwalacza](durable-functions-bindings.md#activity-triggers).  Funkcje platformy .NET będzie otrzymywać [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Możesz również powiązać wyzwalacza do innego obiektu, aby przekazać dane wejściowe do funkcji. W języku JavaScript, danych wejściowych jest możliwy za pośrednictwem `<activity trigger binding name>` właściwość [ `context.bindings` obiektu](../functions-reference-node.md#bindings).
+
+Działanie funkcji może również zwracać wartości, wróć do programu orchestrator.  Jeśli wysyłanie lub zwracanie wielu wartości z funkcją działań, możesz to zrobić [korzystaj z krotek lub tablic](durable-functions-bindings.md#passing-multiple-parameters).  Działanie funkcji mogą być wywoływane tylko z wystąpienia aranżacji.  Podczas gdy jakiś kod może być współużytkowane między funkcję działania i inną funkcję (np. funkcję wyzwalaną przez protokół HTTP), każda funkcja może mieć tylko jeden wyzwalacz.
 
 Więcej informacji i przykładów można znaleźć w [funkcje trwałe powiązanie artykułu](durable-functions-bindings.md#activity-triggers).
 
@@ -79,7 +81,9 @@ Więcej informacji i przykładów można znaleźć w [dodanymi komentarzami arty
 
 Trwałe orchestration znajduje się zwykle w kontekście aplikacji jednej funkcji, są wzorce umożliwiają do koordynowania aranżacji wielu aplikacji funkcji.  Mimo że komunikacji między aplikacjami, może być wykonywane za pośrednictwem protokołu HTTP, za pomocą trwałych framework dla każdego działania tak oznacza, że nadal można zachować procesu trwałe w dwóch aplikacjach.
 
-Przykładem aranżacji aplikacji dla wielu funkcji, w języku C# znajduje się poniżej.  Jedno działanie zostanie uruchomione zewnętrznych aranżacji. Następnie pobierze i przywrócenie stanu innego działania.  Koordynatora będzie czekać na stanie, które mają być ukończone przed kontynuowaniem.
+Przykłady aranżacji aplikacji dla wielu funkcji, w C# i języka JavaScript są przedstawione poniżej.  Jedno działanie zostanie uruchomione zewnętrznych aranżacji. Następnie pobierze i przywrócenie stanu innego działania.  Koordynatora będzie czekać na stanie, które mają być ukończone przed kontynuowaniem.
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("OrchestratorA")]
@@ -128,6 +132,64 @@ public static async Task<bool> CheckIsComplete([ActivityTrigger] string statusUr
         return response.StatusCode == HttpStatusCode.OK;
     }
 }
+```
+
+#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    // Do some work...
+
+    // Call a remote orchestration
+    const statusUrl = yield context.df.callActivity("StartRemoteOrchestration", "OrchestratorB");
+
+    // Wait for the remote orchestration to complete
+    while (true) {
+        const isComplete = yield context.df.callActivity("CheckIsComplete", statusUrl);
+        if (isComplete) {
+            break;
+        }
+
+        const waitTime = moment(context.df.currentUtcDateTime).add(1, "m").toDate();
+        yield context.df.createTimer(waitTime);
+    }
+
+    // B is done. Now go do more work...
+});
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, orchestratorName) {
+    const options = {
+        method: "POST",
+        uri: `https://appB.azurewebsites.net/orchestrations/${orchestratorName}`,
+        body: ""
+    };
+
+    const statusUrl = await request(options);
+    return statusUrl;
+};
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, statusUrl) {
+    const options = {
+        method: "GET",
+        uri: statusUrl,
+        resolveWithFullResponse: true,
+    };
+
+    const response = await request(options);
+    // 200 = Complete, 202 = Running
+    return response.statusCode === 200;
+};
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

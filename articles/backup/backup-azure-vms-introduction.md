@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: raynew
-ms.openlocfilehash: 7ebb71c6c5968f8f3548f1accd8d659039e6b545
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e38f245197f2b1bdb22a2866028ad10f4ec39ec1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871646"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343501"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planowanie infrastruktury kopii zapasowych maszyny wirtualnej na platformie Azure
 Ten artykuł zawiera wydajności i sugestii zasobu, aby ułatwić planowanie infrastruktury kopii zapasowej maszyny Wirtualnej. Definiuje również kluczowe aspekty w usłudze Kopia zapasowa; te aspekty mogą być szczególnie ważne w określaniu architektury, planowania pojemności i planowania. Jeśli masz [przygotować środowisko](backup-azure-arm-vms-prepare.md), planowania jest kolejnym krokiem przed rozpoczęciem [do tworzenia kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md). Aby uzyskać więcej informacji na temat maszyn wirtualnych platformy Azure, zobacz [dokumentacja dotycząca maszyn wirtualnych](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -99,16 +99,16 @@ Chociaż w większości przypadków tworzenia kopii zapasowych odbywa się do cz
 Kopia zapasowa obejmuje dwa etapy: tworzenie migawek i przekazywania migawek do magazynu. Usługa Backup optymalizuje dla magazynu. Podczas transferu danych migawki do magazynu, usługa tylko przesyła przyrostowe zmiany z poprzednią migawkę.  Aby określić zmiany przyrostowe, usługa oblicza sumę kontrolną bloków. Jeśli blok zostanie zmieniony, blok jest rozpoznawany jako bloku do wysłania do magazynu. Następnie awarii usługi bardziej szczegółowo w każdej z określonych bloków, szuka możliwości zminimalizować danych do przesłania. Po dokonaniu oceny wszystkie zmienione bloki, usługa łączy zmiany i wysyła je do magazynu. W niektórych starszych aplikacji zapisów niewielkich, podzielonej zawartości nie są optymalne dla magazynu. Jeśli migawka zawiera wiele zapisów niewielkich, fragmentacji, usługa spędza dodatkowy czas przetwarzania danych zapisanych przez aplikacje. W przypadku aplikacji uruchomionych na maszynie Wirtualnej bloku zapisy aplikacji zalecane minimalne wynosząca 8 KB. Jeśli aplikacja korzysta z blokiem mniej niż 8 KB, odbywa się wydajność tworzenia kopii zapasowej. Aby uzyskać pomoc dotyczącą Dostrajanie aplikacji w taki sposób, aby zwiększyć wydajność tworzenia kopii zapasowych, zobacz [Dostrajanie aplikacji, aby uzyskać optymalną wydajność z usługą Azure storage](../virtual-machines/windows/premium-storage-performance.md). Chociaż artykuł w wydajności tworzenia kopii zapasowych używa przykładów magazynu Premium, wskazówki ma zastosowanie w przypadku dysków magazynu w warstwie standardowa.<br>
 Może to mieć kilka przyczyn godzina długa kopii zapasowej:
   1. **Pierwsza kopia zapasowa dla nowo dodany dysk do maszyny Wirtualnej już chronione** <br>
-    Jeśli maszyna wirtualna jest już poddany przyrostowej kopii zapasowej, gdy nowe dyski zostanie dodany następnie kopii zapasowej pominąć SLA 1 dzień, w zależności od rozmiaru nowego dysku.
+    Jeśli maszyny Wirtualnej zostało zakończone tworzenie początkowej kopii zapasowej i wykonuje przyrostowej kopii zapasowej. Dodawanie nowych dysków pominąć SLA 1 dzień, w zależności od rozmiaru nowego dysku.
   2. **Fragmentacji** <br>
-    Skonfigurowanie aplikacji klienta jest źle wykorzystującej małe zapisy pofragmentowany.<br>
-  3. **Konta magazynu klienta przeciążone** <br>
-      a. Jeśli zaplanowano tworzenie kopii zapasowej w czasie aplikacji produkcyjnych klienta.  
+    Jeśli obciążenia (aplikacja) na maszynie Wirtualnej wykonuje małe zapisy pofragmentowane następnie go może niekorzystnie wpłynąć na wydajność tworzenia kopii zapasowej. <br>
+  3. **Konto magazynu przeciążone** <br>
+      a. Jeśli zaplanowano tworzenie kopii zapasowej podczas korzystania z podglądu aplikacji.  
       b. Jeśli więcej niż 5 – 10 dysków znajdują się w tym samym koncie magazynu.<br>
   4. **Tryb Check(CC) spójności** <br>
       Na > 1TB dysków, jeśli tworzenie kopii zapasowej odbywa się w trybie DW z przyczyn wymienionych poniżej:<br>
-        a. Przenosi dysku zarządzanego jako część klientów ponownego uruchamiania maszyny Wirtualnej.<br>
-        b. Klient promuje migawki do podstawowego obiektu blob.<br>
+        a. Przenosi dysku zarządzanego jako część ponowne uruchomienie maszyny Wirtualnej.<br>
+        b. Podwyższ poziom migawki do podstawowego obiektu blob.<br>
 
 ## <a name="total-restore-time"></a>Czas całkowity przywracania
 

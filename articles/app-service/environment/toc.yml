@@ -85,7 +85,7 @@ items:
     href: https://azure.microsoft.com/pricing/details/app-service/
   - name: Informacje o limitach przydziału
     href: ../../azure-subscription-service-limits.md#app-service-limits
-  - name: Aktualizacje usług i informacje o wersji
+  - name: Aktualizacje usług
     href: https://azure.microsoft.com/updates/?product=app-service
   - name: Najlepsze praktyki
     href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
@@ -112,22 +112,22 @@ items:
     - name: Rozwiązywanie problemów z aplikacją Node.js
       href: ../app-service-web-nodejs-best-practices-and-troubleshoot-guide.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
     - name: Rozwiązywanie problemów związanych z błędami HTTP 502 i 503
-      href: ../app-service-web-troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+      href: ../troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
     - name: Rozwiązywanie problemów z wydajnością
-      href: ../app-service-web-troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+      href: ../troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
     - name: Często zadawane pytania
       items:
       - name: Często zadawane pytania dotyczące dostępności, wydajności i aplikacji
-        href: ../app-service-web-availability-performance-application-issues-faq.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+        href: ../faq-availability-performance-application-issues.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
       - name: Często zadawane pytania dotyczące wdrażania
-        href: ../app-service-web-deployment-faq.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+        href: ../faq-deployment.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
       - name: Często zadawane pytania dotyczące technologii typu open source
-        href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+        href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
       - name: Często zadawane pytania dotyczące konfiguracji i zarządzania
-        href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
-ms.openlocfilehash: d9a026c0ba2601a1a4e61c5868b4fdd53599f579
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+        href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+ms.openlocfilehash: 0d19ea767773c7e944625973f28e025b74a093e4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165742"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384313"

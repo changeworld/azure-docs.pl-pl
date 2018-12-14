@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 7f2b4d870fdcf250f62d41fa4f3ea5bf13d323c3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847069"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387084"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -58,17 +58,17 @@ W tym dokumencie skupiono się przede wszystkim na tworzenie planu do zabezpiecz
 
 ## <a name="develop-a-roadmap"></a>Tworzenie planu 
 
-Firma Microsoft zaleca tworzenie, a następnie postępuj zgodnie z planem w celu zabezpieczenia uprzywilejowanego dostępu przed atakami cybernetycznymi. Twój plan, aby pomieścić do istniejących możliwości i szczególnych wymagań organizacji zawsze można dostosować. Każdy etap planu powinna podnieść koszty i trudności przeciwników na ataki uprzywilejowany dostęp do usługi lokalne, chmurę oraz zasoby hybrydowego. Firma Microsoft zaleca cztery następujące etapy plan: to zalecane, harmonogramy plan najskuteczniejsze i najbardziej skutecznych najpierw na podstawie doświadczeń firmy Microsoft przy użyciu ataku cybernetycznego implementację zdarzenia i odpowiedzi. Osie czasu dla tego planu są przybliżone.
+Firma Microsoft zaleca tworzenie, a następnie postępuj zgodnie z planem w celu zabezpieczenia uprzywilejowanego dostępu przed atakami cybernetycznymi. Twój plan, aby pomieścić do istniejących możliwości i szczególnych wymagań organizacji zawsze można dostosować. Każdy etap planu powinna podnieść koszty i trudności przeciwników na ataki uprzywilejowany dostęp do usługi lokalne, chmurę oraz zasoby hybrydowego. Firma Microsoft zaleca cztery następujące etapy plan: To zalecane, harmonogramy plan najskuteczniejsze i najbardziej efektywnym najpierw na podstawie doświadczeń firmy Microsoft przy użyciu ataku cybernetycznego implementację zdarzenia i odpowiedzi. Osie czasu dla tego planu są przybliżone.
 
 ![Etapy plan z liniami czasu](./media/directory-admin-roles-secure/roadmap-timeline.png)
 
-* Etap 1 (24-48 godzin): elementów krytycznych, które firma Microsoft zaleca wykonaj natychmiast
+* Etap 1 (24-48 godzin). Elementów krytycznych, które firma Microsoft zaleca wykonaj natychmiast
 
-* Etap 2 (2 – 4 tygodnie): ograniczenia na najczęściej używane techniki ataku
+* Etap 2 (2 – 4 tygodnie). Eliminowanie na najczęściej używane techniki ataku
 
-* Etap 3 (1 – 3 miesiące): budowanie widoczności i tworzenia pełnej kontroli działań administratora
+* Etap 3 (1 – 3 miesiące). Budowanie widoczności i tworzenia pełnej kontroli działań administratora
 
-* Etap 4 (sześć miesięcy i nowszych): kontynuacja tworzenia mechanizmów obronnych w celu dalszego ograniczenia funkcjonalności platformy zabezpieczeń
+* Etap 4 (sześć miesięcy i nowszych): Kontynuacja tworzenia mechanizmów obronnych w celu dalszego ograniczenia funkcjonalności platformy zabezpieczeń
 
 Ta struktura plan zaprojektowano w celu optymalnego wykorzystania technologii firmy Microsoft, które może masz już wdrożone. Można również korzystać z zabezpieczeń klucza bieżących i przyszłych technologii i integrowanie narzędzi zabezpieczeń od innych dostawców, który został już wdrożony lub rozważane jest wdrożenie. 
 
@@ -121,9 +121,9 @@ Ocena kont, które są przypisane lub kwalifikuje się do roli administratora gl
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Włącz uwierzytelnianie wieloskładnikowe i Zarejestruj wszystkie inne konta administratora inne niż federacyjne pojedynczego użytkownika wysoce uprzywilejowanych 
 
-Usługi Azure Multi-Factor Authentication (MFA) jest wymagany co logowania dla wszystkich poszczególnych użytkowników, którzy są trwale przypisane do przynajmniej jednej z ról administratora usługi Azure AD: administratorem globalnym, administratorem ról uprzywilejowanych, administrator usługi Exchange Online i SharePoint Administrator usługi online. Użyj przewodnika, aby włączyć [Multi-Factor Authentication (MFA) dla kont administratorów](../authentication/howto-mfa-userstates.md) i upewnij się, że wszystkich tych użytkowników, którzy zarejestrowali na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Więcej informacji można znaleźć w kroku 2 i krok 3 przewodnika [ochrona dostępu do danych i usług w usłudze Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Wymaga usługi Azure Multi-Factor Authentication (MFA), podczas logowania dla wszystkich poszczególnych użytkowników, którzy są trwale przypisana do co najmniej jednej z ról administratora usługi Azure AD: Administratorem globalnym, administratorem ról uprzywilejowanych, administrator usługi Exchange Online i administratorem usługi SharePoint Online. Użyj przewodnika, aby włączyć [Multi-Factor Authentication (MFA) dla kont administratorów](../authentication/howto-mfa-userstates.md) i upewnij się, że wszystkich tych użytkowników, którzy zarejestrowali na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Więcej informacji można znaleźć w kroku 2 i krok 3 przewodnika [ochrona dostępu do danych i usług w usłudze Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
-## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Etap 2: Ograniczenia na najczęściej używane techniki ataku
+## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Etap 2: Eliminowanie na najczęściej używane techniki ataku
 
 ![Etap 2](./media/directory-admin-roles-secure/stage-two.png)
 
@@ -196,7 +196,7 @@ Efektywne wykonywanie reagowania na zdarzenia jest złożone przedsiębiorstwa. 
 
 #### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>Bezpieczną lokalną uprzywilejowanego konta z uprawnieniami administracyjnymi, jeśli nie zostało zrobione
 
-Jeśli Twoja dzierżawa usługi Azure Active Directory jest zsynchronizowany z usługą Active Directory w środowisku lokalnym, postępuj zgodnie ze wskazówkami w [zabezpieczenia uprzywilejowanego dostępu plan](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): etap 1. Obejmuje to utworzenie oddzielnych administratora konta dla użytkowników, którzy muszą przeprowadzić zadania administracyjne w środowisku lokalnym, wdrażanie stacji roboczych z dostępem uprzywilejowanym dla administratorów usługi Active Directory i tworzenie unikatowe hasła administratora lokalnego dla stacji roboczych i serwery.
+Jeśli Twoja dzierżawa usługi Azure Active Directory jest zsynchronizowany z usługą Active Directory w środowisku lokalnym, postępuj zgodnie ze wskazówkami w [zabezpieczenia uprzywilejowanego dostępu plan](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Etap 1. Obejmuje to utworzenie oddzielnych administratora konta dla użytkowników, którzy muszą przeprowadzić zadania administracyjne w środowisku lokalnym, wdrażanie stacji roboczych z dostępem uprzywilejowanym dla administratorów usługi Active Directory i tworzenie unikatowe hasła administratora lokalnego dla stacji roboczych i serwery.
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Dodatkowe kroki w przypadku organizacji, zarządzanie dostępem do platformy Azure
 
@@ -210,7 +210,7 @@ Konta Microsoft z innych programów, takich jak Xbox Live i Outlook powinna nie 
 
 #### <a name="monitor-azure-activity"></a>Monitorowanie aktywności platformy Azure
 
-Dziennik aktywności platformy Azure zawiera historię zdarzeń na poziomie subskrypcji na platformie Azure. Oferuje informacje o który utworzone, aktualizować i usuwać zasobów i po wystąpieniu zdarzenia. Aby uzyskać więcej informacji, zobacz [Inspekcja i otrzymywanie powiadomień dotyczących ważnych działań związanych z subskrypcją platformy Azure](../../monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription.md).
+Dziennik aktywności platformy Azure zawiera historię zdarzeń na poziomie subskrypcji na platformie Azure. Oferuje informacje o który utworzone, aktualizować i usuwać zasobów i po wystąpieniu zdarzenia. Aby uzyskać więcej informacji, zobacz [Inspekcja i otrzymywanie powiadomień dotyczących ważnych działań związanych z subskrypcją platformy Azure](../../azure-monitor/platform/quick-audit-notify-action-subscription.md).
 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Dodatkowe kroki w przypadku organizacji, zarządzanie dostępem do innych aplikacji w chmurze za pomocą usługi Azure AD 
@@ -275,7 +275,7 @@ Możesz pobrać raport z [Zarządzanie zdarzeniami zabezpieczeń w usłudze Micr
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Zabezpieczanie uprzywilejowanego lokalne konta z uprawnieniami administracyjnymi w dalszym ciągu
 
-Jeśli usługi Azure Active Directory jest podłączony do usługi Active Directory w środowisku lokalnym, postępuj zgodnie ze wskazówkami w [zabezpieczenia uprzywilejowanego dostępu plan](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): etap 2. Obejmuje to wdrażanie stacji roboczych z dostępem dla wszystkich administratorów, wymaganie uwierzytelniania Wieloskładnikowego, przy użyciu tylko tyle administratora obsługi kontrolera domeny, zmniejszyć obszar narażony na domenach, wdrożenie usługi ATA do wykrywania ataków.
+Jeśli usługi Azure Active Directory jest podłączony do usługi Active Directory w środowisku lokalnym, postępuj zgodnie ze wskazówkami w [zabezpieczenia uprzywilejowanego dostępu plan](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Etap 2. Obejmuje to wdrażanie stacji roboczych z dostępem dla wszystkich administratorów, wymaganie uwierzytelniania Wieloskładnikowego, przy użyciu tylko tyle administratora obsługi kontrolera domeny, zmniejszyć obszar narażony na domenach, wdrożenie usługi ATA do wykrywania ataków.
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Dodatkowe kroki w przypadku organizacji, zarządzanie dostępem do platformy Azure
 
@@ -322,7 +322,7 @@ W celu zapewnienia dostępu użytkowników jest chroniona w połączonych aplika
 
 Agent SIEM zabezpieczeń aplikacji w chmurze usługa Cloud App Security jest zintegrowany z serwerem SIEM, aby korzystać ze scentralizowanego monitorowania alertów usługi Office 365 i działań. Uruchamiany na serwerze i pobiera alerty i działania usługi Cloud App Security i przesyła je strumieniowo do serwera SIEM. Aby uzyskać więcej informacji, zobacz [integracja rozwiązania SIEM](https://docs.microsoft.com/cloud-app-security/siem).
 
-## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Etap 4: Kontynuacja, tworzenia mechanizmów obronnych w celu bardziej proaktywnego działania
+## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Etap 4: Kontynuacja tworzenia mechanizmów obronnych w celu bardziej proaktywnego działania
 
 
 ![Etap 4](./media/directory-admin-roles-secure/stage-four.png)
@@ -390,52 +390,52 @@ Określ, czy wymagane do [przenieść własność subskrypcji platformy Azure do
 
 Aby uzyskać więcej informacji na temat obsługi zdarzenia związane z bezpieczeństwem w Microsoft Office 365, zobacz [Zarządzanie zdarzeniami zabezpieczeń w usłudze Microsoft Office 365](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>Często zadawane pytania: Często zadawane pytania są uzyskiwane dotyczące zabezpieczania uprzywilejowanego dostępu  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>FAQ: Często zadawane pytania, które firma Microsoft otrzyma dotyczące zabezpieczania uprzywilejowanego dostępu  
 
 
-**P: czy** co mogę zrobić, jeśli I nie została jeszcze zaimplementowana wszystkie składniki bezpieczny dostęp?
+**PYT.:** Co należy zrobić, jeśli I nie została jeszcze zaimplementowana wszystkie składniki bezpieczny dostęp?
 
-**Odpowiedź:** zdefiniować co najmniej dwóch break szkła konta, przypisz MFA do kont uprzywilejowanych administratorów i oddzielnych kont użytkowników z konta administratora globalnego.
-
-
-**P: czy** po naruszenia, co jest najważniejsze problem, który trzeba najpierw usunąć?
-
-**Odpowiedź:** Pamiętaj, że jest wymaganie najsilniejszych uwierzytelniania dla osób, narażone.
+**Odpowiedź:** Zdefiniuj co najmniej dwóch break szkła konta, przypisz MFA do kont uprzywilejowanych administratorów i oddzielnych kont użytkowników z konta administratora globalnego.
 
 
-**P: czy** co się stanie, jeśli zostały dezaktywowane naszych uprzywilejowanych administratorów?
+**PYT.:** Po naruszeniu zabezpieczeń co to jest najważniejsze problem, który trzeba najpierw usunąć?
+
+**Odpowiedź:** Upewnij się, że jest wymaganie najsilniejszych uwierzytelniania dla osób, narażone.
+
+
+**PYT.:** Co się stanie, jeśli zostały dezaktywowane naszych uprzywilejowanych administratorów?
 
 **Odpowiedź:** Tworzenie konta administratora globalnego, który jest zawsze są aktualne.
 
 
-**P: czy** co się stanie, jeśli istnieje tylko jeden administrator globalny po lewej, a jest niedostępne? 
+**PYT.:** Co się stanie, jeśli istnieje tylko jeden globalnego administratora po lewej stronie i nie można nawiązać połączenia? 
 
-**Odpowiedź:** umożliwia jedno z kont break szkła natychmiastowy dostęp uprzywilejowany.
+**Odpowiedź:** Aby uzyskać natychmiastowy dostęp uprzywilejowany, użyj jednego z kont break szkła.
 
 
-**P: czy** jak chronić Administratorzy mojej organizacji?
+**PYT.:** Jak chronić Administratorzy mojej organizacji?
 
-**Odpowiedź:** istnieją Administratorzy, zawsze wykonuj ich codziennych jako standardowych użytkowników "nieuprzywilejowanego".
+**Odpowiedź:** Istnieją Administratorzy, które zawsze wykonuj ich codziennych jako standardowych użytkowników "nieuprzywilejowanego".
  
 
-**P: czy** jakie są najlepsze rozwiązania dotyczące tworzenia kont administratora w usłudze Azure AD?
+**PYT.:** Jakie są najlepsze rozwiązania dotyczące tworzenia kont administratora w usłudze Azure AD?
 
-**Odpowiedź:** rezerwy uprzywilejowany dostęp do zadań administracyjnych określonych.
+**Odpowiedź:** Rezerwa uprzywilejowany dostęp do zadań administracyjnych określonych.
 
 
-**P: czy** jakich narzędzi istnieje w celi zmniejszenia dostępu administratora trwałego?
+**PYT.:** Jakich narzędzi istnieje w celi zmniejszenia dostępu administratora trwałego?
 
 **Odpowiedź:** Privileged Identity Management (PIM) i Azure AD ról administratora.
 
 
-**P: czy** co to jest pozycji firmy Microsoft, na synchronizowanie kont administratorów do usługi Azure AD?
+**PYT.:** Co to jest pozycji firmy Microsoft, na synchronizowanie kont administratorów do usługi Azure AD?
 
-**Odpowiedź:** warstwy 0 kont administratorów (w tym kont, grupy i inne zasoby, które mają bezpośrednich lub pośrednich kontrolę administracyjną nad lasem usługi AD, domeny lub kontrolerów domeny i wszystkimi zasobami) są używane tylko dla lokalnych kont usługi AD i są Zazwyczaj nie są synchronizowane dla usługi Azure AD w chmurze. 
+**Odpowiedź:** Warstwa 0 kont administratorów (w tym kont, grupy i inne zasoby, które mają bezpośrednich lub pośrednich kontrolę administracyjną nad lasem usługi AD, domeny lub kontrolerów domeny i wszystkimi zasobami) są wykorzystywane tylko w przypadku lokalnego konta usługi AD i są zazwyczaj nie synchronizowane dla usługi Azure AD w chmurze. 
 
 
-**P: czy** jak możemy uniemożliwić Administratorzy przypisywanie dostępu losowego administratora w portalu?
+**PYT.:** Jak możemy zapewnić Administratorzy przypisywaniu dostępu losowego administratora w portalu?
 
-**Odpowiedź:** używanie kont bez uprawnień dla wszystkich użytkowników i administratorów większość. Rozpocznij od tworzenia zasięgowi organizacji umożliwia określenie, które kilka kont administratorów powinien uprzywilejowanego. I Monitoruj użytkowników administracyjnych, nowo utworzony.
+**Odpowiedź:** Użyj konta bez uprawnień dla wszystkich użytkowników i administratorów większość. Rozpocznij od tworzenia zasięgowi organizacji umożliwia określenie, które kilka kont administratorów powinien uprzywilejowanego. I Monitoruj użytkowników administracyjnych, nowo utworzony.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

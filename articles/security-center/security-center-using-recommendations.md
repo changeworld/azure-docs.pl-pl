@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: rkarlin
-ms.openlocfilehash: 36e3e8c6c34099149cb13aa60efb6668fcc7d53c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d496f3f28cee711109c5c200102d48482bf6cd9c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958418"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340700"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Usługa Azure Security Center zaleceń, aby zwiększyć poziom bezpieczeństwa
 Konfigurowanie zasad zabezpieczeń, a następnie wdrażanie zaleceń dotyczących, dostarczone przez usługę Azure Security Center może zmniejszyć prawdopodobieństwo zdarzeń zabezpieczeń. W tym artykule przedstawiono sposób używania zasad zabezpieczeń i zalecenia w usłudze Security Center, aby ułatwić uniknięcie atak na zabezpieczenia.
@@ -30,7 +30,7 @@ Konfigurowanie zasad zabezpieczeń, a następnie wdrażanie zaleceń dotyczącyc
 >
 
 ## <a name="managing-security-recommendations"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń
-Zasady zabezpieczeń określają zestaw mechanizmów kontrolnych, które są zalecane dla zasobów w ramach określonej subskrypcji lub grupy zasobów. W usłudze Security Center można zdefiniować zasady zgodnie z wymaganiami bezpieczeństwa w firmie. Aby dowiedzieć się więcej, zobacz [Ustawianie zasad zabezpieczeń w usłudze Security Center](security-center-azure-policy.md).
+Zasady zabezpieczeń określają zestaw mechanizmów kontrolnych, które są zalecane dla zasobów w ramach określonej subskrypcji lub grupy zasobów. W usłudze Security Center można zdefiniować zasady zgodnie z wymaganiami bezpieczeństwa w firmie. Aby dowiedzieć się więcej, zobacz [Ustawianie zasad zabezpieczeń w usłudze Security Center](tutorial-security-policy.md).
 
 Zasady zabezpieczeń dla grupy zasobów są dziedziczone z poziomu subskrypcji.
 

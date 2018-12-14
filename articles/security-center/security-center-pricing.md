@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
+ms.date: 12/11/2018
 ms.author: rkarlin
-ms.openlocfilehash: 08a16285a6e3e52fc9e2ddce6b6936dfd4639ba8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d0cdda4553808d1197d764d0a50e535515527443
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835577"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336445"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnienie do warstwy standardowa Security Center w celu uzyskania zwiększonych zabezpieczeń
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby obciążeń uruchamianych na platformie Azure, lokalnie i w innych chmurach. System ten zapewnia widoczność i kontrolę nad obciążeniach chmury hybrydowej, aktywne mechanizmów obronnych pozwalających ograniczyć narażenie na zagrożenia i wykrywanie inteligentne, które ułatwią Ci zmieniającego się szybko ewoluującymi cyberatakami.
@@ -33,8 +33,8 @@ Usługa Security Center jest oferowana w dwóch warstwach:
 
 Aby uzyskać więcej informacji, zobacz Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="try-standard-free-for-60-days"></a>Wypróbuj bezpłatnie przez 60 dni Standard
-Warstwa Standardowa jest oferowana za darmo przez pierwsze 60 dni. Na końcu 60 dni należy wybrać nadal korzystać z usługi będzie automatycznie Zaczniemy naliczać opłaty za użycie.
+## <a name="try-standard-free-for-30-days"></a>Wypróbuj bezpłatnie przez 30 dni Standard
+Warstwa standardowa jest oferowana za darmo przez pierwsze 30 dni. Po upływie 30 dni należy wybrać nadal korzystać z usługi będzie automatycznie Zaczniemy naliczać opłaty za użycie.
 
 Cały subskrypcji platformy Azure można uaktualnić do warstwy standardowa, która jest dziedziczona przez wszystkie zasoby w ramach subskrypcji.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9cfb098fd8e6cb777b6cd968f92b20baabfab705
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313990"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338536"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>File Integrity Monitoring w usłudze Azure Security Center
 Dowiedz się, jak skonfigurować plik Integrity Monitoring (FIM) w usłudze Azure Security Center za pomocą tego przewodnika.
@@ -136,7 +136,7 @@ Wybieranie filtru w górnej części pulpitu nawigacyjnego umożliwia zastosowan
 
   ![Ustawienia][11]
 
-  **Konfiguracja obszaru roboczego** zostanie otwarty trzy karty: **rejestru Windows**, **pliki Windows**, i **pliki systemu Linux**. Każda karta zawiera listę jednostek, które można edytować w tej kategorii. Dla każdej jednostki, na liście, usługa Security Center określa, czy program FIM będzie włączona (PRAWDA) lub wyłączona (false).  Edytowanie podmiotu pozwala włączyć lub wyłączyć usługi FIM.
+  **Konfiguracja obszaru roboczego** zostanie otwarty trzy karty: **Rejestr Windows**, **pliki Windows**, i **pliki systemu Linux**. Każda karta zawiera listę jednostek, które można edytować w tej kategorii. Dla każdej jednostki, na liście, usługa Security Center określa, czy program FIM będzie włączona (PRAWDA) lub wyłączona (false).  Edytowanie podmiotu pozwala włączyć lub wyłączyć usługi FIM.
 
   ![Konfiguracja obszaru roboczego][12]
 
@@ -205,7 +205,7 @@ Można wyłączyć usługi FIM. FIM używa rozwiązania Azure Change Tracking w 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono Użyj pliku Integrity Monitoring (FIM) w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń](security-center-azure-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
+* [Ustawianie zasad zabezpieczeń](tutorial-security-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
 * [Zarządzanie zaleceniami dotyczącymi zabezpieczeń](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
 * [Monitorowanie kondycji zabezpieczeń](security-center-monitoring.md)— informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi](security-center-managing-and-responding-alerts.md)— Dowiedz się, jak zarządzać i reagować na alerty zabezpieczeń.

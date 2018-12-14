@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 911b8051530daca57fe26fb22c6dc1be845c6d6d
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: e1482b4238211db45a7f317d874bbb3a8c974cb2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321430"
+ms.locfileid: "53337907"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do obiektów Blob platformy Azure i dane w kolejce przy użyciu RBAC (wersja zapoznawcza)
 
@@ -27,11 +27,11 @@ Tożsamości usługi Azure AD może być użytkownika, grupy lub nazwy głównej
 
 Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC. Usługa Azure Storage oferuje następujące wbudowane role kontroli RBAC do użycia z usługą Azure AD:
 
-- [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
-- [Czytnik danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
-- [Właściciel danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
-- [Współautor danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
-- [Czytnik danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
+- [Właściciel danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview): Użyj, aby ustawić własność i listami kontroli dostępu dla usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza). Aby uzyskać więcej informacji, zobacz [kontrola dostępu w usługach Azure Data Lake Storage Gen2](../blobs/data-lake-storage-access-control.md).
+- [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview): Użyj, aby udzielić uprawnień odczytu/zapisu/usuwania zasobów magazynu obiektów Blob.
+- [Czytnik danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview): Użyj, aby udzielić uprawnień tylko do odczytu do zasobów magazynu obiektów Blob.
+- [Współautor danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview): Użyj, aby udzielić uprawnień odczytu/zapisu/usuwania do kolejek systemu Azure.
+- [Czytnik danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview): Użyj, aby udzielić uprawnień tylko do odczytu do kolejek systemu Azure.
 
 Aby uzyskać więcej informacji o tym, jak wbudowane role są definiowane dla usługi Azure Storage, zobacz [zrozumienie definicji ról](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
 
@@ -45,10 +45,10 @@ Przypisz rolę RBAC do tożsamości usługi platformy Azure, aby udzielić upraw
 
 |Zakres|Właściciel danych obiektów blob|Współautor danych obiektu blob|Czytnik danych obiektu blob|Współautor danych kolejki|Czytnik danych kolejki|
 |---|---|---|---|---|---|
-|Poziom subskrypcji|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji| Dostęp do odczytu do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kolejek w ramach subskrypcji|Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji|
-|Poziomu grupy zasobów|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów|Dostęp do odczytu do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis dostęp do wszystkich kolejek w grupie zasobów|Dostęp do odczytu do wszystkich kolejek w grupie zasobów|
-|Na poziomie konta magazynu|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu|Dostęp do odczytu do wszystkich kontenerów i obiektów blob na koncie magazynu|Odczyt/zapis dostęp do wszystkich kolejek na koncie magazynu|Dostęp do odczytu do wszystkich kolejek na koncie magazynu|
-|Poziom kontenera/kolejki|Odczyt/zapis dostęp do określonego kontenera i jego obiektów blob|Odczyt/zapis dostęp do określonego kontenera i jego obiektów blob|Dostęp do odczytu do określonego kontenera i jego obiektów blob|Odczyt/zapis dostęp do określonej kolejki|Dostęp do odczytu do określonej kolejki|
+|Poziom subskrypcji|Ustawić własność i listami kontroli dostępu dla zasobów usługi Data Lake Storage w ramach subskrypcji|Odczyt/zapis/usuwanie dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji| Dostęp do odczytu do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis/usuwanie dostęp do wszystkich kolejek w ramach subskrypcji|Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji|
+|Poziomu grupy zasobów|Ustawić własność i listami kontroli dostępu dla zasobów usługi Data Lake Storage w grupie zasobów|Odczyt/zapis/usuwanie dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów|Dostęp do odczytu do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis/usuwanie dostęp do wszystkich kolejek w grupie zasobów|Dostęp do odczytu do wszystkich kolejek w grupie zasobów|
+|Na poziomie konta magazynu|Ustawić własność i listami kontroli dostępu dla zasobów usługi Data Lake Storage na koncie magazynu|Odczyt/zapis/usuwanie dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu|Dostęp do odczytu do wszystkich kontenerów i obiektów blob na koncie magazynu|Odczyt/zapis/usuwanie dostęp do wszystkich kolejek na koncie magazynu|Dostęp do odczytu do wszystkich kolejek na koncie magazynu|
+|Poziom kolejki/kontenera/systemu plików|Ustawić własność i listami kontroli dostępu dla zasobów usługi Data Lake Storage w systemie plików|Odczyt/zapis/usuwanie dostępu do określonego kontenera i jego obiektów blob|Dostęp do odczytu do określonego kontenera i jego obiektów blob|Odczyt/zapis/usuwanie dostępu do określonej kolejki|Dostęp do odczytu do określonej kolejki|
 
 > [!NOTE]
 > Jako właściciel konta usługi Azure Storage możesz nie są automatycznie przypisywane uprawnienia dostępu do danych. Należy jawnie przypisać sobie rolę RBAC dla usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konto magazynu, kontenera lub kolejki.

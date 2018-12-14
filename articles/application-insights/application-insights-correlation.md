@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 09db1c7a7d348d866cd131e66102044a37c010a8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6da397927a99c89f4cd82adccab9d7c0defc54e4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310338"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386408"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -52,9 +52,9 @@ Możesz analizować wynikowe dane telemetryczne, wykonanie kwerendy:
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-W nocie widok wyników, wszystkie elementy danych telemetrycznych udostępnić główny `operation_Id`. Podczas wywołania ajax wprowadzone na stronie — nowy unikatowy identyfikator `qJSXU` jest przypisany do telemetrii zależności i wyświetlenia strony jego identyfikator jest używany jako `operation_ParentId`. Z kolei żądanie serwera używa identyfikatora w technologii ajax jako `operation_ParentId`itp.
+W nocie widok wyników, wszystkie elementy danych telemetrycznych udostępnić główny `operation_Id`. Podczas wywołania ajax wprowadzone na stronie — nowy unikatowy identyfikator `qJSXU` jest przypisany do telemetrii zależności i wyświetlenia strony jego identyfikator jest używany jako `operation_ParentId`. Z kolei żądanie serwera używa Identyfikatora w technologii ajax jako `operation_ParentId`itp.
 
-| ItemType   | name                      | id           | operation_ParentId | operation_Id |
+| ItemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | wyświetlenia strony   | Podstawowy strony                |              | STYz               | STYz         |
 | zależność | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
@@ -65,7 +65,7 @@ Teraz po wywołaniu `GET /api/stock/value` wprowadzone do usługi zewnętrznej, 
 
 ## <a name="correlation-headers"></a>Nagłówki korelacji
 
-Firma Microsoft pracuje nad RFC propozycję [korelacji protokołu HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Propozycja ta definiuje dwa nagłówki:
+Pracujemy nad RFC propozycję [korelacji protokołu HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Propozycja ta definiuje dwa nagłówki:
 
 - `Request-Id` przenoszenia globalnie unikatowy identyfikator wywołania
 - `Correlation-Context` -wykonuje kolekcję par wartości nazwy we właściwościach rozproszonego śledzenia
@@ -76,14 +76,14 @@ Definiuje usługę Application Insights [rozszerzenia](https://github.com/lmolko
 
 ### <a name="w3c-distributed-tracing"></a>W3C rozproszonego śledzenia
 
-Firma cleardb zmienia się [format W3C rozproszonego śledzenia](https://w3c.github.io/trace-context/). Definiuje on:
+Firma Microsoft jest przejście do [format W3C rozproszonego śledzenia](https://w3c.github.io/trace-context/). Definiuje on:
 - `traceparent` -niesie ze sobą globalnie unikatowy identyfikator i unikatowy identyfikator wywołania
-- `tracestate` -niesie ze sobą w określonym kontekście systemu śledzenia.
+- `tracestate` -niesie ze sobą śledzenie kontekstu specyficzne dla systemu.
 
 #### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>Włącz obsługę śledzenia W3C rozproszonych dla aplikacji platformy ASP.NET, klasyczne
 
 Ta funkcja jest dostępna w pakietach Microsoft.ApplicationInsights.Web i Microsoft.ApplicationInsights.DependencyCollector, począwszy od wersji 2.8.0-beta1.
-Jest **poza** domyślnie, aby ją włączyć, należy zmienić `ApplicationInsights.config`:
+Ma ona **poza** domyślnie, aby ją włączyć, należy zmienić `ApplicationInsights.config`:
 
 * w obszarze `RequestTrackingTelemetryModule` Dodaj `EnableW3CHeadersExtraction` element z wartością ustawioną na `true`
 * w obszarze `DependencyTrackingTelemetryModule` Dodaj `EnableW3CHeadersInjection` element z wartością ustawioną na `true`
@@ -91,7 +91,7 @@ Jest **poza** domyślnie, aby ją włączyć, należy zmienić `ApplicationInsig
 #### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Włącz obsługę śledzenia W3C rozproszonych dla aplikacji platformy ASP.NET Core
 
 Ta funkcja jest w Microsoft.ApplicationInsights.AspNetCore 2.5.0-beta1 wersji i 2.8.0-beta1 wersji Microsoft.ApplicationInsights.DependencyCollector.
-Jest **poza** domyślnie, aby ją włączyć ustaw `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` do `true`:
+Ma ona **poza** domyślnie, aby ją włączyć ustaw `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` do `true`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -118,7 +118,6 @@ Aby uzyskać więcej informacji na temat modelu danych usługi Application Insig
 
 Zobacz, Otwórz śledzenie [specyfikacji](https://github.com/opentracing/specification/blob/master/specification.md) i [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) definicji Otwórz śledzenie pojęcia.
 
-
 ## <a name="telemetry-correlation-in-net"></a>Korelacja telemetrii na platformie .NET
 
 Wraz z upływem czasu .NET zdefiniowane wiele sposobów, w celu skorelowania danych telemetrycznych i diagnostycznych dzienników. Brak `System.Diagnostics.CorrelationManager` umożliwiające śledzenie [LogicalOperationStack i ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource` i Windows ETW zdefiniować metodę [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` używa [zakresy dziennika](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). Architektura WCF i Http o komunikacji sieciowej się "bieżący" propagacji kontekstu.
@@ -139,11 +138,18 @@ Wersję początkową aplikacji zestawu SDK usługi Insights `2.4.0-beta1` używa
 ## <a name="telemetry-correlation-in-the-java-sdk"></a>Korelacja telemetrii w zestawie SDK dla języka Java
 [Zestawu SDK Java usługi Application Insights](app-insights-java-get-started.md) obsługuje automatyczne korelacja telemetrii rozpoczynający się od wersji `2.0.0`. Automatycznie wypełni `operation_id` dla wszystkich danych telemetrycznych (śladów, wyjątków, zdarzeń niestandardowych itp.) wydane w zakresie żądania. On również zajmuje się propagowanie nagłówki korelacji (opisane powyżej), aby wywołania usług za pośrednictwem protokołu HTTP Jeśli [agenta zestawu Java SDK](app-insights-java-agent.md) jest skonfigurowany. Uwaga: tylko wywołania za pośrednictwem klienta HTTP Apache są obsługiwane przez funkcję korelacji. Jeśli używasz szablonu Rest Spring lub Feign zarówno może służyć za pomocą klienta HTTP Apache pod maską.
 
-Obecnie usługa propagacji automatyczne kontekstu między technologii obsługi komunikatów (np. Kafka, RabbitMQ, usługi Azure Service Bus) nie jest obsługiwana. Możliwe jest jednak ręczne kodu takich scenariuszy za pomocą `trackDependency` i `trackRequest` interfejsów API, według której telemetrii zależności reprezentuje komunikat jest umieszczonych w kolejce przez producenta, a żądanie komunikatów przetwarzanych przez konsumenta. W takim przypadku zarówno `operation_id` i `operation_parentId` powinny być propagowane we właściwościach komunikatu.
+Obecnie usługa propagacji automatyczne kontekstu między komunikatów technologii (na przykład, Kafka, RabbitMQ, usługi Azure Service Bus) nie jest obsługiwane. Możliwe jest jednak ręczne kodu takich scenariuszy za pomocą `trackDependency` i `trackRequest` interfejsów API, według której telemetrii zależności reprezentuje komunikat jest umieszczonych w kolejce przez producenta, a żądanie komunikatów przetwarzanych przez konsumenta. W takim przypadku zarówno `operation_id` i `operation_parentId` powinny być propagowane we właściwościach komunikatu.
 
 <a name="java-role-name"></a>
-### <a name="role-name"></a>Nazwa roli
-Czasami możesz chcieć dostosować sposób nazw składników są wyświetlane w [mapy aplikacji](app-insights-app-map.md). Aby to zrobić, można ręcznie ustawić `cloud_roleName` , wykonując jedną z następujących czynności:
+## <a name="role-name"></a>Nazwa roli
+
+Czasami możesz chcieć dostosować sposób nazw składników są wyświetlane w [mapy aplikacji](app-insights-app-map.md). Aby to zrobić, można ręcznie ustawić `cloud_RoleName` , wykonując jedną z następujących czynności:
+
+Jeśli używasz aplikacji Spring Boot za pomocą Application Insights platformy Spring Boot starter tylko wymagana zmiana jest można ustawić nazwę niestandardowego dla aplikacji w pliku application.properties pliku.
+
+`spring.application.name=<name-of-app>`
+
+Spring Boot starter automatycznie przypisze cloudRoleName wartość wprowadzona dla właściwości spring.application.name.
 
 Jeśli używasz `WebRequestTrackingFilter`, `WebAppNameContextInitializer` automatycznie ustawi nazwę aplikacji. Dodaj następujący element do pliku konfiguracji (plik ApplicationInsights.xml):
 ```XML
@@ -151,7 +157,9 @@ Jeśli używasz `WebRequestTrackingFilter`, `WebAppNameContextInitializer` autom
   <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
 </ContextInitializers>
 ```
+
 Za pomocą klasy kontekstu chmury:
+
 ```Java
 telemetryClient.getContext().getCloud().setRole("My Component Name");
 ```
@@ -159,6 +167,7 @@ telemetryClient.getContext().getCloud().setRole("My Component Name");
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Zapisywanie niestandardowych danych telemetrycznych](app-insights-api-custom-events-metrics.md)
+- [Dowiedz się więcej o](app-insights-app-map.md#set-cloudrolename) ustawienie cloud_RoleName dla innych zestawów SDK.
 - Dołączanie wszystkich składników wczesnych usługi w usłudze Application Insights. Zapoznaj się z [obsługiwanych platform](app-insights-platforms.md).
 - Zobacz [modelu danych](application-insights-data-model.md) dla usługi Application Insights typów i danych modelu.
 - Dowiedz się, jak [rozszerzyć i filtrowanie danych telemetrycznych](app-insights-api-filtering-sampling.md).

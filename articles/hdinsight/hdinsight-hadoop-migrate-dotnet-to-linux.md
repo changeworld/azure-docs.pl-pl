@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: dc7cfb4df768fb7554bc7b5c772a6a778a8a793a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3681f87780f1ef2a6b42e33bcd6fc2d761994d5c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008117"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384206"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrowanie rozwiązań .NET dla oparte na Windows HDInsight do HDInsight opartych na systemie Linux
 
@@ -26,7 +26,7 @@ Wersja platformy mono 4.2.1 jest dołączony do HDInsight w wersji 3.6. Aby uzys
 
 Aby uzyskać więcej informacji na temat zgodności platformy Mono i .NET, zobacz [zgodności platformy Mono (http://www.mono-project.com/docs/about-mono/compatibility/) ](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > W ramach platformy SCP.NET jest zgodny z platformy Mono. Aby uzyskać więcej informacji na temat korzystania z platformy SCP.NET dotyczącą platformy Mono, zobacz [Użyj programu Visual Studio umożliwiające tworzenie topologii języka C# dla Storm Apache na HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md).
 
 ## <a name="automated-portability-analysis"></a>Analiza automatycznego przenoszenia
@@ -47,7 +47,7 @@ Aby uzyskać więcej informacji na temat zgodności platformy Mono i .NET, zobac
 
     ![Okno dialogowe wyniki analizator przenośności](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Analizator nie może przechwytywać wszystkich problemów z rozwiązaniem. Na przykład ścieżka pliku `c:\temp\file.txt` jest uznawany za poprawny, jeśli narzędzie Mono jest systemem Windows. Tej samej ścieżce nie nadaje się na platformie Linux.
 
 ## <a name="manual-portability-analysis"></a>Przenośność ręcznej analizy
@@ -64,12 +64,12 @@ Po zmodyfikowaniu rozwiązania, korzystając z zaleceniami z narzędzia .NET Por
 
 Aby uzyskać więcej informacji na temat uzyskiwania dostępu do dzienników zobacz następujące dokumenty:
 
-* [Uzyskiwanie dostępu do dzienników aplikacji usługi YARN w usłudze HDInsight opartej na systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Dostęp do usługi Apache Hadoop YARN application loguje HDInsight opartych na systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Używanie języka C# za pomocą technologii MapReduce w HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [C# funkcje zdefiniowane przez użytkownika za pomocą technologii Hive i Pig](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Użyj C# funkcje zdefiniowane przez użytkownika przy użyciu Apache Hive i Apache Pig](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Opracowywanie topologii języka C# dla Storm w HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Twórz C# topologii STORM Apache na HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)

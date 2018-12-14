@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 6d2e87c50eba293df7c5130ea6bf192ed7f83277
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679821"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344316"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analizowanie plików audio i wideo
 
 Azure Media Services v3 umożliwia prowadzenie analiz plików audio i wideo za pomocą indeksatora wideo za pośrednictwem usługi AMS v3 analizatora ustawień wstępnych (opisanych w tym artykule). Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer. Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z [dokumentem z porównaniem](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Aby analizować zawartością za pomocą usługi Media Services v3 ustawienia, należy utworzyć **Przekształcanie** i Prześlij **zadania** który używa tych ustawień: **AudioAnalyzerPreset** lub **VideoAnalyzerPreset**. Następujący artykuł pokazuje sposób użycia **VideoAnalyzerPreset**: [samouczek: analizowanie klipów wideo w usłudze Azure Media Services](analyze-videos-tutorial-with-api.md).
+Aby analizować zawartością za pomocą usługi Media Services v3 ustawienia, należy utworzyć **Przekształcanie** i Prześlij **zadania** który używa tych ustawień: **AudioAnalyzerPreset** lub **VideoAnalyzerPreset**. Następujący artykuł pokazuje sposób użycia **VideoAnalyzerPreset**: [Samouczek: Analizowanie klipów wideo w usłudze Azure Media Services](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
 > Jeśli używasz wstępnych ustawień analizatora wideo lub dźwięku, skorzystaj z witryny Azure Portal i ustaw na koncie 10 jednostek zarezerwowanych multimediów S3. Aby uzyskać więcej informacji, zobacz temat [Scale media processing (Skalowanie przetwarzania multimediów)](../previous/media-services-scale-media-processing-overview.md).
@@ -33,8 +33,7 @@ Usługa Media Services obsługuje obecnie następujące ustawienia analizatora w
 
 |**Nazwa ustawienia wstępnego**|**Scenariusz**|**Szczegóły**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio.<br/>Można określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka" (na przykład "en US"). "en US", "en-GB", "es-ES", "es-MX",
-"fr-FR", "it-IT", "ja-JP", "pt-BR", "zh-CN", "de-DE", "ar — na przykład", "ru-RU", "hi-IN". Jeśli języka nie jest określona lub jest ustawiona na wartość Null, zostanie zatrudnionych automatyczne wykrywanie języka. Funkcja wykrywania automatycznego języka obsługuje obecnie angielski, chiński, francuski, niemiecki, włoski, japoński, hiszpański, rosyjski i portugalski. Funkcja wykrywania automatycznego działa najlepiej z nagrania audio, za pomocą wyraźnie przyspieszenie mowy. W przypadku niepowodzenia automatycznego wykrywania języka można znaleźć języka transkrypcji będzie powrotu do języka angielskiego.|
+|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio. Możesz określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka". Obsługiwane języki są angielski ("en US" i "en-GB"), hiszpański ("es-ES" i "es-MX"), włoski ("it-IT"), niemiecki ("de-DE"), japoński ("ja-JP"), chiński ("zh-CN"), francuski ("fr-FR"), portugalski ("pt-BR"), arabski ("ar — na przykład"), rosyjski ("ru-RU"), Hindi ("cześć IN" ) i koreańskiego ("ko-KR").<br/><br/> Jeśli język nie jest określony lub ustawiony na język o wartości null, automatyczne wykrywanie będą stosowane. Funkcja wykrywania automatycznego języka obsługuje obecnie angielski, chiński, francuski, niemiecki, włoski, japoński, hiszpański, rosyjski i portugalski. Funkcja wykrywania automatycznego działa najlepiej z nagrania audio, za pomocą wyraźnie przyspieszenie mowy. W przypadku niepowodzenia automatycznego wykrywania języka można znaleźć języka transkrypcji powróci do języka angielskiego.|
 |**VideoAnalyzerPreset**|Analiza audio i wideo|Wyodrębnia informacje (obszerne metadane) z audio i wideo, a następnie generuje plik formatu JSON. Można określić, czy mają zostać wyodrębnione audio insights podczas przetwarzania pliku wideo. Aby uzyskać więcej informacji, zobacz [analiza wideo](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

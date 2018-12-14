@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.openlocfilehash: 9daf0d45c9bb24192750991e7bf84fa3614c970d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4f51de6ded29f93d29dbf80dd68715f621b5cb06
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011038"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384619"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>Instalowanie lub aktualizowanie środowiska Mono na HDInsight
 
@@ -26,7 +26,7 @@ Narzędzie mono jest zainstalowany na HDInsight 3.4 lub nowszej i służy do uru
 
 Ten skrypt akceptuje następujący parametr:
 
-* __Numer wersji środowiska mono__: wersja platformy Mono do zainstalowania. Wersja musi być dostępny z [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
+* __Numer wersji środowiska mono__: Wersja platformy Mono do zainstalowania. Wersja musi być dostępny z [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
 
 Skrypt instaluje następujące pakiety narzędzia Mono:
 
@@ -52,7 +52,7 @@ Podczas poniższy dokument akcji skryptu, użyj następujących identyfikatora U
 
 Aby określić wersję platformy Mono, która jest zainstalowana, użyj numeru wersji __parametry__ pola. Na przykład, wprowadź `5.4` zainstalował 5.4 platformy Mono.
 
-> [!NOTE]
+> [!NOTE]  
 > Podczas konfigurowania HDInsight za pomocą tego skryptu należy oznaczyć skrypt jako __utrwalone__. To ustawienie umożliwia HDInsight zastosować skrypt do węzłów procesu roboczego dodanych do skalowania operacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -60,8 +60,8 @@ Aby określić wersję platformy Mono, która jest zainstalowana, użyj numeru w
 Masz pokazaliśmy ci, jak uaktualnić lub zainstalować określoną wersję platformy Mono na HDInsight. Aby uzyskać więcej informacji na temat korzystania z aplikacji .NET za pomocą platformy Mono na HDInsight zobacz następujące dokumenty:
 
 * [Do przesyłania strumieniowego MapReduce na HDInsight przy użyciu .NET](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Używanie platformy .NET przy użyciu technologii Hive i Pig na HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [Tworzenie rozwiązań języka C# przy użyciu systemu Storm w HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Używanie platformy .NET przy użyciu Apache Hive i Pig Apache na HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Tworzenie C# rozwiązań przy użyciu platformy Apache Storm w HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
 * [Migrowanie rozwiązań .NET do HDInsight opartych na systemie Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
-Aby uzyskać więcej informacji na temat korzystania z akcji skryptu, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md)
+Aby uzyskać więcej informacji na temat korzystania z akcji skryptu, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).

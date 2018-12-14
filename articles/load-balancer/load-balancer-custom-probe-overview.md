@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 12/12/2018
 ms.author: kumud
-ms.openlocfilehash: d3e0fd510968abed55e0e3fea2a8689027713a2b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8ffc2a84850254451bb8356ceb0c08cd56823afd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310406"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344214"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -56,6 +56,9 @@ Korzystając z [reguły równoważenia obciążenia na porty wysokiej dostępno�
 Nie NAT i sondę kondycji za pomocą wystąpienia, które otrzymuje sondy kondycji do innego wystąpienia w sieci wirtualnej, ponieważ może to prowadzić do błędów kaskadowych w tym scenariuszu serwer proxy należy.
 
 Jeśli chcesz przetestować błędu sondy kondycji lub oznaczyć szczegółów poszczególnych wystąpień, można użyć grupy zabezpieczeń do bloku jawne sondy kondycji (docelowy lub [źródła](#probesource)).
+
+>[!IMPORTANT]
+> Nie włączaj [sygnatury czasowe TCP](https://tools.ietf.org/html/rfc1323).  Włączenie protokołu TCP sygnatur czasowych spowoduje, że sondy kondycji zakończyć się niepowodzeniem z powodu pakiety TCP pomijanego przez gościa maszyny Wirtualnej dotyczącą stosu TCP systemu operacyjnego, co powoduje oznaczenie odpowiednich punktu końcowego w dół modułu równoważenia obciążenia.
 
 ### <a name="tcpprobe"></a> Sonda TCP
 

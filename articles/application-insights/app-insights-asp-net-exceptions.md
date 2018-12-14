@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: f36d0ec4446ee6591798c0d8926f41a4e177d81d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 21c1a92a71ac52a47a8b9d73d5e715afb6dc73d0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997049"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343415"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnozowanie wyjątków w aplikacjach sieci web za pomocą usługi Application Insights
 Wyjątki w aplikacji internetowej na żywo są zgłaszane przez [usługi Application Insights](app-insights-overview.md). Żądania zakończone niepowodzeniem można skorelować wyjątki i inne zdarzenia, u klienta i serwera, dzięki czemu można szybko diagnozować ich przyczyny.
@@ -50,14 +50,15 @@ Należy zauważyć, że możesz filtrować raport, aby pokazać tylko wyjątki.
 *Żadne wyjątki nie jest wyświetlane? Zobacz [przechwytywanie wyjątków](#exceptions).*
 
 Kliknij przycisk raport do wyświetlenia jego ślad stosu.
-Kliknij przycisk linii odwołania w ślad stosu, aby otworzyć plik odpowiedni kod.  
+Kliknij przycisk linii odwołania w ślad stosu, aby otworzyć plik odpowiedni kod.
 
 W kodzie Zwróć uwagę, że wskaźniki CodeLens pokazują dane dotyczące wyjątków:
 
 ![Powiadomienia funkcji CodeLens wyjątków.](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnozowanie błędów przy użyciu witryny Azure portal
-Usługa Application Insights jest powiązana z nadzorowanych środowisko APM, aby ułatwić diagnozowanie błędów w monitorowanej aplikacji. Aby rozpocząć, kliknij opcję błędy w menu zasobów usługi Application Insights znajduje się w sekcji badań. Powinien zostać wyświetlony widok pełnoekranowy, która pokazuje trendy współczynnik błędów dla żądań, ile z nich kończy się niepowodzeniem i ilu użytkowników jest dotkniętych problemem. Po prawej stronie zobaczysz niektóre z najbardziej przydatnych specyficzne dla wybranej dystrybucji kończy się niepowodzeniem operacji, łącznie z kodów odpowiedzi pierwsze 3, 3 pierwszych typów wyjątków i 3 najlepszych kończy się niepowodzeniem typów zależności. 
+Usługa Application Insights jest powiązana z nadzorowanych środowisko APM, aby ułatwić diagnozowanie błędów w monitorowanej aplikacji. Aby rozpocząć, kliknij opcję błędy w menu zasobów usługi Application Insights znajduje się w sekcji badań.
+Powinien zostać wyświetlony widok pełnoekranowy, która pokazuje trendy współczynnik błędów dla żądań, ile z nich kończy się niepowodzeniem i ilu użytkowników jest dotkniętych problemem. Po prawej stronie zobaczysz niektóre z najbardziej przydatnych specyficzne dla wybranej dystrybucji kończy się niepowodzeniem operacji, łącznie z kodów odpowiedzi pierwsze 3, 3 pierwszych typów wyjątków i 3 najlepszych kończy się niepowodzeniem typów zależności.
 
 ![Błędy klasyfikowanie widoku (karta Operacje)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
@@ -98,7 +99,7 @@ Szczegóły żądania nie zawierają danych wysłanych do aplikacji na wywołani
 
 * [Zainstaluj zestaw SDK](app-insights-asp-net.md) w projekcie aplikacji.
 * Wstaw kod w aplikacji, aby wywołać [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Wysyłanie danych POST w parametrze wiadomości. Obowiązuje limit dozwolony rozmiar, dzięki czemu powinna próbować wysłać tylko niezbędne dane.
-* Podczas badania, żądanie nie powiodło się, należy znaleźć skojarzone dane śledzenia.  
+* Podczas badania, żądanie nie powiodło się, należy znaleźć skojarzone dane śledzenia.
 
 ![Drążenie wskroś](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
@@ -178,7 +179,7 @@ Ale jeśli masz aktywne przekierowań, Dodaj następujące wiersze do funkcji Ap
 ```csharp
     void Application_Error(object sender, EventArgs e)
     {
-      if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
+      if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError () != null)
       {
          var ai = new TelemetryClient(); // or re-use an existing instance
 
@@ -199,12 +200,13 @@ Istnieje kilka przypadków, które nie obsługują filtry wyjątków. Na przykł
 * Zgłoszono wyjątek podczas uruchamiania aplikacji.
 * Wystąpił wyjątek zadania w tle.
 
-Wszystkie wyjątki *obsługiwane* przez aplikację nadal muszą być śledzone ręcznie. Nieobsługiwane wyjątki, zwykle pochodzących z kontrolerów doprowadzić do 500 odpowiedzi "Wewnętrzny błąd serwera". Jeśli takie odpowiedzi ręcznie jest tworzona w wyniku obsługiwanego wyjątku (lub żaden wyjątek w ogóle) jest śledzona w odpowiednie dane telemetryczne żądania z `ResultCode` 500, jednak zestaw SDK usługi Application Insights jest w stanie śledzić odpowiednich wyjątków.
+Wszystkie wyjątki *obsługiwane* przez aplikację nadal muszą być śledzone ręcznie.
+Nieobsługiwane wyjątki, zwykle pochodzących z kontrolerów doprowadzić do 500 odpowiedzi "Wewnętrzny błąd serwera". Jeśli takie odpowiedzi ręcznie jest tworzona w wyniku obsługiwanego wyjątku (lub żaden wyjątek w ogóle) jest śledzona w odpowiednie dane telemetryczne żądania z `ResultCode` 500, jednak zestaw SDK usługi Application Insights jest w stanie śledzić odpowiednich wyjątków.
 
 ### <a name="prior-versions-support"></a>Obsługa wcześniejszych wersji
 Jeśli używasz MVC 4 (lub starszy) z Application Insights Web zestawu SDK 2.5 (lub starszy) odnoszą się do poniższych przykładów, aby śledzić wyjątki.
 
-Jeśli [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfiguracja jest `Off`, a następnie wyjątki będą dostępne dla [moduł HTTP](https://msdn.microsoft.com/library/ms178468.aspx) do zbierania. Jednak jeśli jest `RemoteOnly` (ustawienie domyślne) lub `On`, wówczas wyjątek zostanie wyczyszczony i nie są dostępne dla usługi Application Insights były zbierane automatycznie. Użytkownik może rozwiązać ten problem, zastępowanie [klasy System.Web.Mvc.HandleErrorAttribute](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)i stosowanie zgodnym z przesłoniętą klasy, jak pokazano poniżej różnych wersji platformy MVC ([źródła github](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Jeśli [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfiguracja jest `Off`, a następnie wyjątki będą dostępne dla [moduł HTTP](https://msdn.microsoft.com/library/ms178468.aspx) do zbierania. Jednak jeśli jest `RemoteOnly` (ustawienie domyślne) lub `On`, wówczas wyjątek zostanie wyczyszczony i nie są dostępne dla usługi Application Insights były zbierane automatycznie. Użytkownik może rozwiązać ten problem, zastępowanie [klasy System.Web.Mvc.HandleErrorAttribute](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)i stosowanie zgodnym z przesłoniętą klasy, jak pokazano poniżej różnych wersji platformy MVC ([źródła GitHub](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;
@@ -222,7 +224,7 @@ Jeśli [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigur
             {
                 //If customError is Off, then AI HTTPModule will report the exception
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
-                {   //or reuse instance (recommended!). see note above  
+                {   //or reuse instance (recommended!). see note above
                     var ai = new TelemetryClient();
                     ai.TrackException(filterContext.Exception);
                 }
@@ -239,9 +241,9 @@ Zamień ten atrybut HandleError Twojego nowego atrybutu w kontrolerach.
 ```csharp
     namespace MVC2App.Controllers
     {
-       [AiHandleError]
-       public class HomeController : Controller
-       {
+        [AiHandleError]
+        public class HomeController : Controller
+        {
     ...
 ```
 
@@ -290,7 +292,8 @@ Istnieje kilka przypadków, które nie obsługują filtry wyjątków. Na przykł
 * Zgłoszono wyjątek podczas uruchamiania aplikacji.
 * Wystąpił wyjątek zadania w tle.
 
-Wszystkie wyjątki *obsługiwane* przez aplikację nadal muszą być śledzone ręcznie. Nieobsługiwane wyjątki, zwykle pochodzących z kontrolerów doprowadzić do 500 odpowiedzi "Wewnętrzny błąd serwera". Jeśli takie odpowiedzi ręcznie jest tworzona w wyniku obsługiwanego wyjątku (lub żaden wyjątek w ogóle) jest śledzona w odpowiednie dane telemetryczne żądania z `ResultCode` 500, jednak zestaw SDK usługi Application Insights jest w stanie śledzić odpowiednich wyjątków.
+Wszystkie wyjątki *obsługiwane* przez aplikację nadal muszą być śledzone ręcznie.
+Nieobsługiwane wyjątki, zwykle pochodzących z kontrolerów doprowadzić do 500 odpowiedzi "Wewnętrzny błąd serwera". Jeśli takie odpowiedzi ręcznie jest tworzona w wyniku obsługiwanego wyjątku (lub żaden wyjątek w ogóle) jest śledzona w odpowiednie dane telemetryczne żądania z `ResultCode` 500, jednak zestaw SDK usługi Application Insights jest w stanie śledzić odpowiednich wyjątków.
 
 ### <a name="prior-versions-support"></a>Obsługa wcześniejszych wersji
 Jeśli używasz WebAPI 1 (lub starszy) z Application Insights Web zestawu SDK 2.5 (lub starszy) odnoszą się do poniższych przykładów, aby śledzić wyjątki.
@@ -311,7 +314,7 @@ Override System.Web.Http.Filters.ExceptionFilterAttribute:
             if (actionExecutedContext != null && actionExecutedContext.Exception != null)
             {  //or reuse instance (recommended!). see note above
                 var ai = new TelemetryClient();
-                ai.TrackException(actionExecutedContext.Exception);    
+                ai.TrackException(actionExecutedContext.Exception);
             }
             base.OnException(actionExecutedContext);
         }
@@ -481,7 +484,7 @@ To różni się od liczby "Wyjątków" obliczana na podstawie portalu Applicatio
 
 ## <a name="video"></a>Połączenia wideo
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Monitorowanie REST, SQL i inne wywołania zależności](app-insights-asp-net-dependencies.md)

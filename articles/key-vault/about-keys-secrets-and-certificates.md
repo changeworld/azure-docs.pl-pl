@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: c5677dc07326fa16960e0d748f88e26f259c0485
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d158f14afa305dd547392722abb5f81380de31f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262281"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384789"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
 Usługa Azure Key Vault umożliwia aplikacji Microsoft Azure i użytkowników do przechowywania i korzystania z kilku typów danych do/z klucz tajny:
 
-- Klucze kryptograficzne: obsługuje wiele typów kluczy i algorytmów i umożliwia użycie sprzętowych modułów zabezpieczeń (HSM) o wysokiej wartości kluczy. 
+- Klucze kryptograficzne: Obsługuje wiele typów kluczy i algorytmów i umożliwia użycie sprzętowych modułów zabezpieczeń (HSM) o wysokiej wartości kluczy. 
 - Wpisy tajne: Pozwala na bezpieczne przechowywanie wpisów tajnych, takich jak hasła i parametry połączenia bazy danych.
-- Certyfikaty: Certyfikaty obsługuje, które są oparte na kluczach i wpisach tajnych i dodać funkcję automatycznego odnawiania.
-- Usługa Azure Storage: Mogą zarządzać klucze konta usługi Azure Storage dla Ciebie. Wewnętrznie usługa Key Vault można wyświetlić listę kluczy (synchronizacja) za pomocą konta usługi Azure Storage i ponownie wygenerować (Obróć) okresowo kluczy. 
+- Certyfikaty: Obsługuje certyfikaty, które są oparte na kluczach i wpisach tajnych i dodać funkcję automatycznego odnawiania.
+- Usługa Azure Storage: Można zarządzać kluczami konta usługi Azure Storage dla Ciebie. Wewnętrznie usługa Key Vault można wyświetlić listę kluczy (synchronizacja) za pomocą konta usługi Azure Storage i ponownie wygenerować (Obróć) okresowo kluczy. 
 
 Aby uzyskać więcej ogólnych informacji na temat usługi Key Vault, zobacz [co to jest usługa Azure Key Vault?](/azure/key-vault/key-vault-whatis)
 
@@ -89,23 +89,23 @@ Gdzie:
 
 Klucze szyfrowania w usłudze Key Vault jest reprezentowane przez obiekty klucza internetowego JSON [JWK]. Podstawowej specyfikacji JWK/JWA również zostały rozszerzone umożliwiające typy kluczy, które są unikatowe dla implementacji usługi Key Vault. Umożliwia importowanie kluczy przy użyciu pakietu specyficzne dla dostawcy sprzętowego modułu zabezpieczeń, na przykład bezpiecznego transportu kluczy, które mogą być używane tylko w sprzętowych modułach zabezpieczeń klucza magazynu.  
 
-- **Klucze "Elastyczne"**: klucz przetwarzane w oprogramowania za pomocą usługi Key Vault, ale są szyfrowane w stanie spoczynku przy użyciu klucza system, który znajduje się w module HSM. Klienci mogą Importuj istniejący klucz RSA lub WE (krzywej eliptycznej) lub żądania usługi Key Vault wygenerowanie takiego.
-- **Klucze "Twarde"**: klucz przetwarzane w sprzętowym module zabezpieczeń (sprzętowy moduł zabezpieczeń). Te klucze są chronione w jednym z środowiska klucza magazynu przez sprzętowy moduł zabezpieczeń Security World (Brak jednego środowiska zabezpieczeń Security World dla lokalizacji geograficznej w celu zachowania izolacji). Klientów można zaimportować klucza RSA lub WE, w postaci nietrwałego lub eksportowanie z zgodnego urządzenia sprzętowego modułu zabezpieczeń. Klienci mogą również poprosić o usłudze Key Vault, aby wygenerować klucz. Ten typ klucza dodaje atrybut T JWK pobrać do przenoszenia materiału klucza sprzętowego modułu zabezpieczeń.
+- **Klucze "Elastyczne"**: Klucz przetwarzane w oprogramowania za pomocą usługi Key Vault, ale są szyfrowane w stanie spoczynku przy użyciu klucza system, który znajduje się w module HSM. Klienci mogą Importuj istniejący klucz RSA lub WE (krzywej eliptycznej) lub żądania usługi Key Vault wygenerowanie takiego.
+- **Klucze "Twarde"**: Klucz przetwarzane w sprzętowym module zabezpieczeń (sprzętowy moduł zabezpieczeń). Te klucze są chronione w jednym z środowiska klucza magazynu przez sprzętowy moduł zabezpieczeń Security World (Brak jednego środowiska zabezpieczeń Security World dla lokalizacji geograficznej w celu zachowania izolacji). Klientów można zaimportować klucza RSA lub WE, w postaci nietrwałego lub eksportowanie z zgodnego urządzenia sprzętowego modułu zabezpieczeń. Klienci mogą również poprosić o usłudze Key Vault, aby wygenerować klucz. Ten typ klucza dodaje atrybut T JWK pobrać do przenoszenia materiału klucza sprzętowego modułu zabezpieczeń.
 
      Aby uzyskać więcej informacji o granicach geograficznych, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
 
 Usługa Key Vault obsługuje jedynie klucze RSA i krzywej eliptycznej. 
 
--   **WE**: klucz "Elastyczne" krzywej eliptycznej.
--   **Modułu HSM we**: klucz "Twardym" krzywej eliptycznej.
--   **RSA**: klucz RSA "Elastyczne".
--   **RSA HSM**: klucz RSA "Twarde".
+-   **WE**: "Elastyczne" klucz krzywej eliptycznej.
+-   **MODUŁU HSM WE**: "Twarde" klucz krzywej eliptycznej.
+-   **RSA**: "Elastyczne" klucza RSA.
+-   **RSA HSM**: "Twarde" klucza RSA.
 
 Usługa Key Vault obsługuje klucze RSA rozmiarów, 2048, 3072 do 4096. Key Vault obsługuje krzywej eliptycznej klucz typy p-256, p-384, p-521 i P-256_K (SECP256K1).
 
 ### <a name="cryptographic-protection"></a>Kryptograficzna ochrona
 
-Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramowania, lub przez moduł HSM są zweryfikowane w trybie FIPS (Federal Information przetwarzania normy). Nie trzeba podejmować żadnych działań specjalne do uruchamiania w trybie FIPS. Klucze **utworzone** lub **zaimportowane** jako chroniony przez sprzętowy moduł zabezpieczeń są przetwarzane w sprzętowym module zabezpieczeń, zatwierdzone zgodnych ze standardami FIPS 140-2 poziom 2 lub nowszej. Klucze **utworzone** lub **zaimportowane** jako chronionego przez oprogramowanie, są przetwarzane w ramach modułów kryptograficznych służących do sprawdzania poprawności certyfikatu FIPS 140-2 poziom 1 lub nowszym. Aby uzyskać więcej informacji, zobacz [kluczy i typy kluczy](#keys-and-key-types).
+Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramowania, lub przez moduł HSM są zweryfikowane w trybie FIPS (Federal Information przetwarzania normy). Nie trzeba podejmować żadnych działań specjalne do uruchamiania w trybie FIPS. Klucze **utworzone** lub **zaimportowane** jako chroniony przez sprzętowy moduł zabezpieczeń są przetwarzane w sprzętowym module zabezpieczeń, zatwierdzone zgodnych ze standardami FIPS 140-2 Level 2. Klucze **utworzone** lub **zaimportowane** jako chronionego przez oprogramowanie, są przetwarzane w ramach modułów kryptograficznych służących do sprawdzania poprawności certyfikatu FIPS 140-2 poziom 1. Aby uzyskać więcej informacji, zobacz [kluczy i typy kluczy](#keys-and-key-types).
 
 ###  <a name="ec-algorithms"></a>Algorytmy WE
  Następujące identyfikatory algorytm są obsługiwane przy użyciu kluczy WE i WE modułu HSM w usłudze Key Vault. 
@@ -113,7 +113,7 @@ Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramow
 #### <a name="curve-types"></a>Typy krzywej
 
 -   **P-256** -NIST krzywej p-256, zdefiniowanych na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256_K** -s krzywej SECP256K1, zdefiniowanych na [s 2: parametry domeny krzywej eliptycznej zalecane](http://www.secg.org/sec2-v2.pdf).
+-   **P-256_K** -s krzywej SECP256K1, zdefiniowanych na [s 2: Zaleca się parametry domeny krzywej eliptycznej](http://www.secg.org/sec2-v2.pdf).
 -   **P-384** -NIST krzywej p-384 zdefiniowany z numerem [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 -   **P-521** -NIST krzywej p-521 zdefiniowany z numerem [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 
@@ -143,23 +143,23 @@ Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramow
 
 Usługa Key Vault obsługuje następujące operacje na obiektach klucza:  
 
--   **Utwórz**: umożliwia klientowi utworzyć klucz w usłudze Key Vault. Wartość klucza jest generowany przez usługę Key Vault i przechowywane, a nie do klienta. Klucze asymetryczne może utworzyć w usłudze Key Vault.  
--   **Importowanie**: umożliwia klientowi zaimportować istniejący klucz usługi Key Vault. Klucze asymetryczne może zaimportować do usługi Key Vault przy użyciu szeregu metod tworzenia różnych pakietów w konstrukcji JWK. 
--   **Aktualizacja**: umożliwia klientowi z wystarczającymi uprawnieniami do modyfikowania metadanych (atrybutów kluczy) skojarzony z kluczem, który został wcześniej są przechowywane w usłudze Key Vault.  
--   **Usuń**: umożliwia klientowi z wystarczającymi uprawnieniami do usunięcia klucza z usługi Key Vault.  
--   **Lista**: umożliwia klientowi wyświetlić listę wszystkich kluczy w danej usłudze Key Vault.  
--   **Lista wersji**: umożliwia klientowi wyświetlić listę wszystkich wersji danego klucza w danej usłudze Key Vault.  
--   **Pobierz**: umożliwia klientowi pobrać publiczny części danego klucza w usłudze Key Vault.  
--   **Kopia zapasowa**: eksportuje klucza w postaci chronionych.  
--   **Przywróć**: importuje wcześniej kopii zapasowej klucza.  
+-   **Utwórz**: Umożliwia klientowi utworzyć klucz w usłudze Key Vault. Wartość klucza jest generowany przez usługę Key Vault i przechowywane, a nie do klienta. Klucze asymetryczne może utworzyć w usłudze Key Vault.  
+-   **Importuj**: Umożliwia klientowi zaimportować istniejący klucz usługi Key Vault. Klucze asymetryczne może zaimportować do usługi Key Vault przy użyciu szeregu metod tworzenia różnych pakietów w konstrukcji JWK. 
+-   **Aktualizacja**: Umożliwia klientowi z wystarczającymi uprawnieniami do modyfikowania metadanych (atrybutów kluczy) skojarzony z kluczem, który został wcześniej są przechowywane w usłudze Key Vault.  
+-   **Usuń**: Umożliwia klientowi z wystarczającymi uprawnieniami do usunięcia klucza z usługi Key Vault.  
+-   **Lista**: Umożliwia klientowi wyświetlić listę wszystkich kluczy w danej usłudze Key Vault.  
+-   **Lista wersji**: Umożliwia klientowi wyświetlić listę wszystkich wersji danego klucza w danej usłudze Key Vault.  
+-   **Pobierz**: Umożliwia klientowi pobrać publiczny części danego klucza w usłudze Key Vault.  
+-   **Kopia zapasowa**: Eksportuje klucza w postaci chronionych.  
+-   **Przywróć**: Importuje wcześniej kopii zapasowej klucza.  
 
 Aby uzyskać więcej informacji, zobacz [klucza operacje w dokumentacji interfejsu API REST usługi Key Vault](/rest/api/keyvault).  
 
 Po utworzeniu klucz w usłudze Key Vault może wykonać następujące operacje kryptograficzne przy użyciu klucza:  
 
--   **Logowanie i sprawdź, czy**: ściśle, ta operacja jest "skrót znaku" lub "Weryfikuj wyznaczania wartości skrótu,", ponieważ usługa Key Vault nie obsługuje wyznaczania wartości skrótu zawartości w ramach tworzenia podpisu. Aplikacje powinny wyznaczania wartości skrótu danych były podpisane lokalnie, a następnie żądanie logowania tej usługi Key Vault skrót. Weryfikacji podpisanego skróty jest obsługiwany jako operacja jako udogodnienie dla aplikacji, które mogą nie mieć dostępu do [publiczny] materiału klucza. Aby uzyskać najlepszą wydajność aplikacji Sprawdź, czy operacje są wykonywane lokalnie.  
--   **Klucz szyfrowania / zawijanie**: klucza przechowywanego w usłudze Key Vault może służyć do ochrony klucza inny, zwykle klucza szyfrowania symetrycznego zawartości (CEK). Gdy klucz w usłudze Key Vault jest asymetrycznego, kluczy szyfrowania jest używany. Na przykład RSA OAEP i WRAPKEY/UNWRAPKEY operacje, które są równoważne do szyfrowania/ODSZYFROWYWANIA. Gdy klucz w usłudze Key Vault jest symetryczne, jest używany klucz zawijania. Na przykład AES KW. Operacja WRAPKEY jest obsługiwana jako udogodnienie dla aplikacji, które mogą nie mieć dostępu do [publiczny] materiału klucza. Aby uzyskać najlepszą wydajność aplikacji WRAPKEY operacji powinno być przeprowadzane lokalnie.  
--   **Szyfrowanie i odszyfrowywanie**: klucza przechowywanego w usłudze Key Vault może służyć do szyfrowania i odszyfrowywania jednego bloku danych. Rozmiar bloku zależy od typu klucza i algorytm szyfrowania wybrane. Operacja szyfrowania jest dostarczany jako udogodnienie, dla aplikacji, które mogą nie mieć dostępu do [publiczny] materiału klucza. Aby uzyskać najlepszą wydajność aplikacji szyfrowanie operacje, które powinny być wykonywane lokalnie.  
+-   **Zaloguj się i sprawdź**: Ściśle, ta operacja jest "skrót znaku" lub "zweryfikował skrótu", ponieważ usługa Key Vault nie obsługuje wyznaczania wartości skrótu zawartości w ramach tworzenia podpisu. Aplikacje powinny wyznaczania wartości skrótu danych były podpisane lokalnie, a następnie żądanie logowania tej usługi Key Vault skrót. Weryfikacji podpisanego skróty jest obsługiwany jako operacja jako udogodnienie dla aplikacji, które mogą nie mieć dostępu do [publiczny] materiału klucza. Aby uzyskać najlepszą wydajność aplikacji Sprawdź, czy operacje są wykonywane lokalnie.  
+-   **Klucz szyfrowania / zawijanie**: Klucza przechowywanego w usłudze Key Vault może służyć do ochrony klucza inny, zwykle klucza szyfrowania symetrycznego zawartości (CEK). Gdy klucz w usłudze Key Vault jest asymetrycznego, kluczy szyfrowania jest używany. Na przykład RSA OAEP i WRAPKEY/UNWRAPKEY operacje, które są równoważne do szyfrowania/ODSZYFROWYWANIA. Gdy klucz w usłudze Key Vault jest symetryczne, jest używany klucz zawijania. Na przykład AES KW. Operacja WRAPKEY jest obsługiwana jako udogodnienie dla aplikacji, które mogą nie mieć dostępu do [publiczny] materiału klucza. Aby uzyskać najlepszą wydajność aplikacji WRAPKEY operacji powinno być przeprowadzane lokalnie.  
+-   **Szyfrowanie i odszyfrowywanie**: Klucza przechowywanego w usłudze Key Vault może służyć do szyfrowania i odszyfrowywania jednego bloku danych. Rozmiar bloku zależy od typu klucza i algorytm szyfrowania wybrane. Operacja szyfrowania jest dostarczany jako udogodnienie, dla aplikacji, które mogą nie mieć dostępu do [publiczny] materiału klucza. Aby uzyskać najlepszą wydajność aplikacji szyfrowanie operacje, które powinny być wykonywane lokalnie.  
 
 Podczas WRAPKEY/UNWRAPKEY przy użyciu kluczy asymetrycznych może wydawać się zbędne (co operacji jest odpowiednikiem szyfrowania/ODSZYFROWYWANIA), ważne jest korzystanie z różnych operacji. Rozróżnienie zawiera semantyczną i autoryzacji rozdzielenie tych operacji i spójności w przypadku innych typów kluczy są obsługiwane przez usługę.  
 
@@ -174,8 +174,8 @@ Aby uzyskać więcej informacji na temat JWK obiektów, zobacz [klucza sieci Web
 Oprócz materiał klucza można określić następujące atrybuty. Żądania JSON, słowo kluczowe atrybuty i nawiasów klamrowych "{" "}", są wymagane, nawet gdy pojawią się nie określone atrybuty.  
 
 - *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Określa, czy klucz jest włączone i niemożliwe do operacji kryptograficznych. *Włączone* atrybut jest używany w połączeniu z *nbf* i *exp*. Podczas operacji odbywa się między *nbf* i *exp*, będzie można dopuścić tylko, jeśli *włączone* jest ustawiona na **true**. Operacje poza *nbf* / *exp* okno automatycznie są niedozwolone, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations).
-- *NBF*: IntDate, opcjonalne, domyślnie teraz wynosi. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którym klucz nie może być używany dla operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations). Przetwarzanie *nbf* atrybut wymaga, że bieżąca data/godzina musi przypadać po lub nie ma wartości — przed daty/godziny na liście *nbf* atrybutu. Usługa Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, aby uwzględnić zegara pochylanie. Jego wartość musi być liczbą zawierającą wartość IntDate.  
-- *EXP*: IntDate, opcjonalnie, wartość domyślna to "nieskończoność". *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia r. lub później, którego klucz nie może służyć do operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations). Przetwarzanie *exp* atrybut wymaga bieżącej daty/godziny należy przed Data/godzina wygaśnięcia na liście *exp* atrybutu. Usługa Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, aby uwzględnić zegara pochylanie. Jego wartość musi być liczbą zawierającą wartość IntDate.  
+- *NBF*: Opcjonalny, ustawienie IntDate, jest teraz. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którym klucz nie może być używany dla operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations). Przetwarzanie *nbf* atrybut wymaga, że bieżąca data/godzina musi przypadać po lub nie ma wartości — przed daty/godziny na liście *nbf* atrybutu. Usługa Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, aby uwzględnić zegara pochylanie. Jego wartość musi być liczbą zawierającą wartość IntDate.  
+- *EXP*: IntDate, opcjonalnie, domyślną jest "nieskończoność". *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia r. lub później, którego klucz nie może służyć do operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations). Przetwarzanie *exp* atrybut wymaga bieżącej daty/godziny należy przed Data/godzina wygaśnięcia na liście *exp* atrybutu. Usługa Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, aby uwzględnić zegara pochylanie. Jego wartość musi być liczbą zawierającą wartość IntDate.  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które są objęte żadnej odpowiedzi, która obejmuje kluczowych atrybutów:  
 
@@ -206,26 +206,26 @@ Kontrola dostępu do kluczy zarządzanych przez usługę Key Vault znajduje się
 Następujące uprawnienia mogą być udzielone na na użytkownika / usługi głównej podstawy w wpisu kontroli dostępu kluczy w magazynie. Te uprawnienia duplikatów ściśle dozwolone klucza obiektu operacje:  
 
 - Uprawnienia dla operacji zarządzania kluczami
-  - *Pobierz*: Odczyt publiczną część klucza, a także jego atrybuty
+  - *Pobierz*: Przeczytaj publiczną część klucza, a także jego atrybuty
   - *Lista*: Utwórz listę kluczy lub wersji tego klucza, przechowywanych w magazynie kluczy
-  - *Aktualizuj*: zaktualizować atrybutów dla klucza
-  - *Utwórz*: tworzenie nowych kluczy
-  - *Importowanie*: Importuj klucz do magazynu kluczy
-  - *Usuń*: usuwanie klucza obiektu
-  - *Odzyskaj*: odzyskać usunięty klucz
-  - *kopii zapasowej*: tworzenie kopii zapasowej klucza w magazynie kluczy
+  - *Aktualizacja*: Aktualizuj atrybuty dla klucza
+  - *Utwórz*: Tworzenie nowych kluczy
+  - *Importuj*: Importuj klucz do magazynu kluczy
+  - *Usuń*: Usuń klucz obiektu
+  - *Odzyskaj*: Odzyskiwanie usuniętego klucza
+  - *kopii zapasowej*: Utwórz kopię zapasową klucza w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej klucza do magazynu kluczy
 
 - Uprawnienia dla operacji kryptograficznych
   - *odszyfrowywanie*: Użyj klucza do usunięcia ochrony sekwencja bajtów
-  - *Szyfruj*: Użyj klucza do ochrony dowolnego sekwencji bajtów
+  - *Szyfruj*: Użyj klucza do ochrony dowolnego sekwencja bajtów
   - *unwrapKey*: Użyj klucza do usunięcia ochrony opakowane kluczy symetrycznych
-  - *wrapKey*: ochrona klucza symetrycznego za pomocą klawisza
-  - *Sprawdź*: Sprawdź skróty przy użyciu klucza  
-  - *znak*: Użyj skróty służące klucza do podpisywania
+  - *wrapKey*: Użyj klucza do ochrony klucza symetrycznego
+  - *Sprawdź*: Użyj klucza, aby sprawdzić, skróty  
+  - *znak*: Użyj klucza do podpisania skróty
     
 - Uprawnienia dla uprzywilejowanych operacji korzystających z
-  - *Przeczyść*: wyczyść (trwałe usunięcie) usunięty klucz
+  - *Przeczyść*: Przeczyść (trwałe usunięcie) usunięty klucz
 
 Aby uzyskać więcej informacji na temat pracy z kluczami, zobacz [klucza operacje w dokumentacji interfejsu API REST usługi Key Vault](/rest/api/keyvault). Aby uzyskać informacje na ustanawianie uprawnień, zobacz [magazynów — Utwórz lub zaktualizuj](/rest/api/keyvault/vaults/createorupdate) i [magazynów — zasady dostępu do aktualizacji](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
@@ -265,16 +265,16 @@ Kontrola dostępu do kluczy tajnych zarządzane w usłudze Key Vault, znajduje s
 Następujące uprawnienia mogą być używane, na podstawie na jednostkę w wpisu kontroli dostępu wpisów tajnych w magazynie i dokładnie takie same jak stosowane dozwolone w obiekcie wpisu tajnego operacje:  
 
 - Uprawnienia dla operacji zarządzania wpisami tajnymi
-  - *Pobierz*: odczytu wpisu tajnego  
+  - *Pobierz*: Odczytu wpisu tajnego  
   - *Lista*: Utwórz listę kluczy tajnych lub wersji klucza tajnego przechowywanych w usłudze Key Vault  
-  - *Ustaw*: Tworzenie klucza tajnego  
+  - *Ustaw*: Utwórz klucz tajny  
   - *Usuń*: Usuń klucz tajny  
-  - *Odzyskaj*: odzyskania usuniętego wpisu tajnego
-  - *kopii zapasowej*: tworzenie kopii zapasowej wpisu tajnego w magazynie kluczy
+  - *Odzyskaj*: Odzyskiwanie usuniętego wpisu tajnego
+  - *kopii zapasowej*: Tworzenie kopii zapasowej wpisu tajnego w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej klucza tajnego do magazynu kluczy
 
 - Uprawnienia dla uprzywilejowanych operacji korzystających z
-  - *Przeczyść*: wyczyść (trwałe usunięcie) usuniętego wpisu tajnego
+  - *Przeczyść*: Przeczyść (trwałe usunięcie) usuniętego wpisu tajnego
 
 Aby uzyskać więcej informacji na temat pracy z wpisy tajne, zobacz [operacje dotyczące wpisów tajnych w dokumentacji interfejsu API REST usługi Key Vault](/rest/api/keyvault). Aby uzyskać informacje na ustanawianie uprawnień, zobacz [magazynów — Utwórz lub zaktualizuj](/rest/api/keyvault/vaults/createorupdate) i [magazynów — zasady dostępu do aktualizacji](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
@@ -350,7 +350,7 @@ Po utworzeniu certyfikatem usługi Key Vault od podstaw zasad musi podać. Zasad
 
 Na wysokim poziomie zasad certyfikatów zawiera następujące informacje:  
 
--   X509 certyfikatu właściwości: zawiera nazwy podmiotu, alternatywnej nazwy podmiotu i inne właściwości, używany do tworzenia x509 żądania certyfikatu.  
+-   X509 certyfikatu właściwości: Zawiera nazwę podmiotu, alternatywnej nazwy podmiotu i inne właściwości, używany do tworzenia x509 żądania certyfikatu.  
 -   Właściwości klucza: zawiera typ klucza, długość, który można eksportować, klucza i ponowne użycie pola klucza. Te pola poinstruować magazynu kluczy na temat generowania klucza.  
 -   Właściwości wpisu tajnego: zawiera właściwości wpisu tajnego, takie jak typ zawartości mogą być adresowane klucz tajny, aby wygenerować wartość wpisu tajnego do pobierania certyfikatu jako klucz tajny.  
 -   Okres istnienia akcje: zawiera akcje okres istnienia certyfikatu KV. Każda akcja okres istnienia zawiera:  
@@ -359,7 +359,7 @@ Na wysokim poziomie zasad certyfikatów zawiera następujące informacje:
 
      - Akcja: Określanie typu akcji — *emailContacts* lub *automatycznego odnawiania*  
 
--   Wystawca: Parametry o wystawcy certyfikatu na potrzeby wystawiania x509 certyfikatów.  
+-   Wystawca: Parametry, wystawca certyfikatu na potrzeby wystawiania x509 certyfikatów.  
 -   Atrybuty zasad: zawiera atrybuty skojarzone z zasadami  
 
 #### <a name="x509-to-key-vault-usage-mapping"></a>X509 do mapowania użycia usługi Key Vault
@@ -422,24 +422,24 @@ Jeśli ustawiono zasady dotyczące certyfikatów automatycznego odnawiania, powi
  Następujące uprawnienia mogą służyć na zasadzie na jednostkę w wpisu kontroli dostępu wpisami tajnymi magazynu kluczy i ściśle wstecznych dozwolone w obiekcie wpisu tajnego operacje:  
 
 - Uprawnienia dla operacje zarządzania certyfikatami
-  - *Pobierz*: pobieranie bieżącej wersji certyfikatu lub dowolna wersja certyfikatu 
+  - *Pobierz*: Pobierz bieżącą wersję certyfikatu lub dowolna wersja certyfikatu 
   - *Lista*: Lista certyfikatów bieżącego lub wersje certyfikatu  
-  - *Aktualizuj*: zaktualizuj certyfikat
+  - *Aktualizacja*: Aktualizacja certyfikatu
   - *Utwórz*: Utwórz certyfikat z usługi Key Vault
-  - *Importowanie*: importowanie certyfikatu materiały do certyfikatem usługi Key Vault
+  - *Importuj*: Zaimportuj certyfikat materiały do certyfikatem usługi Key Vault
   - *Usuń*: Usuń certyfikat, jego zasad i wszystkich jego wersji  
-  - *Odzyskaj*: odzyskiwanie usunięto certyfikat
-  - *kopii zapasowej*: tworzenie kopii zapasowej certyfikatu w magazynie kluczy
+  - *Odzyskaj*: Usunięto certyfikat odzyskiwania
+  - *kopii zapasowej*: Tworzenie kopii zapasowej certyfikatu w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej certyfikatu do magazynu kluczy
-  - *managecontacts*: kontaktów certyfikatu zarządzania usługi Key Vault  
-  - *manageissuers*: wystawców urzędów certyfikatów zarządzania usługi Key Vault
+  - *managecontacts*: Zarządzaj kontaktami certyfikatu usługi Key Vault  
+  - *manageissuers*: Zarządzanie wystawców urzędów certyfikatów usługi Key Vault
   - *getissuers*: Pobierz urzędy/wystawców certyfikatów
-  - *listissuers*: listy urzędów/wystawców certyfikatów  
-  - *setissuers*: Tworzenie lub aktualizowanie urzędów/wystawcy certyfikatu usługi Key Vault  
+  - *listissuers*: Listy urzędów/wystawców certyfikatów  
+  - *setissuers*: Utwórz lub zaktualizuj certyfikat usługi Key Vault urzędy/wystawcy  
   - *deleteissuers*: Usuń urzędy/wystawcy certyfikatu usługi Key Vault  
  
 - Uprawnienia dla uprzywilejowanych operacji korzystających z
-  - *Przeczyść*: wyczyść (trwałe usunięcie) usunięto certyfikat
+  - *Przeczyść*: Przeczyść (trwałe usunięcie) usunięto certyfikat
 
 Aby uzyskać więcej informacji, zobacz [certyfikatu operacje w dokumentacji interfejsu API REST usługi Key Vault](/rest/api/keyvault). Aby uzyskać informacje na ustanawianie uprawnień, zobacz [magazynów — Utwórz lub zaktualizuj](/rest/api/keyvault/vaults/createorupdate) i [magazynów — zasady dostępu do aktualizacji](/rest/api/keyvault/vaults/updateaccesspolicy).
 
@@ -459,22 +459,22 @@ Aby uzyskać więcej informacji, zobacz [kluczy konta magazynu dla klucza magazy
 Następujące uprawnienia mogą służyć podczas autoryzowania użytkownika lub główną aplikację do wykonywania operacji na koncie magazynu zarządzanego:  
 
 - Uprawnienia dla konta magazynu zarządzanego i operacje definicja sygnatury dostępu współdzielonego
-  - *Pobierz*: pobiera informacje o koncie magazynu 
-  - *Lista*: wyświetlanie listy kont magazynu zarządzanych przez usługę Key Vault
-  - *Aktualizuj*: Aktualizacja konta magazynu
-  - *Usuń*: usuwanie konta magazynu  
-  - *Odzyskaj*: odzyskać usunięte konto magazynu
-  - *kopii zapasowej*: tworzenie kopii zapasowej konta magazynu
-  - *Przywróć*: Przywracanie na koncie magazynu kopii zapasowych do usługi Key Vault
-  - *Ustaw*: Tworzenie lub aktualizowanie konta magazynu
+  - *Pobierz*: Pobiera informacje o koncie magazynu 
+  - *Lista*: Wyświetlanie listy kont magazynu zarządzanych przez usługę Key Vault
+  - *Aktualizacja*: Aktualizacja konta magazynu
+  - *Usuń*: Usuwanie konta magazynu  
+  - *Odzyskaj*: Odzyskać usunięte konto magazynu
+  - *kopii zapasowej*: Tworzenie kopii zapasowej konta magazynu
+  - *Przywróć*: Przywróć na koncie magazynu kopii zapasowych do usługi Key Vault
+  - *Ustaw*: Utwórz lub zaktualizuj konto magazynu
   - *regeneratekey*: Wygeneruj ponownie określoną wartością klucza konta magazynu
   - *getsas*: Uzyskaj informacje o definicji sygnatury dostępu Współdzielonego dla konta magazynu
-  - *listsas*: Lista magazynu definicje sygnatur dostępu Współdzielonego dla konta magazynu
+  - *listsas*: Lista pamięci masowej definicje sygnatur dostępu Współdzielonego dla konta magazynu
   - *deletesas*: Usuń definicję sygnatury dostępu Współdzielonego z konta magazynu
   - *setsas*: Utwórz lub zaktualizuj nowe sygnatury dostępu Współdzielonego definicji/atrybuty dla konta magazynu
 
 - Uprawnienia dla uprzywilejowanych operacji korzystających z
-  - *Przeczyść*: wyczyść (trwałe usunięcie) konto magazynu zarządzanego
+  - *Przeczyść*: Przeczyść (trwałe usunięcie) konto magazynu zarządzanego
 
 Aby uzyskać więcej informacji, zobacz [operacje kontem magazynu w dokumentacji interfejsu API REST usługi Key Vault](/rest/api/keyvault). Aby uzyskać informacje na ustanawianie uprawnień, zobacz [magazynów — Utwórz lub zaktualizuj](/rest/api/keyvault/vaults/createorupdate) i [magazynów — zasady dostępu do aktualizacji](/rest/api/keyvault/vaults/updateaccesspolicy).
 

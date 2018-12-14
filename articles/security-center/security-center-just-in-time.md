@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
+ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6281b79e374db164bbd11b602e92336162cae089
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5c42c0d5597e1e14bbb7814ad635abcd086db804
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841765"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339046"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu just-in-time
 
@@ -49,7 +49,11 @@ Gdy użytkownik poprosi o dostęp do maszyny Wirtualnej, Centrum zabezpieczeń s
 >
 >
 
-## <a name="using-jit-access-in-azure-security-center"></a>Przy użyciu dostępu JIT w usłudze Azure Security Center
+Aby uzyskać dostęp JIT, za pomocą:
+- [Przy użyciu dostępu JIT w usłudze Azure Security Center](#jit-asc)
+- [W bloku maszyny Wirtualnej platformy Azure przy użyciu dostępu JIT do](#jit-vm)
+
+## Przy użyciu dostępu JIT w usłudze Azure Security Center <a name="jit-asc"></a>
 
 1. Otwórz pulpit nawigacyjny usługi **Security Center**.
 
@@ -121,7 +125,7 @@ Aby edytować istniejące zasady just-in-time maszyny wirtualnej:
 3. W obszarze **Konfiguracja dostępu do maszyn wirtualnych JIT**, możesz edytować istniejące ustawienia portu już chronione lub dodać nowy port niestandardowy. Aby uzyskać więcej informacji, zobacz [skonfigurowaniem zasad dostępu just in time](#jit-config). 
   ![dostęp do maszyn wirtualnych JIT](./media/security-center-just-in-time/edit-policy.png)
 
-## <a name="using-jit-access-in-an-azure-vm-blade"></a>W bloku maszyny Wirtualnej platformy Azure przy użyciu dostępu JIT do
+## W bloku maszyny Wirtualnej platformy Azure przy użyciu dostępu JIT do <a name="jit-vm"></a>
 
 Dla Twojej wygody możesz połączyć z maszyną wirtualną przy użyciu JIT bezpośrednio z w ramach bloku maszyny Wirtualnej na platformie Azure.
 
@@ -187,7 +191,7 @@ Przypisać te *akcje* dla roli:
 -    W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
    - Microsoft.Compute/virtualMachines/write 
 
-Ustawić te uprawnienia, aby użytkownik mógł pomyślnie żądanie dostępu JIT do maszyny Wirtualnej: przypisać te *akcje* dla użytkownika:
+Należy ustawić te uprawnienia, aby użytkownik mógł pomyślnie żądanie dostępu JIT do maszyny Wirtualnej: Przypisać te *akcje* dla użytkownika:
 -   W zakresie subskrypcji lub grupy zasobów, jest skojarzona z maszyną Wirtualną:
    - Zainicjuj Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies//Akcja
 -    W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
@@ -264,7 +268,7 @@ W tym artykule przedstawiono kontrolować dostęp do maszyny Wirtualnej jak just
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-- [Ustawianie zasad zabezpieczeń](security-center-azure-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
+- [Ustawianie zasad zabezpieczeń](tutorial-security-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
 - [Zarządzanie zaleceniami dotyczącymi zabezpieczeń](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
 - [Monitorowanie kondycji zabezpieczeń](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 - [Reagowanie na alerty zabezpieczeń i zarządzanie nimi](security-center-managing-and-responding-alerts.md) — Dowiedz się, jak zarządzać i reagować na alerty zabezpieczeń.

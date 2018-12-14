@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 108b6cafa185788a66689a4d16bbfba7f30da6c3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271474"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384721"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -33,7 +33,7 @@ Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https
 ![Obszar roboczy usługi Log Analytics](media/oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Jak zarządzać uprawnieniami?
-Jeśli nie masz dostępu do obszaru roboczego usługi Log Analytics w witrynie Azure portal należy skonfigurować uprawnienia za pomocą [dostępu opartej na rolach na platformie Azure](../../role-based-access-control/role-assignments-portal.md). Aby uzyskać więcej informacji na temat zarządzania uprawnień obszaru roboczego, zobacz [możesz zarządzać obszarami roboczymi](manage-access.md#manage-accounts-and-users). Aby uzyskać informacji o zarządzaniu uprawnienia do alertów, zobacz [Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+Jeśli nie masz dostępu do obszaru roboczego usługi Log Analytics w witrynie Azure portal należy skonfigurować uprawnienia za pomocą [dostępu opartej na rolach na platformie Azure](../../role-based-access-control/role-assignments-portal.md). Aby uzyskać więcej informacji na temat zarządzania uprawnień obszaru roboczego, zobacz [możesz zarządzać obszarami roboczymi](manage-access.md#manage-accounts-and-users). Aby uzyskać informacji o zarządzaniu uprawnienia do alertów, zobacz [Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor](../../azure-monitor/platform/roles-permissions-security.md).
 
 ## <a name="how-do-i-create-a-new-workspace"></a>Jak utworzyć nowy obszar roboczy? 
 Na liście obszarów roboczych w witrynie Azure portal kliknij **Dodaj** na liście obszarów roboczych.  Aby uzyskać szczegółowe informacje, zobacz [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../learn/quick-create-workspace.md).

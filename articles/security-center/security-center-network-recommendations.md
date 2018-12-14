@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 449fdbceeb0b64d58c589fe5dbde61302ee27afb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3bb8d4796d23b84f815d28efa45af619efe19af3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309212"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338237"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w usłudze Azure Security Center
 Usługa Azure Security Center w sposób ciągły analizuje stan zabezpieczeń zasobów platformy Azure najlepsze rozwiązania dotyczące zabezpieczeń sieci. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek harden i chronić zasoby.
@@ -72,9 +72,9 @@ W **topologii** widoku mapy sieci, można wyświetlić poniższe szczegółowe i
 Ponieważ mapy jest interakcyjny i dynamiczne, każdy węzeł jest aktywne i widoku można zmienić w oparciu filtrów:
 
 1. Możesz zmodyfikować wyświetlanych na mapie sieci przy użyciu filtrów u góry. Możesz skupić się mapy na podstawie:
-   -  **Kondycja zabezpieczeń**: można filtrować mapy, w oparciu o ważności (wysoki, Średni, niski) zasobów platformy Azure.
-   - **Zalecenia dotyczące**: można wybrać, które zasoby są wyświetlane, oparte na zalecenia, które są aktywne w odniesieniu do tych zasobów. Na przykład można wyświetlić tylko tych zasobów, dla których usługa Security Center zaleca Włączanie sieciowych grup zabezpieczeń.
-   - **Sieci stref**: Domyślnie, mapa zawiera tylko z Internetem zasobów, możesz wybrać także wewnętrznych maszyn wirtualnych.
+   -  **Kondycja zabezpieczeń**: Można filtrować mapy, w oparciu o ważności (wysoki, Średni, niski) zasobów platformy Azure.
+   - **Zalecenia dotyczące**: Można wybrać, które zasoby są wyświetlane, oparte na zalecenia, które są aktywne w odniesieniu do tych zasobów. Na przykład można wyświetlić tylko tych zasobów, dla których usługa Security Center zaleca Włączanie sieciowych grup zabezpieczeń.
+   - **Sieci stref**: Domyślnie mapa zawiera tylko zasoby dostępnego z Internetu, można wybrać także wewnętrznych maszyn wirtualnych.
  
 2. Możesz kliknąć pozycję **resetowania** w lewym górnym rogu w dowolnym momencie wrócić mapy do stanu domyślnego.
 
@@ -132,8 +132,8 @@ Trzeci poziom przedstawia maszyny wirtualne, co jest podobne do powyższego opis
 |----|----|----|----|
 |Maszyna|40|Włącz sieciowe grupy zabezpieczeń na maszynach wirtualnych|Włącz sieciowe grupy zabezpieczeń do kontrolowania dostępu do sieci maszyn wirtualnych.|
 |Podsieć|35|Włącz sieciowe grupy zabezpieczeń w podsieciach |Włącz sieciowe grupy zabezpieczeń kontrolować dostęp do zasobów wdrożonych w podsieci sieci.|
-|Maszyna|30|Zastosuj Just-In-Time kontrolę dostępu do sieci|Stosuje się tylko w kontroli dostępu maszyn wirtualnych czas trwale zablokować dostęp do wybranych portów i włączyć autoryzowanych użytkowników otworzyć je w ten sam mechanizm, jak i przez ograniczony czas.|
-|Maszyna|20|Ogranicz dostęp za pośrednictwem punktu końcowego z Internetem|Utrwalanie goups zabezpieczeń sieci o kontakt z Internetem maszyn wirtualnych przez ograniczenie dostępu do istniejącej reguły zezwalania.|
+|Maszyna|30|Stosowanie kontroli dostępu just in time do sieci|Stosuje się tylko w kontroli dostępu maszyn wirtualnych czas trwale zablokować dostęp do wybranych portów i włączyć autoryzowanych użytkowników otworzyć je w ten sam mechanizm, jak i przez ograniczony czas.|
+|Maszyna|20|Ogranicz dostęp za pośrednictwem punktu końcowego mającego połączenie z Internetem|Utrwalanie goups zabezpieczeń sieci o kontakt z Internetem maszyn wirtualnych przez ograniczenie dostępu do istniejącej reguły zezwalania.|
 |Maszyna|10|Dodawanie zapory nowej generacji|Dodaj rozwiązanie nowej następnej generacji zapory (NGFW) w celu zapewnienia lepszej ochrony maszyn wirtualnych z Internetem.|
 |Maszyna|5|Kierowanie ruchu przez sieci bramy tylko zapory|Aby można było ukończyć wdrożenie rozwiązania zapory następnej generacji, ruch do chronionego kontakt z Internetem maszyn wirtualnych należy używały tylko kolejnego rozwiązania zapory generacji.|
 |VNet|5|Włączanie standardu ochrony przed atakami DDoS|Aplikacje z publicznych adresów IP w tych sieciach wirtualnych nie są chronione przy użyciu standardowych usługi DDOS protection. Zaleca się, aby umożliwić włączanie łagodzenia pojemności sieci i ataki protokołu.|
@@ -149,6 +149,6 @@ Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do in
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.

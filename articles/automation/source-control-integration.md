@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023751"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342242"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
@@ -50,7 +50,7 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 |Właściwość  |Opis  |
 |---------|---------|
 |Nazwa kontroli źródła     | Przyjazna nazwa, do kontroli źródła        |
-|Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> Github</br>Usługa Azure DevOps (Git)</br> Usługa Azure DevOps (TFVC)        |
+|Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> GitHub</br>Usługa Azure DevOps (Git)</br> Usługa Azure DevOps (TFVC)        |
 |Repozytorium     | Nazwa repozytorium lub projektu. Ta wartość jest pobierany z repozytorium kontroli źródła. Przykład: $/ ContosoFinanceTFVCExample         |
 |Rozgałęzienie     | Odgałęzienie do pobierania plików źródłowych z. Gałąź określania wartości docelowej nie jest dostępna dla kontrolek typu źródłowego TFVC.          |
 |Ścieżka folderu     | Folder, który zawiera elementy runbook w celu synchronizacji. Przykład: /Runbooks         |
@@ -62,7 +62,7 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 
 ## <a name="syncing"></a>Synchronizowanie
 
-Konfigurowanie automatyczna synchronizacja podczas konfigurowania integracji kontroli źródła, synchronizacja początkowa jest uruchamiana automatycznie. Jeśli automatyczna synchronizacja nie została ustawiona, wybierz źródło, z tabeli **(wersja zapoznawcza) kontroli źródła** strony. Kliknij przycisk **Rozpocznij synchronizację** można uruchomić procesu synchronizacji.  
+Konfigurowanie automatyczna synchronizacja podczas konfigurowania integracji kontroli źródła, synchronizacja początkowa jest uruchamiana automatycznie. Jeśli automatyczna synchronizacja nie została ustawiona, wybierz źródło, z tabeli **(wersja zapoznawcza) kontroli źródła** strony. Kliknij przycisk **Rozpocznij synchronizację** można uruchomić procesu synchronizacji.
 
 Można wyświetlić stan bieżącego zadania synchronizacji lub poprzednimi, klikając **Synchronizuj zadania** kartę. Na **kontroli źródła** listę rozwijaną, wybierz kontroli źródła.
 

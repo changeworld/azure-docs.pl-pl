@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ce1e82971f10541bf3a67d46b48c5fc93b5432b4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 4285c633062386657cbea478f327c9a1b088f16a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687082"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383820"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Instalowanie i używanie Presto w klastrach usługi HDInsight Hadoop
 
@@ -22,16 +22,16 @@ W tym dokumencie nauczysz się Zainstaluj skrypt Presto w klastrach usługi HDIn
 
 HDInsight oferuje również Presto Gwiazda z aplikacji w przypadku klastrów Apache Hadoop. Aby uzyskać więcej informacji, zobacz [instalowanie aplikacji innych firm w usłudze Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tym dokumencie wymagają **klastra platformy Hadoop w HDInsight 3.5** , użyto systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [wersji HDInsight](hdinsight-component-versioning.md).
 
 ## <a name="what-is-presto"></a>Co to jest Presto?
 [Presto](https://prestodb.io/overview.html) jest szybkie rozproszonych aparatu zapytań SQL dla danych big data. Presto jest odpowiednia dla interaktywne zapytania petabajtów danych. Aby uzyskać więcej informacji na temat składników środowiska Presto i jak one współdziałają ze sobą, zobacz [Presto pojęcia](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst).
 
-> [!WARNING]
+> [!WARNING]  
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane i Microsoft Support pomoże wyizolować i rozwiązać problemy związane z tych składników.
 > 
-> Składniki niestandardowe, takie jak Presto, otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład, istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Składniki niestandardowe, takie jak Presto, otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
 > 
 > 
 
@@ -50,19 +50,19 @@ Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt, p
 
 2. Na **Zaawansowane ustawienia** wybierz opcję **akcji skryptu**i podaj poniższe informacje. Można również wybrać opcję "Zainstaluj Presto", typ skryptu.
    
-   * **Nazwa**: Wprowadź przyjazną nazwę dla akcji skryptu.
+   * **NAZWA**: Wprowadź przyjazną nazwę dla akcji skryptu.
    * **Identyfikator URI skryptu powłoki systemowej**: `https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
-   * **HEAD**: Zaznacz tę opcję
-   * **Proces ROBOCZY**: Zaznacz tę opcję
-   * **DOZORCY**: pozostaw to pole wyboru puste
-   * **Parametry**: pozostaw to pole puste
+   * **HEAD**: Zaznacz tę opcję.
+   * **PROCES ROBOCZY**: Zaznacz tę opcję.
+   * **DOZORCY**: Pozostaw to pole wyboru puste.
+   * **PARAMETRY**: Pozostaw to pole puste.
 
 
 3. W dolnej części **akcji skryptu** obszaru, kliknij przycisk **wybierz** przycisk, aby zapisać konfigurację. Na koniec kliknij **wybierz** znajdujący się u dołu **Zaawansowane ustawienia** obszar, aby zapisać informacje o konfiguracji.
 
 4. Kontynuuj, inicjowania obsługi klastra zgodnie z opisem w [opartych na systemie Linux Provision HDInsight clusters](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Program Azure PowerShell, wiersza polecenia platformy Azure Classic, zestawu .NET SDK HDInsight lub szablonów usługi Azure Resource Manager można również zastosować akcji skryptu. Można również zastosować akcji skryptu na już działające klastry. Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptów](hdinsight-hadoop-customize-cluster-linux.md).
     > 
     > 
@@ -86,7 +86,7 @@ Aby pracować Presto w klastrze usługi HDInsight, należy użyć następujące 
    
         select count (*) from hivesampletable;
    
-    Domyślnie [Hive](https://prestodb.io/docs/current/connector/hive.html) i [TPCH](https://prestodb.io/docs/current/connector/tpch.html) łączników na potrzeby Presto zostały już skonfigurowane. Łącznik programu hive jest skonfigurowany do używania domyślnie zainstalowaną instalacji programu Hive, więc wszystkie tabele z gałęzi będą automatycznie widoczne w Presto.
+    Domyślnie [Apache Hive](https://prestodb.io/docs/current/connector/hive.html) i [TPCH](https://prestodb.io/docs/current/connector/tpch.html) łączników na potrzeby Presto zostały już skonfigurowane. Łącznik programu hive jest skonfigurowany do używania domyślnie zainstalowaną instalacji programu Hive, więc wszystkie tabele z gałęzi będą automatycznie widoczne w Presto.
 
     Aby uzyskać więcej informacji, zobacz [Presto dokumentacji](https://prestodb.io/docs/current/index.html).
 
@@ -168,11 +168,11 @@ TPC-DS to branżowy standard do pomiaru wydajności wiele systemów obsługi dec
 
 
 ## <a name="see-also"></a>Zobacz także
-* [Instalowanie i korzystanie z rozwiązania Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md). HUE to internetowy interfejs użytkownika, który ułatwia tworzenie, uruchamianie i Zapisz programów Pig i Hive zadania.
+* [Instalowanie i korzystanie z rozwiązania Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md). HUE to internetowy interfejs użytkownika, który ułatwia tworzenie, uruchamianie i zapisywanie Apache Pig i Hive zadania.
 
-* [Zainstalować system Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach usługi HDInsight Hadoop. System Giraph umożliwia przetwarzanie za pomocą usługi Hadoop wykresów i mogą być używane z usługi Azure HDInsight.
+* [Instalowanie systemu Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach usługi HDInsight Hadoop. System Giraph umożliwia przetwarzanie za pomocą usługi Hadoop wykresów i mogą być używane z usługi Azure HDInsight.
 
-* [Zainstalować platformę Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md). Użyj dostosowywania klastra, aby zainstalować platformę Solr w klastrach usługi HDInsight Hadoop. Solr umożliwia wykonywanie operacji wyszukiwania zaawansowanego w przechowywanych danych.
+* [Instalowanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md). Użyj dostosowywania klastra, aby zainstalować platformę Solr w klastrach usługi HDInsight Hadoop. Solr umożliwia wykonywanie operacji wyszukiwania zaawansowanego w przechowywanych danych.
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

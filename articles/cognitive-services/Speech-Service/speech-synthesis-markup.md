@@ -8,23 +8,26 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0c3c2fdddada3b90c84b3f06f8639bde7db50f95
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f6a2d6a35200bc4dec169aae72415c1c2904c465
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073554"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341137"
 ---
 # <a name="speech-synthesis-markup-language"></a>Język znaczników synteza mowy
 
-Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, który umożliwia kontrolowanie Wymowa i *prosody* z zamiany tekstu na mowę. Prosody odwołuje się do rytm wydawania i wysokość mowy — muzyka, jeśli chcesz. Możesz fonetycznie Podaj słowa, zapewniają wskazówki do interpretacji liczb, wstawianie wstrzymuje, wysokość formantu, wolumin i szybkość i więcej.
+Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, który umożliwia kontrolowanie Wymowa i *prosody* z zamiany tekstu na mowę. Prosody odwołuje się do rytm wydawania i wysokość mowy — muzyka, jeśli chcesz. Możesz fonetycznie Podaj słowa, zapewniają wskazówki do interpretacji liczb, wstawianie wstrzymuje, wysokość formantu, wolumin i szybkość i więcej. Aby uzyskać więcej informacji, zobacz [mowy syntezy Markup Language (SSML) w wersji 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/).
 
-Aby uzyskać więcej informacji, zobacz [mowy syntezy Markup Language (SSML) w wersji 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) w W3C.
+Aby uzyskać pełną listę obsługiwanych języków, ustawień regionalnych i głosów (neuronowych i standardowa), zobacz [języki](language-support.md#text-to-speech).
 
-W poniższych przykładach pokazano sposób użycia SSML typowe potrzeby synteza mowy:
+Poniższe sekcje zawierają przykłady typowych rozpoznawania mowy, syntezy zadania.
+
+>[!IMPORTANT]
+> Obecnie znakowanie prosody jest dostępna tylko dla standardowych głosów.
 
 ## <a name="add-a-break"></a>Dodaj podział
 ```xml
@@ -90,5 +93,4 @@ W poniższych przykładach pokazano sposób użycia SSML typowe potrzeby synteza
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
+* [Obsługa języków: głosów, ustawień regionalnych, języków](language-support.md)

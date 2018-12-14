@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ce410e69427f29ce70f8b2136a08bd7e6d00113c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ecfab15860ffc690d341069b626e5d7579c00da4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249724"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340372"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatyzowanie dołączania do usługi Azure Security Center przy użyciu programu PowerShell
 
@@ -40,7 +40,7 @@ W tym przykładzie firma Microsoft będzie włączyć usługę Security Center w
 
 5. Ustaw organizacji [CISO jako kontakt zabezpieczeń usługi ASC alertów i istotnych zdarzeń](security-center-provide-security-contact-details.md).
 
-6. Centrum zabezpieczeń Przypisz [domyślne zasady zabezpieczeń](security-center-azure-policy.md).
+6. Centrum zabezpieczeń Przypisz [domyślne zasady zabezpieczeń](tutorial-security-policy.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -111,6 +111,6 @@ Aby dowiedzieć się więcej na temat wykorzystania programu PowerShell do autom
 
 Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujący artykuł:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7bc9341d7e078b0ae69cc9a734c02f257df6d96a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: beb6650125bdf7526b8167ba0f076b079e4e84a8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643355"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342871"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Interakcja z użytkownikami w funkcje trwałe — przykład weryfikacji telefonu
 
@@ -45,8 +45,8 @@ W tym artykule przedstawiono następujące funkcje w przykładowej aplikacji:
 * **E4_SendSmsChallenge**
 
 W poniższych sekcjach opisano konfigurację i kod, które są używane dla skryptów języka C# i JavaScript. Kod dla rozwoju programu Visual Studio jest wyświetlany na końcu tego artykułu.
- 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Organizowanie weryfikację SMS (kod przykładowy portal programu Visual Studio Code i platformy Azure) 
+
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Organizowanie weryfikację SMS (kod przykładowy portal programu Visual Studio Code i platformy Azure)
 
 **E4_SmsPhoneVerification** funkcja używa standardowych *function.json* dla funkcji programu orchestrator.
 
@@ -58,7 +58,7 @@ Poniżej przedstawiono kod, który implementuje funkcję:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
@@ -72,7 +72,7 @@ Po rozpoczęciu tej funkcji program orchestrator zapewnia następujące funkcje:
 Użytkownik otrzymuje wiadomość SMS z 4 cyfrowego kodu. Mają one 90 sekund do odesłania tego samego 4-cyfrowy kod do wystąpienia funkcji programu orchestrator do ukończenia procesu weryfikacji. Jeśli przesyłania nieprawidłowy kod, otrzymują dodatkowe trzy próbuje pobrać go bezpośrednio (w tym samym oknie 90-sekundowe).
 
 > [!NOTE]
-> Nie może być widocznych w pierwszym, ale ten program orchestrator jest całkowicie deterministyczna, funkcja. Jest to spowodowane `CurrentUtcDateTime` właściwość jest używana do obliczania czasu wygaśnięcia czasomierza, a ta właściwość zwraca taką samą wartość w każdym powtarzania na tym etapie w kodzie programu orchestrator. Ważne jest, aby upewnić się, że takie same `winner` powstały na skutek każde wywołanie powtarzanych `Task.WhenAny`.
+> Nie może być widocznych w pierwszym, ale ten program orchestrator jest całkowicie deterministyczna, funkcja. Jest to spowodowane `CurrentUtcDateTime` (.NET) i `currentUtcDateTime` właściwości (JavaScript) są używane do obliczania czasu wygaśnięcia czasomierza, a te właściwości zwracają taką samą wartość w każdym powtarzania na tym etapie w kodzie programu orchestrator. Ważne jest, aby upewnić się, że takie same `winner` powstały na skutek każde wywołanie powtarzanych `Task.WhenAny` (.NET) lub `context.df.Task.any` (JavaScript).
 
 > [!WARNING]
 > Ważne jest, aby [anulować czasomierzy](durable-functions-timers.md) Jeśli nie potrzebujesz już ich wygaśnie, tak jak w przykładzie powyżej po zaakceptowaniu odpowiedź na żądanie.
@@ -89,7 +89,7 @@ A Oto kod, który generuje kod testu 4-cyfrowego i wysyła wiadomość SMS:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
@@ -106,6 +106,7 @@ Content-Type: application/json
 
 "+1425XXXXXXX"
 ```
+
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 695
@@ -115,12 +116,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-   > [!NOTE]
-   > Zarządzanie wystąpieniami identyfikatory URI nie może zwrócić funkcji startowy Aranżacja JavaScript. Ta funkcja zostanie dodany w nowszej wersji.
-
 Funkcja orkiestratora odbiera podany numer i natychmiast wysyła wiadomość SMS z losowo generowany 4-cyfrowy kod weryfikacyjny &mdash; na przykład *2168*. Funkcja następnie czeka 90 sekund na odpowiedź.
 
-Odpowiedz, podając mu kod, umożliwia `RaiseEventAsync` innej funkcji lub wywołaj **sendEventUrl** elementu webhook POST protokołu HTTP, do którego odwołuje się odpowiedzi 202 powyżej, zastępując `{eventName}` o nazwie wydarzenia `SmsChallengeResponse`:
+Aby odpowiedzieć kodem, możesz użyć [ `RaiseEventAsync` (.NET) lub `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances) innej funkcji lub wywołaj **sendEventUrl** elementu webhook POST protokołu HTTP, do którego odwołuje się powyżej odpowiedzi o kodzie 202 , zastępując `{eventName}` o nazwie wydarzenia `SmsChallengeResponse`:
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -135,6 +133,7 @@ Jeśli wyślesz to przed wygaśnięciem czasomierza, kończy aranżacji i `outpu
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
+
 ```
 HTTP/1.1 200 OK
 Content-Length: 144

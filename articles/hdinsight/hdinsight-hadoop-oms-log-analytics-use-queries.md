@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: a4c4017d7fa798559817c281d159148ec675d158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281357"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386506"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Zapytanie usługi Azure Log Analytics do monitorowania klastrów HDInsight
 
@@ -46,7 +46,7 @@ Dowiedz się, jak wyszukiwać konkretne metryki dotyczące klastra usługi HDIns
 
 5. W lewym okienku w obszarze **typu**, wybierz metrykę, którą chcesz dokładniej zapoznać się szczegółowo, a następnie wybierz **Zastosuj**. Poniższy zrzut ekranu przedstawia `metrics_resourcemanager_queue_root_default_CL` wybrany typ.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Musisz wybrać **[+] więcej** przycisk, aby znaleźć metryki, którego szukasz. Ponadto **Zastosuj** przycisk myszy jest umieszczony w dolnej części listy, więc musi Przewinięcie w dół w celu wyświetlenia go.
 
     Zwróć uwagę, że zapytanie w polu tekstowym zmienia się do przedstawionego w polu wyróżnione na poniższym zrzucie ekranu:
@@ -115,7 +115,7 @@ Aby edytować lub usunąć istniejącego alertu:
 1. Otwórz obszar roboczy usługi Log Analytics w witrynie Azure portal.
 2. Z menu po lewej stronie wybierz **alertu**.
 3. Wybierz alert, który chcesz edytować ani usunąć.
-4. Dostępne są następujące opcje: **Zapisz**, **odrzucić**, **wyłączyć**, i **Usuń**.
+4. Istnieją następujące opcje: **Zapisz**, **odrzucić**, **wyłączyć**, i **Usuń**.
 
     ![Edytuj Usuwanie alertu usługi Log Analytics HDInsight](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

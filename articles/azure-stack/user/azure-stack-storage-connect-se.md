@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2018
+ms.date: 12/14/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ab498a108eba39088aa610188918934dd4ec1d3e
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6ab2d92e2a3c62719af1c8ab6d6eda935fc49505
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078957"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386778"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Łączenie Eksploratora usługi storage do subskrypcji usługi Azure Stack lub na koncie magazynu
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 W tym artykule dowiesz się, jak połączyć się do subskrypcji usługi Azure Stack i kontami magazynu przy użyciu Eksploratora usługi storage. Eksplorator usługi Azure storage jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Stack storage w Windows, macOS i Linux.
 
@@ -45,9 +45,16 @@ Azure Stack Development Kit należy wyeksportować certyfikat główny urzędu u
 
 2. W **pliku**, wybierz opcję **Dodaj/Usuń przystawkę**, a następnie dodaj **certyfikaty** zarządzanie **Moje konto użytkownika**.
 
-3. W obszarze **\Trusted Root Certification Authorities\Certificates konsoli katalog główny konsoli\certyfikowane (komputer lokalny)** znaleźć **AzureStackSelfSignedRootCert**.
+3.  W obszarze **konsoli katalog główny konsoli\certyfikowane (komputer lokalny) \Trusted główne urzędy certyfikacji\Certyfikaty**.
 
-    ![Ładowanie certyfikatu głównego usługi Azure Stack za pośrednictwem pliku mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
+    - ASDK, można znaleźć **AzureStackSelfSignedRootCert**.
+
+        ![Ładowanie certyfikatu głównego usługi Azure Stack za pośrednictwem pliku mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
+
+    - Zintegrowany system można znaleźć w certyfikatu głównego usługi certyfikatów zewnętrznych. 
+    
+        ![Ładowanie certyfikatu głównego usługi Azure Stack za pośrednictwem pliku mmc.exe](./media/azure-stack-storage-connect-se/azure-stack-storage-cert-location-is.png)
+        
 
 4. Kliknij prawym przyciskiem myszy certyfikat, wybierz **wszystkie zadania** > **wyeksportować**, a następnie postępuj zgodnie z instrukcjami, aby wyeksportować certyfikat z **certyfikat x.509 szyfrowany algorytmem Base-64 (. CER)**.
 

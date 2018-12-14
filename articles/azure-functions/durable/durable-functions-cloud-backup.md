@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3a7701dacece515bb24567ff6117c183bfe2b526
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3dfcb74852f90615af90f9eab3711b1b235c53e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643068"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341392"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-wyjściowego/fan-w scenariuszu w funkcje trwałe — przykład tworzenia kopii zapasowych w chmurze
 
@@ -55,7 +55,7 @@ Poniżej przedstawiono kod, który implementuje funkcję programu orchestrator:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
@@ -67,9 +67,10 @@ Ta funkcja programu orchestrator zasadniczo wykonuje następujące czynności:
 4. Czeka, aż wszystkie przekazywania zakończyć.
 5. Zwraca sumę całkowitą liczbę bajtów, które zostały przekazane do usługi Azure Blob Storage.
 
-Zwróć uwagę `await Task.WhenAll(tasks);` (C#) i `yield context.df.Task.all(tasks);` wiersza (JS). Wszystkie wywołania do `E2_CopyFileToBlob` funkcji zostały *nie* oczekiwane. Jest to zamierzone, aby umożliwić im do równoległego uruchamiania. Gdy przekazanie tej tablicy zadań `Task.WhenAll`, uzyskujemy ponownie zadanie, które nie będą ukończone *mają zakończenie wszystkich operacji kopiowania*. Jeśli znasz z Biblioteka zadań równoległych (TPL) na platformie .NET, a następnie nie jest to dla Ciebie nowe. Różnica polega na że te zadania można równolegle będzie działać na wielu maszynach wirtualnych i rozszerzenia funkcji trwałych gwarantuje, że wykonanie end-to-end jest odporna na odtwarzanie procesów.
+Zwróć uwagę `await Task.WhenAll(tasks);` (C#) i `yield context.df.Task.all(tasks);` (JavaScript), wiersze. Wszystkie poszczególne wywołania `E2_CopyFileToBlob` funkcji zostały *nie* oczekiwane. Jest to zamierzone, aby umożliwić im do równoległego uruchamiania. Gdy przekazanie tej tablicy zadań `Task.WhenAll` (C#) lub `context.df.Task.all` (JavaScript), uzyskujemy ponownie zadanie, które nie będą ukończone *mają zakończenie wszystkich operacji kopiowania*. Jeśli znasz z Biblioteka zadań równoległych (TPL) na platformie .NET lub [ `Promise.all` ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) w JavaScript, następnie nie jest to dla Ciebie nowe. Różnica polega na że te zadania można równolegle będzie działać na wielu maszynach wirtualnych i rozszerzenia funkcji trwałych gwarantuje, że wykonanie end-to-end jest odporna na odtwarzanie procesów.
 
-Zadania są bardzo podobne do koncepcji JavaScript obietnic. Jednak `Promise.all` ma pewne różnice z `Task.WhenAll`. Pojęcie `Task.WhenAll` ma wydajnej za pośrednictwem jako część `durable-functions` modułu języka JavaScript i jest dostępna wyłącznie do niego.
+> [!NOTE]
+> Chociaż zadania są koncepcyjnie podobne do obietnic JavaScript, za pomocą funkcji programu orchestrator `context.df.Task.all` i `context.df.Task.any` zamiast `Promise.all` i `Promise.race` sobie przetwarzanie równoległe zadań.
 
 Po oczekujące na z `Task.WhenAll` (lub którego można z `context.df.Task.all`), gdy wiemy, że wszystkie wywołania funkcji zostały wykonane i zostały zwrócone wartości z powrotem do nas. Każde wywołanie `E2_CopyFileToBlob` zwraca liczbę bajtów przekazany, obliczanie liczba bajtów łączna suma jest kwestią Dodawanie zwrócić wszystkie te wartości razem.
 
@@ -85,7 +86,7 @@ A Oto wdrożenia:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
@@ -104,7 +105,7 @@ Implementacja języka C# jest również całkiem proste. Zdarza się, aby korzys
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
 
 Implementacja języka JavaScript nie ma dostępu do `Binder` funkcji usługi Azure Functions, więc [zestawu SDK usługi Azure Storage dla węzła](https://github.com/Azure/azure-storage-node) odbywa się jej.
 

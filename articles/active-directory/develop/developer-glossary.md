@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: 7ce11b3e54a8770a2b3d53e335afc57f52d3d14e
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b74c3d355a720948c22e90b1792dcd6139c101ea
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425313"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338213"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Słownik deweloperów usługi Azure Active Directory
 
@@ -41,7 +41,7 @@ Zobacz [odwołania do usługi Azure AD tokenu] [ AAD-Tokens-Claims] Aby uzyskać
 
 ## <a name="application-id-client-id"></a>Identyfikator aplikacji (identyfikator klienta)
 
-Problemy Unikatowy identyfikator usługi Azure AD do rejestracji aplikacji, identyfikująca określoną aplikację i skojarzony konfiguracji. Tego identyfikatora aplikacji ([identyfikator klienta](https://tools.ietf.org/html/rfc6749#page-15)) jest używany podczas uwierzytelniania żądań i jest dostarczane do bibliotek uwierzytelniania w czasie projektowania. Identyfikator aplikacji (identyfikator klienta) nie jest klucz tajny. 
+Problemy Unikatowy identyfikator usługi Azure AD do rejestracji aplikacji, identyfikująca określoną aplikację i skojarzony konfiguracji. Tego identyfikatora aplikacji ([identyfikator klienta](https://tools.ietf.org/html/rfc6749#page-15)) jest używany podczas uwierzytelniania żądań i jest dostarczane do bibliotek uwierzytelniania w czasie projektowania. Identyfikator aplikacji (identyfikator klienta) nie jest klucz tajny.
 
 ## <a name="application-manifest"></a>manifest aplikacji
 
@@ -102,7 +102,7 @@ Zobacz [odwołania do tokenu usługi Azure AD] [ AAD-Tokens-Claims] Aby uzyskać
 
 ## <a name="client-application"></a>Aplikacja kliencka
 
-Zgodnie z definicją [ramy autoryzacji OAuth2][OAuth2-Role-Def], aplikacji, która sprawia, że chroniony zasób żądania w imieniu osób [właściciel zasobu](#resource-owner). Termin "klient" oznacza, wszelkie cechy implementacji konkretnego sprzętu (na przykład tego, czy aplikacja wykonuje na serwer, pulpitu lub innych urządzeniach). 
+Zgodnie z definicją [ramy autoryzacji OAuth2][OAuth2-Role-Def], aplikacji, która sprawia, że chroniony zasób żądania w imieniu osób [właściciel zasobu](#resource-owner). Termin "klient" oznacza, wszelkie cechy implementacji konkretnego sprzętu (na przykład tego, czy aplikacja wykonuje na serwer, pulpitu lub innych urządzeniach).
 
 Aplikacja kliencka żąda [autoryzacji](#authorization) od właściciela zasobu, aby uczestniczyć w [OAuth2 autoryzację](#authorization-grant) przepływu i mogą uzyskiwać dostęp do interfejsów API/danych w imieniu właściciela zasobów. Ramy autoryzacji OAuth2 [definiuje dwa typy klientów][OAuth2-Client-Types]"poufne" i "publiczna", zależnie od możliwości klienta do zachowania poufności ich poświadczeń. Aplikacje można wdrażać [klienta sieci web (poufne)](#web-client) na serwerze sieci web, które są uruchamiane [klienta natywnego (publiczny)](#native-client) zainstalowana na urządzeniu, lub [oparte na agentach użytkownika klienta (publiczny)](#user-agent-based-client)który działa w przeglądarce na urządzeniu.
 
@@ -151,7 +151,7 @@ Zgodnie z definicją [ramy autoryzacji OAuth2][OAuth2-Role-Def], zdolne do udzie
 
 Zgodnie z definicją [ramy autoryzacji OAuth2][OAuth2-Role-Def], serwera, że hosty chronione zasoby mogą akceptować i reagowanie na chronione żądań zasobów za pomocą [klienta aplikacje](#client-application) przedstawiające [token dostępu](#access-token). Znana także jako serwera chronionego zasobu, lub zasobów aplikacji.
 
-Serwer zasobów udostępnia interfejsy API i wymusza dostęp do swoich zasobów chronionych za pomocą [zakresy](#scopes) i [role](#roles), przy użyciu platformy autoryzacji OAuth 2.0. Przykłady obejmują interfejs API programu Graph usługi Azure AD, który zapewnia dostęp do danych dzierżawy usługi Azure AD i Office 365 interfejsów API, które zapewniają dostęp do danych, takich jak wiadomości e-mail i kalendarz. Oba te są również dostępne za pośrednictwem [interfejsu API Microsoft Graph][Microsoft-Graph]. 
+Serwer zasobów udostępnia interfejsy API i wymusza dostęp do swoich zasobów chronionych za pomocą [zakresy](#scopes) i [role](#roles), przy użyciu platformy autoryzacji OAuth 2.0. Przykłady obejmują interfejs API programu Graph usługi Azure AD, który zapewnia dostęp do danych dzierżawy usługi Azure AD i Office 365 interfejsów API, które zapewniają dostęp do danych, takich jak wiadomości e-mail i kalendarz. Oba te są również dostępne za pośrednictwem [interfejsu API Microsoft Graph][Microsoft-Graph].
 
 Podobnie jak aplikacja kliencka, konfiguracja tożsamości zasobów aplikacji zostanie nawiązane za pośrednictwem [rejestracji](#application-registration) w dzierżawie usługi Azure AD, zapewniając aplikacji i obiektu jednostki usługi. Niektóre firmy Microsoft interfejsy API, np. interfejsu API programu Graph usługi Azure AD, zarejestrowano wstępnie udostępniona w wszystkich dzierżaw podczas inicjowania obsługi nazw głównych usług.
 
@@ -219,7 +219,7 @@ Rodzaj [aplikacja kliencka](#client-application) , który jest wykonywany całeg
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[— Przewodnik dewelopera usługi Azure AD] [ AAD-Dev-Guide] jest stroną docelową dla wszystkich usługi Azure AD związanych z opracowywaniem tematy, w tym omówienie [integracji aplikacji] [ AAD-How-To-Integrate] oraz znasz podstawy [uwierzytelniania usługi Azure AD i scenariuszy uwierzytelniania obsługiwanych][AAD-Auth-Scenarios]. Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskania szybko uruchamiać wdrożenia na [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[— Przewodnik dewelopera usługi Azure AD] [ AAD-Dev-Guide] jest stroną docelową dla wszystkich usługi Azure AD związanych z opracowywaniem tematy, w tym omówienie [integracji aplikacji] [ AAD-How-To-Integrate] oraz znasz podstawy [uwierzytelniania usługi Azure AD i scenariuszy uwierzytelniania obsługiwanych][AAD-Auth-Scenarios]. Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskania szybko uruchamiać wdrożenia na [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Aby przekazać opinie i pomoc do analizy i połącz kształt tej zawartości, w tym realizowania żądań dostępność nowych definicji lub aktualizowanie istniejących, należy użyć następujących sekcji komentarzy!
 

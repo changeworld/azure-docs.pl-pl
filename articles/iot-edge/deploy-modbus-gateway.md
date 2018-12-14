@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e929ddec084c4abbdb572943f11f135cddd49045
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0b94a57f04d9e4b5884162dcd4cfd89d6b4bf879
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254847"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341035"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Łączenie urządzeń Modbus TCP za pośrednictwem bramy urządzeń usługi IoT Edge
 
@@ -96,7 +96,7 @@ Wyświetlanie danych przechodzących przez moduł modbus:
 docker logs -f modbus
 ```
 
-Możesz również wyświetlić dane telemetryczne wysyłane przez urządzenie przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT dla edytora Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+Można również wyświetlić dane telemetryczne urządzenie wysyła za pomocą [rozszerzenie Azure IoT Hub Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dawniej: rozszerzenie Azure IoT Toolkit).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

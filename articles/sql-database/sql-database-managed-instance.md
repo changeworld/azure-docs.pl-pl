@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: e94b9e6d39a8a2694658a4231c54a027523af10c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 57dd6fc822e0285b33368987d2af7c690d4f7786
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889246"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337822"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Użyj wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnych i w prawie 100% zgodności
 
@@ -41,13 +41,13 @@ Podjęcie decyzji, między pojedynczej bazy danych Azure SQL Database, wystąpie
 Wystąpienie usługi Azure SQL Database Managed łączy najlepsze funkcje, które są dostępne zarówno w usłudze Azure SQL Database i aparatu bazy danych programu SQL Server.
 
 > [!IMPORTANT]
-> Wystąpienie zarządzane jest uruchamiany z wszystkich funkcji najnowszą wersję programu SQL Server, w tym operacje online, plan automatyczne poprawki i inne ulepszenia wydajności enterprise. Porównanie funkcji dostępnych została wyjaśniona w [porównanie funkcji: Azure SQL Database a baza danych programu SQL Server](sql-database-features.md).
+> Wystąpienie zarządzane jest uruchamiany z wszystkich funkcji najnowszą wersję programu SQL Server, w tym operacje online, plan automatyczne poprawki i inne ulepszenia wydajności enterprise. Porównanie funkcji dostępnych została wyjaśniona w [porównanie funkcji: Usługa Azure SQL Database i programu SQL Server](sql-database-features.md).
 
 | **Korzyści PaaS** | **Ciągłość działalności biznesowej:** |
 | --- | --- |
 |Zakupu sprzętu i zarządzania <br>Brak zarządzania w czasie zarządzania podstawową infrastrukturą <br>Szybka aprowizacja i skalowanie usług <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |dostępność przez 99,99% umowę SLA  <br>Wbudowane [wysokiej dostępności](sql-database-high-availability.md) <br>Dane są chronione za pomocą [automatyczne kopie zapasowe](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych można skonfigurować klienta <br>Użytkownik zainicjował [kopii zapasowych](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Punkt w czasie przywracania bazy danych](sql-database-recovery-using-backups.md#point-in-time-restore) możliwości |
 |**Zabezpieczenia i zgodność** | **Zarządzanie**|
-|Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-vnet-configuration.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Usługa Azure AD logowania</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
+|Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Usługa Azure AD logowania</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
 
 Najważniejsze funkcje wystąpienie zarządzane są wyświetlane w poniższej tabeli:
 
@@ -83,8 +83,8 @@ Znajdź więcej informacji na temat różnic między generacji sprzętu w [limit
 
 Wystąpienie zarządzane jest dostępna w dwóch warstwach usługi:
 
-- **Ogólnego przeznaczenia**: przeznaczone dla aplikacji za pomocą wydajności typowe wymagania dotyczące opóźnień we/wy.
-- **Krytyczne dla działania firmy**: przeznaczone dla aplikacji za pomocą niskie wymagania dotyczące opóźnień We/Wy i minimalny wpływ podstawowych operacji konserwacji na obciążenie pracą.
+- **Ogólnego przeznaczenia**: Zaprojektowana na potrzeby aplikacji za pomocą wydajności typowe wymagania dotyczące opóźnień we/wy.
+- **Krytyczne dla działania**: Zaprojektowana na potrzeby aplikacji za pomocą niskie wymagania dotyczące opóźnień We/Wy i minimalny wpływ podstawowych operacji konserwacji obciążenia pracą.
 
 Obie warstwy usług gwarantuje dostępność na poziomie 99,99% i pozwalają na niezależne wybierz rozmiar magazynu i moc obliczeniową. Aby uzyskać więcej informacji na temat architektury wysokiej dostępności usługi Azure SQL Database, zobacz [wysokiej dostępności i Azure SQL Database](sql-database-high-availability.md).
 
@@ -122,15 +122,15 @@ Wystąpienie usługi Azure SQL Database Managed łączy zaawansowane funkcje zab
 
 Wystąpienie zarządzane zapewniają dodatkowe zabezpieczenia izolację od pozostałych dzierżawców w chmurze platformy Azure. Izolacja na potrzeby zabezpieczeń obejmują:
 
-- [Implementacja natywnych sieci wirtualnej](sql-database-managed-instance-vnet-configuration.md) i łączności do środowiska lokalnego przy użyciu usługi Azure Expressroute lub bram sieci VPN
-- Punkt końcowy SQL jest uwidaczniany wyłącznie za pośrednictwem prywatnego adresu IP, umożliwiając bezpieczne połączenie z prywatnej platformy Azure lub sieci hybrydowe
-- Jednej dzierżawy za pomocą dedykowanego podstawowej infrastruktury (moc obliczeniowa, Magazyn)
+- [Implementacja natywnych sieci wirtualnej](sql-database-managed-instance-connectivity-architecture.md) i łączności do środowiska lokalnego przy użyciu usługi Azure Expressroute lub bram sieci VPN.
+- Punkt końcowy SQL jest uwidaczniany wyłącznie za pośrednictwem prywatnego adresu IP, umożliwiając bezpieczne połączenie na platformie Azure prywatnej lub hybrydowej sieci.
+- Jednej dzierżawy za pomocą dedykowanego podstawowej infrastruktury (moc obliczeniowa, Magazyn).
 
 Poniższy diagram przedstawia różne opcje łączności dla aplikacji:
 
 ![Wysoka dostępność](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 
-Aby dowiedzieć się więcej na temat integracji sieci wirtualnej i sieci wymuszanie zasad na poziomie podsieci, zobacz [Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-vnet-configuration.md) i [łączenia aplikacji z usługi Azure SQL Database Wystąpienie zarządzane](sql-database-managed-instance-connect-app.md).
+Aby dowiedzieć się więcej na temat integracji sieci wirtualnej i sieci wymuszanie zasad na poziomie podsieci, zobacz [architektury sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-connectivity-architecture.md) i [łączenia aplikacji z usługi Azure SQL Database Wystąpienie zarządzane](sql-database-managed-instance-connect-app.md).
 
 > [!IMPORTANT]
 > W tej samej podsieci, należy umieścić wiele wystąpienia zarządzanego, wszędzie tam, gdzie, jest dozwolona przez Twoje wymagania dotyczące bezpieczeństwa, ponieważ, zostaną wyświetlone dodatkowe korzyści. Collocating wystąpień w tej samej podsieci spowoduje znacznie upraszcza konserwację infrastruktury sieci i zmniejszyć czas, obsługi administracyjnej, ponieważ aprowizacja długi czas trwania jest skojarzony z kosztów wdrażania pierwszego wystąpienia zarządzanego w podsieci wystąpienia.
@@ -207,7 +207,7 @@ Korzyści z wystąpienia zarządzanego nie zawsze w górę — od początku w ch
 
 - Wysoka dostępność jest wbudowana w i wstępnie skonfigurowane przy użyciu technologii, podobnie jak [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 - Automatyczne kopie zapasowe i punktu w czasie przywracania. Klient może zainicjować `copy-only` kopie zapasowe, które nie kolidują z automatycznego łańcuch kopii zapasowych.
-- Wystąpienie zarządzane nie zezwala na określanie ścieżek Pełna fizyczna, dzięki czemu wszystkie scenariusze odpowiedniego mają być obsługiwane inaczej: Przywracanie bazy danych nie obsługuje opcji WITH MOVE, tworzenie bazy danych nie zezwala na ścieżki fizyczne, BULK INSERT współpracuje z obiektów blob platformy Azure, tylko itp.
+- Wystąpienie zarządzane nie zezwala na określanie ścieżek Pełna fizyczna, dzięki czemu wszystkie scenariusze odpowiedniego mają być obsługiwane inaczej: Przywracanie bazy danych nie obsługuje opcji WITH MOVE, tworzenie bazy danych nie zezwala na ścieżki fizyczne BULK INSERT współpracuje z obiektów blob platformy Azure, tylko itp.
 - Zarządzane wystąpienie obsługuje [uwierzytelniania usługi Azure AD](sql-database-aad-authentication.md) chmury alternatywę dla uwierzytelniania Windows.
 - Wystąpienie zarządzane automatycznie zarządza XTP plików i plików baz danych zawierających obiekty OLTP w pamięci
 - Wystąpienie zarządzane obsługuje usługi SQL Server Integration Services (SSIS) i mogą hosta wykazu usług SSIS (SSISDB), która przechowuje pakietów usług SSIS, ale są one wykonywane na zarządzanego środowiska Azure-SSIS Integration Runtime (IR) w usłudze Azure Data Factory (ADF), zobacz [Create Azure-SSIS IR w usłudze ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Aby porównać funkcji SSIS w bazie danych SQL i wystąpienia zarządzanego, zobacz [serwer logiczny Porównaj bazy danych SQL i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance).
@@ -234,8 +234,8 @@ W poniższej tabeli przedstawiono kilka właściwości, za pośrednictwem język
 
 - Aby dowiedzieć się, jak utworzyć pierwsze wystąpienie zarządzane, zobacz [przewodnika Szybki Start](sql-database-managed-instance-get-started.md).
 - Dla funkcji i listy porównanie, zobacz [typowe funkcje SQL](sql-database-features.md).
-- Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [Konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md).
+- Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [Konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md).
 - Aby uzyskać szybki Start, która tworzy wystąpienie zarządzane i przywraca bazę danych z pliku kopii zapasowej, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
 - Aby skorzystać z samouczka w zakresie używania usługi Azure Database Migration Service (DMS) do celów migracji, zobacz [Migracja wystąpień zarządzanych przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).
-- Zaawansowane monitorowanie wydajności bazy danych w wystąpieniu zarządzanym dzięki wbudowanym funkcjom analizy dotyczące rozwiązywania problemów, zobacz [monitora usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)
+- Aby uzyskać informacje na temat zaawansowanego monitorowania wydajności bazy danych wystąpienia zarządzanego z wbudowaną analizą rozwiązywania problemów, zobacz [Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)
 - Aby uzyskać informacje o cenach, zobacz [wystąpienie zarządzane usługi SQL Database, cennik](https://azure.microsoft.com/pricing/details/sql-database/managed/).
