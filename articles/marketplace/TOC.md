@@ -83,21 +83,6 @@
 ### [Publikowanie oferty maszyny wirtualnej](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 ### [Aktualizowanie istniejącej oferty](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-<!-- Following legacy VM section was replaced.  -->
-<!-- 
-## Virtual machines
-### [Dev center account registration](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [Author virtual machine offer](./cloud-partner-portal-orig/cloud-partner-portal-publish-virtual-machine.md)
-### [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
-### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer.md)
-### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-delete-an-offer.md)
-### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
-### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
--->
-<!-- new section for Azure apps -->
-
 ## [Oferta aplikacji platformy Azure](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 ### [Wymagania wstępne](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
 ### [Tworzenie oferty aplikacji platformy Azure](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
@@ -201,7 +186,16 @@
 ### [BPM i metodologie](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [Witryna typu wiki z pomocą](./cloud-partner-portal-orig/help-wiki.md)
 
-## [Usługi konsultingowe](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+<!--
+## [Consulting services](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+-->
+## [Usługi konsultingowe](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
+### [Wymagania wstępne](./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md)
+### [Tworzenie oferty usługi konsultingowej](./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md)
+#### [Karta ustawień oferty](./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md)
+#### [Karta szczegółów sklepu](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
+### [Publikowanie oferty usługi konsultingowej](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
+
 ## [Zarządzanie profilem wydawcy](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ## [Zarządzanie użytkownikami](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
 ## [Zgodność z RODO](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
