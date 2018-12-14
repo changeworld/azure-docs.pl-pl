@@ -140,7 +140,7 @@ Działa to oparty na regułach aparat w tle, aby zbierać dane i diagnozować pr
 > [!NOTE] 
 > Obecnie obsługiwane są wersje Windows, które obejmują .NET Framework 4.5 lub nowszy.
 
-### <a name="performance-counter-trace-"></a>Śledzenia licznika wydajności (*)
+### <a name="performance-counter-trace-"></a>Śledzenia licznika wydajności (\*\*)
 
 Gromadzi informacje o następujących liczników wydajności:
 
@@ -156,7 +156,7 @@ Gromadzi informacje o następujących liczników wydajności:
 #### <a name="for-azure-files"></a>Dla usługi Azure Files
 Udziały klient \SMB
 
-### <a name="diskspd-benchmark-trace-"></a>Śledzenie testów porównawczych narzędzia Diskspd (*)
+### <a name="diskspd-benchmark-trace-"></a>Śledzenie testów porównawczych narzędzia Diskspd (\*\*\*)
 Testy obciążenia We/Wy narzędzia Diskspd ([zapisu]. dysk systemu operacyjnego i dysków puli [odczytu/zapisu])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>Uruchom narzędzie program PerfInsights na maszynie Wirtualnej
