@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: d38fc727ed7e9e3c47d2fcb9af7894f8a2a7c7a7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 988d61d6db867c33a2dd9998d675f40f49e71332
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262337"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341749"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -46,6 +46,8 @@ Następujące elementy są znane ograniczenia dotyczące publicznej wersji zapoz
 - [Kopie zapasowe grup dostępności rozproszonych](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) podlegają ograniczeniom.
 - SQL Server zawsze na wystąpienia klastra trybu Failover (występowanie) nie są obsługiwane.
 - Umożliwia skonfigurowanie usługi Azure Backup, aby chronić bazy danych programu SQL Server w witrynie Azure portal. Program Azure PowerShell, interfejsu wiersza polecenia platformy Azure i interfejsów API REST nie są obecnie obsługiwane.
+- Operacje wykonywania kopii zapasowej i przywracania dla dublowane, migawki baz danych i baz danych w ramach infrastruktury klasyfikacji plików nie są obsługiwane.
+- Nie można chronić bazy danych z dużą liczbą plików. Maksymalna liczba plików obsługiwanych nie jest liczbą bardzo deterministyczna, ponieważ nie tylko jest zależna od liczby plików, a także od tego, długość ścieżki plików. Takie przypadki są jednak mniej powszechnie znane. Tworzymy rozwiązania do obsługi tego.
 
 Zapoznaj się [sekcji często zadawane pytania](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) więcej informacji na temat pomocy technicznej/nie obsługiwane scenariusze.
 
@@ -105,6 +107,7 @@ Przed tworzysz kopię zapasową bazy danych programu SQL Server, sprawdź nastę
 - Identyfikowanie lub [Utwórz magazyn usługi Recovery Services](backup-azure-sql-database.md#create-a-recovery-services-vault) w tym samym regionie lub ustawień regionalnych jako maszyny wirtualnej, który jest hostem wystąpienia programu SQL Server.
 - [Sprawdzenie uprawnień na maszynie wirtualnej](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) wymagane do utworzenia kopii zapasowej bazy danych SQL.
 - Upewnij się, że [maszyna wirtualna SQL ma łączność sieciową](backup-azure-sql-database.md#establish-network-connectivity).
+- Sprawdź, czy bazy danych SQL są nazywane zgodnie [wskazówki dotyczące nazewnictwa](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup) dla usługi Azure Backup zostały pomyślnie tworzyć kopie zapasowe.
 
 > [!NOTE]
 > Może mieć tylko jedno rozwiązanie tworzenia kopii zapasowych w czasie, aby utworzyć kopię zapasową bazy danych programu SQL Server. Wyłącz wszystkie pozostałe kopie zapasowe SQL przed użyciem tej funkcji; w przeciwnym razie kopie zapasowe będą kolidować i zakończyć się niepowodzeniem. Można włączyć usługi Azure Backup dla maszyn wirtualnych IaaS wraz z kopii zapasowej SQL bez konfliktów.
@@ -133,7 +136,7 @@ Kompromis między opcje są możliwości zarządzania, kontrolę i kosztów.
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Ustawianie uprawnień dla innych niż - portalu Marketplace maszyn wirtualnych SQL
 
-Aby utworzyć kopię zapasową maszyny wirtualnej, wymaga usługi Azure Backup **AzureBackupWindowsWorkload** rozszerzenia do zainstalowania. Jeśli korzystasz z maszynami wirtualnymi portalu Azure Marketplace, w dalszym ciągu [baz danych serwera SQL odnajdywanie](backup-azure-sql-database.md#discover-sql-server-databases). Jeśli maszyny wirtualnej, który jest hostem bazy danych SQL nie jest tworzony w portalu Azure Marketplace, należy wykonać następującą procedurę, aby zainstalować rozszerzenie i ustawić odpowiednie uprawnienia. Oprócz **AzureBackupWindowsWorkload** rozszerzenia usługi Azure Backup wymaga uprawnień administratora systemu SQL do ochrony baz danych SQL. Aby odnaleźć bazy danych na maszynie wirtualnej, usługa Azure Backup tworzy konto **NT Service\AzureWLBackupPluginSvc**. Aby usługa Azure Backup do odnajdywania baz danych SQL **NT Service\AzureWLBackupPluginSvc** konto musi mieć SQL i SQL uprawnienia administratora systemu. Poniższa procedura wyjaśnia, jak zapewnić te uprawnienia.
+Aby utworzyć kopię zapasową maszyny wirtualnej, wymaga usługi Azure Backup **AzureBackupWindowsWorkload** rozszerzenia do zainstalowania. Jeśli korzystasz z maszynami wirtualnymi portalu Azure Marketplace, w dalszym ciągu [baz danych serwera SQL odnajdywanie](backup-azure-sql-database.md#discover-sql-server-databases). Jeśli maszyny wirtualnej, który jest hostem bazy danych SQL nie jest tworzony w portalu Azure Marketplace, należy wykonać następującą procedurę, aby zainstalować rozszerzenie i ustawić odpowiednie uprawnienia. Oprócz **AzureBackupWindowsWorkload** rozszerzenia usługi Azure Backup wymaga uprawnień administratora systemu SQL do ochrony baz danych SQL. Aby odnaleźć bazy danych na maszynie wirtualnej, usługa Azure Backup tworzy konto **NT Service\AzureWLBackupPluginSvc**. To konto służy do tworzenia kopii zapasowych i przywracania i musi mieć uprawnienia administratora systemu SQL. Ponadto będzie korzystać z usługi Azure Backup **NT AUTHORITY\SYSTEM** konta bazy danych odnajdywania/zapytanie, więc to konto musi być publiczny logowania SQL.
 
 Aby skonfigurować uprawnienia:
 
@@ -201,6 +204,14 @@ Podczas procesu instalacji, jeśli wystąpi błąd `UserErrorSQLNoSysadminMember
 
 Po skojarzeniu bazy danych z magazynu usługi Recovery Services, następnym krokiem jest [skonfigurować zadanie tworzenia kopii zapasowej](backup-azure-sql-database.md#configure-backup-for-sql-server-databases).
 
+## <a name="sql-database-naming-guidelines-for-azure-backup"></a>Wskazówki dotyczące nazewnictwa dla usługi Azure Backup bazy danych SQL
+W celu zapewnienia bezproblemowego tworzenia kopii zapasowych programu SQL Server na maszynie Wirtualnej IaaS przy użyciu usługi Azure Backup, należy unikać nazw baz danych w czasie:
+
+  * Spacje końcowe wiodących
+  * Końcowe '!'
+
+Dysponujemy aliasów tabel platformy Azure, nieobsługiwane znaki, ale nie zaleca się stosowania tych także. Aby uzyskać więcej informacji, zobacz ten [artykułu](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-sql-server-databases"></a>Odnajdowanie baz danych programu SQL Server
@@ -215,7 +226,7 @@ Usługa Azure Backup umożliwia odnalezienie wszystkich baz danych w wystąpieni
 
 3. W **wszystkich usług** okna dialogowego wprowadź **usługi Recovery Services**. Podczas wpisywania, dane wejściowe filtrowanie listy zasobów. Wybierz **Magazyny usługi Recovery Services** na liście.
 
-    ![Wprowadź i wybierz pozycję magazynów usługi Recovery Services](./media/backup-azure-sql-database/all-services.png) <br/>
+  ![Wprowadź i wybierz pozycję magazynów usługi Recovery Services](./media/backup-azure-sql-database/all-services.png) <br/>
 
     Zostanie wyświetlona lista magazynów usługi Recovery Services w ramach subskrypcji.
 
@@ -301,16 +312,9 @@ Aby skonfigurować ochronę dla bazy danych SQL:
     > W celu zoptymalizowania obciążeń kopii zapasowych, kopia zapasowa Azure dzieli duże zadania tworzenia kopii zapasowej na wiele partii. Maksymalna liczba baz danych w ramach jednego zadania tworzenia kopii zapasowej jest 50.
     >
 
-    Alternatywnie, można włączyć ochrony automatycznej na całe wystąpienie lub zawsze włączonej grupy dostępności, wybierając **ON** opcji na liście rozwijanej odpowiedniego **AUTOPROTECT** kolumny. Funkcji automatycznej ochrony nie tylko umożliwia ochronę wszystkich istniejących baz danych w jednym z rzeczywistym użyciem, ale również automatycznie chronić żadnych nowych baz danych, które zostaną dodane do grupy dostępności lub tego wystąpienia w przyszłości.  
+      Alternatywnie, możesz włączyć [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) całe wystąpienie lub zawsze włączonej grupy dostępności, wybierając **ON** opcji na liście rozwijanej odpowiedniego **AUTOPROTECT**  kolumny. [Automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) funkcja nie tylko umożliwia ochronę wszystkich istniejących baz danych w jednym z rzeczywistym użyciem, ale również automatycznie chronić żadnych nowych baz danych, które zostaną dodane do grupy dostępności lub tego wystąpienia w przyszłości.  
 
       ![Włączanie automatycznej ochrony dla grupy dostępności Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-      W przypadku, gdy wystąpienie lub grupa dostępności zawiera już niektóre z jej baz danych, chronione, nadal można włączyć **ON** opcji auto-protect. W tym przypadku zasad kopii zapasowych, zdefiniowane w następnym kroku zostanie teraz być stosowana tylko do niechronionych baz danych podczas już chronione bazy danych będą w dalszym ciągu być chronione przy użyciu ich odpowiednich zasad.
-
-      Nie ma żadnego limitu liczby baz danych w jednym, wybierz pozycję Pobierz wybrane za pomocą automatyczna ochrona funkcji (zgodnie z wieloma bazami danych, tak jak w magazynie, można wybrać).  
-
-      Zaleca się włączenie ochrony automatycznej dla wszystkich wystąpień i zawsze włączone grupy dostępności Jeśli chcesz, aby każda baza danych dodana w przyszłości automatycznie konfigurowana dla ochrony.
-
 
 7. Utwórz lub wybierz zasady kopii zapasowych na **kopii zapasowej** menu, wybierz opcję **zasady tworzenia kopii zapasowej**. **Zasady tworzenia kopii zapasowej** zostanie otwarte menu.
 
@@ -340,6 +344,22 @@ Aby skonfigurować ochronę dla bazy danych SQL:
 
     ![Obszar powiadomień](./media/backup-azure-sql-database/notifications-area.png)
 
+
+## <a name="auto-protect-sql-server-in-azure-vm"></a>Automatyczna ochrona programu SQL Server na maszynie Wirtualnej platformy Azure  
+
+Automatyczna ochrona jest to funkcja, która umożliwia automatycznie chronić wszystkie istniejące bazy danych, a także przyszłych baz danych, które należy dodać w autonomiczne wystąpienie programu SQL Server lub SQL Server Always On availability group.
+
+W przypadku, gdy wystąpienie lub grupa dostępności zawiera już niektóre z jej baz danych, chronione, nadal można włączyć **ON** opcji auto-protect. W takim przypadku tylko będą one dotyczyć niechronionych baz danych zasad kopii zapasowych tak zdefiniowana, gdy już chronione bazy danych będą w dalszym ciągu być chronione przy użyciu ich odpowiednich zasad.
+
+![Włączanie automatycznej ochrony dla grupy dostępności Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
+
+Nie ma żadnego limitu liczby baz danych w jednym, wybierz pozycję Pobierz wybrane za pomocą automatyczna ochrona funkcji. Konfigurowanie tworzenia kopii zapasowej jest wyzwalane dla wszystkich baz danych razem i można śledzić w **zadania tworzenia kopii zapasowej**.
+
+Jeśli z jakiegoś powodu, musisz wyłączyć automatyczną ochronę wystąpienia, kliknij nazwę wystąpienia w ramach **konfigurowania kopii zapasowej** aby otworzyć panel informacje po prawej stronie, która ma **wyłączyć Autoprotect** na Do góry. Kliknij przycisk **wyłączyć Autoprotect** można wyłączyć ochrony automatycznej dla tego wystąpienia.
+
+![Wyłącz automatyczną ochronę, w tym wystąpieniu](./media/backup-azure-sql-database/disable-auto-protection.png)
+
+Wszystkie bazy danych w tym wystąpieniu będą w dalszym ciągu być chronione. Jednakże ta akcja spowoduje wyłączenie automatycznej ochrony na żadnych baz danych, które zostaną dodane w przyszłości.
 
 ### <a name="define-a-backup-policy"></a>Definiowanie zasad tworzenia kopii zapasowych
 
@@ -736,15 +756,9 @@ Aby zatrzymać ochronę dla bazy danych:
 
 7. Wybierz **Zatrzymaj kopię zapasową** zatrzymanie ochrony bazy danych.
 
-  Należy pamiętać, że **Zatrzymaj tworzenie kopii zapasowej** opcja nie działa dla bazy danych w wystąpieniu chronione automatycznie. Jedynym sposobem, aby zatrzymać ochronę tej bazy danych jest wyłączyć automatyczną ochronę wystąpienia w chwili obecnej, a następnie wybierz **Zatrzymaj tworzenie kopii zapasowej** opcji w obszarze **elementy kopii zapasowej** dla tej bazy danych.  
+  Należy pamiętać, że **Zatrzymaj tworzenie kopii zapasowej** opcji nie będzie działać dla bazy danych w [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) wystąpienia. Jedynym sposobem, aby zatrzymać ochronę tej bazy danych jest wyłączenie [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) wystąpieniu w chwili obecnej, a następnie wybierz **Zatrzymaj tworzenie kopii zapasowej** opcji w obszarze **elementy kopii zapasowej**dla tej bazy danych.<br>
+  Po wyłączeniu automatycznej ochrony można **Zatrzymaj tworzenie kopii zapasowej** dla bazy danych w ramach **elementy kopii zapasowej**. Wystąpienie można ponownie włączyć do automatycznej ochrony teraz.
 
-  Można wyłączyć automatyczną ochronę na wystąpienie lub zawsze włączonej grupy dostępności w ramach **konfigurowania kopii zapasowej**. Kliknij nazwę wystąpienia, aby otworzyć panel informacje po prawej stronie, która ma **wyłączyć Autoprotect** u góry. Kliknij przycisk **wyłączyć Autoprotect** można wyłączyć ochrony automatycznej dla tego wystąpienia.
-
-    ![Wyłącz automatyczną ochronę, w tym wystąpieniu](./media/backup-azure-sql-database/disable-auto-protection.png)
-
-Wszystkie bazy danych w tym wystąpieniu będą w dalszym ciągu być chronione. Jednakże ta akcja spowoduje wyłączenie automatycznej ochrony na żadnych baz danych, które zostaną dodane w przyszłości.
-
-Po wyłączeniu automatycznej ochrony można **Zatrzymaj tworzenie kopii zapasowej** dla bazy danych w ramach **elementy kopii zapasowej**. Wystąpienie można ponownie włączyć do automatycznej ochrony teraz.
 
 ### <a name="resume-protection-for-a-sql-database"></a>Wznawianie ochrony bazy danych SQL
 
@@ -835,22 +849,22 @@ Magazyn usług odzyskiwania kopii zapasowych można wykryć i chronić wszystkie
 
 ### <a name="while-i-want-to-protect-most-of-the-databases-in-an-instance-i-would-like-to-exclude-a-few-is-it-possible-to-still-use-the-auto-protection-feature"></a>Gdy chcę chronić Większość baz danych w wystąpieniu usługi, I chcesz wykluczyć kilka. Czy jest możliwe nadal korzystać z funkcji automatycznej ochrony?
 
-Nie, automatycznej ochrony mają zastosowanie do całego wystąpienia. Nie można selektywnie chronić baz danych za pomocą automatycznej ochrony wystąpienia.
+Nie, [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) ma zastosowanie do całego wystąpienia. Nie można selektywnie chronić baz danych za pomocą automatycznej ochrony wystąpienia.
 
 ### <a name="can-i-have-different-policies-for-different-databases-in-an-auto-protected-instance"></a>W wystąpieniu objęte ochroną automatyczną można mieć różne zasady dla różnych baz danych?
 
-Jeśli masz już niektóre chronionej bazy danych w wystąpieniu, będą one nadal mają być chronione przy użyciu ich odpowiednich zasad, nawet w przypadku, po włączeniu **ON** opcji ochrony automatycznej. Wszystkich niechronionych baz danych oraz tymi, które należy dodać w przyszłości będzie jednak tylko jednych zasad, które można zdefiniować w ramach **konfigurowania kopii zapasowej** po zaznaczeniu baz danych. W rzeczywistości w przeciwieństwie do innych chronionych baz danych, nie można nawet zmienić zasady dla bazy danych w ramach wystąpienia chronione automatycznie.
+Jeśli masz już niektóre chronionej bazy danych w wystąpieniu, będą one nadal mają być chronione przy użyciu ich odpowiednich zasad, nawet w przypadku, po włączeniu **ON** [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) opcji. Wszystkich niechronionych baz danych oraz tymi, które należy dodać w przyszłości będzie jednak tylko jednych zasad, które można zdefiniować w ramach **konfigurowania kopii zapasowej** po zaznaczeniu baz danych. W rzeczywistości w przeciwieństwie do innych chronionych baz danych, nie można nawet zmienić zasady dla bazy danych w ramach wystąpienia chronione automatycznie.
 Jeśli chcesz to zrobić, jedynym sposobem jest wyłączyć automatyczną ochronę wystąpienia w chwili obecnej, a następnie zmiany zasad dla tej bazy danych. Możesz teraz ponownie włączyć ochronę automatyczną tego wystąpienia.
 
 ### <a name="if-i-delete-a-database-from-an-auto-protected-instance-will-the-backups-for-that-database-also-stop"></a>Jeśli usunę bazę danych z wystąpienia chronione automatycznie, będzie kopii zapasowych dla tej bazy danych również zatrzymać?
 
 Nie, jeśli bazy danych zostało porzucone z wystąpienia chronione automatycznie, tworzenie kopii zapasowych dla tej bazy danych nadal są próby. Oznacza to, że usuniętej bazy danych rozpoczyna się pojawienie się jako w złej kondycji w ramach **elementy kopii zapasowej** i nadal jest traktowany jako chronione.
 
-Jedynym sposobem, aby zatrzymać ochronę tej bazy danych jest wyłączyć automatyczną ochronę wystąpienia w chwili obecnej, a następnie wybierz **Zatrzymaj tworzenie kopii zapasowej** opcji w obszarze **elementy kopii zapasowej** dla tej bazy danych. Możesz teraz ponownie włączyć ochronę automatyczną tego wystąpienia.
+Jedynym sposobem, aby zatrzymać ochronę tej bazy danych jest wyłączenie [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) wystąpieniu w chwili obecnej, a następnie wybierz **Zatrzymaj tworzenie kopii zapasowej** opcji w obszarze **elementy kopii zapasowej**dla tej bazy danych. Możesz teraz ponownie włączyć ochronę automatyczną tego wystąpienia.
 
 ###  <a name="why-cant-i-see-the-newly-added-database-to-an-auto-protected-instance-under-the-protected-items"></a>Dlaczego nie widzę nowo dodaną bazę danych na wystąpienie chronione automatycznie, w obszarze chronione elementy
 
-Nie widać nowo dodaną bazę danych na wystąpienie chronione automatycznie chronione natychmiast. Jest to spowodowane odnajdywania jest zazwyczaj uruchamiany co 8 godzin. Jednak użytkownik może uruchamiać przy użyciu odnajdywania ręcznego **odzyskiwanie baz danych** możliwość odnajdywania i chronić nowe bazy danych od razu, jak pokazano poniżej obrazu:
+Nie widzisz nowo dodaną bazę danych do [objęte ochroną automatyczną](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) wystąpienia chronione natychmiast. Jest to spowodowane odnajdywania jest zazwyczaj uruchamiany co 8 godzin. Jednak użytkownik może uruchamiać przy użyciu odnajdywania ręcznego **odzyskiwanie baz danych** możliwość odnajdywania i chronić nowe bazy danych od razu, jak pokazano poniżej obrazu:
 
   ![Wyświetl nowo dodaną bazę danych](./media/backup-azure-sql-database/view-newly-added-database.png)
 
