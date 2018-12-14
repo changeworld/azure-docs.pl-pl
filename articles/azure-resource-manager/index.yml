@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4d719a0fe078d427a87b32f85497cc927ea77632
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: de92f8d8be6744f7004da4cc662b31a387e8920a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263048"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385588"
 documentType: LandingData
 title: Dokumentacja usługi Resource Manager na platformie Azure
 metadata:
@@ -74,9 +74,9 @@ sections:
     className: cardsD
     items:
     - title: Szablony
-      html: <p><a href="/azure/resource-group-template-functions">Funkcje szablonów</a></p><p><a href="/azure/templates/">Dokumentacja szablonu</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funkcje definicji interfejsu użytkownika</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Elementy definicji interfejsu użytkownika</a></p>
+      html: <p><a href="/azure/templates/">Dokumentacja szablonu</a></p><p><a href="/azure/resource-group-template-functions">Funkcje szablonów</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funkcje definicji interfejsu użytkownika</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Elementy definicji interfejsu użytkownika</a></p>
     - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/azurerm.resources">Program PowerShell</a></p><p><a href="/cli/azure/resource">Interfejs wiersza polecenia platformy Azure</a></p>
+      html: <p><a href="/cli/azure/resource">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/azurerm.resources">Program PowerShell</a></p>
     - title: Języki
       html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/azure/">Python</a></p>
     - title: REST
