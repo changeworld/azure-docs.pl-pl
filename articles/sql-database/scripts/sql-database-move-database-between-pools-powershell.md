@@ -12,16 +12,16 @@ ms.reviewer: ''
 ms.author: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: e71c1b1f184fe5c240e258295c144db405e25527
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4a28ae1082f4efd62d4023d009a6ecb6d82728f4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054833"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961097"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>Tworzenie elastycznych pul i przenoszenie baz danych między elastycznymi pulami za pomocą programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell tworzy dwie elastyczne pule i przenosi bazę danych z jednej elastycznej puli do innej elastycznej puli, a następnie przenosi bazę danych z elastycznej puli na rozmiar zasobów obliczeniowych pojedynczej bazy danych. 
+Ten przykładowy skrypt programu PowerShell tworzy dwie elastyczne pule i przenosi bazę danych z jednej elastycznej puli do innej elastycznej puli, a następnie przenosi bazę danych z elastycznej puli na rozmiar zasobów obliczeniowych pojedynczej bazy danych.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]

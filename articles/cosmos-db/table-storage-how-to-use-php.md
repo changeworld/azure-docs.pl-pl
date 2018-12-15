@@ -9,12 +9,12 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 14cb684b0cc3e93992c6ed78c53e8794214c85a8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cf8cc380caec1475ad831cfd3e0e9aa5b168e8de
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879735"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095308"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -52,7 +52,7 @@ W tym przewodniku wykorzystane zostaną funkcje usługi Azure Table Storage lub 
   }
 }
 ```
-2. Pobierz plik [composer.phar](http://getcomposer.org/composer.phar) do katalogu głównego. 
+2. Pobierz plik [composer.phar](https://getcomposer.org/composer.phar) do katalogu głównego. 
 3. Otwórz wiersz polecenia i uruchom następujące polecenie w katalogu głównym projektu:
 ```
 php composer.phar install
@@ -509,7 +509,7 @@ Teraz, kiedy znasz już podstawy usług Azure Table Storage i Azure Cosmos DB, s
 * [PHP Developer Center (Centrum deweloperów języka PHP)](https://azure.microsoft.com/develop/php/).
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
-[require_once]: http://php.net/require_once
+[require_once]: https://php.net/require_once
 [table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
 
 [table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model

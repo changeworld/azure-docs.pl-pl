@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 3c7a1dd9ba688c5cc9776dbfba0841c9a06065dc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6447061e79946abf8070daf29eeb57bad7b6fa55
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419694"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184971"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK usługi i urządzenia Java oraz grup rejestracji dla usługi IoT Hub Device Provisioning
 
@@ -49,20 +49,20 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
             - Wybierz właśnie utworzony plik **_RootCA.pem_**.
             - Gdy skończysz, kliknij przycisk **Zapisz**.
 
-        ![Dodawanie certyfikatu](./media/tutorial-group-enrollments/add-certificate.png)
+           ![Dodawanie certyfikatu](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. Wybierz nowo utworzony certyfikat:
             - Kliknij pozycję **Generuj kod weryfikacyjny**. Skopiuj wygenerowany kod.
             - Uruchom krok weryfikacji. Wprowadź _kod weryfikacyjny_ lub kliknij prawym przyciskiem myszy, aby wkleić go w uruchomionym oknie programu PowerShell.  Naciśnij klawisz **Enter**.
             - Wybierz nowo utworzony plik **_verifyCert4.pem_** w witrynie Azure Portal. Kliknij pozycję **Zweryfikuj**.
 
-            ![Sprawdzanie poprawności certyfikatu](./media/tutorial-group-enrollments/validate-certificate.png)
+              ![Sprawdzanie poprawności certyfikatu](./media/tutorial-group-enrollments/validate-certificate.png)
 
     1. Zakończ, wykonując kroki umożliwiające utworzenie certyfikatów urządzeń i oczyszczenie zasobów.
 
-    > [!NOTE]
-    > Podczas tworzenia certyfikatów urządzeń w nazwach urządzeń używaj tylko małych znaków alfanumerycznych i łączników.
-    >
+       > [!NOTE]
+       > Podczas tworzenia certyfikatów urządzeń w nazwach urządzeń używaj tylko małych znaków alfanumerycznych i łączników.
+       >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>Tworzenie wpisu rejestracji urządzenia

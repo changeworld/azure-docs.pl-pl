@@ -6,12 +6,12 @@ description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nim
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 78f9fa6c3d15d43c1505b5a84a2e269992290afa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b37a419affcaffeec6c9931f7ff4ecca49e377d5
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082224"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410384"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -383,12 +383,6 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/batch-ai/">
-                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                <p>Sztuczna inteligencja w usłudze Azure Batch</p>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="/azure/service-fabric/">
                                                 <img src="media/index/Fabric.svg" alt="" />
                                                 <p>Service Fabric</p>
@@ -753,12 +747,6 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             <a href="/azure/azure-databricks/">
                                                 <img src="media/index/logo_databricks.svg" alt="" />
                                                 <p>Azure Databricks</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/batch-ai/">
-                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                <p>Sztuczna inteligencja w usłudze Azure Batch</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1893,25 +1881,6 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 <div class="cardText">
                                                     <h3>Container Instances</h3>
                                                     <p>Łatwe uruchamianie kontenerów za pomocą jednego polecenia</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/batch-ai/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/batch-ai.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Sztuczna inteligencja w usłudze Azure Batch</h3>
-                                                    <p>Łatwe eksperymentowanie oraz równoległe szkolenie modeli głębokiego uczenia i sztucznej inteligencji na dużą skalę</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3608,25 +3577,6 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 <div class="cardText">
                                                     <h3>Azure Databricks</h3>
                                                     <p>Tworzenie obszaru roboczego usługi Azure Databricks z klastrami Spark</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/batch-ai/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Sztuczna inteligencja w usłudze Azure Batch</h3>
-                                                    <p>Łatwe eksperymentowanie oraz równoległe szkolenie modeli głębokiego uczenia i sztucznej inteligencji na dużą skalę</p>
                                                 </div>
                                             </div>
                                         </div>

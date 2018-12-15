@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 06bd1216aa3f78b41526670044de0250ad0df7d7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 96daacef134ca60cb497907a770c83a4bba24a5b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833265"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956028"
 ---
 # <a name="azure-and-linux"></a>Azure i Linux
 Platforma Microsoft Azure to rosnący zbiór zintegrowanych usług publicznych w chmurze, obejmujący maszyny wirtualne, usługi analityczne, bazodanowe, mobilne, sieciowe, magazynowe oraz internetowe &mdash; — idealne do hostowania rozwiązań.  Microsoft Azure to skalowalna platforma obliczeniowa, która pozwala na płacenie tylko za używane usługi, z których można korzystać w dowolnej chwili — bez konieczności inwestowania w sprzęt lokalny.  Platforma Azure jest gotowa wraz z Tobą do skalowania rozwiązań tak, aby sprostać wymaganiom klientów.
@@ -82,7 +82,7 @@ Firma Microsoft blisko współpracuje z partnerami, aby zagwarantować, że dost
 * Bitnami — [Bitnami Library dla platformy Azure](https://azure.bitnami.com/)
 * Mesosphere — [Azure Marketplace — Mesosphere DC/OS dla platformy Azure](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
 * Docker — [Azure Marketplace — usługa Azure Container Service z rozwiązaniem Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
-* Jenkins — [Azure Marketplace — platforma CloudBees Jenkins](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
+* Jenkins — [Azure Marketplace — platforma CloudBees Jenkins](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 ## <a name="getting-started-with-linux-on-azure"></a>Wprowadzenie do korzystania z systemu Linux na platformie Azure
 Zanim rozpoczniesz korzystanie z platformy Azure, musisz założyć konto na platformie Azure, zainstalować interfejs wiersza polecenia oraz mieć publiczny i prywatny klucz SSH.
