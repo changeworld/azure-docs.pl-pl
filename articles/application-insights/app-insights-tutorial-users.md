@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 6d4f96a2c1d288648543a92614cab0f8cf5ee2ea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d5e97d82a011bc4aba29aa597a7fc6473d17a3b2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256004"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970794"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Korzystanie z usługi Azure Application Insights, aby dowiedzieć się, jak klienci używają aplikacji
 
@@ -53,20 +53,20 @@ Panel **Użytkownicy** pozwala analizować na różne sposoby ważne informacje 
 2. Wybierz pozycję **Użytkownicy** z menu.
 3. Widok domyślny przedstawia liczbę unikatowych użytkowników, którzy połączyli się z aplikacją w ciągu ostatnich 24 godzin.  Możesz zmienić przedział czasu i ustawić inne kryteria filtrowania tych informacji.
 
-    ![Konstruktor zapytań](media\app-insights-tutorial-users\QueryBuilder.png)
+    ![Konstruktor zapytań](media/app-insights-tutorial-users/QueryBuilder.png)
 
 6. Kliknij listę rozwijaną **Podczas** i zmień przedział czasu na 7 dni.  Powoduje to zwiększenie ilości danych na różnych wykresach w panelu.
 
-    ![Zmiana zakresu czasu](media\app-insights-tutorial-users\TimeRange.png)
+    ![Zmiana zakresu czasu](media/app-insights-tutorial-users/TimeRange.png)
 
 4. Kliknij listę rozwijaną **Podział według**, aby dodać do wykresu podział według właściwości użytkownika.  Wybierz pozycję **Kraj lub region**.  Wykres zawiera te same dane, ale umożliwia wyświetlanie informacji o podziale liczby użytkowników w poszczególnych krajach.
 
-    ![Wykres dla kraju lub regionu](media\app-insights-tutorial-users\CountryorRegion.png)
+    ![Wykres dla kraju lub regionu](media/app-insights-tutorial-users/CountryorRegion.png)
 
 5. Umieść kursor na różnych słupkach wykresu i zwróć uwagę, że wartości poszczególnych krajów odzwierciedlają tylko przedział czasu reprezentowany przez ten słupek.
 6. Spójrz na kolumnę **Szczegółowe informacje** po prawej stronie, która umożliwia analizowanie danych użytkowników.  Zawiera ona takie informacje jak liczba unikatowych sesji w danym okresie i rekordy ze wspólnymi właściwościami, które tworzą znaczącą część danych użytkowników. 
 
-    ![Kolumna szczegółowych informacji](media\app-insights-tutorial-users\insights.png)
+    ![Kolumna szczegółowych informacji](media/app-insights-tutorial-users/insights.png)
 
 
 ## <a name="analyze-user-sessions"></a>Analizowanie sesji użytkowników
@@ -75,15 +75,15 @@ Panel **Sesje** jest podobny do panelu **Użytkownicy**.  Panel **Użytkownicy**
 1. Wybierz pozycję **Sesje** z menu.
 2. Spójrz na wykres i zwróć uwagę, że są dostępne te same opcje filtrowania i dzielenia danych co w panelu **Użytkownicy**.
 
-    ![Konstruktor zapytań sesji](media\app-insights-tutorial-users\SessionsBuilder.png)
+    ![Konstruktor zapytań sesji](media/app-insights-tutorial-users/SessionsBuilder.png)
 
 3. Okienko **Przykłady tych sesji** po prawej stronie zawiera listę sesji z dużą liczbą zdarzeń.  Są to sesje, które warto przeanalizować.
 
-    ![Przykłady tych sesji](media\app-insights-tutorial-users\SessionsSample.png)
+    ![Przykłady tych sesji](media/app-insights-tutorial-users/SessionsSample.png)
 
 4. Kliknij jedną z sesji, aby wyświetlić **oś czasu sesji**, która zawiera informacje o każdej akcji w ramach sesji.  Może to ułatwić znajdowanie takich informacji jak sesje z dużą liczbą wyjątków.
 
-    ![Oś czasu sesji](media\app-insights-tutorial-users\SessionsTimeline.png)
+    ![Oś czasu sesji](media/app-insights-tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Grupowanie podobnych użytkowników
 **Kohorta** to zestaw grup użytkowników o podobnej charakterystyce.  Kohorty umożliwiają filtrowanie danych w innych panelach, co pozwala analizować poszczególne grupy użytkowników.  Można na przykład analizować tylko użytkowników, którzy ukończyli zakup.
@@ -92,12 +92,12 @@ Panel **Sesje** jest podobny do panelu **Użytkownicy**.  Panel **Użytkownicy**
 2.  Kliknij przycisk **Nowa**, aby utworzyć nową kohortę.
 3.  Wybierz listę rozwijaną **którzy korzystali** i wybierz akcję.  Zostaną uwzględnieni tylko użytkownicy, którzy wykonali tę akcję w przedziale czasu raportu.
 
-    ![Kohorta, która wykonała określone akcje](media\app-insights-tutorial-users\CohortsDropdown.png)
+    ![Kohorta, która wykonała określone akcje](media/app-insights-tutorial-users/CohortsDropdown.png)
 
 4.  Wybierz pozycję **Użytkownicy** z menu.
 5.  Z listy rozwijanej **Pokaż** wybierz kohortę, którą właśnie utworzono.  Dane wykresu są ograniczone do tych użytkowników.
 
-    ![Kohorta w narzędziu użytkowników](media\app-insights-tutorial-users\UsersCohort.png)
+    ![Kohorta w narzędziu użytkowników](media/app-insights-tutorial-users/UsersCohort.png)
 
 
 ## <a name="compare-desired-activity-to-reality"></a>Porównywanie oczekiwanej aktywności z rzeczywistą aktywnością
@@ -105,16 +105,16 @@ Powyższe panele dotyczą wykonanych działań użytkowników aplikacji, natomia
 
 1. Wybierz pozycję **Lejki** z menu, a następnie kliknij pozycję **Nowy**. 
 
-    ![](media\app-insights-tutorial-users\funnelsnew.png)
+    ![](media/app-insights-tutorial-users/funnelsnew.png)
 
 2. Wpisz **nazwę lejka**.
 3. Utwórz lejek z co najmniej dwoma krokami przez wybranie akcji dla każdego kroku.  Lista akcji została utworzona na podstawie danych użycia zebranych przez usługę Application Insights.
 
-    ![](media\app-insights-tutorial-users\funnelsedit.png)
+    ![](media/app-insights-tutorial-users/funnelsedit.png)
 
 4. Kliknij pozycję **Zapisz**, aby zapisać lejek, a następnie wyświetl jego wyniki.  W oknie po prawej stronie lejka są wyświetlane najczęściej występujące zdarzenia przed pierwszym działaniem i po ostatnim działaniu, aby lepiej zrozumieć tendencje użytkowników dotyczące określonej sekwencji.
 
-    ![](media\app-insights-tutorial-users\funnelsright.png)
+    ![](media/app-insights-tutorial-users/funnelsright.png)
 
 
 ## <a name="learn-which-customers-return"></a>Sprawdzanie, którzy klienci wracają
@@ -123,11 +123,11 @@ Panel **Przechowywanie** ułatwia sprawdzenie, którzy użytkownicy wrócą do a
 1. Wybierz pozycję **Przechowywanie** z menu.
 2. Domyślnie przeanalizowane informacje obejmują użytkowników, którzy wykonali dowolną akcję, a następnie wrócili do wykonywania dowolnych akcji.  Możesz zmienić ten filtr, aby uwzględnić dowolne dane, na przykład tylko użytkowników, którzy wrócili po ukończeniu zakupu.
 
-    ![](media\app-insights-tutorial-users\retentionquery.png)
+    ![](media/app-insights-tutorial-users/retentionquery.png)
 
 3. Wracający użytkownicy spełniający kryteria są wyświetlani w formie grafiki i tabeli dla różnych czasów trwania.  Typowy wzorzec dotyczy stopniowego spadku liczby wracających użytkowników w czasie.  Nagły spadek między okresami może wymagać uwagi. 
 
-    ![](media\app-insights-tutorial-users\retentiongraph.png)
+    ![](media/app-insights-tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>Analizowanie nawigacji użytkowników
 **Przepływ użytkownika** wizualnie przedstawia, jak użytkownicy nawigują między stronami i funkcjami aplikacji.  Dzięki temu można na przykład dowiedzieć się, gdzie użytkownicy zwykle przechodzą z określonej strony, jak zazwyczaj zamykają aplikację oraz czy istnieją akcje powtarzane regularnie.
@@ -136,15 +136,15 @@ Panel **Przechowywanie** ułatwia sprawdzenie, którzy użytkownicy wrócą do a
 2.  Kliknij pozycję **Nowy**, aby utworzyć nowy przepływ użytkownika, a następnie kliknij pozycję **Edytuj**, aby edytować jego szczegóły.
 3.  Zwiększ **zakres czasu** do 7 dni, a następnie wybierz zdarzenie początkowe.  Przepływ będzie śledzić sesje użytkownika, które rozpoczynają się od tego zdarzenia.
 
-    ![](media\app-insights-tutorial-users\flowsedit.png)
+    ![](media/app-insights-tutorial-users/flowsedit.png)
 
 4.  Zostanie wyświetlony przepływ użytkownika wraz ze ścieżkami użytkowników i liczbami ich sesji.  Niebieskie linie wskazują akcję, którą użytkownik wykonał po bieżącej akcji.  Czerwona linia wskazuje koniec sesji użytkownika.
 
-    ![](media\app-insights-tutorial-users\flows.png)
+    ![](media/app-insights-tutorial-users/flows.png)
 
 5.  Aby usunąć zdarzenie z przepływu, kliknij pozycję **x** w rogu akcji, a następnie kliknij pozycję **Utwórz wykres**.  Wykres zostanie narysowany ponownie z uwzględnieniem wystąpień usuniętego zdarzenia.  Kliknij pozycję **Edytuj**. Spowoduje to dodanie zdarzenia do listy **Wykluczone zdarzenia**.
 
-    ![](media\app-insights-tutorial-users\flowsexclude.png)
+    ![](media/app-insights-tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>Konsolidowanie danych użycia
 **Skoroszyty** łączą wizualizacje danych, zapytania analityczne i tekst w interakcyjnych dokumentach.  Umożliwiają one grupowanie typowych danych użycia, konsolidowanie informacji dotyczących określonego zdarzenia oraz raportowanie zespołowi użycia aplikacji.
@@ -153,12 +153,12 @@ Panel **Przechowywanie** ułatwia sprawdzenie, którzy użytkownicy wrócą do a
 2.  Kliknij pozycję **Nowy**, aby utworzyć nowy skoroszyt.
 3.  Zostanie wyświetlone zapytanie zawierające wszystkie dane użycia z ostatniego dnia w formie wykresu słupkowego.  Możesz użyć tego zapytania, ręcznie je edytować lub kliknąć pozycję **Przykładowe zapytania**, aby wybrać inne przydatne zapytania.
 
-    ![](media\app-insights-tutorial-users\samplequeries.png)
+    ![](media/app-insights-tutorial-users/samplequeries.png)
 
 4.  Kliknij przycisk **Zakończono edytowanie**.
 5.  Kliknij przycisk **Edytuj** w górnym okienku, aby edytować tekst u góry skoroszytu.  Jest on sformatowany za pomocą języka Markdown.
 
-    ![](media\app-insights-tutorial-users\markdown.png)
+    ![](media/app-insights-tutorial-users/markdown.png)
 
 6.  Kliknij pozycję **Dodaj użytkowników**, aby dodać wykres z informacjami o użytkowniku.  Jeśli chcesz, edytuj szczegóły wykresu, a następnie kliknij pozycję **Zakończono edytowanie**, aby zapisać wykres.
 

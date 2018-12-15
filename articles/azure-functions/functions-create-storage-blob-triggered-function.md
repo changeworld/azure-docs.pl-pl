@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f71db50678ad0f1b37e30a4120b90d47d9090942
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: fcc5052d73d921a8181ad068453111e5ead4361a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113856"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999876"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Tworzenie funkcji wyzwalanej przez magazyn obiektów Blob
 
@@ -27,7 +27,7 @@ Dowiedz się, jak utworzyć funkcję wyzwalaną w momencie przekazania plików d
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Pobrać i zainstalować program [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
++ Pobrać i zainstalować program [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 + Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-azure-function-app"></a>Tworzenie aplikacji funkcji platformy Azure
@@ -76,7 +76,7 @@ Następnie nawiąż połączenie z kontem usługi Azure Storage i utwórz konten
 
     ![Uzyskiwanie poświadczeń połączenia konta magazynu.](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. Uruchom narzędzie [Microsoft Azure Storage Explorer](http://storageexplorer.com/), kliknij ikonę połączenia po lewej stronie, wybierz pozycję **Użyj klucza i nazwy konta magazynu** i kliknij przycisk **Dalej**.
+1. Uruchom narzędzie [Microsoft Azure Storage Explorer](https://storageexplorer.com/), kliknij ikonę połączenia po lewej stronie, wybierz pozycję **Użyj klucza i nazwy konta magazynu** i kliknij przycisk **Dalej**.
 
     ![Uruchamianie narzędzia Storage Account Explorer.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 

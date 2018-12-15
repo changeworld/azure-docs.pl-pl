@@ -12,16 +12,16 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 2d50e4c2352444d29bdb090bc9a2a7947ecc6a50
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6daa29b4e8f09a4f8a40c3b92d2e2e86a5dea6aa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496027"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993178"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Tworzenie definicji interfejsu OpenAPI dla funkcji
 
-Interfejsy API REST są często opisywane przy użyciu definicji OpenAPI (wcześniej znanej jako plik struktury [Swagger](http://swagger.io/)). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API.
+Interfejsy API REST są często opisywane przy użyciu definicji OpenAPI (wcześniej znanej jako plik struktury [Swagger](https://swagger.io/)). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API.
 
 W ramach tego samouczka utworzysz funkcję, która pozwoli określić, czy awaryjna naprawa turbiny wiatrowej jest opłacalna. Następnie utworzysz definicję interfejsu OpenAPI dla aplikacji funkcji, aby funkcja mogła zostać wywołana z poziomu innych aplikacji i usług.
 
@@ -123,7 +123,7 @@ Funkcja określająca opłacalność naprawy awaryjnej jest już gotowa. Następ
 
 ## <a name="generate-the-openapi-definition"></a>Generowanie definicji interfejsu OpenAPI
 
-Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI. Ta definicja może być używana przez inne technologie firmy Microsoft, takie jak API Apps, [PowerApps](functions-powerapps-scenario.md) i [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), a także przez narzędzia deweloperskie innych firm, takie jak [Postman](https://www.getpostman.com/docs/importing_swagger) i [wiele innych pakietów](http://swagger.io/tools/).
+Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI. Ta definicja może być używana przez inne technologie firmy Microsoft, takie jak API Apps, [PowerApps](functions-powerapps-scenario.md) i [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), a także przez narzędzia deweloperskie innych firm, takie jak [Postman](https://www.getpostman.com/docs/importing_swagger) i [wiele innych pakietów](https://swagger.io/tools/).
 
 1. Wybierz tylko *zlecenia* obsługiwane przez Twój interfejs API (w tym przypadku POST). Dzięki temu wygenerowana definicja interfejsu API będzie bardziej czytelna.
 
@@ -141,7 +141,7 @@ Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI. Ta defin
 
     ![Źródło definicji interfejsu API](media/functions-openapi-definition/api-definition-source.png)
 
-    Ten krok udostępnia szereg opcji interfejsu OpenAPI dla Twojej aplikacji funkcji, takich jak punkt końcowy hostujący plik interfejsu OpenAPI z domeny Twojej aplikacji funkcji, wbudowana kopia [edytora interfejsu OpenAPI Editor](http://editor.swagger.io) i generator szablonów definicji interfejsu API.
+    Ten krok udostępnia szereg opcji interfejsu OpenAPI dla Twojej aplikacji funkcji, takich jak punkt końcowy hostujący plik interfejsu OpenAPI z domeny Twojej aplikacji funkcji, wbudowana kopia [edytora interfejsu OpenAPI Editor](https://editor.swagger.io) i generator szablonów definicji interfejsu API.
 
 1. Kliknij pozycję **Generuj szablon definicji interfejsu API** > **Zapisz**.
 
@@ -168,7 +168,7 @@ Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI. Ta defin
         parameters: []
         description: >-
             Replace with Operation Object
-            #http://swagger.io/specification/#operationObject
+            #https://swagger.io/specification/#operationObject
         responses:
             '200':
             description: Success operation

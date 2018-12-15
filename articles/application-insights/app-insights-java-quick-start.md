@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b36e4598f5ff20b921c5cd150ae19be233cc2d14
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246517"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998601"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej Java
 
@@ -29,7 +29,7 @@ Ten przewodnik Szybki start przeprowadzi Cię przez proces dodawania zestawu SDK
 Aby ukończyć ten przewodnik Szybki start:
 
 - Instalowanie środowiska JRE w wersji 1.7 lub 1.8
-- Zainstaluj [bezpłatne środowisko Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/). W tym przewodniku Szybki start jest używane środowisko Eclipse Oxygen (4.7)
+- Zainstaluj [bezpłatne środowisko Eclipse IDE for Java EE Developers](https://www.eclipse.org/downloads/). W tym przewodniku Szybki start jest używane środowisko Eclipse Oxygen (4.7)
 - Wymagane są subskrypcja platformy Azure i istniejący dynamiczny projekt internetowy Java
  
 Jeśli nie masz dynamicznego projektu internetowego Java, możesz go utworzyć, wykonując instrukcje przedstawione w [przewodniku Szybki start dotyczącym tworzenia aplikacji internetowej Java](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java).
@@ -67,7 +67,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
    ![Formularz nowego zasobu usługi App Insights](./media/app-insights-java-quick-start/000-j.png)
 
-2. Skopiuj adres ```http://dl.microsoft.com/eclipse``` do pola „Work With” (Współdziałanie z), zaznacz pole wyboru **Azure Toolkit for Java** (Zestaw narzędzi platformy Azure dla środowiska Java), wybierz pozycję **Application Insights Plugin for Java** (Wtyczka usługi Application Insights dla środowiska Java)  >  usuń zaznaczenie pola wyboru **Contact all update sites during install to find required software** (Wyszukaj wymagane oprogramowanie we wszystkich witrynach aktualizacji podczas instalacji).
+2. Skopiuj adres ```https://dl.microsoft.com/eclipse``` do pola „Work With” (Współdziałanie z), zaznacz pole wyboru **Azure Toolkit for Java** (Zestaw narzędzi platformy Azure dla środowiska Java), wybierz pozycję **Application Insights Plugin for Java** (Wtyczka usługi Application Insights dla środowiska Java)  >  usuń zaznaczenie pola wyboru **Contact all update sites during install to find required software** (Wyszukaj wymagane oprogramowanie we wszystkich witrynach aktualizacji podczas instalacji).
 
 3. Po ukończeniu instalacji pojawi się monit **Restart Eclipse** (Uruchom ponownie środowisko Eclipse).
 
@@ -130,7 +130,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
    ![Wykresy metryk serwera](./media/app-insights-java-quick-start/livemetricsjava.png)
 
-Więcej informacji na temat monitorowania środowiska Java można znaleźć w [dodatkowej dokumentacji środowiska Java w usłudze App Insights](.\app-insights-java-get-started.md).
+Więcej informacji na temat monitorowania środowiska Java można znaleźć w [dodatkowej dokumentacji środowiska Java w usłudze App Insights](./app-insights-java-get-started.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

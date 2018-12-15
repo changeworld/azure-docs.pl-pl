@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: 9df51626a1bd36b0ea171c89c67a5c1ca79d60e6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0d593e52c8dc3bc961df706ccef2da9da2f3f778
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873704"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087137"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Zarządzanie grupami baz danych za pomocą zadań Elastic Database
 
@@ -127,7 +127,7 @@ W poniższych przykładach pokazano, jak różne definicje grup docelowych są d
 
 ![Przykłady grup docelowych](media/elastic-jobs-overview/targetgroup-examples2.png)
 
-**Przykład 5** i *przykład 6* przedstawiają zaawansowane scenariusze, w których można łączyć serwery Azure SQL Server, elastyczne pule i bazy danych, używając reguł dołączania i wykluczania.<br>
+**Przykład 5** i **przykład 6** przedstawiają zaawansowane scenariusze, w których można łączyć serwery Azure SQL Server, elastyczne pule i bazy danych, używając reguł dołączania i wykluczania.<br>
 **Przykład 7** pokazuje, że w trakcie uruchamiania zadania można również wyliczać fragmenty na mapie fragmentów.
 
 ### <a name="job"></a>Zadanie

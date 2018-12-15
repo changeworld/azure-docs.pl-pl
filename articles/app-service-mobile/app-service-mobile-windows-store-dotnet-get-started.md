@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 28a741393fd4b7b4076449c90575f8a4ab30e0fc
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c8bd6430b362fde81c3133c2c16cf369aa050103
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41919210"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999371"
 ---
 # <a name="create-a-windows-app"></a>Tworzenie aplikacji systemu Windows
 
@@ -82,6 +82,6 @@ Po skonfigurowaniu zaplecza Aplikacji mobilnej można utworzyć nową aplikację
 <!-- Anchors. -->
 <!-- Images. -->
 <!-- URLs. -->
-[Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2017]: https://go.microsoft.com/fwLink/p/?LinkID=534203
