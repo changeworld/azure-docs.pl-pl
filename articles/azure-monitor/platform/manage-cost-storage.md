@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ea99c045d5f1bfaacaefab04322b2d4f1123c84
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d7b05757f031227ed1d5c3870a426567a1a31e6d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183510"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435654"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics
 
 > [!NOTE]
 > W tym artykule opisano sposób kontrolowania kosztów w usłudze Log Analytics, ustawiając okres przechowywania danych.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
 > - [Analizowanie użycia danych w usłudze Log Analytics](manage-cost-storage.md) w tym artykule opisano sposób analizowanie i alerty dotyczące użycia danych.
-> - [Monitorowanie użycia i szacowanych kosztów](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
+> - [Monitorowanie użycia i szacowanych kosztów](../../azure-monitor/platform/usage-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
 
 Usługa log Analytics została zaprojektowana do skalowania i zbieranie pomocy technicznej, indeksowanie i przechowywanie dużych ilości danych na dzień z dowolnego źródła w przedsiębiorstwie lub wdrożonych na platformie Azure.  Chociaż może to być sterownik podstawowy dla Twojej organizacji, niskich kosztów ostatecznie to klient jest podstawowy sterownik. W tym celu, istotne jest dowiedzieć się, że koszt obszaru roboczego usługi Log Analytics nie jest po prostu oparty na temat ilości zebranych danych, również jest zależny od wybranym planem i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
 

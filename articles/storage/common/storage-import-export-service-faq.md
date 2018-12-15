@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: b53f679f6f93dd5d4889fbe51f8b5caf62fc1a36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8111d80d0888455fbdf3ccf37e723fe348a62bee
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236725"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435008"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Usługa Azure Import/Export: często zadawane pytania 
 Poniżej przedstawiono pytania i odpowiedzi, które mogą wystąpić podczas przesyłanie danych do magazynu platformy Azure za pomocą usługi Azure Import/Export. Pytania i odpowiedzi są podzielone na następujące kategorie:
@@ -66,7 +66,10 @@ Tak. Można anulować zadania, gdy jego stan to **tworzenie** lub **wysyłania**
 Możesz wyświetlić stan ukończonych zadań przez 90 dni. Ukończone zadania są usuwane po 90 dniach.
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Jeśli chcę zaimportować lub wyeksportować więcej niż 10 dysków, co należy zrobić?
-Jeden import lub zadanie eksportu może odwoływać się tylko 10 dysków w ramach jednego zadania. Aby wysłać więcej niż 10 dysków, należy utworzyć wiele zadań. Dyski skojarzone z tym samym zadaniu powinny być wysyłane ze sobą w tym samym pakiecie. Dla zadania importu więcej informacji i wskazówek, gdy pojemność danych obejmuje wiele dysków, skontaktuj się z pomocą techniczną firmy Microsoft w bulkimport@microsoft.com.                                                              
+Jeden import lub zadanie eksportu może odwoływać się tylko 10 dysków w ramach jednego zadania. Aby wysłać więcej niż 10 dysków, należy utworzyć wiele zadań. Dyski skojarzone z tym samym zadaniu powinny być wysyłane ze sobą w tym samym pakiecie. Dla zadania importu więcej informacji i wskazówek, gdy pojemność danych obejmuje wiele dysków, skontaktuj się z pomocą techniczną firmy Microsoft w bulkimport@microsoft.com. 
+
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Przekazany obiekt blob wskazuje stan jako "Dzierżawa wygasła". Co mam zrobić?
+Pole "Dzierżawa wygasła" można zignorować. Import/Export uzyskuje dzierżawę w obiekcie blob podczas przekazywania, aby upewnić się, że żaden inny proces może zaktualizować obiektów blob w sposób równoległy. Wygasłe dzierżawy oznacza, że Import/export nie jest już przekazywania do niej, a obiekt blob jest dostępny do użycia. 
 
 ## <a name="shipping-disks"></a>Wysyłanie dysków
 

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 9e99e5f999c927ed0376a89b9f6d9f73fa8b2b2b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 8efa8088bca3eb6221c49ec5f14334342149795d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384177"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438442"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
@@ -31,7 +31,7 @@ W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu fu
 
 Metryki są danych telemetrycznych platformy Azure (nazywanych również liczników wydajności) wyemitowane przez Twoich zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykładowe metryki na koncie usługi Batch obejmują: Pool Create zdarzeń, liczba węzłów o niskim priorytecie i zadanie ukończenia zdarzenia. 
 
-Zobacz [Lista obsługiwanych metryk usługi Batch](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts).
+Zobacz [Lista obsługiwanych metryk usługi Batch](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
 Metryki są:
 

@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d85a7487b366f41b561a8f6e43f55bf1d8e609b1
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d3ae15193b5e2d759825e60f880dea4355329837
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013274"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407057"
 ---
-# <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem plików HDFS przy użyciu usługi Azure HDInsight
+# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem plików HDFS Apache Hadoop przy użyciu usługi Azure HDInsight
 
 Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pracy z pliku System (HDFS, Hadoop Distributed) ładunków w Apache Ambari.
 

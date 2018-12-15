@@ -15,14 +15,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4a9e3529f9d68ecdc614ea69cffc6897891f4548
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4454448809411c6390bc1f65c33b4abe76094ded
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057227"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407749"
 ---
 # <a name="overview-of-resources-in-batch-ai"></a>Przegląd zasobów usługi Batch AI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Przy pierwszym uruchomieniu przy użyciu usługi Batch AI, należy zrozumieć dostępne zasoby usługi Batch AI. Z innymi usługami Azure podczas tworzenia zasobów usługi Batch AI na platformie Azure co najmniej jeden *grup zasobów*. Tworzenie usługi Batch AI *obszary robocze* w grupie zasobów. Każdy obszar roboczy zawiera usługi Batch AI *klastrów*, *serwery plików*, i *eksperymentów*. Eksperymentu usługi Batch AI hermetyzuje grupę *zadań*.
 
@@ -50,7 +53,7 @@ Eksperyment grupy to zbiór powiązane zadania, które zapytania i zarządzać r
 
 ## <a name="job"></a>Zadanie
 
-Zadanie jest pojedynczego zadania lub skryptu, który ma zostać wykonana, na przykład aby szkolenie modeli uczenia głębokiego. Każde zadanie wykonuje określonego skryptu w jednym klastrze w obszarze roboczym. (Skrypt, mogą być przechowywane na serwerze plików usługi Batch AI lub innego rozwiązania do magazynowania). Każde zadanie usługi Batch AI ma typ framework skojarzone z nią: TensorFlow, Horovod, CNTK, Caffe i Caffe2, pyTorch, Chainer, MPI niestandardowego lub niestandardowego. Dla każdej struktury usługi Batch AI konfiguruje wymaganą infrastrukturę i zarządza procesami zadania. Każdego doświadczenia mogą mieć wiele zadań, które są podobne, oprócz pewne zmiany w różnych parametrów.
+Zadanie jest pojedynczego zadania lub skryptu, który ma zostać wykonana, na przykład aby szkolenie modeli uczenia głębokiego. Każde zadanie wykonuje określonego skryptu w jednym klastrze w obszarze roboczym. (Skrypt, mogą być przechowywane na serwerze plików usługi Batch AI lub innego rozwiązania do magazynowania). Każde zadanie usługi Batch AI ma typ framework skojarzone z nią: TensorFlow, Horovod, CNTK, Caffe, Caffe2, pyTorch, Chainer, niestandardowe MPI lub niestandardowy. Dla każdej struktury usługi Batch AI konfiguruje wymaganą infrastrukturę i zarządza procesami zadania. Każdego doświadczenia mogą mieć wiele zadań, które są podobne, oprócz pewne zmiany w różnych parametrów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

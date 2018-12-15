@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 9f2ed9c9059fa76a55ebd26fa3175605e89a4cdd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090275"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409545"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Praca z baz danych Azure Cosmos, kontenery i elementów
 
@@ -26,10 +26,10 @@ W ramach konta usługi można utworzyć jeden lub więcej baz danych Azure Cosmo
 
 | **Jednostki usługi Azure Cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- |
-|Bazy danych usługi Azure Cosmos | Database (Baza danych) | Przestrzeń kluczy | Database (Baza danych) | Nie dotyczy | Nie dotyczy |
+|Bazy danych usługi Azure Cosmos | Database (Baza danych) | Przestrzeń kluczy | Database (Baza danych) | Database (Baza danych) | Nie dotyczy |
 
 > [!NOTE]
-> Za pomocą języka Gremlin i interfejsy API tabel kont, podczas tworzenia pierwszego wykresu lub tabeli domyślna baza danych jest tworzony automatycznie w ramach konta usługi Azure Cosmos.
+> Za pomocą kont interfejsy API tabel po utworzeniu pierwszej tabeli domyślna baza danych jest tworzony automatycznie w ramach konta usługi Azure Cosmos.
 
 ### <a name="operations-on-an-azure-cosmos-database"></a>Operacje w bazie danych Azure Cosmos
 
@@ -49,9 +49,9 @@ Kontener usługi Azure Cosmos jest jednostką skalowalności zarówno aprowizowa
 
 Podczas tworzenia kontenera usługi Azure Cosmos, należy skonfigurować przepływność w jednym z następujących trybów:
 
-* **Dedykowana przepływność aprowizowana** tryb: przepływnością aprowizowaną w kontenerze jest zastrzeżone wyłącznie dla niej i jest ona objęta umów SLA. Aby dowiedzieć się więcej, zobacz [jak aprowizować przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
+* **Dedykowana przepływność aprowizowana** trybu: Przepływność aprowizowana w kontenerze jest zastrzeżone wyłącznie dla niego, i jest ona objęta umów SLA. Aby dowiedzieć się więcej, zobacz [jak aprowizować przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
 
-* **Udostępnione aprowizowanej przepływności** tryb: te kontenery Udostępnianie innych kontenerów w tej samej bazy danych (z wyjątkiem tych kontenerów, które zostały skonfigurowane za pomocą dedykowanego aprowizowanej przepływności) aprowizowanej przepływności. Innymi słowy aprowizowaną przepływność w bazie danych jest udostępniany "udostępnione" kontenerów. Aby dowiedzieć się więcej, zobacz [sposobu konfigurowania aprowizowaną przepływność na bazę danych Azure Cosmos](how-to-provision-database-throughput.md).
+* **Udostępnione aprowizowanej przepływności** trybu: Te kontenery udostępniać aprowizowanej przepływności innych kontenerów w tej samej bazy danych (z wyjątkiem tych kontenerów, które zostały skonfigurowane za pomocą dedykowanego aprowizowana przepływność). Innymi słowy aprowizowaną przepływność w bazie danych jest udostępniany "udostępnione" kontenerów. Aby dowiedzieć się więcej, zobacz [sposobu konfigurowania aprowizowaną przepływność na bazę danych Azure Cosmos](how-to-provision-database-throughput.md).
 
 Kontener usługi Azure Cosmos można elastycznie skalować, tworzenie kontenerów przy użyciu albo "udostępnione" lub "dedykowane" aprowizowana przepływność tryby.
 
@@ -69,7 +69,7 @@ Kontener usługi Azure Cosmos jest przeznaczone do jednostek specyficzne dla int
 
 | **Jednostki usługi Azure Cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- |
-|Usługa Azure container Cosmos | Kontener | Tabela | Collection | Graph | Tabela |
+|Usługa Azure container Cosmos | Collection | Tabela | Collection | Graph | Tabela |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Właściwości kontenera usługi Azure Cosmos
 
@@ -105,7 +105,7 @@ W zależności od wybranego interfejsu API element Azure Cosmos może reprezento
 
 | **Jednostka cosmos** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- |
-|Usługa Azure Cosmos elementu | Element | wiersz | Dokument | Węzła lub krawędzi | Element |
+|Usługa Azure Cosmos elementu | Dokument | Wiersz | Dokument | Węzła lub krawędzi | Element |
 
 ### <a name="properties-of-an-item"></a>Właściwości elementu
 

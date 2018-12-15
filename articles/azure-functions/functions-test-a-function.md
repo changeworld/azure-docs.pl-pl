@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: 44d2960d9cf5828af588f9392667553c18dedb0f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 90eac2fda46dc5fbfff791e1fc0afb9858aa27a4
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103459"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408038"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usłudze Azure Functions
 
@@ -93,9 +93,9 @@ namespace Functions.Tests
 
 `ListLogger` Klasa implementuje następujących elementów członkowskich, ponieważ zawarła umowę `ILogger` interfejsu:
 
-- **BeginScope**: zakresy dodać kontekst do Twojej rejestracji. W tym przypadku testu po prostu wskazuje na wystąpienie statyczne na [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) klasy w celu umożliwienia testu do funkcji.
+- **BeginScope**: Zakresy dodać kontekst do Twojej rejestracji. W tym przypadku testu po prostu wskazuje na wystąpienie statyczne na [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) klasy w celu umożliwienia testu do funkcji.
 
-- **IsEnabled**: wartość domyślną `false` podano.
+- **IsEnabled**: Wartość domyślna `false` podano.
 
 - **Dziennik**: Ta metoda wykorzystuje podane `formatter` funkcji wiadomość w formacie, a następnie dodaje tekst wynikowy `Logs` kolekcji.
 
@@ -184,7 +184,7 @@ namespace Functions.Tests
 
 - **CreateHttpRequest**: Ta metoda tworzy zainicjować za pomocą parametrów ciągu zapytania danego żądania HTTP.
 
-- **CreateLogger**: oparty na typie rejestratora, Metoda ta zwraca klasę rejestratora, używany do testowania. `ListLogger` Śledzi informacje o zarejestrowanych komunikatów dostępnych do oceny w testach.
+- **CreateLogger**: Na podstawie rejestratora typu, Metoda ta zwraca klasę rejestratora, używany do testowania. `ListLogger` Śledzi informacje o zarejestrowanych komunikatów dostępnych do oceny w testach.
 
 Następnie **kliknij prawym przyciskiem myszy** na *Functions.Test* aplikacji i wybierz **Dodaj > klasa**, nadaj jej nazwę **FunctionsTests.cs** i wprowadź Poniższy kod:
 
@@ -233,7 +233,7 @@ Elementy członkowskie zaimplementowane w tej klasie są:
 
 - **Http_trigger_should_return_string_from_member_data**: Ten test używa atrybutów xUnit, aby zapewnić przykładowych danych, aby funkcja protokołu HTTP.
 
-- **Timer_should_log_message**: tego testu, tworzy wystąpienie `ListLogger` i przekazuje je do funkcji czasomierza. Po jego uruchomieniu funkcji dziennika jest sprawdzany, aby upewnić się, że oczekiwany komunikat jest obecny.
+- **Timer_should_log_message**: Ten test tworzy wystąpienie `ListLogger` i przekazuje je do funkcji czasomierza. Po jego uruchomieniu funkcji dziennika jest sprawdzany, aby upewnić się, że oczekiwany komunikat jest obecny.
 
 ### <a name="run-tests"></a>Uruchom testy
 
@@ -357,6 +357,6 @@ Następnie ustaw punkt przerwania w testów i naciśnij klawisz **F5**.
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy wyjaśniono sposób pisania testów automatycznych dla funkcji, Kontynuuj przy użyciu tych zasobów:
-
+- [Ręcznie uruchomić bez funkcji wyzwalanej przez HTTP](./functions-manually-run-non-http.md)
 - [Obsługa błędów w usłudze Azure Functions](./functions-bindings-error-pages.md)
 - [Debugowanie funkcji platformy Azure zdarzeń siatki wyzwalacza lokalnego](./functions-debug-event-grid-trigger-local.md)

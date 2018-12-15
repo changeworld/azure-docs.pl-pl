@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b09f64e2183453b3656efa340d53682a241dd00e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017957"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410537"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -80,7 +80,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | Pobiera ustawienia preferencji użytkownika dla tego lasu.<br>Przykład — MetricCounterName, takie jak ldapsuccessfulbinds ntlmauthentications, kerberosauthentications, addsinsightsagentprivatebytes, ldapsearches.<br>Ustawienia interfejsu użytkownika wykresy itd. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/forestsummary/read | Pobiera lasu podsumowania dla danego lasu, takie jak nazwa lasu, liczbę domen w tym lesie, liczbie lokacji oraz lokacji szczegóły itp. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/metricmetadata/read | Pobiera listę obsługiwanych metryk dla danej usługi.<br>Przykład ekstranetu blokady konta, łączna liczba nieudanych żądań oczekujących żądań tokenów (Proxy), żądań tokenów/s itp. usługi AD FS.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czas powiązania protokołu LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla ADDomainService.<br>Uruchom opóźnienie profilu, ustanowionych połączeń TCP, liczba bajtów prywatnych agentów szczegółowe informacje, Statystyka eksportu do usługi Azure AD dla usługi ADSync. |
-> | Akcja | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | Biorąc pod uwagę usługę, ten interfejs API pobiera dane metryk.<br>Na przykład, ten interfejs API można uzyskać informacje dotyczące: ekstranetu blokady konta, łączna liczba nieudanych żądań, liczba oczekujących żądań tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
+> | Akcja | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | Biorąc pod uwagę usługę, ten interfejs API pobiera dane metryk.<br>Ten interfejs API można na przykład, aby uzyskać informacje dotyczące: Ekstranetu blokady konta, łączna liczba nieudanych żądań, żądań oczekujących tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/premiumcheck/read | Ten interfejs API pobiera listę wszystkich dołączono ADDomainServices dla dzierżawy w warstwie premium. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/read | Pobiera szczegóły usługi dla określonej nazwy usługi. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/replicationdetails/read | Pobiera szczegóły replikacji dla wszystkich serwerów dla określonej nazwy usługi. |
@@ -115,9 +115,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ADHybridHealthService/services/exportstatus/read | Pobiera stan eksportu dla danej usługi. |
 > | Akcja | Microsoft.ADHybridHealthService/services/feedbacktype/feedback/read | Pobiera alerty opinii dla danej usługi i serwera. |
 > | Akcja | Microsoft.ADHybridHealthService/services/metricmetadata/read | Pobiera listę obsługiwanych metryk dla danej usługi.<br>Przykład ekstranetu blokady konta, łączna liczba nieudanych żądań oczekujących żądań tokenów (Proxy), żądań tokenów/s itp. usługi AD FS.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czas powiązania protokołu LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla ADDomainService.<br>Uruchom opóźnienie profilu, ustanowionych połączeń TCP, liczba bajtów prywatnych agentów szczegółowe informacje, Statystyka eksportu do usługi Azure AD dla usługi ADSync. |
-> | Akcja | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Biorąc pod uwagę usługę, ten interfejs API pobiera średnia dla metryki dla danej usługi.<br>Na przykład, ten interfejs API można uzyskać informacje dotyczące: ekstranetu blokady konta, łączna liczba nieudanych żądań, liczba oczekujących żądań tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
-> | Akcja | Microsoft.ADHybridHealthService/services/metrics/groups/read | Biorąc pod uwagę usługę, ten interfejs API pobiera dane metryk.<br>Na przykład, ten interfejs API można uzyskać informacje dotyczące: ekstranetu blokady konta, łączna liczba nieudanych żądań, liczba oczekujących żądań tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
-> | Akcja | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Biorąc pod uwagę usługę, ten interfejs API pobiera zagregowany widok, aby uzyskać metryki dla danej usługi.<br>Na przykład, ten interfejs API można uzyskać informacje dotyczące: ekstranetu blokady konta, łączna liczba nieudanych żądań, liczba oczekujących żądań tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
+> | Akcja | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Biorąc pod uwagę usługę, ten interfejs API pobiera średnia dla metryki dla danej usługi.<br>Ten interfejs API można na przykład, aby uzyskać informacje dotyczące: Ekstranetu blokady konta, łączna liczba nieudanych żądań, żądań oczekujących tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
+> | Akcja | Microsoft.ADHybridHealthService/services/metrics/groups/read | Biorąc pod uwagę usługę, ten interfejs API pobiera dane metryk.<br>Ten interfejs API można na przykład, aby uzyskać informacje dotyczące: Ekstranetu blokady konta, łączna liczba nieudanych żądań, żądań oczekujących tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
+> | Akcja | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Biorąc pod uwagę usługę, ten interfejs API pobiera zagregowany widok, aby uzyskać metryki dla danej usługi.<br>Ten interfejs API można na przykład, aby uzyskać informacje dotyczące: Ekstranetu blokady konta, łączna liczba nieudanych żądań, żądań oczekujących tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
 > | Akcja | Microsoft.ADHybridHealthService/services/monitoringconfiguration/write | Dodawanie lub aktualizacji konfiguracji monitorowania dla usługi. |
 > | Akcja | Microsoft.ADHybridHealthService/services/monitoringconfigurations/read | Pobiera konfiguracji monitorowania dla danej usługi. |
 > | Akcja | Microsoft.ADHybridHealthService/services/monitoringconfigurations/write | Dodawanie lub aktualizacji konfiguracji monitorowania dla usługi. |
@@ -130,7 +130,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/datafreshness/read | Dla danego serwera ten interfejs API pobiera listę typów danych, które są przekazywane przez serwery i ostatni czas dla każdego przekazywania. |
 > | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/delete | Usuwa wystąpienie serwera w usłudze. |
 > | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/exportstatus/read | Pobiera szczegóły błędu eksportowania synchronizacji dla danej usługi synchronizacji. |
-> | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | Biorąc pod uwagę usługę, ten interfejs API pobiera dane metryk.<br>Na przykład, ten interfejs API można uzyskać informacje dotyczące: ekstranetu blokady konta, łączna liczba nieudanych żądań, liczba oczekujących żądań tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
+> | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | Biorąc pod uwagę usługę, ten interfejs API pobiera dane metryk.<br>Ten interfejs API można na przykład, aby uzyskać informacje dotyczące: Ekstranetu blokady konta, łączna liczba nieudanych żądań, żądań oczekujących tokenów (Proxy), żądań tokenów/s itp ADFederation usługi.<br>Uwierzytelnienia NTLM na sekundę, wiązania LDAP pomyślne na sekundę, czasu powiązania LDAP, Aktywne wątki LDAP, uwierzytelnienia Kerberos na sekundę, ATQ itp. Łączna liczba wątków dla usługi ADDomain.<br>Profil opóźnienie przebiegów, połączenia TCP nawiązane, Bajty prywatne agenta szczegółowe informacje, wyeksportuj statystyki do usługi Azure AD dla usługi synchronizacji. |
 > | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/read | Odczytuje wystąpienie serwera w usłudze. |
 > | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/serviceconfiguration/read | Pobiera konfigurację usługi dla danej dzierżawy. |
 > | Akcja | Microsoft.ADHybridHealthService/services/tenantwhitelisting/read | Pobiera stan umieszczania na białej liście funkcji dla danej dzierżawy. |
@@ -600,38 +600,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Batch/register/action | Rejestruje subskrypcję dostawcy zasobów usługi Batch i włącza funkcję tworzenia konta usługi Batch |
 > | Akcja | Microsoft.Batch/unregister/action | Wyrejestrowuje subskrypcję dostawcy zasobów usługi Batch, co uniemożliwia tworzenie kont usługi Batch |
 
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-
-> [!div class="mx-tdCol2BreakAll"]
-> | Typ akcji | Operacja | Opis |
-> | --- | --- | --- |
-> | Akcja | Microsoft.BatchAI/clusters/read | Wyświetla klastry usługi Batch AI lub pobiera właściwości klaster usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/fileservers/read | Wyświetla fileservers sztucznej Inteligencji usługi Batch lub pobiera właściwości na serwerze plików usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/locations/operationresults/read | Pobiera wynik operacji asynchronicznej usługi Batch AI w określonym regionie platformy Azure |
-> | Akcja | Microsoft.BatchAI/locations/operationstatuses/read | Pobiera stan operacji asynchronicznej usługi Batch AI w określonym regionie platformy Azure |
-> | Akcja | Microsoft.BatchAI/locations/usages/read | Pobiera użycia sztucznej Inteligencji usługi Batch w określonej subskrypcji w określonym regionie platformy Azure |
-> | Akcja | Microsoft.BatchAI/register/action | Rejestruje subskrypcję dostawcy zasobów usługi Batch AI i włącza funkcję tworzenia zasobów usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/unregister/action | Wyrejestrowuje subskrypcję dostawcy zasobów usługi Batch AI, uniemożliwia tworzenie zasobów usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/clusters/delete | Usuwa klaster usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/clusters/read | Wyświetla klastry usługi Batch AI lub pobiera właściwości klaster usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/clusters/remoteLoginInformation/action | Wyświetla informacje logowania zdalnego klastra usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/clusters/write | Tworzy nowy klaster usługi Batch AI lub aktualizuje istniejący klaster usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/delete | Usuwa obszar roboczy usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/delete | Usuwa eksperymentu usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/jobs/delete | Usuwa zadanie usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/jobs/listoutputfiles/action | Wyświetla dane wyjściowe pliki dla zadania usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/jobs/read | Zawiera listę zadań usługi Batch AI lub pobiera właściwości zadania usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/jobs/remoteLoginInformation/action | Wyświetla informacje logowania zdalnego dla zadania usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/jobs/terminate/action | Kończy zadanie usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/jobs/write | Tworzy nowe zadanie usługi Batch AI lub aktualizuje istniejące zadanie usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/read | Listy usługi Batch AI experiments lub pobiera właściwości eksperymentu usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/experiments/write | Tworzy nowy eksperyment sztucznej Inteligencji usługi Batch lub aktualizuje istniejące eksperymentu usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/fileservers/delete | Usuwa na serwerze plików usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/fileservers/read | Wyświetla fileservers sztucznej Inteligencji usługi Batch lub pobiera właściwości na serwerze plików usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/fileservers/write | Tworzy nowy fileserver sztucznej Inteligencji usługi Batch lub aktualizuje istniejące fileserver usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/read | Wyświetla listę obszarów roboczych usługi Batch AI bądź pobiera właściwości obszaru roboczego usługi Batch AI |
-> | Akcja | Microsoft.BatchAI/workspaces/write | Tworzy nowy obszar roboczy usługi Batch AI lub aktualizuje istniejący obszar roboczy usługi Batch AI |
-
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -658,20 +626,20 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.Blueprint/blueprintAssignments/delete | Usuń wszelkie artefakty planu |
-> | Akcja | Microsoft.Blueprint/blueprintAssignments/read | Odczytaj wszelkie artefakty planu |
-> | Akcja | Microsoft.Blueprint/blueprintAssignments/write | Utwórz lub zaktualizuj wszelkie artefakty planu |
-> | Akcja | Microsoft.Blueprint/blueprints/artifacts/delete | Usuń wszelkie artefakty planu |
-> | Akcja | Microsoft.Blueprint/blueprints/artifacts/read | Odczytaj wszelkie artefakty planu |
-> | Akcja | Microsoft.Blueprint/blueprints/artifacts/write | Utwórz lub zaktualizuj wszelkie artefakty planu |
-> | Akcja | Microsoft.Blueprint/blueprints/delete | Usuń wszelkie plany |
-> | Akcja | Microsoft.Blueprint/blueprints/read | Odczytaj wszelkie plany |
-> | Akcja | Microsoft.Blueprint/blueprints/versions/artifacts/read | Odczytaj wszelkie artefakty planu |
-> | Akcja | Microsoft.Blueprint/blueprints/versions/delete | Usuń wszelkie plany |
-> | Akcja | Microsoft.Blueprint/blueprints/versions/read | Odczytaj wszelkie plany |
-> | Akcja | Microsoft.Blueprint/blueprints/versions/write | Utwórz lub zaktualizuj wszelkie plany |
-> | Akcja | Microsoft.Blueprint/blueprints/write | Utwórz lub zaktualizuj wszelkie plany |
-> | Akcja | Microsoft.Blueprint/register/action | Rejestruje dostawcę zasobów platformy Azure plany |
+> | Akcja | Microsoft.Blueprint/blueprintAssignments/delete | Usuń wszelkie artefakty strategii |
+> | Akcja | Microsoft.Blueprint/blueprintAssignments/read | Odczytaj wszelkie artefakty strategii |
+> | Akcja | Microsoft.Blueprint/blueprintAssignments/write | Utwórz lub zaktualizuj wszelkie artefakty strategii |
+> | Akcja | Microsoft.Blueprint/blueprints/artifacts/delete | Usuń wszelkie artefakty strategii |
+> | Akcja | Microsoft.Blueprint/blueprints/artifacts/read | Odczytaj wszelkie artefakty strategii |
+> | Akcja | Microsoft.Blueprint/blueprints/artifacts/write | Utwórz lub zaktualizuj wszelkie artefakty strategii |
+> | Akcja | Microsoft.Blueprint/blueprints/delete | Usuń wszelkie strategie |
+> | Akcja | Microsoft.Blueprint/blueprints/read | Odczytaj wszelkie strategie |
+> | Akcja | Microsoft.Blueprint/blueprints/versions/artifacts/read | Odczytaj wszelkie artefakty strategii |
+> | Akcja | Microsoft.Blueprint/blueprints/versions/delete | Usuń wszelkie strategie |
+> | Akcja | Microsoft.Blueprint/blueprints/versions/read | Odczytaj wszelkie strategie |
+> | Akcja | Microsoft.Blueprint/blueprints/versions/write | Utwórz lub zaktualizuj wszelkie strategie |
+> | Akcja | Microsoft.Blueprint/blueprints/write | Utwórz lub zaktualizuj wszelkie strategie |
+> | Akcja | Microsoft.Blueprint/register/action | Rejestruje dostawcę zasobów strategii platformy Azure |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -1324,16 +1292,16 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ContainerService/containerServices/delete | Usuwa usługę kontenera |
 > | Akcja | Microsoft.ContainerService/containerServices/read | Pobierz usługę kontenera |
 > | Akcja | Microsoft.ContainerService/containerServices/write | Tworzy nową usługę kontenera lub aktualizuje istniejącą |
-> | Akcja | Microsoft.ContainerService/locations/operationresults/read | Pobiera stan wynik operacji asynchronicznej |
+> | Akcja | Microsoft.ContainerService/locations/operationresults/read | Pobiera stan wyniku operacji asynchronicznej |
 > | Akcja | Microsoft.ContainerService/locations/operations/read | Pobiera stan operacji asynchronicznej |
-> | Akcja | Microsoft.ContainerService/locations/orchestrators/read | Wyświetla listę obsługiwanych koordynatorów |
+> | Akcja | Microsoft.ContainerService/locations/orchestrators/read | Wyświetla listę obsługiwanych orkiestratorów |
 > | Akcja | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Pobierz profil dostępu do klastra zarządzanego według nazwy roli przy użyciu poświadczeń listy |
 > | Akcja | Microsoft.ContainerService/managedClusters/accessProfiles/read | Pobierz profil dostępu do klastra zarządzanego według nazwy roli |
 > | Akcja | Microsoft.ContainerService/managedClusters/delete | Usuwa klaster zarządzany |
-> | Akcja | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Lista poświadczeń clusterAdmin zarządzanego klastra |
-> | Akcja | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Lista poświadczeń clusterUser zarządzanego klastra |
+> | Akcja | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Wyświetl listę poświadczeń administratora clusterAdmin klastra zarządzanego |
+> | Akcja | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Wyświetl listę poświadczeń użytkownika clusterUser klastra zarządzanego |
 > | Akcja | Microsoft.ContainerService/managedClusters/read | Pobierz klaster zarządzany |
-> | Akcja | Microsoft.ContainerService/managedClusters/upgradeprofiles/read | Pobiera profil uaktualnienia klastra |
+> | Akcja | Microsoft.ContainerService/managedClusters/upgradeprofiles/read | Pobiera profil uaktualniania klastra |
 > | Akcja | Microsoft.ContainerService/managedClusters/write | Tworzy nowy klaster zarządzany lub aktualizuje istniejący |
 > | Akcja | Microsoft.ContainerService/openShiftClusters/delete | Usuwanie klastra Open Shift |
 > | Akcja | Microsoft.ContainerService/openShiftClusters/read | Pobierz klastra Open Shift |
@@ -1342,8 +1310,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ContainerService/openShiftManagedClusters/read | Pobierz Open Shift zarządzanego klastra |
 > | Akcja | Microsoft.ContainerService/openShiftManagedClusters/write | Tworzy nowy Open Shift zarządzany klaster lub aktualizuje istniejący zestaw |
 > | Akcja | Microsoft.ContainerService/operations/read | Wyświetla operacje dostępne dla dostawcy zasobów Microsoft.ContainerService |
-> | Akcja | Microsoft.ContainerService/register/action | Rejestruje subskrypcję dostawcy zasobów Microsoft.ContainerService |
-> | Akcja | Microsoft.ContainerService/unregister/action | Wyrejestrowuje subskrypcję dostawcy zasobów Microsoft.ContainerService |
+> | Akcja | Microsoft.ContainerService/register/action | Rejestruje subskrypcję za pomocą dostawcy zasobów Microsoft.ContainerService |
+> | Akcja | Microsoft.ContainerService/unregister/action | Wyrejestrowuje subskrypcję przy użyciu dostawcy zasobów Microsoft.ContainerService |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
@@ -1542,9 +1510,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | --- | --- | --- |
 > | Akcja | Microsoft.Databricks/register/action | Zarejestruj się w usłudze Databricks. |
 > | Akcja | Microsoft.Databricks/workspaces/delete | Usuwa obszar roboczy usługi Databricks. |
-> | Akcja | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | Zestawy dostępne ustawienia diagnostyki dla obszaru roboczego usługi Databricks |
+> | Akcja | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | Ustawia dostępne ustawienia diagnostyczne dla obszaru roboczego usługi Databricks |
 > | Akcja | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/write | Dodaje lub modyfikuje ustawienia diagnostyczne. |
-> | Akcja | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/logDefinitions/read | Pobiera definicje dzienników dostępnych dla obszaru roboczego usługi Databricks |
+> | Akcja | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne definicje dzienników dla obszaru roboczego usługi Databricks |
 > | Akcja | Microsoft.Databricks/workspaces/read | Pobiera listę obszarów roboczych usługi Databricks. |
 > | Akcja | Microsoft.Databricks/workspaces/write | Tworzy obszar roboczy usługi Databricks. |
 
@@ -2169,7 +2137,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.EventHub/clusters/providers/Microsoft.Insights/metricDefinitions/read | Pobierz listę metryki klastra opisów zasobów |
 > | Akcja | Microsoft.EventHub/clusters/read | Pobiera opis zasobu klastra |
 > | Akcja | Microsoft.EventHub/clusters/write | Pobiera opis zasobu klastra |
-> | Akcja | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | Usuwa reguły sieci wirtualnej dostawcy zasobów usługi EventHub dla określonej sieci wirtualnej |
+> | Akcja | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | Usuwa reguły sieci wirtualnej w dostawcy zasobów usługi EventHub dla określonej sieci wirtualnej |
 > | Akcja | Microsoft.EventHub/namespaces/authorizationRules/action | Reguły autoryzacji Namespace aktualizacji. Ten interfejs API jest przestarzały. Można zaktualizować reguły autoryzacji Namespace zamiast niego użyj wywołania PUT... Ta operacja nie jest obsługiwana w wersji 2017-04-01 interfejsu API. |
 > | Akcja | Microsoft.EventHub/namespaces/authorizationRules/delete | Usuń regułę autoryzacji Namespace. Nie można usunąć domyślnej reguły autoryzacji Namespace.  |
 > | Akcja | Microsoft.EventHub/namespaces/authorizationRules/listkeys/action | Pobierz parametry połączenia z przestrzenią nazw |
@@ -2292,17 +2260,17 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Insights/AlertRules/Resolved/Action | Rozwiązano alert dotyczący metryki klasycznej |
 > | Akcja | Microsoft.Insights/AlertRules/Throttled/Action | Ograniczono regułę alertu dotyczącego metryki klasycznej |
 > | Akcja | Microsoft.Insights/AlertRules/Write | Utwórz lub zaktualizuj alert dotyczący metryki klasycznej |
-> | Akcja | Microsoft.Insights/AutoscaleSettings/Delete | Usuń ustawienie automatycznego skalowania |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/Delete | Usuń ustawienie autoskalowania |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/diagnosticSettings/Read | Odczytaj ustawienie diagnostyczne zasobu |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/diagnosticSettings/Write | Utwórz lub zaktualizuj ustawienie diagnostyczne zasobu |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/logDefinitions/Read | Przeczytaj definicje dzienników |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/MetricDefinitions/Read | Przeczytaj definicje metryk |
-> | Akcja | Microsoft.Insights/AutoscaleSettings/Read | Odczytaj ustawienie automatycznego skalowania |
-> | Akcja | Microsoft.Insights/AutoscaleSettings/Scaledown/Action | Automatyczne skalowanie — zainicjowano skalowanie w dół |
-> | Akcja | Microsoft.Insights/AutoscaleSettings/ScaledownResult/Action | Automatyczne skalowanie — zakończono skalowanie w dół |
-> | Akcja | Microsoft.Insights/AutoscaleSettings/Scaleup/Action | Automatyczne skalowanie — zainicjowano skalowanie w górę |
-> | Akcja | Microsoft.Insights/AutoscaleSettings/ScaleupResult/Action | Automatyczne skalowanie — zakończono skalowanie w górę |
-> | Akcja | Microsoft.Insights/AutoscaleSettings/Write | Utwórz lub zaktualizuj ustawienie automatycznego skalowania |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/Read | Odczytaj ustawienie autoskalowania |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/Scaledown/Action | Autoskalowanie — zainicjowano skalowanie w dół |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/ScaledownResult/Action | Autoskalowanie — zakończono skalowanie w dół |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/Scaleup/Action | Autoskalowanie — zainicjowano skalowanie w górę |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/ScaleupResult/Action | Autoskalowanie — zakończono skalowanie w górę |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/Write | Utwórz lub zaktualizuj ustawienie autoskalowania |
 > | Akcja | Microsoft.Insights/Components/AnalyticsItems/Delete | Usuwanie elementu analizy usługi Application Insights |
 > | Akcja | Microsoft.Insights/Components/AnalyticsItems/Read | Odczytywanie elementu analizy usługi Application Insights |
 > | Akcja | Microsoft.Insights/Components/AnalyticsItems/Write | Zapisywanie elementu analizy usługi Application Insights |
@@ -2680,11 +2648,11 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.LocationBasedServices/accounts/delete | (Przestarzałe: Użyj /providers/Microsoft.Maps) Usuwanie lokalizacji na podstawie konto usług. |
-> | Akcja | Microsoft.LocationBasedServices/accounts/listKeys/action | (Przestarzałe: Użyj /providers/Microsoft.Maps) Wyświetl listę kluczy konto usług Location Based Services |
-> | Akcja | Microsoft.LocationBasedServices/accounts/read | (Przestarzałe: Użyj /providers/Microsoft.Maps) Pobieranie lokalizacji na podstawie konto usług. |
-> | Akcja | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (Przestarzałe: Użyj /providers/Microsoft.Maps) Generuj nowy klucz podstawowy lub pomocniczy konto usług Location Based Services |
-> | Akcja | Microsoft.LocationBasedServices/accounts/write | (Przestarzałe: Użyj /providers/Microsoft.Maps) Utwórz lub zaktualizuj konto usługi na podstawie lokalizacji. |
+> | Akcja | Microsoft.LocationBasedServices/accounts/delete | (Przestarzałe: Użyj /providers/Microsoft.Maps) usunąć konto usługi na podstawie lokalizacji. |
+> | Akcja | Microsoft.LocationBasedServices/accounts/listKeys/action | (Przestarzałe: Użyj kluczy konto usług Location Based Services /providers/Microsoft.Maps)List |
+> | Akcja | Microsoft.LocationBasedServices/accounts/read | (Przestarzałe: Użyj /providers/Microsoft.Maps) Załóż konto usługi na podstawie lokalizacji. |
+> | Akcja | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (Przestarzałe: Użyj /providers/Microsoft.Maps) wygeneruj nowe konto usług Location Based Services klucz podstawowy lub pomocniczy |
+> | Akcja | Microsoft.LocationBasedServices/accounts/write | (Przestarzałe: Użyj /providers/Microsoft.Maps) tworzenia lub aktualizacji usługi konto usług Location Based. |
 > | Akcja | Microsoft.LocationBasedServices/register/action | (Przestarzałe: Użyj /providers/Microsoft.Maps) Zarejestruj dostawcę |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
@@ -2692,11 +2660,11 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.LocationServices/accounts/delete | (Przestarzałe: Użyj /providers/Microsoft.Maps) Usuwanie konta usługi lokalizacji. |
-> | Akcja | Microsoft.LocationServices/accounts/listKeys/action | (Przestarzałe: Użyj /providers/Microsoft.Maps) Wyświetl listę kluczy konto usług Location Based Services |
+> | Akcja | Microsoft.LocationServices/accounts/delete | (Przestarzałe: Użyj /providers/Microsoft.Maps) usunąć konto usługi lokalizacji. |
+> | Akcja | Microsoft.LocationServices/accounts/listKeys/action | (Przestarzałe: Użyj kluczy konto usług Location Based Services /providers/Microsoft.Maps)List |
 > | Akcja | Microsoft.LocationServices/accounts/read | (Przestarzałe: Użyj /providers/Microsoft.Maps) Utwórz konto usług lokalizacji. |
-> | Akcja | Microsoft.LocationServices/accounts/regenerateKey/action | (Przestarzałe: Użyj /providers/Microsoft.Maps) Generuj nowy klucz podstawowy lub pomocniczy konto usług Location Based Services |
-> | Akcja | Microsoft.LocationServices/accounts/write | (Przestarzałe: Użyj /providers/Microsoft.Maps) Utwórz lub zaktualizuj konto usług lokalizacji. |
+> | Akcja | Microsoft.LocationServices/accounts/regenerateKey/action | (Przestarzałe: Użyj /providers/Microsoft.Maps) wygeneruj nowe konto usług Location Based Services klucz podstawowy lub pomocniczy |
+> | Akcja | Microsoft.LocationServices/accounts/write | (Przestarzałe: Użyj /providers/Microsoft.Maps) tworzenia lub aktualizacji konta usług lokalizacji. |
 > | Akcja | Microsoft.LocationServices/register/action | (Przestarzałe: Użyj /providers/Microsoft.Maps) Zarejestruj dostawcę |
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
@@ -4073,7 +4041,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Zastosuj punkt odzyskiwania |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/delete | Usuń wszystkie chronione elementy |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Zatwierdzenie trybu failover |
-> | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | Planowany tryb Failover |
+> | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | Planowane przełączenie w tryb failover |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | Odczyt wszystkich chronionych elementów |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Odczytywać wszystkie punkty odzyskiwania replikacji |
 > | Akcja | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/remove/action | Usuń chroniony element |
@@ -4357,7 +4325,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | --- | --- | --- |
 > | Akcja | Microsoft.ServiceBus/checkNameAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. |
 > | Akcja | Microsoft.ServiceBus/checkNamespaceAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. Ten interfejs API jest przestarzała Użyj zamiast niego interfejsu CheckNameAvailabiltiy. |
-> | Akcja | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | Usuwa reguły sieci wirtualnej dostawcy zasobów usługi ServiceBus dla określonej sieci wirtualnej |
+> | Akcja | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | Usuwa reguły sieci wirtualnej w dostawcy zasobów usługi ServiceBus dla określonej sieci wirtualnej |
 > | Akcja | Microsoft.ServiceBus/namespaces/authorizationRules/action | Reguły autoryzacji Namespace aktualizacji. Ten interfejs API jest przestarzały. Można zaktualizować reguły autoryzacji Namespace zamiast niego użyj wywołania PUT... Ta operacja nie jest obsługiwana w wersji 2017-04-01 interfejsu API. |
 > | Akcja | Microsoft.ServiceBus/namespaces/authorizationRules/delete | Usuń regułę autoryzacji Namespace. Nie można usunąć domyślnej reguły autoryzacji Namespace.  |
 > | Akcja | Microsoft.ServiceBus/namespaces/authorizationRules/listkeys/action | Pobierz parametry połączenia z przestrzenią nazw |

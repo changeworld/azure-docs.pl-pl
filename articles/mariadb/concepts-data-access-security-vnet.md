@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 31eec9e146c64e2310ab27414952593140f11cb2
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8c4f14849c39414217837a3c86fb6e067cd87c90
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52277299"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434345"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database dla serwera MariaDB
 
@@ -33,13 +33,13 @@ Aby utworzyć regułę sieci wirtualnej musi najpierw mieć [sieci wirtualnej] [
 
 ## <a name="terminology-and-description"></a>Terminologia i opis
 
-**Sieć wirtualna:** może mieć sieci wirtualne, skojarzony z subskrypcją platformy Azure.
+**Sieć wirtualna:** Może mieć sieci wirtualne, skojarzony z subskrypcją platformy Azure.
 
-**Podsieć:** sieć wirtualna zawiera **podsieci**. Żadnych maszyn wirtualnych (VM), do których masz są przypisywane do podsieci. W jednej podsieci może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Obliczenia, że węzły, które znajdują się poza siecią wirtualną nie może uzyskiwać dostęp do sieci wirtualnej, chyba, że konfigurowanie zabezpieczeń w taki sposób, aby zezwolić na dostęp.
+**Podsieć:** Sieć wirtualna zawiera **podsieci**. Żadnych maszyn wirtualnych (VM), do których masz są przypisywane do podsieci. W jednej podsieci może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Obliczenia, że węzły, które znajdują się poza siecią wirtualną nie może uzyskiwać dostęp do sieci wirtualnej, chyba, że konfigurowanie zabezpieczeń w taki sposób, aby zezwolić na dostęp.
 
-**Punkt końcowy usługi sieci wirtualnej:** A [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] jest podsiecią, w których wartości właściwości zawierają jedną lub więcej nazw typu formalnego usługi platformy Azure. W tym artykule jesteśmy zainteresowani nazwę typu **Microsoft.Sql**, która odnosi się do usługi platformy Azure o nazwie bazy danych SQL. Ten tag usługi dotyczy również do usługi Azure Database dla MariaDB, MySQL i postgresql w warstwie usług. Ważne jest, aby pamiętać podczas stosowania **Microsoft.Sql** tag usługi punktu końcowego usługi sieci wirtualnej zostanie skonfigurowany ruchu w ramach punktu końcowego usługi dla usługi Azure SQL Database, Azure Database dla serwera MariaDB, usługi Azure Database for MySQL i Azure Baza danych postgresql w warstwie serwerów w podsieci.
+**Punkt końcowy usługi wirtualne sieci:** A [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] jest podsiecią, w których wartości właściwości zawierają jedną lub więcej nazw typu formalnego usługi platformy Azure. W tym artykule jesteśmy zainteresowani nazwę typu **Microsoft.Sql**, która odnosi się do usługi platformy Azure o nazwie bazy danych SQL. Ten tag usługi dotyczy również do usługi Azure Database dla MariaDB, MySQL i postgresql w warstwie usług. Ważne jest, aby pamiętać podczas stosowania **Microsoft.Sql** tag usługi punktu końcowego usługi sieci wirtualnej zostanie skonfigurowany ruchu w ramach punktu końcowego usługi dla usługi Azure SQL Database, Azure Database dla serwera MariaDB, usługi Azure Database for MySQL i Azure Baza danych postgresql w warstwie serwerów w podsieci.
 
-**Reguła sieci wirtualnej:** reguły sieci wirtualnej dla usługi Azure Database dla serwera MariaDB jest podsiecią, która znajduje się na liście kontroli dostępu (ACL) dla usługi Azure Database dla serwera MariaDB. Aby być na liście kontroli dostępu dla usługi Azure Database dla serwera MariaDB, musi zawierać podsieci **Microsoft.Sql** nazwy typu.
+**Reguła sieci wirtualnej:** Reguły sieci wirtualnej dla usługi Azure Database dla serwera MariaDB jest usługi Azure Database dla serwera MariaDB podsieci, który znajduje się na liście kontroli dostępu (ACL). Aby być na liście kontroli dostępu dla usługi Azure Database dla serwera MariaDB, musi zawierać podsieci **Microsoft.Sql** nazwy typu.
 
 Reguły sieci wirtualnej informuje usługi Azure Database dla serwera MariaDB do akceptowania komunikacji z każdego węzła, który znajduje się w podsieci.
 
@@ -93,8 +93,8 @@ Każda reguła sieci wirtualnej ma zastosowanie do całej bazy danych Azure dla 
 
 Brak separacji ról zabezpieczeń w administracji punkty końcowe usługi sieci wirtualnej. Akcja jest wymagana z każdej z następujących ról:
 
-- **Administrator sieci:** &nbsp; włączyć punkt końcowy.
-- **Administrator bazy danych:** &nbsp; aktualizacji listy kontroli dostępu (ACL), aby dodać danej podsieci do usługi Azure Database dla serwera MariaDB.
+- **Administrator sieci:** &nbsp; Włącz punkt końcowy.
+- **Administrator bazy danych:** &nbsp; Aktualizowanie listy kontroli dostępu (ACL), aby dodać danej podsieci do usługi Azure Database dla serwera MariaDB.
 
 *Alternatywa RBAC:*
 
@@ -117,7 +117,7 @@ Dla usługi Azure Database dla serwera MariaDB funkcja reguł sieci wirtualnej m
 
 - Reguły sieci wirtualnej mają zastosowanie tylko do sieci wirtualnej usługi Azure Resource Manager. i nie [klasycznego modelu wdrażania] [ resource-manager-deployment-model-568f] sieci.
 
-- Włączenie w sieci wirtualnej punkty końcowe usługi bazą danych Azure przy użyciu MariaDB **Microsoft.Sql** tag usługi umożliwia również punkty końcowe dla wszystkich usług Azure Database: Azure Database dla serwera MariaDB, Azure Database for MySQL, Azure Baza danych PostgreSQL, Azure SQL Database i Azure SQL Data Warehouse.
+- Włączenie w sieci wirtualnej punkty końcowe usługi bazą danych Azure przy użyciu MariaDB **Microsoft.Sql** tag usługi umożliwia również punkty końcowe dla wszystkich usług platformy Azure, bazy danych: Azure Database dla serwera MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, usługi Azure SQL Database i Azure SQL Data Warehouse.
 
 - Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
@@ -149,7 +149,7 @@ W przypadku artykułów na temat tworzenia reguł sieci wirtualnej zobacz:
 - [Create and manage Azure Database for MariaDB VNet rules using Azure CLI](howto-manage-vnet-using-cli.md)
 -->
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md

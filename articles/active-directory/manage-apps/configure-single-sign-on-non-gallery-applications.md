@@ -15,12 +15,12 @@ ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a2be1735561d31f934f1353a336b5e4d198227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dd42f6317f684fcc5ad9da94c1b09ab1870ccf76
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622197"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408135"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory
 
@@ -46,7 +46,7 @@ Aby połączyć aplikację przy użyciu szablonu usługi integracji aplikacji, z
 
 W galerii aplikacji nieznajdujących się na liście aplikacji można dodawać przez zaznaczenie **aplikacji spoza galerii** Kafelek, który jest wyświetlany w wynikach wyszukiwania, jeśli nie można znaleźć żądanej aplikacji. Po wpisaniu nazwy aplikacji, można skonfigurować opcje logowania jednokrotnego i zachowania. 
 
-**Szybkie porady**: najlepszym rozwiązaniem, należy użyć funkcji wyszukiwania, sprawdź, czy aplikacja już istnieje w galerii aplikacji. Jeśli aplikacja zostanie znaleziony, i jego opis wymienia logowanie jednokrotne, aplikacja jest już obsługiwane dla federacyjnego logowania jednokrotnego.
+**Szybkie porady**:  Najlepszym rozwiązaniem należy użyć funkcji wyszukiwania, aby sprawdzić, czy aplikacja już istnieje w galerii aplikacji. Jeśli aplikacja zostanie znaleziony, i jego opis wymienia logowanie jednokrotne, aplikacja jest już obsługiwane dla federacyjnego logowania jednokrotnego.
 
   ![Wyszukiwanie](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
 
@@ -163,7 +163,7 @@ Po przechwyceniu strony logowania, można przypisać użytkowników i grup i po�
 >
 
 ## <a name="existing-single-sign-on"></a>Istniejące logowanie jednokrotne
-Wybierz tę opcję, aby dodać łącze do aplikacji w celu portalu panelu dostępu usługi Azure AD lub Office 365 Twojej organizacji. Służy to do dodawania łączy do aplikacji niestandardowe sieci web, które obecnie używają usługi Azure Active Directory Federation Services (lub innej usługi federacyjnej) zamiast usługi Azure AD do uwierzytelniania. Lub można dodać linków bezpośrednich do określonej strony programu SharePoint lub innych stron sieci web, które mają być wyświetlane w panelach dostępu użytkowników. 
+Wybierz tę opcję, aby dodać łącze do aplikacji w celu portalu panelu dostępu usługi Azure AD lub Office 365 Twojej organizacji. Służy to do dodawania łączy do aplikacje niestandardowe sieci web, które obecnie używają usług Active Directory Federation Services (lub innej usługi federacyjnej) zamiast usługi Azure AD do uwierzytelniania. Lub można dodać linków bezpośrednich do określonej strony programu SharePoint lub innych stron sieci web, które mają być wyświetlane w panelach dostępu użytkowników. 
 
 Po wybraniu **dalej**, użytkownik jest monitowany o podanie adresu URL aplikacji, aby połączyć. Po zakończeniu użytkowników i grup można przypisać do aplikacji, co powoduje, że są wyświetlane w aplikacji [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](end-user-experiences.md) dla tych użytkowników.
 

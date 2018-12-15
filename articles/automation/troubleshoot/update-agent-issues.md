@@ -4,25 +4,25 @@ description: Dowiedz się, jak rozwiązywać problemy z agentem rozwiązania Upd
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 68bac54de4f6a9f16f54032b10031bcf7222c676
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969315"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434770"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Zrozumienie wyniki wyboru agenta Windows do zarządzania aktualizacjami
 
-Istnieje wiele powodów dlaczego maszyny platformy Azure może nie być widoczny **gotowe** stan w usłudze Azure Update Management. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowego procesu roboczego, aby określić pierwotny problem. W tym artykule opisano sposób uruchamiania narzędzia do rozwiązywania problemów w zarządzania aktualizacjami w witrynie Azure portal i w scenariuszach w trybie offline.
+Może istnieć wiele przyczyn, na tym komputerze nie jest wyświetlany **gotowe** w zarządzania aktualizacjami. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchamiania narzędzia do rozwiązywania problemów dla maszyn platformy Azure z witryny Azure portal i maszyny spoza platformy Azure w [scenariusza w trybie offline](#troubleshoot-offline).
 
 ## <a name="start-the-troubleshooter"></a>Uruchom narzędzie do rozwiązywania problemów
 
-W witrynie Azure portal **Rozwiązywanie problemów z usługi Windows Update Agent** strony wyświetli problemów z agentem. Na stronie znajduje się link do tego artykułu, aby pomóc w rozwiązywaniu problemów. Aby przejść do **Rozwiązywanie problemów z usługi Windows Update Agent** wybierz opcję **Rozwiązywanie problemów z** łącze w **Aktualizuj gotowość agenta** kolumny.
+Dla maszyn, klikając **Rozwiązywanie problemów** łącze w obszarze **Aktualizuj gotowość agenta** kolumny w portalu zostanie uruchomiona **Rozwiązywanie problemów z usługi Windows Update Agent** strony. W przypadku komputerów spoza platformy Azure linku oferuje do tego artykułu. Zobacz [instrukcje w trybie offline](#troubleshoot-offline) rozwiązywać maszyny spoza platformy Azure.
 
 ![Aktualizowanie listy maszyn wirtualnych zarządzania](../media/update-agent-issues/vm-list.png)
 

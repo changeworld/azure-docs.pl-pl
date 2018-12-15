@@ -13,17 +13,17 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: a3c5c26f43fddf5d23df3bee0b0511e865b7e71b
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: abd9aeab88dc723ddcdff90ce58268296841dc4e
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705926"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413306"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki Start: Blokuje dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki Start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory  
 
 Aby zachować ochronę środowiska, można uniemożliwić użytkownikom podejrzane działanie insign podpisywania. [Usługa Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analizuje każdy logowania, a następnie oblicza prawdopodobieństwo, że logowanie próba nie było wykonywane przez prawowitym właścicielem konta użytkownika. Prawdopodobieństwo (niskiej, średniej, wysokiej) jest wskazywany w postaci obliczonej wartości o nazwie [poziomy ryzyka logowania](conditions.md#sign-in-risk). Ustawiając warunek ryzyka logowania, można skonfigurować zasady dostępu warunkowego, aby odpowiedzieć na poziomach określonych ryzyka logowania. 
 
@@ -87,7 +87,7 @@ W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany
 
     ![Usługa Azure Active Directory](./media/app-sign-in-risk/02.png)
 
-3. Na **usługi Azure Active Directory** stronie **Zarządzaj** kliknij **dostępu warunkowego**.
+3. Na **usługi Azure Active Directory** stronie **zabezpieczeń** kliknij **dostępu warunkowego**.
 
     ![Dostęp warunkowy](./media/app-sign-in-risk/03.png)
  

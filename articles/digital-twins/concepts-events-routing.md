@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: a1a31ec7ee0d1daea9f178e51dc860279d3787ec
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e16d27314a159b124e35560ffb8cd9685fc5c7a0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615351"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438017"
 ---
 # <a name="routing-events-and-messages"></a>Routing zdarzeń i komunikatów
 
@@ -23,7 +23,7 @@ Rozwiązania IoT często łączą kilka zaawansowanych usług, które obejmują 
 
 Twins cyfrowych platformy Azure oferuje zdarzeń IoT integrowanie innych usług platformy Azure lub aplikacje biznesowe na dwa sposoby:
 
-* **Zdarzenia routingu Twins cyfrowych platformy Azure**: obiektu w przestrzenne programu graph tej zmiany, dane telemetryczne, które zostanie odebrana, lub funkcji zdefiniowanej przez użytkownika, który tworzy powiadomienia na podstawie wstępnie zdefiniowanych warunków można wyzwalać zdarzenia Twins cyfrowych platformy Azure. Użytkownicy mogą wysyłać te zdarzenia w celu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [tematów usługi Azure Service Bus](https://azure.microsoft.com/services/service-bus/), lub [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do dalszego przetwarzania.
+* **Zdarzenia routingu Twins cyfrowych platformy Azure**: Obiekt w przestrzenne programu graph tej zmiany, dane telemetryczne, które zostanie odebrana, lub funkcji zdefiniowanej przez użytkownika, który tworzy powiadomienia na podstawie wstępnie zdefiniowanych warunków można wyzwalać zdarzenia Twins cyfrowych platformy Azure. Użytkownicy mogą wysyłać te zdarzenia w celu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [tematów usługi Azure Service Bus](https://azure.microsoft.com/services/service-bus/), lub [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do dalszego przetwarzania.
 
 * **Routing danych telemetrycznych z urządzenia**: Oprócz routingu zdarzeń Twins cyfrowych platformy Azure również komunikaty można kierować do urządzenie niesformatowane telemetrii do usługi Event Hubs do dalszych informacji i analiz. Tego rodzaju komunikaty nie są przetwarzane przez Twins cyfrowych platformy Azure. I tylko są one przekazywane do Centrum zdarzeń.
 

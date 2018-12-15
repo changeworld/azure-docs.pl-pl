@@ -4,25 +4,25 @@ description: Dowiedz się, jak rozwiązywać problemy z agentem rozwiązania Upd
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/06/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 028a06a7fb627fd69bdd2f0a2084bbdef11eaed4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 491f60b55843957bf9ec904f7310ef67219ba3c5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077246"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438646"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Zrozumienie wyniki sprawdzania agenta systemu Linux w zarządzania aktualizacjami
 
-Może istnieć wiele przyczyn, na komputerze platformy Azure nie jest widoczny **gotowe** w zarządzania aktualizacjami. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchomić narzędzie do rozwiązywania problemów w witrynie Azure portal i w scenariuszach w trybie offline.
+Może istnieć wiele przyczyn, na tym komputerze nie jest wyświetlany **gotowe** w zarządzania aktualizacjami. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchamiania narzędzia do rozwiązywania problemów dla maszyn platformy Azure z witryny Azure portal i maszyny spoza platformy Azure w [scenariusza w trybie offline](#troubleshoot-offline).
 
 ## <a name="start-the-troubleshooter"></a>Uruchom narzędzie do rozwiązywania problemów
 
-Klikając **Rozwiązywanie problemów** łącze w obszarze **Aktualizuj gotowość agenta** kolumny w portalu, możesz uruchomić **Rozwiązywanie problemów z usługi Windows Update Agent** strony. Ta strona pokazuje problemy z agenta i łącze do tego artykułu, aby pomóc w rozwiązywaniu problemów związanych z.
+Dla maszyn, klikając **Rozwiązywanie problemów** łącze w obszarze **Aktualizuj gotowość agenta** kolumny w portalu zostanie uruchomiona **Rozwiązywanie problemów z usługi Windows Update Agent** strony. W przypadku komputerów spoza platformy Azure linku oferuje do tego artykułu. Zobacz [instrukcje w trybie offline](#offline) rozwiązywać maszyny spoza platformy Azure.
 
 ![Strona listy maszyn wirtualnych](../media/update-agent-issues-linux/vm-list.png)
 
@@ -54,12 +54,12 @@ Sprawdzanie systemu operacyjnego, sprawdza, czy hybrydowego procesu roboczego Ru
 
 ### <a name="oms-agent"></a>Agenta pakietu OMS
 
-Tego sprawdzenia gwarantuje, że jest zainstalowany Agent pakietu OMS dla systemu Linux. Aby uzyskać instrukcje dotyczące sposobu jego instalacji, zobacz [Instalacja agenta dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+To sprawdzenie gwarantuje, czy jest zainstalowany Agent pakietu OMS dla systemu Linux. Aby uzyskać instrukcje dotyczące sposobu jego instalacji, zobacz [Instalacja agenta dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
 ### <a name="oms-agent-status"></a>Stan agenta pakietu OMS
 
-To sprawdzenie gwarantuje, że działa OMS Agent for Linux. Jeśli agent nie jest uruchomiona, można uruchomić następujące polecenie, aby podejmować próby ponownego uruchomienia. Aby uzyskać dodatkowe informacje na temat rozwiązywania problemów z agentem, zobacz [Linux hybrydowego Runbook Worker struktury rozwiązywania problemów](hybrid-runbook-worker.md#linux)
+To sprawdzenie gwarantuje, że działa OMS Agent for Linux. Jeśli agent nie jest uruchomiony, możesz uruchomić następujące polecenie, aby podejmować próby ponownego uruchomienia. Aby uzyskać więcej informacji na temat rozwiązywania problemów z agentem, zobacz [Linux hybrydowego Runbook Worker struktury rozwiązywania problemów](hybrid-runbook-worker.md#linux)
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -71,7 +71,7 @@ To sprawdzenie Określa, czy agent jest raportowanie do wielu obszarów roboczyc
 
 ### <a name="hybrid-runbook-worker"></a>Hybrydowy proces roboczy elementu Runbook
 
-Sprawdza, aby upewnić się, że Agent pakietu OMS dla systemu Linux zawiera pakiet hybrydowego procesu roboczego Runbook. Ten pakiet jest wymagane do zarządzania aktualizacjami do pracy.
+Ten test sprawdza, czy pakiet hybrydowego procesu roboczego Runbook agenta pakietu OMS dla systemu Linux. Ten pakiet jest wymagane do zarządzania aktualizacjami do pracy.
 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrydowy proces roboczy elementu Runbook stanu
 

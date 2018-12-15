@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 753a0ad72e1d4b60a93daa570ceecc25d21bb228
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634145"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436266"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu programu PowerShell
 
@@ -26,7 +26,7 @@ Ten dokument zawiera przykład przy użyciu programu Azure PowerShell do urucham
 
 * **Klaster usługi Azure HDInsight (Hadoop w HDInsight)**
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * **Stacja robocza z programem Azure PowerShell**.
@@ -37,15 +37,15 @@ Azure PowerShell udostępnia *poleceń cmdlet* umożliwiającą zdalne uruchamia
 
 Następujące polecenia cmdlet są używane podczas uruchamiania zadań MapReduce w zdalnym klastrze HDInsight.
 
-* **Connect-AzureRmAccount**: uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
+* **Connect-AzureRmAccount**: Uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
 
-* **Nowe AzureRmHDInsightMapReduceJobDefinition**: tworzy nowy *definicji zadania* przy użyciu określonej informacji o MapReduce.
+* **Nowe AzureRmHDInsightMapReduceJobDefinition**: Tworzy nową *definicji zadania* przy użyciu określonej informacji o MapReduce.
 
-* **Start-AzureRmHDInsightJob**: wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
+* **Start-AzureRmHDInsightJob**: Wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
 
-* **Oczekiwania AzureRmHDInsightJob**: używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż do ukończenia zadania lub przekroczenia czasu oczekiwania.
+* **Oczekiwania AzureRmHDInsightJob**: Używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż do ukończenia zadania lub przekroczenia czasu oczekiwania.
 
-* **Get-AzureRmHDInsightJobOutput**: używane do pobierania danych wyjściowych zadania.
+* **Get-AzureRmHDInsightJobOutput**: Używany do pobierania danych wyjściowych zadania.
 
 Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zadań w klastrze usługi HDInsight.
 
@@ -73,7 +73,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
 
     Te dane wyjściowe wskazuje, że zadanie zakończyło się powodzeniem.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Jeśli **ExitCode** jest wartością innego niż 0, zobacz [Rozwiązywanie problemów](#troubleshooting).
 
     W tym przykładzie przechowuje także pliki pobrane do **output.txt** pliku w katalogu, w którym należy uruchomić skrypt.
@@ -82,7 +82,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
 
 Aby wyświetlić wyrazy i liczby utworzone przez zadanie, otwórz **output.txt** plik w edytorze tekstów.
 
-> [!NOTE]
+> [!NOTE]  
 > Pliki wyjściowe zadania MapReduce są niezmienne. Dlatego jeśli uruchomisz tego przykładu, należy zmienić nazwę pliku wyjściowego.
 
 ## <a id="troubleshooting"></a>Rozwiązywanie problemów
@@ -113,5 +113,5 @@ Aby uzyskać ogólne informacje na temat zadań MapReduce w HDInsight:
 
 Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)

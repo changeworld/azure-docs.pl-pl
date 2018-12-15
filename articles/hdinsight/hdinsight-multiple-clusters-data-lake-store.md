@@ -10,19 +10,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: f92100e6e4dd7569a109aa01f3c998777568cce3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6b835dc300808453240dd3b9fe47957bd5feab9b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004596"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435229"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Wiele klastrów HDInsight za pomocą konta usługi Azure Data Lake Store
 
 Począwszy od HDInsight w wersji 3.5, można utworzyć klastry HDInsight z kontami usługi Azure Data Lake Store jako domyślny system plików.
-Data Lake Store obsługuje nieograniczony magazyn, który to idealny nie tylko do obsługi dużych ilości danych. ale także do obsługi HDInsight wielu klastrów korzystających z jednego konta Data Lake Store. Aby uzyskać instrukcje na temat sposobu Tworzenie klastra HDInsight z usługą Data Lake Store jako magazynu, zobacz [Szybki Start: konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Data Lake Store obsługuje nieograniczony magazyn, który to idealny nie tylko do obsługi dużych ilości danych. ale także do obsługi HDInsight wielu klastrów korzystających z jednego konta Data Lake Store. Aby uzyskać instrukcje na temat sposobu Tworzenie klastra HDInsight z usługą Data Lake Store jako magazynu, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-Ten artykuł zawiera zalecenia dotyczące usługi Data Lake administratora magazynu do konfigurowania pojedynczego i udostępnianie Store konta usługi Data Lake używany w wielu **active** klastry HDInsight. Te zalecenia dotyczą hostowanie wielu bezpiecznych, a także — Zabezpieczanie klastrów platformy Hadoop w udostępnionego konta usługi Data Lake store.
+Ten artykuł zawiera zalecenia dotyczące usługi Data Lake administratora magazynu do konfigurowania pojedynczego i udostępnianie Store konta usługi Data Lake używany w wielu **active** klastry HDInsight. Te zalecenia dotyczą obsługującego wiele bezpieczne, a także — Zabezpieczanie klastrów Apache Hadoop dla udostępnionego konta usługi Data Lake store.
 
 
 ## <a name="data-lake-store-file-and-folder-level-acls"></a>Data Lake Store, plików i folderów na poziomie listy kontroli dostępu
@@ -78,7 +78,7 @@ Podczas tworzenia jednostki usługi z dostępem użytkownika o nazwie (jak pokaz
 
 W tej sekcji wymieniono znane problemy dotyczące używania HDInsight za pomocą programu Data Lake Store i ich obejścia.
 
-### <a name="publicly-visible-localized-yarn-resources"></a>Publicznie widoczne zlokalizowanych zasobów usługi YARN
+### <a name="publicly-visible-localized-apache-hadoop-yarn-resources"></a>Publicznie widoczne zlokalizowane zasoby Apache Hadoop YARN
 
 Po utworzeniu nowego konta usługi Azure Data Lake store, katalog główny jest automatycznie konfigurowani przy użyciu listy ACL dostępu uprawnienie bitów 770. Folder główny będącej właścicielem, użytkownik jest ustawiony jako użytkownik, który utworzył konto (administratora Data Lake Store) i grupa będąca właścicielem jest ustawiana grupa podstawowa użytkownika, który utworzył konto. Brak dostępu do Umowy "inne".
 
@@ -93,6 +93,6 @@ Zestaw odczytu — uprawnienia do uruchamiania **innych** za pośrednictwem hier
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

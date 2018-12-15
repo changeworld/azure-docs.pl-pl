@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a12a65e03e7ac104eb7b09b116f7c463bbb5b98
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f62afc91f5cb92bd6f8faa866320fdd23b2c818b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240719"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089245"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkcje bazy danych Apache Cassandra obsługiwane przez interfejs API Cassandra usługi Azure Cosmos DB 
 
-Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Możesz komunikować się z interfejsem API Cassandra usługi Azure Cosmos DB przy użyciu [protokołu przewodowego](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) języka Cassandra Query Language (CQL) w wersji 4 zgodnego ze [sterownikami](http://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) klienta Cassandra typu open source. 
+Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Możesz komunikować się z interfejsem API Cassandra usługi Azure Cosmos DB przy użyciu [protokołu przewodowego](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) języka Cassandra Query Language (CQL) w wersji 4 zgodnego ze [sterownikami](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) klienta Cassandra typu open source. 
 
 Dzięki interfejsowi API Cassandra usługi Azure Cosmos DB możesz korzystać z interfejsów API Apache Cassandra, a także możliwości klasy przedsiębiorstwa zapewnianymi przez usługę Azure Cosmos DB. Możliwości klasy przedsiębiorstwa obejmują [globalną dystrybucję](distribute-data-globally.md), [automatyczne skalowanie partycjonowania w poziomie](partition-data.md), gwarancje dostępności i opóźnień, szyfrowanie nieużywanych danych, kopie zapasowe i wiele więcej.
 

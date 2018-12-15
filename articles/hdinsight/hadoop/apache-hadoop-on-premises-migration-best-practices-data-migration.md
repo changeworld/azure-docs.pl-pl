@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 54741bd2d76a7ba414613a40e07c47be703aa033
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5d0259726a45346f1e9b891cb235531d6c24d4a2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994406"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433427"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania migracji danych
 
@@ -25,7 +25,7 @@ Ten artykuł zawiera zalecenia dotyczące migracji danych do usługi Azure HDIns
 Istnieją dwie główne opcje migracji danych ze środowiska lokalnego do środowiska platformy Azure:
 
 1.  Transfer danych za pośrednictwem sieci przy użyciu protokołu TLS
-    1. Za pośrednictwem Internetu — mogą przesyłać dane do usługi Azure storage za pośrednictwem regularne połączenia internetowego przy użyciu jednej z kilku narzędzi, takich jak: Azure Storage Explorer, narzędzia AzCopy, programu Azure Powershell i wiersza polecenia platformy Azure.  Zobacz [przenoszenie danych do i z usługi Azure Storage](../../storage/common/storage-moving-data.md) Aby uzyskać więcej informacji.
+    1. Za pośrednictwem Internetu — mogą przesyłać dane do usługi Azure storage za pośrednictwem regularne połączenia internetowego przy użyciu jednej z kilku narzędzi, takich jak: Interfejs wiersza polecenia usługi Azure Storage Explorer, narzędzia AzCopy, programu Azure Powershell i platformy Azure.  Zobacz [przenoszenie danych do i z usługi Azure Storage](../../storage/common/storage-moving-data.md) Aby uzyskać więcej informacji.
     2. Expressroute — ExpressRoute to usługa, która umożliwia tworzenie prywatnych połączeń między centrami danych firmy Microsoft i infrastrukturą lokalną lub w funkcji wspólnej lokalizacji. Połączenia ExpressRoute nie omijają publiczny Internet i oferują wyższe bezpieczeństwa, niezawodności i szybkości pracy krótsze opóźnienia niż typowe połączenia przez Internet. Aby uzyskać więcej informacji, zobacz [tworzenie i modyfikowanie obwodu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     1. Transfer danych w trybie online pole danych — krawędź pola danych i bramy pola danych czy produkty transferu danych w trybie online, które pełnić rolę bram magazynu do zarządzania danymi między Twoją witryną a Azure sieci. Data Box Edge, lokalne urządzenie sieciowe, przesyła dane na platformę Azure i z niej oraz przetwarza dane przy użyciu funkcji obliczeniowej na brzegu sieci z obsługą sztucznej inteligencji. Data Box Gateway to urządzenie wirtualne z funkcjami bramy magazynu. Aby uzyskać więcej informacji, zobacz [Azure dokumentacją Data Box - Online transferu](https://docs.microsoft.com/azure/databox-online/).
 1.  Wysyłanie danych w trybie Offline
@@ -47,9 +47,11 @@ Poniższa tabela zawiera czas transferu przybliżony danych na podstawie przepus
 |1 PB|6 lat|3 lata|97 dni|10 dni|
 |2 PB|od 12 lat|5 lat|194 dni|19 dni|
 
-Narzędzia natywnej na platformie Azure, takich jak narzędzia DistCp, usługi Azure Data Factory i AzureCp, może służyć do przesyłania danych za pośrednictwem sieci. Narzędzia innych firm platforma WANDisco można również w tym samym celu. Narzędzia Mirrormaker platformy Kafka i Sqoop mogą służyć do transferu bieżące dane ze środowiska lokalnego do systemów usługi Azure storage.
+Narzędzia natywnej na platformie Azure, takich jak Apache Hadoop DistCp, usługi Azure Data Factory i AzureCp, może służyć do przesyłania danych za pośrednictwem sieci. Narzędzia innych firm platforma WANDisco można również w tym samym celu. Apache Kafka z narzędzia Mirrormaker i Apache Sqoop może służyć do transferu bieżące dane ze środowiska lokalnego do systemów usługi Azure storage.
 
-## <a name="performance-considerations-with-apache-distcp"></a>Zagadnienia związane z wydajnością za pomocą narzędzia DistCp Apache
+
+## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Zagadnienia dotyczące wydajności w przypadku korzystania z narzędzia Apache Hadoop DistCp
+
 
 Narzędzia DistCp jest projektu Apache, który używa zadania MapReduce mapy w celu transferu danych, obsługa błędów i odzyskać z tych błędów. Lista plików źródłowych przypisuje do każdego zadania mapy. Zadanie mapy następnie kopiuje wszystkie jego pliki przypisane do miejsca docelowego. Istnieje kilka technik może poprawić wydajność DistCp.
 
@@ -86,7 +88,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 ## <a name="metadata-migration"></a>Migracja metadanych
 
-### <a name="hive"></a>Hive
+### <a name="apache-hive"></a>Apache Hive
 
 Magazyn metadanych hive można migrować za pomocą skryptów lub przy użyciu funkcji replikacji bazy danych.
 
@@ -106,7 +108,7 @@ Magazyn metadanych hive można migrować za pomocą skryptów lub przy użyciu f
 ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
 ```
 
-### <a name="ranger"></a>Ranger
+### <a name="apache-ranger"></a>Apache Ranger
 
 - Eksportuj zasady platformy Ranger w środowisku lokalnym do plików xml.
 - Przekształć lokalnych określonych opartych na systemie plików HDFS ścieżki do WASB/Azure Data Lake Store przy użyciu narzędzia, takiego jak XSLT.

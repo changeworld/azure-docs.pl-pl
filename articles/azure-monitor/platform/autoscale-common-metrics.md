@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: f17d2d1cf25f533fb37d44da2890b6ad8741be82
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d12edc2023deb69118d7c02e053cd2525f6ae684
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326204"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437728"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Usługa Azure Monitor autoscaling często używane metryki
 Usługa Azure Monitor autoscaling umożliwia skalowanie liczby wystąpień uruchomionych w górę lub w dół, na podstawie danych telemetrycznych (metryki). W tym dokumencie opisano typowe metryki, które prawdopodobnie chcą używać. W witrynie Azure portal można wybrać metryki zasobu, aby przeskalować. Jednak możesz również dowolnej metryce z skalowanie przez inny zasób.
@@ -34,8 +34,8 @@ Jeśli albo poprzednim przypadku ma wartość true, następnie przejrzyj [Diagno
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Metryki hosta Windows opartych na usłudze Resource Manager i maszyn wirtualnych systemu Linux
 Następujące metryki na poziomie hosta są emitowane przez domyślną dla maszyny Wirtualnej platformy Azure i zestawu skalowania maszyn wirtualnych w wystąpieniach systemów Windows i Linux. Te metryki pokazują maszynę Wirtualną platformy Azure, ale są zbierane z hosta maszyny Wirtualnej platformy Azure, a nie za pośrednictwem agenta zainstalowanego na maszynie Wirtualnej gościa. Te metryki może używać reguł skalowania automatycznego.
 
-- [Metryki hosta Windows opartych na usłudze Resource Manager i maszyn wirtualnych systemu Linux](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachines)
-- [Metryki hosta opartego na usłudze Resource Manager Windows i Linux VM Scale Sets](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)
+- [Metryki hosta Windows opartych na usłudze Resource Manager i maszyn wirtualnych systemu Linux](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Metryki hosta opartego na usłudze Resource Manager Windows i Linux VM Scale Sets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metryki systemu operacyjnego gościa opartego na usłudze Resource Manager VMs Windows
 Po utworzeniu maszyny Wirtualnej na platformie Azure diagnostics jest włączone za pomocą rozszerzenia diagnostyki. Rozszerzenie diagnostyki emituje zestaw metryk pobranych z wewnątrz maszyny Wirtualnej. Oznacza to, że można automatycznego skalowania poza metryki, które nie są generowane domyślnie.

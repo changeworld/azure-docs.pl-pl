@@ -10,17 +10,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: f585a9d89418f15d9e5c08ae36b70791eca54219
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: bbe61477a9841173fb47267b53da1b5cf75d9924
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017154"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410299"
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Używanie technologii Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy w HDInsight
+# <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Za pomocą programu Apache Oozie Apache Hadoop do definiowania i uruchomić przepływ pracy w HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Dowiedz się, jak zdefiniować przepływ pracy i uruchomić przepływ pracy na HDInsight za pomocą programu Apache Oozie. Aby uzyskać informacje dotyczące koordynatora programu Oozie, zobacz [oparte na czasie koordynatora programu Oozie usługi Hadoop za pomocą HDInsight][hdinsight-oozie-coordinator-time]. Aby poznać usługi Azure Data Factory, zobacz [korzystanie z języka Pig i Hive z usługą Data Factory][azure-data-factory-pig-hive].
+Dowiedz się, jak zdefiniować przepływ pracy i uruchomić przepływ pracy na HDInsight za pomocą programu Apache Oozie. Aby uzyskać informacje dotyczące koordynatora programu Oozie, zobacz [za pomocą usług opartych na czasie koordynatora programu Oozie Apache HDInsight][hdinsight-oozie-coordinator-time]. Aby poznać usługi Azure Data Factory, zobacz [Use Apache Pig i Apache Hive z usługą Data Factory][azure-data-factory-pig-hive].
 
 Apache Oozie to system koordynacji/przepływ pracy, który zarządza zadaniami na platformie Hadoop. Jest zintegrowany ze stosem platformy Hadoop i obsługuje zadania platformy Hadoop dla Apache MapReduce, Apache Pig, Apache Hive i Apache Sqoop. Może również służyć do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
 
@@ -28,7 +28,7 @@ Przepływ pracy, który implementuje zgodnie z instrukcjami w tym samouczku zawi
 
 ![Diagram przepływu pracy][img-workflow-diagram]
 
-1. Działanie programu Hive jest uruchamiany skrypt HiveQL, zliczania wystąpień każdego typu poziomu dziennika w pliku log4j. Każdy plik log4j składa się z wiersz pola, który zawiera pola [poziom dziennika], które zawiera typ i ważność, na przykład:
+1. Działanie programu Hive jest uruchamiany skrypt HiveQL, zliczania wystąpień każdego typu poziomu dziennika w pliku Apache Log4j. Każdy plik log4j składa się z wiersz pola, który zawiera pola [poziom dziennika], które zawiera typ i ważność, na przykład:
    
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -44,11 +44,11 @@ Przepływ pracy, który implementuje zgodnie z instrukcjami w tym samouczku zawi
         [TRACE] 816
         [WARN]  4
    
-    Aby uzyskać więcej informacji na temat programu Hive, zobacz temat [Use Hive with HDInsight][hdinsight-use-hive] (Korzystanie z programu Hive z usługą HDInsight).
-2. Akcja Sqoop eksportuje dane wyjściowe HiveQL do tabeli w bazie danych Azure SQL. Aby uzyskać więcej informacji na temat narzędzia Sqoop zobacz [Hadoop Sqoop korzystanie z HDInsight][hdinsight-use-sqoop].
+    Aby uzyskać więcej informacji na temat programu Hive, zobacz [używanie programu Apache Hive z HDInsight][hdinsight-use-hive].
+2. Akcja Sqoop eksportuje dane wyjściowe HiveQL do tabeli w bazie danych Azure SQL. Aby uzyskać więcej informacji na temat narzędzia Sqoop zobacz [Użyj Apache Sqoop z HDInsight][hdinsight-use-sqoop].
 
-> [!NOTE]
-> Obsługiwane wersje programu Oozie w klastrach HDInsight, zobacz [nowości w wersjach klastra Hadoop dostarczanych przez HDInsight?] [hdinsight-versions].
+> [!NOTE]  
+> Obsługiwane wersje programu Oozie w klastrach HDInsight, zobacz [nowości w wersjach klastra platformy Apache Hadoop, dostarczone przez HDInsight?] [hdinsight-versions].
 > 
 > 
 
@@ -613,16 +613,16 @@ Poniżej przedstawiono przykładowy skrypt programu PowerShell, którego można 
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku pokazano, jak zdefiniować przepływ pracy programu Oozie i sposób uruchamiania zadania programu Oozie przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+W tym samouczku pokazano, jak zdefiniować przepływ pracy programu Apache Oozie i sposób uruchamiania zadania programu Oozie przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* [Za pomocą usług opartych na czasie koordynatora programu Oozie HDInsight][hdinsight-oozie-coordinator-time]
-* [Rozpoczynanie pracy za pomocą usługi Hadoop przy użyciu technologii Hive w HDInsight do analizy użycia przenośnych słuchawki][hdinsight-get-started]
+* [Za pomocą usług opartych na czasie koordynatora programu Oozie Apache HDInsight][hdinsight-oozie-coordinator-time]
+* [Rozpoczynanie pracy przy użyciu technologii Apache Hadoop przy użyciu technologii Hive w HDInsight do analizowania użycia przenośnych słuchawki][hdinsight-get-started]
 * [Usługi Azure Blob storage za pomocą HDInsight][hdinsight-storage]
 * [Administrowanie HDInsight przy użyciu programu PowerShell][hdinsight-admin-powershell]
-* [Przekazywanie danych na potrzeby zadań usługi Hadoop w HDInsight][hdinsight-upload-data]
-* [Z usługą Hadoop w HDInsight przy użyciu narzędzia Sqoop][hdinsight-use-sqoop]
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight][hdinsight-use-hive]
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight][hdinsight-use-pig]
+* [Przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight][hdinsight-upload-data]
+* [Przy użyciu technologii Apache Hadoop w HDInsight przy użyciu narzędzia Apache Sqoop][hdinsight-use-sqoop]
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight][hdinsight-use-hive]
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight][hdinsight-use-pig]
 * [Opracowywanie programów MapReduce w języku Java dla HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563

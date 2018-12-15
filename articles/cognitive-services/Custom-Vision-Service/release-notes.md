@@ -9,21 +9,31 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a4b6b1d267e9c86a03644129ee639b74ed214d88
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901332"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408361"
 ---
 # <a name="custom-vision-service-release-notes"></a>Informacje o wersji usługi Custom Vision
+
+
+## <a name="december-12-2018"></a>12 grudnia 2018 r.
+- Obsługuje eksportowania dla modeli wykrywanie obiektów (wprowadzono obiekt wykrywania Compact domeny).
+- Rozwiązano szereg problemów dotyczących ułatwień dostępu dla czytnika zawartości ekranu ulepszone i obsługa nawigacji klawiatury. 
+- Aktualizacje środowiska użytkownika Przeglądarka obrazów i wykrywania obiektu ulepszone znakowanie umożliwiający znakowanie szybciej.  
+- Zaktualizowano podstawowy model dla domeny wykrywania obiektu lepsze wykrywanie obiektów jakości. 
+- Poprawki błędów.
+
+## <a name="november-6-2018"></a>6 listopada 2018 r.
+- Dodano obsługę dla domeny Logo w wykrywanie obiektów.
 
 ## <a name="october-9-2018"></a>9 października 2018 r.
 - Wykrywanie obiektów wprowadza płatna wersja zapoznawcza. Można teraz tworzyć projekty wykrywanie obiektów z zasobów platformy Azure.
 - Dodano funkcję "Przenieś na platformie Azure" do witryny sieci Web, aby ułatwić uaktualnienie projektu ograniczonej wersji próbnej, aby utworzyć łącze do platformy Azure. Projekt połączonych zasobów (F0 lub S0). To na stronie Ustawienia można znaleźć na produkt.  
 - Dodano Eksport do 1.2 ONNX, obsługi wersji aktualizacji października 2018 Windows Windows ML.
 Eksportowanie poprawki błędów, w tym ONNX przy użyciu znaków specjalnych. 
-
 
 ## <a name="august-14-2018"></a>14 sierpnia 2018 r.
 - Dodano widżet "Wprowadzenie" do lokacji customvision.ai prowadzą użytkowników przez szkolenia dotyczącego projektu. 

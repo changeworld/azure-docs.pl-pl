@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
-ms.openlocfilehash: 1ea8fddf2b4e75abba38f011a271aada848a8cb5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192196"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433096"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor procedury wycofywania klasycznego modelu wdrażania interfejsów API dla metryki i automatycznego skalowania
 
@@ -24,7 +24,7 @@ Te same operacje są obsługiwane za pośrednictwem interfejsów API dla na pods
 
 Jeśli zarządzasz automatycznego skalowania w witrynie Azure portal, [nowy zestaw SDK usługi Azure Monitor](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), szablonów programu PowerShell, interfejsu wiersza polecenia lub usługi Resource Manager, są wymagane żadne akcje.  
 
-Jeśli używanym metryki w witrynie Azure portal lub za pośrednictwem różnych [monitorowania usług dla partnerów](../../monitoring-and-diagnostics/monitoring-partners.md), są wymagane żadne akcje. Firma Microsoft współpracuje z partnerami, aby migrować do nowych interfejsów API monitorowania.
+Jeśli używanym metryki w witrynie Azure portal lub za pośrednictwem różnych [monitorowania usług dla partnerów](../../azure-monitor/platform/partners.md), są wymagane żadne akcje. Firma Microsoft współpracuje z partnerami, aby migrować do nowych interfejsów API monitorowania.
 
 ## <a name="who-is-affected"></a>Kto dotyczy problem
 

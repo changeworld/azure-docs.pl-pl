@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: 5acc9bfdd674d6677ad6da69b87bb8053cc43a19
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5052ec73114c040a4c140d258b197fdde58f6667
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972222"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409330"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android
 
@@ -189,7 +189,7 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Aby dowiedzieć się, jak utworzyć dodatkowe tabele w kodzie zaplecza funkcji Mobile Apps, zobacz [porady: Definiowanie kontrolera tabeli] [ 15] (zaplecze .NET) lub [Definiowanie tabel przy użyciu schematu dynamicznego] [ 16] (Zaplecze środowiska Node.js).
+Aby dowiedzieć się, jak utworzyć dodatkowe tabele w kodzie zaplecza funkcji Mobile Apps, zobacz [jak: Zdefiniuj kontrolera tabeli] [ 15] (zaplecze .NET) lub [Definiowanie tabel przy użyciu schematu dynamicznego] [ 16] (zaplecze środowiska Node.js).
 
 Tabeli wewnętrznej bazy danych usługi Azure Mobile Apps definiuje pięć specjalne pola, cztery z nich są dostępne dla klientów:
 
@@ -446,7 +446,7 @@ do {
 > [!TIP]
 > Wybieranie rozmiaru prawej strony jest kompromis między użycie pamięci, gdy żądanie się dzieje, przepustowości i opóźnienia w całkowicie odbiera dane.  Wartość domyślna (50 rekordów) jest odpowiednia dla wszystkich urządzeń.  W przypadku wyłącznie działają na większych urządzeniach pamięci, należy zwiększyć maksymalnie 500.  Znaleźliśmy, że zwiększenie rozmiaru strony ponad 500 rekordów skutkuje niedopuszczalne opóźnienia i problemy z dużej ilości pamięci.
 
-### <a name="chaining"></a>Porady: łączenie metody zapytań
+### <a name="chaining"></a>Jak: Łączenie metody zapytań
 
 Metody stosowane w tworzenie zapytań o tabele wewnętrznej bazy danych mogą być łączone. Łańcucha metody zapytań pozwala wybrać określone kolumny przefiltrowano wiersze, które są sortowane i stronicowanej. Można tworzyć złożone filtry logiczne.  Każda metoda zapytanie zwraca obiekt zapytania. Aby zakończyć szereg metod i faktycznie uruchomić zapytanie, należy wywołać **wykonania** metody. Na przykład:
 
@@ -672,7 +672,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>Porady: Praca z danymi bez typu
+## <a name="untyped"></a>Jak: Praca z danymi bez typu
 
 Nietypizowane model programowania zapewnia dokładną kontrolę nad serializacji JSON.  Istnieje kilka typowych scenariuszy, w których warto korzystać z modelu programowania bez typu. Jeśli na przykład tabeli wewnętrznej bazy danych zawiera wiele kolumn, należy odwoływać się do podzestawu kolumn.  Typizowany model wymaga zdefiniowania wszystkich kolumn, które są zdefiniowane w zaplecza funkcji Mobile Apps w klasie danych.  Większość wywołań interfejsu API do uzyskiwania dostępu do danych są podobne do typizowanych wywołania programowania. Główną różnicą jest to, że w modelu danych można wywoływać metody na **MobileServiceJsonTable** obiektu, zamiast **MobileServiceTable** obiektu.
 
@@ -768,8 +768,8 @@ Ten sam zestaw filtrowania, filtrowanie i stronicowanie metod, które są dostę
 Zestaw SDK klienta usługi Azure Mobile Apps implementuje również synchronizacji danych w trybie offline przy użyciu bazy danych SQLite, aby przechowywać kopię dane serwera lokalnie.  Operacje wykonywane na tabelę w trybie offline nie wymagają łączności mobilnej do pracy.  Synchronizacja w trybie offline ułatwia odporność i wydajność kosztem bardziej złożona logika do rozwiązywania konfliktów.  Zestaw SDK klienta usługi Azure Mobile Apps implementuje następujące funkcje:
 
 * Synchronizacja przyrostowa: Tylko zaktualizowanych i nowych rekordów są pobierane, zapisywanie zużycie przepustowości i pamięci.
-* Optymistyczna współbieżność: Operacje są uznawane za zakończyło się sukcesem.  Rozwiązywanie konfliktów jest odroczone do czasu aktualizacje są wykonywane na serwerze.
-* Rozwiązywanie konfliktów: Zestaw SDK wykrywa, gdy powodująca konflikt zmiana stało się na serwerze i zapewnia punkty zaczepienia, aby ostrzec użytkownika.
+* Optymistyczna współbieżność: Przyjęto założenie, że operacje są poprawne.  Rozwiązywanie konfliktów jest odroczone do czasu aktualizacje są wykonywane na serwerze.
+* Rozwiązywanie konfliktów: Zestaw SDK wykrywa zmiany powodujące konflikt stało się na serwerze i zawiera punkty zaczepienia, aby ostrzec użytkownika.
 * Usuwanie nietrwałe: Usunięte rekordy są oznaczane usuniętych, dzięki czemu inne urządzenia, aby zaktualizować ich pamięci podręcznej offline.
 
 ### <a name="initialize-offline-sync"></a>Inicjowanie synchronizacji w trybie Offline
@@ -892,7 +892,7 @@ public void completeItem(View view) {
 
 Samouczki już szczegółowego opisywania, jak dodać te funkcje.
 
-Usługa App Service obsługuje [uwierzytelnianie użytkowników aplikacji](app-service-mobile-android-get-started-users.md) za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, Microsoft Account, Twitter i usługi Azure Active Directory. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w zapleczu.
+Usługa App Service obsługuje [uwierzytelnianie użytkowników aplikacji](app-service-mobile-android-get-started-users.md) za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, konta Microsoft, Twitter i Azure Active Directory. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w zapleczu.
 
 Obsługiwane są dwa przepływy uwierzytelniania: **serwera** przepływu i **klienta** przepływu. Przepływ serwera zapewnia najprostszą proces uwierzytelniania opiera się na interfejsie sieci web dostawcy tożsamości.  Nie dodatkowe zestawy SDK są wymagane do zaimplementowania uwierzytelniania przepływu serwera. Uwierzytelnianie przepływu serwera nie zapewnia ścisłą integrację w urządzeniach przenośnych i jest zalecane tylko na potrzeby weryfikacji koncepcji scenariuszy.
 
@@ -907,7 +907,7 @@ Cztery kroki są wymagane do włączenia uwierzytelniania w aplikacji:
 
 Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Identyfikator SID, uwierzytelnionego użytkownika umożliwia również modyfikowanie żądania.  Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] i dokumentacji Porada zestawu SDK serwera.
 
-### <a name="caching"></a>Uwierzytelniania: Przepływ serwera
+### <a name="caching"></a>Uwierzytelnianie: Przepływ serwera
 
 Poniższy kod uruchamia proces serwera przepływ logowania przy użyciu dostawcy Google.  Dodatkowa konfiguracja jest wymagana ze względu na wymagania dotyczące zabezpieczeń dla dostawcy Google:
 
@@ -1314,6 +1314,6 @@ Ten kod musi zostać wykonana przed utworzeniem odwołania klienta mobilnego za 
 [19]: https://www.odata.org/documentation/odata-version-3-0/
 [20]: https://hashtagfail.com/post/46493261719/mobile-services-android-querying
 [21]: https://github.com/Azure-Samples/azure-mobile-apps-android-quickstart
-[22]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[22]: ../app-service/configure-authentication-provider-aad.md
 [Future]: https://developer.android.com/reference/java/util/concurrent/Future.html
 [AsyncTask]: https://developer.android.com/reference/android/os/AsyncTask.html

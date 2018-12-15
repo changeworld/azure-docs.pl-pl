@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 5f75ada1d37f6bd5cb2d870dd5169de7a4844eb3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fa4e6aa1274609ebf990a02d41f63541668d3b37
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869057"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438714"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Wizualizuj dane z usługi Azure Cosmos DB przy użyciu łącznika usługi Power BI
 
@@ -34,7 +34,19 @@ Przed wykonaniem instrukcji zawartych w tym samouczku usługa Power BI, upewnij 
 
 * Pobierz [przykładowe dane swe dzieła](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) z usługi GitHub.
 
-* [Tworzenie konta bazy danych usługi Azure Cosmos DB](https://azure.microsoft.com/documentation/articles/create-account/) i zaimportuj dane swe dzieła przy użyciu [narzędzia migracji danych usługi Azure Cosmos DB](import-data.md).
+* [Tworzenie konta bazy danych usługi Azure Cosmos DB](https://azure.microsoft.com/documentation/articles/create-account/) i zaimportuj dane swe dzieła przy użyciu [narzędzia migracji danych usługi Azure Cosmos DB](import-data.md). Podczas importowania danych, należy wziąć pod uwagę następujące ustawienia dla źródła i miejsca docelowe w narzędziu do migracji danych:
+
+   * **Parametry źródła** 
+
+       * **Importuj z:** Pliki JSON
+
+   * **Parametry docelowego** 
+
+      * **Parametry połączenia:** `AccountEndpoint=<Your_account_endpoint>;AccountKey=<Your_primary_or_secondary_key>;Database= <Your_database_name>` 
+
+      * **Klucz partycji:**  /kraj 
+
+      * **Przepływność kolekcji:** 1000 
 
 Udostępnianie raportów w witrynie PowerBI.com, musisz mieć konto w witrynie PowerBI.com.  Aby dowiedzieć się więcej na temat usługi Power BI i programie Power BI Pro, zobacz [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).
 

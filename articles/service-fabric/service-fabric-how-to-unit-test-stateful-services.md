@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: 945cdf63a178a09f121f355aaa7635537e46e5ff
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4941d893c6c871541772569e42bf5169270def88
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703823"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413561"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Tworzenie testów jednostkowych dla usług stanowych
 Jednostki testowania usług stanowych usługi Service Fabric udostępnia typowych błędów, które będą nie musi być przechwycony przez konwencjonalne aplikacji lub testy jednostkowe specyficznego dla domeny. Podczas tworzenia testów jednostkowych dla usług stanowych, istnieją pewne specjalne zagadnienia, które powinny być przechowywane w uwadze.
@@ -34,7 +34,7 @@ W tym artykule założono, że [Unit testing usług stanowych w usłudze Service
 Począwszy od wersji 3.3.0 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) zapewnia interfejs API dla pozorowanie organizowania repliki i zarządzania stanem. To posłuży w przykładach.
 
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
-[Github](https://github.com/loekd/ServiceFabric.Mocks)
+[GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
 *ServiceFabric.Mocks nie jest właścicielem lub obsługiwane przez firmę Microsoft. Jednak ta funkcja jest obecnie zalecane biblioteki dla usług stanowych testów jednostkowych firmy Microsoft.*
 
@@ -91,7 +91,7 @@ replicaSet.PromoteNewReplicaToPrimaryAsync(4);
 
 //promote the first idle secondary to an active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync();
-//promote idle secodary with replica id 4 to active secondary 
+//promote idle secodary with replica id 4 to active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync(4);
 
 //add a new replica with randomly assigned replica id and promote it to primary
@@ -100,7 +100,7 @@ PromoteNewReplicaToPrimaryAsync()
 PromoteNewReplicaToPrimaryAsync(4)
 ```
 
-## <a name="putting-it-all-together"></a>Łączenie wszystkiego razem
+## <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
 Następującego testu pokazuje Konfigurowanie zestawu replik trzema węzłami i weryfikowanie, czy dane są dostępne z pomocniczego, po zmianie roli. Jest to typowy problem, to może wychwycić, jeśli dane są dodawane podczas `InsertAsync` została zapisana coś w pamięci lub reliable collection bez uruchamiania `CommitAsync`. W obu przypadkach pomocniczej będzie zsynchronizowany z podstawowego. Może to prowadzić do niezgodne odpowiedzi po przenosi usługa.
 
 ```csharp

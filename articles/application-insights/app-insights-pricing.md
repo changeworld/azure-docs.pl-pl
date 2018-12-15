@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: a81cb9041b905cfb00183981036116fbc61f376a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8a0acbfa18053b6b50bd872d109b02d556a6f5f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000876"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436065"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Zarządzanie cenami i ilością danych w usłudze Application Insights
 
 > [!NOTE]
 > W tym artykule opisano, jak analizować użycie danych usługi Application Insights.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
-> - [Monitorowanie użycia i szacowanych kosztów](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
+> - [Monitorowanie użycia i szacowanych kosztów](../azure-monitor/platform/usage-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
 
 Cennik usługi [usługi Azure Application Insights] [ start] jest oparty na wolumenie danych na aplikację. Każdy zasób usługi Application Insights jest rozliczane jako osobną usługą i przyczynia się do rachunek dla subskrypcji platformy Azure.
 
-Usługa Application Insights ma dwa plany cenowe: Basic i Enterprise. Podstawowy plan taryfowy jest domyślny plan. Obejmuje wszystkie funkcje planu Enterprise, bez ponoszenia dodatkowych kosztów. Przede wszystkim od ilości danych, które są pozyskiwane w ramach planu podstawowego. 
+Usługa Application Insights ma dwa plany cenowe: Podstawowe, jak i Enterprise. Podstawowy plan taryfowy jest domyślny plan. Obejmuje wszystkie funkcje planu Enterprise, bez ponoszenia dodatkowych kosztów. Przede wszystkim od ilości danych, które są pozyskiwane w ramach planu podstawowego. 
 
 Enterprise plan ma opłaty za węzeł i każdy węzeł otrzyma dzienny przydział danych. W przedsiębiorstwie cennikiem, opłaty są naliczane za dane pozyskane powyżej uwzględnione dopuszczalnej wartości. Jeśli używasz pakietu Operations Management Suite, należy wybrać Enterprise plan. 
 
@@ -86,14 +86,14 @@ Application Insights opłaty są dodawane na rachunku dotyczącym platformy Azur
 ## <a name="data-rate"></a>Szybkość danych
 Ilość danych wysyłanych jest ograniczone na trzy sposoby:
 
-* **Próbkowanie**: próbkowania można użyć, aby zmniejszyć ilość danych telemetrycznych wysyłanych z aplikacji serwera i klienta, z minimalnym zakłócenia metryki. Próbkowanie to podstawowe narzędzie używane do dostrojenia ilość danych wysyłanych. Dowiedz się więcej o [próbkowanie funkcji](app-insights-sampling.md). 
-* **Dzienny limit**: podczas tworzenia zasobu usługi Application Insights w witrynie Azure portal, dzienny limit wynosi 100 GB/dzień. Podczas tworzenia zasobu usługi Application Insights w programie Visual Studio, wartość domyślna to mały (tylko 32,3 MB/dzień). Dzienny limit Domyślnie opcja jest zaznaczona ułatwić testowanie. Jest ona przeznaczona, użytkownik zostanie podnieść dziennego limitu przed wdrożeniem aplikacji do środowiska produkcyjnego. 
+* **Próbkowanie**: Próbkowanie umożliwia zmniejszenie ilości telemetrii wysyłanych z serwera i klienta aplikacje z minimalnym zakłócenia metryki. Próbkowanie to podstawowe narzędzie używane do dostrojenia ilość danych wysyłanych. Dowiedz się więcej o [próbkowanie funkcji](app-insights-sampling.md). 
+* **Dzienny limit**: Podczas tworzenia zasobu usługi Application Insights w witrynie Azure portal, dzienny limit wynosi 100 GB/dzień. Podczas tworzenia zasobu usługi Application Insights w programie Visual Studio, wartość domyślna to mały (tylko 32,3 MB/dzień). Dzienny limit Domyślnie opcja jest zaznaczona ułatwić testowanie. Jest ona przeznaczona, użytkownik zostanie podnieść dziennego limitu przed wdrożeniem aplikacji do środowiska produkcyjnego. 
 
     Maksymalny limit jest 1000 GB/dzień, chyba że żądanie wyższą maksymalną dla aplikacji o wysokim natężeniu ruchu. 
 
     Po ustawieniu dzienny limit, należy zachować ostrożność. Powinno być zgodne z zamiarami użytkownika *nigdy osiągnięty dzienny limit*. W razie osiągnięcia dziennego limitu utratę danych przez pozostałą część dnia i nie może monitorować Twojej aplikacji. Aby zmienić dzienny limit, użyj **dzienny limit ilości** opcji. Możesz uzyskać dostęp ta opcja w **użycie i szacunkowe koszty** okienko (opisane bardziej szczegółowo w dalszej części tego artykułu).
     Usunęliśmy ograniczenie niektórych typów subskrypcji, obejmujących środki, które nie można użyć dla usługi Application Insights. Wcześniej, jeśli subskrypcja jest objęta limitem wydatków, dzienny limit okno dialogowe ma okno instrukcjami, aby usunąć limit wydatków i włączyć dzienny limit danych należy podnieść 32,3 MB/dzień.
-* **Ograniczanie**: limity ograniczania przepływności danych do 32 000 zdarzeń na sekundę, szybkości średniej ponad 1 minutę na klucz instrumentacji.
+* **Ograniczanie**: Limity ograniczania przepływności danych do 32 000 zdarzeń na sekundę, szybkości średniej ponad 1 minutę na klucz instrumentacji.
 
 *Co się stanie, jeśli Moja aplikacja przekracza ograniczenie przepustowości?*
 

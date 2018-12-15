@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 1136d97ad1c1d02320331e6d2013b68526d5abb4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f76dfc8499d294c2c682c4d9c4cf2cd2f858432f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277906"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408868"
 ---
-# <a name="use-spark-to-read-and-write-hbase-data"></a>Odczytywanie i zapisywanie danych w bazie danych HBase za pomocą platformy Spark
+# <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Odczytywanie i zapisywanie danych w bazie danych Apache HBase za pomocą platformy Apache Spark
 
-Apache HBase zwykle zostaje przesłane zapytanie za pomocą jego niskiego poziomu interfejsu API (skanowania, pobiera i umieszcza) lub przy użyciu składni SQL za pomocą Phoenix. Apache także łącznika usługi Spark bazy danych HBase, który jest wygodny sposób i wydajne alternatywne, zapytania i modyfikację danych przechowywanych przez bazę danych HBase.
+Bazy danych Apache HBase jest zazwyczaj badane za pomocą jego niskiego poziomu interfejsu API (skanowania, pobiera i umieszcza) lub przy użyciu składni SQL, przy użyciu rozwiązania Apache Phoenix. Apache także Apache HBase łącznika usługi Spark, który jest wygodny sposób i wydajne alternatywne, zapytania i modyfikację danych przechowywanych przez bazę danych HBase.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,9 +38,9 @@ Ogólny proces włączania klastra Spark do wykonywania zapytań klastra usługi
 5. Zdefiniuj katalogu, który mapuje schematu z platformy Spark do bazy danych HBase.
 6. Wchodzić w interakcje z danymi bazy danych HBase przy użyciu RDD lub interfejsów API ramki danych.
 
-## <a name="prepare-sample-data-in-hbase"></a>Przygotowanie przykładowe dane w bazie danych HBase
+## <a name="prepare-sample-data-in-apache-hbase"></a>Przygotowanie przykładowych danych w bazy danych Apache HBase
 
-W tym kroku możesz utworzyć i wypełnić prostej tabeli w bazie danych HBase, który można następnie wykonywać zapytania za pomocą platformy Spark.
+W tym kroku możesz utworzyć i wypełnić prostej tabeli w bazie danych HBase Apache, który można następnie wykonywać zapytania za pomocą platformy Spark.
 
 1. Łączenie z węzłem głównym klastra HBase przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia przy użyciu protokołu SSH HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 2. Uruchom powłokę HBase:
@@ -132,7 +132,7 @@ W tym kroku możesz utworzyć i wypełnić prostej tabeli w bazie danych HBase, 
 
 ## <a name="define-a-catalog-and-query"></a>Zdefiniuj wykazu i zapytań
 
-W tym kroku należy zdefiniować obiektu katalogu, który mapuje schemat bazy danych HBase z platformy Spark. 
+W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apache HBase z platformy Apache Spark. 
 
 1. Uruchom następujące polecenie w powłoce platformy Spark Otwórz `import` instrukcji:
 
@@ -244,4 +244,4 @@ W tym kroku należy zdefiniować obiektu katalogu, który mapuje schemat bazy da
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Baza danych HBase łącznik Spark](https://github.com/hortonworks-spark/shc)
+* [Apache Spark łącznika bazy danych HBase](https://github.com/hortonworks-spark/shc)

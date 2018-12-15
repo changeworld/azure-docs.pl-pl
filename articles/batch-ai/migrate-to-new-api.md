@@ -1,6 +1,6 @@
 ---
-title: Migrowanie do interfejsu API zaktualizowane Azure partii AI | Dokumentacja firmy Microsoft
-description: Jak zaktualizować AI usługi partia zadań Azure kod i skrypty, Użyj obszaru roboczego i wypróbować zasobów
+title: Migrowanie do interfejs API zaktualizowane Azure Batch AI | Dokumentacja firmy Microsoft
+description: Jak zaktualizować kodu usługi Azure Batch AI i skryptów, Użyj obszaru roboczego i eksperymentowania zasobów
 services: batch-ai
 documentationcenter: na
 author: dlepow
@@ -15,41 +15,44 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: c5e4c1569464d2e204edf13fe7534d80780524e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ROBOTS: NOINDEX
+ms.openlocfilehash: 75a9a5e9bafd62b320397c00ef6574b7536d9e09
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294963"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407784"
 ---
-# <a name="migrate-to-the-updated-batch-ai-api"></a>Migrowanie zaktualizowane API partii AI
+# <a name="migrate-to-the-updated-batch-ai-api"></a>Migrowanie do zaktualizowanego interfejsu API sztucznej Inteligencji usługi Batch
 
-W partii interfejsu API REST AI wersji 2018-05-01 i powiązane partii AI zestawy SDK i narzędzia znaczących zmian i nowe funkcje zostały wprowadzone.
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
-Jeśli poprzednia wersja interfejsu API partii AI była używana, w tym artykule opisano sposób modyfikowania kod i skrypty do pracy z nowym interfejsem API. 
+W API REST usługi Batch AI w wersji 2018-05-01 i powiązanych zestawów SDK sztucznej Inteligencji usługi Batch oraz narzędzia znaczące zmiany i nowe funkcje zostały wprowadzone.
 
-## <a name="whats-changing"></a>Co to jest zmiana?
+Jeśli używano poprzedniej wersji interfejsu API sztucznej Inteligencji usługi Batch, w tym artykule opisano sposób modyfikowania kodu oraz skrypty do pracy z nowego interfejsu API. 
 
-W odpowiedzi na opinie klientów możemy usunąć ograniczenia dotyczące liczby zadań i ułatwiając zarządzanie zasobami AI partii. Nowy interfejs API wprowadza dwa nowe zasoby, *obszaru roboczego* i *eksperymentu*. Zbieraj zadania pokrewne szkolenia w eksperymencie i organizowanie wszystkie powiązane zasoby AI partii (klastrów serwerów plików, eksperymentów, zadania) w obszarze roboczym.  
+## <a name="whats-changing"></a>Co ulega zmianie?
 
-* **Obszar roboczy** — kolekcja najwyższego poziomu wszystkich typów zasobów AI partii. Klastry i serwery plików znajdują się w obszarze roboczym. Obszary robocze pracy zwykle oddzielne należących do różnych grup lub projektów. Na przykład może być deweloperów i obszaru roboczego testu. Prawdopodobnie należy ograniczoną liczbę obszarów roboczych na subskrypcję. 
+W odpowiedzi na opinie klientów możemy usunąć limity liczby zadań i ułatwia zarządzanie zasobami usługi Batch AI. Nowy interfejs API wprowadzono dwa nowe zasoby, *obszaru roboczego* i *eksperymentować*. Zbieranie szkolenie powiązane zadania w obszarze eksperymentu, a organizować wszystkie pokrewne zasoby usługi Batch AI (klastry, serwery plików, eksperymentów, zadania) w obszarze roboczym.  
 
-* **Eksperymentu** — Kolekcja powiązanych zadań, które można zbadać i zarządza się razem. Aby pogrupować wszystkie zadania, które są wykonywane jako część odchylenia dostrajanie parametrów funkcji hyper, na przykład użyć eksperymentu. 
+* **Obszar roboczy** — kolekcja najwyższego poziomu wszystkich typów zasobów usługi Batch AI. Tworzy klastry i serwery plików znajdują się w obszarze roboczym. Obszary robocze należące do różnych grup lub projekty zazwyczaj oddzielne pracy. Na przykład Niewykluczone, że deweloper i obszar roboczy testu. Prawdopodobnie konieczne będzie jedynie ograniczonej liczby obszarów roboczych na subskrypcję. 
 
-Na poniższej ilustracji przedstawiono przykład hierarchii zasobów. 
+* **Eksperyment** — zbierania powiązane zadania, które można tworzyć zapytania i zarządza się razem. Na przykład użyć eksperymentu do grupy wszystkich zadań, które są wykonywane w ramach funkcji hyper-dostosowywania parametrów. 
+
+Na poniższej ilustracji przedstawiono przykład zasobów hierarchii. 
 
 ![](./media/migrate-to-new-api/batch-ai-resource-hierarchy.png)
 
-## <a name="monitor-and-manage-existing-resources"></a>Monitorowanie i zarządzanie istniejącymi zasobami
-W każdej grupie zasobów, gdy utworzone klastrów AI partii, zadania lub serwerów plików, usługa partii AI utworzy obszaru roboczego o nazwie `migrated-<region>` (na przykład `migrated-eastus`) i eksperymentu o nazwie `migrated`. Aby uzyskać dostęp do utworzonego wcześniej zadania, klastrów lub serwerów plików, należy użyć zmigrowanego obszaru roboczego i eksperymentu. 
+## <a name="monitor-and-manage-existing-resources"></a>Monitorowanie i zarządzanie nimi istniejących zasobów
+W każdej grupie zasobów, której już utworzono klastry usługi Batch AI, zadania lub serwerów plików, usługa Batch AI utworzy obszar roboczy o nazwie `migrated-<region>` (na przykład `migrated-eastus`) i eksperymentowania o nazwie `migrated`. Aby uzyskać dostęp do utworzonego wcześniej zadania, klastrów lub serwerów plików, należy użyć zmigrowanego obszaru roboczego i eksperymentowania. 
 
 ### <a name="portal"></a>Portal 
-Aby uzyskać dostęp do utworzonego wcześniej zadania, klastrów lub serwerów plików przy użyciu portalu, należy najpierw zaznaczyć `migrated-<region>` obszaru roboczego. Wybierz obszar roboczy i wykonywanie operacji takich jak zmienianie rozmiaru lub usuwania klastra i wyświetlanie stanu zadania i dane wyjściowe. 
+Aby uzyskać dostęp do utworzonego wcześniej zadania, klastrów lub serwerów plików przy użyciu portalu, najpierw wybierz `migrated-<region>` obszaru roboczego. Po wybraniu obszaru roboczego, wykonywać operacje takie jak zmiana rozmiaru lub usuwania klastra i wyświetlanie stanu zadania i dane wyjściowe. 
 
 ### <a name="sdks"></a>Zestawy SDK 
-Aby uzyskać dostęp do zadania, klastrów lub serwerów plików, które wcześniej utworzony za pomocą zestawów SDK AI partii, podaj nazwę obszaru roboczego i eksperymentu nazwy parametrów. 
+Aby uzyskać dostęp do zadań, klastrów lub serwerów plików, które wcześniej zostały utworzone za pomocą zestawów SDK usługi Batch AI, podaj nazwę obszaru roboczego i eksperymentować nazwy parametrów. 
 
-Jeśli używasz zestawu SDK Python, odpowiednich zmian zostaną wyświetlone w poniższych przykładach. Zmiany są podobne w innych zestawów SDK AI partii. 
+Jeśli używasz zestawu SDK języka Python, istotne zmiany są wyświetlane w poniższych przykładach. Zmiany są podobne w innych zestawów SDK sztucznej Inteligencji usługi Batch. 
 
 
 #### <a name="get-old-cluster"></a>Pobierz stary klaster 
@@ -58,7 +61,7 @@ Jeśli używasz zestawu SDK Python, odpowiednich zmian zostaną wyświetlone w p
 cluster = client.clusters.get(resource_group_name, 'migrated-<region>', cluster_name)
 ```
 
-#### <a name="delete-old-cluster"></a>Usuwanie starego klastra 
+#### <a name="delete-old-cluster"></a>Usuń stary klaster 
 
 ```python
 client.clusters.delete(resource_group_name, 'migrated-<region>', cluster_name)
@@ -70,20 +73,20 @@ client.clusters.delete(resource_group_name, 'migrated-<region>', cluster_name)
 cluster = client.fileservers.get(resource_group_name, 'migrated-<region>', fileserver_name)
 ```
 
-#### <a name="delete-old-file-server"></a>Usuwanie starego serwera plików  
+#### <a name="delete-old-file-server"></a>Usuń stary serwer plików  
 
 ```python
 client.fileservers.delete(resource_group_name, 'migrated-<region>', fileserver_name)
 ``` 
 
 
-#### <a name="get-old-job"></a>Pobierz zadanie starego 
+#### <a name="get-old-job"></a>Pobrać stare zadania 
 
 ```python
 cluster = client.jobs.get(resource_group_name, 'migrated-<region>', 'migrated', job_name)
 ```
 
-#### <a name="delete-old-job"></a>Usuń stare zadanie
+#### <a name="delete-old-job"></a>Usuń stare zadania
 
 ```python
 client.jobs.delete(resource_group_name, 'migrated-<region>', 'migrated', job_name)
@@ -91,7 +94,7 @@ client.jobs.delete(resource_group_name, 'migrated-<region>', 'migrated', job_nam
  
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure 
  
-Korzystając z wiersza polecenia platformy Azure do zadań programu access utworzoną wcześniej, klastrów lub serwerów plików, użyj `-w` i `-e` parametry, aby podać obszaru roboczego i wypróbować nazwy. 
+Korzystając z wiersza polecenia platformy Azure, aby zadania utworzone wcześniej dostęp, klastrów lub serwerów plików, użyj `-w` i `-e` parametry, aby podać obszar roboczy i eksperymentowania nazwy. 
 
 
 #### <a name="get-old-cluster"></a>Pobierz stary klaster
@@ -101,7 +104,7 @@ az batchai cluster show -g resource-group-name -w migrated-<region> -n cluster-n
 ```
 
 
-#### <a name="delete-old-cluster"></a>Usuwanie starego klastra 
+#### <a name="delete-old-cluster"></a>Usuń stary klaster 
 
 ```azurecli
 az batchai cluster delete -g resource-group-name -w migrated-<region> -n cluster-name
@@ -114,32 +117,32 @@ az batchai file-server show -g resource-group-name -w migrated-<region> -n files
 ```
 
 
-#### <a name="delete-old-file-server"></a>Usuwanie starego serwera plików 
+#### <a name="delete-old-file-server"></a>Usuń stary serwer plików 
 
 ```azurecli
 az batchai file-server delete -g resource-group-name -w migrated-<region> -n fileserver-name
 ``` 
 
 
-#### <a name="get-old-job"></a>Pobierz zadanie starego
+#### <a name="get-old-job"></a>Pobrać stare zadania
 
 ```azurecli
 az batchai job show -g resource-group-name -w migrated-<region> -e migrated -n job-name
 ```
 
 
-#### <a name="delete-old-job"></a>Usuń stare zadanie 
+#### <a name="delete-old-job"></a>Usuń stare zadania 
 
 ```azurecli
 az batchai job delete -g resource-group-name -w migrated-<region> -e migrated -n job-name
 ``` 
 
-## <a name="create-batch-ai-resources"></a>Utwórz zasoby partii AI 
+## <a name="create-batch-ai-resources"></a>Tworzenie zasobów usługi Batch AI 
  
-Jeśli używasz jednego z istniejących zestawów SDK AI partii, możesz go użyć do utworzenia AI partii zasobów (zadań, klastrów lub serwerów plików) bez wprowadzania zmian w kodzie. Jednak po uaktualnieniu do nowej wersji zestawu SDK, należy wprowadzić następujące zmiany.
+Jeśli używasz jednego z istniejących zestawów SDK sztucznej Inteligencji usługi Batch można nadal z niej korzystać, aby utworzyć zasoby usługi Batch AI (zadań, klastrów lub serwerów plików) bez wprowadzania zmian w kodzie. Jednak po uaktualnieniu do nowego zestawu SDK, należy wprowadzić następujące zmiany.
  
-### <a name="create-workspace"></a>Utwórz obszar roboczy 
-W zależności od scenariusza można utworzyć obszaru roboczego ręcznie jednorazowego za pośrednictwem portalu lub interfejsu wiersza polecenia. Jeśli używasz interfejsu wiersza polecenia, należy utworzyć obszaru roboczego przy użyciu następującego polecenia: 
+### <a name="create-workspace"></a>Tworzenie obszaru roboczego 
+Zależnie od scenariusza można utworzyć obszar roboczy ręcznie jednorazowego za pośrednictwem portalu lub interfejsu wiersza polecenia. Jeśli używasz interfejsu wiersza polecenia, należy utworzyć obszar roboczy za pomocą następującego polecenia: 
 
 ```azurecli
 az batchai workspace create -g resource-group-name -n workspace-name
@@ -148,18 +151,18 @@ az batchai workspace create -g resource-group-name -n workspace-name
 ### <a name="create-experiment"></a>Tworzenie eksperymentu 
 
 
-W zależności od scenariusza można utworzyć eksperyment ręcznie jednorazowego za pośrednictwem portalu lub interfejsu wiersza polecenia. Jeśli używasz interfejsu wiersza polecenia utworzyć eksperyment za pomocą następującego polecenia: 
+W zależności od scenariusza możesz utworzyć eksperyment ręcznie jednorazowego za pośrednictwem portalu lub interfejsu wiersza polecenia. Jeśli używasz interfejsu wiersza polecenia, należy utworzyć eksperyment, korzystając z następującego polecenia: 
 
 ```azurecli
 az batchai experiment create -g resource-group-name -w workspace-name -n experiment-name
 
 ```
 
-### <a name="create-clusters-file-servers-and-jobs"></a>Tworzenie klastrów serwerów plików i zadań
+### <a name="create-clusters-file-servers-and-jobs"></a>Tworzenie klastrów serwerów plików i zadania
  
-Jeśli używasz portalu do tworzenia zadań, klastrów lub serwerów plików, portalu zawiera informacje pomocne podczas początkowego tworzenia podać nazwę obszaru roboczego i wypróbować nazwy parametrów.
+Korzystając z portalu do utworzenia zadania, klastrów lub serwerów plików, portalu informacje pomocne podczas początkowego tworzenia, podaj nazwę obszaru roboczego i eksperymentowania nazwy parametrów.
 
-Tworzenie zadań, klastrów lub serwerów plików za pomocą zaktualizowanego zestawu SDK, podaj parametr Nazwa obszaru roboczego. Jeśli używasz zestawu SDK Python, odpowiednich zmian zostaną wyświetlone w poniższych przykładach. Zastąp *workspace_name* i *experiment_name* z obszaru roboczego i doświadczenia, utworzony wcześniej. Zmiany są podobne w innych zestawów SDK AI partii. 
+Tworzenie zadań, klastrami lub serwerami plików za pomocą zaktualizowanego zestawu SDK, należy podać parametr Nazwa obszaru roboczego. Jeśli używasz zestawu SDK języka Python, istotne zmiany są wyświetlane w poniższych przykładach. Zastąp *workspace_name* i *experiment_name* z obszaru roboczego i eksperyment, który został utworzony wcześniej. Zmiany są podobne w innych zestawów SDK sztucznej Inteligencji usługi Batch. 
 
 
 #### <a name="create-cluster"></a>Tworzenie klastra 
@@ -183,4 +186,4 @@ _ = client.jobs.create(resource_group_name, workspace_name, experiment_name, job
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Zobacz odwołanie do API AI partii: [CLI](/cli/azure/batchai), [.NET](/dotnet/api/overview/azure/batchai), [Java](/java/api/overview/azure/batchai), [Node.js](/javascript/api/overview/azure/batchai), [Python](/python/api/overview/azure/batchai)i [REST](/rest/api/batchai)
+* Zobacz dokumentacja interfejsu API usługi Batch AI: [Interfejs wiersza polecenia](/cli/azure/batchai), [.NET](/dotnet/api/overview/azure/batchai), [Java](/java/api/overview/azure/batchai), [Node.js](/javascript/api/overview/azure/batchai), [Python](/python/api/overview/azure/batchai), i [REST](/rest/api/batchai)

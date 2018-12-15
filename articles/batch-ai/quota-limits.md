@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16032ec5ba1e613462f92b86281ce93153b70923
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391814"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409721"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Limity i przydziały usługi Batch AI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Jak z innymi usługami platformy Azure istnieją limity określonych zasobów skojarzonych z usługą Batch AI. W przypadku usługi Batch AI, te limity są domyślne limity przydziału stosowane na poziomie subskrypcji dla każdego regionu, w których ta usługa jest [dostępne](https://azure.microsoft.com/global-infrastructure/services/). W tym artykule omówiono te wartości domyślne i jak mogą żądać przydziału zwiększa.
 

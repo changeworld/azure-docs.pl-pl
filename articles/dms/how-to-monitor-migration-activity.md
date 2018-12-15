@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 1725be4209bfc9335654c574098c43102eca5a2d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/14/2018
+ms.openlocfilehash: a315e8b42ab8e0df659a3388a50fedf5dd3a54d2
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961182"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413068"
 ---
 # <a name="monitor-migration-activity"></a>Monitorowanie aktywności migracji
 W tym artykule dowiesz się, jak monitorować postęp migracji zarówno w poziomie bazy danych, jak i w poziomie tabeli.
@@ -84,7 +84,7 @@ Poniższa tabela zawiera listę pól, w bloku bazy danych na poziomie i w tym ar
       <td>Po zakończeniu ładowania początkowego DMS spowoduje oznaczenie bazy danych jako gotowe do uruchomienia produkcyjnego. Należy sprawdzić, jeśli dane złapał ciągłej synchronizacji.</td>
     </tr>
     <tr>
-      <td>Wszystkie zmiany zastosowane</td>
+      <td>Wszystkie zmiany zostały zastosowane</td>
       <td>Zakończeniu ładowania początkowego i ciągłej synchronizacji. Ten stan występuje także po pomyślnym baza danych jest uruchomienie produkcyjne.</td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@ W poniższej tabeli opisano pola wyświetlane w tabeli migracji poziomu postępu
 | **Aktualizacja** | Liczba aktualizacji przechwytywania zmian danych w wierszach zastosowany do obiektu docelowego.      |
 | **Usuwanie**      | Usuwa liczba przechwytywania zmian danych w wierszach zastosowany do obiektu docelowego. |
 | **Całkowita liczba zastosowanych**      | Łączna liczba przechwytywania zmian danych operacji wstawiania, aktualizacji i usuwa w wierszach zastosowany do obiektu docelowego. |
-| **Błędy danych** | Liczba błędów danych wydarzyło się w tej tabeli. Oto kilka przykładów błędów *511: nie można utworzyć wiersza o wielkości %d, który jest większy niż dopuszczalny rozmiar maksymalny rozmiar wiersza % d, 8114: Wystąpił błąd podczas konwertowania typu danych %ls % ls.*  Klient powinien zapytanie z tabeli attms_apply_exceptions w celu platformy Azure, aby wyświetlić szczegóły błędu.    |
+| **Błędy danych** | Liczba błędów danych wydarzyło się w tej tabeli. Oto kilka przykładów błędów *511: Nie można utworzyć wiersza o wielkości %d, który jest większy niż dopuszczalny rozmiar maksymalny rozmiar wiersza % d, 8114: Błąd podczas konwertowania typu danych %ls % ls.*  Klient powinien zapytanie z tabeli dms_apply_exceptions w celu platformy Azure, aby wyświetlić szczegóły błędu.    |
 
 > [!NOTE]
 > Przechwytywanie zmian danych wartości Insert, Update i Delete i łączna liczba stosowane mogą się zmniejszyć, gdy baza danych jest uruchomienie produkcyjne lub ponownym uruchomieniu migracji.

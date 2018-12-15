@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 52657ae18b6fd06408887df82bd822eb2ff8fffe
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8c8ba338a7059d6d11f43bda6348aa6e645ab98c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964360"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410163"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure
 
@@ -33,8 +33,8 @@ Funkcji Hyper-V bez programu Virtual Machine Manager | Dla maszyn wirtualnych ur
 
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-Funkcji Hyper-V (z systemem bez programu Virtual Machine Manager) | System Windows Server 2016 (takie jak instalacja server core), Windows Server 2012 R2 z najnowszymi aktualizacjami | Po skonfigurowaniu lokacji funkcji Hyper-V w usłudze Site Recovery mieszanie hostach z systemem Windows Server 2016 i 2012 R2 nie jest obsługiwane.<br/><br/> W przypadku maszyn wirtualnych znajdujących się na hoście z systemem Windows Server 2016 odzyskiwania do alternatywnej lokalizacji nie jest obsługiwane.
-Funkcji Hyper-V (uruchomionego za pomocą programu Virtual Machine Manager) | Virtual Machine Manager 2016 Virtual Machine Manager 2012 R2 | Jeśli jest używany program Virtual Machine Manager, hosty systemu Windows Server 2016 powinny być zarządzane w programie Virtual Machine Manager 2016.<br/><br/> Chmury programu Virtual Machine Manager, które napisana hostów Hyper-V w systemie Windows Server 2016 i 2012 R2 nie jest obecnie obsługiwane.<br/><br/> Nie są obsługiwane w środowiskach, takich jak uaktualnienie istniejącego serwera programu Virtual Machine Manager 2012 R2 do wersji 2016.
+Funkcji Hyper-V (z systemem bez programu Virtual Machine Manager) | System Windows Server 2016 (takie jak instalacja server core), Windows Server 2012 R2 z najnowszymi aktualizacjami | W przypadku maszyn wirtualnych znajdujących się na hoście z systemem Windows Server 2016 odzyskiwania do alternatywnej lokalizacji nie jest obsługiwane.<br/><br/> Jeśli skonfigurowano już program Windows Server 2012 R2 z / lub programu SCVMM 2012 R2 przy użyciu usługi Azure Site Recovery i planujesz uaktualnić system operacyjny, postępuj zgodnie ze wskazówkami [dokumentacji.](upgrade-2012R2-to-2016.md) 
+Funkcji Hyper-V (uruchomionego za pomocą programu Virtual Machine Manager) | Virtual Machine Manager 2016 Virtual Machine Manager 2012 R2 | Jeśli jest używany program Virtual Machine Manager, hosty systemu Windows Server 2016 powinny być zarządzane w programie Virtual Machine Manager 2016.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>Replikowane maszyny wirtualne
@@ -59,15 +59,15 @@ Dodaj dysk na replikowanej maszynie Wirtualnej funkcji Hyper-V | Nieobsługiwane
 
 **Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Sieci hostów: tworzenia zespołu kart interfejsu Sieciowego | Yes | Yes
-Sieci hostów: sieci VLAN | Yes | Yes
-Sieci hostów: IPv4 | Yes | Yes
-Sieci hostów: IPv6 | Nie | Nie
-Sieć maszyny Wirtualnej gościa: tworzenia zespołu kart interfejsu Sieciowego | Nie | Nie
-Sieć maszyny Wirtualnej gościa: IPv4 | Yes | Yes
-Sieć maszyny Wirtualnej gościa: IPv6 | Nie | Yes
-Sieć maszyny Wirtualnej gościa: statyczny adres IP (Windows) | Yes | Yes
-Sieć maszyny Wirtualnej gościa: statyczny adres IP (Linux) | Nie | Nie
+Sieć hosta: Tworzenie zespołu kart interfejsu Sieciowego | Yes | Yes
+Sieć hosta: Sieć VLAN | Yes | Yes
+Sieć hosta: Protokół IPv4 | Yes | Yes
+Sieć hosta: Protokół IPv6 | Nie | Nie
+Sieć maszyny Wirtualnej gościa: Tworzenie zespołu kart interfejsu Sieciowego | Nie | Nie
+Sieć maszyny Wirtualnej gościa: Protokół IPv4 | Yes | Yes
+Sieć maszyny Wirtualnej gościa: Protokół IPv6 | Nie | Yes
+Sieć maszyny Wirtualnej gościa: Statyczny adres IP (Windows) | Yes | Yes
+Sieć maszyny Wirtualnej gościa: Statyczny adres IP (Linux) | Nie | Nie
 Sieć maszyny Wirtualnej gościa: Multi-NIC | Yes | Yes
 
 
@@ -111,7 +111,7 @@ NFS | Nie dotyczy | Nie dotyczy
 SMB 3.0 | Nie | Nie
 RDM | Nie dotyczy | Nie dotyczy
 Dysk > 1 TB | Tak, maksymalnie 4095 GB. | Tak, maksymalnie 4095 GB.
-Dysk: logiczne i fizyczne z sektorami 4K | Nieobsługiwane: Gen 1/Gen 2 | Nieobsługiwane: Gen 1/Gen 2
+Dysk: Logiczne i fizyczne z sektorami 4K | Nieobsługiwane: Velikost haldy 1/Gen 2 | Nieobsługiwane: Velikost haldy 1/Gen 2
 Dysk: 4K logiczne i fizyczne sektora 512 bajtów | Yes |  Yes
 Zarządzanie woluminami logicznych (LVM). LVM jest obsługiwana na tylko dyski z danymi. Platforma Azure udostępnia tylko jeden dysk systemu operacyjnego. | Yes | Yes
 Wolumin o użycie dysku rozłożonego > 1 TB | Yes | Yes
@@ -181,7 +181,7 @@ Aby upewnić się, że wdrożenie jest zgodny z ustawieniami w tym artykule, upe
 
 **Nazwa** | **Opis** | **Szczegóły**
 --- | --- | --- | --- | ---
-Dostawca usługi Azure Site Recovery | Służy do koordynowania komunikacji między serwerami lokalnymi a platformą Azure <br/><br/> Funkcja Hyper-V za pomocą programu Virtual Machine Manager: zainstalowanych na serwerach programu Virtual Machine Manager<br/><br/> Funkcja Hyper-V bez programu Virtual Machine Manager: zainstalowany na hostach funkcji Hyper-V| Najnowsza wersja: 5.1.2700.1 (dostępne w witrynie Azure portal)<br/><br/> [Najnowsze funkcje i poprawki](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+Dostawca usługi Azure Site Recovery | Służy do koordynowania komunikacji między serwerami lokalnymi a platformą Azure <br/><br/> Funkcji Hyper-V za pomocą programu Virtual Machine Manager: Zainstalowane na serwerach programu Virtual Machine Manager<br/><br/> Funkcji Hyper-V bez programu Virtual Machine Manager: Zainstalowany na hostach funkcji Hyper-V| Najnowsza wersja: 5.1.2700.1 (dostępne w witrynie Azure portal)<br/><br/> [Najnowsze funkcje i poprawki](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Agent usług odzyskiwania Microsoft Azure | Koordynuje replikację między maszynami wirtualnymi funkcji Hyper-V i platformą Azure<br/><br/> Zainstalowane na serwerach funkcji Hyper-V w środowisku lokalnym (z lub bez programu Virtual Machine Manager) | Najnowszą wersję agenta, dostępne w portalu
 
 

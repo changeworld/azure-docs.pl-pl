@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: a4a94ac4deee90bf0aea5fafbddff0105680cb4b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c9cbea913a86a681620eea4adc0a5c99cc84f920
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013155"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433869"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Uruchamianie niestandardowych programów MapReduce
 
@@ -74,8 +74,8 @@ Najbardziej typowe programów MapReduce są napisane w języku Java i kompilowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Za pomocą języka C# MapReduce przesyłania strumieniowego w usłudze Hadoop w HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Opracowywanie programów MapReduce w języku Java dla usługi Hadoop w HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Użyj C# o MapReduce, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Opracowywanie programów MapReduce w języku Java dla usługi Apache Hadoop w HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 * [Opracowywanie programów MapReduce przesyłania strumieniowego HDInsight w języku Python](apache-hadoop-streaming-python.md)
-* [Umożliwia tworzenie aplikacji Spark dla klastra usługi HDInsight Azure Toolkit for Eclipse](../spark/apache-spark-eclipse-tool-plugin.md)
-* [Użyj języka Python funkcje zdefiniowane użytkownika (UDF) z technologiami Hive i Pig w HDInsight](python-udf-hdinsight.md)
+* [Używanie zestawu narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra usługi HDInsight](../spark/apache-spark-eclipse-tool-plugin.md)
+* [Funkcje (UDF) zdefiniowane przez użytkownika języka Python korzystanie z programu Apache Hive i Apache Pig w HDInsight](python-udf-hdinsight.md)

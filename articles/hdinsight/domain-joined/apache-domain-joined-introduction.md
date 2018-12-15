@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ed735b8344c301be413dfe998ccf7f44bd686115
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b120d50b6b0f72b5977d238866cfdf26fd9be5ff
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011234"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436895"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Wprowadzenie do zabezpieczeń platformy Apache Hadoop z pakietem Enterprise Security
 
@@ -24,8 +24,8 @@ Klaster usługi HDInsight można utworzyć za pomocą Enterprise pakietu zabezpi
 
 Administrator przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach (RBAC) dla zabezpieczeń Apache Hive za pomocą [struktury Apache Ranger](https://hortonworks.com/apache/ranger/). Konfigurowanie funkcji RBAC ogranicza dostęp do danych tylko potrzebne elementy. Na koniec administrator może przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian zasad kontroli dostępu. Administrator może następnie osiągnąć wysoki stopień nadzoru nad zasobami firmy.
 
-> [!NOTE]
-> Oozie jest teraz włączony w klastrach ESP. Aby uzyskać dostęp do interfejsu użytkownika sieci web programu Oozie, należy włączyć użytkowników [tunelowania](../hdinsight-linux-ambari-ssh-tunnel.md).
+> [!NOTE]  
+> Apache Oozie jest teraz włączony w klastrach ESP. Aby uzyskać dostęp do interfejsu użytkownika sieci web programu Oozie, należy włączyć użytkowników [tunelowania](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 Zabezpieczenia przedsiębiorstwa składają się czterech głównych filarów: zabezpieczenia brzegowe, uwierzytelnianie, autoryzacja i szyfrowanie.
 
@@ -39,7 +39,7 @@ Kolejna warstwa zabezpieczeń brzegowych odbywa się za pośrednictwem usługi b
 ## <a name="authentication"></a>Authentication
 Administrator przedsiębiorstwa może utworzyć klaster HDInsight przy użyciu ESP w [sieci wirtualnej](https://azure.microsoft.com/services/virtual-network/). Wszystkie węzły klastra HDInsight są przyłączone do domeny, którą zarządza przedsiębiorstwo. Jest to osiągane za pośrednictwem [usługi Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
 
-W przypadku takiej konfiguracji pracownicy przedsiębiorstwa mogą logować do węzłów klastra przy użyciu swoich poświadczeń domeny. Mogą również użyć poświadczeń domeny, do uwierzytelniania za pomocą innych zatwierdzonych punktów końcowych, takich jak widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST do interakcji z klastrem. Administrator ma pełną kontrolę nad ograniczaniem liczby użytkowników, którzy współpracują z klastrem za pośrednictwem tych punktów końcowych.
+W przypadku takiej konfiguracji pracownicy przedsiębiorstwa mogą logować do węzłów klastra przy użyciu swoich poświadczeń domeny. Mogą również użyć poświadczeń domeny do uwierzytelniania za pomocą innych zatwierdzonych punktów końcowych, takich jak widoków Ambari Apache, ODBC, JDBC, PowerShell i interfejsów API REST do interakcji z klastrem. Administrator ma pełną kontrolę nad ograniczaniem liczby użytkowników, którzy współpracują z klastrem za pośrednictwem tych punktów końcowych.
 
 ## <a name="authorization"></a>Autoryzacja
 Najlepszym rozwiązaniem należy wykonać większość przedsiębiorstw jest upewnienie się, że nie każdy pracownik ma dostęp do wszystkich zasobów organizacji. Analogicznie administrator może zdefiniować zasady kontroli dostępu opartej na rolach dla zasobów klastra. 
@@ -63,6 +63,6 @@ Magazyny danych, zarówno w przypadku klastrów HDInsight — usługi Azure Blob
 * [Planowanie z klastrami HDInsight przy użyciu ESP](apache-domain-joined-architecture.md)
 * [Konfigurowanie klastrów HDInsight przy użyciu ESP](apache-domain-joined-configure.md)
 * [Zarządzanie klastrami HDInsight przy użyciu ESP](apache-domain-joined-manage.md)
-* [Konfigurowanie zasad usługi Hive dla klastrów HDInsight przy użyciu ESP](apache-domain-joined-run-hive.md)
+* [Konfigurowanie zasad usługi Apache Hive dla klastrów HDInsight przy użyciu ESP](apache-domain-joined-run-hive.md)
 * [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
 

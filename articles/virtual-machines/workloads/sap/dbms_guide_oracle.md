@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/07/2018
+ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e2d0d5073ffbeaed1c0215386a0c2c9f22a67d9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8686130e3b10ece605a6e648badf9aa1dae5e071
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288649"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435688"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Oracle wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 
@@ -321,13 +321,13 @@ Poniższe uwagi SAP odnoszą się do SAP na platformie Azure dotyczące obszaru 
 
 | Numer | Stanowisko |
 | --- | --- |
-| [1928533] |Aplikacje środowiska SAP na platformie Azure: obsługiwane produkty i maszyny Wirtualnej platformy Azure |
-| [2015553] |SAP na platformie Microsoft Azure: wymagania wstępne dotyczące obsługi |
+| [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
+| [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
 | [1999351] |Rozwiązywanie problemów z rozszerzonego monitorowania platformy Azure dla rozwiązania SAP |
 | [2178632] |Klucz metryki monitorowania dla rozwiązania SAP na platformie Microsoft Azure |
-| [2191498] |SAP w systemie Linux przy użyciu platformy Azure: Enhanced Monitoring |
-| [2039619] |Aplikacje środowiska SAP na Microsoft Azure przy użyciu bazy danych programu Oracle: obsługiwane produkty i wersje |
-| [2243692] |Systemu Linux w systemie Microsoft Azure (IaaS) maszyn wirtualnych: problemy dotyczące licencji SAP |
+| [2191498] |SAP w systemie Linux przy użyciu platformy Azure: Rozszerzone monitorowanie |
+| [2039619] |Aplikacje środowiska SAP na Microsoft Azure przy użyciu bazy danych programu Oracle: Obsługiwane produkty i wersje |
+| [2243692] |Systemu Linux na platformie Microsoft Azure (IaaS) maszyny Wirtualnej: Problemy dotyczące licencji SAP |
 | [2069760] |Oracle Linux 7.x SAP instalacji i uaktualniania |
 | [1597355] |Zalecenie obszaru wymiany w systemie Linux |
 | [2171857] |Oracle Database 12c - Obsługa systemu plików w systemie Linux |
@@ -428,7 +428,9 @@ Zgodnie z instrukcje instalacji SAP pliki związane z bazy danych Oracle nie nal
 
 ### <a name="storage-configuration"></a>Konfiguracja usługi Storage
 
-Systemy plików ext4, lub xfs lub Oracle ASMOnly są obsługiwane dla plików bazy danych Oracle na platformie Azure. Wszystkie pliki bazy danych muszą być przechowywane na tych systemów plików, na podstawie wirtualnych dysków twardych lub dysków Managed Disks. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na usłudze Azure Storage BLOB strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub [usługi Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Systemy plików ext4, lub xfs lub Oracle ASM są obsługiwane dla plików bazy danych Oracle na platformie Azure. Wszystkie pliki bazy danych muszą być przechowywane na tych systemów plików, na podstawie wirtualnych dysków twardych lub dysków Managed Disks. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na usłudze Azure Storage BLOB strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub [usługi Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+
+Dla bazy danych Oracle Linux UEK jądra, co najmniej UEK w wersji 4 jest wymagany do obsługi [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms).
 
 Zaleca się używać [usługi Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Ponadto zdecydowanie zaleca się przy użyciu [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) wdrożeń bazy danych Oracle.
 
@@ -493,7 +495,7 @@ Szczegółowe informacje na temat korzystania z usługi Azure Backup i Recovery 
 Aspekty odzyskiwania po awarii dla baz danych Oracle na platformie Azure są przedstawione w artykule [odzyskiwanie po awarii dla bazy danych Oracle database 12c w środowisku platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
 ### <a name="accelerated-networking"></a>Accelerated Networking
-Obsługa usługę Azure Accelerated Networking w systemie Oracle Linux jest dostarczany z systemów Oracle Linux 7 Update 5 (Oracle Linux 7.5). Jeśli nie można uaktualnić do najnowszej wersji programu Oracle Linux w wersji 7.5, przy użyciu firmę Red Hat zgodne jądra (RHCK) zamiast jądra Oracle UEK może istnieć obejście tego problemu. Jądro systemu RHEL w systemie Oracle Linux jest obsługiwana według Uwaga SAP [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Na usługę Azure Accelerated Networking RHCKL minimalnej wersji jądra musi być 3.10.0-862.13.1.el7.
+Obsługa usługę Azure Accelerated Networking w systemie Oracle Linux jest dostarczany z systemów Oracle Linux 7 Update 5 (Oracle Linux 7.5). Jeśli nie można uaktualnić do najnowszej wersji programu Oracle Linux w wersji 7.5, przy użyciu firmę Red Hat zgodne jądra (RHCK) zamiast jądra Oracle UEK może istnieć obejście tego problemu. Jądro systemu RHEL w systemie Oracle Linux jest obsługiwana według Uwaga SAP [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Na usługę Azure Accelerated Networking RHCKL minimalnej wersji jądra musi być 3.10.0-862.13.1.el7. Dla jądro UEK w systemie Oracle Linux w połączeniu z [usługę Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), należy użyć programu Oracle UEK jądra w wersji 5.
 
 Jeśli obraz nie jest oparta na portalu Azure Marketplace nie wymaga wdrażania maszyn wirtualnych, należy dodatkowe pliki konfiguracyjne do skopiowania do maszyny Wirtualnej, wykonując: 
 <pre><code># Copy settings from github to correct place in VM

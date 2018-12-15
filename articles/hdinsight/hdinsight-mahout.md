@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5c12a84610d09b7557f0beb177273deba4468cc0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 06181eaf4a44a00ddeeedcd9c40edeae9157abd9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014824"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438552"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generowanie rekomendacji filmów za pomocą Apache Mahout z usługą Hadoop w HDInsight (PowerShell)
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-apache-hadoop-in-hdinsight-powershell"></a>Generowanie rekomendacji filmów za pomocą Apache Mahout Apache Hadoop w HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
@@ -26,27 +26,27 @@ Dowiedz się, jak używać [Apache Mahout](http://mahout.apache.org) Biblioteka 
 
 * Klaster HDInsight opartych na systemie Linux. Aby uzyskać informacje o tworzeniu, zobacz [rozpoczęcie korzystania z opartą na systemie Linux platformą Hadoop w HDInsight][getstarted].
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Generowanie rekomendacji za pomocą programu Azure PowerShell
 
-> [!WARNING]
+> [!WARNING]  
 > Zadania w tej sekcji działa przy użyciu programu Azure PowerShell. Wiele klas dostarczonych za pomocą biblioteki Mahout obecnie nie współpracujesz z programem Azure PowerShell. Aby uzyskać listę klas, które nie będą działać przy użyciu programu Azure PowerShell, zobacz [Rozwiązywanie problemów](#troubleshooting) sekcji.
 >
-> Przykład przy użyciu protokołu SSH, aby nawiązać połączenie HDInsight i uruchamiania przykładów Mahout bezpośrednio w klastrze, zobacz [Generowanie rekomendacji filmów za pomocą biblioteki Mahout i HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+> Przykład przy użyciu protokołu SSH, aby nawiązać połączenie HDInsight i uruchamiania przykładów Mahout bezpośrednio w klastrze, zobacz [Generowanie rekomendacji filmów za pomocą Apache Mahout i HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 Funkcji, które są dostarczane przez Mahout on aparat rekomendacji. Ten aparat akceptuje dane w formacie `userID`, `itemId`, i `prefValue` (preferencji użytkowników dla elementu). Mahout używa danych, aby określić użytkowników z preferencjami podobnych elementów, które mogą być używane wydaje zalecenia.
 
 Poniższy przykład to uproszczona omówienie sposobu działania procesu zalecenia:
 
-* **Wystąpienie wspólnej**: Jan, Alice i Bob wszystkie zbędne *gwiezdnych*, *ponownie ataki Empire*, i *Return Jedi*. Mahout Określa, że użytkownicy, którzy także, takich jak jeden z tych filmów, takich jak pozostałe dwa.
+* **wystąpienie wspólnej**: Jan, Alice i Bob wszystkie zbędne *gwiezdnych*, *ponownie ataki Empire*, i *Return Jedi*. Mahout Określa, że użytkownicy, którzy także, takich jak jeden z tych filmów, takich jak pozostałe dwa.
 
-* **Wystąpienie wspólnej**: Robert i Alicja również zbędne *zagrożenie fantom*, *ataku klony*, i *zemsty Sith*. Mahout Określa, że użytkownicy, którzy również zbędne poprzednie trzy filmy, takich jak te filmy.
+* **wystąpienie wspólnej**: Bob i Alicja również zbędne *zagrożenie fantom*, *ataku klony*, i *zemsty Sith*. Mahout Określa, że użytkownicy, którzy również zbędne poprzednie trzy filmy, takich jak te filmy.
 
-* **Zalecenie podobieństwa**: ponieważ Jan zbędne pierwszych trzech filmy, Mahout analizuje filmy tej osoby z preferencjami podobnych zbędne, ale Jan nie ma obserwowane (zbędne/klasyfikowane). W tym przypadku zaleca się Mahout *zagrożenie fantom*, *ataku klony*, i *zemsty Sith*.
+* **Zalecenie podobieństwa**: Ponieważ Jan zbędne pierwszych trzech filmy, Mahout analizuje filmy tej osoby z preferencjami podobnych zbędne, ale Jan nie ma obserwowane (zbędne/klasyfikowane). W tym przypadku zaleca się Mahout *zagrożenie fantom*, *ataku klony*, i *zemsty Sith*.
 
 ### <a name="understanding-the-data"></a>Opis danych
 
@@ -66,12 +66,12 @@ Dane zawarte w ratings.txt użytkownika ma strukturę `userID`, `movieID`, `user
 
 Użyj następującego skryptu programu Windows PowerShell do uruchamiania zadań, która używa aparatu rekomendacji Mahout danymi filmu:
 
-> [!NOTE]
+> [!NOTE]  
 > Ten plik wyświetli monit o podanie informacji, który służy do połączenia z klastrem HDInsight i uruchamianie zadań. Może upłynąć kilka minut na ukończenie, a następnie pobrać plik output.txt zadań.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
-> [!NOTE]
+> [!NOTE]  
 > Zadania biblioteki mahout nie usuwaj dane tymczasowe, który jest tworzony podczas przetwarzania zadania. `--tempDir` Parametr jest określony w ramach zadania przykład, aby odizolować pliki tymczasowe w określonym katalogu.
 
 Zadania biblioteki Mahout nie zwraca dane wyjściowe do STDOUT. Zamiast tego, przechowuje go w katalogu określonym produktem wyjściowym jako **część r-00000**. Skrypt pobierze ten plik, aby **output.txt** w bieżącym katalogu na stacji roboczej.
@@ -202,14 +202,14 @@ Mahout zadania, które używają następujących klas, zwracać różne komunika
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Uruchamianie zadań, które używają tych klas, nawiąż połączenie z klastrem HDInsight przy użyciu protokołu SSH i uruchamiania zadań w wierszu polecenia. Przykład do uruchamiania zadań Mahout przy użyciu protokołu SSH, zobacz [Generowanie rekomendacji filmów za pomocą biblioteki Mahout i HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+Uruchamianie zadań, które używają tych klas, nawiąż połączenie z klastrem HDInsight przy użyciu protokołu SSH i uruchamiania zadań w wierszu polecenia. Przykład do uruchamiania zadań Mahout przy użyciu protokołu SSH, zobacz [Generowanie rekomendacji filmów za pomocą Apache Mahout i HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wiesz jak używać biblioteki Mahout poznać inne sposoby pracy z danymi w HDInsight:
+Teraz, gdy wiesz jak używać Apache Mahout poznać inne sposoby pracy z danymi w HDInsight:
 
-* [Technologia hive w usłudze HDInsight](hadoop/hdinsight-use-hive.md)
-* [Z języka pig z HDInsight](hadoop/hdinsight-use-pig.md)
+* [Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
+* [Apache Pig z HDInsight](hadoop/hdinsight-use-pig.md)
 * [MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html

@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 67995b4cc9c212f1798a37b54873bd349ac36576
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3dedf5de1ac2c88a9a00fd5f62e0663b840c0fd9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384925"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438527"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurowanie automatycznych eksperymentów uczenia maszynowego
 
@@ -171,7 +171,7 @@ Następnie określić, gdzie będzie uczony model. Automatyczne eksperymentu ucz
 *   Komputer lokalny, takich jak lokalne stacjonarnym lub przenośnym — zazwyczaj, gdy masz mały zestaw danych i są nadal w fazie eksploracji.
 *   Komputer zdalny w chmurze — [Machine Learning zarządzane obliczeń Azure](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets) to zarządzana usługa, która umożliwia szkolenie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure.
 
-Zobacz [witryny Github](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl) na przykład celów obliczeń notesów z lokalną i zdalną.
+Zobacz [witryny GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl) na przykład celów obliczeń notesów z lokalną i zdalną.
 
 <a name='configure-experiment'/>
 

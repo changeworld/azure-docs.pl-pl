@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: bda01b5c9fbd43feed8c407e85b90b31bef0ffa1
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 3da427974c4a270a7a743bb81d2376cf61b77390
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335065"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436912"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal
 
@@ -24,7 +24,7 @@ Jako administrator globalny, lub użytkownik, który jest przypisany do żadnego
 Po dodaniu użytkownika-gościa do katalogu, możesz albo wysłać użytkownik-Gość bezpośredni link do udostępnionej aplikacji, lub kliknąć adres URL realizacji w wiadomości e-mail z zaproszeniem użytkownika gościa. Aby uzyskać więcej informacji na temat procesu realizacji zobacz [realizacja zaproszenia współpracy B2B](redemption-experience.md).
 
 > [!IMPORTANT]
-> Należy wykonać czynności opisane w [instrukcje: Dodawanie informacji o prywatności w organizacji w usłudze Azure Active Directory](https://aka.ms/adprivacystatement) można dodać adres URL zasady zachowania poufności informacji w Twojej organizacji. W ramach procesu realizacji zaproszenia czas pierwszego zaproszonego użytkownika musi wyrazić zgodę na Twoje warunki ochrony prywatności, aby kontynuować. 
+> Należy wykonać czynności opisane w [porad: Dodaj informacje o prywatności w organizacji w usłudze Azure Active Directory](https://aka.ms/adprivacystatement) można dodać adres URL zasady zachowania poufności informacji w Twojej organizacji. W ramach procesu realizacji zaproszenia czas pierwszego zaproszonego użytkownika musi wyrazić zgodę na Twoje warunki ochrony prywatności, aby kontynuować. 
 
 ## <a name="add-guest-users-to-the-directory"></a>Dodawanie użytkowników-gości do katalogu
 
@@ -37,6 +37,9 @@ Aby dodać użytkowników we współpracy B2B do katalogu, wykonaj następujące
 
    ![Pokazuje, gdzie jest nowy użytkownik-Gość w interfejsie użytkownika](./media/add-users-administrator/NewGuestUser-Directory.png) 
  
+   > [!NOTE]
+   > **Nowy użytkownik-Gość** opcja jest dostępna również na **relacje w organizacji** strony. W **usługi Azure Active Directory**w obszarze **Zarządzaj**, wybierz opcję **relacje w organizacji**.
+
 5. W obszarze **Nazwa użytkownika** wprowadź adres e-mail użytkownika zewnętrznego. Opcjonalnie możesz dodać komunikat powitalny. Na przykład:
 
    ![Pokazuje, gdzie jest nowy użytkownik-Gość w interfejsie użytkownika](./media/add-users-administrator/InviteGuest.png) 

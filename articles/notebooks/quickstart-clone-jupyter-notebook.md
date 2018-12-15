@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c13650d53098c891b168cb88516dbee53f3da5cc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f36879828f5927cbb5477b32cdb6b4832010d4c
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260263"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413136"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Szybki Start: Klonowanie notesu
 
@@ -40,7 +40,7 @@ Klonowanie tworzy kopię notesu usługi GitHub w ramach Twojego konta platformy 
 
 1. W **przekazywanie repozytorium GitHub** wyświetlany, wprowadź lub ustaw następujące szczegóły, a następnie wybierz **importu**:
 
-    - **Repozytorium Github**: Microsoft/cognitive-services notesów (Ta nazwa klony notesów programu Jupyter dla usług Azure Cognitive Services na [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
+    - **Repozytorium GitHub**: Microsoft/cognitive-services notesów (Ta nazwa klony notesów programu Jupyter dla usług Azure Cognitive Services na [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
     - **Rekursywnie Klonuj**: (usunięty)
     - **Nazwa projektu**: Klonuj usług cognitive Services
     - **Identyfikator projektu**: klonowania cognitive services

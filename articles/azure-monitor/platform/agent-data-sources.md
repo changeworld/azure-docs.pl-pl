@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie źródeł danych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Źródła danych definiują dane, czy usługi Log Analytics zbiera z agentów i inne połączone źródła.  W tym artykule opisano pojęcia, jak usługa Log Analytics korzysta ze źródeł danych, zawiera szczegółowe informacje o sposobach ich konfigurowania i zawiera podsumowanie informacji o różnych źródeł danych dostępne.
+title: Konfigurowanie agenta źródeł danych w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Źródła danych definiują dane dziennika, że usługa Azure Monitor zbiera z agentów i inne połączone źródła.  W tym artykule opisano pojęcia jak Azure Monitor korzysta ze źródeł danych, zawiera szczegółowe informacje o sposobach ich konfigurowania i zawiera podsumowanie informacji o dostępnych źródeł danych.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,25 +11,22 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/26/2018
+ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 152b9a7fdac91865baa8a2c20c632e7a228be62f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 19878477888b37592105927ea03a849d3da7c891
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340763"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434940"
 ---
-# <a name="data-sources-in-log-analytics"></a>Źródła danych w usłudze Log Analytics
-Log Analytics zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym usługi Log Analytics.  Dane, które są zbierane z każdego jest definiowany przez źródeł danych, które konfigurujesz.  Dane w usłudze Log Analytics są przechowywane jako zestaw rekordów.  Każde źródło danych tworzy rekordy określonego typu, za pomocą poszczególnych typów posiadanie swój własny zestaw właściwości.
+# <a name="agent-data-sources-in-azure-monitor"></a>Agent źródeł danych w usłudze Azure Monitor
+Dane usługi Azure Monitor zbiera dane z agentów jest definiowany przez źródeł danych, które można skonfigurować.  Dane z agentów są przechowywane jako [dane dziennika](data-collection.md) przy użyciu zestawu rekordów.  Każde źródło danych tworzy rekordy określonego typu, za pomocą poszczególnych typów posiadanie swój własny zestaw właściwości.
 
-![Zaloguj się zbieranie danych analitycznych](./media/agent-data-sources/overview.png)
-
-Źródła danych różnią się od [rozwiązań do zarządzania](../../azure-monitor/insights/solutions.md), który również zbierać dane z połączonych źródeł i tworzenie rekordów w usłudze Log Analytics.  Oprócz zbierania danych, rozwiązania zwykle zawierają wyszukiwań w dziennikach i widoków, aby pomóc w analizie operacji określonej aplikacji lub usługi.
-
+![Zbieranie danych dziennika](media/agent-data-sources/overview.png)
 
 ## <a name="summary-of-data-sources"></a>Podsumowanie źródeł danych
-Poniższa tabela zawiera listę źródeł danych, które są obecnie dostępne w usłudze Log Analytics.  Każda ma link do artykułu oddzielne podanie szczegółów dla tego źródła danych.   Zawiera także informacje o ich metody i częstotliwość zbierania danych w usłudze Log Analytics.  Identyfikowanie różnych rozwiązaniach dostępnych i zrozumienie wymagań połączenia i przepływu danych dla rozwiązań do zarządzania różnych, można użyć informacji w tym artykule. Objaśnienia dotyczące kolumn, zobacz [szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure](../../azure-monitor/insights/solutions-inventory.md).
+Poniższa tabela zawiera listę źródeł danych agenta, które są obecnie dostępne w usłudze Azure Monitor.  Każda ma link do artykułu oddzielne podanie szczegółów dla tego źródła danych.   Zawiera także informacje o ich metody i częstotliwość zbierania. 
 
 
 | Źródło danych | Platforma | Agent monitorowania firmy Microsoft | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
@@ -44,27 +41,27 @@ Poniższa tabela zawiera listę źródeł danych, które są obecnie dostępne w
 
 
 ## <a name="configuring-data-sources"></a>Konfigurowanie źródeł danych
-Konfigurowanie źródła danych z **danych** menu w usłudze Log Analytics **Zaawansowane ustawienia**.  Dowolna konfiguracja jest dostarczana do wszystkich połączonych źródeł, w obszarze roboczym.  Obecnie nie możesz wykluczać wszelkich agentów z tej konfiguracji.
+Konfigurowanie źródła danych z **danych** menu **Zaawansowane ustawienia** dla obszaru roboczego.  Dowolna konfiguracja jest dostarczana do wszystkich połączonych źródeł, w obszarze roboczym.  Obecnie nie możesz wykluczać wszelkich agentów z tej konfiguracji.
 
 ![Konfiguruj zdarzenia Windows](./media/agent-data-sources/configure-events.png)
 
-1. W witrynie Azure portal wybierz **usługi Log Analytics** > obszar roboczy > **Zaawansowane ustawienia**.
+1. W witrynie Azure portal wybierz **obszary robocze** > obszar roboczy > **Zaawansowane ustawienia**.
 2. Wybierz **danych**.
 3. Kliknij źródło danych, które chcesz skonfigurować.
 4. Kliknij link do dokumentacji dla każdego źródła danych w powyższej tabeli, aby uzyskać szczegółowe informacje na ich konfiguracji.
 
 
 ## <a name="data-collection"></a>Zbieranie danych
-Konfiguracje źródeł danych są dostarczane do agentów, które są podłączone bezpośrednio do usługi Log Analytics w ciągu kilku minut.  Określone dane jest zbierane z programu agent i dostarczane bezpośrednio do usługi Log Analytics w odstępach specyficzne dla każdego źródła danych.  Zobacz dokumentację dla każdego źródła danych dla tych szczegółowych informacji.
+Konfiguracje źródeł danych są dostarczane do agentów, które są podłączone bezpośrednio do usługi Azure Monitor w ciągu kilku minut.  Określone dane jest zbierane z programu agent i dostarczane bezpośrednio do usługi Azure Monitor w odstępach specyficzne dla każdego źródła danych.  Zobacz dokumentację dla każdego źródła danych dla tych szczegółowych informacji.
 
-Agenci programu System Center Operations Manager w podłączonej grupy zarządzania konfiguracje źródeł danych są przetłumaczone na pakiety administracyjne i dostarczane do grupy zarządzania co 5 minut, domyślnie.  Agent pobiera pakiet administracyjny, jak każdy inny i zbiera określone dane. W zależności od źródła danych dane będą albo wysłane do serwera zarządzania, która przekazuje dane do usługi Log Analytics lub agent będzie wysyłać dane do usługi Log Analytics bez przechodzenia przez serwer zarządzania. Zobacz [szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure](../../azure-monitor/insights/solutions-inventory.md) Aby uzyskać szczegółowe informacje.  Możesz przeczytać o szczegółach połączenie programu Operations Manager i usługi Log Analytics i modyfikowanie częstotliwości tej konfiguracji jest dostarczana w [konfigurowania integracji z programem System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
+Agenci programu System Center Operations Manager w podłączonej grupy zarządzania konfiguracje źródeł danych są przetłumaczone na pakiety administracyjne i dostarczane do grupy zarządzania co 5 minut, domyślnie.  Agent pobiera pakiet administracyjny, jak każdy inny i zbiera określone dane. W zależności od źródła danych dane będą albo wysłane do serwera zarządzania, która przekazuje dane do usługi Azure Monitor lub agent będzie wysyłać dane do usługi Azure Monitor bez przechodzenia przez serwer zarządzania. Zobacz [szczegóły zbierania danych monitorowania rozwiązań na platformie Azure](../../azure-monitor/insights/solutions-inventory.md) Aby uzyskać szczegółowe informacje.  Możesz przeczytać o szczegółach połączenie programu Operations Manager i usługi Azure Monitor i modyfikowanie częstotliwości tej konfiguracji jest dostarczana w [konfigurowania integracji z programem System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md).
 
-Jeśli agent jest w stanie połączyć się z usługi Log Analytics lub Operations Manager, będzie zbierać dane, które będzie dostarczać, jeśli go nawiązuje połączenie.  Dane mogą zostać utracone, jeśli ilość danych osiągnie maksymalny rozmiar pamięci podręcznej klienta lub jeśli agent nie jest w stanie nawiązać połączenie w ciągu 24 godzin.
+Jeśli agent jest w stanie połączyć się z usługi Azure Monitor lub Operations Manager, będzie zbierać dane, które będzie dostarczać, jeśli go nawiązuje połączenie.  Dane mogą zostać utracone, jeśli ilość danych osiągnie maksymalny rozmiar pamięci podręcznej klienta lub jeśli agent nie jest w stanie nawiązać połączenie w ciągu 24 godzin.
 
-## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
-Wszystkie dane zebrane przez usługę Log Analytics jest przechowywane w obszarze roboczym jako rekordy.  Rekordów zbieranych przez różne źródła danych będą mieć własne zestawy właściwości i zostać zidentyfikowane na podstawie ich **typu** właściwości.  Zobacz dokumentację dla każdego źródła danych i rozwiązań, aby uzyskać szczegółowe informacje dla każdego typu rekordu.
+## <a name="log-records"></a>Rekordy dziennika
+Wszystkie dane dzienników zbieranych przez usługi Azure Monitor jest przechowywane w obszarze roboczym jako rekordy.  Rekordów zbieranych przez różne źródła danych będą mieć własne zestawy właściwości i zostać zidentyfikowane na podstawie ich **typu** właściwości.  Zobacz dokumentację dla każdego źródła danych i rozwiązań, aby uzyskać szczegółowe informacje dla każdego typu rekordu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [rozwiązania](../../azure-monitor/insights/solutions.md) , dodawanie funkcji do usługi Log Analytics i również zbierać dane do obszaru roboczego.
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
-* Konfigurowanie [alerty](../../azure-monitor/platform/alerts-overview.md) celu proaktywnego powiadamiania o krytyczne dane zbierane z innych źródeł danych i rozwiązań.
+* Dowiedz się więcej o [rozwiązania do monitorowania](../../azure-monitor/insights/solutions.md) , dodawanie funkcji do usługi Azure Monitor i również zbierać dane do obszaru roboczego.
+* Dowiedz się więcej o [rejestrowania zapytań](../../log-analytics/log-analytics-queries.md) analizować dane zebrane ze źródeł danych i rozwiązania do monitorowania.  
+* Konfigurowanie [alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) do aktywnego powiadamiania użytkownika kluczowych danych zbieranych ze źródeł danych i rozwiązania do monitorowania.

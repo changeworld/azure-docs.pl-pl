@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 5726444033d8da14c213918f409ddf5875e026b9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5a40e215c6dd5bf4dc1178595716f95ae21adcb4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322759"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438204"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
 Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych z systemem Microsoft Windows i Linux hostowanych na platformie Azure, centrum danych lub innych dostawców rozwiązań w chmurze. Są trzy typy dostępnych do monitorowania maszyn wirtualnych agentów:
@@ -44,7 +44,7 @@ Istnieje możliwość zbierania:
 Jeśli chcesz, należy użyć agenta funkcji Diagnostyka Azure:
 
 * Archiwizowanie dzienników i metryk do usługi Azure storage
-* Zintegruj dane monitorowania z narzędziami innych firm. Te narzędzia korzystają z różnych metod, w tym konto magazynu, przesyłane dalej do kwerendy [usługi Event Hubs](../../event-hubs/event-hubs-about.md), lub wykonywanie zapytań za pomocą [interfejsu API REST monitorowania platformy Azure](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
+* Zintegruj dane monitorowania z narzędziami innych firm. Te narzędzia korzystają z różnych metod, w tym konto magazynu, przesyłane dalej do kwerendy [usługi Event Hubs](../../event-hubs/event-hubs-about.md), lub wykonywanie zapytań za pomocą [interfejsu API REST monitorowania platformy Azure](../../azure-monitor/platform/rest-api-walkthrough.md)
 * Przekazywanie danych do usługi Azure Monitor, tworzenie wykresów metryki w witrynie Azure portal lub utworzyć w czasie zbliżonym do rzeczywistego [alertów dotyczących metryk](../../azure-monitor/platform/alerts-metric-overview.md). 
 * Zestawy skalowania maszyn wirtualnych skalowania automatycznego i klasycznej usługi w chmurze w oparciu metryki systemu operacyjnego gościa.
 * Badanie problemów dotyczących rozruchu maszyny Wirtualnej za pomocą [diagnostyki rozruchu](../../virtual-machines/troubleshooting/boot-diagnostics.md).

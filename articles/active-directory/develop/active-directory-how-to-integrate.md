@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fcc0badc17675c1c8923c744afd3fa46e98fef32
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d3b2edefd602a90ff28b8e0645d3c48932ba44dd
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954711"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410316"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 
@@ -36,7 +36,7 @@ Istnieje kilka sposobów dla swojej aplikacji w celu integracji z usługą Azure
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Obsługa usługi Azure AD jako sposobem logowania do aplikacji
 **Zmniejsz logowania Ogranicz liczbę problemów i zmniejszyć koszty pomocy technicznej.** Za pomocą usługi Azure AD do logowania do aplikacji, użytkownicy nie mają jedną nazwę więcej i hasło do zapamiętania. Jako deweloper będziesz mieć jedno hasło mniej przechowywać i chronić. Brak konieczności obsługi Resetowanie zapomnianych haseł może być znaczne oszczędności, samodzielnie. Usługa Azure AD obsługuje logowanie dla niektórych na świecie najpopularniejszych aplikacji w chmurze, w tym usługi Office 365 i Microsoft Azure. Setki milionów użytkowników z milionów urządzeń w organizacji, jest szansa, użytkownik jest już zalogowany do usługi Azure AD. Dowiedz się więcej o [dodano obsługę logowania do usługi Azure AD](authentication-scenarios.md).
 
-**Aby uprościć logowania się dla aplikacji.**  Podczas logowania się dla aplikacji usługi Azure AD można wysłać podstawowe informacje dotyczące użytkownika, tak, aby można było wstępnie wypełnić rejestrowania formularza lub całkowicie wyeliminować. Użytkownicy mogą zarejestrować się w aplikacji przy użyciu swojego konta usługi Azure AD za pośrednictwem doświadczenie znanych zgody, podobne do tych w mediach społecznościowych i aplikacji mobilnych. Każdy użytkownik, można zarejestrować się i zaloguj się do aplikacji, która jest zintegrowana z usługą Azure AD bez konieczności dodatkowych zasobów informatycznych. Dowiedz się więcej o [rejestracji w ramach aplikacji na potrzeby logowania do konta usługi Azure AD](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+**Aby uprościć logowania się dla aplikacji.**  Podczas logowania się dla aplikacji usługi Azure AD można wysłać podstawowe informacje dotyczące użytkownika, tak, aby można było wstępnie wypełnić rejestrowania formularza lub całkowicie wyeliminować. Użytkownicy mogą zarejestrować się w aplikacji przy użyciu swojego konta usługi Azure AD za pośrednictwem doświadczenie znanych zgody, podobne do tych w mediach społecznościowych i aplikacji mobilnych. Każdy użytkownik, można zarejestrować się i zaloguj się do aplikacji, która jest zintegrowana z usługą Azure AD bez konieczności dodatkowych zasobów informatycznych. Dowiedz się więcej o [rejestracji w ramach aplikacji na potrzeby logowania do konta usługi Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Przeglądaj w poszukiwaniu użytkowników, zarządzanie Aprowizowaniem użytkowników i kontrolować dostęp do aplikacji
 **Przeglądaj w poszukiwaniu użytkowników w katalogu.**  Pomaganie użytkownikom wyszukiwanie, a następnie przejdź do innych osób w organizacji, podczas zapraszania innych za pomocą interfejsu API programu Graph lub udzielania dostępu, nie wymagając od nich wpisz adres e-mail adresów. Użytkownicy mogą przeglądać przy użyciu interfejsu stylu książki znanych adresów, w tym wyświetlanie szczegółów hierarchii organizacji. Dowiedz się więcej o [interfejsu API programu Graph](active-directory-graph-api.md).

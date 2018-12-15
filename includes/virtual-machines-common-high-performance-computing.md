@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 8f43edfe468958bbc4a6fde14e8e03e5b4d4e0f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 88aeaf1246583345d1d28218e8e91b3ecbcd166b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263973"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53430011"
 ---
 Organizacje mają potrzebami obliczeniowymi na dużą skalę. Tych obciążeń funkcji dużych obliczeń obejmują projektowaniem inżynierskim i analizy, obliczeniami w zakresie ryzyka finansowego, renderowaniem obrazu, złożonym modelowaniem, Symulacje Monte Carlo i inne. 
 
@@ -86,7 +86,6 @@ Uruchom niestandardowe lub komercyjne aplikacje HPC na platformie Azure. Kilka p
 
 ### <a name="ai-and-deep-learning"></a>Sztucznej Inteligencji i uczenia głębokiego
 
-* [Z usługi Batch AI](../articles/batch-ai/overview.md) szkolenie modeli uczenia głębokiego
 * [Zestaw narzędzi usług Microsoft Cognitive](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
 * [Maszyna wirtualna do uczenia głębokiego](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
 * [Przepisy usługa Shipyard usługi Batch na potrzeby uczenia głębokiego](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
@@ -168,7 +167,6 @@ Maszyny wirtualne platformy Azure, zestawy skalowania maszyn wirtualnych, usług
 
 ### <a name="ai-and-machine-learning"></a>SI i uczenie maszynowe
 * [Usługi Machine Learning](../articles/machine-learning/service/overview-what-is-azure-ml.md)
-* [Usługa Batch — sztuczna inteligencja](../articles/batch-ai/overview.md)
 * [Genomics](../articles/genomics/overview-what-is-genomics.md)
 
 ### <a name="networking"></a>Networking

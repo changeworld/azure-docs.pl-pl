@@ -9,36 +9,36 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 637ce81f2e2ef4c7271e26bd4e9dfe36da524e27
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c5bf69a2ac6a70410339a5696da53169ca87170f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012746"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407222"
 ---
-# <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Uruchamianie zapytań Hive z usługą Apache Hadoop w HDInsight przy użyciu usługi REST
+# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Uruchamianie zapytania usługi Apache Hive z usługą Apache Hadoop w HDInsight przy użyciu usługi REST
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Dowiedz się, jak za pomocą interfejsu API REST usługi WebHCat, uruchamianie zapytań Hive przy użyciu technologii Apache Hadoop w klastrze Azure HDInsight.
+Dowiedz się, jak uruchomić zapytania usługi Apache Hive przy użyciu technologii Apache Hadoop w klastrze Azure HDInsight za pomocą interfejsu API REST usługi WebHCat.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Opartą na systemie Linux platformą Hadoop w wersji klastra HDInsight 3.4 lub nowszą.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * Klient REST. Ten dokument używa programu Windows PowerShell i [Curl](https://curl.haxx.se/) przykłady.
 
-    > [!NOTE]
-    > Program Azure PowerShell zawiera polecenia cmdlet przeznaczone do pracy z technologią Hive w HDInsight. Aby uzyskać więcej informacji, zobacz [korzystanie z programu Hive przy użyciu programu Azure PowerShell](apache-hadoop-use-hive-powershell.md) dokumentu.
+    > [!NOTE]  
+    > Program Azure PowerShell zawiera polecenia cmdlet przeznaczone do pracy z technologią Hive w HDInsight. Aby uzyskać więcej informacji, zobacz [używanie programu Apache Hive przy użyciu programu Azure PowerShell](apache-hadoop-use-hive-powershell.md) dokumentu.
 
 W tym dokumencie używa również środowiska Windows PowerShell i [Jq](https://stedolan.github.io/jq/) do procesu zwrócone dane JSON z żądania REST.
 
 ## <a id="curl"></a>Uruchomienie zapytania programu Hive
 
-> [!NOTE]
+> [!NOTE]  
 > Używając programu cURL lub innego połączenia REST z usługą WebHCat, należy uwierzytelnić żądania, podając nazwę użytkownika i hasło administratora klastra HDInsight.
 >
 > Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego](https://en.wikipedia.org/wiki/Basic_access_authentication). Aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera, należy zawsze tworzyć żądania przy użyciu protokołu HTTP Secure (HTTPS).
@@ -135,7 +135,7 @@ W tym dokumencie używa również środowiska Windows PowerShell i [Jq](https://
    * `DROP TABLE` -Jeśli tabela już istnieje, zostanie usunięta.
    * `CREATE EXTERNAL TABLE` -Tworzy nową tabelę "external" w gałęzi. Tabele zewnętrzne przechowywać w definicji tabeli w gałęzi. Dane pozostaną w oryginalnej lokalizacji.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Jeśli potrzebujesz danych bazowych do zaktualizowania za pomocą zewnętrznego źródła, należy używać tabel zewnętrznych. Na przykład proces przekazywania danych lub inna operacja MapReduce.
      >
      > Usunięcie tabeli zewnętrznej jest **nie** usunąć dane w definicji tabeli.
@@ -144,7 +144,7 @@ W tym dokumencie używa również środowiska Windows PowerShell i [Jq](https://
    * `STORED AS TEXTFILE LOCATION` — Gdzie dane są przechowywane (katalog przykład/danych) i które są przechowywane jako tekst.
    * `SELECT` -Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]**. Ta instrukcja zwraca wartość **3** , jak istnieją trzy wiersze, które zawierają tę wartość.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Należy zauważyć, że spacji między instrukcje HiveQL są zastępowane przez `+` znaku w przypadku korzystania z programu Curl. Wartości w cudzysłowie, zawierające spację, takich jak ogranicznik, nie powinna zostać zastąpiona przez `+`.
 
       To polecenie zwraca identyfikator zadania, który może służyć do sprawdzania stanu zadania.
@@ -177,16 +177,16 @@ W tym dokumencie używa również środowiska Windows PowerShell i [Jq](https://
 
 Aby uzyskać ogólne informacje na temat programu Hive z HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
 
 Więcej informacji dotyczących innych sposobów korzystania z usługi Hadoop w HDInsight:
 
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
-* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
 Jeśli używasz aplikacji Tez przy użyciu technologii Hive, zobacz następujące dokumenty, aby uzyskać informacje o debugowaniu:
 
-* [Użyj widoku Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
+* [Użyj widoku Apache Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
 
 Aby uzyskać więcej informacji na temat interfejsu API REST używanego w tym dokumencie, zobacz [odwołanie do usługi WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentu.
 

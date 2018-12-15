@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c0040958cbf748d3eafb3ee60806b064e4e0b1ba
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634485"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435790"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>Korzystanie z technologii MapReduce na platformie Apache Hadoop w HDInsight przy użyciu pulpitu zdalnego
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
 W tym artykule dowiesz się, jak nawiązać połączenie z technologii Apache Hadoop w klastrze HDInsight przy użyciu pulpitu zdalnego, a następnie uruchomienie zadania MapReduce za pomocą polecenia Hadoop.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pulpit zdalny jest dostępna tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 >
 > HDInsight 3.4 lub nowszej, zobacz [używanie MapReduce z protokołu SSH](apache-hadoop-use-mapreduce-ssh.md) informacji na temat łączenia się z klastrem HDInsight i uruchamiania zadań MapReduce.
@@ -40,7 +40,7 @@ Po połączeniu na pulpicie dla klastra HDInsight umożliwia uruchomienie zadani
 
 1. Na pulpicie HDInsight start **wiersza polecenia usługi Hadoop**. Spowoduje to otwarcie nowego wiersza polecenia w **c:\apps\dist\hadoop-&lt;numer wersji >** katalogu.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Numer wersji zmienia się po zaktualizowaniu usługi Hadoop. **HADOOP_HOME** zmiennej środowiskowej można znaleźć ścieżki. Na przykład `cd %HADOOP_HOME%` zmian katalogów do katalogu usługi Hadoop, nie wymagając od znać numer wersji.
    >
    >
@@ -94,5 +94,5 @@ Aby uzyskać ogólne informacje na temat zadań MapReduce w HDInsight:
 
 Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)

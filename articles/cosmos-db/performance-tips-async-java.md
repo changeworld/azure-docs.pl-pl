@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 8cfc62948df679fa900099c0e5dbb33a60e42b08
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 440dc13e2c6f4d9acc270b644cc549280e6d91be
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876253"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413578"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i Java (asynchroniczny)
 
@@ -35,7 +35,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
     Jeśli to możliwe, należy umieścić wszystkie aplikacje podczas wywoływania usługi Azure Cosmos DB w tym samym regionie co baza danych usługi Azure Cosmos DB. Przybliżony porównanie wywołań do usługi Azure Cosmos DB w ramach tego samego regionu zakończyć w ciągu 1 – 2 ms, ale opóźnienie między zachodnim i wschodnim wybrzeżem Stanów Zjednoczonych wynosi > 50 ms. Ten czas oczekiwania prawdopodobnie zależy do innego żądania trasy żądania przekazywanego z klienta do granicy centrum danych platformy Azure. Najniższe możliwe opóźnienie jest osiągane poprzez zapewnienie, że aplikacja wywołująca znajduje się w obrębie tego samego regionu platformy Azure aprowizowane punktu końcowego usługi Azure Cosmos DB. Aby uzyskać listę dostępnych regionów, zobacz [regionów platformy Azure](https://azure.microsoft.com/regions/#services).
 
     ![Ilustracja zasad połączenia usługi Azure Cosmos DB](./media/performance-tips/same-region.png)
-   
+
 ## <a name="sdk-usage"></a>Użycie zestawu SDK
 1. **Instalowanie najnowszych zestawu SDK**
 
@@ -54,17 +54,17 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
     Usługa Azure Cosmos DB SQL Async zestawu SDK Java obsługuje zapytania równolegle, które umożliwiają kwerenda dotycząca kolekcji partycjonowanej równolegle. Aby uzyskać więcej informacji, zobacz [przykłady kodu](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) związanych z pracą z zestawami SDK. Zapytania równoległe są przeznaczone do kwerendy opóźnienia i przepływności starają się ich odpowiedników szeregowe.
 
-    () ***dostrajania setMaxDegreeOfParallelism\:***  równoległe zapytania pracy, badając równocześnie wiele partycji. Jednak dane z poszczególnych kolekcji partycjonowanej pobieranych szeregowo w odniesieniu do zapytania. Tak Użyj setMaxDegreeOfParallelism, aby ustawić liczbę partycji ma maksymalną prawdopodobieństwo osiągnięcia większość wydajna, podanym zapytaniem inne warunki systemu pozostają takie same. Jeśli nie znasz liczby partycji setMaxDegreeOfParallelism umożliwia ustawianie dużą liczbą, a system wybiera co najmniej (liczba partycji, dane wejściowe podane przez użytkownika), jako maksymalny stopień równoległości. 
+    () ***dostrajania setMaxDegreeOfParallelism\:***  równoległe zapytania pracy, badając równocześnie wiele partycji. Jednak dane z poszczególnych kolekcji partycjonowanej pobieranych szeregowo w odniesieniu do zapytania. Tak Użyj setMaxDegreeOfParallelism, aby ustawić liczbę partycji ma maksymalną prawdopodobieństwo osiągnięcia większość wydajna, podanym zapytaniem inne warunki systemu pozostają takie same. Jeśli nie znasz liczby partycji setMaxDegreeOfParallelism umożliwia ustawianie dużą liczbą, a system wybiera co najmniej (liczba partycji, dane wejściowe podane przez użytkownika), jako maksymalny stopień równoległości.
 
     Należy pamiętać, zapytania równoległe generuje najważniejsze korzyści, jeśli danych jest równomiernie rozłożona na wszystkie partycje w odniesieniu do zapytania. Jeśli kolekcji partycjonowanej jest podzielona na partycje tak, wszystkie lub większość danych zwróconych przez kwerendę koncentrują się w kilku partycji (jedną partycję w najgorszym przypadku), a następnie wykonywania zapytania, czy bottlenecked przez te partycje.
 
     (b) ***dostrajania setMaxBufferedItemCount\:***  zapytanie równoległe zaprojektowano w celu wstępnego pobierania wyników, podczas gdy bieżącej partii wyników jest przetwarzany przez klienta. Pobierania pomaga w ogólnej poprawy opóźnienie kwerendy. setMaxBufferedItemCount ogranicza liczbę wstępnie pobrano wyniki. Ustawienie setMaxBufferedItemCount do oczekiwanej liczby wyników zwróconych (lub większa liczba zostanie podana) umożliwia zapytania do odbierania maksymalnych korzyści z pobierania z wyprzedzeniem.
 
-    Pobierania z wyprzedzeniem działa tak samo niezależnie od tego, MaxDegreeOfParallelism i istnieje pojedynczy bufor dla danych ze wszystkich partycji.  
+    Pobierania z wyprzedzeniem działa tak samo niezależnie od tego, MaxDegreeOfParallelism i istnieje pojedynczy bufor dla danych ze wszystkich partycji.
 
 5. **Implementowanie wycofywania w odstępach czasu getRetryAfterInMilliseconds**
 
-    Podczas testowania wydajności, należy zwiększyć obciążenie do momentu ograniczeni mała liczba żądań. Jeśli jest dławiona, aplikacja kliencka powinna wycofywania interwał ponawiania określony serwer. Uwzględnienie wycofywania daje pewność, możesz wydać skraca czas oczekiwania między ponownymi próbami. 
+    Podczas testowania wydajności, należy zwiększyć obciążenie do momentu ograniczeni mała liczba żądań. Jeśli jest dławiona, aplikacja kliencka powinna wycofywania interwał ponawiania określony serwer. Uwzględnienie wycofywania daje pewność, możesz wydać skraca czas oczekiwania między ponownymi próbami.
 6. **Skalowanie w poziomie obciążenia klientami**
 
     Jeśli testujesz na poziomach wysoką przepływność (> 50 000 jednostek RU/s), aplikacja kliencka może stać się wąskim gardłem ze względu na maszynie są takie same się na użycie procesora CPU lub sieci. Jeśli przekroczysz ten punkt, może nadal wypychania dalsze za pomocą konta usługi Azure Cosmos DB skalowanie aplikacji klienckich na wielu serwerach.
@@ -81,7 +81,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
     Aby zmniejszyć liczbę rund sieci, wymagany do pobrania wszystkich odpowiednich wyników, można zwiększyć, używając rozmiaru strony [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) nagłówek żądania do 1000. W przypadkach, w których należy wyświetlić tylko kilka wyników, na przykład, jeśli użytkownik interfejsu lub aplikacji interfejsu API zwróci tylko 10 powoduje przez czas, można także zmniejszyć rozmiar strony do 10, aby ograniczyć przepustowość używana dla odczytów i zapytań.
 
     Możesz też ustawić rozmiar strony, przy użyciu metody setMaxItemCount.
-    
+
 9. **Za pomocą odpowiedniego harmonogramu (należy unikać kradzież zdarzeń pętli we/wy Netty wątków)**
 
     Korzysta z zestawu SDK Java Async [netty](https://netty.io/) dla operacji We/Wy bez blokowania. Zestaw SDK używa stałej liczby operacji We/Wy zdarzeń netty pętli wątków (jak wiele rdzeni Procesora komputera ma) do wykonywania operacji We/Wy. Możliwość obserwowania zwracana przez interfejs API emituje wynik w jednym udostępnionym pętli zdarzenia we/wy: netty wątków. Dlatego warto blokuje udostępnionego pętli zdarzenia we/wy: netty wątków. Wykonywania prac intensywnie korzystających z procesora CPU lub blokowanie operacji w wątku netty pętli zdarzenia we/wy może spowodować zakleszczenia lub znacznie zmniejszyć zestaw SDK przepływności.
@@ -123,7 +123,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
     Na podstawie typu danych, należy użyć odpowiedniej istniejący harmonogram RxJava dla danego zadania. Tutaj dowiesz się [ ``Schedulers`` ](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html).
 
-    Aby uzyskać więcej informacji, zajrzyj [strony Github](https://github.com/Azure/azure-cosmosdb-java) dla zestawu SDK Java Async.
+    Aby uzyskać więcej informacji, zajrzyj [strony GitHub](https://github.com/Azure/azure-cosmosdb-java) dla zestawu SDK Java Async.
 
 10. **Wyłącz rejestrowanie firmy netty** rejestrowanie Netty biblioteki jest duża liczba i musi być wyłączona (z pominięciem logowania w konfiguracji może nie być wystarczająca) aby uniknąć dodatkowych kosztów procesora CPU. Jeśli nie jesteś w trybie debugowania, wyłącz netty rejestrowania całkowicie. Jeśli używasz log4j do usunięcia dodatkowych kosztów Procesora poniesione przez ``org.apache.log4j.Category.callAppenders()`` z netty bazie kodu Dodaj następujący wiersz:
 
@@ -175,7 +175,7 @@ Dla innych platform (Red Hat, Windows, Mac, itp.) dotyczą te instrukcje https:/
  
 1. **Wyklucz ścieżki nieużywane indeksowania do szybszego zapisu**
 
-    Zasady indeksowania danych usługi Azure Cosmos DB pozwala określić które ścieżki dokumentu do dołączania lub wykluczania z indeksowania dzięki wykorzystaniu indeksowania ścieżki (setIncludedPaths i setExcludedPaths). Użycie indeksowania ścieżki oferują zapisu ulepszoną wydajność i niższe magazyn indeksów dla scenariuszy, w których wzorców zapytań są znane wcześniej, ponieważ koszty indeksowania bezpośrednio skorelowanych liczby unikatowych ścieżek indeksowane.  Na przykład poniższy kod pokazuje, jak (zwany również wykluczyć całą sekcję dokumentów poddrzewo) z pomocą indeksowaniem "*" symboli wieloznacznych.
+    Zasady indeksowania danych usługi Azure Cosmos DB pozwala określić które ścieżki dokumentu do dołączania lub wykluczania z indeksowania dzięki wykorzystaniu indeksowania ścieżki (setIncludedPaths i setExcludedPaths). Użycie indeksowania ścieżki oferują zapisu ulepszoną wydajność i niższe magazyn indeksów dla scenariuszy, w których wzorców zapytań są znane wcześniej, ponieważ koszty indeksowania bezpośrednio skorelowanych liczby unikatowych ścieżek indeksowane. Na przykład poniższy kod pokazuje, jak (zwany również wykluczyć całą sekcję dokumentów poddrzewo) z pomocą indeksowaniem "*" symboli wieloznacznych.
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -196,7 +196,7 @@ Dla innych platform (Red Hat, Windows, Mac, itp.) dotyczą te instrukcje https:/
 
     Usługa Azure Cosmos DB oferuje bogaty zestaw operacji bazy danych, takich jak relacyjne i hierarchiczne zapytania z funkcji UDF, procedury składowane i wyzwalacze. wszystkie na dokumentach w obrębie kolekcji bazy danych. Koszt związany z każdą z tych operacji zależy od procesora CPU, we/wy i pamięci wymaganej do ukończenia tej operacji. Zamiast myśleć o zasobach i zarządzaniu nimi sprzętu można traktować jednostek żądań (RU) jako pojedynczej mierze zasobów wymaganych do wykonywania różnych operacji bazy danych i obsługiwania żądania aplikacji.
 
-    Przepływność jest przygotowany na podstawie liczby [jednostek żądania](request-units.md) ustawić dla każdego kontenera. Użycie jednostek żądania zostanie ocenione jako wskaźnik na sekundę. Aplikacje, które wykraczają stawki za jednostkę elastycznie żądania dla ich kontenera są ograniczone, aż współczynnik nie spadnie poniżej poziomu aprowizowaną dla kontenera. Jeśli aplikacja wymaga wyższego poziomu przepływności, można zwiększyć przepływność przez udostępnienie dodatkowych jednostek żądań. 
+    Przepływność jest przygotowany na podstawie liczby [jednostek żądania](request-units.md) ustawić dla każdego kontenera. Użycie jednostek żądania zostanie ocenione jako wskaźnik na sekundę. Aplikacje, które wykraczają stawki za jednostkę elastycznie żądania dla ich kontenera są ograniczone, aż współczynnik nie spadnie poniżej poziomu aprowizowaną dla kontenera. Jeśli aplikacja wymaga wyższego poziomu przepływności, można zwiększyć przepływność przez udostępnienie dodatkowych jednostek żądań.
 
     Złożoność zapytania ma wpływ na liczbę jednostek żądania są używane dla operacji. Liczba predykatów, rodzaj predykaty, liczba funkcji zdefiniowanych przez użytkownika oraz rozmiar źródłowy zestaw danych, wszystkie mają wpływ na koszt operacje zapytań.
 
@@ -206,7 +206,7 @@ Dla innych platform (Red Hat, Windows, Mac, itp.) dotyczą te instrukcje https:/
     ResourceResponse<Document> response = asyncClient.createDocument(collectionLink, documentDefinition, null,
                                                      false).toBlocking.single();
     response.getRequestCharge();
-    ```             
+    ```
 
     Opłata za żądanie wyrażana zwrócony w nagłówku to jest część aprowizowanej przepływności. Na przykład jeśli masz 2000 jednostek RU/s jest obsługiwana, a jeśli poprzednie zapytanie zwraca 1KB 1000 dokumentów, koszty działania wynosi 1000. Jako takie w ciągu sekundy, serwer honoruje tylko dwa takich żądań przed kolejnymi żądaniami ograniczania szybkości. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md) i [kalkulatora jednostek żądania](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
@@ -222,7 +222,7 @@ Dla innych platform (Red Hat, Windows, Mac, itp.) dotyczą te instrukcje https:/
 
     Jeśli masz więcej niż jeden klient łącznie operacyjnego stale powyżej żądań zakończonych, domyślna liczba ponownych prób aktualnie ustawiona na 9 wewnętrznie przez klienta mogą być niewystarczające; w takim przypadku klient zgłasza DocumentClientException z kodem stanu 429 do aplikacji. Domyślna liczba ponownych prób, można zmienić za pomocą setRetryOptions wystąpieniu ConnectionPolicy. Domyślnie DocumentClientException z kodem stanu 429 po skumulowany czas oczekiwania równej 30 sekund jest zwracany, jeśli żądanie będzie kontynuował pracę nad liczba żądań. Dzieje się tak nawet gdy aktualna liczba ponownych prób jest mniejsza niż liczba ponowień max, są to domyślne 9 lub wartości zdefiniowane przez użytkownika.
 
-    Podczas sposób automatycznego ponawiania pomaga zwiększyć odporność i użyteczność dla większości aplikacji, jego mogą pochodzić w odds podczas wykonywania testów porównawczych wydajności, szczególnie w przypadku, gdy pomiaru opóźnienia.  Opóźnienie zaobserwowane klienta będzie tymczasowe, jeśli eksperymentu trafienia ograniczania serwera i powoduje, że klient zestawu SDK, aby dyskretnie ponowić próbę. Aby uniknąć opóźnienia rzędu podczas wydajności eksperymentów, zmierzyć opłaty zwrócony przez każdej operacji i upewnij się, czy żądania działają poniżej stawki żądanie zastrzeżonego. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md).
+    Podczas sposób automatycznego ponawiania pomaga zwiększyć odporność i użyteczność dla większości aplikacji, jego mogą pochodzić w odds podczas wykonywania testów porównawczych wydajności, szczególnie w przypadku, gdy pomiaru opóźnienia. Opóźnienie zaobserwowane klienta będzie tymczasowe, jeśli eksperymentu trafienia ograniczania serwera i powoduje, że klient zestawu SDK, aby dyskretnie ponowić próbę. Aby uniknąć opóźnienia rzędu podczas wydajności eksperymentów, zmierzyć opłaty zwrócony przez każdej operacji i upewnij się, czy żądania działają poniżej stawki żądanie zastrzeżonego. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md).
 3. **Projektowanie pod kątem mniejszych dokumentów w celu uzyskania wyższej przepustowości**
 
     Opłata za żądanie wyrażana (koszt przetwarzania żądania) dla danej operacji są bezpośrednio skorelowane do rozmiaru dokumentu. Operacje na dużych dokumentów kosztuje więcej niż operacji przy małym dokumentom.

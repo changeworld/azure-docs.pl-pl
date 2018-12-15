@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Konfigurowanie uprawnień konta usługi AD DS łącznika | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika | Dokumentacja firmy Microsoft'
 description: Ten dokument zawiera szczegółowe informacje dotyczące konfigurowania konta łącznik usługi AD DS za pomocą nowego modułu ADSyncConfig PowerShell
 services: active-directory
 author: billmath
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f57a5a2413103ddcf7484f3b1fc5b4170b7bdc98
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 97352cdc89aabe312bf500901347acaf5238e871
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412863"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436997"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurowanie uprawnień konta usługi AD DS łącznika 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 
 Nowy moduł programu PowerShell o nazwie [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) wprowadzono w systemie kompilacji 1.1.880.0 (wydanej w sierpniu 2018 r.), który zawiera zbiór poleceń cmdlet ułatwiają konfigurowanie odpowiednich uprawnień usługi Active Directory dla usługi Azure AD Połącz z wdrożenia. 
 
@@ -205,12 +205,12 @@ To polecenie cmdlet będzie ustawić następujące uprawnienia:
 Aby ustawić uprawnienia dla konta usługi AD DS łącznika, używając zapisu zwrotnego grup, uruchom polecenie: 
 
 ``` powershell
-Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 Lub; 
 
 ``` powershell
-Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
+Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
@@ -225,14 +225,14 @@ To polecenie cmdlet będzie ustawić następujące uprawnienia:
 Aby ustawić uprawnienia dla konta usługi AD DS łącznika, korzystając z wdrożenie hybrydowe programu Exchange, uruchom polecenie: 
 
 ``` powershell
-Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
 Lub; 
 
 ``` powershell
-Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
+Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia:  
@@ -299,7 +299,7 @@ To polecenie cmdlet będzie ustawić następujące uprawnienia:
 |Zezwalaj |Uwierzytelnieni użytkownicy |Uprawnienia do odczytu |Ten obiekt 
 
 ## <a name="next-steps"></a>Następne kroki
-- [Azure AD Connect: Accounts and permissions](reference-connect-accounts-permissions.md) (Azure AD Connect: konta i uprawnienia)
+- [Azure AD Connect: Konta i uprawnienia](reference-connect-accounts-permissions.md)
 - [Instalacja ekspresowa](how-to-connect-install-express.md)
 - [Instalacja niestandardowa](how-to-connect-install-custom.md)
 - [Odwołanie ADSyncConfig](reference-connect-adsyncconfig.md)

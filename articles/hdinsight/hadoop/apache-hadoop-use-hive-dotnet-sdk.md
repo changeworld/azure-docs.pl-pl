@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 790cc11e3d4cf1d0260b1099efd82bdddec85785
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d3c9c8eab0ce13aee5dbe7bdb732d45555e547fb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634570"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407171"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
 Dowiedz się, jak przesyłać zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight. Napisz program C#, można przesłać zapytania programu Hive w taki sposób, aby uzyskać listę tabel programu Hive i wyświetlić wyniki.
 
-> [!NOTE]
+> [!NOTE]  
 > Kroki opisane w tym artykule, należy wykonać w kliencie Windows. Instrukcje dotyczące używania systemu Linux, OS X lub klienta systemu Unix do pracy z programu Hive selektor karty wyświetlane w górnej części tego artykułu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -29,8 +29,8 @@ Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące el
 
 * **Klaster platformy Apache Hadoop w HDInsight**. Zobacz [rozpoczęcie korzystania z opartą na systemie Linux platformą Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
-    > [!WARNING]
-    > Od 15 września 2017 r. zestawu .NET SDK HDInsight obsługuje tylko zwracanie wyników zapytania programu Hive z konta usługi Azure Storage. Jeśli używasz w tym przykładzie z klastrem usługi HDInsight, który używa usługi Azure Data Lake Store jako podstawowy magazyn, nie można pobrać wyników wyszukiwania za pomocą zestawu .NET SDK.
+    > [!WARNING]  
+    > Od 15 września 2017 r. zestawu .NET SDK HDInsight obsługuje tylko zwracanie wyników zapytania programu Hive z konta usługi Azure Storage. Jeśli używasz w tym przykładzie z klastrem usługi HDInsight, który używa usługi Azure Data Lake Storage jako magazynu podstawowego, nie można pobrać wyników wyszukiwania za pomocą zestawu .NET SDK.
 
 * **Visual Studio 2013/2015/2017**.
 
@@ -138,11 +138,11 @@ Dane wyjściowe aplikacji będą podobne do:
 W tym artykule mają przedstawiono kilka sposobów, aby utworzyć klaster usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
-* [Tworzenie klastrów Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Zarządzanie klastrami Hadoop w HDInsight przy użyciu witryny Azure portal](../hdinsight-administer-use-management-portal.md)
+* [Tworzenie klastrów usługi Apache Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal](../hdinsight-administer-use-management-portal.md)
 * [Odwołanie do zestawu SDK .NET HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [Korzystanie z języka Pig z usługą HDInsight](hdinsight-use-pig.md)
-* [Za pomocą HDInsight przy użyciu narzędzia Sqoop](apache-hadoop-use-sqoop-mac-linux.md)
+* [Apache Pig za pomocą HDInsight](hdinsight-use-pig.md)
+* [Za pomocą HDInsight przy użyciu narzędzia Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md)
 * [Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
  
 

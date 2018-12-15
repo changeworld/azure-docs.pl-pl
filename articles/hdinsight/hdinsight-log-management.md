@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 339d5d39c637369420e197acf65df802cefd5cb9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a76ad219e538874af04a72c9aa64e87a35bc53d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988496"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434889"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -24,13 +24,13 @@ Zarządzanie dziennikami klastra HDInsight obejmuje zachowywanie informacji o ws
 
 Typowe kroki w Zarządzanie dziennikami HDInsight to:
 
-* Krok 1: Określanie zasad przechowywania dziennika
-* Krok 2. Zarządzanie dzienniki konfiguracji wersjach usługi klastra
-* Krok 3: Zarządzanie pliki dziennika wykonywania zadań klastra
+* Krok 1. Określić zasady przechowywania dzienników
+* Krok 2. Zarządzanie dziennikami konfiguracji wersjach usługi klastra
+* Krok 3. Zarządzanie plikami dziennika wykonywania zadań klastra
 * Krok 4: Prognozowanie rozmiaru magazynu na wolumin dziennika i kosztów
-* Krok 5: Określenie dziennika archiwum zasadami i procesami
+* Krok 5: Określenie dziennika archiwum zasady i procesy
 
-## <a name="step-1-determine-log-retention-policies"></a>Krok 1: Określanie zasad przechowywania dziennika
+## <a name="step-1-determine-log-retention-policies"></a>Krok 1. Określić zasady przechowywania dzienników
 
 Pierwszym krokiem w tworzeniu strategii zarządzania dziennik klastra HDInsight jest do zbierania informacji o scenariuszach biznesowych, a wymagania magazynu historii wykonywania zadania.
 
@@ -51,7 +51,7 @@ Możesz uzyskać większość z tych informacji najwyższego poziomu za pomocą 
 ```
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Można również użyć programu PowerShell Aby wyświetlić te informacje.  Aby uzyskać więcej informacji, zobacz [klastrów zarządzania Hadoop w HDInsight przy użyciu programu Azure PowerShell](hdinsight-administer-use-powershell.md).
+Można również użyć programu PowerShell Aby wyświetlić te informacje.  Aby uzyskać więcej informacji, zobacz [Apache Hadoop Zarządzanie klastrami w HDInsight przy użyciu programu Azure PowerShell](hdinsight-administer-use-powershell.md).
 
 ### <a name="understand-the-workloads-running-on-your-clusters"></a>Zrozumienie obciążeń działających w klastrach
 
@@ -69,9 +69,9 @@ Należy zapoznać się z typami obciążenia uruchomionego na klastry usługi HD
 
 * Należy wziąć pod uwagę, jak można zbieranie dzienników z klastra lub z więcej niż jednego klastra i sortowanie ich do celów takich jak inspekcje, monitorowania, planowania i alertów. Można użyć niestandardowego rozwiązania dostępu i pobrania plików dziennika na bieżąco, łączenie i analizowanie ich w celu zapewnienia wyświetlania pulpitu nawigacyjnego. Można również dodać dodatkowe możliwości dla alertów w połączeniu z zabezpieczeń i wykrywanie awarii. Możesz tworzyć te narzędzia, za pomocą programu PowerShell, zestawów SDK HDInsight lub kod, który uzyskuje dostęp do klasycznego modelu wdrażania platformy.
 
-* Należy rozważyć, czy rozwiązanie monitorowania lub usługa będzie przydatna korzyści. Microsoft System Center zapewnia [pakiet administracyjny HDInsight](https://www.microsoft.com/download/details.aspx?id=42521). Narzędzia innych producentów, takie jak Chukwa i Ganglia umożliwia również zbieranie i scentralizować dzienniki. Wiele firm oferować usługi do monitorowania rozwiązania danych big data oparte na usłudze Hadoop, na przykład Centerity, Compuware APM, Sematext SPM i Zettaset programu Orchestrator.
+* Należy rozważyć, czy rozwiązanie monitorowania lub usługa będzie przydatna korzyści. Microsoft System Center zapewnia [pakiet administracyjny HDInsight](https://www.microsoft.com/download/details.aspx?id=42521). Narzędzia innych producentów, takie jak Apache Chukwa i Ganglia umożliwia również zbieranie i scentralizować dzienniki. Wiele firm oferty usługi do monitorowania rozwiązania danych big data oparte na usłudze Hadoop, na przykład: Centerity Compuware APM, Sematext SPM i Zettaset programu Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Krok 2: Zarządzanie wersjami usługi klastra oraz wyświetlanie dzienników akcji skryptu
+## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Krok 2. Zarządzanie wersjami usługi klastra oraz wyświetlanie dzienników akcji skryptu
 
 Typowe klastra HDInsight korzysta z kilku usług i pakietów oprogramowania typu open source (np. Apache HBase, Apache Spark i tak dalej). Dla niektórych obciążeń, takich jak Bioinformatyka mogą wymagać przechowywania historii dziennika konfiguracji usługi oprócz dzienniki wykonywania zadań.
 
@@ -91,7 +91,7 @@ Za pomocą interfejsu użytkownika Ambari, możesz pobrać konfiguracji usługi 
 
 HDInsight [akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md) uruchamianie skryptów w klastrze, ręcznie lub czas określony. Na przykład akcji skryptu można zainstalować dodatkowe oprogramowanie w klastrze lub zmienić ustawienia konfiguracji z wartościami domyślnymi. Dzienniki akcji skryptu zapewniają wgląd w błędów, które wystąpiły podczas konfiguracji klastra, a także zmiany ustawień konfiguracji, które mogą wpłynąć na wydajność klastra i dostępność.  Aby wyświetlić stan akcji skryptu, wybierz pozycję **ops** przycisku na interfejsu użytkownika Ambari lub dostęp do stanu loguje się domyślne konto magazynu. Dzienniki magazynu są dostępne pod adresem `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`.
 
-## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Krok 3: Zarządzanie plikami dziennika uzyskiwania informacji na temat wykonywania zadań klastra
+## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Krok 3. Zarządzanie plikami dziennika wykonywania zadań klastra
 
 Następnym krokiem jest przeglądanie plików dziennika wykonywania zadania dla różnych usług.  Usługi mogą obejmować bazy danych Apache HBase, Apache Spark i wiele innych. Klaster Hadoop generuje dużą liczbę pełne dzienniki, określająca, które dzienniki (i nie są) może być czasochłonne.  Opis systemu rejestrowania jest ważna dla docelowych zarządzanie plikami dziennika.  Oto przykładowy plik dziennika.
 
@@ -144,7 +144,7 @@ Następnie analizować dane dziennika w lokalizacji miejsc przechowywania dzienn
 
 Masz teraz wystarczających informacji do utworzenia strategię zarządzania dziennika dla klucza dzienników.  Użyj arkusza kalkulacyjnego (lub wybranym narzędziu) dziennika koszty usługi Azure storage idąc dalej i prognozowanie zarówno wzrost rozmiaru dziennika.  Należy wziąć pod uwagę także wszelkie dziennik przechowywania dla zestawu dzienników, które są badanie.  Teraz można reforecast przyszłych log koszty magazynowania, po ustaleniu, które pliki dziennika można usunąć (jeśli istnieje) i które dzienniki powinny być przechowywane i archiwizowanie tańszego magazynu platformy Azure.
 
-## <a name="step-5-determine-log-archive-policies-and-processes"></a>Krok 5: Określenie dziennika archiwum zasadami i procesami
+## <a name="step-5-determine-log-archive-policies-and-processes"></a>Krok 5: Określenie dziennika archiwum zasady i procesy
 
 Po ustaleniu, które pliki dziennika można usunąć, można dostosować parametry rejestrowania wielu usług Hadoop, aby automatycznie usuwać pliki dziennika, po upływie określonego czasu.
 
@@ -177,5 +177,5 @@ Gromadzić dzienniki ze wszystkich węzłów w jednej centralnej lokalizacji, mo
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Monitorowanie i rejestrowanie praktyki w zakresie HDInsight](https://msdn.microsoft.com/library/dn749790.aspx)
-* [Dziennik aplikacji usługi YARN dostępu na HDInsight opartych na systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Jak kontrolować rozmiar plików dziennika dla różnych składników usługi Hadoop](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)
+* [Dziennik aplikacji Apache Hadoop YARN dostępu na HDInsight opartych na systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Jak kontrolować rozmiar plików dziennika dla różnych składników usługi Apache Hadoop](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

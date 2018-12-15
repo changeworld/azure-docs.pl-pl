@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 7a7267faae2067a873ee11bfbf4ef3027b285a0b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: ae21dbe675d78c663fc9d05364d91eca3288dd46
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034953"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435416"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Usługi Azure Metadata Service: Zaplanowane zdarzenia dla maszyn wirtualnych Windows
+# <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Usługi Azure Metadata Service: Scheduled Events dla maszyn wirtualnych Windows
 
 Scheduled Events to usługi Azure Metadata Service zapewniającej Twojej czas aplikacji, aby przygotować się do obsługi maszyn wirtualnych. Zawiera informacje o zbliżającej się konserwacji zdarzeń (np. ponownego uruchomienia), aplikacja może przygotować się do nich i ograniczyć przerw w działaniu. Jest ona dostępna dla wszystkich typów maszyn wirtualnych platformy Azure, łącznie z PaaS i IaaS w systemach Windows i Linux. 
 
@@ -225,6 +225,6 @@ foreach($event in $scheduledEvents.Events)
 ## <a name="next-steps"></a>Kolejne kroki 
 
 - Obejrzyj [zaplanowane zdarzenia pokaz](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) serii Azure Friday. 
-- Przejrzyj przykłady kodu Scheduled Events w [repozytorium Github Azure wystąpienie metadanych zaplanowane zdarzenia](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)
+- Przejrzyj przykłady kodu Scheduled Events w [repozytorium GitHub Azure wystąpienie metadanych zaplanowane zdarzenia](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)
 - Dowiedz się więcej o interfejsami API dostępnymi w [Instance Metadata service](instance-metadata-service.md).
 - Dowiedz się więcej o [planowana Konserwacja maszyn wirtualnych Windows na platformie Azure](planned-maintenance.md).

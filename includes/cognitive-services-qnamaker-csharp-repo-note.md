@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 663cef3c4c87ce6e260c228994dbb3094b882a86
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 09384bfdf6d968ddbd74860fc6d1481ff04c190f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045176"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53439003"
 ---
 > [!NOTE] 
-> Pliki kompletnego rozwiązania są dostępne w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).
+> Pliki kompletnego rozwiązania są dostępne z [ **Azure-przykłady/cognitive — usługi — qna Maker przechowuje wszelką csharp** repozytorium GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).

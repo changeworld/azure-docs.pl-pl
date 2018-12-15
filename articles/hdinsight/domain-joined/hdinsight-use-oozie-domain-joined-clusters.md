@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d0bc48e07efeaf8f09f177367da0570cf3c250ec
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0ab225d3579ed6a56c753f0c581709408c65f358
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165150"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436283"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamiaj Apache Oozie w usłudze HDInsight Hadoop klastry z pakietem Enterprise Security
 
@@ -30,8 +30,8 @@ Można również użyć programu Oozie do planowania zadań, które są specyfic
 
 - Klaster usługi Azure HDInsight Hadoop przy użyciu pakietu zabezpieczeń przedsiębiorstwa (ESP). Zobacz [HDInsight konfigurowanie klastrów przy użyciu ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
-    > [!NOTE]
-    > Aby uzyskać szczegółowe instrukcje na temat korzystania z technologii Oozie na klastrach-ESP, zobacz [przepływy Użyj Hadoop Oozie opartych na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
+    > [!NOTE]  
+    > Aby uzyskać szczegółowe instrukcje na temat korzystania z technologii Oozie na klastrach-ESP, zobacz [przepływy Użyj Apache Oozie opartych na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="connect-to-an-esp-cluster"></a>Łączenie z klastrem ESP
 
@@ -52,7 +52,7 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     Kod stanu odpowiedzi z **200 OK** oznacza pomyślną rejestrację. Sprawdź nazwę użytkownika i hasło, jeśli zostanie odebrana odpowiedź nieautoryzowany, takich jak 401.
 
 ## <a name="define-the-workflow"></a>Zdefiniuj przepływ pracy
-Definicje przepływów pracy programu Oozie są zapisywane w języka definicji procesu usługi Hadoop (hPDL). hPDL to język definicji procesu XML. Wykonaj poniższe kroki, aby zdefiniować przepływ pracy:
+Definicje przepływów pracy programu Oozie są zapisywane w Apache Hadoop procesu Definition Language (hPDL). hPDL to język definicji procesu XML. Wykonaj poniższe kroki, aby zdefiniować przepływ pracy:
 
 1.  Skonfiguruj obszar roboczy użytkownika domeny:
  ```bash
@@ -243,7 +243,7 @@ Można utworzyć dwa skrypty Hive, Hive server 1 i Hive server 2, jak pokazano w
     select devicemake from hivesampletable limit 2;
     ```
 
-3.  Zapisz plik do pliku System (HDFS, Hadoop Distributed):
+3.  Zapisz plik do Apache Hadoop Distributed pliku System (HDFS):
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
@@ -271,11 +271,11 @@ Można utworzyć dwa skrypty Hive, Hive server 1 i Hive server 2, jak pokazano w
 
 Przesyłanie zadań programu Oozie w przypadku klastrów ESP jest podobne do przesyłania zadań programu Oozie w klastrach-ESP.
 
-Aby uzyskać więcej informacji, zobacz [Użyj Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
+Aby uzyskać więcej informacji, zobacz [Użyj Apache Oozie przy użyciu technologii Apache Hadoop, aby zdefiniować i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="results-from-an-oozie-job-submission"></a>Wyniki z Oozie przesłania zadania
+Oozie zadania są uruchamiane dla użytkownika. Dlatego zarówno Apache Hadoop YARN, jak i struktury Apache Ranger inspekcji Pokaż dzienniki zadania są uruchamiane jako nazwa spersonifikowanego użytkownika. Interfejs wiersza polecenia dane wyjściowe zadania Oozie wygląda podobnie do poniższego kodu:
 
-Oozie zadania są uruchamiane dla użytkownika. Dlatego zarówno Apache YARN, jak i struktury Apache Ranger inspekcji Pokaż dzienniki zadania są uruchamiane jako nazwa spersonifikowanego użytkownika. Interfejs wiersza polecenia dane wyjściowe zadania Oozie wygląda podobnie do poniższego kodu:
 
 
 ```bash
@@ -315,7 +315,7 @@ Dzienniki inspekcji platformy Ranger Hive server 2 akcji Pokaż Oozie uruchamian
 
 Oozie samodzielnie ma Konfiguracja autoryzacji użytkownika, który może uniemożliwić użytkownikom zatrzymywanie lub usuwanie zadań innym użytkownikom. Aby włączyć tę konfigurację, ustaw `oozie.service.AuthorizationService.security.enabled` do `true`. 
 
-Aby uzyskać więcej informacji, zobacz [Oozie instalacja i Konfiguracja](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
+Aby uzyskać więcej informacji, zobacz [Apache Oozie instalacja i Konfiguracja](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 
 Dla składników, takich jak Hive server 1, w której Ranger wtyczki nie jest dostępna lub nie jest obsługiwany możliwe jest tylko gruboziarnistych autoryzacji systemu plików HDFS. Autoryzacja szczegółowych jest dostępna wyłącznie za pośrednictwem wtyczek platformy Ranger.
 
@@ -328,6 +328,6 @@ Interfejs użytkownika sieci web programu Oozie zapewnia widok stanu zadań Oozi
 2. Postępuj zgodnie z [interfejsu użytkownika sieci web programu Oozie](../hdinsight-use-oozie-linux-mac.md) kroki, aby włączyć tunelowania SSH z węzłem krawędzi i dostęp do interfejsu użytkownika sieci web.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Używanie technologii Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
-* [Użyj opartego na czasie koordynatora programu Oozie](../hdinsight-use-oozie-coordinator-time.md).
-* [Nawiązać połączenie z HDInsight (Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* [Za pomocą programu Apache Oozie Apache Hadoop do definiowania i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
+* [Używanie opartego na czasie koordynatora programu Apache Oozie](../hdinsight-use-oozie-coordinator-time.md).
+* [Nawiązać połączenie z HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

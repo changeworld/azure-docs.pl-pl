@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 80a2cea90d8d1d2dd43207fa504e601b216714cc
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 6a9f3fcb372606e7f608b5137fb1ed15376d72d9
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343483"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407341"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -135,7 +135,7 @@ Aplikacje Java uruchomiona w usłudze App Service dla systemu Linux ma ten sam z
 
 ### <a name="authenticate-users"></a>Uwierzytelnianie użytkowników
 
-Konfigurowanie uwierzytelniania aplikacji w witrynie Azure Portal za pomocą **uwierzytelnianie i autoryzacja** opcji. Z tego miejsca można włączyć uwierzytelnianie przy użyciu usługi Azure Active Directory lub społecznościowych nazw logowania, takich jak Facebook, Google lub GitHub. Konfiguracja portalu Azure działa tylko podczas konfigurowania dostawcy jednorazowego uwierzytelniania.  Aby uzyskać więcej informacji, zobacz [skonfiguruj aplikację usługi App Service, aby używała logowania do usługi Azure Active Directory](/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) pokrewne artykuły dotyczące innych dostawców tożsamości.
+Konfigurowanie uwierzytelniania aplikacji w witrynie Azure Portal za pomocą **uwierzytelnianie i autoryzacja** opcji. Z tego miejsca można włączyć uwierzytelnianie przy użyciu usługi Azure Active Directory lub społecznościowych nazw logowania, takich jak Facebook, Google lub GitHub. Konfiguracja portalu Azure działa tylko podczas konfigurowania dostawcy jednorazowego uwierzytelniania.  Aby uzyskać więcej informacji, zobacz [skonfiguruj aplikację usługi App Service, aby używała logowania do usługi Azure Active Directory](/azure/app-service/configure-authentication-provider-aad) pokrewne artykuły dotyczące innych dostawców tożsamości.
 
 Jeśli musisz włączyć wielu dostawców logowania, postępuj zgodnie z instrukcjami [Dostosowywanie uwierzytelniania usługi App Service](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to) artykułu.
 

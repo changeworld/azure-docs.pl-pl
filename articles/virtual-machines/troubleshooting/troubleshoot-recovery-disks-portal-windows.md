@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: 42494ef538fa9840afe5f489074934da3965d56f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c68febc7bd6aac0262c41cc8b33602f8496eb215
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413888"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436404"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyny Wirtualnej z systemem Windows, dołączając dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu witryny Azure portal
 Windows maszyny wirtualnej (VM) na platformie Azure napotka błąd rozruchu lub dysk, może być konieczne wykonanie kroków rozwiązywania problemów na samym wirtualnym dysku twardym. Typowym przykładem może być Niepowodzenie aktualizacji aplikacji, która uniemożliwia maszynie Wirtualnej możliwość wykonania rozruchu pomyślnie. Ten artykuł szczegółowo opisuje sposób użycia witryny Azure portal połączyć wirtualny dysk twardy do innej Windows maszyny Wirtualnej, aby naprawić wszystkie błędy, a następnie ponownie utworzyć oryginalną maszynę Wirtualną.
@@ -135,7 +135,7 @@ Gdy błędy są rozwiązywane, odłącz istniejący wirtualny dysk twardy z masz
 ## <a name="create-vm-from-original-hard-disk"></a>Tworzenie maszyny Wirtualnej na podstawie oryginalnego dysku twardego
 Aby utworzyć Maszynę wirtualną z oryginalnego wirtualnego dysku twardego, użyj [tego szablonu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet). Szablon umożliwia wdrożenie maszyny Wirtualnej w istniejącej sieci wirtualnej przy użyciu adresu URL wirtualnego dysku twardego z wcześniej polecenia. Kliknij przycisk **Wdróż na platformie Azure** przycisk w następujący sposób:
 
-![Wdrażanie maszyny Wirtualnej z szablonu z serwisu Github](./media/troubleshoot-recovery-disks-portal-windows/deploy-template-from-github.png)
+![Wdrażanie maszyny Wirtualnej z szablonu z serwisu GitHub](./media/troubleshoot-recovery-disks-portal-windows/deploy-template-from-github.png)
 
 Szablon jest ładowany do witryny Azure portal dla wdrożenia. Wprowadź nazwy dla nowej maszyny Wirtualnej i istniejące zasoby platformy Azure, a następnie wklej adres URL do istniejącego wirtualnego dysku twardego. Aby rozpocząć wdrożenie, kliknij przycisk **zakupu**:
 

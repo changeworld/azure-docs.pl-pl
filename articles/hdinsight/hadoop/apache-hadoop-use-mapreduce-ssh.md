@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: df6a96d8bbf1c77d279806e69e7aa7f65387dd4b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632530"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438575"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight przy użyciu protokołu SSH
 
@@ -63,7 +63,7 @@ Aby uzyskać więcej informacji dotyczących korzystania z protokołu SSH z usł
     To polecenie uruchamia `wordcount` klasy, która jest zawarta w `hadoop-mapreduce-examples.jar` pliku. Używa ona `/example/data/gutenberg/davinci.txt` dokumentu jako dane wejściowe i wyjściowe są przechowywane w `/example/data/WordCountOutput`.
 
     > [!NOTE]
-    > Aby uzyskać więcej informacji dotyczących tego zadania MapReduce i przykładowe dane, zobacz [używanie MapReduce na platformie Hadoop w HDInsight](hdinsight-use-mapreduce.md).
+    > Aby uzyskać więcej informacji dotyczących tego zadania MapReduce i przykładowe dane, zobacz [używanie MapReduce na platformie Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md).
 
 2. Zadanie emituje szczegółowe informacje, jak są przetwarzane i jego zwraca informacje podobne do następującego tekstu po zakończeniu zadania:
 
@@ -80,7 +80,7 @@ Aby uzyskać więcej informacji dotyczących korzystania z protokołu SSH z usł
 
     To polecenie wyświetla dwa pliki `_SUCCESS` i `part-r-00000`. `part-r-00000` Plik zawiera dane wyjściowe dla tego zadania.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Niektóre zadania MapReduce może podzielić wyniki w wielu **część r-###** plików. Jeśli tak, użyj ### przyrostka, aby wskazać kolejność plików.
 
 4. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
@@ -111,5 +111,5 @@ Aby uzyskać ogólne informacje na temat zadań MapReduce w HDInsight:
 
 Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)

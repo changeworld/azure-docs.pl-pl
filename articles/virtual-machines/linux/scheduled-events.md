@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f18892d32a385b41f3325623e21da1dd25af7253
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: fc9ceb06eb51d1e88306f0971ad055facd05f9fb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744711"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437269"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Usługi Azure Metadata Service: Zaplanowane zdarzenia dla maszyn wirtualnych systemu Linux
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Usługi Azure Metadata Service: Scheduled Events maszyn wirtualnych systemu Linux
 
 Scheduled Events to usługi Azure Metadata Service zapewniająca czasu aplikacji, aby przygotować się do obsługi maszyny wirtualnej (VM). Zawiera informacje o zbliżającej się konserwacji zdarzeń (na przykład ponownego uruchomienia), aby przygotować się do nich i ograniczyć aplikacji przerw w działaniu. Jest ona dostępna dla wszystkich typów maszyn wirtualnych platformy Azure, łącznie z PaaS i IaaS w systemach Windows i Linux. 
 
@@ -211,6 +211,6 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>Kolejne kroki 
 - Obejrzyj [Scheduled Events serii Azure Friday](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) Aby wyświetlić pokaz. 
-- Przejrzyj przykłady kodu Scheduled Events w [Azure wystąpienie metadanych zaplanowane zdarzenia repozytorium usługi Github](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
+- Przejrzyj przykłady kodu Scheduled Events w [Azure wystąpienie metadanych zaplanowane zdarzenia repozytorium usługi GitHub](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - Przeczytaj więcej na temat interfejsów API, które są dostępne w [Instance Metadata Service](instance-metadata-service.md).
 - Dowiedz się więcej o [planowana Konserwacja maszyn wirtualnych systemu Linux na platformie Azure](planned-maintenance.md).

@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 75f615f63b0741899995c2728f93231d8e46734a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ff905f34ab63027e9708082c4690e4275220854f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016184"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406797"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu interfejsu REST
 
-Dowiedz się, jak uruchamiać zadania MapReduce na technologii Apache Hadoop w klastrze HDInsight za pomocą interfejsu API REST usługi WebHCat. Narzędzie curl jest używany do pokazują, jak możesz porozmawiać z HDInsight przy użyciu surowego żądania HTTP do uruchamiania zadań MapReduce.
+Dowiedz się, jak Apache Hive WebHCat interfejsu API REST umożliwia uruchomienie zadania MapReduce na technologii Apache Hadoop w klastrze HDInsight. Narzędzie curl jest używany do pokazują, jak możesz porozmawiać z HDInsight przy użyciu surowego żądania HTTP do uruchamiania zadań MapReduce.
 
-> [!NOTE]
-> Jeśli znasz już przy użyciu serwerów opartą na systemie Linux platformą Hadoop, ale dopiero zaczynasz korzystać z HDInsight, zobacz [co musisz wiedzieć o opartych na systemie Linux z platformą Hadoop w HDInsight](../hdinsight-hadoop-linux-information.md) dokumentu.
+> [!NOTE]  
+> Jeśli znasz już przy użyciu serwerów opartą na systemie Linux platformą Hadoop, ale dopiero zaczynasz korzystać z HDInsight, zobacz [co musisz wiedzieć o opartych na systemie Linux platformą Apache Hadoop w HDInsight](../hdinsight-hadoop-linux-information.md) dokumentu.
 
 
 ## <a id="prereq"></a>Wymagania wstępne
@@ -31,7 +31,7 @@ Dowiedz się, jak uruchamiać zadania MapReduce na technologii Apache Hadoop w k
 
 ## <a id="curl"></a>Uruchom zadanie MapReduce
 
-> [!NOTE]
+> [!NOTE]  
 > Używając programu Curl lub innego połączenia REST z usługą WebHCat, należy uwierzytelnić żądania, podając nazwę użytkownika administratora klastra HDInsight i hasło. Należy użyć nazwy klastra jako części identyfikatora URI, który jest używany do wysyłania żądań do serwera.
 >
 > Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego dostępu](https://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS, aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera.
@@ -75,8 +75,8 @@ Dowiedz się, jak uruchamiać zadania MapReduce na technologii Apache Hadoop w k
 
     W tym poleceniu są używane następujące parametry:
 
-   * **-u**: Określa nazwę użytkownika i hasło używane do uwierzytelniania żądania
-   * **-G**: wskazuje, że ta operacja jest żądanie GET
+   * **-u**: Wskazuje nazwę użytkownika i hasło używane do uwierzytelniania żądania
+   * **-G**: Wskazuje, że ta operacja jest żądanie GET
 
    Początek identyfikatora URI **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, jest taka sama dla wszystkich żądań.
 
@@ -107,10 +107,10 @@ Dowiedz się, jak uruchamiać zadania MapReduce na technologii Apache Hadoop w k
     Koniec identyfikatora URI (/ mapreduce/jar) informuje usługi WebHCat, to żądanie rozpoczęcia zadania MapReduce z klasy w pliku jar. W tym poleceniu są używane następujące parametry:
 
    * **-d**: `-G` nie jest używana, więc żądanie domyślnie metody POST. `-d` Określa wartości danych, które są wysyłane z żądania.
-    * **User.name**: użytkownik, który uruchamia polecenie
-    * **Plik JAR**: uruchomiono lokalizację pliku jar, który zawiera klasę jako
-    * **Klasa**: klasa, która zawiera logikę MapReduce
-    * **ARG**: argumenty do przekazania do zadania MapReduce. W tym przypadku, wejściowy plik tekstowy i katalog, w którym są używane dla danych wyjściowych
+    * **User.name**: Użytkownik, który uruchamia polecenie
+    * **Plik JAR**: Lokalizacja pliku jar, który zawiera klasę, aby uruchomić
+    * **Klasa**: Klasa, która zawiera logikę MapReduce
+    * **ARG**: Argumenty do przekazania do zadania MapReduce. W tym przypadku, wejściowy plik tekstowy i katalog, w którym są używane dla danych wyjściowych
 
    To polecenie powinien zwrócić identyfikator zadania, który może służyć do sprawdzania stanu zadania:
 
@@ -136,7 +136,7 @@ Dowiedz się, jak uruchamiać zadania MapReduce na technologii Apache Hadoop w k
 
     Jeśli zadanie zostało ukończone, zwracany jest stan `SUCCEEDED`.
 
-   > [!NOTE]
+   > [!NOTE]  
    > To żądanie Curl zwraca dokument JSON przy użyciu informacji o zadaniu. Jq służy do pobierania wartości stan.
 
 6. Gdy stan zadania został zmieniony na `SUCCEEDED`, możesz pobrać wyniki zadania z usługi Azure Blob storage. `statusdir` Parametr, który jest przekazywany z zapytaniem zawiera lokalizację pliku wyjściowego. W tym przykładzie lokalizacja to `/example/curl`. Ten adres przechowuje dane wyjściowe zadania w klastrach domyślnego magazynu w `/example/curl`.
@@ -147,11 +147,11 @@ Można wyświetlić listę i pobierać te pliki przy użyciu [wiersza polecenia 
 
 Aby uzyskać ogólne informacje na temat zadań MapReduce w HDInsight:
 
-* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
 Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
 
 Aby uzyskać więcej informacji na temat interfejsu REST, który jest używany w tym artykule, zobacz [odwołanie do usługi WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).

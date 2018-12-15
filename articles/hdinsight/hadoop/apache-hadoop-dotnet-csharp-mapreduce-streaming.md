@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9c1b0d52a83d707df3a01212f2ab23c625987da0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013223"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435314"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# o MapReduce, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
 
@@ -157,7 +157,7 @@ Po utworzeniu aplikacji, skompiluj go, aby wygenerować `/bin/Debug/reducer.exe`
 
     * Jeśli ten wpis można rozszerzać, używasz __konta usługi Azure Storage__ jako magazynem domyślnym dla klastra. Aby wyświetlić pliki na domyślny magazyn dla klastra, rozwiń pozycję, a następnie kliknij dwukrotnie __(domyślny kontener)__.
 
-    * Jeśli tego wpisu nie może zostać rozszerzona, którego używasz __usługi Azure Data Lake Store__ jako magazynem domyślnym dla klastra. Aby wyświetlić pliki na domyślny magazyn dla klastra, kliknij dwukrotnie __(domyślne konto magazynu)__ wpisu.
+    * Jeśli tego wpisu nie może zostać rozszerzona, którego używasz __usługi Azure Data Lake Storage__ jako magazynem domyślnym dla klastra. Aby wyświetlić pliki na domyślny magazyn dla klastra, kliknij dwukrotnie __(domyślne konto magazynu)__ wpisu.
 
 5. Aby przekazać pliki .exe, użyj jednej z następujących metod:
 
@@ -165,17 +165,17 @@ Po utworzeniu aplikacji, skompiluj go, aby wygenerować `/bin/Debug/reducer.exe`
 
         ![Przekaż ikonę](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-    * Jeśli przy użyciu __usługi Azure Data Lake Store__, kliknij prawym przyciskiem myszy pusty obszar na liście plików, a następnie wybierz __przekazywanie__. Na koniec wybierz pozycję **mapper.exe** plik i kliknij przycisk **Otwórz**.
+    * Jeśli przy użyciu __usługi Azure Data Lake Storage__, kliknij prawym przyciskiem myszy pusty obszar na liście plików, a następnie wybierz __przekazywanie__. Na koniec wybierz pozycję **mapper.exe** plik i kliknij przycisk **Otwórz**.
 
     Gdy __mapper.exe__ przekazywanie zostało zakończone, powtórz proces przekazywania __reducer.exe__ pliku.
 
-## <a name="run-a-job-using-an-ssh-session"></a>Uruchamianie zadania: za pomocą sesji SSH
+## <a name="run-a-job-using-an-ssh-session"></a>Uruchamianie zadania: Za pomocą sesji SSH
 
 1. Za pomocą protokołu SSH Połącz się z klastrem HDInsight. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Aby uruchomić zadanie MapReduce, użyj jednej z następujących poleceń:
 
-    * Jeśli przy użyciu __Data Lake Store__ jako magazynem domyślnym:
+    * Jeśli przy użyciu __usługi Data Lake Storage__ jako magazynem domyślnym:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -189,7 +189,7 @@ Po utworzeniu aplikacji, skompiluj go, aby wygenerować `/bin/Debug/reducer.exe`
 
     Na poniższej liście opisano, jak działa każdy parametr:
 
-    * `hadoop-streaming.jar`: Plik jar zawierający funkcje MapReduce przesyłania strumieniowego.
+    * `hadoop-streaming.jar`: Plik jar, który zawiera funkcje MapReduce przesyłania strumieniowego.
     * `-files`: Dodaje `mapper.exe` i `reducer.exe` pliki do tego zadania. `adl:///` Lub `wasb:///` przed każdego pliku jest ścieżką do katalogu głównego domyślnego magazynu klastra.
     * `-mapper`: Określa plik, który implementuje usługę mapowania.
     * `-reducer`: Określa plik, który implementuje reduktor.
@@ -214,7 +214,7 @@ Po utworzeniu aplikacji, skompiluj go, aby wygenerować `/bin/Debug/reducer.exe`
         yourselves      3
         youth   17
 
-## <a name="run-a-job-using-powershell"></a>Uruchamianie zadania: przy użyciu programu PowerShell
+## <a name="run-a-job-using-powershell"></a>Uruchamianie zadania: Korzystanie z programu PowerShell
 
 Poniższy skrypt programu PowerShell umożliwia uruchomienie zadania MapReduce i pobrać wyniki.
 
@@ -236,6 +236,6 @@ Ten skrypt wyświetli monit o podanie nazwy konta logowania klastra i hasło, wr
 
 Aby uzyskać więcej informacji dotyczących korzystania z technologii MapReduce z usługą HDInsight, zobacz [używanie MapReduce z HDInsight](hdinsight-use-mapreduce.md).
 
-Aby uzyskać informacji o używaniu języka C# z technologiami Hive i Pig, zobacz [funkcji C# zdefiniowanych przez użytkownika za pomocą technologii Hive i Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md).
+Aby uzyskać informacje na temat korzystania z C# z technologiami Hive i Pig, zobacz [użyj C# funkcji zdefiniowanej przez użytkownika przy użyciu Apache Hive i Apache Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-Aby uzyskać informacje przy użyciu języka C# z systemu Storm w HDInsight, zobacz [topologii opracowywanie języka C# dla systemu Storm w HDInsight](../storm/apache-storm-develop-csharp-visual-studio-topology.md).
+Aby uzyskać informacje na temat korzystania z C# przy użyciu systemu Storm, HDInsight, zobacz [programowanie C# topologii STORM Apache na HDInsight](../storm/apache-storm-develop-csharp-visual-studio-topology.md).

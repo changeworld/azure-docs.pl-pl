@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8da2309a16c07440158c1de324eea1fa05b1c98b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 15aa80c5291854c937bdc128a597ed5bebd608a2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189075"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437436"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX i usługi Azure Machine Learning: Tworzenie i wdrażanie interoperacyjne modeli sztucznej Inteligencji
 
@@ -69,7 +69,7 @@ Za pomocą usługi Azure Machine Learning można wdrażać, zarządzanie i monit
 
 ### <a name="install-and-configure-onnx-runtime"></a>Instalowanie i konfigurowanie środowiska uruchomieniowego ONNX
 
-Środowisko uruchomieniowe ONNX jest aparat typu open source wnioskowania o wysokiej wydajności dla modelami ONNX. Zapewnia przyspieszanie sprzętowe na procesor CPU i procesora GPU z interfejsami API dostępnymi dla języka Python, C#, i środowiska uruchomieniowego ONNX C. obsługuje ONNX 1.2 + modeli i działa w systemie Linux, Windows i Mac. Pakiety języka Python są dostępne na [PyPi.org](https://pypi.org) ([procesora CPU](https://pypi.org/project/onnxruntime), [procesora GPU](https://pypi.org/project/onnxruntime-gpu)), a [ C# pakietu](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) znajduje się na [Nuget.org](https://www.nuget.org). Zobacz więcej informacji o projekcie w [Github](https://github.com/Microsoft/onnxruntime). 
+Środowisko uruchomieniowe ONNX jest aparat typu open source wnioskowania o wysokiej wydajności dla modelami ONNX. Zapewnia przyspieszanie sprzętowe na procesor CPU i procesora GPU z interfejsami API dostępnymi dla języka Python, C#, i środowiska uruchomieniowego ONNX C. obsługuje ONNX 1.2 + modeli i działa w systemie Linux, Windows i Mac. Pakiety języka Python są dostępne na [PyPi.org](https://pypi.org) ([procesora CPU](https://pypi.org/project/onnxruntime), [procesora GPU](https://pypi.org/project/onnxruntime-gpu)), a [ C# pakietu](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) znajduje się na [Nuget.org](https://www.nuget.org). Zobacz więcej informacji o projekcie w [GitHub](https://github.com/Microsoft/onnxruntime). 
 
 Aby zainstalować środowisko uruchomieniowe ONNX dla języka Python, należy użyć:
 ```python
@@ -202,6 +202,6 @@ Dowiedz się więcej o ONNX lub współtworzenia projektu:
 + [Kod ONNX w serwisie GitHub](https://github.com/onnx/onnx)
 
 Dowiedz się więcej na temat środowiska uruchomieniowego ONNX lub współtworzenia projektu:
-+ [Repozytorium Github, aby ONNX środowiska uruchomieniowego](https://github.com/Microsoft/onnxruntime)
++ [Repozytorium GitHub, aby ONNX środowiska uruchomieniowego](https://github.com/Microsoft/onnxruntime)
 
 

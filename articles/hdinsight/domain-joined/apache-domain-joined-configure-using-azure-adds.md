@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5e5b8320459561ac2dbbf72a812e29e837e08cd6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ced7964fc96138ad7b18ab72d6c479e8db7eab8a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166663"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436232"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services
 
@@ -22,13 +22,13 @@ Klastry Enterprise Security pakietu (ESP) zapewniają dostęp wielu użytkownik�
 
 W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu ESP przy użyciu Azure Active Directory Domain Services (Azure AD DS).
 
->[!NOTE]
->ESP jest w wersji ogólnie dostępnej w usłudze HDI 3.6 dla platformy Spark, interaktywny i Apache Hadoop. ESP dla typów klastrów HBase i Kafka jest w wersji zapoznawczej.
+>[!NOTE]  
+>ESP jest w wersji ogólnie dostępnej w usłudze HDI 3.6 dla platformy Apache Spark, interaktywny i Apache Hadoop. Jest ESP dla typów klastrów Apache HBase i Apache Kafka w wersji zapoznawczej.
 
 ## <a name="enable-azure-ad-ds"></a>Włączanie usługi Azure AD DS
 
-> [!NOTE]
-> Tylko Administratorzy dzierżawy mają uprawnienia do włączenia usług AD DS Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Store (ADLS) Gen1 lub Gen2, Wyłącz uwierzytelnianie wieloskładnikowe (MFA) tylko dla użytkowników, którzy chcą uzyskać dostęp do klastra. Jeśli magazyn klastra usługi Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
+> [!NOTE]  
+> Tylko Administratorzy dzierżawy mają uprawnienia do włączenia usług AD DS Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Storage (ADLS) Gen1 lub Gen2, Wyłącz uwierzytelnianie wieloskładnikowe (MFA) tylko dla użytkowników, którzy chcą uzyskać dostęp do klastra. Jeśli magazyn klastra usługi Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
 
 Włączanie usługi Azure AD DS jest wymaganiem wstępnym, przed utworzeniem klastra HDInsight z ESP. Aby uzyskać więcej informacji, zobacz [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
@@ -66,7 +66,7 @@ Po utworzeniu tożsamości zarządzanej i biorąc pod uwagę odpowiednią rolę,
 
 ## <a name="networking-considerations"></a>Zagadnienia dotyczące pracy w sieci
 
-> [!NOTE]
+> [!NOTE]  
 > Azure AD DS musi zostać wdrożony w sieci wirtualnej na podstawie usługi Azure Resource Manager (ARM). Klasyczne sieci wirtualne nie są obsługiwane dla usługi Azure AD — DS. Zapoznaj się [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network) Aby uzyskać więcej informacji.
 
 Po włączeniu usług AD DS platformy Azure, lokalnego serwera usługi nazw domen (DNS, Domain Name System) działa na maszynach wirtualnych (VM) AD. Konfigurowanie usługi Azure usług AD DS Virtual Network (VNET) do użycia tych niestandardowych serwerów DNS. Aby znaleźć odpowiednie adresy IP, wybierz **właściwości** w obszarze **Zarządzaj** kategorii i spójrz na adresy IP na liście poniżej **adresu IP w sieci wirtualnej**.
@@ -114,5 +114,5 @@ Tożsamość zarządzaną, który został utworzony można wybrać w z listy roz
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Konfigurowanie zasad usługi Hive i uruchamiania zapytań programu Hive, zobacz [Konfigurowanie zasad usługi Hive dla HDInsight klastrów przy użyciu ESP](apache-domain-joined-run-hive.md).
-* Aby połączyć się z klastrami HDInsight przy użyciu ESP, przy użyciu protokołu SSH, zobacz [używanie protokołu SSH z opartą na systemie Linux platformą Hadoop w HDInsight z systemów Linux, Unix lub OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Konfigurowanie zasad usługi Hive i uruchamiania zapytań programu Hive, zobacz [zasady skonfiguruj Apache Hive HDInsight klastrów przy użyciu ESP](apache-domain-joined-run-hive.md).
+* Aby połączyć się z klastrami HDInsight przy użyciu ESP, przy użyciu protokołu SSH, zobacz [używanie protokołu SSH z opartą na systemie Linux platformą Apache Hadoop w HDInsight z systemów Linux, Unix lub OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

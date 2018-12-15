@@ -1,19 +1,19 @@
 ---
-title: 'Wymagania dotyczące routingu — ExpressRoute: Azure | Dokumentacja firmy Microsoft'
+title: 'Routing wymagania — ExpressRoute: Azure | Dokumentacja firmy Microsoft'
 description: Ta strona zawiera szczegółowe wymagania dotyczące konfigurowania routingu oraz zarządzania nim na potrzeby obwodów usługi ExpressRoute.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/13/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 52ef636424a67c5f0d0bc77cec7667f6436f8276
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 73dc4b14214c10966dca1a6cd7ebd41af019f640
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135801"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406559"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -101,7 +101,7 @@ Jeśli Twoje prefiksy i numer systemu autonomicznego nie są przypisane do Ciebi
 Prywatny numer systemu autonomicznego jest dozwolony dla komunikacji równorzędnej firmy Microsoft, ale będzie również wymagał ręcznej weryfikacji. Ponadto firma Microsoft usuwa prywatne numery AS w ścieżce AS dla odebranych prefiksów. W związku z tym nie można dołączyć prywatnych numerów AS do ścieżki AS, aby [wpłynąć na routing komunikacji równorzędnej firmy Microsoft](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Nie anonsuje tego samego publicznego trasy IP do publicznej sieci Internet i za pośrednictwem usługi ExpressRoute. Zdecydowanie zaleca się możesz anonsować za pośrednictwem usługi ExpressRoute i bardziej ogólnych trasa do Internetu, aby dokładniej określoną trasę [translatora adresów Sieciowych](expressroute-nat.md). Oprócz publicznego trasę dla translatora adresów Sieciowych, należy można również ogłaszać dłuższe za pośrednictwem usługi ExpressRoute z publicznym adresem IP adresów używanych przez serwery w sieci lokalnej, które komunikują się z punktami końcowymi usługi Office 365, w ramach firmy Microsoft. 
+> Nie anonsuje tego samego publicznego trasy IP do publicznej sieci Internet i za pośrednictwem usługi ExpressRoute. Aby ograniczyć ryzyko niepoprawnej konfiguracji, co powoduje routing asymetryczny, zdecydowanie zalecamy [adresów IP translatora adresów Sieciowych](expressroute-nat.md) anonsowanych do firmy Microsoft ExpressRoute być z zakresu, który nie jest on anonsowany w Internecie w tryb failover. Jeśli to nie jest możliwe uzyskanie, koniecznie upewnij się, że anonsować bardziej konkretny zakres za pośrednictwem usługi ExpressRoute, niż połączenia internetowego. Oprócz publicznego trasę dla translatora adresów Sieciowych, należy można również ogłaszać dłuższe za pośrednictwem usługi ExpressRoute z publicznym adresem IP adresów używanych przez serwery w sieci lokalnej, które komunikują się z punktami końcowymi usługi Office 365, w ramach firmy Microsoft. 
 > 
 > 
 

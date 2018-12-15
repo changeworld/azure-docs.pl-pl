@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 8bde1e8846dbaee957e2498ea4fae0c5cf79a913
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057332"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434049"
 ---
 # <a name="os-patching-for-hdinsight"></a>Stosowanie poprawek dla HDInsight systemu operacyjnego 
-Jako zarządzana usługa Hadoop HDInsight zajmuje się stosowanie poprawek systemu operacyjnego podstawowych maszyn wirtualnych, które korzystają z klastrów HDInsight. Począwszy od 1 sierpnia 2016 r. dokonaliśmy zmiany zasad stosowania poprawek systemu operacyjnego gościa w przypadku klastrów HDInsight opartych na systemie Linux (w wersji 3.4 lub nowszą). Celem nowych zasad jest znacznie zmniejszyć liczbę ponownego uruchomienia ze względu na stosowanie poprawek. Nowe zasady będą w dalszym poprawki maszyn wirtualnych (VM) w klastrach systemu Linux w każdy poniedziałek lub czwartek, począwszy od 12: 00 UTC w sposób rozłożone między węzłami w dowolnym danym klastrze. Jednak wszelkie danej maszyny Wirtualnej będzie tylko ponowny rozruch co najwyżej raz na 30 dni z powodu stosowania poprawek systemu operacyjnego gościa. Ponadto to pierwszy ponowny rozruch dla nowo utworzonego klastra nie nastąpi szybciej niż 30 dni od daty utworzenia klastra. Poprawki będą obowiązywać po wykonywany jest ponowny rozruch maszyn wirtualnych.
+Jako zarządzana usługa Apache Hadoop HDInsight zajmuje się stosowanie poprawek systemu operacyjnego podstawowych maszyn wirtualnych, które korzystają z klastrów HDInsight. Począwszy od 1 sierpnia 2016 r. dokonaliśmy zmiany zasad stosowania poprawek systemu operacyjnego gościa w przypadku klastrów HDInsight opartych na systemie Linux (w wersji 3.4 lub nowszą). Celem nowych zasad jest znacznie zmniejszyć liczbę ponownego uruchomienia ze względu na stosowanie poprawek. Nowe zasady będą w dalszym poprawki maszyn wirtualnych (VM) w klastrach systemu Linux w każdy poniedziałek lub czwartek, począwszy od 12: 00 UTC w sposób rozłożone między węzłami w dowolnym danym klastrze. Jednak wszelkie danej maszyny Wirtualnej będzie tylko ponowny rozruch co najwyżej raz na 30 dni z powodu stosowania poprawek systemu operacyjnego gościa. Ponadto to pierwszy ponowny rozruch dla nowo utworzonego klastra nie nastąpi szybciej niż 30 dni od daty utworzenia klastra. Poprawki będą obowiązywać po wykonywany jest ponowny rozruch maszyn wirtualnych.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Jak skonfigurować harmonogram dla klastrów HDInsight opartych na systemie Linux stosowania poprawek systemu operacyjnego
 Maszyny wirtualne w klastrze usługi HDInsight, należy wykonać ponowny rozruch od czasu do czasu, dzięki czemu można zainstalować poprawki zabezpieczeń ważne. Począwszy od 1 sierpnia 2016 r. nowe klastry HDInsight opartych na systemie Linux (w wersji 3.4 lub nowszego) wykonywany jest ponowny rozruch przy użyciu następującego harmonogramu:
@@ -31,7 +31,7 @@ Za pomocą akcji skryptu, opisane w tym artykule, można zmodyfikować systemu o
 2. Ustaw częstotliwość (w dniach między ponownymi uruchomieniami) wykonuje ponowny rozruch
 3. Ustawiony dzień tygodnia, gdy odbywa się ponowne uruchomienie komputera
 
-> [!NOTE]
+> [!NOTE]  
 > Ta akcja skryptu będzie działać tylko z klastrami HDInsight opartych na systemie Linux, utworzonych po 1 sierpnia 2016 r. Poprawki będą obowiązywać tylko wtedy, gdy wykonywany jest ponowny rozruch maszyn wirtualnych. 
 >
 
@@ -52,10 +52,8 @@ Gdy za pomocą ten skrypt wymaga następujących informacji:
     | Dzień tygodnia |1 do 7 (włącznie). Wartość 1 oznacza ponowne uruchomienie powinno nastąpić w poniedziałek i 7 wskazuje Sunday.For przykład za pomocą parametrów od 2 do 60 1 powoduje automatyczne ponowne uruchomienie co 60 dni (maksymalnie) na wtorek. |
     | Trwałość |Podczas stosowania akcji skryptu do istniejącego klastra, możesz oznaczyć skrypt jako utrwalone. Utrwalonych skryptów są stosowane, gdy nowy workernodes zostaną dodane do klastra za pośrednictwem operacji skalowania. |
 
-> [!NOTE]
-> Ten skrypt należy oznaczyć jako utrwalone po zastosowaniu wbudowanej w istniejącym klastrze. W przeciwnym razie wszelkie nowe węzły utworzone za pośrednictwem operacji skalowania użyje domyślnej harmonogram stosowania poprawek.
-Jeśli zastosujesz skrypt jako część procesu tworzenia klastra są utrwalane automatycznie.
->
+> [!NOTE]  
+> Ten skrypt należy oznaczyć jako utrwalone po zastosowaniu wbudowanej w istniejącym klastrze. W przeciwnym razie wszelkie nowe węzły utworzone za pośrednictwem operacji skalowania użyje domyślnej harmonogram stosowania poprawek.  Jeśli zastosujesz skrypt jako część procesu tworzenia klastra są utrwalane automatycznie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci wirtualnej z obwodem — ExpressRoute: Azure portal | Dokumentacja firmy Microsoft'
+title: 'Łączenie sieci wirtualnej z obwodem — ExpressRoute: Witryna Azure portal | Dokumentacja firmy Microsoft'
 description: Łączenie sieci wirtualnej z obwodem usługi ExpressRoute platformy Azure. Instrukcje.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f2b22eb779a8ebe1d1fd804443663abc9a4245ec
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141649"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438833"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą portalu
 > [!div class="op_single_selector"]
@@ -88,6 +88,10 @@ Właściciela obwodu ma uprawnienia do modyfikowania i odwołać autoryzacji w d
 **Aby utworzyć tymczasową autoryzację połączenia**
 
 Właściciela obwodu tworzy autoryzacji. Powoduje to utworzenie klucza autoryzacji, który może służyć przez użytkowników obwodu połączyć ich bramy sieci wirtualnej z obwodem usługi ExpressRoute. Autoryzacja jest prawidłowe dla tylko jedno połączenie.
+
+> [!NOTE]
+> Każde połączenie wymaga oddzielnych autoryzacji.
+>
 
 1. Na stronie usługi ExpressRoute, kliknij przycisk **autoryzacji** , a następnie wpisz **nazwa** autoryzacji, a następnie kliknij przycisk **Zapisz**.
 

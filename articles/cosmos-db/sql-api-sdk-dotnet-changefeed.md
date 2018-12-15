@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 1544d60d94a73326d2cd0430de8a1f61aaefe373
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 7b6fefd575901648a99bb3a67a05e705622bb74a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343976"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407868"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zmiana .NET kanału informacyjnego procesora zestawu SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -45,7 +45,6 @@ ms.locfileid: "53343976"
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * Dodano obsługę obsługi podziału w kolekcjach, korzystających z udostępnionej bazy danych przepływności.
   * W tej wersji rozwiązuje problem, które mogą wystąpić podczas podziału w kolekcji przy użyciu przepływności udostępnionej bazy danych, gdy Podziel wynik na zakres kluczy partycji tylko jeden element podrzędny utworzone zamiast dwóch ponownego równoważenia partycji. W takim przypadku procesora zestawienia zmian może zakończyć się zatrzymaniem usunięcie dzierżawy dla starego zakres kluczy partycji i bez tworzenia nowych dzierżaw. Problem został rozwiązany w tej wersji.
-  * Pomocnicza, zmiana powodująca niezgodność: dodaje nową metodę IChangeFeedDocumentClient.ReadOffersFeedAsync, który służy do sprawdzania, czy kolekcję ma przypisaną thoughput dedykowanych lub udostępni przepływności innych kolekcji w bazie danych. Realizacji niestandardową implementację IChangeFeedDocumentClient to zaawansowany scenariusz i może służyć do monitorowania wszystkie wywołania przez procesora zestawienia zmian do monitorowania i dzierżawy kolekcji. Dzięki tej zmianie IChangeFeedDocumentClient implementacja musi zostać zmieniony poprzez implementację nowej metody.
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * Dodano nową właściwość ChangeFeedProcessorOptions.StartContinuation do obsługi zmian począwszy od źródła danych z żądania token kontynuacji. To jest używana tylko podczas dzierżawy kolekcja jest pusta lub dzierżawa nie ma ContinuationToken zestawu. Dla dzierżaw w kolekcję dzierżaw, które mają ustawiony ContinuationToken token kontynuacji jest używany, i ChangeFeedProcessorOptions.StartContinuation jest ignorowana.
@@ -159,6 +158,10 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.2.5](#2.2.5) |13 grudnia 2018 r. |--- |
+| [2.2.4](#2.2.4) |29 listopada 2018 r. |--- |
+| [2.2.3](#2.2.3) |19 listopada 2018 r. |--- |
+| [2.2.2](#2.2.2) |31 października 2018 r. |--- |
 | [2.2.1](#2.2.1) |24 października 2018 r. |--- |
 | [1.3.3](#1.3.3) |08 maja 2018 r. |--- |
 | [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |

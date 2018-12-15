@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ae9b374e97c0f4be32d6c6a7d47fd803a1a0e5
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011525"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436334"
 ---
-# <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu interfejsów API systemu Ambari
-Dowiedz się, jak monitorowanie klastrów HDInsight za pomocą interfejsów API systemu Ambari.
+# <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Monitorowanie klastrów Apache Hadoop w HDInsight przy użyciu interfejsu API Apache Ambari
+Dowiedz się, jak monitorowanie klastrów HDInsight za pomocą interfejsy API systemu Apache Ambari.
 
-> [!NOTE]
-> Informacje przedstawione w tym artykule jest przede wszystkim dla klastrów HDInsight z systemem Windows, które zapewniają interfejs API REST Ambari w wersji tylko do odczytu. W przypadku klastrów opartych na systemie Linux, zobacz [Hadoop Zarządzanie klastrami przy użyciu narzędzia Ambari](hdinsight-hadoop-manage-ambari.md).
+> [!NOTE]  
+> Informacje przedstawione w tym artykule jest przede wszystkim dla klastrów HDInsight z systemem Windows, które zapewniają interfejs API REST Ambari w wersji tylko do odczytu. W przypadku klastrów opartych na systemie Linux, zobacz [Zarządzanie Apache Hadoop clusters, przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 > 
 > 
 
@@ -36,7 +36,7 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
 * **Stacja robocza z programem Azure PowerShell**.
 * (Opcjonalnie) [cURL][curl]. Aby go zainstalować, zobacz [cURL wydań i pliki do pobrania][curl-download].
   
-  > [!NOTE]
+  > [!NOTE]  
   > Kiedy używać Windows, użyj w podwójny cudzysłów zamiast pojedynczego cudzysłowu do wartości opcji polecenia cURL.
   > 
   > 
@@ -120,9 +120,9 @@ Dane wyjściowe to:
 Korzystając z punktu końcowego Ambari "https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}", *host_name* pola Zwraca w pełni kwalifikowana nazwa domeny (FQDN) węzła zamiast nazwy hosta. Przed wydaniem 2014-10-8, w tym przykładzie zwracany po prostu "**headnode0**". Po wydaniu wersji 2014-10-8, uzyskaj nazwę FQDN "**headnode0. { ClusterDNS} gt; .azurehdinsight .net**", jak pokazano w poprzednim przykładzie. Ta zmiana była wymagana w celu ułatwienia scenariuszy, w której wiele typów klastra (na przykład baza danych HBase i Hadoop), można wdrożyć w jednej sieci wirtualnej (VNET). Dzieje się tak, na przykład w przypadku używania bazy danych HBase jako platforma zaplecza dla usługi Hadoop.
 
 ## <a name="ambari-monitoring-apis"></a>Monitorowanie interfejsów API systemu Ambari
-Poniższa lista zawiera niektóre z najbardziej typowych Ambari, monitorowanie wywołań interfejsu API. Aby uzyskać więcej informacji na temat interfejsu API, zobacz [Ambari API Reference][ambari-api-reference].
+Poniższa lista zawiera niektóre z najbardziej typowych Ambari, monitorowanie wywołań interfejsu API. Aby uzyskać więcej informacji na temat interfejsu API, zobacz [Apache Ambari API Reference][ambari-api-reference].
 
-| Wywołanie interfejsu API Monitora | Identyfikator URI | Opis |
+| Wywołanie interfejsu API Monitora | URI | Opis |
 | --- | --- | --- |
 | Pobierz klastry |`/api/v1/clusters` | |
 | Uzyskaj informacje o klastrze. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |klastry usług, hosty |
@@ -138,7 +138,7 @@ Poniższa lista zawiera niektóre z najbardziej typowych Ambari, monitorowanie w
 | Uzyskaj informacje o konfiguracji. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |Typy konfiguracji: lokacji podstawowej, lokacji systemu plików hdfs, mapred lokacji, witryny programu hive |
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz masz pokazaliśmy, jak używać narzędzia Ambari, monitorowanie wywołań interfejsu API. Aby dowiedzieć się więcej, zobacz:
+Teraz masz przedstawiono sposób korzystania z monitorowania wywołań interfejsu API Apache Ambari. Aby dowiedzieć się więcej, zobacz:
 
 * [Zarządzanie klastrami HDInsight przy użyciu witryny Azure portal][hdinsight-admin-portal]
 * [Zarządzanie klastrami HDInsight przy użyciu programu Azure PowerShell][hdinsight-admin-powershell]

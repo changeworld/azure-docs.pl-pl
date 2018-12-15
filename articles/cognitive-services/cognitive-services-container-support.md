@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: eabdeb9aaf57db2281cb6450d9e21f1b2f098c01
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8d98e428d60c0981385b842bcb4dfc77bdbbcf22
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087325"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413051"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
@@ -31,10 +31,10 @@ Poniższy klip wideo pokazuje, za pomocą kontenera usług Cognitive Services.
 
 ## <a name="features-and-benefits"></a>Funkcje i korzyści
 
-- **Kontrola nad danymi**: pozwalając użytkownikom na wybór, gdzie tych usług Cognitive Services przetwarzania ich danych.  Jest to istotne w przypadku klientów, którzy nie mogą wysyłać dane do chmury, ale muszą mieć dostęp do technologii usług Cognitive Services. Obsługa spójności w środowiskach hybrydowych — wielu danych, zarządzania, tożsamości i zabezpieczeń.
-- **Kontrolę nad aktualizacjami modelu**: zapewnić klientom elastyczność przechowywanie wersji i aktualizowanie modeli wdrożone w swoich rozwiązaniach.
-- **Architektura przenośne**: umożliwiają tworzenie przenośnych architektura, które można wdrożyć na platformie Azure, lokalnie i urządzenia brzegowe. Kontenery, które mogą być wdrażane bezpośrednio do [usługi Azure Kubernetes Service](/azure/aks/), [usługi Azure Container Instances](/azure/container-instances/), lub [Kubernetes](https://kubernetes.io/) wdrażany klaster do [platformy Azure Stos](/azure/azure-stack/). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Wysoka przepływność / małych opóźnieniach**: zapewnia klientom możliwość skalowania dotyczące wysokiej przepływności i małego opóźnienia, włączając usług Cognitive Services uruchomić fizycznie blisko ich logiki aplikacji i danych. Kontenery nie limit transakcji na sekundę (TPS) i zyski, aby możliwe było skalowanie zarówno a obsłużyć żądanie, jeśli podasz zasoby sprzętowe niezbędne. 
+- **Kontrola nad danymi**: Pozwalając użytkownikom na wybór gdzie tych usług Cognitive Services przetwarzania ich danych. Jest to istotne w przypadku klientów, którzy nie mogą wysyłać dane do chmury, ale muszą mieć dostęp do technologii usług Cognitive Services. Obsługa spójności w środowiskach hybrydowych — wielu danych, zarządzania, tożsamości i zabezpieczeń.
+- **Kontrolę nad aktualizacjami modelu**: Umożliwiają klientom elastyczność przechowywanie wersji i aktualizowanie modeli wdrożone w swoich rozwiązaniach.
+- **Architektura przenośne**: Umożliwiają tworzenie przenośnych architektura, które można wdrożyć na platformie Azure, lokalnie i urządzenia brzegowe. Kontenery, które mogą być wdrażane bezpośrednio do [usługi Azure Kubernetes Service](/azure/aks/), [usługi Azure Container Instances](/azure/container-instances/), lub [Kubernetes](https://kubernetes.io/) wdrażany klaster do [platformy Azure Stos](/azure/azure-stack/). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+- **Wysoka przepływność / małych opóźnieniach**: Zapewnia klientom możliwość skalowania dotyczące wysokiej przepływności i małego opóźnienia, włączając usług Cognitive Services uruchomić fizycznie blisko ich logiki aplikacji i danych. Kontenery nie limit transakcji na sekundę (TPS) i zyski, aby możliwe było skalowanie zarówno a obsłużyć żądanie, jeśli podasz zasoby sprzętowe niezbędne.
 
 
 ## <a name="containers-in-azure-cognitive-services"></a>Kontenery w usługach Azure Cognitive Services
@@ -43,7 +43,7 @@ Kontenery usługi Azure Cognitive Services zapewniają następujący zestaw kont
 
 | Usługa | Kontener| Opis |
 |---------|----------|-------------|
-|[Przetwarzanie obrazów](Computer-vision/computer-vision-how-to-install-containers.md) |**Rozpoznawanie tekstu** |Wyodrębnia tekst drukowanego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody oraz plakaty i wizytówki.<br/><br/>**Ważne:** kontenerze rozpoznawanie tekstu obecnie działa tylko w języku angielskim.<br>[Poproś o dostęp](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Przetwarzanie obrazów](Computer-vision/computer-vision-how-to-install-containers.md) |**Rozpoznawanie tekstu** |Wyodrębnia tekst drukowanego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody oraz plakaty i wizytówki.<br/><br/>**Ważne:** Kontener Rozpoznaj tekst obecnie działa tylko w języku angielskim.<br>[Poproś o dostęp](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Twarzy](Face/face-how-to-install-containers.md) |**Twarzy** |Wykrywa twarze osób na obrazach i identyfikuje atrybutów, w tym to punktów charakterystycznych (takie jak elementy ruchome i oczy), płeć, wiek i inne funkcje twarzy przewidzieć maszyny. Oprócz wykrywania twarzy można sprawdzić, czy dwie twarze w ten sam obraz lub różne obrazy są takie same, za pomocą współczynnik ufności lub porównywania twarzy względem bazy danych, aby sprawdzić, czy podobnie wyglądających twarzy identyczne już istnieje. Można również zorganizować podobnych twarzy w grupach, przy użyciu udostępnionego visual traits.<br>[Poproś o dostęp](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[LUIS](LUIS/luis-container-howto.md) |**Usługa LUIS** ([obraz](https://go.microsoft.com/fwlink/?linkid=2043204))|Ładuje uczonego lub opublikowane Language Understanding modelu, nazywane również aplikacją usługi LUIS, do kontenera platformy docker i zapewnia dostęp do przewidywania zapytania z punktów końcowych interfejsu API kontenera. Możesz zbierać dzienniki zapytań z kontenera i przekazać te Wstecz, aby [portal usługi LUIS](https://www.luis.ai) w celu zwiększenia dokładności prognozy aplikacji.|
 |[Analiza tekstu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |**Klucz frazy** ([obraz](https://go.microsoft.com/fwlink/?linkid=2018757)) |Wyodrębnianie kluczowych fraz można identyfikować jego główne punkty. Na przykład dla tekstu wejściowego „Jedzenie było pyszne, a serwowała je doskonała obsługa” interfejs API zwraca główne tematy wypowiedzi: „jedzenie” i „doskonała obsługa”. |
@@ -61,11 +61,11 @@ Kontenery usługi Azure Cognitive Services są publicznie dostępne w ramach sub
 
 Przed rozpoczęciem korzystania z kontenerów usług Azure Cognitive Services, muszą spełniać następujące wymagania wstępne:
 
-**Aparat platformy docker**: konieczne jest posiadanie aparat platformy Docker zainstalowany lokalnie. Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), i [Windows](https://docs.docker.com/docker-for-windows/). W Windows platformy Docker musi być skonfigurowany do obsługi kontenerów systemu Linux. Kontenery platformy docker można także bezpośrednio do wdrożyć [usługi Azure Kubernetes Service](/azure/aks/) lub [usługi Azure Container Instances](/azure/container-instances/).
+**Aparat platformy docker**: Konieczne jest posiadanie aparat platformy Docker zainstalowany lokalnie. Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), i [Windows](https://docs.docker.com/docker-for-windows/). W Windows platformy Docker musi być skonfigurowany do obsługi kontenerów systemu Linux. Kontenery platformy docker można także bezpośrednio do wdrożyć [usługi Azure Kubernetes Service](/azure/aks/) lub [usługi Azure Container Instances](/azure/container-instances/).
 
 Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure.
 
-**Znajomość Microsoft Container Registry i Docker**: powinien mieć podstawową wiedzę na temat koncepcji Microsoft Container Registry i Docker, takich jak rejestrów, repozytoriów, kontenerów, a obrazy kontenerów, a także wiedzę na temat podstawowe `docker` poleceń.  
+**Znajomość Microsoft Container Registry i Docker**: Należy mieć podstawową wiedzę na temat koncepcji Microsoft Container Registry i Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.
 
 Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).
 
@@ -73,7 +73,7 @@ Poszczególnych kontenerów może mieć własne wymagania, jak również w tym s
 
 ## <a name="developer-samples"></a>Przykłady dla deweloperów
 
-Przykłady dla deweloperów są dostępne pod adresem naszych [repozytorium Github](https://github.com/Azure-Samples/cognitive-services-containers-samples). 
+Przykłady dla deweloperów są dostępne pod adresem naszych [repozytorium GitHub](https://github.com/Azure-Samples/cognitive-services-containers-samples).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

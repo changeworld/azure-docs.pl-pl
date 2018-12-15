@@ -1,6 +1,6 @@
 ---
-title: Zbieraj alerty programów Nagios i Zabbix w usłudze Log Analytics | Dokumentacja firmy Microsoft
-description: Programów Nagios i Zabbix są typu open source, narzędzi do monitorowania. Z tych narzędzi może zbierać alerty w usłudze Log Analytics, aby analizować je oraz alertów z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
+title: Zbieraj alerty programów Nagios i Zabbix w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Programów Nagios i Zabbix są typu open source, narzędzi do monitorowania. Z tych narzędzi może zbierać alerty w usłudze Azure Monitor, aby analizować je oraz alertów z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,24 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2018
+ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 2d90c0c1ab1a6423a206345b7d7d6f34874d2366
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 217f19b02ccd5561ee499388bb62d5a6639086ac
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335731"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436198"
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Log Analytics z agenta usługi Log Analytics dla systemu Linux 
+# <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Azure Monitor z agenta usługi Log Analytics dla systemu Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+<<<<<<< HEAD [Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) typu open source, narzędzi do monitorowania. Umożliwia zbieranie alertów z tych narzędzi do usługi Azure Monitor w celu przeanalizowania danych dziennika z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
+
+> [!NOTE]
+> [Alerty utworzone w usłudze Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) są przechowywane oddzielnie od danych dzienników i nie jest dostępny z dziennika zapytań.
+=======
 [Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) typu open source, narzędzi do monitorowania. Można zbierać alerty z tych narzędzi w usłudze Log Analytics w celu przeanalizowania wraz z [alertów z innych źródeł](../../azure-monitor/platform/alerts-overview.md).  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
+>>>>>>> 98b6f1655e9ada6d4b6a408ada0f1e4c9ed727d2
  
 ## <a name="prerequisites"></a>Wymagania wstępne
 Agenta usługi Log Analytics dla systemu Linux obsługuje zbieranie alertów z Nagios do wersji 4.2.x i Zabbix do wersji 2.x.
@@ -78,7 +84,7 @@ Aby zbierać alerty na Nagios serwerze, wykonaj następujące czynności.
 
 
 ## <a name="alert-records"></a>Rekordy alertów
-Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [dziennikach](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics.
+Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [rejestrowania zapytań](../log-query/log-query-overview.md) w usłudze Azure Monitor.
 
 ### <a name="nagios-alert-records"></a>Rekordy Nagios alertu
 
@@ -116,5 +122,5 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [alerty](../../azure-monitor/platform/alerts-overview.md) w usłudze Log Analytics.
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) w usłudze Azure Monitor.
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

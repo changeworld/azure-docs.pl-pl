@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: manayar
-ms.openlocfilehash: e30fdb684fbabbdcea334115e3f645e63dec6623
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: deddcc8623803f9d003f3fafcef5252ebd34b813
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322640"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438340"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Skalowanie automatyczne za pomocą metryki gościa w szablonie zestawu skalowania systemu Linux
 
 Istnieją dwa typy metryki na platformie Azure, które są zbierane z maszyn wirtualnych i zestawów skalowania: niektóre pochodzą z hosta maszyny Wirtualnej i innych pochodzą z maszyny Wirtualnej gościa. Na wysokim poziomie Jeśli używasz standardowego procesora CPU, dysku i metryki sieci metryki hosta to prawdopodobnie dobrym rozwiązaniem. Jeśli jednak potrzebny większy wybór metryk, następnie metryki gościa są prawdopodobnie lepszym rozwiązaniem. Spójrzmy na różnice między tymi dwoma:
 
-Metryki hosta są prostsze i bardziej niezawodne. Nie wymagają dodatkowej konfiguracji, ponieważ są one zbierane przez hosta maszyny Wirtualnej, metryk gościa wymaga zainstalowania [rozszerzenia diagnostyki Azure Windows](../virtual-machines/windows/extensions-diagnostics-template.md) lub [rozszerzenia diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md)w maszynie Wirtualnej gościa. Jednym z typowych powodów metryki gościa zamiast metryki hosta jest, że metryki gościa zapewniają większy wybór metryki niż metryki hosta. Jednym z przykładów jest użycie pamięci metryk, które są dostępne za pośrednictwem metryki gościa tylko. Metryki hosta obsługiwane są wymienione [tutaj](../monitoring-and-diagnostics/monitoring-supported-metrics.md), a metryki gościa często używane są wymienione [tutaj](../azure-monitor/platform/autoscale-common-metrics.md). W tym artykule przedstawiono sposób modyfikowania [minimalnego możliwego do użycia zestawu skalowania szablonu](./virtual-machine-scale-sets-mvss-start.md) używać reguł skalowania automatycznego w oparciu o metryki gościa dla zestawów skalowania systemu Linux.
+Metryki hosta są prostsze i bardziej niezawodne. Nie wymagają dodatkowej konfiguracji, ponieważ są one zbierane przez hosta maszyny Wirtualnej, metryk gościa wymaga zainstalowania [rozszerzenia diagnostyki Azure Windows](../virtual-machines/windows/extensions-diagnostics-template.md) lub [rozszerzenia diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md)w maszynie Wirtualnej gościa. Jednym z typowych powodów metryki gościa zamiast metryki hosta jest, że metryki gościa zapewniają większy wybór metryki niż metryki hosta. Jednym z przykładów jest użycie pamięci metryk, które są dostępne za pośrednictwem metryki gościa tylko. Metryki hosta obsługiwane są wymienione [tutaj](../azure-monitor/platform/metrics-supported.md), a metryki gościa często używane są wymienione [tutaj](../azure-monitor/platform/autoscale-common-metrics.md). W tym artykule przedstawiono sposób modyfikowania [minimalnego możliwego do użycia zestawu skalowania szablonu](./virtual-machine-scale-sets-mvss-start.md) używać reguł skalowania automatycznego w oparciu o metryki gościa dla zestawów skalowania systemu Linux.
 
 ## <a name="change-the-template-definition"></a>Zmiana definicji szablonu
 

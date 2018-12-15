@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 1a24079292ce8fdd6a514a85484fc10b77491ba6
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 4f124be9ef2247ab91d1e968b4533297ee8dba02
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868341"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437252"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Utwórz wyzwalacz, który uruchamia potok okna wirowania
 Ten artykuł zawiera kroki umożliwiające tworzenie, uruchamianie i monitorowanie wyzwalacza okna wirowania. Aby uzyskać ogólne informacje na temat wyzwalaczy i obsługiwanych typów, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
@@ -79,14 +79,14 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów JSON, które s
 | Element JSON | Opis | Typ | Dozwolone wartości | Wymagane |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | Typ wyzwalacza. Typ jest wartością stałą "TumblingWindowTrigger." | Ciąg | "TumblingWindowTrigger" | Yes |
-| **runtimeState** | Bieżący stan wyzwalacza czasu wykonywania.<br/>**Uwaga**: ten element jest \<tylko do odczytu >. | Ciąg | "Started", "zatrzymana," "Wyłączone" | Yes |
+| **runtimeState** | Bieżący stan wyzwalacza czasu wykonywania.<br/>**Uwaga**: Ten element jest \<tylko do odczytu >. | Ciąg | "Started", "zatrzymana," "Wyłączone" | Yes |
 | **frequency** | Ciąg, który reprezentuje jednostkę częstotliwość (minuty lub godziny) powtarzania wyzwalacza. Jeśli **startTime** wartości daty są bardziej szczegółowe niż **częstotliwość** wartość **startTime** daty są traktowane jako, gdy są obliczane w granicach okna. Na przykład jeśli **częstotliwość** wartość to co godzinę i **startTime** wartość 2017 — 09 — 01T10:10:10Z, pierwsze okno jest (2017-09 — 01T10:10:10Z, 2017-09 — 01T11:10:10Z). | Ciąg | "minute", "hour"  | Yes |
 | **interval** | Dodatnia liczba całkowita oznaczająca interwał wartości właściwości **frequency**, która określa częstotliwość uruchamiania wyzwalacza. Na przykład jeśli **interwał** 3 i **częstotliwość** jest "hour" wyzwalacz jest powtarzany co 3 godziny. | Liczba całkowita | Dodatnia liczba całkowita. | Yes |
 | **startTime**| Pierwsze wystąpienie, które mogą znajdować się w przeszłości. Pierwszy interwał wyzwalacza (**startTime**, **startTime** + **interwał**). | DateTime | Wartość daty/godziny. | Yes |
 | **endTime**| Ostatnie wystąpienie, które mogą znajdować się w przeszłości. | DateTime | Wartość daty/godziny. | Yes |
-| **delay** | Ilość czasu, opóźnienie przetwarzania danych dla okna. Uruchomienia potoku została uruchomiona po oczekiwanym czasie wykonywania oraz ilość **opóźnienie**. **Opóźnienie** definiuje, jak długo czekać wyzwalacz późniejsza niż godzina ukończenia przed wyzwoleniem uruchomienie nowego przebiegu. **Opóźnienie** nie powoduje zmian okna **startTime**. Na przykład **opóźnienie** wartość 00:10:00 oznacza opóźnieniem 10 minut. | Zakres czasu  | Wartość czasu, gdy wartość domyślna to 00:00:00. | Nie |
+| **delay** | Ilość czasu, opóźnienie przetwarzania danych dla okna. Uruchomienia potoku została uruchomiona po oczekiwanym czasie wykonywania oraz ilość **opóźnienie**. **Opóźnienie** definiuje, jak długo czekać wyzwalacz późniejsza niż godzina ukończenia przed wyzwoleniem uruchomienie nowego przebiegu. **Opóźnienie** nie powoduje zmian okna **startTime**. Na przykład **opóźnienie** wartość 00:10:00 oznacza opóźnieniem 10 minut. | Zakres czasu<br/>(: mm: ss)  | Wartość przedziału czasu, w którym wartość domyślna to 00:00:00. | Nie |
 | **maxConcurrency** | Liczba uruchomień wyzwalacza jednoczesnych, które są uruchamiane dla systemu windows, które są gotowe. Na przykład aby wypełnienie tyłu co godzinę jest uruchamiane dla wyników wczoraj w 24 w systemie windows. Jeśli **maxConcurrency** = 10, wyzwalacz zdarzenia są uruchamiane tylko w przypadku systemu windows 10 pierwszych (00:00-01:00 - 09:00-10:00). Po zakończeniu 10 pierwszych wyzwolonych uruchomień potoków uruchomienia wyzwalacza są uruchamiane dla systemu windows 10 (10:00-11:00 – 19:00-20:00). Kontynuując ten przykład **maxConcurrency** = 10, w przypadku windows 10, wszystko będzie gotowe, istnieją 10 uruchomienia potoku całkowitej. Jeśli jest dostępny tylko 1 oknie gotowy, jest dostępny tylko 1 uruchomienie potoku. | Liczba całkowita | Liczba całkowita od 1 do 50. | Yes |
-| **retryPolicy: liczba** | Liczba ponownych prób przed uruchomieniem potoku jest oznaczony jako "Nieudane".  | Liczba całkowita | Liczba całkowita, gdzie wartość domyślna to 0 (bez ponawiania). | Nie |
+| **retryPolicy: Liczba** | Liczba ponownych prób przed uruchomieniem potoku jest oznaczony jako "Nieudane".  | Liczba całkowita | Liczba całkowita, gdzie wartość domyślna to 0 (bez ponawiania). | Nie |
 | **retryPolicy: intervalInSeconds** | Opóźnienie między ponownymi próbami określony w ciągu kilku sekund. | Liczba całkowita | Liczba sekund, gdzie wartość domyślna to 30. | Nie |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart i WindowEnd zmienne systemowe

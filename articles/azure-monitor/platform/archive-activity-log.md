@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 9f7364f65d008753bbcfc105de898d0d39226f27
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 19f97d097c47229038595b202e82ccf41dfbfefc
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388912"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434923"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwizowanie dziennika aktywności platformy Azure
 W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell lub Wieloplatformowego interfejsu wiersza polecenia do archiwizacji swoje [ **dziennika aktywności platformy Azure** ](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz przechowywać więcej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzenia przez 90 dni lub mniej nie trzeba skonfigurować archiwizowanie na koncie magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
 
 > [!WARNING]
-> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md) 
+> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
 >
 > 
 

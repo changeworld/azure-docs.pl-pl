@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: bf1fa41abe1c1f9b0d07ee7d77fe1c819e88ddc1
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f9bafec093a3ad6e26eb12cfdb321945353b4d08
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017624"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434141"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Uruchamianie przykładów technologii MapReduce zawarte w HDInsight
 
@@ -25,34 +25,34 @@ Dowiedz się, jak i uruchamianie przykładów technologii MapReduce dołączonej
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Klaster usługi HDInsight**: zobacz [rozpoczęcie korzystania z usługi Hadoop przy użyciu technologii Hive w HDInsight w systemie Linux](apache-hadoop-linux-tutorial-get-started.md)
+* **Klaster usługi HDInsight**: Zobacz [rozpoczęcie korzystania z platformy Apache Hadoop przy użyciu technologii Hive w HDInsight w systemie Linux](apache-hadoop-linux-tutorial-get-started.md)
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-* **Klient SSH**: Aby uzyskać więcej informacji, zobacz [użycia protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient SSH**: Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>Przykłady technologii MapReduce
 
-**Lokalizacja**: przykłady znajdują się w klastrze HDInsight na `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
+**Lokalizacja**: Przykłady znajdują się w klastrze HDInsight na `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
 
 **Zawartość**: Poniższe przykłady są zawarte w tym archiwum:
 
 * `aggregatewordcount`: Wartość zagregowana na podstawie programu mapreduce, który zlicza wyrazy w plików wejściowych.
 * `aggregatewordhist`: Wartość zagregowana na podstawie programu mapreduce, który oblicza histogram słów w plików wejściowych.
-* `bbp`: Mapreduce program, który używa Bailey — Borwein-Plouffe do obliczenia dokładną liczbę cyfr liczby Pi.
-* `dbcount`: Zadanie przykład zlicza dzienników pageview przechowywanych w bazie danych.
-* `distbbp`: Mapreduce program, który używa formuły BBP typu do obliczenia dokładna liczba bitów Pi.
+* `bbp`: Program mapreduce, który używa Bailey — Borwein-Plouffe do obliczenia dokładną liczbę cyfr liczby Pi.
+* `dbcount`: Zadanie przykład, który zlicza dzienników pageview przechowywanych w bazie danych.
+* `distbbp`: Program mapreduce, który używa formuły BBP typu do obliczenia dokładna liczba bitów Pi.
 * `grep`: Programu mapreduce zliczającego dopasowania wyrażenia regularnego, w danych wejściowych.
 * `join`: Zadanie, które wykonuje sprzężenie sortowane, równomiernie podzielone na partycje zestawów danych.
-* `multifilewc`: Zadanie, które zlicza wyrazów z kilku plików.
+* `multifilewc`: Zadanie, który zlicza wyrazów z kilku plików.
 * `pentomino`: Mapreduce kafelka zniesienia program, aby znaleźć rozwiązania problemów pentomino.
-* `pi`: Mapreduce program, który szacuje Pi przy użyciu quasi Monte Carlo metody.
-* `randomtextwriter`: Mapreduce program, który zapisuje 10 GB danych tekstowych losowych na węzeł.
-* `randomwriter`: Mapreduce program, który zapisuje 10 GB danych losowych na węzeł.
-* `secondarysort`: Przykład Definiowanie dodatkowej sortowania do fazy redukcji.
-* `sort`: Programu mapreduce sortujące zapisane przez moduł zapisujący losowe dane.
-* `sudoku`Solver sudoku.
+* `pi`: Program mapreduce, który szacuje Pi przy użyciu quasi Monte Carlo metody.
+* `randomtextwriter`: Program mapreduce, który zapisuje 10 GB danych tekstowych losowych na węzeł.
+* `randomwriter`: Program mapreduce, który zapisuje 10 GB danych losowych na węzeł.
+* `secondarysort`: Przykład definiowania dodatkowych sortowania do fazy Zmniejsz.
+* `sort`: Program mapreduce sortuje zapisane przez moduł zapisujący losowe dane.
+* `sudoku`: Sudoku solver.
 * `teragen`: Generowanie danych dla terasort.
 * `terasort`: Uruchom terasort.
 * `teravalidate`: Sprawdzanie wyników terasort.
@@ -61,7 +61,7 @@ Dowiedz się, jak i uruchamianie przykładów technologii MapReduce dołączonej
 * `wordmedian`: Programu mapreduce zliczającego mediany długość słowa w plików wejściowych.
 * `wordstandarddeviation`: Programu mapreduce zliczającego odchylenie standardowe długość słowa w plików wejściowych.
 
-**Kod źródłowy**: kod źródłowy dla tych przykładów znajduje się w klastrze HDInsight na `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+**Kod źródłowy**: Kod źródłowy dla tych przykładów znajduje się w klastrze HDInsight na `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
 ## <a name="run-the-wordcount-example"></a>Uruchomienie przykładu wordcount
 
@@ -95,7 +95,7 @@ Dowiedz się, jak i uruchamianie przykładów technologii MapReduce dołączonej
 
     Dane wejściowe dla tego zadania są odczytywane z `/example/data/gutenberg/davinci.txt`. Dane wyjściowe przechowywane w tym przykładzie `/example/data/davinciwordcount`. Obie ścieżki znajdują się na domyślny magazyn dla klastra, a nie w lokalnym systemie plików.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Jak wspomniano w pomocy, na przykład liczby słów, można również określić wiele plików wejściowych. Na przykład `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` będzie zliczania wyrazów w davinci.txt i ulysses.txt.
 
 5. Po ukończeniu zadania, użyj następującego polecenia, aby wyświetlić dane wyjściowe:
@@ -171,13 +171,13 @@ Ta próbka używa skromną 10 GB danych, dzięki czemu mogą być uruchamiane wz
 
 W tym przykładzie użyto trzy rodzaje programów MapReduce:
 
-* **TeraGen**: programu MapReduce, który generuje wiersze danych, aby posortować
+* **TeraGen**: Program MapReduce, który generuje wiersze danych, aby posortować
 
-* **TeraSort**: próbkuje dane wejściowe i używa MapReduce, aby posortować dane w kolejności całkowity
+* **TeraSort**: Pobiera próbki danych wejściowych i używa MapReduce, aby posortować dane w kolejności całkowity
 
     TeraSort jest standardowa sortowania MapReduce, z wyjątkiem niestandardowego partycjonera. Partycjonera używa posortowanej listy kluczy podczas próbkowania n-1, które określają zakres kluczy dla każdego redukcji. W szczególności, wszystkie klucze takie, które [i-1] < = klucz < przykładowe [i] są wysyłane do i zmniejszyć. Ta partycjonera gwarantuje, że dane wyjściowe zmniejszyć i są dostępne w mniej niż dane wyjściowe zmniejszyć i + 1.
 
-* **TeraValidate**: programu MapReduce, który sprawdza, czy dane wyjściowe są sortowane globalnie
+* **TeraValidate**: Program MapReduce, który sprawdza, czy dane wyjściowe są sortowane globalnie
 
     Tworzy jedną mapę dla pliku w katalogu wyjściowym i każdej mapy gwarantuje, że każdy klucz jest mniejsza niż poprzedniego. Funkcja mapy generuje rekordów klucze imię i nazwisko każdego pliku. Funkcja redukcji gwarantuje, czy pierwszy klucz w pliku jest większa niż ostatni klucz i-1 pliku. Wszelkie problemy są zgłaszane jako dane wyjściowe fazy Zmniejsz przy użyciu kluczy, które są poza kolejnością.
 
@@ -209,9 +209,9 @@ Należy użyć następującego kroki, aby wygenerować dane, sortowania, a nast�
 
 W tym artykule przedstawiono sposób uruchamiania przykładów uwzględniony przy użyciu klastrów HDInsight opartych na systemie Linux. Samouczki dotyczące przy HDInsight Pig i Hive, MapReduce zobacz następujące tematy:
 
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:apache-hadoop-introduction.md

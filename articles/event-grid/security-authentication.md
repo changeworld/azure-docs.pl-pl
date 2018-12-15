@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: f2bbcf0218291f91d3ee5b25e89a5f580e0c1c86
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: db6db54d362e7ef6373271e238fdb1cf543a142e
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105737"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413493"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -37,7 +37,7 @@ Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na po
 
 1. **Uzgadnianie ValidationCode (programowe)**: Jeśli dla punktu końcowego usługi jest kontroli kodu źródłowego, ta metoda jest zalecana. Tworzenie subskrypcji zdarzeń usługi Event Grid wysyła zdarzenie sprawdzania poprawności subskrypcji do punktu końcowego usługi. Schemat tego zdarzenia jest podobne do innych zdarzeń usługi Event Grid. Zawiera części danych to zdarzenie `validationCode` właściwości. Aplikacja sprawdza, czy żądanie weryfikacji dotyczy subskrypcji zdarzeń oczekiwanego i funkcją kod sprawdzania poprawności do usługi Event Grid. Ten mechanizm uzgadniania jest obsługiwana we wszystkich wersjach usługi Event Grid.
 
-2. **Uzgadnianie ValidationURL (ręcznie)**: W niektórych przypadkach, nie masz dostępu do kodu źródłowego punktu końcowego w celu wykonania uzgadniania ValidationCode. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie możesz programowo odpowiedzieć kodem sprawdzania poprawności.
+2. **Uzgadnianie ValidationURL (ręcznie)**: W niektórych przypadkach nie można uzyskać dostęp do kodu źródłowego punktu końcowego w celu wykonania uzgadniania ValidationCode. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie możesz programowo odpowiedzieć kodem sprawdzania poprawności.
 
    Począwszy od wersji 2018-05-01-preview usługi Event Grid obsługuje uzgadniania ręcznej weryfikacji. Jeżeli tworzysz subskrypcję zdarzeń przy użyciu zestawu SDK lub narzędzia, która używa interfejsu API w wersji 2018-05-01-preview lub później, usługa Event Grid wysyła `validationUrl` właściwości w części danych zdarzeń sprawdzania poprawności subskrypcji. Aby ukończyć uzgadnianie, należy znaleźć tego adresu URL w danych zdarzeń i ręcznie Wyślij żądanie Pobierz do niego. Można użyć klienta REST lub przeglądarki sieci web.
 
@@ -46,7 +46,7 @@ Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na po
 ### <a name="validation-details"></a>Szczegóły sprawdzania poprawności
 
 * W momencie utworzenie/aktualizacja subskrypcji zdarzeń usługi Event Grid publikuje zdarzenie sprawdzania poprawności subskrypcji do docelowego punktu końcowego. 
-* Zdarzenie zawiera wartość nagłówka "Æg event-type: SubscriptionValidation".
+* Zdarzenie zawiera wartość nagłówka "Æg zdarzeń typu: SubscriptionValidation".
 * Treść zdarzeń ma ten sam schemat, jak inne zdarzenia usługi Event Grid.
 * Typ zdarzenia właściwości zdarzenia `Microsoft.EventGrid.SubscriptionValidationEvent`.
 * Właściwości danych zdarzenia zawiera `validationCode` właściwości z ciągiem generowanym losowo. Na przykład "validationCode: acb13...".
@@ -79,6 +79,8 @@ Aby udowodnić własność punktu końcowego, odsyłania kod sprawdzania poprawn
   "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
 }
 ```
+
+Musi zwrócić kod stanu odpowiedzi HTTP 200 OK. HTTP 202 zaakceptowano nie został rozpoznany jako prawidłowa odpowiedź sprawdzania poprawności subskrypcji usługi Event Grid.
 
 Lub można ręcznie sprawdzić poprawność subskrypcji, wysyłając żądanie GET do adresu URL sprawdzania poprawności. Subskrypcja zdarzeń pozostaje w stanie oczekiwania, aż zweryfikowane.
 
@@ -271,7 +273,7 @@ Jeśli musisz określić uprawnienia, które są inne niż wbudowane role mogą 
 
 Poniżej przedstawiono przykładowe definicje ról usługi Event Grid, których użytkownicy mogą wykonać różne operacje. Te role niestandardowe różnią się od wbudowanych ról, ponieważ powodują udzielenie szerszy dostęp niż po prostu subskrypcji zdarzeń.
 
-**EventGridReadOnlyRole.json**: Zezwalaj tylko na operacji tylko do odczytu.
+**EventGridReadOnlyRole.json**: Zezwalaj tylko operacji tylko do odczytu.
 
 ```json
 {
@@ -290,7 +292,7 @@ Poniżej przedstawiono przykładowe definicje ról usługi Event Grid, których 
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**: Zezwalaj na akcje po ograniczony, ale nie zezwalaj akcje usuwania.
+**EventGridNoDeleteListKeysRole.json**: Zezwalaj na akcje po ograniczony, ale nie zezwalaj na akcje usuwania.
 
 ```json
 {
@@ -313,7 +315,7 @@ Poniżej przedstawiono przykładowe definicje ról usługi Event Grid, których 
 }
 ```
 
-**EventGridContributorRole.json**: zezwala na wszystkie akcje siatki zdarzeń.
+**EventGridContributorRole.json**: Zezwala na wszystkie akcje siatki zdarzeń.
 
 ```json
 {

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 02029170046e3c70965e2f607aa6c00c7ca131e3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 48f178b7a94e8989f8a0154bea6195834b1ec35f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388911"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438680"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatyczne włączanie ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych dla zasobu, podczas jego tworzenia. Umożliwia to automatyczne uruchamianie usługi Dzienniki diagnostyczne i metryki usługi Event hubs, ich archiwizowanie na koncie magazynu lub wysyłając je do usługi Log Analytics, po utworzeniu zasobu przesyłania strumieniowego.
 
 > [!WARNING]
-> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md) 
+> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
 >
 > 
 
@@ -116,7 +116,7 @@ W przypadku zasobów-Compute należy wykonać dwie czynności:
     ]
     ```
 
-Następujące właściwości obiektu blob na potrzeby ustawienia diagnostyczne [formacie opisanym w tym artykule](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Dodawanie `metrics` właściwość umożliwia również wysyłanie metryk zasobów do tych tych samych danych wyjściowych, pod warunkiem, że [zasób obsługuje metryk usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Następujące właściwości obiektu blob na potrzeby ustawienia diagnostyczne [formacie opisanym w tym artykule](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Dodawanie `metrics` właściwość umożliwia również wysyłanie metryk zasobów do tych tych samych danych wyjściowych, pod warunkiem, że [zasób obsługuje metryk usługi Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
 
 Oto pełny przykład, który służy do tworzenia aplikacji logiki i włącza funkcję przesyłania strumieniowego do usługi Event Hubs i magazynu na koncie magazynu.
 

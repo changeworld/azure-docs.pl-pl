@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 85a85fa0a110ba91a423b1be4a24000340d25f8f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966844"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413017"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak debugować problemy związane z funkcjami zdefiniowanymi przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -42,7 +42,7 @@ Po wysłaniu danych telemetrycznych, otwiera się usługi Azure Log Analytics na
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
+| where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
 | Wartość zapytania | Zamień na |
@@ -53,7 +53,7 @@ Jeśli zalogujesz się funkcji zdefiniowanych przez użytkownika, tych dziennik�
 
 ```Kusto
 AzureDiagnostics
-| where Category = 'UserDefinedFunction'
+| where Category == 'UserDefinedFunction'
 ```
 
 Aby uzyskać więcej informacji o operacjach zaawansowanych zapytań, zobacz [wprowadzenie do zapytań](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).

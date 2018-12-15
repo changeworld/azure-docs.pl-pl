@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b60e1639a1c32763c4759720fe61b0e571fc9dd1
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239427"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437099"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Nauka podstawowych pojęć przepływu pracy środowiska Windows PowerShell dla elementów runbook usługi Automation
 
@@ -193,10 +193,10 @@ Workflow Copy-Files
 }
 ```
 
-Możesz użyć **ForEach-równoległe** konstrukcji do przetwarzania poleceń dla każdego elementu w kolekcji jednocześnie. Elementy w kolekcji są przetwarzane równolegle, podczas gdy polecenia w bloku skryptu uruchamiają się sekwencyjnie. Ta metoda korzysta z pokazanej poniżej składni następujące. W tym przypadku działania Activity1 rozpoczyna się na tym samym czasie dla wszystkich elementów w kolekcji. Dla każdego elementu Activity2 rozpoczyna się po zakończeniu działania Activity1. Działanie Activity3 rozpoczyna się dopiero po działania Activity1 i Activity2 dla wszystkich elementów.
+Możesz użyć **ForEach-równoległe** konstrukcji do przetwarzania poleceń dla każdego elementu w kolekcji jednocześnie. Elementy w kolekcji są przetwarzane równolegle, podczas gdy polecenia w bloku skryptu uruchamiają się sekwencyjnie. Ta metoda korzysta z pokazanej poniżej składni następujące. W tym przypadku działania Activity1 rozpoczyna się na tym samym czasie dla wszystkich elementów w kolekcji. Dla każdego elementu Activity2 rozpoczyna się po zakończeniu działania Activity1. Działanie Activity3 rozpoczyna się dopiero po działania Activity1 i Activity2 dla wszystkich elementów. Używamy `ThrottleLimit` parametru, aby ograniczyć równoległe. Zbyt wysoki `ThrottleLimit` może powodować problemy. Idealna wartość dla `ThrottleLimit` parametru zależy od wielu czynników w danym środowisku. Należy spróbować rozpoczyna się od niskiej wartości i spróbuj różnych wartości rosnącej, dopóki nie znajdziesz taki, który działa na swoje szczególne okoliczności.
 
 ```powershell
-ForEach -Parallel ($<item> in $<collection>)
+ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 {
     <Activity1>
     <Activity2>
@@ -211,7 +211,7 @@ Workflow Copy-Files
 {
     $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-    ForEach -Parallel ($File in $Files)
+    ForEach -Parallel -ThrottleLimit 10 ($File in $Files)
     {
         Copy-Item -Path $File -Destination \\NetworkPath
         Write-Output "$File copied."
@@ -258,7 +258,7 @@ Workflow Copy-Files
 }
 ```
 
-Ponieważ poświadczeń username nie są zachowywane po wywołaniu metody [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) działania lub od ostatniego punktu kontrolnego, należy ustawić poświadczenia, które mają wartość null, a następnie pobrać je ponownie z magazynu trwałego po  **Suspend-Workflow** lub punktu kontrolnego jest wywoływana.  W przeciwnym razie może być wyświetlony następujący komunikat o błędzie: *nie można wznowić zadanie przepływu pracy, albo ponieważ trwałości danych może nie być całkowicie zapisane lub zapisać stanu trwałego danych została uszkodzona. Należy ponownie uruchomić przepływ pracy.*
+Ponieważ poświadczeń username nie są zachowywane po wywołaniu metody [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) działania lub od ostatniego punktu kontrolnego, należy ustawić poświadczenia, które mają wartość null, a następnie pobrać je ponownie z magazynu trwałego po  **Suspend-Workflow** lub punktu kontrolnego jest wywoływana.  W przeciwnym razie może zostać wyświetlony następujący komunikat o błędzie: *Nie można wznowić zadanie przepływu pracy, albo ponieważ trwałości danych może nie być w pełni zapisane lub zapisany stan trwały danych została uszkodzona. Należy ponownie uruchomić przepływ pracy.*
 
 Następujące ten sam kod pokazuje, jak obsługiwać to w elementach runbook przepływu pracy programu PowerShell.
 

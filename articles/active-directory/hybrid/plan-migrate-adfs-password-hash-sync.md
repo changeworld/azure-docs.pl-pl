@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 687ff4a7411113721b16636e1d11b30573e41642
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c226eb19dbd2049c486acfb1ffb9423fdb1dad43
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346428"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410265"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-ad"></a>Migrowanie z Federacji na synchronizację skrótów haseł w usłudze Azure AD
 Ten dokument zawiera wskazówki dotyczące przenoszenia z usług AD FS do synchronizacji skrótów haseł.
@@ -29,7 +29,7 @@ Ten dokument zawiera wskazówki dotyczące przenoszenia z usług AD FS do synchr
 Następujące wymagania wstępne są wymagane, można było migrować.
 ### <a name="update-azure-ad-connect"></a>Aktualizacja usługi Azure AD Connect
 
-Co najmniej do pomyślnego przeprowadzenia kroków migracji do uwierzytelniania przekazywanego, powinny mieć [programu Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594.) 1.1.819.0. Ta wersja zawiera istotne zmiany sposobu logowania konwersji odbywa się i zmniejsza całkowity czas migracji z Federacji do uwierzytelniania w chmurze z potencjalnie godziny do minuty.
+Co najmniej do pomyślnego przeprowadzenia kroków migracji do uwierzytelniania przekazywanego, powinny mieć [programu Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0. Ta wersja zawiera istotne zmiany sposobu logowania konwersji odbywa się i zmniejsza całkowity czas migracji z Federacji do uwierzytelniania w chmurze z potencjalnie godziny do minuty.
 
 > [!IMPORTANT]
 > Nieaktualne dokumentację, narzędzia i blogi wskazywać konwersji użytkownika krok wymagany podczas konwertowania domeny federacyjne na zarządzane. Należy pamiętać, że konwertowanie użytkowników nie jest wymagane już i firma Microsoft pracuje na temat aktualizowania dokumentacji i narzędzi, aby to odzwierciedlić.
@@ -82,7 +82,7 @@ W sekcji użytkownika logowania Sprawdź włączenie Federacji i bezproblemowego
    
    3. Na ekranie Przegląd rozwiązania Zwróć uwagę na stan synchronizacji haseł.</br> 
 
-   Synchronizacja skrótów haseł jest obecnie ustawiony na wyłączony, należy wykonać czynności opisane w tym przewodniku, aby ją włączyć. Jeśli synchronizacja skrótów haseł jest obecnie ustawiony na włączone, można bezpiecznie pominąć sekcji [krok 1 — Włączanie synchronizacji skrótów haseł](#_Step_1_–) w tym przewodniku.
+   Synchronizacja skrótów haseł jest obecnie ustawiony na wyłączony, należy wykonać czynności opisane w tym przewodniku, aby ją włączyć. Jeśli synchronizacja skrótów haseł jest obecnie ustawiony na włączone, można bezpiecznie pominąć sekcji [krok 1 — Włączanie synchronizacji skrótów haseł](#step-1--enable-password-hash-synchronization) w tym przewodniku.
    4. Na ekranie Przegląd rozwiązania przewiń w dół do usługi Active Directory Federation Services (AD FS).</br>
  
    Jeśli widzisz, że konfiguracja usług AD FS znajduje się w tej sekcji, a następnie można bezpiecznie przyjąć usług AD FS zostały pierwotnie skonfigurowane przy użyciu usługi Azure AD Connect i dlatego konwersji użytkownika domeny z federacyjnego zarządzane mogą opierać się za pośrednictwem programu Azure AD Connect "Zmiana użytkownika logowania -w "opcji ten proces opisano szczegółowo w sekcji **opcja A — przełącznik z Federacji na synchronizację skrótów haseł za pomocą usługi Azure AD Connect**.
@@ -132,10 +132,9 @@ Przed przekonwertowaniem z Federacji na zarządzane, należy rozważyć ściśle
 | Jeśli| Następnie |
 |-|-|
 | Chcesz zachować usług AD FS w przypadku innych aplikacji.| Będą używać usługi Azure AD i usług AD FS i, należy wziąć pod uwagę doświadczenia użytkownika końcowego w wyniku. Użytkownicy mogą muszą uwierzytelnić się dwa razy w niektórych scenariuszach, gdy do usługi Azure AD (gdzie otrzymają one logowania jednokrotnego i nowszych wersjach do innych aplikacji, takich jak Office 365) i ponownie dla wszystkich aplikacji, nadal powiązane z usług AD FS jako zaufanie jednostki uzależnionej. |
-| Usługi AD FS są silnie dostosowanego i architekturze w ustawieniach dostosowania określone w pliku onload.js, którego nie można zduplikować w usłudze Azure AD 
-(na przykład uległy zmianie środowiska logowania, aby użytkownicy tylko wprowadź swoją nazwę użytkownika, a nie nazwy UPN w formacie SamAccountName, albo mieć intensywnie marki środowisko logowania)| Należy sprawdzić, czy bieżący wymagań dostosowania użytkownika mogą zostać spełnione przez usługę Azure AD przed kontynuowaniem. Sekcje znakowania programu AD FS i opcji dostosowania usług AD FS, aby uzyskać dodatkowe informacje i wskazówki można znaleźć.|
+| Usługi AD FS są silnie dostosowanego i architekturze w ustawieniach dostosowania określone w pliku onload.js, którego nie można zduplikować w usłudze Azure AD (na przykład zmienisz środowisko logowania, aby użytkownicy tylko wprowadź formacie SamAccountName swoją nazwę użytkownika w przeciwieństwie nazwy UPN, lub silnie marki środowisko logowania)| Należy sprawdzić, czy bieżący wymagań dostosowania użytkownika mogą zostać spełnione przez usługę Azure AD przed kontynuowaniem. Sekcje znakowania programu AD FS i opcji dostosowania usług AD FS, aby uzyskać dodatkowe informacje i wskazówki można znaleźć.|
 | Blokują starsze uwierzytelnianie klientów za pośrednictwem usług AD FS.| Rozważ zastąpienie kontrolki do blokowania uwierzytelnianie starszych klientów aktualnie dostępne w usługach AD FS przy użyciu kombinacji [dostępu warunkowego kontroluje dla starszych uwierzytelniania](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [dostępu klienta programu Exchange Online Reguły](http://aka.ms/EXOCAR).|
-| Możesz wymagać od użytkowników wykonać uwierzytelnianie wieloskładnikowe dla rozwiązania z serwerem usługi MFA w środowisku lokalnym, podczas uwierzytelniania usług AD FS.| Nie można iniekcję żądanie usługi MFA za pomocą lokalnego rozwiązania MFA do przepływ uwierzytelniania dla domeny zarządzanej, jednak można użyć usługi Azure MFA, w tym celu przyszłości raz domeny jest konwertowany. Jeśli użytkownicy nie korzystają już dzisiaj usługi Azure MFA, to będzie obejmować kroku rejestracji jednorazowe przez użytkownika końcowego, który trzeba będzie przygotowania i komunikują się użytkownikom końcowym. |
+| Możesz wymagać od użytkowników wykonać uwierzytelnianie wieloskładnikowe dla rozwiązania z serwerem usługi MFA w środowisku lokalnym, podczas uwierzytelniania usług AD FS.| Nie można iniekcję żądanie usługi MFA za pomocą lokalnego rozwiązania MFA do przepływ uwierzytelniania dla domeny zarządzanej, jednak można użyć usługi Azure MFA, w tym celu przyszłości raz domeny jest konwertowany. Jeśli użytkownicy nie korzystają już dzisiaj usługi Azure MFA, to będzie obejmować kroku rejestracji jednorazowe przez użytkownika końcowego, który trzeba będzie przygotowania i komunikują się użytkownikom końcowym.|
 | Używasz zasad kontroli dostępu (reguł autoryzacji) już dziś w usługach AD FS do kontrolowania dostępu do usługi Office 365.| Należy wziąć pod uwagę, zastępując je z równoważne usługi Azure AD [zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) i [reguł dostępu klienta Exchange Online](http://aka.ms/EXOCAR).|
 
 ### <a name="considerations-for-common-ad-fs-customizations"></a>Zagadnienia dotyczące typowych dostosowania usług AD FS
@@ -298,7 +297,7 @@ Użyj tej metody, gdy usługi AD FS początkowo został skonfigurowany za pomoc�
    7. Otwórz portal usługi Azure AD, wybierz usługę Azure Active Directory, a następnie wybierz program Azure AD Connect.
    8. Sprawdź, czy federacji jest wyłączona podczas bezproblemowe logowanie jednokrotne, a synchronizacja haseł są włączone.  
   ![Obraz 37](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)</br>
-   9. Przejdź do [testowania i następne kroki](#_Next_Steps_and).
+   9. Przejdź do [testowania i następne kroki](#testing-and-next-steps).
    
    > [!IMPORTANT]
    > Pomiń sekcji opcja B — przełącznik z Federacji na synchronizację skrótów haseł przy użyciu programu PowerShell i Azure AD Connect, tak jak zaprezentowano w tej sekcji nie mają zastosowania.  
@@ -351,11 +350,14 @@ Konwersja odbywa się przy użyciu modułu Azure AD PowerShell.
 
    1. Otwórz program PowerShell i zaloguj się do usługi Azure AD przy użyciu konta administratora globalnego.  
    2. Aby przekonwertować pierwszej domeny, uruchom następujące polecenie:  
+   
    ``` PowerShell
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domainname>
    ```
+   
    3. Otwórz portal usługi Azure AD, wybierz usługę Azure Active Directory, a następnie wybierz program Azure AD Connect.
    4. Sprawdź, czy domena została przekonwertowana na zarządzane, uruchamiając następujące polecenie:
+   
    ``` PowerShell
    Get-MsolDomain -DomainName <domainname>
    ```
@@ -391,7 +393,7 @@ Następnie użytkownik będzie pobrać przekierowanie i pomyślnie zalogował si
 > [!NOTE]
 > Bezproblemowe logowanie jednokrotne działa w przypadku usługi Office 365, które obsługuje wskazówkę dotyczącą domeny (na przykład myapps.microsoft.com/contoso.com). Portalu usługi Office 365 (portal.office.com) aktualnie nie obsługuje wskazówkę dotyczącą domeny i w związku z tym oczekuje się, że użytkownicy będą musieli wpisać ich nazwy UPN. Gdy nazwy UPN jest podana, bezproblemowego logowania jednokrotnego na można pobrać biletu protokołu Kerberos w imieniu użytkownika i rejestrowanie ich w bez wpisywania hasła. 
 
-> [!NOTE]
+> [!TIP]
 > Zaleca się wdrożenie [dołączenie do hybrydowej usługi AD platformy Azure w systemie Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) dla ulepszone funkcji logowania jednokrotnego.
 
 ### <a name="removal-of-the-relying-party-trust"></a>Usuwanie zaufania jednostki uzależnionej

@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615607"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408004"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Store dane wejściowe zadania usługi Batch AI i danych wyjściowych za pomocą usługi Azure Storage
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ten przewodnik opisuje sposób używania usługi Azure Storage do przechowywania plików wejściowych i wyjściowych, podczas uruchamiania zadania. Usługa Azure Storage jest jednym z kilku opcji magazynowania obsługiwane przez usługę Batch AI. Usługa Batch AI integruje się z usługą Azure Storage przez zainstalowanie systemy usługi Azure Storage do usługi Batch AI zadania lub klastra systemu plików, dzięki czemu bezproblemowy dostęp do plików przechowywanych w chmurze. 
 

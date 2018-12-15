@@ -1,6 +1,6 @@
 ---
 title: Wizualizowanie danych z usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Zawiera podsumowanie informacji o dostępnych metod w celu wizualizacji danych przechowywanych w usłudze Azure Monitor, włącznie z danymi ze sklepu metryki i usługi Log Analytics.
+description: Zawiera podsumowanie informacji o dostępnych metod wizualizować metryki i rejestrowanie danych przechowywanych w usłudze Azure Monitor.
 author: bwren
 manager: carmonm
 editor: ''
@@ -10,17 +10,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/15/2018
+ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: a2fd26d110e7bf1ce7ac365b83659e5d33a037df
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 76e3a219d440bab4c6e277887aabb1e01f5e1d9c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383548"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435450"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
-Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji danych przechowywanych w usłudze Azure Monitor. Obejmuje to [metryki w magazynie Azure metryki](../azure-monitor/platform/data-collection.md#metrics) i [rejestrować dane w usłudze Log Analytics](../azure-monitor/platform/data-collection.md#logs). 
+Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji dane dzienników i metryk przechowywanych w usłudze Azure Monitor.
 
 Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitorowania, aby przejść do szczegółów problemów i zidentyfikować wzorce. W zależności od używanego narzędzia może również mieć możliwość udostępniać wizualizacje innym użytkownikom w organizacji i poza nią.
 
@@ -30,7 +30,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 ![Pulpit nawigacyjny](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>Zalety
-- Głęboka integracja na platformie Azure. Wizualizacje można przypiąć do pulpitów nawigacyjnych z wielu stronach platformy Azure, łącznie z Eksploratora metryk, usługi Log Analytics i usługi Application Insights.
+- Głęboka integracja na platformie Azure. Wizualizacje można przypiąć do pulpitów nawigacyjnych z wielu stronach platformy Azure, w tym metryki analytics, usługi log analytics i usługi Application Insights.
 - Obsługuje zarówno metryk i dzienników.
 - Połącz dane z wielu źródeł, takich jak dane wyjściowe z [Eksploratora metryk](../azure-monitor/platform/metrics-charts.md), [zapytań usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), i [mapuje](../application-insights/app-insights-app-map.md) i [dostępności]()w usłudze Application Insights.
 - Opcja osobistym lub udostępnione pulpity nawigacyjne. Zintegrowana z platformą Azure [uwierzytelniania opartego na rolach (RBAC)](../role-based-access-control/overview.md).
@@ -41,23 +41,23 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 
 
 ### <a name="limitations"></a>Ograniczenia
-- Ograniczone kontroli nad wizualizacje usługi Log Analytics przy użyciu tabel danych nie są obsługiwane. Łączna liczba serii danych jest ograniczona do 10 z dalszych serii danych zgrupowane w obszarze _innych_ przedziału.
-- Nie niestandardowych parametrów obsługę wykresy usługi Log Analytics.
-- Log Analytics wykresy są ograniczone do ostatnich 30 dni.
-- Log Analytics wykresy tylko można przypiąć do udostępnionych pulpitów nawigacyjnych.
+- Ograniczone kontroli nad wizualizacje dziennika bez obsługi dla tabel danych. Łączna liczba serii danych jest ograniczona do 10 z dalszych serii danych zgrupowane w obszarze _innych_ przedziału.
+- Nie niestandardowych parametrów obsługę dziennika wykresów.
+- Wykresy dziennika są ograniczone do ostatnich 30 dni.
+- Wykresy dziennika tylko można przypiąć do udostępnionych pulpitów nawigacyjnych.
 - Nie interakcję z danymi pulpitu nawigacyjnego.
 - Ograniczone kontekstowych Przechodzenie do szczegółów.
 
 ## <a name="azure-monitor-views"></a>Widoki usługi Azure Monitor
-[Widoki w usłudze Azure Monitor](../azure-monitor/platform/view-designer.md) pozwalają na tworzenie niestandardowych wizualizacji przy użyciu dane dzienników przechowywane w usłudze Log Analytics. Są one używane przez [rozwiązania do monitorowania](../azure-monitor/insights/solutions.md) przedstawienie danych pobierają.
+[Widoki w usłudze Azure Monitor](../log-analytics/log-analytics-view-designer.md) pozwalają na tworzenie niestandardowych wizualizacji przy użyciu danych dziennika. Są one używane przez [rozwiązania do monitorowania](insights/solutions.md) przedstawienie danych pobierają.
 
 ![Widok](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Zalety
-- Bogate wizualizacje danych usługi Log Analytics.
+- Bogate wizualizacje za dane dziennika.
 - Eksportowanie i importowanie widoków, aby przenieść je do innych grup zasobów i subskrypcji.
 - Integruje się z dziennik analityczny model zarządzania obszarami roboczymi i rozwiązania do monitorowania.
-- [Filtry](../azure-monitor/platform/view-designer-filters.md) niestandardowych parametrów.
+- [Filtry](platform/view-designer-filters.md) niestandardowych parametrów.
 - Interakcyjne obsługuje wielopoziomowe testowania odzyskiwania po awarii w (Widok przejście do innego widoku)
 
 ### <a name="limitations"></a>Ograniczenia
@@ -65,7 +65,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 - Brak widoków osobistych. Dostępne dla wszystkich użytkowników mających dostęp do obszaru roboczego.
 - Nie automatycznego odświeżania.
 - Ograniczone opcje układu.
-- Brak obsługi zapytań w aplikacjach usługi Application Insights i obszary robocze usługi Log Analytics.
+- Brak obsługi zapytań w wielu obszarach roboczych lub aplikacji usługa Application Insights.
 - Zapytania są ograniczone w odpowiedzi rozmiar 8MB, a zapytanie czas wykonywania 110 sekund.
 
 
@@ -89,7 +89,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 
 
 ## <a name="power-bi"></a>Power BI
-[Usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) jest szczególnie przydatne podczas tworzenia biznesowymi pulpitów nawigacyjnych i raportów, a także raporty, analizy trendów długoterminowych kluczowego wskaźnika wydajności. Możesz [Importuj wyniki zapytania usługi Log Analytics](../azure-monitor/platform/powerbi.md) do usługi Power BI zestawu danych, dzięki czemu można wykorzystać jej funkcje, takie jak łączenie danych z różnych źródeł oraz udostępnianie raportów w sieci web i urządzeń przenośnych.
+[Usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) jest szczególnie przydatne podczas tworzenia biznesowymi pulpitów nawigacyjnych i raportów, a także raporty, analizy trendów długoterminowych kluczowego wskaźnika wydajności. Możesz [Importuj wyniki zapytania dziennika](../log-analytics/log-analytics-powerbi.md) do usługi Power BI zestawu danych, dzięki czemu można wykorzystać jej funkcje, takie jak łączenie danych z różnych źródeł oraz udostępnianie raportów w sieci web i urządzeń przenośnych.
 
 ![Power BI](media/visualizations/power-bi.png)
 
@@ -109,7 +109,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) to otwarta platforma, która excels w operacyjne pulpity nawigacyjne. Jest to szczególnie przydatne w przypadku wykrywanie i izolowanie i sklasyfikowaniu zdarzenia operacyjne. Możesz dodać [wtyczki źródła danych Grafana usługi Azure Monitor](../monitoring-and-diagnostics/monitor-send-to-grafana.md) do subskrypcji platformy Azure, aby wizualizować dane metryki platformy Azure.
+[Grafana](https://grafana.com/) to otwarta platforma, która excels w operacyjne pulpity nawigacyjne. Jest to szczególnie przydatne w przypadku wykrywanie i izolowanie i sklasyfikowaniu zdarzenia operacyjne. Możesz dodać [wtyczki źródła danych Grafana usługi Azure Monitor](../azure-monitor/platform/grafana-plugin.md) do subskrypcji platformy Azure, aby wizualizować dane metryki platformy Azure.
 
 ![Grafana](media/visualizations/grafana.png)
 
@@ -126,7 +126,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 
 
 ## <a name="build-your-own-custom-application"></a>Tworzenie niestandardowych aplikacji
-Można uzyskać dostęp do danych metryk platformy Azure i usługi Log Analytics za pośrednictwem jego interfejsu API za pomocą dowolnego klienta REST, co pozwala na tworzenie własnych niestandardowych witryn sieci Web i aplikacji.
+Dane w dzienniku i dane metryk w usłudze Azure Monitor dostęp za pośrednictwem jego interfejsu API za pomocą dowolnego klienta REST, co pozwala na tworzenie własnych niestandardowych witryn sieci Web i aplikacji.
 
 ### <a name="advantages"></a>Zalety
 - Pełna elastyczność interfejsu użytkownika, wizualizacji, interakcyjność i funkcje.
@@ -137,9 +137,10 @@ Można uzyskać dostęp do danych metryk platformy Azure i usługi Log Analytics
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [dane zebrane przez usługi Azure Monitor](../azure-monitor/platform/data-collection.md).
+- Dowiedz się więcej o [dane zebrane przez usługi Azure Monitor](platform/data-collection.md).
 - Dowiedz się więcej o [pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
-- Dowiedz się więcej o [widoków w usłudze Azure Monitor](../azure-monitor/platform/view-designer.md).
+- Dowiedz się więcej o [widoków w usłudze Azure Monitor](platform/view-designer.md).
 - Dowiedz się więcej o [skoroszytów w usłudze Application Insights](../application-insights/app-insights-usage-workbooks.md).
 - Dowiedz się więcej o [importowania danych dziennika w usłudze Power BI](../azure-monitor/platform/powerbi.md).
-- Dowiedz się więcej o [wtyczki źródła danych Grafana usługi Azure Monitor](../monitoring-and-diagnostics/monitor-send-to-grafana.md).
+- Dowiedz się więcej o [wtyczki źródła danych Grafana usługi Azure Monitor](../azure-monitor/platform/grafana-plugin.md).
+

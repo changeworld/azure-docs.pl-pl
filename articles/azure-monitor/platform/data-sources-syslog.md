@@ -1,6 +1,6 @@
 ---
-title: Zbieraj i Analizuj komunikaty dziennika systemu w usłudze Log Analytics pakietu OMS | Dokumentacja firmy Microsoft
-description: SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux. W tym artykule opisano sposób konfigurowania kolekcji komunikaty dziennika systemowego w usłudze Log Analytics i szczegóły rekordów, utworzonego przez siebie w repozytorium pakietu OMS.
+title: Zbieraj i Analizuj komunikaty dziennika systemu w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux. W tym artykule opisano sposób konfigurowania kolekcji komunikaty dziennika systemowego w usłudze Azure Monitor i szczegóły rekordów, które tworzą.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,30 +11,30 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: c47f96a91d312eea1748b00e4272a7c9a11d5c1e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 263f9dcd038bd9ec20036983e273f56191e9a300
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186637"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436725"
 ---
-# <a name="syslog-data-sources-in-log-analytics"></a>SYSLOG źródeł danych w usłudze Log Analytics
-SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux.  Aplikacje będzie wysyłać komunikaty, które mogą być przechowywane na komputerze lokalnym lub dostarczane do modułu zbierającego Syslog.  Po zainstalowaniu agenta pakietu OMS dla systemu Linux umożliwia skonfigurowanie lokalnego demona usługi Syslog do przekazywania komunikatów do agenta.  Agent wysyła następnie komunikatu do usługi Log Analytics, gdzie odpowiedni rekord zostanie utworzony w repozytorium pakietu OMS.  
+# <a name="syslog-data-sources-in-azure-monitor"></a>SYSLOG źródeł danych w usłudze Azure Monitor
+SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux.  Aplikacje będzie wysyłać komunikaty, które mogą być przechowywane na komputerze lokalnym lub dostarczane do modułu zbierającego Syslog.  Po zainstalowaniu agenta usługi Log Analytics dla systemu Linux umożliwia skonfigurowanie lokalnego demona usługi Syslog do przekazywania komunikatów do agenta.  Agent wysyła następnie komunikatu do usługi Azure Monitor, gdy odpowiedni rekord zostanie utworzony.  
 
 > [!NOTE]
-> Usługa log Analytics obsługuje zbiór komunikatów wysyłanych przez rsyslog lub syslog-ng, gdzie rsyslog jest demona domyślne. Demon syslog domyślne w wersji 5 (sysklog) w wersji w systemie Red Hat Enterprise Linux, CentOS i Oracle Linux nie jest obsługiwana dla zbierania zdarzeń dziennika systemu. Aby zebrać dane usługi syslog z tej wersji tych dystrybucji [demona rsyslog](http://rsyslog.com) powinien być zainstalowany i skonfigurowany tak, aby zastąpić sysklog.
+> Usługa Azure Monitor obsługują zbieranie komunikatów wysyłanych przez rsyslog lub syslog-ng, gdzie rsyslog jest demona domyślne. Demon syslog domyślne w wersji 5 (sysklog) w wersji w systemie Red Hat Enterprise Linux, CentOS i Oracle Linux nie jest obsługiwana dla zbierania zdarzeń dziennika systemu. Aby zebrać dane usługi syslog z tej wersji tych dystrybucji [demona rsyslog](http://rsyslog.com) powinien być zainstalowany i skonfigurowany tak, aby zastąpić sysklog.
 >
 >
 
 ![Zbieranie dzienników systemowych](media/data-sources-syslog/overview.png)
 
 ## <a name="configuring-syslog"></a>Konfigurowanie usługi Syslog
-OMS Agent for Linux tylko będzie zbierać zdarzenia z urządzeń i ważności, które są określone w konfiguracji.  Syslog można skonfigurować za pomocą witryny Azure portal lub zarządzając pliki konfiguracji agentów systemu Linux.
+Agenta usługi Log Analytics dla systemu Linux tylko będzie zbierać zdarzenia z urządzeń i ważności, które są określone w konfiguracji.  Syslog można skonfigurować za pomocą witryny Azure portal lub zarządzając pliki konfiguracji agentów systemu Linux.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurowanie usługi Syslog w witrynie Azure portal
-Konfigurowanie usługi Syslog z [danych menu Zaawansowane ustawienia usługi Analiza dzienników](agent-data-sources.md#configuring-data-sources).  Ta konfiguracja jest dostarczana do pliku konfiguracji na każdym agencie systemu Linux.
+Konfigurowanie usługi Syslog z [menu danych w zaawansowanych ustawieniach](agent-data-sources.md#configuring-data-sources).  Ta konfiguracja jest dostarczana do pliku konfiguracji na każdym agencie systemu Linux.
 
 Można dodawać nowych funkcji, wpisując jej nazwę, a następnie klikając polecenie **+**.  Dla każdego obiektu zostanie pobrana tylko komunikaty z wybranej ważności.  Zaznacz ważności dla określonego obiektu, które mają być zbierane.  Nie zawiera żadnych dodatkowych kryteriów filtrowania wiadomości.
 
@@ -43,7 +43,7 @@ Można dodawać nowych funkcji, wpisując jej nazwę, a następnie klikając pol
 Domyślnie wszystkie zmiany konfiguracji są automatycznie przekazywane do wszystkich agentów.  Jeśli chcesz skonfigurować dziennik systemowy ręcznie na każdym agencie systemu Linux, usuń zaznaczenie pola *Zastosuj poniższą konfigurację do moich maszyn z systemem Linux*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurowanie usługi Syslog na agenta systemu Linux
-Gdy [OMS agent jest zainstalowany na komputerze klienckim systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), program domyślny plik konfiguracji usługi syslog do definiowania funkcji i ważność komunikatów, które są zbierane.  Można zmodyfikować tego pliku, aby zmienić konfigurację.  Plik konfiguracyjny różni się w zależności od demona dziennika systemu, który klient został zainstalowany.
+Gdy [usługi Log Analytics agent jest zainstalowany na komputerze klienckim systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), program domyślny plik konfiguracji usługi syslog do definiowania funkcji i ważność komunikatów, które są zbierane.  Można zmodyfikować tego pliku, aby zmienić konfigurację.  Plik konfiguracyjny różni się w zależności od demona dziennika systemu, który klient został zainstalowany.
 
 > [!NOTE]
 > Jeśli edytujesz konfigurację dziennika systemu, należy ponownie uruchomić demona dziennika systemu, aby zmiany zaczęły obowiązywać.
@@ -136,7 +136,7 @@ Obiekt można usunąć przez usunięcie jego sekcję pliku konfiguracji.  Można
 
 
 ### <a name="collecting-data-from-additional-syslog-ports"></a>Zbieranie danych z dodatkowych portów usługi Syslog
-Agent pakietu OMS odbiera komunikaty dziennika systemu na lokalnym kliencie, na porcie 25224.  Po zainstalowaniu agenta na domyślnej konfiguracji usługi syslog zostaną zastosowane i znaleźć w następującej lokalizacji:
+Agenta usługi Log Analytics wykrywa komunikaty dziennika systemu na lokalnym kliencie, na porcie 25224.  Po zainstalowaniu agenta na domyślnej konfiguracji usługi syslog zostaną zastosowane i znaleźć w następującej lokalizacji:
 
 * Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
 * Demona SYSLOG-ng: `/etc/syslog-ng/syslog-ng.conf`
@@ -178,7 +178,7 @@ Możesz zmienić numer portu, tworząc dwa pliki konfiguracji: plik konfiguracji
         destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
         log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
 
-Po zakończeniu zmiany, Syslog i agenta pakietu OMS usługa wymaga ponownego uruchomienia, aby upewnić się, że zmiany konfiguracji zostały wprowadzone.   
+Po zakończeniu zmiany, Syslog i Log Analytics, usługi agenta musi zostać ponownie uruchomione, aby upewnić się, zmiany konfiguracji zostały wprowadzone.   
 
 ## <a name="syslog-record-properties"></a>Właściwości rekordu dziennika systemu
 Rekordy SYSLOG mają typ **Syslog** i mają właściwości podane w poniższej tabeli.
@@ -205,6 +205,6 @@ Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobiera
 | SYSLOG &#124; summarize AggregatedValue = count() by funkcji |Liczba Syslog rekordy według funkcji. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
+* Dowiedz się więcej o [dziennika queriesi](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
 * Użyj [pól niestandardowych](../../azure-monitor/platform/custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
 * [Konfigurowanie agentów systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) do gromadzenia innych typów danych.

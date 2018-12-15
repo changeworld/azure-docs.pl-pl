@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 709a8eb9b5e2ab1a3a9deb10e35a5e996c8f9d93
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: eff7ccc40cd31e604cc4e54b6da9421d1d0b4f4e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585780"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53439231"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
@@ -76,11 +76,11 @@ Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2
 
 1. Zainstaluj aktualizację.
 
-  | Wersja systemu operacyjnego | Date | Numer/link |
-  |---|---|---|---|
-  | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-  | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-  |  |  |  |  |
+   | Wersja systemu operacyjnego | Date | Numer/link |
+   |---|---|---|---|
+   | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   |  |  |  |  |
 
 2. Ustaw wartość klucza rejestru. Utwórz lub ustaw klucz rejestru REG_DWORD „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload”na wartość 1.
 

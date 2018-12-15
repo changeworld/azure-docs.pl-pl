@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: cf766997cf416ed201c76c6110641006b7dab41d
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 5ab2f1df72f04b6456f1083de6870fb86bad6616
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386251"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438299"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorować pamięć podręczna systemu Azure dla usługi Redis
 Pamięć podręczna systemu Azure do celów Redis [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) zapewnienie kilka opcji do monitorowania wystąpień pamięci podręcznej. Można wyświetlić metryki, przypinać wykresy metryk do tablicy startowej, dostosować zakres dat i godzin, wykresy monitorowania, Dodaj i Usuń metryki z wykresów i ustawić alerty, gdy są spełnione określone warunki. Te narzędzia umożliwiają monitorowanie kondycji pamięci podręcznej Azure dla wystąpienia usługi Redis i ułatwia zarządzanie aplikacjami buforowania.
@@ -75,7 +75,7 @@ Aby skonfigurować konto magazynu dla metryk pamięci podręcznej:
 ![Redis diagnostyki](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->Oprócz archiwizacji metryk pamięci podręcznej do magazynu, możesz również [przekazywać je strumieniowo do Centrum zdarzeń lub wysłać je do usługi Log Analytics](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md#retrieve-metric-values).
+>Oprócz archiwizacji metryk pamięci podręcznej do magazynu, możesz również [przekazywać je strumieniowo do Centrum zdarzeń lub wysłać je do usługi Log Analytics](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
 >
 >
 

@@ -1,5 +1,5 @@
 ---
-title: Punkty końcowe usługi sieci wirtualnej i zasady usługi Azure SQL Database | Dokumentacja firmy Microsoft
+title: Punkty końcowe usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Oznacz podsieci jako punkt końcowy usługi sieci wirtualnej. Następnie punkt końcowy jako regułę sieci wirtualnej do listy ACL w usłudze Azure SQL Database. Użytkownik bazy danych SQL następnie akceptuje komunikację z wszystkich maszyn wirtualnych i innych węzłów w tej podsieci.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 3469b03cae88a5bdf7c9ccd51b54af92ea8d7b23
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/13/2018
+ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958392"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438595"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Na użytek punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure SQL
 
-*Reguły sieci wirtualnej* są jednym zapory funkcja zabezpieczeń, która określa, czy subskrypcji platformy Azure [bazy danych SQL](sql-database-technical-overview.md) lub [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) serwer zaakceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym rozwiązaniem dla bezpiecznego zezwolenie na komunikację z usługi Azure SQL Database.
+*Reguły sieci wirtualnej* są jednym zapory funkcja zabezpieczeń, która określa, czy subskrypcji platformy Azure [bazy danych SQL](sql-database-technical-overview.md) lub [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) serwer zaakceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym rozwiązaniem dla bezpiecznego zezwolenie na komunikację do usługi Azure SQL Database i SQL Data Warehouse.
 
 > [!NOTE]
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
@@ -36,13 +36,13 @@ Jeśli tworzysz tylko reguły sieci wirtualnej, możesz przejść od razu do kro
 
 ## <a name="terminology-and-description"></a>Terminologia i opis
 
-**Sieć wirtualna:** może mieć sieci wirtualne, skojarzony z subskrypcją platformy Azure.
+**Sieć wirtualna:** Może mieć sieci wirtualne, skojarzony z subskrypcją platformy Azure.
 
-**Podsieć:** sieć wirtualna zawiera **podsieci**. Żadnych maszyn wirtualnych (VM), do których masz są przypisywane do podsieci. W jednej podsieci może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Obliczenia, że węzły, które znajdują się poza siecią wirtualną nie może uzyskiwać dostęp do sieci wirtualnej, chyba, że konfigurowanie zabezpieczeń w taki sposób, aby zezwolić na dostęp.
+**Podsieć:** Sieć wirtualna zawiera **podsieci**. Żadnych maszyn wirtualnych (VM), do których masz są przypisywane do podsieci. W jednej podsieci może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Obliczenia, że węzły, które znajdują się poza siecią wirtualną nie może uzyskiwać dostęp do sieci wirtualnej, chyba, że konfigurowanie zabezpieczeń w taki sposób, aby zezwolić na dostęp.
 
-**Punkt końcowy usługi sieci wirtualnej:** A [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] jest podsiecią, w których wartości właściwości zawierają jedną lub więcej nazw typu formalnego usługi platformy Azure. W tym artykule jesteśmy zainteresowani nazwę typu **Microsoft.Sql**, która odnosi się do usługi platformy Azure o nazwie bazy danych SQL.
+**Punkt końcowy usługi wirtualne sieci:** A [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] jest podsiecią, w których wartości właściwości zawierają jedną lub więcej nazw typu formalnego usługi platformy Azure. W tym artykule jesteśmy zainteresowani nazwę typu **Microsoft.Sql**, która odnosi się do usługi platformy Azure o nazwie bazy danych SQL.
 
-**Reguła sieci wirtualnej:** reguły sieci wirtualnej dla serwera bazy danych SQL jest podsiecią, który znajduje się na liście kontroli dostępu (ACL) serwera usługi SQL Database. Aby być na liście kontroli dostępu dla usługi SQL Database, musi zawierać podsieci **Microsoft.Sql** nazwy typu.
+**Reguła sieci wirtualnej:** Reguły sieci wirtualnej dla serwera bazy danych SQL jest podsiecią, która znajduje się na liście kontroli dostępu (ACL) serwera usługi SQL Database. Aby być na liście kontroli dostępu dla usługi SQL Database, musi zawierać podsieci **Microsoft.Sql** nazwy typu.
 
 Reguły sieci wirtualnej informuje serwer bazy danych SQL, aby akceptował komunikację z każdego węzła, który znajduje się w podsieci.
 
@@ -92,8 +92,8 @@ Każda reguła sieci wirtualnej ma zastosowanie do całego serwera Azure SQL Dat
 
 Brak separacji ról zabezpieczeń w administracji punkty końcowe usługi sieci wirtualnej. Akcja jest wymagana z każdej z następujących ról:
 
-- **Administrator sieci:** &nbsp; włączyć punkt końcowy.
-- **Administrator bazy danych:** &nbsp; aktualizacji listy kontroli dostępu (ACL), aby dodać danej podsieci do serwera bazy danych SQL.
+- **Administrator sieci:** &nbsp; Włącz punkt końcowy.
+- **Administrator bazy danych:** &nbsp; Aktualizowanie listy kontroli dostępu (ACL), aby dodać danej podsieci do serwera bazy danych SQL.
 
 *Alternatywa RBAC:*
 
@@ -129,7 +129,7 @@ Usługi Azure SQL Database funkcja reguł sieci wirtualnej ma następujące ogra
 
 W przypadku używania punktów końcowych usługi dla usługi Azure SQL Database, należy przejrzeć następujące zagadnienia:
 
-- **Wymagana jest ruchu wychodzącego do publicznych adresów IP usługi Azure SQL Database**: grupy zabezpieczeń sieci (NSG) muszą być otwarte do adresów IP bazy danych SQL Azure, aby zezwolić na połączenie. Można to zrobić za pomocą sieciowej grupy zabezpieczeń [tagi usługi](../virtual-network/security-overview.md#service-tags) usługi Azure SQL Database.
+- **Wymagana jest ruchu wychodzącego do publicznych adresów IP usługi Azure SQL Database**: Sieciowe grupy zabezpieczeń (NSG) musi być otwarty do adresów IP bazy danych SQL Azure, aby zezwolić na połączenie. Można to zrobić za pomocą sieciowej grupy zabezpieczeń [tagi usługi](../virtual-network/security-overview.md#service-tags) usługi Azure SQL Database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -243,19 +243,19 @@ Błąd połączenia 40914 odnosi się do *reguł sieci wirtualnej*, jak określo
 
 ### <a name="error-40914"></a>Błąd 40914
 
-*Tekst komunikatu:* nie można otworzyć serwera "*[nazwa_serwera]*" żądanego podczas logowania. Klient nie może uzyskać dostęp do serwera.
+*Tekst komunikatu:* Nie można otworzyć serwera "*[nazwa_serwera]*" żądanego podczas logowania. Klient nie może uzyskać dostęp do serwera.
 
-*Opis błędu:* klient znajduje się w podsieci, która ma punkty końcowe serwera w sieci wirtualnej. Ale serwera Azure SQL Database nie ma sieci wirtualnej reguły przyznająca podsieci prawo do komunikowania się z usługą SQL Database.
+*Opis błędu:* Klient znajduje się w podsieci, która ma punkty końcowe serwera w sieci wirtualnej. Ale serwera Azure SQL Database nie ma sieci wirtualnej reguły przyznająca podsieci prawo do komunikowania się z usługą SQL Database.
 
-*Błąd podczas rozpoznawania:* okienku na zapory w witrynie Azure Portal, użyj reguł sieci wirtualnej kontrolę [Dodaj regułę sieci wirtualnej](#anchor-how-to-by-using-firewall-portal-59j) dla podsieci.
+*Błąd podczas rozpoznawania:* W okienku zapory w witrynie Azure portal przy użyciu kontrolki reguł sieci wirtualnej do [Dodaj regułę sieci wirtualnej](#anchor-how-to-by-using-firewall-portal-59j) dla podsieci.
 
 ### <a name="error-40615"></a>Błąd 40615
 
-*Tekst komunikatu:* nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient o adresie IP{1}"nie może uzyskać dostępu do serwera.
+*Tekst komunikatu:* Nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient o adresie IP{1}"nie może uzyskać dostępu do serwera.
 
-*Opis błędu:* klient próbuje nawiązać połączenie z adresu IP, który nie ma uprawnień do łączenia się z serwerem usługi Azure SQL Database. Zapory serwera nie ma adresu IP adres reguły, klient będzie mógł komunikować się z danego adresu IP do bazy danych SQL.
+*Opis błędu:* Klient próbuje nawiązać połączenie z adresu IP, który nie ma uprawnień do łączenia się z serwerem usługi Azure SQL Database. Zapory serwera nie ma adresu IP adres reguły, klient będzie mógł komunikować się z danego adresu IP do bazy danych SQL.
 
-*Błąd podczas rozpoznawania:* wprowadź adres IP klienta jako reguła adresów IP. W tym za pomocą okienka zapory w witrynie Azure portal.
+*Błąd podczas rozpoznawania:* Wprowadź adres IP klienta jako reguła adresów IP. W tym za pomocą okienka zapory w witrynie Azure portal.
 
 Lista komunikaty o błędach bazy danych SQL jest udokumentowany [tutaj][sql-database-develop-error-messages-419g].
 
@@ -278,7 +278,7 @@ Skrypt programu PowerShell można również tworzyć reguły sieci wirtualnej. P
 
 Wewnętrznie poleceń cmdlet programu PowerShell dla sieci wirtualnej SQL akcji wywoływać interfejsy API REST. Można bezpośrednio wywoływać interfejsy API REST.
 
-- [Reguły sieci wirtualnej: działania][rest-api-virtual-network-rules-operations-862r]
+- [Reguły sieci wirtualnej: Operacje][rest-api-virtual-network-rules-operations-862r]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -320,10 +320,10 @@ Musi już mieć podsieci, który jest oznaczony za pomocą określonego punktu k
 
 > [!NOTE]
 > Następujące stany lub stanów dotyczą zasady:
-> - **Gotowe:** wskazuje, że operacja, która zainicjowano zakończyła się pomyślnie.
-> - **Nie powiodła się:** wskazuje, że operacja, która zainicjowano zakończyła się niepowodzeniem.
-> - **Usunięto:** tylko ma zastosowanie do operacji usuwania i wskazuje, czy reguła została usunięta i nie ma już zastosowania.
-> - **W toku:** wskazuje, że operacja jest w toku. Stary reguła ma zastosowanie, gdy operacja jest w tym stanie.
+> - **Gotowe:** Wskazuje, powiodła się operacja, która zostanie zainicjowane.
+> - **Nie powiodło się:** Wskazuje, że zainicjowano operację zakończyła się niepowodzeniem.
+> - **Usunięte:** Tylko ma zastosowanie do operacji usuwania i wskazuje, czy reguła została usunięta i nie ma już zastosowania.
+> - **W toku:** Wskazuje, że operacja jest w toku. Stary reguła ma zastosowanie, gdy operacja jest w tym stanie.
 
 <a name="anchor-how-to-links-60h" />
 
@@ -337,7 +337,7 @@ Funkcja reguły sieci wirtualnej dla usługi Azure SQL Database stały się dost
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Tworzenie punktu końcowego usługi sieci wirtualnej, a następnie reguły sieci wirtualnej dla usługi Azure SQL Database za pomocą programu PowerShell.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
-- [Reguł sieci wirtualnej: Operacje] [ rest-api-virtual-network-rules-operations-862r] za pomocą interfejsów API REST
+- [Reguły sieci wirtualnej: Operacje] [ rest-api-virtual-network-rules-operations-862r] za pomocą interfejsów API REST
 
 <!-- Link references, to images. -->
 
@@ -347,7 +347,7 @@ Funkcja reguły sieci wirtualnej dla usługi Azure SQL Database stały się dost
 
 [image-portal-firewall-vnet-result-rule-30-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-result-rule-30.png
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
@@ -369,7 +369,7 @@ Funkcja reguły sieci wirtualnej dla usługi Azure SQL Database stały się dost
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
-<!-- Link references, to text, Outside this Github repo (HTTP). -->
+<!-- Link references, to text, Outside this GitHub repo (HTTP). -->
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
 

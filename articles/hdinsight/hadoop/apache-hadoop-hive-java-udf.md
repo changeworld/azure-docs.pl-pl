@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f027b4c827fd7afe1a9cd2f8f31839b092345728
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6e31062e3965c9ed5a0b24e822f0ec14234cec1c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012491"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435076"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Korzystanie z języka Java funkcji zdefiniowanej przez użytkownika przy użyciu Apache Hive w HDInsight
 
@@ -213,7 +213,7 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
     ```
 
     > [!NOTE]
-    > W tym przykładzie przyjęto założenie, że usługi Azure Storage jest magazynem domyślnym dla klastra. Jeśli w klastrze jest używany zamiast tego Data Lake Store, zmień `wasb:///` wartość `adl:///`.
+    > W tym przykładzie przyjęto założenie, że usługi Azure Storage jest magazynem domyślnym dla klastra. Jeśli klaster używa magazynu usługi Data Lake zamiast tego, zmień `wasb:///` wartość `adl:///`.
 
 3. Aby przekonwertować wartościami pobranymi z tabeli na ciągi małymi literami, należy użyć funkcji zdefiniowanej przez użytkownika.
 
@@ -240,6 +240,6 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Inne sposoby pracy z programu Hive, zobacz [korzystanie z programu Hive z HDInsight](hdinsight-use-hive.md).
+Inne sposoby pracy z programu Hive, zobacz [używanie programu Apache Hive z HDInsight](hdinsight-use-hive.md).
 
-Aby uzyskać więcej informacji na temat funkcji Hive User-Defined, zobacz [Hive operatory i funkcje zdefiniowane przez użytkownika](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) sekcji wiki gałęzi w serwisie apache.org.
+Aby uzyskać więcej informacji na temat funkcji Hive User-Defined, zobacz [Apache Hive operatory i funkcje zdefiniowane przez użytkownika](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) sekcji wiki gałęzi w serwisie apache.org.

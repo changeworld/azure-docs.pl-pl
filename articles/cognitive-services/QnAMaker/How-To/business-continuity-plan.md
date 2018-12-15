@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 41e7425a2e2e6dd8dc8416538cf77e5b8f273284
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 10d3809de590a79b6efa86e3d55fbbe535ea13b6
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041942"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413119"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Utwórz plan ciągłości biznesowej usługi QnA Maker
 
@@ -27,7 +27,7 @@ Ogólne pomysł, jak powyżej jest następująca:
 
 1. Konfigurowanie dwóch równoległych [usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md) w [sparowanych regionów platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-2. Synchronizuj indeksy podstawowe i pomocnicze usługi Azure search. Użyj przykładu z serwisu github [tutaj](https://github.com/pchoudhari/QnAMakerBackupRestore) na temat sposobu wykonywania kopii zapasowej i przywracania indeksy platformy Azure.
+2. Synchronizuj indeksy podstawowe i pomocnicze usługi Azure search. Użyj przykładu z serwisu GitHub [tutaj](https://github.com/pchoudhari/QnAMakerBackupRestore) na temat sposobu wykonywania kopii zapasowej i przywracania indeksy platformy Azure.
 
 3. Tworzenie kopii zapasowej za pomocą usługi Application Insights [Eksport ciągły](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry).
 

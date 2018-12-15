@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 09d4ef0b6a3455728ddab0484db4c701c6764214
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7e55304fb02078c71b91b2904475a4bee4bcc018
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270930"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436963"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -53,7 +53,14 @@ Można sprawdzić zarejestrowane informacje wykonywania zawiera metryki zebrane 
 
 ## <a name="model-explainability"></a>Explainability modelu
 
-Typowe niedogodności automatycznych machine Learning jest brakiem, aby zapoznać się z procesem end-to-end. Usługa Azure Machine Learning umożliwia wyświetlenie szczegółowych informacji na temat modeli w celu zwiększenia przejrzystości w uruchomionej w zapleczu. Dane wyjściowe pokazują ogólną funkcją znaczenie w modelu strojenia, Klasyfikacja wyników przy użyciu funkcji wpływ na najbardziej modelu. Ponadto dla problemów klasyfikacji można wyświetlić znaczenie funkcji klasy i klasyfikacji.
+Typowe niedogodności automatycznych machine Learning jest brakiem, aby zapoznać się z procesem end-to-end. Usługa Azure Machine Learning umożliwia wyświetlenie szczegółowych informacji na temat modeli w celu zwiększenia przejrzystości w uruchomionej w zapleczu. W niektórych modelach, takich jak regresji liniowej, są uznawane za dość utrudnione i w związku z tym łatwa do zrozumienia. Jednak firma Microsoft może dodać więcej funkcji, a następnie używać bardziej skomplikowanych modeli uczenia maszynowego, zrozumienie ich pobiera bardziej trudne. Istnieją dwa kluczowe aspekty, przejrzystości działania w usłudze machine learning:
+
+1. Rozpoznawanie potoku i wszystkie kroki uczenia maszynowego zaangażowani, w tym przetwarzanie wstępne danych/cechowania i wartości hiperparametrycznego.
+1. Opis relacji między zmienne wejściowe (znany także jako "funkcji") i model danych wyjściowych.  Wiedząc, wielkości i kierunek wpływ każdej funkcji na dostęp do przewidywanych wartości pomaga lepiej zrozumieć i wyjaśnić modelu. Jest to nazywane znaczenie funkcji.
+
+Globalnych funkcji uczenia się na żądanie post znaczenie dla potoku dowolnie lub ją włączyć dla wszystkich potoków w ramach zautomatyzowanej szkolenia uczenia Maszynowego.  Jest to funkcja w wersji zapoznawczej i będziemy inwestować długoterminowo w dostarczaniu bogatsze informacje, aby umożliwić użytkownikom lepsze rozumienie Twoich modeli uczenia Maszynowego.  
+
+Postępuj zgodnie z tym [przykładowy notes](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) eksperymentować wyjaśnienia modelu w usłudze Azure Machine Learning.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

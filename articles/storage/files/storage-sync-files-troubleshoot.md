@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 6ee16a0483b13471f12654f82ef6972b41ace634
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316951"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409466"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -468,20 +468,17 @@ Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje ka
 | **Ciąg błędu** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Wymagana korekta** | Yes |
 
-Ten błąd zazwyczaj występuje, ponieważ czas serwera jest nieprawidłowy lub wygasł certyfikat używany do uwierzytelniania. Jeśli czas serwera jest poprawna, wykonaj następujące kroki, usunięcie wygasłego certyfikatu (wygasłe) i zresetowanie stanu rejestracji serwera:
+Ten błąd zazwyczaj występuje, ponieważ czas serwera jest nieprawidłowy lub wygasł certyfikat używany do uwierzytelniania. Jeśli czas serwera jest poprawna, wykonaj następujące kroki, aby odnowić wygasły certyfikat:
 
 1. Otwórz przystawkę MMC Certyfikaty, wybierz konto komputera i przejdź do \Personal\Certificates certyfikaty (komputer lokalny).
-2. Usuń certyfikat uwierzytelniania klienta, jeśli upłynął, a następnie zamknij przystawkę MMC Certyfikaty.
-3. Otwórz Regedit i Usuń klucz ServerSetting w rejestrze: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting
-4. W witrynie Azure portal przejdź do sekcji zarejestrowane serwery usługa synchronizacji magazynu. Kliknij prawym przyciskiem myszy na serwerze z wygasłego certyfikatu, a następnie kliknij przycisk "Wyrejestruj serwer."
-5. Uruchom następujące polecenia programu PowerShell na serwerze:
+2. Sprawdź, czy certyfikat uwierzytelniania klienta jest nadal ważne. Jeśli certyfikat wygasł, zamknij okno przystawki MMC certyfikatów i proceeed pozostałe kroki. 
+3. Sprawdź, agent usługi Azure File Sync wersja 4.0.1.0 lub nowszy jest zainstalowany.
+4. Uruchom następujące polecenia programu PowerShell na serwerze:
 
     ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Reset-StorageSyncServer
+    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-6. Zarejestruj ponownie serwer, uruchamiając ServerRegistration.exe (domyślna lokalizacja to C:\Program Files\Azure\StorageSyncAgent).
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Wolumin, na którym znajduje się punkt końcowy serwera brakuje miejsca na dysku.**  
 | | |

@@ -8,14 +8,14 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 832fab6c4f183ddad512c5e6e4309d70938a316b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600027"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407024"
 ---
-# <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z programu Hive przy użyciu usługi Azure HDInsight
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hive za pomocą usługi Azure HDInsight
 
 Dowiedz się więcej o najczęściej zadawane pytania oraz dostępnych rozwiązaniach poszczególnych problemów podczas pracy z usługą Apache Hive ładunków w Apache Ambari.
 
@@ -104,7 +104,7 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 - [Właściwości konfiguracji programu hive](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak analizować dane Tez DAG na ścieżkę krytyczną klastra?
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak analizować dane Apache Tez DAG na ścieżkę krytyczną klastra?
 
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
@@ -126,17 +126,17 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
   Należy podać przykładowy program jako pierwszy argument.
 
   Program prawidłowe nazwy zawierają:
-    - **ContainerReuseAnalyzer**: drukowanie szczegółów ponowne użycie kontenerów w grupie DAG
-    - **CriticalPath**: znajdowanie ścieżki krytycznej do grupy DAG
-    - **LocalityAnalyzer**: drukowanie szczegółów lokalizacji, w grupie DAG
-    - **ShuffleTimeAnalyzer**: analizowanie szczegółów czasu shuffle w grupie DAG
-    - **SkewAnalyzer**: analizowanie niesymetryczność szczegółów w grupie DAG
-    - **SlowNodeAnalyzer**: wydrukować szczegóły węzła w grupie DAG
-    - **SlowTaskIdentifier**: szczegóły powolne zadania drukowania w grupie DAG
-    - **SlowestVertexAnalyzer**: drukowanie najwolniejsze szczegółów wierzchołka w grupie DAG
-    - **SpillAnalyzer**: Drukuj rozlania szczegóły w grupie DAG
-    - **TaskConcurrencyAnalyzer**: drukowanie szczegółów współbieżności zadań w grupie DAG
-    - **VertexLevelCriticalPathAnalyzer**: znajdowanie ścieżki krytycznej na poziomie wierzchołka w grupie DAG
+    - **ContainerReuseAnalyzer**: Drukowanie szczegółów ponowne użycie kontenerów w grupie DAG
+    - **CriticalPath**: Znajdź ścieżki krytycznej do grupy DAG
+    - **LocalityAnalyzer**: Drukowanie szczegółów lokalizacji, w grupie DAG
+    - **ShuffleTimeAnalyzer**: Analizowanie szczegółów czasu shuffle w grupie DAG
+    - **SkewAnalyzer**: Analizowanie szczegółów niesymetryczność, w grupie DAG
+    - **SlowNodeAnalyzer**: Szczegóły węzła wydruku w grupie DAG
+    - **SlowTaskIdentifier**: Drukowanie szczegółów zadania powolnego w grupie DAG
+    - **SlowestVertexAnalyzer**: Drukowanie najwolniejsze szczegółów wierzchołka w grupie DAG
+    - **SpillAnalyzer**: Drukowanie rozlania szczegółów w grupie DAG
+    - **TaskConcurrencyAnalyzer**: Drukowanie szczegółów współbieżności zadań w grupie DAG
+    - **VertexLevelCriticalPathAnalyzer**: Znajdź ścieżkę krytyczną na poziomie wierzchołka w grupie DAG
 
 
 ### <a name="additional-reading"></a>Materiały uzupełniające

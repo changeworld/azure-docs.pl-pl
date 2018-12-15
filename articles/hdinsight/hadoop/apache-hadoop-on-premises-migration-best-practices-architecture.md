@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7558a853657e3e3764cd8e3faf6dd466e9ead35e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994146"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434012"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania architektury
 
@@ -75,7 +75,9 @@ Obliczeniowe tworzenia klastrów w pobliżu zasobów konta magazynu w regionie p
 
 ## <a name="use-external-metadata-stores"></a>Korzystanie z zewnętrznych magazynów metadanych
 
+
 Istnieją dwa główne magazyny metadanych, które działają z klastrami HDInsight: [Apache Hive](https://hive.apache.org/) i [Apache Oozie](https://oozie.apache.org/). Magazyn metadanych Hive jest repozytorium centralnym schematu, które mogą być używane przez silniki przetwarzania danych, w tym usługi Hadoop, Spark, LLAP, Presto i Apache Pig. Magazyn metadanych programu Oozie przechowuje szczegółowe informacje dotyczące planowania i ich stan w toku i zakończonych zadań usługi Hadoop.
+
 
 HDInsight używa usługi Azure SQL Database dla gałęzi i Oozie magazyny metadanych. Istnieją dwa sposoby konfigurowania metadanych w klastrach HDInsight:
 

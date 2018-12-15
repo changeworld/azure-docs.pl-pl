@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: d0b2ac54f70fedc409c386243e1755704c1c332c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: bb7817b082da11de3071925d01a3402902410a6f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386370"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437973"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Alerty i metryki usługi Traffic Manager
 
@@ -27,7 +27,7 @@ Traffic Manager umożliwia równoważenie, która obejmuje wiele metod routingu 
 Usługa Traffic Manager dostarcza następujące metryki na podstawie na profilu, które mogą być używane przez klientów, aby zrozumieć ich użycie funkcji usługi Traffic manager i stanu ich punkty końcowe w ramach tego profilu.  
 
 ### <a name="queries-by-endpoint-returned"></a>Zapytania według zwracany punkt końcowy
-Użyj [ta metryka](../monitoring-and-diagnostics/monitoring-supported-metrics.md) do wyświetlania liczby zapytań, które zostały przetworzone przez profil usługi Traffic Manager w określonym czasie. Można również wyświetlić te same informacje o poziomu szczegółowości punktu końcowego, który pomoże zrozumieć, jak wiele razy punkt końcowy został zwrócony w odpowiedzi na kwerendę z usługi Traffic Manager.
+Użyj [ta metryka](../azure-monitor/platform/metrics-supported.md) do wyświetlania liczby zapytań, które zostały przetworzone przez profil usługi Traffic Manager w określonym czasie. Można również wyświetlić te same informacje o poziomu szczegółowości punktu końcowego, który pomoże zrozumieć, jak wiele razy punkt końcowy został zwrócony w odpowiedzi na kwerendę z usługi Traffic Manager.
 
 W poniższym przykładzie rysunek 1 przedstawia wszystkie odpowiedzi zapytania, które zostały zwrócone przez profil usługi Traffic Manager. 
 
@@ -43,7 +43,7 @@ Rysunek 2 przedstawia te same informacje, jednak zostanie ona podzielona przez p
 *Rysunek 2: Widok podzielony woluminu zapytania wyświetlanych dla punktu końcowego zwracane*
 
 ## <a name="endpoint-status-by-endpoint"></a>Stan punktu końcowego na punkt końcowy
-Użyj [ta metryka](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworktrafficmanagerprofiles) zrozumienie stanu kondycji punktów końcowych w profilu. Zajmuje się dwie wartości:
+Użyj [ta metryka](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) zrozumienie stanu kondycji punktów końcowych w profilu. Zajmuje się dwie wartości:
  - Użyj **1** , jeśli punkt końcowy jest uruchomiony.
  - Użyj **0** Jeśli punkt końcowy jest wyłączony.
 
@@ -59,11 +59,11 @@ Ta metryka może zostać podany w postaci wartości zagregowanej reprezentuje st
 
 *Rysunek 4: Podziel wgląd w metryki stan punktu końcowego*
 
-Będzie można korzystać z tych metryk za pośrednictwem [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md)w portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor), i [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights), lub za pomocą sekcji metryki środowisko portalu usługi Traffic Manager.
+Będzie można korzystać z tych metryk za pośrednictwem [usługi Azure Monitor](../azure-monitor/platform/metrics-supported.md)w portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor), i [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights), lub za pomocą sekcji metryki środowisko portalu usługi Traffic Manager.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Alerty dotyczące metryk usługi Traffic Manager
 Oprócz przetwarzania i wyświetlanie metryk z usługi Traffic Manager, usługi Azure Monitor umożliwia klientom Konfigurowanie i otrzymywać alerty skojarzone z tych metryk. Możesz wybrać, jakie warunki muszą zostać spełnione w te metryki dla wystąpienia alertu, częstotliwość tych warunków muszą być monitorowane i jak alerty powinny być przesyłane w taki sposób, aby użytkownik. Aby uzyskać więcej informacji, zobacz [usługi Azure Monitor alertów dokumentacji](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
+- Dowiedz się więcej o [usługi Azure Monitor](../azure-monitor/platform/metrics-supported.md)
 - Dowiedz się, jak [Utwórz nowy wykres przy użyciu usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)

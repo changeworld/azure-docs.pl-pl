@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: eb407a1026ab62fa719600a3992dc3b4653f1583
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ace025f096b756259d25ca2adb347dd23a12a910
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383922"
+ms.locfileid: "53409527"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Korzystanie z tunelowania SSH do uzyskania dostępu do systemu Apache Ambari web UI, JobHistory, NameNode, Apache Oozie i innych web UI
 
@@ -78,9 +78,19 @@ Po zakończeniu działania polecenia ruch wysyłany do portu 9876 na komputerze 
 
 ## <a name="useputty"></a>Tworzenia tunelu przy użyciu programu PuTTY
 
-[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) to graficzny klient SSH dla Windows. Umożliwia tworzenie tunelu SSH przy użyciu programu PuTTY następujące czynności:
+[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) to graficzny klient SSH dla Windows. Jeśli nie znasz programu PuTTY, zobacz [programu PuTTY dokumentacji](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Umożliwia tworzenie tunelu SSH przy użyciu programu PuTTY następujące czynności:
 
-1. Otwórz program PuTTY, a następnie wprowadź informacje o połączeniu. Jeśli nie znasz programu PuTTY, zobacz [programu PuTTY dokumentacji (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
+### <a name="create-or-load-a-session"></a>Utworzyć lub załadować sesji
+
+1. Otwórz program PuTTY i upewnij się, **sesji** wybrano w menu po lewej stronie. Jeśli został już zapisany sesji, wybierz nazwę sesji, z **zapisane sesje** listy, a następnie kliknij przycisk **obciążenia**.
+
+1. Jeśli nie masz już zapisaną sesję, wprowadź informacje o połączeniu:
+    * **Nazwa hosta (lub adres IP)** -adres SSH dla klastra HDInsight. Na przykład **mójklaster ssh.azurehdinsight.net**
+    * **Port** — 22
+    * **Typ połączenia** — SSH
+1. Kliknij pozycję **Zapisz**
+
+    ![Tworzenie sesji SSH](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
 2. W **kategorii** sekcji po lewej stronie okna dialogowego, rozwiń **połączenia**, rozwiń węzeł **SSH**, a następnie wybierz pozycję **tuneli**.
 
@@ -88,7 +98,7 @@ Po zakończeniu działania polecenia ruch wysyłany do portu 9876 na komputerze 
    
    * **Source port** (Port źródłowy) — port na komputerze klienckim, który ma być przekierowany. Na przykład **9876**.
 
-   * **Miejsce docelowe** -adres SSH dla klastra HDInsight opartych na systemie Linux. Na przykład **mójklaster-ssh.azurehdinsight.net**.
+   * **Miejsce docelowe** -adres SSH dla klastra HDInsight. Na przykład **mójklaster-ssh.azurehdinsight.net**.
 
    * **Dynamic** (Dynamiczny) — umożliwia dynamiczny routing serwera proxy SOCKS.
      

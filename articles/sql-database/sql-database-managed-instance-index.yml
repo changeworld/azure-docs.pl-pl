@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7f55d0591fbcbb274ab76b5bd17ce77703813cd3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 11832a3b7fb68dce6fb24f44ceec5ffb9a57eb69
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310039"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437558"
 documentType: LandingData
 title: Wystąpienie zarządzane usługi Azure SQL Database
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 12/05/2018
+  ms.date: 12/14/2018
   ms.author: jovanpop
 abstract:
   description: Wystąpienie usługi Azure SQL Database zarządzanych jest w pełni zarządzane wystąpienia programu SQL Server bazy danych aparatu hostowanych w chmurze platformy Azure. Jest to najlepszym rozwiązaniem PaaS migracji bazy danych programu SQL Server do chmury. Informacje o sposobie tworzenia i używania wystąpienia zarządzanego z naszych przewodników Szybki Start, samouczków i przykładów.
@@ -73,11 +73,12 @@ sections:
     style: unordered
     items:
     - html: <a href="sql-database-managed-instance#business-critical-service-tier">Warstwy usług krytycznych firm</a> znajduje się teraz w <a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">ogólna dostępność (GA)</a>.
-    - html: (Wersja zapoznawcza) <a href="https://aka.ms/managed-instance-aadlogins">Logowania do usługi Azure AD Utwórz</a> przy użyciu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">utworzyć z zewnętrznego dostawcy logowania</a> .
+    - html: (Wersja zapoznawcza) Tworzenie <a href="https://aka.ms/managed-instance-aadlogins">na poziomie wystąpienia logowania do usługi Azure AD</a> przy użyciu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">utworzyć z zewnętrznego dostawcy logowania</a> .
     - html: (Wersja zapoznawcza) Tworzenie wystąpień przy użyciu <a href="https://aka.ms/managed-instance-collation">sortowanie na poziomie serwera wybranego</a>.
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurowanie przechowywania kopii zapasowych w górę do 35 dni</a> do punktu w czasie przywracania. Należy pamiętać, że długoterminowego przechowywania kopii zapasowych (do 10 lat) nadal nie jest włączone, można użyć <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">kopie zapasowe tylko do kopiowania</a> alternatywą.
     - html: (Wersja zapoznawcza) Użyj <a href="https://aka.ms/managed-instance-failover-groups">grupy trybu failover z rozproszone geograficznie</a> przechowywać kopię wystąpienia w innym regionie i upewnij się, że Twoje dane będą dostępne, nawet w przypadku scenariusza regionalnej awarii.
     - html: (Wersja zapoznawcza) <a href="https://aka.ms/managed-instance-tde-byok">Przenieść klucze szyfrowania</a> podczas migracji lokalnych baz danych, które już zostały włączone przezroczystego szyfrowania danych (TDE).
+    - html: Wystąpienia zarządzane są chronione za pomocą <a href="sql-database-managed-instance-endpoint-verify-built-in-firewall">wbudowanej zapory</a>.
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
@@ -129,7 +130,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Dowiedz się więcej o <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">charakterystyki sprzętu i ograniczenia</a> i <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">ograniczenia dotyczące języka SQL</a>.
+    - html: Dowiedz się więcej o <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">charakterystyki sprzętu i ograniczenia</a> i <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">różnice języka Transact-SQL</a>.
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurowanie</a> sieci wirtualnej platformy Azure, w którym zostanie wdrożony wystąpienia zarządzanego.
     - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#modify-an-existing-virtual-network-for-managed-instances">Sprawdź poprawność</a> że istniejącej sieci wirtualnej platformy Azure może służyć do wdrożenia wystąpienia zarządzanego.
     - html: Nawiązać połączenie przy użyciu wystąpienia <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">maszyny wirtualnej platformy Azure</a> lub <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">punkt lokacja połączenie</a>, lub <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikacji</a>.
@@ -138,7 +139,7 @@ sections:
     - html: Przenoszenie pakietów SSIS do <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">usługi Azure Data Factory</a>, modele tabelaryczne usług SSAS, aby <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, i raporty usług SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">usługi Power BI Premium</a>.
     - html: Zastosuj <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">magazynu najlepsze rozwiązania w zakresie wydajności i zagadnienia dotyczące warstwy usług ogólnego przeznaczenia</a>.
     - html: Znajdź najlepsze rozwiązania i zalecenia dotyczące <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">zabezpieczania wystąpienia</a>.
-    - html: Dystrybuuj dane przy użyciu <a href="/azure/sql-database/replication-with-sql-database-managed-instance">replikacji transakcyjnej</a>.
+    - html: Znajdź więcej <a href="sql-database-howto-managed-instance.md">prowadzi instrukcje</a> , mogą być pomocne w konfigurowaniu wystąpienia zarządzanego.
 - title: Informacje ogólne
   items:
   - type: list

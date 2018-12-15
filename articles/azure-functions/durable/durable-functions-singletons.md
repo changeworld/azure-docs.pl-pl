@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b083b9a09b478ca5ad68e19d3a2133fb529da851
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4832a48489a043493639bdedd6c6adf3c828de11
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342956"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434702"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Pojedyncze orkiestratorów w funkcje trwałe (usługi Azure Functions)
 
-Dla zadania w tle lub aranżacji stylu aktora, często musisz upewnij się, że tylko jedno wystąpienie określonego programu orchestrator jest uruchamiany w danym momencie. Można to zrobić [funkcje trwałe](durable-functions-overview.md) , przypisując określony identyfikator wystąpienia do programu orchestrator po jej utworzeniu.
+Zadania w tle, które często zachodzi potrzeba upewnij się, że tylko jedno wystąpienie określonego programu orchestrator uruchamiane w danym momencie. Można to zrobić [funkcje trwałe](durable-functions-overview.md) , przypisując określony identyfikator wystąpienia do programu orchestrator po jej utworzeniu.
 
 ## <a name="singleton-example"></a>Przykład pojedyncze
 

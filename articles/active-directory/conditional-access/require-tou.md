@@ -13,17 +13,17 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e121cfddf8dc598771d630e011b4410217f5e92b
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3cb403b7f2ac529c79af5f83a1cbe436dc670a25
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901890"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413374"
 ---
-# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Szybki Start: Wymagaj warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze 
+# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Szybki Start: Wymagane warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze 
 
 Przed uzyskaniem dostępu do niektórych aplikacji w chmurze w danym środowisku, można uzyskać zgodę od użytkowników w postaci zaakceptowania Twoich warunków użytkowania (ToU). Dostęp warunkowy usługi Azure Active Directory (Azure AD) zapewnia: 
 
@@ -72,13 +72,13 @@ Ta sekcja zawiera kroki pozwalające utworzyć przykładowy warunków użytkowan
 
 2. Typ **Moje warunki użytkowania**, a następnie zapisz go na komputerze jako **mytou.pdf**.
 
-3. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com) jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
+3. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 
 4. W witrynie Azure portal, w lewym pasku nawigacyjnym kliknij **usługi Azure Active Directory**. 
 
     ![Usługa Azure Active Directory](./media/require-tou/02.png)
 
-5. Na **usługi Azure Active Directory** stronie **Zarządzaj** kliknij **dostępu warunkowego**.
+5. Na **usługi Azure Active Directory** stronie **zabezpieczeń** kliknij **dostępu warunkowego**.
 
     ![Dostęp warunkowy](./media/require-tou/03.png) 
 

@@ -5,20 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 04/12/2017
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 80ae3d2603cbb1c52c5bbe5e72ef7880cf0da6eb
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: fbe1cfdcfb1b5ec295748c3c77030df45323ee54
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984606"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434328"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Inspekcja i raportowanie użytkownika współpracy B2B
-Użytkownicy-goście masz inspekcji funkcje podobne do użytkowników. Oto przykład zaproszenie i realizacji historii użytkownika osoby zaproszonej Sam Oogle:
+Użytkownicy-goście masz inspekcji funkcje podobne do użytkowników. 
+
+## <a name="access-reviews"></a>Przeglądy dostępu
+Przeglądy dostępu umożliwia okresowo sprawdzać, czy użytkownicy-goście nadal potrzebują dostępu do zasobów. **Przeglądów dostępu** funkcja jest dostępna w **usługi Azure Active Directory** w obszarze **Zarządzaj** > **relacjeworganizacji**. (Możesz również wyszukać "przeglądów dostępu" z **wszystkich usług** w witrynie Azure portal.) Aby dowiedzieć się, jak używać przeglądów dostępu, zobacz [przeglądy zarządzanie dostępem gości za pomocą usługi Azure AD access](../governance/manage-guest-access-with-access-reviews.md).
+
+## <a name="audit-logs"></a>Dzienniki inspekcji
+
+Inspekcja usługi Azure AD dzienniki dostarczają informacji na temat działania systemu i użytkownika, w tym działania zainicjowane przez użytkowników-gości. Uzyskiwanie dostępu do dzienników inspekcji w **usługi Azure Active Directory**w obszarze **monitorowanie**, wybierz opcję **dzienniki inspekcji**. Oto przykład zaproszenie i realizacji historii użytkownika osoby zaproszonej Sam Oogle:
 
 ![dziennik inspekcji](./media/auditing-and-reporting/audit-log.png)
 
@@ -30,5 +37,5 @@ Można również wyeksportować te dzienniki z usługi Azure AD i uzyskiwanie do
 
 ### <a name="next-steps"></a>Kolejne kroki
 
-- [Właściwości użytkowników współpracy B2B](user-properties.md)
+- [B2B collaboration user properties (Właściwości użytkowników współpracy B2B)](user-properties.md)
 

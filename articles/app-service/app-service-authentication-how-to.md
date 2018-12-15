@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 67d08379d98873fa88ef20b5cc8c87163c067e3a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310457"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409755"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service
 
@@ -29,11 +29,11 @@ Aby szybko rozpocząć pracę, zobacz jeden z następujących samouczków:
 
 * [Samouczek: Uwierzytelnianie i autoryzowanie użytkowników end-to-end w usłudze Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
 * [Samouczek: Uwierzytelnianie i autoryzowanie użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)
-* [Jak skonfigurować aplikację do używania logowania w usłudze Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
-* [Jak skonfigurować aplikację do używania logowania usługi Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)
-* [Jak skonfigurować aplikację do używania logowania usługi Google](app-service-mobile-how-to-configure-google-authentication.md)
-* [Jak skonfigurować aplikację do używania logowania za pomocą konta Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)
-* [Jak skonfigurować aplikację do używania logowania usługi Twitter](app-service-mobile-how-to-configure-twitter-authentication.md)
+* [Jak skonfigurować aplikację do używania logowania w usłudze Azure Active Directory](configure-authentication-provider-aad.md)
+* [Jak skonfigurować aplikację do używania logowania usługi Facebook](configure-authentication-provider-facebook.md)
+* [Jak skonfigurować aplikację do używania logowania usługi Google](configure-authentication-provider-google.md)
+* [Jak skonfigurować aplikację do używania logowania za pomocą konta Microsoft](configure-authentication-provider-microsoft.md)
+* [Jak skonfigurować aplikację do używania logowania usługi Twitter](configure-authentication-provider-twitter.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Korzystanie z wielu dostawców logowania
 
@@ -183,7 +183,7 @@ Po wygaśnięciu token dostępu z dostawcą, musisz ponownego uwierzytelnienia u
 - **Google**: Dołącz `access_type=offline` parametr ciągu zapytania usługi `/.auth/login/google` wywołania interfejsu API. Jeśli używasz zestawu SDK aplikacji mobilnych, można dodać parametr do jednego z `LogicAsync` przeciążenia (zobacz [tokenów odświeżania Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Nie zapewnia tokenów odświeżania. Długotrwałe tokenów wygaśnie po upływie 60 dni (zobacz [wygaśnięcia Facebook i rozszerzenie tokenów dostępu](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **W usłudze Twitter**: Tokeny dostępu nie wygasa (zobacz [często zadawane pytania dotyczące protokołu OAuth w usłudze Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
-- **Konto Microsoft**: Gdy [ustawienia uwierzytelniania konta Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), wybierz opcję `wl.offline_access` zakresu.
+- **Konto Microsoft**: Gdy [ustawienia uwierzytelniania konta Microsoft](configure-authentication-provider-microsoft.md), wybierz opcję `wl.offline_access` zakresu.
 - **Usługa Azure Active Directory**: W [ https://resources.azure.com ](https://resources.azure.com), wykonaj następujące czynności:
     1. W górnej części strony wybierz **odczytu/zapisu**.
     1. W przeglądarce po lewej stronie przejdź do **subskrypcje** > **_\<subskrypcji\_nazwa_**   >  **resourceGroups** > _**\<zasobów\_grupy\_name >**_   >  **dostawców** > **Microsoft.Web** > **witryn** > _**\<aplikacji \_name >**_ > **config** > **authsettings**. 

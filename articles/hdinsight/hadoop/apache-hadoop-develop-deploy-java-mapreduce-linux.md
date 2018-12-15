@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 42fc92b0cee20679ab72a389cc11522c0ca4e0fd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e1b4681bc8e42294be6b47a04a24e28f81703e6f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013758"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436861"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Opracowywanie programów MapReduce w języku Java dla usługi Apache Hadoop w HDInsight
 
@@ -285,8 +285,8 @@ To polecenie kopiuje pliki z systemu lokalnego do węzła głównego. Aby uzyska
 
 W tym dokumencie mają przedstawiono sposób tworzenia zadania MapReduce w języku Java. Zobacz następujące dokumenty, aby inne sposoby pracy z HDInsight.
 
-* [Korzystanie z programu Hive z usługą HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z usługą HDInsight](hdinsight-use-pig.md)
+* [Use Apache Hive z HDInsight](hdinsight-use-hive.md)
+* [Apache Pig za pomocą HDInsight](hdinsight-use-pig.md)
 * [Używanie technologii MapReduce z HDInsight](hdinsight-use-mapreduce.md)
 
 Aby uzyskać więcej informacji, zobacz też [Centrum deweloperów języka Java](https://azure.microsoft.com/develop/java/).

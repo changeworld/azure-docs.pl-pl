@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73f4aeb77124c21a07771ab080b88a56231e50da
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 34d084bc4115d0abf8f57c576c16330611f3a21b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185719"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409874"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -35,7 +35,6 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
 > Zalecamy utworzenie nowego obszaru roboczego, aby użyć obliczeniowego usługi Azure Machine Learning. Brak zdalnego prawdopodobieństwo, że w trakcie tworzenia obliczeniowego usługi Azure Machine Learning z istniejącym obszarem roboczym użytkownicy będą widzieć błąd. Istniejących zasobów obliczeniowych, w obszarze roboczym będą nadal działać bez zmian.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.2
-
 + **Fundamentalne zmiany**
   + W tej wersji zostaną usunięte obsługę tworzenia maszyny Wirtualnej z usługi Azure Machine Learning. Nadal możesz dołączyć istniejącej chmury maszyny Wirtualnej lub zdalnej na serwerze lokalnym. 
   + Obsługa BatchAI, które powinny być wspierane za pośrednictwem obliczeniowego usługi Azure Machine Learning teraz również zostaną usunięte.
@@ -56,7 +55,6 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Zestaw SDK v0.5.2 przeznaczonego do przygotowania danych usługi Azure Machine Learning
-
 + **Fundamentalne zmiany** 
   * `SummaryFunction.N` Nazwa została zmieniona na `SummaryFunction.Count`.
   
@@ -66,6 +64,9 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
   * to_spark_dataframe() już ulegnie awarii podczas serializacji Kryo korzysta z platformy Spark
   * Liczba wartości Inspector umożliwia teraz wyświetlanie więcej niż 1000 unikatowe wartości
   * Losowe podziału nie jest już nie powiedzie się jeśli oryginalny przepływu danych nie ma nazwy  
+
++ **Więcej informacji**
+  * [Zestaw SDK przygotowywania danych usługi Azure Machine Learning](https://aka.ms/data-prep-sdk)
 
 ### <a name="docs-and-notebooks"></a>Dokumenty i notesów
 + Potokach uczenia Maszynowego

@@ -14,12 +14,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 72d53f742c2a25d267c6e90a6814225d7f1a4cf9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 088d8155fda6c370d89cded516bfa6c174c9380a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384398"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438035"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Zarządzanie usługą Log Analytics przy użyciu programu PowerShell
 Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) do wykonywania różnych funkcji w usłudze Log Analytics przy użyciu wiersza polecenia lub w ramach skryptu.  Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
@@ -211,7 +211,7 @@ Bez wykorzystania agentów monitorowania zasobów platformy Azure, zasoby muszą
 | Witryny sieci Web               |     | Yes |
 | Farmach serwerów sieci Web        |     | Yes |
 
-Szczegóły dostępne metryki, można znaleźć [metryki obsługiwane z usługą Azure Monitor](../../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Szczegóły dostępne metryki, można znaleźć [metryki obsługiwane z usługą Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
 
 Szczegóły dostępne dzienniki, można znaleźć [obsługiwane usługi i schematu dla dzienników diagnostycznych](../../azure-monitor/platform/tutorial-dashboards.md).
 

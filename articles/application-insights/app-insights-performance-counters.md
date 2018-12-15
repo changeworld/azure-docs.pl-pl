@@ -10,46 +10,52 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/11/2016
+ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: bcfb3a52793ba0daca980564d5d2248629b5caf4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: feb2e2f9f36ab20c0b96fab9432df41faf4f9569
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323016"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407936"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Liczniki wydajności systemu w usłudze Application Insights
-Windows oferuje szeroką gamę [liczniki wydajności](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) takich jak zajętość procesora CPU, pamięci, dysku i użycia sieci. Można również definiować własne. [Usługa Application Insights](app-insights-overview.md) można wyświetlić te liczniki wydajności, jeśli aplikacja jest uruchomiona w środowisku usług IIS na hosta w środowisku lokalnym lub maszynie wirtualnej, do których masz dostęp administracyjny. Wykresy określają zasoby dostępne dla działającej aplikacji, a może pomóc ustalić niezrównoważonego obciążenia między wystąpieniami serwera.
 
-Liczniki wydajności są wyświetlane w bloku serwerów, który zawiera tabelę tego segmenty przez wystąpienie serwera.
-
-![Liczniki wydajności zgłoszonych w usłudze Application Insights](./media/app-insights-performance-counters/counters-by-server-instance.png)
-
-(Liczniki wydajności nie są dostępne dla aplikacji sieci Web platformy Azure. Ale możesz [wysyłanie diagnostyki Azure do usługi Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).)
+Windows oferuje szeroką gamę [liczniki wydajności](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) takich jak zajętość procesora CPU, pamięci, dysku i użycia sieci. Można także zdefiniować własne liczniki wydajności. Tak długo, jak aplikacja jest uruchomiona w środowisku usług IIS na hosta w środowisku lokalnym lub maszynie wirtualnej, do których masz dostęp administracyjny.
 
 ## <a name="view-counters"></a>Wyświetlanie liczników
-Blok serwerów zawiera domyślny zestaw liczników wydajności. 
 
-Aby wyświetlić liczniki, edytować wykresy w bloku serwerów albo otwarcie nowej [Eksploratora metryk](app-insights-metrics-explorer.md) bloku i dodać nowe wykresy. 
+W okienku metryki zawiera domyślny zestaw liczników wydajności.
 
-Dostępne liczniki są wyświetlane jako metryki podczas edytowania wykresu.
+![Liczniki wydajności zgłoszonych w usłudze Application Insights](./media/app-insights-performance-counters/performance-counters.png)
 
-![Liczniki wydajności zgłoszonych w usłudze Application Insights](./media/app-insights-performance-counters/choose-performance-counters.png)
+Bieżące domyślne liczniki, które są zbierane dla aplikacji sieci web platformy .NET są:
+
+         - % Process\\Processor Time
+         - % Process\\Processor Time Normalized
+         - Memory\\Available Bytes
+         - ASP.NET Requests/Sec
+         - .NET CLR Exceptions Thrown / sec
+         - ASP.NET ApplicationsRequest Execution Time
+         - Process\\Private Bytes
+         - Process\\IO Data Bytes/sec
+         - ASP.NET Applications\\Requests In Application Queue
+         - Processor(_Total)\\% Processor Time
 
 Aby zobaczyć wszystkie wykresy najbardziej przydatne w jednym miejscu, Utwórz [pulpit nawigacyjny](app-insights-dashboards.md) nie i przypinania ich do niego.
 
 ## <a name="add-counters"></a>Dodawanie liczników
-Licznik wydajności, które mają nie jest widoczne na liście metryk, który jest ponieważ zestaw SDK usługi Application Insights nie jest zbieranie go na serwerze sieci web. Możesz skonfigurować, tak aby to zrobić.
 
-1. Dowiedz się, jakie liczniki są dostępne na serwerze za pomocą tego polecenia programu PowerShell na serwerze:
+Jeśli licznik wydajności, które mają nie jest uwzględniony na liście metryk, możesz dodać go.
+
+1. Dowiedz się, jakie liczniki są dostępne na serwerze za pomocą tego polecenia programu PowerShell na serwerze lokalnym:
    
     `Get-Counter -ListSet *`
    
     (Zobacz [ `Get-Counter` ](https://technet.microsoft.com/library/hh849685.aspx).)
 2. Otwórz plik ApplicationInsights.config.
    
-   * Jeśli dodano usługę Application Insights do aplikacji podczas programowania, Edytuj plik ApplicationInsights.config w projekcie, a następnie ponownie wdrożyć je na serwerach.
+   * Jeśli dodano usługę Application Insights do aplikacji podczas programowania, Edytuj plik ApplicationInsights.config w projekcie, a następnie wdrożysz go ponownie do serwerów.
    * Jeśli używasz monitora stanu do instrumentacji aplikacji sieci web w czasie wykonywania, Znajdź plik ApplicationInsights.config w katalogu głównym aplikacji w usługach IIS. Aktualizacje dostępne w każdym wystąpieniu serwera.
 3. Edytuj dyrektywy modułu zbierającego wydajności:
    
@@ -64,7 +70,7 @@ Licznik wydajności, które mają nie jest widoczne na liście metryk, który je
 
 ```
 
-Można przechwycić zarówno liczniki standardowe, jak i te udało Ci się wdrożyć samodzielnie. `\Objects\Processes` przykład standardowa licznika, dostępne we wszystkich systemach Windows. `\Sales(photo)\# Items Sold` znajduje się przykład liczników niestandardowych, które mogą zostać zaimplementowane w usłudze sieci web. 
+Można przechwycić zarówno liczniki standardowe, jak i te zastało zaimplementowane samodzielnie. `\Objects\Processes` znajduje się przykład standardowa licznika, która jest dostępna we wszystkich systemach Windows. `\Sales(photo)\# Items Sold` znajduje się przykład liczników niestandardowych, które mogą zostać zaimplementowane w usłudze sieci web. 
 
 Format jest `\Category(instance)\Counter"`, lub dla kategorii, które nie mają wystąpienia, po prostu `\Category\Counter`.
 
@@ -99,7 +105,7 @@ Można wyszukiwać i wyświetlać raporty dotyczące licznika wydajności w [ana
 
 ![Liczniki wydajności w usłudze Application Insights analytics](./media/app-insights-performance-counters/analytics-performance-counters.png)
 
-("Wystąpienie" odnosi się tutaj do wystąpienia licznika wydajności nie wystąpienie maszyny roli lub serwera. Nazwa wystąpienia licznika wydajności zazwyczaj segmenty liczniki, takie jak czas procesora według nazwy procesu lub aplikacji.)
+('Instancja' tutaj odnosi się do wystąpienia licznika wydajności, nie rolę lub serwer wystąpienie maszyny. Nazwa wystąpienia licznika wydajności zazwyczaj segmenty liczniki, takie jak czas procesora według nazwy procesu lub aplikacji.)
 
 Aby wyświetlić wykres dostępnej pamięci w okresie ostatnich: 
 
@@ -113,13 +119,14 @@ Inne telemetrii, takie jak **liczniki wydajności** również zawiera kolumnę `
 *Jaka jest różnica między częstotliwość występowania wyjątków i wyjątków metryk?*
 
 * *Częstotliwość występowania wyjątków* jest licznik wydajności systemu. Środowisko CLR jest liczona wszystkich obsługiwanych i nieobsługiwanych wyjątków, które są zgłaszane i podzielenie sumy w interwale próbkowania przez długość interwału. Zestaw SDK usługi Application Insights zbiera ten wynik i wysyła je do portalu.
+
 * *Wyjątki* jest to liczba raportów metoda TrackException odebranych przez portal w interwale próbkowania wykresu. Obejmuje tylko wyjątki obsłużone gdzie zostały napisane metoda TrackException wywołania w kodzie, a nie zawiera wszystkich [nieobsługiwane wyjątki](app-insights-asp-net-exceptions.md). 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Liczniki wydajności w aplikacjach Asp.Net Core
+## <a name="performance-counters-in-aspnet-core-applications"></a>Liczniki wydajności w aplikacjach ASP.Net Core
 Liczniki wydajności są obsługiwane tylko wtedy, gdy aplikacja jest przeznaczony dla pełny program .NET Framework. Istnieje możliwość liczniki wydajności są zbierane dla.Net Core z aplikacji.
 
 ## <a name="alerts"></a>Alerty
-Podobnie jak inne metryki można [ustawić alert](app-insights-alerts.md) ostrzegania, jeśli licznik wydajności przekroczy limit, można określić. Otwórz blok alertów i kliknij przycisk Dodaj Alert.
+Podobnie jak inne metryki można [ustawić alert](app-insights-alerts.md) ostrzegania, jeśli licznik wydajności przekroczy limit, można określić. Otwórz w okienku alertów i kliknij przycisk Dodaj Alert.
 
 ## <a name="next"></a>Następne kroki
 * [Śledzenie zależności](app-insights-asp-net-dependencies.md)

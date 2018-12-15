@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2b059c9a8808db3b2426db0d997df15196be604d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ae2b06f266ef19d9558511284ba94c77cdca1955
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012083"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409687"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu narzędzi Data Lake tools for Visual Studio
 
@@ -24,7 +24,7 @@ Dowiedz się, jak za pomocą narzędzi Data Lake tools dla programu Visual Studi
 
 * Klaster usługi Azure HDInsight (Hadoop Apache na HDInsight)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * Visual Studio (jedna z następujących wersji):
@@ -37,7 +37,7 @@ Dowiedz się, jak za pomocą narzędzi Data Lake tools dla programu Visual Studi
 
 * HDInsight tools for Visual Studio lub Azure Data Lake tools for Visual Studio. Zobacz [rozpoczęcie korzystania z narzędzi Visual Studio Hadoop dla HDInsight](apache-hadoop-visual-studio-tools-get-started.md) instrukcje dotyczące instalowania i konfigurowania narzędzia.
 
-## <a id="run"></a> Uruchamianie zapytań Hive przy użyciu programu Visual Studio
+## <a id="run"></a> Uruchamianie zapytania usługi Apache Hive przy użyciu programu Visual Studio
 
 1. Otwórz **programu Visual Studio** i wybierz **New** > **projektu** > **usługi Azure Data Lake**  >   **HIVE** > **Hive aplikacji**. Podaj nazwę dla tego projektu.
 
@@ -58,14 +58,14 @@ Dowiedz się, jak za pomocą narzędzi Data Lake tools dla programu Visual Studi
 
    * `CREATE EXTERNAL TABLE`: Tworzy nową tabelę "external" w gałęzi. Tabele zewnętrzne przechowywać wyłącznie w definicji tabeli programu Hive (danych jest pozostawiany w oryginalnej lokalizacji).
 
-     > [!NOTE]
+     > [!NOTE]  
      > Jeśli potrzebujesz danych bazowych do zaktualizowania za pomocą zewnętrznego źródła, należy używać tabel zewnętrznych. Na przykład zadanie MapReduce lub usługi platformy Azure.
      >
      > Usunięcie tabeli zewnętrznej jest **nie** usunąć dane w definicji tabeli.
 
-   * `ROW FORMAT`: Nakazuje Hive, w jaki sposób dane są sformatowane. W tym przypadku pola w każdym dzienniku są oddzielone spacją.
+   * `ROW FORMAT`: Informuje, Hive, w jaki sposób dane są sformatowane. W tym przypadku pola w każdym dzienniku są oddzielone spacją.
 
-   * `STORED AS TEXTFILE LOCATION`: Nakazuje gałąź, czy dane są przechowywane w katalogu przykład/dane i że są przechowywane jako tekst.
+   * `STORED AS TEXTFILE LOCATION`: Gałąź informuje, że dane są przechowywane w katalogu przykład/dane i czy dane są przechowywane jako tekst.
 
    * `SELECT`: Wybierz liczbę wszystkich wierszy gdzie kolumna `t4` zawiera wartość `[ERROR]`. Ta instrukcja zwraca wartość `3` ponieważ istnieją trzy wiersze, które zawierają tę wartość.
 
@@ -95,7 +95,7 @@ Dowiedz się, jak za pomocą narzędzi Data Lake tools dla programu Visual Studi
 
    * `CREATE TABLE IF NOT EXISTS`: Tworzy tabelę, jeśli jeszcze nie istnieje. Ponieważ `EXTERNAL` — słowo kluczowe nie jest używany, ta instrukcja tworzy wewnętrznej tabeli. Tabele wewnętrzne są przechowywane w magazynie danych programu Hive i są zarządzane przez program Hive.
 
-     > [!NOTE]
+     > [!NOTE]  
      > W odróżnieniu od `EXTERNAL` tabel, również porzucenie wewnętrznej tabeli powoduje usunięcie danych bazowych.
 
    * `STORED AS ORC`: Przechowuje dane w formacie (ORC) kolumnowym zoptymalizowane wiersza. ORC jest wysoce zoptymalizowane i wydajne formatu do przechowywania danych programu Hive.
@@ -112,13 +112,13 @@ Jak widać, narzędzi HDInsight dla programu Visual Studio zapewniają prosty sp
 
 Aby uzyskać ogólne informacje na temat programu Hive w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
 
 Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
 
-* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
 Aby uzyskać więcej informacji na temat narzędzi HDInsight dla programu Visual Studio:
 

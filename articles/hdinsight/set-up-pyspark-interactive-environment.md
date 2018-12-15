@@ -9,16 +9,16 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: e57fd3747ef9cbd55d073e02bc14816ca949bcd6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 82aebd780b7b821675a6ee891cc81e2b1c6fdafb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046239"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437218"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Konfigurowanie środowiska interakcyjnego PySpark dla programu Visual Studio Code
 
-Poniższe kroki pokazują, jak zainstalować pakiety języka Python, uruchamiając **HDInsight: interakcyjnego PySpark**.
+Poniższe kroki pokazują, jak zainstalować pakiety języka Python, uruchamiając **HDInsight: Interakcyjnego PySpark**.
 
 
 ## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>Konfigurowanie środowiska interakcyjnego PySpark w systemach macOS i Linux
@@ -86,23 +86,23 @@ Jeśli używasz **python 3.x**, należy użyć polecenia **pip3** dla następuj�
     - **python2** i **pysparkkernel** odpowiadają **python 2.x**. 
     - **środowiska python3 jako** i **pyspark3kernel** odpowiadają **python 3.x**. 
 
-8. Uruchom ponownie program VS Code, a następnie wrócić do edytora skryptów, w którym działa **HDInsight: interakcyjnego PySpark**.
+8. Uruchom ponownie program VS Code, a następnie wrócić do edytora skryptów, w którym działa **HDInsight: Interakcyjnego PySpark**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 ### <a name="demo"></a>Demonstracja
-* HDInsight dla programu VS Code: [wideo](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight dla programu VS Code: [Film wideo](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 * [Narzędzie Azure HDInsight dla programu Visual Studio Code](hdinsight-for-vscode.md)
-* [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](spark/apache-spark-intellij-tool-plugin.md)
-* [Debugowanie aplikacji Spark zdalnie za pośrednictwem protokołu SSH przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Debugowanie aplikacji Spark zdalnie za pośrednictwem sieci VPN przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Narzędzia HDInsight znajdujące się w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Spark](spark/apache-spark-eclipse-tool-plugin.md)
+* [Tworzenie i przesyłanie aplikacji Apache Spark Scala przy użyciu Azure Toolkit for IntelliJ](spark/apache-spark-intellij-tool-plugin.md)
+* [Debugowanie aplikacji platformy Apache Spark, zdalnie za pośrednictwem protokołu SSH przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Debugowanie aplikacji platformy Apache Spark, zdalnie za pośrednictwem sieci VPN przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Używanie narzędzia HDInsight w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark](spark/apache-spark-eclipse-tool-plugin.md)
 * [Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Korzystanie z notesów Zeppelin w klastrze Spark w usłudze HDInsight](spark/apache-spark-zeppelin-notebook.md)
-* [Jądra dostępne dla notesu Jupyter w klastrze Spark w usłudze HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
+* [Korzystanie z notesów Apache Zeppelin na HDInsight klastra Apache Spark](spark/apache-spark-zeppelin-notebook.md)
+* [Jądra dostępne dla notesu Jupyter w klastrze Apache Spark dla HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Visualize Hive data with Microsoft Power BI in Azure HDInsight (Wizualizowanie danych programu Hive przy użyciu usługi Microsoft Power BI w usłudze Azure HDInsight)](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Uruchamianie zapytań programu Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin ](hdinsight-connect-hive-zeppelin.md)
+* [Wizualizuj dane Apache Hive z usługą Microsoft Power BI w usłudze Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Uruchamianie zapytania usługi Apache Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin Apache ](hdinsight-connect-hive-zeppelin.md)

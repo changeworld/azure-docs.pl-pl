@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: d3fbc8e5b6595b52fe5ab9e766a108d271f2f448
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9973635593f7a8143ac1f3980b6e09caba44710b
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104598"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413612"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -138,6 +138,18 @@ Ten błąd oznacza, że tego azds.exe nie znajduje się w zmiennej środowiskowe
 
 Uruchom program VS Code z poziomu wiersza polecenia, w którym zmiennej środowiskowej PATH jest prawidłowo.
 
+## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Błąd "wymagane narzędzia do tworzenia i debugowania"projectname"są nieaktualne".
+
+Zostanie wyświetlony ten błąd w programie Visual Studio Code, jeśli ma nowszą wersję rozszerzeń programu VS Code dla usługi Azure Dev miejsca do magazynowania, ale starszą wersję interfejsu wiersza polecenia Azure Dev miejsca do magazynowania.
+
+### <a name="try"></a>Spróbuj
+
+Pobierz i zainstaluj najnowszą wersję interfejsu wiersza polecenia Azure Dev miejsca do magazynowania:
+
+* [Windows](http://aka.ms/get-azds-windows)
+* [Mac](http://aka.ms/get-azds-mac)
+* [Linux](https://aka.ms/get-azds-linux)
+
 ## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>Błąd "azds" nie jest rozpoznawana jako polecenie wewnętrzne lub zewnętrzne, program wykonywalny lub plik wsadowy
  
 Można napotkać ten błąd, jeśli azds.exe nie jest zainstalowane lub prawidłowo skonfigurowane.
@@ -172,8 +184,8 @@ Port kontenera nie jest dostępna. Ten problem może wystąpić, ponieważ:
 ### <a name="try"></a>Wypróbuj:
 1. Jeśli kontener jest właśnie utworzone/wdrażane, możesz odczekaj 2 – 3 sekund, a następnie spróbuj ponownie uzyskać dostęp do usługi. 
 1. Sprawdź konfigurację portu. Numery określony port powinien być **identyczne** w poniższych zasobów:
-    * **Plik Dockerfile:** określony przez `EXPOSE` instrukcji.
-    * **[Narzędzia Helm](https://docs.helm.sh):** określony przez `externalPort` i `internalPort` wartości dla usługi (często znajduje się w `values.yml` pliku),
+    * **Plik Dockerfile:** Określony przez `EXPOSE` instrukcji.
+    * **[Narzędzia Helm](https://docs.helm.sh):** Określony przez `externalPort` i `internalPort` wartości dla usługi (często znajduje się w `values.yml` pliku),
     * Wszystkie porty są otwarte w kodzie aplikacji, na przykład w środowisku Node.js: `var server = app.listen(80, function () {...}`
 
 
@@ -187,7 +199,7 @@ Należy uruchomić `azds up` z katalogu głównego kodu chcesz uruchomić, a nas
 1. Zmień bieżący katalog do folderu głównego zawierającego kod w języku usługi. 
 1. Jeśli nie masz _azds.yaml_ pliku w folderze kodu uruchamiania `azds prep` wygenerować zasoby platformy Docker, Kubernetes i usługi Azure Dev miejsca do magazynowania.
 
-## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Błąd: "programu potoku"azds"nieoczekiwanie zakończył działanie z kodem 126."
+## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Błąd: "Program potoków"azds"nieoczekiwanie zakończył działanie z kodem 126."
 Uruchamianie debugera programu VS Code czasami może spowodować błąd.
 
 ### <a name="try"></a>Wypróbuj:

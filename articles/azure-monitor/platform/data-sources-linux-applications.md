@@ -1,5 +1,5 @@
 ---
-title: Zbieraj wydajności aplikacji systemu Linux w usłudze Log Analytics | Dokumentacja firmy Microsoft
+title: Zbieraj wydajności aplikacji systemu Linux w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania agenta usługi Log Analytics dla systemu Linux można zebrać liczników wydajności for MySQL i Apache HTTP Server.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 03faa393d42f3596aa6b05c4a3afb476c8b9e0a3
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 824d3f2402861ed8a54a29c9571654cc581e4c5e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186518"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434634"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Log Analytics 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [agenta usługi Log Analytics dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności określonych aplikacji.  Aplikacje zawarte w tym artykule są następujące:  
+Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [agenta usługi Log Analytics dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) do zbierania liczników wydajności dla określonych aplikacji w usłudze Azure Monitor dzienniki.  Aplikacje zawarte w tym artykule są następujące:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -114,7 +114,7 @@ Tych uprawnień można udzielić, uruchamiając następujące polecenia grant.
 
 ### <a name="define-performance-counters"></a>Zdefiniuj liczników wydajności
 
-Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Log Analytics, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](data-sources-windows-events.md) liczników w poniższej tabeli.
+Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Azure Monitor, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor](data-sources-performance-counters.md) liczników w poniższej tabeli.
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Zdefiniuj liczników wydajności
 
-Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Log Analytics, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](data-sources-windows-events.md) liczników w poniższej tabeli.
+Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Azure Monitor, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor](data-sources-performance-counters.md) liczników w poniższej tabeli.
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
@@ -168,4 +168,4 @@ Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyła
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Liczniki wydajności są zbierane](data-sources-performance-counters.md) z agentów dla systemu Linux.
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [rejestrowania zapytań](../../log-analytics/log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

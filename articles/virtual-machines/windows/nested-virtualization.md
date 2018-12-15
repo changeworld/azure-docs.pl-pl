@@ -11,12 +11,12 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: e9b05751166ac200f4a9cdab4c7fe3ed797f2a10
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d1381ff16d0de382634b06fd081f1827588f8ee9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465252"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435110"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak włączyć wirtualizacji zagnieżdżonej na Maszynie wirtualnej platformy Azure
 
@@ -51,10 +51,10 @@ Utwórz połączenie pulpitu zdalnego z maszyną wirtualną.
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Włącz funkcję Hyper-V na maszynie Wirtualnej platformy Azure
 Te ustawienia można skonfigurować ręcznie lub zostały zamieszczone, aby skrypt programu PowerShell, aby zautomatyzować konfigurację.
 
-### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Opcja 1: Użycie skryptu programu PowerShell do konfigurowania wirtualizacji zagnieżdżonej
+### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Opcja 1: Użyj skryptu programu PowerShell do konfigurowania wirtualizacji zagnieżdżonej
 Skrypt programu PowerShell, aby włączyć wirtualizacji zagnieżdżonej na hoście systemu Windows Server 2016 jest dostępny w [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). Skrypt sprawdza wymagania wstępne, a następnie konfiguruje wirtualizacji zagnieżdżonej na maszynie Wirtualnej platformy Azure. Ponowne uruchomienie maszyny Wirtualnej platformy Azure jest niezbędne do ukończenia konfiguracji. Ten skrypt może działać w innych środowiskach, ale nie ma żadnej gwarancji. Sprawdź wpis w blogu platformy Azure przy użyciu pokaz wideo na żywo na wirtualizacji zagnieżdżonej na platformie Azure! https://aka.ms/AzureNVblog.
 
-### <a name="option-2-configure-nested-virtualization-manually"></a>Opcja 2: Ręcznie skonfigurować wirtualizacji zagnieżdżonej
+### <a name="option-2-configure-nested-virtualization-manually"></a>Opcja 2: Ręczne konfigurowanie wirtualizacji zagnieżdżonej
 
 1. Na maszynie Wirtualnej platformy Azure Otwórz program PowerShell jako Administrator. 
 
@@ -157,7 +157,7 @@ Wykonaj poniższe kroki, aby skonfigurować serwer DHCP na hosta maszyny wirtual
   
 4. Zdefiniuj zakres adresów IP dla serwera DHCP (na przykład 192.168.0.100: aby 192.168.0.200).
   
-5. Kliknij przycisk **dalej** aż do strony brama domyślna. Wprowadź adres IP utworzonego wcześniej (na przykład od 192.168.0.1) jako brama domyślna.
+5. Kliknij przycisk **dalej** aż do strony brama domyślna. Wprowadź adres IP utworzonego wcześniej (na przykład od 192.168.0.1) jako brama domyślna, a następnie kliknij przycisk **Dodaj**.
   
 6. Kliknij przycisk **dalej** aż kreator zakończy pracę, pozostawiając wszystkich wartości domyślnych, następnie kliknij przycisk **Zakończ**.
     

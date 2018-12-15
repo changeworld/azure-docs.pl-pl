@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eb7d5dc2d38d814625e904d1270446f5f1671624
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 90b9a1104dd387c857e4955cabfb121773aedcca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321105"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410078"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory? 
 
@@ -74,7 +74,7 @@ Wybierz pozycję:
 
 - **Wszystkie aplikacje w chmurze** do linii bazowej zasady do zastosowania w całej organizacji. Zaznacz to pole wyboru dla zasad, które wymagają uwierzytelniania wieloskładnikowego po wykryciu ryzyka logowania dla dowolnej aplikacji w chmurze. Zasady stosowane do **wszystkie aplikacje w chmurze** dotyczy dostępu do wszystkich witryn sieci Web i usług. To ustawienie nie ogranicza się do aplikacji w chmurze, które pojawiają się na **Wybierz aplikacje** listy. 
 
-- Aplikacje w chmurze poszczególnych do określonych usług docelowego przez zasady. Na przykład, możesz wymagać od użytkowników mają [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dostęp do usługi SharePoint Online. Ta zasada jest stosowana także do innych usług, podczas uzyskiwania dostępu do zawartości programu SharePoint. Przykładem jest Microsoft Teams. 
+- **Wybierz SPP** do określonych usług docelowego przez zasady. Na przykład, możesz wymagać od użytkowników mają [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dostęp do usługi SharePoint Online. Ta zasada jest stosowana także do innych usług, podczas uzyskiwania dostępu do zawartości programu SharePoint. Przykładem jest Microsoft Teams. 
 
 Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal podlega procesowi zasady zastosowane do usług, do których uzyskują dostęp. 
 
@@ -137,16 +137,16 @@ Aby uzyskać więcej informacji, zobacz [co to jest warunek lokalizacji w funkcj
 
 Domyślnie zasady dostępu warunkowego mają zastosowanie do następujących aplikacji:
 
-- [Aplikacje przeglądarki](technical-reference.md#supported-browsers) — aplikacje przeglądarki obejmują witryn sieci Web za pośrednictwem protokołu SAML, WS-Federation i OpenID Connect protokołów Usługa rejestracji Jednokrotnej w sieci web. Dotyczy to również witryny sieci Web lub sieci web usługi, która została zarejestrowana jako poufne klienta OAuth. Na przykład Office 365 SharePoint witryny sieci Web. 
+- **[Aplikacje przeglądarki](technical-reference.md#supported-browsers)**  — aplikacje przeglądarki obejmują witryn sieci Web za pośrednictwem protokołu SAML, WS-Federation i OpenID Connect protokołów Usługa rejestracji Jednokrotnej w sieci web. Dotyczy to również witryny sieci Web lub sieci web usługi, która została zarejestrowana jako poufne klienta OAuth. Na przykład Office 365 SharePoint witryny sieci Web. 
 
-- [Aplikacje mobilne i klasyczne korzystających z nowoczesnego uwierzytelniania](technical-reference.md#supported-mobile-applications-and-desktop-clients) — są to aplikacje klasyczne pakietu Office i aplikacji na telefony. 
+- **[Aplikacje mobilne i klasyczne korzystających z nowoczesnego uwierzytelniania](technical-reference.md#supported-mobile-applications-and-desktop-clients)**  — są to aplikacje klasyczne pakietu Office i aplikacji na telefony. 
 
 
 Ponadto możesz wybrać docelową zasady do aplikacji klienta właściwy, które nie korzystają z nowoczesnego uwierzytelniania, na przykład:
 
-- Aplikacje klienckie za pośrednictwem protokołu Microsoft Exchange ActiveSync. Gdy bloki zasad, przy użyciu protokołu Exchange ActiveSync, narażeni użytkownicy Uzyskaj wiadomość e-mail z kwarantanny jednego z informacji na temat przyczyny zablokowania. Jeśli to konieczne, wiadomość e-mail zawiera instrukcje dotyczące rejestrowania urządzenia w usłudze Intune.
+- **[Klienci programu Exchange ActiveSync](conditions.md#exchange-activesync-clients)**  — w przypadku bloki zasad, przy użyciu protokołu Exchange ActiveSync, których to dotyczy użytkownicy uzyskują wiadomość e-mail z kwarantanny jednego z informacji na temat przyczyny zablokowania. Jeśli to konieczne, wiadomość e-mail zawiera instrukcje dotyczące rejestrowania urządzenia w usłudze Intune.
 
-- Innych klientów. Te aplikacje zawierają klientów korzystających z uwierzytelniania podstawowego przy użyciu protokołów poczty, takich jak IMAP, MAPI, POP, SMTP i starsze aplikacje pakietu Office, które nie korzystają z nowoczesnego uwierzytelniania. Aby uzyskać więcej informacji, zobacz [sposobu działania nowoczesnego uwierzytelniania dla aplikacji klienckich pakietu Office 2013 i Office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
+- **[Inni klienci](block-legacy-authentication.md)**  — są to klientów korzystających z uwierzytelniania podstawowego przy użyciu protokołów poczty, takich jak IMAP, MAPI, POP, SMTP i starsze aplikacje pakietu Office, które nie korzystają z nowoczesnego uwierzytelniania. Aby uzyskać więcej informacji, zobacz [sposobu działania nowoczesnego uwierzytelniania dla aplikacji klienckich pakietu Office 2013 i Office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
 
 ![Aplikacje klienckie](./media/conditions/41.png)
 
@@ -154,7 +154,7 @@ Typowe przypadki użycia dla tego warunku są zasady z następującymi wymagania
 
 - **[Wymagaj urządzenia zarządzanego](require-managed-devices.md)**  dla aplikacji mobilnych i klasycznych, które pobierania danych na urządzeniu. W tym samym czasie Zezwalaj na dostęp z dowolnego urządzenia za pomocą przeglądarki. Ten scenariusz zapobiega zapisywanie i synchronizowanie dokumentów do niezarządzanego urządzenia. Przy użyciu tej metody można zmniejszyć prawdopodobieństwo utraty danych, w przypadku utraty lub kradzieży urządzenia.
 
-- **[Wymagaj urządzenia zarządzanego](require-managed-devices.md)**  aplikacji dostęp do usługi Exchange Online przy użyciu protokołu ActiveSync.
+- **[Wymagaj urządzenia zarządzanego](require-managed-devices.md)**  dla aplikacji przy użyciu protokołu ActiveSync dostęp do usługi Exchange Online.
 
 - **[Blokuj starsze uwierzytelnianie](block-legacy-authentication.md)**  do usługi Azure AD (inni klienci)
 

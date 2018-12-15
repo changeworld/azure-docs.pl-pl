@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 12/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f2f086dbe5056ee3d83be2d8725f49fd502d1b2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 72b0aba4d2bf9cb666d1cb7ae30d0cbdefe3045b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139233"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438415"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -509,6 +509,8 @@ Zwrócony obiekt jest w następującym formacie:
 
 ### <a name="remarks"></a>Uwagi
 
+`resourceGroup()` Nie można użyć funkcji w szablonie, który jest [wdrożone na poziomie subskrypcji](deploy-to-subscription.md). Można można używać tylko w szablonach, które są wdrożone w grupie zasobów.
+
 Typowym zastosowaniem funkcji resourceGroup jest do tworzenia zasobów w tej samej lokalizacji co grupa zasobów. W poniższym przykładzie użyto lokalizacji grupy zasobów, aby przypisać lokalizacji dla witryny sieci web.
 
 ```json
@@ -593,9 +595,9 @@ Identyfikator jest zwracany w następującym formacie:
 
 ### <a name="remarks"></a>Uwagi
 
-Wartości parametrów, które określisz, zależą od tego, czy zasób jest w tej samej subskrypcji i grupie zasobów co bieżącego wdrożenia.
+Gdy jest używane z [wdrażania na poziomie subskrypcji](deploy-to-subscription.md), `resourceId()` funkcji można pobrać jedynie identyfikator zasobami wdrożonymi na tym samym poziomie. Na przykład możesz uzyskać identyfikator definicji zasad lub definicji roli, ale nie identyfikator konta magazynu. W przypadku wdrożeń w grupie zasobów przeciwieństwo ma wartość true. Nie można pobrać Identyfikatora zasobu zasobów wdrożonych na poziomie subskrypcji.
 
-Aby uzyskać identyfikator zasobu dla konta magazynu w tej samej subskrypcji i grupie zasobów, użyj:
+Wartości parametrów, które określisz, zależą od tego, czy zasób jest w tej samej subskrypcji i grupie zasobów co bieżącego wdrożenia. Aby uzyskać identyfikator zasobu dla konta magazynu w tej samej subskrypcji i grupie zasobów, użyj:
 
 ```json
 "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
@@ -617,6 +619,12 @@ Aby uzyskać identyfikator zasobu dla bazy danych w innej grupie zasobów, nale�
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
+```
+
+Aby uzyskać identyfikator zasobu zasobów poziom subskrypcji, w przypadku wdrażania w zakresie subskrypcji, użyj:
+
+```json
+"[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
 ```
 
 Często należy użyć tej funkcji, korzystając z konta magazynu lub sieci wirtualnej w grupie zasobów alternatywne. Poniższy przykład pokazuje, jak łatwo można używać zasobów z grupy zasobów zewnętrznych:

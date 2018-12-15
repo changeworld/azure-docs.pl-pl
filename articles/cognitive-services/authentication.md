@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 8adff94a4cb536c3d8dbf7382b8acb69184030b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 327bc964f8dedeee03220e7cd7db1ef7c1e00de6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325849"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435773"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań usług Azure Cognitive Services
 
@@ -23,6 +23,10 @@ Każde żądanie do usługi Azure Cognitive Service musi zawierać nagłówek uw
 * [Uwierzytelnianie za pomocą klucza usługi pojedynczej subskrypcji](#authenticate-with-a-single-service-subscription-key)
 * [Uwierzytelnianie za pomocą klucz subskrypcji z wieloma usługami](#authenticate-with-a-multi-service-subscription-key)
 * [Uwierzytelnianie za pomocą tokenu](#authenticate-with-an-authentication-token)
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Zanim dokonasz, żądania, potrzebujesz konta platformy Azure i subskrypcja usługi Azure Cognitive Services. Jeśli masz już konto, przejdź dalej, a następnie przejdź do następnej sekcji. Jeśli nie masz konta, mamy wskazówki ułatwiające konfigurowanie w ciągu kilku minut: [Tworzenie konta usług Cognitive Services dla platformy Azure](cognitive-services-apis-create-account.md).
 
 ## <a name="authentication-headers"></a>Nagłówki uwierzytelniania
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6bcd2d299d3816c17265eef658ff1f01409828a1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: a674ee52ae5e8f8f800d4584a53c808ceae70156
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632226"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435059"
 ---
 # <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Uruchamiać zadania Apache Pig klastrze opartych na systemie Linux przy użyciu polecenia Pig (SSH)
 
@@ -22,7 +22,7 @@ ms.locfileid: "51632226"
 
 Dowiedz się, jak interaktywnie uruchamiać zadania Apache Pig z połączenia SSH do klastra usługi HDInsight. Język programowania Pig Latin służy do opisywania przekształceń, które są stosowane do danych wejściowych żądaną produktu wyjściowego.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tym dokumencie wymagają klastra HDInsight opartych na systemie Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a id="ssh"></a>Połącz przy użyciu protokołu SSH
@@ -35,7 +35,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a id="pig"></a>Użyj polecenia Pig
+## <a id="pig"></a>Użyj polecenia Apache Pig
 
 1. Po nawiązaniu połączenia, należy uruchomić Pig interfejsu wiersza polecenia (CLI) przy użyciu następującego polecenia:
 
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDI
     | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | Tworzy zestaw danych zawierający każdego dziennika unikatową wartość poziomu i ile razy występuje. Zestaw danych jest przechowywany w `FREQUENCIES`. |
     | `RESULT = order FREQUENCIES by COUNT desc;` | Porządkuje poziomy dziennika według liczby (malejąco) i zapisuje w `RESULT`. |
 
-    > [!TIP]
+    > [!TIP]  
     > Użyj `DUMP` Aby wyświetlić wynik przekształcenia po każdym kroku.
 
 5. Można także zapisać wyniki przekształcenia przy użyciu `STORE` instrukcji. Na przykład następująca instrukcja zapisuje `RESULT` do `/example/data/pigout` katalogu domyślny magazyn dla klastra:
@@ -83,7 +83,7 @@ Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDI
     STORE RESULT into '/example/data/pigout';
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > Dane są przechowywane w wybranym katalogu w plikach o nazwie `part-nnnnn`. Jeśli katalog już istnieje, otrzymasz komunikat o błędzie.
 
 6. Aby zamknąć wiersz grunt, wprowadź następującą instrukcję:
@@ -136,9 +136,9 @@ Polecenie Pig umożliwia również Uruchom Pig Latin zawarte w pliku.
 
 Aby uzyskać ogólne informacje na temat technologii Pig w HDInsight zobacz następujący dokument:
 
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
 
 Aby uzyskać więcej informacji na temat innych sposobów pracy z platformą Hadoop w HDInsight zobacz następujące dokumenty:
 
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)

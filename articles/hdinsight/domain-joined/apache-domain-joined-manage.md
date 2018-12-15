@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: a995f99f7baa8d6f9476f852aa47ce239c921a50
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 4df96d0c3d1ec9cb64f2394fb97d46178906d916
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634468"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434821"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Zarządzanie klastrami HDInsight z pakietem Enterprise Security
 Dowiedz się, użytkownicy i role w HDInsight Enterprise Security pakietu (ESP) oraz sposób zarządzania klastrami ESP.
@@ -22,7 +22,7 @@ Dowiedz się, użytkownicy i role w HDInsight Enterprise Security pakietu (ESP) 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Łączenie z klastrem przyłączonym do domeny za pomocą programu VSCode
 
 Można połączyć normalny klaster przy użyciu Apache Ambari zarządzane nazwy użytkownika, również połączyć klastra Apache Hadoop zabezpieczeń przy użyciu nazwy użytkownika domeny (takich jak: user1@contoso.com).
-1. Otwórz paletę poleceń, wybierając pozycję **CTRL + SHIFT + P**, a następnie wprowadź **HDInsight: Połącz klaster**.
+1. Otwórz paletę poleceń, wybierając **CTRL + SHIFT + P**, a następnie wprowadź **HDInsight: Połącz klaster**.
 
    ![polecenie klastra łącze](./media/apache-domain-joined-manage/link-cluster-command.png)
 
@@ -30,14 +30,14 @@ Można połączyć normalny klaster przy użyciu Apache Ambari zarządzane nazwy
    
    ![okno dialogowe klastra łącza](./media/apache-domain-joined-manage/link-cluster-process.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Połączone nazwę użytkownika i hasło są używane, jeśli klaster w subskrypcji platformy Azure i połączone w klaster. 
    
 3. Zobaczysz klastra połączonej za pomocą polecenia **klastra listy**. Możesz teraz przesłać skrypt do tego klastra połączonych.
 
    ![połączone klastra](./media/apache-domain-joined-manage/linked-cluster.png)
 
-4. Wstawiając może zostać odłączyć klaster **HDInsight: odłączyć klaster** z palety poleceń.
+4. Wstawiając może zostać odłączyć klaster **HDInsight: Odłącz klaster** z palety poleceń.
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Łączenie z klastrem przyłączonym do domeny za pomocą środowiska IntelliJ
 
@@ -50,7 +50,7 @@ Można połączyć normalny klaster przy użyciu nazwy użytkownika systemu Amba
    
    ![okno dialogowe klastra łącza](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Używamy klucz połączonego magazynu, nazwę użytkownika i hasło, jeśli klaster w subskrypcji platformy Azure i połączone w klaster.
    > ![Eksplorator usługi Storage w programie IntelliJ](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
@@ -74,7 +74,7 @@ Można połączyć normalny klaster przy użyciu nazwy użytkownika systemu Amba
    
    ![okno dialogowe klastra łącza](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > Używamy klucz połączonego magazynu, nazwę użytkownika i hasło, jeśli klaster w subskrypcji platformy Azure i połączone w klaster.
    > ![Eksplorator usługi Storage w środowisku Eclipse](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
 
@@ -94,13 +94,13 @@ Izolacji zabezpieczeń i użytkowników są ważne w przypadku klastra HDInsight
 
 |Obciążenie|Scenariusz|Metoda dostępu|
 |--------|--------|-------------|
-|Hadoop|Gałąź — zadania/zapytań interakcyjnych |<ul><li>[Z usługi beeline](#beeline)</li><li>[Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC — usługa Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|platforma Spark|Zadania/zapytania interakcyjne, interakcyjnego PySpark|<ul><li>[Z usługi beeline](#beeline)</li><li>[Zeppelin przy użyciu usługi Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC — usługa Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|platforma Spark|Scenariusze aplikacji usługi Batch — Prześlij platformy Spark, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
+|Apache Hadoop|Gałąź — zadania/zapytań interakcyjnych  |<ul><li>[Z usługi beeline](#beeline)</li><li>[Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC — usługa Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|Zadania/zapytania interakcyjne, interakcyjnego PySpark|<ul><li>[Z usługi beeline](#beeline)</li><li>[Zeppelin przy użyciu usługi Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC — usługa Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|Scenariusze aplikacji usługi Batch — Prześlij platformy Spark, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |Zapytania interakcyjnego (LLAP)|Interaktywne|<ul><li>[Z usługi beeline](#beeline)</li><li>[Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC — usługa Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Dowolne|Instalowanie aplikacji niestandardowych|<ul><li>[Akcje skryptu](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
-   > [!NOTE]
+   > [!NOTE]  
    > Jupyter nie jest zainstalowana/obsługiwanych w pakiet Enterprise Security.
 
 Przy użyciu standardowych interfejsów API ułatwia z punktu widzenia zabezpieczeń. Ponadto możesz uzyskać następujące korzyści:
@@ -143,12 +143,12 @@ Aby znaleźć nazwę FQDN węzła głównego, skorzystaj z informacji w zarządz
 ## <a name="users-of-hdinsight-clusters-with-esp"></a>Użytkownicy z klastrami HDInsight przy użyciu ESP
 Klaster HDInsight bez ESP ma dwa konta użytkownika, które są tworzone podczas tworzenia klastra:
 
-* **Administrator systemu Ambari**: to konto jest także znana jako *użytkownika usługi Hadoop* lub *użytkownika HTTP*. To konto może służyć do logowania do systemu Ambari pod https://&lt;nazwa_klastra >. azurehdinsight.net. Jego można również uruchamiać zapytania dotyczące widoków Ambari, wykonywanie zadania za pomocą narzędzia zewnętrzne (na przykład programu PowerShell, Templeton, Visual Studio) i uwierzytelnianie za pomocą sterownika ODBC programu Hive i narzędzi do analizy Biznesowej (na przykład programu Excel usługi Power Bi i Tableau).
+* **Administrator systemu Ambari**: To konto jest także znana jako *użytkownika usługi Hadoop* lub *użytkownika HTTP*. To konto może służyć do logowania do systemu Ambari pod https://&lt;nazwa_klastra >. azurehdinsight.net. Jego można również uruchamiać zapytania dotyczące widoków Ambari, wykonywanie zadania za pomocą narzędzia zewnętrzne (na przykład programu PowerShell, Templeton, Visual Studio) i uwierzytelnianie za pomocą sterownika ODBC programu Hive i narzędzi do analizy Biznesowej (na przykład programu Excel usługi Power Bi i Tableau).
 
 Klaster HDInsight przy użyciu ESP ma trzy nowi użytkownicy, oprócz administratora Ambari.
 
-* **Administratora platformy ranger**: to konto jest lokalne konto administratora platformy Apache Ranger. Nie jest użytkownikiem domeny usługi active directory. To konto, można skonfigurować zasady i innych użytkowników, administratorów lub administratora delegowanego (tak, aby zasadami można zarządzać tymi użytkownikami). Domyślnie, nazwa użytkownika jest *administratora* , a hasło to takie same jak hasło administratora Ambari. Hasło może zostać zaktualizowana na stronie Ustawienia w platformy Ranger.
-* **Użytkownik domeny administratora klastra**: to konto jest wyznaczony jako administratora klastra usługi Hadoop, w tym Ambari i Ranger użytkownika domeny usługi active directory. Podczas tworzenia klastra, musisz podać poświadczenia tego użytkownika. Ten użytkownik nie ma następujące uprawnienia:
+* **Administratora platformy ranger**:  To konto jest lokalne konto administratora platformy Apache Ranger. Nie jest użytkownikiem domeny usługi active directory. To konto, można skonfigurować zasady i innych użytkowników, administratorów lub administratora delegowanego (tak, aby zasadami można zarządzać tymi użytkownikami). Domyślnie, nazwa użytkownika jest *administratora* , a hasło to takie same jak hasło administratora Ambari. Hasło może zostać zaktualizowana na stronie Ustawienia w platformy Ranger.
+* **Użytkownik domeny administratora klastra**: To konto jest wyznaczony jako administratora klastra usługi Hadoop, w tym Ambari i Ranger użytkownika domeny usługi active directory. Podczas tworzenia klastra, musisz podać poświadczenia tego użytkownika. Ten użytkownik nie ma następujące uprawnienia:
 
   * Przyłączanie maszyn do domeny i umieścić je w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
   * Tworzenie jednostek usługi w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
@@ -157,7 +157,7 @@ Klaster HDInsight przy użyciu ESP ma trzy nowi użytkownicy, oprócz administra
     Należy zauważyć, że inni użytkownicy AD również mają te uprawnienia.
 
     Istnieje kilka punktów końcowych w ramach klastra (na przykład Templeton), które nie są zarządzane przez Ranger i dlatego nie są bezpieczne. Te punkty końcowe są zablokowane dla wszystkich użytkowników z wyjątkiem użytkownika domeny administratora klastra.
-* **Regularne**: podczas tworzenia klastra, możesz podać wiele grup usługi active directory. Użytkownicy w tych grupach są synchronizowane z usługą platformy Ranger i Ambari. Ci użytkownicy są użytkownikami domeny i mieć dostęp do tylko zarządzane platformy Ranger punktów końcowych (na przykład serwera Hiveserver2). Wszystkie zasady RBAC i inspekcji będą mieć zastosowanie do tych użytkowników.
+* **Regularne**: Podczas tworzenia klastra możesz podać wiele grup usługi active directory. Użytkownicy w tych grupach są synchronizowane z usługą platformy Ranger i Ambari. Ci użytkownicy są użytkownikami domeny i mieć dostęp do tylko zarządzane platformy Ranger punktów końcowych (na przykład serwera Hiveserver2). Wszystkie zasady RBAC i inspekcji będą mieć zastosowanie do tych użytkowników.
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>Role z klastrami HDInsight przy użyciu ESP
 Pakiet zabezpieczeń przedsiębiorstwa HDInsight ma następujące role:
@@ -223,4 +223,4 @@ Pakiet zabezpieczeń przedsiębiorstwa HDInsight ma następujące role:
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Do konfigurowania klastra HDInsight z pakietem Enterprise Security, zobacz [HDInsight konfigurowanie klastrów przy użyciu ESP](apache-domain-joined-configure.md).
-* Do konfigurowania zasad usługi Hive i uruchamiania kwerend Hive, zobacz [Konfigurowanie zasad usługi Hive dla HDInsight klastrów przy użyciu ESP](apache-domain-joined-run-hive.md).
+* Do konfigurowania zasad usługi Hive i uruchamiania kwerend Hive, zobacz [zasady skonfiguruj Apache Hive HDInsight klastrów przy użyciu ESP](apache-domain-joined-run-hive.md).

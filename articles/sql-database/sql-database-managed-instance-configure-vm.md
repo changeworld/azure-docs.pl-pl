@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 12/07/2018
-ms.openlocfilehash: ecaf0f0d490decae0fc6298415b15d4d5ddbb4fd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.date: 12/13/2018
+ms.openlocfilehash: 79dbaf98f953a9cb72a7fa7cf9facc2b17fad504
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139099"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410068"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Szybki Start: Konfigurowanie maszyny Wirtualnej platformy Azure, nawiązać połączenia z bazą danych wystąpienia zarządzanego Azure SQL
 
@@ -84,7 +84,7 @@ Najprostszym sposobem utworzenia maszyny wirtualnej klienta za pomocą wszystkie
    |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>To hasło jest używane wtedy, gdy [nawiązać połączenie z maszyną Wirtualną](#connect-to-virtual-machine).|
    | **Rozmiar maszyny wirtualnej** | Wszelkie prawidłowy rozmiar | Wartość domyślna, w tym szablonie o **Standard_B2s** jest wystarczająca na potrzeby tego przewodnika Szybki Start. |
    | **Lokalizacja**|[resourceGroup () .location].| Nie zmieniaj tej wartości. |
-   | **Nazwa sieci wirtualnej**|Lokalizacja, która została wybrana wcześniej|Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/).|
+   | **Nazwa sieci wirtualnej**|Wirtualne sieciowy, w którym utworzono wystąpienie zarządzane.|
    | **Nazwa podsieci**|Nazwa podsieci, który został utworzony w poprzedniej procedurze| Nie wybieraj podsieci, w której utworzono wystąpienie zarządzane.|
    | **Artefakty lokalizacji** | [.properties.templateLink.uri wdrożenia ()] | Nie zmieniaj tej wartości. |
    | **token sygnatury dostępu współdzielonego lokalizacji artefaktów** | Pozostaw to pole puste | Nie zmieniaj tej wartości. |

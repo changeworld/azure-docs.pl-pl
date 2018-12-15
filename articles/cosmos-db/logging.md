@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c8d40587ec6feee9b1ae16e383341fc0f2d1ffb6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7a233a5effb804ec3cc22727b46846509032d214
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137898"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438510"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB 
 
@@ -78,11 +78,11 @@ Aby włączyć rejestrowanie diagnostyczne w witrynie Azure portal, wykonaj nast
     * **Nazwa**: Wprowadź nazwę dla dzienników w celu tworzenia.
 
     * **Zarchiwizuj na koncie magazynu**: Aby użyć tej opcji, należy istniejące konto magazynu, aby nawiązać połączenie. Aby utworzyć nowe konto magazynu w portalu, zobacz [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md) i postępuj zgodnie z instrukcjami, aby utworzyć usługi Azure Resource Manager, konto ogólnego przeznaczenia. Następnie wróć do tej strony w portalu wybierz konto magazynu. Może upłynąć kilka minut, zanim konta nowo utworzonego magazynu pojawią się w menu rozwijanym.
-    * **Stream do usługi event hub**: Aby użyć tej opcji, należy istniejącej usługi Event Hubs przestrzeni nazw i Centrum zdarzeń nawiązać połączenia. Aby utworzyć obszar nazw usługi Event Hubs, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń przy użyciu witryny Azure portal](../event-hubs/event-hubs-create.md). Następnie wróć do tej strony w portalu, aby wybrać nazwę przestrzeni nazw i zasad usługi Event Hubs.
+    * **Stream do usługi event hub**: Aby użyć tej opcji, należy istniejącej usługi Event Hubs przestrzeni nazw i Centrum zdarzeń Aby nawiązać połączenie. Aby utworzyć obszar nazw usługi Event Hubs, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń przy użyciu witryny Azure portal](../event-hubs/event-hubs-create.md). Następnie wróć do tej strony w portalu, aby wybrać nazwę przestrzeni nazw i zasad usługi Event Hubs.
     * **Wysyłanie do usługi Log Analytics**: Aby użyć tej opcji, użyj istniejącego obszaru roboczego albo utwórz nowy obszar roboczy usługi Log Analytics, wykonując następujące kroki, aby [Utwórz nowy obszar roboczy](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) w portalu. Aby uzyskać więcej informacji na temat wyświetlania dzienników w usłudze Log Analytics, zobacz [widoku dzienników w usłudze Log Analytics](#view-in-loganalytics).
     * **Zaloguj się DataPlaneRequests**: Wybierz tę opcję, aby rejestrować żądania zaplecza z podstawowej usługi Azure Cosmos DB platformy rozproszone dla kont usługi SQL, programu Graph, bazy danych MongoDB, Cassandra i interfejsu API tabel. Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są usuwane automatycznie po upływie okresu przechowywania.
     * **Zaloguj się MongoRequests**: Wybierz tę opcję, aby rejestrować żądania zainicjowanego przez użytkownika z usługi Azure Cosmos DB frontonu dla obsługi konta interfejsu API usługi MongoDB. Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są usuwane automatycznie po upływie okresu przechowywania.
-    * **Metryka żądania**: Wybierz tę opcję, aby przechowywać pełne dane w [metryki platformy Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md). Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są usuwane automatycznie po upływie okresu przechowywania.
+    * **Metryka żądania**: Wybierz tę opcję, aby przechowywać pełne dane w [metryki platformy Azure](../azure-monitor/platform/metrics-supported.md). Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są usuwane automatycznie po upływie okresu przechowywania.
 
 3. Wybierz pozycję **Zapisz**.
 
@@ -442,11 +442,11 @@ W poniższej tabeli opisano zawartość każdego wpisu dziennika.
 | **czas** | **TimeGenerated** | Data i godzina (UTC), gdy wystąpienia operacji. |
 | **resourceId** | **Zasób** | Konto usługi Azure Cosmos DB, dla którego dzienniki są włączone.|
 | **category** | **Kategoria** | W przypadku dzienników usługi Azure Cosmos DB **DataPlaneRequests** jest jedyną dostępną wartością. |
-| **OperationName** | **OperationName** | Nazwa operacji. Ta wartość może być dowolną z następujących operacji: tworzenia, aktualizacji, odczytu, ReadFeed, Delete, Replace, Execute, SqlQuery, zapytania, JSQuery, Head, HeadFeed lub Upsert.   |
+| **OperationName** | **OperationName** | Nazwa operacji. Ta wartość może być dowolny z następujących czynności: Tworzenie, aktualizacja, odczytu, ReadFeed, Delete, Replace, należy wykonać, SqlQuery, zapytania, JSQuery, Head, HeadFeed lub Upsert.   |
 | **Właściwości** | Nie dotyczy | Zawartość tego pola są opisane w kolejnych wierszy. |
 | **Identyfikator działania** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanych operacji. |
 | **userAgent** | **userAgent_s** | Ciąg, który określa agent użytkownika klienta, który wykonuje żądanie. Format to {nazwa agenta użytkownika} / {version}.|
-| **resourceType** | **ResourceType** | Typ dostęp do zasobów. Ta wartość może być dowolną z następujących zasobów: bazy danych, kontenerów, dokument, załącznika, użytkownika, uprawnienie, StoredProcedure, wyzwalacza, UserDefinedFunction lub oferty. |
+| **resourceType** | **ResourceType** | Typ dostęp do zasobów. Ta wartość może być dowolny z następujących zasobów: Bazy danych, kontenerów, dokumentów, załącznika, użytkownika, uprawnienie, StoredProcedure, wyzwalacza, UserDefinedFunction lub oferty. |
 | **statusCode** | **statusCode_s** | Stan odpowiedzi operacji. |
 | **requestResourceId** | **ResourceId** | Identyfikator zasobu, które odnoszą się do żądania. Wartość może wskazywać databaseRid, collectionRid lub documentRid w zależności od operacji wykonywanych.|
 | **clientIpAddress** | **clientIpAddress_s** | Adres IP klienta. |

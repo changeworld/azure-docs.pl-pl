@@ -10,12 +10,12 @@ ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167005"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408922"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -63,7 +63,7 @@ Dzięki temu rozwiązaniu dla konta usługi automation. Rozwiązanie może potrw
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurowanie śledzenia zmian i spisu
 
-Aby dowiedzieć się, jak do dołączania komputerów do rozwiązania można znaleźć: [automatyzacji dołączania rozwiązań](automation-onboard-solutions-from-automation-account.md). Po utworzeniu dołączania maszyny, za pomocą rozwiązania śledzenia zmian i spisu można skonfigurować elementy do śledzenia. Po włączeniu nowy plik lub klucz rejestru, aby śledzić włączono śledzenie zmian i spisu.
+Aby dowiedzieć się, jak do dołączania komputerów do rozwiązania można znaleźć: [Automatyzacji dołączania rozwiązań](automation-onboard-solutions-from-automation-account.md). Po utworzeniu dołączania maszyny, za pomocą rozwiązania śledzenia zmian i spisu można skonfigurować elementy do śledzenia. Po włączeniu nowy plik lub klucz rejestru, aby śledzić włączono śledzenie zmian i spisu.
 
 Aby śledzić zmiany w plikach w systemach Windows i Linux, skróty MD5 plików są używane. Te skróty są następnie używane do wykrywania, jeśli wprowadzono zmiany od ostatniej inwentaryzacji.
 
@@ -85,7 +85,7 @@ Poniższe kroki umożliwiają konfigurowanie śledzenia plików na komputerach z
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Użyj polecenia Sudo     | To ustawienie określa, czy podczas sprawdzania elementu jest używane polecenie sudo.         |
 |Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie obejmuje pliki/katalogi, do których odwołuje się.<br>**Postępuj zgodnie z** — śledzi linki symboliczne podczas rekursji i zawiera również pliki/katalogi, do których odwołuje się.<br>**Zarządzanie** — śledzi linki symboliczne i umożliwia zmienianie zwracanej zawartości.     |
-|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **Wartość true,** lub **False**.|
 
 > [!NOTE]
 > Opcja linków „Zarządzaj” nie jest zalecana. Pobieranie zawartości plików nie jest obsługiwane.
@@ -105,7 +105,7 @@ Aby skonfigurować plików śledzenia na komputerach z Windows, wykonaj następu
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
 |Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\\\*.txt”<br>Możesz użyć również zmiennych środowiskowych, takich jak „%winDir%\System32\\\*.*”       |
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
-|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **Wartość true,** lub **False**.|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Ustawienia symboli wieloznacznych, rekursji i środowiska
 
@@ -167,10 +167,21 @@ W poniższej tabeli przedstawiono częstotliwość zbierania danych dla typów z
 | Rejestr Windows | 50 minut |
 | Plik Windows | 30 minut |
 | Plików w systemie Linux | 15 minut |
-| Usługi systemu Windows | 10 sekund na 30 minut</br> Wartość domyślna: 30 minut |
+| Usługi systemu Windows | 10 sekund na 30 minut</br> Domyślne: 30 minut |
 | Demony systemu Linux | 5 minut |
 | Oprogramowanie Windows | 30 minut |
 | Oprogramowania w systemie Linux | 5 minut |
+
+W poniższej tabeli przedstawiono limity elementu śledzonych dla poszczególnych komputerów do śledzenia zmian.
+
+| **Zasób** | **Limit**| **Uwagi** |
+|---|---|---|
+|Plik|500||
+|Rejestr|250||
+|Oprogramowanie Windows|250|Nie ma aktualizacji oprogramowania|
+|Pakiety systemu Linux|1250||
+|Usługi|250||
+|Demon|250||
 
 ### <a name="windows-service-tracking"></a>Śledzenie usługi Windows
 
@@ -259,7 +270,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla zmiany rekord
 |Zapytanie  |Opis  |
 |---------|---------|
 |ConfigurationData<br>&#124;gdzie ConfigDataType == "WindowsServices" i SvcStartupType == "Auto"<br>&#124;gdzie SvcState == "Zatrzymana"<br>&#124;Podsumowanie arg_max(TimeGenerated, *) według typu SoftwareName, komputer         | Pokazuje ostatnich rekordów spisu dla usług Windows, które zostały ustawione na Auto, ale zostały zgłoszone jako zatrzymania<br>Wyniki są ograniczone do ostatnich rekord dla tego typu SoftwareName i Computer      |
-|Zmianakonfiguracji<br>&#124;gdzie ConfigChangeType == "Oprogramowanie" i ChangeCategory == "Usunięte"<br>&#124;kolejność według malejącej TimeGenerated|Pokazuje rekordy zmian oprogramowania usunięto|
+|ConfigurationChange<br>&#124;gdzie ConfigChangeType == "Oprogramowanie" i ChangeCategory == "Usunięte"<br>&#124;kolejność według malejącej TimeGenerated|Pokazuje rekordy zmian oprogramowania usunięto|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

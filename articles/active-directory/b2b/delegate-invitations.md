@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: fd00fb8da3cf36518f9e28e827e59fd7ff45d687
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8abbbba0cdac783dd315cd1f0965e03c4e5a1a05
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622214"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434549"
 ---
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Delegowanie zaproszeń do współpracy B2B usługi Azure Active Directory
 
@@ -32,9 +32,12 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 
 ## <a name="control-who-can-invite"></a>Kontrolowanie, kto może zapraszać
 
-Przejdź do usługi Azure Active Directory > Ustawienia użytkownika > Zarządzaj ustawieniami współpracy zewnętrznej
+W usłudze Azure Active Directory, zaznacz **ustawienia użytkownika**. W obszarze **użytkowników zewnętrznych**, wybierz opcję **Zarządzaj ustawieniami współpracy zewnętrznej**.
 
-![externalusers](https://user-images.githubusercontent.com/13383753/45905128-2c47f680-bda4-11e8-955d-6219c67935e0.PNG)
+> [!NOTE]
+> **Ustawieniami współpracy zewnętrznej** są także dostępne z **relacje w organizacji** strony. W usłudze Azure Active Directory w obszarze **Zarządzaj**, przejdź do **relacje w organizacji** > **ustawienia**.
+
+![Ustawienia zewnętrznej współpracy](./media/delegate-invitations/control-who-to-invite.png)
 
 Przy użyciu funkcji współpracy B2B usługi Azure AD administrator dzierżawy można ustawić następujące zasady zaproszenia:
 

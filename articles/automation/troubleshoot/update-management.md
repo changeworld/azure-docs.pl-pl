@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 87edc2911a48aea1ff0d7ac826439fe547c7cd86
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342889"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434736"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
@@ -164,7 +164,7 @@ Masz maszyny, które pokazują, jak **nie oceniono** w obszarze **zgodności**, 
 
 #### <a name="cause"></a>Przyczyna
 
-Aktualizacja Windows nie jest poprawnie skonfigurowany na maszynie.
+Windows Update lub WSUS nie jest skonfigurowany prawidłowo na maszynie. Rozwiązanie Update Management korzysta z witryny Windows Update lub WSUS w celu udostępnienia aktualizacji, które są potrzebne, stan poprawki i wyniki poprawki wdrożone. Bez tych informacji rozwiązania Update Management nie może poprawnie raport na temat poprawek, które są wymagane lub zainstalowane.
 
 #### <a name="resolution"></a>Rozwiązanie
 

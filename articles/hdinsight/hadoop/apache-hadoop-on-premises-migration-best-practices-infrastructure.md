@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6a1641a76d43cdbac6253e00ea35f70325870853
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 6b0b047e74496fb9e58df05dc6118c5f376cb99d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993380"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437524"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania infrastruktury
 
@@ -39,7 +39,7 @@ Zobacz [domyślne rozmiary maszyn wirtualnych i konfiguracja węzła klastrów](
 
 Każda wersja HDInsight jest dystrybucją chmury wersji Hortonworks Data Platform (HDP) i składa się z zestawu składników ekosystemu Hadoop. Zobacz [HDInsight Component Versioning](../hdinsight-component-versioning.md) szczegółowe informacje dotyczące wszystkich składników HDInsight i ich bieżącej wersji.
 
-Aby sprawdzić składniki i wersje w HDInsight, można użyć interfejsu użytkownika Ambari lub interfejs API REST Ambari.
+Aby sprawdzić składniki i wersje w HDInsight, można użyć interfejsu użytkownika programu Apache Ambari lub interfejs API REST Ambari.
 
 Aplikacje lub składniki, które były dostępne w klastrach w środowisku lokalnym, ale nie są częścią klastrów HDInsight można dodać na węźle krawędzi lub na maszynie Wirtualnej w tej samej podsieci co klaster HDInsight. Można zainstalować aplikacji platformy Hadoop innych firm, które nie są dostępne w usłudze Azure HDInsight przy użyciu opcji "Aplikacje" w klastrze HDInsight. Niestandardowych aplikacji platformy Hadoop można zainstalować w klastrze HDInsight przy użyciu "skrypt akcje". W poniższej tabeli wymieniono niektóre typowe aplikacje i ich opcji integracji HDInsight:
 
@@ -64,7 +64,7 @@ Aplikacje lub składniki, które były dostępne w klastrach w środowisku lokal
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW zamiast na platformie Azure)
-|Tableau|IaaS 
+|TABLEAU|IaaS 
 |Wodnej|Węzeł brzegowy HDInsight
 |StreamSets|HDInsight krawędzi 
 |Palantir|IaaS 
@@ -90,7 +90,7 @@ HDInsight udostępnia wstępnie napisane skrypty do zainstalowania następujący
 - Ładuj wstępnie biblioteki technologii Hive
 - Instalowanie lub aktualizowanie środowiska Mono
 
-> [!Note]
+> [!Note]  
 > HDInsight nie zapewnia bezpośredniej pomocy technicznej dla składników hadoop niestandardowych lub składniki zainstalowane za pomocą akcji skryptu.
 
 Akcje skryptu można także publikować w portalu Azure Marketplace jako aplikacji HDInsight.
@@ -140,7 +140,9 @@ Pustego węzła krawędzi jest maszyną wirtualną systemu Linux przy użyciu ty
 
 Węzły brzegowe mogą być tworzone i usunąć za pomocą witryny Azure portal i może być używany podczas lub po tworzenie klastra. Po utworzeniu węzła krawędzi możesz nawiązać połączenie z węzłem krawędzi za pomocą protokołu SSH i uruchom narzędzia klienta, aby uzyskać dostęp do klastra usługi Hadoop w HDInsight. W węźle brzegowym ssh punkt końcowy jest `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
 
+
 Aby uzyskać więcej informacji, zobacz artykuł [używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight](../hdinsight-apps-use-edge-node.md).
+
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Funkcja skalowania w górę i w dół klastrów
 
@@ -188,7 +190,7 @@ Za pomocą HDInsight przy użyciu usługi Azure Virtual Network umożliwia nast�
 
 HDInsight albo można dodać do nowej lub istniejącej Azure sieci wirtualnej. Jeśli HDInsight jest dodawany do istniejącej sieci wirtualnej, istniejące grupy zabezpieczeń sieci, a trasy zdefiniowane przez użytkownika muszą zostać zaktualizowane, aby zezwolić na nieograniczony dostęp do [kilka adresów IP](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) w centrum danych platformy Azure. Ponadto upewnij się, że nie blokuje ruchu skierowanego do [porty](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) które są używane przez usługi HDInsight.
 
-> [!Note]
+> [!Note]  
 > HDInsight aktualnie nie obsługuje wymuszonym tunelowaniem. Wymuszone tunelowanie ma ustawienia podsieci, która wymusza ruch wychodzący z Internetu na urządzeniu w celu przeprowadzenia inspekcji i rejestrowania. Usuń, wymuszonego tunelowania przed zainstalowaniem HDInsight w podsieci lub Utwórz nową podsieć dla HDInsight. HDInsight nie obsługuje również ograniczanie połączenia sieciowego ruchu wychodzącego.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:

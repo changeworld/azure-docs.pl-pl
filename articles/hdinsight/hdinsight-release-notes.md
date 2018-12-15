@@ -9,23 +9,23 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: 663cf6ba2eec4b2abbc6ab4a37e05b756ee67ee9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016815"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438867"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Informacje o wersji dla usługi Azure HDInsight
 
 Ten artykuł zawiera informacje na temat **najnowszych** aktualizacji wydania usługi Azure HDInsight. Aby uzyskać informacji o wcześniejszych wersjach, zobacz [HDInsight Release Notes archiwum](hdinsight-release-notes-archive.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [artykułu versioning HDInsight](hdinsight-component-versioning.md).
 
 ## <a name="summary"></a>Podsumowanie
 
-Usługa Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klientów korporacyjnych na potrzeby analizy typu open source w narzędziach Hadoop i Spark na platformie Azure. Za pomocą [plus cena 50 procent Wytnij na HDInsight](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank), klientów przenoszących do chmury są Owszem oszczędności więcej niż kiedykolwiek wcześniej.
+Usługa Azure HDInsight jest jednym z najbardziej popularnych usług wśród klientów korporacyjnych analizy Apache Hadoop i Apache Spark typu open source na platformie Azure. Za pomocą [plus cena 50 procent Wytnij na HDInsight](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank), klientów przenoszących do chmury są Owszem oszczędności więcej niż kiedykolwiek wcześniej.
 
 ## <a name="new-features"></a>Nowe funkcje
 
@@ -33,9 +33,9 @@ Nowe aktualizacje i możliwości dzielą się następujących kategoriach:
 
 1.  ***Aktualizowanie usługi Hadoop i innych projektów typu open-source*** — oprócz ponad 1000 poprawki różnych projektów typu open source, ta aktualizacja zawiera nową wersję 20 + **Spark (2.3)** i **Kafka (1.0)**.
 
-    a.  [**Nowe funkcje w 2.3 platformy Spark**](https://spark.apache.org/releases/spark-release-2-3-0.html)
+    a.  [**Nowe funkcje programu Apache Spark 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Nowe funkcje w wersji 1.0 platformy Kafka**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Nowe funkcje w Apache Kafka w wersji 1.0**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
 
 2.  ***Aktualizacja oprogramowania R Server 9.1 do Machine Learning usług 9.3*** — w tej wersji, zapewniamy naukowcy i inżynierowie z najlepszymi typu open source, rozszerzony o konsolidatorze innowacje i łatwość operacjonalizacji wszystkie dostępne w ich Preferowany język z szybkością platformy Apache Spark. W tej wersji rozszerza możliwości dostępnych w programie R Server dodano obsługę języka Python, co prowadzi do zmiany nazwy klastra z oprogramowania R Server z usługami uczenia Maszynowego. 
 
@@ -89,149 +89,149 @@ Nowsze wersje z kilku składników Apache czasami są połączone w dystrybucji 
 
 Ta wersja zawiera następujące poprawki Apache oraz typowe Hadoop 2.7.3:
 
--   [HADOOP 13190](https://issues.apache.org/jira/browse/HADOOP-13190): wspomina o identyfikatorach LoadBalancingKMSClientProvider w dokumentacji usługi KMS wysokiej dostępności.
+-   [HADOOP 13190](https://issues.apache.org/jira/browse/HADOOP-13190): Informacje o LoadBalancingKMSClientProvider w dokumentacji usługi KMS wysokiej dostępności.
 
 -   [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227): AsyncCallHandler należy używać architektura sterowana zdarzeniami, aby obsłużyć wywołania asynchronicznego.
 
--   [HADOOP 14104](https://issues.apache.org/jira/browse/HADOOP-14104): klient powinien zawsze Pytaj namenode dla ścieżki dostawcy usługi kms.
+-   [HADOOP 14104](https://issues.apache.org/jira/browse/HADOOP-14104): Klienta należy zawsze Pytaj namenode dla ścieżki dostawcy usługi kms.
 
--   [HADOOP 14799](https://issues.apache.org/jira/browse/HADOOP-14799): aktualizacji nimbus — blog jose-token jwt do 4.41.1.
+-   [HADOOP 14799](https://issues.apache.org/jira/browse/HADOOP-14799): Zaktualizuj 4.41.1 nimbus — blog jose-token jwt.
 
 -   [HADOOP 14814](https://issues.apache.org/jira/browse/HADOOP-14814): Usuń niezgodne zmiany interfejsu API na FsServerDefaults do HADOOP 14104.
 
--   [HADOOP 14903](https://issues.apache.org/jira/browse/HADOOP-14903): Dodawanie inteligentnych json jawnie do pom.xml.
+-   [HADOOP 14903](https://issues.apache.org/jira/browse/HADOOP-14903): Dodaj inteligentne json jawnie do pom.xml.
 
--   [HADOOP 15042](https://issues.apache.org/jira/browse/HADOOP-15042): Azure PageBlobInputStream.skip() może zwracać wartości ujemnej, gdy numberOfPagesRemaining wynosi 0.
+-   [HADOOP 15042](https://issues.apache.org/jira/browse/HADOOP-15042): PageBlobInputStream.skip() platformy Azure może zwracać wartości ujemnej, gdy numberOfPagesRemaining wynosi 0.
 
--   [HADOOP 15255](https://issues.apache.org/jira/browse/HADOOP-15255): wielkich/małych obsługi konwersji wielkości liter nazwy grup w LdapGroupsMapping.
+-   [HADOOP 15255](https://issues.apache.org/jira/browse/HADOOP-15255): Obsługa konwersji z wielkich/małych wielkości liter nazwy grup w LdapGroupsMapping.
 
 -   [HADOOP 15265](https://issues.apache.org/jira/browse/HADOOP-15265): Wyłącz spod inteligentnych json jawnie pom.xml uwierzytelniania usługi hadoop.
 
--   [System plików HDFS 7922](https://issues.apache.org/jira/browse/HDFS-7922): ShortCircuitCache\#zamknięcia nie udostępnia ScheduledThreadPoolExecutors.
+-   [SYSTEM PLIKÓW HDFS 7922](https://issues.apache.org/jira/browse/HDFS-7922): ShortCircuitCache\#zamknięcia nie udostępnia ScheduledThreadPoolExecutors.
 
--   [System plików HDFS 8496](https://issues.apache.org/jira/browse/HDFS-8496): stopWriter() wywołania z blokadą FSDatasetImpl przechowywane mogą blokować innych wątków (cmccabe).
+-   [SYSTEM PLIKÓW HDFS 8496](https://issues.apache.org/jira/browse/HDFS-8496): StopWriter() wywołania z blokadą FSDatasetImpl przechowywane mogą blokować innych wątków (cmccabe).
 
--   [System plików HDFS 10267](https://issues.apache.org/jira/browse/HDFS-10267): bardzo "zsynchronizowane" na FsDatasetImpl\#recoverAppend i FsDatasetImpl\#recoverClose.
+-   [SYSTEM PLIKÓW HDFS 10267](https://issues.apache.org/jira/browse/HDFS-10267): Bardzo "synchronizowany" na FsDatasetImpl\#recoverAppend i FsDatasetImpl\#recoverClose.
 
--   [System plików HDFS 10489](https://issues.apache.org/jira/browse/HDFS-10489): wycofana dfs.encryption.key.provider.uri dla stref szyfrowanie systemu plików HDFS.
+-   [SYSTEM PLIKÓW HDFS 10489](https://issues.apache.org/jira/browse/HDFS-10489): Wycofana dfs.encryption.key.provider.uri dla stref szyfrowanie systemu plików HDFS.
 
--   [System plików HDFS 11384](https://issues.apache.org/jira/browse/HDFS-11384): Dodaj opcję równoważenia do rozproszenia getBlocks wywołania w celu uniknięcia firmy NameNode rpc. CallQueueLength kolekcji.
+-   [SYSTEM PLIKÓW HDFS 11384](https://issues.apache.org/jira/browse/HDFS-11384): Dodaj opcję równoważenia do rozproszenia getBlocks wywołania w celu uniknięcia firmy NameNode rpc. CallQueueLength kolekcji.
 
--   [System plików HDFS 11689](https://issues.apache.org/jira/browse/HDFS-11689): nowy wyjątek zgłoszony przez DFSClient % isHDFSEncryptionEnabled Przerwano code gałąź hacky.
+-   [SYSTEM PLIKÓW HDFS 11689](https://issues.apache.org/jira/browse/HDFS-11689): Nowy wyjątek zgłoszony przez DFSClient % isHDFSEncryptionEnabled Przerwano code gałąź hacky.
 
--   [System plików HDFS 11711](https://issues.apache.org/jira/browse/HDFS-11711): nazwy domeny nie należy usuwać bloku na "zbyt wiele otwartych plików" wyjątek.
+-   [SYSTEM PLIKÓW HDFS 11711](https://issues.apache.org/jira/browse/HDFS-11711): Nazwa Wyróżniająca nie należy usuwać w bloku "zbyt wiele otwartych plików" wyjątku.
 
--   [System plików HDFS 12347](https://issues.apache.org/jira/browse/HDFS-12347): TestBalancerRPCDelay\#testBalancerRPCDelay bardzo często nie powiedzie się.
+-   [SYSTEM PLIKÓW HDFS 12347](https://issues.apache.org/jira/browse/HDFS-12347): TestBalancerRPCDelay\#testBalancerRPCDelay bardzo często nie powiedzie się.
 
--   [System plików HDFS 12781](https://issues.apache.org/jira/browse/HDFS-12781): po Datanode w dół, karta w Namenode interfejsu użytkownika Datanode wywołującej komunikat ostrzegawczy.
+-   [SYSTEM PLIKÓW HDFS 12781](https://issues.apache.org/jira/browse/HDFS-12781): Po Datanode w dół karta w Namenode interfejsu użytkownika Datanode wywołującej komunikat ostrzegawczy.
 
--   [System plików HDFS 13054](https://issues.apache.org/jira/browse/HDFS-13054): Obsługa PathIsNotEmptyDirectoryException w DFSClient usuwanie rozmowy.
+-   [SYSTEM PLIKÓW HDFS 13054](https://issues.apache.org/jira/browse/HDFS-13054): Obsługa PathIsNotEmptyDirectoryException w wywołaniu elementu DFSClient delete.
 
--   [System plików HDFS 13120](https://issues.apache.org/jira/browse/HDFS-13120): diff migawki może ulec uszkodzeniu po concat.
+-   [SYSTEM PLIKÓW HDFS 13120](https://issues.apache.org/jira/browse/HDFS-13120): Diff migawki może ulec uszkodzeniu po concat.
 
--   [YARN 3742](https://issues.apache.org/jira/browse/YARN-3742): zamknie Menedżera zasobów YARN Jeśli upłynie limit czasu tworzenia ZKClient.
+-   [YARN 3742](https://issues.apache.org/jira/browse/YARN-3742): Menedżer zasobów usługi YARN zostanie zamknięty, jeśli upłynie limit czasu tworzenia ZKClient.
 
 -   [YARN 6061](https://issues.apache.org/jira/browse/YARN-6061): Dodaj UncaughtExceptionHandler dla krytycznych wątków w Menedżera zasobów.
 
 -   [YARN 7558](https://issues.apache.org/jira/browse/YARN-7558): yarn dzienniki polecenie kończy się niepowodzeniem, można pobrać dzienniki dla uruchomionych kontenerów, jeśli jest włączone uwierzytelnianie interfejsu użytkownika.
 
--   [YARN 7697](https://issues.apache.org/jira/browse/YARN-7697): pobieranie dzienników dla ukończonej aplikacji zakończy się niepowodzeniem, mimo że agregacji dziennika zostało zakończone.
+-   [YARN 7697](https://issues.apache.org/jira/browse/YARN-7697): Pobieranie dzienników dla ukończonej aplikacji zakończy się niepowodzeniem, mimo że agregacji dziennika zostało zakończone.
 
 HDP 2.6.4 dostępne następujące poprawki Apache oraz typowe Hadoop 2.7.3:
 
--   [HADOOP 13700](https://issues.apache.org/jira/browse/HADOOP-13700): usuwanie unthrown IOException TrashPolicy\#zainicjować i \#getInstance podpisów.
+-   [HADOOP 13700](https://issues.apache.org/jira/browse/HADOOP-13700): Usuwanie unthrown IOException TrashPolicy\#zainicjować i \#getInstance podpisów.
 
--   [HADOOP 13709](https://issues.apache.org/jira/browse/HADOOP-13709): możliwości, aby wyczyścić procesy podrzędne zduplikowany przez powłokę, gdy proces zakończy.
+-   [HADOOP 13709](https://issues.apache.org/jira/browse/HADOOP-13709): Możliwość wyczyścić zduplikowany przez powłokę, gdy proces zakończy procesy podrzędne.
 
 -   [HADOOP 14059](https://issues.apache.org/jira/browse/HADOOP-14059): błąd pisowni w komunikat o błędzie (self, subdir) Zmień nazwę s3a.
 
 -   [HADOOP 14542](https://issues.apache.org/jira/browse/HADOOP-14542): Dodaj IOUtils.cleanupWithLogger, który akceptuje API rejestratora slf4j.
 
--   [System plików HDFS 9887](https://issues.apache.org/jira/browse/HDFS-9887): WebHdfs gniazda przekroczeń limitu czasu powinna być konfigurowalne.
+-   [SYSTEM PLIKÓW HDFS 9887](https://issues.apache.org/jira/browse/HDFS-9887): Gniazda WebHdfs przekroczeń limitu czasu powinna być konfigurowalne.
 
--   [System plików HDFS 9914](https://issues.apache.org/jira/browse/HDFS-9914): odczytu połączyć WebhDFS można skonfigurować poprawkę limitu czasu.
+-   [SYSTEM PLIKÓW HDFS 9914](https://issues.apache.org/jira/browse/HDFS-9914): Napraw WebhDFS można skonfigurować połączenia/odczyt limitu czasu.
 
 -   [MAPREDUCE 6698](https://issues.apache.org/jira/browse/MAPREDUCE-6698): Zwiększ limit czasu dla TestUnnecessaryBlockingOnHist oryFileInfo.testTwoThreadsQueryingDifferentJobOfSameUser.
 
--   [YARN 4550](https://issues.apache.org/jira/browse/YARN-4550): niektóre testy w TestContainerLanch się nie powieść w środowisku ustawień regionalnych innych niż angielski.
+-   [YARN 4550](https://issues.apache.org/jira/browse/YARN-4550): Niektóre testy w TestContainerLanch zakończyć się niepowodzeniem w środowisku ustawień regionalnych innych niż angielski.
 
 -   [YARN 4717](https://issues.apache.org/jira/browse/YARN-4717): TestResourceLocalizationService.testPublicResourceInitializesLocalDir nie powiedzie się sporadycznie ze względu na IllegalArgumentException z oczyszczania.
 
--   [YARN 5042](https://issues.apache.org/jira/browse/YARN-5042): / sys instalacji/fs/cgroup w kontenerach platformy Docker jako tylko do odczytu instalacji.
+-   [YARN 5042](https://issues.apache.org/jira/browse/YARN-5042): / Sys instalacji/fs/cgroup w kontenerach platformy Docker jako tylko do odczytu instalacji.
 
 -   [YARN 5318](https://issues.apache.org/jira/browse/YARN-5318): Napraw sporadyczne niepowodzenia testu z TestRMAdminService\#stRefreshNodesResourceWithFileSystemBasedConfigurationProvider Usuń.
 
 -   [YARN 5641](https://issues.apache.org/jira/browse/YARN-5641): Lokalizatorowi pozostawia za tarballs po zakończeniu kontenera.
 
--   [YARN 6004](https://issues.apache.org/jira/browse/YARN-6004): Refaktoryzacja TestResourceLocalizationService\#testDownloadingResourcesOnContainer, tak aby znajdował się mniej niż 150 wierszy.
+-   [YARN 6004](https://issues.apache.org/jira/browse/YARN-6004): Refaktoryzuj TestResourceLocalizationService\#testDownloadingResourcesOnContainer, tak aby znajdował się mniej niż 150 wierszy.
 
--   [YARN 6078](https://issues.apache.org/jira/browse/YARN-6078): kontenery zablokowane w lokalizowanie stanu.
+-   [YARN 6078](https://issues.apache.org/jira/browse/YARN-6078): Kontenery są zablokowane w stanie Localizing.
 
--   [YARN 6805](https://issues.apache.org/jira/browse/YARN-6805): kod zakończenia NPE w LinuxContainerExecutor z powodu PrivilegedOperationException o wartości null.
+-   [YARN 6805](https://issues.apache.org/jira/browse/YARN-6805): Kod zakończenia NPE w LinuxContainerExecutor z powodu PrivilegedOperationException o wartości null.
 
 ### <a name="hbase"></a>HBase
 
 Ta wersja zawiera następujące poprawki Apache i bazy danych HBase 1.1.2.
 
--   [Baza danych HBASE 13376](https://issues.apache.org/jira/browse/HBASE-13376): ulepszenia Stochastic modułu równoważenia obciążenia.
+-   [BAZA DANYCH HBASE 13376](https://issues.apache.org/jira/browse/HBASE-13376): Ulepszenia modułu równoważenia obciążenia stochastycznego.
 
--   [Baza danych HBASE 13716](https://issues.apache.org/jira/browse/HBASE-13716): zaprzestać korzystania z Hadoop FSConstants.
+-   [BAZA DANYCH HBASE 13716](https://issues.apache.org/jira/browse/HBASE-13716): Zatrzymaj przy użyciu Hadoop FSConstants.
 
--   [Baza danych HBASE 13848](https://issues.apache.org/jira/browse/HBASE-13848): hasła dostępu InfoServer SSL za pomocą interfejsu API dostawcy poświadczeń.
+-   [BAZA DANYCH HBASE 13848](https://issues.apache.org/jira/browse/HBASE-13848): Dostęp do haseł InfoServer SSL za pośrednictwem interfejsu API dostawcy poświadczeń.
 
--   [Baza danych HBASE 13947](https://issues.apache.org/jira/browse/HBASE-13947): MasterServices użycia zamiast serwera w AssignmentManager.
+-   [BAZA DANYCH HBASE 13947](https://issues.apache.org/jira/browse/HBASE-13947): Użyj MasterServices zamiast serwera w AssignmentManager.
 
--   [HBASE 14135](https://issues.apache.org/jira/browse/HBASE-14135): bazy danych HBase i przywracania kopii zapasowych fazy 3: scalanie obrazów kopii zapasowej.
+-   [BAZA DANYCH HBASE 14135](https://issues.apache.org/jira/browse/HBASE-14135): Przywracania kopii zapasowej bazy danych HBase — etap 3: Scal obrazy kopii zapasowych.
 
--   [Baza danych HBASE 14473](https://issues.apache.org/jira/browse/HBASE-14473): Lokalizacja regionu obliczeń równolegle.
+-   [BAZA DANYCH HBASE 14473](https://issues.apache.org/jira/browse/HBASE-14473): Obliczenia lokalizacja regionu równolegle.
 
--   [Baza danych HBASE 14517](https://issues.apache.org/jira/browse/HBASE-14517): Pokaż wersję regionserver firmy na stronie głównej stanu.
+-   [BAZA DANYCH HBASE 14517](https://issues.apache.org/jira/browse/HBASE-14517): Pokaż regionserver wersji na stronie głównej stanu.
 
--   [Baza danych HBASE 14606](https://issues.apache.org/jira/browse/HBASE-14606): testy TestSecureLoadIncrementalHFiles przekroczyło limit czasu magistrali Rozbuduj apache.
+-   [BAZA DANYCH HBASE 14606](https://issues.apache.org/jira/browse/HBASE-14606): Twórz testy TestSecureLoadIncrementalHFiles przekroczyło limit czasu magistrali apache.
 
--   [Baza danych HBASE 15210](https://issues.apache.org/jira/browse/HBASE-15210): Cofnij Rejestrowanie modułu równoważenia obciążenia agresywne na kilkadziesiąt wierszy na milisekundę.
+-   [BAZA DANYCH HBASE 15210](https://issues.apache.org/jira/browse/HBASE-15210): Rejestrowanie modułu równoważenia obciążenia agresywne cofania w kilkadziesiąt wierszy na milisekundę.
 
--   [Baza danych HBASE 15515](https://issues.apache.org/jira/browse/HBASE-15515): poprawa LocalityBasedCandidateGenerator w module równoważenia.
+-   [BAZA DANYCH HBASE 15515](https://issues.apache.org/jira/browse/HBASE-15515): Zwiększ LocalityBasedCandidateGenerator w module równoważenia.
 
--   [Baza danych HBASE 15615](https://issues.apache.org/jira/browse/HBASE-15615): czas niewłaściwego uśpienia, gdy RegionServerCallable muszą, spróbuj ponownie.
+-   [BAZA DANYCH HBASE 15615](https://issues.apache.org/jira/browse/HBASE-15615): Nieprawidłowy czas uśpienia, gdy RegionServerCallable muszą, spróbuj ponownie.
 
--   [Baza danych HBASE 16135](https://issues.apache.org/jira/browse/HBASE-16135): PeerClusterZnode w obszarze rs usuniętego elementu równorzędnego nigdy nie mogą zostać usunięte.
+-   [BAZA DANYCH HBASE 16135](https://issues.apache.org/jira/browse/HBASE-16135): PeerClusterZnode w obszarze rs usuniętego elementu równorzędnego nigdy nie mogą zostać usunięte.
 
--   [Baza danych HBASE 16570](https://issues.apache.org/jira/browse/HBASE-16570): Lokalizacja regionu obliczeń w sposób równoległy przy uruchamianiu.
+-   [BAZA DANYCH HBASE 16570](https://issues.apache.org/jira/browse/HBASE-16570): Obliczenia lokalizacja regionu w sposób równoległy przy uruchamianiu.
 
--   [Baza danych HBASE 16810](https://issues.apache.org/jira/browse/HBASE-16810): bazy danych HBase równoważenia zgłasza ArrayIndexOutOfBoundsException, gdy /hbase/draining znode regionservers i zwolnione.
+-   [BAZA DANYCH HBASE 16810](https://issues.apache.org/jira/browse/HBASE-16810): HBase równoważenia zgłasza ArrayIndexOutOfBoundsException, gdy /hbase/draining znode regionservers i zwolnione.
 
--   [Baza danych HBASE 16852](https://issues.apache.org/jira/browse/HBASE-16852): TestDefaultCompactSelection 1.3 gałęzi nie powiodła się.
+-   [BAZA DANYCH HBASE 16852](https://issues.apache.org/jira/browse/HBASE-16852): 1.3 gałęzi TestDefaultCompactSelection nie powiodło się.
 
--   [Baza danych HBASE 17387](https://issues.apache.org/jira/browse/HBASE-17387): zmniejszyć koszty raport o wyjątkach w RegionActionResult dla multi().
+-   [BAZA DANYCH HBASE 17387](https://issues.apache.org/jira/browse/HBASE-17387): Zmniejsz obciążenie raport o wyjątkach w RegionActionResult dla multi().
 
--   [Baza danych HBASE 17850](https://issues.apache.org/jira/browse/HBASE-17850): kopii zapasowej narzędzie naprawę systemu.
+-   [BAZA DANYCH HBASE 17850](https://issues.apache.org/jira/browse/HBASE-17850): Narzędzie repair systemu tworzenia kopii zapasowych.
 
--   [Baza danych HBASE 17931](https://issues.apache.org/jira/browse/HBASE-17931): przypisać tabel systemowych przeznaczonych do serwerów z najwyższą wersją.
+-   [BAZA DANYCH HBASE 17931](https://issues.apache.org/jira/browse/HBASE-17931): Przypisz tabel systemowych przeznaczonych do serwerów z najwyższą wersją.
 
--   [Baza danych HBASE 18083](https://issues.apache.org/jira/browse/HBASE-18083): plik dużych/small wyczyścić z możliwością konfiguracji za HFileCleaner liczba wątków.
+-   [BAZA DANYCH HBASE 18083](https://issues.apache.org/jira/browse/HBASE-18083): Plik dużych/small, wyczyść liczbę wątków można skonfigurować w HFileCleaner był.
 
--   [Baza danych HBASE 18084](https://issues.apache.org/jira/browse/HBASE-18084): CleanerChore poprawić, aby wyczyścić z katalogu, który zużywa więcej miejsca na dysku.
+-   [BAZA DANYCH HBASE 18084](https://issues.apache.org/jira/browse/HBASE-18084): Zwiększ CleanerChore, aby wyczyścić z katalogu, który zużywa więcej miejsca na dysku.
 
--   [Baza danych HBASE 18164](https://issues.apache.org/jira/browse/HBASE-18164): znacznie szybciej miejscowość koszt funkcji i Release candidate generator.
+-   [BAZA DANYCH HBASE 18164](https://issues.apache.org/jira/browse/HBASE-18164): Znacznie szybsze miejscowość koszt funkcji i Release candidate generator.
 
--   [Baza danych HBASE 18212](https://issues.apache.org/jira/browse/HBASE-18212): autonomicznych w trybie z lokalnego systemu plików bazy danych HBase rejestruje komunikat ostrzegawczy: nie można wywołać metody "unbuffer" w klasie klasy org.apache.hadoop.fs.FSDataInputStream.
+-   [BAZA DANYCH HBASE 18212](https://issues.apache.org/jira/browse/HBASE-18212): W trybie autonomicznym za pomocą lokalnego systemu plików bazy danych HBase rejestruje komunikat ostrzegawczy: Nie można wywołać metody "unbuffer" w klasie klasy org.apache.hadoop.fs.FSDataInputStream.
 
--   [Baza danych HBASE 18808](https://issues.apache.org/jira/browse/HBASE-18808): config nieskuteczne zaewidencjonowania BackupLogCleaner\#getDeletableFiles().
+-   [BAZA DANYCH HBASE 18808](https://issues.apache.org/jira/browse/HBASE-18808): Config nieskuteczne zaewidencjonowania BackupLogCleaner\#getDeletableFiles().
 
--   [Baza danych HBASE 19052](https://issues.apache.org/jira/browse/HBASE-19052): FixedFileTrailer powinien rozpoznać klasy CellComparatorImpl w 1.x gałęzi.
+-   [BAZA DANYCH HBASE 19052](https://issues.apache.org/jira/browse/HBASE-19052): FixedFileTrailer powinien rozpoznać klasy CellComparatorImpl w 1.x gałęzi.
 
--   [HBASE 19065](https://issues.apache.org/jira/browse/HBASE-19065): HRegion\#bulkLoadHFiles() ma oczekiwać współbieżnych Region\#flush(), aby zakończyć.
+-   [BAZA DANYCH HBASE 19065](https://issues.apache.org/jira/browse/HBASE-19065): HRegion\#bulkLoadHFiles() ma oczekiwać współbieżnych Region\#flush(), aby zakończyć.
 
--   [Baza danych HBASE 19285](https://issues.apache.org/jira/browse/HBASE-19285): Dodaj histogramy czas oczekiwania na tabelę.
+-   [BAZA DANYCH HBASE 19285](https://issues.apache.org/jira/browse/HBASE-19285): Dodaj histogramy czas oczekiwania na tabelę.
 
--   [Baza danych HBASE 19393](https://issues.apache.org/jira/browse/HBASE-19393): pełne 413 HTTP head podczas uzyskiwania dostępu do interfejsu użytkownika HBase przy użyciu protokołu SSL.
+-   [BAZA DANYCH HBASE 19393](https://issues.apache.org/jira/browse/HBASE-19393): HTTP 413 PEŁNĄ head podczas uzyskiwania dostępu do interfejsu użytkownika HBase przy użyciu protokołu SSL.
 
 -   [Baza danych HBASE 19395](https://issues.apache.org/jira/browse/HBASE-19395): \[gałęzi 1\] TestEndToEndSplitTransaction.testMasterOpsWhileSplitting kończy się niepowodzeniem z NPE.
 
 -   [Baza danych HBASE 19421](https://issues.apache.org/jira/browse/HBASE-19421): 1 gałęzi nie kompilowanie z użyciem usługi Hadoop 3.0.0.
 
--   [Baza danych HBASE 19934](https://issues.apache.org/jira/browse/HBASE-19934): HBaseSnapshotException podczas odczytu replik jest włączone i online migawki po podział regionu.
+-   [BAZA DANYCH HBASE 19934](https://issues.apache.org/jira/browse/HBASE-19934): HBaseSnapshotException podczas odczytu replik jest włączone i online migawki po podział regionu.
 
 -   [Baza danych HBASE 20008](https://issues.apache.org/jira/browse/HBASE-20008): \[Poprawka usterki systemu\] NullPointerException po przywróceniu z migawki po podział region.
 
@@ -245,51 +245,51 @@ Ta wersja zawiera gałąź 1.2.1 i Hive 2.1.0 oprócz następujące poprawki:
 
 -   [*GAŁĄŹ 11266*](https://issues.apache.org/jira/browse/HIVE-11266): liczba (\*) nieprawidłowy wynik na podstawie danych statystycznych tabeli dla tabel zewnętrznych.
 
--   [*GAŁĄŹ 12245*](https://issues.apache.org/jira/browse/HIVE-12245): komentarze kolumny pomocy technicznej dla bazy danych HBase kopii tabeli.
+-   [*GAŁĄŹ 12245*](https://issues.apache.org/jira/browse/HIVE-12245): Obsługa kolumny komentarzy do bazy danych HBase kopii tabeli.
 
--   [*GAŁĄŹ 12315*](https://issues.apache.org/jira/browse/HIVE-12315): Napraw Wektoryzowana double dzielenie przez zero.
+-   [*GAŁĄŹ 12315*](https://issues.apache.org/jira/browse/HIVE-12315): Napraw Vectorized double dzielenie przez zero.
 
--   [*GAŁĄŹ 12360*](https://issues.apache.org/jira/browse/HIVE-12360): złe wyszukiwanie w nieskompresowanych ORC przy użyciu przekazywania predykatu.
+-   [*GAŁĄŹ 12360*](https://issues.apache.org/jira/browse/HIVE-12360): Złe wyszukiwanie w nieskompresowanych ORC przy użyciu przekazywania predykatu.
 
--   [*GAŁĄŹ 12378*](https://issues.apache.org/jira/browse/HIVE-12378): wyjątek HBaseSerDe.serialize pola binarne.
+-   [*GAŁĄŹ 12378*](https://issues.apache.org/jira/browse/HIVE-12378): Wyjątek dla pola binarne HBaseSerDe.serialize.
 
--   [*GAŁĄŹ 12785*](https://issues.apache.org/jira/browse/HIVE-12785): widok o typie Unii i funkcji definiowanych przez użytkownika do struktury jest uszkodzona.
+-   [*GAŁĄŹ 12785*](https://issues.apache.org/jira/browse/HIVE-12785): Widok o typie Unii i funkcji definiowanych przez użytkownika do struktury jest uszkodzona.
 
 -   [*GAŁĄŹ 14013*](https://issues.apache.org/jira/browse/HIVE-14013): Opis tabeli nie wyświetla prawidłowo unicode.
 
--   [*GAŁĄŹ 14205*](https://issues.apache.org/jira/browse/HIVE-14205): gałąź nie obsługuje typu Unii z format plików AVRO.
+-   [*GAŁĄŹ 14205*](https://issues.apache.org/jira/browse/HIVE-14205): Gałąź nie obsługuje typu Unii z format plików AVRO.
 
 -   [*GAŁĄŹ 14421*](https://issues.apache.org/jira/browse/HIVE-14421): FS.deleteOnExit przechowuje odwołania do \_tmp\_space.db plików.
 
--   [*GAŁĄŹ 15563*](https://issues.apache.org/jira/browse/HIVE-15563): Ignoruj nieprawidłową operację stan przejścia wyjątek w SQLOperation.runQuery do udostępnienia rzeczywistych wyjątku.
+-   [*GAŁĄŹ 15563*](https://issues.apache.org/jira/browse/HIVE-15563): Ignoruj niedozwolona operacja stan przejścia wyjątek w SQLOperation.runQuery do udostępnienia rzeczywistych wyjątku.
 
--   [*GAŁĄŹ 15680*](https://issues.apache.org/jira/browse/HIVE-15680): niepoprawne wyniki podczas hive.optimize.index.filter=true i te same dwa razy w zapytaniu w trybie MR odwołuje się do tabeli ORC.
+-   [*GAŁĄŹ 15680*](https://issues.apache.org/jira/browse/HIVE-15680): Niepoprawne wyniki podczas hive.optimize.index.filter=true i te same dwa razy w zapytaniu w trybie MR odwołuje się do tabeli ORC.
 
--   [*GAŁĄŹ 15883*](https://issues.apache.org/jira/browse/HIVE-15883): bazy danych HBase mapowane tabeli Hive insert niepowodzenie miejsc dziesiętnych.
+-   [*GAŁĄŹ 15883*](https://issues.apache.org/jira/browse/HIVE-15883): Baza danych HBase mapowane tabeli Hive Wstawianie przecinka się nie powieść.
 
--   [*GAŁĄŹ 16232*](https://issues.apache.org/jira/browse/HIVE-16232): obsługują obliczeń statystyki dla kolumn w QuotedIdentifier.
+-   [*GAŁĄŹ 16232*](https://issues.apache.org/jira/browse/HIVE-16232): Obsługuje obliczeń statystyki dla kolumn w QuotedIdentifier.
 
--   [*GAŁĄŹ 16828*](https://issues.apache.org/jira/browse/HIVE-16828): włączone za pomocą CBO, zapytanie dotyczące widoków zgłasza IndexOutOfBoundException.
+-   [*GAŁĄŹ 16828*](https://issues.apache.org/jira/browse/HIVE-16828): Za pomocą CBO włączone zapytanie dotyczące widoków zgłasza IndexOutOfBoundException.
 
--   [*GAŁĄŹ 17013*](https://issues.apache.org/jira/browse/HIVE-17013): żądanie usunięcia za pomocą kwerendy oparte na wybierz widok.
+-   [*GAŁĄŹ 17013*](https://issues.apache.org/jira/browse/HIVE-17013): Usuń żądanie za pomocą kwerendy oparte na wybierz widok.
 
 -   [*GAŁĄŹ 17063*](https://issues.apache.org/jira/browse/HIVE-17063): Wstaw Zastąp partycji na niepowodzenie tabeli zewnętrznej po najpierw porzucić partycji.
 
--   [*GAŁĄŹ 17259*](https://issues.apache.org/jira/browse/HIVE-17259): JDBC technologii Hive nie rozpoznaje UNIONTYPE kolumn.
+-   [*GAŁĄŹ 17259*](https://issues.apache.org/jira/browse/HIVE-17259): Hive JDBC nie rozpoznaje UNIONTYPE kolumn.
 
--   [*GAŁĄŹ 17419*](https://issues.apache.org/jira/browse/HIVE-17419): ANALIZOWANIE... obliczenia statystyki dla kolumn w tabeli polecenie wyświetla statystyki obliczanej w przypadku maskowana tabel.
+-   [*GAŁĄŹ 17419*](https://issues.apache.org/jira/browse/HIVE-17419): Polecenie Analizuj... obliczenia statystyki dla kolumn w tabeli przedstawiono obliczanej statystyki w przypadku maskowana tabel.
 
 -   [*GAŁĄŹ 17530*](https://issues.apache.org/jira/browse/HIVE-17530): ClassCastException podczas konwertowania uniontype.
 
--   [*GAŁĄŹ 17621*](https://issues.apache.org/jira/browse/HIVE-17621): Ustawienia lokacji Hive są ignorowane podczas HCatInputFormat split obliczeń.
+-   [*GAŁĄŹ 17621*](https://issues.apache.org/jira/browse/HIVE-17621): Ustawienia witryny hive są ignorowane podczas HCatInputFormat split obliczeń.
 
 -   [*GAŁĄŹ 17636*](https://issues.apache.org/jira/browse/HIVE-17636): Dodawanie wielu\_agg.q test blobstores.
 
--   [*GAŁĄŹ 17729*](https://issues.apache.org/jira/browse/HIVE-17729): Dodaj bazę danych i wyjaśnienia dotyczące elementu blobstore testów.
+-   [*GAŁĄŹ 17729*](https://issues.apache.org/jira/browse/HIVE-17729): Dodawanie bazy danych i wyjaśnienia dotyczące elementu blobstore testów.
 
 -   [*GAŁĄŹ 17731*](https://issues.apache.org/jira/browse/HIVE-17731): Dodaj opcję zgodności z poprzednimi wersjami dla użytkowników zewnętrznych do HIVE 11985.
 
--   [*GAŁĄŹ 17803*](https://issues.apache.org/jira/browse/HIVE-17803): za pomocą wielu zapytań Pig, 2 HCatStorers zapisu do tej samej tabeli będzie trample dane wyjściowe siebie nawzajem.
+-   [*GAŁĄŹ 17803*](https://issues.apache.org/jira/browse/HIVE-17803): Za pomocą wielu zapytań Pig 2 HCatStorers zapisu do tej samej tabeli będzie trample dane wyjściowe siebie nawzajem.
 
 -   [*GAŁĄŹ 17829*](https://issues.apache.org/jira/browse/HIVE-17829): ArrayIndexOutOfBoundsException - kopii bazy danych HBASE tabele o schemacie Avro w Hive2.
 
@@ -297,133 +297,133 @@ Ta wersja zawiera gałąź 1.2.1 i Hive 2.1.0 oprócz następujące poprawki:
 
 -   [*GAŁĄŹ 17900*](https://issues.apache.org/jira/browse/HIVE-17900): analizowanie statystyki dla kolumn wyzwolone przez Kompaktorem generuje źle sformułowane SQL za pomocą &gt; kolumna 1 partycji.
 
--   [*GAŁĄŹ 18026*](https://issues.apache.org/jira/browse/HIVE-18026): Optymalizacja konfiguracji nazwy głównej usługi webhcat Hive.
+-   [*GAŁĄŹ 18026*](https://issues.apache.org/jira/browse/HIVE-18026): Hive Optymalizacja konfiguracji nazwy głównej usługi webhcat.
 
--   [*GAŁĄŹ 18031*](https://issues.apache.org/jira/browse/HIVE-18031): Obsługa replikacji dla operacji Alter Database.
+-   [*GAŁĄŹ 18031*](https://issues.apache.org/jira/browse/HIVE-18031): Obsługa replikacji operację Alter Database.
 
 -   [*GAŁĄŹ 18090*](https://issues.apache.org/jira/browse/HIVE-18090): acid pulsu zakończy się niepowodzeniem, gdy Magazyn metadanych jest podłączone przy użyciu poświadczeń usługi hadoop.
 
--   [*GAŁĄŹ 18189*](https://issues.apache.org/jira/browse/HIVE-18189): zapytanie Hive, zwracając błędne wyniki po ustawieniu hive.groupby.orderby.position.alias na wartość true.
+-   [*GAŁĄŹ 18189*](https://issues.apache.org/jira/browse/HIVE-18189): Hive zwracanie błędne wyniki zapytania po ustawieniu hive.groupby.orderby.position.alias na wartość true.
 
--   [*GAŁĄŹ 18258*](https://issues.apache.org/jira/browse/HIVE-18258): Wektoryzacji: Zmniejsz po stronie grupy przez MERGEPARTIAL przy użyciu kolumn został przerwany.
+-   [*GAŁĄŹ 18258*](https://issues.apache.org/jira/browse/HIVE-18258): Wektoryzacja: Zmniejsz po stronie grupy przez MERGEPARTIAL przy użyciu kolumn został przerwany.
 
 -   [*GAŁĄŹ 18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive nie powiodło się compact tabel znajdujących się w folderze, który jest właścicielem nie jest uruchomiona HiveMetaStore tożsamości.
 
--   [*GAŁĄŹ 18327*](https://issues.apache.org/jira/browse/HIVE-18327): usunąć niepotrzebne zależności HiveConf MiniHiveKdc.
+-   [*GAŁĄŹ 18327*](https://issues.apache.org/jira/browse/HIVE-18327): Usuń niepotrzebne zależności HiveConf dla MiniHiveKdc.
 
 -   [*GAŁĄŹ 18341*](https://issues.apache.org/jira/browse/HIVE-18341): Dodano obsługę obciążenia repl dodanie przestrzeni nazw "pierwotne" dla funkcji TDE przy użyciu tych samych kluczy szyfrowania.
 
 -   [*GAŁĄŹ 18352*](https://issues.apache.org/jira/browse/HIVE-18352): wprowadzenie METADATAONLY opcji podczas wykonywania REPL zrzutu, który umożliwia integracji innych narzędzi.
 
--   [*GAŁĄŹ 18353*](https://issues.apache.org/jira/browse/HIVE-18353): CompactorMR powinny wywoływać jobclient.close() w celu wyzwolenia oczyszczania (Prabhu Joseph za pośrednictwem Thejas Nair).
+-   [*GAŁĄŹ 18353*](https://issues.apache.org/jira/browse/HIVE-18353): CompactorMR należy wywołać jobclient.close() w celu wyzwolenia oczyszczania (Prabhu Joseph za pośrednictwem Thejas Nair).
 
 -   [*GAŁĄŹ 18390*](https://issues.apache.org/jira/browse/HIVE-18390): IndexOutOfBoundsException widokiem partycjonowanym ColumnPruner — w przypadku wykonywania zapytań.
 
--   [*GAŁĄŹ 18429*](https://issues.apache.org/jira/browse/HIVE-18429): kompaktowania powinna obsługiwać przypadek, gdy go nie daje żadnych danych wyjściowych.
+-   [*GAŁĄŹ 18429*](https://issues.apache.org/jira/browse/HIVE-18429): Kompaktowanie powinna obsługiwać przypadek, gdy go nie daje żadnych danych wyjściowych.
 
--   [*GAŁĄŹ 18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: umożliwiają użytkownikom JDBC na przekazywanie informacji o pliku cookie za pomocą parametrów połączenia.
+-   [*GAŁĄŹ 18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: Umożliwiają użytkownikom JDBC przekazywania pliku cookie informacji za pośrednictwem parametrów połączenia.
 
 -   [*GAŁĄŹ 18460*](https://issues.apache.org/jira/browse/HIVE-18460): Kompaktorem nie przeszło właściwości tabeli w składniku zapisywania Orc.
 
 -   [*GAŁĄŹ 18467*](https://issues.apache.org/jira/browse/HIVE-18467): obsługuje zrzutu całego magazynu / załadować + Utwórz i upuszczania zdarzenia bazy danych (Anishek Agarwal przeglądane przez Sankar Hariappan).
 
--   [*GAŁĄŹ 18551*](https://issues.apache.org/jira/browse/HIVE-18551): Wektoryzacja: VectorMapOperator podejmie próbę zapisu zbyt, vector wiele kolumn dla prolongaty hybrydowych.
+-   [*GAŁĄŹ 18551*](https://issues.apache.org/jira/browse/HIVE-18551): Wektoryzacja: VectorMapOperator podejmie próbę zapisu dla prolongaty hybrydowe za dużo kolumn wektora.
 
 -   [*GAŁĄŹ 18587*](https://issues.apache.org/jira/browse/HIVE-18587): zdarzenie DML wstawiania może podejmować prób do obliczania sumy kontrolnej na katalogach.
 
--   [*GAŁĄŹ 18613*](https://issues.apache.org/jira/browse/HIVE-18613): rozszerzanie JsonSerDe do obsługi typu BINARY.
+-   [*GAŁĄŹ 18613*](https://issues.apache.org/jira/browse/HIVE-18613): Rozszerz JsonSerDe do obsługi typu BINARY.
 
--   [*GAŁĄŹ 18626*](https://issues.apache.org/jira/browse/HIVE-18626): obciążenia Repl "with" klauzula nie przekazuje konfiguracji do zadania.
+-   [*GAŁĄŹ 18626*](https://issues.apache.org/jira/browse/HIVE-18626): Obciążenia REPL "with" klauzula nie przekazuje konfiguracji do zadania.
 
 -   [*GAŁĄŹ 18660*](https://issues.apache.org/jira/browse/HIVE-18660): PCR nie rozróżnia partycji i wirtualne kolumny.
 
--   [*GAŁĄŹ 18754*](https://issues.apache.org/jira/browse/HIVE-18754): stan REPL powinien obsługiwać klauzula "with".
+-   [*GAŁĄŹ 18754*](https://issues.apache.org/jira/browse/HIVE-18754): Stan REPL powinien obsługiwać klauzula "with".
 
--   [*GAŁĄŹ 18754*](https://issues.apache.org/jira/browse/HIVE-18754): stan REPL powinien obsługiwać klauzula "with".
+-   [*GAŁĄŹ 18754*](https://issues.apache.org/jira/browse/HIVE-18754): Stan REPL powinien obsługiwać klauzula "with".
 
--   [*GAŁĄŹ 18788*](https://issues.apache.org/jira/browse/HIVE-18788): czyszczenie danych wejściowych w JDBC PreparedStatement.
+-   [*GAŁĄŹ 18788*](https://issues.apache.org/jira/browse/HIVE-18788): Wyczyść dane wejściowe, JDBC PreparedStatement.
 
--   [*GAŁĄŹ 18794*](https://issues.apache.org/jira/browse/HIVE-18794): obciążenia Repl "with" klauzula nie przekazuje konfiguracji do zadania dla tabel bez partycji.
+-   [*GAŁĄŹ 18794*](https://issues.apache.org/jira/browse/HIVE-18794): Obciążenia REPL "with" klauzula nie przekazuje konfiguracji do zadania dla tabel bez partycji.
 
--   [*GAŁĄŹ 18808*](https://issues.apache.org/jira/browse/HIVE-18808): wprowadzić bardziej niezawodne kompaktowania statystyki aktualizacji zakończy się niepowodzeniem.
+-   [*GAŁĄŹ 18808*](https://issues.apache.org/jira/browse/HIVE-18808): Kompaktowania upewnij się bardziej niezawodne, gdy statystyki aktualizacji zakończy się niepowodzeniem.
 
 -   [*GAŁĄŹ 18817*](https://issues.apache.org/jira/browse/HIVE-18817): ArrayIndexOutOfBounds wyjątek podczas odczytu ACID tabeli.
 
--   [*GAŁĄŹ 18833*](https://issues.apache.org/jira/browse/HIVE-18833): automatyczne scalanie ulegnie awarii po "insert do katalogu jako orcfile".
+-   [*GAŁĄŹ 18833*](https://issues.apache.org/jira/browse/HIVE-18833): Scal automatycznie zakończy się niepowodzeniem kiedy "insert do katalogu jako orcfile".
 
--   [*GAŁĄŹ 18879*](https://issues.apache.org/jira/browse/HIVE-18879): nie zezwalaj na element osadzony w UDFXPathUtil musi działać, jeśli xercesImpl.jar w ścieżce.
+-   [*GAŁĄŹ 18879*](https://issues.apache.org/jira/browse/HIVE-18879): Nie zezwalaj na element osadzony w UDFXPathUtil musi działać, jeśli xercesImpl.jar w ścieżce.
 
--   [*GAŁĄŹ 18907*](https://issues.apache.org/jira/browse/HIVE-18907): tworzenie narzędzie, aby rozwiązać problem acid indeks kluczy z HIVE 18817.
+-   [*GAŁĄŹ 18907*](https://issues.apache.org/jira/browse/HIVE-18907): Utwórz narzędzie, aby rozwiązać problem acid indeks kluczy z HIVE 18817.
 
 **Poprawki Apache hive 2.1.0:**
 
 -   [*GAŁĄŹ 14013*](https://issues.apache.org/jira/browse/HIVE-14013): Opis tabeli nie wyświetla prawidłowo unicode.
 
--   [*GAŁĄŹ 14205*](https://issues.apache.org/jira/browse/HIVE-14205): gałąź nie obsługuje typu Unii z format plików AVRO.
+-   [*GAŁĄŹ 14205*](https://issues.apache.org/jira/browse/HIVE-14205): Gałąź nie obsługuje typu Unii z format plików AVRO.
 
--   [*GAŁĄŹ 15563*](https://issues.apache.org/jira/browse/HIVE-15563): Ignoruj nieprawidłową operację stan przejścia wyjątek w SQLOperation.runQuery do udostępnienia rzeczywistych wyjątku.
+-   [*GAŁĄŹ 15563*](https://issues.apache.org/jira/browse/HIVE-15563): Ignoruj niedozwolona operacja stan przejścia wyjątek w SQLOperation.runQuery do udostępnienia rzeczywistych wyjątku.
 
--   [*GAŁĄŹ 15680*](https://issues.apache.org/jira/browse/HIVE-15680): niepoprawne wyniki podczas hive.optimize.index.filter=true i te same dwa razy w zapytaniu w trybie MR odwołuje się do tabeli ORC.
+-   [*GAŁĄŹ 15680*](https://issues.apache.org/jira/browse/HIVE-15680): Niepoprawne wyniki podczas hive.optimize.index.filter=true i te same dwa razy w zapytaniu w trybie MR odwołuje się do tabeli ORC.
 
--   [*GAŁĄŹ 15883*](https://issues.apache.org/jira/browse/HIVE-15883): bazy danych HBase mapowane tabeli Hive insert niepowodzenie miejsc dziesiętnych.
+-   [*GAŁĄŹ 15883*](https://issues.apache.org/jira/browse/HIVE-15883): Baza danych HBase mapowane tabeli Hive Wstawianie przecinka się nie powieść.
 
 -   [*GAŁĄŹ 16757*](https://issues.apache.org/jira/browse/HIVE-16757): Usuń wywołania AbstractRelNode.getRows przestarzałe.
 
--   [*GAŁĄŹ 16828*](https://issues.apache.org/jira/browse/HIVE-16828): włączone za pomocą CBO, zapytanie dotyczące widoków zgłasza IndexOutOfBoundException.
+-   [*GAŁĄŹ 16828*](https://issues.apache.org/jira/browse/HIVE-16828): Za pomocą CBO włączone zapytanie dotyczące widoków zgłasza IndexOutOfBoundException.
 
 -   [*GAŁĄŹ 17063*](https://issues.apache.org/jira/browse/HIVE-17063): Wstaw Zastąp partycji na niepowodzenie tabeli zewnętrznej po najpierw porzucić partycji.
 
--   [*GAŁĄŹ 17259*](https://issues.apache.org/jira/browse/HIVE-17259): JDBC technologii Hive nie rozpoznaje UNIONTYPE kolumn.
+-   [*GAŁĄŹ 17259*](https://issues.apache.org/jira/browse/HIVE-17259): Hive JDBC nie rozpoznaje UNIONTYPE kolumn.
 
 -   [*GAŁĄŹ 17530*](https://issues.apache.org/jira/browse/HIVE-17530): ClassCastException podczas konwertowania uniontype.
 
--   [*GAŁĄŹ 17600*](https://issues.apache.org/jira/browse/HIVE-17600): enforceBufferSize wprowadzić OrcFile do ustawienia użytkownika.
+-   [*GAŁĄŹ 17600*](https://issues.apache.org/jira/browse/HIVE-17600): Należy enforceBufferSize OrcFile firmy można ustawić użytkownika.
 
 -   [*GAŁĄŹ 17601*](https://issues.apache.org/jira/browse/HIVE-17601): poprawa obsługi błędów w LlapServiceDriver.
 
 -   [*GAŁĄŹ 17613*](https://issues.apache.org/jira/browse/HIVE-17613): Usuń obiekt pule dla alokacji krótka, w tym samym wątku.
 
--   [*GAŁĄŹ 17617*](https://issues.apache.org/jira/browse/HIVE-17617): pakiet zbiorczy pusty zestaw wyników powinien zawierać grupowanie zestawu pusty grupowania.
+-   [*GAŁĄŹ 17617*](https://issues.apache.org/jira/browse/HIVE-17617): Pakiet zbiorczy pusty zestaw wyników powinien zawierać grupowanie zestawu pusty grupowania.
 
--   [*GAŁĄŹ 17621*](https://issues.apache.org/jira/browse/HIVE-17621): Ustawienia lokacji Hive są ignorowane podczas HCatInputFormat split obliczeń.
+-   [*GAŁĄŹ 17621*](https://issues.apache.org/jira/browse/HIVE-17621): Ustawienia witryny hive są ignorowane podczas HCatInputFormat split obliczeń.
 
--   [*GAŁĄŹ 17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: mają konfiguracji listy dozwolonych/blacklist aby umożliwić buforowanie selektywne tabel/partycji i umożliwić odczytu podczas prewarming.
+-   [*GAŁĄŹ 17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: Config dozwolonych/blacklist trzeba umożliwić buforowanie selektywne tabel/partycji i umożliwić odczytu podczas prewarming.
 
 -   [*GAŁĄŹ 17636*](https://issues.apache.org/jira/browse/HIVE-17636): Dodawanie wielu\_agg.q test blobstores.
 
 -   [*GAŁĄŹ 17702*](https://issues.apache.org/jira/browse/HIVE-17702): niepoprawna isRepeating obsługi w czytniku dziesiętną w ORC.
 
--   [*GAŁĄŹ 17729*](https://issues.apache.org/jira/browse/HIVE-17729): Dodaj bazę danych i wyjaśnienia dotyczące elementu blobstore testów.
+-   [*GAŁĄŹ 17729*](https://issues.apache.org/jira/browse/HIVE-17729): Dodawanie bazy danych i wyjaśnienia dotyczące elementu blobstore testów.
 
 -   [*GAŁĄŹ 17731*](https://issues.apache.org/jira/browse/HIVE-17731): Dodaj opcję zgodności z poprzednimi wersjami dla użytkowników zewnętrznych do HIVE 11985.
 
--   [*GAŁĄŹ 17803*](https://issues.apache.org/jira/browse/HIVE-17803): za pomocą wielu zapytań Pig, 2 HCatStorers zapisu do tej samej tabeli będzie trample dane wyjściowe siebie nawzajem.
+-   [*GAŁĄŹ 17803*](https://issues.apache.org/jira/browse/HIVE-17803): Za pomocą wielu zapytań Pig 2 HCatStorers zapisu do tej samej tabeli będzie trample dane wyjściowe siebie nawzajem.
 
 -   [*GAŁĄŹ 17845*](https://issues.apache.org/jira/browse/HIVE-17845): Wstaw zakończy się niepowodzeniem, jeśli kolumny tabeli docelowej nie są małe litery.
 
 -   [*GAŁĄŹ 17900*](https://issues.apache.org/jira/browse/HIVE-17900): analizowanie statystyki dla kolumn wyzwolone przez Kompaktorem generuje źle sformułowane SQL za pomocą &gt; kolumna 1 partycji.
 
--   [*GAŁĄŹ 18006*](https://issues.apache.org/jira/browse/HIVE-18006): Optymalizowanie ilość pamięci zajmowaną przez HLLDenseRegister.
+-   [*GAŁĄŹ 18006*](https://issues.apache.org/jira/browse/HIVE-18006): Optymalizuj ilość pamięci zajmowaną przez HLLDenseRegister.
 
--   [*GAŁĄŹ 18026*](https://issues.apache.org/jira/browse/HIVE-18026): Optymalizacja konfiguracji nazwy głównej usługi webhcat Hive.
+-   [*GAŁĄŹ 18026*](https://issues.apache.org/jira/browse/HIVE-18026): Hive Optymalizacja konfiguracji nazwy głównej usługi webhcat.
 
--   [*GAŁĄŹ 18031*](https://issues.apache.org/jira/browse/HIVE-18031): Obsługa replikacji dla operacji Alter Database.
+-   [*GAŁĄŹ 18031*](https://issues.apache.org/jira/browse/HIVE-18031): Obsługa replikacji operację Alter Database.
 
 -   [*GAŁĄŹ 18090*](https://issues.apache.org/jira/browse/HIVE-18090): acid pulsu zakończy się niepowodzeniem, gdy Magazyn metadanych jest podłączone przy użyciu poświadczeń usługi hadoop.
 
--   [*GAŁĄŹ 18189*](https://issues.apache.org/jira/browse/HIVE-18189): kolejność według pozycji nie działa, gdy cbo jest wyłączona.
+-   [*GAŁĄŹ 18189*](https://issues.apache.org/jira/browse/HIVE-18189): Kolejność według pozycji nie działa, gdy cbo jest wyłączona.
 
--   [*GAŁĄŹ 18258*](https://issues.apache.org/jira/browse/HIVE-18258): Wektoryzacji: Zmniejsz po stronie grupy przez MERGEPARTIAL przy użyciu kolumn został przerwany.
+-   [*GAŁĄŹ 18258*](https://issues.apache.org/jira/browse/HIVE-18258): Wektoryzacja: Zmniejsz po stronie grupy przez MERGEPARTIAL przy użyciu kolumn został przerwany.
 
--   [*GAŁĄŹ 18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: llap szybkich operacji We/Wy przy użyciu przetwarzania potoku może prowadzić do za mało pamięci.
+-   [*GAŁĄŹ 18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: Szybkie llap We/Wy przy użyciu przetwarzania potoku może prowadzić do za mało pamięci.
 
 -   [*GAŁĄŹ 18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive nie powiodło się compact tabel znajdujących się w folderze, który jest właścicielem nie jest uruchomiona HiveMetaStore tożsamości.
 
--   [*GAŁĄŹ 18318*](https://issues.apache.org/jira/browse/HIVE-18318): odczytywania rekordu LLAP należy sprawdzić przerwania, nawet wtedy, gdy nie blokuje.
+-   [*GAŁĄŹ 18318*](https://issues.apache.org/jira/browse/HIVE-18318): Czytnik rekordu LLAP należy sprawdzić przerwania, nawet wtedy, gdy nie blokuje.
 
--   [*GAŁĄŹ 18326*](https://issues.apache.org/jira/browse/HIVE-18326): LLAP Tez scheduler — tylko wywłaszczenia zadania, jeśli istnieje zależność między nimi.
+-   [*GAŁĄŹ 18326*](https://issues.apache.org/jira/browse/HIVE-18326): Planer LLAP Tez — tylko wywłaszczenia zadania, jeśli istnieje zależność między nimi.
 
--   [*GAŁĄŹ 18327*](https://issues.apache.org/jira/browse/HIVE-18327): usunąć niepotrzebne zależności HiveConf MiniHiveKdc.
+-   [*GAŁĄŹ 18327*](https://issues.apache.org/jira/browse/HIVE-18327): Usuń niepotrzebne zależności HiveConf dla MiniHiveKdc.
 
 -   [*GAŁĄŹ 18331*](https://issues.apache.org/jira/browse/HIVE-18331): Dodaj relogin po upływie limitu czasu biletu TGT i niektóre rejestrowania/lambda.
 
@@ -431,103 +431,103 @@ Ta wersja zawiera gałąź 1.2.1 i Hive 2.1.0 oprócz następujące poprawki:
 
 -   [*GAŁĄŹ 18352*](https://issues.apache.org/jira/browse/HIVE-18352): wprowadzenie METADATAONLY opcji podczas wykonywania REPL zrzutu, który umożliwia integracji innych narzędzi.
 
--   [*GAŁĄŹ 18353*](https://issues.apache.org/jira/browse/HIVE-18353): CompactorMR powinny wywoływać jobclient.close() w celu wyzwolenia oczyszczania.
+-   [*GAŁĄŹ 18353*](https://issues.apache.org/jira/browse/HIVE-18353): CompactorMR należy wywołać jobclient.close() w celu wyzwolenia oczyszczania.
 
 -   [*GAŁĄŹ 18384*](https://issues.apache.org/jira/browse/HIVE-18384): ConcurrentModificationException log4j2.x biblioteki.
 
 -   [*GAŁĄŹ 18390*](https://issues.apache.org/jira/browse/HIVE-18390): IndexOutOfBoundsException widokiem partycjonowanym ColumnPruner — w przypadku wykonywania zapytań.
 
--   [*GAŁĄŹ 18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: umożliwiają użytkownikom JDBC na przekazywanie informacji o pliku cookie za pomocą parametrów połączenia.
+-   [*GAŁĄŹ 18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: Umożliwiają użytkownikom JDBC przekazywania pliku cookie informacji za pośrednictwem parametrów połączenia.
 
 -   [*GAŁĄŹ 18460*](https://issues.apache.org/jira/browse/HIVE-18460): Kompaktorem nie przeszło właściwości tabeli w składniku zapisywania Orc.
 
--   [*GAŁĄŹ 18462*](https://issues.apache.org/jira/browse/HIVE-18462): (wyjaśnienia sformatowane dla zapytania z mapy sprzężenia ma columnExprMap z nazwą kolumny niesformatowanego).
+-   [*GAŁĄŹ 18462*](https://issues.apache.org/jira/browse/HIVE-18462): (Wyjaśnienie sformatowane dla zapytania z mapy sprzężenia ma columnExprMap z nazwą kolumny niesformatowanego).
 
 -   [*GAŁĄŹ 18467*](https://issues.apache.org/jira/browse/HIVE-18467): obsługuje zrzutu całego magazynu / załadować + Utwórz i upuszczania zdarzenia bazy danych.
 
--   [*GAŁĄŹ 18488*](https://issues.apache.org/jira/browse/HIVE-18488): czytelnicy LLAP ORC brakuje niektórych sprawdzanie wartości null.
+-   [*GAŁĄŹ 18488*](https://issues.apache.org/jira/browse/HIVE-18488): Czytelnicy LLAP ORC brakuje niektórych sprawdzanie wartości null.
 
--   [*GAŁĄŹ 18490*](https://issues.apache.org/jira/browse/HIVE-18490): zapytanie za pomocą EXISTS i NOT EXISTS przy użyciu innego niż równoważne predykatu może utworzyć niewłaściwego wyniku.
+-   [*GAŁĄŹ 18490*](https://issues.apache.org/jira/browse/HIVE-18490): Zapytanie z EXISTS i NOT EXISTS przy użyciu innego niż równoważne predykatu może utworzyć niewłaściwego wyniku.
 
 -   [*GAŁĄŹ 18506*](https://issues.apache.org/jira/browse/HIVE-18506): LlapBaseInputFormat — indeks tablicy ujemna.
 
--   [*HIVE-18517*](https://issues.apache.org/jira/browse/HIVE-18517): Wektoryzacja: VectorMapOperator napraw, aby zaakceptować VRBs i sprawdź wektoryzowana flagi poprawnie do obsługi pamięci podręcznej LLAP).
+-   [*GAŁĄŹ 18517*](https://issues.apache.org/jira/browse/HIVE-18517): Wektoryzacja: VectorMapOperator poprawki, aby zaakceptować VRBs i sprawdź wektoryzowana flagi poprawnie do obsługi pamięci podręcznej LLAP).
 
 -   [*GAŁĄŹ 18523*](https://issues.apache.org/jira/browse/HIVE-18523): Usuń wiersz podsumowania nie istnieją żadne dane wejściowe.
 
--   [*GAŁĄŹ 18528*](https://issues.apache.org/jira/browse/HIVE-18528): statystyki agregacji w ObjectStore uzyskać niewłaściwego wyniku.
+-   [*GAŁĄŹ 18528*](https://issues.apache.org/jira/browse/HIVE-18528): Statystyki agregacji w ObjectStore Uzyskaj niewłaściwego wyniku.
 
--   [*GAŁĄŹ 18530*](https://issues.apache.org/jira/browse/HIVE-18530): replikacji należy pominąć tabeli MM (na razie).
+-   [*GAŁĄŹ 18530*](https://issues.apache.org/jira/browse/HIVE-18530): Replikacji należy pominąć tabeli MM (na razie).
 
 -   [*GAŁĄŹ 18548*](https://issues.apache.org/jira/browse/HIVE-18548): Napraw log4j importu.
 
--   [*GAŁĄŹ 18551*](https://issues.apache.org/jira/browse/HIVE-18551): Wektoryzacja: VectorMapOperator podejmie próbę zapisu zbyt, vector wiele kolumn dla prolongaty hybrydowych.
+-   [*GAŁĄŹ 18551*](https://issues.apache.org/jira/browse/HIVE-18551): Wektoryzacja: VectorMapOperator podejmie próbę zapisu dla prolongaty hybrydowe za dużo kolumn wektora.
 
 -   [*GAŁĄŹ 18577*](https://issues.apache.org/jira/browse/HIVE-18577): SemanticAnalyzer.validate ma kilka wywołań sensu magazynu metadanych.
 
 -   [*GAŁĄŹ 18587*](https://issues.apache.org/jira/browse/HIVE-18587): zdarzenie DML wstawiania może podejmować prób do obliczania sumy kontrolnej na katalogach.
 
--   [*GAŁĄŹ 18597*](https://issues.apache.org/jira/browse/HIVE-18597): LLAP: zawsze pakiet jar API log4j2 dla org.apache.log4j.
+-   [*GAŁĄŹ 18597*](https://issues.apache.org/jira/browse/HIVE-18597): LLAP: Zawsze Utwórz pakiet jar API log4j2 dla org.apache.log4j.
 
--   [*GAŁĄŹ 18613*](https://issues.apache.org/jira/browse/HIVE-18613): rozszerzanie JsonSerDe do obsługi typu BINARY.
+-   [*GAŁĄŹ 18613*](https://issues.apache.org/jira/browse/HIVE-18613): Rozszerz JsonSerDe do obsługi typu BINARY.
 
--   [*GAŁĄŹ 18626*](https://issues.apache.org/jira/browse/HIVE-18626): obciążenia Repl "with" klauzula nie przekazuje konfiguracji do zadania.
+-   [*GAŁĄŹ 18626*](https://issues.apache.org/jira/browse/HIVE-18626): Obciążenia REPL "with" klauzula nie przekazuje konfiguracji do zadania.
 
 -   [*GAŁĄŹ 18643*](https://issues.apache.org/jira/browse/HIVE-18643): nie zaznaczaj zarchiwizowane partycji ACID ops.
 
 -   [*GAŁĄŹ 18660*](https://issues.apache.org/jira/browse/HIVE-18660): PCR nie rozróżnia partycji i wirtualne kolumny.
 
--   [*GAŁĄŹ 18754*](https://issues.apache.org/jira/browse/HIVE-18754): stan REPL powinien obsługiwać klauzula "with".
+-   [*GAŁĄŹ 18754*](https://issues.apache.org/jira/browse/HIVE-18754): Stan REPL powinien obsługiwać klauzula "with".
 
--   [*GAŁĄŹ 18788*](https://issues.apache.org/jira/browse/HIVE-18788): czyszczenie danych wejściowych w JDBC PreparedStatement.
+-   [*GAŁĄŹ 18788*](https://issues.apache.org/jira/browse/HIVE-18788): Wyczyść dane wejściowe, JDBC PreparedStatement.
 
--   [*GAŁĄŹ 18794*](https://issues.apache.org/jira/browse/HIVE-18794): obciążenia Repl "with" klauzula nie przekazuje konfiguracji do zadania dla tabel bez partycji.
+-   [*GAŁĄŹ 18794*](https://issues.apache.org/jira/browse/HIVE-18794): Obciążenia REPL "with" klauzula nie przekazuje konfiguracji do zadania dla tabel bez partycji.
 
--   [*GAŁĄŹ 18808*](https://issues.apache.org/jira/browse/HIVE-18808): wprowadzić bardziej niezawodne kompaktowania statystyki aktualizacji zakończy się niepowodzeniem.
+-   [*GAŁĄŹ 18808*](https://issues.apache.org/jira/browse/HIVE-18808): Kompaktowania upewnij się bardziej niezawodne, gdy statystyki aktualizacji zakończy się niepowodzeniem.
 
--   [*GAŁĄŹ 18815*](https://issues.apache.org/jira/browse/HIVE-18815): Usuń nieużywane funkcja HPL/SQL.
+-   [*GAŁĄŹ 18815*](https://issues.apache.org/jira/browse/HIVE-18815): Usuń nieużywane funkcji HPL/SQL.
 
 -   [*GAŁĄŹ 18817*](https://issues.apache.org/jira/browse/HIVE-18817): ArrayIndexOutOfBounds wyjątek podczas odczytu ACID tabeli.
 
--   [*GAŁĄŹ 18833*](https://issues.apache.org/jira/browse/HIVE-18833): automatyczne scalanie ulegnie awarii po "insert do katalogu jako orcfile".
+-   [*GAŁĄŹ 18833*](https://issues.apache.org/jira/browse/HIVE-18833): Scal automatycznie zakończy się niepowodzeniem kiedy "insert do katalogu jako orcfile".
 
--   [*GAŁĄŹ 18879*](https://issues.apache.org/jira/browse/HIVE-18879): nie zezwalaj na element osadzony w UDFXPathUtil musi działać, jeśli xercesImpl.jar w ścieżce.
+-   [*GAŁĄŹ 18879*](https://issues.apache.org/jira/browse/HIVE-18879): Nie zezwalaj na element osadzony w UDFXPathUtil musi działać, jeśli xercesImpl.jar w ścieżce.
 
--   [*GAŁĄŹ 18944*](https://issues.apache.org/jira/browse/HIVE-18944): polecenie Groupping Ustawia położenie niepoprawna podczas DPP.
+-   [*GAŁĄŹ 18944*](https://issues.apache.org/jira/browse/HIVE-18944): Polecenie GroupPing Ustawia położenie jest niepoprawnie ustawiona podczas DPP.
 
 ### <a name="kafka"></a>Kafka
 
 Ta wersja zawiera następujące poprawki Apache i Kafka 1.0.0.
 
--   [KAFKA 4827](https://issues.apache.org/jira/browse/KAFKA-4827): łączenie z platformą Kafka: błąd przy użyciu znaków specjalnych w nazwie łącznika.
+-   [PLATFORMA KAFKA 4827](https://issues.apache.org/jira/browse/KAFKA-4827): Łączenie z platformą Kafka: błąd przy użyciu znaków specjalnych w nazwie łącznika.
 
--   [Platforma KAFKA 6118](https://issues.apache.org/jira/browse/KAFKA-6118): błędu przejściowego podczas kafka.api.SaslScramSslEndToEndAuthorizationTest.testTwoConsumersWithDifferentSaslCredentials.
+-   [PLATFORMA KAFKA 6118](https://issues.apache.org/jira/browse/KAFKA-6118): Błąd przejściowy w kafka.api.SaslScramSslEndToEndAuthorizationTest.testTwoConsumersWithDifferentSaslCredentials.
 
--   [Platforma KAFKA 6156](https://issues.apache.org/jira/browse/KAFKA-6156): JmxReporter nie może obsługiwać ścieżki katalogu stylu systemu windows.
+-   [PLATFORMA KAFKA 6156](https://issues.apache.org/jira/browse/KAFKA-6156): JmxReporter nie może obsłużyć ścieżki katalogu stylu systemu windows.
 
--   [Platforma KAFKA 6164](https://issues.apache.org/jira/browse/KAFKA-6164): wątki ClientQuotaManager zapobiec zamknięcia po wystąpieniu błędu podczas ładowania dzienniki.
+-   [PLATFORMA KAFKA 6164](https://issues.apache.org/jira/browse/KAFKA-6164): Wątki ClientQuotaManager uniemożliwiają zamknięcia po wystąpieniu błędu podczas ładowania dzienniki.
 
--   [Platforma KAFKA 6167](https://issues.apache.org/jira/browse/KAFKA-6167): sygnatura czasowa w katalogu strumieni zawiera dwukropek, który jest niedozwolony znak.
+-   [PLATFORMA KAFKA 6167](https://issues.apache.org/jira/browse/KAFKA-6167): Sygnatura czasowa w katalogu strumieni zawiera dwukropek, który jest niedozwolony znak.
 
--   [Platforma KAFKA 6179](https://issues.apache.org/jira/browse/KAFKA-6179): RecordQueue.clear() usuwaj MinTimestampTracker użytkownika przechowywane listy.
+-   [PLATFORMA KAFKA 6179](https://issues.apache.org/jira/browse/KAFKA-6179): RecordQueue.clear() usuwaj MinTimestampTracker użytkownika przechowywane listy.
 
--   [Platforma KAFKA 6185](https://issues.apache.org/jira/browse/KAFKA-6185): selektor przeciek pamięci z wysokie prawdopodobieństwo za mało pamięci w przypadku programu w dół do konwersji.
+-   [PLATFORMA KAFKA 6185](https://issues.apache.org/jira/browse/KAFKA-6185): Selektor przeciek pamięci, za pomocą wysokie prawdopodobieństwo za mało pamięci w przypadku programu w dół do konwersji.
 
--   [Platforma KAFKA 6190](https://issues.apache.org/jira/browse/KAFKA-6190): GlobalKTable nie kończy, przywracanie podczas używania wiadomości transakcyjnych.
+-   [PLATFORMA KAFKA 6190](https://issues.apache.org/jira/browse/KAFKA-6190): GlobalKTable nie kończy, przywracanie podczas używania wiadomości transakcyjnych.
 
--   [Platforma KAFKA 6210](https://issues.apache.org/jira/browse/KAFKA-6210): IllegalArgumentException użycie 1.0.0 inter.broker.protocol.version lub log.message.format.version.
+-   [PLATFORMA KAFKA 6210](https://issues.apache.org/jira/browse/KAFKA-6210): IllegalArgumentException, jeżeli zastosowano 1.0.0 inter.broker.protocol.version lub log.message.format.version.
 
--   [Platforma KAFKA 6214](https://issues.apache.org/jira/browse/KAFKA-6214): przy użyciu wstrzymania repliki z pamięci stanu magazynu powoduje, że strumienie ulega awarii.
+-   [PLATFORMA KAFKA 6214](https://issues.apache.org/jira/browse/KAFKA-6214): Użycie replik w stanie wstrzymania pamięci magazynu stanów powoduje, że strumienie ulega awarii.
 
--   [Platforma KAFKA 6215](https://issues.apache.org/jira/browse/KAFKA-6215): KafkaStreamsTest zakończy się niepowodzeniem w magistrali.
+-   [PLATFORMA KAFKA 6215](https://issues.apache.org/jira/browse/KAFKA-6215): KafkaStreamsTest kończy się niepowodzeniem w magistrali.
 
--   [Platforma KAFKA 6238](https://issues.apache.org/jira/browse/KAFKA-6238): problemy z wersją protokołu podczas stosowania uaktualnienia stopniowego 1.0.0.
+-   [PLATFORMA KAFKA 6238](https://issues.apache.org/jira/browse/KAFKA-6238): Problemy z wersją protokołu podczas stosowania uaktualnienia stopniowego 1.0.0.
 
--   [Platforma KAFKA 6260](https://issues.apache.org/jira/browse/KAFKA-6260): AbstractCoordinator nie wyraźnie obsługi wyjątku o wartości NULL.
+-   [PLATFORMA KAFKA 6260](https://issues.apache.org/jira/browse/KAFKA-6260): AbstractCoordinator nie wyraźnie obsługuje wyjątku o wartości NULL.
 
--   [Platforma KAFKA 6261](https://issues.apache.org/jira/browse/KAFKA-6261): żądania, rejestrowania zgłasza wyjątek, jeśli potwierdzeń = 0.
+-   [PLATFORMA KAFKA 6261](https://issues.apache.org/jira/browse/KAFKA-6261): Żądania, rejestrowania zgłasza wyjątek, jeśli potwierdzeń = 0.
 
--   [Platforma KAFKA 6274](https://issues.apache.org/jira/browse/KAFKA-6274): stan źródłowy KTable zwiększyć przechowywanie generowanych automatycznie nazw.
+-   [PLATFORMA KAFKA 6274](https://issues.apache.org/jira/browse/KAFKA-6274): Zwiększ generowanych automatycznie nazw źródeł KTable stanu magazynu.
 
 ### <a name="mahout"></a>Mahout
 
@@ -547,7 +547,7 @@ W HDP 2.5.x i 2.6.x możemy usunąć biblioteki "commons httpclient" z bibliotek
 
 Ta wersja zawiera Oozie 4.2.0 z następujących poprawkami Apache.
 
--   [OOZIE 2571](https://issues.apache.org/jira/browse/OOZIE-2571): dodać właściwość Maven spark.scala.binary.version, Scala 2.11 mogą być używane.
+-   [OOZIE 2571](https://issues.apache.org/jira/browse/OOZIE-2571): Dodaj właściwość Maven spark.scala.binary.version, dzięki czemu można Scala 2.11.
 
 -   [OOZIE 2606](https://issues.apache.org/jira/browse/OOZIE-2606): Ustaw spark.yarn.jars naprawić Spark 2.0 przy użyciu programu Oozie.
 
@@ -555,63 +555,63 @@ Ta wersja zawiera Oozie 4.2.0 z następujących poprawkami Apache.
 
 -   [OOZIE 2787](https://issues.apache.org/jira/browse/OOZIE-2787): Oozie dystrybuuje jar aplikacji dwa razy, dzięki czemu zadanie platformy Apache spark się nie powieść.
 
--   [OOZIE 2792](https://issues.apache.org/jira/browse/OOZIE-2792): Akcja Hive2 jest nie podczas analizowania Identyfikatora aplikacji Spark z pliku dziennika prawidłowo po Hive na platformie Spark.
+-   [OOZIE 2792](https://issues.apache.org/jira/browse/OOZIE-2792): Hive2 akcji jest nie podczas analizowania Identyfikatora aplikacji Spark z pliku dziennika prawidłowo po Hive na platformie Spark.
 
--   [OOZIE 2799](https://issues.apache.org/jira/browse/OOZIE-2799): Lokalizacja dziennika ustawienia dla modułu spark sql na gałąź.
+-   [OOZIE 2799](https://issues.apache.org/jira/browse/OOZIE-2799): Lokalizacja dziennika ustawienia modułu spark sql na gałąź.
 
--   [OOZIE 2802](https://issues.apache.org/jira/browse/OOZIE-2802): Spark niepowodzenie akcji na platformie Spark 2.1.0 z powodu zduplikowane sharelibs.
+-   [OOZIE 2802](https://issues.apache.org/jira/browse/OOZIE-2802): Platforma Spark niepowodzenie akcji na platformie Spark 2.1.0 z powodu zduplikowane sharelibs.
 
--   [OOZIE 2923](https://issues.apache.org/jira/browse/OOZIE-2923): opcje poprawić Spark analizy.
+-   [OOZIE 2923](https://issues.apache.org/jira/browse/OOZIE-2923): Zwiększ Spark opcji analizy.
 
--   [OOZIE 3109](https://issues.apache.org/jira/browse/OOZIE-3109): funkcja o wartościach SKA: skrypty międzywitrynowe: zostaną uwzględnione.
+-   [OOZIE 3109](https://issues.apache.org/jira/browse/OOZIE-3109): FUNKCJA O WARTOŚCIACH SKA: Wykonywanie skryptów między witrynami: Uwzględnione.
 
 -   [OOZIE 3139](https://issues.apache.org/jira/browse/OOZIE-3139): Oozie niepoprawnie sprawdza poprawność przepływu pracy.
 
--   [OOZIE 3167](https://issues.apache.org/jira/browse/OOZIE-3167): tomcat uaktualnienia wersji Oozie 4.3 gałęzi.
+-   [OOZIE 3167](https://issues.apache.org/jira/browse/OOZIE-3167): Uaktualnij wersję serwera tomcat na Oozie 4.3, gałąź.
 
 ### <a name="phoenix"></a>Phoenix
 
 Ta wersja zawiera następujące poprawki Apache i Phoenix 4.7.0:
 
--   [PHOENIX 1751](https://issues.apache.org/jira/browse/PHOENIX-1751): wykonywania agregacje, sortowania itd., w preScannerNext zamiast postScannerOpen.
+-   [PHOENIX 1751](https://issues.apache.org/jira/browse/PHOENIX-1751): Wykonaj sortowania itd., w preScannerNext zamiast postScannerOpen agregacji.
 
--   [PHOENIX 2714](https://issues.apache.org/jira/browse/PHOENIX-2714): poprawne bajt Szacowanie w BaseResultIterators i udostępnianie interfejsu.
+-   [PHOENIX 2714](https://issues.apache.org/jira/browse/PHOENIX-2714): Popraw oszacowanie bajtów w BaseResultIterators i udostępnianie interfejsu.
 
--   [PHOENIX 2724](https://issues.apache.org/jira/browse/PHOENIX-2724): zapytanie z dużą liczbą guideposts jest działa wolniej w porównaniu do nie statystyk.
+-   [PHOENIX 2724](https://issues.apache.org/jira/browse/PHOENIX-2724): Zapytanie z dużą liczbą guideposts jest działa wolniej w porównaniu do nie statystyk.
 
--   [PHOENIX 2855](https://issues.apache.org/jira/browse/PHOENIX-2855): TimeRange przyrostu obejście nie serializacji dla bazy danych HBase 1.2.
+-   [PHOENIX 2855](https://issues.apache.org/jira/browse/PHOENIX-2855): Obejście: przyrostu TimeRange nie serializacji dla bazy danych HBase 1.2.
 
--   [PHOENIX 3023](https://issues.apache.org/jira/browse/PHOENIX-3023): obniżyć wydajność, gdy limit zapytania są wykonywane w sposób równoległy, domyślnie.
+-   [PHOENIX 3023](https://issues.apache.org/jira/browse/PHOENIX-3023): Niska wydajność podczas limit zapytania są wykonywane w sposób równoległy, domyślnie.
 
--   [PHOENIX 3040](https://issues.apache.org/jira/browse/PHOENIX-3040): nie używaj guideposts szeregowo wykonania zapytania.
+-   [PHOENIX 3040](https://issues.apache.org/jira/browse/PHOENIX-3040): Nie używaj guideposts szeregowo wykonania zapytania.
 
--   [PHOENIX 3112](https://issues.apache.org/jira/browse/PHOENIX-3112): skanowanie częściowe wierszy nie są obsługiwane poprawnie.
+-   [PHOENIX 3112](https://issues.apache.org/jira/browse/PHOENIX-3112): Skanowanie częściowe wierszy nie są obsługiwane poprawnie.
 
 -   [PHOENIX 3240](https://issues.apache.org/jira/browse/PHOENIX-3240): ClassCastException z języka Pig modułu ładującego.
 
--   [PHOENIX 3452](https://issues.apache.org/jira/browse/PHOENIX-3452): wartości null FIRST/NULL ostatniego powinna nie wpływa na czy GROUP BY jest zamówienia zachowania.
+-   [PHOENIX 3452](https://issues.apache.org/jira/browse/PHOENIX-3452): Wartości null FIRST/NULL ostatniego powinna nie wpływa na czy GROUP BY jest zamówienia zachowania.
 
--   [PHOENIX 3469](https://issues.apache.org/jira/browse/PHOENIX-3469): kolejność sortowania niepoprawne DESC podstawowy klucz dla wartości null ostatniego / najpierw null.
+-   [PHOENIX 3469](https://issues.apache.org/jira/browse/PHOENIX-3469): Kolejność sortowania niepoprawne DESC podstawowy klucz dla wartości null ostatniego / null pierwszy.
 
--   [PHOENIX 3789](https://issues.apache.org/jira/browse/PHOENIX-3789): wykonywanie wielu regionów indeksu konserwacji wywołań w postBatchMutateIndispensably.
+-   [PHOENIX 3789](https://issues.apache.org/jira/browse/PHOENIX-3789): Wykonaj wywołania konserwacja indeksu między regionami w postBatchMutateIndispensably.
 
--   [PHOENIX 3865](https://issues.apache.org/jira/browse/PHOENIX-3865): IS NULL nie zwracać poprawnych wyników po pierwszym rodziny kolumn nie filtrowane względem.
+-   [PHOENIX 3865](https://issues.apache.org/jira/browse/PHOENIX-3865): JEST wartością NULL nie zwracać poprawnych wyników, po pierwszym rodziny kolumn nie filtrowane względem.
 
--   [PHOENIX 4290](https://issues.apache.org/jira/browse/PHOENIX-4290): pełne skanowanie tabeli wykonywane do usunięcia z tabeli indeksów niezmienne.
+-   [PHOENIX 4290](https://issues.apache.org/jira/browse/PHOENIX-4290): Pełne skanowanie tabeli wykonywane do usunięcia z tabeli indeksów niezmienne.
 
--   [PHOENIX 4373](https://issues.apache.org/jira/browse/PHOENIX-4373): lokalnego indeksu o zmiennej długości klucza może mieć wartości null podczas upserting końcowe.
+-   [PHOENIX 4373](https://issues.apache.org/jira/browse/PHOENIX-4373): Lokalnego indeksu o zmiennej długości klucza może mieć wartości null podczas upserting końcowe.
 
 -   [PHOENIX 4466](https://issues.apache.org/jira/browse/PHOENIX-4466): java.lang.RuntimeException: kod odpowiedzi 500 — wykonywanie zadania spark, aby nawiązać połączenie phoenix query server oraz ładowanie danych.
 
--   [PHOENIX 4489](https://issues.apache.org/jira/browse/PHOENIX-4489): wyciek połączenia bazy danych HBase w zadaniach Phoenix MR.
+-   [PHOENIX 4489](https://issues.apache.org/jira/browse/PHOENIX-4489): Wyciek połączenia bazy danych HBase w zadaniach Phoenix MR.
 
--   [PHOENIX 4525](https://issues.apache.org/jira/browse/PHOENIX-4525): przepełnienie liczby całkowitej GroupBy wykonywania.
+-   [PHOENIX 4525](https://issues.apache.org/jira/browse/PHOENIX-4525): Przepełnienie liczby całkowitej GroupBy wykonywania.
 
--   [PHOENIX 4560](https://issues.apache.org/jira/browse/PHOENIX-4560): ORDER BY, za pomocą GROUP BY nie działa, jeśli ma miejsce w kolumnie klucza produktu.
+-   [PHOENIX 4560](https://issues.apache.org/jira/browse/PHOENIX-4560): Klauzula ORDER BY, za pomocą GROUP BY nie działa, jeśli ma miejsce w kolumnie klucza produktu.
 
 -   [PHOENIX 4586](https://issues.apache.org/jira/browse/PHOENIX-4586): Wybierz UPSERT nie przyjmuje w konto operatorów porównania dla podzapytania.
 
--   [PHOENIX 4588](https://issues.apache.org/jira/browse/PHOENIX-4588): klonowanie wyrażenie również, jeśli jego elementy podrzędne mają Determinism.PER\_WYWOŁANIA.
+-   [PHOENIX 4588](https://issues.apache.org/jira/browse/PHOENIX-4588): Klonowanie wyrażenie również, jeśli jego elementy podrzędne mają Determinism.PER\_WYWOŁANIA.
 
 ### <a name="pig"></a>Pig
 
@@ -619,27 +619,27 @@ Ta wersja zawiera Pig 0.16.0 z następujących poprawkami Apache.
 
 -   [PIG 5159](https://issues.apache.org/jira/browse/PIG-5159): Napraw Pig nie zapisywanie grunt historii.
 
--   [PIG 5175](https://issues.apache.org/jira/browse/PIG-5175): uaktualnienie jruby do 1.7.26.
+-   [PIG 5175](https://issues.apache.org/jira/browse/PIG-5175): Uaktualnij jruby do 1.7.26.
 
 ### <a name="ranger"></a>Ranger
 
 Ta wersja zawiera następujące poprawki Apache i Ranger 0.7.0:
 
--   [RANGER 1805](https://issues.apache.org/jira/browse/RANGER-1805): kod usprawnienie najlepszych rozwiązań js.
+-   [RANGER 1805](https://issues.apache.org/jira/browse/RANGER-1805): Poprawa kodu do najlepszych rozwiązań js.
 
--   [RANGER 1960](https://issues.apache.org/jira/browse/RANGER-1960): uwzględnienia nazwy tabeli migawki do usunięcia.
+-   [RANGER 1960](https://issues.apache.org/jira/browse/RANGER-1960): Uwzględnić nazwy tabeli migawki do usunięcia.
 
--   [RANGER 1982](https://issues.apache.org/jira/browse/RANGER-1982): poprawa błędów analizy metryki i Ranger administratora platformy Ranger usługi KMS.
+-   [RANGER 1982](https://issues.apache.org/jira/browse/RANGER-1982): Poprawa błędów analizy metryki i Ranger administratora platformy Ranger usługi KMS.
 
--   [RANGER 1984](https://issues.apache.org/jira/browse/RANGER-1984): rekordów dziennika inspekcji bazy danych Hbase mogą nie być wyświetlane wszystkie znaczniki skojarzone z używanych kolumn.
+-   [RANGER 1984](https://issues.apache.org/jira/browse/RANGER-1984): Rekordy dziennika inspekcji bazy danych Hbase nie mogą być wyświetlane wszystkie znaczniki skojarzone z używanych kolumn.
 
 -   [RANGER 1988](https://issues.apache.org/jira/browse/RANGER-1988): Napraw losowości niebezpieczne.
 
--   [RANGER 1990](https://issues.apache.org/jira/browse/RANGER-1990): Obsługa Dodaj One-way SSL MySQL w administratora platformy Ranger.
+-   [RANGER 1990](https://issues.apache.org/jira/browse/RANGER-1990): Dodanie obsługi One-way SSL MySQL w administratora platformy Ranger.
 
 -   [RANGER 2006](https://issues.apache.org/jira/browse/RANGER-2006): Rozwiązywanie problemów wykrytych przez program statycznej analizy kodu w usersync ranger źródła synchronizacji ldap.
 
--   [RANGER 2008](https://issues.apache.org/jira/browse/RANGER-2008): warunki zasad wielowierszowy kończy się niepowodzeniem oceny zasad.
+-   [RANGER 2008](https://issues.apache.org/jira/browse/RANGER-2008): Warunki zasady wielowierszowy kończy się niepowodzeniem oceny zasad.
 
 ### <a name="slider"></a>Suwak
 
@@ -649,127 +649,127 @@ Ta wersja zawiera suwaka 0.92.0 z nie dodatkowe poprawki Apache.
 
 Ta wersja zawiera następujące poprawki Apache i Spark 2.3.0:
 
--   [Platforma SPARK 13587](https://issues.apache.org/jira/browse/SPARK-13587): virtualenv pomocy technicznej w pyspark.
+-   [PLATFORMA SPARK 13587](https://issues.apache.org/jira/browse/SPARK-13587): Obsługuje virtualenv w pyspark.
 
--   [Platforma SPARK 19964](https://issues.apache.org/jira/browse/SPARK-19964): Unikaj odczytywanie ich z repozytoriów zdalnych w SparkSubmitSuite.
+-   [PLATFORMA SPARK 19964](https://issues.apache.org/jira/browse/SPARK-19964): Należy unikać odczytywanie ich z repozytoriów zdalnych w SparkSubmitSuite.
 
--   [Platforma SPARK 22882](https://issues.apache.org/jira/browse/SPARK-22882): testowanie ML przesyłanie strumieniowe ze strukturą: ml.classification.
+-   [PLATFORMA SPARK 22882](https://issues.apache.org/jira/browse/SPARK-22882): Testowanie ML przesyłanie strumieniowe ze strukturą: ml.classification.
 
--   [Platforma SPARK 22915](https://issues.apache.org/jira/browse/SPARK-22915): przesyłanie strumieniowe testów dla spark.ml.feature od N do Z.
+-   [PLATFORMA SPARK 22915](https://issues.apache.org/jira/browse/SPARK-22915): Przesyłanie strumieniowe testów dla spark.ml.feature od N do Z.
 
--   [Platforma SPARK 23020](https://issues.apache.org/jira/browse/SPARK-23020): Napraw innej sytuacji wyścigu podczas testów w trakcie uruchamiania.
+-   [PLATFORMA SPARK 23020](https://issues.apache.org/jira/browse/SPARK-23020): Napraw innej sytuacji wyścigu podczas testów w trakcie uruchamiania.
 
--   [Platforma SPARK 23040](https://issues.apache.org/jira/browse/SPARK-23040): zwraca przerywania iteratora dla czytnika losowa.
+-   [PLATFORMA SPARK 23040](https://issues.apache.org/jira/browse/SPARK-23040): Zwraca iterator przerywania dla czytnika losowa.
 
--   [Platforma SPARK 23173](https://issues.apache.org/jira/browse/SPARK-23173): Unikaj tworzenia plików parquet w uszkodzona podczas ładowania danych z formatu JSON.
+-   [PLATFORMA SPARK 23173](https://issues.apache.org/jira/browse/SPARK-23173): Unikaj tworzenia plików parquet w uszkodzona podczas ładowania danych z formatu JSON.
 
--   [Platforma SPARK 23264](https://issues.apache.org/jira/browse/SPARK-23264): Napraw scala. MatchError w literals.sql.out.
+-   [PLATFORMA SPARK 23264](https://issues.apache.org/jira/browse/SPARK-23264): Napraw scala. MatchError w literals.sql.out.
 
--   [Platforma SPARK 23288](https://issues.apache.org/jira/browse/SPARK-23288): poprawka danych wyjściowych metryki za pomocą polecenia parquet ujścia.
+-   [PLATFORMA SPARK 23288](https://issues.apache.org/jira/browse/SPARK-23288): Usuń metryki danych wyjściowych z parquet ujścia.
 
--   [Platforma SPARK 23329](https://issues.apache.org/jira/browse/SPARK-23329): Napraw dokumentacji funkcje trygonometryczne.
+-   [PLATFORMA SPARK 23329](https://issues.apache.org/jira/browse/SPARK-23329): Naprawiono dokumentację funkcje trygonometryczne.
 
--   [Platforma SPARK 23406](https://issues.apache.org/jira/browse/SPARK-23406): Włącz strumienia do strumienia samosprzężenia dla gałęzi 2.3.
+-   [PLATFORMA SPARK 23406](https://issues.apache.org/jira/browse/SPARK-23406): Włącz samosprzężenia dla gałęzi 2.3 strumienia do strumienia.
 
--   [SPARK 23434](https://issues.apache.org/jira/browse/SPARK-23434): Spark nie należy ostrzec \`katalogu metadanych\` dla ścieżki pliku system plików HDFS.
+-   [PLATFORMA SPARK 23434](https://issues.apache.org/jira/browse/SPARK-23434): Platforma Spark nie należy ostrzec \`katalogu metadanych\` dla ścieżki pliku system plików HDFS.
 
--   [Platforma SPARK 23436](https://issues.apache.org/jira/browse/SPARK-23436): wnioskowanie partycji jako data, tylko wtedy, gdy można rzutować do daty.
+-   [PLATFORMA SPARK 23436](https://issues.apache.org/jira/browse/SPARK-23436): Wnioskowanie partycji jako data, tylko wtedy, gdy można rzutować do daty.
 
--   [Platforma SPARK 23457](https://issues.apache.org/jira/browse/SPARK-23457): najpierw zarejestrować odbiorników ukończenia zadania w ParquetFileFormat.
+-   [PLATFORMA SPARK 23457](https://issues.apache.org/jira/browse/SPARK-23457): Rejestrowanie odbiorników ukończenia zadania, najpierw w ParquetFileFormat.
 
 -   [Platforma SPARK 23462](https://issues.apache.org/jira/browse/SPARK-23462): poprawa Brak komunikatu o błędzie pola w \`StructType\`.
 
--   [Platforma SPARK 23490](https://issues.apache.org/jira/browse/SPARK-23490): Sprawdź storage.locationUri przy użyciu istniejącej tabeli w CreateTable.
+-   [PLATFORMA SPARK 23490](https://issues.apache.org/jira/browse/SPARK-23490): Sprawdź storage.locationUri przy użyciu istniejącej tabeli w CreateTable.
 
--   [Platforma SPARK 23524](https://issues.apache.org/jira/browse/SPARK-23524): bloki losowego lokalnego Big nie powinna być sprawdzana jest uszkodzony.
+-   [PLATFORMA SPARK 23524](https://issues.apache.org/jira/browse/SPARK-23524): Bloki losowego lokalnego big nie powinna być sprawdzana jest uszkodzony.
 
--   [Platforma SPARK 23525](https://issues.apache.org/jira/browse/SPARK-23525): Obsługa ALTER zmiany kolumny KOMENTARZA tabeli dla tabeli hive za pomocą zewnętrznego.
+-   [PLATFORMA SPARK 23525](https://issues.apache.org/jira/browse/SPARK-23525): Obsługuje ALTER KOMENTARZA kolumny tabeli zmian dla tabeli hive za pomocą zewnętrznego.
 
--   [Platforma SPARK 23553](https://issues.apache.org/jira/browse/SPARK-23553): testy nie należy zakładać, wartością domyślną \`spark.sql.sources.default\`.
+-   [PLATFORMA SPARK 23553](https://issues.apache.org/jira/browse/SPARK-23553): Testy nie należy zakładać, wartością domyślną \`spark.sql.sources.default\`.
 
--   [SPARK 23569](https://issues.apache.org/jira/browse/SPARK-23569): Zezwalaj na pandas\_funkcji zdefiniowanej przez użytkownika do pracy z funkcjami adnotację typu stylu języku python3.
+-   [PLATFORMA SPARK 23569](https://issues.apache.org/jira/browse/SPARK-23569): Zezwalaj na pandas\_funkcji zdefiniowanej przez użytkownika do pracy z funkcjami adnotację typu stylu języku python3.
 
--   [Platforma SPARK 23570](https://issues.apache.org/jira/browse/SPARK-23570): dodatek Spark 2.3.0 HiveExternalCatalogVersionsSuite.
+-   [PLATFORMA SPARK 23570](https://issues.apache.org/jira/browse/SPARK-23570): Dodaj Spark 2.3.0 HiveExternalCatalogVersionsSuite.
 
--   [Platforma SPARK 23598](https://issues.apache.org/jira/browse/SPARK-23598): oznaczanie metod w BufferedRowIterator publicznej, aby uniknąć błąd w czasie wykonywania dla dużych zapytania.
+-   [PLATFORMA SPARK 23598](https://issues.apache.org/jira/browse/SPARK-23598): Oznaczanie metod w BufferedRowIterator publicznej, aby uniknąć błąd w czasie wykonywania dla dużych zapytania.
 
--   [Platforma SPARK 23599](https://issues.apache.org/jira/browse/SPARK-23599): Dodaj UUID generator z Pseudo-Random liczb.
+-   [PLATFORMA SPARK 23599](https://issues.apache.org/jira/browse/SPARK-23599): Dodaj UUID generator z Pseudo-Random liczb.
 
--   [Platforma SPARK 23599](https://issues.apache.org/jira/browse/SPARK-23599): RandomUUIDGenerator użycia w wyrażeniu Uuid.
+-   [PLATFORMA SPARK 23599](https://issues.apache.org/jira/browse/SPARK-23599): Użyj RandomUUIDGenerator w wyrażeniu Uuid.
 
--   [Platforma SPARK 23601](https://issues.apache.org/jira/browse/SPARK-23601): Usuń pliki .md5 od wydania.
+-   [PLATFORMA SPARK 23601](https://issues.apache.org/jira/browse/SPARK-23601): Usuń pliki .md5 od wydania.
 
--   [Platforma SPARK 23608](https://issues.apache.org/jira/browse/SPARK-23608): dodatek SHS synchronizacji między funkcjami attachSparkUI i detachSparkUI, aby uniknąć problemu współbieżnych modyfikacji do obsługi Jetty.
+-   [PLATFORMA SPARK 23608](https://issues.apache.org/jira/browse/SPARK-23608): Dodaj synchronizację w SHS między funkcjami attachSparkUI i detachSparkUI, aby uniknąć problemu współbieżnych modyfikacji do obsługi Jetty.
 
--   [Platforma SPARK 23614](https://issues.apache.org/jira/browse/SPARK-23614): Napraw nieprawidłowe ponowne użycie programu exchange, gdy buforowanie jest używany.
+-   [PLATFORMA SPARK 23614](https://issues.apache.org/jira/browse/SPARK-23614): Napraw nieprawidłowe ponowne użycie programu exchange, gdy buforowanie jest używany.
 
--   [Platforma SPARK 23623](https://issues.apache.org/jira/browse/SPARK-23623): Unikaj współbieżne używanie obiektu pamięci podręcznej w konsumentach napisanych w CachedKafkaConsumer (gałąź 2.3).
+-   [PLATFORMA SPARK 23623](https://issues.apache.org/jira/browse/SPARK-23623): Należy unikać współbieżne używanie obiektu pamięci podręcznej w konsumentach napisanych w CachedKafkaConsumer (gałąź 2.3).
 
--   [Platforma SPARK 23624](https://issues.apache.org/jira/browse/SPARK-23624): doc Popraw z metody pushFilters w źródle danych w wersji 2.
+-   [PLATFORMA SPARK 23624](https://issues.apache.org/jira/browse/SPARK-23624): Sprawdź, czy dokument pushFilters metody w źródle danych w wersji 2.
 
 -   [Platforma SPARK 23628](https://issues.apache.org/jira/browse/SPARK-23628): calculateParamLength nie powinny zwracać 1 + num wyrażeń.
 
--   [Platforma SPARK 23630](https://issues.apache.org/jira/browse/SPARK-23630): Zezwalaj na użytkownika hadoop dostosowania conf zaczęły obowiązywać.
+-   [PLATFORMA SPARK 23630](https://issues.apache.org/jira/browse/SPARK-23630): Zezwalaj na użytkownika hadoop dostosowania conf zaczęły obowiązywać.
 
--   [Platforma SPARK 23635](https://issues.apache.org/jira/browse/SPARK-23635): Spark program wykonujący env zmienna jest zastępowana przez tę samą nazwę AM env zmienną.
+-   [PLATFORMA SPARK 23635](https://issues.apache.org/jira/browse/SPARK-23635): Spark program wykonujący env zmienna jest zastępowana przez tej samej nazwy zmiennej env AM.
 
--   [Platforma SPARK 23637](https://issues.apache.org/jira/browse/SPARK-23637): Yarn może przydzielić więcej zasobów, jeśli ten sam program wykonujący jest zabite wiele razy.
+-   [PLATFORMA SPARK 23637](https://issues.apache.org/jira/browse/SPARK-23637): Yarn może przydzielić więcej zasobów, jeśli ten sam program wykonujący jest zabite wiele razy.
 
--   [Platforma SPARK 23639](https://issues.apache.org/jira/browse/SPARK-23639): uzyskać tokenu przed inicjowania klienta magazynu metadanych w SparkSQL interfejsu wiersza polecenia.
+-   [PLATFORMA SPARK 23639](https://issues.apache.org/jira/browse/SPARK-23639): Uzyskaj token przed inicjowania klienta magazynu metadanych w SparkSQL interfejsu wiersza polecenia.
 
--   [Platforma SPARK 23642](https://issues.apache.org/jira/browse/SPARK-23642): AccumulatorV2 podklasy iszero — scaladoc poprawki.
+-   [PLATFORMA SPARK 23642](https://issues.apache.org/jira/browse/SPARK-23642): Poprawka scaladoc iszero — podklasy AccumulatorV2.
 
--   [Platforma SPARK 23644](https://issues.apache.org/jira/browse/SPARK-23644): Użyj ścieżki bezwzględnej dla wywołania REST w SHS.
+-   [PLATFORMA SPARK 23644](https://issues.apache.org/jira/browse/SPARK-23644): Użyj ścieżki bezwzględnej do wywołania REST w SHS.
 
--   [SPARK 23645](https://issues.apache.org/jira/browse/SPARK-23645): dodanie dokumentów RE \`pandas\_funkcji zdefiniowanej przez użytkownika\` za pomocą słowa kluczowego args.
+-   [PLATFORMA SPARK 23645](https://issues.apache.org/jira/browse/SPARK-23645): Dodanie dokumentów RE \`pandas\_udf\` za pomocą słowa kluczowego args.
 
--   [Platforma SPARK 23649](https://issues.apache.org/jira/browse/SPARK-23649): pomijanie znaki niedozwolone w formacie UTF-8.
+-   [PLATFORMA SPARK 23649](https://issues.apache.org/jira/browse/SPARK-23649): Pomijanie znaki niedozwolone w formacie UTF-8.
 
--   [Platforma SPARK 23658](https://issues.apache.org/jira/browse/SPARK-23658): InProcessAppHandle używa niewłaściwego klasy w getLogger.
+-   [PLATFORMA SPARK 23658](https://issues.apache.org/jira/browse/SPARK-23658): InProcessAppHandle używa niewłaściwego klasy getLogger.
 
--   [Platforma SPARK 23660](https://issues.apache.org/jira/browse/SPARK-23660): naprawiono wyjątek w trybie klastra yarn, gdy aplikacja zakończył się szybko.
+-   [PLATFORMA SPARK 23660](https://issues.apache.org/jira/browse/SPARK-23660): Naprawiono wyjątek w trybie klastra yarn, gdy aplikacja zakończył się szybko.
 
--   [Platforma SPARK 23670](https://issues.apache.org/jira/browse/SPARK-23670): przeciek pamięci poprawki na SparkPlanGraphWrapper.
+-   [PLATFORMA SPARK 23670](https://issues.apache.org/jira/browse/SPARK-23670): Usuń przeciek pamięci na SparkPlanGraphWrapper.
 
--   [Platforma SPARK 23671](https://issues.apache.org/jira/browse/SPARK-23671): Usuń warunek, aby umożliwić SHS puli wątków.
+-   [PLATFORMA SPARK 23671](https://issues.apache.org/jira/browse/SPARK-23671): Usuń warunek, aby umożliwić SHS puli wątków.
 
--   [Platforma SPARK 23691](https://issues.apache.org/jira/browse/SPARK-23691): Korzystanie z programu sql\_util conf w PySpark testy, jeśli jest to możliwe.
+-   [PLATFORMA SPARK 23691](https://issues.apache.org/jira/browse/SPARK-23691): Korzystanie z programu sql\_util conf w PySpark testy, jeśli jest to możliwe.
 
--   [Platforma SPARK 23695](https://issues.apache.org/jira/browse/SPARK-23695): naprawiono komunikat o błędzie Kinesis przesyłania strumieniowego testów.
+-   [PLATFORMA SPARK 23695](https://issues.apache.org/jira/browse/SPARK-23695): Usuń komunikat o błędzie dla Kinesis przesyłania strumieniowego testów.
 
 -   [SPARK 23706](https://issues.apache.org/jira/browse/SPARK-23706): spark.conf.get (wartość domyślna = None) powinno to dawać Brak PySpark.
 
--   [Platforma SPARK 23728](https://issues.apache.org/jira/browse/SPARK-23728): Napraw ML testów za pomocą oczekiwane wyjątki testów przesyłania strumieniowego.
+-   [PLATFORMA SPARK 23728](https://issues.apache.org/jira/browse/SPARK-23728): Napraw ML testy za pomocą oczekiwane wyjątki testów przesyłania strumieniowego.
 
--   [Platforma SPARK 23729](https://issues.apache.org/jira/browse/SPARK-23729): składnik fragment identyfikatora URI względem podczas rozpoznawania elementy globalne.
+-   [PLATFORMA SPARK 23729](https://issues.apache.org/jira/browse/SPARK-23729): Składnik fragment identyfikatora URI należy przestrzegać podczas rozpoznawania elementy globalne.
 
--   [Platforma SPARK 23759](https://issues.apache.org/jira/browse/SPARK-23759): nie można powiązać nazwy hosta określonej Spark interfejsu użytkownika / adresu IP.
+-   [PLATFORMA SPARK 23759](https://issues.apache.org/jira/browse/SPARK-23759): Nie można powiązać nazwy hosta określonej Spark interfejsu użytkownika / adresu IP.
 
--   [Platforma SPARK 23760](https://issues.apache.org/jira/browse/SPARK-23760): CodegenContext.withSubExprEliminationExprs należy zapisać/przywrócić stan rozszerzenia klienta poprawnie.
+-   [PLATFORMA SPARK 23760](https://issues.apache.org/jira/browse/SPARK-23760): CodegenContext.withSubExprEliminationExprs należy zapisać/przywrócić stan rozszerzenia klienta poprawnie.
 
--   [Platforma SPARK 23769](https://issues.apache.org/jira/browse/SPARK-23769): usuwanie komentarzy, które niepotrzebnie Wyłącz sprawdzanie Scalastyle.
+-   [PLATFORMA SPARK 23769](https://issues.apache.org/jira/browse/SPARK-23769): Usuń komentarze, które niepotrzebnie Wyłącz sprawdzanie Scalastyle.
 
--   [Platforma SPARK 23788](https://issues.apache.org/jira/browse/SPARK-23788): wyścigu poprawki w StreamingQuerySuite.
+-   [PLATFORMA SPARK 23788](https://issues.apache.org/jira/browse/SPARK-23788): Rozwiązywanie problemu wyścigu w StreamingQuerySuite.
 
--   [Platforma SPARK 23802](https://issues.apache.org/jira/browse/SPARK-23802): PropagateEmptyRelation można pozostawić planu zapytania w stanie nierozwiązanych.
+-   [PLATFORMA SPARK 23802](https://issues.apache.org/jira/browse/SPARK-23802): W stanie nierozwiązanych PropagateEmptyRelation pozostawić planu zapytania.
 
--   [Platforma SPARK 23806](https://issues.apache.org/jira/browse/SPARK-23806): Broadcast.unpersist może spowodować wyjątek krytyczny, gdy jest używane z dynamicznej alokacji.
+-   [PLATFORMA SPARK 23806](https://issues.apache.org/jira/browse/SPARK-23806): Broadcast.unpersist może spowodować wyjątek krytyczny, gdy jest używane z dynamicznej alokacji.
 
--   [Platforma SPARK 23808](https://issues.apache.org/jira/browse/SPARK-23808): Ustaw domyślne sesja platformy Spark w sesjach spark tylko do testów.
+-   [PLATFORMA SPARK 23808](https://issues.apache.org/jira/browse/SPARK-23808): Ustaw domyślne sesja platformy Spark w sesjach spark tylko do testów.
 
--   [Platforma SPARK 23809](https://issues.apache.org/jira/browse/SPARK-23809): Active SparkSession powinna być ustawiona przez getOrCreate.
+-   [PLATFORMA SPARK 23809](https://issues.apache.org/jira/browse/SPARK-23809): Aktywne SparkSession powinien być ustawiony przez getOrCreate.
 
--   [Platforma SPARK 23816](https://issues.apache.org/jira/browse/SPARK-23816): zabitych zadań powinien ignorować FetchFailures.
+-   [PLATFORMA SPARK 23816](https://issues.apache.org/jira/browse/SPARK-23816): Zabitych zadań powinien ignorować FetchFailures.
 
--   [Platforma SPARK 23822](https://issues.apache.org/jira/browse/SPARK-23822): poprawić komunikat o błędzie w przypadku niezgodności, Parquet schematu.
+-   [PLATFORMA SPARK 23822](https://issues.apache.org/jira/browse/SPARK-23822): Zwiększ komunikat o błędzie w przypadku niezgodności, Parquet schematu.
 
--   [Platforma SPARK 23823](https://issues.apache.org/jira/browse/SPARK-23823): Zachowaj źródło w transformExpression.
+-   [PLATFORMA SPARK 23823](https://issues.apache.org/jira/browse/SPARK-23823): Zachowaj źródło w transformExpression.
 
--   [Platforma SPARK 23827](https://issues.apache.org/jira/browse/SPARK-23827): StreamingJoinExec należy upewnić się, że dane wejściowe zostanie poddana partycjonowaniu na określonej liczbie partycji.
+-   [PLATFORMA SPARK 23827](https://issues.apache.org/jira/browse/SPARK-23827): StreamingJoinExec należy upewnić się, że dane wejściowe zostanie poddana partycjonowaniu na określonej liczbie partycji.
 
--   [Platforma SPARK 23838](https://issues.apache.org/jira/browse/SPARK-23838): zapytanie SQL uruchamiania jest wyświetlany jako "ukończone" na karcie SQL.
+-   [PLATFORMA SPARK 23838](https://issues.apache.org/jira/browse/SPARK-23838): Uruchamianie zapytania SQL jest wyświetlany jako "ukończone" na karcie SQL.
 
--   [Platforma SPARK 23881](https://issues.apache.org/jira/browse/SPARK-23881): poprawka niestabilnych testów JobCancellationSuite. " przerywania iteratora losowego czytnika".
+-   [PLATFORMA SPARK 23881](https://issues.apache.org/jira/browse/SPARK-23881): Napraw niestabilnych testów JobCancellationSuite." przerywania iteratora losowego czytnika".
 
 ### <a name="sqoop"></a>Sqoop
 
@@ -779,15 +779,15 @@ Ta wersja zawiera 1.4.6 z nie dodatkowe poprawki Apache Sqoop.
 
 Ta wersja zawiera następujące poprawki Apache i Storm 1.1.1:
 
--   [STORM 2652](https://issues.apache.org/jira/browse/STORM-2652): wyjątek w metodzie otwartych JmsSpout.
+-   [STORM 2652](https://issues.apache.org/jira/browse/STORM-2652): Wyjątek zgłoszony w metodzie otwartych JmsSpout.
 
 -   [STORM 2841](https://issues.apache.org/jira/browse/STORM-2841): testNoAcksIfFlushFails UT kończy się niepowodzeniem z NullPointerException.
 
--   [STORM 2854](https://issues.apache.org/jira/browse/STORM-2854): udostępnianie IEventLogger się podłączanych rejestrowanie zdarzeń.
+-   [STORM 2854](https://issues.apache.org/jira/browse/STORM-2854): Udostępnianie IEventLogger umożliwiają rejestrowanie zdarzeń obsługująca dodatki.
 
--   [STORM 2870](https://issues.apache.org/jira/browse/STORM-2870): FileBasedEventLogger przecieków ExecutorService bez demona, co uniemożliwia zakończenie procesu.
+-   [STORM 2870](https://issues.apache.org/jira/browse/STORM-2870): FileBasedEventLogger przeciek ExecutorService bez demona, co uniemożliwia zakończenie procesu.
 
--   [STORM 2960](https://issues.apache.org/jira/browse/STORM-2960): lepiej podkreślają znaczenie konfigurowania konta właściwego systemu operacyjnego dla procesów Storm.
+-   [STORM 2960](https://issues.apache.org/jira/browse/STORM-2960): Lepszym rozwiązaniem podkreślają znaczenie konfigurowania konta właściwego systemu operacyjnego dla procesów Storm.
 
 ### <a name="tez"></a>Tez
 
@@ -799,9 +799,9 @@ Ta wersja zawiera następujące poprawki Apache i Tez 0.7.0:
 
 Ta wersja oferuje rozwiązania Zeppelin 0.7.3 z poprawkami nie additionalApache.
 
--   [ZEPPELIN 3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072): Zeppelin interfejsu użytkownika staje się wolno/odpowiadać, jeśli istnieje zbyt wiele notesów.
+-   [ZEPPELIN 3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072): Interfejs użytkownika rozwiązania Zeppelin staje się wolno/odpowiadać, jeśli istnieje zbyt wiele notesów.
 
--   [ZEPPELIN 3129](https://issues.apache.org/jira/browse/ZEPPELIN-3129): Zeppelin interfejsu użytkownika nie Wyloguj w programie Internet Explorer.
+-   [ZEPPELIN 3129](https://issues.apache.org/jira/browse/ZEPPELIN-3129): Interfejs użytkownika rozwiązania Zeppelin nie Wyloguj się w programie Internet Explorer.
 
 -   [ZEPPELIN 903](https://issues.apache.org/jira/browse/ZEPPELIN-903): Zastąp CXF Jersey2.
 
@@ -813,11 +813,11 @@ Ta wersja zawiera następujące poprawki Apache i dozorcy 3.4.6:
 
 -   [1901 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-1901): \[JDK8\] sortowania elementów podrzędnych do porównania w testach AsyncOps.
 
--   [2423 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-2423): Netty uaktualniania wersji z powodu luki w zabezpieczeniach (CVE-2014-3488).
+-   [2423 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-2423): Uaktualnij Netty wersji z powodu luki w zabezpieczeniach (CVE-2014-3488).
 
--   [2693 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-2693): ataków DOS, wchp/wchc czterech litery słowa (4lw).
+-   [2693 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-2693): Atakom DOS na wchp/wchc czteroliterowy wyrazów (4lw).
 
--   [2726 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): poprawka dla wprowadza potencjalnych sytuacji wyścigu.
+-   [2726 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): Poprawka dla wprowadza potencjalnych sytuacji wyścigu.
 
 ## <a name="fixed-common-vulnerabilities-and-exposures"></a>Naprawiono Common Vulnerabilities and Exposures
 
@@ -862,7 +862,7 @@ Ta sekcja obejmuje wszystkie powszechnych luk w zabezpieczeniach i zagrożeń CV
 
 | **Podsumowanie:** handler/ssl/OpenSslEngine.java w Netty 4.0.x przed 4.0.37.Final i 4.1.x przed 4.1.1.Final pozwala zdalnym osobom atakującym prowadzić do odmowy usługi (Pętla nieskończona) |
 |--------------------------------------------------------------------------------------------------|
-| **Ważność:** umiarkowane  |
+| **Ważność:** Średnia  |
 | **Dostawca:** Hortonworks  |
 | **Wersje, których to dotyczy:** 2.x.x HDP od 2.3.x  |
 | **Dotyczy użytkowników:** wszystkich użytkowników korzystających z systemu plików HDFS. |
@@ -874,11 +874,11 @@ Ta sekcja obejmuje wszystkie powszechnych luk w zabezpieczeniach i zagrożeń CV
 | **Podsumowanie:** dopasowywania problem w oceny zasad ścieżek struktury Apache Ranger                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
 | **Ważność:** normalny                                                                                                                   |
-| **Dostawca:** Hortonworks                                                                                                                |
+| **Dostawcy:** Hortonworks                                                                                                                |
 | **Dotyczy wersji:** wszystkich wersji HDP 2.5, w tym 0.6.0/0.6.1/0.6.2 wersji struktury Apache Ranger                                         |
 | **Użytkownicy, których to dotyczy:** wszystkich użytkowników narzędzia administratora zasady platformy ranger.                                                                         |
 | **Wpływ:** aparatu zasad Ranger niepoprawnie pasuje ścieżek w niektórych sytuacjach, gdy zasady zawiera symbole wieloznaczne i cyklicznego flagi. |
-| **Napraw szczegółów:** stałej logika oceny zasad                                                                                          |
+| **Napraw szczegółów:** Logika oceny zasad stałej                                                                                          |
 | **Zalecana akcja:** użytkownicy powinni wykonać uaktualnienie do 2.5.4+ HDP (przy użyciu struktury Apache Ranger 0.6.3+) lub HDP 2.6 (przy użyciu struktury Apache Ranger 0.7.0+)         |
 
 ### <a name="cve-2016-8751"></a>**CVE-2016-8751**
@@ -907,12 +907,12 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 88774 USTERKI              | [GAŁĄŹ 17617](https://issues.apache.org/jira/browse/HIVE-17617), [HIVE 18413](https://issues.apache.org/jira/browse/HIVE-18413), [18523 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18523)                                                                                 | Niepowodzenie query36, niezgodność zliczania wierszy                                                                                    |
 | 89765 USTERKI              | [17702 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-17702)                                                                                                                                                                                                                 | niepoprawne isRepeating obsługi w czytniku dziesiętną w ORC                                                                |
 | 92293 USTERKI              | [15042 USŁUGI HADOOP](https://issues.apache.org/jira/browse/HADOOP-15042)                                                                                                                                                                                                             | PageBlobInputStream.skip() platformy Azure może zwracać wartości ujemnej, gdy numberOfPagesRemaining wynosi 0                            |
-| 92345 USTERKI              | [2285 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2285)                                                                                                                                                                                                                 | Interfejs użytkownika: Zmieniono nazwę zapisanego wyszukiwania za pomocą atrybutów daty.                                                                         |
+| 92345 USTERKI              | [2285 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2285)                                                                                                                                                                                                                 | INTERFEJS UŻYTKOWNIKA: Zmieniono nazwę zapisanego kryterium wyszukiwania z atrybutem daty.                                                                         |
 | 92563 USTERKI              | [GAŁĄŹ 17495](https://issues.apache.org/jira/browse/HIVE-17495), [18528 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18528)                                                                                                                                                 | Statystyki agregacji w ObjectStore uzyskać niewłaściwego wyniku                                                                        |
 | 92957 USTERKI              | [11266 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | Liczba (\*) nieprawidłowy wynik na podstawie danych statystycznych tabeli dla tabel zewnętrznych                                                   |
 | 93097 USTERKI              | [1944 PLATFORMY RANGER](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | Nie działa filtr akcji dla inspekcji administratora                                                                           |
 | 93335 USTERKI              | [12315 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | wektoryzacji\_krótki\_regress.q istnieje problem niewłaściwego wyniku obliczania double                                      |
-| 93415 USTERKI              | [GAŁĄŹ 18258](https://issues.apache.org/jira/browse/HIVE-18258), [18310 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Wektoryzacja: Grupa zmniejszyć po stronie MERGEPARTIAL BY z kolumnami zduplikowane został przerwany                                      |
+| 93415 USTERKI              | [GAŁĄŹ 18258](https://issues.apache.org/jira/browse/HIVE-18258), [18310 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Wektoryzacja: Zmniejsz po stronie grupy przez MERGEPARTIAL przy użyciu kolumn został przerwany                                      |
 | 93939 USTERKI              | [2294 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Dodatkowy parametr "description" dodany podczas tworzenia typu                                                               |
 | 94007 USTERKI              | [PHOENIX 1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [PHOENIX 3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | Zapytania Phoenix zwraca wartości Null z powodu częściowego HBase wiersze                                                          |
 | 94266 USTERKI              | [12505 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | Wstaw zastąpić w samym szyfrowane strefy dyskretnie nie może usunąć niektóre istniejące pliki                                   |
@@ -940,11 +940,11 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 93159 USTERKI              | [OOZIE 3139](https://issues.apache.org/jira/browse/OOZIE-3139)                                                                         | Oozie niepoprawnie sprawdza poprawność przepływu pracy                                                                                                       |
 | 93936 USTERKI              | [2289 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2289)                                                                         | Osadzony kafka/dozorcy serwera uruchomień/zatrzymań kodu do przeniesienia poza KafkaNotification implementacji                                        |
 | 93942 USTERKI              | [2312 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2312)                                                                         | Unikaj stosowania jednocześnie z wielu wątków za pomocą obiektów ThreadLocal DateFormat                                                         |
-| 93946 USTERKI              | [2319 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                         | Interfejs użytkownika: Usuwanie tagu, co w przypadku 25 + pozycji na liście tagów w strukturze zarówno stosowana jest stała, jak i drzewa wymaga odświeżenia Aby usunąć tag z listy. |
+| 93946 USTERKI              | [2319 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                         | INTERFEJS UŻYTKOWNIKA: Usuwanie tagu, co w przypadku 25 + pozycji na liście tagów w strukturze zarówno stosowana jest stała, jak i drzewa wymaga odświeżenia, aby usunąć tag z listy. |
 | 94618 USTERKI              | [YARN 5037](https://issues.apache.org/jira/browse/YARN-5037), [YARN 7274](https://issues.apache.org/jira/browse/YARN-7274)             | Możliwość wyłączenia elastyczność na poziomie liścia kolejki                                                                                          |
 | 94901 USTERKI              | [19285 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-19285)                                                                       | Dodaj histogramy czas oczekiwania na tabelę                                                                                                           |
 | 95259 USTERKI              | [HADOOP 15185](https://issues.apache.org/jira/browse/HADOOP-15185), [15186 USŁUGI HADOOP](https://issues.apache.org/jira/browse/HADOOP-15186) | Zaktualizuj łącznik usługi adls, aby użyć bieżącej wersji zestawu SDK dla usługi Azure Data Lake Store                                                                               |
-| 95619 USTERKI              | [18551 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18551)                                                                         | Wektoryzacja: VectorMapOperator próbuje zapisać za dużo kolumn wektor dla prolongaty hybrydowe                                                   |
+| 95619 USTERKI              | [18551 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18551)                                                                         | Wektoryzacja: VectorMapOperator podejmie próbę zapisu za dużo kolumn wektor dla prolongaty hybrydowe                                                   |
 | 97223 USTERKI              | [23434 PLATFORMY SPARK](https://issues.apache.org/jira/browse/SPARK-23434)                                                                       | Platforma Spark nie należy ostrzec \`katalogu metadanych\` dla ścieżki pliku system plików HDFS                                                                          |
 
 **Wydajność**
@@ -958,14 +958,14 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 93577 USTERKI              | [1938 PLATFORMY RANGER](https://issues.apache.org/jira/browse/RANGER-1938)                                                                                                                                                                                                                                                                                                                                                                                                             | Solr ustawień inspekcji nie efektywne wykorzystanie DocValues                                                                              |
 | 93910 USTERKI              | [18293 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18293)                                                                                                                                                                                                                                                                                                                                                                                                               | Hive nie powiodło się compact tabel znajdujących się w folderze, który jest właścicielem nie jest uruchomiona HiveMetaStore tożsamości                     |
 | 94345 USTERKI              | [18429 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18429)                                                                                                                                                                                                                                                                                                                                                                                                               | Kompaktowanie powinna obsługiwać przypadek, gdy go nie daje żadnych danych wyjściowych                                                                          |
-| 94381 USTERKI              | [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227), [13054 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                           | Obsługa kolejności RequestHedgingProxyProvider RetryAction: niepowodzenie &lt; ponów próbę wykonania &lt; trybu FAILOVER\_i\_ponów próbę wykonania.                                  |
+| 94381 USTERKI              | [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227), [13054 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                           | Kolejność RequestHedgingProxyProvider RetryAction obsługi: NIEPOWODZENIE &lt; PONÓW &lt; TRYBU FAILOVER\_I\_SPRÓBUJ PONOWNIE.                                  |
 | 94432 USTERKI              | [18353 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18353)                                                                                                                                                                                                                                                                                                                                                                                                               | CompactorMR powinny wywoływać jobclient.close() w celu wyzwolenia oczyszczania                                                                        |
 | 94869 USTERKI              | [PHOENIX 4290](https://issues.apache.org/jira/browse/PHOENIX-4290), [PHOENIX 4373](https://issues.apache.org/jira/browse/PHOENIX-4373)                                                                                                                                                                                                                                                                                                                                       | Żądany wiersza spoza zakresu dla pobierania przy HRegion dla lokalnych indeksowanych phoenix solone tabeli.                                               |
 | 94928 USTERKI              | [11078 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-11078)                                                                                                                                                                                                                                                                                                                                                                                                               | Napraw NPE w LazyPersistFileScrubber                                                                                                  |
 | 94964 USTERKI              | [GAŁĄŹ 18269](https://issues.apache.org/jira/browse/HIVE-18269), [HIVE 18318](https://issues.apache.org/jira/browse/HIVE-18318), [18326 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18326)                                                                                                                                                                                                                                                                               | Wiele poprawek LLAP                                                                                                                 |
 | 95669 USTERKI              | [GAŁĄŹ 18577](https://issues.apache.org/jira/browse/HIVE-18577), [18643 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18643)                                                                                                                                                                                                                                                                                                                                               | Podczas aktualizowania/usuwania wykonywania zapytania na kwasu podzielona na partycje tabeli, HS2 odczytać wszystkie każdej partycji.                                               |
 | 96390 USTERKI              | [10453 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-10453)                                                                                                                                                                                                                                                                                                                                                                                                               | Wątek ReplicationMonitor można zatrzymany przez długi czas z powodu sytuacji wyścigu między replikacji i usuwanie tego samego pliku w dużego klastra. |
-| 96625 USTERKI              | [16110 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-16110)                                                                                                                                                                                                                                                                                                                                                                                                               | Przywróć z "Wektoryzacja: 2 wartość przypadek, a nie należą do VectorUDFAdaptor"                                       |
+| 96625 USTERKI              | [16110 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-16110)                                                                                                                                                                                                                                                                                                                                                                                                               | Przywróć z "Wektoryzacja: Obsługiwana wartość 2 przypadek, a nie należą do VectorUDFAdaptor"                                       |
 | 97109 USTERKI              | [16757 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-16757)                                                                                                                                                                                                                                                                                                                                                                                                               | Użyj przestarzałe getRows() zamiast estimateRowCount(RelMetadataQuery...) nowe ma wpływ na wydajność poważny                      |
 | 97110 USTERKI              | [PHOENIX 3789](https://issues.apache.org/jira/browse/PHOENIX-3789)                                                                                                                                                                                                                                                                                                                                                                                                           | Wykonywanie wywołań konserwacja indeksu między regionami w postBatchMutateIndispensably                                                        |
 | 98833 USTERKI              | [YARN 6797](https://issues.apache.org/jira/browse/YARN-6797)                                                                                                                                                                                                                                                                                                                                                                                                                 | TimelineWriter nie pełni zużywa odpowiedzi WPIS                                                                             |
@@ -997,7 +997,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 94280 USTERKI              | [12785 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-12785)                                                                         | Widok o typie Unii i funkcji definiowanych przez użytkownika, aby \`rzutowania\` struktury jest uszkodzona                                          |
 | 94505 USTERKI              | [PHOENIX 4525](https://issues.apache.org/jira/browse/PHOENIX-4525)                                                                     | Przepełnienie liczby całkowitej GroupBy wykonywania                                                                  |
 | 95618 USTERKI              | [18506 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18506)                                                                         | LlapBaseInputFormat — indeks tablicy ujemna                                                             |
-| 95644 USTERKI              | [9152 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-9152)                                                                           | CombineHiveInputFormat: Zapytanie Hive kończy się niepowodzeniem w aplikacji Tez z wyjątkiem java.lang.IllegalArgumentException |
+| 95644 USTERKI              | [9152 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-9152)                                                                           | CombineHiveInputFormat: Zapytanie hive kończy się niepowodzeniem w aplikacji Tez z wyjątkiem java.lang.IllegalArgumentException |
 | 96762 USTERKI              | [PHOENIX 4588](https://issues.apache.org/jira/browse/PHOENIX-4588)                                                                     | Klonowanie wyrażenie również, jeśli jego elementy podrzędne mają Determinism.PER\_WYWOŁANIA                                |
 | 97145 USTERKI              | [GAŁĄŹ 12245](https://issues.apache.org/jira/browse/HIVE-12245), [17829 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-17829)         | Obsługa kolumny komentarzy do bazy danych HBase kopii tabeli                                                      |
 | 97741 USTERKI              | [18944 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18944)                                                                         | Polecenie GroupPing Ustawia położenie niepoprawna podczas DPP                                                  |
@@ -1020,7 +1020,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 95349 USTERKI              | [1256 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-1256), [1901 DOZORCY](https://issues.apache.org/jira/browse/ZOOKEEPER-1901)                                                             | Uaktualnij netty                                                                                                         |
 | 95483 USTERKI              | ND                                                                                                                                                                                                        | Poprawka dla CVE-2017-15713                                                                                                |
 | 95646 USTERKI              | [OOZIE 3167](https://issues.apache.org/jira/browse/OOZIE-3167)                                                                                                                                             | Uaktualnij wersję serwera tomcat w gałęzi Oozie 4.3                                                                            |
-| 95823 USTERKI              | ND                                                                                                                                                                                                        | Knox: Uaktualnianie Beanutils                                                                                               |
+| 95823 USTERKI              | ND                                                                                                                                                                                                        | Knox: Uaktualnij Beanutils                                                                                               |
 | 95908 USTERKI              | [1960 PLATFORMY RANGER](https://issues.apache.org/jira/browse/RANGER-1960)                                                                                                                                           | Uwierzytelnianie bazy danych HBase nie uwzględnia przestrzeni nazw tabeli ważną kwestią dotyczącą usuwanie migawki                                     |
 | 96191 USTERKI              | [FALCON 2322](https://issues.apache.org/jira/browse/FALCON-2322), [FALCON 2323](https://issues.apache.org/jira/browse/FALCON-2323)                                                                         | Uaktualnienie wersji Jackson i Spring w celu uniknięcia luk w zabezpieczeniach                                                 |
 | 96502 USTERKI              | [1990 PLATFORMY RANGER](https://issues.apache.org/jira/browse/RANGER-1990)                                                                                                                                           | Dodanie obsługi One-way SSL MySQL w administratora platformy Ranger                                                                         |
@@ -1074,7 +1074,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 87624 USTERKI              | ND                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Włączanie rejestrowania powoduje, że procesy robocze, aby stale zdechną zdarzeń systemu storm                                                                                |
 | 88929 USTERKI              | [15615 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-15615)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nieprawidłowy czas uśpienia, gdy RegionServerCallable muszą, spróbuj ponownie                                                                                          |
 | 89628 USTERKI              | [17613 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-17613)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Usuń obiekt pule dla alokacji krótka, w tym samym wątku                                                                                         |
-| 89813 USTERKI              | ND                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Funkcja o wartościach SKA: Kod poprawność: metoda niezsynchronizowanego zastępuje metodę zsynchronizowane                                                                  |
+| 89813 USTERKI              | ND                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | FUNKCJA O WARTOŚCIACH SKA: Poprawność kodu: Metoda niezsynchronizowanego zastępuje metodę zsynchronizowane                                                                  |
 | 90437 USTERKI              | [ZEPPELIN 3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Interfejs użytkownika rozwiązania Zeppelin staje się wolno/odpowiadać, jeśli istnieje zbyt wiele notesów                                                                          |
 | 90640 USTERKI              | [19065 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-19065)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | HRegion\#bulkLoadHFiles() ma oczekiwać współbieżnych Region\#flush() zakończenie                                                                 |
 | 91202 USTERKI              | [17013 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-17013)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Usuń żądanie za pomocą kwerendy oparte na wybierz widok                                                                                     |
@@ -1094,7 +1094,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 93361 USTERKI              | [12360 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-12360)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Złe wyszukiwanie w nieskompresowanych ORC przy użyciu przekazywania predykatu                                                                                           |
 | 93426 USTERKI              | [CALCITE 2086](https://issues.apache.org/jira/browse/CALCITE-2086)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | HTTP/413 w pewnych okolicznościach, ze względu na duże nagłówki autoryzacji                                                                           |
 | 93429 USTERKI              | [PHOENIX 3240](https://issues.apache.org/jira/browse/PHOENIX-3240)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | ClassCastException z modułu ładującego Pig                                                                                                             |
-| 93485 USTERKI              | ND                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Nie można pobrać tabeli mytestorg.apache.hadoop.hive.ql.metadata.InvalidTableException: nie można odnaleźć podczas uruchamiania tabeli analizowanie tabelę według kolumny w funkcji LLAP |
+| 93485 USTERKI              | ND                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Nie można pobrać tabeli mytestorg.apache.hadoop.hive.ql.metadata.InvalidTableException: Nie można odnaleźć podczas uruchamiania tabeli analizowanie tabelę według kolumny w funkcji LLAP |
 | 93512 USTERKI              | [PHOENIX 4466](https://issues.apache.org/jira/browse/PHOENIX-4466)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | java.lang.RuntimeException: kod odpowiedzi 500 — wykonywanie zadania spark, aby nawiązać połączenie phoenix query server oraz ładowanie danych                         |
 | 93550 USTERKI              | ND                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Zeppelin %spark.r nie działa z spark1 z powodu niezgodności wersji języka scala                                                                      |
 | 93910 USTERKI              | [18293 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18293)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Hive nie powiodło się compact tabel znajdujących się w folderze, który jest właścicielem nie jest uruchomiona HiveMetaStore tożsamości                                |
@@ -1110,7 +1110,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 94330 USTERKI              | [HADOOP 13190](https://issues.apache.org/jira/browse/HADOOP-13190), [HADOOP 14104](https://issues.apache.org/jira/browse/HADOOP-14104), [HADOOP 14814](https://issues.apache.org/jira/browse/HADOOP-14814), [HDFS 10489](https://issues.apache.org/jira/browse/HDFS-10489), [11689 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-11689)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | System plików HDFS powinien obsługiwać dla wielu identyfikatorów URI usługi KMS                                                                                                      |
 | 94345 USTERKI              | [18429 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18429)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Kompaktowanie powinna obsługiwać przypadek, gdy go nie daje żadnych danych wyjściowych                                                                                     |
 | 94372 USTERKI              | [2229 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2229)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Zapytanie DSL: gałąź\_nazwy tabeli = \["t1", "t2"\] wyjątek nieprawidłowa DSL zapytania                                                                |
-| 94381 USTERKI              | [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227), [13054 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Obsługa kolejności RequestHedgingProxyProvider RetryAction: niepowodzenie &lt; ponów próbę wykonania &lt; trybu FAILOVER\_i\_ponów próbę wykonania.                                             |
+| 94381 USTERKI              | [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227), [13054 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Kolejność RequestHedgingProxyProvider RetryAction obsługi: NIEPOWODZENIE &lt; PONÓW &lt; TRYBU FAILOVER\_I\_SPRÓBUJ PONOWNIE.                                             |
 | 94432 USTERKI              | [18353 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18353)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | CompactorMR powinny wywoływać jobclient.close() w celu wyzwolenia oczyszczania                                                                                   |
 | 94575 USTERKI              | [22587 PLATFORMY SPARK](https://issues.apache.org/jira/browse/SPARK-22587)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Zadanie Spark zakończy się niepowodzeniem, jeśli inny adres url pliku jar fs.defaultFS i aplikacji                                                                          |
 | 94791 USTERKI              | [22793 PLATFORMY SPARK](https://issues.apache.org/jira/browse/SPARK-22793)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Przeciek pamięci w Spark Thrift Server                                                                                                             |
@@ -1120,7 +1120,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 95200 USTERKI              | [13061 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-13061)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | SaslDataTransferClient\#checkTrustAndSend nie należy ufać częściowo zaufanego kanału                                                         |
 | 95201 USTERKI              | [13060 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-13060)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Dodawanie BlacklistBasedTrustedChannelResolver dla TrustedChannelResolver                                                                       |
 | 95284 USTERKI              | [19395 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-19395)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | \[gałąź 1\] TestEndToEndSplitTransaction.testMasterOpsWhileSplitting kończy się niepowodzeniem z NPE                                                           |
-| 95301 USTERKI              | [18517 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18517)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Wektoryzacja: VectorMapOperator poprawki, aby zaakceptować VRBs i sprawdź wektoryzowana do flagi poprawnie do obsługi funkcji LLAP buforowania                                |
+| 95301 USTERKI              | [18517 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18517)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Wektoryzacja: VectorMapOperator poprawki, aby zaakceptować VRBs i sprawdź wektoryzowana flagi poprawnie do obsługi funkcji LLAP buforowania                                |
 | 95542 USTERKI              | [16135 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-16135)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nigdy nie mogą zostać usunięte PeerClusterZnode w obszarze rs usuniętego elementu równorzędnego                                                                                 |
 | 95595 USTERKI              | [15563 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Ignoruj niedozwolona operacja stan przejścia wyjątek w SQLOperation.runQuery do udostępnienia rzeczywistych wyjątku.                                         |
 | 95596 USTERKI              | [YARN 4126](https://issues.apache.org/jira/browse/YARN-4126), [YARN 5750](https://issues.apache.org/jira/browse/YARN-5750)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | TestClientRMService zakończy się niepowodzeniem.                                                                                                                      |
@@ -1165,7 +1165,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 99672 USTERKI              | [2524 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2524)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Hook hive za pomocą powiadomień w wersji 2 - niepoprawna obsługa operacji "alter view jako"                                                              |
 | 99809 USTERKI              | [20375 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-20375)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Usuń użycie getCurrentUserCredentials w module spark bazy danych hbase                                                                                  |
 
-**Wsparcie dla**
+**Możliwości obsługi**
 
 | **Identyfikator usterki Hortonworks** | **Apache programu JIRA**                                                  | **Podsumowanie**                                                                                   |
 |------------------------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
@@ -1183,7 +1183,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | **Identyfikator usterki Hortonworks** | **Apache programu JIRA**                                                                                                                | **Podsumowanie**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | 100134 USTERKI             | [22919 PLATFORMY SPARK](https://issues.apache.org/jira/browse/SPARK-22919)                                                               | Przywróć "Wersji httpclient Apache nierówności"                                 |
-| 95823 USTERKI              | ND                                                                                                                            | Knox: Uaktualnianie Beanutils                                                     |
+| 95823 USTERKI              | ND                                                                                                                            | Knox: Uaktualnij Beanutils                                                     |
 | 96751 USTERKI              | [KNOX 1076](https://issues.apache.org/jira/browse/KNOX-1076)                                                                   | Aktualizacji nimbus — blog jose-token jwt do 4.41.2                                            |
 | 97864 USTERKI              | [18833 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18833)                                                                 | Scal automatycznie zakończy się niepowodzeniem kiedy "insert do katalogu jako orcfile"                    |
 | 99056 USTERKI              | [13556 USŁUGI HADOOP](https://issues.apache.org/jira/browse/HADOOP-13556)                                                             | Zmień Configuration.getPropsWithPrefix używanie podano zamiast iteratora |
@@ -1199,8 +1199,8 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 100646 USTERKI             | [2102 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2102)                                                                                                                                                                                                                 | Ulepszenia interfejsu użytkownika — Atlas: Strona wyników wyszukiwania                                                                                                                   |
 | 100737 USTERKI             | [19049 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-19049)                                                                                                                                                                                                                 | Instrukcja Alter table Dodawanie kolumn do Druid dodać obsługę                                                                                                            |
 | 100750 USTERKI             | [KNOX 1246](https://issues.apache.org/jira/browse/KNOX-1246)                                                                                                                                                                                                                   | Aktualizowanie konfiguracji usługi w Knox do obsługi najnowszej konfiguracji dla usługi Ranger.                                                                                   |
-| 100965 USTERKI             | [2581 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2581)                                                                                                                                                                                                                 | Regresja za pomocą programu Hive w wersji 2 punktów zaczepienia powiadomień: przenoszenie tabeli do innej bazy danych                                                                            |
-| 84413 USTERKI              | [1964 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-1964)                                                                                                                                                                                                                 | Interfejsu użytkownika: Obsługa do kolejności kolumn w tabeli wyszukiwania                                                                                                                |
+| 100965 USTERKI             | [2581 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2581)                                                                                                                                                                                                                 | Regresja za pomocą programu Hive w wersji 2 punktów zaczepienia powiadomień: Przenoszenie tabeli do innej bazy danych                                                                            |
+| 84413 USTERKI              | [1964 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-1964)                                                                                                                                                                                                                 | INTERFEJS UŻYTKOWNIKA: Obsługa kolejności kolumn w tabeli wyszukiwania                                                                                                                |
 | 90570 USTERKI              | [SYSTEM PLIKÓW HDFS 11384](https://issues.apache.org/jira/browse/HDFS-11384), [12347 SYSTEMU PLIKÓW HDFS](https://issues.apache.org/jira/browse/HDFS-12347)                                                                                                                                                 | Dodaj opcję równoważenia do rozproszenia getBlocks wywołania w celu uniknięcia firmy NameNode rpc. CallQueueLength kolekcji                                                            |
 | 90584 USTERKI              | [19052 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-19052)                                                                                                                                                                                                               | FixedFileTrailer powinien rozpoznać klasy CellComparatorImpl w gałęzi 1.x                                                                                     |
 | 90979 USTERKI              | [KNOX 1224](https://issues.apache.org/jira/browse/KNOX-1224)                                                                                                                                                                                                                   | Knox HADispatcher serwera Proxy do obsługi — Atlas w wysokiej dostępności.                                                                                                              |
@@ -1221,15 +1221,15 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 93933 USTERKI              | [2286 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2286)                                                                                                                                                                                                                 | Wstępnie skompilowane typu "platforma kafka\_tematu" nie powinny deklarować atrybutu "tematu" jako unikatową                                                                                 |
 | 93938 USTERKI              | [ATLAS 2283](https://issues.apache.org/jira/browse/ATLAS-2283), [2295 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2295)                                                                                                                                                 | Aktualizacje interfejsu użytkownika dla klasyfikacji                                                                                                                               |
 | 93941 USTERKI              | [ATLAS 2296](https://issues.apache.org/jira/browse/ATLAS-2296), [2307 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2307)                                                                                                                                                 | Rozszerzenie Podstawowe wyszukiwanie opcjonalnie wykluczanie jednostek podtyp i podrzędne classification typów                                                                |
-| 93944 USTERKI              | [2318 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2318)                                                                                                                                                                                                                 | Interfejs użytkownika: Kliknij dwukrotnie tag podrzędny, tagu nadrzędnym jest zaznaczone.                                                                                                    |
-| 93946 USTERKI              | [2319 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                                                                                                                                                                 | Interfejs użytkownika: Usuwanie tagu, co w przypadku 25 + pozycji na liście tagów w strukturze zarówno stosowana jest stała, jak i drzewa wymaga odświeżenia Aby usunąć tag z listy.                   |
+| 93944 USTERKI              | [2318 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2318)                                                                                                                                                                                                                 | INTERFEJS UŻYTKOWNIKA: Dwukrotne kliknięcie tag podrzędny znacznik nadrzędny jest zaznaczone.                                                                                                    |
+| 93946 USTERKI              | [2319 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                                                                                                                                                                 | INTERFEJS UŻYTKOWNIKA: Usuwanie tagu, co w przypadku 25 + pozycji na liście tagów w strukturze zarówno stosowana jest stała, jak i drzewa wymaga odświeżenia, aby usunąć tag z listy.                   |
 | 93977 USTERKI              | [16232 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-16232)                                                                                                                                                                                                                 | Obsługa obliczenie statystyk kolumny w QuotedIdentifier                                                                                                     |
 | 94030 USTERKI              | [2332 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2332)                                                                                                                                                                                                                 | Tworzenie typu z atrybutów mających zagnieżdżony typ kolekcji danych kończy się niepowodzeniem                                                                                     |
 | 94099 USTERKI              | [2352 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2352)                                                                                                                                                                                                                 | Atlas serwer powinien zapewnić konfiguracji do określenia ważności dla DelegationToken protokołu Kerberos                                                                   |
 | 94280 USTERKI              | [12785 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-12785)                                                                                                                                                                                                                 | Widok o typie Unii i funkcji definiowanych przez użytkownika, aby \`rzutowania\` struktury jest uszkodzona                                                                                                |
 | 94332 USTERKI              | [2930 NARZĘDZIA SQOOP](https://issues.apache.org/jira/browse/SQOOP-2930)                                                                                                                                                                                                                 | Sqoop zadanie exec nie zastępowanie właściwości ogólnych zapisanego zadania                                                                                               |
 | 94428 USTERKI              | ND                                                                                                                                                                                                                                                                            | Obsługa systemu Knox interfejsu API REST płaszczyzny danych Profiler agenta                                                                                                               |
-| 94514 USTERKI              | [2339 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2339)                                                                                                                                                                                                                 | Interfejs użytkownika: Zmiany w "kolumny" w widoku wyników wyszukiwania podstawowego DSL ma również wpływ na.                                                                                |
+| 94514 USTERKI              | [2339 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2339)                                                                                                                                                                                                                 | INTERFEJS UŻYTKOWNIKA: Zmiany w "kolumny" w widoku wyników wyszukiwania podstawowego wpływa również na DSL.                                                                                |
 | 94515 USTERKI              | [2169 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2169)                                                                                                                                                                                                                 | Usuń żądanie kończy się niepowodzeniem w przypadku skonfigurowania twardych delete                                                                                                          |
 | 94518 USTERKI              | [2329 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2329)                                                                                                                                                                                                                 | Wiele wskaźnika interfejsu użytkownika — Atlas jest wyświetlana, gdy użytkownik musi kliknąć inny znacznik, który jest nieprawidłowy                                                                             |
 | 94519 USTERKI              | [2272 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2272)                                                                                                                                                                                                                 | Zapisz stan przeciąganego kolumn przy użyciu Zapisz interfejs API wyszukiwania.                                                                                                     |
@@ -1238,7 +1238,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 94793 USTERKI              | [14013 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-14013)                                                                                                                                                                                                                 | Opis tabeli nie wyświetla prawidłowo unicode                                                                                                                 |
 | 94900 USTERKI              | [OOZIE 2606](https://issues.apache.org/jira/browse/OOZIE-2606), [OOZIE 2658](https://issues.apache.org/jira/browse/OOZIE-2658), [OOZIE 2787](https://issues.apache.org/jira/browse/OOZIE-2787), [OOZIE 2802](https://issues.apache.org/jira/browse/OOZIE-2802)                 | Ustaw spark.yarn.jars naprawić Spark 2.0 przy użyciu programu Oozie                                                                                                              |
 | 94901 USTERKI              | [19285 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-19285)                                                                                                                                                                                                               | Dodaj histogramy czas oczekiwania na tabelę                                                                                                                             |
-| 94908 USTERKI              | [1921 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-1921)                                                                                                                                                                                                                 | Interfejs użytkownika: Wyszukiwanie przy użyciu atrybutów jednostki i cechy: interfejs użytkownika nie wykonuje sprawdzania zakresu i umożliwia udostępnienie poza granicami wartości całkowitych i zmiennoprzecinkowych typów danych.  |
+| 94908 USTERKI              | [1921 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-1921)                                                                                                                                                                                                                 | INTERFEJS UŻYTKOWNIKA: Wyszukaj przy użyciu atrybutów jednostki i cechy: Interfejs użytkownika nie wykonuje sprawdzania zakresu i umożliwia udostępnienie poza granicami wartości całkowitych i zmiennoprzecinkowych typów danych.  |
 | 95086 USTERKI              | [1953 PLATFORMY RANGER](https://issues.apache.org/jira/browse/RANGER-1953)                                                                                                                                                                                                               | ulepszenie dla listy strony grupy użytkowników                                                                                                                       |
 | 95193 USTERKI              | [1252 SUWAKA](https://issues.apache.org/jira/browse/SLIDER-1252)                                                                                                                                                                                                               | Suwak agenta zakończy się niepowodzeniem z błędy sprawdzania poprawności protokołu SSL przy użyciu języka python 2.7.5-58                                                                                           |
 | 95314 USTERKI              | [YARN 7699](https://issues.apache.org/jira/browse/YARN-7699)                                                                                                                                                                                                                   | queueUsagePercentage wkrótce jako INF dla getApp wywołania interfejsu api REST                                                                                               |
@@ -1248,9 +1248,9 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 | 95512 USTERKI              | [18467 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18467)                                                                                                                                                                                                                 | obsługuje zrzutu całego magazynu / załadować + Utwórz i upuszczania zdarzenia bazy danych                                                                                            |
 | 95593 USTERKI              | ND                                                                                                                                                                                                                                                                            | Rozszerzanie utils Oozie DB obsługuje tworzenie sharelib Spark2                                                                                                    |
 | 95595 USTERKI              | [15563 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                 | Ignoruj niedozwolona operacja stan przejścia wyjątek w SQLOperation.runQuery do udostępnienia rzeczywistych wyjątku.                                                       |
-| 95685 USTERKI              | [2422 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | Eksportu: Eksport na podstawie typu obsługi                                                                                                                            |
+| 95685 USTERKI              | [2422 — ATLAS](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | Eksport: Eksport na podstawie typu pomocy technicznej                                                                                                                            |
 | 95798 USTERKI              | [PHOENIX 2714](https://issues.apache.org/jira/browse/PHOENIX-2714), [PHOENIX 2724](https://issues.apache.org/jira/browse/PHOENIX-2724), [PHOENIX 3023](https://issues.apache.org/jira/browse/PHOENIX-3023), [PHOENIX 3040](https://issues.apache.org/jira/browse/PHOENIX-3040) | Nie należy używać do wykonywania zapytań szeregowo guideposts                                                                                                          |
-| 95969 USTERKI              | [GAŁĄŹ 16828](https://issues.apache.org/jira/browse/HIVE-16828), [HIVE 17063](https://issues.apache.org/jira/browse/HIVE-17063), [18390 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | Widok partycjonowany kończy się niepowodzeniem z nie powiodło się: indeks IndexOutOfBoundsException: 1, rozmiar: 1                                                                              |
+| 95969 USTERKI              | [GAŁĄŹ 16828](https://issues.apache.org/jira/browse/HIVE-16828), [HIVE 17063](https://issues.apache.org/jira/browse/HIVE-17063), [18390 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | Widok partycjonowany kończy się niepowodzeniem z nie powiodło się: Indeks IndexOutOfBoundsException: 1, rozmiar: 1                                                                              |
 | 96019 USTERKI              | [18548 GAŁĘZI](https://issues.apache.org/jira/browse/HIVE-18548)                                                                                                                                                                                                                 | Napraw log4j importu                                                                                                                                             |
 | 96288 USTERKI              | [BAZA DANYCH HBASE 14123](https://issues.apache.org/jira/browse/HBASE-14123), [HBASE 14135](https://issues.apache.org/jira/browse/HBASE-14135), [17850 BAZY DANYCH HBASE](https://issues.apache.org/jira/browse/HBASE-17850)                                                                           | Poprawka usterki systemu bazy danych Hbase i przywracania kopii zapasowych w wersji 2.0                                                                                                                            |
 | 96313 USTERKI              | [KNOX 1119](https://issues.apache.org/jira/browse/KNOX-1119)                                                                                                                                                                                                                   | Pac4J uwierzytelniania OAuth/OpenID podmiotu zabezpieczeń musi mieć możliwość konfiguracji                                                                                                        |
@@ -1301,11 +1301,11 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 |**Składnik Apache**|**Apache programu JIRA**|**Podsumowanie**|**Szczegóły**|
 |--|--|--|--|
 |**2.3 platformy Spark** |**Nie dotyczy** |**Informacje o wersji dotyczące zmian zgodnie z opisem w Apache Spark** |-Brak dokument "Wycofywania" i podręcznik "Zmień zachowanie", https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />— Dla części SQL istnieje innego przewodnika po szczegółowe "migracji" (z 2.2 do 2.3) http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
-|platforma Spark |[**12505 GAŁĘZI**](https://issues.apache.org/jira/browse/HIVE-12505) |Zadanie platformy Apache Spark zakończy się pomyślnie, ale pełnego Błąd limitu przydziału dysku systemu plików HDFS |**Scenariusz:** systemem **zastąpić insert** gdy limit przydziału jest ustawiona w folderze Kosz użytkownika, który uruchamia polecenie.<br /><br />**Poprzednie zachowanie:** zadanie zakończy się pomyślnie, nawet jeśli jej nie powiedzie się przenieść dane do Kosza. Wynik błędnie może zawierać dane, które wcześniej obecne w tabeli.<br /><br />**Nowe zachowanie:** podczas przenoszenia do folderu Kosz zakończy się niepowodzeniem, pliki zostaną trwale usunięte.|
+|platforma Spark |[**12505 GAŁĘZI**](https://issues.apache.org/jira/browse/HIVE-12505) |Zadanie platformy Apache Spark zakończy się pomyślnie, ale pełnego Błąd limitu przydziału dysku systemu plików HDFS |**Scenariusz:** Uruchamianie **zastąpić insert** gdy limit przydziału jest ustawiona w folderze Kosz użytkownika, który uruchamia polecenie.<br /><br />**Poprzednie zachowanie:** Zadanie zakończy się pomyślnie, nawet jeśli jej nie powiedzie się przenieść dane do Kosza. Wynik błędnie może zawierać dane, które wcześniej obecne w tabeli.<br /><br />**Nowe zachowanie:** Podczas przenoszenia do folderu Kosz zakończy się niepowodzeniem, pliki są trwale usunięte.|
 |**Platforma Kafka w wersji 1.0**|**Nie dotyczy**|**Informacje o wersji dotyczące zmian zgodnie z opisem w Apache Spark** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
-|**Hive / platformy Ranger** | |Wymagane do WSTAWIENIA zastąpić zasad usługi hive dodatkowe platformy ranger |**Scenariusz:** ranger dodatkowe wymagane dla zasad usługi hive **Wstaw ZASTĘPOWANIA**<br /><br />**Poprzednie zachowanie:** Hive **Wstaw zastąpić** zapytania powiedzie się w zwykły sposób.<br /><br />**Nowe zachowanie:** Hive **Wstaw zastąpić** zapytania nieoczekiwanie kończą się niepowodzeniem po uaktualnieniu do wersji HDP 2.6.x z powodu błędu:<br /><br />Wystąpił błąd podczas kompilowania instrukcji: nie powiodło się: odmowa uprawnień HiveAccessControlException: jdoe użytkownika nie ma uprawnień zapisu /tmp/\*(stan = 42000, kod = 40000)<br /><br />Począwszy od HDP 2.6.0, Hive **Wstaw zastąpić** zapytań wymagają zasadę URI platformy Ranger umożliwiające operacje zapisu, nawet wtedy, gdy użytkownik ma uprawnienia zapisu udzielone za pośrednictwem systemu plików HDFS zasad.<br /><br />**Obejście problemu lub oczekiwanym akcji klienta:**<br /><br />1. Utwórz nowe zasady w repozytorium programu Hive.<br />2. Na liście rozwijanej tam, gdzie zobaczysz bazy danych należy wybrać identyfikator URI.<br />3. Zaktualizuj ścieżkę (przykład: / tmp / *)<br />4. Dodaj użytkowników i grup, a następnie zapisz.<br />5. Ponów próbę wykonania kwerendy insert.|
+|**Hive / platformy Ranger** | |Wymagane do WSTAWIENIA zastąpić zasad usługi hive dodatkowe platformy ranger |**Scenariusz:** Wymagane dla zasad usługi hive dodatkowe platformy ranger **Wstaw ZASTĘPOWANIA**<br /><br />**Poprzednie zachowanie:** Hive **Wstaw zastąpić** zapytania powiedzie się w zwykły sposób.<br /><br />**Nowe zachowanie:** Hive **Wstaw zastąpić** zapytania nieoczekiwanie kończą się niepowodzeniem po uaktualnieniu do wersji HDP 2.6.x z powodu błędu:<br /><br />Błąd podczas kompilowania instrukcji: NIE POWIODŁO SIĘ: Odmowa uprawnień HiveAccessControlException: jdoe użytkownika nie ma uprawnień zapisu /tmp/\*(stan = 42000, kod = 40000)<br /><br />Począwszy od HDP 2.6.0, Hive **Wstaw zastąpić** zapytań wymagają zasadę URI platformy Ranger umożliwiające operacje zapisu, nawet wtedy, gdy użytkownik ma uprawnienia zapisu udzielone za pośrednictwem systemu plików HDFS zasad.<br /><br />**Obejście problemu lub oczekiwanym akcji klienta:**<br /><br />1. Utwórz nowe zasady w repozytorium programu Hive.<br />2. Na liście rozwijanej tam, gdzie zobaczysz bazy danych należy wybrać identyfikator URI.<br />3. Zaktualizuj ścieżkę (przykład: / tmp / *)<br />4. Dodaj użytkowników i grup, a następnie zapisz.<br />5. Ponów próbę wykonania kwerendy insert.|
 |**HDFS**|**Nie dotyczy** |System plików HDFS powinien obsługiwać dla wielu identyfikatorów URI usługi KMS |**Poprzednie zachowanie:** właściwość dfs.encryption.key.provider.uri użyty do skonfigurowania Ścieżka dostawcy usługi KMS.<br /><br />**Nowe zachowanie:** dfs.encryption.key.provider.uri jest już przestarzały na rzecz hadoop.security.key.provider.path umożliwia skonfigurowanie ścieżki dostawcy usługi KMS.|
-|**Rozwiązania Zeppelin**|[**ZEPPELIN 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Opcja wyłączenia harmonogramu |**Składnik, których to dotyczy:** serwera rozwiązania Zeppelin<br /><br />**Poprzednie zachowanie:** w poprzednich wersjach Zeppelin nie było możliwości wyłączenia harmonogramu.<br /><br />**Nowe zachowanie:** domyślnie użytkowników nie będzie już widział harmonogramu, ponieważ jest domyślnie wyłączona.<br /><br />**Akcja klienta obejście/oczekiwana:** Jeśli chcesz włączyć harmonogram, należy dodać azeppelin.notebook.cron.enable o wartości true w witrynie zeppelin niestandardowych w ustawieniach Zeppelin z systemu Ambari.|
+|**Rozwiązania Zeppelin**|[**ZEPPELIN 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Opcja wyłączenia harmonogramu |**Składnik, których to dotyczy:** Serwer rozwiązania Zeppelin<br /><br />**Poprzednie zachowanie:** W poprzednich wersjach Zeppelin nie było możliwości wyłączenia harmonogramu.<br /><br />**Nowe zachowanie:** Domyślnie użytkownicy nie będzie już widział harmonogramu, ponieważ jest domyślnie wyłączona.<br /><br />**Obejście problemu lub oczekiwanym akcji klienta:** Jeśli chcesz włączyć harmonogram, należy dodać azeppelin.notebook.cron.enable o wartości true w witrynie zeppelin niestandardowych w ustawieniach Zeppelin z systemu Ambari.|
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -1328,11 +1328,11 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 
 -   **Obejście niepowodzenie sprawdzania usług platformy Ranger**
 
-    -   [RANGER 1607](https://issues.apache.org/jira/browse/RANGER-1607): niepowodzenie sprawdzania usługa Ranger podczas uaktualniania do HDP 2.6.2 z poprzednich wersji HDP obejście.
+    -   [RANGER 1607](https://issues.apache.org/jira/browse/RANGER-1607): Obejście niepowodzenie sprawdzania usługa Ranger podczas uaktualniania do HDP 2.6.2 z poprzednich wersji HDP.
 
-        >[!NOTE]
-        >Tylko gdy Ranger jest włączony protokół SSL. 
-    
+        > [!NOTE]  
+        > Tylko gdy Ranger jest włączony protokół SSL. 
+     
     Ten problem pojawia się podczas próby uaktualnienia do wersji 2.6.1 HDP z poprzednich wersji HDP za pomocą systemu Ambari. Ambari używa wywołań programu curl, aby sprawdzić usługi do usługi platformy Ranger w Ambari. Jeśli wersja zestawu JDK używana przez narzędzia Ambari jest zestaw JDK 1.7, wywołanie curl zakończy się niepowodzeniem z poniższy błąd:
     
     `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
@@ -1353,10 +1353,10 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
             
             PROTOKÓŁ SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_ WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]
+    >[!NOTE]  
     >Wartości dostrzeżone pracy przykłady i może nie wskazywać środowiska. Upewnij się, że jest zgodny sposób ustawiania tych właściwości, jak środowisko jest konfigurowane.   
 
--   **RangerUI: Specjalna tekstu warunek zasady wprowadzonym w formularzu zasad**
+-   **RangerUI: Specjalna treść warunku zasad wprowadzonym w formularzu zasad**
     
     **Składnik, których to dotyczy:** platformy Ranger
     
@@ -1374,7 +1374,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
     
     **Obejście problemu**
     
-    - **Opcja \#1: Tworzenie/aktualizowanie zasad za pomocą interfejsu API Rest platformy Ranger**
+    - **Opcja \#1: Utwórz/zaktualizuj zasady za pomocą interfejsu API Rest platformy Ranger**
         
         Adres URL usługi REST: http://&lt;hosta&gt;: 6080/service/wtyczek/zasady
         
@@ -1396,7 +1396,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
         
         `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **Opcja \#2: Javascript Zastosuj zmiany**
+    - **Opcja \#2: Stosowanie zmian kodu Javascript**
         
         Kroki, aby zaktualizować plik JS:
         
@@ -1412,7 +1412,7 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 
 ## <a name="deprecation"></a>Ogłoszone jako przestarzałe
 
--   **Portal pakietu OMS:** usunęliśmy link ze strony zasobu HDInsight, które wskazywał portalu pakietu OMS. Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych. Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane. HDInsight jest przestarzała obsługę portalu pakietu OMS. Klienci będą używać integracji usługi HDInsight Log Analytics w witrynie Azure portal.
+-   **Portal pakietu OMS:** Usunięto łącze ze strony zasobu HDInsight, które wskazywał portalu pakietu OMS. Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych. Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane. HDInsight jest przestarzała obsługę portalu pakietu OMS. Klienci będą używać integracji usługi HDInsight Log Analytics w witrynie Azure portal.
 
 -   **2.3 platformy Spark**
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 48cb88b9815ba723d93c18caf63f33b50eea850c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e3ae11adf84e858429cba4643802300f7915a166
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009196"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412941"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Zarządzanie migawkami przy użyciu usługi Azure Files NetApp
 Usługi Azure Files NetApp służy do tworzenia migawek na żądanie dla woluminu lub przywracanie z migawki do nowego woluminu.
@@ -43,29 +43,33 @@ Obecnie można przywrócić migawki tylko do nowego woluminu.
 
 4. W oknie nowego woluminu Podaj informacje dotyczące nowego woluminu:  
     * **Nazwa**   
-        Określ nazwę dla woluminu, który tworzysz.  
+        Określ nazwę tworzonego woluminu.  
         
-        Nazwa musi być unikatowa w obrębie grupy zasobów. Musi być co najmniej 3 znaków.  Może używać żadnych znaków alfanumerycznych.
+        Nazwa musi być unikatowa w obrębie grupy zasobów. Musi być co najmniej trzech znaków.  Dozwolone są dowolne znaki alfanumeryczne.
 
     * **Ścieżka pliku**     
-        Określ ścieżkę pliku, która będzie służyć do tworzenia ścieżki eksportu dla nowego woluminu. Ścieżka eksportu służy do instalowania i dostęp do woluminu.   
+        Określ ścieżkę pliku, na podstawie której zostanie utworzona ścieżka eksportu dla nowego woluminu. Ścieżka eksportu służy do instalowania woluminu oraz uzyskiwania do niego dostępu.   
         
-        Miejsce docelowe instalacji jest punkt końcowy adres IP usługi systemu plików NFS. Są one automatycznie generowane.   
+        Miejsce docelowe instalacji to punkt końcowy adresu IP usługi NFS. Ta wartość jest generowana automatycznie.   
         
-        Nazwa ścieżki pliku może zawierać litery, cyfry i łączniki ("-") tylko. Należy się od 16 do 40 znaków. 
+        Nazwa ścieżki pliku może zawierać tylko litery, cyfry i łączniki („-”). Musi mieć długość od 16 do 40 znaków. 
 
-    * **Quota**  
-        Określ rozmiar magazynu logicznego, który jest przydzielony do woluminu.  
+    * **Limit przydziału**  
+        Określ wielkość magazynu logicznego, który zostanie przydzielony do woluminu.  
 
-        **Dostępny limit przydziału** polu jest wyświetlana kwota nieużywane miejsce w puli wybranym pojemność, która służy do tworzenia nowego woluminu. Rozmiar nowego woluminu nie może przekraczać dostępny limit przydziału.
+        W polu **Dostępny limit przydziału** jest wyświetlana ilość nieużywanego miejsca w wybranej puli pojemności, które można wykorzystać do utworzenia nowego woluminu. Rozmiar nowego woluminu nie może przekraczać dostępnego limitu przydziału.
 
     *   **Sieć wirtualna**  
-        Określ Azure sieci wirtualnej (Vnet), z którego chcesz uzyskać dostęp do woluminu. 
-        
-        Sieć wirtualna, które określisz musi mieć usługi Azure Files NetApp skonfigurowane. Usługa Azure NetApp Files jest możliwy tylko z sieci wirtualnej, która znajduje się w tej samej lokalizacji co wolumin.  
+        Określ sieć wirtualną platformy Azure, z której chcesz uzyskiwać dostęp do woluminu.  
+        Sieć wirtualna, które określisz musi mieć podsieci delegować domenę do usługi Azure Files NetApp. Usługa Azure NetApp Files są dostępne tylko z tej samej podsieci lub sieci wirtualnej, która znajduje się w tym samym regionie jako wolumin za pomocą komunikacji równorzędnej sieci wirtualnej. Wolumin można również uzyskać dostęp z sieci lokalnej za pośrednictwem Express Route. 
 
-    ![Przywrócono nowy wolumin](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
-    
+    * **Podsieć**  
+        Określ podsieć, którą chcesz użyć dla woluminu.  
+        Podsieć, którą określisz musi delegować do usługi Azure NetApp Files. Można utworzyć nowej podsieci, wybierając **Utwórz nową** pod polem podsieci.  
+<!--
+    ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
+-->
+
 5. Kliknij przycisk **OK**.   
     Nowy wolumin, do którego zostanie przywrócona migawka zostanie wyświetlony w bloku woluminów.
 

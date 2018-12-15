@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 35768aed3509d6ec5b73c64c7a8a6b132957ace1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 50c5838f576b6fd6775373f2dbe3c46d751545c1
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632734"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437592"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Użyj pakiet Enterprise Security w HDInsight
 
@@ -62,5 +62,5 @@ Używanie w lokalnej usłudze Active Directory lub usługi Active Directory na m
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Konfigurowanie klastrów HDInsight przy użyciu ESP](apache-domain-joined-configure-using-azure-adds.md)
-* [Konfigurowanie zasad usługi Hive dla klastrów HDInsight przy użyciu ESP](apache-domain-joined-run-hive.md)
+* [Konfigurowanie zasad usługi Apache Hive dla klastrów HDInsight przy użyciu ESP](apache-domain-joined-run-hive.md)
 * [Zarządzanie klastrami HDInsight przy użyciu ESP](apache-domain-joined-manage.md) 

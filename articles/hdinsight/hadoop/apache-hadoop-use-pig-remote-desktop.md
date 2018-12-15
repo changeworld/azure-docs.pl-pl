@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 69eeadd8252d20dd25ac6d0abbbf0c6c158383d5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633346"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438629"
 ---
 # <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamiać zadania Apache Pig za pośrednictwem połączenia pulpitu zdalnego
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 Ten dokument zawiera wskazówki dotyczące korzystania z polecenia Apache Pig do uruchomienia instrukcji Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze HDInsight z systemem Windows. Pig Latin umożliwia tworzenie aplikacji MapReduce poprzez opisanie przekształcenia danych zamiast mapowania i redukcji funkcji.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pulpit zdalny jest dostępna tylko w klastrach HDInsight, które używają Windows jako systemu operacyjnego. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 >
-> HDInsight 3.4 lub nowszej, zobacz [korzystanie z języka Pig z HDInsight i ustawieniami SSH](apache-hadoop-use-pig-ssh.md) informacji na temat interakcyjnego uruchamiania zadania Pig bezpośrednio w klastrze z wiersza polecenia.
+> HDInsight 3.4 lub nowszej, zobacz [Use Apache Pig HDInsight i SSH](apache-hadoop-use-pig-ssh.md) informacji na temat interakcyjnego uruchamiania zadania Pig bezpośrednio w klastrze z wiersza polecenia.
 
 ## <a id="prereq"></a>Wymagania wstępne
 Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy.
@@ -78,7 +78,7 @@ Włączanie pulpitu zdalnego dla klastra HDInsight, a następnie nawiązać z ni
 
         STORE RESULT into 'wasb:///example/data/pigout'
 
-   > [!NOTE]
+   > [!NOTE]  
    > Dane są przechowywane w wybranym katalogu w plikach o nazwie **nnnnn część**. Jeśli katalog już istnieje, otrzymasz komunikat o błędzie.
    >
    >
@@ -119,9 +119,9 @@ Jak widać, polecenie Pig pozwala interaktywnie Uruchom operacji MapReduce lub u
 ## <a id="nextsteps"></a>Następne kroki
 Aby uzyskać ogólne informacje na temat Pig w HDInsight:
 
-* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
 
 Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
+* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)

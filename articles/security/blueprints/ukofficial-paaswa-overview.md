@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321992"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409024"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: PaaS Web Hosting aplikacji w przypadku obciążeń oficjalne UK
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Plany zabezpieczeń i zgodności platformy Azure
 
@@ -39,7 +39,7 @@ Za pomocą [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azu
 
 Ten plan jest architektura foundation. Naszym klientom za pomocą tego planu jako podstawa potrzeby ich obciążeń opartych na sieci web oficjalne klasyfikacji i rozwiń węzeł Szablony i zasoby z obowiązujących ich wymagań. Ten plan jest oparta na zasadach [planu aplikacji sieci Web w Wielkiej Brytanii urzędowy IaaS Three-Tier](https://aka.ms/ukofficial-iaaswa) zaoferować naszym klientom [infrastruktura jako usługa (IaaS)](https://azure.microsoft.com/overview/what-is-iaas/) i opcji wdrożenia PaaS do obsługi obciążeń opartych na sieci web.
 
-Aby wdrożyć ten plan, subskrypcję platformy Azure jest wymagana. Jeśli nie masz subskrypcji platformy Azure, możesz zarejestrować się szybko i łatwo bez dodatkowych opłat: rozpoczynanie pracy z platformą Azure. Kliknij przycisk [tutaj](https://aka.ms/ukofficial-paaswa-repo/) instrukcje wdrożenia.
+Aby wdrożyć ten plan, subskrypcję platformy Azure jest wymagana. Jeśli nie masz subskrypcji platformy Azure, możesz zarejestrować się szybko i łatwo bez dodatkowych opłat: Rozpocznij pracę z platformą Azure. Kliknij przycisk [tutaj](https://aka.ms/ukofficial-paaswa-repo/) instrukcje wdrożenia.
 
 ## <a name="architecture-and-components"></a>Architektura i składniki
 
@@ -79,7 +79,7 @@ Następujące technologie zapewniają tożsamość możliwości zarządzania w �
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) to usługa firmy Microsoft wieloma dzierżawami opartej na chmurze zarządzania katalogami i tożsamościami zarządzania. Wszyscy użytkownicy dotyczące rozwiązania zostały utworzone w usługi Azure Active Directory, w tym użytkowników uzyskujących dostęp do bazy danych SQL.
 - Operator połączonego z dostępu do administrowania zasobami platformy Azure i aplikacji sieci web uwierzytelniania za pomocą usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Szyfrowanie kolumny bazy danych używa usługi Azure AD można uwierzytelnić aplikację do usługi Azure SQL Database. Aby uzyskać więcej informacji, zobacz [Always Encrypted: chronić poufne dane w bazie danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+- Szyfrowanie kolumny bazy danych używa usługi Azure AD można uwierzytelnić aplikację do usługi Azure SQL Database. Aby uzyskać więcej informacji, zobacz [Always Encrypted: Ochrona poufnych danych w bazie danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
 - Dla obywateli połączonego z aplikacji sieci web jest skonfigurowana dla dostępu publicznego. Aby umożliwić tworzenie konta i uwierzytelniania za pomocą usługi active directory lub społecznościowych sieci dostawcy tożsamości [usługi Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) można zintegrować, jeśli jest to wymagane.
 - [Usługa Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) wykrywa ryzykowne kont i potencjalnych luk w zabezpieczeniach przedstawiono zalecenia, aby zwiększyć poziom zabezpieczeń tożsamości w organizacji, umożliwia skonfigurowanie automatycznych odpowiedzi na wykryte podejrzane akcje powiązane z tożsamości w organizacji i bada podejrzanych zdarzeń i przyjmuje odpowiednią akcję, aby je rozwiązać.
 - [Usługa Azure opartej na rolach kontrola dostępu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) umożliwia precyzyjne zarządzanie dostępem ukierunkowane na platformie Azure. Dostęp do subskrypcji jest ograniczona do administratora subskrypcji i usługi Azure Key Vault dostęp jest ograniczony tylko do użytkowników, którzy wymagają dostępu do zarządzania kluczami.
@@ -104,14 +104,14 @@ Dane są przesyłane z zewnątrz i między składnikami platformy Azure jest chr
 
 Usługa Azure Web Apps zapewnia w pełni zarządzane środowisko dla aplikacji sieci web opracowany w języku Java, PHP, Node.js, Python, HTML i języka C# bez konieczności zarządzania infrastrukturą hostingu w sieci web. Oferuje automatyczne skalowanie i wysoka dostępność, obsługuje zarówno Windows, jak i Linux i umożliwia automatyczne wdrożeń z [DevOps platformy Azure](https://azure.microsoft.com/services/visual-studio-team-services/) lub dowolnym repozytorium opartych o Git.
 
-App Service to [ISO, SOC i PCI](https://www.microsoft.com/TrustCenter/) i mogą uwierzytelniać użytkowników za pomocą [usługi Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) lub logowania z serwisów społecznościowych ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [wserwisieFacebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication), i [uwierzytelnianie firmy Microsoft](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication).
+App Service to [ISO, SOC i PCI](https://www.microsoft.com/TrustCenter/) i mogą uwierzytelniać użytkowników za pomocą [usługi Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) lub logowania z serwisów społecznościowych ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [wserwisieFacebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter), i [uwierzytelnianie firmy Microsoft](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft).
 
 Basic, Standard i plany Premium są przeznaczone dla obciążeń produkcyjnych i działają na dedykowanych wystąpieniach maszyn wirtualnych. Każde wystąpienie może obsługiwać wiele aplikacji i domen. Usługi App services również obsługę [ograniczenia adresów IP](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) zabezpieczyć ruch do zaufanych adresów IP, jeśli jest to wymagane, a także [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) dla bezpiecznego połączenia do innych usług PaaS takie jak [magazyn kluczy](https://azure.microsoft.com/services/key-vault/) i [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/). W przypadku, gdy są wymagane dodatkowe zabezpieczenia naszego planu izolowanego hostowanie aplikacji w prywatnym, dedykowanym środowisku platformy Azure i jest idealne dla aplikacji, które wymagają bezpiecznego połączenia z Twojej sieci lokalnej lub dodatkowej wydajności i skali.
 
 Ten szablon wdraża następujące funkcje usługi App Service:
 
 - [Standardowa](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) warstwę planu usługi App Service
-- Wiele aplikacji sieci Web [miejsc wdrożenia](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): deweloperów, w wersji zapoznawczej, odpowiedzi na pytania, przeprowadzających testowanie Akceptacyjne i oczywiście produkcyjnych (domyślne miejsce).
+- Wiele aplikacji sieci Web [miejsc wdrożenia](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): Deweloperów, w wersji zapoznawczej, odpowiedzi na pytania, przeprowadzających testowanie Akceptacyjne i oczywiście produkcyjnych (domyślne miejsce).
 - [Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) nawiązać [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (to może również służyć do zapewnienia dostępu do [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integracja z usługą [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) do monitorowania wydajności
 - [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
@@ -230,9 +230,9 @@ Ten zabezpieczeń platformy Azure i zgodności planu automatyzacji składa się 
 Trzy metody zostały przewidziane w wdrożenia; Proste "express" [2 interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) odpowiednie do szybkiego tworzenia testu środowiska; sparametryzowane [2 interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) podejście, zapewniając większą konfiguracji dla środowisk obciążenia; i witryny Azure portal na podstawie wdrożenia, w której operator może określić parametrów wdrożenia przy użyciu witryny Azure portal. 
 
 1.  Klonuj lub Pobierz [to](https://aka.ms/ukofficial-paaswa-repo) repozytorium GitHub na lokalnej stacji roboczej.
-2.  Przegląd [metoda 1: 2 interfejsu wiersza polecenia platformy Azure (wersja Express)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) i wykonaj polecenia podane.
-3.  Przegląd [metoda 1a: 2 interfejsu wiersza polecenia platformy Azure (Konfigurowanie wdrożenia za pośrednictwem argumenty skryptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) i wykonaj polecenia podane
-4.  Przegląd [metoda 2: proces wdrażania w portalu Azure](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) i wykonywania listy poleceń
+2.  Przegląd [metoda 1: Azure CLI 2 (wersja Express)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) i wykonaj polecenia podane.
+3.  Przegląd [metoda 1a: Usługa Azure 2 interfejsu wiersza polecenia (Konfigurowanie wdrożenia za pośrednictwem argumenty skryptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) i wykonaj polecenia podane
+4.  Przegląd [metoda 2: Proces wdrażania w usłudze Azure Portal](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) i wykonywania listy poleceń
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 

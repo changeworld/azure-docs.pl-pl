@@ -1,6 +1,6 @@
 ---
-title: Zbieraj i Analizuj liczników wydajności w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Liczniki wydajności są zbierane przez usługę Log Analytics do analizowania wydajności agentów systemów Windows i Linux.  W tym artykule opisano sposób konfigurowania zbiór liczników wydajności zarówno Windows, i agenci dla systemu Linux, ich szczegóły są przechowywane w obszarze roboczym i analizowanie ich w witrynie Azure portal.
+title: Zbieraj i Analizuj liczników wydajności w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Liczniki wydajności są zbierane przez usługi Azure Monitor do analizowania wydajności agentów systemów Windows i Linux.  W tym artykule opisano sposób konfigurowania zbiór liczników wydajności zarówno Windows, i agenci dla systemu Linux, ich szczegóły są przechowywane w obszarze roboczym i analizowanie ich w witrynie Azure portal.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 11/28/2018l
 ms.author: magoedte
-ms.openlocfilehash: 23e416c510c3a6fff7c282406beaec1acf42b2ef
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186875"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438374"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics
-Liczniki wydajności, Windows i Linux zapewniają wgląd w wydajność składniki sprzętowe, systemów operacyjnych i aplikacji.  Usługa log Analytics można zebrać liczników wydajności w krótkich odstępach czasu do analizy prawie czasie rzeczywistym (nRT, NEAR) oprócz agregowania danych wydajności dla dłuższy okres analizy i raportowania.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor
+Liczniki wydajności, Windows i Linux zapewniają wgląd w wydajność składniki sprzętowe, systemów operacyjnych i aplikacji.  Usługa Azure Monitor można zebrać liczników wydajności w krótkich odstępach czasu do analizy prawie czasie rzeczywistym (nRT, NEAR) oprócz agregowania danych wydajności dla dłuższy okres analizy i raportowania.
 
 ![Liczniki wydajności](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurowanie liczników wydajności
-Skonfiguruj liczniki wydajności z [danych menu Ustawienia usługi Analiza dzienników](agent-data-sources.md#configuring-data-sources).
+Skonfiguruj liczniki wydajności z [menu danych w zaawansowanych ustawieniach](agent-data-sources.md#configuring-data-sources).
 
-Podczas pierwszej konfiguracji liczników Windows lub Linux wydajności dla nowego obszaru roboczego usługi Log Analytics, możesz skorzystać z opcji, aby szybko utworzyć kilka typowych liczników.  Na liście obok każdego z nich znajduje się pole wyboru.  Upewnij się, że wszystkie liczniki, które chcesz utworzyć są zaznaczone, a następnie kliknij przycisk **Dodaj wybrane liczniki wydajności**.
+Podczas pierwszej konfiguracji liczników Windows lub Linux wydajności dla nowego obszaru roboczego, możesz skorzystać z opcji, aby szybko utworzyć kilka typowych liczników.  Na liście obok każdego z nich znajduje się pole wyboru.  Upewnij się, że wszystkie liczniki, które chcesz utworzyć są zaznaczone, a następnie kliknij przycisk **Dodaj wybrane liczniki wydajności**.
 
 Liczniki wydajności Windows możesz wybrać konkretne wystąpienie dla każdego licznika wydajności. Liczniki wydajności systemu Linux wystąpienia poszczególnych liczników, które możesz wybrać mają zastosowanie do wszystkie liczniki podrzędnych licznika nadrzędnej. W poniższej tabeli przedstawiono typowe wystąpienia dostępne liczniki wydajności systemu Linux i Windows.
 
@@ -88,7 +88,7 @@ W poniższej tabeli opisano parametry w tym elemencie.
 | interval | Częstotliwość, na którym są zbierane liczniki obiektu. |
 
 
-Poniższa tabela zawiera listę obiektów i liczników, które można określić w pliku konfiguracji.  Dostępne są dodatkowe liczniki dla określonych aplikacji zgodnie z opisem w [zbierania liczników wydajności dla aplikacji systemu Linux w usłudze Log Analytics](data-sources-linux-applications.md).
+Poniższa tabela zawiera listę obiektów i liczników, które można określić w pliku konfiguracji.  Dostępne są dodatkowe liczniki dla określonych aplikacji zgodnie z opisem w [zbierania liczników wydajności dla aplikacji systemu Linux w usłudze Azure Monitor](data-sources-linux-applications.md).
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
@@ -182,7 +182,7 @@ Poniżej przedstawiono konfigurację domyślną dla metryki wydajności.
     </source>
 
 ## <a name="data-collection"></a>Zbieranie danych
-Log Analytics zbiera wszystkie liczniki wydajności określonej w ich określonego interwału dla wszystkich agentów, które mają zainstalowanych liczników.  Dane nie mają charakter zbiorczy i nieprzetworzone dane są dostępne we wszystkich widokach wyszukiwania dziennika przez czas określony przez subskrypcję.
+Usługa Azure Monitor umożliwia zbieranie informacji o wszystkich liczników wydajności określonej w ich określonego interwału dla wszystkich agentów, które mają zainstalowanych liczników.  Dane nie są agregowane, a dane pierwotne są dostępne we wszystkich widokach zapytanie dziennika, przez czas określony przez subskrypcję.
 
 ## <a name="performance-record-properties"></a>Właściwości rekordu wydajności
 Rekordy wydajności mają typ **wydajności** i mają właściwości podane w poniższej tabeli.
@@ -203,8 +203,8 @@ Rekordy wydajności mają typ **wydajności** i mają właściwości podane w po
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-searches-with-performance-records"></a>Wyszukiwanie w dzienniku z rekordów wydajności
-Poniższa tabela zawiera różne przykłady przeszukiwania dzienników, które pobierają rekordy wydajności.
+## <a name="log-queries-with-performance-records"></a>Dziennik zapytań przy użyciu rekordów wydajności
+Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobierają rekordy wydajności.
 
 | Zapytanie | Opis |
 |:--- |:--- |
@@ -225,5 +225,5 @@ Poniższa tabela zawiera różne przykłady przeszukiwania dzienników, które p
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Liczniki wydajności są zbierane z poziomu aplikacji systemu Linux](data-sources-linux-applications.md) tym MySQL i Apache HTTP Server.
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
-* Zebrane dane, aby wyeksportować [usługi Power BI](../../azure-monitor/platform/powerbi.md) dodatkowych wizualizacji i analizy.
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Zebrane dane, aby wyeksportować [usługi Power BI](powerbi.md) dodatkowych wizualizacji i analizy.

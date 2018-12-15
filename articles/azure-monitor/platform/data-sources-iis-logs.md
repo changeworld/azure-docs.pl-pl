@@ -1,6 +1,6 @@
 ---
-title: Dzienniki usług IIS, w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Internet Information Services (IIS) aktywności użytkownika są przechowywane w plikach dziennika, które mogą być zbierane przez usługę Log Analytics.  W tym artykule opisano sposób konfigurowania zbierania dzienników usług IIS i szczegóły rekordów, które tworzą w obszarze roboczym usługi Log Analytics.
+title: Dzienniki usług IIS, w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Internet Information Services (IIS) aktywności użytkownika są przechowywane w plikach dziennika, które można zbierać z usługi Azure Monitor.  W tym artykule opisano sposób konfigurowania zbierania dzienników usług IIS i szczegóły rekordów, utworzonego przez siebie w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,31 +11,30 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 42509f98126ebb489fe17c58e6d58b37d7451cf0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: cd28eef249ae6b07b9e3f74b80c32a4b53370215
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189085"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436743"
 ---
-# <a name="iis-logs-in-log-analytics"></a>Dzienniki usług IIS, w usłudze Log Analytics
-Internet Information Services (IIS) aktywności użytkownika są przechowywane w plikach dziennika, które mogą być zbierane przez usługę Log Analytics.  
+# <a name="collect-iis-logs-in-azure-monitor"></a>Zbieraj dzienniki usług IIS w usłudze Azure Monitor
+Aktywności użytkownika w Internet Information Services (IIS) są przechowywane w plikach dziennika, które mogą być zbierane przez usługi Azure Monitor i przechowywane jako [dane dziennika](data-collection.md).
 
 ![Dzienniki usług IIS](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>Konfigurowanie usług IIS dzienników
-Log Analytics zbiera wpisy z pliki dziennika utworzone przez usługi IIS, więc musisz [skonfigurowania usług IIS do rejestrowania](https://technet.microsoft.com/library/hh831775.aspx).
+Usługa Azure Monitor umożliwia zbieranie informacji o wpisów z pliki dziennika utworzone przez usługi IIS, więc musisz [skonfigurowania usług IIS do rejestrowania](https://technet.microsoft.com/library/hh831775.aspx).
 
-Log Analytics tylko obsługuje przechowywane w formacie W3C plików dziennika usług IIS i nie obsługuje niestandardowych pól lub Zaawansowane rejestrowanie programu IIS.  
-Usługa log Analytics zbiera dzienniki w formacie natywnym NCSA lub IIS.
+Usługa Azure Monitor tylko obsługuje przechowywane w formacie W3C plików dziennika usług IIS i nie obsługuje niestandardowych pól lub Zaawansowane rejestrowanie programu IIS. Dzienniki w formacie natywnym NCSA lub IIS nie są zbierane.
 
-Skonfiguruj dzienniki usług IIS w usłudze Log Analytics z [danych menu Ustawienia usługi Analiza dzienników](agent-data-sources.md#configuring-data-sources).  Jest wymagana żadna konfiguracja, inne niż wybieranie **pliki dziennika usług IIS w formacie W3C zbieranie**.
+Skonfiguruj dzienniki usług IIS w usłudze Azure Monitor z [menu Zaawansowane ustawienia](agent-data-sources.md#configuring-data-sources).  Jest wymagana żadna konfiguracja, inne niż wybieranie **pliki dziennika usług IIS w formacie W3C zbieranie**.
 
 
 ## <a name="data-collection"></a>Zbieranie danych
-Log Analytics zbiera wpisów dziennika IIS z każdego agenta w każdym razem, gdy dziennik jest zamknięty i nowego jest tworzony. Tę częstotliwość jest kontrolowana przez **harmonogram Przerzucanie pliku dziennika** ustawienia witryny usług IIS, która jest raz dziennie domyślnie. Na przykład, jeśli to ustawienie **godzinowe**, a następnie usługi Log Analytics będzie zbierać dziennika co godzinę.  Jeśli to ustawienie ma **codzienne**, a następnie usługi Log Analytics będzie zbierać dziennika co 24 godziny.
+Usługa Azure Monitor umożliwia zbieranie informacji o wpisów dziennika IIS z każdego agenta w każdym razem, gdy dziennik jest zamknięty i nowego jest tworzony. Tę częstotliwość jest kontrolowana przez **harmonogram Przerzucanie pliku dziennika** ustawienia witryny usług IIS, która jest raz dziennie domyślnie. Na przykład, jeśli to ustawienie **godzinowe**, a następnie usługa Azure Monitor będzie zbierać dziennika co godzinę.  Jeśli to ustawienie ma **codzienne**, a następnie usługa Azure Monitor będzie zbierać dziennika co 24 godziny.
 
 
 ## <a name="iis-log-record-properties"></a>Właściwości rekordu dziennika usług IIS
@@ -65,7 +64,7 @@ Rekordy dziennika usług IIS mają typ **W3CIISLog** i mają właściwości poda
 | TimeGenerated |Data i godzina zarejestrowania wpis. |
 | Właściwość timeTaken |Długość czasu na przetworzenie żądania w milisekundach. |
 
-## <a name="log-searches-with-iis-logs"></a>Wyszukiwanie w dzienniku z dziennikami usług IIS
+## <a name="log-queries-with-iis-logs"></a>Dziennik zapytań przy użyciu dzienników usług IIS
 Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobierają rekordy dziennika usług IIS.
 
 | Zapytanie | Opis |
@@ -77,6 +76,5 @@ Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobiera
 | W3CIISLog &#124; Podsumuj sum(csBytes) przez komputer &#124; zająć 500000 |Suma bajtów odebranych przez każdy komputer IIS. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Skonfiguruj usługę Log Analytics do gromadzenia innych [źródeł danych](agent-data-sources.md) do analizy.
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
-* Konfigurowanie alertów w usłudze Log Analytics w celu proaktywnego powiadamiania o ważne warunki, które można odnaleźć w dziennikach usług IIS.
+* Konfigurowanie usługi Azure Monitor do gromadzenia innych [źródeł danych](agent-data-sources.md) do analizy.
+* Dowiedz się więcej o [rejestrowania zapytań](../../log-analytics/log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań.

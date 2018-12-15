@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fc5b397f64bead38e630cb994d1d325a85b11cda
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 70feaae718bc6ff8e3f956f0fbc6aa395ba27061
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139660"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410401"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -96,7 +96,7 @@ Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następują
 * Jeden kontener na subskrypcję dla konta programu SQL, interfejs API Gremlin i tabeli.
 * Maksymalnie trzy kolekcje na subskrypcję dla konta bazy danych MongoDB.
 * Pojemność magazynu o rozmiarze 10 GB.
-* Replikacja globalnej jest dostępna w następujących [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/): środkowe stany USA, Europa Północna i Azja południowo-wschodnia
+* Replikacja globalnej jest dostępna w następujących [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/): Środkowe stany USA, Europa Północna i Azja południowo-wschodnia
 * Maksymalnej przepływności równej 5 K jednostek RU/s.
 * Subskrypcje wygasają po upływie 24 godzin i można rozszerzyć do maksymalnie 48 godzin.
 * Nie można utworzyć biletów pomocy technicznej platformy Azure dla konta Wypróbuj usługę Azure Cosmos DB jednak obsługiwane dla subskrybentów przy użyciu istniejących planów pomocy technicznej.
@@ -147,7 +147,7 @@ Tak, interfejs API SQL umożliwia aplikacjom przechowywanie dowolnych dokumentó
 
 ### <a name="does-the-sql-api-support-acid-transactions"></a>Interfejs API SQL obsługuje transakcje ACID?
 
-Tak, interfejs API SQL obsługuje transakcje dla wielu dokumentów wyrażone jako procedury składowane JavaScript i wyzwalacze. Transakcje są ograniczone do jednej partycji w ramach każdego kontenera i wykonywane przy użyciu semantyki ACID jako "wszystko lub nic" odizolowanych od innego współbieżnie wykonywanego kodu i żądań użytkownika. Jeśli istnieją wyjątki zgłaszane przez wykonanie kodu aplikacji JavaScript po stronie serwera, cała transakcja zostanie wycofana. Aby uzyskać więcej informacji na temat transakcji, zobacz [bazy danych program transakcje](programming.md#database-program-transactions).
+Tak, interfejs API SQL obsługuje transakcje dla wielu dokumentów wyrażone jako procedury składowane JavaScript i wyzwalacze. Transakcje są ograniczone do jednej partycji w ramach każdego kontenera i wykonywane przy użyciu semantyki ACID jako "wszystko lub nic" odizolowanych od innego współbieżnie wykonywanego kodu i żądań użytkownika. Jeśli istnieją wyjątki zgłaszane przez wykonanie kodu aplikacji JavaScript po stronie serwera, cała transakcja zostanie wycofana. 
 
 ### <a name="what-is-a-container"></a>Co to jest kontenerem?
 
@@ -234,7 +234,7 @@ Wraz z typowe kody błędów bazy danych MongoDB interfejsu API usługi MongoDB 
 | Błąd               | Kod  | Opis  | Rozwiązanie  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Całkowita liczba jednostek żądań, używane jest większa niż współczynnik aprowizowane jednostki żądań dla kolekcji i zostały ograniczone. | Należy rozważyć skalowanie przepływności przypisanych do kontenera lub zestaw kontenerów na platformie Azure portal lub Trwa ponawianie próby ponownie. |
-| ExceededMemoryLimit | 16501 | Jako usługa dla wielu dzierżawców operacji stała się za pośrednictwem przydziału pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnych kryteria zapytania lub skontaktuj się z działem pomocy technicznej firmy [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Przykład:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {name: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {wiek: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+| ExceededMemoryLimit | 16501 | Jako usługa dla wielu dzierżawców operacji stała się za pośrednictwem przydziału pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnych kryteria zapytania lub skontaktuj się z działem pomocy technicznej firmy [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Przykład:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {Nazwa: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {wiek: -1}}<br> &nbsp; &nbsp; &nbsp;&nbsp;])*) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>Czy sterownik firmą Simba dla bazy danych MongoDB obsługiwane do użytku z interfejsu API MongoDB usługi Azure cosmos DB?
 
@@ -395,11 +395,11 @@ Tak, aby uzyskać informacje o tym, jak korzystać z Rozproszony charakter usłu
 
 ### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>Po włączeniu dystrybucji globalnej, jak długo trwa do replikowania danych?
 
-Usługa Azure Cosmos DB zatwierdzeń danych trwale w regionie lokalnym i wypychanie danych do innych regionów natychmiast w ciągu kilku milisekund. Ta replikacja jest zależna tylko czas Rundy (RTT) w centrum danych. Aby dowiedzieć się więcej na temat możliwości dystrybucję globalną usługi Azure Cosmos DB, zobacz [usługi Azure Cosmos DB: Usługa globalnie rozproszonej bazy danych, na platformie Azure](distribute-data-globally.md).
+Usługa Azure Cosmos DB zatwierdzeń danych trwale w regionie lokalnym i wypychanie danych do innych regionów natychmiast w ciągu kilku milisekund. Ta replikacja jest zależna tylko czas Rundy (RTT) w centrum danych. Aby dowiedzieć się więcej na temat możliwości dystrybucję globalną usługi Azure Cosmos DB, zobacz [usługi Azure Cosmos DB: Globalnie rozproszona usługa bazy danych na platformie Azure](distribute-data-globally.md).
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>Można zmienić poziomu spójności żądanie odczytu?
 
-Za pomocą usługi Azure Cosmos DB można ustawić poziomu spójności na poziomie kontenera (w tabeli). Za pomocą zestawu .NET SDK, możesz zmienić poziom, podając wartość dla klucza TableConsistencyLevel w pliku app.config. Możliwe wartości to: silna, powiązana nieaktualność, sesja, spójny prefiks i ostateczna. Aby uzyskać więcej informacji, zobacz [dostosowania danych poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md). Kluczowe chodzi o to, że nie można ustawić spójności żądania poziomu więcej niż ustawienie dla tabeli. Na przykład nie można ustawić poziomu spójności dla tabeli ostateczna i poziomu spójności żądania na silne.
+Za pomocą usługi Azure Cosmos DB można ustawić poziomu spójności na poziomie kontenera (w tabeli). Za pomocą zestawu .NET SDK, możesz zmienić poziom, podając wartość dla klucza TableConsistencyLevel w pliku app.config. Możliwe wartości to: Silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Aby uzyskać więcej informacji, zobacz [dostosowania danych poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md). Kluczowe chodzi o to, że nie można ustawić spójności żądania poziomu więcej niż ustawienie dla tabeli. Na przykład nie można ustawić poziomu spójności dla tabeli ostateczna i poziomu spójności żądania na silne.
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Jak interfejs API tabel obsługuje tryb failover Jeśli region ulegnie awarii?
 
@@ -413,11 +413,11 @@ Tak, interfejs API tabel korzysta z platformy usługi Azure Cosmos DB, tworzenia
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Powoduje interfejsu API tabel indeksowania domyślnie wszystkie atrybuty jednostki
 
-Tak, wszystkie atrybuty jednostki są indeksowane, domyślnie. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: zasady indeksowania](index-policy.md).
+Tak, wszystkie atrybuty jednostki są indeksowane, domyślnie. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: Zasady indeksowania](index-policy.md).
 
 ### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Czy oznacza to, że nie trzeba utworzyć więcej niż jednego indeksu do zaspokojenia zapytania?
 
-Tak, interfejsu API tabeli usługi Azure Cosmos DB obsługuje automatyczne indeksowanie wszystkich atrybutów bez żadnych definicji schematu. Ta Automatyzacja ułatwia deweloperom skoncentrować się na aplikacji, a nie na tworzenie indeksu i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: zasady indeksowania](index-policy.md).
+Tak, interfejsu API tabeli usługi Azure Cosmos DB obsługuje automatyczne indeksowanie wszystkich atrybutów bez żadnych definicji schematu. Ta Automatyzacja ułatwia deweloperom skoncentrować się na aplikacji, a nie na tworzenie indeksu i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: Zasady indeksowania](index-policy.md).
 
 ### <a name="can-i-change-the-indexing-policy"></a>Czy mogę zmienić zasady indeksowania
 
@@ -536,13 +536,13 @@ Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md
 
 Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
-### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Dlaczego otrzymuję "Błąd kompilacji zapytania języka Gremlin: nie można odnaleźć dowolną metodę" Błąd?
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Dlaczego otrzymuję "Błąd kompilacji zapytania języka Gremlin: Nie można odnaleźć dowolną metodę"Błąd?
 
 Interfejs API usługi Azure Cosmos DB Gremlin implementuje podzbiór funkcji zdefiniowane w obszarze powierzchni języka Gremlin. Obsługiwane kroki i dodatkowe informacje, zobacz [Obsługa języka Gremlin](gremlin-support.md) artykułu.
 
 Najlepszym obejściem tego problemu jest do przepisania wymaganych kroków języka Gremlin z obsługiwanych funkcji, ponieważ wszystkie niezbędne kroki Gremlin są obsługiwane przez usługę Azure Cosmos DB.
 
-### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Dlaczego otrzymuję "WebSocketException: serwer zwrócił kod stanu"200", gdy oczekiwany kod stanu:"101"" Błąd?
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Dlaczego otrzymuję "WebSocketException: Serwer zwrócił kod stanu "200", gdy oczekiwany kod stanu: "101" "Błąd?
 
 Ten błąd prawdopodobnie jest zgłaszany, gdy jest używany nieprawidłowy punkt końcowy. Punkt końcowy, który generuje ten błąd ma następującego wzorca:
 
@@ -777,11 +777,11 @@ Możesz dodać dowolną liczbę regionów, jak konta i kontrolować, gdzie go mo
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Powoduje interfejsu API Apache Cassandra indeksowania domyślnie wszystkie atrybuty jednostki
 
-Tak, wszystkie atrybuty jednostki są indeksowane, domyślnie przez usługę Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: zasady indeksowania](index-policy.md). Uzyskaj korzyści o wartości gwarancji wydajności przy użyciu spójnego indeksowania i trwałe kworum zatwierdzone zapisuje zawsze.
+Tak, wszystkie atrybuty jednostki są indeksowane, domyślnie przez usługę Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: Zasady indeksowania](index-policy.md). Uzyskaj korzyści o wartości gwarancji wydajności przy użyciu spójnego indeksowania i trwałe kworum zatwierdzone zapisuje zawsze.
 
 ### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Czy oznacza to, że nie trzeba utworzyć więcej niż jednego indeksu do zaspokojenia zapytania?
 
-Tak, Azure Cosmos DB zapewnia automatyczne indeksowanie wszystkich atrybutów bez żadnych definicji schematu. Ta Automatyzacja ułatwia deweloperom skoncentrować się na aplikacji, a nie na tworzenie indeksu i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: zasady indeksowania](index-policy.md).
+Tak, Azure Cosmos DB zapewnia automatyczne indeksowanie wszystkich atrybutów bez żadnych definicji schematu. Ta Automatyzacja ułatwia deweloperom skoncentrować się na aplikacji, a nie na tworzenie indeksu i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: Zasady indeksowania](index-policy.md).
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Czy można użyć nowego zestawu SDK interfejsu API rozwiązania Cassandra lokalnie w emulatorze?
 

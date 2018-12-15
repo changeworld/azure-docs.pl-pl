@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: bf3105201f8eac8bebfe06320ab477cf0b7011e2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: adeb2d1f1268ed3f933a340c184a531510a7ff88
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388892"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437456"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w Microsoft Azure Virtual Machines, Cloud Services i Web Apps
 W tym artykule opisano, jakie Microsoft Azure Skalowanie automatyczne to, jego zalety i sposób rozpoczynania korzystania z niego.  
@@ -96,7 +96,7 @@ Aby uzyskać więcej informacji, zobacz [skalowanie w pionie maszyn wirtualnych 
 ## <a name="methods-of-access"></a>Metod dostępu
 Możesz skonfigurować automatyczne skalowanie za pomocą
 
-* [Azure Portal](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)
+* [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
 * [Program PowerShell](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings)
 * [Międzyplatformowy interfejs wiersza polecenia (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
@@ -104,7 +104,7 @@ Możesz skonfigurować automatyczne skalowanie za pomocą
 ## <a name="supported-services-for-autoscale"></a>Obsługiwane usługi dotyczące automatycznego skalowania
 | Usługa | Schemat i dokumenty |
 | --- | --- |
-| Web Apps |[Skalowanie aplikacji sieci Web](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) |
+| Web Apps |[Skalowanie aplikacji sieci Web](../../azure-monitor/platform/autoscale-get-started.md) |
 | Cloud Services |[Automatyczne skalowanie usługi w chmurze](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Maszyny wirtualne: Wdrożenie klasyczne |[Skalowanie zestawów dostępności klasycznej maszyny wirtualnej](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Maszyny wirtualne: Zestawy skalowania Windows |[Skalowanie skalowania maszyn wirtualnych zestawów w Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |

@@ -10,14 +10,14 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 12/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 80246114ac839efa0025dfbc29b9bdbbe2b740be
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 5f27b34bda930d020461bd5f4f7986091ffd5549
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084809"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413663"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 
@@ -153,7 +153,7 @@ ArrayContent.json format jest następujący:
 
 ### <a name="parameter-files"></a>Pliki parametrów
 
-Zamiast przekazywania parametrów jako wartości wbudowanych w skrypcie, użytkownik może okazać się łatwiejszy w obsłudze pliku JSON, który zawiera wartości parametrów. Może to być plik parametrów pliku lokalnego lub zewnętrznego pliku za pomocą dostępny identyfikatora URI.
+Zamiast przekazywania parametrów jako wartości wbudowanych w skrypcie, użytkownik może okazać się łatwiejszy w obsłudze pliku JSON, który zawiera wartości parametrów. Plik parametrów musi być plikiem lokalnym. Pliki parametrów zewnętrznych nie są obsługiwane przy użyciu wiersza polecenia platformy Azure.
 
 Plik parametrów musi być w następującym formacie:
 

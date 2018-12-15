@@ -1,6 +1,6 @@
 ---
-title: Funkcje szablonów Menedżera zasobów Azure - wdrożenia | Dokumentacja firmy Microsoft
-description: Zawiera opis funkcji można użyć w szablonie usługi Azure Resource Manager można pobrać informacji o wdrożeniu.
+title: Usługa Azure functions szablonu usługi Resource Manager — wdrażanie | Dokumentacja firmy Microsoft
+description: Opisuje funkcje, które można użyć w szablonie usługi Azure Resource Manager można pobrać informacji o wdrożeniu.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 12/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 725bc41f96359d4bf0d9d570f73f91dba5da2cab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d802af1d48405518f26f4b52ecc3023cbb15caff
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358238"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407358"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkcje wdrażania dla szablonów usługi Azure Resource Manager 
 
-Pobieranie wartości z części szablonu i wartości dotyczące wdrażania Menedżera zasobów zawiera następujące funkcje:
+Pobieranie wartości z części szablonu i wartości związane z wdrażaniem usługi Resource Manager zawiera następujące funkcje:
 
-* [wdrożenia](#deployment)
+* [Wdrożenia](#deployment)
 * [parameters](#parameters)
-* [zmienne](#variables)
+* [Zmienne](#variables)
 
-Aby uzyskać wartości z zasobów, grupy zasobów lub subskrypcji, zobacz [funkcji zasobów](resource-group-template-functions-resource.md).
+Aby uzyskać wartości z zasobów, grup zasobów lub subskrypcji, zobacz [funkcje Resource](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
 
@@ -40,7 +40,7 @@ Zwraca informacje o bieżącej operacji wdrożenia.
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Ta funkcja zwraca obiekt, który jest przekazywany podczas wdrażania. Właściwości w obiekcie zwrócony się różnić w zależności od tego, czy obiekt wdrożenia jest przekazywany jako łącze lub obiekt w wierszu. Gdy obiekt wdrożenia jest przekazywany w zewnętrznych, takich jak przy użyciu **- TemplateFile** parametru w programie Azure PowerShell, aby wskazywał na plik lokalny zwrócony obiekt ma następujący format:
+Ta funkcja zwraca obiekt, który jest przekazywany podczas wdrażania. Właściwości w obiekcie zwrócone różne w zależności od tego, czy obiekt wdrożenia jest przekazywany jako łącze lub obiektu w tekście. Kiedy obiekt wdrożenia jest przekazywana wbudowane, takie jak przy użyciu **- TemplateFile** parametru w programie Azure PowerShell, aby wskazać plik lokalny, zwracany obiekt ma następujący format:
 
 ```json
 {
@@ -62,7 +62,7 @@ Ta funkcja zwraca obiekt, który jest przekazywany podczas wdrażania. Właściw
 }
 ```
 
-Jeśli obiekt został przekazany jako łącze, takich jak przy użyciu **- TemplateUri** parametr, aby wskazywał obiektu zdalnego obiekt jest zwracany w następującym formacie: 
+Gdy obiekt jest przekazywany jako łącze, takich jak przy użyciu **- TemplateUri** parametru, aby wskazywał obiektu zdalnego obiekt jest zwracany w następującym formacie: 
 
 ```json
 {
@@ -86,9 +86,11 @@ Jeśli obiekt został przekazany jako łącze, takich jak przy użyciu **- Templ
 }
 ```
 
+Po użytkownik [wdrażania z subskrypcją platformy Azure](deploy-to-subscription.md), zamiast grupę zasobów, zawiera obiekt zwracany `location` właściwości. Właściwość lokalizacji jest uwzględniony, podczas wdrażania lokalnego szablonu lub szablonu usługi zewnętrznej.
+
 ### <a name="remarks"></a>Uwagi
 
-Aby utworzyć link do innego szablonu na podstawie szablonu nadrzędnego identyfikatora URI, można użyć deployment().
+Deployment() można użyć, aby połączyć innego szablonu, w oparciu o identyfikator URI szablonu nadrzędnego.
 
 ```json
 "variables": {  
@@ -114,7 +116,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Poprzedni przykład zwraca następujący obiekt:
+Powyższy przykład zwraca następujący obiekt:
 
 ```json
 {
@@ -138,24 +140,26 @@ Poprzedni przykład zwraca następujący obiekt:
 }
 ```
 
-Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
 
-Aby wdrożyć szablon ten przykład przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
+
+Dla szablonu poziom subskrypcji, który używa funkcji wdrażania, zobacz [subskrypcji wdrażania funkcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Jest wdrażany z jedną `az deployment create` lub `New-AzureRmDeployment` poleceń.
 
 <a id="parameters" />
 
 ## <a name="parameters"></a>parameters
 `parameters(parameterName)`
 
-Zwraca wartość parametru. Określona nazwa parametru musi być zdefiniowany w sekcji parametrów szablonu.
+Zwraca wartość parametru. Określona nazwa parametru musi być zdefiniowany w sekcji Parametry szablonu.
 
 ### <a name="parameters"></a>Parametry
 
@@ -169,7 +173,7 @@ Wartość określonego parametru.
 
 ### <a name="remarks"></a>Uwagi
 
-Zwykle Użyj parametrów można ustawić wartości zasobów. Poniższy przykład ustawia nazwę witryny sieci web do wartości parametrów przekazane podczas wdrażania.
+Zwykle Użyj parametrów można ustawić wartości zasobów. W poniższym przykładzie ustawiono nazwa witryny sieci web, wartość parametru przekazanego podczas wdrażania.
 
 ```json
 "parameters": { 
@@ -244,23 +248,23 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | stringOutput | Ciąg | Opcja 1 |
 | intOutput | Int | 1 |
-| objectOutput | Obiekt | {"jeden": "", "2": "b"} |
+| objectOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
 | arrayOutput | Tablica | [1, 2, 3] |
 | crossOutput | Ciąg | Opcja 1 |
 
-Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
 ```
 
-Aby wdrożyć szablon ten przykład przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
@@ -268,7 +272,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="variables" />
 
-## <a name="variables"></a>zmienne
+## <a name="variables"></a>Zmienne
 `variables(variableName)`
 
 Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowany w sekcji zmiennych szablonu.
@@ -277,7 +281,7 @@ Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowany w se
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| nazwa_zmiennej |Yes |Ciąg |Nazwa zmiennej do zwrócenia. |
+| nazwa_zmiennej |Yes |Ciąg |Nazwa zmiennej, do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -285,7 +289,7 @@ Wartość określonej zmiennej.
 
 ### <a name="remarks"></a>Uwagi
 
-Zazwyczaj w przypadku używania zmiennych, aby uprościć szablonu, tworząc wartości złożonych tylko raz. Poniższy przykład tworzy unikatową nazwę konta magazynu.
+Zazwyczaj używać zmiennych, aby uprościć szablonu, tworząc złożonych wartości tylko raz. Poniższy przykład tworzy unikatową nazwę konta magazynu.
 
 ```json
 "variables": {
@@ -347,30 +351,30 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| exampleOutput1 | Ciąg | myVariable |
+| exampleOutput1 | Ciąg | Moja_zmienna |
 | exampleOutput2 | Tablica | [1, 2, 3, 4] |
-| exampleOutput3 | Ciąg | myVariable |
-| exampleOutput4 |  Obiekt | {"właściwości property1": "wartość1", "property2": "wartość2"} |
+| exampleOutput3 | Ciąg | Moja_zmienna |
+| exampleOutput4 |  Obiekt | {"właściwość1": "wartość1", "property2": "wartość2"} |
 
-Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
 ```
 
-Aby wdrożyć szablon ten przykład przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Opis części szablonu usługi Azure Resource Manager, zobacz [szablonów Authoring Azure Resource Manager](resource-group-authoring-templates.md).
-* Aby scalić wiele szablonów, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
-* Do wykonywania iteracji określoną liczbę razy podczas tworzenia typu zasobu, zobacz [utworzyć wiele wystąpień zasobów usługi Azure Resource Manager](resource-group-create-multiple.md).
+* Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
+* Aby scalić kilka szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+* Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).
 * Aby zobaczyć, jak wdrożyć szablon został utworzony, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
 

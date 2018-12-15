@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 43615caf00bec79c1f87736b6ca0d2b74bfb95d7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52857164"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399945"
 ---
 Można korzystać z zalet wiele okazji do monitorowania maszyn wirtualnych, zbierając, wyświetlanie i analizowanie danych diagnostycznych i dane dziennika. W prostych [monitorowania](../articles/azure-monitor/overview.md) ekran Przegląd maszyny wirtualnej, można użyć dla maszyny Wirtualnej w witrynie Azure portal. Możesz użyć [rozszerzenia](../articles/virtual-machines/windows/extensions-features.md) Aby skonfigurować diagnostykę na maszynach wirtualnych, aby zbierać dodatkowe dane metryk. Umożliwia również bardziej zaawansowane opcje monitorowania, takich jak [usługi Application Insights](../articles/application-insights/app-insights-overview.md) i [usługi Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -31,7 +31,7 @@ Można skonfigurować i monitorować zbiorem [dane diagnostyczne](https://docs.m
 
 ## <a name="alerts"></a>Alerty
 
-Możesz utworzyć [alerty](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md) oparciu o konkretne metryki wydajności. Przykłady problemów, które użytkownik może otrzymywać alerty o średniego użycia procesora CPU przekroczy określony próg lub dostępnego wolnego miejsca na dysku spada poniżej pewnej ilości. Alerty można skonfigurować w [witryny Azure portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)przy użyciu [programu Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md), lub [wiersza polecenia platformy Azure](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md).
+Możesz utworzyć [alerty](../articles/azure-monitor/platform/alerts-overview.md) oparciu o konkretne metryki wydajności. Przykłady problemów, które użytkownik może otrzymywać alerty o średniego użycia procesora CPU przekroczy określony próg lub dostępnego wolnego miejsca na dysku spada poniżej pewnej ilości. Alerty można skonfigurować w [witryny Azure portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)przy użyciu [programu Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md), lub [wiersza polecenia platformy Azure](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md).
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
@@ -50,7 +50,7 @@ Oto niektóre rzeczy, które można zrobić z dziennika aktywności:
 - Tworzenie [alertów dotyczących zdarzenia dziennika aktywności](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 - [Stream go do Centrum zdarzeń](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
 - Analizowanie ich w usłudze Power BI przy użyciu [pakietu zawartości usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
-- [Zapisz go na koncie magazynu](../articles/monitoring-and-diagnostics/monitoring-archive-activity-log.md) inspekcji archiwizacji lub ręcznie. Można określić czas przechowywania (w dniach), korzystając z profilu dziennika.
+- [Zapisz go na koncie magazynu](../articles/azure-monitor/platform/archive-activity-log.md) inspekcji archiwizacji lub ręcznie. Można określić czas przechowywania (w dniach), korzystając z profilu dziennika.
 
 Dane dzienników aktywności można także przejść za pomocą [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor), lub [interfejsów API REST usługi Monitor](https://docs.microsoft.com/rest/api/monitor/).
 
@@ -58,7 +58,7 @@ Dane dzienników aktywności można także przejść za pomocą [programu Azure 
 
 Oto niektóre rzeczy, które można zrobić z dziennikami diagnostycznymi:
 
-- [Zapisz je na konto magazynu](../articles/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić czas przechowywania (w dniach), za pomocą ustawień diagnostycznych zasobu.
+- [Zapisz je na konto magazynu](../articles/azure-monitor/platform/archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić czas przechowywania (w dniach), za pomocą ustawień diagnostycznych zasobu.
 - [Stream je do usługi Event Hubs](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
 - Analizuj je za pomocą [usługi OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 

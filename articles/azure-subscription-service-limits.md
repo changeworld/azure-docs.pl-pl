@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 12/10/2018
 ms.author: byvinyal
-ms.openlocfilehash: 2ee5eca6f138d9aaa1a2b7cebb61b56fd26e17cc
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: eb93dfae91ee84400c32af7b662c69aefda979d2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017213"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409177"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -54,10 +54,9 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Pamięć podręczna systemu Azure dla usługi Redis](#azure-redis-cache-limits)
+* [Azure Cache for Redis](#azure-redis-cache-limits)
 * [Tworzenie kopii zapasowych](#backup-limits)
 * [Batch](#batch-limits)
-* [Usługa Batch — sztuczna inteligencja](#batch-ai-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [CDN](#cdn-limits)
 * [Cloud Services](#cloud-services-limits)
@@ -219,9 +218,6 @@ Następujące limity usługi App Service obejmują limity dla aplikacji sieci We
 
 ### <a name="batch-limits"></a>Limity usługi Batch
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
-
-### <a name="batch-ai-limits"></a>Limity usługi Batch AI
-[!INCLUDE [azure-batch-ai-limits](../includes/azure-batch-ai-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>Limity usługi BizTalk Services
 W poniższej tabeli przedstawiono limity usługi Azure Biztalk Services.

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 6588d65a4f19c06e3ee4990aba226dbd11119c91
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a86902d772226be136778d200a37c451b7b7e9a5
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016254"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407256"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Przesyłanie strumieniowe na dużą skalę w usłudze HDInsight
 
 Rozwiązania typu big data w czasie rzeczywistym względem danych w ruchu. Zazwyczaj te dane są najbardziej przydatne w momencie jego nadejścia. Przychodzący strumień danych staje się większą niż mogą być obsługiwane w tej chwili, może być konieczne ograniczanie zasobów w dół. Alternatywnie klaster usługi HDInsight skalować w górę do spełnienia rozwiązania do przesyłania strumieniowego poprzez dodawanie węzłów na żądanie.
 
-W przypadku przesyłania strumieniowego aplikacji co najmniej jedno źródło danych jest generowany zdarzeń (czasem w milionach na sekundę), które muszą być pozyskiwane szybko bez usuwania żadnych użytecznych informacji. Zdarzenia przychodzące są obsługiwane za pomocą *buforowanie strumienia*, nazywane również *Kolejkowanie zdarzeń*, przez usługę, takich jak [Kafka](kafka/apache-kafka-introduction.md) lub [usługi Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po zebraniu zdarzenia można następnie analizować dane przy użyciu systemu analizy w czasie rzeczywistym w ramach *przetwarzanie strumienia* warstwy, takich jak [Storm](storm/apache-storm-overview.md) lub [Spark Streaming](spark/apache-spark-streaming-overview.md). Przetworzone dane mogą być przechowywane w systemów magazynowania długoterminowe, takie jak [usługi Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)i wyświetlane w czasie rzeczywistym na pulpicie nawigacyjnym analizy biznesowej, takich jak [usługi Power BI](https://powerbi.microsoft.com), Tableau lub niestandardowa strona sieci web .
+W przypadku przesyłania strumieniowego aplikacji co najmniej jedno źródło danych jest generowany zdarzeń (czasem w milionach na sekundę), które muszą być pozyskiwane szybko bez usuwania żadnych użytecznych informacji. Zdarzenia przychodzące są obsługiwane za pomocą *buforowanie strumienia*, nazywane również *Kolejkowanie zdarzeń*, przez usługę, takich jak [platformy Apache Kafka](kafka/apache-kafka-introduction.md) lub [usługi Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po zebraniu zdarzenia można następnie analizować dane przy użyciu systemu analizy w czasie rzeczywistym w ramach *przetwarzanie strumienia* warstwy, takich jak [Apache Storm](storm/apache-storm-overview.md) lub [Apache Spark Streaming](spark/apache-spark-streaming-overview.md). Przetworzone dane mogą być przechowywane w systemów magazynowania długoterminowe, takie jak [usługi Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)i wyświetlane w czasie rzeczywistym na pulpicie nawigacyjnym analizy biznesowej, takich jak [usługi Power BI](https://powerbi.microsoft.com), Tableau lub niestandardowa strona sieci web .
 
 ![HDInsight Streaming wzorców](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji, zobacz [co to jest Apache Storm w usłudze Azur
 
 Przesyłanie strumieniowe Spark jest rozszerzeniem platformy Spark, która pozwala na ponowne użycie tego samego kodu, których używasz do przetwarzania wsadowego. Możesz połączyć usługi batch i interakcyjnych zapytań w tej samej aplikacji. W przeciwieństwie do systemu Storm, Spark Streaming oferuje stanowa dokładnie — jednokrotne przetwarzanie semantyki. W połączeniu z [bezpośrednie interfejsu API platformy Kafka](http://spark.apache.org/docs/latest/streaming-kafka-integration.html), który zapewnia, że wszystkie dane platformy Kafka jest odbierany przez przesyłanie strumieniowe Spark dokładnie jeden raz, jest możliwe uzyskanie dokładnie end-to-end-gwarantuje raz. Jedną z mocnych strumieniowe Spark jest jego możliwości odpornej na uszkodzenia, odzyskiwanie szybko zwracające błędy węzłów, gdy są używane wiele węzłów w klastrze.
 
-Aby uzyskać więcej informacji, zobacz [co to jest przesyłanie strumieniowe Spark?](hdinsight-spark-streaming-overview.md).
+Aby uzyskać więcej informacji, zobacz [co to jest Apache Spark Streaming?](hdinsight-spark-streaming-overview.md).
 
 ## <a name="scaling-a-cluster"></a>Skalowanie klastra
 
@@ -65,5 +65,5 @@ Te trzy parametry można skonfigurować na poziomie klastra dla wszystkich aplik
 
 * [Rozpoczynanie pracy z usługą Apache Storm w HDInsight](storm/apache-storm-tutorial-get-started-linux.md)
 * [Przykładowe topologie dla systemu Apache Storm w usłudze HDInsight](storm/apache-storm-example-topology.md)
-* [Wprowadzenie do platformy Spark w HDInsight](spark/apache-spark-overview.md)
+* [Wprowadzenie do platformy Apache Spark w HDInsight](spark/apache-spark-overview.md)
 * [Uruchom przy użyciu platformy Apache Kafka w HDInsight](kafka/apache-kafka-get-started.md)

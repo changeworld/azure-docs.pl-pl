@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 61294d8b6b84b03b1e0c8d79b4d2855452c7f0e6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9af8ce84805e48dd3c91dd7fb4fcf0b136fbfc60
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057233"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410095"
 ---
 # <a name="work-with-batch-ai-clusters"></a>Praca z klastrami usługi Batch AI 
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 W tym artykule opisano sposób pracy z klastrami w usłudze Azure Batch AI. Wprowadza pojęcia klastrów, typy konfiguracji, które są możliwe i przykłady. Większość przykładów, aby tworzyć i zarządzać nimi w klastrze, w tym artykule Użyj wiersza polecenia platformy Azure. Jednak można użyć innych narzędzi, takich jak witryny Azure portal i zestawów SDK usługi Azure Batch AI do pracy z klastrami.
 
@@ -152,7 +155,7 @@ Dane wyjściowe będą podobne do następujących.
 }
 ```
 
-### <a name="list-cluster-nodes"></a>Lista węzłów klastra
+### <a name="list-cluster-nodes"></a>Wyświetlenie listy węzłów klastra
 
 Jeśli potrzebujesz nawiązać połączenia z węzłami klastra, następujące polecenie pobiera listę węzłów i informacje o połączeniu.  
 

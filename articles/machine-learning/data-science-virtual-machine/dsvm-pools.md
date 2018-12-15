@@ -14,36 +14,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 12/10/2018
 ms.author: gokuma
-ms.openlocfilehash: acae59922f5a46f059e19db6865491f5186139f7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 648b0818f07aca8763fa4af01380076ae307b0a2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103408"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408956"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Utwórz współużytkowanej puli maszyn wirtualnych do nauki o danych
 
 W tym artykule omówiono sposób tworzenia współużytkowanej puli z maszynami wirtualnymi analizy danych (maszyny) dla zespołu do użycia. Korzyści z używania współużytkowanej puli są lepsze wykorzystanie zasobów, ułatwianie udostępniania i współpracy i bardziej efektywne zarządzanie zasobami nauki. 
 
-Aby utworzyć pulę maszyny, można użyć wielu metod i technologii. Ten artykuł koncentruje się na pule dla przetwarzania wsadowego i interaktywne maszyn wirtualnych.
-
-## <a name="batch-processing-pool"></a>Przetwarzanie wsadowe puli
-Jeśli chcesz skonfigurować pulę maszyny głównie do uruchamiania zadań w zadaniu wsadowym w trybie offline, możesz użyć [usługi Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) lub [usługi Azure Batch](https://docs.microsoft.com/azure/batch/) usługi. Ten artykuł dotyczy usługi Azure Batch AI.
-
-Wersji systemu Ubuntu maszyny DSVM jest obsługiwany jako jeden z obrazów w usłudze Azure Batch AI. W wiersza polecenia platformy Azure lub zestawu SDK języka Python, w której utworzono klaster usługi Azure Batch AI, można określić `image` parametru i ustaw ją na `UbuntuDSVM`. Można wybrać, jakie węzły przetwarzania będą: opartą na procesorze GPU wystąpień i wystąpień tylko do procesora CPU, liczbę procesorów i pamięci z [szeroki wybór wystąpień maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) dostępne na platformie Azure. 
-
-Korzystając z obrazu maszyny wirtualnej DSVM Ubuntu w sztucznej Inteligencji usługi Batch z węzłami opartą na procesorze GPU, preinstalowane wszystkie niezbędne sterowniki procesora GPU i platform uczenia głębokiego. Preinstalacji zapisuje znaczną ilość czasu w celu przygotowania węzłów usługi batch. W rzeczywistości tworzysz na DSVM Ubuntu interaktywnie, można zauważyć, że węzłów usługi Batch AI są dokładnie tę samą konfigurację i Konfiguracja środowiska. 
-
-Zwykle podczas tworzenia klastra usługi Batch AI, można również utworzyć udział plików, który jest zainstalowany przez wszystkie węzły. Udział plików jest używany dla danych wejściowych i wyjściowych danych, a także przechowywanie kodu zadania usługi batch/skryptów. 
-
-Po utworzeniu klastra usługi Batch AI, można użyć tego samego interfejsu wiersza polecenia lub zestawu SDK języka Python do przesyłania zadań do uruchomienia. Płacisz za czas, który jest używany do uruchamiania zadań wsadowych. 
-
-Aby uzyskać więcej informacji, zobacz:
-* Przewodnik krok po kroku po korzystaniu z [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/batch-ai/quickstart-cli) do zarządzania usługi Batch AI
-* Przewodnik krok po kroku po korzystaniu z [Python](https://docs.microsoft.com/azure/batch-ai/quickstart-python) do zarządzania usługi Batch AI
-* [Batch AI przepisy](https://github.com/Azure/BatchAI) które pokazują, jak używać różnych sztucznej Inteligencji i głębokiego uczenia struktury za pomocą usługi Batch AI
+Aby utworzyć pulę maszyny, można użyć wielu metod i technologii. Ten artykuł koncentruje się na pule interaktywne maszyn wirtualnych. Infrastrukturę alternatywnych obliczeniową zarządzanych jest obliczeniowego usługi Azure Machine Learning. Zobacz [Konfigurowanie celów obliczeń](../service/how-to-set-up-training-targets.md#amlcompute) Aby uzyskać więcej informacji.
 
 ## <a name="interactive-vm-pool"></a>Interaktywne puli maszyn wirtualnych
 

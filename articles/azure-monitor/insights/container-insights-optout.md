@@ -8,17 +8,18 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fcf11d10a05b553c85532d9092c42b515328b5c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f9c2324eb429c82f7e937b4f18311bf204eeb193
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188082"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408757"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zatrzymać monitorowanie usługi Azure Kubernetes Service (AKS) z usługą Azure Monitor dla kontenerów
 
@@ -35,14 +36,14 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 Aby ponownie włączyć monitorowania dla klastra, zobacz [Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure](container-insights-onboard.md#enable-monitoring-using-azure-cli).
 
 ## <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
-Czy podana, dwa szablonu usługi Azure Resource Manager umożliwiają usunięcie spójnego i wielokrotnego zasoby rozwiązania w grupie zasobów. Jednym jest określenie konfiguracji szablonu JSON *zrezygnować z* , a drugi zawiera wartości parametrów, które można skonfigurować w celu określenia AKS grupę zasobów klastra identyfikator i zasobów wdrożoną w klastrze. 
+Czy podana, dwa szablonu usługi Azure Resource Manager umożliwiają usunięcie spójnego i wielokrotnego zasoby rozwiązania w grupie zasobów. Jednym z nich jest określenie konfiguracji, aby zatrzymać monitorowanie szablonu JSON, a drugi zawiera wartości parametrów, które można skonfigurować w celu określenia AKS grupę zasobów klastra identyfikator i zasobów wdrożoną w klastrze. 
 
 Jeśli znasz koncepcji wdrażanie zasobów za pomocą szablonu, zobacz:
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
 >[!NOTE]
->Szablon musi zostać wdrożony w tej samej grupie zasobów co klaster.
+>Szablon musi zostać wdrożony w tej samej grupie zasobów co klaster. Jeżeli pominięto innymi właściwościami lub dodatków przy użyciu tego szablonu, może to spowodować ich usunięcia z klastra. Na przykład *enableRBAC*.  
 >
 
 Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
@@ -148,5 +149,5 @@ Zmiana konfiguracji może potrwać kilka minut. Po ukończeniu, jest zwracany ko
 ProvisioningState       : Succeeded
 ```
 
-Jeśli obszar roboczy został utworzony tylko do obsługi monitorowania klastra i nie jest już potrzebny, należy ręcznie je usunąć. Jeśli nie znasz sposób usuwania obszaru roboczego, zobacz [usunąć obszar roboczy usługi Azure Log Analytics w witrynie Azure portal](../../azure-monitor/platform/delete-workspace.md). Nie zapomnij o **identyfikator zasobu obszaru roboczego** możemy skopiowany wcześniej w kroku 4, możesz zacząć potrzebna. 
+Jeśli obszar roboczy został utworzony tylko do obsługi monitorowania klastra i nie jest już potrzebny, należy ręcznie je usunąć. Jeśli nie znasz sposób usuwania obszaru roboczego, zobacz [usunąć obszar roboczy usługi Azure Log Analytics w witrynie Azure portal](../../log-analytics/log-analytics-manage-del-workspace.md). Nie zapomnij o **identyfikator zasobu obszaru roboczego** możemy skopiowany wcześniej w kroku 4, możesz zacząć potrzebna. 
 

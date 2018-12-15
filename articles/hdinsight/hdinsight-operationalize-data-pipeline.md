@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 93c2808dc244a86f7a58aa65d649e9c3e8c17f7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251712"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436164"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operacjonalizacja potoku analizy danych
 
@@ -30,13 +30,13 @@ W poniższym scenariuszu dane wejściowe są prostego pliku zawierającego parti
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-Przykładowy potok czeka, aż danych lotów nowy okres czasu nadejściu, a następnie przechowuje te informacje szczegółowe lot do magazynu danych programu Hive do długoterminowego analiz. Potok tworzy również znacznie mniejszy zestaw danych, który znajduje się podsumowanie tylko dziennego lotu dane. Ta lotu podsumowanie danych dotyczących dziennego są wysyłane do usługi SQL database w odniesieniu do sporządzanie raportów, takich jak witryny sieci Web.
+Przykładowy potok czeka, aż danych lotów nowy okres czasu nadejściu, a następnie przechowuje te informacje szczegółowe lot do magazynu danych Apache Hive dla długoterminowego analiz. Potok tworzy również znacznie mniejszy zestaw danych, który znajduje się podsumowanie tylko dziennego lotu dane. Ta lotu podsumowanie danych dotyczących dziennego są wysyłane do usługi SQL database w odniesieniu do sporządzanie raportów, takich jak witryny sieci Web.
 
 Na poniższym diagramie przedstawiono przykład potoku.
 
 ![Potok danych w locie](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
-## <a name="oozie-solution-overview"></a>Omówienie rozwiązania Oozie
+## <a name="apache-oozie-solution-overview"></a>Omówienie rozwiązania Apache Oozie
 
 Ten potok używa Apache Oozie uruchomione w klastrze usługi HDInsight Hadoop.
 
@@ -139,7 +139,7 @@ Usługi Azure SQL Database jest teraz gotowy.
 
 Wyświetl stan usługi Koordynator i wystąpienia przepływu pracy za pomocą konsoli sieci Web programu Oozie, skonfiguruj tunelu SSH w klastrze usługi HDInsight. Aby uzyskać więcej informacji, zobacz [tunelu SSH](hdinsight-linux-ambari-ssh-tunnel.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Możesz również użyć dla programu Chrome przy użyciu [Foxy Proxy](https://getfoxyproxy.org/) rozszerzenia do przeglądania zasobów sieci web klastra przez tunel SSH. Skonfigurować go do serwera proxy wszystkie żądania za pośrednictwem hosta `localhost` port tunelu 9876. To podejście jest zgodny z podsystemu Windows dla systemu Linux, nazywana również Bash w systemie Windows 10.
 
 1. Uruchom następujące polecenie, aby otworzyć tunel SSH do klastra:
@@ -430,7 +430,7 @@ Poniższa tabela zawiera podsumowanie każdej właściwości i wskazuje, gdzie m
 | miesiąc | Składnik miesiąca, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
 | dzień | Dzień składnik miesiąca, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
 
-> [!NOTE]
+> [!NOTE]  
 > Pamiętaj zaktualizować swoją kopię `job.properties` pliku z wartościami dla danego środowiska, aby można było wdrożyć i uruchomić przepływ pracy programu Oozie.
 
 ### <a name="deploy-and-run-the-oozie-workflow"></a>Wdrażanie i uruchamianie przepływu pracy programu Oozie

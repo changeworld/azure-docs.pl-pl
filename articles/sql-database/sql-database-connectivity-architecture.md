@@ -1,6 +1,6 @@
 ---
-title: Architektura łączności usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano usługi Azure SQL Database architektura łączności z w obrębie platformy Azure lub z spoza platformy Azure.
+title: Kierowanie ruchu platformy Azure do usługi Azure SQL Database i SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: W tym dokumencie opisano usługi Azure SQL Database i SQL Data Warehouse architektura łączności z w obrębie platformy Azure lub z spoza platformy Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,17 +11,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/02/2018
-ms.openlocfilehash: 986741a68113da00800a18cb58648ac66b1de116
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.date: 12/13/2018
+ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322026"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435722"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL
+# <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
-W tym artykule opisano również architektura łączności usługi Azure SQL Database, jak różne składniki funkcji kierować ruch do wystąpienia usługi Azure SQL Database. Te usługi Azure SQL Database łączności składniki funkcji do kierowania ruchu sieciowego do bazy danych platformy Azure z klientów łączących się z w obrębie platformy Azure i klientów łączących się z spoza platformy Azure. Ten artykuł zawiera także przykłady skryptów, aby zmienić sposób występuje łączności i zagadnienia związane z Zmienianie domyślnych ustawień połączenia.
+W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architektura łączności również, jak różne składniki funkcji do kierowania ruchu do swojego wystąpienia usługi Azure SQL. Tych funkcji składniki łączności do kierowania ruchu sieciowego do usługi Azure SQL Database lub SQL Data Warehouse z klientów łączących się z w obrębie platformy Azure i klientów łączących się z spoza platformy Azure. Ten artykuł zawiera także przykłady skryptów, aby zmienić sposób występuje łączności i zagadnienia związane z Zmienianie domyślnych ustawień połączenia.
 
 > [!IMPORTANT]
 > **[Nadchodzącą zmianą] Dla połączeń punkt końcowy usługi z serwerami usługi Azure SQL `Default` zachowanie łączności zmienia `Redirect`.**
@@ -36,7 +36,10 @@ W tym artykule opisano również architektura łączności usługi Azure SQL Dat
 > - Aplikacja łączy się z istniejącego serwera rzadko, nasza telemetria nie przechwyciła informacji o tych aplikacjach 
 > - Logika automatycznego wdrażania tworzy serwer logiczny przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy` 
 >
-> Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags). Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
+> Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags) dla portów 11000 12000. Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
+
+> [!NOTE]
+> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
 
@@ -54,7 +57,7 @@ W poniższych krokach opisano, jak jest nawiązywane połączenie z bazą danych
 
 Usługa Azure SQL Database obsługuje poniższe trzy opcje ustawienia zasad połączenia z serwerem bazy danych SQL:
 
-- **Przekierowanie (zalecane):** Klienci ustanowić połączenia bezpośrednio z węzeł, w którym baza danych. Aby włączyć łączność, klienci muszą zezwalać na reguły zapory dla ruchu wychodzącego dla wszystkich adresów IP platformy Azure w regionie przy użyciu grup zabezpieczeń sieci (NSG) za pomocą [tagów usług](../virtual-network/security-overview.md#service-tags)), nie tylko adresy IP bramy usługi Azure SQL Database. Ponieważ pakietów przejść bezpośrednio do bazy danych, opóźnienia i przepływności mają większą wydajność.
+- **Przekierowanie (zalecane):** Klienci ustanowić połączenia bezpośrednio z węzeł, w którym baza danych. Aby włączyć łączność, klienci muszą zezwalać na reguły zapory dla ruchu wychodzącego dla wszystkich adresów IP platformy Azure w regionie przy użyciu grup zabezpieczeń sieci (NSG) za pomocą [tagów usług](../virtual-network/security-overview.md#service-tags)) dla portów 11000 12000, nie tylko adres IP bramy usługi Azure SQL Database adresy na porcie 1433. Ponieważ pakietów przejść bezpośrednio do bazy danych, opóźnienia i przepływności mają większą wydajność.
 - **Serwer proxy:** W tym trybie wszystkie połączenia są przekazywane za pośrednictwem bramy usługi Azure SQL Database. Aby włączyć łączność, klient musi mieć wychodzących reguł zapory zezwalających wyłącznie bramy usługi Azure SQL Database, adresy IP (zazwyczaj dwa adresy IP na region). Wybór ten tryb może spowodować wyższe opóźnienie i niższych przepływności, w zależności od rodzaju obciążenia. Zdecydowanie zaleca się `Redirect` zasad połączenia za pośrednictwem `Proxy` zasady połączenia do najmniejszego opóźnienia i najwyższy przepływność.
 - **Wartość domyślna:** To połączenie zasady obowiązywać na wszystkich serwerach po utworzeniu, chyba że jawnie zmienić zasady połączenia albo `Proxy` lub `Redirect`. Efektywnych zasad zależy od tego, czy połączenia pochodzą z w obrębie platformy Azure (`Redirect`) lub spoza platformy Azure (`Proxy`).
 

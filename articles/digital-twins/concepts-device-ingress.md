@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 9ce2f65af89e186a3cd32bd2900b5444fb556b08
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 374a27b10b3928838b10e4fba24e1f36721c162a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636717"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433683"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Ruch przychodzący danych telemetrycznych i łączność urządzeń
 
@@ -81,4 +81,3 @@ Użyj DeviceClient [SendEventAsync](https://docs.microsoft.com/dotnet/api/micros
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej o przetwarzaniu danych Twins cyfrowych platformy Azure i możliwości funkcji zdefiniowanych przez użytkownika, przeczytaj [przetwarzania danych Twins cyfrowych platformy Azure i funkcji zdefiniowanych przez użytkownika](concepts-user-defined-functions.md).
-

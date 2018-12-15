@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: c91508cbd98f18c875411cc7a36f9d71d817fb31
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c9ff4332a10247787e3b11c5508d0d94a1f1c8ba
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997868"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410469"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Eksportowanie interfejsu API hostowanych na platformie Azure do usług PowerApps i Microsoft Flow
 
@@ -146,7 +146,7 @@ Usługa PowerApps i Microsoft Flow obsługuje kolekcję dostawców tożsamości,
 ``` 
 Podczas eksportowania możesz podać wartości konfiguracji, umożliwiające usług PowerApps i Microsoft Flow w celu uwierzytelniania użytkowników.
 
-W tej sekcji omówiono typy uwierzytelniania, które są obsługiwane przez **Express** tryb: klucz interfejsu API, usługi Azure Active Directory i ogólna OAuth 2.0. Usługa PowerApps i Microsoft Flow obsługują także uwierzytelnianie podstawowe i OAuth 2.0 dla konkretnych usług, takich jak Dropbox, Facebook i SalesForce.
+W tej sekcji omówiono typy uwierzytelniania, które są obsługiwane przez **Express** trybu: Klucz interfejsu API usługi Azure Active Directory i ogólna OAuth 2.0. Usługa PowerApps i Microsoft Flow obsługują także uwierzytelnianie podstawowe i OAuth 2.0 dla konkretnych usług, takich jak Dropbox, Facebook i SalesForce.
 
 ### <a name="api-key"></a>Klucz interfejsu API
 Przy użyciu klucza interfejsu API, łącznika monit o podanie klucza, podczas tworzenia połączenia. Określasz nazwa klucza interfejsu API, aby pomóc im zrozumieć, jest potrzebny. We wcześniejszym przykładzie używamy nazwy `API Key (contact meganb@contoso.com)` aby użytkownicy wiedzieli, gdzie można uzyskać informacje na temat klucza interfejsu API. Dla usługi Azure Functions klucz jest zwykle jeden z kluczy hosta, obejmującego kilka funkcji w ramach aplikacji funkcji.
@@ -154,7 +154,7 @@ Przy użyciu klucza interfejsu API, łącznika monit o podanie klucza, podczas t
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Korzystając z usługi Azure AD, potrzebujesz dwóch rejestracje aplikacji usługi Azure AD: jeden dla sam interfejs API i jeden dla łącznika niestandardowego:
 
-- Aby skonfigurować rejestrację dla interfejsu API, należy użyć [uwierzytelniania/autoryzacji dla aplikacji usługi](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md) funkcji.
+- Aby skonfigurować rejestrację dla interfejsu API, należy użyć [uwierzytelniania/autoryzacji dla aplikacji usługi](../app-service/configure-authentication-provider-aad.md) funkcji.
 
 - Aby skonfigurować rejestrację dla łącznika, wykonaj kroki opisane w [dodawania aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application). Rejestracja musi mieć delegowany dostęp do interfejsu API i adresu URL odpowiedzi `https://msmanaged-na.consent.azure-apim.net/redirect`. 
 

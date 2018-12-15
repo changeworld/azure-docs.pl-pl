@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e8cf8de25a35909cb2a0fc94237bfa517c72e685
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634026"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410350"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Opracowywanie programów MapReduce przesyłania strumieniowego HDInsight w języku Python
 
@@ -47,9 +47,9 @@ Poniższy schemat przedstawia co się dzieje podczas mapy i zmniejszyć faz.
 
 Hadoop umożliwia określenie pliku, która zawiera mapę i zmniejszyć logikę, która jest używana przez zadanie. Określone wymagania, mapy i zmniejszyć logiki są:
 
-* **Wejściowy**: mapy i zmniejszyć składników musi odczytać dane wejściowe z STDIN.
-* **Dane wyjściowe**: mapy i zmniejszyć składników musi zapisać dane wyjściowe do STDOUT.
-* **Format danych**: dane używane i generowane muszą być parę klucz wartość oddzielone znak tabulacji.
+* **Dane wejściowe**: Mapy i zmniejszyć składników musi odczytać dane wejściowe z STDIN.
+* **Dane wyjściowe**: Mapy i zmniejszyć składników musi zapisać dane wyjściowe do STDOUT.
+* **Format danych**: Dane używane i generowane muszą być parę klucz wartość oddzielone znak tabulacji.
 
 Python można w łatwy sposób spełniaj wymagania w zakresie za pomocą `sys` modułu do odczytu z STDIN z zastosowaniem `print` wydrukowany do strumienia wyjściowego STDOUT. Pozostałe zadania po prostu formatuje dane z zakładką (`\t`) znak między kluczem i wartością.
 
@@ -144,7 +144,7 @@ Poniższy skrypt programu PowerShell umożliwia przekazywanie plików, uruchom z
 
     To polecenie kopiuje pliki z systemu lokalnego do węzła głównego.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Jeśli do zabezpieczenia konta SSH użyto hasła, zostanie wyświetlony monit o hasło. Jeśli używasz klucza SSH, może zajść potrzeba użycia `-i` parametru i ścieżkę do klucza prywatnego. Na przykład `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
 
 2. Połącz się z klastrem przy użyciu protokołu SSH:
@@ -170,17 +170,17 @@ Poniższy skrypt programu PowerShell umożliwia przekazywanie plików, uruchom z
 
     To polecenie ma następujące elementy:
 
-   * **hadoop streaming.jar**: używany, gdy wykonywanie operacji na MapReduce przesyłania strumieniowego. Za pomocą kodu zewnętrznego MapReduce, których udzielasz go interfejsy usługi Hadoop.
+   * **hadoop streaming.jar**: Używany podczas wykonywania operacji usługi przesyłania strumieniowego MapReduce. Za pomocą kodu zewnętrznego MapReduce, których udzielasz go interfejsy usługi Hadoop.
 
    * **-pliki**: Dodaje określone pliki do zadania MapReduce.
 
-   * **-mapowania**: nakazuje Hadoop plik, który do użycia jako usługę mapowania.
+   * **-mapowania**: Informuje usługi Hadoop, plik, który do użycia jako usługę mapowania.
 
-   * **-Reduktor**: informuje plik, który do użycia jako reduktor usługi Hadoop.
+   * **-Reduktor**: Informuje, plik, który do użycia jako reduktor usługi Hadoop.
 
-   * **-wejściowych**: pliku wejściowego, który powinien zliczamy wyrazów z.
+   * **-wejściowych**: Plik wejściowy powinien zliczamy wyrazów.
 
-   * **-dane wyjściowe**: plik wyjściowy zostanie zapisany do katalogu.
+   * **-dane wyjściowe**: Katalog, w którym są zapisywane dane wyjściowe.
 
     Jak działa zadanie MapReduce, proces jest wyświetlana jako wartości procentowe.
 
@@ -199,6 +199,6 @@ Poniższy skrypt programu PowerShell umożliwia przekazywanie plików, uruchom z
 
 Teraz, gdy wiesz jak używać zadań przesyłania strumieniowego MapRedcue z HDInsight, użyj następujących linków, aby poznać inne sposoby pracy z usługi Azure HDInsight.
 
-* [Korzystanie z programu Hive z usługą HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z usługą HDInsight](hdinsight-use-pig.md)
+* [Use Apache Hive z HDInsight](hdinsight-use-hive.md)
+* [Apache Pig za pomocą HDInsight](hdinsight-use-pig.md)
 * [Korzystanie z zadań MapReduce z usługą HDInsight](hdinsight-use-mapreduce.md)

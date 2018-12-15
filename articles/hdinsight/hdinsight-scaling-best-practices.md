@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e664fc83fde937b26a4726f997da4c0cb4d8f8a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948132"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407885"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skaluj klastry HDInsight
 
 HDInsight zapewnia elastyczność, oferując możliwość skalowania w górę i skalowania w dół liczbę węzłów procesu roboczego w klastrach. Dzięki temu można zmniejszyć klastra po godzinach lub w weekendy i rozwiń go podczas szczytowego zapotrzebowania biznesowych.
 
-Na przykład jeśli masz jakieś operacje przetwarzania wsadowego tak się stanie, raz dziennie lub raz w miesiącu, klaster HDInsight może być skalowany za kilka minut przed tym zaplanowane zdarzenie będzie odpowiedniej ilości pamięci i mocy obliczeniowej procesora CPU. Skalowanie za pomocą polecenia cmdlet programu PowerShell można zautomatyzować [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Później po zakończeniu przetwarzania i użycie pogarsza, możesz skalować w dół do mniejszej liczby węzłów procesu roboczego klastra HDInsight.
+Na przykład jeśli masz jakieś operacje przetwarzania wsadowego tak się stanie, raz dziennie lub raz w miesiącu, klaster HDInsight może być skalowany za kilka minut przed tym zaplanowane zdarzenie będzie odpowiedniej ilości pamięci i mocy obliczeniowej procesora CPU. Skalowanie za pomocą polecenia cmdlet programu PowerShell można zautomatyzować [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Później po zakończeniu przetwarzania i użycie pogarsza, możesz skalować w dół do mniejszej liczby węzłów procesu roboczego klastra HDInsight.
 
 * Skalowanie klastra za pośrednictwem [PowerShell](hdinsight-administer-use-powershell.md):
 
@@ -77,7 +77,7 @@ Na przykład:
 yarn application -kill "application_1499348398273_0003"
 ```
 
-## <a name="rebalancing-an-hbase-cluster"></a>Ponowne równoważenie klastra HBase
+## <a name="rebalancing-an-apache-hbase-cluster"></a>Ponowne równoważenie klastra Apache HBase
 
 Serwery regionów są automatycznie równoważone w ciągu kilku minut, po zakończeniu operacji skalowania. Ręcznie równoważyć serwery regionów, wykonaj następujące kroki:
 
@@ -99,11 +99,11 @@ Jak wspomniano wcześniej, wszystkie oczekujące lub uruchomione zadania są ko�
 
 ![Skalowanie klastra](./media/hdinsight-scaling-best-practices/scale-cluster.png)
 
-Jeśli zmniejszania klastra w dół do co najmniej jednego procesu roboczego węzła, jak pokazano na poprzedniej ilustracji, systemu plików HDFS mogą stać się zatrzymane w trybie awaryjnym, gdy węzłów procesu roboczego wykonywany jest ponowny rozruch z powodu stosowania poprawek lub od razu po wykonaniu operacji skalowania.
+Jeśli zmniejszania klastra w dół do co najmniej jednego procesu roboczego węzła, jak pokazano na poprzedniej ilustracji, Apache HDFS mogą stać się zatrzymane w trybie awaryjnym, gdy węzłów procesu roboczego wykonywany jest ponowny rozruch z powodu stosowania poprawek lub od razu po wykonaniu operacji skalowania.
 
 Podstawową przyczyną tego jest, że gałąź używa kilku `scratchdir` pliki i domyślnie oczekuje, że trzy repliki każdy blok, ale istnieje tylko jedna replika możliwe skalowanie w dół do minimalnej węzła jednego procesu roboczego. W rezultacie, pliki w `scratchdir` stają się *under-replikowanych*. Może to spowodować, że system plików HDFS pozostać w trybie awaryjnym, gdy usługi są ponownie uruchamiane po zakończeniu operacji skalowania.
 
-W przypadku skalowania w dół próba HDInsight opiera się na interfejsów zarządzania Ambari, aby najpierw zlikwidować węzły dodatkowych niechcianych procesów roboczych, które ich bloki systemu plików HDFS jest replikowany do innych węzłów procesu roboczego w trybie online, a następnie bezpiecznie skalowanie klastra w dół. System plików HDFS przechodzi w trybie awaryjnym podczas okna obsługi, a powinien pochodzić po zakończeniu skalowanie. Jest na tym etapie, system plików HDFS może zostać wstrzymana w trybie awaryjnym.
+W przypadku skalowania w dół próba HDInsight opiera się na interfejsów zarządzania Apache Ambari, aby najpierw zlikwidować węzły dodatkowych niechcianych procesów roboczych, które ich bloki systemu plików HDFS jest replikowany do innych węzłów procesu roboczego w trybie online, a następnie bezpiecznie skalowanie klastra w dół. System plików HDFS przechodzi w trybie awaryjnym podczas okna obsługi, a powinien pochodzić po zakończeniu skalowanie. Jest na tym etapie, system plików HDFS może zostać wstrzymana w trybie awaryjnym.
 
 Skonfigurowano systemu plików HDFS `dfs.replication` ustawienie 3. W związku z tym bloki konstrukcyjne pliki tymczasowe pliki są under-replikowanych zawsze wtedy, gdy istnieją mniej niż trzy węzły procesu roboczego w trybie online, ponieważ nie oczekiwano trzy kopie każdego bloku plików są dostępne.
 
@@ -117,13 +117,13 @@ Po wyjściu z trybu awaryjnego, można ręcznie usunąć pliki tymczasowe lub po
 
 ### <a name="example-errors-when-safe-mode-is-turned-on"></a>Przykładowe błędy, gdy jest włączony tryb awaryjny
 
-* H070 nie można otworzyć sesji programu Hive. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Cannot create directory** /tmp/hive/hive/819c215c-6d87-4311-97c8-4f0b9d2adcf0. **Nazwa węzła jest w trybie awaryjnym**. Bloki zgłoszonych 75 musi dodatkowe bloki 12 do osiągnięcia progu 0.9900 łączna liczba bloków 87. Liczba na żywo datanodes 10 została osiągnięta minimalny numer 0. Tryb awaryjny być wyłączona automatycznie, gdy progi zostały osiągnięte.
+* H070 nie można otworzyć sesji programu Hive. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Nie można utworzyć katalogu** /tmp/hive/hive/819c215c-6d 87-4311-97 c 8-4f0b9d2adcf0. **Nazwa węzła jest w trybie awaryjnym**. Bloki zgłoszonych 75 musi dodatkowe bloki 12 do osiągnięcia progu 0.9900 łączna liczba bloków 87. Liczba na żywo datanodes 10 została osiągnięta minimalny numer 0. Tryb awaryjny być wyłączona automatycznie, gdy progi zostały osiągnięte.
 
-* Wyświetl H100 nie można przesłać instrukcji bazy danych: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: nawiązywanie hn0-clustername.servername.internal.cloudapp.net:10001 [hn0 clustername.servername . internal.cloudapp.NET/1.1.1.1] nie powiodło się: **połączenie zostało odrzucone**
+* Wyświetl H100 nie można przesłać instrukcji bazy danych: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Nawiązać połączenie z hn0-clustername.servername.internal.cloudapp.net:10001 [hn0 clustername.servername. internal.cloudapp.NET/1.1.1.1] nie powiodło się: **Połączenie zostało odrzucone**
 
-* Nie można H020 ustanowić połączenie hn0 hdisrv.servername.bx.internal.cloudapp .net: 10001: org.apache.thrift.transport.TTransportException: nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: nawiązywanie hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodło się: odmowa połączenia: org.apache.thrift.transport.TTransportException: nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: nawiązywanie hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodło się: **połączenie zostało odrzucone**
+* Nie można H020 ustanowić połączenie hn0 hdisrv.servername.bx.internal.cloudapp .net: 10001: org.apache.thrift.transport.TTransportException: Nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Nawiązywanie połączenia hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodło się: Połączenie zostało odrzucone: org.apache.thrift.transport.TTransportException: Nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Nawiązywanie połączenia hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodło się: **Połączenie zostało odrzucone**
 
-* Z dzienniki programu Hive: Ostrzeżenie [main]: serwer. Usługi HiveServer2 (HiveServer2.java:startHiveServer2(442)) — wystąpił błąd podczas uruchamiania usługi HiveServer2 przy próbie 21, spróbuje ponowić operację w 60 sekund java.lang.RuntimeException: błąd podczas stosowania zasad autoryzacji w konfiguracji programu hive: org.apache.hadoop.ipc.RemoteException ( org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **nie można utworzyć katalogu** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Nazwa węzła jest w trybie awaryjnym**.
+* Z dzienniki programu Hive: OSTRZEGAJ [main]: serwer. Usługi HiveServer2 (HiveServer2.java:startHiveServer2(442)) — wystąpił błąd podczas uruchamiania usługi HiveServer2 przy próbie 21, spróbuje ponowić operację w 60 sekund java.lang.RuntimeException: Błąd podczas stosowania zasad autoryzacji w konfiguracji programu hive: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Nie można utworzyć katalogu** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Nazwa węzła jest w trybie awaryjnym**.
     Bloki zgłoszonych 0 wymaga dodatkowe bloki 9 do osiągnięcia progu 0.9900 łączna liczba bloków 9.
     Liczba na żywo datanodes 10 została osiągnięta minimalny numer 0. **Tryb awaryjny zostaną wyłączone automatycznie po progi zostały osiągnięte**.
     at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1324)
@@ -151,7 +151,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 
 ![Wyłączony tryb awaryjny](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
-> [!NOTE]
+> [!NOTE]  
 > `-D` Przełącznik jest konieczne, ponieważ jest domyślny system plików w HDInsight w usłudze Azure Storage lub Azure Data Lake Store. `-D` Określa, że polecenie zostanie wykonane względem lokalnego systemu plików HDFS.
 
 Następnie możesz wyświetlić raport zawierający szczegółowe informacje o stanie systemu plików HDFS:
@@ -251,7 +251,7 @@ Aby oczyszczania pliki tymczasowe pliki, które usuwa błędy replikacji bloków
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > To polecenie może przerwać gałęzi, jeśli niektóre zadania są wykonywane.
 
 ### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode-due-to-under-replicated-blocks"></a>Jak uniemożliwić HDInsight gromadzą się w trybie awaryjnym, ze względu na bloki under-replikowane
@@ -327,4 +327,4 @@ Ostatnia opcja polega na obserwowanie rzadkich przypadkach, w którym system pli
 
 * [Wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md)
 * [Skalowanie klastrów](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Zarządzanie klastrami HDInsight przy użyciu interfejsu użytkownika sieci Web systemu Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md)

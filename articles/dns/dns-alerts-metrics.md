@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 707a23cbd04db9a0420c7776a24eb568a3483b0b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0f50ecb086b45cffb4ff27135a26f962c92926bf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385860"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434465"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Alerty i metryki DNS platformy Azure
 System DNS Azure jest usługą hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. W tym artykule opisano, metryk i alertów w usłudze DNS platformy Azure.
@@ -32,7 +32,7 @@ Usługa DNS platformy Azure generuje dane pomiarowe dla klientów umożliwić im
 -   RecordSetCount
 -   RecordSetCapacityUtilization
 
-Można również wyświetlić [definicji tych metryk](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkdnszones) na stronie dokumentacji usługi Azure Monitor.
+Można również wyświetlić [definicji tych metryk](../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) na stronie dokumentacji usługi Azure Monitor.
 >[!NOTE]
 > W tej chwili te metryki są dostępne tylko dla publicznymi strefami DNS hostowana w usłudze Azure DNS. W przypadku stref prywatnych, hostowanych w usłudze Azure DNS tych metryk nie będzie dostarczać dane dla tych stref. Ponadto metryk i alertów funkcja jest obsługiwana tylko w chmurze publicznej Azure. Obsługa chmur suwerennych będzie występować w późniejszym czasie. 
 

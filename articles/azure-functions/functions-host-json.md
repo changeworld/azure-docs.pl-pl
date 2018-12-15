@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b429f9dab0411dba599fd696dff3d424916007e0
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4da64f01f3b4f39bd10fd3cb1b67910ffca886b8
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635173"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413272"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions 2.x  
 
@@ -96,7 +96,23 @@ W poniższych sekcjach tego artykułu opisano każdą właściwość najwyższeg
 
 To ustawienie jest elementem podrzędnym [rejestrowania](#logging).
 
-[!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
+Formanty [próbkowania funkcji w usłudze Application Insights](./functions-monitoring.md#configure-sampling).
+
+```json
+{
+    "applicationInsights": {
+        "samplingSettings": {
+          "isEnabled": true,
+          "maxTelemetryItemsPerSecond" : 5
+        }
+    }
+}
+```
+
+|Właściwość  |Domyślne | Opis |
+|---------|---------|---------| 
+|isEnabled|true|Włącza lub wyłącza próbkowania.| 
+|maxTelemetryItemsPerSecond|5|Rozpoczyna się progu, na które próbkowania.| 
 
 ## <a name="cosmosdb"></a>bazy danych cosmos DB
 
@@ -185,7 +201,28 @@ Kontroluje zachowania rejestrowania aplikacji funkcji, łącznie z usługi Appli
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania w pliku jest włączone.  Dostępne są opcje `never`, `always`, `debugOnly`. |
 |LogLevel|Nie dotyczy|Obiekt, który definiuje kategoria dziennika filtrowania dla funkcji w aplikacji. W wersji 2.x następuje układ platformy ASP.NET Core w celu filtrowania kategorii dziennika. Dzięki temu można filtrować rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dziennika](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji platformy ASP.NET Core. |
+|console|Nie dotyczy| [Konsoli](#console) ustawień rejestrowania. |
 |applicationInsights|Nie dotyczy| [ApplicationInsights](#applicationinsights) ustawienie. |
+
+## <a name="console"></a>console
+
+To ustawienie jest elementem podrzędnym [rejestrowania](#logging). Kontroluje konsoli rejestrowania nie w trybie debugowania.
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": "false"
+        },
+    ...
+    }
+}
+```
+
+|Właściwość  |Domyślne | Opis |
+|---------|---------|---------| 
+|isEnabled|false|Włącza lub wyłącza rejestrowanie konsoli.| 
 
 ## <a name="queues"></a>kolejki
 

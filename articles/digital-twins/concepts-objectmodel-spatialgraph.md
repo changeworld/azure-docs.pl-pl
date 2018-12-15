@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636887"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436929"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Modele obiektów cyfrowego bliźniaczych reprezentacji i analizy przestrzennej wykresu
 
@@ -48,11 +48,11 @@ Inne kategorie obiektów są:
 - **Role** zestawów uprawnień przypisanych do użytkowników i urządzeń, na wykresie przestrzennych, na przykład `Space Administrator`, `User Administrator`, i `Device Administrator`.
 - **Przypisania ról** to skojarzenie między roli oraz obiektu przestrzennego wykresie. Na przykład użytkownik lub ta jednostka usługi może mieć uprawnienie do zarządzania miejscem na wykresie przestrzennych.
 - **Magazyny kluczy zabezpieczeń** dostarczania kluczy zabezpieczeń dla wszystkich urządzeń w hierarchii w obszarze obiektu danego miejsca, aby umożliwić urządzenia do bezpiecznego komunikowania się za pomocą Twins cyfrowych.
-- **Funkcje zdefiniowane przez użytkownika** (przez użytkownika UDF) Zezwalaj na telemetrię można dostosowywać czujnik przetwarzania przestrzennych wykresu. Na przykład UDF wykonywać następujące czynności: 
-    - Ustaw wartość czujnika. 
-    - Wykonać logikę niestandardową, w oparciu o odczyty czujników, a następnie ustawić dane wyjściowe do miejsca. 
-    - Dołącz metadanych do miejsca. 
-    - Wysyłanie powiadomień, gdy wstępnie zdefiniowane warunki są spełnione. Obecnie można pisać funkcje UDF w języku JavaScript.
+- **Funkcje zdefiniowane przez użytkownika** (przez użytkownika UDF) Zezwalaj na telemetrię można dostosowywać czujnik przetwarzania przestrzennych wykresu. Na przykład UDF wykonywać następujące czynności:
+  - Ustaw wartość czujnika.
+  - Wykonać logikę niestandardową, w oparciu o odczyty czujników, a następnie ustawić dane wyjściowe do miejsca.
+  - Dołącz metadanych do miejsca.
+  - Wysyłanie powiadomień, gdy wstępnie zdefiniowane warunki są spełnione. Obecnie można pisać funkcje UDF w języku JavaScript.
 - **Dopasowujące jednostki** są obiekty, które określają, które funkcje zdefiniowane przez użytkownika są wykonywane dla komunikatów danego telemetrii.
 - **Punkty końcowe** lokalizacji, gdzie komunikaty telemetryczne i Twins cyfrowego zdarzenia te można skierować, na przykład `Event Hub`, `Service Bus`, i `Event Grid`.
 
@@ -84,8 +84,8 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 | Name (Nazwa) | Zamień na |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Nazwa wystąpienia usługi cyfrowego bliźniaczych reprezentacji |
-| YOUR_LOCATION | Który region serwer wystąpienie usługi jest hostowana na |
+| YOUR_INSTANCE_NAME | Nazwa używanego wystąpienia usługi Digital Twins |
+| YOUR_LOCATION | Region serwera, w którym jest hostowane używane wystąpienie |
 
  Pełny format adresu URL pojawia się na tej ilustracji.
 
@@ -103,9 +103,9 @@ Wszystkie wywołania interfejsu API musi zostać uwierzytelniony przy użyciu [O
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się, łączność urządzeń i jak wysyłać komunikaty telemetryczne do reprezentacji urządzeń cyfrowych, przeczytaj [Azure cyfrowego bliźniaczych reprezentacji urządzeń łączności i dane telemetryczne ruch przychodzący](concepts-device-ingress.md).
+- Aby dowiedzieć się, łączność urządzeń i jak wysyłać komunikaty telemetryczne do reprezentacji urządzeń cyfrowych, przeczytaj [Azure cyfrowego bliźniaczych reprezentacji urządzeń łączności i dane telemetryczne ruch przychodzący](concepts-device-ingress.md).
 
-* Aby dowiedzieć się więcej o ograniczeniach interfejsu API zarządzania i ograniczenia, przeczytaj [Zarządzanie interfejsu API usługi Azure cyfrowego bliźniaczych reprezentacji i ograniczenia](concepts-service-limits.md).
+- Aby dowiedzieć się więcej o ograniczeniach interfejsu API zarządzania i ograniczenia, przeczytaj [Zarządzanie interfejsu API usługi Azure cyfrowego bliźniaczych reprezentacji i ograniczenia](concepts-service-limits.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-spatial-graph-building.png

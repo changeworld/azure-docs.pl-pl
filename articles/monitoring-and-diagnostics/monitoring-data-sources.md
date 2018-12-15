@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: cf2dd013b0d6f8867129d2d53311af21af5a1fe2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4c32d6eccc996bf1a3670a521a7a86394a2f866f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385333"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434515"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Używanie danych monitorowania na platformie Azure
 
@@ -23,7 +23,7 @@ Na platformie Azure łączymy dane monitorowania w jednym miejscu dzięki usłud
 
 | Typ danych | Kategoria | Obsługiwane usługi | Metod dostępu |
 | --- | --- | --- | --- |
-| Metryki platformy poziomu usługi Azure Monitor | Metryki | [Zobacz tutaj](monitoring-supported-metrics.md) | <ul><li>**INTERFEJS API REST:** [Interfejs API metryk usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Magazyn obiektów blob lub zdarzenia Centrum:** [Ustawienia diagnostyczne](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
+| Metryki platformy poziomu usługi Azure Monitor | Metryki | [Zobacz tutaj](../azure-monitor/platform/metrics-supported.md) | <ul><li>**INTERFEJS API REST:** [Interfejs API metryk usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Magazyn obiektów blob lub zdarzenia Centrum:** [Ustawienia diagnostyczne](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
 | Obliczenia metryki systemu operacyjnego gościa (np.) liczniki wydajności) | Metryki | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) i maszyn wirtualnych systemu Linux (wersja 2) [usług w chmurze](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [usługi Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Tabela magazynu lub obiektów blob:** [Diagnostyka Windows lub Linux, Azure](../azure-monitor/platform/diagnostics-extension-to-storage.md)</li><li>**Centrum zdarzeń:** [Usługi Windows Azure diagnostics](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | Metryk niestandardowych lub aplikacji | Metryki | Każda aplikacja Instrumentacją zapewnianą przez usługę Application Insights | <ul><li>**INTERFEJS API REST:** [Usługa Application Insights interfejsu API REST](https://dev.applicationinsights.io/reference)</li></ul> |
 | Metryki magazynu | Metryki | Azure Storage | <ul><li>**Tabela magazynu:** [Analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
@@ -37,7 +37,7 @@ Na platformie Azure łączymy dane monitorowania w jednym miejscu dzięki usłud
 | Raporty usługi Active Directory | Zdarzenia | Usługa Azure Active Directory | <ul><li>**INTERFEJS API REST:** [Usługa Azure Active Directory interfejsu API programu graph](../active-directory/reports-monitoring/concept-reporting-api.md)</li></ul> |
 | Stan zasobu usługi Security Center | Stan | [Wszystkie obsługiwane zasobów](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**INTERFEJS API REST:** [Stany zabezpieczeń](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
 | Kondycja zasobów | Stan | Obsługiwane usługi | <ul><li>**INTERFEJS API REST:** [Kondycja zasobu interfejsu API REST](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
-| Alerty metryk usługi Azure Monitor | Powiadomienia | [Zobacz tutaj](monitoring-supported-metrics.md) | <ul><li>**Element Webhook:** [Alerty metryk platformy Azure](../azure-monitor/platform/alerts-webhooks.md)</li></ul> |
+| Alerty metryk usługi Azure Monitor | Powiadomienia | [Zobacz tutaj](../azure-monitor/platform/metrics-supported.md) | <ul><li>**Element Webhook:** [Alerty metryk platformy Azure](../azure-monitor/platform/alerts-webhooks.md)</li></ul> |
 | Alerty dziennika aktywności monitora platformy Azure | Powiadomienia | Wszystkich usług platformy Azure | <ul><li>**Element Webhook:** Alerty dziennika aktywności platformy Azure</li></ul> |
 | Powiadomienia skalowania automatycznego | Powiadomienia | [Zobacz tutaj](../azure-monitor/platform/autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Element Webhook:** [Schematu ładunek elementu webhook powiadomienia skalowania automatycznego](../azure-monitor/platform/autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
 | Zapytanie wyszukiwania, alerty dzienników | Powiadomienia | Log Analytics | <ul><li>**Element Webhook:** [Akcja elementu Webhook dla reguł alertów dzienników](../monitoring-and-diagnostics/../azure-monitor/platform/alerts-log-webhook.md)</li></ul> |

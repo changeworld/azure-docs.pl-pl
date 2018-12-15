@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 845f991085a4427ab4f4301cab1dc60215374554
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185770"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438765"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie standardowego modułu równoważenia obciążenia na platformie Azure
 
@@ -229,7 +229,7 @@ Standard Load Balancer, która jest płatne produktu, na podstawie liczby skonfi
 - Dowiedz się więcej o [sond kondycji](load-balancer-custom-probe-overview.md).
 - Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md).
 - Dowiedz się więcej o [diagnostykę modułu równoważenia obciążenia standardowy](load-balancer-standard-diagnostics.md).
-- Dowiedz się więcej o [obsługiwane metryk wielowymiarowych](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) dotyczące diagnostyki w [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
+- Dowiedz się więcej o [obsługiwane metryk wielowymiarowych](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) dotyczące diagnostyki w [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md).
 - Dowiedz się więcej o [reguł dla ruchu wychodzącego](load-balancer-outbound-rules-overview.md).
 - Dowiedz się więcej o [TCP Resetowanie bezczynności](load-balancer-tcp-reset.md).

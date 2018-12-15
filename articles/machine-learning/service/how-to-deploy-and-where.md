@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 649086c6c3279652b3708b5968969570801ebbc1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 17193bf3285a2052a913293ec3adc6f9b8884f72
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385350"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435951"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -72,7 +72,7 @@ from azureml.core.model import Model
 
 model = Model.register(model_path = "model.pkl",
                        model_name = "Mymodel",
-                       tags = ["0.1"],
+                       tags = {"key": "0.1"},
                        description = "test",
                        workspace = ws)
 ```
@@ -185,6 +185,7 @@ Do wdrożenia usługi Azure Kubernetes Service, wykonaj następujące kroki:
 
     > [!IMPORTANT]
     > Tworzenie klastra AKS jest czas procesu dla obszaru roboczego. Po utworzeniu można ponownie użyć klastra dla wielu wdrożeń. Jeśli możesz usunąć klaster lub grupę zasobów, która ją zawiera, następnie musi utworzysz nowy klaster przy następnym zajdzie potrzeba wdrożenia.
+    > Aby uzyskać [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), w przypadku wybrania wartości niestandardowe agent_count i vm_size, a następnie należy upewnić się, że agent_count pomnożona przez vm_size jest większa lub równa 12 procesorów wirtualnych. Na przykład jeśli używasz vm_size "Maszyna wirtualna Standard_D3_v2", która ma 4 procesory wirtualne, następnie należy wybrać agent_count 3 lub większą.
 
     ```python
     from azureml.core.compute import AksCompute, ComputeTarget
