@@ -8,33 +8,33 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5acdd54bcf7e253bc21dc3f99207fc1b2bd1ff59
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 6f0d51ad26dcea3f96a249165a324b5e0796ee03
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30326526"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444275"
 ---
 Z maszyną wirtualną, która jest wdrażana w sieci wirtualnej, można się połączyć, tworząc połączenie pulpitu zdalnego z tą maszyną. Najlepszym sposobem na zweryfikowanie, czy można połączyć się z maszyną wirtualną, jest połączenie się z nią za pomocą jej prywatnego adresu IP, a nie nazwy komputera. W ten sposób można przetestować możliwość połączenia się, a nie poprawność skonfigurowania rozpoznawania nazw.
 
 1. Zlokalizuj prywatny adres IP. Prywatny adres IP maszyny wirtualnej można znaleźć na wiele sposobów. Poniżej przedstawiono kroki dla witryny Azure Portal i programu PowerShell.
 
-  - Witryna Azure Portal — zlokalizuj swoją maszynę wirtualną w witrynie Azure Portal. Wyświetl właściwości maszyny wirtualnej. Zostanie wyświetlony prywatny adres IP.
+   - Witryna Azure Portal — zlokalizuj swoją maszynę wirtualną w witrynie Azure Portal. Wyświetl właściwości maszyny wirtualnej. Zostanie wyświetlony prywatny adres IP.
 
-  - Program PowerShell — skorzystaj z przykładu, aby wyświetlić listę maszyn wirtualnych i prywatnych adresów IP z grup zasobów. Przed użyciem tego przykładu nie trzeba go modyfikować.
+   - Program PowerShell — skorzystaj z przykładu, aby wyświetlić listę maszyn wirtualnych i prywatnych adresów IP z grup zasobów. Przed użyciem tego przykładu nie trzeba go modyfikować.
 
-    ```azurepowershell-interactive
-    $VMs = Get-AzureRmVM
-    $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
+     ```azurepowershell-interactive
+     $VMs = Get-AzureRmVM
+     $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
 
-    foreach($Nic in $Nics)
-    {
+     foreach($Nic in $Nics)
+     {
       $VM = $VMs | Where-Object -Property Id -eq $Nic.VirtualMachine.Id
       $Prv = $Nic.IpConfigurations | Select-Object -ExpandProperty PrivateIpAddress
       $Alloc = $Nic.IpConfigurations | Select-Object -ExpandProperty PrivateIpAllocationMethod
       Write-Output "$($VM.Name): $Prv,$Alloc"
-    }
-    ```
+     }
+     ```
 
 2. Sprawdź, czy masz połączenie z siecią wirtualną przez sieć VPN.
 3. Otwórz program **Podłączanie pulpitu zdalnego**, wpisując „RDP” lub „Podłączanie pulpitu zdalnego” w polu wyszukiwania na pasku zadań, a następnie wybierając pozycję Podłączanie pulpitu zdalnego. Program Podłączanie pulpitu zdalnego możesz także otworzyć za pomocą polecenia „mstsc” w programie PowerShell. 

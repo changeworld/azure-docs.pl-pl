@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 12/14/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 87d5389abd72875c62ea3484fc3f9ca43c339447
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240148"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444295"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Czy niestandardowe zasady protokołu IPsec/IKE są obsługiwane na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?
 Niestandardowe zasady protokołu IPsec/IKE są obsługiwane na bramach sieci VPN **VpnGw1, VpnGw2, VpnGw3, Standard** i **HighPerformance** na platformie Azure. **Podstawowa** jednostka SKU **nie** jest obsługiwana.
@@ -102,3 +102,6 @@ Tak. Tunel połączenia między sieciami wirtualnymi zawiera dwa zasoby połącz
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Czy niestandardowe zasady protokołu IPsec/IKE działają dla połączenia ExpressRoute?
 Nie. Zasady protokołu IPsec/IKE działają tylko dla połączeń sieci VPN S2S i połączeń między sieciami wirtualnymi za pośrednictwem bram sieci VPN platformy Azure.
+
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Gdzie mogę znaleźć więcej informacji o konfiguracji dla protokołu IPsec
+Zobacz [zasady konfigurowania protokołu IPsec/IKE dla połączeń S2S lub sieć wirtualna-sieć wirtualna](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

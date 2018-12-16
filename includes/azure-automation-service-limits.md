@@ -5,16 +5,18 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3ae2289112948dea7d2649c4fad6b1cafb3804b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285795"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444284"
 ---
+#### <a name="process-automation"></a>Automatyzacja procesów
+
 | Zasób | Limit maksymalny |Uwagi|
 | --- | --- |---|
 | Maksymalna liczba nowych zadań, które mogą być przesyłane co 30 sekund na konto usługi Automation (innych niż zaplanowane zadania) |100 |Ten limit jest trafień, kolejne żądania, aby utworzyć zadanie zakończyć się niepowodzeniem. Klient odbiera odpowiedź o błędzie.|
@@ -33,5 +35,19 @@ ms.locfileid: "51285795"
 | Maksymalna liczba parametrów   | 50|Można przekazać ciągu JSON lub XML do parametru i przeanalizować za pomocą elementu runbook, jeśli osiągnięty limit liczby 50 parametrów|
 | Maksymalny rozmiar ładunku elementu webhook |  512 kb|
 | Maksymalna liczba dni, które są przechowywane dane zadania|30 dni|
+| Przepływ pracy programu PowerShell maksymalny rozmiar danych stanu |5 MB| Ma zastosowanie do elementów runbook przepływu pracy programu PowerShell podczas procesu tworzenia punktów kontrolnych w przepływie pracy.|
 
 **<sup>1</sup>**  piaskownicy jest udostępnionym środowiskiem, które mogą być używane przez wiele zadań, zadań przy użyciu tego samego piaskownicy są powiązane przez ograniczenia zasobów piaskownicy.
+
+#### <a name="change-tracking-and-inventory"></a>Śledzenie zmian i spis
+
+W poniższej tabeli przedstawiono limity elementu śledzonych dla poszczególnych komputerów do śledzenia zmian.
+
+| **Zasób** | **Limit**| **Uwagi** |
+|---|---|---|
+|Plik|500||
+|Rejestr|250||
+|Oprogramowanie Windows|250|Nie ma aktualizacji oprogramowania|
+|Pakiety systemu Linux|1250||
+|Usługi|250||
+|Demon|250||

@@ -8,28 +8,29 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 932aab3f16a571d4c83c77c1cc2274ae60ea3d35
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d9825ea41937dc9436fe8b465b48b378e13407c1
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30196945"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444276"
 ---
 1. W portalu w obszarze **Wszystkie zasoby** kliknij pozycję **+ Dodaj**.
-2. W **wszystko** strony pola wyszukiwania, wpisz **bramy sieci lokalnej**, a następnie kliknij, aby powrócić do listy zasobów. Kliknij pozycję **Brama sieci lokalnej**, aby otworzyć stronę, a następnie kliknij pozycję **Utwórz**, aby otworzyć stronę **Utwórz bramę sieci lokalnej**.
+2. W **wszystko** strony pola wyszukiwania, typ **bramy sieci lokalnej**, a następnie kliknij przycisk, aby powrócić do listy zasobów. Kliknij pozycję **Brama sieci lokalnej**, aby otworzyć stronę, a następnie kliknij pozycję **Utwórz**, aby otworzyć stronę **Utwórz bramę sieci lokalnej**.
 
-  ![utwórz bramę sieci lokalnej](./media/vpn-gateway-add-lng-rm-portal-include/lng.png)
+   ![utwórz bramę sieci lokalnej](./media/vpn-gateway-add-lng-rm-portal-include/lng.png)
 3. Na stronie **Utwórz bramę sieci lokalnej** określ wartości dla bramy sieci lokalnej.
 
-  - **Nazwa:** określ nazwę obiektu bramy sieci lokalnej. Jeśli to możliwe, użyj elementu intuicyjny, takich jak **ClassicVNetLocal** lub **TestVNet1Local**. Dzięki temu można łatwiej zidentyfikować bramy sieci lokalnej w portalu.
-  - **Adres IP:** Określ prawidłową publicznego **adres IP** urządzenia sieci VPN lub bramy sieci wirtualnej, z którym chcesz się połączyć.
+   - **Nazwa:** Określ nazwę obiektu bramy sieci lokalnej. Jeśli to możliwe, użyj frazy, które są intuicyjne, takie jak **ClassicVNetLocal** lub **TestVNet1Local**. Ułatwia to określenie bramy sieci lokalnej w portalu.
+   - **Adres IP:** Określ prawidłowy publiczny **adresu IP** dla urządzenia sieci VPN lub bramy sieci wirtualnej, do którego chcesz się połączyć.
 
-    * **Jeśli ta sieci lokalnej reprezentuje lokalizacji lokalnej:** Określ adres publiczny adres IP urządzenia sieci VPN, z którego chcesz nawiązać połączenie. Nie może ono znajdować się za translatorem adresów sieciowych i musi być dostępne za pomocą usługi Azure.
-    * **Jeśli ta sieci lokalnej reprezentuje innej sieci wirtualnej:** Określ adres publicznego adresu IP, który został przypisany do bramy sieci wirtualnej dla tej sieci wirtualnej.
-    * **Jeśli nie masz jeszcze adres IP:** można uzupełnić adresu IP nieprawidłowy symbol zastępczy i wrócić i zmodyfikować to ustawienie przed nawiązaniem połączenia.
-  - **Przestrzeń adresowa** odwołuje się do zakresów adresów sieci, które reprezentuje sieć lokalna. Można dodać wiele zakresów przestrzeni adresów. Upewnij się, że zakresy określone w tym miejscu nie nakładają się na zakresy z innymi sieciami, na którym się łączysz.
-  - **Skonfiguruj ustawienia protokołu BGP:** użyj tej opcji tylko w przypadku konfigurowania protokołu BGP. W przeciwnym razie nie wybieraj jej.
-  - **Subskrypcja:** sprawdź, czy wyświetlana jest prawidłowa subskrypcja.
-  - **Grupa zasobów** wybierz grupę zasobów, która ma być używana. Możesz utworzyć nową grupę zasobów lub wybrać już utworzoną.
-  - **Lokalizacja:** wybierz lokalizację, w której ten obiekt zostanie utworzony. Można wybrać tę samą lokalizację, w której znajduje się sieć wirtualna, ale nie jest to konieczne.
+     * **Jeśli sieć lokalna reprezentuje lokalizację lokalną:** Określ publiczny adres IP urządzenia sieci VPN, który chcesz się połączyć. Nie może ono znajdować się za translatorem adresów sieciowych i musi być dostępne za pomocą usługi Azure.
+     * **Jeśli sieć lokalna reprezentuje inną sieć wirtualną:** Określ adres publiczny adres IP, który został przypisany do bramy sieci wirtualnej dla tej sieci wirtualnej.
+     * **Jeśli nie masz jeszcze adresu IP:** Można tworzą prawidłowy zastępczego adresu IP, a następnie możesz wrócić i zmodyfikować to ustawienie, przed nawiązaniem połączenia.
+   - **Przestrzeń adresowa** odwołuje się do zakresów adresów sieci, które reprezentuje sieć lokalna. Można dodać wiele zakresów przestrzeni adresów. Upewnij się, że określone w tym miejscu zakresy nie pokrywają się z zakresami innych sieci, z którymi się łączysz.
+   - **Skonfiguruj ustawienia protokołu BGP:** Należy używać tylko w przypadku konfigurowania protokołu BGP. W przeciwnym razie nie wybieraj jej.
+   - **Subskrypcja:** Sprawdź, czy wyświetlana jest prawidłowa subskrypcja.
+   - **Grupa zasobów:** Wybierz grupę zasobów, do którego chcesz używać. Możesz utworzyć nową grupę zasobów lub wybrać już utworzoną.
+   - **Lokalizacja:** Wybierz lokalizację, w której ten obiekt zostanie utworzony w. Można wybrać tę samą lokalizację, w której znajduje się sieć wirtualna, ale nie jest to konieczne.
+
 4. Kliknij przycisk **Utwórz**, aby utworzyć bramę sieci lokalnej.

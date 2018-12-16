@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4ee182202cf1ecbbb0845541269f7241de26c170
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 3e4f5c07602d5bc1b7760793664415f092301c20
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30326551"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444273"
 ---
 ### <a name="gwipnoconnection"></a>Aby zmodyfikować element „GatewayIpAddress” bramy sieci lokalnej — brak połączenia bramy
 
@@ -34,32 +34,32 @@ W przypadku zmiany publicznego adresu IP urządzenia sieci VPN, z którym chcesz
 
 1. Usuń połączenie. Nazwę połączenia możesz znaleźć przy użyciu polecenia cmdlet „Get-AzureRmVirtualNetworkGatewayConnection”.
 
-  ```azurepowershell-interactive
-  Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
-  -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+   -ResourceGroupName TestRG1
+   ```
 2. Zmodyfikuj wartość klasy „GatewayIpAddress”. Jednocześnie możesz również zmodyfikować prefiksy adresów. Pamiętaj, aby użyć istniejącej nazwy bramy sieci lokalnej w celu zastąpienia bieżących ustawień. Jeśli tego nie zrobisz, utworzysz nową bramę sieci lokalnej, a nie zastąpisz istniejącej.
 
-  ```azurepowershell-interactive
-  New-AzureRmLocalNetworkGateway -Name Site1 `
-  -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
-  -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   New-AzureRmLocalNetworkGateway -Name Site1 `
+   -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
+   -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
+   ```
 3. Utwórz połączenie. W tym przykładzie skonfigurujemy połączenie typu IPsec. Podczas ponownego tworzenia połączenia należy użyć typu połączenia, który został określony dla danej konfiguracji. O dodatkowych typach połączeń można przeczytać na stronie [PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) (Polecenia cmdlet programu PowerShell).  Aby uzyskać nazwę bramy VirtualNetworkGateway, można uruchomić polecenie cmdlet „Get-AzureRmVirtualNetworkGateway”.
    
     Ustaw zmienne.
 
-  ```azurepowershell-interactive
-  $local = Get-AzureRMLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
-  $vnetgw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   $local = Get-AzureRMLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
+   $vnetgw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
+   ```
    
     Utwórz połączenie.
 
-  ```azurepowershell-interactive 
-  New-AzureRmVirtualNetworkGatewayConnection -Name VNet1Site1 -ResourceGroupName TestRG1 `
-  -Location "East US" `
-  -VirtualNetworkGateway1 $vnetgw `
-  -LocalNetworkGateway2 $local `
-  -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
-  ```
+   ```azurepowershell-interactive 
+   New-AzureRmVirtualNetworkGatewayConnection -Name VNet1Site1 -ResourceGroupName TestRG1 `
+   -Location "East US" `
+   -VirtualNetworkGateway1 $vnetgw `
+   -LocalNetworkGateway2 $local `
+   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+   ```
