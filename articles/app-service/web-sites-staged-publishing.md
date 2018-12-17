@@ -45,7 +45,7 @@ Aplikacja musi być uruchomiona w **standardowa**, **Premium**, lub **izolowany*
     ![Dodaj nowe miejsce wdrożenia][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > Jeśli aplikacja nie znajduje się już w **standardowa**, **Premium**, lub **izolowany* warstwy, otrzymasz komunikat informujący o obsługiwanych warstw, umożliwiające publikowanie etapowe. W tym momencie masz możliwość dokonania wyboru **uaktualnienia** i przejdź do **skalowania** kartę aplikacji przed kontynuowaniem.
+   > Jeśli aplikacja nie znajduje się już w **standardowa**, **Premium**, lub **izolowany* warstwy, otrzymasz komunikat informujący o obsługiwanych warstw, umożliwiające publikowanie etapowe. W tym momencie masz możliwość dokonania wyboru ** **uaktualnienia** i przejdź do **skalowania** kartę aplikacji przed kontynuowaniem.
    > 
    > 
 3. W **Dodaj miejsce** bloku, nazwij gniazda, a następnie wybierz, czy chcesz sklonować konfiguracji aplikacji z innego istniejącego miejsca wdrożenia. Kliknij znacznik wyboru, aby kontynuować.
