@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: e11833feba9466fed6ea6b4f698ba2184ad129e2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 38153a605bc3c2fb32662e2733d2521fa1bf519a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962202"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341222"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 ## <a name="overview"></a>Przegląd
 W tym artykule pokazano, jak rozwiązywanie typowych problemów występujących podczas konfigurowania alertów dzienników w usłudze Azure monitor. Zapewnia również rozwiązania często zadawane pytania dotyczące funkcji lub konfiguracji alertów dzienników. 
 
-Termin **alertów dzienników** opisuje alerty, że ognia na podstawie niestandardowych zapytania w [usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
+Termin **alertów dzienników** opisuje alerty, że ognia na podstawie niestandardowych zapytania w [usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](../azure-monitor/platform/alerts-unified-log.md).
 
 > [!NOTE]
-> W tym artykule nie bierze pod uwagę przypadków, gdy witryna Azure portal Wyświetla i alertu wyzwolona reguła i powiadomień, wykonywane przez skojarzonych grup akcji. W takich przypadkach można znaleźć szczegółowe informacje w artykule na [grup akcji](monitoring-action-groups.md).
+> W tym artykule nie bierze pod uwagę przypadków, gdy witryna Azure portal Wyświetla i alertu wyzwolona reguła i powiadomień, wykonywane przez skojarzonych grup akcji. W takich przypadkach można znaleźć szczegółowe informacje w artykule na [grup akcji](../azure-monitor/platform/action-groups.md).
 
 
 ## <a name="log-alert-didnt-fire"></a>Alert dziennika nie został uruchomiony
 
-Poniżej przedstawiono niektóre typowe przyczyny, dlaczego skonfigurowanego [reguł alertów dzienników w usłudze Azure Monitor](alert-log.md) nie wyświetla stan [jako *wyzwolone* Oczekiwano](monitoring-alerts-managing-alert-states.md). 
+Poniżej przedstawiono niektóre typowe przyczyny, dlaczego skonfigurowanego [reguł alertów dzienników w usłudze Azure Monitor](../azure-monitor/platform/alerts-log.md) nie wyświetla stan [jako *wyzwolone* Oczekiwano](../azure-monitor/platform/alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Czas wprowadzania danych dla dzienników
 Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
@@ -35,14 +35,14 @@ Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](
 Aby zminimalizować opóźnienie pozyskiwania danych, system czeka i ponawia zapytanie alertu wiele razy, jeśli stwierdzi, że potrzebne dane nie są jeszcze pozyskiwane. System ma wykładniczo zwiększa czasu oczekiwania. Dziennik alertów wyzwalaczy tylko po danych jest dostępna, więc ich opóźnienie może być spowodowany pozyskiwanie danych wolnego dziennika. 
 
 ### <a name="incorrect-time-period-configured"></a>Skonfigurowano nieprawidłowy okres.
-Zgodnie z opisem w artykule na [terminologii dla dziennika alertów](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), czas okresu określone w konfiguracji określa zakres czasu dla zapytania. Zapytanie zwraca tylko te rekordy, które zostały utworzone w tym zakresie czasu. Okres ogranicza dane pobrana dla zapytania dotyczącego dziennika zapobiec nadużyciu i zmierzone dowolnego polecenia na czas (takich jak *temu*) używanych w zapytaniu dziennika. Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu są używane do zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia podobnego *temu (1d)*, zapytanie nadal korzysta z danych zakresu od 12:15:00 do 13:15 czasu ponieważ okres czasu jest ustawiona na tym interval.*
+Zgodnie z opisem w artykule na [terminologii dla dziennika alertów](../azure-monitor/platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types), czas okresu określone w konfiguracji określa zakres czasu dla zapytania. Zapytanie zwraca tylko te rekordy, które zostały utworzone w tym zakresie czasu. Okres ogranicza dane pobrana dla zapytania dotyczącego dziennika zapobiec nadużyciu i zmierzone dowolnego polecenia na czas (takich jak *temu*) używanych w zapytaniu dziennika. Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu są używane do zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia podobnego *temu (1d)*, zapytanie nadal korzysta z danych zakresu od 12:15:00 do 13:15 czasu ponieważ okres czasu jest ustawiona na tym interval.*
 
 Dlatego sprawdzanie okresu w konfiguracji zgodnego z zapytaniem. Na przykład, o których wspomniano wcześniej, jeśli używa zapytania dotyczącego dziennika *temu (1d)* pokazany z zielonym znacznikiem to okres czasu powinien być ustawiony do 24 godzin lub 1440 minut (jak wskazano w czerwony), aby upewnić się, wykonuje zapytanie, zgodnie z oczekiwaniami.
 
 ![Okres](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>Pomiń alerty ustawiono opcję
-Zgodnie z opisem w kroku 8 artykułu na [tworzenia reguł alertów dzienników w witrynie Azure portal](alert-log.md#managing-log-alerts-from-the-azure-portal), podaj alertów dzienników **Pomiń alerty** opcję Pomiń akcje wyzwalania i powiadomień w skonfigurowanym czas. Co w efekcie użytkownik może uznać, że alert nie fire w rzeczywistości go zostały, ale zostało pominięte.  
+Zgodnie z opisem w kroku 8 artykułu na [tworzenia reguł alertów dzienników w witrynie Azure portal](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal), podaj alertów dzienników **Pomiń alerty** opcję Pomiń akcje wyzwalania i powiadomień w skonfigurowanym czas. Co w efekcie użytkownik może uznać, że alert nie fire w rzeczywistości go zostały, ale zostało pominięte.  
 
 ![Pomiń alerty](./media/monitor-alerts-unified/LogAlertSuppress.png)
 
@@ -71,7 +71,7 @@ Jak agregacji po jest sygnatura czasowa dane są sortowane według kolumny sygna
 - Skonfiguruj ponownie używana logika alertu na podstawie reguły alertów (lub) *łącznie naruszenia* zamiast odpowiednio
  
 ## <a name="log-alert-fired-unnecessarily"></a>Alert dziennika uruchamiane niepotrzebnie
-Szczegółowe dalej są niektóre typowe przyczyny, dlaczego skonfigurowanego [reguł alertów dzienników w usłudze Azure Monitor](alert-log.md) mogą być wyzwalane podczas wyświetlania w [Azure Alerts](monitoring-alerts-managing-alert-states.md), gdy nie będziesz już go do uruchomienia.
+Szczegółowe dalej są niektóre typowe przyczyny, dlaczego skonfigurowanego [reguł alertów dzienników w usłudze Azure Monitor](../azure-monitor/platform/alerts-log.md) mogą być wyzwalane podczas wyświetlania w [Azure Alerts](../azure-monitor/platform/alerts-managing-alert-states.md), gdy nie będziesz już go do uruchomienia.
 
 ### <a name="alert-triggered-by-partial-data"></a>Alert wyzwolony przez częściowe dane
 Włączanie usługi Log Analytics i usługi Application Insights Analytics jest zależna od opóźnienia pozyskiwania i przetwarzania; z powodu, w momencie uruchamiania zapytanie alertu dzienników podana — mogą wystąpić przypadek żadne dane, które są dostępne lub tylko niektórych danych, które są dostępne. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
@@ -81,13 +81,13 @@ W zależności od sposobu skonfigurowania reguły alertu może być źle wielopa
 Na przykład, jeśli skonfigurowano reguł alertów dzienników do wyzwalania, gdy liczba wyników z zapytania analizy jest mniejsza niż 5, a następnie alert uruchamiają gdy nie ma danych (zero rekordu) lub częściowe wyniki (jeden rekord). Jednak opóźnieniem pozyskiwania danych tego samego zapytania przy użyciu pełnych danych może zawierać wynik 10 rekordów.
 
 ### <a name="alert-query-output-misunderstood"></a>Dane wyjściowe zapytanie alertu źle zrozumiane
-Możesz podać logiki dla dziennika alertów w zapytania usługi analytics. Zapytania usługi analytics może używać różnych danych big data i funkcji matematycznych.  Alerty usług wykonuje zapytanie w odstępach czasu określonych danych dla określonego okresu. Alerty usługi sprawia, że wprowadzono subtelne zmiany zapytania oparte na wybranego typu alertu. Można to zaobserwować w sekcji "Wyślij zapytanie w celu wykonania" *konfigurowanie logiki sygnału* ekranu, jak pokazano poniżej: ![zapytanie do wykonania](./media/monitor-alerts-unified/LogAlertPreview.png)
+Możesz podać logiki dla dziennika alertów w zapytania usługi analytics. Zapytania usługi analytics może używać różnych danych big data i funkcji matematycznych.  Alerty usług wykonuje zapytanie w odstępach czasu określonych danych dla określonego okresu. Alerty usługi sprawia, że wprowadzono subtelne zmiany zapytania oparte na wybranego typu alertu. Można to zaobserwować w sekcji "Wyślij zapytanie w celu wykonania" *konfigurowanie logiki sygnału* ekranu, jak pokazano poniżej: ![Zapytanie do wykonania](./media/monitor-alerts-unified/LogAlertPreview.png)
  
 Co to jest wyświetlany w **zapytanie do wykonania** pole jest działa usługa alertu dotyczącego dziennika. Możesz uruchomić określonego zapytania, a także przedział czasu za pośrednictwem [portalu analiza](../azure-monitor/log-query/portals.md) lub [interfejsu API analizy](https://docs.microsoft.com/rest/api/loganalytics/) Jeśli chcesz zrozumieć, jakie zapytanie alertu danych wyjściowych może być przed faktycznie utworzenia alertu.
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [alerty dzienników w alertów platformy Azure](monitor-alerts-unified-log.md)
+* Dowiedz się więcej o [alerty dzienników w alertów platformy Azure](../azure-monitor/platform/alerts-unified-log.md)
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md)
 * Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-overview.md). 
 
