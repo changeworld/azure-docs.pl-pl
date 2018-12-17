@@ -239,11 +239,11 @@ Poniżej opisano bardziej każdej powiadomienia oznacza, że elementy oraz zawie
 
 -   **Nazwa wyświetlana** — **(może być pusta)** bardziej szczegółowe nazwy wyświetlane dla błędu
 
-    -   Przykład * — **ustawienia serwera proxy aplikacji**
+    -   Przykład *— **ustawienia serwera proxy aplikacji**
 
 -   **Stan** — określonych stan powiadomienia
 
-    -   Przykład * — **nie powiodło się**
+    -   Przykład *— **nie powiodło się**
 
 -   **Obiekt o identyfikatorze** — **(może być pusta)** identyfikator obiektu, dla której wykonano operację
 
