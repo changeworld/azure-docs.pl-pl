@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 2264e6ff686519f7ef0d436d67f3055a48a7421b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 48b2d42348996f5f135d88cdf6345bca8daf8335
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997082"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409449"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -104,7 +104,7 @@ Następujące kroki użycia [APT](https://wiki.debian.org/Apt) do zainstalowania
     sudo apt-get install azure-functions-core-tools
     ```
 
-## <a name="create-a-local-functions-project"></a>Tworzenie projektu funkcji lokalnej
+## <a name="create-a-local-functions-project"></a>Tworzenie lokalnego projektu usługi Functions
 
 Katalog projektu funkcji zawiera pliki [host.json](functions-host-json.md) i [local.settings.json](#local-settings-file), wraz z podfolderów, które zawierają kod dla poszczególnych funkcji. Ten katalog jest odpowiednikiem aplikacji funkcji na platformie Azure. Aby dowiedzieć się więcej na temat funkcji strukturę folderów, zobacz [przewodnik dla deweloperów usługi Azure Functions](functions-reference.md#folder-structure).
 
@@ -303,12 +303,12 @@ func host start
 | **`--cors`** | Rozdzielana przecinkami lista źródeł CORS, bez spacji. |
 | **`--debug`** | Uruchamia hosta z portu debugowania Otwórz tak, aby można dołączyć do **func.exe** procesu z [programu Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) lub [programu Visual Studio 2017](functions-dotnet-class-library.md). Prawidłowe wartości to `VSCode` i `VS`.  |
 | **`--language-worker`** | Argumenty do konfigurowania procesu roboczego języka. W wersji 2.x tylko. |
-| **`--nodeDebugPort -n`** | Port do użycia w debugerze węzła. Wartość domyślna: Wartość z pliku launch.json lub 5858. W wersji 1.x tylko. |
+| **`--nodeDebugPort -n`** | Port do użycia w debugerze węzła. Domyślne: Wartość z pliku launch.json lub 5858. W wersji 1.x tylko. |
 | **`--password`** | Hasło lub plik, który zawiera hasło do pliku .pfx. Używana tylko z `--cert`. W wersji 2.x tylko. |
 | **`--port -p`** | Lokalny port do nasłuchiwania. Wartość domyślna: 7071. |
 | **`--pause-on-error`** | Wstrzymaj na dodatkowe dane wejściowe, zanim proces zostanie zakończony. Używana tylko wtedy, gdy uruchamianie podstawowych narzędzi w zintegrowanym środowisku programistycznym (IDE).|
 | **`--script-root --prefix`** | Można określić ścieżkę do katalogu głównego aplikacji funkcji, który ma zostać uruchomić lub wdrożyć. Służy to do skompilowanych projektach, generujących pliki projektu do podfolderu. Na przykład podczas kompilowania biblioteki klas C# plików projektu, host.json, local.settings.json i function.json są generowane w *głównego* podfolder ze ścieżką, takich jak `MyProject/bin/Debug/netstandard2.0`. W tym przypadku Ustaw prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji, podczas uruchamiania na platformie Azure. |
-| **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Wartość domyślna: 20 sekund.|
+| **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Domyślne: 20 sekund.|
 | **`--useHttps`** | Powiąż z `https://localhost:{port}` , a nie do `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufanego certyfikatu na komputerze.|
 
 Dla języka C# projekt biblioteki klas (.csproj), należy wprowadzić `--build` opcję, aby wygenerować biblioteki .dll.
@@ -444,7 +444,7 @@ Następujący projekt opcje publikowania są obsługiwane tylko w wersji 2.x:
 | **`--publish-settings-only -o`** |  Tylko ustawienia publikowania i pominąć zawartości. Wartość domyślna to monitu. |
 |**`--list-ignored-files`** | Wyświetla listę plików, które są ignorowane podczas publikowania, który jest oparty na pliku .funcignore. |
 | **`--list-included-files`** | Wyświetla listę plików, które są publikowane, który jest oparty na pliku .funcignore. |
-| **`--zip`** | Publikowanie w pakiecie przebieg z pliku Zip. Wymaga aplikacji ma ustawienie AzureWebJobsStorage zdefiniowane. |
+| **`--nozip`** | Wyłącza domyślne `Run-From-Zip` wyłączony tryb. |
 | **`--build-native-deps`** | Aplikacje funkcji umożliwia pominięcie generowania .wheels folderu podczas publikowania języka python. |
 | **`--additional-packages`** | Lista pakietów do zainstalowania podczas tworzenia zależności natywnych. Na przykład: `python3-dev libevent-dev`. |
 | **`--force`** | Ignoruj wstępnie publikowania weryfikacji w niektórych scenariuszach. |

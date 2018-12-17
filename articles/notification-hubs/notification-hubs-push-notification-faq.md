@@ -15,14 +15,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: cec57f2dafaddfa2ebc492f0cb92755b1f65607f
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 140994de4b1be61f16593e450d156b81727a9f52
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251026"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437847"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Wypychanie powiadomień z usługą Azure Notification Hubs: często zadawane pytania
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane przy użyciu usługi Azure Notification Hubs: Często zadawane pytania
 ## <a name="general"></a>Ogólne
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Co to jest struktury zasobów usługi Notification hubs?
 
@@ -34,13 +34,13 @@ Zalecane mapowanie pasuje do jednej przestrzeni nazw z jedną aplikacją. W prze
 Najnowszy cennik można znaleźć na [Cennik usługi Notification Hubs] strony. Usługa Notification Hubs jest rozliczana na poziomie przestrzeni nazw. (Aby uzyskać definicję przestrzeni nazw, zobacz "Co to jest struktury zasobów usługi Notification hubs?") Usługa Notification Hubs oferuje trzy warstwy:
 
 * **Bezpłatne**: Ta warstwa jest dobry punkt wyjścia do eksplorowania możliwości push. Nie jest zalecane dla aplikacji produkcyjnych. Uzyskaj 500 urządzeń i 1 milion wypchnięć uwzględnione na przestrzeń nazw na miesiąc, za pomocą żadnej gwarancji umowy dotyczącej poziomu (SLA), usługi.
-* **Podstawowe**: Ta warstwa (lub warstwy Standard) jest zalecane w przypadku mniejszych aplikacje produkcyjne. Uzyskaj 200 000 urządzeń i 10 milionów wypchnięć uwzględnione na przestrzeń nazw na miesiąc jako punkt odniesienia. Opcje wzrostu przydziału są uwzględniane.
+* **Podstawowe**: Ta warstwa (lub warstwy standardowa) jest zalecane dla mniejszych aplikacji produkcyjnych. Uzyskaj 200 000 urządzeń i 10 milionów wypchnięć uwzględnione na przestrzeń nazw na miesiąc jako punkt odniesienia. Opcje wzrostu przydziału są uwzględniane.
 * **Standardowa**: Ta warstwa jest zalecane dla średnich i dużych produkcyjnych aplikacji interfejsów aplikacji. Pobierz 10 milionów urządzeń i 10 milionów wypchnięć uwzględnione na przestrzeń nazw na miesiąc jako punkt odniesienia. Limit przydziału wzrost opcje zaawansowane telemetrii możliwości i są uwzględniane.
 
 Funkcje w warstwie standardowa:
-* **Rozbudowane informacje telemetryczne**: na komunikat Telemetria usługi Notification Hubs umożliwia śledzenie dowolnego żądania wypychania i informacje zwrotne z systemu powiadomień platformy do debugowania.
-* **Wielodostępność**: poświadczenia systemu powiadomień platformy można pracować na poziomie przestrzeni nazw. Ta opcja umożliwia łatwe podzielić dzierżaw koncentratory, w ramach tej samej przestrzeni nazw.
-* **Zaplanowane wypychania**: można zaplanować powiadomienia, które zostaną wysłane w dowolnym momencie.
+* **Rozbudowane informacje telemetryczne**: Na komunikat Telemetria usługi Notification Hubs umożliwia śledzenie dowolnego żądania wypychania i informacje zwrotne z systemu powiadomień platformy do debugowania.
+* **Wielodostępność**: Poświadczenia systemu powiadomień platformy można pracować na poziomie przestrzeni nazw. Ta opcja umożliwia łatwe podzielić dzierżaw koncentratory, w ramach tej samej przestrzeni nazw.
+* **Zaplanowane wypychania**: Można zaplanować powiadomienia, które zostaną wysłane w dowolnym momencie.
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Co to jest umowa SLA centrów powiadomień?
 W przypadku warstw podstawowa i standardowa usługi Notification Hubs prawidłowo skonfigurowane aplikacje mogą wysyłać powiadomienia wypychane lub wykonywać operacje zarządzania rejestracją w co najmniej 99,9% czasu. Aby dowiedzieć się więcej o umowach SLA, przejdź do [Notification Hubs SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) strony.
@@ -51,12 +51,12 @@ W przypadku warstw podstawowa i standardowa usługi Notification Hubs prawidłow
 ### <a name="which-customers-are-using-notification-hubs"></a>Których klienci używają usługi Notification Hubs?
 Wielu klientów używa usługi Notification Hubs. Poniżej przedstawiono niektóre z nich istotne:
 
-* 2014 w Soczi: Setki grup zainteresowań, 3 milionów urządzeń i 150 + milionów powiadomień wysłanych w ciągu dwóch tygodni. [Analiza przypadku: Soczi]
-* Firma Skanska: [analiza przypadku: Skanska]
-* Czasy Seattle: [Analiza przypadku: Seattle razy]
-* Mural.LY: [analiza przypadku: Mural.ly]
-* 7Digital: [analiza przypadku: 7Digital]
-* Aplikacje usługi Bing: Dziesiątki milionów urządzeń Wyślij powiadomienia 3 milionów dziennie.
+* Soczi 2014: Setki grup zainteresowań, 3 milionów urządzeń i 150 + milionów powiadomień wysłanych w ciągu dwóch tygodni. [Analiza przypadku: Soczi]
+* Firma Skanska: [Analiza przypadku: Firma Skanska]
+* Seattle godzinach: [Analiza przypadku: Czasy Seattle]
+* Mural.LY: [Analiza przypadku: Mural.LY]
+* 7Digital: [Analiza przypadku: 7Digital]
+* Aplikacje usługi Bing: Dziesiątki milionów urządzeń wysyłanie powiadomień 3 milionów dziennie.
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Jak uaktualnić lub obniżyć wersję mojego Centrum lub przestrzeni nazw do innej warstwy
 Przejdź do  **[Azure Portal]** > **przestrzenie nazw usługi Notification Hubs** lub **usługi Notification Hubs**. Wybierz zasób, aby zaktualizować, a następnie przejdź do **warstwy cenowej**. Należy uwzględnić następujące wymagania:
@@ -200,9 +200,9 @@ Oferujemy również możliwość eksportowania danych telemetrycznych programowo
 [Cennik usługi Notification Hubs]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
 [Analiza przypadku: Soczi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
-[Analiza przypadku: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[Analiza przypadku: Seattle razy]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[Analiza przypadku: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
+[Analiza przypadku: Firma Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
+[Analiza przypadku: Czasy Seattle]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
+[Analiza przypadku: Mural.LY]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [Analiza przypadku: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Usługa Notification Hubs interfejsów API REST]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Samouczki wprowadzenie centra powiadomień]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
@@ -213,7 +213,7 @@ Oferujemy również możliwość eksportowania danych telemetrycznych programowo
 [Model zabezpieczeń centra powiadomień]: https://msdn.microsoft.com/library/azure/dn495373.aspx
 [Samouczek dotyczący Secure wypychania centrów powiadomień]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [Rozwiązywanie problemów w usłudze Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
-[Notification Hubs metryki]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs metryki]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Przykładowe metryki centra powiadomień]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Rejestracje eksportu/importu]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com

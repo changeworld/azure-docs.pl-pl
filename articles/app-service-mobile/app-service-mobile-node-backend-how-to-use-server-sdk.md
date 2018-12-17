@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 926712d8d38f144c583dcf61c3cd0f078566296a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e435baf4a5e3382e3e77195e5315299e3963ff5c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964002"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409262"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu SDK środowiska Node.js w aplikacji mobilnej
 
@@ -794,7 +794,7 @@ var api = {
 module.exports = api;
 ```
 
-Każdy parametr jest jednym z standardowych czasowników RESTful: Pobierz, POST, PATCH lub usunąć. Metoda jest standardem [Oprogramowanie pośredniczące ExpressJS] funkcja, która wysyła wymagane dane wyjściowe.
+Każdy parametr jest jednym z standardowych czasowników RESTful: Pobierz, POST, PATCH lub usuwanie. Metoda jest standardem [Oprogramowanie pośredniczące ExpressJS] funkcja, która wysyła wymagane dane wyjściowe.
 
 ### <a name="howto-customapi-auth"></a>Wymaganie uwierzytelniania na potrzeby dostępu do niestandardowego interfejsu API
 
@@ -918,13 +918,13 @@ Operacje tabeli mogą edytować za pomocą Edytor usługi App Service. Po wybran
 
 Następujące polecenia są dostępne na pasku poleceń dla tabeli:
 
-* **Zmień uprawnienia**: zmodyfikować uprawnienia do odczytu, wstawianie, aktualizowanie i usuwanie operacji względem tabeli.
+* **Zmień uprawnienia**: Zmodyfikować uprawnienia do odczytu, wstawianie, aktualizowanie i usuwanie operacji względem tabeli.
  Aby zezwolić na dostęp anonimowy, aby wymagać uwierzytelniania lub wyłącz dostęp do operacji są opcje.
-* **Edytuj skrypt**: plik skryptu w tabeli jest otwarty w edytorze usługi aplikacji.
+* **Edytuj skrypt**: Plik skryptu w tabeli jest otwarty w Edytor usługi App Service.
 * **Zarządzanie schematami**: Dodawanie lub usuwanie kolumn lub zmienić indeksu tabeli.
-* **Wyczyść tabelę**: obciąć istniejącej tabeli, usuwając wszystkie wiersze danych, ale pozostawienie schematu bez zmian.
+* **Wyczyść tabelę**: Obetnij istniejącej tabeli, usuwając wszystkie wiersze danych, ale pozostawiając schematu.
 * **Usuń wiersze**: Usuń poszczególne wiersze danych.
-* **Wyświetl podgląd dzienników przesyłanych strumieniowo**: nawiązać połączenie z usługą przesyłania strumieniowego dziennika dla danej witryny.
+* **Wyświetl podgląd dzienników przesyłanych strumieniowo**: Podłącz do przesyłania strumieniowego usługi rejestrowania dla witryny.
 
 ### <a name="work-easy-apis"></a>Praca z łatwe interfejsy API w witrynie Azure portal
 
@@ -963,11 +963,11 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 [Przewodnik Szybki Start klienta interfejsu Xamarin.Forms]: app-service-mobile-xamarin-forms-get-started.md
 [Przewodnik Szybki Start Windows Store klienta]: app-service-mobile-windows-store-dotnet-get-started.md
 [Synchronizacja danych offline]: app-service-mobile-offline-data-sync.md
-[Konfigurowanie uwierzytelniania usługi Azure Active Directory]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Konfigurowanie uwierzytelniania serwisu Facebook]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
-[Konfigurowanie uwierzytelniania serwisu Google]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
-[Konfigurowanie uwierzytelniania firmy Microsoft]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Konfigurowanie uwierzytelniania usługi Twitter]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
+[Konfigurowanie uwierzytelniania usługi Azure Active Directory]: ../app-service/configure-authentication-provider-aad.md
+[Konfigurowanie uwierzytelniania serwisu Facebook]: ../app-service/configure-authentication-provider-facebook.md
+[Konfigurowanie uwierzytelniania serwisu Google]: ../app-service/configure-authentication-provider-google.md
+[Konfigurowanie uwierzytelniania firmy Microsoft]: ../app-service/configure-authentication-provider-microsoft.md
+[Konfigurowanie uwierzytelniania usługi Twitter]: ../app-service/configure-authentication-provider-twitter.md
 [Podręcznik wdrażania usługi Azure App Service]: ../app-service/app-service-deploy-local-git.md
 [Monitorowanie usługi Azure App Service]: ../app-service/web-sites-monitor.md
 [Włącz rejestrowanie diagnostyczne w usłudze Azure App Service]: ../app-service/web-sites-enable-diagnostic-log.md

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 988d61d6db867c33a2dd9998d675f40f49e71332
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341749"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410367"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -298,7 +298,7 @@ Aby skonfigurować ochronę dla bazy danych SQL:
 
     ![Wybierz opcję skonfigurowania kopii zapasowej](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-    Usługa Azure Backup Wyświetla wszystkie wystąpienia programu SQL Server za pomocą autonomicznych baz danych i grup dostępności programu SQL Server Always On. Aby wyświetlić autonomicznych baz danych w wystąpieniu programu SQL Server, wybierz podwójną strzałkę w lewo nazwę wystąpienia. Podobnie wybierz podwójną strzałkę po lewej stronie zawsze włączonej grupy dostępności, aby wyświetlić listę baz danych. Poniższy rysunek jest przykładem wystąpienia autonomicznego i zawsze włączonej grupy dostępności.
+    Usługa Azure Backup Wyświetla wszystkie wystąpienia programu SQL Server za pomocą autonomicznych baz danych i programu SQL Server zawsze na grupy dostępności. Aby wyświetlić autonomicznych baz danych w wystąpieniu programu SQL Server, wybierz podwójną strzałkę w lewo nazwę wystąpienia. Podobnie wybierz podwójną strzałkę po lewej stronie grupę zawsze na dostępność, aby wyświetlić listę baz danych. Poniższa ilustracja jest przykładem wystąpienia autonomicznego i grupy zawsze w dostępności.
 
       ![Wyświetlanie wszystkich wystąpień programu SQL Server za pomocą autonomicznych baz danych](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
@@ -312,7 +312,7 @@ Aby skonfigurować ochronę dla bazy danych SQL:
     > W celu zoptymalizowania obciążeń kopii zapasowych, kopia zapasowa Azure dzieli duże zadania tworzenia kopii zapasowej na wiele partii. Maksymalna liczba baz danych w ramach jednego zadania tworzenia kopii zapasowej jest 50.
     >
 
-      Alternatywnie, możesz włączyć [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) całe wystąpienie lub zawsze włączonej grupy dostępności, wybierając **ON** opcji na liście rozwijanej odpowiedniego **AUTOPROTECT**  kolumny. [Automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) funkcja nie tylko umożliwia ochronę wszystkich istniejących baz danych w jednym z rzeczywistym użyciem, ale również automatycznie chronić żadnych nowych baz danych, które zostaną dodane do grupy dostępności lub tego wystąpienia w przyszłości.  
+      Alternatywnie, możesz włączyć [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) na całe wystąpienie lub zawsze na Availability group, wybierając **ON** opcji na liście rozwijanej odpowiedniego **AUTOPROTECT**  kolumny. [Automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) funkcja nie tylko umożliwia ochronę wszystkich istniejących baz danych w jednym z rzeczywistym użyciem, ale również automatycznie chronić żadnych nowych baz danych, które zostaną dodane do grupy dostępności lub tego wystąpienia w przyszłości.  
 
       ![Włączanie automatycznej ochrony dla grupy dostępności Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
 
@@ -347,9 +347,7 @@ Aby skonfigurować ochronę dla bazy danych SQL:
 
 ## <a name="auto-protect-sql-server-in-azure-vm"></a>Automatyczna ochrona programu SQL Server na maszynie Wirtualnej platformy Azure  
 
-Automatyczna ochrona jest to funkcja, która umożliwia automatycznie chronić wszystkie istniejące bazy danych, a także przyszłych baz danych, które należy dodać w autonomiczne wystąpienie programu SQL Server lub SQL Server Always On availability group.
-
-W przypadku, gdy wystąpienie lub grupa dostępności zawiera już niektóre z jej baz danych, chronione, nadal można włączyć **ON** opcji auto-protect. W takim przypadku tylko będą one dotyczyć niechronionych baz danych zasad kopii zapasowych tak zdefiniowana, gdy już chronione bazy danych będą w dalszym ciągu być chronione przy użyciu ich odpowiednich zasad.
+Automatyczna ochrona umożliwia automatycznie chronić wszystkie istniejące bazy danych i baz danych, które należy dodać w przyszłości do wystąpienia autonomicznego programu SQL Server lub SQL Server zawsze na grupy dostępności. Włączanie **ON** automatycznej ochrony i wybierając polecenie zasad tworzenia kopii zapasowej, które będą stosowane w przypadku nowo chronionej baz danych, chronione istniejącej bazy danych będą w dalszym ciągu przy użyciu poprzednich zasad.
 
 ![Włączanie automatycznej ochrony dla grupy dostępności Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
 
@@ -479,7 +477,7 @@ Możesz również wybrać określonej pełna lub różnicowa kopii zapasowej do 
     - **Zastąp bazę danych**: Przywróć dane do tego samego wystąpienia programu SQL Server jako oryginalnego źródła. Ta opcja powoduje zastąpienie oryginalnej bazy danych.
 
     > [!Important]
-    > Jeśli wybrana baza danych, należy do grupy dostępności Always On programu SQL Server nie zezwala na bazy danych zostaną zastąpione. W tym przypadku tylko **lokalizacji alternatywnej** opcja jest włączona.
+    > Jeśli wybrana baza danych należy do grupy zawsze na dostępność, programu SQL Server nie zezwala na bazy danych zostaną zastąpione. W tym przypadku tylko **lokalizacji alternatywnej** opcja jest włączona.
     >
 
     ![Przywracanie menu konfiguracji](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)

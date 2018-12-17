@@ -13,12 +13,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 8eef75a6e1f4f05aa6d7ce8f9e6fdda52162d0bc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b284b599c569fe1c492b28d09fbc62a9130e939e
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960723"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409313"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Sposób użycia biblioteki klienta usługi Azure Mobile Apps-iOS
 
@@ -28,7 +28,7 @@ Tego przewodnika dowiesz się, aby wykonać typowe scenariusze za pomocą najnow
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
 
-Dokumentacja zestawu SDK klienta z systemem iOS znajduje się tutaj: [usługi Azure Mobile Apps dla systemu iOS odwołania do klienta][2].
+Dokumentacja referencyjna dla klientów z systemem iOS SDK znajduje się tutaj: [Usługa Azure Mobile Apps dla systemu iOS odwołania do klienta][2].
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
 
@@ -41,7 +41,7 @@ Ten zestaw SDK nie nadaje się zatem Obejrzyj type lub podobnie urządzeń z ogr
 
 W tym przewodniku założono, że utworzono zaplecza za pomocą tabeli. W tym przewodniku założono, że tabela ma ten sam schemat, jak tabele w tych samouczkach. W tym przewodniku założono, że w kodzie, można się odwołać `MicrosoftAzureMobile.framework` i zaimportuj `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.
 
-## <a name="create-client"></a>Porady: Tworzenie klienta
+## <a name="create-client"></a>Jak: Tworzenie klienta
 
 Aby uzyskać dostęp do zaplecza usługi Azure Mobile Apps w swoim projekcie, należy utworzyć `MSClient`. Zastąp `AppUrl` przy użyciu adresu URL aplikacji. Można pozostawić `gatewayURLString` i `applicationKey` puste. Po skonfigurowaniu bramy uwierzytelniania wypełnić `gatewayURLString` za pomocą adresu URL bramy.
 
@@ -57,7 +57,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>Porady: Tworzenie odwołania do tabeli
+## <a name="table-reference"></a>Jak: Tworzenie odwołania do tabeli
 
 Aby uzyskać dostęp do danych lub je zaktualizować, utwórz odwołanie do tabeli zaplecza. Zastąp ciąg `TodoItem` nazwą tabeli
 
@@ -73,7 +73,7 @@ MSTable *table = [client tableWithName:@"TodoItem"];
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>Porady: wykonywanie zapytań dotyczących danych
+## <a name="querying"></a>Jak: Zapytania o dane
 
 Aby utworzyć zapytanie bazy danych, zapytań `MSTable` obiektu. Następujące zapytanie pobiera wszystkie elementy w `TodoItem` i rejestruje tekst każdego elementu.
 
@@ -105,7 +105,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>Porady: Filtr nie zwrócił danych
+## <a name="filtering"></a>Jak: Filtr nie zwrócił danych
 
 Aby filtrować wyniki, istnieje wiele dostępnych opcji.
 
@@ -145,7 +145,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>Porady: Użyj MSQuery
+## <a name="query-object"></a>Jak: Użyj MSQuery
 
 Aby wykonać zapytanie złożone (w tym sortowanie i stronicowanie), należy utworzyć `MSQuery` obiektu bezpośrednio lub za pomocą predykat:
 
@@ -174,7 +174,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 
 Wykonaj `MSQuery` zapytania, wywołując `readWithCompletion` obiektu.
 
-## <a name="sorting"></a>Porady: sortowanie danych za pomocą MSQuery
+## <a name="sorting"></a>Jak: Sortowanie danych za pomocą MSQuery
 
 Aby posortować wyniki, Przyjrzyjmy się przykładowi. Aby posortować według pola "text" w kolejności rosnącej, a następnie według malejących "Pełna", należy wywołać `MSQuery` w następujący sposób:
 
@@ -210,7 +210,7 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>Porady: ograniczenie pola, a następnie rozwiń węzeł parametry ciągu zapytania za pomocą MSQuery
+## <a name="selecting"></a><a name="parameters"></a>Jak: Ograniczenia pola, a następnie rozwiń węzeł parametry ciągu zapytania za pomocą MSQuery
 
 Aby ograniczyć liczbę pól do zwrócenia w zapytaniu, określ nazwy pól w **selectFields** właściwości. W tym przykładzie zwraca tylko tekst i ukończone pola:
 
@@ -243,7 +243,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>Porady: Konfigurowanie rozmiar strony
+## <a name="paging"></a>Jak: Skonfiguruj rozmiar strony
 
 Za pomocą usługi Azure Mobile Apps rozmiar strony określa liczbę rekordów, które są pobierane w czasie z tabelami w wewnętrznej bazie danych. Wywołanie `pull` następnie partii zapasowych danych, w oparciu o ten rozmiar strony, aż nie wystąpią żadne rekordy do ściągania danych.
 
@@ -255,7 +255,7 @@ To ustawienie kontroluje tylko rozmiaru strony po stronie klienta. Jeśli klient
 
 To ustawienie jest również *numer* rekordy danych nie *rozmiar w bajtach*.
 
-Zwiększenie rozmiaru strony klienta, należy również zwiększyć rozmiar strony na serwerze. Zobacz ["porady: dopasowywanie rozmiaru stronicowania tabeli"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) kroki opisane w tym celu.
+Zwiększenie rozmiaru strony klienta, należy również zwiększyć rozmiar strony na serwerze. Zobacz ["jak: Dostosuj rozmiar stronicowania w tabeli"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) kroki opisane w tym celu.
 
 **Języka Objective-C**:
 
@@ -280,7 +280,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>Porady: wstawianie danych
+## <a name="inserting"></a>Jak: Wstawianie danych
 
 Aby wstawić nowy wiersz w tabeli, należy utworzyć `NSDictionary` i wywoływać `table insert`. Jeśli [schemat dynamiczny] jest włączona, zaplecza aplikacji mobilnych w usłudze Azure App Service automatycznie generuje nowych kolumn na podstawie `NSDictionary`.
 
@@ -314,7 +314,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>Porady: modyfikowanie danych
+## <a name="modifying"></a>Jak: Modyfikowanie danych
 
 Aby zaktualizować istniejący wiersz, zmodyfikuj element i wywołania `update`:
 
@@ -375,7 +375,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 Co najmniej `id` podczas wprowadzania aktualizacji, należy ustawić dla atrybutu.
 
-## <a name="deleting"></a>Porady: usuwanie danych
+## <a name="deleting"></a>Jak: Usuwanie danych
 
 Aby usunąć element, należy wywołać `delete` z elementem:
 
@@ -431,7 +431,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 Co najmniej `id` podczas wprowadzania usuwa, należy ustawić dla atrybutu.
 
-## <a name="customapi"></a>Porady: wywoływanie niestandardowych interfejsów API
+## <a name="customapi"></a>Jak: Wywoływanie niestandardowego interfejsu API
 
 Za pomocą niestandardowego interfejsu API może narazić żadnych funkcji wewnętrznej bazy danych. Nie ma mapowania na operacji tabeli. Nie tylko możesz uzyskać większą kontrolę nad wiadomości, można nawet odczytu/ustawiania nagłówków i zmień format treści odpowiedzi. Aby dowiedzieć się, jak utworzyć niestandardowy interfejs API zaplecza, przeczytaj [niestandardowych interfejsów API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
@@ -472,7 +472,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>Porady: Rejestrowanie szablonów wypychania do wysyłania powiadomień dla wielu platform
+## <a name="templates"></a>Jak: Rejestrowanie szablonów wypychania do wysyłania powiadomień dla wielu platform
 
 Aby zarejestrować szablony, przekazywać szablonów za pomocą usługi **client.push registerDeviceToken** metody w aplikacji klienckiej.
 
@@ -512,7 +512,7 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 Wszystkie tagi są usuwane z żądania dotyczące zabezpieczeń.  Aby dodać tagi do instalacji lub szablonów w ramach instalacji, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps][4].  Aby wysłać powiadomienia za pomocą tych szablonów zarejestrowanych, współpracować z [Notification Hubs API][3].
 
-## <a name="errors"></a>Porady: obsługa błędów
+## <a name="errors"></a>Jak: Obsługa błędów
 
 Podczas wywoływania zaplecza aplikacji mobilnych w usłudze Azure App Service zawiera blok uzupełniania `NSError` parametru. Gdy wystąpi błąd, ten parametr jest inne niż zero. W kodzie należy sprawdzić tego parametru i obsługi błędów, zgodnie z potrzebami, jak pokazano w poprzednim fragmenty kodu.
 
@@ -544,7 +544,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>Instrukcje: uwierzytelnianie użytkowników za pomocą biblioteki uwierzytelniania usługi Active Directory
+## <a name="adal"></a>Jak: Uwierzytelnianie użytkowników za pomocą biblioteki uwierzytelniania usługi Active Directory
 
 Active Directory Authentication Library (ADAL) służy do logowania się użytkowników do aplikacji za pomocą usługi Azure Active Directory. Uwierzytelnianie przepływu klienta przy użyciu dostawcy tożsamości zestawu SDK zalecane jest stosowanie `loginWithProvider:completion:` metody.  Uwierzytelnianie przepływu klienta zapewnia bardziej natywnego działania środowiska użytkownika i umożliwia dodatkowych dostosowań.
 
@@ -631,7 +631,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>Instrukcje: uwierzytelnianie użytkowników przy użyciu zestawu SDK usługi Facebook dla systemu iOS
+## <a name="facebook-sdk"></a>Jak: Uwierzytelnianie użytkowników przy użyciu zestawu SDK usługi Facebook dla systemu iOS
 
 Zestaw SDK usługi Facebook dla systemu iOS można użyć do logowania się użytkowników do aplikacji za pomocą usługi Facebook.  Przy użyciu uwierzytelniania przepływu klientów zalecane jest stosowanie `loginWithProvider:completion:` metody.  Uwierzytelnianie przepływu klienta zapewnia bardziej natywnego działania środowiska użytkownika i umożliwia dla dodatkowych dostosowań.
 
@@ -710,11 +710,11 @@ Zestaw SDK usługi Facebook dla systemu iOS można użyć do logowania się uży
     }
     ```
 
-## <a name="twitter-fabric"></a>Instrukcje: uwierzytelnianie użytkowników za pomocą usługi Twitter Service Fabric dla systemu iOS
+## <a name="twitter-fabric"></a>Jak: Uwierzytelnianie użytkowników za pomocą usługi Twitter Service Fabric dla systemu iOS
 
 Service Fabric dla systemu iOS można użyć do logowania się użytkowników do aplikacji za pomocą usługi Twitter. Uwierzytelnianie przepływu klienta zalecane jest stosowanie `loginWithProvider:completion:` metody, ponieważ zapewnia bardziej natywnego działania środowiska użytkownika i umożliwia dodatkowych dostosowań.
 
-1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze Twitter, wykonując [sposobu konfigurowania usługi App Service dla logowania usługi Twitter](../app-service/app-service-mobile-how-to-configure-twitter-authentication.md) samouczka.
+1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze Twitter, wykonując [sposobu konfigurowania usługi App Service dla logowania usługi Twitter](../app-service/configure-authentication-provider-twitter.md) samouczka.
 2. Dodaj do projektu sieci szkieletowej, wykonując [Service Fabric dla systemu iOS — wprowadzenie] dokumentacji oraz definiowanie TwitterKit.
 
    > [!NOTE]
@@ -792,11 +792,11 @@ Service Fabric dla systemu iOS można użyć do logowania się użytkowników do
     }
     ```
 
-## <a name="google-sdk"></a>Instrukcje: uwierzytelnianie użytkowników za pomocą Google Sign-In SDK dla systemu iOS
+## <a name="google-sdk"></a>Jak: Uwierzytelnianie użytkowników za pomocą Google Sign-In SDK dla systemu iOS
 
 Google Sign-In SDK dla systemu iOS można użyć do logowania się użytkowników do aplikacji za pomocą konta Google.  Google zapowiedziała niedawno zmiany z ich zasadami zabezpieczeń OAuth.  Zmiany tych zasad, trzeba użyć zestawu Google SDK w przyszłości.
 
-1. Skonfiguruj zaplecza aplikacji mobilnej dla logowania Google, zgodnie z poniższymi [sposobu konfigurowania usługi App Service dla logowania usługi Google](../app-service/app-service-mobile-how-to-configure-google-authentication.md) samouczka.
+1. Skonfiguruj zaplecza aplikacji mobilnej dla logowania Google, zgodnie z poniższymi [sposobu konfigurowania usługi App Service dla logowania usługi Google](../app-service/configure-authentication-provider-google.md) samouczka.
 2. Zainstaluj zestaw SDK Google dla systemu iOS, wykonując [Sign In Google dla systemu iOS — Rozpocznij integrowanie](https://developers.google.com/identity/sign-in/ios/start-integrating) dokumentacji. Możesz pominąć w sekcji "Uwierzytelnianie przy użyciu serwera wewnętrznej bazy danych".
 3. Dodaj następujący kod do pełnomocnika `signIn:didSignInForUser:withError:` metodę, zgodnie z językiem, którego używasz.
 
@@ -920,7 +920,7 @@ Google Sign-In SDK dla systemu iOS można użyć do logowania się użytkownikó
 [4]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags
 [5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
-[7]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[7]: ../app-service/configure-authentication-provider-aad.md
 [8]:../active-directory/develop/quickstart-v1-ios.md
-[9]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
+[9]: ../app-service/configure-authentication-provider-facebook.md
 [10]: https://developers.facebook.com/docs/ios/getting-started

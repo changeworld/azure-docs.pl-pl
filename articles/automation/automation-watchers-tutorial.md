@@ -90,7 +90,7 @@ Zadanie obserwatora zawiera dwie części. Obserwator i akcji. Obserwator jest u
 1. Wprowadź następujące wartości parametrów:
 
    ***EVENTDATA** — pozostaw to pole puste. Dane są przekazywane w z elementu runbook obserwatora.  
-   ***Parametry uruchomieniowe** — pozostaw Azure zgodnie z tego elementu runbook jest uruchamiany w usłudze Automation.
+   ***Parametry uruchomieniowe** ** — pozostaw Azure zgodnie z tego elementu runbook jest uruchamiany w usłudze Automation.
 
 1. Kliknij przycisk **OK**, a następnie wybierz pozycję Tak, aby wrócić do strony obserwatora.
 1. Kliknij przycisk **OK** do tworzenia zadania obserwatora.
