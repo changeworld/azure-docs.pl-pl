@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/23/2018
 ms.author: b-juche
-ms.openlocfilehash: 6869d60bfadbeb3f3ed9c7b67d3560e49c73e65b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 23ec6d3a91dea91fba8565280bcce4e9385f49ae
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010246"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413245"
 ---
 # <a name="azure-netapp-files-documentation"></a>Dokumentacja usługi Azure NetApp Files
 
 Dowiedz się, jak usługa Azure NetApp Files umożliwia tworzenie kont usługi NetApp, pul pojemność i woluminów oraz zarządzanie nimi, konfigurowanie zasad eksportu, instalowanie woluminu dla maszyny wirtualnej i zarządzanie migawkami.
 
 > [!IMPORTANT] 
-> Wszystkie zadania opisane w tej dokumentacji wymagają uczestnictwa w programie podglądu publicznego i obecności na liście dozwolonych, aby można było uzyskiwać dostęp do dostawcy zasobów platformy Azure Microsoft.NetApp. Szczegółowe informacje na temat dołączania do programu podglądu publicznego można znaleźć na [stronie rejestracji w podglądzie publicznym usługi Azure NetApp Files](https://aka.ms/nfspublicpreview). 
+> Wszystkie zadania opisane w tej dokumentacji wymagają uczestnictwa w programie podglądu publicznego i obecności na liście dozwolonych, aby można było uzyskiwać dostęp do dostawcy zasobów platformy Azure Microsoft.NetApp. Aby poprosić o dołączenie do programu podglądu publicznego, zobacz [Rejestrowanie w usłudze Azure NetApp Files](azure-netapp-files-register.md). 
 
 <ul class="panelContent cardsFTitle">
     <li>

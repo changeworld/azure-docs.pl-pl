@@ -91,7 +91,7 @@
 #### [Karta Wersja testowa](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
 #### [Karta platformy handlowej](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
 #### [Karta pomocy technicznej](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
-<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [Tworzenie zasobów technicznych](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 ### [Publikowanie oferty aplikacji platformy Azure](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 ### [Aktualizowanie istniejącej oferty](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 

@@ -144,6 +144,12 @@ items:
       href: unique-keys.md
     - name: Transakcje i optymistyczna współbieżność
       href: database-transactions-optimistic-concurrency.md
+  - name: Programowanie po stronie serwera
+    items:
+    - name: Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)
+      href: stored-procedures-triggers-udfs.md
+    - name: Interfejs API zapytań JavaScript
+      href: javascript-query-api.md
   - name: Optymalizacja kosztów usługi Azure Cosmos DB
     items:
     - name: Model cen
@@ -178,8 +184,6 @@ items:
       href: firewall-support.md
     - name: Dostęp z sieci wirtualnych
       href: vnet-service-endpoint.md
-    - name: Obsługa magazynu kluczy
-      href: access-secrets-from-keyvault.md
   - name: Gotowość przedsiębiorstwa
     items:
     - name: Tworzenie i przywracanie kopii zapasowych w trybie online
@@ -250,8 +254,14 @@ items:
       items:
       - name: Dostosowywanie wydajności zapytań
         href: sql-api-query-metrics.md
-      - name: Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)
-        href: programming.md
+      - name: Programowanie po stronie serwera
+        items:
+        - name: Zapisywanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)
+          href: how-to-write-stored-procedures-triggers-udfs.md
+        - name: Zapisywanie procedur składowanych i wyzwalaczy za pomocą interfejsu API zapytań JavaScript
+          href: how-to-write-javascript-query-api.md
+        - name: Używanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)
+          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Typy danych
         items:
         - name: DateTime
@@ -308,7 +318,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: Część 4 — Tworzenie konta
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: Część 5 — Łączenie się z usługą Azure Cosmos DB
+          - name: Część 5 — łączenie się z bazą danych Cosmos DB
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: Część 6 — Wykonywanie operacji CRUD
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -479,6 +489,8 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: Konfigurowanie współużytkowania zasobów między źródłami (CORS, Cross Origin Resource Sharing)
       href: how-to-configure-cross-origin-resource-sharing.md
+    - name: Zabezpieczanie za pomocą usługi Key Vault
+      href: access-secrets-from-keyvault.md
   - name: Gotowość przedsiębiorstwa
     items:
     - name: Przywracanie danych z kopii zapasowej
@@ -529,7 +541,7 @@ items:
         href: performance-testing.md
     - name: Ekonomiczne odczyty i zapisy
       href: key-value-store-cost.md
-  - name: Wizualizacja danych usługi Azure Cosmos DB
+  - name: Wizualizacja danych usługi Cosmos DB
     items:
     - name: Korzystanie z usługi Power BI
       href: powerbi-visualize.md
@@ -603,9 +615,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: d31364cb9d458e54ae407d10fd88d8db4e9f457f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384670"
+ms.locfileid: "53410112"

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 9b2566458bc32f9b1d7a36790fbdd5fbb2419ec1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: debc5ac2771b57fe1a6091ef8dc97291aa11365e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384300"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437047"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -102,7 +102,7 @@ Możesz użyć magazynu konta lub event hub przestrzeni nazw, która nie znajduj
 >  Obecnie nie można zarchiwizować dane na koncie magazynu, który znajduje się za zabezpieczonej sieci wirtualnej.
 
 > [!WARNING]
-> Format danych dziennika w ramach konta magazynu zmieniony na JSON wierszy od 1 listopada 2018 r. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+> Format danych dziennika w ramach konta magazynu zmieniony na JSON wierszy od 1 listopada 2018 r. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
 >
 > 
 
