@@ -59,7 +59,7 @@ Ten identyfikator jest widoczny w adresach URL produktu. Może składać się ty
 
 **Przykład:**
 
-Jeśli wydawca **contoso** tworzy oferty z Identyfikatorem oferty *przykładowe Cortana Intelligence*, pojawi się w usłudze AppSource, jako "https://appsource.microsoft.com/marketplace/apps/\**contoso\**.\*Przykładowe Cortana Intelligence\*? tab = — omówienie ".
+Jeśli wydawca **contoso** tworzy oferty z Identyfikatorem oferty *przykładowe Cortana Intelligence*, pojawi się w usłudze AppSource, jako "https://appsource.microsoft.com/marketplace/apps/**contoso**.\*Przykładowe Cortana Intelligence\*? tab = — omówienie ".
 
 ### <a name="publisher-id"></a>Identyfikator wydawcy
 
