@@ -3,26 +3,30 @@ items:
   href: index.yml
 - name: Omówienie
   items:
-  - name: Czym jest wyszukiwanie niestandardowe Bing?
+  - name: Co to jest interfejs API wyszukiwania niestandardowego Bing?
     href: overview.md
   expanded: true
-- name: Interfejs API REST — przewodniki Szybki start
+- name: Przewodniki Szybki start
   items:
-  - name: Tworzenie pierwszego wystąpienia
+  - name: Tworzenie wystąpienia wyszukiwania niestandardowego
     href: quick-start.md
-  - name: C#
-    href: call-endpoint-csharp.md
-  - name: Java
-    href: call-endpoint-java.md
-  - name: Node.js
-    href: call-endpoint-nodejs.md
-  - name: Python
-    href: call-endpoint-python.md
+  - name: Pobieranie wyników wyszukiwania z wystąpienia
+    items:
+    - name: Interfejs API REST
+      items:
+      - name: Przy użyciu języka C#
+        href: call-endpoint-csharp.md
+      - name: Korzystanie z języka Java
+        href: call-endpoint-java.md
+      - name: Używanie środowiska Node.js
+        href: call-endpoint-nodejs.md
+      - name: Korzystanie z języka Python
+        href: call-endpoint-python.md
+    - name: SDK
+      items:
+      - name: Przy użyciu języka C#
+        href: sdk-csharp-quick-start.md
   expanded: true
-- name: Zestaw SDK — przewodniki Szybki start
-  items:
-  - name: Zestaw SDK w języku C# — przewodnik Szybki start
-    href: sdk-csharp-quick-start.md
 - name: Samouczki
   items:
   - name: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
@@ -35,21 +39,21 @@ items:
   items:
   - name: Konfigurowanie środowiska wyszukiwania niestandardowego
     href: define-your-custom-view.md
-  - name: Wywoływanie funkcji wyszukiwania niestandardowego
+  - name: Wywoływanie wystąpienia wyszukiwania niestandardowego
     href: search-your-custom-view.md
-  - name: Konfigurowanie środowiska hostowanego interfejsu użytkownika
+  - name: Konfigurowanie i integrowanie hostowanego interfejsu użytkownika
     href: hosted-ui.md
-  - name: Udostępnianie wyszukiwania niestandardowego
+  - name: Udostępnianie wystąpienia wyszukiwania niestandardowego
     href: share-your-custom-search.md
-  - name: Pobieranie obrazów z wystąpienia
+  - name: Pobieranie obrazów z wystąpienia wyszukiwania
     href: get-images-from-instance.md
-  - name: Pobieranie wideo z wystąpienia
+  - name: Pobieranie wideo z wystąpienia wyszukiwania
     href: get-videos-from-instance.md
   - name: Konfigurowanie środowiska niestandardowego automatycznego sugerowania
     href: define-custom-suggestions.md
   - name: Obsługa wyróżniania trafień
     href: hit-highlighting.md
-  - name: Dzielenie na strony wyników wyszukiwania stron internetowych
+  - name: Dzielenie wyników wyszukiwania stron internetowych na strony
     href: page-webpages.md
 - name: Dokumentacja
   items:
@@ -85,9 +89,9 @@ items:
     href: endpoint-custom.md
   - name: Obsługa języków i regionów
     href: language-support.md
-ms.openlocfilehash: 62392b7ff226072108c61f10b3f0519677aaba6b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 81d0d94efc519fa241ab36979506b2baddf50d91
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432000"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555869"

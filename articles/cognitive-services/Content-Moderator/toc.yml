@@ -20,6 +20,10 @@ items:
       items:
       - name: Analizowanie zawartości tekstowej
         href: text-moderation-quickstart-python.md
+- name: Samouczki
+  items:
+  - name: Moderowanie obrazów na potrzeby handlu elektronicznego
+    href: ecommerce-retail-catalog-moderation.md
 - name: Pojęcia
   items:
   - name: Moderowanie obrazów
@@ -102,8 +106,6 @@ items:
     items:
     - name: Moderowanie zawartości witryny Facebook
       href: facebook-post-moderation.md
-    - name: Moderowanie obrazów w handlu elektronicznym
-      href: ecommerce-retail-catalog-moderation.md
     - name: Moderowanie filmów wideo i transkrypcji
       href: video-transcript-moderation-review-tutorial-dotnet.md
   - name: Eksportowanie i usuwanie danych konta
@@ -150,9 +152,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 825aafe7980713fbb07499475cb4c8456873f1fe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 15d3fb94c30783cd6a620b9c53ed2e31369e5d00
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106179"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540354"

@@ -19,8 +19,14 @@ items:
         href: data-box-deploy-ordered.md
       - name: 2 — konfigurowanie
         href: data-box-deploy-set-up.md
-      - name: 3 — kopiowanie danych
-        href: data-box-deploy-copy-data.md
+      - name: 3 — łączenie i kopiowanie
+        items:
+        - name: Za pośrednictwem protokołu SMB
+          href: data-box-deploy-copy-data.md
+        - name: Za pośrednictwem systemu plików NFS
+          href: data-box-deploy-copy-data-via-nfs.md
+        - name: Za pośrednictwem interfejsu REST
+          href: data-box-deploy-copy-data-via-rest.md
       - name: 4 — zwracanie, przekazywanie, weryfikowanie
         href: data-box-deploy-picked-up.md
     - name: Pojęcia
@@ -28,7 +34,11 @@ items:
       - name: Przeczytaj wytyczne dotyczące bezpieczeństwa
         href: data-box-safety.md
       - name: Sprawdzanie wymagań
-        href: data-box-system-requirements.md
+        items:
+        - name: Usługa Data Box
+          href: data-box-system-requirements.md
+        - name: Dla magazynu obiektów blob usługi Data Box
+          href: data-box-system-requirements-rest.md
       - name: Poznawanie ograniczeń
         href: data-box-limits.md
       - name: Przegląd zabezpieczeń
@@ -98,9 +108,9 @@ items:
       href: https://azure.microsoft.com/pricing/details/storage/databox/
     - name: Cennik urządzenia Data Box Disk
       href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: bd23df1abd99ba3fd89a4b382c6c5f00c8b80f1f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4ca0a1e04f558396cb72b0617c9bee6349a0fe54
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739196"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540524"
