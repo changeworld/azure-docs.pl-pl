@@ -51,8 +51,8 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy
 ### <a name="application-2"></a>Aplikacja #2: 
 Te same czynności jak w przypadku aplikacji nr 1, z następującymi wyjątkami: 
 
-**Krok #5**: wewnętrzny adres URL powinien być teraz do adresu URL QlikSense port uwierzytelniania używany przez aplikację. Wartość domyślna to **4244** dla protokołu HTTPS i 4248 dla protokołu HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br> 
-**Krok #10:** nie skonfigurować logowanie Jednokrotne i pozostawić **logowanie jednokrotne wyłączone**
+**Krok #5**: wewnętrzny adres URL powinien być teraz do adresu URL QlikSense port uwierzytelniania używany przez aplikację. Wartość domyślna to **4244** dla protokołu HTTPS i 4248 dla protokołu HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br>**Krok #10:** nie skonfigurować logowanie Jednokrotne i pozostawić **logowanie jednokrotne wyłączone** 
+
  
  
 ## <a name="testing"></a>Testowanie 

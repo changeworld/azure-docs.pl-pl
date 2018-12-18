@@ -92,7 +92,7 @@ Poniższa tabela zawiera przykłady prawidłowych do określenia różnych plika
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Podaj nazwę i opis dziennika
 Typ dziennika umożliwi podanej nazwie zgodnie z powyższym opisem.  Zawsze zakończy się za pomocą _CL odróżniający go jako dziennik niestandardowy.
 
-1. Wpisz nazwę dziennika.   **\_CL** sufiks jest dostarczana automatycznie.
+1. Wpisz nazwę dziennika.  **\_CL** sufiks jest dostarczana automatycznie.
 2. Dodaj opcjonalny **opis**.
 3. Kliknij przycisk **dalej** można zapisać definicji dzienników niestandardowych.
 

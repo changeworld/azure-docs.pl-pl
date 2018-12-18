@@ -146,7 +146,7 @@ Kodera-dekodera audio|Szczegóły
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **FileName** |**xs:String** |Nazwa pliku wyjściowego.<br/><br/> Makra, które opisano w poniższej tabeli można użyć do tworzenia nazw plików wyjściowych. Na przykład:<br/><br/> **"Wyjście": [{"Nazwa_pliku": "{Basename}*{rozpoznawania}* MP4 {szybkości transmisji bitów}", "Format": {"Type": "MP4Format"}}]** |
+| **FileName** |**xs:String** |Nazwa pliku wyjściowego.<br/><br/> Makra, które opisano w poniższej tabeli można użyć do tworzenia nazw plików wyjściowych. Na przykład:<br/><br/> **"Wyjście": [{"Nazwa_pliku": "{Basename} *{rozpoznawania}* MP4 {szybkości transmisji bitów}", "Format": {"Type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makra
 | Macro | Opis |

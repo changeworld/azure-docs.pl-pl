@@ -19,9 +19,9 @@ ms.locfileid: "50139228"
 
 Potrzebujesz dwóch składników oprogramowania do wdrożenia bramy usługi edge dla *połączonej fabryki* akcelerator rozwiązań:
 
--  *Serwera Proxy OPC* nawiąże połączenie z połączonej fabryki. Serwer Proxy OPC, a następnie czeka na komunikaty poleceń i kontroli z zintegrowanej przeglądarki OPC, działający w portalu rozwiązania połączonej fabryki.
+- Serwera  *Proxy OPC* nawiąże połączenie z połączonej fabryki. Serwer Proxy OPC, a następnie czeka na komunikaty poleceń i kontroli z zintegrowanej przeglądarki OPC, działający w portalu rozwiązania połączonej fabryki.
 
--  *Wydawca OPC* nawiązanie połączenia z istniejących serwerów OPC UA w środowisku lokalnym i przekazuje komunikaty telemetryczne z nich do połączonej fabryki. Możesz połączyć urządzenie klasyczne OPC za pomocą [adapter klasycznego OPC dla serwera OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
+- Wydawca  *OPC* nawiązanie połączenia z istniejących serwerów OPC UA w środowisku lokalnym i przekazuje komunikaty telemetryczne z nich do połączonej fabryki. Możesz połączyć urządzenie klasyczne OPC za pomocą [adapter klasycznego OPC dla serwera OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
 
 Oba te składniki są typu open source i są dostępne jako źródło w witrynie GitHub i jako kontenery platformy Docker w witrynie DockerHub:
 

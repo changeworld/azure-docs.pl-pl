@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 77f4eeec1aa87f42c90d4e93f98f460a8b54b9a9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167414"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338526"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux
 
@@ -87,8 +87,8 @@ Aby osiągnąć wysoką dostępność, SAP HANA jest zainstalowany na dwie maszy
 
 Używa ustawień replikacji systemu SAP HANA dedykowanej wirtualnej nazwy hosta i wirtualne adresy IP. Na platformie Azure modułu równoważenia obciążenia jest wymagany do użycia wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia:
 
-* Konfiguracja frontonu: adres IP 10.0.0.13 hn1-db
-* Konfiguracja zaplecza: podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią replikacji systemu HANA
+* Konfiguracja frontonu: Adres IP 10.0.0.13 hn1-db
+* Konfiguracja zaplecza: Podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią replikacji systemu HANA
 * Port sondy: Port 62503
 * Reguły równoważenia obciążenia: 30313 TCP 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
 
@@ -103,12 +103,12 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
 
 1. Otwórz [szablonu bazy danych] [ template-multisid-db] w witrynie Azure portal.
 1. Wprowadź następujące parametry:
-    * **Identyfikator systemu SAP**: Wprowadź identyfikator systemu SAP w systemie SAP, którą chcesz zainstalować. Ten identyfikator jest używany jako prefiks dla zasobów, które są wdrażane.
+    * **Identyfikator systemu SAP**: Wprowadź identyfikator systemu SAP systemu SAP, w którym chcesz zainstalować. Ten identyfikator jest używany jako prefiks dla zasobów, które są wdrażane.
     * **Typ systemu operacyjnego**: Wybierz jeden z dystrybucje systemu Linux. W tym przykładzie wybierz **RHEL 7**.
     * **Typ bazy danych**: Wybierz **HANA**.
-    * **Rozmiar systemu SAP**: Wprowadź numer punktu SAP, w których nowy system będzie zapewnienie. Jeśli nie masz pewności ile protokoły SAP wymaga systemu, zapytaj partnerów technologicznych SAP lub integratora systemów.
+    * **Rozmiar systemu SAP**: Wprowadź liczbę protokoły SAP, których zamierza zapewnić nowego systemu. Jeśli nie masz pewności ile protokoły SAP wymaga systemu, zapytaj partnerów technologicznych SAP lub integratora systemów.
     * **Dostępność systemu**: Wybierz **HA**.
-    * **Nazwa użytkownika administratora, hasło administratora lub SSH key**: tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
+    * **Nazwa użytkownika administratora, hasło administratora lub SSH key**: Tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
     * **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda **/subscriptions/\<identyfikator subskrypcji > /resourceGroups/\<nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/\<nazwa sieci wirtualnej > /subnets/ \<Nazwa podsieci >**. Pozostaw puste, jeśli chcesz utworzyć nową sieć wirtualną
 
 ### <a name="manual-deployment"></a>Ręczne wdrażanie
@@ -120,9 +120,9 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
 1. Utwórz moduł równoważenia obciążenia (wewnętrzny).
    * Wybierz sieć wirtualną, utworzony w kroku 2.
 1. Tworzenie maszyny wirtualnej 1.  
-   W przypadku oprogramowania SAP HANA, należy użyć co najmniej w systemie Red Hat Enterprise Linux 7.4. W tym przykładzie użyto Red Hat Enterprise Linux 7.4 obrazu platformy SAP HANA <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM> wybierz zestaw utworzony w kroku 3 dostępności.
+   W przypadku oprogramowania SAP HANA, należy użyć co najmniej w systemie Red Hat Enterprise Linux 7.4. W tym przykładzie użyto Red Hat Enterprise Linux 7.4 obrazu platformy SAP HANA <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> wybierz zestaw utworzony w kroku 3 dostępności.
 1. Tworzenie maszyny wirtualnej 2.  
-   W przypadku oprogramowania SAP HANA, należy użyć co najmniej w systemie Red Hat Enterprise Linux 7.4. W tym przykładzie użyto Red Hat Enterprise Linux 7.4 obrazu platformy SAP HANA <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM> wybierz zestaw utworzony w kroku 3 dostępności.
+   W przypadku oprogramowania SAP HANA, należy użyć co najmniej w systemie Red Hat Enterprise Linux 7.4. W tym przykładzie użyto Red Hat Enterprise Linux 7.4 obrazu platformy SAP HANA <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> wybierz zestaw utworzony w kroku 3 dostępności.
 1. Dodawanie dysków danych.
 1. Konfigurowanie modułu równoważenia obciążenia. Najpierw Utwórz pulę adresów IP frontonu:
 
@@ -257,7 +257,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]**  Konfigurowanie układ dysku: **zwykłych dysków**.
+1. **[A]**  Konfigurowanie układ dysku: **Zwykłe dyski**.
 
    Pokaz systemów można umieścić HANA plików danych i dziennika na jednym dysku. Tworzenie partycji na /dev/disk/azure/scsi1/lun0 i sformatuj go przy użyciu xfs:
 
@@ -303,31 +303,31 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
    Aby zainstalować replikacji systemu SAP HANA, postępuj zgodnie z <https://access.redhat.com/articles/3004101>.
 
    * Uruchom **hdblcm** program z dysku DVD platformy HANA. Wprowadź następujące wartości w wierszu:
-   * Wybierz opcję instalacji: wprowadź **1**.
-   * Wybierz dodatkowe składniki do instalacji: wprowadź **1**.
-   * Wprowadź ścieżkę instalacji [/ hana/udostępnione]: wybierz opcję Wprowadź.
-   * Wprowadź nazwę hosta lokalnego [.]: Wybierz należy wprowadzić.
-   * Czy chcesz dodać kolejne hosty systemu? (t/n) [n]: Wprowadź Select.
+   * Wybierz opcję instalacji: Wprowadź **1**.
+   * Wybierz dodatkowe składniki do instalacji: Wprowadź **1**.
+   * Wprowadź ścieżkę instalacji [/ hana/udostępnione]: Wybierz opcję Wprowadź.
+   * Wprowadź nazwę hosta lokalnego [.]: Wybierz opcję Wprowadź.
+   * Czy chcesz dodać kolejne hosty systemu? (t/n) [n]: Wybierz opcję Wprowadź.
    * Wprowadź identyfikator systemu HANA SAP: Wprowadź identyfikator SID HANA, na przykład: **HN1**.
    * Wprowadź numer wystąpienia [00]: Wprowadź numer wystąpienie oprogramowania HANA. Wprowadź **03** możesz użyć szablonu platformy Azure lub po wdrożeniu ręcznym części tego artykułu.
-   * Wybierz tryb bazy danych / wprowadź indeks [1]: Wprowadź Select.
-   * Użycie systemu wybierz / Wprowadź indeks [4]: Wybierz wartość użycia systemu.
-   * Wprowadź lokalizację woluminów danych [/ hana/data/HN1]: wybierz opcję Wprowadź.
-   * Wprowadź lokalizację woluminy dziennika [/ hana/log/HN1]: wybierz opcję Wprowadź.
-   * Ogranicza maksymalny przydział pamięci? [n]: Wprowadź Select.
-   * Wprowadź nazwę hosta certyfikat dla hosta "..." [...]: Wprowadź select.
+   * Wybierz tryb bazy danych / wprowadź indeks [1]: Wybierz opcję Wprowadź.
+   * Użycie systemu wybierz / Wprowadź indeks [4]: Wybierz wartość obciążenie systemu.
+   * Wprowadź lokalizację woluminów danych [/ hana/data/HN1]: Wybierz opcję Wprowadź.
+   * Wprowadź lokalizację woluminy dziennika [/ hana/log/HN1]: Wybierz opcję Wprowadź.
+   * Ogranicza maksymalny przydział pamięci? [n]: Wybierz opcję Wprowadź.
+   * Wprowadź nazwę hosta certyfikat dla hosta "..." [...]: Wybierz opcję Wprowadź.
    * Wprowadź użytkownika agenta hosta SAP (sapadm) hasło: Wprowadź hasło użytkownika agenta hosta.
    * Upewnij się, SAP hosta agenta użytkownika (sapadm) hasło: Wprowadź hasło użytkownika agenta hosta ponownie, aby potwierdzić.
    * Wprowadź administratora systemu (hdbadm) hasło: Wprowadź hasło administratora systemu.
    * Upewnij się, Administrator systemu (hdbadm) hasło: Wprowadź hasło administratora systemu, ponownie, aby potwierdzić.
-   * Administrator systemu ENTER główna katalogu [/ usr/sap/HN1/głównej]: wybierz opcję Wprowadź.
-   * Wprowadź powłoki logowania administratora systemu [/ bin/sh]: wybierz opcję Wprowadź.
-   * Wprowadź identyfikator użytkownika administratora systemu [1001]: Wybierz należy wprowadzić.
-   * Wprowadź identyfikator dla grupy użytkowników (sapsys) [79]: wybierz opcję Wprowadź.
-   * Wprowadź hasło użytkownika bazy danych (SYSTEM): Wprowadź hasło użytkownika bazy danych.
-   * Potwierdź hasło użytkownika bazy danych (SYSTEM): Wprowadź hasło użytkownika bazy danych ponownie, aby potwierdzić.
-   * Uruchom ponownie system po ponownym uruchomieniu komputera? [n]: Wprowadź Select.
-   * Chcesz kontynuować? (t/n): Sprawdzanie poprawności podsumowania. Wprowadź **y** aby kontynuować.
+   * Wprowadź katalog macierzysty Administrator systemu [/ usr/sap/HN1/głównej]: Wybierz opcję Wprowadź.
+   * Wprowadź powłoki logowania administratora systemu [/ bin/sh]: Wybierz opcję Wprowadź.
+   * Wprowadź identyfikator użytkownika administratora systemu [1001]: Wybierz opcję Wprowadź.
+   * Wprowadź identyfikator dla grupy użytkowników (sapsys) [79]: Wybierz opcję Wprowadź.
+   * Wprowadź hasło użytkownika (SYSTEM) bazy danych: Wprowadź hasło użytkownika bazy danych.
+   * Potwierdź hasło użytkownika (SYSTEM) bazy danych: Wprowadź hasło użytkownika bazy danych ponownie, aby potwierdzić.
+   * Uruchom ponownie system po ponownym uruchomieniu komputera? [n]: Wybierz opcję Wprowadź.
+   * Czy chcesz kontynuować? (t/n): Sprawdź poprawność podsumowania. Wprowadź **y** aby kontynuować.
 
 1. **[A]**  Uaktualnienia tego agenta hosta SAP.
 
