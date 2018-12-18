@@ -215,7 +215,7 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | Usługa Azure globalnego usług * | 12076:5050 |
 | Inne usługi online Office 365 | 12076:5100 |
 
-***Usługi globalne platformy Azure obejmuje DevOps platformy Azure**
+***Usługi globalne platformy Azure obejmuje DevOps platformy Azure**\**
 
 
 > [!NOTE]

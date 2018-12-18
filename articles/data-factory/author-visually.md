@@ -170,7 +170,7 @@ W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **K
 
 ![Strona wprowadzenie fabryki danych](media/author-visually/github-integration-image1.png)
 
- **Ustawienia repozytorium** zostanie wyświetlone okienko konfiguracji:
+Ustawienia  **repozytorium** zostanie wyświetlone okienko konfiguracji:
 
 ![Ustawienia repozytorium GitHub](media/author-visually/github-integration-image2.png)
 
@@ -202,7 +202,7 @@ W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **K
 
 ![Strona wprowadzenie fabryki danych](media/author-visually/github-integration-image1.png)
 
- **Ustawienia repozytorium** zostanie wyświetlone okienko konfiguracji:
+Ustawienia  **repozytorium** zostanie wyświetlone okienko konfiguracji:
 
 ![Ustawienia repozytorium GitHub](media/author-visually/github-integration-image3.png)
 
