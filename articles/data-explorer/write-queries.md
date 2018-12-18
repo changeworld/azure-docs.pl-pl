@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**sprzężenia**](https://docs.microsoft.com/azure/kusto/query/joinoperator): scalenie wierszy z dwóch tabel w celu utworzenia nowej tabeli, dopasowując wartości określone kolumny z każdej tabeli. Kusto obsługuje wiele różnych typów sprzężeń: **fullouter**, **wewnętrzny**, **innerunique**, **leftanti**, **leftantisemi **, **wartości leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
+[**sprzężenia**](https://docs.microsoft.com/azure/kusto/query/joinoperator): scalenie wierszy z dwóch tabel w celu utworzenia nowej tabeli, dopasowując wartości określone kolumny z każdej tabeli. Kusto obsługuje wiele różnych typów sprzężeń: **fullouter**, **wewnętrzny**, **innerunique**, **leftanti**, **leftantisemi**, **wartości leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
 
 Poniższy przykład łączy dwie tabele, w przypadku sprzężenia wewnętrznego.
 

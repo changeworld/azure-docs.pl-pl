@@ -156,7 +156,7 @@ Należy rozpocząć od indeksowanie Solr z niektórych plików danych. Korzystan
           </response>
       ```
       
-   2. W sesji zdalnej, przejdź do {SOLR_HOME}\{kolekcji} \data. Dla klastra, utworzone za pomocą przykładowego skryptu, powinna to być `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. W tym miejscu powinien zostać wyświetlony folderu migawek utworzonych za pomocą nazwę podobną do **migawki.* Sygnatura czasowa ***.
+   2. W sesji zdalnej, przejdź do {SOLR_HOME}\{kolekcji} \data. Dla klastra, utworzone za pomocą przykładowego skryptu, powinna to być `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. W tym miejscu powinien zostać wyświetlony folderu migawek utworzonych za pomocą nazwę podobną do **migawki.\*Sygnatura czasowa**\*.
    
    3. Folder migawki zip i przekaż go do usługi Azure Blob storage. Z wiersza polecenia usługi Hadoop przejdź do lokalizacji folderu migawki za pomocą następującego polecenia:
 

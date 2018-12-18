@@ -99,19 +99,19 @@ items:
     - name: Wdrażanie aplikacji
       items:
       - name: Wdrażanie przy użyciu protokołu FTP
-        href: ../app-service-deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Wdrażanie za pośrednictwem synchronizacji chmury
-        href: ../app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Ciągłe wdrażanie
         href: ../containers/app-service-linux-ci-cd.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Wdrażanie z lokalnego wdrożenia narzędzia Git
-        href: ../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        href: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Wdrażanie za pomocą szablonu
-        href: ../app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        href: ../deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Język Java SE i narzędzie Maven
         href: https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Konfigurowanie poświadczeń wdrożenia
-      href: ../app-service-deployment-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Tworzenie środowisk przejściowych
       href: ../web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Mapowanie domeny niestandardowej
@@ -222,9 +222,9 @@ items:
         href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Często zadawane pytania dotyczące konfiguracji i zarządzania
         href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: 9ea0b3b5242c487499b580a388d0d65a52ab420c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: ee82b19423698c437d74f79bfce72682d3c78909
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408599"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539290"

@@ -56,35 +56,35 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 
 **Nazwa dziennika:** systemu <br />
 **Źródło:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:** 1058 <br />
 **Kategoria zadania:** None <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:** klasycznego <br />
 **Użytkownik:** n/d <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** serwera hosta sesji usług pulpitu zdalnego nie może zastąpić wygasłego certyfikatu używany do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL z podpisem własnym. Odpowiedni kod stanu była odmowa dostępu.
 
 **Nazwa dziennika:** systemu <br />
 **Źródło:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:** 1058 <br />
 **Kategoria zadania:** None <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:** klasycznego <br />
 **Użytkownik:** n/d <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** serwera hosta sesji usług pulpitu zdalnego nie udało się utworzyć nowy certyfikat z podpisem własnym służący do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL, odpowiedni kod stanu to obiekt już istnieje.
 
 **Nazwa dziennika:** systemu <br />
 **Źródło:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:** 1057 <br />
 **Kategoria zadania:** None <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:** klasycznego <br />
 **Użytkownik:** n/d <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** serwera hosta sesji usług pulpitu zdalnego nie może utworzyć nowego certyfikatu używanego do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL z podpisem własnym. Odpowiedni kod stanu to zestaw kluczy nie istnieje.
 
 Możesz również sprawdzić dla zdarzenia błędów kanału SCHANNEL 36872 i 36870, uruchamiając następujące polecenia:
@@ -102,7 +102,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Poziom:** błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:** systemu <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** wystąpił błąd krytyczny podczas próby uzyskania dostępu do klucza prywatnego poświadczeń SSL serwera. Kod błędu zwrócony z modułu kryptograficznego: 0x8009030d.  <br />
 Stan błędu wewnętrznego jest 10001.
 
@@ -224,7 +224,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Poziom:** błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:** systemu <br />
-**Komputer:***komputera* <br />
+**Komputer:** *komputera* <br />
 **Opis:** wystąpił błąd krytyczny podczas tworzenia poświadczeń serwera protokołu TLS. Stan błędu wewnętrznego jest 10013.
  
 ### <a name="cause"></a>Przyczyna
@@ -248,13 +248,13 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 
 **Nazwa dziennika:** Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Źródło:** Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:** 2056 <br />
 **Kategoria zadania:** (109) <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:** usługi SIECIOWEJ <br />
-**Komputer:***nazwy fqdn komputera* <br />
+**Komputer:** *nazwy fqdn komputera* <br />
 **Opis:** opis 2056 identyfikator zdarzenia ze źródła pakietu Microsoft-Windows-TerminalServices-SessionBroker nie można odnaleźć. Składnik, który wywołuje to zdarzenie nie jest zainstalowany na komputerze lokalnym albo instalacja jest uszkodzona. Można zainstalować lub naprawić składnik na komputerze lokalnym. <br />
 Jeśli zdarzenie pochodzi z innego komputera, wyświetlane informacje musiały zostać zapisane w ze zdarzeniem. <br />
 Zdarzenie dołączono następujące informacje: <br />
@@ -264,13 +264,13 @@ Logowanie do bazy danych nie powiodło się.
 
 **Nazwa dziennika:** Microsoft-Windows-TerminalServices-SessionBroker klienta/operacyjne <br />
 **Źródło:** Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**Data:***czasu* <br />
+**Data:** *czasu* <br />
 **Identyfikator zdarzenia:** 1296 <br />
 **Kategoria zadania:** (104) <br />
 **Poziom:** błąd <br />
 **Słowa kluczowe:**       <br />
 **Użytkownik:** usługi SIECIOWEJ <br />
-**Komputer:***nazwy fqdn komputera* <br />
+**Komputer:** *nazwy fqdn komputera* <br />
 **Opis:** nie można znaleźć opis 1296 identyfikator zdarzenia ze źródła Microsoft-Windows-TerminalServices-SessionBroker-Client. Składnik, który wywołuje to zdarzenie nie jest zainstalowany na komputerze lokalnym albo instalacja jest uszkodzona. Można zainstalować lub naprawić składnik na komputerze lokalnym.
 Jeśli zdarzenie pochodzi z innego komputera, wyświetlane informacje musiały zostać zapisane w ze zdarzeniem.
 Zdarzenie dołączono następujące informacje:  <br />

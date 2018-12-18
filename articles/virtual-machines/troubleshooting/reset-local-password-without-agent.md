@@ -133,7 +133,7 @@ Zawsze należy starać się zresetować hasło przy użyciu [witryny Azure porta
      ![Skopiuj identyfikator URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. Utwórz Maszynę wirtualną z dyskiem systemu operacyjnego źródłowej maszyny Wirtualnej:
    
-   * Użyj [tego szablonu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) Aby utworzyć Maszynę wirtualną na podstawie wyspecjalizowanego wirtualnego dysku twardego. Kliknij przycisk `Deploy to Azure` przycisk, aby otworzyć portalu Azure przy użyciu szczegółów oparte na szablonach, wypełnione dla Ciebie.
+   Użyj [tego szablonu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) Aby utworzyć Maszynę wirtualną na podstawie wyspecjalizowanego wirtualnego dysku twardego. Kliknij przycisk `Deploy to Azure` przycisk, aby otworzyć portalu Azure przy użyciu szczegółów oparte na szablonach, wypełnione dla Ciebie.
    * Jeśli chcesz zachować wszystkie poprzednie ustawienia dla maszyny Wirtualnej, wybierz opcję *Edytuj szablon* zapewnienie istniejącej sieci wirtualnej, podsieci, karta sieciowa lub publicznego adresu IP.
    * W `OSDISKVHDURI` parametru pola tekstowego, wklej identyfikator URI dysku VHD źródła uzyskać w poprzednim kroku:
      

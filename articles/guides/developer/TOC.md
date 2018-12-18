@@ -55,7 +55,7 @@
 ### [Aplikacje bezserwerowe](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [Klaster mikrousług](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## Wdrażanie
-### [Aplikacje internetowe i mobilne z kontroli źródła](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
+### [Aplikacje internetowe i mobilne z kontroli źródła](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)
 ### [Mikrousługi lokalnie](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Maszyna wirtualna z systemem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Maszyna wirtualna z systemem Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)

@@ -71,11 +71,11 @@ items:
     - name: Źródła danych
       href: platform/data-sources.md
     - name: Źródła danych na platformie Azure
-      href: ../monitoring-and-diagnostics/monitoring-data-sources.md?toc=/azure/azure-monitor/toc.json
+      href: platform/data-sources-reference.md
     - name: Dziennik aktywności
-      href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-logs-overview.md
     - name: Dzienniki diagnostyczne
-      href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+      href: platform/diagnostic-logs-overview.md
     - name: Czas pozyskiwania danych dziennika
       href: platform/data-ingestion-time.md
     - name: Niestandardowe metryki do magazynu metryk
@@ -445,13 +445,13 @@ items:
       - name: Archiwizowanie dzienników diagnostycznych
         href: platform/archive-diagnostic-logs.md
       - name: Magazynowanie dzienników diagnostycznych
-        href: ../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostic-logs-stream-log-store.md
       - name: Strumieniowe przesyłanie dzienników aktywności do usługi Event Hubs
         href: ../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md?toc=/azure/azure-monitor/toc.json
       - name: Dzienniki i metryki do Centrum zdarzeń
         href: ../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md?toc=/azure/azure-monitor/toc.json
       - name: Dzienniki diagnostyczne do usługi Centrum zdarzeń
-        href: ../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostic-logs-stream-event-hubs.md
       - name: Dane aplikacji do usługi Log Analytics
         href: platform/app-insights-connector.md
       - name: Eksportowanie danych aplikacji
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Przykłady kodu
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 9be0566a2e0fddc61d5c7028e9ecc7a24930b2f2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 31569287fa00f123d3462d6d3dc5bf35a3650d19
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438391"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549450"
