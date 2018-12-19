@@ -51,7 +51,7 @@ Formularz ustawień oferty jest podstawowej postaci, aby określić ustawienia o
 
 Jest to unikatowy identyfikator oferty w ramach profilu wydawcy. Ten identyfikator będzie widoczny w adresach URL produktu. Może składać się tylko z małych znaków alfanumerycznych i łączników (-). Identyfikator nie może kończyć się kreską i nie może przekraczać 50 znaków. To pole jest zablokowane, gdy oferty przechodzi na żywo.
 
-na przykład, jeśli wydawca contoso wydawca tworzy oferty z identyfikator oferty *usług dynamics365 próbki dla operacji*, pojawi się w usłudze AppSource jako \"https://appsource.microsoft.com/marketplace/apps/**contoso**.\*Przykładowe — usługi dynamics 365 for operations\*? tab = Przegląd\"
+na przykład, jeśli wydawca contoso wydawca tworzy oferty z identyfikator oferty *usług dynamics365 próbki dla operacji*, pojawi się w usłudze AppSource jako \"https://appsource.microsoft.com/marketplace/apps/**contoso**.*Przykładowe — usługi dynamics 365 for operations* ? tab = Przegląd\"
 
 ### <a name="publisher-id"></a>Identyfikator wydawcy
 

@@ -233,7 +233,7 @@ Aby sprawdzić połączenie sieci VPN, Utwórz dwie maszyny wirtualne: jeden na 
 6. Podaj **subskrypcji**, **grupy zasobów**, i **lokalizacji**, a następnie wybierz pozycję **OK**.
 7. Na **rozmiar** sekcji dla tego wystąpienia, wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **wybierz**.
 8. Na **ustawienia** sekcji, zaakceptuj wartości domyślne. Upewnij się, że **Azs-sieć wirtualna** została wybrana sieć wirtualnych. Sprawdź, czy podsieci jest równa **10.1.0.0/24**. Następnie wybierz przycisk **OK**.
-9. Na **Podsumowanie** sekcji, przejrzyj ustawienia, a następnie wybierz pozycję * OK **.
+9. Na **Podsumowanie** sekcji, przejrzyj ustawienia, a następnie wybierz pozycję *OK*\*.
 
 ## <a name="test-the-connection"></a>Testowanie połączenia
 
