@@ -275,6 +275,7 @@
 ##### [Problem podczas zapisywania poświadczeń administratora podczas konfigurowania aplikacji z galerii do aprowizacji użytkowników](manage-apps/application-provisioning-config-problem-storage-limit.md)
 ##### [Użytkownicy nie są aprowizowani — aplikacja z galerii](manage-apps/application-provisioning-config-problem-no-users-provisioned.md)
 ##### [Aprowizowano niewłaściwych użytkowników — aplikacja z galerii](manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md)
+##### [Problemy ze zgodnością ze standardem SCIM — aplikacja spoza galerii](manage-apps/application-provisioning-config-problem-scim-compatibility.md)
 
 #### Logowanie jednokrotne
 ##### [Wybieranie metody](manage-apps/single-sign-on-modes.md)
@@ -321,10 +322,10 @@
 ## [Rozwiązywanie problemów](fundamentals/active-directory-troubleshooting-support-howto.md)
 
 ## Wdrażanie prototypu usługi Azure AD
-### [Podręcznik prototypu: wprowadzenie](active-directory-playbook-intro.md)
-### [Podręcznik prototypu: składniki](active-directory-playbook-ingredients.md)
-### [Podręcznik prototypu: implementacja](active-directory-playbook-implementation.md)
-### [Podręcznik prototypu: bloki konstrukcyjne](active-directory-playbook-building-blocks.md)
+### [Podręcznik weryfikacji koncepcji: Wprowadzenie](active-directory-playbook-intro.md)
+### [Podręcznik weryfikacji koncepcji: Składniki](active-directory-playbook-ingredients.md)
+### [Podręcznik weryfikacji koncepcji: Implementacja](active-directory-playbook-implementation.md)
+### [Podręcznik weryfikacji koncepcji: Bloki konstrukcyjne](active-directory-playbook-building-blocks.md)
 
 # Dokumentacja
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=active-directory)

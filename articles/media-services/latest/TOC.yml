@@ -12,20 +12,14 @@ items:
   expanded: true
 - name: Samouczki
   items:
-  - name: Przekazywanie, kodowanie i przesyłanie strumieniowe
-    items:
-    - name: Przy użyciu platformy .NET
-      href: stream-files-tutorial-with-api.md
-    - name: Przy użyciu architektury REST
-      href: stream-files-tutorial-with-rest.md
-  - name: Przesyłanie strumieniowe na żywo
-    items:
-    - name: Przy użyciu platformy .NET Core
-      href: stream-live-tutorial-with-api.md
-  - name: Analizowanie filmu wideo
-    items:
-    - name: Przy użyciu platformy .NET
-      href: analyze-videos-tutorial-with-api.md
+  - name: Kodowanie pliku zdalnego i strumieniowe przesyłanie wideo — REST
+    href: stream-files-tutorial-with-rest.md
+  - name: Kodowanie przekazanego pliku i strumieniowe przesyłanie wideo — .NET
+    href: stream-files-tutorial-with-api.md
+  - name: Przesyłanie strumieniowe na żywo — .NET
+    href: stream-live-tutorial-with-api.md
+  - name: Analizowanie wideo — .NET
+    href: analyze-videos-tutorial-with-api.md
 - name: Przykłady
   items:
   - name: Przykłady kodu platformy Azure
@@ -186,9 +180,9 @@ items:
     href: limits-quotas-constraints.md
   - name: Często zadawane pytania
     href: frequently-asked-questions.md
-ms.openlocfilehash: 9c42d463bc88ae936e0fbe965fd4039a716e3052
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 49c15b2540b33a3f37f4f276b435ce3f4508b513
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557176"
+ms.locfileid: "53582511"

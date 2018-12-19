@@ -94,7 +94,7 @@ items:
       href: /azure/architecture/building-blocks/extending-templates/update-resource
   - name: Wdrażanie szablonów
     items:
-    - name: Wdrażanie przy użyciu portalu
+    - name: Wdrażanie przy użyciu witryny Azure Portal
       href: resource-group-template-deploy-portal.md
     - name: Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
       href: resource-group-template-deploy-cli.md
@@ -123,27 +123,27 @@ items:
       maintainContext: true
   - name: Zarządzanie szablonami
     items:
-    - name: Azure PowerShell
-      href: powershell-azure-resource-manager.md
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: cli-azure-resource-manager.md
-    - name: Azure Portal
+    - name: Zarządzanie przy użyciu witryny Azure Portal
       href: resource-group-portal.md
-    - name: Organizowanie zasobów przy użyciu tagów
-      href: resource-group-using-tags.md
-    - name: Przenoszenie zasobów do nowej grupy lub subskrypcji
+    - name: Zarządzanie przy użyciu programu Azure PowerShell
+      href: powershell-azure-resource-manager.md
+    - name: Zarządzanie przy użyciu interfejsu wiersza polecenia platformy Azure
+      href: cli-azure-resource-manager.md
+    - name: Przenoszenie zasobów
       href: resource-group-move-resources.md
       items:
       - name: Obsługa przenoszenia z podziałem na typ zasobu
         href: move-support-resources.md
+    - name: Organizowanie zasobów przy użyciu tagów
+      href: resource-group-using-tags.md
+    - name: Blokowanie zasobów
+      href: resource-group-lock-resources.md
+    - name: Interfejs API uwierzytelniania na potrzeby dostępu do subskrypcji
+      href: resource-manager-api-authentication.md
     - name: Tworzenie subskrypcji EA
       href: programmatically-create-subscription.md
     - name: Przyznawanie dostępu w celu tworzenia subskrypcji EA
       href: grant-access-to-create-subscription.md
-    - name: Interfejs API uwierzytelniania na potrzeby dostępu do subskrypcji
-      href: resource-manager-api-authentication.md
-    - name: Blokowanie zasobów
-      href: resource-group-lock-resources.md
   - name: Przeprowadzanie inspekcji wdrożeń
     items:
     - name: Wyświetlanie dzienników aktywności
@@ -211,7 +211,7 @@ items:
     href: /rest/api/resources/
   - name: REST — Deployment Manager
     href: /rest/api/deploymentmanager/
-  - name: PowerShell
+  - name: Azure PowerShell
     href: /powershell/module/azurerm.resources
   - name: Interfejs wiersza polecenia platformy Azure
     href: /cli/azure/resource
@@ -235,9 +235,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 47766ce1bd0250c1eeaa269c4bc2436a2e117f02
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436793"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600968"

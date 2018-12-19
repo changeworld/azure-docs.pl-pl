@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: da70af8eb2239fb9246071605aa5323e2e9e041e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eea9875be7926614811327dfeb89b721b43436e2
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958445"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580278"
 documentType: LandingData
 title: Dokumentacja interfejsu API przetwarzania obrazów
 metadata:
-  title: Dokumentacja interfejsu API przetwarzania obrazów — przewodniki Szybki start, samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja interfejsu API — przetwarzanie obrazów — Azure Cognitive Services | Microsoft Docs
   description: Dowiedz się, jak używać funkcji przetwarzania obrazów do przetwarzania obrazów i zwracania informacji. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z interfejsu API.
   services: cognitive-services
   author: nitinme
@@ -20,6 +20,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/24/2018
   ms.author: nitinme
+ms.custom: seodec18
 abstract:
   description: Oparty na chmurze interfejs API przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. Po przekazaniu obrazu lub podaniu jego adresu URL algorytmy funkcji przetwarzania obrazu firmy Microsoft mogą dokonać analizy zawartości wizualnej na różne sposoby w zależności od danych wejściowych i wybranych opcji użytkownika. Dowiedz się, jak na różne sposoby analizować zawartość wizualną, korzystając z przewodników Szybki start, samouczków i przykładów.
   aside:
@@ -101,4 +102,4 @@ sections:
     - title: PowerShell
       html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
     - title: Interfejs wiersza polecenia
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Interfejs wiersza polecenia platformy Azure</a></p>
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Interfejs wiersza polecenia platformy Azure</a></p>
