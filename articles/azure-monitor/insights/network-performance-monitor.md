@@ -249,7 +249,7 @@ Topologia wyświetlane na mapie topologii warstwy 3 i nie zawiera warstwy 2, urz
 
 ## <a name="log-analytics-search"></a>Wyszukiwania usługi log Analytics 
 
-Wszystkie dane, które są uwidocznione w formie graficznej za pośrednictwem pulpitu nawigacyjnego rozwiązania Network Performance Monitor i przechodzenie do szczegółów strony jest również dostępna natywnie w [wyszukiwania usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Można wykonywać interakcyjne analizy danych w repozytorium i korelowanie danych z różnych źródeł. Możesz również utworzyć niestandardowe alerty i widoki i wyeksportować dane do programu Excel, Power BI lub możliwe do udostępnienia łącza.  **Typowe zapytania dotyczące** obszaru na pulpicie nawigacyjnym zawiera niektóre przydatne zapytania, które służą jako punktu wyjścia do tworzenia własnych zapytań i raportów. 
+Wszystkie dane, które są uwidocznione w formie graficznej za pośrednictwem pulpitu nawigacyjnego rozwiązania Network Performance Monitor i przechodzenie do szczegółów strony jest również dostępna natywnie w [wyszukiwania usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Można wykonywać interakcyjne analizy danych w repozytorium i korelowanie danych z różnych źródeł. Możesz również utworzyć niestandardowe alerty i widoki i wyeksportować dane do programu Excel, Power BI lub możliwe do udostępnienia łącza. Typowe  **zapytania dotyczące** obszaru na pulpicie nawigacyjnym zawiera niektóre przydatne zapytania, które służą jako punktu wyjścia do tworzenia własnych zapytań i raportów. 
 
 ## <a name="alerts"></a>Alerty
 

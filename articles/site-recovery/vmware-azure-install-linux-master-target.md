@@ -259,7 +259,7 @@ Użyj następujących kroków, aby utworzyć dysk przechowywania:
     
     Wybierz **Wstaw** aby rozpocząć, edytując plik. Tworzenie nowego wiersza, a następnie wstaw poniższy tekst. Edytowanie Identyfikatora wielościeżkowe dysku, na podstawie Identyfikatora wielościeżkowe wyróżnione w poprzednim poleceniu.
 
-     **/dev/mapowania/ <Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
+    **/dev/mapowania/<Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
 
     Wybierz **Esc**, a następnie wpisz **: wq** (zapisać i zamknąć) aby zamknąć okno edytora.
 

@@ -24,7 +24,7 @@ ms.locfileid: "53309182"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
-**PYT.: Czy ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w witrynie Azure portal? Lub dlaczego jest właściciel urządzenia oznaczony jako n/d dla urządzeń z hybrydowego przyłączony Azure AD? ** 
+**PYT.: Czy ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w witrynie Azure portal? Lub dlaczego jest właściciel urządzenia oznaczony jako n/d dla urządzeń z hybrydowego przyłączony Azure AD?**
  **Odp.:** Urządzenia z systemem Windows 10, które są hybrydowe przyłączone do usługi Azure AD nie są wyświetlane w obszarze urządzeń użytkowników.
 Należy użyć widoku wszystkich urządzeń w witrynie Azure portal. Możesz również użyć programu PowerShell [Get MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
 
@@ -107,14 +107,14 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 
 ---
 
-**PYT.: Moi użytkownicy zalogować się do urządzeń przyłączonych do usługi Azure AD, które zostały usunięte lub wyłączone w usłudze Azure AD? ** 
+**PYT.: Moi użytkownicy zalogować się do urządzeń przyłączonych do usługi Azure AD, które zostały usunięte lub wyłączone w usłudze Azure AD?**
  **Odp.:** Tak. Windows ma pamięci podręcznej funkcji logowania, aby umożliwić, wcześniej zalogowani użytkownicy szybki dostęp pulpitu, nawet bez połączenia z siecią. Gdy urządzenie jest usunięte lub wyłączone w usłudze Azure AD, nie jest znany dla urządzeń Windows. Dlatego wcześniej zarejestrowany użytkownicy nadal mogą uzyskać dostęp do pulpitu z pamięci podręcznej logowania. Jednak ponieważ urządzenie jest usuwane lub wyłączona, użytkownicy nie mogą korzystać wszystkie zasoby chronione przez dostęp warunkowy oparty na urządzeniu. 
 
 Użytkownicy, którzy jeszcze nie już zalogowany nie może uzyskać dostęp do urządzenia, się bez logowania pamięci podręcznej włączone dla nich. 
 
 ---
 
-**PYT.: Można wyłączonych lub usuniętych użytkowników logowania się na urządzeniach przyłączonych do usługi Azure AD ** 
+**PYT.: Można wyłączonych lub usuniętych użytkowników logowania się na urządzeniach przyłączonych do usługi Azure AD**
  **Odp.:** Tak, ale tylko przez ograniczony czas. Gdy użytkownik jest usunięte lub wyłączone w usłudze Azure AD, nie od razu wiadomo na urządzeniu Windows. Dlatego wcześniej zarejestrowany użytkownicy mogą uzyskiwać dostęp do pulpitu z pamięci podręcznej logowania. Gdy urządzenie jest świadome danych stanu użytkownika (zwykle w mniej niż 4 godziny), Windows blokuje tych użytkownikom uzyskiwanie dostępu do pulpitu. Użytkownik jest usunięte lub wyłączone w usłudze Azure AD, wszystkie tokeny zostanie odwołana, dlatego nie mają dostępu do żadnych zasobów. 
 
 Usunięto lub wyłączonych użytkowników, którzy nie zostały wcześniej zarejestrowane w nie może uzyskać dostępu urządzenia, się bez logowania pamięci podręcznej włączone dla nich. 
@@ -127,7 +127,7 @@ Usunięto lub wyłączonych użytkowników, którzy nie zostały wcześniej zare
 
 ---
 
-**PYT.: Jak połączyć do zdalnej usługi Azure AD dołączonym do urządzenia? ** 
+**PYT.: Jak połączyć do zdalnej usługi Azure AD dołączonym do urządzenia?**
  **Odp.:** Zapoznaj się z artykułem https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc Aby uzyskać szczegółowe informacje.
 
 ---
