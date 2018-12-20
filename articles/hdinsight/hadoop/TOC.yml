@@ -48,7 +48,7 @@ items:
     - name: Korzystanie z usługi Azure Storage
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: Korzystanie z usługi Azure Data Lake Store
+    - name: Korzystanie z usługi Azure Data Lake Storage
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: Korzystanie z usługi Apache Hadoop dla zapytań wsadowych
@@ -63,7 +63,7 @@ items:
         href: apache-hadoop-use-hive-visual-studio.md
       - name: Korzystanie z widoku Apache Hive
         href: apache-hadoop-use-hive-ambari-view.md
-      - name: Korzystanie z usługi Beeline
+      - name: Korzystanie z usługi Apache Hive Beeline
         href: apache-hadoop-use-hive-beeline.md
       - name: Korzystanie z interfejsu API REST
         href: apache-hadoop-use-hive-curl.md
@@ -105,7 +105,7 @@ items:
         href: apache-hadoop-use-pig-curl.md
       - name: Korzystanie z pulpitu zdalnego
         href: apache-hadoop-use-pig-remote-desktop.md
-    - name: Korzystanie z funkcji DataFu z technologią Apache Pig
+    - name: Korzystanie z bibliotek Apache DataFu z technologią Apache Pig
       href: apache-hadoop-use-pig-datafu-udf.md
     - name: Przesyłanie zadań usługi Apache Hadoop
       href: submit-apache-hadoop-jobs-programmatically.md
@@ -201,7 +201,7 @@ items:
     - name: Instalowanie lub aktualizowanie środowiska Mono
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: Dodawanie bibliotek technologii Hive
+    - name: Dodawanie bibliotek technologii Apache Hive
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
     - name: Korzystanie z systemu Apache Giraph
@@ -337,7 +337,7 @@ items:
     - name: Przekazywanie danych na potrzeby zadań usługi Apache Hadoop
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: Wiele klastrów usługi HDInsight z usługą Data Lake Store
+    - name: Wiele klastrów usługi HDInsight z usługą Data Lake Storage
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: Importowanie i eksportowanie danych za pomocą narzędzia Apache Sqoop
@@ -559,9 +559,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 43ebb63bdda8c484ce1c2d2828293032ea90013c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: f1d3fbab35ddedf3a1dc9360ecc4dbe38591e58c
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321156"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653700"
