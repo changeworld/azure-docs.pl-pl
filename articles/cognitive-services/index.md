@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 1d82809a4ed88ee5f84b812955e6979df2ae6070
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5477b1b3dc14a94713074a72751b732262880258
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322077"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650976"
 ---
 <h1>Dokumentacja usług Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.</p>
@@ -297,8 +297,8 @@ ms.locfileid: "53322077"
                     <div class="cardText">
                         <h3>Interfejs API przetwarzania obrazów</h3>
                         <p><a href="/azure/cognitive-services/computer-vision/">Przetwarzanie obrazów</a></p>
-                        <p><a href="/azure/cognitive-services/content-moderator/overview">Content Moderator</a></p>
-                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/home"><span>Custom Vision Service&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
+                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/"><span>Custom Vision Service&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/face/">Interfejs API rozpoznawania twarzy</a></p>
                         <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
                         <p><a href="/azure/cognitive-services/emotion/home"><span>Interfejs API rozpoznawania emocji&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
