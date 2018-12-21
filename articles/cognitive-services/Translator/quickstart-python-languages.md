@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: uzyskiwanie listy obsługiwanych języków, Python — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: Uzyskiwanie listy obsługiwanych języków, Python — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Python.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 4c261a46b96865900a92bc53e4973fa3df094289
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8b78ec4e358f654342140df1491e19d3fc62fee7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246562"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992395"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Szybki start: uzyskiwanie listy obsługiwanych języków za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator przy użyciu języka Python
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Szybki start: Uzyskiwanie listy obsługiwanych języków za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator przy użyciu języka Python
 
 W tym przewodniku Szybki start dowiesz się, jak utworzyć żądanie GET, które zwraca listę obsługiwanych języków przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 
@@ -79,7 +79,7 @@ constructed_url = base_url + path
 
 Najprostszym sposobem uwierzytelniania żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`. Ta metoda jest używana w tym przykładzie. Alternatywnie można wymienić klucz subskrypcji na token dostępu i przekazać go dalej jako nagłówek `Authorization` w celu zweryfikowania żądania. Aby uzyskać więcej informacji, zobacz [Authentication](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) (Uwierzytelnianie).
 
-Skopiuj ten fragment kodu do projektu:
+Skopiuj ten fragment kod do projektu:
 
 ```python
 headers = {
@@ -215,7 +215,7 @@ Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby
 
 ## <a name="see-also"></a>Zobacz też
 
-Oprócz transliteracji tekstu interfejs API tłumaczenia tekstu w usłudze Translator może wykonywać następujące zadania:
+Dowiedz się, jak używać interfejsu API tłumaczenia tekstu w usłudze Translator w następujących celach:
 
 * [Tłumaczenie tekstu](quickstart-python-translate.md)
 * [Transliteracja tekstu](quickstart-python-transliterate.md)

@@ -1,24 +1,26 @@
 ---
-title: 'Szybki start: tworzenie obszaru roboczego usługi Machine Learning w witrynie Azure Portal — Azure Machine Learning'
-description: Obszar roboczy usługi Azure Machine Learning można utworzyć w witrynie Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Azure Machine Learning.
+title: Szybki start przy użyciu witryny Azure Portal
+titleSuffix: Azure Machine Learning service
+description: Rozpocznij pracę z usługą Azure Machine Learning. Użyj witryny Azure Portal, aby utworzyć obszar roboczy, który stanowi podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: rastala
-ms.author: roastala
+author: hning86
+ms.author: haining
 ms.date: 12/04/2018
-ms.openlocfilehash: 59887c46e3ce06eae250e106a01239a1ba969e7f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: c215a3947069e572f73692ea54010c77d78ae4fd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875318"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273565"
 ---
-# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Szybki start: rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal
 
-W tym przewodniku Szybki start utworzysz obszar roboczy usługi Azure Machine Learning przy użyciu witryny Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. Ten przewodnik Szybki start korzysta z zasobów w chmurze i nie wymaga żadnej instalacji. Aby zamiast tego skonfigurować własny serwer notesów Jupyter, zobacz [Szybki start: rozpoczęcie pracy z usługą Azure Machine Learning w języku Python](quickstart-create-workspace-with-python.md).
+W tym przewodniku Szybki start utworzysz obszar roboczy usługi Azure Machine Learning przy użyciu witryny Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. Ten przewodnik Szybki start korzysta z zasobów w chmurze i nie wymaga żadnej instalacji. Aby zamiast tego skonfigurować własny serwer notesów Jupyter, zobacz [Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w języku Python](quickstart-create-workspace-with-python.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -37,7 +39,7 @@ Do obszaru roboczego zostaną automatycznie dodane następujące zasoby platform
 
 Utworzone zasoby mogą być używane jako wstępnie wymagane składniki w innych samouczkach usługi Machine Learning i artykułach z instrukcjami. Podobnie jak w przypadku innych usług platformy Azure korzystanie z pewnych zasobów skojarzonych z usługą Machine Learning, takich jak rozmiar klastra obliczeniowego, jest ograniczone określonymi limitami. Dowiedz się więcej o [limitach domyślnych i sposobach zwiększania limitów przydziału](how-to-manage-quotas.md).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
 
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego 
@@ -117,4 +119,4 @@ Utworzono zasoby umożliwiające eksperymentowanie i wdrażanie modeli. Uruchomi
 Aby poznać szczegółowo środowisko przepływu pracy, wykonaj czynności opisane w samouczku dotyczącym uczenia i wdrażania modelu w usłudze Machine Learning.  
 
 > [!div class="nextstepaction"]
-> [Samouczek: uczenie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md)
+> [Samouczek: trenowanie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md)

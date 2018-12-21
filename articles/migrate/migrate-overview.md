@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 98ff54bcfe67d79d8c15da666aad0bebfe48f6e0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839738"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250591"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -24,8 +24,8 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 
 - **Ocena gotowości na platformę Azure**: czy maszyny lokalne mogą działać na platformie Azure.
 - **Uzyskiwanie zaleceń dotyczących rozmiarów**: uzyskaj zalecenia dotyczące rozmiarów maszyn wirtualnych platformy Azure na podstawie historii wydajności lokalnych maszyn wirtualnych.
-- **Szacowanie miesięcznych kosztów**: uzyskaj szacowane koszty uruchamiania maszyn lokalnych na platformie Azure.  
-- **Migrowanie z poczuciem pewności**: wizualizuj zależności maszyn lokalnych, aby tworzyć grupy maszyn, które będą oceniane i migrowane wspólnie.
+- **Szacowanie miesięcznych kosztów**: oblicz szacowane koszty uruchamiania maszyn lokalnych na platformie Azure.  
+- **Migracja z poczuciem pewności**: wizualizuj zależności maszyn lokalnych, aby tworzyć grupy maszyn, które będą oceniane i migrowane wspólnie.
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
@@ -34,10 +34,14 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 - Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 1500 maszyn wirtualnych w ramach pojedynczej oceny.
 - Jeśli chcesz odnaleźć większe środowisko możesz podzielić operację odnajdywania i utworzyć wielu projektów. [Dowiedz się więcej](how-to-scale-assessment.md). Usługa Azure Migrate obsługuje maksymalnie 20 projektów na subskrypcję.
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
--  Projekt usługi Azure Migrate można utworzyć tylko w lokalizacji geograficznej Stanów Zjednoczonych. Możesz jednak zaplanować migrację do dowolnej docelowej lokalizacji platformy Azure.
-    - Tylko metadane odnalezione w środowisku lokalnym są zapisywane w regionie projektu migracji.
-    - Metadane są przechowywane w jednym z regionów wybranego obszaru geograficznego: Zachodnio-środkowe stany USA lub Wschodnie stany USA.
-    - Jeśli używasz wizualizacji zależności przez utworzenie nowego obszaru roboczego usługi Log Analytics, obszar roboczy zostanie utworzony w tym samym regionie co projekt.
+-  Projekt usługi Azure Migrate można utworzyć tylko w następujących lokalizacjach geograficznych. Jednak nie ogranicza to możliwości tworzenia przypisań dla innych lokalizacji docelowych platformy Azure.
+    **Lokalizacja geograficzna** | **Lokalizacja magazynu**
+    --- | ---
+    Stany Zjednoczone | Zachodnio-środkowe stany USA lub Wschodnie stany USA
+    Azure Government | Administracja USA — Wirginia
+
+    Lokalizacja geograficzna powiązana z projektem migracji służy do przechowywania metadanych wykrytych w środowisku lokalnym. Metadane są przechowywane w jednym z regionów w oparciu o lokalizację geograficzną określoną dla projektu migracji. Jeśli używasz wizualizacji zależności przez utworzenie nowego obszaru roboczego usługi Log Analytics, obszar roboczy zostanie utworzony w tym samym regionie co projekt.
+- Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>Za co są pobierane opłaty?

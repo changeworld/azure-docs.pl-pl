@@ -1,6 +1,6 @@
 ---
 title: Szybki start — szyfrowanie maszyny wirtualnej IaaS z systemem Windows za pomocą programu Azure PowerShell | Microsoft Docs
-description: Z tego przewodnika Szybki start dowiesz się, jak zaszyfrować maszynę wirtualną z systemem Windows za pomocą programu Azure PowerShell.
+description: Z tego przewodnika Szybki start dowiesz się, jak zaszyfrować maszynę wirtualną IaaS z systemem Windows na platformie Azure.
 services: security
 documentationcenter: na
 author: mestew
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 531da9af871595e6f8bf5d22832367bbfb301dab
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.custom: seodec18
+ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245875"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087868"
 ---
-# <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Szybki start: szyfrowanie maszyny wirtualnej IaaS z systemem Windows za pomocą programu Azure PowerShell
+# <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Szybki start: Szyfrowanie maszyny wirtualnej IaaS z systemem Windows za pomocą programu Azure PowerShell
 
-Usługa Azure Disk Encryption umożliwia szyfrowanie dysków maszyn wirtualnych IaaS z systemami Windows i Linux. Rozwiązanie jest zintegrowane z usługą Azure Key Vault, aby pomóc w sterowaniu i zarządzaniu wpisami tajnymi i kluczami szyfrowania dysków. Usługa Azure Disk Encryption pozwala zagwarantować, że maszyny wirtualne są zabezpieczone w spoczynku za pomocą standardowych w branży technologii. W tym przewodniku Szybki start utworzysz maszynę wirtualną z systemem Windows Server 2016 i zaszyfrujesz dysk systemu operacyjnego. 
+Usługa Azure Disk Encryption umożliwia szyfrowanie dysków maszyn wirtualnych IaaS z systemami Windows i Linux. Rozwiązanie jest zintegrowane z usługą Azure Key Vault, aby pomóc w sterowaniu i zarządzaniu wpisami tajnymi i kluczami szyfrowania dysków. Usługa Azure Disk Encryption pozwala zagwarantować, że maszyny wirtualne są zabezpieczone w spoczynku za pomocą standardowych w branży technologii. W tym przewodniku Szybki start utworzysz maszynę wirtualną z systemem Windows Server 2016 i zaszyfrujesz dysk systemu operacyjnego.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -54,7 +55,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="bkmk_PrereqScript"></a>Uruchamianie skryptu wymagań wstępnych usługi Azure Disk Encryption
  Plik **ADEPrereqScript.ps1** tworzy grupę zasobów i magazyn kluczy oraz ustawi zasady dostępu magazynu kluczy. Ponadto skrypt tworzy blokadę zasobów w magazynie kluczy, aby chronić je przed przypadkowym usunięciem.  
 
-1. W oknie **Administrator: Windows PowerShell ISE** kliknij pozycję **File** (Plik), a następnie kliknij pozycję **Open** (Otwórz). Przejdź do pliku **ADEPrereqScript.ps1** i kliknij go dwukrotnie. Skrypt zostanie otwarty w okienku skryptu.
+1. W oknie **Administrator: Windows PowerShell ISE** kliknij opcję **File** (Plik), a następnie kliknij pozycję **Open** (Otwórz). Przejdź do pliku **ADEPrereqScript.ps1** i kliknij go dwukrotnie. Skrypt zostanie otwarty w okienku skryptu.
 2. Kliknij zieloną strzałkę **Run Script** (Uruchom skrypt) lub użyj klawisza F5, aby uruchomić skrypt. 
 3. Wpisz nazwę nowej **grupy zasobów** i nazwę nowego **magazynu kluczy**. Nie używaj istniejącej grupy zasobów ani istniejącego magazynu kluczy na potrzeby tego przewodnika Szybki Start, ponieważ grupa zasobów zostanie później usunięta. 
 4. Wpisz lokalizację, w której chcesz utworzyć zasoby, taką jak **EastUS**. Pobierz listę lokalizacji za pomocą polecenia `Get-AzureRMLocation`.

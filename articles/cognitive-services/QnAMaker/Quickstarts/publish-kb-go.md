@@ -1,23 +1,24 @@
 ---
-title: 'Szybki start: publikowanie bazy wiedzy — środowisko REST, Go — QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
+title: Publikowanie bazy wiedzy, REST, Go
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: Ten przewodnik Szybki start oparty na protokole REST języka Go przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: b10180ad89890c314aec7059347186fa66b354f6
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: e7f0d3c756988cc890b6560181727b5c80b5548d
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165088"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162090"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Go
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Szybki start: Publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Go
 
 Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez programowe publikowanie bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
 

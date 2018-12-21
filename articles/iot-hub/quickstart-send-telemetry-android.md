@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/05/2018
 ms.author: wesmc
-ms.openlocfilehash: 66c1380070c9f9732369cb0d209e428525d53ce8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d90595d3d557293bfbc6b06aca638eb1b7c08d30
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427652"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164317"
 ---
-# <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Szybki start: przesyłanie danych telemetrycznych usługi IoT z urządzenia z systemem Android
+# <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Szybki start: Przesyłanie danych telemetrycznych usługi IoT z urządzenia z systemem Android
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -35,7 +35,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 * W przykładzie w tym artykule jest używany zestaw Android SDK 27. 
 
-* [Przykładowa aplikacja dla systemu Android](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) uruchamiana w tym przewodniku Szybki start jest częścią repozytorium azure-iot-samples-java w usłudze Github. Pobierz lub sklonuj repozytorium [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java).
+* [Przykładowa aplikacja dla systemu Android](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) uruchamiana w tym przewodniku Szybki start jest częścią repozytorium azure-iot-samples-java w usłudze GitHub. Pobierz lub sklonuj repozytorium [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java).
 
 
 
@@ -74,7 +74,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 ## <a name="send-telemetry"></a>Wysyłanie danych telemetrycznych
 
-1. Otwórz przykładowy projekt github dla systemu Android w programie Android Studio. Projekt znajduje się w następującym katalogu sklonowanej lub pobranej kopii repozytorium [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java).
+1. Otwórz przykładowy projekt GitHub dla systemu Android w programie Android Studio. Projekt znajduje się w następującym katalogu sklonowanej lub pobranej kopii repozytorium [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java).
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
@@ -120,5 +120,5 @@ W tym przewodniku Szybki start skonfigurowano centrum IoT Hub, zarejestrowano ur
 Aby dowiedzieć się, jak kontrolować urządzenie symulowane z poziomu aplikacji zaplecza, przejdź do następnego przewodnika Szybki start.
 
 > [!div class="nextstepaction"]
-> [Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT](quickstart-control-device-android.md)
+> [Szybki start: Sterowanie urządzeniem połączonym z centrum IoT Hub](quickstart-control-device-android.md)
 

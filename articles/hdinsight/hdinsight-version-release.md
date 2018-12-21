@@ -7,22 +7,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: overview
 ms.date: 10/04/2018
-ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 34582e66dec3b2f97efba7856ccfbf678f8f1f63
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801837"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408089"
 ---
 # <a name="hdinsight-40-overview-preview"></a>Przegląd usługi HDInsight 4.0 (wersja zapoznawcza)
 
-Usługa Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klientów korporacyjnych na potrzeby analizy typu open source w narzędziach Hadoop i Spark na platformie Azure. Usługa HDInsight (HDI) 4.0 jest dystrybucją w chmurze składników usługi Hadoop z platformy [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html). Ten artykuł zawiera informacje o najnowszym wydaniu usługi Azure HDInsight i sposobie jej uaktualniania.
+Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klientów korporacyjnych na potrzeby analizy w narzędziach typu open source Apache Hadoop i Apache Spark na platformie Azure. Usługa HDInsight (HDI) 4.0 jest dystrybucją w chmurze składników Apache Hadoop pochodzących z platformy [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html). Ten artykuł zawiera informacje o najnowszym wydaniu usługi Azure HDInsight i sposobie jej uaktualniania.
 
 ## <a name="whats-new-in-hdi-40"></a>Co nowego w usłudze HDI 4.0?
 
-### <a name="hive-30-and-llap"></a>Hive 3.0 i LLAP
+### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 i LLAP
 
-Infrastruktura Hive z przetwarzaniem analitycznym o małym opóźnieniu (LLAP) używa serwerów trwałych zapytań i buforowania w pamięci w celu szybkiego dostarczania wyników zapytań SQL względem danych w zdalnym magazynie w chmurze. Hive LLAP wykorzystuje zestaw trwałych demonów, które wykonują fragmenty zapytań Hive. Wykonywanie zapytań z przetwarzaniem LLAP odbywa się podobnie jak w infrastrukturze Hive bez funkcji LLAP z tą różnicą, że zadania procesów roboczych działają wewnątrz demonów LLAP zamiast w kontenerach.
+Infrastruktura Apache Hive z przetwarzaniem analitycznym o małym opóźnieniu (LLAP) używa serwerów trwałych zapytań i buforowania w pamięci w celu szybkiego dostarczania wyników zapytań SQL dotyczących danych w zdalnym magazynie w chmurze. Hive LLAP wykorzystuje zestaw trwałych demonów, które wykonują fragmenty zapytań Hive. Wykonywanie zapytań z przetwarzaniem LLAP odbywa się podobnie jak w infrastrukturze Hive bez funkcji LLAP z tą różnicą, że zadania procesów roboczych działają wewnątrz demonów LLAP zamiast w kontenerach.
 
 Przetwarzanie Hive LLAP daje następujące korzyści:
 
@@ -72,7 +72,7 @@ Nie musisz się już martwić przypadkowymi próbami uzyskania dostępu do tabel
 Dowiedz się więcej o platformie [Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
 
-### <a name="oozie"></a>Oozie
+### <a name="apache-oozie"></a>Apache Oozie
 
 Usługa HDI 4.0 zawiera system Apache Oozie 4.3.1 z następującymi zmianami:
 
@@ -90,7 +90,7 @@ Nie ma żadnych obsługiwanych ścieżek uaktualniania z poprzednich wersji usł
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Usługa HDI 4.0 nie obsługuje środowiska MapReduce. Zamiast tego należy skorzystać ze środowiska Tez. Dowiedz się więcej o środowisku [Apache Tez](https://tez.apache.org/).
+* Usługa HDI 4.0 nie obsługuje środowiska MapReduce. Zamiast tego należy użyć środowiska Apache Tez. Dowiedz się więcej o środowisku [Apache Tez](https://tez.apache.org/).
 
 * Widok Hive nie jest już dostępny w usłudze HDI 4.0. 
 

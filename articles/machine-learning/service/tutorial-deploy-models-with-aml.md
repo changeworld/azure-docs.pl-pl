@@ -1,6 +1,7 @@
 ---
-title: 'Samouczek: wdrażanie modeli klasyfikacji obrazów w wystąpieniu kontenera platformy Azure (ACI) za pomocą usługi Azure Machine Learning'
-description: W tym samouczku pokazano, jak za pomocą usługi Azure Machine Learning wdrożyć model klasyfikacji obrazów z pakietem scikit-learn w notesie Jupyter języka Python.  Niniejszy samouczek jest drugą częścią dwuczęściowej serii.
+title: 'Samouczek dotyczący klasyfikacji obrazów: Wdrażanie modeli'
+titleSuffix: Azure Machine Learning service
+description: W tym samouczku pokazano, jak za pomocą usługi Azure Machine Learning wdrożyć model klasyfikacji obrazów z pakietem scikit-learn w notesie Jupyter języka Python. Ten samouczek jest drugą częścią dwuczęściowej serii.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,29 +10,30 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 0fd3bebc1e2dba3ab7d1204e779a8c80b97c990b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: ea446c89fc74fca444793a5e0f803a54fa251ed1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864064"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312174"
 ---
-# <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Samouczek 2: wdrażanie modelu klasyfikacji obrazów w wystąpieniu kontenera platformy Azure (ACI)
+# <a name="tutorial--deploy-an-image-classification-model-in-azure-container-instance"></a>Samouczek:  wdrażanie modelu klasyfikacji obrazów w wystąpieniu kontenera platformy Azure
 
 Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W [poprzednim samouczku](tutorial-train-models-with-aml.md) przeszkoliliśmy modele uczenia maszynowego, a następnie zarejestrowaliśmy model w Twoim obszarze roboczym w chmurze.  
 
-Teraz możesz przystąpić do wdrażania modelu jako usługi internetowej w [usłudze Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI). Usługa internetowa jest obrazem, w tym przypadku obrazem platformy Docker, który hermetyzuje logikę oceniania i sam model. 
+Teraz możesz przystąpić do wdrażania modelu jako usługi internetowej w [usłudze Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Usługa internetowa jest obrazem, w tym przypadku obrazem platformy Docker, który hermetyzuje logikę oceniania i sam model. 
 
-W tej części samouczka użyjesz usługi Azure Machine Learning, aby:
+W tej części samouczka użyjesz usługi Azure Machine Learning, aby wykonać następujące czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie środowiska testowego
 > * Pobieranie modelu z obszaru roboczego
 > * Testowanie modelu w środowisku lokalnym
-> * Wdrażanie modelu w usłudze ACI
+> * Wdrażanie modelu w usłudze Container Instances
 > * Testowanie wdrożonego modelu
 
-Usługa ACI nie jest idealnym rozwiązaniem w przypadku wdrożeń produkcyjnych, ale znakomicie nadaje się do testowania i interpretowania przepływu pracy. W przypadku skalowalnych wdrożeń produkcyjnych rozważ skorzystanie z usługi [Azure Kubernetes Service](how-to-deploy-to-aks.md).
+Usługa Container Instances nie jest idealnym rozwiązaniem w przypadku wdrożeń produkcyjnych, ale znakomicie nadaje się do testowania i interpretowania przepływu pracy. W przypadku skalowalnych wdrożeń produkcyjnych rozważ skorzystanie z usługi Azure Kubernetes Service. Aby uzyskać więcej informacji, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
 ## <a name="get-the-notebook"></a>Pobieranie notesu
 
@@ -40,11 +42,11 @@ Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://gith
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.2
+> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.2.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ukończ trenowanie modelu opisane w notesie [Samouczek 1: trenowanie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).  
+Wykonaj szkolenie modelu przy użyciu następującego notesu: [Samouczek nr 1: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>Konfigurowanie środowiska
@@ -145,10 +147,10 @@ Dane wyjściowe przedstawiają macierz pomyłek:
     Overall accuracy: 0.9204
    
 
-Użyj polecenia `matplotlib`, aby wyświetlić macierz pomyłek w postaci wykresu. Na tym wykresie oś X reprezentuje wartości rzeczywiste, a oś Y — przewidywane. Kolor w każdej siatce oznacza współczynnik błędów. Im jaśniejszy kolor, tym wyższy współczynnik błędów. Na przykład wiele wartości 5 zostało błędnie sklasyfikowanych jako 3. Dlatego w położeniu (5,3) widać jasną siatkę.
+Użyj polecenia `matplotlib`, aby wyświetlić macierz pomyłek w postaci wykresu. Na tym wykresie oś X reprezentuje wartości rzeczywiste, a oś Y — przewidywane. Kolor w każdej siatce oznacza współczynnik błędów. Im jaśniejszy kolor, tym wyższy współczynnik błędów. Na przykład wiele wartości 5 zostało błędnie sklasyfikowanych jako 3. Dlatego w położeniu (5,3) widać jasny element siatki.
 
 ```python
-# normalize the diagnal cells so that they don't overpower the rest of the cells when visualized
+# normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
 row_sums = conf_mx.sum(axis=1, keepdims=True)
 norm_conf_mx = conf_mx / row_sums
 np.fill_diagonal(norm_conf_mx, 0)
@@ -168,23 +170,23 @@ plt.savefig('conf.png')
 plt.show()
 ```
 
-![Macierz pomyłek](./media/tutorial-deploy-models-with-aml/confusion.png)
+![Wykres przedstawiający macierz pomyłek](./media/tutorial-deploy-models-with-aml/confusion.png)
 
 ## <a name="deploy-as-web-service"></a>Wdrażanie w postaci usługi internetowej
 
-Gdy model został przetestowany i wyniki są zadowalające, wdróż model jako usługę internetową hostowaną w usłudze ACI. 
+Gdy model został przetestowany i wyniki są zadowalające, wdróż model jako usługę internetową hostowaną w usłudze Container Instances. 
 
-Aby utworzyć odpowiednie środowisko dla usługi ACI, dostarcz następujące elementy:
+Aby utworzyć odpowiednie środowisko dla usługi Container Instances, dostarcz następujące elementy:
 * Skrypt oceniania pokazujący, jak korzystać z modelu
 * Plik środowiska pokazujący, jakie pakiety trzeba zainstalować
-* Plik konfiguracji umożliwiający utworzenie usługi ACI
+* Plik konfiguracji umożliwiający utworzenie wystąpienia kontenera
 * Przeszkolony wcześniej model
 
 <a name="make-script"></a>
 
 ### <a name="create-scoring-script"></a>Tworzenie skryptu oceniania
 
-Utwórz skrypt oceniania o nazwie score.py, który będzie używany przez wywołanie usługi internetowej do zaprezentowania sposobu korzystania z modelu.
+Utwórz skrypt oceniania o nazwie score.py. Wywołanie usługi internetowej używa tego skryptu jako instrukcji korzystania z modelu.
 
 W skrypcie oceniania muszą znaleźć się dwie wymagane funkcje:
 * Funkcja `init()`, która zazwyczaj ładuje model do obiektu globalnego. Ta funkcja jest uruchamiana tylko raz, po uruchomieniu kontenera platformy Docker. 
@@ -239,7 +241,7 @@ with open("myenv.yml","r") as f:
 
 ### <a name="create-configuration-file"></a>Tworzenie pliku konfiguracji
 
-Utwórz plik konfiguracji wdrożenia i określ liczbę procesorów oraz wielkość pamięci RAM (w GB) wymaganej dla kontenera usługi ACI. Chociaż zależy to od modelu, wartość domyślna określająca 1 rdzeń i 1 GB pamięci RAM zazwyczaj jest wystarczająca dla wielu modeli. Jeśli w przyszłości będzie potrzeba więcej, trzeba będzie ponownie utworzyć obraz i jeszcze raz wdrożyć usługę.
+Utwórz plik konfiguracji wdrożenia i określ liczbę procesorów oraz wielkość pamięci RAM (w GB) wymaganej dla kontenera usługi Container Instances. Chociaż zależy to od modelu, wartość domyślna określająca 1 rdzeń i 1 GB pamięci RAM zazwyczaj jest wystarczająca dla wielu modeli. Jeśli w przyszłości będzie potrzeba więcej, trzeba będzie ponownie utworzyć obraz i jeszcze raz wdrożyć usługę.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -250,7 +252,7 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
                                                description='Predict MNIST with sklearn')
 ```
 
-### <a name="deploy-in-aci"></a>Wdrażanie w usłudze ACI
+### <a name="deploy-in-container-instances"></a>Wdrażanie w usłudze Container Instances
 Szacowany czas trwania: **ok. 7–8 min**
 
 Skonfiguruj i wdróż obraz. Poniższy kod wykonuje następujące kroki:
@@ -260,8 +262,8 @@ Skonfiguruj i wdróż obraz. Poniższy kod wykonuje następujące kroki:
    * Plik środowiska (`myenv.yml`)
    * Plik modelu
 1. Zarejestrowanie tego obrazu w obszarze roboczym. 
-1. Wysłanie obrazu do kontenera usługi ACI.
-1. Uruchomienie kontenera w usłudze ACI przy użyciu obrazu.
+1. Wysłanie obrazu do kontenera usługi Container Instances.
+1. Uruchomienie kontenera w usłudze Container Instances przy użyciu obrazu.
 1. Pobranie punktu końcowego HTTP usługi internetowej.
 
 
@@ -296,7 +298,7 @@ print(service.scoring_uri)
 Wcześniej wszystkie dane testowe zostały ocenione za pomocą lokalnej wersji modelu. Teraz możesz przetestować wdrożony model przy użyciu losowej próbki 30 obrazów z danych testowych.  
 
 Poniższy kod wykonuje następujące kroki:
-1. Wysłanie danych w postaci tablicy JSON do usługi internetowej hostowanej w usłudze ACI. 
+1. Wysłanie danych w postaci tablicy JSON do usługi internetowej hostowanej w usłudze Container Instances. 
 
 1. Wywołanie usługi przy użyciu interfejsu API `run` zestawu SDK. Możesz również wykonać wywołania nieprzetworzone, używając dowolnego narzędzia HTTP, takiego jak curl.
 
@@ -337,7 +339,7 @@ for s in sample_indices:
 plt.show()
 ```
 
-Oto wynik jednej losowej próbki obrazów testowych: ![wyniki](./media/tutorial-deploy-models-with-aml/results.png)
+Oto wynik jednej losowej próbki obrazów testowych: ![Grafika przedstawiająca wyniki](./media/tutorial-deploy-models-with-aml/results.png)
 
 W celu przetestowania usługi internetowej możesz również wysłać nieprzetworzone żądanie HTTP.
 
@@ -365,7 +367,7 @@ print("prediction:", resp.text)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby pozostawić grupę zasobów i obszar roboczy na potrzeby innych samouczków i eksploracji, możesz usunąć tylko wdrożenie usługi ACI, używając następującego wywołania interfejsu API:
+Aby pozostawić grupę zasobów i obszar roboczy na potrzeby innych samouczków i eksploracji, możesz usunąć tylko wdrożenie usługi Container Instances, używając następującego wywołania interfejsu API:
 
 ```python
 service.delete()
@@ -376,13 +378,6 @@ service.delete()
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku usługi Azure Machine Learning za pomocą języka Python wykonano następujące czynności:
++ Poznaj wszystkie [opcje wdrażania usługi Azure Machine Learning](how-to-deploy-and-where.md), w tym usługę ACI, usługę Azure Kubernetes Service, układy FPGA i usługę IoT Edge.
 
-> [!div class="checklist"]
-> * Konfigurowanie środowiska testowego
-> * Pobieranie modelu z obszaru roboczego
-> * Testowanie modelu w środowisku lokalnym
-> * Wdrażanie modelu w usłudze ACI
-> * Testowanie wdrożonego modelu
- 
-Możesz również wypróbować samouczek [Automatyczny wybór algorytmów](tutorial-auto-train-models.md), aby zobaczyć, jak usługa Azure Machine Learning automatycznie wybiera i dostosowuje najlepszy algorytm dla modelu i tworzy ten model dla Ciebie.
++ Zobacz, jak usługa Azure Machine Learning automatycznie wybiera i dostosowuje najlepszy algorytm dla modelu i tworzy ten model dla Ciebie. Wypróbuj samouczek dotyczący [algorytmu automatycznego wyboru](tutorial-auto-train-models.md). 

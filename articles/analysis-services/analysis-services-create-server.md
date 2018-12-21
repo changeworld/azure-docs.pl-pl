@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b5aa300d51deef408b8dd2b410db319449360329
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ef4099130878813378fb277c45b5d352cbe822a7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428831"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000165"
 ---
-# <a name="quickstart-create-a-server---portal"></a>Szybki start: tworzenie serwera — portal
+# <a name="quickstart-create-a-server---portal"></a>Szybki start: Tworzenie serwera — Portal
 
 W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Analysis Services w ramach subskrypcji platformy Azure, korzystając z portalu.
 
@@ -24,9 +24,9 @@ W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Anal
 * **Subskrypcja platformy Azure**: odwiedź stronę [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), aby utworzyć konto.
 * **Azure Active Directory**: subskrypcja musi być skojarzona z dzierżawą usługi Azure Active Directory. Ponadto musisz zalogować się na platformie Azure przy użyciu konta należącego do tej dzierżawy usługi Azure Active Directory. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal 
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal 
 
-[Logowanie do portalu](https://portal.azure.com)
+[Logowanie się do portalu](https://portal.azure.com)
 
 
 ## <a name="create-a-server"></a>Tworzenie serwera
@@ -41,10 +41,10 @@ W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Anal
    * **Subskrypcja**: wybierz subskrypcję, z którą będzie skojarzony ten serwer.
    * **Grupa zasobów**: utwórz nową grupę zasobów lub wybierz istniejącą. Grupy zasobów ułatwiają zarządzanie kolekcją zasobów platformy Azure. Aby dowiedzieć się więcej, zobacz [grupy zasobów](../azure-resource-manager/resource-group-overview.md).
    * **Lokalizacja**: lokalizacja centrum danych Azure, w którym będzie hostowany ten serwer. Wybierz lokalizację najbliższą względem Twojej największej bazy użytkowników.
-   * **Warstwa cenowa**: wybierz warstwę cenową. Jeśli testujesz tę funkcję i planujesz zainstalować przykładową modelową bazę danych, wybierz bezpłatną warstwę **D1**. Aby dowiedzieć się więcej, zobacz [cennik usług Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). 
-    * **Administrator**: domyślnie jest to aktualnie zalogowane konto. Możesz wybrać inne konto w usłudze Azure Active Directory.
-    * **Ustawienie Magazyn kopii zapasowych**: opcjonalne. Jeśli masz już [konto magazynu](../storage/common/storage-introduction.md), możesz je wskazać jako domyślny magazyn kopii zapasowych modelowej bazy danych. Możesz również określić ustawienia [tworzenia i przywracania kopii zapasowych](analysis-services-backup.md) później.
-    * **Czas wygaśnięcia klucza magazynu**: opcjonalne. Określ czas wygaśnięcia klucza magazynu.
+   * **Warstwa cenowa**: Wybierz warstwę cenową. Jeśli testujesz tę funkcję i planujesz zainstalować przykładową modelową bazę danych, wybierz bezpłatną warstwę **D1**. Aby dowiedzieć się więcej, zobacz [cennik usług Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). 
+    * **Administrator**: domyślnie jest to konto użyte do bieżącego logowania. Możesz wybrać inne konto w usłudze Azure Active Directory.
+    * **Ustawienie Magazyn kopii zapasowych**: Opcjonalny. Jeśli masz już [konto magazynu](../storage/common/storage-introduction.md), możesz je wskazać jako domyślny magazyn kopii zapasowych modelowej bazy danych. Możesz również określić ustawienia [tworzenia i przywracania kopii zapasowych](analysis-services-backup.md) później.
+    * **Czas wygaśnięcia klucza magazynu**: Opcjonalny. Określ czas wygaśnięcia klucza magazynu.
 
 Tworzenie serwera zwykle trwa mniej niż minutę. W przypadku wybrania opcji **Dodaj do portalu** przejdź do portalu, aby zobaczyć nowy serwer. Możesz też wybrać pozycję **Wszystkie usługi** > **Analysis Services**, aby sprawdzić, czy serwer jest gotowy.
 
@@ -61,4 +61,4 @@ W tym przewodniku Szybki Start przedstawiono sposób tworzenia serwera w ramach 
 > [!div class="nextstepaction"]
 > [Szybki start: konfigurowanie zapory serwera — Portal](analysis-services-qs-firewall.md)   
 > [!div class="nextstepaction"]
-> [Tutorial: Add a sample model to your server](analysis-services-create-sample-model.md) (Samouczek: dodawanie przykładowego modelu do serwera)
+> [Samouczek: dodawanie przykładowego modelu do serwera](analysis-services-create-sample-model.md)

@@ -1,21 +1,22 @@
 ---
-title: Zdarzenia niestandardowe dla usługi Azure Event Grid z interfejsem wiersza polecenia | Microsoft Docs
-description: Za pomocą usługi Azure Event Grid i interfejsu wiersza polecenia platformy Azure można opublikować temat i zasubskrybować dane zdarzenie.
+title: Wysłanie zdarzeń niestandardowych do internetowego punktu końcowego — Event Grid, interfejs wiersza polecenia platformy Azure | Microsoft Docs
+description: Za pomocą usługi Azure Event Grid i wiersza polecenia platformy Azure można opublikować temat niestandardowy i zasubskrybować zdarzenia dla tego tematu. Zdarzenia są obsługiwane przez aplikację internetową.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/02/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: fe48125da881cd30b8a2645b5406840e2eef7e96
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.custom: seodec18
+ms.openlocfilehash: 12fbc23e372042b54a987015273c004b32a9584a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041569"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104428"
 ---
-# <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>Tworzenie i kierowanie zdarzeń niestandardowych za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Szybki start: Kierowanie zdarzeń niestandardowych do internetowego punktu końcowego za pomocą interfejs wiersza polecenia platformy Azure i usługi Event Grid
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji sieci Web, która zbiera i wyświetla komunikaty.
 
@@ -47,7 +48,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Tworzenie tematu niestandardowego
 
-Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<your-topic-name>` na unikatową nazwę tematu. Nazwa tematu niestandardowego musi być unikatowa, ponieważ stanowi część wpisu DNS.
+Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<your-topic-name>` na unikatową nazwę tematu. Nazwa tematu niestandardowego musi być unikatowa, ponieważ stanowi część wpisu DNS. Ponadto musi mieć długość od 3 do 50 znaków i zawierać wyłącznie wartości a–z, A–Z, 0–9 i „-”.
 
 ```azurecli-interactive
 topicname=<your-topic-name>

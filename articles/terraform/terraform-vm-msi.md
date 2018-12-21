@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242096"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971168"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanych dla zasobów platformy Azure
 
@@ -37,7 +37,7 @@ Poniżej przedstawiono kroki tworzenia wystąpienia maszyny wirtualnej programu 
 
 3. Na karcie Szczegóły programu Terraform w prawym dolnym rogu wybierz przycisk **Utwórz**.
 
-    ![Tworzenie maszyny wirtualnej programu Terraform](media\terraformmsi.png)
+    ![Tworzenie maszyny wirtualnej programu Terraform](media/terraformmsi.png)
 
 4. Poniższe sekcje zawierają dane wejściowe dla każdego z kroków kreatora na potrzeby tworzenia maszyny wirtualnej programu Terraform z systemem Linux. W poniższej sekcji przedstawiono dane wejściowe wymagane do skonfigurowania każdego z tych kroków.
 

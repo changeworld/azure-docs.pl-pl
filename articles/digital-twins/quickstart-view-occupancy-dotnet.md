@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e11ae90655e1d4ce7a2475f0eacefb25491416da
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ab1e879a7c145699779f6af3a97cef0ee6b5d219
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582398"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105516"
 ---
-# <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Szybki start: wyszukiwanie dostępnych pomieszczeń przy użyciu usługi Azure Digital Twins
+# <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Szybki start: Wyszukiwanie dostępnych pomieszczeń przy użyciu usługi Azure Digital Twins
 
 Usługa Azure Digital Twins umożliwia odtworzenie cyfrowego obrazu środowiska fizycznego. Mając taki obraz, możesz otrzymywać powiadomienia o zdarzeniach w tym środowisku i dostosować sposoby reagowania na nie. 
 
@@ -59,7 +59,7 @@ Skompiluj aplikację dotyczącą zajętości pomieszczeń, wykonując poniższe 
 1. Edytuj plik **appSettings.json**, aby zaktualizować następujące zmienne:
     - **ClientId**: wprowadź identyfikator aplikacji zarejestrowanej w usłudze Azure AD, który został zanotowany w poprzedniej sekcji.
     - **Tenant**: wprowadź identyfikator katalogu dzierżawy usługi Azure AD, który również został zanotowany w poprzedniej sekcji.
-    - **BaseUrl**: adres URL interfejsu API zarządzania wystąpienia usługi Digital Twins, który ma format `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Zamień symbole zastępcze w tym adresie URL na wartości odpowiadające Twojemu wystąpieniu z poprzedniej sekcji.
+    - **BaseUrl**: adres URL interfejsu API zarządzania dla wystąpienia usługi Digital Twins, który ma format `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Zamień symbole zastępcze w tym adresie URL na wartości odpowiadające Twojemu wystąpieniu z poprzedniej sekcji.
 
 ## <a name="provision-graph"></a>Aprowizowanie wykresu
 
@@ -71,7 +71,7 @@ Ten krok obejmuje aprowizację wykresu przestrzennego usługi Digital Twins o na
 - Funkcja niestandardowa. 
 - Przypisanie jednej roli.
  
-Wykres przestrzenny zostanie zaaprowizowany przy użyciu pliku [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml).
+Wykres przestrzenny zostanie zaaprowizowany przy użyciu pliku [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml). 
 
 1. Uruchom polecenie `dotnet run ProvisionSample`.
     >[!NOTE]
@@ -88,6 +88,9 @@ Wykres przestrzenny zostanie zaaprowizowany przy użyciu pliku [provisionSample.
 1. Na koniec wykonywania skopiuj wartość parametru `ConnectionString` urządzenia — będzie ona potrzebna w przykładzie symulatora urządzenia. Skopiuj tylko ciąg wyróżniony na poniższym rysunku.
 
     ![Przykład aprowizacji][1]
+
+    >[!TIP]
+    > Wykres przestrzenny można wyświetlać i modyfikować przy użyciu narzędzia [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
 ## <a name="send-sensor-data"></a>Wysyłanie danych z czujników
 

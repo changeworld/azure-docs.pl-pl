@@ -1,21 +1,22 @@
 ---
-title: Omówienie usługi Azure Event Grid
-description: Opis usługi Azure Event Grid i pojęć z nią związanych.
+title: Publikowanie i subskrybowanie zdarzeń aplikacji — Azure Event Grid
+description: Wysyłaj dane zdarzenia ze źródła do procedury obsługi za pomocą usługi Azure Event Grid. Twórz aplikacje oparte na zdarzeniach i integruj z usługami platformy Azure.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 08/17/2018
+ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: fbe9b79cd407f74686d572aa1e5c7ac1d837cd25
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: 466f7614026866bb038f3c73b23e28e34d9f2e30
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223418"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321020"
 ---
-# <a name="an-introduction-to-azure-event-grid"></a>Wprowadzenie do usługi Azure Event Grid
+# <a name="what-is-azure-event-grid"></a>Co to jest usługa Azure Event Grid?
 
 Usługa Azure Event Grid umożliwia łatwe tworzenie aplikacji za pomocą architektur opartych na zdarzeniach. Wystarczy, że wybierzesz zasób platformy Azure, który chcesz zasubskrybować, i wskażesz procedurę obsługi zdarzeń lub punkt końcowy elementu WebHook, do którego ma zostać wysłane zdarzenie. Usługa Event Grid obsługuje zdarzenia pochodzące z usług platformy Azure, takich jak obiekty blob magazynu i grupy zasobów. Usługa Event Grid zapewnia również obsługę niestandardowych zdarzeń opartych na niestandardowych tematach. 
 
@@ -25,9 +26,9 @@ Obecnie usługa Azure Event Grid jest dostępna we wszystkich publicznych region
 
 Ten artykuł zawiera omówienie usługi Azure Event Grid. Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md). 
 
-![Model funkcjonalny usługi Event Grid](./media/overview/functional-model.png)
+![Model źródeł i procedur obsługi usługi Event Grid](./media/overview/functional-model.png)
 
-Uwaga: poniżej przedstawiono połączenie źródeł i procedur obsługi w usłudze Event Grid. Ilustracja nie zawiera pełnej listy obsługiwanych integracji.
+Poniżej przedstawiono połączenie źródeł i procedur obsługi w usłudze Event Grid. Ilustracja nie zawiera pełnej listy obsługiwanych integracji.
 
 ## <a name="event-sources"></a>Źródła zdarzeń
 
@@ -64,7 +65,7 @@ Oto pięć pojęć związanych z usługą Azure Event Grid, które ułatwiają r
 * **Zdarzenia** — co miało miejsce.
 * **Źródła zdarzeń** — gdzie wystąpiło zdarzenie.
 * **Tematy** — punkt końcowy, do którego wydawcy wysyłają zdarzenia.
-* **Subskrypcje zdarzeń** — punkt końcowy lub wbudowany mechanizm przekierowywania zdarzeń, czasami do wielu procedur obsługi. Subskrypcje są również używane przez procedury obsługi w celu inteligentnego filtrowania zdarzeń przychodzących.
+* **Subskrypcje zdarzeń** — punkt końcowy lub wbudowany mechanizm przekierowywania zdarzeń, czasami do więcej niż jednej procedury obsługi. Subskrypcje są również używane przez procedury obsługi w celu inteligentnego filtrowania zdarzeń przychodzących.
 * **Procedura obsługi zdarzeń** — aplikacja lub usługa reagująca na zdarzenie.
 
 Aby uzyskać więcej informacji dotyczących tych pojęć, zobacz [Concepts in Azure Event Grid (Pojęcia używane w usłudze Azure Event Grid)](concepts.md).
@@ -75,7 +76,7 @@ Oto główne funkcje usługi Azure Event Grid:
 
 * **Prostota** — wystarczy wskazać element i go kliknąć, aby skierować zdarzenia z zasobu platformy Azure do dowolnej procedury obsługi zdarzeń lub punktu końcowego.
 * **Zaawansowane filtrowanie** — filtrowanie zdarzeń według typu lub ścieżki publikowania gwarantuje, że do procedur obsługi trafiają tylko istotne zdarzenia.
-* **Wielokierunkowość** — jedno zdarzenie może być subskrybowane przez wiele punktów końcowych, co pozwala wysyłać kopie zdarzenia do wszystkich potrzebnych miejsc.
+* **Wielokierunkowość** — jedno zdarzenie może być subskrybowane przez kilka punktów końcowych, co pozwala wysyłać kopie zdarzenia do wszystkich potrzebnych miejsc.
 * **Niezawodność** — 24-godzinne ponawianie z wykładniczym wycofywaniem gwarantuje dostarczanie zdarzeń.
 * **Płatność za zdarzenia** — płacisz tylko za rzeczywiste użycie usługi Event Grid.
 * **Wysoka przepływność** — usługa Event Grid jest przeznaczona do obsługi dużych obciążeń i milionów zdarzeń na sekundę.
@@ -86,25 +87,25 @@ Porównanie usług Event Grid, Event Hubs i Service Bus można znaleźć w temac
 
 ## <a name="what-can-i-do-with-event-grid"></a>Do czego można wykorzystać usługę Event Grid?
 
-Usługa Azure Event Grid udostępnia kilka możliwości, które znacząco usprawniają pracę bezserwerową, automatyzację operacji oraz integrację: 
+Usługa Azure Event Grid udostępnia kilka funkcji, które znacząco usprawniają pracę bezserwerową, automatyzację operacji oraz [integrację](http://azure.com/integration): 
 
 ### <a name="serverless-application-architectures"></a>Architektury aplikacji bez użycia serwera
 
-![Aplikacja bezserwerowa](./media/overview/serverless_web_app.png)
+![Architektura aplikacji bez użycia serwera](./media/overview/serverless_web_app.png)
 
-Usługa Event Grid łączy źródła danych i procedury obsługi zdarzeń. Przykładowo możesz użyć usługi Event Grid, aby natychmiast wyzwalać funkcję bezserwerową i uruchamiać analizę obrazu za każdym razem, gdy do kontenera magazynu obiektów blob zostanie dodane nowe zdjęcie. 
+Usługa Event Grid łączy źródła danych i procedury obsługi zdarzeń. Usługi Event Grid można na przykład użyć, aby wyzwolić funkcję bezserwerową, która analizuje obrazy po dodaniu do kontenera magazynu obiektów blob. 
 
 ### <a name="ops-automation"></a>Automatyzacja operacji
 
 ![Automatyzacja operacji](./media/overview/Ops_automation.png)
 
-Usługa Event Grid umożliwia przyspieszenie automatyzacji i uproszczenie wymuszania zasad. Przykładowo usługa Event Grid może powiadamiać usługę Azure Automation o utworzeniu maszyny wirtualnej lub rozszerzeniu usługi SQL Database. Te zdarzenia mogą zostać wykorzystane do automatycznego sprawdzania, czy konfiguracje usługi są zgodne, umieszczania metadanych w narzędziach do obsługi operacji, tagowania maszyn wirtualnych lub zachowywania elementów roboczych.
+Usługa Event Grid umożliwia przyspieszenie automatyzacji i uproszczenie wymuszania zasad. Usługi Event Grid można na przykład użyć, aby powiadamiać usługę Azure Automation o utworzeniu maszyny wirtualnej lub bazy danych SQL. Te zdarzenia mogą zostać wykorzystane do automatycznego sprawdzania, czy konfiguracje usługi są zgodne, umieszczania metadanych w narzędziach do obsługi operacji, tagowania maszyn wirtualnych lub zachowywania elementów roboczych.
 
 ### <a name="application-integration"></a>Integracja aplikacji
 
-![Integracja aplikacji](./media/overview/app_integration.png)
+![Integracja aplikacji z platformą Azure](./media/overview/app_integration.png)
 
-Usługa Event Grid łączy aplikację z innymi usługami. Przykładowo możesz utworzyć temat niestandardowy, aby wysłać dane zdarzeń aplikacji do usługi Event Grid i wykorzystać niezawodne dostarczanie, zaawansowany routing i bezpośrednią integrację z platformą Azure. Ewentualnie możesz użyć usług Event Grid i Logic Apps do przetwarzania danych w dowolnym miejscu, bez pisania kodu. 
+Usługa Event Grid łączy aplikację z innymi usługami. Przykładowo możesz utworzyć temat niestandardowy, aby wysłać dane zdarzeń aplikacji do usługi Event Grid i wykorzystać niezawodne dostarczanie, zaawansowany routing i bezpośrednią integrację z platformą Azure. Możesz też użyć usług Event Grid i Logic Apps do przetwarzania danych w dowolnym miejscu, bez pisania kodu. 
 
 ## <a name="how-much-does-event-grid-cost"></a>Ile kosztuje korzystanie z usługi Event Grid?
 
@@ -121,4 +122,4 @@ Usługa Azure Event Grid korzysta z modelu płatności za zdarzenia, w którym p
 * [Przesyłanie strumieniowe danych Big Data do magazynu danych](event-grid-event-hubs-integration.md)  
   Samouczek przedstawiający użycie usługi Azure Functions do strumieniowego przesyłania danych z usługi Event Hubs do usługi SQL Data Warehouse.
 * [Event Grid REST API reference (Dokumentacja interfejsu API REST usługi Event Grid)](/rest/api/eventgrid)  
-  Zawiera informacje techniczne dotyczące usługi Azure Event Grid oraz dokumentację dotyczącą zarządzania subskrypcjami zdarzeń, routingiem i filtrowaniem.
+  Zawiera informacje na temat zarządzania subskrypcjami zdarzeń, routingiem i filtrowaniem.

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3cdc4a8a670b5af43e72b38d7a3b6d9aafdac348
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 15dbdc0bb2a3b7ee5af544adb2672a97f839f694
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429443"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970199"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -182,7 +182,7 @@ Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w r
 
 ### <a name="azure-governance"></a>Zarządzanie platformą Azure
 
-Usługa Azure Analysis Services jest objęta [warunkami dotyczącymi usług online firmy Microsoft](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) i [zasadami zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement).
+Usługa Azure Analysis Services jest objęta [warunkami dotyczącymi usług online firmy Microsoft](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) i [zasadami zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement).
 Aby dowiedzieć się więcej na temat zabezpieczeń platformy Azure, zobacz [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
 
 ## <a name="use-the-tools-you-already-know"></a>Korzystaj z narzędzi, które już znasz
@@ -251,7 +251,7 @@ Społeczność użytkowników usług Analysis Services jest bardzo aktywna. Doł
 > [Utwórz konto bezpłatnej wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Szybki start: tworzenie serwera — portal](analysis-services-create-server.md)   
+> [Szybki start: Tworzenie serwera — Portal](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Szybki start: tworzenie serwera — PowerShell](analysis-services-create-powershell.md)  
+> [Szybki start: Tworzenie serwera — PowerShell](analysis-services-create-powershell.md)  

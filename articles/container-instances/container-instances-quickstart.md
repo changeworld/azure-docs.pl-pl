@@ -1,23 +1,23 @@
 ---
-title: Przewodnik Szybki start — Uruchamianie aplikacji w usłudze Azure Container Instances
-description: W tym przewodniku Szybki start wdrożysz aplikację działającą w kontenerze Docker w usłudze Azure Container Instances przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Szybki start — uruchamianie aplikacji w usłudze Azure Container Instances — wiersz polecenia
+description: W tym przewodniku Szybki start wdrożysz aplikację kontenera Docker działającą w wyizolowanym kontenerze w usłudze Azure Container Instances przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 7db3d9a076fe9ff5b8bbf970705b82a3f0d5ce54
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 70d1bc9003d98f0154b9f38738f1b8e82b0c506d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855667"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189612"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Szybki start: uruchamianie aplikacji w usłudze Azure Container Instances
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-the-azure-cli"></a>Szybki start: Uruchamianie aplikacji kontenera w usłudze Azure Container Instances przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Używając usługi Azure Container Instances, możesz łatwo i szybko uruchamiać kontenery Docker na platformie Azure. Nie musisz wdrażać maszyn wirtualnych ani korzystać z pełnej platformy orkiestracji kontenerów, takiej jak Kubernetes. Podczas pracy z tym przewodnikiem Szybki start utworzysz kontener na platformie Azure przy użyciu witryny Azure Portal i udostępnisz jego aplikację za pomocą w pełni kwalifikowanej nazwy domeny (FQDN). Kilka sekund po wykonaniu pojedynczego polecenia wdrożenia możesz przejść do uruchomionej aplikacji:
+Używając usługi Azure Container Instances, możesz łatwo i szybko uruchamiać kontenery Docker na platformie Azure. Nie musisz wdrażać maszyn wirtualnych ani korzystać z pełnej platformy orkiestracji kontenerów, takiej jak Kubernetes. Podczas pracy z tym przewodnikiem Szybki start utworzysz kontener na platformie Azure przy użyciu interfejsu wiersza polecenia i udostępnisz jego aplikację za pomocą w pełni kwalifikowanej nazwy domeny (FQDN). Kilka sekund po wykonaniu pojedynczego polecenia wdrożenia możesz przejść do uruchomionej aplikacji:
 
 ![Aplikacja wdrożona w usłudze Azure Container Instances widziana w przeglądarce][aci-app-browser]
 

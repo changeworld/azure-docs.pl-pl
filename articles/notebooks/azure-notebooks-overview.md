@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure Notebooks | Microsoft Docs
-description: Notesy Jupyter można uruchamiać w chmurze przy użyciu bezpłatnej usługi Azure Notebooks.
+title: Omówienie usługi Azure Notebooks
+description: Notesy Jupyter można uruchamiać w chmurze przy użyciu bezpłatnej usługi Azure Notebooks, która nie wymaga instalacji ani konfiguracji.
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a84f71c2656c73867ee076d4b993026558a0a504
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 92cfdea12dc51884ea04ed894a79ded7f532d88b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853543"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085403"
 ---
 # <a name="overview-of-azure-notebooks"></a>Omówienie usługi Azure Notebooks
 
-Azure Notebooks to bezpłatna usługa hostowana umożliwiająca tworzenie i uruchamianie notesów Jupyter w chmurze bez instalacji. [Jupyter](http://jupyter.org/) (wcześniej IPython) to projekt typu open source, który umożliwia łatwe łączenie tekstu Markdown, kodu wykonywalnego, trwałych danych, grafiki i wizualizacji na jednej kanwie nazywanej *notesem* z możliwością udostępniania (zdjęcia za zgodą jupyter.org):
+Azure Notebooks to bezpłatna usługa hostowana umożliwiająca tworzenie i uruchamianie notesów Jupyter w chmurze bez instalacji. [Jupyter](https://jupyter.org/) (wcześniej IPython) to projekt typu open source, który umożliwia łatwe łączenie tekstu Markdown, kodu wykonywalnego, trwałych danych, grafiki i wizualizacji na jednej kanwie nazywanej *notesem* z możliwością udostępniania (zdjęcia za zgodą jupyter.org):
 
-[![](http://jupyter.org/assets/jupyterpreview.png "Notesy programu Jupyter")](http://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![](https://jupyter.org/assets/jupyterpreview.png "Notesy programu Jupyter")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Dzięki zaawansowanemu połączeniu kodu, grafiki i opisowego tekstu notesy Jupyter znalazły wiele zastosowań, takich jak instrukcje przetwarzania danych do celów naukowych, czyszczenie i transformacje danych, symulacje numeryczne, modelowanie statystyczne oraz tworzenie modeli uczenia maszynowego.
 
@@ -51,7 +51,7 @@ Ponieważ usługa Azure Notebooks jest ogólną platformą do tworzenia, wykonyw
 Krótko mówiąc, usługa Azure Notebooks pomaga wydajniej wykonywać swoją pracę, co przekłada się na lepsze wyniki.
 
 > [!Note]
-> Więcej informacji na temat oprogramowania Jupyter można znaleźć w witrynie [jupyter.org](http://jupyter.org/) oraz w [dokumentacji oprogramowania Jupyter](http://jupyter-notebook.readthedocs.io/en/latest/).
+> Więcej informacji na temat oprogramowania Jupyter można znaleźć w witrynie [jupyter.org](https://jupyter.org/) oraz w [dokumentacji oprogramowania Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/).
 
 ## <a name="pricing-and-quotas"></a>Cennik i przydziały
 
@@ -71,7 +71,7 @@ Dla każdego notesu można wybrać jądro (tj. środowisko uruchomieniowe), któ
 
 Usługa Azure Notebooks udostępnia również dodatkowe pakiety, które nie znajdują się w podstawowych dystrybucjach. Na przykład jądra języka Python zawierają biblioteki numpy, pandas, scikit-learn, matplotlib i bokeh.
 
-Można również dostosować projekt, tworząc środowisko dla wszystkich notesów. Aby uzyskać więcej informacji, zobacz [Szybki start: tworzenie projektu w środowisku niestandardowym](quickstart-create-jupyter-notebook-project-environment.md).
+Można również dostosować projekt, tworząc środowisko dla wszystkich notesów. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie projektu w środowisku niestandardowym](quickstart-create-jupyter-notebook-project-environment.md)
 
 Oprócz podstawowych dystrybucji usługa Azure Notebooks udostępnia wiele dodatkowych, wstępnie zainstalowanych pakietów, które są przydatne dla analityków danych. Można także instalować własne pakiety, korzystając z typowych procesów dla poszczególnych języków.
 

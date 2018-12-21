@@ -1,21 +1,22 @@
 ---
-title: Kierowanie zdarzeń usługi Azure Blob Storage do niestandardowego internetowego punktu końcowego | Microsoft Docs
-description: Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid.
+title: Wysyłanie zdarzeń usługi Azure Blob Storage do niestandardowego internetowego punktu końcowego — Azure CLI | Microsoft Docs
+description: Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid. Wyślij zdarzenia do elementu webhook. Określ obsługę zdarzeń w aplikacji internetowej.
 services: storage,event-grid
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 08/23/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 78ee6f198bf4e16e3b2b0deb8fdb0b68c0fe9b73
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec18
+ms.openlocfilehash: 2586b7f9c2a182ee065daab1d2a43eb5e0e2c99c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735095"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073724"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Kierowanie zdarzeń usługi Blob Storage do niestandardowego internetowego punktu końcowego za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Szybki start: Kierowanie zdarzeń usługi magazynu do internetowego punktu końcowego za pomocą interfejsu Azure CLI
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówiono subskrybowanie zdarzeń usługi Blob Storage i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure.
 
@@ -30,7 +31,7 @@ Po wykonaniu czynności opisanych w tym artykule dane powinny zostać wysłane d
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w najnowszej wersji (2.0.24 lub nowszej). Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu Azure CLI w najnowszej wersji (2.0.24 lub nowszej). Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 Jeśli nie korzystasz z usługi Cloud Shell, musisz się najpierw zalogować za pomocą polecenia `az login`.
 

@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 08/01/2018
 ms.author: danlep
-ms.openlocfilehash: 98497812e75d07fc153e0e351331c05484164fdd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 37f1bf5dc20d097f7f5f560e3bf1fdd25dc38045
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052703"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408055"
 ---
 # <a name="what-is-azure-batch-ai"></a>Co to jest Azure Batch AI?
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Azure Batch AI to zarządzana usługa, która ułatwia analitykom danych i badaczom SI uczenie i testowanie modeli SI oraz uczenia maszynowego na dużą skalę na platformie Azure bez konieczności zarządzania złożoną infrastrukturą. Użytkownik opisuje zasoby obliczeniowe, zadania, które chce uruchomić, miejsca, gdzie będą przechowywane dane wejściowe i dane wyjściowe modelu, a usługa Batch AI zajmuje się resztą.
 
@@ -49,7 +52,7 @@ Po przeszkoleniu modelu użyj usługi Batch AI do testowania modelu, jeśli skry
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Używaj zestawów SDK usługi Batch AI, skryptów wiersza polecenia lub witryny Azure Portal, aby zarządzać zasobami obliczeniowymi i planować zadania na potrzeby szkolenia i testowania sztucznej inteligencji: 
+Używaj zestawów SDK usługi Batch AI, skryptów wiersza polecenia lub witryny Azure Portal, aby zarządzać zasobami obliczeniowymi i planować zadania na potrzeby szkolenia i testowania sztucznej inteligencji: 
 
 * **Ustanawiaj i skaluj klastry maszyn wirtualnych** — wybierz liczbę węzłów (maszyn wirtualnych) oraz rozmiar maszyn wirtualnych z procesorem GPU lub innego typu, który odpowiada Twoim potrzebom w zakresie szkolenia. Skaluj liczbę węzłów w górę lub w dół automatycznie lub ręcznie, aby używać zasobów tylko wtedy, gdy jest to konieczne. 
 

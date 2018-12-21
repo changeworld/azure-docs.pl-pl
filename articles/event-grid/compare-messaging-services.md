@@ -1,21 +1,22 @@
 ---
-title: Porównanie usług obsługi komunikatów platformy Azure
-description: Porównanie usług Azure Event Grid, Event Hubs i Service Bus. Zalecenia dotyczące tego, której usługi używać w różnych scenariuszach.
+title: Porównanie obsługi wiadomości na platformie Azure — Event Grid, Event Hubs, Service Bus
+description: W tym artykule opisano trzy usługi do obsługi wiadomości na platformie Azure — Azure Event Grid, Event Hubs i Service Bus. Zalecenia dotyczące tego, której usługi używać w różnych scenariuszach.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 07/05/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852201"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166527"
 ---
-# <a name="choose-between-azure-services-that-deliver-messages"></a>Wybieranie między usługami platformy Azure dostarczającymi komunikaty
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Wybór usługi do obsługi wiadomości na platformie Azure — Event Grid, Event Hubs i Service Bus
 
 Platforma Azure oferuje 3 usługi, które pomagają dostarczać komunikaty o zdarzeniach w obrębie rozwiązania. Te usługi to:
 
@@ -33,7 +34,7 @@ Należy pamiętać o istotnej różnicy między usługami dostarczającymi zdarz
 
 Zdarzenie to lekkie powiadomienie z informacją o zmianie stanu lub warunku. Wydawca zdarzenia nie ma żadnych oczekiwań dotyczących sposobu obsługi zdarzenia. Odbiorca zdarzenia decyduje o tym, co zrobić z powiadomieniem. Zdarzenia mogą być odrębnymi jednostkami lub częścią serii.
 
-Zdarzenia odrębne zgłaszają zmianę stanu i umożliwiają wykonanie akcji. Aby wykonać kolejny krok, odbiorca musi tylko wiedzieć, że coś się wydarzyło. Dane zdarzenia zawierają informacje o tym, co się stało, ale nie zawierają danych, które wyzwoliły zdarzenie. Na przykład zdarzenie powiadamia odbiorców, że utworzono plik. Może ono zawierać ogólne informacje o pliku, ale nie zawiera samego pliku. Zdarzenia odrębne doskonale sprawdzają się w rozwiązaniach bez serwera wymagających skalowania.
+Zdarzenia odrębne zgłaszają zmianę stanu i umożliwiają wykonanie akcji. Aby wykonać kolejny krok, odbiorca musi tylko wiedzieć, że coś się wydarzyło. Dane zdarzenia zawierają informacje o tym, co się stało, ale nie zawierają danych, które wyzwoliły zdarzenie. Na przykład zdarzenie powiadamia odbiorców, że utworzono plik. Może ono zawierać ogólne informacje o pliku, ale nie zawiera samego pliku. Zdarzenia odrębne doskonale sprawdzają się w rozwiązaniach [bez serwera](http://azure.com/serverless) wymagających skalowania.
 
 Zdarzenia w serii zgłaszają warunek i nadają się do analizy. Zdarzenia są uporządkowane według czasu i powiązane. Odbiorca potrzebuje sekwencyjnej serii zdarzeń, aby móc przeanalizować, co się zdarzyło.
 

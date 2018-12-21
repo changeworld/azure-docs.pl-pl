@@ -1,5 +1,5 @@
 ---
-title: Odkrywaj interfejsy API REST w narzędziu Fiddler lub Postman (interfejs REST usługi Azure Search) | Microsoft Docs
+title: Odkrywaj interfejsy API REST przy użyciu narzędzi Fiddler lub Postman umożliwiających testowanie żądań HTTP — Azure Search
 description: Jak używać narzędzia Fiddler lub Postman do wystawiania żądań HTTP i wywołań interfejsu API REST do usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: f73ec81686575efde70b7f90239299ec4deca00c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190189"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312990"
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Odkrywaj interfejsy API REST usługi Azure Search przy użyciu narzędzia Fiddler lub Postman
 
@@ -65,7 +66,7 @@ Kompozycja nagłówka żądania zawiera dwa elementy, typ zawartości i klucz ap
 
 ### <a name="fiddler"></a>Fiddler
 
-Sformułuj żądanie takie, jak to przedstawiono na poniższym zrzucie ekranu. Wybierz **PUT** jako zlecenie. Narzędzie Fiddler dodaje `User-Agent=Fiddler`. Możesz wkleić dwa dodatkowe nagłówki żądania w nowych wierszach poniżej. Uwzględnij typ zawartości i klucz api-key dla swojej usługi, używając klucza dostępu administratora dla usługi.
+Sformułuj takie żądanie, jak przedstawiono na poniższym zrzucie ekranu. Wybierz **PUT** jako zlecenie. Narzędzie Fiddler dodaje `User-Agent=Fiddler`. Możesz wkleić dwa dodatkowe nagłówki żądania w nowych wierszach poniżej. Uwzględnij typ zawartości i klucz api-key dla swojej usługi, używając klucza dostępu administratora dla usługi.
 
 ![Nagłówek żądania narzędzia Fiddler][1]
 
@@ -74,7 +75,7 @@ Sformułuj żądanie takie, jak to przedstawiono na poniższym zrzucie ekranu. W
 
 ### <a name="postman"></a>Postman
 
-Sformułuj żądanie takie, jak to przedstawiono na poniższym zrzucie ekranu. Wybierz **PUT** jako zlecenie. 
+Sformułuj takie żądanie, jak przedstawiono na poniższym zrzucie ekranu. Wybierz **PUT** jako zlecenie. 
 
 ![Nagłówek żądania narzędzia Postman][6]
 
@@ -110,13 +111,13 @@ Jeśli otrzymasz odpowiedź 504 protokołu HTTP, sprawdź, czy adres URL określ
 
 ### <a name="fiddler"></a>Fiddler
 
-Skopiuj definicję indeksu do treści żądania, podobnie jak na poniższym zrzucie ekranu, a następnie kliknij przycisk **Wykonaj** u góry z prawej strony, aby wysłać zakończone żądanie.
+Skopiuj definicję indeksu do treści żądania, podobnie jak na poniższym zrzucie ekranu, a następnie kliknij przycisk **Wykonaj** u góry z prawej strony, aby wysłać ukończone żądanie.
 
 ![Treść żądania narzędzia Fiddler][7]
 
 ### <a name="postman"></a>Postman
 
-Skopiuj definicję indeksu do treści żądania, podobnie jak na poniższym zrzucie ekranu, a następnie kliknij przycisk **Wyślij** u góry z prawej strony, aby wysłać zakończone żądanie.
+Skopiuj definicję indeksu do treści żądania, podobnie jak na poniższym zrzucie ekranu, a następnie kliknij przycisk **Wyślij** u góry z prawej strony, aby wysłać ukończone żądanie.
 
 ![Treść żądania narzędzia Postman][8]
 
@@ -217,7 +218,7 @@ Teraz, gdy indeks i dokumenty są załadowane, możesz wykonywać zapytania wzgl
 + Zmień punkt końcowy, aby uwzględnić parametry zapytania wraz z ciągami wyszukiwania. Adres URL zapytania może wyglądać jak `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
 + Zachowywanie nagłówków żądania w takim stanie, w jakim są
 
-To zapytanie wyszukuje termin „motel” i zwraca liczbę dokumentów w wynikach wyszukiwania. Żądanie i odpowiedź, po kliknięciu przycisku **Wyślij**, powinny wyglądać podobnie jak na poniższym zrzucie ekranu dla narzędzia Postman. Kod stanu powinien być równy 200.
+To zapytanie wyszukuje termin „motel” i zwraca liczbę dokumentów w wynikach wyszukiwania. Po kliknięciu przycisku **Wyślij** żądanie i odpowiedź powinny wyglądać podobnie jak na poniższym zrzucie ekranu z narzędzia Postman. Kod stanu powinien być równy 200.
 
  ![Odpowiedź na zapytanie narzędzia Postman][11]
 
