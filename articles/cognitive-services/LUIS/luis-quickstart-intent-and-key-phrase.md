@@ -1,23 +1,24 @@
 ---
-title: 'Samouczek 8: Wyodrębnianie kluczowych fraz w usłudze LUIS'
+title: Wyodrębnianie kluczowych fraz
 titleSuffix: Azure Cognitive Services
 description: Użyj wstępnie utworzonej jednostki keyPhrase, aby wyodrębnić kluczową treść z wypowiedzi. Nie musisz oznaczać żadnych wypowiedzi za pomocą wstępnie utworzonych jednostek. Jednostka jest wykrywana automatycznie.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: fafb6a6cb986b5bcd795c9bac0fadfce2827c667
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0a064966f118925d2a08e0ff1ce6efc7683cac96
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424816"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096931"
 ---
-# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Samouczek 8: Wyodrębnianie kluczowych fraz wypowiedzi
+# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Samouczek 8: wyodrębnianie kluczowych fraz wypowiedzi
 W tym samouczku użyjesz wstępnie utworzonej jednostki keyPhrase w celu wyodrębnienia kluczowych treści z wypowiedzi. Nie musisz oznaczać żadnych wypowiedzi za pomocą wstępnie utworzonych jednostek. Jednostka jest wykrywana automatycznie.
 
 Następujące wypowiedzi przedstawiają przykłady kluczowych fraz:
@@ -31,7 +32,6 @@ Aplikacja kliencka może użyć tych wartości oraz innych wyodrębnionych jedno
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * Korzystanie z istniejącej aplikacji samouczka
 > * Dodawanie jednostki keyPhrase 
@@ -84,7 +84,7 @@ Dodaj wstępnie utworzoną jednostkę keyPhrase, aby wyodrębnić treść z wypo
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `does form hrf-123456 cover the new dental benefits and medical plan`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
     
-    ```JSON
+    ```json
     {
       "query": "does form hrf-123456 cover the new dental benefits and medical plan",
       "topScoringIntent": {

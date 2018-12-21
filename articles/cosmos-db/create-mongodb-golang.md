@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal'
+title: Usługa Azure Cosmos DB Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal
 description: Przykładowy kod języka Golang, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań
 services: cosmos-db
 author: slyons
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 04149e12e2926888bab82495a0924df94d6e3450
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a05ca8602ad3b5ea3135ad2ce915bdc38359bfd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836172"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089563"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal
+# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Usługa Azure Cosmos DB Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -63,7 +63,7 @@ Sklonuj przykładową aplikację i zainstaluj wymagane pakiety.
     go get gopkg.in/mgo.v2
     ```
 
-Sterownik [mgo](http://labix.org/mgo) to sterownik bazy danych [MongoDB](http://www.mongodb.org/) dla [języka Go](http://golang.org/), który implementuje zbiór rozbudowanych i dobrze przetestowanych funkcji dostępnych przez bardzo prosty interfejs API zgodny ze standardowymi idiomami języka Go.
+Sterownik [mgo](https://labix.org/mgo) to sterownik bazy danych [MongoDB](https://www.mongodb.com/) dla [języka Go](https://golang.org/), który implementuje zbiór rozbudowanych i dobrze przetestowanych funkcji dostępnych przez bardzo prosty interfejs API zgodny ze standardowymi idiomami języka Go.
 
 <a id="connection-string"></a>
 
@@ -95,7 +95,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku main.go.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Łączenie aplikacji języka Go z usługą Cosmos Azure DB
 
-Usługa Azure Cosmos DB obsługuje bazę danych MongoDB z protokołem SSL. Aby połączyć się z bazą danych MongoDB z protokołem SSL, musisz zdefiniować funkcję **DialServer** w klasie [mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) i wykorzystać funkcję [tls.*Dial*](http://golang.org/pkg/crypto/tls#Dial) do nawiązania połączenia.
+Usługa Azure Cosmos DB obsługuje bazę danych MongoDB z protokołem SSL. Aby połączyć się z bazą danych MongoDB z protokołem SSL, musisz zdefiniować funkcję **DialServer** w klasie [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) i wykorzystać funkcję [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) do nawiązania połączenia.
 
 Następujący fragment kodu w języku Golang łączy aplikację języka Go z interfejsem API bazy danych MongoDB w usłudze Azure Cosmos DB. Klasa *DialInfo* przechowuje opcje do ustanowienia sesji z klastrem bazy danych MongoDB.
 

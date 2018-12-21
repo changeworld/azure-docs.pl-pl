@@ -1,5 +1,5 @@
 ---
-title: Co to jest usługa Azure Time Series Insights? | Microsoft Docs
+title: Omówienie usługi Azure Time Series Insights — Co to jest usługa Azure Time Series Insights? | Microsoft Docs
 description: Wprowadzenie do usługi Azure Time Series Insights — nowej usługi do analizy danych szeregów czasowych i obsługi rozwiązań IoT.
 ms.service: time-series-insights
 services: time-series-insights
@@ -9,13 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
-ms.date: 01/26/2018
-ms.openlocfilehash: 85436fedacc765dcdf6a8005cf96f3d63312504c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/05/2018
+ms.custom: seodec18
+ms.openlocfilehash: d1d9fd66b60478ce1f80036167eb520b7f5aecf5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868807"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275146"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -36,7 +37,7 @@ Jeśli nie wiesz, czy Twoje dane mają postać szeregów czasowych, oto informac
 
 ## <a name="video"></a>Połączenia wideo
 
-### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>W tym wideo omawiamy usługę Time Series Insights, platformę do analizy IoT w chmurze.</br>
+W tym wideo omawiamy usługę Time Series Insights, platformę do analizy IoT w chmurze.
 
 > [!VIDEO https://www.youtube.com/embed/qNc9gQTLROs]
 
@@ -59,11 +60,11 @@ Jeśli nie wiesz, czy Twoje dane mają postać szeregów czasowych, oto informac
 
 ## <a name="capabilities"></a>Możliwości
 
-- **Szybkie rozpoczęcie pracy:** Usługa Azure Time Series Insights nie wymaga wcześniejszego przygotowywania danych. W ciągu kilku minut możliwe jest połączenie się z milionami zdarzeń w usłudze Azure IoT Hub lub centrum zdarzeń. Po połączeniu możesz wchodzić w interakcję z danymi czujników i wizualizować je, aby szybko zweryfikować swoje rozwiązania IoT. Ze swoimi danymi możesz wchodzić w interakcję bez pisania kodu.
+- **Szybkie rozpoczęcie pracy:** usługa Azure Time Series Insights nie wymaga wcześniejszego przygotowania danych. W ciągu kilku minut możliwe jest połączenie się z milionami zdarzeń w usłudze Azure IoT Hub lub centrum zdarzeń. Po połączeniu możesz wchodzić w interakcję z danymi czujników i wizualizować je, aby szybko zweryfikować swoje rozwiązania IoT. Ze swoimi danymi możesz wchodzić w interakcję bez pisania kodu.
 Nie trzeba uczyć się nowego języka — usługa Time Series Insights udostępnia szczegółową warstwę zapytań obejmujących dowolny tekst przeznaczoną dla zaawansowanych użytkowników oraz eksplorowanie za pomocą wskazywania i kliknięć.
 - **Szczegółowe informacje niemal w czasie rzeczywistym:** usługa Time Series Insights może pozyskiwać miliony zdarzeń z czujników dziennie z minutowym opóźnieniem. Usługa Time Series Insights umożliwia uzyskiwanie szczegółowych informacji dotyczących danych z czujników dzięki ułatwieniu wykrywania trendów i anomalii, przeprowadzaniu analiz głównych przyczyn problemów i unikaniu kosztownych przestojów. Po włączeniu korelacji między informacjami uzyskiwanymi w czasie rzeczywistym i danymi historycznymi usługa Time Series Insights pomaga uwidocznić ukryte trendy w danych.
-- **Tworzenie niestandardowych rozwiązań**: dane usługi Azure Time Series Insights można osadzić w istniejących aplikacjach. Przy użyciu interfejsów API REST usługi Time Series Insights można też tworzyć nowe, niestandardowe rozwiązania. Utwórz widoki spersonalizowane, które można udostępniać innym, aby umożliwić im eksplorowanie Twoich szczegółowych danych.
-- **Skalowalność**: usługa Time Series Insights obsługuje urządzenia IoT na dużą skalę. Umożliwia pozyskiwanie od 1 miliona do 100 milionów zdarzeń dziennie, które domyślnie są przechowywane przez 31 dni. Możliwe jest wizualizowanie i analizowanie strumieni bieżących danych niemal w czasie rzeczywistym na tle danych historycznych. Skala przyszłych możliwości w zakresie pozyskiwania i przechowywania danych jeszcze się zwiększy w celu dostosowania ich do potrzeb przedsiębiorstw.
+- **Tworzenie niestandardowych rozwiązań:** dane usługi Azure Time Series Insights można osadzić w istniejących aplikacjach. Przy użyciu interfejsów API REST usługi Time Series Insights można również tworzyć nowe, niestandardowe rozwiązania. Utwórz widoki spersonalizowane, które można udostępniać innym, aby umożliwić im eksplorowanie Twoich szczegółowych danych.
+- **Skalowalność:** usługa Time Series Insights obsługuje urządzenia IoT na dużą skalę. Umożliwia pozyskiwanie od 1 miliona do 100 milionów zdarzeń dziennie, które domyślnie są przechowywane przez 31 dni. Możliwe jest wizualizowanie i analizowanie strumieni bieżących danych niemal w czasie rzeczywistym na tle danych historycznych. Skala przyszłych możliwości w zakresie pozyskiwania i przechowywania danych jeszcze się zwiększy w celu dostosowania ich do potrzeb przedsiębiorstw.
 
 ## <a name="getting-started"></a>Wprowadzenie
 Rozpoczęcie pracy zajmuje mniej niż 5 minut. 

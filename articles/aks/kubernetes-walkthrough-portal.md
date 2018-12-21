@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0b4e334ea9a423ed4eb9a0830d68ad7f4b843a88
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6075086b390a14e807e493bd574ac889b81272bf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833653"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437354"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Szybki start: wdrażanie klastra usługi Azure Kubernetes Service (AKS)
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Szybki start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS)
 
 W tym przewodniku Szybki start wdrażany jest klaster AKS przy użyciu witryny Azure Portal. Następnie w klastrze jest uruchamiana aplikacja obsługująca wiele kontenerów, która składa się z frontonu internetowego i wystąpienia pamięci podręcznej Redis. Po ukończeniu aplikacja będzie dostępna w Internecie.
 
@@ -36,27 +36,27 @@ W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób** > 
 Aby utworzyć klaster usługi AKS, wykonaj następujące czynności:
 
 1. **Podstawy** — skonfiguruj następujące opcje:
-    - *SZCZEGÓŁY PROJEKTU*: wybierz subskrypcję platformy Azure, a następnie wybierz lub utwórz grupę zasobów platformy Azure, taką jak *myResourceGroup*. Wprowadź **nazwę klastra Kubernetes**, taką jak *myAKSCluster*.
-    - *SZCZEGÓŁY KLASTRA*: wybierz region, wersję platformy Kubernetes i prefiks nazwy DNS dla klastra usługi AKS.
-    - *SKALA*: wybierz rozmiar maszyny wirtualnej dla węzłów usługi AKS. Rozmiar maszyny wirtualnej **nie może** zostać zmieniony po wdrożeniu klastra AKS.
+    - *SZCZEGÓŁY PROJEKTU*: Wybierz subskrypcję platformy Azure, a następnie wybierz lub utwórz grupę zasobów platformy Azure, taką jak *myResourceGroup*. Wprowadź **nazwę klastra Kubernetes**, taką jak *myAKSCluster*.
+    - *SZCZEGÓŁY KLASTRA*: Wybierz region, wersję platformy Kubernetes i prefiks nazwy DNS dla klastra usługi AKS.
+    - *SKALA*: Wybierz rozmiar maszyny wirtualnej dla węzłów usługi AKS. Rozmiar maszyny wirtualnej **nie może** zostać zmieniony po wdrożeniu klastra AKS.
         - Wybierz liczbę węzłów do wdrożenia w klastrze. Na potrzeby tego przewodnika Szybki start ustaw pozycję **Liczba węzłów** na *1*. Liczbę węzłów **można** dostosować po wdrożeniu klastra.
     
     ![Tworzenie klastra AKS — podaj podstawowe informacje](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    Wybierz pozycję **Dalej: uwierzytelnianie** po zakończeniu.
+    Wybierz opcję **Dalej: uwierzytelnianie** po zakończeniu.
 
-1. **Uwierzytelnianie**: skonfiguruj następujące opcje:
+1. **Uwierzytelnianie**: Skonfiguruj następujące opcje:
     - Utwórz nową główną nazwę usługi lub *skonfiguruj* użycie istniejącej. W przypadku korzystania z istniejącej głównej nazwy usługi należy podać identyfikator klienta i klucz tajny głównej nazwy usługi.
     - Włącz opcję dla funkcji kontroli dostępu opartej na rolach (RBAC) w rozwiązaniu Kubernetes. Te kontrolki zapewniają bardziej precyzyjną kontrolę nad dostępem do zasobów platformy Kubernetes wdrożonych w klastrze usługi AKS.
 
-    Po zakończeniu wybierz pozycję **Dalej: sieć**.
+    Wybierz opcję **Dalej: sieć** po zakończeniu.
 
-1. **Sieć**: skonfiguruj następujące opcje sieci, które należy ustawić jako domyślne:
+1. **Sieć**: Skonfiguruj następujące opcje sieciowe:
     
     - **Routing aplikacji protokołu HTTP** — wybierz pozycję **Tak**, aby skonfigurować zintegrowanego kontrolera danych przychodzących z automatycznym tworzeniem publicznej nazwy DNS. Aby uzyskać więcej informacji na temat routingu Http, zobacz [Routing HTTP i DNS w usłudze AKS][http-routing].
     - **Konfiguracja sieci** — wybierz **podstawową** konfigurację sieci używającej wtyczki Kubernetes [kubenet][kubenet], zamiast zaawansowanej konfiguracji sieci używającej usługi [Azure CNI][azure-cni]. Aby uzyskać więcej informacji na temat opcji sieciowych, zobacz [Przegląd opcji sieciowych usługi AKS][aks-network].
     
-    Po zakończeniu wybierz pozycję **Dalej: monitorowanie**.
+    Wybierz opcję **Dalej: monitorowanie** po zakończeniu.
 
 1. W przypadku wdrażania klastra AKS można skonfigurować usługę Azure Monitor dla kontenerów, aby monitorować kondycję klastra AKS i zasobników uruchomionych w klastrze. Aby uzyskać więcej informacji dotyczących monitorowania kondycji kontenera, zobacz [Monitorowanie kondycji usługi Azure Kubernetes Service][aks-monitor].
 
@@ -88,7 +88,7 @@ Aby zweryfikować połączenie z klastrem, użyj polecenia [kubectl get][kubectl
 kubectl get nodes
 ```
 
-Poniższe przykładowe dane wyjściowe zawierają jeden węzeł utworzony w poprzednich krokach.
+Poniższe przykładowe dane wyjściowe zawierają jeden węzeł utworzony w poprzednich krokach. Upewnij się, że stan węzła to „Gotowy”.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION

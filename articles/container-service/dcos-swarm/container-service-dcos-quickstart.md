@@ -1,5 +1,5 @@
 ---
-title: Szybki start — wdrażanie klastra DC/OS w usłudze Azure Container Service
+title: (PRZESTARZAŁE) Szybki start — wdrażanie klastra DC/OS w usłudze Azure Container Service
 description: Szybki start — wdrażanie klastra DC/OS w usłudze Azure Container Service
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cd7f2284f3449fe8abdf1a6f8e85b9b0b712d7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998563"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000516"
 ---
-# <a name="deploy-a-dcos-cluster"></a>Wdrażanie klastra DC/OS
+# <a name="deprecated-deploy-a-dcos-cluster"></a>(PRZESTARZAŁE) Wdrażanie klastra DC/OS
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 System DC/OS zapewnia rozproszoną platformę dla nowoczesnych, konteneryzowanych aplikacji. Usługa Azure Container Service umożliwia łatwe i szybkie inicjowanie obsługi produkcyjnego klastra DC/OS. W tym przewodniku Szybki start przedstawiono szczegółowo podstawowe kroki wdrażania klastra DC/OS oraz uruchamiania podstawowego obciążenia.
 

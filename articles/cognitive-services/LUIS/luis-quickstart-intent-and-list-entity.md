@@ -1,23 +1,24 @@
 ---
-title: 'Samouczek 4: Dokładne dopasowanie tekstu — jednostka listy usługi LUIS'
+title: Wyodrębnianie dopasowań tekstu
 titleSuffix: Azure Cognitive Services
 description: Pobieraj dane, które są zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może mieć synonimy, które są również dokładnie zgodne
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425075"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096693"
 ---
-# <a name="tutorial-4-extract-exact-text-matches"></a>Samouczek 4: Wyodrębnianie dokładnych dopasowań tekstu
+# <a name="tutorial-4-extract-exact-text-matches"></a>Samouczek 4. Wyodrębnianie dokładnych dopasowań tekstu
 W tym samouczku dowiesz się, jak uzyskać dane zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może zawierać listę synonimów. W przypadku aplikacji Human Resources pracownik może być identyfikowany za pomocą kilku kluczowych informacji, takich jak nazwa, adres e-mail, numer telefonu i identyfikator TID. 
 
 Aplikacja Human Resources musi określić, który pracownik jest przenoszony z jednego budynku do innego. W przypadku wypowiedzi o przeniesieniu pracownika usługa LUIS określa intencję i wyodrębnia pracownika, aby aplikacja kliencka mogła utworzyć standardowe polecenie przeniesienia pracownika.
@@ -106,23 +107,23 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to numer pracownika. Dla tej dom
 
 3. W oknie podręcznym jednostki wprowadź ciąg `Employee` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Zrzut ekranu przedstawiający podręczne okno dialogowe tworzenia nowej jednostki")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe tworzenia nowej jednostki](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe tworzenia nowej jednostki")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
 4. Na stronie jednostki Employee (Pracownik) wprowadź `Employee-24612` jako nową wartość.
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Zrzut ekranu przedstawiający wprowadzanie wartości")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
+    [![Zrzut ekranu przedstawiający wprowadzanie wartości](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Zrzut ekranu przedstawiający wprowadzanie wartości")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
 5. W obszarze Synonyms (Synonimy) dodaj następujące wartości:
 
     |Cel synonimu|Wartość synonimu|
     |--|--|
-    |Name (Nazwa)|John W. Smith|
-    |Email address (Adres e-mail)|john.w.smith@mycompany.com|
-    |Phone extension (Numer wewnętrzny)|x12345|
+    |Nazwa|John W. Smith|
+    |Adres e-mail|john.w.smith@mycompany.com|
+    |Numer wewnętrzny|x12345|
     |Numer osobistego telefonu komórkowego|425-555-1212|
     |Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Zrzut ekranu przedstawiający wprowadzanie synonimów")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+    [![Zrzut ekranu przedstawiający wprowadzanie synonimów](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Zrzut ekranu przedstawiający wprowadzanie synonimów")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 6. Wprowadź `Employee-45612` jako nową wartość.
 
@@ -132,7 +133,7 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to numer pracownika. Dla tej dom
     |--|--|
     |Name (Nazwa)|Jill Jones|
     |Email address (Adres e-mail)|jill-jones@mycompany.com|
-    |Phone extension (Numer wewnętrzny)|x23456|
+    |Numer wewnętrzny|x23456|
     |Numer osobistego telefonu komórkowego|425-555-0000|
     |Federalny numer ubezpieczenia społecznego (USA)|234-56-7891|
 
@@ -150,7 +151,7 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to numer pracownika. Dla tej dom
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `shift 123-45-6789 from Z-1242 to T-54672`. Ostatni parametr ciągu zapytania to `q`, czyli **q**uery (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe wypowiedzi oznaczone etykietami, dlatego jest dobra do testowania i powinna zwrócić intencję `MoveEmployee` z wyodrębnionym elementem `Employee`.
 
-  ```JSON
+  ```json
   {
     "query": "shift 123-45-6789 from Z-1242 to T-54672",
     "topScoringIntent": {

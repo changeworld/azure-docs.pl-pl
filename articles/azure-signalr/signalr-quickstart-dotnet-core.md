@@ -1,25 +1,18 @@
 ---
-title: Przewodnik Szybki start pokazujący, jak korzystać z usługi Azure SignalR Service | Microsoft Docs
+title: Przewodnik Szybki start pokazujący, jak korzystać z usługi Azure SignalR Service
 description: Przewodnik Szybki start pokazujący, jak za pomocą usługi Azure SignalR Service utworzyć pokój rozmów przy użyciu aplikacji ASP.NET Core MVC.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: b667f38c4e3d2a3fad323171a3b3b49ed3619fd9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 805f8d55b1627ad12ce58e8a64728a42867a858e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959482"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260620"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Szybki start: tworzenie pokoju rozmów za pomocą usługi SignalR Service
 
@@ -41,7 +34,7 @@ Kod dla tego samouczka jest dostępny do pobrania w [repozytorium GitHub o nazwi
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Zainstalowany [zestaw .NET Core SDK](https://www.microsoft.com/net/download/windows)
-* Pobrane lub sklonowane repozytorium GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) 
+* Pobierz lub sklonuj repozytorium GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples). 
 
 ## <a name="create-an-azure-signalr-resource"></a>Tworzenie zasobu usługi Azure SignalR
 

@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: 3ba8064a6d13cfe9d2a2ae2ac496cfa8302989cd
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: db2328d09f9e06ccabdc2408327a342fe94fefe0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085992"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999586"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Przewodnik Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do tłumaczenia ciągu z użyciem języka Python
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Szybki start: tłumaczenie ciągu za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator oraz języka Python
 
 W tym przewodniku Szybki start dowiesz się, jak przetłumaczyć ciąg tekstowy z języka angielskiego na włoski i niemiecki przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 
@@ -161,7 +161,7 @@ Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby
 
 ## <a name="see-also"></a>Zobacz też
 
-Oprócz zwykłego tłumaczenia tekstu interfejs API tłumaczenia tekstu w usłudze Translator może wykonywać następujące zadania:
+Dowiedz się, jak używać interfejsu API tłumaczenia tekstu w usłudze Translator w następujących celach:
 
 * [Transliteracja tekstu](quickstart-python-transliterate.md)
 * [Identyfikowanie język na podstawie danych wejściowych](quickstart-python-detect.md)

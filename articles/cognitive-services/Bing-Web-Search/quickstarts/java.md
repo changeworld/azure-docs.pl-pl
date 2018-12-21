@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Przeprowadzanie wyszukiwania za pomocą platformy Java — interfejs API wyszukiwania w sieci Web Bing'
+title: 'Szybki start: przeprowadzanie wyszukiwania w Internecie za pomocą języka Java — interfejs API REST wyszukiwania w sieci Web Bing'
 titleSuffix: Azure Cognitive Services
-description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć swoje pierwsze wywołanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Java i odebrać odpowiedź w formacie JSON.
+description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejsu API wyszukiwania w sieci Web Bing przy użyciu języka Java i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: bd6630f67e151dd2ee1e60654352f3070466899b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: f56d64151f36216652c21067d5f3c64270ca266c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312667"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260977"
 ---
-# <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Java  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Szybki start: Wyszukiwanie w Internecie za pomocą interfejsu API REST wyszukiwania w sieci Web Bing i języka Java
 
 Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w sieci Web Bing i odebranie odpowiedzi JSON.  
 

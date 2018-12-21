@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: analizowanie obrazu — SDK, C# — przetwarzanie obrazu'
+title: 'Szybki start: Analizowanie obrazu — SDK, C# — przetwarzanie obrazów'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu za pomocą biblioteki klienta przetwarzania obrazów dla systemu Windows w języku C#.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 7de7a87c73c2dabddf2268a6a0bc2992d6017e4d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0983978221e9872e92ca366edd3bd3f2bfd9c3f4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853935"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413323"
 ---
-# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Szybki start: analizowanie obrazu przy użyciu zestawu Computer Vision SDK i języka C#
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Szybki start: Analizowanie obrazów przy użyciu zestawu Computer Vision SDK i języka C#
 
 W tym przewodniku Szybki Start przeprowadzisz analizę zarówno lokalnego, jak i zdalnego obrazu w celu wyodrębnienia elementów wizualnych przy użyciu biblioteki klienta przetwarzania obrazów dla systemu Windows.
 
@@ -30,7 +30,7 @@ W tym przewodniku Szybki Start przeprowadzisz analizę zarówno lokalnego, jak i
 ## <a name="analyzeimageasync-method"></a>Metoda AnalyzeImageAsync
 
 > [!TIP]
-> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
+> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 Metody `AnalyzeImageAsync` i `AnalyzeImageInStreamAsync` opakowują [interfejs API analizowania obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) odpowiednio w przypadku obrazów zdalnych i lokalnych. Możesz użyć tych metod, aby wyodrębnić elementy wizualne na podstawie zawartości obrazu i wybrać, jakie elementy mają zostać zwrócone. Mogą to być na przykład:
 

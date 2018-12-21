@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: zestaw SDK wyszukiwania wiadomości Bing, Java'
+title: 'Szybki start: Wyszukiwanie wiadomości — zestaw SDK wyszukiwania wiadomości Bing dla języka Java'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak skonfigurować aplikację konsolową zestawu SDK wyszukiwania wiadomości Bing.
+description: Skorzystaj z tego przewodnika Szybki start, aby wyszukać wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla języka Java i przetworzyć odpowiedź.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: f01f31c5cfc30ac31ea41db2a8504454e1f05799
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 056d75a1039e805786b14aa19c896bda78d04150
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316875"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251593"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-java"></a>Szybki start: zestaw SDK wyszukiwania wiadomości Bing w środowisku Java
 

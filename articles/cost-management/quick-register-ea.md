@@ -1,21 +1,21 @@
 ---
 title: Rejestracja umowy Enterprise Agreement platformy Azure za pomocą rozwiązania Cloudyn | Microsoft Docs
-description: Zarejestruj się w rozwiązaniu Cloudyn przy użyciu platformy Enterprise Agreement platformy Azure.
+description: W tym przewodniku Szybki start opisano szczegółowo proces rejestracji niezbędny do utworzenia subskrypcji wersji próbnej rozwiązania Cloudyn i zalogowania w portalu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
-ms.custom: ''
+ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 36f53203a7d75fc06f872e9cc9ef9379944df108
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 7a3ed93814407df8f3adfe7d16ba50258fcb323e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273572"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082339"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Rejestracja umowy Enterprise Agreement platformy Azure i wyświetlanie danych kosztów
 
@@ -25,22 +25,22 @@ Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-- Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
+- Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="register-with-cloudyn"></a>Rejestrowanie w rozwiązaniu Cloudyn
 
 1. W witrynie Azure Portal kliknij pozycję **Zarządzanie kosztami i rozliczenia** na liście usług.
 2. W obszarze **Przegląd** kliknij pozycję **Cloudyn**.  
-    ![Strona rozwiązania Cloudyn](./media/quick-register-ea/cost-mgt-billing-service.png)
+    ![Strona rozwiązania Cloudyn wyświetlana w witrynie Azure Portal](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. Na stronie **Cloudyn** wybierz pozycję **Przejdź do rozwiązania Cloudyn**, aby otworzyć stronę rejestracji rozwiązania Cloudyn w nowym oknie.
 4. Na stronie rejestracji wersji próbnej rozwiązania Cloudyn wpisz nazwę swojej firmy i wybierz pozycję **Azure Enterprise Enrollment Administrator** (Administrator rejestracji umowy Enterprise Agreement platformy Azure).  
-    ![rejestracja wersji próbnej](./media/quick-register-ea/trial-reg.png)
-5. Wprowadź klucz interfejsu API rejestracji Enterprise Portal. Jeśli nie masz klucza pod ręką, kliknij link [Enterprise Portal](https://ea.azure.com) i wykonaj następujące kroki:
+5. Wprowadź klucz interfejsu API rejestracji Enterprise Portal. Jeśli nie masz klucza pod ręką, kliknij link [Enterprise Portal](https://ea.azure.com) i wykonaj następujące kroki:  
+    ![Wklej swój klucz interfejsu API na karcie Billing](./media/quick-register-ea/trial-reg.png) (Rozliczenia)
   1. Zaloguj się do witryny Azure Enterprise i przycisk **Reports** (Raporty), kliknij przycisk **API Access Key** (Klucz dostępu API), a następnie skopiuj klucz podstawowy.  
-    ![Klucz API EA](./media/quick-register-ea/ea-key.png)
+    ![Przykład klucza interfejsu API EA w portalu EA](./media/quick-register-ea/ea-key.png)
   3. Wróć do strony rejestracji i wklej swój klucz API.
 6. Zaakceptuj warunki użytkowania i zweryfikuj swój klucz. Kliknij przycisk **Next** (Dalej), aby autoryzować rozwiązanie Cloudyn do zbierania danych zasobów platformy Azure. Te dane obejmują dane dotyczące użycia, wydajności, rozliczeń i tagów z Twoich subskrypcji.  
-    ![walidacja klucza](./media/quick-register-ea/ea-key-validated.png)
+    ![Przykład pomyślnej weryfikacji klucza interfejsu API EA](./media/quick-register-ea/ea-key-validated.png)
 7. W obszarze **Invite other stakeholders** (Zaproś innych uczestników projektu) możesz dodać użytkowników, wpisując ich adresy e-mail. Po zakończeniu kliknij przycisk **Next** (Dalej). W zależności od rodzaju rejestracji platformy Azure dodanie wszystkich danych dotyczących rozliczeń do rozwiązania Cloudyn może potrwać do 24 godzin.
 8. Kliknij pozycję **Go to Cloudyn** (Przejdź do rozwiązania Cloudyn), aby otworzyć portal Cloudyn, a następnie na stronie **Cloud Accounts Management** (Zarządzanie kontami w chmurze) powinny zostać wyświetlone dane Twojego zarejestrowanego konta EA.
 

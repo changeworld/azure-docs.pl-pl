@@ -4,21 +4,20 @@ description: Poznaj usługę Stream Analytics — zarządzaną usługę, która 
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
 ms.workload: data-services
-ms.custom: mvc
-ms.date: 03/27/2018
-ms.openlocfilehash: 7b38548ce3266d74ffd51ce75ffa92bdb4ac24b9
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.custom: seodec18
+ms.date: 12/07/2018
+ms.openlocfilehash: 9cd1a8a095c697c4baeaa435f80c136ce49e0313
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437624"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098580"
 ---
-# <a name="what-is-stream-analytics"></a>Co to jest usługa Stream Analytics?
+# <a name="what-is-azure-stream-analytics"></a>Co to jest usługa Azure Stream Analytics?
 
 Usługa Azure Stream Analytics to aparat przetwarzania zdarzeń, który umożliwia analizowanie dużej ilości danych przesyłanych strumieniowo z urządzeń. Dane przychodzące mogą pochodzić między innymi z urządzeń, czujników, witryn internetowych, kanałów informacyjnych mediów społecznościowych, aplikacji itp. Poza tym usługa ta obsługuje również wyodrębnianie informacji ze strumieni danych, identyfikowanych wzorców oraz relacji. Dzięki temu korzystanie ze wzorców pozwala wyzwalać inne działania podrzędne, takie jak alerty, przekazywać informacje do narzędzia do raportowania lub przechowywać je w razie potrzeby późniejszego użycia.
 
@@ -42,13 +41,13 @@ Po przeanalizowaniu danych przychodzących należy określić przekształcone da
 
 Poniższy rysunek ilustruje potok usługi Stream Analytics. W przypadku danych wejściowych i wyjściowych dane zadanie usługi Stream Analytics może wykorzystać wszystkie lub wybrane zestawy potoków. Ten rysunek pokazuje, w jaki sposób dane są przesyłane do usługi Stream Analytics, analizowane i wysyłane w celu wykonania innych działań, takich jak przechowywanie lub prezentacja:
 
-![Potok usługi Stream Analytics](./media/stream-analytics-introduction/stream_analytics_intro_pipeline.png)
+![Wprowadzenie do potoku usługi Stream Analytics](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>Najważniejsze funkcje i korzyści
 
 Usługa Stream Analytics została zaprojektowana tak, aby była łatwa w użyciu, elastyczna, niezawodna i skalowalna do dowolnej wielkości zadania. Jest dostępna w wielu centrach danych, a także w suwerennych chmurach. Poniższy rysunek ilustruje kluczowe możliwości usługi Azure Stream Analytics:
 
-![Kluczowe możliwości usługi Stream Analytics](./media/stream-analytics-introduction/stream_analytics_key_capabilities.png)
+![Kluczowe możliwości usługi Stream Analytics](./media/stream-analytics-introduction/stream-analytics-key-capabilities.png)
 
 ## <a name="ease-of-getting-started"></a>Łatwość rozpoczynania pracy
 

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: cded90d4f36e353241bb594bae35b7c7e03599b9
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 0ede6c0c55e2f953e0d109d2d371313759ed4d06
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436014"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965159"
 ---
 # <a name="what-is-api-management"></a>Co to jest API Management?
 
@@ -59,7 +59,7 @@ System składa się z następujących składników:
   * Tworzenie konta i subskrybowanie, aby uzyskać klucze interfejsu API.
   * Zyskanie dostępu do analiz własnego użycia.
 
-Aby uzyskać więcej informacji, zobacz oficjalny dokument PDF [Cloud-based API Management: Harnessing the Power of APIs (Oparta na chmurze usługa API Management: wykorzystanie możliwości interfejsów API)](http://j.mp/ms-apim-whitepaper). Ten wprowadzający oficjalny dokument dotyczący usługi API Management opracowany przez firmę CITO Research obejmuje następujące tematy: 
+Aby uzyskać więcej informacji, przeczytaj oficjalny dokument PDF [Cloud-based API Management: Harnessing the Power of APIs](https://j.mp/ms-apim-whitepaper) (Zarządzanie przy użyciu interfejsów API w chmurze: korzystanie z możliwości interfejsów API). Ten wprowadzający oficjalny dokument dotyczący usługi API Management opracowany przez firmę CITO Research obejmuje następujące tematy: 
  
  * Typowe wymagania i wyzwania związane z interfejsem API
  * Rozdzielanie interfejsów API i prezentowanie fasad

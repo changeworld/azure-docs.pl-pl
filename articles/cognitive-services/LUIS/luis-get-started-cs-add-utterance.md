@@ -1,21 +1,22 @@
 ---
-title: Szybki start dla języka C# — zmienianie modelu i szkolenie aplikacji LUIS
-titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start języka C# dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz uczenie aplikacji. Przykładowe wypowiedzi to tekst z rozmowami użytkownika mapowany na intencje. Poprzez zapewnienie przykładowych wypowiedzi dla intencji możesz nauczyć aplikację LUIS, jakim intencjom odpowiada rodzaj tekstu podanego przez użytkownika.
+title: Zmienianie i trenowanie aplikacji, C#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: W tym przewodniku Szybki start języka C# dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz uczenie aplikacji.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aab9651092f7ad5dbc78c31db8df4ef3538fedfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 23692bd6a0c708b2747a3cc211b8238d30dfe5db
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039976"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161750"
 ---
 # <a name="quickstart-change-model-using-c"></a>Szybki start: zmiana modelu przy użyciu języka C#
 
@@ -28,7 +29,7 @@ ms.locfileid: "47039976"
 * Zainstalowany język programowania C#.
 * Pakiety NuGet [JsonFormatterPlus](https://www.nuget.org/packages/JsonFormatterPlus) i [CommandLine](https://www.nuget.org/packages/CommandLineParser/)
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in LUIS-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>Plik JSON z przykładowymi wypowiedziami
 
@@ -56,7 +57,7 @@ W projekcie programu Visual Studio wymagane są pakiety **JsonFormatterPlus** i 
 ### <a name="write-the-c-code"></a>Tworzenie kodu w języku C#
 Plik **Program.cs** powinien mieć następującą zawartość:
 
-```CSharp
+```C#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,9 +99,7 @@ Dodaj metodę żądania POST do klasy **Program**.
 
 Dodaj przykładowe wypowiedzi z metody pliku do klasy **Program**.
 
-   [!code-csharp[Add example utterances from file.
-](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.
-")]
+   [!code-csharp[Add example utterances from file.](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.")]
 
 Po zastosowaniu zmian w modelu przeprowadź uczenie modelu. Dodaj metodę do klasy **Program**.
 
@@ -128,7 +127,7 @@ Skompiluj kod w programie Visual Studio.
 
 W katalogu /bin/Debug w projekcie uruchom aplikację z poziomu wiersza polecenia. 
 
-```CMD
+```console
 ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
 ```
 

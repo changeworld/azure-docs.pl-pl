@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: interfejs API wyszukiwania wiadomości Bing, Java'
+title: 'Szybki start: przeprowadzanie wyszukiwania w Internecie za pomocą języka C# — interfejs API REST wyszukiwania w sieci Web Bing'
 titlesuffix: Azure Cognitive Services
-description: Uzyskaj informacje i przykłady kodu, które pomogą Ci w szybkim rozpoczęciu korzystania z interfejsu API wyszukiwania wiadomości Bing w usługach Cognitive Services na platformie Azure.
+description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania wiadomości Bing przy użyciu języka Java i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: d8ab0e10e8332cf2305185849d6446d679210845
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 9933f1c54e6081ed3f1004712543610a7883736b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316841"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260960"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-java"></a>Szybki start: interfejs API wyszukiwania wiadomości Bing w środowisku języka Java
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości przy użyciu języka Java i interfejsu API REST wyszukiwania wiadomości Bing
 
 W tym artykule pokazano, jak używać interfejsu API wyszukiwania Bing, który jest częścią usług Microsoft Cognitive Services na platformie Azure. Chociaż ten artykuł dotyczy języka Java, ten interfejs API jest usługą sieci Web zgodną z wzorcem REST i dowolnym językiem programowania, który może wykonywać żądania HTTP i analizować format JSON. 
 

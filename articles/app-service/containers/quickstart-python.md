@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej języka Python w usłudze Azure App Service w systemie Linux | Microsoft Docs
+title: Tworzenie aplikacji internetowej w języku Python w systemie Linux — Azure App Service | Microsoft Docs
 description: Wdróż swoją pierwszą aplikację Hello World w języku Python w usłudze Azure App Service w systemie Linux w ciągu kilku minut.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 5f9d694d47c0bd0765af7871d7e535a4174c30ff
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec18
+ms.openlocfilehash: d9d6f3549ec5db914536400fac53de60f2ad4a94
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404733"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261854"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Tworzenie aplikacji internetowej języka Python w usłudze Azure App Service w systemie Linux (wersja zapoznawcza)
 

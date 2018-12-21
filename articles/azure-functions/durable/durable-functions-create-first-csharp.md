@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a0aed1fd65444397b3ca084cc0100aa5af49c918
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839513"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341052"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Tworzenie pierwszej funkcji trwałej w języku C\#
 
@@ -76,7 +76,7 @@ Program Visual Studio tworzy pusty projekt aplikacji funkcji.  Zawiera on podsta
 
 Nowa funkcja trwała zostanie dodana do aplikacji.  Otwórz nowy plik, aby wyświetlić jego zawartość.  Ta funkcja trwała to prosty przykład łączenia funkcji w łańcuch.  
 
-* Metoda `RunOrchestrator` jest skojarzona z funkcją orchestrator.  Ta funkcja zostanie uruchomiona, utworzy listę i doda do niej wynik trzech wywołań funkcji.  Po zakończeniu trzech wywołań funkcji ta funkcja zwróci listę.  Wywoływana funkcja to metoda `SayHello` (domyślna nazwa „<NameOfFile>_Hello”).
+* Metoda `RunOrchestrator` jest skojarzona z funkcją orchestrator.  Ta funkcja zostanie uruchomiona, utworzy listę i doda do niej wynik trzech wywołań funkcji.  Po zakończeniu trzech wywołań funkcji ta funkcja zwróci listę.  Wywoływana funkcja to metoda `SayHello` (domyślna nazwa `<NameOfFile>_Hello`).
 * Funkcja `SayHello` zwróci powitanie.
 * Metoda `HttpStart` opisuje funkcję, która będzie uruchamiać wystąpienia aranżacji.  Jest ona skojarzona z [wyzwalaczem HTTP](../functions-bindings-http-webhook.md), który uruchomi nowe wystąpienie funkcji orchestrator i zwróci odpowiedź sprawdzenia stanu.
 
@@ -92,7 +92,7 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
     ![Lokalne środowisko uruchomieniowe platformy Azure](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. Wklej adres URL żądania HTTP w pasku adresu przeglądarki i wykonaj żądanie. Na poniższym obrazie przedstawiono wyświetloną w przeglądarce odpowiedź na lokalne żądanie GET zwróconą przez funkcję: 
+3. Wklej adres URL żądania HTTP w pasku adresu przeglądarki i wykonaj żądanie. Na poniższym obrazie przedstawiono wyświetloną w przeglądarce odpowiedź na lokalne żądanie GET zwróconą przez funkcję:
 
     ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 

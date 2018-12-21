@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wyodrębnianie szczegółów obrazu przy użyciu języka C# — interfejs API wyszukiwania obrazów Bing'
+title: 'Samouczek: Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing i języka C#'
 titleSuffix: Azure Cognitive Services
 description: Przy użyciu tego artykułu możesz utworzyć aplikację w języku C#, która wyodrębnia szczegóły obrazu za pomocą interfejsu API wyszukiwania obrazów Bing.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: tutorial
 ms.date: 9/14/2018
 ms.author: aahi
-ms.openlocfilehash: 96d011a04c97d309409062a286bdd7a17db9cda5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 36996ebed25d159cdc2a1908b5c9f1f5447c823f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297660"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259770"
 ---
-# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Samouczek: wyodrębnianie szczegółów obrazu przy użyciu interfejs API wyszukiwania obrazów Bing i języka C#
+# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Samouczek: Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing i języka C#
 
 Interfejs API wyszukiwania obrazów Bing udostępnia wiele [punktów końcowych](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint). Punkt końcowy `/details` akceptuje żądania POST z obrazem i może zwracać różnorodne szczegółowe informacje o tym obrazie. Ta aplikacja języka C# wysyła obraz przy użyciu tego interfejsu API i wyświetla szczegółowe informacje zwrócone przez usługę Bing, które są obiektami JSON, takimi jak poniższe:
 

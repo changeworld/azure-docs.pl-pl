@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/27/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: f2cb5d33b8d7a7442da16a38e268c56de363a9c6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: secdec18
+ms.openlocfilehash: 9a27efe7908b2a15ceb823d7a85c4a12603731ab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274086"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075985"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktywowanie subskrypcji i kont platformy Azure za pomocą platformy Cloudyn
 
@@ -41,7 +41,7 @@ Jeśli konto ma przypisaną rolę **Współautor**, nie masz odpowiednich uprawn
 3. W usłudze Azure Active Directory wybierz pozycję **Ustawienia użytkownika**.
 4. Sprawdź opcję **Rejestracje aplikacji**.
     - W przypadku ustawienia wartości na **Tak** użytkownicy inni niż administratorzy mogą rejestrować aplikacje usługi AD. To ustawienie oznacza, że każdy użytkownik w dzierżawie usługi Azure AD może zarejestrować aplikację.  
-    ![Rejestracje aplikacji](./media/activate-subs-accounts/app-register.png)
+    ![Wybieranie opcji Rejestracje aplikacji w ustawieniach użytkownika](./media/activate-subs-accounts/app-register.png)
     - W przypadku ustawienia opcji **Rejestracje aplikacji** na **Nie** tylko użytkownicy administracyjni dzierżawy mogą rejestrować aplikacje usługi Azure Active Directory. Administrator dzierżawy musi zarejestrować aplikację CloudynCollector.
 
 
@@ -53,12 +53,12 @@ Dodając konto lub aktualizując subskrypcję przyznajesz platformie Cloudyn dos
 
 1. W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Cloud Accounts (Konta w chmurze)**.
 2. Kliknij pozycję **Dodaj nowe konto**. Zostanie wyświetlone okno **Dodawanie nowego konta**. Wprowadź wymagane informacje.  
-    ![Okno Dodawanie nowego konta](./media/activate-subs-accounts//add-new-account.png)
+    ![Wprowadzanie wymaganych informacji w oknie Dodaj nowe konto](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aktualizowanie subskrypcji
 
 1. Jeśli chcesz zaktualizować _nieaktywowaną_ subskrypcję, która już istnieje na platformie Cloudyn w rozwiązaniu do zarządzania kontami, kliknij symbol ołówka (edycja) z prawej strony nadrzędnego _identyfikatora GUID dzierżawy_. Subskrypcje są grupowane w ramach dzierżawy nadrzędnej, należy więc unikać ich indywidualnego aktywowania.
-    ![Ponowne odnajdowanie subskrypcji](./media/activate-subs-accounts/existing-sub.png)
+    ![Wybieranie swojego identyfikatora dzierżawy w oknie Ponowne odnajdowanie subskrypcji](./media/activate-subs-accounts/existing-sub.png)
 2. W razie potrzeby wprowadź identyfikator dzierżawy. Jeśli nie znasz identyfikatora dzierżawy, wykonaj następujące czynności, aby go znaleźć:
     1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
     2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
@@ -106,7 +106,7 @@ Być może trzeba będzie również nadać administratorom działów, właścici
 Tylko administrator usług platformy Azure może włączyć platformę Cloudyn. Uprawnienia współadministratora są niewystarczające. Można jednak obejść wymaganie uprawnień administratora. Można zażądać, aby administrator usługi Azure Active Directory przyznał uprawnienia do autoryzacji **CloudynAzureCollector** za pomocą skryptu programu PowerShell. Poniższy skrypt udziela uprawnień do rejestrowania jednostki usługi Azure Active Directory **CloudynAzureCollector**.
 
 
-```
+```powershell
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #Tenant - enter your tenant ID or Name

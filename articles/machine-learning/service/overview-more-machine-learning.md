@@ -1,5 +1,5 @@
 ---
-title: Porównanie produktów firmy Microsoft z zakresu uczenia maszynowego — Azure | Microsoft Docs
+title: Porównanie produktów z zakresu uczenia maszynowego oferowanych przez firmę Microsoft
 description: Porównanie różnych produktów firmy Microsoft do tworzenia i wdrażania modeli uczenia maszynowego oraz zarządzania nimi. Zdecyduj, które produkty wybrać dla danego rozwiązania.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: ad6cb53bd69218d2af801cb56f882f5ffde3026c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872556"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274127"
 ---
-# <a name="what-are-the-machine-learning-product-options-from-microsoft"></a>Jakie produkty z zakresu uczenia maszynowego oferuje firma Microsoft?
+# <a name="what-are-the-machine-learning-products-at-microsoft"></a>Jakie produkty z zakresu uczenia maszynowego oferuje firma Microsoft?
 
 Firma Microsoft dostarcza różne rozwiązania z zakresu tworzenia i wdrażania modeli uczenia maszynowego oraz zarządzania nimi. Porównaj te produkty i wybierz najodpowiedniejsze do tworzenia swoich rozwiązań z zakresu uczenia maszynowego w najbardziej efektywny sposób.
 
@@ -41,8 +41,7 @@ Firma Microsoft dostarcza różne rozwiązania z zakresu tworzenia i wdrażania 
 
 Usługa Azure Machine Learning umożliwia szkolenie i wdrażanie modeli uczenia maszynowego oraz zarządzanie nimi przy użyciu języka Python oraz interfejsu wiersza polecenia w skali chmury.
 
->[!Note]
-> Możesz wypróbować usługę Azure Machine Learning bezpłatnie. Nie jest wymagana karta kredytowa ani subskrypcja platformy Azure. Rozpocznij teraz. https://azure.microsoft.com/free/
+Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
 
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 

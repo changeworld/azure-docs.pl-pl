@@ -1,5 +1,5 @@
 ---
-title: 'Usługa Azure Active Directory: omówienie | Microsoft Docs'
+title: Co to jest usługa Azure Active Directory? | Microsoft Docs
 description: Informacje o usłudze Azure Active Directory, obejmujące wymaganą terminologię, odbiorców, podstawy licencjonowania i skojarzone funkcje.
 services: active-directory
 author: eross-msft
@@ -8,12 +8,13 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 80c3108d468465e68d554b3d36c527c5ccd4a13c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686589"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085930"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory? 
 Azure Active Directory (Azure AD) to chmurowa usługa firmy Microsoft do zarządzania tożsamościami i dostępem. Usługa Azure AD ułatwia pracownikom logowanie się i dostęp do następujących zasobów:
@@ -51,7 +52,7 @@ Aby zwiększyć możliwości implementacji usługi Azure AD, możesz także doda
 
 - **Licencje funkcji „Płatność zgodnie z rzeczywistym użyciem”.** Istnieje też możliwość uzyskania licencji dodatkowych funkcji, takich jak usługa Azure Active Directory Business-to-Customer (B2C). Usługa B2C może ułatwić zapewnianie rozwiązań do zarządzania tożsamościami i dostępem dla aplikacji udostępnianych klientom. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 
-Aby uzyskać więcej informacji o kojarzeniu subskrypcji platformy Azure z usługą Azure AD, zobacz [How to: Associate or add an Azure subscription to Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) (Jak: Kojarzenie subskrypcji platformy Azure lub dodawanie jej do usługi Azure Active Directory). Aby uzyskać więcej informacji o przypisywaniu licencji użytkownikom, zobacz [How to: Assign or remove Azure Active Directory licenses](license-users-groups.md) (Jak: Przypisywanie lub usuwanie licencji usługi Azure Active Directory).
+Aby uzyskać więcej informacji o kojarzeniu subskrypcji platformy Azure z usługą Azure AD, zobacz [How to: Associate or add an Azure subscription to Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) (Instrukcje: kojarzenie lub dodawanie subskrypcji platformy Azure do usługi Azure Active Directory). Aby uzyskać więcej informacji o przypisywaniu licencji do użytkowników, zobacz [How to: Assign or remove Azure Active Directory licenses](license-users-groups.md) (Instrukcje: przypisywanie lub usuwanie licencji usługi Azure Active Directory).
 
 ## <a name="terminology"></a>Terminologia
 Aby lepiej zrozumieć usługę Azure AD i jej dokumentację, zapoznaj się z poniższymi terminami.

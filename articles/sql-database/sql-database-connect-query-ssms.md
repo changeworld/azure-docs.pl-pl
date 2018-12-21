@@ -4,7 +4,7 @@ description: Dowiedz się, jak łączyć się z bazą danych SQL Database na pla
 keywords: łączenie z bazą danych SQL, sql server management studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: scenario
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,25 +12,25 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: f8d153ef415bcab85720f6733d4e01e9b44c9e50
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871008"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098960"
 ---
-# <a name="quickstart-azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Szybki start: Azure SQL Database: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych SQL Azure
 
-[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) to zintegrowane środowisko do zarządzania dowolną infrastrukturą SQL — od programu SQL Server po usługę SQL Database dla systemu Microsoft Windows. W tym przewodniku Szybki start pokazano, jak używać narzędzia SSMS w celu nawiązywania połączenia z usługą Azure SQL Database, a następnie, korzystając z instrukcji Transact-SQL, wysyłać zapytania o dane, a także wstawiać, aktualizować i usuwać dane z bazy danych. 
+[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) służy do zarządzania dowolną infrastrukturą SQL — od programu SQL Server po usługę SQL Database dla systemu Microsoft Windows. W tym przewodniku Szybki start pokazano, jak używać narzędzia SSMS do nawiązywania połączenia z usługą Azure SQL Database, a następnie uruchamiać instrukcje w języku Transact-SQL, wysyłać zapytania o dane, a także wstawiać, aktualizować i usuwać dane. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki start używa jako punktu początkowego zasobów utworzonych w jednym z poniższych przewodników Szybki start:
+Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-Ten przewodnik Szybki start wymaga również skonfigurowania reguły zapory na poziomie serwera. W celu zapoznania się z samouczkiem przedstawiający sposób wykonywania tej czynności zobacz [Create server-level firewall rule](sql-database-get-started-portal-firewall.md) (Tworzenie reguły zapory na poziomie serwera).
+* Skonfigurowana reguła zapory na poziomie serwera. Aby uzyskać więcej informacji, zobacz temat [Tworzenie reguły zapory na poziomie serwera](sql-database-get-started-portal-firewall.md).
 
 #### <a name="install-the-latest-ssms"></a>Instalowanie najnowszej wersji środowiska SSMS
 
@@ -42,43 +42,44 @@ Przed rozpoczęciem upewnij się, że zainstalowano najnowszą wersję środowis
 
 ## <a name="connect-to-your-database"></a>Nawiązywanie połączenia z bazą danych
 
-Użyj programu SQL Server Management Studio, aby nawiązać połączenie z serwerem Azure SQL Database. 
+W środowisku SMSS połącz się z serwerem usługi Azure SQL Database. 
 
 > [!IMPORTANT]
-> Serwer logiczny usługi Azure SQL Database nasłuchuje na porcie 1433. Jeśli próbujesz nawiązać połączenie z serwerem logicznym usługi Azure SQL Database za pośrednictwem zapory firmowej, to aby połączenie się powiodło, ten port musi być otwarty w zaporze firmowej.
+> Serwer logiczny usługi Azure SQL Database nasłuchuje na porcie 1433. Aby można było nawiązać połączenie z serwerem logicznym spoza firmowej zapory, ten port w zaporze musi być otwarty.
 >
 
-1. Otwórz program SQL Server Management Studio.
+1. Otwórz program SSMS. Zostanie wyświetlone okno dialogowe **Nawiązywanie połączenia z serwerem**.
 
-2. W oknie dialogowym **Połącz z serwerem** wprowadź następujące informacje:
+2. Wprowadź następujące informacje:
 
    | Ustawienie      | Sugerowana wartość    | Opis | 
    | ------------ | ------------------ | ----------- | 
-   | **Typ serwera** | Aparat bazy danych | Ta wartość jest wymagana. |
-   | **Nazwa serwera** | W pełni kwalifikowana nazwa serwera | Nazwa może mieć taką formę: **mynewserver20170313.database.windows.net**. |
-   | **Uwierzytelnianie** | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-   | **Logowanie** | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
-   | **Hasło** | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
+   | **Typ serwera** | Aparat bazy danych | Wartość wymagana. |
+   | **Nazwa serwera** | W pełni kwalifikowana nazwa serwera | Na przykład: **mojnowyserwer20170313.database.windows.net**. |
+   | **Uwierzytelnianie** | Uwierzytelnianie programu SQL Server | W tym samouczku używane jest uwierzytelnianie SQL. |
+   | **Logowanie** | Identyfikator użytkownika konta administratora serwera | Identyfikator użytkownika konta administratora serwera, którego użyto do utworzenia serwera. |
+   | **Hasło** | Hasło konta administratora serwera | Hasło użytkownika konta administratora serwera, którego użyto do utworzenia serwera. |
    ||||
 
    ![łączenie z serwerem](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. Kliknij przycisk **Opcje** w oknie dialogowym **Połącz z serwerem**. W sekcji **Nawiązywanie połączenia z bazą danych** wprowadź ciąg **mySampleDatabase**, aby nawiązać połączenie z tą bazą danych.
+3. Wybierz pozycję **Opcje** w oknie dialogowym **Połącz z serwerem**. Z menu rozwijanego **Połącz z bazą danych** wybierz pozycję **mojaPrzykladowaBazaDanych**.
 
    ![nawiązywanie połączenia z bazą danych na serwerze](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. Kliknij przycisk **Połącz**. W programie SSMS zostanie otwarte okno Eksplorator obiektów. 
+4. Wybierz przycisk **Połącz**. Zostanie otwarte okno Eksplorator obiektów. 
 
-   ![nawiązane połączenie z serwerem](./media/sql-database-connect-query-ssms/connected.png)  
+5. Aby wyświetlić obiekty bazy danych, rozwiń listę **Bazy danych**, a następnie rozwiń węzeł **mojaPrzykladowaBazaDanych**.
 
-5. W Eksploratorze obiektów rozwiń pozycję **Bazy danych**, a następnie rozwiń pozycję **mySampleDatabase**, aby wyświetlić obiekty w przykładowej bazie danych.
+   ![wyświetlanie obiektów bazy danych](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Zapytania o dane
 
-Użyj następującego kodu, aby wykonać zapytanie o 20 najpopularniejszych produktów według kategorii, używając instrukcji [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) języka Transact-SQL.
+Użyj następującego kodu [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) języka Transact-SQL, aby wykonać zapytanie o 20 najpopularniejszych produktów według kategorii.
 
-1. W Eksploratorze obiektów kliknij prawym przyciskiem myszy pozycję **mySampleDatabase** i kliknij opcję **Nowe zapytanie**. Zostanie otwarte puste okno zapytania, które jest połączone z Twoją bazą danych.
-2. W oknie zapytania wprowadź następujące zapytanie:
+1. W Eksploratorze obiektów kliknij prawym przyciskiem myszy pozycję **mojaPrzykladowaBazaDanych** i wybierz opcję **Nowe zapytanie**. Zostanie otwarte puste okno zapytania, które jest połączone z Twoją bazą danych.
+
+1. Wklej w oknie zapytania to zapytanie SQL.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -87,15 +88,15 @@ Użyj następującego kodu, aby wykonać zapytanie o 20 najpopularniejszych prod
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. Na pasku narzędzi kliknij opcję **Wykonaj**, aby pobrać dane z tabel Product i ProductCategory.
+3. Na pasku narzędzi wybierz pozycję **Wykonaj**, aby pobrać dane z tabel `Product` i `ProductCategory`.
 
-    ![query](./media/sql-database-connect-query-ssms/query.png)
+    ![zapytanie do pobierania danych z 2 tabel](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Wstawianie danych
 
-Użyj następującego kodu, aby wstawić nowy produkt do tabeli SalesLT.Product przy użyciu instrukcji [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL.
+Użyj następującego kodu [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL, aby utworzyć nowy produkt w tabeli `SalesLT.Product`.
 
-1. W oknie zapytania zastąp poprzednie zapytanie następującym zapytaniem:
+1. Zastąp poprzednie zapytanie tym.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -105,8 +106,7 @@ Użyj następującego kodu, aby wstawić nowy produkt do tabeli SalesLT.Product 
            , [ProductCategoryID]
            , [StandardCost]
            , [ListPrice]
-           , [SellStartDate]
-           )
+           , [SellStartDate] )
      VALUES
            ('myNewProduct'
            ,123456789
@@ -117,15 +117,26 @@ Użyj następującego kodu, aby wstawić nowy produkt do tabeli SalesLT.Product 
            ,GETDATE() );
    ```
 
-2. Na pasku narzędzi kliknij opcję **Wykonaj**, aby wstawić nowy wiersz w tabeli Product.
+2. Wybierz polecenie **Wykonaj**, aby wstawić nowy wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
 
-    <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
+## <a name="view-the-result"></a>Wyświetlanie wyniku
 
-## <a name="update-data"></a>Aktualizowanie danych
+1. Zastąp poprzednie zapytanie tym.
 
-Użyj następującego kodu, aby zaktualizować nowy, wcześniej dodany produkt przy użyciu instrukcji [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) języka Transact-SQL.
+   ```sql
+   SELECT * FROM [SalesLT].[Product] 
+   WHERE Name='myNewProduct' 
 
-1. W oknie zapytania zastąp poprzednie zapytanie następującym zapytaniem:
+2. Select **Execute**. The following result appears. 
+
+   ![result](./media/sql-database-connect-query-ssms/result.png)
+
+ 
+## Update data
+
+Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+
+1. Replace the previous query with this one.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -133,28 +144,24 @@ Użyj następującego kodu, aby zaktualizować nowy, wcześniej dodany produkt p
    WHERE Name = 'myNewProduct';
    ```
 
-2. Na pasku narzędzi kliknij opcję **Wykonaj**, aby zaktualizować określony wiersz w tabeli Product.
-
-    <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
+2. Wybierz polecenie **Wykonaj**, aby zaktualizować wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
 
 ## <a name="delete-data"></a>Usuwanie danych
 
-Użyj następującego kodu, aby usunąć nowy, wcześniej dodany produkt przy użyciu instrukcji [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL.
+Użyj następującego kodu [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL, aby usunąć nowy, wcześniej dodany produkt.
 
-1. W oknie zapytania zastąp poprzednie zapytanie następującym zapytaniem:
+1. Zastąp poprzednie zapytanie tym.
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Na pasku narzędzi kliknij opcję **Wykonaj**, aby usunąć określony wiersz w tabeli Product.
-
-    <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
+2. Wybierz polecenie **Wykonaj**, aby usunąć wiersz w tabeli Product. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji o programie SSMS, zobacz [Korzystanie z programu SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+- Aby uzyskać więcej informacji o programie SSMS, zobacz [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (Program SQL Server Management Studio).
 - Aby połączyć się i wykonać zapytanie za pomocą witryny Azure Portal, zobacz [Connect and query with the Azure portal SQL Query editor (Nawiązywanie połączeń i wykonywanie zapytań za pomocą edytora zapytań SQL w witrynie Azure Portal)](sql-database-connect-query-portal.md).
 - Aby nawiązywać połączenia i wykonywać zapytania za pomocą programu Visual Studio Code, zobacz [Connect and query with Visual Studio Code](sql-database-connect-query-vscode.md) (Nawiązywanie połączeń i wykonywanie zapytań za pomocą programu Visual Studio Code).
 - Aby nawiązywać połączenia i wykonywać zapytania za pomocą platformy .NET, zobacz [Connect and query with .NET](sql-database-connect-query-dotnet.md) (Nawiązywanie połączeń i wykonywanie zapytań za pomocą platformy .NET).

@@ -1,21 +1,22 @@
 ---
-title: Szybki start dla języka C# — przewidywanie intencji — usługa LUIS
-titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji. Przy użyciu języka C# wyślesz intencję użytkownika jako tekst do punktu końcowego przewidywania HTTP aplikacji publicznej. W punkcie końcowym usługa LUIS zastosuje model aplikacji publicznej, aby przeanalizować tekst w języku naturalnym pod kątem znaczenia, określając ogólną intencję i wyodrębniając dane dotyczące domeny podmiotu aplikacji.
+title: Uzyskiwanie intencji, C#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: W tym przewodniku Szybki start dotyczącym języka C# użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 51c23029cc771db5351575ce329944a9f06dd286
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0e58fb35fa29cde16b1ccf50dc20dacc693a4757
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035848"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141768"
 ---
 # <a name="quickstart-get-intent-using-c"></a>Szybki start: pobieranie intencji za pomocą języka C#
 
@@ -46,11 +47,11 @@ Użyj języka C#, aby wysłać zapytanie do interfejsu [API](https://westus.dev.
 
 1. Utwórz nową aplikację konsolową w programie Visual Studio. 
 
-    ![Dostęp do menu ustawień użytkownika usługi LUIS](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+    ![Tworzenie nowej aplikacji konsolowej w programie Visual Studio](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
 
 2. W projekcie programu Visual Studio, w Eksploratorze rozwiązań wybierz opcję **Dodaj odwołanie**, a następnie wybierz opcję **System.Web** na karcie Zestawy.
 
-    ![Dostęp do menu ustawień użytkownika usługi LUIS](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
+    ![Wybierz opcję Dodaj odwołanie, a następnie wybierz opcję System.Web na karcie Zestawy.](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
 
 3. Zastąp plik Program.cs przy użyciu następującego kodu:
     

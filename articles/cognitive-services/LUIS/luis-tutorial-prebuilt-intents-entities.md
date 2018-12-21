@@ -1,23 +1,24 @@
 ---
-title: 'Samouczek 2: wstępnie utworzone intencje i jednostki — używanie wstępnie utworzonych typowych wypowiedzi — wyodrębnianie typowych danych w usłudze LUIS'
+title: Wstępnie utworzone intencje i jednostki
 titleSuffix: Azure Cognitive Services
 description: Dodaj wstępnie utworzone intencje i jednostki do aplikacji samouczka Human Resources, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. Nie musisz oznaczać żadnych wypowiedzi za pomocą wstępnie utworzonych jednostek. Jednostka jest wykrywana automatycznie.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3bad68d1a388a5bc8780df633313206afaadcef9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b6fb603b84cdcf3cb0f75d0020fa2047a0a838d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422426"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074082"
 ---
-# <a name="tutorial-2-identify-common-intents-and-entities"></a>Samouczek 2: identyfikowanie typowych intencji i jednostek
+# <a name="tutorial-2-identify-common-intents-and-entities"></a>Samouczek 2. identyfikowanie typowych intencji i jednostek
 W ramach tego samouczka zmodyfikujesz aplikację Human Resources. Dodaj wstępnie utworzone intencje i jednostki do aplikacji samouczka Human Resources, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. Nie musisz oznaczać żadnych wypowiedzi za pomocą wbudowanych jednostek, ponieważ jednostka jest wykrywana automatycznie.
 
 Wbudowane modele typowych domen podmiotów i typów danych ułatwiają szybkie tworzenie modelu i pokazują wygląd modelu na przykładzie. 
@@ -90,7 +91,7 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 2. Przejdź na koniec adresu URL na pasku adresu przeglądarki i wprowadź ciąg `I want to cancel on March 3`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
-    ```JSON
+    ```json
     {
       "query": "I want to cancel on March 3",
       "topScoringIntent": {

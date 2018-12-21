@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 080bf465d65199c54e0d09eab8c7bccbc9616ed7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568958"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259549"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
 
@@ -86,12 +86,12 @@ Aby uzyskać więcej informacji na temat tworzenia klastrów, zobacz [Create a S
 ## <a name="download-a-sample-data-file"></a>Pobieranie przykładowego pliku danych
 Pobierz przykładowy plik danych JSON i zapisz go w usłudze Azure Blob Storage.
 
-1. Pobierz ten przykładowy plik danych JSON [z serwisu Github](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) na komputer lokalny. Kliknij prawym przyciskiem myszy i wybierz polecenie Zapisz jako, aby lokalnie zapisać nieprzetworzony plik.
+1. Pobierz ten przykładowy plik danych JSON [z serwisu GitHub](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) na komputer lokalny. Kliknij prawym przyciskiem myszy i wybierz polecenie Zapisz jako, aby lokalnie zapisać nieprzetworzony plik.
 
 2. Jeśli jeszcze nie masz konta magazynu, utwórz je.
     - W witrynie Azure Portal wybierz polecenie **Utwórz zasób**. Wybierz kategorię **Storage**, a następnie wybierz zasób **Konta magazynu**.
     - Podaj unikatową nazwę konta magazynu.
-    - Wybierz pozycję **Rodzaj konta**: **Blob Storage**.
+    - Wybierz **Rodzaj konta**: **Blob Storage**
     - Wybierz nazwę **grupy zasobów**. Użyj tej samej grupy zasobów, w której utworzono obszar roboczy usługi Databricks.
     
     Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Azure Blob Storage](../storage/common/storage-quickstart-create-account.md).

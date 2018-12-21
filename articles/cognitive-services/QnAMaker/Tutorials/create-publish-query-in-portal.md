@@ -1,21 +1,22 @@
 ---
-title: 'Samouczek: tworzenie i publikowanie bazy wiedzy oraz odpowiadanie z bazy wiedzy w portalu usługi QnA Maker'
+title: Tworzenie i publikowanie bazy wiedzy oraz odpowiadanie w usłudze QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Ten oparty na portalu samouczek przedstawia sposób programowego tworzenia i publikowania bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 08f708f740b90f27af5443b46c5d03bef688bd45
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221679"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164436"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Samouczek: tworzenie bazy wiedzy, a następnie odpowiadanie na pytanie za pomocą portalu usługi QnA Maker
 
@@ -96,7 +97,7 @@ Wybierz przycisk **Publikuj** z górnego menu. Na stronie publikowania wybierz p
 
 Po opublikowaniu bazy wiedzy wyświetlany jest punkt końcowy
 
-![Publikowanie](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
+![Ustawienia punktu końcowego strony publikowania](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
 ## <a name="use-curl-to-query-for-an-faq-answer"></a>Używanie narzędzia Curl do wykonywania zapytania o odpowiedź na często zadawane pytanie
 

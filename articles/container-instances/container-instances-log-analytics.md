@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614008"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337890"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Rejestrowanie wystąpienia kontenera za pomocą usługi Azure Log Analytics
 
@@ -24,7 +24,7 @@ Aby wysłać dane wystąpienia kontenera do usługi Log Analytics, należy utwor
 
 Aby włączyć rejestrowanie w wystąpieniach kontenera, potrzebne są następujące elementy:
 
-* [Obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
+* [Obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md)
 * [Interfejs poziomu wywołania platformy Azure](/cli/azure/install-azure-cli) (lub usługa [Cloud Shell](/azure/cloud-shell/overview))
 
 ## <a name="get-log-analytics-credentials"></a>Uzyskiwanie poświadczeń usługi Log Analytics
@@ -135,7 +135,7 @@ ContainerInstanceLog_CL
 Aby uzyskać więcej informacji dotyczących wykonywania zapytań dla dzienników i konfigurowania alertów w usłudze Azure Log Analytics, zobacz:
 
 * [Understanding log searches in Log Analytics](../log-analytics/log-analytics-log-search.md) (Interpretacja przeszukiwania dzienników w usłudze Log Analytics)
-* [Unified alerts in Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) (Ujednolicone alerty na platformie Azure Monitor)
+* [Unified alerts in Azure Monitor](../azure-monitor/platform/alerts-overview.md) (Ujednolicone alerty na platformie Azure Monitor)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>Monitorowanie procesora i pamięci kontenera

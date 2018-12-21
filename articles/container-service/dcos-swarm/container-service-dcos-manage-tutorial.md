@@ -1,5 +1,5 @@
 ---
-title: Samouczek usługi Azure Container Service — zarządzanie systemem DC/OS
+title: (PRZESTARZAŁE) Samouczek usługi Azure Container Service — zarządzanie systemem DC/OS
 description: Samouczek usługi Azure Container Service — zarządzanie systemem DC/OS
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8f4b1c1c66243c06d46ef3fddec8ea495163fa07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999617"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000420"
 ---
-# <a name="azure-container-service-tutorial---manage-dcos"></a>Samouczek usługi Azure Container Service — zarządzanie systemem DC/OS
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(PRZESTARZAŁE) Samouczek usługi Azure Container Service — zarządzanie systemem DC/OS
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 System DC/OS zapewnia rozproszoną platformę dla nowoczesnych, konteneryzowanych aplikacji. Usługa Azure Container Service umożliwia łatwe i szybkie inicjowanie obsługi produkcyjnego klastra DC/OS. W tym przewodniku Szybki start przedstawiono szczegółowo podstawowe kroki wdrażania klastra DC/OS oraz uruchamiania podstawowego obciążenia.
 

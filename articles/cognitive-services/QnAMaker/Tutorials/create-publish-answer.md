@@ -1,21 +1,22 @@
 ---
-title: 'Samouczek: tworzenie i publikowanie bazy wiedzy oraz odpowiadanie na pytania z bazy wiedzy — środowisko REST, C# — QnA Maker'
-titleSuffix: Azure Cognitive Services
+title: Tworzenie, publikowanie i odpowiadanie
+titleSuffix: QnA Maker - Azure Cognitive Services
 description: Ten oparty na protokole REST samouczek przedstawia sposób programowego tworzenia i publikowania bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 013b74165afe6eafee337bd00ca88b1034ad5662
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: dd5bc95be3959e7af5911d8a765791718680581a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299566"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162940"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Samouczek: używanie języka C# do tworzenia bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy
 

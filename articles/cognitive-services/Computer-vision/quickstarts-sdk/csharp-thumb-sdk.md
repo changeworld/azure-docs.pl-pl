@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: generowanie miniatury — zestaw SDK, C# — przetwarzanie obrazów'
+title: 'Szybki start: Generowanie miniatury — zestaw SDK, C# — przetwarzanie obrazów'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą biblioteki klienta przetwarzania obrazów dla systemu Windows w języku C#.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: d3340131c1f174201cc9fd1dcb31bd4a4b8cd07a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: a4a6dac4ca42f98bd03da022aaed79db094a9ed6
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854088"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413289"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Szybki start: generowanie miniatury przy użyciu zestawu Computer Vision SDK i języka C#
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Szybki start: Generowanie miniatury przy użyciu zestawu Computer Vision SDK i języka C#
 
 W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą biblioteki klienta przetwarzania obrazów dla systemu Windows.
 
@@ -30,9 +30,9 @@ W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą bibliot
 ## <a name="generatethumbnailasync-method"></a>Metoda GenerateThumbnailAsync
 
 > [!TIP]
-> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
+> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
-Metody `GenerateThumbnailAsync` i `GenerateThumbnailInStreamAsync` opakowują [interfejs API uzyskiwania miniatur](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) odpowiednio w przypadku obrazów zdalnych i lokalnych.  Możesz użyć tych metod, aby wygenerować miniaturę obrazu. Należy określić wysokość i szerokość, które mogą mieć inny współczynnik proporcji niż obraz wejściowy. Interfejs API przetwarzania obrazów wykorzystuje inteligentne przycinanie, aby określić obszar zainteresowania i wygenerować współrzędne przycinania na podstawie tego obszaru.
+Metody `GenerateThumbnailAsync` i `GenerateThumbnailInStreamAsync` opakowują [interfejs API uzyskiwania miniatur](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) odpowiednio w przypadku obrazów zdalnych i lokalnych.  Możesz użyć tych metod, aby wygenerować miniaturę obrazu. Należy określić wysokość i szerokość, które mogą mieć inny współczynnik proporcji niż obraz wejściowy. Interfejs API przetwarzania obrazów wykorzystuje inteligentne przycinanie, aby określić obszar zainteresowania i na jego podstawie wygenerować współrzędne przycinania.
 
 Aby uruchomić przykład, wykonaj następujące kroki:
 

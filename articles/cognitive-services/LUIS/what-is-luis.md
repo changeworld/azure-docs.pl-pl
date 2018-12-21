@@ -1,20 +1,20 @@
 ---
 title: Czym jest usługa Language Understanding (LUIS) — Azure Cognitive Services | Microsoft Docs
-description: Language Understanding (LUIS) to oparta na chmurze usługa interfejsu API, która stosuje dostosowane techniki analizy i uczenia maszynowego do wypowiedzi użytkownika w języku naturalnym, aby rozpoznać ich ogólne znaczenie i wydobyć istotne szczegółowe informacje. Aplikacją kliencką dla usługi LUIS może być dowolna aplikacja konwersacyjna, która komunikuje się z użytkownikiem w naturalnym języku, aby wykonać zadanie. Przykładami aplikacji klienckich są aplikacje mediów społecznościowych, czatboty i aplikacje klasyczne z funkcją rozpoznawania mowy.
+description: Language Understanding (LUIS) to oparta na chmurze usługa interfejsu API, która stosuje dostosowane techniki analizy i uczenia maszynowego do wypowiedzi użytkownika w języku naturalnym, aby rozpoznać ich ogólne znaczenie i wydobyć istotne szczegółowe informacje.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
-ms.date: 10/06/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 28580a29c2ffaadfa3b3ea26cb28f103d883d576
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ca92a6a2eb92e3b7fed9452d135c0a6bce55a57c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637276"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273242"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co to jest usługa Language Understanding (LUIS)?
 
@@ -41,32 +41,6 @@ Po opublikowaniu aplikacji usługi LUIS aplikacja kliencka wysyła wypowiedzi (t
 
 Aplikacja usługi LUIS przeprowadza analizy, dzięki którym aplikacja kliencka może dokonać inteligentnego wyboru. Sama usługa LUIS nie dokonuje tych wyborów. 
 
-<!--
-
-### Example of JSON endpoint response
-
-The minimum JSON endpoint response contains the query utterance, and the top scoring intent. It can also extract data such as the following **Contact Type** entity. 
-
-```JSON
-{
-  "query": "I want to call my HR rep.",
-  "topScoringIntent": {
-    "intent": "HRContact",
-    "score": 0.921233
-  },
-  "entities": [
-    {
-      "entity": "call",
-      "type": "Contact Type",
-      "startIndex": 10,
-      "endIndex": 13,
-      "score": 0.7615982
-    }
-  ]
-}
-```
--->
-
 <a name="Key-LUIS-concepts"></a>
 <a name="what-is-a-luis-model"></a>
 
@@ -89,41 +63,6 @@ Tworzenie modelu w usłudze LUIS rozpoczyna się od kategorii intencji użytkown
 |„When does your store __open__?” („Jakie są godziny otwarcia sklepu?”)|StoreHoursAndLocation|open|
 |„Schedule a meeting at __1pm__ with __Bob__ in Distribution” („Zaplanuj spotkanie o 13 z Bobem z działu dystrybucji”)|ScheduleMeeting|1pm, Bob|
 
-<!--
-## What is a natural language model?
-
-A model begins with a list of general user intentions, called _intents_, such as "Book Flight" or "Contact Help Desk." You provide user's example text, called _example utterances_ for the intents. Then mark significant words or phrases in the utterance, called _entities_.
-
-
-A model includes:
-
-* **[intents](#intents)**: categories of user intentions (overall intended action or result)
-* **[entities](#entities)**: specific types of data in utterances such as number, email, or name contained in text
-* **[example utterances](#example-utterances)**: example text a user might enter in the client application
-
-### Intents 
-
-An [intent](luis-how-to-add-intents.md), short for _intention_, is a purpose or goal expressed in a user's utterance, such as booking a flight, paying a bill, or finding a news article. You create an intent for each action. A LUIS travel app may define an intent named "BookFlight." Each prediction query includes the top scored intent. 
-
-The client application can use the top scoring intent to trigger an action. For example, when "BookFlight" intent is returned from LUIS, a client application could trigger an API call to an external service for booking a plane ticket.
-
-### Entities
-
-An [entity](luis-how-to-add-entities.md) represents detailed information found within the utterance that is relevant to the user's request. For example, in the utterance "Book a ticket to Paris",  a single ticket is requested, and "Paris" is a location. Two entities are found "a ticket" indicating a single ticket and "Paris" indicating the destination. 
-
-After LUIS returns the entities found in the user’s utterance, the client application can use the list of entities as parameters to trigger an action. For example, booking a flight requires entities like the travel destination, date, and airline.
--->
-<!--
-### Example utterances
-
-An example [utterance](luis-how-to-add-example-utterances.md) is text input from the user that the client application needs to understand. It may be a sentence, like "Book a ticket to Paris", or a fragment of a sentence, like "Booking" or "Paris flight." Utterances aren't always well-formed, and there can be many utterance variations for a particular intent. Add 10 to 20 example utterances to each intent and mark entities in every utterance.
-
-|Example user utterance|Intent|Entities|
-|-----------|-----------|-----------|
-|"Book a flight to __Seattle__?"|BookFlight|Seattle|
-|"When does your store __open__?"|StoreHoursAndLocation|open|
-|"Schedule a meeting at __1pm__ with __Bob__ in Distribution"|ScheduleMeeting|1pm, Bob|
--->
 ## <a name="query-prediction-endpoint"></a>Punkt końcowy przewidywania zapytania
 
 Gdy model zostanie utworzony i opublikowany w punkcie końcowym, aplikacja kliencka wysyła wypowiedzi do interfejsu API opublikowanego [punktu końcowego](https://aka.ms/luis-endpoint-apis) przewidywania. Interfejs API wykorzystuje ten model do analizy tekstu. Interfejs API przesyła odpowiedzi zawierające wyniki przewidywania w formacie JSON.  
@@ -152,24 +91,8 @@ Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapyta
 ## <a name="improve-model-prediction"></a>Doskonalenie przewidywania z użyciem modelu
 
 Po opublikowaniu modelu usługi LUIS i rozpoczęciu odbierania rzeczywistych wypowiedzi użytkowników usługa LUIS udostępnia kilka metod poprawy dokładności przewidywania: [aktywne uczenie](luis-concept-review-endpoint-utterances.md) na podstawie wypowiedzi z punktu końcowego, [listy fraz](luis-concept-feature.md) pozwalające dołączyć słowa do domeny oraz [wzorce](luis-concept-patterns.md) zmniejszające liczbę potrzebnych wypowiedzi.
-<!--
-### Active learning
 
-In the [active learning](luis-how-to-review-endoint-utt.md) process, LUIS allows you to adapt the LUIS app to real-world utterances by selecting utterances it received at the endpoint for your review. You can accept or correct the endpoint prediction, retrain, and republish. LUIS learns quickly with this iterative process, taking the minimum amount of your time and effort. 
-
-### Phrase lists 
-
-LUIS provides [phrases lists](luis-concept-feature.md) so you can indicate important words or phrases of the model. LUIS uses these lists to add additional significance to those words and phrases that would otherwise not be found in the model.
-
-### Patterns 
-
-Patterns allow you to simplify an intent's utterance collection into common [templates](luis-concept-patterns.md) of word choice and word order. This allows LUIS to learn quicker by needing fewer example utterances for the intents. Patterns are a hybrid system of regular expressions and machine-learned expressions. 
--->
 <a name="using-luis"></a>
-<!--
-## Authoring and accessing models
-Author LUIS from the [authoring](https://aka.ms/luis-authoring-apis) APIs or from the LUIS portal. Query the published prediction endpoint of the model from the [endpoint](https://aka.ms/luis-endpoint-apis) APIs.
--->
 
 ## <a name="development-lifecycle"></a>Cykl projektowania oprogramowania
 Usługa LUIS zapewnia narzędzia, możliwość przechowywania wersji i współpracę z innymi twórcami usługi LUIS w celu integracji pełnego cyklu projektowania oprogramowania na poziomie aplikacji klienckiej i modelu językowego. 
@@ -197,7 +120,6 @@ Inne usługi Cognitive Services używane z usługą LUIS:
 
 Utwórz nową aplikację usługi LUIS za pomocą domeny [wstępnie utworzonej](luis-get-started-create-app.md) lub [niestandardowej](luis-quickstart-intents-only.md). [Wyślij zapytanie do punktu końcowego przewidywania](luis-get-started-cs-get-intent.md) publicznej aplikacji IoT.
 
-<!-- Reference-style links -->
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/
 [authoring-apis]: https://aka.ms/luis-authoring-api

@@ -1,5 +1,5 @@
 ---
-title: Zaawansowane zapytania usługi Azure Resource Graph
+title: Przykłady zapytań zaawansowanych
 description: Usługa Azure Resource Graph umożliwia uruchamianie pewnych zaawansowanych zapytań.
 services: resource-graph
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 43cf9f5ec0f9c265efa0e59eadbf6c9bbe4f7c3f
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 8599d535a3a522d742207a655a8f4098d6f3f18f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51682883"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309393"
 ---
 # <a name="advanced-resource-graph-queries"></a>Zaawansowane zapytania usługi Resource Graph
 
