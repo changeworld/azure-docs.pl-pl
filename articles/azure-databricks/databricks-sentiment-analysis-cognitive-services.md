@@ -1,23 +1,22 @@
 ---
-title: 'Samouczek: Analiza tonacji na strumieniu danych wykonywana przy użyciu usługi Azure Databricks'
+title: 'Samouczek: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks'
 description: Dowiedz się, jak przeprowadzać analizę tonacji na strumieniu danych za pomocą usług Azure Databricks i Event Hubs oraz interfejsu API usług Cognitive Services w czasie niemal rzeczywistym.
 services: azure-databricks
 author: lenadroid
+ms.author: alehall
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 10/23/2018
-ms.author: alehall
-ms.openlocfilehash: cf396dea6ee467267ea73379ea04026fc8cc53b2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.date: 12/07/2018
+ms.openlocfilehash: 449d721683bd59646506db57d78b9535aa7d614d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636585"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100190"
 ---
-# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych wykonywana przy użyciu usługi Azure Databricks
+# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks
 
 W tym samouczku dowiesz się, jak przy użyciu usługi Azure Databricks przeprowadzać analizę tonacji na strumieniu danych w czasie niemal rzeczywistym. Konfiguracja systemu pozyskiwania danych jest oparta na usłudze Azure Event Hubs. Do przesyłania komunikatów z usługi Event Hubs do usługi Azure Databricks służy łącznik Spark Event Hubs. Ostatnim etapem jest przeprowadzanie analizy tonacji na strumieniu danych za pomocą interfejsów API usługi Microsoft Cognitive Service.
 
@@ -313,7 +312,7 @@ val customEventhubParameters =
   EventHubsConf(connectionString)
   .setMaxEventsPerTrigger(5)
 
-val incomingStream = spark.readStream.format("eventhubs").option(customEventhubParameters.toMap).load()
+val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
 
 incomingStream.printSchema
 

@@ -1,5 +1,5 @@
 ---
-title: Mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure | Microsoft Docs
+title: Mapowanie istniejącej niestandardowej nazwy DNS — Azure App Service | Microsoft Docs
 description: Dowiedz się, jak dodać istniejącą niestandardową nazwę domeny DNS (domenę niestandardową) do aplikacji internetowej, zaplecza aplikacji mobilnej lub aplikacji interfejsu API w usłudze Azure App Service.
 keywords: app service, azure app service, mapowanie domeny, nazwa domeny, istniejąca domena, nazwa hosta
 services: app-service\web
@@ -15,15 +15,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 30199005db93f9a43a37d2c72bb34dd772265419
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.custom: seodec18
+ms.openlocfilehash: 2debb52c703aaa25b2ff0a182bed3e07431b6f48
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664891"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270267"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Samouczek: mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Samouczek: Mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure
 
 Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. W tym samouczku przedstawiono, w jaki sposób można zmapować istniejącą niestandardową nazwę DNS na aplikacje internetowe platformy Azure.
 
@@ -52,7 +52,7 @@ W celu ukończenia tego samouczka:
 
 ## <a name="prepare-the-app"></a>Przygotowywanie aplikacji
 
-Aby zamapować niestandardową nazwę DNS na aplikację internetową, dla tej aplikacji internetowej musisz mieć płatną warstwę [planu usługi App Service](https://azure.microsoft.com/pricing/details/app-service/) (**Współdzielona**, **Podstawowa**, **Standardowa** lub  **Premium**). W tym kroku musisz się upewnić, że Twoja aplikacja usługi App Service jest w obsługiwanej warstwie cenowej.
+Aby zamapować niestandardową nazwę DNS na aplikację internetową, dla tej aplikacji internetowej musisz mieć płatną warstwę [planu usługi App Service](https://azure.microsoft.com/pricing/details/app-service/) (**Współdzielona**, **Podstawowa**, **Standardowa**,  **Premium** lub **Zużycie** dla usługi Azure Functions). W tym kroku musisz się upewnić, że Twoja aplikacja usługi App Service jest w obsługiwanej warstwie cenowej.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 

@@ -1,24 +1,27 @@
 ---
-title: Jednostka usługi klastra Azure Kubernetes
+title: (PRZESTARZAŁE) Jednostka usługi klastra Azure Kubernetes
 description: Tworzenie jednostki usługi Azure Active Directory dla klastra Kubernetes w usłudze Azure Container Service i zarządzanie nią
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: get-started-article
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c370d25ed5d70887c8beecae8fea3528a259a0ea
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 53bb09824a88980a171fa4067a9efd2fc067a898
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954576"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992159"
 ---
-# <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Konfigurowanie jednostki usługi Azure AD dla klastra Kubernetes w usłudze Azure Container Service
+# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(PRZESTARZAŁE) Konfigurowanie jednostki usługi Azure AD dla klastra Kubernetes w usłudze Container Service
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby uzyskać zaktualizowaną wersję tego artykułu z opisem użycia usługi Azure Kubernetes Service, zobacz [Jednostki usługi w usłudze Azure Kubernetes Service (AKS)](../../aks/kubernetes-service-principal.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 W usłudze Azure Container Service klaster Kubernetes wymaga [jednostki usługi Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) do współpracy z interfejsami API platformy Azure. Nazwa główna usługi jest potrzebna do dynamicznego zarządzania zasobami, takimi jak [trasy zdefiniowane przez użytkownika](../../virtual-network/virtual-networks-udr-overview.md) i narzędzie [Azure Load Balancer dla warstwy 4](../../load-balancer/load-balancer-overview.md).
 
@@ -30,11 +33,11 @@ W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dl
 
 Możesz użyć istniejącej jednostki usługi Azure AD, która spełnia następujące wymagania, albo utworzyć nową.
 
-* **Zakres**: grupa zasobów
+* **Zakres**: Grupa zasobów
 
-* **Rola**: współautor
+* **Rola**: Współautor
 
-* **Klucz tajny klienta**: musi to być hasło. Obecnie nie można używać nazwy głównej usługi do uwierzytelniania certyfikatu.
+* **Klucz tajny klienta**: Musi to być hasło. Obecnie nie można używać nazwy głównej usługi do uwierzytelniania certyfikatu.
 
 > [!IMPORTANT]
 > Aby utworzyć jednostkę usługi, musisz mieć uprawnienia do zarejestrowania aplikacji w swojej dzierżawie usługi Azure AD i przypisania aplikacji do roli w swojej subskrypcji. Aby sprawdzić, czy masz wymagane uprawnienia, [zajrzyj do portalu](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).

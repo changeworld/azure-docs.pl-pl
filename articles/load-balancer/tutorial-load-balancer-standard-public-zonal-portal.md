@@ -1,14 +1,11 @@
 ---
-title: 'Samouczek: maszyny wirtualne usługi Load Balancer w strefie — Azure Portal | Microsoft Docs'
+title: 'Samouczek: Maszyny wirtualne usługi Load Balancer w strefie — Azure Portal'
+titlesuffix: Azure Load Balancer
 description: Ten samouczek przedstawia sposób tworzenia wystąpienia usługi Load Balancer w warstwie Standardowa przy użyciu frontonu strefowego w celu zrównoważenia obciążenia maszyn wirtualnych w strefie dostępności przy użyciu witryny Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 580015b7f8b1f894c69ddec0f26daeb524932e4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.custom: seodec18
+ms.openlocfilehash: dd4600d77373894cdc9d6225ae008a8bd677fb59
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637297"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262099"
 ---
-# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych w strefie dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
+# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia maszyn wirtualnych w strefie dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
 W tym samouczku utworzysz [wystąpienie usługi Load Balancer w warstwie Standardowa na platformie Azure](https://aka.ms/azureloadbalancerstandard) z frontonem strefowym, korzystające z publicznego standardowego adresu IP, w witrynie Azure Portal. W tym scenariuszu wybierzesz określoną strefę dla wystąpień frontonu i zaplecza, aby dostosować zasoby i ścieżkę danych do określonej strefy. Dowiesz się, jak wykonywać następujące czynności:
 
@@ -53,7 +50,7 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko standardowy public
 2. Na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź następujące wartości dla modułu równoważenia obciążenia:
     - **myLoadBalancer** — jako nazwę modułu równoważenia obciążenia.
     - **Publiczny** — jako typ modułu równoważenia obciążenia.
-     - **myPublicIPZonal** — jako nowo tworzony publiczny adres IP. Wybierz pozycję **Wybierz publiczny adres IP**. Następnie wybierz pozycję **Utwórz nowy**. Jako jego nazwę wpisz **myPublicIP**. Jednostka SKU ma domyślnie wartość Standardowa. W obszarze **Strefa dostępności** wybierz pozycję **Strefa 1**.
+      - **myPublicIPZonal** — jako nowo tworzony publiczny adres IP. Wybierz pozycję **Wybierz publiczny adres IP**. Następnie wybierz pozycję **Utwórz nowy**. Jako jego nazwę wpisz **myPublicIP**. Jednostka SKU ma domyślnie wartość Standardowa. W obszarze **Strefa dostępności** wybierz pozycję **Strefa 1**.
     - **myResourceGroupZLB** — jako nazwę nowo tworzonej grupy zasobów.
     - **westeurope** — jako lokalizację.
 3. Wybierz pozycję **Utwórz**, aby utworzyć moduł równoważenia obciążenia.
@@ -81,7 +78,7 @@ W tej sekcji utworzysz sieć wirtualną. Utworzysz też dwie maszyny wirtualne w
     - **myNetworkSecurityGroup** — jako nazwę sieciowej grupy zabezpieczeń.
     - **myResourceGroupLBAZ** — jako nazwę istniejącej grupy zasobów.
    
-    ![Tworzenie sieciowej grupy zabezpieczeń](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
+     ![Tworzenie sieciowej grupy zabezpieczeń](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 
 ### <a name="create-nsg-rules"></a>Tworzenie reguł sieciowej grupy zabezpieczeń
 
@@ -100,7 +97,7 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na p
     - **Zezwalaj na HTTP** w polu **Opis**.
 4. Kliknij przycisk **OK**.
  
- ![Tworzenie reguł sieciowej grupy zabezpieczeń](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Tworzenie reguł sieciowej grupy zabezpieczeń](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
 5. Powtórz kroki od 2 do 4, aby utworzyć kolejną regułę o nazwie **myRDPRule**. Ta reguła umożliwia obsługę przychodzących połączeń protokołu RDP używających portu 3389. Ustaw następujące wartości:
     - **Tag usługi** w polu **Źródło**.
@@ -112,7 +109,7 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na p
     - **myRDPRule** w polu **Nazwa**.
     - **Zezwalaj na RDP** w polu **Opis**.
 
-    ![Tworzenie reguły protokołu RDP](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
+      ![Tworzenie reguły protokołu RDP](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
 
 ### <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 

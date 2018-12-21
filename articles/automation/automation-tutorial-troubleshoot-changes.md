@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: zmiana, śledzenie, automatyzacja
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e4ea8f92a562ea4bc90df98d6e459377b9886777
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844910"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190020"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Rozwiązywanie problemów ze zmianami we własnym środowisku
 
@@ -177,12 +177,11 @@ Wyświetlanie zmian wprowadzonych w witrynie Azure Portal może być przydatne, 
 
 Aby dodać alert dotyczący zatrzymanej usługi, w witrynie Azure Portal przejdź do pozycji **Monitorowanie**. Następnie w obszarze **Usługi udostępnione** wybierz pozycję **Alerty** i kliknij przycisk **+ Nowa reguła alertu**
 
-W obszarze **1. Zdefiniuj warunek alertu**, kliknij przycisk **Wybierz docelowy**. W obszarze **Filtruj według typu zasobu** wybierz pozycję **Log Analytics**. Wybierz swój obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Gotowe**.
+Kliknij polecenie **Wybierz**, aby wybrać zasób. Na stronie **Wybierz zasób** wybierz pozycję **Log Analytics** na liście rozwijanej **Filtruj według typu zasobu**. Wybierz swój obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Gotowe**.
 
 ![Wybieranie zasobu](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-Wybierz pozycję **+ Dodaj kryteria**.
-W obszarze **Konfigurowanie logiki sygnału** w tabeli wybierz pozycję **Przeszukiwanie dzienników niestandardowych**. W polu tekstowym Zapytanie wyszukiwania wprowadź poniższe zapytanie:
+Kliknij opcję **Dodaj warunek**, a na stronie **Konfigurowanie logiki sygnału** wybierz opcję **Przeszukiwanie dzienników niestandardowych** w tabeli. W polu tekstowym Zapytanie wyszukiwania wprowadź poniższe zapytanie:
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -194,11 +193,9 @@ W obszarze **Logika alertu** w polu **Próg** wprowadź **0**. Po zakończeniu w
 
 ![Konfigurowanie logiki sygnału](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-W obszarze **2. Zdefiniuj szczegóły alertu** wprowadź nazwę i opis alertu. Ustaw **Ważność** na **Informacyjny (ważność 2)**, **Ostrzegawczy (ważność 1)** lub **Krytyczny (ważność 0)**.
+W obszarze **Grupy akcji** wybierz pozycję **Utwórz nową**. Grupa akcji to grupa składająca się z akcji, których można używać w wielu alertach. Akcje mogą obejmować powiadomienia e-mail, elementy runbook i webhook oraz wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](../azure-monitor/platform/action-groups.md).
 
-![Definiowanie szczegółów alertu](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
-
-W obszarze **3. Zdefiniuj grupę akcji** wybierz pozycję **Nowa grupa akcji**. Grupa akcji to grupa składająca się z akcji, których można używać w wielu alertach. Akcje mogą obejmować powiadomienia e-mail, elementy runbook i webhook oraz wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](../monitoring-and-diagnostics/monitoring-action-groups.md).
+W obszarze **Szczegóły alertu** wprowadź nazwę i opis alertu. Ustaw **Ważność** na **Informacyjny (ważność 2)**, **Ostrzegawczy (ważność 1)** lub **Krytyczny (ważność 0)**.
 
 W polu **Nazwa grupy akcji** wprowadź nazwę alertu oraz krótką nazwę. Krótka nazwa jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
 
@@ -212,7 +209,7 @@ Aby dostosować temat wiadomości e-mail alertu, w oknie **Tworzenie reguły** w
 
 Poniższa ilustracja przedstawia przykładową wiadomość e-mail odebraną po zatrzymaniu usługi W3SVC.
 
-![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+![email](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

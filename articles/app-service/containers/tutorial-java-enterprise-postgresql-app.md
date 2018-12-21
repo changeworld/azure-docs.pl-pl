@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej języka Java Enterprise w usłudze Azure App Service w systemie Linux | Microsoft Docs
+title: Tworzenie aplikacji internetowej języka Java Enterprise w systemie Linux — Azure App Service | Microsoft Docs
 description: Dowiedz się, jak uruchomić aplikację języka Java Enterprise na serwerze Wildfly w usłudze Azure App Service w systemie Linux.
 author: JasonFreeberg
 manager: routlaw
@@ -10,16 +10,17 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 0772dbb1aaa6b00994bd653c19b006114377dc5f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165462"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344231"
 ---
-# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka Java EE korzystającej z bazy danych Postgres na platformie Azure
+# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Samouczek: Tworzenie aplikacji internetowej języka Java EE korzystającej z bazy danych Postgres na platformie Azure
 
-W tym samouczku przedstawiono tworzenie aplikacji internetowej języka Java Enterprise Edition (EE) w usłudze Azure App Service i łączenie jej z bazą danych Postgres. Po ukończeniu tego samouczka będziesz mieć działającą w usłudze [Azure App Service dla systemu Linux](app-service-linux-intro.md) aplikację [WildFly](http://www.wildfly.org/about/), która umożliwia przechowywanie danych w usłudze [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/).
+W tym samouczku przedstawiono tworzenie aplikacji internetowej języka Java Enterprise Edition (EE) w usłudze Azure App Service i łączenie jej z bazą danych Postgres. Po ukończeniu tego samouczka będziesz mieć działającą w usłudze [Azure App Service dla systemu Linux](app-service-linux-intro.md) aplikację [WildFly](https://www.wildfly.org/about/), która umożliwia przechowywanie danych w usłudze [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/).
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -32,8 +33,8 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. [Pobierz i zainstaluj narzędzie Git](https://git-scm.com/)
-1. [Pobierz i zainstaluj pakiet Maven 3](https://maven.apache.org/install.html)
-1. [Pobierz i zainstaluj interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
+2. [Pobierz i zainstaluj pakiet Maven 3](https://maven.apache.org/install.html)
+3. [Pobierz i zainstaluj interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ## <a name="clone-and-edit-the-sample-app"></a>Klonowanie i edytowanie aplikacji przykładowej
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8dacfb054a36801c076435037a530daa87c4a89c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918579"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409412"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tworzenie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible umożliwia zarządzanie zestawem skalowania maszyn wirtualnych na platformie Azure, tak jak ma to miejsce w przypadku każdego innego zasobu platformy Azure. W tym artykule przedstawiono sposób tworzenia i skalowania na zewnątrz zestawu skalowania maszyn wirtualnych za pomocą rozwiązania Ansible. 
@@ -37,7 +37,7 @@ W tej sekcji przedstawiono przykładowy podręcznik rozwiązania Ansible, który
 
 Wprowadź własne hasło dla wartości *admin_password*.
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -141,7 +141,7 @@ Aby uruchomić podręcznik rozwiązania Ansible, użyj polecenia **ansible-playb
 
 Po uruchomieniu podręcznika dane wyjściowe podobne do poniższego przykładu pokazują, że zestaw skalowania maszyn wirtualnych został pomyślnie utworzony:
 
-  ```bash
+  ```Output
   PLAY [localhost] ***********************************************************
 
   TASK [Gathering Facts] *****************************************************
@@ -190,7 +190,7 @@ Zostaną wyświetlone wyniki podobne do następujących danych wyjściowych:
 
 Teraz możemy przeprowadzić skalowanie z dwóch do trzech wystąpień. Poniższy kod podręcznika rozwiązania Ansible pobiera informacje na temat skalowania maszyn wirtualnych i zmienia jego pojemność z dwóch do trzech. 
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -225,7 +225,7 @@ Następujące polecenie uruchomi podręcznik:
 
 Dane wyjściowe z uruchomienia podręcznika rozwiązania Ansible pokazują, że zestaw skalowania maszyn wirtualnych został pomyślnie przeskalowany na zewnątrz:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -275,4 +275,6 @@ Wynik uruchomienia polecenia w usłudze Cloud Shell pokazuje, że istnieją tera
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
-> [Przykładowy podręcznik rozwiązania Ansible dla zestawu skalowania maszyn wirtualnych](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
+
+> [Automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

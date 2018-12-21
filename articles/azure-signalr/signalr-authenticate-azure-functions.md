@@ -1,25 +1,18 @@
 ---
-title: 'Samouczek: Uwierzytelnianie usługi Azure SignalR Service za pomocą usługi Azure Functions | Microsoft Docs'
+title: 'Samouczek: Uwierzytelnianie usługi Azure SignalR Service za pomocą usługi Azure Functions'
 description: Z tego samouczka dowiesz się, jak uwierzytelnić klientów usługi Azure SignalR Service
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
-ms.workload: tbd
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 8af657c39217f3edcadef6ec0981a31ec7e89aa6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34cbb4d2c8a1e84499961802ca7bd07408375345
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978430"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409397"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Samouczek: Uwierzytelnianie usługi Azure SignalR Service za pomocą usługi Azure Functions
 
@@ -42,14 +35,12 @@ Do wykonania instrukcji znajdujących się w tym samouczku wymagane jest następ
 * [Zestaw SDK .NET](https://www.microsoft.com/net/download) (wersja 2.x, wymagana na potrzeby rozszerzeń usługi Functions)
 * [Podstawowe narzędzia usługi Azure Functions](https://github.com/Azure/azure-functions-core-tools) (wersja 2)
 * [Program Visual Studio Code](https://code.visualstudio.com/) (VS Code) z następującymi rozszerzeniami
-    * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) — umożliwia pracę z usługą Azure Functions w programie VS Code
-    * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) — udostępnia lokalnie strony internetowe na potrzeby testowania
-
+  * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) — umożliwia pracę z usługą Azure Functions w programie VS Code
+  * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) — udostępnia lokalnie strony internetowe na potrzeby testowania
 
 ## <a name="sign-into-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
 Przejdź do witryny [ Azure Portal](https://portal.azure.com/) i zaloguj się przy użyciu swoich poświadczeń.
-
 
 ## <a name="create-an-azure-signalr-service-instance"></a>Tworzenie wystąpienia usługi Azure SignalR Service
 
@@ -69,9 +60,8 @@ Aplikację usługi Azure Functions utworzysz i przetestujesz lokalnie. Uzyska on
     | Grupa zasobów | Utworzenie nowej grupy zasobów |
     | Lokalizacja | Wybierz bliską Ci lokalizację |
     | Warstwa cenowa | Bezpłatna |
-    
-1. Kliknij pozycję **Utwórz**.
 
+1. Kliknij pozycję **Utwórz**.
 
 ## <a name="initialize-the-function-app"></a>Inicjowanie aplikacji funkcji
 
@@ -87,17 +77,17 @@ Aplikację usługi Azure Functions utworzysz i przetestujesz lokalnie. Uzyska on
 
     ![Tworzenie aplikacji funkcji](media/signalr-authenticate-azure-functions/signalr-create-vscode-app.png)
 
-
 ### <a name="install-function-app-extensions"></a>Instalowanie rozszerzeń aplikacji funkcji
 
 W tym samouczku powiązania usługi Azure Functions są używane do interakcji z usługą Azure SignalR Service. Podobnie jak w większości innych przypadków, powiązania usługi SignalR Service są dostępne jako rozszerzenie, które należy zainstalować przy użyciu interfejsu wiersza polecenia podstawowych narzędzi usługi Azure Functions, zanim będzie można ich użyć.
 
-1. Otwórz terminal w programie VS Code, wybierając z menu pozycję **View (Widok) > Integrated Terminal (Zintegrowany terminal)** (Ctrl-`).
+1. Otwórz terminal w programie VS Code, wybierając z menu pozycję **View (Widok) > Integrated Terminal (Zintegrowany terminal)** (Ctrl-\`).
 
 1. Upewnij się, że bieżącym katalogiem jest główny folder projektu.
 
 1. Zainstaluj rozszerzenie aplikacji funkcji usługi SignalR Service.
-    ```
+
+    ```bash
     func extensions install -p Microsoft.Azure.WebJobs.Extensions.SignalRService -v 1.0.0-preview1-10002
     ```
 
@@ -108,6 +98,7 @@ Podczas lokalnego uruchamiania i debugowania środowiska uruchomieniowego usług
 1. W programie VS Code wybierz plik **local.settings.json** w okienku eksploratora, aby go otworzyć.
 
 1. Zastąp jego zawartość następującym kodem.
+
     ```json
     {
         "IsEncrypted": false,
@@ -133,14 +124,13 @@ Podczas lokalnego uruchamiania i debugowania środowiska uruchomieniowego usług
 
     ![Aktualizowanie ustawień lokalnych](media/signalr-authenticate-azure-functions/signalr-update-local-settings.png)
 
-
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>Tworzenie funkcji do uwierzytelniania użytkowników w ramach usługi SignalR Service
 
 Gdy aplikacja czatu zostanie po razy pierwszy otwarta w przeglądarce, wymaga ona ważnych poświadczeń połączenia w celu nawiązania połączenia z usługą Azure SignalR Service. Aby zwrócić te informacje o połączeniu, utworzysz funkcję wyzwalaną przez protokół HTTP o nazwie *SignalRInfo* w aplikacji funkcji.
 
 1. Otwórz paletę poleceń programu VS Code (skrót: `Ctrl-Shift-P`, w systemie macOS: `Cmd-Shift-P`).
 
-1. Wyszukaj polecenie **Azure Functions: Create Function** i wybierz je.
+1. Wyszukaj i wybierz polecenie **Azure Functions: Create Function**.
 
 1. Po wyświetleniu monitu podaj następujące informacje.
 
@@ -150,7 +140,7 @@ Gdy aplikacja czatu zostanie po razy pierwszy otwarta w przeglądarce, wymaga on
     | Szablon | Wyzwalacz HTTP |
     | Name (Nazwa) | SignalRInfo |
     | Poziom autoryzacji | Anonimowe |
-    
+
     Zostanie utworzony folder o nazwie **SignalRInfo**, który zawiera nową funkcję.
 
 1. Otwórz plik **SignalRInfo/function.json**, aby skonfigurować powiązania dla funkcji. Zmodyfikuj zawartość pliku na następującą. Spowoduje to dodanie powiązania danych wejściowych, które generuje ważne poświadczenia dla klienta w celu nawiązania połączenia z centrum usługi Azure SignalR Service o nazwie `chat`.
@@ -194,14 +184,13 @@ Gdy aplikacja czatu zostanie po razy pierwszy otwarta w przeglądarce, wymaga on
 
     Ta funkcja przyjmuje informacje dotyczące połączenia usługi SignalR z powiązania danych wejściowych i zwraca je do klienta w treści odpowiedzi HTTP.
 
-
 ## <a name="create-a-function-to-send-chat-messages"></a>Tworzenie funkcji do wysyłania wiadomości czatu
 
 Aplikacja internetowa wymaga także interfejsu API protokołu HTTP do wysyłania wiadomości. Utworzysz funkcję wyzwalaną przez protokół HTTP o nazwie *SignalRInfo*, która wysyła wiadomości do wszystkich połączonych klientów przy użyciu usługi SignalR Service.
 
 1. Otwórz paletę poleceń programu VS Code (skrót: `Ctrl-Shift-P`, w systemie macOS: `Cmd-Shift-P`).
 
-1. Wyszukaj polecenie **Azure Functions: Create Function** i wybierz je.
+1. Wyszukaj i wybierz polecenie **Azure Functions: Create Function**.
 
 1. Po wyświetleniu monitu podaj następujące informacje.
 
@@ -211,7 +200,7 @@ Aplikacja internetowa wymaga także interfejsu API protokołu HTTP do wysyłania
     | Szablon | Wyzwalacz HTTP |
     | Name (Nazwa) | SendMessage |
     | Poziom autoryzacji | Anonimowe |
-    
+
     Zostanie utworzony folder o nazwie **SendMessage**, który zawiera nową funkcję.
 
 1. Otwórz plik **SendMessage/function.json**, aby skonfigurować powiązania dla funkcji. Zmodyfikuj zawartość pliku na następującą.
@@ -250,17 +239,18 @@ Aplikacja internetowa wymaga także interfejsu API protokołu HTTP do wysyłania
 1. Zapisz plik.
 
 1. Otwórz plik **SendMessage/index.js**, aby wyświetlić treść funkcji. Zmodyfikuj zawartość pliku na następującą.
+
     ```javascript
     module.exports = function (context, req) {
         const message = req.body;
         message.sender = req.headers && req.headers['x-ms-client-principal-name'] || '';
-            
+
         let recipientUserId = '';
         if (message.recipient) {
             recipientUserId = message.recipient;
             message.isPrivate = true;
         }
-    
+
         context.bindings.signalRMessages = [{
             'userId': recipientUserId,
             'target': 'newMessage',
@@ -269,12 +259,12 @@ Aplikacja internetowa wymaga także interfejsu API protokołu HTTP do wysyłania
         context.done();
     };
     ```
+
     Ta funkcja przyjmuje treść z żądania HTTP i wysyła ją do klientów połączonych z usługą SignalR Service, wywołując funkcję o nazwie `newMessage` w każdym z nich.
 
     Funkcja może odczytywać tożsamość nadawcy i akceptować wartość *recipient* w treści wiadomości, aby zezwolić na prywatne wysyłanie wiadomości do danego użytkownika. Takie funkcje będą używane w dalszej części tego samouczka.
 
 1. Zapisz plik.
-
 
 ## <a name="create-and-run-the-chat-client-web-user-interface"></a>Tworzenie i uruchamianie internetowego interfejsu użytkownika klienta czatu
 
@@ -294,20 +284,17 @@ Interfejs użytkownika aplikacji czatu to prosta aplikacja jednostronicowa utwor
 
 1. Zostanie otwarta aplikacja. Wprowadź wiadomość w polu czatu, a następnie naciśnij klawisz Enter. Odśwież aplikację, aby wyświetlić nowe wiadomości. Ponieważ uwierzytelnianie nie zostało skonfigurowane, wszystkie wiadomości zostaną wysłane jako użytkownik „anonimowy”.
 
-
 ## <a name="deploy-to-azure-and-enable-authentication"></a>Wdrażanie na platformie Azure i włączanie uwierzytelniania
 
 Aplikacje funkcji i czatu były uruchamiana lokalnie. Teraz wdrożysz je na platformie Azure i włączysz uwierzytelniania oraz obsługę prywatnych wiadomości w aplikacji.
-
 
 ### <a name="log-into-azure-with-vs-code"></a>Zaloguj się na platformie Azure za pomocą programu VS Code
 
 1. Otwórz paletę poleceń programu VS Code (skrót: `Ctrl-Shift-P`, w systemie macOS: `Cmd-Shift-P`).
 
-1. Wyszukaj polecenie **Azure: Sign in** i wybierz je.
+1. Wyszukaj i wybierz polecenie **Azure: Sign in**.
 
 1. Postępuj zgodnie z instrukcjami, aby ukończyć proces logowania w przeglądarce.
-
 
 ### <a name="configure-function-app-for-authentication"></a>Konfigurowanie aplikacji funkcji na potrzeby uwierzytelniania
 
@@ -331,10 +318,9 @@ Podczas wysyłania wiadomości aplikacja może zdecydować, czy wysłać ją do 
 
 1. Zapisz plik.
 
-
 ### <a name="deploy-function-app"></a>Wdrażanie aplikacji funkcji
 
-1. Otwórz paletę poleceń programu VS Code (skrót: `Ctrl-Shift-P`, w systemie macOS: `Cmd-Shift-P`), a następnie wybierz polecenie **Azure Functions: Deploy to Function App**. 
+1. Otwórz paletę poleceń programu VS Code (skrót: `Ctrl-Shift-P`, w systemie macOS: `Cmd-Shift-P`), a następnie wybierz polecenie **Azure Functions: Deploy to Function App**.
 
 1. Po wyświetleniu monitu podaj następujące informacje.
 
@@ -348,15 +334,14 @@ Podczas wysyłania wiadomości aplikacja może zdecydować, czy wysłać ją do 
     | Konto magazynu | Wybierz pozycję **Utwórz nowe konto magazynu** |
     | Nazwa konta magazynu | Wprowadź unikatową nazwę (zawierającą od 3 do 24 znaków alfanumerycznych) |
     | Lokalizacja | Wybierz bliską Ci lokalizację |
-    
-    Na platformie Azure zostanie utworzona nowa aplikacja funkcji i rozpocznie się proces wdrażania. Zaczekaj na zakończenie wdrożenia.
 
+    Na platformie Azure zostanie utworzona nowa aplikacja funkcji i rozpocznie się proces wdrażania. Zaczekaj na zakończenie wdrożenia.
 
 ### <a name="upload-function-app-local-settings"></a>Przekazywanie lokalnych ustawień aplikacji funkcji
 
 1. Otwórz paletę poleceń programu VS Code (skrót: `Ctrl-Shift-P`, w systemie macOS: `Cmd-Shift-P`).
 
-1. Wyszukaj polecenie **Azure Functions: Upload local settings** i wybierz je.
+1. Wyszukaj i wybierz polecenie **Azure Functions: Upload local settings**.
 
 1. Po wyświetleniu monitu podaj następujące informacje.
 
@@ -369,14 +354,13 @@ Podczas wysyłania wiadomości aplikacja może zdecydować, czy wysłać ją do 
 
 Ustawienia lokalne są przekazywane do aplikacji funkcji na platformie Azure. Jeśli zostanie wyświetlony monit o zastąpienie istniejących ustawień, wybierz pozycję **Tak na wszystko**.
 
-
 ### <a name="enable-function-app-cross-origin-resource-sharing-cors"></a>Włączanie mechanizmu współużytkowania zasobów między źródłami (CORS, Cross Origin Resource Sharing) aplikacji funkcji
 
 Mimo że ustawienie mechanizmu CORS istnieje w pliku **local.settings.json**, nie jest ono propagowane do aplikacji funkcji na platformie Azure. Należy ustawić je osobno.
 
 1. Otwórz paletę poleceń programu VS Code (skrót: `Ctrl-Shift-P`, w systemie macOS: `Cmd-Shift-P`).
 
-1. Wyszukaj polecenie **Azure Functions: Open in portal** i wybierz je.
+1. Wyszukaj i wybierz polecenie **Azure Functions: Open in portal**.
 
 1. Wybierz subskrypcję i nazwę aplikacji funkcji, aby otworzyć aplikację funkcji w witrynie Azure Portal.
 
@@ -395,7 +379,6 @@ Mimo że ustawienie mechanizmu CORS istnieje w pliku **local.settings.json**, ni
 > [!NOTE]
 > W rzeczywistych aplikacjach zamiast zezwalać na działanie mechanizmu CORS w ramach wszystkich źródeł (`*`), bezpieczniejszą metodą jest wprowadzenie określonych wpisów CORS dla każdej domeny, która ich wymaga.
 
-
 ### <a name="update-the-web-app"></a>Aktualizowanie aplikacji internetowej
 
 1. W witrynie Azure Portal przejdź do strony przeglądu aplikacji funkcji.
@@ -404,13 +387,11 @@ Mimo że ustawienie mechanizmu CORS istnieje w pliku **local.settings.json**, ni
 
     ![Uzyskiwanie adresu URL](media/signalr-authenticate-azure-functions/signalr-get-url.png)
 
-
 1. W programie VS Code otwórz plik **index.html** i zastąp wartość parametru `apiBaseUrl` adresem URL aplikacji funkcji.
 
 1. Aplikację można skonfigurować przy użyciu uwierzytelniania za pomocą kont Microsoft i Google oraz usług Azure Active Directory, Facebook i Twitter. Wybierz dostawcę uwierzytelniania, który zostanie użyty, ustawiając wartość parametru `authProvider`.
 
 1. Zapisz plik.
-
 
 ### <a name="deploy-the-web-application-to-blob-storage"></a>Wdrażanie aplikacji internetowej w magazynie obiektów blob
 
@@ -454,7 +435,6 @@ Aplikacja internetowa będzie hostowana za pomocą funkcji statycznych witryn in
 
 1. Wróć do strony **Statyczna witryna internetowa**. Zapisz wartość z pola **Podstawowy punkt końcowy**. Jest to adres URL aplikacji internetowej.
 
-
 ### <a name="enable-app-service-authentication"></a>Włączanie uwierzytelniania usługi App Service
 
 Uwierzytelnianie usługi App Service obsługuje uwierzytelnianie za pomocą kont Microsoft i Google oraz usług Azure Active Directory, Facebook i Twitter.
@@ -469,12 +449,11 @@ Uwierzytelnianie usługi App Service obsługuje uwierzytelnianie za pomocą kont
 
 1. Postępuj zgodnie z dokumentacją wybranego dostawcy logowania, aby ukończyć konfigurację.
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication)
-    - [Konto Microsoft](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)
-    - [Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)
-
+    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
+    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
+    - [Konto Microsoft](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
+    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
 
 ### <a name="try-the-application"></a>Sprawdzanie działania aplikacji
 
@@ -490,11 +469,9 @@ Gratulacje! Bezserwerowa aplikacja czatu w czasie rzeczywistym została wdrożon
 
 ![Demonstracja](media/signalr-authenticate-azure-functions/signalr-serverless-chat.gif)
 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Aby wyczyścić zasoby utworzone w tym samouczku, usuń grupę zasobów za pomocą witryny Azure Portal.
-
 
 ## <a name="next-steps"></a>Następne kroki
 

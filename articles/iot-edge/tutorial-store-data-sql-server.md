@@ -1,5 +1,5 @@
 ---
-title: Przechowywanie danych przy użyciu modułu SQL usługi Azure IoT Edge | Microsoft Docs
+title: Samouczek — przechowywanie danych w module SQL — Azure IoT Edge | Microsoft Docs
 description: Dowiedz się, jak przechowywać dane lokalnie na urządzeniu usługi IoT Edge przy użyciu modułu programu SQL Server
 services: iot-edge
 author: kgremban
@@ -8,15 +8,15 @@ ms.author: kgremban
 ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: b0d26704d287f2e02541cc667250af8e8005f864
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 0193d79dec663b089184099c2a4d275c91380c8b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833997"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163416"
 ---
-# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Samouczek: przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server
+# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Samouczek: Przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server
 
 Usługi Azure IoT Edge i programu SQL Server można używać do przechowywania danych i wykonywania zapytań dotyczących danych na brzegu sieci. Usługa Azure IoT Edge ma podstawowe funkcje magazynu w celu buforowania komunikatów, jeśli urządzenie przejdzie w tryb offline, a następnie przekazania ich dalej po ponownym ustanowieniu połączenia. Możesz jednak potrzebować bardziej zaawansowanych możliwości magazynu, takich jak możliwość lokalnego wykonywania zapytań o dane. Dzięki włączeniu lokalnych baz danych urządzenia usługi IoT Edge mogą wykonywać bardziej złożone obliczenia bez konieczności utrzymywania połączenia z usługą IoT Hub. Na przykład czujnik na maszynie przekazuje dane do chmury raz w miesiącu na potrzeby raportowania i udoskonalania modułu uczenia maszynowego. Jeśli jednak serwisant pracuje przy maszynie, może lokalnie uzyskać dostęp do danych czujnika z ostatnich kilku dni.
 
@@ -87,7 +87,7 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
 
 2. Otwórz paletę poleceń programu VS Code, wybierając pozycję **Widok** > **Paleta poleceń**.
 
-3. W palecie poleceń wpisz i uruchom polecenie **Azure IoT Edge: nowe rozwiązanie usługi IoT Edge**. W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie: 
+3. W palecie poleceń wpisz i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie: 
 
    | Pole | Wartość |
    | ----- | ----- |
@@ -163,7 +163,7 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
                        {
                            //Execute the command and log the # rows affected.
                            var rows = await cmd.ExecuteNonQueryAsync();
-                           log.Info($"{rows} rows were updated");
+                           logger.LogInformation($"{rows} rows were updated");
                        }
                    }
 
@@ -251,7 +251,7 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
    }
    ```
 
-   ![Dodawanie kontenera programu SQL Server](./media/tutorial-store-data-sql-server/view_json_sql.png)
+   ![Dodawanie modułu programu SQL Server do manifestu](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
 5. W zależności od typu kontenerów platformy Docker na urządzeniu usługi IoT Edge zaktualizuj parametry modułu **sql** przy użyciu następującego kodu:
    * Kontenery systemu Windows:
@@ -324,7 +324,7 @@ Po wybraniu polecenia kompilowania rozwiązania w programie Visual Studio Code p
 
 Moduły można ustawić na urządzeniu za pomocą usługi IoT Hub, ale dostęp do usługi IoT Hub i urządzeń można również uzyskać za pomocą programu Visual Studio Code. W tej sekcji skonfigurujesz dostęp do usługi IoT Hub, a następnie użyjesz programu VS Code do wdrożenia rozwiązania na urządzeniu usługi IoT Edge. 
 
-1. W palecie poleceń programu VS Code wybierz polecenie **Azure IoT Hub: Select IoT Hub (Azure IoT Hub: wybierz centrum IoT Hub)**.
+1. W palecie poleceń programu VS Code wybierz polecenie **Azure IoT Hub: Select IoT Hub**  (Azure IoT Hub: wybierz centrum IoT Hub).
 
 2. Postępuj zgodnie z monitami, aby zalogować się na koncie platformy Azure. 
 
@@ -416,7 +416,7 @@ W narzędziu polecenia SQL uruchom następujące polecenie, aby wyświetlić sfo
    GO
    ```
 
-   ![Wyświetlanie danych lokalnych](./media/tutorial-store-data-sql-server/view-data.png)
+   ![Wyświetlanie zawartości lokalnej bazy danych](./media/tutorial-store-data-sql-server/view-data.png)
 
 
 

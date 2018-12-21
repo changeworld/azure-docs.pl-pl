@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: platforma Apache Kafka z systemem Apache Storm w usłudze HDInsight — platforma Azure '
+title: 'Samouczek: Korzystanie z systemu Apache Storm i platformy Apache Kafka do odczytu i zapisu danych — Azure HDInsight'
 description: Dowiedz się, jak utworzyć potok przesyłania strumieniowego przy użyciu systemu Apache Storm i platformy Apache Kafka w usłudze HDInsight. W tym samouczku składniki KafkaBolt i KafkaSpout są używane do przesyłania strumieniowego z platformy Kafka.
 services: hdinsight
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/21/2018
-ms.openlocfilehash: 74cdaed91624e9d0602ce6a85ccc5cd341b9519e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/06/2018
+ms.openlocfilehash: 1c2a61ba936fa86bb3acb560909b29cda762693c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496624"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166578"
 ---
-# <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
+# <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: Korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
 
 W tym samouczku przedstawiono sposób użycia topologii systemu [Apache Storm](https://storm.apache.org/) do odczytywania i zapisywania danych przy użyciu platformy [Apache Kafka](https://kafka.apache.org/) w usłudze HDInsight. W tym samouczku pokazano także sposób utrwalania danych w magazynie zgodnym z systemem plików [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) w klastrze Storm.
 
@@ -65,19 +65,19 @@ Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji robocz
 
 System Apache Storm udostępnia kilka składników do pracy z platformą Apache Kafka. W tym samouczku są używane następujące składniki:
 
-* `org.apache.storm.kafka.KafkaSpout`: ten składnik odczytuje dane z platformy Kafka. Zależy on od następujących składników:
+* `org.apache.storm.kafka.KafkaSpout`: Ten składnik odczytuje dane z platformy Kafka. Zależy on od następujących składników:
 
-    * `org.apache.storm.kafka.SpoutConfig`: udostępnia konfigurację składnika spout.
+    * `org.apache.storm.kafka.SpoutConfig`: Udostępnia konfigurację składnika spout.
 
-    * `org.apache.storm.spout.SchemeAsMultiScheme` i `org.apache.storm.kafka.StringScheme`: sposób przekształcania danych z platformy Kafka w krotkę systemu Storm.
+    * `org.apache.storm.spout.SchemeAsMultiScheme` i `org.apache.storm.kafka.StringScheme`: Sposób przekształcania danych z platformy Kafka w krotkę systemu Storm.
 
-* `org.apache.storm.kafka.bolt.KafkaBolt`: ten składnik zapisuje dane do platformy Kafka. Zależy on od następujących składników:
+* `org.apache.storm.kafka.bolt.KafkaBolt`: Ten składnik zapisuje dane do platformy Kafka. Zależy on od następujących składników:
 
-    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`: opisuje temat docelowy zapisu.
+    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`: Opisuje temat docelowy zapisu.
 
-    * `org.apache.kafka.common.serialization.StringSerializer`: konfiguruje składnik bolt pod kątem serializowania danych jako wartości ciągu.
+    * `org.apache.kafka.common.serialization.StringSerializer`: Konfiguruje składnik bolt pod kątem serializowania danych jako wartości ciągu.
 
-    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: mapuje strukturę danych krotki używaną w topologii systemu Storm na pola przechowywane na platformie Kafka.
+    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Mapuje strukturę danych krotki używaną w topologii systemu Storm na pola przechowywane na platformie Kafka.
 
 Te składniki są dostępne w pakiecie `org.apache.storm : storm-kafka`. Użyj wersji pakietu zgodnej z wersją systemu Storm. W przypadku usługi HDInsight 3.6 właściwa wersja systemu Storm to 1.1.0.
 Potrzebny jest także pakiet `org.apache.kafka : kafka_2.10`, który zawiera dodatkowe składniki platformy Kafka. Użyj wersji pakietu zgodnej z wersją platformy Kafka. W przypadku usługi HDInsight 3.6 właściwa wersja platformy Kafka to 0.10.0.0.
@@ -120,9 +120,9 @@ Kod używany w tym dokumencie jest dostępny na stronie [https://github.com/Azur
 
 Ten samouczek obejmuje dwie topologie:
 
-* Moduł zapisujący platformy Kafka: generuje losowe zdania i zapisuje je na platformie Kafka.
+* Moduł zapisujący platformy Kafka: Generuje losowe zdania i zapisuje je na platformie Kafka.
 
-* Moduł odczytujący platformy Kafka: odczytuje dane z platformy Kafka, a następnie zapisuje je w magazynie plików zgodnym z systemem plików HDFS klastra Storm.
+* Moduł odczytujący platformy Kafka: Odczytuje dane z platformy Kafka, a następnie zapisuje je w magazynie plików zgodnym z systemem plików HDFS klastra Storm.
 
     > [!WARNING] 
     > Aby umożliwić pracę systemu Storm z magazynem zgodnym z systemem plików HDFS używanym przez usługę HDInsight, należy wykonać akcję skryptu. Skrypt instaluje kilka plików jar w ścieżce `extlib` systemu Storm. Szablon w tym samouczku automatycznie używa skryptu podczas tworzenia klastra.
@@ -135,15 +135,15 @@ Topologie definiuje się przy użyciu struktury [Flux](https://storm.apache.org/
 
 Następujące parametry są ustawiane w czasie wykonywania dla tych topologii:
 
-* `${kafka.topic}`: nazwa tematu platformy Kafka używanego przez topologię do odczytu i zapisu.
+* `${kafka.topic}`: Nazwa tematu platformy Kafka używanego przez topologię do odczytu i zapisu.
 
-* `${kafka.broker.hosts}`: hosty, na których są uruchomione brokery platformy Kafka. Informacje o brokerze są używane przez składnik KafkaBolt podczas zapisywania do platformy Kafka.
+* `${kafka.broker.hosts}`: Hosty, na których są uruchomione brokery platformy Kafka. Informacje o brokerze są używane przez składnik KafkaBolt podczas zapisywania do platformy Kafka.
 
-* `${kafka.zookeeper.hosts}`: hosty w klastrze Kafka, na których jest uruchomiona usługa Zookeeper.
+* `${kafka.zookeeper.hosts}`: Hosty w klastrze Kafka, na których jest uruchomiona usługa Zookeeper.
 
-* `${hdfs.url}`: adres URL systemu plików dla składnika HDFSBolt. Wskazuje, czy dane są zapisywane na koncie usługi Azure Storage, czy w usłudze Azure Data Lake Store.
+* `${hdfs.url}`: Adres URL systemu plików dla składnika HDFSBolt. Wskazuje, czy dane są zapisywane na koncie usługi Azure Storage, czy w usłudze Azure Data Lake Store.
 
-* `${hdfs.write.dir}`: katalog, w którym są zapisywane dane.
+* `${hdfs.write.dir}`: Katalog, w którym są zapisywane dane.
 
 Aby uzyskać więcej informacji dotyczących topologii struktury Flux, zobacz [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html).
 
@@ -565,13 +565,13 @@ Platforma Kafka przechowuje dane w _temacie_. Musisz utworzyć temat przed uruch
 
     W tym poleceniu są używane następujące parametry:
 
-    * `org.apache.storm.flux.Flux`: skonfiguruj i uruchom tę topologię za pomocą struktury Flux.
+    * `org.apache.storm.flux.Flux`: Konfigurowanie i uruchamianie tej topologii za pomocą struktury Flux.
 
-    * `--remote`: prześlij topologię do węzła Nimbus. Topologia jest dystrybuowana do węzłów procesu roboczego w klastrze.
+    * `--remote`: Przesyłanie topologii do węzła Nimbus. Topologia jest dystrybuowana do węzłów procesu roboczego w klastrze.
 
-    * `-R /writer.yaml`: skonfiguruj topologię za pomocą pliku `writer.yaml`. Parametr `-R` wskazuje, że ten zasób jest dołączany do pliku jar. Znajduje się on w katalogu głównym pliku jar, więc jego ścieżka to `/writer.yaml`.
+    * `-R /writer.yaml`: Konfigurowanie topologii za pomocą pliku `writer.yaml`. Parametr `-R` wskazuje, że ten zasób jest dołączany do pliku jar. Znajduje się on w katalogu głównym pliku jar, więc jego ścieżka to `/writer.yaml`.
 
-    * `--filter`: wypełnij wpisy w pliku `writer.yaml` topologii za pomocą wartości z pliku `dev.properties`. Na przykład wartość wpisu `kafka.topic` w pliku jest używana do zastąpienia wpisu `${kafka.topic}` w definicji topologii.
+    * `--filter`: Wypełnianie wpisów w pliku topologii `writer.yaml` za pomocą wartości z pliku `dev.properties`. Na przykład wartość wpisu `kafka.topic` w pliku jest używana do zastąpienia wpisu `${kafka.topic}` w definicji topologii.
 
 ## <a name="start-the-reader"></a>Uruchamianie modułu czytającego
 

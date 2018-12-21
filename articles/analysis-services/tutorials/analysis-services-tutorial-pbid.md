@@ -2,19 +2,20 @@
 title: Samouczek — nawiązywanie połączenia z usługami Azure Analysis Services za pomocą programu Power BI Desktop | Microsoft Docs
 author: minewiskan
 manager: kfile
+description: Informacje dotyczące sposobu nawiązywania połączenia z usługami Azure Analysis Services za pomocą programu Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: ad97fd7569690d0d199b0ce1a82f31f8dfa64c26
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0025655b3df8ddfb91857bbd56c04507ac6bca5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426134"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993978"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Samouczek: nawiązywanie połączenia za pomocą programu Power BI Desktop
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Samouczek: Nawiązywanie połączenia za pomocą programu Power BI Desktop
 
 W tym samouczku użyjesz programu Power BI Desktop do nawiązania połączenia z przykładową modelową bazą danych adventureworks na serwerze. Zadania, które należy wykonać, symulują typowe połączenie użytkownika z modelem i tworzenie podstawowego raportu na podstawie danych z modelu.
 
@@ -29,7 +30,7 @@ W tym samouczku użyjesz programu Power BI Desktop do nawiązania połączenia z
 - Nadaj uprawnienia do [*odczytu*](../analysis-services-server-admins.md) przykładowej modelowej bazy danych adventureworks.
 - [Zainstaluj najnowszy program Power BI Desktop](https://powerbi.microsoft.com/desktop).
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 W tym samouczku logowanie do portalu jest konieczne tylko w celu uzyskania nazwy serwera. Zazwyczaj użytkownicy uzyskują nazwę serwera od administratora serwera.
 
 Zaloguj się do [portalu](https://portal.azure.com/).
@@ -51,7 +52,7 @@ Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa s
 
    ![Określanie nazwy serwera i modelowej bazy danych](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aas-servername.png)
 
-3. Po wyświetleniu monitu wprowadź swoje poświadczenia logowania. Używane konto musi mieć co najmniej uprawnienia do odczytu przykładowej modelowej bazy danych adventureworks.
+3. Po wyświetleniu monitu wprowadź poświadczenia. Używane konto musi mieć co najmniej uprawnienia do odczytu przykładowej modelowej bazy danych adventureworks.
 
     Model adventureworks zostanie otwarty w programie Power BI Desktop z pustym raportem w widoku Raport. Na liście **Pola** zostaną wyświetlone wszystkie nieukryte obiekty modelu. Stan połączenia jest wyświetlany w prawym dolnym rogu.
 

@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie aplikacji usługi Service Fabric przy użyciu ciągłej integracji (Azure DevOps Services) na platformie Azure | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak skonfigurować ciągłą integrację i wdrażanie dla aplikacji usługi Service Fabric przy użyciu usługi Azure DevOps Services.
+title: Wdrażanie aplikacji usługi Service Fabric przy użyciu ciągłej integracji i usługi Azure Pipelines na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak skonfigurować ciągłą integrację i wdrażanie dla aplikacji usługi Service Fabric przy użyciu usługi Azure Pipelines.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,26 +12,26 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2018
+ms.date: 12/02/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 766c0c780807ff7627ae9fb96aca4a896918f9c6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853745"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094961"
 ---
-# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
+# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: Wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 
-Niniejszy samouczek jest czwartą częścią serii i zawiera opis sposobu konfigurowania ciągłej integracji i ciągłego wdrażania aplikacji usługi Service Fabric za pomocą usługi Azure DevOps.  Wymagana jest istniejąca aplikacja usługi Service Fabric. Na potrzeby tego samouczka za przykład posłużyła aplikacja utworzona w temacie [Tworzenie aplikacji .NET](service-fabric-tutorial-create-dotnet-app.md).
+Niniejszy samouczek jest czwartą częścią serii i zawiera opis sposobu konfigurowania ciągłej integracji i ciągłego wdrażania aplikacji usługi Service Fabric za pomocą usługi Azure Pipelines.  Wymagana jest istniejąca aplikacja usługi Service Fabric. Na potrzeby tego samouczka za przykład posłużyła aplikacja utworzona w temacie [Tworzenie aplikacji .NET](service-fabric-tutorial-create-dotnet-app.md).
 
 Część trzecia serii zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Dodawanie kontroli źródła do projektu
-> * Tworzenie potoku kompilacji w usłudze Azure DevOps
-> * Tworzenie potoku wydania w usłudze Azure DevOps
+> * Tworzenie potoku kompilacji w usłudze Azure Pipelines
+> * Tworzenie potoku wydania w usłudze Azure Pipelines
 > * Automatyczne wdrażanie i uaktualnianie aplikacji
 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
@@ -50,7 +50,7 @@ Przed rozpoczęciem tego samouczka:
 * [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/), a następnie zainstaluj obciążenia **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 * Utwórz klaster usługi Service Fabric z systemem Windows na platformie Azure, na przykład [postępując zgodnie z tym samouczkiem](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Utwórz [organizację usługi Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student).
+* Utwórz [organizację usługi Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Umożliwia to utworzenie projektu w usłudze Azure DevOps i korzystanie z usługi Azure Pipelines.
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
 
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Przygotowywanie profilu publikowania
 
-Po [utworzeniu aplikacji](service-fabric-tutorial-create-dotnet-app.md) i [wdrożeniu jej na platformie Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure DevOps.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...**.
+Po [utworzeniu aplikacji](service-fabric-tutorial-create-dotnet-app.md) i [wdrożeniu jej na platformie Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure Pipelines.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...**.
 
 Wybierz profil docelowy w ramach projektu aplikacji na potrzeby przepływu pracy ciągłej integracji, na przykład chmurę.  Określ punkt końcowy połączenia klastra.  Zaznacz pole wyboru **Uaktualnij aplikację**, aby uaktualnić aplikację dla każdego wdrożenia w usłudze Azure DevOps.  Kliknij hiperlink **Zapisz**, aby zapisać ustawienia w profilu publikowania, a następnie kliknij przycisk **Anuluj** w celu zamknięcia okna dialogowego.
 
@@ -84,11 +84,11 @@ Sprawdź swój adres e-mail i z listy rozwijanej **Domena usługi Azure DevOps**
 
 Opublikowanie repozytorium powoduje utworzenie nowego projektu na Twoim koncie o takiej samej nazwie co lokalne repozytorium. Aby utworzyć repozytorium w istniejącym projekcie, kliknij pozycję **Zaawansowane** obok pola **Nazwa repozytorium**, a następnie wybierz projekt. Aby wyświetlić kod w Internecie, wybierz polecenie **Wyświetl w Internecie**.
 
-## <a name="configure-continuous-delivery-with-azure-devops"></a>Konfigurowanie ciągłego wdrażania za pomocą usługi Azure DevOps
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Konfigurowanie ciągłego dostarczania za pomocą usługi Azure Pipelines
 
-Potok kompilacji usługi Azure DevOps opisuje przepływ pracy, który składa się z zestawu kroków kompilacji wykonywanych sekwencyjnie. Utwórz potok kompilacji, który spowoduje wygenerowanie pakietu aplikacji usługi Service Fabric i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej o [potokach kompilacji usługi Azure DevOps](https://www.visualstudio.com/docs/build/define/create). 
+Potok kompilacji usługi Azure Pipelines opisuje przepływ pracy, który składa się z zestawu kroków kompilacji wykonywanych sekwencyjnie. Utwórz potok kompilacji, który spowoduje wygenerowanie pakietu aplikacji usługi Service Fabric i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej o [potokach kompilacji usługi Azure Pipelines](https://www.visualstudio.com/docs/build/define/create). 
 
-Potok wydania usługi Azure DevOps opisuje przepływ pracy, który wdraża pakiet aplikacji w klastrze. Jednoczesne użycie potoku kompilacji i potoku wydania powoduje wykonanie całego przepływu pracy, zaczynając od plików źródłowych, a kończąc na aplikacji uruchomionej w klastrze. Dowiedz się więcej o [potokach wydania](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) usługi Azure DevOps Services.
+Potok wydania usługi Azure Pipelines opisuje przepływ pracy, który wdraża pakiet aplikacji w klastrze. Jednoczesne użycie potoku kompilacji i potoku wydania powoduje wykonanie całego przepływu pracy, zaczynając od plików źródłowych, a kończąc na aplikacji uruchomionej w klastrze. Dowiedz się więcej o [potokach kompilacji usługi Azure Pipelines](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-pipeline"></a>Tworzenie potoku kompilacji
 
@@ -156,11 +156,11 @@ W widoku **Zmiany** programu Team Explorer dodaj komunikat opisujący aktualizac
 
 ![Zatwierdź wszystko][changes]
 
-Wybierz ikonę paska stanu nieopublikowanych zmian (![Nieopublikowane zmiany][unpublished-changes]) lub widok synchronizacji w programie Team Explorer. Wybierz pozycję **Wypchnij**, aby zaktualizować kod w usłudze Azure DevOps Services lub na serwerze TFS.
+Wybierz ikonę paska stanu nieopublikowanych zmian (![Nieopublikowane zmiany][unpublished-changes]) lub widok synchronizacji w programie Team Explorer. Wybierz pozycję **Wypchnij**, aby zaktualizować kod w usłudze Azure Pipelines.
 
 ![Wypychanie zmian][push]
 
-Wypychanie zmian do usługi Azure DevOps automatycznie wyzwala kompilację.  Po pomyślnym zakończeniu potoku kompilacji automatycznie tworzone jest wydanie, które rozpoczyna uaktualnianie aplikacji w klastrze.
+Wypychanie zmian do usługi Azure Pipelines automatycznie wyzwala kompilację.  Po pomyślnym zakończeniu potoku kompilacji automatycznie tworzone jest wydanie, które rozpoczyna uaktualnianie aplikacji w klastrze.
 
 Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje** modułu **Team Explorer** w programie Visual Studio.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, zdefiniuj potok wydania, który wdraża aplikację w klastrze.
 

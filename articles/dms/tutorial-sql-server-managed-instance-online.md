@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: przeprowadzanie migracji online z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi Azure Database Migration Service | Microsoft Docs'
+title: 'Samouczek: Przeprowadzanie migracji online z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi Azure Database Migration Service | Microsoft Docs'
 description: Dowiedz się, w jaki sposób przeprowadzić migrację online z lokalnego programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database za pomocą usługi Azure Database Migration Service.
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ccbfc6e204981a4e14812759715d0482e5b6cb67
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 030cd89bbd6407cd2e83a9b56942adbf419e069b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874766"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956707"
 ---
-# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Samouczek: migracja online programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Samouczek: Migracja online programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzanego usługi Azure SQL Database](../sql-database/sql-database-managed-instance.md) z minimalnym czasem przestoju. Dodatkowe metody, które mogą wymagać ręcznej pracy, są dostępne w artykule [SQL Server instance migration to Azure SQL Database Managed Instance (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database)](../sql-database/sql-database-managed-instance-migrate.md).
 
 >[!IMPORTANT]
@@ -64,24 +64,24 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 1. Zaloguj się w witrynie Azure Portal, wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
-    ![Wyświetlanie subskrypcji w portalu](media\tutorial-sql-server-to-managed-instance-online\portal-select-subscriptions.png)        
+    ![Wyświetlanie subskrypcji w portalu](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)        
 2. Wybierz subskrypcję, w której chcesz utworzyć wystąpienie usługi Azure Database Migration Service, a następnie wybierz pozycję **Dostawcy zasobów**.
 
-    ![Wyświetlanie dostawców zasobów](media\tutorial-sql-server-to-managed-instance-online\portal-select-resource-provider.png)
+    ![Wyświetlanie dostawców zasobów](media/tutorial-sql-server-to-managed-instance-online/portal-select-resource-provider.png)
 
 3. Wyszukaj „migration”, a następnie po prawej stronie pozycji **Microsoft.DataMigration** wybierz pozycję **Zarejestruj**.
 
-    ![Rejestrowanie dostawcy zasobów](media\tutorial-sql-server-to-managed-instance-online\portal-register-resource-provider.png)   
+    ![Rejestrowanie dostawcy zasobów](media/tutorial-sql-server-to-managed-instance-online/portal-register-resource-provider.png)   
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Tworzenie wystąpienia usługi Azure Database Migration Service
 
 1. W witrynie Azure Portal wybierz pozycję + **Utwórz zasób**, wyszukaj usługę **Azure Database Migration Service**, a następnie wybierz usługę **Azure Database Migration Service** z listy rozwijanej.
 
-     ![Azure Marketplace](media\tutorial-sql-server-to-managed-instance-online\portal-marketplace.png)
+     ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance-online/portal-marketplace.png)
 
 2. Na ekranie **Azure Database Migration Service** wybierz polecenie **Utwórz**.
 
-    ![Tworzenie wystąpienia usługi Azure Database Migration Service](media\tutorial-sql-server-to-managed-instance-online\dms-create1.png)
+    ![Tworzenie wystąpienia usługi Azure Database Migration Service](media/tutorial-sql-server-to-managed-instance-online/dms-create1.png)
 
 3. Na ekranie **Tworzenie usługi migracji** określ nazwę usługi, subskrypcję oraz nową lub istniejącą grupę zasobów.
 
@@ -102,7 +102,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
    
     Aby uzyskać więcej informacji na temat kosztów i warstw cenowych, zobacz [stronę z cennikiem](https://aka.ms/dms-pricing).
    
-    ![Tworzenie usługi DMS](media\tutorial-sql-server-to-managed-instance-online\dms-create-service3.png)
+    ![Tworzenie usługi DMS](media/tutorial-sql-server-to-managed-instance-online/dms-create-service3.png)
 
 7.  Wybierz pozycję **Utwórz**, aby utworzyć usługę.
 
@@ -112,7 +112,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**, wyszukaj usługę Azure Database Migration Service, a następnie wybierz pozycję **Azure Database Migration Services**.
 
-    ![Znajdowanie wszystkich wystąpień usługi Azure Database Migration Service](media\tutorial-sql-server-to-managed-instance-online\dms-search.png)
+    ![Znajdowanie wszystkich wystąpień usługi Azure Database Migration Service](media/tutorial-sql-server-to-managed-instance-online/dms-search.png)
 
 2. Na ekranie **Azure Database Migration Service** wyszukaj nazwę utworzonego wystąpienia, a następnie wybierz to wystąpienie.
  
@@ -120,7 +120,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
 4. Na ekranie **Nowy projekt migracji** wpisz nazwę projektu, w polu tekstowym **Typ serwera źródłowego** wybierz pozycję **SQL Server**, w polu tekstowym **Typ serwera docelowego** wybierz pozycję **Wystąpienie zarządzane usługi Azure SQL Database**, a następnie w polu **Wybierz typ działania** wybierz pozycję **Migracja danych w trybie online (wersja zapoznawcza)**.
 
-   ![Tworzenie projektu usługi DMS](media\tutorial-sql-server-to-managed-instance-online\dms-create-project3.png)
+   ![Tworzenie projektu usługi DMS](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
 5. Wybierz pozycję **Utwórz i uruchom działanie**, aby utworzyć projekt.
 
@@ -135,7 +135,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
     > [!CAUTION]
     > Połączenia SSL, które są szyfrowane przy użyciu certyfikatu z podpisem własnym, nie zapewniają silnego zabezpieczenia. Są one podatne na ataki typu „man-in-the-middle”. Nie należy polegać na połączeniach SSL z użyciem certyfikatów z podpisem własnym w środowisku produkcyjnym ani na serwerach, które są połączone z Internetem.
 
-   ![Szczegóły źródła](media\tutorial-sql-server-to-managed-instance-online\dms-source-details2.png)
+   ![Szczegóły źródła](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
 3. Wybierz pozycję **Zapisz**.
 
@@ -151,7 +151,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
 3. Podaj **nazwę użytkownika bazy danych SQL** i **hasło**, aby nawiązać połączenie z docelowym wystąpieniem wystąpienia zarządzanego usługi Azure SQL Database.
 
-    ![Wybieranie obiektu docelowego](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
+    ![Wybieranie obiektu docelowego](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
 2.  Wybierz pozycję **Zapisz**.
 
@@ -159,7 +159,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
 1. Na ekranie **Wybierz źródłowe bazy danych** wybierz źródłową bazę danych, którą chcesz zmigrować.
 
-    ![Wybieranie źródłowych baz danych](media\tutorial-sql-server-to-managed-instance-online\dms-select-source-databases2.png)
+    ![Wybieranie źródłowych baz danych](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
 2. Wybierz pozycję **Zapisz**.
 
@@ -175,7 +175,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
     |**Subskrypcja konta usługi Azure Storage** | Wybierz subskrypcję, która zawiera konto usługi Azure Storage. |
     |**Konto usługi Azure Storage** | Wybierz konto usługi Azure Storage, na które usługa DMS może przekazać pliki kopii zapasowej z udziału sieciowego protokołu SMB używane podczas migracji bazy danych.  Zalecamy wybranie konta usługi Storage w tym samym regionie co usługa DMS w celu uzyskania optymalnej wydajności przekazywania plików. |
     
-    ![Konfigurowanie ustawień migracji](media\tutorial-sql-server-to-managed-instance-online\dms-configure-migration-settings4.png)
+    ![Konfigurowanie ustawień migracji](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
 2. Wybierz pozycję **Zapisz**.
  
@@ -185,7 +185,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
 2. Przejrzyj i sprawdź szczegóły skojarzone z projektem migracji.
  
-    ![Podsumowanie projektu migracji](media\tutorial-sql-server-to-managed-instance-online\dms-project-summary3.png)
+    ![Podsumowanie projektu migracji](media/tutorial-sql-server-to-managed-instance-online/dms-project-summary3.png)
 
 ## <a name="run-and-monitor-the-migration"></a>Uruchamianie i monitorowanie migracji
 
@@ -193,11 +193,11 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
 2. Na ekranie działania migracji wybierz pozycję **Odśwież**, aby zaktualizować wyświetlane dane.
  
-   ![Działanie migracji w toku](media\tutorial-sql-server-to-managed-instance-online\dms-monitor-migration2.png)
+   ![Działanie migracji w toku](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration2.png)
 
     Możesz rozwinąć kategorie baz danych i danych logowania, aby monitorować stan migracji odpowiednich obiektów serwera.
 
-   ![Działanie migracji w toku](media\tutorial-sql-server-to-managed-instance-online\dms-monitor-migration-extend2.png)
+   ![Działanie migracji w toku](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>Przeprowadzanie migracji jednorazowej
 
@@ -213,11 +213,11 @@ Po przywróceniu kopii zapasowej całej bazy danych w wystąpieniu docelowym wys
 
 4.  Wybierz polecenie **Potwierdź**, a następnie wybierz pozycję **Zastosuj**.
 
-    ![Przygotowanie do zakończenia migracji jednorazowej](media\tutorial-sql-server-to-managed-instance-online\dms-complete-cutover.png)
+    ![Przygotowanie do zakończenia migracji jednorazowej](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
 5.  Gdy stan migracji bazy danych zmieni się na **Ukończono**, połącz aplikacje z nowym docelowym wystąpieniem wystąpienia zarządzanego usługi Azure SQL Database.
 
-    ![Ukończona migracja jednorazowa](media\tutorial-sql-server-to-managed-instance-online\dms-cutover-complete.png)
+    ![Ukończona migracja jednorazowa](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

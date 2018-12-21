@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący indeksowania, wykonywania zapytań i filtrowania w usłudze Azure Search przy użyciu portalu | Microsoft Docs
+title: Samouczek dotyczący indeksowania, wykonywania zapytań i filtrowania w witrynie Azure Portal — Azure Search
 description: Podczas pracy z tym samouczkiem użyjesz wstępnie zdefiniowanych danych przykładowych do wygenerowania indeksu w usłudze Azure Search za pomocą witryny Azure Portal. Dowiedz się więcej o wyszukiwaniu pełnotekstowym, filtrach, aspektach, wyszukiwaniu rozmytym, wyszukiwaniu geograficznym i innych funkcjach.
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: aac579da3aaf6ab1507bbc12d79a5b183a82d665
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.custom: seodec2018
+ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592759"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314027"
 ---
-# <a name="tutorial-use-built-in-tools-for-azure-search-indexing-and-queries"></a>Samouczek: korzystanie z wbudowanych narzędzi do indeksowania i wykonywania zapytań w usłudze Azure Search
+# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>Samouczek: Korzystanie z wbudowanych narzędzi portalu do indeksowania i wykonywania zapytań w usłudze Azure Search
 
 Aby szybko przejrzeć i poznać pojęcia dotyczące usługi Azure Search, możesz użyć wbudowanych narzędzi dostępnych na stronie usługi Azure Search w witrynie Azure Portal. Te narzędzia mogą nie oferować pełnej funkcjonalności platformy .NET i interfejsów API REST. Jednak kreatory i edytory zapewniają wprowadzenie do usługi Azure Search bez używania kodu, dzięki czemu możesz od razu zacząć pisać interesujące zapytania dotyczące przykładowego zestawu danych.
 

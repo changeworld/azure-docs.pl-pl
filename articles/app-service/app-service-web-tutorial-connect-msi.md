@@ -1,5 +1,5 @@
 ---
-title: Zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej | Microsoft Docs
+title: Zabezpieczanie połączenia usługi SQL Database za pomocą tożsamości zarządzanej — Azure App Service | Microsoft Docs
 description: Dowiedz się, jak zabezpieczyć połączenie z bazą danych za pomocą tożsamości zarządzanej, a także jak zastosować ją do innych usług platformy Azure.
 services: app-service\web
 documentationcenter: dotnet
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8c31e410713e4ba8ce6443170ba5ad5c2e740419
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b7d8a9b0ef48f7daed74fb15263e516d820a6a38
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52677937"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259073"
 ---
-# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: Zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 
 Usługa [App Service](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie na platformie Azure. Zapewnia także [tożsamość zarządzaną](app-service-managed-service-identity.md) dla aplikacji, czyli gotowe rozwiązanie do zabezpieczania dostępu do usługi [Azure SQL Database](/azure/sql-database/) i innych usług platformy Azure. Tożsamości zarządzane w usłudze App Service zwiększają bezpieczeństwo aplikacji przez wyeliminowanie wpisów tajnych z aplikacji, takich jak poświadczenia w parametrach połączenia. W tym samouczku dodasz tożsamość zarządzaną do przykładowej aplikacji internetowej ASP.NET skompilowanej w artykule [Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md). Po zakończeniu Twoja przykładowa aplikacja będzie bezpiecznie łączyć się z usługą SQL Database bez konieczności podawania nazwy użytkownika i hasła.
 
@@ -44,7 +44,7 @@ Omawiane kwestie:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten artykuł jest kontynuacją samouczka [Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md). Jeśli jeszcze tego nie zrobiono, należy najpierw ukończyć ten samouczek. Alternatywnie można dostosować kroki do własnej aplikacji ASP.NET w usłudze SQL Database.
+W tym artykule kontynuowana jest praca rozpoczęta w artykule [Samouczek: Tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md). Jeśli jeszcze tego nie zrobiono, należy najpierw ukończyć ten samouczek. Alternatywnie można dostosować kroki do własnej aplikacji ASP.NET w usłudze SQL Database.
 
 <!-- ![app running in App Service](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png) -->
 
@@ -95,11 +95,10 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 ## <a name="modify-aspnet-code"></a>Modyfikowanie kodu platformy ASP.NET
 
-W projekcie **DotNetAppSqlDb** w programie Visual Studio otwórz plik _packages.config_ i dodaj poniższy wiersz do listy pakietów.
+W programie Visual Studio otwórz konsolę menedżera pakietów, a następnie dodaj pakiet NuGet [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication):
 
-```xml
-<package id="Microsoft.Azure.Services.AppAuthentication" version="1.1.0-preview" targetFramework="net461" />
-<package id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.14.2" targetFramework="net461" />
+```PowerShell
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.1.0-preview
 ```
 
 Otwórz plik _Models\MyDatabaseContext.cs_ i na początku pliku dodaj następujące instrukcje `using`:

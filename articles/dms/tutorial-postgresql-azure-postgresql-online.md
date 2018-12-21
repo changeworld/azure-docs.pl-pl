@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: używanie usługi Azure Database Migration Service do przeprowadzania migracji programu PostgreSQL do usługi Azure Database for MySQL w trybie online | Microsoft Docs'
+title: 'Samouczek: Używanie usługi Azure Database Migration Service do przeprowadzania migracji programu PostgreSQL do usługi Azure Database for MySQL w trybie online | Microsoft Docs'
 description: Dowiedz się, w jaki sposób przeprowadzić migrację w trybie online z lokalnego programu PostgreSQL do usługi Azure Database for PostgreSQL za pomocą usługi Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ba27ceb784cf139c288a89f3191282fb9b364ddc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 8780e145845d820ef0c6ff2c43891287c1902e2c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864380"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000911"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Samouczek: migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Samouczek: Migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu PostgreSQL do usługi [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) z minimalnym przestojem. Innymi słowy migrację można przeprowadzić przy minimalnych przestojach w działaniu aplikacji. W tym samouczku przeprowadzisz migrację przykładowej bazy danych **DVD Rental** z lokalnego wystąpienia programu PostgreSQL 9.6 do usługi Azure Database for PostgreSQL za pomocą działania migracji w trybie online w usłudze Azure Database Migration Service.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -38,7 +38,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-- Pobierz i zainstaluj program [PostgreSQL Community Edition](https://www.postgresql.org/download/) w wersji 9.5, 9.6 lub 10.3. Źródłowy serwer PostgreSQL Server musi być w wersji 9.5.11, 9.6.7, 10.3 lub nowszej. Aby uzyskać więcej informacji, zobacz artykuł [Obsługiwane wersje bazy danych PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+- Pobierz i zainstaluj program [PostgreSQL Community Edition](https://www.postgresql.org/download/) w wersji 9.5, 9.6 lub 10. Źródłowy serwer PostgreSQL Server musi być w wersji 9.5.11, 9.6.7, 10 lub nowszej. Aby uzyskać więcej informacji, zobacz artykuł [Obsługiwane wersje bazy danych PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
 
     Ponadto lokalna wersja programu PostgreSQL musi być zgodna z wersją usługi Azure Database for PostgreSQL. Na przykład program PostgreSQL 9.5.11.5 może być migrowany tylko do usługi Azure Database for PostgreSQL 9.5.11, a nie do wersji 9.6.7.
 
@@ -52,7 +52,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 - Istnieją dwie metody wywoływania interfejsu wiersza polecenia:
     - Wybierz przycisk Cloud Shell w menu w prawym górnym rogu witryny Azure Portal:
  
-       ![Przycisk Cloud Shell w witrynie Azure Portal](media\tutorial-postgresql-to-azure-postgresql-online\cloud-shell-button.png)
+       ![Przycisk Cloud Shell w witrynie Azure Portal](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
  
     - Lokalnie zainstaluj i uruchom interfejs wiersza polecenia. Interfejs wiersza polecenia w wersji 2.0 to narzędzie wiersza polecenia do zarządzania zasobami platformy Azure.
      
@@ -235,7 +235,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
 
       - Lokalizacja: Środkowo-zachodnie stany USA
       - Nazwa grupy zasobów: PostgresDemo
-      - Nazwa usługi DMS: PostgresCLI
+      - Nazwa usługi: PostgresCLI
       - Nazwa projektu: PGMigration
       - Platforma źródłowa: PostgreSQL
       - Platforma docelowa: AzureDbForPostgreSql

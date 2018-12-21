@@ -1,20 +1,21 @@
 ---
-title: 'Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell'
+title: 'Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell'
 description: W ramach tego samouczka dowiesz się, jak wdrożyć i skonfigurować usługę Azure Firewall przy użyciu witryny Azure Portal.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/27/2018
+ms.date: 12/14/2018
 ms.author: victorh
-ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
+ms.openlocfilehash: abbbec05dfb6d81a65941619a36b7f3afcdc1fba
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316400"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435569"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
+# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
 W przypadku łączenia sieci lokalnej z siecią wirtualną platformy Azure w celu utworzenia sieci hybrydowej ważną częścią ogólnego planu zabezpieczeń jest możliwość kontrolowania dostępu do zasobów sieciowych platformy Azure.
 
@@ -24,7 +25,7 @@ W tym samouczku zostaną utworzone trzy sieci wirtualne:
 
 - **VNet-Hub** — w tej sieci wirtualnej znajduje się zapora.
 - **VNet-Spoke** — sieć wirtualna będąca szprychą reprezentuje pakiet roboczy na platformie Azure.
-- **VNet-Onprem** — lokalna sieć wirtualna reprezentuje sieć lokalną. W trakcie rzeczywistego wdrożenia połączenie można nawiązać za pomocą sieci VPN lub usługi Express Route. Dla ułatwienia w tym samouczku zostanie wykorzystane połączenie za pośrednictwem bramy VPN Gateway, a do reprezentowania sieci lokalnej zostanie wykorzystana sieć wirtualna zlokalizowana na platformie Azure.
+- **VNet-Onprem** — lokalna sieć wirtualna reprezentuje sieć lokalną. W trakcie rzeczywistego wdrożenia połączenie można nawiązać za pomocą sieci VPN lub usługi Route. Dla ułatwienia w tym samouczku zostanie wykorzystane połączenie za pośrednictwem bramy VPN Gateway, a do reprezentowania sieci lokalnej zostanie wykorzystana sieć wirtualna zlokalizowana na platformie Azure.
 
 ![Zapora w sieci hybrydowej](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -54,6 +55,12 @@ Aby ten scenariusz przebiegał prawidłowo, muszą zostać spełnione trzy podst
 - Ustaw wartość **AllowGatewayTransit** na potrzeby komunikacji równorzędnej między sieciami VNet-Hub i VNet-Spoke oraz **UseRemoteGateways** na potrzeby komunikacji równorzędnej VNet-Spoke i VNet-Hub.
 
 Zapoznaj się z sekcją [Tworzenie tras](#create-routes) w tym samouczku, aby poznać sposób tworzenia tych tras.
+
+>[!NOTE]
+>Usługa Azure Firewall musi mieć bezpośrednie połączenie z Internetem. Jeśli włączono wymuszone tunelowanie do środowiska lokalnego za pośrednictwem usługi ExpressRoute lub usługi Application Gateway, musisz skonfigurować trasę zdefiniowaną przez użytkownika 0.0.0.0/0 z wartością **NextHopType** ustawioną jako **Internet**, a następnie przypisać ją do podsieci **AzureFirewallSubnet**.
+
+>[!NOTE]
+>Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy UDE wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -482,4 +489,4 @@ Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie b�
 Następnie możesz monitorować dzienniki usługi Azure Firewall.
 
 > [!div class="nextstepaction"]
-> [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+> [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

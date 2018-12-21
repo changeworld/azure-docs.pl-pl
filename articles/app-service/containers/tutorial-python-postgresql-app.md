@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej przy użyciu języka Python i bazy danych PostgreSQL w usłudze Azure App Service | Microsoft Docs
+title: Tworzenie aplikacji internetowej przy użyciu języka Python z bazą danych PostgreSQL w systemie Linux — Azure App Service | Microsoft Docs
 description: Dowiedz się, jak uruchomić opartą na danych aplikację napisaną w języku Python na platformie Azure z użyciem połączenia z bazą danych PostgreSQL.
 services: app-service\web
 documentationcenter: python
@@ -11,13 +11,13 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
-ms.custom: mvc
-ms.openlocfilehash: 3963e2ffb521a4b4732814e9b2992f4e83af1835
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 8846ec386ad1776172ae1949b5e0f26e03ddf1df
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865628"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337993"
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>Tworzenie aplikacji internetowej przy użyciu języka Python i bazy danych PostgreSQL w usłudze Azure App Service
 
@@ -205,7 +205,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > To ustawienie umożliwia nawiązywanie połączeń sieciowych ze wszystkich adresów IP w sieci platformy Azure. Na potrzeby użytku produkcyjnego spróbuj skonfigurować możliwie najbardziej restrykcyjne reguły zapory, [używając tylko adresów IP ruchu wychodzącego wykorzystywanych przez Twoją aplikację](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-W usłudze Cloud Shell ponownie uruchom to samo polecenie, aby umożliwić dostęp z komputera lokalnego, zastępując wyrażenie *\<you_ip_address>* [lokalnym adresem IP w wersji IPv4](http://www.whatsmyip.org/).
+W usłudze Cloud Shell ponownie uruchom to samo polecenie, aby umożliwić dostęp z komputera lokalnego, zastępując wyrażenie *\<you_ip_address>* [lokalnym adresem IP w wersji IPv4](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient
@@ -287,7 +287,7 @@ Platforma Django weryfikuje nagłówek `HTTP_HOST` w żądaniach przychodzących
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
-Platforma Django nie obsługuje [dostarczania plików statycznych w środowisku produkcyjnym](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), więc musisz włączyć tę funkcję ręcznie. W tym samouczku używany jest pakiet [WhiteNoise](http://whitenoise.evans.io/en/stable/). Pakiet WhiteNoise jest już uwzględniony w pliku _requirements.txt_. Wystarczy skonfigurować platformę Django, aby z niego korzystać. 
+Platforma Django nie obsługuje [dostarczania plików statycznych w środowisku produkcyjnym](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), więc musisz włączyć tę funkcję ręcznie. W tym samouczku używany jest pakiet [WhiteNoise](https://whitenoise.evans.io/en/stable/). Pakiet WhiteNoise jest już uwzględniony w pliku _requirements.txt_. Wystarczy skonfigurować platformę Django, aby z niego korzystać. 
 
 W pliku _azuresite/settings.py_ znajdź ustawienie `MIDDLEWARE` i dodaj oprogramowanie pośredniczące `whitenoise.middleware.WhiteNoiseMiddleware` do listy, tuż pod oprogramowaniem pośredniczącym `django.middleware.security.SecurityMiddleware`. Ustawienie `MIDDLEWARE` powinno wyglądać następująco:
 
@@ -307,7 +307,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
 
-Aby uzyskać więcej informacji na temat konfigurowania pakietu WhiteNoise, zobacz [dokumentację pakietu WhiteNoise](http://whitenoise.evans.io/en/stable/).
+Aby uzyskać więcej informacji na temat konfigurowania pakietu WhiteNoise, zobacz [dokumentację pakietu WhiteNoise](https://whitenoise.evans.io/en/stable/).
 
 > [!IMPORTANT]
 > Sekcja ustawień bazy danych jest już zgodna z najlepszym rozwiązaniem z zakresu bezpieczeństwa polegającym na używaniu zmiennych środowiskowych. Aby uzyskać zalecenia dotyczące całego procesu wdrażania, zobacz [Django Documentation: deployment checklist](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/) (Dokumentacja platformy Django: lista kontrolna dotycząca wdrażania).

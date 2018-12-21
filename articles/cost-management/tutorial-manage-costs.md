@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 7d319c82da09ec5c960e1f40bc26edce8ee372b9
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274427"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083567"
 ---
-# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: zarządzanie kosztami przy użyciu rozwiązania Cloudyn
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: Zarządzanie kosztami przy użyciu rozwiązania Cloudyn
 
 Rozwiązanie Cloudyn umożliwia zarządzanie kosztami i tworzenie raportów przewidywanych kosztów przez przydzielanie kosztów na podstawie tagów. W procesie przydzielania kosztów do wykorzystywanych zasobów w chmurze przypisywane są koszty. Koszty są w pełni przydzielone, gdy wszystkie zasoby są skategoryzowane przy użyciu tagów. Po przydzieleniu kosztów można udostępnić użytkownikom analizę przewidywanych kosztów i obciążeń zwrotnych za pomocą pulpitów nawigacyjnych i raportów. Jednak na początku korzystania z rozwiązania Cloudyn wiele zasobów może nie mieć przypisanych tagów lub przypisanie im tagów może być niemożliwe.
 
@@ -53,13 +53,11 @@ Podczas przydzielania kosztów w pierwszej kolejności należy zdefiniować zakr
 
 Aby utworzyć niestandardowy model alokacji kosztów, wybierz pozycję **Costs** (Koszty) &gt; **Cost Management** (Zarządzanie kosztami) &gt; **Cost Allocation 360°** (Alokacja kosztu 360°) w menu raportu.
 
-![Wybieranie pozycji Cost Allocation 360 (Alokacja kosztu 360)](./media/tutorial-manage-costs/cost-allocation-360.png)
+![Przykład przedstawiający pulpit nawigacyjny z wybraną pozycją Alokacja kosztu 360](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 Na stronie **Cost Allocation 360** (Alokacja kosztu 360) wybierz pozycję **Add** (Dodaj), a następnie wprowadź nazwę i opis tworzonego modelu kosztów. Wybierz albo wszystkie konta, albo poszczególne konta. Jeśli chcesz użyć poszczególnych kont, możesz wybrać wiele kont od wielu dostawców usług w chmurze. Następnie kliknij pozycję **Categorization** (Kategoryzacja), aby wybrać odnalezione tagi kategoryzujące dane kosztów. Wybierz tagi (kategorie), które chcesz dołączyć do modelu. W poniższym przykładzie wybrany jest tag **Unit** (Jednostka).
 
-![Przykład kategoryzacji modelu kosztów](./media/tutorial-manage-costs/cost-model01.png)
-
-
+![Przykład przedstawiający kategoryzację modelu kosztów](./media/tutorial-manage-costs/cost-model01.png)
 
 W przykładzie pokazano, że kwota 19 680 USD nie jest skategoryzowana (nie ma tagów).
 
@@ -97,7 +95,7 @@ Aby zdefiniować nową regułę, w obszarze **Rules** (Reguły) utwórz nową re
 
 Na poniższej ilustracji przedstawiono przykład reguł utworzonych dla nowej kategorii o nazwie **Work-Load**:
 
-![Przykład kategorii](./media/tutorial-manage-costs/category01.png)
+![Przykład przedstawiający nową kategorię o nazwie Work-Load](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Tagowanie źródeł i raportów
 
@@ -124,7 +122,7 @@ Stosowane przez organizacje metody tworzenia analizy przewidywanych kosztów i o
 
 Aby wyświetlić wyniki przydzielania kosztów, otwórz raport analizy kosztów i wybierz utworzony przez siebie model kosztów. Następnie dodaj zgrupowanie według jednego lub większej liczby tagów wybranych w modelu kosztów.
 
-![Raport analizy kosztów](./media/tutorial-manage-costs/cost-analysis.png)
+![Raport analizy kosztów z przykładem danych z nowego kosztu](./media/tutorial-manage-costs/cost-analysis.png)
 
 Łatwo można tworzyć i zapisywać raporty skupione na określonych usługach używanych przez określone grupy. Na przykład: w pewnym dziale intensywnie korzysta się z maszyn wirtualnych platformy Azure. Można utworzyć raport filtrowany według maszyn wirtualnych platformy Azure, aby pokazać wykorzystanie i koszty.
 

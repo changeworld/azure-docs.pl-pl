@@ -1,22 +1,22 @@
 ---
-title: 'Samouczek: przesyłanie strumieniowe ze strukturą na platformie Apache Spark za pomocą platformy Apache Kafka — Azure HDInsight '
+title: 'Samouczek: Przesyłanie strumieniowe ze strukturą na platformie Apache Spark za pomocą platformy Apache Kafka — Azure HDInsight'
 description: Dowiedz się, jak wymieniać dane z platformą Apache Kafka za pomocą przesyłania strumieniowego platformy Apache Spark. Ten samouczek obejmuje przesyłanie strumieniowe danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5f59f14f93b5bfc79c07b096a07ac109be0bedb6
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4ac341d780a3c348f9ba9f8fd0241c351bd5fdc5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499098"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162437"
 ---
-# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: Używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
 W tym samouczku przedstawiono sposób użycia [przesyłania strumieniowego platformy Apache Spark](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) do odczytywania i zapisywania danych przy użyciu platformy [Apache Kafka](https://kafka.apache.org/) w usłudze Azure HDInsight.
 

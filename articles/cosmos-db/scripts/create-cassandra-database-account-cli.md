@@ -1,20 +1,20 @@
 ---
-title: Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i tabeli interfejsu Cassandra API usługi Azure Cosmos DB | Microsoft Docs
+title: Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i tabeli interfejsu API Cassandra usługi Azure Cosmos DB
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i tabeli interfejsu API Cassandra usługi Azure Cosmos DB
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 72eb26599ce2f57e7178d5741851b6e442a62e23
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 381dc16366b4772f828ed474637d029324703c9e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019598"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961558"
 ---
-# <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Azure Cosmos DB: tworzenie konta interfejsu API Cassandra przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Usługa Azure Cosmos DB tworzenie konta interfejsu API Cassandra przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Ten przykładowy skrypt interfejsu wiersza polecenia tworzy konto, bazę danych i tabelę interfejsu API Cassandra usługi Azure Cosmos DB.
 

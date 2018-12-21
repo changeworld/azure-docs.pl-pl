@@ -1,5 +1,5 @@
 ---
-title: Analizowanie wideo za pomocą usługi Azure Media Services| Microsoft Docs
+title: Analizowanie plików wideo za pomocą usługi Media Services na platformie Azure | Microsoft Docs
 description: Wykonaj kroki tego samouczka, aby przeanalizować wideo przy użyciu usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -9,17 +9,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 3f0d6784f7b7c476313c5cc4190cacd99e4c3973
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 42ffecec896265f99a8f1f0b43b47c1988a493d6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612768"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133897"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Samouczek: analizowanie wideo za pomocą usługi Media Services w wersji 3 przy użyciu interfejsów API
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Samouczek: Analizowanie plików wideo za pomocą usługi Media Services w wersji 3 przy użyciu interfejsów API
 
 W tym samouczku przedstawiono sposób analizowania wideo za pomocą usługi Azure Media Services. Istnieje wiele scenariuszy, w przypadku których głęboka analiza zarejestrowanego wideo lub dźwięku może być przydatna. Na przykład organizacje mogą zamieniać mowę na tekst w celu przekształcenia nagrań rozmów działu obsługi klienta w katalog z możliwością wyszukiwania, indeksami i pulpitami nawigacyjnymi — aby dzięki jego wykorzystaniu zwiększyć zadowolenie klientów. Następnie mogą analizować swoją działalność, uzyskując na przykład listę typowych skarg, przyczyn takich skarg i inne przydatne informacje.
 
@@ -115,7 +115,7 @@ Podczas tworzenia obiektu **Transform** należy najpierw sprawdzić, czy taki ob
 
 #### <a name="job"></a>Zadanie
 
-Jak wspomniano powyżej, obiekt [Transform](https://docs.microsoft.com/rest/api/media/transforms) jest przepisem, a obiekt [Job](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych. Istnieje możliwość określenia lokalizacji pliku wideo za pomocą adresów URL protokołu HTTPS, adresów URL sygnatury dostępu współdzielonego lub zasobów znajdujących się na koncie usługi Media Service. 
+Jak wspomniano powyżej, obiekt [Transform](https://docs.microsoft.com/rest/api/media/transforms) jest przepisem, a obiekt [Job](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych. Możesz określić lokalizację pliku wideo przy użyciu: adresów URL protokołu HTTPS, adresów URL sygnatury dostępu współdzielonego lub zasobów znajdujących się na koncie usługi Media Service. 
 
 W tym przykładzie dane wejściowe zadania to lokalny film wideo.  
 
@@ -129,7 +129,7 @@ Sondowanie nie jest najlepszym rozwiązaniem w przypadku zastosowań produkcyjny
 
 Usługę Event Grid zaprojektowano pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń. Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
 
-**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)**, **Queued (W kolejce)**, **Processing (Przetwarzane)**, **Finished (Zakończone)** (stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)**. Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)**, a po zakończeniu tej operacji w stanie **Canceled (Anulowane)**.
+**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled** (Zaplanowane), **Queued** (W kolejce), **Processing** (Przetwarzane), **Finished** (Zakończone — jest to stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)**. Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)**, a po zakończeniu tej operacji w stanie **Canceled (Anulowane)**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
 
@@ -172,4 +172,4 @@ Zestawy SDK usługi Azure Media Services 3 nie są bezpieczne wątkowo. Podczas 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-api.md)
+> [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-api.md)

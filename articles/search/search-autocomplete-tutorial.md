@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący dodawania autouzupełniania do pola wyszukiwania przy użyciu usługi Azure Search | Microsoft Docs
+title: Samouczek dotyczący dodawania autouzupełniania do pola wyszukiwania — Azure Search
 description: Przykłady ulepszania środowiska użytkownika końcowego w aplikacjach opartych na danych przy użyciu funkcji autouzupełniania usługi Azure Search i interfejsów API sugestii.
 manager: pablocas
 author: mrcarter8
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578178"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316186"
 ---
-# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Samouczek: dodawanie autouzupełniania do pola wyszukiwania przy użyciu usługi Azure Search
+# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Samouczek: Dodawanie autouzupełniania do pola wyszukiwania przy użyciu usługi Azure Search
 
 Ten samouczek przedstawia sposób użycia [sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions), [funkcji autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) oraz [aspektów](search-faceted-navigation.md) dostępnych za pomocą [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/) i [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) do utworzenia pola wyszukiwania o zaawansowanych możliwościach. *Sugestie* udostępniają rekomendowane rzeczywiste wyniki na podstawie tekstu wpisanego przez użytkownika w danym momencie. *Autouzupełnianie*, [nowa funkcja dostępna w wersji zapoznawczej](search-api-preview.md) w usłudze Azure Search, udostępnia terminy z indeksu na potrzeby uzupełniania tekstu aktualnie wpisywanego przez użytkownika. Porównamy wiele technik mających na celu zwiększenie efektywności użytkowników oraz umożliwienie szybkiego i łatwego znajdowania wyszukiwanych treści przez udostępnienie użytkownikowi bogatych możliwości wyszukiwania bezpośrednio podczas wpisywania.
 
@@ -126,7 +127,7 @@ Teraz, gdy przejrzeliśmy kod JavaScript przykładu, popatrzmy na kod C# kontrol
 
 1. Otwórz plik HomeController.cs w katalogu Controllers. 
 
-1. Pierwszą rzeczą, którą możesz zauważyć, jest metoda na początku klasy o nazwie InitSearch.  Umożliwia ona utworzenie uwierzytelnianego klienta HTTP indeksu dla usługi Azure Search.  Jeśli chcesz dowiedzieć się więcej o tym, jak to działa, zapoznaj się z następującym samouczkiem: [Jak używać usługi Azure Search z poziomu aplikacji .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+1. Pierwszą rzeczą, którą możesz zauważyć, jest metoda na początku klasy o nazwie InitSearch.  Umożliwia ona utworzenie uwierzytelnianego klienta HTTP indeksu dla usługi Azure Search.  Jeśli chcesz dowiedzieć się więcej o tym, jak to działa, odwiedź następujący samouczek: [Jak używać usługi Azure Search z poziomu aplikacji .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. Przejdź do funkcji Suggest.
 

@@ -1,24 +1,27 @@
 ---
-title: Samouczek usługi Azure Container Service — aktualizowanie aplikacji
+title: (PRZESTARZAŁE) Samouczek usługi Azure Container Service — aktualizowanie aplikacji
 description: Samouczek usługi Azure Container Service — aktualizowanie aplikacji
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9cb5769d7f54a1036bf14199c87961c95ed2e7ce
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432410"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993510"
 ---
-# <a name="update-an-application-in-kubernetes"></a>Aktualizowanie aplikacji w usłudze Kubernetes
+# <a name="deprecated-update-an-application-in-kubernetes"></a>(PRZESTARZAŁE) Aktualizowanie aplikacji w rozwiązaniu Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby poznać zaktualizowaną wersję tego samouczka korzystającą z usługi Azure Kubernetes Service, zobacz [Samouczek: Aktualizowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Po wdrożeniu aplikacji w usłudze Kubernetes można ją zmodyfikować, określając nowy obraz kontenera lub wersję obrazu. W takiej sytuacji aktualizacja jest przygotowywana tak, aby tylko część była współbieżnie aktualizowana. Ta aktualizacja etapowa umożliwia kontynuowanie działania podczas aktualizacji aplikacji. Udostępnia ona również mechanizm wycofywania w przypadku niepowodzenia wdrożenia. 
 

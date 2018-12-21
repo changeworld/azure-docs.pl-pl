@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: wdrażanie dedykowanych modułów HSM platformy Azure w istniejącej sieci wirtualnej przy użyciu interfejsu wiersza polecenia | Microsoft Docs'
-description: Samouczek, w którym przedstawiono sposób wdrażania dedykowanego modułu HSM przy użyciu interfejsu wiersza polecenia
+title: 'Samouczek: wdrażanie dedykowanych modułów HSM platformy Azure w istniejącej sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs'
+description: Samouczek, w którym pokazano, jak wdrożyć dedykowany moduł HSM w istniejącej sieci wirtualnej przy użyciu interfejsu wiersza polecenia
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,19 +8,19 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: ca30dc9d86db8faabfdd3791b74b9f86c9480ea5
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d8171a3c506ed53c986db6cddd959411f0a146aa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679651"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080320"
 ---
-# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Samouczek: wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu interfejsu wiersza polecenia
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Samouczek: Wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu interfejsu wiersza polecenia
 
 Dedykowany moduł HSM platformy Azure udostępnia urządzenie fizyczne do wyłącznego użytku przez klienta. Daje on pełną kontrolę administracyjną, ale przenosi na klienta pełną odpowiedzialność za zarządzanie. Używanie urządzeń fizycznych powoduje konieczność kontrolowania przez firmę Microsoft przydzielania urządzeń w celu zapewnienia efektywnego zarządzania pojemnością. W związku z tym w ramach subskrypcji platformy Azure usługa dedykowanego modułu HSM nie będzie normalnie widoczna na potrzeby aprowizowania zasobów. Każdy klient platformy Azure, który potrzebuje dostępu do usługi dedykowanego modułu HSM, musi najpierw skontaktować się z pracownikiem odpowiedzialnym za kontakty z klientami w firmie Microsoft w celu zażądania rejestracji w ramach usługi dedykowanego modułu HSM. Aprowizacja będzie możliwa tylko po pomyślnym zakończeniu tego procesu. 
 
@@ -130,7 +130,7 @@ Po ustawieniu wartości parametrów należy przekazać pliki do udziału plików
 
 Powłoka poleceń ma opcję przekazywania/pobierania na pasku narzędzi, którą należy wybrać, aby przekazać pliki szablonów i parametrów do udziału plików:
 
-![stan subskrypcji](media/tutorial-deploy-hsm-cli/file-share.png)
+![udział plików](media/tutorial-deploy-hsm-cli/file-share.png)
 
 Po przekazaniu plików można przystąpić do tworzenia zasobów. Przed utworzeniem nowych zasobów modułu HSM należy sprawdzić, czy istnieją pewne wymagane wstępnie zasoby. Należy mieć sieć wirtualną z zakresami adresów na potrzeby obliczeń, modułów HSM i bramy. Następujące polecenia przedstawiają przykładowy sposób tworzenia takiej sieci wirtualnej.
 
@@ -177,7 +177,7 @@ Wykonanie tego wdrożenia powinno zająć od 25 do 30 minut, przy czym większo�
 
 ![stan aprowizacji](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-Po pomyślnym zakończeniu wdrożenia zostanie wyświetlony komunikat "provisioningState": "Succeeded". Możesz nawiązać połączenie z istniejącą maszyną wirtualną i skorzystać z narzędzia SSH w celu zapewnienia dostępności urządzenia HSM.
+Po pomyślnym zakończeniu wdrożenia zostanie wyświetlony komunikat "provisioningState": “Succeeded” (Powodzenie). Możesz nawiązać połączenie z istniejącą maszyną wirtualną i skorzystać z narzędzia SSH w celu zapewnienia dostępności urządzenia HSM.
 
 ## <a name="verifying-the-deployment"></a>Weryfikowanie wdrożenia
 
@@ -191,7 +191,7 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-![stan aprowizacji](media/tutorial-deploy-hsm-cli/progress-status2.png)
+![dane wyjściowe aprowizacji](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
 Teraz będzie można również wyświetlić zasoby za pomocą [eksploratora zasobów platformy Azure](https://resources.azure.com/).   W eksploratorze rozwiń pozycję „subskrypcje” po lewej stronie, rozwiń konkretną subskrypcję dla dedykowanego modułu HSM, rozwiń pozycję „grupy zasobów”, rozwiń grupę zasobów, która została użyta, i na koniec wybierz element „zasoby”.
 

@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący przeszukiwania częściowo ustrukturyzowanych danych z magazynu w chmurze platformy Azure w usłudze Azure Search | Microsoft Docs
+title: Samouczek dotyczący przeszukiwania częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure — Azure Search
 description: W tym samouczku pokazano, jak przeszukiwać częściowo ustrukturyzowane dane obiektów blob platformy Azure przy użyciu usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
-ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005081"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313829"
 ---
-# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Samouczek: przeszukiwanie częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure
+# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Samouczek: Przeszukiwanie częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure
 
 Z tego dwuczęściowego samouczka dowiesz się, jak wyszukiwać częściowo ustrukturyzowane dane oraz dane bez struktury za pomocą usługi Azure Search. W [części 1](../storage/blobs/storage-unstructured-search.md) opisano proces wyszukiwania względem danych bez struktury, a także ważne wymagania wstępne dotyczące tego samouczka, takie jak utworzenie konta magazynu. 
 
@@ -59,7 +60,7 @@ Przykładowe pliki JSON były pierwotnie plikami tekstowymi uzyskanymi z witryny
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się w [Portalu Azure](http://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
 
 ## <a name="upload-the-sample-data"></a>Przekazywanie przykładowych danych
 

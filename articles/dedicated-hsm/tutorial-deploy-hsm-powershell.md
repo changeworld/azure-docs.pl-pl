@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: wdrażanie dedykowanych modułów HSM platformy Azure w istniejącej sieci wirtualnej przy użyciu programu PowerShell | Microsoft Docs'
-description: Wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu programu PowerShell
+title: Samouczek dotyczący wdrażania w istniejącej sieci wirtualnej przy użyciu programu PowerShell — dedykowany moduł HSM platformy Azure | Microsoft Docs
+description: Samouczek, w którym pokazano, jak wdrożyć dedykowany moduł HSM w istniejącej sieci wirtualnej przy użyciu programu PowerShell
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,17 +8,17 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: a714a52ecd6398fde459c5814b8a6cf223655eff
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3f165b5d372168ef3ce6fea75547513a0148ae5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318759"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086312"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Samouczek: wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu programu PowerShell
 
@@ -37,7 +37,7 @@ Ten samouczek koncentruje się na dwóch modułach HSM i wymaganej bramie usług
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dedykowany moduł HSM platformy Azure nie jest obecnie dostępny w witrynie Azure Portal, w związku z tym wszystkie interakcje z usługą będą przeprowadzane za pośrednictwem wiersza polecenia lub przy użyciu programu PowerShell. W tym samouczku zostanie użyty program PowerShell w ramach usługi Azure Cloud Shell. Jeśli jesteś nowym użytkownikiem programu PowerShell, wykonaj instrukcje wprowadzającego znajdujące się w sekcji dotyczącej [rozpoczynania pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0).
+Dedykowany moduł HSM platformy Azure nie jest obecnie dostępny w witrynie Azure Portal, w związku z tym wszystkie interakcje z usługą będą przeprowadzane za pośrednictwem wiersza polecenia lub przy użyciu programu PowerShell. W tym samouczku zostanie użyty program PowerShell w ramach usługi Azure Cloud Shell. Jeśli jesteś nowym użytkownikiem programu PowerShell, wykonaj instrukcje wprowadzające znajdujące się w artykule [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0).
 
 Założenia:
 
@@ -143,6 +143,14 @@ $delegation = New-AzureRmDelegation `
 ```
 
 ```powershell
+$hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig ` 
+  -Name hsmsubnet ` 
+  -AddressPrefix 10.2.1.0/24 ` 
+  -Delegation $delegation 
+
+```
+
+```powershell
 
 $gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
   -Name GatewaySubnet `
@@ -179,7 +187,7 @@ Wykonywanie tego polecenia powinno zająć około 20 minut. Opcja „-Verbose”
 
 ![stan aprowizacji](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Po pomyślnym wykonaniu tego polecenia, na co wskazywać będzie wyświetlenie komunikatu "provisioningState": "Succeeded", możesz zalogować się do istniejącej maszyny wirtualnej i użyć narzędzia SSH w celu zapewnienia dostępności urządzenia HSM.
+Po pomyślnym zakończeniu wyświetlany jest odpowiedni stan „provisioningState”: „Powodzenie” — możesz zalogować się do swojej istniejącej maszyny wirtualnej i skorzystać z narzędzia SSH w celu zapewnienia dostępności urządzenia HSM.
 
 ## <a name="verifying-the-deployment"></a>Weryfikowanie wdrożenia
 

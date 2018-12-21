@@ -1,6 +1,6 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — eksportowanie/kopiowanie odpowiedniego wirtualnego dysku twardego dysków zarządzanych na konto magazynu | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — eksportowanie/kopiowanie odpowiedniego wirtualnego dysku twardego dysków zarządzanych na konto magazynu
+title: Przykład dla interfejsu wiersza polecenia platformy Azure — kopiowanie dysków zarządzanych na konto magazynu
+description: Przykład dla interfejsu wiersza polecenia platformy Azure — eksportowanie lub kopiowanie dysków zarządzanych na konto magazynu
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: c5f06a8c8fb707a2bf0451f8e9ed391ac0c5bad9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.custom: mvc,seodec18
+ms.openlocfilehash: 4ee8b9dbb22e4530beb81bea9735867ecf21a1d4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045258"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183034"
 ---
-# <a name="exportcopy-the-underlying-vhd-of-a-managed-disk-to-a-storage-account-with-cli"></a>Eksportowanie/kopiowanie odpowiedniego wirtualnego dysku twardego dysku zarządzanego na konto magazynu przy użyciu interfejsu wiersza polecenia
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Eksportowanie/kopiowanie dysków zarządzanych na konto magazynu przy użyciu wiersza polecenia platformy Azure
 
 Ten skrypt umożliwia wyeksportowanie odpowiedniego wirtualnego dysku twardego dysku zarządzanego na konto magazynu w tym samym lub innym regionie. Najpierw generuje on identyfikator URI sygnatury dostępu współdzielonego dysku zarządzanego, a następnie używa go do skopiowania wirtualnego dysku twardego na konto magazynu. Ten skrypt umożliwia kopiowanie dysków zarządzanych do innego regionu. 
 

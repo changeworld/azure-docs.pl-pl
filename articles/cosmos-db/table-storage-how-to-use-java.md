@@ -9,12 +9,12 @@ ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: d7be0ed8d59063f75b3d4fadbf69237bdb2d0d13
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e6bae31f0e3558f274ee638c380e69c15b7c3889
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863690"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079317"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -455,7 +455,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Tworzenie zapytania do podzbioru właściwości jednostki
-Za pomocą zapytania wykonywanego względem tabeli można pobrać tylko kilka właściwości z jednostki. Ta technika, zwana projekcją, redukuje przepustowość i może poprawiać wydajność zapytań, zwłaszcza w przypadku dużych jednostek. Zapytanie w poniższym kodzie zwraca wyłącznie adresy e-mail jednostek w tabeli dzięki użyciu metody **select**. Te wyniki są projektowane do kolekcji obiektów **String** za pomocą zapytania **EntityResolver**, wykonującego konwersję typu jednostek zwróconych z serwera. Aby dowiedzieć się więcej o projekcji, zobacz [Azure Tables: Introducing Upsert and Query Projection (Tabele platformy Azure: wprowadzenie operacji upsert i projekcji zapytań)][Azure Tables: Introducing Upsert and Query Projection]. Należy zauważyć, że funkcja projekcji nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel.
+Za pomocą zapytania wykonywanego względem tabeli można pobrać tylko kilka właściwości z jednostki. Ta technika, zwana projekcją, redukuje przepustowość i może poprawiać wydajność zapytań, zwłaszcza w przypadku dużych jednostek. Zapytanie w poniższym kodzie zwraca wyłącznie adresy e-mail jednostek w tabeli dzięki użyciu metody **select**. Te wyniki są projektowane do kolekcji obiektów **String** za pomocą zapytania **EntityResolver**, wykonującego konwersję typu jednostek zwróconych z serwera. Więcej informacji o projekcji zawiera wpis na blogu [Azure Tables: Introducing Upsert and Query Projection] (Tabele platformy Azure: wprowadzenie operacji upsert i projekcji zapytań)[Azure Tables: Introducing Upsert and Query Projection] (Wprowadzenie operacji upsert i projekcji zapytań). Należy zauważyć, że funkcja projekcji nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel.
 
 ```java
 try
@@ -497,7 +497,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Wstawianie lub zastępowanie jednostki
-Często zdarza się, że chcesz dodać jednostkę do tabeli, ale nie wiesz, czy taka jednostka już istnieje. Operacja wstawiania lub zastępowania umożliwia przesłanie jednego żądania, w wyniku którego jednostka zostanie wstawiona (jeśli jeszcze nie istnieje) lub zastąpiona (jeśli istnieje). Poniższy kod, oparty na poprzednich przykładach, wstawia lub zastępuje jednostkę „Walter Harp”. Po utworzeniu nowej jednostki kod wywołuje metodę **TableOperation.insertOrReplace**. Następnie wywołuje metodę **execute** względem obiektu **CloudTable**, używając tabeli i operacji wstawiania lub zastępowania jako parametrów. Aby zaktualizować tylko część jednostki, można użyć zamiast tego metody **TableOperation.insertOrMerge**. Należy zauważyć, że funkcja wstawiania lub zastępowania nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel. Aby dowiedzieć się więcej na temat operacji wstawiania lub zastępowania i wstawiania lub scalania, zobacz [Azure Tables: Introducing Upsert and Query Projection (Tabele platformy Azure: wprowadzenie operacji upsert i projekcji zapytań)][Azure Tables: Introducing Upsert and Query Projection].
+Często zdarza się, że chcesz dodać jednostkę do tabeli, ale nie wiesz, czy taka jednostka już istnieje. Operacja wstawiania lub zastępowania umożliwia przesłanie jednego żądania, w wyniku którego jednostka zostanie wstawiona (jeśli jeszcze nie istnieje) lub zastąpiona (jeśli istnieje). Poniższy kod, oparty na poprzednich przykładach, wstawia lub zastępuje jednostkę „Walter Harp”. Po utworzeniu nowej jednostki kod wywołuje metodę **TableOperation.insertOrReplace**. Następnie wywołuje metodę **execute** względem obiektu **CloudTable**, używając tabeli i operacji wstawiania lub zastępowania jako parametrów. Aby zaktualizować tylko część jednostki, można użyć zamiast tego metody **TableOperation.insertOrMerge**. Należy zauważyć, że funkcja wstawiania lub zastępowania nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel. Aby dowiedzieć się więcej na temat operacji wstawiania lub zastępowania i wstawiania lub scalania, zobacz [Azure Tables: Introducing Upsert and Query Projection] (Tabele platformy Azure: wprowadzenie operacji upsert i projekcji zapytań)[Azure Tables: Introducing Upsert and Query Projection] (Wprowadzenie operacji upsert i projekcji zapytań).
 
 ```java
 try
@@ -598,14 +598,12 @@ catch (Exception e)
 * [Zestaw SDK usługi Azure Storage dla języka Java][Azure Storage SDK for Java]
 * [Dokumentacja zestawu SDK klienta usługi Azure Storage][Dokumentacja zestawu SDK klienta usługi Azure Storage]
 * [Usługa Azure Storage — interfejs API REST][Azure Storage REST API]
-* [Blog zespołu odpowiedzialnego za usługę Azure Storage][Azure Storage Team Blog]
+* [Blog zespołu odpowiedzialnego za usługę Azure Storage][Blog zespołu odpowiedzialnego za usługę Azure Storage]
 
 Aby uzyskać więcej informacji, odwiedź stronę [Azure dla deweloperów języka Java](/java/azure).
 
-[Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
+[Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Dokumentacja zestawu SDK klienta usługi Azure Storage]: http://azure.github.io/azure-storage-java/
+[Dokumentacja zestawu SDK klienta usługi Azure Storage]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

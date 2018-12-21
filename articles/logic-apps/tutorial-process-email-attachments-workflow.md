@@ -1,25 +1,25 @@
 ---
-title: Tworzenie przepływów pracy przetwarzających wiadomości e-mail i załączniki — Azure Logic Apps | Microsoft Docs
-description: W tym samouczku przedstawiono sposób tworzenia zautomatyzowanych przepływów pracy, które umożliwiają przetwarzanie wiadomości e-mail i załączników przy użyciu usług Azure Logic Apps, Azure Storage i Azure Functions
+title: Samouczek — Automatyzowanie przetwarzania wiadomości e-mail i załączników — Azure Logic Apps | Microsoft Docs
+description: Samouczek — Tworzenie zautomatyzowanych przepływów pracy na potrzeby obsługi wiadomości e-mail i załączników przy użyciu usług Azure Logic Apps, Azure Storage i Azure Functions
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
+ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.reviewer: klam, LADocs
-ms.openlocfilehash: 3d4e91465e2f9986ec1029b304e1c026e39f45b6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: cc3a2e96222e06324500e2203d870c06d0f3e8c0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231972"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140510"
 ---
-# <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Przetwarzanie wiadomości e-mail i załączników za pomocą usługi Azure Logic Apps
+# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Samouczek: Automatyzowanie obsługi wiadomości e-mail i załączników za pomocą usługi Azure Logic Apps
 
-Usługa Azure Logic Apps pomaga automatyzować przepływy pracy i integrować dane w usługach platformy Azure, usługach firmy Microsoft, innych aplikacjach typu oprogramowanie jako usługa (SaaS) oraz systemach lokalnych. Ten samouczek pokazuje sposób tworzenia [aplikacji logiki](../logic-apps/logic-apps-overview.md), która obsługuje przychodzące wiadomości e-mail i wszelkie załączniki. Ta aplikacja logiki przetwarza zawartość, zapisuje ją w magazynie platformy Azure oraz wysyła powiadomienia dotyczące przeglądania zawartości. 
+Usługa Azure Logic Apps pomaga automatyzować przepływy pracy i integrować dane w usługach platformy Azure, usługach firmy Microsoft, innych aplikacjach typu oprogramowanie jako usługa (SaaS) oraz systemach lokalnych. Ten samouczek pokazuje sposób tworzenia [aplikacji logiki](../logic-apps/logic-apps-overview.md), która obsługuje przychodzące wiadomości e-mail i wszelkie załączniki. Ta aplikacja logiki analizuje zawartość wiadomości e-mail, zapisuje ją w usłudze Azure Storage oraz wysyła powiadomienia dotyczące przeglądania zawartości. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -68,7 +68,7 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
    | **Wydajność** | Standardowa (Standard) | To ustawienie określa obsługiwane typy danych oraz nośniki do przechowywania danych. Zobacz [Typy kont magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
    | **Wymagany bezpieczny transfer** | Disabled (Wyłączony) | To ustawienie określa wymagane zabezpieczenia dla żądań z połączeń. Zobacz [Require secure transfer (Wymaganie bezpiecznego transferu)](../storage/common/storage-require-secure-transfer.md). | 
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure | 
-   | **Grupa zasobów** | LA-Tutorial-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. <p>**Uwaga:** grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. | 
+   | **Grupa zasobów** | LA-Tutorial-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. <p>**Uwaga:** Grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. | 
    | **Konfigurowanie sieci wirtualnych** | Disabled (Wyłączony) | Na potrzeby tego samouczka zachowaj ustawienie **Wyłączony**. | 
    |||| 
 
@@ -144,7 +144,7 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
    | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej | 
    | **Plan hostingu** | Plan zużycia | To ustawienie określa sposób przydzielania i skalowania zasobów, takich jak moc obliczeniowa, na potrzeby uruchamiania aplikacji funkcji. Zobacz [Hosting plan comparison (Porównanie planów hostingu)](../azure-functions/functions-scale.md). | 
    | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej | 
-   | **Storage** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** to konto magazynu zawiera aplikacje funkcji i różni się od poprzednio utworzonego konta magazynu do przechowywania załączników wiadomości e-mail. | 
+   | **Storage** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** To konto magazynu zawiera aplikacje funkcji i różni się od poprzednio utworzonego konta magazynu do przechowywania załączników wiadomości e-mail. | 
    | **Application Insights** | Wyłączone | Włącza monitorowanie aplikacji za pomocą usługi [Application Insights](../application-insights/app-insights-overview.md), ale na potrzeby tego samouczka wybierz ustawienie **Wyłączone**. | 
    |||| 
 
@@ -246,11 +246,11 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 ## <a name="monitor-incoming-email"></a>Monitorowanie przychodzących wiadomości e-mail
 
-1. W projektancie w polu wyszukiwania wprowadź ciąg „po nadejściu nowej wiadomości e-mail” jako filtr. Wybierz ten wyzwalacz dla dostawcy poczty e-mail: **Po nadejściu nowej wiadomości e-mail — <*Twój-dostawca-poczty-e-mail*>**
+1. W projektancie w polu wyszukiwania wprowadź ciąg „po nadejściu nowej wiadomości e-mail” jako filtr. Wybierz ten wyzwalacz dla dostawcy poczty e-mail: **Po nadejściu nowej wiadomości e-mail — <*dostawca poczty e-mail*>**
 
    Na przykład:
 
-   ![Wybieranie wyzwalacza dla dostawcy poczty e-mail: „Po nadejściu nowej wiadomości e-mail”](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
+   ![Wybierz ten wyzwalacz dla dostawcy poczty e-mail: „Po nadejściu nowej wiadomości e-mail”](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
    * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook. 
    * Dla osobistych kont Microsoft wybierz pozycję Outlook.com. 
@@ -274,7 +274,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
       | Ustawienie | Wartość | Opis | 
       | ------- | ----- | ----------- | 
-      | **Zawiera załącznik** | Yes | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. | 
+      | **Zawiera załącznik** | Yes | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** Wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. | 
       | **Uwzględnij załączniki** | Yes | Pobieraj załączniki jako dane wejściowe dla przepływu pracy, zamiast tylko sprawdzać wiadomości pod kątem istnienia załączników. | 
       | **Filtr tematu** | ```Business Analyst 2 #423501``` | Tekst do wyszukania w temacie wiadomości e-mail | 
       |  |  |  | 
@@ -313,7 +313,7 @@ Teraz dodaj warunek, który powoduje wybranie tylko wiadomości e-mail z załąc
 
    2. W środkowym polu zachowaj operator **jest równe**.
 
-   3. W polu po prawej stronie wprowadź **True** jako wartość do porównania z wartością właściwości **Ma załącznik** z wyzwalacza.
+   3. W polu po prawej stronie wprowadź **true** jako wartość do porównania z wartością właściwości **Ma załącznik** z wyzwalacza.
 
       ![Kompilowanie warunku](./media/tutorial-process-email-attachments-workflow/finished-condition.png)
 
@@ -328,7 +328,7 @@ Teraz dodaj warunek, który powoduje wybranie tylko wiadomości e-mail z załąc
          "and": [ {
             "equals": [
                "@triggerBody()?['HasAttachment']",
-                 "True"
+                 "true"
             ]
          } ]
       },
@@ -377,7 +377,7 @@ Ten krok powoduje dodanie wcześniej utworzonej funkcji platformy Azure do aplik
 
    ![Wnętrze warunku „W przypadku wartości true”, dodawanie akcji](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-2. W polu wyszukiwania znajdź frazę „azure functions” i wybierz następującą akcję: **Wybierz funkcję platformy Azure — Azure Functions**
+2. W polu wyszukiwania znajdź frazę „azure functions” i wybierz tę akcję: **Wybierz funkcję platformy Azure — Azure Functions**
 
    ![Wybieranie akcji dla pozycji „Wybierz funkcję platformy Azure”](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -419,7 +419,7 @@ Następnie dodaj akcję, która utworzy obiekt blob w kontenerze magazynu, co um
 
 1. W bloku **W przypadku wartości true** i w obszarze funkcji platformy Azure wybierz pozycję **Dodaj akcję**. 
 
-2. W polu wyszukiwania wprowadź frazę „tworzenie obiektu blob” jako filtr i wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
+2. W polu wyszukiwania wprowadź frazę „utwórz obiekt blob” jako filtr i wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
 
    ![Dodawanie akcji w celu utworzenia obiektu blob na potrzeby treści wiadomości e-mail](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-email-body.png)
 
@@ -518,7 +518,7 @@ Następnie dodaj akcję, która zapisuje każdy załącznik jako obiekt blob w k
 
    ![Dodawanie akcji do pętli](./media/tutorial-process-email-attachments-workflow/for-each-add-action.png)
 
-2. W polu wyszukiwania wprowadź frazę „tworzenie obiektu blob” jako filtr i wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
+2. W polu wyszukiwania wprowadź frazę „utwórz obiekt blob” jako filtr, a następnie wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
 
    ![Dodawanie akcji umożliwiającej utworzenie obiektu blob](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 

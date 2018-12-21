@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: ad8cc550ce69e4dc4c19a569718fa873a65b3620
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eda5f21a535c6256d534bfdaa6cf30ae710ba075
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010348"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413187"
 ---
 # <a name="create-a-netapp-account"></a>Tworzenie konta usługi NetApp
 Utworzenie konta usługi NetApp umożliwia skonfigurowanie puli pojemności, w której następnie można utworzyć wolumin. Nowe konto usługi NetApp możesz utworzyć w bloku usługi Azure NetApp Files.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Musisz znajdować się na liście uprawnionych do dostępu do dostawcy zasobów platformy Azure Microsoft.NetApp i mieć skonfigurowaną usługę Azure NetApp Files.  
+Należy zarejestrować subskrypcję na potrzeby używania dostawcy zasobów usługi NetApp i funkcji w publicznej wersji zapoznawczej.
 
-[Strona rejestracji publicznej wersji zapoznawczej usługi Azure NetApp Files](https://aka.ms/nfspublicpreview). 
+[Rejestrowanie w usłudze Azure NetApp Files](azure-netapp-files-register.md)
 
 ## <a name="steps"></a>Kroki 
 
@@ -55,11 +55,10 @@ Musisz znajdować się na liście uprawnionych do dostępu do dostawcy zasobów 
     ![Nowe konto usługi NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. Kliknij przycisk **Utwórz**.     
+5. Kliknij pozycję **Utwórz**.     
   Utworzone konto usługi NetApp znajduje się teraz w bloku usługi Azure NetApp Files. 
 
 ## <a name="next-steps"></a>Następne kroki  
 
-1. [Konfigurowanie puli pojemności](azure-netapp-files-set-up-capacity-pool.md)
-2. [Tworzenie woluminu dla usługi Azure NetApp Files](azure-netapp-files-create-volumes.md)
-3. [Konfigurowanie zasad eksportu dla woluminu (opcjonalnie)](azure-netapp-files-configure-export-policy.md)
+[Konfigurowanie puli pojemności](azure-netapp-files-set-up-capacity-pool.md)
+

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 48e338a08330e0674cc4410adf135ec546a5e1c3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230601"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084017"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Znajdowanie i diagnozowanie wyjątków czasu wykonywania za pomocą usługi Azure Application Insights
 
@@ -36,7 +36,7 @@ W celu ukończenia tego samouczka:
 
 - Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
     - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-    - Tworzenie aplikacji na platformie Azure
+    - Programowanie na platformie Azure
 - Pobierz i zainstaluj rozszerzenie [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Włącz rozszerzenie [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger).
 - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](app-insights-asp-net.md). 
@@ -75,20 +75,20 @@ Usługa Application Insights zbiera wszelkie błędy z Twojej aplikacji i pozwal
     ![Szczegóły wyjątku](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Identyfikowanie błędnego kodu
-Rozszerzenie Snapshot Debugger zbiera migawki najczęściej występujących wyjątków w Twojej aplikacji, aby pomóc Ci w diagnozowaniu głównej przyczyny problemu w środowisku produkcyjnym.  Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Następnie można debugować kod źródłowy, pobierając migawkę i otwierając ją w programie Visual Studio 2017.
+Rozszerzenie Snapshot Debugger zbiera migawki najczęściej występujących wyjątków w Twojej aplikacji, aby pomóc Ci w diagnozowaniu głównej przyczyny problemu w środowisku produkcyjnym.  Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Następnie można debugować kod źródłowy, pobierając migawkę i otwierając ją w programie Visual Studio 2017 Enterprise.
 
 1. We właściwościach wyjątku kliknij pozycję **Otwórz migawkę debugowania**.
 2. Zostanie otwarty panel **Migawka debugowania** ze stosem wywołań dla żądania.  Kliknij dowolną metodę, aby wyświetlić wartości wszystkich zmiennych lokalnych w momencie żądania.  Zaczynając od pierwszej metody w tym przykładzie, widać zmienne lokalne bez wartości.
 
     ![Migawka debugowania](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-4. Pierwsze wywołanie z prawidłowymi wartościami to **ValidZipCode** i widać, że w kodzie pocztowym podano litery, których nie można przekształcić na liczbę całkowitą.  Wygląda to na błąd w kodzie, który trzeba poprawić.
+3. Pierwsze wywołanie z prawidłowymi wartościami to **ValidZipCode** i widać, że w kodzie pocztowym podano litery, których nie można przekształcić na liczbę całkowitą.  Wygląda to na błąd w kodzie, który trzeba poprawić.
 
     ![Migawka debugowania](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-5. Aby pobrać tę migawkę do programu Visual Studio, w którym będzie można znaleźć faktyczny kod do poprawienia, kliknij pozycję **Pobierz migawkę**.
-6. Migawka zostanie załadowana do programu Visual Studio.
-7. Teraz możesz uruchomić sesję debugowania w programie Visual Studio, która szybko zidentyfikuje wiersz kodu będący przyczyną wyjątku.
+4. Następnie można pobrać tę migawkę do programu Visual Studio, w którym można znaleźć faktyczny kod do poprawienia. Aby to zrobić, kliknij pozycję **Pobierz migawkę**.
+5. Migawka zostanie załadowana do programu Visual Studio.
+6. Teraz możesz uruchomić sesję debugowania w programie Visual Studio Enterprise, która szybko zidentyfikuje wiersz kodu będący przyczyną wyjątku.
 
     ![Wyjątek w kodzie](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
 

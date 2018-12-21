@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący wywoływania interfejsów API wyszukiwania poznawczego w usłudze Azure Search | Microsoft Docs
+title: Samouczek dotyczący wywoływania interfejsów API wyszukiwania poznawczego — Azure Search
 description: W tym samouczku wykonasz kroki przykładu wyodrębniania danych oraz przetwarzania języka naturalnego i obrazów za pomocą funkcji sztucznej inteligencji w ramach indeksowania w usłudze Azure Search na potrzeby wyodrębniania i przekształcania danych.
 manager: pablocas
 author: luiscabrer
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 4694d7a580c9544e43cf0b56b192b55c02257531
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 4b78675de2902736b90afa1df9ad66e2df2b0f77
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730668"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386234"
 ---
-# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Samouczek: wywoływanie interfejsów API wyszukiwania poznawczego (wersja zapoznawcza)
+# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Samouczek: Wywoływanie interfejsów API wyszukiwania poznawczego (wersja zapoznawcza)
 
 Za pomocą tego samouczka poznasz mechanizm programistycznego wzbogacania danych w usłudze Azure Search przy użyciu *umiejętności poznawczych*. Umiejętności poznawcze to funkcje przetwarzania języka naturalnego i operacje analizy obrazów, które umożliwiają wyodrębnianie tekstu i reprezentacji tekstowych obrazu, a także wykrywanie języka, jednostek, fraz kluczowych itd. Wynikiem końcowym jest bogata dodatkowa zawartość umieszczona w indeksie usługi Azure Search, która została utworzona przez potok indeksowania funkcji wyszukiwania poznawczego. 
 
@@ -34,7 +35,9 @@ Dane wyjściowe stanowią indeks z możliwością wyszukiwania pełnotekstowego 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Możliwości wykonywania zestawów umiejętności oraz wyodrębniania i normalizacji obrazów są obecnie oferowane bezpłatnie. Cennik dla tych możliwości zostanie opublikowany w późniejszym czasie. 
+> Od 21 grudnia 2018 roku będziesz mieć możliwość skojarzenia swojego zasobu w usługach Cognitive Services z zestawem umiejętności usługi Azure Search. Pozwoli to nam na rozpoczęcie naliczania opłat za wykonywanie zestawu umiejętności. Od tego dnia zaczniemy też naliczać opłaty za wyodrębnianie obrazów w ramach etapu analizowania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+>
+> Opłaty za wykonywanie wbudowanych umiejętności będą naliczane na podstawie istniejącej [ceny za usługi Cognitive Services przy płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/pricing/details/cognitive-services/). Opłaty za wyodrębnianie obrazów będą naliczane zgodnie z cenami w wersji zapoznawczej. Opisano to na [stronie cennika usługi Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -52,30 +55,31 @@ Najpierw utwórz konto usługi Azure Search.
 
 1. Kliknij pozycję **Utwórz zasób**, wyszukaj usługę Azure Search i kliknij pozycję **Utwórz**. Zobacz [Tworzenie usługi Azure Search w portalu](search-create-service-portal.md), jeśli konfigurujesz usługę wyszukiwania po raz pierwszy.
 
-  ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
+  ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
 
 1. W obszarze Grupa zasobów utwórz grupę zasobów, która będzie zawierać wszystkie zasoby utworzone w tym samouczku. Ułatwi to wyczyszczenie zasobów po ukończeniu samouczka.
 
-1. W polu Lokalizacja wybierz wartość **Południowo-środkowe stany USA** lub **Europa Zachodnia**. Obecnie wersja zapoznawcza jest dostępna tylko w tych regionach.
+1. Jako lokalizację wybierz jeden z [obsługiwanych regionów](https://docs.microsoft.com/en-us/azure/search/cognitive-search-quickstart-blob#supported-regions) dla usługi Cognitive Search.
 
 1. W obszarze Warstwa cenowa możesz utworzyć usługę w warstwie **Bezpłatna**, aby ukończyć samouczki i przewodniki Szybki start. Na potrzeby głębszej analizy z wykorzystaniem własnych danych możesz utworzyć [płatną usługę](https://azure.microsoft.com/pricing/details/search/), taką jak usługa w warstwie **Podstawowa** lub **Standardowa**. 
 
   Usługa w warstwie Bezpłatna jest ograniczona do 3 indeksów, maksymalnego rozmiaru obiektu blob równego 16 MB i 2 minut indeksowania, co nie wystarcza do korzystania z pełnych możliwości wyszukiwania poznawczego. Aby przejrzeć limity dla różnych warstw, zobacz [ograniczenia usługi](search-limits-quotas-capacity.md).
 
-  > [!NOTE]
-  > Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności jest obecnie dostępne we wszystkich warstwach, w tym warstwie Bezpłatna. Cennik dla tej możliwości zostanie opublikowany w późniejszym czasie.
+  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service1.png "Strona definicji usługi w portalu")
+  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Strona definicji usługi w portalu")
 
+ 
 1. Przypnij usługę do pulpitu nawigacyjnego, aby uzyskać szybki dostęp do informacji o niej.
 
-  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service.png "Strona definicji usługi w portalu")
+  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Strona definicji usługi w portalu")
 
-1. Po utworzeniu usługi zbierz następujące informacje: **adres URL** dostępny na stronie Przegląd i klucz **api-key** (podstawowy lub pomocniczy) dostępny na stronie Klucze.
+1. Po utworzeniu usługi zbierz następujące informacje: adres **URL** ze strony Przegląd i klucz **api-key** (podstawowy lub pomocniczy) ze strony Klucze.
 
   ![Informacje o punkcie końcowym i kluczu w portalu](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Informacje o punkcie końcowym i kluczu w portalu")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Konfigurowanie usługi Azure Blob Service i ładowanie przykładowych danych
 
-Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą pochodzić ze źródła danych, którego typ jest obsługiwany przez [indeksator usługi Azure Search](search-indexer-overview.md). Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
+Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą pochodzić ze źródła danych, którego typ jest obsługiwany przez [indeksator usługi Azure Search](search-indexer-overview.md). Pamiętaj, usługa Azure Table Storage nie jest obsługiwana w usłudze wyszukiwania poznawczego. Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
 
 1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4). Przykładowe dane składają się z małego zestawu plików różnych typów. 
 
@@ -523,7 +527,7 @@ Aby zaindeksować dokumenty za pomocą nowych definicji:
 2. Zmodyfikuj zestaw umiejętności i definicję indeksu.
 3. Utwórz ponownie indeks i indeksator dla usługi w celu uruchomienia potoku. 
 
-Do usunięcia indeksów i indeksatorów można użyć portalu. Zestaw umiejętności można usunąć tylko za pomocą polecenia HTTP, jeśli zostanie podjęta decyzja o jego usunięciu.
+Do usunięcia indeksów, indeksatorów i zestawów umiejętności można użyć portalu.
 
 ```http
 DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview

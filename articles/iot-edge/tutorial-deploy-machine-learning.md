@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie usługi Azure Machine Learning za pomocą usługi Azure IoT Edge | Microsoft Docs
+title: Samouczek dotyczący wdrażania usługi Azure Machine Learning na urządzeniu — Azure IoT Edge | Microsoft Docs
 description: W tym samouczku usługa Azure Machine Learning jest wdrażana jako moduł na urządzeniu brzegowym
 author: kgremban
 manager: philmea
@@ -8,15 +8,15 @@ ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: c98dc9019421133b83ab9aec29f725852315f6ba
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: db8318e94b646d57c00bc2e6958ba9e7f46ec7af
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977215"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344034"
 ---
-# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: Wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
 
 Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera opis sposobu wdrażania modułu usługi Azure Machine Learning, który przewiduje awarię urządzenia na podstawie symulowanych danych dotyczących temperatury maszyny. Więcej informacji na temat usługi Azure ML na platformie IoT Edge można znaleźć w [dokumentacji usługi Azure Machine Learning](../machine-learning/service/how-to-deploy-to-iot.md).
 
@@ -115,7 +115,7 @@ Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w rejestrz
 
 1. W sekcji **Ustawienia rejestru** dodaj poświadczenia skopiowane z rejestru kontenerów platformy Azure. 
 
-   ![Dodawanie poświadczeń rejestru](./media/tutorial-deploy-machine-learning/registry-settings.png)
+   ![Dodawanie poświadczeń rejestru do manifestu](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
 1. Jeśli moduł tempSensor został już wcześniej wdrożony na urządzeniu usługi IoT Edge, może on zostać automatycznie wypełniony. Jeśli nie znajduje się on jeszcze na liście modułów, dodaj go.
 
@@ -174,7 +174,7 @@ Jeśli te polecenia są wykonywane na urządzeniu z systemem Linux, może być k
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>Wyświetlanie danych otrzymywanych przez centrum IoT
 
-Komunikaty urządzenie-chmura odbierane przez centrum IoT można wyświetlić przy użyciu [rozszerzenia Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+Komunikaty urządzenie-chmura odbierane przez centrum IoT można wyświetlić przy użyciu [rozszerzenia Azure IoT Hub Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dawniej rozszerzenia Azure IoT Toolkit).
 
 Poniższe kroki pokazują, jak skonfigurować program Visual Studio Code w celu monitorowania komunikatów urządzenie-chmura w centrum IoT. 
 
@@ -182,7 +182,7 @@ Poniższe kroki pokazują, jak skonfigurować program Visual Studio Code w celu 
 
 2. Wybierz pozycję **...** , a następnie wybierz pozycję **Set IoT Hub Connection String** (Ustaw parametry połączenia centrum IoT Hub) z menu.
 
-   ![Menu Więcej urządzeń centrum IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![Określanie parametrów połączenia centrum IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. W polu tekstowym, które zostanie otwarte w górnej części strony wprowadź ciąg połączenia iothubowner dla używanego centrum IoT Hub. Urządzenie usługi IoT Edge powinno zostać wyświetlone na liście IoT Hub Devices (Urządzenia centrum IoT Hub).
 

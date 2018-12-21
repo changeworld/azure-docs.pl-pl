@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics | Microsoft Docs '
+title: 'Samouczek: Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics | Microsoft Docs '
 description: W tym samouczku przedstawiono korzystanie z zaawansowanej mechaniki zapytań za pomocą funkcji języka JavaScript zdefiniowanych przez użytkownika
 keywords: javascript, funkcje zdefiniowane przez użytkownika, funkcja udf
 services: stream-analytics
@@ -13,14 +13,14 @@ ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
 ms.author: rodrigoa
-ms.openlocfilehash: 56ac08593d29a9003f5509f2be52f50fa250bd75
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431599"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088881"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
+# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
  
 Usługa Azure Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika, które napisano w języku JavaScript. Bogaty zestaw metod do obsługi **ciągów**, **wyrażeń regularnych**, **operacji matematycznych**, **tablic** i **danych** oferowanych przez język JavaScript ułatwia tworzenie złożonych transformacji danych w ramach zadań usługi Stream Analytics.
 
@@ -58,7 +58,7 @@ Aby utworzyć prostą funkcję języka JavaScript zdefiniowaną przez użytkowni
 4.  W bloku **Nowa funkcja** wybierz dla elementu **Typ funkcji** pozycję **JavaScript**. Domyślny szablon funkcji zostanie wyświetlony w edytorze.
 5.  W polu **Alias funkcji zdefiniowanej przez użytkownika** podaj wartość **hex2Int** i zmień implementację funkcji w następujący sposób:
 
-    ```
+    ```javascript
     // Convert Hex value to integer.
     function hex2Int(hexValue) {
         return parseInt(hexValue, 16);
@@ -73,7 +73,7 @@ Aby utworzyć prostą funkcję języka JavaScript zdefiniowaną przez użytkowni
 1. W edytorze zapytań w obszarze **TOPOLOGIA ZADANIA** wybierz pozycję **Zapytanie**.
 2.  Zmodyfikuj zapytanie, a następnie wywołaj funkcję zdefiniowaną przez użytkownika w następujący sposób:
 
-    ```
+    ```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -129,14 +129,14 @@ Jeśli stosujesz kolejny krok przetwarzania, który używa wyjścia zadania usł
 
 **Definicja funkcji języka JavaScript zdefiniowanej przez użytkownika:**
 
-```
+```javascript
 function main(x) {
 return JSON.stringify(x);
 }
 ```
 
 **Przykładowe zapytanie:**
-```
+```SQL
 SELECT
     DataString,
     DataValue,

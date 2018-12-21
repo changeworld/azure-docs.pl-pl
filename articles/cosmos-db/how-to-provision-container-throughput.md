@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3b766cfa339e6cbb568cf57383667d270153401f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dd47976bca75569142f1912eee06c66061e92fa6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262424"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097669"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Aprowizowanie przepływności dla kontenera usługi Azure Cosmos DB
 
@@ -28,6 +28,7 @@ W tym artykule wyjaśniono, jak aprowizować przepływność dla kontenera (kole
 
    * Utwórz nową bazę danych lub wybierz istniejącą.
    * Wprowadź identyfikator kolekcji (lub tabeli albo grafu).
+   * Wprowadź wartość klucza partycji, na przykład `/userid`.
    * Wprowadź przepływność, na przykład 1000 jednostek RU.
    * Kliknij przycisk **OK**.
 

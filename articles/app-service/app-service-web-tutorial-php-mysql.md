@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej języka PHP i MySQL na platformie Azure | Microsoft Docs
+title: Kompilowanie aplikacji PHP przy użyciu bazy danych MySQL — Azure App Service | Microsoft Docs
 description: Dowiedz się, jak uruchomić aplikację języka PHP na platformie Azure z użyciem połączenia z bazą danych MySQL na platformie Azure.
 services: app-service\web
 documentationcenter: php
@@ -14,15 +14,15 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 9a1468c27e668663ca9079f5f1c9e5e97e51d2d5
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.custom: seodec18
+ms.openlocfilehash: a20373e43780cea10e550ae968deb2a8720b9a9f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291291"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251678"
 ---
-# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka PHP i MySQL na platformie Azure
+# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Samouczek: Tworzenie aplikacji internetowej języka PHP i MySQL na platformie Azure
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Build a PHP and MySQL web app in Azure App Service on Linux (Tworzenie aplikacji internetowej języka PHP i MySQL w usłudze Azure App Service w systemie Linux)](./containers/tutorial-php-mysql-app.md).
@@ -49,9 +49,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 W celu ukończenia tego samouczka:
 
 * [Zainstaluj oprogramowanie Git](https://git-scm.com/)
-* [Zainstaluj środowisko PHP w wersji 5.6.4 lub nowszej](http://php.net/downloads.php)
+* [Zainstaluj środowisko PHP w wersji 5.6.4 lub nowszej](https://php.net/downloads.php)
 * [Zainstaluj oprogramowanie Composer](https://getcomposer.org/doc/00-intro.md)
-* Włącz następujące rozszerzenia PHP wymagane przez platformę Laravel: OpenSSL, PDO-MySQL, Mbstring, Tokenizer i XML
+* Włącz następujące rozszerzenia PHP, których wymaga platforma Laravel: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
 * [Zainstaluj i uruchom oprogramowanie MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Przygotowywanie lokalnego środowiska MySQL
@@ -66,7 +66,7 @@ W oknie terminala nawiąż połączenie z lokalnym serwerem MySQL. W tym oknie t
 mysql -u root -p
 ```
 
-Jeśli zostanie wyświetlony monit o hasło, wprowadź hasło do konta `root`. Jeśli nie pamiętasz hasła do konta root, zobacz [MySQL: How to Reset the Root Password (MySQL: Jak zresetować hasło konta root)](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
+Jeśli zostanie wyświetlony monit o hasło, wprowadź hasło do konta `root`. Jeśli nie pamiętasz hasła do konta głównego, zobacz [MySQL: How to Reset the Root Password (MySQL: jak zresetować hasło główne)](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
 Jeśli polecenie zostanie pomyślnie uruchomione, oznacza to, że serwer MySQL działa. Jeśli nie, upewnij się, że lokalny serwer MySQL został uruchomiony, postępując zgodnie z [procedurą poinstalacyjną MySQL](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
 
@@ -598,9 +598,9 @@ Po rozpoczęciu przesyłania strumieniowego dzienników odśwież aplikację int
 Aby w dowolnym momencie zatrzymać przesyłanie strumieniowe dzienników, wpisz `Ctrl`+`C`.
 
 > [!TIP]
-> Aplikacja PHP może użyć standardowej instrukcji [error_log()](http://php.net/manual/function.error-log.php) w celu przesłania danych wyjściowych do konsoli. Przykładowa aplikacja używa tego podejścia w pliku _app/Http/routes.php_.
+> Aplikacja PHP może użyć standardowej instrukcji [error_log()](https://php.net/manual/function.error-log.php) w celu przesłania danych wyjściowych do konsoli. Przykładowa aplikacja używa tego podejścia w pliku _app/Http/routes.php_.
 >
-> Będące platformą internetową rozwiązanie [Laravel używa produktu Monolog](https://laravel.com/docs/5.4/errors) jako dostawcy logowania. Aby zobaczyć, jak ustawić rozwiązanie Monolog tak, aby wysyłało komunikaty wyjściowe do konsoli, zobacz [PHP: Jak używać rozwiązania Monolog w przypadku logowania do konsoli(php://out)](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
+> Będące platformą internetową rozwiązanie [Laravel używa produktu Monolog](https://laravel.com/docs/5.4/errors) jako dostawcy logowania. Aby zobaczyć, jak skonfigurować rozwiązanie Monolog do tworzenia komunikatów w obrębie konsoli, zobacz [PHP: How to use monolog to log to console (php://out) (PHP: jak używać rozwiązania monolog w przypadku logowania do konsoli (php://out))](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
 >
 >
 

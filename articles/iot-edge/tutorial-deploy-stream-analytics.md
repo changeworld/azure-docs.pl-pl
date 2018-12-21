@@ -1,5 +1,5 @@
 ---
-title: Samouczek — wdrażanie zadań usługi ASA na urządzeniach usługi Azure IoT Edge | Microsoft Docs
+title: 'Samouczek: wdrażanie zadania usługi Azure Stream Analytics na urządzeniu — Azure IoT Edge | Microsoft Docs'
 description: W tym samouczku usługa Azure Stream Analytics zostanie wdrożona jako moduł na urządzeniu usługi IoT Edge
 author: kgremban
 manager: philmea
@@ -7,16 +7,15 @@ ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
-services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 2188e21cfd29ac8ac2d44878819ee62a3e2d555e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 0096a7a57cb4a404f5c8e36d8b69eac2c20c1fab
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566945"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139815"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Stream Analytics jako modułu usługi IoT Edge (wersja zapoznawcza)
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Samouczek: Wdrażanie usługi Azure Stream Analytics jako modułu usługi IoT Edge
 
 W wielu rozwiązaniach IoT używane są usługi analizy, które pozwalają uzyskiwać szczegółowe informacje na temat danych w miarę przesyłania ich do chmury z urządzeń IoT. Dzięki usłudze Azure IoT Edge możesz zastosować logikę usługi [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), wdrażając ją bezpośrednio na urządzeniu. Dzięki przetwarzaniu potoków danych telemetrycznych na urządzeniu brzegowym możesz zmniejszyć ilość przekazywanych danych i skrócić czas reakcji na szczegółowe informacje umożliwiające podejmowanie działań.
 
@@ -34,11 +33,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wdrażanie zadania usługi Azure Stream Analytics na urządzeniu usługi IoT Edge z poziomu witryny Azure Portal.
 
 <center>
-![Diagram architektury samouczka](./media/tutorial-deploy-stream-analytics/ASATutorialDiagram.png)
+![Diagram — Architektura samouczka, etapy i wdrażanie zadania ASA](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
->[!NOTE]
->Moduły usługi Azure Stream Analytics dla usługi IoT Edge są obecnie dostępne w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -100,7 +97,7 @@ Przy użyciu trzech elementów — danych wejściowych, danych wyjściowych i za
 
 1. W obszarze **Topologia zadania** wybierz pozycję **Dane wejściowe**, a następnie pozycję **Dodaj wejście strumienia**.
 
-   ![Dane wejściowe usługi Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_input.png)
+   ![Dodawanie danych wejściowych usługi Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
 1. Wybierz pozycję **Edge Hub** z listy rozwijanej.
 
@@ -110,7 +107,7 @@ Przy użyciu trzech elementów — danych wejściowych, danych wyjściowych i za
 
 1. W obszarze **Topologia zadania** otwórz pozycję **Dane wyjściowe**, a następnie wybierz pozycję **Dodaj**.
 
-   ![Dane wyjściowe usługi Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_output.png)
+   ![Dodawanie danych wyjściowych usługi Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
 1. Wybierz pozycję **Edge Hub** z listy rozwijanej.
 
@@ -207,7 +204,7 @@ W tym samouczku wdrażane są dwa moduły. Pierwszy to moduł **tempSensor**, kt
 
     Powinien zostać wyświetlony nowy moduł usługi Stream Analytics, uruchomiony wraz z modułem agenta usługi IoT Edge i centrum usługi IoT Edge.
 
-    ![Dane wyjściowe modułu](./media/tutorial-deploy-stream-analytics/module_output2.png)
+    ![Moduły tempSensor i ASA zgłoszone przez urządzenie](./media/tutorial-deploy-stream-analytics/module_output2.png)
 
 ## <a name="view-data"></a>Wyświetlanie danych
 
@@ -229,7 +226,7 @@ Teraz możesz przejść do urządzenia usługi IoT Edge, aby sprawdzić interakc
 
 Powinny zostać wyświetlone stopniowo rosnące wartości temperatury maszyny, do momentu osiągnięcia wartości 70 stopni przez 30 sekund. Następnie moduł usługi Stream Analytics wywoła reset, a temperatura maszyny spadnie do 21 stopni. 
 
-   ![Dziennik aplikacji Docker](./media/tutorial-deploy-stream-analytics/docker_log.png)
+   ![Resetowanie danych wyjściowych polecenia do dzienników modułu](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 

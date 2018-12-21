@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 8a99a784292c4294456296c1f105e5f485689368
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 83647dfb0965b8aac8ede5f2e9669ae3d7722c41
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679906"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184988"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Zarządzanie aktualizacjami systemu Windows przy użyciu usługi Azure Automation
 
@@ -82,48 +82,24 @@ Kliknij w dowolnym innym miejscu aktualizacji, aby otworzyć okno **Przeszukiwan
 
 ## <a name="configure-alerts"></a>Konfigurowanie alertów
 
-W tym kroku nauczysz się konfigurować alert informujący za pośrednictwem zapytania usługi Log Analytics o pomyślnym wdrożeniu aktualizacji lub za pomocą śledzenia głównego elementu runbook dla funkcji Update Management o wdrożeniach, które się nie powiodły.
+W tym kroku dowiesz się, jak skonfigurować alert powiadamiający o stanie wdrożenia aktualizacji.
 
 ### <a name="alert-conditions"></a>Warunki alertu
 
-W przypadku każdego typu alertu istnieją różne warunki alertu, które należy zdefiniować.
+Na koncie usługi Automation w obszarze **Monitorowanie** przejdź do pozycji **Alerty**, a następnie kliknij przycisk **+ Nowa reguła alertu**.
 
-#### <a name="log-analytics-query-alert"></a>Alert zapytania usługi Log Analytics
+Konto usługi Automation zostało już wybrane jako zasób. Jeśli chcesz je zmienić, możesz kliknąć pozycję **Wybierz**, a następnie na stronie **Wybierz zasób** wybrać pozycję **Konta usługi Automation** na liście rozwijanej **Filtruj według typu zasobu**. Wybierz swoje konto usługi Automation, a następnie wybierz pozycję **Gotowe**.
 
-W przypadku pomyślnego wdrożenia można utworzyć alert na podstawie zapytania usługi Log Analytics. W przypadku wdrożeń zakończonych niepowodzeniem można wykonać kroki [alertu elementu runbook](#runbook-alert), aby wyzwolić alert, gdy główny element runbook, który koordynuje wdrożenia aktualizacji, zakończy się niepowodzeniem. Można napisać zapytanie niestandardowe dotyczące dodatkowych alertów, odpowiadające różnym scenariuszom.
+Kliknij pozycję **Dodaj warunek**, aby wybrać odpowiedni sygnał dla wdrożenia aktualizacji. W poniższej tabeli przedstawiono szczegółowe informacje o dwóch dostępnych sygnałach dla wdrożeń aktualizacji:
 
-W witrynie Azure Portal przejdź do obszaru **Monitorowanie** i wybierz pozycję **Utwórz alert**.
+|Nazwa sygnału|Wymiary|Opis|
+|---|---|---|
+|**Łączna liczba przebiegów wdrażania aktualizacji**|— Nazwa wdrażania aktualizacji</br>— Stan|Sygnał ten jest używany, aby poinformować o ogólnym stanie wdrożenia aktualizacji.|
+|**Łączna liczba przebiegów wdrażania aktualizacji maszyny**|— Nazwa wdrażania aktualizacji</br>— Stan</br>— Komputer docelowy</br>— Identyfikator przebiegu wdrożenia aktualizacji|Ten sygnał jest używany, aby poinformować o stanie wdrożenia aktualizacji dotyczącej konkretnych maszyn|
 
-W obszarze **1. Zdefiniuj warunek alertu**, kliknij przycisk **Wybierz docelowy**. W obszarze **Filtruj według typu zasobu** wybierz pozycję **Log Analytics**. Wybierz swój obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Gotowe**.
-
-![Tworzenie alertu](./media/automation-tutorial-update-management/create-alert.png)
-
-Wybierz pozycję **Dodaj kryteria**.
-
-W obszarze **Konfigurowanie logiki sygnału** w tabeli wybierz pozycję **Przeszukiwanie dzienników niestandardowych**. W polu tekstowym **Zapytanie wyszukiwania** wprowadź poniższe zapytanie:
-
-```loganalytics
-UpdateRunProgress
-| where InstallationStatus == 'Succeeded'
-| where TimeGenerated > now(-10m)
-| summarize by UpdateRunName, Computer
-```
-To zapytanie zwraca nazwy komputerów i przebiegu aktualizacyjnego, który został ukończony w określonym przedziale czasu.
-
-W obszarze **Logika alertu** w polu **Próg** wprowadź **1**. Po zakończeniu wybierz pozycję **Gotowe**.
+Ab uzyskać wartości wymiarów, wybierz prawidłową wartość na liście. Jeśli wartość, której szukasz, nie znajduje się na liście, kliknij znak **\+** obok wymiaru i wpisz nazwę niestandardową. Następnie możesz wybrać wartość, którą chcesz znaleźć. Jeśli chcesz wybrać wszystkie wartości w ramach wymiaru, kliknij przycisk **Wybierz\***. Jeśli nie wybierzesz wartości wymiaru, ten wymiar nie będzie brany pod uwagę podczas oceny.
 
 ![Konfigurowanie logiki sygnału](./media/automation-tutorial-update-management/signal-logic.png)
-
-#### <a name="runbook-alert"></a>Alert elementu runbook
-
-W przypadku wdrożeń zakończonych niepowodzeniem powinien być zgłaszany alert o niepowodzeniu głównego element runbook.
-W witrynie Azure Portal przejdź do obszaru **Monitorowanie** i wybierz pozycję **Utwórz alert**.
-
-W obszarze **1. Zdefiniuj warunek alertu**, kliknij przycisk **Wybierz docelowy**. W obszarze **Filtruj według typu zasobu** wybierz pozycję **Konta usługi Automation**. Wybierz swoje konto usługi Automation, a następnie wybierz pozycję **Gotowe**.
-
-Dla opcji **Nazwa elementu Runbook** kliknij znak **\+**, a następnie wprowadź ciąg **Patch-MicrosoftOMSComputers** jako nazwę niestandardową. Dla opcji **Stan** wybierz **Niepowodzenie** lub kliknij znak **\+**, aby wprowadzić **Niepowodzenie**.
-
-![Konfigurowanie logiki sygnału dla elementów runbook](./media/automation-tutorial-update-management/signal-logic-runbook.png)
 
 W obszarze **Logika alertu** w polu **Próg** wprowadź **1**. Po zakończeniu wybierz pozycję **Gotowe**.
 
@@ -133,7 +109,7 @@ W obszarze **2. Zdefiniuj szczegóły alertu** wprowadź nazwę i opis alertu. U
 
 ![Konfigurowanie logiki sygnału](./media/automation-tutorial-update-management/define-alert-details.png)
 
-W obszarze **3. Zdefiniuj grupę akcji** wybierz pozycję **Nowa grupa akcji**. Grupa akcji to grupa składająca się z akcji, których można używać w wielu alertach. Akcje mogą obejmować powiadomienia e-mail, elementy runbook i webhook oraz wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](../monitoring-and-diagnostics/monitoring-action-groups.md).
+W obszarze **Grupy akcji** wybierz pozycję **Utwórz nową**. Grupa akcji to grupa składająca się z akcji, których można używać w wielu alertach. Akcje mogą obejmować powiadomienia e-mail, elementy runbook i webhook oraz wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](../azure-monitor/platform/action-groups.md).
 
 W polu **Nazwa grupy akcji** wprowadź nazwę alertu oraz krótką nazwę. Krótka nazwa jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
 
@@ -155,15 +131,15 @@ Aby zaplanować nowe wdrożenie aktualizacji dla maszyny wirtualnej, przejdź do
 
 W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
-* **Nazwa**: wprowadź unikatową nazwę wdrożenia aktualizacji.
+* **Nazwa**: Wprowadź unikatową nazwę wdrożenia aktualizacji.
 
-* **System operacyjny**: wybierz docelowy system operacyjny do wdrażania aktualizacji.
+* **System operacyjny**: Wybierz docelowy system operacyjny do wdrażania aktualizacji.
 
-* **Grupy do zaktualizowania (wersja zapoznawcza)**: zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
+* **Grupy do zaktualizowania (wersja zapoznawcza)**: Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
 
-* **Maszyny do zaktualizowania**: wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md)
+* **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md)
 
-* **Klasyfikacja aktualizacji**: wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. W tym samouczku pozostaw wszystkie typy wybranymi.
+* **Klasyfikacja aktualizacji**: Wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. W tym samouczku pozostaw wszystkie typy wybranymi.
 
   Dostępne są następujące typy klasyfikacji:
 
@@ -174,16 +150,16 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
    Opis typów klasyfikacji znajduje się w [klasyfikacjach aktualizacji](automation-update-management.md#update-classifications).
 
-* **Aktualizacje do uwzględnienia/wykluczenia** — spowoduje to otwarcie strony **Uwzględnij/Wyklucz**. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać dodatkowe informacje na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior)
+* **Aktualizacje do uwzględnienia/wykluczenia** — spowoduje to otwarcie strony **Uwzględnij/Wyklucz**. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior)
 
-* **Ustawienia harmonogramu**: spowoduje otwarcie okienka **Ustawienia harmonogramu**. Domyślny czas rozpoczęcia to 30 minut po bieżącej godzinie. Czas rozpoczęcia można ustawić na dowolny czas od 10 minut w przyszłości.
+* **Ustawienia harmonogramu**: Zostanie otwarte okienko **Ustawienia harmonogramu**. Domyślny czas rozpoczęcia to 30 minut po bieżącej godzinie. Czas rozpoczęcia można ustawić na dowolny czas od 10 minut w przyszłości.
 
    Możesz też określić, czy wdrożenie ma występować raz, czy zgodnie z ustawionym harmonogramem cyklicznym. W obszarze **Cykl** wybierz pozycję **Raz**. Pozostaw wartość domyślną jako 1 dzień, a następnie wybierz przycisk **OK**. Konfiguruje to harmonogram cykliczny.
 
-* **Skrypty wstępne i końcowe**: wybierz skrypty do uruchomienia przed i po wdrożeniu. Aby dowiedzieć się więcej, zobacz [Zarządzanie skryptami wstępnymi i końcowymi](pre-post-scripts.md).
-* **Okno konserwacji (w minutach)**: pozostaw wartość domyślną. Możesz ustawić przedział czasu, w którym ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
+* **Skrypty wstępne i końcowe**: Wybierz skrypty do uruchomienia przed i po wdrożeniu. Aby dowiedzieć się więcej, zobacz [Zarządzanie skryptami wstępnymi i końcowymi](pre-post-scripts.md).
+* **Okno obsługi (minuty)**: Pozostaw wartość domyślną. Możesz ustawić przedział czasu, w którym ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
 
-* **Opcje ponownego uruchomiania**: to ustawienie określa sposób obsługi ponownego uruchamiania. Dostępne opcje:
+* **Opcje ponownego uruchomienia**: To ustawienie określa sposób obsługi ponownego uruchamiania. Dostępne opcje:
   * Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)
   * Zawsze uruchamiaj ponownie
   * Nigdy nie uruchamiaj ponownie
@@ -210,9 +186,9 @@ Obszar **Wyniki aktualizacji** zawiera podsumowanie z łączną liczbą aktualiz
 
 Na poniższej liście przedstawiono dostępne wartości:
 
-* **Nie podjęto próby**: nie zainstalowano aktualizacji z powodu niewystarczającego czasu w zdefiniowanym oknie konserwacji.
-* **Powodzenie**: aktualizacja powiodła się.
-* **Niepowodzenie**: aktualizacja nie powiodła się.
+* **Nie podjęto próby**: Nie zainstalowano aktualizacji z powodu niewystarczającego czasu w zdefiniowanym oknie konserwacji.
+* **Powodzenie**: Aktualizacja powiodła się.
+* **Niepowodzenie**: Aktualizacja nie powiodła się.
 
 Aby wyświetlić wszystkie wpisy dziennika utworzone przez wdrożenie, wybierz opcję **Wszystkie dzienniki**.
 

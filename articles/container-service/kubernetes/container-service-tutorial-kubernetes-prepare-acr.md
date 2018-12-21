@@ -1,24 +1,27 @@
 ---
-title: Samouczek usługi Azure Container Service — przygotowywanie usługi ACR
+title: (PRZESTARZAŁE) Samouczek usługi Azure Container Service — przygotowywanie usługi ACR
 description: Samouczek usługi Azure Container Service — przygotowywanie usługi ACR
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 735aca5509373f840c56e28887088f7a696ca137
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: c3e5e7c4fb46b3f68013ac857dcad2e5434a978d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024090"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998313"
 ---
-# <a name="deploy-and-use-azure-container-registry"></a>Wdrażanie usługi Azure Container Registry i korzystanie z niej
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(PRZESTARZAŁE) Wdrażanie usługi Azure Container Registry i korzystanie z niej
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby poznać zaktualizowaną wersję tego samouczka korzystającą z usługi Azure Kubernetes Service, zobacz [Samouczek: Wdrażanie usługi Azure Container Registry i korzystanie z niej](../../aks/tutorial-kubernetes-prepare-acr.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Usługa Azure Container Registry to oparty na platformie Azure rejestr prywatny na potrzeby obrazów kontenerów platformy Docker. Ten samouczek (część druga z siedmiu) zawiera opis sposobu wdrażania wystąpienia usługi Azure Container Registry i wypychania do niego obrazu kontenera. Wykonano następujące czynności:
 

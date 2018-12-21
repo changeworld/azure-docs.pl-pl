@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: f06094fb82f10276f7a41d1b22f6dd99836a497f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: eaafc8acb73dd48e213d05d953d9ada457c53132
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095514"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957269"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem informacji o śledzeniu zmian 
 W tym samouczku utworzysz fabrykę usługi Azure Data Factory z potokiem służącym do ładowania danych przyrostowych na podstawie informacji o **śledzeniu zmian** w źródłowej bazie danych Azure SQL Database do magazynu Azure Blob Storage.  
@@ -170,7 +170,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 4. Wybierz wartość **V2 (wersja zapoznawcza)** dla **wersji**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij przycisk **Utwórz**.      
+7. Kliknij pozycję **Utwórz**.      
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -322,7 +322,7 @@ Kliknij pozycję **Wyzwól** na pasku narzędzi dla potoku, a następnie kliknij
 ### <a name="review-the-results"></a>Sprawdzanie wyników
 Zostanie wyświetlony plik o nazwie `incremental-<GUID>.txt` w folderze `incchgtracking` kontenera `adftutorial`. 
 
-![Plik wyjściowy z pełnego kopiowania](media\tutorial-incremental-copy-change-tracking-feature-portal\full-copy-output-file.png)
+![Plik wyjściowy z pełnego kopiowania](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
 Ten plik powinien zawierać dane z bazy danych Azure SQL Database:
 
@@ -445,7 +445,7 @@ W tym kroku utworzysz potok z następującymi działaniami, który będzie okres
 ### <a name="review-the-results"></a>Sprawdzanie wyników
 W folderze `incchgtracking` kontenera `adftutorial` widoczny będzie drugi plik. 
 
-![Plik wyjściowy z kopii przyrostowej](media\tutorial-incremental-copy-change-tracking-feature-portal\incremental-copy-output-file.png)
+![Plik wyjściowy z kopii przyrostowej](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
 Ten plik powinien zawierać tylko dane przyrostowe z bazy danych Azure SQL Database. Rekord z wartością `U` znajduje się w zaktualizowanym wierszu w bazie danych, a rekord z wartością `I` to jeden dodany wiersz. 
 
@@ -453,7 +453,7 @@ Ten plik powinien zawierać tylko dane przyrostowe z bazy danych Azure SQL Datab
 1,update,10,2,U
 6,new,50,1,I
 ```
-Pierwsze trzy kolumny to zmienione dane z tabeli data_source_table. Ostatnie dwie kolumny to metadane z tabeli systemowej śledzenia zmian. Czwarta kolumna to wartość parametru SYS_CHANGE_VERSION dla każdego zmienionego wiersza. Piąta kolumna to wartość operacji: U — aktualizacja, I — wstawienie.  Aby uzyskać szczegółowe informacje o śledzeniu zmian, zobacz [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
+Pierwsze trzy kolumny to zmienione dane z tabeli data_source_table. Ostatnie dwie kolumny to metadane z tabeli systemowej śledzenia zmian. Czwarta kolumna to wartość parametru SYS_CHANGE_VERSION dla każdego zmienionego wiersza. Piąta kolumna to wartość operacji:  U — aktualizacja, I — wstawienie.  Aby uzyskać szczegółowe informacje o śledzeniu zmian, zobacz [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
 
 ```
 ==================================================================

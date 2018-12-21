@@ -10,14 +10,14 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: b8cdf6cb07215f4c1e2a472f60513aff765dcfb5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 1ce74afd8ee2266439a591730686b4f5277e1b03
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603198"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322009"
 ---
-# <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Samouczek — udzielanie dostępu do internetowego interfejsu API platformy Node.js z aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
+# <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Samouczek: Udzielanie dostępu do internetowego interfejsu API platformy Node.js z aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
 
 W tym samouczku pokazano, jak wywoływać zasób internetowego interfejsu API środowiska Node.js chroniony przez usługę Azure Active Directory (Azure AD) B2C z aplikacji klasycznej systemu Windows Presentation Foundation (WPF).
 
@@ -125,7 +125,7 @@ Przykładowy internetowy interfejs API platformy Node.js korzysta z biblioteki P
 
 ### <a name="configure-the-web-api"></a>Konfigurowanie internetowego interfejsu API
 
-1. Otwórz plik `index.html` w przykładowym internetowym interfejsie API platformy Node.js.
+1. Otwórz plik `index.js` w przykładowym internetowym interfejsie API platformy Node.js.
 2. Skonfiguruj przykład obejmujący informacje na temat rejestracji dzierżawy usługi Azure AD B2C. Zmień następujące wiersze kodu:
 
 ```nodejs

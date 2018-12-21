@@ -4,22 +4,22 @@ description: Za pomocą routingu zdarzeń usługi Azure Event Grid możesz tworz
 services: iot-hub
 documentationcenter: ''
 author: kgremban
-manager: timlt
+manager: philmea
 editor: ''
 ms.service: iot-hub
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 12/07/2018
 ms.author: kgremban
-ms.openlocfilehash: c91dad17016cd9619d2d42a3fcee04a7d14b5eab
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7c5030a80ead7e84526e01aa3a8a4a75ee2b276a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242523"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135019"
 ---
-# <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Wysyłanie powiadomień e-mail o zdarzeniach usługi Azure IoT Hub przy użyciu usługi Logic Apps
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Samouczek: Wysyłanie powiadomień e-mail o zdarzeniach usługi Azure IoT Hub przy użyciu usługi Logic Apps
 
 Usługa Azure Event Grid pozwala reagować na zdarzenia usługi IoT Hub dzięki akcjom wyzwalanym w podrzędnych aplikacjach biznesowych.
 
@@ -37,19 +37,16 @@ Najpierw należy utworzyć aplikację logiki i dodać wyzwalacz usługi Event Gr
 
 ### <a name="create-a-logic-app-resource"></a>Tworzenie zasobu aplikacji logiki
 
-1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Nowy** > **Integracja** > **Aplikacja logiki**.
+1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób** > **Integracja** > **Aplikacja logiki**.
 
    ![Tworzenie aplikacji logiki](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
 2. Nadaj aplikacji logiki nazwę unikatową w ramach subskrypcji, a następnie wybierz tę samą subskrypcję, grupę zasobów i lokalizację, które są skojarzone z centrum IoT. 
-3. Gdy wszystko będzie gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie pozycję **Utwórz**.
+3. Wybierz pozycję **Utwórz**.
 
-   Teraz został utworzony zasób platformy Azure dla Twojej aplikacji logiki. Po wdrożeniu Twojej aplikacji logiki na platformie Azure projektant aplikacji usługi Logic Apps pokaże szablony dla typowych wzorców, więc możesz szybciej rozpocząć pracę.
+4. Po utworzeniu zasobu przejdź do aplikacji logiki. 
 
-   > [!NOTE] 
-   > Jeśli wybierzesz pozycję **Przypnij do pulpitu nawigacyjnego**, Twoja aplikacja logiki automatycznie zostanie otwarta w projektancie aplikacji usługi Logic Apps. W przeciwnym razie możesz ręcznie znaleźć i otworzyć swoją aplikację logiki.
-
-4. W projektancie aplikacji usługi Logic Apps w obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**, aby rozpocząć tworzenie aplikacji logiki od podstaw.
+5. Projektant aplikacji usługi Logic Apps pokaże szablony dla typowych wzorców, dzięki czemu możesz szybciej rozpocząć pracę. W projektancie aplikacji usługi Logic Apps w obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**, aby rozpocząć tworzenie aplikacji logiki od podstaw.
 
 ### <a name="select-a-trigger"></a>Wybieranie wyzwalacza
 
@@ -66,51 +63,51 @@ Wyzwalacz to konkretne zdarzenie, które uruchamia aplikację logiki. W tym samo
 
 4. Wklej poniższy przykładowy kod JSON w polu tekstowym, a następnie wybierz pozycję **Gotowe**:
 
-```json
-[{
-  "id": "56afc886-767b-d359-d59e-0da7877166b2",
-  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
-  "subject": "devices/LogicAppTestDevice",
-  "eventType": "Microsoft.Devices.DeviceCreated",
-  "eventTime": "2018-01-02T19:17:44.4383997Z",
-  "data": {
-    "twin": {
-      "deviceId": "LogicAppTestDevice",
-      "etag": "AAAAAAAAAAE=",
-      "deviceEtag": "null",
-      "status": "enabled",
-      "statusUpdateTime": "0001-01-01T00:00:00",
-      "connectionState": "Disconnected",
-      "lastActivityTime": "0001-01-01T00:00:00",
-      "cloudToDeviceMessageCount": 0,
-      "authenticationType": "sas",
-      "x509Thumbprint": {
-        "primaryThumbprint": null,
-        "secondaryThumbprint": null
-      },
-      "version": 2,
-      "properties": {
-        "desired": {
-          "$metadata": {
-            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-          },
-          "$version": 1
-        },
-        "reported": {
-          "$metadata": {
-            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-          },
-          "$version": 1
-        }
-      }
-    },
-    "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice"
-  },
-  "dataVersion": "1",
-  "metadataVersion": "1"
-}]
-```
+   ```json
+   [{
+     "id": "56afc886-767b-d359-d59e-0da7877166b2",
+     "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+     "subject": "devices/LogicAppTestDevice",
+     "eventType": "Microsoft.Devices.DeviceCreated",
+     "eventTime": "2018-01-02T19:17:44.4383997Z",
+     "data": {
+       "twin": {
+         "deviceId": "LogicAppTestDevice",
+         "etag": "AAAAAAAAAAE=",
+         "deviceEtag": "null",
+         "status": "enabled",
+         "statusUpdateTime": "0001-01-01T00:00:00",
+         "connectionState": "Disconnected",
+         "lastActivityTime": "0001-01-01T00:00:00",
+         "cloudToDeviceMessageCount": 0,
+         "authenticationType": "sas",
+         "x509Thumbprint": {
+           "primaryThumbprint": null,
+           "secondaryThumbprint": null
+         },
+         "version": 2,
+         "properties": {
+           "desired": {
+             "$metadata": {
+               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+             },
+             "$version": 1
+           },
+           "reported": {
+             "$metadata": {
+               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+             },
+             "$version": 1
+           }
+         }
+       },
+       "hubName": "egtesthub1",
+       "deviceId": "LogicAppTestDevice"
+     },
+     "dataVersion": "1",
+     "metadataVersion": "1"
+   }]
+   ```
 
 5. Może pojawić się wyskakujące powiadomienie **Pamiętaj, aby w żądaniu uwzględnić nagłówek Content-Type ustawiony na wartość application/json**. Można zignorować ten komunikat i przejść do następnej sekcji. 
 
@@ -119,16 +116,20 @@ Wyzwalacz to konkretne zdarzenie, które uruchamia aplikację logiki. W tym samo
 Akcje to kroki, które są wykonywane, gdy wyzwalacz uruchomi przepływ pracy aplikacji logiki. W tym samouczku akcja polega na wysłaniu powiadomienia e-mail pochodzącego od dostawcy poczty e-mail. 
 
 1. Wybierz pozycję **Nowy krok**. Spowoduje to otwarcie okna **Wybierz akcję**.
+
 2. Wyszukaj nazwę **E-mail**.
+
 3. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. W tym samouczku jest używana usługa **Office 365 Outlook**. Kroki dla innych dostawców poczty e-mail są podobne. 
 
    ![Wybieranie łącznika dostawcy poczty e-mail](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
 
 4. Wybierz akcję **Wyślij wiadomość e-mail**. 
+
 5. W razie potrzeby zaloguj się do swojego konta e-mail. 
+
 6. Utwórz szablon wiadomości e-mail. 
-   * **Do**: wpisz adres e-mail, na który mają być wysyłane wiadomości e-mail z powiadomieniami. Na potrzeby tego samouczka użyj konta e-mail, które nadaje się do celów testowych. 
-   * **Temat** i **Treść**: wpisz tekst wiadomości e-mail. Za pomocą narzędzia do wybierania wybierz właściwości JSON w celu dołączenia zawartości dynamicznej opartej na danych zdarzenia.  
+   * **Do**: Wpisz adres e-mail, na który mają być wysyłane wiadomości e-mail z powiadomieniami. Na potrzeby tego samouczka użyj konta e-mail, które nadaje się do celów testowych. 
+   * **Temat** i **Treść**: Wpisz tekst wiadomości e-mail. Za pomocą narzędzia do wybierania wybierz właściwości JSON w celu dołączenia zawartości dynamicznej opartej na danych zdarzenia.  
 
    Przykładowy szablon wiadomości e-mail może wyglądać następująco:
 
@@ -161,22 +162,24 @@ W tej sekcji skonfigurujesz usługę IoT Hub pod kątem publikowania zdarzeń na
    ![Tworzenie nowej subskrypcji zdarzeń](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Utwórz subskrypcję zdarzeń, korzystając z następujących wartości: 
-    * **Typ zdarzenia**: usuń zaznaczenie pola wyboru Subskrybuj wszystkie typy zdarzeń i wybierz z menu pozycję **Urządzenie utworzone**.
-    * **Szczegóły punktu końcowego**: wybierz typ punktu końcowego **Webhook**, a następnie kliknij wybrany punkt końcowy, wklej adres URL skopiowany z aplikacji logiki i potwierdź wybór.
+    * **Typ zdarzenia**: Usuń zaznaczenie pola wyboru Subskrybuj wszystkie typy zdarzeń i wybierz z menu pozycję **Urządzenie utworzone**.
+    * **Szczegóły punktu końcowego**: Wybierz typ punktu końcowego **Web hook**, a następnie kliknij wybrany punkt końcowy, wklej adres URL skopiowany z aplikacji logiki i potwierdź wybór.
 
     ![wybieranie adresu url punktu końcowego](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-    * **Szczegóły subskrypcji zdarzeń**: wprowadź opisową nazwę, a następnie wybierz pozycję **Schemat usługi Event Grid**
-
-  Możesz teraz zapisać subskrypcję zdarzeń, aby otrzymywać powiadomienia o wszystkich urządzeniach tworzonych w centrum IoT Hub. Jednak w tym samouczku użyjemy opcjonalnych filtrów, aby odfiltrować konkretne urządzenia: 
-
-  * **Temat zaczyna się od**: wprowadź wartość `devices/Building1_`, aby odfiltrować zdarzenia urządzeń w budynku 1.
-  * **Temat kończy się na**: wprowadź wartość `_Temperature`, aby odfiltrować zdarzenia urządzeń związane z temperaturą.
+    * **Szczegóły subskrypcji zdarzeń**: Wprowadź opisową nazwę, a następnie wybierz pozycję **Schemat usługi Event Grid**
 
   Gdy wszystko będzie gotowe, formularz powinien wyglądać tak: 
 
     ![Przykładowy formularz subskrypcji zdarzeń](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
-    
+
+5. Możesz teraz zapisać subskrypcję zdarzeń, aby otrzymywać powiadomienia o wszystkich urządzeniach tworzonych w centrum IoT Hub. Jednak w tym samouczku użyjemy opcjonalnych filtrów, aby odfiltrować konkretne urządzenia. Wybierz pozycję **Dodatkowe funkcje** w górnej części formularza. 
+
+6. Utwórz następujące filtry:
+
+  * **Temat zaczyna się od**: Wprowadź wartość `devices/Building1_`, aby odfiltrować zdarzenia dotyczące urządzeń w budynku 1.
+  * **Temat kończy się na**: Wprowadź wartość `_Temperature`, aby odfiltrować zdarzenia dotyczące urządzeń związane z temperaturą.
+
 5. Wybierz pozycję **Utwórz**, aby zapisać subskrypcję zdarzeń.
 
 ## <a name="create-a-new-device"></a>Tworzenie nowego urządzenia

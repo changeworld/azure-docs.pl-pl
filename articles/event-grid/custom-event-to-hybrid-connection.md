@@ -1,21 +1,22 @@
 ---
-title: Wysyłanie zdarzeń niestandardowych dla usługi Azure Event Grid do połączenia hybrydowego | Microsoft Docs
+title: Wysyłanie zdarzeń niestandardowych do połączenia hybrydowego — Event Grid, interfejs wiersza polecenia platformy Azure
 description: Za pomocą usługi Azure Event Grid i interfejsu wiersza polecenia platformy Azure można opublikować temat i zasubskrybować dane zdarzenie. Dla punktu końcowego jest używane Połączenie hybrydowe.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/30/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 488f4e09e329ee41fb307dc3579e76b5378d3a9f
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec18
+ms.openlocfilehash: 1f66c75333b41cf399a72b801a7e362672744775
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747783"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099596"
 ---
-# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kierowanie zdarzeń niestandardowych do połączeń hybrydowych usługi Azure Relay za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Samouczek: Kierowanie zdarzeń niestandardowych do połączeń hybrydowych usługi Azure Relay za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. Połączenia hybrydowe usługi Azure Relay to jeden z obsługiwanych typów procedur obsługi zdarzeń. Połączeń hybrydowych można używać jako procedur obsługi zdarzeń, jeśli zachodzi potrzeba przetwarzania zdarzeń z aplikacji, które nie mają publicznego punktu końcowego. Te aplikacje mogą znajdować się w sieci korporacyjnej firmy. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Zdarzenia wysyła się do połączenia hybrydowego.
 

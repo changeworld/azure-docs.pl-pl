@@ -1,22 +1,22 @@
 ---
-title: Wdrażanie zadania usługi Azure Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure DevOps Services — samouczek
+title: Wdrażanie zadania usługi Azure Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure DevOps
 description: W tym artykule opisano sposób wdrażania zadania usługi Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure DevOps Services.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 07/10/2018
-ms.openlocfilehash: 0f729725a04b19a513ca92953e997b51e4558884
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7e9ce598dbd8987ab32747f5fa9d14646ed4ee71
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986269"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164079"
 ---
-# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Samouczek: wdrażanie zadania usługi Azure Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure Pipelines
+# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Samouczek: Wdrażanie zadania usługi Azure Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure Pipelines
 W tym samouczku opisano konfigurowanie ciągłej integracji i ciągłego wdrażania na potrzeby zadania usługi Azure Stream Analytics przy użyciu usługi Azure Pipelines. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -55,11 +55,11 @@ Udostępnij pliki źródłowe aplikacji w projekcie zespołowym usługi Azure De
 
 2. W widoku **Synchronizacja** w programie **Team Explorer** wybierz przycisk **Opublikuj repozytorium Git** w obszarze **Wypychanie do usługi Azure DevOps Services**.
 
-   ![Wypychanie repozytorium Git](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishgitrepo.png)
+   ![Przycisk Opublikuj repozytorium Git w obszarze Wypychanie do usługi Azure DevOps Services](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-git-repo-devops.png)
 
 3. Sprawdź swój adres e-mail i z listy rozwijanej **Domena usługi Azure DevOps Services** wybierz swoją organizację. Wprowadź nazwę repozytorium i wybierz polecenie **Publikuj repozytorium**.
 
-   ![Wypychanie repozytorium Git](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishcode.png)
+   ![Przycisk Publikuj repozytorium w obszarze Wypchnij repozytorium Git](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
     Opublikowanie repozytorium powoduje utworzenie nowego projektu w Twojej organizacji o takiej samej nazwie co lokalne repozytorium. Aby utworzyć repozytorium w istniejącym projekcie, kliknij pozycję **Zaawansowane** obok pola **Nazwa repozytorium**, a następnie wybierz projekt. Aby wyświetlić kod w przeglądarce, wybierz polecenie **Wyświetl w Internecie**.
  
@@ -73,33 +73,33 @@ Otwórz przeglądarkę internetową i przejdź do nowo utworzonego projektu w us
 
 1. Na karcie **Kompilowanie i wydawanie** wybierz pozycję **Kompilacje**, a następnie opcję **+Nowa**.  Wybierz kolejno pozycje **Azure DevOps Services Git** i **Kontynuuj**.
     
-    ![Wybierz źródło](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source.png)
+    ![Wybieranie źródła DevOps Git w usłudze Azure DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source-devops.png)
 
 2. W obszarze **Wybierz szablon** kliknij pozycję **Pusty proces**, aby rozpocząć od pustego potoku.
     
-    ![Wybieranie szablonu kompilacji](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
+    ![Wybieranie pozycji Pusty proces w opcjach szablonu w usłudze DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template-empty-process.png)
 
 3. W obszarze **Wyzwalacze** włącz ciągłą integrację, zaznaczając stan wyzwalacza **Włącz ciągłą integrację**.  Wybierz pozycję **Zapisz i dodaj do kolejki**, aby ręcznie uruchomić kompilację. 
     
-    ![Stan wyzwalacza](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger.png)
+    ![Włączanie stanu wyzwalania ciągłej integracji](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
 4. Kompilacje są również wyzwalane przez wypchnięcie lub zaewidencjonowanie. Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje**.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, musisz określić potok wydania, który wdraża aplikację w klastrze. Kliknij prawym przyciskiem myszy wielokropek obok potoku kompilacji i wybierz pozycję **Edytuj**.
 
 5.  W obszarze **Zadania** wprowadź wartość „Hostowana” w polu **Kolejka agentów**.
     
-    ![Wybieranie kolejki agentów](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue.png) 
+    ![Wybieranie kolejki agentów w menu Zadania](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
 6. W obszarze **Faza 1** kliknij znak **+** i dodaj zadanie **NuGet**.
     
-    ![Dodawanie zadania NuGet](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget.png)
+    ![Dodawanie zadania NuGet w kolejce agentów](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
 7. Rozwiń sekcję **Zaawansowane** i dodaj ścieżkę `$(Build.SourcesDirectory)\packages` w polu **Katalog docelowy**. Pozostałe wartości domyślne konfiguracji NuGet pozostaw bez zmian.
 
-   ![Konfigurowanie zadania NuGet](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-config.png)
+   ![Konfigurowanie zadania przywracania w rozwiązaniu NuGet](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
 8. W obszarze **Faza 1** kliknij znak **+** i dodaj zadanie **MSBuild**.
 
-   ![Dodawanie zadania MSBuild](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-msbuild-task.png)
+   ![Dodawanie zadania MSBuild w kolejce agentów](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
 9. Zmień wartość w polu **Argumenty MSBuild** na następującą:
 
@@ -107,11 +107,11 @@ Otwórz przeglądarkę internetową i przejdź do nowo utworzonego projektu w us
    /p:CompilerTaskAssemblyFile="Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll"  /p:ASATargetsFilePath="$(Build.SourcesDirectory)\packages\Microsoft.Azure.StreamAnalytics.CICD.1.0.0\build\StreamAnalytics.targets"
    ```
 
-   ![Konfigurowanie zadania MSBuild](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-msbuild.png)
+   ![Konfigurowanie zadania MSBuild w usłudze DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
 10. W obszarze **Faza 1** kliknij znak **+** i dodaj zadanie **Wdrożenie grupy zasobów platformy Azure**. 
     
-    ![Dodawanie zadania Wdrożenie grupy zasobów platformy Azure](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy.png)
+    ![Dodawanie zadania Wdrożenie grupy zasobów platformy Azure](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
 11. Rozwiń pozycję **Szczegóły platformy Azure** i wypełnij konfigurację następującymi informacjami:
     
@@ -124,16 +124,16 @@ Otwórz przeglądarkę internetową i przejdź do nowo utworzonego projektu w us
     |Parametry szablonu  | [ścieżka do Twojego rozwiązania]\bin\Debug\Deploy\\[nazwa Twojego projektu].JobTemplate.parameters.json   |
     |Zastąp parametry szablonu  | W polu tekstowym wpisz parametry szablonu, które mają zostać zastąpione. Na przykład –storageName fabrikam –adminUsername $(vmusername) –adminPassword $(password) –azureKeyVaultName $(fabrikamFibre). Ta właściwość jest opcjonalna, ale Twoja kompilacja będzie powodować błędy, jeśli kluczowe parametry nie zostaną zastąpione.    |
     
-    ![Ustawianie właściwości](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy-2.png)
+    ![Ustawianie właściwości dla wdrożenia grupy zasobów platformy Azure](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
 12. Kliknij przycisk **Zapisz i dodaj do kolejki**, aby przetestować potok kompilacji.
     
-    ![Ustawianie zastępowania parametrów](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-queue.png)
+    ![Zapisywanie kompilacji w usłudze DevOps i dodawanie jej do kolejki](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-and-queue-build.png)
 
 ### <a name="failed-build-process"></a>Niepowodzenie procesu kompilacji
 Jeśli parametry szablonu nie zostały zastąpione w zadaniu **Wdrożenie grupy zasobów platformy Azure** Twojego potoku kompilacji, mogą wystąpić błędy dotyczące parametrów wdrożenia mających wartość null. Wróć do potoku kompilacji i zastąp parametry mające wartość null, aby naprawić błąd.
 
-   ![Proces kompilacji nie powiódł się](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-process-failed.png)
+   ![Proces kompilowania usługi DevOps Stream Analytics zakończył się niepowodzeniem](./media/stream-analytics-tools-visual-studio-cicd-vsts/devops-build-process-failed.png)
 
 ### <a name="commit-and-push-changes-to-trigger-a-release"></a>Zatwierdzanie i wypychanie zmian w celu wyzwolenia wydania
 Upewnij się, że potok ciągłej integracji działa prawidłowo przez zaewidencjonowanie zmian kodu w usłudze Azure DevOps.    
@@ -142,11 +142,11 @@ Podczas pisania kodu zmiany są automatycznie śledzone przez program Visual Stu
 
 1. W widoku **Zmiany** programu Team Explorer dodaj komunikat opisujący aktualizację i zatwierdź wprowadzone zmiany.
 
-    ![Zatwierdzanie i wypychanie zmian](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes.png)
+    ![Zatwierdzanie zmian w repozytorium z poziomu programu Visual Studio](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-commit-changes-visual-studio.png)
 
 2. Wybierz ikonę paska stanu nieopublikowanych zmian lub widok synchronizacji w programie Team Explorer. Wybierz pozycję **Wypchnij**, aby zaktualizować kod w usłudze Azure DevOps Services.
 
-    ![Zatwierdzanie i wypychanie zmian](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-2.png)
+    ![Wypychanie zmian z poziomu programu Visual Studio](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-visual-studio.png)
 
 Wypychanie zmian do usługi Azure DevOps Services automatycznie wyzwala kompilację.  Po pomyślnym zakończeniu potoku kompilacji automatycznie tworzone jest wydanie, które rozpoczyna aktualizację zadania w klastrze.
 

@@ -7,14 +7,14 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 61b81602342b910a50c0cc6318746ec85a659a92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582336"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080593"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Samouczek: wdrażanie usługi Azure Digital Twins i konfigurowanie wykresu przestrzennego
+# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Samouczek: Wdrażanie usługi Azure Digital Twins i konfigurowanie wykresu przestrzennego
 
 Za pomocą usługi Azure Digital Twins możesz połączyć osoby, miejsca i urządzenia w spójny system przestrzenny. W tej serii samouczków przedstawiono sposób wykrywania zajętości pomieszczeń z optymalnymi warunkami temperatury i jakości powietrza za pomocą usługi Azure Digital Twins. 
 
@@ -164,6 +164,9 @@ Plik **provisionSample.yaml** zawiera następujące węzły:
 
 Zapisz i zamknij plik provisionSample.yaml. W następnym samouczku dodasz więcej informacji do tego pliku, a następnie przeprowadzisz aprowizację przykładowego budynku w usłudze Azure Digital Twins.
 
+> [!TIP]
+> Możesz wyświetlać i modyfikować wykres przestrzenny przy użyciu narzędzia [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer).
+
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -181,5 +184,5 @@ Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usu
 
 Aby dowiedzieć się, jak zaimplementować logikę niestandardową w celu monitorowania warunków w przykładowym budynku, przejdź do kolejnego samouczka w serii: 
 > [!div class="nextstepaction"]
-> [Samouczek: aprowizowanie budynku i monitorowanie warunków pracy](tutorial-facilities-udf.md)
+> [Samouczek: Aprowizowanie budynku i monitorowanie warunków pracy](tutorial-facilities-udf.md)
 

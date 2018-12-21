@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 8230c2ba8c7fdb10d7e37a317d4eeb5abb120d60
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b0c8d46e74eec4bad7b7e664682c97eb0f0068b6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868722"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098730"
 ---
-# <a name="_Toc395809351"></a>Samouczek platformy ASP.NET MVC: Opracowywanie aplikacji internetowych za pomocą usługi Azure Cosmos DB
+# <a name="_Toc395809351"></a>Samouczek platformy ASP.NET MVC: Opracowywanie aplikacji internetowych w usłudze Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -414,9 +414,9 @@ Dodajmy trochę kodu do elementów DBRepository i ItemController w usłudze Azur
    
     Ten kod wywołuje element DocumentDBRepository i używa metody CreateItemAsync, aby utrwalić nowy element zadania do zrobienia w bazie danych. 
    
-    **Uwaga dotycząca zabezpieczeń**: atrybut **ValidateAntiForgeryToken** jest tu używany do ochrony aplikacji przed atakami polegającymi na fałszerstwie żądania międzywitrynowego. Do tego jest wymagane nie tylko dodanie tego atrybutu, lecz także obsługa tokenu zapobiegającego fałszerstwu przez widoki. Aby uzyskać więcej informacji na ten temat i przykłady poprawnej implementacji, zobacz [Preventing Cross-Site Request Forgery][Preventing Cross-Site Request Forgery] (Zapobieganie fałszerstwom żądania międzywitrynowego). Kod źródłowy dostępny w usłudze [GitHub][GitHub] zawiera pełną implementację.
+    **Uwagi dotyczące zabezpieczeń**: Atrybut **ValidateAntiForgeryToken** jest tu używany do ochrony aplikacji przed atakami polegającymi na fałszerstwie żądania międzywitrynowego. Do tego jest wymagane nie tylko dodanie tego atrybutu, lecz także obsługa tokenu zapobiegającego fałszerstwu przez widoki. Aby uzyskać więcej informacji na ten temat i przykłady poprawnej implementacji, zobacz [Preventing Cross-Site Request Forgery][Preventing Cross-Site Request Forgery] (Zapobieganie fałszerstwom żądania międzywitrynowego). Kod źródłowy dostępny w usłudze [GitHub][GitHub] zawiera pełną implementację.
    
-    **Uwaga dotycząca zabezpieczeń**: korzystamy również z atrybutu **Bind** dla parametru metody, aby ułatwić ochronę przed atakami polegającymi na przesyłaniu zmodyfikowanych akcji POST. Aby poznać więcej szczegółów, zobacz [Basic CRUD Operations in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC] (Podstawowe operacje CRUD na platformie ASP.NET MVC).
+    **Uwagi dotyczące zabezpieczeń**: Korzystamy również z atrybutu **Bind** dla parametru metody, aby ułatwić ochronę przed atakami polegającymi na przesyłaniu zmodyfikowanych akcji POST. Aby poznać więcej szczegółów, zobacz [Basic CRUD Operations in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC] (Podstawowe operacje CRUD na platformie ASP.NET MVC).
 
 Teraz kod wymagany do dodawania nowych elementów do bazy jest kompletny.
 
@@ -545,8 +545,8 @@ Gratulacje! Udało Ci się utworzyć Twoją pierwszą aplikację internetową dl
 Aby dodać kolejne funkcje do aplikacji, zapoznaj się z interfejsami API dostępnymi w [bibliotece usługi Azure Cosmos DB dla platformy .NET](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet). Możesz ją także współtworzyć za pomocą usługi [GitHub][GitHub]. 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
+[Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app

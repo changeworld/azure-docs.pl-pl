@@ -1,5 +1,5 @@
 ---
-title: Samouczek usługi Azure Container Service — skalowanie aplikacji
+title: (PRZESTARZAŁE) Samouczek usługi Azure Container Service — skalowanie aplikacji
 description: Samouczek usługi Azure Container Service — skalowanie aplikacji
 services: container-service
 author: dlepow
@@ -9,16 +9,19 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b16682535e7311648e832286e1e876ee0e694712
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429886"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993078"
 ---
-# <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Skalowanie zasobników i infrastruktury rozwiązania Kubernetes
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(PRZESTARZAŁE) Skalowanie zasobników i infrastruktury rozwiązania Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby poznać zaktualizowaną wersję tego samouczka korzystającą z usługi Azure Kubernetes Service, zobacz [Samouczek: Skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Jeśli wykonujesz kolejno zadania z samouczków, masz już działający klaster Kubernetes w usłudze Azure Container Service z wdrożoną aplikacją do głosowania platformy Azure. 
 

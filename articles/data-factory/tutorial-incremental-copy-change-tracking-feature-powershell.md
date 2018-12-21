@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 246b423e69fa8fb73db45f44fa17c1bc65407681
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: be08740024e87179a48f3dfd6f8406fa6a2bbca6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090729"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963525"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem informacji o śledzeniu zmian 
 W tym samouczku utworzysz fabrykę usługi Azure Data Factory z potokiem służącym do ładowania danych przyrostowych na podstawie informacji o **śledzeniu zmian** w źródłowej bazie danych Azure SQL Database do magazynu Azure Blob Storage.  
@@ -189,7 +189,7 @@ Pamiętaj o następujących kwestiach:
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli **współautora** lub **właściciela** albo **administratorem** subskrypcji platformy Azure.
-* Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+* Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
@@ -233,7 +233,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 ### <a name="create-azure-sql-database-linked-service"></a>Utwórz połączoną usługę Azure SQL Database.
 W tym kroku opisano sposób łączenia bazy danych Azure SQL Database z fabryką danych.
 
-1. Przed zapisaniem pliku utwórz plik JSON o nazwie **AzureSQLDatabaseLinkedService.json** w folderze **C:\ADFTutorials\IncCopyChangeTrackingTutorial** o następującej zawartości: zastąp wartości **&lt;serwer&gt;, &lt;nazwa bazy danych&gt;, &lt;identyfikator użytkownika&gt; i &lt;hasło&gt;** nazwą używanego serwera Azure SQL Server, nazwą bazy danych, identyfikatorem użytkownika i hasłem. 
+1. W folderze **C:\ADFTutorials\IncCopyMultiTableTutorial** utwórz plik JSON o nazwie **AzureSQLDatabaseLinkedService.json** z następującą zawartością: Przed zapisaniem pliku zamień parametry **&lt;server&gt;, &lt;database **, &lt;user id&gt; i &lt;password&gt;** na nazwę swojego serwera Azure SQL Server, nazwę bazy danych, identyfikator użytkownika i hasło. 
 
     ```json
     {
@@ -368,7 +368,7 @@ W tym kroku utworzysz zestaw danych służący do przechowywania wartości wersj
     ```
 
     Możesz utworzyć tabelę table_store_ChangeTracking_version jako część wymagań wstępnych.
-2.  Uruchom polecenie cmdlet Set-AzureRmDataFactoryV2Dataset, aby utworzyć zestaw danych: SinkDataset
+2.  Uruchom polecenie cmdlet Set-AzureRmDataFactoryV2Dataset, aby utworzyć zestaw danych: WatermarkDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -434,7 +434,7 @@ W tym kroku utworzysz potok z działaniem kopiowania, które kopiuje wszystkie d
    ```
  
 ### <a name="run-the-full-copy-pipeline"></a>Uruchamianie potoku pełnego kopiowania
-Uruchom potok **IncrementalCopyPipeline** za pomocą polecenia cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**. 
+Uruchom potok **FullCopyPipeline** za pomocą polecenia cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**. 
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
@@ -445,26 +445,26 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGr
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Kliknij pozycję **Wszystkie usługi**, przeprowadź wyszukiwanie za pomocą słowa kluczowego `data factories`, a następnie wybierz pozycję **Fabryki danych**. 
 
-    ![Menu fabryk danych](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-data-factories-menu-1.png)
+    ![Menu fabryk danych](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
 3. Wyszukaj **używaną fabrykę danych** na liście fabryk danych, a następnie wybierz ją, aby uruchomić stronę Fabryka danych. 
 
-    ![Wyszukiwanie fabryki danych](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-search-data-factory-2.png)
+    ![Wyszukiwanie fabryki danych](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
 4. Na stronie fabryki danych kliknij kafelek **Monitorowanie i zarządzanie**. 
 
-    ![Kafelek Monitorowanie i zarządzanie](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-monitor-manage-tile-3.png)    
+    ![Kafelek Monitorowanie i zarządzanie](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
 5. Na osobnej karcie zostanie otwarta **aplikacja Integracja danych**. Wyświetlone zostaną wszystkie **uruchomienia potoków** wraz z ich stanami. Zwróć uwagę, że w poniższym przykładzie stan uruchomienia potoku to **Powodzenie**. Klikając link w kolumnie **Parametry**, można sprawdzić parametry przekazywane do potoku. Jeśli wystąpił błąd, w kolumnie **Błąd** zostanie wyświetlony link. Kliknij link w kolumnie **Akcje**. 
 
-    ![Uruchomienia potoków](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-pipeline-runs-4.png)    
+    ![Uruchomienia potoków](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. Po kliknięciu linków w kolumnie **Akcje** zostanie wyświetlona następująca strona, na której będą się znajdować wszystkie **uruchomienia działań** dla potoku. 
 
-    ![Uruchomienia działania](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-activity-runs-5.png)
+    ![Uruchomienia działania](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
 7. Aby powrócić do widoku **Uruchomienia potoków**, kliknij pozycję **Potoki** w sposób przedstawiony na powyższym obrazie. 
 
 
 ### <a name="review-the-results"></a>Sprawdzanie wyników
 Zostanie wyświetlony plik o nazwie `incremental-<GUID>.txt` w folderze `incchgtracking` kontenera `adftutorial`. 
 
-![Plik wyjściowy z pełnego kopiowania](media\tutorial-incremental-copy-change-tracking-feature-powershell\full-copy-output-file.png)
+![Plik wyjściowy z pełnego kopiowania](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
 
 Ten plik powinien zawierać dane z bazy danych Azure SQL Database:
 
@@ -623,7 +623,7 @@ W tym kroku utworzysz potok z następującymi działaniami, który będzie okres
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Uruchamianie potoku kopiowania przyrostowego
-Uruchom potok: **IncrementalCopyPipeline** za pomocą polecenia cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**. 
+Uruchom potok **IncrementalCopyPipeline** za pomocą polecenia cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**. 
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
@@ -633,16 +633,16 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Res
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Monitorowanie potoku kopiowania przyrostowego
 1. Na karcie **aplikacja Integracja danych** odśwież widok **Uruchomienia potoków**. Upewnij się, że na liście widoczny jest potok IncrementalCopyPipeline. Kliknij link w kolumnie **Akcje**.  
 
-    ![Uruchomienia potoków](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-pipeline-runs-6.png)    
+    ![Uruchomienia potoków](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. Po kliknięciu linków w kolumnie **Akcje** zostanie wyświetlona następująca strona, na której będą się znajdować wszystkie **uruchomienia działań** dla potoku. 
 
-    ![Uruchomienia działania](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-activity-runs-7.png)
+    ![Uruchomienia działania](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
 3. Aby powrócić do widoku **Uruchomienia potoków**, kliknij pozycję **Potoki** w sposób przedstawiony na powyższym obrazie. 
 
 ### <a name="review-the-results"></a>Sprawdzanie wyników
 W folderze `incchgtracking` kontenera `adftutorial` widoczny będzie drugi plik. 
 
-![Plik wyjściowy z kopii przyrostowej](media\tutorial-incremental-copy-change-tracking-feature-powershell\incremental-copy-output-file.png)
+![Plik wyjściowy z kopii przyrostowej](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
 
 Ten plik powinien zawierać tylko dane przyrostowe z bazy danych Azure SQL Database. Rekord z wartością `U` znajduje się w zaktualizowanym wierszu w bazie danych, a rekord z wartością `I` to jeden dodany wiersz. 
 
@@ -650,7 +650,7 @@ Ten plik powinien zawierać tylko dane przyrostowe z bazy danych Azure SQL Datab
 1,update,10,2,U
 6,new,50,1,I
 ```
-Pierwsze trzy kolumny to zmienione dane z tabeli data_source_table. Ostatnie dwie kolumny to metadane z tabeli systemowej śledzenia zmian. Czwarta kolumna to wartość parametru SYS_CHANGE_VERSION dla każdego zmienionego wiersza. Piąta kolumna to wartość operacji: U — aktualizacja, I — wstawienie.  Aby uzyskać szczegółowe informacje o śledzeniu zmian, zobacz [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
+Pierwsze trzy kolumny to zmienione dane z tabeli data_source_table. Ostatnie dwie kolumny to metadane z tabeli systemowej śledzenia zmian. Czwarta kolumna to wartość parametru SYS_CHANGE_VERSION dla każdego zmienionego wiersza. Piąta kolumna to wartość operacji:  U — aktualizacja, I — wstawienie.  Aby uzyskać szczegółowe informacje o śledzeniu zmian, zobacz [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
 
 ```
 ==================================================================

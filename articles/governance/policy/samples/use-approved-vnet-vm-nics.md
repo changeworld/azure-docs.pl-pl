@@ -1,5 +1,5 @@
 ---
-title: Przykładowe zasady usługi Azure Policy — używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
+title: Przykład — Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
 description: Te przykładowe zasady wymagają używania zatwierdzonej sieci wirtualnej przez interfejsy sieciowe.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 2a0b3ac82d6ff8e7c6df850e5303c342cc269834
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9e99e6614a5ddfb1f692e5db99c95b3907051fa5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959176"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308807"
 ---
 # <a name="use-approved-vnet-for-vm-network-interfaces"></a>Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)

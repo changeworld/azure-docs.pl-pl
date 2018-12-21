@@ -1,21 +1,21 @@
 ---
-title: Samouczek — automatyzowanie kompilacji obrazu kontenera w ramach aktualizacji obrazu podstawowego za pomocą usługi Azure Container Registry Tasks
-description: Z tego samouczka dowiesz się, jak skonfigurować zadanie w celu automatycznego wyzwalania kompilacji obrazu kontenera w chmurze po zaktualizowaniu obrazu podstawowego.
+title: Samouczek — automatyzowanie kompilacji obrazu kontenera w ramach aktualizacji obrazu podstawowego — zadania usługi Azure Container Registry
+description: Z tego samouczka dowiesz się, jak skonfigurować zadanie usługi Azure Container Registry w celu automatycznego wyzwalania kompilacji obrazu kontenera w chmurze po zaktualizowaniu obrazu podstawowego.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 54e8892787fa2b7b093609ee5d09f3a87e103411
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: b3d8c3aea4955d6f95ead69d5bed147cc486e7c8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856585"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254041"
 ---
-# <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-tasks"></a>Samouczek: automatyzowanie kompilacji obrazu w ramach aktualizacji obrazu podstawowego za pomocą usługi Azure Container Registry Tasks
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w ramach aktualizacji obrazu podstawowego w usłudze Azure Container Registry 
 
 Usługa ACR Tasks obsługuje automatyczne wykonywanie kompilacji podczas aktualizacji obrazu podstawowego kontenera, takich jak wprowadzanie poprawek systemu operacyjnego lub platformy aplikacji w jednym z obrazów podstawowych. Z tego samouczka dowiesz się, jak w usłudze ACR Tasks utworzyć zadanie, które wyzwala kompilację w chmurze po wypchnięciu obrazu podstawowego kontenera do rejestru.
 

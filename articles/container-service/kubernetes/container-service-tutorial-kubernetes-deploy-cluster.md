@@ -1,24 +1,27 @@
 ---
-title: Samouczek usługi Azure Container Service — wdrażanie klastra
+title: (PRZESTARZAŁE) Samouczek usługi Azure Container Service — wdrażanie klastra
 description: Samouczek usługi Azure Container Service — wdrażanie klastra
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8403e5d8dd3bad07e412b08709dcb8c28201bcdf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d77396cdcaa3f2f291aff52dfd1e6793aee4039c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434428"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997858"
 ---
-# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Wdrażanie klastra Kubernetes w usłudze Azure Container Service
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(PRZESTARZAŁE) Wdrażanie klastra Kubernetes w usłudze Azure Container Service
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby poznać zaktualizowaną wersję tego samouczka korzystającą z usługi Azure Kubernetes Service, zobacz [Samouczek: Wdrażanie klastra usługi Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Usługa Kubernetes zapewnia rozproszoną platformę dla konteneryzowanych aplikacji. Usługa Azure Container Service umożliwia łatwe i szybkie aprowizowanie produkcyjnego klastra Kubernetes. W tym samouczku (część trzecia z siedmiu) wdrażany jest klaster Kubernetes usługi Azure Container Service. Wykonano następujące czynności:
 

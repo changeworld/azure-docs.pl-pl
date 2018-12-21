@@ -1,20 +1,20 @@
 ---
-title: Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i grafu interfejsu Gremlin API usługi Azure Cosmos DB | Microsoft Docs
+title: Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i grafu interfejsu Gremlin API usługi Azure Cosmos DB
 description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i grafu interfejsu Gremlin API usługi Azure Cosmos DB
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: c920fd55442897688fab8c88e599fe4837667cf9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0e870b00cefc235a99c084c5a405b69c07187907
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019611"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956673"
 ---
-# <a name="azure-cosmos-db-create-a-gremlin-api-account-using-azure-cli"></a>Azure Cosmos DB: tworzenie konta interfejsu Gremlin API przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="azure-cosmos-db-create-a-gremlin-api-account-using-azure-cli"></a>Usługa Azure Cosmos DB tworzenie konta interfejsu Gremlin API przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Ten przykładowy skrypt interfejsu wiersza polecenia tworzy konto, bazę danych i graf interfejsu Gremlin API usługi Azure Cosmos DB.
 

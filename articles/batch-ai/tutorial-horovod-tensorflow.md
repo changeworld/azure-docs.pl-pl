@@ -9,14 +9,17 @@ ms.topic: tutorial
 ms.date: 09/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: de19b20865127fd37cd7bc1ac854288a95a68091
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 45255845d8645391ee33471830ac2ef27870a40d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058134"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408633"
 ---
-# <a name="tutorial-train-a-distributed-model-with-horovod"></a>Samouczek: szkolenie modelu rozproszonego przy użyciu struktury Horovod
+# <a name="tutorial-train-a-distributed-model-with-horovod"></a>Samouczek: Szkolenie modelu rozproszonego przy użyciu struktury Horovod
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ten samouczek przedstawia szkolenie rozproszonego modelu uczenia głębokiego uruchamiane równolegle na wielu węzłach w klastrze usługi Batch AI. Batch AI to zarządzana usługa szkolenia modeli uczenia maszynowego i sztucznej inteligencji ze skalowaniem w klastrach procesorów GPU platformy Azure. 
 

@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: automatyzowanie kompilacji obrazu kontenera za pomocą usługi Azure Container Registry Tasks'
-description: Z tego samouczka dowiesz się, jak skonfigurować zadanie w celu automatycznego wyzwalania kompilacji obrazu kontenera w chmurze, gdy zatwierdzasz kod źródłowy do repozytorium Git.
+title: Samouczek — Automatyzowanie kompilacji obrazu kontenera — Azure Container Registry Tasks
+description: Z tego samouczka dowiesz się, jak skonfigurować usługę Azure Container Registry Task w celu automatycznego wyzwalania kompilacji obrazu kontenera w chmurze, gdy zatwierdzasz kod źródłowy do repozytorium Git.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 27dbee3b292a9139ce53ef7b09a4cceba56082e4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 3dc602589dc3a909ea2a2cf2925d37df0a97605b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857231"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436249"
 ---
-# <a name="tutorial-automate-container-image-builds-with-azure-container-registry-tasks"></a>Samouczek: automatyzowanie kompilacji obrazu kontenera za pomocą usługi Azure Container Registry Tasks
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w chmurze po zatwierdzeniu kodu źródłowego
 
 Oprócz [szybkiego zadania](container-registry-tutorial-quick-task.md) usługa ACR Tasks obsługuje automatyczne kompilacje obrazu kontenera platformy Docker za pomocą *zadań kompilacji*. W tym samouczku używany jest interfejs wiersza polecenia platformy Azure do utworzenia zadania, które automatycznie wyzwoli kompilacje obrazu w chmurze po zatwierdzeniu kodu źródłowego do repozytorium Git.
 
@@ -41,7 +41,7 @@ W samouczku założono, że zostały już wykonane kroki z [poprzedniego samoucz
 
 ### <a name="container-registry"></a>Rejestr kontenerów
 
-Aby ukończyć ten samouczek, w Twojej subskrypcji platformy Azure musisz posiadać rejestr kontenerów platformy Azure. Jeśli potrzebujesz rejestru, zobacz [poprzedni samouczek](container-registry-tutorial-quick-task.md) lub [Szybki start: tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
+Aby ukończyć ten samouczek, w Twojej subskrypcji platformy Azure musisz posiadać rejestr kontenerów platformy Azure. Jeśli potrzebujesz rejestru, zobacz [poprzedni samouczek](container-registry-tutorial-quick-task.md) lub podręcznik [Szybki start: tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
 
 ## <a name="overview-of-acr-tasks"></a>Omówienie usługi ACR Tasks
 
@@ -155,7 +155,7 @@ $ az acr task create \
           "branch": "master",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
-          "sourceControlType": "Github"
+          "sourceControlType": "GitHub"
         },
         "sourceTriggerEvents": [
           "commit"

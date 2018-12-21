@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek NoSQL: zestaw Java SDK interfejsu SQL API dla usługi Azure Cosmos DB'
+title: 'Samouczek NoSQL: Zestaw Java SDK interfejsu API SQL dla usługi Azure Cosmos DB'
 description: Samouczek NoSQL, który pokazuje tworzenie bazy danych w trybie online i aplikacji konsolowej Java przy użyciu interfejsu API SQL dla usługi Azure Cosmos DB. Usługa Azure SQL jest bazą danych NoSQL dla formatu JSON.
 keywords: nosql tutorial, online database, java console application
 services: cosmos-db
@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 1c50b1bc362a66b17097575336bcb2c9bd4856ca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0bab289fedbbceb2d5cb763bd0f55e455bb60a29
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866087"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093029"
 ---
-# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: tworzenie aplikacji konsolowej w języku Java dla interfejsu API SQL
+# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: Tworzenie aplikacji konsolowej w języku Java dla interfejsu API SQL
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -56,7 +56,7 @@ Upewnij się, że masz:
 
 * [Git](https://git-scm.com/downloads).
 * [Zestaw Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks).
-* [Maven](http://maven.apache.org/download.cgi).
+* [Maven](https://maven.apache.org/download.cgi).
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Krok 1. Tworzenie konta usługi Azure Cosmos DB
 Utwórzmy konto usługi Azure Cosmos DB. Jeśli masz już konto, którego chcesz użyć, możesz przejść od razu do kroku [Klonowanie projektu GitHub](#GitClone). Jeśli używasz emulatora usługi Azure Cosmos DB, wykonaj czynności opisane w temacie [Emulator usługi Azure Cosmos DB](local-emulator.md), aby skonfigurować emulator, a następnie przejdź do kroku [Klonowanie projektu GitHub](#GitClone).
@@ -140,7 +140,7 @@ Dokument można utworzyć za pomocą metody [createDocument](/java/api/com.micro
 
 ![Diagram pokazujący hierarchiczną relację między kontem, bazą danych w trybie online, kolekcją i dokumentami używanymi przez samouczek NoSQL do tworzenia aplikacji konsolowej Java](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Krok 7. Wykonanie zapytania względem zasobów usługi Azure Cosmos DB
+## <a id="Query"></a>Krok 7. Wykonywanie zapytania względem zasobów usługi Azure Cosmos DB
 Usługa Azure Cosmos DB obsługuje zaawansowane [zapytania](how-to-sql-query.md) względem dokumentów JSON przechowywanych w każdej kolekcji.  Następujący przykładowy kod przedstawia sposób wykonania zapytania względem dokumentów w usłudze Azure Cosmos DB przy użyciu składni SQL za pomocą metody [queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments).
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -174,7 +174,7 @@ Usunięcie utworzonej bazy danych usunie bazę danych i wszystkie zasoby podrzę
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>Krok 11. Uruchamianie całej aplikacji konsolowej Java!
+## <a id="Run"></a>Krok 11. Uruchamianie całej aplikacji konsolowej Java.
 Aby uruchomić aplikację z poziomu konsoli, przejdź do folderu projektu i przeprowadź kompilację za pomocą narzędzia Maven:
     
     mvn package

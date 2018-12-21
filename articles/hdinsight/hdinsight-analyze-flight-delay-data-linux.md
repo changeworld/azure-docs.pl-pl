@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wykonywanie operacji wyodrębniania, przekształcania i ładowania (ETL) przy użyciu oprogramowania Hive w usłudze HDInsight — Azure '
+title: 'Samouczek: Wykonywanie operacji wyodrębniania, przekształcania i ładowania (ETL) przy użyciu oprogramowania Hive w usłudze HDInsight — Azure '
 description: Dowiedz się, jak wyodrębnić dane z nieprzetworzonego zestawu danych CSV, przekształcić je za pomocą oprogramowania Hive w usłudze HDInsight, a następnie załadować przekształcone dane do bazy danych Azure SQL Database za pomocą narzędzia Apache Sqoop.
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: fa84d5a09eab56dc01a6e841323ca11d12886582
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c0123008e5b15d6d3edce27245a7ed1fa6c431e7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495508"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015059"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Samouczek: wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight
 
 W tym samouczku użyjesz nieprzetworzonego pliku danych CSV, zaimportujesz go do magazynu klastra usługi HDInsight i przekształcisz dane za pomocą oprogramowania [Apache Hive](https://hive.apache.org/) w usłudze Azure HDInsight. Przekształcone dane można załadować do bazy danych Azure SQL Database przy użyciu narzędzia [Apache Sqoop](http://sqoop.apache.org/). W tym artykule zostaną użyte publicznie dostępne dane lotów.
 
@@ -315,7 +315,7 @@ W tym samouczku pokazano, jak wykonywać operacje wyodrębniania, przekształcan
 
 Aby poznać więcej sposobów pracy z danymi w usłudze HDInsight, zobacz następujące artykuły:
 
-* [Samouczek: wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
+* [Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
 * [Korzystanie z programu Apache Hive z usługą HDInsight][hdinsight-use-hive]
 * [Korzystanie z programu Apache Pig z usługą HDInsight][hdinsight-use-pig]
 * [Opracowywanie programów MapReduce w języku Java dla usługi Apache Hadoop w usłudze HDInsight][hdinsight-develop-mapreduce]
@@ -325,13 +325,13 @@ Aby poznać więcej sposobów pracy z danymi w usłudze HDInsight, zobacz nastę
 
 
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 
 [rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md

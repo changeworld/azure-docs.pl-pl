@@ -1,19 +1,19 @@
 ---
-title: Importowanie danych do użycia z interfejsem API tabel usługi Azure Cosmos DB
-description: Dowiedz się, jak zaimportować dane do użycia z interfejsem API tabel usługi Azure Cosmos DB.
-services: cosmos-db
+title: Migrowanie istniejących danych do konta interfejsu API tabel w usłudze Azure Cosmos DB
+description: Dowiedz się, jak migrować lub importować dane lokalne lub w chmurze na konto interfejsu API tabeli platformy Azure w usłudze Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.topic: tutorial
-ms.date: 11/28/2017
+ms.date: 12/07/2017
 ms.author: sngun
-ms.openlocfilehash: d277df3fa98564ebec92e548fa070e92cf76f200
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: b2256f16d284cb079231e271a7fc06c25c381c8a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874043"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137688"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrowanie danych na konto interfejsu API tabel w usłudze Azure Cosmos DB
 
@@ -28,9 +28,9 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Zwiększenie przepływności**: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczego kontenera lub dla zestawu kontenerów. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
+* **Zwiększanie przepływności:** czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczego kontenera lub dla zestawu kontenerów. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
 
-* **Utworzenie zasobów usługi Azure Cosmos DB:** przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal. W przypadku migracji do konta usługi Azure Cosmos DB, która ma przepływność poziomu bazy danych, pamiętaj o podaniu klucza partycji podczas tworzenia tabel usługi Azure Cosmos DB.
+* **Tworzenie zasobów usługi Azure Cosmos DB:** przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal. W przypadku migracji do konta usługi Azure Cosmos DB, która ma przepływność poziomu bazy danych, pamiętaj o podaniu klucza partycji podczas tworzenia tabel usługi Azure Cosmos DB.
 
 ## <a name="data-migration-tool"></a>Narzędzie do migracji danych
 
@@ -97,7 +97,7 @@ Oto przykład wiersza polecenia przedstawiający sposób importowania danych z u
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Przykładowe polecenie: źródłem jest wersja zapoznawcza interfejsu API tabel usługi Azure Cosmos DB
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Przykładowe polecenie: źródłem jest interfejs API tabel w usłudze Azure Cosmos DB
 
 Oto przykład wiersza polecenia przedstawiający sposób importowania danych z wersji zapoznawczej interfejsu API tabel do wersji ogólnie dostępnej interfejsu API tabel:
 

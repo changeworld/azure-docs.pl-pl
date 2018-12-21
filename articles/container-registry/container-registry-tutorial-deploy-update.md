@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący usługi Azure Container Registry — wypychanie zaktualizowanego obrazu do wdrożeń regionalnych
+title: Samouczek — wypychanie zaktualizowanego obrazu kontenera do wdrożeń regionalnych aplikacji platformy Azure
 description: Wypchnij zmodyfikowany obraz Docker do usługi Azure Container Registry z replikacją geograficzną, a następnie zobacz zmiany automatycznie wdrażane w aplikacjach internetowych działających w wielu regionach. Trzecia część trzyczęściowej serii.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 96e46c84039b7c72d5419972c7a5a401eab64659
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855514"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256625"
 ---
-# <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Samouczek: wypychanie zaktualizowanego obrazu do wdrożeń regionalnych
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Samouczek: Wypychanie zaktualizowanego obrazu kontenera do rejestru kontenerów z replikacją geograficzną dla wdrożeń regionalnych aplikacji internetowych
 
 Niniejszy samouczek jest trzecią częścią trzyczęściowej serii. W [poprzednim samouczku](container-registry-tutorial-deploy-app.md) skonfigurowano replikację geograficzną dla dwóch różnych regionalnych wdrożeń aplikacji internetowej. W tym samouczku najpierw zmodyfikujesz aplikację, a następnie utworzysz nowy obraz kontenera i wypchniesz go do rejestru replikowanego geograficznie. Na koniec wyświetlisz zmianę, wdrożoną automatycznie przez elementy webhook usługi Azure Container Registry w obu wystąpieniach aplikacji internetowej.
 

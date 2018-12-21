@@ -14,19 +14,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 81478ace72a538f4970e114cd704fd64ceb94aa6
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: fbbc624bbc3d20a70a54c50296f5b74634002a67
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344901"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409075"
 ---
-# <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Samouczek: kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem witryny Azure Portal
+# <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Samouczek: Kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem witryny Azure Portal
 
-Platforma Azure automatycznie domyślnie kieruje ruchem między wszystkimi podsieciami w sieci wirtualnej. Możesz tworzyć własne trasy zastępujące domyślne trasy platformy Azure. Możliwość tworzenia niestandardowych tras jest przydatna, jeśli na przykład chcesz kierować ruchem między podsieciami za pomocą wirtualnego urządzenia sieciowego (NVA). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Platforma Azure domyślnie kieruje ruchem między wszystkimi podsieciami w sieci wirtualnej. Możesz tworzyć własne trasy zastępujące domyślne trasy platformy Azure. Możliwość tworzenia niestandardowych tras jest przydatna, jeśli na przykład chcesz kierować ruchem między podsieciami za pomocą wirtualnego urządzenia sieciowego (NVA). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie tabeli tras
@@ -41,227 +41,356 @@ Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza p
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure. 
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
-2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Tabela tras**.
-3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Tabela tras**.
 
-    |Ustawienie|Wartość|
-    |---|---|
-    |Name (Nazwa)|myRouteTablePublic|
-    |Subskrypcja| Wybierz subskrypcję.|
-    |Grupa zasobów | Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.|
-    |Lokalizacja|Wschodnie stany USA|
- 
-    ![Tworzenie tabeli tras](./media/tutorial-create-route-table-portal/create-route-table.png) 
+1. W obszarze **Tworzenie tabeli tras** wprowadź lub wybierz następujące informacje:
+
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | Name (Nazwa) | Wpisz *myRouteTablePublic*. |
+    | Subskrypcja | Wybierz subskrypcję. |
+    | Grupa zasobów | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk *OK*. |
+    | Lokalizacja | Pozostaw wartość domyślną **Wschodnie stany USA**.
+    | Propagowanie tras BGP | Pozostaw wartość domyślną **Włączone**. |
+
+1. Wybierz pozycję **Utwórz**.
 
 ## <a name="create-a-route"></a>Tworzenie trasy
 
-1. W polu *Szukaj zasobów, usług i dokumentów* w górnej części portalu rozpocznij wpisywanie ciągu *myRouteTablePublic*. Gdy pozycja **myRouteTablePublic** pojawi się w wynikach wyszukiwania, wybierz ją.
-2. W obszarze **USTAWIENIA** wybierz pozycję **Trasy**, a następnie wybierz pozycję **+ Dodaj**, jak pokazano na poniższym obrazie:
+1. Na pasku wyszukiwania portalu wpisz *myRouteTablePublic*.
 
-    ![Dodawanie trasy](./media/tutorial-create-route-table-portal/add-route.png) 
- 
-3. W obszarze **Dodaj trasę** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
+1. Gdy pozycja **myRouteTablePublic** pojawi się w wynikach wyszukiwania, wybierz ją.
 
-    |Ustawienie|Wartość|
-    |---|---|
-    |Nazwa trasy|ToPrivateSubnet|
-    |Prefiks adresu| 10.0.1.0/24|
-    |Typ następnego skoku | Wybierz pozycję **Urządzenie wirtualne**.|
-    |Adres następnego skoku| 10.0.2.4|
+1. W tabeli **myRouteTablePublic** w obszarze **Ustawienia** wybierz pozycję **Trasy** > **+ Dodaj**.
+
+    ![Dodawanie trasy](./media/tutorial-create-route-table-portal/add-route.png)
+
+1. W obszarze **Dodawanie trasy** wprowadź lub wybierz następujące informacje:
+
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | Nazwa trasy | Wpisz *ToPrivateSubnet*. |
+    | Prefiks adresu | Wpisz *10.0.1.0/24*. |
+    | Typ następnego skoku | Wybierz pozycję **Urządzenie wirtualne**. |
+    | Adres następnego skoku | Wpisz *10.0.2.4*. |
+
+1. Kliknij przycisk **OK**.
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
 
-Zanim skojarzysz tabelę tras z podsiecią, musisz utworzyć sieć wirtualną i podsieć:
+Zanim skojarzysz tabelę tras z podsiecią, musisz utworzyć sieć wirtualną i podsieć.
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
-2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieć wirtualna**.
-3. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
+### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-    |Ustawienie|Wartość|
-    |---|---|
-    |Name (Nazwa)|myVirtualNetwork|
-    |Przestrzeń adresowa| 10.0.0.0/16|
-    |Subskrypcja | Wybierz subskrypcję.|
-    |Grupa zasobów|Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
-    |Lokalizacja|Wybierz pozycję *Wschodnie stany USA*|
-    |Nazwa podsieci|Public|
-    |Zakres adresów|10.0.0.0/24|
-    
-4. W polu **Szukaj zasobów, usług i dokumentów** w górnej części portalu rozpocznij wpisywanie ciągu *myVirtualNetwork*. Gdy pozycja **myVirtualNetwork** pojawi się w wynikach wyszukiwania, wybierz ją.
-5. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**, a następnie wybierz pozycję **+ Podsieć**, jak pokazano na poniższym obrazie:
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
 
-    ![Dodawanie podsieci](./media/tutorial-create-route-table-portal/add-subnet.png) 
+1. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
 
-6. Wybierz lub wprowadź następujące informacje, a następnie wybierz przycisk **OK**:
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | Name (Nazwa) | Wpisz *myVirtualNetwork*. |
+    | Przestrzeń adresowa | Wpisz *10.0.0.0/16*. |
+    | Subskrypcja | Wybierz subskrypcję. |
+    | Grupa zasobów | Wybierz pozycję ***Wybierz istniejącą*** > **myResourceGroup**. |
+    | Lokalizacja | Pozostaw wartość domyślną **Wschodnie stany USA**. |
+    | Podsieć — nazwa | Wpisz *Publiczna*. |
+    | Zakres adresów podsieci: 10.41.0.0/24 | Wpisz *10.0.0.0/24*. |
 
-    |Ustawienie|Wartość|
-    |---|---|
-    |Name (Nazwa)|Private|
-    |Przestrzeń adresowa| 10.0.1.0/24|
+1. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
 
-7. Ponownie wykonaj kroki 5 i 6, podając następujące informacje:
+### <a name="add-subnets-to-the-virtual-network"></a>Dodawanie podsieci do sieci wirtualnej
 
-    |Ustawienie|Wartość|
-    |---|---|
-    |Name (Nazwa)|DMZ|
-    |Przestrzeń adresowa| 10.0.2.0/24|
+1. Na pasku wyszukiwania portalu wpisz *myVirtualNetwork*.
 
-8. Pole **myVirtualNetwork — podsieci** zostanie wyświetlone po zakończeniu poprzedniego kroku. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**, a następnie wybierz pozycję **Public**.
-9. Wybierz pozycję **Tabela tras**, wybierz pozycję **MyRouteTablePublic**, a następnie wybierz pozycję **Zapisz**, jak pokazano na poniższym obrazie:
+1. Gdy pozycja **myVirtualNetwork** pojawi się w wynikach wyszukiwania, wybierz ją.
 
-    ![Kojarzenie tabeli tras](./media/tutorial-create-route-table-portal/associate-route-table.png) 
+1. W sieci **myVirtualNetwork** w obszarze **Ustawienia** wybierz pozycję **Podsieci** > **+ Podsieć**.
+
+    ![Dodawanie podsieci](./media/tutorial-create-route-table-portal/add-subnet.png)
+
+1. W obszarze **Dodawanie podsieci** wprowadź następujące informacje:
+
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | Name (Nazwa) | Wpisz *Prywatna*. |
+    | Przestrzeń adresowa | Wpisz *10.0.1.0/24*. |
+
+1. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**.
+
+1. Wybierz ponownie pozycję **+ Podsieć**. Tym razem wprowadź następujące informacje:
+
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | Name (Nazwa) | Wpisz *DMZ*. |
+    | Przestrzeń adresowa | Wpisz *10.0.2.0/24*. |
+
+1. Tak jak ostatnio, pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**.
+
+    Na platformie Azure są widoczne trzy podsieci: **Publiczna**, **Prywatna** i **DMZ**.
+
+### <a name="associate-myroutetablepublic-to-your-public-subnet"></a>Kojarzenie tabeli myRouteTablePublic z podsiecią publiczną
+
+1. Wybierz pozycję **Publiczna**.
+
+1. W obszarze **Publiczna** wybierz pozycję **Tabela tras** > **MyRouteTablePublic** > **Zapisz**.
+
+    ![Kojarzenie tabeli tras](./media/tutorial-create-route-table-portal/associate-route-table.png)
 
 ## <a name="create-an-nva"></a>Tworzenie urządzenia NVA
 
-Urządzenie NVA jest maszyną wirtualną, która realizuje funkcje sieci, takie jak routing, zapora lub optymalizacja sieci WAN.
+Urządzenia WUS to maszyny wirtualne, które pomagają w działaniu funkcji sieciowych, takich jak optymalizacja routingu i zapory. Możesz wybrać inny system operacyjny. W tym samouczku założono, że używasz systemu **Windows Server 2016 Datacenter**.
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
-2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. Możesz wybrać inny system operacyjny, ale w pozostałych krokach założono, że wybierzesz system **Windows Server 2016 Datacenter**. 
-3. Wybierz lub wprowadź następujące informacje w obszarze **Podstawy**, a następnie wybierz przycisk **OK**:
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Compute** > **Windows Server 2016 Datacenter**.
 
-    |Ustawienie|Wartość|
-    |---|---|
-    |Name (Nazwa)|myVmNva|
-    |Nazwa użytkownika|Wprowadź wybraną nazwę użytkownika.|
-    |Hasło|Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę *myResourceGroup*.|
-    |Lokalizacja|Wybierz pozycję **Wschodnie stany USA**.|
-4. Wybierz rozmiar maszyny wirtualnej w obszarze **Wybierz rozmiar**.
-5. Wybierz lub wprowadź następujące informacje w obszarze **Ustawienia**, a następnie wybierz przycisk **OK**:
+1. W obszarze **Tworzenie maszyny wirtualnej — ustawienia podstawowe** wprowadź lub wybierz następujące informacje:
 
-    |Ustawienie|Wartość|
-    |---|---|
-    |Sieć wirtualna|myVirtualNetwork — jeśli nie jest zaznaczona, wybierz pozycję **Sieć wirtualna**, a następnie wybierz pozycję **myVirtualNetwork** w obszarze **Wybierz sieć wirtualną**.|
-    |Podsieć|Wybierz pozycję **Podsieć**, a następnie wybierz pozycję **DMZ** w obszarze **Wybierz podsieć**. |
-    |Publiczny adres IP| Wybierz pozycję **Publiczny adres IP**, a następnie wybierz pozycję **Brak** w obszarze **Wybierz publiczny adres IP**. Żaden publiczny adres IP nie zostanie przypisany do tej maszyny wirtualnej, ponieważ nie można będzie się z nią połączyć z Internetu.
-6. W obszarze **Utwórz** w sekcji **Podsumowanie** wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej.
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | **SZCZEGÓŁY PROJEKTU** | |
+    | Subskrypcja | Wybierz subskrypcję. |
+    | Grupa zasobów | Wybierz pozycję **myResourceGroup**. |
+    | **SZCZEGÓŁY WYSTĄPIENIA** |  |
+    | Nazwa maszyny wirtualnej | Wpisz *myVmNva*. |
+    | Region | Wybierz pozycję **Wschodnie stany USA**. |
+    | Opcje dostępności | Pozostaw wartość domyślną **Brak wymaganej nadmiarowości infrastruktury**. |
+    | Image (Obraz) | Pozostaw wartość domyślną **Windows Server 2016 Datacenter**. |
+    | Rozmiar | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
+    | **KONTO ADMINISTRATORA** |  |
+    | Nazwa użytkownika | Wprowadź wybraną nazwę użytkownika. |
+    | Hasło | Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Potwierdź hasło | Ponownie wprowadź hasło. |
+    | **REGUŁY PORTÓW WEJŚCIOWYCH** |  |
+    | Publiczne porty wejściowe | Pozostaw wartość domyślną **Brak**.
+    | **OSZCZĘDZAJ PIENIĄDZE** |  |
+    | Masz już licencję systemu Windows? | Pozostaw wartość domyślną **Nie**. |
 
-    W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie przechodź do następnego kroku, dopóki platforma Azure nie zakończy tworzenia maszyny wirtualnej i nie otworzy okna z informacjami o maszynie wirtualnej.
+1. Wybierz opcję **Dalej: Dyski**.
 
-7. W polu, które zostało otwarte dla maszyny wirtualnej po jej utworzeniu, w obszarze **USTAWIENIA** wybierz pozycję **Sieć**, a następnie wybierz pozycję **myvmnva158** (interfejs sieciowy utworzony przez platformę Azure dla Twojej maszyny wirtualnej ma inny numer po ciągu **myvmnva**), jak pokazano na poniższym obrazie:
+1. W obszarze **Tworzenie maszyny wirtualnej — dyski** wybierz odpowiednie ustawienia.
 
-    ![Sieć maszyn wirtualnych](./media/tutorial-create-route-table-portal/virtual-machine-networking.png) 
+1. Wybierz opcję **Dalej: Sieć**.
 
-8. Aby karta sieciowa mogła przekazywać dalej wysyłany do niej ruch sieciowy, który nie jest przeznaczony dla jej własnego adresu IP, musi być włączone przekazywanie adresu IP dla interfejsu sieciowego. W obszarze **USTAWIENIA** wybierz pozycję **Konfiguracje adresów IP**, wybierz wartość **Włączone** dla pozycji **Przekazywanie dalej adresu IP**, a następnie wybierz pozycję **Zapisz**, jak pokazano na poniższym obrazie:
+1. W obszarze **Tworzenie maszyny wirtualnej — sieć** wybierz następujące informacje:
 
-    ![Włączanie przekazywania dalej adresu IP](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png) 
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | Sieć wirtualna | Pozostaw wartość domyślną **myVirtualNetwork**. |
+    | Podsieć | Wybierz pozycję **DMZ (10.0.2.0/24)**. |
+    | Publiczny adres IP | Wybierz pozycję **Brak**. Nie potrzebujesz publicznego adresu IP. Maszyna wirtualna nie łączy się przez Internet.|
 
-## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
+1. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Dalej: Zarządzanie**.
 
-Utwórz dwie maszyny wirtualne w sieci wirtualnej, aby w późniejszym kroku można było zweryfikować, czy ruch z podsieci *Public* jest kierowany do podsieci *Private* za pośrednictwem urządzenia NVA. Wykonaj kroki 1–6 z sekcji [Tworzenie urządzenia NVA](#create-a-network-virtual-appliance). Użyj tych samych ustawień w kroku 3 i 5, z wyjątkiem następujących zmian:
+1. W obszarze **Tworzenie maszyny wirtualnej — zarządzanie** dla opcji **Konto magazynu diagnostyki** wybierz ustawienie **Utwórz nowe**.
 
-|Nazwa maszyny wirtualnej      |Podsieć      | Publiczny adres IP     |
-|--------- | -----------|---------              |
-| myVmPublic  | Public     | Zaakceptuj wartość domyślną portalu |
-| myVmPrivate | Private    | Zaakceptuj wartość domyślną portalu |
+1. W obszarze **Tworzenie konta magazynu** wprowadź lub wybierz następujące informacje:
+
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | Name (Nazwa) | Wpisz *mynvastorageaccount*. |
+    | Rodzaj konta | Pozostaw wartość domyślną **Magazyn (ogólnego przeznaczenia, wersja 1)**. |
+    | Wydajność | Pozostaw wartość domyślną **Standardowa**. |
+    | Replikacja | Pozostaw wartość domyślną **Magazyn lokalnie nadmiarowy (LRS)**.
+
+1. Kliknij przycisk **OK**
+
+1. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przekierowanie do strony**Przeglądanie + tworzenie**, a platforma Azure zweryfikuje konfigurację.
+
+1. Po wyświetleniu komunikatu **Weryfikacja pomyślna** wybierz opcję **Utwórz**.
+
+    W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie kontynuuj, dopóki platforma Azure nie zakończy tworzenia maszyny wirtualnej. Szczegóły wdrożenia będą wyświetlane na stronie **Wdrożenie jest w toku**.
+
+1. Gdy maszyna wirtualna będzie gotowa, wybierz pozycję **Przejdź do zasobu**.
+
+## <a name="turn-on-ip-forwarding"></a>Włączanie przekazywania dalej adresu IP
+
+Włącz przekazywanie dalej adresu IP dla maszyny wirtualnej *myVmNva*. Gdy platforma Azure wysyła ruch sieciowy do maszyny wirtualnej *myVmNva*, jeśli ruch jest przeznaczony dla innego adresu IP, przekazywanie dalej adresu IP spowoduje wysłanie ruchu do poprawnej lokalizacji.
+
+1. Na maszynie wirtualnej **myVmNva** w obszarze **Ustawienia** wybierz pozycję **Sieć**.
+
+1. Wybierz pozycję **myvmnva123**. Jest to interfejs sieciowy utworzony przez platformę Azure dla maszyny wirtualnej. Zawiera unikatowy ciąg liczb.
+
+    ![Sieć maszyn wirtualnych](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
+
+1. W obszarze **Ustawienia** wybierz pozycję **Konfiguracje adresów IP**.
+
+1. Na stronie **myvmnva123 — konfiguracje adresów IP** dla ustawienia **Przekazywanie dalej adresu IP** wybierz pozycję **Włączone**, a następnie wybierz pozycję **Zapisz**.
+
+    ![Włączanie przekazywania dalej adresu IP](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
+
+## <a name="create-public-and-private-virtual-machines"></a>Tworzenie publicznych i prywatnych maszyn wirtualnych
+
+Utwórz publiczną i prywatną maszynę wirtualną w sieci wirtualnej. Później użyjesz ich, aby sprawdzić, jak platforma Azure kieruje ruch podsieci *publicznej* do podsieci *prywatnej* za pośrednictwem urządzenia WUS.
+
+Wykonaj kroki 1–12 z sekcji [Tworzenie urządzenia NVA](#create-an-nva). Użyj w większości tych samych ustawień. Te wartości muszą być różne:
+
+| Ustawienie | Wartość |
+| ------- | ----- |
+| **PUBLICZNA MASZYNA WIRTUALNA** | |
+| PODSTAWY |  |
+| Nazwa maszyny wirtualnej | Wpisz *myVmPublic*. |
+| SIEĆ | |
+| Podsieć | Wybierz pozycję **Publiczna (10.0.0.0/24)**. |
+| Publiczny adres IP | Zaakceptuj domyślną wartość. |
+| Publiczne porty wejściowe | Wybierz pozycję **Zezwalaj na wybrane porty**. |
+| Wybierz porty wejściowe | Wybierz pozycje **HTTP** i **RDP**. |
+| ZARZĄDZANIE | |
+| Konto magazynu diagnostyki | Pozostaw wartość domyślną **mynvastorageaccount**. |
+| **PRYWATNA MASZYNA WIRTUALNA** | |
+| PODSTAWY |  |
+| Nazwa maszyny wirtualnej | Wpisz *myVmPrivate*. |
+| SIEĆ | |
+| Podsieć | Wybierz pozycję **Prywatna (10.0.1.0/24)**. |
+| Publiczny adres IP | Zaakceptuj domyślną wartość. |
+| Publiczne porty wejściowe | Wybierz pozycję **Zezwalaj na wybrane porty**. |
+| Wybierz porty wejściowe | Wybierz pozycje **HTTP** i **RDP**. |
+| ZARZĄDZANIE | |
+| Konto magazynu diagnostyki | Pozostaw wartość domyślną **mynvastorageaccount**. |
 
 Maszynę wirtualną *myVmPrivate* możesz utworzyć w czasie, gdy platforma Azure tworzy maszynę wirtualną *myVmPublic*. Nie należy przechodzić do następnych kroków, dopóki platforma Azure nie zakończy tworzenia obu maszyn wirtualnych.
 
 ## <a name="route-traffic-through-an-nva"></a>Kierowanie ruchem za pośrednictwem urządzenia NVA
 
-1. W polu *Szukaj* w górnej części portalu rozpocznij wpisywanie ciągu *myVmPrivate*. Gdy maszyna wirtualna **myVmPrivate** pojawi się w wynikach wyszukiwania, wybierz ją.
-2. Utwórz połączenie pulpitu zdalnego z maszyną wirtualną *myVmPrivate*, wybierając pozycję **Połącz**, jak pokazano na poniższym obrazie:
+### <a name="sign-in-to-myvmprivate-over-remote-desktop"></a>Logowanie się do maszyny wirtualnej myVmPrivate za pośrednictwem pulpitu zdalnego
 
-    ![Łączenie z maszyną wirtualną ](./media/tutorial-create-route-table-portal/connect-to-virtual-machine.png)  
+1. Na pasku wyszukiwania portalu wpisz *myVmPrivate*.
 
-3. Aby nawiązać połączenie z maszyną wirtualną, otwórz pobrany plik RDP. Po wyświetleniu monitu wybierz pozycję **Połącz**.
-4. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej (może okazać się konieczne wybranie pozycji **Więcej opcji** oraz **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej), a następnie wybierz przycisk **OK**.
-5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Wybierz pozycję **Tak**, aby nawiązać połączenie.
-6. W kolejnym kroku narzędzie śledzenia trasy jest używane do testowania routingu. Narzędzie śledzenia trasy używa protokołu ICMP (Internet Control Message Protocol), którego ruch jest blokowany przez zaporę systemu Windows. Wyłącz blokowanie protokołu ICMP przez zaporę systemu Windows, wprowadzając następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmPrivate*:
+1. Gdy maszyna wirtualna **myVmPrivate** pojawi się w wynikach wyszukiwania, wybierz ją.
+
+1. Wybierz pozycję **Połącz**, aby utworzyć połączenie pulpitu zdalnego z maszyną wirtualną *myVmPrivate*.
+
+1. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**. Na platformie Azure zostanie utworzony plik Remote Desktop Protocol (*rdp*), który zostanie pobrany na komputer.
+
+1. Otwórz pobrany plik *rdp*.
+
+    1. Po wyświetleniu monitu wybierz pozycję **Połącz**.
+
+    1. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia prywatnej maszyny wirtualnej.
+
+    1. Musisz wybrać pozycję **Więcej opcji** > **Użyj innego konta**, aby użyć poświadczeń prywatnej maszyny wirtualnej.
+
+1. Kliknij przycisk **OK**.
+
+    Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie.
+
+1. Wybierz pozycję **Tak**, aby nawiązać połączenie z maszyną wirtualną.
+
+### <a name="enable-icpm-through-the-windows-firewall"></a>Włączanie protokołu ICPM za pomocą Zapory systemu Windows
+
+W kolejnym kroku przetestujesz routing przy użyciu narzędzia śledzenia trasy. Narzędzie śledzenia trasy używa protokołu ICMP (Internet Control Message Protocol), którego ruch jest domyślnie blokowany przez Zaporę systemu Windows. Włącz protokół ICMP za pomocą Zapory systemu Windows.
+
+1. Na pulpicie zdalnym maszyny *myVmPrivate* otwórz program PowerShell.
+
+1. Wprowadź następujące polecenie:
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-    Chociaż w tym samouczku do testowania routingu jest używane narzędzie śledzenia trasy, nie zaleca się zezwalania na komunikację za pomocą protokołu ICMP w zaporze systemu Windows we wdrożeniach produkcyjnych.
-7. Przekazywanie dalej adresu IP w obrębie platformy Azure dla interfejsu sieciowego maszyny wirtualnej zostało włączone w sekcji [Włączanie przekazywania dalej adresu IP](#enable-ip-forwarding). W ramach maszyny wirtualnej system operacyjny lub aplikacja działająca na maszynie wirtualnej musi także móc przekazywać dalej ruch sieciowy. Włącz przekazywanie dalej adresu IP w ramach systemu operacyjnego maszyny wirtualnej *myVmNva*:
+    Używasz narzędzia śledzenia trasy do testowania routingu w ramach tego samouczka. W środowiskach produkcyjnych nie zalecamy zezwalania na protokół ICMP przez Zaporę systemu Windows.
 
-    W wierszu polecenia maszyny wirtualnej *myVmPrivate* połącz się za pomocą pulpitu zdalnego z maszyną wirtualną *myVmNva*:
+### <a name="turn-on-ip-forwarding-within-myvmnva"></a>Włączanie przekazywania dalej adresu na maszynie wirtualnej myVmNva
 
-    ``` 
+[Włączono przekazywanie adresu IP](#turn-on-ip-forwarding) dla interfejsu sieciowego maszyny wirtualnej przy użyciu platformy Azure. System operacyjny maszyny wirtualnej również musi przekazywać dalej ruch sieciowy. Włącz przekazywanie adresu IP dla systemu operacyjnego maszyny wirtualnej *myVmNva* przy użyciu poniższych poleceń.
+
+1. W wierszu polecenia maszyny wirtualnej *myVmPrivate* otwórz pulpit zdalny na maszynie wirtualnej *myVmNva*:
+
+    ```cmd
     mstsc /v:myvmnva
     ```
-    
-    Aby włączyć przekazywanie dalej adresu IP w ramach systemu operacyjnego, wprowadź następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmNva*:
+
+1. W programie PowerShell na maszynie *myVmNva* wpisz to polecenie, aby włączyć przekazywanie dalej adresu IP:
 
     ```powershell
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
-    
-    Uruchom ponownie maszynę wirtualną *myVmNva*, co spowoduje także odłączenie sesji pulpitu zdalnego.
-8. Mając nadal połączenie z maszyną wirtualną *myVmPrivate*, utwórz sesję pulpitu zdalnego z maszyną wirtualną *myVmPublic* po ponownym uruchomieniu maszyny wirtualnej *myVmNva*:
 
-    ``` 
+1. Uruchom ponownie maszynę wirtualną *myVmNva*. Na pasku zadań wybierz kolejno pozycje **Przycisk uruchamiania** > **Przycisk zasilania**, **Inne (planowane)** > **Kontynuuj**.
+
+    Spowoduje to także odłączenie sesji pulpitu zdalnego.
+
+1. Po ponownym uruchomieniu maszyny wirtualnej *myVmNva* utwórz sesję pulpitu zdalnego z maszyną wirtualną *myVmPublic*. Mając nadal połączenie z maszyną *myVmPrivate*, otwórz wiersz polecenia i uruchom następujące polecenie:
+
+    ```cmd
     mstsc /v:myVmPublic
     ```
-    
-    Wyłącz blokowanie protokołu ICMP przez zaporę systemu Windows, wprowadzając następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmPublic*:
+1. Na pulpicie zdalnym maszyny *myVmPublic* otwórz program PowerShell.
+
+1. Włącz protokół ICMP za pomocą Zapory systemu Windows przez wprowadzenie tego polecenia:
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-9. Aby przetestować routing ruchu sieciowego do maszyny wirtualnej *myVmPrivate* z maszyny wirtualnej *myVmPublic*, wprowadź następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmPublic*:
+## <a name="test-the-routing-of-network-traffic"></a>Testowanie routingu ruchu sieciowego
 
-    ```
+Najpierw przetestuj routing ruchu sieciowego z maszyny wirtualnej *myVmPublic* do maszyny wirtualnej *myVmPrivate*.
+
+1. W programie PowerShell na maszynie wirtualnej *myVmPublic* wprowadź następujące polecenie:
+
+    ```powershell
     tracert myVmPrivate
     ```
 
     Odpowiedź jest podobna do poniższego przykładu:
-    
-    ```
+
+    ```powershell
     Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
     over a maximum of 30 hops:
-        
+
     1    <1 ms     *        1 ms  10.0.2.4
     2     1 ms     1 ms     1 ms  10.0.1.4
-        
+
     Trace complete.
     ```
-      
-    Teraz możesz zobaczyć, że pierwszym przeskokiem jest 10.0.2.4, czyli prywatny adres IP urządzenia NVA. Drugim przeskokiem jest 10.0.1.4, prywatny adres IP maszyny wirtualnej *myVmPrivate*. Trasa dodana do tabeli tras *myRouteTablePublic* i powiązana z podsiecią *Public* spowodowała, że platforma Azure skierowała ruch przez urządzenie NVA, a nie bezpośrednio do podsieci *Private*.
-10.  Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPublic*. Połączenie z maszyną wirtualną *myVmPrivate* pozostanie nadal aktywne.
-11. Aby przetestować routing ruchu sieciowego do maszyny wirtualnej *myVmPublic* z maszyny wirtualnej *myVmPrivate*, wprowadź następujące polecenie w wierszu polecenia na maszynie wirtualnej *myVmPrivate*:
 
-    ```
+    Pierwszy przeskok to 10.0.2.4. Jest to prywatny adres IP urządzenia WUS. Drugim przeskokiem jest prywatny adres IP maszyny wirtualnej *myVmPrivate*: 10.0.1.4. Wcześniej dodano trasę do tabeli tras *myRouteTablePublic* i skojarzono ją z podsiecią *publiczną*. W rezultacie platforma Azure wysyłała ruch przez urządzenie WUS, a nie bezpośrednio do podsieci *prywatnej*.
+
+1. Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPublic*. Połączenie z maszyną wirtualną *myVmPrivate* pozostanie nadal aktywne.
+
+1. W wierszu polecenia na maszynie wirtualnej *myVmPrivate* wprowadź następujące polecenie:
+
+    ```cmd
     tracert myVmPublic
     ```
 
-    Odpowiedź jest podobna do poniższego przykładu:
+    Umożliwia ono przetestowanie routingu ruchu sieciowego z maszyny wirtualnej *myVmPrivate* do maszyny wirtualnej *myVmPublic*. Odpowiedź jest podobna do poniższego przykładu:
 
-    ```
+    ```cmd
     Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
     over a maximum of 30 hops:
-    
+
     1     1 ms     1 ms     1 ms  10.0.0.4
-    
+
     Trace complete.
     ```
 
-    Widać, że ruch jest kierowany bezpośrednio z maszyny wirtualnej *myVmPrivate* do maszyny wirtualnej *myVmPublic*. Domyślnie platforma Azure kieruje ruch bezpośrednio między podsieciami.
-12. Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPrivate*.
+    Widać, że platforma Azure kieruje ruch bezpośrednio z maszyny wirtualnej *myVmPrivate* do maszyny wirtualnej *myVmPublic*. Domyślnie platforma Azure kieruje ruch bezpośrednio między podsieciami.
+
+1. Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPrivate*.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów nie będzie już potrzebna, usuń ją wraz ze wszystkimi zasobami, które zawiera: 
+Gdy grupa zasobów nie będzie już potrzebna, usuń ją wraz ze wszystkimi zasobami, które zawiera:
 
-1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
-2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
+1. Na pasku wyszukiwania portalu wpisz *myResourceGroup*.
+
+1. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
+
+1. Wybierz pozycję **Usuń grupę zasobów**.
+
+1. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku została utworzona tabela tras, która została następnie skojarzona z podsiecią. Utworzono proste urządzenie NVA, które kierowało ruch z podsieci publicznej do podsieci prywatnej. Wdrożono różne wstępnie skonfigurowane urządzenia NVA wykonujące funkcje sieciowe, takie jak zapora i optymalizacja sieci WAN, z witryny [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Aby dowiedzieć się więcej na temat routingu, zobacz [Routing overview (Omówienie routingu)](virtual-networks-udr-overview.md) i [Manage a route table (Zarządzanie tabelą tras)](manage-route-table.md).
+W tym samouczku została utworzona tabela tras, która została następnie skojarzona z podsiecią. Utworzono proste urządzenie NVA, które kierowało ruch z podsieci publicznej do podsieci prywatnej. Wiesz już, jak to zrobić, więc możesz wdrożyć różne wstępnie skonfigurowane urządzenia WUS z witryny [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Pełnią one wiele przydatnych funkcji sieciowych. Aby dowiedzieć się więcej na temat routingu, zobacz [Routing overview (Omówienie routingu)](virtual-networks-udr-overview.md) i [Manage a route table (Zarządzanie tabelą tras)](manage-route-table.md).
 
-
-Chociaż możesz wdrożyć wiele zasobów platformy Azure w ramach sieci wirtualnej, zasobów dla niektórych usług PaaS platformy Azure nie można wdrożyć w sieci wirtualnej. Nadal możesz ograniczyć dostęp do zasobów niektórych usług PaaS platformy Azure tylko do ruchu z podsieci sieci wirtualnej. Aby dowiedzieć się, jak ograniczyć dostęp sieciowy do zasobów PaaS platformy Azure, przejdź do następnego samouczka.
+Chociaż możesz wdrożyć wiele zasobów platformy Azure w ramach sieci wirtualnej, platforma Azure nie może wdrożyć zasobów dla niektórych usług PaaS w sieci wirtualnej. Możesz ograniczyć dostęp do zasobów niektórych usług PaaS platformy Azure. Ograniczenie musi być jednak dotyczyć ruchu z podsieci sieci wirtualnej. Aby dowiedzieć się, jak ograniczyć dostęp sieciowy do zasobów PaaS platformy Azure, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Ograniczanie dostępu sieciowego do zasobów PaaS](tutorial-restrict-network-access-to-resources.md)

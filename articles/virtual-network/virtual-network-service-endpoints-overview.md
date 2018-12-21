@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 0a582dc3acf17a10bd143988da7dd12627650dff
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8150774a630e6888dcd3bb5a4d219cfbf2c2c477
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834871"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310168"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -32,16 +32,17 @@ Ta funkcja jest dostępna dla następujących regionów i usług platformy Azure
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
 - **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
-- **[Serwer usługi Azure Database for PostgreSQL](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępny w regionach platformy Azure, w których dostępna jest usługa bazy danych.
-- **[Serwer usługi Azure Database for MySQL](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępny w regionach platformy Azure, w których dostępna jest usługa bazy danych.
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępna we wszystkich regionach chmury publicznej Azure.
-- **[Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**: ogólnie dostępna we wszystkich regionach chmury publicznej Azure.
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Serwer usługi Azure Database for PostgreSQL](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępny w regionach platformy Azure, w których jest dostępna usługa bazy danych.
+- **[Serwer usługi Azure Database for MySQL](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępny w regionach platformy Azure, w których jest dostępna usługa bazy danych.
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępna we wszystkich regionach chmury publicznej platformy Azure.
+- **[Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**: ogólnie dostępna we wszystkich regionach chmury publicznej platformy Azure.
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępna we wszystkich regionach chmury publicznej platformy Azure.
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępna we wszystkich regionach chmury publicznej platformy Azure.
 
 **Wersja zapoznawcza**
 
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej we wszystkich regionach chmury publicznej Azure.
-- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej.
-- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej.
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej we wszystkich regionach chmury publicznej platformy Azure.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej.
 
 Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
@@ -50,11 +51,11 @@ Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji us�
 
 Punkty końcowe usługi oferują następujące korzyści:
 
-- **Lepsze zabezpieczenia zasobów usługi platformy Azure**: przestrzenie adresowe prywatnych sieci wirtualnych mogą się nakładać, przez co nie można za ich pomocą jednoznacznie identyfikować ruchu pochodzącego z Twojej sieci wirtualnej. Punkty końcowe usługi dają możliwość zabezpieczania zasobów usługi platformy Azure w sieci wirtualnej przez rozszerzenie tożsamości sieci wirtualnej na usługę. Po włączeniu punktów końcowych usługi w sieci wirtualnej można zabezpieczyć zasoby usług usługi platformy Azure w sieci wirtualnej przez dodanie reguły sieci wirtualnej do zasobów. Zwiększa to bezpieczeństwo przez całkowite uniemożliwienie publicznego dostępu z Internetu do tych zasobów i zezwolenie na ruch tylko z Twojej sieci wirtualnej.
-- **Optymalny routing ruchu usług sieci platformy Azure z sieci wirtualnej**: obecnie wszystkie trasy w sieci wirtualnej, które wymuszają ruch internetowy za pomocą urządzeń lokalnych i/lub wirtualnych (sytuacja znana jako tunelowanie wymuszane), wymuszają również ruch w ramach usługi platformy Azure po tej samej trasie co ruch internetowy. Punkty końcowe usługi zapewniają optymalny routing ruchu platformy Azure. 
+- **Lepsze zabezpieczenia zasobów usługi platformy Azure**: przestrzenie adresowe prywatnych sieci wirtualnych mogą się nakładać, przez co nie można za ich pomocą jednoznacznie identyfikować ruchu pochodzącego z sieci wirtualnej. Punkty końcowe usługi dają możliwość zabezpieczania zasobów usługi platformy Azure w sieci wirtualnej przez rozszerzenie tożsamości sieci wirtualnej na usługę. Po włączeniu punktów końcowych usługi w sieci wirtualnej można zabezpieczyć zasoby usług usługi platformy Azure w sieci wirtualnej przez dodanie reguły sieci wirtualnej do zasobów. Zwiększa to bezpieczeństwo przez całkowite uniemożliwienie publicznego dostępu z Internetu do tych zasobów i zezwolenie na ruch tylko z Twojej sieci wirtualnej.
+- **Optymalny routing ruchu usług sieci platformy Azure z sieci wirtualnej**: obecnie wszystkie trasy w sieci wirtualnej, które wymuszają ruch internetowy za pomocą urządzeń lokalnych i/lub wirtualnych (sytuacja znana jako tunelowanie wymuszane), wymuszają również ruch w ramach usługi platformy Azure po tej samej trasie, co ruch internetowy. Punkty końcowe usługi zapewniają optymalny routing ruchu platformy Azure. 
 
   Punkty końcowe zawsze pobierają ruch bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej platformy Microsoft Azure. Zachowywanie ruchu w sieci szkieletowej platformy Azure umożliwia kontynuowanie inspekcji i monitorowania wychodzącego ruchu internetowego z sieci wirtualnych za pośrednictwem tunelowania wymuszanego, bez wywierania wpływu na ruch usługi. Dowiedz się więcej na temat [tras definiowanych przez użytkownika i tunelowania wymuszanego](virtual-networks-udr-overview.md).
-- **Prosta konfiguracja i mniejsze koszty ogólne zarządzania**: nie potrzebujesz już zastrzeżonych publicznych adresów IP w swoich sieciach wirtualnych, aby zabezpieczać zasoby platformy Azure za pośrednictwem zapory adresów IP. Do skonfigurowania punktów końcowych usługi nie jest wymagany translator adresów sieciowych ani urządzenie bramy. Punkty końcowe usługi można skonfigurować za pomocą prostego kliknięcia w podsieci. Utrzymywanie punktów końcowych nie wiąże się z dodatkowymi kosztami ogólnymi.
+- **Prosta konfiguracja i mniejsze ogólne koszty zarządzania**: zastrzeżone publiczne adresy IP nie są już potrzebne w Twoich sieciach wirtualnych do zabezpieczania zasobów platformy Azure za pośrednictwem zapory adresów IP. Do skonfigurowania punktów końcowych usługi nie jest wymagany translator adresów sieciowych ani urządzenie bramy. Punkty końcowe usługi można skonfigurować za pomocą prostego kliknięcia w podsieci. Utrzymywanie punktów końcowych nie wiąże się z dodatkowymi kosztami ogólnymi.
 
 ## <a name="limitations"></a>Ograniczenia
 
@@ -100,7 +101,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 ### <a name="scenarios"></a>Scenariusze
 
 - **Równorzędne lub połączone sieci wirtualne albo wiele sieci wirtualnych**: aby zabezpieczyć usługi platformy Azure w wielu podsieciach sieci wirtualnej lub wielu sieciach wirtualnych, możesz niezależnie włączyć punkty końcowe usługi w każdej z tych podsieci i zabezpieczyć zasoby usługi platformy Azure we wszystkich tych podsieciach.
-- **Filtrowanie ruchu wychodzącego z sieci wirtualnej do usług platformy Azure**: jeśli chcesz sprawdzić lub filtrować ruch kierowany do usługi platformy Azure z sieci wirtualnej, możesz wdrożyć sieciowe urządzenie wirtualne w ramach tej sieci wirtualnej. Następnie możesz zastosować punkty końcowe usługi do podsieci, w której wdrożono sieciowe urządzenie wirtualne, i zabezpieczyć zasób usługi platformy Azure tylko w tej podsieci. Ten scenariusz może być przydatny, jeśli chcesz ograniczyć dostęp do usługi platformy Azure z sieci wirtualnej tylko do określonych zasobów platformy Azure przy użyciu filtrowania sieciowych urządzeń wirtualnych. Aby uzyskać więcej informacji, zobacz [ruch wychodzący z sieciowych urządzeń wirtualnych](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Filtrowanie ruchu wychodzącego z sieci wirtualnej do usług platformy Azure**: jeśli chcesz sprawdzić lub filtrować ruch kierowany do usługi platformy Azure z sieci wirtualnej, możesz wdrożyć urządzenie sieci wirtualnej w ramach tej sieci wirtualnej. Następnie możesz zastosować punkty końcowe usługi do podsieci, w której wdrożono sieciowe urządzenie wirtualne, i zabezpieczyć zasób usługi platformy Azure tylko w tej podsieci. Ten scenariusz może być przydatny, jeśli chcesz ograniczyć dostęp do usługi platformy Azure z sieci wirtualnej tylko do określonych zasobów platformy Azure przy użyciu filtrowania sieciowych urządzeń wirtualnych. Aby uzyskać więcej informacji, zobacz [ruch wychodzący z sieciowych urządzeń wirtualnych](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - **Zabezpieczanie zasobów platformy Azure w usługach wdrożonych bezpośrednio do sieci wirtualnych**: różne usługi platformy Azure można wdrażać bezpośrednio w określonych podsieciach sieci wirtualnej. Zasoby usługi platformy Azure można zabezpieczyć w podsieciach [usługi zarządzanej](virtual-network-for-azure-services.md), konfigurując punkt końcowy usługi w podsieci usługi zarządzanej.
 - **Ruch dyskowy z maszyny wirtualnej platformy Azure**: na ruch dyskowy maszyny wirtualnej (w tym instalowanie i odinstalowywanie oraz operacje we/wy dysku), w przypadku dysków zarządzanych/niezarządzanych, nie mają wpływu zmiany routingu punktów końcowych usługi Azure Storage. Dostęp interfejsu REST do stronicowych obiektów blob można ograniczyć do wybranych sieci za pomocą punktów końcowych usługi i [reguł sieci usługi Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
@@ -135,15 +136,19 @@ W przypadku zasobów usług platformy Azure (np. konta usługi Azure Storage) us
 
 ## <a name="virtual-network-service-endpoint-policies"></a>Zasady punktu końcowego usługi sieci wirtualnej 
 
-Zasady punktu końcowego usługi sieci wirtualnej umożliwiają filtrowanie ruchu sieci wirtualnej do usług platformy Azure, zezwalając na stosowanie tylko wybranych zasobów usług platformy Azure w punktach końcowych usługi. Zasady punktu końcowego usługi zapewniają szczegółową kontrolę dostępu w przypadku ruchu w sieci wirtualnej do usług platformy Azure. Więcej informacji: [Zasady punktu końcowego usługi sieci wirtualnej](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+Zasady punktu końcowego usługi sieci wirtualnej umożliwiają filtrowanie ruchu sieci wirtualnej do usług platformy Azure, zezwalając na stosowanie tylko wybranych zasobów usług platformy Azure w punktach końcowych usługi. Zasady punktu końcowego usługi zapewniają szczegółową kontrolę dostępu w przypadku ruchu w sieci wirtualnej do usług platformy Azure. Więcej informacji: [Zasady punktu końcowego usługi sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
+## <a name="faqs"></a>Często zadawane pytania
+
+Często zadawane pytania można znaleźć w temacie [Virtual Network Service Endpoint FAQs (Punkt końcowy usługi sieci wirtualnej — często zadawane pytania)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [skonfigurować punkty końcowe usługi sieci wirtualnej](tutorial-restrict-network-access-to-resources.md)
 - Dowiedz się, jak [zabezpieczyć konto usługi Azure Storage w sieci wirtualnej](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - Dowiedz się, jak [zabezpieczyć usługę Azure SQL Database w sieci wirtualnej](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- Dowiedz się, jak [zabezpieczyć usługę Azure SQL Database Warehouse w sieci wirtualnej](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - Dowiedz się więcej o [integracji usług platformy Azure w sieciach wirtualnych](virtual-network-for-azure-services.md)
-- Dowiedz się więcej na temat [zasad punktu końcowego usługi sieci wirtualnej](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- Dowiedz się więcej na temat [zasad punktu końcowego usługi sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 -  Szybki start: [szablon usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) do konfigurowania punktu końcowego usługi w podsieci sieci wirtualnej i zabezpieczenia konta usługi Azure Storage do tej podsieci.
 

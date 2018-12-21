@@ -9,12 +9,12 @@ ms.devlang: cpp
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: dff665a26efb00ed74ddfab4259c5c35ca1abb38
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9bfc6ed2c781ddc54815665c492e7f2413033ca0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880135"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087120"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak korzystać z usługi Azure Table Storage i interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "52880135"
 Ten przewodnik przedstawia sposób wykonywania typowych zdań przy użyciu usługi Azure Table Storage oraz interfejsu API tabel usługi Azure Cosmos DB. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Przedstawione scenariusze obejmują **tworzenie i usuwanie tabel** oraz **pracę z jednostkami w tabelach**.
 
 > [!NOTE]
-> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Zalecana wersja biblioteki klienta usługi Storage to wersja 2.2.0, dostępna za pośrednictwem narzędzia [NuGet](http://www.nuget.org/packages/wastorage) lub witryny [GitHub](https://github.com/Azure/azure-storage-cpp/).
+> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Zalecana wersja biblioteki klienta usługi Storage to wersja 2.2.0, dostępna za pośrednictwem narzędzia [NuGet](https://www.nuget.org/packages/wastorage) lub witryny [GitHub](https://github.com/Azure/azure-storage-cpp/).
 > 
 
 ## <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
@@ -41,8 +41,8 @@ Podczas pracy z tym przewodnikiem będziesz używać funkcji magazynu, które mo
 
 Możesz zainstalować bibliotekę klienta usługi Azure Storage dla języka C++, korzystając z następujących metod:
 
-* **Linux:** postępuj zgodnie z instrukcjami dostępnymi na stronie [Azure Storage Client Library for C++ README (Plik README biblioteki klienta usługi Azure Storage dla języka C++)](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).  
-* **Windows:** w programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [konsoli menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz Enter.  
+* **Linux:** postępuj zgodnie z instrukcjami dostępnymi na stronie [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (Plik README biblioteki klienta usługi Azure Storage dla języka C++).  
+* **Windows:** W programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [konsoli menedżera pakietów NuGet](/nuget/tools/package-manager-console) i naciśnij klawisz Enter.  
   
      Install-Package wastorage
 
@@ -478,5 +478,5 @@ Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat usługi 
 * [Wprowadzenie do interfejsu API tabel](table-introduction.md)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
 * [Generowanie listy zasobów usługi Azure Storage w języku C++](../storage/common/storage-c-plus-plus-enumeration.md)
-* [Dokumentacja biblioteki klienta usługi Storage dla języka C++](http://azure.github.io/azure-storage-cpp)
+* [Dokumentacja biblioteki klienta usługi Storage dla języka C++](https://azure.github.io/azure-storage-cpp)
 * [Dokumentacja usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

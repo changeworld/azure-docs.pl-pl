@@ -5,22 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: db4a2356d3de91e4951acd69dc858730349019d6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a5376aed3e9cdb12be58cb07d7eb00303a03a963
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274556"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074881"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
-# <a name="tutorial-optimize-reserved-instances"></a>Samouczek: optymalizowanie wystąpień zarezerwowanych
+# <a name="tutorial-optimize-reserved-instances"></a>Samouczek: Optymalizacja wystąpień zarezerwowanych
 
 W tym samouczku dowiesz się, jak rozwiązanie Cloudyn może pomóc Ci w optymalizowaniu kosztów i wykorzystania wystąpień zarezerwowanych na platformach Azure i Amazon Web Services (AWS). Wystąpienie zarezerwowane u obu dostawców usług w chmurze oznacza długoterminowe zobowiązanie, w ramach którego z góry zobowiązujesz się do używania maszyny wirtualnej w przyszłości. Potencjalnie oferuje ono znaczne oszczędności w stosunku do standardowego modelu cen maszyny wirtualnej, w którym płatność odbywa się zgodnie z rzeczywistym użyciem. Potencjalne oszczędności stają się rzeczywiste dopiero wtedy, gdy w pełni wykorzystasz pojemność wystąpień zarezerwowanych.
 
@@ -112,7 +112,7 @@ Na przykład w przypadku zakupu rezerwacji maszyny wirtualnej typu DS1\_v2 w reg
 
 Jeśli jednak maszyna wirtualna będzie działać tylko przez 50% czasu, próg rentowności zostanie osiągnięty w 10 miesiącu, a oszczędności wyniosą jedynie 49,74 USD rocznie. W tym przykładzie zakup rezerwacji dla tego typu wystąpienia może nie być korzystny. Zobacz poniższy obraz:
 
-![Próg rentowności na platformie Azure](./media/tutorial-optimize-reserved-instances/azure04.png)
+![Przykład rentowności maszyn wirtualnych platformy Azure](./media/tutorial-optimize-reserved-instances/azure04.png)
 
 ## <a name="view-ri-costs"></a>Wyświetlanie kosztów wystąpień zarezerwowanych
 
@@ -127,11 +127,11 @@ Raporty Analiza rzeczywistego kosztu i Analiza względem czasu pokazują pełne 
 
 Wybierz pozycję **Koszty** > **Analiza kosztów** w portalu Cloudyn, a następnie wybierz pozycję **Analiza rzeczywistego kosztu** lub **Rzeczywisty koszt względem czasu**. Teraz ustaw filtry. Na przykład odfiltruj tylko usługę Azure/VM i pogrupuj wyniki według wartości Typ zasobu i Model cen. Zobacz poniższy obraz:
 
-![Rzeczywisty koszt wystąpienia zarezerwowanego](./media/tutorial-optimize-reserved-instances/azure05.png)
+![Przykład rzeczywistego kosztu wystąpień zarezerwowanych](./media/tutorial-optimize-reserved-instances/azure05.png)
 
 Filtrować można według usługi, w tym przykładzie **Azure/VM**, i pogrupować wyniki według wartości **Model cen** i **Typ zasobu**, jak pokazano na poniższej ilustracji:
 
-![Grupy i filtry raportu rzeczywistego kosztu](./media/tutorial-optimize-reserved-instances/azure06.png)
+![Przykład grup i filtrów raportu rzeczywistego kosztu pogrupowanych według modelu ceny i typu zasobu](./media/tutorial-optimize-reserved-instances/azure06.png)
 
 Ponadto można przeanalizować typy dokonanych płatności, np. jednorazowych opłat, opłat za użycie i opłat za licencje.
 
@@ -145,7 +145,7 @@ W raporcie rzeczywistego kosztu 16 listopada był widoczny nagły wzrost o kwot�
 
 Aby wyświetlić ten raport, wybierz pozycję **Koszty** > **Analiza kosztów**, a następnie wybierz pozycję **Analiza amortyzowanego kosztu** lub **Amortyzowany koszt względem czasu**.
 
-![Amortyzowany koszt wystąpienia zarezerwowanego](./media/tutorial-optimize-reserved-instances/azure07.png)
+![Przykładowy raport pokazujący zamortyzowany koszt wystąpienia zarezerwowanego](./media/tutorial-optimize-reserved-instances/azure07.png)
 
 ## <a name="optimize-aws-ri-costs"></a>Optymalizowanie kosztów wystąpień zarezerwowanych na platformie AWS
 
@@ -166,25 +166,25 @@ W menu raportów w górnej części portalu kliknij pozycję **Optymalizator** >
 
 Poniższy obraz przedstawia zalecenia zakupu z raportu.
 
-![Zalecenia zakupu](./media/tutorial-optimize-reserved-instances/aws01.png)
+![Przykład przedstawiający zalecenia zakupu w raporcie Zalecenia zakupu usługi EC2](./media/tutorial-optimize-reserved-instances/aws01.png)
 
 W tym przykładzie konto Cloudyn\_A ma 32 zalecenia zakupu wystąpień zarezerwowanych. W przypadku postąpienia zgodnie ze wszystkimi zaleceniami zakupu potencjalnie można zaoszczędzić 137 770 USD rocznie. Pamiętaj, że zalecenia zakupu udostępniane w usłudze Cloudyn zakładają, że użycie działających obciążeń pozostanie niezmienione.
 
 Aby wyświetlić szczegóły wyjaśniające, dlaczego dany zakup jest zalecany, kliknij znak plus (**+**) w obszarze **Uzasadnienia**. Oto przykład dla pierwszego zalecenia na liście.
 
-![Uzasadnienia zakupu](./media/tutorial-optimize-reserved-instances/aws02.png)
+![Przykład przedstawiający szczegóły uzasadnienia zakupu](./media/tutorial-optimize-reserved-instances/aws02.png)
 
 Powyższy przykład pokazuje, że uruchamianie obciążenia na żądanie kosztowałoby 90 456 USD rocznie. Jednak w przypadku zakupu rezerwacji z wyprzedzeniem to samo obciążenie kosztowałoby 56 592 USD, co pozwoliłoby zaoszczędzić 33 864 USD rocznie.
 
 Kliknij znak plus obok pozycji **Wpływ zakupu wystąpień zarezerwowanych w usłudze EC2**, aby wyświetlić próg rentowności w okresie roku i zobaczyć, kiedy mniej więcej inwestycja w zakup się zwróci. Po około ośmiu miesiącach od dokonania zakupu skumulowany koszt wystąpień na żądanie zaczyna przekraczać skumulowany koszt wystąpień zarezerwowanych w poniższym przykładzie:
 
-![Wpływ zakupu](./media/tutorial-optimize-reserved-instances/aws03.png)
+![Przykład przedstawiający szczegóły wpływu zakupu](./media/tutorial-optimize-reserved-instances/aws03.png)
 
 W tym momencie zaczynasz oszczędzać pieniądze.
 
 Aby sprawdzić dokładność proponowanego zalecenia zakupu, możesz przejrzeć obszar **Wystąpienia względem czasu**. W tym przykładzie widać, że w ciągu ostatnich 30 dni średnio dla obciążenia było używanych sześć wystąpień.
 
-![Wystąpienia względem czasu](./media/tutorial-optimize-reserved-instances/aws04.png)
+![Przykład przedstawiający historyczne użycie wystąpień wraz z upływem czasu](./media/tutorial-optimize-reserved-instances/aws04.png)
 
 ## <a name="modify-unused-reservations"></a>Modyfikowanie nieużywanych rezerwacji
 
@@ -196,23 +196,23 @@ W menu raportów w górnej części portalu kliknij pozycję **Optymalizator** >
 
 Na poniższych ilustracjach przedstawiono raport z nieużywanymi wystąpieniami zarezerwowanymi.
 
-![Nieużywane rezerwacje](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
+![Przykład przedstawiający podsumowanie informacji na temat nieużywanych rezerwacji](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
 
 Kliknij znak plus w obszarze **Szczegóły**, aby wyświetlić szczegóły konkretnej rezerwacji.
 
-![Szczegóły nieużywanych rezerwacji](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
+![Przykład przedstawiający szczegóły nieużywanych rezerwacji](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
 
 W powyższym przykładzie istnieje łącznie 77 nieużywanych rezerwacji w różnych strefach dostępności. Pierwsza rezerwacja ma 51 nieużywanych wystąpień. Niżej na liście widać, że istnieją potencjalne modyfikacje wystąpień zarezerwowanych, które można wprowadzić przy użyciu typu wystąpienia **m3.2xlarge** w strefie dostępności **us-east-1c**.
 
 Kliknij przycisk **Modyfikuj** dla pierwszej rezerwacji na liście, aby otworzyć stronę **Modyfikowanie wystąpień zarezerwowanych** zawierającą dane o rezerwacji.
 
-![Modyfikowanie wystąpień zarezerwowanych](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
+![Przykład przedstawiający rezerwacje, które można zmodyfikować](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
 
 Wystąpienia zarezerwowane, które można modyfikować, są wyświetlane na liście. Na poniższej przykładowej ilustracji istnieje 51 nieużywanych rezerwacji, które można zmodyfikować, ale obie rezerwacje powinny łącznie zapewnić 54 wystąpienia. Jeśli zmodyfikujesz nieużywane rezerwacje tak, aby używać ich wszystkich, cztery wystąpienia będą nadal uruchamiane na żądanie. Na potrzeby tego przykładu podziel nieużywane rezerwacje w taki sposób, aby pierwsza rezerwacja używała 30 wystąpień, a druga 21.
 
 Kliknij znak plus dla pozycji pierwszej rezerwacji i ustaw opcję **Ilość rezerwacji** na wartość **30**. W drugiej pozycji ustaw ilość rezerwacji na **21**, a następnie kliknij przycisk **Zastosuj**.
 
-![Zmiana ilości rezerwacji](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
+![Przykład przedstawiający zmiany ilości rezerwacji](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
 
 Wszystkie nieużywane wystąpienia rezerwacji są teraz w pełni wykorzystywane i 51 wystąpień nie jest już uruchamianych na żądanie. W tym przykładzie zapewniasz swojej organizacji oszczędność pieniędzy, znacznie ograniczając użycie na żądanie i wykorzystując rezerwacje, za które już zapłacono.
 

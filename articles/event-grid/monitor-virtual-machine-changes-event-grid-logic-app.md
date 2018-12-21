@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.openlocfilehash: a6adf97a11821ff58c01d2450f06d07e7327fdfb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957931"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106077"
 ---
-# <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Monitorowanie zmian maszyn wirtualnych za pomocą usług Azure Event Grid i Logic Apps
+# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Samouczek: Monitorowanie zmian maszyn wirtualnych za pomocą usług Azure Event Grid i Logic Apps
 
 W przypadku wystąpienia określonych zdarzeń w zasobach platformy Azure lub zasobach innych firm możliwe jest uruchamianie zautomatyzowanego [przepływu pracy aplikacji logiki](../logic-apps/logic-apps-overview.md). Zasoby te mogą publikować te zdarzenia w usłudze [Azure Event Grid](../event-grid/overview.md). Z kolei usługa Event Grid wypycha te zdarzenia do subskrybentów, którzy mają kolejki, elementy webhook lub [centra zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md) jako punkty końcowe. Jako subskrybent aplikacja logiki może czekać na te zdarzenia z usługi Event Grid przed uruchomieniem automatycznych przepływów pracy w celu wykonywania zadań — bez konieczności pisania kodu.
 
@@ -101,7 +101,7 @@ Najpierw należy utworzyć aplikację logiki i dodać wyzwalacz usługi Event Gr
    | **Subskrypcja** | *{subskrypcja platformy Azure maszyny wirtualnej}* | Wybierz subskrypcję platformy Azure wydawcy zdarzeń. W tym samouczku wybierz subskrypcję platformy Azure dla maszyny wirtualnej. | 
    | **Typ zasobu** | Microsoft.Resources.resourceGroups | Wybierz typ zasobu wydawcy zdarzeń. W tym samouczku wybierz określoną wartość, aby aplikacja logiki monitorowała tylko grupy zasobów. | 
    | **Nazwa zasobu** | *{nazwa grupy zasobów maszyny wirtualnej}* | Wybierz nazwę zasobu wydawcy. W tym samouczku wybierz nazwę grupy zasobów dla maszyny wirtualnej. | 
-   | Aby wyświetlić ustawienia opcjonalne, wybierz pozycję **Pokaż opcje zaawansowane**. | *{patrz opisy}* | * **Filtr prefiksu**: w tym samouczku pozostaw to ustawienie puste. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg prefiksu jako filtr, na przykład ścieżkę i parametr dla konkretnego zasobu. <p>* **Filtr sufiksu**: w tym samouczku pozostaw to ustawienie puste. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg sufiksu jako filtr, na przykład rozszerzenie nazwy pliku, aby uwzględniać tylko określone typy plików.<p>* **Nazwa subskrypcji**: podaj unikatową nazwę dla Twojej subskrypcji zdarzeń. |
+   | Aby wyświetlić ustawienia opcjonalne, wybierz pozycję **Pokaż opcje zaawansowane**. | *{patrz opisy}* | * **Filtr prefiksu**: W tym samouczku pozostaw to ustawienie puste. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg prefiksu jako filtr, na przykład ścieżkę i parametr dla konkretnego zasobu. <p>* **Filtr sufiksu**: W tym samouczku pozostaw to ustawienie puste. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg sufiksu jako filtr, na przykład rozszerzenie nazwy pliku, aby uwzględniać tylko określone typy plików.<p>* **Nazwa subskrypcji**: Podaj unikatową nazwę dla Twojej subskrypcji zdarzeń. |
    | | | 
 
    Gdy skończysz, wyzwalacz usługi Event Grid może wyglądać jak w tym przykładzie:

@@ -13,14 +13,15 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0bcff6e0cec234f17b0aaab9828602eb4a194d85
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 3a84f9ed35bac7f56d4a6aa2af94d1c28e335b74
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334214"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093203"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Samouczek: integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager
+# <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager
 
 Dowiedz się, jak pobrać wartości wpisu tajnego z usługi Azure Key Vault i przekazać te wartości jako parametry podczas wdrażania usługi Resource Manager. Wartość nigdy nie jest uwidoczniana, ponieważ używane jest tylko odwołanie do jej identyfikatora magazynu Key Vault. Aby uzyskać więcej informacji, zobacz [Use Azure Key Vault to pass secure parameter value during deployment (Bezpieczne przekazywanie wartości parametru za pomocą usługi Azure Key Vault podczas wdrażania)](./resource-manager-keyvault-parameter.md)
 
@@ -48,7 +49,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
+    Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
 
 ## <a name="prepare-the-key-vault"></a>Przygotowanie magazynu Key Vault
 
@@ -81,7 +82,7 @@ Aby utworzyć magazyn Key Vault:
 
 1. Wybierz poniższy obraz, aby zalogować się na platformie Azure i otworzyć szablon. Ten szablon umożliwia utworzenie magazynu Key Vault oraz wpisu tajnego.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatekeyvault%2FCreateKeyVault.json"><img src="./media/resource-manager-tutorial-use-key-vault/deploy-to-azure.png" /></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatekeyvault%2FCreateKeyVault.json"><img src="./media/resource-manager-tutorial-use-key-vault/deploy-to-azure.png" alt="deploy to azure"/></a>
 
 2. Wybierz lub wprowadź następujące wartości.  Nie wybieraj przycisku **Kup** po wprowadzeniu wartości.
 
@@ -93,9 +94,9 @@ Aby utworzyć magazyn Key Vault:
     * **Nazwa usługi Key Vault**: przypisz unikatową nazwę. 
     * **Identyfikator dzierżawy**: funkcja szablonu automatycznie pobiera identyfikator dzierżawy.  Nie zmieniaj wartości domyślnej
     * **Identyfikator użytkownika usługi AD**: wprowadź identyfikator obiektu użytkownika w usłudze Azure AD, pobrany w poprzedniej procedurze.
-    * **Nazwa wpisu tajnego**: nazwa domyślna to **vmAdminPassword**. Jeśli zmienisz nazwę wpisu tajnego w tym miejscu, będzie konieczne zaktualizowanie nazwy wpisu tajnego podczas wdrażania maszyny wirtualnej.
-    * **Wartość wpisu tajnego**: wprowadź wpis tajny.  Wpis tajny to hasło używane do logowania na maszynie wirtualnej. Zaleca się używanie hasła wygenerowanego w poprzedniej procedurze.
-    * **Wyrażam zgodę na powyższe warunki i postanowienia**: zaznacz.
+    * **Nazwa wpisu tajnego**: Nazwa domyślna to **vmAdminPassword**. Jeśli zmienisz nazwę wpisu tajnego w tym miejscu, będzie konieczne zaktualizowanie nazwy wpisu tajnego podczas wdrażania maszyny wirtualnej.
+    * **Wartość wpisu tajnego**: Wprowadź wpis tajny.  Wpis tajny to hasło używane do logowania na maszynie wirtualnej. Zaleca się używanie hasła wygenerowanego w poprzedniej procedurze.
+    * **Wyrażam zgodę na powyższe warunki i postanowienia**: Zaznacz.
 3. Wybierz pozycję **Edytuj parametry** w górnej części, aby zapoznać się z szablonem.
 4. Przejdź do wiersza 28 pliku szablonu w formacie JSON. Jest to definicja zasobu usługi Key Vault.
 5. Przejdź do wiersza 35:

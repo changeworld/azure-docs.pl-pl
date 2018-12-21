@@ -1,21 +1,22 @@
 ---
-title: Przeprowadzanie migracji danych usługi Azure Event Hubs do usługi SQL Data Warehouse | Microsoft Docs
+title: Przeprowadzanie migracji danych zdarzenia do usługi SQL Data Warehouse — Azure Event Hubs | Microsoft Docs
 description: W tym samouczku pokazano, w jaki sposób zapisać dane z centrum zdarzeń w magazynie danych SQL, korzystając z funkcji platformy Azure wyzwalanej przez usługę Event Grid.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
-ms.date: 08/27/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 9673a7bff8e2d22764be28abef807434c53cc552
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 03ebdabf60882a73eb15cbd36481068591bbd3bc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145192"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086287"
 ---
-# <a name="process-and-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Przetwarzanie i migrowanie zapisanych danych usługi Event Hubs w usłudze SQL Data Warehouse przy użyciu usługi Event Grid i Azure Functions
+# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Migrowanie przechwyconych danych usługi Event Hubs do usługi SQL Data Warehouse przy użyciu usług Event Grid i Azure Functions
 
 Funkcja [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) usługi Event Hubs to najprostszy sposób, aby automatycznie dostarczać przesyłane strumieniowo dane z usługi Event Hubs do usługi Azure Blob Storage lub Azure Data Lake Store. Następnie można przetwarzać te dane i dostarczać je do dowolnie wybranego magazynu docelowego, na przykład usługi SQL Data Warehouse lub Cosmos DB. W tym samouczku dowiesz się, w jaki sposób zapisać dane z centrum zdarzeń w magazynie danych SQL, korzystając z funkcji platformy Azure wyzwalanej przez usługę [Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 

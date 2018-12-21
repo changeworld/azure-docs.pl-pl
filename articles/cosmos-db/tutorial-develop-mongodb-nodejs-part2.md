@@ -1,23 +1,23 @@
 ---
-title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 2
+title: Aplikacja Angular w języku Node.js korzystająca z interfejsu API bazy danych MongoB (część 2)
+titleSuffix: Azure Cosmos DB
 description: Część 2 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB przy użyciu usługi Angular i języka Node dla usługi Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB.
-services: cosmos-db
 author: johnpapa
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: mvc
-ms.openlocfilehash: 8e2bce1943096613dab3975863f787fcc904f827
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 842a321f63bce11207e6144705e9c4f68df21760
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868127"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133979"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB— część 2: tworzenie aplikacji Node.js Express przy użyciu interfejsu wiersza polecenia usługi Angular 
+# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB — część 2: tworzenie aplikacji platformy Node.js Express
 
 Ten wieloczęściowy samouczek pokazuje, jak utworzyć nową aplikację [interfejsu API bazy danych MongoDB](mongodb-introduction.md) napisaną w języku w Node.js przy użyciu programu Express oraz usług Angular i Azure Cosmos DB.
 

@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie usługi Custom Vision na urządzeniu usługi Azure IoT Edge | Microsoft Docs
-description: Dowiedz się, jak sprawić, aby model przetwarzania obrazów był uruchamiany jako kontener, używając usług Custom Vision i IoT Edge.
+title: Samouczek dotyczący wdrażania klasyfikatora usługi Custom Vision na urządzeniu — Azure IoT Edge | Microsoft Docs
+description: W tym samouczku dowiesz się, jak sprawić, aby model przetwarzania obrazów był uruchamiany jako kontener, używając usług Custom Vision i IoT Edge.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -8,15 +8,15 @@ ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: a8f72c62393f6ba470c31a55668382ae0beb290e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566486"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075832"
 ---
-# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Samouczek: wykonywanie klasyfikacji obrazów na urządzeniach brzegowych za pomocą usługi Custom Vision
+# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Samouczek: Wykonywanie klasyfikacji obrazów na urządzeniach brzegowych za pomocą usługi Custom Vision Service
 
 Usługa Azure IoT Edge może usprawnić Twoje rozwiązanie IoT przez przeniesienie obciążeń z chmury na urządzenia brzegowe. Ta funkcja jest bardzo przydatna w przypadku usług, które przetwarzają dużą ilość danych, takich jak modele przetwarzania obrazów. Usługa [Custom Vision](../cognitive-services/custom-vision-service/home.md) umożliwia tworzenie niestandardowych klasyfikatorów obrazów i wdrażanie ich na urządzeniach w postaci kontenerów. Te dwie usługi połączone razem pozwalają na uzyskiwanie szczegółowych informacji z obrazów lub strumieni wideo bez konieczności wcześniejszego przeniesienia wszystkich danych poza siedzibę firmy. Usługa Custom Vision udostępnia klasyfikator, który porównuje obraz z wyszkolonym modelem w celu wygenerowania szczegółowych informacji. 
 
@@ -95,11 +95,11 @@ Do utworzenia klasyfikatora obrazów jest potrzebny zestaw obrazów szkoleniowyc
 
 3. Przejdź do sklonowanego lokalnie repozytorium git, a następnie przejdź do pierwszego folderu obrazów **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**. Zaznacz wszystkie 10 obrazów w tym folderze, a następnie wybierz pozycję **Open** (Otwórz). 
 
-4. Dodaj do tej grupy obrazów tag **cykuta**, a następnie naciśnij klawisz **Enter**, aby zastosować ten tag. 
+4. Dodaj do tej grupy obrazów tag **choina**, a następnie naciśnij klawisz **Enter**, aby zastosować ten tag. 
 
 5. Wybierz pozycję **Upload 10 files** (Przekaż 10 plików). 
 
-   ![Przekazywanie plików oznakowanych jako cykuta](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Przekazywanie plików oznaczonych tagiem choina do usługi Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Po pomyślnym przekazaniu obrazów wybierz pozycję **Done** (Gotowe).
 
@@ -117,7 +117,7 @@ Do utworzenia klasyfikatora obrazów jest potrzebny zestaw obrazów szkoleniowyc
 
 1. Po wyszkoleniu klasyfikatora wybierz pozycję **Eksport** (Eksportuj) na stronie Performance (Wydajność) klasyfikatora. 
 
-   ![Eksportowanie klasyfikatora obrazów](./media/tutorial-deploy-custom-vision/export.png)
+   ![Eksportowanie wytrenowanego klasyfikatora obrazów](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Jako platformę wybierz **DockerFile**. 
 
@@ -151,7 +151,7 @@ Rozwiązanie jest logicznym sposobem tworzenia i organizowania wielu modułów d
 
 3. Wybierz kolejno opcje **Widok** > **Paleta poleceń**, aby otworzyć paletę poleceń programu VS Code. 
 
-4. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: nowe rozwiązanie usługi IoT Edge**. W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie: 
+4. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie: 
 
    | Pole | Wartość |
    | ----- | ----- |
@@ -201,7 +201,7 @@ W rzeczywistym wdrożeniu usługi Custom Vision istniałaby kamera dostarczając
 
 W tej sekcji dodasz nowy moduł do tego samego rozwiązania CustomVisionSolution i podasz kod umożliwiający utworzenie symulowanej kamery. 
 
-1. W tym samym oknie programu Visual Studio Code użyj palety poleceń, aby uruchomić usługę **Azure IoT Edge: dodawanie modułu usługi IoT Edge**. W palecie poleceń podaj następujące informacje dotyczące nowego modułu: 
+1. W tym samym oknie programu Visual Studio Code użyj palety poleceń, aby uruchomić polecenie **Azure IoT Edge: Add IoT Edge Module** (Azure IoT Edge: dodawanie modułu usługi IoT Edge). W palecie poleceń podaj następujące informacje dotyczące nowego modułu: 
 
    | Monit | Wartość | 
    | ------ | ----- |
@@ -423,7 +423,7 @@ Najpierw skompiluj swoje rozwiązanie i wypchnij je do rejestru kontenerów.
 
 Następnie skonfiguruj dostęp do usługi IoT Hub z poziomu programu Visual Studio Code. 
 
-1. W palecie poleceń programu VS Code wybierz polecenie **Azure IoT Hub: Select IoT Hub (Azure IoT Hub: wybierz centrum IoT Hub)**.
+1. W palecie poleceń programu VS Code wybierz polecenie **Azure IoT Hub: Select IoT Hub**  (Azure IoT Hub: wybierz centrum IoT Hub).
 2. Postępuj zgodnie z monitami, aby zalogować się na koncie platformy Azure. 
 3. W palecie poleceń wybierz subskrypcję platformy Azure, a następnie wybierz centrum IoT Hub. 
 
@@ -453,7 +453,7 @@ Na urządzeniu możesz wyświetlać dzienniki modułu cameraCapture, aby zobaczy
 
 W programie Visual Studio Code kliknij prawym przyciskiem myszy nazwę urządzenia usługi IoT Edge i wybierz pozycję **Rozpocznij monitorowanie komunikatu D2C**. 
 
-Wyniki z modułu usługi Custom Vision, które są wysyłane jako komunikaty z modułu cameraCapture, uwzględniają prawdopodobieństwo, że obraz przedstawia cykutę lub drzewo wiśni. Ponieważ obraz przedstawia cykutę, powinno być widoczne prawdopodobieństwo 1.0. 
+Wyniki z modułu usługi Custom Vision, które są wysyłane jako komunikaty z modułu cameraCapture, uwzględniają prawdopodobieństwo, że obraz przedstawia choinę lub drzewo wiśni. Ponieważ obraz przedstawia choinę, powinno być widoczne prawdopodobieństwo 1.0. 
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

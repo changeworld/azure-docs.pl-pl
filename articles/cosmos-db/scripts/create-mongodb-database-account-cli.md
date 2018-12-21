@@ -1,20 +1,20 @@
 ---
-title: Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i kolekcji interfejsu API MongoDB usługi Azure Cosmos DB | Microsoft Docs
+title: Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i kolekcji interfejsu API MongoDB usługi Azure Cosmos DB
 description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i kolekcji interfejsu API MongoDB usługi Azure Cosmos DB
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 6ca603a324dddf243927cf5bb67556edfb1cf7e6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7c7f3f6907f0c21e3c66a3d814dc355476bec553
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007140"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958353"
 ---
-# <a name="azure-cosmos-db-create-an-mongodb-api-account-using-azure-cli"></a>Azure Cosmos DB: tworzenie konta interfejsu API MongoDB przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="azure-cosmos-db-create-an-mongodb-api-account-using-azure-cli"></a>Usługa Azure Cosmos DB tworzenie konta interfejsu API MongoDB przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Ten przykładowy skrypt interfejsu wiersza polecenia tworzy konto, bazę danych i kolekcję interfejsu API MongoDB usługi Azure Cosmos DB.
 

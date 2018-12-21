@@ -1,5 +1,5 @@
 ---
-title: Interfejs API RESTful z obsługą mechanizmu CORS w usłudze Azure App Service | Microsoft Docs
+title: Hostowanie interfejsu API RESTful z obsługą mechanizmu CORS — Azure App Service | Microsoft Docs
 description: Dowiedz się, w jaki sposób usługa Azure App Service umożliwia hostowanie interfejsów API RESTful z obsługą mechanizmu CORS.
 services: app-service\api
 documentationcenter: dotnet
@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 4d8a95ee4afc844868cfda78087773a6a37c07c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: b22ea49367009a4c76135d979d783c5b73449d9d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445433"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261572"
 ---
-# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Samouczek: hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service
+# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Samouczek: Hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service
 
 Usługa [Azure App Service](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Usługa App Service ma dodatkowo wbudowaną obsługę mechanizmu [współużytkowania zasobów między źródłami (CORS, Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) dla interfejsów API RESTful. Ten samouczek pokazuje, w jaki sposób wdrożyć aplikację interfejsu API platformy ASP.NET Core w usłudze App Service z obsługą mechanizmu CORS. Aplikacja zostanie skonfigurowana przy użyciu narzędzi wiersza polecenia i wdrożona za pomocą narzędzia Git. 
 
@@ -58,7 +58,7 @@ Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-To repozytorium zawiera aplikację utworzoną na podstawie następującego samouczka: [ASP.NET Core Web API help pages using Swagger (Strony pomocy internetowego interfejsu API platformy ASP.NET Core korzystające ze struktury Swagger)](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Używa ona generatora struktury Swagger, aby obsłużyć [interfejs użytkownika struktury Swagger](https://swagger.io/swagger-ui/) oraz punkt końcowy JSON struktury Swagger.
+To repozytorium zawiera aplikację utworzoną na podstawie następującego samouczka: [ASP.NET Core Web API help pages using Swagger (Strony pomocy internetowego interfejsu API platformy ASP.NET Core dotyczące korzystania z programu Swagger)](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Używa ona generatora struktury Swagger, aby obsłużyć [interfejs użytkownika struktury Swagger](https://swagger.io/swagger-ui/) oraz punkt końcowy JSON struktury Swagger.
 
 ### <a name="run-the-application"></a>Uruchamianie aplikacji
 
@@ -211,4 +211,4 @@ Które czynności umiesz wykonać:
 Przejdź do następnego samouczka, aby dowiedzieć się, jak uwierzytelniać i autoryzować użytkowników.
 
 > [!div class="nextstepaction"]
-> [Samouczek: kompleksowe uwierzytelnianie i autoryzacja użytkowników](app-service-web-tutorial-auth-aad.md)
+> [Samouczek: Kompleksowe uwierzytelnianie i autoryzacja użytkowników](app-service-web-tutorial-auth-aad.md)

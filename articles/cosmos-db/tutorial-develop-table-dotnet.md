@@ -1,23 +1,23 @@
 ---
-title: 'Azure Cosmos DB: programowanie za pomocą interfejsu Table API na platformie .NET'
-description: Dowiedz się, jak tworzyć aplikacje za pomocą interfejsu Table API usługi Azure Cosmos DB przy użyciu platformy .NET
-services: cosmos-db
+title: Tworzenie aplikacji za pomocą interfejsu API tabel przy użyciu zestawu .NET SDK
+titleSuffix: Azure Cosmos DB
+description: Dowiedz się, jak tworzyć aplikacje za pomocą interfejsu API tabel w usłudze Azure Cosmos DB przy użyciu zestawu .NET
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/18/2017
+ms.date: 12/07/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 02c4ead0f41463a70cc7123427193f835d9cca94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: f10cb17f0300b6bd21d17b1e2ff204d57e4a7988
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877739"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251185"
 ---
-# <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: programowanie za pomocą interfejsu Table API na platformie .NET
+# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>Tworzenie aplikacji za pomocą interfejsu API tabel usługi Azure Cosmos DB przy użyciu zestawu .NET SDK
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
@@ -77,7 +77,7 @@ Zacznijmy od utworzenia konta usługi Azure Cosmos DB w witrynie Azure Portal.
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
-Teraz sklonujemy aplikację Tabela z repozytorium GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi. 
+Teraz sklonujemy aplikację Tabela z serwisu GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi. 
 
 1. Otwórz okno terminala usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do folderu instalacji aplikacji przykładowej. 
 
@@ -97,7 +97,7 @@ Teraz sklonujemy aplikację Tabela z repozytorium GitHub, ustawimy parametry po�
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji. Umożliwia to aplikacji komunikację z hostowaną bazą danych. 
 
-1. W witrynie [Azure Portal](http://portal.azure.com/) kliknij pozycję **Parametry połączenia**. 
+1. W witrynie [Azure Portal](https://portal.azure.com/) kliknij pozycję **Parametry połączenia**. 
 
     Użyj przycisków kopiowania po prawej stronie ekranu, aby skopiować PODSTAWOWE PARAMETRY POŁĄCZENIA.
 
@@ -180,7 +180,8 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 Ten klient zostanie zainicjowany przy użyciu wartości konfiguracji `TableConnectionMode`, `TableConnectionProtocol`, `TableConsistencyLevel` i `TablePreferredLocations`, jeśli są one określone w ustawieniach aplikacji.
 
 ## <a name="create-a-table"></a>Tworzenie tabeli
-Następnie należy utworzyć tabelę za pomocą obiektu `CloudTable`. Tabele w usłudze Azure Cosmos DB można skalować niezależnie pod względem magazynu i przepływności, a partycjonowanie jest obsługiwane automatycznie przez usługę. Usługa Azure Cosmos DB obsługuje tabele o stałym rozmiarze i bez limitu rozmiaru. Szczegółowe informacje zawiera temat [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partition-data.md). 
+
+Następnie należy utworzyć tabelę za pomocą obiektu `CloudTable`. Tabele w usłudze Azure Cosmos DB można skalować niezależnie pod względem magazynu i przepływności, a partycjonowanie jest obsługiwane automatycznie przez usługę. 
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");

@@ -8,14 +8,14 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 274de7ac63df0afc1a59e197deebeb7929cf1ef8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b65972b79fd16b912abfbd2e35642ef5d9f5adc4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855015"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438476"
 ---
-# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
+# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
 W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](http://projects.spring.io/spring-boot/). 
 
@@ -92,7 +92,7 @@ Aby narzędzie Jenkins monitorowało usługę GitHub i odpowiadało po wypchnię
 > 
 > Te kroki umożliwiają utworzenie poświadczeń osobistego tokenu dostępu dla narzędzia Jenkins na potrzeby współpracy z usługą GitHub za pomocą nazwy użytkownika i hasła usługi GitHub. 
 > Jeśli jednak konto usługi GitHub korzysta z uwierzytelniania dwuskładnikowego, zamiast tego utwórz token w usłudze GitHub i skonfiguruj narzędzie Jenkins pod kątem użycia tego tokenu. 
-> Aby uzyskać więcej informacji, zobacz dokumentację [wtyczki usługi GitHub dla narzędzia Jenkins](https://wiki.jenkins.io/display/JENKINS/Github+Plugin).
+> Aby uzyskać więcej informacji, zobacz dokumentację [wtyczki usługi GitHub dla narzędzia Jenkins](https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin).
 
 1. Na stronie **Manage Jenkins** (Zarządzanie narzędziem Jenkins) wybierz pozycję **Configure System** (Konfiguruj system). 
 
@@ -164,7 +164,7 @@ Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`**:
 
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------| 
-   | **Subscription ID (Identyfikator subskrypcji)** | <*yourAzureSubscription-ID (Identyfikator Twojej subskrypcji platformy Azure)*> | Wartość identyfikatora GUID dla subskrypcji platformy Azure <p>**Wskazówka**: jeśli nie znasz identyfikatora subskrypcji platformy Azure, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure z poziomu wiersza polecenia lub usługi Cloud Shell, a następnie użyj wartości identyfikatora GUID `id`: <p>`az account list` | 
+   | **Subscription ID (Identyfikator subskrypcji)** | <*yourAzureSubscription-ID (Identyfikator Twojej subskrypcji platformy Azure)*> | Wartość identyfikatora GUID dla subskrypcji platformy Azure <p>**Porada**: jeśli nie znasz identyfikatora subskrypcji platformy Azure, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure z poziomu wiersza polecenia lub usługi Cloud Shell, a następnie użyj wartości identyfikatora GUID `id`: <p>`az account list` | 
    | **Client ID (Identyfikator klienta)** | <*yourAzureServicePrincipal-ID (Identyfikator jednostki usługi platformy Azure)*> | Wartość identyfikatora GUID `appId` wygenerowanego wcześniej dla jednostki usługi platformy Azure | 
    | **Client Secret (Wpis tajny klienta)** | <*yourSecurePassword (Hasło)*> | Wartość `password` lub „wpis tajny” określony dla jednostki usługi platformy Azure | 
    | **Tenant ID (Identyfikator dzierżawy)** | <*yourAzureActiveDirectoryTenant-ID (Identyfikator dzierżawy usługi Azure Active Directory)*> | Wartość identyfikatora GUID `tenant` dla dzierżawy usługi Azure Active Directory | 

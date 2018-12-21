@@ -1,6 +1,6 @@
 ---
 title: Importowanie plików BACPAC bazy danych SQL za pomocą szablonów usługi Azure Resource Manager | Microsoft Docs
-description: Informacje o sposobie importowania plików BACPAC bazy danych SQL przy użyciu szablonów usługi Azure Resource Manager z wykorzystaniem rozszerzenia usługi SQL Database
+description: Informacje o sposobie importowania plików BACPAC bazy danych SQL przy użyciu szablonów usługi Azure Resource Manager z wykorzystaniem rozszerzenia usługi SQL Database.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/04/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9f1b3ea74c59383561b019d32a80f1502716b29e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 249356644772ae75b12f5c940ff5f9ed49b2c795
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879231"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994988"
 ---
-# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Samouczek: importowanie plików BACPAC bazy danych SQL za pomocą szablonów usługi Azure Resource Manager
+# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Samouczek: Importowanie plików BACPAC bazy danych SQL za pomocą szablonów usługi Azure Resource Manager
 
-Dowiedz się, jak zaimportować plik BACPAC za pomocą rozszerzeń usługi Azure SQL Database. W tym samouczku utworzysz szablon umożliwiający wdrożenie serwera SQL Azure Server, usługi SQL Database i pliku BACPAC. Aby uzyskać informacje dotyczące wdrażania rozszerzeń maszyny wirtualnej platformy Azure przy użyciu szablonów usługi Azure Resource Manager, zobacz [# Samouczek: wdrażanie rozszerzeń maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager](./resource-manager-tutorial-deploy-vm-extensions.md).
+Informacje o sposobie importowania pliku BACPAC przy użyciu szablonów usługi Azure Resource Manager z wykorzystaniem rozszerzeń usługi Azure SQL Database. Artefakty wdrożenia to dowolne pliki oprócz pliku szablonu głównego, które są potrzebne do ukończenia wdrożenia. Artefaktem jest na przykład plik BACPAC. W tym samouczku utworzysz szablon umożliwiający wdrożenie serwera SQL Azure Server i usługi SQL Database oraz zaimportowanie pliku BACPAC. Aby uzyskać informacje dotyczące wdrażania rozszerzeń maszyny wirtualnej platformy Azure przy użyciu szablonów usługi Azure Resource Manager, zobacz [# Samouczek: Wdrażanie rozszerzeń maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager](./resource-manager-tutorial-deploy-vm-extensions.md).
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -45,11 +45,11 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
+    Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
 
 ## <a name="prepare-a-bacpac-file"></a>Przygotowywanie pliku BACPAC
 
-Plik BACPAC jest udostępniony na [koncie usługi Azure Storage z publicznym dostępem](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac). Aby utworzyć własny plik, zobacz [Eksportowanie bazy danych Azure SQL Database do pliku BACPAC](../sql-database/sql-database-export.md). W przypadku wybrania publikowania pliku do własnej lokalizacji musisz zaktualizować szablon w dalszej części tego samouczka.
+Plik BACPAC jest udostępniony na [koncie usługi Azure Storage](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac) z publicznym dostępem. Aby utworzyć własny plik, zobacz [Eksportowanie bazy danych Azure SQL Database do pliku BACPAC](../sql-database/sql-database-export.md). W przypadku wybrania publikowania pliku do własnej lokalizacji musisz zaktualizować szablon w dalszej części tego samouczka.
 
 ## <a name="open-a-quickstart-template"></a>Otwieranie szablonu szybkiego startu
 
@@ -68,12 +68,13 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
     * `Microsoft.Sql/servers`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
     * `Microsoft.SQL/servers/securityAlertPolicies`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies).
     * `Microsoft.SQL.servers/databases`.  Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+
     Warto uzyskać podstawową wiedzę na temat szablonu przed rozpoczęciem jego dostosowywania.
 4. Wybierz pozycję **Plik**>**Zapisz jako**, aby zapisać kopię pliku o nazwie **azuredeploy.json** na komputerze lokalnym.
 
 ## <a name="edit-the-template"></a>Edytowanie szablonu
 
-Do szablonu należy dodać dwa dodatkowe zasoby.
+Dodaj do szablonu dwa dodatkowe zasoby.
 
 * Aby umożliwić rozszerzeniu usługi SQL Database importowanie plików BACPAC, musisz zezwolić na dostęp do usług platformy Azure. Dodaj następujący kod JSON do definicji serwera SQL:
 
@@ -82,7 +83,7 @@ Do szablonu należy dodać dwa dodatkowe zasoby.
         "type": "firewallrules",
         "name": "AllowAllAzureIps",
         "location": "[parameters('location')]",
-        "apiVersion": "2014-04-01",
+        "apiVersion": "2015-05-01-preview",
         "dependsOn": [
             "[variables('databaseServerName')]"
         ],
@@ -130,7 +131,7 @@ Do szablonu należy dodać dwa dodatkowe zasoby.
     * **storageKeyType**: typ klucza magazynu do użycia. Wartością może być `StorageAccessKey` lub `SharedAccessKey`. Ponieważ podany plik BACPAC jest udostępniany na koncie usługi Azure Storage z dostępem publicznym, używana jest w tym przypadku wartość „SharedAccessKey”.
     * **storageKey**: klucz magazynu do użycia. Jeśli typ klucza magazynu ma wartość SharedAccessKey, należy go poprzedzić znakiem „?”.
     * **storageUri**: identyfikator URI magazynu do użycia. Jeśli nie chcesz używać dostarczonego pliku BACPAC, musisz zaktualizować te wartości.
-    * **administratorLoginPassword**: hasło administratora bazy danych SQL. Zaleca się użycie wygenerowanego hasła. Zobacz [Wymagania wstępne](#prerequisites).
+    * **administratorLoginPassword**: hasło administratora serwera SQL. Użyj wygenerowanego hasła. Zobacz [Wymagania wstępne](#prerequisites).
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
@@ -151,7 +152,7 @@ New-AzureRmResourceGroupDeployment -Name $deploymentName `
     -TemplateFile azuredeploy.json
 ```
 
-Zaleca się użycie wygenerowanego hasła. Zobacz [Wymagania wstępne](#prerequisites).
+Użyj wygenerowanego hasła. Zobacz [Wymagania wstępne](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
@@ -170,7 +171,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wdrożono program SQL Server i usługę SQL Database oraz zaimportowano plik BACPAC. Aby dowiedzieć się, jak wdrażać zasoby platformy Azure w wielu regionach i jak stosować praktyki bezpiecznego wdrażania, zobacz
+W tym samouczku wdrożono program SQL Server i usługę SQL Database oraz zaimportowano plik BACPAC. Plik BACPAC jest przechowywany na koncie usługi Azure Storage. Każda osoba dysponująca adresem URL może uzyskać dostęp do tego pliku. Aby dowiedzieć się, jak zabezpieczyć plik BACPAC (artefakt), zobacz
 
 > [!div class="nextstepaction"]
-> [Używanie usługi Azure Deployment Manager](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Zabezpieczanie artefaktów](./resource-manager-tutorial-secure-artifacts.md)

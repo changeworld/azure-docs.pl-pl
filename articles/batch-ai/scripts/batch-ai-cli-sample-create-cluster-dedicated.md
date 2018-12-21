@@ -14,20 +14,23 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 07/26/2018
 ms.author: danlep
-ms.openlocfilehash: 10f3444f81dfaeac4331f0b7798ade7eefbd29fb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 643d2a5a600d018912f09d01f2e018100767f147
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058131"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410129"
 ---
 # <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-dedicated-nodes"></a>Przykład użycia interfejsu wiersza polecenia: tworzenie klastra usługi Batch AI składającego się z dedykowanych węzłów i zarządzanie nim
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 Ten skrypt demonstruje niektóre polecenia dostępne w interfejsie wiersza polecenia platformy Azure służące do tworzenia klastra usługi Batch AI składającego się z dedykowanych węzłów (maszyn wirtualnych) i zarządzania nim.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, zauważ, że ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.38 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się na instalację i używanie interfejsu wiersza polecenia lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.38 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
 
 ## <a name="example-script"></a>Przykładowy skrypt
 
