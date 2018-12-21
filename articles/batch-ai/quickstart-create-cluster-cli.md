@@ -15,14 +15,17 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 09/03/2018
 ms.author: danlep
-ms.openlocfilehash: 0d4ba7edfb22a6710222c854ceb2bf86284d2d77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1ea12c9a544704ea91b85ae944e611e6769b5592
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057802"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407137"
 ---
-# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>Przewodnik Szybki start: tworzenie klastra do zadań szkoleniowych usługi Batch AI przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>Przewodnik Szybki start: tworzenie klastra do zadań szkoleniowych usługi Batch AI przy użyciu interfejsu wiersza poleceń platformy Azure
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 W tym przewodniku Szybki start przedstawiono, jak użyć interfejsu wiersza polecenia platformy Azure do utworzenia klastra usługi Batch AI, który można wykorzystać do szkolenia modeli sztucznej inteligencji i uczenia maszynowego. Batch AI to zarządzana usługa, która umożliwia naukowcom zajmującym się danymi oraz badaczom sztucznej inteligencji szkolenie modeli sztucznej inteligencji i uczenia maszynowego na dużą skalę w klastrach z maszynami wirtualnymi platformy Azure.
 
@@ -137,7 +140,7 @@ az batchai cluster resize \
     --target 2
 ```
 
-Zmiana rozmiaru klastra potrwa kilka minut.
+Zmiana rozmiaru klastra zajmie kilka minut.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: tworzenie aplikacji Xamarin.Forms za pomocą platformy .NET i interfejsu API usługi MongoDB'
+title: Usługa Azure Cosmos DB Tworzenie aplikacji Xamarin.Forms za pomocą platformy .NET i interfejsu API usługi MongoDB
 description: Przykładowy kod Xamarin, którego można używać do nawiązywania połączeń z interfejsem API MongoDB usługi Azure Cosmos DB i wysyłania do niego zapytań
 services: cosmos-db
 author: codemillmatt
@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 4fde6d203999b15f0f60d4879c2fdc595e1fb7e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ece6780803809829e69fccc320ae65a0c7b0f94b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835560"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089262"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Szybki start: tworzenie aplikacji Xamarin.Forms interfejsu API usługi MongoDB za pomocą platformy .NET i witryny Azure Portal
 
@@ -156,7 +156,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z klasy `MongoService`, którą mo�
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji.
 
-1. W witrynie [Azure Portal](http://portal.azure.com/), korzystając ze swojego konta usługi Azure Cosmos DB, kliknij w lewym panelu nawigacyjnym pozycję **Parametry połączenia**, a następnie pozycję **Klucze odczytu i zapisu**. Użyj przycisków kopiowania po prawej stronie ekranu, aby skopiować podstawowe parametry połączenia w kolejnych krokach.
+1. W witrynie [Azure Portal](https://portal.azure.com/), korzystając ze swojego konta usługi Azure Cosmos DB, kliknij w lewym panelu nawigacyjnym pozycję **Parametry połączenia**, a następnie pozycję **Klucze odczytu i zapisu**. Użyj przycisków kopiowania po prawej stronie ekranu, aby skopiować podstawowe parametry połączenia w kolejnych krokach.
 
 2. Otwórz plik **APIKeys.cs** w katalogu **Helpers** projektu **TaskList.Core**.
 

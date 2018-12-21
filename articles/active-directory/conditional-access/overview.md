@@ -14,19 +14,21 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2673a0ec1e9ed66c9a1bb6e369ad5300a570ba0a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f0ba365096808954c24beb073f3570499fd23523
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240447"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408280"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Co to jest dostęp warunkowy w usłudze Azure Active Directory?
 
 Zabezpieczenia są niezwykle ważne dla organizacji korzystających z chmury. Kluczowym aspektem zabezpieczeń w chmurze jest zarządzanie tożsamościami i dostępem do zasobów w chmurze. W świecie zdominowanym przez urządzenia mobilne i rozwiązania chmurowe użytkownicy mogą uzyskiwać dostęp do zasobów organizacji z dowolnego miejsca, za pomocą wielu różnych urządzeń i aplikacji. Dlatego nie wystarczy już tylko kontrolować tego, kto może uzyskać dostęp do zasobu. Aby zapewnić właściwą równowagę między bezpieczeństwem a produktywnością, należy w decyzjach dotyczących kontroli dostępu uwzględnić też to, w jaki sposób uzyskuje się dostęp do zasobu. Funkcja dostępu warunkowego w usłudze Azure Active Directory (Azure AD) pozwala sprostać temu wymaganiu. Dostęp warunkowy jest funkcją usługi Azure Active Directory. Dzięki tej funkcji można zautomatyzować decyzje dotyczące kontroli dostępu do aplikacji w chmurze, zgodnie z określonymi warunkami. 
+
+Zasady dostępu warunkowego są wymuszane, gdy uwierzytelnianie pierwszego stopnia zostało zakończone. Innymi słowy dostęp warunkowy nie ma być mechanizmem służącym np. do zapobiegania atakom typu „odmowa usługi” (DoS).  
 
 ![Kontrola](./media/overview/81.png)
 
@@ -56,6 +58,11 @@ Poniżej przedstawiono kilka powszechnych problemów związanych z dostępem, w 
 - **[Aplikacja kliencka](conditions.md#client-apps)**: obecnie można uzyskiwać dostęp do wielu aplikacji w chmurze za pomocą różnego typu aplikacji, na przykład aplikacji internetowych, mobilnych i klasycznych. Co zrobić w przypadku próby dostępu za pomocą typu aplikacji klienckiej, który powoduje znane problemy? Co, jeśli chcesz, aby określone typy aplikacji były używane tylko na urządzeniach zarządzanych przez Twój dział IT? 
 
 Te pytania oraz odpowiedzi na nie określają typowe scenariusze zastosowania dostępu warunkowego w usłudze Azure AD. Dostęp warunkowy to funkcja usługi Azure Active Directory umożliwiająca obsługę dostępu na podstawie zasad.
+
+  
+
+
+> [!VIDEO https://www.youtube.com/embed/eLAYBwjCGoA]
 
 
 ## <a name="conditional-access-policies"></a>Zasady dostępu warunkowego
@@ -107,7 +114,5 @@ Do korzystania z funkcji dostępu warunkowego wymagana jest licencja usługi Azu
     - Na temat mechanizmów kontroli dostępu — zobacz [Access controls in Azure Active Directory conditional access (Mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory)](controls.md).
 
 - Jeśli chcesz lepiej zapoznać się ze sposobem konfigurowania zasad dostępu warunkowego, zobacz [Require MFA for specific apps with Azure Active Directory conditional access (Korzystanie z dostępu warunkowego w usłudze Azure Active Directory w celu wymagania uwierzytelniania wieloskładnikowego dla określonych aplikacji)](app-based-mfa.md).
-
-- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md). 
 
 - Jeśli chcesz zapoznać się z planem wdrożenia krok po kroku, wraz z zalecanymi zasadami, zobacz [plan wdrożenia dostępu warunkowego](https://aka.ms/conditionalaccessdeploymentplan).

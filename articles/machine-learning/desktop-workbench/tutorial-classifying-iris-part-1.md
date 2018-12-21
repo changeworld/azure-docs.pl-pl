@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
+ms.date: 03/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd10581888da64114debec40cba8564023033864
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990165"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278512"
 ---
-# <a name="tutorial-1-classify-iris---preparing-the-data"></a>Samouczek 1: klasyfikowanie irysów — przygotowanie danych
+# <a name="tutorial-1-classify-iris---preparing-the-data"></a>Samouczek 1. Klasyfikowanie irysów — przygotowanie danych
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -45,11 +45,11 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 - Konto Eksperymentowanie w usłudze Azure Machine Learning
 - Zainstalowana aplikacja Azure Machine Learning Workbench
 
-Jeśli te wymagania wstępne nie zostały jeszcze spełnione, postępuj zgodnie z instrukcjami w artykule [Szybki start: instalacja i uruchamianie](quickstart-installation.md), aby skonfigurować Twoje konta i zainstalować aplikację Azure Machine Learning Workbench. 
+Jeśli te wymagania wstępne nie zostały jeszcze spełnione, wykonaj kroki opisane w artykule [Szybki start: instalacja i uruchamianie](quickstart-installation.md), aby skonfigurować konta i zainstalować aplikację Azure Machine Learning Workbench. 
 
 ## <a name="create-a-new-project-in-workbench"></a>Tworzenie nowego projektu w aplikacji Workbench
 
-Jeśli wykonywano kroki z artykułu [Szybki start: instalacja i uruchamianie](quickstart-installation.md), ten projekt powinien już istnieć i możesz przejść do następnej sekcji.
+Jeśli wykonano kroki opisane w artykule [Szybki start: instalacja i uruchamianie](quickstart-installation.md), ten projekt powinien już istnieć i możesz przejść do następnej sekcji.
 
 1. Uruchom aplikację Azure Machine Learning Workbench i w razie potrzeby zaloguj się. 
    

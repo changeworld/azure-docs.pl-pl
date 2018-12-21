@@ -1,6 +1,6 @@
 ---
-title: Włączanie funkcji przechwytywania usługi Azure Event Hubs przy użyciu portalu | Microsoft Docs
-description: Włącz funkcję przechwytywania usługi Event Hubs przy użyciu witryny Azure Portal.
+title: Przechwytywanie zdarzeń przesyłanych strumieniowo za pomocą witryny Azure Portal — Azure Event Hubs | Microsoft Docs
+description: W tym artykule opisano, jak włączyć przechwytywanie zdarzeń przesyłanych strumieniowo za pomocą usługi Azure Event Hubs przy użyciu witryny Azure Portal.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,18 +10,19 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/16/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 5cb3fee975e99af3d86affcbc18d89277dde2dc1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7f57e75f90511ace45198d7516a5d2550123d9be
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409122"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075118"
 ---
-# <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Włączanie funkcji przechwytywania usługi Event Hubs przy użyciu witryny Azure Portal
+# <a name="enable-capturing-of-events-streaming-through-azure-event-event-hubs"></a>Włączanie przechwytywania zdarzeń przesyłanych strumieniowo za pomocą usługi Azure Event Hubs
 
 [Funkcja przechwytywania usługi Azure Event Hubs][capture-overview] pozwala automatycznie dostarczać strumień danych usługi Event Hubs na wybrane konto usługi [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
 
@@ -35,7 +36,7 @@ Podczas tworzenia centrum zdarzeń można włączyć funkcję przechwytywania pr
 
 Domyślny przedział czasu to 5 minut. Minimalna wartość to 1, a maksymalna — 15. Okno **Rozmiar** ma zakres 10–500 MB.
 
-![][1]
+![Przedział czasu przechwytywania][1]
 
 ## <a name="capture-data-to-an-azure-data-lake-store-account"></a>Przechwytywanie danych na konto usługi Azure Data Lake Store
 
@@ -52,7 +53,7 @@ Aby przechwycić dane do usługi Azure Data Lake Store, należy utworzyć konto 
 2. Na stronie portalu **Tworzenie centrum zdarzeń** wybierz pozycję **Azure Data Lake Store** w polu **Dostawca przechwytywania**.
 3. W polu **Wybierz usługę Data Lake Store** określ utworzone wcześniej konto usługi Data Lake Store, a w polu **Ścieżka w usłudze Data Lake** wprowadź ścieżkę do utworzonego folderu danych.
 
-    ![][3]
+    ![Wybieranie konta usługi Data Lake Storage][3]
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>Dodawanie lub konfigurowanie funkcji przechwytywania w istniejącym centrum zdarzeń
 
@@ -60,11 +61,11 @@ Przechwytywanie można skonfigurować w istniejących centrach zdarzeń, które 
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-![][2]
+![Konfigurowanie usługi Azure Blob Storage][2]
 
 ### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-![][4]
+![Konfigurowanie usługi Azure Data Lake Storage][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png

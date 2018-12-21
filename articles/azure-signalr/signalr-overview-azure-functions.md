@@ -1,23 +1,17 @@
 ---
-title: Tworzenie aplikacji czasu rzeczywistego za pomocą usług Azure Functions i Azure SignalR | Microsoft Docs
+title: Tworzenie aplikacji czasu rzeczywistego za pomocą usług Azure Functions i Azure SignalR
 description: Omówienie korzystania z usługi Azure SignalR w aplikacjach bezserwerowych.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
 ms.service: signalr
-ms.devlang: na
 ms.topic: overview
-ms.workload: tbd
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 587752b25e3c98bbabbd42bd4d838fd19ae9fd45
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 9380c6434902c6882f84312a3d6999791bf15115
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318711"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256013"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Tworzenie aplikacji czasu rzeczywistego za pomocą usług Azure Functions i Azure SignalR
 
@@ -71,4 +65,3 @@ W tym artykule omówiono sposób użycia usługi Azure Functions z usługą Sign
 
 * [Szybki start: aplikacja bezserwerowa w usłudze Azure SignalR Service — C#](signalr-quickstart-azure-functions-csharp.md)
 * [Szybki start: aplikacja bezserwerowa w usłudze Azure SignalR Service — JavaScript](signalr-quickstart-azure-functions-javascript.md)
-

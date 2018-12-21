@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy w języku Objective-C w systemie IOS przy użyciu zestawu SDK usługi Mowa'
+title: 'Szybki start: rozpoznawanie mowy, język Objective-C — usługi mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku Objective-C w systemie IOS przy użyciu zestawu SDK usługi Mowa
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: 7d1e05e13e55b8b7bc07eda71d63f96f12c81ff9
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: eaa44f942082c6bd062599dbdd0401fe4505daf4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219192"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090213"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie IOS przy użyciu zestawu SDK usługi Mowa
 
@@ -25,8 +25,11 @@ Z tego artykułu dowiesz się, jak utworzyć aplikację języka Objective-C dla 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji dla usługi Mowa. Zobacz [Wypróbuj bezpłatnie usługę Mowa](get-started.md).
-* Komputer Mac z programem Xcode 9.4.1 zainstalowanym jako środowisko programistyczne systemu iOS. Ten samouczek jest przeznaczony dla systemu iOS w wersji 11.4. Jeśli nie masz jeszcze programu Xcode, możesz zainstalować go z witryny [App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12).
+Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
+
+* [Klucz subskrypcji](get-started.md) dla usługi Mowa
+* Maszyna z systemem macOS z oprogramowaniem [Xcode w wersji 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) lub nowszej
+* Docelowy system operacyjny ustawiony na system iOS w wersji 11.4 lub nowszej
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Pobierz zestaw SDK usługi Mowa dla systemu iOS
 
@@ -37,7 +40,7 @@ Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.1.0`.
 Zestaw SDK usługi Mowa z zestawu Cognitive Services dla komputerów Mac i systemu iOS jest aktualnie dystrybuowany w ramach platformy Cocoa.
 Można go pobrać ze strony https://aka.ms/csspeech/iosbinary. Pobierz plik do katalogu macierzystego.
 
-## <a name="create-an-xcode-project"></a>Tworzenie projektu programu Xcode 
+## <a name="create-an-xcode-project"></a>Tworzenie projektu programu Xcode
 
 Uruchom program Xcode i rozpocznij nowy projekt, klikając pozycję **File** > **New** > **Project** (Plik > Nowy > Projekt).
 W oknie dialogowym wyboru szablonu wybierz szablon „iOS Single View App” (Aplikacja pojedynczego widoku systemu iOS).
@@ -54,7 +57,7 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
     1. Wybierz katalog macierzysty, aby umieścić w nim projekt. Spowoduje to utworzenie w katalogu macierzystym katalogu `helloworld`, który zawiera wszystkie pliki projektu programu Xcode.
     1. Wyłącz tworzenie repozytorium Git dla tego przykładowego projektu.
     1. Dostosuj ścieżki do zestawu SDK w pozycji *Project Settings* (Ustawienia projektu).
-        1. Na karcie **General** (Ogólne) w ramach nagłówka **Embedded Binaries** (Osadzone pliki binarne) dodaj bibliotekę zestawu SDK jako strukturę: **Add embedded binaries** > **Add other...** > Navigate to your home directory and choose the file`MicrosoftCognitiveServicesSpeech.framework` (Dodaj osadzone pliki binarne > Dodaj inne... > przejdź do katalogu macierzystego i wybierz plik). To spowoduje także automatyczne dodanie biblioteki zestawu SDK do nagłówka **Linked Framework and Libraries** (Połączone struktury i biblioteki).
+        1. Na karcie **General** (Ogólne) pod nagłówkiem **Embedded Binaries** (Osadzone pliki binarne) dodaj bibliotekę zestawu SDK jako strukturę: **Add embedded binaries** > **Add other...** (Dodaj osadzone pliki binarne > Dodaj inne...) > przejdź do katalogu macierzystego i wybierz plik `MicrosoftCognitiveServicesSpeech.framework`. To spowoduje także automatyczne dodanie biblioteki zestawu SDK do nagłówka **Linked Framework and Libraries** (Połączone struktury i biblioteki).
         ![Dodano strukturę](media/sdk/qs-objectivec-framework.png)
         1. Przejdź do karty **Build Settings** (Ustawienia kompilacji) i aktywuj ustawienia **All** (Wszystko).
         1. Dodaj katalog `$(SRCROOT)/..` do pozycji *Framework Search Paths* (Ścieżki wyszukiwania struktury) w ramach nagłówka **Search Paths** (Ścieżki wyszukiwania).
@@ -103,4 +106,3 @@ Poszukaj tego przykładu w folderze `quickstart/objectivec-ios`.
 
 > [!div class="nextstepaction"]
 > [Pobierz nasze przykłady](speech-sdk.md#get-the-samples)
-

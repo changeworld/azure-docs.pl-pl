@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: a421527de275d38650c314d3722a7d2f93e8331d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 10de179c6055feb46439792ea74a0a3131f39646
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285020"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970661"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -56,9 +56,9 @@ Ten przewodnik Szybki start używa następujących pakietów:
 | [Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/) | Oprogramowanie pośredniczące, które umożliwia aplikacji wykorzystywanie do uwierzytelniania protokołu OpenIdConnect |
 | [Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies) |Oprogramowanie pośredniczące, które umożliwia aplikacji obsługę sesji użytkownika przy użyciu plików cookie |
 | [Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb) | Umożliwia uruchamianie aplikacji zgodnych ze standardem OWIN w ramach usług IIS przy użyciu potoku żądań programu ASP.NET |
-|  |  | 
+|  |  |
 
-## <a name="step-1-set-up-your-project"></a>Krok 1. Konfigurowanie projektu
+## <a name="step-1-set-up-your-project"></a>Krok 1: konfigurowanie projektu
 
 Te kroki pokazują, jak zainstalować i skonfigurować potok uwierzytelniania za pomocą oprogramowania pośredniczącego OWIN w projekcie ASP.NET przy użyciu protokołu OpenID Connect.
 
@@ -66,14 +66,14 @@ Aby zamiast tego pobrać ten przykładowy projekt programu Visual Studio, wykona
 1. [Pobierz projekt w witrynie GitHub](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/GuidedSetup.zip).
 1. Przejdź do [kroku konfiguracji](#configure-your-webconfig-and-register-an-application), aby skonfigurować przykładowy kod przed wykonaniem.
 
-## <a name="step-2-create-your-aspnet-project"></a>Krok 2. Tworzenie projektu ASP.NET
+## <a name="step-2-create-your-aspnet-project"></a>Krok 2: tworzenie projektu ASP.NET
 
 1. W programie Visual Studio przejdź do polecenia **Plik > Nowy > Projekt**.
 2. W pozycji **Visual C#\Internet** wybierz opcję **Aplikacja internetowa ASP.NET (.NET Framework)**.
 3. Nadaj nazwę aplikacji, a następnie wybierz przycisk **OK**.
 4. Wybierz pozycję **Pusty**, a następnie zaznacz pole wyboru, aby dodać odwołania **MVC**.
 
-## <a name="step-3-add-authentication-components"></a>Krok 3. Dodawanie składników uwierzytelniania
+## <a name="step-3-add-authentication-components"></a>Krok 3: dodawanie składników uwierzytelniania
 
 1. W programie Visual Studio przejdź do pozycji **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**.
 2. Dodaj **pakiety NuGet oprogramowania pośredniczącego OWIN**, wpisując następujące polecenie w oknie Konsola menedżera pakietów:
@@ -89,7 +89,7 @@ Aby zamiast tego pobrać ten przykładowy projekt programu Visual Studio, wykona
 >Powyższe biblioteki włączają logowanie jednokrotne (SSO) przy użyciu protokołu OpenID Connect za pośrednictwem uwierzytelniania w oparciu o pliki cookie. Po zakończeniu uwierzytelniania i wysłaniu tokenu reprezentującego użytkownika do aplikacji oprogramowanie pośredniczące OWIN tworzy plik cookie sesji. Następnie przeglądarka używa tego pliku cookie przy okazji kolejnych żądań, dzięki czemu użytkownik nie musi się ponownie uwierzytelniać i nie jest wymagana dodatkowa weryfikacja.
 <!--end-collapse-->
 
-## <a name="step-4-configure-the-authentication-pipeline"></a>Krok 4. Konfigurowanie potoku uwierzytelniania
+## <a name="step-4-configure-the-authentication-pipeline"></a>Krok 4: konfigurowanie potoku uwierzytelniania
 
 Wykonaj te kroki, aby utworzyć*klasę początkową* oprogramowania pośredniczącego OWIN w celu skonfigurowania uwierzytelniania z użyciem protokołu OpenID Connect. Ta klasa jest wykonywana automatycznie.
 
@@ -104,11 +104,11 @@ W celu utworzenia *klasy początkowej* oprogramowania pośredniczącego OWIN:
 
 1. Dodaj przestrzenie nazw *OWIN* i *Microsoft.IdentityModel* w klasie `Startup.cs`:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Startup.cs?name=AddedNameSpaces "Startup.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Startup.cs?name=AddedNameSpaces "Startup.cs")]
 
 2. Zastąp klasę początkową następującym kodem:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Startup.cs?name=Startup "Startup.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Startup.cs?name=Startup "Startup.cs")]
 
 <!--start-collapse-->
 > [!NOTE]
@@ -119,7 +119,7 @@ W celu utworzenia *klasy początkowej* oprogramowania pośredniczącego OWIN:
 
 <!--start-use-->
 
-## <a name="step-5-add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Krok 5. Dodaj kontroler do obsługi żądań logowania i wylogowania
+## <a name="step-5-add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Krok 5: dodawanie kontrolera do obsługi żądań logowania i wylogowania
 
 Utwórz nowy kontroler do udostępnienia metod logowania i wylogowywania.
 
@@ -129,13 +129,13 @@ Utwórz nowy kontroler do udostępnienia metod logowania i wylogowywania.
 4.  Nadaj mu nazwę `HomeController` i wybierz pozycję **Dodaj**.
 5.  Dodaj przestrzenie nazw **OWIN** do klasy:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
 
 6. Dodaj następujące metody do obsługi logowania do kontrolera i wylogowywania z niego, inicjując wezwanie do uwierzytelnienia za pomocą kodu:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
 
-## <a name="step-6-create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Krok 6. Tworzenie strony głównej aplikacji do logowania użytkowników za pomocą przycisku logowania
+## <a name="step-6-create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Krok 6: tworzenie strony głównej aplikacji do logowania użytkowników za pomocą przycisku logowania
 
 W programie Visual Studio utwórz nowy widok, aby dodać przycisk logowania i wyświetlić informacje o użytkowniku po uwierzytelnieniu:
 
@@ -148,7 +148,7 @@ W programie Visual Studio utwórz nowy widok, aby dodać przycisk logowania i wy
 <!--start-collapse--> Ta strona dodaje przycisk logowania w formacie SVG z czarnym tłem:<br/>![Zaloguj się przy użyciu konta Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> Aby znaleźć więcej przycisków logowania, przejdź do tematu [Wytyczne dotyczące oznaczania aplikacji marką](howto-add-branding-in-azure-ad-apps.md).
 <!--end-collapse-->
 
-## <a name="step-7-display-users-claims-by-adding-a-controller"></a>Krok 7. Wyświetlenie oświadczeń użytkownika przez dodanie kontrolera
+## <a name="step-7-display-users-claims-by-adding-a-controller"></a>Krok 7: wyświetlenie oświadczeń użytkownika przez dodanie kontrolera
 
 Ten kontroler pokazuje wykorzystanie atrybutu `[Authorize]` do ochrony kontrolera. Ten atrybut ogranicza dostęp do kontrolera, zezwalając na dostęp tylko uwierzytelnionym użytkownikom. Poniższy kod wykorzystuje ten atrybut do wyświetlania oświadczeń użytkowników, które zostały pobrane w ramach logowania.
 
@@ -158,14 +158,14 @@ Ten kontroler pokazuje wykorzystanie atrybutu `[Authorize]` do ochrony kontroler
 1. Nadaj mu nazwę **ClaimsController**.
 1. Zastąp kod klasy kontrolera następującym kodem — spowoduje to dodanie atrybutu `[Authorize]` do klasy:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
 <!--start-collapse-->
 > [!NOTE]
-> Z powodu użycia atrybutu `[Authorize]` wszystkie metody tego kontrolera można wykonać tylko wtedy, gdy użytkownik jest uwierzytelniony. Jeśli użytkownik nie jest uwierzytelniony i próbuje uzyskać dostęp do kontrolera, oprogramowanie OWIN inicjuje żądanie uwierzytelnienia i zmusza użytkownika do uwierzytelnienia. Powyższy kod przegląda kolekcję oświadczeń użytkownika pod kątem określonych atrybutów zawartych w tokenie użytkownika. Te atrybuty obejmują imię i nazwisko użytkownika oraz nazwę użytkownika, a także podmiot globalnego identyfikatora. Zawiera on także *identyfikator dzierżawy*, który reprezentuje identyfikator organizacji użytkownika. 
+> Z powodu użycia atrybutu `[Authorize]` wszystkie metody tego kontrolera można wykonać tylko wtedy, gdy użytkownik jest uwierzytelniony. Jeśli użytkownik nie jest uwierzytelniony i próbuje uzyskać dostęp do kontrolera, oprogramowanie OWIN inicjuje żądanie uwierzytelnienia i zmusza użytkownika do uwierzytelnienia. Powyższy kod przegląda kolekcję oświadczeń użytkownika pod kątem określonych atrybutów zawartych w tokenie użytkownika. Te atrybuty obejmują imię i nazwisko użytkownika oraz nazwę użytkownika, a także podmiot globalnego identyfikatora. Zawiera on także *identyfikator dzierżawy*, który reprezentuje identyfikator organizacji użytkownika.
 <!--end-collapse-->
 
-## <a name="step-8-create-a-view-to-display-the-users-claims"></a>Krok 8. Utworzenie widoku w celu wyświetlenia oświadczeń użytkownika
+## <a name="step-8-create-a-view-to-display-the-users-claims"></a>Krok 8: tworzenie widoku w celu wyświetlenia oświadczeń użytkownika
 
 W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń użytkownika na stronie internetowej:
 
@@ -179,7 +179,7 @@ W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń u
 
 <!--start-configure-->
 
-## <a name="step-9-configure-your-webconfig-and-register-an-application"></a>Krok 9. Konfigurowanie pliku *web.config* i zarejestrowanie aplikacji
+## <a name="step-9-configure-your-webconfig-and-register-an-application"></a>Krok 9: konfigurowanie pliku *web.config* i rejestrowanie aplikacji
 
 1. W programie Visual Studio dodaj następujący kod w pliku `web.config` (znajdującym się w folderze głównym) w sekcji `configuration\appSettings`:
 
@@ -187,7 +187,7 @@ W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń u
     <add key="ClientId" value="Enter_the_Application_Id_here" />
     <add key="RedirectUrl" value="Enter_the_Redirect_Url_here" />
     <add key="Tenant" value="common" />
-    <add key="Authority" value="https://login.microsoftonline.com/{0}" /> 
+    <add key="Authority" value="https://login.microsoftonline.com/{0}" />
     ```
 2. W Eksploratorze rozwiązań wybierz projekt i spójrz na okno <i>Właściwości</i> (jeśli nie widzisz okna Właściwości, naciśnij klawisz F4)
 3. Zmień opcję Włączony protokół SSL na <code>True</code>
@@ -208,7 +208,7 @@ W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń u
 > [!TIP]
 > Jeśli Twoje konto jest skonfigurowane, aby uzyskiwać dostęp do wielu katalogów, upewnij się, że wybrano odpowiedni katalog dla organizacji, w której aplikacja ma być zarejestrowana, klikając prawym przyciskiem myszy nazwę konta w prawym górnym rogu witryny Azure Portal, a następnie sprawdzając wybrany katalog jak wskazano:<br/>![Wybór prawidłowego katalogu](./media/quickstart-v1-aspnet-webapp/tenantselector.png)
 
-## <a name="step-10-configure-sign-in-options"></a>Krok 10. Konfigurowanie opcji logowania
+## <a name="step-10-configure-sign-in-options"></a>Krok 10: konfigurowanie opcji logowania
 
 Można skonfigurować aplikację tak, aby zezwalała tylko na logowanie użytkowników należących do wystąpienia usługi Azure AD jednej organizacji lub akceptowała logowania użytkowników należących do dowolnej organizacji. Wykonaj instrukcje dla jednej z poniższych opcji:
 
@@ -227,10 +227,12 @@ Aby uzyskać więcej informacji na temat tego ustawienia i koncepcji aplikacji w
 Ta opcja to typowy scenariusz w przypadku aplikacji biznesowych.
 
 Jeśli chcesz, aby Twoja aplikacja akceptowała logowania tylko z kont należących do określonego wystąpienia usługi Azure AD (w tym *kont gości* tego wystąpienia), wykonaj następujące kroki:
+
 1. Zastąp parametr `Tenant` w pliku *web.config* z obszaru `Common` nazwą dzierżawy organizacji, na przykład *contoso.onmicrosoft.com*.
 1. Zmień argument `ValidateIssuer` w [*klasie początkowej OWIN*](#configure-the-authentication-pipeline) na `true`.
 
 Aby zezwalać tylko na dostęp użytkowników z listy określonych organizacji, wykonaj następujące kroki:
+
 1. Ustaw wartość argumentu `ValidateIssuer` na true.
 1. Użyj parametru `ValidIssuers`, aby określić listę organizacji.
 
@@ -259,7 +261,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 <!--end-configure-arp-->
 <!--start-test-->
 
-## <a name="step-11-test-your-code"></a>Krok 11. Testowanie kodu
+## <a name="step-11-test-your-code"></a>Krok 11: testowanie kodu
 
 1. Naciśnij klawisz **F5**, aby uruchomić projekt w programie Visual Studio. Zostanie otwarta przeglądarka i nastąpi przekierowanie do adresu `http://localhost:{port}`, gdzie zobaczysz przycisk**Zaloguj się przy użyciu konta Microsoft**.
 1. Wybierz przycisk, aby się zalogować.

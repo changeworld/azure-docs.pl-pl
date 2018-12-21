@@ -1,6 +1,6 @@
 ---
-title: Tworzenie indeksu (interfejs API .NET — usługa Azure Search) | Microsoft Docs
-description: Tworzenie indeksu za pomocą kodu przy użyciu zestawu .NET SDK usługi Azure Search.
+title: Tworzenie indeksu za pomocą kodu przy użyciu interfejsu API .NET — Azure Search
+description: Dowiedz się, jak utworzyć indeks wyszukiwania pełnotekstowego przy użyciu zestawu SDK .NET usługi Azure Search i przykładowego kodu w języku C#.
 author: brjohnstmsft
 manager: jlembicz
 tags: azure-portal
@@ -10,12 +10,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: a1c9340acdc2521b9b74f47b0e17d0e4d37aea77
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 6d111b1be310a345e23c440f1af9da4183efff43
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236571"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312599"
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>Tworzenie indeksu usługi Azure Search przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]

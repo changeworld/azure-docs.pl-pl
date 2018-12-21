@@ -1,21 +1,22 @@
 ---
-title: Szybki start dla języka Python — zmienianie modelu i szkolenie aplikacji LUIS
-titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start dla języka Python dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz szkolenie aplikacji. Przykładowe wypowiedzi to tekst z rozmowami użytkownika mapowany na intencje. Poprzez zapewnienie przykładowych wypowiedzi dla intencji możesz nauczyć aplikację LUIS, jakim intencjom odpowiada rodzaj tekstu podanego przez użytkownika.
+title: Zmienianie i trenowanie aplikacji, Python
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: W tym przewodniku Szybki start dla języka Python dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz szkolenie aplikacji.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ff076954d51605935bb41488ec6a757c2f7806a1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6d05859977a7cba385877298405b9ce77034da68
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040180"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166357"
 ---
 # <a name="quickstart-change-model-using-python"></a>Szybki start: zmiana modelu przy użyciu języka Python
 
@@ -27,7 +28,7 @@ ms.locfileid: "47040180"
 * Środowisko [Python 3.6](https://www.python.org/downloads/) lub nowsze.
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in LUIS-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>Plik JSON z przykładowymi wypowiedziami
 
@@ -46,7 +47,7 @@ Uruchom aplikację z poziomu wiersza polecenia za pomocą języka Python 3.6.
 
 Wywołanie polecenia add-utterance bez żadnych argumentów powoduje dodanie wypowiedzi do aplikacji bez jej uczenia.
 
-```CMD
+```console
 > python add-utterances-3-6.py
 ```
 
@@ -83,7 +84,7 @@ W poniższym kodzie znajduje się wynik pomyślnego żądania uczenia:
 }
 ```
 
-```JSON
+```json
 Requested training status.
 [
    {

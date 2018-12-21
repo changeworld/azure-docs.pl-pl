@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7b9bc52e07bccf931593cd2dbddd68e973d1b26c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394361"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106451"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer
 
@@ -134,7 +134,7 @@ Gdy już znasz sposób działania podstawowych zapytań, zobaczmy, jak możesz d
 
 1. Uruchom poniższe zapytanie.
 
-    ```Kutso
+    ```Kusto
     StormEvents
     | sort by StartTime desc
     | where DamageProperty > 5000
@@ -148,7 +148,7 @@ Gdy już znasz sposób działania podstawowych zapytań, zobaczmy, jak możesz d
 
     Ten panel działa podobnie jak lista pól tabeli przestawnej w programie Excel, umożliwiając wykonywanie dodatkowych analiz w samej siatce.
 
-1. Zaznacz pozycję **Tryb tabeli przestawnej**, a następnie przeciągnij kolumny w następujący sposób: kolumnę **State** do pola **Grupy wierszy**, kolumnę **DamageProperty** do pola **Wartości** i kolumnę **EventType** do pola **Etykiety kolumn**.  
+1. Wybierz opcję **Tryb przestawny**, a następnie przeciągnij kolumny w następujący sposób: kolumnę **State** do pola **Grupy wierszy**, kolumnę **DamageProperty** do pola **Wartości** i kolumnę **EventType** do pola **Etykiety kolumn**.  
 
     ![Tryb przestawny](media/web-query-data/pivot-mode.png)
 

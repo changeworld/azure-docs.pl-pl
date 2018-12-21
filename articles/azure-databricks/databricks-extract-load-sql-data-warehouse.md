@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wykonywanie operacji ETL za pomocą usługi Azure Databricks'
+title: 'Samouczek: Wykonywanie operacji ETL za pomocą usługi Azure Databricks'
 description: Dowiedz się, jak wyodrębniać dane z usługi Data Lake Store do usługi Azure Databricks, przekształcać je, a następnie załadować do usługi Azure SQL Data Warehouse.
 services: azure-databricks
 author: mamccrea
@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 11/19/2018
-ms.openlocfilehash: 5a6d3265fde3b7633036ddc4cae0a5ea7d246957
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 48b2cdb26994d01dfced8216bb70493802f672a7
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265274"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413680"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
@@ -44,9 +44,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem pracy z tym samouczkiem upewnij się, że zostały spełnione następujące wymagania:
-- Utwórz magazyn danych Azure SQL Data Warehouse, utwórz regułę zapory na poziomie serwera i nawiąż połączenie z serwerem jako administrator serwera. Postępuj zgodnie z instrukcjami w przewodniku [Szybki start: Tworzenie magazynu danych Azure SQL Data Warehouse](../sql-data-warehouse/create-data-warehouse-portal.md)
+- Utwórz magazyn danych Azure SQL Data Warehouse, utwórz regułę zapory na poziomie serwera i nawiąż połączenie z serwerem jako administrator serwera. Postępuj zgodnie z instrukcjami w artykule [Szybki start: tworzenie bazy danych w usłudze Azure SQL Data Warehouse](../sql-data-warehouse/create-data-warehouse-portal.md)
 - Utwórz klucz główny bazy danych dla magazynu danych Azure SQL Data Warehouse. Postępuj zgodnie z instrukcjami w artykule [Tworzenie klucza głównego bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
-- Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Postępuj zgodnie z instrukcjami w przewodniku [Szybki start: tworzenie konta usługi Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-portal.md).
+- Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Postępuj zgodnie z instrukcjami w artykule [Szybki start: tworzenie konta usługi Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
@@ -54,7 +54,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
-W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witryny Azure Portal. 
+W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witryny Azure Portal.
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Dane i analiza** > **Azure Databricks**.
 
@@ -65,7 +65,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
     ![Tworzenie obszaru roboczego usługi Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "Tworzenie obszaru roboczego usługi Azure Databricks")
 
     Podaj następujące wartości:
-     
+    
     |Właściwość  |Opis  |
     |---------|---------|
     |**Nazwa obszaru roboczego**     | Podaj nazwę obszaru roboczego usługi Databricks.        |
@@ -106,11 +106,11 @@ W tej sekcji utworzysz konto usługi Azure Data Lake Store i skojarzysz z nim je
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób** > **Magazyn** > **Data Lake Store**.
 3. W bloku **Nowa usługa Data Lake Store** podaj wartości, jak pokazano na poniższym zrzucie ekranu:
-   
+
     ![Tworzenie nowego konta usługi Azure Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/create-new-datalake-store.png "Tworzenie nowego konta usługi Azure Data Lake")
 
-    Podaj następujące wartości: 
-     
+    Podaj następujące wartości:
+    
     |Właściwość  |Opis  |
     |---------|---------|
     |**Nazwa**     | Wprowadź unikatową nazwę konta usługi Data Lake Store.        |
@@ -125,7 +125,7 @@ W tej sekcji utworzysz konto usługi Azure Data Lake Store i skojarzysz z nim je
 Teraz utworzysz jednostkę usługi Azure Active Directory i skojarzysz ją z utworzonym kontem usługi Data Lake Store.
 
 ### <a name="create-an-azure-active-directory-service-principal"></a>Tworzenie jednostki usługi Azure Active Directory
-   
+
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Wszystkie usługi**, a następnie wyszukaj usługę **Azure Active Directory**.
 
 2. Wybierz pozycję **Rejestracje aplikacji**.
@@ -193,7 +193,7 @@ Gdy logujesz się w sposób programowy, musisz przekazać identyfikator dzierża
 
 ## <a name="upload-data-to-data-lake-store"></a>Przekazywanie danych do usługi Data Lake Store
 
-W tej sekcji przekażesz przykładowy plik danych do usługi Data Lake Store. Później użyjesz tego pliku w usłudze Azure Databricks do uruchomienia niektórych przekształceń. Przykładowe dane (**small_radio_json.json**) używane w tym samouczku są dostępne w tym [repozytorium Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
+W tej sekcji przekażesz przykładowy plik danych do usługi Data Lake Store. Później użyjesz tego pliku w usłudze Azure Databricks do uruchomienia niektórych przekształceń. Przykładowe dane (**small_radio_json.json**) używane w tym samouczku są dostępne w tym [repozytorium GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz utworzone konto usługi Data Lake Store.
 
@@ -378,7 +378,7 @@ W tej sekcji przekażesz przekształcone dane do magazynu danych Azure SQL Data 
 
 Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azure Blob Storage jako tymczasowej lokalizacji magazynu do przekazywania danych między usługami Azure Databricks i Azure SQL Data Warehouse. Możesz rozpocząć od podania konfiguracji umożliwiającej nawiązanie połączenia z kontem magazynu. Musisz już mieć utworzone konto w ramach wymagań wstępnych dotyczących tego artykułu.
 
-1. Podaj konfigurację umożliwiającą uzyskanie dostępu do konta usługi Azure Storage z usługi Azure Databricks. Jeśli kopiujesz adres URL usługi Blob Storage z portalu, usuń z niego prefiks *https://*. 
+1. Podaj konfigurację umożliwiającą uzyskanie dostępu do konta usługi Azure Storage z usługi Azure Databricks. Jeśli kopiujesz adres URL usługi Blob Storage z portalu, usuń z niego prefiks *https://*.
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
@@ -410,7 +410,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
-        
+    
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall)

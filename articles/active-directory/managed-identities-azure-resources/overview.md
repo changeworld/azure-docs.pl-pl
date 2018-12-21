@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: e025d9041358fbb9dee9b64519e012c4c1988024
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6b1eb36ae661d758f78f98de37f33c4b56741f89
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987264"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320782"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Czym są tożsamości zarządzane dla zasobów platformy Azure?
 
@@ -34,7 +34,15 @@ Funkcja tożsamości zarządzanych dla zasobów platformy Azure jest bezpłatna 
 > [!NOTE]
 > Tożsamości zarządzane dla zasobów platformy Azure to nowa nazwa usługi znanej wcześniej jako Tożsamość usługi zarządzanej (MSI).
 
-## Jak działa funkcja?<a name="how-does-it-work"></a>
+## <a name="terminology"></a>Terminologia
+
+Poniższe terminy są używane w zestawie dokumentacji dotyczącej tożsamości zarządzanych dla zasobów platformy Azure:
+
+- **Identyfikator klienta** — unikatowy identyfikator generowany przez usługę Azure AD, który jest powiązany z aplikacją i nazwą główną usługi podczas początkowego aprowizowania.
+- **Identyfikator podmiotu zabezpieczeń** — identyfikator obiektu nazwy głównej usługi dla tożsamości zarządzanej, która jest używana w celu udzielenia dostępu opartego na rolach do zasobu platformy Azure.
+- **Usługa Azure Instance Metadata Service (IMDS)** — punkt końcowy REST dostępny dla wszystkich maszyn wirtualnych IaaS utworzonych za pośrednictwem usługi Azure Resource Manager. Punkt końcowy jest dostępny pod dobrze znanym, nierutowalnym adresem IP (169.254.169.254), do którego dostęp można uzyskać tylko z poziomu maszyny wirtualnej.
+
+## Jak działają tożsamości zarządzane dla zasobów platformy Azure?<a name="how-does-it-work"></a>
 
 Istnieją dwa typy tożsamości zarządzanych:
 

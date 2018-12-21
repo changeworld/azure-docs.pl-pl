@@ -2,18 +2,18 @@
 author: MightyPen
 ms.service: sql-database
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 12/06/2018
 ms.author: genemi
-ms.openlocfilehash: b78d52f23de8d02189f10b32d26e070fb6deea68
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: b3b7027e5ae252eb899d2a44d171ea9c9795ab54
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52339701"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53285978"
 ---
 <!-- sql-database-connect-query-prerequisites-server-connection-info-includes.md 
 
-## SQL server connection information
+## Get SQL server connection information
 -->
 
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera, nazwa bazy danych i informacje logowania.
@@ -22,8 +22,8 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 1. Wybierz pozycję **Bazy danych SQL** z menu po lewej stronie, a następnie kliknij bazę danych na stronie **Bazy danych SQL**.
 
-1. Na stronie **Przegląd** bazy danych zweryfikuj w pełni kwalifikowaną nazwę serwera, jak pokazano na poniższej ilustracji. Możesz umieścić kursor na **nazwie serwera** w celu wywołania opcji **Kliknij, aby skopiować**.  
+1. Na stronie **Przegląd** bazy danych sprawdź w pełni kwalifikowaną nazwę serwera obok pola **Nazwa serwera**. Aby skopiować nazwę serwera, umieść na niej wskaźnik myszy i wybierz ikonę **Kopiuj**.  
 
-   ![nazwa-serwera](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png)
+![nazwa-serwera](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png)
 
-1. Jeśli nie pamiętasz informacji logowania do serwera, możesz kliknąć pozycję **Nazwa serwera**, aby przejść do strony programu **SQL Server** i sprawdzić nazwę **administratora serwera**. W razie potrzeby wybierz pozycję **Resetuj hasło**.
+Jeśli zapomnisz swoje informacje logowania, wybierz nazwę serwera, aby otworzyć stronę **serwera SQL**. W tym miejscu możesz wyświetlić nazwę **administratora serwera** i wybrać opcję **Resetuj hasło** w razie potrzeby.

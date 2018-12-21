@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie potoku wyszukiwania poznawczego w usłudze Azure Search przy użyciu portalu | Microsoft Docs'
+title: 'Szybki start: potok wyszukiwania poznawczego w witrynie Azure Portal – Azure Search'
 description: Przykład umiejętności wyodrębniania danych, przetwarzania języka naturalnego i przetwarzania obrazów w witrynie Azure Portal z wykorzystaniem przykładowych danych.
 manager: cgronlun
 author: HeidiSteen
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.custom: seodec2018
+ms.openlocfilehash: 7d579bfdaf38b6c06b26cfa7b36f8e4d2ac5a1f2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264132"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386268"
 ---
-# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
+# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Przewodnik Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 
 Wyszukiwanie poznawcze (wersja zapoznawcza) dodaje umiejętności wyodrębniania danych, przetwarzania języka naturalnego i przetwarzania obrazów do potoku indeksowania usługi Azure Search, co ułatwia wyszukiwanie zawartości nieobsługującej wyszukiwania lub pozbawionej struktury. Informacje utworzone za pomocą umiejętności, takiej jak rozpoznawanie jednostek lub analiza obrazu, zostają dodane do indeksu w usłudze Azure Search.
 
@@ -47,7 +48,9 @@ Wyszukiwanie poznawcze możesz wypróbować w usłudze Azure Search utworzonej w
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Możliwości wykonywania zestawów umiejętności oraz wyodrębniania i normalizacji obrazów są obecnie oferowane bezpłatnie. Cennik dla tych możliwości zostanie opublikowany w późniejszym czasie. 
+> Od 21 grudnia 2018 roku będziesz mieć możliwość skojarzenia swoich zasobów w usługach Cognitive Services z zestawem umiejętności usługi Azure Search. Rozpoczniemy wówczas naliczanie opłat za wykonywanie zestawu umiejętności. Od tego dnia zaczniemy też naliczać opłaty za wyodrębnianie obrazów w ramach etapu analizowania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+>
+> Opłaty za wykonywanie wbudowanych umiejętności będą naliczane na podstawie istniejącej [ceny przy płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/pricing/details/cognitive-services/) za usługi Cognitive Services. Opłaty za wyodrębnianie obrazów będą naliczane zgodnie z cenami w wersji zapoznawczej. Opisano to [na stronie z cennikiem usługi Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -66,7 +69,7 @@ Najpierw utwórz konto usługi Azure Search.
 
 1. Kliknij pozycję **Utwórz zasób**, wyszukaj usługę Azure Search i kliknij pozycję **Utwórz**. Zobacz [Tworzenie usługi Azure Search w portalu](search-create-service-portal.md), jeśli konfigurujesz usługę wyszukiwania po raz pierwszy i potrzebujesz dodatkowej pomocy.
 
-  ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
+  ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
 
 1. W obszarze Grupa zasobów utwórz grupę zasobów, która będzie zawierała wszystkie zasoby utworzone w tym przewodniku Szybki start. Ułatwi to wyczyszczenie zasobów po ukończeniu tego przewodnika Szybki start.
 
@@ -76,16 +79,18 @@ Najpierw utwórz konto usługi Azure Search.
 
   Usługa w warstwie Bezpłatna jest ograniczona do 3 indeksów, maksymalnego rozmiaru obiektu blob równego 16 MB i 2 minut indeksowania, co nie wystarcza do korzystania z pełnych możliwości wyszukiwania poznawczego. Aby przejrzeć limity dla różnych warstw, zobacz [ograniczenia usługi](search-limits-quotas-capacity.md).
 
+  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service1.png "Strona definicji usługi w portalu")
+  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Strona definicji usługi w portalu")
   > [!NOTE]
-  > Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności jest obecnie dostępne we wszystkich warstwach, w tym warstwie Bezpłatna. Cennik dla tej możliwości zostanie opublikowany w późniejszym czasie.
+  > Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności jest obecnie dostępne we wszystkich warstwach, w tym warstwie Bezpłatna. Bez skojarzenia z płatnym zasobem w usługach Cognitive Services będzie można wykonywać ograniczoną liczbę czynności wzbogacania. Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
 
 1. Przypnij usługę do pulpitu nawigacyjnego, aby uzyskać szybki dostęp do informacji o niej.
 
-  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service.png "Strona definicji usługi w portalu")
+  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Strona definicji usługi w portalu")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Konfigurowanie usługi Azure Blob Service i ładowanie przykładowych danych
 
-Potok wzbogacania ściąga dane ze źródeł danych platformy Azure obsługiwanych przez [indeksatory usługi Azure Search](search-indexer-overview.md). Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
+Potok wzbogacania ściąga dane ze źródeł danych platformy Azure obsługiwanych przez [indeksatory usługi Azure Search](search-indexer-overview.md). Należy pamiętać, że usługa Azure Table Storage nie jest obsługiwana w usłudze wyszukiwania poznawczego. Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
 
 1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składające się z małego zestawu plików różnych typów. 
 
@@ -99,18 +104,18 @@ Potok wzbogacania ściąga dane ze źródeł danych platformy Azure obsługiwany
 
 Przejdź z powrotem na stronę pulpitu nawigacyjnego usługi Azure Search i na pasku poleceń kliknij pozycję **Importuj dane**, aby skonfigurować wzbogacenie w czterech krokach.
 
-### <a name="step-1-create-a-data-source"></a>Krok 1. Tworzenie źródła danych
+### <a name="step-1-create-a-data-source"></a>Krok 1: Tworzenie źródła danych
 
 W obszarze **Nawiązywanie połączenia z danymi** > **Azure Blob Storage** wybierz konto i utworzony kontener. Podaj nazwę źródła danych i użyj wartości domyślnych dla pozostałych ustawień. 
 
-   ![Konfiguracja obiektu blob platformy Azure](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   ![Konfiguracja obiektu blob platformy Azure](./media/cognitive-search-quickstart-blob/blob-datasource2.png)
 
 
 Kliknij przycisk **OK**, aby utworzyć źródło danych.
 
 Jedną z zalet korzystania z kreatora **Import danych** jest to, że może on również utworzyć indeks. Podczas tworzenia źródła danych kreator tworzy jednocześnie schemat indeksu. Utworzenie indeksu może potrwać kilka sekund.
 
-### <a name="step-2-add-cognitive-skills"></a>Krok 2. Dodawanie umiejętności poznawczych
+### <a name="step-2-add-cognitive-skills"></a>Krok 2: Dodawanie umiejętności poznawczych
 
 Następnie dodaj kroki wzbogacenia do potoku indeksowania. Portal udostępnia wstępnie zdefiniowane umiejętności poznawcze na potrzeby analizy obrazu i analizy tekstu. W portalu zestaw umiejętności pracuje na jednym polu źródła. Może się to wydawać małym celem, ale w przypadku obiektów blob platformy Azure pole `content` zawiera większość dokumentu obiektu blob (na przykład dokument programu Word lub pokaz slajdów programu PowerPoint). Z tego względu to pole jest idealnym polem wejściowym, ponieważ obejmuje całą zawartość obiektu blob.
 
@@ -124,7 +129,7 @@ Kliknij przycisk **OK**, aby zaakceptować definicję.
 
 Umiejętności przetwarzania języka naturalnego pracują na zawartości tekstowej w przykładowym zestawie danych. Ponieważ nie wybrano żadnych opcji przetwarzania obrazów, pliki JPEG znalezione w przykładowym zestawie danych nie będą przetwarzane w tym przewodniu Szybki start. 
 
-### <a name="step-3-configure-the-index"></a>Krok 3. Konfigurowanie indeksu
+### <a name="step-3-configure-the-index"></a>Krok 3: Konfigurowanie indeksu
 
 Pamiętasz indeks utworzony ze źródłem danych? W tym kroku możesz wyświetlić jego schemat i potencjalnie poprawić dowolne ustawienia. 
 
@@ -149,7 +154,7 @@ Kliknij przycisk **OK**, aby zaakceptować definicję indeksu.
 > [!NOTE]
 > Nieużywane pola zostały obcięte na zrzucie ekranu w celu zachowania zwięzłości. Jeśli pracujesz w portalu, lista zawiera dodatkowe pola.
 
-### <a name="step-4-configure-the-indexer"></a>Krok 4. Konfigurowanie indeksatora
+### <a name="step-4-configure-the-indexer"></a>Krok 4: Konfigurowanie indeksatora
 
 Indeksator jest procesem wysokiego poziomu sterującym procesem indeksowania. Określa on nazwę źródła danych, indeks oraz częstotliwość wykonywania. Wynik końcowy kreatora **Import danych** zawsze jest indeksatorem, który można wywoływać wielokrotnie.
 

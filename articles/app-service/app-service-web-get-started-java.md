@@ -1,5 +1,5 @@
 ---
-title: Tworzenie pierwszej aplikacji internetowej w środowisku Java na platformie Azure
+title: Tworzenie aplikacji internetowej Java — Azure App Service
 description: Dowiedz się, jak można uruchamiać aplikacje internetowe w usłudze App Service, wdrażając podstawową aplikację w środowisku Java.
 services: app-service\web
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.custom: seodec18
+ms.openlocfilehash: b9321241f174a97976b2f150a9bd6c3547f0dc20
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283932"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253165"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Tworzenie pierwszej aplikacji internetowej w środowisku Java na platformie Azure
 
-Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. W tym przewodniku Szybki start pokazano, jak wdrożyć aplikację internetową w języku Java przy użyciu środowiska [Eclipse IDE for Java EE Developers](http://www.eclipse.org/).
+Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. W tym przewodniku Szybki start pokazano, jak wdrożyć aplikację internetową w języku Java przy użyciu środowiska [Eclipse IDE for Java EE Developers](https://www.eclipse.org/).
 
 > [!NOTE]
 >
@@ -41,7 +41,7 @@ Po ukończeniu tego przewodnika Szybki start aplikacja będzie wyglądać podobn
 
 Aby ukończyć ten przewodnik Szybki Start, zainstaluj:
 
-* Bezpłatne środowisko <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>. W tym przewodniku Szybki start używane jest środowisko Eclipse Neon.
+* Bezpłatne środowisko <a href="https://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>. W tym przewodniku Szybki start używane jest środowisko Eclipse Neon.
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Zestaw narzędzi platformy Azure dla środowiska Eclipse</a>.
 
 > [!NOTE]
@@ -121,9 +121,9 @@ W oknie dialogowym **Create App Service** (Tworzenie usługi App Service):
 * Wybierz subskrypcję platformy Azure.
 * Na karcie **App service plan** (Plan usługi App Service):
 
-  * **Create new** (Utwórz nowy): zachowaj wartość domyślną, czyli nazwę planu usługi App Service.
-  * **Location** (Lokalizacja): wybierz pozycję **West Europe** (Europa Zachodnia) lub lokalizację w Twoim pobliżu.
-  * **Pricing tier** (Warstwa cenowa): wybierz opcję Free (Bezpłatna). Aby uzyskać informacje o funkcjach, zobacz [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) (Cennik usługi App Service).
+  * **Utwórz nową**: zachowaj wartość domyślną, czyli nazwę planu usługi App Service.
+  * **Lokalizacja**: wybierz pozycję **Europa Zachodnia** lub lokalizację w Twoim pobliżu.
+  * **Warstwa cenowa**: wybierz opcję bezpłatną. Aby uzyskać informacje o funkcjach, zobacz [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) (Cennik usługi App Service).
 
    ![Okno dialogowe Create App Service (Tworzenie usługi App Service)](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 

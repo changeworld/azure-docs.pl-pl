@@ -1,23 +1,24 @@
 ---
-title: 'Samouczek: jak utworzyć model językowy za pomocą usługi Mowa'
+title: 'Samouczek: tworzenie modelu językowego przy użyciu usługi Mowa.'
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak utworzyć model językowy przy użyciu usługi Mowa.
+description: Dowiedz się, jak utworzyć model językowy przy użyciu usługi Mowa. Użyj tego niestandardowego modelu językowego w połączeniu z istniejącymi najnowocześniejszymi modelami mowy firmy Microsoft, aby dodać interakcję głosową do swojej aplikacji.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: b8d58450ccc5081e3be3131761d1321a32567df3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 0eb946babaa3a01ca933a1290122755978fa017b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468997"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093471"
 ---
-# <a name="tutorial-create-a-custom-language-model"></a>Samouczek: tworzenie niestandardowego modelu językowego
+# <a name="tutorial-create-a-custom-language-model"></a>Samouczek: Tworzenie niestandardowego modelu językowego
 
 W tym dokumencie utworzysz niestandardowy model językowy. Następnie możesz użyć tego niestandardowego modelu językowego w połączeniu z istniejącymi najnowocześniejszymi modelami mowy firmy Microsoft, aby dodać interakcję głosową do swojej aplikacji.
 
@@ -33,9 +34,9 @@ Jeśli nie masz konta usług Cognitive Services, przed rozpoczęciem utwórz [be
 
 Aby się upewnić, że Twoje konto usług Cognitive Services jest połączone z subskrypcją, otwórz stronę [Subskrypcje usługi Cognitive Services](https://customspeech.ai/Subscriptions).
 
-Aby połączyć się z subskrypcją usługi Mowa utworzoną w witrynie Azure Portal, naciśnij przycisk **Połącz z istniejącą subskrypcją**.
+Aby połączyć się z subskrypcją usługi Speech Services utworzoną w witrynie Azure Portal, naciśnij przycisk **Połącz z istniejącą subskrypcją**.
 
-Aby uzyskać informacje o tworzeniu subskrypcji usługi Mowa w witrynie Azure Portal, zobacz stronę [Wprowadzenie](get-started.md).
+Aby uzyskać informacje o tworzeniu subskrypcji usługi Speech Services w witrynie Azure Portal, zobacz stronę [Wprowadzenie](get-started.md).
 
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
 
@@ -48,7 +49,7 @@ Zdania nie muszą być pełnymi zdaniami ani być poprawne gramatyczne, lecz pow
 
 Dane modelu językowego powinny być zapisane w formacie UTF-8 BOM. Plik tekstowy powinien zawierać jeden przykład (zdanie, wypowiedź lub zapytanie) na wiersz.
 
-Jeśli chcesz, aby niektóre terminy miały większą wagę (znaczenie), możesz dodać kilka wypowiedzi do swoich danych zawierających te terminy. 
+Jeśli chcesz, aby niektóre terminy miały większą wagę (znaczenie), możesz dodać kilka wypowiedzi do swoich danych zawierających te terminy.
 
 Główne wymagania dotyczące danych językowych przedstawiono w poniższej tabeli.
 
@@ -73,9 +74,9 @@ Zobacz pełną listę [obsługiwanych języków](language-support.md#text-to-spe
 
 Naciśnij przycisk **Import** (Importuj) w wierszu **Language Datasets** (Zestawy danych języków). W witrynie zostanie wyświetlona strona pobierania nowego zestawu danych.
 
-Gdy wszystko będzie gotowe do zaimportowania zestawu danych języka, zaloguj się do [portalu usługi Mowa](https://customspeech.ai). Następnie kliknij menu rozwijane **Custom Speech** na wstążce u góry. Następnie wybierz pozycję **Adaptation Data** (Dane adaptacji). Jeśli po raz pierwszy próbujesz przekazać dane do usługi Mowa, zostanie wyświetlona pusta tabela o nazwie **Datasets** (Zestawy danych).
+Gdy wszystko będzie gotowe do zaimportowania zestawu danych języka, zaloguj się do [portalu usługi Speech Services](https://customspeech.ai). Następnie kliknij menu rozwijane **Custom Speech** na wstążce u góry. Następnie wybierz pozycję **Adaptation Data** (Dane adaptacji). Jeśli po raz pierwszy próbujesz przekazać dane do usługi Speech Services, zostanie wyświetlona pusta tabela o nazwie **Datasets** (Zestawy danych).
 
-Aby zaimportować nowy zestaw danych, naciśnij przycisk **Import** (Importuj) w wierszu **Language Datasets** (Zestawy danych języka). W witrynie zostanie wyświetlona strona do przekazania nowego zestawu danych. W polach **Name** (Nazwa) i **Description** (Opis) wprowadź nazwę i opis, które ułatwią identyfikację zestawu danych w przyszłości, i wybierz ustawienia regionalne. 
+Aby zaimportować nowy zestaw danych, naciśnij przycisk **Import** (Importuj) w wierszu **Language Datasets** (Zestawy danych języka). W witrynie zostanie wyświetlona strona do przekazania nowego zestawu danych. W polach **Name** (Nazwa) i **Description** (Opis) wprowadź nazwę i opis, które ułatwią identyfikację zestawu danych w przyszłości, i wybierz ustawienia regionalne.
 
 Następnie naciśnij przycisk **Choose File** (Wybierz plik) i wskaż plik tekstowy danych języka. Naciśnij przycisk **Import** (Importuj), aby przekazać zestaw danych. W zależności od wielkości zestawu danych importowanie może potrwać kilka minut.
 
@@ -97,9 +98,9 @@ Gdy dane językowe będą gotowe, wybierz pozycję **Language Models** (Modele j
 
 Przed podjęciem jakiegokolwiek działania należy wybrać odpowiednie ustawienia regionalne. Bieżące ustawienia regionalne są wskazywane w tytule tabeli na wszystkich stronach danych, modelu i wdrożenia. Aby zmienić ustawienia regionalne, naciśnij przycisk **Change Locale** (Zmień ustawienia regionalne) znajdujący się w obszarze tytułu tabeli.  Spowoduje to przejście do strony potwierdzenia ustawień regionalnych. Naciśnij przycisk **OK**, aby powrócić do tabeli.
 
-Na stronie Create Language Model (Tworzenie modelu językowego) wprowadź nazwę i opis modelu w polach **Name** (Nazwa) i **Description** (Opis), aby łatwiej śledzić ważne informacje dotyczące tego modelu, na przykład używany zestaw danych. Następnie z menu rozwijanego wybierz pozycję **Base Language Model** (Podstawowy model językowy). Ten model stanowi punkt wyjścia dla Twojego dostosowania. 
+Na stronie Create Language Model (Tworzenie modelu językowego) wprowadź nazwę i opis modelu w polach **Name** (Nazwa) i **Description** (Opis), aby łatwiej śledzić ważne informacje dotyczące tego modelu, na przykład używany zestaw danych. Następnie z menu rozwijanego wybierz pozycję **Base Language Model** (Podstawowy model językowy). Ten model stanowi punkt wyjścia dla Twojego dostosowania.
 
-Dostępne są dwa podstawowe modele językowe do wyboru. Model Search and Dictation (Model językowy do wyszukiwania i dyktowania) jest odpowiedni dla mowy kierowanej do aplikacji, na przykład poleceń, zapytań wyszukiwania lub dyktowania. Model Conversational (Model językowy do konwersacji) jest przeznaczony do rozpoznawania mowy w stylu konwersacyjnym. Ten typ mowy jest zazwyczaj kierowany do innej osoby i występuje w centrach telefonicznej obsługi klienta lub na konferencjach. 
+Dostępne są dwa podstawowe modele językowe do wyboru. Model Search and Dictation (Model językowy do wyszukiwania i dyktowania) jest odpowiedni dla mowy kierowanej do aplikacji, na przykład poleceń, zapytań wyszukiwania lub dyktowania. Model Conversational (Model językowy do konwersacji) jest przeznaczony do rozpoznawania mowy w stylu konwersacyjnym. Ten typ mowy jest zazwyczaj kierowany do innej osoby i występuje w centrach telefonicznej obsługi klienta lub na konferencjach.
 
 Model Search and Dictation (Model językowy do wyszukiwania i dyktowania) jest odpowiedni dla mowy kierowanej do aplikacji, na przykład poleceń, zapytań wyszukiwania lub dyktowania. Model Conversational (Model językowy do konwersacji) jest przeznaczony do rozpoznawania mowy w stylu konwersacyjnym. Ten typ mowy jest zazwyczaj kierowany do innej osoby i występuje w centrach telefonicznej obsługi klienta lub na konferencjach. Ponadto publicznie dostępny jest również nowy model o nazwie Universal (Uniwersalny). Modelu uniwersalnego można użyć do obsługi wszystkich scenariuszy oraz do zastąpienia modeli do wyszukiwania i dyktowania oraz do konwersacji.
 
@@ -121,6 +122,6 @@ Jeśli w pewnym momencie zechcesz zmienić nazwę lub opis modelu w polach **Nam
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Pobierz subskrypcję wersji próbnej usługi Mowa](https://azure.microsoft.com/try/cognitive-services/)
+- [Pobierz subskrypcję wersji próbnej usługi Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 - [Jak rozpoznawać mowę w języku C#](quickstart-csharp-dotnet-windows.md)
 - [Dane przykładowe Git](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

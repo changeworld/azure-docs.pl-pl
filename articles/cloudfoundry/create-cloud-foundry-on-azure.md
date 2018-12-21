@@ -1,6 +1,6 @@
 ---
-title: Tworzenie rozwiązania Cloud Foundry na platformie Azure
-description: Dowiedz się, jak skonfigurować parametry wymagane do aprowizowania klastra rozwiązania Cloud Foundry PCF
+title: Tworzenie klastra rozwiązania Pivotal Cloud Foundry na platformie Azure
+description: Dowiedz się, jak skonfigurować parametry wymagane do aprowizowania klastra rozwiązania Pivotal Cloud Foundry na platformie Azure
 services: Cloud Foundry
 documentationcenter: CloudFoundry
 author: ruyakubu
@@ -14,76 +14,77 @@ ms.service: Cloud Foundry
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: a0a3379a8a2579080d9b686917395feec9cf8f3d
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 9514118e1f29faab937ed01899b5947789ca9735
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250623"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101402"
 ---
-# <a name="create-cloud-foundry-on-azure"></a>Tworzenie rozwiązania Cloud Foundry na platformie Azure
+# <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Tworzenie klastra rozwiązania Pivotal Cloud Foundry na platformie Azure
 
-W tym samouczku opisano szybkie kroki dotyczące tworzenia i generowania parametrów potrzebnych do aprowizowania klastra rozwiązania Pivotal Cloud Foundry (PCF) na platformie Azure.  Rozwiązanie Pivotal Cloud Foundry można znaleźć, wykonując wyszukiwanie w witrynie Azure [MarketPlace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
+W tym samouczku opisano szybkie kroki dotyczące tworzenia i generowania parametrów potrzebnych do aprowizowania klastra rozwiązania Pivotal Cloud Foundry na platformie Azure. Aby znaleźć rozwiązanie Pivotal Cloud Foundry, wyszukaj je w witrynie Azure [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
 
-![Alternatywny tekst obrazu](media/deploy/pcf-marketplace.png "Wyszukiwanie rozwiązania Pivotal Cloud Foundry na platformie Azure")
+![Wyszukiwanie rozwiązania Pivotal Cloud Foundry na platformie Azure](media/deploy/pcf-marketplace.png)
 
 
 ## <a name="generate-an-ssh-public-key"></a>Generowanie klucza publicznego SSH
 
-Istnieje kilka sposobów generowania klucza publicznego SSH przy użyciu systemu Windows, komputera Mac lub systemu Linux.
+Istnieje kilka sposobów generowania klucza publicznego SSH przy użyciu systemu Windows, Linux lub komputera Mac.
 
 ```Bash
 ssh-keygen -t rsa -b 2048
 ```
-- Kliknij tutaj, aby zobaczyć [instrukcje]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) dla swojego środowiska.
 
-## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
+Aby uzyskać więcej informacji, zobacz [Use SSH keys with Windows on Azure (Korzystanie z kluczy SSH w systemie Windows na platformie Azure)](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+
+## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
 > [!NOTE]
 >
-> Tworzenie jednostki usługi wymaga uprawnień właściciela konta.  Ponadto możesz napisać skrypt w celu zautomatyzowania tworzenia jednostki usługi. Na przykład za pomocą polecenia interfejsu wiersza polecenia platformy Azure [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
+> Aby utworzyć jednostkę usługi, potrzebne są uprawnienia właściciela konta. Możesz też napisać skrypt w celu zautomatyzowania tworzenia jednostki usługi. Możesz na przykład użyć polecenia interfejsu wiersza polecenia platformy Azure [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
 
-1. Zaloguj się do konta platformy Azure.
+1. Zaloguj się do swojego konta platformy Azure.
 
     `az login`
 
-    ![Alternatywny tekst obrazu](media/deploy/az-login-output.png "Logowanie interfejsu wiersza polecenia platformy Azure")
+    ![Logowanie do interfejsu wiersza polecenia platformy Azure](media/deploy/az-login-output.png )
  
-    Skopiuj wartość „id” jako swój **identyfikator subskrypcji** oraz wartość **tenantId**, której użyjesz później.
+    Skopiuj wartość „id” jako swój **identyfikator subskrypcji** oraz wartość „tenantId”, której użyjesz później.
 
 2. Ustaw subskrypcję domyślną dla tej konfiguracji.
 
     `az account set -s {id}`
 
-3. Utwórz aplikację usługi AAD dla rozwiązania PCF i określ unikatowe alfanumeryczne hasło.  Zapisz hasło jako element **clientSecret** do późniejszego użycia.
+3. Utworzenie aplikacji usługi Azure Active Directory dla rozwiązania Pivotal Cloud Foundry. Określ unikatowe hasło alfanumeryczne. Zapisz hasło jako element **clientSecret** do późniejszego użycia.
 
-    `az ad app create --display-name "Svc Prinicipal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
 
-    Skopiuj wartość„appId” w danych wyjściowych jako identyfikator **ClientID** do późniejszego użycia.
+    Skopiuj wartość „appId” w danych wyjściowych jako identyfikator **clientID** do późniejszego użycia.
 
     > [!NOTE]
     >
-    > Wybierz identyfikator URI oraz stronę główną swojej aplikacji,  na przykład http://www.contoso.com.
+    > Wybierz identyfikator URI oraz stronę główną swojej aplikacji, na przykład http://www.contoso.com.
 
-4. Utwórz jednostkę usługi przy użyciu nowego identyfikatora „appId”.
+4. Utwórz jednostkę usługi przy użyciu nowego identyfikatora aplikacji.
 
     `az ad sp create --id {appId}`
 
-5. Ustaw rolę uprawnień jednostki usługi jako **Współautor**.
+5. Ustaw rolę uprawnień jednostki usługi jako Współautor.
 
     `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor” `
 
-    Lub możesz również użyć…
+    Możesz też użyć
 
     `az role assignment create --assignee {service-princ-name} --role “Contributor” `
 
-    ![Alternatywny tekst obrazu](media/deploy/svc-princ.png "Przypisywanie roli jednostki usługi")
+    ![przypisania roli Jednostka usługi.](media/deploy/svc-princ.png )
 
-6. Upewnij się, że możesz pomyślnie zalogować się do jednostki usługi przy użyciu identyfikatora appId, hasła oraz identyfikatora dzierżawy.
+6. Upewnij się, że możesz pomyślnie zalogować się do jednostki usługi przy użyciu identyfikatora aplikacji, hasła oraz identyfikatora dzierżawy.
 
-    `az login --service-principal -u {appId} -p {your-passward}  --tenant {tenantId}`
+    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. Utwórz plik JSON w następującym formacie przy użyciu wszystkich powyższych wartości **identyfikatora subskrypcji** oraz elementów **tenantId**, **clientID** i **clientSecret** skopiowanych wcześniej.  Zapisz plik.
+7. Utwórz plik JSON w następującym formacie. Użyj wcześniej skopiowanych wartości **subscriptionID**, **tenantID**, **clientID** i **clientSecret**. Zapisz plik.
 
     ```json
     {
@@ -94,37 +95,37 @@ ssh-keygen -t rsa -b 2048
     }
     ```
 
-## <a name="get-the-pivotal-network-token"></a>Pobierz token usługi Pivotal Network
+## <a name="get-the-pivotal-network-token"></a>Pobieranie tokenu usługi Pivotal Network
 
-1. Zarejestruj się lub zaloguj się na swoje konto usługi [Pivotal Network](https://network.pivotal.io).
-2. Kliknij nazwę profilu w prawej górnej części strony i wybierz pozycję „Edit Profile” (Edytuj profil).
-3. Przewiń do dołu strony i skopiuj wartość **LEGACY API TOKEN**.  To jest wartość **tokenu usługi Pivotal Network**, która zostanie użyta później.
+1. Zarejestruj się lub zaloguj się na swoim koncie usługi [Pivotal Network](https://network.pivotal.io).
+2. Wybierz nazwę profilu w prawym górnym rogu strony. Wybierz pozycję **Edit Profile** (Edytuj profil).
+3. Przewiń do dołu strony i skopiuj wartość **LEGACY API TOKEN**. Jest to wartość **tokenu usługi Pivotal Network** do późniejszego użycia.
 
-## <a name="provision-your-cloud-foundry-on-azure"></a>Aprowizowanie usługi Cloud Foundry na platformie Azure
+## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Aprowizowanie klastra rozwiązania Cloud Foundry na platformie Azure
 
-1. Masz teraz wszystkie parametry potrzebne do zaaprowizowania klastra rozwiązania [Pivotal Clound Foundry na platformie Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
-2. Wprowadź parametry, a następnie utwórz klaster PCF.
+Masz teraz wszystkie parametry potrzebne do aprowizowania [klastra rozwiązania Pivotal Clound Foundry na platformie Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
+Wprowadź parametry, a następnie utwórz klaster rozwiązania PCF.
 
-## <a name="verify-the-deployment-and-log-into-the-pivotal-ops-manager"></a>Weryfikowanie wdrożenia i logowanie się w usłudze Pivotal Ops Manager
+## <a name="verify-the-deployment-and-sign-in-to-the-pivotal-ops-manager"></a>Weryfikowanie wdrożenia i logowanie się w usłudze Pivotal Ops Manager
 
-1. W klastrze PCF powinien być wyświetlany stan wdrożenia.
+1. W klastrze usługi PCF wyświetlany jest stan wdrożenia.
 
-    ![Alternatywny tekst obrazu](media/deploy/deployment.png "Stan wdrożenia platformy Azure")
+    ![Stan wdrożenia platformy Azure](media/deploy/deployment.png )
 
-2. Kliknij link **Deployments** (Wdrożenia) w obszarze nawigacji po lewej stronie, aby uzyskać poświadczenia dla usługi PCF Ops Manager, a następnie kliknij pozycję **Deployment Name** (Nazwa wdrożenia) na następnej stronie.
-3. W obszarze nawigacyjnym po lewej stronie kliknij link **Outputs** (Dane wyjściowe), aby wyświetlić adres URL, nazwę użytkownika i hasło dla usługi PCF Ops Manager.  Wartość „OPSMAN FQDN” jest adresem URL.
+2. Wybierz link **Wdrożenia** w obszarze nawigacji po lewej stronie, aby uzyskać poświadczenia usługi PCF Ops Manager. Wybierz pozycję **Deployment Name** (Nazwa wdrożenia) na następnej stronie.
+3. W obszarze nawigacji po lewej stronie kliknij link **Outputs** (Dane wyjściowe), aby wyświetlić adres URL, nazwę użytkownika i hasło dla usługi PCF Ops Manager. Wartość „OPSMAN FQDN” jest adresem URL.
  
-    ![Alternatywny tekst obrazu](media/deploy/deploy-outputs.png "Dane wyjściowe wdrożenia rozwiązania Cloud Foundry")
+    ![Dane wyjściowe wdrożenia usługi Cloud Foundry](media/deploy/deploy-outputs.png )
  
-4. Przejdź do adresu URL w przeglądarce internetowej i wprowadź poświadczenia z poprzedniego kroku, aby się zalogować.
+4. Przejdź do adresu URL w przeglądarce internetowej. Wprowadź poświadczenia z poprzedniego kroku, aby się zalogować.
 
-    ![Alternatywny tekst obrazu](media/deploy/pivotal-login.png "Strona logowania rozwiązania Pivotal")
+    ![Strona logowania usługi Pivotal](media/deploy/pivotal-login.png )
          
     > [!NOTE]
     >
-    > Jeśli w przeglądarce Internet Explorer zostanie wyświetlony błąd mówiący, że witryna nie jest bezpieczna, kliknij pozycję „Więcej informacji” i „Przejdź do strony internetowej”.  W przeglądarce Firefox kliknij pozycję „Zaawansowane” i dodaj certyfikację, aby kontynuować.
+    > Jeśli w przeglądarce Internet Explorer zostanie wyświetlony błąd mówiący, że witryna nie jest bezpieczna, wybierz pozycję **Więcej informacji** i przejdź do strony internetowej. W przeglądarce Firefox wybierz pozycję **Zaawansowane** i dodaj certyfikację, aby kontynuować.
 
-5. W usłudze PCF Ops Manager powinny zostać wyświetlone wdrożone wystąpienia platformy Azure. Możesz teraz rozpocząć wdrażanie aplikacji i zarządzanie nimi!
+5. W usłudze PCF Ops Manager zostaną wyświetlone wdrożone wystąpienia platformy Azure. Teraz w tym miejscu możesz wdrażać aplikacje i nimi zarządzać.
                
-    ![Alternatywny tekst obrazu](media/deploy/ops-mgr.png "Wdrożone wystąpienie platformy Azure w rozwiązaniu Pivotal")
+    ![Wdrożone wystąpienie platformy Azure w usłudze Pivotal](media/deploy/ops-mgr.png )
  

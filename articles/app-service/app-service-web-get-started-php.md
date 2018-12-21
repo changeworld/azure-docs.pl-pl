@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej w środowisku PHP na platformie Azure | Microsoft Docs
+title: Tworzenie aplikacji internetowej w języku PHP — Azure App Service | Microsoft Docs
 description: Wdróż swoją pierwszą aplikację Hello World w środowisku PHP w usłudze Azure App Service Web Apps w ciągu kilku minut.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin;cfowler
-ms.custom: mvc
-ms.openlocfilehash: 0dd8f90a39abc18263fcaa5bdb63a5b743728952
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.custom: seodec18
+ms.openlocfilehash: 02c80f3b3883af4b32b5bc0fb837680dad1e0ecf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42884968"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261555"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Tworzenie aplikacji internetowej w języku PHP na platformie Azure
 
@@ -41,7 +41,7 @@ Poniższe kroki możesz wykonać przy użyciu komputera z systemem Mac, Windows 
 Aby ukończyć ten przewodnik Szybki start:
 
 * <a href="https://git-scm.com/" target="_blank">Zainstaluj oprogramowanie Git</a>
-* <a href="http://php.net/manual/install.php" target="_blank">Zainstaluj środowisko PHP</a>
+* <a href="https://php.net/manual/install.php" target="_blank">Zainstaluj środowisko PHP</a>
 
 ## <a name="download-the-sample-locally"></a>Pobieranie przykładu na maszynę lokalną
 

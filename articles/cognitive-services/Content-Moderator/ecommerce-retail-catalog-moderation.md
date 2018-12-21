@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 0bd61c3f1a4f660076be4e87bb5443302e5dc013
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 285590435a7e3c31d45d5d154d4e430ed3252838
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363998"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256234"
 ---
 # <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>Samouczek: moderowanie katalogu handlu elektronicznego za pomocą uczenia maszynowego
 
@@ -66,7 +66,7 @@ W naszym przypadku zdefiniujemy te tagi niestandardowe (**celebrity**, **flag**,
 > [!NOTE]
 > W Samouczku użyto kluczy subskrypcji w regionach widocznych w następujących punktach końcowych. Pamiętaj, aby dopasować klucze interfejsu API do identyfikatorów URI regionu, w przeciwnym razie klucze mogą nie działać z następującymi punktami końcowymi:
 
-        // Your API keys
+         // Your API keys
         public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
         public const string ComputerVisionKey = "XXXXXXXXXXXXXXXXXXXX";
         public const string CustomVisionKey = "XXXXXXXXXXXXXXXXXXXX";
@@ -128,11 +128,11 @@ W naszym przypadku zdefiniujemy te tagi niestandardowe (**celebrity**, **flag**,
 4. Aby się zalogować, wybierz pozycję z listy dostępnych kont internetowych.
 5. Zanotuj klucze interfejsu API wyświetlone na stronie usługi.
     
-    ![Klucze interfejsu API przetwarzania obrazów](images/tutorial-computer-vision-keys.PNG)
+   ![Klucze interfejsu API przetwarzania obrazów](images/tutorial-computer-vision-keys.PNG)
     
 6. Zapoznaj się z kodem źródłowym projektu funkcji, która skanuje obraz za pomocą interfejsu API przetwarzania obrazów.
 
-        public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
+         public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
         {
             var File = ImageUrl;
             string Body = $"{{\"URL\":\"{File}\"}}";
@@ -149,7 +149,7 @@ W naszym przypadku zdefiniujemy te tagi niestandardowe (**celebrity**, **flag**,
                 ComputerVisionPrediction CVObject = JsonConvert.DeserializeObject<ComputerVisionPrediction>(Response.Content.ReadAsStringAsync().Result);
 
                 if ((CVObject.categories[0].detail != null) && (CVObject.categories[0].detail.celebrities.Count() > 0))
-                {
+                {                 
                     ReviewTags[2].Value = "true";
                 }
             }
@@ -161,7 +161,7 @@ W naszym przypadku zdefiniujemy te tagi niestandardowe (**celebrity**, **flag**,
 
 1. [Zaloguj się](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) do [wersji zapoznawczej interfejsu API usługi Custom Vision](https://www.customvision.ai/).
 2. Użyj przewodnika [Szybki Start](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) do utworzenia klasyfikatora niestandardowego, który będzie służył do wykrywania potencjalnej obecności flag, zabawek i piór.
-    ![Obrazy ze szkolenia dotyczącego usługi Custom Vision](images/tutorial-ecommerce-custom-vision.PNG)
+   ![Obrazy ze szkolenia dotyczącego usługi Custom Vision](images/tutorial-ecommerce-custom-vision.PNG)
 3. [Pobierz adres URL punktu końcowego przewidywania](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) dla klasyfikatora niestandardowego.
 4. Sprawdź kod źródłowy projektu, aby zobaczyć funkcję, która wywołuje punkt końcowy przewidywania klasyfikatora niestandardowego, i przeskanować obraz.
 
@@ -179,15 +179,13 @@ W naszym przypadku zdefiniujemy te tagi niestandardowe (**celebrity**, **flag**,
                 SaveCustomVisionTags(response.Content.ReadAsStringAsync().Result, ref ReviewTags);
             }
             return response.IsSuccessStatusCode;
-        }
+        }       
  
 ## <a name="reviews-for-human-in-the-loop"></a>Przeglądy wymagające udziału człowieka
 
 1. W poprzednich sekcjach przeprowadziliśmy skanowanie obrazów przychodzących pod kątem treści dla osób dorosłych (Content Moderator), celebrytów (przetwarzanie obrazów) i flag (Custom Vision).
 2. W oparciu o progi dopasowania dla każdego skanowania udostępnij szczegóły przypadków do przeglądu przez człowieka w narzędziu do przeglądu.
-
-        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata)
-        {
+        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
 
             ReviewCreationRequest Review = new ReviewCreationRequest();
             Review.Item[0] = new ReviewItem();
@@ -209,10 +207,7 @@ W naszym przypadku zdefiniujemy te tagi niestandardowe (**celebrity**, **flag**,
 
 1. W tym Samouczku przyjęto, że jest używany katalog „C:Test” zawierający plik tekstowy z listą adresów URL obrazów.
 2. Poniższy kod sprawdza istnienie pliku i odczytuje wszystkie adresy URL do pamięci.
-
-            // Sprawdź katalog testowy pod kątem pliku testowego zawierającego listę adresów URL obrazów, aby przeskanować
-            var topdir = @"C:\test\";
-            var Urlsfile = topdir + "Urls.txt";
+            // Sprawdź katalog testowy pod kątem pliku testowego zawierającego listę adresów URL obrazów, aby przeskanować var topdir = @"C:\test\"; var Urlsfile = topdir + "Urls.txt";
 
             if (!Directory.Exists(topdir))
                 return;
@@ -229,12 +224,7 @@ W naszym przypadku zdefiniujemy te tagi niestandardowe (**celebrity**, **flag**,
 
 1. Ta funkcja najwyższego poziomu obsługuje pętlę przez wszystkie adresy URL obrazów we wcześniej wspomnianym pliku tekstowym.
 2. Skanuje je za pomocą każdego interfejsu API i jeśli dopasowany współczynnik ufności pasuje do naszych kryteriów, tworzy przegląd dla użytkowników pełniących rolę moderatorów.
-
-            // dla każdego adresu URL obrazu w pliku...
-            foreach (var Url in Urls)
-            {
-                // Zainicjuj nową tablicę tagów przeglądu
-                ReviewTags = nowe KeyValuePair[MAXTAGSCOUNT];
+             // dla każdego adresu URL obrazu w pliku... foreach (var Url in Urls) { // Zainicjuj nową tablicę tagów przeglądu ReviewTags = nowe KeyValuePair[MAXTAGSCOUNT];
 
                 // Evaluate for potential adult and racy content with Content Moderator API
                 EvaluateAdultRacy(Url, ref ReviewTags);

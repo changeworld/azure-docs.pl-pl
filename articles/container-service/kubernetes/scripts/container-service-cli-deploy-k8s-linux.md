@@ -3,7 +3,7 @@ title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — twor
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie klastra Kubernetes z systemem Linux usługi ACS
 services: container-service
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 tags: acs, azure-container-service
@@ -15,15 +15,17 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: nepeters
-ms.openlocfilehash: 938990e0c39e96d909c07bef05d2630a01e3076a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: iainfou
+ms.openlocfilehash: 11549e730e38c72e09ed2e94a72113c6e7e5bbb9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423763"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996267"
 ---
-# <a name="create-an-azure-container-service-kubernetes-linux-cluster"></a>Tworzenie klastra Kubernetes z systemem Linux usługi Azure Container Service
+# <a name="deprecated-create-an-azure-container-service-kubernetes-linux-cluster"></a>(PRZESTARZAŁE) Tworzenie klastra Kubernetes z systemem Linux usługi Azure Container Service
+
+[!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
 Ten przykładowy skrypt umożliwia utworzenie klastra Kubernetes usługi Azure Container Service na potrzeby kontenerów bazujących na systemie Linux.
 

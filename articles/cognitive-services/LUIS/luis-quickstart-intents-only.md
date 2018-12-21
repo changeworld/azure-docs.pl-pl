@@ -1,23 +1,24 @@
 ---
-title: 'Samouczek 1: odkrywanie intencji w niestandardowej aplikacji usługi LUIS'
+title: Przewidywanie intencji
 titleSuffix: Azure Cognitive Services
 description: Utwórz niestandardową aplikację, która będzie przewidywać intencje użytkownika. Ta aplikacja to najprostszy rodzaj aplikacji usługi LUIS, ponieważ nie wyodrębnia ona z tekstu wypowiedzi różnych elementów danych, takich jak adresy e-mail czy daty.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 30c9f572d77caacbeecf5f15d74fd8517e9fa883
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b1a9718fdf7222dae06f7fe9b3a0f14b50293c08
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426863"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097798"
 ---
-# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>Samouczek 1: tworzenie niestandardowej aplikacji umożliwiającej określanie intencji użytkownika
+# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>Samouczek 1. tworzenie niestandardowej aplikacji umożliwiającej określanie intencji użytkownika
 
 W tym samouczku utworzysz niestandardową aplikację Human Resources (HR), która na podstawie wypowiedzi (tekstu) będzie przewidywała intencje użytkownika. Po zakończeniu samouczka punkt końcowy usługi LUIS będzie działał w chmurze.
 
@@ -43,11 +44,11 @@ Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane
 
 2. Wybierz opcję **Create new app** (Utwórz nową aplikację).  
 
-    [![](media/luis-quickstart-intents-only/app-list.png "Zrzut ekranu przedstawiający stronę My Apps (Moje aplikacje) usługi Language Understanding (LUIS)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+    [![Zrzut ekranu przedstawiający stronę My Apps (Moje aplikacje) aplikacji usługi Language Understanding (LUIS)](media/luis-quickstart-intents-only/app-list.png "Zrzut ekranu przedstawiający stronę My Apps (Moje aplikacje) usługi Language Understanding (LUIS)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
 
 3. W wyskakującym oknie dialogowym wprowadź nazwę `HumanResources` i zachowaj domyślną kulturę **English** (Angielski). Opis pozostaw pusty.
 
-    ![Nowa aplikacja usługi LUIS](./media/luis-quickstart-intents-only/create-app.png)
+    ![Utwórz nową aplikację HumanResources usługi LUIS](./media/luis-quickstart-intents-only/create-app.png)
 
     Następnie aplikacja zostanie wyświetlona na stronie **Intents** (Intencje) z intencją **None**.
 
@@ -55,7 +56,7 @@ Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane
 
 1. Wybierz pozycję **Create new intent** (Utwórz nową intencję). Wprowadź nazwę nowej intencji: `GetJobInformation`. Ta intencja jest przewidywana za każdym razem, gdy użytkownik chce uzyskać informacje o stanowiskach dostępnych w firmie.
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "Zrzut ekranu przedstawiający okno dialogowe New intent (Nowa intencja) usługi Language Understanding (LUIS)")
+    ![Zrzut ekranu przedstawiający okno dialogowe New intent (Nowa intencja) usługi Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "Zrzut ekranu przedstawiający okno dialogowe New intent (Nowa intencja) usługi Language Understanding (LUIS)")
 
 2. Dostarczając _przykładowe wypowiedzi_, uczysz usługę LUIS, jakiego rodzaju wypowiedzi powinny być przewidywane dla tej intencji. Dodaj kilka przykładowych wypowiedzi do tej intencji — takich, których spodziewasz się ze strony użytkownika, na przykład:
 
@@ -69,7 +70,7 @@ Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane
     |New jobs? (Jakieś nowe oferty?)|
     |Are there any new positions in the Seattle office? (Czy są dostępne jakieś nowe oferty pracy w biurze w Seattle?)|
 
-    [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Zrzut ekranu przedstawiający podawanie nowych wypowiedzi dla intencji MyStore")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji MyStore](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji MyStore")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
@@ -150,7 +151,7 @@ Wróć do witryny internetowej usługi LUIS i utwórz nową intencję, która b�
     |This is my c.v. for position 654234 (To jest moje CV w odpowiedzi na ofertę pracy 654234)|
     |Job 567890 and my paperwork (Oferta pracy 567890 i moje papiery)|
 
-    [![](media/luis-quickstart-intents-only/utterance-applyforjob.png "Zrzut ekranu przedstawiający podawanie nowych wypowiedzi dla intencji ApplyForJob")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+    [![Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji ApplyForJob](media/luis-quickstart-intents-only/utterance-applyforjob.png "Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji ApplyForJob")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 
     Intencja z etykietą jest oznaczona kolorem czerwonym, ponieważ usługa LUIS obecnie nie ma pewności, czy intencja jest poprawna. Proces uczenia aplikacji informuje usługę LUIS, że wypowiedzi dotyczą poprawnej intencji. 
 
@@ -168,7 +169,7 @@ Wróć do witryny internetowej usługi LUIS i utwórz nową intencję, która b�
 
 2. W nowym oknie przeglądarki podaj ciąg `Can I submit my resume for job 235986` na końcu adresu URL. 
 
-    ```JSON
+    ```json
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {

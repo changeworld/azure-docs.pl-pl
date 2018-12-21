@@ -1,6 +1,6 @@
 ---
-title: Samouczek języka C# dotyczący synonimów w usłudze Azure Search | Microsoft Docs
-description: W ramach tego samouczka dodasz funkcję synonimów do indeksu w usłudze Azure Search.
+title: Samouczek dotyczący synonimów języka C# — usługa Azure Search
+description: W tym samouczku języka C# wyjaśniono, jak dodać funkcję synonimów do indeksu w usłudze Azure Search. Mapa synonimów jest listą równoważnych terminów. Pola z obsługą synonimów rozwijają zapytania, aby uwzględnić termin podanego przez użytkownika i wszystkie powiązane synonimy.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: b239fdc176951066699c557eaae5f7fe08a6c26f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990565"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309233"
 ---
-# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Samouczek: dodawanie synonimów na potrzeby usługi Azure Search w języku C#
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Samouczek: Dodawanie synonimów na potrzeby usługi Azure Search w języku C#
 
 Synonimy rozszerzają zapytanie, dopasowując wyrażenia uznane za semantycznie równoważne z wyrażeniem wejściowym. Przykładowo można sprawić, aby wyraz „samochód” pasował do dokumentów zawierających wyrażenia „auto” lub „pojazd”. 
 

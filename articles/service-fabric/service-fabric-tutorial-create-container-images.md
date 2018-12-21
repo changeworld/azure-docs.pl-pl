@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dc92524843f47b1327af5e9d3f237656cad2a37
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f2e8ce7dc6102471f95f6332d9cb01a6cb4f4f54
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947538"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313789"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Samouczek: tworzenie obrazów kontenerów w klastrze usługi Service Fabric systemu Linux
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Samouczek: Tworzenie obrazów kontenerów w klastrze usługi Service Fabric systemu Linux
 
 Ten samouczek jest częścią serii samouczków demonstrujących sposób korzystania z kontenerów w klastrze usługi Service Fabric w systemie Linux. W tym samouczku aplikacja obsługująca wiele kontenerów jest przygotowywana do użycia z usługą Service Fabric. W kolejnych samouczkach te obrazy są używane jako część aplikacji usługi Service Fabric. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -208,7 +208,7 @@ Po ukończeniu tego samouczka obraz kontenera zostanie zapisany w prywatnym wyst
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku aplikacja została ściągnięta z witryny Github, a obrazy kontenerów zostały utworzone i wypchnięte do rejestru. Wykonano następujące czynności:
+W tym samouczku aplikacja została ściągnięta z witryny GitHub, a obrazy kontenerów zostały utworzone i wypchnięte do rejestru. Wykonano następujące czynności:
 
 > [!div class="checklist"]
 > * Klonowanie źródła aplikacji z usługi GitHub

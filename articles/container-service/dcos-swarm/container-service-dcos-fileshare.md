@@ -1,5 +1,5 @@
 ---
-title: Udział plików dla klastra DC/OS na platformie Azure
+title: (PRZESTARZAŁE) Udział plików dla klastra DC/OS na platformie Azure
 description: Tworzenie udziału plików i instalowanie go w klastrze DC/OS w usłudze Azure Container Service
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 728f8ddbda35f27c0f89e1d72e98fd2d7669320e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973508"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999857"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Tworzenie udziału plików i instalowanie go w klastrze DC/OS
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(PRZESTARZAŁE) Tworzenie udziału plików i instalowanie go w klastrze DC/OS
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 W tym samouczku opisano, jak można utworzyć udział plików na platformie Azure i zainstalować go na każdym agencie i wzorcu klastra DC/OS. Skonfigurowanie udziału plików ułatwia udostępnianie plików w klastrze, na przykład takich jak pliki związane z konfiguracją, dostępem lub dzienniki. W ramach tego samouczka wykonywane są następujące zadania:
 

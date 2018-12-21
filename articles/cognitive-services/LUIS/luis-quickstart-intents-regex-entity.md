@@ -1,37 +1,37 @@
 ---
-title: 'Samouczek 3: Dane dopasowane na podstawie wyrażenia regularnego — wyodrębnianie poprawnie sformatowanych danych'
+title: Jednostka wyrażenia regularnego
 titleSuffix: Azure Cognitive Services
 description: Wyodrębnij spójnie sformatowane dane z wypowiedzi przy użyciu jednostki Regular Expression (Wyrażenie regularne).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5e8345deb629d293d9673819893181e652d5dbb9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d4deeec2c5af5047fa16a2d80f0992409d517910
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423421"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135580"
 ---
-# <a name="tutorial-3-extract-well-formatted-data"></a>Samouczek 3: Wyodrębnianie poprawnie sformatowanych danych
+# <a name="tutorial-3-extract-well-formatted-data"></a>Samouczek 3. Wyodrębnianie poprawnie sformatowanych danych
 W tym samouczku zmodyfikujesz aplikację Human Resources, aby wyodrębnić spójnie sformatowane dane z wypowiedzi przy użyciu jednostki **Regular Expression** (Wyrażenie regularne).
 
 Przeznaczeniem jednostki jest wyodrębnienie ważnych danych zawartych w wypowiedzi. Ta aplikacja używa jednostki wyrażenia regularnego, aby wyodrębnić z wypowiedzi sformatowane numery formularzy działu zasobów ludzkich. Podczas gdy intencja wypowiedzi jest zawsze określana za pomocą uczenia maszynowego, ten specyficzny typ jednostki nie jest określany za pomocą uczenia maszynowego. 
 
 **Przykładowe wypowiedzi mogą być następujące:**
 
-```
-Where is HRF-123456?
-Who authored HRF-123234?
-HRF-456098 is published in French?
-HRF-456098
-HRF-456098 date?
-HRF-456098 title?
-```
+|Przykładowe wypowiedzi|
+|--|
+|Where is HRF-123456? (Gdzie jest formularz HRF-123456?)|
+|Who authored HRF-123234? (Kto jest autorem formularza HRF-123456?)|
+|HRF-456098 is published in French? (Czy formularz HRF-123456 jest publikowany w języku francuskim?)|
+|HRF 456098|
+|Data HRF-456098?|
  
 Wyrażenie regularne jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
@@ -129,7 +129,7 @@ W poniższych krokach utwórz jednostkę wyrażenia regularnego, aby określić 
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `When were HRF-123456 and hrf-234567 published in the last year?`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna, niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `FindForm` z dwoma numerami formularzy: `HRF-123456` i `hrf-234567`.
 
-    ```JSON
+    ```json
     {
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {

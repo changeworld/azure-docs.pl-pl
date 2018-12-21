@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: uruchamianie usługi Azure Functions za pomocą zadań usługi Azure Stream Analytics | Microsoft Docs'
+title: 'Samouczek: Uruchamianie usługi Azure Functions za pomocą zadań usługi Azure Stream Analytics | Microsoft Docs'
 description: W tym samouczku przedstawiono konfigurowanie usługi Azure Functions jako ujścia danych wyjściowych dla zadań usługi Stream Analytics.
 services: stream-analytics
 author: jasonwhowell
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978004"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164164"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Uruchamianie usługi Azure Functions z zadań usługi Azure Stream Analytics 
 
@@ -35,34 +35,34 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>Konfigurowanie zadania usługi Stream Analytics pod kątem uruchamiania funkcji 
 
-W tej sekcji przedstawiono sposób konfigurowania zadania usługi Stream Analytics pod kątem uruchamiania funkcji zapisującej dane w usłudze Azure Redis Cache. Zadanie usługi Stream Analytics odczytuje zdarzenia z usługi Azure Event Hubs i uruchamia zapytanie wywołujące funkcję. Ta funkcja odczytuje dane z zadania usługi Stream Analytics i zapisuje je w usłudze Azure Redis Cache.
+W tej sekcji przedstawiono sposób konfigurowania zadania usługi Stream Analytics pod kątem uruchamiania funkcji zapisującej dane w pamięci podręcznej Azure Cache for Redis. Zadanie usługi Stream Analytics odczytuje zdarzenia z usługi Azure Event Hubs i uruchamia zapytanie wywołujące funkcję. Ta funkcja odczytuje dane z zadania usługi Stream Analytics i zapisuje je w pamięci podręcznej Azure Cache for Redis.
 
 ![Diagram przedstawiający relacje między usługami platformy Azure](./media/stream-analytics-with-azure-functions/image1.png)
 
 Poniższe kroki są wymagane do wykonania tego zadania:
 * [Utworzenie zadania usługi Stream Analytics z usługą Event Hubs jako wejściem](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [Utworzenie wystąpienia usługi Azure Redis Cache](#create-an-azure-redis-cache-instance)  
-* [Utworzenie funkcji w usłudze Azure Functions, która może zapisywać dane w usłudze Azure Redis Cache](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* [Tworzenie wystąpienia pamięci podręcznej Azure Cache for Redis](#create-an-azure-redis-cache-instance)  
+* [Utworzenie funkcji w usłudze Azure Functions, która może zapisywać dane w pamięci podręcznej Azure Cache for Redis](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
 * [Aktualizacja zadania usługi Stream Analytics za pomocą funkcji jako wyjścia](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [Sprawdzenie usługi Azure Redis Cache pod kątem wyników](#check-azure-redis-cache-for-results)  
+* [Sprawdzanie pamięci podręcznej Azure Cache for Redis pod kątem wyników](#check-azure-redis-cache-for-results)  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Tworzenie zadania usługi Stream Analytics z usługą Event Hubs jako wejściem
 
 Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](stream-analytics-real-time-fraud-detection.md), aby utworzyć centrum zdarzeń, uruchomić aplikację generatora zdarzeń i utworzyć zadanie usługi Stream Analytics. (Pomiń kroki tworzenia zapytania i wyjścia. Zamiast tego zapoznaj się z następującymi sekcjami w celu skonfigurowania wyjścia usługi Functions).
 
-## <a name="create-an-azure-redis-cache-instance"></a>Tworzenie wystąpienia usługi Azure Redis Cache
+## <a name="create-an-azure-cache-for-redis-instance"></a>Tworzenie wystąpienia pamięci podręcznej Azure Cache for Redis
 
-1. Tworzenie pamięci podręcznej w ramach usługi Azure Redis Cache za pomocą procedury opisanej w artykule [Tworzenie pamięci podręcznej](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).  
+1. Tworzenie pamięci podręcznej w ramach usługi Azure Cache for Redis za pomocą procedury opisanej w artykule [Tworzenie pamięci podręcznej](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).  
 
 2. Po utworzeniu pamięci podręcznej w obszarze **Ustawienia** wybierz pozycję **Klucze dostępu**. Zanotuj wartość **Podstawowe parametry połączenia**.
 
-   ![Zrzut ekranu parametrów połączenia usługi Azure Redis Cache](./media/stream-analytics-with-azure-functions/image2.png)
+   ![Zrzut ekranu parametrów połączenia pamięci podręcznej Azure Cache for Redis](./media/stream-analytics-with-azure-functions/image2.png)
 
-## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>Tworzenie funkcji w usłudze Azure Functions, która może zapisywać dane w usłudze Azure Redis Cache
+## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Tworzenie funkcji w usłudze Azure Functions, która może zapisywać dane w pamięci podręcznej Azure Cache for Redis
 
 1. Zobacz sekcję [Tworzenie aplikacji funkcji](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) w dokumentacji usługi Functions. Zawiera ona procedurę tworzenia aplikacji funkcji i [funkcji wyzwalanej za pomocą protokołu HTTP w usłudze Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function) w języku CSharp.  
 
-2. Przejdź do funkcji **run.csx**. Zaktualizuj ją za pomocą następującego kodu. (Pamiętaj o zastąpieniu ciągu „\<tutaj podaj parametry połączenia z usługą redis cache\>” podstawowymi parametrami połączenia z usługą Azure Redis Cache pobranymi w poprzedniej sekcji).  
+2. Przejdź do funkcji **run.csx**. Zaktualizuj ją za pomocą następującego kodu. Pamiętaj o zastąpieniu ciągu „\<your Azure Cache for Redis connection string goes here\>” (tu wstaw parametry połączenia z usługą Azure Cache for Redis) podstawowymi parametrami połączenia z usługą Azure Cache for Redis pobranymi w poprzedniej sekcji.  
 
    ```csharp
    using System;
@@ -85,7 +85,7 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
       {        
          return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
       }
-      var connection = ConnectionMultiplexer.Connect("<your redis cache connection string goes here>");
+      var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
       log.Info($"Connection string.. {connection}");
     
       // Connection refers to a property that returns a ConnectionMultiplexer
@@ -185,17 +185,17 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
     
 6.  Uruchom zadanie usługi Stream Analytics.
 
-## <a name="check-azure-redis-cache-for-results"></a>Sprawdzanie usługi Azure Redis Cache pod kątem wyników
+## <a name="check-azure-cache-for-redis-for-results"></a>Sprawdzanie pamięci podręcznej Azure Cache for Redis pod kątem wyników
 
-1. Przejdź do witryny Azure Portal i znajdź usługę Azure Redis Cache. Wybierz pozycję **Konsola**.  
+1. Przejdź do witryny Azure Portal i znajdź pamięć podręczną Azure Cache for Redis. Wybierz pozycję **Konsola**.  
 
-2. Użyj [poleceń pamięci podręcznej Redis Cache](https://redis.io/commands), aby sprawdzić, czy dane znajdują się w pamięci podręcznej Redis Cache. (Polecenie ma format Get {klucz}). Na przykład:
+2. Użyj [poleceń pamięci podręcznej Azure Cache for Redis](https://redis.io/commands), aby sprawdzić, czy dane znajdują się w usłudze Azure Cache for Redis. (Polecenie ma format Get {klucz}). Na przykład:
 
    **Get "12/19/2017 21:32:24 - 123414732"**
 
    To polecenie powinno wyświetlić wartość dla określonego klucza:
 
-   ![Zrzut ekranu danych wyjściowych usługi Azure Redis Cache](./media/stream-analytics-with-azure-functions/image5.png)
+   ![Zrzut ekranu danych wyjściowych pamięci podręcznej Azure Cache for Redis](./media/stream-analytics-with-azure-functions/image5.png)
    
 ## <a name="error-handling-and-retries"></a>Obsługa błędów oraz wykonywanie ponownych prób
 W przypadku awarii podczas wysyłania zdarzeń do usługi Azure Functions usługa Stream Analytics ponawia próbę w celu pomyślnego wykonania operacji. Jednak istnieją pewne błędy, w przypadku których ponowne próby nie wykonywane. Są to:
@@ -207,6 +207,8 @@ W przypadku awarii podczas wysyłania zdarzeń do usługi Azure Functions usług
 ## <a name="known-issues"></a>Znane problemy
 
 Przy próbie resetowania wartości Maksymalny rozmiar partii/Maksymalna liczba partii na wartość pustą (domyślną) w witrynie Azure Portal wartość zostanie zmieniona z powrotem na wartość podaną wcześniej przy zapisywaniu. W takim przypadku ręcznie podaj wartości domyślne dla tych pól.
+
+W tej chwili korzystanie z [routingu protokołu Http](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) w usłudze Azure Functions nie jest obsługiwane przez platformę Stream Analytics.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

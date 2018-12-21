@@ -1,23 +1,24 @@
 ---
-title: 'Samouczek 3: wzorce służące ulepszaniu przewidywania usługi LUIS'
+title: Wzorce
 titleSuffix: Azure Cognitive Services
 description: Aby zwiększyć przewidywanie intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi, należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 7ba5db8e50e8da5b274f73046d56f7816ca8834d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 346d8a83661c487a1d9a11e4da7d7bb67843e0b4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138331"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075526"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3: dodawanie typowych formatów wypowiedzi
+# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3. Dodawanie typowych formatów wypowiedzi
 
 W ramach tego samouczka w celu zwiększenia przewidywania intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania. Wzorzec jest kombinacją dopasowywania wyrażeń i uczenia maszynowego.  Przykładowa wypowiedź szablonu wraz z wypowiedziami intencji pozwala usłudze LUIS lepiej zrozumieć, jakie wypowiedzi pasują do intencji. 
 
@@ -106,7 +107,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Who is the boss of Jill Jones?`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {
@@ -229,7 +230,7 @@ W tym samouczku dodamy dwie nowe intencje: `OrgChart-Manager` i `OrgChart-Report
 
 Gdy usługa LUIS zwraca przewidywanie do aplikacji klienckiej, nazwa intencji może być użyta jako nazwa funkcji w aplikacji klienckiej, a jednostka Employee (Pracownik) może być użyta jako parametr tej funkcji.
 
-```Javascript
+```nodejs
 OrgChartManager(employee){
     ///
 }
@@ -277,7 +278,7 @@ Należy pamiętać, że pracownicy zostali utworzeni w [samouczku dotyczącym je
 
 3. Przejdź na koniec tego adresu URL i wprowadź ciąg `Who is the boss of Jill Jones?` jako wypowiedź. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {

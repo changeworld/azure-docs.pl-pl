@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie bazy wiedzy — środowisko REST, Java — QnA Maker'
+title: 'Szybki start: Tworzenie bazy wiedzy — środowisko REST, Java — QnA Maker'
 titlesuffix: Azure Cognitive Services
 description: Ten przewodnik Szybki start oparty na protokole Java REST zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure w ramach konta interfejsu API usługi Cognitive Services.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: diberry
-ms.openlocfilehash: 47a900f6877355fb45481d7b04052387ab3619cf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87ba02b6a840d416d54e3129b5720b4f59820eb8
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229598"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413442"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: Tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
 
-Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API.
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
-## <a name="create-a-knowledge-base-file"></a>Tworzenie pliku bazy wiedzy 
+## <a name="create-a-knowledge-base-file"></a>Tworzenie pliku bazy wiedzy
 
 Utwórz plik o nazwie `CreateKB.java`.
 
@@ -34,7 +34,7 @@ Na początku pliku `CreateKB.java` dodaj następujące wiersze, aby dodać niezb
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Dodawanie wymaganych stałych
-Po poprzednich wymaganych zależnościach dodaj wymagane stałe do klasy `CreateKB` umożliwiające dostęp do usługi QnA Maker. Zastąp wartość zmiennej `subscriptionKey` własnym kluczem usługi QnA Maker. Nie jest konieczne dodawanie końcowego nawiasu klamrowego, aby zakończyć klasę — znajduje się on w ostatnim fragmencie kodu na końcu tego przewodnika Szybki Start. 
+Po poprzednich wymaganych zależnościach dodaj wymagane stałe do klasy `CreateKB` umożliwiające dostęp do usługi QnA Maker. Zastąp wartość zmiennej `subscriptionKey` własnym kluczem usługi QnA Maker. Nie jest konieczne dodawanie końcowego nawiasu klamrowego, aby zakończyć klasę — znajduje się on w ostatnim fragmencie kodu na końcu tego przewodnika Szybki Start.
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
 
@@ -48,7 +48,7 @@ Poniżej stałych dodaj następujące klasy i funkcje wewnątrz klasy `CreateKB`
 
 Następnie dodaj poniższe funkcje pomocnicze wewnątrz klasy `CreateKB`.
 
-1. Dodaj następującą funkcję, aby wyświetlić dane JSON w czytelnym formacie:    
+1. Dodaj następującą funkcję, aby wyświetlić dane JSON w czytelnym formacie:
 
     [!code-java[Add the PrettyPrint function](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=82-87 "Add the KB model definition classes")]
 
@@ -56,7 +56,7 @@ Następnie dodaj poniższe funkcje pomocnicze wewnątrz klasy `CreateKB`.
 
     [!code-java[Add class to manage the HTTP response](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=89-97 "Add class to manage the HTTP response")]
 
-3. Dodaj następującą metodę służącą do wysyłania żądania POST do interfejsów API usługi QnA Maker. `Ocp-Apim-Subscription-Key` to klucz usługi QnA Maker używany do uwierzytelniania. 
+3. Dodaj następującą metodę służącą do wysyłania żądania POST do interfejsów API usługi QnA Maker. `Ocp-Apim-Subscription-Key` to klucz usługi QnA Maker używany do uwierzytelniania.
 
     [!code-java[Add POST method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=99-121 "Add POST method")]
 
@@ -65,11 +65,11 @@ Następnie dodaj poniższe funkcje pomocnicze wewnątrz klasy `CreateKB`.
     [!code-java[Add GET method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=123-137 "Add GET method")]
 
 ## <a name="add-a-method-to-create-the-kb"></a>Dodawanie metody służącej do tworzenia bazy wiedzy
-Dodaj następującą metodę służącą do tworzenia bazy wiedzy przez wywołanie metody POST. 
+Dodaj następującą metodę służącą do tworzenia bazy wiedzy przez wywołanie metody POST.
 
 [!code-java[Add CreateKB method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=139-144 "Add CreateKB method")]
 
-To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona. 
+To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona.
 
 ```JSON
 {
@@ -82,11 +82,11 @@ To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera i
 ```
 
 ## <a name="add-a-method-to-get-status"></a>Dodawanie metody służącej do wyświetlania stanu
-Dodaj następującą metodę służącą do sprawdzania stanu tworzenia. 
+Dodaj następującą metodę służącą do sprawdzania stanu tworzenia.
 
 [!code-java[Add GetStatus method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=146-150 "Add GetStatus method")]
 
-Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia: 
+Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 
 ```JSON
 {
@@ -100,10 +100,10 @@ Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 ```
 
 ## <a name="add-a-main-method"></a>Dodawanie metody głównej
-Metoda główna tworzy bazę wiedzy, a następnie wykonuje sondowanie pod kątem stanu. **Identyfikator operacji** tworzenia jest zwracany w polu **Location** nagłówka odpowiedzi POST, a następnie używany jako część trasy w żądaniu GET. **Pętla `while` ponawia próbę uzyskania stanu, jeśli jest on inny od ukończonego. 
+Metoda główna tworzy bazę wiedzy, a następnie wykonuje sondowanie pod kątem stanu. **Identyfikator operacji** tworzenia jest zwracany w polu **Location** nagłówka odpowiedzi POST, a następnie używany jako część trasy w żądaniu GET. **Pętla `while` ponawia próbę uzyskania stanu, jeśli jest on inny od ukończonego.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
- 
+
 ## <a name="compile-and-run-the-program"></a>Kompilowanie i uruchamianie programu
 
 1. Upewnij się, że biblioteka GSON znajduje się w katalogu `./libs`. W wierszu polecenia skompiluj plik `CreateKB.java`:
@@ -118,9 +118,9 @@ Metoda główna tworzy bazę wiedzy, a następnie wykonuje sondowanie pod kątem
     java -cp ",;libs/*" CreateKB
     ```
 
-Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices).    
+Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices).
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

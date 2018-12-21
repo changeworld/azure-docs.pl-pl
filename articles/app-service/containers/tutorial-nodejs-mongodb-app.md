@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej środowiska Node.js i usługi MongoDB w usłudze Azure App Service w systemie Linux | Microsoft Docs
+title: Kompilowanie aplikacji Node.js przy użyciu bazy danych MongoDB w systemie Linux — Azure App Service | Microsoft Docs
 description: Dowiedz się, jak uruchomić aplikację środowiska Node.js w usłudze Azure App Service w systemie Linux z użyciem połączenia z bazą danych usługi Cosmos DB i parametrów połączenia usługi MongoDB.
 services: app-service\web
 documentationcenter: nodejs
@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 3380322286740e3b87df11107ac5ade62ffa535d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 59173550c0cdff44931e0b686308b39e985dddcf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432069"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254959"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji internetowej środowiska Node.js i usługi MongoDB w usłudze Azure App Service w systemie Linux
 
@@ -28,7 +28,7 @@ ms.locfileid: "39432069"
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć aplikację w usłudze App Service w systemie _Windows_, zobacz [Tworzenie aplikacji internetowej Node.js i MongoDB na platformie Azure](../app-service-web-tutorial-nodejs-mongodb-app.md).
 >
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym samouczku opisano, jak utworzyć aplikację internetową środowiska Node.js, połączyć ją lokalnie z bazą danych Mongo DB, a następnie wdrożyć na platformie Azure połączoną z bazą danych Cosmos DB przy użyciu interfejsu API usługi MongoDB. Po zakończeniu aplikacja MEAN (MongoDB, Express, AngularJS i Node.js) będzie działać w usłudze App Service w systemie Linux. Dla uproszczenia przykładowa aplikacja używa [platformy internetowej MEAN.js](http://meanjs.org/).
+Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym samouczku opisano, jak utworzyć aplikację internetową środowiska Node.js, połączyć ją lokalnie z bazą danych Mongo DB, a następnie wdrożyć na platformie Azure połączoną z bazą danych Cosmos DB przy użyciu interfejsu API usługi MongoDB. Po zakończeniu aplikacja MEAN (MongoDB, Express, AngularJS i Node.js) będzie działać w usłudze App Service w systemie Linux. Dla uproszczenia przykładowa aplikacja używa [platformy internetowej MEAN.js](https://meanjs.org/).
 
 ![Aplikacja MEAN.js uruchomiona w usłudze Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -49,9 +49,9 @@ Omawiane kwestie:
 W celu ukończenia tego samouczka:
 
 1. [Zainstaluj oprogramowanie Git](https://git-scm.com/)
-1. [Zainstaluj środowisko Node.js w wersji 6.0 lub nowszej oraz menedżera NPM](https://nodejs.org/)
-1. [Zainstaluj środowisko Gulp.js](http://gulpjs.com/) (wymagane przez środowisko [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started))
-1. [Zainstaluj i uruchom usługę MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/)
+2. [Zainstaluj środowisko Node.js w wersji 6.0 lub nowszej oraz menedżera NPM](https://nodejs.org/)
+3. [Zainstaluj środowisko Gulp.js](https://gulpjs.com/) (wymagane przez środowisko [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started))
+4. [Zainstaluj i uruchom usługę MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/)
 
 ## <a name="test-local-mongodb"></a>Testowanie lokalnej usługi MongoDB
 
@@ -299,10 +299,10 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ```
 
-Możesz zauważyć, że w procesie wdrażania środowisko [Gulp](http://gulpjs.com/) jest uruchamiane po wykonaniu polecenia `npm install`. Usługa App Service nie uruchamia zadań Gulp ani Grunt podczas wdrażania, dlatego w katalogu głównym tego przykładowego repozytorium znajdują się 2 dodatkowe pliki włączające tę funkcję:
+Możesz zauważyć, że w procesie wdrażania środowisko [Gulp](https://gulpjs.com/) jest uruchamiane po wykonaniu polecenia `npm install`. Usługa App Service nie uruchamia zadań Gulp ani Grunt podczas wdrażania, dlatego w katalogu głównym tego przykładowego repozytorium znajdują się 2 dodatkowe pliki włączające tę funkcję:
 
 - _deployment_ — ten plik informuje usługę App Service, aby uruchomiła skrypt `bash deploy.sh` jako skrypt wdrożenia niestandardowego.
 - _deploy.sh_ — skrypt wdrożenia niestandardowego. Jeśli przejrzysz plik, zauważysz, że uruchamia on polecenie `gulp prod` po poleceniach `npm install` i `bower install`.

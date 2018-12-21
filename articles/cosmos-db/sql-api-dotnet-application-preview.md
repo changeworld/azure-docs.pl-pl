@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: ef805ff82b8f44f4caeeafdc8867d851f4501894
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c0b1ed5aff7f22000a179983396239c24d21a311
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852799"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101334"
 ---
 # <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Samouczek: tworzenie aplikacji internetowej ASP.NET MVC za pomocą usługi Azure Cosmos DB i zestawu SDK platformy .NET w wersji zapoznawczej 
 
@@ -47,7 +47,7 @@ W tym samouczku opisano następujące czynności:
 
 Przed wykonaniem instrukcji zawartych w tym artykule upewnij się, że masz następujące zasoby:
 
-* **Aktywne konto platformy Azure:** jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* **Aktywne konto platformy Azure:** Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -57,7 +57,7 @@ Przed wykonaniem instrukcji zawartych w tym artykule upewnij się, że masz nast
 
 Wszystkie zrzuty ekranu w tym artykule wykonano za pomocą programu Microsoft Visual Studio Community 2017. Jeśli w Twoim systemie jest skonfigurowana inna wersja, być może Twoje ekrany i opcje nie będą całkiem zgodne, lecz jeśli spełniasz powyższe wymagania wstępne, to rozwiązanie powinno działać.
 
-## <a name="create-an-azure-cosmos-account"></a>Krok 1. Tworzenie konta usługi Azure Cosmos
+## <a name="create-an-azure-cosmos-account"></a>Krok 1: tworzenie konta usługi Azure Cosmos
 
 Zacznijmy od utworzenia konta usługi Azure Cosmos. Jeśli masz już konto interfejsu API SQL usługi Azure Cosmos DB lub jeśli korzystasz z emulatora usługi Azure Cosmos DB na potrzeby tego samouczka, możesz od razu przejść do sekcji [Tworzenie nowej aplikacji platformy ASP.NET MVC](#create-a-new-mvc-application).
 
@@ -67,7 +67,7 @@ Zacznijmy od utworzenia konta usługi Azure Cosmos. Jeśli masz już konto inter
 
 W następnej sekcji utworzysz nową aplikację ASP.NET MVC. 
 
-## <a name="create-a-new-mvc-application"></a>Krok 2. Tworzenie nowej aplikacji platformy ASP.NET MVC
+## <a name="create-a-new-mvc-application"></a>Krok 2: tworzenie nowej aplikacji platformy ASP.NET MVC
 
 1. W programie Visual Studio z menu **Plik** wybierz pozycję **Nowy**, a następnie wybierz pozycję **Projekt**. Zostanie wyświetlone okno dialogowe **Nowy projekt**.
 
@@ -85,7 +85,7 @@ W następnej sekcji utworzysz nową aplikację ASP.NET MVC.
 
 7. Po zakończeniu tworzenia standardowej aplikacji MVC przez program Visual Studio będzie dostępna pusta aplikacja platformy ASP.NET, którą można uruchomić lokalnie.
 
-## <a name="add-nuget-packages"></a>Krok 3. Dodawanie pakietu NuGet usługi Azure Cosmos DB do projektu
+## <a name="add-nuget-packages"></a>Krok 3: dodawanie pakietu NuGet usługi Azure Cosmos DB do projektu
 
 Mamy już większość kodu platformy ASP.NET MVC potrzebnego w tym rozwiązaniu. Kolejnym krokiem jest dodanie pakietów NuGet wymaganych do nawiązania połączenia z usługą Azure Cosmos DB.
 
@@ -103,7 +103,7 @@ Mamy już większość kodu platformy ASP.NET MVC potrzebnego w tym rozwiązaniu
 
 3. Po zainstalowaniu pakietu rozwiązanie Visual Studio powinno zawierać dwa nowe odwołania do bibliotek Microsoft.Azure.Documents.Client i Newtonsoft.Json.
   
-## <a name="set-up-the-mvc-application"></a>Krok 4. Konfigurowanie aplikacji platformy ASP.NET MVC
+## <a name="set-up-the-mvc-application"></a>Krok 4: konfigurowanie aplikacji platformy ASP.NET MVC
 
 Teraz możemy dodać modele, widoki i kontrolery do aplikacji MVC:
 
@@ -194,7 +194,7 @@ Na koniec wykonaj następujące kroki, aby dodać widok umożliwiający edycję 
 
 Po zakończeniu zamknij wszystkie dokumenty cshtml w programie Visual Studio. Wrócimy do tych widoków później.
 
-## <a name="connect-to-cosmosdb"></a>Krok 5. Łączenie się z usługą Azure Cosmos DB 
+## <a name="connect-to-cosmosdb"></a>Krok 5: Łączenie z usługą Azure Cosmos DB 
 
 Po przygotowaniu standardowych zasobów wzorca MVC możemy zacząć dodawać kod umożliwiający połączenie się z usługą Azure Cosmos DB i wykonywanie operacji CRUD. 
 
@@ -244,7 +244,7 @@ Jeśli skompilujesz i uruchomisz projekt teraz, zobaczysz stronę podobną do na
 ![Zrzut ekranu przedstawiający aplikację internetową listy rzeczy do zrobienia utworzoną za pomocą tego samouczka bazy danych](./media/sql-api-dotnet-application-preview/build-and-run-the-project-now.png)
 
 
-## <a name="run-the-application"></a>Krok 6. Uruchamianie aplikacji lokalnie
+## <a name="run-the-application"></a>Krok 6: Uruchamianie aplikacji lokalnie
 
 Aby przetestować aplikację na komputerze lokalnym, wykonaj następujące czynności:
 
@@ -264,7 +264,7 @@ Aby przetestować aplikację na komputerze lokalnym, wykonaj następujące czynn
 
 5. Po przetestowaniu aplikacji naciśnij klawisze Ctrl+F5, aby zatrzymać jej debugowanie. Wszystko jest gotowe do wdrożenia.
 
-## <a name="deploy-the-application-to-azure"></a>Krok 7. Wdrażanie aplikacji 
+## <a name="deploy-the-application-to-azure"></a>Krok 7: Wdrażanie aplikacji 
 Teraz, gdy kompletna aplikacja działa poprawnie z usługą Azure Cosmos DB, wdrożymy tę aplikację internetową w usłudze Azure App Service.  
 
 1. Aby opublikować tę aplikację, w **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz pozycję **Publikuj**.
@@ -288,8 +288,8 @@ W tym samouczku omówiliśmy tworzenie aplikacji internetowej ASP.NET MVC, któr
 > [Tworzenie aplikacji Java umożliwiającej dostęp do danych przechowywanych na koncie interfejsu API SQL usługi Azure Cosmos DB]( sql-api-java-application.md)
 
 
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
+[Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-todo-app

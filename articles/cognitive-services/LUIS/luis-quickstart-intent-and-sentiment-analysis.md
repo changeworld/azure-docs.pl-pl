@@ -1,23 +1,24 @@
 ---
-title: 'Samouczek 9: analiza tonacji — pozytywnych, negatywnych i neutralnych — w usłudze LUIS'
+title: Analiza tonacji
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację, która pokazuje, jak wyodrębniać pozytywne, negatywne i neutralne tonacje z wypowiedzi. Tonację określa się na podstawie całej wypowiedzi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 60c4b280033e110f6b8b2a3ce720934e118c8479
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424854"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098941"
 ---
-# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Samouczek 9: wyodrębnianie tonacji całej wypowiedzi
+# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Samouczek 9:  wyodrębnianie tonacji całej wypowiedzi
 W tym samouczku utworzysz aplikację, która pokazuje, jak wyodrębniać pozytywne, negatywne i neutralne tonacje z wypowiedzi. Tonację określa się na podstawie całej wypowiedzi.
 
 Analiza tonacji to możliwość określenia, czy wypowiedź użytkownika jest pozytywna, negatywna, czy neutralna. 
@@ -94,7 +95,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 2. Przestaw przełącznik **Sentiment Analysis** (Analiza tonacji), aby włączyć to ustawienie. 
 
-    ![](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
+    ![Włączanie analizy tonacji jako ustawienia publikowania](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
 ## <a name="publish"></a>Publikowanie
 
@@ -106,7 +107,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Jill Jones work with the media team on the public portal was amazing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `EmployeeFeedback` z wyodrębnioną analizą tonacji.
     
-    ```JSON
+    ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {

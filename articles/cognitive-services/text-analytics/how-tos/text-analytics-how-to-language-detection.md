@@ -9,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 984a027a1fe2f9c894701058452490bdf12b66c4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633568"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338740"
 ---
 # <a name="example-how-to-detect-language-in-text-analytics"></a>Przykład: Jak wykrywać język przy użyciu analizy tekstu
 
@@ -52,13 +52,13 @@ Dokument musi mieć mniej niż 5000 znaków, a kolekcja może zawierać maksymal
             },                
             {
                 "id": "5",
-                "text": "Этот документ находится на английском языке."
+                "text": "Этот документ на английском языке."
             }
         ]
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>Krok 1: Określenie struktury żądania
+## <a name="step-1-structure-the-request"></a>Krok 1. Określenie struktury żądania
 
 Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
@@ -73,14 +73,14 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 > [!Tip]
 > Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
+## <a name="step-2-post-the-request"></a>Krok 2. Wysłanie żądania
 
 Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 100 żądań na minutę. Maksymalny rozmiar każdego żądania to 1 MB.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
 
-## <a name="step-3-view-results"></a>Krok 3: Wyświetlenie wyników
+## <a name="step-3-view-results"></a>Krok 3. Wyświetlanie wyników
 
 Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami i wykrytymi właściwościami.
 

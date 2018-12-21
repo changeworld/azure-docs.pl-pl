@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 89f5ae27e7ce3ec3155fd3fdbf42bb0f4322aa10
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 50abe2b067770976f19ae9b70c97c2df8354640f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835067"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091582"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -35,10 +35,10 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
 * **Wiele modeli danych i popularnych interfejsów API na potrzeby uzyskiwania dostępu do danych i wykonywania względem nich zapytań**
     * Model danych oparty na technologii atom-rekord-sekwencja (ARS, atom-record-sequence), na podstawie którego zbudowana jest usługi Azure Cosmos DB, natywnie obsługuje wiele modeli danych, między innymi rodziny modeli opartych na dokumentach, grafach, parach klucz-wartość i kolumnach.
     * Interfejsy API dla następujących modeli danych są obsługiwane przez zestawy SDK dostępne w wielu językach:
-        * [Interfejs API usługi SQL](sql-api-introduction.md): aparat bazy danych JSON bez schematu z zaawansowanymi możliwościami wysyłania zapytań SQL.
+        * [Interfejs API SQL](sql-api-introduction.md): aparat bazy danych JSON bez schematu z zaawansowanymi możliwościami wykonywania zapytań SQL.
         * [Interfejs API usługi MongoDB](mongodb-introduction.md): wysoce skalowalna *baza danych MongoDB jako usługa* obsługiwana przez platformę Azure Cosmos DB. Zgodny z istniejącymi bibliotekami, sterownikami, narzędziami i aplikacjami MongoDB.
         * [Interfejs API rozwiązania Cassandra](cassandra-introduction.md): globalnie dystrybuowane rozwiązanie Cassandra jako usługa obsługiwane przez platformę Azure Cosmos DB. Zgodny z istniejącymi bibliotekami, sterownikami, narzędziami i aplikacjami [Apache Cassandra](https://cassandra.apache.org/).
-        * [Interfejs API języka Gremlin](graph-introduction.md): w pełni zarządzana, skalowalna w poziomie usługa bazy danych programu Graph, która ułatwia tworzenie i uruchamianie aplikacji działających z zestawami danych o wysokim stopniu połączenia i obsługującymi otwarte interfejsy API języka Gremlin (na podstawie [specyfikacji Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
+        * [Interfejs API języka Gremlin](graph-introduction.md): w pełni zarządzana, skalowalna w poziomie usługa bazy danych programu Graph, która ułatwia tworzenie i uruchamianie aplikacji działających z zestawami danych o wysokim stopniu połączenia i obsługującymi otwarte interfejsy API języka Gremlin (na podstawie [specyfikacji Apache TinkerPop](https://tinkerpop.apache.org/), Apache Gremlin).
         * [Interfejs API tabel](table-introduction.md): usługa bazy danych wartości klucza utworzona w celu zapewnienia funkcji premium (na przykład automatycznego indeksowania, gwarantowanego małego opóźnienia, globalnej dystrybucji) istniejącym aplikacjom usługi Azure Table Storage bez wprowadzania żadnych zmian w aplikacji.
         * Dodatkowe modele danych i interfejsy API będą dostępne wkrótce!
 

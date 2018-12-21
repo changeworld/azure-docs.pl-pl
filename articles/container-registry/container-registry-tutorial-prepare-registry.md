@@ -1,5 +1,5 @@
 ---
-title: Samouczek usługi Azure Container Registry — przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną
+title: Samouczek — tworzenie rejestru platformy Docker z replikacją geograficzną na platformie Azure
 description: Tworzenie rejestru kontenerów platformy Azure, konfigurowanie replikacji geograficznej, przygotowanie obrazu platformy Docker i wdrożenie go w rejestrze. Pierwsza część trzyczęściowej serii.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9d1371dc02f37889b15b3448d82c62d76472f847
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: db00672c7cbb39002c4a40eb7397af76e4c8189a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854307"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261317"
 ---
-# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną
+# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: Przygotowanie rejestru kontenerów platformy Azure z replikacją geograficzną
 
 Rejestr kontenerów platformy Azure to prywatny rejestr platformy Docker wdrożony na platformie Azure, który można zlokalizować w sieci w pobliżu własnych wdrożeń. Ten zestaw trzech samouczków przedstawia metodę użycia replikacji geograficznej do wdrożenia aplikacji internetowej platformy ASP.NET Core uruchomionej w kontenerze systemu Linux do dwóch wystąpień funkcji [Web Apps for Containers](../app-service/containers/index.yml). Dowiesz się, jak platforma Azure automatycznie wdraża obraz do każdego wystąpienia aplikacji internetowej z najbliższego repozytorium z replikacją geograficzną.
 
@@ -50,7 +50,7 @@ Wybierz pozycję **Utwórz zasób** > **Kontenery** > **Azure Container Registry
 Skonfiguruj nowy rejestr za pomocą następujących ustawień:
 
 * **Nazwa rejestru**: utwórz nazwę rejestru, która jest globalnie unikatowa w obrębie platformy Azure i składa się z od 5 do 50 znaków alfanumerycznych
-* **Grupa zasobów**: **utwórz nową** > `myResourceGroup`
+* **Grupa zasobów**: **Utwórz nową** > `myResourceGroup`
 * **Lokalizacja**: `West US`
 * **Administrator**: `Enable` (wymagane dla funkcji Web App for Containers na potrzeby ściągania obrazów)
 * **Jednostka SKU**: `Premium` (wymagana dla replikacji geograficznej)

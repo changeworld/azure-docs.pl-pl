@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cf8c82f597cd659911cd66b0b7db8139e8d9d1a5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6f1cd08e3c786a1d163a22b5da5150fde5f45b95
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416889"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135342"
 ---
-# <a name="tutorial-configure-message-routing-with-iot-hub"></a>Samouczek: konfigurowanie routingu wiadomości przy użyciu usługi IoT Hub
+# <a name="tutorial-configure-message-routing-with-iot-hub"></a>Samouczek: Konfigurowanie routingu wiadomości przy użyciu usługi IoT Hub
 
 [Routing komunikatów](iot-hub-devguide-messages-d2c.md) umożliwia wysyłanie danych telemetrycznych z urządzeń IoT do wbudowanych punktów końcowych zgodnych z centrum Event Hubs lub do niestandardowych punktów końcowych, takich jak usługa Blob Storage, kolejka usługi Service Bus, temat usługi Service Bus i usługa Event Hubs. Podczas konfigurowania routingu komunikatów można utworzyć [zapytania dotyczące routingu](iot-hub-devguide-routing-query-syntax.md), aby dostosować trasę spełniającą określony warunek. Po zakończeniu konfiguracji dane przychodzące są automatycznie rozsyłane do punktów końcowych przez usługę IoT Hub. 
 
@@ -56,6 +56,10 @@ W poniższych sekcjach opisano sposób wykonywania tych wymaganych czynności. P
 1. Utwórz [grupę zasobów](../azure-resource-manager/resource-group-overview.md). 
 
 2. Utwórz centrum IoT Hub w warstwie S1. Dodaj grupę użytkowników do centrum IoT Hub. Grupa użytkowników jest używana przez usługę Azure Stream Analytics podczas pobierania danych.
+
+   > [!NOTE]
+   > Aby ukończyć ten samouczek, należy użyć usługi IoT Hub w warstwie płatnej. Warstwa bezpłatna umożliwia wyłącznie skonfigurowanie jednego punktu końcowego, a w tym samouczku należy skonfigurować ich kilka.
+   > 
 
 3. Utwórz standardowe konto magazynu w wersji 1 przy użyciu replikacji Standard_LRS.
 
@@ -302,15 +306,15 @@ Dane są zapisywane do magazynu obiektów blob w formacie Avro.
 
 9. Teraz podaj pozostałe informacje zapytania dotyczącego routingu. To zapytanie określa kryteria dotyczące wysyłania komunikatów do kontenera magazynu, który właśnie został dodany jako punkt końcowy. Wypełnij pola na ekranie. 
 
-   **Nazwa**: wprowadź nazwę zapytania dotyczącego routingu. W tym samouczku jest używana nazwa **StorageRoute**.
+   **Nazwa**: Wprowadź nazwę zapytania dotyczącego routingu. W tym samouczku jest używana nazwa **StorageRoute**.
 
-   **Punkt końcowy**: właśnie skonfigurowany punkt końcowy. 
+   **Punkt końcowy**: Skonfigurowany w poprzednim kroku punkt końcowy. 
    
-   **Źródło danych**: z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
+   **Źródło danych**: Z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
 
-   **Włącz trasę**: upewnij się, że ta opcja została włączona.
+   **Włącz trasę**: Sprawdź, czy ta opcja jest włączona.
    
-   **Zapytanie dotyczące routingu**: wprowadź `level="storage"` jako ciąg zapytania. 
+   **Zapytanie dotyczące routingu**: Wprowadź `level="storage"` jako ciąg zapytania. 
 
    ![Zrzut ekranu przedstawiający tworzenie zapytania dotyczącego routingu dla konta magazynu.](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
    
@@ -330,23 +334,23 @@ Teraz skonfigurujesz routing dla kolejki usługi Service Bus. Przejdź do okienk
 
 4. Wypełnij następujące pola:
 
-   **Nazwa punktu końcowego**: wprowadź nazwę punktu końcowego. W tym samouczku jest używana nazwa **CriticalQueue**.
+   **Nazwa punktu końcowego**: Wprowadź nazwę punktu końcowego. W tym samouczku jest używana nazwa **CriticalQueue**.
    
-   **Przestrzeń nazw usługi Service Bus**: kliknij to pole, aby wyświetlić listę rozwijaną. Wybierz przestrzeń nazw usługi Service Bus, która została skonfigurowana podczas procedury przygotowywania. W tym samouczku jest używana nazwa **ContosoSBNamespace**.
+   **Przestrzeń nazw usługi Service Bus**: Kliknij to pole, aby wyświetlić listę rozwijaną. Wybierz przestrzeń nazw usługi Service Bus, która została skonfigurowana podczas procedury przygotowywania. W tym samouczku jest używana nazwa **ContosoSBNamespace**.
 
-   **Kolejka usługi Service Bus**: kliknij to pole, aby wyświetlić listę rozwijaną. Z tej listy wybierz kolejkę usługi Service Bus. W tym samouczku jest używana kolejka **contososbqueue**.
+   **Kolejka usługi Service Bus**: Kliknij to pole, aby wyświetlić listę rozwijaną. Z tej listy wybierz kolejkę usługi Service Bus. W tym samouczku jest używana kolejka **contososbqueue**.
 
 5. Kliknij pozycję **Utwórz**, aby dodać punkt końcowy kolejki usługi Service Bus. Spowoduje to powrót do okienka **Dodawanie trasy**. 
 
 6.  Teraz podaj pozostałe informacje zapytania dotyczącego routingu. To zapytanie określa kryteria dotyczące wysyłania komunikatów do kolejki usługi Service Bus, która właśnie została dodana jako punkt końcowy. Wypełnij pola na ekranie. 
 
-   **Nazwa**: wprowadź nazwę zapytania dotyczącego routingu. W tym samouczku jest używana nazwa **SBQueueRoute**. 
+   **Nazwa**: Wprowadź nazwę zapytania dotyczącego routingu. W tym samouczku jest używana nazwa **SBQueueRoute**. 
 
-   **Punkt końcowy**: właśnie skonfigurowany punkt końcowy.
+   **Punkt końcowy**: Skonfigurowany w poprzednim kroku punkt końcowy.
 
-   **Źródło danych**: z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
+   **Źródło danych**: Z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
 
-   **Zapytanie dotyczące routingu**: wprowadź `level="critical"` jako ciąg zapytania. 
+   **Zapytanie dotyczące routingu**: Wprowadź `level="critical"` jako ciąg zapytania. 
 
    ![Zrzut ekranu przedstawiający tworzenie zapytania dotyczącego zapytania dla kolejki usługi Service Bus.](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
@@ -366,15 +370,15 @@ Kolejka usługi Service Bus jest używana do odbierania komunikatów oznaczonych
 
 1. W witrynie [Azure Portal](https://portal.azure.com) kliknij pozycję **+ Utwórz zasób**. W polu wyszukiwania wpisz ciąg **aplikacja logiki** i naciśnij klawisz Enter. W wyświetlonych wynikach wyszukiwania wybierz aplikację logiki, a następnie kliknij pozycję **Utwórz**, aby przejść do okienka **Tworzenie aplikacji logiki**. Wypełnij pola. 
 
-   **Nazwa**: to pole zawiera nazwę aplikacji logiki. W tym samouczku jest używana nazwa **ContosoLogicApp**. 
+   **Nazwa**: To pole zawiera nazwę aplikacji logiki. W tym samouczku jest używana nazwa **ContosoLogicApp**. 
 
-   **Subskrypcja**: wybierz subskrypcję platformy Azure.
+   **Subskrypcja**: Wybierz swoją subskrypcję platformy Azure.
 
-   **Grupa zasobów**: kliknij pozycję **Użyj istniejącej** i wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**. 
+   **Grupa zasobów**: Kliknij pozycję **Użyj istniejącej** i wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**. 
 
-   **Lokalizacja**: użyj swojej lokalizacji. W tym samouczku jest używany region **Zachodnie stany USA**. 
+   **Lokalizacja**: Użyj swojej lokalizacji. W tym samouczku jest używany region **Zachodnie stany USA**. 
 
-   **Log Analytics**: ten przełącznik powinien być wyłączony. 
+   **Log Analytics**: Ten przełącznik powinien być wyłączony. 
 
    ![Zrzut ekranu przedstawiający ekran Tworzenie aplikacji logiki.](./media/tutorial-routing/create-logic-app.png)
 
@@ -424,11 +428,11 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 2. Wprowadź poniższe informacje dotyczące zadania.
 
-   **Nazwa zadania**: nazwa zadania. Nazwa musi być unikatowa w skali globalnej. W tym samouczku jest używana nazwa **contosoJob**.
+   **Nazwa zadania**: Nazwa zadania. Nazwa musi być unikatowa w skali globalnej. W tym samouczku jest używana nazwa **contosoJob**.
 
-   **Grupa zasobów**: użyj grupy zasobów stosowanej już w centrum IoT Hub. W tym samouczku jest używana grupa **ContosoResources**. 
+   **Grupa zasobów**: Użyj grupy zasobów używanej już w centrum IoT Hub. W tym samouczku jest używana grupa **ContosoResources**. 
 
-   **Lokalizacja**: użyj lokalizacji stosowanej już w skrypcie konfiguracji. W tym samouczku jest używany region **Zachodnie stany USA**. 
+   **Lokalizacja**: Użyj lokalizacji stosowanej już w skrypcie konfiguracji. W tym samouczku jest używany region **Zachodnie stany USA**. 
 
    ![Zrzut ekranu pokazujący sposób tworzenia zadania usługi Log Analytics.](./media/tutorial-routing/stream-analytics-create-job.png)
 
@@ -440,17 +444,17 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 5. W okienku **Dane wejściowe** kliknij pozycję **Dodaj wejście strumienia** i wybierz pozycję centrum IoT Hub. Na wyświetlonym ekranie wypełnij następujące pola:
 
-   **Alias wejściowy**: w tym samouczku jest używany alias **contosoinputs**.
+   **Alias danych wejściowych**: W tym samouczku jest używany alias **contosoinputs**.
 
-   **Subskrypcja**: wybierz swoją subskrypcję.
+   **Subskrypcja**: Wybierz subskrypcję.
 
-   **Centrum IoT Hub**: wybierz centrum usługi IoT Hub. W tym samouczku jest używane centrum **ContosoTestHub**.
+   **IoT Hub**: Wybierz centrum usługi IoT Hub. W tym samouczku jest używane centrum **ContosoTestHub**.
 
-   **Punkt końcowy**: wybierz pozycję **Obsługa komunikatów**. (W przypadku wybrania pozycji Monitorowanie operacji otrzymasz dane telemetryczne dotyczące centrum IoT Hub, a nie wysyłane dane). 
+   **Punkt końcowy**: Wybierz pozycję **Obsługa komunikatów**. (W przypadku wybrania pozycji Monitorowanie operacji otrzymasz dane telemetryczne dotyczące centrum IoT Hub, a nie wysyłane dane). 
 
-   **Nazwa zasady dostępu współdzielonego**: wybierz pozycję **iothubowner**. Portal wypełni klucz wstępny zasad dostępu współdzielonego za Ciebie.
+   **Nazwa zasad dostępu współdzielonego**: Wybierz pozycję **iothubowner**. Portal wypełni klucz wstępny zasad dostępu współdzielonego za Ciebie.
 
-   **Grupy użytkowników**: wybierz wcześniej utworzoną grupę użytkowników. W tym samouczku jest używana grupa **contosoconsumers**.
+   **Grupy użytkowników**: Wybierz wcześniej utworzoną grupę użytkowników. W tym samouczku jest używana grupa **contosoconsumers**.
    
    W pozostałych polach zaakceptuj wartości domyślne. 
 
@@ -464,11 +468,11 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 2. W okienku **Dane wyjściowe** kliknij pozycję **Dodaj**, a następnie wybierz pozycję **Power BI**. Na wyświetlonym ekranie wypełnij następujące pola:
 
-   **Alias wyjściowy**: unikatowy alias danych wyjściowych. W tym samouczku jest używany alias **contosooutputs**. 
+   **Alias danych wyjściowych**: Unikatowy alias danych wyjściowych. W tym samouczku jest używany alias **contosooutputs**. 
 
-   **Nazwa zestawu danych**: nazwa zestawu danych do użycia w usłudze Power BI. W tym samouczku jest używany zestaw danych **contosodataset**. 
+   **Nazwa zestawu danych**: Nazwa zestawu danych do użycia w usłudze Power BI. W tym samouczku jest używany zestaw danych **contosodataset**. 
 
-   **Nazwa tabeli**: nazwa tabeli do użycia w usłudze Power BI. W tym samouczku jest używana tabela **contosotable**.
+   **Nazwa tabeli**: Nazwa tabeli do użycia w usłudze Power BI. W tym samouczku jest używana tabela **contosotable**.
 
    Zaakceptuj wartości domyślne w pozostałych polach.
 
@@ -482,9 +486,9 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 1. W obszarze **Topologia zadania** kliknij pozycję **Zapytanie**.
 
-2. Zastąp element `[YourInputAlias]` aliasem wejściowym zadania. W tym samouczku jest używany alias **contosoinputs**.
+2. Zastąp element `[YourInputAlias]` aliasem danych wejściowych zadania. W tym samouczku jest używany alias **contosoinputs**.
 
-3. Zastąp element `[YourOutputAlias]` aliasem wyjściowym zadania. W tym samouczku jest używany alias **contosooutputs**.
+3. Zastąp element `[YourOutputAlias]` aliasem danych wyjściowych zadania. W tym samouczku jest używany alias **contosooutputs**.
 
    ![Zrzut ekranu przedstawiający sposób konfigurowania zapytania zadania usługi Stream Analytics.](./media/tutorial-routing/stream-analytics-job-query.png)
 

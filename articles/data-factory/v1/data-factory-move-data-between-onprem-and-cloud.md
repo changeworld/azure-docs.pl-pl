@@ -304,7 +304,7 @@ W tym kroku utworzysz zestawy danych wejściowych i wyjściowych, które repreze
 ## <a name="create-pipeline"></a>Tworzenie potoku
 W tym kroku opisano tworzenie **potoku** przy użyciu jednego **działania kopiowania** , który używa **EmpOnPremSQLTable** jako dane wejściowe i **OutputBlobTable** jako dane wyjściowe.
 
-1. W edytorze fabryki danych kliknij **... Więcej** i **Nowy potok.
+1. W edytorze fabryki danych kliknij **... Więcej** i **Nowy potok**.
 2. Zastąp kod JSON w prawym okienku następującym tekstem:    
 
     ```JSON   

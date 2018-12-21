@@ -1,5 +1,5 @@
 ---
-title: Przykładowe zasady usługi Azure Policy — inspekcja stanu przezroczystego szyfrowania danych usłudze SQL Database
+title: Przykład — inspekcja przezroczystego szyfrowania danych w usłudze SQL Database
 description: Te przykładowe zasady sprawdzają, czy usługa SQL Database nie ma włączonego przezroczystego szyfrowania danych.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 10/29/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: d7e8571c0b8301da953d84893ac48934a2392d55
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 36eb62dfa7ae45b70f5907241c66f2286f9ce760
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230007"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310627"
 ---
 # <a name="audit-sql-database-encryption"></a>Inspekcja szyfrowania w usłudze SQL Database
 

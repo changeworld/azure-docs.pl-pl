@@ -1,5 +1,5 @@
 ---
-title: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights
+title: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights | Microsoft Docs
 description: Informacje na temat biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights i powiązanego z nią modelu programowania.
 author: ashannon7
 manager: cshankar
@@ -8,14 +8,15 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 5f31dce98cd873a0bf4b750934384e1bf6d2564a
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: seodec18
+ms.openlocfilehash: 33dcf6f69d1287b4e040b3cccf4164667db2b75f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706997"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269978"
 ---
-# <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Samouczek: Poznaj bibliotekę klienta języka JavaScript dla usługi Azure Time Series Insights
+# <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Samouczek: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights
 
 Aby wspomóc deweloperów sieci Web w tworzeniu zapytań i wizualizacji danych przechowywanych w usłudze Time Series Insights (TSI), opracowana została biblioteka klienta usługi TSI, oparta na bibliotece D3 języka JavaScript.  Ten samouczek umożliwia poznanie biblioteki klienta języka JavaScript dla usługi TSI i powiązanego z nią modelu programowania przy użyciu przykładowej aplikacji sieci Web.
 
@@ -95,8 +96,8 @@ Na początku obejrzyjmy kod źródłowy HTML i JavaScript strony renderowanej w 
 
 Mimo że nie przeglądamy szczegółowo biblioteki klienta usługi TSI **tsclient.js**, należy zwrócić uwagę na fakt, że udostępnia ona abstrakcję dla dwóch ważnych kategorii:
 
-- **Metody opakowujące wywołania interfejsów API zapytań usługi TSI**: interfejsy API REST, które pozwalają użytkownikowi na tworzenie zapytań do danych w usłudze TSI przy użyciu wyrażeń agregujących. Te metody są zorganizowane w przestrzeni nazw `TsiClient.Server` biblioteki.
-- **Metody tworzenia i wypełniania różnych typów kontrolek wykresów**: metody używane do renderowania zagregowanych danych usługi TSI na stronie sieci Web. Te metody są zorganizowane w przestrzeni nazw `TsiClient.UX` biblioteki.
+- **Metody otoki na potrzeby wywoływania interfejsów API zapytań usługi TSI**: interfejsy API REST, które umożliwiają wykonywanie zapytań dotyczących danych usługi TSI przy użyciu wyrażeń agregowanych. Te metody są zorganizowane w przestrzeni nazw `TsiClient.Server` biblioteki.
+- **Metody tworzenia i wypełniania kilku typów kontrolek wykresów**: metody, które są używane do renderowania zagregowanych danych TSI na stronie internetowej. Te metody są zorganizowane w przestrzeni nazw `TsiClient.UX` biblioteki.
 
 Poniższe pojęcia są uniwersalne i mają ogólne zastosowanie do interfejsów API biblioteki klienta usługi TSI.
 
@@ -236,7 +237,7 @@ Spójrz na kod związany z sekcją HTML znajdującą się poniżej komentarza `/
 1. Najpierw definiowana jest seria akcji niestandardowych. Każda akcja zawiera tablicę z co najmniej jednym elementem. Każdy element definiuje pojedynczy element menu kontekstowego:
 
    - `barChartActions`: ta akcja definiuje menu kontekstowe wykresu kołowego, zawierające jeden element określający pojedynczy element menu:
-     - `name`: tekst używany w elemencie menu: „Print parameters to console” (Drukuj parametry na konsoli).
+     - `name`: tekst, który jest używany dla elementu menu: „Print parameters to console” (Parametry drukowania do konsoli).
      - `action`: akcja skojarzona z elementem menu. Ta akcja jest zawsze funkcją anonimową, przyjmującą trzy argumenty oparte na wyrażeniu agregującym używanym do tworzenia wykresu. W tym przypadku argumenty są zapisywane w oknie konsoli przeglądarki:
        - `ae`: tablica wyrażeń agregujących.
        - `splitBy`: wartość splitBy.
@@ -262,7 +263,7 @@ Pędzle są używane do określania zakresu czasu w celu definiowania akcji, tak
 Kod używany w celu zademonstrowania działania pędzli jest pokazany w poprzednim przykładzie „Wykres liniowy z menu kontekstowym umożliwiającym utworzenie wykresu kołowego/słupkowego”, dotyczącym [wyskakujących menu kontekstowych](#popup-context-menus-section).
 
 1. Akcje związane z pędzlem są bardzo podobne do menu kontekstowego w tym, że definiują dla pędzla szereg akcji niestandardowych. Każda akcja zawiera tablicę z co najmniej jednym elementem. Każdy element definiuje pojedynczy element menu kontekstowego:
-   - `name`: tekst używany w elemencie menu: „Print parameters to console” (Drukuj parametry na konsoli).
+   - `name`: tekst, który jest używany dla elementu menu: „Print parameters to console” (Parametry drukowania do konsoli).
    - `action`: skojarzona z elementem menu akcja, która jest zawsze funkcją anonimową, przyjmującą dwa argumenty. W tym przypadku argumenty są zapisywane w oknie konsoli przeglądarki:
       - `fromTime`: znacznik czasu „od” zaznaczenia za pomocą pędzla.
       - `toTime`: znacznik czasu „do” zaznaczenia za pomocą pędzla.

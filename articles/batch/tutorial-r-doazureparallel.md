@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: fb616dc95cc7dd7dbb25f2deb832b517d0747ae4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 305ea27e787196f648fcb4c536f33b12c924c015
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315454"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164699"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Samouczek: równoległe uruchamianie symulacji języka R w usłudze Azure Batch 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Samouczek: Uruchamianie równoległej symulacji języka R w usłudze Azure Batch 
 
 Możesz uruchamiać równoległe obciążenia języka R na dużą skalę za pomocą lekkiego pakietu języka R, [doAzureParallel](http://www.github.com/Azure/doAzureParallel), umożliwiającego używanie usługi Azure Batch bezpośrednio z poziomu sesji języka R. Pakiet doAzureParallel został zbudowany na podstawie popularnego pakietu języka R [foreach](http://cran.r-project.org/web/packages/foreach/index.html). Pakiet doAzureParallel przesyła poszczególne iteracje pętli pakietu foreach jako zadania podrzędne usługi Azure Batch.
 

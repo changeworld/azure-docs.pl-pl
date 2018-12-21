@@ -1,6 +1,6 @@
 ---
-title: Przekazywanie danych (interfejs API REST — usługa Azure Search) | Microsoft Docs
-description: Dowiedz się, jak przekazywać dane do indeksu w usłudze Azure Search przy użyciu interfejsu API REST.
+title: Przekazywanie danych w kodzie przy użyciu interfejs API REST usługi wyszukiwania — Azure Search
+description: Dowiedz się, jak przekazywać dane do pełnotekstowego, przeszukiwalnego indeksu w usłudze Azure Search przy użyciu żądań HTTP i interfejsu API REST.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
-ms.openlocfilehash: 53b20c9db7efe1f8876eec7c0167dc151aa38786
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: b3044ec3fb21e77c5174ebd5a6b2dabd2282240f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187984"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312861"
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Przekazywanie danych do usługi Azure Search przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]

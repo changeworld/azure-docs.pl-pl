@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 6e75ceb388b3111ea9ec31ba6bffded4077a019b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ab8a6d5b6d4bb52863e77b844a4008bb80d840be
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248680"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993953"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>Szybki start: uzyskiwanie alternatywnych tłumaczeń za pomocą języka Python przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator
+# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>Szybki start: uzyskiwanie alternatywnych tłumaczeń za pomocą języka Python oraz interfejsu API tłumaczenia tekstu w usłudze Translator
 
 W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 
@@ -69,7 +69,7 @@ Obecnie na potrzeby tłumaczenia tekstu w usłudze Translator jest dostępny jed
 Elementy `params` służą do ustawiania języków źródłowych i wyjściowych. W tym przykładzie używamy języków angielskiego i hiszpańskiego: `en` i `es`.
 
 >[!NOTE]
-> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: Dictionary Lookup](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup) (Interfejs API 3.0 tłumaczenia tekstu w usłudze Translator: wyszukiwanie w słowniku).
+> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: wyszukiwanie w słowniku](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -82,7 +82,7 @@ constructed_url = base_url + path + params
 
 Najprostszym sposobem uwierzytelniania żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`. Ta metoda jest używana w tym przykładzie. Alternatywnie można wymienić klucz subskrypcji na token dostępu i przekazać go dalej jako nagłówek `Authorization` w celu zweryfikowania żądania. Aby uzyskać więcej informacji, zobacz [Authentication](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) (Uwierzytelnianie).
 
-Skopiuj ten fragment kodu do projektu:
+Skopiuj ten fragment kod do projektu:
 
 ```python
 headers = {
@@ -167,7 +167,7 @@ Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby
 
 ## <a name="see-also"></a>Zobacz też
 
-Oprócz transliteracji tekstu interfejs API tłumaczenia tekstu w usłudze Translator może wykonywać następujące zadania:
+Dowiedz się, jak używać interfejsu API tłumaczenia tekstu w usłudze Translator w następujących celach:
 
 * [Tłumaczenie tekstu](quickstart-python-translate.md)
 * [Transliteracja tekstu](quickstart-python-transliterate.md)

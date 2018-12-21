@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: ca498973ae736b44aadbdf44542ed3f863abfaff
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 67cd712869ce2d4bb3bd03725dc0bdf2fb428577
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854071"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962930"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c35-in-computer-vision"></a>Szybki start: generowanie miniatury przy użyciu interfejsu API REST i języka C&#35 podczas przetwarzania obrazów
 

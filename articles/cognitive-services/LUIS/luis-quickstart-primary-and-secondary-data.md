@@ -1,21 +1,22 @@
 ---
-title: 'Samouczek 7: prosta jednostka z listą fraz w usłudze LUIS'
+title: Prosta jednostka i lista fraz
 titleSuffix: Azure Cognitive Services
-description: Wyodrębnianie danych nauczonych maszynowo z wypowiedzi
+description: W tym samouczku wyodrębnisz z wypowiedzi dane nauczone maszynowo dotyczące nazwy stanowiska pracownika, używając prostej jednostki. Aby zwiększyć dokładność wyodrębniania, dodaj listę fraz zawierającą terminy specyficzne dla danej prostej jednostki.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: f3e931344d2d2294c03756d630c688df1e5da9a8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e8a1575527f906fab130e08cda715f6c8e904275
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425261"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166272"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Samouczek 7: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
 
@@ -92,7 +93,7 @@ Po oznaczeniu jednostek w przykładowych wypowiedziach ważne jest dodanie listy
 
 3. W wypowiedzi `I want to apply for the new accounting job` wybierz pozycję `accounting`, wprowadź `Job` w górnym polu menu podręcznego, a następnie w menu podręcznym wybierz polecenie **Create new entity** (Utwórz nową jednostkę). 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Zrzut ekranu usługi LUIS z intencją „ApplyForJob” i wyróżnionymi krokami tworzenia jednostki")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![Zrzut ekranu przedstawiający usługę LUIS z intencją „ApplyForJob” z wyróżnionymi krokami tworzenia intencji](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Zrzut ekranu przedstawiający usługę LUIS z intencją „ApplyForJob” z wyróżnionymi krokami tworzenia intencji")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 4. W oknie podręcznym sprawdź nazwę i typ jednostki, a następnie wybierz pozycję **Done** (Gotowe).
 
@@ -100,7 +101,7 @@ Po oznaczeniu jednostek w przykładowych wypowiedziach ważne jest dodanie listy
 
 5. W wypowiedzi `Submit resume for engineering position` oznacz etykietą wyraz `engineering` jako jednostkę Job (Stanowisko). Zaznacz wyraz `engineering`, a następnie wybierz pozycję **Job** (Stanowisko) w menu podręcznym. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Zrzut ekranu usługi LUIS z wyróżnioną etykietą jednostki Job (Stanowisko)")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Zrzut ekranu przedstawiający wyróżnioną jednostkę zadania usługi LUIS](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Zrzut ekranu przedstawiający wyróżnioną jednostkę zadania usługi LUIS")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
     Wszystkie wypowiedzi są oznaczone etykietami, ale pięć wypowiedzi nie wystarcza, aby nauczyć usługę LUIS o powiązanych ze stanowiskiem wyrazach i frazach. Stanowiska, które używają wartości liczbowej, nie potrzebują większej liczby przykładów, ponieważ używają jednostki wyrażenia regularnego. Stanowiska, które są wyrazami lub frazami, wymagają co najmniej 15 dalszych przykładów. 
 
@@ -157,7 +158,7 @@ Dodanie etykiet (_oznaczenie_) jednostki wskazuje usłudze LUIS, gdzie znajduje 
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Here is my c.v. for the programmer job`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić wypowiedzi `ApplyForJob`.
 
-    ```JSON
+    ```json
     {
       "query": "Here is my c.v. for the programmer job",
       "topScoringIntent": {
@@ -226,7 +227,7 @@ Aplikacja LUIS znalazła prawidłową intencję z wysokim poziomem pewności i w
 
 W poniższym kodzie JSON usługa LUIS odpowiada przy użyciu prawidłowej intencji `ApplyForJob`, ale nie wyodrębniła nazwy stanowiska `lead welder`. 
 
-```JSON
+```json
 {
   "query": "This is the lead welder paperwork.",
   "topScoringIntent": {
@@ -283,7 +284,7 @@ Ponieważ nazwa może być dowolna, usługa LUIS przewiduje jednostki dokładnie
 
 ## <a name="to-boost-signal-add-phrase-list"></a>Dodawanie listy fraz w celu wzmocnienia sygnału
 
-Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z repozytorium Github LUIS-Samples. Lista zawiera ponad tysiąc wyrazów i fraz związanych ze stanowiskami. Wyszukaj na liście istotne w Twoim przypadku wyrazy związane ze stanowiskami. Jeśli odpowiednich wyrazów lub fraz nie ma na liście, dodaj własne.
+Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z repozytorium GitHub LUIS-Samples. Lista zawiera ponad tysiąc wyrazów i fraz związanych ze stanowiskami. Wyszukaj na liście istotne w Twoim przypadku wyrazy związane ze stanowiskami. Jeśli odpowiednich wyrazów lub fraz nie ma na liście, dodaj własne.
 
 1. W sekcji **Build** (Kompilacja) aplikacji LUIS wybierz pozycję **Phrase lists** (Listy fraz) w menu **Improve app performance** (Zwiększ wydajność aplikacji).
 
@@ -291,13 +292,13 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 
 3. Nadaj nowej liście fraz nazwę `Job` i skopiuj listę z pliku jobs-phrase-list.csv do pola tekstowego **Values** (Wartości). Wybierz klawisz Enter. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu podręcznego okna dialogowego tworzenia nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Jeśli chcesz dodać więcej wyrazów do listy fraz, przejrzyj pozycję **Powiązane wartości** i dodaj odpowiednie pozycje. 
 
 4. Wybierz pozycję **Save** (Zapisz), aby aktywować listę fraz.
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Zrzut ekranu podręcznego okna dialogowego tworzenia nowej listy fraz z wyrazami w polu wartości listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz ze słowami w polu wartości listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz ze słowami w polu wartości listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 5. [Naucz](#train) i [opublikuj](#publish) aplikację ponownie, aby użyć listy fraz.
 
@@ -305,7 +306,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 
     Odpowiedź JSON zawiera wyodrębnioną jednostkę:
 
-    ```JSON
+    ```json
     {
         "query": "This is the lead welder paperwork.",
         "topScoringIntent": {

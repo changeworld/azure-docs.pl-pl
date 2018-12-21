@@ -11,12 +11,12 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 807fd49a54c82b0930134beb8413e14c1c28b278
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8844260c4364776ad0fc828dcd66932d37474ecf
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115565"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164623"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Wprowadzenie do zestawu SDK usługi Batch dla środowiska Node.js
 
@@ -279,14 +279,14 @@ W celu uzyskania dostępu do skryptu można go przekazać na konto usługi Azure
 
 Zadanie podrzędne przygotowania jest określane podczas przesyłania zadania usługi Azure Batch. Poniżej przedstawiono parametry konfiguracji zadania podrzędnego przygotowania:
 
-* **D**: unikatowy identyfikator zadania podrzędnego przygotowania
-* **commandLine**: wiersz polecenia służący do wykonania wykonywalnego zadania podrzędnego
-* **resourceFiles**: tablica obiektów zawierająca szczegółowe informacje o plikach, które należy pobrać w celu uruchomienia zadania podrzędnego.  Poniżej przedstawiono dostępne opcje
-    - blobSource: identyfikator URI sygnatury dostępu współdzielonego danego pliku
-    - filePath: ścieżka lokalna do pobrania i zapisania pliku
-    - fileMode: dotyczy wyłącznie węzłów systemu Linux, opcja fileMode jest w formacie ósemkowym i domyślnie ma wartość 0770
-* **waitForSuccess**: jeśli ma wartość „true”, zadanie podrzędne nie zostanie uruchomione w razie niepowodzenia zadania podrzędnego przygotowania
-* **runElevated**: jeśli do uruchomienia zadania podrzędnego konieczne są podwyższone uprawnienia, należy ustawić wartość „true”.
+* **ID**: Unikatowy identyfikator zadania podrzędnego przygotowania
+* **commandLine**: Wiersz polecenia służący do wykonania wykonywalnego zadania podrzędnego
+* **resourceFiles**: Tablica obiektów zawierająca szczegółowe informacje o plikach, które należy pobrać w celu uruchomienia zadania podrzędnego.  Poniżej przedstawiono dostępne opcje
+    - blobSource: Identyfikator URI sygnatury dostępu współdzielonego danego pliku
+    - filePath: Ścieżka lokalna do pobrania i zapisania pliku
+    - fileMode: Dotyczy wyłącznie węzłów systemu Linux — opcja fileMode jest w formacie ósemkowym i domyślnie ma wartość 0770
+* **waitForSuccess**: Jeśli ma wartość „true”, zadanie podrzędne nie zostanie uruchomione w razie niepowodzenia zadania podrzędnego przygotowania
+* **runElevated**: Jeśli do uruchomienia zadania podrzędnego konieczne są podwyższone uprawnienia, należy ustawić wartość „true”.
 
 Poniższy fragment kodu pokazuje przykładową konfigurację skryptu zadania podrzędnego przygotowania:
 
@@ -317,8 +317,8 @@ Po utworzeniu zadania konwertującego pliki csv można utworzyć dla niego zadan
 
 [Skrypt języka Python](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) przyjmuje dwa parametry:
 
-* nazwa kontenera: kontener magazynu, z którego pobierane są pliki
-* wzorzec: opcjonalny parametr wzorca nazwy plików
+* container name: Kontener magazynu, z którego pobierane są pliki
+* pattern: Opcjonalny parametr wzorca nazwy plików
 
 Zakładamy, że mamy cztery kontenery: „con1”, „con2”, „con3” i „con4”. Następujący kod przedstawia przesyłanie zadań podrzędnych do utworzonego wcześniej zadania konwertującego pliki csv usługi Azure Batch.
 

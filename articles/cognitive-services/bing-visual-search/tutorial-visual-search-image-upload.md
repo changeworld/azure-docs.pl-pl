@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 24b4bacd6a369812a07095b1d9c114f557d10d57
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443461"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960061"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Samouczek: omówienie operacji przekazywania do wyszukiwania wizualnego Bing
 
@@ -1340,4 +1340,4 @@ Oto kompletny przykład kodu HTML i JavaScript.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby zobaczyć, jak działa uzyskiwanie szczegółowych informacji za pomocą tokena szczegółowych informacji, zobacz [Bing Visual Search SDK ImageInsightsToken tutorial](.\tutorial-visual-search-insights-token.md) (samouczek: token ImageInsightsToken zestawu SDK wyszukiwania wizualnego Bing).
+Aby zobaczyć, jak działa uzyskiwanie szczegółowych informacji za pomocą tokena szczegółowych informacji, zobacz [Bing Visual Search SDK ImageInsightsToken tutorial](./tutorial-visual-search-insights-token.md) (samouczek: token ImageInsightsToken zestawu SDK wyszukiwania wizualnego Bing).

@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 96141ddeeb73c7483935d5da49b9341436c10c18
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0351ab3213ac75559cc025f2ef71e2f098a7504c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429715"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993202"
 ---
-# <a name="quickstart-configure-server-firewall---portal"></a>Szybki start: konfigurowanie zapory serwera — Portal
+# <a name="quickstart-configure-server-firewall---portal"></a>Szybki start: Konfigurowanie zapory serwera — Portal
 
 Ten przewodnik Szybki start ułatwia konfigurowanie zapory na potrzeby serwera usług Azure Analysis Services. Włączanie zapory i konfiguracja zakresów adresów IP tylko na potrzeby komputerów uzyskujących dostęp do serwera użytkownika są ważnym elementem zabezpieczenia serwera i danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Serwer usług Analysis Services w ramach subskrypcji. Więcej informacji znajduje się w tematach [Quickstart: Create a server - Portal](analysis-services-create-server.md) (Szybki start: tworzenie serwera — Portal) oraz [Quickstart: Create a server - PowerShell](analysis-services-create-powershell.md) (Szybki start: tworzenie serwera — program PowerShell)
+- Serwer usług Analysis Services w ramach subskrypcji. Aby dowiedzieć się więcej, zobacz [Szybki start: tworzenie serwera — portal](analysis-services-create-server.md) lub [Szybki start: tworzenie serwera — PowerShell](analysis-services-create-powershell.md)
 - Co najmniej jeden zakres adresów IP na potrzeby komputerów klienckich (w razie potrzeby).
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal 
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal 
 
-[Logowanie do portalu](https://portal.azure.com)
+[Zaloguj się do portalu](https://portal.azure.com)
 
 ## <a name="configure-a-firewall"></a>Konfigurowanie zapory
 
@@ -46,4 +46,4 @@ Gdy zakresy adresów IP nie będą już potrzebne, usuń je lub wyłącz zaporę
 W tym przewodniu Szybki start opisano, jak skonfigurować zaporę dla serwera. Teraz gdy serwer został już utworzony i zabezpieczony przy użyciu zapory, możesz do niego dodać podstawowy przykładowy model danych z portalu. Przykładowy model służy do zdobywania wiedzy na temat konfigurowania ról modelowej bazy danych oraz testowania połączeń klienckich. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego dodawania przykładowego modelu.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Add a sample model to your server](analysis-services-create-sample-model.md) (Samouczek: dodawanie przykładowego modelu do serwera)
+> [Samouczek: dodawanie przykładowego modelu do serwera](analysis-services-create-sample-model.md)

@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: c1b25db440023618d3d633f9a2b2ebcd5c0a6293
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c0323c215e83850dc53acd5e350d7eeeeb9a05b1
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852490"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413221"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Szybki start: wyodrębnianie tekstu przy użyciu zestawu Computer Vision SDK i języka C#
+# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Szybki start: wyodrębnianie tekstu przy użyciu zestawu SDK przetwarzania obrazów i języka C#
 
 W tym przewodniku Szybki start wyodrębnisz tekst odręczny lub drukowany na obrazie za pomocą biblioteki klienta przetwarzania obrazów dla systemu Windows.
 
@@ -30,7 +30,7 @@ W tym przewodniku Szybki start wyodrębnisz tekst odręczny lub drukowany na obr
 ## <a name="recognizetextasync-method"></a>Metoda RecognizeTextAsync
 
 > [!TIP]
-> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
+> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 Metody `RecognizeTextAsync` i `RecognizeTextInStreamAsync` opakowują [interfejs API rozpoznawania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) odpowiednio w przypadku obrazów zdalnych i lokalnych. Metoda `GetTextOperationResultAsync` opakowuje [interfejs API wyników operacji rozpoznawania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201).  Możesz użyć tych metod, aby wykryć tekst na obrazie i wyodrębnić rozpoznane znaki do strumienia znaków, który może być używany przez maszyny.
 

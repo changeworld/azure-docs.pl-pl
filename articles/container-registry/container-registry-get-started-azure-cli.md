@@ -1,5 +1,5 @@
 ---
-title: Szybki start — tworzenie rejestru prywatnego platformy Docker na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Szybki start — tworzenie rejestru prywatnego platformy Docker na platformie Azure — interfejs wiersza polecenia platformy Azure
 description: Szybka nauka tworzenia rejestru prywatnego platformy Docker przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: danlep
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 57c72056b669865278fa8109cd7f4963a1f0887a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, H1Hack27Feb2017, mvc
+ms.openlocfilehash: e75a2d126680c71542aa04bae5a30ea7c376cea1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855242"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255928"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Szybki start: Tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Szybki start: tworzenie prywatnego rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure
 
 Usługa Azure Container Registry to zarządzana usługa rejestru kontenerów platformy Docker używana do przechowywania prywatnych obrazów kontenerów Docker. W tym przewodniku szczegółowo opisano tworzenie wystąpienia usługi Azure Container Registry za pomocą interfejsu wiersza polecenia platformy Azure, wypychanie obrazu kontenera do rejestru i na koniec wdrażanie kontenera z rejestru do usługi Azure Container Instances (ACI).
 

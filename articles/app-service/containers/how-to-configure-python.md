@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie aplikacji języka Python dla usługi Azure App Service w systemie Linux
+title: Konfigurowanie aplikacji języka Python w systemie Linux — Azure App Service
 description: W tym samouczku opisano opcje tworzenia i konfigurowania aplikacji języka Python dla usługi Azure App Service w systemie Linux.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
-ms.custom: mvc
-ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633652"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249638"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurowanie aplikacji języka Python dla usługi Azure App Service w systemie Linux
 
@@ -28,7 +28,7 @@ W tym artykule opisano, jak [usługa Azure App Service w systemie Linux](app-ser
 
 ## <a name="set-python-version"></a>Ustawianie wersji języka Python
 
-Dostępne są dwa podstawowe obrazy: Python 3.6 i Python 3.7. Możesz utworzyć aplikację, korzystając z wybranego obrazu opartego na języku Python. Aby na przykład utworzyć aplikację przy użyciu języka Python 3.7, uruchom następujące polecenie w usłudze Cloud Shell:
+Dostępne są dwa podstawowe obrazy: środowisko Python 3.6 i Python 3.7. Możesz utworzyć aplikację, korzystając z wybranego obrazu opartego na języku Python. Aby na przykład utworzyć aplikację przy użyciu języka Python 3.7, uruchom następujące polecenie w usłudze Cloud Shell:
 
 ```azurecli-interactive
 az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
@@ -48,7 +48,7 @@ Aplikacje języka Python wdrażane w usłudze App Service w systemie Linux dzia�
 
 Ten kontener ma następujące cechy:
 
-- Aplikacje są uruchamiane przy użyciu [serwera HTTP Gunicorn WSGI](http://gunicorn.org/) z dodatkowymi argumentami `--bind=0.0.0.0 --timeout 600`.
+- Aplikacje są uruchamiane przy użyciu [serwera HTTP Gunicorn WSGI](https://gunicorn.org/) z dodatkowymi argumentami `--bind=0.0.0.0 --timeout 600`.
 
 - Domyślnie obraz podstawowy zawiera platformę internetową Flask, ale kontener obsługuje inne platformy zgodne z interfejsem WSGI i językiem Python 3.7, takie jak Django.
 
@@ -59,9 +59,9 @@ Ten kontener ma następujące cechy:
 Podczas uruchamiania kontener usługi App Service w systemie Linux wykonuje następujące kroki:
 
 1. Sprawdzenie obecności niestandardowego polecenia uruchamiania i zastosowanie go, jeśli zostało podane.
-1. Sprawdzenie obecności pliku *wsgi.py* aplikacji Django oraz (jeśli plik istnieje) uruchomienie serwera Gunicorn przy użyciu tego pliku.
-1. Sprawdzenie obecności pliku o nazwie *application.py* oraz (jeśli plik istnieje) uruchomienie serwera Gunicorn z użyciem wartości `application:app` przy założeniu aplikacji Flask.
-1. Jeśli nie została znaleziona żadna inna aplikacja, uruchomienie domyślnej aplikacji wbudowanej w kontener.
+2. Sprawdzenie obecności pliku *wsgi.py* aplikacji Django oraz (jeśli plik istnieje) uruchomienie serwera Gunicorn przy użyciu tego pliku.
+3. Sprawdzenie obecności pliku o nazwie *application.py* oraz (jeśli plik istnieje) uruchomienie serwera Gunicorn z użyciem wartości `application:app` przy założeniu aplikacji Flask.
+4. Jeśli nie została znaleziona żadna inna aplikacja, uruchomienie domyślnej aplikacji wbudowanej w kontener.
 
 Poniższe sekcje zawierają dodatkowe szczegóły dla każdej z tych opcji.
 
@@ -100,7 +100,7 @@ Jeśli moduł główny znajduje się w podfolderze, takim jak `website`, określ
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Możesz też dodać do polecenia inne argumenty dla serwera Gunicorn, takie jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](http://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
+Możesz też dodać do polecenia inne argumenty dla serwera Gunicorn, takie jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
 
 Aby określić polecenie niestandardowe, wykonaj następujące czynności:
 

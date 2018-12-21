@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 3/7/2018
+ms.date: 03/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: a45b8e1dd2f59bf1399c92e3ff1a3c66ca8956ed
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 21ab3448f080e7f4874464dbb4befc0cbed63282
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956884"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276506"
 ---
-# <a name="quickstart-install-and-get-started-with-azure-machine-learning-service"></a>Szybki start: instalowanie usługi Azure Machine Learning i rozpoczynanie z nią pracy
+# <a name="quickstart-install-and-get-started-with-azure-machine-learning-service"></a>Szybki start: instalowanie usługi Azure Machine Learning i rozpoczynanie pracy z nią
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -213,7 +213,7 @@ Zostały już utworzone niezbędne konta usługi Azure Machine Learning i zosta�
 Aby uzyskać więcej informacji na temat tego przepływu pracy oraz o sposobie wdrażania swojego modelu irysów w postaci usługi internetowej, wykonaj cały samouczek *Klasyfikowanie irysów*. Samouczek zawiera szczegółowe informacje na temat [przygotowywania danych](../desktop-workbench/tutorial-classifying-iris-part-1.md), [eksperymentowania](../desktop-workbench/tutorial-classifying-iris-part-2.md) i [zarządzania modelem](../desktop-workbench/tutorial-classifying-iris-part-3.md). 
 
 > [!div class="nextstepaction"]
-> [Samouczek: Klasyfikowanie irysów (część 1)](../desktop-workbench/tutorial-classifying-iris-part-1.md)
+> [Samouczek: klasyfikowanie irysów (część 1)](../desktop-workbench/tutorial-classifying-iris-part-1.md)
 
 >[!NOTE]
 > Masz już utworzone konto do zarządzania modelami, ale środowisko nie zostało jeszcze skonfigurowane do wdrażania usług internetowych. Dowiedz się, jak skonfigurować [środowisko wdrażania](../desktop-workbench/deployment-setup-configuration.md).

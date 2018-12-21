@@ -1,6 +1,6 @@
 ---
-title: Tworzenie szablonu usługi Azure Resource Manager na potrzeby wdrażania szyfrowanego konta magazynu | Microsoft Docs
-description: Użyj programu Visual Studio Code, aby utworzyć szablon na potrzeby wdrażania szyfrowanego konta magazynu.
+title: Korzystanie z dokumentacji szablonu usługi Azure Resource Manager | Microsoft Docs
+description: Skorzystaj z dokumentacji szablonu usługi Azure Resource Manager, aby utworzyć szablon na potrzeby wdrażania szyfrowanego konta magazynu.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,17 +10,18 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c75c0ce7d12f65878ec8cde0f265022c7beeb29
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 1f831f2d962626de6f847e2fe775605b7bfca5b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613515"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097594"
 ---
-# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>Samouczek: wdrażanie zaszyfrowanego konta usługi Azure Storage przy użyciu szablonu usługi Resource Manager
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Samouczek: Korzystanie z dokumentacji szablonu usługi Azure Resource Manager
 
 Dowiedz się, jak znaleźć informacje o schemacie szablonu i używać tych informacji do tworzenia szablonów usługi Azure Resource Manager.
 
@@ -77,9 +78,11 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 1. Przejdź do pozycji [Szablony platformy Azure](https://docs.microsoft.com/azure/templates/).
 2. W polu **Filtruj według tytułu** wprowadź ciąg **konta magazynu**.
-3. Wybierz pozycję **Odwołanie/Szablon odwołania/Magazyn/Konta magazynu** w sposób pokazany na poniższym zrzucie ekranu:
+3. Wybierz pozycję **Dokumentacja/Dokumentacja szablonu/Magazyn<Version>/Konta magazynu** w sposób pokazany na poniższym zrzucie ekranu:
 
     ![Konto magazynu odwołania do szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    Jeśli nie wiesz, którą wersję wybrać, użyj najnowszej wersji.
 
 4. Znajdź informacje o definicjach związanych z szyfrowaniem.  
 

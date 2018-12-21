@@ -1,5 +1,5 @@
 ---
-title: Przykładowe zasady usługi Azure Policy — sieciowa grupa zabezpieczeń X na każdej karcie sieciowej
+title: Przykład — sieciowa grupa zabezpieczeń x na każdej karcie sieciowej
 description: Te przykładowe zasady wymagają, aby dana sieciowa grupa zabezpieczeń była używana w każdym wirtualnym interfejsie sieciowym.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 9e853e293611d58ac936228fd02fcd0c0a6d8dda
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e24697620b61e942699f2748590c94f1063d3216
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948302"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313483"
 ---
 # <a name="nsg-x-on-every-nic"></a>Sieciowa grupa zabezpieczeń X na każdej karcie sieciowej
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)

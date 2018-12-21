@@ -1,28 +1,23 @@
 ---
-title: Skrypt programu Azure PowerShell — tworzenie konta interfejsu Gremlin API dla usługi Azure Cosmos DB | Microsoft Docs
+title: Skrypt programu Azure PowerShell — tworzenie konta interfejsu Gremlin API dla usługi Azure Cosmos DB
 description: Przykładowy skrypt programu Azure PowerShell — tworzenie konta interfejsu Gremlin API dla usługi Azure Cosmos DB
 services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
+author: SnehaGunda
+ms.author: sngun
 ms.component: cosmosdb-graph
 ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/29/2018
-ms.author: sngun
-ms.openlocfilehash: fdbbd8c623451108889a325092ec573d2c347b06
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: bc6c5c8179fb1980c7982a75a8c4c66060dbcde8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919422"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967780"
 ---
-# <a name="azure-cosmos-db-create-a-gremlin-api-account-using-powershell"></a>Azure Cosmos DB: tworzenie konta interfejsu Gremlin API przy użyciu programu PowerShell
+# <a name="azure-cosmos-db-create-a-gremlin-api-account-using-powershell"></a>Usługa Azure Cosmos DB tworzenie konta interfejsu Gremlin API przy użyciu programu PowerShell
 
 Ten przykładowy skrypt programu PowerShell tworzy konto interfejsu Gremlin API usługi Azure Cosmos DB. 
 

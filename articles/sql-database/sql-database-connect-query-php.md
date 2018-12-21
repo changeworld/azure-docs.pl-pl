@@ -11,14 +11,14 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: be3ac9fab6c89c65ad9673811e108cefe2c80d00
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b768b50af7ad6736e5cc3c885e6ac5016976f48a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724251"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958546"
 ---
-# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL
+# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL
 
 W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączeń z bazą danych Azure SQL za pomocą języka [PHP](http://php.net/manual/en/intro-whatis.php). Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
 
@@ -32,9 +32,9 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
 - Zainstalowane oprogramowanie związane z językiem PHP odpowiednie dla systemu operacyjnego:
 
-    - W systemie **MacOS** zainstaluj oprogramowanie Homebrew i PHP, sterownik ODBC oraz pakiet SQLCMD, a następnie zainstaluj sterownik języka PHP dla programu SQL Server. Zobacz [kroki 1.2, 1.3 i 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/mac/).
+    - W systemie **MacOS** zainstaluj oprogramowanie PHP i sterownik ODBC, a następnie zainstaluj sterownik języka PHP dla programu SQL Server. Zobacz [kroki 1, 2 i 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-    - W systemie **Ubuntu** zainstaluj język PHP i inne wymagane pakiety, a następnie zainstaluj sterownik języka PHP dla programu SQL Server. Zobacz [kroki 1.2 i 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/).
+    - W systemie **Linux** zainstaluj oprogramowanie PHP i sterownik ODBC, a następnie zainstaluj sterownik języka PHP dla programu SQL Server. Zobacz [kroki 1, 2 i 3](/sql/connect/php/installation-tutorial-linux-mac).
 
     - W systemie **Windows** zainstaluj język PHP dla usług IIS Express i oprogramowanie Chocolatey, a następnie zainstaluj sterownik ODBC i program SQLCMD. Zobacz [kroki 1.2 i 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
@@ -91,4 +91,4 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
 - [Zgłaszanie problemów/zadawanie pytań](https://github.com/Microsoft/msphpsql/issues)
 
-- [Przykład logiki ponowień: nawiązywanie połączeń odpornych na błędy z bazą danych SQL za pomocą języka PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Przykład logiki ponowień: nawiązywanie połączeń odpornych na błędy z bazą danych SQL za pomocą języka PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php).

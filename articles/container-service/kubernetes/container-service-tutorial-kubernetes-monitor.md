@@ -1,24 +1,27 @@
 ---
-title: Samouczek usługi Azure Container Service — monitorowanie usługi Kubernetes
+title: (PRZESTARZAŁE) Samouczek usługi Azure Container Service — monitorowanie usługi Kubernetes
 description: Samouczek usługi Azure Container Service — monitorowanie usługi Kubernetes przy użyciu usługi Log Analytics
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2243851d62cc17dc52407dce051cc2e0f4bcb12
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889212"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001612"
 ---
-# <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorowanie klastra usługi Kubernetes przy użyciu usługi Log Analytics
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Kubernetes przy użyciu usługi Log Analytics
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aby poznać zaktualizowaną wersję tego samouczka korzystającą z usługi Azure Kubernetes Service, zobacz [Azure Monitor for containers (Preview) overview](../../azure-monitor/insights/container-insights-overview.md) (Przegląd usługi Azure Monitor dla kontenerów — wersja zapoznawcza).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Monitorowanie klastra i kontenerów usługi Kubernetes ma krytyczne znaczenie, szczególnie w przypadku zarządzania klastrem produkcyjnym o dużej skali i z wieloma aplikacjami.
 

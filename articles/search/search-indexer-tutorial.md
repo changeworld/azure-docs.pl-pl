@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący indeksowania baz danych Azure SQL Database w usłudze Azure Search | Microsoft Docs
+title: Samouczek dotyczący indeksowania baz danych Azure SQL Database w portalu Azure Portal — Azure Search
 description: W ramach tego samouczka przeszukasz bazę danych Azure SQL Database w celu wyodrębnienia danych z możliwością wyszukiwania i wypełnisz indeks usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988799"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312055"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Samouczek: przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Samouczek: Przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
 W tym samouczku pokazano, jak skonfigurować indeksator do wyodrębniania danych z możliwością wyszukiwania z przykładowej bazy danych Azure SQL Database. [Indeksatory](search-indexer-overview.md) to składnik usługi Azure Search, który przeszukuje zewnętrzne źródła danych, wypełniając [indeks wyszukiwania](search-what-is-an-index.md) przy użyciu zawartości. Indeksator bazy danych Azure SQL Database jest używany najczęściej. 
 

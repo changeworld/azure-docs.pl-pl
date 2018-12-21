@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f7b3826e1e77933b49f0a742ebf8dfb994bf7ea9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fb8e2b11ce6178c10fb9dc7d13c5c7d817ece821
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848735"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344112"
 ---
-# <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Wykonywanie zapytań dotyczących danych w usłudze Azure Cosmos DB za pomocą zapytań SQL
+# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Przykłady zapytań SQL umożliwiających wykonywanie zapytań o dane z usługi Azure Cosmos DB
 
 Usługa Azure Cosmos DB obsługuje wykonywanie zapytań o elementy, używając języka SQL (Structured Query Language) jako języka zapytań JSON na kontach interfejsu API SQL. Podczas projektowania języka zapytań dla usługi Azure Cosmos DB należy wziąć pod uwagę dwa cele:
 
@@ -21,7 +21,7 @@ Usługa Azure Cosmos DB obsługuje wykonywanie zapytań o elementy, używając j
 
 * Usługa Azure Cosmos DB używa modelu programowania języka JavaScript jako podstawy języka zapytań. Interfejs API SQL jest umieszczany w systemie typów, procesie obliczania wartości wyrażeń i wywołaniach funkcji języka JavaScript. W rezultacie powoduje to udostępnianie naturalnego modelu programowania na potrzeby m.in. projekcji relacyjnych, hierarchicznej nawigacji między elementami w formacie JSON, samosprzężeń, zapytań przestrzennych oraz wywoływania funkcji zdefiniowanych przez użytkownika napisanych w całości w języku JavaScript.
 
-W tym artykule za pomocą prostych elementów JSON przedstawiono kilka przykładów zapytań SQL. Aby uzyskać informacje dotyczące składni języka SQL usługi Azure Cosmos DB, zobacz artykuł [SQL syntax reference (Dokumentacja dotycząca składni języka SQL)](sql-api-sql-query-reference.md).
+W tym artykule za pomocą prostych elementów JSON przedstawiono kilka przykładów zapytań SQL. Aby uzyskać informacje dotyczące składni języka SQL usługi Azure Cosmos DB, zobacz artykuł [SQL syntax reference (Dokumentacja dotycząca składni języka SQL)](sql-api-query-reference.md).
 
 ## <a id="GettingStarted"></a>Wprowadzenie do poleceń języka SQL
 
@@ -86,7 +86,7 @@ Oto drugi element z jedną małą różnicą — elementy `givenName` i `familyN
 
 Teraz wypróbujmy kilka zapytań względem tych danych, aby poznać niektóre z kluczowych aspektów języka zapytań SQL usługi Azure Cosmos DB.
 
-**Zapytanie 1**: na przykład następujące zapytanie zwraca elementy, w których pole identyfikatora ma wartość `AndersenFamily`. Ponieważ jest to element `SELECT *`, dane wyjściowe zapytania to kompletny element JSON. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [SELECT statement (Instrukcja SELECT)](sql-api-sql-query-reference.md#select-query):
+**Zapytanie 1**: na przykład następujące zapytanie zwraca elementy, w których pole identyfikatora ma wartość `AndersenFamily`. Ponieważ jest to element `SELECT *`, dane wyjściowe zapytania to kompletny element JSON. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [SELECT statement (Instrukcja SELECT)](sql-api-query-reference.md#select-query):
 
 ```sql
     SELECT *
@@ -166,7 +166,7 @@ Poniżej przedstawiono kilka aspektów języka zapytań usługi Cosmos DB przy u
 
 ## <a id="SelectClause"></a>Klauzula Select
 
-Każde zapytanie składa się z klauzuli SELECT i opcjonalnych klauzul FROM i WHERE zgodnie ze standardami ANSI-SQL. Zwykle dla każdego zapytania źródło w klauzuli FROM jest wyliczane. Następnie filtr w klauzuli WHERE jest stosowany do źródła w celu pobrania podzestawu elementów JSON. Na koniec klauzula SELECT jest używana do przeprowadzania projekcji żądanych wartości JSON na liście wyboru. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [SELECT syntax (Składnia klauzuli SELECT)](sql-api-sql-query-reference.md#bk_select_query).
+Każde zapytanie składa się z klauzuli SELECT i opcjonalnych klauzul FROM i WHERE zgodnie ze standardami ANSI-SQL. Zwykle dla każdego zapytania źródło w klauzuli FROM jest wyliczane. Następnie filtr w klauzuli WHERE jest stosowany do źródła w celu pobrania podzestawu elementów JSON. Na koniec klauzula SELECT jest używana do przeprowadzania projekcji żądanych wartości JSON na liście wyboru. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [SELECT syntax (Składnia klauzuli SELECT)](sql-api-query-reference.md#bk_select_query).
 
 Poniższy przykład przedstawia typowe zapytanie SELECT.
 
@@ -260,7 +260,7 @@ Przyjrzyjmy się roli elementu `$1`. Klauzula `SELECT` musi tworzyć obiekt JSON
 
 ## <a id="FromClause"></a>Klauzula FROM
 
-Klauzula FROM <specyfikacja_początkowa> jest opcjonalna, chyba że później w zapytaniu źródło jest filtrowane lub poddawane projekcji. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [FROM syntax (Składnia klauzuli FROM)](sql-api-sql-query-reference.md#bk_from_clause). Zapytanie, takie jak `SELECT * FROM Families`, wskazuje, że cały kontener Families (Rodziny) jest źródłem, w którym zostaną przeprowadzone wyliczenia. Specjalny identyfikator ROOT może być używany zamiast nazwy kontenera do reprezentowania tego kontenera.
+Klauzula FROM <specyfikacja_początkowa> jest opcjonalna, chyba że później w zapytaniu źródło jest filtrowane lub poddawane projekcji. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [FROM syntax (Składnia klauzuli FROM)](sql-api-query-reference.md#bk_from_clause). Zapytanie, takie jak `SELECT * FROM Families`, wskazuje, że cały kontener Families (Rodziny) jest źródłem, w którym zostaną przeprowadzone wyliczenia. Specjalny identyfikator ROOT może być używany zamiast nazwy kontenera do reprezentowania tego kontenera.
 Poniższa lista zawiera reguły, które są wymuszane w poszczególnych zapytaniach:
 
 * Kontener może mieć alias, taki jak `SELECT f.id FROM Families AS f` lub po prostu `SELECT f.id FROM Families f`. W tym miejscu `f` jest odpowiednikiem `Families`. `AS` jest opcjonalnym słowem kluczowym do użycia jako aliasu identyfikatora.  
@@ -313,7 +313,7 @@ Poniższa lista zawiera reguły, które są wymuszane w poszczególnych zapytani
     ]
 ```
 
-W powyższym przykładzie tablica została użyta jako źródło, ale można również użyć obiektu jako źródła, co pokazano w poniższym przykładzie: każda prawidłowa wartość JSON (inna niż niezdefiniowana) znajdująca się w źródle jest brana pod uwagę do uwzględnienia w wyniku zapytania. Jeśli niektóre rodziny nie mają wartości `address.state`, są wykluczane z wyniku zapytania.
+Podczas gdy w powyższym przykładzie jako źródła użyto tablicy, także obiekt może zostać użyty jako źródło, co pokazano w poniższym przykładzie: Dowolna prawidłowa wartość JSON (która nie jest niezdefiniowana) znajdująca się w źródle jest rozważana do włączenia w wyniku zapytania. Jeśli niektóre rodziny nie mają wartości `address.state`, są wykluczane z wyniku zapytania.
 
 **Zapytanie**
 
@@ -333,7 +333,7 @@ W powyższym przykładzie tablica została użyta jako źródło, ale można ró
 
 ## <a id="WhereClause"></a>Klauzula WHERE
 
-Klauzula WHERE (**`WHERE <filter_condition>`**) jest opcjonalna. Określa ona warunki, które muszą spełnić elementy JSON dostarczone przez źródło, aby zostały uwzględnione w wyniku. Każdy element JSON musi oceniać określone warunki jako „true”, aby zostały uznane za wynik. Klauzula WHERE jest używana przez warstwę indeksu w celu określenia bezwzględnie najmniejszego podzestawu elementów źródła, który może być częścią wyniku. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [WHERE syntax (Składnia klauzuli WHERE)](sql-api-sql-query-reference.md#bk_where_clause).
+Klauzula WHERE (**`WHERE <filter_condition>`**) jest opcjonalna. Określa ona warunki, które muszą spełnić elementy JSON dostarczone przez źródło, aby zostały uwzględnione w wyniku. Każdy element JSON musi oceniać określone warunki jako „true”, aby zostały uznane za wynik. Klauzula WHERE jest używana przez warstwę indeksu w celu określenia bezwzględnie najmniejszego podzestawu elementów źródła, który może być częścią wyniku. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [WHERE syntax (Składnia klauzuli WHERE)](sql-api-query-reference.md#bk_where_clause).
 
 Następujące zapytanie żąda elementów, które zawierają właściwość name o wartości `AndersenFamily`. Każdy inny element, który nie ma właściwości name lub w którym właściwość ma wartość inną niż `AndersenFamily`, jest wykluczany.
 
@@ -1411,14 +1411,14 @@ Funkcje kontroli typów pozwalają sprawdzić typ wyrażenia w zapytaniach języ
 
 | **Użycie** | **Opis** |
 |-----------|------------|
-| [IS_ARRAY (wyrażenie)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_array) | Zwraca wartość logiczną wskazującą, czy typ wartości jest tablicą. |
-| [IS_BOOL (wyrażenie)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_bool) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością logiczną. |
-| [IS_NULL (wyrażenie)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_null) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością null. |
-| [IS_NUMBER (wyrażenie)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_number) | Zwraca wartość logiczną wskazującą, czy typ wartości jest liczbą. |
-| [IS_OBJECT (wyrażenie)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object) | Zwraca wartość logiczną wskazującą, czy typ wartości jest obiektem JSON. |
-| [IS_STRING (wyrażenie)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_string) | Zwraca wartość logiczną wskazującą, czy typ wartości jest ciągiem. |
-| [IS_DEFINED (wyrażenie)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_defined) | Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość. |
-| [IS_PRIMITIVE (wyrażenie)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_primitive) | Zwraca wartość logiczną wskazującą, czy typ wartości jest ciągiem, liczbą, wartością logiczną lub wartością null. |
+| [IS_ARRAY (wyrażenie)](sql-api-query-reference.md#bk_is_array) | Zwraca wartość logiczną wskazującą, czy typ wartości jest tablicą. |
+| [IS_BOOL (wyrażenie)](sql-api-query-reference.md#bk_is_bool) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością logiczną. |
+| [IS_NULL (wyrażenie)](sql-api-query-reference.md#bk_is_null) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością null. |
+| [IS_NUMBER (wyrażenie)](sql-api-query-reference.md#bk_is_number) | Zwraca wartość logiczną wskazującą, czy typ wartości jest liczbą. |
+| [IS_OBJECT (wyrażenie)](sql-api-query-reference.md#bk_is_object) | Zwraca wartość logiczną wskazującą, czy typ wartości jest obiektem JSON. |
+| [IS_STRING (wyrażenie)](sql-api-query-reference.md#bk_is_string) | Zwraca wartość logiczną wskazującą, czy typ wartości jest ciągiem. |
+| [IS_DEFINED (wyrażenie)](sql-api-query-reference.md#bk_is_defined) | Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość. |
+| [IS_PRIMITIVE (wyrażenie)](sql-api-query-reference.md#bk_is_primitive) | Zwraca wartość logiczną wskazującą, czy typ wartości jest ciągiem, liczbą, wartością logiczną lub wartością null. |
 
 Używając tych funkcji, można teraz uruchomić zapytania, jak pokazano w poniższym przykładzie:
 
@@ -1440,22 +1440,22 @@ Następujące funkcje skalarne wykonują operację na wartości wejściowej cią
 
 | Sposób użycia | Opis |
 | --- | --- |
-| [LENGTH (wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) | Zwraca liczbę znaków z określonego wyrażenia ciągu. |
-| [CONCAT (wyrażenie_ciągu, wyrażenie_ciągu [, wyrażenie_ciągu])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
-| [SUBSTRING (wyrażenie_ciągu, wyrażenie_liczbowe, wyrażenie_liczbowe)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) | Zwraca część wyrażenia ciągu. |
-| [STARTSWITH (wyrażenie_ciągu, wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu rozpoczyna się od drugiego. |
-| [ENDSWITH (wyrażenie_ciągu, wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu kończy się drugim. |
-| [CONTAINS (wyrażenie_ciągu, wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
-| [INDEX_OF (wyrażenie_ciągu, wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) | Zwraca pozycję początkową pierwszego wystąpienia drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli ciąg nie zostanie znaleziony. |
-| [LEFT (wyrażenie_ciągu, wyrażenie_liczbowe)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) | Zwraca lewą część ciągu z określoną liczbą znaków. |
-| [RIGHT (wyrażenie_ciągu, wyrażenie_liczbowe)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) | Zwraca prawą część ciągu z określoną liczbą znaków. |
-| [LTRIM (wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) | Zwraca wyrażenie ciągu po usunięciu spacji wiodących. |
-| [RTRIM (wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) | Zwraca wyrażenie ciągu po przycięciu wszystkich spacji końcowych. |
-| [LOWER (wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
-| [UPPER (wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
-| [REPLACE (wyrażenie_ciągu,wyrażenie_ciągu, wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) | Zamienia wszystkie wystąpienia określonej wartości ciągu na inną wartość ciągu. |
+| [LENGTH (wyrażenie_ciągu)](sql-api-query-reference.md#bk_length) | Zwraca liczbę znaków z określonego wyrażenia ciągu. |
+| [CONCAT (wyrażenie_ciągu, wyrażenie_ciągu [, wyrażenie_ciągu])](sql-api-query-reference.md#bk_concat) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
+| [SUBSTRING (wyrażenie_ciągu, wyrażenie_liczbowe, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_substring) | Zwraca część wyrażenia ciągu. |
+| [STARTSWITH (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_startswith) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu rozpoczyna się od drugiego. |
+| [ENDSWITH (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_endswith) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu kończy się drugim. |
+| [CONTAINS (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_contains) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
+| [INDEX_OF (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_index_of) | Zwraca pozycję początkową pierwszego wystąpienia drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli ciąg nie zostanie znaleziony. |
+| [LEFT (wyrażenie_ciągu, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_left) | Zwraca lewą część ciągu z określoną liczbą znaków. |
+| [RIGHT (wyrażenie_ciągu, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_right) | Zwraca prawą część ciągu z określoną liczbą znaków. |
+| [LTRIM (wyrażenie_ciągu)](sql-api-query-reference.md#bk_ltrim) | Zwraca wyrażenie ciągu po usunięciu spacji wiodących. |
+| [RTRIM (wyrażenie_ciągu)](sql-api-query-reference.md#bk_rtrim) | Zwraca wyrażenie ciągu po przycięciu wszystkich spacji końcowych. |
+| [LOWER (wyrażenie_ciągu)](sql-api-query-reference.md#bk_lower) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
+| [UPPER (wyrażenie_ciągu)](sql-api-query-reference.md#bk_upper) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
+| [REPLACE (wyrażenie_ciągu,wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_replace) | Zamienia wszystkie wystąpienia określonej wartości ciągu na inną wartość ciągu. |
 | [REPLICATE (wyrażenie_ciągu, wyrażenie_liczbowe)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | Powtarza wartość ciągu określoną liczbę razy. |
-| [REVERSE (wyrażenie_ciągu)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) | Zwraca wartość ciągu w odwrotnej kolejności. |
+| [REVERSE (wyrażenie_ciągu)](sql-api-query-reference.md#bk_reverse) | Zwraca wartość ciągu w odwrotnej kolejności. |
 
 Używając tych funkcji, można teraz uruchomić zapytania, takie jak poniżej. Można na przykład zwrócić nazwę rodziny zapisaną wielkimi literami w następujący sposób:
 
@@ -1522,10 +1522,10 @@ Następujące funkcje skalarne wykonują operację na wartości wejściowej tabl
 
 | Sposób użycia | Opis |
 | --- | --- |
-| [ARRAY_LENGTH (wyrażenie_tablicy)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Zwraca liczbę elementów określonego wyrażenia tablicy. |
-| [ARRAY_CONCAT (wyrażenie_tablicy, wyrażenie_tablicy [, wyrażenie_tablicy])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Zwraca tablicę, która jest wynikiem połączenia co najmniej dwóch wartości tablicy. |
-| [ARRAY_CONTAINS (wyrażenie_tablicy, wyrażenie [, wyrażenie_warunkowe])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie jest pełne czy lub częściowe. |
-| [ARRAY_SLICE (wyrażenie_ciągu, wyrażenie_liczbowe [, wyrażenie_liczbowe])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Zwraca część wyrażenia tablicy. |
+| [ARRAY_LENGTH (wyrażenie_tablicy)](sql-api-query-reference.md#bk_array_length) |Zwraca liczbę elementów określonego wyrażenia tablicy. |
+| [ARRAY_CONCAT (wyrażenie_tablicy, wyrażenie_tablicy [, wyrażenie_tablicy])](sql-api-query-reference.md#bk_array_concat) |Zwraca tablicę, która jest wynikiem połączenia co najmniej dwóch wartości tablicy. |
+| [ARRAY_CONTAINS (wyrażenie_tablicy, wyrażenie [, wyrażenie_warunkowe])](sql-api-query-reference.md#bk_array_contains) |Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie jest pełne czy lub częściowe. |
+| [ARRAY_SLICE (wyrażenie_ciągu, wyrażenie_liczbowe [, wyrażenie_liczbowe])](sql-api-query-reference.md#bk_array_slice) |Zwraca część wyrażenia tablicy. |
 
 Funkcje tablicy może służyć do manipulowania tablicami w formacie kodzie JSON. Na przykład poniżej znajduje się zapytanie, które zwraca wszystkie elementy, w których jeden z rodziców to „Robin Wakefield”. 
 
@@ -1738,13 +1738,13 @@ Poniżej przedstawiono listę obsługiwanych operatorów LINQ w dostawcy LINQ do
 * **Select**: projekcje są tłumaczone na instrukcję SELECT języka SQL, łącznie z konstrukcją obiektu
 * **Where**: filtry są tłumaczone na instrukcję WHERE języka SQL i obsługują tłumaczenie między && , || i ! na operatory języka SQL
 * **SelectMany**: umożliwia rozwijanie tablic do klauzuli JOIN języka SQL. Ten operator może być używany w wyrażeniach łańcucha/zagnieżdżania do filtrowania elementów tablicy
-* **OrderBy i OrderByDescending**: tłumaczone rosnąco/malejąco na klauzulę ORDER BY
+* **OrderBy i OrderByDescending**: operator tłumaczony na instrukcję ORDER BY rosnąco/malejąco
 * Operatory **Count**, **Sum**, **Min**, **Max** i **Average** na potrzeby agregacji oraz ich asynchroniczne odpowiedniki **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** i **AverageAsync**.
 * **CompareTo**: operator tłumaczony na porównania zakresu. Często używany w przypadku ciągów, ponieważ nie są one porównywalne na platformie .NET
 * **Take**: operator tłumaczony na klauzulę TOP języka SQL w celu ograniczania wyników z zapytania
 * **Funkcje matematyczne**: obsługuje tłumaczenie następujących funkcji platformy .NET: Abs, Acos, Asin, Atan, Ceiling, Cos, Exp, Floor, Log, Log10, Pow, Round, Sign, Sin, Sqrt, Tan, Truncate na odpowiednie wbudowane funkcje języka SQL.
-* **Funkcje ciągu**: obsługują tłumaczenie następujących funkcji platformy . NET: Concat, Contains, EndsWith, IndexOf, Count, ToLower, TrimStart, Replace, Reverse, TrimEnd, StartsWith, SubString, ToUpper na odpowiednie wbudowane funkcje języka SQL.
-* **Funkcje tablicy**: obsługują tłumaczenie następujących funkcji platformy . NET: Concat, Contains i Count na odpowiednie wbudowane funkcje języka SQL.
+* **Funkcje ciągu**: obsługują tłumaczenie następujących funkcji platformy .NET: Concat, Contains, EndsWith, IndexOf, Count, ToLower, TrimStart, Replace, Reverse, TrimEnd, StartsWith, SubString, ToUpper na odpowiednie wbudowane funkcje języka SQL.
+* **Funkcje tablicy**: obsługują tłumaczenie następujących funkcji platformy .NET: Concat, Contains i Count na odpowiednie wbudowane funkcje języka SQL.
 * **Funkcje rozszerzenia geoprzestrzennego**: obsługują tłumaczenie następujących metod klas zastępczych: Distance, Within, IsValid i IsValidDetailed na odpowiednie wbudowane funkcje języka SQL.
 * **Funkcja rozszerzenia funkcji zdefiniowanych przez użytkownika**: obsługuje tłumaczenie z metody klasy zastępczej UserDefinedFunctionProvider.Invoke na odpowiednią funkcję zdefiniowaną przez użytkownika.
 * **Różne**: obsługują tłumaczenie operatora coalesce i operatorów warunkowych. W zależności od kontekstu mogą tłumaczyć funkcję Contains na String CONTAINS, ARRAY_CONTAINS lub IN języka SQL.
@@ -2117,7 +2117,7 @@ Aby zarządzać zasadami spójności danych dla zapytań, należy użyć nagłó
 
 Jeśli zasady indeksowania skonfigurowane w kontenerze nie mogą obsługiwać określonego zapytania, serwer usługi Azure Cosmos DB zwraca błąd 400 „Nieprawidłowe żądanie”. Ten komunikat o błędzie jest zwracany w przypadku zapytań dotyczących zakresu wykonywanych względem ścieżek skonfigurowanych dla wyszukiwań skrótu (równości) oraz ścieżek jawnie wykluczonych z indeksowania. Można określić nagłówek `x-ms-documentdb-query-enable-scan`, aby zezwolić zapytaniu na przeprowadzenie skanowania, gdy indeks nie będzie dostępny.
 
-Aby uzyskać szczegółowe metryki dotyczące wykonywania zapytań, można ustawić nagłówek `x-ms-documentdb-populatequerymetrics` na `True`. Aby uzyskać więcej informacji, zobacz [SQL query metrics for Azure Cosmos DB (Metryki zapytań języka SQL dla usługi Azure Cosmos DB)](sql-api-sql-query-metrics.md).
+Aby uzyskać szczegółowe metryki dotyczące wykonywania zapytań, można ustawić nagłówek `x-ms-documentdb-populatequerymetrics` na `True`. Aby uzyskać więcej informacji, zobacz [SQL query metrics for Azure Cosmos DB (Metryki zapytań języka SQL dla usługi Azure Cosmos DB)](sql-api-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>Zestaw C# (.NET) SDK
 
@@ -2253,17 +2253,17 @@ Poniższy przykład pokazuje, jak używać elementu queryDocuments w interfejsie
 ## <a id="References"></a>Dokumentacja
 
 1. [Wprowadzenie do usługi Azure Cosmos DB][introduction]
-2. [Azure Cosmos DB SQL specification (Specyfikacja języka SQL w usłudze Azure Cosmos DB)](http://go.microsoft.com/fwlink/p/?LinkID=510612)
+2. [Azure Cosmos DB SQL specification (Specyfikacja języka SQL w usłudze Azure Cosmos DB)](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
 4. [Poziomy spójności w usłudze Azure Cosmos DB][consistency-levels]
-5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
-6. Notacja JSON [http://json.org/](http://json.org/)
-7. Specyfikacja języka Javascript [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8. Składnia LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. Techniki oceny zapytań w przypadku dużych baz danych [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+5. ANSI SQL 2011 [https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
+6. Notacja JSON [https://json.org/](https://json.org/)
+7. Specyfikacja języka Javascript [https://www.ecma-international.org/publications/standards/Ecma-262.htm](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+8. Składnia LINQ [https://msdn.microsoft.com/library/bb308959.aspx](https://msdn.microsoft.com/library/bb308959.aspx) 
+9. Techniki oceny zapytań w przypadku dużych baz danych [https://dl.acm.org/citation.cfm?id=152611](https://dl.acm.org/citation.cfm?id=152611)
 10. Query Processing in Parallel Relational Database Systems (Przetwarzanie zapytań w równoległych systemach relacyjnych baz danych), IEEE Computer Society Press, 1994
 11. Lu, Ooi, Tan, Query Processing in Parallel Relational Database Systems (Przetwarzanie zapytań w równoległych systemach relacyjnych baz danych), IEEE Computer Society Press, 1994.
-12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: A Not-So-Foreign Language for Data Processing (Świńska łacina: nie taki obcy język przetwarzania danych), SIGMOD 2008.
+12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: A Not-So-Foreign Language for Data Processing (Pig Latin: niezbyt obcy język do przetwarzania danych), SIGMOD 2008.
 13. G. Graefe. The Cascades framework for query optimization (Platforma kaskad na potrzeby optymalizacji zapytań). IEEE Data Eng. Bull., 18(3): 1995.
 
 [1]: ./media/how-to-sql-query/sql-query1.png

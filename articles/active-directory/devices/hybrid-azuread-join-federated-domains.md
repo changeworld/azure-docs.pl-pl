@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/07/2018
+ms.date: 12/04/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c35c16e1414b1287fa891d1ce1f65ca8eff3d2c5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277974"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434957"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen federacyjnych
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych
 
 Podobnie jak w przypadku użytkownika, urządzenie staje się kolejną tożsamością, którą należy chronić oraz używać do zabezpieczania zasobów w dowolnym czasie i miejscu. W tym celu można przenieść tożsamości urządzeń do usługi Azure AD przy użyciu jednej z następujących metod:
 
@@ -53,9 +53,12 @@ W tym samouczku założono, że znasz następujące informacje:
 -  [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](hybrid-azuread-join-control.md)
 
 
+
 Aby skonfigurować scenariusz zaprezentowany w tym samouczku, potrzebujesz:
 
 - Windows Server 2012 R2 z usługami AD FS
+
+- Usługa Active Directory (AD) w środowisku lokalnym na poziomie schematu 85 lub wyższym. Aby uzyskać więcej informacji, zobacz [Uaktualnianie schematu usługi Active Directory](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema).
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) w wersji 1.1.819.0 lub nowszej. 
  
@@ -167,7 +170,7 @@ Aby zarejestrować urządzenia z systemem Windows niższego poziomu, należy upe
 
 
     
-Następujące zasady należy ustawić na wartość **Wszyscy**: **użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD**
+Dla następujących zasad należy wybrać ustawienie **Wszystkie**: **Użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD**
 
 ![Rejestrowanie urządzeń](./media/hybrid-azuread-join-federated-domains/23.png)
 

@@ -4,17 +4,17 @@ description: Usługa Azure Policy umożliwia wymuszanie standardów, zachowanie 
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6ee7a4190248c8c18f747ee579aadc04a136696b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 7cfcb71567931b1581618cf8f2239fb004befff8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583084"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087035"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 
@@ -58,7 +58,7 @@ Pierwszym krokiem w celu wymuszenia zgodności za pomocą usługi Azure Policy j
 
 1. Pole **Nazwa przypisania** jest automatycznie wypełniane przy użyciu nazwy wybranych zasad, ale można ją zmienić. Na potrzeby tego przykładu pozostaw nazwę *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0). Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.  Pole **Przypisane przez** jest wypełniane automatycznie w zależności od tego, kto jest zalogowany. To pole jest opcjonalne, dzięki czemu można wprowadzić wartości niestandardowe.
 
-1. Pozostaw pole **Utwórz tożsamość zarządzaną** niezaznaczone. _Należy_ ją zaznaczyć, gdy przypisywane zasady lub inicjatywa obejmują zasady z efektem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Ponieważ w przypadku zasad stosowanych na potrzeby tego samouczka tak nie jest, pozostaw to pole puste. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Pozostaw pole **Utwórz tożsamość zarządzaną** niezaznaczone. To pole _musi_ być zaznaczone, gdy przypisywane zasady lub inicjatywa obejmują zasady z efektem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Ponieważ w przypadku zasad stosowanych na potrzeby tego samouczka tak nie jest, pozostaw to pole puste. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Kliknij przycisk **Przypisz**.
 
@@ -70,9 +70,9 @@ Teraz, gdy wbudowana definicja zasad została przypisana, możesz wykonywać dal
 
    ![Pozycja Definicja w obszarze Tworzenie](../media/create-and-manage/definition-under-authoring.png)
 
-1. Wybierz **+ Definicja zasad** w górnej części strony. Spowoduje to otwarcie strony **Definicja zasad**.
+1. Wybierz **+ Definicja zasad** w górnej części strony. Ten przycisk powoduje otwarcie strony **Definicja zasad**.
 
-1. Wprowadź następujące dane:
+1. Wprowadź następujące informacje:
 
    - Grupa zarządzania lub subskrypcji, w której zapisano definicję zasad. Wybierz, używając wielokropka w polu **Lokalizacja definicji**.
 
@@ -110,7 +110,7 @@ Teraz, gdy wbudowana definicja zasad została przypisana, możesz wykonywać dal
     }
     ```
 
-    Wartością właściwości *field* w regule zasad musi być jedna z następujących wartości: Name, Type, Location, Tags lub alias. Przykładem aliasu może być `"Microsoft.Compute/VirtualMachines/Size"`.
+    Właściwość *field* reguły zasad musi mieć jedną z następujących wartości: Name (Nazwa), Type (Typ), Location (Lokalizacja), Tags (Tagi) lub alias. Przykładem aliasu może być `"Microsoft.Compute/VirtualMachines/Size"`.
 
     Aby wyświetlić więcej przykładowych zasad Azure, zobacz [Przykłady dla usługi Azure Policy](../samples/index.md).
 
@@ -354,7 +354,7 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
    ![Definicje inicjatyw](../media/create-and-manage/initiative-definition-2.png)
 
-1. Jeśli definicja zasad dodawana do inicjatywy zawiera parametry, są one wyświetlane pod nazwą zasad w obszarze **Zasady i parametry**. Pole _Wartość_ może mieć ustawienie „Ustaw wartość” (wartość będzie zakodowana dla wszystkich przypisań tej inicjatywy) lub „Użyj parametru inicjatywy” (wartość będzie ustawiana w trakcie każdego przypisania inicjatywy). Jeśli wybrano pozycję „Ustaw wartość”, menu rozwijane z prawej strony pozycji _Wartości_ umożliwia wprowadzenie lub wybranie wymaganych wartości. Jeśli wybrano pozycję „Użyj parametru inicjatywy”, zostanie wyświetlona nowa sekcja **Parametry inicjatywy**, umożliwiająca zdefiniowane parametru, który zostanie ustawiony podczas przypisania inicjatywy. Dozwolone wartości tego parametru inicjatywy mogą dodatkowo ograniczać wartości możliwe do ustawienia podczas przypisania inicjatywy.
+1. Jeśli definicja zasad dodawana do inicjatywy zawiera parametry, są one wyświetlane pod nazwą zasad w obszarze **Zasady i parametry**. Pole _Wartość_ może mieć ustawienie „Ustaw wartość” (wartość będzie zakodowana dla wszystkich przypisań tej inicjatywy) lub „Użyj parametru inicjatywy” (wartość będzie ustawiana w trakcie każdego przypisania inicjatywy). Jeśli wybrano pozycję „Ustaw wartość”, menu rozwijane z prawej strony pozycji _Wartości_ umożliwia wprowadzenie lub wybranie odpowiednich wartości. Jeśli wybrano pozycję „Użyj parametru inicjatywy”, zostanie wyświetlona nowa sekcja **Parametry inicjatywy**, umożliwiająca zdefiniowane parametru, który zostanie ustawiony podczas przypisania inicjatywy. Dozwolone wartości tego parametru inicjatywy mogą dodatkowo ograniczać wartości możliwe do ustawienia podczas przypisania inicjatywy.
 
    ![Parametry definicji inicjatywy](../media/create-and-manage/initiative-definition-3.png)
 
@@ -371,7 +371,7 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
    ![Przypisywanie definicji](../media/create-and-manage/assign-definition.png)
 
-   Alternatywnie możesz kliknąć prawym przyciskiem myszy wybrany wiersz lub lewym przyciskiem myszy wielokropek na końcu wiersza, aby wyświetlić menu kontekstowe.  Następnie wybierz opcję **Przypisz**.
+   Możesz również kliknąć prawym przyciskiem myszy wybrany wiersz lub lewym przyciskiem myszy wielokropek na końcu wiersza, aby wyświetlić menu kontekstowe.  Następnie wybierz opcję **Przypisz**.
 
    ![Kliknij wiersz prawym przyciskiem myszy](../media/create-and-manage/select-right-click.png)
 
@@ -379,11 +379,11 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
    - Zakres: grupa zarządzania lub subskrypcja, dla której wcześniej została zapisana inicjatywa, staje się wartością domyślną.  Można zmienić zakres, aby przypisać inicjatywę do subskrypcji lub grupy zasobów w lokalizacji zapisywania.
    - Wyjątki: skonfiguruj wszystkie zasoby w zakresie, aby zapobiec zastosowaniu wobec nich przypisania inicjatywy.
-   - Definicja inicjatywy i Nazwa przypisania: „Uzyskiwanie bezpieczeństwa” (wypełniane wstępnie jako nazwa przypisywanej inicjatywy).
+   - Definicja inicjatywy i nazwa przypisania: Uzyskiwanie bezpieczeństwa (wstępnie wypełnione jako nazwa przypisywanej inicjatywy).
    - Opis: to przypisanie inicjatywy jest dostosowane w celu wymuszenia tej grupy definicji zasad.
    - Przypisane przez: jest wypełniane automatycznie w zależności od tego, kto jest zalogowany. To pole jest opcjonalne, dzięki czemu można wprowadzić wartości niestandardowe.
 
-1. Pozostaw pole **Utwórz tożsamość zarządzaną** niezaznaczone. _Należy_ ją zaznaczyć, gdy przypisywane zasady lub inicjatywa obejmują zasady z efektem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Ponieważ w przypadku zasad stosowanych na potrzeby tego samouczka tak nie jest, pozostaw to pole puste. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Pozostaw pole **Utwórz tożsamość zarządzaną** niezaznaczone. To pole _musi_ być zaznaczone, gdy przypisywane zasady lub inicjatywa obejmują zasady z efektem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Ponieważ w przypadku zasad stosowanych na potrzeby tego samouczka tak nie jest, pozostaw to pole puste. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Kliknij przycisk **Przypisz**.
 
@@ -403,12 +403,12 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Dopuszczanie niezgodnego lub odrzuconego zasobu przy użyciu wykluczenia
 
-W powyższym przykładzie po przypisaniu definicji zasad wymagającej programu SQL Server w wersji 12.0 próba utworzenia programu SQL Server w innej wersji niż 12.0 zostałaby odrzucona. W tej sekcji opisano rozwiązywanie problemu z odmową utworzenia serwera SQL przez utworzenie wykluczenia pojedynczej grupy zasobów. To wykluczenie zapobiega wymuszeniu zasady (lub inicjatywy) dla danego zasobu.
+W powyższym przykładzie po przypisaniu definicji zasad wymagającej programu SQL Server w wersji 12.0 próba utworzenia programu SQL Server w innej wersji niż 12.0 zostałaby odrzucona. W tej sekcji opisano rozwiązywanie problemu z odmową żądania utworzenia serwera SQL przez utworzenie wykluczenia pojedynczej grupy zasobów. To wykluczenie zapobiega wymuszeniu zasady (lub inicjatywy) dla danego zasobu.
 W poniższym przykładzie dopuszczalna jest dowolna wersja programu SQL Server w pojedynczej grupie zasobów. Wykluczenie można zastosować do subskrypcji, grupy zasobów lub zawęzić je do pojedynczych zasobów.
 
 Wdrożenie uniemożliwione ze względu na przypisane zasady lub inicjatywę można przeglądać w dwóch miejscach:
 
-- W grupie zasobów przeznaczonych do wdrożenia: wybierz **Wdrożenia** w lewej części strony i kliknij pozycję **Nazwa wdrożenia** dla wdrożenia, które się nie powiodło. Zasób, do którego odmówiono dostępu, jest wyświetlany jako _Zabroniony_. Aby określić, która zasada lub inicjatywa oraz przypisanie odmówiły dostępu do zasobu, kliknij przycisk **Niepowodzenie. Kliknij tutaj, aby otrzymać szczegółowe informacje ->** na stronie Przegląd wdrożenia. W prawej części strony wyświetli się okno z informacjami o błędzie. W obszarze **Szczegóły błędu** są widoczne identyfikatory GUID powiązanych obiektów zasad.
+- W grupie zasobów przeznaczonych do wdrożenia: wybierz **Wdrożenia** w lewej części strony, a następnie kliknij pozycję **Nazwa wdrożenia** dla wdrożenia, które się nie powiodło. Zasób, do którego odmówiono dostępu, jest wyświetlany jako _Zabroniony_. Aby określić, która zasada lub inicjatywa oraz przypisanie odmówiły dostępu do zasobu, kliknij przycisk **Niepowodzenie. Kliknij tutaj, aby otrzymać szczegółowe informacje ->** na stronie Przegląd wdrożenia. W prawej części strony wyświetli się okno z informacjami o błędzie. W obszarze **Szczegóły błędu** są widoczne identyfikatory GUID powiązanych obiektów zasad.
 
   ![Odmowa wdrożenia spowodowana przypisaniem zasad](../media/create-and-manage/rg-deployment-denied.png)
 
@@ -433,7 +433,7 @@ W tym przykładzie Trent Baker, jeden z doświadczonych specjalistów firmy Cont
 
 1. Kliknij przycisk **Wybierz**, a następnie kliknij pozycję **Zapisz**.
 
-W tej sekcji opisano rozwiązanie polegające na odmowie utworzenia zabronionej wersji serwera SQL przez utworzenie wykluczenia dla pojedynczej grupy zasobów.
+W tej sekcji rozwiązano problem z odmową żądania przez utworzenie wykluczenia pojedynczej grupy zasobów.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

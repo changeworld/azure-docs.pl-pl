@@ -1,5 +1,5 @@
 ---
-title: Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps | Microsoft Docs
+title: Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL — Azure App Service | Microsoft Docs
 description: Dowiedz się, jak powiązać niestandardowy certyfikat protokołu SSL ze swoją aplikacją internetową, zapleczem aplikacji mobilnej lub aplikacją interfejsu API w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: nodejs
@@ -14,15 +14,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636460"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256999"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure Web Apps
 
 Usługa Azure Web Apps oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten samouczek pokazuje, jak powiązać niestandardowy certyfikat protokołu SSL zakupiony od zaufanego urzędu certyfikacji z usługą [Azure Web Apps](app-service-web-overview.md). Po zakończeniu, będzie można uzyskać dostęp do aplikacji internetowej w punkcie końcowym protokołu HTTPS niestandardowej domeny DNS.
 
@@ -139,9 +139,9 @@ Na stronie **Dodawanie powiązania protokołu SSL** użyj list rozwijanych, aby 
 >
 >
 
-W obszarze **Typ protokołu SSL** wybierz, czy ma być używane **[Oznaczanie nazwy serwera (SNI, Server Name Indication)](http://en.wikipedia.org/wiki/Server_Name_Indication)**, czy też protokół SSL oparty na protokole IP.
+W obszarze **Typ protokołu SSL** wybierz, czy ma być używane **[Oznaczanie nazwy serwera (SNI, Server Name Indication)](https://en.wikipedia.org/wiki/Server_Name_Indication)**, czy też protokół SSL oparty na protokole IP.
 
-- **SNI SSL** — można dodać wiele powiązań rozszerzenia SNI SSL. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](http://wikipedia.org/wiki/Server_Name_Indication).
+- **SNI SSL** — można dodać wiele powiązań rozszerzenia SNI SSL. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).
 - **Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Aby zabezpieczyć wiele domen, musisz zabezpieczyć je wszystkie przy użyciu tego samego certyfikatu protokołu SSL. Jest to tradycyjna opcja dla powiązania protokołu SSL.
 
 Kliknij przycisk **Dodaj powiązanie**.

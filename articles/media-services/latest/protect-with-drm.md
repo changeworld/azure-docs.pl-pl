@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/16/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 2a8a00ab034016e7121e4601b3ff5a16d8c721ac
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: seodec18
+ms.openlocfilehash: 84bdc560a135f8f1eb7d6c86fe4f3749135ff7e1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395083"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139048"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM
 
@@ -40,7 +41,7 @@ Ten artykuł jest oparty na przykładzie [szyfrowania przy użyciu technologii D
 
         Aplikacja ustawia ograniczenie typu tokenu JWT w obrębie zasad.
 
-* Tworzenie obiektu StreamingLocator przeznaczonego dla określonego elementu zawartości i o określonej nazwie zasad przesyłania strumieniowego. W tym przypadku są używane wstępnie zdefiniowane zasady. Ustawia dwa klucze zawartości w obiekcie StreamingLocator: AES-128 (koperta) i CENC (PlayReady i Widevine).  
+* Tworzenie obiektu StreamingLocator przeznaczonego dla określonego elementu zawartości i o określonej nazwie zasad przesyłania strumieniowego. W tym przypadku są używane wstępnie zdefiniowane zasady. Ustawiają one dwa klucze zawartości w elemencie StreamingLocator: AES-128 (koperta) i CENC (PlayReady i Widevine).  
     
     Po utworzeniu obiektu StreamingLocator element zawartości danych wyjściowych jest publikowany i udostępniany klientom do odtwarzania.
 
@@ -51,14 +52,14 @@ Ten artykuł jest oparty na przykładzie [szyfrowania przy użyciu technologii D
 
     Można otworzyć przeglądarkę i wkleić wynikowy adres URL, aby uruchomić stronę pokazu usługi Azure Media Player przy użyciu już wypełnionego adresu URL i tokenu.  
 
-    ![ochrona przy użyciu technologii drm](./media/protect-with-drm/playready_encrypted_url.png)
+    ![Ochrona przy użyciu technologii DRM](./media/protect-with-drm/playready_encrypted_url.png)
 
 > [!NOTE]
 > Każdy element zawartości można szyfrować przy użyciu wielu typów szyfrowania (AES-128, PlayReady, Widevine, FairPlay). Zobacz [Streaming protocols and encryption types (Protokoły i typy szyfrowania przesyłania strumieniowego)](content-protection-overview.md#streaming-protocols-and-encryption-types), aby sprawdzić, które rozwiązania warto łączyć.
 
 Opisany w tym artykule przykład generuje następujący wynik:
 
-![ochrona przy użyciu technologii drm](./media/protect-with-drm/ams_player.png)
+![Usługa AMS z filmem wideo chronionym przez technologię DRM](./media/protect-with-drm/ams_player.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -116,7 +117,7 @@ W tym samouczku utworzymy dane wejściowe zadania w oparciu o plik pozyskany ze 
 
 Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Poniższy przykładowy kod przedstawia sposób sondowania usługi pod kątem stanu [zadania](https://docs.microsoft.com/rest/api/media/jobs). Sondowanie nie jest najlepszym rozwiązaniem w przypadku zastosowań produkcyjnych ze względu na możliwe opóźnienia. Jeśli sondowanie będzie nadużywane w ramach konta, może zostać ograniczone. Deweloperzy zamiast niego powinni używać usługi Event Grid. Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
 
-**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)**, **Queued (W kolejce)**, **Processing (Przetwarzane)**, **Finished (Zakończone)** (stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)**. Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)**, a po zakończeniu tej operacji w stanie **Canceled (Anulowane)**.
+**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled** (Zaplanowane), **Queued** (W kolejce), **Processing** (Przetwarzane), **Finished** (Zakończone — jest to stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)**. Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)**, a po zakończeniu tej operacji w stanie **Canceled (Anulowane)**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#WaitForJobToFinish)]
 

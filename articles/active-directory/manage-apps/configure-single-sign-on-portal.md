@@ -8,20 +8,19 @@ ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/09/2018
+ms.date: 12/06/2018
 ms.author: barbkess
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: b0180f162996c5fc4647071feaf02d42320b7c9a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: aceacdea8b3c86a5c4f26a5f082f4c6cf0b3805d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036507"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011981"
 ---
-# <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Samouczek: konfigurowanie logowania jednokrotnego opartego na języku SAML dla aplikacji w ramach usługi Azure Active Directory
+# <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Samouczek: Konfigurowanie logowania jednokrotnego opartego na języku SAML dla aplikacji w ramach usługi Azure Active Directory
 
-W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) do skonfigurowania logowania jednokrotnego opartego na języku SAML dla aplikacji w ramach usługi Azure Active Directory (Azure AD). Skorzystaj z tego samouczka w celu skonfigurowania aplikacji, które nie mają [samouczka specyficznego dla aplikacji](../saas-apps/tutorial-list.md). 
-
+W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) do skonfigurowania logowania jednokrotnego opartego na języku SAML dla aplikacji w ramach usługi Azure Active Directory (Azure AD). Użyj tego samouczka, jeśli nie jest dostępny [samouczek specyficzny dla aplikacji](../saas-apps/tutorial-list.md). 
 
 W tym samouczku użyto witryny Azure Portal do wykonania następujących zadań:
 
@@ -42,7 +41,7 @@ W tym samouczku użyto witryny Azure Portal do wykonania następujących zadań:
 
 3. Aby przetestować kroki opisane w tym samouczku, zalecamy użycie środowiska innego niż produkcyjne. Jeśli nie masz nieprodukcyjnego środowiska usługi Azure AD, możesz skorzystać z [miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
-4. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator globalny dzierżawy usługi Azure AD, administrator aplikacji w chmurze lub administrator aplikacji.
+4. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator aplikacji w chmurze lub administrator aplikacji dla dzierżawy usługi Azure AD.
 
 ## <a name="select-a-single-sign-on-mode"></a>Wybieranie metody logowania jednokrotnego
 
@@ -56,7 +55,7 @@ Aby otworzyć ustawienia logowania jednokrotnego, wykonaj następujące czynnoś
 
 3. W menu **Typ aplikacji** wybierz pozycję **Wszystkie aplikacje** i kliknij pozycję **Zastosuj**.
 
-4. Wprowadź nazwę aplikacji, dla której chcesz skonfigurować logowanie jednokrotne. Wybierz własną aplikację lub użyj aplikacji GitHub-test, którą dodano w przewodniku szybkiego startu opisującym [dodawanie aplikacji](add-application-portal.md).
+4. Wprowadź nazwę aplikacji, dla której chcesz skonfigurować logowanie jednokrotne. Wybierz własną aplikację lub wprowadź **GitHub-test**, aby skonfigurować aplikację dodaną w przewodniku szybkiego startu opisującym [dodawanie aplikacji](add-application-portal.md).
 
 5. Kliknij pozycję **Logowanie jednokrotne**. W obszarze **Tryb logowania jednokrotnego** jako opcja domyślna jest wyświetlane **Logowanie na podstawie protokołu SAML**. 
 
@@ -72,8 +71,8 @@ Aby skonfigurować domenę i adresy URL, wykonaj następujące czynności:
 
     | Ustawienie konfiguracji | Zainicjowane przez dostawcę usługi | Zainicjowane przez dostawcę tożsamości | Opis |
     |:--|:--|:--|:--|
-    | Adres URL logowania | Wymagany | Nie określaj | Gdy użytkownik otwiera ten adres URL, dostawca usługi przekierowuje go do usługi Azure AD w celu uwierzytelnienia i zalogowania. Usługa Azure AD używa adresu URL do uruchomienia aplikacja z usługi Office 365 i panelu dostępu usługi Azure AD. Jeśli pole pozostanie puste, usługa Azure AD przeprowadzi logowanie jednokrotne zainicjowane przez dostawcę tożsamości, gdy użytkownik uruchomi aplikację z usługi Office 365, panelu dostępu usługi Azure AD lub z adresu URL logowania jednokrotnego usługi Azure AD.|
-    | Identyfikator (identyfikator jednostki) | Wymagane w przypadku niektórych aplikacji | Wymagane w przypadku niektórych aplikacji | Jednoznacznie identyfikuje aplikację, dla której logowanie jednokrotne jest konfigurowane. Usługa Azure AD wysyła identyfikator z powrotem do aplikacji jako parametr odbiorców tokenu SAML, a aplikacja powinna go zweryfikować. Ta wartość jest widoczna również jako identyfikator jednostki w dowolnych metadanych SAML udostępnianych przez aplikację.|
+    | Adres URL logowania | Wymagany | Nie podawaj | Gdy użytkownik otwiera ten adres URL, dostawca usługi przekierowuje go do usługi Azure AD w celu uwierzytelnienia i zalogowania. Usługa Azure AD używa adresu URL do uruchomienia aplikacji z usługi Office 365 lub panelu dostępu usługi Azure AD. Jeśli adres pozostanie pusty, usługa Azure AD będzie bazowała na dostawcy tożsamości w celu zainicjowania logowania jednokrotnego, gdy użytkownik uruchamia aplikację.|
+    | Identyfikator (identyfikator jednostki) | Wymagane w przypadku niektórych aplikacji | Wymagane w przypadku niektórych aplikacji | Jednoznacznie identyfikuje aplikację, dla której logowanie jednokrotne jest konfigurowane. Usługa Azure AD wysyła identyfikator do aplikacji jako parametr odbiorców tokenu SAML. Aplikacja powinna go zweryfikować. Ta wartość jest widoczna również jako identyfikator jednostki w dowolnych metadanych SAML udostępnianych przez aplikację.|
     | Adres URL odpowiedzi | Optional (Opcjonalność) | Wymagany | Określa miejsce, w którym aplikacja oczekuje otrzymać token języka SAML. Adres URL odpowiedzi jest również nazywany adresem URL usługi Assertion Consumer Service (ACS). |
     | Stan przekaźnika | Optional (Opcjonalność) | Optional (Opcjonalność) | Określa aplikacji, dokąd przekierować użytkownika po zakończeniu uwierzytelniania. Zwykle ta wartość jest prawidłowym adresem URL dla aplikacji, ale niektóre aplikacje wykorzystują to pole w inny sposób. Aby uzyskać więcej informacji, skontaktuj się z dostawcą aplikacji.
 
@@ -87,7 +86,7 @@ Aby skonfigurować domenę i adresy URL, wykonaj następujące czynności:
 
 ## <a name="configure-user-attributes"></a>Konfigurowanie atrybutów użytkownika
 
-Atrybuty użytkownika umożliwiają kontrolowanie, jakie informacje usługa Azure AD wysyła do aplikacji. Na przykład usługa Azure AD może wysłać nazwę, adres e-mail i identyfikator użytkownika do aplikacji. Usługa Azure AD wysyła atrybuty użytkownika do aplikacji w tokenie języka SAML po każdym zalogowaniu się użytkownika. 
+Atrybuty użytkownika umożliwiają kontrolowanie, jakie informacje usługa Azure AD wysyła do aplikacji w tokenie SAML podczas każdorazowego logowania użytkownika. Na przykład usługa Azure AD może wysłać nazwę, adres e-mail i identyfikator użytkownika do aplikacji. 
 
 Te atrybuty mogą być wymagane do zapewnienia prawidłowego działania logowania jednokrotnego lub opcjonalne. Aby uzyskać więcej informacji, zobacz [samouczek specyficzny dla aplikacji](../saas-apps/tutorial-list.md) lub skontaktuj się z dostawcą aplikacji.
 
@@ -115,7 +114,7 @@ Usługa Azure AD używa certyfikatu do podpisywania tokenów języka SAML, któr
 
 2. Aby skonfigurować certyfikat, kliknij pozycję **Utwórz nowy certyfikat**.
 
-3. W bloku **Tworzenie nowego certyfikatu** ustaw datę wygaśnięcia i kliknij pozycję **Zapisz**.
+3. W bloku **Tworzenie nowego certyfikatu** ustaw **datę wygaśnięcia** i kliknij pozycję **Zapisz**.
 
 4. Kliknij pozycję **Ustaw nowy certyfikat jako aktywny**.
 
@@ -146,7 +145,7 @@ To już prawie koniec.  W ostatnim kroku należy skonfigurować aplikację do ko
     ![Konfigurowanie aplikacji](media/configure-single-sign-on-portal/configure-app.png)
 
 2. Kliknij pozycję **Skonfiguruj aplikację** w portalu i postępuj zgodnie z instrukcjami.
-3. Ręcznie utwórz konta użytkowników w aplikacji na potrzeby testowania logowania jednokrotnego. Utwórz konta użytkowników, których przypisano do aplikacji w [poprzedniej sekcji](#assign-users-to-the-application).   Gdy wszystko będzie gotowe do wdrożenia aplikacji w organizacji, zalecamy użycie automatycznego aprowizowania użytkowników w celu automatycznego utworzenia kont użytkowników w aplikacji.
+3. Ręcznie utwórz konta użytkowników w aplikacji na potrzeby testowania logowania jednokrotnego. Utwórz konta użytkowników, których przypisano do aplikacji w [poprzedniej sekcji](#assign-users-to-the-application). 
 
 ## <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -158,7 +157,7 @@ Możesz teraz przetestować swoje ustawienia.
 
     ![Opcje testowania logowania jednokrotnego](media/configure-single-sign-on-portal/test-single-sign-on.png) 
 
-3. Kliknij pozycję **Zaloguj się jako bieżący użytkownik**. Dzięki temu możesz najpierw sprawdzić, czy logowanie jednokrotne działa w Twoim przypadku, czyli administratora.
+3. Kliknij pozycję **Zaloguj się jako bieżący użytkownik**. Dzięki temu testowi możesz najpierw sprawdzić, czy logowanie jednokrotne działa w Twoim przypadku, czyli administratora.
 4. Jeśli wystąpi błąd, zostanie wyświetlony komunikat o błędzie. Skopiuj szczegóły i wklej je w polu **Jak wygląda błąd?**.
 
     ![Uzyskiwanie wskazówek dotyczących rozwiązywania](media/configure-single-sign-on-portal/error-guidance.png)
@@ -174,7 +173,7 @@ Możesz teraz przetestować swoje ustawienia.
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku użyto witryny Azure Portal do skonfigurowania aplikacji pod kątem logowania jednokrotnego. Znaleziono stronę konfiguracji logowania jednokrotnego i skonfigurowano ustawienia logowania jednokrotnego. Po zakończeniu konfiguracji przypisano użytkownika do aplikacji i skonfigurowano aplikację do używania logowania jednokrotnego opartego na języku SAML. Po wykonaniu tych wszystkich zadań zweryfikowano, że logowanie na podstawie protokołu SAML działa prawidłowo.
+W tym samouczku skonfigurowano ustawienia logowania jednokrotnego dla aplikacji. Po zakończeniu konfiguracji przypisano użytkownika do aplikacji i skonfigurowano aplikację do używania logowania jednokrotnego opartego na języku SAML. Po wykonaniu tych wszystkich zadań zweryfikowano, że logowanie na podstawie protokołu SAML działa prawidłowo.
 
 Zostały wykonane następujące zadania:
 > [!div class="checklist"]
@@ -183,10 +182,10 @@ Zostały wykonane następujące zadania:
 > * Skonfigurowanie atrybutów użytkowników
 > * Utworzono certyfikat podpisywania SAML
 > * Ręcznie przypisano użytkowników lub grupy do aplikacji
-> * Skonfigurowano aplikację pod kątem logowania jednokrotnego
+> * Skonfigurowano aplikację do korzystania z usługi Azure AD jako dostawcy tożsamości SAML
 > * Przetestowano logowanie jednokrotne oparte na języku SAML
 
-Aby wdrożyć aplikację dla większej liczby użytkowników w organizacji, zalecamy użycie automatycznej aprowizacji.
+Aby wdrożyć aplikację dla większej liczby użytkowników w organizacji, zalecamy użycie automatycznej aprowizacji użytkowników.
 
 > [!div class="nextstepaction"]
 >[Dowiedz się, jak przypisać użytkowników za pomocą automatycznej aprowizacji](configure-automatic-user-provisioning-portal.md)

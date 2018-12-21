@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 03/20/2018
+ms.date: 12/13/2018
 ms.author: jdial
-ms.openlocfilehash: 3a57827616e4722b8520dcddb64e4e67fa8c79c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ebc0e18ecea61705ea8cb925a25d4233bfc9a2cb
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599901"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340508"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Przykładowy skrypt służący do tworzenia sieci dla aplikacji wielowarstwowych
 
@@ -32,10 +32,11 @@ Skrypt można wykonać z poziomu usługi Azure [Cloud Shell](https://shell.azure
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> Identyfikator podsieci jest przypisywany po utworzeniu sieci wirtualnej; w szczególności za pomocą polecenia cmdlet New-AzureRmVirtualNetwork z opcją -Subnet. Jeśli skonfigurujesz podsieć przy użyciu polecenia cmdlet New-AzureRmVirtualNetworkSubnetConfig cmdlet przed wywołaniem polecenia New-AzureRmVirtualNetwork, identyfikator podsieci nie będzie widoczny, dopóki nie zostanie wywołane polecenie New-AzureRmVirtualNetwork.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
-## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
+## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby:
 

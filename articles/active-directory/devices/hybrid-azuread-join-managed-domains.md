@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b8d45e72e15ff86b53f7355634e8f197b94260bd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887801"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435433"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen zarządzanych
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych
 
 Podobnie jak w przypadku użytkownika, urządzenie staje się kolejną tożsamością, którą należy chronić oraz używać do zabezpieczania zasobów w dowolnym czasie i miejscu. W tym celu można przenieść tożsamości urządzeń do usługi Azure AD przy użyciu jednej z następujących metod:
 
@@ -53,7 +53,11 @@ W tym samouczku założono, że znasz następujące informacje:
 -  [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](hybrid-azuread-join-control.md)
   
 
-Aby skonfigurować scenariusz w tym artykule, potrzebujesz zainstalowanej [najnowszej wersji programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 lub nowszej). 
+Aby skonfigurować scenariusz zaprezentowany w tym artykule, potrzebujesz następujących elementów:
+
+- Usługa Active Directory (AD) w środowisku lokalnym na poziomie schematu 85 lub wyższym. Aby uzyskać więcej informacji, zobacz [Uaktualnianie schematu usługi Active Directory](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema).
+
+- [Najnowsza wersja programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 lub nowsza) do zainstalowania. 
 
 Upewnij się, że program Azure AD Connect został zsynchronizowany z obiektami komputera urządzeń, które chcesz dołączyć hybrydowo do usługi Azure AD. Jeśli obiekty komputera należą do określonych jednostek organizacyjnych, to te jednostki muszą również być skonfigurowane na potrzeby synchronizacji w programie Azure AD Connect.
 
@@ -153,7 +157,7 @@ Aby zarejestrować urządzenia z systemem Windows niższego poziomu, należy upe
 
 
     
-Następujące zasady należy ustawić na wartość **Wszyscy**: **użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD**
+Dla następujących zasad należy wybrać ustawienie **Wszystkie**: **Użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD**
 
 ![Rejestrowanie urządzeń](media/hybrid-azuread-join-managed-domains/23.png)
 
@@ -172,7 +176,7 @@ Ponadto musisz włączyć opcję **Zezwalaj na aktualizacje na pasku stanu za po
 
 ### <a name="configure-seamless-sso"></a>Konfigurowanie bezproblemowego logowania jednokrotnego
 
-Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD urządzeń niższego poziomu z systemem Windows w domenie zarządzanej, w której jako metoda uwierzytelniania w chmurze używane jest uwierzytelnianie przekazywane lub synchronizacja skrótów haseł, należy również [skonfigurować bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
+Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD urządzeń niższego poziomu z systemem Windows w domenie zarządzanej, w której jako metoda uwierzytelniania w chmurze używane jest uwierzytelnianie przekazywane lub synchronizacja skrótów haseł, należy również [skonfigurować bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
 
 
 ### <a name="control-windows-down-level-devices"></a>Kontrolowanie urządzeń z systemem Windows niższego poziomu 

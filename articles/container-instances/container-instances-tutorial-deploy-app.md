@@ -1,21 +1,21 @@
 ---
-title: Samouczek dotyczący usługi Azure Container Instances — wdrażanie aplikacji
-description: Samouczek dotyczący usługi Azure Container Instances, część 3 z 3 — wdrażanie aplikacji
+title: 'Samouczek: wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances'
+description: Samouczek usługi Azure Container Instances, część 3 z 3 — wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9e8a72564151bea9194ef5180589fa8eae001df5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863724"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191110"
 ---
-# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Samouczek: wdrażanie kontenera w usłudze Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Samouczek: Wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances
 
 To jest ostatni samouczek z serii składającej się z trzech części. Wcześniej w tej serii [utworzono obraz kontenera](container-instances-tutorial-prepare-app.md) i [przekazano go do usługi Azure Container Registry](container-instances-tutorial-prepare-acr.md). Ten artykuł stanowi zakończenie serii i dotyczy wdrażania kontenera w usłudze Azure Container Instances.
 

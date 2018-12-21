@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wykrywanie anomalii, język C#'
+title: 'Samouczek: wykrywanie anomalii, C#'
 titlesuffix: Azure Cognitive Services
 description: Zapoznaj się z aplikacją w języku C#, która korzysta z interfejsu API wykrywania anomalii. Wyślij oryginalne punkty danych do interfejsu API i uzyskaj oczekiwaną wartość oraz punkty anomalii.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: f99ce765c1d9417fd5ca88b49214eca8a3b0bf49
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ea9083d530d9a94825b8c568ef4c3dbc847c44c0
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887653"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162464"
 ---
 # <a name="tutorial-anomaly-detection-with-c-application"></a>Samouczek: wykrywanie anomalii przy użyciu aplikacji języka C#
 
@@ -35,7 +35,7 @@ Przykład został opracowany dla programu .NET Framework za pomocą [programu Vi
 
 ## <a name="get-and-use-the-example"></a>Pobieranie przykładu i korzystanie z niego
 
-Można sklonować przykładową aplikację wykrywania anomalii na swój komputer z usługi [Github](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
+Można sklonować przykładową aplikację wykrywania anomalii na swój komputer z usługi [GitHub](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
 <a name="Step1"></a>
 ### <a name="install-the-example"></a>Instalowanie przykładu
 

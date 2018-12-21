@@ -1,6 +1,6 @@
 ---
-title: Co to jest dedykowany moduł HSM? | Microsoft Docs
-description: Dedykowany moduł HSM platformy Azure udostępnia funkcje magazynu kluczy na platformie Azure, który spełnia wymogi certyfikatu FIPS 140-2 poziom 3
+title: Co to jest dedykowany moduł HSM? — Dedykowany moduł HSM platformy Azure | Microsoft Docs
+description: Omówienie dedykowanego modułu HSM platformy Azure udostępniającego funkcje magazynu kluczy na platformie Azure, który spełnia wymogi certyfikatu FIPS 140-2 poziom 3
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
@@ -10,19 +10,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.custom: mvc
-ms.date: 11/26/2018
+ms.custom: mvc, seodec18
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 92d77ec886a0f37c28f5e3031a7e14f63299c8aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1eeafa33c8c1cdbcd7d0e55e3860dda1b8d451fe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427118"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080082"
 ---
-# <a name="what-is-dedicated-hsm"></a>Co to jest dedykowany moduł HSM?
+# <a name="what-is-azure-dedicated-hsm"></a>Co to jest dedykowany moduł HSM platformy Azure?
 
-Dedykowany moduł HSM platformy Azure udostępnia kryptograficzny magazyn kluczy na platformie Azure, który spełnia najbardziej rygorystyczne wymagania w zakresie zabezpieczeń. Dedykowany moduł HSM jest idealnym rozwiązaniem dla klientów, którzy potrzebują urządzeń zweryfikowanych w trybie FIPS 140-2 poziom 3 oraz kompletnej i wyłącznej kontroli nad urządzeniem HSM. Urządzenia HSM są wdrażane globalnie w kilku regionach świadczenia usługi Azure i można je łatwo aprowizować jako parę urządzeń oraz skonfigurować pod kątem wysokiej dostępności. Moduły HSM można również aprowizować w kilku regionach, aby zabezpieczyć się przed pracą w trybie failover na poziomie regionu. Firma Microsoft dostarcza usługę dedykowanych modułów HSM przy użyciu urządzenia [SafeNet Luna Network HSM 7 (Model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) od firmy Gemalto. To urządzenie oferuje najwyższe poziomy wydajności oraz opcje integracji usług kryptograficznych. Po aprowizacji moduły HSM są połączone bezpośrednio z siecią wirtualną klienta. Dostęp do nich można uzyskać także za pomocą aplikacji lokalnej i narzędzi do zarządzania, konfigurując połączenie VPN typu punkt-lokacja lub lokacja-lokacja. Klienci będą nabywać oprogramowanie i dokumentację dotyczące konfiguracji urządzeń HSM i zarządzania nimi z portalu pomocy technicznej firmy Gemalto.
+Dedykowany moduł HSM platformy Azure to usługa zapewniająca magazyn kluczy kryptograficznych na platformie Azure. Dedykowany moduł HSM spełnia większość najbardziej rygorystycznych wymagań dotyczących zabezpieczeń. To idealne rozwiązanie dla klientów, którzy potrzebują urządzeń zweryfikowanych w trybie FIPS 140-2 poziom 3 oraz kompletnej i wyłącznej kontroli nad urządzeniem HSM. Urządzenia HSM są wdrażane globalnie w kilku regionach świadczenia usługi Azure i można je łatwo aprowizować jako parę urządzeń oraz skonfigurować pod kątem wysokiej dostępności. Moduły HSM można również aprowizować w kilku regionach, aby zabezpieczyć się przed pracą w trybie failover na poziomie regionu. Firma Microsoft dostarcza usługę dedykowanych modułów HSM przy użyciu urządzenia [SafeNet Luna Network HSM 7 (Model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) od firmy Gemalto. To urządzenie oferuje najwyższe poziomy wydajności oraz opcje integracji usług kryptograficznych. Po aprowizacji moduły HSM są połączone bezpośrednio z siecią wirtualną klienta. Dostęp do nich można uzyskać także za pomocą aplikacji lokalnej i narzędzi do zarządzania, konfigurując połączenie VPN typu punkt-lokacja lub lokacja-lokacja. Klienci będą nabywać oprogramowanie i dokumentację dotyczące konfiguracji urządzeń HSM i zarządzania nimi z portalu pomocy technicznej firmy Gemalto.
 
 ## <a name="why-use-azure-dedicated-hsm"></a>Dlaczego warto używać dedykowanego modułu HSM platformy Azure?
 

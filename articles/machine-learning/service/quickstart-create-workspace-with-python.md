@@ -1,6 +1,7 @@
 ---
-title: 'Szybki start: tworzenie obszaru roboczego usługi Machine Learning za pomocą zestawu SDK języka Python — Azure Machine Learning'
-description: Rozpocznij pracę z usługą Azure Machine Learning. Zainstaluj zestaw SDK języka Python i użyj go do utworzenia obszaru roboczego. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Azure Machine Learning.
+title: 'Szybki start:  Wprowadzenie do języka Python'
+titleSuffix: Azure Machine Learning service
+description: Rozpocznij pracę z usługą Azure Machine Learning w języku Python. Użyj zestawu SDK języka Python, aby utworzyć obszar roboczy, który stanowi podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +10,17 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 12/04/2018
-ms.openlocfilehash: f16d39238b46a811f34fdfe291d6c09bee662b9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 3ab55cec4b8483cf254ec3d9fe68521baca9cdf5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870077"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268518"
 ---
-# <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Szybki start: rozpoczęcie pracy z usługą Azure Machine Learning w języku Python
+# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu zestawu SDK języka Python
 
-W tym przewodniku Szybki start użyjesz zestawu Azure Machine Learning SDK dla języka Python, aby utworzyć [obszar roboczy](concept-azure-machine-learning-architecture.md) usługi Machine Learning i go używać. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. W tym przewodniku Szybki start rozpoczynasz pracę od skonfigurowania własnego środowiska języka Python i serwera notesów Jupyter. Aby uruchomić go bez żadnej instalacji, zobacz [Szybki start: rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal](quickstart-get-started.md).
+W tym przewodniku Szybki start użyjesz zestawu Azure Machine Learning SDK dla języka Python, aby utworzyć [obszar roboczy](concept-azure-machine-learning-architecture.md) usługi Machine Learning i go używać. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. W tym przewodniku Szybki start rozpoczynasz pracę od skonfigurowania własnego środowiska języka Python i serwera notesów Jupyter. Aby uruchomić bez instalacji, zobacz [Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal](quickstart-get-started.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
@@ -38,14 +40,12 @@ Do obszaru roboczego zostaną automatycznie dodane następujące zasoby platform
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Usługa Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
->[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.2 
-
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
-
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
 
 ## <a name="install-the-sdk"></a>Instalacja zestawu SDK
+
+>[!NOTE]
+> Kod w tym artykule wymaga zestawu Azure Machine Learning SDK w wersji 1.0.2 lub nowszej. 
 
 *Pomiń tę sekcję, jeśli używasz maszyny wirtualnej nauki o danych utworzonej po 27 września 2018 r.* Te maszyny wirtualne nauki o danych są preinstalowane z zestawem SDK języka Python.
 
@@ -204,6 +204,6 @@ Potrzebujesz jeszcze kilku pakietów w swoim środowisku, które będą używane
 Po zainstalowaniu tych pakietów postępuj zgodnie z instrukcjami w samouczkach, aby nauczyć i wdrożyć model. 
 
 > [!div class="nextstepaction"]
-> [Samouczek: uczenie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md)
+> [Samouczek: trenowanie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md)
 
 Możesz też zapoznać się z [bardziej zaawansowanymi przykładami w witrynie GitHub](https://aka.ms/aml-notebooks).

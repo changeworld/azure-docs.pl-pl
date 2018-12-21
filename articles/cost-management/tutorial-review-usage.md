@@ -5,22 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 7b9c9a600d105d4b7fbbeb4f52ee42b5eb2bcaaa
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 928b8fd8ef076afa2c60c870fb705a9a682003d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275874"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093611"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
-# <a name="tutorial-review-usage-and-costs"></a>Samouczek: przeglądanie użycia i kosztów
+# <a name="tutorial-review-usage-and-costs"></a>Samouczek: Przeglądanie użycia i kosztów
 
 Rozwiązanie Cloudyn umożliwia przeglądanie użycia i kosztów w celu śledzenia trendów, wykrywania niewydajności i tworzenia alertów. Wszystkie dane użycia i kosztów są wyświetlane na pulpitach nawigacyjnych i w raportach usługi Cloudyn. Przykłady w tym samouczku ilustrują przeglądanie użycia i kosztów za pomocą pulpitów nawigacyjnych i raportów.
 
@@ -51,15 +51,15 @@ Możesz śledzić rzeczywiste pieniądze wydawane na użycie i koszty za pomocą
 
 Oto przykład raportu:
 
-![przykładowy raport](./media/tutorial-review-usage/actual-cost01.png)
+![Przykładowy raport dotyczący rzeczywistego kosztu w czasie](./media/tutorial-review-usage/actual-cost01.png)
 
 W tym raporcie przedstawione są wszystkie wydatki w ciągu ostatnich 30 dni. Aby wyświetlić tylko wydatki na usługi platformy Azure, zastosuj grupę Service (Usługi), a następnie przefiltruj pod kątem wszystkich usług platformy Azure. Na poniższej ilustracji przedstawiono przefiltrowane usługi.
 
-![przefiltrowane usługi](./media/tutorial-review-usage/actual-cost02.png)
+![Przykład pokazujący przefiltrowane usługi platformy Azure](./media/tutorial-review-usage/actual-cost02.png)
 
 W poprzednim przykładzie od dnia 2018-10-29 wydano mniej pieniędzy. Jednak zbyt wiele kolumn może przesłonić oczywisty trend. Widok raportu można zmienić na wykres liniowy lub powierzchniowy, aby wyświetlić dane w innych widokach. Na poniższej ilustracji przedstawiono ten trend wyraźniej.
 
-![trend w raporcie](./media/tutorial-review-usage/actual-cost03.png)
+![Przykład pokazujący trend spadających kosztów maszyny wirtualnej platformy Azure](./media/tutorial-review-usage/actual-cost03.png)
 
 Kontynuując analizowanie tego przykładu, widać, że koszt maszyny wirtualnej platformy Azure spadł. Koszty związane z innymi usługami platformy Azure również zaczęły spadać tego dnia. Co więc spowodowało obniżenie wydatków? W tym przykładzie zakończono duży projekt roboczy, dlatego użycie wielu usług platformy Azure również spadło.
 
@@ -77,19 +77,19 @@ Raport Cost Effective Sizing Recommendations (Zalecenia dotyczące ekonomicznych
 
 W menu w górnej części portalu kliknij pozycję **Optimizer** (Optymalizator) > **Sizing Optimization** (Optymalizacja rozmiarów) > **Cost Effective Sizing Recommendations** (Zalecenia dotyczące ekonomicznych rozmiarów). Jeśli jest to przydatne, należy zastosować filtr w celu ograniczenia wyników. Oto przykładowa ilustracja.
 
-![Maszyny wirtualne platformy Azure](./media/tutorial-review-usage/sizing01.png)
+![Raport zawierający zalecenia dotyczące oszczędności związanych z rozmiarami maszyn wirtualnych platformy Azure](./media/tutorial-review-usage/sizing01.png)
 
 W tym przykładzie można zaoszczędzić 2 382 USD, stosując się do zaleceń zmiany typów wystąpień maszyn wirtualnych. Kliknij symbol znaku plus (+) w obszarze **Details** (Szczegóły) dotyczący pierwszego zalecenia. Oto szczegółowe informacje dotyczące pierwszego zalecenia.
 
-![szczegóły zalecenia](./media/tutorial-review-usage/sizing02.png)
+![Przykład pokazujący szczegóły zaleceń](./media/tutorial-review-usage/sizing02.png)
 
 Wyświetl identyfikatory wystąpień maszyn wirtualnych, klikając symbol znaku plus obok pozycji **List of Candidates** (Lista kandydatów).
 
-![Lista kandydatów](./media/tutorial-review-usage/sizing03.png)
+![Przykład pokazujący listę maszyn wirtualnych, których rozmiar można zmienić](./media/tutorial-review-usage/sizing03.png)
 
 Aby obejrzeć samouczek wideo dotyczący wykrywania przypadków niewydajnego użycia, zobacz [Optimizing VM Size in Cloudyn ](https://youtu.be/1xaZBNmV704) (Optymalizowanie rozmiarów maszyn wirtualnych w rozwiązaniu Cloudyn).
 
-Usługa Azure Cost Management udostępnia także zalecenia dotyczące oszczędności dla usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Tutorial: Optimize costs from recommendations (Samouczek: optymalizowanie kosztów na podstawie zaleceń](tutorial-acm-opt-recommendations.md).
+Usługa Azure Cost Management udostępnia także zalecenia dotyczące oszczędności dla usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Tutorial: Optimize costs from recommendations (Samouczek: Optymalizowanie kosztów na podstawie zaleceń)](tutorial-acm-opt-recommendations.md).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Tworzenie alertów dotyczących nietypowych wydatków
 
@@ -99,7 +99,7 @@ Alert dotyczący dowolnego wydatku można utworzyć za pomocą dowolnego raportu
 
 W polu zapisywania lub planowania tego raportu skorzystaj z karty **Scheduling** (Planowanie), aby wysyłać do siebie informacje z raportu w wiadomości e-mail z wybraną częstotliwością. Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtrowania będą uwzględnione w raporcie wysłanym w wiadomości e-mail. Kliknij kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). Jeśli budżet całkowity wynosi 20 000 USD i chcesz, aby powiadomienie zostało wysłane, gdy koszty zbliżą się do jego połowy, utwórz alert **Red alert** (Czerwony alert) o wartości 10 000 USD i **Yellow alert** (Żółty alert) o wartości 9 000 USD. Nie uwzględniaj przecinków we wprowadzanych wartościach. Następnie wybierz liczbę kolejnych alertów. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. Zapisz zaplanowany raport.
 
-![przykładowy raport](./media/tutorial-review-usage/schedule-alert01.png)
+![Przykład pokazujący czerwone i żółte alerty na podstawie progów wydatków](./media/tutorial-review-usage/schedule-alert01.png)
 
 Możesz również wybrać metrykę Cost Percentage vs. Budget threshold (Procent kosztów a próg budżetu), aby utworzyć alerty. W przypadku tej metryki można używać wartości procentowych zamiast walutowych budżetu.
 

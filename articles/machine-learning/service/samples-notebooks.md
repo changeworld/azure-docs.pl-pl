@@ -1,5 +1,6 @@
 ---
-title: Samouczki usługi Azure Machine Learning w notesach Jupyter Notebook
+title: Przykładowe notesy Jupyter
+titleSuffix: Azure Machine Learning service
 description: Znajdź przykładowe notesy Jupyter Notebook i skorzystaj z nich, aby poznać usługę Azure Machine Learning przy użyciu języka Python.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.openlocfilehash: 5ec010d6e0539e9ba316b48dc02110dc19e4b13e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 0d74f731d0a7eca25238344e36838dc6c806c788
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883949"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434532"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Korzystanie z notesów Jupyter Notebook w celu eksplorowania usługi Azure Machine Learning
 
@@ -114,9 +116,10 @@ Choć możesz użyć dowolnej z powyższych opcji, możesz również jednocześn
       + Konfiguruje widżet
       + Uruchamia notes Jupyter Notebook
       
-      Skrypt przyjmuje nazwę środowiska Conda jako parametr opcjonalny. Domyślna nazwa środowiska Conda to `azure_automl`. Dokładna postać polecenia zależy od systemu operacyjnego. 
+   >[!NOTE]
+   > Skrypt przyjmuje nazwę środowiska Conda jako parametr opcjonalny. Domyślna nazwa środowiska Conda to `azure_automl`. Dokładna postać polecenia zależy od systemu operacyjnego. Jest to przydatne w przypadku tworzenia nowego środowiska lub uaktualniania do nowej wersji. Na przykład za pomocą polecenia „automl_setup.cmd azure_automl_sandbox” możesz utworzyć nazwę środowiska azure_automl_sandbox. 
       
-      Po zakończeniu skryptu w przeglądarce zostanie wyświetlona strona główna notesu Jupyter Notebook.
+1. Po zakończeniu skryptu w przeglądarce zostanie wyświetlona strona główna notesu Jupyter Notebook.
 
 1. Przejdź do ścieżki, w której zapisano notesy. 
 

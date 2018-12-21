@@ -1,19 +1,20 @@
 ---
-title: Tworzenie środowiska usługi Azure Time Series Insights
+title: Tworzenie środowiska usługi Azure Time Series Insights | Microsoft Docs
 description: Dowiedz się, jak utworzyć środowisko usługi Time Series Insights wypełniane przy użyciu danych z symulowanych urządzeń.
 services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 46fecf6f1b2826f0e23b7b6c4f4511ce9a662d1c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 1a5f9901dfb3b08a068d1051b7ea434f1d5d5412
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365693"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278495"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Samouczek: Tworzenie środowiska usługi Azure Time Series Insights
 
@@ -26,9 +27,9 @@ Ten samouczek przeprowadzi Cię przez proces tworzenia środowiska Time Series I
 > * Uruchamianie symulacji urządzeń w celu przesyłania danych do środowiska TSI
 > * Sprawdzanie symulowanych danych telemetrycznych
 
-## <a name="video"></a>Wideo: 
+## <a name="video"></a>Połączenia wideo
 
-### <a name="in-this-video-we-show-you-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-that-can-be-used-to-get-started-with-time-series-insightsbr"></a>W tym filmie pokazujemy, jak używać akceleratora rozwiązań IoT na platformie Azure do generowania danych, które mogą służyć do rozpoczęcia pracy z usługą Time Series Insights.</br>
+W tym filmie pokazujemy, jak używać akceleratora rozwiązań IoT na platformie Azure do generowania danych, które mogą służyć do rozpoczęcia pracy z usługą Time Series Insights.
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 

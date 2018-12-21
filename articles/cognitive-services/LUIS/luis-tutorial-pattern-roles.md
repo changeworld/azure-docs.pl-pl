@@ -1,7 +1,8 @@
 ---
-title: Samouczek 4. Role wzorca w przypadku danych powiązanych kontekstowo
+title: Role wzorca
 titleSuffix: Azure Cognitive Services
 description: Użyj wzorca, aby wyodrębnić dane z dobrze sformatowanej wypowiedzi szablonowej. Wypowiedź szablonowa wykorzystuje prostą jednostkę i rolę, aby wyodrębnić powiązane dane, na przykład lokalizację początkową i docelową.
+ms.custom: seodec18
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d13d77fdb741f7f7cf16e3d25c755f4363e56f93
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427492"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094410"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Samouczek 4. Wyodrębnianie wzorców powiązanych kontekstowo
 
@@ -28,7 +29,7 @@ Nazwisko nowego pracownika, Billy Patterson, nie jest jeszcze częścią jednost
 
 Nowy pracownik i jego rodzina muszę zostać przeniesieni z miasta, gdzie obecnie mieszkają, do miasta, w którym jest zlokalizowana fikcyjna firma. Ponieważ nowy pracownik może pochodzić z dowolnego miasta, trzeba odnaleźć lokalizacje. Lista ustawień, na przykład jednostka listy, nie jest tutaj dobrym rozwiązaniem, ponieważ wyodrębnione zostałyby tylko miasta uwzględnione na liście.
 
-Nazwy ról skojarzonych z miastem początkowym i docelowym muszą być unikatowe dla wszystkich jednostek. Jeśli chcesz upewnić się, że role są unikatowe, warto powiązać je z jednostką zawartości, korzystając ze strategii nazywania. Jednostka **NewEmployeeRelocation** to prosta jednostka z dwoma rolami: **NewEmployeeReloOrigin** i **NewEmployeeReloDestination**. „Relo” to skrót od słowa „relocation” (relokacja).
+Nazwy ról skojarzonych z miastem początkowym i docelowym muszą być unikatowe dla wszystkich jednostek. Jeśli chcesz upewnić się, że role są unikatowe, warto powiązać je z jednostką zawartości, korzystając ze strategii nazywania. Jednostka **NewEmployeeRelocation** jest prostą jednostką mającą dwie role: **NewEmployeeReloOrigin** i **NewEmployeeReloDestination**. „Relo” to skrót od słowa „relocation” (relokacja).
 
 Ponieważ przykładowa wypowiedź `Move new employee Robert Williams from Sacramento and San Francisco` obejmuje tylko jednostki korzystające z uczenia maszynowego, należy dostarczyć dostatecznie dużo wypowiedzi przykładowych do intencji, aby możliwe było wykrycie jednostek.  
 
@@ -128,7 +129,7 @@ Oznaczanie jednostek etykietami podczas wykonywania tych czynności może być �
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Wayne Berry from Miami to Mount Vernon`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Newark to Columbus",
       "topScoringIntent": {
@@ -258,7 +259,7 @@ Miasta, tak jak nazwiska, są problematyczne, ponieważ również mogą zawiera�
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move wayne berry from miami to mount vernon`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Miami to Mount Vernon",
       "topScoringIntent": {

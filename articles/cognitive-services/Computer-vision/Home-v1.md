@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982109"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957031"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Co to jest interfejs API przetwarzania obrazów w wersji 1.0?
 
@@ -38,13 +38,13 @@ Oparty na chmurze interfejs API przetwarzania obrazów oferuje deweloperom dost�
 * [Przycinania zdjęć do użycia jako miniatury.](#Thumbnails)
 
 ## <a name="requirements"></a>Wymagania
-* Obsługiwane metody wejściowe: dane binarne nieprzetworzonego obrazu w formie wartości application/octet stream lub adresu URL obrazu.
+* Obsługiwane metody wprowadzania danych: dane binarne nieprzetworzonego obrazu w postaci pliku typu application/octet stream lub adres URL obrazu.
 * Obsługiwane formaty obrazów: JPEG, PNG, GIF, BMP.
 * Rozmiar pliku obrazu: mniej niż 4 MB.
-* Wymiar obrazu: większy niż 50 x 50 pikseli.
+* Wymiary obrazu: więcej niż 50 x 50 pikseli.
 
 ## <a name="tagging-images"></a>Oznaczanie obrazów
-Interfejs API przetwarzania obrazów zwraca tagi na podstawie ponad 2000 rozpoznawalnych obiektów, istot żywych, scenerii i akcji. Gdy tagi są niejednoznaczne lub wykraczają poza popularną wiedzę, odpowiedź interfejsu API zawiera „wskazówki”, aby wyjaśnić ich znaczenie w kontekście znanego otoczenia. Tagi nie są zorganizowane w formie taksonomii i nie występują hierarchie dziedziczenia. Kolekcja tagów zawartości stanowi podstawę „opisu” obrazu wyświetlanego jako język zrozumiały dla użytkownika w formie pełnych zdań. Należy pamiętać, że obecnie jedynym obsługiwanym językiem opisu obrazu jest język angielski.
+Interfejs API przetwarzania obrazów zwraca tagi na podstawie tysięcy rozpoznawalnych obiektów, istot żywych, scenerii i akcji. Gdy tagi są niejednoznaczne lub wykraczają poza popularną wiedzę, odpowiedź interfejsu API zawiera „wskazówki”, aby wyjaśnić ich znaczenie w kontekście znanego otoczenia. Tagi nie są zorganizowane w formie taksonomii i nie występują hierarchie dziedziczenia. Kolekcja tagów zawartości stanowi podstawę „opisu” obrazu wyświetlanego jako język zrozumiały dla użytkownika w formie pełnych zdań. Należy pamiętać, że obecnie jedynym obsługiwanym językiem opisu obrazu jest język angielski.
 
 Po przekazaniu obrazu lub określeniu jego adresu URL algorytmy interfejsu API przetwarzania obrazów zwracają tagi w oparciu o obiekty, istoty żywe i działania zidentyfikowane na obrazie. Tagowanie nie jest ograniczone do głównego tematu, na przykład do osoby na pierwszym planie, ale uwzględnia także otoczenie (wewnątrz lub na zewnątrz), meble, narzędzia, rośliny, zwierzęta, akcesoria, gadżety itd.
 
@@ -138,8 +138,8 @@ Wykrywa twarze osób na zdjęciu i generuje współrzędne rozpoznawania twarzy,
 Image (Obraz)|Odpowiedź
 ----|----
 ![Analiza obrazu — kobieta, dach, twarz](./Images/woman_roof_face.png) | [ { "age": 23, "gender": "Female", "faceRectangle": { "left": 1379, "top": 320, "width": 310, "height": 310 } } ]
-![Analiza obrazu — matka, córka, twarz](./Images/mom_daughter_face.png) | [ { "age": 28, "gender": "Female", "faceRectangle": { "left": 447, "top": 195, "width": 162, "height": 162 } }, { "age": 10, "gender": "Male", "faceRectangle": { "left": 355, "top": 87, "width": 143, "height": 143 } } ]
-![Analiza obrazu — zdjęcie rodzinne, twarz](./Images/family_photo_face.png) | [ { "age": 11, "gender": "Male", "faceRectangle": { "left": 113, "top": 314, "width": 222, "height": 222 } }, { "age": 11, "gender": "Female", "faceRectangle": { "left": 1200, "top": 632, "width": 215, "height": 215 } }, { "age": 41, "gender": "Male", "faceRectangle": { "left": 514, "top": 223, "width": 205, "height": 205 } }, { "age": 37, "gender": "Female", "faceRectangle": { "left": 1008, "top": 277, "width": 201, "height": 201 } } ]
+![Analiza obrazu — matka, córka, twarz](./Images/mom_daughter_face.png) | [ { "age": 28, "gender": "Female", "faceRectangle": { "left": 447, "top": 195, "width": 162, "height": 162 } }, { "age": 10, "gender": "Female", "faceRectangle": { "left": 355, "top": 87, "width": 143, "height": 143 } } ]
+![Analiza obrazu — zdjęcie rodzinne, twarz](./Images/family_photo_face.png) | [ { "age": 11, "gender": "Female", "faceRectangle": { "left": 113, "top": 314, "width": 222, "height": 222 } }, { "age": 11, "gender": "Female", "faceRectangle": { "left": 1200, "top": 632, "width": 215, "height": 215 } }, { "age": 41, "gender": "Female", "faceRectangle": { "left": 514, "top": 223, "width": 205, "height": 205 } }, { "age": 37, "gender": "Female", "faceRectangle": { "left": 1008, "top": 277, "width": 201, "height": 201 } } ]
 
 
 ## <a name="domain-specific-content"></a>Zawartość specyficzna dla domeny
@@ -231,7 +231,7 @@ Spośród różnych kategorii wizualnych możemy wyróżnić grupę przeznaczon�
 ## <a name="optical-character-recognition-ocr"></a>Optyczne rozpoznawanie znaków (OCR)
 Technologia OCR wykrywa zawartość tekstową na obrazie i wyodrębnia zidentyfikowany tekst do strumienia znaków, które mogą być odczytane przez komputer. Wynik służy do wyszukiwania oraz wielu innych celów, ma np. zastosowanie w przypadku dokumentacji medycznej, branży ochrony i bankowości. Umożliwia automatyczne wykrywanie języka. Optyczne rozpoznawanie znaków oszczędza czas i jest wygodne dla użytkowników, którzy mogą wykonywać zdjęcia tekstu zamiast go przepisywać.
 
-OCR obsługuje 25 języków. Są to: arabski, chiński uproszczony, chiński tradycyjny, czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański, norweski, polski, portugalski, rumuński, rosyjski, serbski (cyrylica i alfabet łaciński), słowacki, hiszpański, szwedzki i turecki.
+OCR obsługuje 25 języków. Te języki to: arabski, chiński uproszczony, chiński tradycyjny, czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański, norweski, polski, portugalski, rumuński, rosyjski, serbski (cyrylica i alfabet łaciński), słowacki, hiszpański, szwedzki i turecki.
 
 Jeśli to konieczne, OCR poprawia kąt obrotu (w stopniach) rozpoznanego tekstu wokół poziomej osi obrazu. OCR dostarcza współrzędne ramki poszczególnych wyrazów, jak przedstawiono na ilustracji poniżej.
 
@@ -267,12 +267,12 @@ Uwaga: ta technologia jest obecnie dostępna w wersji zapoznawczej i tylko dla t
 ## <a name="generating-thumbnails"></a>Generowanie miniatur
 Miniatura to niewielki obrazek reprezentujący duży obraz w pełnym wymiarze. Różne urządzenia, takie jak telefony, tablety i komputery PC, mają różne wymagania dotyczące środowiska użytkownika i rozmiarów miniatur. Interfejs API przetwarzania obrazów pomaga rozwiązać ten problem za pomocą funkcji inteligentnego przycinania.
 
-Po przekazaniu obrazu zostaje wygenerowana wysokiej jakości miniatura, a algorytm interfejsu API przetwarzania obrazów analizuje obiekty na obrazie. Następnie przycina obraz zgodnie z wymaganiami „regionu zainteresowania” (ROI). Dane wyjściowe są wyświetlane w ramach określonej struktury, jak pokazano na ilustracji poniżej. W zależności od potrzeb użytkownika wygenerowana miniatura może mieć współczynnik proporcji inny od współczynnika proporcji oryginalnego obrazu.
+Po przekazaniu obrazu zostaje wygenerowana wysokiej jakości miniatura, a algorytm interfejsu API przetwarzania obrazów analizuje obiekty na obrazie. Następnie przycina obraz zgodnie z wymaganiami „obszaru zainteresowania”. Dane wyjściowe są wyświetlane w ramach określonej struktury, jak pokazano na ilustracji poniżej. W zależności od potrzeb użytkownika wygenerowana miniatura może mieć współczynnik proporcji inny od współczynnika proporcji oryginalnego obrazu.
 
 Algorytm miniatury działa w następujący sposób:
 
-1. Usuwa zbędne elementy z obrazu i rozpoznaje obiekt główny, „region zainteresowania” (ROI).
-2. Przycina obraz w oparciu o zidentyfikowany region zainteresowania.
+1. Usuwa zbędne elementy z obrazu i rozpoznaje obiekt główny, „obszar zainteresowania”.
+2. Przycina obraz w oparciu o zidentyfikowany obszar zainteresowania.
 3. Zmienia współczynnik proporcji i dopasowuje go do docelowego rozmiaru miniatur.
 
 ![Miniatury](./Images/thumbnail-demo.png)

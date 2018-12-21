@@ -1,5 +1,5 @@
 ---
-title: 'Omówienie usługi ExpressRoute: rozszerzanie sieci lokalnej na platformę Azure za pośrednictwem połączenia prywatnego | Microsoft Docs'
+title: 'Rozszerzanie sieci lokalnej na platformę Azure za pośrednictwem połączenia prywatnego — omówienie usługi ExpressRoute: Azure | Microsoft Docs'
 description: W opisie technicznym usługi ExpressRoute omówiono sposób działania połączenia usługi ExpressRoute podczas rozszerzania sieci lokalnej na platformę Azure przez połączenie prywatne.
 services: expressroute
 author: mialdrid
@@ -7,19 +7,20 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/18/2018
 ms.author: mialdrid
-ms.openlocfilehash: fb3e7ac449934fe9fa36b1683bda20ff3e07f0f4
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.custom: seodec18
+ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429409"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139558"
 ---
 # <a name="expressroute-overview"></a>Omówienie usługi ExpressRoute
-Usługa Microsoft Azure ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usługami Microsoft w chmurze, np. Microsoft Azure, Office 365 i Dynamics 365.
+Usługa ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usługami Microsoft w chmurze, np. Microsoft Azure, Office 365 i Dynamics 365.
 
 Połączenie może być z sieci typu dowolna-dowolna (IP VPN), sieci Ethernet typu punkt-punkt lub przy użyciu łączności obejmującej wiele połączeń wirtualnych przez dostawcę połączenia w ramach infrastruktury współlokacji. Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Internetu. Dzięki temu oferują one większą niezawodność i szybkość oraz mniejsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez Internet. Informacje dotyczące łączenia sieci z firmą Microsoft przy użyciu usługi ExpressRoute można znaleźć w temacie [Modele połączeń usługi ExpressRoute](expressroute-connectivity-models.md).
 
-![](./media/expressroute-introduction/expressroute-connection-overview.png)
+![Omówienie połączeń ExpressRoute](./media/expressroute-introduction/expressroute-connection-overview.png)
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
@@ -77,7 +78,7 @@ Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośre
 Oto kilka najważniejszych funkcji, które zapewnia usługa ExpressRoute Direct:
 
 * Masywne pozyskiwanie danych do usług, takich jak Storage i Cosmos DB
-* Fizyczne oddzielenie w przypadku tych branż, które są regulowane i w których łączność musi być dedykowana oraz oddzielona, na przykład w przypadku usług bankowych, rządowych i handlowych
+* Fizyczne oddzielenie w przypadku tych branż, które są regulowane i w których łączność musi być dedykowana oraz oddzielona, na przykład w przypadku: usług bankowych, rządowych i handlowych
 * Pełna kontrola nad rozmieszczeniem obwodów na podstawie jednostek biznesowych
 
 Aby uzyskać więcej informacji, zobacz [About ExpressRoute Direct (Usługa ExpressRoute Direct)](https://go.microsoft.com/fwlink/?linkid=2022973).

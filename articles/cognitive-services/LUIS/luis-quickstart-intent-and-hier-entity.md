@@ -1,23 +1,24 @@
 ---
-title: 'Samouczek 5: relacje nadrzędny/podrzędny — jednostka hierarchiczna usługi LUIS dla danych uczonych kontekstowo'
+title: Jednostka hierarchiczna
 titleSuffix: Azure Cognitive Services
 description: Znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład powiązane są lokalizacje początkowa i docelowa dla fizycznego przeniesienia z jednego budynku i biura do innego budynku i biura.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: d3b8d0597f0732a4a3cfab79125a885b2d141c9f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a79c0091220e2980101471abaaa0aaf4c0a898ca
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424710"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104411"
 ---
-# <a name="tutorial-5-extract-contextually-related-data"></a>Samouczek 5: wyodrębnianie danych powiązanych kontekstowo
+# <a name="tutorial-5-extract-contextually-related-data"></a>Samouczek 5: Wyodrębnianie danych powiązanych kontekstowo
 W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład powiązane są lokalizacje początkowa i docelowa dla fizycznego przeniesienia z jednego budynku i biura do innego budynku i biura. Aby wygenerować polecenie służbowe, potrzebne są oba elementy danych. Są one powiązane ze sobą.  
 
 Ta aplikacja określa, dokąd pracownik ma zostać przeniesiony z lokalizacji źródłowej (budynek i biuro) do lokalizacji docelowej (budynek i biuro). Używa ona jednostki hierarchicznej do określania lokalizacji w wypowiedzi. Celem jednostki **hierarchicznej** jest znalezienie powiązanych danych w wypowiedzi na podstawie kontekstu. 
@@ -32,7 +33,6 @@ Jednostka hierarchiczna jest odpowiednia dla tego typu danych, ponieważ oba ele
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * Korzystanie z istniejącej aplikacji samouczka
 > * Dodawanie intencji 
@@ -55,7 +55,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `hier`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL. 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Usuwanie wstępnie skompilowanej jednostki numeru z aplikacji
-Aby zobaczyć całą wypowiedź i oznaczyć hierarchiczne elementy podrzędne, tymczasowo usuń wstępnie skompilowaną jednostkę numeru.
+Aby zobaczyć całą wypowiedź i oznaczyć hierarchiczne elementy podrzędne, [tymczasowo usuń wstępnie skompilowaną jednostkę numeru](luis-prebuilt-entities.md#marking-entities-containing-a-prebuilt-entity-token). 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -90,7 +90,7 @@ Usługa LUIS musi zrozumieć, czym jest lokalizacja, oznaczając źródło i mie
 
 Przeanalizujmy następującą wypowiedź:
 
-```JSON
+```json
 mv Jill Jones from a-2349 to b-1298
 ```
 
@@ -100,19 +100,19 @@ Jeśli obecny jest tylko jeden element podrzędny jednostki hierarchicznej (loka
 
 1. W wypowiedzi `Displace 425-555-0000 away from g-2323 toward hh-2345` zaznacz wyraz `g-2323`. Zostanie wyświetlone menu rozwijane z polem tekstowym w górnej części. Wprowadź nazwę jednostki `Locations` w polu tekstowym, a następnie wybierz polecenie **Create new entity** (Utwórz nową jednostkę) w menu rozwijanym. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
+    [![Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
 2. W oknie podręcznym wybierz typ jednostki **Hierarchical** (Hierarchiczna) z elementami `Origin` i `Destination` jako podrzędnymi. Wybierz pozycję **Done** (Gotowe).
 
-    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Zrzut ekranu z podręcznym oknem dialogowym tworzenia jednostki dla nowej jednostki Location (Lokalizacja)")
+    ![Zrzut ekranu przedstawiający okno dialogowe tworzenia jednostki dla nowej jednostki lokalizacji](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Zrzut ekranu przedstawiający okno dialogowe tworzenia jednostki dla nowej jednostki lokalizacji")
 
 3. Etykieta dla elementu `g-2323` jest oznaczona jako `Locations`, ponieważ usługa LUIS nie może ustalić, czy termin jest lokalizacją początkową, docelową czy żadną z nich. Wybierz pozycję `g-2323`, wybierz pozycję **Locations** (Lokalizacje), a następnie przejdź do menu z prawej strony i wybierz pozycję `Origin`.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Zrzut ekranu z podrzędnym oknem dialogowym etykietowania lokalizacji w celu zmiany elementu podrzędnego jednostki Locations (Lokalizacje)")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
+    [![Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
 5. Aby oznaczyć etykietą inne lokalizacje we wszystkich innych wypowiedziach, wybierz budynek i biuro w wypowiedzi, a następnie wybierz pozycję Locations (Lokalizacje) i w menu z prawej strony wybierz pozycję `Origin` lub `Destination`. Po oznaczeniu etykietami wszystkich lokalizacji wypowiedzi w obszarze **Tokens View** (widok tokenów) będą wyglądać podobnie do wzorca. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Zrzut ekranu z jednostką Locations (Lokalizacje) oznaczoną etykietą w wypowiedziach")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
+    [![Zrzut ekranu jednostki lokalizacji oznaczonej etykietą w wypowiedziach](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Zrzut ekranu jednostki lokalizacji oznaczonej etykietą w wypowiedziach")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
 ## <a name="add-prebuilt-number-entity-to-app"></a>Dodawanie wstępnie skompilowanej jednostki numeru do aplikacji
 Dodaj wstępnie skompilowaną jednostkę numeru z powrotem do aplikacji.
@@ -140,7 +140,7 @@ Dodaj wstępnie skompilowaną jednostkę numeru z powrotem do aplikacji.
 
 2. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `MoveEmployee` z wyodrębnioną jednostką hierarchiczną.
 
-    ```JSON
+    ```json
     {
       "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
       "topScoringIntent": {

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5d64aa8b50cdde23d1bb8980510cfac202204f9a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11c68b61802f6c7b3755da71c176ea777f171e4c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262458"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409840"
 ---
 # <a name="query-containers-in-azure-cosmos-db"></a>Wykonywanie zapytań dla kontenerów w usłudze Azure Cosmos DB
 
@@ -20,7 +20,7 @@ W tym artykule wyjaśniono, jak wykonywać zapytania dla kontenera (kolekcji, gr
 
 ## <a name="in-partition-query"></a>Zapytanie wewnątrz partycji
 
-Kiedy wykonujesz zapytanie o dane z kontenerów, usługa Cosmos DB automatycznie przekierowuje zapytanie do partycji odpowiadających wartościom klucza partycji określonym w filtrze (jeśli istnieją). Na przykład to zapytanie jest kierowane tylko do partycji zawierającej klucz partycji „XMS 0001”.
+Kiedy wykonujesz zapytanie o dane z kontenerów, jeśli zapytanie ma określony filtr klucza partycji, usługa Azure Cosmos DB automatycznie przekierowuje zapytanie do partycji odpowiadających wartościom klucza partycji określonym w filtrze. Na przykład poniższe zapytanie jest kierowane do partycji DeviceId, która przechowuje wszystkie dokumenty odpowiadające wartości klucza partycji „XMS-0001”.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights
+title: Tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights | Microsoft Docs
 description: Dowiedz się, jak utworzyć jednostronicową aplikację internetową, która wykonuje zapytania i renderuje dane ze środowiska usługi TSI.
 author: ashannon7
 ms.service: time-series-insights
@@ -7,14 +7,15 @@ ms.topic: tutorial
 ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: fccd509d4f16cee86d30feb0e838f1493cae4e0b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626759"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275843"
 ---
-# <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Samouczek: tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights
+# <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights
 
 Ten samouczek przeprowadzi Cię przez proces tworzenia własnej jednostronicowej aplikacji internetowej (SPA) umożliwiającej uzyskiwanie dostępu do danych usługi TSI z modelowaniem opartym na [przykładowej aplikacji usługi Time Series Insights (TSI)](https://insights.timeseries.azure.com/clientsample). Niniejszy samouczek zawiera informacje na temat następujących zagadnień:
 
@@ -33,8 +34,8 @@ Musisz również zainstalować program Visual Studio, jeśli ta czynność nie z
 
 Jak wspomniano, przykładowa aplikacja usługi TSI stanowi podstawę projektu i kodu używanego w tym samouczku. Kod obejmuje użycie biblioteki JavaScript klienta usługi TSI. Biblioteka klienta TSI udostępnia abstrakcję dla dwóch głównych kategorii interfejsu API:
 
-- **Metody opakowujące wywołania interfejsów API zapytań usługi TSI**: interfejsy API REST, które pozwalają użytkownikowi na wykonywanie zapytań o dane w usłudze TSI przy użyciu wyrażeń opartych na notacji JSON. Te metody są zorganizowane w przestrzeni nazw `TsiClient.server` biblioteki.
-- **Metody tworzenia i wypełniania różnych typów kontrolek wykresów**: metody używane do tworzenia wizualizacji danych usługi TSI na stronie internetowej. Te metody są zorganizowane w przestrzeni nazw `TsiClient.ux` biblioteki.
+- **Metody otoki na potrzeby wywoływania interfejsów API zapytań usługi TSI**: Interfejsy API REST, które umożliwiają wykonywanie zapytań dotyczących danych usługi TSI przy użyciu wyrażeń opartych na formacie JSON. Te metody są zorganizowane w przestrzeni nazw `TsiClient.server` biblioteki.
+- **Metody tworzenia i wypełniania kilku typów kontrolek wykresów**: Metody używane do wizualizacji danych usługi TSI na stronie internetowej. Te metody są zorganizowane w przestrzeni nazw `TsiClient.ux` biblioteki.
 
 W tym samouczku będziemy również używać danych ze środowiska usługi TSI przykładowej aplikacji. Szczegółowe informacje na temat struktury przykładowej aplikacji usługi TSI i korzystania z biblioteki klienta usługi TSI można znaleźć w samouczku [Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights](tutorial-explore-js-client-lib.md).
 
@@ -91,7 +92,7 @@ Przed skompilowaniem aplikacji trzeba ją zarejestrować za pomocą usługi Azur
    > W zależności od przeglądarki przed zapisaniem pliku być może trzeba będzie poprawić rozszerzenie nazwy pliku (na HTML lub CSS).
 
    - **index.HTML**: kod HTML i JavaScript na stronie: https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html
-   - **sampleStyles.css**: arkusz stylów CSS: https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
+   - **sampleStyles.css:** Arkusz stylów CSS: https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
     
 1. Uruchom program Visual Studio i zaloguj się do niego, aby utworzyć projekt aplikacji internetowej. W menu **Plik** wybierz pozycję **Otwórz**, a następnie wybierz opcję **Witryna internetowa**. W oknie dialogowym **Otwieranie witryny internetowej** wybierz katalog roboczy, w którym były przechowywane pliki HTML i CSS, a następnie kliknij pozycję **Otwórz**:
 

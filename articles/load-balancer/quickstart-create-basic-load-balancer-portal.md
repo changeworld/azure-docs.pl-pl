@@ -1,14 +1,11 @@
 ---
-title: 'Szybki start: tworzenie publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal | Microsoft Docs'
+title: 'Szybki start: tworzenie publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal'
+titlesuffix: Azure Load Balancer
 description: W tym samouczku przedstawiono sposób tworzenia publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: hero-article
@@ -16,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 2e4e4e7cb1ae49a856bbfed0716936b7b5b13d19
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.custom: seodec18
+ms.openlocfilehash: e7055e016abd06d20206d25cb1d7b9eac35142f0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635105"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260229"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: tworzenie publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
 
@@ -41,9 +38,9 @@ Najpierw utwórz publiczny podstawowy moduł równoważenia obciążenia przy u�
 1. W okienku **Tworzenie modułu równoważenia obciążenia** wpisz lub wybierz następujące wartości:
    
    - **Nazwa**: wpisz *MyLoadBalancer*.
-   - **Typ**: wybierz opcję **Publiczny**. 
-   - **Jednostka SKU**: wybierz pozycję **Podstawowa**.
-   - **Publiczny adres IP**: wybierz pozycję **Utwórz nowy**. 
+   - **Typ**: wybierz pozycję **Publiczny**. 
+   - **SKU**: Wybierz pozycję **Podstawowa**.
+   - **Publiczny adres IP:** Wybierz pozycję**Utwórz nowy**. 
      - Pole **Publiczny adres IP**: wpisz *MyPublicIP*.
      - **Skonfiguruj publiczny adres IP** > **Przypisanie**: wybierz pozycję **Dynamiczne**.
    - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wprowadź nazwę *MyResourceGroupLB* i wybierz przycisk **OK**. 
@@ -63,7 +60,7 @@ Następnie utwórz sieć wirtualną i dwie maszyny wirtualne w puli zaplecza pod
 1. W okienku **Tworzenie sieci wirtualnej** wpisz lub wybierz następujące wartości:
    
    - **Nazwa**: wpisz *MyVnet*.
-   - **Grupa zasobów**: lista rozwijana **Wybierz istniejącą**, wybierz pozycję **MyResourceGroupLB**. 
+   - **Grupa zasobów**: rozwiń listę **Wybierz istniejącą**, a następnie wybierz pozycję **MyResourceGroupLB**. 
    - **Podsieć** > **Nazwa**: wpisz *MyBackendSubnet*.
    
 1. Wybierz pozycję **Utwórz**.
@@ -80,10 +77,7 @@ Następnie utwórz sieć wirtualną i dwie maszyny wirtualne w puli zaplecza pod
    - **Szczegóły wystąpienia** > **Opcje dostępności**: 
      1. rozwiń listę i wybierz pozycję **Zestaw dostępności**. 
      2. Wybierz pozycję **Utwórz nowy**, wpisz *MyAvailabilitySet* i wybierz przycisk **OK**.
-   - **Konto administratora** > **Nazwa użytkownika**: wpisz *azureuser*.
-   - **Konto administratora** > **Hasło**: wpisz *Azure1234567*. 
-     Wpisz ponownie hasło w polu **Potwierdź hasło**.
-   
+  
 1. Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**. 
    
    Upewnij się, że zostały wybrane następujące opcje:
@@ -115,10 +109,10 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń (NSG) dla maszyn wi
    
    - **Źródło**: wybierz pozycję **Tag usługi**.  
    - **Tag usługi źródłowej**: wybierz pozycję **Internet**. 
-   - **Zakresy portów docelowych**: wpisz *80*.
+   - **Zakresy portów docelowych**: wpisz wartość *80*.
    - **Protokół**: wybierz pozycję **TCP**. 
    - **Akcja**: wybierz pozycję **Zezwalaj**.  
-   - **Priorytet**: wpisz *100*. 
+   - **Priorytet**: wpisz wartość *100*. 
    - **Nazwa**: wpisz *MyHTTPRule*. 
    - **Opis**: wpisz *Zezwalaj na HTTP*. 
    
@@ -127,8 +121,8 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń (NSG) dla maszyn wi
    ![Tworzenie reguły sieciowej grupy zabezpieczeń](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
    
 1. Powtórz powyższe kroki dla reguły ruchu przychodzącego protokołu RDP z następującymi różnymi wartościami:
-   - **Zakresy portów docelowych**: wpisz *3389*.
-   - **Priorytet**: wpisz *200*. 
+   - **Zakresy portów docelowych**: wpisz wartość *3389*.
+   - **Priorytet**: wpisz wartość *200*. 
    - **Nazwa**: wpisz *MyRDPRule*. 
    - **Opis**: wpisz *Zezwalaj na RDP*. 
 
@@ -136,7 +130,7 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń (NSG) dla maszyn wi
 
 W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza, sondy kondycji i reguły modułu równoważenia obciążenia.
 
-### <a name="create-a-back-end-address-pool"></a>Tworzenie puli adresów zaplecza
+### <a name="create-a-backend-address-pool"></a>Tworzenie puli adresów zaplecza
 
 Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia używa puli adresów zaplecza. Ta pula adresów zaplecza zawiera adresy IP wirtualnych interfejsów sieciowych (NIC, virtual network interface) połączonych z modułem równoważenia obciążenia. 
 
@@ -176,10 +170,10 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
    
    - **Nazwa**: wpisz *MyHealthProbe*.
    - **Protokół**: rozwiń listę i wybierz pozycję **HTTP**. 
-   - **Port**: wpisz *80*. 
+   - **Port**: wpisz wartość *80*. 
    - **Ścieżka**: zaakceptuj */* dla domyślnego identyfikatora URI. Tę wartość można zastąpić dowolnym innym identyfikatorem URI. 
-   - **Interwał**: wpisz *15*. Interwał to liczba sekund między próbami sondy.
-   - **Próg złej kondycji**: wpisz *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
+   - **Interwał**: wpisz wartość *15*. Interwał to liczba sekund między próbami sondy.
+   - **Próg złej kondycji**: wpisz wartość *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
    
 1. Kliknij przycisk **OK**.
    
@@ -203,8 +197,8 @@ Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nas�
    - **Nazwa**: wpisz *MyLoadBalancerRule*.
    - **Adres IP frontonu:** wpisz *LoadBalancerFrontend*.
    - **Protokół**: wybierz pozycję **TCP**.
-   - **Port**: wpisz *80*.
-   - **Port zaplecza**: wpisz *80*.
+   - **Port**: wpisz wartość *80*.
+   - **Port zaplecza**: wpisz wartość *80*.
    - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
    - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
    
@@ -232,7 +226,7 @@ Zainstaluj usługi Internet Information Services (IIS) na maszynach wirtualnych,
    
 1. Na ekranie zabezpieczeń systemu Windows wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. 
    
-   Wprowadź nazwę użytkownika *azureuser* i hasło *Azure1234567* i wybierz przycisk **OK**.
+   Wprowadź nazwę użytkownika i hasło, a następnie wybierz przycisk **OK**.
    
 1. Na każdy monit dotyczący certyfikatu odpowiedz **Tak**. 
    
@@ -258,9 +252,7 @@ Zainstaluj usługi Internet Information Services (IIS) na maszynach wirtualnych,
 
 ### <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
 
-Na każdej maszynie wirtualnej otwórz przeglądarkę i odpowiedz **OK** na wszelkie monity dotyczące konfiguracji. 
-
-Wklej publiczny adres IP swojego modułu równoważenia obciążenia na pasku adresu przeglądarki. W przeglądarce powinna zostać wyświetlona domyślna strona serwera internetowego usług IIS.
+Otwórz przeglądarkę i wklej publiczny adres IP modułu równoważenia obciążenia na pasku adresu przeglądarki. W przeglądarce powinna zostać wyświetlona domyślna strona serwera internetowego usług IIS.
 
 ![Internetowy serwer usług IIS](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 

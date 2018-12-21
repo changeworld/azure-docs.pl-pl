@@ -1,6 +1,6 @@
 ---
-title: Niestandardowe ustawienia dla środowiska usługi App Service
-description: Niestandardowych ustawień konfiguracji środowiska usługi App Service
+title: Ustawienia niestandardowe dla środowisk App Service Environment — Azure
+description: Niestandardowe ustawienia konfiguracji dla środowisk App Service Environment
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/22/2016
 ms.author: stefsch
-ms.custom: mvc
-ms.openlocfilehash: d60cdca78c143996fa5935726db0631321c9e2fe
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.custom: seodec18
+ms.openlocfilehash: de68c59987a7ec1198c344cc22978ebed09c75e8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129519"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271362"
 ---
-# <a name="custom-configuration-settings-for-app-service-environments"></a>Niestandardowych ustawień konfiguracji środowiska usługi App Service
+# <a name="custom-configuration-settings-for-app-service-environments"></a>Niestandardowe ustawienia konfiguracji dla środowisk App Service Environment
 ## <a name="overview"></a>Omówienie
-Ponieważ środowiska usługi aplikacji są izolowane jednego odbiorcy, istnieją pewne ustawienia konfiguracji, które mogą być stosowane wyłącznie do środowiska usługi App Service. W tym artykule opisano różne specjalnego dostosowania, które są dostępne dla środowiska usługi App Service.
+Ponieważ środowiska App Service Environment są izolowane do jednego klienta, istnieją pewne ustawienia konfiguracji, które można stosować wyłącznie do środowisk App Service Environment. W tym artykule opisano różne dostosowania specjalne, które są dostępne w przypadku środowisk App Service Environment.
 
-Jeśli nie masz środowisko usługi aplikacji, zobacz [tworzenie środowiska usługi aplikacji](app-service-web-how-to-create-an-app-service-environment.md).
+Jeśli nie masz środowiska App Service Environment, zobacz, [jak utworzyć środowisko App Service Environment](app-service-web-how-to-create-an-app-service-environment.md).
 
-Dostosowywanie środowiska usługi aplikacji może przechowywać przy użyciu tablicy w nowym **clusterSettings** atrybutu. Ten atrybut zostanie znaleziony w słowniku "Właściwości" *hostingEnvironments* jednostki usługi Azure Resource Manager.
+Dostosowania środowiska App Service Environment można przechowywać przy użyciu tablicy w nowym atrybucie **clusterSettings**. Ten atrybut można znaleźć w słowniku „Właściwości” jednostki *hostingEnvironments* usługi Azure Resource Manager.
 
-Następujące skróconej Menedżera zasobów szablonu fragment kodu przedstawia **clusterSettings** atrybutu:
+Poniższy skrócony fragment kodu szablonu usługi Resource Manager przedstawia atrybut **clusterSettings**:
 
     "resources": [
     {
@@ -50,25 +50,25 @@ Następujące skróconej Menedżera zasobów szablonu fragment kodu przedstawia 
        }
     }
 
-**ClusterSettings** atrybut może być uwzględniany w szablonie usługi Resource Manager, aby zaktualizować środowiska usługi aplikacji.
+Atrybut **clusterSettings** można uwzględnić w szablonie usługi Resource Manager, aby zaktualizować usługę App Service Environment.
 
-## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Użyj Eksploratora zasobów Azure, aby zaktualizować środowiska usługi aplikacji
-Alternatywnie można zaktualizować środowiska usługi aplikacji przy użyciu [Eksploratora zasobów Azure](https://resources.azure.com).  
+## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Aktualizowanie usługi App Service Environment za pomocą witryny Azure Resource Explorer
+Usługę App Service Environment można również aktualizować przy użyciu witryny [Azure Resource Explorer](https://resources.azure.com).  
 
-1. W Eksploratorze zasobów, przejdź do węzła dla środowiska usługi aplikacji (**subskrypcje** > **resourceGroups** > **dostawców** > **Microsoft.Web** > **hostingEnvironments**). Następnie kliknij przycisk określonego środowiska usługi aplikacji, które chcesz zaktualizować.
-2. W okienku po prawej stronie kliknij **odczytu/zapisu** w pasku narzędzi u góry umożliwia interakcyjne edycji w Eksploratorze zasobów.  
-3. Polecenie **Edytuj** przycisk, aby dokonać edycji szablonu usługi Resource Manager.
-4. Przewiń w dół w okienku po prawej stronie. **ClusterSettings** atrybut jest u dołu, gdzie można wprowadzić lub zaktualizować jej wartość.
-5. Wpisz (lub skopiuj i Wklej) tablica wartości konfiguracji w **clusterSettings** atrybutu.  
-6. Kliknij zielony **PUT** przycisku, który ma znajdujący się u góry w okienku po prawej stronie można przekazać zmian do środowiska usługi aplikacji.
+1. W witrynie Resource Explorer przejdź do węzła dla środowiska App Service Environment (**subscriptions** > **resourceGroups** > **providers** > **Microsoft.Web** > **hostingEnvironments**). Następnie kliknij wybrane środowisko App Service Environment, które chcesz zaktualizować.
+2. W okienku po prawej stronie kliknij pozycję **Do odczytu/zapisu** na górnym pasku narzędzi, aby zezwolić na interakcyjne edytowanie w usłudze Resource Explorer.  
+3. Kliknij niebieski przycisk **Edytuj**, aby umożliwić edytowanie szablonu usługi Resource Manager.
+4. Przewiń okienko po prawej stronie w dół. Atrybut **clusterSettings** znajduje się na samym dole strony, gdzie można wprowadzić lub zaktualizować jego wartość.
+5. Wpisz (lub skopiuj i wklej) wybraną tablicę wartości konfiguracji w obszarze atrybutu **clusterSettings**.  
+6. Kliknij zielony przycisk **PUT** w górnej części okienka po prawej stronie, aby zatwierdzić zmianę środowiska App Service Environment.
 
-Jednak wprowadzane zmiany trwa około 30 minut pomnożona przez liczbę front zakończeń w środowisku usługi aplikacji, aby zmiany zaczęły obowiązywać.
-Na przykład jeśli środowiska usługi aplikacji ma cztery zakończenia frontonu, potrwa około dwie godziny na zakończenie aktualizacji konfiguracji. Gdy jest Trwa wprowadzanie zmian w konfiguracji, nie ma innych operacji skalowania lub operacje zmiany konfiguracji może mieć miejsce w środowisku usługi aplikacji.
+Bez względu na to, jak prześlesz zmianę, jej zastosowanie potrwa około 30 minut pomnożonych przez liczbę frontonów w środowisku App Service Environment.
+Jeśli na przykład środowisko App Service Environment ma cztery frontony, kończenie aktualizacji konfiguracji potrwa około dwie godziny. W trakcie wdrażania żadne inne operacje skalowania ani zmian konfiguracji nie mogą być wykonywane w środowisku App Service Environment.
 
-## <a name="disable-tls-10"></a>Wyłączenie protokołu TLS 1.0
-Cyklicznego zapytania od klientów, szczególnie w przypadku klientów, którzy mają do czynienia z zgodności PCI kontroli, jak jawnie wyłączenie protokołu TLS 1.0 dla swoich aplikacji.
+## <a name="disable-tls-10"></a>Wyłączanie protokołu TLS 1.0
+Klienci, w szczególności ci, którzy przeprowadzają inspekcje zgodności ze specyfikacją PCI, często pytają, jak jawnie wyłączyć protokół TLS 1.0 w swoich aplikacjach.
 
-Protokołu TLS 1.0, można wyłączyć za pomocą następujących **clusterSettings** wpis:
+Protokół TLS 1.0 można wyłączyć za pośrednictwem następującego wpisu atrybutu **clusterSettings**:
 
         "clusterSettings": [
             {
@@ -77,8 +77,8 @@ Protokołu TLS 1.0, można wyłączyć za pomocą następujących **clusterSetti
             }
         ],
 
-## <a name="change-tls-cipher-suite-order"></a>Zmień kolejność użycia mechanizmów szyfrowania TLS
-Następne pytanie od klientów jest jeśli one zmodyfikuj listę szyfrów wynegocjowanym przez ich serwer i można to osiągnąć, modyfikując **clusterSettings** jak pokazano poniżej. Lista dostępnych mechanizmach szyfrowania można pobrać z [ten artykuł w witrynie MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
+## <a name="change-tls-cipher-suite-order"></a>Zmienianie kolejności zestawów szyfrowania protokołu TLS
+Kolejne pytanie klientów dotyczy tego, czy mogą oni modyfikować listę szyfrów wynegocjowaną przez serwer. Ten cel można osiągnąć, modyfikując atrybut **clusterSettings**, jak pokazano poniżej. Listę dostępnych zestawów szyfrowania można pobrać z [tego artykułu MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
 
         "clusterSettings": [
             {
@@ -88,12 +88,12 @@ Następne pytanie od klientów jest jeśli one zmodyfikuj listę szyfrów wynego
         ],
 
 > [!WARNING]
-> Jeśli wartości są ustawiane dla mechanizmów szyfrowania, który SChannel nie może zrozumieć, całą komunikację TLS do serwera mogą przestać działać. W takim przypadku należy usunąć *FrontEndSSLCipherSuiteOrder* wpisu z **clusterSettings** i Prześlij zaktualizowany szablon usługi Resource Manager, aby powrócić do domyślnych ustawień pakietu szyfrowania.  Użyj tej funkcji należy z rozwagą.
+> Jeśli dla zestawów szyfrowania zostaną skonfigurowane nieprawidłowe wartości, których nie będzie mógł rozpoznać kanał SChannel, cała komunikacja protokołu TLS z serwerem może przestać działać. W takim przypadku trzeba będzie usunąć wpis *FrontEndSSLCipherSuiteOrder* z atrybutu **clusterSettings** i przesłać zaktualizowany szablon usługi Resource Manager, aby przywrócić domyślne ustawienia zestawu szyfrowania.  Tej funkcji należy używać ostrożnie.
 > 
 > 
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
-Witryna szablon Menedżera zasobów Azure szybkiego startu zawiera szablon z podstawowej definicji dla [tworzenie środowiska usługi aplikacji](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
+W witrynie szablonów szybkiego startu Azure Resource Manager można znaleźć szablon z podstawową definicją umożliwiającą [tworzenie środowiska App Service Environment](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
 
 <!-- LINKS -->
 

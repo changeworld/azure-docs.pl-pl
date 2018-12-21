@@ -1,6 +1,6 @@
 ---
 title: Przewodnik Szybki start dotyczący wyświetlania grup i członków w usłudze Azure Active Directory w danej organizacji | Microsoft Docs
-description: Przewodnik Szybki start z instrukcjami wyszukiwania i wyświetlania grup w organizacji oraz ich członków przy użyciu witryny Azure Portal.
+description: Instrukcje wyszukiwania i wyświetlania grup w organizacji oraz ich członków.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,18 +10,18 @@ ms.component: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 9da9f055163f5df4ea064bd46caa811e39fba20c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 002b4bb4ab20e531132b461f90857cfab6aecfd3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056407"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087479"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Szybki start: wyświetlanie grup i członków w usłudze Azure Active Directory w danej organizacji
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Szybki start: Wyświetlanie grup i członków w usłudze Azure Active Directory w danej organizacji
 Przy użyciu witryny Azure Portal możesz wyświetlić istniejące grupy i członków tych grup w Twojej organizacji. Grupy umożliwiają zarządzanie użytkownikami (członkami), którzy potrzebują tego samego poziomu dostępu i uprawnień do aplikacji i usług z potencjalnie ograniczonym dostępem.
 
 W tym przewodniku Szybki start wyświetlisz wszystkie istniejące grupy w organizacji wraz z przypisanymi do nich członkami.
@@ -43,11 +43,11 @@ Utwórz nową grupę o nazwie _MDM policy - West_. Aby uzyskać więcej informac
 
 2. Uzupełnij informacje na stronie **Grupa**:
     
-    - **Typ grupy**: wybierz pozycję **Zabezpieczenia**
+    - **Typ grupy:** wybierz pozycję **Zabezpieczenia**.
     
-    - **Nazwa grupy**: wpisz tekst _MDM policy - West_
+    - **Nazwa grupy:** wpisz tekst _MDM policy - West_
     
-    - **Typ członkostwa**: wybierz pozycję **Przypisane**.
+    - **Typ członkostwa:** wybierz pozycję **Przypisane**.
 
 3. Wybierz pozycję **Utwórz**.
 
@@ -58,9 +58,9 @@ Utwórz konto nowego użytkownika, który nazywa się _Alain Charon_. Użytkowni
 
 2. Uzupełnij informacje na stronie **Użytkownik**:
 
-    - **Imię i nazwisko**: wpisz tekst _Alain Charon_.
+    - **Nazwa:** wpisz tekst _Alain Charon_.
 
-    - **Nazwa użytkownika**: wpisz tekst *alain@contoso.com*.
+    - **Nazwa użytkownika:** wpisz *alain@contoso.com*.
 
 3. Skopiuj hasło automatycznie wygenerowane w polu **Hasło**, a następnie wybierz pozycję **Utwórz**.
 

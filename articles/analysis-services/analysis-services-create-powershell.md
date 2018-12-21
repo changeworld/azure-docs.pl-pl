@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce9606c6b59175e03da5382f76fb320080db86e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 3971311bff90d0b005acd516336e13766028cccf
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427030"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001560"
 ---
-# <a name="quickstart-create-a-server---powershell"></a>Szybki start: tworzenie serwera — PowerShell
+# <a name="quickstart-create-a-server---powershell"></a>Szybki start: Tworzenie serwera — PowerShell
 
 W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Analysis Services przy użyciu programu PowerShell z poziomu wiersza polecenia w ramach subskrypcji platformy Azure.
 
@@ -33,7 +33,7 @@ Aby utworzyć serwer w ramach subskrypcji, należy użyć modułu składnika [Az
 Import-Module AzureRM.AnalysisServices
 ```
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się w subskrypcji platformy Azure przy użyciu polecenia [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount). Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -71,6 +71,6 @@ Remove-AzureRmAnalysisServicesServer -Name "myserver" -ResourceGroupName "myReso
 W tym przewodniku Szybki start przedstawiono, jak utworzyć serwer w ramach subskrypcji platformy Azure przy użyciu programu PowerShell. Teraz, po utworzeniu serwera, możesz go zabezpieczyć, konfigurując (opcjonalną) zaporę serwera. Możesz też dodać do serwera podstawowy przykładowy model danych bezpośrednio w portalu. Przykładowy model służy do zdobywania wiedzy na temat konfigurowania ról modelowej bazy danych oraz testowania połączeń klienckich. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego dodawania przykładowego modelu.
 
 > [!div class="nextstepaction"]
-> [Szybki start: konfigurowanie zapory serwera — Portal](analysis-services-qs-firewall.md)      
+> [Szybki start: Konfigurowanie zapory serwera — Portal](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
-> [Tutorial: Add a sample model to your server](analysis-services-create-sample-model.md) (Samouczek: dodawanie przykładowego modelu do serwera)
+> [Samouczek: dodawanie przykładowego modelu do serwera](analysis-services-create-sample-model.md)

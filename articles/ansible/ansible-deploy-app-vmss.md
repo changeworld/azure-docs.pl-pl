@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413999"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408378"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Możesz go użyć do wdrażania aplikacji na platformie Azure. W tym artykule przedstawiono sposób wdrażania aplikacji Java w zestawie skalowania maszyn wirtualnych platformy Azure (VMSS).  
@@ -35,7 +35,7 @@ W tej sekcji pokazano, jak za pomocą rozwiązania Ansible można pobrać inform
 
 Zapisz następujący przykładowy podręcznik jako `get-hosts-tasks.yml`: 
 
-  ```yaml
+  ```yml
   - name: Get facts for all Public IPs within a resource groups
     azure_rm_publicipaddress_facts:
       resource_group: "{{ resource_group }}"
@@ -63,7 +63,7 @@ Zapisz następujący przykładowy podręcznik jako `get-hosts-tasks.yml`:
 
 W tej sekcji usługa Git umożliwia sklonowanie przykładowego projektu w języku Java z witryny GitHub i utworzenie projektu. Zapisz następujący podręcznik jako `app.yml`:
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       repo_url: https://github.com/spring-guides/gs-spring-boot.git
@@ -87,7 +87,7 @@ Uruchom przykładowy podręcznik rozwiązania Ansible za pomocą następującego
 
 Dane wyjściowe z polecenia podręcznika rozwiązania Ansible przypominają te przedstawione poniżej, które pokazują, że utworzona przykładowa aplikacja została sklonowana z witryny GitHub:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -110,7 +110,7 @@ Następująca sekcja w podręczniku rozwiązania Ansible instaluje środowisko J
 
 (Zmień wartość `admin_password` na własne hasło).
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -167,7 +167,7 @@ Uruchom podręcznik za pomocą następującego polecenia:
 
 Dane wyjściowe z uruchomionego polecenia podręcznika rozwiązania Ansible wskazują, że przykładowa aplikacja Java została zainstalowana w grupie hostów zestawu skalowania maszyn wirtualnych:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -208,4 +208,4 @@ Gratulacje! Twoja aplikacja działa teraz na platformie Azure. Możesz teraz prz
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
-> [Przykładowy podręcznik rozwiązania Ansible dla zestawu skalowania maszyn wirtualnych](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/13/2018
+ms.date: 03/13/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 52757098436349d38538f4c2168a70e53ad58421
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946616"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270165"
 ---
-# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Samouczek 3: klasyfikowanie irysów: wdrażanie modelu
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Samouczek 3. Klasyfikowanie irysów: Wdrażanie modelu
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -168,7 +168,7 @@ _Trybu lokalnego_ można użyć do tworzenia i testowania. Aparat platformy Dock
    az provider show -n Microsoft.ContainerRegistry 
    ``` 
 
-   W trzecim wierszu danych wyjściowych znajduje się następująca informacja: **„registrationState”: „Rejestrowanie”**. Poczekaj chwilę i powtarzaj polecenie **show** do momentu, gdy dane wejściowe będą zawierać następującą informację: **„registrationState”: „Registered”**.
+   W trzecim wierszu danych wyjściowych znajduje się następująca informacja: **„registrationState”: „Rejestrowanie”**. Poczekaj chwilę i powtarzaj polecenie **show** do momentu, gdy dane wejściowe będą zawierać następującą informację: **„registrationState”: „Zarejestrowano”**.
 
    >[!NOTE] 
    W przypadku wdrażania w klastrze usługi ACS należy zarejestrować dostawcę zasobów **Microsoft.ContainerService**, również korzystając z tej samej metody.

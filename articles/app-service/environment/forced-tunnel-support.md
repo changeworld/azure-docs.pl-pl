@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie wymuszonego tunelowania środowiska Azure App Service Environment
+title: Konfigurowanie wymuszonego tunelowania środowiska App Service Environment — Azure
 description: Umożliwianie działania środowiska App Service Environment w przypadku wymuszonego tunelowania ruchu wychodzącego
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.custom: mvc
-ms.openlocfilehash: ba93aab14c8eaccf9e3ed9ae9db0d169f41dddea
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.custom: seodec18
+ms.openlocfilehash: 89827cdc7d29a817c83fd16ec2a4340f06c8343c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024049"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272739"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurowanie wymuszonego tunelowania środowiska App Service Environment
 
@@ -105,7 +105,7 @@ Aby tunelować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego wych
 
 3. Pobierz adres, który będzie używany dla całego ruchu wychodzącego ze środowiska App Service Environment do Internetu. Jeśli ruch jest przekierowywany lokalnie, te adresy pochodzą z translatora adresów sieciowych (NAT) lub są adresami IP bramy. Jeśli ruch wychodzący środowiska App Service Environment ma być kierowany przez urządzenie NVA, adres ruchu wychodzącego to publiczny adres IP urządzenia NVA.
 
-4. _Aby ustawić adresy ruchu wychodzącego w istniejącym środowisku App Service Environment:_ przejdź do strony resources.azure.com, a następnie do obszaru Subscription/\<identyfikator subskrypcji>/resourceGroups/\<grupa zasobów ase>/providers/Microsoft.Web/hostingEnvironments/\<nazwa ase>. Znajdziesz tam informacje w formacie JSON z opisem Twojego środowiska App Service Environment. Upewnij się, że u góry jest wyświetlana informacja **read/write** (odczyt/zapis). Wybierz pozycję **Edit** (Edytuj). Przewiń do samego dołu. Zmień ustawienie pozycji **userWhitelistedIpRanges** z wartości **null** na wartość podobną do następującej. Użyj adresów, które chcesz ustawić jako zakres adresów ruchu wychodzącego. 
+4. _Aby ustawić adresy ruchu wychodzącego w istniejącym środowisku App Service Environment:_ wejdź na stronę resources.azure.com, a następnie przejdź do obszaru Subscription/\<identyfikator subskrypcji>/resourceGroups/\<grupa zasobów ase>/providers/Microsoft.Web/hostingEnvironments/\<nazwa ase>. Znajdziesz tam informacje w formacie JSON z opisem Twojego środowiska App Service Environment. Upewnij się, że u góry jest wyświetlana informacja **read/write** (odczyt/zapis). Wybierz pozycję **Edit** (Edytuj). Przewiń do samego dołu. Zmień ustawienie pozycji **userWhitelistedIpRanges** z wartości **null** na wartość podobną do następującej. Użyj adresów, które chcesz ustawić jako zakres adresów ruchu wychodzącego. 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 

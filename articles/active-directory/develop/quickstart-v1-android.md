@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2d8741f6c65002d7f3701784e5fffe67b0e9bf50
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 7f7ae858f633a910b796f544ed69a582e749beaf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287238"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311069"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -30,7 +30,7 @@ ms.locfileid: "51287238"
 
 Jeśli tworzysz aplikację dla systemu Android, firma Microsoft umożliwia łatwe logowanie użytkowników w usłudze Azure Active Directory (Azure AD). Usługa Azure AD umożliwia aplikacji uzyskanie dostępu do danych użytkowników za pośrednictwem programu Microsoft Graph lub Twojego własnego chronionego internetowego interfejsu API.
 
-Biblioteka ADAL dla systemu Android umożliwia aplikacji rozpoczęcie korzystania z usługi [Microsoft Azure Cloud](https://cloud.microsoft.com) &  i [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/graph) dzięki obsłudze [kont usługi Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) korzystających z protokołu OAuth 2.0 i OpenID Connect, będących standardem w branży.
+Biblioteka ADAL dla systemu Android umożliwia aplikacji rozpoczęcie korzystania z usługi [Microsoft Azure Cloud](https://cloud.microsoft.com) i [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/graph) dzięki obsłudze [kont usługi Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) korzystających z protokołu OAuth 2.0 i OpenID Connect, będących standardem w branży.
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
@@ -56,18 +56,18 @@ Gotowy kod przykładowy można znaleźć [w witrynie GitHub](https://github.com/
 ```Java
 // Initialize your app with MSAL
 AuthenticationContext mAuthContext = new AuthenticationContext(
-        MainActivity.this, 
-        AUTHORITY, 
+        MainActivity.this,
+        AUTHORITY,
         false);
 
 
 // Perform authentication requests
 mAuthContext.acquireToken(
-    getActivity(), 
-    RESOURCE_ID, 
-    CLIENT_ID, 
-    REDIRECT_URI,  
-    PromptBehavior.Auto, 
+    getActivity(),
+    RESOURCE_ID,
+    CLIENT_ID,
+    REDIRECT_URI,
+    PromptBehavior.Auto,
     getAuthInteractiveCallback());
 
 // ...
@@ -76,7 +76,7 @@ mAuthContext.acquireToken(
 mAuthResult.getAccessToken()
 ```
 
-## <a name="step-1-register-and-configure-your-app"></a>Krok 1. Rejestrowanie i konfigurowanie aplikacji
+## <a name="step-1-register-and-configure-your-app"></a>Krok 1: Rejestrowanie i konfigurowanie aplikacji
 
 Potrzebna jest natywna aplikacja kliencka zarejestrowana w firmie Microsoft w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -101,7 +101,7 @@ Potrzebna jest natywna aplikacja kliencka zarejestrowana w firmie Microsoft w wi
     - `Application ID`
     - `Redirect URI`
 
-## <a name="step-2-get-the-sample-code"></a>Krok 2. Pobieranie przykładowego kodu
+## <a name="step-2-get-the-sample-code"></a>Krok 2: Pobieranie przykładowego kodu
 
 1. Sklonuj kod.
     ```
@@ -110,14 +110,14 @@ Potrzebna jest natywna aplikacja kliencka zarejestrowana w firmie Microsoft w wi
 2. Otwórz kod przykładowy w programie Android Studio.
     - Wybierz pozycję **Open an existing Android Studio project** (Otwórz istniejący projekt Android Studio).
 
-## <a name="step-3-configure-your-code"></a>Krok 3. Konfigurowanie kodu
+## <a name="step-3-configure-your-code"></a>Krok 3: Konfigurowanie kodu
 
 Cała konfiguracja dla tego przykładowego kodu znajduje się w pliku ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java***.
 
 1. Zastąp stałą `CLIENT_ID` ciągiem `ApplicationID`.
 2. Zastąp stałą `REDIRECT URI` ciągiem `Redirect URI` skonfigurowanym wcześniej (`http://localhost`).
 
-## <a name="step-4-run-the-sample"></a>Krok 4. Uruchamianie przykładowego kodu
+## <a name="step-4-run-the-sample"></a>Krok 4: Uruchamianie aplikacji przykładowej
 
 1. Wybierz kolejno pozycje **Build > Clean Project** (Kompilacja > Wyczyść projekt).
 2. Wybierz kolejno pozycje **Run > Run app** (Uruchom > Uruchom aplikację).

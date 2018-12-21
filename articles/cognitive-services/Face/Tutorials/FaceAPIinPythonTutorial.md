@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wykrywanie i oznaczanie ramką twarzy na obrazie za pomocą zestawu SDK dla języka Python'
+title: 'Szybki start: Wykrywanie i oznaczanie ramką twarzy na obrazie za pomocą zestawu SDK dla języka Python'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start utworzysz prosty skrypt w języku Python korzystający z interfejsu API rozpoznawania twarzy w celu wykrywania i oznaczania ramką twarzy na zdalnym obrazie.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: dc84014f3dce027c830f3f46b4aba16b775251d8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 1e35d650f6fc99bff5bf49e517e2b38fcdc58dde
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853153"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077005"
 ---
-# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Szybki start: tworzenie skryptu w języku Python w celu wykrywania i oznaczania ramką twarzy na obrazie
+# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Szybki start: Tworzenie skryptu w języku Python w celu wykrywania i oznaczania ramką twarzy na obrazie
 
 W tym przewodniku Szybki start utworzysz prosty skrypt w języku Python korzystający z interfejsu API rozpoznawania twarzy platformy Azure, za pomocą zestawu SDK dla języka Python, w celu wykrywania twarzy na zdalnym obrazie. Aplikacja wyświetla wybrany obraz i rysuje ramkę wokół każdej wykrytej twarzy.
 
@@ -28,14 +28,18 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
 - [Środowisko Python w wersji 2.7 lub nowszej albo 3.5 lub nowszej](https://www.python.org/downloads/)
 - Narzędzie [pip](https://pip.pypa.io/en/stable/installing/)
-- Zestaw SDK dla języka Python interfejsu API rozpoznawania twarzy. Można go zainstalować, uruchamiając następujące polecenie:
-    ```bash
-    pip install cognitive_face
-    ```
+
+## <a name="get-the-face-sdk"></a>Pobieranie zestawu SDK interfejsu API rozpoznawania twarzy
+
+Aby zainstalować zestaw SDK rozpoznawanie twarzy dla języka Python, otwórz wiersz polecenia i uruchom następujące polecenie:
+
+```shell
+pip install cognitive_face
+```
 
 ## <a name="detect-faces-in-an-image"></a>Wykrywanie twarzy na obrazie
 
-Utwórz nowy skrypt języka Python, _FaceQuickstart.py_. Dodaj następujący kod. Jest to podstawowa funkcja wykrywania twarzy. Należy zastąpić element `<Subscription Key>` wartością klucza. Może być również konieczna zmiana wartości elementu `BASE_URL` w celu użycia poprawnego identyfikatora regionu dla klucza (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**. Opcjonalnie możesz ustawić element `img_url` na adres URL dowolnego obrazu, którego chcesz użyć.
+Utwórz nowy skrypt w języku Python o nazwie _FaceQuickstart.py_ i dodaj następujący kod. Jest to podstawowa funkcja wykrywania twarzy. Należy zastąpić element `<Subscription Key>` wartością klucza. Może być również konieczna zmiana wartości elementu `BASE_URL` w celu użycia poprawnego identyfikatora regionu dla klucza (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**. Opcjonalnie możesz ustawić element `img_url` na adres URL dowolnego obrazu, którego chcesz użyć.
 
 Skrypt wykryje twarze, wywołując metodę **cognitive_face.face.detect**, która opakowuje interfejs API REST [wykrywania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) i zwraca listę twarzy.
 

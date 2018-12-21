@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka — Azure HDInsight '
+title: 'Samouczek: Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka — Azure HDInsight '
 description: Informacje o sposobie korzystania z interfejsów API producentów i odbiorców platformy Apache Kafka w usłudze HDInsight. W tym samouczku dowiesz się, jak używać tych interfejsów API na platformie Kafka w usłudze HDInsight z poziomu aplikacji Java.
 services: hdinsight
 author: dhgoelmsft
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd4c077e23170a295a29a75df08cf8f29f8ba3e4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313828"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413357"
 ---
-# <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
+# <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
 
 Informacje o sposobie korzystania z interfejsów API producentów i odbiorców platformy Apache Kafka w usłudze HDInsight.
 
@@ -49,7 +49,7 @@ Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji robocz
 
 * `JAVA_HOME` — powinna wskazywać katalog, w którym jest zainstalowany zestaw JDK.
 * `PATH` — powinna zawierać następujące ścieżki:
-  
+
     * `JAVA_HOME` (lub równoważną ścieżkę).
     * `JAVA_HOME\bin` (lub równoważną ścieżkę).
     * Katalog, w którym zainstalowano narzędzie Maven.
@@ -145,11 +145,11 @@ Plik [Run.Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-starte
     To polecenie tworzy katalog o nazwie `target`, który zawiera plik o nazwie `kafka-producer-consumer-1.0-SNAPSHOT.jar`.
 
 3. Aby skopiować plik `kafka-producer-consumer-1.0-SNAPSHOT.jar` do klastra usługi HDInsight, użyj następujących poleceń:
-   
+
     ```bash
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
-   
+
     Zamień ciąg **SSHUSER** na nazwę użytkownika SSH klastra i zamień ciąg **CLUSTERNAME** na nazwę klastra. Po wyświetleniu monitu wprowadź hasło użytkownika SSH.
 
 ## <a id="run"></a> Uruchamianie przykładu
@@ -190,11 +190,11 @@ Plik [Run.Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-starte
     ```
 
 4. Po zakończeniu procesu producenta odczytaj rekordy z tematu za pomocą następującego polecenia:
-   
+
     ```bash
     java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS
     ```
-   
+
     Zostanie wyświetlona liczba odczytanych rekordów wraz z liczbą rekordów.
 
 5. Użyj klawiszy __Ctrl+C__, aby zakończyć działanie odbiorcy.
@@ -204,7 +204,7 @@ Plik [Run.Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-starte
 Odbiorcy platformy Kafka używają grupy odbiorców podczas odczytywania rekordów. Korzystanie z tej samej grupy przez wielu odbiorców umożliwia równoważenie obciążenia podczas przeprowadzania odczytu z tematu. Każdy odbiorca w grupie odbiera część rekordów.
 
 Aplikacja odbiorcy akceptuje parametr, który jest używany jako identyfikator grupy. Na przykład następujące polecenie uruchamia odbiorcę przy użyciu identyfikatora grupy `mygroup`:
-   
+
 ```bash
 java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup
 ```

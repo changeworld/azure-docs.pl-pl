@@ -1,6 +1,6 @@
 ---
 title: Szybki start — uzyskiwanie dostępu do usługi Azure Active Directory i tworzenie nowej dzierżawy | Microsoft Docs
-description: Przewodnik Szybki start zawierający opis czynności, które umożliwiają znalezienie usługi Azure Active Directory oraz utworzenie nowej dzierżawy dla organizacji.
+description: Instrukcje umożliwiające znalezienie usługi Azure Active Directory oraz utworzenie nowej dzierżawy dla organizacji.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
-custom: it-pro
-ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: cd179d371ec75a2e6ca258a1efbc2361e50a5438
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023556"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083280"
 ---
-# <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>Szybki start: uzyskiwanie dostępu do usługi Azure Active Directory w celu utworzenia nowej dzierżawy
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Szybki start: Tworzenie nowej dzierżawy w usłudze Azure Active Directory
 Wszystkie zadania administracyjne, w tym tworzenie nowej dzierżawy dla swojej organizacji, możesz wykonywać przy użyciu portalu usługi Azure Active Directory (Azure AD). 
 
 W tym przewodniku Szybki start dowiesz się, jak uzyskać dostęp do witryny Azure Portal i usługi Azure Active Directory oraz jak utworzyć podstawową dzierżawę dla organizacji.

@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633052"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438612"
 ---
-# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: konfigurowanie zasad platformy Apache Kafka w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: Konfigurowanie zasad platformy Apache Kafka w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
 
 Dowiedz się, jak skonfigurować zasady platformy Apache Ranger na potrzeby klastrów Apache Kafka pakietów Enterprise Security Package (ESP). Klastry ESP są łączone z domeną, co pozwala użytkownikom na uwierzytelnianie przy użyciu poświadczeń domeny. Korzystając z tego artykułu, utworzysz dwie zasady platformy Ranger, aby ograniczyć dostęp do tematów `sales*` i `marketingspend`.
 
@@ -39,7 +39,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 1. W przeglądarce połącz się z interfejsem użytkownika administratora platformy Ranger przy użyciu adresu URL `https://<ClusterName>.azurehdinsight.net/Ranger/`. Pamiętaj, aby zmienić wartość `<ClusterName>` na nazwę klastra platformy Kafka.
 
-    > [!NOTE] 
+    > [!NOTE]  
     > Poświadczenia platformy Ranger są inne niż poświadczenia klastra Hadoop. Aby zapobiec używaniu w przeglądarce buforowanych poświadczeń usługi Hadoop, należy połączyć się z interfejsem użytkownika administratora platformy Ranger w nowym oknie przeglądarki InPrivate.
 
 2. Zaloguj się przy użyciu poświadczeń administratora usługi Azure Active Directory (AD). Poświadczenia administratora usługi Azure AD są inne niż poświadczenia klastra HDInsight i poświadczenia protokołu SSH węzła usługi HDInsight w systemie Linux.
@@ -74,7 +74,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user** i **marketing_
 
    ![Interfejs użytkownika administratora platformy Apache Ranger — tworzenie zasad](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Zaczekaj kilka minut na zsynchronizowanie platformy Ranger z usługą Azure AD, jeśli użytkownik domeny nie zostanie automatycznie wypełniony dla ustawienia **Select User** (Wybierz użytkownika).
 
 4. Kliknij pozycję **Add** (Dodaj), aby zapisać zasady.
@@ -113,17 +113,17 @@ Aby utworzyć dwa tematy, **salesevents** i **marketingspend**:
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. Użyj następujących poleceń, aby uzyskać hosty brokera platformy Kafka i hosty usługi ZooKeeper. Po wyświetleniu monitu wprowadź hasło konta administratora klastra.
+3. Użyj poniższych poleceń, aby uzyskać hosty brokera platformy Kafka i hosty usługi Apache Zookeeper. Po wyświetleniu monitu wprowadź hasło konta administratora klastra.
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]
+> [!Note]  
 > Zanim przejdziesz dalej, może być konieczne skonfigurowanie środowiska projektowego, jeśli nie wykonano tego wcześniej. Potrzebne będą Ci następujące składniki: zestaw Java JDK, narzędzie Apache Maven i klient SSH z punktem połączenia z usługą. Aby uzyskać więcej informacji, zobacz te [instrukcje instalacji](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 1. Pobierz [przykłady odbiorców i producentów przyłączonych do domeny na platformie Apache Kafka](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Wykonaj kroki 2 i 3 w sekcji **Kompilowanie i wdrażanie przykładu** samouczka [Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)
+1. Wykonaj kroki 2 i 3 w sekcji **Kompilowanie i wdrażanie przykładu** w artykule [Samouczek: Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)
 
 1. Uruchom następujące polecenia:
 
@@ -132,7 +132,7 @@ Aby utworzyć dwa tematy, **salesevents** i **marketingspend**:
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Tylko właściciel procesu usługi Kafka, taki jak katalog główny, może zapisywać w węzłach usługi Zookeeper `/config/topics`. Zasady platformy Ranger nie są wymuszane, gdy użytkownik bez uprawnień tworzy temat. Dzieje się tak, ponieważ skrypt `kafka-topics.sh` komunikuje się bezpośrednio z usługą Zookeeper w celu utworzenia tematu. Wpisy są dodawane do węzłów usługi Zookeeper, a obserwatorzy po stronie brokera odpowiednio monitorują i tworzą tematy. Nie można przeprowadzić autoryzacji za pomocą wtyczki platformy Ranger. Powyższe polecenie jest wykonywane przy użyciu elementu `sudo` za pośrednictwem brokera platformy Kafka.
 
 
@@ -210,5 +210,5 @@ W oparciu o skonfigurowane zasady platformy Ranger użytkownik **sales_user** mo
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Bring your own key to Kafka (Używanie własnego klucza na platformie Kafka)](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
-* [An introduction to Hadoop security with Enterprise Security Package (Wprowadzenie do zabezpieczeń usługi Hadoop z pakietem Enterprise Security)](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)
+* [Bring your own key to Apache Kafka (Używanie własnego klucza na platformie Apache Kafka)](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
+* [An introduction to Apache Hadoop security with Enterprise Security Package (Wprowadzenie do zabezpieczeń usługi Apache Hadoop z pakietem Enterprise Security)](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)

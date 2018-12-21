@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie funkcji Azure Functions za pomocą usługi Azure IoT Edge | Microsoft Docs
-description: W tym samouczku funkcja platformy Azure jest wdrażana jako moduł na urządzeniu brzegowym.
+title: 'Samouczek: wdrażanie funkcji platformy Azure na urządzeniu — Azure IoT Edge | Microsoft Docs'
+description: W tym samouczku zaprojektujesz funkcję platformy Azure w postaci modułu usługi IoT Edge, a następnie wdrożysz ją na urządzeniu brzegowym.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,15 +8,15 @@ ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: d0ae009db0d9470942a4ff5d7c09e2cdd7bcdd53
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 1488f6aff202f8b307b883d8a795d7df20066661
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165625"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081884"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Samouczek: wdrażanie funkcji Azure Functions jako modułów usługi IoT Edge
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Samouczek: Wdrażanie funkcji platformy Azure jako modułów usługi IoT Edge
 
 Możesz użyć usługi Azure Functions, aby wdrożyć kod implementujący Twoją logikę biznesową bezpośrednio na urządzeniach usługi Azure IoT Edge. W tym samouczku przedstawiono sposób tworzenia i wdrażania funkcji platformy Azure, która filtruje dane czujnika na symulowanym urządzeniu IoT Edge. Używasz symulowanego urządzenia usługi IoT Edge utworzonego podczas pracy z przewodnikami Szybki start dotyczącymi wdrażania usługi Azure IoT Edge na urządzeniu symulowanym w systemie [Windows](quickstart.md) lub [Linux](quickstart-linux.md). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:     
 
@@ -27,7 +27,7 @@ Możesz użyć usługi Azure Functions, aby wdrożyć kod implementujący Twoją
 > * Wyświetlanie filtrowanych danych.
 
 <center>
-![Diagram architektury samouczka](./media/tutorial-deploy-function/FunctionsTutDiagram.png)
+![Diagram — Architektura samouczka, etapy i wdrażanie modułu funkcji](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
 >[!NOTE]
@@ -63,7 +63,7 @@ Do przechowywania obrazów kontenerów możesz użyć dowolnego rejestru zgodneg
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz kolejno pozycje **Utwórz zasób** > **Kontenery** > **Container Registry**.
 
-    ![Tworzenie rejestru kontenerów](./media/tutorial-deploy-function/create-container-registry.png)
+    ![Tworzenie rejestru kontenerów w witrynie Azure Portal](./media/tutorial-deploy-function/create-container-registry.png)
 
 2. Podaj następujące wartości, aby utworzyć rejestr kontenerów:
 
@@ -90,7 +90,7 @@ Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code, które zost
 
 2. Otwórz paletę poleceń programu VS Code, wybierając kolejno opcje **Widok** > **Paleta poleceń**.
 
-3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: nowe rozwiązanie usługi IoT Edge**. Postępuj zgodnie z monitami wyświetlanymi na palecie poleceń, aby utworzyć rozwiązanie.
+3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). Postępuj zgodnie z monitami wyświetlanymi na palecie poleceń, aby utworzyć rozwiązanie.
 
    | Pole | Wartość |
    | ----- | ----- |
@@ -225,9 +225,9 @@ Do wdrożenia modułu funkcji na urządzeniu usługi IoT Edge możesz użyć wit
 
 1. Otwórz paletę poleceń programu VS Code, wybierając kolejno opcje **Widok** > **Paleta poleceń**.
 
-2. Wyszukaj i uruchom polecenie **Azure: zaloguj**. Postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. 
+2. Wyszukaj i uruchom polecenie **Azure: Sign in** (Azure: zaloguj). Postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. 
 
-3. W palecie poleceń wyszukaj i uruchom polecenie **Azure IoT Hub: wybierz centrum IoT Hub**. 
+3. W palecie poleceń wyszukaj i uruchom polecenie **Azure IoT Hub: Select IoT Hub**  (Azure IoT Hub: wybierz centrum IoT Hub). 
 
 4. Wybierz subskrypcję, która zawiera Twoje centrum IoT Hub, a następnie wybierz centrum IoT Hub, do którego chcesz uzyskać dostęp.
 
@@ -243,11 +243,11 @@ Do wdrożenia modułu funkcji na urządzeniu usługi IoT Edge możesz użyć wit
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-Aby wyświetlać wszystkie komunikaty otrzymywane przez centrum IoT Hub, uruchom polecenie **Azure IoT Hub: rozpocznij monitorowanie komunikatu D2C** w palecie poleceń.
+Aby wyświetlać wszystkie komunikaty otrzymywane przez centrum IoT Hub, uruchom polecenie **Azure IoT Hub: Start Monitoring D2C Message** (Azure IoT Hub: rozpocznij monitorowanie komunikatu D2C) w palecie poleceń.
 
 Możesz również filtrować widok, aby wyświetlać wszystkie komunikaty przychodzące do centrum IoT Hub z określonego urządzenia. Kliknij prawym przyciskiem myszy urządzenie w sekcji **Urządzenia usługi Azure IoT Hub** i wybierz polecenie **Rozpocznij monitorowanie komunikatów D2C**.
 
-Aby zatrzymać monitorowanie komunikatów, uruchom polecenie **Azure IoT Hub: Stop monitoring D2C message (Azure IoT Hub: zatrzymaj monitorowanie komunikatu D2C)** w palecie poleceń. 
+Aby zatrzymać monitorowanie komunikatów, uruchom polecenie **Azure IoT Hub: Stop monitoring D2C message** (Azure IoT Hub: zatrzymaj monitorowanie komunikatu D2C) w palecie poleceń. 
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

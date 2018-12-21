@@ -1,13 +1,12 @@
 ---
-title: Prosty eksperyment w usłudze Machine Learning Studio | Microsoft Docs
+title: Prosty eksperyment — Azure Machine Learning Studio | Microsoft Docs
 description: Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
 keywords: experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques,data science experiment
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 7ee1df8c38ac2dbfc6618febd223d5c4bbf32be6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b3d8aa709fefcf0eb8c16117f62cbe3bab8e319a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425714"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262422"
 ---
-# <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Samouczek dotyczący uczenia maszynowego: tworzenie pierwszego eksperymentu związanego z przetwarzaniem danych w usłudze Azure Machine Learning Studio
+# <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Samouczek: Tworzenie pierwszego eksperymentu dotyczącego nauki o danych w usłudze Azure Machine Learning Studio
 
 Ten samouczek jest przeznaczony dla osób, którym nie zdarzyło się korzystać z usługi **Azure Machine Learning Studio**.
 
@@ -68,7 +67,7 @@ W tym samouczku dotyczącym uczenia maszynowego wykonamy pięć podstawowych kro
 
 - **Tworzenie modelu**
     - [Krok 1. Pobieranie danych]
-    - [Krok 2. Przygotowanie danych]
+    - [Krok 2. Przygotowywanie danych]
     - [Krok 3. Definiowanie funkcji]
 - **Uczenie modelu**
     - [Krok 4. Wybieranie i stosowanie algorytmu uczenia]
@@ -76,7 +75,7 @@ W tym samouczku dotyczącym uczenia maszynowego wykonamy pięć podstawowych kro
     - [Krok 5. Przewidywanie nowych cen samochodów]
 
 [Krok 1. Pobieranie danych]: #step-1-get-data
-[Krok 2. Przygotowanie danych]: #step-2-prepare-the-data
+[Krok 2. Przygotowywanie danych]: #step-2-prepare-the-data
 [Krok 3. Definiowanie funkcji]: #step-3-define-features
 [Krok 4. Wybieranie i stosowanie algorytmu uczenia]: #step-4-choose-and-apply-a-learning-algorithm
 [Krok 5. Przewidywanie nowych cen samochodów]: #step-5-predict-new-automobile-prices
@@ -124,7 +123,7 @@ W tym przykładowym zestawie danych poszczególne wystąpienia modeli samochodó
 
 Aby zamknąć okno wizualizacji, kliknij znak „**x**” w prawym górnym rogu.
 
-## <a name="step-2-prepare-the-data"></a>Krok 2. Przygotowanie danych
+## <a name="step-2-prepare-the-data"></a>Krok 2. Przygotowywanie danych
 
 Zestawy danych zwykle wymagają przetworzenia wstępnego przed rozpoczęciem analizy. Na przykład może okazać się, że w przypadku niektórych wierszy w kolumnach brakuje wartości. Te brakujące wartości muszą zostać wyczyszczone, aby umożliwić modelowi wykonanie poprawnej analizy danych. W naszym przykładzie usuniemy wszystkie wiersze z brakującymi wartościami. Ponadto w kolumnie **normalized-losses** (znormalizowane straty) występuje wiele przypadków brakujących wartości, dlatego całkowicie wykluczymy tę kolumnę z modelu.
 
@@ -186,7 +185,7 @@ Na tym etapie nasz eksperyment obejmuje tylko czyszczenie danych. Jeśli chcesz 
 
 Po oczyszczeniu danych można określić, jakie cechy zostaną użyte w modelu predykcyjnym.
 
-## <a name="step-3-define-features"></a>Krok 3. Definiowanie cech
+## <a name="step-3-define-features"></a>Krok 3. Definiowanie funkcji
 
 W uczeniu maszynowym *cechy* to poszczególne mierzalne właściwości określonych informacji. W naszym zestawie danych poszczególne wiersze odpowiadają różnym samochodom, a kolumny — cechom tych samochodów.
 

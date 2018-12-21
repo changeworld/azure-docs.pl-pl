@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) w funkcji Azure Web App for Containers przy użyciu konfiguracji narzędzia Docker Compose
+title: Tworzenie aplikacji z wieloma kontenerami przy użyciu narzędzia Docker Compose — Azure App Service
 description: Wdróż swoją pierwszą aplikację wielokontenerową w funkcji Azure Web App for Containers w ciągu kilku minut.
 keywords: azure app service, aplikacja internetowa, linux, docker, compose, wielokontenerowe, wielokontenerowa, web app for containers, wiele kontenerów, kontener, kubernetes, wordpress, azure db dla mysql, produkcyjna baza danych z kontenerami
 services: app-service\web
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec18
+ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576786"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316584"
 ---
-# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
+# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Tworzenie aplikacji z wieloma kontenerami (w wersji zapoznawczej) przy użyciu konfiguracji narzędzia Docker Compose
 
 Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. W tym przewodniku Szybki start przedstawiono sposób wdrażania aplikacji wielokontenerowej w funkcji Web App for Containers przy użyciu usługi [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) oraz konfiguracji narzędzia Docker Compose. Instrukcje dotyczące platformy Kubernetes oraz pełne rozwiązanie z użyciem usługi Azure DB dla MySQL zawiera [samouczek dotyczący aplikacji wielokontenerowych](tutorial-multi-container-app.md).
 

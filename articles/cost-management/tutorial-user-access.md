@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 19cb1e414ba4a486139a502034e958907d027470
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 64e56233546a22804036b43d9769247678036049
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275271"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099447"
 ---
-# <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: przypisywanie dostępu do danych rozwiązania Cloudyn
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: Przypisywanie dostępu do danych rozwiązania Cloudyn
 
 Prawa dostępu do danych rozwiązania Cloudyn są przyznawane za pośrednictwem funkcji zarządzania użytkownikami lub jednostkami. Konta użytkowników platformy Cloudyn określają dostęp do *jednostek* i funkcji administracyjnych. Istnieją dwa typy dostępu: administratora i użytkownika. O ile nie zmodyfikowano ich dla poszczególnych użytkowników, prawa dostępu administratora umożliwiają użytkownikowi nieograniczone korzystanie ze wszystkich funkcji w portalu Cloudyn, w tym z funkcji, takich jak: zarządzanie użytkownikami, zarządzanie listami adresatów oraz dostęp jednostki głównej do danych wszystkich jednostek. Dostęp użytkownika jest przeznaczony dla użytkowników końcowych i umożliwia im wyświetlanie raportów oraz tworzenie raportów przy użyciu dostępu do danych jednostki.
 
@@ -47,7 +47,7 @@ Mimo że Ty masz już prawa dostępu administratora, współpracownicy z organiz
 Wprowadź wymagane informacje o użytkowniku. **Identyfikator logowania** musi być prawidłowym adresem e-mail. Wybierz uprawnienia, aby zezwolić na zarządzanie użytkownikami, co pozwoli użytkownikowi na tworzenie i modyfikowanie innych użytkowników. Zarządzanie listami adresatów umożliwia użytkownikowi edytowanie list adresatów. Link z informacjami logowania jest wysyłany do użytkownika pocztą e-mail z platformy Cloudyn po wybraniu pozycji **Powiadom użytkownika pocztą e-mail**. Podczas pierwszego logowania użytkownik ustawia hasło.
 
 W obszarze **Użytkownik ma dostęp administratora** wybrano jednostkę główną organizacji. Pozostaw zaznaczoną jednostkę główną i zapisz informacje o użytkowniku. Wybranie jednostki głównej pozwoli użytkownikowi na posiadanie uprawnień administratora nie tylko do jednostki głównej w drzewie, ale także do wszystkich jednostek, które znajdują się pod nią.  
-  ![Dodawanie nowego użytkownika z prawami dostępu administratora](.\media\tutorial-user-access\new-admin-access.png)
+  ![Przykład przedstawiający dostęp administratora w polu Dodaj nowego użytkownika](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Tworzenie użytkownika z prawami dostępu użytkownika
 Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Cloudyn, takich jak pulpity nawigacyjne i raporty, powinni mieć prawa użytkownika do ich wyświetlania. Utwórz nowego użytkownika z dostępem użytkownika podobnego do utworzonego przy użyciu dostępu administratora, pamiętając o następujących różnicach:
@@ -56,7 +56,7 @@ Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Clou
 - Zaznacz jednostki, do których użytkownik musi mieć dostęp, na liście **Użytkownik ma dostęp użytkownika**.
 - W razie potrzeby możesz również zezwolić administratorowi na dostęp do określonych jednostek.
 
-![dodawanie nowego użytkownika z prawami dostępu użytkownika](.\media\tutorial-user-access\new-user-access.png)
+![Przykład przedstawiający dostęp użytkownika w polu Dodaj nowego użytkownika](./media/tutorial-user-access/new-user-access.png)
 
 Aby obejrzeć film wideo z samouczkiem dotyczącym dodawania użytkowników, zobacz [Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30) (Dodawanie użytkowników do rozwiązania Cloudyn).
 
@@ -88,11 +88,11 @@ Po zarejestrowaniu konta lub umowy związanej z platformą Azure na platformie C
 
 W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Konta w chmurze**. Rozpoczynasz od pojedynczej jednostki (głównej) i tworzysz drzewo jednostek pod tą jednostką główną. Oto przykład hierarchii jednostek, która po ukończeniu drzewa może przypominać wiele organizacji IT:
 
-![Drzewo jednostki](.\media\tutorial-user-access\entity-tree.png)
+![Przykład drzewa jednostek wyświetlany na stronie Zarządzanie kontami](./media/tutorial-user-access/entity-tree.png)
 
 Obok pozycji **Jednostki** kliknij pozycję **Dodaj jednostkę**. Wprowadź informacje o osobie lub dziale do dodania. Wartości pól **Imię i nazwisko** i **Adres e-mail** nie muszą być zgodne z danymi istniejących użytkowników. Jeśli chcesz wyświetlić listę poziomów dostępu, wyszukaj w pomocy zagadnienia dotyczące *dodawania jednostki*.
 
-![Dodawanie jednostki](.\media\tutorial-user-access\add-entity.png)
+![Przykład przedstawiający nazwę jednostki i poziomy dostępu w polu Dodaj jednostki](./media/tutorial-user-access/add-entity.png)
 
 Gdy wszystko będzie gotowe, **zapisz** jednostkę.
 

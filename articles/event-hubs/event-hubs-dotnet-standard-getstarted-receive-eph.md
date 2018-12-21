@@ -1,6 +1,6 @@
 ---
-title: Odbieranie zdarzeń z usługi Azure Event Hubs za pomocą biblioteki .NET Standard | Microsoft Docs
-description: Wprowadzenie do odbierania komunikatów za pomocą klasy EventProcessorHost z biblioteki .NET Standard
+title: Odbieranie zdarzeń za pomocą platformy .NET Core — Azure Event Hubs | Microsoft Docs
+description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji .NET Core, która odbiera komunikaty z hosta EventProcessorHost.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9adbd8b9e7934ebe454d14ac6e47fe96898c9184
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 18b37fd7c85fced4cc57b57320daf195f6f33e3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234395"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082385"
 ---
-# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Wprowadzenie do odbierania komunikatów za pomocą hosta procesora zdarzeń z biblioteki .NET Standard
+# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>Wprowadzenie do odbierania komunikatów za pomocą hosta procesora zdarzeń z biblioteki .NET Core
 Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z podłączonych urządzeń i aplikacji. Po zebraniu danych w usłudze Event Hubs można przechowywać dane przy użyciu klastra magazynu lub przekształcać je za pomocą dostawcy analiz w czasie rzeczywistym. Ta możliwość zbierania i przetwarzania zdarzeń na wielką skalę jest kluczowym składnikiem architektur nowoczesnych aplikacji, w tym Internetu rzeczy (IoT). Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
 W tym samouczku pokazano, jak napisać aplikację konsolową platformy .NET Core, która odbiera komunikaty z centrum zdarzeń za pomocą [hosta procesora zdarzeń](event-hubs-event-processor-host.md). [Host procesora zdarzeń](event-hubs-event-processor-host.md) jest klasą .NET, która upraszcza odbieranie zdarzeń z centrów zdarzeń przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tych centrów zdarzeń. Za pomocą hosta procesora zdarzeń można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie przedstawiono, jak używać hosta procesora zdarzeń dla jednego odbiornika. W przykładzie [Skalowanie przetwarzania zdarzeń][Skalowanie przetwarzania zdarzeń za pomocą usługi Event Hubs] przedstawiono instrukcje korzystania z hosta procesora zdarzeń z wieloma odbiornikami.
@@ -206,7 +207,7 @@ Gratulacje! Odebrano komunikaty z centrum zdarzeń za pomocą hosta procesora zd
 > Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia klasy [EventProcessorHost](event-hubs-event-processor-host.md). W celu zwiększenia przepływności zalecamy uruchomienie wielu wystąpień klasy [EventProcessorHost](event-hubs-event-processor-host.md), jak pokazano w przykładzie [Skalowanie przetwarzania zdarzeń](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3). W tych przypadkach wiele wystąpień automatycznie koordynuje się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym przewodniku Szybki start utworzono aplikację platformy .NET Standard, która odebrała komunikaty z centrum zdarzeń. Aby dowiedzieć się, jak wysyłać zdarzenia do centrum zdarzeń przy użyciu platformy .NET Standard, zobacz [Send events from event hub - .NET Standard (Wysyłanie zdarzeń z centrum zdarzeń — .NET Standard)](event-hubs-dotnet-standard-getstarted-send.md).
+W tym przewodniku Szybki start utworzono aplikację platformy .NET Core, która odbierała komunikaty z centrum zdarzeń. Aby dowiedzieć się, jak wysyłać zdarzenia do centrum zdarzeń przy użyciu platformy .NET Core, zobacz [Send events from event hub - .NET Core(Wysyłanie zdarzeń z centrum zdarzeń — .NET Core)](event-hubs-dotnet-standard-getstarted-send.md).
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png
