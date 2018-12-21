@@ -102,11 +102,11 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
  
    Tak. Wszyscy klienci będą mogli zarejestrować się przy użyciu nowego dostawcę zasobów maszyny Wirtualnej SQL. Jednak tylko klienci z korzyści programu Software Assurance mogą aktywować [korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (lub BYOL) na maszynę Wirtualną programu SQL Server. 
 
-1. **Co się dzieje z _* zasobu Microsoft.SqlVirtualMachine_*, jeśli zasób maszyny Wirtualnej jest przeniesiony lub usunięty?** 
+1. **Co się dzieje z _\*zasobu Microsoft.SqlVirtualMachine_\*, jeśli zasób maszyny Wirtualnej jest przeniesiony lub usunięty?** 
 
    Gdy zasobów Microsoft.Compute/VirtualMachine jest porzucone lub przeniesiona, a następnie skojarzonego zasobu Microsoft.SqlVirtualMachine powiadomić o asynchronicznym replikowaniu operacji.
 
-1. **Co się dzieje z maszyny Wirtualnej, jeśli _* Microsoft.SqlVirtualMachine_* zasobów jest porzucany?**
+1. **Co się dzieje z maszyny Wirtualnej, jeśli _\*Microsoft.SqlVirtualMachine_\* zasobów jest porzucany?**
 
    Zasób Microsoft.Compute/VirtualMachine nie ulega zmianie po upuszczeniu zasobów Microsoft.SqlVirtualMachine. Jednak zmiany licencjonowania domyślnie powrócą do oryginalnego źródła obrazu. 
 
