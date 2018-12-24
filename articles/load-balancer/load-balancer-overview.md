@@ -1,5 +1,6 @@
 ---
-title: Omówienie usługi Azure Load Balancer | Microsoft Docs
+title: Co to jest usługa Azure Load Balancer?
+titlesuffix: Azure Load Balancer
 description: Omówienie funkcji, architektury i implementacji usługi Azure Load Balancer. Dowiedz się, jak działa moduł równoważenia obciążenia i wykorzystaj go w chmurze.
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
 ms.topic: overview
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 6368b47400f6ea06babfe538cf6f58b18cc49117
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 3b1f2374618a0fdb446c4d0bf59fa14a828639ea
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219583"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185617"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
@@ -86,7 +88,7 @@ Moduł równoważenia obciążenia zapewnia następujące podstawowe możliwośc
      
     Moduł równoważenia obciążenia udostępnia [różne typy sond kondycji](load-balancer-custom-probe-overview.md#types) dla punktów końcowych protokołu TCP, HTTP i HTTPS.
 
-    Ponadto podczas korzystania z usług w chmurze klasycznej dozwolony jest dodatkowy typ: [agenta gościa](load-balancer-custom-probe-overview.md#guestagent).  Ta sonda kondycji powinna być używana w ostateczności i nie jest zalecana, gdy możliwe jest użycie innych opcji.
+    Ponadto podczas korzystania z usług w chmurze klasycznej dozwolony jest dodatkowy typ:  [agent gościa](load-balancer-custom-probe-overview.md#guestagent).  Ta sonda kondycji powinna być używana w ostateczności i nie jest zalecana, gdy możliwe jest użycie innych opcji.
     
 * **Połączenia wychodzące (SNAT)**
 
@@ -103,7 +105,7 @@ Moduł równoważenia obciążenia w warstwie Standardowa poza podstawowymi ma d
 
 Moduł równoważenia obciążenia obsługuje jednostkę SKU Podstawowa i Standardowa, które różnią się od siebie pod względem scenariuszy skalowania, funkcji i ceny. Wszystkie scenariusze możliwe do wykonania za pomocą modułu równoważenia obciążenia w warstwie Podstawowa mogą zostać również wykonane przy użyciu modułu równoważenia obciążenia w warstwie Standardowa. W rzeczywistości interfejsy API dla obu tych jednostek SKU są podobne i wywoływane za pośrednictwem specyfikacji tych jednostek. Interfejs API służący do obsługi jednostek SKU dla modułu równoważenia obciążenia i publicznego adresu IP jest dostępny od wersji 2017-08-01 interfejsu API. Obie jednostki SKU mają ten sam ogólny interfejs API i tę samą strukturę.
 
-Jednak w zależności od wybranej jednostki SKU cały scenariusz konfiguracji może się nieco różnić. W dokumentacji modułu równoważenia obciążenia zaznaczone jest, gdy dany artykuł ma zastosowanie tylko do określonej jednostki SKU. Aby porównać i poznać różnice, zapoznaj się z poniższą tabelą. Aby uzyskać więcej informacji, zobacz [Omówienie modułu równoważenia obciążenia w warstwie Standardowa.](load-balancer-standard-overview.md).
+Jednak w zależności od wybranej jednostki SKU cały scenariusz konfiguracji może się nieco różnić. W dokumentacji modułu równoważenia obciążenia zaznaczone jest, gdy dany artykuł ma zastosowanie tylko do określonej jednostki SKU. Aby porównać i poznać różnice, zapoznaj się z poniższą tabelą. Aby uzyskać więcej informacji, zobacz [Omówienie modułu równoważenia obciążenia w warstwie Standardowa](load-balancer-standard-overview.md).
 
 >[!NOTE]
 > Nowe projekty powinny zostać dostosowane do modułu równoważenia obciążenia w warstwie Standardowa. 
@@ -141,14 +143,14 @@ Wewnętrzny moduł równoważenia obciążenia kieruje ruch tylko do zasobów, k
 
 Wewnętrzny moduł równoważenia obciążenia pozwala na następujące typy równoważenia obciążenia:
 
-* **Z poziomu sieci wirtualnej**: równoważenie obciążenia z poziomu maszyn wirtualnych w sieci wirtualnej do zestawu maszyn wirtualnych, które znajdują się w ramach tej samej sieci wirtualnej.
-* **Dla sieci wirtualnej obejmującej wiele lokalizacji**: równoważenie obciążenia z poziomu komputerów lokalnych do zestawu maszyn wirtualnych, które znajdują się w ramach tej samej sieci wirtualnej. 
-* **Dla aplikacji wielowarstwowych**: równoważenia obciążenia dla aplikacji wielowarstwowych dostępnych z Internetu, gdy warstwy zaplecza nie są dostępne z Internetu. Warstwy zaplecza wymagają równoważenia obciążenia ruchu z poziomu warstwy z dostępem do Internetu (patrz następny rysunek).
+* **Z poziomu sieci wirtualnej**: równoważenie obciążenia z poziomu maszyn wirtualnych w sieci wirtualnej do zestawu maszyn wirtualnych, które znajdują się w tej samej sieci wirtualnej.
+* **Dla sieci wirtualnej obejmującej wiele lokalizacji**: równoważenie obciążenia z poziomu komputerów lokalnych do zestawu maszyn wirtualnych, które znajdują się w tej samej sieci wirtualnej. 
+* **Dla aplikacji wielowarstwowych**: równoważenia obciążenia dla aplikacji wielowarstwowych dostępnych z Internetu, gdy warstwy zaplecza są niedostępne z Internetu. Warstwy zaplecza wymagają równoważenia obciążenia ruchu z poziomu warstwy z dostępem do Internetu (patrz następny rysunek).
 * **Dla aplikacji biznesowych**: równoważenie obciążenia na potrzeby aplikacji biznesowych, które są hostowane na platformie Azure bez użycia dodatkowego sprzętu lub oprogramowania służącego do równoważenia obciążenia. Ten scenariusz obejmuje serwery lokalne znajdujące się w ramach zestawu komputerów, w przypadku których ma miejsce równoważenie obciążenia ruchu.
 
 ![Przykład wewnętrznego modułu równoważenie obciążenia](./media/load-balancer-overview/IC744147.png)
 
-*Rysunek: równoważenia obciążenia aplikacji wielowarstwowych za pomocą publicznego i wewnętrznego modułu równoważenia obciążenia*
+*Rysunek: równoważenie obciążenia aplikacji wielowarstwowych za pomocą publicznego i wewnętrznego modułu równoważenia obciążenia*
 
 ## <a name="pricing"></a>Cennik
 Opłaty za użycie modułu równoważenia obciążenia w warstwie Standardowa są naliczane na podstawie liczby skonfigurowanych reguł równoważenia obciążenia i ilości przetworzonych danych przychodzących i wychodzących. Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warstwie Standardowa, przejdź na stronę [cennika modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/).
