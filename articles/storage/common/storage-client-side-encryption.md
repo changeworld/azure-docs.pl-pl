@@ -60,7 +60,7 @@ Podczas szyfrowania biblioteki klienta wygeneruje losowy inicjowania wektora (IV
 > 
 > 
 
-Pobieranie obiektu blob zaszyfrowanego polega na pobraniu zawartości całego obiektu blob przy użyciu **DownloadTo** /** BlobReadStream**\* wygodne metody. Opakowana CEK jest nieopakowanych i używany razem z IV (przechowywanych jako metadane obiektu blob w tym przypadku), aby zwrócić odszyfrowane dane do użytkowników.
+Pobieranie obiektu blob zaszyfrowanego polega na pobraniu zawartości całego obiektu blob przy użyciu **DownloadTo** / **BlobReadStream**\* wygodne metody. Opakowana CEK jest nieopakowanych i używany razem z IV (przechowywanych jako metadane obiektu blob w tym przypadku), aby zwrócić odszyfrowane dane do użytkowników.
 
 Pobranie dowolnego zakresu (**DownloadRange*** metody) w obiekcie blob zaszyfrowanego obejmuje, dostosowując zakres dostarczone przez użytkowników w celu uzyskania niewielką ilość dodatkowych danych, które można pomyślnie odszyfrować żądany zakres.
 

@@ -95,7 +95,7 @@ Po utworzeniu wszystkich modułów dla wdrożenia skonfigurowane, wybierz **dale
 
 ### <a name="step-3-specify-routes-optional"></a>Krok 3: Określanie tras (opcjonalnie)
 
-Trasy definiują, jak moduły komunikują się ze sobą w ramach danego wdrożenia. Domyślnie Kreator umożliwia trasy o nazwie **trasy** i zdefiniowane jako **FROM /* do $nadrzędne**, oznacza to, że wszystkie komunikaty generowane przez moduły są wysyłane do usługi IoT hub.  
+Trasy definiują, jak moduły komunikują się ze sobą w ramach danego wdrożenia. Domyślnie Kreator umożliwia trasy o nazwie **trasy** i zdefiniowane jako **FROM /\* do $nadrzędne**, oznacza to, że wszystkie komunikaty generowane przez moduły są wysyłane do usługi IoT hub.  
 
 Dodawanie lub aktualizowanie tras przy użyciu informacji z [zadeklarować trasy](module-composition.md#declare-routes), a następnie wybierz **dalej** można przejść do sekcji przeglądu.
 
