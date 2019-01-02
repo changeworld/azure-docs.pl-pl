@@ -22,7 +22,7 @@ ms.lasthandoff: 07/11/2018
 ms.locfileid: "38668031"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
 > * [Wersja 1](data-factory-create-pipelines.md)
 > * [Wersja 2 (bieżąca wersja)](../concepts-pipelines-activities.md)
 
