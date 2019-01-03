@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 09f4637c24b146394dc0299e60e729c07420150a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833316"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974384"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -20,6 +20,7 @@ Jeśli chronione maszyny wirtualnej jest to maszyna wirtualna Windows, musisz Wi
 
 > [!IMPORTANT]
 > Począwszy od wersji 9.10.0 główny serwer docelowy, najnowszy główny serwer docelowy można zainstalować tylko na serwerze z systemem Ubuntu 16.04. Nowe instalacje nie są dozwolone na serwerach CentOS6.6. Jednak można kontynuować uaktualniania serwerów docelowych starego głównego przy użyciu 9.10.0 wersji.
+> Główny serwer docelowy na LVM nie jest obsługiwane.
 
 ## <a name="overview"></a>Przegląd
 Ten artykuł zawiera instrukcje dotyczące sposobu instalowania główny element docelowy systemu Linux.
@@ -38,7 +39,7 @@ Opublikuj komentarze lub pytania, na końcu tego artykułu lub na [Forum usług 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Ustalanie rozmiaru wytyczne dotyczące tworzenia głównego serwera docelowego
 
 Utworzyć głównego elementu docelowego zgodnie z następujących wytycznych ustalania rozmiaru:
-- **Pamięć RAM**: 6 GB lub więcej
+- **PAMIĘĆ RAM**: 6 GB lub więcej
 - **Rozmiar dysku systemu operacyjnego**: 100 GB lub więcej (zainstalowania systemu operacyjnego)
 - **Rozmiar dysku dodatkowy dysk przechowywania**: 1 TB
 - **Liczba rdzeni procesora CPU**: 4 rdzeni lub więcej
@@ -59,7 +60,7 @@ Obsługiwane są następujące obsługiwanych jądra systemu Ubuntu.
 
 Wykonaj następujące kroki, aby zainstalować 64-bitowym systemie operacyjnym Ubuntu 16.04.2.
 
-1.   Przejdź do [link pobierania](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64), wybierz najbliższe anddownload dublowanego obrazu ISO systemu Ubuntu 16.04.2 minimalny 64-bitowych.
+1.   Przejdź do [link pobierania](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), wybierz najbliższe anddownload dublowanego obrazu ISO systemu Ubuntu 16.04.2 minimalny 64-bitowych.
 Zachowaj obrazu ISO systemu Ubuntu 16.04.2 minimalny 64-bitowych w stacji dysków DVD i uruchom system.
 
 1.  Wybierz **angielski** jako preferowany język, a następnie wybierz **Enter**.
@@ -259,7 +260,7 @@ Użyj następujących kroków, aby utworzyć dysk przechowywania:
     
     Wybierz **Wstaw** aby rozpocząć, edytując plik. Tworzenie nowego wiersza, a następnie wstaw poniższy tekst. Edytowanie Identyfikatora wielościeżkowe dysku, na podstawie Identyfikatora wielościeżkowe wyróżnione w poprzednim poleceniu.
 
-    **/dev/mapowania/<Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
+     **/dev/mapowania/ <Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
 
     Wybierz **Esc**, a następnie wpisz **: wq** (zapisać i zamknąć) aby zamknąć okno edytora.
 

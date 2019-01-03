@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 7fdbbee27f83a4583390158e456270324967b28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961607"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714325"
 ---
 # <a name="article-top"></a>Migrowanie istniejącej usługi mobilnej platformy Azure w usłudze Azure App Service
 Za pomocą [ogólnie dostępne w usłudze Azure App Service], witryn usług Azure Mobile Services mogą zostać łatwo zmigrowane w miejscu można korzystać ze wszystkich funkcji usługi Azure App Service.  W tym dokumencie opisano, czego można oczekiwać podczas migracji lokacji z usług Azure Mobile Services w usłudze Azure App Service.
@@ -219,7 +219,7 @@ Wszystkie zadania usługi scheduler są dostępne za pośrednictwem sekcji kolek
 1. Zaloguj się do witryny [Azure Portal].
 2. Wybierz **Przeglądaj >**, wprowadź **harmonogram** w *filtru* polu, a następnie wybierz **kolekcje usługi Scheduler**.
 3. Wybierz kolekcję zadań dla danej witryny.  Jest on nazwany *sitename*-zadania.
-4. Kliknij przycisk **ustawienia**.
+4. Kliknij pozycję **Ustawienia**.
 5. Kliknij przycisk **zadania usługi Scheduler** w obszarze Zarządzanie.
 
 Zaplanowane zadania są wyświetlane z częstotliwością, jaką określono przed migracją.  Zadania na żądanie są wyłączone.  Aby uruchomić zadanie na żądanie:
@@ -310,7 +310,7 @@ Rejestrowanie diagnostyczne zwykle jest wyłączona w usłudze Azure App Service
 2. Wybierz **wszystkie zasoby** lub **App Services** kliknij nazwę usługi mobilnej zmigrowane.
 3. Domyślnie zostanie otwarty blok ustawienia.
 4. Wybierz **dzienniki diagnostyczne** menu funkcji.
-5. Kliknij przycisk **ON** dla następujących dzienników: **rejestrowanie aplikacji (system plików)**, **szczegółowe komunikaty o błędach**, i **śledzenie nieudanych żądań**
+5. Kliknij przycisk **ON** dla następujących dzienników: **Rejestrowanie aplikacji (system plików)**, **szczegółowe komunikaty o błędach**, i **śledzenie nieudanych żądań**
 6. Kliknij przycisk **System plików** dla rejestrowanie serwera sieci Web
 7. Kliknij pozycję **Zapisz**
 
@@ -376,25 +376,25 @@ Teraz, gdy aplikacja jest migrowana do usługi App Service, istnieją nawet wię
 [Cennik usługi aplikacji]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatyczne skalowanie]: ../app-service/web-sites-scale.md
-[Azure App Service]: ../app-service/app-service-web-overview.md
+[Azure App Service]: ../app-service/overview.md
 [klasyczny portal Azure]: https://manage.windowsazure.com
 [Azure Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Plany usługi Azure Scheduler]: ../scheduler/scheduler-plans-billing.md
-[ciągłe wdrażanie]: ../app-service/app-service-continuous-deployment.md
+[ciągłe wdrażanie]: ../app-service/deploy-continuous-deployment.md
 [Konwertuj mieszane przestrzeniami nazw usługi]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: https://curl.haxx.se/
 [Niestandardowe nazwy domen]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: https://www.telerik.com/fiddler
 [ogólnie dostępne w usłudze Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[Rejestrowanie]: ../app-service/web-sites-enable-diagnostic-log.md
+[Rejestrowanie]: ../app-service/troubleshoot-diagnostic-logs.md
 [Zestaw SDK środowiska Node.js w aplikacjach mobilnych]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services a App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Monitorowanie wydajności]: ../app-service/web-sites-monitor.md
 [Postman]: https://www.getpostman.com/
-[miejsc przejściowych]: ../app-service/web-sites-staged-publishing.md
+[miejsc przejściowych]: ../app-service/deploy-staging-slots.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [Przykłady przekształcania XDT]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [Funkcje]: ../azure-functions/functions-overview.md

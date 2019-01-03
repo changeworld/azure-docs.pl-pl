@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie aplikacji sieci web — usłudze Azure App Service
-description: Jak skonfigurować aplikację sieci web w usłudze Azure App Services
+title: Konfigurowanie aplikacji — usługa Azure App Service
+description: Jak skonfigurować aplikację w usłudze Azure App Service
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,22 +15,20 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269434"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716467"
 ---
-# <a name="configure-web-apps-in-azure-app-service"></a>Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
+# <a name="configure-apps-in-azure-app-service"></a>Konfigurowanie aplikacji w usłudze Azure App Service
 
-W tym temacie wyjaśniono, jak skonfigurować aplikację internetową przy użyciu [Azure Portal].
-
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+W tym temacie wyjaśniono, jak skonfigurować aplikację internetową, zapleczem aplikacji mobilnej lub aplikacji interfejsu API za pomocą [Azure Portal].
 
 ## <a name="application-settings"></a>Ustawienia aplikacji
-1. W [Azure Portal], otwórz blok dla aplikacji sieci web.
-3. Kliknij pozycję **Ustawienia aplikacji**.
+1. W [Azure Portal], otwórz blok dla aplikacji.
+2. Kliknij pozycję **Ustawienia aplikacji**.
 
 ![Ustawienia aplikacji][configure01]
 
@@ -47,14 +45,14 @@ W tym temacie wyjaśniono, jak skonfigurować aplikację internetową przy użyc
 Technical Preview ze względu na włączenie Java aplikacji powoduje wyłączenie opcji .NET, PHP i Python.
 
 <a name="platform"></a>
-**Platforma**. Zaznacza, czy działa aplikacja sieci web w środowisku 32-bitową lub 64-bitowych. 64-bitowego środowiska wymaga warstwy podstawowa lub standardowa. Bezpłatne, a warstwa współdzielona są zawsze uruchamiane w środowisku 32-bitowym.
+**Platforma**. Zaznacza, czy aplikacja działa w środowisku 32-bitową lub 64-bitowych. 64-bitowego środowiska wymaga warstwy podstawowa lub standardowa. Bezpłatne, a warstwa współdzielona są zawsze uruchamiane w środowisku 32-bitowym.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Web Sockets**. Ustaw **ON** powoduje włączenie protokołu WebSocket; na przykład, jeśli aplikacja internetowa używa [Biblioteki SignalR platformy ASP.NET] lub [biblioteki socket.io](https://socket.io/).
+**Web Sockets**. Ustaw **ON** powoduje włączenie protokołu WebSocket; na przykład, jeśli aplikacja używa [Biblioteki SignalR platformy ASP.NET] lub [biblioteki socket.io](https://socket.io/).
 
 <a name="alwayson"></a>
-**Zawsze włączone**. Domyślnie aplikacje sieci web są usuwane, jeśli są one bezczynne przez pewien czas. Dzięki temu system zaoszczędzenia zasobów. W trybie Basic lub Standard, aby umożliwić **Always On** do zachowania aplikacji załadowana przez cały czas. Jeśli aplikacja działa ciągłych zadań Webjob lub uruchomienia zadania Webjob wyzwalane za pomocą wyrażenia CRON, należy włączyć **Always On**, lub zadania w sieci web może nie działać niezawodnie.
+**Zawsze włączone**. Domyślnie aplikacje są usuwane, jeśli są one bezczynne przez pewien czas. Dzięki temu system zaoszczędzenia zasobów. W trybie Basic lub Standard, aby umożliwić **Always On** do zachowania aplikacji załadowana przez cały czas. Jeśli aplikacja działa ciągłych zadań Webjob lub uruchomienia zadania Webjob wyzwalane za pomocą wyrażenia CRON, należy włączyć **Always On**, lub zadania w sieci web może nie działać niezawodnie.
 
 **Wersja potoku zarządzanego**. Ustawia IIS [tryb potokowy]. Pozostaw ten zestaw zintegrowany (ustawienie domyślne), chyba że masz starszych aplikacji, która wymaga starszej wersji usług IIS.
 
@@ -65,13 +63,13 @@ Technical Preview ze względu na włączenie Java aplikacji powoduje wyłączeni
 
 **Koligacja ARR**. W aplikacji, jest skalowana w poziomie do wielu wystąpień maszyn wirtualnych, koligacja ARR plików cookie gwarantuje, że klient jest kierowane do tego samego wystąpienia, przez cały okres istnienia sesji. Aby zwiększyć wydajność aplikacji bezstanowych, należy ustawić tę opcję na **poza**.   
 
-**Auto-Swap**. Po włączeniu automatycznej wymiany dla miejsca wdrożenia usługi App Service automatycznie zamianę aplikacji sieci web w środowisku produkcyjnym po wypchnięciu aktualizacji do tego miejsca. Aby uzyskać więcej informacji, zobacz [wdrażanie do miejsc aplikacji sieci web w usłudze Azure App Service przejściowych](web-sites-staged-publishing.md).
+**Auto-Swap**. Po włączeniu automatycznej wymiany dla miejsca wdrożenia usługi App Service automatycznie zamienić aplikację w środowisku produkcyjnym po wypchnięciu aktualizacji do tego miejsca. Aby uzyskać więcej informacji, zobacz [wdrażanie do miejsc dla aplikacji w usłudze Azure App Service przejściowych](deploy-staging-slots.md).
 
 ### <a name="debugging"></a>Debugowanie
-**Zdalne debugowanie**. Umożliwia zdalne debugowanie. Po włączeniu, aby połączyć się bezpośrednio z aplikacji sieci web za pomocą zdalnego debugera w programie Visual Studio. Zdalne debugowanie pozostanie włączony w ciągu 48 godzin. 
+**Zdalne debugowanie**. Umożliwia zdalne debugowanie. Po włączeniu można użyć debugera zdalnego w programie Visual Studio, aby połączyć się bezpośrednio z aplikacji. Zdalne debugowanie pozostanie włączony w ciągu 48 godzin. 
 
 ### <a name="app-settings"></a>Ustawienia aplikacji
-Ta sekcja zawiera pary nazwa/wartość, które Twoja aplikacja sieci web załaduje się w menu start. 
+Ta sekcja zawiera pary nazwa/wartość, które aplikacja załaduje się w menu start. 
 
 * W przypadku aplikacji .NET, te ustawienia są wstrzykiwane do konfiguracji .NET `AppSettings` w czasie wykonywania, zastępowanie istniejących ustawień. 
 * Dla usługi App Service w systemie Linux lub Web App for Containers, jeśli można zagnieżdżać json struktury klucza w imieniu użytkownika, takie jak `ApplicationInsights:InstrumentationKey` musisz mieć `ApplicationInsights__InstrumentationKey` jako nazwę klucza. Dlatego należy zauważyć, że wszelkie `:` powinna zostać zastąpiona przez `__` (np. podwójnym podkreśleniem).
@@ -102,7 +100,7 @@ Parametry połączenia można rozwiązać z usługi Key Vault przy użyciu [odwo
 ### <a name="default-documents"></a>Domyślne dokumenty
 Dokument domyślny jest strony sieci web, która jest wyświetlana na główny adres URL witryny sieci Web.  Pierwszy plik dopasowania na liście jest używany. 
 
-Aplikacje sieci Web może używać modułów, że trasy na podstawie adresu URL, a nie obsługująca zawartość statyczną, w którym to przypadku nie jest dokument domyślny w związku z tym.    
+Moduły, że trasy na podstawie adresu URL, a nie obsługująca zawartość statyczną, w którym to przypadku nie jest dokument domyślny w związku z tym może używać w aplikacjach.    
 
 ### <a name="handler-mappings"></a>Mapowania procedur obsługi
 Użyj tego obszaru można dodać procesorów skryptu niestandardowego do obsługi żądań dla określonych rozszerzeń plików. 
@@ -117,7 +115,7 @@ Aby skonfigurować wirtualne aplikacje i katalogi, należy określić każdy kat
 ## <a name="enabling-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 Aby włączyć dzienniki diagnostyczne:
 
-1. W bloku aplikacji sieci web kliknij **wszystkie ustawienia**.
+1. W bloku aplikacji kliknij **wszystkie ustawienia**.
 2. Kliknij pozycję **Dzienniki diagnostyczne**. 
 
 Opcje do zapisywania dzienników diagnostycznych z aplikacji sieci web, która obsługuje rejestrowanie: 
@@ -134,62 +132,56 @@ Opcje do zapisywania dzienników diagnostycznych z aplikacji sieci web, która o
 
 Aby wyświetlić pliki dziennika, należy utworzyć poświadczeń protokołu FTP w następujący sposób:
 
-1. W bloku aplikacji sieci web kliknij **wszystkie ustawienia**.
+1. W bloku aplikacji kliknij **wszystkie ustawienia**.
 2. Kliknij przycisk **poświadczenia wdrożenia**.
 3. Wprowadź nazwę użytkownika i hasło.
 4. Kliknij pozycję **Zapisz**.
 
 ![Konfigurowanie poświadczeń wdrożenia][configure03]
 
-Gdzie jest pełna nazwa użytkownika protokołu FTP "app\username" *aplikacji* to nazwa aplikacji sieci web. Nazwa użytkownika znajduje się w bloku aplikacji sieci web, w obszarze **Essentials**.
+Gdzie jest pełna nazwa użytkownika protokołu FTP "app\username" *aplikacji* jest nazwą aplikacji. Nazwa użytkownika znajduje się w bloku aplikacji w obszarze **Essentials**.
 
 ![Poświadczeń wdrożenia FTP][configure02]
 
 ## <a name="other-configuration-tasks"></a>Inne zadania konfiguracji
 ### <a name="ssl"></a>Protokół SSL
-W trybie Basic lub Standard możesz przekazać certyfikaty SSL dla domeny niestandardowej. Aby uzyskać więcej informacji, zobacz [Włącz protokół HTTPS dla aplikacji sieci web](app-service-web-tutorial-custom-ssl.md). 
+W trybie Basic lub Standard możesz przekazać certyfikaty SSL dla domeny niestandardowej. Aby uzyskać więcej informacji, zobacz [Włącz protokół HTTPS dla aplikacji](app-service-web-tutorial-custom-ssl.md). 
 
 Aby wyświetlić przekazany certyfikatów, kliknij **wszystkie ustawienia** > **domeny niestandardowe i protokół SSL**.
 
 ### <a name="domain-names"></a>Nazwy domen
-Dodawanie niestandardowych nazw domen dla aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service](app-service-web-tutorial-custom-domain.md).
+Dodawanie niestandardowych nazw domen dla aplikacji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji w usłudze Azure App Service](app-service-web-tutorial-custom-domain.md).
 
 Aby wyświetlić nazwy domeny, kliknij **wszystkie ustawienia** > **domeny niestandardowe i protokół SSL**.
 
 ### <a name="deployments"></a>Wdrożenia
-* Konfigurowanie ciągłego wdrażania. Zobacz [przy użyciu narzędzia Git do wdrożenia aplikacji sieci Web w usłudze Azure App Service](app-service-deploy-local-git.md).
-* Miejsca wdrożenia. Zobacz [Wdróż do środowisk przejściowych dla aplikacji sieci Web w usłudze Azure App Service].
+* Konfigurowanie ciągłego wdrażania. Zobacz [przy użyciu narzędzia Git do wdrożenia aplikacji w usłudze Azure App Service](deploy-local-git.md).
+* Miejsca wdrożenia. Zobacz [Wdróż do środowisk przejściowych dla usługi Azure App Service].
 
 Aby wyświetlić swoje miejsc wdrożenia, kliknij **wszystkie ustawienia** > **miejsc wdrożenia**.
 
 ### <a name="monitoring"></a>Monitorowanie
 W trybie Basic lub Standard można sprawdzić dostępności punktów końcowych HTTP lub HTTPS, z maksymalnie trzy rozproszone geograficznie lokalizacje. Test monitorowania kończy się niepowodzeniem, jeśli kod odpowiedzi HTTP jest błąd (4xx lub 5xx) lub odpowiedzi trwa dłużej niż 30 sekund. Punkt końcowy jest uważana za dostępną, jeśli testów monitorowania z określonych lokalizacji. 
 
-Aby uzyskać więcej informacji, zobacz [jak: Monitorowanie stanu punktu końcowego sieci web].
-
-> [!NOTE]
-> Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Wypróbuj usługę App Service] (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.
-> 
-> 
+Aby uzyskać więcej informacji, zobacz [Jak: Monitorowanie stanu punktu końcowego sieci web].
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]
 * [Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]
-* [Skalowanie aplikacji sieci web w usłudze Azure App Service]
-* [Podstawy monitorowania dla aplikacji sieci Web w usłudze Azure App Service]
+* [Skalowanie aplikacji w usłudze Azure App Service]
+* [Podstawy monitorowania w usłudze Azure App Service]
 
 <!-- URL List -->
 
 [Biblioteki SignalR platformy ASP.NET]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]: ./app-service-web-tutorial-custom-domain.md
-[Wdróż do środowisk przejściowych dla aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-staged-publishing.md
+[Wdróż do środowisk przejściowych dla usługi Azure App Service]: ./deploy-staging-slots.md
 [Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
 [Jak: Monitorowanie stanu punktu końcowego sieci web]: https://go.microsoft.com/fwLink/?LinkID=279906
-[Podstawy monitorowania dla aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-monitor.md
+[Podstawy monitorowania w usłudze Azure App Service]: ./web-sites-monitor.md
 [Tryb potokowy]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Skalowanie aplikacji sieci web w usłudze Azure App Service]: ./web-sites-scale.md
-[Wypróbuj usługę App Service]: https://azure.microsoft.com/try/app-service/
+[Skalowanie aplikacji w usłudze Azure App Service]: ./web-sites-scale.md
 
 <!-- IMG List -->
 

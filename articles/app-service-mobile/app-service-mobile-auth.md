@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: de501b79107aafa61c489db607c37d086a5f4ed4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408021"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715791"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service dla aplikacji mobilnych
 
@@ -26,7 +26,7 @@ W tym artykule opisano, jak uwierzytelnianie i autoryzacja działa podczas tworz
 
 Ten artykuł koncentruje się na temat programowania aplikacji mobilnych. Aby szybko rozpocząć pracę z uwierzytelniania usługi App Service i autoryzacji dla aplikacji mobilnej, zobacz jeden z następujących samouczków [Dodawanie uwierzytelniania do aplikacji systemu iOS] [ iOS] (lub [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms], lub [Cordova]). 
 
-Aby uzyskać informacje na temat uwierzytelniania i autoryzacji w usłudze App Service, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../app-service/app-service-authentication-overview.md).
+Aby uzyskać informacje na temat uwierzytelniania i autoryzacji w usłudze App Service, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../app-service/overview-authentication-authorization.md).
 
 ## <a name="authentication-with-provider-sdk"></a>Uwierzytelnianie za pomocą dostawcy zestawu SDK
 
@@ -44,7 +44,7 @@ Gdy używasz dostawcy SDK, użytkownicy mogą logować się do bardziej ściśle
 
 Po uzyskaniu tokenu dostawca musi być wysyłane do usługi App Service do sprawdzania poprawności. Po usługi App Service sprawdza poprawność tokenu, usługa App Service utworzy nowy token usługi App Service, która jest zwracana do klienta. Zestaw SDK klienta funkcji Mobile Apps zawiera metody pomocnicze do zarządzania tym programu exchange i automatycznie dołączyć ten token do wszystkich żądań do aplikacji zaplecza. Deweloperzy można również przechowywać odwołania do tokenu dostawcy.
 
-Aby uzyskać więcej informacji na temat przepływ uwierzytelniania, zobacz [przebieg uwierzytelniania w usłudze App Service](../app-service/app-service-authentication-overview.md#authentication-flow). 
+Aby uzyskać więcej informacji na temat przepływ uwierzytelniania, zobacz [przebieg uwierzytelniania w usłudze App Service](../app-service/overview-authentication-authorization.md#authentication-flow). 
 
 ## <a name="authentication-without-provider-sdk"></a>Uwierzytelnianie bez dostawcy zestawu SDK
 
@@ -52,10 +52,10 @@ Jeśli chcesz skonfigurować dostawcy SDK, możesz zezwolić funkcji Mobile Apps
 
 Kod, aby uruchomić ten przepływ znajduje się w samouczku uwierzytelniania dla każdej platformy. Na końcu przepływu zestaw SDK klienta ma tokenu usługi App Service, a token jest automatycznie dołączany do wszystkich żądań do serwera aplikacji zaplecza.
 
-Aby uzyskać więcej informacji na temat przepływ uwierzytelniania, zobacz [przebieg uwierzytelniania w usłudze App Service](../app-service/app-service-authentication-overview.md#authentication-flow). 
+Aby uzyskać więcej informacji na temat przepływ uwierzytelniania, zobacz [przebieg uwierzytelniania w usłudze App Service](../app-service/overview-authentication-authorization.md#authentication-flow). 
 ## <a name="more-resources"></a>Więcej zasobów
 
-Następujące samouczki pokazują, jak dodać uwierzytelnianie do klientów mobilnych za pomocą [skierowane do serwera usługi flow](../app-service/app-service-authentication-overview.md#authentication-flow):
+Następujące samouczki pokazują, jak dodać uwierzytelnianie do klientów mobilnych za pomocą [skierowane do serwera usługi flow](../app-service/overview-authentication-authorization.md#authentication-flow):
 
 * [Dodawanie uwierzytelniania do aplikacji systemu iOS][iOS]
 * [Dodawanie uwierzytelniania do aplikacji systemu Android][android]
@@ -65,21 +65,21 @@ Następujące samouczki pokazują, jak dodać uwierzytelnianie do klientów mobi
 * [Dodawanie uwierzytelniania do aplikacji platformy Xamarin.Forms][xamarin.forms]
 * [Dodawanie uwierzytelniania do aplikacji Cordova][Cordova]
 
-Użyj następujących zasobów, jeśli chcesz używać [skierowane do klientów usługi flow](../app-service/app-service-authentication-overview.md#authentication-flow) usługi Azure Active Directory:
+Użyj następujących zasobów, jeśli chcesz używać [skierowane do klientów usługi flow](../app-service/overview-authentication-authorization.md#authentication-flow) usługi Azure Active Directory:
 
 * [Użycie biblioteki uwierzytelniania usługi Active Directory dla systemu iOS][ADAL-iOS]
 * [Korzystanie z biblioteki uwierzytelniania usługi Active Directory dla systemu Android][ADAL-Android]
 * [Korzystanie z biblioteki uwierzytelniania usługi Active Directory dla Windows i Xamarin][ADAL-dotnet]
 
-Użyj następujących zasobów, jeśli chcesz używać [skierowane do klientów usługi flow](../app-service/app-service-authentication-overview.md#authentication-flow) za pomocą konta Facebook:
+Użyj następujących zasobów, jeśli chcesz używać [skierowane do klientów usługi flow](../app-service/overview-authentication-authorization.md#authentication-flow) za pomocą konta Facebook:
 
 * [Używanie zestawu SDK usługi Facebook dla systemu iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-Użyj następujących zasobów, jeśli chcesz używać [skierowane do klientów usługi flow](../app-service/app-service-authentication-overview.md#authentication-flow) dla usługi Twitter:
+Użyj następujących zasobów, jeśli chcesz używać [skierowane do klientów usługi flow](../app-service/overview-authentication-authorization.md#authentication-flow) dla usługi Twitter:
 
 * [Użyj usługi Twitter Service Fabric dla systemu iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-Użyj następujących zasobów, jeśli chcesz używać [skierowane do klientów usługi flow](../app-service/app-service-authentication-overview.md#authentication-flow) dla usług Google:
+Użyj następujących zasobów, jeśli chcesz używać [skierowane do klientów usługi flow](../app-service/overview-authentication-authorization.md#authentication-flow) dla usług Google:
 
 * [Użycie Google Sign-In SDK dla systemu iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 

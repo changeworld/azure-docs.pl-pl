@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e979930ed504dafe330b774725f4193f1c15ed17
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301020"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793992"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Powiązania programu Microsoft Graph dla usługi Azure Functions
 
@@ -63,7 +63,7 @@ Jeśli używasz programu Visual Studio, można uzyskać rozszerzenia, instalują
 
 ### <a name="configuring-authentication--authorization"></a>Konfigurowanie uwierzytelniania / autoryzacji
 
-Powiązania opisane w tym artykule wymagać potwierdzenia tożsamości do użycia. Dzięki temu program Microsoft Graph można wymusić uprawnień i przeprowadzanie inspekcji interakcje. Tożsamość może być dostęp do aplikacji lub aplikacji użytkownika. Aby skonfigurować tę tożsamość, skonfiguruj [uwierzytelnianie usługi App Service / autoryzacji](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) za pomocą usługi Azure Active Directory. Należy również żądania żadnych uprawnień zasobów, które wymagają funkcji.
+Powiązania opisane w tym artykule wymagać potwierdzenia tożsamości do użycia. Dzięki temu program Microsoft Graph można wymusić uprawnień i przeprowadzanie inspekcji interakcje. Tożsamość może być dostęp do aplikacji lub aplikacji użytkownika. Aby skonfigurować tę tożsamość, skonfiguruj [uwierzytelnianie usługi App Service / autoryzacji](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) za pomocą usługi Azure Active Directory. Należy również żądania żadnych uprawnień zasobów, które wymagają funkcji.
 
 > [!Note] 
 > Rozszerzenie programu Microsoft Graph obsługuje tylko uwierzytelnianie usługi Azure AD. Użytkownicy muszą zalogować się przy użyciu konta służbowego lub szkolnego.
@@ -226,7 +226,8 @@ Powiązanie sam nie wymaga żadnych uprawnień usługi Azure AD, ale w zależno�
 
 Token jest zawsze prezentowane kodu jako ciąg.
 
-
+> [!Note]
+> Podczas tworzenia lokalnie przy użyciu jednej z `userFromId`, `userFromToken` lub `userFromRequest` , wymagany token może być [ręcznie](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) i określonych w `X-MS-TOKEN-AAD-ID-TOKEN` nagłówek żądania od wywołującego aplikacji klienckiej.
 
 
 <a name="excel-input"></a>
