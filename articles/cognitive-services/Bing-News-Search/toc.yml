@@ -66,6 +66,18 @@ items:
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference
   - name: Interfejs API wyszukiwania wiadomości Bing v5
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference
+  - name: Zestawy SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest
+    - name: Przejdź
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch
 - name: Zasoby
   items:
   - name: Cennik
@@ -90,9 +102,9 @@ items:
     href: language-support.md
   - name: Dane analityczne na potrzeby interfejsu API wyszukiwania wiadomości Bing
     href: bing-news-stats.md
-ms.openlocfilehash: 18f4cb1a123c4dd535df9c82821271c6e3372796
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9f702884dba94169eae71f98253a3ae1a94d8510
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434657"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790546"

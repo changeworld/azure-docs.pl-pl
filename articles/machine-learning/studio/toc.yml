@@ -55,166 +55,18 @@ items:
       href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
   - name: Język R — Szybki start
     href: r-quickstart.md
-- name: Instrukcje
+- name: Przykłady
   items:
-  - name: Konfigurowanie narzędzi i programów narzędziowych
-    items:
-    - name: Zarządzanie obszarem roboczym
-      items:
-      - name: Przycisk Utwórz
-        href: create-workspace.md
-      - name: Zarządzanie
-        href: manage-workspace.md
-      - name: Rozwiązywanie problemów
-        href: troubleshooting-creating-ml-workspace.md
-      - name: Wdrażanie przy użyciu usługi ARM
-        href: deploy-with-resource-manager-template.md
-      - name: Wyświetlanie i usuwanie danych konta usługi Studio
-        displayName: export
-        href: export-delete-personal-data-dsr.md
-  - name: Uzyskiwanie i rozumienie danych
-    items:
-    - name: Importowanie danych treningowych
-      items:
-      - name: Omówienie
-        href: import-data.md
-      - name: Z pliku lokalnego
-        href: import-data-from-local-file.md
-      - name: Ze źródeł online
-        href: import-data-from-online-sources.md
-      - name: Z eksperymentu
-        href: import-data-from-an-experiment.md
-      - name: Korzystanie z lokalnej bazy danych SQL
-        displayName: on-premises
-        href: use-data-from-an-on-premises-sql-server.md
-  - name: Opracowywanie modeli
-    items:
-    - name: Tworzenie i uczenie modeli
-      items:
-      - name: Zarządzanie cyklem życia eksperymentów
-        href: version-control.md
-      - name: Zarządzanie iteracjami eksperymentów
-        href: manage-experiment-iterations.md
-      - name: Tworzenie modeli przy użyciu programu PowerShell
-        displayName: endpoint, endpoints
-        href: create-models-and-endpoints-with-powershell.md
-      - name: Wybieranie algorytmów
-        items:
-        - name: Wybieranie algorytmów
-          href: algorithm-choice.md
-        - name: Ściągawka dotycząca algorytmów
-          href: algorithm-cheat-sheet.md
-        - name: Korzystanie z regresji liniowej
-          href: linear-regression-in-azure.md
-        - name: Korzystanie z analizy tekstu
-          href: text-analytics-module-tutorial.md
-      - name: Ocena i interpretacja wyników
-        items:
-        - name: Ocena wydajności
-          href: evaluate-model-performance.md
-        - name: Optymalizowanie parametrów
-          displayName: optimization
-          href: algorithm-parameters-optimize.md
-        - name: Interpretowanie wyników
-          href: interpret-model-results.md
-        - name: Debugowanie
-          href: debug-models.md
-      - name: Używanie języków R i Python
-        items:
-        - name: Wykonywanie skryptów w języku R
-          href: extend-your-experiment-with-r.md
-        - name: Tworzenie niestandardowych modułów języka R
-          href: custom-r-modules.md
-        - name: Wykonywanie skryptów w języku Python
-          href: execute-python-scripts.md
-  - name: Operacjonalizowanie modeli
-    displayName: deploy
-    items:
-    - name: Omówienie
-      displayName: deploy, consume, web service
-      href: deploy-consume-web-service-guide.md
-    - name: Wdrażanie modeli
-      items:
-      - name: Wdrażanie usługi internetowej
-        displayName: publish
-        href: publish-a-machine-learning-web-service.md
-      - name: Jak to działa
-        href: model-progression-experiment-to-web-service.md
-      - name: Przygotowanie do wdrożenia
-        href: convert-training-experiment-to-scoring-experiment.md
-      - name: Korzystanie z danych zewnętrznych
-        displayName: import, export
-        href: web-services-that-use-import-export-modules.md
-      - name: Wdrażanie w wielu regionach
-        displayName: multiple regions
-        href: how-to-deploy-to-multiple-regions.md
-      - name: Korzystanie z parametrów usług internetowych
-        href: web-service-parameters.md
-      - name: Włącz rejestrowanie
-        href: web-services-logging.md
-    - name: Zarządzanie usługami sieci Web
-      items:
-      - name: Korzystanie z portalu usług internetowych
-        href: manage-new-webservice.md
-      - name: Zarządzanie za pomocą interfejsów API
-        displayName: endpoint, endpoints
-        href: manage-web-service-endpoints-using-api-management.md
-      - name: Tworzenie punktów końcowych
-        href: create-endpoint.md
-      - name: Skalowanie
-        href: scaling-webservice.md
-    - name: Ponowne szkolenie modeli
-      items:
-      - name: Omówienie
-        href: retrain-machine-learning-model.md
-      - name: Ponowne szkolenie programistyczne
-        href: retrain-models-programmatically.md
-      - name: Ponowne szkolenie klasycznej usługi internetowej
-        href: retrain-a-classic-web-service.md
-      - name: Ponowne szkolenie przy użyciu programu PowerShell
-        href: retrain-new-web-service-using-powershell.md
-      - name: Ponowne szkolenie istniejącej usługi internetowej
-        href: retrain-existing-resource-manager-based-web-service.md
-      - name: Rozwiązywanie problemów
-        href: troubleshooting-retraining-models.md
-    - name: Korzystanie z modeli
-      items:
-      - name: Omówienie
-        href: consume-web-services.md
-      - name: Korzystanie z programu Excel
-        href: consuming-from-excel.md
-      - name: Korzystanie z dodatku programu Excel
-        href: excel-add-in-for-web-services.md
-      - name: Korzystanie z szablonu aplikacji internetowej
-        href: consume-web-service-with-web-app-template.md
-      - name: Korzystanie z puli usługi Batch
-        href: dedicated-capacity-for-bes-jobs.md
-  - name: Przykłady
-    items:
-    - name: Przykładowe eksperymenty
-      href: sample-experiments.md
-    - name: Przykładowe zestawy danych
-      href: use-sample-datasets.md
-    - name: Przykład zmienności klientów
-      href: azure-ml-customer-churn-scenario.md
-- name: Dokumentacja
-  items:
-  - name: Moduł programu Azure PowerShell (nowy)
-    href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
-  - name: Moduł programu Azure PowerShell (wersja klasyczna)
-    href: powershell-module.md
-  - name: Dokumentacja algorytmów i modułów
-    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
-  - name: Interfejsy API zarządzania — REST
-    href: /rest/api/machinelearning
-  - name: Kody błędów usługi internetowej
-    href: web-service-error-codes.md
-- name: Powiązane
-  items:
+  - name: Przykładowe zestawy danych
+    href: use-sample-datasets.md
+  - name: Przykład zmienności klientów
+    href: azure-ml-customer-churn-scenario.md
   - name: Galeria sztucznej inteligencji platformy Azure
     items:
     - name: Omówienie
       href: gallery-how-to-use-contribute-publish.md
+    - name: Przykładowe eksperymenty
+      href: sample-experiments.md
     - name: Branże
       href: gallery-industries.md
     - name: Rozwiązania
@@ -235,6 +87,145 @@ items:
       href: gallery-custom-modules.md
     - name: Wyświetlanie i usuwanie danych konta
       href: ai-gallery-control-personal-data-dsr.md
+- name: Pojęcia
+  items:
+  - name: Zarządzanie modelami
+    displayName: deploy, consume, web service
+    href: deploy-consume-web-service-guide.md
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Zarządzanie obszarem roboczym
+    items:
+    - name: Przycisk Utwórz
+      href: create-workspace.md
+    - name: Zarządzanie
+      href: manage-workspace.md
+    - name: Rozwiązywanie problemów
+      href: troubleshooting-creating-ml-workspace.md
+    - name: Wdrażanie przy użyciu usługi ARM
+      href: deploy-with-resource-manager-template.md
+    - name: Wyświetlanie i usuwanie danych konta usługi Studio
+      displayName: export
+      href: export-delete-personal-data-dsr.md
+  - name: Importowanie danych treningowych
+    items:
+    - name: Omówienie
+      href: import-data.md
+    - name: Z pliku lokalnego
+      href: import-data-from-local-file.md
+    - name: Ze źródeł online
+      href: import-data-from-online-sources.md
+    - name: Z eksperymentu
+      href: import-data-from-an-experiment.md
+    - name: Korzystanie z lokalnej bazy danych SQL
+      displayName: on-premises
+      href: use-data-from-an-on-premises-sql-server.md
+  - name: Tworzenie i uczenie modeli
+    items:
+    - name: Zarządzanie cyklem życia eksperymentów
+      href: version-control.md
+    - name: Zarządzanie iteracjami eksperymentów
+      href: manage-experiment-iterations.md
+    - name: Tworzenie modeli przy użyciu programu PowerShell
+      displayName: endpoint, endpoints
+      href: create-models-and-endpoints-with-powershell.md
+    - name: Wybieranie algorytmów
+      items:
+      - name: Wybieranie algorytmów
+        href: algorithm-choice.md
+      - name: Ściągawka dotycząca algorytmów
+        href: algorithm-cheat-sheet.md
+      - name: Korzystanie z regresji liniowej
+        href: linear-regression-in-azure.md
+      - name: Korzystanie z analizy tekstu
+        href: text-analytics-module-tutorial.md
+    - name: Ocena i interpretacja wyników
+      items:
+      - name: Ocena wydajności
+        href: evaluate-model-performance.md
+      - name: Optymalizowanie parametrów
+        displayName: optimization
+        href: algorithm-parameters-optimize.md
+      - name: Interpretowanie wyników
+        href: interpret-model-results.md
+      - name: Debugowanie
+        href: debug-models.md
+    - name: Używanie języków R i Python
+      items:
+      - name: Wykonywanie skryptów w języku R
+        href: extend-your-experiment-with-r.md
+      - name: Tworzenie niestandardowych modułów języka R
+        href: custom-r-modules.md
+      - name: Wykonywanie skryptów w języku Python
+        href: execute-python-scripts.md
+  - name: Wdrażanie modeli
+    items:
+    - name: Wdrażanie usługi internetowej
+      displayName: publish
+      href: publish-a-machine-learning-web-service.md
+    - name: Jak to działa
+      href: model-progression-experiment-to-web-service.md
+    - name: Przygotowanie do wdrożenia
+      href: convert-training-experiment-to-scoring-experiment.md
+    - name: Korzystanie z danych zewnętrznych
+      displayName: import, export
+      href: web-services-that-use-import-export-modules.md
+    - name: Wdrażanie w wielu regionach
+      displayName: multiple regions
+      href: how-to-deploy-to-multiple-regions.md
+    - name: Korzystanie z parametrów usług internetowych
+      href: web-service-parameters.md
+    - name: Włącz rejestrowanie
+      href: web-services-logging.md
+  - name: Zarządzanie usługami sieci Web
+    items:
+    - name: Korzystanie z portalu usług internetowych
+      href: manage-new-webservice.md
+    - name: Zarządzanie za pomocą interfejsów API
+      displayName: endpoint, endpoints
+      href: manage-web-service-endpoints-using-api-management.md
+    - name: Tworzenie punktów końcowych
+      href: create-endpoint.md
+    - name: Skalowanie
+      href: scaling-webservice.md
+  - name: Ponowne szkolenie modeli
+    items:
+    - name: Omówienie
+      href: retrain-machine-learning-model.md
+    - name: Ponowne szkolenie programistyczne
+      href: retrain-models-programmatically.md
+    - name: Ponowne szkolenie klasycznej usługi internetowej
+      href: retrain-a-classic-web-service.md
+    - name: Ponowne szkolenie przy użyciu programu PowerShell
+      href: retrain-new-web-service-using-powershell.md
+    - name: Ponowne szkolenie istniejącej usługi internetowej
+      href: retrain-existing-resource-manager-based-web-service.md
+    - name: Rozwiązywanie problemów
+      href: troubleshooting-retraining-models.md
+  - name: Korzystanie z modeli
+    items:
+    - name: Omówienie
+      href: consume-web-services.md
+    - name: Korzystanie z programu Excel
+      href: consuming-from-excel.md
+    - name: Korzystanie z dodatku programu Excel
+      href: excel-add-in-for-web-services.md
+    - name: Korzystanie z szablonu aplikacji internetowej
+      href: consume-web-service-with-web-app-template.md
+    - name: Korzystanie z puli usługi Batch
+      href: dedicated-capacity-for-bes-jobs.md
+- name: Dokumentacja
+  items:
+  - name: Moduł programu Azure PowerShell (nowy)
+    href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
+  - name: Moduł programu Azure PowerShell (wersja klasyczna)
+    href: powershell-module.md
+  - name: Dokumentacja algorytmów i modułów
+    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
+  - name: Interfejsy API zarządzania — REST
+    href: /rest/api/machinelearning
+  - name: Kody błędów usługi internetowej
+    href: web-service-error-codes.md
 - name: Zasoby
   items:
   - name: Cennik
@@ -249,9 +240,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: Przewodnik dewelopera języka R
     href: ../r-developers-guide.md
-ms.openlocfilehash: 8aaf830dc13919a664a931b5d08a11c817e8dc51
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 16c610345c063be9149d841c71d27f73e22d143d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628310"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974119"

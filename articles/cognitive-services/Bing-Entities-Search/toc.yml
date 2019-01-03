@@ -1,75 +1,94 @@
+items:
 - name: Dokumentacja funkcji wyszukiwania jednostek Bing
   href: index.yml
 - name: Omówienie
   items:
-    - name: Czym jest wyszukiwanie jednostek Bing?
-      href: search-the-web.md
+  - name: Czym jest wyszukiwanie jednostek Bing?
+    href: search-the-web.md
 - name: Interfejs API REST — przewodniki Szybki start
-  expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+  - name: C#
+    href: quickstarts/csharp.md
+  - name: Java
+    href: quickstarts/java.md
+  - name: Node.js
+    href: quickstarts/nodejs.md
+  - name: PHP
+    href: quickstarts/php.md
+  - name: Python
+    href: quickstarts/python.md
+  - name: Ruby
+    href: quickstarts/ruby.md
+  expanded: true
 - name: Zestaw SDK — przewodniki Szybki start
   items:
-    - name: Omówienie przykładów dotyczących zestawu SDK
-      href: sdk.md
-    - name: 'Funkcja wyszukiwania jednostek w języku C# — Szybki start'
-      href: entity-search-sdk-quickstart.md
-    - name: Funkcja wyszukiwania jednostek w środowisku Node.js — Szybki start
-      href: entity-search-sdk-node-quickstart.md
-    - name: Funkcja wyszukiwania jednostek w języku Python — Szybki start
-      href: entity-sdk-python-quickstart.md
-    - name: Funkcja wyszukiwania jednostek w języku Java — Szybki start
-      href: entity-sdk-java-quickstart.md
+  - name: Omówienie przykładów dotyczących zestawu SDK
+    href: sdk.md
+  - name: Funkcja wyszukiwania jednostek w języku C# — Szybki start
+    href: entity-search-sdk-quickstart.md
+  - name: Funkcja wyszukiwania jednostek w środowisku Node.js — Szybki start
+    href: entity-search-sdk-node-quickstart.md
+  - name: Funkcja wyszukiwania jednostek w języku Python — Szybki start
+    href: entity-sdk-python-quickstart.md
+  - name: Funkcja wyszukiwania jednostek w języku Java — Szybki start
+    href: entity-sdk-java-quickstart.md
 - name: Samouczki
   items:
-    - name: Jednostronicowa aplikacja internetowa
-      href: tutorial-bing-entities-search-single-page-app.md
-    - name: Jednostronicowa aplikacja internetowa (kod źródłowy)
-      href: tutorial-bing-entities-search-single-page-app-source.md
+  - name: Jednostronicowa aplikacja internetowa
+    href: tutorial-bing-entities-search-single-page-app.md
+  - name: Jednostronicowa aplikacja internetowa (kod źródłowy)
+    href: tutorial-bing-entities-search-single-page-app-source.md
 - name: Przykłady
   items:
-    - name: Przykłady kodu
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
+  - name: Przykłady kodu
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search
 - name: Przewodniki z instrukcjami
   items:
-    - name: Wymagania dotyczące użycia i wyświetlania
-      href: use-display-requirements.md
-    - name: Zmiana rozmiaru i przycinanie miniatur
-      href: resize-and-crop-thumbnails.md
+  - name: Wymagania dotyczące użycia i wyświetlania
+    href: use-display-requirements.md
+  - name: Zmiana rozmiaru i przycinanie miniatur
+    href: resize-and-crop-thumbnails.md
 - name: Dokumentacja
   items:
-    - name: Interfejs API wyszukiwania jednostek Bing v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference'
+  - name: Interfejs API wyszukiwania jednostek Bing v7
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference
+  - name: Zestawy SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/entitysearch?view=azure-node-latest
+    - name: Przejdź
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch
 - name: Zasoby
   items:
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/601036-bing-entity-search-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=bing+entity+search'
-    - name: Dostępność regionalna
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Baza wiedzy
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
-    - name: Uzyskiwanie klucza interfejsu API
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api'
-    - name: Wypróbuj!
-      href: 'https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/'
-    - name: Punkt końcowy funkcji wyszukiwania jednostek Bing
-      href: entity-search-endpoint.md
-    - name: Dane analityczne na potrzeby interfejsu API wyszukiwania jednostek Bing
-      href: bing-entity-stats.md
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/601036-bing-entity-search-api
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=bing+entity+search
+  - name: Dostępność regionalna
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+  - name: Baza wiedzy
+    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
+  - name: Uzyskiwanie klucza interfejsu API
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api
+  - name: Wypróbuj!
+    href: https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/
+  - name: Punkt końcowy funkcji wyszukiwania jednostek Bing
+    href: entity-search-endpoint.md
+  - name: Dane analityczne na potrzeby interfejsu API wyszukiwania jednostek Bing
+    href: bing-entity-stats.md
+ms.openlocfilehash: a0f92f5b3ef8f0ea24393da1199422b032a57f06
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789547"
