@@ -1,9 +1,9 @@
 ---
-title: Twórz rozwiązania usługi Batch za pomocą szablonów programu Visual Studio — Azure | Dokumentacja firmy Microsoft
+title: Tworzenie rozwiązań za pomocą szablonów programu Visual Studio — usługi Azure Batch | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak szablony projektów Visual Studio pomoże Ci zaimplementować i uruchomić obciążenia wymagające wielu obliczeń w usłudze Azure Batch.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114100"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538127"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Szybko Rozpocznij korzystanie z rozwiązań usługi Batch przy użyciu szablonów projektu programu Visual Studio
 
@@ -62,7 +62,7 @@ Aby użyć szablonów usługi Batch, potrzebne następujące elementy:
     
     * Usługa Azure Batch Menedżer zadań z rozdzielaczem zadania
     * Usługa Azure Batch zadania procesora
-  * Pobierz szablony z galerii online dla programu Visual Studio: [szablony projektów pakietu Microsoft Azure Batch][vs_gallery_templates]
+  * Pobieranie z galerii online dla programu Visual Studio: [Szablony projektów pakietu Microsoft Azure Batch][vs_gallery_templates]
 * Jeśli planujesz używać [pakiety aplikacji](batch-application-packages.md) funkcji do wdrożenia Menedżer zadań i węzłów obliczeniowych procesor zadania usługi Batch, należy połączyć konto usługi storage z kontem usługi Batch.
 
 ## <a name="preparation"></a>Przygotowanie
@@ -113,7 +113,7 @@ Pozostałej części tej sekcji opisano różne pliki i ich struktury kodu i wyj
 
 * `Configuration.cs`: Hermetyzuje ładowanie danych konfiguracji zadania, takie jak szczegóły konta usługi Batch, poświadczenia konta połączonego magazynu, zadania i informacji o zadaniu i parametrów zadania. Umożliwia także dostęp do zmiennych środowiskowych zdefiniowanych przez usługi Batch (Zobacz ustawienia środowiska dla podzadań w dokumentacji usługi Batch) za pośrednictwem klasy Configuration.EnvironmentVariable.
 * `IConfiguration.cs`: Przenosi implementacji klasy konfiguracji, aby można było test jednostkowy usługi rozdzielacz zadania za pomocą obiektu konfiguracji fałszywych lub makiety.
-* `JobManager.cs`: Służy do aranżacji składniki programu Menedżer zadań. Jest odpowiedzialny za inicjowanie rozdzielacz zadania, wywoływanie rozdzielacz zadania i wysyła zadania zwrócony przez rozdzielacz zadania osoba przesyłająca zadanie.
+* `JobManager.cs`: Organizuje składniki programu Menedżer zadań. Jest odpowiedzialny za inicjowanie rozdzielacz zadania, wywoływanie rozdzielacz zadania i wysyła zadania zwrócony przez rozdzielacz zadania osoba przesyłająca zadanie.
 * `JobManagerException.cs`: Reprezentuje błąd, który wymaga Menedżer zadań zakończyć. JobManagerException jest używany do opakowywania błędy 'oczekiwany', gdzie można podać szczegółowe informacje diagnostyczne jako część rozwiązania.
 * `TaskSubmitter.cs`: Ta klasa jest odpowiedzialni za dodawanie zadań zwrócony przez rozdzielacz zadania wsadowego. Agregacje klasy JobManager sekwencji zadań w partie wydajne, ale czas dodania do zadania, następnie wywołuje TaskSubmitter.SubmitTasks na wątku w tle dla każdej partii.
 
@@ -123,7 +123,7 @@ Pozostałej części tej sekcji opisano różne pliki i ich struktury kodu i wyj
 
 **Standardowe pliki projektu wiersza polecenia platformy .NET**
 
-* `App.config`: Plik konfiguracji aplikacji standardowy .NET.
+* `App.config`: Standardowa pliku konfiguracyjnego aplikacji .NET.
 * `Packages.config`: Standardowy plik zależności pakietu NuGet.
 * `Program.cs`: Zawiera punktu wejścia programu, a obsługa wyjątków najwyższego poziomu.
 
@@ -297,7 +297,7 @@ Pozostałej części tej sekcji opisano różne pliki i ich struktury kodu i wyj
 
 **Standardowe pliki projektu wiersza polecenia platformy .NET**
 
-* `App.config`: Plik konfiguracji aplikacji standardowy .NET.
+* `App.config`: Standardowa pliku konfiguracyjnego aplikacji .NET.
 * `Packages.config`: Standardowy plik zależności pakietu NuGet.
 * `Program.cs`: Zawiera punktu wejścia programu, a obsługa wyjątków najwyższego poziomu.
 

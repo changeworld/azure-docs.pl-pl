@@ -8,20 +8,22 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: 55c8ff799ba3ff7fe9691d46dc90a00d5182d390
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 729ba19153eeb9767961d099e7a37c10a38b1286
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829414"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634717"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Podłączanie urządzenia do akceleratora rozwiązań zdalnego monitorowania (Windows)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-W tym samouczku dowiesz się, jak połączyć urządzenie fizyczne do akceleratora rozwiązania monitorowania zdalnego.
+Ten samouczek pokazuje, jak połączyć prawdziwe urządzenie do akceleratora rozwiązania monitorowania zdalnego.
 
 Podobnie jak w przypadku najbardziej osadzone aplikacje działają na urządzeniach ograniczone, kod klienta dla aplikacji urządzeń są zapisywane w C. W tym samouczku utworzysz aplikacja kliencka urządzenia na komputerze z systemem Windows.
+
+Jeśli wolisz symulowanie urządzenia, zobacz [tworzenie i testowanie nowych symulowanych urządzeń](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,7 +35,7 @@ Aby wykonać kroki opisane w tym przewodniku z instrukcjami postępuj zgodnie z 
 
 ### <a name="download-the-source-code-and-prepare-the-project"></a>Pobierz kod źródłowy i przygotowywanie projektu
 
-Aby przygotować projekt, Klonuj lub Pobierz [repozytorium zestawów SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c) z usługi GitHub.
+Aby przygotować się do projektu, [sklonować repozytorium zestawów SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) z usługi GitHub.
 
 Przykład znajduje się w **rozwiązania/samples/remote_monitoring_client** folderu.
 

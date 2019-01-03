@@ -12,18 +12,21 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d6a1f2829352e8589c8d132a195a425edcbe62c3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b7d6b59ab03985c19ffa08a0a8266d449892046f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872948"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717827"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorowanie SQL Data Sync za pomocą usługi Log Analytics 
 
 Aby sprawdzić dziennik aktywności SQL Data Sync i wykrywać błędy i ostrzeżenia, należy wcześniej było ręcznie sprawdzić SQL Data Sync w witrynie Azure portal lub za pomocą programu PowerShell lub interfejsu API REST. Wykonaj kroki opisane w tym artykule, aby skonfigurować niestandardowe rozwiązanie, które zwiększa synchronizacji danych środowiska do monitorowania. Można dostosować to rozwiązanie, odpowiednio do scenariusza.
 
 Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md).
+
+> [!IMPORTANT]
+> Usługa Azure SQL Data Sync jest **nie** obsługują wystąpienia zarządzanego Azure SQL Database w tej chwili.
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Pulpit nawigacyjny monitorowania dla wszystkich grup synchronizacji 
 
@@ -181,9 +184,9 @@ Aby skonfigurować widok usługi Log Analytics, wykonaj następujące czynności
 
 W większości przypadków to rozwiązanie jest bezpłatna.
 
-**Usługa Azure Automation:** może być koszt przy użyciu konta usługi Azure Automation, w zależności od użycia. Pierwszych 500 minut zadań miesięcznie jest bezpłatnych. W większości przypadków to rozwiązanie powinien używać mniej niż 500 minut na miesiąc. Aby uniknąć opłat, Zaplanuj uruchomienie elementu runbook w odstępie dwie lub więcej godzin. Aby uzyskać więcej informacji, zobacz [cennik usługi Automation](https://azure.microsoft.com/pricing/details/automation/).
+**Usługa Azure Automation:** Może to być koszt przy użyciu konta usługi Azure Automation, w zależności od użycia. Pierwszych 500 minut zadań miesięcznie jest bezpłatnych. W większości przypadków to rozwiązanie powinien używać mniej niż 500 minut na miesiąc. Aby uniknąć opłat, Zaplanuj uruchomienie elementu runbook w odstępie dwie lub więcej godzin. Aby uzyskać więcej informacji, zobacz [cennik usługi Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-**Usługa log Analytics:** może być koszt związany z usługą Log Analytics w zależności od użycia. Warstwy bezpłatna jest zapewniany 500 MB danych pozyskiwanych danych dziennie. W większości przypadków to rozwiązanie powinien pozyskiwania mniejszy niż 500 MB dziennie. Aby zmniejszyć użycie, należy użyć tylko do awarii filtrowania uwzględnione w elementu runbook. Jeśli używasz więcej niż 500 MB dziennie uaktualnienie do warstwy płatnej w celu uniknięcia ryzyka analytics po osiągnięciu ograniczenia. Aby uzyskać więcej informacji, zobacz [cen usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Analiza dzienników:** Może to być koszt związany z usługą Log Analytics w zależności od użycia. Warstwy bezpłatna jest zapewniany 500 MB danych pozyskiwanych danych dziennie. W większości przypadków to rozwiązanie powinien pozyskiwania mniejszy niż 500 MB dziennie. Aby zmniejszyć użycie, należy użyć tylko do awarii filtrowania uwzględnione w elementu runbook. Jeśli używasz więcej niż 500 MB dziennie uaktualnienie do warstwy płatnej w celu uniknięcia ryzyka analytics po osiągnięciu ograniczenia. Aby uzyskać więcej informacji, zobacz [cen usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Przykłady kodu
 
@@ -198,7 +201,7 @@ Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 
 -   Omówienie — [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](sql-database-sync-data.md) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)
 -   Konfigurowanie synchronizacji danych
-    - W portalu — [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](sql-database-get-started-sql-data-sync.md) (Samouczek: konfigurowanie usługi SQL Data Sync w celu synchronizowania danych między usługą Azure SQL Database i lokalnym programem SQL Server)
+    - W portalu — [samouczka: Skonfiguruj SQL Data Sync na synchronizowanie danych między Azure SQL Database i programu SQL Server w środowisku lokalnym](sql-database-get-started-sql-data-sync.md)
     - Z programem PowerShell
         -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)

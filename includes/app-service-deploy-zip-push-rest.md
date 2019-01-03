@@ -4,18 +4,18 @@ ms.service: app-service
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
-ms.openlocfilehash: ed771d1817e7ee1161e0f94ec9eefb5d2dfb3e23
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7771bbcab08fb84a941eedab402880fb7bc4232d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50737246"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53551503"
 ---
 ## <a name="rest"></a>Wdróż plik ZIP z interfejsami API REST 
 
 Możesz użyć [usługa wdrażania interfejsów API REST](https://github.com/projectkudu/kudu/wiki/REST-API) można wdrożyć pliku zip do aplikacji na platformie Azure. Aby wdrożyć, wysłanie żądania POST do https://<app_name>.scm.azurewebsites.net/api/zipdeploy. Żądanie POST musi zawierać plik zip w treści komunikatu. Poświadczenia wdrażania dla aplikacji są podawane w żądaniu za pomocą podstawowego uwierzytelniania HTTP. Aby uzyskać więcej informacji, zobacz [odwołanie do wdrożenia wypychania zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
 
-W przypadku uwierzytelniania HTTP BASIC potrzebne są Twoje poświadczenia wdrożenia usługi App Service. Aby zobaczyć, jak ustawić poświadczenia wdrażania, zobacz [zestawu i zresetować poświadczenia na poziomie użytkownika](../articles/app-service/app-service-deployment-credentials.md#userscope).
+W przypadku uwierzytelniania HTTP BASIC potrzebne są Twoje poświadczenia wdrożenia usługi App Service. Aby zobaczyć, jak ustawić poświadczenia wdrażania, zobacz [zestawu i zresetować poświadczenia na poziomie użytkownika](../articles/app-service/deploy-configure-credentials.md#userscope).
 
 ### <a name="with-curl"></a>Za pomocą programu cURL
 

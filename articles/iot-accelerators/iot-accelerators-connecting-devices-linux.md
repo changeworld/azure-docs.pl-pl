@@ -8,20 +8,22 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
-ms.openlocfilehash: 5faa91f054e62e2b3d9d317efe57f2d3f659cee6
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829838"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628327"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Podłączanie urządzenia do akceleratora rozwiązań zdalnego monitorowania (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-W tym samouczku dowiesz się, jak połączyć urządzenie fizyczne do akceleratora rozwiązania monitorowania zdalnego.
+Ten samouczek pokazuje, jak połączyć prawdziwe urządzenie do akceleratora rozwiązania monitorowania zdalnego.
 
 Podobnie jak w przypadku najbardziej osadzone aplikacje działają na urządzeniach ograniczone, kod klienta dla aplikacji urządzeń są zapisywane w C. W tym samouczku utworzysz aplikację na komputerze z systemem Ubuntu (Linux).
+
+Jeśli wolisz symulowanie urządzenia, zobacz [tworzenie i testowanie nowych symulowanych urządzeń](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

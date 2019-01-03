@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 603aa8d85d42167accd2a5e71c4ab3e5245f5d07
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8e651f516254d408b15ab4aeae718861dfc2b3e6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499259"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608293"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Klaster HDInsight Spark umożliwia odczytywanie i zapisywanie danych do usługi Azure SQL database
 
@@ -26,9 +26,9 @@ Dowiedz się, jak połączyć klaster Apache Spark w usłudze Azure HDInsight pr
 
 * **Usługa Azure SQL database**. Postępuj zgodnie z instrukcjami w artykule [utworzyć bazę danych Azure SQL](../../sql-database/sql-database-get-started-portal.md). Upewnij się, Utwórz bazę danych przy użyciu przykładu **AdventureWorksLT** schemat i dane. Upewnij się również, że utworzono regułę zapory na poziomie serwera umożliwia adresu IP klienta dostępu do bazy danych SQL na serwerze. Instrukcjami, aby dodać reguły zapory są dostępne w tym samym artykule. Po utworzeniu bazy danych Azure SQL, upewnij się, że następujące wartości zachować pod ręką. Będą one potrzebne do łączenia z bazą danych z klastra Spark.
 
-    * Nazwa serwera hostującego bazę danych Azure SQL
-    * Nazwa bazy danych SQL Azure
-    * Nazwa użytkownika administratora bazy danych Azure SQL / hasło
+    * Nazwa serwera hostującego bazę danych Azure SQL.
+    * Nazwa bazy danych SQL Azure.
+    * Nazwa użytkownika administratora bazy danych Azure SQL / hasła.
 
 * **SQL Server Management Studio**. Postępuj zgodnie z instrukcjami w artykule [Użyj SSMS do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](../../sql-database/sql-database-connect-query-ssms.md).
 
@@ -41,12 +41,10 @@ Rozpocznij od utworzenia [notesu programu Jupyter](https://jupyter.org/) skojarz
 
     ![Notes Jupyter na platformie Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter notebook na platformie Spark")
    
-   > [!NOTE]
+   > [!NOTE]  
    > Można również uzyskać dostęp notesu Jupyter w klastrze Spark, otwierając następujący adres URL w przeglądarce. Zastąp ciąg **CLUSTERNAME** nazwą klastra:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
 
 1. W notesie Jupyter w prawym górnym rogu, kliknij przycisk **New**, a następnie kliknij przycisk **Spark** Aby utworzyć notes Scala. Notesy Jupyter w klastrze HDInsight Spark zapewniają również **PySpark** jądra dla aplikacji Python2 i **PySpark3** jądra dla aplikacji w języku Python3. W tym artykule utworzymy Notes Scala.
    
@@ -54,9 +52,8 @@ Rozpocznij od utworzenia [notesu programu Jupyter](https://jupyter.org/) skojarz
 
     Aby uzyskać informacje na temat tych jąder, zobacz [Use Jupyter notebooks kernels with Apache Spark clusters in HDInsight](apache-spark-jupyter-notebook-kernels.md) (Używanie jąder notesu Jupyter z klastrami Apache Spark w usłudze HDInsight).
 
-   > [!NOTE]
+   > [!NOTE]  
    > W tym artykule używamy jądra Spark (Scala), ponieważ dane przesyłane strumieniowo z platformy Spark do bazy danych SQL jest obsługiwana tylko w języku Scala i Java obecnie. Mimo że odczytywanie z oraz zapisywanie w bazie SQL może odbywać się przy użyciu języka Python w celu zachowania spójności, w tym artykule, używamy Scala dla wszystkich trzech operacji.
-   >
 
 1. Zostanie otwarty nowy notes o domyślnej nazwie **bez tytułu**. Kliknij nazwę notesu, a następnie wprowadź wybraną nazwę.
 
@@ -235,6 +232,6 @@ W tej sekcji, firma Microsoft przesyłanie strumieniowe danych do **hvactable** 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Analizowanie danych w Data Lake Store przy użyciu klastra platformy HDInsight Spark](apache-spark-use-with-data-lake-store.md)
+* [Analizowanie danych w usługi Data Lake Storage przy użyciu klastra platformy HDInsight Spark](apache-spark-use-with-data-lake-store.md)
 * [Przetwarzanie zdarzeń przesyłania strumieniowego ze strukturą za pomocą usługi Event Hub](apache-spark-eventhub-structured-streaming.md)
 * [Use Apache Spark Structured Streaming przy użyciu platformy Apache Kafka w HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md)

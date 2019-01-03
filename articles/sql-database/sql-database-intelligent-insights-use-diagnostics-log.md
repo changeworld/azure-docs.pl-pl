@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: a0eac4344f1294ad2eddd4e05520c1f030a0c4d7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1464b2685e0ae084de3679e8a8fea36a3cf19c4b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278223"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599148"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Intelligent Insights usługi Azure SQL Database
 
-Ta strona zawiera informacje na temat sposobu korzystania z usługi Azure SQL Database dziennika diagnostyki wydajności wygenerowane przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format i danych zawiera potrzeby niestandardowe programowanie. Możesz wysłać ten dziennik diagnostyczny do [usługi Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [usługi Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i raportów możliwości.
+Ta strona zawiera informacje na temat sposobu korzystania z usługi Azure SQL Database dziennika diagnostyki wydajności wygenerowane przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format i danych zawiera potrzeby niestandardowe programowanie. Możesz wysłać ten dziennik diagnostyczny do [usługi Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [usługi Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i raportów możliwości.
 
 ## <a name="log-header"></a>Nagłówek dziennika
 

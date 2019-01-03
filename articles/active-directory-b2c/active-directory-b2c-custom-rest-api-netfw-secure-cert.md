@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7bf7add75f60bf64f64119979e5eee81be0f6e7b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89663db23962cbc82ead331f05cb39c0ef5d2e87
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344969"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722570"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpieczanie usługi RESTful przy użyciu certyfikatów klienta
 
@@ -41,7 +41,7 @@ Ten artykuł zawiera instrukcje:
 Aby skonfigurować **usługi Azure App Service** aby wymagać certyfikaty klienta, należy ustawić w aplikacji sieci web `clientCertEnabled` lokacji ustawienie, aby *true*. Aby wprowadzić tę zmianę, w witrynie Azure portal, otwórz stronę aplikacji sieci web. W lewym obszarze nawigacji w obszarze **ustawienia** wybierz **ustawienia protokołu SSL**. W **certyfikaty klienta** sekcji, Włącz **przychodzący certyfikat klienta** opcji.
 
 >[!NOTE]
->Upewnij się, że planu usługi Azure App Service jest standardowy lub nowszej. Aby uzyskać więcej informacji, zobacz [szczegółowe omówienie planów usługi Azure App Service](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
+>Upewnij się, że planu usługi Azure App Service jest standardowy lub nowszej. Aby uzyskać więcej informacji, zobacz [szczegółowe omówienie planów usługi Azure App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans).
 
 >[!NOTE]
 >Aby uzyskać więcej informacji o ustawieniu **elementu clientCertEnabled** właściwości, zobacz [Konfigurowanie wzajemnego uwierzytelniania protokołu TLS dla aplikacji sieci web](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
@@ -70,7 +70,7 @@ Po ustawieniu `clientCertEnabled` do *true*, komunikacji za pomocą interfejsu A
 
 8. Aby wyświetlić klucze, które są dostępne w Twojej dzierżawie i upewnij się, że utworzono `B2C_1A_B2cRestClientCertificate` klucza, wybierz opcję **klucze zasad**.
 
-## <a name="step-3-change-the-technical-profile"></a>Krok 3: Zmień profil techniczny
+## <a name="step-3-change-the-technical-profile"></a>Krok 3: Zmiany profilu technicznego
 Aby obsługiwać uwierzytelnianie certyfikatu klienta w zasadach niestandardowych, należy zmienić profil techniczny, wykonując następujące czynności:
 
 1. W katalogu roboczym otwórz *TrustFrameworkExtensions.xml* rozszerzenie pliku zasad.
@@ -97,7 +97,7 @@ Aby obsługiwać uwierzytelnianie certyfikatu klienta w zasadach niestandardowyc
 
     ![Ustaw elementy XML uwierzytelniania ClientCertificate](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-tech-profile.png)
 
-## <a name="step-4-upload-the-policy-to-your-tenant"></a>Krok 4: Przekaż zasady dla Twojej dzierżawy
+## <a name="step-4-upload-the-policy-to-your-tenant"></a>Krok 4: Przekazywanie zasad dla Twojej dzierżawy
 
 1. W [witryny Azure portal](https://portal.azure.com), przełącz się do [kontekstu dzierżawy usługi Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md), a następnie wybierz pozycję **usługi Azure AD B2C**.
 
@@ -111,7 +111,7 @@ Aby obsługiwać uwierzytelnianie certyfikatu klienta w zasadach niestandardowyc
 
 6. Przekaż *TrustFrameworkExtensions.xml* pliku, a następnie upewnij się, że przekazuje sprawdzania poprawności.
 
-## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Krok 5: Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
+## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Krok 5. Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
 1. Otwórz **ustawienia usługi Azure AD B2C**, a następnie wybierz pozycję **struktura środowiska tożsamości**.
 
     >[!NOTE]
@@ -151,8 +151,8 @@ Aby obsługiwać uwierzytelnianie certyfikatu klienta w zasadach niestandardowyc
    >[!NOTE]
    >Jeśli zostanie wyświetlony komunikat o błędzie *nazwa nie jest prawidłowa, podaj prawidłową nazwę*, oznacza to, że usługi Azure AD B2C pomyślnie wywołać usługi RESTful, gdy on przedstawiony certyfikat klienta. Następnym krokiem jest do weryfikacji certyfikatu.
 
-## <a name="step-6-add-certificate-validation"></a>Krok 6: Dodawanie sprawdzania poprawności certyfikatu
-Certyfikat klienta usługi Azure AD B2C wysyła do usługi RESTful zostały poddane weryfikacji przez platformę Azure Web Apps, z wyjątkiem sytuacji, aby sprawdzić, czy certyfikat istnieje. Sprawdzanie poprawności certyfikatu jest odpowiedzialność aplikacji sieci web. 
+## <a name="step-6-add-certificate-validation"></a>Krok 6: Dodaj sprawdzanie poprawności certyfikatu
+Certyfikat klienta usługi Azure AD B2C wysyła do usługi RESTful zostały poddane weryfikacji przez platformę Azure App Service, z wyjątkiem sytuacji, aby sprawdzić, czy certyfikat istnieje. Sprawdzanie poprawności certyfikatu jest odpowiedzialność aplikacji sieci web. 
 
 W tej sekcji dodasz przykładowy kod platformy ASP.NET, która weryfikuje właściwości certyfikatu na potrzeby uwierzytelniania.
 

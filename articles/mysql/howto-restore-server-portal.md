@@ -1,20 +1,17 @@
 ---
 title: Jak przywrócić serwer w usłudze Azure Database for MySQL
 description: W tym artykule opisano sposób przywracania serwera w usłudze Azure Database for MySQL za pomocą witryny Azure portal.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 7f75950a0f61c646d6cf36ea0903ebdefbd336ee
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e1545e830ac04000920c3881486b2add79744201
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138483"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548871"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for MySQL za pomocą witryny Azure portal
 
@@ -65,10 +62,10 @@ Poniższa procedura opisuje przywrócenie przykładowego serwera do punktu w cza
 3. Wypełnij formularz Przywracanie wymaganymi informacjami:
 
    ![Azure Database for MySQL — informacje o przywracania ](./media/howto-restore-server-portal/3-restore.png)
-   - **Punkt przywracania**: Wybierz punkt w czasie chcesz przywrócić.
+   - **Punkt przywracania**: Wybierz punkt w czasie, który chcesz przywrócić.
    - **Serwer docelowy**: Podaj nazwę dla nowego serwera.
-   - **Lokalizacja**: nie można wybrać region. Domyślnie jest taka sama jak na serwerze źródłowym.
-   - **Warstwa cenowa**: nie można zmienić tych parametrów, podczas przywracania do punktu w czasie wykonywania. Jest taka sama jak w przypadku serwera źródłowego. 
+   - **Lokalizacja**: Nie można wybrać region. Domyślnie jest taka sama jak na serwerze źródłowym.
+   - **Warstwa cenowa**: Nie można zmienić tych parametrów, podczas przywracania do punktu w czasie wykonywania. Jest taka sama jak w przypadku serwera źródłowego. 
 
 4. Kliknij przycisk **OK** Aby przywrócić serwer do przywracania do punktu w czasie. 
 
@@ -85,7 +82,7 @@ Skonfigurowanie serwera na potrzeby geograficznie nadmiarowych kopii zapasowych 
    ![Opcja "Azure Database for MySQL"](./media/howto-restore-server-portal/2_navigate-to-mysql.png)
 
 2. W formularzu **wybierz źródło** listy rozwijanej wybierz **kopii zapasowej**. Ta akcja spowoduje załadowanie listę serwerów, które geograficznie nadmiarowy tworzenia kopii zapasowych jest włączone. Wybierz jeden z tych kopii zapasowych jako źródło dla nowego serwera.
-   ![Wybierz źródło: Kopia zapasowa i listy geograficznie nadmiarowych kopii zapasowych](./media/howto-restore-server-portal/2-georestore.png)
+   ![Wybierz źródło: Lista geograficznie nadmiarowych kopii zapasowych i kopii zapasowych](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
    > Gdy tworzona jest najpierw serwer nie może być natychmiast dostępne dla przywracania geograficznego. Może upłynąć kilka godzin metadane potrzebne do wypełnienia.

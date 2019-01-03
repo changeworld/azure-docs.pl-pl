@@ -1,19 +1,20 @@
 ---
-title: Aprowizowanie puli Azure Batch w sieci wirtualnej | Dokumentacja firmy Microsoft
+title: Aprowizacja puli w sieci wirtualnej — Azure Batch | Dokumentacja firmy Microsoft
 description: Jak utworzyć pulę usługi Batch w sieci wirtualnej platformy Azure, dzięki czemu węzły obliczeniowe mogą bezpiecznego komunikowania się z innymi maszynami wirtualnymi w sieci, takich jak serwer plików.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: danlep
-ms.openlocfilehash: ef37d482e86e4ae05d3f14c78404dc395792b236
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 840c9f4115c13052c65e5975ed22aab7737ea2fe
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091964"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543915"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Tworzenie puli usługi Azure Batch w sieci wirtualnej
 
@@ -37,7 +38,7 @@ Puli usługi Azure Batch ma ustawienia, aby umożliwić węzłów obliczeniowych
 
 ## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Utwórz pulę z siecią wirtualną w portalu
 
-Po utworzeniu sieci wirtualnej i do niej przypisany podsieci, można utworzyć pulę usługi Batch za pomocą tej sieci wirtualnej. Wykonaj następujące kroki, aby utworzyć pulę w witrynie Azure portal: 
+Po utworzeniu sieci wirtualnej i do niej przypisany podsieci, można utworzyć pulę usługi Batch za pomocą tej sieci wirtualnej. Wykonaj następujące kroki, aby utworzyć pulę w witrynie Azure portal: 
 
 1. W witrynie Azure Portal przejdź do swojego konta usługi Batch. To konto musi być w tej samej subskrypcji i regionie co grupa zasobów zawierająca sieć wirtualną, których zamierzasz używać. 
 2. W **ustawienia** oknie po lewej stronie, wybierz opcję **pule** elementu menu.

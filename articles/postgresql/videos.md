@@ -1,43 +1,40 @@
 ---
-title: Bazy danych platformy Azure dla PostgreSQL wideo
-description: Ta strona zawiera listę zawartości wideo dotyczące uczenia dla PostgreSQL bazy danych Azure.
-services: postgresql
+title: Azure Database for postgresql — wideo
+description: Ta strona zawiera listę zawartości wideo, które są odpowiednie do nauki — Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: ddc5249bb5b001a93f2695f9df2fb8e870988095
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: de4194671f09bde65bee0a1d0d86ffacdcedfbf3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687904"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543241"
 ---
-# <a name="azure-database-for-postgresql-videos"></a>Bazy danych platformy Azure dla PostgreSQL wideo
+# <a name="azure-database-for-postgresql-videos"></a>Usługa Azure Database for postgresql — wideo
 
-[Omówienie: Azure bazy danych PostgreSQL i MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+[Omówienie: Azure Database for PostgreSQL i MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure dla PostgreSQL i Azure bazy danych dla programu MySQL zebranie community edition baz danych i możliwości w pełni zarządzaną usługę, aby skupić się na aplikacji zamiast do zarządzania bazą danych. Dostrojenie Aby uzyskać szybki przegląd zalety korzystania z usługi i poznać pewne możliwości w akcji.
+Usługa Azure Database for PostgreSQL i Azure Database for MySQL łączą ze sobą community edition baz danych i możliwości w pełni zarządzana usługa, dzięki czemu możesz skupić się na aplikacjach zamiast konieczności zarządzania bazą danych. Posłuchaj, aby uzyskać szybki przegląd zalety korzystania z usługi i zobacz, niektóre funkcje, w akcji.
 
-[Nowości dotyczące możliwości usługi zarządzanej MySQL i PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
+[Szczegółowe informacje dotyczące możliwości usługi zarządzanej dla MySQL i PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T148/player]
 
-Azure dla PostgreSQL i Azure bazy danych dla programu MySQL zebranie community edition baz danych i możliwości w pełni zarządzaną usługę. Dostosuj, aby uzyskać szczegółowe informacje na temat działania tych usług temat — jak możemy zapewnić wysoką dostępność i szybkie skalowanie (w sekundach), dlatego mogą zaspokoić potrzeb klientów. Dowiesz się o niektórych podstawowych inwestycji w bezpieczeństwo i dostępność na całym świecie.
+Usługa Azure Database for PostgreSQL i Azure Database for MySQL łączą ze sobą, community edition baz danych i możliwości w pełni zarządzana usługa. Posłuchaj, aby uzyskać szczegółowe informacje na temat sposobu działania tych usług, jak firma Microsoft zapewni to wysoką dostępność i szybkie skalowanie (w ciągu kilku sekund), dzięki czemu można zaspokoić potrzeby klientów. Także poznasz niektóre z podstawowych inwestycje w zabezpieczenia i dostępność na całym świecie.
 
-[Tworzenie aplikacji analytics inteligentnego z PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T149)
+[Opracowywanie aplikacji inteligentnych analiz z bazą danych PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T149)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T149/player]
 
-Bazy danych platformy Azure dla PostgreSQL zgromadzono aparatu bazy danych community edition i możliwości w pełni zarządzaną usługę, aby skupić się na aplikacji zamiast do zarządzania bazą danych. Odbierać zobacz w działaniu, jak łatwo jest utworzyć nowe funkcje, takie jak dodawanie kognitywnych usług do aplikacji z on na platformie Azure.
+Usługa Azure Database for postgresql w warstwie gromadzi aparatu bazy danych w wersji community i możliwości w pełni zarządzana usługa, dzięki czemu możesz skupić się na aplikacjach zamiast konieczności zarządzania bazą danych. Posłuchaj, aby zobaczyć w działaniu, jak łatwo jest tworzyć nowe środowiska, takich jak dodawanie usług Cognitive Services do aplikacji bycia na platformie Azure.
 
-[Jak rozpocząć pracę z nową bazę danych Azure PostgreSQL usługi](https://channel9.msdn.com/events/Build/2017/B8046)
+[Jak rozpocząć pracę z nowej usługi Azure Database for postgresql w warstwie usługi](https://channel9.msdn.com/events/Build/2017/B8046)
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8046/player]
 
-Ten film z konferencji //Build Microsoft 2017 informacje z dwóch wczesnych klientów przyjmujące jak one zostały umożliwia bazy danych Azure dla usługi PostgreSQL innowacji szybciej. Dowiedz się, jak migracja do usługi i omówienia kolejne kroki w swoich aplikacjach. Wideo przedstawiono niektóre funkcje usługi klucza i omówiono sposób jako deweloper może migrować istniejące aplikacje lub tworzyć nowe aplikacje korzystające z tej usługi PostgreSQL zarządzanego na platformie Azure.
+W tym filmie wideo z konferencji //Build Microsoft 2017 ucz się od dwóch wczesnych klientów przyjmujące jak używają usługi Azure Database for postgresql w warstwie usługi na szybsze wprowadzanie innowacji. Dowiedz się, jak migrować do usługi i Dyskutuj następne kroki podczas ich tworzenia aplikacji. Wideo przedstawiono niektóre funkcje usługi klucza, jak i w tym artykule omówiono sposób jako deweloper może migrować istniejące aplikacje lub tworzyć nowe aplikacje, które używają tej zarządzanej usługi PostgreSQL na platformie Azure.

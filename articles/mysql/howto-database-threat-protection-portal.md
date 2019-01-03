@@ -1,19 +1,17 @@
 ---
 title: Zaawansowana ochrona przed zagrożeniami — Azure Database for MySQL | Dokumentacja firmy Microsoft
 description: Ochrona przed zagrożeniami wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w bazie danych.
-services: mysql
 author: bolzmj
-manager: kfile
-ms.service: mysql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: dfb4d104d3dfdb3e6ae7466fa3776dd5e7155aa7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.service: mysql
+ms.topic: conceptual
+ms.date: 09/20/2018
+ms.openlocfilehash: 12497f6a5173e2e4ea9c919fb6500c34f85749fa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047909"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534757"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Zaawansowana ochrona przed zagrożeniami dla usługi Azure Database for MySQL
 
@@ -22,7 +20,7 @@ Usługa Advanced Threat Protection dla usługi Azure Database for MySQL wykrywa 
 Zaawansowana ochrona przed zagrożeniami jest częścią oferty zaawansowane zabezpieczenia danych, która jest ujednoliconego pakietu dla zaawansowane funkcje zabezpieczeń. Zaawansowana ochrona przed zagrożeniami mogą być dostępne i zarządzane za pośrednictwem [witryny Azure portal](https://portal.azure.com) i jest obecnie w wersji zapoznawczej.
 
 > [!NOTE]
-> Funkcja zaawansowanej ochrony przed zagrożeniami jest **nie** dostępne w regionach należących do suwerennej chmury oraz następujące platformy Azure dla instytucji rządowych: US Gov Teksas stany USA, administracja USA — Arizona stany USA, administracja — Iowa, administracja — Wirginia, US dod — wschodnie stany, US dod — środkowe, Niemcy środkowe, Niemcy Północne, Chiny wschodnie, Chiny wschodnie stany USA 2. Odwiedź stronę [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) dostępności głównej produktu.
+> Funkcja zaawansowanej ochrony przed zagrożeniami jest **nie** dostępne w następujących platformy Azure dla instytucji rządowych i regiony należących do suwerennej chmury: Wschodnie DoD programu Microsoft Gov Teksas stany USA, administracja USA — Arizona Iowa Gov, US, — Wirginia, US Gov, US dod — środkowe, Niemcy środkowe, Niemcy Północne, Chiny wschodnie, Chiny wschodnie stany USA 2. Odwiedź stronę [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) dostępności głównej produktu.
 >
 
 ## <a name="set-up-threat-detection"></a>Konfigurowanie wykrywania zagrożeń
@@ -45,7 +43,7 @@ Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowych działań 
 
     Wyświetl aktywne zagrożenia:
 
-    ![aktywne zagrożenia](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![Aktywne zagrożenia](./media/howto-database-threat-protection-portal/active-threats.png)
 
 2. Kliknij określony alert, aby uzyskać dodatkowe informacje i akcje dla tego typu zagrożenia badanie i korygowanie przez przyszłymi zagrożeniami.
     

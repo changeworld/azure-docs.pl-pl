@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 4e30b143a11e35fc83103abfa03e3fb7f29cf9dc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 727ae9bbea4cabc5d27c32baff2123a7c03b531c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270138"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546865"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Planowana konserwacja powiadomienia dotyczące zestawów skalowania maszyn wirtualnych
 
@@ -32,7 +32,7 @@ Platforma Azure przeprowadza okresowe aktualizacje w celu poprawy niezawodności
 
 Planowana konserwacja, która wymaga ponownego uruchomienia zaplanowano etapami. Każdy etap ma inny zakres (regionów):
 
-- Falą rozpoczyna się od powiadomienie dla klientów. Domyślnie powiadomienia są wysyłane do właściciela subskrypcji i współwłaścicieli. Można dodać adresatów oraz opcje obsługi komunikatów, takie jak wiadomości e-mail, wiadomości SMS i elementy webhook do powiadomienia za pomocą platformy Azure [alertów dziennika aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).  
+- Falą rozpoczyna się od powiadomienie dla klientów. Domyślnie powiadomienia są wysyłane do właściciela subskrypcji i współwłaścicieli. Można dodać adresatów oraz opcje obsługi komunikatów, takie jak wiadomości e-mail, wiadomości SMS i elementy webhook do powiadomienia za pomocą platformy Azure [alertów dziennika aktywności](../azure-monitor/platform/activity-logs-overview.md).  
 - Z zastrzeżeniem *samoobsługi okna* ma zostać udostępnione. W tym oknie możesz znaleźć, której maszyny wirtualne znajdują się w fazie badania. Możesz proaktywnie uruchomić konserwację, zgodnie z potrzebami planowania.
 - Po oknie samoobsługi *zaplanowanego okna obsługi* rozpoczyna się. W pewnym momencie podczas tego okna platforma Azure planuje i stosuje wymaganej obsługi technicznej dla maszyny wirtualnej. 
 
@@ -95,7 +95,7 @@ Podczas planowanej konserwacji jest zaplanowane, można wyświetlić listę zest
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Powiadomienia i alerty w portalu
 
-Azure komunikuje się harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do grupy właściciel i współwłaściciele subskrypcji. Możesz dodać adresatów i kanały do komunikacji przez tworzenie alertów dziennika aktywności. Aby uzyskać więcej informacji, zobacz [monitorowania aktywności subskrypcji z dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure komunikuje się harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do grupy właściciel i współwłaściciele subskrypcji. Możesz dodać adresatów i kanały do komunikacji przez tworzenie alertów dziennika aktywności. Aby uzyskać więcej informacji, zobacz [monitorowania aktywności subskrypcji z dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. W menu po lewej stronie wybierz **Monitor**. 

@@ -1,226 +1,184 @@
 ---
-title: Zmiany haseł w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Temat pokazująca, jak skonfigurować zmiany haseł przez użytkowników w usłudze Azure Active Directory B2C.
+title: Konfigurowanie zmiany hasła, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak umożliwić użytkownikom zmienić swoje hasło, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/05/2016
+ms.date: 12/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fdbf2d9bebb26a36e3f83e1149c4f97921aeaa1d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b39c330b555be6b74760c5966e770284fa9da437
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407031"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579196"
 ---
-# <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Usługa Azure Active Directory B2C: Skonfiguruj zmiany hasła w zasadach niestandardowych  
+# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie zmiany hasła, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
+
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Przy użyciu funkcji zmiany hasła zalogowanego konsumentów (przy użyciu kont lokalnych) mogą zmieniać hasła bez konieczności potwierdzenia autentyczności ich przez Weryfikacja adresu e-mail, zgodnie z opisem w [samoobsługowego resetowania haseł usługi flow.](active-directory-b2c-reference-sspr.md) Jeśli sesja wygaśnie według czasu pobiera konsumenta hasło przepływ zmian, użytkownik jest monitowany o ponowne zarejestrowanie. 
+W usłudze Azure Active Directory (Azure AD) B2C aby umożliwić użytkowników, którzy są podpisane za pomocą konta lokalnego zmiany hasła bez konieczności potwierdzenia autentyczności ich przez Weryfikacja adresu e-mail. Jeśli sesja wygaśnie przez razem, gdy użytkownik uzyskuje do hasła, zmień przepływ, otrzymuje monit Zaloguj się ponownie. W tym artykule dowiesz się, jak skonfigurować zmianę hasła w [zasady niestandardowe](active-directory-b2c-overview-custom.md). Istnieje również możliwość skonfigurowania [samoobsługowego resetowania haseł](active-directory-b2c-reference-sspr.md) przepływów użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dzierżawy usługi Azure AD B2C skonfigurowany tak, aby ukończyć konta lokalnego konta-dokonywania/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
+Wykonaj kroki [wprowadzenie do zasad niestandardowych w Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="how-to-configure-password-change-in-custom-policy"></a>Jak skonfigurować zmianę hasła w zasadach niestandardowych
+## <a name="add-the-elements"></a>Dodawanie elementów 
 
-Aby skonfigurować zmiany hasła w zasadach niestandardowych należy wprowadzić następujące zmiany w zasadach zaufania framework rozszerzenia 
+1. Otwórz swoje *TrustframeworkExtensions.xml* pliku i Dodaj następujący kod **oświadczenia** elementu z identyfikatorem `oldPassword` do [ClaimsSchema](claimsschema.md) elementu: 
 
-## <a name="define-a-claimtype-oldpassword"></a>Zdefiniuj oświadczenia "oldPassword"
+    ```XML
+    <BuildingBlocks>
+      <ClaimsSchema>
+        <ClaimType Id="oldPassword">
+          <DisplayName>Old Password</DisplayName>
+          <DataType>string</DataType>
+          <UserHelpText>Enter password</UserHelpText>
+          <UserInputType>Password</UserInputType>
+        </ClaimType>
+      </ClaimsSchema>
+    </BuildingBlocks>
+    ```
 
-Musi zawierać ogólną strukturę zasad niestandardowych `ClaimsSchema`i zdefiniuj nowy `ClaimType` "oldPassword, tak jak pokazano poniżej, 
+2. A [ClaimsProvider](claimsproviders.md) element zawiera profilu technicznego, który uwierzytelnia użytkownika. Dodaj następujące oświadczeń dostawców w celu **ClaimsProviders** elementu:
 
-```XML
-  <BuildingBlocks>
-    <ClaimsSchema>
-      <ClaimType Id="oldPassword">
-        <DisplayName>Old Password</DisplayName>
-        <DataType>string</DataType>
-        <UserHelpText>Enter password</UserHelpText>
-        <UserInputType>Password</UserInputType>
-      </ClaimType>
-    </ClaimsSchema>
-  </BuildingBlocks>
-```
+    ```XML
+    <ClaimsProviders>
+      <ClaimsProvider>
+        <DisplayName>Local Account SignIn</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="login-NonInteractive-PasswordChange">
+            <DisplayName>Local Account SignIn</DisplayName>
+            <Protocol Name="OpenIdConnect" />
+            <Metadata>
+              <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account</Item>
+              <Item Key="UserMessageIfInvalidPassword">Your password is incorrect</Item>
+              <Item Key="UserMessageIfOldPasswordUsed">Looks like you used an old password</Item>
+              <Item Key="ProviderName">https://sts.windows.net/</Item>
+              <Item Key="METADATA">https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration</Item>
+              <Item Key="authorization_endpoint">https://login.microsoftonline.com/{tenant}/oauth2/token</Item>
+              <Item Key="response_types">id_token</Item>
+              <Item Key="response_mode">query</Item>
+              <Item Key="scope">email openid</Item>
+              <Item Key="UsePolicyInRedirectUri">false</Item>
+              <Item Key="HttpBinding">POST</Item>
+              <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
+              <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
+            </Metadata>
+            <InputClaims>
+              <InputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="username" Required="true" />
+              <InputClaim ClaimTypeReferenceId="oldPassword" PartnerClaimType="password" Required="true" />
+              <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
+              <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
+              <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
+              <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
+              <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
+            </InputClaims>
+            <OutputClaims>
+              <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
+              <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid" />
+              <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+              <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
+              <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+              <OutputClaim ClaimTypeReferenceId="userPrincipalName" PartnerClaimType="upn" />
+              <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+            </OutputClaims>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+      <ClaimsProvider>
+        <DisplayName>Local Account Password Change</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="LocalAccountWritePasswordChangeUsingObjectId">
+            <DisplayName>Change password (username)</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <Metadata>
+              <Item Key="ContentDefinitionReferenceId">api.selfasserted</Item>
+            </Metadata>
+            <CryptographicKeys>
+              <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            </CryptographicKeys>
+            <InputClaims>
+              <InputClaim ClaimTypeReferenceId="objectId" />
+            </InputClaims>
+            <OutputClaims>
+              <OutputClaim ClaimTypeReferenceId="oldPassword" Required="true" />
+              <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+              <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+            </OutputClaims>
+            <ValidationTechnicalProfiles>
+              <ValidationTechnicalProfile ReferenceId="login-NonInteractive-PasswordChange" />
+              <ValidationTechnicalProfile ReferenceId="AAD-UserWritePasswordUsingObjectId" />
+            </ValidationTechnicalProfiles>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    </ClaimsProviders>
+    ```
 
-Przeznaczenie tych elementów jest następująca:
+    Zastąp `IdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji IdentityExperienceFramework, który został utworzony w samouczka dotyczącego wymagań wstępnych. Zastąp `ProxyIdentityExperienceFrameworkAppId` identyfikatorem aplikacji również wcześniej utworzoną aplikację ProxyIdentityExperienceFramework.
 
-- `ClaimsSchema` Definiuje, które oświadczenia jest weryfikowany.  W takim przypadku zostanie zweryfikowana "stare hasło". 
+3. [UserJourney](userjourneys.md) element Określa ścieżkę, który użytkownik przyjmuje podczas interakcji z aplikacją. Dodaj **podróży użytkowników** elementu, jeśli nie istnieje on **UserJourney** zidentyfikowane jako `PasswordChange`:
 
-## <a name="add-a-password-change-claims-provider-with-its-supporting-elements"></a>Dodawanie dostawcy oświadczeń zmiany hasła ze swoimi elementami pomocnicze
+    ```XML
+    <UserJourneys>
+      <UserJourney Id="PasswordChange">
+        <OrchestrationSteps>
+          <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
+            <ClaimsProviderSelections>
+              <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
+            </ClaimsProviderSelections>
+          </OrchestrationStep>
+          <OrchestrationStep Order="2" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="3" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="NewCredentials" TechnicalProfileReferenceId="LocalAccountWritePasswordChangeUsingObjectId" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        </OrchestrationSteps>
+        <ClientDefinition ReferenceId="DefaultWeb" />
+      </UserJourney>
+    </UserJourneys>
+    ```
 
-Oświadczenia, które będą dostawcy o zmianie hasła
-
-1. Uwierzytelnianie użytkownika przed stare hasło
-2. A jeśli 'nowe hasło' pasuje do "Potwierdź nowe hasło", ta wartość jest przechowywana w magazynu danych usługi B2C i dlatego pomyślnie zmieniono hasło. 
-
-![img](images/passwordchange.jpg)
-
-Dodaj następującego dostawcy oświadczeń zasad dotyczących rozszerzeń. 
-
-```XML
-<ClaimsProviders>
-    <ClaimsProvider>
-      <DisplayName>Local Account SignIn</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="login-NonInteractive">
-          <Metadata>
-           <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-           <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-          </Metadata>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-          </InputClaims>
-        </TechnicalProfile>
-        <TechnicalProfile Id="login-NonInteractive-PasswordChange">
-          <DisplayName>Local Account SignIn</DisplayName>
-          <Protocol Name="OpenIdConnect" />
-          <Metadata>
-            <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account</Item>
-            <Item Key="UserMessageIfInvalidPassword">Your password is incorrect</Item>
-            <Item Key="UserMessageIfOldPasswordUsed">Looks like you used an old password</Item>
-            <Item Key="ProviderName">https://sts.windows.net/</Item>
-            <Item Key="METADATA">https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration</Item>
-            <Item Key="authorization_endpoint">https://login.microsoftonline.com/{tenant}/oauth2/token</Item>
-            <Item Key="response_types">id_token</Item>
-            <Item Key="response_mode">query</Item>
-            <Item Key="scope">email openid</Item>
-            <Item Key="UsePolicyInRedirectUri">false</Item>
-            <Item Key="HttpBinding">POST</Item>
-            <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-            <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-          </Metadata>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="username" Required="true" />
-            <InputClaim ClaimTypeReferenceId="oldPassword" PartnerClaimType="password" Required="true" />
-            <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
-            <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
-            <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
-            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-          </InputClaims>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
-            <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid" />
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-            <OutputClaim ClaimTypeReferenceId="userPrincipalName" PartnerClaimType="upn" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-          </OutputClaims>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
-    <ClaimsProvider>
-      <DisplayName>Local Account Password Change</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="LocalAccountWritePasswordChangeUsingObjectId">
-          <DisplayName>Change password (username)</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="ContentDefinitionReferenceId">api.selfasserted</Item>
-          </Metadata>
-          <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-          </CryptographicKeys>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="objectId" />
-          </InputClaims>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="oldPassword" Required="true" />
-            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
-          </OutputClaims>
-          <ValidationTechnicalProfiles>
-            <ValidationTechnicalProfile ReferenceId="login-NonInteractive-PasswordChange" />
-            <ValidationTechnicalProfile ReferenceId="AAD-UserWritePasswordUsingObjectId" />
-          </ValidationTechnicalProfiles>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
-  </ClaimsProviders>
-```
-
-
-
-### <a name="add-the-application-ids-to-your-custom-policy"></a>Dodawanie identyfikatorów aplikacji do zdefiniowania zasad niestandardowych
-
-Dodaj identyfikatory aplikacji do pliku rozszerzenia (`TrustFrameworkExtensions.xml`):
-
-1. W pliku rozszerzeń (TrustFrameworkExtensions.xml) można znaleźć elementu `<TechnicalProfile Id="login-NonInteractive">` i `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
-
-2. Zastąp wszystkie wystąpienia zmiennej `IdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md). Oto przykład:
-
-   ```
-   <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
-   ```
-
-3. Zastąp wszystkie wystąpienia zmiennej `ProxyIdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości serwera Proxy, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
-
-4. Zapisz plik rozszerzenia.
-
-
-
-## <a name="create-a-password-change-user-journey"></a>Utwórz podróży użytkownika Zmień hasło
-
-```XML
- <UserJourneys>
-    <UserJourney Id="PasswordChange">
-      <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
-          <ClaimsProviderSelections>
-            <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
-          </ClaimsProviderSelections>
-        </OrchestrationStep>
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="3" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="NewCredentials" TechnicalProfileReferenceId="LocalAccountWritePasswordChangeUsingObjectId" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-      </OrchestrationSteps>
-      <ClientDefinition ReferenceId="DefaultWeb" />
-    </UserJourney>
-  </UserJourneys>
-```
-
-Po zakończeniu modyfikowania pliku rozszerzenia. Zapisz, a następnie przekaż ten plik. Upewnij się, że wszystkie sprawdzenia powiodło się.
-
-
-
-## <a name="create-a-relying-party-rp-file"></a>Utwórz plik jednostki uzależnionej strona (RP)
-
-Następnie zaktualizuj plik innych firm (RP) jednostki uzależnionej, który inicjuje podróży użytkownika, który został utworzony:
-
-1. Utwórz kopię ProfileEdit.xml w katalogu roboczym. Następnie zmień jego nazwę (na przykład PasswordChange.xml).
-2. Otwórz nowy plik i zaktualizuj `PolicyId` atrybutu dla `<TrustFrameworkPolicy>` przy użyciu unikatowej wartości. To jest nazwa zasady (na przykład PasswordChange).
-3. Modyfikowanie `ReferenceId` atrybutu w `<DefaultUserJourney>` do dopasowania `Id` nowe podróży użytkownika, który został utworzony (na przykład PasswordChange).
-4. Zapisz zmiany, a następnie przekazać plik.
-5. Aby przetestować zasad niestandardowych, który został przekazany, w witrynie Azure portal, przejdź do bloku zasady, a następnie kliknij **Uruchom teraz**.
-
-
-
-
-## <a name="link-to-password-change-sample-policy"></a>Link do przykładowej zmiany hasła
+4. Zapisz *TrustFrameworkExtensions.xml* plik zasad.
+5. Kopiuj *ProfileEdit.xml* pliku pobrany z pakietu startowego, a następnie nadaj mu nazwę *ProfileEditPasswordChange.xml*.
+6. Otwórz nowy plik i zaktualizuj **PolicyId** atrybutu przy użyciu unikatowej wartości. Ta wartość jest nazwę swoich zasad. Na przykład *B2C_1A_profile_edit_password_change*.
+7. Modyfikowanie **ReferenceId** atrybutu w `<DefaultUserJourney>` aby dopasować identyfikator nowego podróży użytkownika, który został utworzony. Na przykład *PasswordChange*.
+8. Zapisz zmiany.
 
 Można znaleźć zasad przykładowe [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
 
+## <a name="test-your-policy"></a>Testowanie zasad
 
+Podczas testowania aplikacji w usłudze Azure AD B2C, może być przydatne do ma tokenu usługi Azure AD B2C, powrót do `https://jwt.ms` aby mieć możliwość przejrzenia oświadczeń w nim.
 
+### <a name="upload-the-files"></a>Przekaż pliki
 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+4. Wybierz **struktura środowiska tożsamości**.
+5. Na stronie zasad niestandardowych kliknij **zasady przekazywania**.
+6. Wybierz **Zastąp zasady Jeśli istnieje**, a następnie wyszukaj i wybierz pozycję *TrustframeworkExtensions.xml* pliku.
+7. Kliknij pozycję **Przekaż**.
+8. Powtórz kroki od 5 do 7 dla jednostki uzależnionej pliku innych firm, takich jak *ProfileEditPasswordChange.xml*.
 
+### <a name="run-the-policy"></a>Uruchom zasady
 
+1. Otwórz zasady, który został zmodyfikowany. Na przykład *B2C_1A_profile_edit_password_change*.
+2. Aby uzyskać **aplikacji**, wybierz swoją aplikację, która została wcześniej zarejestrowana. Aby wyświetlić token, **adres URL odpowiedzi** powinien być wyświetlony `https://jwt.ms`.
+3. Kliknij pozycję **Uruchom teraz**. Zaloguj się przy użyciu acouunt wcześniej utworzony. Teraz masz możliwość zmiany hasła. 
 
+## <a name="next-steps"></a>Kolejne kroki
 
-
-
+- Dowiedz się więcej o tym, jak [skonfigurowania złożoności hasła jako za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-reference-password-complexity-custom.md). 

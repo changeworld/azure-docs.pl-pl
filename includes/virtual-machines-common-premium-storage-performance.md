@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678208"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553445"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -35,7 +35,7 @@ Te wytyczne zostały zamieszczone specjalnie dla usługi Premium Storage, poniew
 > Czasami prawdopodobnie problem z wydajnością dysku jest faktycznie wąskich gardeł. W takich sytuacjach należy zoptymalizować swoje [wydajność sieci](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
 > Jeśli maszyna wirtualna obsługuje przyspieszonej łączności sieciowej, należy się upewnić, że jest ono włączone. Jeśli nie jest włączone, możesz je włączyć na już wdrożone maszyny wirtualne zarówno [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Przed przystąpieniem do wykonywania, jeśli jesteś nowym użytkownikiem magazynu w warstwie Premium, najpierw przeczytać artykuł [usługi Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md) i [usługi Azure Storage cele skalowalności i wydajności](../articles/storage/common/storage-scalability-targets.md)artykułów.
+Przed przystąpieniem do wykonywania, jeśli jesteś nowym użytkownikiem magazynu w warstwie Premium, najpierw przeczytać artykuł [usługi Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md) i [usługi Azure Storage dotyczące skalowalności i cele wydajności](../articles/storage/common/storage-scalability-targets.md) artykułów.
 
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
@@ -66,6 +66,14 @@ W związku z tym jest ważne jest określenie optymalnej wartości przepustowoś
 Opóźnienie to czas potrzebny aplikacji do odbierania pojedynczego żądania, wyślij go do dyski magazynu i czy wysłać odpowiedź do klienta. Jest to krytyczne miary wydajności aplikacji, oprócz operacje We/Wy i przepływność. Opóźnienie dysku magazynu premium to czas potrzebny do pobrania informacji dla żądania i przekazuje ją do swojej aplikacji. Usługa Premium Storage zapewnia stale niskimi opóźnieniami. Jeśli zostanie włączone buforowanie na dyskach magazynu premium hosta tylko do odczytu, możesz uzyskać znacznie mniejsze opóźnienie odczytu. Omówimy buforowania dysku bardziej szczegółowo w dalszej części tego tematu na *Optymalizowanie wydajności aplikacji*.
 
 Podczas optymalizacji aplikacji w taki sposób, aby uzyskać wyższą operacje We/Wy i przepływność ma wpływ na opóźnienia w aplikacji. Po dostrajanie wydajności aplikacji, zawsze należy przeprowadzić ocenę opóźnienie aplikacji, aby uniknąć zachowania nieoczekiwany duże opóźnienie.
+
+Następujące operacje warstwy kontroli na dyskach zarządzanych może obejmować przenoszenie dysków z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, co może zająć kilka godzin, zależnie od ilości danych na dyskach zazwyczaj mniej niż 24 godziny. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.  
+
+1.  [Aktualizuj typ magazynu](../articles/virtual-machines/windows/convert-disk-storage.md)
+2.  [Odłącz i dołączanie dysku z jednej maszyny Wirtualnej do innego](../articles/virtual-machines/windows/attach-disk-ps.md)
+3.  [Tworzenie dysku zarządzanego na podstawie dysku VHD](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
+4.  [Tworzenie dysku zarządzanego na podstawie migawki](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
+5.  [Konwertowanie z dysków niezarządzanych do usługi Managed Disks](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
 
 ## <a name="gather-application-performance-requirements"></a>Zebranie wymagań w zakresie wydajności aplikacji
 
@@ -597,7 +605,7 @@ Aby uzyskać maksymalną połączone odczytu i zapisu przepływności, większy 
 
 Dowiedz się więcej na temat usługi Azure Premium Storage:
 
-* [Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md)  
+* [Usługa Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md)  
 
 Dla użytkowników programu SQL Server zapoznaj się z artykułami na najlepsze rozwiązania w zakresie wydajności dla programu SQL Server:
 

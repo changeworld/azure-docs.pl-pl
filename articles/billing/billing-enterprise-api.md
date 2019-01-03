@@ -15,18 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: e2f59771d7ae2c818fe2f4c93441bf27f8e312ae
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d2021873b36a55bd36cf500eff168fe7311d944c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274108"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579434"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Omówienie interfejsy API raportowania usługi dla klientów korporacyjnych
 Interfejsy API raportowania pozwala klientom usługi Azure Enterprise programowo ściągnięcia zużycia i danych dotyczących rozliczeń do narzędzia do analizy danych preferowany. Klienci korporacyjni utworzyli [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) za pomocą platformy Azure na wynegocjowanym zobowiązań pieniężnych i uzyskać dostęp do ceny niestandardowe dla zasobów platformy Azure.
-
-> [!div class="nextstepaction"]
-> [Pomoc w ulepszaniu dokumentów rozliczeniowych platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="enabling-data-access-to-the-api"></a>Włączanie dostępu do danych w interfejsie API
 * **Generowanie lub pobrać klucz interfejsu API** — Zaloguj się do witryny Enterprise portal i przejdź do raportów > Pobierz dane użycia > klucz dostępu interfejsu API, aby wygenerować lub pobrać klucza interfejsu API.

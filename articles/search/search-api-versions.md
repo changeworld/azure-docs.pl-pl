@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 0cf5cac341cb36029c09ee2da5477323fac79cf5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311647"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631159"
 ---
 # <a name="api-versions-in-azure-search"></a>Wersje interfejsu API w usłudze Azure Search
 Usługa Azure Search regularnie zbiera i wydaje aktualizacje funkcji. Czasami, ale nie zawsze te aktualizacje wymagają nowej wersji interfejsu API w celu zachowania zgodności z poprzednimi wersjami. Publikowanie nowej wersji pozwala na kontrolowanie, kiedy i jak integrować aktualizacje usługi wyszukiwania w kodzie.
 
 Zgodnie z zasadą zespołu usługi Azure Search publikuje nowe wersje tylko wtedy, gdy jest to konieczne, ponieważ może pociągać za sobą pewne starań, aby uaktualnić swój kod, aby używać nowej wersji interfejsu API. Nowa wersja jest potrzebny tylko wtedy, gdy niektóre aspekty interfejs API został zmieniony w sposób, który przerywa zgodności z poprzednimi wersjami. Takie zmiany, może się zdarzyć z powodu poprawek dla istniejących funkcji lub ze względu na nowe funkcje, które zmieniają istniejącego obszaru powierzchni interfejsu API.
 
-Ta sama zasada dotyczy aktualizacji zestawu SDK. Zestaw SDK usługi Azure Search jest zgodna [wersji semantycznej](http://semver.org/) reguł, które oznacza, że jej wersja ma trzy części: głównych, niewielkie i numer (na przykład 1.1.0) kompilacji. Główne nową wersję zestawu SDK jest zwalniany tylko w przypadku zmiany naruszające zgodności z poprzednimi wersjami. Aktualizacje funkcji bez podziału powoduje zwiększenie wersji pomocniczej i poprawki błędów zwiększy tylko wersja kompilacji.
+Ta sama zasada dotyczy aktualizacji zestawu SDK. Zestaw SDK usługi Azure Search jest zgodna [wersji semantycznej](https://semver.org/) reguł, które oznacza, że jej wersja ma trzy części: głównych, niewielkie i numer (na przykład 1.1.0) kompilacji. Główne nową wersję zestawu SDK jest zwalniany tylko w przypadku zmiany naruszające zgodności z poprzednimi wersjami. Aktualizacje funkcji bez podziału powoduje zwiększenie wersji pomocniczej i poprawki błędów zwiększy tylko wersja kompilacji.
 
 > [!NOTE]
 > Wystąpienia usługi Azure Search obsługuje kilka wersji interfejsu API REST, w tym najnowsze. Można użyć wersji, gdy nie jest już najnowsze, ale zaleca się przeprowadzenie migracji kodu, aby użyć najnowszej wersji. Korzystając z interfejsu API REST, należy określić wersję interfejsu API w każdym żądaniu za pomocą parametru api-version. Korzystając z zestawu .NET SDK, wersję zestawu SDK, w przypadku używania określa odpowiednią wersję interfejsu API REST. Jeśli używasz starszy zestaw SDK, można nadal uruchomić ten kod bez konieczności wprowadzania zmian, nawet wtedy, gdy usługa zostanie uaktualniony do nowszej wersji interfejsu API do obsługi.

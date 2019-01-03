@@ -1,5 +1,5 @@
 ---
-title: Zmień i ponowne wdrażanie mikrousługi | Dokumentacja firmy Microsoft
+title: Zmień i ponowne wdrażanie mikrousługi — Azure | Dokumentacja firmy Microsoft
 description: W tym samouczku dowiesz się, jak zmienić i ponowne wdrażanie mikrousługi do zdalnego monitorowania
 author: dominicbetts
 ms.author: dobett
@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 563de3d062b2c49d6b7ba23ae405e75283270815
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315761"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631906"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Dostosowywanie i ponowne wdrażanie mikrousługi
 
-W tym samouczku pokazano, jak edytować jeden z [mikrousług](http://azure.com/microservices) w rozwiązaniu monitorowania zdalnego tworzenia obrazu z mikrousług, wdrażania obrazu usługi docker hub, a następnie użyj go w rozwiązaniu do zdalnego monitorowania. Aby wprowadzić tę koncepcję, w tym samouczku użyto podstawowy scenariusz, w którym wywołanie interfejsu API mikrousługi i zmienić komunikat o stanie z "Aktywności i dobrze" do "New edytuje Made tutaj!"
+W tym samouczku pokazano, jak edytować jeden z [mikrousług](https://azure.com/microservices) w rozwiązaniu monitorowania zdalnego tworzenia obrazu z mikrousług, wdrażania obrazu usługi docker hub, a następnie użyj go w rozwiązaniu do zdalnego monitorowania. Aby wprowadzić tę koncepcję, w tym samouczku użyto podstawowy scenariusz, w którym wywołanie interfejsu API mikrousługi i zmienić komunikat o stanie z "Aktywności i dobrze" do "New edytuje Made tutaj!"
 
 Rozwiązania do zdalnego monitorowania korzysta z mikrousług, które zostały utworzone przy użyciu obrazów platformy docker, które są pobierane z usługi docker hub. 
 
@@ -77,7 +77,7 @@ Teraz zmienić komunikat o stanie z mikrousług Menedżera Centrum Iot "Nowe zmi
     
     lub Windows:
     
-    ```
+    ```cmd
     ./build.cmd
     ```
 

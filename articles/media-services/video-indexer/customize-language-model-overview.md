@@ -9,16 +9,16 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: anzaman
-ms.openlocfilehash: aa2c089659d202222e7dd5e41ae56bf2a683bb1e
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: b309d0969eb313c90e94af0a32123b7d45b4bef0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323033"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601393"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Dostosuj model języka, za pomocą indeksatora wideo
 
-Usługa Video Indexer obsługuje automatyczne rozpoznawanie mowy dzięki integracji z usługą Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Możesz dostosować model języka przez przekazanie tekstu dostosowania, a mianowicie tekst z domeny słownictwo, którego chcesz aparatu, aby dostosować je do. Po użytkownik nauczenia modelu, nowych słów, które pojawiają się w tekście adaptacji zostanie rozpoznany, zakładając, że Wymowa domyślne i modelu językowego dowiesz się, nowe prawdopodobne sekwencji wyrazów. Niestandardowe modele językowe są obsługiwane przez język angielski, niemiecki, hiszpański, arabski, francuski, Hindi, włoski, japoński, portugalski, rosyjski i chiński.
+Usługa Video Indexer obsługuje automatyczne rozpoznawanie mowy dzięki integracji z usługą Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Możesz dostosować model języka przez przekazanie tekstu dostosowania, a mianowicie tekst z domeny słownictwo, którego chcesz aparatu, aby dostosować je do. Po użytkownik nauczenia modelu, nowych słów, które pojawiają się w tekście adaptacji zostanie rozpoznany, zakładając, że Wymowa domyślne i modelu językowego dowiesz się, nowe prawdopodobne sekwencji wyrazów. Niestandardowe modele językowe są obsługiwane w przypadku angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski, portugalski (Brazylia), Hindi i koreańskim. 
 
 Weźmy programu word, który jest bardzo specyficzny, takich jak "Kubernetes" (w kontekście usługi Azure Kubernetes service), na przykład. Ponieważ słowo pojawił się do usługi Video Indexer, uznaje się za "społeczności". Należy do nauczenia modelu, rozpoznawał ją jako "Kubernetes". W innych przypadkach istnieje wyrazy, ale model języka nie jest oczekiwane pojawiać się w pewnym kontekście. Na przykład "container service" nie jest to sekwencja programu word 2 model języka niewyspecjalizowaną rozpoznawany jako określony zestaw wyrazów.
 

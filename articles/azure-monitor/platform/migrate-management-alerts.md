@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: e3159ac4074e7ff437e052e0e2c1ae7d31378abe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8fd7161208f6303e03deaacca6a1e2fad24ec45e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346247"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580880"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migracja platformy Azure alertów dotyczących zdarzeń zarządzania do alertów dziennika aktywności
 
@@ -110,9 +110,9 @@ Alerty dotyczące zdarzeń zarządzania, które zostały wcześniej utworzone ni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [dziennika aktywności](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+* Dowiedz się więcej o [dziennika aktywności](../../azure-monitor/platform/activity-logs-overview.md)
 * Konfigurowanie [alertów dziennika aktywności w witrynie Azure portal](../../azure-monitor/platform/activity-log-alerts.md)
 * Konfigurowanie [alertów dziennika aktywności przy użyciu usługi Resource Manager](../../azure-monitor/platform/alerts-activity-log.md)
 * Przegląd [schemat elementów webhook alertu dziennika aktywności](../../azure-monitor/platform/activity-log-alerts-webhook.md)
-* Dowiedz się więcej o [powiadomień dotyczących usług](../../monitoring-and-diagnostics/monitoring-service-notifications.md)
+* Dowiedz się więcej o [powiadomień dotyczących usług](../../azure-monitor/platform/service-notifications.md)
 * Dowiedz się więcej o [grupy akcji](../../azure-monitor/platform/action-groups.md)

@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 8acd69480d6cd441c33ccc696794977bbfbfd975
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110048"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559080"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń zasobnik w usłudze Azure Kubernetes Service (AKS)
 
-Podczas tworzenia i uruchamiania aplikacji w usłudze Azure Kubernetes Service (AKS), zabezpieczenie zasobników kluczowa jest. Aplikacje powinny zostać tak zaprojektowane dla jednostki najmniejszą liczbą uprawnień wymaganych. Zapewnienie bezpieczeństwa danych prywatnych jest najważniejsze dla klientów. Nie potrzebujesz poświadczeń, takie jak parametry połączenia bazy danych, kluczy lub wpisów tajnych i certyfikatów widoczne na zewnątrz w przypadku, gdy osoba atakująca może korzystać z tych kluczy tajnych do złośliwych celów. Nie, dodać je do kodu lub osadzane w obrazów kontenerów. Takie podejście może utworzyć ryzyka dla zagrożeń i ograniczyć możliwość obracania tych poświadczeń jako obrazy kontenera będzie konieczne jest ponowne skompilowanie.
+Podczas tworzenia i uruchamiania aplikacji w usłudze Azure Kubernetes Service (AKS), zabezpieczenie zasobników kluczowa jest. Aplikacje powinny zostać tak zaprojektowane, zasady najmniejszą liczbą uprawnień wymaganych. Zapewnienie bezpieczeństwa danych prywatnych jest najważniejsze dla klientów. Nie ma poświadczeń, takich jak parametry połączenia bazy danych, klucze lub wpisy tajne i certyfikaty widoczne na zewnątrz, gdzie osoba atakująca może korzystać z tych kluczy tajnych do złośliwych celów. Nie, dodać je do kodu lub osadzane w obrazów kontenerów. Takie podejście może utworzyć ryzyka dla zagrożeń i ograniczyć możliwość obracania tych poświadczeń jako obrazy kontenera będzie konieczne jest ponowne skompilowanie.
 
 Najlepsze rozwiązania dotyczące tej koncentruje się na jak bezpieczne zasobników w usłudze AKS. Omawiane kwestie:
 

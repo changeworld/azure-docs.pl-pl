@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 19582c59460644d8599034afeaafde8735c04ec3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53441010"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549636"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -21,7 +21,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
-> *Na przykład*: Metrykę "Komunikaty przychodzące" w Centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
+> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
 >
 
@@ -1572,4 +1572,4 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przeczytaj o metrykach w usłudze Azure Monitor](../../azure-monitor/platform/data-collection.md)
 * [Tworzenie alertów dotyczących metryk](../../azure-monitor/platform/alerts-overview.md)
-* [Eksportowanie metryk do magazynu, Centrum zdarzeń lub usługi Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Eksportowanie metryk do magazynu, Centrum zdarzeń lub usługi Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)

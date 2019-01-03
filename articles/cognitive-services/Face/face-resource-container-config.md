@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 30546d31e96d7d7fa1009f16a50fe8fda12ead67
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105108"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725063"
 ---
 # <a name="configure-containers"></a>Konfigurowanie kontenerów
 
@@ -113,10 +113,10 @@ Kontener twarzy przechowuje, obiektów blob, pamięci podręcznej, metadane i da
   Wszystkie cztery typy danych są przechowywane w pamięci. Nie są rozpowszechniane, nie są one trwałych. Jeśli kontener twarzy jest zatrzymana lub usunięta, wszystkie dane w magazynie dla tego kontenera zostanie zniszczony.  
   Jest to scenariusz magazynowania domyślnego kontenera twarzy.
 * Azure  
-  Kontener twarzy korzysta z usługi Azure Storage i Azure Cosmos DB, aby rozdystrybuować te cztery rodzaje danych z magazynu trwałego. Dane obiektów blob i kolejek jest obsługiwane przez usługę Azure Storage. Metadane i pamięci podręcznej danych jest obsługiwane przez usługi Azure Cosmos DB przy użyciu interfejsu API usługi MongoDB. Jeśli kontener twarzy jest zatrzymana lub usunięta, wszystkie dane w magazynie dla tego kontenera pozostaje przechowywanych w usłudze Azure Storage i Azure Cosmos DB.  
+  Kontener twarzy korzysta z usługi Azure Storage i Azure Cosmos DB, aby rozdystrybuować te cztery rodzaje danych z magazynu trwałego. Dane obiektów blob i kolejek jest obsługiwane przez usługę Azure Storage. Metadane i pamięci podręcznej danych jest obsługiwane przez usługę Azure Cosmos DB. Jeśli kontener twarzy jest zatrzymana lub usunięta, wszystkie dane w magazynie dla tego kontenera pozostaje przechowywanych w usłudze Azure Storage i Azure Cosmos DB.  
   Zasoby używane przez scenariusza magazynu platformy Azure mają następujące wymagania dodatkowe
   * Zasób usługi Azure Storage, należy użyć StorageV2 rodzaj konta
-  * Zasób usługi Azure Cosmos DB, należy użyć interfejsu API usługi MongoDB
+  * Zasób usługi Azure Cosmos DB musi używać usługi Azure Cosmos DB dla interfejsu API usługi MongoDB
 
 Scenariusze usługi storage i skojarzone ustawienia są zarządzane przez `Storage` obiekt w obszarze `CloudAI` sekcji konfiguracji. Następujące ustawienia konfiguracji są dostępne w `Storage` obiektu:
 
@@ -176,7 +176,7 @@ W poniższej tabeli opisano ustawienia konfiguracji objęte `Fluentd` sekcji.
 
   | Name (Nazwa) | Typ danych | Opis |
   |------|-----------|-------------|
-  | `Format` | Ciąg | Format danych wyjściowych dla plików dziennika.<br/> **Uwaga:** ta wartość musi być równa `json` do włączenia rejestrowania dostawcy usług. Jeśli ta wartość jest określona bez jednoczesnego określenia dane wyjściowe instalacji podczas tworzenia wystąpienia kontenera, wystąpi błąd. |
+  | `Format` | Ciąg | Format danych wyjściowych dla plików dziennika.<br/> **Uwaga:** Ta wartość musi być równa `json` do włączenia rejestrowania dostawcy usług. Jeśli ta wartość jest określona bez jednoczesnego określenia dane wyjściowe instalacji podczas tworzenia wystąpienia kontenera, wystąpi błąd. |
   | `MaxFileSize` | Liczba całkowita | Maksymalny rozmiar w megabajtach (MB), plik dziennika. Gdy rozmiar bieżącego pliku dziennika, spełnia lub przekracza tę wartość, nowy plik dziennika został uruchomiony przez dostawcę rejestrowania. Jeśli określono wartość -1, rozmiar pliku dziennika jest ograniczona tylko przez maksymalny rozmiar pliku, ewentualne instalacji danych wyjściowych. Wartość domyślna to 1. |
 
 Aby uzyskać więcej informacji na temat konfigurowania obsługi rejestrowania platformy ASP.NET Core, zobacz [ustawień pliku konfiguracji](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).

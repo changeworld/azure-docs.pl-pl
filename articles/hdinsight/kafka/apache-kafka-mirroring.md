@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: fd9094d646b917cf811c28c9770fc2427a404ab4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309042"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581032"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikowanie tematów platformy Apache Kafka z platformą Kafka w HDInsight przy użyciu narzędzia MirrorMaker
 
@@ -22,7 +22,7 @@ Dowiedz się, jak za pomocą funkcji dublowania platformy Apache Kafka replikacj
 
 W tym przykładzie dublowania umożliwia replikowanie tematów między dwoma klastrami HDInsight. Oba klastry znajdują się w sieci wirtualnej platformy Azure, w tym samym regionie.
 
-> [!WARNING]
+> [!WARNING]  
 > Dublowanie nie być traktowane jako oznacza, że uzyskanie odporności na uszkodzenia. Przesunięcie do elementów w ramach tematu różnią się między klastrami źródłowym i docelowym, dzięki czemu klienci nie mogą używać dwóch zamiennie.
 >
 > Jeśli jesteś zajmującym się ochroną odporności na uszkodzenia, należy ustawić replikacji dla tematów w klastrze. Aby uzyskać więcej informacji, zobacz [wprowadzenie do platformy Apache Kafka w HDInsight](apache-kafka-get-started.md).
@@ -45,13 +45,13 @@ Klastrów źródłowych i docelowych może różnić się w liczbie węzłów i 
 
 Jeśli zachodzi potrzeba utworzenia duplikatów między klastrami Kafka w różnych sieciach, istnieją dodatkowe następujące zagadnienia:
 
-* **Bramy**: sieci musi być w stanie nawiązać połączenia na poziomie protokołu TCP/IP.
+* **Bramy**: Sieci musi mieć możliwość komunikacji na poziomie protokołu TCP/IP.
 
-* **Rozpoznawanie nazw**: klastrów platformy Kafka w każdej sieci musi być w stanie połączyć ze sobą za pomocą nazw hostów. Może to wymagać serwera systemu nazw domen (DNS, Domain Name System), w każdej sieci, który jest skonfigurowany do przesyłania żądań z innymi sieciami.
+* **Rozpoznawanie nazw**: Klastry platformy Kafka w każdej sieci musi mieć możliwość łączyć się ze sobą przy użyciu nazw hostów. Może to wymagać serwera systemu nazw domen (DNS, Domain Name System), w każdej sieci, który jest skonfigurowany do przesyłania żądań z innymi sieciami.
 
     Podczas tworzenia usługi Azure Virtual Network, zamiast używania automatycznej DNS, wyposażone w sieci, należy określić niestandardowego serwera DNS i adres IP serwera. Po utworzeniu sieci wirtualnej, użytkownik musi następnie utwórz maszynę wirtualną platformy Azure, która używa tego adresu IP, a następnie zainstaluj i skonfiguruj oprogramowania DNS na nim.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Utwórz i skonfiguruj niestandardowego serwera DNS przed zainstalowaniem HDInsight w sieci wirtualnej. Brak konieczności dodatkowej konfiguracji dla HDInsight służące serwer DNS skonfigurowany w ramach sieci wirtualnej.
 
 Aby uzyskać więcej informacji na temat łączenia dwóch sieci wirtualnych platformy Azure, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
@@ -66,7 +66,7 @@ Podczas tworzenia sieci wirtualnej platformy Azure, a następnie ręcznie klastr
    
     Szablon usługi Azure Resource Manager znajduje się tutaj: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json**.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Aby zapewnić dostępność platformy Kafka w usłudze HDInsight, klaster musi zawierać co najmniej trzy węzły procesu roboczego. Ten szablon umożliwia utworzenie klastra Kafka zawierającego trzy węzły procesu roboczego.
 
 2. Użyj poniższych informacji, aby wypełnić wpisy na **wdrożenie niestandardowe** bloku:
@@ -77,21 +77,21 @@ Podczas tworzenia sieci wirtualnej platformy Azure, a następnie ręcznie klastr
 
     * **Lokalizacja**: Wybierz lokalizację lokalizacji geograficznej blisko.
      
-    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa klastrów Kafka. Na przykład wprowadzenie **hdi** służąca do tworzenia klastrów, o nazwie **hdi źródła** i **dest hdi**.
+    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa w przypadku klastrów Kafka. Na przykład wprowadzenie **hdi** służąca do tworzenia klastrów, o nazwie **hdi źródła** i **dest hdi**.
 
-    * **Nazwa użytkownika logowania klastra**: klastry platformy Kafka nazwy użytkownika administratora dla źródłowego i docelowego.
+    * **Nazwa użytkownika logowania klastra**: Nazwa użytkownika administratora dla źródłowego i docelowego klastry platformy Kafka.
 
-    * **Hasło logowania klastra**: klastry platformy Kafka hasło użytkownika będącego administratorem źródłowym i docelowym.
+    * **Hasło logowania klastra**: Hasło użytkownika będącego administratorem źródłowe i docelowe klastry platformy Kafka.
 
-    * **Nazwa użytkownika SSH**: użytkownik SSH zapewniający na potrzeby tworzenia źródła i przeznaczenia platformy Kafka klastrów.
+    * **Nazwa użytkownika SSH**: Użytkownika SSH na potrzeby tworzenia źródła i przeznaczenia platformy Kafka klastrów.
 
-    * **Hasło SSH**: klastry platformy Kafka hasło dla użytkownika SSH źródłowym i docelowym.
+    * **SSH hasła**: Hasło dla użytkownika SSH źródłowe i docelowe klastry platformy Kafka.
 
 3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
 
 4. Na koniec zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Kup**. Tworzenie klastrów trwa około 20 minut.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Nazwy klastrów HDInsight są **BASENAME źródła** i **dest BASENAME**, gdzie BASENAME jest nazwa podana w szablonie. W kolejnych krokach będą używać tych nazw, łącząc się z klastrami.
 
 ## <a name="create-topics"></a>Twórz tematy
@@ -218,7 +218,7 @@ Podczas tworzenia sieci wirtualnej platformy Azure, a następnie ręcznie klastr
 
 7. W domyślnej konfiguracji platformy Kafka w HDInsight nie zezwala na automatyczne tworzenie tematów. Przed rozpoczęciem procesu dublowania, należy użyć jednej z następujących opcji:
 
-    * **Tworzenie tematów w docelowym klastrze**: Ta opcja umożliwia także ustawić liczbę partycji i współczynnik replikacji.
+    * **Tworzenie tematów w docelowym klastrze**: Ta opcja umożliwia ustawienie liczby partycji i współczynnik replikacji.
 
         Tematy wcześniej, można utworzyć za pomocą następującego polecenia:
 
@@ -256,7 +256,7 @@ Podczas tworzenia sieci wirtualnej platformy Azure, a następnie ręcznie klastr
 
     * **Lista dozwolonych —**: Lista tematów, które narzędzia MirrorMaker są replikowane z klastra źródłowego do miejsca docelowego.
 
-    * **--num.streams**: liczba wątków odbiorców do utworzenia.
+    * **--num.streams**: Liczba wątków odbiorców do utworzenia.
 
  Uruchamianie narzędzia MirrorMaker zwraca informacje podobne do następującego tekstu:
 

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 836449dad621cf6a0efe6c8534edc9f3982869b3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141581"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601971"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Przetestuj swoją aplikację usługi LUIS w portalu usługi LUIS
 <a name="train-your-app"></a>
@@ -51,11 +51,11 @@ Sprawdź szczegóły wyniku testu w **Sprawdź** panelu.
  
 1. Za pomocą **testu** Otwórz panel slajdów w poziomie, wybierz opcję **Sprawdź** dla wypowiedź, które chcesz porównać. 
 
-    ![Zbadaj przycisku](./media/luis-how-to-interactive-test/inspect.png)
+    ![Wybierz przycisk Sprawdź, aby wyświetlić więcej szczegółów na temat wyników testów](./media/luis-how-to-interactive-test/inspect.png)
 
 2. **Kontroli** zostanie wyświetlony panel. Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.
 
-    ![Zbadaj przycisku](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="correct-top-scoring-intent"></a>Poprawne górnej oceniania intencji
 

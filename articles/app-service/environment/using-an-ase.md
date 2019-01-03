@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274721"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630669"
 ---
 # <a name="use-an-app-service-environment"></a>Użyj środowiska usługi App Service #
 
@@ -33,28 +33,28 @@ Usługa Azure App Service Environment to wdrożenie usługi Azure App Service w 
 - **Magazyn**: Magazyn jest używany do hostowania aplikacji opublikowanych przez klienta.
 
 > [!NOTE]
-> Istnieją dwie wersje środowiska App Service Environment: Środowiska ASEv1 i ASEv2. W przypadku środowiska ASEv1 można zarządzać zasobami, zanim będzie można ich użyć. Aby dowiedzieć się, jak skonfigurować i zarządzać nimi środowiska ASEv1, zobacz [Konfigurowanie usługi App Service environment w wersji 1][ConfigureASEv1]. W pozostałej części tego artykułu koncentruje się na ASEv2.
+> Istnieją dwie wersje środowiska App Service Environment: ASEv1 i ASEv2. W przypadku środowiska ASEv1 można zarządzać zasobami, zanim będzie można ich użyć. Aby dowiedzieć się, jak skonfigurować i zarządzać nimi środowiska ASEv1, zobacz [Konfigurowanie usługi App Service environment w wersji 1][ConfigureASEv1]. W pozostałej części tego artykułu koncentruje się na ASEv2.
 >
 >
 
 Możesz wdrożyć środowisko ASE wewnętrznego (środowiska ASEv1 i ASEv2) za pomocą zewnętrznego lub wewnętrznego adresu VIP do uzyskania dostępu do aplikacji. Wdrożenie za pomocą zewnętrznego wirtualnego adresu IP jest często nazywane zewnętrznym środowiskiem ASE. Wersja wewnętrzna nazywa się środowisko ASE wewnętrznego modułu równoważenia obciążenia, ponieważ używa wewnętrznego modułu równoważenia obciążenia (ILB). Aby dowiedzieć się więcej na temat środowiska ASE wewnętrznego modułu równoważenia obciążenia, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE].
 
-## <a name="create-a-web-app-in-an-ase"></a>Tworzenie aplikacji internetowej w środowisku ASE ##
+## <a name="create-an-app-in-an-ase"></a>Tworzenie aplikacji w środowisku ASE ##
 
-Do tworzenia aplikacji sieci web w środowisku ASE, użyj tego samego procesu co zwykle tworzenia, ale z kilku niewielkie różnice. Podczas tworzenia nowego planu usługi App Service:
+Aby utworzyć aplikację w środowisku ASE, należy użyć tego samego procesu co zwykle tworzenia, ale z niewielkimi różnicami małych. Podczas tworzenia nowego planu usługi App Service:
 
 - Zamiast wybierać z lokalizacją geograficzną, w której chcesz wdrożyć aplikację, możesz wybrać środowisko ASE jako lokalizację.
 - Wszystkie plany usługi App Service, utworzone w środowisku ASE musi być w izolowany warstwy cenowej.
 
 Jeśli masz środowisko ASE można utworzyć jeden, postępując zgodnie z instrukcjami w [tworzenie środowiska usługi App Service][MakeExternalASE].
 
-Aby utworzyć aplikację sieci web w środowisku ASE:
+Aby utworzyć aplikację w środowisku ASE:
 
 1. Wybierz **Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web**.
 
-2. Wprowadź nazwę dla aplikacji sieci web. Jeśli wybrano już plan usługi App Service w środowisku ASE, nazwę domeny dla aplikacji odzwierciedla nazwa domeny środowiska ASE.
+2. Wprowadź nazwę aplikacji. Jeśli wybrano już plan usługi App Service w środowisku ASE, nazwę domeny dla aplikacji odzwierciedla nazwa domeny środowiska ASE.
 
-    ![Wybór nazwy aplikacji sieci Web][1]
+    ![Wybór nazwy aplikacji][1]
 
 1. Wybierz subskrypcję.
 
@@ -80,10 +80,10 @@ Aby utworzyć aplikację sieci web w środowisku ASE:
     ![Izolowane warstwy cenowe][2]
 
     > [!NOTE]
-    > Aplikacje internetowe systemu Linux i Windows, aplikacje sieci web nie może być w tym samym planie usługi App Service, ale mogą znajdować się w tym samym środowisku usługi App Service. 
+    > Aplikacje systemu Linux i Windows, aplikacje nie mogą być w tym samym planie usługi App Service, ale mogą znajdować się w tym samym środowisku usługi App Service. 
     >
 
-1. Wybierz pozycję **Utwórz**.
+2. Wybierz pozycję **Utwórz**.
 
 ## <a name="how-scale-works"></a>Jak skalować działa ##
 
@@ -97,7 +97,7 @@ W przypadku środowiska ASE można skalować do 100 wystąpień. Te 100 wystąpi
 
 ## <a name="ip-addresses"></a>Adresy IP ##
 
-Usługa App Service ma możliwość przydzielony dedykowany adres IP do aplikacji. Ta funkcja jest dostępna po skonfigurowaniu SSL opartego na protokole IP, zgodnie z opisem w [powiązania istniejącego niestandardowego certyfikatu SSL w usłudze Azure web apps][ConfigureSSL]. Jednak w przypadku środowiska ASE ma istotne wyjątku. Nie można dodać dodatkowych adresów IP do użycia protokołu SSL opartego na protokole IP w środowisku ASE z wewnętrznym modułem równoważenia obciążenia.
+Usługa App Service ma możliwość przydzielony dedykowany adres IP do aplikacji. Ta funkcja jest dostępna po skonfigurowaniu SSL opartego na protokole IP, zgodnie z opisem w [powiązania istniejącego niestandardowego certyfikatu SSL w usłudze Azure App Service][ConfigureSSL]. Jednak w przypadku środowiska ASE ma istotne wyjątku. Nie można dodać dodatkowych adresów IP do użycia protokołu SSL opartego na protokole IP w środowisku ASE z wewnętrznym modułem równoważenia obciążenia.
 
 W przypadku środowiska ASEv1 należy do przydzielania adresów IP jako zasoby, zanim będzie można ich użyć. W ASEv2 można ich używać ze swojej aplikacji tak samo, jak w przypadku wielodostępnej usługi App Service. Istnieje jeden adres zamiennych w ASEv2 maksymalnie 30 adresy IP. Każdorazowo używasz jednego innego są dodawane, że adres jest zawsze łatwo dostępne do użycia. Czasu, opóźnienie jest wymagane, aby przydzielić inny adres IP, który uniemożliwia Dodawanie adresu IP adresów w szybki odstępie czasu.
 
@@ -187,6 +187,6 @@ Aby usunąć środowisko ASE:
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[AppDeploy]: ../app-service-deploy-local-git.md
+[AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

@@ -3,24 +3,22 @@ title: Azure Database dla reguły zapory serwera MariaDB
 description: W tym artykule opisano reguły zapory dla usługi Azure Database dla serwera MariaDB.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 930e561c1777ccfcb8046c824853ebb12367cee5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 6fb9099ebfe884fc6eee58882ee23e46ba550e13
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248104"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546253"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database dla reguły zapory serwera MariaDB
 Zapora uniemożliwia wszelki dostęp do serwera bazy danych, do momentu określenia komputerów, które mają uprawnienia. Zapora udziela dostępu do serwera, na podstawie źródłowego adresu IP każdego żądania.
 
 Aby skonfigurować zaporę, należy utworzyć reguły zapory określające zakresy dopuszczalnych adresów IP. Można utworzyć reguły zapory na poziomie serwera.
 
-**Reguły zapory:** te reguły umożliwiają klientom dostęp do całej bazy danych Azure dla serwera MariaDB, oznacza to, że wszystkie bazy danych na tym samym serwerze logicznym. Reguły zapory na poziomie serwera można skonfigurować przy użyciu witryny Azure portal lub poleceń interfejsu wiersza polecenia platformy Azure. Aby utworzyć reguły zapory na poziomie serwera, musi być właścicielem bądź współautorem subskrypcji.
+**Reguły zapory:** Te reguły umożliwiają klientom dostęp do całej bazy danych Azure dla serwera MariaDB, oznacza to, że wszystkie bazy danych na tym samym serwerze logicznym. Reguły zapory na poziomie serwera można skonfigurować przy użyciu witryny Azure portal lub poleceń interfejsu wiersza polecenia platformy Azure. Aby utworzyć reguły zapory na poziomie serwera, musi być właścicielem bądź współautorem subskrypcji.
 
 ## <a name="firewall-overview"></a>Omówienie zapory
 Wszystkie bazy danych jest dostęp do usługi Azure Database dla serwera MariaDB domyślnie blokowany przez zaporę. Aby rozpocząć korzystanie z serwera z innego komputera, należy określić co najmniej jedną regułę zapory na poziomie serwera, aby umożliwić dostęp do serwera. Reguły zapory, aby określić, które IP zakresów adresów z Internetu, aby zezwolić na użycie. Dostęp do witryny portalu Azure, sama nie ma wpływu reguły zapory.
@@ -53,9 +51,9 @@ Oprócz witryny Azure portal reguły zapory można zarządzać programowo przy u
 ## <a name="troubleshooting-the-database-firewall"></a>Rozwiązywanie problemów z zaporą bazy danych
 Podczas dostępu do usługi Microsoft Azure Database dla usługi serwera MariaDB nie zachowywać się zgodnie z oczekiwaniami, należy rozważyć następujące kwestie:
 
-* **Zmiany do listy dozwolonych nie zostały uwzględnione jeszcze:** może być jak opóźnienia 5 minut, zanim zmiany do usługi Azure Database dla serwera MariaDB zapory konfiguracji zostały wprowadzone.
+* **Zmiany do listy dozwolonych nie zostały uwzględnione jeszcze:** Może to być jak pięciu minut opóźnienia, zanim zmiany do usługi Azure Database dla serwera MariaDB zapory konfiguracji zostały wprowadzone.
 
-* **Nazwa logowania nie ma autoryzacji lub użyto nieprawidłowego hasła:** Jeśli nazwy logowania nie ma uprawnień w usłudze Azure Database dla serwera MariaDB lub użyte hasło jest nieprawidłowe, nastąpi odmowa połączenia do usługi Azure Database dla serwera MariaDB. Utworzenie ustawień zapory zapewnia klientom jedynie możliwość próby nawiązania połączenia z serwerem, ale każdy klient musi podać niezbędne poświadczenia zabezpieczeń.
+* **Nazwa logowania nie ma autoryzacji lub użyto nieprawidłowego hasła:** Jeśli logowanie nie ma uprawnień w usłudze Azure Database dla serwera MariaDB lub użyte hasło jest nieprawidłowe, połączenie do usługi Azure Database dla serwera MariaDB zostanie odrzucone. Utworzenie ustawień zapory zapewnia klientom jedynie możliwość próby nawiązania połączenia z serwerem, ale każdy klient musi podać niezbędne poświadczenia zabezpieczeń.
 
 * **Dynamiczny adres IP:** Jeśli masz połączenie internetowe za pomocą dynamicznego adresowania IP i problemy z przejściem przez zaporę, możesz wypróbować jedną z następujących rozwiązań:
 

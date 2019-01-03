@@ -1,63 +1,60 @@
 ---
-title: Tworzenie i zarządzanie nimi MySQL reguły zapory w bazie danych Azure dla programu MySQL
-description: Tworzenie i zarządzanie nimi Azure bazy danych MySQL reguł zapory przy użyciu portalu Azure
-services: mysql
+title: Tworzenie i zarządzanie regułami zapory MySQL w usłudze Azure Database for MySQL
+description: Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu witryny Azure portal
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: f7d2d97049d73387f44f55bbd2fb90a6174a9df2
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 598af6bb945318f0a76ffe094dd5786abacccc3f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265864"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543533"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi Azure bazy danych MySQL reguł zapory przy użyciu portalu Azure
-Reguły zapory poziomu serwera umożliwiają administratorom dostęp do bazy danych Azure MySQL serwera z określonego adresu IP lub zakresu adresów IP. 
+# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu witryny Azure portal
+Reguły zapory na poziomie serwera umożliwiają administratorom dostęp do usługi Azure Database dla serwera MySQL z określonego adresu IP lub zakres adresów IP. 
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Tworzenie reguły zapory na poziomie serwera w witrynie Azure Portal
 
-1. Na stronie serwer MySQL, w obszarze Ustawienia kliknij pozycję **zabezpieczenia połączeń** aby otworzyć stronę połączenia zabezpieczeń bazy danych Azure dla programu MySQL.
+1. Na stronie serwer MySQL w obszarze Ustawienia kliknij pozycję **zabezpieczenia połączeń** , aby otworzyć stronę Zabezpieczenia połączeń dla usługi Azure Database for MySQL.
 
-   ![Portal Azure — kliknij przycisk Zabezpieczenia połączeń](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   ![Portal Azure — zabezpieczenia połączeń kliknij](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
-2. Kliknij przycisk **dodać Moje IP** na pasku narzędzi. Powoduje to automatyczne utworzenie reguły zapory z publicznym adresem IP komputera, jako widocznego w systemie Azure.
+2. Kliknij przycisk **Dodaj mój adres IP** na pasku narzędzi. Powoduje to automatyczne utworzenie reguły zapory z publicznym adresem IP Twojego komputera wyobrażenia systemu platformy Azure.
 
-   ![Portal Azure — kliknij przycisk Dodaj mój adres IP](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
+   ![Witryna Azure portal — kliknij przycisk Dodaj mój adres IP](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
-3. Zweryfikuj swój adres IP przed zapisaniem konfiguracji. W niektórych sytuacjach adres IP uwzględniony przez Azure portal różni się od adresu IP, używana podczas uzyskiwania dostępu do Internetu i serwery usługi Azure. Dlatego może być konieczne zmiany Start IP i końcowemu adresowi IP, aby funkcja reguły zgodnie z oczekiwaniami.
+3. Przed zapisaniem konfiguracji, należy zweryfikować swój adres IP. W niektórych sytuacjach adres IP zaobserwowane przez witryny Azure portal różni się od adres IP używany podczas uzyskiwania dostępu do Internetu i serwery usługi Azure. W związku z tym należy zmienić początkowy adres IP i końcowy adres IP funkcji reguły, zgodnie z oczekiwaniami.
 
-   Użyj aparatu wyszukiwania lub innego narzędzia online, aby sprawdzić adres IP. Wyszukaj na przykład "co to jest adresu IP". 
+   Użyj aparatu wyszukiwania lub innego narzędzia do trybu online, aby sprawdzić adres IP. Na przykład wyszukiwanie "co to jest mój adres IP". 
 
-   ![Bing w celu przedstawienia Moje IP](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
+   ![Bing w celu przedstawienia Mój adres IP](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. Dodaj dodatkowy adres zakresów. W regułach zapory dla bazy danych Azure dla programu MySQL można określić pojedynczy adres IP lub zakresu adresów. Jeśli chcesz ograniczyć regułę do pojedynczego adresu IP, wpisz ten sam adres w polach Start IP i końcowy adres IP. Otwarcie zapory umożliwia Administratorzy, użytkownicy i aplikacji dostępu do dowolnej bazy danych na serwerze MySQL, do których mają prawidłowe poświadczenia.
+4. Dodaj zakresy adresów dodatkowe. W regułach zapory dla usługi Azure Database for MySQL można określić pojedynczy adres IP lub zakresu adresów. Jeśli chcesz ograniczyć regułę do w pojedynczy adres IP, wpisz ten sam adres w polu początkowy adres IP i końcowy adres IP. Otwarcie zapory pozwala administratorom, użytkowników i aplikacji dostępu do dowolnej bazy danych na serwerze MySQL, do którego mają prawidłowe poświadczenia.
 
-   ![Portal Azure — reguły zapory ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Witryna Azure portal — reguły zapory ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
-5. Kliknij przycisk **zapisać** na pasku narzędzi, aby zapisać tę regułę zapory poziomu serwera. Poczekaj na potwierdzenie, że aktualizacja reguły zapory zakończyła się powodzeniem.
+5. Kliknij przycisk **Zapisz** na pasku narzędzi, aby zapisać tę regułę zapory na poziomie serwera. Czekaj na potwierdzenie, czy powiodła się aktualizacja reguły zapory.
 
-   ![Portal Azure — kliknij przycisk Zapisz](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
+   ![Witryna Azure portal — kliknij przycisk Zapisz](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Łączenie z platformy Azure
-Aby umożliwić aplikacjom połączenia z bazą danych Azure dla serwera MySQL na platformie Azure, można włączyć połączenia platformy Azure. Na przykład do obsługi aplikacji Azure aplikacje sieci Web lub aplikacji, która działa w maszynie Wirtualnej platformy Azure lub nawiązywania połączenia z bramą zarządzania danymi fabryki danych Azure. Zasoby nie muszą znajdować się w tej samej sieci wirtualnej (VNet) lub grupy zasobów dla reguły zapory, aby włączyć te połączenia. Gdy aplikacja platformy Azure próbuje połączyć się z serwerem bazy danych, zapora sprawdza, czy połączenia platformy Azure są dozwolone. Istnieje kilka metod, aby włączyć te typy połączeń. Ustawienie zapory z początkowym i końcowym adresem równym 0.0.0.0 wskazuje, że te połączenia są dozwolone. Alternatywnie, można ustawić **zezwolić na dostęp do usług platformy Azure** opcji w celu **ON** w portalu z **zabezpieczenia połączeń** okienko i naciśnij klawisz **zapisać**. Jeśli próba połączenia nie jest dozwolone, żądanie nie osiąga Azure bazy danych dla serwera MySQL.
+Aby umożliwić aplikacjom z platformy Azure, nawiązać połączenia z usługi Azure Database for MySQL server, należy włączyć połączenia platformy Azure. Na przykład, aby hostować aplikację usługi Azure Web Apps lub aplikację, która działa na Maszynie wirtualnej platformy Azure lub do nawiązywania połączenia bramy zarządzania danymi usługi Azure Data Factory. Zasoby nie muszą znajdować się w tej samej sieci wirtualnej (VNet) lub grupy zasobów dla reguły zapory, aby włączyć te połączenia. Gdy aplikacja platformy Azure próbuje połączyć się z serwerem bazy danych, zapora sprawdza, czy połączenia platformy Azure są dozwolone. Istnieje kilka metod, aby włączyć te typy połączeń. Ustawienie zapory z początkowym i końcowym adresem równym 0.0.0.0 wskazuje, że te połączenia są dozwolone. Alternatywnie, można ustawić **zezwolić na dostęp do usług platformy Azure** opcję **ON** w portalu pochodzące ze **zabezpieczenia połączeń** okienka, a następnie wybierz pozycję **Zapisz**. Jeśli próba połączenia nie jest dozwolona, żądanie nie dociera serwera Azure Database for MySQL.
 
 > [!IMPORTANT]
 > Ta opcja konfiguruje zaporę w celu zezwalania na wszystkie połączenia z platformy Azure, w tym połączenia z subskrypcji innych klientów. W przypadku wybrania tej opcji upewnij się, że uprawnienia logowania i użytkownika zezwalają na dostęp tylko uprawnionym użytkownikom.
 > 
 
-## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>Zarządzanie istniejących reguł zapory na poziomie serwera przy użyciu portalu Azure
+## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>Zarządzanie istniejące reguły zapory na poziomie serwera przy użyciu witryny Azure portal
 Powtórz kroki, aby zarządzać regułami zapory.
-* Aby dodać bieżący komputer, kliknij przycisk **+ Dodaj adres IP Moje**. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
-* Aby dodać dodatkowe adresy IP, wpisz w **Nazwa reguły**, **START IP**, i **KOŃCOWEMU adresowi IP**. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
-* Aby zmodyfikować istniejącą regułę, kliknij każdego pola w regule, a następnie zmodyfikować. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
-* Aby usunąć istniejącą regułę, kliknij przycisk wielokropka [...], a następnie kliknij przycisk **usunąć**. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
+* Aby dodać bieżący komputer, kliknij **+ Dodaj mój adres IP**. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
+* Aby dodać dodatkowych adresów IP, wpisz w **Nazwa reguły**, **POCZĄTKOWY adres IP**, i **końcowy adres IP**. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
+* Aby zmodyfikować istniejącą regułę, kliknij dowolne pole w regule, a następnie zmodyfikuj. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
+* Aby usunąć istniejącą regułę, kliknij przycisk wielokropka [...], a następnie kliknij przycisk **Usuń**. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Podobnie można utworzyć skrypty do [tworzenie i zarządzanie nimi Azure bazy danych MySQL reguł zapory przy użyciu interfejsu wiersza polecenia Azure](howto-manage-firewall-using-cli.md).
-- Aby uzyskać pomoc w nawiązywania połączenia z bazą danych Azure dla serwera MySQL, [biblioteki połączeń dla bazy danych Azure dla programu MySQL](./concepts-connection-libraries.md)
+- Podobnie, można utworzyć skrypty do [tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md).
+- Aby uzyskać pomoc podczas nawiązywania połączenia z serwerem Azure Database for MySQL, zobacz [biblioteki połączeń dla usługi Azure Database for MySQL](./concepts-connection-libraries.md)

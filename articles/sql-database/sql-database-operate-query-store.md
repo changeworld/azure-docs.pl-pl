@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: cf5035d4dd1c58baff66bd5edbdac42c08d6baab
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164569"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600183"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Operacyjnego Store zapytania w usłudze Azure SQL Database
 Query Store na platformie Azure jest funkcją w pełni zarządzana baza danych, która stale zbiera i przedstawia szczegółowe informacje historyczne na temat wszystkich zapytań. Należy rozważać Query Store, jak Rejestrator danych samolotowy, znacznie upraszcza zapytania Rozwiązywanie problemów z wydajnością zarówno dla aplikacji w chmurze i lokalnych klientów. W tym artykule opisano specyficzne aspekty operacyjne Query Store na platformie Azure. Za pomocą tego wcześniej zebranych zapytania o dane, możesz szybkie diagnozowanie i rozwiązywanie problemów z wydajnością i związku z tym poświęcić więcej czasu, skupiając się na działalność biznesową. 
@@ -52,7 +52,7 @@ Jeśli chcesz pozostać przy użyciu ustawień użytkownika, użyj [ALTER DATABA
 ## <a name="next-steps"></a>Kolejne kroki
 [Szczegółowe informacje o wydajności bazy danych SQL](sql-database-performance.md)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 Aby uzyskać więcej informacji, odwiedź następujące artykuły:
 
 * [Rejestrator danych dla bazy danych](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 

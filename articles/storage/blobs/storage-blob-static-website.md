@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: ddc85cb7c9bd4488295b22e687d199a73d23922c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 933fcbfc21c69d02f1093e0ea2519d76f4130b29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955630"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598894"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage
 Konta magazynu GPv2 platformy Azure umożliwiają obsługę zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) bezpośrednio z kontenera magazynu o nazwie *$web*. Korzystając z zalet hosting w usłudze Azure Storage pozwala na używanie architektur bez użycia serwera, w tym [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
 
-W przeciwieństwie do hostowania statycznej witryny internetowej, dynamicznych witryn, które są zależne od kodu po stronie serwera są najlepiej hostowane przy użyciu [Azure Web Apps](/azure/app-service/app-service-web-overview).
+W przeciwieństwie do hostowania statycznej witryny internetowej, dynamicznych witryn, które są zależne od kodu po stronie serwera są najlepiej hostowane przy użyciu [usługi Azure App Service](/azure/app-service/overview).
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 Po włączeniu statycznej witryny internetowej hostingu na swoim koncie magazynu, wybierz nazwę pliku domyślnego i opcjonalnie podaj ścieżkę do niestandardowa strona 404. Ponieważ ta funkcja jest włączona, kontener o nazwie *$web* jest tworzony, jeśli jeszcze nie istnieje. 
@@ -109,7 +109,7 @@ Dostępne metody wdrażania zawartości do kontenera magazynu są następujące:
 
 - [Narzędzie AzCopy](../common/storage-use-azcopy.md)
 - [Eksplorator usługi Storage](https://azure.microsoft.com/features/storage-explorer/)
-- [Visual Studio Team System](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [Potoki usługi Azure](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
 - [Rozszerzenie programu Visual Studio Code](https://code.visualstudio.com/tutorials/static-website/getting-started)
 
 We wszystkich przypadkach, upewnij się, należy skopiować pliki *$web* kontenera.
@@ -158,9 +158,9 @@ Tak, nowy punkt końcowy web przestrzegają zasad sieci Wirtualnej i zapory, sko
 Tak, punkt końcowy sieci web jest rozróżniana wielkość liter, podobnie jak punkt końcowy obiektu blob. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dostęp do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS przy użyciu usługi Azure CDN](storage-https-custom-domain-cdn.md)
+* [Uzyskiwanie dostępu do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS za pomocą sieci Azure CDN](storage-https-custom-domain-cdn.md)
 * [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi blob Storage lub sieci web](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure Web Apps](/azure/app-service/app-service-web-overview)
+* [Azure App Service](/azure/app-service/overview)
 * [Utwórz swoją pierwszą aplikację sieci web bez użycia serwera](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [Samouczek: Hostowanie domeny w usłudze Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)
+* [Samouczek: Hostuj swoją domenę, w usłudze Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

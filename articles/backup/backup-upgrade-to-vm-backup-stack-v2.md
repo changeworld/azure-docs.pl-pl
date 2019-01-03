@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8882970471b554f6d05a9cf3028e7be572292ef6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 605ce97f786b6b674a4adf8d6b1ee50957ef25fa
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582704"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582749"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2
 
@@ -147,3 +147,6 @@ Migawek przyrostowych są używane w przypadku dysków niezarządzanych. W przyp
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>Jak uzyskać SSD w warstwie standardowa zarządzany za pomocą techniczną dysku dla maszyny wirtualnej
 Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2 można pobrać obsługę usługi Azure Backup [dysków zarządzanych dysków SSD w warstwie standardowa](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
+
+### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-snapshot-tier1"></a>Co się stanie, jeśli wybiorę opcję okres przechowywania punkt przywracania (Warstwa 2) mniejszą niż migawka (1)?
+Stos kopii zapasowej maszyny Wirtualnej w wersji 2 nie zezwala na usuwanie punkt przywracania (w warstwie 2), chyba że migawka (1) zostanie usunięta. Obecnie obsługujemy 7 dni, okres przechowywania do usunięcia migawki (1), więc punktu przywracania (w warstwie 2) nie jest honorowane okresu przechowywania dla mniej niż 7 dni. Zaleca się planowanie większe niż 7 dni okresu przechowywania (w warstwie 2) punktu przywracania.

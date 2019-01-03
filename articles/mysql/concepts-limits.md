@@ -1,20 +1,17 @@
 ---
 title: Ograniczenia dotyczące usługi Azure Database for MySQL
 description: W tym artykule opisano ograniczenia dotyczące usługi Azure Database for MySQL, takie jak liczba połączeń i opcje aparatu magazynu.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/6/2018
-ms.openlocfilehash: 89451122ff8cae33f1710fc1458fcd4277964e1f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 19fc20f21a57c2325254581c642b75c92c221fd9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090996"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536094"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące usługi Azure Database for MySQL
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
@@ -39,7 +36,7 @@ Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następ
 |Pamięć| 32| 10 000|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
-> Błąd 1040 (08004): Zbyt wiele połączeń
+> BŁĄD 1040 (08004): Zbyt wiele połączeń
 
 ## <a name="storage-engine-support"></a>Obsługa aparatu magazynu
 
@@ -56,7 +53,7 @@ Po przekroczeniu limitu połączeń może zostać wyświetlony następujący bł
 ## <a name="privilege-support"></a>Obsługa uprawnień
 
 ### <a name="unsupported"></a>Nieobsługiwane
-- Rola Administrator: wiele parametrów serwera i ustawienia mogą przypadkowo obniżają wydajność serwerów lub odwrócić właściwości ACID systemu DBMS. Jako takie utrzymanie integralności usługi i umowa SLA na poziomie produktu, ta usługa nie ujawnia roli Administrator. Domyślne konto użytkownika, który jest tworzony, gdy tworzone jest nowe wystąpienie bazy danych, umożliwia użytkownikowi wykonać większość instrukcji DDL i DML w wystąpieniu zarządzanym bazy danych. 
+- Rola Administrator: Wiele parametrów serwera i ustawień można przypadkowo obniżają wydajność serwerów lub odwrócić właściwości ACID systemu DBMS. Jako takie utrzymanie integralności usługi i umowa SLA na poziomie produktu, ta usługa nie ujawnia roli Administrator. Domyślne konto użytkownika, który jest tworzony, gdy tworzone jest nowe wystąpienie bazy danych, umożliwia użytkownikowi wykonać większość instrukcji DDL i DML w wystąpieniu zarządzanym bazy danych. 
 - Uprawnienia administratora: Podobnie [uprawnień administratora](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) również jest ograniczony.
 
 ## <a name="data-manipulation-statement-support"></a>Obsługa instrukcji manipulacji danych

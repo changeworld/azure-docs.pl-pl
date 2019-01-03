@@ -1,5 +1,5 @@
 ---
-title: Wizualizowanie danych telemetrycznych z symulowania urządzenia przy użyciu usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Wizualizowanie danych telemetrycznych z symulacji urządzenia za pomocą usługi Time Series Insights — Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować środowisko usługi Time Series Insights można badać i analizować dane telemetryczne wygenerowane przez akcelerator rozwiązań symulacji urządzenia.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 49cecca4e5ebef9f43fdda16cfa1fdc2ad7b6f94
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: aea02cbde32d9485bd49ec39a6f300021c6ef927
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43383300"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597702"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Użyj usługi Time Series Insights, aby wizualizować dane telemetryczne wysyłane z akceleratora rozwiązań symulacji urządzenia
 

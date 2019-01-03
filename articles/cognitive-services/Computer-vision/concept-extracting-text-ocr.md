@@ -10,22 +10,23 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 52b6265722d5cfbf8baf54e1785ace627aa0892f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 07d3f5d365fa5c552ccb61c97532a9931b7e282e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341671"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583684"
 ---
-# <a name="extracting-text-with-ocr"></a>Wyodrębnianie tekstu za pomocą technologii optycznego rozpoznawania znaków
+# <a name="extracting-text-with-optical-character-recognition"></a>Trwa wyodrębnianie tekstu za pomocą funkcji optycznego rozpoznawania znaków
 
-Technologia optycznego rozpoznawania znaków (OCR) w wizualizacji komputerowej wykrywa zawartość tekstową na obrazie i wyodrębnia zidentyfikowany tekst do strumienia znaków czytelnych. Wynik służy do wyszukiwania i wiele innych celów, takich jak dokumentacji medycznej, zabezpieczeniami i bankowością. Funkcja automatycznie wykrywa język. Optyczne rozpoznawanie znaków oszczędza czas i zapewnia wygodę dla użytkowników, umożliwiając im wykonywanie zdjęć tekstu zamiast przepisywania tekstu.
+Technologia optycznego rozpoznawania znaków (OCR) w wizualizacji komputerowej wykrywa zawartość tekstową na obrazie i wyodrębnia zidentyfikowany tekst do strumienia znaków czytelnych. Wynik służy do wyszukiwania oraz wielu innych celów, ma np. zastosowanie w przypadku dokumentacji medycznej, branży ochrony i bankowości. Umożliwia automatyczne wykrywanie języka. Optyczne rozpoznawanie znaków oszczędza czas i jest wygodne dla użytkowników, którzy mogą wykonywać zdjęcia tekstu zamiast go przepisywać.
 
-Optyczne rozpoznawanie znaków obsługuje 25 językach. Te języki są: arabski, chiński uproszczony, chiński tradycyjny, czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański, norweski, Polski, portugalski, rumuński, rosyjski, serbski (cyrylica i łaciński) Słowacki, hiszpański, szwedzki i turecki.
+OCR obsługuje 25 języków. Te języki to: arabski, chiński uproszczony, chiński tradycyjny, czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański, norweski, polski, portugalski, rumuński, rosyjski, serbski (cyrylica i alfabet łaciński), słowacki, hiszpański, szwedzki i turecki.
 
-Jeśli to konieczne, optyczne rozpoznawanie znaków poprawia obrót rozpoznany w stopniach wokół osi obraz w poziomie. Optyczne rozpoznawanie znaków zawiera współrzędne ramki wystąpień poszczególnych wyrazów, jak pokazano na poniższej ilustracji.
+Jeśli to konieczne, OCR poprawia kąt obrotu (w stopniach) rozpoznanego tekstu wokół poziomej osi obrazu. Optyczne rozpoznawanie znaków zawiera współrzędne ramki wystąpień poszczególnych wyrazów, jak pokazano na poniższej ilustracji.
 
-![Optyczne rozpoznawanie znaków — omówienie](./Images/vision-overview-ocr.png)
+![Diagram przedstawiający za obrazu oraz jego tekstu, odczytu, a umieszczony](./Images/vision-overview-ocr.png)
 
 ## <a name="ocr-requirements"></a>Wymagania dotyczące optyczne rozpoznawanie znaków
 
@@ -39,15 +40,15 @@ Obrazu wejściowego można obracać o dowolnym wielu 90 stopni oraz małych kąt
 
 ## <a name="improving-ocr-accuracy"></a>Poprawianie dokładności optyczne rozpoznawanie znaków
 
-Dokładność rozpoznawanie tekstu, zależy od jakości obrazu. Odczyt nieprawidłowych może być spowodowane w następujących sytuacjach:
+Dokładność rozpoznawania tekstu zależy od jakości obrazu. Przyczyny nieprawidłowego odczytu mogą być następujące:
 
-* Obrazy rozmyte.
-* Tekstu odręcznego lub kursywnych.
-* Style czcionki sztuki.
-* Rozmiar małego tekstu.
-* Złożone tła, cieni lub odbić za pośrednictwem zakłócenia tekstu lub perspektywę.
-* Zbyt duży lub brak wielkie litery na początku słowa
-* Indeks dolny, indeks górny lub przekreślony tekst.
+* Rozmyte obrazy.
+* Tekst odręczny lub napisany kursywą.
+* Artystyczne style czcionki.
+* Mały rozmiar tekstu.
+* Złożone tła, cienie, oślepiające światło nad tekstem lub zniekształcenie perspektywy.
+* Zbyt duże wielkie litery na początku wyrazów lub ich brak.
+* Indeks dolny, indeks górny lub tekst przekreślony.
 
 ### <a name="ocr-limitations"></a>Ograniczenia optyczne rozpoznawanie znaków
 

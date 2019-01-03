@@ -8,20 +8,20 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ce2391014eb5e15650c0a81ebb8e2fd4a08ca96b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139228"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599948"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Wdrażanie bramy dla połączonej fabryki akcelerator rozwiązań w systemie Windows lub Linux krawędzi
 
 Potrzebujesz dwóch składników oprogramowania do wdrożenia bramy usługi edge dla *połączonej fabryki* akcelerator rozwiązań:
 
-- Serwera  *Proxy OPC* nawiąże połączenie z połączonej fabryki. Serwer Proxy OPC, a następnie czeka na komunikaty poleceń i kontroli z zintegrowanej przeglądarki OPC, działający w portalu rozwiązania połączonej fabryki.
+-  *Serwera Proxy OPC* nawiąże połączenie z połączonej fabryki. Serwer Proxy OPC, a następnie czeka na komunikaty poleceń i kontroli z zintegrowanej przeglądarki OPC, działający w portalu rozwiązania połączonej fabryki.
 
-- Wydawca  *OPC* nawiązanie połączenia z istniejących serwerów OPC UA w środowisku lokalnym i przekazuje komunikaty telemetryczne z nich do połączonej fabryki. Możesz połączyć urządzenie klasyczne OPC za pomocą [adapter klasycznego OPC dla serwera OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
+-  *Wydawca OPC* nawiązanie połączenia z istniejących serwerów OPC UA w środowisku lokalnym i przekazuje komunikaty telemetryczne z nich do połączonej fabryki. Możesz połączyć urządzenie klasyczne OPC za pomocą [adapter klasycznego OPC dla serwera OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
 
 Oba te składniki są typu open source i są dostępne jako źródło w witrynie GitHub i jako kontenery platformy Docker w witrynie DockerHub:
 
@@ -70,7 +70,7 @@ Aby uzyskać więcej informacji, zobacz [korzysta z woluminów](https://docs.doc
 
 Przed zainstalowaniem składników OPC, wykonaj następujące kroki, aby przygotować środowisko:
 
-1. Aby ukończyć wdrożenie bramy, musisz mieć **iothubowner** parametry połączenia usługi IoT Hub w danym wdrożeniu połączonej fabryki. W [witryny Azure portal](http://portal.azure.com/), przejdź do Centrum IoT w grupie zasobów utworzone podczas wdrażania rozwiązania połączonej fabryki. Kliknij przycisk **zasady dostępu współdzielonego** dostęp do **iothubowner** ciąg połączenia:
+1. Aby ukończyć wdrożenie bramy, musisz mieć **iothubowner** parametry połączenia usługi IoT Hub w danym wdrożeniu połączonej fabryki. W [witryny Azure portal](https://portal.azure.com/), przejdź do Centrum IoT w grupie zasobów utworzone podczas wdrażania rozwiązania połączonej fabryki. Kliknij przycisk **zasady dostępu współdzielonego** dostęp do **iothubowner** ciąg połączenia:
 
     ![Znajdź parametry połączenia Centrum IoT Hub](./media/iot-accelerators-connected-factory-gateway-deployment/image2.png)
 

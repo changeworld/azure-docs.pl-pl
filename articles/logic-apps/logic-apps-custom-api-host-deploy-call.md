@@ -10,22 +10,22 @@ ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: 0d53c8355fadf53c81676a1fe3c71f8e0b046630
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: e95b20a12fafa9d1dbcbd641ce1c9f2674314489
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126572"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606439"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Wdrażanie i wywoływanie niestandardowych interfejsów API z przepływów pracy w usłudze Azure Logic Apps
 
-Po zakończeniu [Tworzenie niestandardowych interfejsów API](./logic-apps-create-api-app.md) do użycia w przepływach pracy aplikacji logiki, należy wdrożyć swoje interfejsy API, zanim można je wywoływać. Interfejsy API, co można wdrożyć [aplikacje sieci web](../app-service/app-service-web-overview.md), ale zaleca się wdrożenie interfejsów API jako [aplikacje API apps](../app-service/app-service-web-tutorial-rest-api.md), które ułatwią Ci pracę po tworzenie, hostowanie i używanie interfejsów API w chmurze i lokalnie. Nie trzeba zmieniać żadnego kodu w Twoich interfejsów API — wystarczy go wdrożyć w aplikacji interfejsu API. Możesz hostować swoje interfejsy API na [usługi Azure App Service](../app-service/app-service-web-overview.md), platformy as-a-service (PaaS) oferty, zapewniająca o wysokim stopniu skalowalności, łatwe hostowanie interfejsu API.
+Po zakończeniu [Tworzenie niestandardowych interfejsów API](./logic-apps-create-api-app.md) do użycia w przepływach pracy aplikacji logiki, należy wdrożyć swoje interfejsy API, zanim można je wywoływać. Interfejsy API, co można wdrożyć [aplikacje sieci web](../app-service/overview.md), ale zaleca się wdrożenie interfejsów API jako [aplikacje API apps](../app-service/app-service-web-tutorial-rest-api.md), które ułatwią Ci pracę po tworzenie, hostowanie i używanie interfejsów API w chmurze i lokalnie. Nie trzeba zmieniać żadnego kodu w Twoich interfejsów API — wystarczy go wdrożyć w aplikacji interfejsu API. Możesz hostować swoje interfejsy API na [usługi Azure App Service](../app-service/overview.md), platformy as-a-service (PaaS) oferty, zapewniająca o wysokim stopniu skalowalności, łatwe hostowanie interfejsu API.
 
 Chociaż możesz wywołać dowolny interfejs API z aplikacji logiki, aby uzyskać najlepsze wyniki, należy dodać [OpenAPI (wcześniej struktury Swagger) metadane](http://swagger.io/specification/) opisujący operacje i parametry interfejsu API. Ten plik OpenAPI pomaga interfejsu API łatwiej integrować i lepszą współpracę z usługą logic apps.
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Wdrażanie interfejsu API jako aplikację sieci web lub aplikacji interfejsu API
 
-Zanim wywołasz niestandardowego interfejsu API z aplikacji logiki Wdróż interfejs API jako aplikację sieci web lub aplikacji interfejsu API w usłudze Azure App Service. Ponadto aby pliku OpenAPI plik odczytany przez Projektant aplikacji logiki, ustaw właściwości definicji interfejsu API i Włącz [współużytkowanie zasobów między źródłami (cors)](../app-service/app-service-web-overview.md) dla aplikacji sieci web lub aplikacji interfejsu API.
+Zanim wywołasz niestandardowego interfejsu API z aplikacji logiki Wdróż interfejs API jako aplikację sieci web lub aplikacji interfejsu API w usłudze Azure App Service. Ponadto aby pliku OpenAPI plik odczytany przez Projektant aplikacji logiki, ustaw właściwości definicji interfejsu API i Włącz [współużytkowanie zasobów między źródłami (cors)](../app-service/overview.md) dla aplikacji sieci web lub aplikacji interfejsu API.
 
 1. W [witryny Azure portal](https://portal.azure.com), Wybieranie aplikacji sieci web lub aplikacji interfejsu API.
 

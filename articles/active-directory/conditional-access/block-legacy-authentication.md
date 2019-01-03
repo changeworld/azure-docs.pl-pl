@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ddfea3ec7380a36f937052a6a994504ca081f187
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2abf0afb3b6e1cd80168fa3f295297551b9bf7ce
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020180"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755159"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Porady: blokowanie uwierzytelniania starszej wersji do usługi Azure AD przy użyciu dostępu warunkowego   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: Blokuj starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego   
 
 Aby dać użytkownikom łatwy dostęp do aplikacji w chmurze, Azure Active Directory (Azure AD) obsługuje szerokiej gamy protokołów uwierzytelniania, w tym starsze uwierzytelnianie. Uwierzytelnianie wieloskładnikowe (MFA) nie obsługuje jednak starszych protokołów. Uwierzytelnianie wieloskładnikowe w wielu środowiskach jest typowym wymogiem na kradzież tożsamości adresu. 
 
@@ -60,7 +60,7 @@ Jak można zapobiec aplikacji korzystających z uwierzytelniania starszej wersji
 
 W tej sekcji opisano sposób konfigurowania zasad dostępu warunkowego w celu uwierzytelniania starszych bloku. 
 
-### <a name="block-legacy-authentication"></a>Blokuj starsze uwierzytelnianie 
+### <a name="block-legacy-authentication"></a>Blokowanie starszego uwierzytelniania 
 
 W zasadach dostępu warunkowego można ustawić warunek, który jest powiązany z aplikacji klienckich, które są używane do dostępu do zasobów. Stan aplikacji klienta umożliwia zawężenie zakresu do aplikacji przy użyciu starszej wersji uwierzytelniania, wybierając **inni klienci** dla **aplikacje mobilne i klienci stacjonarni**.
 
@@ -91,7 +91,7 @@ Platforma Azure ma funkcję bezpieczeństwa, która uniemożliwia tworzenie taki
 ![Konfiguracja zasad nie jest obsługiwana](./media/block-legacy-authentication/04.png)
 
 
-Funkcja bezpieczeństwa jest konieczne ponieważ *zablokowanie wszystkich użytkowników i wszystkie aplikacje w chmurze* może potencjalnie zablokować w całej organizacji, zalogowanie się do swojej dzierżawy. Musisz wykluczyć co najmniej jednego użytkownika do zaspokojenia minimalnym wymaganiem najlepszym rozwiązaniem. Można również 
+Funkcja bezpieczeństwa jest konieczne ponieważ *zablokowanie wszystkich użytkowników i wszystkie aplikacje w chmurze* może potencjalnie zablokować w całej organizacji, zalogowanie się do swojej dzierżawy. Musisz wykluczyć co najmniej jednego użytkownika do zaspokojenia minimalnym wymaganiem najlepszym rozwiązaniem. Można również wykluczyć rolę katalogu.
 
 ![Konfiguracja zasad nie jest obsługiwana](./media/block-legacy-authentication/05.png)
 

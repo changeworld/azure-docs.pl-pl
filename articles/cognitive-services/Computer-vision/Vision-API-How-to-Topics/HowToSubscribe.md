@@ -1,5 +1,5 @@
 ---
-title: Uzyskiwanie kluczy subskrypcji dla interfejsu API przetwarzania obrazów
+title: Uzyskiwanie kluczy subskrypcji — przetwarzanie obrazów
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak można pobrać kluczy subskrypcji dla wywołań interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
-ms.openlocfilehash: db4d589bb0c7611e632a90f2174ad8e9c415bf6a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 820531cc2254d9cbc7aaf7e758dd0457b282d892
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985426"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580811"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>Jak uzyskiwanie kluczy subskrypcji
 
-Komputer wizję usługi wymagają klawisze specjalne subskrypcji. Każde wywołanie interfejsu API przetwarzania obrazów wymaga klucza subskrypcji. Ten klucz musi zostać przekazany przez parametr ciągu zapytania albo określony w nagłówku żądania.
+Komputer wizję usługi wymagają klawisze specjalne subskrypcji. Każde wywołanie do interfejsu API przetwarzania obrazów wymaga klucza subskrypcji. Ten klucz musi zostać albo przekazany przez parametr ciągu zapytania, albo określony w nagłówku żądania.
 
 Aby utworzyć klucze subskrypcji, zobacz [subskrypcje](https://azure.microsoft.com/try/cognitive-services/). Jest to bezpłatne się zarejestrować. Cennik dla tych usług jest mogą ulec zmianie.
 

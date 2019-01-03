@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1f0b6ecae68a732e7d4bdc313ce9b249b387be8b
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: bb240437870ce5457e40e8dcc3b31f3909b546fc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326192"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607136"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Strumieniowe przesyłanie danych diagnostycznych platformy Azure w warstwie gorąca ścieżce za pomocą usługi Event Hubs
 Narzędzie diagnostyczne systemu Azure oferuje elastyczne sposoby zbierać metryki i dzienniki z maszyn wirtualnych usługi w chmurze (VM) i przenieść wyniki do usługi Azure Storage. Począwszy od marca 2016 r. (zestaw SDK 2.9) przedział czasu możesz wysyłanie danych diagnostycznych niestandardowymi źródłami danych i transferu danych ścieżkę aktywną w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -286,7 +286,7 @@ namespace EventHubListener
     {
         static void Main(string[] args)
         {
-            string eventHubConnectionString = "Endpoint= <your connection string>”
+            string eventHubConnectionString = "Endpoint= <your connection string>”;
             string eventHubName = "<Event hub name>";
             string storageAccountName = "<Storage account name>";
             string storageAccountKey = "<Storage account key>”;

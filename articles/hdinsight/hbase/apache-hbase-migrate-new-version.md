@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 71285ce3b1fb3cc592fc65b4ad96c6783de0c408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499296"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650107"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrowanie klastra Apache HBase do nowszej wersji
 
@@ -26,16 +26,16 @@ Klastry oparte na zadaniach, takich jak [platformy Apache Spark](https://spark.a
 4. Importuj dane przejściowy.
 5. Uruchom zadania i kontynuować przetwarzanie w nowym klastrze.
 
-Aby uaktualnić [bazy danych Apache HBase](http://hbase.apache.org/) klastra pewne dodatkowe kroki są wymagane, zgodnie z opisem w tym artykule.
+Aby uaktualnić [bazy danych Apache HBase](https://hbase.apache.org/) klastra pewne dodatkowe kroki są wymagane, zgodnie z opisem w tym artykule.
 
-> [!NOTE]
+> [!NOTE]  
 > Czas przestoju podczas uaktualniania powinien być minimalny, rzędu kilku minut. Ten czas przestoju jest spowodowany przez kroki Opróżnij wszystkie dane w pamięci, a następnie czasu, aby skonfigurować i uruchomić ponownie usługi w nowym klastrze. Wyniki różnią się w zależności od liczby węzłów, ilości danych i inne zmienne.
 
 ## <a name="review-apache-hbase-compatibility"></a>Przegląd zgodności bazy danych Apache HBase
 
-Przed rozpoczęciem uaktualniania bazy danych Apache HBase, upewnij się, że wersje bazy danych HBase w klastrach źródłowe i docelowe są zgodne. Aby uzyskać więcej informacji, zobacz [Hadoop składniki i wersje dostępne w HDInsight](../hdinsight-component-versioning.md).
+Przed rozpoczęciem uaktualniania bazy danych Apache HBase, upewnij się, że wersje bazy danych HBase w klastrach źródłowe i docelowe są zgodne. Aby uzyskać więcej informacji, zobacz [Apache Hadoop, składniki i wersje, które udostępniono HDInsight](../hdinsight-component-versioning.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Zdecydowanie zalecamy przejrzenie macierz zgodności wersji w [książki HBase](https://hbase.apache.org/book.html#upgrading).
 
 Oto przykład wersji macierz zgodności, gdzie t wskazuje zgodności i N wskazuje potencjalne niezgodności:
@@ -54,7 +54,7 @@ Oto przykład wersji macierz zgodności, gdzie t wskazuje zgodności i N wskazuj
 | Zgodność zależności | Nie | Tak | Tak |
 | Zgodność operacyjną | Nie | Nie | Tak |
 
-> [!NOTE]
+> [!NOTE]  
 > Wszelkie niezgodności podziału powinny być opisane w informacjach o wersji bazy danych HBase.
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Uaktualnienie z tej samej wersji głównej bazy danych Apache HBase
@@ -203,7 +203,7 @@ Poniższy scenariusz ma dla uaktualnienie oprogramowania HDInsight 3.4 do 3.6 (w
 9. Uruchom ponownie wszystkie wymagane usługi, wskazane przez Ambari.
 10. Punkt aplikacji do nowego klastra.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Statyczny serwera DNS dla zmian aplikacji podczas uaktualniania. Zamiast kodować na tym DNS, można skonfigurować rekord CNAME w ustawieniach DNS nazwy domeny, które wskazuje nazwę klastra. Innym rozwiązaniem jest przy użyciu pliku konfiguracji aplikacji, którą można zaktualizować bez ponownego wdrażania.
 
 11. Rozpocznij wprowadzanie, aby zobaczyć, jeśli to wszystko działa zgodnie z oczekiwaniami.
@@ -211,7 +211,7 @@ Poniższy scenariusz ma dla uaktualnienie oprogramowania HDInsight 3.4 do 3.6 (w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat [bazy danych Apache HBase](http://hbase.apache.org/) i uaktualniania klastrów HDInsight, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat [bazy danych Apache HBase](https://hbase.apache.org/) i uaktualniania klastrów HDInsight, zobacz następujące artykuły:
 
 * [Uaktualnianie klastra usługi HDInsight do nowszej wersji](../hdinsight-upgrade-cluster.md)
 * [Monitorowanie i zarządzanie nimi w usłudze Azure HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](../hdinsight-hadoop-manage-ambari.md)

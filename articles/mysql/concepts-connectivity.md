@@ -2,20 +2,17 @@
 title: Obsługa błędów przejściowych łączności dla usługi Azure Database for MySQL | Dokumentacja firmy Microsoft
 description: Informacje o sposobie obsługi błędów przejściowych łączności dla usługi Azure Database for MySQL.
 keywords: połączenia z serwerem MySQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
-services: mysql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 2d7b62d5f45f495d36b1ed103155f8f3178451e8
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 8942223ce233d424e2368e90d2fbac92b1a443f3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887818"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544077"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mysql"></a>Obsługa błędów przejściowych łączności dla usługi Azure Database for MySQL
 
@@ -39,7 +36,7 @@ W przypadku pierwszego i drugiego są stosunkowo proste do obsługi. Spróbuj ot
 * Dla każdego następujących ponawiania próby, zwiększyć czas oczekiwania wykładniczo, maksymalnie 60 sekund.
 * Ustaw maksymalną liczbę ponownych prób w tym momencie aplikacji uwzględnia operacja nie powiodła się.
 
-Połączenie z aktywnej transakcji nie powiedzie się, jest trudniejsze do odzyskiwania poprawnie. Istnieją dwa przypadki: Jeśli transakcja została tylko do odczytu z natury, jest bezpieczne, aby ponownie otworzyć połączenie i spróbuj ponownie wykonać transakcję. Jeśli jednak jeśli transakcja została również zapisuje w bazie danych, należy określić, jeśli transakcja została wycofana, czy udało mu się przed wystąpił błąd przejściowy. W takiej sytuacji może po prostu nie otrzymano potwierdzenia zatwierdzenie z serwera bazy danych.
+Połączenie z aktywnej transakcji nie powiedzie się, jest trudniejsze do odzyskiwania poprawnie. Są dwa przypadki: Jeśli transakcja została tylko do odczytu z natury, jest bezpieczne, aby ponownie otworzyć połączenie i spróbuj ponownie wykonać transakcję. Jeśli jednak jeśli transakcja została również zapisuje w bazie danych, należy określić, jeśli transakcja została wycofana, czy udało mu się przed wystąpił błąd przejściowy. W takiej sytuacji może po prostu nie otrzymano potwierdzenia zatwierdzenie z serwera bazy danych.
 
 Jest jednym ze sposobów to zrobić, można wygenerować unikatowy identyfikator klienta, który jest używany dla wszystkich ponownych prób. Przekażesz ten unikatowy identyfikator w ramach transakcji do serwera i zapisz go w kolumnie z unikatowego ograniczenia. Dzięki temu można bezpiecznie spróbuj ponownie wykonać transakcję. Zakończy się pomyślnie, jeśli poprzednia transakcja została wycofana i unikatowy identyfikator klienta generowany jeszcze nie istnieje w systemie. Zakończy się niepowodzeniem, wskazująca zduplikowane naruszenie klucza, czy unikatowy identyfikator wcześniej została zapisana, ponieważ poprzednia transakcja została ukończona pomyślnie.
 

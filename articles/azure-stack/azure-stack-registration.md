@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 12/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 58dfb3f02b338d62fcfb10e4d8c1bc492cdacbda
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b036f0b1c38222b6bb3ebee1a3fab0d1613260f7
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890555"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811022"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -35,13 +35,13 @@ Informacje przedstawione w tym artykule opisano rejestrowanie systemów usługi 
 
 Będą potrzebne następujące elementy w miejscu, przed zarejestrowaniem:
 
- - Sprawdź swoje poświadczenia
+ - Weryfikowanie poświadczeń
  - Ustawianie trybu języka programu PowerShell
  - Instalowanie programu PowerShell dla usługi Azure Stack
  - Pobierz narzędzia usługi Azure Stack
  - Określić scenariusz rejestracji
 
-### <a name="verify-your-credentials"></a>Sprawdź swoje poświadczenia
+### <a name="verify-your-credentials"></a>Weryfikowanie poświadczeń
 
 Przed zarejestrowaniem usługi Azure Stack przy użyciu platformy Azure, musisz mieć:
 
@@ -300,15 +300,15 @@ Opcjonalnie służy polecenie cmdlet Get-Content wskaż plik zawierający tokenu
 
 ## <a name="verify-azure-stack-registration"></a>Weryfikuj rejestrację w usłudze Azure Stack
 
-Wykonaj następujące kroki, aby sprawdzić, usługi Azure Stack po pomyślnym zarejestrowaniu za pomocą platformy Azure.
+Możesz użyć **zarządzanie regionami** Kafelek, aby sprawdzić, czy rejestracji w usłudze Azure Stack zakończyła się pomyślnie. Ten Kafelek jest dostępny na domyślny pulpit nawigacyjny w portalu administratora. Stan mogą być zarejestrowane lub niezarejestrowany. Jeśli nie zarejestrowano, pokazuje również identyfikator subskrypcji platformy Azure umożliwia rejestrowanie usługi Azure Stack oraz rejestracji grupy zasobów i nazwę.
 
-1. Zaloguj się do usługi Azure Stack [portalu administracyjnego](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;region >. &lt;fqdn >*.
-2. Wybierz **wszystkich usług**, a następnie w obszarze **administracji** kategorii, wybierz opcję **zarządzania Marketplace** > **DodajplatformyAzure**.
+1. Zaloguj się do [portalu administratora usługi Azure Stack](https://adminportal.local.azurestack.external).
 
-Jeśli zobaczysz listę dostępnych na platformie Azure (takich jak WordPress) elementów, proces aktywacji zakończyło się pomyślnie. Jednak w środowiskach rozłączonych nie zobaczysz elementów portalu Azure marketplace w witrynie marketplace usługi Azure Stack.
+2. Na pulpicie nawigacyjnym wybierz **zarządzanie regionami**.
 
-> [!Note]  
-> Po zakończeniu rejestracji pojawi się nie jest już aktywne ostrzeżenie nie rejestrowania.
+    [ ![Kafelek Zarządzanie region](media/azure-stack-registration/admin1sm.png "Kafelek Zarządzanie regionu") ](media/azure-stack-registration/admin1.png#lightbox)
+
+3. Wybierz **właściwości**. Ten blok, stan i szczegółowe cechy danego środowiska. Możliwe stany **zarejestrowanej** lub **niezarejestrowany**. Jeśli nie zarejestrowano, pokazuje również identyfikator subskrypcji platformy Azure umożliwia rejestrowanie usługi Azure Stack, wraz z rejestracji grupy zasobów i nazwę.
 
 ## <a name="renew-or-change-registration"></a>Odnów lub zmienić rejestracji
 
@@ -434,9 +434,9 @@ Aby uruchomić polecenia cmdlet, potrzebne są:
 | AzureContext | PSObject |  |
 | ResourceGroupName | Ciąg |  |
 | ResourceGroupLocation | Ciąg |  |
-| BillingModel | Ciąg | Model rozliczeń, który korzysta z subskrypcji. Dozwolone wartości tego parametru to: pojemności, PayAsYouUse i rozwoju. |
+| BillingModel | Ciąg | Model rozliczeń, który korzysta z subskrypcji. Dozwolone wartości tego parametru to: Pojemność, PayAsYouUse i rozwoju. |
 | MarketplaceSyndicationEnabled | PRAWDA/FAŁSZ | Określa, czy funkcja zarządzania portalu marketplace jest dostępna w portalu. Ustaw wartość true, jeśli rejestrowanie przy użyciu łączności z Internetem. Ustawienie wartości false, jeśli rejestrowanie w środowiskach rozłączonych. Dla odłączonych rejestracji [narzędzie w trybie offline syndykacji](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) może służyć do pobierania elementów portalu marketplace. |
-| UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: True i False. |
+| UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: Wartość true, False. |
 | AgreementNumber | Ciąg |  |
 | registrationName | Ciąg | Ustawić unikatową nazwę dla rejestracji, jeśli skrypt rejestracji są uruchomione na więcej niż jedno wystąpienie usługi Azure Stack przy użyciu tego samego Azure identyfikator subskrypcji. Parametr ma wartość domyślną **AzureStackRegistration**. Jednak jeśli używasz tej samej nazwie w więcej niż jedno wystąpienie usługi Azure Stack, skrypt zakończy się niepowodzeniem. |
 
@@ -456,9 +456,9 @@ Get-AzsRegistrationToken spowoduje wygenerowanie tokenu rejestracji z poziomu pa
 | AzureContext | PSObject |  |
 | ResourceGroupName | Ciąg |  |
 | ResourceGroupLocation | Ciąg |  |
-| BillingModel | Ciąg | Model rozliczeń, który korzysta z subskrypcji. Dozwolone wartości tego parametru to: pojemności, PayAsYouUse i rozwoju. |
+| BillingModel | Ciąg | Model rozliczeń, który korzysta z subskrypcji. Dozwolone wartości tego parametru to: Pojemność, PayAsYouUse i rozwoju. |
 | MarketplaceSyndicationEnabled | PRAWDA/FAŁSZ |  |
-| UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: True i False. |
+| UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: Wartość true, False. |
 | AgreementNumber | Ciąg |  |
 
 

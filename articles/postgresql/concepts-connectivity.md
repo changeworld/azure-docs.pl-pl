@@ -1,21 +1,18 @@
 ---
-title: Obsługa błędów przejściowych łączności dla usługi Azure Database for PostgreSQL | Dokumentacja firmy Microsoft
+title: Obsługa błędów przejściowych łączności dla usługi Azure Database for PostgreSQL
 description: Informacje o sposobie obsługi błędów przejściowych łączności dla usługi Azure Database for PostgreSQL.
 keywords: połączenie postgresql, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
-services: postgresql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 021fad5e59e76444351711fb529c542d428af189
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 264656da38608026e3f9e866e2184ff55ba102d8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890064"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536223"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-postgresql"></a>Obsługa błędów przejściowych łączności dla usługi Azure Database for PostgreSQL
 
@@ -39,7 +36,7 @@ W przypadku pierwszego i drugiego są stosunkowo proste do obsługi. Spróbuj ot
 * Dla każdego następujących ponawiania próby, zwiększyć czas oczekiwania wykładniczo, maksymalnie 60 sekund.
 * Ustaw maksymalną liczbę ponownych prób w tym momencie aplikacji uwzględnia operacja nie powiodła się.
 
-Połączenie z aktywnej transakcji nie powiedzie się, jest trudniejsze do odzyskiwania poprawnie. Istnieją dwa przypadki: Jeśli transakcja została tylko do odczytu z natury, jest bezpieczne, aby ponownie otworzyć połączenie i spróbuj ponownie wykonać transakcję. Jeśli jednak jeśli transakcja została również zapisuje w bazie danych, należy określić, jeśli transakcja została wycofana, czy udało mu się przed wystąpił błąd przejściowy. W takiej sytuacji może po prostu nie otrzymano potwierdzenia zatwierdzenie z serwera bazy danych.
+Połączenie z aktywnej transakcji nie powiedzie się, jest trudniejsze do odzyskiwania poprawnie. Są dwa przypadki: Jeśli transakcja została tylko do odczytu z natury, jest bezpieczne, aby ponownie otworzyć połączenie i spróbuj ponownie wykonać transakcję. Jeśli jednak jeśli transakcja została również zapisuje w bazie danych, należy określić, jeśli transakcja została wycofana, czy udało mu się przed wystąpił błąd przejściowy. W takiej sytuacji może po prostu nie otrzymano potwierdzenia zatwierdzenie z serwera bazy danych.
 
 Jest jednym ze sposobów to zrobić, można wygenerować unikatowy identyfikator klienta, który jest używany dla wszystkich ponownych prób. Przekażesz ten unikatowy identyfikator w ramach transakcji do serwera i zapisz go w kolumnie z unikatowego ograniczenia. Dzięki temu można bezpiecznie spróbuj ponownie wykonać transakcję. Zakończy się pomyślnie, jeśli poprzednia transakcja została wycofana i unikatowy identyfikator klienta generowany jeszcze nie istnieje w systemie. Zakończy się niepowodzeniem, wskazująca zduplikowane naruszenie klucza, czy unikatowy identyfikator wcześniej została zapisana, ponieważ poprzednia transakcja została ukończona pomyślnie.
 

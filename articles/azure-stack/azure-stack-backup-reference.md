@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 35929d820ac6f72b83d6c3f25547255ca3423fc8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1edb4818ff7fda170d123ea8b81e6df9d620f354
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138450"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713577"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odwołanie do usługi Kopia zapasowa infrastruktury
 
 ## <a name="azure-backup-infrastructure"></a>Infrastruktura kopii zapasowej platformy Azure
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Usługa Azure Stack składa się z wielu usług, wchodzące w skład portalu usługi Azure Resource Manager, a środowisko zarządzania infrastrukturą. Możliwości zarządzania podobne urządzenia usługi Azure Stack koncentruje się na redukowania poziomu złożoności procesów udostępniane operatorowi rozwiązania.
 
@@ -87,9 +87,16 @@ Wymagane jest miedzy innymi:
 
 Infrastruktura kopii zapasowej kontrolera będzie kopię zapasową danych na żądanie. Zaleca się tworzenie kopii zapasowej ostatnio dwa razy dziennie i Kontynuuj, maksymalnie siedem dni kopii zapasowych. 
 
+**1811 i nowszych**
 | Skalowanie środowiska | Przewidywany rozmiar kopii zapasowej | Całkowita ilość miejsca wymaganego |
 |-------------------|--------------------------|--------------------------------|
-| 4 – 16 węzłów        | 10 GB                     | 140 GB                          |
+| 4 – 16 węzłów        | 20 GB                    | 280 GB                        |
+| ASDK              | 10 GB                    | 140 GB                        |
+
+**Wstępnie 1811**
+| Skalowanie środowiska | Przewidywany rozmiar kopii zapasowej | Całkowita ilość miejsca wymaganego |
+|-------------------|--------------------------|--------------------------------|
+| 4 – 16 węzłach, ASDK  | 10 GB                     | 140 GB                        |
 
 ### <a name="network-requirements"></a>Wymagania dotyczące sieci
 | Lokalizacja magazynu                                                                 | Szczegóły                                                                                                                                                                                 |
@@ -109,7 +116,7 @@ Te limity wziąć pod uwagę planowanie, wdrażanie i obsługiwanie swoich wyst�
 | Identyfikator limitu                                                 | Limit        | Komentarze                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Typ kopii zapasowej                                                      | Tylko pełne    | Infrastruktura kopii zapasowej kontroler obsługuje tylko pełne kopie zapasowe. Przyrostowe kopie zapasowe nie są obsługiwane.                                          |
-| Zaplanowane kopie zapasowe                                                | Tylko ręcznie  | Kopii zapasowej kontrolera aktualnie obsługuje tylko tworzenie kopii zapasowych na żądanie                                                                                 |
+| Zaplanowane kopie zapasowe                                                | Zaplanowane i ręczne  | Kontroler tworzenia kopii zapasowej obsługuje tworzenie kopii zapasowych zaplanowanych, jak i na żądanie                                                                                 |
 | Maksymalna liczba równoczesnych zadań tworzenia kopii zapasowej                                   | 1            | Tylko jedno aktywne zadanie tworzenia kopii zapasowych jest obsługiwana za wystąpienie usługi kopii zapasowej kontrolera.                                                                  |
 | Konfiguracja przełącznika sieci                                     | Nie znajduje się w zakresie | Administrator musi utworzyć kopię zapasową przy użyciu narzędzi OEM konfiguracja przełącznika sieci. Zajrzyj do dokumentacji dla usługi Azure Stack dostarczonego przez każdego producenta OEM. |
 | Host cyklu życia sprzętu                                          | Nie znajduje się w zakresie | Administrator musi utworzyć kopię zapasową sprzętu cyklu życia hosta, za pomocą narzędzi OEM. Zajrzyj do dokumentacji dla usługi Azure Stack dostarczonego przez każdego producenta OEM.      |

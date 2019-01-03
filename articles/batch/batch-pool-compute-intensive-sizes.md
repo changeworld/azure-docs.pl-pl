@@ -1,9 +1,8 @@
 ---
 title: Maszyny wirtualne platformy Azure intensywnie korzystających z obliczeń za pomocą usługi Batch | Dokumentacja firmy Microsoft
-description: Jak korzystać z obsługą dostępu RDMA lub włączonymi procesorami GPU rozmiarów maszyn wirtualnych w pulach usługi Azure Batch
-services: batch
+description: Jak korzystać z zalet HPC i maszyn wirtualnych GPU rozmiary w pulach usługi Azure Batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,18 +11,22 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2018
-ms.author: danlep
-ms.openlocfilehash: 6969f0c6a05ebf5b34fb746d2a83b884687ad710
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/17/2018
+ms.author: lahugh
+ms.openlocfilehash: 4663cb467d7d1d864425f4899c829b6618b9547c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258259"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584466"
 ---
-# <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Korzystać z obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch
+# <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Użyj wystąpień RDMA lub procesora GPU w pulach usługi Batch
 
-Do uruchomienia niektórych zadań wsadowych, można korzystać z zalet rozmiarów maszyny Wirtualnej platformy Azure, przeznaczony dla obliczeń na dużą skalę. Na przykład, aby uruchomić wiele wystąpień [obciążeń MPI](batch-mpi.md), możesz wybrać A8, A9, lub rozmiary serii H, które ma sieci interfejs dla zdalnego bezpośredniego dostępu do pamięci (RDMA). Te rozmiary nawiązać połączenia z siecią InfiniBand dla komunikacji między węzłami, która umożliwia przyspieszanie aplikacji MPI. W przypadku architektury CUDA aplikacji można też rozmiary serii N, obejmujące jednostkę GPU karty GPU NVIDIA Tesla.
+Do uruchomienia niektórych zadań wsadowych, możesz korzystać z zalet rozmiarów maszyny Wirtualnej platformy Azure, przeznaczony dla obliczeń na dużą skalę. Na przykład:
+
+* Aby uruchomić wiele wystąpień [obciążeń MPI](batch-mpi.md), wybierz serii H lub inne rozmiary, mających interfejs sieciowy dla zdalnego bezpośredniego dostępu do pamięci (RDMA). Te rozmiary nawiązać połączenia z siecią InfiniBand dla komunikacji między węzłami, która umożliwia przyspieszanie aplikacji MPI. 
+
+* W przypadku aplikacji CUDA wybierz rozmiary serii N, obejmujące jednostkę GPU karty GPU NVIDIA Tesla.
 
 Ten artykuł zawiera wskazówki i przykłady do używania niektórych specjalistycznych rozmiary platformy Azure w pulach usługi Batch. Aby uzyskać dane techniczne i tło Zobacz:
 
@@ -31,44 +34,30 @@ Ten artykuł zawiera wskazówki i przykłady do używania niektórych specjalist
 
 * Rozmiary maszyn wirtualnych z włączonymi procesorami GPU ([Linux](../virtual-machines/linux/sizes-gpu.md), [Windows](../virtual-machines/windows/sizes-gpu.md)) 
 
-
-## <a name="subscription-and-account-limits"></a>Limity konta i subskrypcji
-
-* **Limity przydziału i limity** — [limit przydziału rdzeni na konto usługi Batch](batch-quota-limit.md#resource-quotas) można ograniczyć liczbę węzłów o podanej wielkości, możesz dodać do puli usługi Batch. Jesteś bardziej prawdopodobne osiągnięcie limitu przydziału w przypadku wybrania wyspecjalizowanymi funkcją RDMA, obsługujące procesor GPU lub inne rozmiary maszyn wirtualnych. 
-
-  Ponadto korzystanie z niektórych rodzin maszyn wirtualnych na koncie usługi Batch, takie jak NCv2, NCv3 i ND, są ograniczone ze względu na ograniczoną pojemność. Użyj tych rodzin jest dostępna tylko przez żądanie zwiększenia limitu przydziału w domyślnej 0 rdzeni.  
-
-  Jeśli to konieczne, [zażądać zwiększenia limitu przydziału](batch-quota-limit.md#increase-a-quota) bez dodatkowych opłat.
-
-* **Dostępność w poszczególnych regionach** — intensywnych obliczeń maszyny wirtualne mogą nie być dostępne w regionach, w którym tworzenia kont usługi Batch. Aby sprawdzić, czy rozmiar jest dostępny, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/regions/services/).
-
+> [!NOTE]
+> Niektóre rozmiary maszyn wirtualnych mogą nie być dostępne w regionach, w którym tworzenia kont usługi Batch. Aby sprawdzić, czy rozmiar jest dostępny, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/regions/services/) i [wybierz rozmiar maszyny Wirtualnej dla puli usługi Batch](batch-pool-vm-sizes.md).
 
 ## <a name="dependencies"></a>Zależności
 
-Z funkcji RDMA i procesora GPU rozmiary wystąpień intensywnie są obsługiwane tylko w niektórych systemach operacyjnych. W zależności od systemu operacyjnego może być konieczne instalowania lub konfigurowania dodatkowych sterowników lub innego oprogramowania. W poniższej tabeli podsumowano te zależności. Zobacz połączonych artykułów, aby uzyskać szczegółowe informacje. Dla opcji, aby skonfigurować pule usługi Batch zobacz w dalszej części tego artykułu.
-
+Możliwości RDMA lub procesora GPU rozmiarów obliczeniowych w usłudze Batch są obsługiwane tylko w niektórych systemach operacyjnych. (Lista obsługiwanych systemów operacyjnych jest podzbiorem obsługiwana przez maszyny wirtualne utworzone w tych rozmiarów). W zależności od sposobu tworzenia puli usługi Batch może być konieczne instalowania lub konfigurowania sterowników dodatkowe lub inne oprogramowanie na węzłach. W poniższej tabeli podsumowano te zależności. Zobacz połączonych artykułów, aby uzyskać szczegółowe informacje. Dla opcji, aby skonfigurować pule usługi Batch zobacz w dalszej części tego artykułu.
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Pule Linux — konfiguracja maszyny wirtualnej
 
 | Rozmiar | Możliwości | Systemy operacyjne | Wymagane oprogramowanie | Ustawienia puli |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS,<br/>SUSE Linux Enterprise Server 12 HPC, or<br/>HPC opartych na systemie centOS<br/>(Portal azure Marketplace) | Intel MPI 5 | Włączanie komunikacji między węzłami, wyłączanie wykonywanie zadań jednoczesnych |
-| [NCv3 NC, NCv2, seria ND *](../virtual-machines/linux/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla GPU (różni się od serii) | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux w wersji 7.3 lub 7.4, lub<br/>CentOS 7.3 lub wersji 7.4<br/>(Portal azure Marketplace) | Sterowniki NVIDIA CUDA Toolkit | ND | 
-| [Seria NV](../virtual-machines/linux/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla M60 procesora GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3, lub<br/>CentOS 7.3<br/>(Portal azure Marketplace) | Sterowniki NVIDIA GRID | ND |
-
-* Mogą wymagać łączności RDMA na maszynach wirtualnych z funkcją RDMA serii N [dodatkowych czynności konfiguracyjnych](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) , zależy od dystrybucji.
-
-
+| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, nc24rs_v3 w warstwie, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, lub<br/>HPC opartych na systemie centOS<br/>(Portal azure Marketplace) | Intel MPI 5<br/><br/>Sterowniki RDMA systemu Linux | Włączanie komunikacji między węzłami, wyłączanie wykonywanie zadań jednoczesnych |
+| [NC, NCv2, NCv3, NDv2 serii](../virtual-machines/linux/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla GPU (różni się od serii) | Ubuntu 16.04 LTS, lub<br/>CentOS 7.3 lub wersji 7.4<br/>(Portal azure Marketplace) | Sterowniki NVIDIA CUDA lub CUDA Toolkit | ND | 
+| [NV, NVv2 serii](../virtual-machines/linux/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla M60 procesora GPU | Ubuntu 16.04 LTS, lub<br/>CentOS 7.3<br/>(Portal azure Marketplace) | Sterowniki NVIDIA GRID | ND |
+<sup>*</sup>Procesory GPU NVIDIA Tesla także obsługą dostępu RDMA rozmiary serii N
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Pule Windows — konfiguracja maszyny wirtualnej
 
 | Rozmiar | Możliwości | Systemy operacyjne | Wymagane oprogramowanie | Ustawienia puli |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2 lub<br/>2012 (Portal azure Marketplace) | Microsoft MPI 2012 R2 lub nowszym, lub<br/> Intel MPI 5<br/><br/>Rozszerzenie maszyny Wirtualnej platformy Azure HpcVMDrivers | Włączanie komunikacji między węzłami, wyłączanie wykonywanie zadań jednoczesnych |
-| [NCv3 NC, NCv2, seria ND *](../virtual-machines/windows/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla GPU (różni się od serii) | System Windows Server 2016 lub <br/>2012 R2 (Portal Azure Marketplace) | Sterowniki NVIDIA Tesla lub sterowniki CUDA Toolkit| ND | 
-| [Seria NV](../virtual-machines/windows/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla M60 procesora GPU | System Windows Server 2016 lub<br/>2012 R2 (Portal Azure Marketplace) | Sterowniki NVIDIA GRID | ND |
-
-* Łączność RDMA na maszynach wirtualnych z funkcją RDMA serii N jest obsługiwana w systemie Windows Server 2016 lub Windows Server 2012 R2 (z witryny Azure Marketplace) przy użyciu rozszerzenia HpcVMDrivers i Microsoft MPI lub Intel MPI.
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, nc24rs_v3 w warstwie, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 lub<br/>2012 (Portal azure Marketplace) | Microsoft MPI 2012 R2 lub nowszym, lub<br/> Intel MPI 5<br/><br/>Sterowniki Windows RDMA | Włączanie komunikacji między węzłami, wyłączanie wykonywanie zadań jednoczesnych |
+| [NC, NCv2, NCv3, ND, NDv2 serii](../virtual-machines/windows/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla GPU (różni się od serii) | System Windows Server 2016 lub <br/>2012 R2 (Portal Azure Marketplace) | Sterowniki NVIDIA CUDA lub CUDA Toolkit| ND | 
+| [NV, NVv2 serii](../virtual-machines/windows/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla M60 procesora GPU | System Windows Server 2016 lub<br/>2012 R2 (Portal Azure Marketplace) | Sterowniki NVIDIA GRID | ND |
+<sup>*</sup>Procesory GPU NVIDIA Tesla także obsługą dostępu RDMA rozmiary serii N
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Pule Windows — Konfiguracja usług Cloud services
 
@@ -78,66 +67,108 @@ Z funkcji RDMA i procesora GPU rozmiary wystąpień intensywnie są obsługiwane
 
 | Rozmiar | Możliwości | Systemy operacyjne | Wymagane oprogramowanie | Ustawienia puli |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 lub<br/>2008 R2 (rodzina systemów operacyjnych gościa) | Microsoft MPI 2012 R2 lub nowszym, lub<br/>Intel MPI 5<br/><br/>Rozszerzenie maszyny Wirtualnej platformy Azure HpcVMDrivers | Włączanie komunikacji między węzłami,<br/> Wyłącz zadanie współbieżne wykonywanie |
-
-
-
-
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 lub<br/>2008 R2 (rodzina systemów operacyjnych gościa) | Microsoft MPI 2012 R2 lub nowszym, lub<br/>Intel MPI 5<br/><br/>Sterowniki Windows RDMA | Włączanie komunikacji między węzłami,<br/> Wyłącz zadanie współbieżne wykonywanie |
 
 ## <a name="pool-configuration-options"></a>Opcje konfiguracji puli
 
-Aby skonfigurować wyspecjalizowane rozmiar maszyny Wirtualnej w puli usługi Batch, narzędzia i interfejsy API usługi Batch zapewniają kilka opcji do zainstalowania wymaganego oprogramowania lub sterowników, w tym:
+Aby skonfigurować wyspecjalizowane rozmiar maszyny Wirtualnej w puli usługi Batch, masz kilka opcji, aby zainstalować wymagane oprogramowanie i sterowniki:
 
-* [Zadanie podrzędne uruchamiania](batch-api-basics.md#start-task) — przekazywanie pakietu instalacyjnego jako plik zasobów do konta usługi Azure storage w taki sposób, w tym samym regionie co konto usługi Batch. Utwórz wiersz polecenia zadania uruchamiania do instalacji pliku zasobów w trybie dyskretnym, podczas uruchamiania puli. Więcej informacji zawiera [dokumentacja interfejsu API REST](/rest/api/batchservice/add-a-pool-to-an-account#bk_starttask).
+* W pulach w konfiguracji maszyny wirtualnej, wybierz wstępnie skonfigurowany [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) obrazu maszyny Wirtualnej, sterowników i wstępnie zainstalowanym oprogramowaniem. Przykłady: 
+
+  * [Opartych na systemie centOS 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) — sterowniki RDMA i Intel MPI 5.1
+
+  * [Maszyna wirtualna do nauki o danych](../machine-learning/data-science-virtual-machine/overview.md) dla systemu Linux lub Windows — zawiera sterowniki NVIDIA CUDA
+
+  * Obrazy systemu Linux dla obciążeń kontenerów usługi Batch, które również zawierał żadnych sterowników procesora GPU i RDMA:
+
+    * [CentOS (ze sterownikami procesora GPU i RDMA) dla pul kontenera usługi Azure Batch](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.centos-container-rdma?tab=Overview)
+
+    * [Serwer Ubuntu (ze sterownikami procesora GPU i RDMA) dla pul kontenera usługi Azure Batch](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.ubuntu-server-container-rdma?tab=Overview)
+
+* Tworzenie [niestandardowego obrazu Windows lub maszyny Wirtualnej systemu Linux](batch-custom-images.md) , na którym zainstalowano, sterowników, oprogramowania lub inne ustawienia wymagane dla rozmiaru maszyny Wirtualnej. 
+
+* Tworzenie partii [pakiet aplikacji](batch-application-packages.md) zip sterownika lub Instalator aplikacji i skonfigurować usługę Batch wdrożenie pakietu w węzłach puli i zainstalować, gdy podczas tworzenia każdego węzła. Na przykład, jeśli pakiet aplikacji jest Instalator, Utwórz [zadanie podrzędne uruchamiania](batch-api-basics.md#start-task) wiersza polecenia do przeprowadzenia instalacji dyskretnej aplikacji we wszystkich węzłach puli. Należy wziąć pod uwagę przy użyciu pakietu aplikacji, a zadanie podrzędne uruchamiania puli, jeśli obciążenie jest zależna od wersji określonego sterownika.
 
   > [!NOTE] 
-  > Zadanie podrzędne uruchamiania, należy uruchomić z uprawnieniami podniesionych uprawnień (Administrator), a następnie musi czekać w celu osiągnięcia sukcesu.
+  > Zadanie podrzędne uruchamiania, należy uruchomić z uprawnieniami podniesionych uprawnień (Administrator), a następnie musi czekać w celu osiągnięcia sukcesu. Długotrwałych zadań spowoduje wydłużenie czasu do aprowizacji puli usługi Batch.
   >
 
-* [Pakiet aplikacji](batch-application-packages.md) — dodawanie do pakietu instalacyjnego zip z kontem usługi Batch i konfigurowanie odwołania do pakietu w puli. To ustawienie zostanie przesłany i unzips pakietu we wszystkich węzłach w puli. Jeśli pakiet jest Instalator, Utwórz wiersz polecenia zadania uruchamiania do przeprowadzenia instalacji dyskretnej aplikacji we wszystkich węzłach puli. Opcjonalnie należy zainstalować pakiet, gdy zadanie jest zaplanowane do uruchomienia w węźle.
-
-* [Obraz niestandardowy puli](batch-custom-images.md) — Tworzenie obrazu niestandardowego Windows lub maszyny Wirtualnej systemu Linux, zawierający sterowniki, oprogramowanie lub inne ustawienia wymagane dla rozmiaru maszyny Wirtualnej. 
-
-* [Batch usługa Shipyard](https://github.com/Azure/batch-shipyard) automatycznie konfiguruje procesorów GPU i funkcję RDMA, które chcesz pracować przezroczyste konteneryzowanych obciążeń w usłudze Azure Batch. Usługa Batch Shipyard jest całkowicie oparte na za pomocą plików konfiguracji. Istnieje wiele przykładowych przepisu dostępne konfiguracje, które umożliwiają obsługiwanie obciążeń procesora GPU i RDMA, takie jak [przepisu GPU CNTK](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI) której wstępnie sterowników procesora GPU na maszynach wirtualnych serii N i ładuje oprogramowania Microsoft Cognitive Toolkit jako obraz platformy Docker.
+* [Batch usługa Shipyard](https://github.com/Azure/batch-shipyard) automatycznie konfiguruje sterowniki procesora GPU i RDMA do działają w sposób przezroczysty konteneryzowanych obciążeń w usłudze Azure Batch. Usługa Batch Shipyard jest całkowicie oparte na za pomocą plików konfiguracji. Istnieje wiele przykładowych przepisu dostępne konfiguracje, które umożliwiają obsługiwanie obciążeń procesora GPU i RDMA, takie jak [przepisu GPU CNTK](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI) której wstępnie sterowników procesora GPU na maszynach wirtualnych serii N i ładuje oprogramowania Microsoft Cognitive Toolkit jako obraz platformy Docker.
 
 
-## <a name="example-microsoft-mpi-on-an-a8-vm-pool"></a>Przykład: Microsoft MPI w puli maszyn wirtualnych A8
+## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>Przykład: Sterowniki procesora GPU firmy NVIDIA na pulę maszyn wirtualnych kontrolera sieci Windows
 
-Do uruchamiania aplikacji Windows MPI w ramach puli węzłów A8 platformy Azure, należy zainstalować obsługiwaną implementację MPI. Poniżej przedstawiono przykładowe kroki, aby zainstalować [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) na Windows puli przy użyciu pakietu aplikacji usługi Batch.
+Aby uruchamiać aplikacje CUDA w puli, węzłów kontrolera sieci Windows, musisz zainstalować sterowniki procesora GPU NVDIA. Następujące przykładowe Użyj pakietu aplikacji, aby zainstalować sterowniki procesora GPU firmy NVIDIA. Możesz wybrać tę opcję, jeśli obciążenie jest zależna od określonej wersji sterowników procesora GPU.
 
-1. Pobierz [pakiet instalacyjny](https://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe) do najnowszej wersji programu Microsoft MPI.
+1. Pobierz pakiet instalacyjny dla sterowników procesora GPU w systemie Windows Server 2016 z [witryny sieci Web firmy NVIDIA](http://us.download.nvidia.com/Windows/) — na przykład [wersji 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Zapisz plik lokalnie przy użyciu krótką nazwę, takich jak *GPUDriverSetup.exe*.
 2. Utwórz plik zip pakietu.
-3. Przekaż pakiet do konta usługi Batch. Aby uzyskać instrukcje, zobacz [pakiety aplikacji](batch-application-packages.md) wskazówki. Określ identyfikator aplikacji, takich jak *MSMPI*i wersji, takich jak *8.1*. 
-4. Korzystając z interfejsów API usługi Batch lub witryny Azure portal, Utwórz pulę w konfiguracji usług w chmurze z żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia, aby skonfigurować MPI w trybie nienadzorowanym, za pomocą zadania uruchamiania:
+3. Przekaż pakiet do konta usługi Batch. Aby uzyskać instrukcje, zobacz [pakiety aplikacji](batch-application-packages.md) wskazówki. Określ identyfikator aplikacji, takich jak *GPUDriver*i wersji, takich jak *411.82*.
+1. Korzystając z interfejsów API usługi Batch lub witryny Azure portal, Utwórz pulę w konfiguracji maszyny wirtualnej z żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia, aby zainstalować sterowniki procesora GPU NVIDIA dyskretnie za pomocą zadania uruchamiania:
 
 | Ustawienie | Wartość |
 | ---- | ----- | 
-| **Typ obrazu** | Cloud Services |
-| **Rodzina systemów operacyjnych** | Windows Server 2012 R2 (4. Rodzina systemów operacyjnych) |
-| **Rozmiar węzła** | Standardowa a8 |
-| **Włączono komunikację między węzłami** | True |
-| **Maksymalna liczba zadań na węzeł** | 1 |
-| **Odwołania do pakietu aplikacji** | MSMPI |
-| **Zadanie podrzędne uruchamiania włączone** | True<br>**Wiersz polecenia** - `"cmd /c %AZ_BATCH_APP_PACKAGE_MSMPI#8.1%\\MSMpiSetup.exe -unattend -force"`<br/>**Tożsamość użytkownika** — użytkownik automatyczny: puli, administratora<br/>**Zaczekaj na powodzenie** — jest to wartość True
+| **Typ obrazu** | Witryna Marketplace (Linux/Windows) |
+| **Wydawca** | MicrosoftWindowsServer |
+| **Oferta** | WindowsServer |
+| **Jednostka SKU** | 2016-Datacenter |
+| **Rozmiar węzła** | Standardowa NC6 |
+| **Odwołania do pakietu aplikacji** | GPUDriver, wersja 411.82 |
+| **Zadanie podrzędne uruchamiania włączone** | True<br>**Wiersz polecenia** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Tożsamość użytkownika** — użytkownik automatyczny: puli, administratora<br/>**Zaczekaj na powodzenie** — jest to wartość True
 
-## <a name="example-nvidia-tesla-drivers-on-nc-vm-pool"></a>Przykład: Sterowniki NVIDIA Tesla w puli maszyn wirtualnych kontrolera sieci
+## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Przykład: Sterowniki procesora GPU NVIDIA na pulę maszyn wirtualnych kontrolera sieci systemu Linux
 
-Do uruchamiania aplikacji CUDA na pulę węzłów systemu Linux przez kontroler sieci, należy zainstalować CUDA Toolkit 9.0 w węzłach. Zestaw narzędzi, instaluje niezbędne sterowniki procesor GPU NVIDIA Tesla. Poniżej przedstawiono przykładowe kroki, aby wdrożyć niestandardowy obraz Ubuntu 16.04 LTS ze sterownikami procesora GPU:
+Do uruchamiania aplikacji CUDA na pulę węzłów systemu Linux przez kontroler sieci, należy zainstalować potrzebne sterowniki procesor GPU NVIDIA Tesla z zestawu narzędzi CUDA. Następujące przykładowe tworzenie i wdrażanie niestandardowych obrazów systemu Ubuntu 16.04 LTS ze sterownikami procesora GPU:
 
-1. Wdrażanie platformy Azure serii NC maszyny Wirtualnej z systemem Ubuntu 16.04 LTS. Na przykład utworzyć maszynę Wirtualną w regionie południowo-środkowych stanów USA. Upewnij się, utworzyć maszynę Wirtualną w przypadku dysków zarządzanych.
-2. Postępuj zgodnie z instrukcjami, aby nawiązać połączenie z maszyną Wirtualną i [zainstalować sterowniki CUDA](../virtual-machines/linux/n-series-driver-setup.md).
-3. Anulowanie aprowizacji agenta systemu Linux, a następnie [Przechwytywanie obrazu maszyny Wirtualnej systemu Linux](../virtual-machines/linux/capture-image.md).
+1. Wdrażanie platformy Azure serii NC maszyny Wirtualnej z systemem Ubuntu 16.04 LTS. Na przykład utworzyć maszynę Wirtualną w regionie południowo-środkowych stanów USA. 
+2. Dodaj [rozszerzenia sterowników procesora GPU NVIDIA](../virtual-machines/extensions/hpccompute-gpu-linux.md
+) z maszyną wirtualną przy użyciu witryny Azure portal, komputer kliencki łączący się z subskrypcją platformy Azure lub usługi Azure Cloud Shell. Alternatywnie, wykonaj kroki, aby nawiązać połączenie z maszyną Wirtualną i [zainstalować sterowniki CUDA](../virtual-machines/linux/n-series-driver-setup.md) ręcznie.
+3. Postępuj zgodnie z instrukcjami, aby utworzyć [migawki i niestandardowego obrazu maszyny Wirtualnej systemu Linux](batch-custom-images.md) dla usługi Batch.
 4. Utwórz konto usługi Batch w regionie, który obsługuje maszyny wirtualne kontrolera sieci.
 5. Za pomocą interfejsów API usługi Batch lub witryny Azure portal, Utwórz pulę [przy użyciu niestandardowego obrazu](batch-custom-images.md) i żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia puli dla obrazu:
 
 | Ustawienie | Wartość |
 | ---- | ---- |
 | **Typ obrazu** | Obraz niestandardowy |
-| **Obraz niestandardowy** | Nazwa obrazu |
+| **Obraz niestandardowy** | *Nazwa obrazu* |
 | **Jednostkę SKU węzła agenta** | batch.node.ubuntu 16.04 |
 | **Rozmiar węzła** | Standardowa NC6 |
 
+## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Przykład: Microsoft MPI w puli maszyn wirtualnych H16r Windows
 
+Do uruchamiania aplikacji Windows MPI w ramach puli węzłów maszyny Wirtualnej platformy Azure H16r, musisz skonfigurować rozszerzenie HpcVmDrivers i zainstalować [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi). Poniżej przedstawiono przykładowe kroki, aby wdrożyć niestandardowy obraz systemu Windows Server 2016 za pomocą niezbędne sterowniki i oprogramowanie:
+
+1. Wdróż Maszynę wirtualną platformy Azure H16r systemem Windows Server 2016. Na przykład utworzyć maszynę Wirtualną w regionie zachodnie stany USA. 
+2. Dodaje do maszyny Wirtualnej przez rozszerzenie HpcVmDrivers [polecenia programu Azure PowerShell](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
+) z poziomu komputera klienckiego, który nawiązuje połączenie z subskrypcją platformy Azure lub przy użyciu usługi Azure Cloud Shell. 
+1. Utwórz połączenie pulpitu zdalnego do maszyny Wirtualnej.
+1. Pobierz [pakiet instalacyjny](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup.exe) Aby uzyskać najnowszą wersję programu Microsoft MPI oraz instalacja Microsoft MPI.
+1. Postępuj zgodnie z instrukcjami, aby utworzyć [migawki i niestandardowego obrazu maszyny Wirtualnej Windows](batch-custom-images.md) dla usługi Batch.
+1. Za pomocą interfejsów API usługi Batch lub witryny Azure portal, Utwórz pulę [przy użyciu niestandardowego obrazu](batch-custom-images.md) i żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia puli dla obrazu:
+
+| Ustawienie | Wartość |
+| ---- | ---- |
+| **Typ obrazu** | Obraz niestandardowy |
+| **Obraz niestandardowy** | *Nazwa obrazu* |
+| **Jednostkę SKU węzła agenta** | Batch.node.Windows amd64 |
+| **Rozmiar węzła** | Standardowa H16r |
+| **Włączono komunikację między węzłami** | True |
+| **Maksymalna liczba zadań na węzeł** | 1 |
+
+## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Przykład: Intel MPI w puli maszyn wirtualnych Linux H16r
+
+Do uruchamiania aplikacji MPI w puli systemu Linux H-series na węzłach, jednym rozwiązaniem jest użycie [opartych na systemie CentOS 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) obrazu z witryny Azure Marketplace. Zostanie wstępnie zainstalowane sterowniki RDMA systemu Linux i Intel MPI. Ten obraz obsługuje również obciążeń kontenerów platformy Docker.
+
+Za pomocą interfejsów API usługi Batch lub witrynie Azure portal utworzyć pulę przy użyciu tego obrazu i żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia puli:
+
+| Ustawienie | Wartość |
+| ---- | ---- |
+| **Typ obrazu** | Witryna Marketplace (Linux/Windows) |
+| **Wydawca** | OpenLogic |
+| **Oferta** | CentOS HPC |
+| **Jednostka SKU** | 7.4 |
+| **Rozmiar węzła** | Standardowa H16r |
+| **Włączono komunikację między węzłami** | True |
+| **Maksymalna liczba zadań na węzeł** | 1 |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

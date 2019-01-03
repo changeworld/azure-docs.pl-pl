@@ -1,5 +1,5 @@
 ---
-title: Rozpoznawanie tekstu drukowanego lub ręcznie — przetwarzanie obrazów
+title: Rozpoznawanie tekstu drukowanego, pisma odręcznego - przetwarzania obrazów
 titleSuffix: Azure Cognitive Services
 description: Pojęcia związane z rozpoznawanie tekstu drukowanego i pisma odręcznego na obrazach za pomocą interfejsu API przetwarzania obrazów.
 services: cognitive-services
@@ -10,18 +10,19 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 6827bf5f983834dc5222a3f3028386f8bbcb253a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: b23140eef4de904fb862253b6511b6fc2b1ce6dd
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338104"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582273"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 
 Przetwarzanie obrazów, można wykryć i wyodrębnianie tekstu drukowanych lub pisma odręcznego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody, plakaty, wizytówki, litery i tablic.
 
-Rozpoznawanie tekstu oszczędza czas i nakład pracy. Można zwiększyć produktywność biorąc obrazu, tekstu zamiast jego przepisywania. Rozpoznawanie tekstu pozwala na przekształcanie notatek do. Ta digitization pozwala na implementowanie szybkiego i prostego wyszukiwania. Zmniejsza ona również nieład związany z dużą ilością papieru.
+Rozpoznawanie tekstu oszczędza czas i nakład pracy. Można zwiększyć produktywność biorąc obrazu, tekstu zamiast jego przepisywania. Rozpoznawanie tekstu pozwala na przekształcanie notatek do. Taka cyfryzacja pozwala na wdrożenie szybkiego i łatwego wyszukiwania. Zmniejsza ona również nieład związany z dużą ilością papieru.
 
 ## <a name="text-recognition-requirements"></a>Wymagania dotyczące rozpoznawania tekstu
 

@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308222"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653309"
 ---
-# <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix najlepsze rozwiązania w zakresie wydajności
+# <a name="apache-phoenix-performance-best-practices"></a>Najlepsze rozwiązania w zakresie wydajności dla rozwiązania Apache Phoenix
 
-Najważniejszym aspektem [Apache Phoenix](https://phoenix.apache.org/) wydajność jest zoptymalizować bazowego [bazy danych Apache HBase](http://hbase.apache.org/). Phoenix tworzy na jego podstawie bazy danych HBase, który konwertuje zapytań SQL na operacje bazy danych HBase, takie jak skanowanie modelu opartego na danych relacyjnych. Projektowanie schematu tabeli, wybór i kolejność pól na klucz podstawowy i korzystanie z wszystkich indeksów wpłynąć na wydajność Phoenix.
+Najważniejszym aspektem [Apache Phoenix](https://phoenix.apache.org/) wydajność jest zoptymalizować bazowego [bazy danych Apache HBase](https://hbase.apache.org/). Phoenix tworzy na jego podstawie bazy danych HBase, który konwertuje zapytań SQL na operacje bazy danych HBase, takie jak skanowanie modelu opartego na danych relacyjnych. Projektowanie schematu tabeli, wybór i kolejność pól na klucz podstawowy i korzystanie z wszystkich indeksów wpłynąć na wydajność Phoenix.
 
 ## <a name="table-schema-design"></a>Projekt schematu tabeli
 
@@ -225,9 +225,9 @@ Jeśli dany scenariusz preferuje szybkość zapisu za pośrednictwem integralno�
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-Aby uzyskać więcej informacji na ten temat i inne opcje, zobacz [gramatyki Phoenix](http://phoenix.apache.org/language/index.html#options).
+Aby uzyskać więcej informacji na ten temat i inne opcje, zobacz [Apache Phoenix gramatyki](https://phoenix.apache.org/language/index.html#options).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Przewodnik dostosowywania programu Apache Phoenix](https://phoenix.apache.org/tuning_guide.html)
-* [Indeksy pomocnicze](http://phoenix.apache.org/secondary_indexing.html)
+* [Indeksy pomocnicze](https://phoenix.apache.org/secondary_indexing.html)

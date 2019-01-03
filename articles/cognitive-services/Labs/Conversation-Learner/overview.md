@@ -1,7 +1,7 @@
 ---
-title: Co to jest uczeń konwersacji? -Microsoft kognitywnych usług | Dokumentacja firmy Microsoft
+title: Czym jest Uczeń konwersacji? — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Więcej informacji na temat uczeń konwersacji i jak działa.
+description: Więcej informacji na temat uczeń konwersacji i sposób jej działania.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,38 +10,38 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9cbf0e60382ef17d68aab47cf5f24ea9b8434f13
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348612"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790779"
 ---
-# <a name="what-is-conversation-learner"></a>Co to jest uczeń konwersacji?
+# <a name="what-is-conversation-learner"></a>Czym jest Uczeń konwersacji?
 
-Uczeń konwersacji umożliwia tworzenie i uczenie konwersacji interfejsów, które informacje z przykład interakcji. 
+Uczeń konwersacji umożliwia tworzenie i uczenie interfejsy konwersacyjne obsługujące, które uczą się z interakcji przykład. 
 
-W przeciwieństwie do tradycyjnych metod uczeń konwersacji uwzględnia kontekście end-to-end dialogu do poprawy odpowiedzi i dostarczania więcej atrakcyjnych środowiska użytkownika. Łączenie węzłów szeroką gamę zadań zastosowań, uczeń konwersacji mają zastosowanie maszyny uczenie się w tle robotów i agentów inteligentnych rzadziej frustrować użytkowników, pociągnąć za sobą dodatkowe klienta usługi koszty i bardziej intuicyjne wchodzić w interakcje z.
+W odróżnieniu od tradycyjnych metod uczeń konwersacji uwzględnia end-to-end kontekście dialogu, aby poprawić odpowiedzi i oferować bardziej atrakcyjne środowiska użytkownika. Obejmujące szeroką gamę zadań przypadki użycia, uczeń konwersacji dotyczy usługi machine learning w tle roboty i agentów inteligentnych, które są mniej prawdopodobne frustrować użytkowników, pociągnąć za sobą dodatkowych klientów usługi koszty i więcej więcej spur intuicyjne interakcje.
 
-Aby rozpocząć, deweloper przechodzi prototypowego okna dialogowe, które mają być naśladującej. Wprowadzoną więcej okien dialogowych modelu jest stale aktualizowany, a deweloper można zobaczyć, jak jest uogólnianie modelu. Gdy model działa dobrze, bot można wdrożyć dla użytkowników końcowych. Uczeń konwersacji rejestruje konwersacji z użytkownikami, a deweloper można przeglądać je. Jeśli błędy są wykrył, deweloper wprowadzić korekty na miejscu i model jest retrained i dostępne do użycia natychmiast.
+Deweloperzy zacznij od wprowadzenia prototypowe okien dialogowych, które mają być naśladowania. Model dowiaduje się, ponieważ wprowadzono więcej okien dialogowych. Gdy Model działa dobrze, Bot można wdrożyć dla użytkowników końcowych. Uczeń konwersacji dzienniki rozmów z użytkownikami, a deweloper może zapoznaj się z nimi. Jeśli błędy są wykrył, deweloper może być korekcji na miejscu i model, który jest od razu retrained i dostępne do użycia.
 
-Takie podejście zmniejsza ręczne kodowania logiki kontroli dialogu i umożliwia właściciele firm lub ekspertów domeny przyczyniają się do konwersacji interfejsu bez uprzedniego maszyny uczenia wiedzy. Czy wdrożony jako część bot, urządzenia przenośne lub agenta inteligentnego uczeń konwersacji można szybko przejść nowe umiejętności, zachowania lub umiejętności i szybko poprawić jakość ich. 
+Takie podejście zmniejsza kodowania ręcznego logiki formantu dialogu i umożliwia właściciele firm lub ekspertów z konkretnych dziedzin przyczyniają się do konwersacji interfejsu bez uprzedniego usługi machine learning wiedzy. Czy wdrożony jako część bota, urządzenia przenośne lub agenta inteligentne uczeń konwersacji można błyskawiczne tworzenie iteracji nowe umiejętności, zachowania lub kompetencje i szybko zwiększyć ich jakość. 
 
-Uczeń konwersacji umożliwia deweloperom zwiększenia szybkości na rynek i dysku pomyślne dialogu przez kanały konwersacji za pomocą programu Microsoft Bot Framework lub autonomiczny przy użyciu własnej infrastruktury.
+Uczeń konwersacji umożliwia deweloperom zwiększenie szybkości to-market i sterować ich pomyślne dialogu przez wiele kanałów konwersacji za pośrednictwem platformy Microsoft Bot Framework lub trybie autonomicznym za pomocą własnej infrastruktury.
 
 Podsumowanie i najważniejsze funkcje:
 
-- Uczeń konwersacji to sposób AI pierwszego tworzenia robotów zorientowane na zadania.
+- Uczeń konwersacji jest to pierwszy sztucznej Inteligencji sposób tworzenia botów zadań.
 
-- Opiera się na powtarzającego się sieci neuronowej na trasie (LSTM) i uzyskuje informacje o bezpośrednio z wieloma Włącz przykłady konwersacji. 
+- Opiera się na powtarzającego się sieci neuronowej end-to-end (LSTM) i uczy się bezpośrednio z wielu Włącz przykłady konwersacji. 
 
-- Umożliwia projektantom, deweloperzy użytkownicy biznesowi i pracowników Centrum wywołania do tworzenia i utrzymywania robotów. 
+- Umożliwia projektantów, deweloperów, użytkownicy biznesowi i pracowników Centrum połączenia, do tworzenia i utrzymywania botów. 
 
-- Zapewnia możliwość express reguł biznesowych i rozsądkiem w kodzie.
+- Umożliwia określenie reguł biznesowych i zdroworozsądkowe w kodzie.
 
-- Podczas nauczania sesji, modelu sieci neuronowej służy do wyniku dalej zbiór akcji oczekiwanego w konwersacji. Deweloper bot można wybierz poprawnej akcji i uczenia sieci w celu zapewnienia prawidłowego odpowiedzi.
+- Podczas nauczania sesje, modelu sieci neuronowej służy do oceniania kolejny zbiór akcji oczekiwanego w konwersacji. Bot deweloper może następnie wybierz odpowiednich akcji i uczenie sieci w celu zapewnienia właściwej odpowiedzi.
  
-- Po ukończeniu szkolenia deweloper może użyć okna dialogowe dziennika z interakcji użytkownika w celu poprawić bot odpowiedzi i ponownie ucz modelu. 
+- Po zakończeniu szkolenia Deweloper można użyć okien dialogowych dziennika z interakcji użytkownika można wprowadzić korekty do odpowiedzi bot i ponowne szkolenie modelu. 
 
-- Mogą wywoływać interfejsy API specyficznego dla domeny i innych firm do ukończenia zadania.
+- Można wywołać specyficznego dla domeny i innych interfejsów API w celu wykonania zadań.
 

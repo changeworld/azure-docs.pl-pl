@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: a30311f8b171d80e036b4e554b2f1026b43c8a67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287612"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604775"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Dowiesz się, jak uruchomić mikrousługi w programie Visual Studio. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługa IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights usług w chmurze.
+W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Dowiesz się, jak uruchomić mikrousługi w programie Visual Studio. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługi IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights w chmurze.
 
 Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego na platformie Docker na komputerze lokalnym, zobacz [wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
@@ -36,7 +36,7 @@ Aby wykonać wdrożenie lokalne, potrzebne są następujące narzędzia, które 
 * [Usługa Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Program Visual Studio](https://visualstudio.microsoft.com/)
-* [Nginx](http://nginx.org/en/download.html)
+* [Nginx](https://nginx.org/en/download.html)
 * [Node.js v8](https://nodejs.org/) — to oprogramowanie jest wymagane w przypadku komputerów z systemem interfejsu wiersza polecenia, które skrypty umożliwia tworzenie zasobów platformy Azure. Nie używaj Node.js v10.
 
 > [!NOTE]
@@ -101,7 +101,7 @@ Konfigurowanie zwrotnego serwera proxy do łączenia aplikacji sieci web i mikro
 * Kopiuj **nginx.conf** plik wchodzącej w skład **webui\scripts\localhost** folder **nginx\conf** katalog_instalacji.
 * Uruchom **nginx**.
 
-Aby uzyskać więcej informacji o uruchamianiu **nginx**, zobacz [nginx dla Windows](http://nginx.org/en/docs/windows.html).
+Aby uzyskać więcej informacji o uruchamianiu **nginx**, zobacz [nginx dla Windows](https://nginx.org/en/docs/windows.html).
 
 ### <a name="connect-to-the-dashboard"></a>Łączenie do pulpitu nawigacyjnego
 

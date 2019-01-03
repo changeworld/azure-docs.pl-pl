@@ -8,16 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: d741677252ba6787701b9ee9da84ebd38528d70e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 06909c06087219cdfa6edccbfed70ea1694e5a03
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432158"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633731"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Tworzenie i testowanie nowych symulowanych urządzeń
 
 Akcelerator rozwiązania monitorowania zdalnego umożliwia definiowanie symulowanych urządzeń. W tym artykule pokazano, jak zdefiniować nowe urządzenie symulowane żarówki i przetestować go lokalnie. Akcelerator rozwiązań obejmuje symulowane urządzenia, takie jak chłodniach i ciężarówek. Można jednak zdefiniować symulowanych urządzeń do testowania rozwiązań IoT, przed przystąpieniem do wdrażania prawdziwych urządzeń.
+
+> [!NOTE]
+> W tym artykule opisano korzystanie z symulowanych urządzeń hostowanej w usłudze symulacji urządzenia. Jeśli chcesz utworzyć urządzenie fizyczne, zobacz [Podłączanie urządzenia do akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices.md).
 
 Ten poradnik pokazuje, jak dostosować mikrousług symulacji urządzenia. Ta mikrousług jest częścią akceleratora rozwiązania monitorowania zdalnego. Aby wyświetlić urządzenia symulacji możliwości, w tym przewodniku używa dwa scenariusze aplikacji IoT firmy Contoso:
 

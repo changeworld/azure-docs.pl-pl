@@ -11,14 +11,15 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 478727a4d3628fbe6a385e3beb28201c228f9e2d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8ea180131ce2f9e1288c3ffb928170be55a77de7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078242"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598454"
 ---
-# <a name="luis-api-http-response-codes"></a>Kody odpowiedzi HTTP interfejsu API usługi LUIS
+# <a name="common-api-response-codes-and-their-meaning"></a>Typowe kody odpowiedzi interfejsu API oraz ich znaczenie
+
 [Tworzenia](https://aka.ms/luis-authoring-apis) i [punktu końcowego](https://aka.ms/luis-endpoint-apis) interfejsy API zwracają kody odpowiedzi HTTP. Chociaż komunikatach odpowiedzi zawiera informacje specyficzne dla żądania, kod stanu odpowiedzi HTTP jest ogólny. 
 
 ## <a name="common-status-codes"></a>Typowe kody stanu
@@ -38,3 +39,7 @@ W poniższej tabeli wymieniono niektóre najbardziej typowe kody stanu odpowiedz
 |410|Endpoint|Aplikacja musi być retrained i ponowne opublikowanie|
 |414|Endpoint|kwerendy przekracza maksymalną dozwoloną długość|
 |429|Tworzenie punktu końcowego|Przekroczono limit szybkości (żądań na sekundę)|
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Interfejs API REST [tworzenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) i [punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) dokumentacji

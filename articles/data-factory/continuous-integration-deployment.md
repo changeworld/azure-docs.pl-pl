@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 950336db215bbca76f20c15527397212c6fe5ffd
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623799"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554932"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
@@ -733,12 +733,12 @@ Poniżej przedstawiono przykładowy skrypt, aby zatrzymać wyzwalaczy przed przy
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder="$(env:System.DefaultWorkingDirectory)/Dev/",
-    [parameter(Mandatory = $false)] [String] $armTemplate="$rootFolder\arm_template.json",
-    [parameter(Mandatory = $false)] [String] $ResourceGroupName="sampleuser-datafactory",
-    [parameter(Mandatory = $false)] [String] $DataFactoryName="sampleuserdemo2",
-    [parameter(Mandatory = $false)] [Bool] $predeployment=$true
-
+    [parameter(Mandatory = $false)] [String] $rootFolder,
+    [parameter(Mandatory = $false)] [String] $armTemplate,
+    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
+    [parameter(Mandatory = $false)] [String] $DataFactoryName,
+    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
+    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
 )
 
 $templateJson = Get-Content $armTemplate | ConvertFrom-Json
@@ -762,7 +762,6 @@ if ($predeployment -eq $true) {
     }
 }
 else {
-
     #Deleted resources
     #pipelines
     Write-Host "Getting pipelines"
@@ -789,7 +788,7 @@ else {
     $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
 
-    #delte resources
+    #Delete resources
     Write-Host "Deleting triggers"
     $deletedtriggers | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
@@ -820,7 +819,25 @@ else {
         Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
 
-    #Start Active triggers - After cleanup efforts (moved code on 10/18/2018)
+    if ($deleteDeployment -eq $true) {
+        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
+        $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
+        $deploymentName = $deploymentsToConsider[0].DeploymentName
+
+       Write-Host "Deployment to be deleted: " $deploymentName
+        $deploymentOperations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
+
+        $deploymentsToDelete | ForEach-Object { 
+            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
+            Remove-AzureRmResourceGroupDeployment -Id $_.properties.targetResource.id
+        }
+        Write-Host "Deleting deployment: " $deploymentName
+        Remove-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+    }
+
+    #Start Active triggers - After cleanup efforts
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
@@ -958,3 +975,17 @@ Poniższy przykład przedstawia przykładowy plik parametrów. Użyj tego przyk�
     }
 }
 ```
+
+## <a name="linked-resource-manager-templates"></a>Połączone szablony usługi Resource Manager
+
+Jeśli skonfigurowano ciągłej integracji i ciągłego wdrażania (CI/CD) fabryk danych, można zaobserwować, że wraz z rozwojem większe fabryką napotkasz limity szablonu usługi Resource Manager, takich jak maksymalna liczba zasobów lub maksymalna ładunku w zasobie Szablon menedżera. Dla scenariuszy, takich jak te, wraz z generowania pełnego szablonu usługi Resource Manager dla fabryki Data Factory teraz również generuje szablonów połączonej usługi Resource Manager. Co w efekcie masz ładunku całej fabryki podzielone na kilka plików, tak aby nie wystąpiły wyżej limity.
+
+Jeśli masz skonfigurowane usługi Git, połączonymi szablonami wygenerowana i zapisana wraz z pełną szablonów usługi Resource Manager w `adf_publish` gałęzi, w obszarze Nowy folder o nazwie `linkedTemplates`.
+
+![Folder połączony szablonów usługi Resource Manager](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+
+Szablony połączonej usługi Resource Manager mają zwykle głównego szablonu i zestawu szablonów podrzędny połączony z poziomu głównego. Nosi nazwę szablonu nadrzędnego `ArmTemplate_master.json`, o nazwie szablony podrzędnych za pomocą wzorca `ArmTemplate_0.json`, `ArmTemplate_1.json`i tak dalej. Aby przenieść z przy użyciu pełny szablon usługi Resource Manager do korzystania z połączonymi szablonami, należy zaktualizować Twojego zadania ciągłej integracji/ciągłego wdrażania, aby wskazywał `ArmTemplate_master.json` zamiast wskazujący `ArmTemplateForFactory.json` (czyli pełny szablon usługi Resource Manager). Resource Manager wymaga przekazania połączonymi szablonami na konto magazynu, dzięki czemu są one dostępne na platformie Azure podczas wdrażania. Aby uzyskać więcej informacji, zobacz [wdrażanie połączonymi szablonami ARM za pomocą usługi VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+
+Pamiętaj, aby dodać skrypty fabryki danych w potoku ciągłej integracji/ciągłego wdrażania, przed i po nim zadania wdrażania.
+
+Jeśli nie masz skonfigurowane w usłudze Git połączone szablony są dostępne za pośrednictwem **szablonu ARM wyeksportować** gestu.

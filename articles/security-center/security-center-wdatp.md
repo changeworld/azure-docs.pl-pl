@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 12/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 1109e72d00ccddd6fc0f120ee71c88adaae72fed
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b73bf3e542801e58fbda6232eb063305785ce643
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337601"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536274"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Usługa Windows Defender Zaawansowana ochrona przed zagrożeniami w usłudze Azure Security Center
 
@@ -57,7 +57,21 @@ Ta funkcja obsługuje wykrywanie w systemie Windows Server 2012 R2 i Windows Ser
 
 Obsługiwane są tylko serwery w ramach subskrypcji w warstwie usługi standardowa.
 
-## <a name="onboarding-instructions"></a>Instrukcje dołączania
+## <a name="onboarding-servers-to-security-center"></a>Serwery przy dołączaniu do usługi Security Center 
+
+Aby dodać serwery do usługi Security Center, kliknij przycisk **przejdź do usługi Azure Security Center, aby dołączyć serwery** z dołączania serwera usługi Windows Defender ATP.
+
+1. W **dołączania** bloku wybierz lub Utwórz obszar roboczy, w którym będą przechowywane dane. <br>
+2. Jeśli nie widzisz wszystkich Twoich obszarach roboczych, może być spowodowane brakiem uprawnień, upewnij się, że obszar roboczy jest ustawiony do warstwy Standard zabezpieczeń platformy Azure. Aby uzyskać więcej informacji, zobacz [uaktualnienie do warstwy standardowa Security Center w celu uzyskania zwiększonych zabezpieczeń](security-center-pricing.md).
+    
+3.  Wybierz **dodawania serwerów** Aby wyświetlić instrukcje dotyczące sposobu instalowania programu Microsoft Monitoring Agent. 
+
+4.  Po dołączeniu, można monitorować maszyny znajdujące się w **obliczeniowe i aplikacje**.
+
+  ![Dodawanie komputerów](media/security-center-wdatp/onboard-computers.png)
+
+
+## <a name="enable-windows-defender-atp-integration"></a>Włączanie integracji usługi Windows Defender ATP
 
 Aby sprawdzić, czy integracja usługi Windows Defender ATP jest włączona, wybierz **usługi Security center** > **zasady zabezpieczeń** > **subskrypcji**  >  **Edytować ustawienia**.
 

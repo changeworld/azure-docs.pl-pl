@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Time Series Insights Dodaj Centrum zdarzeń — Dodawanie usługi Event Hubs źródła zdarzeń do usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Dodawanie źródła zdarzeń usługi Event Hubs do usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób dodawania źródła zdarzeń, który jest podłączony do usługi Azure Event Hubs do środowiska usługi Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6e7a6a089681ac9f7c0de5244feb3aea67052f25
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d4a80358535429f53b582abe8560757028159070
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274211"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557788"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń Centrum zdarzeń do środowiska usługi Time Series Insights
 

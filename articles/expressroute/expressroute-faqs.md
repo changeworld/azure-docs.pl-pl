@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0621c2d1632dead41463810b9e71ebf0404a8cbe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6de5fefa3d70c1daecf00909d3ce44d4a4d8561c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077753"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543567"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -27,7 +27,7 @@ Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Inter
 
 ### <a name="where-is-the-service-available"></a>Gdy usługa jest dostępna
 
-Ta strona lokalizacji usługi i dostępność: [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md).
+Ta strona służy do lokalizacji usługi i dostępności: [Usługa ExpressRoute partnerzy i lokalizacje](expressroute-locations.md).
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Jak używać usługi ExpressRoute do łączenia się z firmą Microsoft, jeśli nie mam partnerstwa z jednym z partnerów operatora usługi ExpressRoute?
 
@@ -166,7 +166,7 @@ Tak. Może mieć maksymalnie 10 połączeń sieci wirtualnych na standardowy obw
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Masz wiele subskrypcji platformy Azure, które zawierają sieci wirtualne. Czy można połączyć sieci wirtualne, które znajdują się w osobnych subskrypcji do jednego obwodu usługi ExpressRoute?
 
-Tak. Możesz autoryzować maksymalnie 10 innych subskrypcji platformy Azure można używać jednego obwodu usługi ExpressRoute. Ten limit można zwiększyć przez włączenie funkcji premium usługi ExpressRoute.
+Tak. Można połączyć więcej niż 10 sieciami wirtualnymi w innej subskrypcji niż obwód lub różnych subskrypcji przy użyciu jednego obwodu usługi ExpressRoute. Ten limit można zwiększyć przez włączenie funkcji premium usługi ExpressRoute.
 
 Aby uzyskać więcej informacji, zobacz [udostępnianie obwodu usługi ExpressRoute w ramach wielu subskrypcji](expressroute-howto-linkvnet-arm.md).
 

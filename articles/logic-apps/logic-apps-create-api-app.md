@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233518"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600724"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Tworzenie niestandardowych interfejsów API można wywołać z usługi Azure Logic Apps
 
@@ -25,11 +25,11 @@ Mimo że usługi Azure Logic Apps oferuje [ponad 100 wbudowanych łączników](.
 * Pomóż klientom Usługa do zarządzania zadaniami professional lub osobiste.
 * Rozwiń zasięg, możliwości odnajdywania i użycie Twojej usługi.
 
-Zasadniczo łączniki są internetowych interfejsów API, które przy użyciu architektury REST dla interfejsów podłączanych [formatu metadanych struktury Swagger](http://swagger.io/specification/) na potrzeby dokumentacji i dane JSON jako ich format wymiany danych. Łączniki są interfejsy API REST, które komunikują się za pośrednictwem punktów końcowych HTTP, można użyć dowolnego języka, takich jak .NET, Java lub Node.js do tworzenia łączników. Możesz również hostować interfejsy API na [usługi Azure App Service](../app-service/app-service-web-overview.md)platformy jako a- usługi (PaaS) zapewniający jednym ze sposobów najlepsze, najprostszy i najbardziej skalowalny interfejs API hostingu. 
+Zasadniczo łączniki są internetowych interfejsów API, które przy użyciu architektury REST dla interfejsów podłączanych [formatu metadanych struktury Swagger](http://swagger.io/specification/) na potrzeby dokumentacji i dane JSON jako ich format wymiany danych. Łączniki są interfejsy API REST, które komunikują się za pośrednictwem punktów końcowych HTTP, można użyć dowolnego języka, takich jak .NET, Java lub Node.js do tworzenia łączników. Możesz również hostować interfejsy API na [usługi Azure App Service](../app-service/overview.md)platformy jako a- usługi (PaaS) zapewniający jednym ze sposobów najlepsze, najprostszy i najbardziej skalowalny interfejs API hostingu. 
 
 W przypadku niestandardowych interfejsów API do pracy z usługą logic apps, interfejs API może zapewnić [ *akcje* ](./logic-apps-overview.md#logic-app-concepts) , wykonywania określonych zadań w przepływach pracy aplikacji logiki. Interfejs API mogą również działać jako [ *wyzwalacza* ](./logic-apps-overview.md#logic-app-concepts) , uruchamia przepływ pracy aplikacji logiki, gdy nowe dane lub zdarzenia spełnia określony warunek. W tym temacie opisano typowe wzorce, które możesz wykonać do tworzenia akcji i wyzwalaczy w interfejsie API, na podstawie zachowania, który chcesz, aby Twój interfejs API w celu zapewnienia.
 
-Możesz hostować swoje interfejsy API na [usługi Azure App Service](../app-service/app-service-web-overview.md), platformy as-a-service (PaaS) oferty, zapewniająca o wysokim stopniu skalowalności, łatwe hostowanie interfejsu API.
+Możesz hostować swoje interfejsy API na [usługi Azure App Service](../app-service/overview.md), platformy as-a-service (PaaS) oferty, zapewniająca o wysokim stopniu skalowalności, łatwe hostowanie interfejsu API.
 
 > [!TIP] 
 > Mimo że można wdrożyć swoje interfejsy API jako aplikacje sieci web, należy wziąć pod uwagę wdrażanie interfejsów API jako aplikacji interfejsu API, które mogą ułatwić zadania podczas Utwórz, Hostuj i używanie interfejsów API w chmurze i lokalnie. Nie trzeba zmieniać żadnego kodu w Twoich interfejsów API — wystarczy go wdrożyć swój kod w aplikacji interfejsu API. Na przykład Dowiedz się, jak tworzyć aplikacje API apps utworzone za pomocą następujących języków: 
@@ -134,9 +134,9 @@ Po zakończeniu zadania, interfejs API korzysta z adresu URL silnika i zwracać 
 
 Dla tego wzoru skonfigurować dwa punkty końcowe na kontrolerze: `subscribe` i `unsubscribe`
 
-*  `subscribe` punkt końcowy: gdy wykonywanie osiągnie Twój interfejs API akcji w przepływie pracy, Logic Apps aparatu wywołania `subscribe` punktu końcowego. Ten krok powoduje, że aplikację logiki, aby utworzyć adres URL wywołania zwrotnego, która przechowuje Twój interfejs API, a następnie poczekaj wywołania zwrotnego z interfejsu API, po zakończeniu pracy. Interfejs API, a następnie wywołuje metodę POST protokołu HTTP do adresu URL i przekazuje wszelkie zwracanej zawartości i nagłówki jako dane wejściowe do aplikacji logiki.
+*  `subscribe` Punkt końcowy: Gdy wykonywanie osiągnie Twój interfejs API akcji w przepływie pracy, Logic Apps aparatu wywołania `subscribe` punktu końcowego. Ten krok powoduje, że aplikację logiki, aby utworzyć adres URL wywołania zwrotnego, która przechowuje Twój interfejs API, a następnie poczekaj wywołania zwrotnego z interfejsu API, po zakończeniu pracy. Interfejs API, a następnie wywołuje metodę POST protokołu HTTP do adresu URL i przekazuje wszelkie zwracanej zawartości i nagłówki jako dane wejściowe do aplikacji logiki.
 
-* `unsubscribe` punkt końcowy: Jeśli przebieg aplikacji logiki jest anulowane, Logic Apps aparatu wywołania `unsubscribe` punktu końcowego. Interfejs API można wyrejestrować adres URL wywołania zwrotnego i Zatrzymaj wszystkie procesy, zgodnie z potrzebami.
+* `unsubscribe` Punkt końcowy: Jeśli przebieg aplikacji logiki jest anulowane, Logic Apps aparatu wywołania `unsubscribe` punktu końcowego. Interfejs API można wyrejestrować adres URL wywołania zwrotnego i Zatrzymaj wszystkie procesy, zgodnie z potrzebami.
 
 ![Wzorzec akcji elementu Webhook](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -196,9 +196,9 @@ Na przykład mogą okresowo sprawdzać dostępność nowych plików usługi, mo�
 Wyzwalacza elementu webhook jest *wyzwalacza wypychania* który czeka i będzie nasłuchiwać pod kątem nowych danych lub zdarzenia w punktu końcowego usługi. Jeśli nowe dane lub zdarzenia spełnia określony warunek, wyzwalacz jest uruchamiany i tworzy wystąpienie aplikacji logiki, która następnie przetwarza dane jako dane wejściowe.
 Wyzwalaczy elementu Webhook działają podobnie jak [Akcje elementu webhook](#webhook-actions) wcześniej opisane w tym temacie i są konfigurowane przy użyciu `subscribe` i `unsubscribe` punktów końcowych. 
 
-* `subscribe` punkt końcowy: Kiedy dodajesz i zapisać wyzwalacza elementu webhook w aplikacji logiki, aplikacje logiki aparatu wywołania `subscribe` punktu końcowego. Ten krok powoduje, że aplikacja logiki utworzyć adres URL wywołania zwrotnego, która przechowuje Twój interfejs API. Jeśli nowe dane lub zdarzenie, które spełnia określony warunek, interfejs API wywołuje za pomocą metody POST protokołu HTTP do adresu URL. Ładunek zawartości i nagłówki przekazać jako dane wejściowe do aplikacji logiki.
+* `subscribe` Punkt końcowy: Kiedy dodajesz i zapisać wyzwalacza elementu webhook w aplikacji logiki, aplikacje logiki aparatu wywołania `subscribe` punktu końcowego. Ten krok powoduje, że aplikacja logiki utworzyć adres URL wywołania zwrotnego, która przechowuje Twój interfejs API. Jeśli nowe dane lub zdarzenie, które spełnia określony warunek, interfejs API wywołuje za pomocą metody POST protokołu HTTP do adresu URL. Ładunek zawartości i nagłówki przekazać jako dane wejściowe do aplikacji logiki.
 
-* `unsubscribe` punkt końcowy: usunięcie wyzwalacza elementu webhook lub całą logikę aplikacji Logic Apps aparatu wywołania `unsubscribe` punktu końcowego. Interfejs API można wyrejestrować adres URL wywołania zwrotnego i Zatrzymaj wszystkie procesy, zgodnie z potrzebami.
+* `unsubscribe` Punkt końcowy: Usunięcie wyzwalacza elementu webhook lub całą logikę aplikacji Logic Apps aparatu wywołania `unsubscribe` punktu końcowego. Interfejs API można wyrejestrować adres URL wywołania zwrotnego i Zatrzymaj wszystkie procesy, zgodnie z potrzebami.
 
 ![Wzorzec wyzwalacza elementu Webhook](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Wyszukiwać szczegółowe informacje o wydajności usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Monitorowanie wydajności zapytań identyfikuje większość zapytań korzystających z procesora CPU dla usługi Azure SQL Database.
+description: Monitorowanie wydajności zapytania określa większość zapytań korzystających z procesora CPU dla usługi Azure SQL database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -9,177 +9,242 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 0dd6430021eed5571a6590f411a68e747cd7b506
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bc59bbc88f9fadef6af600bf993ccf352a9dbc93
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274891"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789777"
 ---
-# <a name="azure-sql-database-query-performance-insight"></a>Usługi Azure SQL Database Query Performance Insight
-Zarządzanie i dostosowywanie wydajności relacyjnych baz danych jest trudniejszym zadaniem, która wymaga znaczących wiedzę i czas inwestycji. Query Performance Insight pozwala poświęcać mniej czasu na rozwiązywanie problemów z wydajnością bazy danych, zapewniając następujące czynności:
+# <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight dla usługi Azure SQL Database
+Zarządzanie i dostosowywanie wydajności relacyjnych baz danych trwa wiedzę i czas. Query Performance Insight jest częścią linia produktów inteligentnych wydajności usługi Azure SQL Database. Ułatwia on poświęcają mniej czasu na rozwiązywanie problemów z wydajnością bazy danych, zapewniając:
 
 * Lepszy wgląd w swoje użycie zasobów (DTU) baz danych. 
-* Najpopularniejsze zapytania według liczby Procesor/czas trwania/wykonywania, które potencjalnie mogą być dostosowane w celu zwiększenia wydajności.
-* Przechodzenie do szczegółów do szczegółów zapytania, wyświetlanie historii wykorzystania zasobów i tekstem. 
-* Adnotacje, które pokazują akcje wykonywane przez dostrajania wydajności [Doradcę bazy danych Azure SQL](sql-database-advisor.md)  
+* Szczegółowe informacje dotyczące zapytań najważniejsze bazy danych według liczby procesorów, czas trwania i wykonywania (potencjalne dostrajania kandydatów zwiększające wydajność).
+* Przechodzenie do szczegółów szczegółowe zapytania, aby wyświetlić tekst zapytania i historii wykorzystania zasobów. 
+* Adnotacje, które pokazują zalecenia dotyczące wydajności z [SQL Database Advisor](sql-database-advisor.md).
 
+![Szczegółowe informacje o wydajności zapytań](./media/sql-database-query-performance/opening-title.png)
 
+> [!TIP]
+> Podstawowe monitorowanie wydajności za pomocą usługi Azure SQL Database, zalecamy Query Performance Insight. Należy pamiętać, ograniczenia produktu, opublikowane w tym artykule. Zaawansowane monitorowanie wydajności bazy danych w dużej skali, firma Microsoft zaleca [usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md). Zawiera wbudowaną inteligencją dla Rozwiązywanie problemów z wydajnością automatycznych. Aby automatycznie dopasowuj typowe problemy z wydajnością bazy danych, zaleca się [dostrajania automatycznego](sql-database-automatic-tuning.md).
+>
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Wymaga szczegółowych informacji o wydajności zapytań [Query Store](https://msdn.microsoft.com/library/dn817826.aspx) jest aktywny w bazie danych. Jeśli Query Store nie jest uruchomiona, w portalu zostanie wyświetlony monit o ją włączyć.
-
-## <a name="permissions"></a>Uprawnienia
-Następujące [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) wymagane są uprawnienia do użycia Query Performance Insight: 
-
-* **Czytnik**, **właściciela**, **Współautor**, **Współautor bazy danych SQL**, lub **Współautor serwera SQL Server** nie są wymagane uprawnienia Aby wyświetlić najważniejsze zasób korzystający z zapytania i wykresy. 
-* **Właściciel**, **Współautor**, **Współautor bazy danych SQL**, lub **Współautor serwera SQL Server** są wymagane uprawnienia, aby wyświetlić tekst zapytania.
-
-## <a name="using-query-performance-insight"></a>Za pomocą Query Performance Insight
-Query Performance Insight jest łatwa w użyciu:
-
-* Otwórz [witryny Azure portal](https://portal.azure.com/) i Znajdź bazy danych, który chcesz zbadać. 
-  * Z menu po lewej stronie, w ramach pomocy technicznej i rozwiązywania problemów wybierz "Query Performance Insight".
-* Na pierwszej karcie przejrzyj listę najpopularniejsze zapytania korzystające z zasobów.
-* Wybierz określone zapytanie, aby wyświetlić jego szczegóły.
-* Otwórz [Doradcę bazy danych Azure SQL](sql-database-advisor.md) i sprawdź, czy wszystkie zalecenia są dostępne.
-* Użyj suwaków lub Powiększ, aby zmienić interwał obserwowanych ikon.
-  
-    ![pulpit nawigacyjny wydajności](./media/sql-database-query-performance/performance.png)
+Wymaga szczegółowych informacji o wydajności zapytań [Query Store](https://msdn.microsoft.com/library/dn817826.aspx) jest aktywny w bazie danych. Jego jest automatycznie domyślnie dla wszystkich baz danych Azure SQL. Jeśli Query Store nie jest uruchomiona, witryny Azure portal wyświetli monit, aby ją włączyć.
 
 > [!NOTE]
-> Po kilku godzinach danych musi być przechwytywane przez Store kwerendy dla bazy danych SQL zapewnić szczegółowe informacje o wydajności zapytań. Jeśli baza danych nie ma żadnych działań lub Query Store nie było aktywne przez pewien okres czasu, wykresy będzie pusta, podczas wyświetlania tego okresu. Query Store może włączyć w dowolnym momencie, jeśli nie jest uruchomiona.   
-> 
-> 
+> Jeśli w portalu pojawi się komunikat "Query Store nie jest poprawnie skonfigurowany dla tej bazy danych", zobacz [Optymalizacja konfiguracji Query Store](sql-database-query-performance.md#optimizing-the-query-store-configuration-for-query-performance-insight).
+>
 
-## <a name="review-top-cpu-consuming-queries"></a>Przeglądanie zapytań zużywających najwięcej zasobów procesora CPU
-W [portal](http://portal.azure.com) wykonaj następujące czynności:
+## <a name="permissions"></a>Uprawnienia
+Wymagane są następujące elementy [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) uprawnienia do korzystania z Query Performance Insight: 
 
-1. Przejdź do bazy danych SQL, a następnie kliknij przycisk **wszystkie ustawienia** > **pomoc techniczna i rozwiązywanie problemów** > **szczegółowych informacji o wydajności zapytań**. 
+* **Czytnik**, **właściciela**, **Współautor**, **Współautor bazy danych SQL**, lub **Współautor serwera SQL Server** nie są wymagane uprawnienia Aby przejrzeć najpopularniejsze zapytania korzystające z zasobów i wykresy. 
+* **Właściciel**, **Współautor**, **Współautor bazy danych SQL**, lub **Współautor serwera SQL Server** są wymagane uprawnienia, aby wyświetlić tekst zapytania.
+
+## <a name="use-query-performance-insight"></a>Korzystanie ze szczegółowych informacji o wydajności zapytań
+Query Performance Insight jest łatwa w użyciu:
+
+1. Otwórz [witryny Azure portal](https://portal.azure.com/) i znaleźć bazy danych, który chcesz zbadać. 
+2. Z menu po lewej stronie, otwórz **inteligentne wydajności** > **Query Performance Insight**.
+  
+   ![Query Performance Insight menu](./media/sql-database-query-performance/tile.png)
+
+2. Na pierwszej karcie przejrzyj listę najpopularniejsze zapytania korzystające z zasobów.
+3. Wybierz określone zapytanie, aby wyświetlić jego szczegóły.
+4. Otwórz **inteligentne wydajności** > **zalecenia dotyczące wydajności** i sprawdź, czy wszystkie zalecenia dotyczące wydajności są dostępne. Aby uzyskać więcej informacji na temat zalecenia dotyczące wydajności wbudowanych, zobacz [SQL Database Advisor](sql-database-advisor.md).
+5. Użyj suwaków lub Powiększ, aby zmienić interwał obserwowanych ikon.
+
+   ![pulpit nawigacyjny wydajności](./media/sql-database-query-performance/performance.png)
+
+> [!NOTE]
+> Usługi SQL Database mają być renderowane informacje w Query Performance Insight Query Store musi przechwytywać dane z kilku godzin. Jeśli baza danych nie ma żadnych działań lub Query Store nie był aktywny w pewnym okresie, wykresy będzie pusta, gdy Query Performance Insight wyświetla ten zakres czasu. Query Store można włączyć w dowolnym momencie, jeśli nie jest uruchomiona. Aby uzyskać więcej informacji, zobacz [najlepsze rozwiązania z Query Store](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).    
+  > 
+
+## <a name="review-top-cpu-consuming-queries"></a>Przejrzeć najpopularniejsze zapytania korzystające z procesora CPU
+
+Domyślnie Query Performance Insight pokazano pierwszych pięciu zapytaniach korzystających z procesora CPU, przy pierwszym otwarciu.
+
+1. Zaznacz lub wyczyść pojedynczych zapytań do dołączania lub wykluczania ich z wykresu za pomocą pola wyboru.
+
+    Górny wiersz zawiera ogólną procentowa wartość jednostki DTU na bazę danych. Słupki pokazują procent użycia procesora CPU, które wybrane zapytanie użyte przez wybrany przedział czasu. Na przykład jeśli **ostatni tydzień** jest zaznaczone, Każdy słupek reprezentuje jeden dzień.
    
-    ![Szczegółowe informacje o wydajności zapytań][1]
+    ![Najpopularniejsze zapytania](./media/sql-database-query-performance/top-queries.png)
+
+   > [!IMPORTANT]
+   > Wiersz jednostek DTU, wyświetlane są agregowane wartości maksymalne użycie w okresach jedną godzinę. Jest przeznaczona dla wysokiego poziomu porównanie tylko w przypadku statystyk wykonywania zapytań. W niektórych przypadkach użycie jednostek DTU mogą wydawać się zbyt duże w porównaniu do wykonywane zapytania, ale to może nie zadziałać.
+   >
+   > Na przykład jeśli zapytanie maksymalnego limitu jednostek DTU do 100% tylko przez kilka minut, wiersz jednostek DTU w Query Performance Insight pokaże całą godzinę zużycie 100% (niejednoznacznego określenia maksymalnej wartości zagregowane). 
+   >
+   > Porównanie bardziej precyzyjną (maksymalnie jedną minutę) należy rozważyć utworzenie niestandardowego wykresu wykorzystanie jednostek DTU:
+   >
+   > 1. W witrynie Azure portal wybierz **usługi Azure SQL Database** > **monitorowanie**. 
+   > 2. Wybierz pozycję **Metryki**.
+   > 3. Wybierz **+ Dodaj wykres**.
+   > 4. Wybierz procent jednostek DTU na wykresie.
+   > 5. Ponadto wybierz **ostatnie 24 godziny** w lewym górnym menu i zmienić ją na jedną minutę. 
+   > 
+   > Za pomocą niestandardowego wykresu jednostek DTU bardziej precyzyjną poziom szczegółów do porównania z wykresem wykonywania zapytania.
+   >
    
-    Zostanie otwarty widok najpopularniejsze zapytania, i wymieniono najpopularniejsze zapytania zużywające procesora CPU.
-2. Kliknij na wykresie, aby uzyskać szczegółowe informacje.<br>Górna linia pokazuje ogólną % jednostek DTU bazy danych, gdy słupki pokazują procent użycia procesora CPU, używane przez wybrane zapytanie wybrany przedział czasu (na przykład, jeśli **ostatni tydzień** wybrano Każdy słupek reprezentuje jeden dzień).
+   Siatka dolnej zawierają zagregowane informacje widoczne zapytań:
    
-    ![Najpopularniejsze zapytania][2]
-   
-    Siatka dolnej reprezentuje zagregowane informacje widoczne dla zapytań.
-   
-   * Identyfikator zapytania — Unikatowy identyfikator zapytania w bazie danych.
-   * Procesor zapytań dostrzegalnych przedział czasu (w zależności od funkcji agregacji).
-   * Czas trwania jednego zapytania (w zależności od funkcji agregacji).
-   * Łączna liczba wykonań dla określonego zapytania.
+   * Identyfikator zapytania, który jest unikatowy identyfikator dla zapytania w bazie danych.
+   * Procesor zapytań dostrzegalnych przedział czasu, która zależy od funkcji agregacji.
+   * Czas trwania jednego zapytania, które zależy także funkcję agregacji.
+   * Łączna liczba wykonań dla określonej kwerendy.
      
-     Zaznacz lub wyczyść pojedynczych zapytań do dołączania lub wykluczania ich z wykresu za pomocą pola wyboru.
-3. Jeśli dane się starzeją, kliknij przycisk **Odśwież** przycisku.
-4. Można za pomocą suwaków i powiększenia przycisków, aby zmienić interwał obserwacji i badanie wartości graniczne: ![ustawienia](./media/sql-database-query-performance/zoom.png)
-5. Opcjonalnie, jeśli chcesz, aby inny widok, możesz wybrać **niestandardowe** kartę i ustawić:
+2. Jeśli dane się starzeją, wybierz opcję **Odśwież** przycisku.
+
+3. Za pomocą suwaków i powiększenia przycisków, aby zmienić interwał obserwacji i zbadać wzrostów użycia:
+
+   ![Suwaki i przycisków powiększenia zmiany interwału](./media/sql-database-query-performance/zoom.png)
+
+4. Opcjonalnie można wybrać **niestandardowe** kartę, aby dostosować widok dla:
    
-   * Metryki (procesora CPU lub czas trwania, liczba wykonań)
-   * Przedział czasu (ostatni tydzień w zeszłym miesiącu ostatnie 24 godziny). 
+   * Metryki (procesora CPU lub czas trwania, liczba wykonań).
+   * Przedział czasu (ostatnie 24 godziny, ostatni tydzień lub Ubiegły miesiąc). 
    * Liczba zapytań.
    * Funkcją agregacji.
-     
-     ![settings](./media/sql-database-query-performance/custom-tab.png)
+  
+   ![Karta niestandardowa](./media/sql-database-query-performance/custom-tab.png)
+  
+5. Wybierz **Przejdź >** przycisk, aby wyświetlić dostosowany widok.
 
-## <a name="viewing-individual-query-details"></a>Wyświetlanie szczegółów poszczególnych zapytań
+   > [!IMPORTANT]
+   > Query Performance Insight jest ograniczona do wyświetlania górnej zapytania zużywające 5-20, w zależności od wyboru. Bazy danych można uruchomić wiele więcej zapytań poza największymi wyświetlane, a te zapytania nie zostanie uwzględniona na wykresie. 
+   >
+   > Może istnieć typu obciążenia bazy danych, w której wiele mniejszych zapytaniach poza największymi pokazano, często i korzystać z większości jednostek DTU. Te zapytania nie są wyświetlane na wykresie wydajności. 
+   >
+   > Na przykład zapytania może wykorzystali znacznej ilości jednostek DTU od pewnego czasu, ale jej całkowite użycie w okresie obserwacji jest mniejsza niż inne korzystanie z góry zapytania. W takim przypadku wykorzystanie zasobów tego zapytania nie było wyświetlane na wykresie. 
+   >
+   > Jeśli zachodzi potrzeba wykonania zapytania dotyczącego początkowych poza ograniczenia Query Performance Insight zrozumieć, rozważ użycie [usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) wydajności Zaawansowane bazy danych monitorowania i rozwiązywania problemów.
+   >
+
+## <a name="view-individual-query-details"></a>Wyświetlanie szczegółów poszczególnych zapytań
+
 Aby wyświetlić szczegóły kwerendy:
 
-1. Kliknij dowolną kwerendę na liście najpopularniejsze zapytania.
+1. Wybierz dowolne zapytanie na liście najpopularniejsze zapytania.
    
-    ![szczegóły](./media/sql-database-query-performance/details.png)
-2. Zostanie otwarty w widoku szczegółów i licznik użycia/czas trwania/wykonywania procesora CPU zapytania dzieli się wraz z upływem czasu.
-3. Kliknij na wykresie, aby uzyskać szczegółowe informacje.
+    ![Lista najpopularniejsze zapytania](./media/sql-database-query-performance/details.png)
+
+   Zostanie otwarty widok szczegółowy. Pokazuje użycie procesora CPU, czas trwania i liczby wykonań wraz z upływem czasu.
+
+3. Wybierz funkcje wykresu, aby uzyskać szczegółowe informacje.
    
-   * Górny wykres przedstawia wiersz z ogólną % jednostek DTU bazy danych i słupki są procent użycia procesora CPU wykorzystany przez wybrane zapytanie.
-   * Drugi wykres przedstawia całkowity czas trwania przez wybrane zapytanie.
-   * Dolny wykres pokazuje łącznej liczby wykonań przez wybrane zapytanie.
+   * Górny wykres pokazuje linii z ogólną procentowa wartość jednostki DTU dla bazy danych. Słupki są procent użycia procesora CPU, które używane przez wybrane zapytanie.
+   * Drugi wykres przedstawia łączny czas trwania wybranego zapytania.
+   * Wykres dołu pokazuje łącznej liczby wykonań przez wybrane zapytanie.
      
-     ![Szczegóły zapytania][3]
-4. Opcjonalnie użyj suwaki, przyciski powiększania lub kliknij **ustawienia** dostosować sposób wyświetlania zapytania o dane lub wybierz w innym czasie.
+   ![Szczegóły zapytania](./media/sql-database-query-performance/query-details.png)
+     
+4. Opcjonalnie za pomocą suwaków, użyj przycisków powiększenia lub wybierz **ustawienia** dostosować sposób wyświetlania zapytania o dane lub wybierz inny zakres czasu.
+
+   > [!IMPORTANT]
+   > Query Performance Insight nie przechwytuje wszystkie kwerendy DDL. W niektórych przypadkach może być przechwytuje się wszystkie zapytania ad hoc.
+   >
 
 ## <a name="review-top-queries-per-duration"></a>Przejrzeć najpopularniejsze zapytania na czas trwania
-W najnowszej aktualizacji Query Performance Insight, wprowadziliśmy dwie nowe metryki, które mogą pomóc w identyfikacji wąskich gardeł: czas trwania i wykonywania licznik.<br>
+Dwie metryki w Query Performance Insight ułatwia znajdowanie wąskich gardeł: czas trwania i wykonywania licznik.
 
-Długotrwałe zapytania mają największe możliwości blokowania zasobów dłużej blokowania innym użytkownikom oraz ograniczenie skalowalności. Są one również wybrać najlepszych kandydatów do optymalizacji.<br>
+Długotrwałe zapytania mają największe możliwości blokowania zasobów dłużej blokowania innym użytkownikom oraz ograniczenie skalowalności. Są one też wybrać najlepszych kandydatów do optymalizacji.
 
-Aby zidentyfikować długotrwałe zapytania:
+Aby zidentyfikować długo wykonywane zapytania:
 
-1. Otwórz **niestandardowe** karcie Query Performance Insight dla wybranej bazy danych
-2. Zmiana metryki, aby być **czas trwania**
-3. Wybierz liczbę zapytań i obserwowanie interwału
-4. Wybierz funkcję agregacji
-   
-   * **Suma** dodaje przedział czasu obserwacji całego cały czas wykonywania zapytania.
-   * **Maksymalna liczba** znajdzie zapytań, których czas wykonywania był maksymalna interwałem całego obserwacji.
-   * **Średnia liczba** odnajduje Średni czas wykonania dla wszystkich wykonań zapytania i dowiesz się u góry poza te wartości średnie. 
-     
-     ![Czas trwania zapytania][4]
+1. Otwórz **niestandardowe** karcie Query Performance Insight dla wybranej bazy danych.
+2. Metryki, aby zmienić **czas trwania**.
+3. Wybierz liczbę zapytań i interwał obserwacji.
+4. Wybierz funkcję agregacji:
+
+   * **Suma** dodaje się cały czas wykonywania zapytania dla interwału całego obserwacji.
+   * **Maksymalna liczba** znajduje zapytania w czasie wykonywania, który został maksymalny interwał całego obserwacji.
+   * **Średnia liczba** znajdzie Średni czas wykonania wszystkich wykonań zapytania i pokazuje największymi dla tych wartości średnie. 
+
+   ![Czas trwania zapytania](./media/sql-database-query-performance/top-duration.png)
+
+5. Wybierz **Przejdź >** przycisk, aby wyświetlić dostosowany widok.
+
+   > [!IMPORTANT]
+   > Dostosowywanie widoku zapytania nie powoduje aktualizacji wiersza jednostek DTU. Wiersz jednostek DTU zawsze wyświetla wartość maksymalnego użycia przez dany interwał. 
+   >
+   > Aby poznać użycie jednostek DTU bazy danych przy użyciu bardziej szczegółowo (maksymalnie jedną minutę), należy rozważyć utworzenie niestandardowego wykresu w witrynie Azure portal:
+   >
+   > 1. Wybierz **usługi Azure SQL Database** > **monitorowania**.
+   > 2. Wybierz pozycję **Metryki**. 
+   > 3. Wybierz **+ Dodaj wykres**.
+   > 4. Wybierz procent jednostek DTU na wykresie.
+   > 5. Ponadto wybierz **ostatnie 24 godziny** w lewym górnym menu i zmienić ją na jedną minutę. 
+   >
+   > Zalecamy użycie niestandardowego wykresu jednostek DTU do porównania z Wykres wydajności zapytania.
+   >
 
 ## <a name="review-top-queries-per-execution-count"></a>Przejrzeć najpopularniejsze zapytania według liczby wykonań
-Dużą liczbę wykonań może nie mieć wpływ na samej bazy danych i użycie zasobów może być niski, ale cała aplikacja może uzyskać wolne.
+Aplikacja użytkownika, która korzysta z bazy danych może być get wolne, mimo że dużą liczbę wykonań może nie mieć wpływ na samej bazy danych i użycie zasobów jest niskie.
 
-W niektórych przypadkach wykonywanie dużej liczby może prowadzić do liczby rund sieciowych. Dwustronne znacznie wpłynąć na wydajność. Są one ulec opóźnienia sieci i na czas oczekiwania serwera podrzędnego. 
+W niektórych przypadkach liczba wykonań Wysoki może prowadzić do bardziej rund sieci. Dwustronne wpłynąć na wydajność. Są one zastrzeżeniem opóźnienia sieci i na czas oczekiwania serwera podrzędnego. 
 
-Na przykład wiele witryn sieci Web opartych na danych intensywnie dostęp do bazy danych dla każdego żądania użytkownika. Gdy połączenie buforowanie pomaga, ruch sieciowy zwiększone i obciążenie serwera bazy danych może niekorzystnie wpłynąć na wydajność.  Ogólne porady dotyczące jest zapewnienie rund do minimum.
+Na przykład wiele witryn internetowych, które są oparte na danych intensywnie dostęp do bazy danych dla każdego żądania użytkownika. Mimo że pula połączeń pomaga ruch sieciowy zwiększone i obciążenie na serwerze bazy danych może zmniejszyć wydajność. Ogólnie rzecz biorąc Zachowaj rund do minimum.
 
-Aby zidentyfikować często wykonywane zapytania ("dużą liczbą") zapytania:
+Aby zidentyfikować często wykonywane zapytania ("dużą liczbą"):
 
-1. Otwórz **niestandardowe** karcie Query Performance Insight dla wybranej bazy danych
-2. Zmiana metryki, aby być **Liczba wykonań**
-3. Wybierz liczbę zapytań i obserwowanie interwału
-   
-    ![Liczba wykonań zapytania][5]
+1. Otwórz **niestandardowe** karcie Query Performance Insight dla wybranej bazy danych.
+2. Metryki, aby zmienić **liczby wykonań**.
+3. Wybierz liczbę zapytań i interwał obserwacji.
+4. Wybierz **Przejdź >** przycisk, aby wyświetlić dostosowany widok.
 
-## <a name="understanding-performance-tuning-annotations"></a>Opis adnotacje dotyczące dostrajania wydajności
-Podczas eksplorowania obciążenie w Query Performance Insight, można zauważyć ikony z pionowym wierszem na podstawie wykresu.<br>
+   ![Liczba wykonań zapytania](./media/sql-database-query-performance/top-execution.png)
 
-Te ikony są adnotacje; reprezentują one mające wpływ na akcje wykonywane przez wydajność [Doradcę bazy danych Azure SQL](sql-database-advisor.md). Dzięki aktywowania adnotacji możesz uzyskać podstawowe informacje dotyczące akcji:
+## <a name="understand-performance-tuning-annotations"></a>Zrozumienie adnotacje dostrajania wydajności
 
-![Adnotacja zapytania][6]
+Podczas eksplorowania obciążenie w Query Performance Insight, można zauważyć ikony z pionowym wierszem na podstawie wykresu.
 
-Jeśli chcesz dowiedzieć się więcej lub zastosować Doradca, zalecenia, kliknij ikonę. Zostanie otwarty szczegóły akcji. Jeśli jest aktywna Rekomendacja można zastosować razu za pomocą polecenia.
+Te ikony są adnotacji. Pokazują one zalecenia dotyczące wydajności z [SQL Database Advisor](sql-database-advisor.md). Ustawiając kursor adnotacji, możesz uzyskać podsumowanie informacji na zalecenia dotyczące wydajności.
 
-![Szczegóły adnotacji zapytania][7]
+   ![Adnotacja zapytania](./media/sql-database-query-performance/annotation.png)
 
-### <a name="multiple-annotations"></a>Wiele adnotacji.
-Jest to możliwe, że ze względu na poziom powiększenia adnotacji, które znajdują się blisko siebie będzie pobrać zwinięte do jednego. To będą reprezentowane przez specjalną ikonę, klikając go zostanie otwarty nowy blok, gdzie lista pogrupowanych adnotacje będą wyświetlane.
-Korelowanie zapytań i akcji dostrajania wydajności może pomóc lepiej zrozumieć obciążenia. 
+Jeśli chcesz dowiedzieć się więcej lub zastosować zalecenia usługi advisor, wybierz ikonę aby otworzyć szczegóły zalecaną akcję. Jeśli jest to aktywna Rekomendacja, można zastosować go następnie od razu z poziomu portalu.
 
-## <a name="optimizing-the-query-store-configuration-for-query-performance-insight"></a>Optymalizacja konfiguracji Query Store Query Performance Insight
-Podczas używania Query Performance Insight mogą wystąpić następujące komunikaty Query Store:
+   ![Szczegóły adnotacji zapytania](./media/sql-database-query-performance/annotation-details.png)
+
+W niektórych przypadkach, ze względu na poziom powiększenia jest możliwe, że adnotacje blisko siebie, są zwinięte do pojedynczego adnotacji. Query Performance Insight reprezentuje to ikona adnotacja grupy. Wybierając ikonę adnotacja grupy zostanie otwarty nowy blok zawierający adnotacje.
+
+Korelację zapytań i akcji dostrajania wydajności mogą pomóc lepiej zrozumieć obciążenia. 
+
+## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>Optymalizacja konfiguracji Query Store Query Performance Insight
+
+Podczas korzystania z Query Performance Insight, można napotkać następujące komunikaty o błędach Query Store:
 
 * "Query Store nie jest prawidłowo skonfigurowany na tej bazy danych. "Kliknij tutaj, aby dowiedzieć się więcej".
 * "Query Store nie jest prawidłowo skonfigurowany na tej bazy danych. "Kliknij tutaj, aby zmienić ustawienia". 
 
-Te komunikaty są zwykle wyświetlane, gdy Query Store nie jest w stanie do zbierania nowych danych. 
+Te komunikaty są zwykle wyświetlane, gdy Query Store nie można zebrać nowych danych. 
 
-Pierwszy przypadek występuje, gdy Query Store jest w stanie tylko do odczytu, a parametry są ustawione optymalnie. Można to naprawić przez zwiększenie rozmiaru Query Store lub wyczyszczenie Query Store.
+Pierwszy przypadek występuje, gdy Query Store jest w stanie tylko do odczytu, a parametry są ustawione optymalnie. Można rozwiązać ten problem, przez zwiększenie rozmiaru magazynu danych lub usuwając Query Store. (Po wyczyszczeniu Query Store wszystkie uprzednio zebrane dane telemetryczne zostaną utracone.) 
 
-![przycisk qds][8]
+   ![Szczegóły Query Store](./media/sql-database-query-performance/qds-off.png)
 
-Drugi przypadek występuje, gdy Store zapytań jest wyłączony lub parametry nie są ustawione optymalnie. <br>Można zmienić zasady przechowywania i przechwytywania i włączyć Query Store, wykonując poniższe polecenia lub bezpośrednio z poziomu portalu:
-
-![przycisk qds][9]
+Drugi przypadek występuje, gdy nie włączono Query Store lub parametry nie są ustawione optymalnie. Zmień zasady przechowywania i przechwytywania, a także włączyć Query Store, uruchamiając następujące polecenia, które są dostarczane z [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub witrynie Azure portal.
 
 ### <a name="recommended-retention-and-capture-policy"></a>Zalecane zasady dotyczące przechowywania i przechwytywania
 Istnieją dwa typy zasad przechowywania:
 
-* Rozmiar na podstawie — Jeśli wartość AUTO go spowoduje wyczyszczenie danych automatycznie, gdy zostanie osiągnięty w pobliżu maksymalnego rozmiaru.
-* Oparte na godzinie — domyślnie których firma Microsoft ustawi do 30 dni, co oznacza, że jeśli Query Store wyczerpania miejsca, spowoduje to usunięcie informacji o zapytania starsze niż 30 dni
+* **Rozmiar na podstawie**: Jeśli zasada ta jest równa **AUTOMATYCZNIE**, wyczyści jego dane automatycznie, gdy zostanie osiągnięty maksymalny rozmiar w pobliżu.
+* **Czas na podstawie**: Domyślnie ta zasada jest równa 30 dni. Query Store wyczerpaniu wolnego miejsca, usunie informacje o kwerendzie starsze niż 30 dni.
 
-Przechwytywanie można ustawić zasady:
+Można ustawić zasady przechwytywania,:
 
-* **Wszystkie** — rejestruje wszystkie zapytania.
-* **Automatyczne** -rzadkie zapytań i zapytania z nieznaczące czas kompilacji i wykonania są ignorowane. Progi dla czasu trwania liczby, kompilacji i środowiska uruchomieniowego wykonywania wewnętrznie są określane. Jest to opcja domyślna.
-* **Brak** -Query Store zatrzymuje przechwytywanie nowych zapytań, jednak nadal zbieranymi statystyki czasu wykonywania zapytań już przechwycony.
+* **Wszystkie**: Query Store przechwytuje wszystkie zapytania.
+* **Automatyczne**: Query Store ignoruje rzadkie zapytania i z nieznaczące czas kompilacji i wykonywania zapytań. Progi dla liczby wykonań, skompilować czas trwania, a czas wykonywania wewnętrznego są określane. Jest to opcja domyślna.
+* **Brak**: Query Store zatrzymuje przechwytywanie nowych zapytań, ale nadal zbieranymi statystyki środowiska uruchomieniowego dla zapytań już przechwycony.
 
-Firma Microsoft zaleca ustawienie wszystkie zasady na automatyczny, a zasady czystego do 30 dni:
+Firma Microsoft zaleca ustawienie wszystkich zasad **AUTOMATYCZNIE** i czyszczenia zasad do 30 dni, wykonując następujące polecenia w [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub witrynie Azure portal. (Zastąp `YourDB` nazwą bazy danych.)
 
+```T-SQL
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (SIZE_BASED_CLEANUP_MODE = AUTO);
 
@@ -188,38 +253,35 @@ Firma Microsoft zaleca ustawienie wszystkie zasady na automatyczny, a zasady czy
 
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
+```
 
-Zwiększ rozmiar Query Store. To może zostać wykonana przez połączenie z bazą danych i wydawanie następujące zapytanie:
+Zwiększ rozmiar Query Store, nawiązując połączenie z bazą danych za pośrednictwem [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub witryny Azure portal i uruchamiając następujące zapytanie. (Zastąp `YourDB` nazwą bazy danych.)
 
+```T-SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
+```
 
-Stosowania tych ustawień spowoduje ostatecznie Query Store zbieranie nowych zapytań, jednak jeśli nie chcesz czekać można wyczyścić Query Store. 
+Stosowanie tych ustawień po pewnym czasie spowoduje, że Query Store zbieranie danych telemetrycznych dla nowych zapytań. Jeśli potrzebujesz Store zapytania, aby działać natychmiast, można opcjonalnie wyczyść Query Store, uruchamiając następujące zapytanie za pomocą programu SSMS lub witryny Azure portal. (Zastąp `YourDB` nazwą bazy danych.)
 
 > [!NOTE]
-> Wykonywanie zapytania następujące spowoduje usunięcie wszystkich bieżących informacji w Store zapytania. 
-> 
+> Uruchamiając następujące zapytanie usunie wszystkie uprzednio zebrane monitorowane dane telemetryczne w Query Store. 
 > 
 
+```T-SQL
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
-
+```
 
 ## <a name="summary"></a>Podsumowanie
-Query Performance Insight pomaga zrozumieć wpływ na sposób obciążenie zapytań i jego znaczenia zużycie zasobów baz danych. Dzięki tej funkcji będą informacje o pierwszych zapytań zużywających najwięcej zasobów i łatwo zidentyfikować te, aby rozwiązać problem, zanim staną się problem.
+Query Performance Insight ułatwia zrozumienie wpływu na obciążenie zapytań oraz jej do zużycia zasobów bazy danych. Dzięki tej funkcji poznasz korzystanie z góry zapytań w bazie danych, a można znaleźć zapytania, aby zoptymalizować, zanim staną się problem.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać dodatkowe zalecenia dotyczące poprawy wydajności bazy danych SQL kliknij [zalecenia](sql-database-advisor.md) na **Query Performance Insight** bloku.
 
-![Doradca wydajności](./media/sql-database-query-performance/ia.png)
+* Zalecenia dotyczące wydajności bazy danych, można wybrać [zalecenia](sql-database-advisor.md) bloku Query Performance Insight nawigacji.
 
-<!--Image references-->
-[1]: ./media/sql-database-query-performance/tile.png
-[2]: ./media/sql-database-query-performance/top-queries.png
-[3]: ./media/sql-database-query-performance/query-details.png
-[4]: ./media/sql-database-query-performance/top-duration.png
-[5]: ./media/sql-database-query-performance/top-execution.png
-[6]: ./media/sql-database-query-performance/annotation.png
-[7]: ./media/sql-database-query-performance/annotation-details.png
-[8]: ./media/sql-database-query-performance/qds-off.png
-[9]: ./media/sql-database-query-performance/qds-button.png
+    ![Karta zaleceń](./media/sql-database-query-performance/ia.png)
+
+* Należy rozważyć włączenie [dostrajania automatycznego](sql-database-automatic-tuning.md) dla typowych problemów z wydajnością bazy danych.
+* Dowiedz się, jak [Intelligent Insights](sql-database-intelligent-insights.md) mogą pomóc automatycznie rozwiązać problemy z wydajnością bazy danych.
+* Należy rozważyć użycie [usługi Azure SQL Analytics]( ../azure-monitor/insights/azure-sql.md) zaawansowanych wydajności monitorowania floty dużych baz danych, pul elastycznych i wystąpienia zarządzane SQL dzięki wbudowanym funkcjom analizy.
 

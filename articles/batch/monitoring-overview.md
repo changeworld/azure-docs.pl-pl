@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 3053e136ab08c38d9460d60f64464a17f6f61574
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ee483c19aa59ca98226f77a5e56b1ee4eb4dede5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824087"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543414"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorowanie rozwiązań usługi Batch
 
@@ -26,7 +26,7 @@ Aby zapoznać się z omówieniem składników platformy Azure i usług, które s
 
 ## <a name="subscription-level-monitoring"></a>Monitorowanie na poziomie subskrypcji
 
-Na poziomie subskrypcji, która zawiera konta usługi Batch, [dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) zbiera dane zdarzeń operacyjnych w [kilka kategorii](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log).
+Na poziomie subskrypcji, która zawiera konta usługi Batch, [dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) zbiera dane zdarzeń operacyjnych w [kilka kategorii](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log).
 
 Konta usługi Batch w szczególności dziennika aktywności zbiera zdarzenia związane z zarządzaniem tworzenia i usuwania i klucz konta.
 
@@ -34,7 +34,7 @@ Jednym ze sposobów, aby pobrać zdarzenia z dziennika aktywności jest za pomoc
 
 ## <a name="batch-account-level-monitoring"></a>Monitorowanie na poziomie konta usługi Batch
 
-Każde konto usługi Batch za pomocą funkcji monitorowania [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-collection.md#metrics) i opcjonalnie [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów należących do zakresu na poziomie konta usługi Batch, takie jak pule, zadania i zadania. Zbieranie i używanie tych danych, ręcznie lub programowo do monitorowania działań na koncie usługi Batch i diagnozowanie problemów. Aby uzyskać więcej informacji, zobacz [Batch metryki, alerty i dzienniki diagnostyczne oceny i monitorowania](batch-diagnostics.md).
+Każde konto usługi Batch za pomocą funkcji monitorowania [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-collection.md#metrics) i opcjonalnie [dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md) zasobów należących do zakresu na poziomie konta usługi Batch, takie jak pule, zadania i zadania. Zbieranie i używanie tych danych, ręcznie lub programowo do monitorowania działań na koncie usługi Batch i diagnozowanie problemów. Aby uzyskać więcej informacji, zobacz [Batch metryki, alerty i dzienniki diagnostyczne oceny i monitorowania](batch-diagnostics.md).
  
 > [!NOTE]
 > Metryki są dostępne, domyślnie na koncie usługi Batch bez dodatkowej konfiguracji i mają 30-dniową historię stopniowe. Należy włączyć rejestrowanie diagnostyczne dla konta usługi Batch i może pociągnąć za sobą dodatkowe koszty przechowywania lub przetwarzania danych dzienników diagnostycznych. 

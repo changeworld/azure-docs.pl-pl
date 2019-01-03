@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: f9ada3518c4354b112e9e288da89ee9659629b1c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 51d781f331bcbc08642dc32c21baa150e9e5eee6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435127"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538689"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -201,7 +201,7 @@ Jeśli nie zezwalaj na [źródłowy adres IP](#probesource) sondy w zasadach zap
 
 Sondy kondycji modułu równoważenia obciążenia do oznaczania wystąpienia możesz **musi** zezwolić na ten adres IP na dowolnej platformie Azure [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) i zasady lokalne zapory.  Domyślnie co sieciowa grupa zabezpieczeń zawiera [tag usługi](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer, aby zezwalać na ruch sondy kondycji.
 
-Jeśli chcesz przetestować błędu sondy kondycji lub oznaczyć szczegółów poszczególnych wystąpień, możesz użyć [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) na jawne block sondy kondycji (portu docelowego lub [źródłowy adres IP](#probesource)) i symulować Błąd sondy.
+Jeśli chcesz przetestować błędu sondy kondycji lub oznaczyć szczegółów poszczególnych wystąpień, możesz użyć [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) jawnie zablokować sondy kondycji (portu docelowego lub [źródłowy adres IP](#probesource)) i symulować Błąd sondy.
 
 Nie należy konfigurować sieci wirtualnej z firmą Microsoft należące do zakresu adresów IP, który zawiera 168.63.129.16.  Takie konfiguracje będą kolidować z adresu IP sondy kondycji i może spowodować, że scenariusza nie powiedzie się.
 

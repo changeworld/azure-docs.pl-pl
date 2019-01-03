@@ -1,7 +1,7 @@
 ---
 title: Wykrywanie twarzy — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia dotyczące wykrywania twarzy przy użyciu interfejsu API przetwarzania obrazów.
+description: Pojęcia związane z funkcji wykrywania twarzy interfejs API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: bf358d1e8f60f989ced8db966bbf0a5179fab25b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 0c6485bff4ad11aab37139cd2aa2d3660bddac0e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342317"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580542"
 ---
-# <a name="detecting-faces"></a>Wykrywanie twarzy
+# <a name="face-detection-with-computer-vision"></a>Wykrywanie twarzy przy użyciu przetwarzania obrazów
 
 Przetwarzanie obrazów wykrywa twarze osób na zdjęciu i generuje wiek, płeć i prostokąt dla każdej twarzy wykryte. Przetwarzanie obrazów zawiera podzestaw funkcji, które można znaleźć w usłudze [rozpoznawania twarzy](/azure/cognitive-services/face/), a usługa rozpoznawania twarzy umożliwia bardziej szczegółową analizę, np. identyfikację twarzy i wykrywanie póz.  
 
@@ -25,7 +26,7 @@ Przetwarzanie obrazów wykrywa twarze osób na zdjęciu i generuje wiek, płeć 
 
 Pierwszy przykład przedstawia odpowiedź JSON zwrócony przez wizualizacji komputerowej dla obrazu zawierającego pojedynczego ludzkich twarzy.
 
-![Wizja analizowanie kobieta dachu twarzy](./Images/woman_roof_face.png)
+![Analiza obrazu — kobieta, dach, twarz](./Images/woman_roof_face.png)
 
 ```json
 {

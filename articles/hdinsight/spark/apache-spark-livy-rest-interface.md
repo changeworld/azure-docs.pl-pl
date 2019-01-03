@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 999b5ca1f229677b9e11068f4beaa6e2704afd3d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012576"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650511"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Użyj interfejsu API REST programu Apache Spark, aby przesłać zdalnej obsługi zadań do klastra usługi HDInsight Spark
 
-Dowiedz się, jak używać [Apache, usługi Livy](https://livy.incubator.apache.org/), [platformy Apache Spark](https://spark.apache.org/) interfejsu API REST, który jest używany do przesyłania zadań zdalnego w klastrze usługi HDInsight Spark. Aby uzyskać szczegółową dokumentację, zobacz [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
+Dowiedz się, jak używać [Apache, usługi Livy](https://livy.incubator.apache.org/), [platformy Apache Spark](https://spark.apache.org/) interfejsu API REST, który jest używany do przesyłania zadań zdalnego w klastrze usługi HDInsight Spark. Aby uzyskać szczegółową dokumentację, zobacz [ https://livy.incubator.apache.org/ ](https://livy.incubator.apache.org/).
 
 Za pomocą usługi Livy do uruchamiania interakcyjnego Spark powłoki lub przesyłania zadania usługi batch mają być uruchamiane na platformie Spark. Ten artykuł zawiera informacje o przy użyciu programu Livy można przesłać zadania usługi batch. Fragmenty kodu, w tym artykule używane jest narzędzie cURL do wykonywania wywołań interfejsu API REST do punktu końcowego usługi Livy platformy Spark.
 
@@ -172,9 +172,9 @@ Poniżej przedstawiono niektóre problemy, które możesz napotkać podczas przy
 
 ### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>Za pomocą zewnętrznego pliku jar z dodatkowego magazynu nie jest obsługiwana.
 
-**Problem:** zadanie platformy Spark usługi Livy odwołuje się do zewnętrznego pliku jar z konta magazynu dodatkowego skojarzonego z klastrem, zadanie kończy się niepowodzeniem.
+**Problem:** Jeśli zadanie platformy Spark usługi Livy odwołuje się do zewnętrznego pliku jar z konta magazynu dodatkowego skojarzonego z klastrem, zadanie kończy się niepowodzeniem.
 
-**Rozwiązanie:** upewnij się, że jar, którego chcesz użyć, jest dostępny w domyślnego magazynu skojarzonego z klastrem HDInsight.
+**Rozwiązanie:** Upewnij się, że plik jar, którego chcesz użyć jest dostępny w domyślnego magazynu skojarzonego z klastrem HDInsight.
 
 
 
@@ -182,7 +182,7 @@ Poniżej przedstawiono niektóre problemy, które możesz napotkać podczas przy
 
 ## <a name="next-step"></a>Następny krok
 
-* [Dokumentacja interfejsu API REST usługi Livy Apache](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Dokumentacja interfejsu API REST usługi Livy Apache](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
 * [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)
 

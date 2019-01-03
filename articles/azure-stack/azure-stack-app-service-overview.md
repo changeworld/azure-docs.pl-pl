@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 3015755d8046f72c03cd1a1485d90a7f720a8909
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b1b4ea5775a661712838c1495ef0025a83b8c518
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353026"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607947"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Omówienie usługi App Service w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Usługa Azure App Service w usłudze Azure Stack to oferta typu platform-as-a-service (PaaS), Microsoft Azure dostępnych w usłudze Azure Stack. Usługa umożliwia klientom wewnętrzne lub zewnętrzne do tworzenia sieci web, interfejsów API i usługi Azure Functions aplikacje dla dowolnej platformy lub urządzenia. Mogą integrować aplikacje z aplikacjami lokalnymi i automatyzować swoje procesy biznesowe. Operatorzy chmury usługi Azure Stack można uruchamiać aplikacje klienta na w pełni zarządzane maszyny wirtualne (VM), za pomocą wybranych przez nich udostępnianych zasobów maszyn wirtualnych lub dedykowanych maszyn wirtualnych.
+Usługa Azure App Service w usłudze Azure Stack to oferta typu platform-as-a-service (PaaS), Microsoft Azure dostępnych w usłudze Azure Stack. Usługa umożliwia klientom wewnętrzne lub zewnętrzne do tworzenia sieci web, interfejsów API i usługi Azure Functions aplikacje dla dowolnej platformy lub urządzenia. Mogą one integrować Twoje aplikacje z aplikacjami lokalnymi i automatyzować ich procesy biznesowe. Operatorzy chmury usługi Azure Stack mogą uruchamiać aplikacje klienta na w pełni zarządzanych maszynach wirtualnych za pomocą wybranych przez nich udostępnianych zasobów maszyn wirtualnych lub dedykowanych maszyn wirtualnych.
 
 Usługa Azure App Service umożliwia automatyzowanie procesów biznesowych i hostowania interfejsów API w chmurze. Jako pojedyncza zintegrowana usługa Azure App Service pozwala na łączenie różnych składników, takich jak witryny sieci Web, interfejsów API REST i procesów biznesowych, w ramach jednego rozwiązania.
 
@@ -33,16 +33,16 @@ Usługa Azure App Service umożliwia automatyzowanie procesów biznesowych i hos
 
 Poniżej przedstawiono niektóre najważniejszych funkcji i możliwości usługi App Service:
 
-- **Wiele języków i struktur**: App Service oferuje najwyższej jakości pomoc techniczna dla platformy ASP.NET, Node.js, Java, PHP i Python. Można również uruchomić program Windows PowerShell oraz inne skrypty lub pliki wykonywalne na maszynach wirtualnych usługi App Service.
+- **Wiele języków i struktur**: Usługa App Service ma najwyższej jakości pomoc techniczna dla platformy ASP.NET, Node.js, Java, PHP i Python. Można również uruchomić program Windows PowerShell oraz inne skrypty lub pliki wykonywalne na maszynach wirtualnych usługi App Service.
 - **Optymalizacja metodyki DevOps**: Konfigurowanie ciągłej integracji i ciągłego wdrażania za pomocą usługi GitHub, lokalnego narzędzia Git lub BitBucket. Promowanie aktualizacji za pośrednictwem środowisk testowych i przejściowych i zarządzanie aplikacjami w usłudze App Service przy użyciu programu Azure PowerShell lub wieloplatformowego interfejsu wiersza polecenia (CLI).
-- **Integracja z programem Visual Studio**: dedykowane narzędzia w programie Visual Studio usprawniają procesy tworzenia i wdrażania aplikacji.
+- **Integracja z programem Visual Studio**: Dedykowane narzędzia w programie Visual Studio usprawniają procesy tworzenia i wdrażania aplikacji.
 
 ## <a name="app-types-in-app-service"></a>Typy aplikacji w usłudze App Service
 
 Usługa App Service oferuje kilka typów aplikacji, z których każdy jest przeznaczony do obsługi określonego obciążenia:
 
-- [Aplikacje sieci Web](../app-service/app-service-web-overview.md) do hostowania witryn sieci Web i aplikacji sieci web.
-- [Funkcja API Apps](../app-service/app-service-web-overview.md) do hostowania interfejsów API REST.
+- [Aplikacje sieci Web](../app-service/overview.md) do hostowania witryn sieci Web i aplikacji sieci web.
+- [Funkcja API Apps](../app-service/overview.md) do hostowania interfejsów API REST.
 - Usługa Azure Functions do obsługi obciążeń bezserwerowych oparte na zdarzeniach.
 
 Wyraz *aplikacji* odwołuje się do zasobów hostowania przeznaczonych do obsługi obciążenia. Biorąc *aplikacji sieci web* na przykład Użytkownicy przyzwyczajeni prawdopodobnie na myśl aplikacji sieci web, zgodnie z aplikacji i zasobów obliczeniowych kodu łącznie zapewnia funkcjonalność do przeglądarki. W usłudze App Service aplikacja sieci web jest z zasobów obliczeniowych usługi Azure Stack zapewnia hostowania kodu aplikacji.

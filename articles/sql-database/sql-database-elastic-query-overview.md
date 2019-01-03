@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 777b0e6e98c0d8d726b69f0fc169f2d2752b4b6d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: dd6a9ee00ba6244e5a0d04f654e6b57db8896ea6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865016"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603951"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Omówienie zapytanie elastyczne w usłudze Azure SQL Database (wersja zapoznawcza)
 
@@ -56,8 +56,8 @@ Zapytanie elastyczne umożliwia łatwy dostęp do całej kolekcji baz danych za 
 
 Scenariusze klienta dla zapytania elastycznego charakteryzują się następujących topologii:
 
-* **Partycjonowanie pionowe - zapytań między bazami danych** (topologia 1): dane są partycjonowane w pionie między liczbą baz danych w warstwie danych. Zazwyczaj różne zestawy tabele znajdują się w różnych bazach danych. Oznacza to, że schemat różni się w różnych bazach danych. Na przykład wszystkie tabele spisu znajdują się na jedną bazę danych podczas, gdy wszystkie tabele powiązane księgowości znajdują się w drugiej bazy danych. Typowe przypadki użycia z tym topologią wymagane do tworzenia zapytań i skompilować raporty między tabelami w wielu bazach danych.
-* **Partycjonowanie poziome — fragmentowanie** (topologia 2): dane są partycjonowane w poziomie, aby rozdystrybuować wiersze danych skalowanych w poziomie warstwy. W przypadku tej metody schemat jest taka sama dla wszystkich uczestniczących baz danych. To podejście jest również nazywany "fragmentowania". Dzielenie na fragmenty, które mogą być wykonywane i zarządzanych (1 elastycznej bazy danych przy użyciu narzędzia, biblioteki lub (2) self dzielenie na fragmenty. Elastyczne zapytanie służy do przeszukiwania i skompilować raporty obejmujące wiele fragmentów.
+* **Partycjonowanie pionowe - zapytań między bazami danych** (topologia 1): Dane są partycjonowane w pionie między liczbą baz danych w warstwie danych. Zazwyczaj różne zestawy tabele znajdują się w różnych bazach danych. Oznacza to, że schemat różni się w różnych bazach danych. Na przykład wszystkie tabele spisu znajdują się na jedną bazę danych podczas, gdy wszystkie tabele powiązane księgowości znajdują się w drugiej bazy danych. Typowe przypadki użycia z tym topologią wymagane do tworzenia zapytań i skompilować raporty między tabelami w wielu bazach danych.
+* **Partycjonowanie poziome — fragmentowanie** (topologia 2): Dane są partycjonowane w poziomie, aby rozdystrybuować wiersze danych skalowanych w poziomie warstwy. W przypadku tej metody schemat jest taka sama dla wszystkich uczestniczących baz danych. To podejście jest również nazywany "fragmentowania". Dzielenie na fragmenty, które mogą być wykonywane i zarządzanych (1 elastycznej bazy danych przy użyciu narzędzia, biblioteki lub (2) self dzielenie na fragmenty. Elastyczne zapytanie służy do przeszukiwania i skompilować raporty obejmujące wiele fragmentów.
 
 > [!NOTE]
 > Elastyczne zapytanie sprawdza się najlepiej w sytuacji, gdzie większość przetwarzania (filtrowanie, agregacja) mogą być wykonywane po stronie źródła zewnętrznego. Nie jest odpowiednia dla operacji ETL gdzie duże ilości danych są przesyłane z zdalnej bazy danych. Dla dużych obciążeń raportowania lub przy użyciu bardziej złożone zapytania magazynowania danych, również należy rozważyć użycie [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
@@ -73,13 +73,13 @@ Elastyczne zapytanie może służyć do danych znajdujących się w usłudze SQL
 > Musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączony do uprawnienie ALTER DATABASE. Aby odwołać się do bazowego źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
 >
 
-**Dane referencyjne**: Topologia jest używany do zarządzania danymi odwołania. Na poniższej ilustracji dwie tabele (T1 i T2) z danymi referencyjnymi są przechowywane na dedykowany bazy danych. Przy użyciu zapytania elastycznego, są teraz dostępne tabele T1 i T2 zdalnie innych baz danych, jak pokazano na rysunku. Użyj topologia 1, jeśli tabele odwołań są małe lub zdalne zapytania do tabeli referencyjnej mieć predykatów selektywnego.
+**Dane referencyjne**: Topologia jest używana do zarządzania danymi odwołania. Na poniższej ilustracji dwie tabele (T1 i T2) z danymi referencyjnymi są przechowywane na dedykowany bazy danych. Przy użyciu zapytania elastycznego, są teraz dostępne tabele T1 i T2 zdalnie innych baz danych, jak pokazano na rysunku. Użyj topologia 1, jeśli tabele odwołań są małe lub zdalne zapytania do tabeli referencyjnej mieć predykatów selektywnego.
 
 **Rysunek 2** partycjonowanie pionowe — elastycznych referencyjnymi zapytania do zapytania
 
 ![Partycjonowanie pionowe — elastycznych referencyjnymi zapytania do zapytania][3]
 
-**Wykonywanie zapytań między bazami danych**: elastyczne zapytania Włącz zastosowań, które wymagają wykonywania zapytań w wielu bazach danych SQL. Rysunek 3 przedstawia cztery różne bazy danych: CRM, spisu, godzinę i produktów. Zapytania wykonywane w jednej z baz danych potrzebują również dostępu do jednego lub wszystkich innych baz danych. Przy użyciu zapytania elastycznego, można skonfigurować bazy danych dla tego przypadku, uruchamiając kilka prostych instrukcji DDL na każdym z czterech baz danych. Po tej jednorazowej konfiguracji dostępu do tabeli zdalnej jest tak proste, jak odwołujące się do lokalnej tabeli z zapytań T-SQL lub narzędzi do analizy Biznesowej. Takie podejście jest zalecane w przypadku zapytań zdalnych nie zwracają duże wyniki.
+**Wykonywanie zapytań między bazami danych**: Zapytania elastyczne umożliwiają przypadki użycia, które wymagają wykonywania zapytań w wielu bazach danych SQL. Rysunek 3 przedstawia cztery różne bazy danych: CRM, spisu, godzinę i produktów. Zapytania wykonywane w jednej z baz danych potrzebują również dostępu do jednego lub wszystkich innych baz danych. Przy użyciu zapytania elastycznego, można skonfigurować bazy danych dla tego przypadku, uruchamiając kilka prostych instrukcji DDL na każdym z czterech baz danych. Po tej jednorazowej konfiguracji dostępu do tabeli zdalnej jest tak proste, jak odwołujące się do lokalnej tabeli z zapytań T-SQL lub narzędzi do analizy Biznesowej. Takie podejście jest zalecane w przypadku zapytań zdalnych nie zwracają duże wyniki.
 
 **Rysunek 3** partycjonowanie pionowe — za pomocą elastycznych zapytań lub zapytań w różnych bazach danych
 

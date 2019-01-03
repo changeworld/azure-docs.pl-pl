@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 013b63d0eb2cc69893dcb4075c1ca26a31ef2474
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: db7591c98147a5728486843efb0c807b6094557a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277985"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601478"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrowanie infrastruktury bramy usług pulpitu zdalnego przy użyciu rozszerzenia serwera zasad sieciowych (NPS) i Azure AD
 
@@ -26,7 +26,7 @@ Rozszerzenia serwera zasad sieciowych (NPS) dla platformy Azure umożliwia klien
 Ten artykuł zawiera instrukcje krok po kroku do integrowania infrastruktury NPS z usługą Azure MFA przy użyciu rozszerzenia serwera NPS dla platformy Azure. Dzięki temu weryfikacji dla użytkowników próbujących się zalogować się do bramy usług pulpitu zdalnego.
 
 > [!NOTE]
-> W tym artykule nie należy używać w przypadku wdrożeń serwera MFA tylko usługi Azure MFA (oparte na chmurze).
+> W tym artykule nie należy używać w przypadku wdrożeń serwera usługi MFA i powinna służyć wyłącznie wdrożeń usługi Azure MFA (oparte na chmurze).
 
 Zasad sieciowych i dostępu do usług (NPS) umożliwia organizacjom wykonaj następujące czynności:
 
@@ -162,7 +162,7 @@ Aby użyć skryptu, należy podać rozszerzenie przy użyciu poświadczeń admin
 
 1. Otwórz administracyjny wiersz środowiska Windows PowerShell.
 1. W wierszu polecenia programu PowerShell wpisz `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`i naciśnij klawisz **ENTER**.
-1. Typ `.\AzureMfsNpsExtnConfigSetup.ps1`i naciśnij klawisz **ENTER**. Skrypt sprawdza, czy zainstalowano modułu programu PowerShell usługi Azure Active Directory. Jeśli nie jest zainstalowany, skrypt zainstaluje moduł.
+1. Typ `.\AzureMfaNpsExtnConfigSetup.ps1`i naciśnij klawisz **ENTER**. Skrypt sprawdza, czy zainstalowano modułu programu PowerShell usługi Azure Active Directory. Jeśli nie jest zainstalowany, skrypt zainstaluje moduł.
 
   ![Program Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   

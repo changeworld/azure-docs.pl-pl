@@ -3,17 +3,15 @@ title: Migracja bazy danych MariaDB przy użyciu zrzutu i przywracania w usłudz
 description: W tym artykule opisano dwa podstawowe sposoby kopii zapasowej i przywracanie baz danych w usłudze Azure Database dla serwera MariaDB, za pomocą narzędzi takich jak polecenia mysqldump połączenia aplikacji MySQL Workbench i narzędzia PHPMyAdmin.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5ac80ef36241b58812832c66511c0a09d49b365f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bcb76fcbba02bf53b48cc462e3dad8f264db02ed
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986988"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540447"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migracja bazy danych MariaDB do usługi Azure Database dla serwera MariaDB przy użyciu zrzutu i przywracania
 W tym artykule opisano dwa podstawowe sposoby kopii zapasowej i przywracanie baz danych w usłudze Azure Database dla serwera MariaDB

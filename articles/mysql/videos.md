@@ -1,37 +1,34 @@
 ---
-title: Azure bazy danych MySQL wideo
-description: Ta strona zawiera listę zawartości wideo dotyczące uczenia bazy danych platformy Azure dla programu MySQL, MySQL oferty na platformie Azure zarządzanego przez firmę Microsoft.
-services: mysql
+title: Azure Database for MySQL — wideo
+description: Ta strona zawiera listę zawartości wideo, które są odpowiednie do nauki — Azure Database for MySQL, MySQL, oferty na platformie Azure zarządzanych firmy Microsoft.
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: f1fdab096c91290f58f5ec7263adc50ebaee5232
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 7bb584e24dcfaff34bbca2bc8a9db99a7007c8f0
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266554"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538601"
 ---
-# <a name="azure-database-for-mysql-videos"></a>Azure bazy danych MySQL wideo
+# <a name="azure-database-for-mysql-videos"></a>Usługa Azure Database for MySQL — wideo
 
-[Omówienie: Azure bazy danych PostgreSQL i MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+[Omówienie: Azure Database for PostgreSQL i MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure dla PostgreSQL i Azure bazy danych dla programu MySQL zebranie community edition baz danych i możliwości w pełni zarządzaną usługę, aby skupić się na aplikacji zamiast do zarządzania bazą danych. Dostrojenie Aby uzyskać szybki przegląd zalety korzystania z usługi i poznać pewne możliwości w akcji.
+Usługa Azure Database for PostgreSQL i Azure Database for MySQL łączą ze sobą community edition baz danych i możliwości w pełni zarządzana usługa, dzięki czemu możesz skupić się na aplikacjach zamiast konieczności zarządzania bazą danych. Posłuchaj, aby uzyskać szybki przegląd zalety korzystania z usługi i zobacz, niektóre funkcje, w akcji.
 
-[Nowości dotyczące możliwości usługi zarządzanej MySQL i PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
+[Szczegółowe informacje dotyczące możliwości usługi zarządzanej dla MySQL i PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T148/player]
 
-Azure dla PostgreSQL i Azure bazy danych dla programu MySQL zebranie community edition baz danych i możliwości w pełni zarządzaną usługę. Dostosuj, aby uzyskać szczegółowe informacje na temat działania tych usług temat — jak możemy zapewnić wysoką dostępność i szybkie skalowanie (w sekundach), dlatego mogą zaspokoić potrzeb klientów. Dowiesz się o niektórych podstawowych inwestycji w bezpieczeństwo i dostępność na całym świecie.
+Usługa Azure Database for PostgreSQL i Azure Database for MySQL łączą ze sobą, community edition baz danych i możliwości w pełni zarządzana usługa. Posłuchaj, aby uzyskać szczegółowe informacje na temat sposobu działania tych usług, jak firma Microsoft zapewni to wysoką dostępność i szybkie skalowanie (w ciągu kilku sekund), dzięki czemu można zaspokoić potrzeby klientów. Także poznasz niektóre z podstawowych inwestycje w zabezpieczenia i dostępność na całym świecie.
 
-[Jak rozpocząć pracę z nową bazę danych Azure dla usługi MySQL](https://channel9.msdn.com/events/Build/2017/B8045)
+[Jak rozpocząć pracę z nowego usługa Azure Database for MySQL](https://channel9.msdn.com/events/Build/2017/B8045)
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8045/player]
 
-W tym wideo z 2017 może konferencji //Build firmy Microsoft, zapoznaj się z firmy Microsoft zarządzanych oferty MySQL na platformie Azure. Wideo przedstawiono strategii firmy Microsoft do obsługi systemów bazy danych Open Source na platformie Azure. Wideo opisano, co to oznacza, że użytkownik dewelopera do opracowywania i wdrażania aplikacji, które wykorzystują MySQL na platformie Azure. Ten klip wideo zawiera omówienie architektury usługi i pokazuje, że baza danych Azure dla programu MySQL jest zintegrowana z innymi usługami Azure, takich jak aplikacje sieci Web.
+W tym filmie od maja 2017 r. konferencji //Build firmy Microsoft, zapoznaj się z firmy Microsoft zarządzanych oferty MySQL na platformie Azure. Film wideo przedstawiono strategię firmy Microsoft do obsługi systemów baz danych typu Open Source na platformie Azure. Film wideo omawia, co to oznacza dla Ciebie jako deweloper do opracowania lub wdrażania aplikacji, które wykorzystują MySQL na platformie Azure. To wideo zawiera omówienie architektury usługi i pokazuje, że — Azure Database for MySQL jest zintegrowana z innymi usługami platformy Azure, takich jak aplikacje sieci Web.

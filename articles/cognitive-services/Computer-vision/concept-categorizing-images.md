@@ -1,7 +1,7 @@
 ---
 title: Kategoryzowanie obrazów — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z kategoryzowanie obrazów przy użyciu interfejsu API przetwarzania obrazów.
+description: Pojęcia związane z funkcji kategoryzacji obrazu z interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 7062d98d40c15f4e9e873038fc12fc1b104c996d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 40873b13407066920caec5c04751b65c01d7e209
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333483"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579502"
 ---
-# <a name="categorizing-images"></a>Kategoryzowanie obrazów
+# <a name="image-categorization-with-computer-vision"></a>Kategoryzacja obrazu za pomocą wizualizacji komputerowej
 
 Oprócz opisy i tagowania przetwarzania obrazów zwraca kategorie na podstawie taksonomii zdefiniowane w poprzednich wersjach. Te kategorie są uporządkowane w formie taksonomii z użyciem dziedziczonych hierarchii obiektów nadrzędnych i podrzędnych. Wszystkie kategorie są w języku angielskim. Mogą one używane autonomicznie lub dzięki naszej nowej znakowanie modeli.
 
@@ -31,7 +32,7 @@ Na podstawie listy koncepcji 86 pokazano na poniższym diagramie, obrazu można 
 
 Następującą odpowiedź JSON przedstawiono co przetwarzania obrazów zwraca, gdy kategoryzowanie przykładowy obraz na podstawie jego visual funkcji.
 
-![Kobieta na dachu](./Images/woman_roof.png)
+![Kobieta na dachu budynku apartamentu](./Images/woman_roof.png)
 
 ```json
 {
@@ -54,10 +55,10 @@ W poniższej tabeli przedstawiono zestaw typowych obrazu i kategorii zwrócony p
 
 | Image (Obraz) | Kategoria |
 |-------|----------|
-| ![Zdjęcie rodzinne](./Images/family_photo.png) | people_group |
-| ![Słodki piesek](./Images/cute_dog.png) | animal_dog |
-| ![Na zewnątrz w górach](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Analiza obrazu — żywność, chleb](./Images/bread.png) | food_bread |
+| ![Czterech osób związane ze sobą jako rodzina](./Images/family_photo.png) | people_group |
+| ![Puppy, znajdują się w polu grassy](./Images/cute_dog.png) | animal_dog |
+| ![Osoba stojących na rock górski zachodzie słońca](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Wiele ról chleb na tabelę](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

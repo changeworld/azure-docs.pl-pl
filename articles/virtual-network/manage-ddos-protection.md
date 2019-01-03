@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: fae4fffbe9e4b0be0f2edacf3e86b6268cc58608
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 39525c7e25e247504429ea36210986a5e3300cc1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384653"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537179"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie Standard platformy Azure przed atakami DDoS Protection w witrynie Azure portal
 
@@ -70,7 +70,7 @@ Nie można przenieść sieci wirtualnej do innej grupy zasobów lub subskrypcji,
 2. Wybierz **Utwórz zasób** w lewym górnym rogu witryny Azure portal.
 3. Wprowadź nazwę sieci wirtualnej, który chcesz włączyć przed atakami DDoS Protection w warstwie standardowa dla w **Szukaj zasobów, usług i pole docs** w górnej części portalu. Gdy nazwa sieci wirtualnej pojawi się w wynikach wyszukiwania, wybierz ją.
 4. Wybierz **ochrona przed atakami DDoS**w obszarze **ustawienia**.
-5. Wybierz **standardowa**. W obszarze **planu ochrony przed atakami DDoS**, wybierz istniejący plan ochrony przed atakami DDoS lub plan utworzony w kroku 1, a następnie wybierz **Zapisz**. Plan, którą wybierzesz mogą znajdować się w tej samej lub innej subskrypcji niż sieć wirtualną, ale obie subskrypcje muszą być skojarzone z tą samą dzierżawą usługi Azure Active Directory.
+5. Wybierz opcję **Standardowa**. W obszarze **planu ochrony przed atakami DDoS**, wybierz istniejący plan ochrony przed atakami DDoS lub plan utworzony w kroku 1, a następnie wybierz **Zapisz**. Plan, którą wybierzesz mogą znajdować się w tej samej lub innej subskrypcji niż sieć wirtualną, ale obie subskrypcje muszą być skojarzone z tą samą dzierżawą usługi Azure Active Directory.
 
 ## <a name="disable-ddos-for-a-virtual-network"></a>Wyłącz przed atakami DDoS dla sieci wirtualnej
 
@@ -157,7 +157,7 @@ Raporty ograniczania ryzyka ataków używa danych protokołu Netflow, które maj
 6. Wybierz **Włącz diagnostykę, aby zebrać dziennika DDoSMitigationReports** a następnie wybierz pozycję jak najwięcej poniższych opcji, ile potrzebujesz:
 
     - **Zarchiwizuj na koncie magazynu**: Dane są zapisywane na koncie usługi Azure Storage. Aby dowiedzieć się więcej na temat tej opcji, zobacz [archiwizowanie dzienników diagnostycznych](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Stream do usługi event hub**: Umożliwia odbiorcy dziennika pobrać dzienniki przy użyciu usługi Azure Event Hub. Centra zdarzeń umożliwiają integrację z usługą Splunk lub innych systemów SIEM. Aby dowiedzieć się więcej na temat tej opcji, zobacz [Stream dzienników diagnostycznych do usługi event hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Stream do usługi event hub**: Umożliwia odbiorcy dziennika pobrać dzienniki przy użyciu usługi Azure Event Hub. Centra zdarzeń umożliwiają integrację z usługą Splunk lub innych systemów SIEM. Aby dowiedzieć się więcej na temat tej opcji, zobacz [Stream dzienników diagnostycznych do usługi event hub](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Wysyłanie do usługi Log Analytics**: Zapisuje dzienniki na usługę Azure Log Analytics. Aby dowiedzieć się więcej na temat tej opcji, zobacz [zbieranie dzienników do użycia w usłudze Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Oba raporty przyrostowych i po atak środki zaradcze zawierają następujące pola
@@ -179,7 +179,7 @@ Dzienniki przepływu ograniczania ryzyka ataków umożliwiają przeglądanie por
 6. Wybierz **Włącz diagnostykę, aby zebrać dziennika DDoSMitigationFlowLogs** a następnie wybierz pozycję jak najwięcej poniższych opcji, ile potrzebujesz:
 
     - **Zarchiwizuj na koncie magazynu**: Dane są zapisywane na koncie usługi Azure Storage. Aby dowiedzieć się więcej na temat tej opcji, zobacz [archiwizowanie dzienników diagnostycznych](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Stream do usługi event hub**: Umożliwia odbiorcy dziennika pobrać dzienniki przy użyciu usługi Azure Event Hub. Centra zdarzeń umożliwiają integrację z usługą Splunk lub innych systemów SIEM. Aby dowiedzieć się więcej na temat tej opcji, zobacz [Stream dzienników diagnostycznych do usługi event hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Stream do usługi event hub**: Umożliwia odbiorcy dziennika pobrać dzienniki przy użyciu usługi Azure Event Hub. Centra zdarzeń umożliwiają integrację z usługą Splunk lub innych systemów SIEM. Aby dowiedzieć się więcej na temat tej opcji, zobacz [Stream dzienników diagnostycznych do usługi event hub](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Wysyłanie do usługi Log Analytics**: Zapisuje dzienniki na usługę Azure Log Analytics. Aby dowiedzieć się więcej na temat tej opcji, zobacz [zbieranie dzienników do użycia w usłudze Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 1. Aby wyświetlić dane dzienników przepływów na pulpicie nawigacyjnym analizy usługi Azure, należy zaimportować przykładowy pulpit nawigacyjny z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 

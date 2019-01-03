@@ -1,20 +1,17 @@
 ---
 title: Migracja bazy danych MySQL przy użyciu zrzutu i przywracania w usłudze Azure Database for MySQL
 description: W tym artykule opisano dwa podstawowe sposoby kopii zapasowej i przywracanie baz danych w usłudze Azure Database for MySQL za pomocą narzędzi takich jak polecenia mysqldump połączenia aplikacji MySQL Workbench i narzędzia PHPMyAdmin.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/02/2018
-ms.openlocfilehash: f3e38bb3e7e4f2c58f1ae955878747ebc7d386f1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e79c83ecb17c4dcd11f7ccbecded59e7d1d13dfd
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984490"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542465"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migracja bazy danych MySQL do usługi Azure Database for MySQL przy użyciu zrzutu i przywracania
 W tym artykule opisano dwa podstawowe sposoby kopii zapasowej i przywracanie baz danych w usłudze Azure Database for MySQL

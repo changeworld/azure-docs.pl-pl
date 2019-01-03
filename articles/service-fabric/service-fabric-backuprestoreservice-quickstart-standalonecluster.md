@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 2ff7221a3742f59cdef2c5c7c220cc80148b94d0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b8f7142b2bd8e07e4b92c37b7e06bc4fe09efb73
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721565"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580420"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe kopii zapasowej i przywracania w usłudze Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -146,6 +146,9 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+> [!IMPORTANT]
+> Ze względu na problem w środowisku uruchomieniowym upewnij się, że czas przechowywania w zasadach przechowywania jest skonfigurowany do mniej niż 24 dni — w przeciwnym razie mogłyby spowodować przywracanie kopii zapasowej usługi, aby przejść do kworum utraty wpis replica w tryb failover.
+
 ### <a name="enable-periodic-backup"></a>Włącz okresowe wykonywanie kopii zapasowej
 Po zdefiniowaniu zasad, aby spełnić wymagania dotyczące ochrony danych aplikacji, zasady tworzenia kopii zapasowej należy skojarzone z aplikacją. W zależności od wymagań zasad tworzenia kopii zapasowej może być skojarzony z aplikacją, usługi lub partycji.
 
@@ -222,9 +225,13 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+## <a name="known-issues"></a>Znane problemy
+- Upewnij się, że okres przechowywania jest skonfigurowany do mniej niż 24 dni. 
+- Usługi przywracania kopii zapasowej nie pozwoli uzyskać na ustawienia regionalne, gdzie separatora dziesiętnego jest inny niż "."
+- Usługi przywracania kopii zapasowej nie powiodło się pojawiają się w klastrze zabezpieczony za pomocą zabezpieczeń na podstawie gMSA.
+
 ## <a name="limitation-caveats"></a>Ograniczenie / zastrzeżenia
 - Nie usługi Service Fabric wbudowanych poleceń cmdlet programu PowerShell.
-- Brak obsługi interfejsu wiersza polecenia usługi Service Fabric.
 - Klastry usługi Service Fabric nie są obsługiwane w systemie Linux.
 
 ## <a name="next-steps"></a>Kolejne kroki

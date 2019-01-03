@@ -2,20 +2,17 @@
 title: Rozwiązywanie problemów z połączeniem do usługi Azure Database dla serwera MariaDB | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rozwiązywać problemy z połączeniem do usługi Azure Database dla serwera MariaDB.
 keywords: połączenie mariadb, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
-services: mariadb
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 0100fa6d9691c864de9ac4aaea04b647e1705872
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c7e1ff10f9698bf57ce86a7e9686ef13e5248db7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565143"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545913"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Rozwiązywanie problemów z połączeniem do usługi Azure Database dla serwera MariaDB
 
@@ -49,9 +46,9 @@ Błędy przejściowe występują, gdy jest wykonywana konserwacja, system napotk
 
 Jeśli aplikacja nie może trwale do łączenia z usługą Azure Database dla serwera MariaDB, zwykle oznacza problem związany z jedną z następujących czynności:
 
-* Konfiguracja zapory: — Azure Database for MariaDB serwera lub klienta Zapora blokuje połączenia.
-* Ponownej konfiguracji po stronie klienta sieci: Dodano nowy adres IP lub serwer proxy.
-* Błąd użytkownika: na przykład mogło być błędnie wpisane parametry połączenia, takie jak nazwa serwera w parametrach połączenia lub braku *@servername* sufiksu w nazwie użytkownika.
+* Konfiguracja zapory: Azure Database for MariaDB zapory serwera lub klienta blokuje połączenia.
+* Ponowna konfiguracja sieci po stronie klienta: Dodano nowy adres IP lub serwer proxy.
+* Błąd użytkownika: Na przykład mogło być błędnie wpisane parametry połączenia, takie jak nazwa serwera w parametrach połączenia lub braku *@servername* sufiksu w nazwie użytkownika.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroki, aby rozwiązać problemy z łącznością trwałego
 

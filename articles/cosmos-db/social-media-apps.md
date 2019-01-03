@@ -1,5 +1,5 @@
 ---
-title: 'Wzorzec projektowy w usłudze Azure Cosmos DB: aplikacje mediów społecznościowych'
+title: 'Wzorzec projektowy w usłudze Azure Cosmos DB: Aplikacje mediów społecznościowych'
 description: Dowiedz się więcej o wzorcu projektowym w sieciach społecznościowych dzięki wykorzystaniu elastyczność magazynu usługi Azure Cosmos DB i innymi usługami platformy Azure.
 keywords: aplikacje mediów społecznościowych
 services: cosmos-db
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 669cfdc59fc0b2f509db704afa4867d8f55d86f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 494566cc7d49d502fd0bd864e70b338b8d6e0788
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083975"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726786"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB w zastosowaniach społecznościowych
 
 Mieszkających w wysoce wzajemnie połączonych społeczeństwa oznacza, że w pewnym momencie w życiu staje się częścią **sieci społecznościowej**. Używasz sieci społecznościowych, Utrzymuj znajomych, współpracowników, rodziny lub czasami udostępniać swoją pasję osoby o wspólnych zainteresowaniach.
 
-Jako inżynierów lub deweloperów możesz zastanawiać się, jak te sieci przechowywania i łączenia danych. Lub możesz może mieć nawet zostały nadzorowania do tworzenia lub projektowania nowej sieci społecznościowych na rynek niche określonych. Gdy powstaje znaczące pytanie: jak te dane są przechowywane?
+Jako inżynierów lub deweloperów możesz zastanawiać się, jak te sieci przechowywania i łączenia danych. Lub możesz może mieć nawet zostały nadzorowania do tworzenia lub projektowania nowej sieci społecznościowych na rynek niche określonych. Gdy pojawia się znaczne zapytania: Jak są przechowywane wszystkie te dane?
 
 Załóżmy, że tworzysz nowe i shiny sieci społecznościowych których Twoje użytkownicy będą publikować artykuły z powiązanych nośników, takich jak obrazy, wideo lub nawet music. Użytkownicy mogą komentarze dotyczące wpisów i zapewniają punktów dla klasyfikacji. Będzie kanału informacyjnego wpisów, które użytkownicy będą widzieć i oddziałują na stronie docelowej głównej witryny sieci Web. Ta metoda nie brzmi złożone w najpierw, ale dla uproszczenia, Przyjrzyjmy się tam zatrzymać. (Można delve do źródła danych niestandardowych użytkownika dotyczy relacji, ale wykracza poza Celem tego artykułu).
 
@@ -100,7 +100,7 @@ Tworzenie źródła danych jest to kwestia tworzenie dokumentów, które mogą z
 
 Strumień "najnowsza" może mieć z wpisami, uporządkowane według daty utworzenia. Lub masz "najbardziej aktywnych" przesyłanie strumieniowe przy użyciu tych wpisów z polubienia więcej w ciągu ostatnich 24 godzin. Można nawet implementować niestandardowe strumienia dla każdego użytkownika, w oparciu o logikę, takich jak obserwatorów i zainteresowania. Nadal będzie lista wpisów. Jest kwestią dotyczącą tworzenia tych list, ale wydajność odczytu pozostaje swobodnego. Po nabyciu jedną z tych list wydać jedno zapytanie do usługi Cosmos DB przy użyciu [w operatorze](how-to-sql-query.md#WhereClause) można pobrać strony wpisów w danym momencie.
 
-Strumienie źródła danych mogą być zbudowane przy użyciu [usług aplikacji platformy Azure](https://azure.microsoft.com/services/app-service/) procesów w tle: [Webjobs](../app-service/web-sites-create-web-jobs.md). Po utworzeniu wpisu przetwarzania w tle mogą być wyzwalane za pomocą [usługi Azure Storage](https://azure.microsoft.com/services/storage/) [kolejek](../storage/queues/storage-dotnet-how-to-use-queues.md) i wyzwalane za pomocą zadań Webjob [zestawu Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), wdrożenia Opublikuj propagacji wewnątrz strumieni w oparciu o logikę niestandardowego.
+Strumienie źródła danych mogą być zbudowane przy użyciu [usług aplikacji platformy Azure](https://azure.microsoft.com/services/app-service/) procesów w tle: [Zadania Webjob](../app-service/webjobs-create.md). Po utworzeniu wpisu przetwarzania w tle mogą być wyzwalane za pomocą [usługi Azure Storage](https://azure.microsoft.com/services/storage/) [kolejek](../storage/queues/storage-dotnet-how-to-use-queues.md) i wyzwalane za pomocą zadań Webjob [zestawu Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), wdrożenia Opublikuj propagacji wewnątrz strumieni w oparciu o logikę niestandardowego.
 
 Punkty i polubień za pośrednictwem wpis mogą być przetwarzane w sposób odroczone tworzenie ostatecznie spójne środowisko przy użyciu tej samej techniki.
 
@@ -206,15 +206,15 @@ Aby uzyskać więcej informacji na temat usługi Azure Search, możesz odwiedzi�
 
 ## <a name="the-underlying-knowledge"></a>Podstawowej wiedzy
 
-Po zapisaniu tej zawartości, który wzrostu i rozwoju każdego dnia, może się okazać myśleć: co można zrobić za pomocą tego strumienia danych z moich użytkowników?
+Po zapisaniu tej zawartości, który wzrostu i rozwoju każdego dnia, może się okazać myśleć: Co można zrobić za pomocą tego strumienia danych z moich użytkowników?
 
-Odpowiedź na pytanie jest prosta: umieść je do pracy i wyciągnij z niego.
+Odpowiedź na pytanie jest prosta: Umieść go do pracy i wyciągnij z niego.
 
 Jednak można omawiane? Kilka proste przykłady [analizę tonacji](https://en.wikipedia.org/wiki/Sentiment_analysis)zawartości, zalecenia dotyczące oparte na preferencjach użytkownika, lub nawet automatycznych pakietu content moderator, który zapewnia, że z zawartością opublikowaną przez sieci społecznościowe, jest bezpieczny dla rodziny.
 
 Teraz, gdy mam możesz podłączone prawdopodobnie będzie traktować należy niektóre tytuł doktora matematyczne analizy, aby wyodrębnić te wzorce i informacji poza proste baz danych i plików, ale może być nieprawidłowy.
 
-[Usługa Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)stanowiący część [pakietu Cortana Intelligence](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), to usługa w pełni zarządzana usługa w chmurze, która umożliwia tworzenie przepływów pracy za pomocą prostego interfejsu przeciągania i upuszczania za pomocą algorytmów, kod algorytmów w [ R](https://en.wikipedia.org/wiki/R_\(programming_language\)), lub używać niektórych już utworzone i gotowe do użycia interfejsów API, takich jak: [analizy tekstu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator lub [zalecenia](https://gallery.azure.ai/Solution/Recommendations-Solution).
+[Usługa Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)stanowiący część [pakietu Cortana Intelligence](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), to usługa w pełni zarządzana usługa w chmurze, która umożliwia tworzenie przepływów pracy za pomocą prostego interfejsu przeciągania i upuszczania za pomocą algorytmów, kod algorytmów w [ R](https://en.wikipedia.org/wiki/R_\(programming_language\)), lub używać niektórych już utworzone i gotowe do użycia interfejsów API, takich jak: [Analiza tekstu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [usługi Content Moderator, lub [zalecenia](https://gallery.azure.ai/Solution/Recommendations-Solution).
 
 Aby osiągnąć dowolnego z tych scenariuszy usługi Machine Learning, można użyć [usługi Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) pozyskiwać dane z różnych źródeł. Można również użyć [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) do przetwarzania informacji i generuje danych wyjściowych, które mogą być przetwarzane przez uczenie maszynowe Azure.
 

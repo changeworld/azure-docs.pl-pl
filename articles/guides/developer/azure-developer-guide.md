@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 80f7d93037c0b900608301ebf6463f85be10f2de
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 84d8d3838740ec5d448b14b5c4539f7d78c96b5e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311324"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714359"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -56,7 +56,7 @@ Najszybszą metodą publikowanie projektów sieci web, należy wziąć pod uwag�
 
 Można utworzyć aplikacji sieci web, zaplecza aplikacji mobilnych i aplikacji API apps.
 
-Ponieważ wszystkie trzema typami aplikacji używają środowiska uruchomieniowego usługi App Service, można hostować witrynę sieci Web, obsługę klientów mobilnych i udostępnianie interfejsów API na platformie Azure wszystko z tego samego projektu lub rozwiązania. Aby dowiedzieć się więcej na temat usługi App Service, zobacz [co to jest Azure Web Apps](../../app-service/app-service-web-overview.md).
+Ponieważ wszystkie trzema typami aplikacji używają środowiska uruchomieniowego usługi App Service, można hostować witrynę sieci Web, obsługę klientów mobilnych i udostępnianie interfejsów API na platformie Azure wszystko z tego samego projektu lub rozwiązania. Aby dowiedzieć się więcej na temat usługi App Service, zobacz [co to jest Azure Web Apps](../../app-service/overview.md).
 
 Usługa App Service został zaprojektowany przy użyciu infrastruktury DevOps na uwadze. Obsługuje ona różne narzędzia wdrożeń publikowania i ciągłej integracji, takich jak GitHub elementów webhook, Jenkins, DevOps platformy Azure, TeamCity i inne.
 
@@ -168,7 +168,7 @@ Bezwzględnie nie tylko wiedzieć, kto korzysta z aplikacji, ale także w celu u
 
     >**Kiedy należy używać**: Jeśli chcesz włączyć uwierzytelnianie w aplikacji usługi App Service przy użyciu usługi Azure AD, dostawców tożsamości społecznościowych i / lub.
 
-    >**Rozpoczynanie pracy**: Aby dowiedzieć się więcej o uwierzytelnianiu w usłudze App Service, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../../app-service/app-service-authentication-overview.md).
+    >**Rozpoczynanie pracy**: Aby dowiedzieć się więcej o uwierzytelnianiu w usłudze App Service, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../../app-service/overview-authentication-authorization.md).
 
 Aby dowiedzieć się więcej o najlepszych rozwiązaniach zabezpieczeń platformy Azure, zobacz [zabezpieczeń platformy Azure najlepsze rozwiązania i wzorce](../../security/security-best-practices-and-patterns.md).
 
@@ -190,7 +190,7 @@ Czy jest on aprowizowanie maszyn wirtualnych lub publikowania aplikacji sieci we
 
 >**Wypróbuj je teraz:** [Wypróbuj niektóre z integracji metodyki DevOps](https://azure.microsoft.com/try/devops/).
 
->**Rozpoczynanie pracy**: Aby wyświetlić opcje DevOps dla aplikacji usługi App Service, zobacz [ciągłe wdrażanie w usłudze Azure App Service](../../app-service/app-service-continuous-deployment.md).
+>**Rozpoczynanie pracy**: Aby wyświetlić opcje DevOps dla aplikacji usługi App Service, zobacz [ciągłe wdrażanie w usłudze Azure App Service](../../app-service/deploy-continuous-deployment.md).
 
 
 ## <a name="azure-regions"></a>Regiony świadczenia usługi Azure

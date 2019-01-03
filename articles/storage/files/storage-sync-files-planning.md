@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 76bec0f0e924fe193519f47effb8dd45f6262697
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335184"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630329"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
 
 W tym artykule opisano istotne zagadnienia dotyczące wdrożenia usługi Azure File Sync. Firma Microsoft zaleca się również przeczytanie [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md). 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="azure-file-sync-terminology"></a>Terminologii platformy Azure File Sync
 Przed przejściem do szczegółów Planowanie wdrażania usługi Azure File Sync, koniecznie zapoznaj się z terminologią.
@@ -34,9 +36,9 @@ Obiekt zarejestrowanego serwera reprezentuje relację zaufania między serwerem 
 
 ### <a name="azure-file-sync-agent"></a>Agent usługi Azure File Sync
 Agent usługi Azure File Sync to możliwy do pobrania pakiet, który umożliwia synchronizowanie systemu Windows Server z udziałem plików platformy Azure. Agent usługi Azure File Sync ma trzy główne składniki: 
-- **FileSyncSvc.exe**: tło usługi Windows, który jest odpowiedzialny za monitorowanie zmian na punkty końcowe serwera i inicjowania sesji synchronizacji na platformie Azure.
-- **StorageSync.sys**: filtru systemu plików usługi Azure File Sync, która jest odpowiedzialna za warstw pliki do usługi Azure Files (po chmurze warstw jest włączona).
-- **Polecenia cmdlet programu PowerShell do zarządzania**: polecenia cmdlet programu PowerShell, który jest używany do interakcji z dostawcy zasobów platformy Microsoft.StorageSync Azure. Dane można znaleźć w następujących lokalizacjach (ustawienie domyślne):
+- **FileSyncSvc.exe**: Tło, usługa Windows, który jest odpowiedzialny za monitorowanie zmian na punkty końcowe serwera i inicjowania sesji synchronizacji na platformie Azure.
+- **StorageSync.sys**: Filtr systemu plików usługi Azure File Sync, która jest odpowiedzialna za warstw pliki do usługi Azure Files (po chmurze warstw jest włączona).
+- **Polecenia cmdlet programu PowerShell do zarządzania**: Polecenia cmdlet programu PowerShell, który jest używany do interakcji z dostawcy zasobów platformy Microsoft.StorageSync Azure. Dane można znaleźć w następujących lokalizacjach (ustawienie domyślne):
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
@@ -68,7 +70,7 @@ Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często 
 Tej sekcji omówiono wymagania systemowe agenta usługi Azure File Sync i współdziałanie z funkcji systemu Windows Server oraz role i rozwiązań innych firm.
 
 ### <a name="evaluation-tool"></a>Narzędzie oceny
-Przed wdrożeniem usługi Azure File Sync, należy sprawdzić, czy jest on zgodny z systemu za pomocą narzędzia oceny usługi Azure File Sync. To narzędzie jest AzureRM PowerShell polecenia cmdlet, która sprawdza pod kątem potencjalnych problemów za pomocą systemu plików i zestaw danych, takimi jak nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Należy zauważyć, że najbardziej obejmują jego sprawdzanie, ale nie wszystkie funkcje wymienione poniżej; Zalecamy przeczytanie pozostałej części tej sekcji, aby upewnić się, że Twoje wdrożenie zostanie umieszczone sprawnie. 
+Przed wdrożeniem usługi Azure File Sync, należy sprawdzić, czy jest on zgodny z systemu za pomocą narzędzia oceny usługi Azure File Sync. To narzędzie jest polecenie cmdlet programu Azure PowerShell, która sprawdza pod kątem potencjalnych problemów za pomocą systemu plików i zestaw danych, takimi jak nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Należy zauważyć, że najbardziej obejmują jego sprawdzanie, ale nie wszystkie funkcje wymienione poniżej; Zalecamy przeczytanie pozostałej części tej sekcji, aby upewnić się, że Twoje wdrożenie zostanie umieszczone sprawnie. 
 
 #### <a name="download-instructions"></a>Instrukcje pobierania
 1. Upewnij się, że masz najnowszą wersję modułu PackageManagement i zainstalowany moduł PowerShellGet (umożliwia to zainstalować moduły z wersji zapoznawczej)
@@ -82,29 +84,29 @@ Przed wdrożeniem usługi Azure File Sync, należy sprawdzić, czy jest on zgodn
 3. Instalacja modułów
     
     ```PowerShell
-        Install-Module -Name AzureRM.StorageSync -AllowPrerelease
+        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
     ```
 
 #### <a name="usage"></a>Sposób użycia  
 Narzędzie oceny można wywołać na kilka różnych sposobów: możesz wykonać testy systemu i/lub sprawdzenia zestawu danych. Aby wykonać testy systemu i zestaw danych: 
 
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path>
+    Invoke-AzStorageSyncCompatibilityCheck -Path <path>
 ```
 
 Aby przetestować tylko zestaw danych:
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
+    Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
 ```
  
 Aby przetestować tylko wymagania systemowe:
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -ComputerName <computer name>
+    Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
 ```
  
 Aby wyświetlić wyniki w formacie CSV:
 ```PowerShell
-    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck […]
+    $errors = Invoke-AzStorageSyncCompatibilityCheck […]
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
@@ -113,7 +115,7 @@ Aby wyświetlić wyniki w formacie CSV:
 
     | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
     |---------|----------------|------------------------------|
-    | System Windows Server 2019 r | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
+    | Windows Server 2019 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
     | Windows Server 2016 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
     | Windows Server 2012 R2 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
 
@@ -170,9 +172,9 @@ W przypadku woluminów, które nie mają obsługi warstw włączone w chmurze us
 ### <a name="distributed-file-system-dfs"></a>Rozproszony System plików (DFS)
 Usługa Azure File Sync obsługuje współdziałanie z przestrzeni nazw systemu plików DFS (DFS-N) i replikacja systemu plików DFS (DFS-R), począwszy od [agenta usługi Azure File Sync 1.2](https://go.microsoft.com/fwlink/?linkid=864522).
 
-**Przestrzenie nazw systemu plików DFS (DFS-N)**: usługi Azure File Sync jest w pełni obsługiwana na serwerach z systemem plików DFS-N. Na co najmniej jednego członka systemu plików DFS-N, na synchronizowanie danych między punkty końcowe serwera i punkt końcowy w chmurze, można zainstalować agenta usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Przegląd przestrzeni nazw systemu plików DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**Przestrzenie nazw systemu plików DFS (DFS-N)**: Usługa Azure File Sync jest w pełni obsługiwany na serwerach z systemem plików DFS-N. Na co najmniej jednego członka systemu plików DFS-N, na synchronizowanie danych między punkty końcowe serwera i punkt końcowy w chmurze, można zainstalować agenta usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Przegląd przestrzeni nazw systemu plików DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Replikacja systemu plików DFS (DFS-R)**: ponieważ systemu plików DFS-R i usługi Azure File Sync są oba rozwiązania replikacji w większości przypadków, firma Microsoft zaleca, zastępując systemu plików DFS-R z usługi Azure File Sync. Istnieje jednak kilka scenariuszy, w których chcesz korzystać ze sobą systemu plików DFS-R i usługi Azure File Sync:
+**Replikacja systemu plików DFS (DFS-R)**: Systemu plików DFS-R i usługi Azure File Sync są oba rozwiązania replikacji w większości przypadków zalecamy zastąpienie systemu plików DFS-R z usługi Azure File Sync. Istnieje jednak kilka scenariuszy, w których chcesz korzystać ze sobą systemu plików DFS-R i usługi Azure File Sync:
 
 - W przypadku migracji z wdrożenia systemu plików DFS-R do wdrożenia usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [migracji wdrożenia replikacji systemu plików DFS (DFS-R) do usługi Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
 - Nie każdy na lokalnym serwerze, który potrzebuje kopii swoich danych z plików mogą być podłączone bezpośrednio do Internetu.

@@ -3,16 +3,15 @@ title: Tworzenie użytkowników w usłudze Azure Database dla serwera PostgreSQL
 description: W tym artykule opisano sposób tworzenia nowych kont użytkowników do interakcji z usługi Azure Database for postgresql w warstwie serwera.
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2018
-ms.openlocfilehash: 45d1f55e60763724aeb1b1685c5c69696475a424
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 8b1bf6f1eccefb9235751c9e113c90566dfdff79
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958104"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540829"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Tworzenie użytkowników w usłudze Azure Database dla serwera PostgreSQL 
 W tym artykule opisano sposób tworzenia użytkowników w usługi Azure Database for postgresql w warstwie serwera.
@@ -27,7 +26,7 @@ Azure Database for postgresql w warstwie serwera jest tworzony przy użyciu ról
 
 Użytkownik Administrator usługi serwera jest elementem członkowskim roli azure_pg_admin. Jednak konta administratora serwera nie jest częścią roli azure_superuser. Ponieważ ta usługa to zarządzana usługa PaaS, tylko firma Microsoft jest częścią roli administratora. 
 
-Aparat PostgreSQL używa uprawnień do kontrolowania dostępu do obiektów bazy danych, zgodnie z opisem w [dokumentacji produktu PostgreSQL](https://www.postgresql.org/docs/current/static/sql-createrole.html). W usłudze Azure Database for PostgreSQL, użytkownik Administrator serwera ma przywileje te: logowania, NOSUPERUSER, dziedziczenia, CREATEDB CREATEROLE, NOREPLICATION
+Aparat PostgreSQL używa uprawnień do kontrolowania dostępu do obiektów bazy danych, zgodnie z opisem w [dokumentacji produktu PostgreSQL](https://www.postgresql.org/docs/current/static/sql-createrole.html). W usłudze Azure Database for PostgreSQL użytkownik Administrator serwera otrzymuje tych uprawnień: IDENTYFIKATOR LOGOWANIA, NOSUPERUSER, DZIEDZICZĄ CREATEDB, CREATEROLE, NOREPLICATION
 
 Konta użytkownika Administrator serwera może służyć do tworzenia dodatkowych użytkowników i przyznawanie tych użytkowników do roli azure_pg_admin. Ponadto konta administratora serwera można utworzyć mniej uprzywilejowane użytkownicy i role, które mają dostęp do poszczególnych baz danych i schematów.
 
@@ -77,6 +76,6 @@ Konta użytkownika Administrator serwera może służyć do tworzenia dodatkowyc
    ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Otwierająca zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im nawiązanie: [tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal](howto-manage-firewall-using-portal.md) lub [wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md).
+Otwierająca zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im na połączenie: [Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal](howto-manage-firewall-using-portal.md) lub [wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md).
 
 Aby uzyskać więcej informacji na temat zarządzania kontami użytkowników, zapoznaj się z dokumentacją produktu PostgreSQL dla [ról bazy danych i uprawnień](https://www.postgresql.org/docs/current/static/user-manag.html), [składni GRANT](https://www.postgresql.org/docs/current/static/sql-grant.html), i [uprawnienia](https://www.postgresql.org/docs/current/static/ddl-priv.html).

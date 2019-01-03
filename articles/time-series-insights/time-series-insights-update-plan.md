@@ -1,5 +1,5 @@
 ---
-title: Azure planowanie czasu Series Insights w wersji zapoznawczej — Planowanie środowiska Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
+title: Planowanie środowiska Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
 description: Planowanie środowiska Azure czas Series Insights w wersji zapoznawczej.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1df4847f20329e924352adfe782faa43d10dde98
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 09fef060a58723624796fe6192fef2444251cc1c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277050"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556088"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure czas Series Insights w wersji zapoznawczej
 
@@ -78,7 +78,7 @@ Regułą:
 
 * Store metadanych w swojej modelu szeregów czasowych
 * Tryb serii czasu, pól wystąpień i zdarzenia obejmują tylko niezbędne informacje, takie jak:
-  * Identyfikator serii czasu
+  * Identyfikator szeregu czasowego
   * Znacznik czasu
 
 Aby uzyskać więcej informacji, zobacz [kształt zdarzenia](./time-series-insights-send-events.md#json).
@@ -117,5 +117,5 @@ Wykonaj następujące kroki, aby utworzyć i użyć dodatkowej środowiska usłu
 
 Aby dowiedzieć się więcej, przeczytaj:
 
-- [Usługi Azure storage czasu Series Insights w wersji zapoznawczej i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md)
+- [Magazyn i ruch przychodzący usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-storage-ingress.md)
 - [Modelowanie danych](./time-series-insights-update-tsm.md)

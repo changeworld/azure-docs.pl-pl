@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: a110d14293b391a6856b56d0d8a84a24a90d33e1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 98ce2127cc9f60128767f8e4409134f2393ac84f
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341664"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582433"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
@@ -31,9 +31,6 @@ Po zarejestrowaniu się na platformie Azure, istnieje kilka rzeczy, które możn
 - Jeśli Twoja subskrypcja jest bezpłatna wersja próbna [programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)platformy Azure w otwartych (AIO) lub BizSpark, Twoja subskrypcja jest automatycznie wyłączana, gdy używane są wszystkie środki. Dowiedz się więcej o [limitów wydatków](#spending-limit) pozwala uniknąć nieoczekiwanie wyłączony subskrypcji.
 
 - Jeśli logujesz się w celu [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), [można korzystać z niektórych z najbardziej popularnych usług platformy Azure bezpłatnie przez 12 miesięcy](billing-create-free-services-included-free-account.md). Wraz z zaleceniami wymienione poniżej, zobacz [uniknąć opłat za darmo konta](billing-avoid-charges-free-account.md).
-
-> [!div class="nextstepaction"]
-> [Pomoc w ulepszaniu dokumentów rozliczeniowych platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Uzyskaj szacowane koszty przed dodaniem usług platformy Azure
 

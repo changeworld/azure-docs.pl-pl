@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a37e67f299262a7e0b353564c24c789859dcec7c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307478"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605011"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać połączenie z platformy Apache Kafka w HDInsight przy użyciu sieci wirtualnej platformy Azure
 
@@ -49,7 +49,7 @@ HDInsight nie zezwala na bezpośrednie połączenie z platformą Kafka za pośre
 
     Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z platformy Apache Kafka za pomocą klienta sieci VPN](#vpnclient) sekcji.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Ta konfiguracja jest zalecana tylko w celach programistycznych, ze względu na następujące ograniczenia:
     >
     > * Każdy klient musi połączyć przy użyciu oprogramowania klienta VPN.
@@ -61,7 +61,7 @@ Aby uzyskać więcej informacji na temat używania HDInsight w sieci wirtualnej,
 
 Aby utworzyć klaster platformy Kafka, która komunikuje się z Twoją siecią lokalną, wykonaj kroki opisane w [Connect HDInsight z siecią lokalną](./../connect-on-premises-network.md) dokumentu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Podczas tworzenia klastra HDInsight wybierz __Kafka__ typ klastra.
 
 Te kroki służą utworzeniu następującej konfiguracji:
@@ -71,7 +71,7 @@ Te kroki służą utworzeniu następującej konfiguracji:
 * Konto usługi Azure Storage (wykorzystywane przez HDInsight)
 * Usługa Kafka w usłudze HDInsight
 
-Aby sprawdzić, czy klient platformy Kafka łączy się z klastrem ze środowiska lokalnego, wykonaj kroki w [przykład: klienta języka Python](#python-client) sekcji.
+Aby sprawdzić, czy klient platformy Kafka łączy się z klastrem ze środowiska lokalnego, wykonaj kroki w [przykładu: Klient Python](#python-client) sekcji.
 
 ## <a id="vpnclient"></a> Łączenie z platformy Apache Kafka przy użyciu klienta sieci VPN
 
@@ -186,7 +186,7 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
         -VpnClientRootCertificates $p2sRootCert
     ```
 
-    > [!WARNING]
+    > [!WARNING]  
     > Może potrwać kilka minut na zakończenie tego procesu.
 
 5. Użyj poniższego kodu, aby utworzyć kontener konta usługi Azure Storage i blob:
@@ -232,7 +232,7 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
         -SubnetName $defaultSubnet.Id
     ```
 
-  > [!WARNING]
+  > [!WARNING]  
   > Ten proces trwa około 15 minut.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurowanie platformy Kafka do celów reklamowych adresu IP
@@ -317,7 +317,7 @@ Aby zweryfikować połączenie do platformy Kafka, należy użyć do tworzenia i
 
     Zapisz informacje zwrócone do użycia w następnych krokach.
 
-2. Poniższa tabela zainstalować [języka python na platformie kafka](http://kafka-python.readthedocs.io/) klienta:
+2. Poniższa tabela zainstalować [języka python na platformie kafka](https://kafka-python.readthedocs.io/) klienta:
 
         pip install kafka-python
 

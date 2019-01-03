@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 4ba1e325ec978114016682aaee35be35a20ec028
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 5d2f803414db3bd118f57d317cfc32c8f22fcd5a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499103"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653259"
 ---
 # <a name="install-published-application---dataiku-dds"></a>Instalowanie opublikowanej aplikacji — Dataiku DDS
 
@@ -28,15 +28,15 @@ Można użyć DSS implementacji kompletnego rozwiązania analityczne, zaczynają
 
 Możesz zainstalować DSS na HDInsight przy użyciu [Apache Hadoop](https://hadoop.apache.org/) lub [platformy Apache Spark](https://spark.apache.org/) klastrów. DSS można zainstalować w istniejących klastrach uruchomionej lub podczas tworzenia nowych klastrów. DSS obsługuje również związany z odczytem danych przy użyciu usługi Azure Blob storage jako łącznik.
 
-Służy do tworzenia projektów, które następnie można wygenerować DSS [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) lub Spark zadania. Te zadania są wykonywane jako zwykłe zadania MapReduce lub platformą Spark na HDInsight, dzięki czemu można skalować klastra na żądanie.
+Służy do tworzenia projektów, które następnie można wygenerować DSS [MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) lub Spark zadania. Te zadania są wykonywane jako zwykłe zadania MapReduce lub platformą Spark na HDInsight, dzięki czemu można skalować klastra na żądanie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby zainstalować tę aplikację w nowym klastrze HDInsight lub istniejącego klastra, musisz mieć następującą konfigurację:
 
-* Warstwy klastrów: standardowa, Premium
+* Warstwy klastrów: Standard i Premium
 * Typy klastrów: Hadoop, Spark
-* Wersje klastra: 3.4, 3.5
+* Wersje klastrów: 3.4, 3.5
 
 ## <a name="install-the-dataiku-dss-published-application"></a>Instalowanie Dataiku DSS opublikowanej aplikacji
 
@@ -62,7 +62,7 @@ W poniższych krokach przedstawiono prosty pokaz.
 
     ![Nowe łącze projektu](./media/hdinsight-apps-install-dataiku/new-project.png)
 
-3. W formularzu nowego projektu wpisz **nazwa**. **Klucz projektu** jest automatycznie wypełniany sugerowana wartość. W takich przypadkach wprowadź "Orders". Kliknij przycisk **Utwórz**.
+3. W formularzu nowego projektu wpisz **nazwa**. **Klucz projektu** jest automatycznie wypełniany sugerowana wartość. W takich przypadkach wprowadź "Orders". Kliknij przycisk **UTWÓRZ**.
 
     ![Formularz nowego projektu](./media/hdinsight-apps-install-dataiku/new-project-form.png)
 
@@ -113,8 +113,8 @@ Aby uzyskać szczegółowe samouczki, przeczytaj [informacje Dataiku DSS](https:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Dokumentacja Dataiku DSS](https://doc.dataiku.com/dss/latest/).
-* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowane aplikację HDInsight w usłudze HDInsight.
-* [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): dowiedz się, jak opublikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
-* [MSDN: instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): dowiedz się, jak zdefiniować aplikacje usługi HDInsight.
+* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć cofnięto publikowanie aplikacji HDInsight HDInsight.
+* [Publikowanie aplikacji HDInsight](hdinsight-apps-publish-applications.md): Dowiedz się, jak opublikować niestandardowe aplikacje HDInsight w portalu Azure Marketplace.
+* [MSDN: Instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Dowiedz się, jak zdefiniować aplikacje HDInsight.
 * [Dostosowywanie klastrów HDInsight opartych na systemie Linux za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): Dowiedz się, jak instalować dodatkowe aplikacje za pomocą akcji skryptu.
-* [Używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak użyć pustego węzła krawędzi do uzyskiwania dostępu do klastrów HDInsight, a także do testowania i obsługi aplikacji HDInsight.
+* [Używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak używać pustego węzła krawędzi do uzyskiwania dostępu do klastrów HDInsight, a także do testowania i obsługi aplikacji HDInsight.

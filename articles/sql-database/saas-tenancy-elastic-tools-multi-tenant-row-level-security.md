@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a9f168a0abc28b1decc6f327a62f5eaa4163e6f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242912"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601529"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Wielodostępne aplikacje za pomocą narzędzi elastycznych baz danych i zabezpieczenia na poziomie wiersza
 
@@ -41,7 +41,7 @@ Celem jest użycie Biblioteka kliencka elastic database [routingu zależnego od 
 
 - Używanie programu Visual Studio (2012 lub nowszym)
 - Utwórz trzy bazy danych Azure SQL
-- Pobierz przykładowy projekt: [narzędzia elastyczne bazy danych SQL Azure - fragmentów z wieloma dzierżawcami](https://go.microsoft.com/?linkid=9888163)
+- Pobierz przykładowy projekt: [Narzędzia elastycznej bazy danych dla usług SQL Azure - fragmentów z wieloma dzierżawcami](https://go.microsoft.com/?linkid=9888163)
   - Wprowadź informacje dla baz danych na początku **Program.cs** 
 
 Ten projekt rozszerza to opisane w [narzędzia elastyczne bazy danych SQL Azure - Entity Framework integracji](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) przez dodanie obsługi wielodostępnych fragmentu bazy danych. Projekt zostanie skompilowany prostej aplikacji konsolowej do tworzenia blogów i wpisów. Projekt obejmuje czterema dzierżawami oraz dwóch fragmentów wielodostępnych baz danych. Ta konfiguracja została przedstawiona na powyższym diagramie. 
@@ -54,10 +54,10 @@ Skompiluj i uruchom aplikację. Ten przebieg używa Menedżera mapowań fragment
 
 Zwróć uwagę, że ponieważ zabezpieczenia na poziomie wiersza nie ma jeszcze włączona w bazach danych fragmentów, tych testów, co spowoduje wyświetlenie problem: dzierżawcy będą mogli zobaczyć blogów, które nie należą do nich, a aplikacja jest możliwe wstawianie blog dla nieprawidłowej dzierżawy. W dalszej części tego artykułu opisano sposób rozwiązać te problemy za wymuszania izolacji dzierżawców, zabezpieczenia na poziomie wiersza. Istnieją dwa kroki: 
 
-1. **Warstwa aplikacji**: modyfikować kodu aplikacji, aby zawsze ustawić bieżący identyfikator dzierżawy w sesji\_KONTEKSTU po otwarciu połączenia. Przykładowy projekt jest już Ustawia identyfikator dzierżawy w ten sposób. 
+1. **Warstwa aplikacji**: Modyfikowanie kodu aplikacji, aby zawsze ustawić bieżący identyfikator dzierżawy w sesji\_KONTEKSTU po otwarciu połączenia. Przykładowy projekt jest już Ustawia identyfikator dzierżawy w ten sposób. 
 2. **Warstwa danych**: Tworzenie zasad zabezpieczeń na poziomie w każdej bazie danych fragmentu, aby filtrowanie wierszy, w oparciu o identyfikator dzierżawy, przechowywane w sesji\_KONTEKSTU. Utwórz zasadę dla każdej z baz danych fragmentów, w przeciwnym razie wierszy w wielodostępne fragmenty nie są filtrowane. 
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Warstwa aplikacji: zestaw TenantId w sesji\_KONTEKSTU
+## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Warstwa aplikacji: Ustaw identyfikator dzierżawy w sesji\_KONTEKSTU
 
 Najpierw połączysz do fragmentu bazy danych przy użyciu interfejsów API routingu zależnego od danych biblioteki klienta elastycznej bazy danych. Aplikacja nadal musisz poinformować bazie których identyfikator dzierżawy jest połączenie. Identyfikator dzierżawy informuje zasady zabezpieczeń na poziomie wierszy, które muszą być odfiltrowane jako należące do innych dzierżaw. Bieżący identyfikator dzierżawy w Store [sesji\_KONTEKSTU](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) połączenia.
 
@@ -341,14 +341,14 @@ GO
 
 ### <a name="maintenance"></a>Konserwacja
 
-- **Dodawanie nowych fragmentów**: wykonanie skryptu T-SQL, aby włączyć zabezpieczenia na poziomie wiersza w żadnych nowych fragmentów, w przeciwnym razie zapytań na tych fragmentach nie są filtrowane.
-- **Dodawanie nowych tabel**: Dodaj predykat filtru i bloku zasady zabezpieczeń na wszystkich fragmentów, zawsze wtedy, gdy tworzona jest nowa tabela. W przeciwnym razie kwerendy dla nowej tabeli nie są filtrowane. To dodawanie można zautomatyzować za pomocą wyzwalacza DDL, zgodnie z opisem w [stosowanie zabezpieczeń na poziomie wiersza automatycznie z nowo utworzonego tabelami (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Dodawanie nowych fragmentów**: Wykonywanie skryptu T-SQL, aby włączyć zabezpieczenia na poziomie wiersza w żadnych nowych fragmentów, w przeciwnym razie zapytań na tych fragmentach nie są filtrowane.
+- **Dodawanie nowych tabel**: Dodaj predykat filtru i bloku zasady zabezpieczeń na wszystkich fragmentów zawsze wtedy, gdy tworzona jest nowa tabela. W przeciwnym razie kwerendy dla nowej tabeli nie są filtrowane. To dodawanie można zautomatyzować za pomocą wyzwalacza DDL, zgodnie z opisem w [stosowanie zabezpieczeń na poziomie wiersza automatycznie z nowo utworzonego tabelami (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
 
 ## <a name="summary"></a>Podsumowanie
 
 Narzędzi elastycznej bazy danych i zabezpieczenia na poziomie wiersza mogą być używane razem do skalowania w poziomie warstwy danych aplikacji dzięki obsłudze zarówno z wieloma dzierżawami i jedną dzierżawą fragmentów. Wielodostępne fragmenty może służyć do przechowywania danych bardziej efektywnie. Wydajność jest widoczny, gdzie mają tylko kilka wierszy danych w dużej liczby dzierżawców. Fragmenty pojedynczej dzierżawy może obsługiwać dzierżaw — wersja premium, które mają bardziej rygorystyczne wydajności i wymagań izolacji.  Aby uzyskać więcej informacji, zobacz [odniesienia zabezpieczeń na poziomie wiersza][rls].
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Co to jest pula elastyczna Azure?](sql-database-elastic-pool.md)
 - [Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)](sql-database-elastic-scale-introduction.md)

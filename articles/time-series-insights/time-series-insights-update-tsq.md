@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 48a9a1d0f79a7a36b90fa87651a5283cba87de20
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7885473d029556e10663675a9886c7ea3b9c709c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275809"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555425"
 ---
 # <a name="data-querying"></a>Wykonywanie zapytań dotyczących danych
 
@@ -77,7 +77,7 @@ Dostępne są następujące interfejsy API zapytań serii czasu:
 
 Przeczytaj:
 
-- [Usługi Azure storage czasu Series Insights w wersji zapoznawczej i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md)
+- [Magazyn i ruch przychodzący usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-storage-ingress.md)
 - [Modelowanie danych](./time-series-insights-update-tsm.md)
 - [Najważniejsze wskazówki podczas wybierania Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md)
 

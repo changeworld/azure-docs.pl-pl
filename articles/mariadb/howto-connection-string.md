@@ -3,17 +3,15 @@ title: Łączenie aplikacji do usługi Azure Database dla serwera MariaDB
 description: Ten dokument zawiera listę aktualnie obsługiwanych parametrów połączenia dla aplikacji, aby połączyć się z usługą Azure Database dla serwera MariaDB, w tym ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python i Ruby.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 706bf395df98bd78fa36273a4948a11d4b59067d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 70cd25ff63101fa2a477cde2502d5d286b289366
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967935"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536578"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Jak połączyć aplikacje do usługi Azure Database dla serwera MariaDB
 Ten temat zawiera listę typów ciągów połączeń obsługiwanych przez usługę Azure Database dla serwera MariaDB, wraz z szablony i przykłady. W ciągu połączenia, może mieć różne parametry i ustawienia.
@@ -64,7 +62,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Pobierz szczegóły parametrów połączenia w witrynie Azure portal
-W [witryny Azure portal](https://portal.azure.com), przejdź do usługi Azure Database dla serwera MariaDB, a następnie kliknij przycisk **parametry połączenia** można pobrać listy parametrów dla swojego wystąpienia: ![okienka parametry połączenia na platformie Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+W [witryny Azure portal](https://portal.azure.com), przejdź do usługi Azure Database dla serwera MariaDB, a następnie kliknij przycisk **parametry połączenia** można pobrać listy parametrów dla swojego wystąpienia: ![W okienku parametry połączenia w witrynie Azure portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Ciąg zawiera szczegółowe informacje, takie jak sterownik, serwera i innej bazy danych parametry połączenia. Zmodyfikuj te przykłady, aby użyć własnych parametrów, takich jak nazwa bazy danych, hasło i tak dalej. Ten ciąg można następnie użyć nawiązać połączenie z serwerem z kodu oraz aplikacji.
 

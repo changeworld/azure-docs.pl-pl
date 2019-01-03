@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: 174fbd8f3e4c652c25a78911185ef8a98a80bb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260042"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726565"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Przywracanie aplikacji na platformie Azure z migawki
-W tym artykule pokazano, jak przywrócić aplikację w [usługi Azure App Service](../app-service/app-service-web-overview.md) z migawki. Aplikację można przywrócić do poprzedniego stanu, na podstawie jednej z aplikacji migawki. Nie trzeba włączyć tworzenie kopii zapasowych migawek, platforma automatycznie zapisuje migawkę wszystkich aplikacji na potrzeby odzyskiwania danych.
+W tym artykule pokazano, jak przywrócić aplikację w [usługi Azure App Service](../app-service/overview.md) z migawki. Aplikację można przywrócić do poprzedniego stanu, na podstawie jednej z aplikacji migawki. Nie trzeba włączyć tworzenie kopii zapasowych migawek, platforma automatycznie zapisuje migawkę wszystkich aplikacji na potrzeby odzyskiwania danych.
 
-Migawki to kopie przyrostowe w tle, a także oferują wiele zalet w porównaniu do zwykłych [kopie zapasowe](web-sites-backup.md):
+Migawki to kopie przyrostowe w tle, a także oferują wiele zalet w porównaniu do zwykłych [kopie zapasowe](manage-backup.md):
 - Brak błędów kopiowania pliku z powodu blokady plików.
 - Nie ograniczenie rozmiaru magazynu.
 - Nie jest wymagana żadna konfiguracja.

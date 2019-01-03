@@ -1,5 +1,5 @@
 ---
-title: Azure czas Series Insights w wersji zapoznawczej kształtowania zdarzeń — zdarzenia kształtu przy użyciu usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
+title: Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przekształcać zdarzeń Azure czas Series Insights w wersji zapoznawczej.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: b0ce3b5bbd58c594147f64de9f06f248f4a87fc3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: eb398ad621167ad9f9b245fb8aa98c6942b87668
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269077"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557431"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 

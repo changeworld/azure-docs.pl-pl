@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: b2b4bfc6aa03039a7eca402f7a9af083a44f0829
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345875"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53609093"
 ---
 ## <a name="access-the-virtual-machine"></a>Dostęp do maszyny wirtualnej
 
@@ -35,7 +35,7 @@ Poniższe kroki pokazują, jak skonfigurować maszyny wirtualnej platformy Azure
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    Dostęp SSH należy włączyć tylko podczas projektowania i testowania. Po włączeniu protokołu SSH, [należy wyłączyć je ponownie tak szybko jak to możliwe](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices#disable-rdpssh-access-to-azure-virtual-machines).
+    Dostęp SSH należy włączyć tylko podczas projektowania i testowania. Po włączeniu protokołu SSH, [należy wyłączyć je ponownie tak szybko jak to możliwe](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices#disable-rdpssh-access-to-virtual-machines).
 
 1. Zaktualizuj hasło **azureuser** konta na maszynie wirtualnej, aby hasła znasz. Wybierz swoje własne hasło po uruchomieniu następującego polecenia:
 

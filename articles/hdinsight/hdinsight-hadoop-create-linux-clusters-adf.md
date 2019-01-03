@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: c7ec0b29e200710070cb1243ff8bfadd5e31e8eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7b20ceb61f522bea11e7256c824a851e587cbd49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879413"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975461"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie na żądanie klastry platformy Apache Hadoop w HDInsight przy użyciu usługi Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -55,7 +55,7 @@ Ta sekcja używa skrypt programu Azure PowerShell do tworzenia konta magazynu i 
 
 
 **Aby utworzyć konto magazynu, a następnie skopiuj pliki przy użyciu programu Azure PowerShell:**
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Określ nazwy grupy zasobów platformy Azure i konto usługi Azure storage, która zostanie utworzona przy użyciu skryptu.
 > Zapisz **nazwy grupy zasobów**, **nazwa konta magazynu**, i **klucza konta magazynu** zwrócone przez skrypt. Będą one potrzebne w następnej sekcji.
 
@@ -166,7 +166,11 @@ W tym artykule możesz skonfigurować działanie programu Hive, aby utworzyć kl
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
-1. W witrynie Azure portal wybierz **Utwórz zasób** > **dane + analiza** > **usługi Data Factory**.
+1. Z menu po lewej stronie wybierz **+ Utwórz zasób**.
+
+1. W obszarze **portalu Azure Marketplace**, wybierz opcję **analizy**.
+
+1.  W obszarze **polecane**, wybierz opcję **usługi Data Factory**.
 
     ![Usługa Azure Data Factory w witrynie portal](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "usługi Azure Data Factory w witrynie portal")
 
@@ -181,19 +185,18 @@ W tym artykule możesz skonfigurować działanie programu Hive, aby utworzyć kl
     |**Nazwa** |  Wprowadź nazwę dla fabryki danych. Ta nazwa musi być unikatowa w skali globalnej.|
     |**Subskrypcja**     |  Wybierz swoją subskrypcję platformy Azure. |
     |**Grupa zasobów**     | Wybierz **Użyj istniejącej** a następnie wybierz grupę zasobów, które zostały utworzone za pomocą skryptu programu PowerShell. |
-    |**Wersja**     | Wybierz **V2 (wersja zapoznawcza)** |
-    |**Lokalizacja**     | Lokalizacja jest automatycznie ustawiona do lokalizacji, w której określono podczas tworzenia grupy zasobów wcześniej. W tym samouczku lokalizacja jest ustawiana **wschodnie stany USA 2**. |
+    |**Wersja**     | Wybierz **V2** |
+    |**Lokalizacja**     | Lokalizacja jest automatycznie ustawiona do lokalizacji, w której określono podczas tworzenia grupy zasobów wcześniej. W tym samouczku lokalizacja jest ustawiana **wschodnie stany USA**. |
     
 
-1. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Utwórz**. Na pulpicie nawigacyjnym portalu powinien zostać wyświetlony nowy kafelek zatytułowany **Przekazywanie wdrożenia**. Tworzenie fabryki danych może potrwać od 2 do 4 minut.
+1. Wybierz pozycję **Utwórz**. Tworzenie fabryki danych może potrwać od 2 do 4 minut.
 
-    ![Postęp wdrażania szablonu](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "postęp wdrażania szablonu") 
- 
-1. Po utworzeniu fabryki danych w portalu jest wyświetlany Przegląd dla usługi data factory.
 
-    ![Omówienie usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Omówienie usługi Azure Data Factory")
+1. Po utworzeniu fabryki danych otrzymasz **wdrażanie zakończyło się pomyślnie** powiadomienia o **przejdź do zasobu** przycisku.  Wybierz **przejdź do zasobu** otwarcie widoku domyślnego fabryki danych.
 
 1. Wybierz **tworzenie i monitorowanie** można uruchomić usługi Azure Data Factory do tworzenia i monitorowania w portalu.
+
+    ![Omówienie usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Omówienie usługi Azure Data Factory")
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 

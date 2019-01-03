@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f8fb036eaca35e41d89b0a9610ebcd68e65f40f9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632547"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630262"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Użyj Apache Hive jako narzędzia do wyodrębniania, przekształcania i ładowania (ETL)
 
-Zazwyczaj należy czyszczenie i transformowanie przychodzące dane przed załadowaniem ich do miejsca docelowego odpowiednie do analizy. Operacje wyodrębniania, przekształcania i ładowania (ETL) są używane do przygotowania danych i załadowania ich do miejsca docelowego danych.  Apache Hive on HDInsight można odczytać danych bez struktury, przetwarzania danych, zgodnie z potrzebami i następnie załadować dane do magazynu danych relacyjnych, dla systemy podejmowania decyzji. W przypadku tej metody dane są wyodrębnione ze źródła i przechowywane w magazynie skalowalne, takie jak obiekty BLOB usługi Azure Storage lub Azure Data Lake Store. Dane są następnie przekształcane przy użyciu sekwencji zapytań programu Hive i na koniec przygotowane w gałęzi w ramach przygotowania do zbiorczego ładowania do docelowego magazynu danych.
+Zazwyczaj należy czyszczenie i transformowanie przychodzące dane przed załadowaniem ich do miejsca docelowego odpowiednie do analizy. Operacje wyodrębniania, przekształcania i ładowania (ETL) są używane do przygotowania danych i załadowania ich do miejsca docelowego danych.  Apache Hive on HDInsight można odczytać danych bez struktury, przetwarzania danych, zgodnie z potrzebami i następnie załadować dane do magazynu danych relacyjnych, dla systemy podejmowania decyzji. W przypadku tej metody dane są wyodrębnione ze źródła i przechowywane w magazynie skalowalne, takie jak obiekty BLOB usługi Azure Storage lub usługi Azure Data Lake Storage. Dane są następnie przekształcane przy użyciu sekwencji zapytań programu Hive i na koniec przygotowane w gałęzi w ramach przygotowania do zbiorczego ładowania do docelowego magazynu danych.
 
 ## <a name="use-case-and-model-overview"></a>Użyj przypadków i modelu — omówienie
 
@@ -30,7 +30,7 @@ Usługi Hadoop jest zwykle używana w procesy ETL, które ogromną liczbę plik�
 
 Typowe kroki, aby przeprowadzić ETL za pomocą programu Hive są następujące:
 
-1. Załaduj dane do usługi Azure Data Lake Store lub Azure Blob Storage.
+1. Załaduj dane do usługi Azure Data Lake Storage lub Azure Blob Storage.
 2. Tworzenie bazy danych metadanych Store (przy użyciu usługi Azure SQL Database) do użytku przez program Hive swoje Schematy przechowywania.
 3. Tworzenie klastra usługi HDInsight i łączenie z magazynem danych.
 4. Zdefiniuj schematu do zastosowania podczas odczytu danych w magazynie danych:
@@ -51,7 +51,7 @@ Typowe kroki, aby przeprowadzić ETL za pomocą programu Hive są następujące:
 
 5. Przekształć dane i ładuje je do miejsca docelowego.  Istnieje kilka sposobów na korzystanie z programu Hive podczas przekształcania i ładowania:
 
-    * Zapytania i przygotowania danych przy użyciu technologii Hive i zapisz go jako elementu CSV w usłudze Azure Data Lake Store lub usługi Azure blob storage.  Następnie należy użyć narzędzia takie jak SQL Server Integration Services (SSIS) do uzyskania tych woluminów CSV i załadować dane do docelowego relacyjnej bazy danych takich jak SQL Server.
+    * Zapytania i przygotowania danych przy użyciu technologii Hive i zapisz go jako elementu CSV w usługi Azure Data Lake Storage lub Azure blob storage.  Następnie należy użyć narzędzia takie jak SQL Server Integration Services (SSIS) do uzyskania tych woluminów CSV i załadować dane do docelowego relacyjnej bazy danych takich jak SQL Server.
     * Wykonywanie zapytań o dane bezpośrednio z programu Excel lub C# za pomocą sterownika ODBC programu Hive.
     * Użyj [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md) odczytywanie przygotowane pliki CSV proste i załadować je do docelowej bazy danych relacyjnych.
 

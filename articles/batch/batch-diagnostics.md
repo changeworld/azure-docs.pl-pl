@@ -1,5 +1,5 @@
 ---
-title: Metryki, alerty i dzienniki diagnostyczne na potrzeby usługi Azure Batch | Dokumentacja firmy Microsoft
+title: Metryki, alerty i dzienniki diagnostyczne — Azure Batch | Dokumentacja firmy Microsoft
 description: Rejestrowanie i analizowanie zdarzeń dziennik diagnostyczny dla zasobów konta usługi Azure Batch, np. pulami i zadaniami podrzędnymi.
 services: batch
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 8efa8088bca3eb6221c49ec5f14334342149795d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.custom: seodec18
+ms.openlocfilehash: cd3e671a00f7f8b0a13ed95bfd43795a24244a66
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438442"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537107"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
  
-W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-collection.md#metrics) i [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../azure-monitor/platform/alerts-overview.md) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
+W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-collection.md#metrics) i [dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../azure-monitor/platform/alerts-overview.md) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
 
 ## <a name="batch-metrics"></a>Metryki usługi Batch
 
@@ -109,7 +109,7 @@ Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
     ![Diagnostyka usługi Batch](media/batch-diagnostics/diagnostics-portal.png)
 
-Inne opcje, aby włączyć zbieranie danych dziennika obejmują: użycia usługi Azure Monitor w portalu w ustawień diagnostycznych, należy użyć [szablonu usługi Resource Manager](../azure-monitor/platform/diagnostic-logs-stream-template.md), lub za pomocą programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
+Inne opcje, aby włączyć zbieranie danych dziennika obejmują: użycia usługi Azure Monitor w portalu w ustawień diagnostycznych, należy użyć [szablonu usługi Resource Manager](../azure-monitor/platform/diagnostic-logs-stream-template.md), lub za pomocą programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md#how-to-enable-collection-of-diagnostic-logs).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Dzienniki diagnostyczne dostępu w magazynie

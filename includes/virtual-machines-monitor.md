@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c2924380ef5175b330deb5052a962bfecf820ae
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399945"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594191"
 ---
 Można korzystać z zalet wiele okazji do monitorowania maszyn wirtualnych, zbierając, wyświetlanie i analizowanie danych diagnostycznych i dane dziennika. W prostych [monitorowania](../articles/azure-monitor/overview.md) ekran Przegląd maszyny wirtualnej, można użyć dla maszyny Wirtualnej w witrynie Azure portal. Możesz użyć [rozszerzenia](../articles/virtual-machines/windows/extensions-features.md) Aby skonfigurować diagnostykę na maszynach wirtualnych, aby zbierać dodatkowe dane metryk. Umożliwia również bardziej zaawansowane opcje monitorowania, takich jak [usługi Application Insights](../articles/application-insights/app-insights-overview.md) i [usługi Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -43,23 +43,23 @@ Możesz utworzyć [alerty](../articles/azure-monitor/platform/alerts-overview.md
 
 ## <a name="logs"></a>Dzienniki
 
-[Dziennika aktywności platformy Azure](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) jest Dziennik subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które miały miejsce w systemie Azure. Dziennik zawiera szeroką gamę danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji dla zdarzeń kondycji usługi. Możesz kliknąć dziennika aktywności w witrynie Azure portal, aby wyświetlić dziennik dla maszyny Wirtualnej.
+[Dziennika aktywności platformy Azure](../articles/azure-monitor/platform/activity-logs-overview.md) jest Dziennik subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które miały miejsce w systemie Azure. Dziennik zawiera szeroką gamę danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji dla zdarzeń kondycji usługi. Możesz kliknąć dziennika aktywności w witrynie Azure portal, aby wyświetlić dziennik dla maszyny Wirtualnej.
 
 Oto niektóre rzeczy, które można zrobić z dziennika aktywności:
 
-- Tworzenie [alertów dotyczących zdarzenia dziennika aktywności](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
-- [Stream go do Centrum zdarzeń](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
+- Tworzenie [alertów dotyczących zdarzenia dziennika aktywności](../articles/azure-monitor/platform/activity-logs-overview.md).
+- [Stream go do Centrum zdarzeń](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
 - Analizowanie ich w usłudze Power BI przy użyciu [pakietu zawartości usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 - [Zapisz go na koncie magazynu](../articles/azure-monitor/platform/archive-activity-log.md) inspekcji archiwizacji lub ręcznie. Można określić czas przechowywania (w dniach), korzystając z profilu dziennika.
 
 Dane dzienników aktywności można także przejść za pomocą [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor), lub [interfejsów API REST usługi Monitor](https://docs.microsoft.com/rest/api/monitor/).
 
-[Dzienniki diagnostyczne platformy Azure](../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) są dzienniki emitowane przez maszynę Wirtualną, które zapewniają bogate, często dane dotyczące jego działania. Dzienniki diagnostyczne różnią się od dziennika aktywności, zapewniając szczegółowe informacje o operacjach wykonywanych na maszynie wirtualnej.
+[Dzienniki diagnostyczne platformy Azure](../articles/azure-monitor/platform/diagnostic-logs-overview.md) są dzienniki emitowane przez maszynę Wirtualną, które zapewniają bogate, często dane dotyczące jego działania. Dzienniki diagnostyczne różnią się od dziennika aktywności, zapewniając szczegółowe informacje o operacjach wykonywanych na maszynie wirtualnej.
 
 Oto niektóre rzeczy, które można zrobić z dziennikami diagnostycznymi:
 
 - [Zapisz je na konto magazynu](../articles/azure-monitor/platform/archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić czas przechowywania (w dniach), za pomocą ustawień diagnostycznych zasobu.
-- [Stream je do usługi Event Hubs](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
+- [Stream je do usługi Event Hubs](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
 - Analizuj je za pomocą [usługi OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Zaawansowane monitorowanie

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 569030cc6d72d206411a73703ec0d359e033bef7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311674"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602073"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Usługa Azure Kubernetes Service za pomocą platformy Apache Kafka w HDInsight
 
@@ -22,7 +22,7 @@ Dowiedz się, jak używać usługi Azure Kubernetes Service (AKS) przy użyciu [
 
 [Apache Kafka](https://kafka.apache.org) to rozproszona platforma przesyłania strumieniowego typu „open source”, która umożliwia tworzenie aplikacji i potoków danych przesyłania strumieniowego w czasie rzeczywistym. Usługa Azure Kubernetes Service zarządza hostowanym środowiskiem Kubernetes i pozwala szybko i łatwo wdrażać konteneryzowane aplikacje. Korzystając z usługi Azure Virtual Network można połączyć te dwie usługi.
 
-> [!NOTE]
+> [!NOTE]  
 > Ten dokument koncentruje się na krokach wymaganych do włączenia usługi Azure Kubernetes Service do komunikowania się z platformą Kafka w HDInsight. Przykładem, sama jest tylko podstawowe Kafka klientów pokazują, że działa w konfiguracji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -49,7 +49,7 @@ Na poniższym diagramie przedstawiono topologię sieci używana w tym dokumencie
 
 ![HDInsight w jednej sieci wirtualnej, usługi AKS w innym i sieci połączonych za pomocą komunikacji równorzędnej](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Nie włączono rozpoznawanie nazw między równorzędnymi sieciami, więc adresowania IP jest używany. Domyślnie platformy Kafka w HDInsight jest skonfigurowany do zwrócenia nazw hostów, a nie do adresów IP, gdy klienci łączą. Kroki opisane w tym dokumencie zmodyfikować platformy Kafka, aby używać adresu IP zamiast reklamowych.
 
 ## <a name="create-an-azure-kubernetes-service-aks"></a>Tworzenie usługi Azure Kubernetes Service (AKS)
@@ -59,7 +59,7 @@ Jeśli nie masz już klaster AKS, użyj jednej z następujących dokumentów, ab
 * [Wdrażanie klastra usługi Azure Kubernetes Service (AKS) — Portal](../../aks/kubernetes-walkthrough-portal.md)
 * [Wdrażanie klastra usługi Azure Kubernetes Service (AKS) — interfejs wiersza polecenia](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]
+> [!NOTE]  
 > Podczas instalacji usługi AKS tworzy sieć wirtualną. Ta sieć jest połączona z utworzonym dla HDInsight w następnej sekcji.
 
 ## <a name="configure-virtual-network-peering"></a>Skonfiguruj komunikację równorzędną sieci wirtualnej
@@ -72,7 +72,7 @@ Jeśli nie masz już klaster AKS, użyj jednej z następujących dokumentów, ab
 
 4. Aby utworzyć sieć wirtualną dla HDInsight, wybierz __+ Utwórz zasób__, __sieć__, a następnie __sieć wirtualna__.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Podczas wprowadzania wartości w nowej sieci wirtualnej, należy użyć przestrzeni adresowej, który nie nakłada się na używaną przez sieć klastra AKS.
 
     Użyto tych samych __lokalizacji__ dla sieci wirtualnej, która została użyta dla klastra AKS.
@@ -81,23 +81,23 @@ Jeśli nie masz już klaster AKS, użyj jednej z następujących dokumentów, ab
 
 5. Aby skonfigurować komunikację równorzędną między siecią HDInsight i sieć klastra AKS, wybierz sieć wirtualną, a następnie wybierz pozycję __komunikacje równorzędne__. Wybierz __+ Dodaj__ i użyj następujących wartości do wypełnienia formularza:
 
-    * __Nazwa__: wprowadź unikatową nazwę dla tej konfiguracji komunikacji równorzędnej.
+    * __Nazwa__: Wprowadź unikatową nazwę dla tej konfiguracji komunikacji równorzędnej.
     * __Sieć wirtualna__: Użyj tego pola, aby wybrać sieć wirtualną dla **klastra AKS**.
 
     Pozostaw inne pola na wartość domyślną, a następnie wybierz __OK__ do skonfigurowania komunikacji równorzędnej.
 
 6. Aby skonfigurować komunikację równorzędną między siecią klastra AKS i siecią HDInsight, wybierz __AKS klastra sieć wirtualną__, a następnie wybierz pozycję __komunikacje równorzędne__. Wybierz __+ Dodaj__ i użyj następujących wartości do wypełnienia formularza:
 
-    * __Nazwa__: wprowadź unikatową nazwę dla tej konfiguracji komunikacji równorzędnej.
+    * __Nazwa__: Wprowadź unikatową nazwę dla tej konfiguracji komunikacji równorzędnej.
     * __Sieć wirtualna__: Użyj tego pola, aby wybrać sieć wirtualną dla __klastra HDInsight__.
 
     Pozostaw inne pola na wartość domyślną, a następnie wybierz __OK__ do skonfigurowania komunikacji równorzędnej.
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>Instalowanie platformy Apache Kafka w HDInsight
 
-Podczas tworzenia Kafka w klastrze HDInsight, możesz dołączyć do sieci wirtualnej utworzonej wcześniej for HDInsight. Aby uzyskać więcej informacji na temat tworzenia klastra platformy Kafka, zobacz [Tworzenie klastra Kafka](apache-kafka-get-started.md) dokumentu.
+Podczas tworzenia Kafka w klastrze HDInsight, możesz dołączyć do sieci wirtualnej utworzonej wcześniej for HDInsight. Aby uzyskać więcej informacji na temat tworzenia klastra platformy Kafka, zobacz [Tworzenie klastra platformy Apache Kafka](apache-kafka-get-started.md) dokumentu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Podczas tworzenia klastra, należy użyć __Zaawansowane ustawienia__ do dołączenia do sieci wirtualnej, który został utworzony dla HDInsight.
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>Konfigurowanie Apache Kafka IP reklamy
@@ -169,7 +169,7 @@ W tym momencie usługi Kafka i usłudze Azure Kubernetes Service komunikuje się
     docker build -t kafka-aks-test .
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pakiety wymagane przez tę aplikację są sprawdzane w repozytorium, więc nie trzeba używać `npm` narzędzie, aby je zainstalować.
 
 5. Zaloguj się do usługi Azure Container Registry (ACR) i Znajdź nazwę loginServer:
@@ -179,7 +179,7 @@ W tym momencie usługi Kafka i usłudze Azure Kubernetes Service komunikuje się
     az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Jeśli nie znasz nazwy usługi Azure Container Registry lub wiesz, przy użyciu wiersza polecenia platformy Azure do pracy z usługą Azure Kubernetes Service, zobacz [samouczków usługi AKS](../../aks/tutorial-kubernetes-prepare-app.md).
 
 6. Tag lokalnej `kafka-aks-test` obrazu, wartością loginServer usługi ACR. Również dodać `:v1` -to-end w celu wskazania, wersja obrazu:
@@ -217,7 +217,7 @@ W tym momencie usługi Kafka i usłudze Azure Kubernetes Service komunikuje się
 
 12. Wprowadź tekst w polu, a następnie wybierz pozycję __wysyłania__ przycisku. Dane są wysyłane do platformy Kafka. Następnie odbiorcy platformy Kafka w aplikacji odczytuje komunikat i dodaje go do __wiadomości z usługi Kafka__ sekcji.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Możesz otrzymać wiele kopii wiadomości. Ten problem zazwyczaj się dzieje, gdy Odśwież przeglądarkę po nawiązaniu połączenia lub otwierać wiele połączeń w przeglądarce do aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki

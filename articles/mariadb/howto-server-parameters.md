@@ -3,17 +3,15 @@ title: Jak konfigurować parametry serwera w bazie danych platformy Azure dla se
 description: W tym artykule opisano sposób konfigurowania parametrów serwera MariaDB w usłudze Azure Database dla serwera MariaDB przy użyciu witryny Azure portal.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 865a95a5e6f6feb945475e50bbd9f6692688c12b
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 0576941c803dfed6359fe34b67370eaf3f99c7e7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310049"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538263"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Jak konfigurować parametry serwera w usłudze Azure Database dla serwera MariaDB przy użyciu witryny Azure portal
 
@@ -57,7 +55,7 @@ Te parametry dodatkowy serwer nie są konfigurowane w systemie:
 
 |**Parametr**|**Stała wartość**|
 | :------------------------ | :-------- |
-|innodb_file_per_table w warstwie podstawowa|WYŁ.|
+|innodb_file_per_table w warstwie podstawowa|WYŁĄCZONE|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|

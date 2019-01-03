@@ -1,5 +1,5 @@
 ---
-title: Opisujące zawartość dla dorosłych — przetwarzanie obrazów
+title: Opis zawartości erotycznej i przeznaczonej dla osób dorosłych — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
 description: Pojęcia dotyczące wykrywania zawartości erotycznej i przeznaczonej dla osób dorosłych w obrazach za pomocą interfejsu APi przetwarzania obrazów.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 71866149e3d2dca4b39585ce8da73aae658a4d59
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: e0cca054acb7d3d649105ecd45748a60a2aa9bbb
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344935"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582171"
 ---
 # <a name="detecting-adult-and-racy-content"></a>Wykrywanie zawartości dla dorosłych
 
-Z różnych kategorii visual jest grupy dla dorosłych, która włącza wykrywanie materiałów treści dla dorosłych oraz ogranicza wyświetlanie obrazów zawierającą seksualnym zawartość. Filtr dla dorosłych wykrywania zawartości można ustawić na ruchomej skali umożliwiających preferencji użytkownika.
+Spośród różnych kategorii wizualnych możemy wyróżnić grupę przeznaczoną dla zawartości dla dorosłych i o charakterze erotycznym. Umożliwia ona wykrywanie materiałów dla dorosłych i ogranicza wyświetlanie obrazów zawierających zawartość o charakterze erotycznym. Filtr umożliwiający wykrywanie zawartości dla dorosłych można ustawiać na ruchomej skali, aby dostosować go do preferencji użytkownika.
 
 ## <a name="defining-adult-and-racy-content"></a>Definiowanie zawartości dla dorosłych
 

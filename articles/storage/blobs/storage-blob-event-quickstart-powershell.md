@@ -9,14 +9,14 @@ ms.topic: article
 ms.service: storage
 ms.component: blobs
 ms.custom: seodec18
-ms.openlocfilehash: c7c8fd487bef0da7da84a23e18a4e999645106b3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 852b7a32bc27b0aa67d66c25d3b54ab864ee1612
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076427"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628259"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Szybki Start: Kierowanie magazynu zdarzeń w punkcie końcowym sieci web przy użyciu programu PowerShell
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Szybki start: Kierowanie zdarzeń usługi storage w punkcie końcowym sieci web przy użyciu programu PowerShell
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule subskrybowanie zdarzeń usługi Blob storage, wyzwalacz zdarzenia, za pomocą programu Azure PowerShell i wyświetlić wyniki. 
 
@@ -28,14 +28,16 @@ Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikac
 
 ## <a name="setup"></a>Konfigurowanie
 
-Ten artykuł wymaga, że używasz najnowszej wersji programu Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Ten artykuł wymaga, że używasz najnowszej wersji programu Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzureRmAccount` polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami do uwierzytelniania.
+Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami do uwierzytelniania.
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 W tym przykładzie użyto **westus2** i przechowuje zaznaczenie w zmiennej, do wykorzystania w całej.
@@ -48,27 +50,27 @@ $location = "westus2"
 
 Tematy usługi Event Grid to zasoby platformy Azure i muszą być umieszczone w grupie zasobów platformy Azure. Grupa zasobów to kolekcja logiczna przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Utwórz grupę zasobów na pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).
+Utwórz grupę zasobów za pomocą [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) polecenia.
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie **gridResourceGroup** w lokalizacji **westus2**.  
 
 ```powershell
 $resourceGroup = "gridResourceGroup"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
 Zdarzenia usługi Blob Storage są dostępne na kontach magazynu ogólnego przeznaczenia w wersji 2 i kontach usługi Blob Storage. Konta magazynu **ogólnego przeznaczenia w wersji 2** obsługują wszystkie funkcje wszystkich usług magazynu, w tym usług Blobs, Files, Queues i Tables. **Konto usługi Blob Storage** to specjalne konto magazynu służące do przechowywania danych niestrukturalnych w formie obiektów blob w usłudze Azure Storage. Konta usługi Blob Storage przypominają konta magazynu ogólnego przeznaczenia i udostępniają wszystkie używane obecnie funkcje doskonałej trwałości, dostępności, skalowalności i wydajności, łącznie z pełną spójnością interfejsu API na potrzeby blokowych obiektów blob i obiektów blob dołączania. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../common/storage-account-overview.md).
 
-Tworzenie konta usługi Blob storage z replikacją LRS za pomocą polecenia [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), następnie Pobierz kontekst konta magazynu, który definiuje konto magazynu ma być używany. Wykonując działania względem konta magazynu, możesz odwoływać się do kontekstu, zamiast wielokrotnie podawać poświadczenia. W tym przykładzie tworzone jest konto magazynu o nazwie **gridstorage** z magazynem lokalnie nadmiarowym (LRS). 
+Tworzenie konta usługi Blob storage z replikacją LRS za pomocą polecenia [New AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount), następnie Pobierz kontekst konta magazynu, który definiuje konto magazynu ma być używany. Wykonując działania względem konta magazynu, możesz odwoływać się do kontekstu, zamiast wielokrotnie podawać poświadczenia. W tym przykładzie tworzone jest konto magazynu o nazwie **gridstorage** z magazynem lokalnie nadmiarowym (LRS). 
 
 > [!NOTE]
 > Nazwy kont magazynu są w przestrzeni globalnej nazwy, więc należy dołączyć kilka losowo wybranych znaków, aby nazwa podana w tym skrypcie.
 
 ```powershell
 $storageName = "gridstorage"
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageName `
   -Location $location `
   -SkuName Standard_LRS `
@@ -87,7 +89,7 @@ Zastąp `<your-site-name>` unikatową nazwą aplikacji sieci Web. Nazwa aplikacj
 ```powershell
 $sitename="<your-site-name>"
 
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -ResourceGroupName $resourceGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" `
   -siteName $sitename `
@@ -105,10 +107,10 @@ Powinna być widoczna witryna internetowa bez żadnych aktualnie wyświetlanych 
 Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego konta magazynu i przekazanie adresu URL z aplikacji internetowej jako punktu końcowego dla powiadomień o zdarzeniach. Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`.
 
 ```powershell
-$storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
+$storageId = (Get-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
 $endpoint="https://$sitename.azurewebsites.net/api/updates"
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -EventSubscriptionName gridBlobQuickStart `
   -Endpoint $endpoint `
   -ResourceId $storageId
@@ -124,11 +126,11 @@ Teraz wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje kom
 
 ```powershell
 $containerName = "gridcontainer"
-New-AzureStorageContainer -Name $containerName -Context $ctx
+New-AzStorageContainer -Name $containerName -Context $ctx
 
 echo $null >> gridTestFile.txt
 
-Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
+Set-AzStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
 Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Wyświetl aplikację sieci Web, aby wyświetlić właśnie wysłane zdarzenie.
@@ -164,7 +166,7 @@ Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu
 Jeśli planujesz kontynuować pracę z tą subskrypcją konta i zdarzenia magazynu, nie usuwaj zasobów utworzonych w tym artykule. Jeśli nie planujesz kontynuować pracy, należy użyć następującego polecenia, aby usunąć zasoby utworzone w tym artykule.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

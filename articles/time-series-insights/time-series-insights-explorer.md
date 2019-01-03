@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure eksplorację danych Eksploratora usługi Time Series Insights — Eksplorowanie danych za pomocą Eksploratora usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+title: Eksplorowanie danych za pomocą Eksploratora usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak można szybko wyświetlić globalny widok danych dotyczących danych big data, a następnie sprawdź środowisko IoT za pomocą Eksploratora usługi Azure Time Series Insights w przeglądarce sieci web.
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7508db8bd4b7f21308f2e7b0e92c44570dfc7b18
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d65ce83465f54a30b96bc1ee6644319e1b4fb020
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273140"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556598"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Eksplorator usługi Azure Time Series Insights
 W tym artykule przeanalizowano różnych funkcji i opcji dostępnych w ramach aplikacji internetowej w Eksploratorze usługi Time Series Insights. Używasz Eksploratora usługi Time Series Insights w przeglądarce sieci web do tworzenia wizualizacji danych.

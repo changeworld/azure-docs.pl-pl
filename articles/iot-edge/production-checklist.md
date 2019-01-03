@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d39a271f33cb86bf870c3a7692c38d780093efa2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100042"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652625"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania usługi IoT Edge w środowisku produkcyjnym
 
@@ -162,6 +162,17 @@ Jeśli ustawienia sieciowe wymaga jawnie dozwolonych połączeń wprowadzone z u
 We wszystkich trzech przypadkach nazwy DNS będzie pasuje do wzorca \*.azure-devices.net. 
 
 Ponadto **kontenera aparatu** wykonywania wywołań do rejestrów kontenerów przy użyciu protokołu HTTPS. Aby pobrać obrazy kontenera środowisko uruchomieniowe usługi IoT Edge, nazwa DNS jest mcr.microsoft.com. Aparat container łączy do innych rejestrów, zgodnie z konfiguracją we wdrożeniu. 
+
+Ta lista kontrolna stanowi punkt wyjścia dla reguł zapory:
+
+   | Adres URL (\* = symboli wieloznacznych) | Porty TCP ruchu wychodzącego | Sposób użycia |
+   | ----- | ----- | ----- |
+   | MCR.microsoft.com  | 443 | Rejestr kontenerów firmy Microsoft |
+   | Global.Azure urządzeń provisioning.net  | 443 | Usługa DPS dostępu (opcjonalnie) |
+   | \*. azurecr.io | 443 | Rejestry kontenerów strony osobistych, jak i 3 |
+   | \*.blob.core.windows.net | 443 | Pobierz obraz różnic | 
+   | \*.Azure-devices.net | 5671, 8883, 443 | Dostęp do usługi IoT Hub |
+   | \*. docker.io  | 443 | Docker dostępu (opcjonalnie) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurowanie komunikacji za pośrednictwem serwera proxy
 

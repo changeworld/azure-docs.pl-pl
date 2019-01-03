@@ -2,24 +2,27 @@
 title: Schemat urządzenia w rozwiązaniu do monitorowania zdalnego — Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano schematu JSON, który definiuje symulowanego urządzenia w rozwiązaniu do zdalnego monitorowania.
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: f312f29e14c371e7b500f3eee6471151e3544513
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338859"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635531"
 ---
 # <a name="understand-the-device-model-schema"></a>Zrozumienie schematu modelu urządzenia
 
-Symulowane urządzenia w rozwiązaniu do zdalnego monitorowania służy do testowania jego zachowanie. Podczas wdrażania rozwiązania do zdalnego monitorowania zbiór symulowanych urządzeń jest automatycznie inicjowana obsługa. Można dostosować istniejący Symulowane urządzenia, lub Utwórz swoje własne.
+Symulowane urządzenia w rozwiązaniu do zdalnego monitorowania służy do testowania jego zachowanie. Rozwiązania do zdalnego monitorowania zawiera usługi symulacji urządzeń, aby uruchomić symulowane urządzenia. Podczas wdrażania rozwiązania do zdalnego monitorowania zbiór symulowanych urządzeń jest automatycznie inicjowana obsługa. Można dostosować istniejący Symulowane urządzenia, lub Utwórz swoje własne.
 
 W tym artykule opisano schematu modelu urządzenia, która określa zachowanie symulowanego urządzenia. Model urządzenia jest przechowywany w pliku JSON.
+
+> [!NOTE]
+> Tego schematu modelu urządzenia jest tylko w przypadku symulowanych urządzeń hostowanej w usłudze symulacji urządzenia. Jeśli chcesz utworzyć urządzenie fizyczne, zobacz [Podłączanie urządzenia do akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices.md).
 
 Następujące artykuły odnoszą się do bieżącego artykułu:
 

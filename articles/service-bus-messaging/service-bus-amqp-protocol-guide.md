@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 04588d0af0f85a9e69f44e82d01294c2a4440abc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70f07b3925eb91d91dfbd623f8f1611ac31a1b6f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961148"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542513"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Protokołu AMQP 1.0 w przewodnik dotyczący protokołu usługi Azure Service Bus i Event Hubs
 
@@ -264,7 +264,7 @@ Każde połączenie musi zainicjować link własny kontroli w taki sposób, aby 
 
 #### <a name="starting-a-transaction"></a>Uruchamianie transakcji
 
-Aby rozpocząć transakcji pracy. Kontroler musi uzyskać `txn-id` z koordynatora. Jest to realizowane przez wysłanie `declare` wpisz wiadomość. Jeśli deklaracja znajduje się powiedzie, koordynator odpowiada za pomocą dyspozycji wynik, który niesie ze sobą przypisane `txn-id`.
+Aby rozpocząć transakcji pracy. Kontroler musi uzyskać `txn-id` z koordynatora. Jest to realizowane przez wysłanie `declare` wpisz wiadomość. Jeśli deklaracja się powiedzie, koordynator odpowiada za pomocą sytuacji dyspozycji niesie ze sobą przypisane `txn-id`.
 
 | Klient (kontroler) | | Usługa Service Bus (koordynator) |
 | --- | --- | --- |
@@ -351,7 +351,7 @@ Integracja SASL firmy AMQP ma dwie wady:
 * Wszystkie poświadczenia i tokeny są ograniczone do połączenia. To infrastruktura obsługi komunikatów może być w celu zapewnienia kontroli dostępu zróżnicowane na podstawie jednostek; na przykład dzięki czemu elementu nośnego tokenu wysyłać do kolejki A, ale nie do kolejki B. W kontekście autoryzacji zakotwiczone w ramach połączenia nie jest możliwość używania jednego połączenia i jeszcze używanie tokenów dostępu innej kolejki A i B. kolejki
 * Tokeny dostępu są zazwyczaj ważne tylko przez ograniczony czas. Ważność ta wymaga od użytkownika okresowo ponownie pobrać tokenów i stanowi przy tym okazję do wystawcy tokenów odmowy wystawianie świeże tokenie, jeśli zostały zmienione uprawnienia dostępu użytkownika. Połączenia AMQP może trwać przez dłuższy czas. SASL model zapewnia tylko szansę, aby ustawić token w czasie połączenia, co oznacza, że infrastruktura obsługi komunikatów, albo ma, aby odłączyć klienta, gdy token jest ważny, lub musi zaakceptować ryzyko umożliwienia dalszego komunikacji z klientem kto firmy prawa dostępu został odwołany w międzyczasie.
 
-Specyfikację protokołu AMQP CBS implementowany przez usługi Service Bus umożliwia obejście elegancki dla obu tych problemów: umożliwia klienta, aby skojarzyć tokenów dostępu z każdego węzła i zaktualizować tych tokenów, zanim wygasną, bez przerywania przepływu wiadomości.
+Specyfikację protokołu AMQP CBS implementowany przez usługi Service Bus umożliwia obejście elegancki dla obu tych problemów: Umożliwia ona klienta, aby skojarzyć tokenów dostępu z każdego węzła i zaktualizować tych tokenów, zanim wygasną, bez przerywania przepływu wiadomości.
 
 CBS definiuje węzłem zarządzanie wirtualnym o nazwie *$cbs*, muszą być dostarczone przez infrastruktura obsługi komunikatów. Węzeł zarządzania akceptuje tokeny w imieniu innych węzłów w infrastrukturze obsługi wiadomości.
 
@@ -374,7 +374,7 @@ Komunikat żądania ma następujące właściwości aplikacji:
 | amqp:SWT |Prosty Token sieci Web (SWT) |Protokół AMQP wartość (ciąg) |Obsługiwane tylko w przypadku SWT tokeny wystawione przez usługi AAD/usługi ACS |
 | servicebus.Windows.NET:sastoken |Token sygnatury dostępu Współdzielonego usługi Service Bus |Protokół AMQP wartość (ciąg) |- |
 
-Tokeny przyznaje prawa. Usługa Service Bus obsługującemu trzy podstawowe prawa: "Wyślij" umożliwia wysyłanie "Nasłuchiwania" umożliwia odbieranie i "Manage" umożliwia manipulowania jednostek. SWT tokeny wystawione przez usługi AAD/ACS jawnie uwzględnić te prawa jako oświadczenia. Tokeny sygnatur dostępu Współdzielonego usługi Service Bus można znaleźć reguły skonfigurowane na przestrzeń nazw lub jednostki, a te zasady są skonfigurowane przy użyciu uprawnień. Podpisywania tokenu przy użyciu klucza skojarzone z tą regułą ten sposób sprawia, że token express odpowiednich praw. Token skojarzone z jednostki przy użyciu *put token* pozwala połączonego komputera klienckiego do interakcji z jednostką na token praw. Link, w którym klient ma na *nadawcy* rola wymaga "Send" bezpośrednio; podjęcia *odbiorcy* rola wymaga "Nasłuchiwania" po prawej.
+Tokeny przyznaje prawa. Usługa Service Bus obsługującemu trzy podstawowe prawa: "Wyślij" umożliwia wysyłanie "Nasłuchiwania" umożliwia odbieranie i "Manage" umożliwia manipulowanie jednostek. SWT tokeny wystawione przez usługi AAD/ACS jawnie uwzględnić te prawa jako oświadczenia. Tokeny sygnatur dostępu Współdzielonego usługi Service Bus można znaleźć reguły skonfigurowane na przestrzeń nazw lub jednostki, a te zasady są skonfigurowane przy użyciu uprawnień. Podpisywania tokenu przy użyciu klucza skojarzone z tą regułą ten sposób sprawia, że token express odpowiednich praw. Token skojarzone z jednostki przy użyciu *put token* pozwala połączonego komputera klienckiego do interakcji z jednostką na token praw. Link, w którym klient ma na *nadawcy* rola wymaga "Send" bezpośrednio; podjęcia *odbiorcy* rola wymaga "Nasłuchiwania" po prawej.
 
 Komunikat odpowiedzi zawiera następujące *właściwości aplikacji* wartości
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 5ef9c15d4edf62ef63b16765f16971a9be5ca58b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e2497233ec97ffc88bf13797f62d601d4da373a1
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970709"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628497"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
 
@@ -32,11 +32,13 @@ Dlaczego warto tworzyć własne klucze? Klucze niestandardowe zapewniają więks
 
 Aby używać kluczy zarządzanych przez klienta za pomocą funkcji SSE, można utworzyć nowego magazynu kluczy i klucza, lub możesz użyć istniejącego magazynu kluczy i klucz. Konto magazynu i magazynu kluczy musi być w tym samym regionie, ale można je w różnych subskrypcjach.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ### <a name="step-1-create-a-storage-account"></a>Krok 1: Tworzenie konta magazynu
 
 Najpierw utwórz konto magazynu, jeśli nie masz jeszcze takiego. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](storage-quickstart-create-account.md).
 
-### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Włączanie SSE dla magazynu obiektów Blob i plików
+### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Włącz SSE dla magazynu obiektów Blob i plików
 
 Aby włączyć SSE przy użyciu kluczy zarządzanych przez klienta, dwie funkcje ochrony kluczy: usuwanie nietrwałe i przeczyszczanie, musi być także włączona w usłudze Azure Key Vault. Tych ustawień upewnij się, że klucze nie może być przypadkowo lub celowo usuniętymi. Maksymalny okres przechowywania kluczy wynosi 90 dni, chronić użytkowników przed uczestników złośliwych działań lub oprogramowania wymuszającego okup.
 
@@ -45,7 +47,7 @@ Jeśli chcesz programowo włączyć kluczy zarządzanych przez klienta dla SSE, 
 Aby używać kluczy zarządzanych przez klienta za pomocą funkcji SSE, należy przypisać tożsamość konta magazynu do konta magazynu. Można ustawić tożsamość, wykonując następujące polecenie programu PowerShell lub wiersza polecenia platformy Azure:
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+Set-AzStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
 ```
 
 ```azurecli-interactive
@@ -58,18 +60,18 @@ az storage account \
 Należy włączyć usuwanie nietrwałe i przeczyszczanie, wykonując następujące polecenia programu PowerShell lub wiersza polecenia platformy Azure:
 
 ```powershell
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enableSoftDelete -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enablePurgeProtection -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 ```
 
@@ -83,7 +85,7 @@ az resource update \
     --set properties.enablePurgeProtection=true
 ```
 
-### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>Krok 3: Włączanie szyfrowania za pomocą kluczy zarządzanych przez klienta
+### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>Krok 3: Włączenie szyfrowania za pomocą kluczy zarządzanych przez klienta
 
 Domyślnie SSE używa kluczy zarządzanych przez firmę Microsoft. Usługa SSE można włączyć za pomocą kluczy zarządzanych przez klienta dla konta magazynu przy użyciu [witryny Azure portal](https://portal.azure.com/). Na **ustawienia** bloku konto magazynu, kliknij przycisk **szyfrowania**. Wybierz **użycie swojego własnego klucza** opcji, jak pokazano na poniższej ilustracji.
 
@@ -121,18 +123,18 @@ Należy również przyznać dostęp za pośrednictwem witryny Azure portal, prze
 Klucz powyżej można skojarzyć z istniejącego konta magazynu przy użyciu następujących poleceń programu PowerShell:
 
 ```powershell
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzKeyVault -VaultName "mykeyvault"
 $key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 ```
 
-### <a name="step-5-copy-data-to-storage-account"></a>Krok 5: Kopiowanie danych do konta magazynu
+### <a name="step-5-copy-data-to-storage-account"></a>Krok 5. Kopiowanie danych do konta magazynu
 
 Aby przenieść dane do nowego konta magazynu, dzięki czemu jest zaszyfrowany. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące szyfrowania usługi Storage](storage-service-encryption.md#faq-for-storage-service-encryption).
 
-### <a name="step-6-query-the-status-of-the-encrypted-data"></a>Krok 6: Wykonać zapytanie o stan zaszyfrowanych danych
+### <a name="step-6-query-the-status-of-the-encrypted-data"></a>Krok 6: Kwerenda o stan zaszyfrowanych danych
 
 Kwerenda o stan zaszyfrowanych danych.
 
@@ -154,7 +156,7 @@ Szyfrowanie usługi Storage jest dostępna dla usługi Azure Managed Disks za po
 Usługa Azure Disk Encryption zapewnia integrację rozwiązań opartych na systemu operacyjnego, takich jak funkcja BitLocker i DM-Crypt i usłudze Azure KeyVault. Szyfrowanie usługi Storage umożliwia szyfrowanie natywnie w warstwie platformy usługi Azure storage, poniżej maszyny wirtualnej.
 
 **Czy można odwołać dostęp do kluczy szyfrowania?**
-Tak, możesz odwołać dostęp w dowolnym momencie. Istnieje kilka sposobów, aby odwołać dostęp do kluczy. Zapoznaj się [programu PowerShell dla usługi Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) i [wiersza polecenia platformy Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault) Aby uzyskać więcej informacji. Odbieranie prawa dostępu skutecznie blokuje dostęp do wszystkich obiektów blob na koncie magazynu jako klucz szyfrowania konta jest niedostępny przez usługę Azure Storage.
+Tak, możesz odwołać dostęp w dowolnym momencie. Istnieje kilka sposobów, aby odwołać dostęp do kluczy. Zapoznaj się [programu PowerShell dla usługi Azure Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault/) i [wiersza polecenia platformy Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault) Aby uzyskać więcej informacji. Odbieranie prawa dostępu skutecznie blokuje dostęp do wszystkich obiektów blob na koncie magazynu jako klucz szyfrowania konta jest niedostępny przez usługę Azure Storage.
 
 **W innym regionie można utworzyć konta magazynu i klucza?**  
 Nie, konto magazynu oraz usługi Azure Key Vault i klucz muszą znajdować się w tym samym regionie.

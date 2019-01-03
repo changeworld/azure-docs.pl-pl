@@ -1,24 +1,24 @@
 ---
-title: Instalowanie i uruchamianie kontenerów
-titlesuffix: Computer Vision - Azure Cognitive Services
+title: Jak zainstalować i uruchamiać kontenery - przetwarzania obrazów
+titlesuffix: Azure Cognitive Services
 description: Jak pobrać, zainstalować i uruchamiaj kontenery dla przetwarzania obrazów w tym samouczku wskazówki.
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 9964be07c578cd1cafd93328bffe972483123e03
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 6a6468cd71cf83c627f6dd72e5a1fc5564361d50
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077039"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579859"
 ---
-# <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
+# <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów rozpoznawanie tekstu
 
 Konteneryzacji to podejście do dystrybucji oprogramowania, w której aplikacja lub usługa jest dostarczana w postaci obrazu kontenera. Konfiguracja i zależności dla aplikacji lub usługi są objęte obrazu kontenera. Następnie można wdrożyć obraz kontenera na hoście kontenera, z niewielkich modyfikacji. Kontenery są odizolowane od siebie nawzajem i zasadniczego systemu operacyjnego za pomocą mniejszy wyświetlacz niż maszyny wirtualnej. Kontenery mogą utworzonych na podstawie obrazów kontenera do krótkoterminowych zadań i usuwane, gdy nie będą już potrzebne.
 
@@ -32,11 +32,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przed rozpoczęciem korzystania z kontenerów rozpoznawanie tekstu, musi spełniać następujące wymagania wstępne:
 
-**Aparat platformy docker**: konieczne jest posiadanie aparat platformy Docker zainstalowany lokalnie. Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), i [Windows](https://docs.docker.com/docker-for-windows/). W Windows platformy Docker musi być skonfigurowany do obsługi kontenerów systemu Linux. Kontenery platformy docker — można również wdrożyć bezpośrednio do [usługi Azure Kubernetes Service](/azure/aks/), [usługi Azure Container Instances](/azure/container-instances/), lub [Kubernetes](https://kubernetes.io/) klastra wdrożone [Usługi azure Stack](/azure/azure-stack/). Aby uzyskać więcej informacji na temat wdrażania rozwiązania Kubernetes do usługi Azure Stack, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+**Aparat platformy docker**: Konieczne jest posiadanie aparat platformy Docker zainstalowany lokalnie. Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), i [Windows](https://docs.docker.com/docker-for-windows/). W Windows platformy Docker musi być skonfigurowany do obsługi kontenerów systemu Linux. Kontenery platformy docker — można również wdrożyć bezpośrednio do [usługi Azure Kubernetes Service](../../aks/index.yml), [usługi Azure Container Instances](../../container-instances/index.yml), lub [Kubernetes](https://kubernetes.io/) klastra wdrożone [Usługi azure Stack](../../azure-stack/index.yml). Aby uzyskać więcej informacji na temat wdrażania rozwiązania Kubernetes do usługi Azure Stack, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
 
 Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure.
 
-**Znajomość Microsoft Container Registry i Docker**: powinien mieć podstawową wiedzę na temat koncepcji Microsoft Container Registry i Docker, takich jak rejestrów, repozytoriów, kontenerów, a obrazy kontenerów, a także wiedzę na temat podstawowe `docker` poleceń.  
+**Znajomość Microsoft Container Registry i Docker**: Należy mieć podstawową wiedzę na temat koncepcji Microsoft Container Registry i Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.  
 
 Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).
 
@@ -60,7 +60,7 @@ Jeśli chcesz użyć kontenera rozpoznawanie tekstu, należy utworzyć zasób pr
 Wykonaj poniższe kroki, aby utworzyć i pobierania informacji z zasobów platformy Azure:
 
 1. Tworzenie zasobu platformy Azure w witrynie Azure portal.  
-   Jeśli chcesz użyć kontenera rozpoznawanie tekstu, należy najpierw utworzyć odpowiadający jej zasób przetwarzania obrazów w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie konta usług Cognitive Services w witrynie Azure portal](../cognitive-services-apis-create-account.md).
+   Jeśli chcesz użyć kontenera rozpoznawanie tekstu, należy najpierw utworzyć odpowiadający jej zasób przetwarzania obrazów w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal](../cognitive-services-apis-create-account.md).
 
 1. Pobieranie klucza punktu końcowego adresu URL i subskrypcji dla zasobów platformy Azure.  
    Po utworzeniu zasobu platformy Azure musi być wystąpienia odpowiedniego kontenera Rozpoznaj tekst klucza punktu końcowego adresu URL i subskrypcji z tego zasobu. Można skopiować klucza punktu końcowego adresu URL i subskrypcji z odpowiednio strony Szybki Start i klucze zasobu przetwarzania obrazów w witrynie Azure portal.

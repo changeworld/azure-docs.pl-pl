@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c226eb19dbd2049c486acfb1ffb9423fdb1dad43
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cad368cb968b94d1327cc99ed4dfa6df0aedd2cd
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410265"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555102"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-ad"></a>Migrowanie z Federacji na synchronizację skrótów haseł w usłudze Azure AD
 Ten dokument zawiera wskazówki dotyczące przenoszenia z usług AD FS do synchronizacji skrótów haseł.
@@ -336,7 +336,7 @@ W ramach tego procesu możesz Włącz bezproblemowe logowanie Jednokrotne i Prze
    > [!IMPORTANT]
    > Jak użytkownicy logują się na tym etapie zostaną wprowadzone żadne zmiany.  
    
-   7. Sprawdź, czy federacji w dalszym ciągu być włączone i teraz bezproblemowe logowanie jednokrotne jest włączona na portalu usługi Azure AD.
+   7. W portalu usługi Azure AD Sprawdź, czy federacji w dalszym ciągu można włączyć, i teraz bezproblemowe logowanie jednokrotne jest włączona.
    ![Obraz 42](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image16.png)
 
 #### <a name="convert-domains-from-federated-to-managed"></a>Konwertuj domen z federacyjnego na zarządzanego

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342395"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631859"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -209,8 +209,8 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 | --- | --- |
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|
-| Grupy można zaktualizować (wersja zapoznawcza)|Definiowanie zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. Aby dowiedzieć się więcej, zobacz [grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
-| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
+| Grupy można zaktualizować (wersja zapoznawcza)|Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
+| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
 |Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
 |Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
@@ -589,7 +589,7 @@ Bo zarządzania aktualizacjami wzbogacania aktualizacji w chmurze, niektóre akt
 
 Jednak zarządzania aktualizacjami, nadal może raportować tej maszyny, co jest niezgodne, ponieważ ma ona dodatkowe informacje o odpowiednich aktualizacji.
 
-Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa w przypadku CentOS gotowe. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To zachowanie jest ograniczenie zypper. W niektórych przypadkach może wymagać ponownego uruchomienia wdrożenia aktualizacji. Aby sprawdzić, przejrzyj dziennik aktualizacji.
+Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa w przypadku CentOS gotowe. Aby prawidłowo wdrożyć aktualizacje, centos, wybierz wszystkie klasyfikacje, aby upewnić się, że aktualizacje są stosowane. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To zachowanie jest ograniczenie zypper. W niektórych przypadkach może wymagać ponownego uruchomienia wdrożenia aktualizacji. Aby sprawdzić, przejrzyj dziennik aktualizacji.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

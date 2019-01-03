@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185583"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608838"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcji obsługiwanych przez usługę Azure Security Center
 
@@ -30,7 +30,7 @@ Monitorowanie stanu zabezpieczeń i zalecenia są dostępne dla maszyn wirtualny
 >
 >
 
-## <a name="supported-platforms"></a>Obsługiwane platformy 
+## <a name="platforms-that-support-the-data-collection-agent"></a>Temat platform obsługujących agent zbierania danych 
 
 W tej sekcji przedstawiono platform, na których można uruchomić agenta usługi Azure Security Center i z którego mógł zbierać dane.
 
@@ -43,6 +43,10 @@ Obsługiwane są następujące systemy operacyjne Windows:
 * Windows Server 2012 R2
 * Windows Server 2016
 
+> [!NOTE]
+> Integracja z usługą Windows Defender ATP obsługuje tylko systemu Windows Server 2012 R2 i Windows Server 2016.
+>
+>
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Obsługiwane platformy dla maszyn wirtualnych i komputerów z systemem Linux
 Obsługiwane są następujące systemy operacyjne Linux:
@@ -55,11 +59,6 @@ Obsługiwane są następujące systemy operacyjne Linux:
 * Wersje systemu Linux Oracle, 5, 6 i 7.
 * Linux Amazon 2012.09 2017 r.
 * OpenSSL 1.1.0 jest obsługiwana tylko na platformach x86_64, 64-bitowych.
-
-> [!NOTE]
-> Analiza zachowania maszyny wirtualnej nie są jeszcze dostępne w systemach operacyjnych Linux.
->
->
 
 ## <a name="vms-and-cloud-services"></a>Maszyny wirtualne i usługi w chmurze
 Obsługiwane są również maszyny wirtualne, które są uruchamiane w usłudze w chmurze. Monitorowane są tylko usługi sieci web i proces roboczy role w chmurze działających w miejsce produkcyjne. Aby dowiedzieć się więcej o usługach cloud services, zobacz [Omówienie usługi Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).

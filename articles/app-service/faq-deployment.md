@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388976"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549432"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wdrażania dla aplikacji sieci Web na platformie Azure
 
@@ -36,7 +36,7 @@ Poniżej przedstawiono niektóre opcje publikowania kodu aplikacji sieci web:
 *   Wdrażanie przy użyciu programu Visual Studio. Jeśli masz rozwiązanie programu Visual Studio, kliknij prawym przyciskiem myszy projekt aplikacji sieci web, a następnie wybierz **Publikuj**.
 *   Wdrażanie przy użyciu klienta FTP. W witrynie Azure portal Pobierz profil publikowania dla aplikacji sieci web, który chcesz wdrożyć swój kod. Następnie przekaż pliki \site\wwwroot przy użyciu tych samych poświadczeń publikowania w profilu FTP.
 
-Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji w usłudze App Service](app-service-deploy-local-git.md).
+Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji w usłudze App Service](deploy-local-git.md).
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Widzę komunikat o błędzie podczas próby wdrożenia w programie Visual Studio. Jak rozwiązać ten problem?
 
@@ -51,7 +51,7 @@ Samouczek [tworzenie pierwszej aplikacji sieci web platformy ASP.NET na platform
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Jakie są różne rodzaje poświadczeń wdrożenia?
 
-Usługa App Service obsługuje dwa rodzaje poświadczenia lokalne wdrożenie narzędzia Git i wdrażania protokołu FTP/S. Aby uzyskać więcej informacji o sposobie konfigurowania poświadczeń wdrożenia, zobacz [skonfiguruj poświadczenia wdrożenia dla usługi App Service](app-service-deployment-credentials.md).
+Usługa App Service obsługuje dwa rodzaje poświadczenia lokalne wdrożenie narzędzia Git i wdrażania protokołu FTP/S. Aby uzyskać więcej informacji o sposobie konfigurowania poświadczeń wdrożenia, zobacz [skonfiguruj poświadczenia wdrożenia dla usługi App Service](deploy-configure-credentials.md).
 
 ## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Co to jest plik lub katalog struktury aplikacji sieci web usługi App Service?
 
@@ -63,7 +63,7 @@ Jeśli widzisz ten komunikat, istnieje prawdopodobieństwo, że zostały przekro
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Jak skonfigurować ciągłe wdrażanie dla mojej aplikacji sieci web usługi App Service?
 
-Można skonfigurować ciągłe wdrażanie z kilka zasobów, w tym DevOps platformy Azure, usługi OneDrive, GitHub, Bitbucket, Dropbox i innych repozytoriów Git. Te opcje są dostępne w portalu. [Ciągłe wdrażanie w usłudze App Service](app-service-continuous-deployment.md) jest przydatne samouczek, który objaśnia, jak skonfigurować ciągłe wdrażanie.
+Można skonfigurować ciągłe wdrażanie z kilka zasobów, w tym DevOps platformy Azure, usługi OneDrive, GitHub, Bitbucket, Dropbox i innych repozytoriów Git. Te opcje są dostępne w portalu. [Ciągłe wdrażanie w usłudze App Service](deploy-continuous-deployment.md) jest przydatne samouczek, który objaśnia, jak skonfigurować ciągłe wdrażanie.
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Jak rozwiązywać problemy z ciągłym wdrażaniem z usługi GitHub i Bitbucket?
 
@@ -100,4 +100,4 @@ Wdrażanie ciągłe kodu dla obu tych opcji zależy od tego, istniejących przep
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Jak używać protokołu FTP i FTPS Aby wdrożyć aplikację w usłudze App Service?
 
-Aby uzyskać informacje dotyczące wdrażania aplikacji sieci web w usłudze App Service za pomocą protokołu FTP i FTPS, zobacz [wdrażanie aplikacji w usłudze App Service przy użyciu protokołu FTP/S](app-service-deploy-ftp.md).
+Aby uzyskać informacje dotyczące wdrażania aplikacji sieci web w usłudze App Service za pomocą protokołu FTP i FTPS, zobacz [wdrażanie aplikacji w usłudze App Service przy użyciu protokołu FTP/S](deploy-ftp.md).

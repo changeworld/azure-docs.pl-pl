@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2a494b318011d601609033bc877134f0b0eeff09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249332"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721363"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Jak przygotować się do zmian ruchu przychodzącego adresu IP
 
@@ -50,4 +50,4 @@ Nowy adres IP dla ruchu przychodzącego podanej aplikacji znajduje się w portal
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule opisano sposób przygotowania do zmiany adresu IP, które zostało zainicjowane przez platformę Azure. Aby uzyskać więcej informacji na temat adresów IP w usłudze Azure App Service, zobacz [przychodzące i wychodzące adresy IP w usłudze Azure App Service](app-service-ip-addresses.md).
+W tym artykule opisano sposób przygotowania do zmiany adresu IP, które zostało zainicjowane przez platformę Azure. Aby uzyskać więcej informacji na temat adresów IP w usłudze Azure App Service, zobacz [przychodzące i wychodzące adresy IP w usłudze Azure App Service](overview-inbound-outbound-ips.md).

@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a88d4b09178ea32526cb8d035b47e1aef9c19dc3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ea2fe0f7e326db00a63529c0279c9c15d30c744c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384245"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744823"
 ---
 # <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>Tworzenie aplikacji Java za pomocą usług bazy danych Apache HBase HDInsight dla komputerów z systemem Windows (Apache Hadoop) przy użyciu narzędzia Apache Maven
-Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](http://hbase.apache.org/) aplikacji w języku Java przy użyciu narzędzia Apache Maven. Następnie za pomocą aplikacji usługi Azure HDInsight (Apache Hadoop).
+Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](https://hbase.apache.org/) aplikacji w języku Java przy użyciu narzędzia Apache Maven. Następnie za pomocą aplikacji usługi Azure HDInsight (Apache Hadoop).
 
-[Narzędzia Apache Maven](http://maven.apache.org/) to oprogramowanie projektu zarządzania i zrozumienie narzędzie, które umożliwia tworzenie oprogramowania, dokumentację i raporty dla projektów języka Java. W tym artykule dowiesz się, jak z niej korzystać do tworzenia podstawowych aplikacji Java, która tworzy, zapytań i usuwa tabel HBase w klastrze usługi Azure HDInsight.
+[Narzędzia Apache Maven](https://maven.apache.org/) to oprogramowanie projektu zarządzania i zrozumienie narzędzie, które umożliwia tworzenie oprogramowania, dokumentację i raporty dla projektów języka Java. W tym artykule dowiesz się, jak z niej korzystać do tworzenia podstawowych aplikacji Java, która tworzy, zapytań i usuwa tabel HBase w klastrze usługi Azure HDInsight.
 
 > [!IMPORTANT]  
 > Kroki opisane w tym dokumencie wymagają klastra usługi HDInsight, który używa Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="requirements"></a>Wymagania
 * [Platforma Java JDK](https://aka.ms/azure-jdks) 7 lub nowszy
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 * Klaster HDInsight z systemem Windows z bazą danych HBase
 
     > [!NOTE]  
@@ -40,7 +40,7 @@ Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](http://hba
 
     To polecenie tworzy katalog w bieżącej lokalizacji o nazwie określonej przez **artifactID** parametru (**hbaseapp** w tym przykładzie.) Ten katalog zawiera następujące elementy:
 
-   * **pom.XML**:  Model obiektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) zawiera informacje i szczegóły konfiguracji używane do tworzenia projektu.
+   * **pom.XML**:  Model obiektu projektu ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) zawiera informacje i szczegóły konfiguracji używane do tworzenia projektu.
    * **SRC**: Katalog, który zawiera **main\java\com\microsoft\examples** katalogu, w którym będzie utworzyć aplikację.
 3. Usuń **src\test\java\com\microsoft\examples\apptest.java** pliku, ponieważ nie jest używany w tym przykładzie.
 
@@ -53,7 +53,7 @@ Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](http://hba
           <version>1.1.2</version>
         </dependency>
 
-    W tej sekcji opisano narzędzia Maven, że projekt wymaga **klienta bazy danych hbase** wersji **1.1.2**. W czasie kompilacji Ta zależność zostanie pobrane z repozytorium Maven domyślne. Możesz użyć [Apache centralne repozytorium funkcji wyszukiwania narzędzia Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) Aby dowiedzieć się więcej na temat tej zależności.
+    W tej sekcji opisano narzędzia Maven, że projekt wymaga **klienta bazy danych hbase** wersji **1.1.2**. W czasie kompilacji Ta zależność zostanie pobrane z repozytorium Maven domyślne. Możesz użyć [Apache centralne repozytorium funkcji wyszukiwania narzędzia Maven](https://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) Aby dowiedzieć się więcej na temat tej zależności.
 
    > [!IMPORTANT]  
    > Numer wersji musi być zgodny z wersją bazy danych HBase, który znajduje się z klastrem usługi HDInsight. Skorzystaj z poniższej tabeli, aby znaleźć numer poprawnej wersji.
@@ -127,7 +127,7 @@ Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](http://hba
    >
    >
 
-    To `<plugins>` konfiguruje sekcji [wtyczki programu Apache Maven kompilatora](http://maven.apache.org/plugins/maven-compiler-plugin/) i [wtyczki programu Apache Maven odcień](http://maven.apache.org/plugins/maven-shade-plugin/). Wtyczka kompilatora jest używana do kompilowania topologii. Wtyczka odcień używany w celu zapobiegania duplikatów licencji w pakiet JAR, który jest kompilowany przez narzędzia Maven. Przyczyny, dla której jest on używany jest, że pliki licencji zduplikowane powodują wystąpienie błędu w czasie wykonywania w klastrze HDInsight. Przy użyciu narzędzia maven odcień wtyczki za pomocą `ApacheLicenseResourceTransformer` implementacji zapobiega tego błędu.
+    To `<plugins>` konfiguruje sekcji [wtyczki programu Apache Maven kompilatora](https://maven.apache.org/plugins/maven-compiler-plugin/) i [wtyczki programu Apache Maven odcień](https://maven.apache.org/plugins/maven-shade-plugin/). Wtyczka kompilatora jest używana do kompilowania topologii. Wtyczka odcień używany w celu zapobiegania duplikatów licencji w pakiet JAR, który jest kompilowany przez narzędzia Maven. Przyczyny, dla której jest on używany jest, że pliki licencji zduplikowane powodują wystąpienie błędu w czasie wykonywania w klastrze HDInsight. Przy użyciu narzędzia maven odcień wtyczki za pomocą `ApacheLicenseResourceTransformer` implementacji zapobiega tego błędu.
 
     Wtyczki odcień maven tworzy również plik jar uber (lub fat jar) zawierający wszystkie zależności, które są wymagane przez aplikację.
 4. Zapisz plik **pom.xml**.
@@ -147,7 +147,7 @@ Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](http://hba
           * "License"); you may not use this file except in compliance
           * with the License.  You may obtain a copy of the License at
           *
-          *     http://www.apache.org/licenses/LICENSE-2.0
+          *     https://www.apache.org/licenses/LICENSE-2.0
           *
           * Unless required by applicable law or agreed to in writing, software
           * distributed under the License is distributed on an "AS IS" BASIS,

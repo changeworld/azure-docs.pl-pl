@@ -9,16 +9,22 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9a16498c527af2d23840c53af11103f7580d80bb
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434770"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582562"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Zrozumienie wyniki wyboru agenta Windows do zarządzania aktualizacjami
 
 Może istnieć wiele przyczyn, na tym komputerze nie jest wyświetlany **gotowe** w zarządzania aktualizacjami. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchamiania narzędzia do rozwiązywania problemów dla maszyn platformy Azure z witryny Azure portal i maszyny spoza platformy Azure w [scenariusza w trybie offline](#troubleshoot-offline).
+
+Poniżej przedstawiono stanów gotowości trzy, maszyna może być w:
+
+* **Gotowe** — usługi Windows update agent jest wdrażany i ostatnio zaobserwowano mniej niż 1 godzinę temu.
+* **Odłączony** — usługi Windows update agent jest wdrażany i ostatnio zaobserwowano ponad 1 godzinę temu.
+* **Nieskonfigurowane** — usługi Windows update agent nie zostanie odnaleziony lub nie zakończono dołączania.
 
 ## <a name="start-the-troubleshooter"></a>Uruchom narzędzie do rozwiązywania problemów
 

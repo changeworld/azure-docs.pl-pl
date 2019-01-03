@@ -3,16 +3,15 @@ title: Optymalizacja operacji wstawiania zbiorczego w usłudze Azure Database dl
 description: W tym artykule opisano, jak można optymalizować operacji wstawiania zbiorczego w usłudze Azure Database dla serwera PostgreSQL.
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 2fe3c3cc71823880d71223334b89816199561ca9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9d2bfcddc649e4fff68bdba49df0945e88067036
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629358"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545240"
 ---
 # <a name="optimizing-bulk-inserts-and-use-of-transient-data-on-azure-database-for-postgresql-server"></a>Optymalizacja zbiorcze operacje wstawiania danych i korzystania z przejściowych w usłudze Azure Database dla serwera PostgreSQL 
 W tym artykule opisano, jak można zoptymalizować pod kątem operacji wstawiania zbiorczego i umożliwia korzystanie z danych przejściowych w usłudze Azure Database dla serwera PostgreSQL.

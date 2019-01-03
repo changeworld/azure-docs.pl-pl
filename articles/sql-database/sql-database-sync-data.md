@@ -12,16 +12,19 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 6963bb44e6377bcfbb2cb647f1508f075b4268be
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a287f985ce015ac6b886f4e5c2b86d6b3793e7d5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101850"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721839"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
 SQL Data Sync to usługa oparta na usłudze Azure SQL Database, która umożliwia synchronizowanie danych, wybrana dwukierunkowo między wieloma bazami danych SQL i wystąpienia programu SQL Server.
+
+> [!IMPORTANT]
+> Usługa Azure SQL Data Sync jest **nie** obsługują wystąpienia zarządzanego Azure SQL Database w tej chwili.
 
 ## <a name="architecture-of-sql-data-sync"></a>Architektura SQL Data Sync
 
@@ -51,11 +54,11 @@ Grupa synchronizacji ma następujące właściwości:
 
 Synchronizacja danych jest przydatne w sytuacjach, w którym dane muszą być przechowywane aktualne między kilka baz danych Azure SQL lub bazy danych programu SQL Server. Poniżej przedstawiono przypadków głównie do celów synchronizacji danych:
 
--   **Synchronizacja danych hybrydowych:** z opcją synchronizacji danych, można zachować dane synchronizowane między lokalnymi bazami danych i baz danych Azure SQL, aby umożliwić aplikacji hybrydowych. Ta funkcja może odwołać się do klientów, którzy rozważają przejście do chmury i chcesz umieścić niektóre z aplikacji na platformie Azure.
+-   **Synchronizacja danych hybrydowych:** Z opcją synchronizacji danych możesz przechowywać dane synchronizowane między lokalnymi bazami danych i baz danych Azure SQL, aby umożliwić aplikacji hybrydowych. Ta funkcja może odwołać się do klientów, którzy rozważają przejście do chmury i chcesz umieścić niektóre z aplikacji na platformie Azure.
 
--   **Aplikacje rozproszone:** w wielu przypadkach jest korzystne różnych obciążeń w różnych bazach danych. Na przykład jeśli masz duży produkcyjnej bazy danych, ale trzeba będzie również uruchomić raportowania lub analizy obciążenia oparte na tych danych, warto drugi bazy danych to dodatkowe obciążenie. To podejście minimalizuje wpływu na obciążenia produkcyjne. Aby zachować te dwie bazy danych synchronizacji, można użyć synchronizacji danych.
+-   **Aplikacje rozproszone:** W wielu przypadkach jest korzystne różnych obciążeń w różnych bazach danych. Na przykład jeśli masz duży produkcyjnej bazy danych, ale trzeba będzie również uruchomić raportowania lub analizy obciążenia oparte na tych danych, warto drugi bazy danych to dodatkowe obciążenie. To podejście minimalizuje wpływu na obciążenia produkcyjne. Aby zachować te dwie bazy danych synchronizacji, można użyć synchronizacji danych.
 
--   **Globalnie rozproszone aplikacje:** wiele firm rozciągają się kilku regionach i nawet kilku krajach. Aby zminimalizować opóźnienie sieci, najlepiej jest mieć swoje dane w regionie bliską. Z opcją synchronizacji danych można pracować z bazami danych w regionach na całym świecie zsynchronizowane.
+-   **Globalnie dystrybuowane aplikacje:** Wiele firm obejmują wiele regionów i krajów nawet kilka. Aby zminimalizować opóźnienie sieci, najlepiej jest mieć swoje dane w regionie bliską. Z opcją synchronizacji danych można pracować z bazami danych w regionach na całym świecie zsynchronizowane.
 
 Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scenariuszach:
 
@@ -69,11 +72,11 @@ Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scen
 
 ## <a name="how-does-data-sync-work"></a>Jak działa synchronizacja danych 
 
--   **Śledzenie zmiany danych:** Data Sync śledzi zmiany przy użyciu Wstawianie, aktualizowanie i usuwanie wyzwalaczy. Zmiany są zapisywane w tabeli w bazie danych użytkownika po stronie. Należy pamiętać, że BULK INSERT nie zostać wywołane wyzwalaczy domyślnie. Jeśli nie określono FIRE_TRIGGERS, wyzwalacze wstawiania nie wykonać. Dodaj opcję FIRE_TRIGGERS, aby synchronizacja danych mogą śledzić te operacje wstawiania. 
+-   **Śledzenie zmiany danych:** Synchronizacja danych śledzenia zmian za pomocą insert, update i delete wyzwalaczy. Zmiany są zapisywane w tabeli w bazie danych użytkownika po stronie. Należy pamiętać, że BULK INSERT nie zostać wywołane wyzwalaczy domyślnie. Jeśli nie określono FIRE_TRIGGERS, wyzwalacze wstawiania nie wykonać. Dodaj opcję FIRE_TRIGGERS, aby synchronizacja danych mogą śledzić te operacje wstawiania. 
 
--   **Synchronizowanie danych:** zaprojektowano synchronizacji danych w modelu gwiazdy. Centrum przeprowadza synchronizację z każdym elementem członkowskim indywidualnie. Zmiany w Centrum są pobierane do elementu członkowskiego, a następnie zmiany w porównaniu z elementu członkowskiego są przekazywane do Centrum.
+-   **Synchronizowanie danych:** Synchronizacja danych została zaprojektowana w modelu gwiazdy. Centrum przeprowadza synchronizację z każdym elementem członkowskim indywidualnie. Zmiany w Centrum są pobierane do elementu członkowskiego, a następnie zmiany w porównaniu z elementu członkowskiego są przekazywane do Centrum.
 
--   **Rozwiązywanie konfliktów:** synchronizacji danych udostępnia dwie metody rozwiązywania konfliktów *wins Centrum* lub *wins elementu członkowskiego*.
+-   **Rozwiązywanie konfliktów:** Synchronizacja danych udostępnia dwie metody rozwiązywania konfliktów *wins Centrum* lub *wins elementu członkowskiego*.
     -   Jeśli wybierzesz *wins Centrum*, zmiany w piaście zawsze mają pierwszeństwo przed zmiany w elemencie członkowskim.
     -   Jeśli wybierzesz *wins elementu członkowskiego*, zmiany w zmian Zastąp elementów członkowskich w Centrum. Jeśli istnieje więcej niż jeden element członkowski, końcowa wartość jest zależna od która składowa jest najpierw zsynchronizowane.
 

@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie obciążeń usługi Azure Batch na ekonomiczne maszyny wirtualne o niskim priorytecie | Dokumentacja firmy Microsoft
+title: Uruchamianie obciążeń na ekonomiczne o niskim priorytecie maszyny wirtualne — Azure Batch | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak inicjować obsługę maszyn wirtualnych o niskim priorytecie, aby zmniejszyć koszt obciążeń usługi Azure Batch.
 services: batch
 author: mscurrell
@@ -11,12 +11,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec18
+ms.openlocfilehash: 17668470be3e997c215aacc4cc2c32c80de2dd81
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093007"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546797"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Używanie maszyn wirtualnych o niskim priorytecie z usługą Batch
 
@@ -42,11 +43,11 @@ Biorąc pod uwagę charakterystyki maszyny wirtualne o niskim priorytecie, jakie
 
 Przykładowe przypadki użycia przetwarzania wsadowego dobrze nadaje się do użycia maszyn wirtualnych o niskim priorytecie są:
 
--   **Projektowanie i testowanie**: W szczególności jeśli opracowywane są rozwiązaniach wielkoskalowych znaczne oszczędności można uzyskać. Wszystkie rodzaje testów mogą korzystać, ale testowania obciążenia na dużą skalę i testowaniu metodą regresji są doskonałe używa.
+-   **Projektowanie i testowanie**: W szczególności jeśli opracowywane są na dużą skalę rozwiązania można uzyskać znaczne oszczędności. Wszystkie rodzaje testów mogą korzystać, ale testowania obciążenia na dużą skalę i testowaniu metodą regresji są doskonałe używa.
 
--   **Uzupełniające pojemności na żądanie**: maszyny wirtualne o niskim priorytecie może służyć jako uzupełnienie zwykłe dedykowanych maszyn wirtualnych — jeśli są dostępne, skalowanie i w związku z tym należy wykonać dzięki szybszemu niższy koszt zadania; gdy nie jest dostępny, pozostanie linii bazowej dedykowanych maszyn wirtualnych .
+-   **Uzupełniające pojemności na żądanie**: Maszyny wirtualne o niskim priorytecie może służyć jako uzupełnienie zwykłe dedykowanych maszyn wirtualnych — jeśli są dostępne, skalowanie i w związku z tym należy wykonać dzięki szybszemu niższy koszt; zadania gdy nie jest dostępny, pozostanie linii bazowej dedykowanych maszyn wirtualnych.
 
--   **Czas wykonywania zadania elastyczne**: w przypadku elastyczność w zadaniach czasu musi zostać zakończony, a następnie potencjalne przerwy w pojemności może być tolerowana; jednak dodając maszyny wirtualne o niskim priorytecie zadania często wykonywane szybciej i niższym kosztem.
+-   **Czas wykonywania zadania elastyczne**: Jeśli pewien stopień elastyczności w czasie zadań musi zostać zakończony, a następnie potencjalne przerwy w pojemności może być tolerowana; Jednak w przypadku dodawania zadania maszyn wirtualnych o niskim priorytecie są często uruchamiane szybciej i niższym kosztem.
 
 Można skonfigurować pule usługi Batch w celu użycia maszyn wirtualnych o niskim priorytecie na kilka sposobów, w zależności od elastyczność w momencie wykonywania zadania:
 

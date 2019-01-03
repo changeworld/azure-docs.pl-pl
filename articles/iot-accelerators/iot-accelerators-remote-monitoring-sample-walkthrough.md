@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: e02492b3e80f71b4ae92066e5e4a2baf26818621
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316169"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605538"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do zdalnego monitorowania
 
@@ -135,7 +135,7 @@ Zadania usługi ASA dostarczać dane telemetryczne z podłączonych urządzeń d
 
 ### <a name="authentication-and-authorization-microservice"></a>Uwierzytelnianie i autoryzacja w mikrousługach
 
-[Uwierzytelniania i autoryzacji w mikrousługach](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) zarządza użytkownikom uprawnień do dostępu do akceleratora rozwiązań. Zarządzanie użytkownikami można zrobić za pomocą dowolnego dostawcy usługi tożsamości, która obsługuje [OpenId Connect](http://openid.net/connect/).
+[Uwierzytelniania i autoryzacji w mikrousługach](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) zarządza użytkownikom uprawnień do dostępu do akceleratora rozwiązań. Zarządzanie użytkownikami można zrobić za pomocą dowolnego dostawcy usługi tożsamości, która obsługuje [OpenId Connect](https://openid.net/connect/).
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
 

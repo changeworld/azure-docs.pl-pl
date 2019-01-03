@@ -1,5 +1,5 @@
 ---
-title: Integrowanie usługi Azure Time Series Insights przy użyciu funkcji monitorowania zdalnego | Dokumentacja firmy Microsoft
+title: Integracja usługi Time Series Insights dzięki zdalnemu monitorowaniu — Azure | Dokumentacja firmy Microsoft
 description: W tym instruktażu dowiesz się, jak skonfigurować usługi Time Series Insights do istniejącego rozwiązania monitorowania zdalnego, który nie zawiera jeszcze usługi Time Series Insights.
 author: aditidugar
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253820"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633746"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrowanie usługi Azure Time Series Insights za pomocą zdalnego monitorowania
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 Następnie Wdróż usługi Time Series Insights jako dodatkowych zasobów w rozwiązaniu monitorowania zdalnego i podłącz go do usługi IoT hub.
 
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Wybierz **Utwórz zasób** > **Internet of Things** > **usługi Time Series Insights**.
 
@@ -164,12 +164,13 @@ Następnym krokiem jest skonfigurować mikrousług usługi Azure Stream Analytic
 
 .NET: 
 
-```
+```cmd/sh
 docker pull azureiotpcs/asa-manager-dotnet:1.0.2
 ```
 
 Java:
-```
+
+```cmd/sh
 docker pull azureiotpcs/asa-manager-java:1.0.2
 ```
 
@@ -178,13 +179,14 @@ docker pull azureiotpcs/asa-manager-java:1.0.2
 Ściągnij najnowsze mikrousług Telemetrii, wpisując następujące polecenie w wierszu polecenia:
 
 .NET:
-```
+
+```cmd/sh
 docker pull azureiotpcs/telemetry-dotnet:1.0.2
 ```
 
 Java:
 
-```
+```cmd/sh
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
@@ -192,7 +194,7 @@ docker pull azureiotpcs/telemetry-java:1.0.2
 
 Aby łatwo wyświetlić dane w Eksploratorze usługi Time Series Insights, firma Microsoft zaleca, dostosowywaniu interfejsu użytkownika, aby łatwo utworzyć łącze do środowiska. W tym celu należy ściągnąć najnowsze zmiany w interfejsie użytkownika sieci Web, korzystając z następującego polecenia:
 
-```
+```cmd/sh
 docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 ```
 
@@ -220,7 +222,7 @@ Konfigurowanie środowiska `basic` wdrożenie zaktualizowanego mikrousług.
 
 1. Dodaj następujące zmienne środowiskowe do poszczególnych mikrousług na platformie docker compose pliku yaml i `env-setup` skryptu na maszynie wirtualnej:
 
-    ```
+    ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
     PCS_TSI_FQDN={TSI Data Access FQDN}
     PCS_AAD_TENANT={AAD Tenant Id}
@@ -244,7 +246,7 @@ Konfigurowanie środowiska `standard` wdrożenie zaktualizowanego mikrousługami
 
 1. Znajdź mapę konfiguracji, aby dodać następujące nowe zmienne środowiskowe dla TSI:
 
-    ```
+    ```yaml
     telemetry.storage.type: "tsi"
     telemetry.tsi.fqdn: "{TSI Data Access FQDN}"
     security.auth.serviceprincipal.secret: "{AAD application service principal secret}"
@@ -252,7 +254,7 @@ Konfigurowanie środowiska `standard` wdrożenie zaktualizowanego mikrousługami
 
 4. Przeprowadź edycję pliku yaml szablonu dla telemetrii usługi zasobnika:
 
-    ```
+    ```yaml
     - name: PCS_AAD_TENANT
         valueFrom:
         configMapKeyRef:
@@ -282,7 +284,7 @@ Konfigurowanie środowiska `standard` wdrożenie zaktualizowanego mikrousługami
 
 5. Przeprowadź edycję pliku yaml szablonu dla ASA Menedżera usługi zasobnika:
 
-    ```
+    ```yaml
     - name: PCS_TELEMETRY_STORAGE_TYPE
         valueFrom:
         configMapKeyRef:

@@ -1,5 +1,5 @@
 ---
-title: Eksplorator usługi Azure Insights serii czasu w wersji zapoznawczej — wizualizowanie danych w Eksploratorze usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
+title: Wizualizowanie danych w Eksploratorze usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
 description: W tym artykule opisano funkcje i opcje dostępne w aplikacji sieci web Eksploratora usługi Azure czas Series Insights w wersji zapoznawczej.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5372a36291ee13966d497bdae83a6e214dce99b9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d5c18521f39b1b57b5f94a54bb3131e05abba745
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272341"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556649"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Wizualizowanie danych w programie explorer (wersja zapoznawcza)
 
@@ -25,7 +25,7 @@ W tym artykule opisano funkcje i opcje dostępne w wersji zapoznawczej Azure cza
 
 Przed skorzystaniem z Eksploratora usługi Azure czas Series Insights w wersji zapoznawczej, musisz mieć:
 
-* Masz środowisko usługi Time Series Insights Konfigurowanie. Aby uzyskać więcej informacji, zobacz [samouczka: Wersja zapoznawcza usługi Azure Time Series Insights](./time-series-insights-update-create-environment.md).
+* Masz środowisko usługi Time Series Insights Konfigurowanie. Aby uzyskać więcej informacji, zobacz [Samouczek: Wersja zapoznawcza usługi Azure Time Series Insights](./time-series-insights-update-create-environment.md).
 * Zapewnia dostęp do danych do środowiska usługi Time Series Insights, który został utworzony dla konta. Można zapewnić dostęp do innych użytkowników oraz do siebie.
 * Dodawanie źródła zdarzeń do środowiska usługi Time Series Insights w celu wypychania danych do środowiska.
 
@@ -189,7 +189,7 @@ Audytów hierarchii zostanie wyświetlony panel terminów usługi Time Series In
 
 Panel Edytor warunków czasu Series Insights w wersji zapoznawczej przyjmuje następujące parametry:
 
-**Gdzie**: Where — klauzula umożliwia szybkie filtr zdarzeń za pomocą zbiór operandów wymienione w poniższej tabeli. Jeśli wyszukiwania, wybierając operand, predykat jest automatycznie aktualizowana, oparte na tym wyszukiwaniem. Operand obsługiwane typy:
+**Where**: Where — klauzula umożliwia szybkie filtr zdarzeń za pomocą zbiór operandów wymienione w poniższej tabeli. Jeśli wyszukiwania, wybierając operand, predykat jest automatycznie aktualizowana, oparte na tym wyszukiwaniem. Operand obsługiwane typy:
 
 | Operacja | Obsługiwane typy   | Uwagi |
 | --- | --- | --- |

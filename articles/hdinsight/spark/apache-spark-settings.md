@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 127bd965fdce93ae44fbb38a037477174c9cb3fe
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583248"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652239"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurowanie ustawień platformy Apache Spark
 
@@ -33,7 +33,7 @@ Użyj najlepsze wersji platformy Spark dla klastra.  Usługa HDInsight obejmuje 
 Podczas tworzenia nowego klastra, istnieje wiele wersji platformy Spark do wyboru. Aby zapoznać się z pełną listą [HDInsight składniki i wersje](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
 
 
-> [!NOTE]
+> [!NOTE]  
 > Domyślna wersja platformy Apache Spark w usłudze HDInsight mogą ulec zmianie bez powiadomienia. Jeśli masz zależność wersji, firma Microsoft zaleca określić tej konkretnej wersji, podczas tworzenia klastrów za pomocą zestawu SDK platformy .NET, programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure.
 
 Platforma Apache Spark ma trzy lokalizacji konfiguracji systemu:
@@ -76,7 +76,7 @@ Aby wyświetlić i zmienić poszczególne wartości konfiguracji aparatu Spark, 
 
 Jeśli utworzysz zestaw innych niż domyślne wartości konfiguracji, a następnie można także wyświetlić historię aktualizacji konfiguracji.  Ta historia konfiguracji mogą być pomocne konfigurację innych niż domyślne, która ma optymalną wydajność.
 
-> [!NOTE]
+> [!NOTE]  
 > Aby wyświetlić, ale nie jest to zmienić, typowe ustawienia konfiguracji klastra platformy Spark, wybierz **środowiska** kartę na najwyższym poziomie **interfejsu użytkownika zadania Spark** interfejsu.
 
 ## <a name="configuring-spark-executors"></a>Konfigurowanie executors platformy Spark
@@ -89,7 +89,7 @@ Zadań platformy Spark korzystać z zasobów procesu roboczego, szczególnie pam
 
 Są trzy najważniejsze parametry, które często są dostosowywane do dostrajania konfiguracji platformy Spark w celu wymagania aplikacji `spark.executor.instances`, `spark.executor.cores`, i `spark.executor.memory`. Program wykonujący to proces uruchamiany dla aplikacji platformy Spark. Wykonawca działa na węzeł procesu roboczego i jest odpowiedzialny za zadania dla aplikacji. Dla każdego klastra domyślna liczba executors i rozmiary wykonywania jest obliczany na podstawie liczby węzłów procesu roboczego i rozmiar węzła procesu roboczego. Są one przechowywane w `spark-defaults.conf` na głównymi węzłami klastra.  Te wartości w działającego klastra można edytować, wybierając **niestandardowe platformy spark — domyślne** łącze w interfejs webowy Ambari.  Po wprowadzeniu zmian, pojawi się monit przez interfejs użytkownika do **ponowne uruchomienie** wszystkich odpowiednich usług.
 
-> [!NOTE]
+> [!NOTE]  
 > Parametry tych trzech konfiguracji można konfigurować na poziomie klastra (dla wszystkich aplikacji, które działają w klastrze) i również określone dla poszczególnych aplikacji.
 
 Innym źródłem informacji na temat zasoby używane przez Spark Executors jest interfejs użytkownika aplikacji aparatu Spark.  W Interfejsie użytkownika platformy Spark, wybierz **Executors** kartę, aby wyświetlić widoki Podsumowanie i szczegóły konfiguracji i zasobów używanych przez executors.  Widoki te mogą ułatwić określenie, czy chcesz zmienić wartości domyślne dla executors platformy Spark dla całego klastra lub konkretny zestaw Liczba wykonań zadań.
@@ -123,15 +123,15 @@ YARN steruje maksymalną suma pamięci używanych przez kontenery w każdym wę�
 
 Klastry Spark w HDInsight obejmują wiele składników, domyślnie. Każda z tych składników obejmuje domyślnych wartości konfiguracji, które można przesłonić, zgodnie z potrzebami.
 
-* Platforma Spark Core — Spark Core, Spark SQL, Spark, interfejsy API przesyłania strumieniowego, GraphX oraz MLlib
-* Anaconda — Menedżer pakietami języka python
-* [Apache, usługi Livy](https://livy.incubator.apache.org/) -Apache Spark interfejsu API REST, używane do przesyłania zadań zdalne z klastrem usługi HDInsight Spark
-* [Jupyter](https://jupyter.org/) i [Apache Zeppelin](https://zeppelin.apache.org/) notebooki — interakcyjne oparte na przeglądarce interfejsie użytkownika dla interakcji z klastrem Spark
-* Sterownik ODBC — nawiązanie narzędzia analizy biznesowej, takich jak Microsoft Power BI i Tableau klastry Spark w HDInsight
+* Platforma Spark Core — Spark Core, Spark SQL, Spark, interfejsy API przesyłania strumieniowego, GraphX oraz MLlib platformy Spark Apache.
+* Anaconda — Menedżer pakietami języka python.
+* [Apache, usługi Livy](https://livy.incubator.apache.org/) -Apache Spark interfejsu API REST, używane do przesyłania zadań zdalne z klastrem usługi HDInsight Spark.
+* [Jupyter](https://jupyter.org/) i [Apache Zeppelin](https://zeppelin.apache.org/) notebooki — interakcyjne oparte na przeglądarce interfejsie użytkownika dla interakcji z klastrem Spark.
+* Sterownik ODBC — nawiązanie klastry Spark w HDInsight narzędzia analizy biznesowej, takich jak Microsoft Power BI i Tableau.
 
 Aplikacje działające na platformie notesu programu Jupyter, można użyć `%%configure` polecenie, aby konfiguracja zmieni się z w obrębie samego notesu. Te zmiany konfiguracji zostaną zastosowane do zadania Spark są uruchamiane z wystąpienia notesu. Należy wprowadzić takie zmiany na początku aplikacji, przed uruchomieniem swojej pierwszej komórki kodu. Zmiany konfiguracji są stosowane do sesji usługi Livy, gdy zostanie utworzona.
 
-> [!NOTE]
+> [!NOTE]  
 > Aby zmienić konfigurację w terminie późniejszym etapie w aplikacji, użyj `-f` parametru (force). Jednak wszystkie postęp w aplikacji zostaną utracone.
 
 Poniższy kod przedstawia sposób zmiany konfiguracji dla aplikacji działającej w notesie Jupyter.

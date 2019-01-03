@@ -3,17 +3,15 @@ title: Pojęcia serwera w usłudze Azure Database dla serwera MariaDB
 description: Ten temat zawiera zagadnienia i wytyczne dotyczące pracy z usługą Azure Database dla serwerów MariaDB.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4fd2f28f52c45a0ec3128302b02ad5ba498c982b
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: c2497fef359d4a519c6d4927dfc0c38ee3d80d88
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247775"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544570"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Pojęcia serwera w usłudze Azure Database dla serwera MariaDB
 Ten artykuł zawiera zagadnienia i wytyczne dotyczące pracy z usługą Azure Database dla serwerów MariaDB.
@@ -33,7 +31,7 @@ Azure Database dla serwera MariaDB:
 - Określa zakres dla zasad zarządzania, które są stosowane do jego baz danych: logowania, zapory, użytkowników, ról, konfiguracji itp.
 - Jest dostępna w wersji aparatu MariaDB 10.2. Aby uzyskać więcej informacji, zobacz [obsługiwane usługi Azure Database dla wersji bazy danych MariaDB](./concepts-supported-versions.md).
 
-W ramach usługi Azure Database dla serwera MariaDB można utworzyć jeden lub wiele baz danych. Możesz zdecydować się na tworzenie pojedynczej bazy danych na serwer na korzystanie z zasobów lub utworzyć wiele baz danych, współdzielących zasoby. Cennik jest strukturą poszczególnych serwerów, na podstawie konfiguracji ceny warstwy, rdzeni wirtualnych i magazynu (GB). Aby uzyskać więcej informacji, zobacz [warstw cenowych](./concepts-pricing-tiers.md).
+Na serwerze usługi Azure Database for MariaDB można utworzyć jedną lub wiele baz danych. Możesz zdecydować się na tworzenie pojedynczej bazy danych na serwer na korzystanie z zasobów lub utworzyć wiele baz danych, współdzielących zasoby. Cennik jest strukturą poszczególnych serwerów, na podstawie konfiguracji ceny warstwy, rdzeni wirtualnych i magazynu (GB). Aby uzyskać więcej informacji, zobacz [warstw cenowych](./concepts-pricing-tiers.md).
 
 ## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Jak zabezpieczyć usługi Azure Database dla serwera MariaDB?
 

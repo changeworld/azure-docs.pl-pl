@@ -7,17 +7,17 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
-manager: craigg-database
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
+manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 20966958ff4a8a642aa4a994d17163ea68856b51
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: c323c39403f71652632c066a1a9ec464cdf9cfe1
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867531"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601410"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Zarządzanie bazami danych Azure SQL przy użyciu usługi Azure Automation
 
@@ -27,17 +27,17 @@ Ten przewodnik Wprowadzenie do usługi Azure Automation i jak może służyć do
 
 [Usługa Azure Automation](https://azure.microsoft.com/services/automation/) jest usługą platformy Azure dla uproszczenie zarządzania chmurą poprzez automatyzację procesów. Za pomocą usługi Azure Automation, długotrwałych, ręczne, podatne na błędy i często powtarzanych zadań można zautomatyzować zwiększyć niezawodność, wydajność i czasy wykonywania operacji dla Twojej organizacji.
 
-Usługa Azure Automation zapewnia aparat wykonywania przepływu pracy o wysokiej niezawodności i o wysokiej dostępności, który jest skalowany w celu spełnienia konkretnych potrzeb w miarę rozwoju organizacji. W usłudze Azure Automation procesów może być rozpoczęła się ręcznie, przez systemy innych firm 3 lub w zaplanowanych odstępach czasu tak, aby zadania się tak zdarzyć, dokładnie tak, gdy jest to potrzebne.
+Usługa Azure Automation zapewnia aparatu wykonywania przepływów pracy o wysokiej niezawodności i wysokiej dostępności i który jest skalowana w celu spełnienia konkretnych potrzeb w miarę rozwoju organizacji. W usłudze Azure Automation procesów może być rozpoczęła się ręcznie, przez systemy innych firm lub w zaplanowanych odstępach czasu tak, aby zadania się tak zdarzyć, dokładnie tak, gdy jest to potrzebne.
 
 Niższe koszty operacyjne i Zwolnij część IT / pracownicy działu DevOps, aby skupić się na pracy, który dodaje firm wartość przez przeniesienie zadań zarządzania systemem chmury uruchamiana automatycznie przez usługę Azure Automation.
 
 ## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Jak usługi Azure Automation ułatwiają zarządzanie bazami danych Azure SQL?
 
-Usługa Azure SQL Database można zarządzać w usłudze Azure Automation za pomocą [poleceń cmdlet programu PowerShell usługi Azure SQL Database](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) dostępnych w [narzędzia programu Azure PowerShell](/powershell/azure/overview). Usługa Azure Automation obejmuje tych poleceń cmdlet programu PowerShell usługi Azure SQL Database gotowych, tak, aby wykonywać wszystkie zadania zarządzania bazą danych SQL w ramach usługi. Można również skojarzyć tych poleceń cmdlet w usłudze Azure Automation za pomocą poleceń cmdlet dla innych usług platformy Azure do automatyzacji złożonych zadań obejmujących wiele usług platformy Azure i systemami firm 3.
+Usługa Azure SQL Database można zarządzać w usłudze Azure Automation za pomocą [poleceń cmdlet programu PowerShell usługi Azure SQL Database](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) dostępnych w [narzędzia programu Azure PowerShell](/powershell/azure/overview). Usługa Azure Automation obejmuje tych poleceń cmdlet programu PowerShell usługi Azure SQL Database gotowych, tak, aby wykonywać wszystkie zadania zarządzania bazą danych SQL w ramach usługi. Można również skojarzyć tych poleceń cmdlet w usłudze Azure Automation za pomocą poleceń cmdlet dla innych usług platformy Azure w celu zautomatyzowania złożonych zadań, w usługach platformy Azure i systemach innych firm.
 
 Usługa Azure Automation ma również możliwość komunikacji z serwerami SQL bezpośrednio przez wydanie polecenia SQL przy użyciu programu PowerShell.
 
-[Galerii elementów runbook usługi Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) zawiera szereg produktu zespół i społeczności elementy runbook, aby rozpocząć automatyzację zarządzania bazami danych Azure SQL, innych usług platformy Azure i systemami firm 3. Galeria elementów runbook obejmują:
+[Galerii elementów runbook usługi Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) zawiera szereg produktu zespół i społeczności elementy runbook, aby rozpocząć automatyzację zarządzania bazami danych Azure SQL, innych usług platformy Azure i systemach innych firm. Galeria elementów runbook obejmują:
 
 - [Uruchamiać zapytania SQL względem bazy danych programu SQL Server](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
 - [Skalowanie w pionie (górę lub w dół) usługi Azure SQL Database zgodnie z harmonogramem](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
@@ -50,4 +50,4 @@ Teraz, kiedy znasz już podstawy usługi Azure Automation i jak może służyć 
 
 - [Omówienie usługi Azure Automation](../automation/automation-intro.md)
 - [Mój pierwszy element Runbook](../automation/automation-first-runbook-graphical.md)
-- [Usługa Azure Automation: Agenta SQL w chmurze](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
+- [Usługa Azure Automation: Agenta programu SQL w chmurze](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 

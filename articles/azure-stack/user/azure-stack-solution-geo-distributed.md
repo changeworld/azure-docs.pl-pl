@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965397"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714852"
 ---
-# <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie rozwiązania rozproszone geograficznie aplikacji przy użyciu platformy Azure i usługi Azure Stack
+# <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Samouczek: Utwórz rozwiązanie rozproszone geograficznie aplikacji przy użyciu platformy Azure i usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Dowiedz się, jak kierować ruch do określonych punktów końcowych, w oparciu o różne metryki za pomocą wzorca aplikacji rozproszonej geograficznie. Tworzenie usługi Traffic Manager profil przy użyciu konfiguracji routingu i punktu końcowego geograficznego na podstawie gwarantuje, że informacji jest kierowany do punktów końcowych na podstawie wymagań regionalnych, firmowych, jak i międzynarodowej rozporządzenie i potrzeb danych.
 
@@ -59,15 +59,15 @@ Podobnie jak w przypadku zagadnienia dotyczące skalowalności, to rozwiązanie 
 
 Przed kompilacją limit rozmiaru aplikacji rozproszonej, warto dysponują wiedzą na temat do następujących:
 
--   **Domena niestandardowa dla aplikacji:** co to jest nazwa domeny niestandardowej, który użytkownicy będą używać do dostępu do aplikacji? Przykładowa aplikacja niestandardowa nazwa domeny jest *www.scalableasedemo.com.*
+-   **Domeny niestandardowej do aplikacji:** Jaka jest nazwa domeny niestandardowej, który użytkownicy będą używać do dostępu do aplikacji? Przykładowa aplikacja niestandardowa nazwa domeny jest *www.scalableasedemo.com.*
 
--   **Domeny usługi Traffic Manager:** nazwę domeny, należy wybrać podczas tworzenia [profilu usługi Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-manage-profiles). Ta nazwa zostanie połączony z elementem *trafficmanager.net* sufiks Rejestracja zapisu domeny, który jest zarządzany przez usługę Traffic Manager. Przykładowa aplikacja jest wybrana nazwa *pokaz skalowalne środowisko ase*. W rezultacie pełną nazwa domeny, który jest zarządzany przez usługę Traffic Manager jest *demo.trafficmanager.net skalowalne środowisko ase*.
+-   **Domena usługi Traffic Manager:** Nazwa domeny, należy wybrać podczas tworzenia [profilu usługi Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-manage-profiles). Ta nazwa zostanie połączony z elementem *trafficmanager.net* sufiks Rejestracja zapisu domeny, który jest zarządzany przez usługę Traffic Manager. Przykładowa aplikacja jest wybrana nazwa *pokaz skalowalne środowisko ase*. W rezultacie pełną nazwa domeny, który jest zarządzany przez usługę Traffic Manager jest *demo.trafficmanager.net skalowalne środowisko ase*.
 
--   **Strategia skalowania zasięgu aplikacji:** będą śladu aplikacji rozproszone na wielu środowisk App Service Environment w jednym regionie? Wiele regionów? Kombinacja obu metod? Decyzja powinna być oparta na oczekiwania, z której pochodzą ruchu klientów, a także jak można skalować w pozostałej części aplikacji obsługi infrastruktury zaplecza. Na przykład za pomocą aplikacji bezstanowych w 100% aplikacji może być wysoce skalowana na region platformy Azure, pomnożona przez środowisk usługi App Service wdrożone w wielu regionach platformy Azure przy użyciu kombinacji wielu środowisk usługi App Service. Za pomocą 15 + globalnych regionów platformy Azure dostępne do wyboru klienci mogą tworzyć naprawdę zużycie aplikacja ogromnego na całym świecie. Przykładowa aplikacja używana w tym artykule, aby uzyskać trzy środowisk usługi App Service zostały utworzone w jednym regionie platformy Azure (południowo-środkowe stany USA).
+-   **Strategia skalowania zasięgu aplikacji:** Zużycie aplikacji będą rozproszone na wielu środowisk App Service Environment w jednym regionie? Wiele regionów? Kombinacja obu metod? Decyzja powinna być oparta na oczekiwania, z której pochodzą ruchu klientów, a także jak można skalować w pozostałej części aplikacji obsługi infrastruktury zaplecza. Na przykład za pomocą aplikacji bezstanowych w 100% aplikacji może być wysoce skalowana na region platformy Azure, pomnożona przez środowisk usługi App Service wdrożone w wielu regionach platformy Azure przy użyciu kombinacji wielu środowisk usługi App Service. Za pomocą 15 + globalnych regionów platformy Azure dostępne do wyboru klienci mogą tworzyć naprawdę zużycie aplikacja ogromnego na całym świecie. Przykładowa aplikacja używana w tym artykule, aby uzyskać trzy środowisk usługi App Service zostały utworzone w jednym regionie platformy Azure (południowo-środkowe stany USA).
 
--   **Konwencje nazewnictwa dla środowisk usługi App Service:** każde środowisko App Service Environment wymaga unikatowej nazwy. Po przekroczeniu jednego lub dwóch środowisk usługi App Service warto mają konwencję nazewnictwa ułatwiają identyfikację każdego środowiska App Service Environment. Dla przykładowej aplikacji użyto prostych konwencji nazewnictwa. Nazwy trzech środowisk App Service Environment są *fe1ase*, *fe2ase*, i *fe3ase*.
+-   **Konwencje nazewnictwa dla środowisk usługi App Service:** Każdy środowiska App Service Environment wymaga unikatowej nazwy. Po przekroczeniu jednego lub dwóch środowisk usługi App Service warto mają konwencję nazewnictwa ułatwiają identyfikację każdego środowiska App Service Environment. Dla przykładowej aplikacji użyto prostych konwencji nazewnictwa. Nazwy trzech środowisk App Service Environment są *fe1ase*, *fe2ase*, i *fe3ase*.
 
--   **Konwencje nazewnictwa dla aplikacji:** ponieważ wiele wystąpień aplikacji zostanie wdrożony, nazwy jest wymagane dla poszczególnych wystąpień wdrożonej aplikacji. Przy użyciu środowisk usługi App Service można taką samą nazwę aplikacji w wielu środowiskach usługi App Service. Ponieważ każdy środowiska App Service Environment ma sufiks domeny unikatowy, deweloperzy można ponownie użyć dokładnie tej samej nazwy aplikacji w każdym środowisku. Na przykład deweloper może mieć aplikacji o nazwie w następujący sposób: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*itp. Dla aplikacji, w tym scenariuszu każde wystąpienie aplikacji ma unikatową nazwę. Nazwy wystąpienia aplikacji, które są używane są *webfrontend1*, *webfrontend2*, i *webfrontend3*.
+-   **Konwencje nazewnictwa dla aplikacji:** Ponieważ wiele wystąpień aplikacji zostanie wdrożony, nazwy jest wymagane dla poszczególnych wystąpień wdrożonej aplikacji. Przy użyciu środowisk usługi App Service można taką samą nazwę aplikacji w wielu środowiskach usługi App Service. Ponieważ każdy środowiska App Service Environment ma sufiks domeny unikatowy, deweloperzy można ponownie użyć dokładnie tej samej nazwy aplikacji w każdym środowisku. Na przykład deweloper może mieć aplikacji o nazwie w następujący sposób: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*itp. Dla aplikacji, w tym scenariuszu każde wystąpienie aplikacji ma unikatową nazwę. Nazwy wystąpienia aplikacji, które są używane są *webfrontend1*, *webfrontend2*, i *webfrontend3*.
 
 > [!Tip]  
 > ![pillars.png hybrydowe](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
@@ -240,9 +240,9 @@ Usługi Azure DevOps i serwer usługi Azure DevOps oferują wysoce konfigurowaln
 > [!Note]  
 >  Niektóre ustawienia dla zadania mogły być automatycznie zdefiniowane jako [zmienne środowiskowe](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) podczas tworzenia definicji wydania z szablonu. Nie można modyfikować tych ustawień w ustawieniach zadań; Zamiast tego należy wybrać nadrzędny element środowiska, aby edytować te ustawienia.
 
-## <a name="part-2-update-web-app-options"></a>Część 2: Opcje aplikacji sieci web aktualizacji
+## <a name="part-2-update-web-app-options"></a>Część 2: Zaktualizuj Opcje aplikacji sieci web
 
-Usługa [Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. 
+Usługa [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. 
 
 ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image27.png)
 
@@ -255,7 +255,7 @@ Usługa [Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-servic
 > [!Note]  
 >  Użycie rekordu CNAME dla wszystkich niestandardowych nazw DNS z wyjątkiem domeny katalogu głównego (na potrzeby example,northwind.com).
 
-Aby przeprowadzić migrację aktywnej witryny oraz jej nazwy domeny DNS do usługi App Service, zobacz [Migrate an active DNS name to Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-custom-domain-name-migrate) (Migrowanie aktywnej nazwy DNS do usługi Azure App Service).
+Aby przeprowadzić migrację aktywnej witryny oraz jej nazwy domeny DNS do usługi App Service, zobacz [Migrate an active DNS name to Azure App Service](https://docs.microsoft.com/azure/app-service/manage-custom-dns-migrate-domain) (Migrowanie aktywnej nazwy DNS do usługi Azure App Service).
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -276,7 +276,7 @@ Zaktualizuj plik strefy DNS dla domeny. Usługa Azure AD zweryfikuje własności
 Na przykład aby dodać www.northwindcloud.com fornorthwindcloud.comand wpisy DNS, należy skonfigurować ustawienia DNS dla domeny katalogu głównego thenorthwindcloud.com.
 
 > [!Note]  
->  Nazwa domeny można kupować w ramach [witryny Azure portal](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app).  
+>  Nazwa domeny można kupować w ramach [witryny Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).  
 > Aby zamapować niestandardową nazwę DNS na aplikację internetową, dla tej aplikacji internetowej musisz mieć płatną warstwę [planu usługi App Service](https://azure.microsoft.com/pricing/details/app-service/) (**Współdzielona**, **Podstawowa**, **Standardowa** lub  **Premium**).
 
 
@@ -359,7 +359,7 @@ Po dodaniu tego rekordu CNAME, strona rekordów DNS wygląda podobnie jak w poni
 
 Przejdź do nazwy DNS skonfigurowane wcześniej (na przykład `northwindcloud.com`, www.northwindcloud.com.
 
-## <a name="part-3-bind-a-custom-ssl-cert"></a>Część 3: Wiązanie niestandardowego certyfikatu SSL
+## <a name="part-3-bind-a-custom-ssl-cert"></a>Część 3: Powiązania niestandardowego certyfikatu SSL
 
 W tej części:
 

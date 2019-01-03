@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301552"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548599"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Ciągłe wdrażanie dla usługi Azure Functions
 Usługa Azure Functions sprawia, że można łatwo wdrożyć aplikację funkcji przy użyciu ciągłej integracji usługi App Service. Functions można integrować z usług BitBucket, Dropbox, GitHub i DevOps platformy Azure. Dzięki temu przepływu pracy gdzie kod funkcji aktualizacje wprowadzone przy użyciu jednej z tych wdrażanie wyzwalaczy zintegrowanych usług na platformie Azure. Jeśli jesteś nowym użytkownikiem usługi Azure Functions, skorzystaj z [Azure Functions — omówienie](functions-overview.md).
@@ -26,7 +26,7 @@ Ciągłe wdrażanie to doskonałe rozwiązanie dla projektów, w których ma mie
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
 * Repozytorium zewnętrzne (Git lub Mercurial)
-* [Lokalne repozytorium Git](../app-service/app-service-deploy-local-git.md)
+* [Lokalne repozytorium Git](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
 * [Usługi OneDrive](https://onedrive.live.com/)
 * [Usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/)
@@ -52,7 +52,7 @@ Użyj tej procedury, aby skonfigurować ciągłe wdrażanie dla istniejącej apl
  
     ![Konfigurowanie ciągłego wdrażania](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. W **źródło wdrożenia** bloku kliknij **wybierz źródło**, a następnie wypełnij informacje dotyczące źródła wdrożenia wybranej i kliknij przycisk **OK**.
+3. W **źródło wdrożenia** bloku kliknij **wybierz źródło**, a następnie wypełnij informacje dotyczące źródła wdrożenia wybranej i kliknij przycisk **OK**.
    
     ![Wybierz źródło wdrożenia](./media/functions-continuous-deployment/choose-deployment-source.png)
 
@@ -93,12 +93,12 @@ Jeśli masz istniejące funkcje, które zostały utworzone i obsługiwane w port
 > [!NOTE]
 > Po skonfigurowaniu ciągłej integracji, nie będzie można edytować plików źródłowych w portalu usługi Functions.
 
-- [Porady: Konfigurowanie poświadczeń wdrożenia](#credentials)
-- [Porady: pobieranie plików przy użyciu protokołu FTP](#downftp)
-- [Porady: pobieranie plików przy użyciu lokalnego repozytorium Git](#downgit)
+- [Jak: Skonfiguruj poświadczenia wdrożenia](#credentials)
+- [Jak: Pobieranie plików przy użyciu protokołu FTP](#downftp)
+- [Jak: Pobieranie plików przy użyciu lokalnego repozytorium Git](#downgit)
 
 <a name="credentials"></a>
-#### <a name="how-to-configure-deployment-credentials"></a>Porady: Konfigurowanie poświadczeń wdrożenia
+#### <a name="how-to-configure-deployment-credentials"></a>Instrukcje: Skonfiguruj poświadczenia wdrożenia
 Przed pobraniem plików z aplikacji funkcji przy użyciu protokołu FTP i lokalnego repozytorium Git, należy skonfigurować swoje poświadczenia, aby przejść do witryny. Poświadczenia są ustawiane na poziomie aplikacji funkcji. Aby ustawić poświadczenia wdrażania w witrynie Azure portal, wykonaj następujące kroki:
 
 1. W aplikacji funkcji w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **funkcje platformy** i **poświadczenia wdrożenia**.
@@ -108,7 +108,7 @@ Przed pobraniem plików z aplikacji funkcji przy użyciu protokołu FTP i lokaln
 2. Wpisz nazwę użytkownika i hasło, a następnie kliknij przycisk **Zapisz**. Te poświadczenia można teraz używać dostęp do aplikacji funkcji z FTP lub wbudowane repozytorium Git.
 
 <a name="downftp"></a>
-#### <a name="how-to-download-files-using-ftp"></a>Porady: pobieranie plików przy użyciu protokołu FTP
+#### <a name="how-to-download-files-using-ftp"></a>Instrukcje: Pobieranie plików przy użyciu protokołu FTP
 
 1. W aplikacji funkcji w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **funkcje platformy** i **właściwości**, następnie skopiuj wartości pól **użytkownika serwera FTP/wdrożenia**, **Nazwa hosta FTP**, i **nazwa hosta FTPS**.  
 
@@ -119,7 +119,7 @@ Przed pobraniem plików z aplikacji funkcji przy użyciu protokołu FTP i lokaln
 2. Z poziomu klienta FTP należy użyć informacji o połączeniu zebrane do nawiązywania połączeń z aplikacją i pobrania plików źródłowych dla funkcji.
 
 <a name="downgit"></a>
-#### <a name="how-to-download-files-using-a-local-git-repository"></a>Porady: pobieranie plików przy użyciu lokalnego repozytorium Git
+#### <a name="how-to-download-files-using-a-local-git-repository"></a>Instrukcje: Pobieranie plików przy użyciu lokalnego repozytorium Git
 
 1. W aplikacji funkcji w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **funkcje platformy** i **opcje wdrażania**. 
    

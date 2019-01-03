@@ -1,5 +1,5 @@
 ---
-title: Żądania danych klienta w usłudze Azure Time Series Insights — funkcje w usłudze Azure Time Series Insights na żądanie danych klienta | Dokumentacja firmy Microsoft
+title: Dane klienta żądania funkcji w usłudze Azure Time Series Insights | Dokumentacja firmy Microsoft
 description: Podsumowanie funkcji żądania danych klienta usługi Azure Time Series Insights.
 author: ashannon7
 ms.author: anshan
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: c749a61fa26b13ffe67c5913d1a11b6c1f0e186b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 30f6b1fd953f89170a18d56bf0353c643853074e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276064"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558553"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 

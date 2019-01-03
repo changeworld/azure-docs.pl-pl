@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 3/10/2017
+ms.date: 03/10/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 337ee5259e980509c73099f0e3417bb31ec3276d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 67cc955e4a265a2b29893bd0484dd905f4f2c2b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313942"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632437"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacja aspektowa jest mechanizm filtrowania, który zapewnia kierunkowane samodzielnie przez użytkowników Przechodzenie do szczegółów nawigacji w aplikacji do wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak pokazano na poniższym przykładzie, nawigacji aspektowej ma więcej niż kategorii, używana do filtrowania wyników.
@@ -34,7 +34,7 @@ W zakresie opracowywania aplikacji pisanie kodu, który konstruuje zapytania sta
 ## <a name="sample-code-and-demo"></a>Przykładowy kod i wersji demonstracyjnej
 Tym artykule użyto portalu do wyszukiwania zadania jako przykład. Przykład jest implementowany jako aplikację ASP.NET MVC.
 
--   Obejrzeć i przetestować pokaz pracy w [usługi Azure Search zadania Portal Demo](http://azjobsdemo.azurewebsites.net/).
+-   Obejrzeć i przetestować pokaz pracy w [usługi Azure Search zadania Portal Demo](https://azjobsdemo.azurewebsites.net/).
 
 -   Pobierz kod ze [repozytorium przykładów dla platformy Azure w serwisie GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -371,7 +371,7 @@ Można znaleźć przykłady filtrów w [składnia wyrażenia OData (Azure Search
 ## <a name="try-the-demo"></a>Wypróbuj wersję demonstracyjną
 Pokaz portalu Azure wyszukiwania zadania zawiera przykłady przywołanej w niniejszym artykule.
 
--   Obejrzeć i przetestować pokaz pracy w [usługi Azure Search zadania Portal Demo](http://azjobsdemo.azurewebsites.net/).
+-   Obejrzeć i przetestować pokaz pracy w [usługi Azure Search zadania Portal Demo](https://azjobsdemo.azurewebsites.net/).
 
 -   Pobierz kod ze [repozytorium przykładów dla platformy Azure w serwisie GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -396,12 +396,12 @@ Podczas pracy z wyników wyszukiwania, obejrzyj adres URL dla zmian w budowa zap
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-Obejrzyj [szczegółowe dane w usłudze Azure Search](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Na 45:25 istnieje pokaz implementowania aspektami.
+Obejrzyj [szczegółowe dane w usłudze Azure Search](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Na 45:25 istnieje pokaz implementowania aspektami.
 
 Aby uzyskać więcej szczegółowych informacji w zasadach projektowania nawigacji aspektowej zaleca się następujące łącza:
 
 * [Projektowanie pod kątem wyszukiwanie Aspektowe](http://www.uie.com/articles/faceted_search/)
-* [Wzorce projektowe: Nawigacja aspektowa](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [Wzorce projektowe: Nawigacja aspektowa](https://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
@@ -431,7 +431,7 @@ Aby uzyskać więcej szczegółowych informacji w zasadach projektowania nawigac
 
 <!--Link references-->
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/

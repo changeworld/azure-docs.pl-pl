@@ -17,17 +17,17 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51238079"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
 W tym samouczku przedstawiono sposób tworzenia programu SQL Server zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure. Kompletny samouczek tworzy grupy dostępności z repliki bazy danych na dwóch serwerach SQL.
 
-**Szacowany czas**: trwa około 30 minut po spełnieniu wymagań wstępnych.
+**Szacowany czas**: Trwa około 30 minut po spełnieniu wymagań wstępnych.
 
 Na diagramie przedstawiono kompilacji w tym samouczku.
 
@@ -45,7 +45,7 @@ Poniższa tabela zawiera listę wymagań wstępnych, które należy wykonać prz
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Udziału plików monitora klastra |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto usługi programu SQL Server | Konto domeny |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto usługi programu SQL Server Agent | Konto domeny |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otwórz porty zapory | — Program SQL Server: **1433** dla domyślnego wystąpienia <br/> -Końcowego dublowania bazy danych: **5022** lub dowolny dostępny port <br/> — Sonda kondycji adres IP modułu równoważenia Dostępność grupy obciążenia: **59999** lub dowolny dostępny port <br/> -Sonda kondycji adres IP modułu równoważenia cluster core obciążenia: **58888** lub dowolny dostępny port |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otwórz porty zapory | — Program SQL Server: **1433** dla domyślnego wystąpienia <br/> -Końcowego dublowania bazy danych: **5022** lub dowolny dostępny port <br/> — Grupa dostępności obciążenia sonda kondycji adres IP modułu równoważenia: **59999** lub dowolny dostępny port <br/> -Klastra sondy kondycji adres IP modułu równoważenia obciążenia core: **58888** lub dowolny dostępny port |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Dodawanie obsługi klastrów pracy awaryjnej | Oba serwery SQL wymagają tej funkcji |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto domeny instalacji | -Lokalnego administratora na każdego programu SQL Server <br/> -Członkiem programu SQL Server stałej roli serwera sysadmin dla każdego wystąpienia programu SQL Server  |
 
@@ -296,7 +296,7 @@ Teraz można przystąpić do konfigurowania grupy dostępności wykonując nast�
 
     ![Kreatora nowej grupy dostępności, wybierz początkową synchronizację danych](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. W **Wybierz początkową synchronizację danych** wybierz **pełne** i określ udostępnionej lokalizacji sieciowej. W przypadku lokalizacji, użyj [udziału kopii zapasowej, który został utworzony](#backupshare). W przykładzie pochodzi **\\\\\<pierwszego serwera SQL\>\Backup\\**. Kliknij przycisk **Dalej**.
+8. W **Wybierz początkową synchronizację danych** wybierz **pełne** i określ udostępnionej lokalizacji sieciowej. W przypadku lokalizacji, użyj [udziału kopii zapasowej, który został utworzony](#backupshare). W przykładzie pochodzi **\\\\\<pierwszego serwera SQL\>\Backup\**. Kliknij przycisk **Dalej**.
 
    >[!NOTE]
    >Pełna synchronizacja ma pełną kopię zapasową bazy danych w pierwszym wystąpieniu programu SQL Server i przywrócenie go do drugiego wystąpienia. Pełna synchronizacja w przypadku dużych baz danych nie jest zalecane, ponieważ może potrwać dłuższy czas. Teraz można zmniejszyć ręcznie wykonywanie kopii zapasowej bazy danych i przywracanie jej przy użyciu `NO RECOVERY`. Jeśli baza danych jest już przywrócona z `NO RECOVERY` na drugim serwerze SQL przed rozpoczęciem konfigurowania grupy dostępności, wybierz **tylko Dołącz**. Jeśli chcesz wykonać kopię zapasową po skonfigurowaniu grupy dostępności, wybierz polecenie **Pomiń początkową synchronizację danych**.

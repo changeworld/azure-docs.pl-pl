@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 17193bf3285a2052a913293ec3adc6f9b8884f72
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0c171ff768395540c123c4ef2a19168d926b0661
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435951"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633831"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -164,7 +164,7 @@ Do wdrożenia usługi Azure Container Instances, wykonaj następujące kroki:
     > [!TIP]
     > Jeśli występują błędy podczas wdrażania, użyj `service.get_logs()` Aby wyświetlić dzienniki usługi AKS. Zarejestrowane informacje może wskazywać przyczynę błędu.
 
-Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) i [Webservice](https://docs.microsoft.comS/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py) klasy.
+Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) i [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) klasy.
 
 ### <a id="aks"></a> Wdrażanie w usłudze Azure Kubernetes Service
 
@@ -211,6 +211,7 @@ Do wdrożenia usługi Azure Kubernetes Service, wykonaj następujące kroki:
     > Jeśli masz już klaster AKS w subskrypcji platformy Azure i jest wersja 1.11. *, służy do wdrażania obrazu systemu. Poniższy kod przedstawia sposób dołączania do istniejącego klastra do swojego obszaru roboczego:
     >
     > ```python
+    > from azureml.core.compute import AksCompute, ComputeTarget
     > # Set the resource group that contains the AKS cluster and the cluster name
     > resource_group = 'myresourcegroup'
     > cluster_name = 'mycluster'
@@ -218,7 +219,7 @@ Do wdrożenia usługi Azure Kubernetes Service, wykonaj następujące kroki:
     > # Attatch the cluster to your workgroup
     > attach_config = AksCompute.attach_configuration(resource_group = resource_group,
     >                                          cluster_name = cluster_name)
-    > compute = ComputeTarget.attach(ws, 'mycompute', attach_config)
+    > aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
     > 
     > # Wait for the operation to complete
     > aks_target.wait_for_completion(True)
@@ -275,7 +276,7 @@ Należy utworzyć Centrum IoT hub i rejestrowanie urządzenia lub go ponownie u�
 ssh <yourusername>@<yourdeviceip>
 sudo wget https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/createNregister
 sudo chmod +x createNregister
-sudo ./createNregister <The Azure subscriptionID you wnat to use> <Resourcegroup to use or create for the IoT hub> <Azure location to use e.g. eastus2> <the Hub ID you want to use or create> <the device ID you want to create>
+sudo ./createNregister <The Azure subscriptionID you want to use> <Resourcegroup to use or create for the IoT hub> <Azure location to use e.g. eastus2> <the Hub ID you want to use or create> <the device ID you want to create>
 ```
 
 Zapisz wynikowy ciąg połączenia po "cs": "{skopiować te parametry}".
@@ -353,8 +354,8 @@ Alternatywnie, możesz wykonać kroki opisane w [modułów wdrożenia usługi Az
 > [!NOTE]
 > Jeśli jesteś zaznajomiony z usługi Azure IoT, zobacz następujące dokumenty, aby uzyskać informacje na temat rozpoczynania pracy z usługą:
 >
-> * [Szybki Start: Wdrażanie usługi pierwszy moduł usługi IoT Edge na urządzeniu z systemem Linux](../../iot-edge/quickstart-linux.md)
-> * [Szybki Start: Wdrażanie usługi pierwszy moduł usługi IoT Edge na urządzeniu Windows](../../iot-edge/quickstart.md)
+> * [Szybki start: Wdrażanie usługi pierwszy moduł usługi IoT Edge na urządzeniu z systemem Linux](../../iot-edge/quickstart-linux.md)
+> * [Szybki start: Wdrażanie usługi pierwszy moduł usługi IoT Edge na urządzeniu Windows](../../iot-edge/quickstart.md)
 
 
 ## <a name="testing-web-service-deployments"></a>Testowanie wdrożeń usług internetowych

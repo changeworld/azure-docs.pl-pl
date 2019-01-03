@@ -1,20 +1,17 @@
 ---
 title: Biblioteki połączeń dla usługi Azure Database for PostgreSQL
 description: W tym artykule opisano kilka bibliotek i sterowniki, które deweloperzy mogą używać podczas kodowania aplikacji do nawiązywania połączeń i zapytań usługi Azure Database for PostgreSQL.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: edbd3b36e1c40cda3b39c85f3deb4c9e8540fd1b
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0e762a2d7cf82e2957fb276fcea0a20553f719e3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984965"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536019"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Biblioteki połączeń dla usługi Azure Database for PostgreSQL
 Ten artykuł zawiera listę bibliotek i sterowniki, które deweloperzy mogą używać do tworzenia aplikacji, aby nawiązać połączenie i odpytywanie bazy danych Azure database for PostgreSQL.

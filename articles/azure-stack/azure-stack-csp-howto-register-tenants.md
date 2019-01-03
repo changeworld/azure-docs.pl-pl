@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: 6f93a72acdcc249720abeec3fe871b7108e2bb29
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e319c803b610005bc130e9c5d314d23c48c1e9a3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963746"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717195"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Dodawanie dzierżawy za użycie i rozliczenia w usłudze Azure Stack
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 W tym artykule opisano procedurę dodawania użytkownika końcowego do usługi Azure Stack, zarządzane przez dostawcę usług chmury (CSP). Gdy nowa dzierżawa korzysta z zasobów, usługi Azure Stack zgłosi użycie ich subskrypcji dostawcy CSP.
 
@@ -53,7 +53,7 @@ Jeśli odbiorcy końcowego będą zarządzać ich własnego konta, Utwórz użyt
  
 ## <a name="update-the-registration-with-the-end-customer-subscription"></a>Aktualizowanie rejestracji przy użyciu subskrypcji klienta końcowego
 
-Zaktualizuj swoją rejestrację przy użyciu subskrypcji na nowego klienta. Azure raporty użycia przez klientów przy użyciu tożsamości odbiorcy z partnerem Central. Ten krok zapewnia, że raportowania użycia każdego klienta w ramach poszczególnych subskrypcji dostawcy CSP tego klienta. To sprawia, że śledzenie użytkownika użycia i rozliczeń znacznie łatwiejsze.
+Zaktualizuj swoją rejestrację przy użyciu subskrypcji na nowego klienta. Azure raporty użycia przez klientów przy użyciu tożsamości odbiorcy z Centrum partnerskiego. Ten krok zapewnia, że raportowania użycia każdego klienta w ramach poszczególnych subskrypcji dostawcy CSP tego klienta. To sprawia, że śledzenie użytkownika użycia i rozliczeń znacznie łatwiejsze.
 
 > [!Note]  
 > Aby wykonać ten krok, musisz mieć [zarejestrowane w usłudze Azure Stack](azure-stack-register.md).

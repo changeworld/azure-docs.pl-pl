@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 2e8c5b3d9624d3a622f16d770f68bc8614993d36
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 99cca60fe13b9757b3328d00cf66b673c95f66ea
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387486"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558434"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Zgłoś alert i monitorowania fabryki danych przy użyciu usługi Azure Monitor
 Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja stale się i działa w dobrej kondycji. Pomaga również stave potencjalnych problemów lub Rozwiązywanie problemów z przeszłości te. Ponadto można użyć danych monitorowania do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc zwiększyć wydajność aplikacji lub łatwość konserwacji lub Automatyzuj akcje, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -26,12 +26,12 @@ Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie za
 Usługa Azure Monitor zapewnia podstawowy poziom infrastrukturą metryk i dzienników dla większości usług na platformie Microsoft Azure. Aby uzyskać więcej informacji, zobacz [monitorowanie — Przegląd](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Dzienniki diagnostyczne platformy Azure są dzienniki emitowane przez zasób, które zapewniają bogate, często dane o działaniu tego zasobu. Data Factory danych wyjściowych dzienników diagnostycznych w usłudze Azure Monitor.
 
 ## <a name="persist-data-factory-data"></a>Utrwalanie danych fabryki danych
-Fabryka danych przechowuje tylko po danych uruchomieniom 45 dni. Jeśli chcesz zachować uruchomieniom danych przez ponad 45 dni, za pomocą usługi Azure Monitor, można nie tylko skierować dzienniki diagnostyczne na potrzeby analizy, jednak można utrwalić je na konto magazynu pozwala uzyskać informacje o fabryce na czas trwania wybrane.
+Fabryka danych przechowuje tylko po danych uruchomieniom 45 dni. Jeśli chcesz zachować uruchomieniom danych przez ponad 45 dni, przy użyciu usługi Azure Monitor tylko nie można skierować dzienniki diagnostyczne na potrzeby analizy, jednak można utrwalić je na konto magazynu pozwala uzyskać informacje o fabryce na czas trwania wybrane.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
 * Zapisywanie ich **konta magazynu** do wglądu, inspekcji czy ręcznie. Można określić czas przechowywania (w dniach), za pomocą ustawień diagnostycznych.
-* Stream im **usługi Event Hubs** dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
+* Stream im **usługi Event Hubs** dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowe, takie jak Power BI.
 * Analizuj je za pomocą **usługi Log Analytics**
 
 Możesz użyć magazynu konta lub event hub przestrzeni nazw, która nie znajduje się w tej samej subskrypcji co zasób, który jest emitowane dzienniki. Użytkownik, który konfiguruje ustawienie, musi mieć odpowiedni dostęp opartej na rolach (RBAC) dostępu do obu subskrypcji.
@@ -41,9 +41,9 @@ Możesz użyć magazynu konta lub event hub przestrzeni nazw, która nie znajduj
 ### <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 Dzienniki diagnostyczne za zasoby obliczeniowe nie są skonfigurowane za pomocą ustawień diagnostycznych. Ustawienia diagnostyczne dla formantu zasobów:
 
-* Której dzienniki diagnostyczne są wysyłane (konto magazynu, usługa Event Hubs i/lub usługi Log Analytics).
+* Której dzienniki diagnostyczne są wysyłane (konto magazynu, usługa Event Hubs lub usługi Log Analytics).
 * Kategorie dziennika, które są wysyłane.
-* Jak długo każda kategoria dziennika ma być przechowywana na koncie magazynu
+* Jak długo każda kategoria dziennika powinny być przechowywane na koncie magazynu.
 * Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni z zakresu od 1 do 2147483647.
 * Jeśli ustawiono zasady przechowywania, ale przechowywania dzienników na koncie magazynu jest wyłączona (na przykład tylko usługi Event Hubs lub usługi Log Analytics są zaznaczone opcje), zasad przechowywania nie mają wpływu.
 * Zasady przechowywania są stosowane dziennie, aby na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte.
@@ -59,7 +59,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ```
 
 **Nagłówki**
-* Zastąp `{api-version}` z `2016-09-01`.
+* Zastąp element `{api-version}` pytaniem `2016-09-01`.
 * Zastąp `{resource-id}` o identyfikatorze zasobu zasobu, dla którego chcesz edytować ustawienia diagnostyczne. Aby uzyskać więcej informacji [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
 * Ustaw `Content-Type` nagłówka do `application/json`.
 * Ustaw nagłówek autoryzacji na token internetowy JSON, którą można uzyskać z usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [uwierzytelniania żądań](../active-directory/develop/authentication-scenarios.md).
@@ -177,7 +177,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ```
 
 **Nagłówki**
-* Zastąp `{api-version}` z `2016-09-01`.
+* Zastąp element `{api-version}` pytaniem `2016-09-01`.
 * Zastąp `{resource-id}` o identyfikatorze zasobu zasobu, dla którego chcesz edytować ustawienia diagnostyczne. Aby uzyskać więcej informacji na używanie grup zasobów do zarządzania zasobami platformy Azure.
 * Ustaw `Content-Type` nagłówka do `application/json`.
 * Ustaw nagłówek autoryzacji JSON Web Token uzyskany z usługi Azure Active Directory. Aby uzyskać więcej informacji Zobacz uwierzytelnianie żądań.
@@ -465,15 +465,7 @@ Można wizualizować metryki powyżej, Przyjrzyj się zapytania za te metryki, e
 
 ## <a name="alerts"></a>Alerty
 
-Możesz umieszczać alertów dotyczących metryk obsługiwanych w usłudze Data Factory. Kliknij przycisk **alerty** przycisku w fabryce danych **Monitor** strony.
-
-![Opcję alertów](media/monitor-using-azure-monitor/alerts_image1.png)
-
-Spowoduje to przejście do **alerty** strony.
-
-![Strona alertów](media/monitor-using-azure-monitor/alerts_image2.png)
-
-Możesz również zalogować się do witryny Azure portal i kliknij przycisk **Monitor —&gt; alerty** nawiązać **alerty** bezpośrednio.
+Zaloguj się do witryny Azure portal, a następnie kliknij przycisk **Monitor —&gt; alerty** do tworzenia alertów.
 
 ![Alerty w menu portalu](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -509,4 +501,5 @@ Możesz również zalogować się do witryny Azure portal i kliknij przycisk **M
     ![Grupa akcji, ekran 4 z 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz [monitorowanie potoków i zarządzanie nimi programistycznie](monitor-programmatically.md) artykuł, aby dowiedzieć się więcej o monitorowaniu i zarządzaniu potoki, uruchamiając.
+
+Zobacz [monitorowanie potoków i zarządzanie nimi programistycznie](monitor-programmatically.md) artykuł, aby dowiedzieć się więcej o monitorowaniu i zarządzaniu potoków przy użyciu kodu.

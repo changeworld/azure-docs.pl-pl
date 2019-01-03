@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 707112f755e6846622d2fde9de466551276925b8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f5c2f6104a765c0e598e41234891c492686019dd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494371"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718983"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-classic-cli"></a>Usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub wiersza polecenia platformy Azure Classic
 
 Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. W tym dokumencie opisano sposób usuwania klastra przy użyciu [witryny Azure portal](https://portal.azure.com), [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/)oraz klasycznego wiersza polecenia platformy Azure.
 
-> [!IMPORTANT]
-> Usuwanie klastra usługi HDInsight nie powoduje usunięcia konta usługi Azure Storage lub Data Lake Store skojarzonego z klastrem. Można ponownie użyć danych przechowywanych w tych usług w przyszłości.
+> [!IMPORTANT]  
+> Usuwanie klastra usługi HDInsight nie powoduje usunięcia konta usługi Azure Storage lub usługi Data Lake Storage skojarzonego z klastrem. Można ponownie użyć danych przechowywanych w tych usług w przyszłości.
 
 ## <a name="azure-portal"></a>Azure Portal
 

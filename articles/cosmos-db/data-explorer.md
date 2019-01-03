@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: 6e1317084ce60fb8dce64ccd7d1d93fe1ae1d9e9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c1af73d57255b3c74bbab4c69767d1756b24a6da
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140765"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541578"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Zarządzanie danymi za pomocą Eksploratora usługi Azure Cosmos DB 
 
@@ -51,4 +51,4 @@ Obecnie **Otwórz pełny ekran** środowiska, która umożliwia udostępnianie t
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy wiesz jak rozpocząć pracę z Eksploratorem usługi Azure Cosmos DB do zarządzania danymi, następnie możesz wykonywać następujące czynności:
 
-* Rozpoczyna się [zapytania](sql-api-query-reference.md) przy użyciu składni SQL i wykonywanie [programowanie po stronie serwera](programming.md) za pomocą procedury składowane, funkcje zdefiniowane przez użytkownika, wyzwala. 
+* Rozpoczyna się [zapytania](sql-api-query-reference.md) przy użyciu składni SQL i wykonywanie [programowanie po stronie serwera](stored-procedures-triggers-udfs.md) za pomocą procedury składowane, funkcje zdefiniowane przez użytkownika, wyzwala. 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: f6d343d42bf9d918bf23c9f5f442d977a5caca96
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 34177cb2ea1650c4b7130d8c5a2a886655852783
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343721"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555034"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach
 
@@ -416,7 +416,7 @@ public class WorkItem
 
 Domyślny zakres blokady jest `SingletonScope.Function` oznacza zakres blokady (ścieżka obiektu blob dzierżawy) jest powiązana z w pełni kwalifikowana nazwa funkcji. Aby zablokować różnych funkcji, należy określić `SingletonScope.Host` i użyj nazwy Identyfikatora zakresu, która jest taka sama dla wszystkich funkcji, które nie mają być uruchomione jednocześnie. W poniższym przykładzie, tylko jedno wystąpienie `AddItem` lub `RemoveItem` działa w czasie:
 
-```charp
+```csharp
 [Singleton("ItemsLock", SingletonScope.Host)]
 public static void AddItem([QueueTrigger("add-item")] string message)
 {

@@ -2,25 +2,21 @@
 title: Pracy przy użyciu istniejących lokalnych serwerów proxy i usługą Azure AD | Dokumentacja firmy Microsoft
 description: Opisano sposób pracy z istniejących serwerów proxy w środowisku lokalnym.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6409b9313aa9b036e24ea50435659b3653ac01e0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404957"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720105"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Praca z istniejących serwerów proxy w środowisku lokalnym
 
@@ -98,7 +94,7 @@ Aby to zrobić, Edytuj plik C:\Program Files\Microsoft usługi AAD aplikacji ser
 
 Następnie skonfiguruj usługi aktualizator łącznika w celu używania serwera proxy, wprowadzając zmiany podobne do pliku C:\Program Files\Microsoft usługi AAD aplikacji serwera Proxy łącznika Updater\ApplicationProxyConnectorUpdaterService.exe.config.
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Krok 2: Konfigurowanie serwer proxy, aby zezwolić na ruch z łącznika i powiązanych usług przepływ
+### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Krok 2: Skonfiguruj serwer proxy, aby zezwolić na ruch z łącznika i powiązanych usług przepływ
 
 Istnieją cztery aspektów do uwzględnienia w serwera proxy ruchu wychodzącego:
 * Reguły ruchu wychodzącego serwera proxy
@@ -107,15 +103,16 @@ Istnieją cztery aspektów do uwzględnienia w serwera proxy ruchu wychodzącego
 * Inspekcji połączenia SSL
 
 #### <a name="proxy-outbound-rules"></a>Reguły ruchu wychodzącego serwera proxy
-Zezwalaj na dostęp do następujących punktów końcowych, aby uzyskać dostęp do usługi łącznika:
+Zezwól na dostęp do następujących adresów URL:
 
-* *.msappproxy.net
-* *.servicebus.windows.net
+| Adres URL | Zastosowanie |
+| --- | --- |
+| \*.msappproxy.net<br>\*. servicebus.windows.net | Komunikacja między łącznikiem a usługą serwera proxy aplikacji w chmurze |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Platforma Azure używa tych adresów URL do weryfikacji certyfikatów |
+| login.windows.net<br>login.microsoftonline.com | Łącznik używa tych adresów URL podczas procesu rejestracji. |
 
-Wstępnej rejestracji można zezwolić na dostęp do następujących punktów końcowych:
+Jeśli zapora lub serwer proxy umożliwia DNS umieszczania na białej liście, możesz umieścić na liście dozwolonych połączeń z \*. msappproxy.net i \*. servicebus.windows.net. Jeśli nie, musisz zezwolić na dostęp do [zakresów adresów IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653). Zakresy adresów IP są aktualizowane co tydzień.
 
-* login.windows.net
-* login.microsoftonline.com
 
 Jeśli nie można zezwolić na połączenie z w pełni kwalifikowaną nazwę domeny, należy określić zakresy adresów IP zamiast tego należy użyć tych opcji:
 

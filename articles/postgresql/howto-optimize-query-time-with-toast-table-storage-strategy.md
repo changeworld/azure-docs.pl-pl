@@ -3,16 +3,15 @@ title: Optymalizuj czas kwerendy w usłudze Azure Database for PostgreSQL przy u
 description: W tym artykule opisano, jak zoptymalizować czas kwerendy za pomocą strategii przechowywania tabeli wyskakującego powiadomienia w usłudze Azure Database dla serwera PostgreSQL.
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: dee8aaaef4b1998a7234a88d07ad5efbc79d050b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1fb818a65e26f969f72131b0f5265f3efdd36bb6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629129"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542224"
 ---
 # <a name="optimizing-query-time-with-toast-table-storage-strategy"></a>Optymalizacja czas wykonywania zapytania za pomocą strategii przechowywania tabeli WYSKAKUJĄCE 
 W tym artykule opisano, jak zoptymalizować czas zapytania za pomocą strategii przechowywania tabeli wyskakującego powiadomienia.

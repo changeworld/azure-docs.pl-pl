@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3c809638cef89d111a032e5876b1f2f1b2c1eb7b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272868"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602350"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -91,7 +91,7 @@ Problem z parametrem plan poufnych (PSP) odwołuje się do scenariusza, w który
 
 Istnieje kilka obejść zastosować, aby zminimalizować problemy, każdy z nich skojarzone wady i zalety i wady:
 
-- Użyj [ponownie SKOMPILOWAĆ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania na wykonanie każdego zapytania. To obejście zamienia wyskalować czas kompilacji i zwiększonej wyposażony w Procesor o lepszej jakości planu. Za pomocą `RECOMPILE` opcja często nie jest możliwe w przypadku obciążeń wymagających wysokiej przepływności.
+- Użyj [ponownie SKOMPILOWAĆ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania na wykonanie każdego zapytania. To obejście Zamienia czas kompilacji i zwiększonej wyposażony w Procesor o lepszej jakości planu. Za pomocą `RECOMPILE` opcja często nie jest możliwe w przypadku obciążeń wymagających wysokiej przepływności.
 - Użyj [opcji (Optymalizuj pod kątem...) ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania, aby zastąpić wartość rzeczywistego parametru z wartością typowy parametr, który tworzy plan wystarczające dla większości możliwości wartość parametru.   Ta opcja wymaga dobrej znajomości sposobu optymalne parametry i właściwości skojarzonego planu.
 - Użyj [(OPTYMALIZUJ dla nieznany) opcja](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania, aby zastąpić wartość rzeczywistego parametru w zamian za przy użyciu Średnia gęstość wektora. Innym sposobem wykonania tych czynności jest przechwytywanie przychodzących wartości parametrów do zmiennych lokalnych, a następnie używając zmiennych lokalnych w ramach predykaty zamiast przy użyciu parametrów, samodzielnie. Średnia gęstość musi być *wystarczająco dobre* przy użyciu tej określonej poprawki.
 - Wyłączyć wykrywanie parametrów, korzystając wyłącznie z [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania.
@@ -104,7 +104,7 @@ Aby uzyskać dodatkowe informacje na temat rozwiązywania tego rodzaju problemó
 
 - To [powąchać parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) wpis w blogu
 - To [parametru wykrywanie problemów i ich obejść](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/) wpis w blogu
-- To [syna i wykrywanie parametrów myszy](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) wpis w blogu
+- To [syna i wykrywanie parametrów myszy](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) wpis w blogu
 - To [dynamiczny język sql, a plan jakości w zapytaniach parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) wpis w blogu
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Rozwiązywanie problemów z działania kompilacji z powodu nieprawidłowej parametryzacji

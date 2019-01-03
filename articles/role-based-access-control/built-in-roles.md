@@ -15,12 +15,12 @@ ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d6696d9bdd69b085b9c9ac0804da68cd91612f35
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: b2d834c5f9f46f2ebe3c997c75dc50f30ed4bda7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386965"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558927"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
@@ -98,7 +98,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Współautor sieci](#network-contributor) | Umożliwia zarządzanie sieciami, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Nowe Współautor konta usługi Relic APM](#new-relic-apm-account-contributor) | Umożliwia zarządzanie kontami i aplikacjami usługi New Relic Application Performance Management, ale nie umożliwia uzyskiwania dostępu do nich. |
 | [Czytnik i dostęp do danych](#reader-and-data-access) | Pozwala przeglądać wszystko, ale nie będzie można usunąć lub utworzyć konto magazynu lub zawartego zasobu. Będzie również umożliwiać dostępu odczytu i zapisu do wszystkich danych znajdujących się na koncie magazynu za pośrednictwem dostępu do kluczy konta magazynu. |
-| [Pamięć podręczna systemu Azure dla usługi Redis współautora](#redis-cache-contributor) | Umożliwia zarządzanie pamięć podręczna systemu Azure Rediss, ale nie umożliwia uzyskiwania dostępu do nich. |
+| [Pamięć podręczna systemu Azure dla usługi Redis współautora](#redis-cache-contributor) | Umożliwia zarządzanie pamięć podręczna systemu Azure dla usługi Redis, ale nie jest do nich dostęp. |
 | [Współautor zasad zasobów (wersja zapoznawcza)](#resource-policy-contributor-preview) | (Wersja zapoznawcza) Użytkownicy uzupełnieni z umowy EA z prawami do tworzenia/modyfikowania zasad zasobów, tworzenia biletów pomocy technicznej i odczytywania zasobów/hierarchii. |
 | [Współautor kolekcji zadań usługi Scheduler](#scheduler-job-collections-contributor) | Umożliwia zarządzanie kolekcjami zadań usługi Scheduler, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor usługi wyszukiwania](#search-service-contributor) | Umożliwia zarządzanie usługami Search, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -114,7 +114,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
 | [Rola usługi Operator kluczy kont magazynu](#storage-account-key-operator-service-role) | Operatorzy kluczy kont magazynu mogą wyświetlać listę kluczy dla kont magazynu i ponownie je generować |
 | [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
-| [Właściciel danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-owner-preview) | Zezwala na dostęp do odczytu i zapisu oraz w trybie superużytkownika POSIX do kontenerów obiektów blob i danych usługi Azure Storage |
+| [Właściciel danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-owner-preview) | Umożliwia odczytu, zapisu, usuwania i POSIX dostęp administratora do kontenerów obiektów blob usługi Azure Storage i danych |
 | [Czytnik danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-reader-preview) | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
 | [Współautor danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
 | [Czytnik danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-reader-preview) | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
@@ -1289,11 +1289,11 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie pamięć podręczna systemu Azure Rediss, ale nie umożliwia uzyskiwania dostępu do nich. |
+> | **Opis** | Umożliwia zarządzanie pamięć podręczna systemu Azure dla usługi Redis, ale nie jest do nich dostęp. |
 > | **Identyfikator** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
-> | Microsoft.Cache/redis/* | Tworzenie i zarządzanie pamięć podręczna systemu Azure dla Rediss |
+> | Microsoft.Cache/redis/* | Tworzenie i zarządzanie nimi pamięć podręczna systemu Azure dla usługi Redis |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
@@ -1701,7 +1701,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Zezwala na dostęp do odczytu i zapisu oraz w trybie superużytkownika POSIX do kontenerów obiektów blob i danych usługi Azure Storage |
+> | **Opis** | Umożliwia odczytu, zapisu, usuwania i POSIX dostęp administratora do kontenerów obiektów blob usługi Azure Storage i danych |
 > | **Identyfikator** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |

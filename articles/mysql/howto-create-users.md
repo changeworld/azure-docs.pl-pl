@@ -1,38 +1,35 @@
 ---
-title: Tworzenie użytkowników w bazie danych Azure dla serwera MySQL
-description: W tym artykule opisano sposób tworzenia nowych kont użytkowników do interakcji z bazą danych Azure dla serwera MySQL.
-services: mysql
+title: Tworzenie użytkowników w usłudze Azure Database dla serwera MySQL
+description: W tym artykule opisano sposób tworzenia nowych kont użytkowników do interakcji z serwerem Azure Database for MySQL.
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: ee74ea9e114f6401bfcafe44ca3caedfcd0005c5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: e8714777b1f9f08de4d02fcb44c25197cdc48899
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265622"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546015"
 ---
-# <a name="create-users-in-azure-database-for-mysql-server"></a>Tworzenie użytkowników w bazie danych Azure dla serwera MySQL 
-W tym artykule opisano sposób tworzenia użytkowników w bazie danych Azure dla serwera MySQL.
+# <a name="create-users-in-azure-database-for-mysql-server"></a>Tworzenie użytkowników w usłudze Azure Database dla serwera MySQL 
+W tym artykule opisano sposób tworzenia użytkowników w usłudze Azure Database dla serwera MySQL.
 
-Podczas tworzenia bazy danych Azure dla programu MySQL, podać nazwę użytkownika logowania administratora serwera i hasło. Aby uzyskać więcej informacji, możesz wykonać [szybkiego startu](quickstart-create-mysql-server-database-using-azure-portal.md). Można znaleźć nazwy użytkownika logowania administratora serwera z portalu Azure.
+Podczas pierwszego utworzenia usługi Azure Database for MySQL, możesz podać nazwę użytkownika logowania administratora serwera i hasło. Aby uzyskać więcej informacji, możesz wykonać [Szybki Start](quickstart-create-mysql-server-database-using-azure-portal.md). Umożliwia zlokalizowanie Twoja nazwa logowania administratora serwera użytkownika w witrynie Azure portal.
 
-Użytkownik Administrator serwera pobiera określone uprawnienia serwera wymienionych: Wybierz, WSTAWIANIA, aktualizacji, usuwanie, utworzyć, PORZUCIĆ, Załaduj ponownie, proces, odwołania, INDEKSU, ALTER, Pokaż baz danych, tworzenie tabel tymczasowych, tabele blokady, EXECUTE, PODRZĘDNA replikacji, replikacji KLIENTA, UTWORZYĆ WIDOK, POKAŻ WIDOK, TWORZENIE PROCEDURY, ALTER PROCEDURY, WYZWALACZA UŻYTKOWNIKA, ZDARZENIE,
+Użytkownik Administrator serwera pobiera określone uprawnienia dla serwera zgodnie z opisem: WYBIERZ, WSTAWIANIA, AKTUALIZACJI, USUŃ, TWORZYĆ, PORZUCIĆ, ZAŁADUJ PONOWNIE, PRZETWARZAĆ, ODWOŁANIA, INDEX, ALTER, WYŚWIETL BAZY DANYCH, TWORZENIE TABEL TYMCZASOWYCH, ZABLOKOWAĆ TABEL, WYKONANIE, W PRZYPADKU REPLIKACJI, KLIENT REPLIKACJI, TWORZENIE WYŚWIETLIĆ, POKAŻ WIDOK, TWORZENIE PROCEDURY, ALTER PROCEDURY, TWORZENIE UŻYTKOWNIKA , ZDARZENIA WYZWALACZA
 
-Po utworzeniu bazy danych MySQL serwera Azure umożliwia pierwszego konta użytkownika administratora serwera tworzenie dodatkowych użytkowników i udzielanie dostępu administratora do nich. Ponadto konto administratora serwera mogą pozwala utworzyć mniej uprzywilejowanych użytkowników, którzy mają dostęp do schematów poszczególne bazy danych.
+Po utworzeniu serwera Azure Database for MySQL umożliwia pierwszego konta użytkownika administratora serwera tworzenie dodatkowych użytkowników i udzielanie dostępu administratora do nich. Ponadto konta administratora serwera można utworzyć mniej uprzywilejowanych użytkowników, którzy mają dostęp do poszczególnych baz danych, schematów.
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Jak utworzyć dodatkowych administratorów w bazie danych Azure dla programu MySQL
-1. Pobierz nazwę połączenia administrator i informacji użytkownika.
-   Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Łatwo można znaleźć nazwy serwera oraz informacje o rejestracji z serwera **omówienie** strony lub **właściwości** strony w portalu Azure. 
+## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Jak utworzyć użytkowników dodatkowego administratora w usłudze Azure Database for MySQL
+1. Pobierz nazwę użytkownika informacji i administratora połączenia.
+   Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Możesz łatwo odnaleźć nazwę serwera i informacje logowania z serwera **Przegląd** strony lub **właściwości** strony w witrynie Azure portal. 
 
-2. Użyj konta administratora i hasła do łączenia się z serwerem bazy danych. Narzędzie z preferowanego klienta, takich jak MySQL Workbench, mysql.exe, HeidiSQL lub innych użytkowników. 
-   Jeśli nie wiesz, jak połączyć, zobacz [MySQL Workbench używany do nawiązywania połączeń i zapytania na danych](./connect-workbench.md)
+2. Nawiązać połączenia z serwerem bazy danych, należy użyć konta administratora i hasła. Narzędzie Twojego preferowanego klienta, takich jak połączenia aplikacji MySQL Workbench, mysql.exe, HeidiSQL lub inne osoby. 
+   Jeśli masz pewności, jak połączyć, zobacz [użyciu aplikacji MySQL Workbench do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](./connect-workbench.md)
 
-3. Zmodyfikuj i uruchom następujący kod SQL. Zamień na nową nazwę użytkownika, symbol zastępczy wartości `new_master_user`. Ta składnia przyznaje listy uprawnień na wszystkich schematów bazy danych (*.*) do nazwy użytkownika (new_master_user w tym przykładzie). 
+3. Poddaj edycji, a następnie uruchom poniższy kod SQL. Zamień na nową nazwę użytkownika, aby uzyskać wartość symbolu zastępczego `new_master_user`. Ta składnia przyznaje uprawnienia wymienione na schematy bazy danych (*.*) do nazwy użytkownika (new_master_user w tym przykładzie). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -49,17 +46,17 @@ Po utworzeniu bazy danych MySQL serwera Azure umożliwia pierwszego konta użytk
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
-## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Tworzenie użytkowników bazy danych w bazie danych Azure dla programu MySQL
+## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Sposób tworzenia użytkowników bazy danych w usłudze Azure Database for MySQL
 
-1. Pobierz nazwę połączenia administrator i informacji użytkownika.
-   Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Łatwo można znaleźć nazwy serwera oraz informacje o rejestracji z serwera **omówienie** strony lub **właściwości** strony w portalu Azure. 
+1. Pobierz nazwę użytkownika informacji i administratora połączenia.
+   Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Możesz łatwo odnaleźć nazwę serwera i informacje logowania z serwera **Przegląd** strony lub **właściwości** strony w witrynie Azure portal. 
 
-2. Użyj konta administratora i hasła do łączenia się z serwerem bazy danych. Narzędzie z preferowanego klienta, takich jak MySQL Workbench, mysql.exe, HeidiSQL lub innych użytkowników. 
-   Jeśli nie wiesz, jak połączyć, zobacz [MySQL Workbench używany do nawiązywania połączeń i zapytania na danych](./connect-workbench.md)
+2. Nawiązać połączenia z serwerem bazy danych, należy użyć konta administratora i hasła. Narzędzie Twojego preferowanego klienta, takich jak połączenia aplikacji MySQL Workbench, mysql.exe, HeidiSQL lub inne osoby. 
+   Jeśli masz pewności, jak połączyć, zobacz [użyciu aplikacji MySQL Workbench do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](./connect-workbench.md)
 
-3. Zmodyfikuj i uruchom następujący kod SQL. Zastąp wartość symbolu zastępczego `db_user` z zamierzonym nową nazwę użytkownika, a wartość symbolu zastępczego `testdb` nazwą bazy danych.
+3. Poddaj edycji, a następnie uruchom poniższy kod SQL. Zastąp wartość symbolu zastępczego `db_user` z zamierzonym nową nazwę użytkownika i wartość symbolu zastępczego `testdb` własną nazwą bazy danych.
 
-   Ta składnia kodu sql tworzy nową bazę danych o nazwie programu testdb przykładowo. Tworzy nowego użytkownika w usłudze MySQL przyznaje wszystkie uprawnienia do nowego schematu bazy danych, a następnie (programu testdb.\*) dla tego użytkownika. 
+   Ta składnia kodu sql tworzy nową bazę danych o nazwie testdb w celach demonstracyjnych. Następnie tworzy nowego użytkownika w usłudze MySQL i przyznaje wszystkie uprawnienia do nowego schematu bazy danych (testdb.\*) dla tego użytkownika. 
 
    ```sql
    CREATE DATABASE testdb;
@@ -78,13 +75,13 @@ Po utworzeniu bazy danych MySQL serwera Azure umożliwia pierwszego konta użytk
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Zaloguj się do serwera, określając wyznaczonych bazy danych przy użyciu nowej nazwy użytkownika i hasła. Ten przykład przedstawia mysql wiersza polecenia. Z tego polecenia zostanie wyświetlony monit o hasło dla nazwy użytkownika. Zastąp własną nazwę serwera, nazwa bazy danych i nazwa użytkownika.
+5. Zaloguj się do serwera, określając wyznaczonym bazy danych przy użyciu nowej nazwy użytkownika i hasła. Ten przykład przedstawia wiersz polecenia mysql. Za pomocą tego polecenia zostanie wyświetlony monit o hasło dla nazwy użytkownika. Zastąp własną nazwę serwera, nazwę bazy danych i nazwę użytkownika.
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Otwórz zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im nawiązywanie: [tworzenie i zarządzanie nimi Azure bazy danych MySQL reguł zapory przy użyciu portalu Azure](howto-manage-firewall-using-portal.md) lub [interfejsu wiersza polecenia Azure](howto-manage-firewall-using-cli.md).
+Otwierająca zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im na połączenie: [Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu witryny Azure portal](howto-manage-firewall-using-portal.md) lub [wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md).
 
-Aby uzyskać więcej informacji na temat zarządzania kontami użytkowników, zobacz dokumentację produktu MySQL dla [Zarządzanie kontami użytkowników](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [składni GRANT](https://dev.mysql.com/doc/refman/5.7/en/grant.html), i [uprawnienia](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).
+Aby uzyskać więcej informacji na temat zarządzania kontami użytkowników, zapoznaj się z dokumentacją produktu MySQL dla [Zarządzanie kontami użytkowników](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [składni GRANT](https://dev.mysql.com/doc/refman/5.7/en/grant.html), i [uprawnienia](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).

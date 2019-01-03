@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 2f97a2e8ad38bb3c78333cc2c8eedad8f520e68a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036806"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602192"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń Windows
 
@@ -198,7 +198,7 @@ Poniższy film wideo omawia powyższych kroków:<br /><br />
 ## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>Jeśli dane nie są wyświetlane w folderze zdarzenia przesyłane dalej
 Jeśli dane nie są wyświetlane w folderze zdarzenia przesyłane dalej po upływie godziny, wykonaj następujące kroki:
 
-1. Sprawdź, czy komputer, na którym działa usługa Azure Log Integration Upewnij się, że mają dostęp do platformy Azure. Aby przetestować łączność, w przeglądarce, spróbuj przejść do [witryny Azure portal](http://portal.azure.com).
+1. Sprawdź, czy komputer, na którym działa usługa Azure Log Integration Upewnij się, że mają dostęp do platformy Azure. Aby przetestować łączność, w przeglądarce, spróbuj przejść do [witryny Azure portal](https://portal.azure.com).
 2. Upewnij się, że konto użytkownika Azlog ma uprawnienia do zapisu dla users\Azlog folderu.
   1. Otwórz Eksploratora plików.
   2. Przejdź do C:\users.
@@ -243,7 +243,7 @@ Możesz również otworzyć [żądania pomocy technicznej](../azure-supportabili
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat integracji dzienników platformy Azure, zobacz następujące artykuły: przed próbą kroki opisane w tym artykule należy zapoznaj się z artykułem wprowadzenie Get i kroki istnieje.
+Aby dowiedzieć się więcej na temat integracji dzienników platformy Azure, zobacz następujące artykuły: Przed próbą kroki opisane w tym artykule należy zapoznaj się z artykułem wprowadzenie Get i wykonaj kroki istnieje.
 
 * [Usługa Azure Log Integration dzienników platformy Azure](https://www.microsoft.com/download/details.aspx?id=53324). Centrum pobierania zawiera szczegółowe informacje, wymagania systemowe i instrukcje instalacji integracji dzienników Azure.
 * [Wprowadzenie do integracji dziennika Azure](security-azure-log-integration-overview.md). Ten artykuł stanowi wprowadzenie do integracji dzienników platformy Azure, jego kluczowych możliwości i jak to działa.

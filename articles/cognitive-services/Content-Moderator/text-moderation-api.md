@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0948251c18ad8eece974914ee33dff18b5930553
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226572"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535807"
 ---
 # <a name="text-moderation"></a>Moderowanie tekstu
 
@@ -79,7 +79,7 @@ Następujące wyodrębniania w instrukcji extract JSON przedstawiono przykładow
 
 Funkcja dane osobowe wykrywa potencjalne obecności te informacje:
 
-- Email address (Adres e-mail)
+- Adres e-mail
 - Adres wysyłkowy Stanów Zjednoczonych
 - Adres IP
 - Numer telefonu w Stanach Zjednoczonych
@@ -149,7 +149,7 @@ Jeśli poprosisz o Autokorektę, odpowiedź zawiera poprawionej wersji tekst:
 Gdy ustawienie domyślne, globalne listy warunków działa doskonale nadaje się do większości przypadków, możesz chcieć ekranu względem warunki, które są specyficzne dla potrzeb biznesowych. Na przykład można odfiltrować wszelkie konkurencyjne nazw marek z wpisy według użytkowników.
 
 > [!NOTE]
-> Istnieje maksymalny limit wynoszący **Wyświetla 5 termin** z każdej listy **nie może przekraczać 10 000 warunki**.
+> Istnieje maksymalny limit wynoszący **5 list terminów**, a poszczególne listy **nie mogą przekraczać 10 000 terminów**.
 >
 
 Dopasowania Identyfikatora listy można znaleźć w poniższym przykładzie:

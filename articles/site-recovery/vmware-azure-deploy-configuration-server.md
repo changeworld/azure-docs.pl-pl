@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251032"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794358"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -97,7 +97,7 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 
 ### <a name="configure-settings"></a>Konfigurowanie ustawień
 
-1. W kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Konfiguracja łączności**, a następnie wybierz kartę sieciową, której używa serwer przetwarzania do odbierania ruchu związanego z replikacją z maszyn wirtualnych. Następnie wybierz pozycję **Zapisz**. Nie można zmienić to ustawienie, po skonfigurowaniu go.
+1. W kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Konfiguracja łączności**, a następnie wybierz kartę sieciową, której używa serwer przetwarzania do odbierania ruchu związanego z replikacją z maszyn wirtualnych. Następnie wybierz pozycję **Zapisz**. Nie można zmienić to ustawienie, po skonfigurowaniu go. Zdecydowanie zalecane jest aby nie zmieniać adresu IP serwera konfiguracji. Upewnij się, że adres IP przypisane do serwera konfiguracji jest statyczny adres IP i nie IP protokołu DHCP.
 2. W **magazyn usługi Recovery Services zaznacz**, zaloguj się w usłudze Microsoft Azure, wybierz swoją subskrypcję platformy Azure i grupę zasobów i magazyn.
 
     > [!NOTE]
@@ -150,7 +150,11 @@ Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adr
     W **magazyn usług Recovery Services**, **zarządzanie** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**. Na serwerach, wybierz **Pobierz klucz rejestracji** można pobrać pliku poświadczeń magazynu.
 8. Można sklonować istniejący serwer konfiguracji i używać go do organizowania replikacji?
 
-    **Nie**, użycie sklonowany składnik serwera konfiguracji nie jest obsługiwane. 
+    **Nie**, użycie sklonowany składnik serwera konfiguracji nie jest obsługiwane.
+
+9. Czy mogę zmienić adres IP serwera konfiguracji
+
+    **Nie**, zdecydowanie zaleca się nie zmieniać adresu IP serwera konfiguracji. Upewnij się, wszystkie adresy IP przypisane do serwera konfiguracji STATYCZNYCH adresów IP i nie adresy IP protokołu DHCP.
 
 ## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
 

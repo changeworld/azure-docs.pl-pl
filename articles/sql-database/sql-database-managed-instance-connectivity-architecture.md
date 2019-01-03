@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 964f91f412645e141ca003d511480f6f6eb438a3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343308"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536053"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Usługa Azure SQL Database Managed architektura łączności wystąpienia
 
@@ -113,7 +113,10 @@ Wystąpienie zarządzane usługi można wdrażać w dedykowanej podsieci (podsie
 
   > [!Note]
   > Chociaż zasady obowiązkowych zabezpieczeń dla ruchu przychodzącego zezwalającą na ruch z _wszelkie_ źródła na portach 9000, 9003, 1438, 1440, 1452 te porty są chronione przez zaporę wbudowanych. To [artykułu](sql-database-managed-instance-find-management-endpoint-ip-address.md) pokazuje, jak odnaleźć adres IP punktu końcowego zarządzania i sprawdź reguły zapory. 
-
+  
+  > [!Note]
+  > Jeśli używasz replikacji transakcyjnej w wystąpieniu zarządzanym i każdej bazy danych w wystąpieniu zarządzanym usługi jest używany jako wydawca lub dystrybutora, port 445 (ruch wychodzący protokołu TCP) również musi być otwarte w regułach zabezpieczeń dla podsieci w celu uzyskania dostępu do udziału plików platformy Azure.
+  
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać przegląd, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md)

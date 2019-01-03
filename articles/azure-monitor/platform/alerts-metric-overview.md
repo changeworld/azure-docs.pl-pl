@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: cf315718377210e13a6634c0eaf8caab158bcc4d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24d0965fa2a88bc844a81c7430d46c071a9b874b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342225"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580046"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Zrozumienie, jak metryki, alerty pracy w usłudze Azure Monitor
 
@@ -93,7 +93,7 @@ Dla alertów dotyczących metryk zwykle otrzymasz powiadomienie w niecałe 5 min
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Obsługiwane typy zasobów dla alertów dotyczących metryk
 
-Pełną listę obsługiwane typy zasobów można znaleźć w tym [artykułu](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+Pełną listę obsługiwane typy zasobów można znaleźć w tym [artykułu](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i chcesz dowiedzieć się, jeśli alertów dotyczących metryk obsługują wszystkie typy zasobów są używane, w poniższej tabeli przedstawiono zasobu typy obsługiwane przez klasyczny alertów dotyczących metryk i jeśli są one obsługiwane przez alertów dotyczących metryk, już dziś, czy nie.
 
@@ -125,10 +125,10 @@ Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i ch
 |Microsoft.Storage/storageAccounts | Yes|
 |Microsoft.StreamAnalytics/streamingjobs| Yes|
 |Microsoft.TimeSeriesInsights/environments | Yes|
-|Firmy Microsoft. W sieci Web/farm serwerów | Yes |
-|Firmy Microsoft. / Witryn (z wyjątkiem funkcji) | Yes|
-|Firmy Microsoft. HostingEnvironments/Web/multiRolePools | Nie|
-|Firmy Microsoft. HostingEnvironments/Web/workerPools| Nie
+|Microsoft W sieci Web/farm serwerów | Yes |
+|Microsoft / Witryn (z wyjątkiem funkcji) | Yes|
+|Microsoft HostingEnvironments/Web/multiRolePools | Nie|
+|Microsoft HostingEnvironments/Web/workerPools| Nie
 |Microsoft.SQL/Servers | Nie|
 
 ## <a name="next-steps"></a>Kolejne kroki

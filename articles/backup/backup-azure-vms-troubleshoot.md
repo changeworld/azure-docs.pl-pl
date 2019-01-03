@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: b751fe4feab48e6ed706a2e28bba8406f4f4891c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9bbaf23999c04eba5157ebe7dff73ed47418c99a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185702"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634188"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
 Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Backup, podając informacje przedstawione w poniższej tabeli:
@@ -69,11 +69,11 @@ Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Ba
 | Typ konta magazynu określony dla operacji przywracania nie jest w trybie online: <br>Upewnij się, że konto magazynu określone w operacji przywracania jest w trybie online. |Ten błąd może wystąpić z powodu błędu przejściowego w usłudze Azure Storage lub z powodu awarii. Wybierz inne konto magazynu. |
 | Osiągnięto limit przydziału grupy zasobów: <br>Usuń niektóre grupy zasobów w witrynie Azure portal lub skontaktuj się z działem pomocy technicznej systemu Azure w celu zwiększenia limitów. |Brak |
 | Wybrana podsieć nie istnieje: <br>Wybierz podsieć, która istnieje. |Brak |
-| Usługa Kopia zapasowa nie ma autoryzacji do dostępu do zasobów w ramach subskrypcji. |Aby rozwiązać ten problem, najpierw Przywróć dyski wykonując kroki opisane w [przywracanie kopii zapasowych dysków](backup-azure-arm-restore-vms.md#restore-backed-up-disks). Następnie użyj programu PowerShell kroki [tworzenie maszyny Wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) tworzenie pełnej maszyny Wirtualnej z przywróconych dysków. |
+| Usługa Kopia zapasowa nie ma autoryzacji do dostępu do zasobów w ramach subskrypcji. |Aby rozwiązać ten problem, najpierw Przywróć dyski wykonując kroki opisane w [przywracanie kopii zapasowych dysków](backup-azure-arm-restore-vms.md#create-new-restore-disks). Następnie użyj programu PowerShell kroki [tworzenie maszyny Wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
 ## <a name="backup-or-restore-takes-time"></a>Instrukcja BACKUP lub restore wymaga czasu
 Jeśli kopia zapasowa ma więcej niż 12 godzin lub przywracania przyjmuje więcej niż 6 godzin:
-* Zrozumienie [czynniki wpływające na czas wykonywania kopii zapasowych](backup-azure-vms-introduction.md#total-vm-backup-time) i [czynniki wpływające na czas przywracania](backup-azure-vms-introduction.md#total-restore-time).
+* Zrozumienie [czynniki wpływające na czas wykonywania kopii zapasowych](backup-azure-vms-introduction.md#time-considerations) i [czynniki wpływające na czas przywracania](backup-azure-vms-introduction.md#restore-considerations).
 * Upewnij się, że stosujesz [kopii zapasowej najlepszych rozwiązań](backup-azure-vms-introduction.md#best-practices).
 
 ## <a name="vm-agent"></a>Agent maszyny Wirtualnej

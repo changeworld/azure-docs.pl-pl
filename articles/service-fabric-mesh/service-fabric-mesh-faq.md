@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 7103557d19b367be0b9f0aa6f4a4642800c14558
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2f9800deedb2e8d55362920fed2493a42290e764
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314841"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555850"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania usługi Service Fabric siatki
 
@@ -79,7 +79,7 @@ Aby usunąć grupę zasobów, użyj `az group delete <nameOfResourceGroup>` pole
 
 ## <a name="supported-container-os-images"></a>Obrazy obsługiwane kontenerów systemu operacyjnego
 
-Jeśli tworzysz na komputerze aktualizacji Windows Fall Creators Update (wersja 1709), można używać tylko obrazów systemu Windows w wersji 1709 platformy docker platformy docker.
+Jeśli tworzysz na komputerze aktualizacji Windows Fall Creators Update (wersja 1709), można używać tylko obrazy platformy docker systemu Windows w wersji 1709.
 
 Jeśli tworzysz w systemie Windows 10 kwietnia 2018 r. Zaktualizuj maszynę (w wersji 1803), możesz użyć Windows w wersji 1709 lub obrazów platformy docker w wersji 1803 Windows.
 
@@ -101,7 +101,7 @@ Komunikacja usług — może nie działać w pewnych okolicznościach. To jest b
 - Jeśli sama nazwa usługi nie rozwiąże problemu, spróbuj w pełni kwalifikowana nazwa: ServiceName.ApplicationName.
 - W pliku platformy Docker dla usługi, dodać `EXPOSE <port>` w przypadku, gdy jest to port są udostępnianie usługi w. Na przykład:
 
-```
+```DockerFile
 EXPOSE 80
 ```
 

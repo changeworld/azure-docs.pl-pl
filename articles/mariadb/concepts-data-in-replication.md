@@ -3,17 +3,15 @@ title: Replikuj dane do usługi Azure Database dla serwera MariaDB.
 description: W tym artykule opisano danych replikacji dla usługi Azure Database dla serwera MariaDB.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a6bb6ae45c4240f21b1e0baf4956b053d4b98720
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948183"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547613"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikuj dane do usługi Azure Database dla serwera MariaDB
 
@@ -22,8 +20,8 @@ Dane replikacji umożliwia synchronizowanie danych z serwera MariaDB, działają
 ## <a name="when-to-use-data-in-replication"></a>Kiedy należy używać replikacji danych
 Główne scenariusze, warto rozważyć użycie replikacji danych są następujące:
 
-- **Synchronizacja danych hybrydowych:** z replikacją danych, można zachować dane synchronizowane między serwerami lokalnymi i usługi Azure Database dla serwera MariaDB. Wykonanie synchronizacji jest przydatne podczas tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjne, gdy masz istniejącego serwera lokalnej bazy danych, ale chcesz przenieść dane do regionu bliżej użytkowników końcowych.
-- **Synchronizacja wielu chmur:** złożonych rozwiązań w chmurze, użyj replikacji danych w celu synchronizacji danych między Azure Database dla serwera MariaDB i różnych dostawców w chmurze, łącznie z maszynami wirtualnymi i usługami bazy danych hostowanej w tych chmurach.
+- **Synchronizacja danych hybrydowych:** Za pomocą replikacji danych możesz przechowywać dane synchronizowane między serwerami lokalnymi i usługi Azure Database dla serwera MariaDB. Wykonanie synchronizacji jest przydatne podczas tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjne, gdy masz istniejącego serwera lokalnej bazy danych, ale chcesz przenieść dane do regionu bliżej użytkowników końcowych.
+- **Synchronizacja wielu chmur:** Złożonych rozwiązań w chmurze umożliwia synchronizowanie danych między Azure Database dla serwera MariaDB i różnych dostawców w chmurze, łącznie z maszynami wirtualnymi i usługami bazy danych hostowanej w tych chmurach replikacji danych.
 
 ## <a name="limitations-and-considerations"></a>Ograniczenia i zagadnienia
 

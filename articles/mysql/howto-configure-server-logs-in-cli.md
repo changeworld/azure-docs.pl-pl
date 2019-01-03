@@ -1,21 +1,18 @@
 ---
 title: Dzienniki serwera dostępu w usłudze Azure Database for MySQL przy użyciu wiersza polecenia platformy Azure
 description: W tym artykule opisano sposób dostępu do dzienników serwera w usłudze Azure Database for MySQL za pomocą narzędzia wiersza polecenia wiersza polecenia platformy Azure.
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: e3940f07ab97eb2ad03c347c39bf2412a8497f5e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 207e9965f6600477e1df93845bc41bd33b5c028c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978458"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547035"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników serwera przy użyciu wiersza polecenia platformy Azure
 Azure Database for MySQL, dzienniki serwera można pobrać przy użyciu wiersza polecenia platformy Azure, narzędzie wiersza polecenia platformy Azure.
@@ -28,7 +25,7 @@ Do wykonania kroków w tym przewodniku, potrzebne są:
 ## <a name="configure-logging-for-azure-database-for-mysql"></a>Konfigurowanie rejestrowania dla usługi Azure Database for MySQL
 Można skonfigurować serwer do dostępu do dzienników wolnych zapytań MySQL, wykonując następujące czynności:
 1. Włącz rejestrowanie, ustawiając **powolne\_zapytania\_dziennika** parametru na wartość ON.
-2. Dostosuj inne parametry, takie jak **długie\_zapytania\_czasu** i **dziennika\_powolne\_administratora\_instrukcji**.
+2. Dostosuj inne parametry, takie jak **długie\_zapytania\_czasu** i **dziennika\_powolne\_administratora\_instrukcji**.
 
 Aby dowiedzieć się, jak można ustawić wartości tych parametrów, za pomocą wiersza polecenia platformy Azure, zobacz [jak konfigurować parametry serwera](howto-configure-server-parameters-using-cli.md). 
 

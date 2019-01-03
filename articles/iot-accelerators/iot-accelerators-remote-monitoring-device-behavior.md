@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 70f9ccbbe737bad4d6f88365e804d4421c418d28
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: edd5da35d33aa7e79fc3e972f3ea1cfe2ef40973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164011"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631417"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementowanie zachowania modelu urządzenia
 
@@ -21,6 +21,9 @@ Artykuł [zrozumieć schematu modelu urządzenia](iot-accelerators-remote-monito
 
 - **Stan** pliki JavaScript, uruchamianą w ustalonych odstępach czasu, aby zaktualizować stan wewnętrzny urządzenia.
 - **Metoda** pliki JavaScript, który uruchamiany, gdy rozwiązanie wywołuje metodę na urządzeniu.
+
+> [!NOTE]
+> Zachowania modelu urządzenia są przeznaczone tylko dla symulowanych urządzeń hostowanej w usłudze symulacji urządzenia. Jeśli chcesz utworzyć urządzenie fizyczne, zobacz [Podłączanie urządzenia do akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices.md).
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 

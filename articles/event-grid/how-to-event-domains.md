@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.openlocfilehash: ad23599d1df5d07e912f634435f8b44b441d87e6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 12/17/2018
+ms.openlocfilehash: 08faef2eaf5c9cd09172d455c464531e293d5f3e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298536"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554592"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Zarządzaj tematami i publikowania zdarzeń za pomocą zdarzeń domeny
 
@@ -25,7 +25,7 @@ W tym artykule przedstawiono sposób:
 
 Aby dowiedzieć się więcej na temat domen zdarzeń, zobacz [zrozumieć domen zdarzeń związanych z zarządzaniem tematy usługi Event Grid](event-domains.md).
 
-## <a name="install-preview-feature"></a>Zainstaluj funkcję w wersji zapoznawczej
+## <a name="install-preview-feature"></a>Instalowanie funkcji w wersji zapoznawczej
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -139,7 +139,7 @@ Uprawnienia ustawione dla tematu są przechowywane w usłudze Azure Active Direc
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Publikowanie zdarzeń do domeny usługi Event Grid
 
-Publikowania zdarzeń w domenie jest taka sama jak [publikowania do tematu niestandardowego](./post-to-custom-topic.md). Jedyna różnica polega na tym, czy należy określić temat, który chcesz, aby każde zdarzenie, aby przejść do. Następującą tablicę zdarzenia mogłoby spowodować zdarzenie z `"id": "1111"` do tematu `foo` podczas zdarzenia o `"id": "2222"` będą wysyłane do tematu `bar`:
+Publikowania zdarzeń w domenie jest taka sama jak [publikowania do tematu niestandardowego](./post-to-custom-topic.md). Jednak zamiast publikowania do tematu niestandardowego, możesz opublikować wszystkie zdarzenia do punktu końcowego domeny. W formacie JSON dane zdarzenia należy określić temat, który chcesz zdarzeń, aby przejść do. Następującą tablicę zdarzenia mogłoby spowodować zdarzenie z `"id": "1111"` do tematu `demotopic1` podczas zdarzenia o `"id": "2222"` będą wysyłane do tematu `demotopic2`:
 
 ```json
 [{
@@ -168,7 +168,15 @@ Publikowania zdarzeń w domenie jest taka sama jak [publikowania do tematu niest
 }]
 ```
 
-Aby pobrać klucze służące do domeny przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby uzyskać punkt końcowy domeny przy użyciu wiersza polecenia platformy Azure, użyj
+
+```azurecli-interactive
+az eventgrid domain show \
+  -g <my-resource-group> \
+  -n <my-domain>
+```
+
+Aby pobrać klucze służące do domeny, należy użyć:
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -176,7 +184,15 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-W przypadku programu PowerShell użyj polecenia:
+Aby uzyskać punkt końcowy domeny przy użyciu programu PowerShell, użyj
+
+```azurepowershell-interactive
+Get-AzureRmEventGridDomain `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain>
+```
+
+Aby pobrać klucze służące do domeny, należy użyć:
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomainKey `

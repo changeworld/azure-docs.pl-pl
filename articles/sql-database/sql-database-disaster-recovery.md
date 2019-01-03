@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: ba462d1c04f9a45932716fe07cbf1b7298d13cdb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 889f8f597b0b744ea5fe6ef2f5c82f2d09629607
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268670"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605215"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie bazy danych SQL Azure lub trybu failover do dodatkowej
 
@@ -90,7 +90,7 @@ Aby uzyskać więcej informacji na temat zmiany parametrów połączenia, zobacz
 
 ### <a name="configure-firewall-rules"></a>Konfigurowanie reguł zapory
 
-Należy się upewnić, że reguły zapory skonfigurowane na serwerze i w bazie danych są zgodne te, które zostały skonfigurowane na serwerze podstawowym i podstawowej bazy danych. Aby uzyskać więcej informacji, zobacz [jak: Konfigurowanie ustawień zapory (usługa Azure SQL Database)](sql-database-configure-firewall-settings.md).
+Należy się upewnić, że reguły zapory skonfigurowane na serwerze i w bazie danych są zgodne te, które zostały skonfigurowane na serwerze podstawowym i podstawowej bazy danych. Aby uzyskać więcej informacji, zobacz [Instrukcje: Konfigurowanie ustawień zapory (usługa Azure SQL Database)](sql-database-configure-firewall-settings.md).
 
 ### <a name="configure-logins-and-database-users"></a>Konfigurowanie logowania i użytkowników bazy danych
 

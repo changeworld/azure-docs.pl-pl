@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c6d5954ed3547666236130753dfd53d10475df43
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 09696c606fdf57f5ac55fc50eb06c2c5eea55dfe
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308992"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555255"
 ---
 # <a name="view-service-fabric-health-reports"></a>Wyświetlanie raportów o kondycji usługi Service Fabric
 Usługa Azure Service Fabric wprowadza [modelu kondycji](service-fabric-health-introduction.md) przy użyciu jednostek kondycji, na którym składników systemu i watchdogs można raportu lokalnego warunki, które są monitorowania. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) agreguje wszystkie dane kondycji, aby określić, czy jednostki są w dobrej kondycji.
@@ -46,7 +46,7 @@ Aby zademonstrować tych opcji, Użyjmy lokalny klaster z pięcioma węzłami i 
 Narzędzie Service Fabric Explorer zawiera widok graficzny klastra. Na poniższej ilustracji widać:
 
 * Aplikacja **Service fabric: / WordCount** jest czerwony (w wyniku błędu), ponieważ ma ona zdarzenie błędu zgłoszony przez **MyWatchdog** właściwości **dostępności**.
-* Jeden z jego usług **Service fabric: / WordCount/usługi wordcountservice uległa** żółte (w ostrzeżenie). Usługa jest skonfigurowana z siedmiu replikami, i klaster ma pięć węzłów, więc nie może znajdować się dwa repicas. Mimo że nie został tutaj pokazany, partycji usługi jest żółty, ze względu na raportu systemu z `System.FM` informacją, że `Partition is below target replica or instance count`. Żółty partycji wyzwala żółty usługi.
+* Jeden z jego usług **Service fabric: / WordCount/usługi wordcountservice uległa** żółte (w ostrzeżenie). Usługa jest skonfigurowana z siedmiu replikami, i klaster ma pięć węzłów, więc nie może znajdować się dwie repliki. Mimo że nie został tutaj pokazany, partycji usługi jest żółty, ze względu na raportu systemu z `System.FM` informacją, że `Partition is below target replica or instance count`. Żółty partycji wyzwala żółty usługi.
 * Klaster jest czerwony ze względu na czerwony aplikacji.
 
 Ocena używa domyślnych zasad w manifeście klastra i manifest aplikacji. Są surowymi zasadami i nie ma znaczenia jakiekolwiek niepowodzenie.
@@ -464,7 +464,7 @@ Aby uzyskać kondycję usługi przy użyciu interfejsu API, należy utworzyć `F
 
 Poniższy przykład pobiera kondycję usługi przy użyciu określonej nazwy usługi (URI):
 
-```charp
+```csharp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
@@ -1030,27 +1030,27 @@ Jeśli ogólne kwerend zwraca Nieznana kondycja jednostki, istnieje możliwość
 
 Zapytania, które zawierają **HealthState** dla jednostki są:
 
-* Lista węzłów: zwraca listę węzłów w klastrze (stronicowanej).
-  * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
-  * PowerShell: Get-ServiceFabricNode
-* Lista aplikacji: zwraca listę wszystkich aplikacji w klastrze (stronicowanej).
-  * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
-  * PowerShell: Get-ServiceFabricApplication
-* Lista usług: zwraca listę wszystkich usług w aplikacji (stronicowanej).
-  * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
-  * PowerShell: Get-ServiceFabricService
-* Lista partycji: zwraca listę wszystkich partycji w usłudze (stronicowanej).
-  * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
-  * PowerShell: Get-ServiceFabricPartition
-* Listy replik: zwraca listę wszystkich replik w partycji (stronicowanej).
-  * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
-  * PowerShell: Get-ServiceFabricReplica
-* Wdrożone listy aplikacji: zwraca listę wszystkich wdrożonych aplikacji w węźle.
-  * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
-  * PowerShell: Get-ServiceFabricDeployedApplication
-* Wdrożone listy pakietów usługi: zwraca listę wszystkich pakietów usługi we wdrożonej aplikacji.
-  * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
-  * PowerShell: Get-ServiceFabricDeployedApplication
+* Lista węzłów: Zwraca listę węzłów w klastrze (stronicowanej).
+  * INTERFEJS API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+  * Program PowerShell: Get-ServiceFabricNode
+* Lista aplikacji: Zwraca listę wszystkich aplikacji w klastrze (stronicowanej).
+  * INTERFEJS API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+  * Program PowerShell: Get-ServiceFabricApplication
+* Lista usług: Zwraca listę usług w aplikacji (stronicowanej).
+  * INTERFEJS API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+  * Program PowerShell: Get-ServiceFabricService
+* Lista partycji: Zwraca listę wszystkich partycji w usłudze (stronicowanej).
+  * INTERFEJS API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
+  * Program PowerShell: Get-ServiceFabricPartition
+* Lista repliki: Zwraca listę replik partycji (stronicowanej).
+  * INTERFEJS API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+  * Program PowerShell: Get-ServiceFabricReplica
+* Lista wdrożonej aplikacji: Zwraca listę wszystkich wdrożonych aplikacji w węźle.
+  * INTERFEJS API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
+  * Program PowerShell: Get-ServiceFabricDeployedApplication
+* Lista pakietów wdrożonej usługi: Zwraca listę wszystkich pakietów usługi we wdrożonej aplikacji.
+  * INTERFEJS API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
+  * Program PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
 > Niektóre z zapytań zwracają stronicowane wyniki. Zwracany te zapytania jest lista pochodzi od [PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Jeśli wyniki nie odpowiadają na wiadomości, zwracany jest tylko strony i ContinuationToken śledzi którym wyliczenie jest zatrzymana. W dalszym ciągu wywołanie tego samego zapytania i przekazać token kontynuacji z poprzedniej kwerendy w celu uzyskania wyników dalej.

@@ -1,21 +1,18 @@
 ---
 title: Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu wiersza polecenia platformy Azure
 description: W tym artykule opisano sposób tworzenia i zarządzania usługi Azure Database dla MySQL reguł zapory przy użyciu wiersza polecenia platformy Azure jest wiersza polecenia.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 6ece07d2be605f51e08274649f3ea15e3bbba472
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e4aabaf2673f6211523653f9d0a0ecf1769f83a3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134900"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549007"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu wiersza polecenia platformy Azure
 Reguły zapory na poziomie serwera umożliwiają administratorom zarządzanie dostępem do usługi Azure Database dla serwera MySQL z określonego adresu IP lub zakres adresów IP. Przy użyciu wygodne poleceń interfejsu wiersza polecenia platformy Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory, aby zarządzać serwerem. Aby uzyskać omówienie — Azure Database dla MySQL zapór, zobacz [— Azure Database for reguły zapory serwera MySQL](./concepts-firewall-rules.md)
@@ -28,11 +25,11 @@ Reguły zapory na poziomie serwera umożliwiają administratorom zarządzanie do
 **Az mysql server-reguły zapory** polecenia jest używany z wiersza polecenia platformy Azure do tworzenie, usuwanie, listy, wyświetlanie i aktualizowanie reguł zapory.
 
 Polecenia:
-- **Utwórz**: Tworzenie reguły zapory serwera MySQL na platformie Azure.
+- **Utwórz**: Utwórz regułę zapory serwera MySQL na platformie Azure.
 - **Usuń**: Usuń regułę zapory serwera MySQL na platformie Azure.
-- **Lista**: lista reguł zapory serwera MySQL na platformie Azure.
-- **Pokaż**: wyświetlenie szczegółów dotyczących serwera usługi Azure MySQL reguły zapory.
-- **Aktualizuj**: aktualizowanie reguły zapory serwera MySQL na platformie Azure.
+- **Lista**: Lista reguł zapory serwera MySQL na platformie Azure.
+- **Pokaż**: Wyświetlenie szczegółów dotyczących serwera usługi Azure MySQL reguły zapory.
+- **Aktualizacja**: Aktualizuj reguły zapory serwera MySQL na platformie Azure.
 
 ## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Logowanie do platformy Azure i wyświetlać listę usługi Azure Database dla serwerów MySQL
 Bezpiecznie łączyć z wiersza polecenia platformy Azure przy użyciu konta platformy Azure przy użyciu **az login** polecenia.

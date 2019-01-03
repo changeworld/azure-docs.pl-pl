@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: e435baf4a5e3382e3e77195e5315299e3963ff5c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409262"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725035"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu SDK środowiska Node.js w aplikacji mobilnej
 
@@ -153,14 +153,14 @@ Podczas tworzenia zaplecza funkcji Mobile Apps Node.js za pomocą aplikacji port
 W poniższej procedurze użyto repozytorium Git do pobierania kodu projektu Szybki Start:
 
 1. Instalowanie programu Git, jeśli jeszcze tego nie zrobiłeś. Kroki wymagane do zainstalowania usługi Git różnią się między systemami operacyjnymi. Dla konkretnych systemów operacyjnych dystrybucji i wskazówki dotyczące instalacji, zobacz [instalacji usługi Git](https://git-scm.com/book/en/Getting-Started-Installing-Git).
-1. Zobacz [przygotowanie repozytorium](../app-service/app-service-deploy-local-git.md#prepare-your-repository) włączyć repozytorium Git dla danej witryny zaplecza. Zanotuj nazwę wdrożenia użytkownika i hasło.
-1. W okienku dla zaplecza usługi Mobile Apps Zanotuj **adres URL klonowania Git** ustawienie.
-1. Wykonaj `git clone` polecenia przy użyciu adresu URL klonowania Git. Wprowadź swoje hasło, gdy jest to wymagane, jak w poniższym przykładzie:
+2. Zobacz [przygotowanie repozytorium](../app-service/deploy-local-git.md#prepare-your-repository) włączyć repozytorium Git dla danej witryny zaplecza. Zanotuj nazwę wdrożenia użytkownika i hasło.
+3. W okienku dla zaplecza usługi Mobile Apps Zanotuj **adres URL klonowania Git** ustawienie.
+4. Wykonaj `git clone` polecenia przy użyciu adresu URL klonowania Git. Wprowadź swoje hasło, gdy jest to wymagane, jak w poniższym przykładzie:
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-1. Przejdź do katalogu lokalnego (`/todolist` w powyższym przykładzie) i zwróć uwagę, że pliki projektu zostały pobrane. Zlokalizuj plik todoitem.json w `/tables` katalogu. Ten plik definiuje uprawnienia w tabeli. Ponadto można znaleźć pliku todoitem.js, w tym samym katalogu. Definiuje skrypty operacji CRUD dla tabeli.
-1. Po wprowadzeniu zmian w plikach projektu, uruchom następujące polecenia, aby dodać, Przekaż, a następnie przekazać zmiany do witryny:
+5. Przejdź do katalogu lokalnego (`/todolist` w powyższym przykładzie) i zwróć uwagę, że pliki projektu zostały pobrane. Zlokalizuj plik todoitem.json w `/tables` katalogu. Ten plik definiuje uprawnienia w tabeli. Ponadto można znaleźć pliku todoitem.js, w tym samym katalogu. Definiuje skrypty operacji CRUD dla tabeli.
+6. Po wprowadzeniu zmian w plikach projektu, uruchom następujące polecenia, aby dodać, Przekaż, a następnie przekazać zmiany do witryny:
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -968,10 +968,10 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 [Konfigurowanie uwierzytelniania serwisu Google]: ../app-service/configure-authentication-provider-google.md
 [Konfigurowanie uwierzytelniania firmy Microsoft]: ../app-service/configure-authentication-provider-microsoft.md
 [Konfigurowanie uwierzytelniania usługi Twitter]: ../app-service/configure-authentication-provider-twitter.md
-[Podręcznik wdrażania usługi Azure App Service]: ../app-service/app-service-deploy-local-git.md
+[Podręcznik wdrażania usługi Azure App Service]: ../app-service/deploy-local-git.md
 [Monitorowanie usługi Azure App Service]: ../app-service/web-sites-monitor.md
-[Włącz rejestrowanie diagnostyczne w usłudze Azure App Service]: ../app-service/web-sites-enable-diagnostic-log.md
-[Rozwiązywanie problemów z usługi Azure App Service w programie Visual Studio]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
+[Włącz rejestrowanie diagnostyczne w usłudze Azure App Service]: ../app-service/troubleshoot-diagnostic-logs.md
+[Rozwiązywanie problemów z usługi Azure App Service w programie Visual Studio]: ../app-service/troubleshoot-dotnet-visual-studio.md
 [Określ wersję węzła]: ../nodejs-specify-node-version-azure-apps.md
 [Użyj moduły node.js]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/

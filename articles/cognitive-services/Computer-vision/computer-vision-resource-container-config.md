@@ -1,24 +1,24 @@
 ---
-title: Konfigurowanie kontenerów
-titlesuffix: Computer Vision - Azure Cognitive Services
-description: Ustawienia konfiguracji dla kontenerów w przetwarzania obrazów.
+title: Konfigurowanie containers — przetwarzanie obrazów
+titlesuffix: Azure Cognitive Services
+description: Skonfigurować różne ustawienia dla kontenerów rozpoznawanie tekstu w wizualizacji komputerowej.
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: f71cbe965e70dfce1b29cf0e5f9ea44faf0a4e27
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077022"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579791"
 ---
-# <a name="configure-containers"></a>Konfigurowanie kontenerów
+# <a name="configure-recognize-text-containers"></a>Skonfiguruj rozpoznawanie tekstu kontenerów
 
 Przetwarzanie obrazów dostarcza kontener rozpoznawanie tekstu za pomocą wspólną platformę konfiguracji, można łatwo skonfigurować i zarządzać ustawieniami magazynu, rejestrowania i danych telemetrycznych i zabezpieczeń dla kontenerów.
 
@@ -41,7 +41,7 @@ Wartości zmiennych środowiskowych zastępują wartości argumentów wiersza po
 
 ### <a name="configuration-settings-as-environment-variables"></a>Ustawienia konfiguracji jako zmienne środowiskowe
 
-Możesz użyć [składni zmiennych środowiskowych platformy ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment) określenie ustawień konfiguracyjnych.
+Możesz użyć [składni zmiennych środowiskowych platformy ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#environment-variables-configuration-provider) określenie ustawień konfiguracyjnych.
 
 Kontener odczytuje zmienne środowiskowe użytkownika podczas tworzenia wystąpienia kontenera. Jeśli zmienna środowiskowa istnieje, wartość zmiennej środowiskowej przesłania wartość domyślną ustawienia określonej konfiguracji. Zaletą używania zmiennych środowiskowych jest, że wiele ustawień konfiguracji można ustawić przed utworzeniem wystąpienia kontenerów, a wiele kontenerów może automatycznie używać tego samego zestawu ustawień konfiguracji.
 
@@ -130,10 +130,10 @@ W poniższej tabeli opisano ustawienia konfiguracji objęte `Fluentd` sekcji.
 
   | Name (Nazwa) | Typ danych | Opis |
   |------|-----------|-------------|
-  | `Format` | Ciąg | Format danych wyjściowych dla plików dziennika.<br/> **Uwaga:** ta wartość musi być równa `json` do włączenia rejestrowania dostawcy usług. Jeśli ta wartość jest określona bez jednoczesnego określenia dane wyjściowe instalacji podczas tworzenia wystąpienia kontenera, wystąpi błąd. |
+  | `Format` | Ciąg | Format danych wyjściowych dla plików dziennika.<br/> **Uwaga:** Ta wartość musi być równa `json` do włączenia rejestrowania dostawcy usług. Jeśli ta wartość jest określona bez jednoczesnego określenia dane wyjściowe instalacji podczas tworzenia wystąpienia kontenera, wystąpi błąd. |
   | `MaxFileSize` | Liczba całkowita | Maksymalny rozmiar w megabajtach (MB), plik dziennika. Gdy rozmiar bieżącego pliku dziennika, spełnia lub przekracza tę wartość, nowy plik dziennika został uruchomiony przez dostawcę rejestrowania. Jeśli określono wartość -1, rozmiar pliku dziennika jest ograniczona tylko przez maksymalny rozmiar pliku, ewentualne instalacji danych wyjściowych. Wartość domyślna to 1. |
 
-Aby uzyskać więcej informacji na temat konfigurowania obsługi rejestrowania platformy ASP.NET Core, zobacz [ustawień pliku konfiguracji](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
+Aby uzyskać więcej informacji na temat konfigurowania obsługi rejestrowania platformy ASP.NET Core, zobacz [rejestrowania w programie ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#configuration).
 
 ## <a name="mounts-configuration-settings"></a>Instaluje ustawień konfiguracji
 

@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 417f542bcf1711b2ac8e986663353e29a3705fb3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c6bcc5a7948e87a8b887bd0ebd3abc8fc3d3a517
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388944"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545318"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
-[Dzienniki diagnostyczne platformy Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) to Dzienniki tworzone przez usługi platformy Azure, które opisują działania tych usług lub zasobów. Wszystkie dzienniki diagnostyczne, dostępne za pośrednictwem usługi Azure Monitor udostępniać wspólny schemat najwyższego poziomu, elastyczność dla każdej usługi emitować unikatowe właściwości dla ich własnych zdarzeń.
+[Dzienniki diagnostyczne platformy Azure Monitor](../../azure-monitor/platform/diagnostic-logs-overview.md) to Dzienniki tworzone przez usługi platformy Azure, które opisują działania tych usług lub zasobów. Wszystkie dzienniki diagnostyczne, dostępne za pośrednictwem usługi Azure Monitor udostępniać wspólny schemat najwyższego poziomu, elastyczność dla każdej usługi emitować unikatowe właściwości dla ich własnych zdarzeń.
 
 Połączenie typu zasobu (dostępne w `resourceId` właściwości) i `category` jednoznacznie zidentyfikować schematu. W tym artykule opisano schemat najwyższego poziomu dla dzienników diagnostycznych i linki do schematu dla każdej usługi.
 
@@ -205,7 +205,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej na temat dzienników diagnostycznych](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-* [Stream dzienników diagnostycznych zasobów do **usługi Event Hubs**](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Dowiedz się więcej na temat dzienników diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Stream dzienników diagnostycznych zasobów do **usługi Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Zmień ustawienia diagnostyczne zasobów przy użyciu interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [Analizowanie dzienników z usługi Azure storage za pomocą usługi Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

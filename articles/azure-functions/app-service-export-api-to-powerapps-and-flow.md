@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: c9ff4332a10247787e3b11c5508d0d94a1f1c8ba
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 53aa40c047b2b5201cd74c0409d56e97d2880eb0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410469"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602855"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Eksportowanie interfejsu API hostowanych na platformie Azure do usług PowerApps i Microsoft Flow
 
 [Usługa PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) to usługa do tworzenia i używania niestandardowych aplikacji biznesowych łączenie z danymi, które działają na różnych platformach. [Microsoft Flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/) ułatwia Automatyzowanie przepływów pracy i procesów biznesowych między ulubionymi aplikacjami i usługami. Usługa PowerApps i Microsoft Flow są dostarczane z szereg wbudowanych łączników do źródeł danych, takich jak usługi Office 365, Dynamics 365, Salesforce i inne. W niektórych przypadkach twórcy aplikacji i przepływów również chcesz się połączyć z źródła danych i interfejsów API utworzonych przez jego organizację.
 
-Podobnie deweloperów, które mają być swoje interfejsy API szerzej w organizacji można udostępnić swoje interfejsy API twórcy aplikacji i przepływów. W tym temacie pokazano, jak można wyeksportować interfejsu API utworzonych za pomocą [usługi Azure Functions](../azure-functions/functions-overview.md) lub [usługi Azure App Service](../app-service/app-service-web-overview.md). Staje się wyeksportowanego interfejsu API *łącznika niestandardowego*, używany w usługach PowerApps i Microsoft Flow, podobnie jak wbudowanego łącznika.
+Podobnie deweloperów, które mają być swoje interfejsy API szerzej w organizacji można udostępnić swoje interfejsy API twórcy aplikacji i przepływów. W tym temacie pokazano, jak można wyeksportować interfejsu API utworzonych za pomocą [usługi Azure Functions](../azure-functions/functions-overview.md) lub [usługi Azure App Service](../app-service/overview.md). Staje się wyeksportowanego interfejsu API *łącznika niestandardowego*, używany w usługach PowerApps i Microsoft Flow, podobnie jak wbudowanego łącznika.
 
 ## <a name="create-and-export-an-api-definition"></a>Tworzenie i eksportowanie definicji interfejsu API
 Przed wyeksportowaniem interfejsu API, należy opisać interfejs API za pomocą definicji interfejsu OpenAPI (wcześniej znanej jako [Swagger](https://swagger.io/) pliku). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API. Usługi PowerApps i Microsoft Flow można tworzyć łączniki niestandardowe dla dowolnego definicji interfejsu OpenAPI 2.0. Usługa Azure Functions i Azure App Service ma wbudowaną obsługę tworzenia, obsługi i zarządzania definicji interfejsu OpenAPI. Aby uzyskać więcej informacji, zobacz [hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 245372b39f4b730128c593ddd04225bd82875393
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387101"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601563"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -32,7 +32,7 @@ Usługa Azure SQL Database, pul elastycznych, wystąpienia zarządzanego i baz d
 Aby uzyskać więcej informacji na temat kategorii metryk i dzienników, obsługiwane przez różne usługi platformy Azure zobacz:
 
 * [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Przegląd dzienników diagnostyki platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Przegląd dzienników diagnostyki platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Ten artykuł zawiera wskazówki ułatwiające włączenie dane diagnostyczne i telemetryczne dla baz danych, pul elastycznych i wystąpienia zarządzanego. Również może pomóc Ci zrozumieć, jak skonfigurować usługi Azure SQL Analytics jako narzędzia do monitorowania w celu wyświetlania dane diagnostyczne i telemetryczne bazy danych.
 
@@ -691,7 +691,7 @@ Dowiedz się więcej o [format dziennika Intelligent Insights](sql-database-inte
 Aby dowiedzieć się, jak włączyć rejestrowanie i zrozumieć, metryki i rejestrowanie kategorie obsługiwane przez różne usługi platformy Azure, zobacz:
 
 * [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Przegląd dzienników diagnostyki platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Przegląd dzienników diagnostyki platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Aby dowiedzieć się więcej na temat usługi Event Hubs, przeczytaj:
 

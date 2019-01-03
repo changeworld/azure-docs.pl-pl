@@ -1,5 +1,5 @@
 ---
-title: Czas serii Insights adresy URL platformy Azure — widoki niestandardowe udziału usługi Azure Time Series Insights za pomocą sparametryzowanych adresów URL | Dokumentacja firmy Microsoft
+title: Udostępnianie widoków niestandardowych usługi Azure Time Series Insights za pomocą sparametryzowanych adresów URL | Microsoft Docs
 description: W tym artykule opisano sposób opracowywania sparametryzowanych adresów URL w usłudze Azure Time Series Insights na potrzeby łatwego udostępniania widoku klienta.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 5b43ba4c3f88c678b160e8aec442fa92b4822a3d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274364"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558468"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 

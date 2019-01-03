@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: c63e2e3ec922d2cf26603fe19606008b1e8d3f45
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: eba66d4abf84603f1fdb5761d3ea1987983908de
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498173"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607034"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Używanie platformy Caffe na platformie Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego
 
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Uczenie głębokie ma wpływ na wszystkie elementy z branży opieki zdrowotnej do transportu do produkcji i nie tylko. Firmy zaczynają korzystać z rozwiązania trudnych problemów, takie jak do uczenia głębokiego [Klasyfikacja obrazów](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznawania mowy](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)obiektu rozpoznawanie i tłumaczenia maszynowego. 
+Uczenie głębokie ma wpływ na wszystkie elementy z branży opieki zdrowotnej do transportu do produkcji i nie tylko. Firmy zaczynają korzystać z rozwiązania trudnych problemów, takie jak do uczenia głębokiego [Klasyfikacja obrazów](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznawania mowy](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)obiektu rozpoznawanie i tłumaczenia maszynowego. 
 
-Istnieją [wiele popularnych platform](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), w tym [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, itp. [Caffe](http://caffe.berkeleyvision.org/) jest jednym z Najpopularniejsza poznana struktur — symboliczne sieci neuronowej (imperatywne) i powszechnie używane w wielu obszarów, takich jak przetwarzanie obrazów. Ponadto [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) łączy w sobie Caffe z platformą Apache Spark, w którym to przypadku głębokiego uczenia, które mogą być łatwo używane w istniejącym klastrze usługi Hadoop. Uczenie głębokie, wraz z potoki przetwarzania ETL platformy Spark, zmniejszenie złożoności systemu i opóźnień służy do kompletnego rozwiązania uczenia.
+Istnieją [wiele popularnych platform](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), w tym [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, itp. [Caffe](https://caffe.berkeleyvision.org/) jest jednym z Najpopularniejsza poznana struktur — symboliczne sieci neuronowej (imperatywne) i powszechnie używane w wielu obszarów, takich jak przetwarzanie obrazów. Ponadto [CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) łączy w sobie Caffe z platformą Apache Spark, w którym to przypadku głębokiego uczenia, które mogą być łatwo używane w istniejącym klastrze usługi Hadoop. Uczenie głębokie, wraz z potoki przetwarzania ETL platformy Spark, zmniejszenie złożoności systemu i opóźnień służy do kompletnego rozwiązania uczenia.
 
 [HDInsight](https://azure.microsoft.com/services/hdinsight/) jest chmurze Apache Hadoop oferty, która zapewnia zoptymalizowane klastry analityczne typu open source dla platformy Apache Spark, Apache Hive, Apache Hadoop, Apache HBase, Apache Storm, Apache Kafka i usługi ML. HDInsight jest wspierana przez umowę SLA 99,9%. Każdy z tych technologii danych big data i aplikacji ISV jest łatwe do wdrożenia w formie zarządzanych klastrów z bezpieczeństwem i monitorowaniem dla przedsiębiorstw.
 
@@ -37,13 +37,13 @@ Istnieją cztery kroki do wykonania zadania:
 
 Ponieważ rozwiązanie PaaS, HDInsight oferuje funkcje doskonała platforma — dzięki czemu można łatwo wykonywać niektóre zadania. Jedna z funkcji używanych w tym wpisie w blogu o nazwie [akcji skryptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), za pomocą którego można wykonać polecenia powłoki, aby dostosować węzłów klastra (węzła głównego, węzła procesu roboczego lub węzłem krawędzi).
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>Krok 1: Instalacja zależności wymagane we wszystkich węzłach
+## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>Krok 1:  Zainstaluj wymagane zależności na wszystkich węzłach
 
 Aby rozpocząć pracę, musisz zainstalować zależności. Witryna Caffe i [witryny CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) oferuje niektóre przydatne witryny typu wiki w celu zainstalowania zależności dla platformy Spark na tryb usługi YARN. HDInsight używa również platformy Spark w trybie usługi YARN. Jednakże należy dodać kilka więcej zależności dla platformy HDInsight. W tym celu należy użyć akcji skryptu i uruchom go na wszystkich węzłów głównych i węzłów procesu roboczego. Tę akcję skryptu zajmuje około 20 minut, jak te zależności, także zależeć od innych pakietów. Należy go umieścić w lokalizacji dostępnej z klastrem HDInsight, takie jak lokalizacja usługi GitHub lub domyślne konto magazynu obiektów BLOB.
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
-    #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
+    #installing all dependencies, including the ones mentioned in https://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
     #It seems numpy will only needed during compilation time, but for safety purpose you install them on all the nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
@@ -62,7 +62,7 @@ Aby rozpocząć pracę, musisz zainstalować zależności. Witryna Caffe i [witr
 
 Istnieją dwa kroki w akcji skryptu. Pierwszym krokiem jest instalowanie wymaganych bibliotek. Te biblioteki zawierają wymagane biblioteki dla kompilowania Caffe (na przykład gflags, glog) i systemem Caffe (na przykład numpy). używasz libatlas optymalizacji procesora CPU, ale zawsze można wykonać CaffeOnSpark witryny typu wiki na temat instalowania innych bibliotek optymalizacji, takiego jak MKL lub CUDA (dla procesora GPU).
 
-Drugim krokiem jest pobrać, skompilować i zainstalować protobuf 2.5.0 dla Caffe w czasie wykonywania. Formatu Protobuf 2.5.0 [jest wymagana](https://github.com/yahoo/CaffeOnSpark/issues/87), ale ta wersja nie jest dostępna jako pakiet w systemie Ubuntu 16, więc należy skompilować go z kodu źródłowego. Dostępne są także kilka zasobów w Internecie na temat sposobu go skompilować. Aby uzyskać więcej informacji, zobacz [tutaj](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
+Drugim krokiem jest pobrać, skompilować i zainstalować protobuf 2.5.0 dla Caffe w czasie wykonywania. Formatu Protobuf 2.5.0 [jest wymagana](https://github.com/yahoo/CaffeOnSpark/issues/87), ale ta wersja nie jest dostępna jako pakiet w systemie Ubuntu 16, więc należy skompilować go z kodu źródłowego. Dostępne są także kilka zasobów w Internecie na temat sposobu go skompilować. Aby uzyskać więcej informacji, zobacz [tutaj](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
 Aby rozpocząć pracę, możesz po prostu uruchomić tę akcję skryptu względem klastra do wszystkich węzłów procesu roboczego i węzły główne (na HDInsight 3.5). Możesz uruchomić akcji skryptów w istniejącym klastrze lub użyj akcji skryptu, podczas tworzenia klastra. Aby uzyskać więcej informacji na temat akcji skryptu, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
 
@@ -124,7 +124,7 @@ Po pierwsze Trwa próba skompilowania CaffeOnSpark, czasami wyświetlany jest te
 
 Wyczyść repozytorium kodu przez "Przechowuj czyste", a następnie wykonywania "marka kompilacji" Aby rozwiązać ten problem, tak długo, jak długo mają prawidłowe zależności.
 
-### <a name="troubleshooting-maven-repository-connection-time-out"></a>Rozwiązywanie problemów: Maven repozytorium limit czasu połączenia
+### <a name="troubleshooting-maven-repository-connection-time-out"></a>Rozwiązywanie problemów: Limit czasu połączenia repozytorium maven
 
 Czasami maven zapewnia Błąd limitu czasu połączenia, podobny do następującego fragmentu kodu:
 
@@ -136,7 +136,7 @@ Czasami maven zapewnia Błąd limitu czasu połączenia, podobny do następując
 Trzeba powtórzyć po kilku minutach.
 
 
-### <a name="troubleshooting-test-failure-for-caffe"></a>Rozwiązywanie problemów: Test awarii dla Caffe
+### <a name="troubleshooting-test-failure-for-caffe"></a>Rozwiązywanie problemów: Niepowodzenie testu Caffe
 
 Podczas ustalania końcowego Wyszukaj CaffeOnSpark prawdopodobnie Zobacz niepowodzenia testu. To prawdopodobnie związane z kodowaniem UTF-8, ale nie powinny mieć wpływu na używanie platformy Caffe
 
@@ -169,7 +169,7 @@ Model, który możesz później jest przykładowy model do trenowania mnist ręc
 
 CaffeOnSpark zawiera przykładowe topologie sieci do trenowania mnist ręcznie ZAPISANYCH. Ma ona nieuprzywilejowany projektowania podziału architektura sieci (topologia sieci) i optymalizacji. W tym przypadku istnieją dwa pliki wymagane: 
 
-Plik "Solver" (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) jest używany dla nadzorowanie optymalizacji i generowania aktualizacje parametru. Na przykład, określa ona, czy procesor CPU lub GPU jest używany, co to jest pęd, jak dużo iteracji są, itp. Definiuje również wdrożonej topologii sieci neuronu powinna być używana (czyli drugiego pliku, które są potrzebne). Aby uzyskać więcej informacji na temat Solver zobacz [dokumentacji Caffe](http://caffe.berkeleyvision.org/tutorial/solver.html).
+Plik "Solver" (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) jest używany dla nadzorowanie optymalizacji i generowania aktualizacje parametru. Na przykład, określa ona, czy procesor CPU lub GPU jest używany, co to jest pęd, jak dużo iteracji są, itp. Definiuje również wdrożonej topologii sieci neuronu powinna być używana (czyli drugiego pliku, które są potrzebne). Aby uzyskać więcej informacji na temat Solver zobacz [dokumentacji Caffe](https://caffe.berkeleyvision.org/tutorial/solver.html).
 
 W tym przykładzie ponieważ używasz procesora CPU, a nie procesora GPU, należy zmienić ostatni wiersz, aby:
 
@@ -187,7 +187,7 @@ Drugi plik (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) definiuje, 
 
 ![Caffe konfiguracji](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
 
-Aby uzyskać więcej informacji na temat sposobu definiowania sieci Sprawdź [dokumentacji platformy Caffe na zestawie danych mnist ręcznie ZAPISANYCH](http://caffe.berkeleyvision.org/gathered/examples/mnist.html)
+Aby uzyskać więcej informacji na temat sposobu definiowania sieci Sprawdź [dokumentacji platformy Caffe na zestawie danych mnist ręcznie ZAPISANYCH](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
 Na potrzeby tego artykułu możesz użyć w tym przykładzie mnist ręcznie ZAPISANYCH. Uruchom następujące polecenia z węzłem głównym:
 
@@ -291,7 +291,7 @@ W tej dokumentacji próbowano zainstalować CaffeOnSpark z uruchomionymi prosty 
 
 
 ## <a name="seealso"></a>Zobacz też
-* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)

@@ -1,21 +1,18 @@
 ---
 title: Dzienniki serwera dostępu w usłudze Azure Database dla serwera MariaDB przy użyciu wiersza polecenia platformy Azure
 description: W tym artykule opisano, jak dostęp do dzienników serwera w usłudze Azure Database dla serwera MariaDB przy użyciu narzędzia wiersza polecenia wiersza polecenia platformy Azure.
-services: mariadb
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: b9ae07b88164a830598db791d61b77a6abb7b1df
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 403f111882b1bd151b26af56fd614355e7ba88e3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516219"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539215"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników serwera przy użyciu wiersza polecenia platformy Azure
 Azure Database for dzienniki serwera MariaDB można pobrać przy użyciu wiersza polecenia platformy Azure, narzędzie wiersza polecenia platformy Azure.

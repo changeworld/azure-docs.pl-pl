@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f4067c73cac4597da3099212c9c04c2544a0b2d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 30bfaad8fcc1a837a37689280149a6dbe20b7c1d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634349"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628155"
 ---
 # <a name="use-apache-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Używanie programu Apache Hive z systemem Windows HDInsight do analizy dzienników z witryn sieci Web
 Dowiedz się, jak za pomocą języka HiveQL z HDInsight do analizy dzienników w witrynie sieci Web. Analiza dziennika witryny sieci Web może służyć do segmentuj odbiorców w oparciu o podobnych działań, osoby odwiedzające witrynę na kategorie według dane demograficzne oraz dowiedzieć się zawartość one widoku, pochodzą z witryn sieci Web i tak dalej.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tym dokumencie działają tylko z klastrami HDInsight z systemem Windows. HDInsight jest dostępna tylko na Windows dla wersji starszej niż HDInsight 3.4. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 W tym przykładzie za pomocą klastra usługi HDInsight można analizować pliki dziennika witryny sieci Web można pobrać danych dotyczących częstotliwości odwiedzin witryny sieci Web z zewnętrznych witryn sieci Web w ciągu dnia. Możesz również wygenerować podsumowania błędów witryn sieci Web, które użytkowników. Omawiane kwestie:
@@ -32,7 +32,7 @@ W tym przykładzie za pomocą klastra usługi HDInsight można analizować pliki
 ![USŁUGI HDI. Samples.Website.Log.Analysis](./media/apache-hive-analyze-website-log/hdinsight-weblogs-sample.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Należy aprowizowany klaster Hadoop w usłudze Azure HDInsight. Aby uzyskać instrukcje, zobacz [Inicjowanie obsługi klastrów HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+* Należy aprowizacji klastra Apache Hadoop w usłudze Azure HDInsight. Aby uzyskać instrukcje, zobacz [Inicjowanie obsługi klastrów HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 * Konieczne jest posiadanie programu Microsoft Excel 2013 lub programu Excel 2010 jest zainstalowany.
 * Konieczne jest posiadanie [sterownika Microsoft Hive ODBC](https://www.microsoft.com/download/details.aspx?id=40886) do importowania danych z programu Hive w programie Excel.
 
@@ -47,6 +47,6 @@ W tym przykładzie za pomocą klastra usługi HDInsight można analizować pliki
 4. Postępuj zgodnie z instrukcjami na stronie sieci web zakończenie próbki.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Wypróbuj poniższy przykład: [analizowanie danych czujnika przy użyciu technologii Hive z HDInsight](apache-hive-analyze-sensor-data.md).
+Wypróbuj poniższy przykład: [Analizowanie danych czujnika przy użyciu technologii Hive z HDInsight](apache-hive-analyze-sensor-data.md).
 
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md

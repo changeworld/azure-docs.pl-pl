@@ -3,7 +3,7 @@ title: Projektować wydajne zapytania dotyczące list - usługi Azure Batch | Do
 description: Zwiększyć wydajność, filtrując zapytań podczas żądania informacji na temat zasobów usługi Batch, takie jak pule, zadania, zadań i węzłów obliczeniowych.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/26/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6bc31e8541797930583e41fb6efbb6473cd4b894
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: fc873f68be3e7aad67980ec2e8ee0b2e473777ec
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004459"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537905"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Wydajny sposób tworzyć zapytania w celu wyświetlenia listy zasobów usługi Batch
 
@@ -108,7 +108,7 @@ W ramach [platformy .NET usługi Batch] [ api_net] interfejsu API, [ODATADetailL
 
 * [ODATADetailLevel][odata].[ FilterClause][odata_filter]: Ogranicz liczbę elementów, które są zwracane.
 * [ODATADetailLevel][odata].[ SelectClause][odata_select]: Określ wartości właściwości, które są zwracane z każdym elementem.
-* [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: pobieranie danych dla wszystkich elementów w pojedynczy interfejs API wywoływać zamiast wywołań dla każdego elementu.
+* [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: Pobieranie danych dla wszystkich elementów w jednym wywołaniu interfejsu API, a nie oddzielnych wywołania dla każdego elementu.
 
 Poniższy fragment kodu używa interfejsu API .NET usługi Batch do wydajnego przesyłania zapytań dotyczących usługi Batch dla statystyk określony zbiór pul. W tym scenariuszu użytkownik usługi Batch ma zestawów testowych i produkcyjnych. Test puli identyfikatorów mają prefiks "test", a puli produkcji identyfikatorów mają prefiks "prod". Ten fragment kodu *myBatchClient* jest prawidłowo zainicjowany wystąpieniem [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) klasy.
 
@@ -147,8 +147,8 @@ List<CloudPool> testPools =
 Nazwy właściwości w filtrze, wybierz i rozwiń ciągi *musi* odzwierciedlają ich odpowiedników interfejsu API REST, zarówno nazwę i przypadek. Poniższe tabele zawierają mapowania między odpowiedników .NET i interfejsu API REST.
 
 ### <a name="mappings-for-filter-strings"></a>Mapowania w ciągach filtru
-* **Metody listy .NET**: każdej z metod interfejsu API platformy .NET w tej kolumnie akceptuje [ODATADetailLevel] [ odata] obiektu jako parametr.
-* **Żądania listy REST**: strona każdego interfejsu API REST, połączone z tej kolumny zawiera tabelę, która określa właściwości i operacje, które są dozwolone w *filtru* ciągów. Użyjesz tych nazw właściwości i operacje podczas konstruowania [ODATADetailLevel.FilterClause] [ odata_filter] ciągu.
+* **Metody listy .NET**: Każda z metod interfejsu API platformy .NET w tej kolumnie akceptuje [ODATADetailLevel] [ odata] obiektu jako parametr.
+* **Żądania listy REST**: Każda strona interfejsu API REST, połączone z tej kolumny zawiera tabelę, która określa właściwości i operacje, które są dozwolone w *filtru* ciągów. Użyjesz tych nazw właściwości i operacje podczas konstruowania [ODATADetailLevel.FilterClause] [ odata_filter] ciągu.
 
 | Metody listy .NET | Żądania listy REST |
 | --- | --- |
@@ -164,8 +164,8 @@ Nazwy właściwości w filtrze, wybierz i rozwiń ciągi *musi* odzwierciedlają
 | [PoolOperations.ListPools][net_list_pools] |[Lista pul w ramach konta][rest_list_pools] |
 
 ### <a name="mappings-for-select-strings"></a>Mapowania wybierz ciągów
-* **Typy .NET batch**: typy interfejsu API .NET usługi Batch.
-* **Jednostki interfejsu API REST**: każda Strona ta kolumna zawiera co najmniej jedną tabelę, w których przedstawiono nazwy właściwości interfejsu API REST dla typu. Nazwy te właściwości są używane podczas konstruowania *wybierz* ciągów. Podczas konstruowania użyje tych samych nazw właściwości [ODATADetailLevel.SelectClause] [ odata_select] ciągu.
+* **Typy .NET batch**: Typy interfejsu API .NET usługi Batch.
+* **Jednostki interfejsu API REST**: Każda Strona ta kolumna zawiera co najmniej jedną tabelę, w których przedstawiono nazwy właściwości interfejsu API REST dla typu. Nazwy te właściwości są używane podczas konstruowania *wybierz* ciągów. Podczas konstruowania użyje tych samych nazw właściwości [ODATADetailLevel.SelectClause] [ odata_select] ciągu.
 
 | Typy .NET usługi Batch | Jednostki interfejsu API REST |
 | --- | --- |
@@ -246,9 +246,9 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 [Zmaksymalizuj użycie zasobów obliczeniowych usługi Azure Batch przy użyciu równoczesne zadania węzła](batch-parallel-node-tasks.md) inny artykuł dotyczy wydajności aplikacji usługi Batch. Niektóre rodzaje obciążeń mogą korzystać z wykonywania zadań równoległych w większych —, ale mniej — węzłów obliczeniowych. Zapoznaj się z [przykładowy scenariusz](batch-parallel-node-tasks.md#example-scenario) w artykule, aby uzyskać szczegółowe informacje na temat takiej sytuacji.
 
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
 [github_samples]: https://github.com/Azure/azure-batch-samples
